@@ -1,0 +1,132 @@
+@use "../global" as *;
+
+.c__contact{
+  margin: 0 auto;
+  display: flex;
+
+  @include pc{
+    width: max(calc(( 704 / 1280) * 100vw),704px);
+    aspect-ratio: 704/205;
+  }
+
+  @include sp{
+    width: 100%;
+    flex-direction: column;
+  }
+
+  a{
+    display: block;
+    background: #F3F3F3;
+    align-items: center;
+    justify-content: center;
+    
+    @include pc{
+      width: 50%;
+      @include column( max(calc(( 10 / 1280) * 100vw),10px) );
+
+    }
+
+    @include sp{
+      width: 100%;
+      aspect-ratio: 280/90;
+      @include column( calc(( 5 / 390) * 100vw));
+    }
+
+    div{
+      aspect-ratio: 1/1;
+      background-image: cPhone(encode('#008475'));
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      @include pc{
+        width: max(calc(( 60 / 1280) * 100vw),60px);
+      }
+
+      @include sp{
+        width: calc(( 23 / 390) * 100vw);
+      }
+    }
+
+    p{
+      color: $mainColor;
+      @include josefin;
+      
+      @include pc{
+        font-size: max(calc(( 34 / 1280) * 100vw),34px);
+        letter-spacing: calc(( 0.34 / 390) * 100vw);
+      }
+
+      @include sp{
+        font-size: calc(( 18 / 390) * 100vw);
+        letter-spacing: calc(( 1.8 / 390) * 100vw);
+      }
+    }
+
+
+    &:nth-child(2){
+      background: #E6EDEB;
+
+      @include pc{
+        @include column( max(calc(( 20 / 1280) * 100vw),20px) );
+      }
+  
+      div{
+        aspect-ratio: 42/47;
+        background-image: calendar(encode('#E6EDEB') , encode('#008475'));
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        @include pc{
+          width: max(calc(( 42 / 1280) * 100vw),42px);
+        }
+
+        @include sp{
+          width: calc(( 23 / 390) * 100vw);
+        }
+      }
+
+      p{
+        color: $mainColor;
+        @include noto;
+        display: flex;
+        align-items: center;
+        
+        @include pc{
+          font-size: max(calc(( 21 / 1280) * 100vw),21px);
+          letter-spacing: max(calc(( 0.126 / 1280) * 100vw),0.126px);
+          gap: max(calc(( 10 / 1280) * 100vw),10px);
+        }
+  
+        @include sp{
+          font-size: calc(( 15 / 390) * 100vw);
+          letter-spacing: calc(( 0.09 / 390) * 100vw);
+          gap: calc(( 5 / 390) * 100vw);
+        }
+
+        span{
+          font-weight: 300;
+        }
+
+        &::after{
+          content: '';
+          display: block;
+          aspect-ratio: 1/1;
+          background-image: cBtn(encode('#008475'));
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+
+          @include pc{
+            width: max(calc(( 17 / 1280) * 100vw),17px);
+          }
+
+          @include sp{
+            width: calc(( 13 / 390) * 100vw);
+          }
+        }
+      }
+    }
+  }
+}

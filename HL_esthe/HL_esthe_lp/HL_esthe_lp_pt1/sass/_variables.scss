@@ -1,0 +1,56 @@
+// $widthAll: rgb(13, 0, 128);
+// $fontAll: #fff;
+
+// open
+$open: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="30" fill="%23A76BA3"/><path d="M19 21H41" stroke="%23FFF" stroke-width="3" stroke-linecap="round"/><path d="M19 30H41" stroke="%23FFF" stroke-width="3" stroke-linecap="round"/><path d="M19 39H41" stroke="%23FFF" stroke-width="3" stroke-linecap="round"/></svg>');
+
+// close
+$close: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="30" fill="%23A76BA3"/><path d="M22.2217 22.2212L37.778 37.7775" stroke="%23FFF" stroke-width="3" stroke-linecap="round"/><path d="M22.2217 37.5571L37.778 22.0008" stroke="%23FFF" stroke-width="3" stroke-linecap="round"/></svg>');
+
+// 流星
+$meteor: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 81 18" fill="none"><path d="M11 9.16797H61.4167" stroke="%23A987BA" stroke-width="2" stroke-linecap="round"/><path d="M1 9.16797V9.16797" stroke="%23A987BA" stroke-width="2" stroke-linecap="round"/><path d="M6 9.16797V9.16797" stroke="%23A987BA" stroke-width="2" stroke-linecap="round"/><path d="M74.3991 2.64024C74.4564 2.6048 74.5317 2.63513 74.5485 2.70043L75.5621 6.64524C75.5672 6.66529 75.5785 6.68324 75.5943 6.69663L78.701 9.33048C78.7524 9.37408 78.7468 9.45504 78.6899 9.49118L75.2514 11.6741C75.2339 11.6852 75.2203 11.7015 75.2124 11.7206L73.6675 15.4892C73.6419 15.5516 73.5632 15.5713 73.5113 15.5283L70.3726 12.9327C70.3566 12.9195 70.337 12.9116 70.3163 12.91L66.2548 12.6053C66.1876 12.6002 66.1445 12.5314 66.1693 12.4688L67.668 8.68158C67.6756 8.66233 67.6771 8.64119 67.6722 8.62108L66.7069 4.66417C66.691 4.59867 66.7431 4.53645 66.8104 4.54067L70.8753 4.79573C70.896 4.79702 70.9165 4.79188 70.9341 4.781L74.3991 2.64024Z" fill="%23A987BA"/></svg>');
+
+// ビッグ矢印
+$bigArrow: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 111" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M203.445 0H36.4445V41.25L0 41.25L119.945 111L239.889 41.25L203.445 41.25V0Z" fill="%23DBA3B4"/></svg>');
+
+// く
+$ku: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 12" fill="none"><path d="M1 1L6.07814 5.23178C6.55789 5.63157 6.55789 6.36843 6.07813 6.76822L1 11" stroke="%23FFF" stroke-width="2" stroke-linecap="round"/></svg>');
+
+// リボン
+$ribbon: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 422 42" fill="none"><path d="M0 0H422L410.706 21L422 42H0L11.5 21L0 0Z" fill="%237A4B80"/></svg>');
+
+// リボンSP
+$ribbonSP: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 68" fill="none"><path d="M0 0H280L266.5 34L280 68H0L15 34L0 0Z" fill="%237A4B80"/></svg>');
+
+// triangle
+$triangle: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 90" fill="none"><path d="M640 90L0 0V90H640Z" fill="%23FDF7FD"/></svg>');
+
+// triangleSP
+$triangleSP: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 195 90" fill="none"><path d="M195 90L0 0V90H195Z" fill="%23FDF7FD"/></svg>');
+
+// pointIcon
+$pointIcon: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M31.5 8L28.5 1.5" stroke="%23A987BA" stroke-linecap="round"/><path d="M46.5 26.5V15" stroke="%23A987BA" stroke-linecap="round"/><path d="M52.5 28L59.5 10.5" stroke="%23A987BA" stroke-linecap="round"/><path d="M60.5 8L63 1" stroke="%23A987BA" stroke-linecap="round"/><path d="M34.5 32.5L24 25" stroke="%23A987BA" stroke-linecap="round"/><path d="M40 28.5L33 12" stroke="%23A987BA" stroke-linecap="round"/><path d="M30.5 38.5L10.5 31" stroke="%23A987BA" stroke-linecap="round"/><path d="M8 30L1 27" stroke="%23A987BA" stroke-linecap="round"/><path d="M14.5 47H30" stroke="%23A987BA" stroke-linecap="round"/><path d="M10.5 60L32.5 52.5" stroke="%23A987BA" stroke-linecap="round"/><path d="M6.5 61.5L1 63.5" stroke="%23A987BA" stroke-linecap="round"/></svg>');
+
+// multiply
+$multiply: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none"><path d="M1 1L19 19" stroke="%23291A2B" stroke-width="2" stroke-linecap="round"/><path d="M1 19L19 1" stroke="%23291A2B" stroke-width="2" stroke-linecap="round"/></svg>');
+
+// pinkBorder
+$pinkBorder: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 313 4" fill="none"><path d="M2 2L311 1.99997" stroke="%23FFECFF" stroke-width="3" stroke-linecap="round" stroke-dasharray="4 4"/></svg>');
+
+// FAQ
+$FAQ: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 12" fill="none"><path d="M2 2L10 10L18 2" stroke="%23BB80C2" stroke-width="2" stroke-linecap="square"/></svg>');
+
+
+// SVG使い方
+// $burgerClose: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="26" height="27" viewBox="0 0 26 27" fill="none"><path d="M1.75879 2L24.7398 24.981" stroke="%23FFF" stroke-width="3"/><path d="M1.75977 24.981L24.7407 1.99999" stroke="%23FFF" stroke-width="3"/></svg>');
+
+
+// SVG使い方（色変更パターン）
+// @function encode($phoneColorCode){
+//   @return '%23' + str-slice($phoneColorCode,2,-1);
+// }
+// @function svg($phoneColor) {
+//   @return  url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" fill="none"><path d="M3.84778 10.1267C6.03066 12.3147 8.6871 14 10.8552 14C11.8245 14 12.6755 13.66 13.3562 12.906C13.7558 12.4625 14 11.9525 14 11.4425C14 11.0507 13.8446 10.6663 13.4672 10.4002L11.1956 8.78881C10.833 8.53749 10.537 8.41922 10.2706 8.41922C9.92283 8.41922 9.61205 8.6114 9.27167 8.95143L8.7389 9.48363C8.65011 9.56494 8.54651 9.6019 8.45032 9.6019C8.33192 9.6019 8.22093 9.55755 8.14693 9.5132C7.68076 9.26188 6.88161 8.58184 6.14165 7.84266C5.40169 7.10348 4.71353 6.31257 4.46934 5.83949C4.42495 5.75818 4.38795 5.6547 4.38795 5.53643C4.38795 5.44773 4.41755 5.34424 4.49894 5.25554L5.03171 4.71595C5.36469 4.36853 5.56448 4.06547 5.56448 3.71806C5.56448 3.44456 5.44609 3.14889 5.1945 2.79409L3.58879 0.546991C3.31501 0.162619 2.93023 0 2.50846 0C2.00529 0 1.50211 0.221753 1.06554 0.643083C0.325581 1.33791 0 2.20275 0 3.15628C0 5.32207 1.6649 7.94615 3.84778 10.1267Z" fill="#{$phoneColor}"/></svg>');
+// }
+// ↓CSSでは
+// background-image: svg(encode('#FFF'));

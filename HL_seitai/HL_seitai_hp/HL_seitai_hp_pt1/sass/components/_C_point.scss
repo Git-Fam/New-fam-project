@@ -1,0 +1,213 @@
+@use "../global" as *;
+
+.C_point {
+  display: flex;
+
+  @include pc {
+    width: max(calc((977 / 1280) * 100vw), 700px);
+    margin: 0 auto;
+    gap: calc((28 / 1280) * 100vw);
+  }
+
+  @include sp {
+    width: 100%;
+    flex-direction: column;
+    gap: calc((57 / 390) * 100vw);
+  }
+
+  &--item {
+    border-radius: 10px;
+    background-color: #fff;
+    position: relative;
+
+    @include pc {
+      width: calc(100% / 3 - ((14 / 1280) * 100vw));
+      padding: calc((59 / 1280) * 100vw) calc((15 / 1280) * 100vw) calc((20 / 1280) * 100vw);
+    }
+
+    @include sp {
+      width: calc((297 / 390) * 100vw);
+      margin: 0 auto;
+      padding: calc((55 / 390) * 100vw) calc((25 / 390) * 100vw) calc((20 / 390) * 100vw);
+    }
+
+    &--No {
+      @include icon($CPointNo);
+      aspect-ratio: 50/59;
+      text-align: center;
+      color: #FFF;
+      @include quicksand;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+
+      @include pc {
+        width: calc((50 / 1280) * 100vw);
+        padding-top: calc((5 / 1280) * 100vw);
+        font-size: calc((30 / 1280) * 100vw);
+        top: calc((-30 / 1280) * 100vw);
+      }
+
+      @include sp {
+        width: calc((50 / 390) * 100vw);
+        padding-top: calc((5 / 390) * 100vw);
+        font-size: calc((30 / 390) * 100vw);
+        top: calc((-30 / 390) * 100vw);
+      }
+    }
+
+    &--title {
+      text-align: center;
+
+      p {
+        color: $mainColor;
+        @include sans;
+        font-weight: 500;
+        line-height: 100%;
+
+        @include pc {
+          font-size: max(calc((14 / 1280) * 100vw), 12px);
+          letter-spacing: calc((1.4 / 1280) * 100vw);
+        }
+
+        @include sp {
+          font-size: calc((14 / 390) * 100vw);
+          letter-spacing: calc((1.4 / 390) * 100vw);
+        }
+      }
+
+      h2 {
+        color: #84B754;
+        @include quicksand;
+        font-weight: 600;
+        position: relative;
+
+        @include pc {
+          font-size: calc((29 / 1280) * 100vw);
+          letter-spacing: calc((3.48 / 1280) * 100vw);
+          margin: calc((21 / 1280) * 100vw) 0 0;
+          padding-bottom: calc((10 / 1280) * 100vw);
+        }
+
+        @include sp {
+          font-size: calc((29 / 390) * 100vw);
+          letter-spacing: calc((3.48 / 390) * 100vw);
+          margin: calc((21 / 390) * 100vw) 0 0;
+          padding-bottom: calc((10 / 390) * 100vw);
+        }
+
+        &::before {
+          content: '';
+          background-color: #F5EA8D;
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          margin: auto;
+
+          @include pc {
+            width: calc((224 / 1280) * 100vw);
+            height: calc((5 / 1280) * 100vw);
+          }
+
+          @include sp {
+            width: calc((224 / 390) * 100vw);
+            height: calc((5 / 390) * 100vw);
+          }
+        }
+      }
+    }
+
+    &--img {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+
+      @include pc {
+        top: calc((170 / 1280) * 100vw);
+      }
+
+      @include sp {
+        top: calc((150 / 390) * 100vw);
+      }
+    }
+
+    // 1
+    &:nth-child(1) {
+      .C_point--item--img {
+        @include img('c_point-1.png');
+        aspect-ratio: 192/160;
+
+        @include pc {
+          width: calc((192 / 1280) * 100vw);
+        }
+
+        @include sp {
+          width: calc((192 / 390) * 100vw);
+        }
+      }
+    }
+
+    // 2
+    &:nth-child(2) {
+      .C_point--item--img {
+        @include img('c_point-2.png');
+        aspect-ratio: 114/144;
+
+        @include pc {
+          width: calc((114 / 1280) * 100vw);
+        }
+
+        @include sp {
+          width: calc((114 / 390) * 100vw);
+        }
+      }
+    }
+
+    // 3
+    &:nth-child(3) {
+      .C_point--item--img {
+        @include img('c_point-3.png');
+        aspect-ratio: 161/151;
+
+        @include pc {
+          width: calc((161 / 1280) * 100vw);
+        }
+
+        @include sp {
+          width: calc((161 / 390) * 100vw);
+        }
+      }
+    }
+
+    &--text {
+      @include pc {
+        padding-top: calc((210 / 1280) * 100vw);
+      }
+
+      @include sp {
+        padding-top: calc((180 / 390) * 100vw);
+      }
+
+      p {
+        color: $mainColor;
+        @include sans;
+        font-weight: 300;
+
+        @include pc {
+          font-size: max(calc((12 / 1280) * 100vw), 12px);
+          line-height: 230%;
+          letter-spacing: calc((0.84 / 1280) * 100vw);
+        }
+
+        @include sp {
+          font-size: calc((12 / 390) * 100vw);
+          line-height: 230%;
+          letter-spacing: calc((0.84 / 390) * 100vw);
+        }
+      }
+    }
+  }
+}

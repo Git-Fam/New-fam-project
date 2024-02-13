@@ -1,0 +1,121 @@
+@use "../global" as *;
+
+
+.C-facility{
+  display: flex;
+  flex-wrap: wrap;
+
+  @include pc{
+    width: max(calc(( 936 / 1280) * 100vw),700px);
+    margin: calc(( 40 / 1280) * 100vw) auto;
+    gap: calc(( 37 / 1280) * 100vw) calc(( 18 / 1280) * 100vw);
+  }
+
+  @include sp{
+    width: 100%;
+    margin: calc(( 40 / 390) * 100vw) auto;
+    gap: calc(( 44 / 390) * 100vw);
+  }
+
+  &--item{
+    border: 1px solid $darkGreen;
+
+    @include pc{
+      width: calc(100% / 3 - calc(calc(( 18 / 1280) * 100vw)) * 2 / 3);
+      padding: calc(( 20 / 1280) * 100vw) calc(( 20 / 1280) * 100vw) calc(( 30 / 1280) * 100vw);
+    }
+
+    @include sp{
+      width: 100%;
+      padding: calc(( 20 / 390) * 100vw) calc(( 20 / 390) * 100vw) calc(( 30 / 390) * 100vw);
+    }
+
+    .img{
+      aspect-ratio: 260/160;
+      height: fit-content;
+
+      @include pc{
+        width: 100%;
+        margin: 0 auto calc(( 30 / 1280) * 100vw);
+      }
+
+      @include sp{
+        width: 100%;
+        margin: 0 auto calc(( 30 / 390) * 100vw);
+      }
+
+      // 1
+      &.img--1{
+        @include img("C-facility-1.jpg");
+        background-size: cover;
+      }
+
+      // 2
+      &.img--2{
+        @include img("C-facility-2.png");
+        background-size: cover;
+      }
+
+      // 3
+      &.img--3{
+        @include img("C-facility-3.png");
+        background-size: cover;
+      }
+
+      // 4
+      &.img--4{
+        @include img("C-facility-4.png");
+        background-size: cover;
+      }
+
+      // 5
+      &.img--5{
+        @include img("C-facility-5.png");
+        background-size: cover;
+      }
+
+      // no-img
+      &.no-img{
+        @include img("no-image.png");
+        background-size: cover;
+      }
+    }
+
+    .title{
+      text-align: center;
+      color: $mainColor;
+      @include sans;
+      font-weight: 600;
+      line-height: 100%;
+      
+      @include pc{
+        font-size: max(calc(( 17 / 1280) * 100vw),13px);
+        letter-spacing: calc(( 0.85 / 1280) * 100vw);
+        margin: 0 auto calc(( 22 / 1280) * 100vw);
+      }
+
+      @include sp{
+        font-size: calc(( 17 / 390) * 100vw);
+        letter-spacing: calc(( 0.85 / 390) * 100vw);
+        margin: 0 auto calc(( 22 / 390) * 100vw);
+      }
+    }
+
+    p{
+      color: $mainColor;
+      @include sans;
+      font-weight: 300;
+      line-height: 200%;
+      
+      @include pc{
+        font-size: max(calc(( 14 / 1280) * 100vw),10px);
+        letter-spacing: calc(( 0.98 / 1280) * 100vw);
+      }
+
+      @include sp{
+        font-size: calc(( 14 / 390) * 100vw);
+        letter-spacing: calc(( 0.98 / 390) * 100vw);
+      }
+    }
+  }
+}

@@ -1,0 +1,552 @@
+@use "../global" as *;
+
+
+.access--wapper {
+
+  .access--howTo {
+
+    @include pc {
+      padding: calc((165 / 1280) * 100vw) 0 0;
+      width: max(calc((982 / 1280) * 100vw), 700px);
+      margin: 0 auto;
+    }
+
+    @include sp {
+      padding: calc((60 / 390) * 100vw) calc((20 / 390) * 100vw) 0;
+      width: 100%;
+    }
+
+    &--content {
+
+      @include pc {
+        margin: calc((40 / 1280) * 100vw) 0 0;
+      }
+
+      @include sp {
+        margin: calc((40 / 390) * 100vw) 0 0;
+      }
+
+      .map {
+
+        @include pc {
+          aspect-ratio: 982/500;
+          width: 100%;
+        }
+
+        @include sp {
+          aspect-ratio: 349/318;
+          width: 100%;
+        }
+
+        iframe {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .contents {
+        display: flex;
+
+        @include pc {
+          flex-wrap: wrap;
+          margin-top: calc((60 / 1280) * 100vw);
+          gap: calc((60 / 1280) * 100vw);
+        }
+
+        @include sp {
+          flex-direction: column;
+          gap: calc((50 / 390) * 100vw);
+          margin-top: calc((60 / 390) * 100vw);
+        }
+
+        .item {
+          border: 1px dotted $mainColor;
+          position: relative;
+
+          @include pc {
+            width: calc(100% / 2 - ((30 / 1280) * 100vw));
+            padding: calc((50 / 1280) * 100vw) calc((30 / 1280) * 100vw);
+          }
+
+          @include sp {
+            width: 100%;
+            padding: calc((30 / 390) * 100vw);
+          }
+
+          &:nth-child(3) {
+            @include pc {
+              width: 100%;
+            }
+          }
+
+          .tag {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #FFF;
+            border: 1px solid #000;
+            @include sans;
+
+            @include pc {
+              padding: calc((20 / 1280) * 100vw);
+              font-size: calc((14 / 1280) * 100vw);
+              top: calc((-35 / 1280) * 100vw);
+            }
+
+            @include sp {
+              padding: calc((10 / 390) * 100vw);
+              font-size: calc((13 / 390) * 100vw);
+              top: calc((-25 / 390) * 100vw);
+            }
+          }
+
+          .title {
+            @include sans;
+            text-align: center;
+            color: $darkGreen;
+
+            @include pc {
+              font-size: max(calc((14 / 1280) * 100vw), 10px);
+              letter-spacing: calc((0.2 / 1280) * 100vw);
+              margin-bottom: calc((40 / 1280) * 100vw);
+            }
+
+            @include sp {
+              font-size: calc((16 / 390) * 100vw);
+              letter-spacing: calc((0.2 / 390) * 100vw);
+              margin-bottom: calc((25 / 390) * 100vw);
+            }
+          }
+
+          .item-p {
+            @include sans;
+            text-align: center;
+            color: $mainColor;
+
+            @include pc {
+              font-size: max(calc((14 / 1280) * 100vw), 10px);
+              letter-spacing: calc((0.2 / 1280) * 100vw);
+              line-height: 200%;
+            }
+
+            @include sp {
+              font-size: calc((13 / 390) * 100vw);
+              letter-spacing: calc((0.2 / 390) * 100vw);
+              line-height: 200%;
+            }
+          }
+
+          .text-img {
+            width: 100%;
+
+            @include pc {
+              height: calc((23 / 1280) * 100vw);
+              margin-top: calc((40 / 1280) * 100vw);
+            }
+
+            @include sp {
+              height: calc((30 / 390) * 100vw);
+              margin-top: calc((20 / 390) * 100vw);
+            }
+
+            &.text-img-1 {
+              @include img('access_howTo_content-1.png');
+            }
+
+            &.text-img-2 {
+              @include img('access_howTo_content-2.png');
+            }
+          }
+
+          .detail {
+            width: 100%;
+            aspect-ratio: 400/225;
+
+            @include pc {
+              margin-top: calc((25 / 1280) * 100vw);
+            }
+
+            @include sp {
+              margin-top: calc((20 / 390) * 100vw);
+            }
+
+            .YouTube,
+            .img {
+              width: 100%;
+              height: 100%;
+
+              &.img-2 {
+                @include img('access_howTo_content-img-2.png');
+              }
+
+              &.img-3 {
+                @include img('access_howTo_content-img-3.png');
+              }
+            }
+
+
+          }
+
+          .parking {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            @include pc {
+              gap: calc((20 / 1280) * 100vw);
+              margin-top: calc((40 / 1280) * 100vw);
+            }
+
+            @include sp {
+              flex-direction: column;
+              gap: calc((20 / 390) * 100vw);
+              margin-top: calc((20 / 390) * 100vw);
+            }
+
+            &--title {
+              flex-shrink: 0;
+
+              @include pc {
+                aspect-ratio: 72/193;
+                @include img('access_howTo_content-parking-title.png');
+                width: calc((72 / 1280) * 100vw);
+              }
+
+              @include sp {
+                aspect-ratio: 200/76;
+                width: calc((200 / 390) * 100vw);
+                @include img('access_howTo_content-parking-title-sp.png');
+              }
+            }
+
+            &--text {
+
+              @include pc {}
+
+              @include sp {}
+
+              p {
+                @include sans;
+                color: $mainColor;
+
+                @include pc {
+                  font-size: max(calc((14 / 1280) * 100vw), 10px);
+                  letter-spacing: calc((0.2 / 1280) * 100vw);
+                  line-height: 200%;
+                }
+
+                @include sp {
+                  font-size: calc((13 / 390) * 100vw);
+                  letter-spacing: calc((0.2 / 390) * 100vw);
+                  line-height: 200%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .access--about {
+    @include pc {
+      padding: calc((165 / 1280) * 100vw) 0 0;
+      width: max(calc((982 / 1280) * 100vw), 700px);
+      margin: 0 auto;
+    }
+
+    @include sp {
+      padding: calc((100 / 390) * 100vw) calc((20 / 390) * 100vw) 0;
+      width: 100%;
+    }
+
+    &--container {
+      display: flex;
+
+      @include pc {
+        margin-top: calc((40 / 1280) * 100vw);
+        gap: calc((60 / 1280) * 100vw);
+      }
+
+      @include sp {
+        flex-direction: column;
+        gap: calc((40 / 390) * 100vw);
+        margin-top: calc((50 / 390) * 100vw);
+      }
+
+      .item {
+
+        @include pc {
+          width: calc(100% / 2 - ((60 / 1280) * 100vw) * 1/2);
+          @include column(calc((10 / 1280) * 100vw));
+        }
+
+        @include sp {
+          width: 100%;
+          @include column(calc((10 / 390) * 100vw));
+        }
+
+        .text {
+          &.text-1 {
+            aspect-ratio: 349/23;
+            margin: 0 auto;
+            @include img('access_about_text-1.png');
+
+            @include pc {
+              width: 90%;
+            }
+
+            @include sp {
+              width: 100%;
+            }
+          }
+
+          &.text-2 {
+            aspect-ratio: 349/23;
+            margin: 0 auto;
+            @include img('access_about_text-2.png');
+
+            @include pc {
+              width: 90%;
+            }
+
+            @include sp {
+              width: 100%;
+            }
+          }
+        }
+
+        .img {
+          aspect-ratio: 460/300;
+          margin: 0 auto;
+          width: 100%;
+
+          &.img-1 {
+            @include img('access_about_img-1.png');
+            background-size: cover;
+          }
+
+          &.img-2 {
+            @include img('access_about_img-2.png');
+            background-size: cover;
+          }
+        }
+      }
+    }
+
+    &--address {
+
+      @include pc {
+        margin-top: calc((80 / 1280) * 100vw);
+        padding-bottom: calc((120 / 1280) * 100vw);
+      }
+
+      @include sp {
+        margin-top: calc((60 / 390) * 100vw);
+        padding-bottom: calc((100 / 390) * 100vw);
+      }
+
+      &--text {
+        text-align: center;
+
+        @include pc {
+          margin-bottom: calc((40 / 1280) * 100vw);
+        }
+
+        @include sp {
+          margin-bottom: calc((20 / 390) * 100vw);
+        }
+
+        h3 {
+          @include sans;
+          color: $mainColor;
+          font-weight: bold;
+
+          @include pc {
+            font-size: max(calc((15 / 1280) * 100vw), 11px);
+          }
+
+          @include sp {
+            font-size: calc((15 / 390) * 100vw);
+          }
+        }
+
+        p {
+          @include sans;
+          color: $mainColor;
+          font-weight: 300;
+
+          @include pc {
+            font-size: max(calc((15 / 1280) * 100vw), 11px);
+            margin-top: calc((6 / 1280) * 100vw);
+          }
+
+          @include sp {
+            font-size: calc((15 / 390) * 100vw);
+            margin-top: calc((6 / 390) * 100vw);
+          }
+        }
+      }
+
+      &--tel {
+        text-align: center;
+
+        @include pc {
+          margin-bottom: calc((80 / 1280) * 100vw);
+        }
+
+        @include sp {
+          margin-bottom: calc((60 / 390) * 100vw);
+        }
+
+        h3 {
+          @include sans;
+          color: $mainColor;
+          font-weight: bold;
+
+          @include pc {
+            font-size: max(calc((15 / 1280) * 100vw), 11px);
+          }
+
+          @include sp {
+            font-size: calc((15 / 390) * 100vw);
+          }
+        }
+
+        a {
+          display: block;
+          width: fit-content;
+          margin: 0 auto;
+          @include sans;
+          color: $darkGreen;
+          font-weight: bold;
+
+          @include pc {
+            margin-top: calc((16 / 1280) * 100vw);
+            font-size: max(calc((23 / 1280) * 100vw), 20px);
+          }
+
+
+          @include sp {
+            margin-top: calc((16 / 390) * 100vw);
+            font-size: calc((23 / 390) * 100vw);
+          }
+
+
+          span {
+            font-weight: bold;
+
+            @include pc {
+              font-size: max(calc((17 / 1280) * 100vw), 13px);
+            }
+
+            @include sp {
+              font-size: calc((17 / 390) * 100vw);
+            }
+          }
+        }
+
+        p {
+          @include sans;
+          color: $mainColor;
+          font-weight: 300;
+
+          @include pc {
+            font-size: max(calc((12 / 1280) * 100vw), 10px);
+            margin-top: calc((6 / 1280) * 100vw);
+          }
+
+          @include sp {
+            font-size: calc((12 / 390) * 100vw);
+            margin-top: calc((6 / 390) * 100vw);
+          }
+        }
+      }
+
+      &--table {
+
+        @include pc {
+          width: max(calc((787 / 1280) * 100vw), 700px);
+          margin: 0 auto;
+        }
+
+        @include sp {
+          width: 100%;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: unset;
+          text-indent: unset;
+          border-spacing: unset;
+
+          tbody {
+            tr {
+              td {
+                @include sans;
+                text-align: center;
+                vertical-align: middle;
+
+                @include pc {
+                  font-size: max(calc((14 / 1280) * 100vw), 10px);
+                }
+
+                @include sp {
+                  font-size: calc((14 / 390) * 100vw);
+                }
+
+                // td1つ目
+                &:first-child {
+                  width: 45%;
+                }
+              }
+
+              // tr1つ目
+              &:first-child {
+                td {
+                  background-color: $mainColor;
+                  color: #FFF;
+                  border-left: 1px solid #FFF;
+
+                  @include pc {
+                    padding: calc((10 / 1280) * 100vw) 0;
+                  }
+
+                  @include sp {
+                    padding: calc((10 / 390) * 100vw) 0;
+                  }
+
+                  &:first-child {
+                    border-left: none;
+                  }
+                }
+              }
+
+              // tr2つ目
+              &:nth-child(2) {
+                td {
+                  background-color: #FFF;
+                  color: $mainColor;
+                  border-left: 1px solid $mainColor;
+                  border-bottom: 1px solid $mainColor;
+
+                  @include pc {
+                    padding: calc((5 / 1280) * 100vw) 0;
+                  }
+
+                  @include sp {
+                    padding: calc((5 / 390) * 100vw) 0;
+                  }
+
+                  &:last-child {
+                    border-right: 1px solid $mainColor;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

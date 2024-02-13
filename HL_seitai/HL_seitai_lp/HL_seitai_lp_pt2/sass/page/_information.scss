@@ -1,0 +1,197 @@
+@use "../global" as *;
+
+
+.information {
+  margin: 0 auto;
+
+  @include pc {
+    padding: max(calc((288 / 1280) * 100vw), 288px) 0 0;
+    width: max(calc((792 / 1280) * 100vw), 704px);
+  }
+
+  @include sp {
+    padding: calc((59 / 390) * 100vw) calc((20 / 390) * 100vw) 0;
+    width: 100%;
+  }
+
+  .c__titles {
+    @include pc {
+      padding-left: max(calc((45 / 1280) * 100vw), 45px);
+    }
+
+    @include sp {
+      text-align: center;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: calc((70 / 390) * 100vw);
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: calc((1 / 390) * 100vw);
+        height: calc((40 / 390) * 100vw);
+        background: #008475;
+      }
+    }
+  }
+
+  &--content {
+    display: flex;
+
+    @include pc {
+      margin-top: max(calc((120 / 1280) * 100vw), 120px);
+      width: 100%;
+    }
+
+    @include sp {
+      flex-direction: column;
+      margin-top: calc((95 / 390) * 100vw);
+      width: 100%;
+    }
+
+    .info {
+      background: #F6F6F6;
+
+      @include pc {
+        width: 50%;
+        height: fit-content;
+        padding: calc((69 / 1280) * 100vw) 0 calc((69 / 1280) * 100vw) calc((50 / 1280) * 100vw);
+      }
+
+      @include sp {
+        width: 100%;
+        height: fit-content;
+        padding: calc((100 / 390) * 100vw) 0 calc((60 / 390) * 100vw);
+      }
+
+      .logo {
+        aspect-ratio: 250/53;
+        @include img('logo-flex.png');
+
+        @include pc {
+          width: max(calc((250 / 1280) * 100vw), 200px);
+          margin-bottom: calc((30 / 1280) * 100vw);
+        }
+
+        @include sp {
+          width: calc((210 / 390) * 100vw);
+          margin: 0 auto calc((20 / 390) * 100vw);
+        }
+      }
+
+      .address {
+
+        @include pc {
+          margin-bottom: calc((30 / 1280) * 100vw);
+        }
+
+        @include sp {
+          margin-bottom: calc((25 / 390) * 100vw);
+        }
+
+        p {
+          color: #000;
+          @include noto;
+
+          @include pc {
+            font-size: max(calc((14 / 1280) * 100vw), 14px);
+            letter-spacing: max(calc((0.084 / 1280) * 100vw), 0.084px);
+          }
+
+          @include sp {
+            text-align: center;
+            font-size: calc((14 / 390) * 100vw);
+            letter-spacing: calc((0.084 / 390) * 100vw);
+          }
+        }
+      }
+
+      .time {
+
+        @include pc {
+          margin-bottom: calc((30 / 1280) * 100vw);
+        }
+
+        @include sp {
+          margin-bottom: calc((25 / 390) * 100vw);
+        }
+
+        p {
+          color: #000;
+          @include noto;
+
+          @include pc {
+            font-size: max(calc((14 / 1280) * 100vw), 14px);
+            letter-spacing: max(calc((0.084 / 1280) * 100vw), 0.084px);
+          }
+
+          @include sp {
+            text-align: center;
+            font-size: calc((14 / 390) * 100vw);
+            letter-spacing: calc((0.084 / 390) * 100vw);
+          }
+        }
+      }
+
+      .point {
+
+        @include pc {
+          margin-bottom: calc((30 / 1280) * 100vw);
+        }
+
+        @include sp {
+          margin-bottom: calc((63 / 390) * 100vw);
+        }
+
+        p {
+          color: #000;
+          @include noto;
+
+          @include pc {
+            font-size: max(calc((14 / 1280) * 100vw), 14px);
+            letter-spacing: max(calc((0.084 / 1280) * 100vw), 0.084px);
+          }
+
+          @include sp {
+            text-align: center;
+            font-size: calc((14 / 390) * 100vw);
+            letter-spacing: calc((0.084 / 390) * 100vw);
+          }
+
+          &:first-child {
+            font-weight: 700;
+          }
+        }
+      }
+
+      .c__btn {
+        background: #F6F6F6;
+
+        @include sp {
+          margin: 0 auto;
+
+        }
+      }
+    }
+
+    .map {
+      aspect-ratio: 396/534;
+
+      @include pc {
+        width: 50%;
+        margin-top: max(calc((80 / 1280) * 100vw), 80px);
+      }
+
+      @include sp {
+        width: 100%;
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

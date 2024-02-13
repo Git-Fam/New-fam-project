@@ -1,0 +1,172 @@
+@use "../global" as *;
+
+
+.QA__aaa{
+  padding: 100px 0 100px;
+
+  @include sp{
+    padding: 100px calc(( 20 / 390) * 100vw) 100px;
+  }
+}
+
+
+.C_QA{
+  background: $subWite;
+  position: relative;
+
+  @include pc{
+    width: max(calc(( 938 / 1280) * 100vw), 700px);
+    margin: 0 auto;
+    padding: calc(( 73 / 1280) * 100vw) calc(( 50 / 1280) * 100vw) calc(( 50 / 1280) * 100vw);
+  }
+
+  @include sp{
+    width: 100%;
+    padding: calc(( 35 / 390) * 100vw) calc(( 10 / 390) * 100vw) calc(( 33 / 390) * 100vw);
+  }
+
+  &--title{
+    aspect-ratio: 239/186;
+    border-radius: 50%;
+    background: $subWite;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 1;
+
+    @include pc{
+      padding: calc(( 40 / 1280) * 100vw) 0 0;
+      width: max(calc(( 239 / 1280) * 100vw), 180px);
+      top: calc(( -70 / 1280) * 100vw);
+    }
+
+    @include sp{
+      padding: calc(( 30 / 390) * 100vw) 0 0;
+      width: calc(( 239 / 390) * 100vw);
+      top: calc(( -60 / 390) * 100vw);
+    }
+
+    p{
+      color: $mainColor;
+      text-align: center;
+      @include sans;
+      font-weight: 700;
+      line-height: 100%;
+      
+      @include pc{
+        font-size: max(calc(( 14 / 1280) * 100vw),10px);
+        letter-spacing: calc(( 0.7 / 1280) * 100vw);
+      }
+
+      @include sp{
+        font-size: calc(( 14 / 390) * 100vw);
+        letter-spacing: calc(( 1.12 / 390) * 100vw);
+      }
+    }
+  }
+
+  &--contents{
+    position: relative;
+    z-index: 2;
+
+    .item{
+
+      &--Q , &--A{
+        display: flex;
+        align-items: center;
+
+        @include pc{
+          gap: calc(( 40 / 1280) * 100vw);
+          padding: calc(( 20 / 1280) * 100vw) calc(( 40 / 1280) * 100vw) calc(( 20 / 1280) * 100vw) 0;
+        }
+
+        @include sp{
+          gap: calc(( 20 / 390) * 100vw);
+          padding: calc(( 15 / 390) * 100vw) calc(( 40 / 390) * 100vw) calc(( 15 / 390) * 100vw) 0;
+        }
+
+        p{
+          color: $darkGreen;
+          @include sans;
+          font-weight: 700;
+          line-height: 200%;
+          
+          @include pc{
+            font-size: max(calc(( 15 / 1280) * 100vw),11px);
+            letter-spacing: calc(( 0.75 / 1280) * 100vw);
+          }
+
+          @include sp{
+            font-size: calc(( 14 / 390) * 100vw);
+            letter-spacing: calc(( 0.7 / 390) * 100vw);
+          }
+
+          &:first-child{
+            @include quicksand;
+            letter-spacing: normal;
+            
+            @include pc{
+              font-size: max(calc(( 30 / 1280) * 100vw),20px);
+            }
+
+            @include sp{
+              font-size: calc(( 26 / 390) * 100vw);
+            }
+          }
+        }
+      }
+
+      &--Q{
+        border-bottom: 1px solid #D9D9D9;
+        position: relative;
+        cursor: pointer;
+
+        .cArrow{
+          aspect-ratio: 10/6;
+          height: fit-content;
+          background-image: cArrow(encode('#84B754'));
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+
+          @include pc{
+            width: max(calc(( 10 / 1280) * 100vw),8px);
+            right: calc(( 10 / 1280) * 100vw);
+          }
+
+          @include sp{
+            width: calc(( 10 / 390) * 100vw);
+            right: calc(( 10 / 390) * 100vw);
+          }
+
+          &.active{
+            transform: rotate(180deg);
+          }
+        }
+      }
+
+      &--A{
+        display: none;
+        padding-left: 0;
+        padding-right: 0;
+        
+        p{
+          color: $mainColor;
+          
+          @include sp{
+            font-weight: 300;
+          }
+        }
+        
+        &.active{
+          display: flex;
+        }
+      }
+    }
+  }
+}

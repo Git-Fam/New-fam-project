@@ -1,0 +1,242 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// voice PC
+.voice {
+  @include pc {
+    padding: calc((62 / 1280) * 100vw) 0 calc((100 / 1280) * 100vw);
+    @include img('voice-back.jpg');
+    background-size: cover;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(244, 242, 240, 0.45);
+      width: 100%;
+      height: 100%;
+    }
+
+    &--in {
+      position: relative;
+
+      .contents {
+        @include column(calc((43 / 1280) * 100vw));
+        width: max(calc((961 / 1280) * 100vw), 700px);
+        margin: calc((48 / 1280) * 100vw) auto 0;
+
+        .item {
+          width: 100%;
+          background: #FFF;
+          padding: calc((123 / 1280) * 100vw) calc((55 / 1280) * 100vw) calc((58 / 1280) * 100vw);
+          position: relative;
+          @include column(calc((44 / 1280) * 100vw));
+
+          &--title {
+            display: flex;
+            gap: calc((20 / 1280) * 100vw);
+            position: absolute;
+            top: 4%;
+            left: -2.5%;
+
+            .ribon {
+              padding: calc((4 / 1280) * 100vw) calc((180 / 1280) * 100vw) calc((27 / 1280) * 100vw) calc((70 / 1280) * 100vw);
+              background-image: $voiceTitle;
+              background-size: contain;
+              background-position: center;
+              background-repeat: no-repeat;
+
+              h2 {
+                color: #FFFDFA;
+                @include mincho;
+                font-size: max(calc((28 / 1280) * 100vw), 20px);
+                font-weight: 600;
+                line-height: 178%;
+              }
+            }
+
+            p {
+              color: #333;
+              @include mincho;
+              font-size: max(calc((12 / 1280) * 100vw), 10px);
+              font-weight: 600;
+              line-height: 416%;
+              letter-spacing: calc((1.2 / 1280) * 100vw);
+            }
+          }
+
+          &--text {
+            @include column(calc((13 / 1280) * 100vw));
+
+            .top {
+              border-radius: 10px;
+              border: calc((2 / 1280) * 100vw) solid #3F2F12;
+              width: fit-content;
+              padding: calc((15 / 1280) * 100vw) calc((25 / 1280) * 100vw);
+
+              h2 {
+                color: #3F2F12;
+                @include Helvetica;
+                font-size: max(calc((17 / 1280) * 100vw), 14px);
+                font-weight: 700;
+                line-height: 100%;
+              }
+            }
+
+            p {
+              color: #3F2F12;
+              @include Helvetica;
+              font-size: max(calc((13 / 1280) * 100vw), 10px);
+              font-weight: 400;
+              line-height: 176%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// voice SP
+.voice {
+  @include sp {
+    padding: calc((36 / 390) * 100vw) calc(( 23 / 390) * 100vw) calc((64 / 390) * 100vw);
+    @include img('voice-back.jpg');
+    background-size: cover;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(244, 242, 240, 0.45);
+      width: 100%;
+      height: 100%;
+    }
+
+    &--in {
+      position: relative;
+
+      .title {
+        width: fit-content;
+        margin: 0 auto;
+        position: relative;
+
+        p {
+          text-align: center;
+          color: #CBA67B;
+          @include georgia;
+          font-size: calc((15 / 390) * 100vw);
+          font-weight: 400;
+          line-height: 120%;
+        }
+
+        h2 {
+          color: #3F2F12;
+          @include mincho;
+          font-size: calc((19 / 390) * 100vw);
+          font-weight: 600;
+          line-height: 100%;
+        }
+
+        &::before,
+        &::after {
+          content: '';
+          display: block;
+          @include img('voice-title.png');
+          width: calc((60 / 390) * 100vw);
+          height: calc((30 / 390) * 100vw);
+          position: absolute;
+          bottom: 0;
+          left: -65%;
+          transform: scale(-1, 1);
+          mix-blend-mode: multiply;
+        }
+
+        &::after {
+          left: unset;
+          right: -65%;
+          transform: unset;
+        }
+      }
+
+      .contents {
+        @include column(calc((43 / 390) * 100vw));
+        width: 100%;
+        margin: calc((25 / 390) * 100vw) auto 0;
+
+        .item {
+          width: 100%;
+          background: #FFF;
+          padding: calc((157 / 390) * 100vw) calc((40 / 390) * 100vw) calc(( 41 / 390) * 100vw) calc((29 / 390) * 100vw);
+          position: relative;
+          @include column(calc((44 / 390) * 100vw));
+
+          &--title {
+            position: absolute;
+            top: 3%;
+            left: -4.5%;
+
+            .ribon {
+              padding: calc((1 / 390) * 100vw) calc((0 / 390) * 100vw) calc((15 / 390) * 100vw) calc((47 / 390) * 100vw);
+              width: calc((360 / 390) * 100vw);
+              background-image: $voiceTitle;
+              background-size: contain;
+              background-position: center;
+              background-repeat: no-repeat;
+
+              h2 {
+                color: #FFFDFA;
+                @include mincho;
+                font-size: calc((17 / 390) * 100vw);
+                font-weight: 600;
+                line-height: 294%;
+              }
+            }
+
+            p {
+              color: #333;
+              @include mincho;
+              font-size: calc((12 / 390) * 100vw);
+              font-weight: 600;
+              line-height: 100%;
+              letter-spacing: calc((1.2 / 390) * 100vw);
+              padding-left: calc(( 49 / 390) * 100vw)
+            }
+          }
+
+          &--text {
+            @include column(calc((11 / 390) * 100vw));
+
+            .top {
+              border-radius: 10px;
+              border: calc((2 / 390) * 100vw) solid #3F2F12;
+              width: fit-content;
+              padding: calc((13 / 390) * 100vw) calc((13 / 390) * 100vw);
+
+              h2 {
+                color: #3F2F12;
+                @include Helvetica;
+                font-size: calc((15 / 390) * 100vw);
+                font-weight: 700;
+                line-height: 100%;
+              }
+            }
+
+            p {
+              color: #3F2F12;
+              @include Helvetica;
+              font-size: calc((13 / 390) * 100vw);
+              font-weight: 400;
+              line-height: 161%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

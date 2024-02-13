@@ -1,0 +1,52 @@
+@use "../global" as *;
+
+.C-btn {
+  border-radius: 5px;
+  background: #84B754;
+  @include center;
+  width: fit-content;
+
+  @include pc {
+    padding: calc((11 / 1280) * 100vw) calc((32 / 1280) * 100vw);
+    gap: calc((14 / 1280) * 100vw);
+  }
+
+  @include sp {
+    padding: calc((11 / 390) * 100vw) calc((32 / 390) * 100vw);
+    gap: calc((14 / 390) * 100vw);
+  }
+
+  p {
+    color: #FFF;
+    @include sans;
+    line-height: 107%;
+    font-weight: 500;
+
+    @include pc {
+      font-size: max(calc((13 / 1280) * 100vw), 10px);
+      letter-spacing: calc((0.39 / 1280) * 100vw);
+    }
+
+    @include sp {
+      font-size: calc((13 / 390) * 100vw);
+      letter-spacing: calc((0.39 / 390) * 100vw);
+    }
+  }
+
+  span {
+    background-image: CMore(encode('#EBEAEA'));
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    aspect-ratio: 5/9;
+    display: block;
+
+    @include pc {
+      width: max(calc((5 / 1280) * 100vw), 5px);
+    }
+
+    @include sp {
+      width: calc((5 / 390) * 100vw);
+    }
+  }
+}

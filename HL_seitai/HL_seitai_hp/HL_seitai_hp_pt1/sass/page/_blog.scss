@@ -1,0 +1,315 @@
+@use "../global" as *;
+
+
+.blog--wapper {
+
+  .blog--blog{
+
+    @include pc{
+      padding: calc(( 150 / 1280) * 100vw) 0 calc(( 166 / 1280) * 100vw);
+    }
+
+    @include sp{
+      padding: calc(( 100 / 390) * 100vw) calc(( 20 / 390) * 100vw) calc(( 100 / 390) * 100vw);
+    }
+
+    &--inner{
+      display: flex;
+      flex-wrap: wrap;
+
+      @include pc{
+        width: max(calc(( 933 / 1280) * 100vw),700px);
+        margin: 0 auto;
+        gap: calc(( 40 / 1280) * 100vw) calc(( 36 / 1280) * 100vw);
+      }
+
+      @include sp{
+        width: 100%;
+        gap: calc(( 30 / 390) * 100vw) calc(( 15 / 390) * 100vw);
+      }
+
+      .blog--item{
+
+        @include pc{
+          width: calc(100% / 3 - calc(calc(( 36 / 1280) * 100vw) * 2 / 3));
+        }
+
+        @include sp{
+          width: calc(100% / 2 - calc(calc(( 15 / 390) * 100vw) * 1 / 2));
+        }
+
+        &:first-child{
+          display: flex;
+
+          @include pc{
+            width: 100%;
+            gap: calc(( 25 / 1280) * 100vw);
+            margin-bottom: calc(( 25 / 1280) * 100vw);
+          }
+
+          @include sp{
+            flex-direction: column;
+            width: 100%;
+            gap: calc(( 15 / 390) * 100vw);
+            margin-bottom: calc(( 15 / 390) * 100vw);
+          }
+
+          .blog--thumbnail{
+            position: relative;
+
+            @include pc{
+              width: calc(100% / 2 - calc(calc(( 25 / 1280) * 100vw) / 2));
+              flex-shrink: 0;
+            }
+
+            @include sp{
+              width: 100%;
+            }
+
+            .blog--new{
+              
+              @include pc{
+                display: none;
+              }
+              
+              @include sp{
+                color: $darkGreen;
+                @include quicksand;
+                font-weight: 700;
+                line-height: 100%;
+                font-size: calc(( 30 / 390) * 100vw);
+                letter-spacing: calc(( 1.5 / 390) * 100vw);
+                display: block;
+                position: absolute;
+                top: calc(( -15 / 390) * 100vw);
+                right: calc(( -10 / 390) * 100vw);
+              }
+            }
+
+            &::before{
+              content: '';
+              display: block;
+              aspect-ratio: 1;
+              position: absolute;
+              z-index: 1;
+              transform: rotate(-45deg);
+              background-color: #FFF;
+              
+              @include pc{
+                width: calc(( 60 / 1280) * 100vw);
+                border-bottom: calc(( 2 / 1280) * 100vw) solid $darkGreen;
+                top: -12%;
+                left: -9%;
+              }
+
+              @include sp{
+                width: calc(( 60 / 390) * 100vw);
+                border-bottom: calc(( 2 / 390) * 100vw) solid $darkGreen;
+                top: -15%;
+                left: -10%;
+              }
+            }
+
+            &::after{
+              content: '';
+              display: block;
+              aspect-ratio: 1;
+              position: absolute;
+              z-index: 1;
+              transform: rotate(-45deg);
+              background-color: #FFF;
+              
+              @include pc{
+                width: calc(( 60 / 1280) * 100vw);
+                border-top: calc(( 2 / 1280) * 100vw) solid $darkGreen;
+                bottom: -12%;
+                right: -8%;
+              }
+
+              @include sp{
+                width: calc(( 60 / 390) * 100vw);
+                border-top: calc(( 2 / 390) * 100vw) solid $darkGreen;
+                bottom: -15%;
+                right: -10%;
+              }
+            }
+          }
+  
+          .blog--content{
+
+            @include pc{
+              @include column( calc(( 35 / 1280) * 100vw) );
+              padding-top: calc(( 25 / 1280) * 100vw);
+            }
+  
+            @include sp{
+              @include column( calc(( 10 / 390) * 100vw) );
+              padding-top: calc(( 15 / 390) * 100vw);
+            }
+  
+            .blog--new{
+              color: $darkGreen;
+              @include quicksand;
+              font-weight: 700;
+              line-height: 100%;
+              display: block;
+  
+              @include pc{
+                font-size: max(calc(( 36 / 1280) * 100vw),30px);
+                letter-spacing: calc(( 1.8 / 1280) * 100vw);
+              }
+  
+              @include sp{
+                font-size: calc(( 30 / 390) * 100vw);
+                letter-spacing: calc(( 1.5 / 390) * 100vw);
+                display: none;
+              }
+            }
+
+            .blog--time{
+              padding: unset;
+    
+              @include pc{
+                font-size: max(calc(( 17 / 1280) * 100vw),14px);
+              }
+    
+              @include sp{
+                font-size: calc(( 17 / 390) * 100vw);
+              }
+            }
+    
+            .blog--title{
+              -webkit-line-clamp: 3;
+              padding: unset;
+    
+              @include pc{
+                font-size: max(calc(( 20 / 1280) * 100vw),16px);
+              }
+    
+              @include sp{
+                font-size: calc(( 20 / 390) * 100vw);
+              }
+            }
+          }
+        }
+
+        .blog--thumbnail{
+          // @include img('thumbnail.png');
+          background-size: cover;
+          background-position: center;
+          aspect-ratio: 285/185;
+          height: fit-content;
+          width: 100%;
+
+          .blog--new{
+            display: none;
+          }
+        }
+
+        .blog--content{
+
+          .blog--new{
+            display: none;
+          }
+
+          .blog--time{
+            color: $mainColor;
+            @include sans;
+            font-weight: 500;
+            line-height: 100%;
+  
+            @include pc{
+              font-size: max(calc(( 13 / 1280) * 100vw),10px);
+              letter-spacing: calc(( 0.52 / 1280) * 100vw);
+              padding: calc(( 15 / 1280) * 100vw) calc(( 20 / 1280) * 100vw);
+            }
+  
+            @include sp{
+              font-size: calc(( 13 / 390) * 100vw);
+              letter-spacing: calc(( 0.52 / 390) * 100vw);
+              padding: calc(( 15 / 390) * 100vw) 0;
+            }
+          }
+  
+          .blog--title{
+            color: $mainColor;
+            @include sans;
+            font-weight: 700;
+            line-height: 130%;
+            text-decoration-line: underline;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+  
+            @include pc{
+              font-size: max(calc(( 14 / 1280) * 100vw),10px);
+              letter-spacing: calc(( 2.66 / 1280) * 100vw);
+              padding: 0 1rem;
+            }
+  
+            @include sp{
+              font-size: calc(( 14 / 390) * 100vw);
+              letter-spacing: calc(( 1.4 / 390) * 100vw);
+            }
+          }
+        }
+      }
+    }
+
+    .page--nation{
+      margin: 0 auto 0;
+      width: fit-content;
+      
+      @include pc{
+        margin-top: calc(( 130 / 1280) * 100vw);
+      }
+
+      @include sp{
+        margin-top: calc(( 50 / 390) * 100vw);
+      }
+
+      .wp-pagenavi{
+        display: flex;
+
+        @include pc{
+          gap: calc(( 5 / 1280) * 100vw);
+        }
+
+        @include sp{
+          gap: calc(( 5 / 390) * 100vw);
+        }
+
+        a , span{
+          display: block;
+          margin: 0;
+          padding: 0;
+          @include center;
+          aspect-ratio: 1;
+          border-radius: 5px;
+          @include sans;
+          line-height: 100%;
+          border: calc(( 1 / 1280) * 100vw) solid $mainColor;
+          color: $mainColor;
+
+          @include pc{
+            font-size: max(calc(( 15 / 1280) * 100vw),10px);
+            width: max(calc(( 40 / 1280) * 100vw),30px);
+          }
+
+          @include sp{
+            font-size: calc(( 15 / 390) * 100vw);
+            width: calc(( 40 / 390) * 100vw);
+          }
+        }
+
+        span{
+          @include sans;
+          color: #FFF;
+          background-color: $darkGreen;
+          border-color: $darkGreen;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,176 @@
+@use "../global" as *;
+
+.fv {
+  background: #FBD5D0;
+  position: relative;
+
+  @include pc {
+    height: calc((534 / 1280) * 100vw);
+  }
+
+  @include sp {
+    height: calc((213 / 375) * 100vw);
+  }
+
+  &--text {
+    position: absolute;
+    z-index: 99;
+
+    @include pc {
+      top: calc((193 / 1280) * 100vw);
+      left: calc((216 / 1280) * 100vw);
+    }
+
+    @include sp {
+      top: calc((73 / 375) * 100vw);
+      left: calc((28 / 375) * 100vw);
+    }
+
+    h2 {
+      -webkit-writing-mode: vertical-rl;
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+      color: $cFontText;
+      @include hina;
+      font-weight: 300;
+      line-height: 80%;
+      position: relative;
+
+      @include pc {
+        -webkit-text-stroke: calc((4 / 1280) * 100vw) #FFF;
+        font-size: calc((35 / 1280) * 100vw);
+      }
+
+      @include sp {
+        -webkit-text-stroke: calc((4 / 375) * 100vw) #FFF;
+        font-size: calc((14 / 375) * 100vw);
+      }
+
+      &::before {
+        content: attr(data-text);
+        -webkit-text-stroke: 0;
+        position: absolute;
+        inset: 0 auto auto 0;
+        -webkit-text-emphasis: '・';
+        text-emphasis: '・' transparent;
+      }
+
+      span {
+        color: $cFontTitle;
+        @include hina;
+        font-weight: 300;
+        position: relative;
+
+        &::before {
+          content: attr(data-text);
+          -webkit-text-stroke: 0;
+          position: absolute;
+          inset: 0 auto auto 0;
+          -webkit-text-emphasis: '・';
+          text-emphasis: '・'$cFontTitle;
+        }
+      }
+    }
+  }
+
+  &--img {
+
+    &--deco {
+      position: absolute;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      z-index: 50;
+      background-size: cover !important;
+
+      &:nth-child(1) {
+        @include img('header-circle-1.png');
+
+        @include pc {
+          width: calc((269 / 1280) * 100vw);
+          top: calc((120 / 1280) * 100vw);
+          left: calc((-210 / 1280) * 100vw);
+        }
+
+        @include sp {
+          display: none;
+        }
+      }
+
+      &:nth-child(2) {
+        @include img('header-circle-2.png');
+
+        @include pc {
+          width: calc((175 / 1280) * 100vw);
+          bottom: calc((-61 / 1280) * 100vw);
+          left: calc((-90 / 1280) * 100vw);
+        }
+
+        @include sp {
+          display: none;
+        }
+      }
+
+      &:nth-child(3) {
+        @include img('header-circle-3.jpg');
+
+        @include pc {
+          width: calc((520 / 1280) * 100vw);
+          top: calc((83 / 1280) * 100vw);
+          left: calc((118 / 1280) * 100vw);
+        }
+
+        @include sp {
+          width: calc((207 / 375) * 100vw);
+          top: calc((32 / 375) * 100vw);
+          left: calc((-16 / 375) * 100vw);
+        }
+      }
+
+      &:nth-child(4) {
+        @include img('header-circle-4.jpg');
+
+        @include pc {
+          width: calc((266 / 1280) * 100vw);
+          top: calc((185 / 1280) * 100vw);
+          right: calc((343 / 1280) * 100vw);
+        }
+
+        @include sp {
+          width: calc((105 / 375) * 100vw);
+          top: calc((72 / 375) * 100vw);
+          right: calc((80 / 375) * 100vw);
+        }
+      }
+
+      &:nth-child(5) {
+        @include img('header-circle-5.png');
+
+        @include pc {
+          width: calc((209 / 1280) * 100vw);
+          bottom: calc((-20 / 1280) * 100vw);
+          right: calc((120 / 1280) * 100vw);
+        }
+
+        @include sp {
+          width: calc((84 / 375) * 100vw);
+          bottom: calc((-5 / 375) * 100vw);
+          right: calc((-8 / 375) * 100vw);
+        }
+      }
+
+      &:nth-child(6) {
+        @include img('header-circle-6.png');
+
+        @include pc {
+          width: calc((373 / 1280) * 100vw);
+          top: calc((79 / 1280) * 100vw);
+          right: calc((-239 / 1280) * 100vw);
+        }
+
+        @include sp {
+          display: none;
+        }
+      }
+    }
+  }
+}

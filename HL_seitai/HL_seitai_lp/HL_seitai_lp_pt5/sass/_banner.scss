@@ -1,0 +1,327 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// banner PC
+.banner {
+  @include pc {
+    padding: calc((32 / 1280) * 100vw) 0 calc((31 / 1280) * 100vw);
+    background: #FDF2D7;
+
+    &--body {
+      width: calc((921 / 1280) * 100vw);
+      height: calc((155 / 1280) * 100vw);
+      margin: 0 auto;
+      background-image: url('/img/banner.png');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+// banner SPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSP
+.banner {
+  @include sp {
+    padding: calc((23 / 390) * 100vw) calc((22 / 390) * 100vw);
+    background: #FDF2D7;
+
+    &--body {
+      width: calc((346 / 390) * 100vw);
+      height: calc((58 / 390) * 100vw);
+      margin: 0 auto;
+      background-image: url('/img/banner.png');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+
+
+
+
+
+// // banner PC
+// .banner {
+//   @include pc {
+//     padding: calc((32 / 1280) * 100vw) 0 calc((31 / 1280) * 100vw);
+//     background: #FDF2D7;
+
+//     &--body {
+//       width: calc((921 / 1280) * 100vw);
+//       margin: 0 auto;
+//       background-image: url('/img/banner.jpg');
+//       background-size: contain;
+//       background-position: center;
+//       background-repeat: no-repeat;
+//       padding: calc((15 / 1280) * 100vw) 0 calc((10 / 1280) * 100vw);
+
+//       .title {
+//         width: fit-content;
+//         margin: 0 auto calc((15 / 1280) * 100vw);
+//         display: flex;
+//         align-items: center;
+//         gap: calc((3 / 1280) * 100vw);
+
+//         div {
+//           width: calc((28 / 1280) * 100vw);
+//           height: calc((2 / 1280) * 100vw);
+//           background: #ffffff;
+//           transform: rotate(45deg);
+//           margin-top: 3%;
+
+//           &:nth-of-type(2) {
+//             transform: rotate(-45deg);
+//           }
+//         }
+
+//         h2 {
+//           @include Helvetica;
+//           font-size: calc((22 / 1280) * 100vw);
+//           font-weight: 600;
+//           color: #ffffff;
+
+//         }
+//       }
+
+//       .contents {
+//         display: flex;
+//         align-items: center;
+//         justify-content: center;
+//         gap: calc((15 / 1280) * 100vw);
+
+//         .box {
+//           text-align: center;
+
+//           h2 {
+//             @include Helvetica;
+//             font-size: calc((14 / 1280) * 100vw);
+//             line-height: 120%;
+//             color: #FFF;
+//             border: 1px solid #FFF;
+//             padding: calc((5 / 1280) * 100vw) calc((12 / 1280) * 100vw);
+//           }
+//         }
+
+//         .price {
+//           text-align: center;
+
+//           h2 {
+//             @include Helvetica;
+//             font-size: calc((25 / 1280) * 100vw);
+//             line-height: 120%;
+//             color: #FFF;
+//             letter-spacing: calc((1 / 1280) * 100vw);
+//             position: relative;
+
+//             &::before {
+//               content: '';
+//               position: absolute;
+//               width: 100%;
+//               height: calc((3 / 1280) * 100vw);
+//               background: #e40203;
+//               top: 60%;
+//               left: 50%;
+//               transform: translate(-50%, -50%) rotate(8deg);
+
+//             }
+//           }
+
+//           p {
+//             @include Helvetica;
+//             font-size: calc((12 / 1280) * 100vw);
+//             line-height: 120%;
+//             font-weight: bold;
+//             color: #FFF;
+//             margin-top: calc((1 / 1280) * 100vw);
+//           }
+//         }
+
+//         .to {
+//           display: flex;
+//           align-items: center;
+
+//           div {
+//             border: calc((10 / 1280) * 100vw) solid transparent;
+//             border-left: calc((10 / 1280) * 100vw) solid #fdf601;
+//             margin-right: calc((-3 / 1280) * 100vw);
+//           }
+//         }
+
+//         .free {
+//           h2 {
+//             @include Helvetica;
+//             font-size: calc((25 / 1280) * 100vw);
+//             line-height: 100%;
+//             font-weight: bold;
+//             color: #FFF;
+
+//             span {
+//               @include Helvetica;
+//               font-size: calc((50 / 1280) * 100vw);
+//               line-height: 100%;
+//               font-weight: bold;
+//               color: #fdf601;
+//               margin-right: calc((5 / 1280) * 100vw);
+//             }
+//           }
+//         }
+//       }
+
+//       .note {
+//         margin-top: calc((15 / 1280) * 100vw);
+//         padding: 0 calc((100 / 1280) * 100vw);
+
+//         p {
+//           text-align: right;
+//           @include Helvetica;
+//           font-size: calc((10 / 1280) * 100vw);
+//           color: #FFF;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// // banner SPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSP
+// .banner {
+//   @include sp {
+//     padding: calc((23 / 390) * 100vw) calc((22 / 390) * 100vw);
+//     background: #FDF2D7;
+
+//     &--body {
+//       width: calc((346 / 390) * 100vw);
+//       margin: 0 auto;
+//       background-image: url('/img/banner.jpg');
+//       background-size: contain;
+//       background-position: center;
+//       background-repeat: no-repeat;
+//       padding: calc((15 / 390) * 100vw) 0 calc((10 / 390) * 100vw);
+
+//       .title {
+//         width: fit-content;
+//         margin: 0 auto calc((15 / 390) * 100vw);
+//         display: flex;
+//         align-items: center;
+//         gap: calc((3 / 390) * 100vw);
+
+//         div {
+//           width: calc((18 / 390) * 100vw);
+//           height: calc((2 / 390) * 100vw);
+//           background: #ffffff;
+//           transform: rotate(45deg);
+//           margin-top: 3%;
+
+//           &:nth-of-type(2) {
+//             transform: rotate(-45deg);
+//           }
+//         }
+
+//         h2 {
+//           @include Helvetica;
+//           font-size: calc((22 / 390) * 100vw);
+//           font-weight: 600;
+//           color: #ffffff;
+
+//         }
+//       }
+
+//       .contents {
+//         display: flex;
+//         align-items: center;
+//         justify-content: center;
+//         gap: calc((15 / 390) * 100vw);
+
+//         .box {
+//           text-align: center;
+
+//           h2 {
+//             @include Helvetica;
+//             font-size: calc((14 / 390) * 100vw);
+//             line-height: 120%;
+//             color: #FFF;
+//             border: 1px solid #FFF;
+//             padding: calc((5 / 390) * 100vw) calc((12 / 390) * 100vw);
+//           }
+//         }
+
+//         .price {
+//           text-align: center;
+
+//           h2 {
+//             @include Helvetica;
+//             font-size: calc((25 / 390) * 100vw);
+//             line-height: 120%;
+//             color: #FFF;
+//             letter-spacing: calc((1 / 390) * 100vw);
+//             position: relative;
+
+//             &::before {
+//               content: '';
+//               position: absolute;
+//               width: 100%;
+//               height: calc((3 / 390) * 100vw);
+//               background: #e40203;
+//               top: 60%;
+//               left: 50%;
+//               transform: translate(-50%, -50%) rotate(8deg);
+
+//             }
+//           }
+
+//           p {
+//             @include Helvetica;
+//             font-size: calc((12 / 390) * 100vw);
+//             line-height: 120%;
+//             font-weight: bold;
+//             color: #FFF;
+//             margin-top: calc((1 / 390) * 100vw);
+//           }
+//         }
+
+//         .to {
+//           display: flex;
+//           align-items: center;
+
+//           div {
+//             border: calc((10 / 390) * 100vw) solid transparent;
+//             border-left: calc((10 / 390) * 100vw) solid #fdf601;
+//             margin-right: calc((-3 / 390) * 100vw);
+//           }
+//         }
+
+//         .free {
+//           h2 {
+//             @include Helvetica;
+//             font-size: calc((25 / 390) * 100vw);
+//             line-height: 100%;
+//             font-weight: bold;
+//             color: #FFF;
+
+//             span {
+//               @include Helvetica;
+//               font-size: calc((50 / 390) * 100vw);
+//               line-height: 100%;
+//               font-weight: bold;
+//               color: #fdf601;
+//               margin-right: calc((5 / 390) * 100vw);
+//             }
+//           }
+//         }
+//       }
+
+//       .note {
+//         margin-top: calc((15 / 390) * 100vw);
+//         padding: 0 calc((100 / 390) * 100vw);
+
+//         p {
+//           text-align: right;
+//           @include Helvetica;
+//           font-size: calc((10 / 390) * 100vw);
+//           color: #FFF;
+//         }
+//       }
+//     }
+//   }
+// }

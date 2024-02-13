@@ -1,0 +1,278 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// staff PC
+.staff {
+  @include pc {
+    padding: calc((117 / 1280) * 100vw) 0 0;
+
+    .contents {
+      margin: calc((115 / 1280) * 100vw) auto 0;
+      width: max(calc((1000 / 1280) * 100vw), 700px);
+
+      .item {
+        display: flex;
+        align-items: center;
+        gap: calc((58 / 1280) * 100vw);
+
+        &:nth-child(even) {
+          flex-direction: row-reverse;
+
+          .img {
+            &::before {
+              transform: translateY(-50%) rotate(180deg);
+              right: unset;
+              left: -1%;
+            }
+          }
+        }
+
+        // 1つ目の画像
+        &:nth-child(1) {
+          .img {
+            @include img('staff-1.jpg');
+            background-size: cover;
+          }
+        }
+
+        // 2つ目の画像
+        &:nth-child(2) {
+          .img {
+            @include img('staff-2.jpg');
+            background-size: cover;
+          }
+        }
+
+        // 3つ目の画像
+        &:nth-child(3) {
+          .img {
+            @include img('staff-3.jpg');
+            background-size: cover;
+          }
+        }
+
+        // 4つ目の画像
+        &:nth-child(4) {
+          .img {
+            @include img('staff-4.jpg');
+            background-size: cover;
+          }
+        }
+
+        // 5つ目の画像
+        &:nth-child(5) {
+          .img {
+            @include img('staff-5.jpg');
+            background-size: cover;
+          }
+        }
+
+        // 6つ目の画像
+        &:nth-child(6) {
+          .img {
+            @include img('staff-6.jpg');
+            background-size: cover;
+          }
+        }
+
+        // 7つ目の画像
+        &:nth-child(7) {
+          .img {
+            @include img('staff-7.jpg');
+            background-size: cover;
+          }
+        }
+
+        // 8つ目の画像
+        &:nth-child(8) {
+          .img {
+            @include img('staff-8.jpg');
+            background-size: cover;
+          }
+        }
+
+        .img {
+          width: 50%;
+          aspect-ratio: 501/360;
+          flex-shrink: 0;
+          position: relative;
+
+          &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: -1%;
+            width: calc((39 / 1280) * 100vw);
+            height: calc((67 / 1280) * 100vw);
+            background-image: $triangle;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+          }
+        }
+
+        .text {
+          width: 100%;
+
+          h2 {
+            color: #444;
+            @include Lato;
+            font-size: max(calc((21 / 1280) * 100vw), 16px);
+            font-weight: 700;
+            line-height: 100%;
+            letter-spacing: calc((0.42 / 1280) * 100vw);
+            padding-bottom: calc((12 / 1280) * 100vw);
+            margin-bottom: calc((12 / 1280) * 100vw);
+            border-bottom: calc((0.5 / 1280) * 100vw) solid #C6C6C6;
+          }
+
+          p {
+            color: #444;
+            @include Hinagino;
+            font-size: max(calc((12 / 1280) * 100vw), 10px);
+            font-weight: 300;
+            line-height: 250%;
+            letter-spacing: calc((0.24 / 1280) * 100vw);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+// staff SP
+.staff {
+  @include sp {
+    padding: calc((43 / 390) * 100vw) 0 0;
+
+    .contents {
+      margin: calc((57 / 390) * 100vw) auto 0;
+      width: 100%;
+
+      .item {
+
+        // 1つ目の画像
+        &:nth-child(1) {
+          .img {
+            @include img('staff-1.jpg');
+            background-size: cover;
+          }
+        }
+
+        // 2つ目の画像
+        &:nth-child(2) {
+          .img {
+            @include img('staff-2.jpg');
+            background-size: cover;
+          }
+        }
+
+        // 3つ目の画像
+        &:nth-child(3) {
+          .img {
+            @include img('staff-3.jpg');
+            background-size: cover;
+          }
+        }
+
+        // 4つ目の画像
+        &:nth-child(4) {
+          .img {
+            @include img('staff-4.jpg');
+            background-size: cover;
+          }
+        }
+
+        // 5つ目の画像
+        &:nth-child(5) {
+          .img {
+            @include img('staff-5.jpg');
+            background-size: cover;
+          }
+        }
+
+        // 6つ目の画像
+        &:nth-child(6) {
+          .img {
+            @include img('staff-6.jpg');
+            background-size: cover;
+          }
+        }
+
+        // 7つ目の画像
+        &:nth-child(7) {
+          .img {
+            @include img('staff-7.jpg');
+            background-size: cover;
+          }
+        }
+
+        // 8つ目の画像
+        &:nth-child(8) {
+          .img {
+            @include img('staff-8.jpg');
+            background-size: cover;
+          }
+        }
+
+        &:last-child {
+          .text{
+            padding-bottom: 0;
+          }
+        }
+
+        .img {
+          width: 100%;
+          aspect-ratio: 390/262;
+          flex-shrink: 0;
+          position: relative;
+
+          &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%) rotate(90deg);
+            bottom: -6%;
+            width: calc((32 / 390) * 100vw);
+            height: calc((51 / 390) * 100vw);
+            background-image: $triangle;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+          }
+        }
+
+        .text {
+          width: 100%;
+          padding: calc((34 / 390) * 100vw) calc(( 32 / 390) * 100vw);
+
+          h2 {
+            color: #444;
+            @include Lato;
+            font-size: calc((21 / 390) * 100vw);
+            font-weight: 700;
+            line-height: 100%;
+            letter-spacing: calc((0.42 / 390) * 100vw);
+            padding-bottom: calc((12 / 390) * 100vw);
+            margin-bottom: calc((12 / 390) * 100vw);
+            border-bottom: calc((0.5 / 390) * 100vw) solid #C6C6C6;
+          }
+
+          p {
+            color: #444;
+            @include Hinagino;
+            font-size: calc((12 / 390) * 100vw);
+            font-weight: 300;
+            line-height: 250%;
+            letter-spacing: calc((0.24 / 390) * 100vw);
+          }
+        }
+      }
+    }
+  }
+}

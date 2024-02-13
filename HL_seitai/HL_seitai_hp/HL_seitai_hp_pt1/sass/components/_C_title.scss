@@ -1,0 +1,62 @@
+@use "../global" as *;
+
+.C-title{
+  text-align: center;
+
+  h2{
+    color: $mainColor;
+    @include quicksand;
+    font-weight: 500;
+    line-height: 70%;
+    position: relative;
+    
+    @include pc{
+      font-size: max(calc(( 20 / 1280) * 100vw),18px);
+      letter-spacing: calc(( 2 / 1280) * 100vw);
+      padding-bottom: calc(( 15 / 1280) * 100vw);
+    }
+
+    @include sp{
+      font-size: calc(( 18 / 390) * 100vw);
+      letter-spacing: calc(( 2.2 / 390) * 100vw);
+      padding-bottom: calc(( 15 / 390) * 100vw);
+    }
+
+    &:before{
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: $mainColor;
+
+      @include pc{
+        width: max(calc(( 70 / 1280) * 100vw),60px);
+        height: calc(( 2 / 1280) * 100vw);
+      }
+
+      @include sp{
+        width: calc(( 70 / 390) * 100vw);
+        height: calc(( 2 / 390) * 100vw);
+      }
+    }
+  }
+
+  &.C-title--white{
+    h2{
+      color: $White;
+  
+      &:before{
+        background-color: $White;
+      }
+    }
+
+  }
+
+  &.C-title--JP{
+    h2{
+      @include sans;
+      line-height: 70%;
+    }
+  }
+}

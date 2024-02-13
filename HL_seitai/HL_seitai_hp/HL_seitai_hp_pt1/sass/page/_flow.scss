@@ -1,0 +1,201 @@
+@use "../global" as *;
+
+// flow
+.flow--wapper {
+
+
+  // floe--fee
+  .flow--fee{
+
+    @include pc{
+      padding: calc(( 160 / 1280) * 100vw) 0 calc(( 38 / 1280) * 100vw);
+    }
+
+    @include sp{
+      padding: calc(( 154 / 390) * 100vw) calc(( 20 / 390) * 100vw) calc(( 30 / 390) * 100vw);
+    }
+
+    &--contents{
+      border: 1px dashed $mainColor;
+      position: relative;
+
+      @include pc{
+        margin: calc(( 40 / 1280) * 100vw) auto 0;
+        width: max(calc(( 500 / 1280) * 100vw),500px);
+        padding: max(calc(( 36 / 1280) * 100vw),36px) 0 ;
+      }
+
+      @include sp{
+        margin: calc(( 46 / 390) * 100vw) auto 0;
+        width: 100%;
+        padding: calc(( 24 / 390) * 100vw) 0 ;
+      }
+
+      p{
+        color: $mainColor;
+        text-align: center;
+        @include serif;
+        font-weight: 600;
+        line-height: 150%;
+        
+        @include pc{
+          font-size: max(calc(( 24 / 1280) * 100vw),24px);
+          letter-spacing: calc(( 0.96 / 1280) * 100vw);
+        }
+
+        @include sp{
+          font-size: calc(( 24 / 390) * 100vw);
+          letter-spacing: calc(( 1.92 / 390) * 100vw);
+        }
+      }
+
+      span{
+        color: $mainColor;
+        text-align: center;
+        @include sans;
+        font-weight: 300;
+        line-height: 200%;
+        display: block;
+        
+        @include pc{
+          font-size: max(calc(( 14 / 1280) * 100vw),14px);
+          letter-spacing: calc(( 0.98 / 1280) * 100vw);
+        }
+
+        @include sp{
+          font-size: calc(( 14 / 390) * 100vw);
+          letter-spacing: calc(( 0.98 / 390) * 100vw);
+        }
+      }
+
+      .campaign--tag{
+        display: block;
+        aspect-ratio: 1/1;
+        height: fit-content;
+        @include img("campaign.png");
+        position: absolute;
+
+        @include pc{
+          width: max(calc(( 135 / 1280) * 100vw),135px);
+          top: min(calc(( -56 / 1280) * 100vw),-56px);
+          right: min(calc(( -71 / 1280) * 100vw),-71px);
+        }
+
+        @include sp{
+          width: calc(( 84 / 390) * 100vw);
+          top: calc(( -54 / 390) * 100vw);
+          right: calc(( -9 / 390) * 100vw);
+        }
+      }
+    }
+  }
+
+
+  // flow--m_flow
+  .flow--m_flow{
+
+    @include pc{
+      padding: calc(( 38 / 1280) * 100vw) 0 calc(( 108 / 1280) * 100vw);
+    }
+
+    @include sp{
+      padding: calc(( 30 / 390) * 100vw) calc(( 20 / 390) * 100vw) calc(( 87 / 390) * 100vw);
+    }
+
+    &--M{
+
+      @include pc{
+        margin: calc(( 40 / 1280) * 100vw) auto 0;
+      }
+
+      @include sp{
+        margin: calc(( 44 / 390) * 100vw) auto 0;
+      }
+    }
+
+    &--F{
+
+      @include pc{
+        margin: calc(( 95 / 1280) * 100vw) auto 0;
+      }
+
+      @include sp{
+        margin: calc(( 65 / 390) * 100vw) auto 0;
+      }
+
+      .C-menuSub{
+        &--item{
+
+          @include pc{
+            padding-bottom: calc(( 50 / 1280) * 100vw);
+          }
+
+          @include sp{
+            padding-bottom: calc(( 40 / 390) * 100vw);
+          }
+
+          .C-menuSub--p--sub{
+            color: $mainColor;
+            @include sans;
+            font-weight: 300;
+            line-height: 200%;
+            
+            @include pc{
+              width: 90%;
+              font-size: max(calc(( 14 / 1280) * 100vw),10px);
+              letter-spacing: calc(( 0.98 / 1280) * 100vw);
+              margin: calc(( 24 / 1280) * 100vw) auto 0;
+            }
+
+            @include sp{
+              width: 85%;
+              font-size: calc(( 12 / 390) * 100vw);
+              letter-spacing: calc(( 0.84 / 390) * 100vw);
+              margin: calc(( 21 / 390) * 100vw) auto 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  // flow--menuBtn
+  .flow--menuBtn{
+    display: block;
+    margin: 0 auto;
+
+    @include pc{
+      width: max(calc(( 937 / 1280) * 100vw),700px);
+      height: fit-content;
+      aspect-ratio: 937/240;
+      @include img("flow--menuBtn--PC.png");
+      background-size: cover;
+      border-radius: calc(( 10 / 1280) * 100vw);
+    }
+
+    @include sp{
+      width: calc(( 350 / 390) * 100vw);
+      height: fit-content;
+      aspect-ratio: 390/182;
+      @include img("flow--menuBtn--SP.png");
+      background-size: cover;
+      border-radius: calc(( 10 / 390) * 100vw);
+    }
+  }
+
+
+  // flow--facility
+  .flow--facility{
+
+    @include pc{
+      padding: calc(( 128 / 1280) * 100vw) 0 calc(( 135 / 1280) * 100vw);
+    }
+
+    @include sp{
+      padding: calc(( 100 / 390) * 100vw) calc(( 20 / 390) * 100vw) calc(( 105 / 390) * 100vw);
+    }
+  }
+
+
+}

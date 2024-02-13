@@ -1,0 +1,12 @@
+@use "../global" as *;
+
+.news{
+
+  @include pc{
+    padding-top: max(calc(( 130 / 1280) * 100vw),130px);
+  }
+
+  @include sp{
+    padding: calc(( 50 / 390) * 100vw) calc(( 20 / 390) * 100vw) 0;
+  }
+}

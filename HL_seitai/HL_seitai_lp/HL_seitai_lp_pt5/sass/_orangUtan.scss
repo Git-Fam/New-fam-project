@@ -1,0 +1,79 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// orangUtan PC
+.orangUtan{
+  @include pc{
+    width: 100%;
+    height: calc(( 521 / 1280) * 100vw);
+    @include img('orangUtan.jpg');
+    background-size: cover;
+    position: relative;
+
+    &::before , &::after{
+      content: '';
+      position: absolute;
+      top: -1%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: $orangUtan;
+      background-size: contain;
+      background-position: top center;
+      background-repeat: no-repeat;
+    }
+    &::after{
+      transform: rotate(180deg);
+      top: unset;
+      bottom: -1%;
+    }
+
+    .message{
+      width: calc(( 494 / 1280) * 100vw);
+      height: calc(( 117 / 1280) * 100vw);
+      @include img('orangUtan-message.png');
+      position: absolute;
+      top: calc(( 11 / 1280) * 100vw);
+      left: calc(( 156 / 1280) * 100vw);
+    }
+  }
+}
+
+
+// orangUtan SPSPSPSPSPSPSPSPSPSPSPSPSPSP
+.orangUtan{
+  @include sp{
+    width: 100%;
+    height: calc(( 163 / 390) * 100vw);
+    @include img('orangUtan.jpg');
+    background-size: cover;
+    position: relative;
+
+    &::before , &::after{
+      content: '';
+      position: absolute;
+      top: -1%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: $orangUtan;
+      background-size: contain;
+      background-position: top center;
+      background-repeat: no-repeat;
+    }
+    &::after{
+      transform: rotate(180deg);
+      top: unset;
+      bottom: -1%;
+    }
+
+    .message{
+      width: calc(( 214 / 390) * 100vw);
+      height: calc(( 51 / 390) * 100vw);
+      @include img('orangUtan-message.png');
+      position: absolute;
+      top: calc(( -3 / 390) * 100vw);
+      left: calc(( 15 / 390) * 100vw);
+    }
+  }
+}

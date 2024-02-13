@@ -1,0 +1,176 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// trouble PC
+.trouble{
+  @include pc{
+    padding: calc((41 / 1280) * 100vw) 0 calc((73 / 1280) * 100vw);
+    background: #F3EADF;
+    position: relative;
+    
+    &::before{
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      @include img('trouble-back.png');
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+    &--in{
+      position: relative;
+
+      .title{
+        width: fit-content;
+        margin: 0 auto calc(( 20 / 1280) * 100vw);
+
+        .deco{
+          width: calc(( 205 / 1280) * 100vw);
+          height: calc(( 38 / 1280) * 100vw);
+          @include img('deco-1.png');
+          mix-blend-mode: multiply;
+          margin: 0 auto;
+
+          &:nth-of-type(2){
+            transform: rotate(180deg);
+          }
+        }
+
+        h2{
+          margin: calc(( 4 / 1280) * 100vw) 0 calc(( 16 / 1280) * 100vw);
+          color: #3F2F12;
+          @include mincho;
+          font-size: max(calc(( 28 / 1280) * 100vw),20px);
+          font-weight: 600;
+          background: linear-gradient(transparent 65%, #FEFE66 65%, #FEFE66 90%, transparent 90%);
+        }
+      }
+
+      .contents{
+        width: max(calc(( 799 / 1280) * 100vw),700px);
+        margin: 0 auto;
+        padding: calc(( 57 / 1280) * 100vw) calc(( 73 / 1280) * 100vw) calc(( 56 / 1280) * 100vw) calc(( 40 / 1280) * 100vw);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: calc(( 40 / 1280) * 100vw);
+        border-radius: 12px;
+        background: #FFF;
+        box-shadow: 5px 9px 7px 0px rgba(0, 0, 0, 0.25);
+
+        .img{
+          width: calc(( 212 / 1280) * 100vw);
+          height: calc(( 269 / 1280) * 100vw);
+          @include img('trouble.png');
+          flex-shrink: 0;
+          mix-blend-mode: multiply;
+
+        }
+
+        .text{
+          @include column( calc(( 24 / 1280) * 100vw) );
+
+          .item{
+
+            p{
+              color: #3F2F12;
+              @include mincho;
+              font-size: max(calc(( 19 / 1280) * 100vw),16px);
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+// trouble SPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSP
+.trouble{
+  @include sp{
+    padding: calc((18 / 390) * 100vw) calc(( 25 / 390) * 100vw) calc((40 / 390) * 100vw);
+    background: #F3EADF;
+    position: relative;
+    
+    &::before{
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      @include img('trouble-back.png');
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+    &--in{
+      position: relative;
+
+      .title{
+        width: fit-content;
+        margin: 0 auto calc(( 24 / 390) * 100vw);
+
+        .deco{
+          width: calc(( 160 / 390) * 100vw);
+          height: calc(( 30 / 390) * 100vw);
+          @include img('deco-1.png');
+          mix-blend-mode: multiply;
+          margin: 0 auto;
+
+          &:nth-of-type(2){
+            transform: rotate(180deg);
+          }
+        }
+
+        h2{
+          margin: calc(( 9 / 390) * 100vw) 0 calc(( 10 / 390) * 100vw);
+          color: #3F2F12;
+          @include mincho;
+          font-size: calc(( 20 / 390) * 100vw);
+          font-weight: 600;
+          background: linear-gradient(transparent 55%, #FEFE66 55%, #FEFE66 75%, transparent 75%);
+        }
+      }
+
+      .contents{
+        width: 100%;
+        padding: calc(( 36 / 390) * 100vw) calc(( 28 / 390) * 100vw) calc(( 3 / 390) * 100vw);
+        @include column( calc(( 11 / 390) * 100vw) );
+        flex-direction: column-reverse;
+        border-radius: 12px;
+        background: #FFF;
+        box-shadow: 5px 9px 7px 0px rgba(0, 0, 0, 0.25);
+
+        .img{
+          width: calc(( 150 / 390) * 100vw);
+          height: calc(( 191 / 390) * 100vw);
+          margin: 0 auto;
+          @include img('trouble.png');
+          flex-shrink: 0;
+          mix-blend-mode: multiply;
+
+        }
+
+        .text{
+          @include column( calc(( 25 / 390) * 100vw) );
+
+          .item{
+
+            p{
+              color: #3F2F12;
+              @include mincho;
+              font-size: calc(( 14 / 390) * 100vw);
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+  }
+}

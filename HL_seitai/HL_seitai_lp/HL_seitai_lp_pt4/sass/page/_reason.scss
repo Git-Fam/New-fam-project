@@ -1,0 +1,76 @@
+@use "../global" as *;
+
+.reason {
+  @include pc {
+    padding: calc((52 / 1280) * 100vw) 0 0;
+  }
+
+  @include sp {
+    padding-top: calc((21 / 390) * 100vw);
+  }
+
+  &--img {
+    margin: 0 auto;
+    @include img("reason.jpg");
+    position: relative;
+
+    &::before {
+      content: "Balance&Beauty";
+      position: absolute;
+      color: #F8ADAE;
+      @include serif;
+      font-weight: 400;
+      z-index: 99;
+
+      @include pc {
+        top: calc((-125 / 1280) * 100vw);
+        right: calc((0 / 1280) * 100vw);
+        font-size: calc((80 / 1280) * 100vw);
+        letter-spacing: calc((1.6 / 1280) * 100vw);
+      }
+
+      @include sp {
+        top: calc((-50 / 390) * 100vw);
+        right: calc((0 / 390) * 100vw);
+        font-size: calc((30 / 390) * 100vw);
+        letter-spacing: calc((0.8 / 390) * 100vw);
+      }
+    }
+
+    @include pc {
+      width: max(calc((960 / 1280) * 100vw), 700px);
+      padding: calc((196 / 1280) * 100vw) 0 calc((92 / 1280) * 100vw) max(calc((90 / 1280) * 100vw), 90px);
+    }
+
+    @include sp {
+      width: 100%;
+      height: calc((141 / 390) * 100vw);
+      background-size: cover;
+      padding: calc((75 / 390) * 100vw) 0 calc((30 / 390) * 100vw) calc((26 / 390) * 100vw);
+    }
+
+    p {
+      color: #000;
+      @include hira;
+      font-weight: 300;
+
+      @include pc {
+        font-size: max(calc((16 / 1280) * 100vw), 12px);
+        letter-spacing: calc((0.32 / 1280) * 100vw);
+      }
+
+      @include sp {
+        font-size: calc((9 / 390) * 100vw);
+        letter-spacing: calc((0.24 / 390) * 100vw);
+      }
+
+      span {
+        color: #F5797F;
+
+        @include pc {}
+
+        @include sp {}
+      }
+    }
+  }
+}

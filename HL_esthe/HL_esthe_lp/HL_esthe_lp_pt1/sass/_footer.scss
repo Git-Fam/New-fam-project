@@ -1,0 +1,70 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// footer PC
+footer {
+  @include pc {
+    padding: calc((50 / 1280) * 100vw) 0 calc((100 / 1280) * 100vw);
+
+    h2 {
+      text-align: center;
+      color: #291A2B;
+      @include zen;
+      font-size: max(calc((40 / 1280) * 100vw), 30px);
+      font-weight: 700;
+    }
+
+    .sns {
+      display: block;
+      margin: calc((9 / 1280) * 100vw) auto calc((32 / 1280) * 100vw);
+      width: max(calc((40 / 1280) * 100vw), 30px);
+      height: max(calc((40 / 1280) * 100vw), 30px);
+      background-image: url('/img/insta.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    h3 {
+      text-align: center;
+      color: #291A2B;
+      @include zen;
+      font-size: calc((13 / 1280) * 100vw);
+      font-weight: 500;
+    }
+  }
+}
+
+// footer SPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSP
+footer {
+  @include sp {
+    padding: calc((50 / 390) * 100vw) 0 calc((100 / 390) * 100vw);
+
+    h2 {
+      text-align: center;
+      color: #291A2B;
+      @include zen;
+      font-size: calc((28 / 390) * 100vw);
+      font-weight: 700;
+    }
+
+    .sns {
+      display: block;
+      margin: calc((7 / 390) * 100vw) auto calc((32 / 390) * 100vw);
+      width: calc((40 / 390) * 100vw);
+      height: calc((40 / 390) * 100vw);
+      background-image: url('/img/insta.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    h3 {
+      text-align: center;
+      color: #291A2B;
+      @include zen;
+      font-size: calc((13 / 390) * 100vw);
+      font-weight: 500;
+    }
+  }
+}

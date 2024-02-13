@@ -1,0 +1,106 @@
+@use "../global" as *;
+
+
+// c__what
+.c__what{
+  margin: 0 auto;
+  border: 1px solid $mainColor;
+
+  @include pc{
+    width: max(calc(( 704 / 1280) * 100vw),704px);
+    padding: max(calc(( 66 / 1280) * 100vw),66px) max(calc(( 80 / 1280) * 100vw),80px) max(calc(( 83 / 1280) * 100vw),83px);
+  }
+
+  @include sp{
+    width: calc(( 280 / 390) * 100vw);
+    padding: calc(( 32 / 390) * 100vw) 0 calc(( 30 / 390) * 100vw);
+  }
+
+  &--title{
+    text-align: center;
+
+    @include pc{
+      margin-bottom: max(calc(( 28 / 1280) * 100vw),28px);
+    }
+
+    @include sp{
+      margin-bottom: calc(( 34 / 390) * 100vw);
+    }
+
+    h2{
+      color: $mainColor;
+      @include yu;
+      font-weight: 400;
+      line-height: 1.5;
+      
+      @include pc{
+        font-size: max(calc(( 23 / 1280) * 100vw),23px);
+        letter-spacing: max(calc(( 0.138 / 1280) * 100vw),0.138px);
+      }
+
+      @include sp{
+        font-size: calc(( 15 / 390) * 100vw);
+        letter-spacing: calc(( 0.09 / 390) * 100vw);
+      }
+    }
+  }
+
+  &--item{
+
+    @include pc{
+      @include column( max(calc(( 30 / 1280) * 100vw),30px) );
+    }
+
+    @include sp{
+      @include column( calc(( 25 / 390) * 100vw) );
+      padding: calc(( 25 / 390) * 100vw) 0 0;
+      margin: 0 calc(( 20 / 390) * 100vw);
+      border-top: calc(( 1 / 390) * 100vw) solid $mainColor;
+    }
+
+    &--list{
+      display: flex;
+
+      @include pc{
+        gap: max(calc(( 12 / 1280) * 100vw),12px);
+      }
+
+      @include sp{
+        gap: calc(( 17 / 390) * 100vw);
+      }
+
+      &--check{
+        @include icon($checkBox);
+        aspect-ratio: 1/1;
+        flex-shrink: 0;
+        height: fit-content;
+
+        @include pc{
+          width: max(calc(( 20 / 1280) * 100vw),20px);
+          margin-top: 0.1rem;
+        }
+
+        @include sp{
+          width: calc(( 18 / 390) * 100vw);
+          margin-top: 0.2rem;
+        }
+      }
+
+      &--p{
+        color: $mainColor;
+        @include noto;
+        font-weight: 400;
+        
+        @include pc{
+          font-size: max(calc(( 14 / 1280) * 100vw),14px);
+          letter-spacing: max(calc(( 0.084 / 1280) * 100vw),0.084px);
+        }
+
+        @include sp{
+          font-size: calc(( 13 / 390) * 100vw);
+          letter-spacing: calc(( 0.013 / 390) * 100vw);
+        }
+      }
+    }
+  }
+}

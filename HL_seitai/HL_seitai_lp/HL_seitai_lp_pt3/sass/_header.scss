@@ -1,0 +1,311 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// header PC
+header {
+  @include pc {
+    padding: calc((20 / 1280) * 100vw) calc((130 / 1280) * 100vw) calc((20 / 1280) * 100vw) calc((139 / 1280) * 100vw);
+    width: 100%;
+    background: rgba(255, 255, 255, 0.70);
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(12px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 990;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media screen and (max-width: 900px) and (min-width: 767px) {
+      padding: calc((20 / 1280) * 100vw) calc((60 / 1280) * 100vw) calc((20 / 1280) * 100vw) calc((70 / 1280) * 100vw);
+    }
+
+    .logo-top {
+      color: #C8C8C8;
+      @include Lato;
+      font-size: calc((10 / 1280) * 100vw);
+      font-weight: 900;
+      position: absolute;
+      top: calc((5 / 1280) * 100vw);
+      left: calc((139 / 1280) * 100vw);
+    }
+
+    .logo {
+      display: block;
+      width: calc((151 / 1280) * 100vw);
+
+      img {
+        width: 100%;
+      }
+    }
+
+    nav {
+      display: flex;
+
+      .menu-nav {
+        padding: 0 calc((18 / 1280) * 100vw);
+        position: relative;
+
+        &::before {
+          content: '';
+          display: block;
+          width: 1px;
+          height: calc((25 / 1280) * 100vw);
+          background: #C8C8C8;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+        }
+
+        a {
+          text-align: center;
+          @include column(calc((6 / 1280) * 100vw));
+
+          p {
+            color: #444;
+            @include Lato;
+            font-size: max(calc((15 / 1280) * 100vw), 12px);
+            font-weight: 900;
+            transition: all 0.2s;
+
+            &:nth-child(2) {
+              font-size: max(calc((10 / 1280) * 100vw), 10px);
+              font-weight: 700;
+            }
+          }
+
+          &:hover {
+            p {
+              transform: scale(0.7);
+
+              &:nth-child(2) {
+                transform: scale(1.3);
+
+              }
+            }
+          }
+        }
+
+        &.tel {
+          a {
+            text-align: left;
+            @include column(calc((1 / 1280) * 100vw));
+
+            p {
+              font-size: max(calc((11 / 1280) * 100vw), 10px);
+
+              &:nth-child(2) {
+                font-size: max(calc((15 / 1280) * 100vw), 12px);
+                font-weight: 900;
+              }
+
+              span {
+                color: #EE8733;
+                font-size: max(calc((20 / 1280) * 100vw), 16px);
+                font-weight: 900;
+              }
+            }
+
+            &:hover {
+              p {
+                transform: scale(0.9);
+
+                &:nth-child(2) {
+                  transform: scale(1.1);
+
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+// header SP
+header {
+  @include sp {
+    padding: calc((15 / 390) * 100vw) calc((12 / 390) * 100vw) calc((13 / 390) * 100vw);
+    width: 100%;
+    background: #FFF;
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(12px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 990;
+    display: flex;
+    align-items: center;
+
+
+    .logo {
+      width: calc((100 / 390) * 100vw);
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .telIcon {
+      position: absolute;
+      top: 50%;
+      right: calc((62 / 390) * 100vw);
+      transform: translateY(-50%);
+
+      &-img {
+        background-image: $telIcon;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: calc((20 / 390) * 100vw);
+        height: calc((18 / 390) * 100vw);
+        margin: 0 auto calc((6 / 390) * 100vw);
+
+      }
+
+      p {
+        color: #000;
+        @include Hinagino;
+        font-size: calc((10 / 390) * 100vw);
+        font-weight: 600;
+        line-height: 100%;
+        letter-spacing: calc((0.2 / 390) * 100vw);
+      }
+    }
+
+    .burger {
+      position: absolute;
+      right: calc((12 / 390) * 100vw);
+      top: 50%;
+      transform: translateY(-50%);
+      width: calc((27 / 390) * 100vw);
+      height: calc((22 / 390) * 100vw);
+      cursor: pointer;
+      z-index: 999;
+
+      span {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: calc((3 / 390) * 100vw);
+        background-color: #444;
+        display: block;
+        transition: all 0.2s;
+
+        &:nth-child(1) {
+          top: 0;
+        }
+
+        &:nth-child(2) {
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+        &:nth-child(3) {
+          bottom: 0;
+        }
+
+      }
+
+      &.active {
+        span {
+          &:nth-child(1) {
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+          }
+
+          &:nth-child(2) {
+            display: none;
+          }
+
+          &:nth-child(3) {
+            bottom: 50%;
+            transform: translateY(50%) rotate(-45deg);
+          }
+        }
+      }
+    }
+
+    nav {
+      position: fixed;
+      top: calc((60 / 390) * 100vw);
+      right: -100%;
+      z-index: 991;
+      background: #FFF;
+      width: 100%;
+      height: 100vh;
+      min-height: calc((650 / 390) * 100vw);
+      transition: all 0.3s;
+      padding: calc((80 / 390) * 100vw) 0;
+      @include column(calc((20 / 390) * 100vw));
+
+      &.active {
+        right: 0;
+      }
+
+      .menu-nav {
+        padding: 0 calc((18 / 390) * 100vw);
+        position: relative;
+        width: fit-content;
+        margin: 0 auto;
+
+        &::before {
+          content: '';
+          display: block;
+          width: calc((200 / 390) * 100vw);
+          height: calc((1 / 390) * 100vw);
+          background: #C8C8C8;
+          position: absolute;
+          bottom: calc((-6 / 390) * 100vw);
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        a {
+          text-align: center;
+          @include column(calc((6 / 390) * 100vw));
+
+          p {
+            color: #444;
+            @include Lato;
+            font-size: calc((15 / 390) * 100vw);
+            font-weight: 900;
+            transition: all 0.2s;
+
+            &:nth-child(2) {
+              font-size: calc((10 / 390) * 100vw);
+              font-weight: 700;
+            }
+          }
+        }
+
+        &.tel {
+          a {
+            @include column(calc((1 / 390) * 100vw));
+
+            p {
+              font-size: calc((11 / 390) * 100vw);
+
+              &:nth-child(2) {
+                font-size: calc((15 / 390) * 100vw);
+                font-weight: 900;
+              }
+
+              span {
+                color: #EE8733;
+                font-size: calc((20 / 390) * 100vw);
+                font-weight: 900;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

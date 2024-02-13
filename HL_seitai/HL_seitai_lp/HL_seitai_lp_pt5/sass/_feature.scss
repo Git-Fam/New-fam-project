@@ -1,0 +1,192 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// feature PC
+.feature {
+  @include pc {
+
+    &--title {
+      text-align: center;
+      padding: calc((6 / 1280) * 100vw) 0;
+      background: #63360E;
+
+      h2 {
+        padding: calc((34 / 1280) * 100vw) 0;
+        border-top: solid calc((2 / 1280) * 100vw) #FFF;
+        border-bottom: solid calc((2 / 1280) * 100vw) #FFF;
+        color: rgba(255, 255, 255, 0.95);
+        @include mincho;
+        font-size: max(calc((30 / 1280) * 100vw), 25px);
+        font-weight: 300;
+        line-height: 161%;
+
+        span {
+          color: #FFF;
+          @include mincho;
+          font-size: max(calc((40 / 1280) * 100vw), 30px);
+          font-weight: 300;
+          line-height: 100%;
+
+          &:nth-of-type(2) {
+            color: #fefe04;
+            font-size: max(calc((50 / 1280) * 100vw), 40px);
+          }
+        }
+      }
+    }
+
+    &--contents {
+      padding: calc((57 / 1280) * 100vw) 0 calc((47 / 1280) * 100vw);
+
+      .table {
+        width: max(calc((956 / 1280) * 100vw), 700px);
+        margin: 0 auto calc((120 / 1280) * 100vw);
+
+        .item {
+          padding: calc((13 / 1280) * 100vw) 0;
+          border-bottom: solid calc((1 / 1280) * 100vw) #63360E;
+          display: flex;
+          align-items: center;
+          height: 100%;
+
+          &--title {
+            width: calc((100 / 1280) * 100vw);
+            flex-shrink: 0;
+            @include center;
+
+            h2 {
+              color: #333;
+              @include mincho;
+              font-size: max(calc((19 / 1280) * 100vw), 16px);
+              font-weight: 600;
+              line-height: 100%;
+              letter-spacing: calc((2 / 1280) * 100vw);
+              -ms-writing-mode: tb-rl;
+              writing-mode: vertical-rl;
+            }
+          }
+
+          &--text {
+            width: 100%;
+            text-align: center;
+            border-left: solid calc((1 / 1280) * 100vw) #63360E;
+            padding: calc((10 / 1280) * 100vw) 0;
+
+            p {
+              color: rgba(63, 47, 18, 0.95);
+              @include mincho;
+              font-size: max(calc((17 / 1280) * 100vw), 15px);
+              font-weight: 600;
+              line-height: 194%;
+
+              span {
+                color: #F69904;
+                @include mincho;
+                font-size: max(calc((22 / 1280) * 100vw), 18px);
+                font-weight: 600;
+                line-height: 194%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// feature SPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSP
+.feature {
+  @include sp {
+
+    &--title {
+      text-align: center;
+      padding: calc((7 / 390) * 100vw) 0;
+      background: #63360E;
+
+      h2 {
+        padding: calc((20 / 390) * 100vw) 0 calc(( 27 / 390) * 100vw);
+        border-top: solid calc((2 / 390) * 100vw) #FFF;
+        border-bottom: solid calc((2 / 390) * 100vw) #FFF;
+        color: rgba(255, 255, 255, 0.95);
+        @include mincho;
+        font-size: calc((18 / 390) * 100vw);
+        font-weight: 300;
+        line-height: 180%;
+
+        span {
+          color: #FFF;
+          @include mincho;
+          font-size: calc((25 / 390) * 100vw);
+          font-weight: 300;
+          line-height: 100%;
+
+          &:nth-of-type(2) {
+            color: #fefe04;
+            font-size: calc((30 / 390) * 100vw);
+          }
+        }
+      }
+    }
+
+    &--contents {
+      padding: calc((50 / 390) * 100vw) calc(( 28 / 390) * 100vw) calc((23 / 390) * 100vw);
+
+      .table {
+        width: 100%;
+        margin: 0 auto calc((120 / 390) * 100vw);
+
+        .item {
+          padding: calc((24 / 390) * 100vw) 0 calc(( 14 / 390) * 100vw);
+          border-bottom: solid calc((1 / 390) * 100vw) #63360E;
+          display: flex;
+          align-items: center;
+          height: 100%;
+
+          &:first-of-type {
+            border-top: solid calc((1 / 390) * 100vw) #63360E;
+          }
+
+          &--title {
+            width: calc((45 / 390) * 100vw);
+            flex-shrink: 0;
+            @include center;
+
+            h2 {
+              color: #333;
+              @include mincho;
+              font-size: calc((15 / 390) * 100vw);
+              font-weight: 600;
+              line-height: 100%;
+              letter-spacing: calc((2 / 390) * 100vw);
+              -ms-writing-mode: tb-rl;
+              writing-mode: vertical-rl;
+            }
+          }
+
+          &--text {
+            width: 100%;
+            border-left: solid calc((1 / 390) * 100vw) #63360E;
+            padding: calc((2 / 390) * 100vw) calc(( 20 / 390) * 100vw);
+
+            p {
+              color: rgba(63, 47, 18, 0.95);
+              @include mincho;
+              font-size: calc((14 / 390) * 100vw);
+              font-weight: 600;
+              line-height: 173%;
+
+              span {
+                color: #F69904;
+                @include mincho;
+                font-size: calc((18 / 390) * 100vw);
+                font-weight: 600;
+                line-height: 173%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

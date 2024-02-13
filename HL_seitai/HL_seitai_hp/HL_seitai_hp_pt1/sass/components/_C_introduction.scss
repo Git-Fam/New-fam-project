@@ -1,0 +1,127 @@
+@use "../global" as *;
+
+.bbbb{
+  @include pc{
+    width: max(calc((800 / 1280) * 100vw), 700px);
+    margin: calc(( 50 / 1280) * 100vw) auto 0;
+  }
+
+  @include sp{
+    width: 100%;
+    padding: 0 calc(( 20 / 390) * 100vw);
+  }
+}
+
+.C-introduction{
+  display: flex;
+
+  @include pc{
+    gap: calc(( 50 / 1280) * 100vw);
+    margin: calc(( 60 / 1280) * 100vw) 0 0;
+  }
+
+  @include sp{
+    flex-direction: column;
+    gap: calc(( 10 / 390) * 100vw);
+    margin: calc(( 60 / 390) * 100vw) 0 0;
+  }
+
+
+  &:first-child{
+    margin-top: 0;
+  }
+
+  &:nth-child(even){
+
+    @include pc{
+      flex-direction: row-reverse;
+    }
+  }
+
+  &--img{
+    aspect-ratio: 402 / 261;
+    height: fit-content;
+    flex-shrink: 0;
+
+    @include pc{
+      width: 50%;
+    }
+
+    @include sp{
+      width: 100%;
+    }
+
+    // 1
+    &.img--1{
+      @include img("C-introduction-1.jpg");
+      background-position: cover;
+    }
+
+    // 2
+    &.img--2{
+      @include img("C-introduction-2.jpg");
+      background-position: cover;
+    }
+
+    // 3
+    &.img--3{
+      @include img("C-introduction-3.jpg");
+      background-position: cover;
+    }
+
+    // 4
+    &.img--4{
+      @include img("C-introduction-4.jpg");
+      background-position: cover;
+    }
+  }
+
+  &--contents{
+
+    @include pc{
+      padding: calc(( 10 / 1280) * 100vw) 0 0;
+    }
+
+
+    h3{
+      color: $mainColor;
+      @include serif;
+      font-weight: 600;
+      line-height: 150%;
+      border-bottom: solid 1px $mainColor;
+      
+      @include pc{
+        font-size: max(calc(( 24 / 1280) * 100vw),20px);
+        letter-spacing: calc(( 1.68 / 1280) * 100vw);
+        padding: 0 0 calc(( 12 / 1280) * 100vw);
+        margin: 0 0 calc(( 30 / 1280) * 100vw);
+      }
+
+      @include sp{
+        text-align: center;
+        font-size: calc(( 24 / 390) * 100vw);
+        letter-spacing: calc(( 1.68 / 390) * 100vw);
+        padding: 0 0 calc(( 12 / 390) * 100vw);
+        margin: 0 0 calc(( 22 / 390) * 100vw);
+      }
+    }
+
+    p{
+      color: #78635C;
+      @include sans;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 175%;
+      
+      @include pc{
+        font-size: max(calc(( 16 / 1280) * 100vw),12px);
+        letter-spacing: calc(( 1.12 / 1280) * 100vw);
+      }
+
+      @include sp{
+        font-size: calc(( 16 / 390) * 100vw);
+        letter-spacing: calc(( 1.12 / 390) * 100vw);
+      }
+    }
+  }
+}

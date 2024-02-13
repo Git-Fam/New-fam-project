@@ -1,0 +1,82 @@
+@use "../global" as *;
+
+
+// c__effective
+.c__effective{
+  margin: 0 auto;
+
+  @include pc{
+    width: max(calc(( 960 / 1280) * 100vw),700px);
+  }
+
+  @include sp{
+    width: 95%;
+  }
+
+  &--title{
+    width: 100%;
+
+    img{
+      width: 100%;
+    }
+  }
+
+  &--item{
+    display: flex;
+
+    @include pc{
+      padding: calc(( 44 / 1280) * 100vw) calc(( 58 / 1280) * 100vw) 0;
+      gap: calc(( 70 / 1280) * 100vw);
+    }
+
+    @include sp{
+      flex-direction: column;
+      padding: calc(( 30 / 390) * 100vw) 0 0;
+      gap: calc(( 20 / 390) * 100vw);
+    }
+
+    &--text{
+
+      @include pc{
+        @include column( calc(( 25 / 1280) * 100vw) );
+      }
+
+      @include sp{
+        @include column( calc(( 20 / 390) * 100vw) );
+      }
+
+      p{
+        color: #000;
+        @include hira;
+        font-weight: 300;
+        
+        @include pc{
+          font-size: max(calc(( 15 / 1280) * 100vw),12px);
+          line-height: 120%;
+          letter-spacing: calc(( 0.3 / 1280) * 100vw);
+
+        }
+
+        @include sp{
+          font-size: calc(( 12 / 390) * 100vw);
+          line-height: 150%;
+          letter-spacing: calc(( 0.3 / 390) * 100vw);
+        }
+      }
+    }
+
+    &--img{
+      @include img('c__effective-img.jpg');
+      aspect-ratio: 365/284;
+      flex-shrink: 0;
+
+      @include pc{
+        width: calc(( 365 / 1280) * 100vw);
+      }
+
+      @include sp{
+        width: 100%;
+      }
+    }
+  }
+}

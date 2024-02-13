@@ -1,0 +1,126 @@
+@use "../global" as *;
+
+.C_trouble{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include pc{}
+
+  @include sp{
+    flex-wrap: wrap;
+    gap: calc(( 20 / 390) * 100vw) 0;
+  }
+
+  &--item{
+    border-right: solid 0.5px $mainColor;
+
+    @include pc{
+      padding: 0 calc(( 26 / 1280) * 100vw) calc(( 19 / 1280) * 100vw);
+    }
+
+    @include sp{
+      padding: 0 calc(( 26 / 390) * 100vw) calc(( 19 / 390) * 100vw);
+    }
+
+    &--icon{
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      height: fit-content;
+      background: #FFF;
+      @include center;
+
+      @include pc{
+        width: max(calc(( 100 / 1280) * 100vw),80px);
+        margin: 0 auto calc(( 17 / 1280) * 100vw);
+      }
+
+      @include sp{
+        width: calc(( 120 / 390) * 100vw);
+        margin: 0 auto calc(( 20 / 390) * 100vw);
+      }
+
+      &--img{
+        aspect-ratio: 61/78;
+
+        @include pc{
+          width: 60%;
+        }
+
+        @include sp{
+          width: 60%;
+        }
+      }
+    }
+
+    // 1
+    &:nth-child(1){
+      @include pc{
+        border-left: solid 0.5px $mainColor;
+      }
+
+      .C_trouble--item--icon--img{
+        @include img('C-trouble-1.png');
+      }
+    }
+    // 2
+    &:nth-child(2){
+      .C_trouble--item--icon--img{
+        @include img('C-trouble-2.png');
+      }
+    }
+    // 3
+    &:nth-child(3){
+      .C_trouble--item--icon--img{
+        @include img('C-trouble-3.png');
+      }
+    }
+    // 4
+    &:nth-child(4){
+      .C_trouble--item--icon--img{
+        @include img('C-trouble-4.png');
+      }
+    }
+    // 5
+    &:nth-child(5){
+      .C_trouble--item--icon--img{
+        @include img('C-trouble-5.png');
+      }
+    }
+    // 6
+    &:nth-child(6){
+      .C_trouble--item--icon--img{
+        @include img('C-trouble-6.png');
+      }
+    }
+
+    &:nth-child(odd){
+      @include sp{
+        border-left: solid 0.5px $mainColor;
+      }
+    }
+
+    &--text{
+      @include center;
+
+      p{
+        color: #78635C;
+        text-align: center;
+        font-family: Noto Serif JP;
+        font-weight: 600;
+        line-height: 150%;
+        writing-mode: vertical-rl;
+        
+        @include pc{
+          font-size: max(calc(( 17 / 1280) * 100vw),12px);
+          letter-spacing: calc(( 3.57 / 1280) * 100vw);
+        }
+
+        @include sp{
+          font-size: calc(( 17 / 390) * 100vw);
+          letter-spacing: calc(( 3.57 / 390) * 100vw);
+        }
+      }
+    }
+  }
+}

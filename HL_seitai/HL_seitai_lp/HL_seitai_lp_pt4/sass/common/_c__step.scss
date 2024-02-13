@@ -1,0 +1,167 @@
+@use "../global" as *;
+
+
+// c__step
+.c__step {
+  display: grid;
+
+  @include pc {
+    grid-template-columns: 1fr 1fr 1fr;
+    width: max(calc((960 / 1280) * 100vw), 700px);
+    margin: 0 auto;
+    gap: calc((30 / 1280) * 100vw);
+  }
+
+  @include sp {
+    grid-template-columns: 1fr 1fr;
+    width: 95%;
+    margin: 0 auto;
+    gap: calc((15 / 375) * 100vw);
+  }
+
+  &--item {
+    width: 100%;
+    position: relative;
+
+    &::before {
+      display: block;
+      position: absolute;
+      aspect-ratio: 1/1;
+      @include icon($cStepHanpen);
+      color: $cFontTitle;
+      @include kapa;
+      font-weight: 400;
+
+      @include pc {
+        top: calc((-3 / 1280) * 100vw);
+        left: calc((-2 / 1280) * 100vw);
+        width: calc((83 / 1280) * 100vw);
+        font-size: calc((42 / 1280) * 100vw);
+        letter-spacing: calc((0.82 / 1280) * 100vw);
+        padding: calc((14 / 1280) * 100vw) 0 0 calc((6 / 1280) * 100vw);
+      }
+
+      @include sp {
+        top: calc((-4 / 390) * 100vw);
+        left: calc((-2 / 390) * 100vw);
+        width: calc((55 / 390) * 100vw);
+        font-size: calc((30 / 390) * 100vw);
+        letter-spacing: calc((0.82 / 390) * 100vw);
+        padding: calc((10 / 390) * 100vw) 0 0 calc((3 / 390) * 100vw);
+      }
+    }
+
+    // c__step--item--iCatch 1~6
+    &:nth-child(1) {
+      &::before {
+        content: '01';
+      }
+
+      .c__step--item--iCatch {
+        @include img('c_step-iCatch01.jpg');
+      }
+    }
+
+    &:nth-child(2) {
+      &::before {
+        content: '02';
+      }
+
+      .c__step--item--iCatch {
+        @include img('c_step-iCatch02.jpg');
+      }
+    }
+
+    &:nth-child(3) {
+      &::before {
+        content: '03';
+      }
+
+      .c__step--item--iCatch {
+        @include img('c_step-iCatch03.jpg');
+      }
+    }
+
+    &:nth-child(4) {
+      &::before {
+        content: '04';
+      }
+
+      .c__step--item--iCatch {
+        @include img('c_step-iCatch04.jpg');
+      }
+    }
+
+    &:nth-child(5) {
+      &::before {
+        content: '05';
+      }
+
+      .c__step--item--iCatch {
+        @include img('c_step-iCatch05.jpg');
+      }
+    }
+
+    &:nth-child(6) {
+      &::before {
+        content: '06';
+      }
+
+      .c__step--item--iCatch {
+        @include img('c_step-iCatch06.jpg');
+      }
+    }
+
+    &--iCatch {
+      background-size: cover;
+      aspect-ratio: 300/255;
+      width: 100%;
+    }
+
+    &--contents {
+      background-color: #FFF;
+
+      @include pc {
+        padding: calc((20 / 1280) * 100vw) calc((2 / 1280) * 100vw) calc((30 / 1280) * 100vw);
+      }
+
+      @include sp {
+        padding: calc((20 / 375) * 100vw) calc((2 / 375) * 100vw);
+      }
+
+      &--title {
+        color: $cFontTitle;
+        @include hira;
+        font-weight: 300;
+
+        @include pc {
+          font-size: max(calc((18 / 1280) * 100vw), 16px);
+          letter-spacing: calc((0.36 / 1280) * 100vw);
+          margin-bottom: calc((22 / 1280) * 100vw);
+        }
+
+        @include sp {
+          font-size: calc((15 / 375) * 100vw);
+          letter-spacing: calc((0.3 / 375) * 100vw);
+          margin-bottom: calc((15 / 375) * 100vw);
+        }
+      }
+
+      &--text {
+        color: $cFontText;
+        @include hira;
+        font-weight: 300;
+
+        @include pc {
+          font-size: max(calc((15 / 1280) * 100vw), 11px);
+          letter-spacing: calc((0.3 / 1280) * 100vw);
+        }
+
+        @include sp {
+          font-size: calc((12 / 375) * 100vw);
+          letter-spacing: calc((0.24 / 375) * 100vw);
+        }
+      }
+    }
+  }
+}

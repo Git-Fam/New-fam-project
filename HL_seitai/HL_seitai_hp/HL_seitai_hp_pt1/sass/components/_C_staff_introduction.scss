@@ -1,0 +1,258 @@
+@use "../global" as *;
+
+.C-staff_introduction {
+  display: flex;
+  flex-direction: column;
+
+  @include pc {
+    gap: calc((31 / 1280) * 100vw);
+  }
+
+  @include sp {
+    gap: calc((22 / 390) * 100vw);
+  }
+
+  &--content {
+    display: flex;
+    justify-content: center;
+
+    @include pc {
+      gap: calc((118 / 1280) * 100vw);
+    }
+
+    @include sp {
+      flex-direction: column;
+      gap: calc((18 / 390) * 100vw);
+    }
+
+    .staff--img {
+      aspect-ratio: 300/360;
+      height: fit-content;
+
+      @include pc {
+        width: max(calc((300 / 1280) * 100vw), 230px);
+      }
+
+      @include sp {
+        width: calc((229 / 390) * 100vw);
+        margin: 0 auto;
+      }
+
+      // 1
+      &.img--1 {
+        @include img("staff-img-1.jpg");
+        background-size: cover;
+      }
+
+      // 2
+      &.img--2 {
+        @include img("staff-img-2.png");
+        background-size: cover;
+      }
+
+      // 3
+      &.img--3 {
+        @include img("staff-img-3.jpg");
+        background-size: cover;
+      }
+    }
+
+    .staff--self {
+
+      @include pc {
+        width: max(calc((454 / 1280) * 100vw), 350px);
+        @include column(calc((22 / 1280) * 100vw));
+      }
+
+      @include sp {
+        width: calc((350 / 390) * 100vw);
+        @include column(calc((10 / 390) * 100vw));
+      }
+
+      .title {
+        display: flex;
+        align-items: center;
+
+        @include pc {
+          gap: calc((20 / 1280) * 100vw);
+        }
+
+        @include sp {
+          gap: calc((17/ 390) * 100vw);
+        }
+
+        .number {
+          color: $darkGreen;
+          @include quicksand;
+          font-weight: 700;
+          line-height: 100%;
+          border-radius: 50%;
+          @include center;
+          aspect-ratio: 1/1;
+
+          @include pc {
+            border: calc((5 / 1280) * 100vw) solid #cbb393;
+            border-right: calc((5 / 1280) * 100vw) solid transparent;
+            width: calc((80 / 1280) * 100vw);
+            font-size: calc((39 / 1280) * 100vw);
+            letter-spacing: calc((1.95 / 1280) * 100vw);
+          }
+
+          @include sp {
+            border: calc((5 / 390) * 100vw) solid #cbb393;
+            border-right: calc((5 / 390) * 100vw) solid transparent;
+            width: calc((80 / 390) * 100vw);
+            font-size: calc((34 / 390) * 100vw);
+            letter-spacing: calc((1.701 / 390) * 100vw);
+          }
+        }
+
+        .name {
+
+          @include pc {
+            @include column(calc((5 / 1280) * 100vw));
+          }
+
+          @include sp {
+            @include column(calc((15 / 390) * 100vw));
+          }
+
+          .JP {
+            color: $mainColor;
+            @include sans;
+            font-weight: 300;
+            line-height: 100%;
+
+            @include pc {
+              font-size: max(calc((23 / 1280) * 100vw), 19px);
+              letter-spacing: calc((1.15 / 1280) * 100vw);
+            }
+
+            @include sp {
+              font-size: calc((17 / 390) * 100vw);
+              letter-spacing: calc((0.853 / 390) * 100vw);
+            }
+          }
+
+          .EN {
+            color: #CAB493;
+            @include sans;
+            font-weight: 300;
+            line-height: 100%;
+
+            @include pc {
+              font-size: max(calc((14 / 1280) * 100vw), 10px);
+              letter-spacing: calc((0.7 / 1280) * 100vw);
+            }
+
+            @include sp {
+              font-size: calc((12 / 390) * 100vw);
+              letter-spacing: calc((0.61 / 390) * 100vw);
+            }
+          }
+        }
+      }
+
+      .text {
+
+        p {
+          color: $mainColor;
+          @include sans;
+          font-weight: 300;
+          line-height: 200%;
+
+          @include pc {
+            font-size: max(calc((14 / 1280) * 100vw), 10px);
+            letter-spacing: calc((0.98 / 1280) * 100vw);
+          }
+
+          @include sp {
+            font-size: calc((14 / 390) * 100vw);
+            letter-spacing: calc((0.98 / 390) * 100vw);
+          }
+        }
+      }
+    }
+  }
+
+  &--profile {
+    border: dashed 1px $darkGreen;
+    position: relative;
+
+    @include pc {
+      width: max(calc((837 / 1280) * 100vw), 700px);
+      margin: 0 auto;
+      padding: calc((55 / 1280) * 100vw) calc((50 / 1280) * 100vw) calc((32 / 1280) * 100vw);
+    }
+
+    @include sp {
+      width: 100%;
+      padding: calc((30 / 390) * 100vw) calc((20 / 390) * 100vw);
+    }
+
+    .Profile {
+      padding: 0 2rem;
+      background-color: #fff;
+      color: $darkGreen;
+      @include quicksand;
+      font-weight: 600;
+      line-height: 100%;
+      position: absolute;
+
+      @include pc {
+        font-size: max(calc((23 / 1280) * 100vw), 18px);
+        letter-spacing: calc((1.15 / 1280) * 100vw);
+        top: calc((-15 / 1280) * 100vw);
+        left: calc((60 / 1280) * 100vw);
+      }
+
+      @include sp {
+        font-size: calc((24 / 390) * 100vw);
+        letter-spacing: calc((1.2 / 390) * 100vw);
+        top: calc((-15 / 390) * 100vw);
+        left: calc((15 / 390) * 100vw);
+      }
+    }
+
+    &--main {
+
+      @include pc {
+        @include column(calc((20 / 1280) * 100vw));
+      }
+
+      @include sp {
+        @include column(calc((20 / 390) * 100vw));
+      }
+
+
+      .main--item {
+        display: flex;
+
+        p {
+          color: #78635C;
+          @include sans;
+          font-weight: 300;
+          line-height: 100%;
+
+          @include pc {
+            font-size: max(calc((12 / 1280) * 100vw), 10px);
+            letter-spacing: calc((0.6 / 1280) * 100vw);
+          }
+
+          @include sp {
+            font-size: calc((12 / 390) * 100vw);
+            letter-spacing: calc((0.6 / 390) * 100vw);
+          }
+        }
+
+        .entry {
+          width: 35%;
+        }
+
+        .detail {
+          width: 65%;
+        }
+      }
+    }
+  }
+}

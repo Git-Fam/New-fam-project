@@ -1,0 +1,40 @@
+@use "../global" as *;
+
+
+// c__titles
+.c__titles {
+  h2 {
+    color: $mainColor;
+    @include josefin;
+
+    @include pc {
+      font-size: max(calc((30 / 1280) * 100vw), 30px);
+      letter-spacing: max(calc((7.5 / 1280) * 100vw), 7.5px);
+    }
+
+    @include sp {
+      font-size: calc((22 / 390) * 100vw);
+      letter-spacing: calc((5.5 / 390) * 100vw);
+    }
+  }
+
+  p {
+    color: $mainColor;
+    @include noto;
+
+    @include pc {
+      font-size: max(calc((16 / 1280) * 100vw), 16px);
+      letter-spacing: max(calc((0.16 / 1280) * 100vw), 0.16px);
+    }
+
+    @include sp {
+      font-size: calc((14 / 390) * 100vw);
+      letter-spacing: calc((1.4 / 390) * 100vw);
+    }
+  }
+}
+
+// c__center
+.c__center {
+  text-align: center;
+}

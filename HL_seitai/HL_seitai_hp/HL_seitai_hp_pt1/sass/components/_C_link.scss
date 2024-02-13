@@ -1,0 +1,103 @@
+@use "../global" as *;
+
+.C-link{
+  background: $darkGreen;
+  @include pc{
+    padding: calc(( 108 / 1280) * 100vw) 0 calc(( 141 / 1280) * 100vw);
+  }
+
+  @include sp{
+    padding: calc(( 102 / 390) * 100vw) 0 calc(( 100 / 390) * 100vw);
+  }
+
+  .no-message{
+    text-align: center;
+    margin-top: 2em;
+  }
+
+  &--content{
+
+    @include pc{
+      width: 80%;
+      margin: calc(( 41 / 1280) * 100vw) auto 0;
+    }
+    
+    @include sp{
+      width: 90%;
+      margin: calc(( 41 / 390) * 100vw) auto 0;
+    }
+
+    &--item{
+      // @include img('C-link.png');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+
+      @include pc{
+        width: calc(( 205 / 1280) * 100vw);
+        background-color: white;
+      }
+
+      @include sp{
+        width: calc(( 171 / 390) * 100vw);
+        background-color: white;
+      }
+
+      &--title{
+        border: 1px solid #84B754;
+        background: #FFF;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        color: #84B754;
+        @include quicksand;
+        line-height: 116%;
+        
+        @include pc{
+          width: max(calc(( 144 / 1280) * 100vw),120px);
+          text-align: center;
+          padding: calc(( 8 / 1280) * 100vw) 0;
+          top: calc(( -15 / 1280) * 100vw);
+          font-size: max(calc(( 12 / 1280) * 100vw),12px);
+          letter-spacing: calc(( 1.2 / 1280) * 100vw);
+        }
+
+        @include sp{
+          width: calc(( 120 / 390) * 100vw);
+          text-align: center;
+          padding: calc(( 4 / 390) * 100vw) 0;
+          top: calc(( -15 / 390) * 100vw);
+          font-size: calc(( 12 / 390) * 100vw);
+          letter-spacing: calc(( 1.2 / 390) * 100vw);
+        }
+      }
+
+      &--text{
+        position: absolute;
+        left: 0;
+        color: #FFF;
+        @include quicksand;
+        line-height: 93%;
+        text-decoration-line: underline;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        
+        @include pc{
+          bottom: calc(( -30 / 1280) * 100vw);
+          font-size: max(calc(( 15 / 1280) * 100vw),12px);
+          letter-spacing: calc(( 1.5 / 1280) * 100vw);
+
+        }
+
+        @include sp{
+          bottom: calc(( -30 / 390) * 100vw);
+          font-size: calc(( 15 / 390) * 100vw);
+          letter-spacing: calc(( 1.5 / 390) * 100vw);
+        }
+      }
+    }
+  }
+}

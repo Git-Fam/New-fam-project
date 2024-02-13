@@ -1,0 +1,117 @@
+@use "../global" as *;
+
+.fv {
+  margin: auto;
+  position: relative;
+
+  @include pc {
+    width: max(calc((880 / 1280) * 100vw), 768px);
+    padding: max(calc((60 / 1280) * 100vw), 60px) 0 max(calc((111 / 1280) * 100vw), 111px) max(calc((60 / 1280) * 100vw), 60px);
+  }
+
+  @include sp {
+    padding: 0 calc((20 / 390) * 100vw);
+  }
+
+  &--main {
+    position: relative;
+    z-index: 5;
+
+    @include sp {
+      width: 100%;
+      padding-top: calc((211 / 390) * 100vw);
+    }
+
+    &--logo {
+      aspect-ratio: 254/226;
+      @include img('logo.png');
+
+      @include pc {
+        width: max(calc((254 / 1280) * 100vw), 254px);
+        margin-bottom: max(calc((40 / 1280) * 100vw), 40px);
+      }
+
+      @include sp {
+        width: calc((170 / 390) * 100vw);
+        margin: 0 auto calc((18 / 390) * 100vw);
+      }
+    }
+
+    &--title {
+      color: $mainColor;
+      @include yu;
+
+      @include pc {
+        font-size: max(calc((41 / 1280) * 100vw), 41px);
+        letter-spacing: max(calc((9.43 / 1280) * 100vw), 9.43px);
+        margin-bottom: max(calc((30 / 1280) * 100vw), 30px);
+      }
+
+      @include sp {
+        text-align: center;
+        font-size: calc((18 / 390) * 100vw);
+        letter-spacing: calc((3.24 / 390) * 100vw);
+        margin-bottom: calc((251 / 390) * 100vw);
+      }
+    }
+
+    &--text {
+      color: $mainColor;
+      @include noto;
+
+      @include pc {
+        font-size: max(calc((15.8 / 1280) * 100vw), 15.8px);
+        letter-spacing: max(calc((3.16 / 1280) * 100vw), 3.16px);
+      }
+
+      @include sp {
+        text-align: center;
+        font-size: calc((14 / 390) * 100vw);
+        letter-spacing: calc((2.24 / 390) * 100vw);
+        line-height: 160%;
+      }
+    }
+  }
+
+  &--img {
+    @include img('fv-img.png');
+    z-index: 3;
+
+    @include pc {
+      aspect-ratio: 431/490;
+      position: absolute;
+      width: max(calc((380 / 1280) * 100vw), 380px);
+      top: max(calc((60 / 1280) * 100vw), 60px);
+      right: calc((60 / 1280) * 100vw);
+    }
+
+    @include sp {
+      background-size: cover;
+      width: 100%;
+      aspect-ratio: 350/260;
+      margin-top: calc((60 / 390) * 100vw);
+    }
+  }
+
+  &--deco {
+    position: absolute;
+    background: #F4F4F4;
+    z-index: 2;
+
+    @include pc {
+      width: max(calc((352 / 1280) * 100vw), 352px);
+      height: 100%;
+      top: 0;
+      right: 0;
+    }
+
+    @include sp {
+      width: calc((290 / 390) * 100vw);
+      aspect-ratio: 290/560;
+      top: calc((30 / 390) * 100vw);
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+  }
+}

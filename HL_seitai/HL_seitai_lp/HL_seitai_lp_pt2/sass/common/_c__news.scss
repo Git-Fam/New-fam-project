@@ -1,0 +1,132 @@
+@use "../global" as *;
+
+
+// c__news
+.c__news {
+  margin: 0 auto;
+  background: #F6F6F6;
+  display: flex;
+
+  @include pc {
+    width: max(calc((704 / 1280) * 100vw), 704px);
+    padding: max(calc((30 / 1280) * 100vw), 30px) max(calc((45 / 1280) * 100vw), 45px) max(calc((32 / 1280) * 100vw), 32px);
+    justify-content: space-between;
+    align-items: center;
+    gap: max(calc((60 / 1280) * 100vw), 60px);
+  }
+
+  @include sp {
+    width: 100%;
+    padding: calc((40 / 390) * 100vw) calc((30 / 390) * 100vw) calc((15 / 390) * 100vw);
+    flex-direction: column;
+    gap: calc((5 / 390) * 100vw);
+  }
+
+  &--title {
+    flex-shrink: 0;
+    width: fit-content;
+
+    h2 {
+      color: $mainColor;
+      @include josefin;
+
+      @include pc {
+        font-size: max(calc((30 / 1280) * 100vw), 30px);
+        letter-spacing: max(calc((7.5 / 1280) * 100vw), 7.5px);
+      }
+
+      @include sp {
+        font-size: calc((22 / 390) * 100vw);
+        letter-spacing: calc((5.5 / 390) * 100vw);
+      }
+    }
+
+    p {
+      color: $mainColor;
+      @include noto;
+
+      @include pc {
+        font-size: max(calc((16 / 1280) * 100vw), 16px);
+        letter-spacing: max(calc((0.16 / 1280) * 100vw), 0.16px);
+      }
+
+      @include sp {
+        font-size: calc((14 / 390) * 100vw);
+        letter-spacing: calc((1.4 / 390) * 100vw);
+      }
+    }
+  }
+
+  &--item {
+    width: 100%;
+
+    &--delimiter {
+
+      @include pc {
+        padding: max(calc((26 / 1280) * 100vw), 26px) max(calc((10 / 1280) * 100vw), 10px) max(calc((24 / 1280) * 100vw), 24px);
+        border-top: max(calc((1 / 1280) * 100vw), 1px) solid $mainColor;
+      }
+
+      @include sp {
+        padding: calc((20 / 390) * 100vw) calc((10 / 390) * 100vw) calc((20 / 390) * 100vw) 0;
+        border-top: calc((1 / 390) * 100vw) solid $mainColor;
+      }
+
+      &:first-child {
+        border-top: none;
+      }
+
+      a {
+        display: flex;
+        width: fit-content;
+
+        @include pc {
+          align-items: center;
+          gap: max(calc((16 / 1280) * 100vw), 16px);
+        }
+
+        @include sp {
+          flex-direction: column;
+        }
+
+        p {
+          color: $mainColor;
+          @include noto;
+
+          @include pc {
+            font-size: max(calc((14 / 1280) * 100vw), 14px);
+            letter-spacing: max(calc((0.084 / 1280) * 100vw), 0.084px);
+          }
+
+          @include sp {
+            font-size: calc((10 / 390) * 100vw);
+            letter-spacing: calc((0.06 / 390) * 100vw);
+          }
+
+          &:first-child {
+            flex-shrink: 0;
+            white-space: nowrap;
+
+            @include pc {
+              width: max(calc((73/ 1280) * 100vw), 73px);
+            }
+
+            @include sp {}
+          }
+
+          &:last-child {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+
+            @include sp {
+              font-size: calc((12 / 390) * 100vw);
+              letter-spacing: calc((0.072 / 390) * 100vw);
+            }
+          }
+        }
+      }
+    }
+  }
+}

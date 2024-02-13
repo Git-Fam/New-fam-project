@@ -1,0 +1,35 @@
+@use "../global" as *;
+
+// QA
+.voice--wapper {
+
+  .voice--voice{
+
+    @include pc{
+      padding: calc(( 165 / 1280) * 100vw) 0 calc(( 193 / 1280) * 100vw);
+    }
+
+    @include sp{
+      padding: calc(( 154 / 390) * 100vw) 0 calc(( 110 / 390) * 100vw);
+    }
+
+
+    &--contents{
+      display: flex;
+      flex-wrap: wrap;
+    
+      @include pc{
+        width: max(calc(( 938 / 1280) * 100vw), 700px);
+        margin: calc(( 40 / 1280) * 100vw) auto 0;
+        gap: calc(( 65 / 1280) * 100vw) calc(( 18 / 1280) * 100vw);
+      }
+    
+      @include sp{
+        width: 100%;
+        margin: calc(( 40 / 390) * 100vw) auto 0;
+        padding: 0 calc(( 20 / 390) * 100vw);
+        gap: calc(( 23 / 390) * 100vw) calc(( 10 / 390) * 100vw);
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+@use "../global" as *;
+
+// 表示・非表示
+.sp{
+  @include pc{
+    display: none;
+  }
+}
+.pc{
+  @include sp{
+    display: none;
+  }
+}
+
+
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: 10%;
+}
+
+body{
+
+  &.active{
+    overflow: hidden;
+  }
+}
+
+.wapper{
+  overflow: hidden;
+}
+
+// reCAPTCHA
+.grecaptcha-badge { 
+  visibility: hidden; 
+}

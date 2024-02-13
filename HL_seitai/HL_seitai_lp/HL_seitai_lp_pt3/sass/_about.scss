@@ -1,0 +1,240 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// about PC
+.about {
+  @include pc {
+    padding: calc((116 / 1280) * 100vw) 0 0;
+
+    .common-title {
+      margin-bottom: calc((114 / 1280) * 100vw);
+    }
+
+    .contents {
+
+      .item {
+        display: flex;
+
+        .img {
+          width: 50%;
+          aspect-ratio: 640/438;
+          height: auto;
+          @include img('about-1.jpg');
+          background-size: cover;
+        }
+
+        .text {
+          width: 50%;
+          background-image: radial-gradient(#f4f4f4 30%, transparent 30%);
+          background-size: calc((15 / 1280) * 100vw) calc((15 / 1280) * 100vw);
+          padding: calc((64 / 1280) * 100vw) calc((47 / 1280) * 100vw) 0 calc((60 / 1280) * 100vw);
+
+          h2 {
+            color: #444;
+            @include Hinagino;
+            font-size: max(calc((25 / 1280) * 100vw), 20px);
+            font-weight: 600;
+            line-height: 132.2%;
+            letter-spacing: calc((1.5 / 1280) * 100vw);
+          }
+
+          h3 {
+            @include Hinagino;
+            font-size: max(calc((30 / 1280) * 100vw), 25px);
+            font-weight: 600;
+            line-height: 132.2%;
+            letter-spacing: calc((0.9 / 1280) * 100vw);
+            margin-bottom: calc((30 / 1280) * 100vw);
+          }
+
+          p {
+            color: #444;
+            @include Hinagino;
+            font-size: max(calc((13 / 1280) * 100vw), 10px);
+            font-weight: 300;
+            line-height: 240%;
+            letter-spacing: calc((1.17 / 1280) * 100vw);
+          }
+        }
+
+        &:nth-child(2) {
+          flex-direction: row-reverse;
+
+          .img {
+            @include img('about-2.jpg');
+            background-size: cover;
+          }
+
+          .text {
+            padding: calc((0 / 1280) * 100vw) calc((30 / 1280) * 100vw) 0 calc((80 / 1280) * 100vw);
+            @include center;
+
+            &--in {
+              @include column(calc((15 / 1280) * 100vw));
+
+              h4 {
+                color: #000;
+                @include Hinagino;
+                font-size: max(calc((13 / 1280) * 100vw), 10px);
+                font-weight: 300;
+                line-height: 170.2%;
+                letter-spacing: calc((1.17 / 1280) * 100vw);
+                position: relative;
+
+                &::before {
+                  content: '';
+                  position: absolute;
+                  top: 50%;
+                  left: calc((-40 / 1280) * 100vw);
+                  transform: translateY(-50%);
+                  width: calc((25 / 1280) * 100vw);
+                  aspect-ratio: 1/1;
+                  height: auto;
+                  background-image: $checkIcon;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .banner {
+      display: flex;
+      justify-content: center;
+      gap: calc((30 / 1280) * 100vw);
+      margin-top: calc((11 / 1280) * 100vw);
+
+      .img {
+        width: calc((320 / 1280) * 100vw);
+        aspect-ratio: 320/150;
+        @include img('bnr-1.png');
+
+        &:nth-child(2) {
+          @include img('bnr-2.png');
+        }
+      }
+    }
+  }
+}
+
+
+// about SP
+.about {
+  @include sp {
+    padding: calc((39 / 390) * 100vw) 0 0;
+
+    .common-title {
+      margin-bottom: calc((49 / 390) * 100vw);
+    }
+
+    .contents {
+
+      .item {
+
+        .img {
+          width: 100%;
+          aspect-ratio: 391/263;
+          height: auto;
+          @include img('about-1.jpg');
+          background-size: cover;
+        }
+
+        .text {
+          width: 100%;
+          background-image: radial-gradient(#f4f4f4 30%, transparent 30%);
+          background-size: calc((15 / 390) * 100vw) calc((15 / 390) * 100vw);
+          padding: calc((41 / 390) * 100vw) calc((32 / 390) * 100vw) calc(( 30 / 390) * 100vw);
+
+          h2 {
+            text-align: center;
+            color: #444;
+            @include Hinagino;
+            font-size: calc((19 / 390) * 100vw);
+            font-weight: 600;
+            line-height: 132.2%;
+          }
+
+          h3 {
+            text-align: center;
+            @include Hinagino;
+            font-size: calc((23 / 390) * 100vw);
+            font-weight: 600;
+            line-height: 132.2%;
+            padding-bottom: calc((30 / 390) * 100vw);
+            border-bottom: solid calc((1.5 / 390) * 100vw) #444;
+            margin-bottom: calc((35 / 390) * 100vw);
+          }
+
+          p {
+            color: #444;
+            @include Hinagino;
+            font-size: calc((13 / 390) * 100vw);
+            font-weight: 300;
+            line-height: 260%;
+            letter-spacing: calc((1.17 / 390) * 100vw);
+            padding: 0 calc((15 / 390) * 100vw);
+          }
+        }
+
+        &:nth-child(2) {
+
+          .img {
+            @include img('about-2.jpg');
+            background-size: cover;
+          }
+
+          .text {
+            padding: calc((41 / 390) * 100vw) calc((29 / 390) * 100vw) calc(( 71 / 390) * 100vw) calc((83 / 390) * 100vw);
+            @include center;
+
+            &--in {
+              @include column(calc((15 / 390) * 100vw));
+
+              h4 {
+                color: #000;
+                @include Hinagino;
+                font-size: calc((13 / 390) * 100vw);
+                font-weight: 300;
+                line-height: 162%;
+                letter-spacing: calc((1 / 390) * 100vw);
+                position: relative;
+
+                &::before {
+                  content: '';
+                  position: absolute;
+                  top: 50%;
+                  left: calc((-50 / 390) * 100vw);
+                  transform: translateY(-50%);
+                  width: calc((25 / 390) * 100vw);
+                  aspect-ratio: 1/1;
+                  height: auto;
+                  background-image: $checkIcon;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .banner {
+      display: flex;
+      justify-content: center;
+      gap: calc((14 / 390) * 100vw);
+      background-image: radial-gradient(#f4f4f4 30%, transparent 30%);
+      background-size: calc((15 / 390) * 100vw) calc((15 / 390) * 100vw);
+      padding-bottom: calc((161 / 390) * 100vw);
+
+      .img {
+        width: calc((156 / 390) * 100vw);
+        aspect-ratio: 156/73;
+        @include img('bnr-1.png');
+
+        &:nth-child(2) {
+          @include img('bnr-2.png');
+        }
+      }
+    }
+  }
+}

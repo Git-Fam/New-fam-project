@@ -1,0 +1,419 @@
+@use "../global" as *;
+
+
+// c__price
+.c__price {
+  margin: 0 auto;
+
+  @include pc {
+    @include column(calc((60 / 1280) * 100vw));
+    width: max(calc((960 / 1280) * 100vw), 700px);
+  }
+
+  @include sp {
+    @include column(calc((23 / 390) * 100vw));
+    width: 95%;
+  }
+
+  &--item {
+
+    // 1~8
+    &:nth-child(1) {
+      .c__price--item--main {
+        &--img {
+          @include img('c__price01.jpg');
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      .c__price--item--main {
+        &--img {
+          @include img('c__price02.jpg');
+        }
+      }
+    }
+
+    &:nth-child(3) {
+      .c__price--item--main {
+        &--img {
+          @include img('c__price03.jpg');
+        }
+      }
+    }
+
+    &:nth-child(4) {
+      .c__price--item--main {
+        &--img {
+          @include img('c__price04.jpg');
+        }
+      }
+    }
+
+    &:nth-child(5) {
+      .c__price--item--main {
+        &--img {
+          @include img('c__price05.jpg');
+        }
+      }
+    }
+
+    &:nth-child(6) {
+      .c__price--item--main {
+        &--img {
+          @include img('c__price06.jpg');
+        }
+      }
+    }
+
+    &:nth-child(7) {
+      .c__price--item--main {
+        &--img {
+          @include img('c__price07.jpg');
+        }
+      }
+    }
+
+    &:nth-child(8) {
+      .c__price--item--main {
+        &--img {
+          @include img('c__price08.jpg');
+        }
+      }
+    }
+
+    &--title {
+      @include img('c_price-title.png');
+      background-position: left;
+      position: relative;
+
+      @include pc {
+        padding: calc((18 / 1280) * 100vw) calc((26 / 1280) * 100vw);
+        margin-bottom: calc((34 / 1280) * 100vw);
+      }
+
+      @include sp {
+        background-size: cover;
+        background-position: right;
+        padding: calc((12 / 390) * 100vw) calc((15 / 390) * 100vw);
+        margin-bottom: calc((12 / 390) * 100vw);
+      }
+
+      h2 {
+        color: #FFF;
+        @include hira;
+        font-weight: 300;
+        line-height: 88%;
+
+        @include pc {
+          font-size: max(calc((18 / 1280) * 100vw), 16px);
+          letter-spacing: calc((-1.26 / 1280) * 100vw);
+        }
+
+        @include sp {
+          font-size: calc((12 / 390) * 100vw);
+          letter-spacing: calc((-0.7 / 390) * 100vw);
+        }
+      }
+
+      &--tag {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        @include icon($cPriceIcon);
+        background-size: cover;
+        @include center;
+
+        @include pc {
+          width: max(calc((242 / 1280) * 100vw), 220px);
+        }
+
+        @include sp {
+          background-position: left;
+          width: calc((150 / 390) * 100vw);
+        }
+
+        p {
+          color: #FFF;
+          @include hira;
+          font-weight: 300;
+          line-height: 88%;
+
+          @include pc {
+            font-size: max(calc((18 / 1280) * 100vw), 16px);
+          }
+
+          @include sp {
+            font-size: calc((12 / 390) * 100vw);
+          }
+        }
+      }
+    }
+
+    &--main {
+      display: flex;
+
+      @include pc {
+        gap: calc((30 / 1280) * 100vw);
+      }
+
+      @include sp {
+        flex-direction: column;
+        gap: calc((15 / 390) * 100vw);
+      }
+
+      &--img {
+        aspect-ratio: 370/329;
+        flex-shrink: 0;
+        position: relative;
+        background-size: cover !important;
+        height: fit-content;
+
+        @include pc {
+          width: calc((370 / 1280) * 100vw);
+        }
+
+        @include sp {
+          width: 100%;
+        }
+
+        &::before {
+          content: '';
+          display: block;
+          aspect-ratio: 136/134;
+          position: absolute;
+          @include img('c__contact-ribon.png');
+
+          @include pc {
+            width: calc((136 / 1280) * 100vw);
+            top: calc((-2 / 1280) * 100vw);
+            left: calc((-2 / 1280) * 100vw);
+          }
+
+          @include sp {
+            width: calc((80 / 390) * 100vw);
+            top: calc((-2 / 390) * 100vw);
+            left: calc((-2 / 390) * 100vw);
+          }
+        }
+
+        &--ribon {
+          text-align: center;
+          position: absolute;
+          color: #FFF;
+          @include hira;
+          font-weight: 600;
+          line-height: 105%;
+
+          @include pc {
+            font-size: calc((18 / 1280) * 100vw);
+            letter-spacing: calc((0.32 / 1280) * 100vw);
+            width: fit-content;
+            transform: rotate(-45deg);
+            top: calc((29 / 1280) * 100vw);
+            left: calc((7 / 1280) * 100vw);
+          }
+
+          @include sp {
+            font-size: calc((10 / 390) * 100vw);
+            letter-spacing: calc((0.32 / 390) * 100vw);
+            width: calc((50 / 390) * 100vw);
+            transform: rotate(-45deg);
+            top: calc((18 / 390) * 100vw);
+            left: calc((0 / 390) * 100vw);
+            width: fit-content;
+          }
+        }
+      }
+
+      &--contents {
+
+        @include pc {
+          padding-top: calc((3 / 1280) * 100vw);
+        }
+
+        @include sp {
+          padding-top: calc((3 / 390) * 100vw);
+        }
+
+        &--type {
+          display: flex;
+          align-items: center;
+
+          @include pc {
+            gap: calc((9 / 1280) * 100vw);
+            margin-bottom: calc((23 / 1280) * 100vw);
+          }
+
+          @include sp {
+            gap: calc((9 / 390) * 100vw);
+            justify-content: center;
+            margin-bottom: calc((23 / 390) * 100vw);
+          }
+
+          p {
+            color: $cFontText;
+            @include hira;
+            font-weight: 600;
+
+            @include pc {
+              border: calc((1 / 1280) * 100vw) solid #F5797F;
+              padding: calc((5 / 1280) * 100vw) calc((25 / 1280) * 100vw);
+              border-radius: calc((18 / 1280) * 100vw);
+              font-size: max(calc((16 / 1280) * 100vw), 14px);
+              letter-spacing: calc((0.32 / 1280) * 100vw);
+            }
+
+            @include sp {
+              border: calc((1 / 390) * 100vw) solid #F5797F;
+              padding: calc((5 / 390) * 100vw) calc((15 / 390) * 100vw);
+              border-radius: calc((18 / 390) * 100vw);
+              font-size: calc((12 / 390) * 100vw);
+              letter-spacing: calc((0.32 / 390) * 100vw);
+            }
+          }
+        }
+
+        &--text {
+
+          h3 {
+            color: $cFontTitle;
+            @include hira;
+            font-weight: 600;
+
+            @include pc {
+              font-size: max(calc((20 / 1280) * 100vw), 16px);
+              letter-spacing: calc((0.4 / 1280) * 100vw);
+              padding: 0 calc((2 / 1280) * 100vw) calc((6 / 1280) * 100vw);
+              margin-bottom: calc((24 / 1280) * 100vw);
+              border-bottom: calc((1 / 1280) * 100vw) dotted $cFontText;
+            }
+
+            @include sp {
+              font-size: calc((14 / 390) * 100vw);
+              letter-spacing: calc((0.4 / 390) * 100vw);
+              padding: 0 calc((4 / 390) * 100vw) calc((6 / 390) * 100vw);
+              margin-bottom: calc((24 / 390) * 100vw);
+              border-bottom: calc((1 / 390) * 100vw) dotted $cFontText;
+            }
+          }
+
+          p {
+            color: $cFontText;
+            @include hira;
+            font-weight: 300;
+            line-height: 166%;
+
+            @include pc {
+              font-size: max(calc((15 / 1280) * 100vw), 12px);
+              letter-spacing: calc((0.3 / 1280) * 100vw);
+            }
+
+            @include sp {
+              font-size: calc((12 / 390) * 100vw);
+              letter-spacing: calc((0.3 / 390) * 100vw);
+            }
+          }
+
+          a {
+            color: $cFontTitle;
+            @include hira;
+            font-weight: 300;
+            text-decoration-line: underline;
+            display: block;
+            width: fit-content;
+
+            @include pc {
+              font-size: max(calc((16 / 1280) * 100vw), 12px);
+              letter-spacing: calc((0.32 / 1280) * 100vw);
+              margin: calc((13 / 1280) * 100vw) 0 0 calc((15 / 1280) * 100vw);
+            }
+
+            @include sp {
+              font-size: calc((12 / 390) * 100vw);
+              letter-spacing: calc((0.32 / 390) * 100vw);
+              margin: calc((13 / 390) * 100vw) 0 0 auto;
+            }
+          }
+        }
+      }
+
+
+    }
+
+    &--BA {
+      background: #FDEEEC;
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+
+      @include pc {
+        margin-top: calc((39 / 1280) * 100vw);
+        padding: calc((30 / 1280) * 100vw) calc((30 / 1280) * 100vw) calc((20 / 1280) * 100vw);
+      }
+
+      @include sp {
+        margin-top: calc((39 / 390) * 100vw);
+        padding: calc((20 / 390) * 100vw) calc((20 / 390) * 100vw) calc((20 / 390) * 100vw);
+        flex-direction: column;
+        gap: calc((40 / 390) * 100vw);
+      }
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        
+        @include pc {
+          top: 40%;
+          left: 52%;
+          transform: translateX(-50%);
+          border: calc((35 / 1280) * 100vw) solid transparent;
+          border-left: calc((20 / 1280) * 100vw) solid $cFontTitle;
+        }
+
+        @include sp {
+          border: calc((25 / 390) * 100vw) solid transparent;
+          border-top: calc((15 / 390) * 100vw) solid $cFontTitle;
+          top: 52%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      &--tag {
+
+        @include pc {
+          width: calc(50% - calc((20 / 1280) * 100vw));
+          @include column(calc((24 / 1280) * 100vw));
+        }
+
+        @include sp {}
+
+        img {
+          width: 100%;
+        }
+
+        &--text {
+          text-align: center;
+          color: $cFontText;
+          @include hira;
+          font-weight: 600;
+          line-height: 100%;
+
+          @include pc {
+            font-size: max(calc((15 / 1280) * 100vw), 12px);
+            letter-spacing: calc((0.3 / 1280) * 100vw);
+          }
+
+          @include sp {
+            margin-top: calc((5 / 390) * 100vw);
+            font-size: calc((12 / 390) * 100vw);
+            letter-spacing: calc((0.3 / 390) * 100vw);
+          }
+        }
+      }
+    }
+  }
+}

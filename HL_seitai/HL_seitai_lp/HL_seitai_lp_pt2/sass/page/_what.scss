@@ -1,0 +1,12 @@
+@use "../global" as *;
+
+.what{
+
+  @include pc{
+    padding-top: max(calc(( 187 / 1280) * 100vw),187px);
+  }
+
+  @include sp{
+    padding-top: calc(( 32 / 390) * 100vw);
+  }
+}

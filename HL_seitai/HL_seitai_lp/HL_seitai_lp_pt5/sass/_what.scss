@@ -1,0 +1,279 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// what PC
+.what {
+  @include pc {
+    padding: calc((86 / 1280) * 100vw) 0 calc((77 / 1280) * 100vw);
+
+    &--texBox {
+      width: max(calc((863 / 1280) * 100vw), 700px);
+      margin: 0 auto calc((120 / 1280) * 100vw);
+      padding: calc((83 / 1280) * 100vw) calc((94 / 1280) * 100vw) calc((78 / 1280) * 100vw);
+      position: relative;
+
+      .title {
+        width: fit-content;
+        position: absolute;
+        top: -1%;
+        left: 50%;
+        transform: translateX(-50%);
+
+        h2 {
+          color: #CBA67B;
+          @include mincho;
+          font-size: max(calc((29 / 1280) * 100vw), 20px);
+          font-weight: 600;
+          line-height: 100%;
+          letter-spacing: calc((0.87 / 1280) * 100vw);
+          display: flex;
+          align-items: center;
+          gap: calc((3 / 1280) * 100vw);
+
+          span {
+            color: #CBA67B;
+            @include mincho;
+            font-size: max(calc((36 / 1280) * 100vw), 30px);
+            font-weight: 600;
+            line-height: 100%;
+            letter-spacing: calc((1.8 / 1280) * 100vw);
+          }
+        }
+      }
+
+      .text {
+        @include column(calc((35 / 1280) * 100vw));
+
+        p {
+          color: rgba(63, 47, 18, 0.95);
+          @include mincho;
+          font-size: max(calc((17 / 1280) * 100vw), 14px);
+          font-weight: 600;
+          line-height: 205%;
+
+          span {
+            color: #F69904;
+            @include mincho;
+            font-size: max(calc((22 / 1280) * 100vw), 18px);
+            font-weight: 600;
+            line-height: 195%;
+          }
+        }
+      }
+
+      .deco {
+
+        .item {
+          position: absolute;
+          @include img('what-deco.png');
+          width: calc((150 / 1280) * 100vw);
+          height: calc((150 / 1280) * 100vw);
+
+          &:nth-child(1) {
+            top: 0%;
+            left: 0%;
+          }
+
+          &:nth-child(2) {
+            top: 0%;
+            right: 0%;
+            transform: rotate(90deg);
+          }
+
+          &:nth-child(3) {
+            bottom: 0%;
+            left: 0%;
+            transform: rotate(270deg);
+          }
+
+          &:nth-child(4) {
+            bottom: 0%;
+            right: 0%;
+            transform: rotate(180deg);
+          }
+        }
+      }
+
+      .deco-bar {
+
+        .item-bar {
+          position: absolute;
+          background: radial-gradient(circle, #bd9939, transparent);
+          border-radius: 30%;
+
+          &:nth-child(1) {
+            top: 50%;
+            left: 1%;
+            transform: translateY(-50%);
+            width: calc((5 / 1280) * 100vw);
+            height: 70%;
+          }
+
+          &:nth-child(2) {
+            top: 50%;
+            right: 1%;
+            transform: translateY(-50%);
+            width: calc((5 / 1280) * 100vw);
+            height: 70%;
+          }
+
+          &:nth-child(3) {
+            bottom: 1%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: calc((5 / 1280) * 100vw);
+          }
+
+          &:nth-child(4) {
+            top: 1%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 65%;
+            height: calc((5 / 1280) * 100vw);
+            background: radial-gradient(circle, transparent 75%, #bd9939 75%, transparent);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// what SPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSP
+.what {
+  @include sp {
+    padding: calc((84 / 390) * 100vw) calc(( 20 / 390) * 100vw) calc((77 / 390) * 100vw);
+
+    &--texBox {
+      width: 100%;
+      margin: 0 auto calc((134 / 390) * 100vw);
+      padding: calc((80 / 390) * 100vw) calc((37 / 390) * 100vw) calc((50 / 390) * 100vw);
+      position: relative;
+
+      .title {
+        width: 100%;
+        position: absolute;
+        top: 1.5%;
+        left: 50%;
+        transform: translateX(-50%);
+        
+        h2 {
+          color: #CBA67B;
+          @include mincho;
+          font-size: calc((18 / 390) * 100vw);
+          font-weight: 600;
+          line-height: 100%;
+          letter-spacing: calc((0.54 / 390) * 100vw);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: calc((1 / 390) * 100vw);
+
+          span {
+            color: #CBA67B;
+            @include mincho;
+            font-size: calc((22 / 390) * 100vw);
+            font-weight: 600;
+            line-height: 100%;
+            letter-spacing: calc((1.125 / 390) * 100vw);
+          }
+        }
+      }
+
+      .text {
+        @include column(calc((35 / 390) * 100vw));
+
+        p {
+          color: rgba(63, 47, 18, 0.95);
+          @include mincho;
+          font-size: calc((17 / 390) * 100vw);
+          font-weight: 600;
+          line-height: 182%;
+
+          span {
+            color: #F69904;
+            @include mincho;
+            font-size: calc((22 / 390) * 100vw);
+            font-weight: 600;
+            line-height: 195%;
+          }
+        }
+      }
+
+      .deco {
+
+        .item {
+          position: absolute;
+          @include img('what-deco.png');
+          width: calc((80 / 390) * 100vw);
+          height: calc((80 / 390) * 100vw);
+
+          &:nth-child(1) {
+            top: 0%;
+            left: 0%;
+          }
+
+          &:nth-child(2) {
+            top: 0%;
+            right: 0%;
+            transform: rotate(90deg);
+          }
+
+          &:nth-child(3) {
+            bottom: 0%;
+            left: 0%;
+            transform: rotate(270deg);
+          }
+
+          &:nth-child(4) {
+            bottom: 0%;
+            right: 0%;
+            transform: rotate(180deg);
+          }
+        }
+      }
+
+      .deco-bar {
+
+        .item-bar {
+          position: absolute;
+          background: radial-gradient(circle, #bd9939, transparent);
+          border-radius: 30%;
+
+          &:nth-child(1) {
+            top: 50%;
+            left: 1%;
+            transform: translateY(-50%);
+            width: calc((2 / 390) * 100vw);
+            height: 95%;
+          }
+
+          &:nth-child(2) {
+            top: 50%;
+            right: 1%;
+            transform: translateY(-50%);
+            width: calc((2 / 390) * 100vw);
+            height: 95%;
+          }
+
+          &:nth-child(3) {
+            bottom: 0.5%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: calc((2 / 390) * 100vw);
+          }
+
+          &:nth-child(4) {
+            top: 0.5%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: calc((2 / 390) * 100vw);
+          }
+        }
+      }
+    }
+  }
+}

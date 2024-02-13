@@ -1,0 +1,144 @@
+@use "../global" as *;
+
+.C-menu {
+
+  &--content {
+
+    @include pc {
+      @include column(calc((93 / 1280) * 100vw));
+    }
+
+    @include sp {
+      @include column(calc((65 / 390) * 100vw));
+    }
+
+    &--item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include pc {
+        width: max(calc((942 / 1280) * 100vw), 700px);
+        margin: 0 auto;
+        gap: calc((75 / 1280) * 100vw);
+      }
+
+      @include sp {
+        width: 100%;
+        flex-direction: column;
+      }
+
+      &--img {
+        aspect-ratio: 471/378;
+        flex-shrink: 0;
+
+        @include pc {
+          width: 50%;
+        }
+
+        @include sp {
+          width: calc((281 / 390) * 100vw);
+          position: relative;
+          z-index: 2;
+        }
+      }
+
+      // 1
+      &:nth-child(1) {
+        .C-menu--content--item--img {
+          @include img('C-menu-1.jpg');
+        }
+      }
+
+      // 2
+      &:nth-child(2) {
+        .C-menu--content--item--img {
+          @include img('C-menu-2.jpg');
+        }
+      }
+
+      // 3
+      &:nth-child(3) {
+        .C-menu--content--item--img {
+          @include img('C-menu-3.jpg');
+        }
+      }
+
+      &:nth-child(2n) {
+        @include pc {
+          flex-direction: row-reverse;
+        }
+      }
+
+      &--text {
+        border: 1px solid $mainColor;
+        background: #FFF;
+        position: relative;
+
+        @include pc {
+          width: max(50% - calc((75 / 1280) * 100vw));
+          padding: calc((36 / 1280) * 100vw) calc((25 / 1280) * 100vw) calc((50 / 1280) * 100vw);
+        }
+
+        @include sp {
+          width: 100%;
+          padding: calc((30 / 390) * 100vw) calc((20 / 390) * 100vw) calc((50 / 390) * 100vw);
+          margin-top: calc((-15 / 390) * 100vw);
+          position: relative;
+          z-index: 1;
+        }
+
+        .text-h {
+          color: $mainColor;
+          text-align: center;
+          @include serif;
+          line-height: 150%;
+
+          @include pc {
+            font-size: max(calc((24 / 1280) * 100vw), 20px);
+            letter-spacing: calc((0.96 / 1280) * 100vw);
+            margin-bottom: calc((18 / 1280) * 100vw);
+          }
+
+          @include sp {
+            font-size: calc((24 / 390) * 100vw);
+            letter-spacing: calc((0.96 / 390) * 100vw);
+            margin-bottom: calc((18 / 390) * 100vw);
+          }
+        }
+
+        .text-p {
+          color: $mainColor;
+          @include sans;
+          line-height: 200%;
+          font-weight: 300;
+
+          @include pc {
+            font-size: max(calc((14 / 1280) * 100vw), 12px);
+            letter-spacing: calc((0.98 / 1280) * 100vw);
+          }
+
+          @include sp {
+            font-size: calc((14 / 390) * 100vw);
+            letter-spacing: calc((0.98 / 390) * 100vw);
+          }
+        }
+
+        .C-btn {
+          position: absolute;
+          left: 0;
+          right: 0;
+          margin: auto;
+
+          @include pc {
+            bottom: calc((-20 / 1280) * 100vw);
+          }
+
+          @include sp {
+            bottom: calc((-20 / 390) * 100vw);
+          }
+        }
+      }
+    }
+  }
+}

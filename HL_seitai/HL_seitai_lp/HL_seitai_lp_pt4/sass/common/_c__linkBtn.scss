@@ -1,0 +1,29 @@
+@use "../global" as *;
+
+
+// c__linkBtn
+.c__linkBtn{
+  a{
+    color: #FFFBFB;
+    @include hira;
+    font-weight: 600;
+    background: #F5797F;
+    width: fit-content;
+    margin: 0 auto;
+    display: block;
+    
+    @include pc{
+      padding: calc(( 18 / 1280) * 100vw) calc(( 22 / 1280) * 100vw);
+      font-size: max(calc(( 18 / 1280) * 100vw),16px);
+      line-height: 88%;
+      border-radius: calc(( 7 / 1280) * 100vw);
+    }
+
+    @include sp{
+      padding: calc(( 18 / 390) * 100vw) calc(( 20 / 390) * 100vw);
+      font-size: calc(( 16 / 390) * 100vw);
+      line-height: 88%;
+      border-radius: calc(( 7 / 390) * 100vw);
+    }
+  }
+}

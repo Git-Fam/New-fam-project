@@ -1,0 +1,69 @@
+@mixin center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin column($gap){
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+// @include column( calc(( 50 / 1280) * 100vw) );
+
+$pc: 768px; // PC
+$sp: 767px;  // スマホ
+@mixin pc {
+  @media screen and (min-width: ($pc)) {
+    @content;
+  }
+}
+@mixin sp {
+  @media  screen and (max-width: ($sp)) {
+    @content;
+  }
+}
+
+// フォント
+// font-family: Lato;
+@mixin Lato {
+  font-family: 'Lato', sans-serif;
+  font-style: normal;
+  line-height: normal;
+}
+
+// font-family: Hiragino Kaku Gothic ProN;
+@mixin Hinagino {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-style: normal;
+  line-height: normal;
+}
+
+
+// 画像
+// @include img('voice-back.jpg');
+@mixin img($img){
+  background-image: url('/img/#{$img}');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+
+// 関数の使い方
+// @mixin test($sidePadding : calc(( 98 / 1280) * 100vw) , $sidemargin : 0 0 0 auto ){
+//   .test--btn{
+//     padding: calc(( 6 / 1280) * 100vw) $sidePadding calc(( 2 / 1280) * 100vw);
+//     margin: $sidemargin;
+//   }
+// }
+
+// @mixin img($img){
+//   background-image: url('/img/#{$img}');
+//   background-size: contain;
+//   background-position: center;
+//   background-repeat: no-repeat;
+// }
+// ↓CSSでは
+// @include img('example.jpg');

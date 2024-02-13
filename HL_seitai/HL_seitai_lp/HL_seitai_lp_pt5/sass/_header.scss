@@ -1,0 +1,205 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// header PC
+header {
+  @include pc {
+    padding: calc((190 / 1280) * 100vw) 0 calc((70 / 1280) * 100vw);
+    background-image: linear-gradient(73deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.95) 27.93%, #FFF 52.14%, rgba(255, 255, 255, 0.00) 89.38%), url('/img/fv-2.png'), url('/img/fv.jpg');
+    background-size: cover, calc((500 / 1280) * 100vw), contain;
+    background-position: center, bottom left, center right;
+    background-repeat: no-repeat;
+    position: relative;
+
+    img {
+      width: calc((234 / 1280) * 100vw);
+      position: absolute;
+      top: calc((28 / 1280) * 100vw);
+      left: calc((46 / 1280) * 100vw);
+    }
+
+    .fv--title {
+      margin-bottom: calc((70 / 1280) * 100vw);
+
+      h1 {
+        text-align: center;
+        @include mincho;
+        font-size: calc((30 / 1280) * 100vw);
+        line-height: 150%;
+        font-weight: 300;
+        letter-spacing: calc((5 / 1280) * 100vw);
+        color: #3F2F12;
+
+        span {
+          @include mincho;
+          font-size: calc((45 / 1280) * 100vw);
+          line-height: 150%;
+          font-weight: 300;
+          color: #f56902;
+
+        }
+      }
+    }
+
+    .fv--sub {
+      width: fit-content;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: calc((10 / 1280) * 100vw);
+
+      .circle {
+        @include center;
+        width: calc((110 / 1280) * 100vw);
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        background: radial-gradient(circle, #fefbef, #fdecb0);
+        border: calc((1 / 1280) * 100vw) solid #fff;
+        box-shadow: 0px 0px 20px 10px #fcf3d7;
+        text-align: center;
+
+        h2 {
+          @include mincho;
+          font-size: calc((14 / 1280) * 100vw);
+          color: #3F2F12;
+          font-weight: 600;
+          position: relative;
+
+          span {
+            @include mincho;
+            font-size: calc((28 / 1280) * 100vw);
+            color: #3F2F12;
+            font-weight: 300;
+            line-height: 90%;
+          }
+
+          div {
+            width: fit-content;
+            position: absolute;
+            left: calc((10 / 1280) * 100vw);
+            bottom: calc((4 / 1280) * 100vw);
+
+            p {
+              @include mincho;
+              font-size: calc((12 / 1280) * 100vw);
+              color: #3F2F12;
+              font-weight: 300;
+              line-height: 100%;
+            }
+          }
+        }
+
+        h3 {
+          @include mincho;
+          font-size: calc((18 / 1280) * 100vw);
+          color: #3F2F12;
+          font-weight: 600;
+          line-height: 120%;
+        }
+      }
+    }
+  }
+}
+
+// header SPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSP
+header {
+  @include sp {
+    padding: calc((200 / 390) * 100vw) 0 calc((80 / 390) * 100vw);
+    background-image: linear-gradient(84deg, #FFF 21.79%, rgba(255, 255, 255, 0.00) 82.49%), url('/img/fv.jpg');
+    background-size: cover, cover;
+    background-position: center, center right 30%;
+    background-repeat: no-repeat;
+    position: relative;
+
+    img {
+      width: calc((138 / 390) * 100vw);
+      position: absolute;
+      top: calc((19 / 390) * 100vw);
+      left: calc((23 / 390) * 100vw);
+    }
+
+    .fv--title {
+      margin-bottom: calc((80 / 390) * 100vw);
+
+      h1 {
+        text-align: center;
+        @include mincho;
+        font-size: calc((30 / 390) * 100vw);
+        line-height: 150%;
+        font-weight: 300;
+        letter-spacing: calc((2 / 390) * 100vw);
+        color: #3F2F12;
+
+        span {
+          @include mincho;
+          font-size: calc((45 / 390) * 100vw);
+          line-height: 150%;
+          font-weight: 300;
+          letter-spacing: 0;
+          color: #f56902;
+
+        }
+      }
+    }
+
+    .fv--sub {
+      width: fit-content;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: calc((10 / 390) * 100vw);
+
+      .circle {
+        @include center;
+        width: calc((110 / 390) * 100vw);
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        background: radial-gradient(circle, #fefbef, #fdecb0);
+        border: calc((1 / 390) * 100vw) solid #fff;
+        box-shadow: 0px 0px 20px 10px #fcf3d7;
+        text-align: center;
+
+        h2 {
+          @include mincho;
+          font-size: calc((14 / 390) * 100vw);
+          color: #3F2F12;
+          font-weight: 600;
+          position: relative;
+
+          span {
+            @include mincho;
+            font-size: calc((28 / 390) * 100vw);
+            color: #3F2F12;
+            font-weight: 300;
+            line-height: 90%;
+          }
+
+          div {
+            width: fit-content;
+            position: absolute;
+            left: calc((10 / 390) * 100vw);
+            bottom: calc((4 / 390) * 100vw);
+
+            p {
+              @include mincho;
+              font-size: calc((12 / 390) * 100vw);
+              color: #3F2F12;
+              font-weight: 300;
+              line-height: 100%;
+            }
+          }
+        }
+
+        h3 {
+          @include mincho;
+          font-size: calc((18 / 390) * 100vw);
+          color: #3F2F12;
+          font-weight: 300;
+          line-height: 120%;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,102 @@
+@use "../global" as *;
+
+
+header{
+  @include icon($headerWave);
+  background-size: cover;
+  aspect-ratio: 1280/139;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  h1{
+    position: absolute;
+    aspect-ratio: 264/91;
+    
+    @include pc{
+      top: calc(( 16 / 1280) * 100vw);
+      left: calc(( 159 / 1280) * 100vw);
+      width: calc(( 264 / 1280) * 100vw);
+    }
+
+    @include sp{
+      top: calc(( 8 / 375) * 100vw);
+      left: calc(( 20 / 375) * 100vw);
+      width: calc(( 100 / 375) * 100vw);
+    }
+
+    img{
+      width: 100%;
+    }
+  }
+
+  .header--text{
+    position: absolute;
+    width: fit-content;
+    
+    @include pc{
+      top: calc(( 2.5 / 1280) * 100vw);
+      left: calc(( 513 / 1280) * 100vw);
+
+    }
+
+    @include sp{
+      top: calc(( 8 / 375) * 100vw);
+      left: calc(( 136 / 375) * 100vw);
+    }
+
+    a{
+      color: $cFontTitle;
+      @include hira;
+      font-weight: 300;
+      text-decoration-line: underline;
+      display: block;
+      width: fit-content;
+      margin-left: auto;
+      
+      @include pc{
+        font-size: max(calc(( 15 / 1280) * 100vw),12px);
+      }
+
+      @include sp{
+        font-size: calc(( 6 / 375) * 100vw);
+      }
+    }
+    p{
+      color: $cFontText;
+      @include hira;
+      font-weight: 300;
+      
+      @include pc{
+        font-size: max(calc(( 12 / 1280) * 100vw),10px);
+      }
+
+      @include sp{
+        font-size: calc(( 5 / 375) * 100vw);
+      }
+    }
+  }
+
+  .header--tel{
+    position: absolute;
+    top: 0;
+    aspect-ratio: 271/186;
+    @include img('header-tel.png');
+
+    @include pc{
+      width: calc(( 271 / 1280) * 100vw);
+      right: calc(( 156 / 1280) * 100vw);
+    }
+
+    @media screen and (max-width: 1000px) and (min-width: 767px){
+      right: calc(( 10 / 1280) * 100vw);
+    }
+
+    @include sp{
+      width: calc(( 95 / 375) * 100vw);
+      right: calc(( 0 / 375) * 100vw);
+    }
+  }
+}

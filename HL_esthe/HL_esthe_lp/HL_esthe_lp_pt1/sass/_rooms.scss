@@ -1,0 +1,204 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// rooms PC
+.rooms {
+  @include pc {
+    padding: calc((100 / 1280) * 100vw) calc((38 / 1280) * 100vw);
+
+    &--text {
+      margin: calc((58 / 1280) * 100vw) 0 calc((55 / 1280) * 100vw);
+
+      p {
+        color: #291A2B;
+        @include zen;
+        font-size: max(calc((16 / 1280) * 100vw), 14px);
+        font-weight: 500;
+        line-height: 168%;
+        text-align: center;
+      }
+    }
+
+    &--contents {
+      @include column(calc((50 / 1280) * 100vw));
+      align-items: center;
+
+      .tab {
+        display: flex;
+        gap: calc((6 / 1280) * 100vw);
+
+        &--category {
+          border: calc((1 / 1280) * 100vw) solid #7A4B80;
+          background: #DFD1DD;
+          padding: 0 calc((13 / 1280) * 100vw);
+          cursor: pointer;
+
+          p {
+            color: #7A4B80;
+            @include zen;
+            font-size: max(calc((13 / 1280) * 100vw), 13px);
+            font-weight: 500;
+            line-height: 200%;
+          }
+
+          &.active {
+            background: #7A4B80;
+            cursor: default;
+
+            p {
+              color: #FFF;
+            }
+          }
+
+          &.hover-scale.active {
+            transform: scale(1);
+          }
+        }
+      }
+
+      .tab--tab {
+        &:nth-child(n+3) {
+          display: none;
+        }
+
+        .tab--item {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          gap: calc((51 / 1280) * 100vw) calc((48 / 1280) * 100vw);
+
+          .card {
+            width: calc(100% / 3 - (calc((48 / 1280) * 100vw) * 2 / 3));
+            @include column(calc((15 / 1280) * 100vw));
+
+            img {
+              width: 100%;
+              height: calc((246 / 1280) * 100vw);
+              object-fit: cover;
+              border-radius: 10px;
+              background-size: cover;
+              background-repeat: no-repeat;
+              background-position: center;
+            }
+
+            h2 {
+              color: #291A2B;
+              @include zen;
+              font-size: max(calc((20 / 1280) * 100vw), 16px);
+              font-weight: 700;
+            }
+
+            p {
+              color: #291A2B;
+              @include zen;
+              font-size: max(calc((15 / 1280) * 100vw), 12px);
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// rooms SPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSP
+.rooms {
+  @include sp {
+    padding: calc((100 / 390) * 100vw) calc((25 / 390) * 100vw);
+
+    &--text {
+      margin: calc((32 / 390) * 100vw) 0 calc((34 / 390) * 100vw);
+
+      p {
+        color: #291A2B;
+        @include zen;
+        font-size: calc((16 / 390) * 100vw);
+        font-weight: 500;
+        line-height: 168%;
+        text-align: center;
+      }
+    }
+
+    &--contents {
+      @include column(calc((51 / 390) * 100vw));
+      align-items: center;
+
+      .tab {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 80%;
+        gap: calc((6 / 390) * 100vw);
+
+        &--category {
+          border: calc((1 / 390) * 100vw) solid #7A4B80;
+          background: #DFD1DD;
+          padding: 0 calc((12 / 390) * 100vw);
+          cursor: pointer;
+
+          p {
+            color: #7A4B80;
+            @include zen;
+            font-size: calc((13 / 390) * 100vw);
+            font-weight: 500;
+            line-height: 200%;
+          }
+
+          &.active {
+            background: #7A4B80;
+            cursor: default;
+
+            p {
+              color: #FFF;
+            }
+          }
+
+          &.hover-scale.active {
+            transform: scale(1);
+          }
+        }
+      }
+
+      .tab--tab {
+        &:nth-child(n+3) {
+          display: none;
+        }
+
+        .tab--item {
+          width: 100%;
+          @include column(calc((50 / 390) * 100vw));
+
+          .card {
+            width: 100%;
+            @include column(calc((16 / 390) * 100vw));
+
+            img {
+              width: 100%;
+              height: calc((194 / 390) * 100vw);
+              object-fit: cover;
+              border-radius: 10px;
+              background-size: cover;
+              background-repeat: no-repeat;
+              background-position: center;
+            }
+
+            h2 {
+              color: #291A2B;
+              @include zen;
+              font-size: calc((20 / 390) * 100vw);
+              font-weight: 700;
+            }
+
+            p {
+              color: #291A2B;
+              @include zen;
+              font-size: calc((15 / 390) * 100vw);
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+  }
+}

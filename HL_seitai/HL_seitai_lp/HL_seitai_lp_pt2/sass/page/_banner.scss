@@ -1,0 +1,29 @@
+@use "../global" as *;
+
+.banner {
+
+  @include pc {
+    padding-top: max(calc((31 / 1280) * 100vw), 130px);
+  }
+
+  @include sp {
+    padding: calc((30 / 390) * 100vw) calc((55 / 390) * 100vw) 0;
+  }
+
+  a {
+    @include img('banner.png');
+    background-size: cover;
+    display: block;
+
+    @include pc {
+      width: max(calc((704 / 1280) * 100vw), 704px);
+      aspect-ratio: 704/290;
+      margin: 0 auto;
+    }
+
+    @include sp {
+      width: 100%;
+      aspect-ratio: 280/285;
+    }
+  }
+}

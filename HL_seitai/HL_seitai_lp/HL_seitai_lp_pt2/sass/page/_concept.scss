@@ -1,0 +1,90 @@
+@use "../global" as *;
+
+.concept {
+  margin: 0 auto;
+
+  @include pc {
+    padding-top: max(calc((203 / 1280) * 100vw), 203px);
+    width: max(calc((880 / 1280) * 100vw), 704px);
+  }
+
+  @include sp {
+    padding: calc((123 / 390) * 100vw) calc((20 / 390) * 100vw) 0;
+    width: 100%;
+  }
+
+  &--pict {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+
+    @include pc {
+      width: max(calc((704 / 1280) * 100vw), 704px);
+      gap: max(calc((47 / 1280) * 100vw), 47px);
+    }
+
+    @include sp {
+      width: calc(( 297 / 390) * 100vw);
+      gap: calc((20 / 390) * 100vw);
+    }
+
+    .main--img {
+      @include img('concept-1.png');
+      aspect-ratio: 704/403;
+      width: 100%;
+    }
+
+    .sub {
+      display: flex;
+      justify-content: right;
+
+      @include pc {
+        gap: max(calc((47 / 1280) * 100vw), 47px);
+      }
+
+      @include sp {
+        gap: calc((20 / 390) * 100vw);
+      }
+
+      &--img {
+        @include img('concept-2.png');
+        aspect-ratio: 179/186;
+        height: fit-content;
+
+        @include pc {
+          width: max(calc((179 / 1280) * 100vw), 179px);
+        }
+
+        @include sp {
+          width: calc(( 95 / 390) * 100vw);
+        }
+
+        &:nth-child(2) {
+          @include img('concept-3.png');
+          aspect-ratio: 230/317;
+
+          @include pc {
+            width: max(calc((230 / 1280) * 100vw), 230px);
+          }
+
+          @include sp {
+            width: calc(( 122 / 390) * 100vw);
+          }
+        }
+      }
+    }
+  }
+
+  &--content {
+    width: fit-content;
+
+    @include pc {
+      padding-left: calc((88 / 1280) * 100vw);
+      margin-top: min(calc((-40 / 1280) * 100vw), -40px);
+    }
+
+    @include sp {
+      margin-top: calc((-5 / 390) * 100vw);
+    }
+  }
+}

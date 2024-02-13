@@ -1,0 +1,53 @@
+
+// CPointNo
+$CPointNo: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 59" fill="none"><circle cx="25" cy="25" r="25" fill="%2384B754"/><path d="M23.8 56.3854C22.84 51.6501 18.2 48.8221 16 48H34C30.16 49.5784 27.2 54.2479 26.2 56.3854C25.24 61.1207 24.2 58.3584 23.8 56.3854Z" fill="%2384B754"/></svg>');
+
+// CMore
+$CMore: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 11" fill="none"><path d="M1 1L6 5.5L1 10" stroke="%23EBEAEA" stroke-width="1.5"/></svg>');
+
+// topSubTIcon
+$topSubTIcon: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 34" fill="none"><path d="M1 1L20 33.5" stroke="%2378635C" stroke-width="0.5" stroke-dasharray="2 2"/></svg>');
+
+// topSubTIcon
+$fanItemIcon: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 59" fill="none"><circle cx="25" cy="25" r="25" fill="%2384B754"/><path d="M23.8 56.3854C22.84 51.6501 18.2 48.8221 16 48H34C30.16 49.5784 27.2 54.2479 26.2 56.3854C25.24 61.1207 24.2 58.3584 23.8 56.3854Z" fill="%2384B754"/></svg>');
+
+// blobBack
+$blobBack: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="14" viewBox="0 0 10 14" fill="none"><path d="M9 1L2 7L9 13" stroke="%23EBEAEA" stroke-width="1.5"/></svg>');
+
+
+
+// SVG使い方（色変更パターン）
+@function encode($ColorCode){
+  @return '%23' + str-slice($ColorCode,2,-1);
+}
+
+// CMore
+@function CMore($Color) {
+    @return  url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 11" fill="none"><path d="M1 1L6 5.5L1 10" stroke="#{$Color}" stroke-width="1.5"/></svg>');
+}
+
+// CMore
+@function aboutMainBtn($Color) {
+  @return  url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 40" fill="none"><path d="M16 0.5L0.5 19.5L16 40H374L390 19.5L374 0.5H16Z" fill="#{$Color}"/></svg>');
+}
+
+// cArrow
+@function cArrow($Color) {
+  @return  url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 9" fill="none"><path d="M1 1L6 7L11 1" stroke="#{$Color}" stroke-width="2"/></svg>');
+}
+
+// openアイコン
+// @function open($Color) {
+  //   @return  url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 18" fill="none"><path d="M0 9H24" stroke="#{$Color}" stroke-width="2"/><path d="M0 1H24" stroke="#{$Color}" stroke-width="2"/><path d="M0 17H24" stroke="#{$Color}" stroke-width="2"/></svg>');
+// }
+
+// closeアイコン
+// @function close($Color) {
+  //   @return  url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none"><path d="M1.51471 18.4854L18.4853 1.51479" stroke="#{$Color}" stroke-width="2"/><path d="M1.51471 1.51465L18.4853 18.4852" stroke="#{$Color}" stroke-width="2"/></svg>');
+  // }
+  
+  // ↓CSSでは
+  // background-image: svg(encode('#FFF'));
+
+
+

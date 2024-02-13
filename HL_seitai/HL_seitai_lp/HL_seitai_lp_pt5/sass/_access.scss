@@ -1,0 +1,402 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// access PC
+.access {
+  @include pc {
+    padding: calc((64 / 1280) * 100vw) 0 calc((92 / 1280) * 100vw);
+
+    .all-title {
+      &::before {
+        left: -45%;
+      }
+
+      &::after {
+        right: -45%;
+      }
+    }
+
+    .contents {
+      margin: calc((45 / 1280) * 100vw) auto calc((90 / 1280) * 100vw);
+      @include column(calc((50 / 1280) * 100vw));
+      width: max(calc((965 / 1280) * 100vw), 700px);
+
+      .item {
+        display: flex;
+        gap: calc((1 / 1280) * 100vw);
+
+        .card {
+          width: calc(50% - calc((0.5 / 1280) * 100vw));
+          @include column(calc((5 / 1280) * 100vw));
+
+          .img {
+            width: 100%;
+            height: max(calc((282 / 1280) * 100vw), 230px);
+            @include img('is-content-back.jpg');
+            background-size: cover;
+          }
+
+          .time {
+            width: 100%;
+            padding: calc((16 / 1280) * 100vw);
+            background: #FEF5D8;
+            @include column(calc((15 / 1280) * 100vw));
+
+            .title {
+              text-align: center;
+
+              h2 {
+                color: #3F2F12;
+                @include mincho;
+                font-size: max(calc((18 / 1280) * 100vw), 16px);
+                font-style: normal;
+                font-weight: 600;
+                line-height: 100%;
+                @include center;
+                gap: calc((32 / 1280) * 100vw);
+
+                &::before,
+                &::after {
+                  content: '';
+                  display: block;
+                  width: 30%;
+                  height: calc((2 / 1280) * 100vw);
+                  background: rgba(63, 47, 18, 0.80);
+                }
+              }
+            }
+
+            .table {
+              @include column(calc((10 / 1280) * 100vw));
+
+              table {
+                border-collapse: unset;
+                text-indent: unset;
+                border-spacing: unset;
+
+                tbody {
+                  tr {
+                    td {
+                      text-align: center;
+                      vertical-align: middle;
+                      width: 50%;
+                      padding: calc((10 / 1280) * 100vw) 0;
+                      border: 1px solid #F69904;
+                      border-bottom: none;
+                      background: #F58002;
+                      color: #FFF;
+                      @include kaku;
+                      font-size: max(calc((14 / 1280) * 100vw), 10px);
+                      font-weight: 800;
+                      line-height: 150%;
+
+                      &:nth-of-type(2) {
+                        border: 1px solid #F69904;
+                        border-bottom: none;
+                        background: #FFF;
+                        color: #000;
+                      }
+                    }
+
+                    &:last-child {
+                      td {
+                        border-bottom: 1px solid #F69904;
+                      }
+                    }
+                  }
+                }
+
+                &:first-child {
+                  tbody {
+                    tr:nth-of-type(n) {
+                      td:first-child {
+                        border-bottom: 1px solid #FFF;
+                      }
+                    }
+
+                    tr:last-child {
+                      td:first-child {
+                        border-bottom: 1px solid #F69904;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .map {
+          width: calc(50% - calc((0.5 / 1280) * 100vw));
+
+          iframe {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+
+      .address {
+        padding: calc((42 / 1280) * 100vw) calc((78 / 1280) * 100vw) calc((43 / 1280) * 100vw);
+        background: #FEF5D8;
+        @include column(calc((25 / 1280) * 100vw));
+
+        .title {
+          h2 {
+            color: #F58002;
+            @include mincho;
+            font-size: max(calc((24 / 1280) * 100vw), 20px);
+            font-weight: 600;
+            line-height: 100%;
+          }
+        }
+
+        .text {
+          table {
+            tbody {
+              tr {
+                td {
+                  color: #000;
+                  @include mincho;
+                  font-size: max(calc((13 / 1280) * 100vw), 10px);
+                  font-weight: 400;
+                  line-height: 100%;
+                  padding-top: calc((20 / 1280) * 100vw);
+
+                  &:nth-of-type(1) {
+                    width: 30%;
+                    padding-top: unset;
+                  }
+
+                  &:nth-of-type(2) {
+                    width: 70%;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .fast-btn {
+      @include column(calc((20 / 1280) * 100vw));
+
+      a {
+        &:nth-of-type(1) {
+          background: linear-gradient(180deg, #FFF 40%, #EFEFEE 100%);
+          border: 2px solid #2F917A;
+
+          h2 {
+            color: #2F917A;
+            font-size: max(calc((31 / 1280) * 100vw), 27px);
+            letter-spacing: calc((0.93 / 1280) * 100vw);
+            text-shadow: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+// access SPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSP
+.access {
+  @include sp {
+    padding: calc((64 / 390) * 100vw) calc((24 / 390) * 100vw) calc((81 / 390) * 100vw);
+
+    .all-title {
+      &::before {
+        left: -35%;
+      }
+
+      &::after {
+        right: -35%;
+      }
+    }
+
+    .contents {
+      margin: calc((40 / 390) * 100vw) auto calc((120 / 390) * 100vw);
+      @include column(calc((50 / 390) * 100vw));
+      width: 100%;
+
+      .item {
+        @include column(calc((0 / 390) * 100vw));
+
+        .card {
+          width: 100%;
+          @include column(calc((0 / 390) * 100vw));
+
+          .img {
+            width: 100%;
+            height: calc((215 / 390) * 100vw);
+            @include img('is-content-back.jpg');
+            background-size: cover;
+          }
+
+          .time {
+            width: 100%;
+            padding: calc((16 / 390) * 100vw);
+            background: #FEF5D8;
+            @include column(calc((15 / 390) * 100vw));
+
+            .title {
+              text-align: center;
+
+              h2 {
+                color: #3F2F12;
+                @include mincho;
+                font-size: calc((18 / 390) * 100vw);
+                font-style: normal;
+                font-weight: 600;
+                line-height: 100%;
+                @include center;
+                gap: calc((30 / 390) * 100vw);
+
+                &::before,
+                &::after {
+                  content: '';
+                  display: block;
+                  width: 28%;
+                  height: calc((2 / 390) * 100vw);
+                  background: rgba(63, 47, 18, 0.80);
+                }
+              }
+            }
+
+            .table {
+              @include column(calc((10 / 390) * 100vw));
+
+              table {
+                border-collapse: unset;
+                text-indent: unset;
+                border-spacing: unset;
+
+                tbody {
+                  tr {
+                    td {
+                      text-align: center;
+                      vertical-align: middle;
+                      width: 50%;
+                      padding: calc((10 / 390) * 100vw) 0;
+                      border: 1px solid #F69904;
+                      border-bottom: none;
+                      background: #F58002;
+                      color: #FFF;
+                      @include kaku;
+                      font-size: calc((14 / 390) * 100vw);
+                      font-weight: 800;
+                      line-height: 150%;
+
+                      &:nth-of-type(2) {
+                        border: 1px solid #F69904;
+                        border-bottom: none;
+                        font-size: calc((12 / 390) * 100vw);
+                        background: #FFF;
+                        color: #000;
+                      }
+                    }
+
+                    &:last-child {
+                      td {
+                        border-bottom: 1px solid #F69904;
+                      }
+                    }
+                  }
+                }
+
+                &:first-child {
+                  tbody {
+                    tr:nth-of-type(n) {
+                      td:first-child {
+                        border-bottom: 1px solid #FFF;
+                      }
+                    }
+
+                    tr:last-child {
+                      td:first-child {
+                        border-bottom: 1px solid #F69904;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .map {
+          width: 100%;
+          height: calc((364 / 390) * 100vw);
+
+          iframe {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+
+      .address {
+        padding: calc((22 / 390) * 100vw) calc((30 / 390) * 100vw) calc((30 / 390) * 100vw);
+        background: #FEF5D8;
+        @include column(calc((25 / 390) * 100vw));
+
+        .title {
+          h2 {
+            color: #F58002;
+            @include mincho;
+            font-size: max(calc((24 / 390) * 100vw), 20px);
+            font-weight: 600;
+            line-height: 100%;
+          }
+        }
+
+        .text {
+          table {
+            tbody {
+              tr {
+                display: block;
+                padding: 0 0 calc((20 / 390) * 100vw);
+
+                &:last-child {
+                  padding: 0;
+                }
+
+                td {
+                  display: block;
+                  color: #000;
+                  @include mincho;
+                  font-size: calc((15 / 390) * 100vw);
+                  font-weight: 400;
+                  line-height: 100%;
+                  padding-top: calc((10 / 390) * 100vw);
+
+                  &:nth-of-type(1) {
+                    padding-top: unset;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .fast-btn {
+      @include column(calc((20 / 390) * 100vw));
+
+      a {
+        &:nth-of-type(1) {
+          background: linear-gradient(180deg, #FFF 40%, #EFEFEE 100%);
+          border: 2px solid #2F917A;
+
+          h2 {
+            color: #2F917A;
+            font-size: calc((16 / 390) * 100vw);
+            letter-spacing: calc((0.93 / 390) * 100vw);
+            text-shadow: none;
+          }
+        }
+      }
+    }
+  }
+}

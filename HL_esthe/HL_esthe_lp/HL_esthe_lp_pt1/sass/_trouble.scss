@@ -1,0 +1,232 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// trouble PC
+.trouble{
+  @include pc{
+    padding: calc(( 100 / 1280) * 100vw) 0 0;
+
+    &--title{
+      margin-bottom: calc(( 40 / 1280) * 100vw);
+      h2{
+        color: #291A2B;
+        @include zen;
+        font-size: max(calc(( 30 / 1280) * 100vw),25px);
+        font-weight: 700;
+        letter-spacing: calc(( 3 / 1280) * 100vw);
+        text-align: center;
+      }
+    }
+
+    &--contents{
+      display: flex;
+      justify-content: center;
+      gap: calc(( 53 / 1280) * 100vw);
+
+      .card{
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: calc(( 9 / 1280) * 100vw);
+        
+        &--title{
+          width: max(calc(( 223 / 1280) * 100vw),150px);
+          height: max(calc(( 182 / 1280) * 100vw),120px);
+          background-image: url('/img/cloud.svg');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          @include center;
+
+          p{
+            color: #291A2B;
+            text-align: center;
+            @include zen;
+            font-size: max(calc(( 16 / 1280) * 100vw),12px);
+            font-weight: 700;
+            letter-spacing: calc(( 1.6 / 1280) * 100vw);
+          }
+        }
+
+        &--img{
+          width: calc(( 131 / 1280) * 100vw);
+          height: calc(( 218 / 1280) * 100vw);
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+
+        &:nth-child(1){
+          .card--img{
+            background-image: url('/img/trouble-1.png');
+          }
+        }
+
+        &:nth-child(2){
+          .card--img{
+            background-image: url('/img/trouble-2.png');
+          }
+        }
+
+        &:nth-child(3){
+          .card--img{
+            background-image: url('/img/trouble-3.png');
+          }
+        }
+
+        &:nth-child(4){
+          .card--img{
+            background-image: url('/img/trouble-4.png');
+          }
+        }
+      }
+    }
+
+    &--sub--title{
+      margin: calc(( 60 / 1280) * 100vw) 0 calc(( 10 / 1280) * 100vw);
+      p{
+        color: #291A2B;
+        text-align: center;
+        @include zen;
+        font-size: max(calc(( 28 / 1280) * 100vw),20px);
+        font-weight: 700;
+        letter-spacing: calc(( 2.8 / 1280) * 100vw);
+      }
+    }
+
+    &--triangle{
+      width: 100%;
+      display: flex;
+
+      .triangle{
+        width: 50%;
+        height: calc(( 90 / 1280) * 100vw);
+        background-image: $triangle;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        &:nth-child(2){
+          transform: scale(-1,1);
+        }
+      }
+    }
+  }
+}
+
+// trouble SP
+.trouble{
+  @include sp{
+    padding: calc(( 100 / 390) * 100vw) 0 0;
+
+    &--title{
+      margin-bottom: calc(( 58 / 390) * 100vw);
+
+      h2{
+        color: #291A2B;
+        @include zen;
+        font-size: calc(( 26 / 390) * 100vw);
+        font-weight: 700;
+        letter-spacing: calc(( 1.3 / 390) * 100vw);
+        text-align: center;
+      }
+    }
+
+    &--contents{
+      width: 100%;
+      padding: 0 calc(( 100 / 390) * 100vw) calc(( 20 / 390) * 100vw) calc(( 100 / 390) * 100vw);
+      display: flex;
+      gap: calc(( 24 / 390) * 100vw);
+      overflow-x: scroll;
+
+      .card{
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        &--title{
+          width: calc(( 188 / 390) * 100vw);
+          height: calc(( 154 / 390) * 100vw);
+          background-image: url('/img/cloud.svg');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          @include center;
+
+          p{
+            color: #291A2B;
+            text-align: center;
+            @include zen;
+            font-size: calc(( 13 / 390) * 100vw);
+            font-weight: 700;
+            letter-spacing: calc(( 1.3 / 390) * 100vw);
+          }
+        }
+
+        &--img{
+          width: calc(( 113 / 390) * 100vw);
+          height: calc(( 188 / 390) * 100vw);
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+
+        &:nth-child(1){
+          .card--img{
+            background-image: url('/img/trouble-1.png');
+          }
+        }
+
+        &:nth-child(2){
+          .card--img{
+            background-image: url('/img/trouble-2.png');
+          }
+        }
+
+        &:nth-child(3){
+          .card--img{
+            background-image: url('/img/trouble-3.png');
+          }
+        }
+
+        &:nth-child(4){
+          .card--img{
+            background-image: url('/img/trouble-4.png');
+          }
+        }
+      }
+    }
+
+    &--sub--title{
+      margin: calc(( 40 / 390) * 100vw) 0 calc(( 19 / 390) * 100vw);
+      p{
+        color: #291A2B;
+        text-align: center;
+        @include zen;
+        font-size: calc(( 22 / 390) * 100vw);
+        font-weight: 700;
+        letter-spacing: calc(( 1.1 / 390) * 100vw);
+      }
+    }
+
+    &--triangle{
+      width: 100%;
+      display: flex;
+
+      .triangle{
+        width: 50%;
+        height: calc(( 90 / 390) * 100vw);
+        background-image: $triangleSP;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        &:nth-child(2){
+          transform: scale(-1,1);
+        }
+      }
+    }
+  }
+}

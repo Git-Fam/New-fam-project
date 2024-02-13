@@ -1,0 +1,12 @@
+@use "../global" as *;
+
+.access{
+
+  @include pc{
+    padding: calc(( 70 / 1280) * 100vw) 0 calc(( 77 / 1280) * 100vw);
+  }
+
+  @include sp{
+    padding: calc(( 60 / 375) * 100vw) 0 calc(( 31 / 375) * 100vw);
+  }
+}

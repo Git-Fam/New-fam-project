@@ -1,0 +1,111 @@
+@use "../global" as *;
+
+.menu {
+  margin: 0 auto;
+
+  @include pc {
+    padding: max(calc((162 / 1280) * 100vw), 162px) 0 max(calc((145 / 1280) * 100vw), 145px);
+    width: max(calc((880 / 1280) * 100vw), 704px);
+  }
+
+  @include sp {
+    padding: calc((140 / 390) * 100vw) calc((20 / 390) * 100vw) 0;
+    width: 100%;
+  }
+
+  .c__titles {
+    @include pc{
+      padding-left: max(calc(( 45 / 1280) * 100vw),45px);
+    }
+    @include sp {
+      text-align: center;
+    }
+  }
+
+  &--items {
+
+    @include pc {
+      margin-top: max(calc((75 / 1280) * 100vw), 75px);
+    }
+
+    @include sp {
+      margin-top: calc((47 / 390) * 100vw);
+    }
+
+    .slicker--menu {
+
+      .slick-prev {
+
+        @include sp {
+          left: calc((3 / 390) * 100vw);
+          z-index: 4;
+        }
+      }
+
+      .slick-next {
+
+        @include sp {
+          right: calc((15 / 390) * 100vw);
+          z-index: 4;
+        }
+      }
+
+      .slick-prev:before,
+      .slick-next:before {
+        font-family: 'slick';
+        line-height: 1;
+        opacity: .75;
+        color: $mainColor;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+
+        @include pc {
+          font-size: max(calc((30 / 1280) * 100vw), 30px);
+        }
+
+        @include sp {
+          font-size: calc((30 / 390) * 100vw);
+        }
+      }
+
+      .slick-dots {
+        width: fit-content;
+
+        @include pc {
+          left: max(calc((100 / 1280) * 100vw), 100px);
+          bottom: min(calc((-150 / 1280) * 100vw), -150px);
+        }
+
+        @include sp {
+          left: calc((20 / 390) * 100vw);
+          bottom: calc((-30 / 390) * 100vw);
+        }
+      }
+
+      .slick-dots li {
+
+        @include pc {
+          margin: 0 max(calc((10 / 1280) * 100vw), 10px);
+        }
+
+        @include sp {
+          margin: 0 calc((10 / 390) * 100vw);
+        }
+      }
+
+      .slick-dots li button:before {
+        background: $mainColor;
+
+        @include pc {
+          width: max(calc((30 / 1280) * 100vw), 30px);
+          height: max(calc((3 / 1280) * 100vw), 3px);
+        }
+
+        @include sp {
+          width: calc((30 / 390) * 100vw);
+          height: calc((3 / 390) * 100vw);
+        }
+      }
+    }
+  }
+}

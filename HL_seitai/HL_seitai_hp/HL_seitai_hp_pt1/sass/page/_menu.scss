@@ -1,0 +1,495 @@
+@use "../global" as *;
+
+// menu
+.menu--wapper {
+
+
+  // menu--general
+  .menu--general {
+
+    @include pc {
+      padding: calc((172 / 1280) * 100vw) 0 calc((87 / 1280) * 100vw);
+    }
+
+    @include sp {
+      padding: calc((157 / 390) * 100vw) 0 calc((70 / 390) * 100vw);
+    }
+
+    &--text {
+      text-align: center;
+
+      @include pc {
+        margin: calc((40 / 1280) * 100vw) 0 calc((50 / 1280) * 100vw);
+      }
+
+      @include sp {
+        margin: calc((40 / 390) * 100vw) 0 calc((40 / 390) * 100vw);
+      }
+
+      span {
+        color: $mainColor;
+        @include serif;
+        font-weight: 600;
+        background: linear-gradient(transparent 70%, #F5EA8D 70%);
+
+        @include pc {
+          font-size: max(calc((22 / 1280) * 100vw), 18px);
+          letter-spacing: calc((3.52 / 1280) * 100vw);
+          line-height: 254%;
+        }
+
+        @include sp {
+          font-size: max(calc((19 / 390) * 100vw), 18px);
+          letter-spacing: calc((3.04 / 390) * 100vw);
+          line-height: 205%;
+        }
+      }
+    }
+
+    &--subText {
+
+      @include pc {
+        width: max(calc((830 / 1280) * 100vw), 700px);
+        margin: 0 auto;
+        @include column(calc((40 / 1280) * 100vw));
+      }
+
+      @include sp {
+        width: 100%;
+        padding: 0 calc((33 / 390) * 100vw);
+        @include column(calc((30 / 390) * 100vw));
+      }
+
+      p {
+        color: #78635C;
+        text-align: center;
+        @include sans;
+        font-weight: 300;
+
+        @include pc {
+          font-size: max(calc((14 / 1280) * 100vw), 12px);
+          letter-spacing: calc((0.28 / 1280) * 100vw);
+          line-height: 228%;
+          /* 228.571% */
+        }
+
+        @include sp {
+          font-size: calc((14 / 390) * 100vw);
+          letter-spacing: calc((0.28 / 390) * 100vw);
+          line-height: 207%;
+        }
+      }
+    }
+  }
+
+
+  // menu--flow
+  .menu--flow{
+
+    @include pc{
+      padding: 0 calc(( 20 / 1280) * 100vw);
+    }
+
+    &--wap{
+      background: #F8F3EE;
+
+      @include pc{
+        padding: calc(( 106 / 1280) * 100vw) 0 calc(( 91 / 1280) * 100vw);
+      }
+
+      @include sp{
+        padding: calc(( 78 / 390) * 100vw) calc(( 35 / 390) * 100vw) calc(( 80 / 390) * 100vw);
+      }
+
+      &--content{
+        display: flex;
+
+        @include pc{
+          width: max(calc(( 982 / 1280) * 100vw),700px);
+          margin: calc(( 69 / 1280) * 100vw) auto 0;
+          gap: calc(( 50 / 1280) * 100vw) calc(( 34 / 1280) * 100vw);
+          flex-wrap: wrap;
+        }
+
+        @include sp{
+          width: 100%;
+          margin: calc(( 68 / 390) * 100vw) auto 0;
+          gap: calc(( 80 / 390) * 100vw);
+          flex-direction: column;
+        }
+
+        .item{
+          position: relative;
+
+          @include pc{
+            width: calc( 100% / 4 - calc(( 25.5 / 1280) * 100vw) );
+          }
+
+          @include sp{
+            width: 100%;
+          }
+
+          .number{
+            aspect-ratio: 1/1;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            
+            @include pc{
+              width: calc(( 46 / 1280) * 100vw);
+              top: calc(( -28 / 1280) * 100vw);
+            }
+
+            @include sp{
+              width: calc(( 46 / 390) * 100vw);
+              top: calc(( -28 / 390) * 100vw);
+            }
+          }
+
+          .img{
+            aspect-ratio: 220/160;
+            width: 100%;
+            border-radius: 10px;
+          }
+
+          // 1
+          &:nth-child(1){
+            .number{
+              @include img("menu-flow-no1.png");
+            }
+
+            .img{
+              @include img("menu-flow-1.png");
+              background-size: cover;
+            }
+          }
+
+          // 2
+          &:nth-child(2){
+            .number{
+              @include img("menu-flow-no2.png");
+            }
+
+            .img{
+              @include img("menu-flow-2.png");
+              background-size: cover;
+            }
+          }
+
+          // 3
+          &:nth-child(3){
+            .number{
+              @include img("menu-flow-no3.png");
+            }
+
+            .img{
+              @include img("menu-flow-3.png");
+              background-size: cover;
+            }
+          }
+
+          // 4
+          &:nth-child(4){
+            .number{
+              @include img("menu-flow-no4.png");
+            }
+
+            .img{
+              @include img("menu-flow-4.png");
+              background-size: cover;
+            }
+          }
+
+          // 5
+          &:nth-child(5){
+            .number{
+              @include img("menu-flow-no5.png");
+            }
+
+            .img{
+              @include img("menu-flow-5.jpg");
+              background-size: cover;
+            }
+          }
+
+          // 6
+          &:nth-child(6){
+            .number{
+              @include img("menu-flow-no6.png");
+            }
+
+            .img{
+              @include img("menu-flow-6.png");
+              background-size: cover;
+            }
+          }
+
+          // 2の倍数
+          &:nth-child(2n){
+            @include pc{
+              margin-top: calc(( 18 / 1280) * 100vw);
+            }
+          }
+
+          h3{
+            color: $mainColor;
+            @include sans;
+            font-weight: 600;
+            line-height: 100%;
+            text-align: center;
+
+            @include pc{
+              font-size: max(calc(( 16 / 1280) * 100vw),12px);
+              letter-spacing: calc(( 0.8 / 1280) * 100vw);
+              margin: calc(( 18 / 1280) * 100vw) 0 calc(( 15 / 1280) * 100vw);
+            }
+
+            @include sp{
+              font-size: calc(( 16 / 390) * 100vw);
+              letter-spacing: calc(( 0.8 / 390) * 100vw);
+              margin: calc(( 18 / 390) * 100vw) 0 calc(( 19 / 390) * 100vw);
+            }
+          }
+
+          p{
+            color: $mainColor;
+            @include sans;
+            font-weight: 300;
+            line-height: 233%;
+            
+            @include pc{
+              font-size: max(calc(( 12 / 1280) * 100vw),10px);
+              letter-spacing: calc(( 0.84 / 1280) * 100vw);
+            }
+
+            @include sp{
+              font-size: calc(( 12 / 390) * 100vw);
+              letter-spacing: calc(( 0.84 / 390) * 100vw);
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  // menu--column
+  .menu--column{
+
+    @include pc{
+      padding:  0 calc(( 20 / 1280) * 100vw);
+    }
+  }
+
+
+  // menu--fee
+  .menu--fee{
+
+    @include pc{
+      position: relative;
+      padding: calc(( 100 / 1280) * 100vw) 0 calc(( 120 / 1280) * 100vw);
+    }
+
+    @include sp{
+      padding: calc(( 91 / 390) * 100vw) calc(( 20 / 390) * 100vw);
+    }
+
+    .campaign--tag{
+      aspect-ratio: 1/1;
+      width: calc(( 133 / 1280) * 100vw);
+      @include img("campaign.png");
+      position: absolute;
+      top: calc(( 80 / 1280) * 100vw);
+      right: calc(( 118 / 1280) * 100vw);
+    }
+
+    &--campaign{
+      width: fit-content;
+      position: relative;
+
+      @include pc{
+        margin: calc(( 47 / 1280) * 100vw) auto 0;
+      }
+
+      @include sp{
+        margin: calc(( 47 / 390) * 100vw) auto 0;
+      }
+
+      &::before{
+        content: "";
+        display: block;
+        border-top: solid 1px $darkGreen;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%) rotate(60deg);
+
+        @include pc{
+          width: calc(( 35 / 1280) * 100vw);
+          left: calc(( -40 / 1280) * 100vw);
+        }
+
+        @include sp{
+          width: calc(( 30 / 390) * 100vw);
+          left: calc(( -40 / 390) * 100vw);
+        }
+      }
+
+      &::after{
+        content: "";
+        display: block;
+        border-top: solid 1px $darkGreen;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%) rotate(300deg);
+
+        @include pc{
+          width: calc(( 35 / 1280) * 100vw);
+          right: calc(( -40 / 1280) * 100vw);
+        }
+
+        @include sp{
+          width: calc(( 30 / 390) * 100vw);
+          right: calc(( -40 / 390) * 100vw); 
+        }
+      }
+
+      p{
+        color: $darkGreen;
+        @include sans;
+        font-weight: 600;
+        line-height: 100%;
+        
+        @include pc{
+          font-size: max(calc(( 24 / 1280) * 100vw),20px);
+          letter-spacing: calc(( 1.2 / 1280) * 100vw);
+        }
+
+        @include sp{
+          font-size: calc(( 21 / 390) * 100vw);
+          letter-spacing: calc(( 1.05 / 390) * 100vw);
+        }
+      }
+    }
+
+    &--text{
+
+      @include pc{
+        width: max(calc(( 650 / 1280) * 100vw),600px);
+        margin: calc(( 40 / 1280) * 100vw) auto 0;
+      }
+
+      @include sp{
+        width: 100%;
+        margin: calc(( 27 / 390) * 100vw) auto 0;
+      }
+
+      p{
+        color:  $mainColor;
+        text-align: center;
+        @include sans;
+        font-weight: 600;
+        line-height: 207%;
+        
+        @include pc{
+          font-size: max(calc(( 14 / 1280) * 100vw),10px);
+          letter-spacing: calc(( 0.98 / 1280) * 100vw);
+        }
+
+        @include sp{
+          font-size: calc(( 14 / 390) * 100vw);
+          letter-spacing: calc(( 0.98 / 390) * 100vw);
+        }
+      }
+    }
+
+    &--content{
+      display: flex;
+      justify-content: center;
+
+      @include pc{
+        margin: calc(( 50 / 1280) * 100vw) auto 0;
+        gap: calc(( 30 / 1280) * 100vw);
+      }
+
+      @include sp{
+        flex-direction: column;
+        margin: calc(( 30 / 390) * 100vw) auto 0;
+        gap: calc(( 30 / 390) * 100vw);
+      }
+
+      .item{
+        border: 1px dashed $mainColor;
+        text-align: center;
+
+        @include pc{
+          width: max(calc(( 470 / 1280) * 100vw),300px);
+          padding: calc(( 50 / 1280) * 100vw) 0 calc(( 68 / 1280) * 100vw);
+        }
+
+        @include sp{
+          width: 100%;
+          padding: calc(( 40 / 390) * 100vw) 0 calc(( 60 / 390) * 100vw);
+        }
+
+        h3{
+          color: $mainColor;
+          @include sans;
+          font-weight: 600;
+          line-height: 100%;
+          
+          @include pc{
+            font-size: max(calc(( 18 / 1280) * 100vw),14px);
+            letter-spacing: calc(( 0.9 / 1280) * 100vw);
+            margin-bottom: calc(( 30 / 1280) * 100vw);
+          }
+
+          @include sp{
+            font-size: calc(( 18 / 390) * 100vw);
+            letter-spacing: calc(( 0.9 / 390) * 100vw);
+            margin-bottom: calc(( 23 / 390) * 100vw);
+          }
+        }
+
+        .normal{
+          color: $mainColor;
+          @include sans;
+          font-weight: 300;
+          line-height: 100%;
+          
+          @include pc{
+            font-size: max(calc(( 14 / 1280) * 100vw),10px);
+            letter-spacing: calc(( 0.7 / 1280) * 100vw);
+            margin-bottom: calc(( 10 / 1280) * 100vw);
+          }
+
+          @include sp{
+            font-size: calc(( 14 / 390) * 100vw);
+            letter-spacing: calc(( 0.7 / 390) * 100vw);
+            margin-bottom: calc(( 10 / 390) * 100vw);
+          }
+
+        }
+
+        .special{
+          color: $mainColor;
+          @include sans;
+          font-weight: 600;
+          line-height: 100%;
+          background: linear-gradient(transparent 70%, #F5EA8D 70%);
+          width: fit-content;
+          margin: 0 auto;
+          
+          @include pc{
+            font-size: max(calc(( 17 / 1280) * 100vw),12px);
+            letter-spacing: calc(( 1.7 / 1280) * 100vw);
+          }
+
+          @include sp{
+            font-size: calc(( 17 / 390) * 100vw);
+            letter-spacing: calc(( 1.7 / 390) * 100vw);
+          }
+        }
+      }
+    }
+  }
+}

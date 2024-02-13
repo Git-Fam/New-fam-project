@@ -1,0 +1,191 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// is PC
+.is {
+  @include pc {
+
+    .contents {
+      padding: calc((60 / 1280) * 100vw) 0 calc((56 / 1280) * 100vw) calc((160 / 1280) * 100vw);
+      @include img('is-content-back.jpg');
+      background-size: cover;
+      background-position: bottom 55% center;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(244, 242, 240, 0.77);
+        width: 100%;
+        height: 100%;
+      }
+
+      &--in {
+        position: relative;
+        @include column(calc((13 / 1280) * 100vw));
+
+        .title {
+          width: fit-content;
+
+          h2 {
+            color: #000;
+            @include mincho;
+            font-size: max(calc((29 / 1280) * 100vw), 20px);
+            font-weight: 600;
+            letter-spacing: calc((0.58 / 1280) * 100vw);
+
+            span {
+              color: #F69904;
+              @include mincho;
+              font-size: max(calc((30 / 1280) * 100vw), 25px);
+              font-weight: 600;
+              letter-spacing: calc((0.66 / 1280) * 100vw);
+            }
+          }
+        }
+
+        .text {
+          width: max(calc((486 / 1280) * 100vw), 300px);
+
+          h2 {
+            color: #3F2F12;
+            @include mincho;
+            font-size: max(calc((19 / 1280) * 100vw), 15px);
+            font-weight: 600;
+            line-height: 263%;
+            letter-spacing: calc((0.38 / 1280) * 100vw);
+
+            span {
+              color: #F69904;
+              @include mincho;
+              font-size: max(calc((28 / 1280) * 100vw), 20px);
+              font-weight: 600;
+              line-height: normal;
+              letter-spacing: calc((0.56 / 1280) * 100vw);
+            }
+          }
+        }
+
+        .img--contents {
+          .img {
+            position: absolute;
+
+            &:nth-child(1) {
+              width: calc((213 / 1280) * 100vw);
+              height: calc((147 / 1280) * 100vw);
+              @include img('is-content-1.jpg');
+              top: max(calc((59 / 1280) * 100vw), 59px);
+              right: calc((315 / 1280) * 100vw);
+            }
+
+            &:nth-child(2) {
+              width: calc((168 / 1280) * 100vw);
+              height: calc((116 / 1280) * 100vw);
+              @include img('is-content-2.jpg');
+              top: max(calc((118 / 1280) * 100vw), 118px);
+              right: calc((160 / 1280) * 100vw);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// is SPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSP
+.is {
+  @include sp {
+
+    .contents {
+      padding: calc((43 / 390) * 100vw) 0 calc((60 / 390) * 100vw);
+      @include img('is-content-back.jpg');
+      background-size: cover;
+      background-position: center left;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(244, 242, 240, 0.77);
+        width: 100%;
+        height: 100%;
+      }
+
+      &--in {
+        position: relative;
+        @include column(calc(23 / 390) * 100vw);
+
+        .title {
+          text-align: center;
+
+          h2 {
+            color: #000;
+            @include mincho;
+            font-size: calc((18 / 390) * 100vw);
+            font-weight: 600;
+            letter-spacing: calc((0.58 / 390) * 100vw);
+
+            span {
+              color: #F69904;
+              @include mincho;
+              font-size: calc((20 / 390) * 100vw);
+              font-weight: 600;
+              letter-spacing: calc((0.66 / 390) * 100vw);
+            }
+          }
+        }
+
+        .text {
+          width: calc((280 / 390) * 100vw);
+          margin: 0 auto;
+
+          h2 {
+            color: #3F2F12;
+            @include mincho;
+            font-size: calc((14 / 390) * 100vw);
+            font-weight: 600;
+            line-height: 214%;
+            letter-spacing: calc((0.2 / 390) * 100vw);
+
+            span {
+              color: #F69904;
+              @include mincho;
+              font-size: calc((18 / 390) * 100vw);
+              font-weight: 600;
+              line-height: normal;
+              letter-spacing: calc((0.36 / 390) * 100vw);
+            }
+          }
+        }
+
+        .img--contents {
+          margin-top: calc((20 / 390) * 100vw);
+          padding: 0 calc((39 / 390) * 100vw);
+
+          .img {
+
+            &:nth-child(1) {
+              width: calc((213 / 390) * 100vw);
+              height: calc((147 / 390) * 100vw);
+              @include img('is-content-1.jpg');
+            }
+
+            &:nth-child(2) {
+              position: absolute;
+              width: calc((168 / 390) * 100vw);
+              height: calc((116 / 390) * 100vw);
+              @include img('is-content-2.jpg');
+              bottom: calc((-20 / 390) * 100vw);
+              right: calc((51 / 390) * 100vw);
+            }
+          }
+        }
+      }
+    }
+  }
+}

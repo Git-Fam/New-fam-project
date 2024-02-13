@@ -1,0 +1,116 @@
+@use "../global" as *;
+
+.greeting {
+  margin: 0 auto;
+
+  @include pc {
+    padding-top: max(calc((108 / 1280) * 100vw), 108px);
+    width: max(calc((880 / 1280) * 100vw), 704px);
+  }
+
+  @include sp {
+    padding: calc((100 / 390) * 100vw) calc((20 / 390) * 100vw) 0;
+    width: 100%;
+  }
+
+  &--img{
+    width: 100%;
+    position: relative;
+
+    &:before{
+      content: '';
+      position: absolute;
+      background: #F6F6F6;
+      
+      @include pc{
+        aspect-ratio: 352/370;
+        top: max(calc(( 40 / 1280) * 100vw),40px);
+        right: 0;
+        width: max(calc((352 / 1280) * 100vw), 352px);
+      }
+
+      @include sp{
+        aspect-ratio: 140/200;
+        top: calc(( 40 / 390) * 100vw);
+        right: 0;
+        width: calc(( 140 / 390) * 100vw);
+      }
+    }
+
+    &--item{
+      @include img('greeting-1.png');
+      background-size: cover;
+      background-position: top center;
+      position: relative;
+      
+      @include pc{
+        aspect-ratio: 704/370;
+        width: max(calc((704 / 1280) * 100vw), 704px);
+      }
+  
+      @include sp{
+        aspect-ratio: 304/200;
+        width: calc(( 304 / 390) * 100vw);
+      }
+
+    }
+
+    &.greeting--img--bottom{
+
+      @include pc{
+        margin-top: max(calc(( 136 / 1280) * 100vw),136px);
+      }
+
+      @include sp{
+        margin-top: calc(( 80 / 390) * 100vw);
+      }
+
+      &:before{
+        content: '';
+        position: absolute;
+        background: #F6F6F6;
+        
+        @include pc{
+          aspect-ratio: 670/370;
+          top: max(calc(( 66 / 1280) * 100vw),66px);
+          right: 0;
+          width: max(calc((670 / 1280) * 100vw), 670px);
+        }
+
+        @include sp{
+          aspect-ratio: 140/200;
+          top: calc(( 40 / 390) * 100vw);
+          right: 0;
+          width: calc(( 140 / 390) * 100vw);
+        }
+      }
+
+      .greeting--img--item{
+        @include img('greeting-2.png');
+        background-size: cover;
+
+        @include pc{
+          aspect-ratio: 509/370;
+          width: max(calc((509 / 1280) * 100vw), 509px);
+        }
+
+        @include sp{
+          aspect-ratio: 280/200;
+          width: calc(( 280 / 390) * 100vw);
+        }
+      }
+    }
+  }
+
+  &--content{
+    width: fit-content;
+
+    @include pc{
+      padding: max(calc(( 84 / 1280) * 100vw),84px) 0 0 max(calc(( 87 / 1280) * 100vw),87px);
+    }
+
+    @include sp{
+      padding: calc(( 70 / 390) * 100vw) 0 0;
+    }
+  }
+}

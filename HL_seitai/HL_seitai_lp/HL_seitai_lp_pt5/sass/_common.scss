@@ -1,0 +1,330 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+
+// 表示・非表示
+.sp {
+  @include pc {
+    display: none !important;
+  }
+}
+
+.pc {
+  @include sp {
+    display: none !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 10%;
+}
+
+body {
+
+  &.active {
+    overflow: hidden;
+  }
+}
+
+.wapper {
+  overflow: hidden;
+}
+
+
+// 吹き出しタイトル PC
+.talkBubble {
+  @include pc {
+    background: #F69904;
+    padding: calc((29 / 1280) * 100vw) 0 calc((30 / 1280) * 100vw);
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      background-image: point(encode('#F69904'));
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: calc((100 / 1280) * 100vw);
+      height: calc((37 / 1280) * 100vw);
+    }
+
+    h2 {
+      text-align: center;
+      color: #FFF;
+      @include mincho;
+      font-size: max(calc((36 / 1280) * 100vw), 30px);
+      font-weight: 600;
+      line-height: 91%;
+      letter-spacing: calc((4.32 / 1280) * 100vw);
+
+      span {
+        color: #000;
+        @include mincho;
+        font-size: max(calc((30 / 1280) * 100vw), 25px);
+        line-height: 91%;
+        font-weight: 600;
+        letter-spacing: unset;
+      }
+    }
+  }
+}
+
+// 吹き出しタイトル SPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSP
+.talkBubble {
+  @include sp {
+    background: #F69904;
+    padding: calc((28 / 390) * 100vw) 0 calc((26 / 390) * 100vw);
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      background-image: point(encode('#F69904'));
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: calc((63 / 390) * 100vw);
+      height: calc((23 / 390) * 100vw);
+    }
+
+    h2 {
+      text-align: center;
+      color: #FFF;
+      @include mincho;
+      font-size: calc((22 / 390) * 100vw);
+      font-weight: 600;
+      line-height: 91%;
+      letter-spacing: calc((2.7 / 390) * 100vw);
+
+      span {
+        color: #000;
+        @include mincho;
+        font-size: calc((19 / 390) * 100vw);
+        line-height: 110%;
+        font-weight: 600;
+        letter-spacing: unset;
+      }
+    }
+  }
+}
+
+
+
+// 初回無料ボタン PC
+.fast-btn {
+  @include pc {
+    .chimpanzee {
+      width: fit-content;
+      margin: 0 auto calc((11 / 1280) * 100vw);
+
+      h2 {
+        color: #F15900;
+        @include mincho;
+        font-size: max(calc((25 / 1280) * 100vw), 20px);
+        font-weight: 600;
+        line-height: 132%;
+        letter-spacing: calc((2.5 / 1280) * 100vw);
+        position: relative;
+
+        &::before,
+        &::after {
+          content: '';
+          width: max(calc((25 / 1280) * 100vw), 20px);
+          border-top: dotted calc((2 / 1280) * 100vw) #F15900;
+          position: absolute;
+          bottom: 30%;
+          transform: rotate(45deg);
+          left: -30%;
+        }
+
+        &::after {
+          left: unset;
+          right: -25%;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+
+    a {
+      width: max(calc((863 / 1280) * 100vw), 700px);
+      margin: 0 auto;
+      display: block;
+      text-align: center;
+      padding: calc((27 / 1280) * 100vw) 0;
+      box-shadow: 2px 4px 10px 0px rgb(0 0 0);
+      background: linear-gradient(180deg, #4AD7BD 40%, #2F917A 100%);
+      border-radius: 10px;
+
+      h2 {
+        color: #FFF;
+        @include kaku;
+        font-size: max(calc((33 / 1280) * 100vw), 28px);
+        font-weight: 800;
+        line-height: 100%;
+        letter-spacing: calc((3.96 / 1280) * 100vw);
+        text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.60);
+      }
+    }
+  }
+}
+
+// 初回無料ボタン SPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSP
+.fast-btn {
+  @include sp {
+    .chimpanzee {
+      width: fit-content;
+      margin: 0 auto calc((14 / 390) * 100vw);
+
+      h2 {
+        color: #F15900;
+        @include mincho;
+        font-size: calc((25 / 390) * 100vw);
+        font-weight: 600;
+        line-height: 132%;
+        letter-spacing: calc((2.5 / 390) * 100vw);
+        position: relative;
+
+        &::before,
+        &::after {
+          content: '';
+          width: calc((25 / 390) * 100vw);
+          border-top: dotted calc((2 / 390) * 100vw) #F15900;
+          position: absolute;
+          bottom: 30%;
+          transform: rotate(45deg);
+          left: -30%;
+        }
+
+        &::after {
+          left: unset;
+          right: -25%;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+
+    a {
+      width: 100%;
+      display: block;
+      text-align: center;
+      padding: calc((20 / 390) * 100vw) 0;
+      box-shadow: 2px 4px 10px 0px rgb(0 0 0);
+      background: linear-gradient(180deg, #4AD7BD 40%, #2F917A 100%);
+      border-radius: 10px;
+
+      h2 {
+        color: #FFF;
+        @include kaku;
+        font-size: calc((14 / 390) * 100vw);
+        font-weight: 800;
+        line-height: 100%;
+        letter-spacing: calc((0.44 / 390) * 100vw);
+        text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.60);
+      }
+    }
+  }
+}
+
+
+// 一部のタイトル PC
+.all-title {
+  @include pc {
+    width: fit-content;
+    margin: 0 auto;
+    position: relative;
+
+    p {
+      text-align: center;
+      color: #CBA67B;
+      @include georgia;
+      font-size: max(calc((20 / 1280) * 100vw), 16px);
+      font-weight: 400;
+      line-height: 180%;
+    }
+
+    h2 {
+      margin-top: calc((-10 / 1280) * 100vw);
+      color: #3F2F12;
+      @include mincho;
+      font-size: max(calc((28 / 1280) * 100vw), 20px);
+      font-weight: 600;
+      line-height: 178%;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      @include img('voice-title.png');
+      width: calc((97 / 1280) * 100vw);
+      height: calc((32 / 1280) * 100vw);
+      position: absolute;
+      bottom: calc((5 / 1280) * 100vw);
+      left: -65%;
+      transform: scale(-1, 1);
+      mix-blend-mode: multiply;
+    }
+
+    &::after {
+      left: unset;
+      right: -60%;
+      transform: unset;
+    }
+  }
+}
+
+// 一部のタイトル SPSPSPSPSPSPSPSP
+.all-title {
+  @include sp {
+    width: fit-content;
+    margin: 0 auto;
+    position: relative;
+
+    p {
+      text-align: center;
+      color: #CBA67B;
+      @include georgia;
+      font-size: calc((15 / 390) * 100vw);
+      font-weight: 400;
+      line-height: 120%;
+    }
+
+    h2 {
+      color: #3F2F12;
+      @include mincho;
+      font-size: calc((19 / 390) * 100vw);
+      font-weight: 600;
+      line-height: 100%;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      @include img('voice-title.png');
+      width: calc((60 / 390) * 100vw);
+      height: calc((30 / 390) * 100vw);
+      position: absolute;
+      bottom: -15%;
+      left: -65%;
+      transform: scale(-1, 1);
+      mix-blend-mode: multiply;
+    }
+
+    &::after {
+      left: unset;
+      right: -65%;
+      transform: unset;
+    }
+  }
+}

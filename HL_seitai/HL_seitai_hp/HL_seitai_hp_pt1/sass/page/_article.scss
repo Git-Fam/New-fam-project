@@ -1,0 +1,449 @@
+@use "../global" as *;
+
+
+.article--wapper {
+
+  .article--article{
+
+    @include pc{
+      padding: calc(( 150 / 1280) * 100vw) 0 calc(( 166 / 1280) * 100vw);
+    }
+
+    @include sp{
+      padding: calc(( 100 / 390) * 100vw) calc(( 20 / 390) * 100vw) calc(( 100 / 390) * 100vw);
+    }
+
+    &--inner{
+      display: flex;
+
+      @include pc{
+        width: max(calc(( 933 / 1280) * 100vw),700px);
+        margin: 0 auto;
+        gap: calc(( 30 / 1280) * 100vw);
+      }
+
+      @include sp{
+        width: 100%;
+        flex-direction: column;
+        gap: calc(( 30 / 390) * 100vw);
+      }
+
+      .article--content{
+
+        @include pc{
+          width: calc(67% - calc(calc(( 30 / 1280) * 100vw) * 1 / 2 ) );
+        }
+
+        @include sp{
+          width: 100%;
+        }
+
+        .blog--title{
+
+          h3{
+            color: $mainColor;
+            @include sans;
+            font-weight: 700;
+            line-height: 100%;
+            overflow-wrap: break-word;
+
+            @include pc{
+              font-size: max(calc(( 25 / 1280) * 100vw),20px);
+              letter-spacing: calc(( 2.5 / 1280) * 100vw);
+            }
+
+            @include sp{
+              font-size: max(calc(( 20 / 390) * 100vw),16px);
+              letter-spacing: calc(( 2.6 / 390) * 100vw);
+            }
+          }
+        }
+
+        .blog--thumbnail{
+          width: 100%;
+          height: fit-content;
+          object-fit: cover;
+          object-position: center;
+
+          @include pc{
+            margin: calc(( 42 / 1280) * 100vw) 0 calc(( 40 / 1280) * 100vw);
+          }
+
+          @include sp{
+            margin: calc(( 40 / 390) * 100vw) 0 calc(( 40 / 390) * 100vw);
+            width: 100%;
+          }
+        }
+
+        .blog--text{
+
+          p{
+            color: $mainColor;
+            @include sans;
+            font-weight: 500;
+            line-height: 130%;
+
+            @include pc{
+              font-size: max(calc(( 15 / 1280) * 100vw),12px);
+              letter-spacing: calc(( 1.05 / 1280) * 100vw);
+            }
+
+            @include sp{
+              font-size: calc(( 15 / 390) * 100vw);
+              letter-spacing: calc(( 1.05 / 390) * 100vw);
+            }
+          }
+        }
+
+        .page--nation{
+
+          @include pc{
+            margin: calc(( 50 / 1280) * 100vw) 0 0;
+            @include column( calc(( 50 / 1280) * 100vw) );
+            
+          }
+
+          @include sp{
+            margin: calc(( 40 / 390) * 100vw) 0 0;
+            @include column( calc(( 40 / 390) * 100vw) );
+          }
+
+          .page--back{
+            border-radius: 10px;
+            background: $darkGreen;
+            margin: 0 auto;
+            color: #FFF;
+            @include sans;
+            font-weight: 500;
+            line-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+
+            @include pc{
+              width: calc(( 280 / 1280) * 100vw);
+              padding: calc(( 20 / 1280) * 100vw) 0;
+              font-size: max(calc(( 14 / 1280) * 100vw),10px);
+              letter-spacing: calc(( 1.12 / 1280) * 100vw);
+              gap: calc(( 6 / 1280) * 100vw);
+            }
+
+            @include sp{
+              width: calc(( 260 / 390) * 100vw);
+              padding: calc(( 20 / 390) * 100vw) 0;
+              font-size: max(calc(( 14 / 390) * 100vw),10px);
+              letter-spacing: calc(( 1.12 / 390) * 100vw);
+              gap: calc(( 6 / 390) * 100vw);
+            }
+
+            &::before{
+              content: '';
+              display: block;
+              @include icon($blobBack);
+              aspect-ratio: 1;
+
+              @include pc{
+                width: calc(( 10 / 1280) * 100vw);
+              }
+
+              @include sp{
+                width: calc(( 10 / 390) * 100vw);
+              }
+            }
+          }
+
+          .page--nav{
+            display: flex;
+            align-items: center;
+            border-top: 1px solid $mainColor;
+            border-bottom: 1px solid $mainColor;
+
+            @include pc{
+              padding: calc(( 20 / 1280) * 100vw) 0;
+            }
+
+            @include sp{
+              padding: calc(( 20 / 390) * 100vw) 0;
+            }
+
+            &--btn{
+              width: 50%;
+              color: #78635C;
+              display: flex;
+              align-items: center;
+
+              @include pc{
+                gap: calc(( 20 / 1280) * 100vw);
+                padding: calc(( 20 / 1280) * 100vw) 0;
+                font-size: max(calc(( 12 / 1280) * 100vw),10px);
+                letter-spacing: calc(( 2.28 / 1280) * 100vw);
+              }
+
+              @include sp{
+                gap: calc(( 20 / 390) * 100vw);
+                padding: calc(( 20 / 390) * 100vw) 0;
+                font-size: calc(( 14 / 390) * 100vw);
+                letter-spacing: calc(( 2.28 / 390) * 100vw);
+              }
+
+              a{
+                @include sans;
+                font-weight: 300;
+                line-height: 116%; /* 116.667% */
+                color: #78635C;
+  
+                @include pc{
+                  font-size: max(calc(( 12 / 1280) * 100vw),10px);
+                  letter-spacing: calc(( 2.28 / 1280) * 100vw);
+                }
+  
+                @include sp{
+                  font-size: calc(( 14 / 390) * 100vw);
+                  letter-spacing: calc(( 2.28 / 390) * 100vw);
+                }
+              }
+
+              &:nth-child(2){
+                border-left: 1px solid $mainColor;  
+                flex-direction: row-reverse;
+
+                div{
+  
+                  span{
+                    transform: rotate(-45deg);
+                  }
+                }
+              }
+
+              div{
+                aspect-ratio: 1;
+                border-radius: 5px;
+                border: 1px solid $mainColor;
+                @include center;
+
+                @include pc{
+                  width: calc(( 40 / 1280) * 100vw);
+                }
+
+                @include sp{
+                  width: calc(( 30 / 390) * 100vw);
+                }
+
+                span{
+                  display: block;
+                  aspect-ratio: 1;
+                  border-bottom: 1px solid $mainColor;
+                  border-right: 1px solid $mainColor;
+                  transform: rotate(135deg);
+
+                  @include pc{
+                    width: calc(( 6 / 1280) * 100vw);
+                  }
+
+                  @include sp{
+                    width: calc(( 6 / 390) * 100vw);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+
+      .article--aside{
+
+        @include pc{
+          width: calc(33% - calc(calc(( 30 / 1280) * 100vw) * 1 / 2 ) );
+        }
+
+        @include sp{
+          width: 100%;
+        }
+
+        &--title{
+          border-bottom: 1.5px solid $darkGreen;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          @include pc{
+            padding: 0 calc(( 5 / 1280) * 100vw) calc(( 15 / 1280) * 100vw) 0;
+          }
+
+          @include sp{
+            padding: 0 calc(( 5 / 390) * 100vw) calc(( 15 / 390) * 100vw) 0;
+          }
+
+          p{
+            color: $darkGreen;
+            @include sans;
+            font-weight: 300;
+            line-height: 100%;
+
+            @include pc{
+              font-size: max(calc(( 16 / 1280) * 100vw),12px);
+              letter-spacing: calc(( 1.44 / 1280) * 100vw);
+            }
+
+            @include sp{
+              font-size: calc(( 17 / 390) * 100vw);
+              letter-spacing: calc(( 1.44 / 390) * 100vw);
+            }
+
+            &:nth-child(2){
+              
+              @include pc{
+                font-size: max(calc(( 13 / 1280) * 100vw),10px);
+                letter-spacing: calc(( 0.65 / 1280) * 100vw);
+              }
+
+              @include sp{
+                font-size: calc(( 13 / 390) * 100vw);
+                letter-spacing: calc(( 0.65 / 390) * 100vw);
+              }
+            }
+          }
+        }
+
+        &--content{
+
+          .year{
+
+            &--list{
+              border-bottom: 1px solid $mainColor;
+
+              @include pc{
+                padding: calc(( 15 / 1280) * 100vw) 0;
+              }
+
+              @include sp{
+                padding: calc(( 15 / 390) * 100vw) 0;
+              }
+
+              &--title{
+                color: $mainColor;
+                @include sans;
+                font-weight: 600;
+                line-height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                cursor: pointer;
+
+                @include pc{
+                  font-size: max(calc(( 13 / 1280) * 100vw),10px);
+                  letter-spacing: calc(( 0.65 / 1280) * 100vw);
+                  padding: 0 calc(( 5 / 1280) * 100vw) 0 0;
+                }
+
+                @include sp{
+                  font-size: calc(( 13 / 390) * 100vw);
+                  letter-spacing: calc(( 0.65 / 390) * 100vw);
+                  padding: 0 calc(( 5 / 390) * 100vw) 0 0;
+                }
+
+                span{
+                  color: $mainColor;
+                  @include sans;
+                  font-weight: 600;
+                  line-height: 100%;
+                  transform: rotate(180deg);
+                  
+                  @include pc{
+                    font-size: max(calc(( 10 / 1280) * 100vw),8px);
+                    letter-spacing: calc(( 0.5 / 1280) * 100vw);
+                  }
+
+                  @include sp{
+                    font-size: calc(( 10 / 390) * 100vw);
+                    letter-spacing: calc(( 0.5 / 390) * 100vw);
+                  }
+                }
+
+                &.active{
+                  span{
+                    transform: rotate(0deg);
+                  }
+                }
+              }
+
+              .month{
+                display: none;
+
+                @include pc{
+                  margin: calc(( 20 / 1280) * 100vw) 0 0 calc(( 20 / 1280) * 100vw);
+                }
+
+                @include sp{
+                  margin: calc(( 20 / 390) * 100vw) 0 0 calc(( 20 / 390) * 100vw);
+                }
+
+                &.active{
+                  display: block;
+                }
+
+                &--list{
+
+                  @include pc{
+                    margin: calc(( 20 / 1280) * 100vw) 0 0;
+                    width: fit-content;
+                  }
+
+                  @include sp{
+                    margin: calc(( 20 / 390) * 100vw) 0 0;
+                    width: fit-content;
+                  }
+
+
+                  &--title{
+                    color: $mainColor;
+                    @include sans;
+                    font-weight: 300;
+                    line-height: 100%;
+                    font-size: 13px;
+                    letter-spacing: 0.65px;
+                    display: flex;
+                    align-items: center;
+                    
+                    @include pc{
+                      font-size: max(calc(( 13 / 1280) * 100vw),10px);
+                      letter-spacing: calc(( 0.65 / 1280) * 100vw);
+                      gap: calc(( 10 / 1280) * 100vw);
+                    }
+
+                    @include sp{
+                      font-size: calc(( 13 / 390) * 100vw);
+                      letter-spacing: calc(( 0.65 / 390) * 100vw);
+                      gap: calc(( 10 / 390) * 100vw);
+                    }
+
+                    span{
+                      color: $mainColor;
+                      @include sans;
+                      font-weight: 300;
+                      line-height: 100%;
+                      font-size: 13px;
+                      letter-spacing: 0.65px;
+                      
+                      @include pc{
+                        font-size: max(calc(( 13 / 1280) * 100vw),10px);
+                        letter-spacing: calc(( 0.65 / 1280) * 100vw);
+                      }
+  
+                      @include sp{
+                        font-size: calc(( 13 / 390) * 100vw);
+                        letter-spacing: calc(( 0.65 / 390) * 100vw);
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

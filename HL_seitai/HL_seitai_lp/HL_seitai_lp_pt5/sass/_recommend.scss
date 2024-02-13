@@ -1,0 +1,233 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// recommend
+.recommend {
+  @include pc {
+
+    .contents {
+      padding: calc((81 / 1280) * 100vw) 0 calc((71 / 1280) * 100vw);
+      background: #FDF0E1;
+
+      .item {
+        display: flex;
+        justify-content: center;
+        gap: calc((56 / 1280) * 100vw);
+
+        &--recommend {
+          width: max(calc((450 / 1280) * 100vw), 300px);
+          @include column(calc((24 / 1280) * 100vw));
+
+          &:nth-of-type(1) {
+            .card--img {
+              @include img('recommend-member-1.jpg');
+            }
+          }
+
+          &:nth-of-type(2) {
+            .card--img {
+              @include img('recommend-member-2.jpg');
+            }
+          }
+
+          .card {
+            width: 100%;
+            padding: calc((10 / 1280) * 100vw) calc((15 / 1280) * 100vw);
+            background-color: #FDF0E1;
+            border: calc((15 / 1280) * 100vw) solid #FFF;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+
+            &::before {
+              content: '';
+              display: block;
+              width: calc((33 / 1280) * 100vw);
+              height: calc((80 / 1280) * 100vw);
+              background-image: $clip;
+              background-size: contain;
+              background-position: center;
+              position: absolute;
+              top: -34%;
+              right: 0;
+
+            }
+
+            &--text {
+              width: fit-content;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+
+              p {
+                color: #000;
+                @include kaku;
+                font-size: max(calc((10 / 1280) * 100vw), 8px);
+                font-weight: 300;
+                line-height: 120%;
+              }
+
+              span {
+                color: #000;
+                @include kaku;
+                font-size: max(calc((14 / 1280) * 100vw), 12px);
+                font-weight: 300;
+                line-height: 150%;
+              }
+
+              h2 {
+                color: #f45a0c;
+                @include mincho;
+                font-size: max(calc((28 / 1280) * 100vw), 24px);
+                font-weight: 300;
+                line-height: 100%;
+
+                span {
+                  color: #f45a0c;
+                  @include mincho;
+                  font-size: max(calc((16 / 1280) * 100vw), 12px);
+                  font-weight: 300;
+                  line-height: 100%;
+                }
+              }
+            }
+
+            &--img {
+              width: max(calc((144 / 1280) * 100vw), 80px);
+              height: max(calc((102 / 1280) * 100vw), 60px);
+              flex-shrink: 0;
+            }
+          }
+
+          .text {
+            width: 100%;
+            @include column(calc((22 / 1280) * 100vw));
+
+            p {
+              color: #3F2F12;
+              @include Helvetica;
+              font-size: max(calc((13 / 1280) * 100vw), 12px);
+              font-weight: 400;
+              line-height: 176%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// recommend SPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSP
+.recommend {
+  @include sp {
+
+    .contents {
+      padding: calc((50 / 390) * 100vw) calc(( 24 / 390) * 100vw) calc((45 / 390) * 100vw);
+      background: #FDF0E1;
+
+      .item {
+        @include column(calc((40 / 390) * 100vw));
+
+        &--recommend {
+          width: 100%;
+          @include column(calc((26 / 390) * 100vw));
+
+          &:nth-of-type(1) {
+            .card--img {
+              @include img('recommend-member-1.jpg');
+            }
+          }
+
+          &:nth-of-type(2) {
+            .card--img {
+              @include img('recommend-member-2.jpg');
+            }
+          }
+
+          .card {
+            width: 100%;
+            padding: calc((10 / 390) * 100vw) calc((15 / 390) * 100vw) calc(( 10 / 390) * 100vw) calc(( 6 / 390) * 100vw);
+            background-color: #FDF0E1;
+            border: calc((10 / 390) * 100vw) solid #FFF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+
+            &::before {
+              content: '';
+              display: block;
+              width: calc((33 / 390) * 100vw);
+              height: calc((80 / 390) * 100vw);
+              background-image: $clip;
+              background-size: contain;
+              background-position: center;
+              position: absolute;
+              top: -36%;
+              right: -1%;
+            }
+
+            &--text {
+              width: fit-content;
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+
+              p {
+                color: #000;
+                @include kaku;
+                font-size: calc((10 / 390) * 100vw);
+                font-weight: 300;
+                line-height: 120%;
+              }
+
+              span {
+                color: #000;
+                @include kaku;
+                font-size: calc((14 / 390) * 100vw);
+                font-weight: 300;
+                line-height: 150%;
+              }
+
+              h2 {
+                color: #f45a0c;
+                @include mincho;
+                font-size: calc((28 / 390) * 100vw);
+                font-weight: 300;
+                line-height: 100%;
+
+                span {
+                  color: #f45a0c;
+                  @include mincho;
+                  font-size: calc((16 / 390) * 100vw);
+                  font-weight: 300;
+                  line-height: 100%;
+                }
+              }
+            }
+
+            &--img {
+              width: calc((108 / 390) * 100vw);
+              height: calc((78 / 390) * 100vw);
+              flex-shrink: 0;
+            }
+          }
+
+          .text {
+            width: 100%;
+            @include column(calc((22 / 390) * 100vw));
+
+            p {
+              color: #3F2F12;
+              @include Helvetica;
+              font-size: calc((13 / 390) * 100vw);
+              font-weight: 400;
+              line-height: 176%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

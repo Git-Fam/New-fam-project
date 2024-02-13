@@ -1,0 +1,111 @@
+@use "../global" as *;
+
+// c__btn
+.c__btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFF;
+  
+  &::after{
+    content: '';
+    display: block;
+    aspect-ratio: 1/1;
+    background-image: cBtn(encode('#008475'));
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+
+    @include pc{
+      width: max(calc(( 12 / 1280) * 100vw),12px);
+    }
+
+    @include sp{
+      width: calc(( 12 / 390) * 100vw);
+    }
+
+  }
+
+  @include pc{
+    border: max(calc(( 1 / 1280) * 100vw),1px) solid #008475;
+    width: max(calc(( 212 / 1280) * 100vw),212px);
+    padding: max(calc(( 17 / 1280) * 100vw),17px) 0 max(calc(( 16 / 1280) * 100vw),16px);
+    gap: max(calc(( 6 / 1280) * 100vw),6px);
+  }
+
+  @include sp{
+    border: calc(( 1 / 390) * 100vw) solid #008475;
+    width: calc(( 212 / 390) * 100vw);
+    padding: calc(( 17 / 390) * 100vw) 0 calc(( 16 / 390) * 100vw);
+    gap: calc(( 6 / 390) * 100vw);
+  }
+
+
+  p{
+    color: $mainColor;
+    @include josefin;
+
+    
+    @include pc{
+      font-size: max(calc(( 13 / 1280) * 100vw),13px);
+      letter-spacing: max(calc(( 0.078 / 1280) * 100vw),0.078px);
+    }
+
+    @include sp{
+      font-size: calc(( 13 / 390) * 100vw);
+      letter-spacing: calc(( 0.078 / 390) * 100vw);
+    }
+
+    span{
+      font-weight: 200;
+
+      @include pc{
+      font-size: max(calc(( 13 / 1280) * 100vw),13px);
+      }
+
+      @include sp{
+        font-size: calc(( 13 / 390) * 100vw);
+      }
+    }
+  }
+
+  // c__btn--font
+  .c__btn--font{
+    color: $mainColor;
+    @include josefin;
+    
+    @include pc{
+      font-size: max(calc(( 16 / 1280) * 100vw),16px);
+      letter-spacing: max(calc(( 0.096 / 1280) * 100vw),0.096px);
+    }
+
+    @include sp{
+      font-size: calc(( 16 / 390) * 100vw);
+      letter-spacing: calc(( 0.096 / 390) * 100vw);
+    }
+  }
+
+  // hover
+  &:hover{
+    background: $mainColor;
+    @include transition;
+
+    p{
+      @include transition;
+      color: #FFF;
+
+      span{
+        color: #FFF;
+        @include transition;
+
+      }
+    }
+
+    &::after{
+      background-image: cBtn(encode('#FFF'));
+      @include transition;
+
+    }
+  }
+}

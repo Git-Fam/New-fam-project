@@ -1,0 +1,174 @@
+@use "../global" as *;
+
+.bbb{
+  @include pc{
+    width: max(calc((976 / 1280) * 100vw), 700px);
+    margin: calc(( 50 / 1280) * 100vw) auto 0;
+  }
+
+  @include sp{
+    width: 100%;
+    padding: 0 calc(( 20 / 390) * 100vw);
+  }
+}
+.C_disease{
+  width: 100%;
+  background: #FFF;
+  position: relative;
+
+  @include pc{
+    padding: calc(( 88 / 1280) * 100vw) calc(( 20 / 1280) * 100vw) calc(( 30 / 1280) * 100vw);
+  }
+
+  @include sp{
+    padding: calc(( 39 / 390) * 100vw) calc(( 13 / 390) * 100vw) calc(( 27 / 390) * 100vw);
+  }
+
+  &--top{
+    aspect-ratio: 200/200;
+    height: fit-content;
+    background: #FFF;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+
+    @include pc{
+      width: calc((200 / 1280) * 100vw);
+      padding-top: calc((20 / 1280) * 100vw);
+      top: calc((-100 / 1280) * 100vw);
+    }
+
+    @include sp{
+      width: calc((156 / 390) * 100vw);
+      padding-top: calc((20 / 390) * 100vw);
+      top: calc((-78 / 390) * 100vw);
+    }
+
+    .img{
+      aspect-ratio: 76/86;
+      height: fit-content;
+      margin: 0 auto;
+      
+      @include pc{
+        width: max(calc((76 / 1280) * 100vw), 50px);
+      }
+      
+      @include sp{
+        width: calc((73 / 390) * 100vw);
+      }
+      
+      // 1
+      &.img--1{
+        @include img('C_disease-1.png');
+      }
+
+      // 2
+      &.img--2{
+        @include img('C_disease-2.png');
+      }
+
+      // 3
+      &.img--3{
+        @include img('C_disease-3.png');
+      }
+
+      // 4
+      &.img--4{
+        @include img('C_disease-4.png');
+      }
+    }
+  }
+
+  &--content{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+    
+    @include pc{
+      gap: calc(( 40 / 1280) * 100vw) 0;
+    }
+
+    @include sp{
+      gap: calc(( 34 / 390) * 100vw) calc(( 17 / 390) * 100vw);
+    }
+
+    .item{
+      
+      @include pc{
+        border-left: 1px dashed $mainColor;
+        width: calc(( 230 / 1280) * 100vw);
+        padding: 0 calc(( 20 / 1280) * 100vw);
+      }
+
+      @include sp{
+        border-bottom: 1px dashed $mainColor;
+        width: calc( 100% / 2 - calc(calc(( 17 / 390) * 100vw)) * 1 / 2);
+        padding: 0 0 calc(( 10 / 390) * 100vw);
+      }
+
+      &:first-child{
+        @include pc{
+          border-left: none;
+        }
+      }
+
+      .title{
+        @include pc{
+          margin: 0 0 calc(( 10 / 1280) * 100vw);
+        }
+
+        @include sp{
+          margin: 0 0 calc(( 11 / 390) * 100vw);
+        }
+
+        p{
+          text-align: center;
+          color: $mainColor;
+          @include sans;
+          font-weight: 600;
+          line-height: 100%;
+          
+          @include pc{
+            font-size: max(calc(( 16 / 1280) * 100vw),12px);
+            letter-spacing: calc(( 0.8 / 1280) * 100vw);
+
+          }
+
+          @include sp{
+            font-size: calc(( 16 / 390) * 100vw);
+            letter-spacing: calc(( 0.8 / 390) * 100vw);
+          }
+        }
+      }
+
+      .text{
+
+        @include pc{}
+
+        @include sp{}
+
+        p{
+          color: $mainColor;
+          @include sans;
+          font-weight: 300;
+          line-height: 200%;
+          
+          @include pc{
+            font-size: max(calc(( 14 / 1280) * 100vw),10px);
+            letter-spacing: calc(( 0.98 / 1280) * 100vw);
+          }
+
+          @include sp{
+            font-size: calc(( 14 / 390) * 100vw);
+            letter-spacing: calc(( 0.8 / 390) * 100vw);
+          }
+        }
+      }
+    }
+  }
+}

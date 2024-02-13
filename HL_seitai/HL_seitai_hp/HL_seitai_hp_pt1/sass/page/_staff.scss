@@ -1,0 +1,31 @@
+@use "../global" as *;
+
+// staff
+.staff--wapper {
+
+  .staff--introduction{
+
+    @include pc{
+      padding: calc(( 165 / 1280) * 100vw) 0 calc(( 193 / 1280) * 100vw);
+    }
+
+    @include sp{
+      padding: calc(( 154 / 390) * 100vw) calc(( 20 / 390) * 100vw) calc(( 100 / 390) * 100vw);
+    }
+
+    &--contents{
+      display: flex;
+      flex-direction: column;
+
+      @include pc{
+        gap: calc(( 100 / 1280) * 100vw);
+        margin: calc(( 40 / 1280) * 100vw) auto 0;
+      }
+
+      @include sp{
+        gap: calc(( 40 / 390) * 100vw);
+        margin: calc(( 40 / 390) * 100vw) auto 0;
+      }
+    }
+  }
+}

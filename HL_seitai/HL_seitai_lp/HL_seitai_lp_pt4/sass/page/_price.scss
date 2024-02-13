@@ -1,0 +1,11 @@
+@use "../global" as *;
+
+.price{
+  @include pc{
+    padding: calc(( 70 / 1280) * 100vw) 0 calc(( 100 / 1280) * 100vw);
+  }
+
+  @include sp{
+    padding: calc(( 27 / 390) * 100vw) 0 calc(( 44 / 390) * 100vw);
+  }
+}

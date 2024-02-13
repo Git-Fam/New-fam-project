@@ -1,0 +1,94 @@
+@use "../global" as *;
+
+
+.facility {
+  margin: 0 auto;
+
+  @include pc {
+    padding: max(calc((330 / 1280) * 100vw), 330px) 0 0;
+    width: max(calc((880 / 1280) * 100vw), 704px);
+  }
+
+  @include sp {
+    padding: calc((140 / 390) * 100vw) calc((20 / 390) * 100vw) 0;
+    width: 100%;
+  }
+
+  .c__titles {
+    @include pc {
+      padding-left: max(calc((45 / 1280) * 100vw), 45px);
+    }
+
+    @include sp {
+      text-align: center;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: calc((70 / 390) * 100vw);
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: calc((1 / 390) * 100vw);
+        height: calc((40 / 390) * 100vw);
+        background: #008475;
+      }
+    }
+  }
+
+  .facility--item {
+
+    .slicker--facility {
+      .slick-prev {
+
+        @include pc {
+          left: unset;
+          top: unset;
+          right: max(calc((120 / 1280) * 100vw), 120px);
+          z-index: 4;
+          bottom: 0;
+        }
+
+        @include sp {
+          left: calc((3 / 390) * 100vw);
+          z-index: 4;
+        }
+      }
+
+      .slick-next {
+
+        @include pc {
+          right: max(calc((60 / 1280) * 100vw), 60px);
+          z-index: 4;
+          bottom: 0;
+          top: unset;
+        }
+
+        @include sp {
+          right: calc((15 / 390) * 100vw);
+          z-index: 4;
+        }
+      }
+
+      .slick-prev:before,
+      .slick-next:before {
+        font-family: 'slick';
+        line-height: 1;
+        opacity: .75;
+        color: $mainColor;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+
+        @include pc {
+          font-size: max(calc((30 / 1280) * 100vw), 30px);
+        }
+
+        @include sp {
+          color: #fff;
+          font-size: calc((30 / 390) * 100vw);
+        }
+      }
+    }
+  }
+}

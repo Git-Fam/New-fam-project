@@ -1,0 +1,12 @@
+@use "../global" as *;
+
+.effective{
+
+  @include pc{
+    padding: calc(( 70 / 1280) * 100vw) 0;
+  }
+
+  @include sp{
+    padding: calc(( 40 / 390) * 100vw) 0 calc(( 60 / 375) * 100vw);
+  }
+}

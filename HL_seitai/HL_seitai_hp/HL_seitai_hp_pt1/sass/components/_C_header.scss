@@ -1,0 +1,281 @@
+@use "../global" as *;
+
+.C_header {
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  
+  @include pc {
+    position: absolute;
+  }
+  
+  @include sp {
+    position: fixed;
+  }
+
+  .burger{
+      position: absolute;
+      top: calc((9 / 390) * 100vw);
+      right: calc((11 / 390) * 100vw);
+      z-index: 9999;
+      width: calc((53 / 390) * 100vw);
+      aspect-ratio: 1/1;
+      @include img('open.png');
+      cursor: pointer;
+      transition: all 0.3s;
+      transform: rotate(0deg);
+
+    &.active{
+      @include img('close.png');
+      transform: rotate(360deg);
+    }
+  }
+
+  nav {
+    box-sizing: border-box;
+    
+    @include pc {
+      position: fixed;
+      top: calc((31 / 1280) * 100vw);
+      left: -16%;
+      background: rgba(255, 255, 255, 0.80);
+      box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.25);
+      padding: calc((20 / 1280) * 100vw) calc((28 / 1280) * 100vw) calc((50 / 1280) * 100vw);
+      height: 80vh;
+      max-height: calc((500 / 1280) * 100vw);
+      overflow-y: scroll;
+      transition: all 0.3s;
+      
+      &:hover {
+        // left: calc((21 / 1280) * 100vw);
+        left: calc((0 / 1280) * 100vw);
+      }
+    }
+    
+    @include sp {
+      position: absolute;
+      top: 0%;
+      right: -100%;
+      width: 100%;
+      height: 100vh;
+      overflow-y: scroll;
+      background: #84B754;
+      padding: calc((70 / 390) * 100vw) calc((30 / 390) * 100vw) calc((50 / 390) * 100vw);
+      transition: all 0.3s;
+    }
+
+    &.active{
+      right: 0;
+    }
+
+    .header--logo {
+      aspect-ratio: 182/127;
+      display: block;
+      
+      @include pc {
+        @include img('main-logo.png');
+        width: calc((182 / 1280) * 100vw);
+        margin-bottom: calc((20 / 1280) * 100vw);
+      }
+
+      @include sp {
+        @include img('main-logo-white.png');
+        width: calc((200 / 390) * 100vw);
+        margin: 0 auto calc((20 / 390) * 100vw);
+      }
+    }
+
+    ul {
+
+      li {
+
+        @include pc {
+          padding: calc((20 / 1280) * 100vw) 0;
+          border-bottom: 1px dotted $mainColor;
+        }
+
+        @include sp {
+          padding: calc((15 / 390) * 100vw) calc(( 10 / 390) * 100vw);
+          border-bottom: 1px dotted #fff;
+        }
+
+        a {
+          @include sans;
+          font-weight: 500;
+          line-height: 100%;
+          
+          @include pc {
+            color: $mainColor;
+            font-size: max(calc((14 / 1280) * 100vw), 11px);
+          }
+
+          @include sp {
+            color: #fff;
+            font-size: calc((14 / 390) * 100vw);
+            width: 100%;
+            display: inline-block;
+            position: relative;
+          }
+
+          &::before{
+            @include sp{
+              content: '';
+              display: block;
+              position: absolute;
+              top: 50%;
+              right: calc(( 10 / 390) * 100vw);
+              transform: translateY(-50%) rotate(45deg);
+              width: calc(( 7 / 390) * 100vw);
+              aspect-ratio: 1/1;
+              border-top: 1px solid #fff;
+              border-right: 1px solid #fff;
+            }
+          }
+        }
+      }
+    }
+
+    .header--communication {
+
+      @include pc {
+        position: fixed;
+        top: 0;
+        right: 0;
+        background: #FFF;
+        padding: calc((11 / 1280) * 100vw) calc((20 / 1280) * 100vw) calc((5 / 1280) * 100vw);
+        display: flex;
+        width: calc((412 / 1280) * 100vw);
+
+        // ホバーしてもnavが動かないように
+        pointer-events: none;
+      }
+
+      @include sp {
+        width: 100%;
+        margin-top: calc((20 / 390) * 100vw);
+      }
+
+
+      &--tel {
+
+        @include pc {
+          width: 80%;
+        }
+
+        @include sp {
+          width: 100%;
+        }
+
+        &--no {
+          @include quicksand;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          
+          @include pc {
+            color: #84B754;
+            font-size: calc((23 / 1280) * 100vw);
+            gap: calc((3 / 1280) * 100vw);
+            margin-bottom: calc((6 / 1280) * 100vw);
+            pointer-events: auto;
+          }
+
+          @include sp {
+            justify-content: center;
+            color: #fff;
+            font-size: calc((23 / 390) * 100vw);
+            gap: calc((3 / 390) * 100vw);
+            margin-bottom: calc((6 / 390) * 100vw);
+          }
+
+          span {
+            aspect-ratio: 26/22;
+            @include img('tel-icon.png');
+            height: fit-content;
+            flex-shrink: 0;
+
+            @include pc {
+              width: calc((26 / 1280) * 100vw);
+            }
+
+            @include sp {
+              width: calc((26 / 390) * 100vw);
+            }
+          }
+        }
+
+        &--text {
+          @include sans;
+          font-weight: 500;
+          line-height: 127%;
+          
+          @include pc {
+            color: #84B754;
+            font-size: calc((11 / 1280) * 100vw);
+          }
+
+          @include sp {
+            color: #fff;
+            text-align: center;
+            font-size: calc((11 / 390) * 100vw);
+            padding: 0 0 calc((15 / 390) * 100vw);
+          }
+        }
+      }
+
+
+
+      &--mail {
+
+        @include pc {
+          width: 20%;
+          border-left: 1px dotted #84B754;
+          padding: calc((15 / 1280) * 100vw) 0 0 calc((21 / 1280) * 100vw);
+        }
+
+        @include sp {
+          width: 100%;
+          border-top: 1px dotted #fff;
+          border-bottom: 1px dotted #fff;
+          padding: calc((15 / 390) * 100vw) 0;
+        }
+
+        &--to {
+          @include quicksand;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          
+          @include pc {
+            color: #84B754;
+            font-size: calc((18 / 1280) * 100vw);
+            gap: calc((3 / 1280) * 100vw);
+            pointer-events: auto;
+          }
+
+          @include sp {
+            color: #fff;
+            justify-content: center;
+            font-size: calc((18 / 390) * 100vw);
+            gap: calc((3 / 390) * 100vw);
+          }
+
+          span {
+            aspect-ratio: 23/16;
+            @include img('mail-icon.png');
+            flex-shrink: 0;
+
+            @include pc {
+              width: calc((23 / 1280) * 100vw);
+            }
+
+            @include sp {
+              width: calc((23 / 390) * 100vw);
+            }
+          }
+        }
+      }
+    }
+  }
+}

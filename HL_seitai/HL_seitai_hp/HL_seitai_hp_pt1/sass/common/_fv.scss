@@ -1,0 +1,165 @@
+@use "../global" as *;
+
+// top
+.top__fv{
+  width: 100%;
+
+  @include pc{
+    padding: calc(( 20 / 1280) * 100vw);
+    height: calc(( 600 / 1280) * 100vw);
+  }
+  
+  @include sp{}
+  
+  &--img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+  }
+
+  .slick-list{
+    height: 100% !important;
+    .slick-track{
+      height: 100%;
+      padding: 0 !important;
+      gap: 0 !important;
+      .slick-slide {
+        height: 100%;
+
+        @include sp{
+          margin: 0 !important;
+        }
+      }
+    }
+  }
+}
+
+
+// other
+.other__fv{
+  position: relative;
+  width: 100%;
+
+  @include pc{
+    height: calc(( 242 / 1280) * 100vw);
+  }
+
+  @include sp{
+    height: calc(( 226 / 390) * 100vw);
+  }
+
+  &::before{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255 255 255 / 64%);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .page__title{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+
+    @include pc{
+      @include column( calc(( 20 / 1280) * 100vw) );
+    }
+
+    @include sp{
+      @include column( calc(( 20 / 390) * 100vw) );
+    }
+
+    h2{
+      color: $darkGreen;
+      @include quicksand;
+      font-weight: 700;
+      line-height: 100%;
+      
+      @include pc{
+        font-size: max(calc(( 34 / 1280) * 100vw),30px);
+        letter-spacing: calc(( 3.4 / 1280) * 100vw);
+      }
+  
+      @include sp{
+        font-size: max(calc(( 28 / 390) * 100vw),30px);
+        letter-spacing: calc(( 2.8 / 390) * 100vw);
+      }
+    }
+  
+    p{
+      color: $darkGreen;
+      @include quicksand;
+      font-weight: 500;
+      line-height: 116%;
+      
+      @include pc{
+        font-size: max(calc(( 12 / 1280) * 100vw),10px);
+        letter-spacing: calc(( 1.2 / 1280) * 100vw);
+      }
+  
+      @include sp{
+        font-size: calc(( 13 / 390) * 100vw);
+        letter-spacing: calc(( 1.3 / 390) * 100vw);
+      }
+    }
+  }
+}
+
+// menu
+.menu__fv{
+  @include img('menu_fv.png');
+  background-size: cover;
+}
+
+// about
+.about__fv{
+  @include img('about_fv.png');
+  background-size: cover;
+}
+
+// flow
+.flow__fv{
+  @include img('flow_fv.png');
+  background-size: cover;
+}
+
+// staff
+.staff__fv{
+  @include img('staff_fv.png');
+  background-size: cover;
+}
+
+// QA
+.QA__fv{
+  @include img('QA_fv.png');
+  background-size: cover;
+}
+
+// voice
+.voice__fv{
+  @include img('voice_fv.png');
+  background-size: cover;
+}
+
+// blog
+.blog__fv{
+  @include img('blog_fv.png');
+  background-size: cover;
+}
+
+// access
+.access__fv{
+  @include img('access_fv.png');
+  background-size: cover;
+}
+
+// contact
+.contact__fv{
+  @include img('contact_fv.png');
+  background-size: cover;
+}

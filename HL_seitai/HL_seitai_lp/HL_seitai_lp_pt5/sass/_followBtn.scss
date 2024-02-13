@@ -1,0 +1,55 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+.followBtn{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: calc(( 20 / 390) * 100vw) calc(( 10 / 390) * 100vw) calc((14 / 390) * 100vw);
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  gap: calc(( 8 / 390) * 100vw);
+  transition: 0.5s;
+
+  &.active{
+    bottom: -100%;
+  }
+
+  a{
+    display: block;
+    width: calc( 50% - calc(( 4 / 390) * 100vw));
+    border-radius: 50%;
+    box-shadow: 0 0 calc(( 10 / 390) * 100vw) rgba(0, 0, 0, 0.3);
+    text-align: center;
+    padding: calc((15 / 390) * 100vw) 0;
+    box-shadow: 2px 4px 10px 0px rgb(0 0 0);
+    background: linear-gradient(180deg, #4AD7BD 40%, #2F917A 100%);
+    border-radius: 10px;
+    @include center;
+
+    h2 {
+      color: #FFF;
+      @include kaku;
+      font-size: calc((14 / 390) * 100vw);
+      font-weight: 800;
+      line-height: 100%;
+      letter-spacing: calc((0.44 / 390) * 100vw);
+      text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.60);
+    }
+
+    &:nth-of-type(1) {
+      background: linear-gradient(180deg, #FFF 40%, #EFEFEE 100%);
+      border: 2px solid #2F917A;
+
+      h2 {
+        color: #2F917A;
+        font-size: calc((16 / 390) * 100vw);
+        letter-spacing: calc((0.93 / 390) * 100vw);
+        text-shadow: none;
+      }
+    }
+
+  }
+
+}

@@ -1,0 +1,74 @@
+@mixin center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin column($gap){
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+// @include column( calc(( 50 / 1280) * 100vw) );
+
+$pc: 768px; // PC
+$sp: 767px;  // スマホ
+@mixin pc {
+  @media screen and (min-width: ($pc)) {
+    @content;
+  }
+}
+@mixin sp {
+  @media  screen and (max-width: ($sp)) {
+    @content;
+  }
+}
+
+// フォント
+// font-family: Zen Maru Gothic;
+@mixin zen {
+  font-family: 'Zen Maru Gothic', serif;
+  font-style: normal;
+  line-height: normal;
+}
+
+// font-family: Roboto;
+@mixin roboto {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  line-height: normal;
+}
+
+// font-family: Hannotate SC;
+@mixin Hannotate {
+  font-family: 'Klee One', cursive;
+  font-style: normal;
+  line-height: normal;
+}
+
+// font-family: KAWAIITEGAKIMOJI;
+@mixin kawaii {
+  font-family: 'Kiwi Maru', serif;
+  font-style: normal;
+  line-height: normal;
+}
+
+
+// 関数の使い方1
+// @mixin column($gap){
+//   display: flex;
+//   flex-direction: column;
+//   gap: $gap;
+// }
+// ↓
+// @include column( calc(( 50 / 1280) * 100vw) );
+
+// 関数の使い方2
+// @mixin test($sidePadding : calc(( 98 / 1280) * 100vw) , $sidemargin : 0 0 0 auto ){
+//   .test--btn{
+//     padding: calc(( 6 / 1280) * 100vw) $sidePadding calc(( 2 / 1280) * 100vw);
+//     margin: $sidemargin;
+//   }
+// }
+// ↓
+// @include test( calc(( 98 / 1280) * 100vw) , 0 0 0 auto );

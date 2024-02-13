@@ -1,0 +1,171 @@
+@use "../global" as *;
+
+
+// c__access
+.c__access{
+  margin: 0 auto;
+  display: flex;
+
+  @include pc{
+    width: max(calc(( 960 / 1280) * 100vw),700px);
+    gap: calc(( 21 / 1280) * 100vw);
+  }
+
+  @include sp{
+    width: 95%;
+    flex-direction: column;
+    gap: calc(( 40 / 375) * 100vw);
+  }
+
+  &--item{
+    flex-shrink: 0;
+    @include pc{
+      width: max(calc(( 322 / 1280) * 100vw),280px);
+    }
+
+    @include sp{
+      width: 100%;
+    }
+
+    &--img{
+      @include img('c__access-img.jpg');
+      aspect-ratio: 322/298;
+      width: 100%;
+      position: relative;
+
+      &::before{
+        content: 'よねしん鍼灸整骨院';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #F5797F;
+        color: #FFF;
+        @include hina;
+        font-weight: 400;
+        text-align: center;
+        
+        @include pc{
+          padding: calc(( 14 / 1280) * 100vw) 0;
+          font-size: max(calc(( 22 / 1280) * 100vw),16px);
+          letter-spacing: calc(( 0.44 / 1280) * 100vw);
+        }
+
+        @include sp{
+          padding: calc(( 14 / 375) * 100vw) 0;
+          font-size: max(calc(( 22 / 375) * 100vw),16px);
+          letter-spacing: calc(( 0.44 / 375) * 100vw);
+        }
+      }
+    }
+
+    &--text{
+
+      @include pc{
+        @include column( calc(( 19 / 1280) * 100vw) );
+        padding-top: calc(( 27 / 1280) * 100vw);
+      }
+
+      @include sp{
+        @include column( calc(( 19 / 375) * 100vw) );
+        padding-top: calc(( 27 / 375) * 100vw);
+        width: fit-content;
+        margin: 0 auto;
+      }
+
+      p{
+        color: $cFontText;
+        @include hira;
+        line-height: 90%;
+        font-weight: 300;
+        display: flex;
+        
+        @include pc{
+          font-size: max(calc(( 14 / 1280) * 100vw),12px);
+          gap: calc(( 10 / 1280) * 100vw);
+          letter-spacing: calc(( -0.9 / 1280) * 100vw);
+        }
+
+        @include sp{
+          font-size: max(calc(( 14 / 375) * 100vw),12px);
+          gap: calc(( 10 / 375) * 100vw);
+          letter-spacing: calc(( -0.9 / 375) * 100vw);
+        }
+
+        span{
+          color: $cFontTitle;
+          @include hira;
+          line-height: 90%;
+          font-weight: 300;
+        }
+      }
+
+      a{
+        color: $cFontText;
+        @include hira;
+        font-weight: 600;
+        line-height: 100%;
+        display: flex;
+        align-items: center;
+
+        @include pc{
+          gap: calc(( 10 / 1280) * 100vw);
+          font-size: max(calc(( 20 / 1280) * 100vw),16px);
+          margin-bottom: calc(( 10 / 1280) * 100vw);
+        }
+
+        @include sp{
+          gap: calc(( 10 / 375) * 100vw);
+          font-size: max(calc(( 20 / 375) * 100vw),16px);
+        }
+
+        &::before{
+          content: '';
+          display: block;
+          @include icon($cContactPhone);
+
+          @include pc{
+            width: calc(( 20 / 1280) * 100vw);
+            height: calc(( 20 / 1280) * 100vw);
+          }
+
+          @include sp{
+            width: calc(( 20 / 375) * 100vw);
+            height: calc(( 20 / 375) * 100vw);
+          }
+        }
+      }
+    }
+  }
+
+  &--map{
+    width: 100%;
+    iframe{
+      aspect-ratio: 621/451;
+      width: 100%;
+    }
+
+    a{
+      display: block;
+      width: fit-content;
+      color: $cFontTitle;
+      @include hira;
+      font-weight: 300;
+      text-decoration-line: underline;
+      line-height: 106%;
+      
+      @include pc{
+        margin: calc(( 20 / 1280) * 100vw) 0 0 auto;
+        font-size: max(calc(( 15 / 1280) * 100vw),11px);
+        letter-spacing: calc(( -1.05 / 1280) * 100vw);
+      }
+
+      @include sp{
+        margin: calc(( 10 / 375) * 100vw) 0 0 auto;
+        font-size: calc(( 15 / 375) * 100vw);
+        letter-spacing: calc(( -1.05 / 375) * 100vw);
+      }
+    }
+  }
+}

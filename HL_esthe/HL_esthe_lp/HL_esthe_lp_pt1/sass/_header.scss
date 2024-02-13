@@ -1,0 +1,221 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// header PC
+header{
+  @include pc{
+    padding: calc(( 12 / 1280) * 100vw) calc(( 19 / 1280) * 100vw) calc(( 12 / 1280) * 100vw) calc(( 20 / 1280) * 100vw);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 900;
+    transition: 0.3s;
+
+    &.active{
+      background: #F9EEFF;
+    }
+
+    .logo{
+
+      a{
+        display: flex;
+        align-items: center;
+        gap: calc(( 8 / 1280) * 100vw);
+
+        h1{
+          color: #291A2B;
+          @include zen;
+          font-size: max(calc(( 40 / 1280) * 100vw),30px);
+          font-weight: 700;
+        }
+
+        p{
+          color: #291A2B;
+          @include zen;
+          font-size: max(calc(( 15 / 1280) * 100vw),13px);
+          font-weight: 700;
+        }
+      }
+    }
+
+    nav{
+      display: flex;
+      align-items: center;
+      gap: calc(( 19 / 1280) * 100vw);
+
+      .menu{
+        display: flex;
+        align-items: center;
+        gap: calc(( 19 / 1280) * 100vw);
+
+        a{
+          color: #291A2B;
+          @include zen;
+          font-size: max(calc(( 16 / 1280) * 100vw),13px);
+          font-weight: 700;
+        }
+      }
+
+      .btn{
+
+        a{
+          color: #FFF;
+          @include zen;
+          font-size: max(calc(( 16 / 1280) * 100vw),13px);
+          font-weight: 700;
+          padding: calc(( 10 / 1280) * 100vw) calc(( 48 / 1280) * 100vw) calc(( 11 / 1280) * 100vw) calc(( 27 / 1280) * 100vw);
+          border-radius: 50px;
+          background: linear-gradient(90deg, #B78CC6 0.25%, #D79FE8 40.7%, #E1AEEE 65.47%, #F7D0FD 99.81%);
+          position: relative;
+
+          &::before{
+            content: '';
+            width: max(calc(( 5 / 1280) * 100vw),5px);
+            height: max(calc(( 8 / 1280) * 100vw),8px);
+            background: $ku;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: absolute;
+            top: 50%;
+            right: calc(( 20 / 1280) * 100vw);
+            transform: translateY(-50%);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// header SPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSP
+header{
+  @include sp{
+    // background: #F9EEFF;
+    padding: calc(( 20 / 390) * 100vw) calc(( 0 / 390) * 100vw) calc(( 15 / 390) * 100vw) calc(( 28 / 390) * 100vw);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 900;
+    transition: 0.3s;
+
+    &.active{
+      background: #F9EEFF;
+    }
+
+    .logo{
+
+      a{
+        display: flex;
+        align-items: center;
+        gap: calc(( 10 / 390) * 100vw);
+
+        h1{
+          color: #291A2B;
+          @include zen;
+          font-size: calc(( 28 / 390) * 100vw);
+          font-weight: 700;
+        }
+
+        p{
+          color: #291A2B;
+          @include zen;
+          font-size: calc(( 12 / 390) * 100vw);
+          font-weight: 700;
+        }
+      }
+    }
+
+    .burger{
+      width: calc(( 60 / 390) * 100vw);
+      height: calc(( 60 / 390) * 100vw);
+      background-image: $open;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      cursor: pointer;
+      position: fixed;
+      top: calc(( 11 / 390) * 100vw);
+      right: calc(( 12 / 390) * 100vw);
+      z-index: 999;
+      transition: 0.3s;
+
+      &.active{
+        background-image: $close;
+        transform: scale(-1,1);
+      }
+    }
+
+
+
+    nav{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: calc(( 39 / 390) * 100vw);
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      height: 100svh;
+      max-height: calc(( 650 / 390) * 100vw);
+      background: #F9EEFF;
+      transition: right 0.3s;
+
+      &.active{
+        right: 0;
+      }
+
+      .menu{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: calc(( 13 / 390) * 100vw);
+
+        a{
+          color: #291A2B;
+          @include zen;
+          font-size: calc(( 18 / 390) * 100vw);
+          font-weight: 700;
+        }
+      }
+
+      .btn{
+
+        a{
+          color: #FFF;
+          @include zen;
+          font-size: calc(( 16 / 390) * 100vw);
+          font-weight: 700;
+          padding: calc(( 12 / 390) * 100vw) calc(( 66 / 390) * 100vw) calc(( 12 / 390) * 100vw) calc(( 36 / 390) * 100vw);
+          border-radius: 50px;
+          background: linear-gradient(90deg, #B78CC6 0.25%, #D79FE8 40.7%, #E1AEEE 65.47%, #F7D0FD 99.81%);
+          position: relative;
+
+          &::before{
+            content: '';
+            width: calc(( 5 / 390) * 100vw);
+            height: calc(( 8 / 390) * 100vw);
+            background: $ku;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: absolute;
+            top: 50%;
+            right: calc(( 20 / 390) * 100vw);
+            transform: translateY(-50%);
+          }
+        }
+      }
+    }
+  }
+}

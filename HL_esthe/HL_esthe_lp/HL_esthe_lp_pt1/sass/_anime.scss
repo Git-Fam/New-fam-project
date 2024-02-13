@@ -1,0 +1,21 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+
+// ホバーで薄く
+.hover-opa{
+  transition: 0.3s;
+
+  &:hover{
+    opacity: 0.6;
+  }
+}
+
+// ホバーで大きく
+.hover-scale{
+  transition: 0.3s;
+
+  &:hover{
+    transform: scale(1.1);
+  }
+}

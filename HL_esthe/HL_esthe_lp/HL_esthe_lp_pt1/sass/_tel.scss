@@ -1,0 +1,118 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// tel PC
+.tel {
+  @include pc {
+    padding: calc((55 / 1280) * 100vw) 0;
+    background: #DFD0DD;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc((85 / 1280) * 100vw);
+
+    .btn {
+      @include column(calc((5 / 1280) * 100vw));
+
+      h2 {
+        text-align: center;
+        color: #291A2B;
+        @include zen;
+        font-size: max(calc((16 / 1280) * 100vw), 14px);
+        font-weight: 500;
+      }
+
+      a {
+        width: unset;
+        padding: calc((20 / 1280) * 100vw) calc((80 / 1280) * 100vw);
+
+        p {
+          color: #FFF;
+          @include zen;
+          font-size: max(calc((23 / 1280) * 100vw), 20px);
+          font-weight: 700;
+        }
+      }
+    }
+
+    &--item {
+
+      p {
+        color: #291A2B;
+        @include zen;
+        font-size: max(calc((16 / 1280) * 100vw), 14px);
+        font-weight: 500;
+      }
+
+      a {
+        color: #291A2B;
+        @include roboto;
+        font-size: max(calc((50 / 1280) * 100vw), 40px);
+        font-weight: 700;
+        line-height: 100%;
+        transition: 0.3s;
+
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+}
+
+
+// tel SPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSP
+.tel {
+  @include sp {
+    padding: calc((48 / 390) * 100vw) calc((24 / 390) * 100vw);
+    background: #DFD0DD;
+    @include column(calc((40 / 390) * 100vw));
+
+    .btn {
+      @include column(calc((10 / 390) * 100vw));
+
+      h2 {
+        text-align: center;
+        color: #291A2B;
+        @include zen;
+        font-size: calc((16 / 390) * 100vw);
+        font-weight: 500;
+      }
+
+      a {
+        width: unset;
+        padding: calc((26 / 390) * 100vw) 0 calc((22 / 390) * 100vw) calc((36 / 390) * 100vw);
+
+        p {
+          color: #FFF;
+          @include zen;
+          font-size: calc((18 / 390) * 100vw);
+          font-weight: 700;
+        }
+      }
+    }
+
+    &--item {
+      text-align: center;
+
+      p {
+        color: #291A2B;
+        @include zen;
+        font-size: calc((11 / 390) * 100vw);
+        font-weight: 500;
+
+        &:nth-of-type(2) {
+          font-size: calc((13 / 390) * 100vw);
+        }
+      }
+
+      a {
+        color: #291A2B;
+        @include roboto;
+        font-size: calc((40 / 390) * 100vw);
+        font-weight: 700;
+        line-height: calc((40 / 390) * 100vw);
+      }
+    }
+  }
+}

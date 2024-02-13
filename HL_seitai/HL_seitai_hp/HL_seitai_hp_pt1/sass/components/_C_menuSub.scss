@@ -1,0 +1,124 @@
+@use "../global" as *;
+
+.C-menuSub {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include pc {
+    width: max(calc((942 / 1280) * 100vw), 700px);
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: calc((116 / 1280) * 100vw) calc((40 / 1280) * 100vw);
+  }
+
+  @include sp {
+    width: 100%;
+    flex-direction: column;
+    gap: calc((84 / 390) * 100vw);
+  }
+
+  &--item {
+    border-right: 1px solid #78635C;
+    border-bottom: 1px solid #78635C;
+    border-left: 1px solid #78635C;
+    position: relative;
+
+    @include pc {
+      width: calc(100% / 3 - calc((40 / 1280) * 100vw));
+      padding: calc((85 / 1280) * 100vw) 0 calc((59 / 1280) * 100vw);
+    }
+
+    @include sp {
+      border-top: 1px solid #78635C;
+      width: 100%;
+      padding: calc((85 / 390) * 100vw) 0 calc((59 / 390) * 100vw);
+    }
+
+    &--img {
+      aspect-ratio: 106/140;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+
+      @include pc {
+        width: calc((106 / 1280) * 100vw);
+        top: calc((-50 / 1280) * 100vw);
+      }
+
+      @include sp {
+        width: calc((101 / 390) * 100vw);
+        top: calc((-45 / 390) * 100vw);
+      }
+    }
+
+    // 1
+    &:nth-child(1) {
+      .C-menuSub--item--img {
+        @include img('C-menu-icon-1.png');
+      }
+    }
+
+    // 2
+    &:nth-child(2) {
+      .C-menuSub--item--img {
+        @include img('C-menu-icon-2.png');
+      }
+    }
+
+    // 3
+    &:nth-child(3) {
+      .C-menuSub--item--img {
+        @include img('C-menu-icon-3.png');
+      }
+    }
+
+    // 4
+    &:nth-child(4) {
+      .C-menuSub--item--img {
+        @include img('C-menu-icon-4.png');
+      }
+    }
+
+    // 5
+    &:nth-child(5) {
+      .C-menuSub--item--img {
+        @include img('C-menu-icon-5.png');
+      }
+    }
+
+    .C-menuSub--p {
+      color: $mainColor;
+      text-align: center;
+      @include serif;
+      font-weight: 600;
+      line-height: 150%;
+
+      @include pc {
+        font-size: max(calc((24 / 1280) * 100vw), 20px);
+        letter-spacing: calc((0.96 / 1280) * 100vw);
+      }
+
+      @include sp {
+        font-size: calc((17 / 390) * 100vw);
+        letter-spacing: calc((0.68 / 390) * 100vw);
+      }
+    }
+
+    .C-btn {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+
+      @include pc {
+        bottom: calc((-20 / 1280) * 100vw);
+      }
+
+      @include sp {
+        bottom: calc((-20 / 390) * 100vw);
+      }
+    }
+  }
+}

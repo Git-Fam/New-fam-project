@@ -1,0 +1,207 @@
+@use "../global" as *;
+
+
+// c__menu
+.c__menu {
+  display: grid;
+
+  @include pc {
+    width: max(calc((960 / 1280) * 100vw), 700px);
+    margin: 0 auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: calc((40 / 1280) * 100vw) calc((30 / 1280) * 100vw);
+  }
+
+  @include sp {
+    width: 95%;
+    margin: 0 auto;
+    grid-template-columns: 1fr 1fr;
+    gap: calc((20 / 390) * 100vw);
+  }
+
+  &--item {
+    display: block;
+    position: relative;
+
+    &::before {
+      position: absolute;
+      aspect-ratio: 1/1;
+      background: $cFontTitle;
+      border-radius: 50%;
+      @include center;
+      color: #FFF;
+      @include serif;
+      font-weight: 500;
+      line-height: 90%;
+
+      @include pc {
+        width: calc((65 / 1280) * 100vw);
+        top: calc((-10 / 1280) * 100vw);
+        right: calc((-10 / 1280) * 100vw);
+        font-size: calc((18 / 1280) * 100vw);
+        letter-spacing: calc((1.63 / 1280) * 100vw);
+      }
+
+      @include sp {
+        width: calc((40 / 390) * 100vw);
+        top: calc((-10 / 390) * 100vw);
+        right: calc((-5 / 390) * 100vw);
+        font-size: calc((12 / 390) * 100vw);
+        letter-spacing: calc((1 / 390) * 100vw);
+      }
+    }
+
+    // アイキャッチ01~08
+    &:nth-child(1) {
+      &::before {
+        content: '00分';
+      }
+
+      .c__menu--item--iCatch {
+        @include img('c_menu-iCatch01.jpg');
+      }
+    }
+
+    &:nth-child(2) {
+      &::before {
+        content: '00分';
+      }
+
+      .c__menu--item--iCatch {
+        @include img('c_menu-iCatch02.jpg');
+      }
+    }
+
+    &:nth-child(3) {
+      &::before {
+        content: '00分';
+      }
+
+      .c__menu--item--iCatch {
+        @include img('c_menu-iCatch03.jpg');
+      }
+    }
+
+    &:nth-child(4) {
+      &::before {
+        content: '00分';
+      }
+
+      .c__menu--item--iCatch {
+        @include img('c_menu-iCatch04.jpg');
+      }
+    }
+
+    &:nth-child(5) {
+      &::before {
+        content: '00分';
+      }
+
+      .c__menu--item--iCatch {
+        @include img('c_menu-iCatch05.jpg');
+      }
+    }
+
+    &:nth-child(6) {
+      &::before {
+        content: '00分';
+      }
+
+      .c__menu--item--iCatch {
+        @include img('c_menu-iCatch06.jpg');
+      }
+    }
+
+    &:nth-child(7) {
+      &::before {
+        content: '00分';
+      }
+
+      .c__menu--item--iCatch {
+        @include img('c_menu-iCatch07.jpg');
+      }
+    }
+
+    &:nth-child(8) {
+      &::before {
+        content: '00分';
+      }
+
+      .c__menu--item--iCatch {
+        @include img('c_menu-iCatch08.jpg');
+      }
+    }
+
+    &--iCatch {
+      width: 100%;
+      aspect-ratio: 300/161;
+      background-size: cover;
+    }
+
+    &--contents {
+      background: #FFF;
+      position: relative;
+
+      @include pc {
+        padding: calc((19 / 1280) * 100vw) calc((20 / 1280) * 100vw);
+      }
+
+      @include sp {
+        padding: calc((10 / 390) * 100vw) calc((10 / 390) * 100vw);
+      }
+
+      &::before {
+        content: '';
+        @include icon($cMenuFontIcon);
+        aspect-ratio: 1/1;
+        position: absolute;
+
+        @include pc {
+          width: calc((17 / 1280) * 100vw);
+          bottom: calc((5 / 1280) * 100vw);
+          right: calc((5 / 1280) * 100vw);
+        }
+
+        @include sp {
+          width: calc((12 / 390) * 100vw);
+          bottom: calc((5 / 390) * 100vw);
+          right: calc((5 / 390) * 100vw);
+        }
+      }
+
+      &--title {
+        color: $cFontTitle;
+        @include hira;
+        font-weight: 300;
+
+        @include pc {
+          font-size: max(calc((18 / 1280) * 100vw), 16px);
+          letter-spacing: calc((0.36 / 1280) * 100vw);
+          margin-bottom: calc((13 / 1280) * 100vw);
+        }
+
+        @include sp {
+          font-size: calc((15 / 390) * 100vw);
+          letter-spacing: calc((0.3 / 390) * 100vw);
+          margin-bottom: calc((6 / 390) * 100vw);
+        }
+      }
+
+      &--text {
+        color: $cFontText;
+        @include hira;
+        font-weight: 300;
+
+        @include pc {
+          font-size: max(calc((15 / 1280) * 100vw), 11px);
+          letter-spacing: calc((0.3 / 1280) * 100vw);
+        }
+
+        @include sp {
+          font-size: calc((12 / 390) * 100vw);
+          letter-spacing: calc((0.24 / 390) * 100vw);
+        }
+      }
+    }
+  }
+}

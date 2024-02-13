@@ -1,0 +1,67 @@
+@use "../global" as *;
+
+footer{
+  text-align: center;
+
+  .footer--top{
+    background-image: radial-gradient(#3b1e10 20%, #523529 1%);
+
+    @include pc{
+      background-size:  calc(( 20 / 1280) * 100vw) calc(( 20 / 1280) * 100vw);
+      padding: calc(( 30 / 1280) * 100vw) 0 calc(( 28 / 1280) * 100vw);
+    }
+
+    @include sp{
+      background-size:  calc(( 20 / 390) * 100vw) calc(( 20 / 390) * 100vw);
+      padding: calc(( 20 / 390) * 100vw) 0 calc(( 20 / 390) * 100vw);
+    }
+
+    h2{
+      color: #FFF;
+      @include hira;
+      line-height: 60%;
+      font-weight: 600;
+      
+      @include pc{
+        font-size: max(calc(( 13 / 1280) * 100vw),10px);
+        letter-spacing: calc(( 0.65 / 1280) * 100vw);
+      }
+
+      @include sp{
+        line-height: 150%;
+        font-size: calc(( 10 / 390) * 100vw);
+        letter-spacing: calc(( 0.65 / 390) * 100vw);
+      }
+    }
+  }
+
+  .footer--bottom{
+    background: #714532;
+
+    @include pc{
+      padding: calc(( 10 / 1280) * 100vw) 0 calc(( 14 / 1280) * 100vw);
+    }
+
+    @include sp{
+      padding: calc(( 10 / 390) * 100vw) 0 calc(( 14 / 390) * 100vw);
+    }
+
+    p{
+      color: #FFF;
+      @include hira;
+      font-weight: 600;
+      line-height: 60%;
+      
+      @include pc{
+        font-size: max(calc(( 11 / 1280) * 100vw),8px);
+        letter-spacing: calc(( 0.22 / 1280) * 100vw);
+      }
+
+      @include sp{
+        line-height: 150%;
+        font-size: calc(( 8 / 390) * 100vw);
+        letter-spacing: calc(( 0.22 / 390) * 100vw);
+      }
+    }
+  }
+}

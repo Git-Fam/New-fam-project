@@ -1,0 +1,28 @@
+@use "../global" as *;
+
+.step{
+
+  @include pc{
+    padding: calc(( 63 / 1280) * 100vw) 0 calc(( 70 / 1280) * 100vw);
+  }
+
+  @include sp{
+    padding: calc(( 24 / 390) * 100vw) 0;
+  }
+
+  &--title{
+    margin: auto;
+    @include img('step-title.jpg');
+    aspect-ratio: 960/175;
+
+    @include pc{
+      width: max(calc(( 960 / 1280) * 100vw), 700px);
+      margin-bottom: calc(( 45 / 1280) * 100vw);
+    }
+
+    @include sp{
+      width: 95%;
+      margin-bottom: calc(( 17 / 390) * 100vw);
+    }
+  }
+}

@@ -1,0 +1,69 @@
+@use "../global" as *;
+
+
+footer{
+
+.footer--menu{
+  background: #F9F9F9;
+  padding: calc(( 55 / 1280) * 100vw) 0 ;
+
+  &--inner{
+    width: max(calc(( 666 / 1280) * 100vw),666px);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo{
+      display: block;
+      aspect-ratio: 211/44;
+      @include img('logo-flex.png');
+      width: max(calc(( 211 / 1280) * 100vw),211px);
+    }
+
+    nav{
+      Width: max(calc(( 300 / 1280) * 100vw),300px);
+
+      ul{
+        display: flex;
+        flex-wrap: wrap;
+        gap: max(calc(( 18 / 1280) * 100vw),18px) 0;
+
+        li{
+          width: calc( 100% / 3 );
+
+          a{
+            color: $mainColor;
+            @include josefin;
+            font-size: max(calc(( 11 / 1280) * 100vw),11px);
+            letter-spacing: max(calc(( 0.11 / 1280) * 100vw),0.11px);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+  .catch--copy{
+    color: #FFF;
+    text-align: center;
+    @include josefin;
+    background: $mainColor;
+
+    @include pc{
+      font-size: max(calc(( 12 / 1280) * 100vw),12px);
+      letter-spacing: max(calc(( 0.12 / 1280) * 100vw),0.12px);
+      padding: max(calc(( 25 / 1280) * 100vw),25px) 0;
+    }
+    @include sp{
+      font-size: calc(( 12 / 390) * 100vw);
+      letter-spacing: calc(( 0.12 / 390) * 100vw);
+      padding: calc(( 25 / 390) * 100vw) 0;
+    }
+  }
+}

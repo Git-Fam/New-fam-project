@@ -1,0 +1,145 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+
+// 表示・非表示
+.sp{
+  @include pc{
+    display: none !important;
+  }
+}
+.pc{
+  @include sp{
+    display: none !important;
+  }
+}
+
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: 10%;
+}
+
+body{
+
+  &.active{
+    overflow: hidden;
+  }
+}
+
+.wapper{
+  overflow: hidden;
+}
+
+
+// smallボタン
+// <a href="#" class="small-btn hover-scale">
+// <p>月額利用料金</p>
+// </a>
+.small-btn{
+  // PCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPC
+  @include pc{
+    display: block;
+    width: max(calc(( 300 / 1280) * 100vw),200px);
+    padding: calc(( 9 / 1280) * 100vw) 0 calc(( 8.5 / 1280) * 100vw) calc(( 22 / 1280) * 100vw);
+    border-radius: calc(( 50 / 1280) * 100vw);
+    background: linear-gradient(92deg, #A986B9 2.79%, #C092C8 41.12%, #E8CCE9 98.73%);
+    position: relative;
+    transition: all 0.3s ease;
+
+    &::before{
+      content: '';
+      width: max(calc(( 10 / 1280) * 100vw),8px);
+      height: max(calc(( 12 / 1280) * 100vw),10px);
+      background-image: $ku;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: absolute;
+      top: 50%;
+      right: calc(( 22 / 1280) * 100vw);
+      transform: translateY(-50%);
+    }
+
+    p{
+      color: #FFF;
+      @include zen;
+      font-size: max(calc(( 18 / 1280) * 100vw),16px);
+      font-weight: 700;
+    }
+  }
+
+  // SPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSP
+  @include sp{
+    display: block;
+    width: calc(( 300 / 390) * 100vw);
+    padding: calc(( 9 / 390) * 100vw) 0 calc(( 8.5 / 390) * 100vw) calc(( 22 / 390) * 100vw);
+    border-radius: calc(( 50 / 390) * 100vw);
+    background: linear-gradient(92deg, #A986B9 2.79%, #C092C8 41.12%, #E8CCE9 98.73%);
+    position: relative;
+    transition: all 0.3s ease;
+
+    &::before{
+      content: '';
+      width: calc(( 10 / 390) * 100vw);
+      height: calc(( 12 / 390) * 100vw);
+      background-image: $ku;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: absolute;
+      top: 50%;
+      right: calc(( 22 / 390) * 100vw);
+      transform: translateY(-50%);
+    }
+
+    p{
+      color: #FFF;
+      @include zen;
+      font-size: calc(( 18 / 390) * 100vw);
+      font-weight: 700;
+    }
+  }
+}
+
+
+// セクションタイトル
+// <div class="section__title">
+// <h2>ご利用の流れ</h2>
+// <h3>Flow</h3>
+// </div>
+.section__title{
+  // PCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPCPC
+  @include pc{
+    text-align: center;
+    h2{
+      color: #291A2B;
+      @include zen;
+      font-size: max(calc(( 30 / 1280) * 100vw),25px);
+      font-weight: 700;
+    }
+    h3{
+      color: #A987BA;
+      @include Hannotate;
+      font-size: max(calc(( 34 / 1280) * 100vw),30px);
+      font-weight: 400;
+      line-height: 100%;
+    }
+  }
+
+  // SPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSP
+  @include sp{
+    text-align: center;
+    h2{
+      color: #291A2B;
+      @include zen;
+      font-size: calc(( 26 / 390) * 100vw);
+      font-weight: 700;
+    }
+    h3{
+      color: #A987BA;
+      @include Hannotate;
+      font-size: calc(( 34 / 390) * 100vw);
+      font-weight: 400;
+    }
+  }
+}

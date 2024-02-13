@@ -1,0 +1,412 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// self PC
+.self {
+  @include pc {
+    padding: calc((50 / 1280) * 100vw) calc((30 / 1280) * 100vw) calc((100 / 1280) * 100vw);
+    background: #FDF7FD;
+
+    &--title {
+      text-align: center;
+      margin-bottom: calc((60 / 1280) * 100vw);
+
+      h3 {
+        color: #291A2B;
+        @include zen;
+        font-size: max(calc((24 / 1280) * 100vw), 20px);
+        font-weight: 700;
+        letter-spacing: calc((1.2 / 1280) * 100vw);
+
+        span {
+          color: #291A2B;
+          @include zen;
+          font-size: max(calc((24 / 1280) * 100vw), 20px);
+          font-weight: 700;
+          letter-spacing: calc((1.2 / 1280) * 100vw);
+          background: linear-gradient(transparent 0%, transparent 75%, #DAB3CB 75%, #DAB3CB 100%);
+        }
+      }
+
+      h2 {
+        color: #A76BA3;
+        @include kawaii;
+        font-size: max(calc((50 / 1280) * 100vw), 40px);
+        font-weight: 400;
+        letter-spacing: calc((2.5 / 1280) * 100vw);
+        padding: calc((23 / 1280) * 100vw) calc((95 / 1280) * 100vw);
+        border: solid calc((12 / 1280) * 100vw);
+        border-image: linear-gradient(to right, #D9BEE2, #D9BEE2, #C49DCA, #FFD6BE, #C9A2CF, #D2B2DD) 1;
+        width: fit-content;
+        margin: calc((25 / 1280) * 100vw) auto;
+      }
+
+      p {
+        color: #291A2B;
+        @include zen;
+        font-size: max(calc((24 / 1280) * 100vw), 20px);
+        font-weight: 700;
+        letter-spacing: calc((1.2 / 1280) * 100vw);
+      }
+    }
+
+    &--contents {
+      margin-bottom: calc((121 / 1280) * 100vw);
+
+      .item {
+        display: flex;
+        justify-content: space-between;
+
+        &--text {
+          display: flex;
+          flex-direction: column;
+          gap: calc((32 / 1280) * 100vw);
+
+          &--title {
+            display: flex;
+            flex-direction: column;
+            gap: calc((7 / 1280) * 100vw);
+
+            p {
+              width: fit-content;
+              padding: 0 calc((11 / 1280) * 100vw);
+              color: #FFF;
+              @include zen;
+              font-size: max(calc((40 / 1280) * 100vw), 30px);
+              font-weight: 700;
+              background: linear-gradient(92deg, #A986B9 2.79%, #C092C8 41.12%, #E8CCE9 98.73%);
+            }
+          }
+
+          &--area {
+            width: max(calc((468 / 1280) * 100vw), 300px);
+
+            p {
+              color: #291A2B;
+              @include zen;
+              font-size: max(calc((18 / 1280) * 100vw), 16px);
+              font-weight: 500;
+            }
+          }
+        }
+
+        &--img {
+          width: calc((679 / 1280) * 100vw);
+          height: calc((382 / 1280) * 100vw);
+          background-image: url('/img/point.jpg');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          border-radius: 10px;
+        }
+      }
+    }
+
+    &--point {
+      display: flex;
+      flex-direction: column;
+      gap: calc((37 / 1280) * 100vw);
+
+      .point--item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &--img {
+          width: calc((575 / 1280) * 100vw);
+          height: calc((323 / 1280) * 100vw);
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          border-radius: 10px;
+        }
+
+        &:nth-child(2n) {
+          flex-direction: row-reverse;
+          padding-left: calc((30 / 1280) * 100vw);
+        }
+
+        &:nth-child(1) {
+          .point--item--img {
+            background-image: url('/img/point-1.jpg');
+          }
+        }
+
+        &:nth-child(2) {
+          .point--item--img {
+            background-image: url('/img/point-2.jpg');
+          }
+        }
+
+        &:nth-child(3) {
+          .point--item--img {
+            background-image: url('/img/point-3.jpg');
+          }
+        }
+
+        .point--text {
+          width: calc((564 / 1280) * 100vw);
+
+          .point--title {
+            display: flex;
+            align-items: center;
+            gap: calc((21 / 1280) * 100vw);
+            padding-left: calc((12.5 / 1280) * 100vw);
+            position: relative;
+
+            &::before {
+              content: '';
+              display: block;
+              width: max(calc((62 / 1280) * 100vw), 40px);
+              aspect-ratio: 1/1;
+              background-image: $pointIcon;
+              background-size: contain;
+              background-position: center;
+              background-repeat: no-repeat;
+              position: absolute;
+              top: min(calc((-30 / 1280) * 100vw), -20px);
+              left: min(calc((-30 / 1280) * 100vw), -25px);
+            }
+
+            h2 {
+              color: #A987BA;
+              @include Hannotate;
+              font-size: max(calc((24 / 1280) * 100vw), 20px);
+              font-weight: 600;
+            }
+
+            h3 {
+              color: #291A2B;
+              @include zen;
+              font-size: max(calc((24 / 1280) * 100vw), 20px);
+              font-weight: 700;
+            }
+          }
+
+          &--area {
+            margin-top: calc((23 / 1280) * 100vw);
+
+            p {
+              color: #291A2B;
+              @include zen;
+              font-size: max(calc((18 / 1280) * 100vw), 16px);
+              font-weight: 500;
+              line-height: 150%;
+            }
+          }
+
+          .small-btn {
+            margin-top: calc((20 / 1280) * 100vw);
+          }
+        }
+      }
+    }
+  }
+}
+
+// self SP
+.self {
+  @include sp {
+    padding: calc((50 / 390) * 100vw) 0 calc((100 / 390) * 100vw);
+    background: #FDF7FD;
+
+    &--title {
+      text-align: center;
+      margin-bottom: calc((50 / 390) * 100vw);
+      padding: 0 calc((24 / 390) * 100vw);
+
+      h3 {
+        color: #291A2B;
+        @include zen;
+        font-size: calc((20 / 390) * 100vw);
+        font-weight: 700;
+        letter-spacing: calc((1 / 390) * 100vw);
+
+        span {
+          color: #291A2B;
+          @include zen;
+          font-size: calc((20 / 390) * 100vw);
+          font-weight: 700;
+          letter-spacing: calc((1 / 390) * 100vw);
+          background: linear-gradient(transparent 0%, transparent 75%, #DAB3CB 75%, #DAB3CB 100%);
+        }
+      }
+
+      h2 {
+        color: #A76BA3;
+        @include kawaii;
+        font-size: calc((40 / 390) * 100vw);
+        font-weight: 400;
+        letter-spacing: calc((2.5 / 390) * 100vw);
+        padding: calc((6 / 390) * 100vw) 0;
+        border: solid calc((12 / 390) * 100vw);
+        border-image: linear-gradient(to right, #D9BEE2, #D9BEE2, #C49DCA, #FFD6BE, #C9A2CF, #D2B2DD) 1;
+        width: 100%;
+        margin: calc((19 / 390) * 100vw) auto;
+      }
+
+      p {
+        color: #291A2B;
+        @include zen;
+        font-size: calc((20 / 390) * 100vw);
+        font-weight: 700;
+        letter-spacing: calc((1 / 390) * 100vw);
+      }
+    }
+
+    &--contents {
+      margin-bottom: calc((100 / 390) * 100vw);
+
+      .item {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: calc((97 / 390) * 100vw);
+
+        &--text {
+          display: flex;
+          flex-direction: column;
+          padding: 0 calc((24 / 390) * 100vw);
+          position: relative;
+
+          &--title {
+            display: flex;
+            flex-direction: column;
+            gap: calc((5 / 390) * 100vw);
+            position: absolute;
+            top: calc((-130 / 390) * 100vw);
+            left: calc((24 / 390) * 100vw);
+
+            p {
+              width: fit-content;
+              padding: 0 calc((8 / 390) * 100vw);
+              color: #FFF;
+              @include zen;
+              font-size: calc((30 / 390) * 100vw);
+              font-weight: 700;
+              background: linear-gradient(92deg, #A986B9 2.79%, #C092C8 41.12%, #E8CCE9 98.73%);
+            }
+          }
+
+          &--area {
+            width: 100%;
+
+            p {
+              color: #291A2B;
+              @include zen;
+              font-size: calc((18 / 390) * 100vw);
+              font-weight: 500;
+            }
+          }
+        }
+
+        &--img {
+          width: calc((342 / 390) * 100vw);
+          height: calc((342 / 390) * 100vw);
+          background-image: url('/img/point.jpg');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          border-radius: 10px;
+          margin-left: auto;
+        }
+      }
+    }
+
+    &--point {
+      display: flex;
+      flex-direction: column;
+      gap: calc((70 / 390) * 100vw);
+      padding: 0 calc((24 / 390) * 100vw);
+
+      .point--item {
+        display: flex;
+        flex-direction: column;
+        gap: calc((11 / 390) * 100vw);
+
+        &--img {
+          width: 100%;
+          height: calc((192 / 390) * 100vw);
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          border-radius: 10px;
+        }
+
+        &:nth-child(1) {
+          .point--item--img {
+            background-image: url('/img/point-1.jpg');
+          }
+        }
+
+        &:nth-child(2) {
+          .point--item--img {
+            background-image: url('/img/point-2.jpg');
+          }
+        }
+
+        &:nth-child(3) {
+          .point--item--img {
+            background-image: url('/img/point-3.jpg');
+          }
+        }
+
+        .point--text {
+          width: 100%;
+          padding-left: calc((23 / 390) * 100vw);
+
+          .point--title {
+            display: flex;
+            flex-direction: column;
+            gap: calc((3.5 / 390) * 100vw);
+            position: relative;
+
+            &::before {
+              content: '';
+              display: block;
+              width: calc((62 / 390) * 100vw);
+              aspect-ratio: 1/1;
+              background-image: $pointIcon;
+              background-size: contain;
+              background-position: center;
+              background-repeat: no-repeat;
+              position: absolute;
+              top: calc((-25 / 390) * 100vw);
+              left: calc((-45 / 390) * 100vw);
+            }
+
+            h2 {
+              color: #A987BA;
+              @include Hannotate;
+              font-size: calc((24 / 390) * 100vw);
+              font-weight: 600;
+            }
+
+            h3 {
+              color: #291A2B;
+              @include zen;
+              font-size: calc((20 / 390) * 100vw);
+              font-weight: 700;
+            }
+          }
+
+          &--area {
+            margin-top: calc((14 / 390) * 100vw);
+
+            p {
+              color: #291A2B;
+              @include zen;
+              font-size: calc((16 / 390) * 100vw);
+              font-weight: 500;
+              line-height: 168%;
+            }
+          }
+
+          .small-btn {
+            margin: calc((14 / 390) * 100vw) auto 0;
+            transform: translateX(calc((-11.5 / 390) * 100vw));
+          }
+        }
+      }
+    }
+  }
+}

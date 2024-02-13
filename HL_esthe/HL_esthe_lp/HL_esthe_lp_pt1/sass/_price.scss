@@ -1,0 +1,948 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// price PC
+.price {
+  @include pc {
+    padding: calc((100 / 1280) * 100vw) calc((49 / 1280) * 100vw) calc((100 / 1280) * 100vw) calc((31 / 1280) * 100vw);
+    background: #EEEBEF;
+
+    &--title--text {
+      width: max(calc((638 / 1280) * 100vw), 500px);
+      margin: calc((58 / 1280) * 100vw) auto calc((50 / 1280) * 100vw);
+
+      p {
+        color: #291A2B;
+        @include zen;
+        font-size: max(calc((16 / 1280) * 100vw), 14px);
+        font-weight: 500;
+        line-height: 168%;
+        /* 168.75% */
+      }
+    }
+
+    &--balloon {
+      width: fit-content;
+      margin: 0 auto;
+      padding: calc((7 / 1280) * 100vw) calc((27 / 1280) * 100vw);
+      border-radius: 50px;
+      background: linear-gradient(92deg, #A986B9 2.79%, #C092C8 41.12%, #E8CCE9 98.73%);
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 99%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: solid calc((8 / 1280) * 100vw) transparent;
+        border-top: solid calc((8 / 1280) * 100vw) #c69bcd;
+      }
+
+      p {
+        color: #FFF;
+        @include zen;
+        font-size: max(calc((16 / 1280) * 100vw), 14px);
+        font-weight: 700;
+      }
+    }
+
+    &--count {
+      width: fit-content;
+      margin: calc((50 / 1280) * 100vw) auto calc((80 / 1280) * 100vw);
+      @include column(calc((7 / 1280) * 100vw));
+
+      .contents {
+        display: flex;
+        gap: calc((20 / 1280) * 100vw);
+        align-items: center;
+
+        .item {
+          border-radius: 10px;
+          background: #FFF;
+          width: max(calc((250 / 1280) * 100vw), 200px);
+          padding: calc((12 / 1280) * 100vw) 0 calc((13 / 1280) * 100vw) calc((12 / 1280) * 100vw);
+          position: relative;
+
+          h2 {
+            color: #291A2B;
+            @include Hannotate;
+            font-size: max(calc((25 / 1280) * 100vw), 20px);
+            font-weight: 800;
+            letter-spacing: calc((2.5 / 1280) * 100vw);
+          }
+
+          .min {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: calc((15 / 1280) * 100vw);
+            border-radius: 50px;
+            background: #A76BA3;
+            padding: 0 calc((15 / 1280) * 100vw);
+
+            p {
+              color: #FFF;
+              @include zen;
+              font-size: max(calc((28 / 1280) * 100vw), 20px);
+              font-weight: 700;
+              line-height: 120%;
+
+              span {
+                color: #FFF;
+                @include zen;
+                font-size: max(calc((16 / 1280) * 100vw), 10px);
+                font-weight: 700;
+              }
+            }
+          }
+
+          .img {
+            position: absolute;
+            bottom: 0;
+            right: calc((-5 / 1280) * 100vw);
+            width: calc((77 / 1280) * 100vw);
+            height: calc((72 / 1280) * 100vw);
+            background-image: url('/img/price-img.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+
+          }
+        }
+
+        .multiply {
+          width: calc((18 / 1280) * 100vw);
+          height: calc((18 / 1280) * 100vw);
+          background-image: $multiply;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+      }
+
+      small {
+        text-align: right;
+        color: #291A2B;
+        @include zen;
+        font-size: calc((12 / 1280) * 100vw);
+        font-weight: 500;
+      }
+    }
+
+    &--popular {
+      width: 100%;
+      margin-bottom: calc((65 / 1280) * 100vw);
+
+      .title {
+        display: flex;
+        align-items: center;
+        gap: calc((16 / 1280) * 100vw);
+        margin-bottom: calc((16 / 1280) * 100vw);
+
+        h2 {
+          color: #291A2B;
+          @include zen;
+          font-size: max(calc((28 / 1280) * 100vw), 20px);
+          font-weight: 700;
+        }
+
+        div {
+          width: calc((79 / 1280) * 100vw);
+          height: calc((17 / 1280) * 100vw);
+          background-image: $meteor;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+      }
+
+      .contents {
+        @include column(calc((20 / 1280) * 100vw));
+        width: 100%;
+
+        .item {
+          height: calc((141 / 1280) * 100vw);
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 calc((31 / 1280) * 100vw);
+          background: #FFF;
+
+          &--color {
+            width: max(calc((160 / 1280) * 100vw), 100px);
+            padding: calc((18 / 1280) * 100vw) 0;
+
+            h2 {
+              text-align: center;
+              color: #FFF;
+              @include zen;
+              font-size: max(calc((16 / 1280) * 100vw), 12px);
+              font-weight: 700;
+            }
+          }
+
+          &--title {
+            margin-left: calc((-50 / 1280) * 100vw);
+
+            p {
+              color: #291A2B;
+              @include zen;
+              font-size: max(calc((16 / 1280) * 100vw), 12px);
+              font-weight: 500;
+            }
+          }
+
+          &--text {
+            margin-left: calc((-50 / 1280) * 100vw);
+
+            p {
+              color: #291A2B;
+              @include zen;
+              font-size: max(calc((16 / 1280) * 100vw), 12px);
+              font-weight: 500;
+            }
+          }
+
+          &--price {
+            width: calc((200 / 1280) * 100vw);
+
+            &--text {
+              text-align: center;
+              width: 100%;
+              color: #FFF;
+              @include zen;
+              font-size: calc((13 / 1280) * 100vw);
+              font-weight: 500;
+            }
+
+            &--detail {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              p {
+                color: #291A2B;
+                @include zen;
+                font-size: calc((13 / 1280) * 100vw);
+                font-weight: 500;
+                letter-spacing: calc((0.65 / 1280) * 100vw);
+              }
+
+              span {
+                color: #291A2B;
+                @include roboto;
+                font-size: calc((18 / 1280) * 100vw);
+                font-weight: 500;
+                margin: calc((10 / 1280) * 100vw) calc((7 / 1280) * 100vw) 0 calc((13 / 1280) * 100vw);
+              }
+
+              h2 {
+                color: #291A2B;
+                @include roboto;
+                font-size: calc((46 / 1280) * 100vw);
+                font-weight: 500;
+              }
+            }
+          }
+
+          // シルバー
+          &:nth-child(1) {
+            .item--color {
+              background: #B1AFB5;
+            }
+
+            .item--price {
+              .item--price--text {
+                background: #B1AFB5;
+              }
+            }
+          }
+
+          // ゴールド
+          &:nth-child(2) {
+            .item--color {
+              background: #BC9E8C;
+            }
+
+            .item--price {
+              .item--price--text {
+                background: #BC9E8C;
+              }
+            }
+          }
+
+          // プラチナ
+          &:nth-child(3) {
+            .item--color {
+              background: #7A4B80;
+            }
+
+            .item--price {
+              .item--price--text {
+                background: #7A4B80;
+              }
+            }
+          }
+
+          // ダイヤモンド
+          &:nth-child(4) {
+            .item--color {
+              background: #6995CE;
+            }
+
+            .item--price {
+              .item--price--text {
+                background: #6995CE;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &--times {
+      width: 100%;
+
+      .title {
+        display: flex;
+        align-items: center;
+        gap: calc((16 / 1280) * 100vw);
+        margin-bottom: calc((16 / 1280) * 100vw);
+
+        h2 {
+          color: #291A2B;
+          @include zen;
+          font-size: max(calc((28 / 1280) * 100vw), 20px);
+          font-weight: 700;
+        }
+
+        div {
+          width: calc((79 / 1280) * 100vw);
+          height: calc((17 / 1280) * 100vw);
+          background-image: $meteor;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+      }
+
+      .contents {
+        @include column(calc((20 / 1280) * 100vw));
+        width: 100%;
+
+        .item {
+          height: calc((141 / 1280) * 100vw);
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 calc((31 / 1280) * 100vw);
+          background: #FFF;
+
+          &--color {
+            width: max(calc((160 / 1280) * 100vw), 100px);
+
+            h2 {
+              text-align: center;
+              color: #291A2B;
+              @include zen;
+              font-size: max(calc((16 / 1280) * 100vw), 12px);
+              font-weight: 700;
+            }
+          }
+
+          &--title {
+            margin-left: calc((-50 / 1280) * 100vw);
+
+            p {
+              color: #291A2B;
+              @include zen;
+              font-size: max(calc((16 / 1280) * 100vw), 12px);
+              font-weight: 500;
+            }
+          }
+
+          &--text {
+            margin-left: calc((-50 / 1280) * 100vw);
+
+            p {
+              color: #291A2B;
+              @include zen;
+              font-size: max(calc((16 / 1280) * 100vw), 12px);
+              font-weight: 500;
+            }
+          }
+
+          &--price {
+            width: calc((200 / 1280) * 100vw);
+            @include column(calc((8 / 1280) * 100vw));
+
+            &--detail {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              span {
+                color: #291A2B;
+                @include roboto;
+                font-size: calc((18 / 1280) * 100vw);
+                font-weight: 500;
+                margin: calc((10 / 1280) * 100vw) calc((4 / 1280) * 100vw) 0 calc((0 / 1280) * 100vw);
+
+                &:nth-of-type(2) {
+                  font-weight: 600;
+                }
+              }
+
+              h2 {
+                color: #291A2B;
+                @include roboto;
+                font-size: calc((46 / 1280) * 100vw);
+                font-weight: 500;
+              }
+            }
+
+            .count--course {
+              display: flex;
+              align-items: end;
+              padding-left: calc((25 / 1280) * 100vw);
+              gap: calc((4 / 1280) * 100vw);
+
+              .course {
+                display: flex;
+                justify-content: space-between;
+                width: calc((86 / 1280) * 100vw);
+
+                p {
+                  color: #291A2B;
+                  @include zen;
+                  font-size: calc((13 / 1280) * 100vw);
+                  font-weight: 700;
+                  letter-spacing: calc((0.65 / 1280) * 100vw);
+                }
+
+                span {
+                  color: #291A2B;
+                  @include roboto;
+                  font-size: calc((18 / 1280) * 100vw);
+                  font-weight: 500;
+                }
+              }
+
+              h2 {
+                color: #291A2B;
+                @include roboto;
+                font-size: calc((20 / 1280) * 100vw);
+                font-weight: 500;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// price SPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSP
+.price {
+  @include sp {
+    padding: calc((100 / 390) * 100vw) calc((16 / 390) * 100vw) calc((100 / 390) * 100vw);
+    background: #EEEBEF;
+
+    &--title--text {
+      width: calc((341 / 390) * 100vw);
+      margin: calc((50 / 390) * 100vw) auto;
+
+      p {
+        color: #291A2B;
+        @include zen;
+        font-size: calc((16 / 390) * 100vw);
+        font-weight: 500;
+        line-height: 168%;
+      }
+    }
+
+    &--balloon {
+      width: fit-content;
+      margin: 0 auto;
+      padding: calc((7 / 390) * 100vw) calc((27 / 390) * 100vw);
+      border-radius: 50px;
+      background: linear-gradient(92deg, #A986B9 2.79%, #C092C8 41.12%, #E8CCE9 98.73%);
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 99%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: solid calc((6 / 390) * 100vw) transparent;
+        border-top: solid calc((8 / 390) * 100vw) #c69bcd;
+      }
+
+      p {
+        color: #FFF;
+        @include zen;
+        font-size: calc((16 / 390) * 100vw);
+        font-weight: 700;
+      }
+    }
+
+    &--count {
+      width: fit-content;
+      margin: calc((50 / 390) * 100vw) auto calc((80 / 390) * 100vw);
+      @include column(calc((6 / 390) * 100vw));
+
+      .contents {
+        @include column(calc((16 / 390) * 100vw));
+        align-items: center;
+
+        .item {
+          border-radius: 10px;
+          background: #FFF;
+          width: calc((250 / 390) * 100vw);
+          padding: calc((12 / 390) * 100vw) 0 calc((13 / 390) * 100vw) calc((12 / 390) * 100vw);
+          position: relative;
+
+          h2 {
+            color: #291A2B;
+            @include Hannotate;
+            font-size: calc((25 / 390) * 100vw);
+            font-weight: 800;
+            letter-spacing: calc((2.5 / 390) * 100vw);
+          }
+
+          .min {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: calc((15 / 390) * 100vw);
+            border-radius: 50px;
+            background: #A76BA3;
+            padding: 0 calc((15 / 390) * 100vw) calc((5 / 1280) * 100vw) calc((15 / 390) * 100vw);
+
+            p {
+              color: #FFF;
+              @include zen;
+              font-size: calc((28 / 390) * 100vw);
+              font-weight: 700;
+              line-height: 100%;
+
+              span {
+                color: #FFF;
+                @include zen;
+                font-size: calc((16 / 390) * 100vw);
+                font-weight: 700;
+              }
+            }
+          }
+
+          .img {
+            position: absolute;
+            bottom: 0;
+            right: calc((-1 / 390) * 100vw);
+            width: calc((77 / 390) * 100vw);
+            height: calc((72 / 390) * 100vw);
+            background-image: url('/img/price-img.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+
+          }
+        }
+
+        .multiply {
+          width: calc((18 / 390) * 100vw);
+          height: calc((18 / 390) * 100vw);
+          background-image: $multiply;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+      }
+
+      small {
+        text-align: right;
+        color: #291A2B;
+        @include zen;
+        font-size: calc((12 / 390) * 100vw);
+        font-weight: 500;
+      }
+    }
+
+    &--popular {
+      width: 100%;
+      margin-bottom: calc((50 / 390) * 100vw);
+
+      .title {
+        display: flex;
+        align-items: center;
+        gap: calc((15 / 390) * 100vw);
+        margin-bottom: calc((16 / 390) * 100vw);
+        padding-left: calc((8 / 390) * 100vw);
+
+        h2 {
+          color: #291A2B;
+          @include zen;
+          font-size: calc((22 / 390) * 100vw);
+          font-weight: 700;
+        }
+
+        div {
+          width: calc((79 / 390) * 100vw);
+          height: calc((17 / 390) * 100vw);
+          background-image: $meteor;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+      }
+
+      .contents {
+        display: flex;
+        flex-wrap: wrap;
+        gap: calc((16 / 390) * 100vw) calc((8 / 390) * 100vw);
+        width: 100%;
+
+        .item {
+          height: calc((286 / 390) * 100vw);
+          width: calc(50% - calc((4 / 390) * 100vw));
+          display: flex;
+          flex-direction: column;
+          padding: calc((9 / 390) * 100vw) calc((8 / 390) * 100vw);
+          background: #FFF;
+
+          &--color {
+            width: 100%;
+            padding: calc((10 / 390) * 100vw) 0;
+
+            h2 {
+              text-align: center;
+              color: #FFF;
+              @include zen;
+              font-size: calc((16 / 390) * 100vw);
+              font-weight: 700;
+            }
+          }
+
+          &--title {
+            margin: calc((11 / 390) * 100vw) 0 calc((10 / 390) * 100vw);
+            order: 3;
+
+            p {
+              text-align: center;
+              color: #291A2B;
+              @include zen;
+              font-size: calc((16 / 390) * 100vw);
+              font-weight: 500;
+            }
+          }
+
+          &--text {
+            order: 4;
+
+            p {
+              color: #291A2B;
+              @include zen;
+              font-size: calc((12 / 390) * 100vw);
+              font-weight: 500;
+            }
+          }
+
+          &--price {
+            width: 100%;
+            display: flex;
+            flex-direction: column-reverse;
+            gap: calc((5 / 390) * 100vw);
+            margin-top: calc((5 / 390) * 100vw);
+            order: 2;
+
+            &--text {
+              text-align: center;
+              width: 100%;
+              padding: calc((1 / 390) * 100vw) 0;
+              color: #FFF;
+              @include zen;
+              font-size: calc((13 / 390) * 100vw);
+              font-weight: 500;
+            }
+
+            &--detail {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              p {
+                color: #291A2B;
+                @include zen;
+                font-size: calc((10 / 390) * 100vw);
+                font-weight: 500;
+                letter-spacing: calc((0.65 / 390) * 100vw);
+              }
+
+              span {
+                color: #291A2B;
+                @include roboto;
+                font-size: calc((18 / 390) * 100vw);
+                font-weight: 500;
+                margin: calc((10 / 390) * 100vw) calc((3 / 390) * 100vw) 0 calc((7 / 390) * 100vw);
+              }
+
+              h2 {
+                color: #291A2B;
+                @include roboto;
+                font-size: calc((33 / 390) * 100vw);
+                font-weight: 500;
+              }
+            }
+          }
+
+          // シルバー
+          &:nth-child(1) {
+            .item--color {
+              background: #B1AFB5;
+            }
+
+            .item--price {
+              .item--price--text {
+                background: #B1AFB5;
+              }
+            }
+          }
+
+          // ゴールド
+          &:nth-child(2) {
+            .item--color {
+              background: #BC9E8C;
+            }
+
+            .item--price {
+              .item--price--text {
+                background: #BC9E8C;
+              }
+            }
+          }
+
+          // プラチナ
+          &:nth-child(3) {
+            .item--color {
+              background: #7A4B80;
+            }
+
+            .item--price {
+              .item--price--text {
+                background: #7A4B80;
+              }
+            }
+          }
+
+          // ダイヤモンド
+          &:nth-child(4) {
+            .item--color {
+              background: #6995CE;
+            }
+
+            .item--price {
+              .item--price--text {
+                background: #6995CE;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &--times {
+      width: 100%;
+
+      .title {
+        display: flex;
+        align-items: center;
+        gap: calc((16 / 390) * 100vw);
+        margin-bottom: calc((23 / 390) * 100vw);
+        padding-left: calc((8 / 390) * 100vw);
+
+        h2 {
+          color: #291A2B;
+          @include zen;
+          font-size: calc((28 / 390) * 100vw);
+          font-weight: 700;
+        }
+
+        div {
+          width: calc((79 / 390) * 100vw);
+          height: calc((17 / 390) * 100vw);
+          background-image: $meteor;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+      }
+
+      .contents {
+        @include column(calc((30 / 390) * 100vw));
+        width: 100%;
+
+        .item {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: calc((31 / 390) * 100vw) calc((11 / 390) * 100vw);
+          background: #FFF;
+
+          &:nth-child(1) {
+            @include column(calc((10 / 390) * 100vw));
+
+            .item--title {
+              order: 3;
+            }
+
+            .item--text {
+              order: 4;
+            }
+
+            .item--price {
+              order: 2;
+            }
+          }
+
+          &:nth-child(2) {
+            padding: calc((31 / 390) * 100vw) calc((24 / 390) * 100vw);
+
+            .item--title {
+              margin: calc((10 / 390) * 100vw) 0 calc((23 / 390) * 100vw);
+            }
+
+            .item--text {
+              padding: calc((23 / 390) * 100vw) calc((9 / 390) * 100vw) calc((14 / 390) * 100vw) calc((4 / 390) * 100vw);
+              position: relative;
+
+              &::before ,&::after{
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: calc((3 / 390) * 100vw);
+                background-image: $pinkBorder;
+                background-size: contain;
+                background-repeat: repeat-x;
+                background-position: center;
+              }
+
+              &::after {
+                top: unset;
+                bottom: 0;
+              }
+            }
+
+            .item--price {
+              margin-top: calc((23 / 390) * 100vw);
+            }
+          }
+
+          &--color {
+            width: 100%;
+
+            h2 {
+              text-align: center;
+              color: #291A2B;
+              @include zen;
+              font-size: calc((16 / 390) * 100vw);
+              font-weight: 700;
+            }
+          }
+
+          &--title {
+
+            p {
+              color: #291A2B;
+              @include zen;
+              font-size: calc((16 / 390) * 100vw);
+              font-weight: 500;
+            }
+          }
+
+          &--text {
+
+            p {
+              color: #291A2B;
+              @include zen;
+              font-size: calc((12 / 390) * 100vw);
+              font-weight: 500;
+            }
+          }
+
+          &--price {
+            width: calc((200 / 390) * 100vw);
+            @include column(calc((6 / 390) * 100vw));
+
+            &--detail {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              span {
+                color: #291A2B;
+                @include roboto;
+                font-size: calc((18 / 390) * 100vw);
+                font-weight: 500;
+                margin: calc((10 / 390) * 100vw) calc((1 / 390) * 100vw) 0 0;
+
+                &:nth-of-type(2) {
+                  font-weight: 600;
+                }
+              }
+
+              h2 {
+                color: #291A2B;
+                @include roboto;
+                font-size: calc((33 / 390) * 100vw);
+                font-weight: 500;
+              }
+            }
+
+            .count--course {
+              display: flex;
+              align-items: end;
+              padding-left: calc((25 / 390) * 100vw);
+              gap: calc((6 / 390) * 100vw);
+
+              .course {
+                display: flex;
+                justify-content: space-between;
+                width: calc((86 / 390) * 100vw);
+
+                p {
+                  color: #291A2B;
+                  @include zen;
+                  font-size: calc((13 / 390) * 100vw);
+                  font-weight: 700;
+                  letter-spacing: calc((0.65 / 390) * 100vw);
+                }
+
+                span {
+                  color: #291A2B;
+                  @include roboto;
+                  font-size: calc((18 / 390) * 100vw);
+                  font-weight: 500;
+                }
+              }
+
+              h2 {
+                color: #291A2B;
+                @include roboto;
+                font-size: calc((20 / 390) * 100vw);
+                font-weight: 500;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

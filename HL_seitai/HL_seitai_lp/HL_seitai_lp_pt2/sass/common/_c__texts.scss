@@ -1,0 +1,144 @@
+@use "../global" as *;
+
+
+// c__text
+.c__texts {
+
+  @include pc {
+    width: max(calc((336 / 1280) * 100vw), 336px);
+  }
+
+  @include sp {
+    width: 100%;
+    padding: 0 calc((35 / 390) * 100vw) 0 calc((35 / 390) * 100vw);
+  }
+
+  &--title {
+
+    @include pc {
+      margin-bottom: max(calc((50 / 1280) * 100vw), 50px);
+    }
+
+    @include sp {
+      margin-bottom: calc((20 / 390) * 100vw);
+    }
+
+    h2 {
+      color: $orangeSystem;
+      @include josefin;
+
+      @include pc {
+        font-size: max(calc((20 / 1280) * 100vw), 20px);
+        letter-spacing: max(calc((5 / 1280) * 100vw), 5px);
+      }
+
+      @include sp {
+        font-size: calc((18 / 390) * 100vw);
+        letter-spacing: calc((4.5 / 390) * 100vw);
+      }
+    }
+  }
+
+  &--sub {
+
+    @include pc {
+      margin-bottom: max(calc((35 / 1280) * 100vw), 35px);
+      padding-right: max(calc((33 / 1280) * 100vw), 33px);
+    }
+
+    @include sp {
+      margin-bottom: calc((20 / 390) * 100vw);
+      padding-right: calc((40 / 390) * 100vw);
+    }
+
+    p {
+      color: $mainColor;
+      @include yu;
+      line-height: 150%;
+
+      @include pc {
+        font-size: max(calc((23 / 1280) * 100vw), 23px);
+        letter-spacing: max(calc((1.15 / 1280) * 100vw), 1.15px);
+      }
+
+      @include sp {
+        font-size: calc((18 / 390) * 100vw);
+        letter-spacing: calc((0.9 / 390) * 100vw);
+        line-height: 140%;
+      }
+    }
+  }
+
+  &--text {
+
+    @include pc {
+      @include column(max(calc((20 / 1280) * 100vw), 20px));
+    }
+
+    @include sp {
+      @include column(calc((18 / 390) * 100vw));
+    }
+
+    p {
+      color: #000;
+      @include noto;
+
+      @include pc {
+        font-size: max(calc((14 / 1280) * 100vw), 14px);
+        letter-spacing: max(calc((0.042 / 1280) * 100vw), 0.042px);
+      }
+
+      @include sp {
+        font-size: calc((13 / 390) * 100vw);
+        letter-spacing: calc((0.26 / 390) * 100vw);
+        line-height: 180%;
+      }
+    }
+  }
+
+  &--self {
+
+    @include pc {
+      padding-right: max(calc((126 / 1280) * 100vw), 126px);
+      margin-top: max(calc((66 / 1280) * 100vw), 66px);
+    }
+
+    @include sp {
+      padding-right: calc((40 / 390) * 100vw);
+      margin-top: calc((35 / 390) * 100vw);
+    }
+
+    &--name {
+      color: $mainColor;
+      @include noto;
+      font-weight: 700;
+
+      @include pc {
+        font-size: max(calc((15 / 1280) * 100vw), 15px);
+        letter-spacing: max(calc((0.045 / 1280) * 100vw), 0.045px);
+        margin-bottom: max(calc((5 / 1280) * 100vw), 5px);
+      }
+
+      @include sp {
+        font-size: calc((13 / 390) * 100vw);
+        letter-spacing: calc((0.39 / 390) * 100vw);
+      }
+    }
+
+    &--introduction {
+      color: $mainColor;
+      @include noto;
+
+      @include pc {
+        font-size: max(calc((13 / 1280) * 100vw), 13px);
+        letter-spacing: max(calc((0.039 / 1280) * 100vw), 0.039px);
+      }
+
+      @include sp {
+        font-size: calc((12 / 390) * 100vw);
+        letter-spacing: calc((0.24 / 390) * 100vw);
+        line-height: 180%;
+      }
+    }
+  }
+}

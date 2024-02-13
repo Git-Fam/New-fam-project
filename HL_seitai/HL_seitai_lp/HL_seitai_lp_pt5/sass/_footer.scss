@@ -1,0 +1,132 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// footer PC
+footer {
+  @include pc {
+    position: relative;
+
+    .overview {
+      padding: 0 0 calc((72 / 1280) * 100vw) calc((237 / 1280) * 100vw);
+
+      .title {
+        margin-bottom: calc((10 / 1280) * 100vw);
+
+        h2 {
+          color: #F58002;
+          @include mincho;
+          font-size: max(calc((24 / 1280) * 100vw), 20px);
+          font-weight: 600;
+          line-height: 100%;
+        }
+      }
+
+      .text {
+        table {
+          tbody {
+            tr {
+              td {
+                color: #000;
+                @include Helvetica;
+                font-size: max(calc((16 / 1280) * 100vw), 13px);
+                font-weight: 400;
+                line-height: 100%;
+                padding-top: calc((20 / 1280) * 100vw);
+
+                &:nth-of-type(1) {
+                  width: 30%;
+                  padding-top: unset;
+                }
+
+                &:nth-of-type(2) {
+                  width: 70%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .copy {
+      background: #F58002;
+      text-align: center;
+      padding: calc((10 / 1280) * 100vw) 0;
+
+      h3 {
+        color: #FFF;
+        @include Helvetica;
+        font-size: max(calc((10 / 1280) * 100vw), 10px);
+        font-weight: 400;
+        line-height: 100%;
+      }
+    }
+  }
+}
+
+
+// footer SPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSPSP
+footer {
+  @include sp {
+    position: relative;
+
+    .overview {
+      padding: calc(( 20 / 390) * 100vw) calc(( 50 / 390) * 100vw) calc((30 / 390) * 100vw);
+
+      .title {
+        margin-bottom: calc((30 / 390) * 100vw);
+
+        h2 {
+          color: #F58002;
+          @include mincho;
+          font-size: calc((24 / 390) * 100vw);
+          font-weight: 600;
+          line-height: 100%;
+        }
+      }
+      .text {
+        table {
+          tbody {
+            tr {
+              display: block;
+              padding: 0 0 calc((30 / 390) * 100vw);
+
+              &:last-child {
+                padding: 0;
+              }
+
+              td {
+                display: block;
+                color: #000;
+                @include Helvetica;
+                font-size: calc((15 / 390) * 100vw);
+                font-weight: 400;
+                line-height: 100%;
+                padding-top: calc((10 / 390) * 100vw);
+
+                &:nth-of-type(1) {
+                  padding-top: unset;
+                }
+              }
+            }
+          }
+        }
+      }
+
+    }
+
+    .copy {
+      background: #F58002;
+      text-align: center;
+      padding: calc((10 / 390) * 100vw) 0;
+
+      h3 {
+        color: #FFF;
+        @include Helvetica;
+        font-size: calc((10 / 390) * 100vw);
+        font-weight: 400;
+        line-height: 100%;
+      }
+    }
+  }
+}

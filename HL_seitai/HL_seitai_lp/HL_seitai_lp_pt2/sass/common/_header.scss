@@ -1,0 +1,324 @@
+@use "../global" as *;
+
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 111;
+
+  .header--wap {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+
+    @include pc {
+      width: max(calc((880 / 1280) * 100vw), 704px);
+      padding: max(calc((16 / 1280) * 100vw), 16px) max(calc((22 / 1280) * 100vw), 22px) 0 0;
+    }
+
+    @include sp {
+      width: 100%;
+      padding: calc((16 / 390) * 100vw) calc((38 / 390) * 100vw) 0 0;
+    }
+
+    .web {
+      display: flex;
+      align-items: center;
+
+      @include pc {
+        gap: max(calc((15 / 1280) * 100vw), 15px);
+      }
+
+      &::before {
+        content: '';
+        display: block;
+        aspect-ratio: 20/22;
+        background-image: calendar(encode('#'), encode('#D4AB37'));
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        @include pc {
+          width: max(calc((20 / 1280) * 100vw), 20px);
+        }
+      }
+
+      p {
+        color: $orangeSystem;
+        @include josefin;
+        font-weight: 500;
+
+        @include pc {
+          font-size: max(calc((14 / 1280) * 100vw), 14px);
+          letter-spacing: max(calc((1.82 / 1280) * 100vw), 1.82px);
+        }
+      }
+    }
+
+    .tel {
+      display: flex;
+      align-items: center;
+
+      @include pc {
+        gap: max(calc((9 / 1280) * 100vw), 9px);
+        margin: 0 max(calc((59 / 1280) * 100vw), 59px) 0 max(calc((49 / 1280) * 100vw), 49px);
+      }
+
+      &::before {
+        content: '';
+        display: block;
+        aspect-ratio: 14/17;
+        background-image: cPhone(encode('#D4AB37'));
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+
+
+        @include pc {
+          width: max(calc((14 / 1280) * 100vw), 14px);
+        }
+      }
+
+      p {
+        color: $orangeSystem;
+        @include josefin;
+        font-weight: 500;
+
+        @include pc {
+          font-size: max(calc((19 / 1280) * 100vw), 19px);
+          letter-spacing: max(calc((2.28 / 1280) * 100vw), 2.28px);
+        }
+      }
+    }
+
+    .burger--open {
+      aspect-ratio: 33/30;
+      cursor: pointer;
+      @include icon($open);
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      @include pc {
+        width: max(calc((33 / 1280) * 100vw), 33px);
+      }
+
+      @include sp {
+        width: calc((33 / 390) * 100vw);
+      }
+    }
+  }
+
+  .menu--back {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.40);
+    z-index: 112;
+    transition: 0.3s;
+
+    &.active {
+      left: 0;
+    }
+  }
+
+  .menu {
+    position: absolute;
+    top: 0;
+    right: -100%;
+    background: $mainColor;
+    overflow-y: scroll;
+    transition: 0.3s;
+    z-index: 999;
+
+    &.active {
+      right: 0;
+    }
+
+    @include pc {
+      padding: max(calc((20 / 1280) * 100vw), 20px) max(calc((10 / 1280) * 100vw), 10px) max(calc((20 / 1280) * 100vw), 20px) max(calc((42 / 1280) * 100vw), 42px);
+      width: max(calc((572 / 1280) * 100vw), 572px);
+      height: 80vh;
+    }
+
+    @include sp {
+      width: 100%;
+      padding: calc((19 / 390) * 100vw) calc((25 / 390) * 100vw) calc((30 / 390) * 100vw);
+      height: 80vh;
+    }
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 50px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #FFF;
+      background-color: black;
+    }
+
+    .burger--close {
+      aspect-ratio: 36/31;
+      cursor: pointer;
+      @include icon($close);
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: sticky;
+      margin-left: auto;
+
+
+      @include pc {
+        top: 0;
+        left: 0;
+        width: max(calc((36 / 1280) * 100vw), 36px);
+        margin-bottom: max(calc((9 / 1280) * 100vw), 9px);
+      }
+
+      @include sp {
+        top: 0;
+        left: 0;
+        width: calc((36 / 390) * 100vw);
+        margin-bottom: calc((9 / 390) * 100vw);
+      }
+    }
+
+    &--img {
+      @include img('logo-menu.png');
+      aspect-ratio: 186/165;
+
+      @include pc {
+        width: max(calc((186 / 1280) * 100vw), 186px);
+        margin-bottom: max(calc((30 / 1280) * 100vw), 30px);
+      }
+
+      @include sp {
+        width: calc((130 / 390) * 100vw);
+        margin-bottom: calc((30 / 390) * 100vw);
+      }
+    }
+
+    &--main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      @include pc {
+        gap: max(calc((35 / 1280) * 100vw), 35px);
+        margin-bottom: max(calc((45 / 1280) * 100vw), 45px);
+        padding-right: max(calc((36 / 1280) * 100vw), 36px);
+      }
+
+      @include sp {
+        gap: calc((25 / 390) * 100vw);
+        margin-bottom: calc((45 / 390) * 100vw);
+      }
+
+      li {
+        a {
+          color: #FFF;
+          @include josefin;
+
+          @include pc {
+            font-size: max(calc((20 / 1280) * 100vw), 20px);
+            letter-spacing: max(calc((0.12 / 1280) * 100vw), 0.12px);
+          }
+
+          @include sp {
+            font-size: calc((20 / 390) * 100vw);
+            letter-spacing: calc((0.12 / 390) * 100vw);
+          }
+
+          span {
+            color: #FFF;
+            @include noto;
+            font-weight: 300;
+
+            @include pc {
+              font-size: max(calc((14 / 1280) * 100vw), 14px);
+              letter-spacing: max(calc((0.084 / 1280) * 100vw), 0.084px);
+            }
+
+            @include sp {
+              font-size: calc((14 / 390) * 100vw);
+              letter-spacing: calc((0.084 / 390) * 100vw);
+            }
+          }
+        }
+      }
+    }
+
+    &--btn {
+      display: flex;
+      flex-direction: column;
+
+      @include pc {
+        margin-bottom: max(calc((25 / 1280) * 100vw), 25px);
+        gap: max(calc((10 / 1280) * 100vw), 10px);
+        padding-right: max(calc((36 / 1280) * 100vw), 36px);
+      }
+
+      @include sp {
+        margin-bottom: calc((25 / 390) * 100vw);
+        gap: calc((10 / 390) * 100vw);
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+        border: 1px solid #FFF;
+        color: #FFF;
+        @include josefin;
+
+        @include pc {
+          font-size: max(calc((14 / 1280) * 100vw), 14px);
+          letter-spacing: max(calc((0.084 / 1280) * 100vw), 0.084px);
+          height: max(calc((50 / 1280) * 100vw), 50px);
+        }
+
+        @include sp {
+          font-size: calc((14 / 390) * 100vw);
+          letter-spacing: calc((0.084 / 390) * 100vw);
+          height: calc((50 / 390) * 100vw);
+        }
+      }
+
+    }
+
+    &--time {
+
+      @include pc {
+        padding-right: max(calc((36 / 1280) * 100vw), 36px);
+      }
+
+      @include sp {}
+
+      p {
+        color: #FFF;
+        text-align: center;
+        @include noto;
+        font-weight: 300;
+
+        @include pc {
+          font-size: max(calc((12 / 1280) * 100vw), 12px);
+          letter-spacing: max(calc((0.072 / 1280) * 100vw), 0.072px);
+        }
+
+        @include sp {
+          font-size: calc((12 / 390) * 100vw);
+          letter-spacing: calc((0.072 / 390) * 100vw);
+        }
+      }
+    }
+  }
+}
