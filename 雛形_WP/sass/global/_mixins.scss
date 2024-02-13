@@ -1,0 +1,97 @@
+
+$pc: 768px; // PC
+$sp: 767px;  // スマホ
+
+@mixin pc {
+  @media screen and (min-width: ($pc)) {
+    @content;
+  }
+}
+@mixin sp {
+  @media  screen and (max-width: ($sp)) {
+    @content;
+  }
+}
+
+// どセンター
+@mixin center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+// 縦並び間空き
+@mixin column($gap){
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+// ↓CSSでは
+// @include column( calc(( 50 / 1280) * 100vw) );
+
+
+// background
+@mixin img($img){
+  background-image: url('/img/#{$img}');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+// ↓CSSでは
+// @include img('example.jpg');
+
+
+// backgroundIcon
+@mixin icon($img){
+  background-image: $img;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+// ↓CSSでは
+// @include icon($dot);
+
+
+// フォント
+// font-family: Noto Sans JP;
+@mixin noto {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+}
+
+// font-family: Josefin Sans;
+@mixin josefin {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+}
+
+// font-family: Yu Mincho;
+@mixin yu {
+  font-family: "yu-mincho-pr6n", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+// 関数の使い方
+// @mixin test($sidePadding : calc(( 98 / 1280) * 100vw) , $sidemargin : 0 0 0 auto ){
+//   .test--btn{
+//     padding: calc(( 6 / 1280) * 100vw) $sidePadding calc(( 2 / 1280) * 100vw);
+//     margin: $sidemargin;
+//   }
+// }
+
+
+// @mixin img($img){
+//   background-image: url('/img/#{$img}');
+//   background-size: contain;
+//   background-position: center;
+//   background-repeat: no-repeat;
+// }
+// ↓CSSでは
+// @include img('example.jpg');
