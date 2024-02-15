@@ -30,12 +30,541 @@
     <link rel="stylesheet" href="css/style.css?date=<?=date('YmdGis', filemtime( 'css/style.css' ));?>" />
 
     <!-- ▼フォント -->
-                
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cherish&family=Cormorant+Upright:wght@300;400;500;600;700&family=Kaisei+HarunoUmi&family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+JP&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     
 </head>
 <body>
 
+    <div class="wapper">
+        <!-- FV -->
+        <div class="fv">
+            <div class="fv--img"></div>
+            <h1 class="fv--logo">
+                <img src="img/logo.png" alt="店名">
+            </h1>
+            <div class="fv--telText pc">
+                <p class="fv--telText--sans">名古屋、東区のフレンチ「ポン吉（ポンキチ）」。接待や貸切に人気</p>
+                <div class="fv--telText--tel">
+                    <p class="fv--telText--serif">ご予約・お問い合わせ</p>
+                    <a class="fv--telText--playfair hover-scale" href="tel:00000000">
+                        <span></span>
+                        052−937-0039
+                    </a>
+                </div>
+                <p class="fv--telText--playfair">ホームページを見たとお伝え頂くとスムーズです。</p>
+            </div>
 
+            <div class="fv--text">
+                <p>
+                    自由<span>と心地よさを</span><br>フレ<span>ンチに</span>
+                </p>
+            </div>
+
+            <div class="burger sp"></div>
+
+            <nav class="menu">
+                <ul>
+                    <li><a href="#">top</a></li>
+                    <li><a href="#about">about</a></li>
+                    <li><a href="#course">course</a></li>
+                    <li><a href="#wine">wine</a></li>
+                    <li><a href="#menu">menu</a></li>
+                    <li><a href="#floorGuide">floor guide</a></li>
+                    <li><a href="#access">access</a></li>
+                    <!-- <li><a href="#news">news</a></li> -->
+                </ul>
+            </nav>
+        </div>
+
+        <!-- news -->
+        <!-- <section class="news" id="news">
+            <h2 class="news--title">News</h2>
+            <div class="news--content">
+                <a class="news--content--item" href="#" target="_blank" rel="noopener noreferrer">
+                    <div class="item--title">
+                        <p>2021-07-11</p>
+                        <h3>営業時間のご案内営業時間のご案内営業時間のご案内…</h3>
+                    </div>
+                    <div class="item--thumbnail"></div>
+                </a>
+                <a class="news--content--item" href="#" target="_blank" rel="noopener noreferrer">
+                    <div class="item--title">
+                        <p>2021-07-11</p>
+                        <h3>営業時間のご案内営業時間のご案内営業時間のご案内…</h3>
+                    </div>
+                    <div class="item--thumbnail"></div>
+                </a>
+                <a class="news--content--item" href="#" target="_blank" rel="noopener noreferrer">
+                    <div class="item--title">
+                        <p>2021-07-11</p>
+                        <h3>営業時間のご案内営業時間のご案内営業時間のご案内…</h3>
+                    </div>
+                    <div class="item--thumbnail"></div>
+                </a>
+            </div>
+            <a class="news--more sp hover-scale" href="#" target="_blank" rel="noopener noreferrer">more</a>
+        </section> -->
+
+        <!-- about -->
+        <section class="about" id="about">
+            <div class="about--content">
+
+                <div class="about--content--item">
+                    <div class="about--content--item--text enjoy">
+                        <p>
+                            ワクワクと温かさを<br>日常にそっと。
+                        </p>
+                    </div>
+                    <div class="about--content--item--img img--1"></div>
+                </div>
+
+                <div class="about--content--item">
+                    <div class="about--content--item--text text">
+                        <p>
+                            名古屋市東区代官町―。大通りから少し入った、閑静な街並みの一角。青い外観が目を引く「ボン吉」は、夫婦二人で営むフランス料理店です。本場の技法に忠実に、四季折々の素材の魅力を活かしたフレンチは、コースでお届けいたします。繊細ながらも豊かな味わいは、フランスワインをあわせることでより一層引き立つことでしょう。あたたかさと落ち着いた雰囲気を兼ね備えるこぢんまりとした店内には、テーブル席が4卓ございます。ディナー・ランチともに、日常使いから記念日や接待などの特別な日まで、様々なシーンでご利用ください。本日も皆様のお越しを心よりお待ちしています。
+                        </p>
+                    </div>
+                    <div class="about--content--item--img img--2"></div>
+                </div>
+
+
+
+
+
+            </div>
+        </section>
+
+        <!-- course -->
+        <section class="course" id="course">
+            <div class="course--inner">
+                <div class="course--inner--top">
+                    <div class="course--inner--top--img"></div>
+                    <div class="course--inner--top--text">
+                        <h3>
+                            お食事はコースで<br>
+                            二軒目使いはアラカルトで
+                        </h3>
+                        <p>
+                            季節の食材にシェフの技を活かした自慢のお料理を楽しんでいただきながらテキストTEXTtextテキストトTEXTtextテキストTEXTtextテキストTEXTtextテキストTEXTtextテキストTEXTtextテキストTEXTtextテキストTEXTtextテキストTEXTtextTEXTtextTEXTtextテキストTEXTtextテキストTEXTtextテキスTEXTtextテキストTEXTtextテキストTEXTtextテキストTEXTtextテキストTEXTtextテキストTEXTtextテキストTEXTtextテキストTEXTtextテキストTEXTtext少し遅い時間のご夕食や二軒目でのご利用にぜひ。
+                        </p>
+                    </div>
+                </div>
+                <div class="course--inner--middle">
+                    <div class="course--inner--middle--position">
+                        <div class="course--inner--middle--position--text">
+                            <p>
+                                尚、ジビエ料理などの食材のご希望については。2〜3日前にお料理のご予約おお勧めします。※毛付き鳥は１週間前にお申し付けください。
+                            </p>
+                        </div>
+                        <div class="course--inner--middle--position--img img--1"></div>
+                    </div>
+                    <div class="course--inner--middle--position">
+                        <div class="course--inner--middle--position--title">
+                            <p>
+                                <span>お好きな</span>ものを<br><span>好きなだ</span>け。
+                            </p>
+                        </div>
+                        <div class="course--inner--middle--position--img img--2"></div>
+                    </div>
+                </div>
+                <div class="course--inner--bottom">
+                    <div class="course--inner--bottom--img"></div>
+                </div>
+                <div class="course--inner--table">
+                    <div class="course--inner--table--border">
+
+                        <div class="courseTable--item">
+                            <div class="courseTable--item--title">
+                                <h3>Lunch Course</h3>
+                            </div>
+                            <div class="courseTable--item--text">
+                                <p>前菜と主菜はお好きなお料理をお選びいただけます。</p>
+                                <p>※ご予約の際にコースの種類をお伝えください。</p>
+                                <p>※価格は税込価格です。</p>
+                                <p>※毎週木曜日のランチタイムは休業と</p>
+                                <p>させていただきます。</p>
+                            </div>
+                            <div class="courseTable--item--content">
+                                <h4>4,400円コース</h4>
+                                <p>前菜・魚料理・肉料理・デザート・コーヒー、パン</p>
+                            </div>
+
+                            <div class="courseTable--item--content">
+                                <h4>5,280円コース</h4>
+                                <p>前菜・魚料理・トリュフのリゾット・肉料理・デザート・コーヒー、パン</p>
+                            </div>
+                        </div>
+
+                        <div class="courseTable--item">
+                            <div class="courseTable--item--title">
+                                <h3>Dinner Course</h3>
+                            </div>
+                            <div class="courseTable--item--text">
+                                <p>※コース内容にご希望がある場合は気軽にご相談ください。</p>
+                                <p>※価格は税込価格です。</p>
+                            </div>
+                            <div class="courseTable--item--content">
+                                <h4>お任せコース8,250円コース</h4>
+                                <p>内容はお尋ねください</p>
+                            </div>
+                            <div class="courseTable--item--content">
+                                <h4>お任せコース11,000円コース</h4>
+                                <p>内容はお尋ねください</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- wine -->
+        <section class="wine" id="wine">
+            <div class="wine--contentTop">
+                <div class="wine--contentTop--title">
+                    <h2>ある日の出会いも<br>ワインの楽しみ</h2>
+                </div>
+                <div class="wine--contentTop--img">
+                    <div class="wine--contentTop--img--text">
+                        <p>
+                            酸味のあるすっきりと<br>
+                            したものでしたら<br>
+                            こちらがお口に<br>
+                            合うかもしれませんね。
+                        </p>
+                        <div class="kunekune"></div>
+                    </div>
+                </div>
+                <div class="wine--contentTop--text">
+                    <p>
+                        プルゴーニュ地方を中心に取り揃えるフランスワインの数々。テキストTEXTtextテキストトTEXTtextテキストTEXTtextテキストTEXTtextテキストTEXTtextテキストTEXTtextテキストTEXTtextテキストTEXTtextテキストTEXTtextテキストTEXTtextテキストTEXTtextテキストTEXTtextグラスワインも内容を変えつつ、赤白２種類ずつからお選びいただけます。
+                    </p>
+                </div>
+            </div>
+            <div class="wine--contentBottom">
+                <div class="wine--contentBottom--img img--1"></div>
+                <div class="wine--contentBottom--img img--2"></div>
+            </div>
+        </section>
+
+        <!-- chef -->
+        <section class="chef" id="chef">
+            <div class="chef--top">
+                <div class="chef--top--title">
+                    <h2>五感で楽しみ<br>ワクワクする<br>フレンチを</h2>
+                </div>
+                <div class="chef--top--name">
+                    <p>Chef</p>
+                    <p>Kenji Yoshioka</p>
+                </div>
+                <div class="chef--top--profile">
+                    <p>Profile</p>
+                    <p>
+                        1980年生まれ　神奈川県出身<br>
+                        学生時代に料理の面白さに魅了され料理人を志すいくつかのレストランを経験後、”リアルなフレンチ”を学ぶため渡仏帰国後、秋葉原のワインバーの初代料理長を経験2019年3月28日【ポン吉】を開店
+                    </p>
+                </div>
+            </div>
+            <div class="chef--bottom">
+                <div class="chef--bottom--img img--1"></div>
+                <div class="chef--bottom--content">
+                    <div class="chef--bottom--content--img">
+                        <div class="chef--bottom--content--img--pict img--2"></div>
+                        <div class="chef--bottom--content--img--pict img--3"></div>
+                        <div class="chef--bottom--content--img--pict img--4"></div>
+                    </div>
+                    <div class="chef--bottom--content--text">
+                        <p>
+                            リラックスした雰囲気があるからこそ、よりいっそう美味しさを感じていただけるはず。テキストTEXTtextテキストTEXTtextテキストトTEXTtextテキストTEXTtextテキストTEXTtextテキストTEXT五感でお楽しみいただけるよう心がけております。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- menu -->
+        <section class="menu" id="menu">
+            
+            <div class="menu--title">
+                <div class="menu--title--box">
+                    <h2>ある日の<br>料理を<br>ご紹介</h2>
+                </div>
+            </div>
+
+            <div class="menu--detail">
+                <div class="menu--detail--top">
+                    <div class="menu--detail--top--point">
+                        <p>※価格は税込み価格です。</p>
+                    </div>
+                    <div class="menu--detail--top--img img--1">
+                        <p>
+                            ボン吉の<br>スペツァリブ
+                        </p>
+                    </div>
+                    <div class="menu--detail--top--name">
+                        <p>
+                            知多三元豚ロースのローストと<br>
+                            三枚肉とろとろブレゼのデュオ<br>
+                            <span>2,750円</span>
+                        </p>
+                    </div>
+                    <div class="menu--detail--top--memo">
+                        <p>
+                            三元豚の旨みをローストと煮込みの二つの料理法で仕上げることでテキストtextTEXTテキストtextTEXTテキストtextTEXTテキストtextTEXTテキストtextTEXTテキストtextTEXTテキストtext酸味のあるワインと相性の良い一品です。
+                        </p>
+                    </div>
+                </div>
+                <div class="menu--detail--middle">
+                    <div class="menu--detail--middle--img img--1"></div>
+                </div>
+                <div class="menu--detail--bottom">
+                    <div class="menu--detail--bottom--content">
+                        <div class="menu--detail--bottom--content--img img--1">
+                            <p>
+                                それぞれの食感と<br>旨みを愉しむ
+                            </p>
+                        </div>
+                        <div class="menu--detail--bottom--content--text">
+                            <p class="name">
+                                エスカルゴ牛すじの<br>
+                                ショソン
+                            </p>
+                            <p class="price">
+                                1,650円
+                            </p>
+                            <p class="memo">
+                                細かく刻んだエスカルゴと牛すじの煮込みをテキストtextTEXTテキストtextTEXTマスタードクリームソースとともにお楽しみください。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="menu--detail--bottom--content">
+                        <div class="menu--detail--bottom--content--img img--2">
+                            <p>
+                                ワインの相棒
+                            </p>
+                        </div>
+                        <div class="menu--detail--bottom--content--text">
+                            <p class="name">
+                                アンドゥイエット
+                            </p>
+                            <p class="price">
+                                3,080円
+                            </p>
+                            <p class="memo">
+                                直腸の中に豚の様々な部位のミンチを合わせた大きなソーセージ。テキストtextTEXTテキストtextTEXTテキストtextTEXTテキストtextTEXTテキストtextワインと相性抜群です。
+                            </p>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+
+            <div class="menu--book">
+                <div class="menu--book--title">
+                    <h2>メイン料理を待つ間に</h2>
+                </div>
+                <div class="menu--book--detail">
+                    <div class="menu--book--detail--page">
+                        <div class="menu--book--detail--page--title">
+                            <p>アジの前菜</p>
+                            <span>2,200円</span>
+                        </div>
+                        <div class="menu--book--detail--page--img"></div>
+                        <div class="menu--book--detail--page--text">
+                            <p>
+                                新鮮なアジの刺身と季節の野菜やフルーツをビネガーとオリーブオイルであえ、イタリアの雑穀とお米をブレンドしたものの上にのせ
+                            </p>
+                            <p>
+                                て仕上げた一品です。すっきりとした白ワインとともにお楽しみください。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu--divide">
+                <div class="menu--divide--inner">
+                    <div class="menu--divide--inner--top">
+                        <div class="menu--divide--inner--top--img img--1"></div>
+                    </div>
+                    <div class="menu--divide--inner--middle">
+                        <div class="menu--divide--inner--middle--img img--1"></div>
+                        <div class="menu--divide--inner--middle--img img--2"></div>
+                    </div>
+                    <div class="menu--divide--inner--bottom">
+                        <div class="menu--divide--inner--bottom--img img--1">
+                            <p><span>お</span>とりわけも<br><span>ご</span>相談ください。</p>
+                        </div>
+                        <div class="menu--divide--inner--bottom--text">
+                            <p>
+                                ディナーはアラカルトでのご提供ですが、ご要望があれば人数分などに分けてお出しすることも可能です。テキストtextTEXTテキストtextTEXTテキストtextTEXTテキストtextTEXテキストtextTEXTテキストtextTEXTテキストtextTEXTTテキストtextTEXTテキストtextTEXTテキストtextTEXTテキストtextTEXTテキストtextTEXTテキストtextTEXTその他ご要望がございましたら、気軽にご相談くださいませ。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu--staple">
+                <div class="menu--staple--inner">
+                    <div class="menu--staple--inner--item">
+                        <div class="menu--staple--inner--item--text">
+                            <p>このパン、<br>実は<br class="sp">私が焼いています。</p>
+                        </div>
+                        <div class="menu--staple--inner--item--img img--1">
+                            <p>
+                                おかわりって<br>
+                                言っていただけると<br>
+                                嬉しいです。
+                            </p>
+                            <div class="kunekuneW"></div>
+                        </div>
+                    </div>
+                    <div class="menu--staple--inner--itemSecond">
+                        <div class="menu--staple--inner--itemSecond--text">
+                            <p>
+                                毎日焼いている自家製パン。テキストtextTEXTテキストtextTEXTテキストtextTEXTテキストtextTEXTテキストtextTEXTテキストtextTEXTテキストtextTEXTテキストお料理のソースにつけてもお楽しみいただける、シンプルな美味しさが好評です。
+                            </p>
+                        </div>
+                        <div class="menu--staple--inner--itemSecond--img img--2"></div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- floorGuide -->
+        <section class="floorGuide" id="floorGuide">
+            <div class="floorGuide--title">
+                <div class="floorGuide--title--img"></div>
+                <h2>ボン吉の店内をご案内</h2>
+            </div>
+            <div class="floorGuide--content">
+                <div class="floorGuide--content--inner">
+                    <div class="floorGuide--content--inner--text">
+                        <p>
+                            団体でご利用の際は8名様より貸切可能です。テキストtextTEXTテキストtextTEXTテキストtextTEXTテキストtextTEXTテキストtextTEXTテキストtextTEXTテキストtextTEXTテキスト最少人数に満たない場合もございます。
+                        </p>
+                    </div>
+                    <div class="floorGuide--content--inner--floor"></div>
+                    <div class="floorGuide--content--inner--pict">
+                        <div class="floorGuide--content--inner--pict--img img--1"></div>
+                        <div class="floorGuide--content--inner--pict--img img--2 sp"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SNS -->
+        <section class="SNS">
+            <div class="SNS--inner">
+                <a class="insta hover-scale" href="#" target="_blank" rel="noopener noreferrer"></a>
+                <a class="FB hover-scale" href="#" target="_blank" rel="noopener noreferrer"></a>
+            </div>
+        </section>
+
+        <!-- access -->
+        <section class="access" id="access">
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.305302129072!2d139.70446307644892!3d35.69410397258317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188cdc04a46871%3A0x9b14aeeed0768ce3!2z44ixRkFN!5e0!3m2!1sja!2sjp!4v1707991554693!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="access--content">
+                <div class="access--content--img"></div>
+                <div class="access--content--item">
+                    <div class="access--content--item--inner">
+                        <div class="access--content--item--inner--title">
+                            <img src="img/logo-W.png" alt="店名">
+                        </div>
+                        <a class="access--content--item--inner--tel" href="tel:00000000">
+                            <div class="access--content--item--inner--tel--number">
+                                <span>ご予約・お問い合わせ</span>
+                                <div></div>
+                                <p>052−937-0039</p>
+                            </div>
+                            <div class="access--content--item--inner--tel--point">
+                                <p>ホームページを見たとお伝えいただくとスムーズです。</p>
+                            </div>
+                        </a>
+                        <ul class="access--content--item--inner--list">
+                            <li>
+                                <p>店名</p>
+                                <p>ポン吉（ポンキチ）</p>
+                            </li>
+                            <li>
+                                <p>所在地</p>
+                                <p>
+                                    〒461-0002<br>
+                                    愛知県名古屋市東区代官町27-12　北條ビルD号
+                                </p>
+                            </li>
+                            <li>
+                                <p>アクセス</p>
+                                <p>名古屋市営地下鉄桜通線「車道駅」より徒歩9分</p>
+                            </li>
+                            <li>
+                                <p>営業時間</p>
+                                <p>
+                                    【ランチ】12 : 00〜14 : 00（L.O）<br>
+                                    【ディナー】18 : 00〜22 : 00（L.O）<br>
+                                    ※毎週木曜日のランチタイムは休業とさせていただきます。
+                                </p>
+                            </li>
+                            <li>
+                                <p>定休日</p>
+                                <p>水曜日</p>
+                            </li>
+                            <li>
+                                <p>席数</p>
+                                <p>
+                                    16席（テーブル14席、カウンター2席）<br>
+                                    ※パーティー時は着席最大16名までご利用いただけます。
+                                </p>
+                            </li>
+                            <li>
+                                <p>貸し切り</p>
+                                <p>8名様〜</p>
+                            </li>
+                            <li>
+                                <p>クレジットカード</p>
+                                <p>可（VISA,Master,AMEX,JCB,Diners）</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer--item">
+                <div class="footer--item--SNS">
+                    <a class="X" href="#" target="_blank" rel="noopener noreferrer">
+                        <span></span>
+                        ポスト
+                    </a>
+                    <a class="good" href="#" target="_blank" rel="noopener noreferrer">
+                        <span></span>
+                        いいね！
+                    </a>
+                    <a class="LINE" href="#" target="_blank" rel="noopener noreferrer">
+                        <span></span>
+                        いいね
+                    </a>
+                </div>
+                <div class="footer--item--copyRight">
+                    <p>© ボン吉. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <div class="followBtn sp">
+            <a class="followBtn--tel" href="tel:00000000">
+                <span>ご予約・お問い合わせ</span>
+                <div></div>
+                <p>052−937-0039</p>
+            </a>
+        </div>
+
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>

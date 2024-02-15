@@ -1,0 +1,157 @@
+@use "../global" as *;
+
+// floorGuide
+.floorGuide {
+  background-color: $brown;
+
+  @include pc {
+    padding: calc((120 / 1280) * 100vw) 0 calc((55 / 1280) * 100vw);
+  }
+
+  @include sp {
+    padding: calc((35 / 390) * 100vw) 0 calc((50 / 390) * 100vw);
+  }
+
+  &--title {
+
+    @include pc {
+      position: relative;
+      margin-bottom: calc((65 / 1280) * 100vw);
+    }
+
+    @include sp {
+      margin-bottom: calc((15 / 390) * 100vw);
+    }
+
+    &--img {
+      @include imgCover('floorGuide-1.jpg');
+
+      @include pc {
+        aspect-ratio: 1280 / 477;
+        width: 100%;
+      }
+
+      @include sp {
+        aspect-ratio: 390 / 187;
+        width: 100%;
+        margin-bottom: calc((35 / 390) * 100vw);
+      }
+    }
+
+    h2 {
+      @include kaisei;
+      color: $fontWhite;
+      letter-spacing: 0.1em;
+
+      @include pc {
+        font-size: calc((33 / 1280) * 100vw);
+        position: absolute;
+        top: calc((60 / 1280) * 100vw);
+        left: calc((220 / 1280) * 100vw);
+      }
+
+      @include sp {
+        text-align: center;
+        font-size: calc((23 / 390) * 100vw);
+      }
+    }
+  }
+
+  &--content {
+
+    @include pc {
+      padding-right: calc((65 / 1280) * 100vw);
+      position: relative;
+    }
+
+    @include sp {
+      padding: 0 calc((30 / 390) * 100vw);
+    }
+
+    &--inner {
+
+      @include pc {
+        width: 45%;
+        margin-left: auto;
+      }
+
+      @include sp {
+        @include column(calc((40 / 390) * 100vw));
+      }
+
+      &--text {
+
+        @include pc {
+          width: 80%;
+          margin-bottom: calc((65 / 1280) * 100vw);
+        }
+
+        p {
+          @include sans;
+          color: $fontWhite;
+          line-height: 1.8;
+          letter-spacing: 0.1em;
+
+          @include pc {
+            font-size: max(calc((16 / 1280) * 100vw), 10px);
+          }
+
+          @include sp {
+            font-size: calc((10 / 390) * 100vw);
+          }
+        }
+      }
+
+      &--floor {
+
+        @include pc {
+          @include imgContain('floorGuide-floor-PC.png');
+          aspect-ratio: 333/565;
+          width: calc((333 / 1280) * 100vw);
+          position: absolute;
+          top: 0;
+          left: calc((230 / 1280) * 100vw);
+        }
+
+        @include sp {
+          @include imgContain('floorGuide-floor-SP.png');
+          aspect-ratio: 345/200;
+          width: 100%;
+        }
+      }
+
+      &--pict {
+
+        @include pc {
+          display: contents;
+        }
+
+        @include sp {
+          display: flex;
+          gap: calc((5 / 390) * 100vw);
+        }
+
+        &--img {
+
+          @include pc {
+            aspect-ratio: 542/307;
+            width: calc((542 / 1280) * 100vw);
+          }
+
+          @include sp {
+            aspect-ratio: 1;
+            width: calc(100% / 2 - ((5 / 390) * 100vw) * 1/2);
+          }
+
+          &.img--1 {
+            @include imgCover('floorGuide-2.jpg');
+          }
+
+          &.img--2 {
+            @include imgCover('floorGuide-3.jpg');
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,203 @@
+@use "../global" as *;
+
+// wine
+.wine {
+  background-color: $brown;
+
+  @include pc {
+    padding: calc((110 / 1280) * 100vw) 0 calc((70 / 1280) * 100vw);
+  }
+
+  @include sp {
+    padding: calc((50 / 390) * 100vw) 0 calc((70 / 390) * 100vw);
+  }
+
+  &--contentTop{
+
+    @include pc{
+      width: calc((1100 / 1280) * 100vw);
+      margin: 0 auto calc((100 / 1280) * 100vw);
+      position: relative;
+    }
+
+    @include sp{
+      margin: 0 auto calc((60 / 390) * 100vw);
+    }
+
+    &--title{
+
+      @include pc{
+        width: 40%;
+        margin: 0 0 calc(( 85 / 1280) * 100vw) auto ;
+        padding: calc(( 70 / 1280) * 100vw) 0 0;
+      }
+
+      @include sp{
+        width: 60%;
+        margin:0 0 calc(( 30 / 390) * 100vw) auto;
+      }
+
+      h2{
+        @include kaisei;
+        color: $fontWhite;
+        
+        @include pc{
+          width: fit-content;
+          margin: 0 auto;
+          font-size: calc((32 / 1280) * 100vw);
+          writing-mode: vertical-rl;
+          -ms-writing-mode: tb-rl;
+          letter-spacing: 0.5em;
+        }
+
+        @include sp{
+          font-size: calc((23 / 390) * 100vw);
+          letter-spacing: 0.1em;
+        }
+      }
+    }
+
+    &--img{
+      aspect-ratio: 565/794;
+      @include imgCover('wine-img-1.jpg');
+      background-position: 30% top;
+
+      @include pc{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: calc((565 / 1280) * 100vw);
+      }
+
+      @include sp{
+        width: calc(( 282 / 390) * 100vw);
+        margin: 0 auto calc(( 30 / 390) * 100vw);
+        position: relative;
+      }
+
+      &--text{
+        position: absolute;
+
+        @include pc{
+          top: calc(( 60 / 1280) * 100vw);
+          right: calc(( 110 / 1280) * 100vw);
+        }
+
+        @include sp{
+          top: calc(( 25 / 390) * 100vw);
+          right: calc(( 5 / 390) * 100vw);
+        }
+
+        p{
+          @include sans;
+          color: $fontMain;
+          line-height: 200%;
+
+          @include pc{
+            font-size: max(calc(( 16 / 1280) * 100vw),10px);
+          }
+
+          @include sp{
+            font-size: calc(( 11 / 390) * 100vw);
+          }
+        }
+
+        .kunekune{
+          @include iconContain($kunekune);
+          aspect-ratio: 215/179;
+          height: fit-content;
+          position: absolute;
+
+          @include pc{
+            width: calc(( 215 / 1280) * 100vw);
+            top: calc(( 25 / 1280) * 100vw);
+            left: calc(( -50 / 1280) * 100vw);
+          }
+
+          @include sp{
+            width: calc(( 140 / 390) * 100vw);
+            top: calc(( 20 / 390) * 100vw);
+            left: calc(( -30 / 390) * 100vw);
+          }
+        }
+      }
+    }
+
+    &--text{
+
+      @include pc{
+        width: 40%;
+        margin-left: auto;
+        padding-right: calc(( 30 / 1280) * 100vw);
+      }
+
+      @include sp{
+        width: calc(( 335 / 390) * 100vw);
+        margin: 0 auto;
+      }
+
+      p{
+        @include sans;
+        color: $fontWhite;
+        text-align: justify;
+        line-height: 200%;
+
+        @include pc{
+          font-size: max(calc((16 / 1280) * 100vw),10px);
+        }
+
+        @include sp{
+          font-size: calc((10 / 390) * 100vw);
+          letter-spacing: 0.1em;
+        }
+      }
+    }
+  }
+
+  &--contentBottom{
+    display: flex;
+
+    @include pc{
+      width: calc((1061 / 1280) * 100vw);
+      margin: 0 auto;
+      gap: calc(( 86 / 1280) * 100vw);
+    }
+
+    @include sp{
+      flex-direction: column-reverse;
+      gap: calc(( 35 / 390) * 100vw);
+    }
+
+    &--img{
+      height: fit-content;
+
+      &.img--1{
+        @include imgCover('wine-img-2.jpg');
+        aspect-ratio: 482/294;
+
+        @include pc{
+          width: calc((482 / 1280) * 100vw);
+          margin-top: calc(( 120 / 1280) * 100vw);
+        }
+
+        @include sp{
+          width: calc(( 283 / 390) * 100vw);
+        }
+      }
+
+      &.img--2{
+        @include imgCover('wine-img-3.jpg');
+        aspect-ratio: 493/332;
+
+        @include pc{
+          width: calc((493 / 1280) * 100vw);
+        }
+
+        @include sp{
+          width: calc(( 282 / 390) * 100vw);
+          margin-left: auto;
+        }
+      }
+    }
+  }
+}

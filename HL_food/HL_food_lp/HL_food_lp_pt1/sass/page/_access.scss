@@ -1,0 +1,254 @@
+@use "../global" as *;
+
+// access
+.access {
+
+  .map{
+    width: 100%;
+
+    @include pc{
+      aspect-ratio: 1280/540;
+    }
+
+    @include sp{
+      aspect-ratio: 390/194;
+    }
+
+    iframe{
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &--content{
+    background-color: #C9B7A1;
+  
+    @include pc{
+      padding: calc((115 / 1280) * 100vw) 0 calc((180 / 1280) * 100vw);
+      @include column( calc(( 75 / 1280) * 100vw) );
+    }
+
+    @include sp{
+      padding: calc((35 / 390) * 100vw) 0 calc((100 / 390) * 100vw);
+      @include column( calc(( 35 / 390) * 100vw) );
+    }
+
+    &--img{
+      @include imgCover('access-1.jpg');
+      margin: 0 auto;
+      
+      @include pc{
+        aspect-ratio: 1094/408;
+        width: calc((1094 / 1280) * 100%);
+      }
+
+      @include sp{
+        aspect-ratio: 369/187;
+        width: 95%;
+      }
+    }
+    
+    &--item{
+      border: 3px solid $brown;
+      margin: 0 auto;
+
+      @include pc{
+        width: calc((910 / 1280) * 100%);
+        padding: calc(( 8 / 1280) * 100vw);
+      }
+
+      @include sp{
+        width: calc(( 335 / 390) * 100vw);
+        padding: calc(( 2 / 390) * 100vw);
+      }
+
+      &--inner{
+        border: 1px solid $brown;
+        width: 100%;
+        height: 100%;
+
+        @include pc{
+          padding: calc(( 8 / 1280) * 100vw) 0 calc(( 55 / 1280) * 100vw);        
+        }
+
+        @include sp{
+          padding: calc(( 10 / 390) * 100vw) 0 calc(( 35 / 390) * 100vw);
+        }
+
+        &--title{
+          img{
+            aspect-ratio: 253/172;
+            height: fit-content;
+            object-fit: cover;
+            object-position: center;
+
+            @include pc{
+              width: calc((253 / 1280) * 100%);
+              margin: 0 auto;
+            }
+
+            @include sp{
+              width: calc(( 185 / 390) * 100vw);
+              margin: 0 auto;
+            }
+          }
+        }
+
+        &--tel{
+          display: block;
+          background-color: $brown;
+          width: fit-content;
+
+          @include pc{
+            margin: 0 auto calc(( 5 / 1280) * 100vw);
+            padding: calc(( 25 / 1280) * 100vw) calc(( 35 / 1280) * 100vw) calc(( 15 / 1280) * 100vw);
+          }
+
+          @include sp{
+            margin: 0 auto calc(( 15 / 390) * 100vw);
+            padding: calc(( 15 / 390) * 100vw) calc(( 5 / 390) * 100vw) calc(( 10 / 390) * 100vw);
+          }
+
+          &--number{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            @include pc{
+              gap: calc(( 7 / 1280) * 100vw);
+              margin-bottom: calc(( 5 / 1280) * 100vw);
+            }
+
+            @include sp{
+              flex-direction: column;
+              gap: calc(( 5 / 390) * 100vw);
+              margin-bottom: calc(( 5 / 390) * 100vw);
+            }
+
+            span{
+              @include serif;
+              color: $fontWhite;
+              letter-spacing: 0.1em;
+
+              @include pc{
+                font-size: max(calc(( 15 / 1280) * 100vw),10px);
+              }
+
+              @include sp{
+                font-size: calc(( 12 / 390) * 100vw);
+              }
+            }
+
+            div{
+              background-image: phoneW(encode('#FFF'));
+              aspect-ratio: 1;
+              height: fit-content;
+
+              @include pc{
+                width: calc(( 27 / 1280) * 100vw);
+              }
+
+              @include sp{
+                display: none;
+              }
+            }
+
+            p{
+              @include playfair;
+              color: $fontWhite;
+              letter-spacing: 0.1em;
+
+              @include pc{
+                font-size: max(calc(( 27 / 1280) * 100vw),10px);
+              }
+
+              @include sp{
+                font-size: calc(( 23 / 390) * 100vw);
+              }
+            }
+          }
+
+          &--point{
+
+            p{
+              text-align: center;
+              @include playfair;
+              color: $fontWhite;
+              letter-spacing: 0.1em;
+
+              @include pc{
+                font-size: max(calc(( 11 / 1280) * 100vw),10px);
+              }
+
+              @include sp{
+                font-size: calc(( 10 / 390) * 100vw);
+              }
+            }
+          }
+        }
+
+        &--list{
+
+          @include pc{
+            width: calc(( 600 / 1280) * 100vw);
+            margin: 0 auto;
+          }
+
+          @include sp{
+            width: calc(( 280 / 390) * 100vw);
+            margin: 0 auto;
+          }
+
+          li{
+            border-bottom: 1px solid #A58F77;
+            display: flex;
+
+            @include pc{
+              padding: calc(( 15 / 1280) * 100vw) calc(( 5 / 1280) * 100vw);
+            }
+
+            @include sp{
+              flex-direction: column;
+              padding: calc(( 5 / 390) * 100vw) calc(( 3 / 390) * 100vw);
+            }
+
+            p{
+              @include sans;
+              color: $fontMain;
+
+              @include pc{
+                font-size: max(calc(( 16 / 1280) * 100vw),10px);
+              }
+
+              @include sp{
+                font-size: calc(( 10 / 390) * 100vw);
+              }
+
+              &:nth-child(1){
+                @include pc{
+                  width: 25%;
+                }
+
+                @include sp{
+                  width: 100%;
+                  margin-bottom: calc(( 2 / 390) * 100vw);
+                }
+              }
+
+              &:nth-child(2){
+                font-weight: 600;
+                @include pc{
+                  width: 75%;
+                }
+
+                @include sp{
+                  width: 100%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

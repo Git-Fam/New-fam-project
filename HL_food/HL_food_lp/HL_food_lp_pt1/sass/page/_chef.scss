@@ -1,0 +1,306 @@
+@use "../global" as *;
+
+// chef
+.chef {
+
+  @include pc {
+    background-color: #FFF;
+    padding: calc((50 / 1280) * 100vw) calc((100 / 1280) * 100vw) calc((15 / 1280) * 100vw);
+  }
+
+  @include sp {
+    background-color: #808080;
+    padding: calc((40 / 390) * 100vw) calc((10 / 390) * 100vw);
+  }
+
+  &--top {
+
+    @include pc {
+      position: relative;
+      padding: calc((50 / 1280) * 100vw) calc((40 / 1280) * 100vw) calc((40 / 1280) * 100vw);
+      @include imgCover('chef-1.jpg');
+      margin-bottom: calc((20 / 1280) * 100vw);
+    }
+
+    @include sp {
+      margin-bottom: calc((40 / 390) * 100vw);
+    }
+
+    &--title {
+      background-color: $brown;
+      width: fit-content;
+
+      @include pc {
+        position: absolute;
+        top: 60%;
+        transform: translateY(-50%);
+        right: calc((50 / 1280) * 100vw);
+        padding: calc((25 / 1280) * 100vw) calc((40 / 1280) * 100vw);
+      }
+
+      @include sp {
+        margin: 0 auto calc((30 / 390) * 100vw);
+        padding: calc((20 / 390) * 100vw);
+      }
+
+      h2 {
+        @include kaisei;
+        color: $fontWhite;
+        writing-mode: vertical-rl;
+        -ms-writing-mode: tb-rl;
+        line-height: 200%;
+        letter-spacing: 0.3em;
+
+        @include pc {
+          font-size: calc((29 / 1280) * 100vw);
+        }
+
+        @include sp {
+          font-size: calc((17 / 390) * 100vw);
+        }
+      }
+    }
+
+    &--name {
+
+      @include pc {
+        margin-bottom: calc((200 / 1280) * 100vw);
+      }
+
+      @include sp {
+        margin-bottom: calc((30 / 390) * 100vw);
+        @include imgCover('chef-1.jpg');
+        aspect-ratio: 369/226;
+        width: 100%;
+        padding: 0 0 calc((15 / 390) * 100vw) calc((15 / 390) * 100vw);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+      }
+
+      p {
+        @include cormorant;
+        color: $fontWhite;
+        letter-spacing: 0.1em;
+        line-height: 100%;
+
+        @include pc {
+          font-size: calc((39 / 1280) * 100vw);
+        }
+
+        @include sp {
+          font-size: calc((20 / 390) * 100vw);
+        }
+
+        &:nth-child(2) {
+
+          @include pc {
+            font-size: calc((53 / 1280) * 100vw);
+          }
+
+          @include sp {
+            font-size: calc((30 / 390) * 100vw);
+          }
+        }
+      }
+    }
+
+    &--profile {
+
+      @include sp {
+        padding: 0 calc((15 / 390) * 100vw);
+      }
+
+      p {
+        @include pc {
+          color: $fontWhite;
+        }
+
+        @include sp {
+          color: $fontMain;
+        }
+
+        @include sp {}
+
+        &:nth-child(1) {
+          @include cherish;
+          line-height: 200%;
+          letter-spacing: 0.1em;
+          position: relative;
+          width: fit-content;
+
+          @include pc {
+            font-size: calc((48 / 1280) * 100vw);
+          }
+
+          @include sp {
+            font-size: calc((30 / 390) * 100vw);
+          }
+
+          &::before,
+          &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 120%;
+            height: 1px;
+
+            @include pc {
+              background-color: $fontWhite;
+              width: calc((220 / 1280) * 100vw);
+            }
+
+            @include sp {
+              background-color: $fontMain;
+              width: calc((163 / 390) * 100vw);
+            }
+          }
+
+          &::after {
+            top: 53%;
+            left: 130%;
+          }
+        }
+
+        &:nth-child(2) {
+          @include sans;
+          line-height: 200%;
+          letter-spacing: 0.1em;
+          text-align: justify;
+
+          @include pc {
+            width: 45%;
+            font-size: max(calc((16 / 1280) * 100vw), 10px);
+          }
+
+          @include sp {
+            font-size: calc((11 / 390) * 100vw);
+          }
+        }
+      }
+    }
+  }
+
+  &--bottom {
+    display: flex;
+
+    @include pc {
+      gap: calc((15 / 1280) * 100vw);
+    }
+
+    @include sp {
+      flex-direction: column;
+      gap: calc((10 / 390) * 100vw);
+    }
+
+    &--img {
+
+      @include pc {
+        flex-shrink: 0;
+      }
+
+      @include sp {}
+
+      &.img--1 {
+        height: fit-content;
+
+        @include pc {
+          width: calc((594 / 1280) * 100vw);
+          aspect-ratio: 594/458;
+          @include imgCover('chef-2.jpg');
+        }
+
+        @include sp {
+          width: 100%;
+          aspect-ratio: 369/217;
+          @include imgCover('chef-4.jpg');
+        }
+      }
+    }
+
+    &--content {
+
+      @include pc {
+        @include column(calc((55 / 1280) * 100vw));
+      }
+
+      @include sp {
+        @include column(calc((20 / 390) * 100vw));
+      }
+
+      &--img {
+        display: flex;
+
+        @include pc {
+          gap: calc((10 / 1280) * 100vw);
+        }
+
+        @include sp {
+          gap: calc((5 / 390) * 100vw);
+        }
+
+        &--pict {
+          aspect-ratio: 1;
+          height: fit-content;
+
+          @include pc {
+            width: calc(100% / 3 - (calc(10 / 1280) * 100vw) * 2 / 3);
+          }
+
+          @include sp {
+            width: calc(100% / 3 - (calc(5 / 390) * 100vw) * 2 / 3);
+          }
+
+          &.img--2 {
+            @include imgCover('chef-3.jpg');
+          }
+
+          &.img--3 {
+            @include imgCover('chef-4.jpg');
+
+            @include sp {
+              filter: grayscale(100%);
+            }
+          }
+
+          &.img--4 {
+            @include imgCover('chef-5.jpg');
+
+            @include pc {
+              filter: grayscale(100%);
+            }
+          }
+        }
+      }
+
+      &--text {
+
+        @include pc {
+          padding: 0 calc((30 / 1280) * 100vw) 0 calc((45 / 1280) * 100vw);
+        }
+
+        @include sp {
+          padding: 0 calc((15 / 390) * 100vw);
+        }
+
+        p {
+          @include sans;
+          color: $fontMain;
+          text-align: justify;
+          line-height: 200%;
+          letter-spacing: 0.1em;
+
+          @include pc {
+            font-size: max(calc((16 / 1280) * 100vw), 10px);
+          }
+
+          @include sp {
+            font-size: calc((10 / 390) * 100vw);
+          }
+        }
+      }
+    }
+  }
+}

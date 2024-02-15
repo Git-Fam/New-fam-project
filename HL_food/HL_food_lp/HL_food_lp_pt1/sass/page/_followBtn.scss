@@ -1,0 +1,47 @@
+@use "../global" as *;
+
+// followBtn
+.followBtn {
+  width: 100%;
+  background-color: $brown;
+  position: fixed;
+  left: 0;
+  z-index: 100;
+  box-shadow: 0px 1px 10px #000;
+  bottom: calc(( -55 / 390) * 100vw);
+  transition: 0.3s;
+
+  &.active {
+    bottom: 0;
+  }
+
+  &--tel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: calc(( 15 / 390) * 100vw) calc(( 5 / 390) * 100vw) calc(( 10 / 390) * 100vw);
+    gap: calc(( 5 / 390) * 100vw);
+    
+    span{
+      @include serif;
+      color: $fontWhite;
+      letter-spacing: 0.1em;
+      font-size: calc(( 12 / 390) * 100vw);
+    }
+
+    div{
+      background-image: phoneW(encode('#FFF'));
+      aspect-ratio: 1;
+      height: fit-content;
+      width: calc(( 23 / 390) * 100vw);
+    }
+
+    p{
+      @include playfair;
+      color: $fontWhite;
+      letter-spacing: 0.1em;
+      font-size: calc(( 23 / 390) * 100vw);
+    }
+  }
+}

@@ -1,0 +1,115 @@
+@use "../global" as *;
+
+// footer
+.footer {
+  background-color: $brown;
+
+  @include pc{
+    padding: calc((15 / 1280) * 100vw) 0 calc((25 / 1280) * 100vw);
+  }
+
+  @include sp{
+    padding: calc((15 / 390) * 100vw) 0 calc((70 / 390) * 100vw);
+  }
+
+  &--item{
+    width: fit-content;
+    margin: 0 auto;
+
+    @include pc{
+      @include column( calc(( 15 / 1280) * 100vw) );
+    }
+
+    @include sp{
+      @include column( calc(( 8 / 390) * 100vw) );
+    }
+
+    &--SNS{
+      display: flex;
+      justify-content: center;
+
+      @include pc{
+        gap: calc(( 20 / 1280) * 100vw);
+      }
+
+      @include sp{
+        gap: calc(( 10 / 390) * 100vw);
+      }
+
+      a{
+        @include sans;
+        color: $fontWhite;
+        display: flex;
+        align-items: center;
+        line-height: 100%;
+        border-radius: 100px;
+
+        @include pc{
+          gap: calc(( 3 / 1280) * 100vw);
+          font-size: calc(( 10 / 1280) * 100vw);
+          padding: calc(( 2 / 1280) * 100vw) calc(( 5 / 1280) * 100vw);
+        }
+
+        @include sp{
+          gap: calc(( 2 / 390) * 100vw);
+          font-size: calc(( 8 / 390) * 100vw);
+          padding: calc(( 1 / 390) * 100vw) calc(( 10 / 390) * 100vw);
+        }
+
+        span{
+          aspect-ratio: 1;
+          display: block;
+
+          @include pc{
+            width: calc(( 14 / 1280) * 100vw);
+          }
+
+          @include sp{
+            width: calc(( 12 / 390) * 100vw);
+          }
+        }
+
+        &.X{
+          background-color: #000;
+          
+          span{
+            @include imgContain('footer-X.png');
+          }
+        }
+
+        &.good{
+          background-color: #0093F4;
+          
+          span{
+            @include imgContain('footer-good.png');
+          }
+        }
+
+        &.LINE{
+          background-color: #06C755;
+          
+          span{
+            @include imgContain('footer-LINE.png');
+          }
+        }
+      }
+    }
+
+    &--copyRight{
+      p{
+        @include sans;
+        color: $fontWhite;
+        text-align: center;
+        letter-spacing: 0.1em;
+
+        @include pc{
+          font-size: calc(( 10 / 1280) * 100vw);
+        }
+
+        @include sp{
+          font-size: calc(( 10 / 390) * 100vw);
+        }
+      }
+    }
+  }
+}

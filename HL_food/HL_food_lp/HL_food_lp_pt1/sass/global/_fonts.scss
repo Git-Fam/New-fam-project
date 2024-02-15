@@ -1,0 +1,51 @@
+
+// フォント
+//  font-family: Noto Sans JP;
+@mixin sans {
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+}
+
+// font-family: Noto Serif JP;
+@mixin serif {
+  font-family: "Noto Serif JP", serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+}
+
+// font-family: Playfair Display;
+@mixin playfair {
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+}
+
+// font-family: Cormorant Upright;
+@mixin cormorant {
+  font-family: "Cormorant Upright", serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+}
+
+// font-family: Kaisei HarunoUmi;
+@mixin kaisei {
+  font-family: "Kaisei HarunoUmi", serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+}
+
+// font-family: Cherish;
+@mixin cherish {
+  font-family: "Cherish", cursive;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+}
+
+

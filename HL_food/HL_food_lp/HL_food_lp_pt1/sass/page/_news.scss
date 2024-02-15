@@ -1,0 +1,130 @@
+@use "../global" as *;
+
+// news
+.news {
+  @include imgCover('news-back.jpg');
+
+  @include pc {
+    padding: calc((73 / 1280) * 100vw) 0 calc((100 / 1280) * 100vw);
+  }
+
+  @include sp {
+    padding: calc((30 / 390) * 100vw) 0 calc((40 / 390) * 100vw);
+  }
+
+  &--title {
+    @include cormorant;
+    color: $fontWhite;
+    text-align: center;
+
+    @include pc {
+      font-size: calc((47 / 1280) * 100vw);
+    }
+
+    @include sp {
+      font-size: calc((35 / 390) * 100vw);
+      background-color: $mainColor;
+      padding: calc((1 / 390) * 100vw) 0 calc((7 / 390) * 100vw);
+    }
+  }
+
+  &--content {
+
+    @include pc {
+      margin: calc((25 / 1280) * 100vw) auto 0;
+      width: max(calc((917 / 1280) * 100vw), 700px);
+      display: flex;
+      align-items: center;
+      gap: calc((10 / 1280) * 100vw);
+    }
+
+    @include sp {
+      margin: calc((20 / 390) * 100vw) auto 0;
+      width: calc((290 / 390) * 100vw);
+    }
+
+    &--item {
+      display: block;
+      background-color: $subColor;
+
+      @include pc {
+        width: calc(100% / 3 - ((10 / 1280) * 100vw) * 2 / 3);
+        padding: calc((25 / 1280) * 100vw) calc((30 / 1280) * 100vw) calc((30 / 1280) * 100vw);
+      }
+
+      @include sp {
+        width: 100%;
+        padding: calc((18 / 390) * 100vw) calc((13 / 390) * 100vw);
+      }
+
+      &:nth-last-child(-n+2) {
+        @include sp {
+          display: none;
+        }
+      }
+
+      &:hover {
+        .item--thumbnail {
+          transition: 0.3s;
+          transform: scale(1.05);
+        }
+      }
+
+      .item--title {
+        width: 100%;
+        border-bottom: 1px solid $mainColor;
+
+        @include pc {
+          @include column(calc((15 / 1280) * 100vw));
+          padding-bottom: calc((20 / 1280) * 100vw);
+          margin-bottom: calc((20 / 1280) * 100vw);
+        }
+
+        @include sp {
+          @include column(calc((10 / 390) * 100vw));
+          padding-bottom: calc((10 / 390) * 100vw);
+          margin-bottom: calc((20 / 390) * 100vw);
+        }
+
+        p,
+        h3 {
+          @include sans;
+          color: $fontMain;
+
+          @include pc {
+            font-size: max(calc((16 / 1280) * 100vw), 10px);
+          }
+
+          @include sp {
+            font-size: calc((13 / 390) * 100vw);
+          }
+        }
+
+        h3 {
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+          overflow: hidden;
+        }
+      }
+
+      .item--thumbnail {
+        aspect-ratio: 240 / 168;
+        @include imgContain('news-thumbnail-1.jpg');
+        width: 100%;
+      }
+    }
+  }
+
+  &--more {
+    display: block;
+    width: calc((250 / 390) * 100vw);
+    margin: calc((35 / 390) * 100vw) auto 0;
+    padding: calc((20 / 390) * 100vw) 0;
+    background-color: $mainColor;
+    @include kaisei;
+    color: $fontWhite;
+    text-align: center;
+    font-size: calc((16 / 390) * 100vw);
+  }
+}

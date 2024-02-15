@@ -31,51 +31,47 @@ $sp: 767px;  // スマホ
 // @include column( calc(( 50 / 1280) * 100vw) );
 
 
-// background
-@mixin img($img){
+// background-contain
+@mixin imgContain($img){
   background-image: url('/img/#{$img}');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
 // ↓CSSでは
-// @include img('example.jpg');
+// @include imgContain('example.jpg');
 
+// background-cover
+@mixin imgCover($img){
+  background-image: url('/img/#{$img}');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+// ↓CSSでは
+// @include imgCover('example.jpg');
 
-// backgroundIcon
-@mixin icon($img){
+// backgroundIcon-contain
+@mixin iconContain($img){
   background-image: $img;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
 // ↓CSSでは
-// @include icon($dot);
+// @include iconContain($dot);
 
 
-// フォント
-// font-family: Noto Sans JP;
-@mixin noto {
-  font-family: 'Noto Sans JP', sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  line-height: normal;
+// backgroundIcon-cover
+@mixin iconCover($img){
+  background-image: $img;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+// ↓CSSでは
+// @include iconCover($dot);
 
-// font-family: Josefin Sans;
-@mixin josefin {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  line-height: normal;
-}
-
-// font-family: Yu Mincho;
-@mixin yu {
-  font-family: "yu-mincho-pr6n", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
 
 
 // 関数の使い方

@@ -1,0 +1,74 @@
+@use "../global" as *;
+
+// SNS
+.SNS {
+  background: #EFEAE7;
+
+  @include pc {
+    padding: calc((230 / 1280) * 100vw) 0 calc((60 / 1280) * 100vw);
+  }
+
+  @include sp {
+    padding: calc((40 / 390) * 100vw) calc((60 / 390) * 100vw) calc((20 / 390) * 100vw);
+  }
+
+  &--inner {
+    display: flex;
+
+    @include pc {
+      width: calc((865 / 1280) * 100%);
+      margin: 0 auto;
+      gap: calc((35 / 1280) * 100vw);
+    }
+
+    @include sp {
+      flex-direction: column;
+      gap: calc((95 / 390) * 100vw);
+    }
+
+    a {
+      display: block;
+      height: fit-content;
+
+      @include pc {
+        width: calc(100% / 2 - (((35 / 1280) * 100vw) * 1/2));
+      }
+
+      @include sp {
+        width: 100%;
+      }
+
+      &.insta {
+        aspect-ratio: 456/138;
+        @include imgCover('SNS-insta.png');
+      }
+
+      &.FB {
+        aspect-ratio: 1;
+        @include imgCover('SNS-FB.jpg');
+        position: relative;
+
+        &::before {
+          content: 'Facebook';
+          position: absolute;
+          left: 0;
+          width: 100%;
+          text-align: center;
+          @include cormorant;
+          color: $fontMain;
+          letter-spacing: 0.1em;
+
+          @include pc {
+            font-size: calc((35 / 1280) * 100vw);
+            top: calc((-90 / 1280) * 100vw);
+          }
+
+          @include sp {
+            font-size: calc((28 / 390) * 100vw);
+            top: calc((-60 / 390) * 100vw);
+          }
+        }
+      }
+    }
+  }
+}

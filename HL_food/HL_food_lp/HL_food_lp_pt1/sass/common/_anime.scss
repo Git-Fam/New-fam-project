@@ -3,23 +3,23 @@
 
 // <a href="#" target="_blank" rel="noopener noreferrer"></a>
 
-// // ホバーで薄く
-// .hover-opa{
-//   transition: 0.3s;
+// ホバーで薄く
+.hover-opa{
+  transition: 0.3s;
 
-//   &:hover{
-//     opacity: 0.6;
-//   }
-// }
+  &:hover{
+    opacity: 0.6;
+  }
+}
 
-// // ホバーで大きく
-// .hover-scale{
-//   transition: 0.3s;
+// ホバーで大きく
+.hover-scale{
+  transition: 0.3s;
 
-//   &:hover{
-//     transform: scale(1.1);
-//   }
-// }
+  &:hover{
+    transform: scale(1.05);
+  }
+}
 
 // したから上に出てくる
 // .up {
