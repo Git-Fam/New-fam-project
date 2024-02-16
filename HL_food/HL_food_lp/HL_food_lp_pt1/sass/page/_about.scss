@@ -65,10 +65,13 @@
       }
 
       &--text.enjoy{
+        @include pc{
+          width: calc(( 100 / 1280) * 100vw);
+        }
 
         @include sp{
           position: absolute;
-          right: calc(( 30 / 390) * 100vw);
+          left: calc(( 300 / 390) * 100vw);
           bottom: calc(( -220 / 390) * 100vw);
         }
 
@@ -86,6 +89,22 @@
           @include sp{
             font-size: calc((20 / 390) * 100vw);
             line-height: 150%;
+          }
+
+          span{
+            writing-mode: horizontal-tb;
+            position: relative;
+
+            @include pc{
+              top: -2rem;
+              right: -1.5rem;
+            }
+
+            @include sp{
+              top: -1rem;
+              right: -0.8rem;
+            }
+
           }
         }
       }

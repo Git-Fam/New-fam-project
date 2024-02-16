@@ -211,17 +211,18 @@ WordPress↑
 }
 .fv--text {
   position: absolute;
+  height: 100%;
 }
 @media screen and (min-width: 768px) {
   .fv--text {
     top: 12.5vw;
-    right: 18.75vw;
+    left: 75.78125vw;
   }
 }
 @media screen and (max-width: 767px) {
   .fv--text {
     top: 28.2051282051vw;
-    right: 12.8205128205vw;
+    left: 74.358974359vw;
   }
 }
 .fv--text p {
@@ -318,6 +319,7 @@ WordPress↑
   line-height: 150%;
   transition: 0.3s;
   display: inline-block;
+  cursor: pointer;
 }
 @media screen and (min-width: 768px) {
   .fv .menu ul li a {
@@ -559,10 +561,15 @@ WordPress↑
     gap: 8.9743589744vw;
   }
 }
+@media screen and (min-width: 768px) {
+  .about--content--item--text.enjoy {
+    width: 7.8125vw;
+  }
+}
 @media screen and (max-width: 767px) {
   .about--content--item--text.enjoy {
     position: absolute;
-    right: 7.6923076923vw;
+    left: 76.9230769231vw;
     bottom: -56.4102564103vw;
   }
 }
@@ -584,6 +591,22 @@ WordPress↑
   .about--content--item--text.enjoy p {
     font-size: 5.1282051282vw;
     line-height: 150%;
+  }
+}
+.about--content--item--text.enjoy p span {
+  writing-mode: horizontal-tb;
+  position: relative;
+}
+@media screen and (min-width: 768px) {
+  .about--content--item--text.enjoy p span {
+    top: -2rem;
+    right: -1.5rem;
+  }
+}
+@media screen and (max-width: 767px) {
+  .about--content--item--text.enjoy p span {
+    top: -1rem;
+    right: -0.8rem;
   }
 }
 .about--content--item--text.text p {
@@ -852,24 +875,25 @@ WordPress↑
   .course--inner--middle--position--title {
     position: absolute;
     top: 20.5128205128vw;
-    right: 10.2564102564vw;
+    left: 76.9230769231vw;
   }
 }
 .course--inner--middle--position--title p {
-  -ms-writing-mode: tb-rl;
+  -ms-writing-mode: vertical-rl;
+  -webkit-writing-mode: vertical-rl;
   writing-mode: vertical-rl;
   font-family: "Kaisei HarunoUmi", serif;
   font-weight: 400;
   font-style: normal;
   line-height: normal;
   letter-spacing: 0.3em;
-  font-weight: 700;
   text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
   line-height: 150%;
   color: #2C2922;
 }
 @media screen and (min-width: 768px) {
   .course--inner--middle--position--title p {
+    font-weight: 700;
     font-size: 2.34375vw;
   }
 }
@@ -1266,7 +1290,6 @@ WordPress↑
   background-position: center;
   background-repeat: no-repeat;
   aspect-ratio: 215/179;
-  height: fit-content;
   position: absolute;
 }
 @media screen and (min-width: 768px) {
@@ -1402,21 +1425,28 @@ WordPress↑
 }
 .chef--top--title {
   background-color: #2F1F10;
-  width: fit-content;
 }
 @media screen and (min-width: 768px) {
   .chef--top--title {
+    width: 17.1875vw;
     position: absolute;
     top: 60%;
     transform: translateY(-50%);
     right: 3.90625vw;
-    padding: 1.953125vw 3.125vw;
+    padding: 1.953125vw 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 @media screen and (max-width: 767px) {
   .chef--top--title {
+    width: 38.4615384615vw;
     margin: 0 auto 7.6923076923vw;
-    padding: 5.1282051282vw;
+    padding: 5.1282051282vw 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 .chef--top--title h2 {
@@ -1736,12 +1766,20 @@ WordPress↑
 }
 @media screen and (min-width: 768px) {
   .menu--title--box {
-    padding: 3.90625vw 3.125vw;
+    width: 21.875vw;
+    padding: 2.34375vw 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 @media screen and (max-width: 767px) {
   .menu--title--box {
-    padding: 7.6923076923vw 5.1282051282vw;
+    width: 35.8974358974vw;
+    padding: 5.1282051282vw 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 .menu--title--box h2 {
@@ -2310,10 +2348,6 @@ WordPress↑
 @media screen and (max-width: 767px) {
   .menu--book--detail--page--img {
     cursor: pointer;
-    transition: transform 0.3s;
-  }
-  .menu--book--detail--page--img:hover {
-    transform: scale(1.05);
   }
 }
 .menu--book--detail--page--text {
@@ -2620,8 +2654,10 @@ WordPress↑
 }
 @media screen and (max-width: 767px) {
   .menu--staple--inner--item--text {
-    width: fit-content;
-    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 .menu--staple--inner--item--text p {

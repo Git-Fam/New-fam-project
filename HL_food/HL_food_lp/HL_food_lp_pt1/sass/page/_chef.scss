@@ -28,19 +28,22 @@
 
     &--title {
       background-color: $brown;
-      width: fit-content;
-
+      
       @include pc {
+        width: calc((220 / 1280) * 100vw);
         position: absolute;
         top: 60%;
         transform: translateY(-50%);
         right: calc((50 / 1280) * 100vw);
-        padding: calc((25 / 1280) * 100vw) calc((40 / 1280) * 100vw);
+        padding: calc((25 / 1280) * 100vw) 0;
+        @include center;
       }
 
       @include sp {
+        width: calc(( 150 / 390) * 100vw);
         margin: 0 auto calc((30 / 390) * 100vw);
-        padding: calc((20 / 390) * 100vw);
+        padding: calc((20 / 390) * 100vw) 0;
+        @include center
       }
 
       h2 {

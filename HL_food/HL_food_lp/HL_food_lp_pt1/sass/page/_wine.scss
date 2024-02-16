@@ -105,7 +105,6 @@
         .kunekune{
           @include iconContain($kunekune);
           aspect-ratio: 215/179;
-          height: fit-content;
           position: absolute;
 
           @include pc{

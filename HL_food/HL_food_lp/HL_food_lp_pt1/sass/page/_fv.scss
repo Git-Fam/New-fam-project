@@ -106,15 +106,16 @@
 
   &--text {
     position: absolute;
+    height: 100%;
 
     @include pc {
       top: calc((160 / 1280) * 100vw);
-      right: calc((240 / 1280) * 100vw);
+      left: calc((970 / 1280) * 100vw);
     }
 
     @include sp {
       top: calc((110 / 390) * 100vw);
-      right: calc((50 / 390) * 100vw);
+      left: calc((290 / 390) * 100vw);
     }
 
     p {
@@ -198,7 +199,6 @@
         //     }
         //   }
         // }
-
         a {
           @include serif;
           font-weight: 900;
@@ -206,6 +206,7 @@
           line-height: 150%;
           transition: 0.3s;
           display: inline-block;
+          cursor: pointer;
           
           @include pc {
             color: $fontWhite;

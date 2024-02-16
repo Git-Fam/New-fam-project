@@ -21,11 +21,15 @@
       background-color: $brown;
 
       @include pc {
-        padding: calc((50 / 1280) * 100vw) calc((40 / 1280) * 100vw);
+        width: calc(( 280 / 1280) * 100vw);
+        padding: calc((30 / 1280) * 100vw) 0;
+        @include center;
       }
 
       @include sp {
-        padding: calc((30 / 390) * 100vw) calc((20 / 390) * 100vw);
+        width: calc(( 140 / 390) * 100vw);
+        padding: calc((20 / 390) * 100vw) 0;
+        @include center;
       }
 
       h2 {
@@ -544,11 +548,11 @@
 
           @include sp {
             cursor: pointer;
-            transition: transform 0.3s;
+            // transition: transform 0.3s;
 
-            &:hover {
-              transform: scale(1.05);
-            }
+            // &:hover {
+            //   transform: scale(1.05);
+            // }
           }
         }
 
@@ -835,8 +839,8 @@
 
         &--text {
           @include sp {
-            width: fit-content;
-            margin: 0 auto;
+            width: 100%;
+            @include center;
           }
 
           p {
