@@ -1,0 +1,55 @@
+// フォント
+// font-family: "Zen Kaku Gothic New";
+@mixin zen {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+}
+
+// font-family: "Outfit";
+@mixin outfit {
+  font-family: "Outfit", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+}
+
+// font-family: "Noto Sans JP";
+@mixin sans {
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+}
+
+// font-family: "Nanum Myeongjo";
+@mixin nanum {
+  font-family: "Nanum Myeongjo", serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+}
+
+// font-family: "Julius Sans One";
+@mixin julius {
+  font-family: "Julius Sans One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+}
+
+// font-family: "Inter";
+@mixin inter {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+}
+
+// font-family: NTR;
+@mixin ntr {
+  font-family: 'NTR', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}

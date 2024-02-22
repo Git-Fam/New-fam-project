@@ -1,0 +1,31 @@
+@use "../global" as *;
+
+/* -----------------------
+  C_title
+----------------------- */
+
+.C_title{
+  width: fit-content;
+  margin: 0 auto;
+
+  @include pc{}
+  @include sp{}
+
+  p{
+    font-family: 'Zen Kaku Gothic New';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 175%;
+    letter-spacing: 0.08em;
+    color: #5F5F5F;
+    @include pc{}
+    @include sp{}
+  }
+
+  h2{
+
+    @include pc{}
+    @include sp{}
+  }
+}
