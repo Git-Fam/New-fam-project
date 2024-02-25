@@ -27,7 +27,7 @@
     <!-- <meta name="theme-color" content="#e9c931"> -->
 
     <!-- ▼CSS -->
-    <link rel="stylesheet" href="/css/main.css?date=<?=date('YmdGis', filemtime( 'main.css' ));?>">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/main.css">
 
     <!-- ▼フォント -->
     <link href="https://fonts.cdnfonts.com/css/ntr" rel="stylesheet">
@@ -43,23 +43,41 @@
 
         <div class="fv"></div>
 
+
+
+
         <!-- ページ名 -->
-        <div class="top">
+        <div class="contact">
+            <div class="contact--inner">
+                <div class="C_title">
+                    <p>contact form</p>
+                    <h2>送信完了画面</h2>
+                </div>
+                <div class="form--wap">
 
+                    <div class="complete--form">
+                        <div class="complete--form--title">
+                            <p>送信を完了いたしました。</p>
+                        </div>
+                        <div class="complete--form--text">
+                            <p>
+                                内容を確認次第、担当者より折り返しご連絡させていただきます。<br>
+                                今しばらくお待ちくださいませ。
+                            </p>
+                        </div>
+                    </div>
 
-
-
-
-
-
-
-
-
-
+                </div>
+            </div>
         </div>
+
+
+
+
 
         <footer></footer>
     </div>
+
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>

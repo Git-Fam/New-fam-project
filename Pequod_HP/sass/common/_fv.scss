@@ -3,3 +3,14 @@
 /* -----------------------
   fv
 ----------------------- */
+
+.fv{
+  background-color: rgb(131, 131, 250);
+
+  @include pc{
+    height: calc(( 300 / 1280) * 100vw);
+  }
+  @include sp{
+    height: calc(( 200 / 390) * 100vw);
+  }
+}

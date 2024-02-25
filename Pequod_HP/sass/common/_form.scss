@@ -1,0 +1,381 @@
+@use "../global" as *;
+
+/* -----------------------
+  form
+----------------------- */
+
+.form--wap{
+  background-color: #fff;
+
+  // 問い合わせ
+  .contact--form{
+
+    @include pc{
+      padding-bottom: calc(( 25 / 1280) * 100vw);
+    }
+
+    @include sp{
+      padding-bottom: calc(( 20 / 390) * 100vw);
+    }
+
+    .list{
+      display: flex;
+      border-bottom: 1px solid #C0C0C0;
+
+      @include pc{
+        gap: calc(( 50 / 1280) * 100vw);
+        padding: calc(( 20 / 1280) * 100vw) .5rem;
+      }
+      @include sp{
+        flex-direction: column;
+        gap: calc(( 10 / 390) * 100vw);
+        padding: calc(( 10 / 390) * 100vw) .5rem;
+      }
+
+      .title{
+        display: flex;
+        justify-content: space-between;
+  
+        @include pc{
+          width: calc( 35% - calc(( 50 / 1280) * 100vw));
+          padding-top: calc(( 10 / 1280) * 100vw);
+        }
+
+        @include sp{
+          width: 50%;
+        }
+  
+        label{
+            @include sans;
+            font-weight: 600;
+            line-height: 110%;
+            letter-spacing: -0.01em;
+            color: $FontColor333;
+            
+            @include pc{
+              font-size: max(calc(( 20 / 1280) * 100vw),14px);
+            }
+  
+          @include sp{
+            font-size: calc(( 14 / 390) * 100vw);
+          }
+        }
+        .tag{
+          @include sans;
+          font-weight: 600;
+          line-height: 110%;
+          letter-spacing: 0.2em;
+          color: $FontColorFFF;
+          background-color: $decoColorBlue;
+          height: fit-content;
+          
+          
+          @include pc{
+            font-size: max(calc(( 16 / 1280) * 100vw),12px);
+            padding: calc(( 4 / 1280) * 100vw) calc(( 8 / 1280) * 100vw);
+          }
+  
+          @include sp{
+            font-size: calc(( 14 / 390) * 100vw);
+            padding: calc(( 2 / 390) * 100vw) calc(( 4 / 390) * 100vw);
+          }
+  
+          &:empty{
+            display: none;
+          }
+        }
+  
+  
+      }
+      
+      .text{
+        
+        @include pc{
+          width: 65%;
+        }
+        @include sp{
+          width: 100%;
+        }
+  
+        .wpcf7-form-control-wrap{
+          display: block;
+          width: 100%;
+  
+          input[ type="text" ],
+          input[ type="email" ],
+          input[ type="tel" ],
+          textarea{
+            -webkit-appearance: none;
+            appearance: none;
+            box-sizing: border-box;
+            margin: 0;
+            border: solid 1px #C0C0C0;
+            @include sans;
+            font-weight: 300;
+            line-height: 110%;
+            letter-spacing: -0.01em;
+            
+            @include pc{
+              width: 100%;
+              height: calc(( 50 / 1280) * 100vw);
+              padding: 0 calc(( 10 / 1280) * 100vw);
+              font-size: max(calc(( 20 / 1280) * 100vw),16px);
+            }
+    
+            @include sp{
+              width: 100%;
+              height: calc(( 35 / 390) * 100vw);
+              padding: 0 calc(( 5 / 390) * 100vw);
+              font-size: calc(( 16 / 390) * 100vw);
+            }
+          }
+  
+          textarea{
+            padding-top: 1rem;
+
+            @include pc{
+              height: calc(( 230 / 1280) * 100vw);
+              resize: none;
+            }
+            @include sp{
+              height: calc(( 200 / 390) * 100vw);
+              resize: none;
+            }
+          }
+  
+          .wpcf7-not-valid-tip{
+            display: block;
+            @include sans;
+            line-height: 110%;
+            letter-spacing: -0.01em;
+            color: $FontColorBlue;
+            
+            @include pc{
+              font-size: max(calc(( 16 / 1280) * 100vw),12px);
+            }
+  
+            @include sp{
+              font-size: calc(( 14 / 390) * 100vw);
+            }
+          }
+  
+        }
+  
+        .list--flex{
+          display: flex;
+          flex-wrap: wrap;
+          
+  
+          @include pc{
+            gap:calc(( 10 / 1280) * 100vw) calc(( 20 / 1280) * 100vw);
+          }
+          @include sp{}
+  
+          .number{
+            display: flex;
+            align-items: center;
+            @include sans;
+            font-weight: 500;
+            line-height: 110%;
+            letter-spacing: -0.01em;
+            
+            
+            @include pc{
+              gap: calc(( 20 / 1280) * 100vw);
+              width: 30%;
+              font-size: max(calc(( 20 / 1280) * 100vw),12px);
+            }
+  
+            @include sp{}
+          }
+        }
+      }
+    }
+
+    .check{
+
+      @include pc{
+        margin-top: calc(( 30 / 1280) * 100vw);
+      }
+      @include sp{}
+      .wpcf7-form-control-wrap{
+        .wpcf7-form-control.wpcf7-acceptance{
+          .wpcf7-list-item{
+            label{
+              display: flex;
+              align-items: center;
+              width: fit-content;
+              margin: 0 auto;
+
+              @include pc{
+                gap: calc(( 10 / 1280) * 100vw);
+              }
+              @include sp{}
+
+              input[ type="checkbox"]{
+
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                border-radius: 0;
+                border: solid 1px #C0C0C0;
+
+                @include pc{
+                  width: calc(( 20 / 1280) * 100vw);
+                  height: calc(( 20 / 1280) * 100vw);
+                }
+
+                @include sp{}
+              }
+
+              .wpcf7-list-item-label{
+                @include sans;
+                font-weight: 300;
+                line-height: 110%;
+                letter-spacing: -0.01em;
+                
+                
+                @include pc{
+                  font-size: max(calc(( 20 / 1280) * 100vw),14px);
+                }
+
+                @include sp{}
+
+                a{
+                  display: inline-block;
+                  font-weight: 300;
+                  border-bottom: solid 1px #C0C0C0;
+
+
+                  @include pc{}
+
+                  @include sp{}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+    .BTN{
+      display: flex;
+      justify-content: center;
+      @include pc{
+        margin-top: calc(( 40 / 1280) * 100vw);
+        gap: calc(( 20 / 1280) * 100vw);
+      }
+      @include sp{
+        gap: calc(( 10 / 390) * 100vw);
+      }
+
+      .next{
+        -webkit-appearance: none;
+        appearance: none;
+        box-sizing: border-box;
+        margin: 0;
+        border: solid 1px #333;
+        background-color: #FFF;
+        @include sans;
+        font-weight: 500;
+        line-height: 110%;
+        letter-spacing: 0.3em;
+        
+
+        @include pc{
+          width: calc(( 170 / 1280) * 100vw);
+          padding: calc(( 15 / 1280) * 100vw) 0;
+          font-size: max(calc(( 20 / 1280) * 100vw),14px);
+        }
+
+        @include sp{}
+      }
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // 完了画面
+  .complete--form{
+
+    @include pc{
+      padding: calc(( 50 / 1280) * 100vw) 0;
+      @include column(calc(( 30 / 1280) * 100vw))
+    }
+    @include sp{
+      padding: calc(( 30 / 390) * 100vw) 0;
+      @include column(calc(( 20 / 390) * 100vw))
+    }
+
+    &--title{
+      text-align: center;
+
+      p{
+        @include zen;
+        font-weight: 700;
+        line-height: 140%;
+        letter-spacing: 0.08em;
+        color: $FontColor;
+
+        @include pc{
+          font-size: max(calc(( 20 / 1280) * 100vw),16px);
+        }
+
+        @include sp{
+          font-size: calc(( 16 / 390) * 100vw);
+        }
+      }
+    }
+
+    &--text{
+      margin: 0 auto;
+      
+      @include pc{
+        width: fit-content;
+      }
+
+      @include sp{
+        width: 60%;
+      }
+
+      p{
+        @include outfit;
+        font-weight: 500;
+        line-height: 188%;
+        color: $FontColor333;
+
+        @include pc{
+          font-size: max(calc(( 16 / 1280) * 100vw),12px);
+        }
+
+        @include sp{
+          font-size: calc(( 14 / 390) * 100vw);
+        }
+      }
+    }
+  }
+
+
+
+  .screen-reader-response,
+  .wpcf7-response-output{
+    display: none;
+  }
+}

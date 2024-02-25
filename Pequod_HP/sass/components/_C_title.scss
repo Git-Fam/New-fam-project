@@ -7,25 +7,34 @@
 .C_title{
   width: fit-content;
   margin: 0 auto;
-
-  @include pc{}
-  @include sp{}
+  text-align: center;
 
   p{
-    font-family: 'Zen Kaku Gothic New';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
+    @include zen;
     line-height: 175%;
     letter-spacing: 0.08em;
-    color: #5F5F5F;
-    @include pc{}
-    @include sp{}
+    color: $CTitleGray;
+
+    @include pc{
+      font-size: max(calc(( 16 / 1280) * 100vw),12px);
+    }
+
+    @include sp{
+      font-size: calc(( 12 / 390) * 100vw);
+    }
   }
 
   h2{
-
-    @include pc{}
-    @include sp{}
+    @include zen;
+    line-height: 125%;
+    color: $CTitleBlack;
+    
+    
+    @include pc{
+      font-size: max(calc(( 30 / 1280) * 100vw),20px);
+    }
+    @include sp{
+      font-size: calc(( 20 / 390) * 100vw);
+    }
   }
 }

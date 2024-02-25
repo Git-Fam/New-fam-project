@@ -4,3 +4,15 @@
 /* -----------------------
   footer
 ----------------------- */
+
+footer{
+  background-color: #00000085;
+
+  @include pc{
+    height: calc(( 500 / 1280) * 100vw);
+  }
+
+  @include sp{
+    height: calc(( 400 / 390) * 100vw);
+  }
+}

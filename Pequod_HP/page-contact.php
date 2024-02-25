@@ -27,7 +27,7 @@
     <!-- <meta name="theme-color" content="#e9c931"> -->
 
     <!-- ▼CSS -->
-    <link rel="stylesheet" href="/css/main.css?date=<?=date('YmdGis', filemtime( 'main.css' ));?>">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/main.css">
 
     <!-- ▼フォント -->
     <link href="https://fonts.cdnfonts.com/css/ntr" rel="stylesheet">
@@ -35,83 +35,42 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Julius+Sans+One&family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+JP:wght@100..900&family=Outfit:wght@100..900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet">
                 
-    
 </head>
 <body>
 
-    <style>
-        .component--wapper {
-            display: flex;
-            flex-direction: column;
-            gap: 120px;
-            padding: 100px 0;
-            background-color: #000000;
-            overflow: hidden;
-        }
+    <div class="wapper">
+        <header></header>
 
-        .component--item{
-            border: 1px solid #000000;
-            padding: 50px 0;
-            background-color: #bbbbbb;
-        }
+        <div class="fv"></div>
 
-        .component--title{
-            font-size: 20px;
-            font-weight: bold;
-            padding: 30px;
-            border-bottom: 1px dotted #000000;
-            margin: 0 0  30px 40px;
-            width: fit-content;
-        }
-
-        .component--main{
-            padding: 60px 0px;
-            border: 1px solid #000000;
-            background-color: rgb(255, 255, 255);
-        }
-    </style>
-
-
-
-<div class="component--wapper">
-
-    <!-- C_title -->
-    <div class="component--item">
-        <div class="component--title">
-            C_title
-        </div>
-        <div class="component--main">
-
-            <!-- C_title -->
-
-            <div class="C_title">
-                <p>contact form</p>
-                <h2>送信完了画面</h2>
+        <!-- ページ名 -->
+        <div class="contact">
+            <div class="contact--inner">
+                <div class="C_title">
+                    <p>contact form</p>
+                    <h2>お問合せフォーム</h2>
+                </div>
+                <div class="contact--inner--text">
+                    <p>
+                        ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+                    </p>
+                </div>
+                <div class="form--wap">
+                    <div class="contact--form">
+                        <?php
+                            echo do_shortcode('[contact-form-7 id="4544fd3" title="contact"]');
+                        ?>
+                    </div>
+                </div>
             </div>
-
-            <br>
-            <br>
-            <br>
-
-            <div class="C_title">
-                <p>water server</p>
-                <h2>ウォーターサーバー事業</h2>
-            </div>
-
-            <!-- C_title end -->
-
         </div>
+
+        <footer></footer>
     </div>
 
 
-
-
-</div>
-
-
-
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
-    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
 </body>
 

@@ -65,16 +65,46 @@ img {
 .C_title {
   width: fit-content;
   margin: 0 auto;
+  text-align: center;
 }
 .C_title p {
-  font-family: "Zen Kaku Gothic New";
-  font-style: normal;
+  font-family: "Zen Kaku Gothic New", sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-style: normal;
+  line-height: normal;
   line-height: 175%;
   letter-spacing: 0.08em;
   color: #5F5F5F;
 }
+@media screen and (min-width: 768px) {
+  .C_title p {
+    font-size: max(1.25vw, 12px);
+  }
+}
+@media screen and (max-width: 767px) {
+  .C_title p {
+    font-size: 3.0769230769vw;
+  }
+}
+.C_title h2 {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  line-height: 125%;
+  color: #000000;
+}
+@media screen and (min-width: 768px) {
+  .C_title h2 {
+    font-size: max(2.34375vw, 20px);
+  }
+}
+@media screen and (max-width: 767px) {
+  .C_title h2 {
+    font-size: 5.1282051282vw;
+  }
+}
+
 /* -----------------------
   commons
 ----------------------- */
@@ -112,14 +142,469 @@ body.active {
 /* -----------------------
   fv
 ----------------------- */
+.fv {
+  background-color: rgb(131, 131, 250);
+}
+@media screen and (min-width: 768px) {
+  .fv {
+    height: 23.4375vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  .fv {
+    height: 51.2820512821vw;
+  }
+}
+
 /* -----------------------
   footer
 ----------------------- */
+footer {
+  background-color: rgba(0, 0, 0, 0.5215686275);
+}
+@media screen and (min-width: 768px) {
+  footer {
+    height: 39.0625vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  footer {
+    height: 102.5641025641vw;
+  }
+}
+
+/* -----------------------
+  form
+----------------------- */
+.form--wap {
+  background-color: #fff;
+}
+@media screen and (min-width: 768px) {
+  .form--wap .contact--form {
+    padding-bottom: 1.953125vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  .form--wap .contact--form {
+    padding-bottom: 5.1282051282vw;
+  }
+}
+.form--wap .contact--form .list {
+  display: flex;
+  border-bottom: 1px solid #C0C0C0;
+}
+@media screen and (min-width: 768px) {
+  .form--wap .contact--form .list {
+    gap: 3.90625vw;
+    padding: 1.5625vw 0.5rem;
+  }
+}
+@media screen and (max-width: 767px) {
+  .form--wap .contact--form .list {
+    flex-direction: column;
+    gap: 2.5641025641vw;
+    padding: 2.5641025641vw 0.5rem;
+  }
+}
+.form--wap .contact--form .list .title {
+  display: flex;
+  justify-content: space-between;
+}
+@media screen and (min-width: 768px) {
+  .form--wap .contact--form .list .title {
+    width: calc(35% - 3.90625vw);
+    padding-top: 0.78125vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  .form--wap .contact--form .list .title {
+    width: 50%;
+  }
+}
+.form--wap .contact--form .list .title label {
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  font-weight: 600;
+  line-height: 110%;
+  letter-spacing: -0.01em;
+  color: #333333;
+}
+@media screen and (min-width: 768px) {
+  .form--wap .contact--form .list .title label {
+    font-size: max(1.5625vw, 14px);
+  }
+}
+@media screen and (max-width: 767px) {
+  .form--wap .contact--form .list .title label {
+    font-size: 3.5897435897vw;
+  }
+}
+.form--wap .contact--form .list .title .tag {
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  font-weight: 600;
+  line-height: 110%;
+  letter-spacing: 0.2em;
+  color: #FFF;
+  background-color: #01BFD5;
+  height: fit-content;
+}
+@media screen and (min-width: 768px) {
+  .form--wap .contact--form .list .title .tag {
+    font-size: max(1.25vw, 12px);
+    padding: 0.3125vw 0.625vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  .form--wap .contact--form .list .title .tag {
+    font-size: 3.5897435897vw;
+    padding: 0.5128205128vw 1.0256410256vw;
+  }
+}
+.form--wap .contact--form .list .title .tag:empty {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .form--wap .contact--form .list .text {
+    width: 65%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .form--wap .contact--form .list .text {
+    width: 100%;
+  }
+}
+.form--wap .contact--form .list .text .wpcf7-form-control-wrap {
+  display: block;
+  width: 100%;
+}
+.form--wap .contact--form .list .text .wpcf7-form-control-wrap input[type=text],
+.form--wap .contact--form .list .text .wpcf7-form-control-wrap input[type=email],
+.form--wap .contact--form .list .text .wpcf7-form-control-wrap input[type=tel],
+.form--wap .contact--form .list .text .wpcf7-form-control-wrap textarea {
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  margin: 0;
+  border: solid 1px #C0C0C0;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  font-weight: 300;
+  line-height: 110%;
+  letter-spacing: -0.01em;
+}
+@media screen and (min-width: 768px) {
+  .form--wap .contact--form .list .text .wpcf7-form-control-wrap input[type=text],
+  .form--wap .contact--form .list .text .wpcf7-form-control-wrap input[type=email],
+  .form--wap .contact--form .list .text .wpcf7-form-control-wrap input[type=tel],
+  .form--wap .contact--form .list .text .wpcf7-form-control-wrap textarea {
+    width: 100%;
+    height: 3.90625vw;
+    padding: 0 0.78125vw;
+    font-size: max(1.5625vw, 16px);
+  }
+}
+@media screen and (max-width: 767px) {
+  .form--wap .contact--form .list .text .wpcf7-form-control-wrap input[type=text],
+  .form--wap .contact--form .list .text .wpcf7-form-control-wrap input[type=email],
+  .form--wap .contact--form .list .text .wpcf7-form-control-wrap input[type=tel],
+  .form--wap .contact--form .list .text .wpcf7-form-control-wrap textarea {
+    width: 100%;
+    height: 8.9743589744vw;
+    padding: 0 1.2820512821vw;
+    font-size: 4.1025641026vw;
+  }
+}
+.form--wap .contact--form .list .text .wpcf7-form-control-wrap textarea {
+  padding-top: 1rem;
+}
+@media screen and (min-width: 768px) {
+  .form--wap .contact--form .list .text .wpcf7-form-control-wrap textarea {
+    height: 17.96875vw;
+    resize: none;
+  }
+}
+@media screen and (max-width: 767px) {
+  .form--wap .contact--form .list .text .wpcf7-form-control-wrap textarea {
+    height: 51.2820512821vw;
+    resize: none;
+  }
+}
+.form--wap .contact--form .list .text .wpcf7-form-control-wrap .wpcf7-not-valid-tip {
+  display: block;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  line-height: 110%;
+  letter-spacing: -0.01em;
+  color: #01BFD5;
+}
+@media screen and (min-width: 768px) {
+  .form--wap .contact--form .list .text .wpcf7-form-control-wrap .wpcf7-not-valid-tip {
+    font-size: max(1.25vw, 12px);
+  }
+}
+@media screen and (max-width: 767px) {
+  .form--wap .contact--form .list .text .wpcf7-form-control-wrap .wpcf7-not-valid-tip {
+    font-size: 3.5897435897vw;
+  }
+}
+.form--wap .contact--form .list .text .list--flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+@media screen and (min-width: 768px) {
+  .form--wap .contact--form .list .text .list--flex {
+    gap: 0.78125vw 1.5625vw;
+  }
+}
+.form--wap .contact--form .list .text .list--flex .number {
+  display: flex;
+  align-items: center;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  font-weight: 500;
+  line-height: 110%;
+  letter-spacing: -0.01em;
+}
+@media screen and (min-width: 768px) {
+  .form--wap .contact--form .list .text .list--flex .number {
+    gap: 1.5625vw;
+    width: 30%;
+    font-size: max(1.5625vw, 12px);
+  }
+}
+@media screen and (min-width: 768px) {
+  .form--wap .contact--form .check {
+    margin-top: 2.34375vw;
+  }
+}
+.form--wap .contact--form .check .wpcf7-form-control-wrap .wpcf7-form-control.wpcf7-acceptance .wpcf7-list-item label {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  margin: 0 auto;
+}
+@media screen and (min-width: 768px) {
+  .form--wap .contact--form .check .wpcf7-form-control-wrap .wpcf7-form-control.wpcf7-acceptance .wpcf7-list-item label {
+    gap: 0.78125vw;
+  }
+}
+.form--wap .contact--form .check .wpcf7-form-control-wrap .wpcf7-form-control.wpcf7-acceptance .wpcf7-list-item label input[type=checkbox] {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  border: solid 1px #C0C0C0;
+}
+@media screen and (min-width: 768px) {
+  .form--wap .contact--form .check .wpcf7-form-control-wrap .wpcf7-form-control.wpcf7-acceptance .wpcf7-list-item label input[type=checkbox] {
+    width: 1.5625vw;
+    height: 1.5625vw;
+  }
+}
+.form--wap .contact--form .check .wpcf7-form-control-wrap .wpcf7-form-control.wpcf7-acceptance .wpcf7-list-item label .wpcf7-list-item-label {
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  font-weight: 300;
+  line-height: 110%;
+  letter-spacing: -0.01em;
+}
+@media screen and (min-width: 768px) {
+  .form--wap .contact--form .check .wpcf7-form-control-wrap .wpcf7-form-control.wpcf7-acceptance .wpcf7-list-item label .wpcf7-list-item-label {
+    font-size: max(1.5625vw, 14px);
+  }
+}
+.form--wap .contact--form .check .wpcf7-form-control-wrap .wpcf7-form-control.wpcf7-acceptance .wpcf7-list-item label .wpcf7-list-item-label a {
+  display: inline-block;
+  font-weight: 300;
+  border-bottom: solid 1px #C0C0C0;
+}
+.form--wap .contact--form .BTN {
+  display: flex;
+  justify-content: center;
+}
+@media screen and (min-width: 768px) {
+  .form--wap .contact--form .BTN {
+    margin-top: 3.125vw;
+    gap: 1.5625vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  .form--wap .contact--form .BTN {
+    gap: 2.5641025641vw;
+  }
+}
+.form--wap .contact--form .BTN .next {
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  margin: 0;
+  border: solid 1px #333;
+  background-color: #FFF;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  font-weight: 500;
+  line-height: 110%;
+  letter-spacing: 0.3em;
+}
+@media screen and (min-width: 768px) {
+  .form--wap .contact--form .BTN .next {
+    width: 13.28125vw;
+    padding: 1.171875vw 0;
+    font-size: max(1.5625vw, 14px);
+  }
+}
+@media screen and (min-width: 768px) {
+  .form--wap .complete--form {
+    padding: 3.90625vw 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2.34375vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  .form--wap .complete--form {
+    padding: 7.6923076923vw 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5.1282051282vw;
+  }
+}
+.form--wap .complete--form--title {
+  text-align: center;
+}
+.form--wap .complete--form--title p {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  font-weight: 700;
+  line-height: 140%;
+  letter-spacing: 0.08em;
+  color: #000000;
+}
+@media screen and (min-width: 768px) {
+  .form--wap .complete--form--title p {
+    font-size: max(1.5625vw, 16px);
+  }
+}
+@media screen and (max-width: 767px) {
+  .form--wap .complete--form--title p {
+    font-size: 4.1025641026vw;
+  }
+}
+.form--wap .complete--form--text {
+  margin: 0 auto;
+}
+@media screen and (min-width: 768px) {
+  .form--wap .complete--form--text {
+    width: fit-content;
+  }
+}
+@media screen and (max-width: 767px) {
+  .form--wap .complete--form--text {
+    width: 60%;
+  }
+}
+.form--wap .complete--form--text p {
+  font-family: "Outfit", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  font-weight: 500;
+  line-height: 188%;
+  color: #333333;
+}
+@media screen and (min-width: 768px) {
+  .form--wap .complete--form--text p {
+    font-size: max(1.25vw, 12px);
+  }
+}
+@media screen and (max-width: 767px) {
+  .form--wap .complete--form--text p {
+    font-size: 3.5897435897vw;
+  }
+}
+.form--wap .screen-reader-response,
+.form--wap .wpcf7-response-output {
+  display: none;
+}
+
 /* -----------------------
   contact
 ----------------------- */
+.contact {
+  background-color: #DDEBF0;
+}
+.contact--inner {
+  margin: 0 auto;
+}
+@media screen and (min-width: 768px) {
+  .contact--inner {
+    width: max(68.75vw, 700px);
+    padding: 5.46875vw 0 7.8125vw;
+    display: flex;
+    flex-direction: column;
+    gap: 4.6875vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  .contact--inner {
+    width: 89.7435897436vw;
+    padding: 10.2564102564vw 0 15.3846153846vw;
+    display: flex;
+    flex-direction: column;
+    gap: 7.6923076923vw;
+  }
+}
+@media screen and (min-width: 768px) {
+  .contact--inner--text {
+    padding: 0 3.125vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  .contact--inner--text {
+    padding: 0 5.1282051282vw;
+  }
+}
+.contact--inner--text p {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  color: #000000;
+  letter-spacing: 0.08em;
+}
+@media screen and (min-width: 768px) {
+  .contact--inner--text p {
+    font-size: max(1.25vw, 12px);
+  }
+}
+@media screen and (max-width: 767px) {
+  .contact--inner--text p {
+    font-size: 3.5897435897vw;
+  }
+}
+
 /* -----------------------
   example
+----------------------- */
+/* -----------------------
+  C_example
 ----------------------- */
 
 /*# sourceMappingURL=main.css.map */
