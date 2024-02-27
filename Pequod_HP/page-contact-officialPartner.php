@@ -46,7 +46,7 @@
         <div class="fv"></div>
 
         <!-- ページ名 -->
-        <div class="contact main__contact">
+        <div class="contact">
             <div class="contact--inner">
                 <div class="C_title">
                     <p>contact form</p>
@@ -60,7 +60,7 @@
                 <div class="form--wap">
                     <div class="contact--form">
                         <?php
-                            echo do_shortcode('[contact-form-7 id="4544fd3" title="contact"]');
+                            echo do_shortcode('[contact-form-7 id="bbc0bce" title="contact-officialPartner"]');
                         ?>
                     </div>
                 </div>

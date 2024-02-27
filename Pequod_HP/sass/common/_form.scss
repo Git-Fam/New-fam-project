@@ -92,6 +92,9 @@
         
         @include pc{
           width: 65%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
         }
         @include sp{
           width: 100%;
@@ -160,6 +163,26 @@
           }
   
         }
+
+        p{
+          @include sans;
+          font-weight: 400;
+          line-height: 200%;
+          letter-spacing: -0.01em;
+          width: fit-content;
+          
+          @include pc{
+            font-size: max(calc(( 20 / 1280) * 100vw),16px);
+          }
+  
+          @include sp{
+            font-size: calc(( 16 / 390) * 100vw);
+          }
+
+          &.w100{
+            width: 100%;
+          }
+        }
   
         .list--flex{
           display: flex;
@@ -169,7 +192,9 @@
           @include pc{
             gap:calc(( 10 / 1280) * 100vw) calc(( 20 / 1280) * 100vw);
           }
-          @include sp{}
+          @include sp{
+            gap:calc(( 5 / 390) * 100vw) calc(( 10 / 390) * 100vw);
+          }
   
           .number{
             display: flex;
@@ -178,26 +203,36 @@
             font-weight: 500;
             line-height: 110%;
             letter-spacing: -0.01em;
+            width: 30%;
             
+            &.w_fit{
+              width: fit-content;
+            }
             
             @include pc{
               gap: calc(( 20 / 1280) * 100vw);
-              width: 30%;
               font-size: max(calc(( 20 / 1280) * 100vw),12px);
             }
   
-            @include sp{}
+            @include sp{
+              gap: calc(( 10 / 390) * 100vw);
+              font-size: calc(( 14 / 390) * 100vw);
+            }
           }
         }
       }
     }
 
     .check{
+      text-align: center;
 
       @include pc{
         margin-top: calc(( 30 / 1280) * 100vw);
       }
-      @include sp{}
+      @include sp{
+        margin-top: calc(( 20 / 390) * 100vw);
+      }
+
       .wpcf7-form-control-wrap{
         .wpcf7-form-control.wpcf7-acceptance{
           .wpcf7-list-item{
@@ -206,11 +241,14 @@
               align-items: center;
               width: fit-content;
               margin: 0 auto;
+              cursor: pointer;
 
               @include pc{
                 gap: calc(( 10 / 1280) * 100vw);
               }
-              @include sp{}
+              @include sp{
+                gap: calc(( 5 / 390) * 100vw);
+              }
 
               input[ type="checkbox"]{
 
@@ -225,7 +263,10 @@
                   height: calc(( 20 / 1280) * 100vw);
                 }
 
-                @include sp{}
+                @include sp{
+                  width: calc(( 15 / 390) * 100vw);
+                  height: calc(( 15 / 390) * 100vw);
+                }
               }
 
               .wpcf7-list-item-label{
@@ -239,7 +280,9 @@
                   font-size: max(calc(( 20 / 1280) * 100vw),14px);
                 }
 
-                @include sp{}
+                @include sp{
+                  font-size: calc(( 14 / 390) * 100vw);
+                }
 
                 a{
                   display: inline-block;
@@ -247,12 +290,48 @@
                   border-bottom: solid 1px #C0C0C0;
 
 
-                  @include pc{}
+                  @include pc{
+                    font-size: max(calc(( 20 / 1280) * 100vw),14px);
+                  }
 
-                  @include sp{}
+                  @include sp{
+                    font-size: calc(( 14 / 390) * 100vw);
+                  }
                 }
               }
             }
+          }
+        }
+      }
+
+      .check--confirm{
+        text-align: center;
+        @include sans;
+        font-weight: 300;
+        line-height: 110%;
+        letter-spacing: -0.01em;
+        
+        
+        @include pc{
+          font-size: max(calc(( 20 / 1280) * 100vw),14px);
+        }
+
+        @include sp{
+          font-size: calc(( 14 / 390) * 100vw);
+        }
+
+        a{
+          display: inline-block;
+          font-weight: 300;
+          border-bottom: solid 1px #C0C0C0;
+
+
+          @include pc{
+            font-size: max(calc(( 20 / 1280) * 100vw),14px);
+          }
+
+          @include sp{
+            font-size: calc(( 14 / 390) * 100vw);
           }
         }
       }
@@ -263,14 +342,15 @@
       display: flex;
       justify-content: center;
       @include pc{
-        margin-top: calc(( 40 / 1280) * 100vw);
-        gap: calc(( 20 / 1280) * 100vw);
+        margin-top: calc(( 100 / 1280) * 100vw);
+        gap: calc(( 150 / 1280) * 100vw);
       }
       @include sp{
+        margin-top: calc(( 30 / 390) * 100vw);
         gap: calc(( 10 / 390) * 100vw);
       }
 
-      .next{
+      .next , .back{
         -webkit-appearance: none;
         appearance: none;
         box-sizing: border-box;
@@ -281,6 +361,7 @@
         font-weight: 500;
         line-height: 110%;
         letter-spacing: 0.3em;
+        cursor: pointer;
         
 
         @include pc{
@@ -289,7 +370,19 @@
           font-size: max(calc(( 20 / 1280) * 100vw),14px);
         }
 
-        @include sp{}
+        @include sp{
+          width: calc(( 150 / 390) * 100vw);
+          padding: calc(( 10 / 390) * 100vw) 0;
+          font-size: calc(( 14 / 390) * 100vw);
+        }
+      }
+
+      .back{
+        background-color: #DFDFDF;
+      }
+
+      .wpcf7-spinner{
+        display: none;
       }
     }
   }

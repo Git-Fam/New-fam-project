@@ -34,9 +34,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Julius+Sans+One&family=Nanum+Myeongjo:wght@400;700;800&family=Noto+Sans+JP:wght@100..900&family=Outfit:wght@100..900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-
-    <?php wp_head(); ?>
                 
+    <?php wp_head(); ?>
+
 </head>
 <body>
 
@@ -46,21 +46,17 @@
         <div class="fv"></div>
 
         <!-- ページ名 -->
-        <div class="contact main__contact">
+        <div class="contact">
             <div class="contact--inner">
                 <div class="C_title">
                     <p>contact form</p>
-                    <h2>お問合せフォーム</h2>
+                    <h2>入力内容確認</h2>
                 </div>
-                <div class="contact--inner--text">
-                    <p>
-                        ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
-                    </p>
-                </div>
+           
                 <div class="form--wap">
                     <div class="contact--form">
                         <?php
-                            echo do_shortcode('[contact-form-7 id="4544fd3" title="contact"]');
+                            echo do_shortcode('[contact-form-7 id="920fffc" title="confirm-officialPartner"]');
                         ?>
                     </div>
                 </div>

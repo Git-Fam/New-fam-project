@@ -47,7 +47,7 @@
 
 
         <!-- ページ名 -->
-        <div class="contact">
+        <div class="contact main__contact">
             <div class="contact--inner">
                 <div class="C_title">
                     <p>contact form</p>
