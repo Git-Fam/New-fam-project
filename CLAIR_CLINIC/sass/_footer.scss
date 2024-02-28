@@ -1,0 +1,392 @@
+@use "mixin" as *;
+@use "variables" as *;
+@use "svgImg" as *;
+
+
+// footer
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #53949B;
+  position: relative;
+
+  @include pc {
+    gap: calc((16 / 1280) * 100vw);
+    padding: calc((18 / 1280) * 100vw) 0;
+  }
+
+  @include sp {
+    flex-direction: column;
+    gap: calc((10 / 390) * 100vw);
+    padding: calc((24 / 390) * 100vw) 0 calc((80 / 390) * 100vw);
+  }
+
+  .footer--btn {
+    display: block;
+    color: #FFF;
+    @include serif;
+    font-weight: 500;
+    line-height: 100%;
+
+    @include pc {
+      font-size: calc((14 / 1280) * 100vw);
+    }
+
+    @include sp {
+      font-size: calc((14 / 390) * 100vw);
+      font-weight: 300;
+    }
+  }
+
+  // reCaptureロゴを非表示にするために挿入
+  .reCapture{
+    position: absolute;
+    display: flex;
+    color: #FFF;
+    @include serif;
+    font-weight: 300;
+    line-height: 100%;
+
+    @include pc {
+      font-size: calc((8 / 1280) * 100vw);
+
+      bottom: calc((4 / 1280) * 100vw);
+      right: calc((8 / 1280) * 100vw);
+      gap: calc((5 / 1280) * 100vw);
+    }
+    @include sp{
+      font-size: calc((5 / 390) * 100vw);
+      bottom: calc((67 / 390) * 100vw);
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      justify-content: center;
+      // flex-direction: column;
+      gap: calc((5 / 390) * 100vw);
+      // padding: calc((24 / 390) * 100vw) 0 calc((80 / 390) * 100vw);
+    }
+
+    a{
+      display: block;
+      color: #FFF;
+      @include serif;
+      font-weight: 300;
+      line-height: 100%;
+
+      @include pc {
+        font-size: calc((8 / 1280) * 100vw);
+      }
+
+      @include sp {
+        font-size: calc((5 / 390) * 100vw);
+      }
+      
+    }
+  }
+
+
+  .f--modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    // background: rgba( 0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 9999;
+    @include center;
+    display: none;
+
+    &.active {
+      display: flex;
+    }
+
+    .close {
+      position: absolute;
+      background-color: black;
+      border-radius: 50%;
+      z-index: 100;
+
+      @include pc {
+        top: calc((20 / 1280) * 100vw);
+        right: calc((20 / 1280) * 100vw);
+        width: calc((30 / 1280) * 100vw);
+        height: calc((30 / 1280) * 100vw);
+      }
+
+      @include sp {
+        top: calc((10 / 390) * 100vw);
+        right: calc((10 / 390) * 100vw);
+        width: calc((20 / 390) * 100vw);
+        height: calc((20 / 390) * 100vw);
+      }
+
+      span {
+        display: block;
+        width: 70%;
+        background-color: #FFF;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+
+        @include pc {
+          height: calc((2 / 1280) * 100vw);
+        }
+
+        @include sp {
+          height: calc((2 / 390) * 100vw);
+        }
+
+        &:nth-child(2) {
+          transform: translate(-50%, -50%) rotate(-45deg);
+        }
+      }
+    }
+
+    .frame {
+      width: 90%;
+      height: 90%;
+      background: #FFF;
+      position: relative;
+      overflow-y: scroll;
+
+      @include pc {
+        width: calc((840 / 1280) * 100vw);
+      }
+
+      .policy {
+        width: 100%;
+
+        @include pc {
+          padding: calc((80 / 1280) * 100vw) calc((20 / 1280) * 100vw);
+          @include column(calc((60 / 1280) * 100vw));
+
+        }
+
+        @include sp {
+          padding: calc((40 / 390) * 100vw) calc((10 / 390) * 100vw);
+          @include column(calc((40 / 390) * 100vw));
+        }
+
+        .all__title {
+          p {
+            color: #333;
+            @include serif;
+            font-weight: 500;
+            line-height: 160%;
+
+            @include pc {
+              font-size: calc((20 / 1280) * 100vw);
+            }
+
+            @include sp {
+              font-size: calc((14 / 390) * 100vw);
+              line-height: 130%;
+            }
+          }
+        }
+
+        &--sub {
+          p {
+            color: var(--textColor, #333);
+            text-align: justify;
+            @include serif;
+            font-weight: 500;
+            line-height: 160%;
+
+            @include pc {
+              font-size: calc((16 / 1280) * 100vw);
+            }
+
+            @include sp {
+              font-size: calc((14 / 390) * 100vw);
+            }
+          }
+        }
+
+        &--person {
+
+          @include pc {
+            @include column(calc((28 / 1280) * 100vw));
+          }
+
+          @include sp {
+            @include column(calc((20 / 390) * 100vw));
+          }
+
+          h3 {
+            text-align: center;
+            color: #53949B;
+            @include serif;
+            font-weight: 700;
+            line-height: 160%;
+
+            @include pc {
+              font-size: calc((24 / 1280) * 100vw);
+            }
+
+            @include sp {
+              font-size: calc((16 / 390) * 100vw);
+            }
+          }
+
+          &--list {
+
+            @include pc {
+              margin: 0 calc((14 / 1280) * 100vw);
+              padding-left: calc((20 / 1280) * 100vw);
+            }
+
+            @include sp {
+              margin: 0 calc((10 / 390) * 100vw);
+              padding-left: calc((10 / 390) * 100vw);
+            }
+
+            li {
+              list-style: auto;
+              color: #333;
+              text-align: justify;
+              @include serif;
+              font-weight: 500;
+              line-height: 160%;
+
+              @include pc {
+                font-size: calc((16 / 1280) * 100vw);
+              }
+
+              @include sp {
+                font-size: calc((14 / 390) * 100vw);
+              }
+            }
+          }
+        }
+
+        &--cookie {
+
+          @include pc {
+            @include column(calc((28 / 1280) * 100vw));
+          }
+
+          @include sp {
+            @include column(calc((20 / 390) * 100vw));
+          }
+
+          h3 {
+            text-align: center;
+            color: #53949B;
+            @include serif;
+            font-weight: 700;
+            line-height: 160%;
+
+            @include pc {
+              font-size: calc((24 / 1280) * 100vw);
+            }
+
+            @include sp {
+              font-size: calc((16 / 390) * 100vw);
+            }
+          }
+
+          &--contents {
+            @include pc {
+              @include column(calc((28 / 1280) * 100vw));
+            }
+
+            @include sp {
+              @include column(calc((20 / 390) * 100vw));
+            }
+
+            .policy--cookie--sections {
+
+              h4 {
+                color: #333;
+                @include serif;
+                font-weight: 700;
+                line-height: 160%;
+
+                @include pc {
+                  font-size: calc((16 / 1280) * 100vw);
+                }
+
+                @include sp {
+                  font-size: calc((14 / 390) * 100vw);
+                }
+              }
+
+              &--item {
+
+                p,
+                .policy--cookie--sections--item--list li {
+                  color: #333;
+                  text-align: justify;
+                  @include serif;
+                  font-weight: 500;
+                  line-height: 160%;
+
+                  @include pc {
+                    font-size: calc((16 / 1280) * 100vw);
+                  }
+
+                  @include sp {
+                    font-size: calc((14 / 390) * 100vw);
+                  }
+                }
+
+                p {
+
+                  @include pc {
+                    margin: 0 calc((14 / 1280) * 100vw) 0 0;
+                  }
+
+                  @include sp {
+                    margin: 0 calc((10 / 390) * 100vw) 0 0;
+                  }
+                }
+
+                &--list {
+
+                  @include pc {
+                    margin: 0 calc((14 / 1280) * 100vw) 0 calc((5 / 1280) * 100vw);
+                    padding-left: calc((20 / 1280) * 100vw);
+                  }
+
+                  @include sp {
+                    margin: 0 calc((10 / 390) * 100vw) 0 calc((5 / 390) * 100vw);
+                    padding-left: calc((10 / 390) * 100vw);
+                  }
+
+                  li {
+                    list-style: auto;
+
+                  }
+                }
+
+
+              }
+            }
+          }
+        }
+
+        &--end {
+          p {
+            color: #333;
+            @include serif;
+            font-weight: 500;
+            line-height: 140%;
+
+            @include pc {
+              font-size: calc((16 / 1280) * 100vw);
+            }
+
+            @include sp {
+              font-size: calc((14 / 390) * 100vw);
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+@use "mixin" as *;
+@use "variables" as *;
+@use "svgImg" as *;
+
+// effect
+.recommend{
+  @include img('recommend-back.png');
+  background-size: cover;
+
+  @include pc{
+    padding: calc(( 80 / 1280) * 100vw) 0;
+    @include column( calc(( 60 / 1280) * 100vw) );
+  }
+
+  @include sp{
+    padding: calc(( 60 / 390) * 100vw) calc(( 20 / 390) * 100vw);
+    @include column( calc(( 40 / 390) * 100vw) );
+  }
+
+  .check{
+    width: fit-content;
+    margin: 0 auto;
+    display: grid;
+
+    @include pc{
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: calc(( 20 / 1280) * 100vw);
+      padding: calc(( 60 / 1280) * 100vw) 0 0;
+    }
+
+    @include sp{
+      grid-template-columns: 1fr 1fr;
+      gap: calc(( 20 / 390) * 100vw);
+      padding: calc(( 40 / 390) * 100vw) 0 0;
+    }
+
+    .item{
+      aspect-ratio: 1/1;
+      @include img('recommend-item.png');
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+
+      @include pc{
+        width: calc(( 200 / 1280) * 100vw);
+      }
+
+      @include sp{
+        width: calc(( 150 / 390) * 100vw);
+      }
+
+      p{
+        text-align: center;
+        color:  #92776A;
+        @include serif;
+        font-weight: 700;
+        line-height: 140%; /* 33.6px */
+        
+        @include pc{
+          font-size: calc(( 24 / 1280) * 100vw);
+        }
+
+        @include sp{
+          font-size: calc(( 18 / 390) * 100vw);
+        }
+
+        span{
+          color: #EC463E;
+          font-weight: 700;
+
+          @include pc{
+            font-size: calc(( 28 / 1280) * 100vw);
+          }
+
+          @include sp{
+            font-size: calc(( 20 / 390) * 100vw);
+          }
+        }
+      }
+    }
+  }
+}

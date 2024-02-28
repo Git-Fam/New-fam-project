@@ -1,0 +1,72 @@
+@use "mixin" as *;
+@use "variables" as *;
+@use "svgImg" as *;
+
+// <div class="all__btn">
+//   <a class="hover-opa" href="#">無料相談</a>
+//   <a class="hover-opa" href="#">オンライン診療予約</a>
+// </div>
+
+.all__btn {
+  display: flex;
+
+  @include pc {
+    gap: calc((20 / 1280) * 100vw);
+    justify-content: center;
+  }
+
+  @include sp {
+    // flex-direction: column;
+    gap: calc((8 / 390) * 100vw);
+  }
+
+  a {
+    background: #92776A;
+    text-align: center;
+    position: relative;
+    color: #FFF;
+    @include serif;
+    font-weight: 700;
+    line-height: 100%;
+
+    &:nth-child(2) {
+      background: #53949B;
+    }
+
+    @include pc {
+      width: calc((390 / 1280) * 100vw);
+      padding: calc((24 / 1280) * 100vw) 0;
+      border-radius: calc((2 / 1280) * 100vw);
+      font-size: calc((24 / 1280) * 100vw);
+      letter-spacing: calc((1.44 / 1280) * 100vw);
+    }
+
+    @include sp {
+      width: calc( 50% - calc(( 4 / 390) * 100vw));
+      padding: calc((16 / 390) * 100vw) 0;
+      border-radius: calc((2 / 390) * 100vw);
+      font-size: calc((14 / 390) * 100vw);
+      letter-spacing: calc((1.08 / 390) * 100vw);
+    }
+
+    &::before {
+      content: "";
+      @include icon($triangle);
+      position: absolute;
+      aspect-ratio: 18/14;
+
+      @include pc {
+        bottom: calc((2 / 1280) * 100vw);
+        right: calc((2 / 1280) * 100vw);
+        width: calc((18 / 1280) * 100vw);
+      }
+
+      @include sp {
+        bottom: calc((2 / 390) * 100vw);
+        right: calc((2 / 390) * 100vw);
+        width: calc((18 / 390) * 100vw);
+      }
+
+    }
+  }
+}

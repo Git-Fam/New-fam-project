@@ -1,0 +1,41 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+
+// 表示・非表示
+.sp{
+  @include pc{
+    display: none !important;
+  }
+}
+.pc{
+  @include sp{
+    display: none !important;
+  }
+}
+
+
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: 10%;
+}
+
+body{
+
+  &.active{
+    overflow: hidden;
+  }
+}
+
+.wapper{
+  overflow: hidden;
+}
+
+.cursor{
+  cursor: pointer;
+}
+
+// リキャプチャー非表示
+.grecaptcha-badge {
+   visibility: hidden; 
+  }

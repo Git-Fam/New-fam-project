@@ -1,0 +1,28 @@
+@use "mixin" as *;
+@use "variables" as *;
+@use "svgImg" as *;
+
+
+// <div class="all__title">
+//    <h2>このような症状ありませんか？</h2>
+// </div>
+// all__title
+.all__title{
+  text-align: center;
+
+  h2{
+    color: $mainColor;
+    font-weight: 600;
+    line-height: 100%;
+    
+    @include pc{
+      @include serif;
+      font-size: max(calc(( 36 / 1280) * 100vw),26px);
+    }
+
+    @include sp{
+      @include zen;
+      font-size: calc(( 24 / 390) * 100vw);
+    }
+  }
+}

@@ -1,0 +1,195 @@
+@use "mixin" as *;
+@use "variables" as *;
+@use "svgImg" as *;
+
+// flow
+.flow {
+  background: #EEF7F7;
+
+  @include pc {
+    padding: calc((80 / 1280) * 100vw) 0;
+    @include column(calc((60 / 1280) * 100vw));
+  }
+
+  @include sp {
+    padding: calc((60 / 390) * 100vw) calc((20 / 390) * 100vw);
+    @include column(calc((40 / 390) * 100vw));
+  }
+
+  .contents {
+
+    @include pc {
+      width: calc((800 / 1280) * 100vw);
+      margin: 0 auto;
+      @include column(calc((80 / 1280) * 100vw));
+    }
+
+    @include sp {
+      width: 100%;
+      @include column(calc((80 / 390) * 100vw));
+    }
+
+    .item {
+      width: 100%;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        aspect-ratio: 120/40;
+        @include icon($flowIcon);
+        left: 50%;
+        transform: translateX(-50%);
+
+        @include pc {
+          width: calc((100 / 1280) * 100vw);
+          bottom: -23%;
+        }
+
+        @include sp {
+          width: calc((80 / 390) * 100vw);
+          bottom: -14%;
+        }
+      }
+
+      @include pc {
+        display: flex;
+      }
+
+      @include sp {}
+
+      .img {
+        aspect-ratio: 400/260;
+
+        @include pc {
+          width: 50%;
+        }
+
+        @include sp {
+          width: 100%;
+        }
+      }
+
+      .text {
+        background: #FFF;
+
+        @include pc {
+          width: 50%;
+          border-radius: 0 calc((4 / 1280) * 100vw) calc((4 / 1280) * 100vw) 0;
+          padding: calc((20 / 1280) * 100vw) calc((20 / 1280) * 100vw) 0;
+        }
+
+        @include sp {
+          width: 100%;
+          border-radius: 0 0 calc((4 / 390) * 100vw) calc((4 / 390) * 100vw);
+          padding: calc((32 / 390) * 100vw) calc((20 / 390) * 100vw) calc((12 / 390) * 100vw);
+        }
+
+        .wap {
+          display: flex;
+
+          @include pc {
+            gap: calc((8 / 1280) * 100vw);
+          }
+
+          @include sp {
+            gap: calc((8 / 390) * 100vw);
+          }
+
+          h3 {
+            color: #53949B;
+            @include serif;
+            font-weight: 500;
+            line-height: 160%;
+
+            @include pc {
+              font-size: max(calc((24 / 1280) * 100vw), 18px);
+            }
+
+            @include sp {
+              font-size: calc((18 / 390) * 100vw);
+            }
+          }
+        }
+
+        .p-text {
+          color: #333;
+          text-align: justify;
+          @include serif;
+          font-weight: 500;
+          line-height: 140%;
+
+          @include pc {
+            font-size: max(calc((16 / 1280) * 100vw), 12px);
+            margin: calc((20 / 1280) * 100vw) 0 calc((30 / 1280) * 100vw) 0;
+          }
+
+          @include sp {
+            font-size: calc((16 / 390) * 100vw);
+            margin: calc((20 / 390) * 100vw) 0 calc((25 / 390) * 100vw) 0;
+          }
+        }
+
+        .is--margin--flow{
+          @include sp{
+            margin-bottom: 0;
+          }
+        }
+
+        .p-text-2 {
+          color: #333;
+          text-align: justify;
+          @include serif;
+          font-weight: 500;
+          line-height: 100%;
+
+          @include pc {
+            font-size: max(calc((16 / 1280) * 100vw), 12px);
+          }
+
+          @include sp {
+            font-size: calc((16 / 390) * 100vw);
+          }
+        }
+      }
+
+      // 1
+      &:nth-child(1) {
+        .img {
+          @include img("flow01.jpeg");
+          background-size: cover;
+        }
+      }
+
+      // 2
+      &:nth-child(2) {
+        .img {
+          @include img("flow02.jpeg");
+          background-size: cover;
+        }
+      }
+
+      // 3
+      &:nth-child(3) {
+        .img {
+          @include img("flow03.jpeg");
+          background-size: cover;
+        }
+      }
+
+      // 4
+      &:nth-child(4) {
+        .img {
+          @include img("flow04.jpeg");
+          background-size: cover;
+        }
+      }
+
+      &:last-child {
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+}

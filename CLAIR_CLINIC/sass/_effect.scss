@@ -1,0 +1,103 @@
+@use "mixin" as *;
+@use "variables" as *;
+@use "svgImg" as *;
+
+// effect
+.effect{
+  @include img('effect-back.jpg');
+  background-size: cover;
+
+  @include pc{
+    padding: calc(( 80 / 1280) * 100vw) 0;
+    @include column( calc(( 60 / 1280) * 100vw) );
+  }
+
+  @include sp{
+    padding: calc(( 60 / 390) * 100vw) calc(( 20 / 390) * 100vw);
+    @include column( calc(( 40 / 390) * 100vw) );
+  }
+
+  .all__title{
+    h2{
+      color: #FFF;
+    }
+  }
+
+  .point{
+    display: grid;
+    width: fit-content;
+    margin: 0 auto;
+    
+    @include pc{
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: calc(( 20 / 1280) * 100vw);
+      padding: calc(( 20 / 1280) * 100vw) 0;
+    }
+
+    @include sp{
+      grid-template-columns: 1fr 1fr;
+      gap: calc(( 10 / 390) * 100vw);
+      padding: calc(( 20 / 390) * 100vw) 0;
+    }
+
+    .item{
+      border: 1px solid  #53949B;
+      background:  #EEF7F7;
+      aspect-ratio: 1/1;
+      @include center;
+      border-radius: 50%;
+
+      @include pc{
+        width: calc(( 250 / 1280) * 100vw);
+      }
+
+      @include sp{
+        width: calc(( 160 / 390) * 100vw);
+      }
+
+      &--text{
+        display: flex;
+        flex-direction: column;
+
+        @include pc{
+          gap: calc(( 10 / 1280) * 100vw);
+        }
+
+        @include sp{
+          gap: calc(( 5 / 390) * 100vw);
+        }
+
+        h3{
+          color: #53949B;
+          text-align: center;
+          @include serif;
+          font-weight: 700;
+          line-height: 160%;
+  
+          @include pc{
+            font-size: calc(( 24 / 1280) * 100vw);
+          }
+  
+          @include sp{
+            font-size: calc(( 16 / 390) * 100vw);
+          }
+        }
+        p{
+          color: #53949B;
+          text-align: center;
+          @include sans;
+          font-weight: 400;
+          line-height: 140%;
+          
+          @include pc{
+            font-size: calc(( 18 / 1280) * 100vw);
+          }
+
+          @include sp{
+            font-size: calc(( 12 / 390) * 100vw);
+          }
+        }
+      }
+    }
+  }
+}

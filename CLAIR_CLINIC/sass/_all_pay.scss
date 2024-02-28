@@ -1,0 +1,382 @@
+@use "mixin" as *;
+@use "variables" as *;
+@use "svgImg" as *;
+
+
+// <div class="all__pay">
+//     <div class="title">
+//         <p>初回限定特別価格</p>
+//     </div>
+//     <div class="contents">
+//         <div class="set_price">
+
+//             <div class="set1">
+//                 <div class="tag">
+//                     <p>1セット<span>(約2週間分)</span></p>
+//                 </div>
+//                 <div class="bet">
+//                     <div class="normal">
+//                         <p>通</p>
+//                         <p>常</p>
+//                     </div>
+//                     <p class="p-text">79,800<span>円(税込)</span></p>
+//                 </div>
+//             </div>
+//             <div class="arrow"></div>
+//             <div class="firstSet">
+//                 <div class="first_limited">
+//                     <p>初回</p>
+//                     <p>限定</p>
+//                 </div>
+//                 <p class="p-text">49,800<span>円</span><span>(税込)</span></p>
+//             </div>
+//         </div>
+//         <a class="pay--btn hover-opa" href="#fee">
+//             <p>2セット・3セットの料金はこちら</p>
+//         </a>
+//     </div>
+// </div>
+
+.all__pay {
+  margin: 0 auto;
+
+  @include pc {
+    width: calc((600 / 1280) * 100vw);
+  }
+
+  @include sp {
+    width: 100%;
+  }
+
+  .title {
+    background: $mainColor;
+    text-align: center;
+    border-radius: 4px 4px 0px 0px;
+
+    @include pc {
+      padding: calc((10 / 1280) * 100vw) 0;
+    }
+
+    @include sp {
+      padding: calc((6 / 390) * 100vw) 0;
+    }
+
+    p {
+      color: #FFF;
+      @include zen;
+      font-weight: 600;
+      line-height: 100%;
+
+      @include pc {
+        font-size: max(calc((28 / 1280) * 100vw), 20px);
+        letter-spacing: calc((3.36 / 1280) * 100vw);
+      }
+
+      @include sp {
+        font-size: calc((24 / 390) * 100vw);
+        letter-spacing: calc((2.88 / 390) * 100vw);
+      }
+    }
+  }
+
+  .contents {
+    border-radius: 0px 0px 4px 4px;
+    border: 2px solid #53949B;
+    background: #FFF;
+
+    @include pc {
+      padding: calc((20 / 1280) * 100vw);
+      @include column(calc((20 / 1280) * 100vw));
+    }
+
+    @include sp {
+      padding: calc((24 / 390) * 100vw) calc(( 10 / 390) * 100vw);
+      @include column(calc((16 / 390) * 100vw));
+    }
+
+    .set_price {
+      display: flex;
+
+      @include pc {
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      @include sp {
+        width: calc((269 / 390) * 100vw);
+        margin: 0 auto;
+        flex-direction: column;
+        align-items: center;
+        gap: calc((0 / 390) * 100vw);
+      }
+
+      .set1 {
+
+        @include pc {
+          @include column(calc((16 / 1280) * 100vw));
+        }
+
+        @include sp {
+          width: 100%;
+          @include column(calc((12 / 390) * 100vw));
+        }
+
+        .tag {
+          border: 1px solid #53949B;
+
+          @include pc {
+            border-radius: calc((4 / 1280) * 100vw);
+            padding: calc((3 / 1280) * 100vw) calc((8 / 1280) * 100vw);
+            width: fit-content;
+          }
+
+          @include sp {
+            border-radius: calc((4 / 390) * 100vw);
+            padding: calc((3 / 390) * 100vw) 0;
+            width: 100%;
+          }
+
+          p {
+            color: #53949B;
+            @include zen;
+            font-weight: 600;
+            line-height: 100%;
+
+            @include pc {
+              font-size: calc((20 / 1280) * 100vw);
+            }
+
+            @include sp {
+              text-align: center;
+              font-size: calc((20 / 390) * 100vw);
+            }
+
+            span {
+              color: #53949B;
+              @include zen;
+              font-weight: 600;
+              line-height: 100%;
+
+              @include pc {
+                font-size: calc((16 / 1280) * 100vw);
+              }
+
+              @include sp {
+                font-size: calc((14 / 390) * 100vw);
+              }
+            }
+          }
+        }
+
+        .bet {
+          display: flex;
+
+          @include pc {
+            gap: calc((4 / 1280) * 100vw);
+          }
+
+          @include sp {
+            gap: calc((4 / 390) * 100vw);
+            justify-content: center;
+          }
+
+          .normal {
+            border: 1px solid #53949B;
+            height: fit-content;
+
+            @include pc {
+              padding: calc((3 / 1280) * 100vw) calc((2 / 1280) * 100vw);
+            }
+
+            @include sp {
+              padding: calc((3 / 390) * 100vw) calc((2 / 390) * 100vw);
+            }
+
+            p {
+              color: #53949B;
+              @include serif;
+              font-weight: 500;
+              line-height: 100%;
+
+              @include pc {
+                font-size: calc((10 / 1280) * 100vw);
+              }
+
+              @include sp {
+                font-size: calc((10 / 390) * 100vw);
+              }
+            }
+          }
+
+          .p-text {
+            color: #53949B;
+            @include serif;
+            font-weight: 500;
+            line-height: 80%;
+
+            @include pc {
+              font-size: calc((32 / 1280) * 100vw);
+            }
+
+            @include sp {
+              font-size: calc((32 / 390) * 100vw);
+            }
+
+            span {
+
+              @include pc {
+                font-size: calc((14 / 1280) * 100vw);
+              }
+
+              @include sp {
+                font-size: calc((14 / 390) * 100vw);
+              }
+            }
+          }
+        }
+      }
+
+      .arrow {
+        @include icon($payArrow);
+        aspect-ratio: 38/68;
+
+        @include pc {
+          width: calc((38 / 1280) * 100vw);
+        }
+
+        @include sp {
+          width: calc((38 / 390) * 100vw);
+          transform: rotate(90deg);
+        }
+      }
+
+      .firstSet {
+        display: flex;
+
+        @include pc {
+          gap: calc((4 / 1280) * 100vw);
+        }
+
+        @include sp {
+          gap: calc((4 / 390) * 100vw);
+          justify-content: center;
+        }
+
+        .first_limited {
+          border: 1px solid #EC463E;
+          height: fit-content;
+
+          @include pc {
+            padding: calc((4 / 1280) * 100vw) calc((4 / 1280) * 100vw);
+          }
+
+          @include sp {
+            padding:calc((4 / 390) * 100vw);
+          }
+
+          p {
+            color: #EC463E;
+            @include serif;
+            font-weight: 500;
+            line-height: 100%;
+            letter-spacing: 0.56px;
+
+            @include pc {
+              font-size: calc((14 / 1280) * 100vw);
+            }
+
+            @include sp {
+              font-size: calc((12 / 390) * 100vw);
+            }
+          }
+        }
+
+        .p-text {
+          color: #EC463E;
+          @include serif;
+          font-weight: 500;
+          line-height: 80%;
+
+          @include pc {
+            font-size: calc((48 / 1280) * 100vw);
+          }
+
+          @include sp {
+            font-size: calc((40 / 390) * 100vw);
+          }
+
+          span {
+            color: #EC463E;
+            @include serif;
+            font-weight: 500;
+            line-height: 100%;
+
+            @include pc {
+              font-size: calc((20 / 1280) * 100vw);
+            }
+
+            @include sp {
+              font-size: calc((20 / 390) * 100vw);
+            }
+
+            &:nth-child(2) {
+              color: #53949B;
+            }
+          }
+        }
+      }
+    }
+
+    .pay--btn {
+      background: #92776A;
+      text-align: center;
+      position: relative;
+
+      @include pc {
+        border-radius: calc((2 / 1280) * 100vw);
+        padding: calc((24 / 1280) * 100vw) 0;
+      }
+
+      @include sp {
+        border-radius: calc((2 / 390) * 100vw);
+        padding: calc((24 / 390) * 100vw) 0;
+      }
+
+      &::before {
+        content: "";
+        @include icon($triangle);
+        position: absolute;
+        aspect-ratio: 18/14;
+
+        @include pc {
+          bottom: calc((2 / 1280) * 100vw);
+          right: calc((2 / 1280) * 100vw);
+          width: calc((18 / 1280) * 100vw);
+        }
+
+        @include sp {
+          bottom: calc((2 / 390) * 100vw);
+          right: calc((2 / 390) * 100vw);
+          width: calc((18 / 390) * 100vw);
+        }
+      }
+
+      p {
+        color: #FFF;
+        @include serif;
+        font-weight: 700;
+        line-height: 100%;
+
+        @include pc {
+          font-size: calc((20 / 1280) * 100vw);
+          letter-spacing: calc((1.2 / 1280) * 100vw);
+        }
+
+        @include sp {
+          font-size: calc((16 / 390) * 100vw);
+          letter-spacing: calc((0.96 / 390) * 100vw);
+        }
+      }
+    }
+  }
+}

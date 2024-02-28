@@ -1,0 +1,248 @@
+@use "mixin" as *;
+@use "variables" as *;
+@use "svgImg" as *;
+
+
+// header PC
+header {
+  background-color: $mainColor;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  @include pc {
+    padding: 0 calc((20 / 1280) * 100vw);
+  }
+
+  @include sp {
+    padding: calc((10 / 390) * 100vw) calc((16 / 390) * 100vw);
+  }
+
+  .logo {
+    display: block;
+    aspect-ratio: 127 / 40;
+
+    @include pc {
+      margin: calc((10 / 1280) * 100vw) 0;
+      width: max(calc((127 / 1280) * 100vw), 100px);
+    }
+
+    @include sp {
+      width: calc((127 / 390) * 100vw);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .burger {
+    @include sp {
+      width: 24px;
+      aspect-ratio: 1/1;
+      cursor: pointer;
+      @include icon($openIcon);
+
+
+      &.active {
+        width: 20px;
+        @include icon($closeIcon);
+
+      }
+    }
+  }
+
+  .nav--btn {
+
+    @include pc {
+      display: contents;
+    }
+
+    @include sp {
+      position: fixed;
+      top: calc((60 / 390) * 100vw);
+      right: -100%;
+      width: 100%;
+      height: calc(100vh - calc((60 / 390) * 100vw));
+      min-height: 600px;
+      max-height: 800px;
+      padding: calc((40 / 390) * 100vw) calc((20 / 390) * 100vw);
+      @include img('menu-bak.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: 0.3s;
+      display: flex;
+      flex-direction: column;
+      z-index: 1000;
+      overflow-y: scroll;
+
+      &::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: calc(100vh + calc((60 / 390) * 100vw));
+        background-color: #eef7f7a7;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      &.active {
+        right: 0;
+      }
+    }
+
+    nav {
+
+      @include pc {
+        display: flex;
+      }
+
+      @include sp {
+        position: relative;
+      }
+
+      ul{
+        display: contents;
+      }
+
+      .nav--item {
+
+        @include pc {
+          padding: calc((8 / 1280) * 100vw);
+          border-bottom: calc((1 / 1280) * 100vw) solid transparent;
+
+          &:hover {
+            border-bottom: calc((1 / 1280) * 100vw) solid #FFF;
+          }
+        }
+
+        @include sp {
+          width: calc((187 / 390) * 100vw);
+          margin: 0 auto;
+          padding: calc((20 / 390) * 100vw);
+          border-bottom: calc((1 / 390) * 100vw) dotted $mainColor;
+
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+
+        a {
+          @include serif;
+          font-weight: 600;
+          line-height: 100%;
+          display: block;
+
+          @include pc {
+            color: #FFF;
+            font-size: max(calc((14 / 1280) * 100vw), 10px);
+          }
+
+          @include sp {
+            color: $mainColor;
+            font-size: calc((18 / 390) * 100vw);
+            text-align: center;
+
+          }
+        }
+      }
+    }
+
+    .header--btn {
+
+      @include pc {
+        display: flex;
+        gap: calc((12 / 1280) * 100vw);
+        align-self: end;
+      }
+
+      @include sp {
+        margin-top: auto;
+        position: relative;
+        @include column(calc((20 / 390) * 100vw));
+      }
+
+      a {
+        background: #92776A;
+        color: #FFF;
+        @include serif;
+        font-weight: 700;
+
+        @include pc {
+          border-radius: 4px 4px 0px 0px;
+          padding: calc((8 / 1280) * 100vw) calc((12 / 1280) * 100vw) calc((4 / 1280) * 100vw);
+          gap: calc((8 / 1280) * 100vw);
+          display: flex;
+          align-items: center;
+          font-size: max(calc((16 / 1280) * 100vw), 10px);
+          line-height: 160%;
+
+          &::before {
+            content: '';
+            display: block;
+            width: calc((20 / 1280) * 100vw);
+            height: calc((20 / 1280) * 100vw);
+            @include icon($mailIcon);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+          }
+        }
+
+        @include sp {
+          font-size: calc((18 / 390) * 100vw);
+          text-align: center;
+          padding: calc((24 / 390) * 100vw) 0;
+          border-radius: 2px;
+          line-height: 100%;
+          position: relative;
+
+          &::before {
+            content: '';
+            display: block;
+            width: calc((18 / 390) * 100vw);
+            height: calc((14 / 390) * 100vw);
+            @include icon($triangle);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
+            right: calc((2 / 390) * 100vw);
+            bottom: calc((2 / 390) * 100vw);
+          }
+        }
+
+        &:nth-child(2) {
+
+          @include pc {
+            background: #FFF;
+            color: $mainColor;
+
+            &::before {
+              @include icon($phoneIcon);
+            }
+          }
+
+          @include sp {
+            background: $mainColor;
+          }
+        }
+
+        &:nth-child(3) {
+
+          @include sp {
+            background: $mainColor;
+          }
+        }
+      }
+    }
+  }
+}

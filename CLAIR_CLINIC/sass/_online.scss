@@ -1,0 +1,281 @@
+@use "mixin" as *;
+@use "variables" as *;
+@use "svgImg" as *;
+
+
+// online
+.online {
+  background-color: #EEF7F7;
+
+  @include pc {
+    padding: calc((64 / 1280) * 100vw) 0 calc((160 / 1280) * 100vw);
+  }
+
+  @include sp {
+    padding: calc((40 / 390) * 100vw) calc((20 / 390) * 100vw);
+  }
+
+  .contents {
+
+    @include pc {
+      display: flex;
+      justify-content: center;
+      gap: calc((60 / 1280) * 100vw);
+    }
+
+    @include sp {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .communication {
+      display: flex;
+      align-items: end;
+      position: relative;
+      flex-shrink: 0;
+
+      @include pc {
+        gap: calc((17 / 1280) * 100vw);
+      }
+
+      @include sp {
+        justify-content: space-between;
+        order: 2;
+        margin: calc((30 / 390) * 100vw) 0;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        aspect-ratio: 119/153;
+        @include icon($zIcon);
+
+        @include pc {
+          width: calc((119 / 1280) * 100vw);
+          top: 50%;
+          right: 10%;
+        }
+
+        @include sp {
+          width: calc((95 / 390) * 100vw);
+          top: 50%;
+          right: 10%;
+        }
+      }
+
+      .img-1 {
+        @include img('online.jpeg');
+        background-size: 210%;
+        transform: scale(-1, 1);
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        background-position: left 70% top 20%;
+        flex-shrink: 0;
+
+
+        @include pc {
+          width: calc((344 / 1280) * 100vw);
+        }
+
+        @include sp {
+          width: calc((270 / 390) * 100vw);
+        }
+      }
+
+      .img-2 {
+        @include img('iphone.png');
+        aspect-ratio: 89/175;
+
+        @include pc {
+          width: calc((89 / 1280) * 100vw);
+          margin-bottom: calc((-79 / 1280) * 100vw);
+        }
+
+        @include sp {
+          width: calc((71 / 390) * 100vw);
+          margin-bottom: calc((-63 / 390) * 100vw);
+        }
+      }
+    }
+
+    .item {
+      text-align: center;
+
+      @include pc {
+        padding-top: calc((47 / 1280) * 100vw);
+        width: calc((490 / 1280) * 100vw);
+        margin-bottom: calc(( -30 / 1280) * 100vw);
+      }
+
+      @include sp {
+        display: contents;
+      }
+
+      &--in--1 {
+        border-radius: 4px;
+
+        @include pc {
+          border: calc((2 / 1280) * 100vw) solid $mainColor;
+          padding: calc((16 / 1280) * 100vw) 0;
+          @include column(calc((3 / 1280) * 100vw));
+        }
+
+        @include sp {
+          order: 1;
+          border: calc((2 / 390) * 100vw) solid $mainColor;
+          padding: calc((16 / 390) * 100vw) 0;
+          @include column(calc((3 / 390) * 100vw));
+        }
+
+        h2 {
+          color: $mainColor;
+          @include sans;
+          font-weight: 400;
+          line-height: 100%;
+
+          @include pc {
+            font-size: calc((28 / 1280) * 100vw);
+          }
+
+          @include sp {
+            font-size: calc((20 / 390) * 100vw);
+          }
+        }
+
+        h3 {
+          color: $mainColor;
+          @include sans;
+          font-weight: 400;
+          line-height: 100%;
+          
+          @include pc {
+            font-size: calc((48 / 1280) * 100vw);
+            letter-spacing: calc(( 7.68 / 1280) * 100vw);
+          }
+
+          @include sp {
+            font-size: calc((32 / 390) * 100vw);
+            letter-spacing: calc(( 5.12 / 390) * 100vw);
+          }
+        }
+      }
+
+      .item--in--all {
+        @include sp {
+          order: 3;
+        }
+
+        .item--in {
+          border-radius: 4px;
+          position: relative;
+
+          @include pc {
+            margin: calc((16 / 1280) * 100vw) 0 0 calc((16 / 1280) * 100vw);
+            padding: calc((11 / 1280) * 100vw) 0;
+            border: calc((2 / 1280) * 100vw) solid $mainColor;
+          }
+
+          @include sp {
+            margin: calc((12 / 390) * 100vw) 0 0 calc((30 / 390) * 100vw);
+            padding: calc((3 / 390) * 100vw) 0 calc((3 / 390) * 100vw) calc((20 / 390) * 100vw);
+            border: calc((2 / 390) * 100vw) solid $mainColor;
+            width: 60%;
+          }
+
+          &:nth-child(1) {
+            @include pc {
+              margin-top: calc((28 / 1280) * 100vw);
+            }
+
+            @include sp {
+              margin-top: 0;
+            }
+
+            .icon {
+              &::before {
+                @include icon($pcIcon);
+              }
+            }
+          }
+
+          &:nth-child(2) {
+            .icon {
+              &::before {
+                @include icon($trackIcon);
+              }
+            }
+          }
+
+          &:nth-child(3) {
+            .icon {
+              &::before {
+                @include icon($calendarIcon);
+              }
+            }
+          }
+
+          p {
+            color: $mainColor;
+            @include sans;
+            line-height: 100%;
+            font-weight: 400;
+
+            @include pc {
+              font-size: calc((24 / 1280) * 100vw);
+            }
+
+            @include sp {
+              line-height: 120%;
+              font-size: calc((18 / 390) * 100vw);
+            }
+
+            span {
+              line-height: 100%;
+
+              @include pc {
+                font-size: calc((20 / 1280) * 100vw);
+              }
+
+              @include sp {
+                font-size: calc((16 / 390) * 100vw);
+              }
+            }
+          }
+
+          .icon {
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: $mainColor;
+            @include center;
+
+            @include pc {
+              width: calc((44 / 1280) * 100vw);
+              left: -5%;
+            }
+
+            @include sp {
+              width: calc((44 / 390) * 100vw);
+              left: -10%;
+            }
+
+            &::before {
+              content: '';
+              aspect-ratio: 1/1;
+
+              @include pc {
+                width: calc((30 / 1280) * 100vw);
+              }
+
+              @include sp {
+                width: calc((32 / 390) * 100vw);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

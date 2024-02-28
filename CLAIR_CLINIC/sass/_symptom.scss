@@ -1,0 +1,218 @@
+@use "mixin" as *;
+@use "variables" as *;
+@use "svgImg" as *;
+
+.symptom {
+
+  @include pc {
+    padding: calc((80 / 1280) * 100vw) 0;
+  }
+
+  @include sp {
+    padding: calc((60 / 390) * 100vw) calc((20 / 390) * 100vw);
+  }
+
+  .contents {
+
+    @include pc {
+      margin: calc((60 / 1280) * 100vw) auto;
+      width: max(calc((468 / 1280) * 100vw), 400px);
+      @include column(calc((20 / 1280) * 100vw));
+    }
+
+    @include sp {
+      margin: calc((40 / 390) * 100vw) auto;
+      width: 100%;
+      @include column(calc((25 / 390) * 100vw));
+    }
+
+    .item {
+      border-radius: 4px;
+      border: 1px solid #AA8C23;
+      background: #F8DB8B;
+      display: flex;
+      align-items: center;
+
+      @include pc {
+        padding: calc((24 / 1280) * 100vw) calc((20 / 1280) * 100vw);
+        justify-content: center;
+        gap: calc((16 / 1280) * 100vw);
+      }
+
+      @include sp {
+        padding: calc((12 / 390) * 100vw) 0 calc((12 / 390) * 100vw) calc((40 / 390) * 100vw);
+        position: relative;
+      }
+
+      &:nth-child(odd) {
+        @include sp {
+          justify-content: center;
+        }
+      }
+
+      &:nth-child(2n) {
+        flex-direction: row-reverse;
+
+        @include sp {
+          justify-content: left;
+        }
+      }
+
+      // 1
+      &:nth-child(1) {
+        .img {
+          @include img('symptom-1.png');
+          aspect-ratio: 97/120;
+
+          @include pc {
+            width: calc((97 / 1280) * 100vw);
+          }
+
+          @include sp {
+            width: calc((60 / 390) * 100vw);
+            top: 50%;
+            left: -3%;
+            transform: translateY(-50%);
+          }
+        }
+      }
+
+      // 2
+      &:nth-child(2) {
+        .img {
+          @include img('symptom-2.png');
+          aspect-ratio: 120/168;
+
+          @include pc {
+            width: calc((120 / 1280) * 100vw);
+          }
+
+          @include sp {
+            width: calc((86 / 390) * 100vw);
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+          }
+        }
+      }
+
+      // 3
+      &:nth-child(3) {
+        .img {
+          @include img('symptom-3.png');
+          aspect-ratio: 80/130;
+
+          @include pc {
+            width: calc((80 / 1280) * 100vw);
+          }
+
+          @include sp {
+            width: calc((60 / 390) * 100vw);
+            top: -20%;
+            left: -4%;
+          }
+        }
+      }
+
+      // 4
+      &:nth-child(4) {
+        .img {
+          @include img('symptom-4.png');
+          aspect-ratio: 112/122;
+
+          @include pc {
+            width: calc((112 / 1280) * 100vw);
+          }
+
+          @include sp {
+            width: calc((77 / 390) * 100vw);
+            bottom: 5%;
+            right: -3.5%;
+          }
+        }
+      }
+
+      .img {
+        flex-shrink: 0;
+
+        @include sp {
+          position: absolute;
+        }
+      }
+
+      .text {
+        p {
+          color: #333;
+          @include sans;
+          font-weight: 500;
+          line-height: 160%;
+
+          @include pc {
+            font-size: max(calc((18 / 1280) * 100vw), 14px);
+          }
+
+          @include sp {}
+        }
+      }
+    }
+  }
+
+  .contents--text {
+    text-align: center;
+
+    @include pc {
+      margin-bottom: calc((60 / 1280) * 100vw);
+    }
+
+    @include sp {
+      margin-bottom: calc((40 / 390) * 100vw);
+    }
+
+    p {
+      color: #333;
+      @include sans;
+      font-weight: 400;
+      line-height: 200%;
+
+      @include pc {
+        font-size: max(calc((16 / 1280) * 100vw), 12px);
+      }
+
+      @include sp {
+        font-size: calc((16 / 390) * 100vw);
+      }
+    }
+  }
+
+  .contents--support {
+    background-color: $mainColor;
+    text-align: center;
+
+    @include pc {
+      padding: calc((16 / 1280) * 100vw) 0;
+      width: max(calc((800 / 1280) * 100vw), 600px);
+      margin: 0 auto;
+    }
+
+    @include sp {
+      width: 100%;
+      padding: calc((12 / 390) * 100vw) 0;
+    }
+
+    p {
+      color: #FFF;
+      @include serif;
+      font-weight: 600;
+      line-height: 140%;
+
+      @include pc {
+        font-size: max(calc((28 / 1280) * 100vw), 20px);
+      }
+
+      @include sp {
+        font-size: calc((28 / 390) * 100vw);
+        font-weight: 400;
+      }
+    }
+  }
+}

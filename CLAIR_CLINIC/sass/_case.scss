@@ -1,0 +1,17 @@
+@use "mixin" as *;
+@use "variables" as *;
+@use "svgImg" as *;
+
+// case
+.case{
+
+  @include pc{
+    padding: calc(( 80 / 1280) * 100vw) 0;
+    @include column( calc(( 60 / 1280) * 100vw) );
+  }
+
+  @include sp{
+    padding: calc(( 60 / 390) * 100vw) calc(( 20 / 390) * 100vw);
+    @include column( calc(( 40 / 390) * 100vw) );
+  }
+}

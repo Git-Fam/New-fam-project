@@ -1,0 +1,55 @@
+@use "mixin" as *;
+@use "variables" as *;
+@use "svgImg" as *;
+
+
+// follow--btn
+.follow--btn{
+  @include sp{
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    padding: calc(( 8 / 390) * 100vw) calc(( 8 / 390) * 100vw) calc(( 12 / 390) * 100vw);
+    background: rgba(242, 242, 242, 0.90);
+    transition: bottom 0.3s ease-in-out;
+    display: flex;
+    gap: calc(( 8 / 390) * 100vw);
+
+    &.active{
+      bottom: 0;
+      transition: bottom 0.3s ease-in-out;
+    }
+    
+
+    a{
+      width: calc(50% - calc(( 4 / 390) * 100vw));
+      display: block;
+      color: #FFF;
+      @include serif;
+      text-align: center;
+      font-size: calc(( 14 / 390) * 100vw);
+      font-weight: 700;
+      line-height: 100%;
+      letter-spacing: calc(( 1.08 / 390) * 100vw);
+      padding: calc(( 16 / 390) * 100vw) 0;
+      border-radius: calc(( 2 / 390) * 100vw);
+      background: #53949B;
+      position: relative;
+
+      &:first-child{
+        background: #92776A;
+      }
+
+      &::before{
+        content: "";
+        @include icon($triangle);
+        position: absolute;
+        aspect-ratio: 18/14;
+        bottom: calc(( 2 / 390) * 100vw);
+        right: calc(( 2 / 390) * 100vw);
+        width: calc(( 18 / 390) * 100vw);
+      }
+    }
+  }
+}
