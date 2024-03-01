@@ -1,0 +1,166 @@
+@use "../global" as *;
+
+#feature{
+  @include img("featurebg.png");
+  background-size: cover;
+  @include pc{
+    padding: calc(( 132 /1280)*100vw) 0 calc(( 115 /1280)*100vw);
+  }
+  @include sp{
+    padding: calc(( 93 /390)*100vw) 0 calc(( 56 /390)*100vw);
+  }
+  .feature--title{
+    @include img("featuretitle.png");
+    @include pc{
+      width: calc(( 502 /1280)*100vw);
+      height: calc(( 118 /1280)*100vw);
+    } 
+    @include sp{
+      width: calc(( 250 /390)*100vw);
+      height: calc(( 60 /390)*100vw);
+    }
+  }
+  .feature--text{
+    font-weight: bold;
+    color: #286AB8;
+    @include pc{
+      text-align: center;
+      font-size: max(calc(( 20 / 1280) * 100vw),16px);
+      letter-spacing: calc(( 3 /1280)*100vw);
+      margin-top: calc(( 81 /1280)*100vw);
+    }
+    @include sp{
+      font-size: calc(( 18 /390)*100vw);
+      letter-spacing: calc(( 1 /390)*100vw);
+      margin-top: calc(( 49 /390)*100vw);
+      line-height: 1.5;
+      padding: 0 calc(( 15 /390)*100vw);
+    }
+    .first{
+      font-weight: bold;
+      @include pc{
+        font-size: calc(( 28 /1280)*100vw);
+      }
+      @include sp{
+        font-size: calc(( 20 /390)*100vw);
+      }
+    }
+    .orange{
+      font-weight: bold;
+      color: $orange;
+      background-position: bottom right; 
+      background-repeat: repeat-x; 
+      @include pc{
+        font-size: calc(( 36 /1280)*100vw);
+        background-image: radial-gradient(circle at center, $orange 6%, transparent 6%); 
+        background-size: calc(( 41 /1280)*100vw) calc(( 95/1280)*100vw); 
+      }
+      @include sp{
+        font-size: calc(( 24 /390)*100vw);
+        background-image: radial-gradient(circle at center, $orange 6%, transparent 6%); 
+        background-size: calc(( 25 /390)*100vw) calc(( 65/390)*100vw); 
+      }  
+    }
+  }
+  .feature--container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    @include pc{
+      margin: calc(( 50 /1280)*100vw) auto 0;
+      gap: calc(( 52 /1280)*100vw) calc(( 43 /1280)*100vw);
+      width: calc(( 880 /1280)*100vw);
+    }
+    @include sp{
+      margin: calc(( 46 /390)*100vw) auto 0;
+      width: calc(( 280 /390)*100vw);
+    }
+    li{
+      background: #FFF;
+      @include pc{
+        width: calc(( 263 /1280)*100vw);
+        border: calc(( 6 /1280)*100vw) solid $light;
+        border-radius: calc(( 20 /1280)*100vw);
+        padding: calc(( 10 /1280)*100vw)  calc(( 17 /1280)*100vw) calc(( 14 /1280)*100vw);
+      }
+      @include sp{
+        border-radius: calc(( 20 /390)*100vw);
+        border: calc(( 5 /390)*100vw) solid $light;
+        margin-top: calc(( 30 /390)*100vw);
+        padding: 0 calc(( 17 /390)*100vw) calc(( 22 /390)*100vw); 
+      }
+      .feature--container--number{
+        color: #FFF;
+        @include orb;
+        @include pc{
+          width: calc(( 111 /1280)*100vw);
+          font-size: calc(( 28 /1280)*100vw);
+          padding: calc(( 6 /1280)*100vw) calc(( 34 /1280)*100vw);
+          margin: calc(( -16 /1280)*100vw) 0 0 calc(( -23 /1280)*100vw);
+          background: linear-gradient(180deg, #D6E9FF 0%, #0F6CD8 100%);
+          border-radius: calc(( 20 /1280)*100vw) 0;
+        }
+        @include sp{
+          width: calc(( 111 /390)*100vw);
+          font-size: calc(( 28 /390)*100vw);
+          padding: calc(( 6 /390)*100vw) calc(( 34 /390)*100vw);
+          margin: calc(( -5 /390)*100vw) 0 0 calc(( -22 /390)*100vw);
+          background: linear-gradient(0deg, #0F6CD8 7.14%, #C1E8FF 100%);
+          border-radius: calc(( 20 /390)*100vw) 0;
+        }
+      }
+      .feature--container--icon{
+        margin: 0 auto;
+        @include pc{
+          width: calc(( 166 /1280)*100vw);
+          height: calc(( 169 /1280)*100vw);
+        }
+        @include sp{
+          width: calc(( 150 /390)*100vw);
+          height: calc(( 154 /390)*100vw);
+        }
+      }
+      .feature01{
+        @include img("feature01.png");
+      }
+      .feature02{
+        @include img("feature02.png");
+      }
+      .feature03{
+        @include img("feature03.png");
+      }
+      .feature04{
+        @include img("feature04.png");
+      }
+      .feature05{
+        @include img("feature05.png");
+      }
+
+      .feature--container--title{
+        color:$light;
+        text-align: center;
+        @include pc{
+          font-size: calc(( 20 /1280)*100vw);
+        }
+        @include sp{
+          font-size: calc(( 23 /390)*100vw);
+        }
+      }
+      .feature--container--text{
+        line-height: 1.8;
+        @include pc{
+          font-size: max(calc(( 16 / 1280) * 100vw),14px);
+          margin-top: calc(( 13 /1280)*100vw);
+        }
+        @include sp{
+          font-size: calc(( 16 /390)*100vw);
+          margin-top: calc(( 16 /390)*100vw);
+        }
+      }
+      &:first-child{
+        margin-top: 0;
+      }  
+    }
+  }
+}

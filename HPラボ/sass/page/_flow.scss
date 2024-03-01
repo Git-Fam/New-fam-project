@@ -1,0 +1,139 @@
+@use "../global" as *;
+
+#flow{
+  @include img("flowbg.png");
+  @include pc{
+    padding: calc(( 100 /1280)*100vw) 0 calc(( 100 /1280)*100vw);
+  }
+  @include sp{
+    padding: calc(( 60 /390)*100vw) 0 calc(( 60 /390)*100vw);
+  }
+  .flow--title{
+    @include img("flowtitle.png");
+    @include pc{
+      width: calc(( 395 /1280)*100vw);
+      height: calc(( 118 /1280)*100vw);
+    }
+    @include sp{
+      width: calc(( 202 /390)*100vw);
+      height: calc(( 60 /390)*100vw);
+    }
+  }
+  .flow--step--pc{
+    @include img("flow.png");
+    @include pc{
+      width: calc(( 880 /1280)*100vw);
+      height: calc(( 147 /1280)*100vw);
+      margin: calc(( 55 /1280)*100vw) auto 0;
+    }
+  }
+  .flow--step--sp{
+    position: relative;
+    .arrow{
+      margin: 0 auto;
+      position: absolute;
+      @include sp{
+        width: calc(( 350 /390)*100vw);
+        height: calc(( 73 /390)*100vw);
+        left: 50%;
+        transform: translateX(-50%);
+      }  
+    }
+    .top{
+      @include img("flowsp-top.png");
+      top: calc(( 45 /390)*100vw)
+    }
+    .under{
+      @include img("flowsp-under.png");
+      top: calc(( 348 /390)*100vw);
+    }  
+  }
+  .flow--container{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    @include pc{
+      width: calc(( 875 /1280)*100vw);
+      margin-top: calc(( -90  /1280)*100vw);
+    }
+    @include sp{
+      flex-wrap: wrap;
+      width: calc(( 351 /390)*100vw);
+      margin-top: calc(( 86 /390)*100vw);
+      gap: calc(( 90 /390)*100vw) 0;
+    }
+    li{
+      background: #FFF;
+      z-index: 99;
+      @include pc{
+        width: calc(( 131 /1280)*100vw);
+        border-radius: calc(( 20 /1280)*100vw);
+        box-shadow: calc(( 2 /1280)*100vw) calc(( 2 /1280)*100vw) calc(( 10 /1280)*100vw) 0px rgba(0, 0, 0, 0.25);
+        padding: calc(( 16 /1280)*100vw) 0 calc(( 10 /1280)*100vw);
+      }
+      @include sp{
+        width: calc(( 107 /390)*100vw);
+        border-radius: calc(( 20 /390)*100vw);
+        box-shadow: calc(( 2 /390)*100vw) calc(( 2 /390)*100vw) calc(( 10 /390)*100vw) 0px rgba(0, 0, 0, 0.25);
+        padding: calc(( 16 /390)*100vw) 0;
+
+      }
+      .flow--container--icon{
+        margin: 0 auto;
+        @include pc{
+          width: calc(( 80 /1280)*100vw);
+          height: calc(( 60 /1280)*100vw);
+        }
+        @include sp{
+          width: calc(( 60 /390)*100vw);
+          height: calc(( 45 /390)*100vw);
+        }
+      }
+      .flow01{
+        @include img("flow01.png");
+      }
+      .flow02{
+        @include img("flow02.png");
+      }
+      .flow03{
+        @include img("flow03.png");
+      }
+      .flow04{
+        @include img("flow04.png");
+      }
+      .flow05{
+        @include img("flow05.png");
+      }
+      .flow06{
+        @include img("flow06.png");
+      }
+
+      .flow--container--title{
+        text-align: center;
+        font-weight: bold;
+        @include pc{
+          font-size: calc(( 16 /1280)*100vw);
+          margin: calc(( 10 /1280)*100vw) 0;
+        }
+        @include sp{
+          font-size: calc(( 14 /390)*100vw);
+          margin: calc(( 12 /390)*100vw) 0 calc(( 6 /390)*100vw);
+        }
+
+      }
+      .flow--container--text{
+        margin: 0 auto;
+        line-height: 1.5;
+        @include pc{
+          width: calc(( 113 /1280)*100vw);
+          font-size: calc(( 15 /1280)*100vw);
+          letter-spacing: calc(( 1.1 /1280)*100vw);
+        }
+        @include sp{
+          width: calc(( 103 /390)*100vw);
+          font-size: calc(( 14 /390)*100vw);
+        }
+      }
+    }
+  }
+}

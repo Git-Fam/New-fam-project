@@ -1,0 +1,97 @@
+@use "../global" as *;
+
+#production{
+  @include img("productionbg.png");
+  @include pc{
+    padding: calc(( 100 /1280)*100vw) 0 calc(( 93 /1280)*100vw);
+  }
+  @include sp{
+    padding: calc(( 60 /390)*100vw) 0 calc(( 60 /390)*100vw);
+  }
+  .production--title{
+    @include img("productiontitle.png");
+    @include pc{
+      width: calc(( 315 /1280)*100vw);
+      height: calc(( 118 /1280)*100vw);
+    }
+    @include sp{
+      width: calc(( 160 /390)*100vw);
+      height: calc(( 60 /390)*100vw);
+    }
+  }
+  .production--main{
+    position: relative;
+    @include pc{
+      margin-top: calc(( 52 /1280)*100vw);
+    }
+    @include sp{
+      margin-top: calc(( 30 /390)*100vw);
+    }
+    .production--main--pc{
+      @include img("productionPC.png");
+      margin: 0 auto;
+      @include pc{
+        width: calc(( 1037 /1280)*100vw);
+        height: calc(( 574 /1280)*100vw);
+      }
+      @include sp{
+        width: calc(( 240 /390)*100vw);
+        height: calc(( 200 /390)*100vw);
+      }  
+    }
+    .production--main--sp{
+      @include img("productionSP.png");
+      position: absolute;
+      @include pc{
+        width: calc(( 500 /1280)*100vw);
+        height: calc(( 500 /1280)*100vw);
+        top: calc(( 150 /1280)*100vw);
+        left: calc(( 700 /1280)*100vw);
+      }  
+      @include sp{
+        width: calc(( 83 /390)*100vw);
+        height: calc(( 160 /390)*100vw);
+        top: calc(( 60 /390)*100vw);
+        left: calc(( 260 /390)*100vw);
+      }
+    }
+  }
+  .production--under{
+    display: flex;
+    @include pc{
+      margin-top: calc(( 120 /1280)*100vw);
+    }
+    @include sp{
+      margin-top: calc(( 40 /390)*100vw);
+    }
+    .production--under--item{
+      background-position: top;
+      @include pc{
+        width: calc(( 350 /1280)*100vw);
+        height: calc(( 230 /1280)*100vw);
+        border-radius: calc(( 20 /1280)*100vw);
+        border: calc(( 5 /1280)*100vw) solid #7EAAFF;
+        margin-left: calc(( 25 /1280)*100vw);
+      }
+      @include sp{
+        width: calc(( 163 /390)*100vw);
+        height: calc(( 94 /390)*100vw);
+        border-radius: calc(( 20 /390)*100vw);
+        border: calc(( 3 /390)*100vw) solid #7EAAFF;
+        margin-left: calc(( 20 /390)*100vw);
+      }
+    }
+    .item01{
+      @include img("production01.png");
+    }
+    .item02{
+      @include img("production02.png");
+    }
+    .item03{
+      @include img("production03.png");
+    }
+    .item04{
+      @include img("production04.png");
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@use "../global" as *;
+
+footer{
+  background: linear-gradient(90deg, #A2D6FB 0.94%, #126EDA 99.26%);
+  @include pc{
+    padding: calc(( 30 /1280)*100vw) calc(( 60 /1280)*100vw) calc(( 30 /1280)*100vw) 0;
+  }
+  @include sp{
+    padding: calc(( 14 /390)*100vw) calc(( 20 /390)*100vw);
+  }
+  .header--list{
+    @include sp{
+      flex-wrap: wrap;
+      gap: calc(( 15 /390)*100vw) calc(( 20 /390)*100vw);
+      width: calc(( 350 /390)*100vw);
+      justify-content: flex-end;
+    }
+    li{
+      a{
+        color: #FFF;
+        @include sp{
+          font-size: calc(( 12 /390)*100vw);
+        }
+      }
+    }
+    .inquiry{
+      display: grid;
+      place-items: center center;
+      @include sp{
+        width: calc(( 88 /390)*100vw);
+        height: calc(( 23 /390)*100vw);
+        border-radius: calc(( 5 /390)*100vw);
+      }
+    }
+  }
+}

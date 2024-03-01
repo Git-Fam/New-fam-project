@@ -1,0 +1,227 @@
+@use "../global" as *;
+
+#worry{
+  @include img("worrybg.png");
+  background-size: cover;
+  @include pc{
+    padding: calc(( 100 /1280)*100vw) 0 calc(( 170 /1280)*100vw);
+  }
+  @include sp{
+    padding: calc(( 62 /390)*100vw) 0 calc(( 65 /390)*100vw); 
+  }
+  .worry--wrapper{
+    margin: 0 auto;
+    position: relative;
+    background-color: #FFF;
+    @include pc{
+      width: calc(( 916 /1280)*100vw);
+      border-radius: calc(( 20 /1280)*100vw);
+      padding: calc(( 45 /1280)*100vw) 0 calc(( 95 /1280)*100vw);
+      box-shadow: 0 calc(( 4 /1280)*100vw) calc(( 20 /1280)*100vw) 0 rgba(0, 0, 0, 0.25);
+    }
+    @include sp{
+      width: calc(( 350 /390)*100vw);
+    }
+    .pin{
+      background-color: #7d7d7d;
+      border-radius: 50%;
+      position: absolute;
+      width: calc(( 17 /1280)*100vw);
+      height: calc(( 17 /1280)*100vw);
+      box-shadow: 0 calc(( 4 /1280)*100vw) calc(( 7 /1280)*100vw) 0 rgba(0, 0, 0, 0.25);
+    }
+    .pin01{
+      @include pc{
+        top: calc(( 30 /1280)*100vw);
+        left: calc(( 30 /1280)*100vw);
+      }
+    }
+    .pin02{
+      @include pc{
+        top: calc(( 30 /1280)*100vw);
+        right: calc(( 30 /1280)*100vw);
+      }
+    }
+    .pin03{
+      bottom: calc(( 30 /1280)*100vw);
+      left: calc(( 30 /1280)*100vw);
+    }
+    .pin04{
+      bottom: calc(( 30 /1280)*100vw);
+      right: calc(( 30 /1280)*100vw);
+    }
+    .worry--title{
+      position: relative;
+      .worry--title--icon{
+        @include img("worrydeco.png");
+        position: absolute;
+        @include pc{
+          width: calc(( 81 /1280)*100vw);
+          height: calc(( 77 /1280)*100vw);
+          top: calc(( -50 /1280)*100vw);
+          left: calc(( 436 /1280)*100vw);
+        }
+        @include sp{
+          width: calc(( 60 /390)*100vw);
+          height: calc(( 54 /390)*100vw);
+          top: calc(( -35 /390)*100vw);
+          left: calc(( 157 /390)*100vw);
+        }
+      }
+      h2{
+        text-align: center;
+        font-weight: bold;
+        @include pc{
+          font-size: calc(( 36 /1280)*100vw);
+        }
+        @include sp{
+          font-size: calc(( 18 /390)*100vw);
+        }
+        span{
+          font-weight: bold;
+          color: #DC8900;
+          @include pc{
+            font-size: calc(( 48 /1280)*100vw);
+          }
+          @include sp{
+            font-size: calc(( 24 /390)*100vw);
+          }
+        }  
+      }
+    }
+    .worry--container{
+      position: relative;
+      ul{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        @include pc{
+          width: calc(( 835 /1280)*100vw);
+          gap: calc(( 54 /1280)*100vw) 0;
+        }
+        @include sp{
+          gap: calc(( 93 /390)*100vw) 0;
+        }
+        li{
+          background: #E6E6E6;
+          display: grid;
+          place-items: center center;
+          @include pc{
+            width: calc(( 287 /1280)*100vw);
+            min-height: calc(( 108 /1280)*100vw);
+            border-radius: calc(( 500 /1280)*100vw);
+            padding: calc(( 15 /1280)*100vw) 0;
+          }
+          @include sp{
+            width: calc(( 145 /390)*100vw);
+            min-height: calc(( 145 /390)*100vw);
+            border-radius: 50%;
+          }
+          div{
+            text-align: center;
+            margin: auto;
+            line-height: 1.5;
+            @include pc{
+              width: calc(( 230 /1280)*100vw);
+              font-size: calc(( 17 / 1280) * 100vw);
+            }
+            @include sp{
+              width: calc(( 140 /390)*100vw);
+              font-size: calc(( 12 /390)*100vw);
+            }
+            span{
+              color: #003B80;
+              @include pc{
+                font-size: calc(( 19 / 1280) * 100vw);
+              }
+              @include sp{
+                font-size: calc(( 14 /390)*100vw);
+              }
+            }
+          }
+        }
+      }
+      .center{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        @include pc{
+          width: calc(( 210 /1280)*100vw);
+        }
+        @include sp{
+          width: calc(( 153 /390)*100vw);
+        }
+        .person{
+          @include pc{
+            margin-bottom: calc(( 30 /1280)*100vw);
+          }
+          @include sp{
+            margin: 0 auto calc(( 10 /390)*100vw);
+          }
+        }
+        .top-person{
+          @include img("person01.png");
+          @include pc{
+            height: calc(( 210 /1280)*100vw);
+          }
+          @include sp{
+            width: calc(( 107 /390)*100vw);
+            height: calc(( 107 /390)*100vw);
+          }
+        }
+        .under-person{
+          @include img("person02.png");
+          @include pc{
+            width: calc(( 237 /1280)*100vw);
+            height: calc(( 210 /1280)*100vw);
+          }
+          @include sp{
+            width: calc(( 119 /390)*100vw);
+            height: calc(( 107 /390)*100vw);
+          }
+        }
+        p{
+          text-align: center;
+          font-weight: bold;
+          @include pc{
+            font-size: max(calc(( 22 / 1280) * 100vw),14px);
+          }
+          @include sp{
+            font-size: calc((14 /390)*100vw);
+            margin-bottom: calc(( 30 /390)*100vw);
+          }
+          span{
+            font-weight: bold;
+            @include pc{
+              font-size: max(calc(( 26 / 1280) * 100vw),16px);
+            }
+            @include sp{
+              font-size: calc((18 /390)*100vw);
+            }  
+          }
+        }
+      }
+    }
+    .worry-top{
+      ul{
+        @include pc{
+          margin: calc(( 70 /1280)*100vw) auto 0;
+        }
+        @include sp{
+          margin: calc(( 60 /390)*100vw) auto 0;
+        }  
+      }
+    }
+    .worry-under{
+      ul{
+        @include pc{
+          margin: calc(( 112 /1280)*100vw) auto 0;
+        }
+        @include sp{
+          margin: calc(( 60 /390)*100vw) auto 0;
+        }  
+      }
+    }
+  }
+}

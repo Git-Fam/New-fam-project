@@ -1,0 +1,15 @@
+@use "../global" as *;
+
+#btn{
+  @include img("btnbg.png");
+  background-size: cover;
+  @include pc{
+    padding: calc(( 80 /1280)*100vw) 0 calc(( 75 /1280)*100vw);
+  }
+  @include sp{
+    padding: calc(( 50 /390)*100vw) 0 ;
+  }
+  .btn--btn{
+    margin: 0 auto;
+  }
+}
