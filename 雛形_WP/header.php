@@ -49,7 +49,7 @@
     <!-- <meta name="theme-color" content="#e9c931"> -->
 
     <!-- ▼CSS -->
-    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/style.css?<?php echo md5_file(get_stylesheet_directory() . '/style.css'); ?>">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/main.css">
 
     <!-- ▼フォント -->
 

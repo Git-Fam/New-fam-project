@@ -1,9 +1,5 @@
 <?php
-  // JS使用可能
-  function enqueue_custom_scripts() {
-      wp_enqueue_script('custom-script', get_template_directory_uri() . '/script.js', array('jquery'), '1.0', true);
-  }
-  add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
+
 
   // コンタクトフォーム７pタグ削除
   // add_filter('wpcf7_autop_or_not', 'wpcf7_autop_return_false');

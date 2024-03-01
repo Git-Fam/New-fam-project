@@ -1,4 +1,4 @@
 <?php get_header(); ?>
-<div class="">あああ</div>
+<div class="bbb">あああ</div>
     
 <?php get_footer(); ?>

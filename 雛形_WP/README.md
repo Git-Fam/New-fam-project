@@ -1,35 +1,29 @@
 
 cooperator
+用意済み
+ディレクトリ内なら、自由にカスタム可能
 
-cooperator-2
+    cooperator
+      ├ globalCooperator
+      |    └_ex_mixins.scss
+      |    └ _ex_variables.scss
+      |    └ _index.scss
+      |       ↑独自の変数とか、mixinとかを入れるディレクトリ
+      |
+      ├pageCooperator
+      |    └ _example.scss
+      |    └ _index.scss
+      |       ↑ページごとのスタイルを入れるディレクトリ
+      |
+      ├componentsCooperator
+      |     └ _C_example.scss
+      |     └ _index.scss
+      |       ↑コンポーネントごとのスタイルを入れるディレクトリ
+      |
+      └  _index.scss
 
-をそれぞれ用意済み
 
-それぞれのディレクトリ内なら、自由にカスタム可能
+scssファイルを増やす時、それぞれの_index.scssにforwardしないと恐らくエラー起きます。
 
-
-
-_ex_mixins.scss
-_ex_variables.scss
-_example.scss
-_index.scss
-
-を用意済み
-
-_ex_mixins.scss
-↓
-独自のmixinを記述するファイル
-
-_ex_variables.scss
-↓
-独自の変数を記述するファイル
-
-_example.scss
-↓
-独自のスタイルを記述するファイル（名前変更して使用して）
-
-_index.scss
-↓
-cooperator or cooperator-2のscssファイルforwardして、style.scssへuseするファイル
-_example.scssなど名前へ変更したら、_index.scss内のforward先も変更すること
-ファイルを追加したら、_index.scss内にforwardを追記すること
+元からあるmixinsや変数はglobalに入っています。
+自由に使ってください。編集はしないでください。

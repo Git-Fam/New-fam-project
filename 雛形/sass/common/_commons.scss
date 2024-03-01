@@ -1,5 +1,9 @@
 @use "../global" as *;
 
+/* -----------------------
+  commons
+----------------------- */
+
 // 表示・非表示
 .sp{
   @include pc{
@@ -19,7 +23,6 @@ html{
 }
 
 body{
-
   &.active{
     overflow: hidden;
   }
