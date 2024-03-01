@@ -23,7 +23,7 @@
 
 
 ●ファイル構成
-	SASSを使用しない場合、sassフォルダとstyle.css.mapは消してください
+	SASSを使用しない場合、sassフォルダとstyle.css.mapは消してください。その際にreset.cssはsass内に入っています。
 	templateはコピペなりなんなりして使ってください
 	templateファイル名は実装する案件によって名前変えてください(全角以外で)
 	管理がしにくくなるので不要なフォルダ、ファイルは消してください
@@ -46,21 +46,24 @@ template（雛形）
 	｜
 	｜index.html（場合によっては名前を変えて増やす）
 	｜
-	｜雛形.xml（そのままでも構いません。できれば名前を案件名に変えてください。半角英で）
+	｜sitemap.xml
 	｜
-	｜robot.txt（触らない）
+	｜robot.txt
 	｜
 	｜img -{ favicon }
 	｜
-	｜js - { script.js }
+	｜js - { script.js , cooperatorScript.js }
 	｜
-	｜css - { style.css, reset.css}
+	｜sass - {共同制作の場合cooperatorを編集してください。詳しくは雛形内のREADMEを見てください}
+	｜
+	｜css - { style.css}
 	
 	基本はこのような構成にしてください
 	index.htmlは必ず必要です
 	imgには画像を入れてください
 	ディレクトリを分けずに全ての画像ファイルをimgにいれてください
 	ファビコン画像のみfaviconフォルダに入れてください
+	cooperatorと付いているものは共同制作の場合メインとなる人物以外が使用してください
 	
 
 ●メールフォームルール（重要）
@@ -88,18 +91,30 @@ template（雛形）
 	全体をPC,SPそれぞれ３回はチェックしてください
 	スマホ、パソコンそれぞれでGoogle Chrome、Safariの検証をご自身で行ってください
 	↑スマホでの検証方法は調べてもわからない場合は聞いてください
-	検証機能を使って画面幅2200px〜320pxまで確認してください
+	検証機能を使って画面幅約2200px〜320pxまで確認してください
 	レイアウトが崩れた状態で提出はしないでください
 
 ・PC、SPのメディアクエリ両方を使用
-	PC画面
-	  @media screen and (min-width: 768px){}
+
+		.text{
+			background-color: green;
+		}
+		↑共通のスタイルを記述
+
+	  @media screen and (min-width: 768px){
+			.text{
+				color: red;
+			}
+		}
 		↑PC時のスタイルを記述
-	SP画面
-		@media screen and (max-width: 767px){}
+
+		@media screen and (max-width: 767px){
+			.text{
+				color: blue;
+			}
+		}
 		↑SP時のスタイルを記述
 
-		共通で書かれると汎用性が下がるのでやめてください
 
 		途中でスタイルを変更したい場合は
 	@media screen and (max-width: 1000px) and (min-width: 767px){}
@@ -116,7 +131,7 @@ template（雛形）
 		指示がディレクターからあると思いますが、ない場合は連絡して確認してください
 
 ・画像
-	同じ画像は使い回すこと
+	同じ画像は使い回すこと(有料画像の関係上同じ画像の場合は別で)
 	カンプによってはデザイン外に画像が出ている場合がありますが、その場合はデザイン外の画像を使用して、自分で画像の装飾をしてください（素の画像にプロパティをつける）
 	↑これをすることにより画像を本場用に差し替えてもレイアウトが崩れる可能性を減らすことができます
 
@@ -130,6 +145,8 @@ template（雛形）
 	読み込まない恐れがあります
 
 	png, jpg,svgを使い分けてください
+
+	ファイルサイズはできるだけ小さくしてください
 	
 
 ・display:flexについて
@@ -141,7 +158,7 @@ template（雛形）
 
 ・途中で要素が増減する可能性を考えてください
 	例えば文章部分の場合は初め『テキストテキストテキストテキストテキストテキスト』で入っているかと思いますが、本番用の文章が入るとほぼほぼ文字数は増えます。
-	その際に高さを指定していると確実にはみ出ます。min-heightを使用するなど対策してください
+	その際に高さを指定していると確実にはみ出ます。
 	ご自身で文字数を増やして確認してください
 	崩れたまま提出しないでください
 
@@ -193,7 +210,6 @@ template（雛形）
 
 	文字サイズは非常に大切な設定です。
 	認識が合っているかどうか私に確認してください
-	聞くことは恥ずかしいことではないです。必ず聞いてください。
 	
 ・文章
 	文章に関してはすでにカンプに埋め込まれている場合、改行の位置を考えてください
@@ -206,48 +222,11 @@ template（雛形）
 	理解しないまま使用すると必ずレイアウトが崩れます
 	上記で述べた文章部分の増減でもpositionを使用するとレイアウトが崩れます
 	できなければ相談してください
-	というか絶対に相談してください
-	レイアウトが崩れたまま提出しないでください
 
 
 ・上下左右フェードインはフォーマットを作るのでクラスをつけるのみで対応可能にする
 	※チーム作成の場合
 
-	基本↓を使えばできます。
-
-	// 要素が画面下部に来たらshowを付与
-		$(window).scroll(function() {
-			$('.right（クラス名）').each(function() {
-				var top_of_element = $(this).offset().top;
-				var bottom_of_window = $(window).scrollTop() + $(window).height();
-				if (bottom_of_window > top_of_element) {
-					$(this).addClass('show');
-				} 
-			});
-		});
-
-		/* 右から */
-		.right{
-			transform: translateX(50px);
-			opacity: 0;
-		}
-		.right.show{
-			animation: fadeRight 0.5s ease-in-out 0.2s forwards;
-			transform: translateX(0);
-		}
-		@keyframes fadeRight {
-			from {
-				opacity: 0;
-				transform: translateX(50px);
-			}
-			to {
-				opacity: 1;
-				transform: translateX(0);
-			}
-		}
-
-		rightをつけた要素が画面に入ったら.showが付与されアニメーションが発動します
-		わからなければ相談してください
 
 ・インデント
 	インデントは整理してから提出してください
