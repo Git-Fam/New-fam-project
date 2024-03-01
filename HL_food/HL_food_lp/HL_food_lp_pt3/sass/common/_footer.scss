@@ -1,0 +1,118 @@
+@use "../global" as *;
+
+
+/* -----------------------
+  footer
+----------------------- */
+
+footer{
+
+  @include pc{
+    @include imgCover('footer-back.jpg');
+    padding: calc(( 50 / 1280) * 100vw) calc(( 20 / 1280) * 100vw) calc(( 30 / 1280) * 100vw);
+  }
+
+  @include sp{
+    padding: calc(( 55 / 390) * 100vw) calc(( 10 / 390) * 100vw) calc(( 65 / 390) * 100vw);
+  }
+
+  .footer--info{
+
+    @include pc{
+      @include column(calc(( 20 / 1280) * 100vw));
+      padding-left: calc(( 170 / 1280) * 100vw);
+    }
+
+    @include sp{
+      @include column(calc(( 15 / 390) * 100vw));
+    }
+
+    li{
+      display: flex;
+
+      .caption{
+
+        @include pc{
+          width: 15%;
+        }
+
+        @include sp{
+          width: 30%;
+        }
+      }
+
+      .date{
+
+        @include pc{
+          width: 85%;
+        }
+        @include sp{
+          width: 70%;
+        }
+      }
+
+      p{
+        @include sans;
+        color: $Font--333333;
+        
+        @include pc{
+          font-size: max(calc(( 14 / 1280) * 100vw),12px);
+        }
+        @include sp{
+          font-size: calc(( 14 / 390) * 100vw);
+        }
+      }
+    }
+  }
+
+
+  .footer--nav{
+    margin-top: calc(( 60 / 1280) * 100vw);
+    
+    &--menu{
+      border-top: 1px solid #000000;
+      border-bottom: 1px solid #000000;
+      padding: calc(( 12 / 1280) * 100vw) 0;
+      display: flex;
+      justify-content: center;
+      gap: calc(( 65 / 1280) * 100vw);
+      
+      li{
+        a{
+          font-size: max(calc(( 14 / 1280) * 100vw),12px);
+          color: $Font--333333;
+          
+          &:hover{
+            border-bottom: solid 1px $Font--333333;
+          }
+        }
+      }
+    }
+
+  }
+
+  .footer--copyRight{
+
+    @include pc{
+      margin-top: calc(( 100 / 1280) * 100vw);
+    }
+    @include sp{
+      margin-top: calc(( 220 / 390) * 100vw);
+    }
+
+    p{
+      text-align: center;
+      @include sans;
+      color: #000000;
+      
+      @include pc{
+        font-size: calc(( 14 / 1280) * 100vw);
+      }
+
+      @include sp{
+        font-size: calc(( 14 / 390) * 100vw);
+      }
+    }
+  }
+
+}

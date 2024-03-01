@@ -1,0 +1,130 @@
+@use "../global" as *;
+
+/* -----------------------
+  commons
+----------------------- */
+
+// 表示・非表示
+.sp{
+  @include pc{
+    display: none !important;
+  }
+}
+.pc{
+  @include sp{
+    display: none !important;
+  }
+}
+
+
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: 10%;
+}
+
+body{
+
+  &.active{
+    overflow: hidden;
+  }
+}
+
+.wapper{
+  overflow: hidden;
+}
+
+.inner{
+  position: relative;
+  z-index: 1;
+  @include imgContain('all-back.jpg');
+  background-size: 100%;
+  background-position: top;
+  background-repeat: repeat-y;
+
+  @include pc{
+    margin-top: calc(( -150 / 1280) * 100vw);
+    padding-top: calc(( 150 / 1280) * 100vw);
+  }
+
+  @include sp{
+    margin-top: calc(( -100 / 375) * 100vw);
+    padding-top: calc(( 100 / 375) * 100vw);
+  }
+}
+
+
+// デコレーションズ
+.decoList{
+  .deco{
+    position: absolute;
+    z-index: 11;
+
+    &.deco--1{
+      aspect-ratio: 852 / 475;
+      @include imgContain('deco-1.png');
+
+      @include pc{
+        top: calc(( -100 / 1280) * 100vw);
+        right: calc((-400 / 1280) * 100vw);
+        width: calc((852 / 1280) * 100vw);
+      }
+
+      @include sp{
+        top: calc(( -100 / 390) * 100vw);
+        left: calc((-200 / 390) * 100vw);
+        width: calc((400 / 390) * 100vw);
+      }
+    }
+
+    &.deco--2{
+      aspect-ratio:   845 / 584;
+      @include imgContain('deco-2.png');
+
+      @include pc{
+        top: calc(( -900 / 1280) * 100vw);
+        right: calc((-400 / 1280) * 100vw);
+        width: calc((845 / 1280) * 100vw);
+      }
+
+      @include sp{
+        top: calc(( -1000 / 390) * 100vw);
+        right: calc((-200 / 390) * 100vw);
+        width: calc((400 / 390) * 100vw);
+      }
+    }
+
+    &.deco--3{
+      aspect-ratio: 358 / 762;
+      @include imgContain('deco-3.png');
+
+      @include pc{
+        top: 0;
+        left: calc((-150 / 1280) * 100vw);
+        width: calc((358 / 1280) * 100vw);
+      }
+
+      @include sp{
+        top: 0;
+        left: calc((-100 / 390) * 100vw);
+        width: calc((200 / 390) * 100vw);
+      }
+    }
+
+    &.deco--4{
+      aspect-ratio: 845 / 584;
+      @include imgContain('deco-4.png');
+
+      @include pc{
+        top: calc(( -2560 / 1280) * 100vw);
+        left: calc((-450 / 1280) * 100vw);
+        width: calc((845 / 1280) * 100vw);
+      }
+
+      @include sp{
+        top: calc(( -2000 / 390) * 100vw);
+        right: calc((-300 / 390) * 100vw);
+        width: calc((400 / 390) * 100vw);
+      }
+    }
+  }
+}

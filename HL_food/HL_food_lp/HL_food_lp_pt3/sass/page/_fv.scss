@@ -1,0 +1,84 @@
+@use "../global" as *;
+
+/* -----------------------
+  FV
+----------------------- */
+.FV {
+
+  @include pc {
+    padding: calc((20 / 1280) * 100vw);
+  }
+
+  @include sp {
+    padding: calc((4 / 390) * 100vw);
+  }
+
+  &--hero {
+    position: relative;
+    @include imgCover('FV.jpg');
+    width: 100%;
+
+
+    @include pc {
+      aspect-ratio: 1250 / 630;
+      background-position: left calc((100 / 1280) * 100vw) center;
+    }
+
+    @include sp {
+      aspect-ratio: 382 / 700;
+      background-position: left 20% center;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      @include pc {
+        background: linear-gradient(85.85deg, #D6D5DA 4.24%, #FBF8FB 8.52%, #FFFFFF 12.41%, rgba(255, 255, 255, 0) 40.93%);
+      }
+
+      @include sp {
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.5) 4.71%, rgba(255, 255, 255, 0.5) 19.92%, rgba(255, 255, 255, 0.285) 45.2%);
+      }
+    }
+
+    &--text {
+      width: fit-content;
+      position: absolute;
+
+      @include pc {
+        top: calc((300 / 1280) * 100vw);
+        left: calc((150 / 1280) * 100vw);
+      }
+
+      @include sp {
+        bottom: calc((40 / 390) * 100vw);
+        left: calc((20 / 390) * 100vw);
+      }
+
+      .sentence {
+        font-weight: 600;
+        line-height: 233%;
+        letter-spacing: 0.04em;
+        color: $Font--333333;
+        width: fit-content;
+
+        @include pc {
+          font-size: max(calc((24 / 1280) * 100vw), 16px);
+        }
+
+        @include sp {
+          font-size: calc((20 / 390) * 100vw);
+        }
+
+        span {
+          color: $Font--C14847;
+        }
+      }
+    }
+  }
+}

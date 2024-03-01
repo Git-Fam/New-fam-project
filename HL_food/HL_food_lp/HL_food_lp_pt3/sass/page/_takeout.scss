@@ -1,0 +1,105 @@
+@use "../global" as *;
+
+/* -----------------------
+  takeout
+----------------------- */
+.takeout {
+
+  @include pc {
+    padding-bottom: calc((320 / 1280) * 100vw);
+  }
+
+  @include sp {
+    padding: 0 calc((20 / 390) * 100vw) calc((30 / 390) * 100vw);
+  }
+
+  &--Jr {
+    position: relative;
+
+    &--img {
+      @include imgContain('takeout-1.png');
+      aspect-ratio: 500/525;
+      position: absolute;
+
+      @include pc {
+        top: calc((-40 / 1280) * 100vw);
+        left: calc((170 / 1280) * 100vw);
+        width: calc((500 / 1280) * 100vw);
+      }
+
+      @include sp {
+        width: calc((300 / 390) * 100vw);
+        top: calc((-70 / 390) * 100vw);
+        left: 50%;
+        translate: -50% 0;
+      }
+    }
+
+    &--box {
+      background-color: $Bg--34572A;
+      text-align: center;
+
+      @include pc {
+        width: max(calc((357 / 1280) * 100vw), 300px);
+        margin-left: auto;
+        margin-right: calc((281 / 1280) * 100vw);
+        @include column(calc((20 / 1280) * 100vw));
+        padding: calc((40 / 1280) * 100vw) calc((20 / 1280) * 100vw) calc((80 / 1280) * 100vw);
+      }
+
+      @include sp {
+        width: 100%;
+        padding: calc((260 / 390) * 100vw) calc((20 / 390) * 100vw) calc((80 / 390) * 100vw);
+        @include column(calc((15 / 390) * 100vw));
+      }
+
+      p {
+        color: $Font--FFFFFF;
+        position: relative;
+      }
+
+      .title {
+        @include yellowtail;
+
+        @include pc {
+          font-size: calc((60 / 1280) * 100vw);
+        }
+
+        @include sp {
+          font-size: calc((60 / 390) * 100vw);
+        }
+      }
+
+      .sub {
+        font-weight: 600;
+        line-height: 160%;
+        letter-spacing: 0.08em;
+        text-decoration-line: underline;
+
+        @include pc {
+          font-size: max(calc((20 / 1280) * 100vw), 14px);
+        }
+
+        @include sp {
+          font-size: calc((20 / 390) * 100vw);
+        }
+      }
+
+      .text {
+        @include sans;
+        line-height: 167%;
+        letter-spacing: 0.03em;
+        text-align: left;
+
+
+        @include pc {
+          font-size: max(calc((15 / 1280) * 100vw), 11px);
+        }
+
+        @include sp {
+          font-size: calc((15 / 390) * 100vw);
+        }
+      }
+    }
+  }
+}

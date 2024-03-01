@@ -1,0 +1,24 @@
+// フォント
+// font-family: Noto Sans JP;
+@mixin sans {
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+}
+
+// font-family: Economica;
+@mixin economica {
+  font-family: "Economica", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+}
+
+// font-family: Mrs Saint Delafield;
+@mixin mrs {
+  font-family: "Mrs Saint Delafield", cursive;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+}

@@ -1,0 +1,134 @@
+@use "../global" as *;
+
+/* -----------------------
+  more
+----------------------- */
+.more {
+  background: linear-gradient(90deg, #ebe6c8 50%, #FFF 50%);
+
+  @include pc {
+    padding: calc((80 / 1280) * 100vw) 0;
+  }
+
+  @include sp {
+    padding: calc((30 / 390) * 100vw);
+  }
+
+  &--inner {
+    @include imgCover('more.jpg');
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, .3);
+    }
+
+    &--in {
+      position: relative;
+      align-items: center;
+
+      @include pc {
+        @include column(calc((30 / 1280) * 100vw));
+        padding: calc((90 / 1280) * 100vw) 0 calc((125 / 1280) * 100vw);
+      }
+
+      @include sp {
+        @include column(calc((20 / 390) * 100vw));
+        padding: calc((60 / 390) * 100vw) 0 calc((70 / 390) * 100vw);
+      }
+
+      &--logo {
+        aspect-ratio: 1 / 1;
+        @include imgContain('logo.svg');
+
+        @include pc {
+          width: calc((100 / 1280) * 100vw);
+        }
+
+        @include sp {
+          width: calc((60 / 390) * 100vw);
+        }
+      }
+
+      &--text {
+
+        p {
+          @include sans;
+          color: #FFF;
+          font-weight: 100;
+          letter-spacing: .4em;
+          line-height: 2;
+
+          @include pc {
+            font-size: max(calc((32 / 1280) * 100vw), 22px);
+          }
+
+          @include sp {
+            font-size: calc((18 / 390) * 100vw);
+          }
+        }
+      }
+
+      &--btn {
+        background: #FFF;
+        position: relative;
+
+        @include pc {
+          width: calc((300 / 1280) * 100vw);
+          padding: calc((20 / 1280) * 100vw) 0;
+        }
+
+        @include sp {
+          width: calc((250 / 390) * 100vw);
+          padding: calc((15 / 390) * 100vw) 0;
+        }
+
+        &::before {
+          content: '→';
+          position: absolute;
+          top: 50%;
+          right: 10%;
+          transform: translateY(-50%);
+          @include economica;
+          color: $black;
+          transition: .3s;
+
+          @include pc {
+            font-size: max(calc((22 / 1280) * 100vw), 16px);
+          }
+
+          @include sp {
+            font-size: calc((12 / 390) * 100vw);
+          }
+        }
+
+        &:hover {
+          &::before {
+            right: 1%;
+          }
+        }
+
+        p {
+          text-align: center;
+          @include economica;
+          color: #000;
+          line-height: 1;
+          letter-spacing: .2em;
+
+          @include pc {
+            font-size: max(calc((22 / 1280) * 100vw), 16px);
+          }
+
+          @include sp {
+            font-size: calc((15 / 390) * 100vw);
+          }
+        }
+      }
+    }
+  }
+}

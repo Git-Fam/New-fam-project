@@ -1,0 +1,201 @@
+@use "../global" as *;
+
+/* -----------------------
+  side
+----------------------- */
+.side {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 20;
+  transform: rotate(90deg);
+  transform-origin: bottom right;
+  top: 80%;
+
+  @include pc {
+    gap: calc((70 / 1280) * 100vw);
+    right: calc((80 / 1280) * 100vw);
+  }
+
+  @include sp {
+    gap: calc((30 / 390) * 100vw);
+    right: calc((35 / 390) * 100vw);
+  }
+
+  &--text {
+
+    @include pc {}
+
+    @include sp {}
+
+    p {
+      @include sans;
+      color: #666;
+      letter-spacing: .2em;
+
+      @include pc {
+        font-size: max(calc((16 / 1280) * 100vw), 12px);
+      }
+
+      @include sp {
+        font-size: calc((12 / 390) * 100vw);
+      }
+    }
+  }
+
+  .burger {
+    position: relative;
+    cursor: pointer;
+    aspect-ratio: 1.5 / 1;
+    transform: rotate(90deg);
+
+    @include pc {
+      width: calc((30 / 1280) * 100vw);
+    }
+
+    @include sp {
+      width: calc((20 / 390) * 100vw);
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #666;
+      transition: .3s;
+    }
+
+    &::after {
+      top: unset;
+      bottom: 0;
+    }
+
+    &.active {
+      &::before {
+        transform: rotate(45deg) translateY(-50%);
+        top: 50%;
+      }
+
+      &::after {
+        transform: rotate(-45deg)translateY(50%);
+        bottom: 50%;
+      }
+    }
+  }
+
+  &--SNS {
+    display: block;
+    aspect-ratio: 1 / 1;
+    background-image: instagram(encode('#666'));
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include pc {
+      width: calc((20 / 1280) * 100vw);
+    }
+
+    @include sp {
+      width: calc((15 / 390) * 100vw);
+    }
+  }
+}
+
+/* -----------------------
+  navMenu
+----------------------- */
+.navMenu {
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  right: -100%;
+  height: 100vh;
+  min-height: 100vh;
+  background: #FFF;
+  overflow-y: scroll;
+  transition: .3s;
+
+  @include pc {
+    width: 45%;
+  }
+
+  @include sp {
+    width: 80%;
+  }
+
+  &.active {
+    right: 0;
+  }
+
+  &--item {
+
+    @include pc {
+      padding: calc((100 / 1280) * 100vw) 0 calc((100 / 1280) * 100vw) calc((80 / 1280) * 100vw);
+      @include column(calc((80 / 1280) * 100vw));
+    }
+
+    @include sp {
+      padding: calc((200 / 390) * 100vw) 0 calc((100 / 390) * 100vw) calc((30 / 390) * 100vw);
+      @include column(calc((30 / 390) * 100vw));
+    }
+
+    .logo {
+      aspect-ratio: 200 / 24;
+      @include imgContain('header-logo.svg');
+
+      @include pc {
+        width: calc((200 / 1280) * 100vw);
+      }
+
+      @include sp {
+        width: calc((200 / 390) * 100vw);
+      }
+    }
+
+    ul {
+
+      @include pc {
+        @include column(calc((30 / 1280) * 100vw));
+      }
+
+      @include sp {
+        @include column(calc((20 / 390) * 100vw));
+      }
+
+      li {
+
+        a {
+          border-bottom: 1px solid #666;
+          margin-left: 2rem;
+          @include sans;
+          color: #666;
+          letter-spacing: .2em;
+          position: relative;
+
+          @include pc {
+            font-size: max(calc((16 / 1280) * 100vw), 12px);
+          }
+
+          @include sp {
+            font-size: calc((12 / 390) * 100vw);
+          }
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -2rem;
+            width: 1rem;
+            aspect-ratio: 1 / 1;
+            border: 1px solid #666;
+            transform: translateY(-50%);
+          }
+        }
+      }
+    }
+  }
+}

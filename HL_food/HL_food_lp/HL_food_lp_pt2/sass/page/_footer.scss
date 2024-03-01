@@ -1,0 +1,148 @@
+@use "../global" as *;
+
+
+/* -----------------------
+  footer
+----------------------- */
+
+footer {
+  display: flex;
+
+  @include pc {
+    flex-wrap: wrap;
+    padding: calc((110 / 1280) * 100vw) calc((70 / 1280) * 100vw) calc((120 / 1280) * 100vw) calc((20 / 1280) * 100vw);
+  }
+
+  @include sp {
+    @include column(calc((40 / 390) * 100vw));
+    padding: calc((70 / 390) * 100vw) 0 calc((80 / 390) * 100vw);
+  }
+
+  .footer--content {
+
+    &--logo {
+      aspect-ratio: 330 / 60;
+      @include imgContain('footer-logo.svg');
+
+      @include pc {
+        width: calc((330 / 1280) * 100vw);
+      }
+
+      @include sp {
+        width: calc((210 / 390) * 100vw);
+        margin: 0 auto;
+      }
+    }
+
+    &--text {
+
+      @include pc {
+        margin-top: calc((50 / 1280) * 100vw);
+      }
+
+      @include sp {
+        margin-top: calc((30 / 390) * 100vw);
+      }
+
+      p {
+        @include sans;
+        color: $black;
+        line-height: 1;
+        letter-spacing: .2em;
+
+        @include pc {
+          font-size: max(calc((16 / 1280) * 100vw), 12px);
+          margin-bottom: calc((20 / 1280) * 100vw);
+        }
+
+        @include sp {
+          text-align: center;
+          font-size: calc((12 / 390) * 100vw);
+          line-height: 3;
+        }
+      }
+    }
+  }
+
+  .footer--SNS {
+    display: flex;
+
+    @include pc {
+      gap: calc((30 / 1280) * 100vw);
+      margin-left: auto;
+    }
+
+    @include sp {
+      justify-content: center;
+      gap: calc((25 / 390) * 100vw);
+    }
+
+    a {
+      @include center;
+      aspect-ratio: 1 / 1;
+      height: fit-content;
+      border-radius: 50%;
+      background-color: #4D4D4D;
+
+      @include pc {
+        width: calc((50 / 1280) * 100vw);
+      }
+
+      @include sp {
+        width: calc((50 / 390) * 100vw);
+      }
+
+      &:nth-child(4) {
+        @include pc {
+          display: none;
+        }
+      }
+
+      .SNS--img {
+        aspect-ratio: 1 / 1;
+        width: 50%;
+
+        &.img--1 {
+          @include iconContain($map);
+        }
+
+        &.img--2 {
+          @include iconContain($mail);
+        }
+
+        &.img--3 {
+          background-image: instagram(encode('#FFF'));
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+
+        }
+
+        &.img--4 {
+          @include iconContain($tel);
+        }
+      }
+    }
+  }
+
+  .copyRight {
+    width: 100%;
+
+    p {
+      @include sans;
+      color: $black;
+      line-height: 1;
+      letter-spacing: .2em;
+
+      @include pc {
+        font-size: max(calc((16 / 1280) * 100vw), 12px);
+        margin-bottom: calc((20 / 1280) * 100vw);
+      }
+
+      @include sp {
+        text-align: center;
+        font-size: calc((12 / 390) * 100vw);
+      }
+    }
+  }
+}

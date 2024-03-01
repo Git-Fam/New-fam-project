@@ -1,0 +1,46 @@
+@use "../global" as *;
+
+/* -----------------------
+  C_title
+----------------------- */
+.C_title{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  @include pc{
+    gap: calc(( 8 / 1280) * 100vw);
+  }
+  @include sp{
+    gap: calc(( 10 / 390) * 100vw);
+  }
+
+  &--check{
+    @include iconContain($check);
+    aspect-ratio: 1 / 1;
+
+    @include pc{
+      width: max(calc(( 30 / 1280) * 100vw),25px);
+    }
+
+    @include sp{
+      width: calc(( 17 / 390) * 100vw);
+    }
+  }
+
+  &--text{
+    padding-bottom: .03rem;
+    h2{
+      @include economica;
+      letter-spacing: .2rem;
+      line-height: 1;
+
+      @include pc{
+        font-size: max(calc(( 22 / 1280) * 100vw),20px);
+      }
+      @include sp{
+        font-size: calc(( 18 / 390) * 100vw);
+      }
+    }
+  }
+}

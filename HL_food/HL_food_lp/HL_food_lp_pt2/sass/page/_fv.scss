@@ -1,0 +1,52 @@
+@use "../global" as *;
+
+/* -----------------------
+  fv
+----------------------- */
+.fv {
+  width: 100%;
+  position: relative;
+  z-index: 5;
+
+  @include pc {
+    padding-right: calc((120 / 1280) * 100vw);
+  }
+
+  @include sp {
+    padding-right: calc((80 / 390) * 100vw);
+  }
+
+  &--img {
+    position: relative;
+    width: 100%;
+
+    @include pc {
+      height: calc((650 / 1280) * 100vw);
+    }
+
+    @include sp {
+      height: calc((550 / 390) * 100vw);
+    }
+
+    &--item {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      &.img--1 {
+        @include imgCover('FV-1.jpg');
+      }
+
+      &.img--2 {
+        @include imgCover('FV-2.jpg');
+        background-position: top;
+      }
+
+      &.img--3 {
+        @include imgCover('FV-3.jpg');
+      }
+    }
+  }
+}

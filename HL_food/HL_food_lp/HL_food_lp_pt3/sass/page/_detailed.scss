@@ -1,0 +1,163 @@
+@use "../global" as *;
+
+/* -----------------------
+  detailed
+----------------------- */
+.detailed {
+
+  @include pc {
+    padding-top: calc((300 / 1920) * 100vw);
+    padding-bottom: calc((250 / 1920) * 100vw);
+  }
+
+  @include sp {
+    padding-top: calc((80 / 390) * 100vw);
+    padding-bottom: calc((80 / 390) * 100vw);
+  }
+
+  &--title {
+    position: relative;
+    z-index: 3;
+
+    @include pc {
+      @include column(calc((20 / 1280) * 100vw));
+      align-items: center;
+      margin-bottom: calc((200 / 1280) * 100vw);
+    }
+
+    @include sp {
+      @include column(calc((20 / 390) * 100vw));
+      align-items: center;
+      margin-bottom: calc((290 / 390) * 100vw);
+    }
+
+    h2 {
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: $Font--C14847;
+
+      @include pc {
+        font-size: max(calc((34 / 1280) * 100vw), 25px);
+      }
+
+      @include sp {
+        font-size: calc((34 / 390) * 100vw);
+      }
+
+      &:nth-of-type(2) {
+        color: $Font--4E6D45;
+      }
+    }
+
+    span {
+      aspect-ratio: 1/1;
+      display: block;
+      @include iconContain($notEqual);
+
+      @include pc {
+        width: calc((22 / 1280) * 100vw);
+      }
+
+      @include sp {
+        width: calc((22 / 390) * 100vw);
+      }
+    }
+  }
+
+  &--content {
+    position: relative;
+
+
+    &--img {
+      aspect-ratio: 1/1;
+      @include imgCover('detailed-img.png');
+      position: absolute;
+      z-index: 2;
+      left: 50%;
+      translate: -50% 0;
+
+      @include pc {
+        top: calc((-280 / 1280) * 100vw);
+        width: calc((553 / 1280) * 100vw);
+      }
+
+      @include sp {
+        top: calc((-330 / 390) * 100vw);
+        width: calc((416 / 390) * 100vw);
+      }
+    }
+
+    &--sentence {
+      position: relative;
+      z-index: 3;
+
+      @include pc {
+        width: max(calc((500 / 1280) * 100vw), 400px);
+        margin-left: calc((200 / 1280) * 100vw);
+        @include column(calc((40 / 1280) * 100vw));
+      }
+
+      @include sp {
+        @include column(calc((25 / 390) * 100vw));
+      }
+
+      p {
+        color: $Font--333333;
+      }
+
+      .title {
+        background-color: $Bg--FFFFFF;
+        width: fit-content;
+        font-weight: 600;
+        letter-spacing: 0.13em;
+
+        @include pc {
+          font-size: max(calc((22 / 1280) * 100vw), 16px);
+          padding: calc((5 / 1280) * 100vw) calc((25 / 1280) * 100vw);
+        }
+
+        @include sp {
+          font-size: calc((21 / 390) * 100vw);
+          padding: calc((5 / 390) * 100vw) calc((10 / 390) * 100vw);
+        }
+      }
+
+      .text {
+        @include sans;
+        line-height: 167%;
+        letter-spacing: 0.03em;
+
+        @include pc {
+          padding-left: 2rem;
+          font-size: max(calc((15 / 1280) * 100vw), 11px);
+        }
+
+        @include sp {
+          padding: 0 1.5rem;
+          font-size: calc((15 / 390) * 100vw);
+        }
+      }
+    }
+
+    &--deco {
+      background-color: $Bg--34572A;
+      height: fit-content;
+      flex-shrink: 0;
+
+      @include pc {
+        position: absolute;
+        right: 0;
+        z-index: 1;
+        top: calc((-100 / 1280) * 100vw);
+        aspect-ratio: 640/455;
+        width: calc((640 / 1280) * 100vw);
+      }
+
+      @include sp {
+        aspect-ratio: 380/77;
+        width: 95%;
+        margin: calc((50 / 390) * 100vw) 0 0 auto;
+      }
+    }
+  }
+}

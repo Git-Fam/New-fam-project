@@ -1,0 +1,11 @@
+@use "../global" as *;
+
+/* -----------------------
+  picture
+----------------------- */
+.picture {
+  aspect-ratio: 1280 / 790;
+  width: 100%;
+  @include imgCover('picture.jpg');
+  position: relative;
+}

@@ -1,0 +1,81 @@
+@use "../global" as *;
+
+/* -----------------------
+  anime
+----------------------- */
+
+// <a href="#" target="_blank" rel="noopener noreferrer"></a>
+
+// // ホバーで薄く
+// .hover-opa{
+//   transition: 0.3s;
+
+//   &:hover{
+//     opacity: 0.6;
+//   }
+// }
+
+// // ホバーで大きく
+// .hover-scale{
+//   transition: 0.3s;
+
+//   &:hover{
+//     transform: scale(1.1);
+//   }
+// }
+
+// したから上に出てくる
+// .up {
+//   opacity: 0;
+
+//   &.show {
+//     opacity: 0;
+//     transform: translateY(100%);
+//     animation: up 0.5s ease 0.5s forwards;
+
+//     @keyframes up {
+//       0% {
+//         opacity: 0;
+//         transform: translateY(100%);
+//       }
+
+//       100% {
+//         opacity: 1;
+//         transform: translateY(0);
+//       }
+//     }
+//   }
+// }
+
+// スライドしないshow
+.show{
+  animation: anime 15s 0s infinite;
+  z-index: 0;
+  opacity: 0;
+
+  &:nth-child(1){
+    animation-delay: 0s;
+  }
+  &:nth-child(2){
+    animation-delay: 5s;
+  }
+  &:nth-child(3){
+    animation-delay: 10s;
+  }
+
+  @keyframes anime {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 0;
+        z-index: 10;
+    }
+    100% {
+        opacity: 0;
+    }
+  }
+}

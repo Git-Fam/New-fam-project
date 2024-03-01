@@ -1,0 +1,87 @@
+@use "../global" as *;
+
+/* -----------------------
+  access
+----------------------- */
+.access {
+  position: relative;
+  @include imgCover('access--1.jpg');
+  width: 100%;
+
+  @include pc {
+    aspect-ratio: 1280/531;
+  }
+
+  @include sp {
+    aspect-ratio: 390/463;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+  }
+
+  &--Jr {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 2;
+
+    @include pc {
+      width: calc((1215 / 1280) * 100vw);
+      @include column(calc((100 / 1280) * 100vw));
+      bottom: calc((65 / 1280) * 100vw);
+    }
+
+    @include sp {
+      width: calc((360 / 390) * 100vw);
+      @include column(calc((25 / 390) * 100vw));
+      bottom: calc((40 / 390) * 100vw);
+    }
+
+    .map {
+      @include pc {
+        aspect-ratio: 1280/395;
+        width: 100%;
+      }
+
+      @include sp {
+        aspect-ratio: 390/487;
+        width: 100%;
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .logo {
+      margin: 0 auto;
+
+      @include pc {
+        width: calc((157 / 1280) * 100vw);
+        height: calc((112 / 1280) * 100vw);
+      }
+
+      @include sp {
+        width: calc((157 / 390) * 100vw);
+        height: calc((112 / 390) * 100vw);
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+      }
+    }
+  }
+}
