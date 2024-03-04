@@ -45,27 +45,27 @@ $(window).scroll(function () {
 });
 
 //スライダー
-// $(document).ready(function(){
-//   $('.production--under').slick({
-//     autoplay: true,
-//     autoplaySpeed: 0,
-//     speed: 5000,
-//     cssEase: "linear",
-//     slidesToShow: 3,
-//     swipe: false,
-//     arrows: false,
-//     pauseOnFocus: false,
-//     pauseOnHover: false,
-//     responsive: [
-//       {
-//         breakpoint: 767,
-//         settings: {
-//           slidesToShow: 2.5
-//         }
-//       }
-//     ]
-//   });
-// });
+$(document).ready(function(){
+  $('.production--under').slick({
+    autoplay: true,
+    autoplaySpeed: 0,
+    speed: 5000,
+    cssEase: "linear",
+    slidesToShow: 3,
+    swipe: false,
+    arrows: false,
+    pauseOnFocus: false,
+    pauseOnHover: false,
+    responsive: [
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 2.5
+        }
+      }
+    ]
+  });
+});
 
 //Q&Aクリックするとアンサーが出てくる
 $('.question').click(function(){
