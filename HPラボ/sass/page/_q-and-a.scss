@@ -1,8 +1,12 @@
 @use "../global" as *;
 #q-and-a{
   @include img("Q&Abg.png");
+  background-size: 140% auto;
+  background-position: top center;
+
   @include pc{
     padding: calc(( 100 /1280)*100vw) 0 calc(( 100 /1280)*100vw);
+    // height: calc(( 1600 /1280)*100vw);
   }
   @include sp{
     padding: calc(( 60 /390)*100vw) 0 calc(( 60 /390)*100vw);

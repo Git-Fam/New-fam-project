@@ -65,6 +65,7 @@
     li{
       background: #FFF;
       z-index: 99;
+
       @include pc{
         width: calc(( 131 /1280)*100vw);
         border-radius: calc(( 20 /1280)*100vw);
@@ -76,8 +77,9 @@
         border-radius: calc(( 20 /390)*100vw);
         box-shadow: calc(( 2 /390)*100vw) calc(( 2 /390)*100vw) calc(( 10 /390)*100vw) 0px rgba(0, 0, 0, 0.25);
         padding: calc(( 16 /390)*100vw) 0;
-
       }
+
+
       .flow--container--icon{
         margin: 0 auto;
         @include pc{

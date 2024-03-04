@@ -17,45 +17,55 @@ $(function () {
 
 
  // 下から上に出てくるアニメーション
- function scrollupAnime(){
-  $('.up').each(function(){ 
-      var elemPos = $(this).offset().top-60;
-      var scroll = $(window).scrollTop();
-      var windowHeight = $(window).height();
-      if (scroll >= elemPos - windowHeight){
-      $(this).addClass('fadeUpanime');
-      }else{
-      $(this).removeClass('fadeUpanime');
-      }
-      });
-}
-$(window).scroll(function (){
-  scrollupAnime();
-});
+//  function scrollupAnime(){
+//   $('.up').each(function(){ 
+//       var elemPos = $(this).offset().top-60;
+//       var scroll = $(window).scrollTop();
+//       var windowHeight = $(window).height();
+//       if (scroll >= elemPos - windowHeight){
+//       $(this).addClass('fadeUpanime');
+//       }else{
+//       $(this).removeClass('fadeUpanime');
+//       }
+//       });
+// }
+// $(window).scroll(function (){
+//   scrollupAnime();
+// });
 
 
-//スライダー
-$(document).ready(function(){
-  $('.production--under').slick({
-    autoplay: true,
-    autoplaySpeed: 0,
-    speed: 5000,
-    cssEase: "linear",
-    slidesToShow: 3,
-    swipe: false,
-    arrows: false,
-    pauseOnFocus: false,
-    pauseOnHover: false,
-    responsive: [
-      {
-        breakpoint: 767,
-        settings: {
-          slidesToShow: 2.5
-        }
-      }
-    ]
+$(window).scroll(function () {
+  $('.up , .gunyon,.cover,.left ,.right').each(function () {
+    var top_of_element = $(this).offset().top;
+    var bottom_of_window = $(window).scrollTop() + $(window).height();
+    if (bottom_of_window > top_of_element) {
+      $(this).addClass('show');
+    }
   });
 });
+
+//スライダー
+// $(document).ready(function(){
+//   $('.production--under').slick({
+//     autoplay: true,
+//     autoplaySpeed: 0,
+//     speed: 5000,
+//     cssEase: "linear",
+//     slidesToShow: 3,
+//     swipe: false,
+//     arrows: false,
+//     pauseOnFocus: false,
+//     pauseOnHover: false,
+//     responsive: [
+//       {
+//         breakpoint: 767,
+//         settings: {
+//           slidesToShow: 2.5
+//         }
+//       }
+//     ]
+//   });
+// });
 
 //Q&Aクリックするとアンサーが出てくる
 $('.question').click(function(){

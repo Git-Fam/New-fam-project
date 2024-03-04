@@ -28,3 +28,15 @@ body{
 .wapper{
   overflow: hidden;
 }
+
+
+main{
+  
+  @include pc{
+    // margin-top: ;
+  }
+
+  @include sp{
+    padding-top: calc(( 52 / 390) * 100vw);
+  }
+}

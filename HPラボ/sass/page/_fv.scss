@@ -76,7 +76,7 @@
               font-size: calc(( 30 /390)*100vw);
             }
           }
-          .left{
+          .left-1{
             display: inline-block;
             transform: rotate(-10.007deg);
             @include pc{
@@ -86,7 +86,7 @@
               margin-right: calc(( 4 /390)*100vw);
             }
           }
-          .right{
+          .right-1{
             display: inline-block;
             transform: rotate(10.007deg);
             @include pc{

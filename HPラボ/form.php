@@ -47,14 +47,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message2 .= "こちらは自動返信メールです。担当者からの返信をお待ちください。\n";
     
     // メールを送信先1に送信
-    $to1 = "ikumi.kaku818@gmail.com"; // 受信者のメールアドレス1本番
+    $to1 = "seedless0802@gmail.com"; // 受信者のメールアドレス1テスト
+    // $to1 = "hplabo-support@hp-lab.co.jp"; // 受信者のメールアドレス1本番
     $subject1 = "ホームページラボからお問い合わせがありました。"; // メールの件名
-    $headers1 = "From: iku.doremi0717@gmail.com\r\n"; // 送信元のメールアドレス
+    $headers1 = "From: hplabo-support@hp-lab.co.jp\r\n"; // 送信元のメールアドレス
 
     // メールを送信先2に送信
     $to2 = $_POST["email"]; // 受信者のメールアドレス2
     $subject2 = "お問い合わせを受け付けました。"; // メールの件名
-    $headers2 = "From: iku.doremi0717@gmail.com\r\n"; // 送信元のメールアドレス
+    $headers2 = "From: hplabo-support@hp-lab.co.jp\r\n"; // 送信元のメールアドレス
 
     // 2つのメールを送信
     $mail1 = mail($to1, $subject1, $message1, $headers1);

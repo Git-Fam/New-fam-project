@@ -6,6 +6,11 @@ header{
   }  
   .header--sp--wrapper{
     padding: calc(( 12 /390)*100vw) calc(( 14 /390)*100vw);
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    background-color: #FFF;
+
     .hamburger{
       width: calc(( 30 /390)*100vw);
       margin-left: auto;
@@ -28,6 +33,7 @@ header{
     right:-120%;
     transition: 0.5s;
     height: 100vh;
+    z-index: 999;
 
     .gnav-btn{
       margin: 0 calc(( 14 /390)*100vw) 0 auto;
@@ -47,7 +53,6 @@ header{
       inset: 0;
       margin-left: auto;
       opacity: 1;
-      z-index: 999;
     }
     ul{
       width: calc(( 287 /390)*100vw);
@@ -122,6 +127,32 @@ header{
   li{
     a{
       color: $blue;
+      transition: all .3s;
+      position: relative;
+
+      &::before{
+        position: absolute;
+        content: "";
+        border-bottom: calc(( 2 /1280)*100vw) solid #0F6CD8;
+        width: 0;
+        display: block;
+        bottom: 0;
+        left: 0;
+        transition: all .3s;
+      }
+
+      &:hover{
+        &::before{
+          width: 100%;
+        }
+      }
+
+
+      &.f-a{
+        &::before{
+          border-color: #FFF;
+        }
+      }
     }
   }
   .inquiry{
@@ -133,7 +164,12 @@ header{
     margin: auto 0;
     a{
       color: #FFF;
-      line-height: calc(( 38 /1280)*100vw);
+      line-height: calc(( 38 /1280)*100vw);  
+      &:hover{
+        &::before{
+          width: 0%;
+        }
+      }    
     }
   }
 }

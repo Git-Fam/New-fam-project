@@ -194,8 +194,8 @@
           height: calc(( 72 /1280)*100vw);
           position: absolute;
           bottom: calc(( 20 /1280)*100vw);
-          left: 50%;
-          transform: translateX(-50%);
+          left: 0;
+          right: 0;
         }
         @include sp{
           width: calc(( 242 /390)*100vw);
