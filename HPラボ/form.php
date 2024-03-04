@@ -77,6 +77,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
        } else {
         echo '<script>alert("メールの送信に失敗しました。もう一度お試しください。"); window.location.href = "index.html";</script>';
        }
+      }
     
     ?>
-
