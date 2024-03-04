@@ -38,6 +38,8 @@
 
 <!-- Meta Tags Generated with https://metatags.io -->
 
+    <!-- リキャプチャ -->
+
     <!-- ▼ファビコン -->
     <!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
 
@@ -687,7 +689,10 @@
                     </div>
                 </div>
 
-                <div class="confirm hover-opa" onclick="validateForm()">確認</div>
+                <div class="form-button">
+                    <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+                    <div class="confirm hover-opa" type="submit" id="sendBtn" name="sendBtn" onclick="validateForm()">確認</div>    
+                </div>
         <!-- モーダル -->
                 <div class="modal" id="modal">
                     <div class="modal--inner">
@@ -750,6 +755,7 @@
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfgSjkpAAAAACCc5quYLf7UdZR-BfCI97N0tLIS"></script> 
     <script>
         grecaptcha.ready(function() {
             grecaptcha.execute('6LfgSjkpAAAAACCc5quYLf7UdZR-BfCI97N0tLIS', {action: 'homepage'}).then(function(token) {
@@ -758,6 +764,7 @@
             });
         });
     </script>
+        
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="slick/slick.min.js"></script>

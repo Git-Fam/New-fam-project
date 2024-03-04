@@ -11,14 +11,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $content = $_POST["content"];
 
 
-   //  // reCAPTCHAの秘密キー
-   //  $secretKey =  '6LfgSjkpAAAAAA1E99uU27xpTbNxsuH0NjdaAt5I';
-   //  $captchaResponse = $_POST['g-recaptcha-response'];
+ // reCAPTCHAの秘密キー
+    $secretKey = '6Lcl-ogpAAAAADj-gUGDCO2KC6YBnCA62pk-cz_B';
+    $captchaResponse = $_POST['g-recaptcha-response'];
 
-   //  // APIリクエスト
-   //  $verifyResponse = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$secretKey}&response={$captchaResponse}");
+     // APIリクエスト
+    $verifyResponse = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$secretKey}&response={$captchaResponse}");
  
- 
+         
     
     // 送信先１　自分
     $message1 = "以下内容で受け付けました。\n";
@@ -61,21 +61,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mail1 = mail($to1, $subject1, $message1, $headers1);
     $mail2 = mail($to2, $subject2, $message2, $headers2);
 
-    if ($mail1 && $mail2) {
-        // 送信が成功した場合の処理
-        echo '<script>alert("送信が完了しました。担当者からの返信をお待ちください。"); window.location.href = "index.html";</script>';
-    } else {
-        // 送信が失敗した場合の処理
-        echo '<script>alert("メールの送信に失敗しました。もう一度お試しください。");</script>';
-    }
+    // if ($mail1 && $mail2) {
+    //     // 送信が成功した場合の処理
+    //     echo '<script>alert("送信が完了しました。担当者からの返信をお待ちください。"); window.location.href = "index.html";</script>';
+    // } else {
+    //     // 送信が失敗した場合の処理
+    //     echo '<script>alert("メールの送信に失敗しました。もう一度お試しください。");</script>';
+    // }
 
-   //  $responseData = json_decode($verifyResponse);
-   //  if ($responseData->success) {
-   //       if ($mail1 && $mail2) {
-   //          echo '<script>alert("送信が完了しました。担当者からの返信をお待ちください。"); window.location.href = "index.html";</script>';
-   //       }
-   //     } else {
-   //      echo '<script>alert("メールの送信に失敗しました。もう一度お試しください。"); window.location.href = "index.html";</script>';
-   //     }
-}
-?>
+    $responseData = json_decode($verifyResponse);
+    if ($responseData->success) {
+         if ($mail1 && $mail2) {
+            echo '<script>alert("送信が完了しました。担当者からの返信をお待ちください。"); window.location.href = "index.html";</script>';
+         }
+       } else {
+        echo '<script>alert("メールの送信に失敗しました。もう一度お試しください。"); window.location.href = "index.html";</script>';
+       }
+    
+    ?>
+
