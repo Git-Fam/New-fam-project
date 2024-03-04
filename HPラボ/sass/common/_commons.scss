@@ -40,3 +40,8 @@ main{
     padding-top: calc(( 52 / 390) * 100vw);
   }
 }
+
+// リキャプチャー非表示
+.grecaptcha-badge {
+  visibility: hidden; 
+}

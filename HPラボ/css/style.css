@@ -91,6 +91,10 @@ body.active {
   }
 }
 
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
 .hover-opa {
   transition: 0.3s;
 }
@@ -455,6 +459,7 @@ header .gnav-sp ul .inquiry .arrow {
 }
 
 footer {
+  position: relative;
   background: linear-gradient(90deg, #A2D6FB 0.94%, #126EDA 99.26%);
 }
 @media screen and (min-width: 768px) {
@@ -466,6 +471,25 @@ footer {
   footer {
     padding: 3.5897435897vw 5.1282051282vw;
   }
+}
+footer .reCapture {
+  color: #FFF;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+@media screen and (min-width: 768px) {
+  footer .reCapture p {
+    font-size: 0.78125vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  footer .reCapture p {
+    font-size: 2.0512820513vw;
+  }
+}
+footer .reCapture p a {
+  color: #FFF;
 }
 @media screen and (max-width: 767px) {
   footer .header--list {

@@ -1,12 +1,30 @@
 @use "../global" as *;
 
 footer{
+  position: relative;
   background: linear-gradient(90deg, #A2D6FB 0.94%, #126EDA 99.26%);
   @include pc{
-    padding: calc(( 30 /1280)*100vw) calc(( 60 /1280)*100vw) calc(( 30 /1280)*100vw) 0;
+    padding: calc((30 /1280)*100vw) calc(( 60 /1280)*100vw) calc(( 30 /1280)*100vw) 0;
   }
   @include sp{
     padding: calc(( 14 /390)*100vw) calc(( 20 /390)*100vw);
+  }
+  .reCapture{
+    color: #FFF;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    p{
+      @include pc{
+        font-size: calc(( 10 /1280)*100vw);
+      }
+      @include sp{
+        font-size: calc(( 8 /390)*100vw);
+      }
+      a{
+        color: #FFF;
+      }
+    }  
   }
   .header--list{
     @include sp{
