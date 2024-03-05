@@ -1950,7 +1950,7 @@ WordPress↑
 }
 @media screen and (min-width: 768px) {
   #production .production--main .production--main--sp {
-    width: 39.0625vw;
+    width: 31.25vw;
     height: 39.0625vw;
     top: 11.71875vw;
     left: 54.6875vw;
@@ -2604,6 +2604,10 @@ WordPress↑
     margin-bottom: 10.2564102564vw;
   }
 }
+#voice .voice--container li .voice--container--text {
+  display: grid;
+  place-items: center center;
+}
 @media screen and (min-width: 768px) {
   #voice .voice--container li .voice--container--text {
     background-image: url("../img/voicebg.png");
@@ -2623,23 +2627,20 @@ WordPress↑
     background-repeat: no-repeat;
     width: 75.3846153846vw;
     height: 46.6666666667vw;
-    padding: 3.8461538462vw 7.6923076923vw 3.0769230769vw 5.1282051282vw;
+    padding: 3.8461538462vw 8.9743589744vw 3.0769230769vw 1.2820512821vw;
   }
-}
-#voice .voice--container li .voice--container--text .text {
-  line-height: 1.5;
 }
 @media screen and (min-width: 768px) {
   #voice .voice--container li .voice--container--text .text {
-    font-size: 1.40625vw;
-    line-height: 1.8;
+    font-size: 1.328125vw;
+    line-height: 1.5;
   }
 }
 @media screen and (max-width: 767px) {
   #voice .voice--container li .voice--container--text .text {
     font-size: 3.0769230769vw;
     width: 59.7435897436vw;
-    line-height: 1.5;
+    line-height: 1.3;
   }
 }
 @media screen and (min-width: 768px) {

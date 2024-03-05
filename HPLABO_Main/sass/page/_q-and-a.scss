@@ -2,7 +2,7 @@
 #q-and-a{
   @include img("Q&Abg.png");
   background-size: 140% auto;
-  background-position: top center;
+  background-position:top center;
 
   @include pc{
     padding: calc(( 100 /1280)*100vw) 0 calc(( 100 /1280)*100vw);

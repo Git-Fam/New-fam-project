@@ -35,6 +35,8 @@
         margin-bottom: calc(( 40 /390)*100vw);
       }
       .voice--container--text{
+        display: grid;
+        place-items: center center;
         @include pc{
           @include img("voicebg.png");
           width: calc(( 720 /1280)*100vw);
@@ -45,19 +47,17 @@
           @include img("voicebgSP.png");
           width: calc(( 294 /390)*100vw);
           height: calc(( 182 /390)*100vw);
-          padding: calc(( 15 /390)*100vw) calc(( 30 /390)*100vw) calc(( 12 /390)*100vw) calc(( 20 /390)*100vw);
+          padding: calc(( 15 /390)*100vw) calc(( 35 /390)*100vw) calc(( 12 /390)*100vw) calc(( 5 /390)*100vw);
         }
         .text{
-          line-height: 1.5;
           @include pc{
-            font-size: calc(( 18 / 1280) * 100vw);
-            line-height: 1.8;
+            font-size: calc(( 17 / 1280) * 100vw);
+            line-height: 1.5;
           }
           @include sp{
             font-size: calc(( 12 /390)*100vw);
             width: calc(( 233 /390)*100vw);
-            line-height: 1.5;
-
+            line-height: 1.3;
           }
         }
       }
