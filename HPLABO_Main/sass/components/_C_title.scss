@@ -1,0 +1,32 @@
+@use "../global" as *;
+body{
+  color: #3A455E;
+}
+
+.C--title{
+  margin: 0 auto;
+  p{
+    font-weight: bold;
+    text-align: center;
+    @include pc{
+      font-size: calc(( 35 /1280)*100vw);
+      letter-spacing: calc(( 2.8 /1280)*100vw);
+      line-height: calc(( 90 /1280)*100vw);
+    }
+    @include sp{
+      font-size: calc(( 18 /390)*100vw);
+      letter-spacing: calc(( 0.7 /390)*100vw);
+      line-height: calc(( 50 /390)*100vw);
+    }
+    span{
+      font-weight: bold;
+      @include pc{
+        font-size: calc(( 48 /1280)*100vw);
+      }
+      @include sp{
+        font-size: calc(( 26 /390)*100vw);
+      }
+    }
+  }
+}
+

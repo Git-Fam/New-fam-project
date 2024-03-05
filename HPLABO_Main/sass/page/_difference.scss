@@ -1,0 +1,118 @@
+@use "../global" as *;
+
+#difference{
+  @include img("differencebg.png");
+  background-size: cover;
+  @include pc{
+    padding: calc(( 153 /1280)*100vw) 0 calc(( 100 /1280)*100vw);
+  } 
+  @include sp{
+    padding: calc(( 96 /390)*100vw) 0 calc(( 56 /390)*100vw);
+  }
+  .difference--title{
+    @include img("differencetitle.png");
+    margin: 0 auto;
+    @include pc{
+      width: calc(( 840 /1280)*100vw);
+      height: calc(( 129 /1280)*100vw);
+    }
+    @include sp{
+      width: calc(( 383 /390)*100vw);
+      height: calc(( 70 /390)*100vw);
+    }
+    h2{
+      text-align: center;
+      @include pc{
+        font-size: calc(( 25 /1280)*100vw);
+        line-height: calc(( 100 /1280)*100vw);
+      }
+      @include sp{
+        font-size: calc(( 16 /390)*100vw);
+        line-height: calc(( 50 /390)*100vw);
+      }
+      span{
+        @include pc{
+          font-size: calc(( 40 /1280)*100vw);
+        }
+        @include sp{
+          font-size: calc(( 23 /390)*100vw);
+        }
+      }
+    }
+  }
+  .difference--container{
+    background: rgba(255, 255, 255, 0.65);
+    @include pc{
+      width: calc(( 700 /1280)*100vw);
+      margin: calc(( 40 /1280)*100vw) auto 0;
+      padding: calc(( 32 /1280)*100vw) calc(( 38 /1280)*100vw) calc(( 32 /1280)*100vw) calc(( 40 /1280)*100vw);
+    }
+    @include sp{
+      width: calc(( 367 /390)*100vw);
+      margin: calc(( 20 /390)*100vw) auto 0;
+      padding: calc(( 17 /390)*100vw) calc(( 10 /390)*100vw)  calc(( 20 /390)*100vw) calc(( 4 /390)*100vw);
+    }
+    ul{
+      li{
+        display: flex;
+        @include pc{
+          margin-top: calc(( 35 /1280)*100vw);
+        }
+        @include sp{
+          margin-top: calc(( 20 /390)*100vw);
+        }
+        .difference--container--icon{
+          @include img("pc.png");
+          @include pc{
+            width: calc(( 51 /1280)*100vw);
+            height: calc(( 49 /1280)*100vw);
+            margin-right: calc(( 6 /1280)*100vw) ;
+          }
+          @include sp{
+            width: calc(( 40 /390)*100vw);
+            height: calc(( 31 /390)*100vw);
+            margin: calc(( -5 /390)*100vw) calc(( 3 /390)*100vw) 0 0;
+          }
+        }
+        .difference--container--textbox{
+          .title{
+            font-weight: bold;
+            @include pc{
+              font-size: max(calc(( 22 / 1280) * 100vw),16px);
+            }
+            @include sp{
+              font-size: calc(( 16 /390)*100vw);
+            }
+            span{
+              color: #0F6CD8;
+              font-weight: bold;
+              @include pc{
+                font-size: max(calc(( 26 / 1280) * 100vw),20px);
+              }
+              @include sp{
+                font-size: calc(( 20 /390)*100vw);
+              }
+            }
+          }
+          .text{
+            @include pc{
+              font-size: max(calc(( 18 / 1280) * 100vw),14px);
+              margin-top: calc(( 10 /1280)*100vw);
+              line-height: 1.5;
+            }
+            @include sp{
+              font-size: calc(( 14 / 390) * 100vw);
+              margin-top: calc(( 5 /390)*100vw);
+              letter-spacing: calc(( 1 /390)*100vw);
+              line-height: 1.3;
+
+            }
+          }
+        }
+        &:first-child{
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}

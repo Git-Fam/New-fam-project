@@ -1,0 +1,332 @@
+@use "../global" as *;
+
+#fv{
+  @include pc{
+    @include img("FV.png");
+    background-position: right;  
+    padding: calc(( 86 /1280)*100vw) 0 calc(( 50 /1280)*100vw) calc(( 95 /1280)*100vw);
+  }
+  @include sp{
+    @include img("FV-sp.png");
+    padding: calc(( 32 /390)*100vw) 0 calc(( 15 /390)*100vw);
+  }
+  .fv--wrapper{
+    @include pc{
+      width: calc(( 580 /1280)*100vw);
+    }
+    @include sp{
+      width: calc(( 355 /390)*100vw);
+      margin: 0 auto;
+    }
+    .fv--title{
+      position: relative;
+      h1{
+        display: grid;
+        .fv--title--top{
+          text-align: center;
+          font-weight: bold;
+          @include pc{
+            font-size: calc(( 24 /1280)*100vw);
+          }
+          @include sp{
+            font-size: calc(( 14 /390)*100vw);
+          }
+        }
+        .fv--title--main{
+          font-weight: bold;
+          background: linear-gradient(153deg, #FFC86E 17.04%, #FF9E01 68.65%);
+          @include pc{
+            font-size: calc(( 120 /1280)*100vw);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: calc(( 10 /1280)*100vw) 0;
+          }
+          @include sp{
+            font-size: calc(( 72 /390)*100vw);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: calc(( 6 /390)*100vw) 0;
+          }
+          span{
+            font-weight: bold;
+            @include pc{
+              font-size: calc(( 66 /1280)*100vw);
+            }
+            @include sp{
+              font-size: calc(( 43 /390)*100vw);
+            }
+          }
+        }
+        .fv--title--under{
+          font-weight: bold;
+          @include pc{
+            font-size: calc(( 45 /1280)*100vw);
+          }
+          @include sp{
+            font-size: calc(( 25 /390)*100vw);
+          }
+          .free{
+            font-weight: bold;
+            @include pc{
+              font-size: calc(( 70 /1280)*100vw);
+            }
+            @include sp{
+              font-size: calc(( 30 /390)*100vw);
+            }
+          }
+          .left-1{
+            display: inline-block;
+            transform: rotate(-10.007deg);
+            @include pc{
+              margin-right: calc(( 10 /1280)*100vw);
+            }
+            @include sp{
+              margin-right: calc(( 4 /390)*100vw);
+            }
+          }
+          .right-1{
+            display: inline-block;
+            transform: rotate(10.007deg);
+            @include pc{
+              vertical-align: calc(( -10 /1280)*100vw);
+            }
+            @include sp{
+              vertical-align: calc(( -5 /390)*100vw);
+            }
+          }
+        }
+      }
+      .fv--title--buble01{
+        @include img("FVbubble01.png");
+        position: absolute;
+        display: grid;
+        place-items: center center;
+        @include pc{
+          width: calc(( 160 /1280)*100vw);
+          height: calc(( 115 /1280)*100vw);
+          top: calc(( -65 /1280)*100vw);
+          left: calc(( -70 /1280)*100vw);
+        }
+        @include sp{
+          width: calc(( 90 /390)*100vw);
+          height: calc(( 65 /390)*100vw);
+          top: calc(( -32 /390)*100vw);
+          left: calc(( -23 /390)*100vw);
+        }
+        p{
+          color: #FFF;
+          font-weight: 500;
+          text-align: center;
+          font-family: "fot-tsukuardgothic-std", sans-serif;
+          transform: rotate(-13.644deg);
+          @include pc{
+            font-size: calc(( 24 /1280)*100vw);
+            line-height: 1.1;
+          }
+          @include sp{
+            font-size: calc(( 14 /390)*100vw);
+          }
+          span{
+            font-weight: 500;
+            @include pc{
+              font-size: calc(( 20 /1280)*100vw);
+            }
+            @include sp{
+              font-size: calc(( 10 /390)*100vw);
+            }
+          }
+        }
+      }
+      .fv--title--buble02{
+        @include img("FVbubble02.png");
+        position: absolute;
+        display: grid;
+        place-items: center center;
+        @include pc{
+          width: calc(( 134 /1280)*100vw);
+          height: calc(( 91 /1280)*100vw);
+          bottom: 0;
+          right: calc(( -50 /1280)*100vw);
+        }
+        @include sp{
+          width: calc(( 90 /390)*100vw);
+          height: calc(( 61 /390)*100vw);
+          bottom: calc(( -20/390)*100vw);
+          right:0;
+
+        }
+        p{
+          color: #FFF;
+          font-weight: 500;
+          text-align: center;
+          font-family: "fot-tsukuardgothic-std", sans-serif;
+          line-height: 1.1;
+          transform: rotate(13.031deg);
+          @include pc{
+            font-size: calc(( 18 /1280)*100vw);
+          }
+          @include sp{
+            font-size: calc(( 10 /390)*100vw);
+            margin-top: calc(( -6 /390)*100vw);
+          }
+          span{
+            font-weight: 500;
+            @include pc{
+              font-size: calc(( 22 /1280)*100vw);
+            }
+            @include sp{
+              font-size: calc(( 16 /390)*100vw);
+            }  
+          }
+        }
+      }
+    }
+    .fv--label{
+      display: flex;
+      justify-content: space-between;
+      @include pc{
+        width: calc(( 470 /1280)*100vw);
+        margin: calc(( 20 /1280)*100vw) auto;
+      }
+      @include sp{
+        margin: calc(( 241 /390)*100vw) auto 0;
+        width: calc(( 344 /390)*100vw);
+      }
+      li{
+        @include img("FVlabel.png");
+        display: grid;
+        place-items: center center;
+        opacity: 0;
+        animation: fadeUpAnime 0s ease 0s  normal;
+        animation-fill-mode:forwards;
+        animation-duration:1s;
+        @keyframes fadeUpAnime{
+          0% {
+              opacity: 0;
+              transform: translateY(50px);
+          }
+          100%{
+              opacity: 1;
+              transform: translateY(0px);
+          }
+        }
+        @include pc{
+          width: calc(( 141 /1280)*100vw);
+          height: calc(( 138 /1280)*100vw);
+        }
+        @include sp{
+          width: calc(( 100 /390)*100vw);
+          height: calc(( 98 /390)*100vw);
+        }
+        p{
+          text-align: center;
+          font-weight: bold;
+          line-height: 1.3;
+          @include pc{
+            font-size: calc(( 18 /1280)*100vw);
+          }
+          @include sp{
+            font-size: calc(( 14 /390)*100vw);
+          }
+          span{
+            font-weight: bold;
+            @include pc{
+              font-size: calc(( 24 /1280)*100vw);
+            }  
+            @include sp{
+              font-size: calc(( 17 /390)*100vw);
+            }
+  
+          }
+          .small{
+            @include pc{
+              font-size: calc(( 14 /1280)*100vw);
+            }  
+          }
+        }
+        &:nth-of-type(2){
+          animation-delay: 0.5s;
+        }
+        &:nth-of-type(3){
+          animation-delay: 1s;
+        }
+
+      }
+    }
+    .FV--btn{
+      margin: 0 auto;
+      display: block;
+      @include pc{
+        width: calc(( 484 /1280)*100vw);
+      }
+      @include sp{
+        margin-top: calc(( 25 /390)*100vw);
+      }
+      .C--btn-top{
+        justify-content: space-between;
+        color: $blue;
+        @include pc{
+          width: calc(( 250 /1280)*100vw);
+          margin-bottom: calc(( 8 /1280)*100vw);
+        }
+        .btn-deco{
+          @include pc{
+            width: calc(( 31 /1280)*100vw);
+            height: calc(( 45 /1280)*100vw);
+          }
+        }
+        .btn-top-text{
+          letter-spacing: normal;
+          @include pc{
+            font-size: calc(( 23 /1280)*100vw);
+          }  
+          span{
+            @include pc{
+              font-size: calc(( 50 /1280)*100vw);
+            }
+          }  
+        }
+      }
+      .C--btn-main{
+        @include pc{
+          height: calc(( 74 /1280)*100vw);
+        }
+        .btn-icon{
+          @include pc{
+            width: calc(( 43 /1280)*100vw);
+            height: calc(( 30 /1280)*100vw); 
+            margin: auto calc(( 12 /1280)*100vw) auto calc(( 17 /1280)*100vw);
+          }
+        }
+        .btn-main-text{
+          @include pc{
+            font-size: calc(( 26 /1280)*100vw);
+            bottom: calc(( 25 /1280)*100vw);
+            margin-left: calc(( -39 /1280)*100vw)
+          }
+          @include sp{
+            margin-left: calc(( 10 /390)*100vw);
+          }
+          img{
+            @include pc{
+              width: calc(( 132 /1280)*100vw);
+              height: calc(( 87 /1280)*100vw);
+            }
+          }
+        }
+        .btn-arrow{
+          @include pc{
+            width: calc(( 23 /1280)*100vw);
+            height: calc(( 25 /1280)*100vw);
+          }
+          @include sp{
+            width: calc(( 20 /390)*100vw);
+            height: calc(( 20 /390)*100vw);
+          }
+        }
+      }
+    }  
+  }
+}

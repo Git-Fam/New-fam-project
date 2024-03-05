@@ -47,8 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message2 .= "こちらは自動返信メールです。担当者からの返信をお待ちください。\n";
     
     // メールを送信先1に送信
-    $to1 = "seedless0802@gmail.com"; // 受信者のメールアドレス1テスト
-    // $to1 = "hplabo-support@hp-lab.co.jp"; // 受信者のメールアドレス1本番
+    $to1 = "hplabo-support@hp-lab.co.jp"; // 受信者のメールアドレス1本番
     $subject1 = "ホームページラボからお問い合わせがありました。"; // メールの件名
     $headers1 = "From: hplabo-support@hp-lab.co.jp\r\n"; // 送信元のメールアドレス
 

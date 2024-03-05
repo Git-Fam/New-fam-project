@@ -1,0 +1,275 @@
+@use "../global" as *;
+
+// ホバーで薄く
+.hover-opa {
+    transition: 0.3s;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+// したから上に出てくる
+// .fadeUpanime{
+//     animation-name:scrollupAnime;
+//     animation-duration:1s;
+//     animation-fill-mode:forwards;
+//     transition: opacity 0.3s ease;
+//     opacity: 0;
+//     @keyframes scrollupAnime{
+//         from {
+//             opacity: 0;
+//             transform: translateY(100px);
+//         }
+//         to {
+//             opacity: 1;
+//             transform: translateY(0);
+//         }
+//     }    
+// }
+
+// したから上に出てくる
+.up {
+    opacity: 0;
+
+    &.show {
+        opacity: 0;
+        transform: translateY(100%);
+        animation: up 0.5s ease 0.5s forwards;
+
+        @keyframes up {
+            0% {
+                opacity: 0;
+                transform: translateY(100%);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+}
+
+// 左から
+.left {
+    opacity: 0;
+
+    &.show {
+        opacity: 0;
+        transform: translateX(-100%);
+        animation: left 0.5s ease 0.5s forwards;
+
+        @keyframes left {
+            0% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    }
+}
+
+//   右から
+.right {
+    opacity: 0;
+
+    &.show {
+        opacity: 0;
+        transform: translateX(100%);
+        animation: right 0.5s ease 0.5s forwards;
+
+        @keyframes right {
+            0% {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    }
+}
+
+
+//上下に動く
+.verticalAnime {
+    animation: verticalAnime 0s ease 0s infinite normal;
+    animation-duration: 3s;
+
+    @keyframes verticalAnime {
+        0% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+}
+
+// ぽわん
+.pown {
+    animation: pown 0.7s ease 1s forwards;
+    opacity: 0;
+
+    @keyframes pown {
+        0% {
+            transform: scale(0);
+        }
+
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+}
+
+// チカチカ
+.blink {
+    animation: blink 1s ease 0s infinite normal;
+
+    @keyframes blink {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.3;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+}
+
+// グニョン
+.gunyon {
+    transform: translate3d(0, 100%, 0) skewY(12deg);
+    opacity: 0;
+
+    &.show {
+        animation: gunyon 1s ease 0s forwards;
+
+        @keyframes gunyon {
+            0% {
+                transform: translate3d(0, 150%, 0) skewY(12deg);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translate3d(0, 0, 0) skewY(0deg);
+                opacity: 1;
+            }
+        }
+
+    }
+}
+
+
+.cover {
+    position: relative;
+    overflow: hidden;
+
+    &--item {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #FFF;
+
+        @include pc {
+            border-radius: calc((20 /1280)*100vw);
+        }
+
+        @include sp {
+            border-radius: calc((20 /390)*100vw);
+        }
+    }
+
+    &.show {
+        .cover--item {
+            animation: cover 1s ease 0.5s forwards;
+        }
+
+        @keyframes cover {
+            0% {
+                left: 0;
+            }
+
+            100% {
+                left: 150%;
+            }
+        }
+    }
+
+    &:nth-child(2) {
+        .cover--item {
+            animation-delay: 0.7s !important;
+        }
+    }
+
+    &:nth-child(3) {
+        .cover--item {
+            animation-delay: 0.9s !important;
+        }
+    }
+
+    &:nth-child(4) {
+        .cover--item {
+            animation-delay: 1.1s !important;
+        }
+    }
+
+    &:nth-child(5) {
+        .cover--item {
+            animation-delay: 1.3s !important;
+        }
+    }
+
+    &:nth-child(6) {
+        .cover--item {
+            animation-delay: 1.5s !important;
+        }
+    }
+}
+
+
+// ディレイ
+.delay {
+    animation-delay: .6s !important;
+
+    &:nth-child(2) {
+        animation-delay: .7s !important;
+    }
+
+    &:nth-child(3) {
+        animation-delay: .8s !important;
+    }
+
+    &:nth-child(4) {
+        animation-delay: .9s !important;
+    }
+
+    &:nth-child(5) {
+        animation-delay: 1s !important;
+    }
+
+    &:nth-child(6) {
+        animation-delay: 1.1s !important;
+    }
+
+    &:nth-child(7) {
+        animation-delay: 1.2s !important;
+    }
+}

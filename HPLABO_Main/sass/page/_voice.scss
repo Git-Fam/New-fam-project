@@ -1,0 +1,97 @@
+@use "../global" as *;
+
+#voice{
+  @include pc{
+    padding: calc(( 100 /1280)*100vw) calc(( 200 /1280)*100vw) ; 
+  }
+  @include sp{
+    padding: calc(( 60 /390)*100vw) calc(( 10 /390)*100vw) calc(( 60 /390)*100vw);
+  }
+  .voice--title{
+    @include img("productiontitle.png");
+    @include pc{
+      width: calc(( 315 /1280)*100vw);
+      height: calc(( 118 /1280)*100vw);
+    }
+    @include sp{
+      width: calc(( 160 /390)*100vw);
+      height: calc(( 60 /390)*100vw);
+    }
+  }
+  .voice--container{
+    @include pc{
+      margin-top: calc(( 88 /1280)*100vw);
+    }
+    @include sp{
+      margin-top: calc(( 48 /390)*100vw);
+    }
+    li{
+      display: flex;
+      justify-content: space-between;
+      @include pc{
+        margin-bottom: calc(( 85 /1280)*100vw);
+      }
+      @include sp{
+        margin-bottom: calc(( 40 /390)*100vw);
+      }
+      .voice--container--text{
+        @include pc{
+          @include img("voicebg.png");
+          width: calc(( 720 /1280)*100vw);
+          height: calc(( 193 /1280)*100vw);
+          padding: calc(( 15 /1280)*100vw) calc(( 73 /1280)*100vw) calc(( 25 /1280)*100vw) calc(( 30 /1280)*100vw); 
+        }
+        @include sp{
+          @include img("voicebgSP.png");
+          width: calc(( 294 /390)*100vw);
+          height: calc(( 182 /390)*100vw);
+          padding: calc(( 15 /390)*100vw) calc(( 30 /390)*100vw) calc(( 12 /390)*100vw) calc(( 20 /390)*100vw);
+        }
+        .text{
+          line-height: 1.5;
+          @include pc{
+            font-size: calc(( 18 / 1280) * 100vw);
+            line-height: 1.8;
+          }
+          @include sp{
+            font-size: calc(( 12 /390)*100vw);
+            width: calc(( 233 /390)*100vw);
+            line-height: 1.5;
+
+          }
+        }
+      }
+      .voicecenter{
+        @include pc{
+          @include img("voicecenter.png");
+          padding: calc(( 15 /1280)*100vw) calc(( 25 /1280)*100vw) calc(( 25 /1280)*100vw) calc(( 80 /1280)*100vw);   
+        }
+        @include sp{
+          @include img("voicecenterSP.png");
+          padding: calc(( 15 /390)*100vw) calc(( 30 /390)*100vw) calc(( 12 /390)*100vw) calc(( 45 /390)*100vw);
+        }
+
+      }
+      .voice--container--parson{
+        @include pc{
+          width: calc(( 175 /1280)*100vw);
+          height: calc(( 175 /1280)*100vw);
+        }
+        @include sp{
+          width: calc(( 76 /390)*100vw);
+          height: calc(( 76 /390)*100vw);
+          margin: auto 0;
+        }
+      }
+      .voice01{
+        @include img("voice01.png");
+      }
+      .voice02{
+        @include img("voice02.png");
+      }
+      .voice03{
+        @include img("voice03.png");
+      }
+    }
+  }
+}

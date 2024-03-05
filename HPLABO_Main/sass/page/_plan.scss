@@ -1,0 +1,265 @@
+@use "../global" as *;
+#plan{
+  background: #EFF6FF;
+  @include pc{
+    padding: calc(( 100 /1280)*100vw) 0 calc(( 121 /1280)*100vw);
+  }
+  @include sp{
+    padding: calc(( 60 /390)*100vw) 0 calc(( 60 /390)*100vw);
+  }
+  .plan--title{
+    @include img("productiontitle.png");
+    @include pc{
+      width: calc(( 315 /1280)*100vw);
+      height: calc(( 118 /1280)*100vw);
+    }
+    @include sp{
+      width: calc(( 160 /390)*100vw);
+      height: calc(( 60 /390)*100vw);
+    }
+  }
+  .plan--container--wrapper{
+    @include pc{
+      margin-top: calc(( 70 /1280)*100vw);
+      gap: calc(( 48 /1280)*100vw);
+      display: flex;
+      justify-content: center;  
+    }
+    @include sp{
+      margin-top: calc(( 50 /390)*100vw);
+      padding: 0 calc(( 38 /390)*100vw);
+    }
+    .plan--container{
+      background-color: #FFF;
+      @include pc{
+        width: calc(( 261 /1280)*100vw);
+        border-radius: calc(( 20 /1280)*100vw);
+        box-shadow: 0 calc(( 4 /1280)*100vw) calc(( 20 /1280)*100vw) 0 rgba(0, 0, 0, 0.25);
+        padding-bottom:calc(( 103 /1280)*100vw);
+        position: relative;
+      }
+      @include sp{
+        border-radius: calc(( 20 /390)*100vw) ;
+        box-shadow: 0 calc(( 4 /390)*100vw) calc(( 20 /390)*100vw) 0 rgba(0, 0, 0, 0.25);
+        padding-bottom: calc(( 16 /390)*100vw);
+        margin-bottom: calc(( 40 /390)*100vw);
+
+      }
+      .plan--container--title{
+        text-align: center;
+        @include pc{
+          border-radius: calc(( 20 /1280)*100vw) calc(( 20 /1280)*100vw) 0 0;
+          padding: calc(( 37 /1280)*100vw) 0 calc(( 33 /1280)*100vw);
+        }
+        @include sp{
+          border-radius: calc(( 20 /390)*100vw) calc(( 20 /390)*100vw) 0 0;
+          padding: calc(( 30 /390)*100vw) 0 ;
+
+        }
+        .title-top{
+          @include pc{
+            font-size: calc(( 13 /1280)*100vw);
+          }
+          @include sp{
+            font-size: calc(( 16 /390)*100vw);
+          }
+        }
+        .title-main{
+          font-weight: bold;
+          @include pc{
+            font-size: calc(( 26 /1280)*100vw);
+            margin-top: calc(( 10 /1280)*100vw);
+          }
+          @include sp{
+            font-size: calc(( 30 /390)*100vw);
+            margin-top: calc(( 6 /390)*100vw);
+          }
+        }
+      } 
+      .plan--container--price{
+        text-align: center;
+        position: relative;
+        z-index: 99;
+        @include orb;
+        @include pc{
+          font-size: calc(( 16 /1280)*100vw);
+          margin-top: calc(( 50 /1280)*100vw);
+        }
+        @include sp{
+          font-size: calc(( 20 /390)*100vw);
+          margin-top: calc(( 30 /390)*100vw);
+        }
+        .yen{
+          font-weight: bold;
+          @include pc{
+            font-size: calc(( 30 /1280)*100vw);
+          }
+          @include sp{
+            font-size: calc(( 40 /390)*100vw);
+          }
+        }
+        .zero{
+          font-weight: bold;
+          @include pc{
+            font-size: calc(( 45 /1280)*100vw);
+          }
+          @include sp{
+            font-size: calc(( 50 /390)*100vw);
+          }
+        }
+        .number{
+          font-weight: bold;
+          @include pc{
+            font-size: calc(( 35 /1280)*100vw);
+          }
+          @include sp{
+            font-size: calc(( 48 /390)*100vw);
+          }
+        }
+        &::after{
+          content: '';
+          display: block;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: -99;
+          opacity: 0.5;
+          @include pc{
+            border-bottom: calc((8 /1280)*100vw) solid $orange;
+            bottom: calc(( 3 /1280)*100vw);
+          }
+          @include sp{
+            border-bottom: calc(( 8 /390)*100vw) solid $orange;
+            bottom: calc(( 3 /390)*100vw);
+          }
+        }  
+      }
+      .plan--container--main{
+        @include pc{
+          padding: 0 calc(( 25/1280)*100vw);
+        }
+        @include sp{
+          padding: 0 calc(( 31 /390)*100vw);
+        }
+        .plan--container--label{
+          @include pc{
+            font-size: calc(( 20 /1280)*100vw);
+            margin: calc(( 50 /1280)*100vw) 0 calc(( 30 /1280)*100vw);
+          }
+          @include sp{
+            font-size: calc(( 20 /390)*100vw);
+            margin: calc(( 56 /390)*100vw) 0 calc(( 28 /390)*100vw);
+          }
+        } 
+        .plan--container--list{
+          line-height: 2;
+          @include pc{
+            font-size: max(calc(( 18 / 1280) * 100vw),16px);
+            margin-left: calc(( 10 /1280)*100vw);
+          }
+          @include sp{
+            font-size: calc(( 18 /390)*100vw);
+            margin-left: calc(( 8 /390)*100vw);
+          }
+          li{
+            position: relative;
+            &::before{
+              content: "";
+              display: block;
+              border-radius: 50%;
+              background: $blue;
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              @include pc{
+                width: calc(( 5 /1280)*100vw);
+                height: calc(( 5 /1280)*100vw);
+                left: calc(( -10 /1280)*100vw)
+              }
+              @include sp{
+                width: calc(( 5 /390)*100vw);
+                height: calc(( 5 /390)*100vw);
+                left: calc(( -12 /390)*100vw)
+              }
+            }
+          }
+        }
+      }
+      .plan--container--btn{
+        @include img("planbtnbg.png");
+        display: block;
+        margin:auto auto 0;
+        @include pc{
+          width: calc(( 248 /1280)*100vw);
+          height: calc(( 72 /1280)*100vw);
+          position: absolute;
+          bottom: calc(( 20 /1280)*100vw);
+          left: 0;
+          right: 0;
+        }
+        @include sp{
+          width: calc(( 242 /390)*100vw);
+          height: calc(( 72 /390)*100vw);
+        }
+        p{
+          font-weight: bold;
+          text-align: center;
+          color: $blue;
+          @include pc{
+            font-size: calc(( 18 /1280)*100vw);
+            line-height: calc(( 72 /1280)*100vw);
+          }
+          @include sp{
+            font-size: calc(( 18 /390)*100vw);
+            line-height: calc(( 72 /390)*100vw);
+          }
+        }
+      }
+    }
+    .free{
+      .plan--container--title{
+        background: linear-gradient(85deg, #D9F1FF 6.13%, #B3E3FF 81.53%);
+      }
+      .plan--container--price{
+        &::after{
+          @include pc{
+            width: calc(( 114 /1280)*100vw);
+          }
+          @include sp{
+            width: calc(( 163 /390)*100vw);
+          }
+        }
+      }
+    }
+    .standard{
+      .plan--container--title{
+        background: linear-gradient(262deg, #7EAAFF 20.48%, #B3CDFF 81.72%);
+      }
+      .plan--container--price{
+        &::after{
+          @include pc{
+            width: calc(( 180 /1280)*100vw);
+          }
+          @include sp{
+            width: calc(( 282 /390)*100vw);
+          }
+        }
+      }
+    }
+    .business{
+      .plan--container--title{
+        background: linear-gradient(259deg, #286AB8 10.95%, #83B2EA 78.19%);
+      }
+      .plan--container--price{
+        &::after{
+          @include pc{
+            width: calc(( 220 /1280)*100vw);
+          }
+          @include sp{
+            width: calc(( 270 /390)*100vw);
+          }
+        }
+      }
+    }
+  }
+}
