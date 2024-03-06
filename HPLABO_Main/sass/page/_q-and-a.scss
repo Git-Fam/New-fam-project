@@ -12,6 +12,10 @@
   @include sp{
     @include img("Q&Abg.png");
     padding: calc(( 60 /390)*100vw) 0 calc(( 60 /390)*100vw);
+    background-size: 140% auto;
+    background-position:top center;
+
+
   }
   .q-and-a--title{
     @include img("productiontitle.png");
