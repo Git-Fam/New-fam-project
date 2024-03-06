@@ -46,13 +46,6 @@ a {
   text-decoration: none;
 }
 
-p {
-  overflow-wrap: anywhere;
-  word-break: normal;
-  text-wrap: balance;
-  word-break: auto-phrase;
-}
-
 img {
   display: block;
 }
@@ -1775,7 +1768,7 @@ WordPress↑
     border-radius: 5.1282051282vw;
     border: 1.2820512821vw solid #286AB8;
     margin-top: 7.6923076923vw;
-    padding: 0 4.358974359vw 5.641025641vw;
+    padding: 0 2.5641025641vw 5.641025641vw;
   }
 }
 #feature .feature--container li .feature--container--number {
