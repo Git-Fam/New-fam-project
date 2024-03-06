@@ -1415,6 +1415,7 @@ WordPress↑
   #worry .worry--wrapper .worry--container .center .under-person {
     width: 30.5128205128vw;
     height: 27.4358974359vw;
+    translate: 3.0769230769vw 0;
   }
 }
 #worry .worry--wrapper .worry--container .center p {
@@ -2054,22 +2055,26 @@ WordPress↑
     height: 15.3846153846vw;
   }
 }
+#plan .plan--container--wrapper {
+  display: flex;
+}
 @media screen and (min-width: 768px) {
   #plan .plan--container--wrapper {
     margin-top: 5.46875vw;
     gap: 3.75vw;
-    display: flex;
     justify-content: center;
   }
 }
 @media screen and (max-width: 767px) {
   #plan .plan--container--wrapper {
     margin-top: 12.8205128205vw;
-    padding: 0 9.7435897436vw;
+    padding: 0 2.5641025641vw;
+    gap: 1.2820512821vw;
   }
 }
 #plan .plan--container--wrapper .plan--container {
   background-color: #FFF;
+  position: relative;
 }
 @media screen and (min-width: 768px) {
   #plan .plan--container--wrapper .plan--container {
@@ -2077,14 +2082,14 @@ WordPress↑
     border-radius: 1.5625vw;
     box-shadow: 0 0.3125vw 1.5625vw 0 rgba(0, 0, 0, 0.25);
     padding-bottom: 8.046875vw;
-    position: relative;
   }
 }
 @media screen and (max-width: 767px) {
   #plan .plan--container--wrapper .plan--container {
+    width: calc(33.3333333333% - 0.8547008547vw);
     border-radius: 5.1282051282vw;
     box-shadow: 0 1.0256410256vw 5.1282051282vw 0 rgba(0, 0, 0, 0.25);
-    padding-bottom: 4.1025641026vw;
+    padding-bottom: 15.3846153846vw;
     margin-bottom: 10.2564102564vw;
   }
 }
@@ -2110,7 +2115,7 @@ WordPress↑
 }
 @media screen and (max-width: 767px) {
   #plan .plan--container--wrapper .plan--container .plan--container--title .title-top {
-    font-size: 4.1025641026vw;
+    font-size: 3.0769230769vw;
   }
 }
 #plan .plan--container--wrapper .plan--container .plan--container--title .title-main {
@@ -2124,7 +2129,7 @@ WordPress↑
 }
 @media screen and (max-width: 767px) {
   #plan .plan--container--wrapper .plan--container .plan--container--title .title-main {
-    font-size: 7.6923076923vw;
+    font-size: 4.6153846154vw;
     margin-top: 1.5384615385vw;
   }
 }
@@ -2144,8 +2149,9 @@ WordPress↑
 }
 @media screen and (max-width: 767px) {
   #plan .plan--container--wrapper .plan--container .plan--container--price {
-    font-size: 5.1282051282vw;
-    margin-top: 7.6923076923vw;
+    font-size: 3.3333333333vw;
+    margin: 7.6923076923vw auto 0;
+    width: fit-content;
   }
 }
 #plan .plan--container--wrapper .plan--container .plan--container--price .yen {
@@ -2158,7 +2164,7 @@ WordPress↑
 }
 @media screen and (max-width: 767px) {
   #plan .plan--container--wrapper .plan--container .plan--container--price .yen {
-    font-size: 10.2564102564vw;
+    font-size: 3.3333333333vw;
   }
 }
 #plan .plan--container--wrapper .plan--container .plan--container--price .zero {
@@ -2171,7 +2177,7 @@ WordPress↑
 }
 @media screen and (max-width: 767px) {
   #plan .plan--container--wrapper .plan--container .plan--container--price .zero {
-    font-size: 12.8205128205vw;
+    font-size: 3.3333333333vw;
   }
 }
 #plan .plan--container--wrapper .plan--container .plan--container--price .number {
@@ -2184,7 +2190,7 @@ WordPress↑
 }
 @media screen and (max-width: 767px) {
   #plan .plan--container--wrapper .plan--container .plan--container--price .number {
-    font-size: 12.3076923077vw;
+    font-size: 3.3333333333vw;
   }
 }
 #plan .plan--container--wrapper .plan--container .plan--container--price::after {
@@ -2204,8 +2210,9 @@ WordPress↑
 }
 @media screen and (max-width: 767px) {
   #plan .plan--container--wrapper .plan--container .plan--container--price::after {
+    width: 100% !important;
     border-bottom: 2.0512820513vw solid #F59E10;
-    bottom: 0.7692307692vw;
+    bottom: -1.0256410256vw;
   }
 }
 @media screen and (min-width: 768px) {
@@ -2215,7 +2222,7 @@ WordPress↑
 }
 @media screen and (max-width: 767px) {
   #plan .plan--container--wrapper .plan--container .plan--container--main {
-    padding: 0 7.9487179487vw;
+    padding: 0 2.5641025641vw;
   }
 }
 @media screen and (min-width: 768px) {
@@ -2226,7 +2233,7 @@ WordPress↑
 }
 @media screen and (max-width: 767px) {
   #plan .plan--container--wrapper .plan--container .plan--container--main .plan--container--label {
-    font-size: 5.1282051282vw;
+    font-size: 3.8461538462vw;
     margin: 14.358974359vw 0 7.1794871795vw;
   }
 }
@@ -2241,7 +2248,7 @@ WordPress↑
 }
 @media screen and (max-width: 767px) {
   #plan .plan--container--wrapper .plan--container .plan--container--main .plan--container--list {
-    font-size: 4.6153846154vw;
+    font-size: 2.5641025641vw;
     margin-left: 2.0512820513vw;
   }
 }
@@ -2266,8 +2273,8 @@ WordPress↑
 }
 @media screen and (max-width: 767px) {
   #plan .plan--container--wrapper .plan--container .plan--container--main .plan--container--list li::before {
-    width: 1.2820512821vw;
-    height: 1.2820512821vw;
+    width: 0.7692307692vw;
+    height: 0.7692307692vw;
     left: -3.0769230769vw;
   }
 }
@@ -2278,21 +2285,26 @@ WordPress↑
   background-repeat: no-repeat;
   display: block;
   margin: auto auto 0;
+  position: absolute;
+  left: 0;
+  right: 0;
 }
 @media screen and (min-width: 768px) {
   #plan .plan--container--wrapper .plan--container .plan--container--btn {
     width: 19.375vw;
     height: 5.625vw;
-    position: absolute;
     bottom: 1.5625vw;
-    left: 0;
-    right: 0;
   }
 }
 @media screen and (max-width: 767px) {
   #plan .plan--container--wrapper .plan--container .plan--container--btn {
-    width: 62.0512820513vw;
-    height: 18.4615384615vw;
+    width: 90%;
+    height: 7.6923076923vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    bottom: 2.5641025641vw;
   }
 }
 #plan .plan--container--wrapper .plan--container .plan--container--btn p {
@@ -2308,8 +2320,8 @@ WordPress↑
 }
 @media screen and (max-width: 767px) {
   #plan .plan--container--wrapper .plan--container .plan--container--btn p {
-    font-size: 4.6153846154vw;
-    line-height: 18.4615384615vw;
+    font-size: 2.5641025641vw;
+    line-height: 120%;
   }
 }
 #plan .plan--container--wrapper .free .plan--container--title {

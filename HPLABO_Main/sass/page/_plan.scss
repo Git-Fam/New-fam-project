@@ -19,29 +19,33 @@
     }
   }
   .plan--container--wrapper{
+    display: flex;
+
     @include pc{
       margin-top: calc(( 70 /1280)*100vw);
       gap: calc(( 48 /1280)*100vw);
-      display: flex;
       justify-content: center;  
     }
     @include sp{
       margin-top: calc(( 50 /390)*100vw);
-      padding: 0 calc(( 38 /390)*100vw);
+      padding: 0 calc(( 10 /390)*100vw);
+      gap: calc(( 5 /390)*100vw);
     }
     .plan--container{
       background-color: #FFF;
+      position: relative;
+
       @include pc{
         width: calc(( 261 /1280)*100vw);
         border-radius: calc(( 20 /1280)*100vw);
         box-shadow: 0 calc(( 4 /1280)*100vw) calc(( 20 /1280)*100vw) 0 rgba(0, 0, 0, 0.25);
         padding-bottom:calc(( 103 /1280)*100vw);
-        position: relative;
       }
       @include sp{
+        width: calc( 100% / 3 - (( 5 /390)*100vw) * 2 / 3);
         border-radius: calc(( 20 /390)*100vw) ;
         box-shadow: 0 calc(( 4 /390)*100vw) calc(( 20 /390)*100vw) 0 rgba(0, 0, 0, 0.25);
-        padding-bottom: calc(( 16 /390)*100vw);
+        padding-bottom: calc(( 60 /390)*100vw);
         margin-bottom: calc(( 40 /390)*100vw);
 
       }
@@ -61,7 +65,7 @@
             font-size: calc(( 13 /1280)*100vw);
           }
           @include sp{
-            font-size: calc(( 16 /390)*100vw);
+            font-size: calc(( 12 /390)*100vw);
           }
         }
         .title-main{
@@ -71,7 +75,7 @@
             margin-top: calc(( 10 /1280)*100vw);
           }
           @include sp{
-            font-size: calc(( 30 /390)*100vw);
+            font-size: calc(( 18 /390)*100vw);
             margin-top: calc(( 6 /390)*100vw);
           }
         }
@@ -86,8 +90,9 @@
           margin-top: calc(( 50 /1280)*100vw);
         }
         @include sp{
-          font-size: calc(( 20 /390)*100vw);
-          margin-top: calc(( 30 /390)*100vw);
+          font-size: calc(( 13 /390)*100vw);
+          margin: calc(( 30 /390)*100vw) auto 0;
+          width: fit-content;
         }
         .yen{
           font-weight: bold;
@@ -95,7 +100,7 @@
             font-size: calc(( 30 /1280)*100vw);
           }
           @include sp{
-            font-size: calc(( 40 /390)*100vw);
+            font-size: calc(( 13 /390)*100vw);
           }
         }
         .zero{
@@ -104,7 +109,7 @@
             font-size: calc(( 45 /1280)*100vw);
           }
           @include sp{
-            font-size: calc(( 50 /390)*100vw);
+            font-size: calc(( 13 /390)*100vw);
           }
         }
         .number{
@@ -113,7 +118,7 @@
             font-size: calc(( 35 /1280)*100vw);
           }
           @include sp{
-            font-size: calc(( 48 /390)*100vw);
+            font-size: calc(( 13 /390)*100vw);
           }
         }
         &::after{
@@ -124,13 +129,15 @@
           transform: translateX(-50%);
           z-index: -99;
           opacity: 0.5;
+
           @include pc{
             border-bottom: calc((8 /1280)*100vw) solid $orange;
             bottom: calc(( 3 /1280)*100vw);
           }
           @include sp{
+            width: 100% !important;
             border-bottom: calc(( 8 /390)*100vw) solid $orange;
-            bottom: calc(( 3 /390)*100vw);
+            bottom: calc(( -4 /390)*100vw);
           }
         }  
       }
@@ -139,7 +146,7 @@
           padding: 0 calc(( 25/1280)*100vw);
         }
         @include sp{
-          padding: 0 calc(( 31 /390)*100vw);
+          padding: 0 calc(( 10 /390)*100vw);
         }
         .plan--container--label{
           @include pc{
@@ -147,7 +154,7 @@
             margin: calc(( 50 /1280)*100vw) 0 calc(( 30 /1280)*100vw);
           }
           @include sp{
-            font-size: calc(( 20 /390)*100vw);
+            font-size: calc(( 15 /390)*100vw);
             margin: calc(( 56 /390)*100vw) 0 calc(( 28 /390)*100vw);
           }
         } 
@@ -158,7 +165,7 @@
             margin-left: calc(( 10 /1280)*100vw);
           }
           @include sp{
-            font-size: calc(( 18 /390)*100vw);
+            font-size: calc(( 10 /390)*100vw);
             margin-left: calc(( 8 /390)*100vw);
           }
           li{
@@ -177,8 +184,8 @@
                 left: calc(( -10 /1280)*100vw)
               }
               @include sp{
-                width: calc(( 5 /390)*100vw);
-                height: calc(( 5 /390)*100vw);
+                width: calc(( 3 /390)*100vw);
+                height: calc(( 3 /390)*100vw);
                 left: calc(( -12 /390)*100vw)
               }
             }
@@ -189,17 +196,23 @@
         @include img("planbtnbg.png");
         display: block;
         margin:auto auto 0;
+        position: absolute;
+        left: 0;
+        right: 0;
+
         @include pc{
           width: calc(( 248 /1280)*100vw);
           height: calc(( 72 /1280)*100vw);
-          position: absolute;
           bottom: calc(( 20 /1280)*100vw);
-          left: 0;
-          right: 0;
         }
         @include sp{
-          width: calc(( 242 /390)*100vw);
-          height: calc(( 72 /390)*100vw);
+          width: 90%;
+          height: calc(( 30 /390)*100vw);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          bottom: calc(( 10 /390)*100vw);
         }
         p{
           font-weight: bold;
@@ -210,8 +223,8 @@
             line-height: calc(( 72 /1280)*100vw);
           }
           @include sp{
-            font-size: calc(( 18 /390)*100vw);
-            line-height: calc(( 72 /390)*100vw);
+            font-size: calc(( 10 /390)*100vw);
+            line-height: 120%;
           }
         }
       }

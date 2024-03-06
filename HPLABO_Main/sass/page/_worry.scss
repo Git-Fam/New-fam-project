@@ -179,6 +179,7 @@
           @include sp{
             width: calc(( 119 /390)*100vw);
             height: calc(( 107 /390)*100vw);
+            translate: calc(( 12 /390)*100vw) 0;
           }
         }
         p{
