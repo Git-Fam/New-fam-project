@@ -65,6 +65,14 @@
         },
         h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
         })(document);
+        (function(d) {
+            var config = {
+            kitId: 'qrh2ejs',
+            scriptTimeout: 3000,
+            async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+        })(document);
     </script>
     <style>
         body{
@@ -135,7 +143,7 @@
                         <p>運用<span>まで<br></span>お任せ</p>
                     </div>
                     <div class="fv--title--buble02 verticalAnime">
-                        <p>初期費用<span><br>無料</span>で<span>!!</span></p>
+                        <p>初期費用<br><span class="main">無料</span><span class="small">で</span><span>!!</span></p>
                     </div>
                 </div>
                 <ul class="fv--label">
@@ -694,7 +702,7 @@
 
                 <div class="form-button">
                     <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
-                    <div class="confirm hover-opa" type="submit" id="sendBtn" name="sendBtn" onclick="validateForm()">確認</div>    
+                    <div class="confirm hover-opa" type="submit" id="sendBtn" name="sendBtn" onclick="validateForm()">送信</div>    
                 </div>
         <!-- モーダル -->
                 <div class="modal" id="modal">

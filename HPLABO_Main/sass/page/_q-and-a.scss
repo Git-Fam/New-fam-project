@@ -1,14 +1,16 @@
 @use "../global" as *;
 #q-and-a{
-  @include img("Q&Abg.png");
-  background-size: 140% auto;
-  background-position:top center;
-
   @include pc{
+    @include img("Q&Abg-PC.png");
     padding: calc(( 100 /1280)*100vw) 0 calc(( 100 /1280)*100vw);
+    background-size: 170% auto;
+    background-position:top center;
+  
+  
     // height: calc(( 1600 /1280)*100vw);
   }
   @include sp{
+    @include img("Q&Abg.png");
     padding: calc(( 60 /390)*100vw) 0 calc(( 60 /390)*100vw);
   }
   .q-and-a--title{

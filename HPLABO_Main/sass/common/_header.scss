@@ -33,7 +33,9 @@ header{
     right:-120%;
     transition: 0.5s;
     height: 100vh;
+    overflow-y: scroll;
     z-index: 999;
+    
 
     .gnav-btn{
       margin: 0 calc(( 14 /390)*100vw) 0 auto;
@@ -59,7 +61,7 @@ header{
       margin: calc(( 80 /390)*100vw) auto calc(( 53 /1280)*100vw); 
       li{
         text-align: center;
-        font-size: calc(( 20 /390)*100vw);
+        font-size: calc(( 24 /390)*100vw);
         padding-bottom: calc(( 20 /390)*100vw);
         margin-bottom: calc(( 30 /390)*100vw);
         position: relative;

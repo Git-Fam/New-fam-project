@@ -61,6 +61,7 @@
 
         }
         .title-top{
+          font-weight: bold;
           @include pc{
             font-size: calc(( 13 /1280)*100vw);
           }
@@ -84,7 +85,7 @@
         text-align: center;
         position: relative;
         z-index: 99;
-        @include orb;
+        font-weight: bold;
         @include pc{
           font-size: calc(( 16 /1280)*100vw);
           margin-top: calc(( 50 /1280)*100vw);
@@ -95,6 +96,7 @@
           width: fit-content;
         }
         .yen{
+          @include orb;
           font-weight: bold;
           @include pc{
             font-size: calc(( 30 /1280)*100vw);
@@ -104,6 +106,7 @@
           }
         }
         .zero{
+          @include orb;
           font-weight: bold;
           @include pc{
             font-size: calc(( 45 /1280)*100vw);
@@ -113,6 +116,7 @@
           }
         }
         .number{
+          @include orb;
           font-weight: bold;
           @include pc{
             font-size: calc(( 35 /1280)*100vw);
@@ -149,6 +153,7 @@
           padding: 0 calc(( 10 /390)*100vw);
         }
         .plan--container--label{
+          font-weight: 500;
           @include pc{
             font-size: calc(( 20 /1280)*100vw);
             margin: calc(( 50 /1280)*100vw) 0 calc(( 30 /1280)*100vw);

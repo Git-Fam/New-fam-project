@@ -324,6 +324,7 @@ header .gnav-sp {
   right: -120%;
   transition: 0.5s;
   height: 100vh;
+  overflow-y: scroll;
   z-index: 999;
 }
 header .gnav-sp .gnav-btn {
@@ -351,7 +352,7 @@ header .gnav-sp ul {
 }
 header .gnav-sp ul li {
   text-align: center;
-  font-size: 5.1282051282vw;
+  font-size: 6.1538461538vw;
   padding-bottom: 5.1282051282vw;
   margin-bottom: 7.6923076923vw;
   position: relative;
@@ -634,7 +635,7 @@ body {
 }
 @media screen and (min-width: 768px) {
   .C--btn .C--btn-top .btn-top-text span {
-    font-size: 4.6875vw;
+    font-size: 4.609375vw;
   }
 }
 @media screen and (max-width: 767px) {
@@ -775,6 +776,7 @@ WordPress↑
 }
 #fv .fv--wrapper .fv--title {
   position: relative;
+  font-family: "toppan-bunkyu-midashi-go-std", sans-serif;
 }
 #fv .fv--wrapper .fv--title h1 {
   display: grid;
@@ -820,12 +822,12 @@ WordPress↑
 }
 @media screen and (min-width: 768px) {
   #fv .fv--wrapper .fv--title h1 .fv--title--main span {
-    font-size: 5.15625vw;
+    font-size: 5.234375vw;
   }
 }
 @media screen and (max-width: 767px) {
   #fv .fv--wrapper .fv--title h1 .fv--title--main span {
-    font-size: 11.0256410256vw;
+    font-size: 11.2820512821vw;
   }
 }
 #fv .fv--wrapper .fv--title h1 .fv--title--under {
@@ -978,21 +980,26 @@ WordPress↑
 }
 @media screen and (max-width: 767px) {
   #fv .fv--wrapper .fv--title .fv--title--buble02 p {
-    font-size: 2.5641025641vw;
+    font-size: 3.0769230769vw;
     margin-top: -1.5384615385vw;
   }
 }
-#fv .fv--wrapper .fv--title .fv--title--buble02 p span {
+#fv .fv--wrapper .fv--title .fv--title--buble02 p .main {
   font-weight: 500;
 }
 @media screen and (min-width: 768px) {
-  #fv .fv--wrapper .fv--title .fv--title--buble02 p span {
+  #fv .fv--wrapper .fv--title .fv--title--buble02 p .main {
     font-size: 1.71875vw;
   }
 }
 @media screen and (max-width: 767px) {
-  #fv .fv--wrapper .fv--title .fv--title--buble02 p span {
+  #fv .fv--wrapper .fv--title .fv--title--buble02 p .main {
     font-size: 4.1025641026vw;
+  }
+}
+@media screen and (min-width: 768px) {
+  #fv .fv--wrapper .fv--title .fv--title--buble02 p .small {
+    font-size: 1.09375vw;
   }
 }
 #fv .fv--wrapper .fv--label {
@@ -1078,11 +1085,26 @@ WordPress↑
     font-size: 1.09375vw;
   }
 }
+@media screen and (max-width: 767px) {
+  #fv .fv--wrapper .fv--label li p .small {
+    font-size: 3.0769230769vw;
+  }
+}
 #fv .fv--wrapper .fv--label li:nth-of-type(2) {
   animation-delay: 0.5s;
 }
 #fv .fv--wrapper .fv--label li:nth-of-type(3) {
   animation-delay: 1s;
+}
+@media screen and (min-width: 768px) {
+  #fv .fv--wrapper .fv--label li:nth-of-type(3) span {
+    font-size: 2.03125vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  #fv .fv--wrapper .fv--label li:nth-of-type(3) span {
+    font-size: 5.3846153846vw;
+  }
 }
 #fv .fv--wrapper .FV--btn {
   margin: 0 auto;
@@ -1124,7 +1146,7 @@ WordPress↑
 }
 @media screen and (min-width: 768px) {
   #fv .fv--wrapper .FV--btn .C--btn-top .btn-top-text span {
-    font-size: 3.90625vw;
+    font-size: 3.984375vw;
   }
 }
 @media screen and (min-width: 768px) {
@@ -1175,25 +1197,27 @@ WordPress↑
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
 }
 @media screen and (min-width: 768px) {
   #worry {
     padding: 7.8125vw 0 13.28125vw;
+    background-size: cover;
   }
 }
 @media screen and (max-width: 767px) {
   #worry {
     padding: 15.8974358974vw 0 16.6666666667vw;
+    background-size: contain;
+    background-repeat: repeat-y;
   }
 }
 #worry .worry--wrapper {
   margin: 0 auto;
   position: relative;
-  background-color: #FFF;
 }
 @media screen and (min-width: 768px) {
   #worry .worry--wrapper {
+    background-color: #FFF;
     width: 71.5625vw;
     border-radius: 1.5625vw;
     padding: 3.515625vw 0 7.421875vw;
@@ -1265,7 +1289,7 @@ WordPress↑
 }
 @media screen and (min-width: 768px) {
   #worry .worry--wrapper .worry--title h2 {
-    font-size: 2.8125vw;
+    font-size: 2.734375vw;
   }
 }
 @media screen and (max-width: 767px) {
@@ -1344,6 +1368,7 @@ WordPress↑
   }
 }
 #worry .worry--wrapper .worry--container ul li div span {
+  font-weight: bold;
   color: #003B80;
 }
 @media screen and (min-width: 768px) {
@@ -1413,7 +1438,7 @@ WordPress↑
 }
 @media screen and (max-width: 767px) {
   #worry .worry--wrapper .worry--container .center .under-person {
-    width: 30.5128205128vw;
+    width: 31.0256410256vw;
     height: 27.4358974359vw;
     translate: 3.0769230769vw 0;
   }
@@ -1429,7 +1454,7 @@ WordPress↑
 }
 @media screen and (max-width: 767px) {
   #worry .worry--wrapper .worry--container .center p {
-    font-size: 3.5897435897vw;
+    font-size: 4.6153846154vw;
     margin-bottom: 7.6923076923vw;
   }
 }
@@ -1439,11 +1464,6 @@ WordPress↑
 @media screen and (min-width: 768px) {
   #worry .worry--wrapper .worry--container .center p span {
     font-size: max(2.03125vw, 16px);
-  }
-}
-@media screen and (max-width: 767px) {
-  #worry .worry--wrapper .worry--container .center p span {
-    font-size: 4.6153846154vw;
   }
 }
 @media screen and (min-width: 768px) {
@@ -1505,10 +1525,11 @@ WordPress↑
 }
 #difference .difference--title h2 {
   text-align: center;
+  font-weight: bold;
 }
 @media screen and (min-width: 768px) {
   #difference .difference--title h2 {
-    font-size: 1.953125vw;
+    font-size: 2.421875vw;
     line-height: 7.8125vw;
   }
 }
@@ -1518,9 +1539,12 @@ WordPress↑
     line-height: 12.8205128205vw;
   }
 }
+#difference .difference--title h2 span {
+  font-weight: bold;
+}
 @media screen and (min-width: 768px) {
   #difference .difference--title h2 span {
-    font-size: 3.125vw;
+    font-size: 3.4375vw;
   }
 }
 @media screen and (max-width: 767px) {
@@ -1634,11 +1658,14 @@ WordPress↑
 @media screen and (min-width: 768px) {
   #feature {
     padding: 10.3125vw 0 8.984375vw;
+    background-size: cover;
   }
 }
 @media screen and (max-width: 767px) {
   #feature {
     padding: 23.8461538462vw 0 14.358974359vw;
+    background-size: inherit;
+    background-repeat: repeat-y;
   }
 }
 #feature .feature--title {
@@ -1729,7 +1756,7 @@ WordPress↑
 @media screen and (max-width: 767px) {
   #feature .feature--container {
     margin: 11.7948717949vw auto 0;
-    width: 71.7948717949vw;
+    width: 79.2307692308vw;
   }
 }
 #feature .feature--container li {
@@ -1825,6 +1852,7 @@ WordPress↑
 #feature .feature--container li .feature--container--title {
   color: #286AB8;
   text-align: center;
+  font-weight: bold;
 }
 @media screen and (min-width: 768px) {
   #feature .feature--container li .feature--container--title {
@@ -1833,7 +1861,7 @@ WordPress↑
 }
 @media screen and (max-width: 767px) {
   #feature .feature--container li .feature--container--title {
-    font-size: 5.8974358974vw;
+    font-size: 6.4102564103vw;
   }
 }
 #feature .feature--container li .feature--container--text {
@@ -2108,6 +2136,9 @@ WordPress↑
     padding: 7.6923076923vw 0;
   }
 }
+#plan .plan--container--wrapper .plan--container .plan--container--title .title-top {
+  font-weight: bold;
+}
 @media screen and (min-width: 768px) {
   #plan .plan--container--wrapper .plan--container .plan--container--title .title-top {
     font-size: 1.015625vw;
@@ -2137,9 +2168,7 @@ WordPress↑
   text-align: center;
   position: relative;
   z-index: 99;
-  font-family: "orbitron", sans-serif;
-  font-weight: 700;
-  font-style: normal;
+  font-weight: bold;
 }
 @media screen and (min-width: 768px) {
   #plan .plan--container--wrapper .plan--container .plan--container--price {
@@ -2155,6 +2184,9 @@ WordPress↑
   }
 }
 #plan .plan--container--wrapper .plan--container .plan--container--price .yen {
+  font-family: "orbitron", sans-serif;
+  font-weight: 700;
+  font-style: normal;
   font-weight: bold;
 }
 @media screen and (min-width: 768px) {
@@ -2168,6 +2200,9 @@ WordPress↑
   }
 }
 #plan .plan--container--wrapper .plan--container .plan--container--price .zero {
+  font-family: "orbitron", sans-serif;
+  font-weight: 700;
+  font-style: normal;
   font-weight: bold;
 }
 @media screen and (min-width: 768px) {
@@ -2181,6 +2216,9 @@ WordPress↑
   }
 }
 #plan .plan--container--wrapper .plan--container .plan--container--price .number {
+  font-family: "orbitron", sans-serif;
+  font-weight: 700;
+  font-style: normal;
   font-weight: bold;
 }
 @media screen and (min-width: 768px) {
@@ -2224,6 +2262,9 @@ WordPress↑
   #plan .plan--container--wrapper .plan--container .plan--container--main {
     padding: 0 2.5641025641vw;
   }
+}
+#plan .plan--container--wrapper .plan--container .plan--container--main .plan--container--label {
+  font-weight: 500;
 }
 @media screen and (min-width: 768px) {
   #plan .plan--container--wrapper .plan--container .plan--container--main .plan--container--label {
@@ -2705,21 +2746,23 @@ WordPress↑
   background-repeat: no-repeat;
 }
 
-#q-and-a {
-  background-image: url("../img/Q&Abg.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 140% auto;
-  background-position: top center;
-}
 @media screen and (min-width: 768px) {
   #q-and-a {
+    background-image: url("../img/Q&Abg-PC.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     padding: 7.8125vw 0 7.8125vw;
+    background-size: 170% auto;
+    background-position: top center;
   }
 }
 @media screen and (max-width: 767px) {
   #q-and-a {
+    background-image: url("../img/Q&Abg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     padding: 15.3846153846vw 0 15.3846153846vw;
   }
 }

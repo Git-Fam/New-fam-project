@@ -50,7 +50,7 @@
         font-weight: bold;
         color: $orange;
         @include pc{
-          font-size: calc(( 60 /1280)*100vw);
+          font-size: calc(( 59 /1280)*100vw);
         }
         @include sp{
           font-size: calc(( 35 /390)*100vw);

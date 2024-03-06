@@ -2,18 +2,20 @@
 
 #worry{
   @include img("worrybg.png");
-  background-size: cover;
   @include pc{
     padding: calc(( 100 /1280)*100vw) 0 calc(( 170 /1280)*100vw);
+    background-size: cover;
   }
   @include sp{
     padding: calc(( 62 /390)*100vw) 0 calc(( 65 /390)*100vw); 
+    background-size: contain;
+    background-repeat: repeat-y;
   }
   .worry--wrapper{
     margin: 0 auto;
     position: relative;
-    background-color: #FFF;
     @include pc{
+      background-color: #FFF;
       width: calc(( 916 /1280)*100vw);
       border-radius: calc(( 20 /1280)*100vw);
       padding: calc(( 45 /1280)*100vw) 0 calc(( 95 /1280)*100vw);
@@ -72,7 +74,7 @@
         text-align: center;
         font-weight: bold;
         @include pc{
-          font-size: calc(( 36 /1280)*100vw);
+          font-size: calc(( 35 /1280)*100vw);
         }
         @include sp{
           font-size: calc(( 18 /390)*100vw);
@@ -130,6 +132,7 @@
               font-size: calc(( 12 /390)*100vw);
             }
             span{
+              font-weight: bold;
               color: #003B80;
               @include pc{
                 font-size: calc(( 19 / 1280) * 100vw);
@@ -177,7 +180,7 @@
             height: calc(( 210 /1280)*100vw);
           }
           @include sp{
-            width: calc(( 119 /390)*100vw);
+            width: calc(( 121 /390)*100vw);
             height: calc(( 107 /390)*100vw);
             translate: calc(( 12 /390)*100vw) 0;
           }
@@ -189,7 +192,7 @@
             font-size: max(calc(( 22 / 1280) * 100vw),14px);
           }
           @include sp{
-            font-size: calc((14 /390)*100vw);
+            font-size: calc((18 /390)*100vw);
             margin-bottom: calc(( 30 /390)*100vw);
           }
           span{
@@ -197,9 +200,6 @@
             @include pc{
               font-size: max(calc(( 26 / 1280) * 100vw),16px);
             }
-            @include sp{
-              font-size: calc((18 /390)*100vw);
-            }  
           }
         }
       }

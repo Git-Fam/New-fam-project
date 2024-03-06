@@ -20,6 +20,7 @@
     }
     .fv--title{
       position: relative;
+      font-family: "toppan-bunkyu-midashi-go-std", sans-serif;
       h1{
         display: grid;
         .fv--title--top{
@@ -52,10 +53,10 @@
           span{
             font-weight: bold;
             @include pc{
-              font-size: calc(( 66 /1280)*100vw);
+              font-size: calc(( 67 /1280)*100vw);
             }
             @include sp{
-              font-size: calc(( 43 /390)*100vw);
+              font-size: calc(( 44 /390)*100vw);
             }
           }
         }
@@ -168,10 +169,10 @@
             font-size: calc(( 18 /1280)*100vw);
           }
           @include sp{
-            font-size: calc(( 10 /390)*100vw);
+            font-size: calc(( 12 /390)*100vw);
             margin-top: calc(( -6 /390)*100vw);
           }
-          span{
+          .main{
             font-weight: 500;
             @include pc{
               font-size: calc(( 22 /1280)*100vw);
@@ -179,6 +180,11 @@
             @include sp{
               font-size: calc(( 16 /390)*100vw);
             }  
+          }
+          .small{
+            @include pc{
+              font-size: calc(( 14 /1280)*100vw);
+            }
           }
         }
       }
@@ -244,6 +250,9 @@
             @include pc{
               font-size: calc(( 14 /1280)*100vw);
             }  
+            @include sp{
+              font-size: calc(( 12 /390)*100vw);
+            }
           }
         }
         &:nth-of-type(2){
@@ -251,6 +260,14 @@
         }
         &:nth-of-type(3){
           animation-delay: 1s;
+          span{
+            @include pc{
+              font-size: calc(( 26 /1280)*100vw)
+            }
+            @include sp{
+              font-size: calc(( 21 /390)*100vw)
+            }
+          }
         }
 
       }
@@ -284,7 +301,7 @@
           }  
           span{
             @include pc{
-              font-size: calc(( 50 /1280)*100vw);
+              font-size: calc(( 51 /1280)*100vw);
             }
           }  
         }

@@ -22,8 +22,9 @@
     }
     h2{
       text-align: center;
+      font-weight: bold;
       @include pc{
-        font-size: calc(( 25 /1280)*100vw);
+        font-size: calc(( 31 /1280)*100vw);
         line-height: calc(( 100 /1280)*100vw);
       }
       @include sp{
@@ -31,8 +32,9 @@
         line-height: calc(( 50 /390)*100vw);
       }
       span{
+        font-weight: bold;
         @include pc{
-          font-size: calc(( 40 /1280)*100vw);
+          font-size: calc(( 44 /1280)*100vw);
         }
         @include sp{
           font-size: calc(( 23 /390)*100vw);

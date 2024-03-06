@@ -5,9 +5,13 @@
   background-size: cover;
   @include pc{
     padding: calc(( 132 /1280)*100vw) 0 calc(( 115 /1280)*100vw);
+    background-size: cover;
+
   }
   @include sp{
     padding: calc(( 93 /390)*100vw) 0 calc(( 56 /390)*100vw);
+    background-size:inherit;
+    background-repeat: repeat-y;
   }
   .feature--title{
     @include img("featuretitle.png");
@@ -74,7 +78,7 @@
     }
     @include sp{
       margin: calc(( 46 /390)*100vw) auto 0;
-      width: calc(( 280 /390)*100vw);
+      width: calc(( 309 /390)*100vw);
     }
     li{
       background: #FFF;
@@ -140,11 +144,12 @@
       .feature--container--title{
         color:$light;
         text-align: center;
+        font-weight: bold;
         @include pc{
           font-size: calc(( 20 /1280)*100vw);
         }
         @include sp{
-          font-size: calc(( 23 /390)*100vw);
+          font-size: calc(( 25 /390)*100vw);
         }
       }
       .feature--container--text{
