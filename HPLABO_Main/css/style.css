@@ -1768,7 +1768,7 @@ WordPress↑
     border-radius: 5.1282051282vw;
     border: 1.2820512821vw solid #286AB8;
     margin-top: 7.6923076923vw;
-    padding: 0 2.5641025641vw 5.641025641vw;
+    padding: 0 3.8461538462vw 5.641025641vw;
   }
 }
 #feature .feature--container li .feature--container--number {
@@ -2757,6 +2757,8 @@ WordPress↑
     background-position: center;
     background-repeat: no-repeat;
     padding: 15.3846153846vw 0 15.3846153846vw;
+    background-size: 140% auto;
+    background-position: top center;
   }
 }
 #q-and-a .q-and-a--title {
