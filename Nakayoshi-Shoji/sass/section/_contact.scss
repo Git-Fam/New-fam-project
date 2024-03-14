@@ -1,0 +1,33 @@
+@use "../global" as *;
+
+/* -----------------------
+  contact
+----------------------- */
+.contact {
+
+  @include pc{
+    padding: 0 0 p(140);
+  }
+
+  @include sp{
+    padding: 0 s(20) s(80);
+  }
+
+  &--content{
+
+    @include pc{}
+
+    @include sp{}
+
+    .C_Title{
+
+      @include pc{
+        margin-bottom: p(50);
+      }
+
+      @include sp{
+        margin-bottom: s(30);
+      }
+    }
+  }
+}

@@ -1,0 +1,138 @@
+@use "../global" as *;
+
+
+/* -----------------------
+  footer
+----------------------- */
+
+footer {
+  background-color: $F-2D889C;
+
+  @include pc {
+    padding: p(63) 0 p(7);
+  }
+
+  @include sp {
+    padding: s(38) s(20) s(5);
+  }
+
+  .footer--content {
+    display: flex;
+
+    @include pc {
+      margin-bottom: p(65);
+      justify-content: space-between;
+    }
+
+    @include sp {
+      margin-bottom: s(70);
+      flex-direction: column;
+      gap: s(25);
+    }
+
+    &--logo {
+      @include outfit;
+      color: $F-FFFFFF;
+      position: relative;
+
+      @include pc {
+        font-size: pm(20, 18)
+      }
+
+      @include sp {
+        text-align: center;
+        font-size: s(20);
+      }
+
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: $F-FFFFFF;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s;
+      }
+
+      &:hover::before {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+    }
+
+    &--list {
+      display: flex;
+
+      @include pc {
+        gap: p(15);
+        align-items: center;
+      }
+
+      @include sp {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: s(10) s(15);
+        width: 80%;
+        margin: 0 auto;
+      }
+
+      li {
+
+        a {
+          @include outfit;
+          // font-weight: 500;
+          color: $F-FFFFFF;
+          position: relative;
+
+          @include pc {
+            font-size: p(20)
+          }
+
+          @include sp {
+            font-size: s(16);
+          }
+
+          &::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: $F-FFFFFF;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s;
+            
+          }
+
+          &:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+          }
+        }
+      }
+    }
+  }
+
+  .CopyRight,
+  .reCapture,
+  .reCapture a {
+    @include outfit;
+    font-weight: 300;
+    text-align: center;
+    color: $F-FFFFFF;
+
+    @include pc {
+      font-size: p(16);
+    }
+
+    @include sp {
+      font-size: s(12);
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@use "../global" as *;
+
+/* -----------------------
+  C_Title
+----------------------- */
+
+.C_Title{
+  width: fit-content;
+
+  .TL{
+      @include nats;
+      line-height: 1;
+      letter-spacing: 0;
+      
+      @include pc{
+        font-size: p(100);
+      }
+
+    @include sp{
+      font-size: s(100);
+    }
+
+    span{
+      font-weight: 500;
+
+      @include pc{
+        font-size: p(70);
+      }
+
+      @include sp{
+        font-size: s(70);
+      }
+    }
+  }
+
+  .TX{
+    @include sans;
+    font-weight: 200;
+    color: $F-969696;
+    
+    @include pc{
+      font-size: p(25);
+      margin-top: p(-5);
+    }
+    @include sp{
+      font-size: s(16);
+      margin-top: s(-10);
+    }
+  }
+}
+
+
+

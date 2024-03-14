@@ -1,0 +1,82 @@
+@use "../global" as *;
+
+/* -----------------------
+  fv
+----------------------- */
+.fv{
+  position: relative;
+
+  @include pc{
+    width: 100%;
+    height: p(650);
+  }
+
+  @include sp{
+    height: s(700);
+  }
+
+  &--img{
+    @include imgContain('fv.jpg');
+    aspect-ratio: 893 / 569;
+    position: absolute;
+
+    @include pc{
+      width: p(893);
+      top: p(90);
+      right: p(0);
+    }
+
+    @include sp{
+      width: s(550);
+      bottom: 0;
+      left: s(-95);
+    }
+  }
+
+  &--sentence{
+    position: absolute;
+    width: fit-content;
+
+    @include pc{
+      top: p(151);
+      left: p(77);
+      @include column( p(16) );
+    }
+    @include sp{
+      top: s(69);
+      left: 52%;
+      translate: -50% 0;
+      @include column( s(5) );
+    }
+
+    .TL{
+      span{
+        display: block;
+        @include nats;
+        line-height: 107%;
+        letter-spacing: -0.03em;
+
+        @include pc{
+        font-size: p(100);
+        }
+
+        @include sp{
+          font-size: s(80);
+        }
+      }
+    }
+
+    .TX{
+        letter-spacing: -0.05em;
+
+      @include pc{
+        font-size: p(18);
+      }
+
+      @include sp{
+        font-size: s(18);
+        text-align: center;
+      }
+    }
+  }
+}

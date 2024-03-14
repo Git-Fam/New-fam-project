@@ -1,0 +1,107 @@
+@use "../global" as *;
+
+/* -----------------------
+  Message
+----------------------- */
+.Message {
+@include imgCover('Message.jpg');
+
+  @include pc {
+    padding: p(97) 0 p(80);
+  }
+
+  @include sp{
+    padding: s(65) s(20) s(40);
+    background-position: s(-480) top;
+  }
+
+  &--content{
+    display: flex;
+
+    @include pc{
+      justify-content: space-between;
+      gap: p(75);
+    }
+
+    @include sp{
+      flex-direction: column;
+      gap: s(40);
+    }
+
+    .title{
+
+      @include pc{
+        flex-shrink: 0;
+        @include column(p(45));
+      }
+
+      @include sp{
+        @include column(s(40));
+      }
+
+      .subTitle{
+
+        @include pc{
+          translate: p(-30) 0px;
+        }
+
+        @include sp{
+          translate: s(-5) 0px;
+        }
+
+        .TL{
+          font-weight: 700;
+          letter-spacing: -0.01em;
+
+          @include pc{
+            font-size: p(40);
+          }
+
+          @include sp{
+            font-size: s(30);
+            margin-left: s(-10);
+          }
+        }
+      }
+    }
+
+    .text{
+
+      @include pc{
+        @include column(p(23));
+        padding-left: p(29);
+      }
+
+      @include sp{
+        @include column(s(23));
+      }
+      
+      .TX{
+          font-weight: 300;
+          line-height: 156%;
+
+        @include pc{
+          font-size: pm(16 , 12);
+        }
+
+        @include sp{
+          font-size: s(16);
+        }
+
+        &.name{
+          text-align: right;
+
+          @include pc{
+            padding-right: p(50);
+          }
+
+          @include sp{
+            padding-right: s(30);
+          }
+        }
+      }
+    }
+  }
+}
+
+ 

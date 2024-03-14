@@ -1,0 +1,173 @@
+@use "../global" as *;
+
+/* -----------------------
+  header
+----------------------- */
+
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 900;
+  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+  display: flex;
+  justify-content: space-between;
+
+  @include pc {
+    padding: p(14) p(37) p(7);
+  }
+
+  @include sp {
+    padding: s(15) s(20) s(5);
+  }
+
+  .logo{
+    display: block;
+
+    &:hover{
+      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+    
+    @include pc{
+      width: p(82);
+      height: p(75);
+    }
+
+    @include sp{
+      width: s(65);
+      height: s(60);
+    }
+
+    .TL{
+
+      @include pc{}
+
+      @include sp{}
+
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+  }
+
+  .burger {
+    @include iconContain($open);
+    width: s(35);
+    height: s(20);
+    cursor: pointer;
+    margin-left: auto;
+    position: relative;
+    z-index: 800;
+    transition: 0.3s;
+
+    &.active {
+      @include iconContain($close);
+      width: s(35);
+      animation: burger 0.3s;
+
+      @keyframes burger {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    }
+  }
+
+  .menu {
+
+    @include pc{
+      padding-top: p(6);
+    }
+
+    @include sp {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      height: 100%;
+      min-height: 100vh;
+      background: $B-2D889C;
+      @include center;
+      overflow-y: scroll;
+      transition: 0.3s;
+
+      &.active {
+        right: 0;
+      }
+    }
+
+    ul {
+      display: flex;
+
+      @include pc {
+        align-items: center;
+        justify-content: flex-end;
+        gap: p(44);
+      }
+
+      @include sp {
+        flex-direction: column;
+        gap: s(20);
+        justify-content: center;
+        align-items: center;
+        padding: s(50) 0;
+      }
+
+      li {
+
+        a {
+
+          @include pc {
+            &:hover {
+
+              p,
+              span {
+                color: $F-F2CB00;
+              }
+            }
+          }
+
+          @include sp {
+            &:hover {
+              p {
+                color: $F-F2CB00;
+              }
+
+              span {
+                color: $F-FFFFFF;
+              }
+            }
+          }
+
+          p,
+          span {
+            @include outfit;
+            font-weight: 500;
+            transition: 0.3s;
+
+            @include pc {
+              font-size: pm(16, 12);
+            }
+
+            @include sp {
+              font-size: s(40);
+              color: $F-FFFFFF;
+            }
+
+            span {
+              @include sp {
+                color: $F-F2CB00;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

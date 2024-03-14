@@ -1,0 +1,173 @@
+@use "../global" as *;
+
+/* -----------------------
+  C_Service
+----------------------- */
+
+.C_Service {
+
+  .item {
+
+    @include pc {
+      width: p(1136);
+    }
+
+    @include sp {
+      width: s(350);
+      transform: scale(-1, 1);
+    }
+
+    &:nth-child(odd) {
+      @include imgCover('C_Service-img.jpg');
+    }
+
+    &:nth-child(even) {
+
+      @include sp {
+        margin-left: s(20);
+        padding-left: s(20);
+      }
+
+      .item--content {
+        @include pc {
+          padding-left: p(470);
+          padding-right: p(56);
+        }
+      }
+
+    }
+
+    &:nth-child(5n-2) {
+      @include pc {
+        transform: scale(-1, 1);
+      }
+
+      .item--content {
+        @include pc {
+          transform: scale(-1, 1);
+        }
+      }
+    }
+
+    &--content {
+
+      @include pc {
+        padding: p(222) p(126) p(92) p(381);
+      }
+
+      @include sp {
+        padding: s(15) s(22);
+        transform: scale(-1, 1);
+      }
+
+      &.padding{
+
+        @include sp{
+          padding-left: s(20);
+          padding-right: s(20);
+        }
+      }
+
+      &--sentence {
+        position: relative;
+
+        &--number {
+
+          @include pc {
+            position: absolute;
+            top: p(-220);
+            left: p(-220);
+          }
+
+          @include sp {
+            position: relative;
+            width: fit-content;
+            margin-bottom: p(40);
+          }
+
+          .TX {
+            @include outfit;
+            font-weight: 100;
+            background: linear-gradient(180deg, $F-2D889C 0%, rgba(45, 136, 156, 0) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            // text-fill-color: transparent;
+
+            @include pc {
+              font-size: p(180);
+              line-height: p(200);
+            }
+
+            @include sp {
+              font-size: s(100);
+              line-height: s(100);
+            }
+          }
+
+          span {
+            display: block;
+            background: $C-2D889C ;
+            position: absolute;
+
+            @include pc {
+              width: p(202);
+              height: p(2);
+              bottom: p(20);
+              right: p(-100);
+              transform: rotate(-45deg);
+            }
+
+            @include sp {
+              width: 100%;
+              height: s(2);
+              bottom: s(0);
+              right: 0;
+              left: 0;
+              margin: 0 auto;
+            }
+          }
+        }
+
+        &--title {
+
+          @include pc {
+            margin-bottom: p(20);
+          }
+
+          @include sp {
+            margin-bottom: s(10);
+          }
+
+          .TL {
+            font-weight: 700;
+            letter-spacing: -0.01em;
+
+            @include pc {
+              font-size: pm(30, 20);
+            }
+
+            @include sp {
+              font-size: s(23);
+            }
+          }
+        }
+
+        &--text {
+
+          .TX {
+            line-height: 180%;
+
+            @include pc {
+              font-size: pm(16, 12);
+            }
+
+            @include sp {
+              font-size: s(14);
+            }
+          }
+        }
+      }
+    }
+  }
+}

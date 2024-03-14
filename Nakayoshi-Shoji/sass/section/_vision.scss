@@ -1,0 +1,73 @@
+@use "../global" as *;
+
+/* -----------------------
+  vision
+----------------------- */
+.vision {
+
+  @include pc {
+    padding: p(127) 0 p(143);
+  }
+
+  @include sp {
+    padding: s(60) s(20) s(100);
+  }
+
+  &--content {
+    display: flex;
+
+    @include pc {
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @include sp {
+      flex-direction: column;
+      gap: s(30);
+    }
+
+    &--main {
+
+      @include pc {
+        @include column(p(27));
+      }
+
+      @include sp {
+        @include column(s(30));
+      }
+
+      .title {
+
+        .TL,
+        span {
+          font-weight: 700;
+          letter-spacing: -0.01em;
+
+          @include pc {
+            font-size: p(40);
+          }
+
+          @include sp {
+            font-size: s(30);
+          }
+
+        }
+      }
+
+      .text {
+
+        .TX {
+          font-weight: 300;
+
+          @include pc {
+            font-size: pm(16, 12);
+          }
+
+          @include sp {
+            font-size: s(16);
+          }
+        }
+      }
+    }
+  }
+}

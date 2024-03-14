@@ -1,0 +1,28 @@
+@use "../global" as *;
+
+/* -----------------------
+  service
+----------------------- */
+.service {
+
+  @include pc{
+    padding: p(110) 0 p(215);
+  }
+
+  @include sp{
+    padding: s(70) 0;
+  }
+
+  &--title{
+
+    @include pc{
+      margin-bottom: p(40);
+    }
+
+    @include sp{
+      padding: 0 s(20);
+      margin-bottom: s(40);
+    }
+
+  }
+}

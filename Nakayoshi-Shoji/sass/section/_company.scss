@@ -1,0 +1,116 @@
+@use "../global" as *;
+
+/* -----------------------
+  company
+----------------------- */
+.company {
+
+  @include pc{
+    padding: 0 0 p(290);
+  }
+
+  @include sp{
+    padding: 0 s(20) s(75);
+  }
+
+  &--content{
+
+    .C_Title{
+  
+      @include pc{
+        margin-bottom: p(70);
+      }
+  
+      @include sp{
+        margin-bottom: s(40);
+      }
+    }
+  
+    &--list{
+  
+      ul{
+  
+        li{
+          border-top: 1px solid $C-C0C0C0;
+          display: flex;
+  
+          @include pc{
+            padding: p(30) p(15);
+          }
+  
+          @include sp{
+            align-items: center;
+            padding: s(30) s(15);
+          }
+
+          --widthP: 25%;
+          --widthS: 32%;
+
+          .title{
+
+            @include pc{
+              width: var(--widthP);
+            }
+
+            @include sp{
+              width: var(--widthS);
+            }
+  
+            .TL{
+                font-weight: 700;
+                letter-spacing: -0.01em;
+                
+                @include pc{
+                font-size: pm( 17 , 13 );
+                }
+  
+              @include sp{
+                font-size: s(16);
+              }
+            }
+          }
+  
+          .text{
+
+            @include pc{
+              width: calc(100% - var(--widthP));
+            }
+
+            @include sp{
+              width: calc(100% - var(--widthS));
+            }
+  
+            .TX{
+                letter-spacing: -0.01em;
+
+              @include pc{
+                font-size: pm( 17 , 13 );
+              }
+  
+              @include sp{
+                font-size: s(16);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &--map{
+      width: 100%;
+
+      @include pc{
+        height: p(230);
+      }
+
+      @include sp{
+        height: s(230);
+      }
+
+      iframe{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

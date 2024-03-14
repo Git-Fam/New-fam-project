@@ -1,0 +1,62 @@
+// フォント
+// font-family: 'NATS';
+@mixin nats {
+  font-family: 'NATS', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  line-height: normal;
+}
+
+// font-family: Outfit;
+@mixin outfit {
+  font-family: "Outfit", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  line-height: normal;
+}
+
+// font-family: Noto Sans;
+@mixin sans {
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  line-height: normal;
+}
+
+// font-family: Noto Sans JP;
+@mixin sansJP {
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  line-height: normal;
+}
+
+
+// サイズ
+@function p($size, $viewport: 1280) {
+  $rate: calc(100 / $viewport);
+  @return $rate * $size * 1vw;
+}
+// font-size: pc(50);
+
+@function pm($size, $maxSize: $size, $viewport: 1280) {
+  $rate: calc(100 / $viewport);
+  $calculatedSize: $rate * $size * 1vw;
+  @return max(#{$calculatedSize}, #{$maxSize}px);
+}
+// font-size: pcMax(50,40);
+
+@function s($size, $viewport: 390) {
+  $rate: calc(100 / $viewport);
+  @return $rate * $size * 1vw;
+}
+// font-size: sp(50);
+
+@function sm($size, $maxSize: $size, $viewport: 390) {
+  $rate: calc(100 / $viewport);
+  $calculatedSize: $rate * $size * 1vw;
+  @return max(#{$calculatedSize}, #{$maxSize}px);
+}
+// font-size: spMax(50,40);
+
+

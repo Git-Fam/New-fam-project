@@ -1,0 +1,63 @@
+@use "../global" as *;
+
+/* -----------------------
+  commons
+----------------------- */
+
+// 表示・非表示
+.sp{
+  @include pc{
+    display: none !important;
+  }
+}
+.pc{
+  @include sp{
+    display: none !important;
+  }
+}
+
+
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: 10%;
+}
+
+body{
+
+  &.active{
+    overflow: hidden;
+  }
+}
+
+.wapper{
+  overflow: hidden;
+}
+
+.Y{
+  color: $F-F2CB00;
+}
+
+// 中途半端な折り返しを制限
+.inline{
+  display: inline;
+}
+
+
+// 幅
+.inner{
+  margin: 0 auto;
+
+  @include pc{
+    width: p(880);
+  }
+
+  @include sp{
+    width: 100%;
+  }
+}
+
+
+// リキャプチャー非表示
+.grecaptcha-badge {
+  visibility: hidden; 
+ }
