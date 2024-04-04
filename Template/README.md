@@ -1,35 +1,30 @@
 
-cooperator
+joint
 
-cooperator-2
+用意済み
 
-をそれぞれ用意済み
-
-それぞれのディレクトリ内なら、自由にカスタム可能
+jointディレクトリ内なら、自由にカスタム可能
 
 
 
-_ex_mixins.scss
-_ex_variables.scss
-_example.scss
-_index.scss
+J_components
+
+J_functions
+
+J_page
 
 を用意済み
 
-_ex_mixins.scss
+J_components
 ↓
-独自のmixinを記述するファイル
+共通のコンポーネントを記述するディレクトリ
 
-_ex_variables.scss
-↓
-独自の変数を記述するファイル
 
-_example.scss
+J_functions
 ↓
-独自のスタイルを記述するファイル（名前変更して使用して）
+独自の関数を記述するディレクトリ
 
-_index.scss
+J_page
 ↓
-cooperator or cooperator-2のscssファイルforwardして、style.scssへuseするファイル
-_example.scssなど名前へ変更したら、_index.scss内のforward先も変更すること
-ファイルを追加したら、_index.scss内にforwardを追記すること
+ページごとのスタイルを記述するディレクトリ
+third,forthを作成してありますが担当するページの名前に変更してください
