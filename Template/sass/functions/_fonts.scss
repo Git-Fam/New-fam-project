@@ -45,6 +45,12 @@
 }
 
 
+// line-height
+@mixin lineHeight($font-size, $line-height) {
+  $line-height-percentage: ($line-height / $font-size) * 100%;
+
+  line-height: $line-height-percentage;
+}
 
 // サイズ
 @function p($size, $viewport: 1280) {
