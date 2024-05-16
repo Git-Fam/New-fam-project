@@ -25,7 +25,7 @@ html {
 
 body {
   @include Tsukushi;
-  @include wt400;
+  @include regular;
   color: $F-534646;
   
   &.active {
