@@ -1,0 +1,328 @@
+@use "../../../functions" as *;
+@use "../../J_functions" as *;
+
+/* -----------------------
+  flow
+----------------------- */
+#flow{
+  @include pc{
+    padding-top: p(130);
+  }
+  @include sp{
+    padding-top: s(96);
+  }
+  .main{
+    position: relative;
+    @include pc{
+      width: p(880);
+      margin: p(60) auto 0;  
+    }
+    @include sp{
+      margin-top: s(64);
+    }
+    .line{
+      position: absolute;
+      z-index: 1;
+      @include pc{
+        @include imgContain("flowLine.png");
+        width: p(649);
+        height: p(2067);
+        top: p(68);
+        left: p(156);
+      }
+      @include sp{
+        @include imgContain("flowLine_sp.png");
+        width: s(437);
+        height: s(2582);
+        top: s(19);
+        left: s(-20);
+      }
+    }
+    .content{
+      position: relative;
+      z-index: 10;
+      counter-reset:circle;
+      .flow-box{
+        @include pc{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: p(60);
+          width: p(831);
+        }
+        @include sp{
+          width: s(348);
+          margin: s(60) auto ;
+        }
+        .img{
+          @include pc{
+            width: p(438);
+            height: p(327);
+          }
+          @include sp{
+            width: s(348);
+            height: s(259);
+          }
+        }
+        .img01{
+          @include imgCover("flow01.png");
+        }
+        .img02{
+          @include imgCover("flow02.png");
+          @include sp{
+            rotate: (90deg);
+            height: s(348);
+            width: s(259);
+            margin: 0 auto s(-80);
+            background-size: 120%;
+          }
+        }
+        .img03{
+          @include imgCover("flow03.png");
+        }
+        .img04{
+          @include imgCover("flow04.png");
+        }
+        .img05{
+          @include imgCover("flow05.png");
+        }
+
+
+        .textbox{
+          background: $B-FFFFFF;
+          height: fit-content;
+          position: relative;
+          @include pc{
+            padding: p(40) p(24) p(25) p(26);
+            width: p(322);
+            min-height: p(192);
+            box-shadow: 0 p(4) p(14) 0 rgba(0, 0, 0, 0.25);
+          }
+          @include sp{
+            padding: s(55) s(24) s(30) s(26);
+            width: s(322);
+            min-height: s(192);
+            box-shadow: 0 s(4) s(14) 0 rgba(0, 0, 0, 0.25);
+            margin: s(-28) auto 0;
+          }
+          .TL{
+            text-align: center;
+            @include bold;
+            @include pc{
+              font-size: p(32);
+            }
+            @include sp{
+              font-size: s(32);
+            }
+          }
+          .TX{
+            @include regular;
+            @include pc{
+              font-size: pm(16,12);
+              letter-spacing: p(1.6);
+              line-height: 1.7;
+              margin-top: p(20);
+            }
+            @include sp{
+              font-size: s(16);
+              letter-spacing:s(1.6) ;
+              line-height: 1.5;
+              margin-top: s(15);
+            }
+          }
+          &::before{
+            background: $B-D2B61C;
+            color: #FFF;
+            counter-increment:circle;
+            content: counter(circle);
+            text-align: center;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%; 
+            translate: -50%;
+            @include pc{
+              width: p(63);
+              line-height:  p(63);
+              font-size: p(32);
+              top: p(-32);
+            }
+            @include sp{
+              width: s(63);
+              line-height:  s(63);
+              font-size: s(32);
+              top: s(-32);
+            }
+          }  
+        }
+        &:first-child{
+          margin-top: 0;
+        }
+      }
+      .flow-last{
+        @include pc{
+          width: p(880);
+        }
+        @include sp{
+          width: 100%;
+        }
+        .textbox{
+          text-align: center;
+          position: relative;
+          @include bold;
+          @include pc{
+            font-size: p(32);
+            width: fit-content;
+            margin: p(124) auto 0;
+            display: flex;
+            align-items: center;
+            gap: p(10);
+          }
+          @include sp{
+            font-size: s(32);
+            margin: s(80) auto 0;
+          }
+          .index{
+            position: relative;
+            @include pc{
+              width: p(63);
+              height: p(63);
+            }
+            @include sp{
+              width: s(63);
+              height: s(63);
+              margin: 0 auto;
+
+            }
+            &::before{
+              background: $B-D2B61C;
+              color: #FFF;
+              counter-increment:circle;
+              content: counter(circle);
+              text-align: center;
+              border-radius: 50%;
+              position: absolute;
+              @include pc{
+                width: p(63);
+                line-height:  p(63);
+                font-size: p(32);
+                top: 0;
+                left: 0;
+              }
+              @include sp{
+                width: s(63);
+                line-height:  s(63);
+                font-size: s(32);
+                left: 0;
+                top: s(-15);
+                }
+            }  
+          }
+          &::before{
+            content: "　";
+            position: absolute;
+            rotate: (-42deg);
+            @include pc{
+              height: p(82);
+              border-left:p(1) solid;
+              left: p(-35);
+              top: p(-15);
+            }
+            @include sp{
+              height: s(47);
+              border-left:s(1) solid;
+              left: s(10);
+              top: s(50);
+            }
+          }
+          &::after{
+            content: "　";
+            position: absolute;
+            rotate: (42deg);
+            @include pc{
+              height: p(82);
+              border-right:p(1) solid;
+              right: p(-35);
+              top: p(-15);
+            }
+            @include sp{
+              height: s(47);
+              border-right:s(1) solid;
+              right: s(10);
+              top: s(50);
+            }
+          }
+        }
+        .img{
+          @include pc{
+            width: p(880);
+            height: p(282);
+            display: flex;
+            padding:p(44) p(40) 0 p(35);
+            margin-top: p(30);
+            background-position: 100% 95%; 
+          }
+          @include sp{
+            width: 100%;
+            height: s(285);
+            display: flex;
+            margin-top: s(30);
+            background-position: 35% 100% !important; 
+          }
+          .deco_TX{
+            @include yusei;
+            color: $F-ffffff;
+            @include pc{
+              font-size: p(38);
+            }
+            @include sp{
+              font-size: s(26);
+            }
+            &:nth-child(1){
+              rotate: (-15deg);
+              @include pc{
+                margin: p(48) 0 0 p(48);
+              }
+              @include sp{
+                margin: s(135) 0 0 s(20);
+              }
+            }
+            &:nth-child(2){
+              rotate: (15deg);
+              @include pc{
+                margin: p(44) p(10) 0 auto;
+              }
+              @include sp{
+                margin: s(35) s(50) 0 auto ;
+              }
+            }
+
+          }
+        }
+        .img06{
+          @include imgCover("flow06.png");
+        }
+      }
+      .reverse{
+        @include pc{
+          flex-direction: row-reverse;
+          margin-left: auto;
+        }
+      }
+    }
+  }
+  .bottom{
+    @include imgContain("flow_bottom.png");
+    mix-blend-mode: multiply;
+    @include pc{
+      width: p(808);
+      height: p(235);
+      margin: p(130) auto 0;
+    }
+    @include sp{
+      width: 100%;
+      height: s(157);
+      margin: s(30) auto 0;
+      background-size: cover;
+    }
+  }
+}
