@@ -1,0 +1,303 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  about
+----------------------- */
+.about {
+  position: relative;
+  z-index: 2;
+
+  @include pc {
+    margin-top: p(178);
+  }
+
+  @include sp {
+    margin-top: s(130);
+  }
+
+  .about--deco {
+    rotate: -5.57deg;
+    position: absolute;
+
+    &.deco--1 {
+      aspect-ratio: 334/363;
+      @include imgContain("about-deco-img-1.png");
+
+      @include pc {
+        width: p(334);
+        top: p(-140);
+        left: 0;
+      }
+
+      @include sp {
+        width: s(130);
+        top: s(-160);
+        left: s(-5);
+      }
+    }
+
+    &.deco--2 {
+      aspect-ratio: 188/199;
+      @include imgContain("about-deco-img-2.png");
+
+      @include pc {
+        width: p(188);
+        top: p(210);
+        left: 0;
+      }
+
+      @include sp {
+        width: s(70);
+        top: s(-30);
+        left: s(0);
+      }
+    }
+  }
+
+  &--text {
+
+    @include pc {
+      margin-top: p(50);
+    }
+
+    @include sp {}
+
+    .TX {
+      line-height: 188%;
+      text-align: center;
+      letter-spacing: 0.1em;
+
+      @include pc {
+        font-size: pm(16, 12);
+      }
+
+      @include sp {}
+    }
+  }
+
+  .about--pict {
+    aspect-ratio: 323/230;
+    background-color: $F-ffffff;
+    filter: drop-shadow(0px 4px 18px rgba(0, 0, 0, 0.25));
+    rotate: 12.68deg;
+    position: absolute;
+
+    @include pc {
+      width: p(323);
+      padding: p(10);
+      top: p(280);
+      right: p(-35);
+
+      @media screen and (max-width: 850px) and (min-width: 768px) {
+        top: p(360);
+      }
+    }
+
+    @include sp {}
+
+    &--img {
+      width: 100%;
+      height: 100%;
+      @include imgCover("about-deco-pict.jpg");
+    }
+  }
+
+  &--into {
+
+    @include pc {
+      margin-top: p(100);
+    }
+
+    @include sp {}
+
+    &--title {
+      text-align: center;
+
+      @include pc {}
+
+      @include sp {}
+
+      .TX {
+        @include bold;
+        line-height: 150%;
+        color: $F-EB6D6D;
+
+        @include pc {
+          font-size: p(36);
+        }
+      }
+
+      .TL {
+        @include bold;
+        line-height: 150%;
+
+        @include pc {
+          font-size: p(36);
+        }
+
+        @include sp {}
+      }
+    }
+
+    &--img {
+      @include imgCover("about-into-img.jpg");
+
+      @include pc {
+        aspect-ratio: 1080/349;
+        width: p(1080);
+        margin: p(34) 0 0;
+      }
+
+      @include sp {}
+    }
+
+    &--text {
+      text-align: center;
+
+      @include pc {
+        margin-top: p(60);
+        @include column(p(20));
+      }
+
+      @include sp {}
+
+
+      .TL {
+        @include bold;
+        line-height: 167%;
+        letter-spacing: 0.1em;
+
+        @include pc {
+          font-size: p(24);
+        }
+
+        @include sp {}
+
+        span {
+          color: $F-EB6D6D;
+        }
+      }
+
+      .TX {
+        @include bold;
+        line-height: 1.5;
+        letter-spacing: 0.1em;
+
+        @include pc {
+          font-size: p(16);
+        }
+
+        @include sp {}
+      }
+    }
+
+    &--main {
+
+      @include pc {
+        margin-top: p(145);
+        @include column(p(120));
+      }
+
+      @include sp {}
+
+      .item {
+        display: flex;
+
+        @include pc {
+          justify-content: space-between;
+          width: p(840);
+        }
+
+        @include sp {}
+
+        &:nth-child(odd) {
+
+          @include pc {
+            margin: 0 auto 0 p(145);
+          }
+
+          @include sp {}
+
+        }
+
+        &:nth-child(even) {
+
+          @include pc {
+            margin: 0 auto 0 p(245);
+            flex-direction: row-reverse;
+          }
+
+          @include sp {}
+        }
+
+        &--pict {
+          aspect-ratio: 525/370;
+          height: fit-content;
+          background-color: $F-ffffff;
+          filter: drop-shadow(0px 4px 18px rgba(0, 0, 0, 0.25));
+
+          @include pc {
+            width: p(525);
+            padding: p(10);
+          }
+
+          @include sp {}
+
+          &.pict--1 {
+            rotate: -6.66deg;
+          }
+
+          &.pict--2 {
+            rotate: 6.66deg;
+
+            @include pc {
+              translate: 0 p(40);
+            }
+
+            @include sp {}
+          }
+
+          .img {
+            width: 100%;
+            height: 100%;
+
+            &.img--1 {
+              @include imgCover("about-into-main-img-1.jpg");
+            }
+
+            &.img--2 {
+              @include imgCover("about-into-main-img-2.jpg");
+            }
+          }
+        }
+
+        &--text {
+
+          @include pc {}
+
+          @include sp {}
+
+          .TX {
+            @include bold;
+            line-height: 220%;
+            letter-spacing: 0.3em;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            vertical-align: top;
+
+
+            @include pc {
+              font-size: pm(24, 16);
+            }
+
+            @include sp {}
+
+            span {
+              color: $F-EB6D6D;
+            }
+          }
+        }
+      }
+    }
+  }
+}

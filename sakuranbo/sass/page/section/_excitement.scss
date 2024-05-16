@@ -3,13 +3,161 @@
 /* -----------------------
   excitement
 ----------------------- */
-.excitement{
-  height: p(400);
+.excitement {
+  position: relative;
+  z-index: 1;
 
-  @include pc{
+  @include pc {
     margin-top: p(154);
   }
-  
-  @include sp{}
-  
+
+  @include sp {
+    margin-top: s(95);
+  }
+
+  &--content {
+    display: flex;
+
+    @include pc {
+      align-items: center;
+      justify-content: flex-end;
+      gap: p(50);
+      padding-left: p(140);
+    }
+
+    @include sp {
+      flex-direction: column;
+      gap: s(36);
+    }
+
+    &--sentence {
+
+      @include pc {
+        @include column(p(30));
+      }
+
+      @include sp {
+        @include column(s(65));
+      }
+
+      .title {
+
+        .TL {
+          position: relative;
+
+          @include sp {
+            width: fit-content;
+            margin: 0 auto;
+          }
+
+          span {
+            display: block;
+            @include bold;
+            line-height: 157.2%;
+            letter-spacing: 0.2em;
+
+            @include pc {
+              font-size: p(36);
+            }
+
+            @include sp {
+              font-size: s(32);
+            }
+          }
+
+          .span-TX {
+            color: $F-EB6D6D;
+            position: absolute;
+            rotate: -10deg;
+
+            @include pc {
+              top: p(-35);
+              left: p(-15);
+            }
+
+            @include sp {
+              top: s(-35);
+              left: s(15);
+            }
+
+            &::before {
+              content: "";
+              display: block;
+              aspect-ratio: 267/53;
+              @include iconContain($kakko);
+              position: absolute;
+              left: 50%;
+              translate: -50% 0;
+              top: 70%;
+              rotate: -3deg;
+
+              @include pc {
+                width: p(267);
+              }
+
+              @include sp {
+                width: s(226);
+              }
+            }
+          }
+
+          .TX {
+
+            &.TX-top {
+              text-align: right;
+
+              @include pc {
+                padding-right: p(45);
+              }
+
+              @include sp {
+                padding-right: s(40);
+              }
+            }
+
+          }
+        }
+      }
+
+      .text {
+
+        @include pc {
+          padding-right: p(45);
+        }
+
+        @include sp {
+          padding: 0 s(18);
+          text-align: center;
+        }
+
+        .TX {
+          line-height: 188%;
+          letter-spacing: 0.1em;
+
+          @include pc {
+            font-size: pm(16, 12);
+          }
+
+          @include sp {
+            font-size: s(16);
+          }
+        }
+      }
+    }
+
+    &--img {
+      @include imgCover("excitement-img.jpg");
+      aspect-ratio: 697/416;
+      flex-shrink: 0;
+
+      @include pc {
+        width: p(697);
+      }
+
+      @include sp {
+        margin-left: auto;
+        width: s(343);
+      }
+    }
+  }
 }

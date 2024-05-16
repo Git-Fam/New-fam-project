@@ -1,0 +1,18 @@
+
+/* -----------------------
+  anime
+----------------------- */
+
+
+.pikopiko {
+  animation: pikopiko 1s steps(2, start) infinite;
+
+  @keyframes pikopiko {
+    0% {
+      transform: rotate(20deg);
+    }
+    to {
+      transform: rotate(-10deg);
+    }
+  }
+}
