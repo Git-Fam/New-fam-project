@@ -3,7 +3,11 @@
 /* -----------------------
   KV
 ----------------------- */
-a{
+.KV{
+  height: 200vh;
+  background-color: #cecece;
 
-  display: flex;
+  @include pc{}
+  
+  @include sp{}
 }
