@@ -131,8 +131,6 @@
               display: block;
               width: 100%;
               transition: all 0.3s;
-              @include iconContain($waveSmall);
-              background-repeat: repeat-x;
               
               @include pc{
                 height: p(3);
