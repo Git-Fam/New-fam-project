@@ -6,7 +6,9 @@
 
 .C_btn{
   position: relative;
+  display: block;
   .img{
+    display: block;
     width: fit-content;
     @include pc{
       padding: p(42) p(141) p(27) p(141);
@@ -46,7 +48,9 @@
           margin-right: 0;
         }
         &:nth-child(4){
-          margin-left: s(40);
+          @include sp{
+            margin-left: s(40);
+          }
         }
       }
       .gold{
@@ -62,6 +66,7 @@
     position: absolute;
     @include pc{
       top:p(-53);
+      left: p(52);
     }
     @include sp{
       top: s(-55);
@@ -90,6 +95,72 @@
       @include sp{
         width: s(241);
         height: s(48);
+      }
+    }
+  }
+}
+
+.nav{
+  .img{
+    @include pc{
+      padding: p(24) p(81) p(15) p(83);
+    }
+    @include sp{
+      padding: s(16) s(24) s(14) s(24);
+    }
+    .TX{
+      @include pc{
+        font-size: p(26);
+      }
+      @include sp{
+        font-size: s(26);
+        line-height: 1.5;
+      }
+      span{
+        @include pc{
+          font-size: p(39);
+          padding: p(8);
+          margin-right: p(7);
+        }
+        @include sp{
+          font-size: s(40);
+          padding: s(8);
+        }
+        &:nth-child(4){
+          @include sp{
+            margin-left: s(30);
+          }
+        }
+      }
+    }
+  }
+  .cmt{
+    @include pc{
+      top:p(-28);
+      left: p(30);
+    }
+    @include sp{
+      top: s(-38);
+
+    }
+    .TX{
+      @include pc{
+        font-size: p(14);
+        margin-bottom: p(-8);
+      }
+      @include sp{
+        font-size: s(14);
+        margin-bottom: s(-8);
+      }
+    }
+    .deco{
+      @include pc{
+        width: p(157);
+        height: p(31);
+      }
+      @include sp{
+        width: s(176);
+        height: s(35);
       }
     }
   }
