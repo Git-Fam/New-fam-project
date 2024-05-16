@@ -25,8 +25,9 @@ html {
 
 body {
 
-  // @include serif;
 
+  color: $F-534646;
+  
   &.active {
 
     @include sp {
