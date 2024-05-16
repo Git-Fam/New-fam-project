@@ -38,4 +38,5 @@ body {
   @include imgContain("all_bg.jpg");
   background-position: top center;
   background-repeat: repeat-y;
+  height: 100vh;
 }
