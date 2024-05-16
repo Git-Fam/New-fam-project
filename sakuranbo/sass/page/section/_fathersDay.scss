@@ -1,0 +1,73 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  fathersDay
+----------------------- */
+.fathersDay {
+  position: relative;
+  z-index: 4;
+
+  @include pc {
+    margin-top: p(130);
+  }
+
+  @include sp {
+    margin-top: s(100);
+  }
+
+  &--banner {
+    position: relative;
+    margin: 0 auto;
+
+    @include pc {
+      aspect-ratio: 881 / 250;
+      width: pm(881, 650);
+      @include imgContain("fathersDay--banner-pc.svg");
+    }
+
+    @include sp {
+      aspect-ratio: 350 / 233;
+      width: s(350);
+      @include imgContain("fathersDay--banner-sp.svg");
+    }
+
+    .deco {
+      position: absolute;
+
+      &.deco--1 {
+        @include imgContain("fathersDay-banner-hat.png");
+        aspect-ratio: 205 / 162;
+
+        @include pc {
+          width: p(205);
+          top: p(-85);
+          left: p(-50);
+        }
+
+        @include sp {
+          width: s(129);
+          top: s(-70);
+          left: s(-50);
+        }
+      }
+
+      &.deco--2 {
+        @include imgContain("fathersDay-banner-beard.png");
+        aspect-ratio: 170 / 59;
+        rotate: 7.52deg;
+
+        @include pc {
+          width: p(170);
+          bottom: p(-10);
+          right: p(-15);
+        }
+
+        @include sp {
+          width: s(107);
+          bottom: s(-5);
+          right: s(-30);
+        }
+      }
+    }
+  }
+}

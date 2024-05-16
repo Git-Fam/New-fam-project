@@ -1,0 +1,54 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  lineUp
+----------------------- */
+.lineUp {
+  position: relative;
+  z-index: 5;
+
+  @include pc {
+    margin-top: p(135);
+  }
+
+  @include sp {
+    margin-top: s(100);
+  }
+
+  &--text{
+
+    @include pc{
+      margin-top: p(100);
+    }
+    
+    @include sp{
+      margin-top: s(30);
+      padding: 0 s(20);
+    }
+
+    .TX{
+      line-height: 1.5;
+
+      @include pc{
+        font-size: p(32);
+        text-align: center;
+      }
+      
+      @include sp{
+        font-size: s(20);
+      }
+    }
+  }
+
+  &--content{
+
+    @include pc{
+      margin-top: p(135);
+    }
+    
+    @include sp{
+      margin-top: s(78);
+    }
+  }
+
+}
