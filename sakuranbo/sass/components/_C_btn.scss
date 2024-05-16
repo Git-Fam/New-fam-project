@@ -47,7 +47,7 @@
       @include bold;
       @include pc{
         font-size: p(24);
-        transform: rotate(-9.69deg);
+        rotate:(-9.69deg);
         text-align: center;
         margin-bottom: p(-8);
   
@@ -58,7 +58,7 @@
       @include pc{
         width: p(275);
         height: p(55);
-        transform: rotate(-10.851deg);
+        rotate:(-10.851deg);
       }
     }
   }
