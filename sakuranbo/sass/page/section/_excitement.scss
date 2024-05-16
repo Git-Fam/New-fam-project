@@ -1,0 +1,17 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  excitement
+----------------------- */
+.excitement{
+
+
+  @include pc{
+    margin-top: p(154);
+
+    
+  }
+  
+  @include sp{}
+  
+}
