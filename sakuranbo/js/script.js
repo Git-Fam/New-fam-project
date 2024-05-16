@@ -33,14 +33,16 @@ $(function () {
   // ハンバーガーメニュー
    $(".burger").on("click", function(){
      $(this).toggleClass("active");
-    //  $('.menu').toggleClass("active");
+     $('.menu').toggleClass("active");
      $('body').toggleClass("active");
+     $('.menu__bg').toggleClass("active");
    }); 
-  // $(".js-link,.menu").on("click", function(){
-  //   $('.burger').removeClass("active");
-  //   $('.menu').removeClass("active");
-  //   $('body').removeClass("active");
-  // });
+  $(".js-link,.menu__bg").on("click", function(){
+    $('.burger').removeClass("active");
+    $('.menu').removeClass("active");
+    $('body').removeClass("active");
+    $('.menu__bg').removeClass("active");
+  });
 
   // var prevScrollpos = window.pageYOffset;
   // window.onscroll = function() {

@@ -29,10 +29,7 @@ body {
   color: $F-534646;
   
   &.active {
-
-    @include sp {
-      overflow: hidden;
-    }
+    overflow: hidden;
   }
 }
 
