@@ -1,0 +1,76 @@
+@use "../../../functions" as *;
+@use "../../J_functions" as *;
+
+/* -----------------------
+  footer
+----------------------- */
+
+footer{
+  background: $F-EB6D6D;
+  @include pc{
+    padding: p(64) p(0) p(8);
+  }
+  @include sp{
+    padding: s(20) s(0) s(7);
+  }
+  .footer_content{
+    @include pc{
+      display: flex;
+      justify-content: space-between;  
+      padding: 0 p(164) 0  p(91);
+
+    }
+    @include sp{
+      padding: 0 s(87) 0 s(12);
+    }
+    .logo{
+      @include imgContain("logo.png");
+      @include pc{
+        width: p(240);
+        height: p(74);
+      }
+      @include sp{
+        width: s(205);
+        height: s(63);
+      }
+    }
+    .footer_nav{
+      display: flex;
+      @include pc{
+        width: p(736);
+        justify-content: space-between;
+      }
+      @include sp{
+        margin: s(33) 0 0 s(10);
+        flex-wrap: wrap;
+        gap: s(25) s(20);
+      }
+      li{
+        @include bold;
+        @include pc{
+          margin-top: p(22);
+          font-size: pm(16,12);
+        }
+        @include sp{
+          font-size: s(13);
+        }
+        a{
+          color: $F-ffffff;
+        } 
+      }
+    }  
+  }
+  .copy_right{
+    color: $F-ffffff;
+    text-align: center;
+    @include regular;
+    @include pc{
+      font-size: pm(16,12);
+      margin-top: p(40);
+    }
+    @include sp{
+      font-size: s(14);
+      margin-top: s(40);
+    }
+  }
+}
