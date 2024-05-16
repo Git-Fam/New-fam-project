@@ -72,9 +72,6 @@ html {
   scroll-padding-top: 10%;
 }
 
-body {
-  color: #534646;
-}
 @media screen and (max-width: 767px) {
   body.active {
     overflow: hidden;
@@ -306,10 +303,6 @@ body {
 /* -----------------------
   forth
 ----------------------- */
-.aaa {
-  width: 800px;
-}
-
 /* -----------------------
   C_example
 ----------------------- */
