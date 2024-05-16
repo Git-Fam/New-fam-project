@@ -18,16 +18,35 @@
     }
   }
   .TL{
+  overflow: hidden;    
     @include pc{
       font-size: p(48);
-      letter-spacing: p(10);
-      margin-top: p(20);
     }
     @include sp{
       font-size:s(32);
-      letter-spacing: s(6);
-      margin-top: s(15);
     }
+    span{
+      transform: translateY(2em);
+      animation: textanimation 0.5s forwards;
+      position: relative;
+      display: inline-block;
+      padding-top: 0.5em;
+      @keyframes textanimation {
+        0% {
+            transform: translateY(100%);
+        }
+      
+        50% {
+            transform: translateY(-20%);
+        }
+      
+        100% {
+            transform: translateY(0);
+        }
+      }
+      
+    }
+
   }
   .wave{
     background-repeat: repeat-x;
