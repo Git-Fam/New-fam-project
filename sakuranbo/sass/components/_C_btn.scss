@@ -1,0 +1,65 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_btn
+----------------------- */
+
+.C_btn{
+  position: relative;
+  .img{
+    @include imgCover("btn.png");
+    @include pc{
+      padding: p(42) p(141) p(27) p(141);
+      width: fit-content;
+      .TX{
+        @include bold;
+        color: #FFF;
+        font-size: p(45.8);
+        span{
+          @include bold;
+          @include pc{
+            font-size: p(69);
+            background: $B-FFFFFF;
+            border-radius: 50%;
+            padding: p(15);
+            margin-right: p(13);
+          }
+          &:last-child{
+            margin-right: 0;
+          }
+        }
+        .gold{
+          color: $F-D2B61C;
+        }
+        .pink{
+          color: $F-EB6D6D;
+        }
+      }
+    }
+  }
+  .cmt{
+    width: fit-content;
+    position: absolute;
+    @include pc{
+      top:p(-53);
+    }
+    .TX{
+      @include bold;
+      @include pc{
+        font-size: p(24);
+        transform: rotate(-9.69deg);
+        text-align: center;
+        margin-bottom: p(-8);
+  
+      }
+    }
+    .deco{
+      @include iconContain($btn);
+      @include pc{
+        width: p(275);
+        height: p(55);
+        transform: rotate(-10.851deg);
+      }
+    }
+  }
+}
