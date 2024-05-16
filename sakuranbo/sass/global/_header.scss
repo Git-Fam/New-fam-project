@@ -31,11 +31,92 @@
     
     @include sp{}
 
+    &.active{
+      aspect-ratio: 40/45;
+  
+      @include pc{
+        width: p(40);
+      }
+      
+      @include sp{}
+
+      .burger--icon{
+        @include iconContain($close);
+      }
+    }
 
     &--icon{
       width: 100%;
       height: 100%;
       @include iconContain($open);
+      transition: all 0.3s;
+    }
+  }
+
+  .menu{
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: #FFFFFF;
+    overflow-y: scroll;
+    
+    @include pc{
+      border-radius: p(100) 0px 0px p(100);
+      width: p(730);
+      height: p(650);
+      max-height: 100vh;
+      padding: p(53) 0 p(58);
+    }
+    
+    @include sp{}
+
+    .nav{
+      
+      @include pc{}
+      
+      @include sp{}
+      
+      .logo{
+        aspect-ratio: 199/74;
+        margin: 0 auto;
+        
+        @include pc{
+          width: p(199);
+        }
+        
+        @include sp{}
+
+        &--img{
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          object-position: center;
+        }
+
+      }
+
+      .list{
+
+        @include pc{}
+        
+        @include sp{}
+
+        li{
+
+          @include pc{}
+          
+          @include sp{}
+
+          a{
+
+            @include pc{}
+            
+            @include sp{}
+          }
+        }
+      }
+
+      
     }
   }
 }

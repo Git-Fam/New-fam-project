@@ -30,12 +30,12 @@ $(function () {
     s.parentNode.insertBefore(tk, s)
   })(document);
 
-  // // ハンバーガーメニュー
-  //  $(".burger").on("click", function(){
-  //    $(this).toggleClass("active");
-  //    $('.menu').toggleClass("active");
-  //    $('body').toggleClass("active");
-  //  }); 
+  // ハンバーガーメニュー
+   $(".burger").on("click", function(){
+     $(this).toggleClass("active");
+    //  $('.menu').toggleClass("active");
+     $('body').toggleClass("active");
+   }); 
   // $(".js-link,.menu").on("click", function(){
   //   $('.burger').removeClass("active");
   //   $('.menu').removeClass("active");
