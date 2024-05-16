@@ -7,33 +7,53 @@
 .C_btn{
   position: relative;
   .img{
-    @include imgCover("btn.png");
+    width: fit-content;
     @include pc{
       padding: p(42) p(141) p(27) p(141);
-      width: fit-content;
-      .TX{
-        @include bold;
-        color: #FFF;
+      @include imgCover("btn.png");
+    }
+    @include sp{
+      padding: s(20) s(30) s(16) s(33);
+      @include imgCover("btn_sp.png");
+    }
+    .TX{
+      @include bold;
+      color: #FFF;
+      @include pc{
         font-size: p(45.8);
-        span{
-          @include bold;
-          @include pc{
-            font-size: p(69);
-            background: $B-FFFFFF;
-            border-radius: 50%;
-            padding: p(15);
-            margin-right: p(13);
-          }
-          &:last-child{
-            margin-right: 0;
-          }
+      }
+      @include sp{
+        font-size: s(36);
+        line-height: 1.6;
+
+      }
+      span{
+        @include bold;
+        background: $B-FFFFFF;
+        border-radius: 50%;
+        @include pc{
+          font-size: p(69);
+          padding: p(15);
+          margin-right: p(13);
         }
-        .gold{
-          color: $F-D2B61C;
+        @include sp{
+          font-size: s(54);
+          padding: s(10);
+          margin-right: s(9);
+
         }
-        .pink{
-          color: $F-EB6D6D;
+        &:last-child{
+          margin-right: 0;
         }
+        &:nth-child(4){
+          margin-left: s(40);
+        }
+      }
+      .gold{
+        color: $F-D2B61C;
+      }
+      .pink{
+        color: $F-EB6D6D;
       }
     }
   }
@@ -43,22 +63,33 @@
     @include pc{
       top:p(-53);
     }
+    @include sp{
+      top: s(-55);
+    }
     .TX{
       @include bold;
+      rotate:(-9.69deg);
+      text-align: center;
       @include pc{
         font-size: p(24);
-        rotate:(-9.69deg);
-        text-align: center;
         margin-bottom: p(-8);
-  
+      }
+      @include sp{
+        font-size: s(20);
+        margin-bottom: s(-8);
+
       }
     }
     .deco{
       @include iconContain($btn);
+      rotate:(-10.851deg);
       @include pc{
         width: p(275);
         height: p(55);
-        rotate:(-10.851deg);
+      }
+      @include sp{
+        width: s(241);
+        height: s(48);
       }
     }
   }
