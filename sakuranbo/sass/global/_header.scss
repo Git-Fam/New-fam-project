@@ -75,7 +75,7 @@
       padding: s(10) s(20) s(30);
     }
 
-    .nav {
+    .gnav {
 
       .logo {
         aspect-ratio: 199/74;
@@ -166,6 +166,11 @@
         }
       }
 
+      .C_btn.nav{
+        width: fit-content;
+        margin: 0 auto;
+
+      }
       
     }
   }

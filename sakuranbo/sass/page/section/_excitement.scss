@@ -4,12 +4,10 @@
   excitement
 ----------------------- */
 .excitement{
-
+  height: p(400);
 
   @include pc{
     margin-top: p(154);
-
-    
   }
   
   @include sp{}
