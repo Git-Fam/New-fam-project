@@ -32,13 +32,6 @@
     @include sp{}
 
     &.active{
-      aspect-ratio: 40/45;
-  
-      @include pc{
-        width: p(40);
-      }
-      
-      @include sp{}
 
       .burger--icon{
         @include iconContain($close);
@@ -121,22 +114,36 @@
             color: $F-534646;
             padding: 0 1rem;
             position: relative;
+            transition: all 0.3s;
+
+            &:hover{
+              color: $F-EB6D6D;
+              &::before{
+                opacity: 1;
+              }
+            }
 
             &::before{
               content: '';
               position: absolute;
-              bottom: 0;
+              bottom: -10%;
               left: 50%;
               translate: -50% 0;
               display: block;
               width: 100%;
+              @include imgContain("waveSmall.png");
+              background-repeat: repeat-x;
+              opacity: 0;
               transition: all 0.3s;
+
               
               @include pc{
                 height: p(3);
               }
               
-              @include sp{}
+              @include sp{
+                height: s(3);
+              }
             }
             
             @include pc{
@@ -144,6 +151,55 @@
             }
             
             @include sp{}
+          }
+        }
+      }
+
+      .C_btn{
+        display: block;
+        width: fit-content;
+        margin: 0 auto;
+
+        .img{
+
+          @include pc{
+            padding: p(24) p(83);
+
+            .TX{
+              font-size: p(26);
+
+              span{
+
+                @include pc{
+                  font-size: p(39);
+                }
+              }
+            }
+          }
+        }
+        .cmt{
+          width: fit-content;
+          position: absolute;
+          @include pc{
+            top:p(-53);
+          }
+          .TX{
+            @include bold;
+            @include pc{
+              font-size: p(24);
+              rotate:(-9.69deg);
+              text-align: center;
+              margin-bottom: p(-8);
+        
+            }
+          }
+          .deco{
+            @include iconContain($btn);
+            @include pc{
+              width: p(275);
+              height: p(55);
+              rotate:(-10.851deg);
+            }
           }
         }
       }
