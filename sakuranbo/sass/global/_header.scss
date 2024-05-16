@@ -10,8 +10,20 @@
   width: 100%;
   z-index: 9999;
 
+  @include pc{
+    padding: p(32);
+
+  }
+
+  @include sp{}
+
   .burger{
     aspect-ratio: 61/34;
+    cursor: pointer;
+    position: relative;
+    z-index: 9999;
+    margin-left: auto;
+
 
     @include pc{
       width: p(65);
