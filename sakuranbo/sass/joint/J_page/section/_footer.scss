@@ -56,6 +56,23 @@ footer{
         }
         a{
           color: $F-ffffff;
+          &::after{
+            content: "";
+            display: block;
+            opacity: 0;
+            @include pc{
+              border-bottom: p(3) dotted $F-ffffff;
+              padding-bottom: p(8);
+            }
+            @include sp{
+              border-bottom: s(2) dotted $F-ffffff;
+              padding-bottom: s(5);
+            }
+          }
+          &:hover::after{
+            transition: all 0.5s ease;
+            opacity: 1;
+          }  
         } 
       }
     }  

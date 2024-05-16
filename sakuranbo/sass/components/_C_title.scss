@@ -25,28 +25,29 @@
     @include sp{
       font-size:s(32);
     }
-    span{
+
+    // はねる見出し
+    .bounce{
       transform: translateY(2em);
-      animation: textanimation 0.5s forwards;
-      position: relative;
       display: inline-block;
       padding-top: 0.5em;
-      @keyframes textanimation {
-        0% {
-            transform: translateY(100%);
-        }
-      
-        50% {
-            transform: translateY(-20%);
-        }
-      
-        100% {
-            transform: translateY(0);
+      &.show {
+        animation: textanimation 0.5s forwards;
+        @keyframes textanimation {
+          0% {
+              transform: translateY(100%);
+          }
+        
+          50% {
+              transform: translateY(-20%);
+          }
+        
+          100% {
+              transform: translateY(0);
+          }
         }
       }
-      
     }
-
   }
   .wave{
     background-repeat: repeat-x;
