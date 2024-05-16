@@ -116,12 +116,34 @@
             display: block;
             width: fit-content;
             margin: 0 auto;
-            font-weight: 700;
-            font-size: 20px;
+            font-weight: bold;
             line-height: 150%;
-            color: #534646;
+            color: $F-534646;
+            padding: 0 1rem;
+            position: relative;
 
-            @include pc{}
+            &::before{
+              content: '';
+              position: absolute;
+              bottom: 0;
+              left: 50%;
+              translate: -50% 0;
+              display: block;
+              width: 100%;
+              transition: all 0.3s;
+              @include iconContain($waveSmall);
+              background-repeat: repeat-x;
+              
+              @include pc{
+                height: p(3);
+              }
+              
+              @include sp{}
+            }
+            
+            @include pc{
+              font-size: pm(20,14);
+            }
             
             @include sp{}
           }
