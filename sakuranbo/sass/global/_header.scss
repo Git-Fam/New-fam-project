@@ -96,18 +96,30 @@
       }
 
       .list{
+        width: fit-content;
 
-        @include pc{}
+        @include pc{
+          margin: p(30) auto p(72);
+          @include column(p(30));
+        }
         
         @include sp{}
 
         li{
 
-          @include pc{}
+          @include pc{
+          }
           
           @include sp{}
 
           a{
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 150%;
+            color: #534646;
 
             @include pc{}
             
