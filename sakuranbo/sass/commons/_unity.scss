@@ -35,4 +35,7 @@ body {
 
 .whopper {
   overflow: hidden;
+  @include imgContain("all_bg.jpg");
+  background-position: top center;
+  background-repeat: repeat-y;
 }
