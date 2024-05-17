@@ -66,10 +66,10 @@
           }
         }
         .img01{
-          @include imgCover("flow01.png");
+          @include imgCover("flow01.jpg");
         }
         .img02{
-          @include imgCover("flow02.png");
+          @include imgCover("flow02.jpg");
           @include sp{
             rotate: (90deg);
             height: s(348);
@@ -79,13 +79,13 @@
           }
         }
         .img03{
-          @include imgCover("flow03.png");
+          @include imgCover("flow03.jpg");
         }
         .img04{
-          @include imgCover("flow04.png");
+          @include imgCover("flow04.jpg");
         }
         .img05{
-          @include imgCover("flow05.png");
+          @include imgCover("flow05.jpg");
         }
 
 
@@ -300,7 +300,7 @@
           }
         }
         .img06{
-          @include imgCover("flow06.png");
+          @include imgCover("flow06.jpg");
         }
       }
       .reverse{

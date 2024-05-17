@@ -107,7 +107,7 @@
           right: s(-44);
         }
         .img{
-          @include imgContain("voice01.png");
+          @include imgContain("voice01.jpg");
         }
       }
       .img02{
@@ -120,7 +120,7 @@
           right: s(-18);
         }
         .img{
-          @include imgContain("voice02.png");
+          @include imgContain("voice02.jpg");
           background-position: bottom;
         }
       }
