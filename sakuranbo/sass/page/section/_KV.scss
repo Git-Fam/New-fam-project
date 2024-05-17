@@ -3,44 +3,56 @@
 /* -----------------------
   KV
 ----------------------- */
-.KV{
+.KV {
+  position: relative;
 
 
-  @include pc{}
-  
-  @include sp{}
+  @include pc {
+    height: p(650);
+  }
 
-  &--main{
+  @include sp {
+    height: s(650);
+  }
+
+  &--main {
     width: 100%;
-    position: relative;
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
 
-    @include pc{
+    @include pc {
       height: p(650);
       padding: p(10) p(27);
     }
-    
-    @include sp{
+
+    @include sp {
       height: s(650);
       padding: s(11) s(16);
     }
 
-    .main--logo{
+    .main--logo {
       aspect-ratio: 161 / 60;
+      position: relative;
+      z-index: 5;
 
-      @include pc{
-        width: pm(161,100);
+      @include pc {
+        width: pm(161, 100);
       }
-      
-      @include sp{
+
+      @include sp {
         width: s(161);
       }
 
-      .TL{
+      .TL {
         display: block;
         width: 100%;
         height: 100%;
 
-        .logo--img{
+        .logo--img {
           object-fit: contain;
           object-position: center;
           width: 100%;
@@ -51,33 +63,32 @@
     }
 
     // KV--1
-    &.KV--1{
+    &.KV--1 {
       @include imgCover("KV-1-bk.jpg");
-      overflow: hidden;
 
-      @include sp{
+      @include sp {
         background-position: center left 40%;
       }
 
-      .KV--1--title{
+      .KV--1--title {
         position: absolute;
 
-        @include pc{
+        @include pc {
           aspect-ratio: 886 / 382;
-          width: pm(886,600);
+          width: pm(886, 600);
           top: 50%;
           left: 45%;
           translate: -50% -50%;
         }
-        
-        @include sp{
+
+        @include sp {
           aspect-ratio: 328 / 382;
           width: s(328);
           top: s(84);
           left: s(25);
         }
 
-        &--img{
+        &--img {
           width: 100%;
           height: 100%;
           object-fit: contain;
@@ -85,23 +96,23 @@
         }
       }
 
-      .KV--1--great{
+      .KV--1--great {
         aspect-ratio: 1;
         position: absolute;
 
-        @include pc{
-          width: pm(279,200);
+        @include pc {
+          width: pm(279, 200);
           bottom: 0;
           left: 0;
         }
-        
-        @include sp{
+
+        @include sp {
           width: s(230);
           bottom: s(-40);
           left: s(-18);
         }
 
-        &--img{
+        &--img {
           width: 100%;
           height: 100%;
           object-fit: contain;
@@ -111,32 +122,156 @@
     }
 
     // KV--2
-    &.KV--2{
+    &.KV--2 {
       background: linear-gradient(105.95deg, rgba(194, 233, 250, 0.7) 12.07%, rgba(227, 247, 255, 0.7) 92.99%);
-      overflow: hidden;
 
-      @include pc{}
-      
-      @include sp{}
+      .KV--2--ribbon {
 
+        .img {
+          position: absolute;
+          z-index: 1;
 
-      .KV--2--great{
+          &.img--1 {
+            top: 0;
+            right: 0;
+
+            @include pc {
+              aspect-ratio: 1151/515;
+              @include imgContain("KV-2-ribbon-1-pc.png");
+              width: p(1151);
+            }
+
+            @include sp {
+              aspect-ratio: 350/228;
+              @include imgContain("KV-2-ribbon-1-sp.png");
+              width: 100%;
+            }
+
+          }
+
+          &.img--2 {
+
+            @include pc {
+              aspect-ratio: 741/542;
+              @include imgContain("KV-2-ribbon-2-pc.png");
+              width: p(741);
+              bottom: p(0);
+              left: p(0);
+            }
+
+            @include sp {
+              aspect-ratio: 341/297;
+              @include imgContain("KV-2-ribbon-2-sp.png");
+              width: 100%;
+              bottom: 0;
+              left: 0;
+            }
+          }
+        }
+      }
+
+      .KV--2--content {
+        position: absolute;
+        z-index: 3;
+
+        @include pc {
+          top: p(120);
+          left: p(100);
+        }
+
+        @include sp {
+          top: 52%;
+          left: 50%;
+          translate: -50% -50%;
+        }
+
+        &--title {
+          display: flex;
+          align-items: center;
+
+          @include pc {}
+
+          @include sp {
+            flex-direction: column-reverse;
+
+          }
+
+          .cherry--img {
+            @include imgContain("KV-2-cherry.png");
+            aspect-ratio: 300/334;
+
+            @include pc {
+              width: pm(300, 200);
+              margin-right: p(-20);
+            }
+
+            @include sp {
+              width: s(228);
+              margin-top: s(-20);
+            }
+          }
+
+          .title {
+            aspect-ratio: 506/223;
+
+            @include pc {
+              width: pm(506, 350);
+            }
+
+            @include sp {
+              width: s(238);
+            }
+
+            &--img {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+              object-position: center;
+            }
+          }
+        }
+
+        &--text {
+
+          @include pc {
+            aspect-ratio: 905/52;
+            width: p(905);
+            margin: p(-20) 0 0 p(80);
+          }
+
+          @include sp {
+            aspect-ratio: 210/70;
+            width: s(210);
+            margin: s(-30) auto 0;
+          }
+
+          .text--img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+          }
+        }
+      }
+
+      .KV--2--great {
         aspect-ratio: 1;
         position: absolute;
+        z-index: 2;
 
-        @include pc{
-          width: pm(211,180);
+        @include pc {
+          width: pm(211, 130);
           bottom: p(-10);
           right: p(5);
         }
-        
-        @include sp{
+
+        @include sp {
           width: s(143);
           bottom: s(-10);
-          right: s(5);
+          right: s(-5);
         }
 
-        &--img{
+        &--img {
           width: 100%;
           height: 100%;
           object-fit: contain;
@@ -146,12 +281,80 @@
     }
 
     // KV--3
-    &.KV--3{
+    &.KV--3 {
+      @include imgCover("KV-3-bg.jpg");
 
-      @include pc{}
-      
-      @include sp{}
+      @include sp {
+        background-size: 270%;
+        background-position: top s(-40) left 11%;
+      }
 
+      .KV--3--brand {
+        aspect-ratio: 1;
+        rotate: 9.81deg;
+        position: absolute;
+
+        @include pc {
+          width: pm(286, 170);
+          top: p(20);
+          right: p(40);
+        }
+
+        @include sp {
+          width: s(132);
+          top: s(15);
+          right: s(10);
+        }
+
+        .brand--img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          object-position: center;
+        }
+      }
+
+      .KV--3--cover {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+
+        @include pc {
+          background: rgba(255, 255, 255, 0.8);
+          height: p(185);
+        }
+
+        @include sp {
+          background: linear-gradient(0deg, #FFFFFF 68%, rgba(255, 255, 255, 0.54) 100%);
+          height: s(240);
+        }
+      }
+
+      .KV--3--text {
+        position: absolute;
+
+        @include pc {
+          aspect-ratio: 1286/411;
+          width: 100%;
+          bottom: p(-25);
+          left: 0;
+        }
+
+        @include sp {
+          aspect-ratio: 353/358;
+          width: 100%;
+          bottom: s(-10);
+          left: 0;
+        }
+
+        .text--img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          object-position: center;
+        }
+      }
     }
   }
 }

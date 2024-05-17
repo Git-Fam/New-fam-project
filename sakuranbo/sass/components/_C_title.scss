@@ -28,7 +28,7 @@
 
     // はねる見出し
     .bounce{
-      transform: translateY(2em);
+      transform: translateY(200%);
       display: inline-block;
       padding-top: 0.5em;
       &.show {
