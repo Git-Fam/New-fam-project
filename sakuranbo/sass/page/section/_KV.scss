@@ -9,4 +9,149 @@
   @include pc{}
   
   @include sp{}
+
+  &--main{
+    width: 100%;
+    position: relative;
+
+    @include pc{
+      height: p(650);
+      padding: p(10) p(27);
+    }
+    
+    @include sp{
+      height: s(650);
+      padding: s(11) s(16);
+    }
+
+    .main--logo{
+      aspect-ratio: 161 / 60;
+
+      @include pc{
+        width: pm(161,100);
+      }
+      
+      @include sp{
+        width: s(161);
+      }
+
+      .TL{
+        display: block;
+        width: 100%;
+        height: 100%;
+
+        .logo--img{
+          object-fit: contain;
+          object-position: center;
+          width: 100%;
+          height: 100%;
+          mix-blend-mode: multiply;
+        }
+      }
+    }
+
+    // KV--1
+    &.KV--1{
+      @include imgCover("KV-1-bk.jpg");
+      overflow: hidden;
+
+      @include sp{
+        background-position: center left 40%;
+      }
+
+      .KV--1--title{
+        position: absolute;
+
+        @include pc{
+          aspect-ratio: 886 / 382;
+          width: pm(886,600);
+          top: 50%;
+          left: 45%;
+          translate: -50% -50%;
+        }
+        
+        @include sp{
+          aspect-ratio: 328 / 382;
+          width: s(328);
+          top: s(84);
+          left: s(25);
+        }
+
+        &--img{
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          object-position: center;
+        }
+      }
+
+      .KV--1--great{
+        aspect-ratio: 1;
+        position: absolute;
+
+        @include pc{
+          width: pm(279,200);
+          bottom: 0;
+          left: 0;
+        }
+        
+        @include sp{
+          width: s(230);
+          bottom: s(-40);
+          left: s(-18);
+        }
+
+        &--img{
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          object-position: center;
+        }
+      }
+    }
+
+    // KV--2
+    &.KV--2{
+      background: linear-gradient(105.95deg, rgba(194, 233, 250, 0.7) 12.07%, rgba(227, 247, 255, 0.7) 92.99%);
+      overflow: hidden;
+
+      @include pc{}
+      
+      @include sp{}
+
+
+      .KV--2--great{
+        aspect-ratio: 1;
+        position: absolute;
+
+        @include pc{
+          width: pm(211,180);
+          bottom: p(-10);
+          right: p(5);
+        }
+        
+        @include sp{
+          width: s(143);
+          bottom: s(-10);
+          right: s(5);
+        }
+
+        &--img{
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          object-position: center;
+        }
+      }
+    }
+
+    // KV--3
+    &.KV--3{
+
+      @include pc{}
+      
+      @include sp{}
+
+    }
+  }
 }
