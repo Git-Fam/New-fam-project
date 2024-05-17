@@ -300,10 +300,8 @@
             width: s(326);
             height: s(65);
             bottom: 0;
-
           }
           
-          @include sp{}
         }
       } 
       &:first-child{
@@ -318,7 +316,7 @@
         .level{
           display: flex;
           align-items: center;
-          margin-block-start: ;
+          
           @include pc{
             width: p(690);
             padding: p(9) 0 p(8) p(30); 
@@ -339,7 +337,6 @@
             @include pc{
               font-size: p(20);
               line-height: 1.4;
-
             }
           }
         }
@@ -360,6 +357,5 @@
         
       }
     }
-
   }
 }
