@@ -5,6 +5,7 @@
   flow
 ----------------------- */
 #flow{
+  position: relative;
   @include pc{
     padding-top: p(130);
   }
@@ -324,5 +325,42 @@
       margin: s(30) auto 0;
       background-size: cover;
     }
+  }
+  .cherry{
+    position: absolute;
+    scale:-1 1;
+    @include pc{
+      top: p(-90);
+      right: p(-20);
+    }
+    @include sp{
+      top: s(-40);
+      right: s(-10);
+    }
+    .cherry01{
+      @include imgContain("about-deco-img-1.png");
+      @include pc{
+        width: p(372);
+        height: p(380);
+      }
+      @include sp{
+        width: s(138);
+        height: s(124);
+      }
+    }
+    .cherry02{
+      @include imgContain("about-deco-img-2.png");
+      @include pc{
+        width: p(190);
+        height: p(190);
+        margin:p(-40) 0 0  p(30) ;
+      }
+      @include sp{
+        width: s(70);
+        height: s(70);
+        margin: s(-10) 0 0 s(10);
+      }
+    }
+
   }
 }

@@ -1,0 +1,81 @@
+@use "../../../functions" as *;
+@use "../../J_functions" as *;
+
+/* -----------------------
+  into
+----------------------- */
+
+#into{
+  padding-top: p(130);
+  .content{
+    @include pc{
+      margin: p(60) auto 0;
+      width: p(993);
+    }
+    .into_box{
+      background: $F-ffffff;
+      @include pc{
+        border-radius: p(12);
+        box-shadow: 0 0 p(4) 0 rgba(0, 0, 0, 0.25);
+        padding: p(36) 0 p(79);
+      }
+    }
+    .TL{
+      text-align: center;
+      @include pc{
+        font-size: p(32);
+        letter-spacing: p(3.2);
+      }
+    }  
+    .line{
+      @include iconContain($dots3);
+      @include pc{
+        width: p(161);
+        height: p(2.5);
+        background-repeat: repeat;
+        margin: p(10) auto 0;
+      }
+    }
+    .comment{
+      position: relative;
+      .bg{
+        background: $B-D2B61C;
+        border-radius: 50%;
+        display: grid;
+        place-items: center center;
+        @include pc{
+          width: p(221);
+          height: p(221);
+        } 
+        .TX{
+          text-align: center;
+          color: $F-ffffff;
+          @include bold;
+          @include pc{
+            font-size: p(20);
+            line-height: 1.3;
+            letter-spacing: p(1.6);
+            rotate:(-7.297deg);
+          }
+          span{
+            @include pc{
+              font-size: p(36);
+            }
+            
+            @include sp{}
+          }
+        }
+      }
+      .arrow{
+        @include imgContain("into_size_arrow.png");
+        position: absolute;
+        @include pc{
+          width: p(126);
+          height: p(107);
+          top: p(157);
+          // right: p(23);
+        }
+      }
+    }
+  }
+}
