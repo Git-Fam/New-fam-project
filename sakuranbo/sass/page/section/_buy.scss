@@ -1,0 +1,22 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  buy
+----------------------- */
+.buy {
+  position: relative;
+  z-index: 7;
+
+  @include pc {
+    margin-top: p(135);
+  }
+
+  @include sp {
+    margin-top: s(100);
+  }
+
+  .C_btn{
+    width: fit-content;
+    margin: 0 auto;
+  }
+}

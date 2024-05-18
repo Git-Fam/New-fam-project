@@ -57,7 +57,7 @@ $(function () {
 
   // 要素が画面下部に来たらshowを付与
   $(window).scroll(function () {
-    $('.up,.down,.left,.right,.pop,.juwa,.graphScale,.bounce').each(function () {
+    $('.up,.down,.left,.right,.pop,.juwa,.graphScale,.bounce,.stamp').each(function () {
       var top_of_element = $(this).offset().top;
       var bottom_of_window = $(window).scrollTop() + $(window).height();
       if (bottom_of_window > top_of_element) {
