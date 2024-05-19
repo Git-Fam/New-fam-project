@@ -16,7 +16,9 @@
     }
     @include sp{
       padding: s(20) s(30) s(16) s(33);
-      @include imgCover("btn_sp.jpg");
+      @include imgCover("btn.jpg");
+      background-size: 130%;
+      background-position:20% 50%;
     }
     .TX{
       @include bold;

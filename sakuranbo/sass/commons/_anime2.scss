@@ -16,3 +16,45 @@
     }
   }
 }
+
+.flow_juwa{
+  opacity: 0;
+  filter: blur(10px);
+  transform: scale(1);
+
+  &.show{
+    animation:flow_juwa 1.5s ease forwards;
+
+    @keyframes flow_juwa{
+      from {
+      filter: blur(10px);
+      transform: scale(1);
+      opacity: 0;
+      }
+    
+      to {
+      filter: blur(0);
+      transform: scale(1.02);
+      opacity: 1;
+      }
+    }
+  }
+}
+
+.stamp{
+  animation: stamp 2s ease-in 0.5s backwards;
+  @keyframes stamp {
+    0% {
+      opacity: 0;
+    }
+    15% {
+      opacity: 0;
+      transform: scale(1.5);
+    }
+    25% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+}

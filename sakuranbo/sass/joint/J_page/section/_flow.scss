@@ -67,6 +67,10 @@
         }
         .img01{
           @include imgCover("flow01.jpg");
+          @include sp{
+            background-position: 40% 100%;
+            background-size: 140%
+          }
         }
         .img02{
           @include imgCover("flow02.jpg");
@@ -75,11 +79,12 @@
             height: s(348);
             width: s(259);
             margin: 0 auto s(-80);
-            background-size: 120%;
+            background-size: 110%;
+            background-position: right;
           }
         }
         .img03{
-          @include imgCover("flow03.jpg");
+          @include imgCover("flow03.png");
         }
         .img04{
           @include imgCover("flow04.jpg");
@@ -141,6 +146,7 @@
             position: absolute;
             left: 50%; 
             translate: -50%;
+            @include bold;
             @include pc{
               width: p(63);
               line-height:  p(63);
@@ -231,8 +237,8 @@
             @include sp{
               height: s(47);
               border-left:s(1) solid;
-              left: s(10);
-              top: s(50);
+              left: s(18);
+              top: s(55);
             }
           }
           &::after{
@@ -248,8 +254,8 @@
             @include sp{
               height: s(47);
               border-right:s(1) solid;
-              right: s(10);
-              top: s(50);
+              right: s(18);
+              top: s(55);
             }
           }
         }
@@ -260,7 +266,7 @@
             display: flex;
             padding:p(44) p(40) 0 p(35);
             margin-top: p(30);
-            background-position: 100% 95%; 
+            background-position: 100% 95% !important; 
           }
           @include sp{
             width: 100%;
@@ -281,7 +287,7 @@
             &:nth-child(1){
               rotate: (-15deg);
               @include pc{
-                margin: p(48) 0 0 p(48);
+                margin: p(30) 0 0 p(48);
               }
               @include sp{
                 margin: s(135) 0 0 s(20);

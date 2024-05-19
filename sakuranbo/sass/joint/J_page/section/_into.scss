@@ -4,14 +4,90 @@
 /* -----------------------
   into
 ----------------------- */
-
 #into{
+  position: relative;
   @include pc{
     padding-top: p(130);
   }
   @include sp{
     padding-top: s(60);
   }
+  .cherry_box{
+    position: absolute;
+    @include pc{
+      top: p(-30);
+      left: p(-35);
+    }
+    @include sp{
+      top: s(-58);
+      left: s(-17);
+    }
+    .cherry{
+      width: fit-content;
+      &:nth-child(1){
+        @include imgContain("delivery-deco-1.png");
+        @include pc{
+          width: p(183);
+          height: p(180);
+          rotate: 13deg;
+          scale: -1 1;
+          margin:0 0 0 p(65);
+
+        }
+        @include sp{
+          width: s(65);
+          height: s(64);
+          rotate: 100deg;
+          margin:0 0 s(-3) s(-12);
+        }
+      }
+      &:nth-child(2){
+        @include imgContain("delivery-deco-2.png");
+        @include pc{
+          width: p(182);
+          height: p(132);
+          rotate: 6deg;
+        }
+        
+        @include sp{
+          width: s(60);
+          height: s(45);
+          rotate: -15deg;
+          scale: -1 1;
+
+        }
+
+      }
+      &:nth-child(3){
+        @include imgContain("delivery-deco-3.png");
+        @include pc{
+          width: p(176);
+          height: p(152);
+          rotate: 13deg;
+          scale: -1 1;
+          margin:p(25) 0 0 p(45) ;
+        }
+        
+        @include sp{
+          width: s(64);
+          height: s(57);
+          rotate: 50deg;
+          margin: p(-25) 0 0 p(45) ;
+        }
+
+
+      }
+
+    }
+  }
+  .C_title{
+    .TL_top{
+      @include sp{
+        line-height: 1.5;
+      }
+    }
+  }
+
   .content{
     @include pc{
       margin: p(60) auto 0;
@@ -23,6 +99,7 @@
     }
     .into_box{
       background: $F-ffffff;
+      position: relative;
       @include pc{
         border-radius: p(12);
         box-shadow: 0 0 p(4) 0 rgba(0, 0, 0, 0.25);
@@ -33,6 +110,45 @@
         box-shadow: 0 0 s(2) 0 rgba(0, 0, 0, 0.25);
         padding-top: s(28);
       }
+      .bg_box{
+        position: absolute;
+        right: 0;
+        @include pc{
+          top: p(65);
+        }
+        @include sp{
+          top: s(79);
+        }
+        .bg{
+          @include pc{
+            width: p(197);
+            height: p(284);
+          }
+          @include sp{
+            width: s(135);
+            height: s(196);
+          }
+          &:nth-child(1){
+            @include pc{
+              @include imgCover("level_bg01.jpg");
+            }
+            @include sp{
+              @include imgCover("level_bg01_sp.jpg");
+            }
+    
+          }
+          &:nth-child(2){
+            @include pc{
+              @include imgCover("level_bg02.jpg");
+              margin-top: p(-35);
+            }
+            @include sp{
+              @include imgCover("level_bg02_sp.jpg");
+            }
+          }
+    
+        }
+      }    
       .TL{
         text-align: center;
         @include bold;
@@ -47,15 +163,15 @@
       }  
       .line{
         @include iconContain($dots3);
-        background-repeat: repeat;
+        background-repeat: round;
         @include pc{
           width: p(161);
           height: p(3);
-          margin: p(10) auto 0;
+          margin: p(13) auto 0;
         }
         @include sp{
           width: s(107);
-          height: s(3);
+          height: s(2);
           margin: s(8) auto 0;
         }
       }
@@ -91,6 +207,7 @@
               font-size: p(20);
               line-height: 1.3;
               letter-spacing: p(1.6);
+              margin-top: p(15);
             }
             @include sp{
               font-size: s(14);
@@ -115,7 +232,7 @@
             width: p(126);
             height: p(107);
             top: p(157);
-            right: p(-116);
+            right: p(-100);
           }
           @include sp{
             width: s(61);
@@ -146,7 +263,7 @@
             width: s(350);
           }
           .img{
-            background-position: bottom;
+            background-position: bottom !important;
             position: relative;
             &::before{
               color: $F-ffffff;
@@ -171,7 +288,7 @@
               }
               @include sp{
                 font-size: s(12);
-                bottom: s(-15);
+                bottom: s(-20);
                 left: s(5);
               }
             }
@@ -198,7 +315,8 @@
               @include sp{
                 width: s(70);
                 left: s(-5);
-                bottom: s(-28);
+                bottom: s(-42);
+                line-height: 1.5;
               }
             }  
           }
@@ -272,6 +390,7 @@
               }
               @include sp{
                 left: s(10);
+                
               }
             }
             &::after{
@@ -312,49 +431,283 @@
           padding-bottom: s(75);
         }
       }
+      &:nth-child(2){
+        @include pc{
+          padding-bottom: p(79);
+          margin-top: p(60);
+          padding: p(36) p(197) p(79) p(151);
+        }
+        @include sp{
+          padding-bottom: s(44);
+          margin-top: s(60);
+        }
+      }
+      &:last-child{
+        @include pc{
+          padding:p(50) 0 p(60);
+          margin-top: p(100);
+        }
+        @include sp{
+          padding: s(35) 0 s(46);
+          margin-top: s(60);
+        }
+      }
+
       .level_box{
+        @include pc{
+          margin: p(67) auto 0;
+          width: p(645);
+        }
+        @include sp{
+          margin: s(50) auto 0;
+          width: s(328);
+        }
         .level{
           display: flex;
           align-items: center;
-          
+          position: relative;
           @include pc{
-            width: p(690);
             padding: p(9) 0 p(8) p(30); 
+          }
+          @include sp{
+            padding: s(20) 0 s(20) s(10);
           }
           .icon{
             @include pc{
               width: p(129);
-              margin-right: p(44);
+              margin-right: p(65);
+            }
+            @include sp{
+              width: s(62);
+              margin-right: s(26);
             }
             .icon_TX{
               @include bold;
               border-radius: 50%;
               margin: 0 auto;
               color: $F-ffffff;
+              text-align: center;
+            }
+            .deco{
+              @include imgContain("level_deco.png");
+              transform: rotate(-27.327deg);
+              position: absolute;
+              @include pc{
+                width: p(127);
+                height: p(108);
+                top: p(-60);
+                left: p(-10);
+              }
+              @include sp{
+                width: s(62);
+                height: s(45);
+                top: s(-10);
+                left: s(-10);
+              }
             }
           }
           .TX{
             @include pc{
-              font-size: p(20);
+              font-size: pm(20,16);
               line-height: 1.4;
+              letter-spacing: p(1.6);
+            }
+            @include sp{
+              font-size: s(16);
+              line-height: 1.6;
+              letter-spacing: s(1.2);
+            }
+            span{
+              color: $F-EB6D6D;
+              @include bold;
+            }
+            p{
+              position: relative;
+              &::before{
+                content: "";
+                border-radius: 50%;
+                position: absolute;
+                background: $F-534646;
+                @include pc{
+                  width: p(3);
+                  height: p(3);
+                  top: 50%;
+                  translate: 0 -50%;  
+                  left: p(-14);
+                }
+                @include sp{
+                  width: s(3);
+                  height: s(3);
+                  top: s(10);
+                  left: s(-11);
+                }
+              }
+            }
+          }
+          &::before{
+            content: "";
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            @include pc{
+              border-top: p(1) dashed #000;
+            }
+            @include sp{
+              border-top: s(1) dashed #000;
+            }
+          }
+          &:last-child::after{
+            content: "";
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            @include pc{
+              border-bottom: p(1) dashed #000;
+            }
+            @include sp{
+              border-bottom: s(1) dashed #000;
+            }
+          }
+        }
+        .special{
+          .icon{
+            .icon_TX{
+              background: $B-FB1030;
+              @include pc{
+                font-size: p(48);
+                width: p(129);
+                height: p(129);
+                line-height: p(129);
+              }
+              @include sp{
+                font-size: s(22);
+                width: s(61);
+                height: s(61);
+                line-height: s(61);
+              }
             }
           }
         }
         .high{
           .icon{
             .icon_TX{
-              background: $B-FB1030;
+              background: $B-E37382;
               @include pc{
-                font-size: p(48);
-                text-align: center;
-                width: p(129);
-                height: p(129);
-                line-height: p(129);
+                font-size: p(44);
+                width: p(121);
+                height: p(121);
+                line-height: p(121);
+              }
+              @include sp{
+                font-size: s(20);
+                width: s(57);
+                height: s(57);
+                line-height: s(57);
               }
             }
           }
         }
-        
+        .good{
+          .icon{
+            .icon_TX{
+              background: $B-E6884A;
+              @include pc{
+                font-size: p(32);
+                width: p(110);
+                height: p(110);
+                line-height: p(110);
+              }
+              @include sp{
+                font-size: s(15);
+                width: s(52);
+                height: s(52);
+                line-height: s(52);
+              }
+            }
+          }
+        }
+
+      }
+    }
+    .valuable{
+      background: rgba(235, 109, 109, 0.10);
+      .TL{
+        @include sp{
+          line-height: 1.5;
+        }
+        span{
+          color: $F-EB6D6D;
+        }
+      }
+      .line{
+        @include pc{
+          width: p(720);
+        }
+        @include sp{
+          width: s(273);
+        }
+      }
+      .valuable_box{
+        background: $B-FFFFFF;
+        @include pc{
+          width: p(878);
+          border-radius: p(10);
+          margin: p(60) auto 0;
+          padding: p(16) p(79) p(35) p(88);
+          display: flex;
+          flex-direction: row-reverse;
+          justify-content: space-between;
+          align-items: center
+        }
+        @include sp{
+          width: s(312);
+          border-radius: s(12);
+          margin: s(30) auto 0;
+          padding: s(31) 0 s(40);
+
+        }
+        .img{
+          @include imgContain("valuable.png");
+          @include pc{
+            width: p(314);
+            height: p(300);
+          }
+          @include sp{
+            width: s(298);
+            height: s(273);
+            margin: 0 auto;
+          }
+        }
+        .textbox{
+          @include pc{
+            width: p(316);
+            font-size: pm(16,14);
+            letter-spacing: p(1.7);
+            line-height: 1.8;
+          }
+          @include sp{
+            width: s(284);
+            font-size: s(16);
+            letter-spacing: s(1.68);
+            line-height: 1.8;
+            margin: s(40) auto 0;
+          }
+          span{
+            color: $F-EB6D6D;
+          }
+        }
+        .under_TX{
+          @include pc{
+            font-size: pm(13,10);
+            margin-top: p(24);
+          }
+          @include sp{
+            font-size: s(12);
+            margin-top: s(24);
+          }
+        }
       }
     }
   }
