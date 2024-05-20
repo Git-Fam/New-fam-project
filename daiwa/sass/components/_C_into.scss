@@ -1,0 +1,204 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_into
+----------------------- */
+
+.C_into{
+  @include pc{
+    padding: p(100) p(40) p(160);
+
+  }
+  .into_content{
+    .into_box{
+      position: relative;
+      @include pc{
+        display: flex;
+        width: p(1034);
+      }
+      .textbox{
+        z-index: 10;
+        @include pc{
+          padding-top: p(53);
+        }
+        @include sp{
+          width: s(350);
+          margin: 0 auto;
+        }
+        .TL{
+          @include fw700;
+          line-height: 145% ;       
+          @include pc{
+            width: p(560);
+            font-size: pm(32,20); 
+            letter-spacing: p(4.8)    
+          }
+          @include sp{
+            font-size: s(32);
+            letter-spacing: s(4.8);
+          }  
+        }
+        .TX{
+          @include fw600;
+          line-height: 175% ;
+          @include pc{
+            width: p(442);
+            font-size: pm(16,13);
+            margin-top: p(60);
+            letter-spacing: p(2.4);
+          }  
+          @include sp{
+            width: s(348);
+            font-size: s(16);
+            letter-spacing: s(2.4);
+            margin-top: s(40);
+          }
+        }
+      }
+      .img-wrap{
+        @include pc{
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+        @include sp{
+        }
+        .img{
+          @include pc{
+            width: p(741);
+            height: p(442);
+          }
+          @include sp{
+            width: s(371);
+            height: s(288);
+            margin-top: s(40);
+          }
+        }
+        .img01{
+          @include pc{
+            @include imgCover("into01.jpg");
+          }
+          @include sp{
+            @include imgCover("into01_sp.jpg");
+            margin-left: auto;
+          }
+        }
+        .img02{
+          @include pc{
+            @include imgCover("into02.jpg");
+          }
+          @include sp{
+            @include imgCover("into02_sp.jpg");
+          }
+        }
+      }
+      .slide_right{
+        overflow: hidden;
+        &::before{
+          animation: img-wrap 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+          background: #fff;
+          content: '';
+          inset: 0;
+          pointer-events: none;
+          position: absolute;
+          z-index: 1;
+          @keyframes img-wrap {
+            100% {
+              transform: translateX(-100%);
+            }
+          }  
+        }
+      }
+      &:nth-child(odd){
+        @include pc{
+          margin-left: auto;
+        }
+      }
+      &:nth-child(even){
+        @include pc{
+          margin-right: auto;
+          flex-direction: row-reverse;
+        }
+        .textbox{
+          @include pc{
+            padding-top: p(38);
+          }
+          .TL{
+            @include pc{
+              margin-left: auto;
+              width: fit-content;
+            }
+          }
+          .TX{
+            @include pc{
+              margin-left: auto;
+            }
+          }
+        }
+        .img-wrap{
+          @include pc{
+            left: 0;
+          }
+          @include sp{
+            left: 0;
+          }
+          .img{
+            @include imgCover("into02.jpg");
+            @include pc{
+              width: p(691);
+              height: p(442);
+            }
+          }
+        }
+        .slide_left{
+          &::before{
+            animation: img-wrap-left 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            background: #fff;
+            content: '';
+            inset: 0;
+            pointer-events: none;
+            position: absolute;
+            z-index: 1;
+            @keyframes img-wrap-left {
+              100% {
+                transform: translateX(100%);
+              }
+            }  
+          }
+        }
+        &::before{
+          content: "";
+          border-radius: 50%;
+          background: linear-gradient(0deg, #E9E19C 0%, rgba(233, 225, 156, 0.14) 100%);
+          opacity: 0.5;
+          position: absolute;
+          z-index: 10;
+          @include pc{
+            width: p(218);
+            height: p(218);
+            top: 0;
+            left: p(982);
+          }    
+        }
+      }
+      &::before{
+        content: "";
+        border-radius: 50%;
+        background: linear-gradient(0deg, #E9E19C 0%, rgba(233, 225, 156, 0.14) 100%);
+        opacity: 0.5;
+        position: absolute;
+        z-index: 10;
+        @include pc{
+          width: p(218);
+          height: p(218);
+          top: 0;
+          left: p(-166);
+        }
+        @include sp{
+          width: s(126);
+          height: s(126);
+        }
+      }
+    }
+  }
+}

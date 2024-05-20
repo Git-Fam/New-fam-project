@@ -1,0 +1,140 @@
+
+/* -----------------------
+  anime
+----------------------- */
+
+// ホバーで薄く
+.hover-opa{
+  transition: 0.3s;
+
+  &:hover{
+    opacity: 0.6;
+  }
+}
+
+// ホバーで大きく
+.hover-scale{
+  transition: 0.3s;
+
+  &:hover{
+    transform: scale(1.05);
+  }
+}
+
+// 下から
+.up {
+  opacity: 0;
+
+  &.show {
+    opacity: 0;
+    transform: translateY(100%);
+    animation: up 0.5s ease 0.5s forwards;
+
+    @keyframes up {
+      0% {
+        opacity: 0;
+        transform: translateY(100%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+// 上から
+.down {
+  opacity: 0;
+
+  &.show {
+    opacity: 0;
+    transform: translateY(-100%);
+    animation: down 0.5s ease 0.5s forwards;
+
+    @keyframes down {
+      0% {
+        opacity: 0;
+        transform: translateY(-100%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+// 右から
+.left {
+  opacity: 0;
+
+  &.show {
+    opacity: 0;
+    transform: translateX(100%);
+    animation: left 0.5s ease 0.5s forwards;
+
+    @keyframes left {
+      0% {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+}
+
+// 左から
+.right {
+  opacity: 0;
+
+  &.show {
+    opacity: 0;
+    transform: translateX(-100%);
+    animation: right 0.5s ease 0.5s forwards;
+
+    @keyframes right {
+      0% {
+        opacity: 0;
+        transform: translateX(-100%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+}
+
+
+// ふわっと
+.pop {
+  opacity: 0;
+  transform: scale(0.5);
+
+  &.show {
+    opacity: 0;
+    transform: scale(0.5);
+    animation: pop 0.5s ease 0.5s forwards;
+
+    @keyframes pop {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+}
+
