@@ -18,7 +18,6 @@
   &--main {
     width: 100%;
     position: absolute;
-    overflow: hidden;
     width: 100%;
     top: 0;
     left: 0;
@@ -283,6 +282,7 @@
     // KV--3
     &.KV--3 {
       @include imgCover("KV-3-bg.jpg");
+      overflow: hidden;
 
       @include sp {
         background-size: 270%;

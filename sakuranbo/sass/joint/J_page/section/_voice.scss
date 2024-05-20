@@ -5,67 +5,82 @@
   voice
 ----------------------- */
 
-#voice{
-  @include pc{
+#voice {
+  @include pc {
     padding: p(60) 0 p(130);
   }
-  @include sp{
+
+  @include sp {
     padding: s(60) 0 s(80);
   }
-  .C_title{
-    .TL_top{
-      @include sp{
+
+  .C_title {
+    .TL_top {
+      @include sp {
         line-height: 1.5;
       }
     }
   }
-  .content{
+
+  .content {
     width: fit-content;
     display: flex;
     flex-direction: column;
-    @include pc{
+
+    @include pc {
       margin: p(145) auto 0;
       gap: p(100);
     }
-    @include sp{
+
+    @include sp {
       margin: s(184) auto 0;
       gap: s(100);
     }
-    .customer{
+
+    .customer {
       position: relative;
-      .textbox{
+
+      .textbox {
         background: $B-FFFFFF;
-        @include pc{
+
+        @include pc {
           width: p(770);
           border-radius: p(12);
           padding: p(40) p(112) p(40) p(110);
         }
-        @include sp{
+
+        @include sp {
           width: s(350);
           border-radius: s(12);
           padding: s(55) s(33) s(53) s(30);
         }
-        .TL{
+
+        .TL {
           @include regular;
-          @include pc{
-            font-size: pm(20,16);
+
+          @include pc {
+            font-size: pm(20, 16);
             letter-spacing: p(2);
           }
-          @include sp{
+
+          @include sp {
             font-size: s(20);
             letter-spacing: s(2);
             line-height: 1.5;
           }
         }
-        .TX{
+
+        .TX {
           @include regular;
-          @include pc{
-            font-size: pm(16,14);
-            letter-spacing:p(1.6);
-            margin-top: p(18);  
+
+          @include pc {
+            font-size: pm(16, 14);
+            letter-spacing: p(1.6);
+            margin-top: p(18);
             line-height: 1.7;
           }
-          @include sp{
+
+          @include sp {
             font-size: s(16);
             letter-spacing: s(1.7);
             margin-top: s(30);
@@ -73,65 +88,81 @@
           }
         }
       }
-      .img_box{
+
+      .img_box {
         width: $B-FFFFFF;
         width: fit-content;
         position: absolute;
-        rotate:(7.3deg);
-        @include pc{
+        
+        @include pc {
+          rotate: (7.3deg);
           padding: p(6);
           box-shadow: 0 p(6) p(15) 0 rgba(0, 0, 0, 0.25);
         }
-        @include sp{
+
+        @include sp {
           padding: s(6);
           box-shadow: 0 s(6) s(17) 0 rgba(0, 0, 0, 0.25);
         }
-        .img{
-          @include pc{
+
+        .img {
+          @include pc {
             width: p(213);
             height: p(164);
           }
-          @include sp{
+
+          @include sp {
             width: s(174);
             height: s(134);
           }
         }
       }
-      .img01{
-        @include pc{
+
+      .img01 {
+        @include pc {
           top: p(-105);
           right: p(-57);
         }
-        @include sp{
-          top: s(-98);
-          right: s(-44);
+
+        @include sp {
+          rotate: (7.3deg);
+          top: s(-100);
+          right: s(0);
         }
-        .img{
+
+        .img {
           @include imgContain("voice01.jpg");
         }
       }
-      .img02{
-        @include pc{
+
+      .img02 {
+        @include pc {
           top: p(-100);
           left: p(-131);
         }
-        @include sp{
+
+        @include sp {
+          rotate: (-7.3deg);
           top: s(-115);
-          right: s(-18);
+          left: s(0);
         }
-        .img{
+
+        .img {
           @include imgContain("voice02.jpg");
           background-position: bottom;
         }
       }
     }
   }
-  .C_btn{
+
+  .C_btn {
     width: fit-content;
-    @include pc{
+
+    @include pc {
       margin: p(205) auto 0;
     }
-    @include sp{
+
+    @include sp {
       margin: s(207) auto 0;
     }
   }

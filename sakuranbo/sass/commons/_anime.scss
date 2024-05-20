@@ -202,13 +202,42 @@
   }
 }
 
-
-
 // たまに揺れる
 .quake {
   animation: quake 5s ease infinite;
 
   @keyframes quake {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    5% {
+      transform: rotate(10deg);
+    }
+
+    10% {
+      transform: rotate(-10deg);
+    }
+
+    20% {
+      transform: rotate(5deg);
+    }
+
+    30% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+}
+
+// 揺れる
+.quake-1 {
+  animation: quake1 2s ease infinite;
+
+  @keyframes quake1 {
     0% {
       transform: rotate(0deg);
     }

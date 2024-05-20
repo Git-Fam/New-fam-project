@@ -321,8 +321,12 @@
 
         &--text {
 
+          @include pc{
+            width: p(210);
+          }
+
           @include sp {
-            width: fit-content;
+            width: s(180);
           }
 
           .TX {
@@ -330,6 +334,7 @@
             letter-spacing: 0.3em;
             writing-mode: vertical-rl;
             text-orientation: upright;
+            white-space: nowrap;
             
             @include pc {
               line-height: 220%;
