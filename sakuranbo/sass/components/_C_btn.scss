@@ -4,97 +4,137 @@
   C_btn
 ----------------------- */
 
-.C_btn{
+.C_btn {
   position: relative;
   display: block;
-  .img{
+
+  .img {
     display: block;
     width: fit-content;
-    @include pc{
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      transform: scale(1.05);
+
+      .TX{
+        transform: scale(1.1);
+
+        span{
+           box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+      }
+    }
+
+    @include pc {
       padding: p(42) p(141) p(27) p(141);
       @include imgCover("btn.jpg");
     }
-    @include sp{
+
+    @include sp {
       padding: s(20) s(30) s(16) s(33);
       @include imgCover("btn.jpg");
       background-size: 130%;
-      background-position:20% 50%;
+      background-position: 20% 50%;
     }
-    .TX{
+
+    .TX {
       @include bold;
       color: #FFF;
-      @include pc{
+      transition: all 0.3s;
+
+
+      @include pc {
         font-size: p(45.8);
       }
-      @include sp{
+
+      @include sp {
         font-size: s(36);
         line-height: 1.6;
 
       }
-      span{
+
+      span {
         @include bold;
         background: $B-FFFFFF;
         border-radius: 50%;
-        @include pc{
+        transition: all 0.3s;
+
+        @include pc {
           font-size: p(69);
           padding: p(15);
           margin-right: p(13);
         }
-        @include sp{
+
+        @include sp {
           font-size: s(54);
           padding: s(10);
           margin-right: s(9);
 
         }
-        &:last-child{
+
+        &:last-child {
           margin-right: 0;
         }
-        &:nth-child(4){
-          @include sp{
+
+        &:nth-child(4) {
+          @include sp {
             margin-left: s(40);
           }
         }
       }
-      .gold{
+
+      .gold {
         color: $F-D2B61C;
       }
-      .pink{
+
+      .pink {
         color: $F-EB6D6D;
       }
     }
   }
-  .cmt{
+
+  .cmt {
     width: fit-content;
     position: absolute;
-    @include pc{
-      top:p(-53);
+
+    @include pc {
+      top: p(-53);
       left: p(52);
     }
-    @include sp{
+
+    @include sp {
       top: s(-55);
     }
-    .TX{
+
+    .TX {
       @include bold;
-      rotate:(-9.69deg);
+      rotate: (-9.69deg);
       text-align: center;
-      @include pc{
+
+      @include pc {
         font-size: p(24);
         margin-bottom: p(-8);
       }
-      @include sp{
+
+      @include sp {
         font-size: s(20);
         margin-bottom: s(-8);
 
       }
     }
-    .deco{
+
+    .deco {
       @include iconContain($btn);
-      rotate:(-10.851deg);
-      @include pc{
+      rotate: (-10.851deg);
+
+      @include pc {
         width: p(275);
         height: p(55);
       }
-      @include sp{
+
+      @include sp {
         width: s(241);
         height: s(48);
       }
@@ -102,72 +142,80 @@
   }
 }
 
-.nav{
-  .img{
-    @include pc{
+.nav {
+  .img {
+    @include pc {
       padding: p(24) p(81) p(15) p(83);
     }
-    @include sp{
+
+    @include sp {
       padding: s(16) s(24) s(14) s(24);
     }
-    .TX{
-      @include pc{
+
+    .TX {
+      @include pc {
         font-size: p(26);
       }
-      @include sp{
+
+      @include sp {
         font-size: s(26);
         line-height: 1.5;
       }
-      span{
-        @include pc{
+
+      span {
+        @include pc {
           font-size: p(39);
           padding: p(8);
           margin-right: p(7);
         }
-        @include sp{
+
+        @include sp {
           font-size: s(40);
           padding: s(8);
         }
-        &:nth-child(4){
-          @include sp{
+
+        &:nth-child(4) {
+          @include sp {
             margin-left: s(30);
           }
         }
       }
     }
   }
-  .cmt{
-    @include pc{
-      top:p(-28);
+
+  .cmt {
+    @include pc {
+      top: p(-28);
       left: p(30);
     }
-    @include sp{
+
+    @include sp {
       top: s(-38);
 
     }
-    .TX{
-      @include pc{
+
+    .TX {
+      @include pc {
         font-size: p(14);
         margin-bottom: p(-8);
       }
-      @include sp{
+
+      @include sp {
         font-size: s(14);
         margin-bottom: s(-8);
       }
     }
-    .deco{
-      @include pc{
+
+    .deco {
+      @include pc {
         width: p(157);
         height: p(31);
       }
-      @include sp{
+
+      @include sp {
         width: s(176);
         height: s(35);
       }
     }
   }
 }
-
-
-
-

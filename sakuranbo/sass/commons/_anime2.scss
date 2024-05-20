@@ -40,21 +40,3 @@
     }
   }
 }
-
-.stamp{
-  animation: stamp 2s ease-in 0.5s backwards;
-  @keyframes stamp {
-    0% {
-      opacity: 0;
-    }
-    15% {
-      opacity: 0;
-      transform: scale(1.5);
-    }
-    25% {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
-}
