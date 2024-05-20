@@ -5,6 +5,7 @@
 ----------------------- */
 .KV {
   position: relative;
+  overflow: hidden;
 
 
   @include pc {
@@ -106,9 +107,9 @@
         }
 
         @include sp {
-          width: s(230);
-          bottom: s(-40);
-          left: s(-18);
+          width: s(187);
+          bottom: s(-10);
+          left: s(-10);
         }
 
         &--img {
@@ -282,7 +283,6 @@
     // KV--3
     &.KV--3 {
       @include imgCover("KV-3-bg.jpg");
-      overflow: hidden;
 
       @include sp {
         background-size: 270%;

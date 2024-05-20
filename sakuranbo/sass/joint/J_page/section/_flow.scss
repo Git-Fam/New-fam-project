@@ -324,12 +324,14 @@
       width: p(808);
       height: p(235);
       margin: p(130) auto 0;
+      translate: p(-15) 0;
     }
     @include sp{
       width: 100%;
       height: s(157);
       margin: s(30) auto 0;
       background-size: cover;
+      translate: s(-7) 0;
     }
   }
   .cherry{

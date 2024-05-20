@@ -20,7 +20,8 @@ footer {
     @include pc {
       display: flex;
       justify-content: space-between;
-      padding: 0 p(164) 0 p(91);
+      align-items: center;
+      padding: 0 p(91);
 
     }
 
@@ -31,15 +32,14 @@ footer {
     .logo {
       @include imgContain("logo.png");
       display: block;
+      aspect-ratio: 217 / 74;
 
       @include pc {
-        width: p(240);
-        height: p(74);
+        width: p(217);
       }
 
       @include sp {
         width: s(205);
-        height: s(63);
       }
     }
 
@@ -61,7 +61,7 @@ footer {
         @include bold;
 
         @include pc {
-          margin-top: p(22);
+          margin-top: p(10);
           font-size: pm(16, 12);
         }
 

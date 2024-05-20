@@ -11,7 +11,7 @@
   }
 
   @include sp {
-    padding: s(60) 0 s(80);
+    padding: s(60) 0 s(100);
   }
 
   .C_title {
@@ -163,7 +163,7 @@
     }
 
     @include sp {
-      margin: s(207) auto 0;
+      margin: s(140) auto 0;
     }
   }
 }

@@ -35,7 +35,7 @@
         @include sp {
           width: s(90);
           top: s(-160);
-          right: s(0);
+          right: s(45);
         }
       }
 
@@ -51,8 +51,8 @@
 
         @include sp {
           width: s(100);
-          top: s(-70);
-          right: s(-30);
+          top: s(-80);
+          right: s(0);
         }
       }
 
@@ -68,8 +68,8 @@
 
         @include sp {
           width: s(110);
-          top: s(20);
-          right: s(-40);
+          top: s(50);
+          right: s(-15);
         }
       }
 

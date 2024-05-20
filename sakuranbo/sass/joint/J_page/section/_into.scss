@@ -24,7 +24,7 @@
     }
 
     @include sp {
-      top: s(-40);
+      top: s(-50);
       left: s(5);
     }
 
@@ -48,6 +48,7 @@
           height: s(64);
           rotate: 100deg;
           margin: 0 0 s(-3) s(-12);
+          opacity: 0;
         }
       }
 
@@ -777,12 +778,12 @@
             }
           }
         }
-
       }
     }
 
     .valuable {
       background: rgba(235, 109, 109, 0.10);
+      box-shadow: unset;
 
       .TL {
         @include sp {

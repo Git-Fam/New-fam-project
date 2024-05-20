@@ -18,7 +18,7 @@
   &--text {
 
     @include pc {
-      margin-top: p(100);
+      margin-top: p(60);
     }
 
     @include sp {
@@ -28,14 +28,15 @@
 
     .TX {
       line-height: 1.5;
+      letter-spacing: 0.1em;
 
       @include pc {
-        font-size: p(32);
+        font-size: pm(16 ,12);
         text-align: center;
       }
 
       @include sp {
-        font-size: s(20);
+        font-size: s(16);
       }
     }
   }

@@ -28,7 +28,7 @@
     }
 
     @include pc {
-      padding: p(42) p(141) p(27) p(141);
+      padding: p(35) p(110) p(25);
       @include imgCover("btn.jpg");
     }
 
@@ -46,7 +46,7 @@
 
 
       @include pc {
-        font-size: p(45.8);
+        font-size: p(40);
       }
 
       @include sp {
@@ -62,7 +62,7 @@
         transition: all 0.3s;
 
         @include pc {
-          font-size: p(69);
+          font-size: p(59);
           padding: p(15);
           margin-right: p(13);
         }
