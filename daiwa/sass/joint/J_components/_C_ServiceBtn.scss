@@ -1,0 +1,94 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_ServiceBtn
+----------------------- */
+
+.C_ServiceBtn {
+  position: relative;
+  width: fit-content;
+  margin-left: auto;
+
+  @include pc {
+    padding-right: p(35);
+    margin-top: p(10);
+  }
+
+  @include sp {
+    padding-right: s(56);
+    margin-top: s(5);
+  }
+
+  .btn__area {
+    position: relative;
+    z-index: 2;
+
+    .TX {
+      display: block;
+      width: fit-content;
+      @include fw600;
+      line-height: 215%;
+      letter-spacing: 0.15em;
+      color: $F-333333;
+      transition: all 0.3s;
+
+      @include pc {
+        font-size: pm(13);
+      }
+
+      @include sp {
+        font-size: s(13);
+      }
+
+      &.active {
+        text-shadow: 2px 2px 2px $F-ffffff;
+      }
+    }
+
+    .hr {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: $F-333333;
+      transition: all 0.3s;
+
+      @include pc {
+        width: p(512);
+        height: p(1);
+      }
+
+      @include sp {
+        width: s(400);
+        height: s(1);
+      }
+
+      &.active {
+        width: 100%;
+      }
+    }
+  }
+
+  .circle {
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: $B-E9E19C;
+    position: absolute;
+    top: -15%;
+    transition: all 0.3s;
+
+    @include pc {
+      width: p(72);
+      right: 0;
+    }
+
+    @include sp {
+      width: s(72);
+      right: s(20);
+    }
+
+    &.active {
+      transform: scale(1.5);
+    }
+  }
+}

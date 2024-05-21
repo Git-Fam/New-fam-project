@@ -1,0 +1,139 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_ServiceNav
+----------------------- */
+
+.C_ServiceNav {
+  border-top: solid $F-333333;
+  border-bottom: solid $F-333333;
+  margin: 0 auto;
+
+  @include pc {
+    width: pm(878, 650);
+    border-width: p(1) 0 p(1);
+    padding: p(23) p(9);
+  }
+
+  @include sp {
+    width: s(350);
+    padding: s(20) s(27);
+  }
+
+  nav {
+
+    ul {
+      display: flex;
+      align-items: center;
+
+      @include pc {
+        justify-content: space-between;
+      }
+
+      @include sp {
+        flex-wrap: wrap;
+        gap: s(15) s(45);
+      }
+
+      li {
+
+        @include sp {
+          &:nth-child(1) {
+            order: 1;
+          }
+
+          &:nth-child(2) {
+            order: 3;
+          }
+
+          &:nth-child(3) {
+            order: 5;
+          }
+
+          &:nth-child(4) {
+            order: 2;
+          }
+
+          &:nth-child(5) {
+            order: 4;
+          }
+
+          &:nth-child(6) {
+            order: 6;
+          }
+        }
+
+        a {
+
+          .TX {
+            @include fw700;
+            line-height: 1;
+            letter-spacing: 0.15em;
+            color: #000000;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+
+            @include pc {
+              font-size: pm(16, 12);
+              gap: p(6);
+            }
+
+            @include sp {
+              font-size: s(16);
+              gap: s(4);
+            }
+
+            span {
+              display: block;
+              aspect-ratio: 18/6;
+              background-image: CServiceNavIcon(encode('#333333'));
+              background-size: contain;
+              background-repeat: no-repeat;
+              background-position: center;
+              flex-shrink: 0;
+              translate: 0 40%;
+              transition: all 0.3s;
+
+              @include pc {
+                width: p(18);
+              }
+
+              @include sp {
+                width: s(18);
+              }
+            }
+
+            &:hover {
+              color: $F-EDA571;
+
+              span {
+                background-image: CServiceNavIcon(encode('#EDA571'));
+                animation: pichopicho 1s linear infinite;
+
+                @keyframes pichopicho {
+                  0% {
+                    transform: translateY(0);
+                  }
+
+                  35% {
+                    transform: translateY(-50%);
+                  }
+
+                  65% {
+                    transform: translateY(50%);
+                  }
+
+                  100% {
+                    transform: translateY(0);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

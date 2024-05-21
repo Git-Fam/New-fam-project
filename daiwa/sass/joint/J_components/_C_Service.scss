@@ -1,0 +1,213 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_Service
+----------------------- */
+
+.C_Service {
+
+  @include pc {
+    @include column(p(30));
+    padding: 0 p(40);
+  }
+
+  @include sp {
+    @include column(s(40));
+  }
+
+  .item {
+    width: 100%;
+
+    @include pc {
+      height: pm(381, 300);
+      padding: 0 p(160);
+    }
+
+    @include sp {
+      padding: s(105) s(20) s(114);
+    }
+
+    &.img--1 {
+      @include imgCover("FVSub-bg-works.jpeg");
+
+      @include sp{
+        background-size: 330%;
+        background-position: top 10% left 28%;
+      }
+    }
+
+    &.img--2 {
+      @include imgCover("C_Service-img-02.jpg");
+
+      @include pc {
+        background-position: top 70% center;
+      }
+
+      @include sp{
+        background-size: 320%;
+        background-position: top 100% left 30%;
+      }
+    }
+
+    &.img--3 {
+      @include imgCover("C_Service-img-03.jpg");
+
+      @include pc {
+        background-position: top 50% right;
+      }
+
+      @include sp{
+        background-position: center left 60%;
+      }
+    }
+
+    &.img--4 {
+      @include imgCover("C_Service-img-04.jpeg");
+    }
+
+    &.img--5 {
+      @include imgCover("C_Service-img-05.jpg");
+
+      @include sp{
+        background-position: center left 30%;
+      }
+    }
+
+    &.img--6 {
+      @include imgCover("C_Service-img-06.jpeg");
+
+      @include sp{
+        background-size: 310%;
+        background-position: top 50% left 45%;
+      }
+    }
+
+    &:nth-child(odd) {
+      .item--content {
+
+        @include pc {
+          margin-right: auto;
+
+        }
+      }
+    }
+
+    &:nth-child(even) {
+      .item--content {
+
+        @include pc {
+          margin-left: auto;
+        }
+      }
+    }
+
+    &--content {
+      background: rgba(51, 51, 51, 0.6);
+      @include center;
+      
+      @include pc {
+        width: fit-content;
+        height: 100%;
+        padding: 0 p(53) 0 p(44);
+      }
+
+      @include sp {
+        width: 100%;
+        height: s(381);
+      }
+
+      &--inner {
+        width: fit-content;
+        margin: 0 auto;
+        color: $F-ffffff;
+
+        @include pc {
+          @include column(p(30));
+        }
+
+        @include sp {
+          @include column(s(30));
+        }
+
+        .title {
+
+          @include pc {
+            @include column(p(15));
+          }
+
+          @include sp {
+            @include column(s(13));
+          }
+
+          .EN {
+            @include fw400;
+            line-height: 1;
+            letter-spacing: 0.3em;
+
+            @include pc {
+              font-size: pm(13, 10);
+            }
+
+            @include sp {
+              font-size: s(13);
+            }
+          }
+
+          .JP {
+            @include fw700;
+            line-height: 1;
+            letter-spacing: 0.15em;
+
+            @include pc {
+              font-size: pm(32, 26);
+            }
+
+            @include sp {
+              font-size: s(32);
+            }
+
+            span {
+              display: block;
+
+              @include pc {
+                margin-top: p(5);
+                font-size: pm(16, 13);
+              }
+
+              @include sp {
+                margin-top: s(5);
+                font-size: s(16);
+              }
+            }
+          }
+        }
+
+        .text {
+
+          @include pc {
+            width: pm(304, 250);
+          }
+
+          @include sp {
+            width: s(302);
+          }
+
+          .TX {
+            @include fw600;
+            line-height: 188%;
+            letter-spacing: 0.15em;
+
+            @include pc {
+              font-size: pm(16, 13);
+            }
+
+            @include sp {
+              font-size: s(16);
+            }
+          }
+        }
+      }
+    }
+  }
+}
