@@ -15,21 +15,6 @@ $(function () {
   //      }
   //    });
 
-<<<<<<< HEAD
-  // // 要素が画面下部に来たらshowを付与
-  // $(window).scroll(function () {
-  //   $('.up , .down , .right , .left , .pop').each(function () {
-  //     var top_of_element = $(this).offset().top;
-  //     var bottom_of_window = $(window).scrollTop() + $(window).height();
-  //     if (bottom_of_window > top_of_element) {
-  //       $(this).addClass('show');
-  //     }
-  //   });
-  // });
-
-
-});
-=======
   // 要素が画面下部に来たらshowを付与
   $(window).scroll(function () {
     $('.up , .down , .right , .left , .pop, .slide_right, .slide_left').each(function () {
@@ -119,4 +104,3 @@ $('.bgappearTrigger').each(function(){ //bgappearTriggerというクラス名が
 $(window).on('load', function(){
   BgFadeAnime();/* アニメーション用の関数を呼ぶ*/
 });// ここまで画面が読み込まれたらすぐに動かしたい場合の記述
->>>>>>> main_daiwa

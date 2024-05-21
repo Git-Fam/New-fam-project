@@ -92,7 +92,7 @@
           }
         }
       }
-<<<<<<< HEAD
+
       .slide_right{
         overflow: hidden;
         &::before{
@@ -110,8 +110,7 @@
           }  
         }
       }
-=======
->>>>>>> main_daiwa
+
       &:nth-child(odd){
         @include pc{
           margin-left: auto;
@@ -153,7 +152,7 @@
             }
           }
         }
-<<<<<<< HEAD
+
         .slide_left{
           &::before{
             animation: img-wrap-left 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
@@ -170,8 +169,7 @@
             }  
           }
         }
-=======
->>>>>>> main_daiwa
+
         &::before{
           content: "";
           border-radius: 50%;
