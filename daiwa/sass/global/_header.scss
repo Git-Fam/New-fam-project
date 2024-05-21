@@ -3,3 +3,59 @@
 /* -----------------------
   header
 ----------------------- */
+
+.header{
+
+  @include pc{
+    margin: p(65) auto 0;
+  }
+  
+  @include sp{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: s(16) s(20);
+    z-index: 9999;
+  }
+
+  .C_nav{
+
+    @include sp{
+      position: fixed;
+      top: 0;
+      right: -100%;
+      transition: right 0.3s;
+      z-index: 2;
+
+      &.active{
+        right: 0;
+      }
+    }
+  }
+
+  .burger{
+    aspect-ratio: 28/9;
+    width: s(28);
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    margin-left: auto;
+
+    span{
+      display: block;
+      width: 100%;
+      border-top: solid s(1) $F-ffffff;
+      position: absolute;
+      left: 0;
+
+      &:nth-child(1){
+        top: 0;
+      }
+
+      &:nth-child(2){
+        top: 100%;
+      }
+    }
+  }
+}

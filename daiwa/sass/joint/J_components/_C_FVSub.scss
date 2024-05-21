@@ -1,0 +1,36 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_FVSub
+----------------------- */
+
+.C_FVSub{
+  
+  @include pc{
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 50% 92.3%, 0 100%);
+  }
+  
+  @include sp{
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 50% 97.6%, 0 100%);
+  }
+
+  &--inner{
+
+    @include pc{}
+    
+    @include sp{}
+
+    &.img--service{
+
+    }
+
+    &.img--works{
+      
+    }
+
+    &.img--contact{
+      
+    }
+  }
+}
