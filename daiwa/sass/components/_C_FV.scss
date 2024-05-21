@@ -1,0 +1,99 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_FV
+----------------------- */
+
+.C_FV{
+  @include imgCover("TOP.jpg");
+  text-align: center;
+  width: 100%;
+  @include pc{
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 50% 92.3%, 0 100%);
+    padding: p(153) 0 p(194);
+  }
+  @include sp{
+    background-size: 180%;
+    background-position: 50% 70%;
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 50% 97.6%, 0 100%);
+    padding:s(153) 0 s(230);
+
+  }
+  .top_TL{
+    color: $F-ffffff;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    @include pc{
+      width: p(410);
+    }
+    @include sp{
+      width: s(264);
+    }
+    .top_TL_TX{
+      color: $F-ffffff;
+      z-index: 10;
+      @include fw700;
+      @include pc{
+        font-size: pm(32,20);
+        letter-spacing: p(4.8);
+        line-height: p(45);
+      } 
+      @include sp{
+        font-size: s(20);
+        letter-spacing: s(3);
+        line-height: s(31);
+      } 
+    }
+    // .bg{
+    //   position: absolute;
+    //   background: rgba(166, 159, 96, 0.70);
+    //   top: 0;
+    //   left: 50%;
+    //   translate: -50% 0;
+    //   z-index: -1;
+    //   width: 100%;
+    //   height: 100%;
+    // }
+  }
+  .TL{
+    color: $F-ffffff;
+    @include syn;
+    @include fw400;
+    line-height: 113.7%; /* 84.138px */
+    @include pc{
+      font-size: p(74);
+      letter-spacing: p(22);
+      margin-top: p(32);
+    }
+    @include sp{
+      font-size: s(46);
+      letter-spacing: s(13.8);
+      margin-top: s(25);
+    }
+    span{
+      @include pc{
+        width: fit-content;
+        margin: 0 auto;
+      }
+    }
+  }
+  .under_TX{
+      @include syn;
+      @include fw700;
+      color: $F-E9E19C;
+      opacity: 0.5;
+      mix-blend-mode: plus-lighter;
+      @include pc{
+        font-size: p(24);
+        letter-spacing: p(12);
+        margin-top: p(30);
+      }
+      @include sp{
+        font-size: s(14);
+        line-height: 143%;
+        letter-spacing: s(7);
+        margin-top: s(14);
+      }
+  }
+}

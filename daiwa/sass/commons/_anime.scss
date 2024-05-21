@@ -1,0 +1,259 @@
+
+@use "../functions" as *;
+
+/* -----------------------
+  anime
+----------------------- */
+
+// ホバーで薄く
+.hover-opa{
+  transition: 0.3s;
+
+  &:hover{
+    opacity: 0.6;
+  }
+}
+
+// ホバーで大きく
+.hover-scale{
+  transition: 0.3s;
+
+  &:hover{
+    transform: scale(1.05);
+  }
+}
+
+// 下から
+.up {
+  opacity: 0;
+
+  &.show {
+    opacity: 0;
+    transform: translateY(100%);
+    animation: up 0.5s ease 0.5s forwards;
+
+    @keyframes up {
+      0% {
+        opacity: 0;
+        transform: translateY(100%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+// 上から
+.down {
+  opacity: 0;
+
+  &.show {
+    opacity: 0;
+    transform: translateY(-100%);
+    animation: down 0.5s ease 0.5s forwards;
+
+    @keyframes down {
+      0% {
+        opacity: 0;
+        transform: translateY(-100%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+// 右から
+.left {
+  opacity: 0;
+
+  &.show {
+    opacity: 0;
+    transform: translateX(100%);
+    animation: left 0.5s ease 0.5s forwards;
+
+    @keyframes left {
+      0% {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+}
+
+// 左から
+.right {
+  opacity: 0;
+
+  &.show {
+    opacity: 0;
+    transform: translateX(-100%);
+    animation: right 0.5s ease 0.5s forwards;
+
+    @keyframes right {
+      0% {
+        opacity: 0;
+        transform: translateX(-100%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+}
+
+
+// ふわっと
+.pop {
+  opacity: 0;
+  transform: scale(0.5);
+
+  &.show {
+    opacity: 0;
+    transform: scale(0.5);
+    animation: pop 0.5s ease 0.5s forwards;
+
+    @keyframes pop {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+
+// FVのタイトル
+.randomAnime {
+  visibility: hidden;
+}
+
+// FVタイトルの上の文字
+.bgappear{
+  animation: bgextendAnimeSecond 1.2s ease 0.7s forwards;
+	opacity: 0;
+}
+
+@keyframes bgextendAnimeSecond{
+	0% {
+	opacity: 0;
+	}
+	100% {
+	opacity: 1;
+  }
+}
+
+.bgextend{
+	animation-name:bgextendAnimeBase;
+	animation-duration:1s;
+	animation-fill-mode:forwards;
+	position: relative;
+	overflow: hidden;/*　はみ出た色要素を隠す　*/
+	opacity:0;
+}
+
+@keyframes bgextendAnimeBase{
+  from {
+    opacity:0;
+  }
+
+  to {
+    opacity:1;  
+  }
+}
+
+// 左から右へ
+.bgLRextend::before{
+  animation-name:bgLRextendAnime;
+  animation-duration:1s;
+  animation-fill-mode:forwards;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    background: $F-333333;/*伸びる背景色の設定*/
+}
+@keyframes bgLRextendAnime{
+  0% {
+    transform-origin:left;
+    transform:scaleX(0);
+  }
+  50% {
+    transform-origin:left;
+    transform:scaleX(1);
+  }
+  51% {
+    transform-origin:right;
+  }
+  100% {
+    transform-origin:right;
+    transform:scaleX(0);
+  }
+}
+/* スクロールをしたら出現する要素にはじめに透過0を指定　*/
+.bgappearTrigger,
+.bgLRextendTrigger{
+    opacity: 0;
+}
+
+// 写真右から表示される
+.slide_right{
+  &.show{
+    overflow: hidden;
+    &::before{
+      animation: img-wrap 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      background: #fff;
+      content: '';
+      inset: 0;
+      pointer-events: none;
+      position: absolute;
+      z-index: 1;
+      @keyframes img-wrap {
+        100% {
+          transform: translateX(-100%);
+        }
+      }  
+    }  
+  }
+}
+
+
+
+// 写真左から表示される
+.slide_left{
+  &.show{
+    &::before{
+      animation: img-wrap-left 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      background: #fff;
+      content: '';
+      inset: 0;
+      pointer-events: none;
+      position: absolute;
+      z-index: 1;
+      @keyframes img-wrap-left {
+        100% {
+          transform: translateX(100%);
+        }
+      }  
+    }  
+  }
+}
