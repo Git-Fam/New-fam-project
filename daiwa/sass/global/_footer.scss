@@ -1,6 +1,433 @@
 @use "../functions" as *;
+@use "../joint/J_functions" as *;
 
 
 /* -----------------------
   footer
 ----------------------- */
+
+.C_footer {
+
+  @include pc {
+    @include column(p(25));
+  }
+
+  @include sp {
+    @include column(s(15));
+  }
+
+  &--slide {
+    display: flex;
+
+    .TX {
+      @include syn;
+      @include fw700;
+      line-height: 1;
+      letter-spacing: 0.2em;
+      color: $F-E9E19C;
+      mix-blend-mode: multiply;
+      opacity: 0.5;
+      white-space: nowrap;
+
+      @include pc {
+        font-size: p(82);
+      }
+
+      @include sp {
+        font-size: s(64);
+      }
+    }
+  }
+
+  &--main {
+    background: #858582;
+    position: relative;
+
+    @include pc {
+      padding: p(75) 0 p(10);
+    }
+
+    @include sp {
+      padding: s(82) 0 s(20);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      @include imgCover("footer-bg.png");
+      mix-blend-mode: multiply;
+      z-index: 1;
+
+      @include sp {
+        // background-size: 200%;
+        // background-position: center;
+      }
+    }
+
+    &--inner {
+      position: relative;
+      z-index: 2;
+
+      @include pc {
+        @include column(p(28));
+      }
+
+      @include sp {
+        @include column(s(70));
+      }
+
+      .content {
+        display: flex;
+
+        @include pc {
+          width: p(881);
+          margin: 0 auto;
+          justify-content: space-between;
+        }
+
+        @include sp {
+          flex-direction: column;
+          width: 100%;
+          gap: s(35);
+        }
+
+        .outLine {
+          width: fit-content;
+          flex-shrink: 0;
+
+          @include pc {
+            @include column(p(12));
+          }
+
+          @include sp {
+            @include column(s(12));
+            padding: 0 s(20);
+          }
+
+          &--name {
+            @include syn;
+            @include fw400;
+            line-height: 113.7%;
+            letter-spacing: 0.3em;
+            color: $F-ffffff;
+
+            @include pc {
+              font-size: pm(36, 30);
+            }
+
+            @include sp {
+              font-size: s(36);
+            }
+          }
+
+          &--items {
+
+            @include pc {
+              @include column(p(24));
+            }
+
+            @include sp {
+              @include column(s(25));
+            }
+
+            .TX {
+              @include fw400;
+              line-height: 175%;
+              letter-spacing: 0.08em;
+              color: $F-ffffff;
+
+              @include pc {
+                font-size: pm(16, 13);
+              }
+
+              @include sp {
+                font-size: s(16);
+              }
+
+              span {
+
+                @include pc {
+                  font-size: pm(13, 10);
+                }
+
+                @include sp {
+                  font-size: s(13);
+                }
+              }
+
+              &.tel {
+
+                @include pc {
+                  font-size: pm(24, 19);
+                }
+
+                @include sp {
+                  font-size: s(24);
+                }
+              }
+            }
+          }
+        }
+
+        .recruit {
+
+          @include pc {
+            @include column(p(40));
+          }
+
+          @include sp {}
+
+          &--btn {
+            display: block;
+            @include imgCover("recruit-btn.jpg");
+            position: relative;
+            border-radius: 20px;
+            border: solid #F9E474;
+            transition: all 0.3s;
+
+            @include pc {
+              aspect-ratio: 437/198;
+              width: p(437);
+              border-width: p(5);
+              margin-left: auto;
+            }
+
+            @include sp {
+              aspect-ratio: 361/198;
+              width: s(361);
+              border-width: s(5);
+              margin: 0 auto;
+            }
+
+            &:hover {
+              box-shadow: 0px 0px 20px #FFFFFF;
+              scale: 1.01;
+
+              .text {
+                transform: scale(1.1);
+              }
+
+              .TL {
+                transform: scale(1.1);
+              }
+            }
+
+            &::before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: rgba(255, 255, 255, 0.2);
+              z-index: 1;
+              border-radius: 20px;
+            }
+
+            &--inner {
+              position: relative;
+              width: 100%;
+              height: 100%;
+              z-index: 2;
+
+              .text {
+                position: absolute;
+                transition: all 0.3s;
+
+                @include pc {
+                  rotate: -17.59deg;
+                  top: p(20);
+                  left: p(40);
+                }
+
+                @include sp {
+                  rotate: 2.98deg;
+                  top: s(20);
+                  left: s(40);
+                }
+
+                &::before,
+                &::after {
+                  content: "";
+                  display: block;
+                  @include iconContain($recruitBtnTX);
+                  position: absolute;
+                  bottom: 0;
+                  aspect-ratio: 35/25;
+
+                  @include pc {
+                    width: p(35);
+                    left: p(-30);
+                  }
+
+                  @include sp {
+                    width: s(35);
+                    left: s(-30);
+                  }
+                }
+
+                &::after {
+                  bottom: unset;
+                  left: unset;
+                  scale: -1 1;
+                  rotate: 10deg;
+
+                  @include pc {
+                    top: p(10);
+                    right: p(-20);
+                  }
+
+                  @include sp {
+                    top: s(5);
+                    right: s(-25);
+                  }
+                }
+
+                .TX {
+                  @include fw600;
+                  line-height: 1;
+                  letter-spacing: 0.1em;
+                  color: $F-515552;
+                  transition: all 0.3s;
+
+
+                  @include pc {
+                    rotate: 10.09deg;
+                    font-size: p(16);
+                  }
+
+                  @include sp {
+                    rotate: 4.52deg;
+                    font-size: s(16);
+                  }
+
+                }
+              }
+
+              .TL {
+                position: absolute;
+                top: 50%;
+                translate: 0 -50%;
+                @include fw700;
+                line-height: 120.2%;
+                letter-spacing: 0.08em;
+                color: $F-515552;
+                text-align: center;
+                white-space: nowrap;
+                transition: all 0.3s;
+
+                @include pc {
+                  font-size: p(40);
+                  right: p(12);
+                }
+
+                @include sp {
+                  font-size: s(35);
+                  right: s(20);
+                }
+
+                span {
+
+                  @include pc {
+                    font-size: p(30);
+                  }
+
+                  @include sp {
+                    font-size: s(26);
+                  }
+                }
+              }
+            }
+          }
+
+          .footer--nav {
+            ul {
+              display: flex;
+              justify-content: flex-end;
+              gap: p(51);
+
+              li {
+                position: relative;
+
+                &::before {
+                  content: "/";
+                  position: absolute;
+                  left: calc(100% + p(25));
+                  top: 65%;
+                  translate: 0 -50%;
+                  @include fw400;
+                  font-size: p(13);
+                  line-height: 1;
+                  letter-spacing: 0.08em;
+                  color: $F-ffffff;
+                }
+
+                &:last-child {
+                  &::before {
+                    display: none;
+                  }
+                }
+
+                a {
+                  @include fw400;
+                  font-size: p(13);
+                  line-height: 1;
+                  letter-spacing: 0.08em;
+                  color: $F-ffffff;
+                  transition: all 0.3s;
+
+                  &:hover {
+                    color: $F-F9E474;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .copyright {
+
+        @include pc {
+          @include column(p(5));
+        }
+
+        @include sp {
+          @include column(s(5));
+          padding: 0 s(20);
+        }
+
+        .TX {
+          @include sans;
+          @include fw400;
+          line-height: 1;
+          letter-spacing: 0.08em;
+          color: #D3D3D3;
+          text-align: center;
+
+          @include pc {
+            font-size: p(13);
+          }
+
+          @include sp {
+            font-size: s(13);
+          }
+
+          &:last-child {
+            @include sp {
+              font-size: s(10);
+
+              .TX {
+                font-size: s(10);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

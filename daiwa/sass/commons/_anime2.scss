@@ -1,0 +1,15 @@
+
+// 永遠スライド
+
+.foreverSlide {
+  animation: foreverSlide 20s linear infinite;
+
+  @keyframes foreverSlide {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+}
