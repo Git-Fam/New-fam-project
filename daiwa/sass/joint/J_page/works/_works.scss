@@ -2,27 +2,27 @@
 @use "../../J_functions" as *;
 
 /* -----------------------
-  service
+  works
 ----------------------- */
 
-.service{
+.works{
 
   @include pc{
-    padding:p(60) 0 p(160);
+    padding:p(79) 0 p(160);
   }
   
   @include sp{
-    padding:s(40) 0 s(140);
+    padding:s(40) 0 s(160);
   }
 
-  .C_Service{
+  .C_Works{
 
     @include pc{
-      margin-top: p(130);
+      margin-top: p(84);
     }
     
     @include sp{
-      margin-top: s(100);
+      margin-top: s(81);
     }
   }
 }
