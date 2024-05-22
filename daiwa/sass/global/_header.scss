@@ -7,9 +7,9 @@
 .header{
 
   @include pc{
-    margin: p(65) auto 0;
+    margin: 0 auto;
   }
-  
+
   @include sp{
     position: fixed;
     top: 0;
@@ -17,6 +17,20 @@
     width: 100%;
     padding: s(16) s(20);
     z-index: 9999;
+  }
+
+  &.header--front{
+
+    @include pc{
+      margin-top: p(80);
+    }
+  }
+
+  &.header--another{
+
+    @include pc{
+      margin-top: p(40);
+    }
   }
 
   .C_nav{

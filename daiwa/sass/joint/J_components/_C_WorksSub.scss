@@ -1,0 +1,28 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_WorksSub
+----------------------- */
+
+.C_WorksSub {
+  
+  @include sp{
+    padding: 0 s(20);
+  }
+
+  .TX{
+    @include fw600;
+    line-height: 175%;
+    letter-spacing: 0.15em;
+
+    @include pc{
+      text-align: center;
+      font-size: pm(16,13);
+    }
+    
+    @include sp{
+      font-size: s(16);
+    }
+  }
+}
