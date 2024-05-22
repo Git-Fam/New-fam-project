@@ -86,63 +86,7 @@
         font-size: s(16);
         letter-spacing: s(2.4);
         margin-top: s(40);
-
       }
-    }
-    .under_TX{
-      color: $F-333333;
-      position: relative;
-      text-align: right;
-      @include pc{
-        width: p(400);
-        font-size: p(13);
-        letter-spacing: p(2);
-        margin-top: p(67);
-      }
-      @include sp{
-        width: s(223);
-        margin-left: auto;
-        margin-top: s(55);
-        letter-spacing: s(2);
-      }
-      p{
-        position: relative;
-        z-index: 10;  
-        position: relative;
-        border-bottom: p(1) solid;
-        padding-bottom: p(5);
-        @include fw600;
-        @include pc{
-          border-bottom: p(1) solid;
-          padding-bottom: p(5);  
-        }
-        @include sp{
-          border-bottom: s(1) solid;
-          padding-bottom: s(5);
-        }
-        a{
-          color: $F-333333;
-        }
-      }
-      .circle{
-        border-radius: 50%;
-        background: $B-E9E19C;
-        position: absolute;
-        z-index: 1; 
-        @include pc{
-          width: p(72);
-          height: p(72);
-          top: p(-16);
-          right: p(-36);
-        }
-        @include sp{
-          width: s(42);
-          height: s(42);
-          top: s(-2);
-          right: s(-16);
-        }
-      }  
     }
   }
-
 }

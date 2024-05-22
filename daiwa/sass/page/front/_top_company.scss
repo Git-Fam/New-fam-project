@@ -1,0 +1,59 @@
+@use "../../functions"as *;
+
+/* -----------------------
+  top_company
+----------------------- */
+#top_company{
+  @include pc{
+    padding-top: p(160);
+  }
+  @include sp{
+    padding-top: s(140);
+  }
+  .company_info{
+    @include pc{
+      margin: p(60) auto 0;
+      width: p(875);
+    }
+    @include sp{
+      margin: s(25) auto 0;
+      width: s(350);
+    }
+    li{
+      display: flex;
+      align-items: center;
+      @include pc{
+        border-top: p(1) solid $F-D6D6D6;
+        padding: p(25) 0 p(25) p(34);
+        font-size: pm(16,13);
+      }
+      @include sp{
+        border-top: s(1) solid $F-D6D6D6;
+        padding: s(15) 0 s(15) s(20);
+        font-size: s(16);
+      }
+      .label{
+        @include fw500;
+        color: $F-7C7C7C;
+        @include pc{
+          width: p(204);
+        }
+        @include sp{
+          width: s(135);
+        }
+      }
+      .TX{
+        @include fw400;
+        color: $F-292929;
+      }
+      &:last-child{
+        @include pc{
+          border-bottom: p(1) solid $F-D6D6D6;
+        }
+        @include sp{
+          border-bottom: s(1) solid $F-D6D6D6;
+        }
+      }
+    }
+  }
+}

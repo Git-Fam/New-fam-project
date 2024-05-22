@@ -26,7 +26,15 @@
         margin: p(-195) 0 0 auto;
       }
       @include sp{
-        margin: s(100) auto;
+        margin: s(100) auto 0;
+      }
+      .hr{
+        @include pc{
+          width: p(400);
+        }
+        @include sp{
+          width: s(223);
+        }  
       }
     }
     &:before{

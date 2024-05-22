@@ -15,14 +15,14 @@
     width: p(1201);
     padding: p(125) 0;
     border-radius: p(200);
-    background-position: 0% 65%;
+    background-position: 10% 65%;
   }
   @include sp{
     width: s(485);
     padding: s(30) 0;
     border-radius:s(150); 
     margin: 0 auto;
-    background-position: 0% 100%;
+    background-position: 0% 98%;
   }
   .TL{
     @include fw700;
