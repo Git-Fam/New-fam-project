@@ -22,27 +22,40 @@
       color: $F-E9E19C;
       opacity: 0.5;
       mix-blend-mode: multiply;
-      @include pc{}
+      left: 50%;
+      translate: -50% 0% ;
+      width: 110%;
+      @include pc{
+        font-size: p(82);
+        letter-spacing: p(16.4);
+        top: p(-45);
+      }
       @include sp{
         font-size: s(30);
         letter-spacing: s(5);
         top: s(-15);
-        left: 50%;
-        translate: -50% 0% ;
-        width: 110%;
       }
     }
     .bg{
       @include imgCover("top_service_bg.jpg");
+      margin: 0 auto;
+      @include pc{
+        width: p(1201);
+        padding: p(125) 0 p(150);
+      }
       @include sp{
         width: s(350);
-        margin: 0 auto;
-        padding-top: s(80);
+        padding: s(80) 0 s(71);
       }  
     }
-    .TX{
+    .top_TX{
       line-height: 175%;
-      @include pc{}
+      @include pc{
+        width: p(712);
+        font-size: pm(16,13);
+        letter-spacing: p(2.4);
+        margin: p(50) auto 0;
+      }
       @include sp{
         width: s(276);
         font-size: s(16);
@@ -50,8 +63,13 @@
         margin: s(45) auto 0;
       }
     }
-  .C_service{
-    margin: 0 auto;
-  }
+    .C_service{
+      @include pc{
+        margin: p(88) auto 0;
+      }
+      @include sp{
+        margin: s(85) auto 0;
+      }
+    }
   }
 }

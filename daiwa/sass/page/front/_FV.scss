@@ -3,8 +3,9 @@
 /* -----------------------
   FV
 ----------------------- */
-.C_nav {
+.header.header--front {
   @include pc {
     margin-top: p(80);
   }
 }
+

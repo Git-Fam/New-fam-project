@@ -10,6 +10,7 @@
   .works_top{
     position: relative;
     overflow: hidden;
+    margin: 0 auto;
     @include pc{
       width: p(1201);
       height: p(770);
@@ -53,8 +54,7 @@
 
   .textbox{
     @include pc{
-      // background: $B-ffffff;
-      background: $B-C0C0C0;
+      background: $B-ffffff;
       width: p(600);
       padding: p(109) p(89) p(132) p(75);
     }

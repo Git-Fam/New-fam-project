@@ -1,0 +1,66 @@
+@use "../../functions"as *;
+
+/* -----------------------
+  FV
+----------------------- */
+#top_works{
+  @include pc{
+    padding-top: p(160);
+  }
+  @include sp{
+    padding-top: s(140);
+  }
+  .C_works{
+    position: relative;
+    @include pc{
+      width: p(1201);
+      margin: p(57) auto;
+    }
+    @include sp{
+      margin-top: s(25);
+    }
+    .textbox{
+      position: relative;
+      z-index: 10;
+      @include pc{
+        margin: p(-195) 0 0 auto;
+      }
+      @include sp{
+        margin: s(100) auto;
+      }
+    }
+    &:before{
+      content: "";
+      background: rgba(233, 225, 156, 0.20);
+      z-index: 10;
+      position: absolute;
+      @include pc{
+        width: p(885);
+        height: p(505);
+        top: p(666);
+        left: p(-40);
+      }
+      @include sp{
+        width: s(319);
+        height: s(213);
+        top: s(186);
+        left: 0;
+      }
+    }
+    .top_works_img{
+      @include imgCover("works_top05.jpeg");
+      @include pc{
+        width: p(351);
+        height: p(454);
+        margin: p(-280) 0 0 p(75);
+      }
+      @include sp{
+        position: absolute;
+        width: s(156);
+        height: s(202);
+        top: s(267);
+        right: s(20);
+      }
+    }  
+  }
+}

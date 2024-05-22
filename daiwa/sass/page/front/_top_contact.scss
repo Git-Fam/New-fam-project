@@ -1,13 +1,11 @@
 @use "../../functions"as *;
 
 /* -----------------------
-  front
+  FV
 ----------------------- */
-.front{
+#top_contact{
   @include pc{
-    padding-top: p(100);
+    padding: p(160);
   }
-  @include sp{
-    padding-top: s(140);
-  }
+  
 }
