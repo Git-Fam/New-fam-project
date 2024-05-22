@@ -1,0 +1,25 @@
+@use "../../functions"as *;
+
+/* -----------------------
+  top_company
+----------------------- */
+#top_access{
+  @include pc{
+    padding: p(100) 0 p(160);
+  }
+  @include sp{
+    padding: s(140) 0;
+  }
+  .map{
+    @include pc{
+      margin: p(60) auto;
+      width: p(1200);
+      height: p(397);
+    }
+    @include sp{
+      margin: s(25) auto 0;
+      width: s(350);
+      height: s(425);
+    }
+  }
+}

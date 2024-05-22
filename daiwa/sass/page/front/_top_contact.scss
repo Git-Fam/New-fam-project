@@ -1,11 +1,30 @@
 @use "../../functions"as *;
 
 /* -----------------------
-  FV
+  top_contact
 ----------------------- */
 #top_contact{
   @include pc{
-    padding: p(160);
+    padding-top: p(160);
   }
-  
+  @include sp{
+    padding: s(140) 0 s(389);
+  }
+  .btn_wrap{
+    position: relative;
+    @include sp{
+      margin-top: s(30);
+    }
+    .C_contact_btn{
+      @include pc{
+        margin: p(30) auto 0;
+      }
+      @include sp{
+        position: absolute;
+        top: 0;
+        left: 50%;
+        translate:-50% 0;
+      }  
+    }
+  }
 }
