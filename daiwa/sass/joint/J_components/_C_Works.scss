@@ -1,0 +1,231 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_Works
+----------------------- */
+
+.C_Works {
+
+  @include pc {
+    @include column(p(152));
+  }
+
+  @include sp {
+    @include column(s(183));
+  }
+
+  .WorksMan {
+    position: relative;
+
+    @include pc {
+      padding-bottom: p(51);
+    }
+
+    @include sp {
+      padding-bottom: s(63);
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      border-radius: 0px 150px 150px 0px;
+      background: rgba(233, 225, 156, 0.20);
+      position: absolute;
+      z-index: 1;
+      bottom: 0;
+
+      @include pc {
+        width: p(1206);
+        height: p(330);
+        left: p(-24);
+      }
+
+      @include sp {
+        width: s(403);
+        height: s(423);
+        left: 0;
+      }
+    }
+
+    &::after {
+      background: unset;
+      border: solid $B-C0C0C0;
+      border-left: none;
+      left: 0;
+
+      @include pc {
+        bottom: p(-16);
+        border-width: p(1);
+      }
+
+      @include sp {
+        bottom: s(-20);
+        border-width: s(1);
+      }
+    }
+
+    &:nth-child(even) {
+      &::before {
+        @include pc {
+          border-radius: 150px 0px 0px 150px;
+          left: unset;
+          right: p(-24);
+        }
+      }
+    }
+
+    &--inner {
+      position: relative;
+      z-index: 2;
+      margin: 0 auto;
+
+      @include pc {
+        @include column(p(50));
+        width: pm(880);
+      }
+
+      @include sp {
+        @include column(s(50));
+        width: s(350);
+      }
+
+      .img__area {
+        display: flex;
+
+        @include pc {
+          gap: p(12);
+        }
+
+        @include sp {
+          flex-direction: column;
+          gap: s(48);
+        }
+
+        .BtoA {
+          position: relative;
+
+          @include pc {
+            aspect-ratio: 339 / 295;
+            width: calc((339 / 880) * 100%);
+          }
+
+          @include sp {
+            aspect-ratio: 224 / 195;
+            width: s(224);
+          }
+
+          &:nth-child(2) {
+
+            @include pc {
+              aspect-ratio: 529 / 295;
+              width: calc((529 / 880) * 100%);
+            }
+
+            @include sp {
+              aspect-ratio: 350 / 195;
+              width: s(350);
+            }
+          }
+
+          .img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+          }
+
+          .TX {
+            @include syn;
+            @include fw700;
+            line-height: 113.7%;
+            letter-spacing: 1;
+            position: absolute;
+            left: 0;
+            mix-blend-mode: multiply;
+
+            @include pc {
+              font-size: p(32);
+              bottom: calc(100% - p(15));
+            }
+
+            @include sp {
+              font-size: s(32);
+              bottom: calc(100% - s(14));
+            }
+
+            &.Be {
+              color: #D9D9D9;
+            }
+
+            &.Af {
+              color: $F-E9E19C;
+            }
+          }
+        }
+      }
+
+      .content__area {
+        display: flex;
+
+        @include pc {
+          gap: p(63);
+          padding: 0 p(18);
+        }
+
+        @include sp {
+          flex-direction: column;
+          gap: s(20);
+        }
+
+        &--title {
+          flex-shrink: 0;
+
+          .TL {
+            color: $F-333333;
+            @include fw500;
+            line-height: 140%;
+            letter-spacing: 0.1em;
+
+            @include pc {
+              font-size: pm(20, 17);
+            }
+
+            @include sp {
+              font-size: s(20);
+            }
+          }
+        }
+
+        &--text {
+
+          @include pc {
+            padding-top: p(12);
+            @include column(p(5));
+          }
+
+          @include sp {
+            @include column(s(40));
+          }
+
+          .TX {
+            color: $F-6B6B6B;
+            font-family: "Zen Old Mincho";
+            @include fw400;
+            line-height: 1.5;
+            letter-spacing: 0.08em;
+
+            @include pc {
+              font-size: pm(16, 13);
+            }
+
+            @include sp {
+              font-size: s(16);
+            }
+          }
+        }
+      }
+    }
+  }
+}
