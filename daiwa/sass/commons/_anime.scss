@@ -226,6 +226,13 @@
       pointer-events: none;
       position: absolute;
       z-index: 1;
+      @include pc{
+        height: pm(442,380);
+      }
+      @include sp{
+        height: s(288);
+        bottom: 0;
+      }  
       @keyframes img-wrap {
         100% {
           transform: translateX(-100%);
@@ -248,6 +255,13 @@
       pointer-events: none;
       position: absolute;
       z-index: 1;
+      @include pc{
+        height: pm(442,380);
+      }
+      @include sp{
+        height: s(288);
+        bottom: 0;
+      }  
       @keyframes img-wrap-left {
         100% {
           transform: translateX(100%);
@@ -255,4 +269,26 @@
       }  
     }  
   }
+}
+
+//  Works写真の切り替わり
+.switching{
+  animation: switching 16s 0s infinite;
+  @keyframes switching {
+    0% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+        transform: scale(1.2);
+        z-index: 10;
+}
+    100% {
+        opacity: 0;
+        transform: scale(1.2);
+    }
+}
 }

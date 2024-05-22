@@ -7,9 +7,16 @@
 .C_into{
   @include pc{
     padding: p(100) p(40) p(160);
-
   }
   .into_content{
+    display: flex;
+    flex-direction: column;
+    @include pc{
+      gap: pm(158,130);
+    }
+    @include sp{
+      gap: s(74);
+    }
     .into_box{
       position: relative;
       @include pc{
@@ -27,9 +34,11 @@
         }
         .TL{
           @include fw700;
-          line-height: 145% ;       
+          line-height: 145% ;  
+          position: relative;
+          z-index: 10;   
           @include pc{
-            width: p(560);
+            width: p(570);
             font-size: pm(32,20); 
             letter-spacing: p(4.8)    
           }
@@ -48,7 +57,7 @@
             letter-spacing: p(2.4);
           }  
           @include sp{
-            width: s(348);
+            width: s(350);
             font-size: s(16);
             letter-spacing: s(2.4);
             margin-top: s(40);
@@ -64,9 +73,10 @@
         @include sp{
         }
         .img{
+          position: relative;
           @include pc{
             width: p(741);
-            height: p(442);
+            height: pm(442,380);
           }
           @include sp{
             width: s(371);
@@ -93,23 +103,6 @@
         }
       }
 
-      .slide_right{
-        overflow: hidden;
-        &::before{
-          animation: img-wrap 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-          background: #fff;
-          content: '';
-          inset: 0;
-          pointer-events: none;
-          position: absolute;
-          z-index: 1;
-          @keyframes img-wrap {
-            100% {
-              transform: translateX(-100%);
-            }
-          }  
-        }
-      }
 
       &:nth-child(odd){
         @include pc{
@@ -144,44 +137,17 @@
           @include sp{
             left: 0;
           }
-          .img{
-            @include imgCover("into02.jpg");
-            @include pc{
-              width: p(691);
-              height: p(442);
-            }
-          }
         }
 
-        .slide_left{
-          &::before{
-            animation: img-wrap-left 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            background: #fff;
-            content: '';
-            inset: 0;
-            pointer-events: none;
-            position: absolute;
-            z-index: 1;
-            @keyframes img-wrap-left {
-              100% {
-                transform: translateX(100%);
-              }
-            }  
-          }
-        }
 
         &::before{
-          content: "";
-          border-radius: 50%;
-          background: linear-gradient(0deg, #E9E19C 0%, rgba(233, 225, 156, 0.14) 100%);
-          opacity: 0.5;
-          position: absolute;
           z-index: 10;
           @include pc{
-            width: p(218);
-            height: p(218);
             top: 0;
             left: p(982);
+          }
+          @include sp{
+            top: s(-30);
           }    
         }
       }
@@ -191,7 +157,7 @@
         background: linear-gradient(0deg, #E9E19C 0%, rgba(233, 225, 156, 0.14) 100%);
         opacity: 0.5;
         position: absolute;
-        z-index: 10;
+        right: 0;
         @include pc{
           width: p(218);
           height: p(218);
@@ -201,6 +167,8 @@
         @include sp{
           width: s(126);
           height: s(126);
+          top: s(-43);
+          right: s(20);
         }
       }
     }

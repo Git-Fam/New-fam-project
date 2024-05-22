@@ -1,0 +1,148 @@
+@use "../functions"as *;
+
+/* -----------------------
+  C_works
+----------------------- */
+
+.C_works{
+
+  // 写真の切り替わり
+  .works_top{
+    position: relative;
+    overflow: hidden;
+    @include pc{
+      width: p(1201);
+      height: p(770);
+    }
+    @include sp{
+      width: s(390);
+      height: s(254);
+    }
+  }
+  .img{
+    position: absolute;
+    top: 0;
+    z-index: 0;
+    opacity: 0;
+    @include pc{
+      width: p(1201);
+      height: p(770);
+    }
+    @include sp{
+      width: s(390);
+      height: s(254);
+    }
+  }
+  .img01{
+    @include imgCover("works_top01.jpg");
+  }
+  .img02{
+    @include imgCover("works_top02.jpg");
+    animation-delay: 4s
+  }
+  .img03{
+    @include imgCover("works_top03.jpg");
+    animation-delay: 8s
+
+  }
+  .img04{
+    @include imgCover("works_top04.jpg");
+    animation-delay: 12s
+  }
+
+
+  .textbox{
+    @include pc{
+      // background: $B-ffffff;
+      background: $B-C0C0C0;
+      width: p(600);
+      padding: p(109) p(89) p(132) p(75);
+    }
+    @include sp{
+      width: s(350);
+    }
+    .TL{
+      @include fw700;
+      @include pc{
+        font-size: p(32);
+        letter-spacing: p(4.7);
+      }
+      @include sp{
+        width: s(150);
+        font-size: s(32);
+        letter-spacing: s(4.8);
+        line-height: 145%;
+      }
+    }
+    .TX{
+      @include fw600;
+      line-height: 175%;
+      @include pc{
+        font-size: pm(16,13);
+        letter-spacing: p(2.4);
+        margin-top: p(60);
+      }
+      @include sp{
+        font-size: s(16);
+        letter-spacing: s(2.4);
+        margin-top: s(40);
+
+      }
+    }
+    .under_TX{
+      color: $F-333333;
+      position: relative;
+      text-align: right;
+      @include pc{
+        width: p(400);
+        font-size: p(13);
+        letter-spacing: p(2);
+        margin-top: p(67);
+      }
+      @include sp{
+        width: s(223);
+        margin-left: auto;
+        margin-top: s(55);
+        letter-spacing: s(2);
+      }
+      p{
+        position: relative;
+        z-index: 10;  
+        position: relative;
+        border-bottom: p(1) solid;
+        padding-bottom: p(5);
+        @include fw600;
+        @include pc{
+          border-bottom: p(1) solid;
+          padding-bottom: p(5);  
+        }
+        @include sp{
+          border-bottom: s(1) solid;
+          padding-bottom: s(5);
+        }
+        a{
+          color: $F-333333;
+        }
+      }
+      .circle{
+        border-radius: 50%;
+        background: $B-E9E19C;
+        position: absolute;
+        z-index: 1; 
+        @include pc{
+          width: p(72);
+          height: p(72);
+          top: p(-16);
+          right: p(-36);
+        }
+        @include sp{
+          width: s(42);
+          height: s(42);
+          top: s(-2);
+          right: s(-16);
+        }
+      }  
+    }
+  }
+
+}

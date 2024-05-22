@@ -1,0 +1,57 @@
+@use "../../functions"as *;
+
+/* -----------------------
+  service
+----------------------- */
+
+#top_service{
+  position: relative;
+  @include pc{
+    padding-top: p(205);
+  }
+  @include sp{
+    padding-top: s(140);
+  }
+  .service_wrap{
+    position: relative;
+    .bg_TL{
+      @include syn;
+      @include fw700;
+      position: absolute;
+      text-align: center;
+      color: $F-E9E19C;
+      opacity: 0.5;
+      mix-blend-mode: multiply;
+      @include pc{}
+      @include sp{
+        font-size: s(30);
+        letter-spacing: s(5);
+        top: s(-15);
+        left: 50%;
+        translate: -50% 0% ;
+        width: 110%;
+      }
+    }
+    .bg{
+      @include imgCover("top_service_bg.jpg");
+      @include sp{
+        width: s(350);
+        margin: 0 auto;
+        padding-top: s(80);
+      }  
+    }
+    .TX{
+      line-height: 175%;
+      @include pc{}
+      @include sp{
+        width: s(276);
+        font-size: s(16);
+        letter-spacing: s(2.4);
+        margin: s(45) auto 0;
+      }
+    }
+  .C_service{
+    margin: 0 auto;
+  }
+  }
+}

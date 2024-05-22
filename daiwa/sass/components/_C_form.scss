@@ -1,0 +1,56 @@
+@use "../functions"as *;
+
+/* -----------------------
+  C_form
+----------------------- */
+.C_form{
+  form{
+    .item{
+      @include pc{
+        display: flex;
+        align-items: center;
+        width: p(787);
+        border-bottom: p(1) solid;
+        padding-bottom: p(23);
+      }
+      label{
+        @include fw600;
+        position: relative;
+        @include pc{
+          width: p(252);
+          font-size: p(20);
+          margin-left: p(30);
+        }
+        span{
+          @include fw600;
+          position: absolute;
+          background: $B-EDA571;
+          color: $F-ffffff;
+          @include pc{
+            width: p(50);
+            height: p(25);
+            letter-spacing: p(3.2);
+            text-align: center;
+            line-height: p(25);
+            right: p(43);
+            font-size: p(16);
+          }
+        }
+      }
+      .inputarea{
+        input{
+          @include zen;
+          @include pc{
+            width: p(505);
+            height: p(50);
+            border: p(1) solid $B-C0C0C0;
+            padding-left: p(20);
+            font-size: p(20);
+            box-sizing: border-box;
+            appearance: none;
+          }  
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@use "../../functions"as *;
+
+/* -----------------------
+  FV
+----------------------- */
+#top_into{
+  @include pc{
+    padding-top: p(100);
+  }
+  @include sp{
+    padding-top: s(140);
+  }
+}

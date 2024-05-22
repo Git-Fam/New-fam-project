@@ -8,9 +8,14 @@
   text-align: center;
   .TL{
     @include syn;
+    @include fw400;
     @include pc{
       font-size: p(55);
       letter-spacing: p(16.5);
+    }
+    @include sp{
+      font-size: s(40);
+      letter-spacing: s(12);
     }
   }
   .TL_under{
@@ -19,6 +24,11 @@
       font-size: p(20);
       margin-top: p(13);
       letter-spacing: p(6);
+    }
+    @include sp{
+      font-size: s(16);
+      margin-top: s(12);
+      letter-spacing: s(4.8);
     }
   }
 }
