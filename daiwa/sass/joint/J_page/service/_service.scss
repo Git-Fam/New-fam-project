@@ -1,0 +1,22 @@
+@use "../../../functions" as *;
+@use "../../J_functions" as *;
+
+/* -----------------------
+  service
+----------------------- */
+
+.service{
+
+  @include pc{}
+  
+  @include sp{}
+
+  .C_ServiceNav{
+
+    @include pc{
+      margin-top: p(60);
+    }
+    
+    @include sp{}
+  }
+}
