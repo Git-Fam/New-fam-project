@@ -5,17 +5,22 @@
 ----------------------- */
 .btn_wrap{
   position: relative;
+  @include pc{
+    overflow: hidden;
+  }
 }
 .C_contact_btn{
   @include imgCover("contact_btn.jpg");
   display: block;
   text-align: center;
   color: $F-333333;
+  transition: 1s;
   @include pc{
     width: p(1201);
     padding: p(125) 0;
     border-radius: p(200);
     background-position: 10% 65%;
+    background-size: 110%;
   }
   @include sp{
     width: s(485);
@@ -51,6 +56,12 @@
       font-size: s(16);
       letter-spacing: s(2.4);
       margin-top: s(22);
+    }
+  }
+  &:hover{
+    @include pc{
+      background-size: 125%;
+      transition: 1s;  
     }
   }
 }

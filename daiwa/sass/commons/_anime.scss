@@ -119,17 +119,17 @@
 // ふわっと
 .pop {
   opacity: 0;
-  transform: scale(0.5);
+  transform: scale(0.8);
 
   &.show {
     opacity: 0;
-    transform: scale(0.5);
-    animation: pop 0.5s ease 0.5s forwards;
+    transform: scale(0.8);
+    animation: pop 1.5s ease 0.2s forwards;
 
     @keyframes pop {
       0% {
         opacity: 0;
-        transform: scale(0.5);
+        transform: scale(0.8);
       }
 
       100% {

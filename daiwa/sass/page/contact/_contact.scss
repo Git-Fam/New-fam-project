@@ -1,0 +1,345 @@
+@use "../../functions"as *;
+
+/* -----------------------
+  contact
+----------------------- */
+.contact{
+  @include pc{
+    padding: p(126) 0 p(170);
+  }
+  @include sp{
+    padding: s(80) 0 s(140);
+    width: s(350);
+    margin-inline: auto;
+  }
+
+  &_TX{
+    line-height: 175%;
+    @include fw400;
+    @include pc{
+      text-align: center;
+      font-size: pm(16);
+      letter-spacing: p(1.3);
+    }
+    @include sp{
+      font-size: s(16);
+      letter-spacing: s(1.3);
+    }
+  }
+
+  form{
+    @include pc{
+      margin: 0 auto;
+      width: p(787);
+      margin-top: p(88);
+    }
+    @include sp{
+      margin-top: p(74);
+    }
+    .item{
+      @include pc{
+        display: flex;
+        align-items: center;  
+        width: p(787);
+        border-bottom: p(1) solid $B-C0C0C0;
+        padding: p(26) 0 p(23);
+      }
+      @include sp{
+        border-bottom: s(1) solid $B-C0C0C0;
+        padding: s(26) s(20);
+      }
+      label{
+        @include fw600;
+        position: relative;
+        @include pc{
+          width: p(252);
+          font-size: p(20);
+          margin-left: p(30);
+        }
+        @include sp{
+          font-size: s(20);
+        }
+        span{
+          @include fw600;
+          text-align: center;
+          background: $B-EDA571;
+          color: $F-ffffff;
+          @include pc{
+            position: absolute;
+            width: p(50);
+            height: p(25);
+            letter-spacing: p(3.2);
+            line-height: p(25);
+            right: p(43);
+            font-size: p(16);
+          }
+          @include sp{
+            width: s(50);
+            height: s(25);
+            letter-spacing: s(3.2);
+            line-height: s(25);
+            margin-left: s(15);
+            font-size: s(16);
+            display: inline-block;
+          }
+        }
+      }
+      .input{
+        position: relative;
+        span{
+          input{
+            box-sizing: border-box;
+            appearance: none;
+            @include zen;
+            @include pc{
+              width: p(505);
+              height: p(50);
+              border: p(1) solid $B-C0C0C0;
+              padding-left: p(20);
+              font-size: p(20);
+            }
+            @include sp{
+              width: s(310);
+              height: s(50);
+              background: $B-EFF0F1;
+              border: none;
+              padding-left: s(20);
+              font-size: s(16);
+              margin-top: s(13);
+            }
+          }
+          .wpcf7-not-valid-tip{
+            color: $F-EDA571;
+            position: absolute;
+            @include pc{
+              font-size: p(16);
+              bottom: p(-34);
+              left: 0;
+            }
+            @include sp{
+              font-size: s(16);
+              bottom: s(-36);
+              left: 0;
+            }
+          }
+        }  
+      }
+      .address_box{
+        .postcode_box{
+          display: flex;
+          @include pc{
+            gap: p(12);
+          }
+          @include sp{
+            gap: s(5);
+          }
+          .TX{
+            @include pc{
+              font-size: p(20);
+              line-height: p(50);
+            }
+            @include sp{
+              font-size: s(20);
+              margin-top: s(28);
+            }
+
+          }
+          .post-code{
+            @include pc{
+              width: p(127);
+              height: p(50);
+            }
+            @include sp{
+              width: s(113);
+            }    
+          }
+        }
+      }
+    }
+    .content{
+      .input{
+        display: flex;
+        flex-direction: column;
+        textarea{
+          appearance: none;
+          box-sizing: border-box;
+          @include zen;
+          @include pc{
+            width: p(505);
+            height: p(230);
+            font-size: p(20);
+            padding:p(10) p(20);
+            border: p(1) solid $B-C0C0C0;
+          }
+          @include sp{
+            width: s(310);
+            height: s(230);
+            font-size: s(16);
+            padding: s(14) s(16);
+            border: none;
+            background: $B-EFF0F1;
+            margin-top: s(13);
+          }
+        }  
+      }
+    }
+
+    // 確認ボタン
+
+    .confirm_btn{
+      background: $F-ffffff;
+      transition-duration: .4s;
+      z-index: 2;
+      position: relative;
+      overflow: hidden;
+      border-radius: 50%;
+      @include pc{
+        width: p(133);
+        height: p(133);
+        border: p(1) solid $B-C0C0C0;
+        margin: p(60) auto 0;
+      }
+      @include sp{
+        width: s(96);
+        height: s(96);
+        border: s(1) solid $B-C0C0C0;
+        margin: s(40) auto 0;
+
+      }
+      input{
+        appearance: none;
+        width: 100%;
+        text-align: center;
+        border: none;
+        background: none;
+        @include zen;
+        @include fw700;
+        @include pc{
+          font-size: p(20);
+          line-height: p(133);
+          letter-spacing: p(6);
+
+        }
+        @include sp{
+          font-size: s(20);
+          line-height: s(96);
+          letter-spacing: s(6);
+        }
+        &:hover{
+          color: $F-ffffff;
+          transition: opacity .3s, transform 0s;
+          transition-delay: 0s, .4s;
+        }
+      } 
+      &::after{
+        background: $B-EDA571;
+        color: $F-ffffff;
+        position: absolute;
+        content: "";
+        display: block;
+        margin: auto;
+        opacity: 0;
+        top: 50%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        padding-top: 100%;
+        height: 0;
+        z-index: -1;
+        transform: translateY(-50%) scale(0.1);
+        transition: opacity .3s, transform 0s;
+        transition-delay: 0s, .4s;
+        border-radius: 50%;
+        filter: blur(10px);
+      }  
+      &:hover::after{
+        opacity: 1;
+        transform: translateY(-50%) scale(1.1);
+        transition-delay: 0s;
+        transition: opacity 0.2s, transform 0.5s ease-in-out;
+        input{
+          color: $F-ffffff;
+        }
+      }   
+    }
+  }
+}
+
+// 個人情報の同意
+.wpcf7-acceptance{
+  width: fit-content;
+  display: block;
+  @include pc{
+    margin: p(40) auto 0;
+  }
+  @include sp{
+    margin: s(23) auto 0;
+  }
+  .acceptance{
+    appearance: none;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    @include pc{
+      width: p(30);
+      height: p(30);
+      border: p(1) solid $B-d9d9d9;
+      top: p(10);
+    }
+    @include sp{
+      width: s(23);
+      height: s(23);
+      border: s(1) solid $B-d9d9d9;
+      top: s(7);
+    }
+    &::after{
+      content: '';
+      display: block;
+      opacity: 0;
+      position: absolute;
+      rotate:45deg;
+      @include pc{
+        border-right: p(5) solid $F-EDA571;
+        border-bottom: p(5) solid $F-EDA571;    
+        width: p(12);
+        height: p(20);
+        left: p(5);
+        top: p(5);
+        margin-top:p(-7);
+      }
+      @include sp{
+        border-right: s(4) solid $F-EDA571;
+        border-bottom:s(4) solid $F-EDA571;
+        width: s(8);
+        height: s(18);
+        left: s(5);
+        top: s(3);
+        margin-top:s(-7);
+    
+      }
+    }
+  }
+  .wpcf7-list-item-label{
+    color: $F-9D9D9D;
+    @include fw500;
+    @include pc{
+      font-size: p(20);
+      line-height: p(40);
+    }
+    @include sp{
+      font-size: s(16);
+      line-height: s(23);
+    }
+  }
+}
+input[type=checkbox]:checked::after {
+  opacity: 1;
+}
+
+
+input.wpcf7-not-valid, textarea.wpcf7-not-valid, select.wpcf7-not-valid {
+  background: rgba(233, 225, 156, 0.20);
+}
+.wpcf7-response-output{
+  display: none;
+}
