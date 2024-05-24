@@ -113,7 +113,7 @@
             position: absolute;
             @include pc{
               font-size: p(16);
-              bottom: p(-34);
+              bottom: p(-30);
               left: 0;
             }
             @include sp{
@@ -123,6 +123,25 @@
             }
           }
         }  
+      }
+      .confirm_TX{
+        box-sizing: border-box;
+        appearance: none;
+        @include zen;
+        @include pc{
+          width: p(505);
+          padding-left: p(20);
+          font-size: p(20);
+          line-height: p(50);
+        }
+        @include sp{
+          width: s(310);
+          border: none;
+          padding-left: s(20);
+          font-size: s(16);
+          margin-top: s(13);
+          line-height: s(50);
+        }
       }
       .address_box{
         .postcode_box{
@@ -142,7 +161,9 @@
               font-size: s(20);
               margin-top: s(28);
             }
-
+          }
+          .confirm{
+            margin-top: 0;
           }
           .post-code{
             @include pc{
@@ -152,6 +173,14 @@
             @include sp{
               width: s(113);
             }    
+          }
+        }
+        .con_add{
+          @include pc{
+            margin-top: p(-30);
+          }
+          @include sp{
+            margin-top: s(-30);
           }
         }
       }
@@ -182,10 +211,10 @@
           }
         }  
       }
-    }
+    }  
+  
 
     // 確認ボタン
-
     .confirm_btn{
       background: $F-ffffff;
       transition-duration: .4s;
@@ -204,7 +233,6 @@
         height: s(96);
         border: s(1) solid $B-C0C0C0;
         margin: s(40) auto 0;
-
       }
       input{
         appearance: none;
@@ -261,6 +289,73 @@
           color: $F-ffffff;
         }
       }   
+    }
+    // 確認ページのボタン
+    .btn-box{
+      display: flex;
+      justify-content: space-between;
+      @include pc{
+        width: p(410);
+        margin: p(60) auto;
+      }
+      @include sp{
+        width: s(276);
+        margin: s(40) auto;
+      }
+      .second_btn{
+        background: $B-EDA571;
+        border-radius: 50%;
+        transition: .3s cubic-bezier(0.5, 1, 0.89, 1);
+        position: relative;
+        @include pc{
+          width: p(133);
+          height: p(133);
+        }
+        @include sp{
+          width: s(96);
+          height: s(96);
+        }
+        input{
+          appearance: none;
+          width: 100%;
+          text-align: center;
+          border: none;
+          background: none;
+          color: $F-ffffff;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          translate:-50% -50%;
+          @include zen;
+          @include fw700;
+          @include pc{
+            font-size: p(20);
+            letter-spacing: p(6);
+          }
+          @include sp{
+            font-size: s(20);
+            letter-spacing: s(6);
+          }
+        } 
+        &:hover{
+          background:$F-ffffff;
+          scale:1.1;
+          border: p(6) solid $F-EDA571;
+          input{
+            color: $F-EDA571;
+          }
+        }
+        
+      }
+      .back{
+        background: $B-d9d9d9;
+        &:hover{
+          border: p(6) solid $B-d9d9d9;
+          input{
+            color: $B-d9d9d9;
+          }
+        }
+      }
     }
   }
 }
@@ -338,8 +433,13 @@ input[type=checkbox]:checked::after {
 
 
 input.wpcf7-not-valid, textarea.wpcf7-not-valid, select.wpcf7-not-valid {
-  background: rgba(233, 225, 156, 0.20);
+  background: rgba(233, 225, 156, 0.20) !important;
 }
 .wpcf7-response-output{
   display: none;
+}
+
+// 入力した後の背景色
+input:-internal-autofill-selected{
+  background: none;
 }

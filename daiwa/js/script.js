@@ -1,23 +1,28 @@
 $(function () {   
-  // // ハンバーガーメニュー
-  //  $(".burger").on("click", function(){
-  //    $(this).toggleClass("active");
-  //    $('.menu').toggleClass("active");
-  //    $('body').toggleClass("active");
-  //  }); 
-   
-  //  // headerの下部が.mainと重なったらheaderにactiveクラスを付与
-  //    $(window).scroll(function () {
-  //      if ($(window).scrollTop() > $('.main').offset().top - 100) {
-  //        $('header').addClass('active');
-  //      } else {
-  //        $('header').removeClass('active');
-  //      }
-  //    });
+  
+
+    // ハンバーガーメニュー
+    $(".burger").on("click", function(){
+      $(this).addClass("active");
+      $('.C_nav').addClass("active");
+      $('body').addClass("active");
+    }); 
+    $(".C_nav--close").on("click", function(){
+     $('.C_nav').removeClass("active");
+     $('body').removeClass("active");
+   }); 
+ 
+  
+     $(".btn__area .TX").hover(function(){
+       $(this).toggleClass("active");
+       $(".btn__area .hr").toggleClass("active");
+       $(".C_ServiceBtn .circle").toggleClass("active");
+     });
+  
 
   // 要素が画面下部に来たらshowを付与
   $(window).scroll(function () {
-    $('.up , .down , .right , .left , .pop, .slide_right, .slide_left').each(function () {
+    $(' .bon  , .pop, .slide_right, .slide_left').each(function () {
       var top_of_element = $(this).offset().top;
       var bottom_of_window = $(window).scrollTop() + $(window).height();
       if (bottom_of_window > top_of_element) {
@@ -25,6 +30,16 @@ $(function () {
       }
     });
   });
+
+  // headerの下部が.mainと重なったらheaderにactiveクラスを付与
+     $(window).scroll(function () {
+       if ($(window).scrollTop() > $('.main').offset().top - 100) {
+         $('.header').addClass('active');
+       } else {
+         $('.header').removeClass('active');
+       }
+     });
+
 });
 
 var Obj = {
@@ -103,3 +118,8 @@ $('.bgappearTrigger').each(function(){ //bgappearTriggerというクラス名が
 $(window).on('load', function(){
   BgFadeAnime();/* アニメーション用の関数を呼ぶ*/
 });// ここまで画面が読み込まれたらすぐに動かしたい場合の記述
+
+
+$(window).on('load', function(){
+  $(".bgappear").addClass("show");
+});

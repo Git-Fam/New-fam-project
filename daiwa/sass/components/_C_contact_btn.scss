@@ -6,62 +6,109 @@
 .btn_wrap{
   position: relative;
   @include pc{
-    overflow: hidden;
-  }
-}
-.C_contact_btn{
-  @include imgCover("contact_btn.jpg");
-  display: block;
-  text-align: center;
-  color: $F-333333;
-  transition: 1s;
-  @include pc{
-    width: p(1201);
-    padding: p(125) 0;
-    border-radius: p(200);
-    background-position: 10% 65%;
-    background-size: 110%;
+    padding-top: p(30);
   }
   @include sp{
-    width: s(485);
-    padding: s(30) 0;
-    border-radius:s(150); 
-    margin: 0 auto;
-    background-position: 0% 98%;
+    padding-top: s(30);
   }
-  .TL{
-    @include fw700;
+}
+.imgwrap{
+  overflow: hidden;
+  width: fit-content;
+  @include pc{
+    border-radius:p(400);
+    margin-inline:auto;
+  }
+  @include sp{
+    border-radius:s(400);
+    position: relative;
+    left:50%; 
+    translate: -50% 0%;
+  }    
+  .C_contact_btn{
+    @include imgCover("contact_btn.jpg");
+    display: block;
+    text-align: center;
+    color: $F-333333;
+    position: relative;
+    overflow: hidden;
     @include pc{
-      font-size: p(32);
-      letter-spacing: p(4.7);
+      width: p(1201);
+      padding: p(125) 0;
+      border-radius: p(200);
+      background-position: 10% 65%;
+      background-size: 110%;
     }
     @include sp{
-      font-size: s(24);
-      letter-spacing: s(3.6);
-      line-height: 150%;
+      width: s(485);
+      padding: s(30) 0;
+      border-radius:s(400); 
+      margin: 0 auto;
+      background-position: 0% 98%;
     }
-    span{
-      color: $F-EDA571;
+    &::before{
+      content: "";
+      width: 110%;
+      height: 110%;
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      background: #E9E19C;
+      mix-blend-mode: hard-light;
+      opacity: 0;
+      transition: 0.3s;
+      @include pc{
+        border-radius: p(300);
+      }
+      @include sp{
+        border-radius: s(500);
+      }
     }
-  }
-  .TX{
-    @include fw600;
-    line-height: 175%;
-    @include pc{
-      font-size: pm(16,13);
-      letter-spacing: p(2.4);
-      margin-top: p(30);
+
+    .TL{
+      @include fw700;
+      position: relative;
+      z-index: 10;
+      transition: 0.3s;  
+      @include pc{
+        font-size: p(32);
+        letter-spacing: p(4.7);
+      }
+      @include sp{
+        font-size: s(24);
+        letter-spacing: s(3.6);
+        line-height: 150%;
+      }
+      span{
+        color: $F-EDA571;
+      }
     }
-    @include sp{
-      font-size: s(16);
-      letter-spacing: s(2.4);
-      margin-top: s(22);
+    .TX{
+      @include fw600;
+      line-height: 175%;
+      position: relative;
+      z-index: 10;
+      transition: 0.3s;  
+      @include pc{
+        font-size: pm(16,13);
+        letter-spacing: p(2.4);
+        margin-top: p(30);
+      }
+      @include sp{
+        font-size: s(16);
+        letter-spacing: s(2.4);
+        margin-top: s(22);
+      }
     }
-  }
-  &:hover{
-    @include pc{
-      background-size: 125%;
-      transition: 1s;  
+    &:hover{
+      .TL,.TX{
+        color: $F-EDA571;
+        transition: 0.3s;  
+      }
+      &::before{
+        opacity: 1;
+        transition: 0.3s;  
+      }
     }
   }
 }

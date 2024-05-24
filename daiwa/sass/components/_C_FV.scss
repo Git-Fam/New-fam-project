@@ -8,6 +8,7 @@
   @include imgCover("TOP.jpg");
   text-align: center;
   width: 100%;
+  position: relative;
   @include pc{
     clip-path: polygon(0 0, 100% 0%, 100% 100%, 50% 92.3%, 0 100%);
     padding: p(153) 0 p(194);
@@ -33,6 +34,7 @@
     .top_TL_TX{
       color: $F-ffffff;
       z-index: 10;
+      animation-delay:1s;
       @include fw700;
       @include pc{
         font-size: pm(32,20);

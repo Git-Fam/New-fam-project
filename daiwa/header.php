@@ -45,6 +45,7 @@
     <!-- <meta name="theme-color" content="#e9c931"> -->
 
     <!-- ▼CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/main.css">
 
     <!-- ▼フォント -->
@@ -60,7 +61,7 @@
     <div class="whopper">
 
         <!-- FV -->
-        <?php if (is_home()): ?>
+        <?php if (is_home() || is_front_page()): ?>
             <div class="C_FV">
                 <div class="top_TL bgextend bgLRextendTrigger">
                     <p class="top_TL_TX bgappear bgappearTrigger">新しい暮らしをつくる</p>
@@ -95,7 +96,7 @@
                 </div>
             </div>
 
-        <?php elseif (is_page('contact') || is_page('contact-confirm') || is_page('contact-complete') ) : ?>
+        <?php elseif (is_page('contact') || is_page('contact-confirm') || is_page('contact-complate') ) : ?>
             <div class="C_FVSub">
                 <div class="C_FVSub--inner img--contact"></div>
                 <div class="C_FVSub--title">
@@ -108,7 +109,7 @@
 
             
         <!-- header -->
-        <?php if (is_home()) : ?>
+        <?php if (is_home() || is_front_page()): ?>
 
             <header class="header header--front">
 
@@ -118,7 +119,7 @@
             <header class="header header--another">
                 
 
-        <?php elseif (is_page('contact') || is_page('contact-confirm') || is_page('contact-complete') ) : ?>
+        <?php elseif (is_page('contact') || is_page('contact-confirm') || is_page('contact-complate') ) : ?>
 
             <header class="header sp">
 
@@ -175,4 +176,4 @@
                 </div>
             </header>
 
-
+<div class="main">

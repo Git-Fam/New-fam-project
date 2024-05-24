@@ -34,7 +34,7 @@
                         </li>
                         <li>
                             <a href="#link06">
-                                <p class="TX">外注<span></span></p>
+                                <p class="TX">害虫<span></span></p>
                             </a>
                         </li>
                     </ul>

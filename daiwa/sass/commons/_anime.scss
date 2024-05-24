@@ -147,18 +147,23 @@
 
 // FVタイトルの上の文字
 .bgappear{
-  animation: bgextendAnimeSecond 1.2s ease 0.7s forwards;
-	opacity: 0;
-}
+  opacity: 0;
+  
+  &.show{
+    animation: bgextendAnimeSecond 1.2s ease 0.7s forwards;
 
-@keyframes bgextendAnimeSecond{
-	0% {
-	opacity: 0;
-	}
-	100% {
-	opacity: 1;
+  }
+  
+  @keyframes bgextendAnimeSecond{
+    0% {
+    opacity: 0;
+    }
+    100% {
+    opacity: 1;
+    }
   }
 }
+
 
 .bgextend{
 	animation-name:bgextendAnimeBase;
@@ -291,4 +296,27 @@
         transform: scale(1.2);
     }
 }
+}
+
+.header{
+  &.active{
+    @include pc{
+      position: fixed;
+        margin-top: p(80);
+        background: rgba(255, 255, 255, 0.70);
+        z-index: 30;
+        width: 100%;
+        padding: p(20);
+        top: p(-40);
+        transition: 2s;
+        /* opacity: 0.5; */
+    }
+  }
+}
+.header--front{
+  &.active{
+    @include pc{
+      top: p(-80);
+    }
+  }
 }

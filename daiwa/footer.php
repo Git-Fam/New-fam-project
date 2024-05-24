@@ -1,5 +1,5 @@
 <?php wp_footer() ?>
-
+        </div>
         <!-- footer -->
         <div class="C_footer">
             <div class="C_footer--slide">
@@ -62,7 +62,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/textillate/0.4.0/jquery.textillate.min.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.lettering.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/script.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/js/joint.js"></script>
+    
 
 </body>
 </html>

@@ -173,4 +173,48 @@
       }
     }
   }
+  &::before{
+    position: absolute;
+    display: block;
+    left: 50%;
+    translate: 0 -50%;
+    content:"";
+    @include pc{
+      width: p(3);
+      height: p(160);
+      background: linear-gradient(180deg, #FFF 0%, #999 100%);
+      top: p(622);
+      @keyframes expansion {
+        0% {
+          top: p(650);
+        }
+        50% {
+          top: p(620);  // 上方向に揺れる
+        }
+        100% {
+          top: p(650);
+        }
+      }
+  
+    }
+    @include sp{
+      width: s(1);
+      height: s(160);
+      background: linear-gradient(180deg, #FFF 0%, #999 100%);
+      top: s(600);
+      @keyframes expansion {
+        0% {
+          top: s(660);
+        }
+        50% {
+          top: s(620);  // 上方向に揺れる
+        }
+        100% {
+          top: s(660);
+        }
+      }
+  
+    }
+    animation:3s ease-in 4s infinite alternate forwards running expansion;
+  } 
 }
