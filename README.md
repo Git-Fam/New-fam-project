@@ -1,6 +1,6 @@
 # fam-project
 
-最終更新:2024/01/04
+最終更新:2024/05/28
 
 --------------------------------------初めに-----------------------------------
 	READMEを読んでわからないことがあればすぐに聞いてください
@@ -20,25 +20,7 @@
 	(ローマ字でフルネーム-project)
 	そこでコード管理を行います
 	制作物が完成したら必ずご自身のPCにバックアップを作成してください（zip等で保存）
-
-
-●ファイル構成
-	SASSを使用しない場合、sassフォルダとstyle.css.mapは消してください。その際にreset.cssはsass内に入っています。
-	templateはコピペなりなんなりして使ってください
-	templateファイル名は実装する案件によって名前変えてください(全角以外で)
-	管理がしにくくなるので不要なフォルダ、ファイルは消してください
-	CSSはstyle.cssとreset.cssのみにしてください
-	style.cssには@charset "UTF-8";を必ず記述してください	
-
-	SASSを使用したい場合は私に相談してください
-
-	初めは↓のようになっているかと思いますが
-	<link rel="stylesheet" href="css/style.css">
-	を
-	<link rel="stylesheet" href="css/style.css?date=<?=date('YmdGis', filemtime( 'css/style.css' ));?>">
-	に変更してください
-	CSSの読み込みは上記のようにしてください（reset.cssも同様）
-	↑にすることでサーバーにアップした際にキャッシュを自動で更新するようにしています
+	プッシュの際はnode_modules、cssはプッシュしないでください
 
 
 ●ディレクトリルール
@@ -50,20 +32,20 @@ template（雛形）
 	｜
 	｜robot.txt
 	｜
-	｜img -{ favicon }
+	｜img -{ favicon_package }
 	｜
-	｜js - { script.js , cooperatorScript.js }
+	｜js - { script.js , joint.js }
 	｜
-	｜sass - {共同制作の場合cooperatorを編集してください。詳しくは雛形内のREADMEを見てください}
+	｜sass - {共同制作の場合jointを編集してください。詳しくは雛形内のREADMEを見てください}
 	｜
-	｜css - { style.css}
+	｜css - { main.css}
 	
 	基本はこのような構成にしてください
 	index.htmlは必ず必要です
 	imgには画像を入れてください
 	ディレクトリを分けずに全ての画像ファイルをimgにいれてください
-	ファビコン画像のみfaviconフォルダに入れてください
-	cooperatorと付いているものは共同制作の場合メインとなる人物以外が使用してください
+	ファビコン画像のみfavicon_packageフォルダに入れてください
+	jointと付いているものは共同制作の場合メインとなる人物以外が使用してください
 	
 
 ●メールフォームルール（重要）
@@ -86,6 +68,7 @@ template（雛形）
 
 
 ●コーディング
+	sassを使用してコーディングしてください。package.jsonはすでに存在していますので、npmコマンドでnode_modulesをインストールし、DartSassを使用可能にしてください。
 	提出前に必ず自らレイアウトの崩れがないか、レスポンシブ対応ができているか、確認してください
 	実際にウィンドを動かして1つ1つ確かめてください
 	全体をPC,SPそれぞれ３回はチェックしてください
@@ -96,24 +79,25 @@ template（雛形）
 
 ・PC、SPのメディアクエリ両方を使用
 
-		.text{
+	.text{
 			background-color: green;
-		}
 		↑共通のスタイルを記述
 
-	  @media screen and (min-width: 768px){
-			.text{
-				color: red;
+			@include pc{
+				.text{
+					color: red;
+				}
 			}
-		}
-		↑PC時のスタイルを記述
+			↑PC時のスタイルを記述
 
-		@media screen and (max-width: 767px){
-			.text{
-				color: blue;
+			@include sp{
+				.text{
+					color: blue;
+				}
 			}
+			↑SP時のスタイルを記述
+
 		}
-		↑SP時のスタイルを記述
 
 
 		途中でスタイルを変更したい場合は
@@ -233,7 +217,7 @@ template（雛形）
 
 ・コメントアウト
 	コメントアウトを使用して誰がみても理解できるコードにしてください
-	特にjsには必ず入れてください
+	余計なコメントは削除してください
 
 ・基本アニメーションが全てに入ると仮定してコーディングすること
 
@@ -265,15 +249,15 @@ template（雛形）
 	class=“コンテンツ--種類(img/text/title…)”
 
 ・PC,SPそれぞれで不要な要素を非表示
-	@media screen and (min-width: 768px) {
+	@include pc{
 		.sp {
-			display: none;
+			display: none !important;
 		}
 	}
 
-	@media screen and (max-width: 767px) {
+	@include sp{
 		.pc {
-			display: none;
+			display: none !important;
 		}
 	}
 
@@ -284,7 +268,6 @@ headタグ内について
 	画像へのパスをしっかり書いてください
 	SEO対策に重要なタグになりますのでわからなければ聞いてください
 	本番URLが決まっていない場合は『URL』と入れてください
-
 
 
 ※その他の注意点
