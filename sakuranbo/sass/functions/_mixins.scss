@@ -32,7 +32,7 @@ $sp: 767px;  // スマホ
 
 // background-contain
 @mixin imgContain($img){
-  background-image: url('/img/#{$img}');
+  background-image: url('../img/#{$img}');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -43,7 +43,7 @@ $sp: 767px;  // スマホ
 
 // background-cover
 @mixin imgCover($img){
-  background-image: url('/img/#{$img}');
+  background-image: url('../img/#{$img}');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
