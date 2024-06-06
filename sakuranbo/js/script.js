@@ -30,7 +30,6 @@ $(function () {
     s.parentNode.insertBefore(tk, s)
   })(document);
 
-  // ハンバーガーメニュー
    $(".burger").on("click", function(){
      $(this).toggleClass("active");
      $('.menu').toggleClass("active");
@@ -46,8 +45,6 @@ $(function () {
     $('.billboard').removeClass("active");
   });
 
-
-  // 要素が画面下部に来たらshowを付与
   $(window).scroll(function () {
     $('.up,.down,.left,.right,.pop,.juwa,.graphScale,.bounce,.stamp,.flow_juwa').each(function () {
       var top_of_element = $(this).offset().top;
@@ -58,7 +55,6 @@ $(function () {
     });
   });
 
-  // billboard
   $(window).scroll(function() {
     var kvHeight = $('.KV').height();
     var scrollTop = $(window).scrollTop();
