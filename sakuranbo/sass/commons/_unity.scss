@@ -27,7 +27,7 @@ body {
   @include Tsukushi;
   @include regular;
   color: $F-534646;
-  
+
   &.active {
     overflow: hidden;
   }
@@ -39,7 +39,144 @@ body {
   background-position: top center;
   background-repeat: repeat-y;
 
-  @include sp{
+  @include sp {
     background-size: 350%;
+  }
+}
+
+
+// billboard
+.billboard {
+  display: block;
+  aspect-ratio: 257 / 119;
+  @include imgContain("billboard.png");
+  position: fixed;
+  z-index: 10000;
+  transition: top 0.8s , opacity 0.3s;
+  top: -100%;
+  
+  @include pc {
+    right: p(150);
+    width: p(257);
+  }
+  
+  @include sp {
+    // left: s(10);
+    right: s(60);
+    width: s(157);
+  }
+  
+  &.active {
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  &.action{
+    @include pc{
+      top: p(-30);
+    }
+    
+    @include sp{
+      top: s(-20);
+    }
+  }
+
+  &:hover {
+    top: 0;
+
+    .text{
+      .circle{
+        background-color: #EB6D6D;
+        animation: billboardCircle 1s infinite alternate;
+
+        @keyframes billboardCircle {
+          0% {
+            transform: rotate(0deg);
+          }
+
+          33% {
+            transform: rotate(10deg);
+          }
+          66% {
+            transform: rotate(-10deg);
+          }
+          100% {
+            transform: rotate(0deg);
+          }
+        }
+        .TX{
+          color: #FFFFFF;
+        }
+      }
+    }
+  }
+
+  .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    left: 0;
+
+    @include pc {
+      gap: p(9);
+      bottom: p(15);
+    }
+
+    @include sp {
+      gap: s(3);
+      bottom: s(5);
+    }
+
+    .TL {
+        @include Tsukushi;
+        @include bold;
+        line-height: 1.6;
+        color: $F-ffffff;
+        text-shadow: 0px 0px 20px #534646;
+
+      @include pc {
+        font-size: p(28);
+      }
+
+      @include sp {
+        font-size: s(18);
+      }
+    }
+
+    .circle {
+      aspect-ratio: 1 / 1;
+      background-color: #FBE9D4;
+      border-radius: 50%;
+      @include center;
+      transition: all 0.5s;
+
+      @include pc {
+        width: p(46);
+      }
+
+      @include sp {
+        width: s(40);
+      }
+
+      .TX {
+          @include bold;
+          text-align: center;
+          color: #765F5F;
+          transition: all 0.5s;
+
+
+          @include pc {
+          line-height: 136%;
+          font-size: p(11);
+        }
+
+        @include sp {
+          line-height: 110%;
+          font-size: s(11);
+        }
+      }
+    }
   }
 }

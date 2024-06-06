@@ -315,7 +315,17 @@
 
                 &:nth-child(2) {
                   background: $B-E89C97;
+                }
 
+                &.double{
+
+                  @include pc{
+                    width: pm(152, 125);
+                  }
+                  
+                  @include sp{
+                    width: s(110);
+                  }
                 }
 
                 .TX {
