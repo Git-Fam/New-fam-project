@@ -1,0 +1,49 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+
+/* -----------------------
+  C_medical_machine
+----------------------- */
+
+.C_medical_machine{
+  color: $F-FFFFFF;
+  @include pc{
+    width: p(260);
+  }
+  &_TL{
+    @include Extrabold;
+    text-align: center;
+    @include pc{
+      font-size: pm(20);
+      letter-spacing: p(2);
+      padding-bottom: p(10);
+      border-bottom: p(1) solid $P-AC7D02;
+    }
+  }
+  .img{
+    @include pc{
+      width: 100%;
+      height: p(229);
+      margin-top: p(17);
+    }
+  }
+  .machine01{
+    @include imgCover("machine01.jpg");
+  }
+  .machine02{
+    @include imgCover("machine02.jpg");
+  }
+  .machine03{
+    @include imgCover("machine03.jpg");
+  }
+
+  &_TX{
+    @include pc{
+      font-size: pm(16);
+      line-height: 187%;
+      width: fit-content;
+      margin: p(17) auto;
+    }
+  }
+}

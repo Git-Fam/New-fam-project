@@ -1,0 +1,181 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_hoverText
+----------------------- */
+
+.C_hoverText {
+  margin: 0 auto;
+  border: solid #C09933;
+  position: relative;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  @include pc {
+    width: p(880);
+    height: p(285);
+    border-width: p(2);
+
+    &:hover {
+      .C_hoverText--default {
+        opacity: 0;
+      }
+
+      .C_hoverText--custom {
+        opacity: 1;
+        display: block;
+      }
+    }
+  }
+
+  @include sp {
+    width: s(350);
+    height: s(150);
+    border-width: s(2);
+    cursor: pointer;
+
+    &.active {
+      .C_hoverText--default {
+        opacity: 0;
+      }
+
+      .C_hoverText--custom {
+        opacity: 1;
+        display: block;
+      }
+    }
+  }
+
+  &.img-01 {
+    @include imgCover("C_hoverText-01.jpg");
+    background-position: center top 10%;
+  }
+
+  &.img-02 {
+    @include imgCover("C_hoverText-02.jpg");
+    background-position: center top 37%;
+  }
+
+  &.img-03 {
+    @include imgCover("C_hoverText-03.jpg");
+    background-position: center top 32%;
+  }
+
+  &--default {
+    position: absolute;
+    @include pCenter;
+    transition: opacity 0.3s;
+
+    @include pc {
+      width: p(415);
+      padding: p(20) 0;
+    }
+
+    @include sp {
+      width: s(332);
+      padding: s(20) 0;
+    }
+
+    &.option {
+
+      @include pc {
+        padding: p(12) 0;
+      }
+
+      @include sp {
+        padding: s(12) 0;
+      }
+    }
+
+    .filter {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.70);
+      filter: blur(2px);
+    }
+
+    .TX {
+      color: $F-C09933;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      line-height: 1.5;
+
+      @include pc {
+        font-size: p(14);
+      }
+
+      @include sp {
+        font-size: s(14);
+      }
+    }
+
+    .TL {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      color: $F-C09933;
+      font-family: YuMincho;
+      font-style: normal;
+      @include Extrabold;
+      line-height: 1.15;
+
+      @include pc {
+        font-size: p(26);
+      }
+
+      @include sp {
+        font-size: s(26);
+        white-space: nowrap;
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+
+  &--custom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.60);
+    display: none;
+    opacity: 0;
+    transition: opacity 1s;
+
+    @include pc {
+      height: 100%;
+      padding: p(30) p(61) 0 p(53);
+    }
+
+    @include sp {
+      height: auto;
+      padding: s(15) s(25);
+    }
+
+    .text {
+
+      .TX {
+        color: $F-363636;
+        text-align: justify;
+        font-size: 16px;
+
+        @include pc {
+          font-size: pm(16);
+          letter-spacing: pm(-0.1);
+          line-height: 218%;
+        }
+
+        @include sp {
+          font-size: s(13);
+          letter-spacing: s(-0.1);
+          line-height: 192%;
+        }
+      }
+    }
+  }
+}

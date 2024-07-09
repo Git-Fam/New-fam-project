@@ -1,0 +1,57 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_toothTL
+----------------------- */
+
+.C_toothTL {
+  @include pc{
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+  }
+  @include sp{
+    text-align: center;
+  }
+  .icon {
+    background-image: tooth-8(encode('#8B761F'));
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    @include pc{
+      width: p(31);
+      height: p(33);
+      margin-right: p(17);
+    }
+    @include sp{
+      width: s(31);
+      height: s(33);
+      margin: 0 auto;
+    }
+  }
+  .TL{
+    @include Extrabold;
+    color: $F-8B761F;
+    @include pc{
+      font-size: pm(20);
+    }
+    @include sp{
+      font-size: s(20);
+    }
+  }
+}
+.flex{
+  @include sp{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    margin: 0 auto;  
+  }
+  .icon{
+    @include sp{
+      margin-right: s(17);
+    }
+  }
+}

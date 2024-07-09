@@ -1,0 +1,64 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_onlyText
+----------------------- */
+
+.C_onlyText {
+
+  @include pc {}
+
+  @include sp {}
+
+  .C_TL{
+
+    .main-TL{
+      
+      @include sp{
+        white-space: nowrap;
+      }
+    }
+
+  }
+
+  &--text {
+
+    @include pc {
+      margin-top: p(50);
+    }
+
+    @include sp {
+      margin: s(50) auto 0;
+      width: s(350);
+    }
+
+    .TX {
+      color: $F-333130;
+      text-align: center;
+      line-height: 205%;
+
+      @include pc {
+        font-size: pm(17);
+        letter-spacing: pm(0.85);
+      }
+
+      @include sp {
+        font-size: s(17);
+        letter-spacing: s(0.85);
+      }
+    }
+  }
+
+  &--tel {
+    width: fit-content;
+    margin: 0 auto;
+
+    @include pc {
+      margin-top: p(90);
+    }
+
+    @include sp {
+      margin-top: s(60);
+    }
+  }
+}

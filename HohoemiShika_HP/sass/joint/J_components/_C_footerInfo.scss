@@ -1,0 +1,201 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_fotterInfo
+----------------------- */
+
+.C_footerInfo{
+  color: $B-FFFFFF;
+  
+  .Info-TL{
+    @include cinzel;
+    background: linear-gradient(93deg, #947F28 0%, #F1E09B 35.79%, #A69138 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight:700;
+    @include pc{
+      font-size: pm(30);
+      letter-spacing: p(4.5);
+      line-height: 110%;
+    }
+    @include sp{
+      font-size: s(30);
+      letter-spacing: s(4.5);
+    }
+  }
+  .Info-list{
+    @include pc{
+      width: p(430);
+      margin:p(25) 0 0 p(10);
+    }
+    @include sp{
+      width: s(317);
+      margin-top: s(10);
+    }
+    li{
+      position: relative;
+      @include pc{
+        display: flex;
+        padding:p(15) 0 p(15);
+      }
+      @include sp{
+        padding: s(10) 0 s(3);
+        font-size: s(15);
+        line-height: 1.5;
+      }
+      .TL{
+        @include Extrabold;
+        @include pc{
+          width: p(83);
+          font-size: pm(18);
+        }
+      }
+      .TX{
+        @include pc{
+          font-size: pm(16);
+        }
+      }
+      table{
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        @include pc{
+          border: p(1) solid $P-FFFFFF;
+          font-size: pm(16);
+        }
+        @include sp{
+          border: s(1) solid $P-FFFFFF;
+          font-size: s(12);
+          margin-top: s(10);
+        }
+        .top{
+          background: $P-988430;
+          
+        }
+        tr{
+          .bg{
+            background:$P-988430;
+          }
+          th,td{
+            text-align: center;
+            @include pc{
+              padding: p(6) 0;
+            }
+            @include sp{
+              padding: s(5) 0;
+            }
+          }
+          td{
+            position: relative;
+            .maru{
+              border-radius: 50%;
+              margin: 0 auto;
+  
+              @include pc{
+                border: p(1) solid $B-FFFFFF;
+                width: p(15);
+                height: p(15);
+              }
+              @include sp{
+                border: s(1) solid $B-FFFFFF;
+                width: s(11);
+                height: s(11);
+    
+              }
+            }
+            .stu-maru{
+              background: $B-FFFFFF;
+              border-radius: 50%;
+              margin: 0 auto;
+              @include pc{
+                width: p(15);
+                height: p(15);
+              }
+              @include sp{
+                width: s(11);
+                height: s(11);
+              }
+            }
+            .slash{
+              rotate: 45deg;
+              left: 50%;
+              translate: -50%;
+              position: absolute;
+              @include pc{
+                border-left: p(1) solid $B-FFFFFF;
+                height: p(20);
+              }
+              @include sp{
+                border-left: s(1) solid $B-FFFFFF;
+                height: s(15);
+  
+              }
+            }
+  
+          }
+          .time{
+            @include Extrabold;
+            @include pc{
+              width: p(133);
+            }
+            @include sp{
+              width: s(95);
+            }
+          }
+          &:last-child{
+            @include pc{
+              border-top: p(1) solid $P-FFFFFF;
+            }
+            @include sp{
+              border-top: s(1) solid $P-FFFFFF;
+
+            }
+          }
+        }
+      }
+      &::after{
+        content: "";
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        @include pc{
+          border-bottom: p(1) solid $P-FFFFFF;
+        }
+        @include sp{
+          border-bottom: s(1) solid $P-FFFFFF;
+        }
+      }
+      &:last-child::after{
+        border-bottom: none;
+      }  
+    }
+  }
+  .under{
+    @include pc{
+      font-size: pm(16);
+      margin-left: p(10);
+    }
+    @include sp{
+      font-size: s(12);
+      margin:s(6) 0 0 s(5);
+    }
+    span{
+      @include pc{
+        margin-left: p(27);
+      }
+      @include sp{
+        margin-left: s(34);
+      }
+    }
+    .close{
+      @include pc{
+        margin: p(10) 0 0 p(-8);
+      }
+      @include sp{
+        margin: s(6) 0 0 s(-5);
+      }
+    }
+  }
+}

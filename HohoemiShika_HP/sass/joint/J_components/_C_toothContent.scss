@@ -1,0 +1,86 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+
+/* -----------------------
+  C_toothContent
+----------------------- */
+
+  .C_toothContent {
+    @include pc{
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-top: p(30);
+    }
+    li{
+      text-align: center;
+      width: fit-content;
+      @include sp{
+        margin: s(60) auto 0;
+      }
+      .img {
+        @include pc{
+          width: p(114);
+          height: p(104);
+          margin: 0 auto;
+        }
+        @include sp{
+          width: s(114);
+          height: s(104);
+          margin: 0 auto;
+        }
+      }
+      .decay01 {
+        @include imgContain("decay01.svg");
+      }
+      .decay02 {
+        @include imgContain("decay02.svg");
+      }
+
+      .decay03 {
+        @include imgContain("decay03.svg");
+      }
+
+      .decay04 {
+        @include imgContain("decay04.svg");
+      }
+
+      .decay05 {
+        @include imgContain("decay05.svg");
+        margin-top: auto;
+        @include pc{
+          height: p(76);
+        }
+        @include sp{
+          height: s(76);
+        }
+      }
+
+      .label {
+        @include Extrabold;
+        @include pc{
+          font-size: pm(18);
+          margin-top: p(10);
+        }  
+        @include sp{
+          font-size: s(18);
+          margin-top: s(20);
+        }
+      }
+      .TX {
+        line-height: 130%;
+        @include pc{
+          font-size: pm(16);
+          margin-top: p(6);
+          letter-spacing: p(-0.8);
+        }
+        @include sp{
+          font-size: s(16);
+          margin-top: s(7);
+          letter-spacing: s(-0.8);
+        }
+      }      
+    }
+    
+  }

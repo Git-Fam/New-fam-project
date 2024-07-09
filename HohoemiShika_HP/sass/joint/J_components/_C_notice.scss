@@ -1,0 +1,85 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_notice
+----------------------- */
+
+.C_notice{
+  &-TL{
+    @include Extrabold;
+    @include pc{
+      font-size: pm(20);
+      margin-left: p(22);
+    }
+    @include sp{
+      font-size: s(18);
+      margin-left: s(10);
+      
+    }
+  }
+  &-content{
+    @include pc{
+      display: flex;
+      border-top: p(1) solid $P-AC7D02;
+      margin-top: p(10);
+      padding:p(35) 0 0 p(61);
+    }
+    @include sp{
+      border-top: s(1) solid $P-AC7D02;
+      margin-top: s(10);
+      padding: s(20) s(15);
+
+    }
+    .list{
+      @include pc{
+        width: p(368);
+      }
+      li{
+        position: relative;
+        @include pc{
+          font-size: pm(16);
+          margin-bottom: p(10);
+          line-height: p(25);
+        }
+        @include sp{
+          font-size: s(16);
+          margin-bottom: s(10);
+          line-height: s(20);
+
+        }
+        &::before{
+          content: "";
+          position: absolute;
+          border-radius: 50%;
+          background: $P-C09933;
+          @include pc{
+            width: p(9);
+            height: p(9);
+            left: p(-24);
+            top: p(3);
+          }
+          @include sp{
+            width: s(7);
+            height: s(7);
+            left: s(-10);
+            top:s(5)
+          }
+        }
+      }
+    }
+    .img{
+      @include imgCover("notice01.jpg");
+      @include pc{
+        width: p(342);
+        height: p(228);
+        margin-left: auto;
+      }
+      @include sp{
+        width: s(330);
+        height: s(200);
+        margin:s(40) auto 0;
+      }
+    }
+  }
+}

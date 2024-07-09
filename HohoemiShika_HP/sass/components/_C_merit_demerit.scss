@@ -1,0 +1,12 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_merit_demerit
+----------------------- */
+
+.C_merit_demerit {
+
+  @include pc{}
+  
+  @include sp{}
+}

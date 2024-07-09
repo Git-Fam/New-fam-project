@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og: https://ogp.me/ns#">
+
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
+    <meta name="format-detection" content="email=no,telephone=no,address=no" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta property="og:locale" content="ja_JP" />
+
+    <!-- ▼SEO -->
+    <link rel="”canonical”" href="”URL”" />
+    <!-- ジェネレーターURL→ https://metatags.io/ -->
+
+    <!-- ▼ファビコン -->
+    <!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
+
+    <!-- ▼クロールして欲しくない -->
+    <!-- <meta name="robots" content="noindex,nofollow"> -->
+
+    <!-- ▼テーマカラー -->
+    <!-- <meta name="theme-color" content="#e9c931"> -->
+
+    <!-- ▼CSS -->
+    <link rel="stylesheet" href="/css/main.css?date=<?=date('YmdGis', filemtime( 'main.css' ));?>">
+
+    <!-- ▼フォント -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Contrail+One&display=swap"
+        rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <style>
+        .component--wapper {
+            display: flex;
+            flex-direction: column;
+            gap: 120px;
+            padding: 100px 0;
+            background-color: #000000;
+            overflow: hidden;
+        }
+
+        .component--item {
+            border: 1px solid #000000;
+            padding: 50px 0;
+            background-color: #bbbbbb;
+        }
+
+        .component--title {
+            font-size: 20px;
+            font-weight: bold;
+            padding: 30px;
+            border-bottom: 1px dotted #000000;
+            margin: 0 0 30px 40px;
+            width: fit-content;
+        }
+
+        .component--main {
+            padding: 60px 0px;
+            border: 1px solid #000000;
+            background-color: #F2F7FA;
+            
+        }
+    </style>
+
+
+
+    <div class="component--wapper">
+
+        <!-- Header -->
+        <div class="component--item">
+            <div class="component--title">
+                Header
+            </div>
+            <div class="component--main">
+                <!-- start -->
+
+                <header class="header">
+                    <div class="burger"></div>
+                    <div class="menu">
+                        <div class="backText">
+                            <p class="TX">
+                                Hohoemi<br>
+                                Dental<br>
+                                Clinic
+                            </p>
+                        </div>
+                        <nav class="nav">
+                            <ul class="nav__main">
+                                <li>
+                                    <a href="#">
+                                        <p>トップ</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p>診療案内</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p>ドクター紹介</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p>クリニック紹介</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p>受診される方へ</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p>受付時間・アクセス</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <p>ブログ</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav__sub">
+                                <li>
+                                    <a href="#">
+                                        <div class="icon"></div>
+                                        <div class="cover">
+                                            <p>矯正歯科</p>
+                                            <span></span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="icon"></div>
+                                        <div class="cover">
+                                            <p>インプラント</p>
+                                            <span></span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="icon"></div>
+                                        <div class="cover">
+                                            <p>審美歯科</p>
+                                            <span></span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="icon"></div>
+                                        <div class="cover">
+                                            <p>口腔外科</p>
+                                            <span></span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="icon"></div>
+                                        <div class="cover">
+                                            <p>入れ歯</p>
+                                            <span></span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="icon"></div>
+                                        <div class="cover">
+                                            <p>予防歯科</p>
+                                            <span></span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="icon"></div>
+                                        <div class="cover">
+                                            <p>一般歯科</p>
+                                            <span></span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="icon"></div>
+                                        <div class="cover">
+                                            <p>小児歯科</p>
+                                            <span></span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="icon"></div>
+                                        <div class="cover">
+                                            <p>訪問診療</p>
+                                            <span></span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="menu__back"></div>
+                </header>
+
+                <!--  end -->
+            </div>
+        </div>
+
+        <!-- KV -->
+        <div class="component--item">
+            <div class="component--title">
+                KV
+            </div>
+            <div class="component--main">
+                <!-- start -->
+
+                <div class="KV">
+                    <div class="KV--img"></div>
+                    <div class="KV--tag">
+                        <div class="KV--tag--inner">
+                            <h2 class="TL">矯正歯科</h2>
+                            <p class="TX">−Orthodontics−</p>
+                        </div>
+                    </div>
+                    <div class="KV--title">
+                        <h1 class="TL">
+                            <span class="rollAnimeLoad">Hohoemi</span>
+                            <span class="rollAnimeLoad">Dental</span>
+                            <span class="rollAnimeLoad">Clinic</span>
+                        </h1>
+                    </div>
+                    <div class="KV--smoke"></div>
+                </div>
+
+                <!--  end -->
+            </div>
+        </div>
+
+        <!-- KV__front -->
+        <div class="component--item">
+            <div class="component--title">
+                KV__front
+            </div>
+            <div class="component--main">
+                <!-- start -->
+
+                <div class="KV__front">
+                    <div class="KV__front--text">
+                        <div class="KV__front--text--top">
+                            <h2 class="TL">
+                                世界水準の<br>
+                                インプラント治療<span class="pc">、</span><br class="sp">矯正治療が<br>
+                                受けれる歯科医院です
+                            </h2>
+                        </div>
+                        <div class="KV__front--text--middle">
+                            <div class="KV__front--text--middle--heading">
+                                <p class="TX">
+                                    自由診療に特化した歯科医院
+                                </p>
+                            </div>
+                            <div class="KV__front--text--middle--container">
+                                <div class="item">
+                                    <p class="TX">
+                                        負担の少ない<span>インプラント治療</span>
+                                    </p>
+                                </div>
+                                <div class="item">
+                                    <p class="TX">
+                                        <span>年間</span>100症例<span>以上の矯正治療</span>実績
+                                    </p>
+                                </div>
+                                <div class="item">
+                                    <p class="TX">
+                                        難症例<span>でお困りの方も</span>お任せ<span>ください</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="KV__front--text--bottom">
+                            <p class="TX">
+                                インプラントが初めての方や、<br class="sp">他院で断られた方もお気軽にご相談ください
+                            </p>
+                        </div>
+                    </div>
+                    <div class="KV__front--title">
+                        <h1 class="TL">
+                            <span class="rollAnimeLoad">Hohoemi</span>
+                            <span class="rollAnimeLoad">Dental</span>
+                            <span class="rollAnimeLoad">Clinic</span>
+                        </h1>
+                    </div>
+                    <div class="KV__front--smoke"></div>
+                </div>
+
+                <!--  end -->
+            </div>
+        </div>
+
+        <!-- C_TitleBack -->
+        <div class="component--item">
+            <div class="component--title">
+                C_TitleBack
+            </div>
+            <div class="component--main">
+                <!-- start -->
+
+                <div class="C_TitleBack C_TitleBack--KV--front"></div>
+                <div class="C_TitleBack C_TitleBack--KV"></div>
+
+                <!--  end -->
+            </div>
+        </div>
+
+        <!-- C_mainTelButton -->
+        <div class="component--item">
+            <div class="component--title">
+                C_mainTelButton
+            </div>
+            <div class="component--main">
+                <!-- start -->
+
+                <a class="C_mainTelButton" href="tel:0527154181">
+                    <div class="C_mainTelButton__icon">
+                        <div class="icon"></div>
+                    </div>
+                    <div class="C_mainTelButton__main">
+                        <p class="TX">無料相談のご予約はこちら</p>
+                        <p class="TX">052-715-4181</p>
+                    </div>
+                </a>
+
+                <!--  end -->
+            </div>
+        </div>
+
+        <!-- C_medicalCase -->
+        <div class="component--item">
+            <div class="component--title">
+                C_medicalCase
+            </div>
+            <div class="component--main">
+                <!-- start -->
+
+                <!-- 矯正歯科/　上顎前突治療症例1 -->
+                <div class="C_medicalCase">
+                    <div class="C_medicalCase--titleWhopper">
+                        <div class="title">
+                            <h3 class="TL">矯正歯科</h3>
+                            <p class="TX">上顎前突治療症例1</p>
+                        </div>
+                        <div class="hr"></div>
+                    </div>
+                    <div class="C_medicalCase--imgWhopper">
+                        <div class="item">
+                            <div class="img upperJaw-before-1-1"></div>
+                            <p class="TX">治療前</p>
+                        </div>
+                        <div class="item">
+                            <div class="img upperJaw-after-1-1"></div>
+                            <p class="TX">治療後</p>
+                        </div>
+                        <div class="item">
+                            <div class="img upperJaw-before-1-2"></div>
+                            <p class="TX">治療前</p>
+                        </div>
+                        <div class="item">
+                            <div class="img upperJaw-after-1-2"></div>
+                            <p class="TX">治療後</p>
+                        </div>
+                        <div class="item">
+                            <div class="img upperJaw-before-1-3"></div>
+                            <p class="TX">治療前</p>
+                        </div>
+                        <div class="item">
+                            <div class="img upperJaw-after-1-3"></div>
+                            <p class="TX">治療後</p>
+                        </div>
+                    </div>
+                    <div class="C_medicalCase--listsWhopper">
+                        <ul class="list">
+                            <li>
+                                <h4 class="TL">
+                                    初診時年齢
+                                </h4>
+                                <p class="TX">
+                                    24歳
+                                </p>
+                            </li>
+                            <li>
+                                <h4 class="TL">
+                                    治療内容
+                                </h4>
+                                <p class="TX">
+                                    上下左右4番抜歯、ワイヤー矯正にて治療。　上顎にインプラントアンカーを使用
+                                </p>
+                            </li>
+                            <li>
+                                <h4 class="TL">
+                                    治療期間
+                                </h4>
+                                <p class="TX">
+                                    約1年9か月
+                                </p>
+                            </li>
+                            <li>
+                                <h4 class="TL">
+                                    治療費概算
+                                </h4>
+                                <p class="TX">
+                                    871,200円（税込）
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <br>
+                <br>
+
+                <!-- 矯正歯科/　上顎前突治療症例2 -->
+                <div class="C_medicalCase">
+                    <div class="C_medicalCase--titleWhopper">
+                        <div class="title">
+                            <h3 class="TL">矯正歯科</h3>
+                            <p class="TX">上顎前突治療症例2</p>
+                        </div>
+                        <div class="hr"></div>
+                    </div>
+                    <div class="C_medicalCase--imgWhopper">
+                        <div class="item">
+                            <div class="img upperJaw-before-2-1"></div>
+                            <p class="TX">治療前</p>
+                        </div>
+                        <div class="item">
+                            <div class="img upperJaw-after-2-1"></div>
+                            <p class="TX">治療後</p>
+                        </div>
+                        <div class="item">
+                            <div class="img upperJaw-before-2-2"></div>
+                            <p class="TX">治療前</p>
+                        </div>
+                        <div class="item">
+                            <div class="img upperJaw-after-2-2"></div>
+                            <p class="TX">治療後</p>
+                        </div>
+                        <div class="item">
+                            <div class="img upperJaw-before-2-3"></div>
+                            <p class="TX">治療前</p>
+                        </div>
+                        <div class="item">
+                            <div class="img upperJaw-after-2-3"></div>
+                            <p class="TX">治療後</p>
+                        </div>
+                    </div>
+                    <div class="C_medicalCase--listsWhopper">
+                        <ul class="list">
+                            <li>
+                                <h4 class="TL">
+                                    初診時年齢
+                                </h4>
+                                <p class="TX">
+                                    14歳
+                                </p>
+                            </li>
+                            <li>
+                                <h4 class="TL">
+                                    治療内容
+                                </h4>
+                                <p class="TX">
+                                    ヘッドギアにて臼歯関係を一級にし、非抜歯にてワイヤー矯正
+                                </p>
+                            </li>
+                            <li>
+                                <h4 class="TL">
+                                    治療期間
+                                </h4>
+                                <p class="TX">
+                                    約1年6か月
+                                </p>
+                            </li>
+                            <li>
+                                <h4 class="TL">
+                                    治療費概算
+                                </h4>
+                                <p class="TX">
+                                    950,400円（税込）
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!--  end -->
+            </div>
+        </div>
+
+        <!-- C_viewMore -->
+        <div class="component--item">
+            <div class="component--title">
+                C_viewMore
+            </div>
+            <div class="component--main">
+                <!-- start -->
+
+                <a class="C_viewMore" href="#">
+                    <p class="TX">View more</p>
+                </a>
+
+                <!--  end -->
+            </div>
+        </div>
+
+        <!-- C_careContainer -->
+        <div class="component--item">
+            <div class="component--title">
+                C_careContainer
+            </div>
+            <div class="component--main">
+                <!-- start -->
+
+                <!-- 小人 -->
+                <div class="C_careContainer">
+                    <div class="C_careContainer--inner">
+                        <div class="C_TL">
+                            <p class="TL-bg rollAnime">Medical</p>
+                            <h2 class="main-TL up delay-05">当院で行う小児虫歯のケア</h2>
+                        </div>
+
+                        <div class="C_careContainer--inner--items">
+
+                            <div class="item">
+                                <div class="img child-1"></div>
+                                <div class="content">
+                                    <h3 class="TL">
+                                        フッ素塗布
+                                    </h3>
+                                    <p class="TX">
+                                        歯にフッ素を塗布することで、虫歯菌が出す酸に対する抵抗力を高め、初期虫歯の修復を促し、虫歯の進行を防ぐ効果があります。
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="img child-2"></div>
+                                <div class="content">
+                                    <h3 class="TL">
+                                        シーラント
+                                    </h3>
+                                    <p class="TX">
+                                        シーラントは、奥歯の溝を薄いフッ素入りの<br class="pc">
+                                        樹脂で塞ぐことで虫歯を予防する処置です。
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="img child-3"></div>
+                                <div class="content">
+                                    <h3 class="TL">
+                                        ブラッシング指導
+                                    </h3>
+                                    <p class="TX">
+                                        歯ブラシの選び方・握り方・動かし方などのポイントをやさしく丁寧にご指導いたします。
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <br><br><br>
+
+                <!-- 予防 -->
+                <div class="C_careContainer">
+                    <div class="C_careContainer--inner">
+                        <div class="C_TL">
+                            <p class="TL-bg rollAnime">Medical</p>
+                            <h2 class="main-TL up delay-05">当院で行うケア</h2>
+                        </div>
+
+                        <div class="C_careContainer--inner--items">
+
+                            <div class="item">
+                                <div class="img child-1"></div>
+                                <div class="content">
+                                    <h3 class="TL">
+                                        フッ素塗布
+                                    </h3>
+                                    <p class="TX">
+                                        歯にフッ素を塗布することで、虫歯菌が出す酸に対する抵抗力を高め、初期虫歯の修復を促し、虫歯の進行を防ぐ効果があります。
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="img prevention-2"></div>
+                                <div class="content">
+                                    <h3 class="TL">
+                                        口腔内クリーニング（PMTC）
+                                    </h3>
+                                    <p class="TX">
+                                        普段の歯磨きでは磨きにくい場所を徹底的に掃除し、歯周病や歯肉炎などの歯周疾患の予防と改善虫歯予防を行います。
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="img child-3"></div>
+                                <div class="content">
+                                    <h3 class="TL">
+                                        ブラッシング指導
+                                    </h3>
+                                    <p class="TX">
+                                        歯ブラシの選び方・握り方・動かし方などのポイントをやさしく丁寧にご指導いたします。
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--  end -->
+            </div>
+        </div>
+
+        <!-- C_TL -->
+        <div class="component--item">
+            <div class="component--title">
+                C_TL
+            </div>
+            <div class="component--main">
+                <!-- start -->
+
+                <div class="C_TL">
+                    <p class="TL-bg rollAnime">Treatment Menu</p>
+                    <h2 class="main-TL up delay-05">治療案内</h2>
+                </div>
+
+                <!--  end -->
+            </div>
+        </div>
+
+        <!-- C_frontTreatment -->
+        <div class="component--item">
+            <div class="component--title">
+                C_frontTreatment
+            </div>
+            <div class="component--main">
+                <!-- start -->
+
+                <div class="C_frontTreatment">
+                    <div class="C_frontTreatment--title C_frontTreatment--title__left">
+                        <h3 class="TL">矯正治療</h3>
+                        <p class="TX">Orthodontic treatment</p>
+                    </div>
+                    <div class="C_frontTreatment--container">
+                        <div class="item--top">
+                            <div class="img img-1-1">
+                                <div class="img--point"></div>
+                            </div>
+                            <div class="content">
+                                <div class="number">
+                                    <p class="TX">症例<span>1</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item--bottom">
+                            <div class="img img-1-2">
+                                <div class="img--point"></div>
+                            </div>
+                            <div class="content">
+                                <div class="text">
+                                    <p class="TX">
+                                        <span class="medium">デコボコ</span><span class="small">歯列解消で</span><br>
+                                        <span class="medium">自信溢れる</span><span class="big">笑顔に</span>
+                                    </p>
+                                </div>
+                                <a class="C_viewMore" href="#">
+                                    <p class="TX">View more</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br><br><br>
+                <br><br><br>
+                <br><br><br>
+
+                <div class="C_frontTreatment">
+                    <div class="C_frontTreatment--title C_frontTreatment--title__right">
+                        <h3 class="TL">矯正治療</h3>
+                        <p class="TX">Orthodontic treatment</p>
+                    </div>
+                    <div class="C_frontTreatment--container">
+                        <div class="item--top">
+                            <div class="img img-2-1">
+                                <div class="img--point"></div>
+                            </div>
+                            <div class="content">
+                                <div class="number">
+                                    <p class="TX">症例<span>2</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item--bottom">
+                            <div class="img img-2-2">
+                                <div class="img--point"></div>
+                            </div>
+                            <div class="content">
+                                <div class="text">
+                                    <p class="TX">
+                                        <span class="small">上顎前突を改善で理想の</span><span class="medium">E</span><span
+                                            class="small">ラインに</span><br>
+                                        <span class="medium">横顔</span><span class="big">スッキリ！</span>
+                                    </p>
+                                </div>
+                                <a class="C_viewMore" href="#">
+                                    <p class="TX">View more</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br><br><br>
+                <br><br><br>
+                <br><br><br>
+
+                <div class="C_frontTreatment">
+                    <div class="C_frontTreatment--title C_frontTreatment--title__left">
+                        <h3 class="TL">インプラント治療</h3>
+                        <p class="TX">Orthodontic treatment</p>
+                    </div>
+                    <div class="C_frontTreatment--container">
+                        <div class="item--top">
+                            <div class="img img-1-1-implant"></div>
+                            <div class="content">
+                                <div class="number number--gray">
+                                    <p class="TX">症例<span>1</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item--bottom">
+                            <div class="img img-1-2-implant"></div>
+                            <div class="content">
+                                <div class="text">
+                                    <p class="TX">
+                                        <span class="medium">最先端</span><span class="small">のインプラント治療で</span><br>
+                                        <span class="medium">自然な</span><span class="big">美</span><span
+                                            class="medium">しさを取り戻す</span>
+                                    </p>
+                                </div>
+                                <a class="C_viewMore" href="#">
+                                    <p class="TX">View more</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--  end -->
+            </div>
+        </div>
+
+        <!-- C_Features -->
+        <div class="component--item">
+            <div class="component--title">
+                C_Features
+            </div>
+            <div class="component--main">
+                <!-- start -->
+
+                <div class="C_Features">
+                    <div class="C_Features--inner">
+                        <div class="C_TL">
+                            <p class="TL-bg rollAnime">Features</p>
+                            <h2 class="main-TL up delay-05">当院の自由診療</h2>
+                        </div>
+                        <div class="subTitle">
+                            <p class="TX">最先端の自由診療で実現する理想の歯</p>
+                        </div>
+
+                        <div class="C_Features--container">
+
+                            <div class="item">
+                                <div class="img img-01"></div>
+                                <div class="content">
+                                    <div class="title">
+                                        <p class="TX">Features01</p>
+                                        <h3 class="TL">失敗しない矯正治療</h3>
+                                    </div>
+                                    <div class="text">
+                                        <p class="TX">
+                                            難症例にも対応した多くの 経験を活かして上質な治療を提供します。<br>
+                                            インビザラインでの目立たない治療もおこなっております。
+                                        </p>
+                                    </div>
+                                    <a class="C_viewMore" href="#">
+                                        <p class="TX">矯正歯科治療<span></span></p>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="img img-02"></div>
+                                <div class="content">
+                                    <div class="title">
+                                        <p class="TX">Features02</p>
+                                        <h3 class="TL">インプラント治療</h3>
+                                    </div>
+                                    <div class="text">
+                                        <p class="TX">
+                                            治療実績300本以上の実績を持つ院長がインプラント治療をすべて担当します。他院で断られている難症例も一度ご相談ください。
+                                        </p>
+                                    </div>
+                                    <a class="C_viewMore" href="#">
+                                        <p class="TX">インプラント治療<span></span></p>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <div class="img img-03"></div>
+                                <div class="content">
+                                    <div class="title">
+                                        <p class="TX">Features03</p>
+                                        <h3 class="TL">審美歯科・セラミック</h3>
+                                    </div>
+                                    <div class="text">
+                                        <p class="TX">
+                                            「やらなければよかった」と後悔しないために、安いだけではなく、上手い歯医者さんを選ぶことも大切です。是非当院にお任せください。
+                                        </p>
+                                    </div>
+                                    <a class="C_viewMore" href="#">
+                                        <p class="TX">審美歯科治療<span></span></p>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!--  end -->
+            </div>
+        </div>
+
+        <!-- C_InvisalignFlowItems -->
+        <div class="component--item">
+            <div class="component--title">
+                C_InvisalignFlowItems
+            </div>
+            <div class="component--main">
+                <!-- start -->
+
+                <div class="C_InvisalignFlowItems">
+                    <div class="title">
+                        <p class="TX"><span>step</span>01</p>
+                    </div>
+                    <div class="C_InvisalignFlowItems--content">
+                        <div class="img img-01"></div>
+                        <div class="text">
+                            <h3 class="TL">インビザライン矯正　術前</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!--  end -->
+            </div>
+        </div>
+
+        <!-- C_InvisalignFlow -->
+        <div class="component--item">
+            <div class="component--title">
+                C_InvisalignFlow
+            </div>
+            <div class="component--main">
+                <!-- start -->
+
+                <div class="C_InvisalignFlow">
+
+                    <div class="C_TL">
+                        <p class="TL-bg rollAnime">Invisalign Flow</p>
+                        <p class="sub-TL up delay-05">−インビザライン矯正−</p>
+                        <h2 class="main-TL up delay-05">治療の流れ</h2>
+                    </div>
+
+                    <div class="C_InvisalignFlow--container">
+                        <div class="C_InvisalignFlow--container--inner">
+                            <!-- 01 -->
+                            <div class="C_InvisalignFlowItems">
+                                <div class="title">
+                                    <p class="TX"><span>step</span>01</p>
+                                </div>
+                                <div class="C_InvisalignFlowItems--content">
+                                    <div class="img img-01"></div>
+                                    <div class="text">
+                                        <h3 class="TL">インビザライン矯正　術前</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 02 -->
+                            <div class="C_InvisalignFlowItems">
+                                <div class="title">
+                                    <p class="TX"><span>step</span>02</p>
+                                </div>
+                                <div class="C_InvisalignFlowItems--content">
+                                    <div class="img img-02"></div>
+                                    <div class="text">
+                                        <h3 class="TL">実際に使用するマウスピース</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 03 -->
+                            <div class="C_InvisalignFlowItems">
+                                <div class="title">
+                                    <p class="TX"><span>step</span>03</p>
+                                </div>
+                                <div class="C_InvisalignFlowItems--content">
+                                    <div class="img img-03"></div>
+                                    <div class="text">
+                                        <h3 class="TL">針接着剤をこれで貼ります</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 04 -->
+                            <div class="C_InvisalignFlowItems">
+                                <div class="title">
+                                    <p class="TX"><span>step</span>04</p>
+                                </div>
+                                <div class="C_InvisalignFlowItems--content">
+                                    <div class="img img-04"></div>
+                                    <div class="text">
+                                        <h3 class="TL">実際の引っかかりをつけた写真です</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 05 -->
+                            <div class="C_InvisalignFlowItems">
+                                <div class="title">
+                                    <p class="TX"><span>step</span>05</p>
+                                </div>
+                                <div class="C_InvisalignFlowItems--content">
+                                    <div class="img img-05"></div>
+                                    <div class="text">
+                                        <h3 class="TL">歯と歯の隙間をつくる為の器具です</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 06 -->
+                            <div class="C_InvisalignFlowItems">
+                                <div class="title">
+                                    <p class="TX"><span>step</span>06</p>
+                                </div>
+                                <div class="C_InvisalignFlowItems--content">
+                                    <div class="img img-06"></div>
+                                    <div class="text">
+                                        <h3 class="TL">その器具を使った実際の写真</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 07 -->
+                            <div class="C_InvisalignFlowItems">
+                                <div class="title">
+                                    <p class="TX"><span>step</span>07</p>
+                                </div>
+                                <div class="C_InvisalignFlowItems--content">
+                                    <div class="img img-07"></div>
+                                    <div class="text">
+                                        <h3 class="TL">マウスピースをつけている写真です</h3>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!--  end -->
+            </div>
+        </div>
+
+        <!-- C_about -->
+        <div class="component--item">
+            <div class="component--title">
+                C_about
+            </div>
+            <div class="component--main">
+                <!-- start -->
+
+                <div class="C_about">
+                    <div class="C_about--inner">
+                        <div class="C_TL">
+                            <p class="TL-bg rollAnime">Medical</p>
+                            <h2 class="main-TL up delay-05">当院の矯正治療について</h2>
+                        </div>
+                        <div class="subTitle">
+                            <p class="TX">
+                                矯正治療で使用する装置には、<br class="sp">いくつか種類があります。<br>
+                                それぞれ特徴があり、<br class="sp">患者さんの歯並びやご希望などに合わせて<br class="sp">選択していきます。
+                            </p>
+                        </div>
+                        <div class="item--container">
+
+                            <!-- 01 -->
+                            <div class="item">
+                                <div class="title">
+                                    <h3 class="TL">ワイヤー矯正</h3>
+                                </div>
+                                <div class="img img-01"></div>
+                            </div>
+
+                            <!-- 02 -->
+                            <div class="item">
+                                <div class="title">
+                                    <h3 class="TL">マウスピース矯正</h3>
+                                </div>
+                                <div class="img img-02"></div>
+                            </div>
+
+                            <!-- 03 -->
+                            <div class="item">
+                                <div class="title">
+                                    <h3 class="TL">インビザライン</h3>
+                                </div>
+                                <div class="img img-03"></div>
+                            </div>
+
+                            <!-- 04 -->
+                            <div class="item">
+                                <div class="title">
+                                    <h3 class="TL">床矯正</h3>
+                                </div>
+                                <div class="img img-04"></div>
+                            </div>
+
+                            <!-- 05 -->
+                            <div class="item">
+                                <div class="title">
+                                    <h3 class="TL">部分矯正（MTM）</h3>
+                                </div>
+                                <div class="img img-05"></div>
+                            </div>
+
+                            <!-- 06 -->
+                            <div class="item">
+                                <div class="title">
+                                    <h3 class="TL">インプラント矯正</h3>
+                                </div>
+                                <div class="img img-06"></div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!--  end -->
+            </div>
+        </div>
+
+        <!-- C_price -->
+        <div class="component--item">
+            <div class="component--title">
+                C_price
+            </div>
+            <div class="component--main">
+                <!-- start -->
+
+                <div class="C_price">
+                    <div class="C_TL">
+                        <p class="TL-bg rollAnime">Price</p>
+                        <h2 class="main-TL up delay-05">治療費</h2>
+                    </div>
+
+                    <div class="C_price--container">
+                        <div class="C_price--container--selectors">
+                            <div class="selector js--selector hover-opa active">成人矯正</div>
+                            <div class="selector js--selector hover-opa">小児矯正</div>
+                        </div>
+                        <div class="C_price--container--contents">
+                            <!-- 一般 -->
+                            <div class="item js--content active">
+                                <ul class="list">
+                                    <li>
+                                        <p class="TL">
+                                            診断
+                                        </p>
+                                        <p class="TX">
+                                            44,000円
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="TL">
+                                            部分矯正
+                                        </p>
+                                        <p class="TX">
+                                            330,000円
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="TL">
+                                            唇側矯正（表）
+                                            <span>※1回調整料</span>
+                                        </p>
+                                        <p class="TX">
+                                            880,000円
+                                            <span>※4,400円</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="TL">
+                                            舌側矯正（裏）
+                                            <span>※1回調整料</span>
+                                        </p>
+                                        <p class="TX">
+                                            1,320,000円
+                                            <span>※5,500円</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="TL">
+                                            マウスピース矯正（インビザライン）
+                                            <span>※1回調整料</span>
+                                        </p>
+                                        <p class="TX">
+                                            935,000円
+                                            <span>※4,400円</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="TL">
+                                            矯正用インプラント
+                                        </p>
+                                        <p class="TX">
+                                            1本 33,000円
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="TL">
+                                            矯正をするための抜歯
+                                        </p>
+                                        <p class="TX">
+                                            1本 5,500円
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- 小児 -->
+                            <div class="item js--content">
+                                <ul class="list">
+                                    <li>
+                                        <p class="TL">
+                                            診断
+                                        </p>
+                                        <p class="TX">
+                                            33,000円
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="TL">
+                                            ムーシールド（受け口治療）
+                                        </p>
+                                        <p class="TX">
+                                            55,000円～
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="TL">
+                                            矯正Ⅰ期治療（両顎）
+                                            <span>※1回調整料</span>
+                                        </p>
+                                        <p class="TX">
+                                            275,000円～
+                                            <span>※3,300円</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="TL">
+                                            矯正Ⅱ期治療（両顎）
+                                            <span>※1回調整料</span>
+                                        </p>
+                                        <p class="TX">
+                                            385,000円～
+                                            <span>※3,300円</span>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="item--point">
+                                <p class="TX">
+                                    ※全て税込価格となります。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="C_price--risk">
+                        <div class="title">
+                            <h3 class="TL">リスクと副作用</h3>
+                        </div>
+                        <div class="text">
+                            <p class="TX">
+                                矯正治療中、または矯正治療後に歯根吸収、歯肉退縮、骨癒着、断髄などが起こることがあります。<br>
+                                また、叢生が強い場合、歯茎部にブラックトライアングルと呼ばれる隙間が生じる場合があります。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--  end -->
+            </div>
+        </div>
+
+        <!-- C_hoverText -->
+        <div class="component--item">
+            <div class="component--title">
+                C_hoverText
+            </div>
+            <div class="component--main">
+                <!-- start -->
+
+                <div class="C_hoverText img-01">
+                    <div class="C_hoverText--default">
+                        <div class="filter"></div>
+                        <h2 class="TL">インプラント</h2>
+                    </div>
+                    <div class="C_hoverText--custom">
+                        <div class="text">
+                            <p class="TX">
+                                インプラントは、虫歯や歯周病などによって歯を失ってしまった場合に代用歯として、あごの骨に人工歯根を埋め込み、人工歯根を土台にして人工歯を装着する治療方法です。1本の歯が無くなったケースから全部の歯が無くなったケースまで、様々な症例への適用が可能です。また、入れ歯のような取り外しも不要で、ブリッジのように両隣の健康な歯を削る必要もありません。見た目も自然な歯に近く、以前の歯と同じように食事やおしゃべりをすることができます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <br><br><br>
+
+                <div class="C_hoverText img-02">
+                    <div class="C_hoverText--default option">
+                        <div class="filter"></div>
+                        <p class="TX">使用しているインプラント・メーカー</p>
+                        <h2 class="TL">「ストローマンインプラント」</h2>
+                    </div>
+                    <div class="C_hoverText--custom">
+                        <div class="text">
+                            <p class="TX">
+                                当院ではインプラント埋入などの外科的処置で利用する完全滅菌の専用オペ室を完備しています。このほかにも、3D対応の歯科用CTスキャンを導入しインプラントの埋入部位の骨の状態（質や厚み、高さ、形態など）や神経・血管の走行位置などの検査を術前に行います。この設備により、綿密な治療計画を立てやすくなり、術後も埋め込まれたインプラントや顎の骨の状態を確認することで、より精度の高い治療を目指します。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <br><br><br>
+
+                <div class="C_hoverText img-03">
+                    <div class="C_hoverText--default">
+                        <div class="filter"></div>
+                        <h2 class="TL">埋伏歯</h2>
+                    </div>
+                    <div class="C_hoverText--custom">
+                        <div class="text">
+                            <p class="TX">
+                                埋伏歯とは、骨または粘膜の中に埋もれて出てこない歯のことです。埋伏歯の治療では、問題が無ければそのままにして様子をみることもありますが、親知らずが埋伏している場合には、状況にもよりますが多くは抜歯となります。何度も炎症を繰り返したり、歯並びに影響するようであれば、ご相談ください。レントゲン撮影などの検査を行い、抜歯が必要かどうか判断いたします。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--  end -->
+            </div>
+        </div>
+
+        <!-- C_onlyText -->
+        <div class="component--item">
+            <div class="component--title">
+                C_onlyText
+            </div>
+            <div class="component--main">
+                <!-- start -->
+
+                <div class="C_onlyText">
+                    <div class="C_TL">
+                        <p class="TL-bg rollAnime">Implant</p>
+                        <h2 class="main-TL up delay-05">インプラント治療について</h2>
+                    </div>
+                    <div class="C_onlyText--text">
+                        <p class="TX">
+                            治療実績300本以上の実績（2011年～2020年）を持つ中嶋院長がすべて担当します。<br>
+                            埋め込み手術だけでなく、<br class="sp">事前のカウンセリングから歯科用CTスキャンを用いた精密診断、<br class="pc">
+                            術後のメンテナンスまで、治療全体に携わります。<br class="sp">これまで様々な症例に携わってきた<br class="sp">経験をもとに、<br>
+                            患者様に安心して治療を受けていただける体制を整えております。
+                        </p>
+                    </div>
+                    <div class="C_onlyText--tel">
+                        <a class="C_mainTelButton" href="tel:0527154181">
+                            <div class="C_mainTelButton__icon">
+                                <div class="icon"></div>
+                            </div>
+                            <div class="C_mainTelButton__main">
+                                <p class="TX">無料相談のご予約はこちら</p>
+                                <p class="TX">052-715-4181</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!--  end -->
+            </div>
+        </div>
+
+        <!-- C_merit_demerit -->
+        <div class="component--item">
+            <div class="component--title">
+                C_merit_demerit
+            </div>
+            <div class="component--main">
+                <!-- start -->
+
+                <div class="C_merit_demerit">
+                    
+                </div>
+
+                <!--  end -->
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+    <script src="js/joint.js"></script>
+</body>
+
+</html>

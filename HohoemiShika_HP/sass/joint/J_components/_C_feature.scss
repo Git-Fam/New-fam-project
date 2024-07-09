@@ -1,0 +1,141 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  C_feature
+----------------------- */
+
+.C_feature {
+  @include pc {
+    padding: 0 p(200);
+  }
+
+  &_content {
+    position: relative;
+
+    @include pc {
+      display: flex;
+      margin-top: p(174);
+    }
+
+    .img {
+      position: absolute;
+      z-index: 10;
+
+      @include pc {
+        width: p(455);
+        height: p(300);
+        top: p(50);
+        box-shadow: p(2) p(2) p(2) 0 rgba(0, 0, 0, 0.25);
+      }
+    }
+
+    .feature01 {
+      @include imgContain("feature01.jpg");
+    }
+
+    .feature02 {
+      @include imgContain("feature02.jpg");
+    }
+    .feature03 {
+      @include imgContain("feature03.jpg");
+    }
+
+    .feature04 {
+      @include imgContain("feature04.jpg");
+    }
+
+    .feature05 {
+      @include imgContain("feature05.jpg");
+    }
+
+
+    .textbox {
+      background-image: feature-bg(encode('#0A0705CC'));
+      position: relative;
+      background-size: contain;
+      background-position: center;
+      color: $F-FFFFFF;
+
+      @include pc {
+        width: p(583);
+        height: p(276);
+        margin-left: p(236);
+        padding: p(67) p(50) 0 p(250);
+      }
+
+      .TL {
+        @include Extrabold;
+
+        @include pc {
+          font-size: pm(20);
+        }
+      }
+      .TX {
+        @include pc {
+          font-size: p(16);
+          margin-top: p(20);
+          line-height: 187%;
+        }
+      }
+
+      &::before {
+        content: "";
+        @include iconContain($feature-line);
+        position: absolute;
+
+        @include pc {
+          width: p(568);
+          height: p(263);
+          top: p(7);
+          left: p(7);
+        }
+      }
+
+      &:last-child {
+        padding: p(67) p(50) 0 p(242)
+      }
+    }
+
+    .deco-TX {
+      @include cinzel;
+      @include Regular;
+      position: absolute;
+      color: $F-C8C5B5;
+      z-index: 20;
+
+      @include pc {
+        font-size: p(90);
+        bottom: p(-35);
+        right: p(-112);
+      }
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .reverse {
+    flex-direction: row-reverse;
+
+    .textbox {
+      background-image: feature-bg(encode('#B5AC85'));
+      position: relative;
+      background-size: contain;
+      background-position: center;
+      margin-inline: p(72) auto;
+
+      @include pc {
+        padding: p(67) p(268) 0 p(50);
+      }
+    }
+
+    .deco-TX {
+      @include pc {
+        bottom: p(-35);
+        left: p(-112);
+      }
+    }
+  }
+}

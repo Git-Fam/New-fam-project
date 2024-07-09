@@ -1,0 +1,87 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+
+/* -----------------------
+  C_toothDecay
+----------------------- */
+
+
+.C_toothDecay{
+  background: $B-FFFFFF-05;
+  @include pc{
+    padding: p(28) p(29) p(37) p(34); 
+  }
+  @include sp{
+    padding: s(27) 0 s(61);
+  
+  }
+  .C_toothContent {
+    @include pc{
+      align-items: end;
+      margin-top: p(30);
+    }
+    li{
+      @include sp{
+        margin: s(60) auto 0;
+      }
+      .img {
+        @include pc{
+          width: p(114);
+          height: p(104);
+        }
+        @include sp{
+          width: s(114);
+          height: s(104);
+        }
+      }
+      .decay01 {
+        @include imgContain("decay01.svg");
+      }
+      .decay02 {
+        @include imgContain("decay02.svg");
+      }
+
+      .decay03 {
+        @include imgContain("decay03.svg");
+      }
+
+      .decay04 {
+        @include imgContain("decay04.svg");
+      }
+
+      .decay05 {
+        @include imgContain("decay05.svg");
+        margin-top: auto;
+        @include pc{
+          height: p(76);
+        }
+        @include sp{
+          height: s(76);
+        }
+      }
+
+      .label {
+        @include pc{
+          margin-top: p(10);
+        }  
+        @include sp{
+          margin-top: s(20);
+        }
+      }
+      .TX {
+        line-height: 130%;
+        @include pc{
+          margin-top: p(6);
+        }
+        @include sp{
+          margin-top: s(7);
+        }
+      }      
+    }
+    
+  }
+  
+}
+
+

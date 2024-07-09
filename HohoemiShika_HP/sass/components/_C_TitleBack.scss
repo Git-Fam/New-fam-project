@@ -1,0 +1,46 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_TitleBack
+----------------------- */
+
+.C_TitleBack {
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  @include imgCover("C_TitleBack.jpg");
+  background-size: 40%;
+  background-position: right top;
+  mix-blend-mode: multiply;
+
+  @include pc {
+    height: p(419);
+  }
+
+  @include sp {
+    height: s(194);
+  }
+
+  .C_TitleBack--KV--front {
+
+    @include pc {
+      top: p(693);
+    }
+
+    @include sp {
+      top: s(700);
+    }
+  }
+
+  &.C_TitleBack--KV {
+
+    @include pc {
+      top: p(409);
+    }
+
+    @include sp {
+      top: s(250);
+    }
+  }
+}

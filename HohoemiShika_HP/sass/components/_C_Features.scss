@@ -1,0 +1,271 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_Features
+----------------------- */
+
+.C_Features {
+  position: relative;
+  @include imgCover("C_Features-bg.jpg");
+
+  @include pc {
+    padding: p(88) 0 p(75);
+  }
+
+  @include sp {
+    padding: s(45) 0 s(60);
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    inset: 0;
+    background-color: #000000b4;
+    z-index: 1;
+  }
+
+  &--inner {
+    position: relative;
+    z-index: 2;
+
+    .C_TL {
+
+      .main-TL {
+        color: $F-FFFFFF;
+        top: 37%;
+        width: 100%;
+      }
+    }
+
+    .subTitle {
+
+      @include pc {
+        margin: p(4) 0 p(40);
+      }
+
+      @include sp {
+        margin: s(30) 0 s(70)
+      }
+
+      .TX {
+        @include Demibold;
+        color: $F-FFFFFF;
+        text-align: center;
+
+        @include pc {
+          font-size: pm(26);
+          letter-spacing: pm(5.2);
+        }
+
+
+        @include sp {
+          font-size: s(16);
+          letter-spacing: s(3.2);
+        }
+      }
+    }
+
+    .C_Features--container {
+      display: flex;
+
+      @include pc {
+        width: p(1100);
+        margin: 0 auto;
+      }
+
+      @include sp {
+        padding: 0 s(20);
+        flex-direction: column;
+        gap: s(60);
+      }
+
+      .item {
+
+        @include pc {
+          width: calc(100% / 3);
+        }
+
+        @include sp {
+          width: 100%;
+        }
+
+        &:nth-child(1) {
+
+          .content {
+
+            @include pc {
+              border-left: none;
+            }
+
+            @include sp {}
+
+            .text {
+
+              .TX {
+
+                @include pc {
+                  letter-spacing: 0.01rem;
+                }
+
+                @include sp {}
+              }
+            }
+          }
+        }
+
+        .img {
+          aspect-ratio: 334/227;
+          margin: 0 auto;
+
+          @include pc {
+            width: calc(100% - p(20));
+          }
+
+          @include sp {
+            width: 100%;
+          }
+
+          &.img-01 {
+            @include imgCover("C_Features-01.jpg");
+          }
+
+          &.img-02 {
+            @include imgCover("C_Features-02.jpg");
+          }
+
+          &.img-03 {
+            @include imgCover("C_Features-03.jpg");
+          }
+        }
+
+        .content {
+          color: $F-FFFFFF;
+
+          @include pc {
+            margin-top: p(13);
+            padding: 0 p(34) p(10);
+            border-left: p(1) solid $F-C09933;
+          }
+
+
+          @include sp {
+            margin-top: s(10);
+          }
+
+          .title {
+
+            @include pc {
+              margin-bottom: p(5);
+            }
+
+            @include sp {
+              margin-bottom: s(13);
+            }
+
+            .TX {
+              color: $F-8B761F;
+
+              @include pc {
+                font-size: pm(15.983);
+              }
+
+
+              @include sp {
+                font-size: s(15);
+              }
+            }
+
+            .TL {
+              @include Extrabold;
+              line-height: 2;
+
+              @include pc {
+                font-size: pm(22.833);
+              }
+
+
+              @include sp {
+                font-size: s(22);
+              }
+            }
+          }
+
+          .text {
+
+            @include pc {
+              margin-bottom: p(9);
+            }
+
+
+            @include sp {
+              margin-bottom: s(12);
+            }
+
+            .TX {
+              line-height: 1.5;
+
+              @include pc {
+                font-size: pm(18.266);
+              }
+
+              @include sp {
+                font-size: s(18.266);
+              }
+            }
+          }
+
+          .C_viewMore {
+
+            @include pc {
+              width: 100%;
+            }
+
+            @include sp {
+              width: s(300);
+              margin: 0 auto;
+              padding: s(9) 0;
+            }
+
+            .TX {
+              color: $F-F2F7FA;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              @include pc {
+                font-size: pm(18);
+                gap: p(10);
+              }
+
+              @include sp {
+                font-size: s(18);
+                gap: s(5);
+              }
+
+              span {
+                display: block;
+                aspect-ratio: 41/9;
+                border-bottom: solid $F-F2F7FA;
+                border-right: solid $F-F2F7FA;
+                transform: skew(35deg);
+
+                @include pc {
+                  width: p(41);
+                  border-bottom-width: p(1);
+                  border-right-width: p(1);
+                }
+
+                @include sp {
+                  width: s(41);
+                  border-bottom-width: s(1);
+                  border-right-width: s(1);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

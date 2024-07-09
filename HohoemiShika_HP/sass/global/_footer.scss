@@ -1,0 +1,293 @@
+@use "../functions" as *;
+
+
+/* -----------------------
+  footer
+----------------------- */
+
+footer{
+  .ft-top{
+    width: 100%;
+    position: relative;
+    display: flex;
+    .img{
+      @include imgCover("footer-top.jpg");
+      @include pc{
+        width: p(660);
+        height: p(425);
+      }
+      @include sp{
+        width: 100%;
+        height: s(266);
+      }
+    }
+    .textbox{
+      z-index: 30;
+      position: absolute;
+      @include pc{
+        top: p(80);
+        right: p(77);
+      }
+      @include sp{
+        width: 100%;
+        // top: s(38);
+        // right: s(20);
+      }
+      &-TX{
+        @include pc{
+          text-align: center;
+          width: fit-content;
+          font-size: pm(16);
+          letter-spacing: p(0.8);
+          line-height: 200%;
+          margin-left: auto;
+        }
+        @include sp{
+          padding: s(38) s(5) 0 0 ;
+          margin-left: auto;
+        }
+        .TX-top{
+          @include sp{
+            @include Extrabold;
+            width: fit-content;
+            text-align: center;
+            color: $F-937F2A;
+            font-size: s(20);
+            letter-spacing: p(2);
+            line-height: 125%;
+            margin: 0 s(15) 0 auto;
+          }
+        }
+        .TX-main{
+          @include sp{
+            width: s(230);
+            margin: s(30) 0 0 auto;
+            font-size: s(13);
+            letter-spacing: s(0.65);
+            line-height: 192%;
+          }
+        }
+      }
+      .C_mainTelButton{
+        @include pc{
+          margin: p(65) auto 0;
+        }
+        @include sp{
+          margin: s(77) auto 0;
+        }
+        &__main{
+          .TX{
+            @include Extrabold;
+            @include pc{
+              font-size: pm(20);
+            }
+            &:last-child{
+              @include pc{
+                font-size: pm(30);
+                margin-left: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+    &::before{
+      content: "";
+      position: absolute;
+      background: linear-gradient(180deg, #F2F7FA 0.61%, rgba(242, 247, 250, 0.15) 10%, rgba(242, 247, 250, 0.00) 83.66%, #F2F7FA 99.47%);
+      z-index: 10;
+      width: 100%;
+      @include pc{
+        height: p(427);
+        margin-top: p(-1);
+      }
+      @include sp{
+        height: s(270);
+        margin-top: s(-1);
+      }
+    }
+    &::after{
+      content: "";
+      position: absolute;
+      background: linear-gradient(270deg, #F2F7FA 0.22%, #F2F7FA 48.06%, rgba(255, 255, 255, 0.00) 99.82%);
+      z-index: 20;
+      top: 0;
+      width: 100%;
+      @include pc{
+        height: p(427);
+      }
+      @include sp{
+        height: s(270);
+      }
+    }
+  }
+  .ft-main{
+    background: $B-F2F7FA;
+    @include pc{
+      padding: p(70) 0 p(100);
+    }
+    @include sp{
+      padding: s(200) 0 s(67);
+    }
+    .TX{
+      text-align: center;
+      @include pc{
+        font-size: pm(20);
+        letter-spacing: p(1);
+        margin-top: p(10);
+      }
+      @include sp{
+        font-size: s(13);
+        letter-spacing: s(0,65);
+        margin-top: s(90);
+      }
+    }
+    .ft-nav{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      @include pc{
+        padding: 0 p(116);
+        margin-top: p(62);
+        gap: p(80);
+      }
+      @include sp{
+        padding: 0 s(27);
+        margin-top: s(45);
+        row-gap: s(31);
+      }
+    }
+  }
+  .ft-bottom{
+    &-content{
+      @include imgCover("footer-bg.jpg");
+      @include pc{
+        padding: p(70) p(197) p(107) p(205);
+        display: flex;
+        justify-content: space-between;
+      }
+      @include sp{
+        padding: s(78) s(32) s(60);
+        background-position: 60% 0;
+      }
+      .C_footerInfo{
+        @include pc{}
+      }
+      .map{
+        @include pc{
+          width: p(407);
+          height: p(360);
+          margin-top: auto;
+        }
+        @include sp{
+          width: s(294);
+          height: s(110);
+          margin: s(20) 0 0 s(6);
+        }
+      }
+    }
+    &-nav{
+      background: $B-0A0705;
+      position: relative;
+      @include pc{
+        padding: p(58) 0 p(20);
+      }
+      @include sp{
+        padding: s(20) 0 s(6);
+      }
+      .ft-link{
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        @include pc{
+          width: p(970);
+        }  
+        @include sp{
+          width: s(326);
+        }
+        li{
+          @include pc{
+            font-size: p(16);
+            line-height: 250%;
+          }
+          @include sp{
+            font-size: s(10);
+            line-height: 250%;
+          }
+          a{
+            color: $F-E9EDF0;
+          }
+          &::after{
+            color: $F-E9EDF0;
+            @include pc{
+              content: "　/　";
+            }
+            @include sp{
+              content: "/　";
+            }
+          }
+          &:last-child::after,&:nth-child(9)::after{
+            @include pc{
+              content: "";
+            }
+          }
+          &:nth-child(5)::after,&:nth-child(11)::after,&:last-child::after{
+            @include sp{
+              content:"";
+            }  
+          }
+          &:first-child{
+            @include sp{
+              margin-left: s(20);
+            }
+          }
+        }
+      }
+      .copyright{
+        display: block;
+        text-align: center;
+        color: $F-E9EDF0;
+        position: relative;
+        width: fit-content;
+        @include pc{
+          margin: p(88) auto 0;
+          font-size: p(16);
+        }
+        @include sp{
+          margin: s(20) auto 0;
+          font-size: s(10);
+        }
+        &:before{
+          content: "";
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          @include pc{
+            width: p(95);
+            border-bottom: p(1) solid $F-E9EDF0;
+          }
+          @include sp{
+            width: s(60);
+            border-bottom:s(1) solid $F-E9EDF0;
+          }
+        }
+      }  
+      .insta-icon{
+        @include imgContain("insta.png");
+        position: absolute;
+        @include pc{
+          width: p(49);
+          height: p(49);
+          top: p(69);
+          right: p(92);
+        }
+        @include sp{
+          width: s(23);
+          height: s(23);
+          bottom: s(10);
+          right: s(38);
+        }
+      }
+    }
+  }
+}

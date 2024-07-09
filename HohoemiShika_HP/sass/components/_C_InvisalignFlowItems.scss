@@ -1,0 +1,185 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_InvisalignFlowItems
+----------------------- */
+
+.C_InvisalignFlowItems {
+  aspect-ratio: 639/ 527;
+  @include iconContain($C_InvisalignFlowItems);
+  position: relative;
+
+  @include pc {
+    width: pm(639);
+    padding: p(72) p(116) 0;
+  }
+
+  @include sp {
+    width: s(300);
+    padding: s(40) 0 0;
+  }
+  
+  &::before{
+    content: "";
+    @include iconContain($arrow-brown);
+    aspect-ratio: 20/36;
+    display: block;
+    position: absolute;
+    
+    @include pc{
+      width: pm(20);
+      right: pm(-52);
+      bottom : pm(168);
+    }
+    
+    @include sp{
+      width: s(10);
+      right: s(-20);
+      bottom : s(60);
+    }
+  }
+
+  &:last-child{
+    &::before{
+      display: none;
+    }
+  }
+
+
+  .title {
+    aspect-ratio: 133/ 150;
+    @include iconContain($hexagon-black);
+    @include center;
+    position: absolute;
+
+    @include pc {
+      width: pm(133);
+      top: pm(-65);
+      left: pm(-48);
+    }
+
+    @include sp {
+      width: s(70);
+      top: s(-30);
+      left: s(-20);
+    }
+
+    .TX {
+      background: linear-gradient(93deg, #947F28 0%, #F1E09B 35.79%, #A69138 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      @include cinzel;
+      @include bold;
+      text-align: center;
+
+      @include pc {
+        font-size: pm(55);
+        line-height: pm(43.7);
+        letter-spacing: pm(8.25);
+      }
+
+      @include sp {
+        font-size: s(30);
+        line-height: s(30);
+        letter-spacing: s(1);
+      }
+
+      span {
+        display: block;
+
+        @include pc {
+          font-size: pm(30);
+        }
+
+        @include sp {
+          font-size: s(20);
+        }
+      }
+    }
+  }
+
+  &--content {
+
+    @include pc {
+      @include column(pm(16));
+    }
+
+    @include sp {
+      @include column(s(16));
+    }
+
+    .img {
+      aspect-ratio: 407/272;
+      width: 100%;
+
+
+      @include sp {
+        width: 65%;
+        margin: 0 auto;
+      }
+
+      &.img-01 {
+        @include imgCover("C_InvisalignFlowItems-01.jpg");
+      }
+
+      &.img-02 {
+        @include imgCover("C_InvisalignFlowItems-02.jpg");
+      }
+
+      &.img-03 {
+        @include imgCover("C_InvisalignFlowItems-03.jpg");
+      }
+
+      &.img-04 {
+        @include imgCover("C_InvisalignFlowItems-04.jpg");
+      }
+
+      &.img-05 {
+        @include imgCover("C_InvisalignFlowItems-05.jpg");
+      }
+
+      &.img-06 {
+        @include imgCover("C_InvisalignFlowItems-06.jpg");
+      }
+
+      &.img-07 {
+        @include imgCover("C_InvisalignFlowItems-07.jpg");
+      }
+    }
+
+    .text {
+      border-bottom: solid #D9D9D9;
+
+      @include pc {
+        width: pm(340);
+        margin: 0 auto;
+        padding-bottom: pm(6);
+        border-bottom-width: pm(1);
+      }
+
+      @include sp {
+        width: fit-content;
+        margin: 0 auto;
+        padding: 0 s(5) s(12);
+        border-bottom-width: s(1);
+      }
+
+      .TL {
+        color: $F-FFFFFF;
+        @include Extrabold;
+        text-align: center;
+
+        @include pc {
+          font-size: pm(20);
+          letter-spacing: pm(1);
+        }
+
+        @include sp {
+          font-size: s(16);
+          letter-spacing: s(1);
+        }
+      }
+    }
+  }
+}

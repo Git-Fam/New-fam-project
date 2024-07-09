@@ -1,0 +1,84 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+
+/* -----------------------
+  C_medicalConsider
+----------------------- */
+
+.C_medicalConsider{
+  .TL{
+    color: $F-937F2A;
+    position: relative;
+    text-align: center;
+    width: fit-content;
+    margin: 0 auto;
+    @include pc{
+      font-size: pm(16);
+    }
+    @include sp{
+      font-size: s(16);
+    }
+    &::before{
+      content: "";
+      position: absolute;
+      background: linear-gradient(90deg, rgba(147, 127, 42, 0) 0%, #937F2A 13%, #937F2A 88%, rgba(147, 127, 42, 0) 100%);
+      width: 120%;
+      left: 50%;
+      translate: -50% 0;
+      @include pc{
+        height: p(1);
+        bottom: p(-8);
+      }
+      @include sp{
+        height: s(1);
+        bottom: s(-7);
+      }
+    }
+  }
+  .list{
+    @include pc{
+      margin: p(30) auto 0;
+      width: fit-content;
+    }
+    @include sp{
+      margin: s(27) auto 0;
+      width: s(331);
+    }
+    li{
+      display: flex;
+      @include pc{
+        align-items: center;
+        margin-top: p(15);
+      }
+      @include sp{
+        margin-top: s(15);
+      }
+      .icon{
+        @include iconContain($list-thooth);
+        @include pc{
+          width: p(13);
+          height: p(16);
+          margin-right: p(20);
+        }
+        @include sp{
+          width: s(13);
+          height: s(16);
+          margin:s(5) s(12) 0 0 ;
+        }
+      }
+      .TX{
+        line-height: 150%;
+        @include pc{
+          font-size: pm(18);
+        }
+        @include sp{
+          font-size: s(18);
+        }
+      } 
+      &:first-child{
+        margin-top: 0;
+      }   
+    }
+  }
+}

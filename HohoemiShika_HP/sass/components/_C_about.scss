@@ -1,0 +1,153 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_about
+----------------------- */
+
+.C_about {
+  position: relative;
+  @include imgCover("C_about-bg.jpg");
+
+  @include pc {
+    padding: p(150) 0 p(182);
+  }
+
+  @include sp {
+    padding: s(90) 0 s(125);
+    background-size: 1040%;
+    background-position: top 50% left 60%;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    inset: 0;
+    background-color: #000000b4;
+    z-index: 1;
+  }
+
+  &--inner {
+    position: relative;
+    z-index: 2;
+
+    .C_TL {
+
+      .main-TL {
+        color: $F-FFFFFF;
+
+        @include sp {
+          white-space: nowrap;
+        }
+      }
+    }
+
+    .subTitle {
+
+      @include pc {
+        margin: p(12) 0 p(93);
+      }
+
+      @include sp {
+        margin: s(55) 0 s(60);
+      }
+
+      .TX {
+        color: $F-FFFFFF;
+        text-align: center;
+        line-height: 187%;
+
+        @include pc {
+          font-size: pm(16);
+        }
+
+        @include sp {
+          font-size: s(16);
+        }
+      }
+    }
+
+    .item--container {
+      margin: 0 auto;
+      display: flex;
+
+      @include pc {
+        width: p(868);
+        gap: p(21) p(18);
+        flex-wrap: wrap;
+      }
+
+      @include sp {
+        width: s(350);
+        flex-direction: column;
+        gap: s(20);
+      }
+
+      .item {
+        border: solid #988430;
+        background: rgba(10, 7, 5, 0.40);
+
+        @include pc {
+          @include row(2, p(18));
+          border-width: p(2);
+          padding: p(50) p(63) p(51);
+          @include column(p(6));
+        }
+
+        @include sp {
+          width: 100%;
+          padding: s(50) s(25);
+          border-width: s(2);
+          @include column(s(6));
+        }
+
+        .title {
+
+          .TL {
+            color: $F-C09933;
+            text-align: center;
+            @include Extrabold;
+            line-height: 1.5;
+
+            @include pc {
+              font-size: pm(20);
+            }
+
+            @include sp {
+              font-size: s(20);
+            }
+          }
+        }
+
+        .img {
+          aspect-ratio: 300/171;
+          width: 100%;
+
+          &.img-01 {
+            @include imgCover("C_about-01.jpg");
+          }
+
+          &.img-02 {
+            @include imgCover("C_about-02.jpg");
+          }
+
+          &.img-03 {
+            @include imgCover("C_about-03.jpg");
+          }
+
+          &.img-04 {
+            @include imgCover("C_about-04.jpg");
+          }
+
+          &.img-05 {
+            @include imgCover("C_about-05.jpg");
+          }
+
+          &.img-06 {
+            @include imgCover("C_about-06.jpg");
+          }
+        }
+      }
+    }
+  }
+}
