@@ -1,8 +1,15 @@
-<?php get_header(); ?>
+<?php
+
+use function PHPSTORM_META\type;
+
+get_header(); ?>
 
 <main>
     <div class="page-archive">
-
+        <div class="C_TL">
+            <p class="TL-bg rollAnime">Hohoemi blog</p>
+            <h2 class="main-TL up speed-05 delay-03">ブログ</h2>
+        </div>
 
         <div class="C_archive">
             <ul class="C_archive--lists">
@@ -27,10 +34,10 @@
 
             <!-- ページネーション -->
             <div class="pageNation">
-                
+                <?php wp_pagenavi(); ?>
             </div>
         </div>
-        
+
     </div>
 </main>
 

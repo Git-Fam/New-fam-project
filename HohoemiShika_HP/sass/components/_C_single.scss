@@ -102,21 +102,17 @@
     }
 
     .content--text {
+      color: $F-363636;
+      line-height: 1.5;
 
-      .TX {
-        color: $F-363636;
-        line-height: 1.5;
+      @include pc {
+        font-size: pm(16);
+      }
 
-        @include pc {
-          font-size: pm(16);
-        }
-
-        @include sp {
-          font-size: s(16);
-        }
+      @include sp {
+        font-size: s(16);
       }
     }
-
   }
 
   .pageNation {
@@ -132,8 +128,8 @@
       gap: s(30);
     }
 
-    &__button ,
-    a{
+    &__button,
+    a {
       display: block;
       color: $F-363636;
       line-height: 1.5;

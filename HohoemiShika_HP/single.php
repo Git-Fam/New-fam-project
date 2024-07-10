@@ -1,8 +1,11 @@
 <?php get_header(); ?>
 
 <main>
-    <div class="frontPage">
-
+    <div class="page-archive">
+        <div class="C_TL">
+            <p class="TL-bg rollAnime">Hohoemi blog</p>
+            <h2 class="main-TL up speed-05 delay-03">ブログ</h2>
+        </div>
 
         <div class="C_single">
             <div class="C_single--content">

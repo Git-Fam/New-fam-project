@@ -70,12 +70,12 @@
 
       a {
         display: flex;
-        
-        @include pc{
+
+        @include pc {
           align-items: center;
         }
-        
-        @include sp{
+
+        @include sp {
           flex-direction: column;
           gap: s(15);
         }
@@ -143,7 +143,7 @@
             display: -webkit-box;
             -webkit-box-orient: vertical;
             text-shadow: 0px 0px 0px $F-363636;
-            
+
             @include pc {
               font-size: pm(18);
               -webkit-line-clamp: 1;
@@ -159,10 +159,96 @@
     }
   }
 
-  .pageNation{
+  .pageNation {
     margin: 0 auto;
-    width: 300px;
-    height: 30px;
-    background-color: black;
+
+    .wp-pagenavi {
+      display: flex;
+      align-items: center;
+
+      @include pc {
+        gap: p(45);
+      }
+
+      @include sp {
+        gap: s(30);
+      }
+
+      .page,
+      .current {
+        display: block;
+        color: $F-363636;
+        @include Extrabold;
+
+        @include pc {
+          font-size: pm(16);
+        }
+
+        @include sp {
+          font-size: s(16);
+        }
+
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+
+      span {
+        display: block;
+      }
+
+      .current {
+        color: #AC7D02;
+      }
+
+      .prevIcon,
+      .nextIcon {
+        aspect-ratio: 7/12;
+        @include iconContain($pageNationIcon);
+
+        @include pc {
+          width: pm(7);
+        }
+
+        @include sp {
+          width: s(7);
+        }
+
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+
+      .prevIcon {
+        rotate: 180deg;
+      }
+
+      .prevDot,
+      .nextDot {
+        aspect-ratio: 9/3;
+        @include iconContain($pageNationDot);
+
+        @include pc {
+          width: pm(15);
+          translate: p(-20) 0;
+        }
+
+        @include sp {
+          width: s(15);
+          translate: s(-20) 0;
+        }
+      }
+
+      .nextDot {
+
+        @include pc {
+          translate: p(20) 0;
+        }
+
+        @include sp {
+          translate: s(20) 0;
+        }
+      }
+    }
   }
 }

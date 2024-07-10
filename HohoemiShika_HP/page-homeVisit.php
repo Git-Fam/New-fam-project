@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <main>
-    <div class="page-implant">
+    <div class="page-homeVisit">
         <!-- ここにコンテンツが入ります -->
     </div>
 </main>

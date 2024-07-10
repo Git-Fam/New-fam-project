@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <main>
-    <div class="page-implant">
+    <div class="page-general">
         <!-- ここにコンテンツが入ります -->
     </div>
 </main>
