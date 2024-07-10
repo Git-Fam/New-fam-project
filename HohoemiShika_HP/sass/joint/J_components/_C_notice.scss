@@ -28,12 +28,14 @@
     @include sp{
       border-top: s(1) solid $P-AC7D02;
       margin-top: s(10);
-      padding: s(20) s(15);
-
     }
     .list{
       @include pc{
         width: p(368);
+      }
+      @include sp{
+        width: s(307);
+        margin:s(20) auto 0;
       }
       li{
         position: relative;
@@ -60,9 +62,9 @@
             top: p(3);
           }
           @include sp{
-            width: s(7);
-            height: s(7);
-            left: s(-10);
+            width: s(9);
+            height: s(9);
+            left: s(-15);
             top:s(5)
           }
         }
