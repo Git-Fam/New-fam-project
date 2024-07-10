@@ -1,0 +1,246 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_jawJoint
+----------------------- */
+
+.C_jawJoint {
+  position: relative;
+  @include imgCover("C_Features-bg.jpg");
+
+  @include pc {
+    padding: p(172) 0 p(171);
+    background-position: top 60% left 50%;
+    @include column(p(150));
+  }
+
+  @include sp {
+    padding: s(90) 0 s(85);
+    background-position: top 50% left 33%;
+    @include column(s(170));
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    inset: 0;
+    background-color: #000000b4;
+    z-index: 1;
+  }
+
+
+  &--inner {
+    position: relative;
+    z-index: 2;
+
+    .C_TL {
+
+      .main-TL {
+        color: $F-FFFFFF;
+
+        @include pc {
+          font-size: p(35);
+        }
+
+        @include sp {
+          font-size: s(28);
+          line-height: 1.5;
+          white-space: nowrap;
+        }
+      }
+    }
+
+    .subTitle {
+
+      @include pc {
+        margin: p(55) 0;
+      }
+
+      @include sp {
+        margin: s(60) 0;
+      }
+
+      .TX {
+        color: $F-FFFFFF;
+        text-align: center;
+        line-height: 187%;
+
+        @include pc {
+          font-size: pm(16);
+        }
+
+        @include sp {
+          font-size: s(16);
+        }
+      }
+    }
+
+    // jawJoint
+    .jawJoint--item {
+      margin: 0 auto;
+      border: solid #937F2A;
+      background: rgba(10, 7, 5, 0.60);
+
+      @include pc {
+        border-width: p(2);
+        width: p(880);
+        padding: p(40) 0 p(40) p(248);
+      }
+
+      @include sp {
+        border-width: s(2);
+        width: s(350);
+        padding: s(43) 0 s(67) s(33);
+      }
+
+      &--inner {
+
+        @include pc {
+          @include column(p(40));
+        }
+
+        @include sp {
+          @include column(s(40));
+        }
+
+        .C_toothTL {
+          justify-content: unset;
+
+          @include sp {
+            margin: unset;
+          }
+        }
+
+        .lists {
+
+          @include pc {
+            padding-left: p(59);
+            @include column(p(20));
+          }
+
+          @include sp {
+            padding-left: s(39);
+            @include column(s(20));
+          }
+
+          li {
+            color: $F-FFFFFF;
+            line-height: 1.5;
+            position: relative;
+            width: fit-content;
+
+            @include pc {
+              font-size: pm(16);
+            }
+
+            @include sp {
+              font-size: s(16);
+            }
+
+            &::before {
+              content: "";
+              display: block;
+              aspect-ratio: 13/16;
+              @include iconContain($simpleTooth);
+              position: absolute;
+              @include pCenterTop;
+
+              @include pc {
+                width: p(13);
+                left: p(-35);
+              }
+
+              @include sp {
+                width: s(13);
+                left: s(-35);
+              }
+            }
+
+            &:last-child {
+              &::after {
+                content: "etc";
+                position: absolute;
+
+                @include pc {
+                  bottom: 0;
+                  right: p(-69);
+                }
+
+                @include sp {
+                  bottom: s(-35);
+                  right: s(-10);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // medical
+    .medical--item {
+      margin: 0 auto;
+      display: flex;
+
+      @include pc {
+        width: p(880);
+        gap: p(44);
+      }
+
+      @include sp {
+        width: s(350);
+        gap: s(30);
+        flex-direction: column;
+      }
+
+      .card {
+        border: solid $P-937F2A;
+        background: rgba(10, 7, 5, 0.40);
+
+        @include pc {
+          border-width: p(2);
+          @include row(2, p(44));
+          padding: p(22) p(24);
+          @include column(p(24));
+        }
+
+        @include sp {
+          border-width: s(2);
+          width: 100%;
+          padding: s(17) s(21) s(21);
+          @include column(s(15));
+        }
+
+        .img {
+          aspect-ratio: 370/232;
+          width: 100%;
+
+          &.img-01 {
+            @include imgCover("C_jawJoint-medical-card-01.jpg");
+            background-position: center 10%;
+          }
+
+          &.img-02 {
+            @include imgCover("C_jawJoint-medical-card-02.jpg");
+          }
+        }
+
+        .TX {
+          color: $F-C09933;
+          @include Extrabold;
+          line-height: 1.5;
+          text-align: center;
+
+          @include pc {
+            font-size: p(20);
+          }
+
+          @include sp {
+            font-size: s(20);
+          }
+        }
+      }
+    }
+  }
+}
