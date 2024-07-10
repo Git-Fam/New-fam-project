@@ -27,7 +27,7 @@
   transform: translateY(100%);
 
   &.show {
-    animation: up 0.5s ease forwards;
+    animation: up ease forwards;
     
     @keyframes up {
       0% {
@@ -49,7 +49,7 @@
   transform: translateY(-100%);
 
   &.show {
-    animation: down ease  forwards;
+    animation: down ease forwards;
 
     @keyframes down {
       0% {
@@ -162,7 +162,7 @@
   transform: translateY(-100%);
 
   &.show {
-    animation: loadDown ease  forwards;
+    animation: loadDown ease forwards;
 
     @keyframes loadDown {
       0% {
