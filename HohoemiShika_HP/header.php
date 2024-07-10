@@ -259,6 +259,7 @@
             <div class="KV">
                 <div class="KV--img"></div>
                 <div class="KV--tag loadRight speed-05 decay05">
+
                     <?php if (is_page('orthodontics')) : ?>
                         <!-- 矯正歯科 -->
                         <div class="KV--tag--inner">
@@ -266,6 +267,7 @@
                             <p class="TX">−Orthodontics−</p>
                         </div>
                     <?php endif; ?>
+
                     <?php if (is_page('implant')) : ?>
                         <!-- インプラント -->
                         <div class="KV--tag--inner">
@@ -274,10 +276,93 @@
                         </div>
                     <?php endif; ?>
 
+                    <?php if (is_page('aestheticdentistry')) : ?>
+                        <!-- 審美歯科 -->
+                        <div class="KV--tag--inner">
+                            <h2 class="TL">審美歯科</h2>
+                            <p class="TX">−Aesthetic Dentistry−</p>
+                        </div>
+                    <?php endif; ?>
 
+                    <?php if (is_page('oralsurgery')) : ?>
+                        <!-- 口腔外科 -->
+                        <div class="KV--tag--inner">
+                            <h2 class="TL">口腔外科</h2>
+                            <p class="TX">−Oral Surgery−</p>
+                        </div>
+                    <?php endif; ?>
 
+                    <?php if (is_page('dentures')) : ?>
+                        <!-- 入れ歯 -->
+                        <div class="KV--tag--inner">
+                            <h2 class="TL">入れ歯</h2>
+                            <p class="TX">−Dentures−</p>
+                        </div>
+                    <?php endif; ?>
 
+                    <?php if (is_page('prevention')) : ?>
+                        <!-- 予防歯科 -->
+                        <div class="KV--tag--inner">
+                            <h2 class="TL">予防歯科</h2>
+                            <p class="TX">−Prevention−</p>
+                        </div>
+                    <?php endif; ?>
 
+                    <?php if (is_page('general')) : ?>
+                        <!-- 一般歯科 -->
+                        <div class="KV--tag--inner">
+                            <h2 class="TL">一般歯科</h2>
+                            <p class="TX">−General−</p>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (is_page('children')) : ?>
+                        <!-- 小児歯科 -->
+                        <div class="KV--tag--inner">
+                            <h2 class="TL">小児歯科</h2>
+                            <p class="TX">−Children−</p>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (is_page('homevisit')) : ?>
+                        <!-- 訪問診療 -->
+                        <div class="KV--tag--inner">
+                            <h2 class="TL">訪問診療</h2>
+                            <p class="TX">−Home visit−</p>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (is_page('doctor')) : ?>
+                        <!-- ドクター紹介 -->
+                        <div class="KV--tag--inner">
+                            <h2 class="TL">ドクター紹介</h2>
+                            <p class="TX">−Doctor−</p>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (is_page('clinic')) : ?>
+                        <!-- クリニック紹介 -->
+                        <div class="KV--tag--inner">
+                            <h2 class="TL">クリニック紹介</h2>
+                            <p class="TX">−Clinic−</p>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (is_page('medicalexamination')) : ?>
+                        <!-- 受診される方へ -->
+                        <div class="KV--tag--inner">
+                            <h2 class="TL">受診される方へ</h2>
+                            <p class="TX">−Medical Examination−</p>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (is_page('accessreceptiontime')) : ?>
+                        <!-- アクセス/診療時間 -->
+                        <div class="KV--tag--inner">
+                            <h2 class="TL size">アクセス/診療時間</h2>
+                            <p class="TX">−Access/Reception time−</p>
+                        </div>
+                    <?php endif; ?>
 
                     <?php if (is_post_type_archive('post')) : ?>
                         <!-- ブログ -->
@@ -286,6 +371,7 @@
                             <p class="TX">−Blog−</p>
                         </div>
                     <?php endif; ?>
+
                 </div>
                 <div class="KV--title">
                     <h1 class="TL">
@@ -299,4 +385,17 @@
 
         <?php endif; ?>
 
-        <div class="C_TitleBack C_TitleBack--KV--front"></div>
+        <?php if (is_front_page()) : ?>
+            <div class="C_TitleBack C_TitleBack--KV--front"></div>
+        <?php endif; ?>
+
+        <?php if (
+            is_page('orthodontics') ||
+            is_page('implant') ||
+            is_page('aestheticdentistry') ||
+            is_page('dentures') ||
+            is_page('general') ||
+            is_page('clinic')
+        ) : ?>
+            <div class="C_TitleBack C_TitleBack--KV"></div>
+        <?php endif; ?>

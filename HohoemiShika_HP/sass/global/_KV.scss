@@ -44,18 +44,20 @@
 
     @include pc {
       width: p(370);
-      padding: p(23) 0 p(13) p(67);
+      // padding: p(23) 0 p(13) p(67);
+      padding: p(23) 0 p(13);
     }
 
     @include sp {
       width: s(230);
-      padding: s(12) 0 s(7) s(17);
+      padding: s(12) 0 s(7) 0;
     }
 
     &--inner {
       width: fit-content;
       text-align: center;
       color: $F-FFFFFF;
+      margin: 0 auto;
 
       @include pc {
         @include column(p(10));
@@ -78,6 +80,12 @@
 
         @include sp {
           font-size: s(25);
+        }
+
+        &.size{
+          @include sp{
+            font-size: s(20);
+          }
         }
       }
 

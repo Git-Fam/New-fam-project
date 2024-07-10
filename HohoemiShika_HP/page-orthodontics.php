@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <main>
-    <div class="frontPage">
+    <div class="page-orthodontics">
         <!-- ここにコンテンツが入ります -->
     </div>
 </main>
