@@ -24,7 +24,7 @@
   .icon-TL{
     @include Demibold;
     @include pc{
-      font-size: pm(20);
+      font-size: p(20);
     }
     @include sp{
       font-size: s(13);
@@ -147,7 +147,7 @@
   .icon-TX{
     @include Medium;
     @include pc{
-      font-size: pm(16);
+      font-size: p(16);
     }
     @include sp{
       font-size: s(10);
