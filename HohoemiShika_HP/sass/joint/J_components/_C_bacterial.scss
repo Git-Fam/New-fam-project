@@ -10,11 +10,11 @@
   background: $B-0A0705-04;
   @include pc{
     padding: p(40) p(70);
-    border: p(1) solid $B-937F2A-04;
+    border: p(2) solid $B-937F2A-04;
   }
   @include sp{
     padding: s(51) 0;
-    border: s(1) solid $B-937F2A-04;
+    border: s(2) solid $B-937F2A-04;
 
   }
   .C_toothTL {

@@ -1,0 +1,47 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+
+/* -----------------------
+  C_clinicIntroduction
+----------------------- */
+
+.C_clinicIntroduction{
+  .img{
+    @include pc{
+      width: p(449);
+      height: p(299);
+    }
+  }
+  .clinic01{
+    @include imgCover("clinic_01.jpg");
+  }
+  .clinic02{
+    @include imgCover("clinic_02.jpg");
+  }
+  .clinic03{
+    @include imgCover("clinic_03.jpg");
+  }
+  .clinic04{
+    @include imgCover("clinic_04.jpg");
+  }
+  .clinic05{
+    @include imgCover("clinic_05.jpg");
+  }
+  .clinic06{
+    @include imgCover("clinic_06.jpg");
+  }
+  .clinic07{
+    @include imgCover("clinic_07.jpg");
+  }
+  .clinic08{
+    @include imgCover("clinic_08.jpg");
+  }
+  .clinic09{
+    @include imgCover("clinic_09.jpg");
+  }
+  .clinic010{
+    @include imgCover("clinic_010.jpg");
+  }
+
+}
