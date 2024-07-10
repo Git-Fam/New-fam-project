@@ -132,10 +132,12 @@
       gap: s(30);
     }
 
-    &__button {
+    &__button ,
+    a{
       display: block;
       color: $F-363636;
       line-height: 1.5;
+      cursor: pointer;
 
       @include pc {
         font-size: pm(14);
