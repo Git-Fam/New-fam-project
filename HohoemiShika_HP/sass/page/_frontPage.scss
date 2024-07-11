@@ -4,40 +4,77 @@
   front-page
 ----------------------- */
 
-.front-page{
+.front-page {
   position: relative;
   z-index: 10;
   overflow: hidden;
 
-  @include pc{
+  @include pc {
     padding-bottom: p(58);
   }
-  
-  @include sp{}
 
-  &--example{
+  @include sp {}
 
-    @include pc{
+  &--example {
+
+    @include pc {
       margin-bottom: p(189);
     }
-    
-    @include sp{}
 
-    .front--correction{
+    @include sp {}
 
-      @include pc{
+    .front--correction {
+
+      @include pc {
         margin-top: p(160);
         @include column(p(121))
+      }
+
+      @include sp {}
+    }
+
+    .front--implant {
+
+      @include pc {
+        margin-top: p(180);
+      }
+
+      @include sp {}
+    }
+  }
+}
+
+.front-page__decoration {
+
+  .parts {
+
+    &.parts-01 {
+
+      @include pc{
+        width: p(1128);
+        top: 0;
       }
       
       @include sp{}
     }
 
-    .front--implant{
+    &.parts-02 {
 
-      @include pc{
-        margin-top: p(180);
-      }
+      @include pc{}
+      
+      @include sp{}
+    }
+
+    &.parts-03 {
+
+      @include pc{}
+      
+      @include sp{}
+    }
+
+    &.parts-04 {
+
+      @include pc{}
       
       @include sp{}
     }
