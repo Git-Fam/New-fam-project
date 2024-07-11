@@ -1,0 +1,177 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  frontPage
+----------------------- */
+
+.page-accessReceptionTime {
+  @include pc{
+    padding-bottom: p(150);
+  }
+  .access{
+    @include pc{
+      padding: 0 p(200);
+    }
+    &_content {
+      @include pc{
+        margin-top: p(60);
+      }
+      .map{
+        @include pc{
+          width: 100%;
+          height: p(383);
+        }
+      }
+      .access_bottom {
+        @include pc{
+          display: flex;
+          margin-top: p(13);
+          justify-content: space-between;
+          align-items: flex-end;
+        }
+        .C_footerInfo {
+          .textbox {
+            color: $F-363636;
+            @include pc{
+              margin-top: p(18);
+            }
+            .adress {
+              span{
+                @include pc{
+                  margin-right: p(12);
+                }
+              }
+            }          
+            .root {
+              @include pc{
+                margin-top: p(15);
+              }
+            }
+          }
+        } 
+        .map_link {
+          background-color: $B-FFFFFF;
+          @include pc{
+            width: p(370);
+            border: p(1) solid $P-C09933;
+            box-shadow: p(2) p(2) p(2) rgba(0, 0, 0, 0.25);
+            padding: p(15) p(67) p(15) p(73);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+          .icon {
+            @include iconContain($map-icon);
+            @include pc{
+              width: p(20);
+              height: p(20);
+            }
+          }
+          .TX {
+            color: $F-363636;
+            @include pc{
+              font-size: pm(20);
+            }
+          }            
+        }               
+      }
+    }
+  }
+  .openingHours {
+    @include pc{
+      margin-top: p(152);
+    }
+    .openingHours_content {
+      @include pc{
+        display: flex;
+        padding: 0 p(200);
+        justify-content: space-between;
+        align-items:flex-start;
+        margin-top: p(80);
+        .C_footerInfo {
+          .Info-list {
+            margin: 0;
+            li{
+              padding: 0;
+              table{
+                width: p(430);
+                @include pc{
+                  border: p(1) solid $P-C09933;
+                  font-size: pm(18);
+                }
+                tr{
+                  @include pc{
+                    border: p(1) solid $P-C09933;
+                  }
+                  th,td{
+                    @include pc{
+                      padding: p(14) 0;
+                    }
+                  }
+                  th:first-child{
+                    @include pc{
+                      border-right: p(1) solid $P-FFFFFF;
+                    }  
+                  }
+                  td{
+                    background: $B-FFFFFF;
+                    color: $F-363636;
+                    .maru {
+                      @include pc{
+                        border:p(1) solid $F-363636;
+                      }
+                      @include sp{
+                        border: s(1) solid $F-363636;
+                      }
+                    }
+                    .stu-maru{
+                      background: $B-363636;
+                    }
+                    .slash {
+                      @include pc{
+                        border-left: p(1) solid $B-363636;
+                      }    
+                      @include sp{
+                        border-left: s(1) solid $B-363636;
+                      }            
+                    }
+                    
+                    &:first-child{
+                      @include pc{
+                        border-right: p(1) solid $P-C09933;
+                      }    
+                    }
+                  }
+                }               
+              }
+            }
+          }
+          .under {
+            color: $F-363636;
+            @include pc{
+              margin-top: p(10);
+            }
+            .close{
+              @include pc{
+                margin-top: p(13);
+              }
+            }
+          }          
+        }
+        .img{
+          @include imgCover("clinic_01.jpg");
+          @include pc{
+            width: p(420);
+            height: p(280);
+          }
+        }
+      }
+    }    
+  }
+}
+
+.close {
+}
+.img {
+}
