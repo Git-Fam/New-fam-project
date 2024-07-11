@@ -78,44 +78,39 @@
                 <nav class="nav">
                     <ul class="nav__main">
                         <li>
-                            <a href="#">
+                            <a href="<?php echo get_home_url(); ?>">
                                 <p>トップ</p>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                <p>診療案内</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
+                            <a href="<?php bloginfo('url'); ?>/doctor">
                                 <p>ドクター紹介</p>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="<?php bloginfo('url'); ?>/clinic">
                                 <p>クリニック紹介</p>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="<?php bloginfo('url'); ?>/medicalexamination">
                                 <p>受診される方へ</p>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                <p>受付時間・アクセス</p>
+                            <a href="<?php bloginfo('url'); ?>/accessreceptiontime">
+                                <p>受付時間/アクセス</p>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="<?php bloginfo('url'); ?>/blog">
                                 <p>ブログ</p>
                             </a>
                         </li>
                     </ul>
                     <ul class="nav__sub">
                         <li>
-                            <a href="#">
+                            <a href="<?php bloginfo('url'); ?>/orthodontics">
                                 <div class="icon"></div>
                                 <div class="cover">
                                     <p>矯正歯科</p>
@@ -124,7 +119,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="<?php bloginfo('url'); ?>/implant">
                                 <div class="icon"></div>
                                 <div class="cover">
                                     <p>インプラント</p>
@@ -133,7 +128,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="<?php bloginfo('url'); ?>/aestheticdentistry">
                                 <div class="icon"></div>
                                 <div class="cover">
                                     <p>審美歯科</p>
@@ -142,7 +137,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="<?php bloginfo('url'); ?>/oralsurgery">
                                 <div class="icon"></div>
                                 <div class="cover">
                                     <p>口腔外科</p>
@@ -151,7 +146,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="<?php bloginfo('url'); ?>/dentures">
                                 <div class="icon"></div>
                                 <div class="cover">
                                     <p>入れ歯</p>
@@ -160,7 +155,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="<?php bloginfo('url'); ?>/prevention">
                                 <div class="icon"></div>
                                 <div class="cover">
                                     <p>予防歯科</p>
@@ -169,7 +164,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="<?php bloginfo('url'); ?>/general">
                                 <div class="icon"></div>
                                 <div class="cover">
                                     <p>一般歯科</p>
@@ -178,7 +173,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="<?php bloginfo('url'); ?>/pediatricdentistry">
                                 <div class="icon"></div>
                                 <div class="cover">
                                     <p>小児歯科</p>
@@ -187,7 +182,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="<?php bloginfo('url'); ?>/homevisit">
                                 <div class="icon"></div>
                                 <div class="cover">
                                     <p>訪問診療</p>
@@ -316,11 +311,11 @@
                         </div>
                     <?php endif; ?>
 
-                    <?php if (is_page('children')) : ?>
+                    <?php if (is_page('pediatricdentistry')) : ?>
                         <!-- 小児歯科 -->
                         <div class="KV--tag--inner">
                             <h2 class="TL">小児歯科</h2>
-                            <p class="TX">−Children−</p>
+                            <p class="TX">-Pediatric dentistry-</p>
                         </div>
                     <?php endif; ?>
 

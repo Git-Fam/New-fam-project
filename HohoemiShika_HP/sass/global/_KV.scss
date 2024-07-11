@@ -45,7 +45,7 @@
     @include pc {
       width: p(370);
       // padding: p(23) 0 p(13) p(67);
-      padding: p(23) 0 p(13);
+      padding: p(23) p(30) p(13) 0;
     }
 
     @include sp {

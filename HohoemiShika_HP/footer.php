@@ -178,23 +178,23 @@
         </div>
         <div class="ft-bottom-nav">
             <ul class="ft-link">
-                <li><a href="#" class="hover-opa">トップ</a></li>
-                <li><a href="#" class="hover-opa">矯正歯科</a></li>
-                <li><a href="#" class="hover-opa">インプラント</a></li>
-                <li><a href="#" class="hover-opa">審美歯科</a></li>
-                <li><a href="#" class="hover-opa">口腔歯科</a></li>
-                <li><a href="#" class="hover-opa">入れ歯</a></li>
-                <li><a href="#" class="hover-opa">予防歯科</a></li>
-                <li><a href="#" class="hover-opa">一般歯科</a></li>
-                <li><a href="#" class="hover-opa">小児歯科</a></li>
-                <li><a href="#" class="hover-opa">訪問診療</a></li>
-                <li><a href="#" class="hover-opa">ドクター紹介</a></li>
-                <li><a href="#" class="hover-opa">クリニック紹介</a></li>
-                <li><a href="#" class="hover-opa">受診される方へ</a></li>
-                <li><a href="#" class="hover-opa">受付時間・アクセス</a></li>
-                <li><a href="#" class="hover-opa">ブログ</a></li>
+                <li><a href="<?php echo get_home_url(); ?>" class="hover-opa">トップ</a></li>
+                <li><a href="<?php bloginfo('url'); ?>/orthodontics" class="hover-opa">矯正歯科</a></li>
+                <li><a href="<?php bloginfo('url'); ?>/implant" class="hover-opa">インプラント</a></li>
+                <li><a href="<?php bloginfo('url'); ?>/aestheticdentistry" class="hover-opa">審美歯科</a></li>
+                <li><a href="<?php bloginfo('url'); ?>/oralsurgery" class="hover-opa">口腔歯科</a></li>
+                <li><a href="<?php bloginfo('url'); ?>/dentures" class="hover-opa">入れ歯</a></li>
+                <li><a href="<?php bloginfo('url'); ?>/prevention" class="hover-opa">予防歯科</a></li>
+                <li><a href="<?php bloginfo('url'); ?>/general" class="hover-opa">一般歯科</a></li>
+                <li><a href="<?php bloginfo('url'); ?>/pediatricdentistry" class="hover-opa">小児歯科</a></li>
+                <li><a href="<?php bloginfo('url'); ?>/homevisit" class="hover-opa">訪問診療</a></li>
+                <li><a href="<?php bloginfo('url'); ?>/doctor" class="hover-opa">ドクター紹介</a></li>
+                <li><a href="<?php bloginfo('url'); ?>/clinic" class="hover-opa">クリニック紹介</a></li>
+                <li><a href="<?php bloginfo('url'); ?>/medicalexamination" class="hover-opa">受診される方へ</a></li>
+                <li><a href="<?php bloginfo('url'); ?>/accessreceptiontime" class="hover-opa">アクセス/診療時間</a></li>
+                <li><a href="<?php bloginfo('url'); ?>/blog" class="hover-opa">ブログ</a></li>
             </ul>
-            <a href="#" class="copyright">© ほほえみ歯科</a>
+            <a href="<?php echo get_home_url(); ?>" class="copyright">© ほほえみ歯科</a>
             <a href="#" class="insta-icon"></a>
         </div>
     </div>
