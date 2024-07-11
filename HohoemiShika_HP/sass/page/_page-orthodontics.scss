@@ -5,6 +5,8 @@
 ----------------------- */
 
 .page-orthodontics {
+  position: relative;
+  z-index: 5;
 
   @include pc {
     padding-bottom: p(85);
@@ -106,12 +108,14 @@
             gap: p(125);
           }
 
-          @include sp {}
+          @include sp {
+            flex-direction: column;
+            gap: s(110);
+          }
 
           &.active {
             display: flex;
           }
-
 
           .case {
 
@@ -119,11 +123,13 @@
               @include column(p(75))
             }
 
-            @include sp {}
+            @include sp {
+              @include column(s(35))
+            }
 
             &:nth-child(odd) {
               .C_pointText {
-                @include pc{
+                @include pc {
                   text-align: left;
                 }
               }
@@ -131,7 +137,7 @@
 
             &:nth-child(even) {
               .C_pointText {
-                @include pc{
+                @include pc {
                   text-align: right;
                 }
               }
@@ -140,17 +146,6 @@
         }
       }
     }
-
-
-
-
-
-
-
-
-
-
-
   }
 
   &--invisalign {
@@ -214,6 +209,68 @@
 
     @include sp {
       margin-bottom: s(50);
+    }
+  }
+
+  // &--price{
+  //   background-color: $B-F2F7FA;
+  // }
+}
+
+
+.page-orthodontics__decoration{
+
+  .parts{
+
+    &.parts-01{
+      opacity: 0.1;
+      rotate: 65deg;
+
+      @include pc{
+        width: p(1128);
+        top: p(1010);
+        left: p(-300);
+      }
+      
+      @include sp{
+        width: s(350);
+        top: s(210);
+        left: s(-100);
+      }
+    }
+
+    &.parts-02{
+      opacity: 0.11;
+      rotate: 114deg;
+
+      @include pc{
+        width: p(1550);
+        top: p(2220);
+        left: p(330);
+      }
+      
+      @include sp{
+        width: s(350);
+        top: s(1810);
+        right: s(-100);
+      }
+    }
+
+    &.parts-03{
+      opacity: 0.2;
+      rotate: 78deg;
+
+      @include pc{
+        width: p(1550);
+        top: p(7640);
+        right: p(730);
+      }
+      
+      @include sp{
+        width: s(250);
+        top: s(3310);
+        left: s(-100);
+      }
     }
   }
 }

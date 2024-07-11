@@ -114,6 +114,7 @@
         @include column(s(2));
       }
 
+      // 矯正歯科/　上顎前突治療症例
       .img {
         aspect-ratio: 426/282;
         width: 100%;
@@ -285,6 +286,11 @@
           @include imgCover("/medicalCase/correction/upperJaw/upperJaw-after-7-2.jpg");
         }
 
+      }
+
+      // 矯正歯科/　下顎前突治療症例
+      .img {
+
         // 矯正歯科/　下顎前突治療症例1
         &.lowerJaw-before-1-1 {
           @include imgCover("/medicalCase/correction/lowerJaw/lowerJaw-before-1-1.jpg");
@@ -318,6 +324,10 @@
         &.lowerJaw-after-2-2 {
           @include imgCover("/medicalCase/correction/lowerJaw/lowerJaw-after-2-2.jpg");
         }
+      }
+
+      // 矯正歯科/　開咬治療症例
+      .img {
 
         // 矯正歯科/　開咬治療症例1
         &.openBite-before-1-1 {
@@ -394,8 +404,223 @@
         &.openBite-after-4-1 {
           @include imgCover("/medicalCase/correction/openBite/openBite-after-4-1.jpg");
         }
+      }
 
+      // 矯正歯科/　叢生治療症例
+      .img {
 
+        // 矯正歯科/　叢生治療症例1
+        &.crowd-before-1-1 {
+          @include imgCover("/medicalCase/correction/crowd/crowd-before-1-1.jpg");
+        }
+
+        &.crowd-after-1-1 {
+          @include imgCover("/medicalCase/correction/crowd/crowd-after-1-1.jpg");
+        }
+
+        &.crowd-before-1-2 {
+          @include imgCover("/medicalCase/correction/crowd/crowd-before-1-2.jpg");
+        }
+
+        &.crowd-after-1-2 {
+          @include imgCover("/medicalCase/correction/crowd/crowd-after-1-2.jpg");
+        }
+
+        &.crowd-before-1-3 {
+          @include imgCover("/medicalCase/correction/crowd/crowd-before-1-3.jpg");
+        }
+
+        &.crowd-after-1-3 {
+          @include imgCover("/medicalCase/correction/crowd/crowd-after-1-3.jpg");
+        }
+
+        // 矯正歯科/　叢生治療症例2
+        &.crowd-before-2-1 {
+          @include imgCover("/medicalCase/correction/crowd/crowd-before-2-1.jpg");
+        }
+
+        &.crowd-after-2-1 {
+          @include imgCover("/medicalCase/correction/crowd/crowd-after-2-1.jpg");
+        }
+
+        &.crowd-before-2-2 {
+          @include imgCover("/medicalCase/correction/crowd/crowd-before-2-2.jpg");
+        }
+
+        &.crowd-after-2-2 {
+          @include imgCover("/medicalCase/correction/crowd/crowd-after-2-2.jpg");
+        }
+
+        // 矯正歯科/　叢生治療症例3
+        &.crowd-before-3-1 {
+          @include imgCover("/medicalCase/correction/crowd/crowd-before-3-1.jpg");
+        }
+
+        &.crowd-after-3-1 {
+          @include imgCover("/medicalCase/correction/crowd/crowd-after-3-1.jpg");
+        }
+
+        &.crowd-before-3-2 {
+          @include imgCover("/medicalCase/correction/crowd/crowd-before-3-2.jpg");
+        }
+
+        &.crowd-after-3-2 {
+          @include imgCover("/medicalCase/correction/crowd/crowd-after-3-2.jpg");
+        }
+
+        // 矯正歯科/　叢生治療症例4
+        &.crowd-before-4-1 {
+          @include imgCover("/medicalCase/correction/crowd/crowd-before-4-1.jpg");
+        }
+
+        &.crowd-after-4-1 {
+          @include imgCover("/medicalCase/correction/crowd/crowd-after-4-1.jpg");
+        }
+
+        &.crowd-before-4-2 {
+          @include imgCover("/medicalCase/correction/crowd/crowd-before-4-2.jpg");
+        }
+
+        &.crowd-after-4-2 {
+          @include imgCover("/medicalCase/correction/crowd/crowd-after-4-2.jpg");
+        }
+      }
+
+      // 矯正歯科/　部分矯正治療症例
+      .img {
+
+        // 矯正歯科/　部分矯正治療症例1
+        &.partialCorrection-before-1-1 {
+          @include imgCover("/medicalCase/correction/partialCorrection/partialCorrection-before-1-1.jpg");
+        }
+
+        &.partialCorrection-after-1-1 {
+          @include imgCover("/medicalCase/correction/partialCorrection/partialCorrection-after-1-1.jpg");
+        }
+
+        &.partialCorrection-before-1-2 {
+          @include imgCover("/medicalCase/correction/partialCorrection/partialCorrection-before-1-2.jpg");
+        }
+
+        &.partialCorrection-after-1-2 {
+          @include imgCover("/medicalCase/correction/partialCorrection/partialCorrection-after-1-2.jpg");
+        }
+
+        &.partialCorrection-before-1-3 {
+          @include imgCover("/medicalCase/correction/partialCorrection/partialCorrection-before-1-3.jpg");
+        }
+
+        &.partialCorrection-after-1-3 {
+          @include imgCover("/medicalCase/correction/partialCorrection/partialCorrection-after-1-3.jpg");
+        }
+
+        // 矯正歯科/　部分矯正治療症例2
+        &.partialCorrection-before-2-1 {
+          @include imgCover("/medicalCase/correction/partialCorrection/partialCorrection-before-2-1.jpg");
+        }
+
+        &.partialCorrection-after-2-1 {
+          @include imgCover("/medicalCase/correction/partialCorrection/partialCorrection-after-2-1.jpg");
+        }
+
+        &.partialCorrection-before-2-2 {
+          @include imgCover("/medicalCase/correction/partialCorrection/partialCorrection-before-2-2.jpg");
+        }
+
+        &.partialCorrection-after-2-2 {
+          @include imgCover("/medicalCase/correction/partialCorrection/partialCorrection-after-2-2.jpg");
+        }
+      }
+
+      // インプラント/　治療症例
+      .img {
+
+        // インプラント/　治療症例1
+        &.implant-before-1-1 {
+          @include imgCover("/medicalCase/implant/implant-before-1-1.jpg");
+        }
+
+        &.implant-after-1-1 {
+          @include imgCover("/medicalCase/implant/implant-after-1-1.jpg");
+        }
+
+        // &.implant-before-1-2 {
+          // @include imgCover("/medicalCase/implant/implant-before-1-2.jpg");
+        // }
+
+        &.implant-after-1-2 {
+          @include imgCover("/medicalCase/implant/implant-after-1-2.jpg");
+        }
+
+        // インプラント/　治療症例2
+        &.implant-before-2-1 {
+          @include imgCover("/medicalCase/implant/implant-before-2-1.jpg");
+        }
+
+        &.implant-after-2-1 {
+          @include imgCover("/medicalCase/implant/implant-after-2-1.jpg");
+        }
+
+        &.implant-before-2-2 {
+          @include imgCover("/medicalCase/implant/implant-before-2-2.jpg");
+        }
+
+        &.implant-after-2-2 {
+          @include imgCover("/medicalCase/implant/implant-after-2-2.jpg");
+        }
+
+        // インプラント/　治療症例3
+        &.implant-before-3-1 {
+          @include imgCover("/medicalCase/implant/implant-before-3-1.jpg");
+        }
+
+        &.implant-after-3-1 {
+          @include imgCover("/medicalCase/implant/implant-after-3-1.jpg");
+        }
+
+        // インプラント/　治療症例4
+        &.implant-before-4-1 {
+          @include imgCover("/medicalCase/implant/implant-before-4-1.jpg");
+        }
+
+        &.implant-after-4-1 {
+          @include imgCover("/medicalCase/implant/implant-after-4-1.jpg");
+        }
+
+        // インプラント/　治療症例5
+        &.implant-before-5-1 {
+          @include imgCover("/medicalCase/implant/implant-before-5-1.jpg");
+        }
+
+        &.implant-after-5-1 {
+          @include imgCover("/medicalCase/implant/implant-after-5-1.jpg");
+        }
+
+        // インプラント/　治療症例6
+        &.implant-before-6-1 {
+          @include imgCover("/medicalCase/implant/implant-before-6-1.jpg");
+        }
+
+        &.implant-after-6-1 {
+          @include imgCover("/medicalCase/implant/implant-after-6-1.jpg");
+        }
+
+        // インプラント/　治療症例7
+        &.implant-before-7-1 {
+          @include imgCover("/medicalCase/implant/implant-before-7-1.jpg");
+        }
+
+        &.implant-after-7-1 {
+          @include imgCover("/medicalCase/implant/implant-after-7-1.jpg");
+        }
+
+        &.implant-before-7-2 {
+          @include imgCover("/medicalCase/implant/implant-before-7-2.jpg");
+        }
+
+        &.implant-after-7-2 {
+          @include imgCover("/medicalCase/implant/implant-after-7-2.jpg");
+        }
 
       }
 
