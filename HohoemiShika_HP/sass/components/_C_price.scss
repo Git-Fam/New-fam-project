@@ -7,11 +7,11 @@
 .C_price {
 
   @include pc {
-    padding: p(138) 0 p(84);
+    padding: p(138) 0 0;
   }
 
   @include sp {
-    padding: s(68) 0 s(60);
+    padding: s(68) 0 0;
   }
 
   &--container {

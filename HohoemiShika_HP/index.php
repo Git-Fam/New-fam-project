@@ -1,8 +1,8 @@
 <?php get_header(); ?>
 
 <main>
-    <div class="frontPage">
-        <!-- ここにコンテンツが入ります -->
+    <div class="index-404">
+        404 : このページは存在しません
     </div>
 </main>
 

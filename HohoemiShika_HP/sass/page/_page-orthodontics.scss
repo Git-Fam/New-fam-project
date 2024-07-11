@@ -1,0 +1,219 @@
+@use "../functions" as *;
+
+/* -----------------------
+  page-orthodontics
+----------------------- */
+
+.page-orthodontics {
+
+  @include pc {
+    padding-bottom: p(85);
+  }
+
+  @include sp {
+    padding-bottom: s(60);
+  }
+
+  &--example {
+
+    @include pc {
+      margin-bottom: p(216);
+      @include column(p(125));
+    }
+
+    @include sp {
+      margin-bottom: s(133);
+      @include column(s(80));
+    }
+
+    .example__container {
+      margin: 0 auto;
+
+      @include pc {
+        width: p(1080);
+      }
+
+      @include sp {
+        width: s(350);
+      }
+
+      &--tabs {
+        display: flex;
+
+        .tab {
+          width: calc(100% / 5);
+          cursor: pointer;
+          color: $F-8B761F;
+          @include Extrabold;
+          text-align: center;
+          border-top: solid $P-937F2A;
+          border-left: solid $P-937F2A;
+          background: $B-FFFFFF;
+
+          @include pc {
+            font-size: p(25);
+            border-top-width: pm(1, 1);
+            border-left-width: pm(1, 1);
+            padding: p(16) 0;
+          }
+
+          @include sp {
+            font-size: s(13);
+            padding: s(12) 0;
+            border-top-width: s(1);
+            border-left-width: s(1);
+          }
+
+          &:last-child {
+            border-right: solid $P-937F2A;
+
+            @include pc {
+              border-right-width: pm(1, 1);
+            }
+
+            @include sp {
+              border-right-width: s(1);
+            }
+
+          }
+
+          &.active {
+            background: linear-gradient(180deg, #937F2A 0%, #B8A75E 100%);
+            color: $F-FFFFFF;
+          }
+        }
+      }
+
+      &--contents {
+        border: solid $P-937F2A;
+        background: rgba(255, 255, 255, 0.50);
+
+        @include pc {
+          border-width: pm(1, 1);
+          padding: p(125) 0 p(80);
+        }
+
+        @include sp {
+          border-width: s(1);
+          padding: s(61) 0 s(74);
+        }
+
+        .content {
+          display: none;
+
+          @include pc {
+            flex-direction: column;
+            gap: p(125);
+          }
+
+          @include sp {}
+
+          &.active {
+            display: flex;
+          }
+
+
+          .case {
+
+            @include pc {
+              @include column(p(75))
+            }
+
+            @include sp {}
+
+            &:nth-child(odd) {
+              .C_pointText {
+                @include pc{
+                  text-align: left;
+                }
+              }
+            }
+
+            &:nth-child(even) {
+              .C_pointText {
+                @include pc{
+                  text-align: right;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+  }
+
+  &--invisalign {
+
+    @include pc {
+      @include column(p(128));
+      margin-bottom: p(248);
+    }
+
+    @include sp {
+      @include column(s(80));
+      margin-bottom: s(130);
+    }
+
+    .C_TL {
+
+      .main-TL {
+
+        @include sp {
+          white-space: nowrap;
+        }
+      }
+    }
+
+    &--content {
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.50);
+      backdrop-filter: blur(10px);
+      position: relative;
+
+      @include pc {
+        width: p(1080);
+        padding: p(74) 0 p(81);
+      }
+
+      @include sp {
+        width: s(350);
+        padding: s(58) 0 s(48);
+      }
+
+      .C_pointText {
+
+        @include pc {
+          position: absolute;
+          top: calc(100% + p(10));
+          right: p(-100);
+        }
+
+        @include sp {
+          margin-top: s(30);
+        }
+      }
+    }
+  }
+
+  &--invisalignFlow {
+
+    @include pc {
+      margin-bottom: p(171);
+    }
+
+    @include sp {
+      margin-bottom: s(50);
+    }
+  }
+}
