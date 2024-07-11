@@ -13,7 +13,9 @@
   }
 
   @include sp {
-    padding: s(45) 0 s(60);
+    padding: s(80) 0 s(60);
+    background-size: 950%;
+    background-position: left 30% top 10%;
   }
 
   &::before {

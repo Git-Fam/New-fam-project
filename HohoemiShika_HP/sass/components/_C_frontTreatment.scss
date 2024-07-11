@@ -14,7 +14,7 @@
   }
 
   @include sp {
-    padding: s(45) 0 0;
+    padding: s(45) 0 s(100);
   }
 
   .C_frontTreatment--title {
@@ -51,6 +51,10 @@
       .TX {
         @include pc {
           right: 0;
+        }
+
+        @include sp{
+          left: 0;
         }
       }
     }
@@ -89,7 +93,7 @@
       @include sp {
         font-size: s(28);
         letter-spacing: s(4.2);
-        bottom: s(-2);
+        bottom: s(0);
       }
     }
   }
@@ -225,8 +229,8 @@
             @include sp {
               font-size: s(25);
               letter-spacing: s(3.75);
-              top: s(10);
-              left: s(-10);
+              top: s(30);
+              left: s(10);
             }
 
             span {
