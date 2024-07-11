@@ -40,10 +40,10 @@ $(function () {
     $('.menu, .burger, body').removeClass("active");
   });
 
-    // テキスト表示
-    $(".C_hoverText").on("click", function () {
-      $(this).toggleClass("active");
-    });
+  // テキスト表示
+  $(".C_hoverText").on("click", function () {
+    $(this).toggleClass("active");
+  });
 
   var prevScrollpos = window.pageYOffset;
   window.onscroll = function () {
@@ -67,7 +67,7 @@ $(function () {
     });
   });
 
-    // ローディング
+  // ローディング
   var loadingFinished = false;
   var loading = $('.loadRight');
 
@@ -75,14 +75,24 @@ $(function () {
     loading.addClass('show');
     loadingFinished = true;
   });
-  setTimeout(function(){
+  setTimeout(function () {
     if (!loadingFinished) {
       loading.addClass('show');
     }
   }, 2000);
 
+  // page-orthodontics--example
+  $(".example__container--tabs .js--selector").on('click', function () {
+    let index = $(".example__container--tabs .js--selector").index(this);
+    $(".example__container--tabs .js--selector").removeClass("active");
+    $(this).addClass("active");
+    $(".example__container--contents .js--content").removeClass("active");
+    $(".example__container--contents .js--content").eq(index).addClass("active");
+    return false;
+  });
+
   // C_price
-  $(".C_price--container--selectors .js--selector").on('click', function(){
+  $(".C_price--container--selectors .js--selector").on('click', function () {
     let index = $(".C_price--container--selectors .js--selector").index(this);
     $(".C_price--container--selectors .js--selector").removeClass("active");
     $(this).addClass("active");
