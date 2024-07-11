@@ -9,18 +9,30 @@
   @include pc{
     padding-bottom: p(150);
   }
+  @include sp{
+    padding-bottom: s(100);
+  }
   .access{
     @include pc{
       padding: 0 p(200);
+    }
+    @include sp{
+      padding: 0 s(20);
     }
     &_content {
       @include pc{
         margin-top: p(60);
       }
+      @include sp{
+        margin-top: s(64);
+      }
       .map{
+        width: 100%;
         @include pc{
-          width: 100%;
           height: p(383);
+        }
+        @include sp{
+          height: s(300);
         }
       }
       .access_bottom {
@@ -30,22 +42,34 @@
           justify-content: space-between;
           align-items: flex-end;
         }
+        @include sp{
+          margin-top: s(30);
+        }
         .C_footerInfo {
           .textbox {
             color: $F-363636;
             @include pc{
               margin-top: p(18);
             }
+            @include sp{
+              margin-top: s(20);
+            }
             .adress {
               span{
                 @include pc{
                   margin-right: p(12);
+                }
+                @include sp{
+                  margin-right: s(12);
                 }
               }
             }          
             .root {
               @include pc{
                 margin-top: p(15);
+              }
+              @include sp{
+                margin-top: s(18);
               }
             }
           }
@@ -82,6 +106,17 @@
     @include pc{
       margin-top: p(152);
     }
+    @include sp{
+      margin-top: s(130);
+    }
+    .C_TL{
+      .TL-bg{
+        @include sp{
+          width: s(333);
+          margin: 0 auto;
+        }
+      }
+    }
     .openingHours_content {
       @include pc{
         display: flex;
@@ -89,82 +124,127 @@
         justify-content: space-between;
         align-items:flex-start;
         margin-top: p(80);
-        .C_footerInfo {
-          .Info-list {
-            margin: 0;
-            li{
-              padding: 0;
-              table{
-                width: p(430);
+      }
+      @include sp{
+        padding: 0 s(20);
+        margin-top: s(60);
+      }
+      .C_footerInfo {
+        .Info-list {
+          margin: 0;
+          @include pc{
+            width: p(430);
+          }
+          @include sp{
+            width: 100%;
+          }
+          li{
+            padding: 0;
+            table{
+              @include pc{
+                border: p(1) solid $P-C09933;
+                font-size: pm(18);
+              }
+              @include sp{
+                border: s(1) solid $P-C09933;
+                margin: 0;
+              }
+              tr{
                 @include pc{
                   border: p(1) solid $P-C09933;
-                  font-size: pm(18);
                 }
-                tr{
+                @include sp{
+                  border: s(1) solid $P-C09933;
+                }
+                th,td{
                   @include pc{
-                    border: p(1) solid $P-C09933;
+                    padding: p(14) 0;
                   }
-                  th,td{
+                  @include sp{
+                    padding: s(10) 0;
+                  }
+                }
+                th:first-child{
+                  @include pc{
+                    border-right: p(1) solid $P-FFFFFF;
+                  }  
+                  @include sp{
+                    border-right: s(1) solid $P-FFFFFF;
+                  }
+                }
+                td{
+                  background: $B-FFFFFF;
+                  color: $F-363636;
+                  @include sp{
+                    font-size: s(14);
+                  }
+                  .maru {
                     @include pc{
-                      padding: p(14) 0;
+                      border:p(1) solid $F-363636;
+                    }
+                    @include sp{
+                      border: s(1) solid $F-363636;
                     }
                   }
-                  th:first-child{
+                  .stu-maru{
+                    background: $B-363636;
+                  }
+                  .slash {
                     @include pc{
-                      border-right: p(1) solid $P-FFFFFF;
-                    }  
+                      border-left: p(1) solid $B-363636;
+                    }    
+                    @include sp{
+                      border-left: s(1) solid $B-363636;
+                    }            
                   }
-                  td{
-                    background: $B-FFFFFF;
-                    color: $F-363636;
-                    .maru {
-                      @include pc{
-                        border:p(1) solid $F-363636;
-                      }
-                      @include sp{
-                        border: s(1) solid $F-363636;
-                      }
-                    }
-                    .stu-maru{
-                      background: $B-363636;
-                    }
-                    .slash {
-                      @include pc{
-                        border-left: p(1) solid $B-363636;
-                      }    
-                      @include sp{
-                        border-left: s(1) solid $B-363636;
-                      }            
-                    }
-                    
-                    &:first-child{
-                      @include pc{
-                        border-right: p(1) solid $P-C09933;
-                      }    
+                  
+                  &:first-child{
+                    @include pc{
+                      border-right: p(1) solid $P-C09933;
+                    }    
+                    @include sp{
+                      border-right: s(1) solid $P-C09933;
                     }
                   }
-                }               
+                }
               }
+              .top{
+                @include sp{
+                  font-size: s(16);
+                }
+              }               
             }
           }
-          .under {
-            color: $F-363636;
-            @include pc{
-              margin-top: p(10);
-            }
-            .close{
-              @include pc{
-                margin-top: p(13);
-              }
-            }
-          }          
         }
-        .img{
-          @include imgCover("clinic_01.jpg");
+        .under {
+          color: $F-363636;
           @include pc{
-            width: p(420);
-            height: p(280);
+            margin-top: p(10);
           }
+          @include sp{
+            font-size: s(13);
+            margin-top: s(11);
+          }
+          .close{
+            @include pc{
+              margin-top: p(13);
+            }
+            @include sp{
+              margin-top: s(11);
+            }
+          }
+        }          
+      }
+      .img{
+        @include imgCover("clinic_01.jpg");
+        @include pc{
+          width: p(420);
+          height: p(280);
+        }
+        @include sp{
+          width: s(350);
+          height: s(233);
+          margin-top: s(60);
         }
       }
     }    

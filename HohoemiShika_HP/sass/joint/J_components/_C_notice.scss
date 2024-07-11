@@ -6,6 +6,9 @@
 ----------------------- */
 
 .C_notice{
+  @include sp{
+    padding: s(44) s(10) s(56);
+  }
   &-TL{
     @include Extrabold;
     @include pc{
@@ -14,40 +17,36 @@
     }
     @include sp{
       font-size: s(18);
-      margin-left: s(10);
       
     }
   }
   &-content{
     @include pc{
-      display: flex;
       border-top: p(1) solid $P-AC7D02;
       margin-top: p(10);
-      padding:p(35) 0 0 p(61);
+      padding-top:p(35);
     }
     @include sp{
       border-top: s(1) solid $P-AC7D02;
       margin-top: s(10);
+      padding-top:s(25);
     }
     .list{
-      @include pc{
-        width: p(368);
-      }
       @include sp{
         width: s(307);
-        margin:s(20) auto 0;
+        margin-left:s(24);
       }
       li{
         position: relative;
         @include pc{
           font-size: pm(16);
-          margin-bottom: p(10);
+          margin:0 0 p(10) p(27);
           line-height: p(25);
         }
         @include sp{
           font-size: s(16);
           margin-bottom: s(10);
-          line-height: s(20);
+          line-height: s(25);
 
         }
         &::before{
@@ -59,7 +58,7 @@
             width: p(9);
             height: p(9);
             left: p(-24);
-            top: p(3);
+            top: p(6);
           }
           @include sp{
             width: s(9);
@@ -75,12 +74,22 @@
       @include pc{
         width: p(342);
         height: p(228);
-        margin-left: auto;
+        margin-inline: auto p(28);
       }
       @include sp{
         width: s(330);
         height: s(200);
         margin:s(40) auto 0;
+      }
+    }
+  }
+  .top{
+    @include pc{
+      display: flex;
+    }
+    .list{
+      @include pc{
+        width: p(368);
       }
     }
   }

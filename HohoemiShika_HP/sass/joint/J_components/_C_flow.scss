@@ -75,6 +75,16 @@
     .flow01{
       @include imgCover("flow01.jpg");
     }  
+    .flow02{
+      @include imgCover("flow02.jpg");
+    }  
+    .flow03{
+      @include imgCover("flow03.jpg");
+    }  
+    .flow04{
+      @include imgCover("flow04.jpg");
+    }  
+
 
     &::before{
       background: linear-gradient(180deg, #937F2A 0%, #B4A258 49.5%, #937F2A 100%);
@@ -96,7 +106,7 @@
         left: s(-72);
       }
     }
-    &::after{
+    &:not(:last-child)::after{
       content: "";
       position: absolute;
       @include iconContain($flow-arrow);
