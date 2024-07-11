@@ -22,14 +22,16 @@
     height: s(194);
   }
 
-  .C_TitleBack--KV--front {
+  &.C_TitleBack--KV--front {
 
     @include pc {
       top: p(693);
     }
 
     @include sp {
-      top: s(700);
+      top: s(720);
+      height: s(194);
+      background-size: contain;
     }
   }
 

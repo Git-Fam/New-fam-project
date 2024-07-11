@@ -13,7 +13,9 @@
     padding-bottom: p(58);
   }
 
-  @include sp {}
+  @include sp {
+    padding: s(55) 0 s(30);
+  }
 
   &--example {
 
@@ -21,7 +23,9 @@
       margin-bottom: p(189);
     }
 
-    @include sp {}
+    @include sp {
+      margin-bottom: s(107);
+    }
 
     .front--correction {
 
@@ -30,7 +34,10 @@
         @include column(p(121))
       }
 
-      @include sp {}
+      @include sp {
+        margin-top: s(90);
+        @include column(s(128))
+      }
     }
 
     .front--implant {
@@ -39,7 +46,9 @@
         margin-top: p(180);
       }
 
-      @include sp {}
+      @include sp {
+        margin-top: s(129);
+      }
     }
   }
 }
@@ -49,34 +58,71 @@
   .parts {
 
     &.parts-01 {
+      opacity: 0.2;
+      rotate:65.75deg;
 
-      @include pc{
+      @include pc {
         width: p(1128);
-        top: 0;
+        top: p(180);
+        left: p(-450);
       }
-      
-      @include sp{}
+
+      @include sp {
+        width: s(883);
+        top: s(160);
+        left: s(-470);
+      }
     }
 
     &.parts-02 {
+      opacity: 0.11;
+      rotate:119.17deg;
 
-      @include pc{}
-      
-      @include sp{}
+      @include pc {
+        width: p(976);
+        top: p(1320);
+        right: p(-550);
+      }
+
+      @include sp {
+        width: s(483);
+        top: s(1300);
+        right: s(-280);
+      }
     }
 
     &.parts-03 {
+      opacity: 0.04;
+      rotate:150.72deg;
 
-      @include pc{}
-      
-      @include sp{}
+      @include pc {
+        width: p(804);
+        top: p(2150);
+        left: p(180);
+      }
+
+      @include sp {
+        width: s(510);
+        top: s(2230);
+        left: s(180);
+      }
     }
 
     &.parts-04 {
+      opacity: 0.11;
+      rotate:298deg;
 
-      @include pc{}
-      
-      @include sp{}
+      @include pc {
+        width: p(1550);
+        bottom: p(800);
+        right: p(-410);
+      }
+
+      @include sp {
+        width: s(1000);
+        bottom: s(1000);
+        right: s(-410);
+      }
     }
   }
 }
