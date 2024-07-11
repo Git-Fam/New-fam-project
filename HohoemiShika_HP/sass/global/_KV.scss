@@ -175,5 +175,9 @@
       top: calc(100% - s(68));
       background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 10%, #F2F7FA 34.94%, #F2F7FA 61.24%, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 0) 100%, );
     }
+
+    &.smoke__black{
+      background: linear-gradient(180deg, rgba(33, 50, 54, 0.00) 2.06%, #0A0705 34.94%, #091119 60.27%, rgba(9, 17, 25, 0.00) 98.29%);
+    }
   }
 }

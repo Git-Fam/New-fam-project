@@ -1,5 +1,45 @@
 @use "../functions" as *;
 
 /* -----------------------
-  frontPage
+  front-page
 ----------------------- */
+
+.front-page{
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+
+  @include pc{
+    padding-bottom: p(58);
+  }
+  
+  @include sp{}
+
+  &--example{
+
+    @include pc{
+      margin-bottom: p(189);
+    }
+    
+    @include sp{}
+
+    .front--correction{
+
+      @include pc{
+        margin-top: p(160);
+        @include column(p(121))
+      }
+      
+      @include sp{}
+    }
+
+    .front--implant{
+
+      @include pc{
+        margin-top: p(180);
+      }
+      
+      @include sp{}
+    }
+  }
+}

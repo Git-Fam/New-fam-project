@@ -44,12 +44,12 @@
     }
 
     &.C_frontTreatment--title__right {
-      @include pc{
+      @include pc {
         right: 0;
       }
 
       .TX {
-        @include pc{
+        @include pc {
           right: 0;
         }
       }
@@ -79,7 +79,7 @@
       color: #E9EDF0;
       position: absolute;
       z-index: 1;
-      
+
       @include pc {
         font-size: p(70);
         letter-spacing: p(10.571);
@@ -205,7 +205,7 @@
             width: s(106);
           }
 
-          &.number--gray{
+          &.number--gray {
             @include iconContain($hexagonGradationGray);
           }
 
@@ -214,7 +214,7 @@
             @include Demibold;
             line-height: 1;
             position: absolute;
-            
+
             @include pc {
               font-size: pm(30);
               letter-spacing: pm(4.5);
@@ -248,7 +248,7 @@
 
     .item--bottom {
       display: flex;
-      
+
       @include pc {
         align-items: center;
         flex-direction: row-reverse;
@@ -345,7 +345,7 @@
         }
 
         .text {
-          @include sp{
+          @include sp {
             white-space: nowrap;
           }
 
@@ -354,7 +354,7 @@
             @include Demibold;
             line-height: 1.5;
 
-            @include sp{
+            @include sp {
               text-align: center;
             }
 
@@ -383,6 +383,17 @@
                 letter-spacing: s(4.5);
               }
 
+              .medium_small {
+                @include pc {
+                  font-size: p(25);
+                  letter-spacing: p(3.75);
+                }
+
+                @include sp {
+                  font-size: s(25);
+                  letter-spacing: s(3.75);
+                }
+              }
             }
 
             .big {
