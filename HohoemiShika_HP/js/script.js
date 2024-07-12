@@ -223,3 +223,26 @@ $(window).on('load', function () {
 
   RollAnimeLoadControl();/* アニメーション用の関数を呼ぶ*/
 });// ここまで画面が読み込まれたらすぐに動かしたい場合の記述
+
+
+// 画面転換でタブ切り替え
+document.addEventListener('DOMContentLoaded', function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const tab = urlParams.get('tab');
+
+  if (tab) {
+      const tabs = document.querySelectorAll('.js--selector');
+      const contents = document.querySelectorAll('.js--content');
+
+      tabs.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+
+      const activeTab = document.querySelector(`.js--selector[data-tab="${tab}"]`);
+      const activeContent = document.querySelector(`.js--content[data-content="${tab}"]`);
+
+      if (activeTab && activeContent) {
+          activeTab.classList.add('active');
+          activeContent.classList.add('active');
+      }
+  }
+});

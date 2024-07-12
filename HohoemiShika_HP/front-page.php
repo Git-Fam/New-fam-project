@@ -37,8 +37,8 @@
                                         <span class="medium">自信溢れる</span><span class="big">笑顔に</span>
                                     </p>
                                 </div>
-                                <!-- p2の叢生1へ -->
-                                <a class="C_viewMore" href="#">
+                                <!-- page-orthodonticsの叢生へ -->
+                                <a class="C_viewMore" href="<?php bloginfo('url'); ?>/orthodontics?tab=crowd">
                                     <p class="TX">View more</p>
                                 </a>
                             </div>
@@ -73,8 +73,8 @@
                                         <span class="medium">横顔</span><span class="big">スッキリ！</span>
                                     </p>
                                 </div>
-                                <!-- p２の上顎前突１ -->
-                                <a class="C_viewMore" href="#">
+                                <!-- page-orthodonticsの上顎前突へ -->
+                                <a class="C_viewMore" href="<?php bloginfo('url'); ?>/orthodontics?tab=upperJaw">
                                     <p class="TX">View more</p>
                                 </a>
                             </div>
@@ -109,8 +109,8 @@
                                         <span class="medium">歯の寿命を</span><span class="big">伸ばす</span>
                                     </p>
                                 </div>
-                                <!-- p２の開咬１ -->
-                                <a class="C_viewMore" href="#">
+                                <!-- page-orthodonticsの下顎前突へ -->
+                                <a class="C_viewMore" href="<?php bloginfo('url'); ?>/orthodontics?tab=lowerJaw">
                                     <p class="TX">View more</p>
                                 </a>
                             </div>
@@ -145,8 +145,8 @@
                                         <span class="big">予防</span><span class="medium">にも</span><span class="big">効果的！</span>
                                     </p>
                                 </div>
-                                <!-- p２開咬１ -->
-                                <a class="C_viewMore" href="#">
+                                <!-- page-orthodonticsの開咬へ -->
+                                <a class="C_viewMore" href="<?php bloginfo('url'); ?>/orthodontics?tab=openBite">
                                     <p class="TX">View more</p>
                                 </a>
                             </div>
@@ -179,8 +179,8 @@
                                         <span class="medium">自然な</span><span class="big">美</span><span class="medium">しさを取り戻す</span>
                                     </p>
                                 </div>
-                                <!-- インプラントpage -->
-                                <a class="C_viewMore" href="#">
+                                <!-- page-implantへ -->
+                                <a class="C_viewMore" href="<?php bloginfo('url'); ?>/implant">
                                     <p class="TX">View more</p>
                                 </a>
                             </div>
@@ -213,8 +213,7 @@
                                     インビザラインでの目立たない治療もおこなっております。
                                 </p>
                             </div>
-                            <!-- page矯正 -->
-                            <a class="C_viewMore" href="#">
+                            <a class="C_viewMore" href="<?php bloginfo('url'); ?>/orthodontics">
                                 <p class="TX">矯正歯科治療<span></span></p>
                             </a>
                         </div>
@@ -233,7 +232,7 @@
                                 </p>
                             </div>
                             <!-- pageインプラント -->
-                            <a class="C_viewMore" href="#">
+                            <a class="C_viewMore" href="<?php bloginfo('url'); ?>/implant">
                                 <p class="TX">インプラント治療<span></span></p>
                             </a>
                         </div>
@@ -252,7 +251,7 @@
                                 </p>
                             </div>
                             <!-- page審美 -->
-                            <a class="C_viewMore" href="#">
+                            <a class="C_viewMore" href="<?php bloginfo('url'); ?>/aestheticdentistry">
                                 <p class="TX">審美歯科治療<span></span></p>
                             </a>
                         </div>
