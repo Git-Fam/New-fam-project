@@ -192,7 +192,7 @@
         <div class="C_Features">
             <div class="C_Features--inner">
                 <div class="C_TL">
-                    <p class="TL-bg rollAnime">Features</p>
+                    <p class="TL-bg rollAnime color">Features</p>
                     <h2 class="main-TL up speed-05 delay-03">当院の自由診療</h2>
                 </div>
                 <div class="subTitle">

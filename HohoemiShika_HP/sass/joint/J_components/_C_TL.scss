@@ -12,19 +12,26 @@
 
   .TL-bg {
     @include contrail;
-    opacity: 0.3;
     font-weight: 400;
-
+    
     @include pc {
+      opacity: 0.3;
       color: $F-BCAB64;
       font-size: p(122);
       letter-spacing: p(18.3);
     }
 
     @include sp {
-      color: $F-8E8048;
+      color: #E6E6D8;
       font-size: s(60);
       letter-spacing: s(10);
+    }
+
+    &.color{
+      @include sp{
+        color: $F-8E8048;
+        opacity: 0.3;
+      }
     }
 
     &.rollAnime.roll span {

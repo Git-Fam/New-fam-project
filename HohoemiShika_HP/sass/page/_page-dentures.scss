@@ -1,0 +1,228 @@
+@use "../functions" as *;
+
+/* -----------------------
+  page-dentures
+----------------------- */
+
+.page-dentures {
+  position: relative;
+  z-index: 5;
+
+  &--Example {
+
+    @include pc {
+      margin-bottom: p(275);
+      @include column(p(125));
+    }
+
+    @include sp {
+      margin-bottom: s(130);
+      @include column(s(75));
+    }
+
+    &--container {
+
+      @include pc {
+        @include column(p(250));
+      }
+
+      @include sp {
+        @include column(s(100));
+      }
+
+      .case {
+        border: solid #937F2A;
+        background: rgba(255, 255, 255, 0.50);
+        backdrop-filter: blur(10px);
+        margin: 0 auto;
+        position: relative;
+
+        @include pc {
+          width: p(1080);
+          border-width: pm(1, 1);
+          padding: p(73) 0 p(87);
+        }
+
+        @include sp {
+          width: s(350);
+          border-width: s(1);
+          padding: s(42) 0;
+        }
+
+        &:nth-child(odd) {
+
+          .C_pointText {
+            @include pc {
+              left: p(-100);
+            }
+
+            @include sp {
+              left: 0;
+            }
+          }
+        }
+
+        &:nth-child(even) {
+
+          .C_pointText {
+            @include pc {
+              right: p(-100);
+            }
+
+            @include sp {
+              right: 0;
+            }
+          }
+        }
+
+        .C_medicalCase {
+
+          &--imgWhopper {
+
+            @include pc {
+              row-gap: p(67);
+            }
+
+            @include sp {
+              row-gap: s(21);
+            }
+
+            .item {
+              .TX {
+                display: none;
+              }
+            }
+          }
+
+          &--listsWhopper {
+            .list {
+              li {
+                .TX {
+                  &.wrap {
+                    @include pc {
+                      white-space: nowrap;
+                    }
+
+                    @include sp {}
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .C_pointText {
+          position: absolute;
+
+          @include pc {
+            top: calc(100% + p(30));
+          }
+
+          @include sp {
+            top: calc(100% + s(20));
+          }
+
+          &.color {
+            color: $F-F2F7FA;
+          }
+        }
+      }
+    }
+  }
+
+  &--OurTreatment {
+
+    @include pc {
+      margin-bottom: p(181);
+    }
+
+    @include sp {
+      margin-bottom: s(100);
+    }
+
+    .C_onlyText {
+
+      .C_TL {
+
+        .TL-bg {
+          @include sp {
+            letter-spacing: 0.03em;
+            white-space: nowrap;
+          }
+        }
+      }
+
+      &--text {
+
+        @include sp {
+          width: 100%;
+        }
+
+        .TX {
+
+          @include sp {
+            font-size: s(16);
+          }
+        }
+      }
+    }
+  }
+}
+
+.page-dentures__decoration {
+
+  .parts {
+
+    &.parts-01 {
+      opacity: 0.1;
+      rotate: 65deg;
+
+      @include pc {
+        width: p(1128);
+        top: p(800);
+        left: p(-250);
+      }
+
+      @include sp {
+        width: s(350);
+        top: s(210);
+        left: s(-100);
+      }
+    }
+
+    &.parts-02 {
+      opacity: 0.1;
+      rotate: -157deg;
+
+      @include pc {
+        width: p(1590);
+        top: p(2400);
+        left: p(-100);
+
+      }
+
+      @include sp {
+        width: s(350);
+        top: s(1000);
+        right: s(-100);
+      }
+    }
+
+    &.parts-03 {
+      opacity: 0.15;
+      rotate: -114deg;
+
+      @include pc {
+        width: p(1128);
+        top: p(4450);
+        left: p(-90);
+      }
+
+      @include sp {
+        width: s(450);
+        top: s(2510);
+        left: s(-100);
+      }
+    }
+  }
+}

@@ -1,0 +1,148 @@
+@use "../functions" as *;
+
+/* -----------------------
+  page-oralSurgery
+----------------------- */
+
+.page-oralSurgery {
+  position: relative;
+  z-index: 5;
+
+  &--OurTreatment {
+
+    @include pc {
+      @include column(p(50));
+      margin-bottom: p(150);
+    }
+
+    @include sp {
+      @include column(s(60));
+      margin-bottom: s(130);
+    }
+
+    .OurTreatment--title {
+
+      @include pc {
+        @include column(p(50));
+      }
+
+      @include sp {
+        @include column(s(60));
+      }
+
+      .C_TL {
+
+        .TL-bg {
+          @include sp {
+            letter-spacing: 0.08rem;
+          }
+        }
+
+        .main-TL {
+
+          @include sp {
+            width: 100%;
+          }
+        }
+      }
+
+      .subText {
+
+        .TX {
+          color: $F-333130;
+          text-align: center;
+          line-height: 190%;
+
+          @include pc {
+            font-size: pm(17);
+            letter-spacing: pm(0.85);
+          }
+
+          @include sp {
+            font-size: s(17);
+            letter-spacing: s(0.85);
+          }
+        }
+      }
+    }
+  }
+
+  &--onlyText {
+
+    @include pc {
+      margin-bottom: p(178);
+    }
+
+    @include sp {
+      margin-bottom: s(123);
+    }
+
+    .C_TL {
+
+      .TL-bg {
+        @include sp {
+          letter-spacing: 0.2rem;
+        }
+      }
+
+      .main-TL {
+
+        @include sp {
+          width: 100%;
+        }
+      }
+    }
+
+    .C_wisdomTooth {
+
+      @include pc {
+        margin-top: p(30);
+      }
+
+      @include sp {
+        margin-top: s(50);
+      }
+    }
+  }
+}
+
+.page-oralSurgery__decoration {
+
+  .parts {
+
+    &.parts-01 {
+      opacity: 0.1;
+      rotate: 65deg;
+
+      @include pc {
+        width: p(1128);
+        top: p(1100);
+        left: p(-250);
+      }
+
+      @include sp {
+        width: s(350);
+        top: s(210);
+        left: s(-100);
+      }
+    }
+
+    &.parts-02 {
+      opacity: 0.1;
+      rotate: 157deg;
+
+      @include pc {
+        width: p(1590);
+        top: p(2500);
+        left: p(0);
+
+      }
+
+      @include sp {
+        width: s(350);
+        top: s(1810);
+        right: s(-100);
+      }
+    }
+  }
+}
