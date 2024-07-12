@@ -251,7 +251,43 @@
   }
 }
 
-.close {
-}
-.img {
+.page-accessReceptionTime__decoration{
+  .parts {
+    z-index: -1;
+    &.parts-01 {
+      opacity: 0.1;
+      rotate:-114.25deg;
+
+      @include pc {
+        width: p(945);
+        top: p(140);
+        right: p(-480);
+      }
+
+      @include sp {
+        width: s(883);
+        top: s(10);
+        right: s(-600);
+      }
+    }
+
+    &.parts-02 {
+      opacity: 0.11;
+      rotate:40.04deg;
+
+      @include pc {
+        width: p(982);
+        top: p(900);
+        left: p(-430);
+      }
+
+      @include sp {
+        width: s(782);
+        top: s(909);
+        left: s(-420);
+      }
+    }
+
+  }
+
 }
