@@ -1,0 +1,21 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_pointText
+----------------------- */
+
+.C_pointText {
+  color: $F-E9EDF0;
+  @include contrail;
+  line-height: 1;
+
+  @include pc {
+    font-size: p(70.47);
+    letter-spacing: p(10.571);
+  }
+
+  @include sp {
+    font-size: s(22.782);
+    letter-spacing: s(3.417);
+  }
+}

@@ -38,11 +38,13 @@
   &.C_TitleBack--KV {
 
     @include pc {
-      top: p(409);
+      top: p(320);
     }
 
     @include sp {
-      top: s(250);
+      top: s(240);
+      background-size: 65%;
+      background-position: right top s(-10);
     }
   }
 }
