@@ -624,6 +624,76 @@
 
       }
 
+      // セラミック/　治療症例
+      .img {
+
+        // セラミック/　治療症例1
+        &.ceramic-before-1-1 {
+          @include imgCover("/medicalCase/ceramic/ceramic-before-1-1.jpg");
+        }
+
+        &.ceramic-after-1-1 {
+          @include imgCover("/medicalCase/ceramic/ceramic-after-1-1.jpg");
+        }
+
+        &.ceramic-before-1-2 {
+          @include imgCover("/medicalCase/ceramic/ceramic-before-1-2.jpg");
+        }
+
+        &.ceramic-after-1-2 {
+          @include imgCover("/medicalCase/ceramic/ceramic-after-1-2.jpg");
+        }
+
+        // セラミック/　治療症例2
+        &.ceramic-before-2-1 {
+          @include imgCover("/medicalCase/ceramic/ceramic-before-2-1.jpg");
+        }
+
+        &.ceramic-after-2-1 {
+          @include imgCover("/medicalCase/ceramic/ceramic-after-2-1.jpg");
+        }
+
+        &.ceramic-before-2-2 {
+          @include imgCover("/medicalCase/ceramic/ceramic-before-2-2.jpg");
+        }
+
+        &.ceramic-after-2-2 {
+          @include imgCover("/medicalCase/ceramic/ceramic-after-2-2.jpg");
+        }
+
+        // セラミック/　治療症例3
+        &.ceramic-before-3-1-1 {
+          @include imgCover("/medicalCase/ceramic/ceramic-before-3-1-1.jpg");
+        }
+
+        &.ceramic-before-3-1-2 {
+          @include imgCover("/medicalCase/ceramic/ceramic-before-3-1-2.jpg");
+        }
+
+        &.ceramic-after-3-1 {
+          @include imgCover("/medicalCase/ceramic/ceramic-after-3-1.jpg");
+        }
+
+        // セラミック/　治療症例4
+        &.ceramic-before-4-1 {
+          @include imgCover("/medicalCase/ceramic/ceramic-before-4-1.jpg");
+        }
+
+        &.ceramic-after-4-1 {
+          @include imgCover("/medicalCase/ceramic/ceramic-after-4-1.jpg");
+        }
+
+        // セラミック/　治療症例5
+        &.ceramic-before-5-1 {
+          @include imgCover("/medicalCase/ceramic/ceramic-before-5-1.jpg");
+        }
+
+        &.ceramic-after-5-1 {
+          @include imgCover("/medicalCase/ceramic/ceramic-after-5-1.jpg");
+        }
+
+      }
+
       .TX {
         @include Demibold;
         line-height: 1.5;

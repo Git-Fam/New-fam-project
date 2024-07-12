@@ -1,22 +1,30 @@
 @use "../functions" as *;
 
 /* -----------------------
-  page-implant
+  page-aestheticDentistry
 ----------------------- */
 
-.page-implant {
+.page-aestheticDentistry {
   position: relative;
   z-index: 5;
+
+  @include pc {
+    padding-bottom: p(150);
+  }
+
+  @include sp {
+    padding-bottom: s(75);
+  }
 
   &--Example {
 
     @include pc {
-      margin-bottom: p(414);
+      margin-bottom: p(275);
       @include column(p(125));
     }
 
     @include sp {
-      margin-bottom: s(150);
+      margin-bottom: s(130);
       @include column(s(75));
     }
 
@@ -113,173 +121,154 @@
     }
   }
 
-  &--implant {
+  &--OurTreatment {
 
     @include pc {
-      margin-bottom: p(178);
-    }
-
-    @include sp {
-      margin-bottom: s(64);
-    }
-  }
-
-  &--hoverText {
-
-    @include pc {
-      @include column(p(35));
-      margin-bottom: p(150);
-    }
-
-    @include sp {
-      @include column(s(19));
-      margin-bottom: s(100);
-    }
-  }
-
-  // &--merit_demerit {
-
-  // }
-
-  &--price {
-
-    @include pc {
-      margin-bottom: p(150);
+      margin-bottom: p(181);
     }
 
     @include sp {
       margin-bottom: s(100);
     }
 
-    .C_price {
+    .C_TL {
 
-      &--text {
-
-        @include pc {
-          margin-top: p(50);
-        }
-
+      .TL-bg {
         @include sp {
-          margin: s(60) auto 0;
-          width: s(337);
+          letter-spacing: 0.03em;
+          white-space: nowrap;
         }
+      }
+    }
+  }
+
+  &--Material {
+
+    @include pc {
+      margin-bottom: p(150);
+    }
+
+    @include sp {
+      margin-bottom: s(120);
+    }
+  }
+
+  &--Whitening {
+
+    @include pc {
+      @include column(p(71));
+    }
+
+    @include sp {
+      @include column(s(68));
+    }
+
+    .Whitening--title {
+
+      @include pc {
+        @include column(p(50));
+      }
+
+      @include sp {
+        @include column(s(65));
+      }
+
+      .C_TL {
+
+        @include sp {}
+
+        .main-TL {
+
+          @include sp {
+            white-space: nowrap;
+            line-height: 1.3;
+            top: -15%;
+          }
+        }
+      }
+
+      .subTitle {
 
         .TX {
           color: $F-363636;
-          line-height: 193%;
+          text-align: center;
+          line-height: 187%;
 
           @include pc {
-            text-align: center;
             font-size: pm(16);
-            letter-spacing: pm(0.8);
           }
 
-          @include sp {
-            font-size: s(16);
-            letter-spacing: s(0.8);
-          }
+          @include sp {}
         }
+      }
+    }
+  }
+
+  &--price {
+
+    .C_price {
+
+      @include sp {
+        padding-top: s(135);
       }
 
       &--container {
 
         @include pc {
-          margin-top: p(82);
-        }
-
-        @include sp {
-          margin-top: s(38);
-        }
-
-        &--selectors{
-          .selector{
-            @include sp{
-              font-size: s(16);
-            }
-          }
-        }
-
-        &--contents{
-
-          @include sp{
-            padding-top:s(20) ;
-            padding-bottom: s(25);
-          }
-
-          .list{
-            li{
-
-              @include sp{
-                flex-direction: unset;
-                flex-wrap: wrap;
-                padding: s(10) s(38);
-                gap: s(10);
-              }
-
-              .TL{
-
-                @include sp{
-                  font-size: s(18);
-                  white-space: nowrap;
-                }
-              }
-
-              .TX{
-
-                @include sp{
-                  font-size: s(18);
-                  width: fit-content;
-                  margin-left: auto;
-                }
-              }
-            }
-          }
-        }
-
-        .item--point{
-
-          @include sp{
-            top: unset;
-            bottom: calc(100% + s(60));
-          }
-        }
-      }
-
-      &--risk {
-
-        @include pc {
-          width: p(880);
           margin-top: p(78);
         }
 
         @include sp {
-          margin-top: s(20);
+          margin-top: s(94);
         }
 
-        .title{
-
-          .TL{
+        &--selectors {
+          .selector {
+            @include center;
 
             @include sp {
-              font-size: s(17);
+              font-size: s(16);
+              line-height: 1.18;
+              padding: s(7) 0;
+            }
+
+            &.long {
+              @include pc {
+                width: p(407);
+              }
             }
           }
         }
 
-        .text {
-          padding-left: 1rem;
-          text-indent: -1.3rem;
+        &--contents {
 
-          .TX {
+          .item {
 
-            @include sp {
-              font-size: s(13);
-              letter-spacing: s(0.65);
+            li {
+
+              @include pc {
+                padding-left: p(80);
+                padding-right: p(40);
+              }
+
+              @include sp {
+                gap: s(20);
+                padding-bottom: s(10);
+                align-items: center;
+              }
+
+              .TX {
+                margin: unset;
+              }
             }
+          }
+        }
 
-            &::before {
-              content: "・";
-            }
+        .item--point {
+
+          @include sp {
+            top: unset;
+            bottom: calc(100% + s(65));
           }
         }
       }
@@ -287,20 +276,18 @@
   }
 }
 
-
-//  ここから
-.page-implant__decoration {
+.page-aestheticDentistry__decoration {
 
   .parts {
 
     &.parts-01 {
-      opacity: 0.2;
+      opacity: 0.1;
       rotate: 65deg;
 
       @include pc {
         width: p(1128);
-        top: p(700);
-        left: p(-200);
+        top: p(1100);
+        left: p(-250);
       }
 
       @include sp {
@@ -311,13 +298,13 @@
     }
 
     &.parts-02 {
-      opacity: 0.11;
-      rotate: 114deg;
+      opacity: 0.1;
+      rotate: 157deg;
 
       @include pc {
-        width: p(1550);
-        top: p(2420);
-        right: p(-530);
+        width: p(1590);
+        top: p(2500);
+        left: p(0);
 
       }
 
@@ -329,13 +316,13 @@
     }
 
     &.parts-03 {
-      opacity: 0.15;
+      opacity: 0.2;
       rotate: 78deg;
 
       @include pc {
-        width: p(1550);
-        top: p(5050);
-        left: p(-410);
+        width: p(1590);
+        top: p(4650);
+        left: p(-1000);
       }
 
       @include sp {
@@ -347,18 +334,35 @@
 
     &.parts-04 {
       opacity: 0.05;
-      rotate: 45deg;
+      rotate: 22deg;
 
       @include pc {
-        width: p(2072);
-        top: p(7280);
-        right: p(-650);
+        width: p(1594);
+        top: p(6230);
+        right: p(-1080);
       }
 
       @include sp {
         width: s(350);
         top: s(4510);
-        left: s(-100);
+        right: s(-80);
+      }
+    }
+
+    &.parts-05 {
+      opacity: 0.05;
+      rotate: 114deg;
+
+      @include pc {
+        width: p(1550);
+        top: p(9100);
+        left: p(50);
+      }
+
+      @include sp {
+        width: s(350);
+        top: s(7200);
+        left: s(-50);
       }
     }
   }
