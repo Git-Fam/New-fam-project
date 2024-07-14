@@ -10,6 +10,7 @@
     padding: 0 p(200);
   }
 
+
   &_content {
     position: relative;
 
@@ -17,16 +18,29 @@
       display: flex;
       margin-top: p(174);
     }
+    @include sp{
+      display: flex;
+      flex-direction: column-reverse;
+      margin-top: s(97);
+    }
 
     .img {
-      position: absolute;
-      z-index: 10;
 
       @include pc {
         width: p(455);
         height: p(300);
         top: p(50);
         box-shadow: p(2) p(2) p(2) 0 rgba(0, 0, 0, 0.25);
+        position: absolute;
+        z-index: 10;
+  
+      }
+      @include sp{
+        width: s(306);
+        height: s(201);
+        box-shadow: s(2) s(2) s(2) 0 rgba(0, 0, 0, 0.25);
+        margin: s(30) s(20) 0 auto;
+        position: relative;
       }
     }
 
@@ -56,26 +70,41 @@
       background-size: contain;
       background-position: center;
       color: $F-FFFFFF;
-
+      display: grid;
+      align-items: center;
+      z-index: 1;
       @include pc {
         width: p(583);
         height: p(276);
         margin-left: p(236);
-        padding: p(67) p(50) 0 p(250);
+        padding: 0 p(50) 0 p(250);
+      }
+      @include sp{
+        width: s(583);
+        height: s(276);
+        margin-left: s(-214);
+        padding:0 s(50) 0 s(276); 
       }
 
       .TL {
         @include Extrabold;
-
+        line-height: 150%;
         @include pc {
           font-size: pm(20);
         }
+        @include sp{
+          font-size: s(20);
+        }
       }
       .TX {
+        line-height: 187%;
         @include pc {
           font-size: p(16);
           margin-top: p(20);
-          line-height: 187%;
+        }
+        @include sp{
+          font-size: s(16);
+          margin-top: s(20);
         }
       }
 
@@ -90,35 +119,93 @@
           top: p(7);
           left: p(7);
         }
+        @include sp{
+          width: s(568);
+          height: s(263);
+          top: s(7);
+          left: s(7);
+
+        }
       }
 
-      &:last-child {
-        padding: p(67) p(50) 0 p(242)
-      }
     }
 
     .deco-TX {
       @include cinzel;
       @include Regular;
-      position: absolute;
       color: $F-C8C5B5;
       z-index: 20;
+      position: absolute;
 
       @include pc {
         font-size: p(90);
         bottom: p(-35);
-        right: p(-112);
+        right: p(-95);
+      }
+      @include sp{
+        font-size: s(55);
+        bottom: s(-25);
+        bottom: s(-25);
       }
     }
 
     &:first-child {
       margin-top: 0;
+      .deco-TX {
+        @include sp{
+          right: s(20);  
+        }
+      }
     }
+    &:nth-child(2) {
+      .deco-TX {
+        @include sp{
+          right: s(20);
+        }
+      }
+    }
+    &:nth-child(3) {
+      .deco-TX {
+        @include sp{
+          right: s(100);
+        }
+      }
+    }
+    &:nth-child(4) {
+      .deco-TX {
+        @include sp{
+          right: s(43);
+        }
+      }
+    }
+    &:last-child {
+      .textbox{
+        @include pc{
+          padding: 0 p(45) 0 p(242);
+        }
+        @include sp{
+          padding:0 s(50) 0 s(242); 
+        }
+      }
+
+      .deco-TX {
+        @include sp{
+          right: s(128);
+        }
+      }
+    }
+
   }
 
   .reverse {
-    flex-direction: row-reverse;
-
+    @include pc{
+      flex-direction: row-reverse;
+    }
+    .img{
+      @include sp{
+        margin: s(30) auto 0 s(20);
+      }
+    }
     .textbox {
       background-image: feature-bg(encode('#B5AC85'));
       position: relative;
@@ -127,7 +214,10 @@
       margin-inline: p(72) auto;
 
       @include pc {
-        padding: p(67) p(268) 0 p(50);
+        padding: 0 p(268) 0 p(50);
+      }
+      @include sp{
+        padding: 0 s(268) 0 s(50);
       }
     }
 

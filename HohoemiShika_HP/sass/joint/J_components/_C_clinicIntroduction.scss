@@ -13,7 +13,7 @@
     gap: p(44);
   }
   @include sp{
-    gap: s(20);
+    gap: s(25);
   }
   .aaa{
     display: flex;
@@ -30,7 +30,7 @@
       gap: p(44);
     }
     @include sp{
-      gap: s(20);
+      gap: s(25);
     }  
   }
   .img{
@@ -40,20 +40,21 @@
       height: p(299);
     }
     @include sp{
-      width: s(200);
-      height: s(133);
+      width: s(258);
+      height: s(172);
     }
     &::before{
       background: $B-FFFFFF;
       position: absolute;
       top: 0;
       left: 0;
+      @include Extrabold;
       @include pc{
         font-size: p(20);
         padding: p(10) p(30);
       }
       @include sp{
-        font-size: s(14);
+        font-size: s(17);
         padding: s(5) s(10);
       }
     }

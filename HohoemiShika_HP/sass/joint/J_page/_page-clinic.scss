@@ -1,0 +1,341 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  page-clinic
+----------------------- */
+
+.page-clinic{
+  position: relative;
+  z-index: 1;
+  @include pc{
+    padding-bottom: p(150);
+  }
+  @include sp{
+    padding-bottom: s(100);
+  }
+  .about {
+    @include Extrabold;
+    .TX {
+      line-height: 205%;
+      text-align: center;
+      @include Extrabold;
+      @include pc{
+        font-size: pm(18);
+        letter-spacing: p(2.7);
+        margin-top: p(55);
+      }
+      @include sp{
+        font-size: s(18);
+        letter-spacing: s(2.9);
+        margin-top: s(60);
+        padding: 0 s(20);
+      }
+      span{
+        @include pc{
+          font-size: pm(21);
+        }
+        @include sp{
+          font-size: s(21);
+        }
+      }
+    }
+  }
+  .feature{
+    @include pc{
+      margin-top: p(150);
+    }
+    @include sp{
+      margin-top: s(115);
+    }
+    .C_feature{
+      @include pc{
+        margin-top: p(141);
+      }
+      @include sp{
+        margin-top: s(60);
+      }
+    }
+  }
+  .C_mainTelButton{
+    @include pc{
+      margin: p(160) auto 0; 
+    }
+    @include sp{
+      margin: s(120) auto 0;
+    }
+  }
+  .medical{
+    position: relative;
+    width: 100%;
+    @include imgCover("medical_bg.jpg");
+    @include pc{
+      margin-top: p(180);
+      padding: p(155) p(200) p(157);
+    }
+    @include sp{
+      margin-top: s(123);
+      padding: s(100) s(20) s(150);
+      background-position:8% 50% ;
+    }
+    &:before{
+      content: "";
+      display: block;
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.7058823529);
+      z-index: 1;
+    }
+    .C_TL{
+      z-index: 2;
+      position: relative;
+      .main-TL{
+        color: $F-FFFFFF;
+        @include pc{
+          translate:-50% -50%;
+        }
+        @include sp{
+          top: 60%;
+        }
+      }
+    }
+    &_content{
+      position: relative;
+      z-index: 2;
+      @include pc{
+        margin-top: p(125);
+      }
+      @include sp{
+        margin-top: s(120);
+      }
+      &_top{
+        color: $F-FFFFFF;
+        @include pc{
+          display: flex;
+          flex-direction: row-reverse;
+          justify-content: space-between;
+        }
+        @include sp{
+          flex-direction: column;
+        }
+
+        .img{
+          @include imgCover("medical_top.jpg");
+          @include pc{
+            width: p(337);
+            height: p(206);
+          }
+          @include sp{
+            width: s(337);
+            height: s(206);
+            margin: 0 auto;
+          }
+        }
+        .textbox{
+          @include pc{
+            width: p(508);
+          }
+          .TL{
+            @include Extrabold;
+            position: relative;
+            @include pc{
+              font-size: pm(20);
+            }
+            @include sp{
+              font-size: s(20);
+              margin-top: s(30);
+            }
+            &:before{
+              content: "";
+              position: absolute;
+              background: linear-gradient(90deg, #AB8729 0%, #AB8729 83%, rgba(171, 135, 41, 0.00) 100%);
+              width: 100%;
+              left: 0;
+              @include pc{
+                height: p(1);
+                bottom: p(-13);
+              }
+              @include sp{
+                height: s(1);
+                bottom: s(-10);
+              }
+            }
+          }
+          .TX{
+            line-height: 187%;
+            @include pc{
+              font-size: pm(16);
+              margin: p(35) p(19) 0 0;
+            }
+            @include sp{
+              font-size: s(16);
+              margin-top: s(35);
+            }
+          }
+        }
+      }
+      .C_textbox{
+        @include pc{
+          margin-top: p(55);
+        }
+        @include sp{
+          margin-top: s(60);
+        }
+        &_TL{
+          @include pc{
+            padding-left:p(43);
+            border: p(2) solid $P-C09933;
+          }
+          @include sp{
+            text-align: center;
+            border: s(2) solid $P-C09933;
+          }
+          .TL{
+            @include Extrabold;
+            @include pc{
+              font-size: pm(16);
+              letter-spacing: p(1.6);
+            }
+            @include sp{
+              font-size: s(16);
+              letter-spacing: s(1.6);
+            }
+          }
+        }
+        &_TX{
+          line-height: 187%;
+          border-top: none;
+          @include pc{
+            padding-left: p(52);
+          }
+          @include sp{
+            padding:s(34) s(40) s(49) s(35);
+          }
+          li{
+            @include pc{
+              margin-top: p(30);
+            }
+            @include sp{
+              margin-top: s(30);
+            }
+            .TL{
+              position: relative;
+              @include Extrabold;
+              @include pc{
+                font-size: pm(16);
+              }
+              @include sp{
+                font-size: s(16);
+              }
+              &:before{
+                content: "";
+                position: absolute;
+                border-radius: 50%;
+                background: $B-363636;
+                top: 50%;
+                translate:-50% 0;
+                @include pc{
+                  width: p(4);
+                  height: p(4);
+                  left: p(-10);
+                }
+                @include sp{
+                  width: s(4);
+                  height: s(4);
+                  left: s(-10);
+                }
+              }
+            }
+            .TX{
+              @include pc{
+                font-size: pm(16);
+              }
+              @include sp{
+                font-size: s(16);
+                margin-top: s(3);
+                letter-spacing: s(0.2);
+              }
+            }  
+            &:first-child{
+              margin-top: 0;
+            }
+          }
+        }
+      }
+      &_bottom{
+        display: flex;
+        @include pc{
+          margin-top: p(55);
+          justify-content: space-between;
+        }
+        @include sp{
+          margin-top: s(100);
+          flex-direction: column;
+          gap: s(60);
+        }
+      }
+    }
+  }
+  .C_clinicIntroduction{
+    @include pc{
+      margin-top: p(150);
+    }
+    @include sp{
+      margin-top: s(100);
+    }
+  }
+}
+
+.page-clinic__decoration{
+  .parts {
+    z-index: -1;
+
+    &.parts-01 {
+      opacity: 0.1;
+      rotate:64deg;
+
+      @include pc {
+        width: p(1128);
+        top: p(420);
+        left: p(-460);
+      }
+
+      @include sp {
+        width: s(682);
+        top: s(420);
+        left: s(-380);
+      }
+    }
+
+    &.parts-02 {
+      opacity: 0.05;
+      rotate:85.25deg;
+
+      @include pc {
+        width: p(1595);
+        top: p(2210);
+        right: p(-520);
+      }
+
+      @include sp {
+        width: s(583);
+        top: s(1700);
+        right: s(-300);
+      }
+    }
+
+
+    &.parts-03 {
+      opacity: 0.05;
+      rotate:-85.25deg;
+
+      @include sp {
+        width: s(583);
+        top: s(3000);
+        left: s(-300);
+      }
+    }
+
+  }
+
+}

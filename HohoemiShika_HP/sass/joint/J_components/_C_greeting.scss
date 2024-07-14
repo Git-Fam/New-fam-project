@@ -64,6 +64,7 @@
     @include pc{
       display: flex;
       justify-content: space-between;
+      align-items: center;
       margin-top: p(60);
     }
     .img{
@@ -80,6 +81,10 @@
     .greeting01{
       @include imgCover("greeting01.jpg");
     }
+    .greeting02{
+      @include imgCover("greeting02.jpg");
+    }
+
     .TX{
       color: $F-FFFFFF;
       @include pc{

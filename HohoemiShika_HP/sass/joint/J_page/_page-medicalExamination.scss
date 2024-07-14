@@ -77,3 +77,61 @@
     }
   }
 }
+
+.page-medicalExamination__decoration{
+  .parts {
+    z-index: -1;
+    &.parts-01 {
+      opacity: 0.1;
+      rotate:65.75deg;
+
+      @include pc {
+        width: p(1128);
+        top: p(-288);
+        left: p(-475);
+      }
+      @include sp {
+        width: s(883);
+        top: s(-255);
+        left: s(-600);
+      }
+    }
+
+    &.parts-02 {
+      opacity: 0.11;
+      rotate:143.04deg;
+
+      @include pc {
+        width: p(1064);
+        top: p(932);
+        right: p(-160);
+      }
+
+      @include sp {
+        width: s(782);
+        top: s(1309);
+        right: s(-520);
+      }
+    }
+
+    &.parts-03 {
+      opacity: 0.1;
+      rotate:66.75deg;
+
+      @include pc {
+        width: p(1024);
+        top: p(2317);
+        left: p(-672);
+      }
+
+      @include sp {
+        width: s(782);
+        top: s(2809);
+        left: s(-480);
+      }
+    }
+
+
+  }
+
+}
