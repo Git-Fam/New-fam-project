@@ -1,0 +1,123 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_periodontalDisease
+----------------------- */
+
+.C_periodontalDisease {
+  position: relative;
+  @include imgCover("C_periodontalDisease-bg.jpg");
+
+  @include pc {
+    padding: p(136) 0 p(173);
+  }
+
+  @include sp {
+    padding: s(100) 0 s(108);
+    background-position: top left 33%;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    inset: 0;
+    background-color: #000000b4;
+    z-index: 1;
+  }
+
+
+  &--inner {
+    position: relative;
+    z-index: 2;
+
+    .C_TL {
+
+      .TL-bg {
+
+        @include pc {
+          letter-spacing: 0.5rem;
+        }
+
+        @include sp {
+          letter-spacing: 0.5rem;
+        }
+      }
+
+      .main-TL {
+        color: $F-FFFFFF;
+
+        @include pc {
+          font-size: p(32);
+          letter-spacing: 0.01em;
+        }
+
+        @include sp {
+          font-size: s(28);
+          line-height: 1.5;
+        }
+      }
+    }
+
+    .C_periodontalDisease--item {
+
+      @include pc {
+        margin-top: p(55);
+      }
+
+      @include sp {
+        margin-top: s(60);
+      }
+
+      .C_bacterial {
+        margin: 0 auto;
+
+        @include pc {
+          width: p(880);
+        }
+
+        @include sp {
+          width: s(350);
+        }
+      }
+
+      &--text {
+
+        @include pc {
+          margin: p(100) 0 p(55);
+        }
+
+        @include sp {
+          margin: s(60) 0;
+        }
+
+
+        .TX {
+          color: $F-FFFFFF;
+          text-align: center;
+          line-height: 187%;
+
+          @include pc {
+            font-size: pm(16);
+          }
+
+          @include sp {
+            font-size: s(16);
+          }
+        }
+      }
+
+      .C_periodontalTreatment {
+        margin: 0 auto;
+
+        @include pc {
+          width: p(880);
+        }
+
+        @include sp {
+          width: s(284);
+        }
+      }
+    }
+  }
+}

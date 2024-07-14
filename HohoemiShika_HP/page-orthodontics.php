@@ -9,15 +9,15 @@
             </div>
             <div class="example__container">
                 <div class="example__container--tabs">
-                    <div class="tab js--selector active" data-tab="upperJaw">上顎前突</div>
-                    <div class="tab js--selector" data-tab="lowerJaw">下顎前突</div>
-                    <div class="tab js--selector" data-tab="openBite">開咬</div>
-                    <div class="tab js--selector" data-tab="crowd">叢生</div>
+                    <div class="tab js--selector active">上顎前突</div>
+                    <div class="tab js--selector">下顎前突</div>
+                    <div class="tab js--selector">開咬</div>
+                    <div class="tab js--selector">叢生</div>
                     <div class="tab js--selector">部分矯正</div>
                 </div>
                 <div class="example__container--contents">
                     <!-- 上顎前突 -->
-                    <div class="content js--content active" data-content="upperJaw">
+                    <div class="content js--content active">
                         <!-- 矯正歯科/　上顎前突治療症例1 -->
                         <div class="case">
                             <div class="C_medicalCase">
@@ -537,7 +537,7 @@
                         </div>
                     </div>
                     <!-- 下顎前突 -->
-                    <div class="content js--content" data-content="lowerJaw">
+                    <div class="content js--content">
                         <!-- 矯正歯科/　下顎前突治療症例1 -->
                         <div class="case">
                             <div class="C_medicalCase">
@@ -674,7 +674,7 @@
                         </div>
                     </div>
                     <!-- 開咬 -->
-                    <div class="content js--content" data-content="openBite">
+                    <div class="content js--content">
                         <!-- 矯正歯科/　開咬治療症例1 -->
                         <div class="case">
                             <div class="C_medicalCase">
@@ -953,7 +953,7 @@
                         </div>
                     </div>
                     <!-- 叢生 -->
-                    <div class="content js--content" data-content="crowd">
+                    <div class="content js--content">
                         <!-- 矯正歯科/　叢生治療症例1 -->
                         <div class="case">
                             <div class="C_medicalCase">

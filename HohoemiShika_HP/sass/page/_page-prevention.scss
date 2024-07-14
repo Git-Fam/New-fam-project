@@ -1,0 +1,70 @@
+@use "../functions" as *;
+
+/* -----------------------
+  page-prevention
+----------------------- */
+
+.page-prevention {
+  position: relative;
+  z-index: 5;
+
+  &--ToothDecay {
+
+    @include pc {
+      margin-bottom: p(119);
+    }
+
+    @include sp {
+      margin-bottom: s(123);
+    }
+
+    .C_TL {
+      .TL-bg {
+        @include sp {
+          letter-spacing: 0.1rem;
+        }
+      }
+
+      .main-TL {
+        @include sp {}
+      }
+    }
+
+    .C_onlyText {
+      &--text {
+
+        .TX {
+          @include sp {
+            font-size: s(16);
+            letter-spacing: s(0.85);
+            line-height: 205%;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+.page-prevention__decoration {
+
+  .parts {
+
+    &.parts-01 {
+      opacity: 0.1;
+      rotate: 65deg;
+
+      @include pc {
+        width: p(1128);
+        top: p(150);
+        left: p(-490);
+      }
+
+      @include sp {
+        width: s(600);
+        top: s(210);
+        left: s(-300);
+      }
+    }
+  }
+}

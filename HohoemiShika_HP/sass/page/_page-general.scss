@@ -1,0 +1,366 @@
+@use "../functions" as *;
+
+/* -----------------------
+  page-general
+----------------------- */
+
+.page-general {
+  position: relative;
+  z-index: 5;
+
+  &--ToothDecay {
+
+    @include pc {
+      margin-bottom: p(150);
+      @include column(p(55));
+    }
+
+    @include sp {
+      margin-bottom: s(130);
+      @include column(s(130));
+    }
+
+    .C_TL {
+      .TL-bg {
+
+        @include sp {
+          letter-spacing: 0.45rem;
+        }
+      }
+    }
+
+    .ToothDecay--container {
+      width: fit-content;
+      margin: 0 auto;
+
+      .C_textbox {
+
+        &_TL {
+
+          @include pc {
+            padding-left: p(36)
+          }
+
+          .TL {
+            @include Extrabold;
+            line-height: 1.3;
+
+            @include pc {
+              font-size: pm(20);
+            }
+
+            @include sp {
+              text-align: center;
+              font-size: s(20);
+            }
+          }
+        }
+
+        &_TX {
+
+          @include pc {
+            padding-left: p(36);
+            padding-right: p(36);
+            @include column(p(25));
+          }
+
+          @include sp {
+            padding-left: s(28);
+            padding-right: s(27);
+            @include column(s(42));
+          }
+
+          .TX {
+            color: $F-363636;
+            line-height: 187%;
+
+            @include pc {
+              font-size: pm(16);
+            }
+
+            @include sp {
+              font-size: s(16);
+            }
+
+            span {
+              @include Extrabold;
+              text-shadow: 0px 0px 1px $F-363636;
+            }
+          }
+
+          .images {
+            width: 100%;
+            display: flex;
+
+            @include pc {
+              gap: p(18);
+            }
+
+            @include sp {
+              flex-direction: column;
+              gap: s(30);
+            }
+
+            .img {
+              aspect-ratio: 399/234;
+
+              @include pc {
+                @include row(2, p(18));
+              }
+
+              @include sp {
+                width: 100%;
+              }
+
+              &.img-01 {
+                @include imgCover("C_textbox-01.jpg")
+              }
+
+              &.img-02 {
+                @include imgCover("C_textbox-02.jpg")
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &--Example {
+
+    @include pc {
+      margin-bottom: p(150);
+      @include column(p(55));
+    }
+
+    @include sp {
+      margin-bottom: s(130);
+      @include column(s(75));
+    }
+
+    &--container {
+
+      @include pc {
+        @include column(p(60));
+      }
+
+      @include sp {
+        @include column(s(100));
+      }
+
+      .case {
+        border: solid #937F2A;
+        background: rgba(255, 255, 255, 0.50);
+        backdrop-filter: blur(10px);
+        margin: 0 auto;
+        position: relative;
+
+        @include pc {
+          width: p(888);
+          border-width: pm(1, 1);
+          padding: p(73) 0 p(87);
+        }
+
+        @include sp {
+          width: s(350);
+          border-width: s(1);
+          padding: s(42) 0;
+        }
+
+        .C_medicalCase {
+
+          @include pc {
+            width: p(816);
+          }
+
+          @include sp {}
+
+          &--imgWhopper {
+
+            @include pc {
+              row-gap: p(67);
+            }
+
+            @include sp {
+              row-gap: s(21);
+            }
+
+            .item {
+
+              .img {
+
+                &.rootCanal-before-1-1,
+                &.rootCanal-after-1-1,
+                &.rootCanal-before-2-1,
+                &.rootCanal-after-2-1 {
+                  aspect-ratio: 392.236/384.818;
+                }
+
+                &.rootCanal-before-3-1,
+                &.rootCanal-after-3-1 {
+                  aspect-ratio: 395.018/261.491;
+                }
+              }
+            }
+          }
+
+          &--listsWhopper {
+            .list {
+              li {
+                .TX {
+                  &.wrap {
+                    @include pc {
+                      white-space: nowrap;
+                    }
+
+                    @include sp {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &--OurTreatment {
+
+    @include pc {
+      @include column(p(55));
+      margin-bottom: p(150);
+    }
+
+    @include sp {
+      @include column(s(60));
+      margin-bottom: s(100);
+    }
+
+    .OurTreatment--title {
+
+      @include pc {
+        @include column(p(55));
+      }
+
+      @include sp {
+        @include column(s(60));
+      }
+
+      .C_TL {
+
+        .TL-bg {
+          @include sp {
+            letter-spacing: 0.08rem;
+          }
+        }
+
+        .main-TL {
+
+          @include sp {
+            width: 100%;
+          }
+        }
+      }
+
+      .subText {
+
+        .TX {
+          color: $F-333130;
+          text-align: center;
+          line-height: 190%;
+
+          @include pc {
+            font-size: pm(18);
+          }
+
+          @include sp {
+            font-size: s(18);
+          }
+
+
+          span {
+            text-shadow: 0px 0px 1px $F-333130;
+          }
+        }
+      }
+    }
+
+    .C_toothDecay {
+      margin: 0 auto;
+
+      @include pc {
+        width: p(888);
+      }
+
+      @include sp {
+        width: s(280);
+      }
+
+      .C_toothContent {
+        li {
+          .label {
+            text-shadow: 0px 0px 0.5px $F-333130;
+          }
+        }
+      }
+    }
+  }
+}
+
+.page-general__decoration {
+
+  .parts {
+
+    &.parts-01 {
+      opacity: 0.1;
+      rotate: 65deg;
+
+      @include pc {
+        width: p(1128);
+        top: p(180);
+        left: p(-560);
+      }
+
+      @include sp {
+        width: s(350);
+        top: s(210);
+        left: s(-100);
+      }
+    }
+
+    &.parts-02 {
+      opacity: 0.1;
+      rotate: -157deg;
+
+      @include pc {
+        width: p(1590);
+        top: p(2400);
+        right: p(-500);
+
+      }
+
+      @include sp {
+        width: s(350);
+        top: s(400);
+        right: s(-100);
+      }
+    }
+
+    &.parts-03 {
+      opacity: 0.1;
+      rotate: 58deg;
+
+      @include pc {
+        width: p(1128);
+        top: p(4450);
+        left: p(-180);
+      }
+
+      @include sp {
+        width: s(450);
+        top: s(3990);
+        left: s(-100);
+      }
+    }
+  }
+}

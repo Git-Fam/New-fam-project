@@ -24,7 +24,7 @@
                                 <p class="TX"></p>
                             </div>
                             <div class="item">
-                                <div class="img dentures-1-2"></div>
+                                <div class="img dentures1-2"></div>
                                 <p class="TX"></p>
                             </div>
                             <div class="item">
