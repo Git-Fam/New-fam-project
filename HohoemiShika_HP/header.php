@@ -375,7 +375,11 @@
                         <span class="rollAnimeLoad">Clinic</span>
                     </h1>
                 </div>
-                <div class="KV--smoke"></div>
+                <?php if (is_page('doctor')) : ?>
+                    <div class="KV--smoke smoke__black"></div>
+                <?php else : ?>
+                    <div class="KV--smoke"></div>
+                <?php endif; ?>
             </div>
 
         <?php endif; ?>
@@ -394,3 +398,9 @@
         ) : ?>
             <div class="C_TitleBack C_TitleBack--KV"></div>
         <?php endif; ?>
+
+        <!-- <?php if (is_page('doctor')) : ?>
+            <div class="C_TitleBack  black__back">
+                <div class="smoke__black"></div>
+            </div>
+        <?php endif; ?> -->

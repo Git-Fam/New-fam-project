@@ -50,6 +50,10 @@ main {
   @include sp {
     padding-top: s(120);
   }
+
+  &.doctor--main {
+    padding-top: 0;
+  }
 }
 
 

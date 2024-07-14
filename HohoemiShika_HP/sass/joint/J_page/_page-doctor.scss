@@ -41,7 +41,7 @@
     @include imgCover("greeting_bg.jpg");
     position: relative;
     @include pc{
-      padding:p(61) p(152) p(150);
+      padding:p(180) p(152) p(150);
     }
     @include sp{
       padding: s(118) 0 s(82);
