@@ -32,7 +32,7 @@ $map-icon: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg"
 
 //特徴の背景カード
 @function feature-bg($Color) {
-  @return  url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583 276" fill="none"><path d="M0.5 34.5C19.5538 34.5 35 19.0538 35 0V0H548V0C548 19.33 563.67 35 583 35V35V241V241C563.67 241 548 256.67 548 276V276H35V276C35 256.67 19.33 241 0 241V241V34.5H0.5Z" fill="#{$Color}" fill-opacity="0.8"/></svg>');
+  @return  url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583 276" fill="none"><path d="M0.5 34.5C19.5538 34.5 35 19.0538 35 0V0H548V0C548 19.33 563.67 35 583 35V35V241V241C563.67 241 548 256.67 548 276V276H35V276C35 256.67 19.33 241 0 241V241V34.5H0.5Z" fill="#{$Color}"/></svg>');
 }
 
 

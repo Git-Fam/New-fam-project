@@ -49,10 +49,10 @@
       display: flex;
       @include pc{
         align-items: center;
-        margin-top: p(15);
+        margin-top: p(5);
       }
       @include sp{
-        margin-top: s(15);
+        margin-top: s(5);
       }
       .icon{
         @include iconContain($list-thooth);

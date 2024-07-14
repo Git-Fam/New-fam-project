@@ -9,7 +9,11 @@
 .C_medical_machine{
   color: $F-FFFFFF;
   @include pc{
-    width: p(260);
+    width: p(279);
+  }
+  @include sp{
+    width: s(279);
+    margin: 0 auto;
   }
   &_TL{
     @include Extrabold;
@@ -20,12 +24,24 @@
       padding-bottom: p(10);
       border-bottom: p(1) solid $P-AC7D02;
     }
+    @include sp{
+      font-size: s(20);
+      letter-spacing: s(2);
+      padding-bottom: s(10);
+      border-bottom: s(1) solid $P-AC7D02;
+
+    }
   }
   .img{
+    width: 100%;
     @include pc{
-      width: 100%;
       height: p(229);
       margin-top: p(17);
+    }
+    @include sp{
+      height: s(229);
+      margin-top: s(17);
+
     }
   }
   .machine01{
@@ -39,11 +55,21 @@
   }
 
   &_TX{
+    line-height: 187%;
+    width: fit-content;
     @include pc{
+      width: p(260);
       font-size: pm(16);
-      line-height: 187%;
-      width: fit-content;
-      margin: p(17) auto;
+      margin: p(17) auto 0;
+      letter-spacing: p(0.8);
+    }
+    @include sp{
+      width: s(260);
+      font-size: s(16);
+      margin: s(17) auto;
+      letter-spacing: p(0.8);
+
+      
     }
   }
 }

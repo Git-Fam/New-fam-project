@@ -41,6 +41,7 @@
     @include Extrabold;
     position: absolute;
     left: 50%;
+    width: 100%;
 
     @include pc {
       font-size: pm(35);

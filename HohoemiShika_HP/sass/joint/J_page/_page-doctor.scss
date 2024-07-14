@@ -1,0 +1,129 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  page-doctor
+----------------------- */
+
+.page-doctor {
+  @include pc{
+    padding-bottom: p(150);
+  }
+  @include sp{
+    padding-bottom: s(100);
+  }
+  .doctor {
+    .C_TL{
+      position: relative;
+      z-index: 2;
+    }
+    .C_greeting{
+      position: relative;
+      z-index: 2;
+      margin-inline: auto;
+      @include pc{
+        margin-top: p(40);
+      }
+      @include sp{
+        margin-top: s(62);
+      }
+      &_content{
+        .TX{
+          @include sp{
+            letter-spacing: s(0.1)
+
+          }  
+        }
+      }
+    }
+  }
+  .greetings{
+    @include imgCover("greeting_bg.jpg");
+    position: relative;
+    @include pc{
+      padding:p(61) p(152) p(150);
+    }
+    @include sp{
+      padding: s(118) 0 s(82);
+    }
+    &::before{
+      content: "";
+      display: block;
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.7058823529);
+      z-index: 1;
+    }
+  }
+  .visiting{
+    @include pc{
+      margin-top: p(150);
+    }
+    @include sp{
+      margin-top: s(100);
+    }
+    .C_greeting{
+      &_TL{
+        color: $F-937F2A;
+      }
+      &_content{
+        @include pc{
+          flex-direction: row-reverse;
+        }
+    
+        .TX{
+          color: $F-363636;
+        }
+      }
+    }
+    .name{
+      color: $F-363636;
+      line-height: 150%;
+      @include pc{
+        text-align: left;
+      }
+    }
+
+  }
+}
+.page-doctor__decoration{
+  .parts {
+    z-index: -1;
+
+    &.parts-01 {
+      opacity: 0.1;
+      rotate:64deg;
+
+      @include pc {
+        width: p(551);
+        top: p(1379);
+        left: p(-125);
+      }
+
+      @include sp {
+        width: s(482);
+        top: s(1889);
+        left: s(-280);
+      }
+    }
+
+    &.parts-02 {
+      opacity: 0.1;
+      rotate:-120.25deg;
+
+      @include pc {
+        width: p(989);
+        top: p(1450);
+        right: p(-680);
+      }
+
+      @include sp {
+        width: s(583);
+        top: s(2700);
+        right: s(-300);
+      }
+    }
+
+  }
+
+}
