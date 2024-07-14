@@ -1,0 +1,210 @@
+@use "../functions" as *;
+
+/* -----------------------
+  page-pediatricDentistry
+----------------------- */
+
+.page-pediatricDentistry {
+  position: relative;
+  z-index: 5;
+
+  &--ToothDecay {
+
+    @include pc {
+      margin-bottom: p(119);
+    }
+
+    @include sp {
+      margin-bottom: s(123);
+    }
+
+    .C_TL {
+      .TL-bg {
+        @include sp {
+          letter-spacing: 0.1rem;
+        }
+      }
+
+      .main-TL {
+        @include sp {}
+      }
+    }
+
+    .C_onlyText {
+      &--text {
+
+        .TX {
+          @include sp {
+            font-size: s(16);
+            letter-spacing: s(0.85);
+            line-height: 205%;
+          }
+        }
+      }
+    }
+  }
+
+  &--textbox {
+
+    @include pc {
+      padding: p(155) 0 p(150);
+    }
+
+    @include sp {
+      padding: s(77) 0 s(60);
+    }
+
+    .C_textbox {
+      margin: 0 auto;
+
+      &_TL {
+
+        @include pc {
+          padding-left: p(36);
+        }
+
+        @include sp {
+          padding-left: s(36);
+        }
+
+        .TL {
+          display: flex;
+          align-items: center;
+          line-height: 1.3;
+
+          @include pc {
+            gap: p(8);
+            font-size: p(20);
+          }
+
+          @include sp {
+            gap: s(8);
+            font-size: s(20);
+          }
+
+          &::before {
+            content: "";
+            display: block;
+            aspect-ratio: 30/23;
+            @include iconContain($brushIcon);
+
+            @include pc {
+              width: p(30);
+            }
+
+            @include sp {
+              width: s(30);
+            }
+          }
+        }
+      }
+
+      &_TX {
+
+        @include pc {
+          padding: p(43) p(36);
+          @include column(p(24));
+        }
+
+        @include sp {
+          padding: s(44) s(27) s(47);
+          @include column(s(30));
+        }
+
+        .list__title {
+
+          .TX {
+            color: $F-363636;
+            line-height: 187%;
+
+            @include pc {
+              font-size: pm(16);
+            }
+
+            @include sp {
+              font-size: s(16);
+            }
+          }
+        }
+
+        .lists {
+
+          @include pc {
+            @include column(p(30));
+            padding-left: p(32);
+          }
+
+
+          @include sp {
+            @include column(s(30));
+          }
+
+          li {
+            display: flex;
+            
+            @include pc {
+              align-items: center;
+              gap: p(20);
+            }
+
+            @include sp {
+              gap: s(20);
+            }
+
+            .icon {
+              aspect-ratio: 13/16;
+              @include iconContain($simpleToothBlack);
+              height: fit-content;
+              flex-shrink: 0;
+
+              @include pc {
+                width: p(13);
+              }
+
+              @include sp {
+                width: s(13);
+                margin-top: s(7);
+              }
+            }
+
+            .TX {
+              color: $F-363636;
+              line-height: 168%;
+
+              @include pc {
+                font-size: pm(16);
+              }
+
+              @include sp {
+                font-size: s(16);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.page-pediatricDentistry__decoration {
+
+  .parts {
+
+    &.parts-01 {
+      opacity: 0.1;
+      rotate: 65deg;
+
+      @include pc {
+        width: p(1128);
+        top: p(150);
+        left: p(-490);
+      }
+
+      @include sp {
+        width: s(600);
+        top: s(210);
+        left: s(-300);
+      }
+    }
+  }
+}
