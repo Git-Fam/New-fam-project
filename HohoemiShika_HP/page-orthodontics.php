@@ -2,7 +2,7 @@
 
 <main>
     <div class="page-orthodontics">
-        <section class="page-orthodontics--example">
+        <section class="page-orthodontics--example" id="example">
             <div class="C_TL">
                 <p class="TL-bg rollAnime">Example</p>
                 <h2 class="main-TL up speed-05 delay-03">治療事例</h2>

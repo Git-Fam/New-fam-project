@@ -38,7 +38,7 @@
                                     </p>
                                 </div>
                                 <!-- page-orthodonticsの叢生へ -->
-                                <a class="C_viewMore" href="<?php bloginfo('url'); ?>/orthodontics?tab=crowd">
+                                <a class="C_viewMore" href="<?php bloginfo('url'); ?>/orthodontics?tab=crowd#example">
                                     <p class="TX">View more</p>
                                 </a>
                             </div>
@@ -74,7 +74,7 @@
                                     </p>
                                 </div>
                                 <!-- page-orthodonticsの上顎前突へ -->
-                                <a class="C_viewMore" href="<?php bloginfo('url'); ?>/orthodontics?tab=upperJaw">
+                                <a class="C_viewMore" href="<?php bloginfo('url'); ?>/orthodontics?tab=upperJaw#example">
                                     <p class="TX">View more</p>
                                 </a>
                             </div>
@@ -110,7 +110,7 @@
                                     </p>
                                 </div>
                                 <!-- page-orthodonticsの下顎前突へ -->
-                                <a class="C_viewMore" href="<?php bloginfo('url'); ?>/orthodontics?tab=lowerJaw">
+                                <a class="C_viewMore" href="<?php bloginfo('url'); ?>/orthodontics?tab=lowerJaw#example">
                                     <p class="TX">View more</p>
                                 </a>
                             </div>
@@ -146,7 +146,7 @@
                                     </p>
                                 </div>
                                 <!-- page-orthodonticsの開咬へ -->
-                                <a class="C_viewMore" href="<?php bloginfo('url'); ?>/orthodontics?tab=openBite">
+                                <a class="C_viewMore" href="<?php bloginfo('url'); ?>/orthodontics?tab=openBite#example">
                                     <p class="TX">View more</p>
                                 </a>
                             </div>
