@@ -121,7 +121,8 @@
             .slash{
               rotate: 45deg;
               left: 50%;
-              translate: -50%;
+              top: 50%;
+              translate: -50% -50%;
               position: absolute;
               @include pc{
                 border-left: p(1) solid $B-FFFFFF;

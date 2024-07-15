@@ -14,6 +14,10 @@
   }
   .notice{
     .C_TL{
+      .TL-bg{
+        color: $F-E2E0CD;
+        opacity: 0.75;
+      }
       .main-TL{
         @include sp{
           width: s(213);
@@ -34,7 +38,7 @@
     .C_notice{
       background: $B-FFFFFF-05;
       @include pc{
-        padding: p(67) p(28) p(28) p(39);
+        padding: p(67) p(27) p(28) p(39);
       }
       &-content{
         .TL{
@@ -42,6 +46,7 @@
           @include pc{
             font-size: pm(18);
             margin-bottom: p(25);
+            margin-left: p(30);
           }
           @include sp{
             font-size: s(16);
