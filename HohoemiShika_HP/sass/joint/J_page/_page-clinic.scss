@@ -91,12 +91,6 @@
       position: relative;
       .main-TL{
         color: $F-FFFFFF;
-        @include pc{
-          translate:-50% -50%;
-        }
-        @include sp{
-          top: 60%;
-        }
       }
     }
     &_content{
@@ -137,6 +131,7 @@
           }
           .TL{
             @include Extrabold;
+            text-shadow: 0px 0px 0.1px $F-FFFFFF;
             position: relative;
             @include pc{
               font-size: pm(20);
@@ -192,6 +187,7 @@
           }
           .TL{
             @include Extrabold;
+            text-shadow: 0px 0px 0.1px $F-FFFFFF;
             @include pc{
               font-size: pm(16);
               letter-spacing: p(1.6);

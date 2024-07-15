@@ -54,6 +54,9 @@
       background-color: rgba(0, 0, 0, 0.7058823529);
       z-index: 1;
     }
+    .main-TL{
+      color: $F-FFFFFF;
+    }
   }
   .visiting{
     @include pc{
@@ -79,6 +82,7 @@
     .name{
       color: $F-363636;
       line-height: 150%;
+
       @include pc{
         text-align: left;
       }

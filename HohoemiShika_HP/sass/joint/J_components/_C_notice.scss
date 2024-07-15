@@ -9,9 +9,9 @@
   @include sp{
     padding: s(44) s(10) s(56);
   }
-  
   &-TL{
     @include Extrabold;
+    text-shadow: 0px 0px 0.1px $F-363636;
     @include pc{
       font-size: pm(20);
       margin-left: p(19);
@@ -43,7 +43,6 @@
           font-size: pm(16);
           margin:0 0 p(10) p(61);
           line-height: p(25);
-          letter-spacing: p(-0.3);
         }
         @include sp{
           font-size: s(16);
@@ -91,7 +90,7 @@
     }
     .list{
       @include pc{
-        width: p(395);
+        width: p(400);
       }
     }
   }

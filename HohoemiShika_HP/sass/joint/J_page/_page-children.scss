@@ -108,7 +108,12 @@
             }
           }
           .TX{
-            font-size: s(16);
+            @include pc{
+              font-size: pm(16);
+            }
+            @include sp{
+              font-size: s(16);
+            }
           }
         }
       }
