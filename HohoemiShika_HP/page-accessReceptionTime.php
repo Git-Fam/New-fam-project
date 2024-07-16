@@ -56,7 +56,7 @@
                                         <th class="bg">日</th>
                                     </tr>
                                     <tr>
-                                        <td class="time">9:30~12:30</td>
+                                        <td class="time time-num">9:30~12:30</td>
                                         <td>
                                             <div class="maru"></div>
                                         </td>
@@ -80,7 +80,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="time">14:30~19:00</td>
+                                        <td class="time time-num">14:30~19:00</td>
                                         <td>
                                             <div class="maru"></div>
                                         </td>

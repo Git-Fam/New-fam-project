@@ -217,6 +217,10 @@
                     }
                   }
                 }
+                .time-num{
+                  @include Extrabold;
+                  text-shadow: 0 0 1px $F-363636;
+                }
               }
               .top{
                 @include sp{
