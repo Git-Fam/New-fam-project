@@ -23,8 +23,8 @@
   }
   text-align: center;
   .icon-TL{
-    @include Medium;
-    text-shadow: 0 0 1px;
+    @include Extrabold;
+    text-shadow: 0 0 0.5px;
     @include pc{
       font-size: p(20);
     }
