@@ -20,7 +20,7 @@
 
     @include pc {
       margin-bottom: p(216);
-      @include column(p(100));
+      @include column(p(125));
     }
 
     @include sp {

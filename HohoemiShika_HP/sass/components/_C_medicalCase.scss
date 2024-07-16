@@ -46,6 +46,7 @@
         line-height: 1.5;
         letter-spacing: 0.15em;
         color: $F-1E1E1E;
+        white-space: nowrap;
 
         @include pc {
           font-size: pm(30);
@@ -57,6 +58,8 @@
       }
 
       .TL {
+        text-shadow: 0px 0px 1px $F-1E1E1E;
+
         &::before {
           content: '/';
           position: absolute;
@@ -67,6 +70,7 @@
 
       .TX {
         color: $F-937F2A;
+        text-shadow: 0px 0px 1px $F-937F2A;
 
         @include sp {
           font-size: s(13);
@@ -535,6 +539,28 @@
         }
       }
 
+      // インビザライン/　治療症例
+      .img {
+
+        // インビザライン/　治療症例１
+        &.Invisalign-01 {
+          @include imgCover("/medicalCase/Invisalign/Invisalign-01.jpg");
+        }
+
+        &.Invisalign-02 {
+          @include imgCover("/medicalCase/Invisalign/Invisalign-02.jpg");
+        }
+
+        &.Invisalign-03 {
+          @include imgCover("/medicalCase/Invisalign/Invisalign-03.jpg");
+        }
+
+        &.Invisalign-04 {
+          @include imgCover("/medicalCase/Invisalign/Invisalign-04.jpg");
+        }
+
+      }
+
       // インプラント/　治療症例
       .img {
 
@@ -786,7 +812,9 @@
       }
 
       .TX {
-        @include Demibold;
+        // @include Demibold;
+        @include Extrabold;
+        text-shadow: 0px 0px 1px $F-807C7C;
         line-height: 1.5;
         color: $F-807C7C;
         text-align: center;
@@ -837,7 +865,9 @@
 
         .TL {
           background-color: $P-968435;
-          @include Demibold;
+          @include Medium;
+          // @include Extrabold;
+          // text-shadow: 0px 0px 1px $F-FFFFFF;
           line-height: 1.5;
           color: $F-FFFFFF;
           flex-shrink: 0;
