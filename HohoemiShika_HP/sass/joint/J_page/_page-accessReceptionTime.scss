@@ -19,11 +19,6 @@
     @include sp{
       padding: 0 s(20);
     }
-    .main-TL{
-      @include pc{
-        top: 40%;
-        }
-    }
     &_content {
       @include pc{
         margin-top: p(60);
@@ -55,11 +50,9 @@
             color: $F-363636;
             @include pc{
               margin-top: p(18);
-              font-size: pm(16);
             }
             @include sp{
               margin-top: s(20);
-              font-size: s(16);
             }
             .adress {
               span{
@@ -102,7 +95,7 @@
           .TX {
             color: $F-363636;
             @include pc{
-              font-size: p(20);
+              font-size: pm(20);
             }
           }            
         }               
@@ -122,9 +115,6 @@
           width: s(333);
           margin: 0 auto;
         }
-      }
-      .main-TL{
-        top: 40%;
       }
     }
     .openingHours_content {

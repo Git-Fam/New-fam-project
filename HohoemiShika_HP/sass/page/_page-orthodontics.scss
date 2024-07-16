@@ -89,6 +89,7 @@
       &--contents {
         border: solid $P-937F2A;
         background: rgba(255, 255, 255, 0.50);
+        -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
 
         @include pc {

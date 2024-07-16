@@ -84,9 +84,7 @@
                     </div>
                     <div class="subTitle">
                         <p class="TX">
-                            埋伏歯とは、骨または粘膜の中に埋もれて、<br class="sp">出てこない歯のことです。<br>
-                            埋伏歯の治療では、問題が無ければそのままに<br class="sp">して様子をみることもありますが、<br class="pc">
-                            親知らずが<br class="sp">埋伏している場合には、状況によっては<br class="sp">抜歯となります。
+                            主な治療方法には、以下のような方法があります。
                         </p>
                     </div>
                     <div class="jawJoint--item">
@@ -107,7 +105,7 @@
                     </div>
                 </div>
                 <!-- Medical -->
-                <div class="C_jawJoint--inner">
+                <div class="C_jawJoint--inner C_jawJoint--inner--2">
                     <div class="C_TL">
                         <p class="TL-bg rollAnime color">Medical</p>
                         <h2 class="main-TL up speed-05 delay-03">顎関節症の治療法</h2>

@@ -74,7 +74,7 @@
             <a class="C_footerIcon" href="<?php bloginfo('url'); ?>/homevisit">
                     <p class="icon-TL">訪問診療</p>
                     <div class="icon ft-icon09"></div>
-                    <p class="icon-TX">通院が困難な方へ<br class="sp"></p>
+                    <p class="icon-TX">通院が困難な方へ<br class="sp">　</p>
             </a>
         </div>
     </div>

@@ -33,6 +33,7 @@
       .case {
         border: solid #937F2A;
         background: rgba(255, 255, 255, 0.50);
+        -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
         margin: 0 auto;
         position: relative;
@@ -191,42 +192,42 @@
           margin-top: s(38);
         }
 
-        &--selectors{
-          .selector{
-            @include sp{
+        &--selectors {
+          .selector {
+            @include sp {
               font-size: s(16);
             }
           }
         }
 
-        &--contents{
+        &--contents {
 
-          @include sp{
-            padding-top:s(20) ;
+          @include sp {
+            padding-top: s(20);
             padding-bottom: s(25);
           }
 
-          .list{
-            li{
+          .list {
+            li {
 
-              @include sp{
+              @include sp {
                 flex-direction: unset;
                 flex-wrap: wrap;
                 padding: s(10) s(38);
                 gap: s(10);
               }
 
-              .TL{
+              .TL {
 
-                @include sp{
+                @include sp {
                   font-size: s(18);
                   white-space: nowrap;
                 }
               }
 
-              .TX{
+              .TX {
 
-                @include sp{
+                @include sp {
                   font-size: s(18);
                   width: fit-content;
                   margin-left: auto;
@@ -236,9 +237,9 @@
           }
         }
 
-        .item--point{
+        .item--point {
 
-          @include sp{
+          @include sp {
             top: unset;
             bottom: calc(100% + s(60));
           }
@@ -256,9 +257,9 @@
           margin-top: s(20);
         }
 
-        .title{
+        .title {
 
-          .TL{
+          .TL {
 
             @include sp {
               font-size: s(17);

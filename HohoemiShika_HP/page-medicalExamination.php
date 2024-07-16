@@ -10,75 +10,74 @@
             </div>
 
             <div class="notice_content">
-                <div class="notice_wrap">
-                    <div class="C_notice">
-                        <p class="C_notice-TL">ご来院時にお持ちいただくもの</p>
-                        <div class="C_notice-content top">
-                            <ul class="list">
-                                <li>
-                                    健康保険被保険者証（初回・月初）
-                                </li>
-                                <li>
-                                    公費受給者証（老人・身障医療等）を<br class="pc">お持ちの方は健康保険証と一緒にお出しください。
-                                </li>
-                                <li>
-                                    お薬手帳<br>（お持ちでない方は服用中のお薬をご持参下さい）</li>
-                                <li>
-                                    他院からの紹介状（お持ちの方）
-                                </li>
-                            </ul>
-                            <div class="img"></div>
-                        </div>
+                <div class="C_notice">
+                    <p class="C_notice-TL">ご来院時にお持ちいただくもの</p>
+                    <div class="C_notice-content top">
+                        <ul class="list">
+                            <li>
+                                健康保険被保険者証（初回・月初）
+                            </li>
+                            <li>
+                                公費受給者証（老人・身障医療等）を<br class="pc">お持ちの方は健康保険証と一緒にお出しください。
+                            </li>
+                            <li>
+                                お薬手帳<br>（お持ちでない方は服用中のお薬をご持参下さい）</li>
+                            <li>
+                                他院からの紹介状（お持ちの方）
+                            </li>
+                        </ul>
+                        <div class="img"></div>
                     </div>
+                </div>
 
-                    <div class="C_notice">
-                        <p class="C_notice-TL">初診の方</p>
-                        <div class="C_notice-content">
-                            <p class="TL">これまでに受けた治療や<br class="sp">服用中のお薬に関する情報が大切です</p>
+                <div class="C_notice">
+                    <p class="C_notice-TL">初診の方</p>
+                    <div class="C_notice-content">
+                        <p class="TL">これまでに受けた治療や<br class="sp">服用中のお薬に関する情報が大切です</p>
 
-                            <ul class="list">
-                                <li>
-                                    初回および月初は、必ず健康保険被保険者証（コピー不可）をお持ちください。
-                                </li>
-                                <li>
-                                    就職、転職などにより、加入されている健康保険被保険者証が変更された場合は、<br class="pc">
-                                    新しい健康保険被保険者証を受付にご提示ください。
-                                </li>
-                                <li>
-                                    住所や電話番号など健康保険被保険者証の内容に変更があった場合は、受付にお知らせください。
-                                </li>
-                                <li>
-                                    再診以降は当院の「診察券」を都度ご持参ください。
-                                </li>
-                                <li>
-                                    ひどい痛みや高熱、嘔吐などの症状がある場合は受付にお申し出ください。
-                                </li>
-                                <li>
-                                    当院では、プライバシー保護にスタッフ一同細心の注意を払っておりますので、安心してご受診ください。
-                                </li>
-                            </ul>
-                        </div>
+                        <ul class="list">
+                            <li>
+                                初回および月初は、必ず健康保険被保険者証（コピー不可）をお持ちください。
+                            </li>
+                            <li>
+                                就職、転職などにより、加入されている健康保険被保険者証が変更された場合は、<br class="pc">
+                                新しい健康保険被保険者証を受付にご提示ください。
+                            </li>
+                            <li>
+                                住所や電話番号など健康保険被保険者証の内容に変更があった場合は、受付にお知らせください。
+                            </li>
+                            <li>
+                                再診以降は当院の「診察券」を都度ご持参ください。
+                            </li>
+                            <li>
+                                ひどい痛みや高熱、嘔吐などの症状がある場合は受付にお申し出ください。
+                            </li>
+                            <li>
+                                当院では、プライバシー保護にスタッフ一同細心の注意を払っておりますので、安心してご受診ください。
+                            </li>
+                        </ul>
                     </div>
+                </div>
 
-                    <div class="C_notice">
-                        <p class="C_notice-TL">注意事項</p>
-                        <div class="C_notice-content">
-                            <p class="TL">※以下のような場合は必ず受付時にお申し出ください。</p>
+                <div class="C_notice">
+                    <p class="C_notice-TL">注意事項</p>
+                    <div class="C_notice-content">
+                        <p class="TL">※以下のような場合は必ず受付時にお申し出ください。</p>
 
-                            <ul class="list">
-                                <li>
-                                    注射や服薬で、ショックや発疹などの副作用を起こしたことのある方
-                                </li>
-                                <li>
-                                    アレルギー体質の方 （薬物アレルギー・食物アレルギー・花粉症・じんましん・気管支喘息）
-                                </li>
-                                <li>
-                                    現在、他の医療機関で治療を受けている方
-                                </li>
-                            </ul>
-                        </div>
+                        <ul class="list">
+                            <li>
+                                注射や服薬で、ショックや発疹などの副作用を起こしたことのある方
+                            </li>
+                            <li>
+                                アレルギー体質の方 （薬物アレルギー・食物アレルギー・花粉症・じんましん・気管支喘息）
+                            </li>
+                            <li>
+                                現在、他の医療機関で治療を受けている方
+                            </li>
+                        </ul>
                     </div>
-                </div>  
+                </div>
+
 
 
             </div>
@@ -144,14 +143,6 @@
             </div>
         </div>
     </div>
-        <!-- デコレーション -->
-    <div class="decorations page-medicalExamination__decoration">
-        <div class="parts parts-01"></div>
-        <div class="parts parts-02"></div>
-        <div class="parts parts-03"></div>
-    </div>
-
 </main>
-
 
 <?php get_footer(); ?>
