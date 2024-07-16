@@ -48,6 +48,12 @@
         right: 0;
       }
 
+      .TL{
+        @include pc{
+          text-align: right;
+        }
+      }
+
       .TX {
         @include pc {
           right: 0;

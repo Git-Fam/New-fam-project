@@ -33,10 +33,25 @@
 
     .C_TL {
 
+      .TL-bg{
+
+        @include pc{
+          letter-spacing: 0.24em;
+        }
+        
+        @include sp{}
+      }
+
       .main-TL {
         color: $F-FFFFFF;
         top: 37%;
         width: 100%;
+
+        @include pc{
+          letter-spacing: 0.1em;
+        }
+        
+        @include sp{}
       }
     }
 
