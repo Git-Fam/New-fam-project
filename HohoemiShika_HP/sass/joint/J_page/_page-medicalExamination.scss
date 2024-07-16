@@ -31,26 +31,37 @@
         margin-top: s(55);
       }
     }
-    .C_notice{
+    .notice_wrap{
       background: $B-FFFFFF-05;
       @include pc{
-        padding: p(67) p(28) p(28) p(39);
+        padding: p(67) p(25) p(39) p(35);
       }
-      &-content{
-        .TL{
-          @include Extrabold;
-          @include pc{
-            font-size: pm(18);
-            margin-bottom: p(25);
-          }
-          @include sp{
-            font-size: s(16);
-            margin-bottom: s(30);
-            line-height: 156%;
+      .C_notice{
+        @include pc{
+          margin-top: p(110);
+        }
+        &-content{
+          .TL{
+            @include Extrabold;
+            text-shadow: 0 0 1px;
+            @include pc{
+              font-size: pm(18);
+              margin-bottom: p(25);
+              margin-left: p(30);
+              
+            }
+            @include sp{
+              font-size: s(16);
+              margin-bottom: s(30);
+              line-height: 156%;
+            }
           }
         }
+        &:first-child{
+          margin-top: 0;
+        }
       }
-    }
+     }
   }
   .C_mainTelButton{
     @include pc{
@@ -66,6 +77,11 @@
     }
     @include sp{
       margin-top: s(120);
+    }
+    .main-TL{
+      @include pc{
+        top: 40%;
+      }
     }
     .C_flow{
       @include pc{
