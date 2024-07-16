@@ -11,9 +11,10 @@
   }
   &-TL{
     @include Extrabold;
+    text-shadow: 0 0 1px;
     @include pc{
       font-size: pm(20);
-      margin-left: p(22);
+      margin-left: p(19);
     }
     @include sp{
       font-size: s(18);
@@ -32,6 +33,9 @@
       padding-top:s(25);
     }
     .list{
+      @include pc{
+        letter-spacing: p(-0.2);
+      }
       @include sp{
         width: s(307);
         margin-left:s(24);
@@ -40,7 +44,7 @@
         position: relative;
         @include pc{
           font-size: pm(16);
-          margin:0 0 p(10) p(27);
+          margin:0 0 p(1) p(61);
           line-height: p(25);
         }
         @include sp{
@@ -74,7 +78,7 @@
       @include pc{
         width: p(342);
         height: p(228);
-        margin-inline: auto p(28);
+        margin-left :auto;
       }
       @include sp{
         width: s(330);
@@ -89,7 +93,7 @@
     }
     .list{
       @include pc{
-        width: p(368);
+        width: p(430);
       }
     }
   }

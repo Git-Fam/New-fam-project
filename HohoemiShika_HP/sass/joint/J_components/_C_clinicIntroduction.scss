@@ -49,6 +49,7 @@
       top: 0;
       left: 0;
       @include Extrabold;
+      text-shadow: 0 0 1px;
       @include pc{
         font-size: p(20);
         padding: p(10) p(30);

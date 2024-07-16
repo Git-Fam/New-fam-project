@@ -27,7 +27,7 @@
                         <div class="content">
                             <p class="TL">確かな技術力</p>
                             <p class="TX">
-                                テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                            保険治療はもちろん、審美、インプラント、さらには矯正まで、勤務医時代からの様々な治療の積み重ねによって磨きあげてきた院長の技術力で、安全・確実な世界水準の歯科医療を提供いたします。
                             </p>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
         </a>
         <div class="medical">
             <div class="C_TL">
-                <p class="TL-bg">Medical</p>
+                <p class="TL-bg color">Medical</p>
                 <p class="main-TL">医療機器</p>
             </div>
             <div class="medical_content">
