@@ -17,6 +17,7 @@
       position: relative;
       z-index: 2;
     }
+    
     .C_greeting{
       position: relative;
       z-index: 2;
@@ -46,6 +47,10 @@
     @include sp{
       padding: s(118) 0 s(82);
     }
+    .main-TL{
+      color: $F-FFFFFF;
+    }
+
     &::before{
       content: "";
       display: block;
@@ -79,6 +84,7 @@
     .name{
       color: $F-363636;
       line-height: 150%;
+      text-shadow: 0 0 1px;
       @include pc{
         text-align: left;
       }

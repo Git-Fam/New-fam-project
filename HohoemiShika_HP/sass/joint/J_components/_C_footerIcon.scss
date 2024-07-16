@@ -148,6 +148,7 @@
 
   .icon-TX{
     @include Medium;
+    line-height: 150%;
     @include pc{
       font-size: p(16);
     }

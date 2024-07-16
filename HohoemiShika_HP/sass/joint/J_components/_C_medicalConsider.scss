@@ -13,6 +13,8 @@
     text-align: center;
     width: fit-content;
     margin: 0 auto;
+    @include Extrabold;
+    text-shadow: 0 0 1px $F-937F2A;
     @include pc{
       font-size: pm(16);
     }

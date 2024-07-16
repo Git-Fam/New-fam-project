@@ -4,7 +4,7 @@
     <div class="page-homeVisit">
         <div class="ourTreatment">
             <div class="C_TL">
-                <p class="TL-bg">Our <br class="sp">Treatment</p>
+                <p class="TL-bg">Our Treatment</p>
                 <p class="main-TL">当院の訪問診療について</p>
             </div>
             <p class="TX">

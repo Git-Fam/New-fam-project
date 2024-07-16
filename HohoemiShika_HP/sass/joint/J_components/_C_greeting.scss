@@ -56,8 +56,13 @@
     }
 
     &::after {
-      bottom: 0;
       left: 0;  
+      @include pc{
+        top: p(107);
+      }
+      @include sp{
+        bottom: 0;
+      }
     }
   }
   &_content{
@@ -103,6 +108,7 @@
   .name {
     color: $F-FFFFFF;
     @include Extrabold;
+    text-shadow: 0 0 1px $F-FFFFFF;
     text-align: right;
     @include pc{
       font-size: p(25);

@@ -36,6 +36,7 @@
     }
     li{
       position: relative;
+      line-height: 120%;
       @include pc{
         display: flex;
         padding:p(15) 0 p(15);

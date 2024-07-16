@@ -14,6 +14,11 @@
   }
 
   .ourTreatment {
+    .TL-bg{
+      @include sp{
+        letter-spacing: 0.08rem;
+      }
+    }
     .TX {
       line-height: 172%;
       text-align: center;
@@ -129,6 +134,7 @@
           }
           .TL{
             @include Extrabold;
+            text-shadow: 0 0 1px $F-FFFFFF;
             @include pc{
               font-size: pm(20);
             }
