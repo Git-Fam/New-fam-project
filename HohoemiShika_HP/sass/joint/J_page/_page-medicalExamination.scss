@@ -41,18 +41,13 @@
           @include Extrabold;
           @include pc{
             font-size: pm(18);
-            margin:0 0 p(25) p(30);
+            margin-bottom: p(25);
           }
           @include sp{
             font-size: s(16);
             margin-bottom: s(30);
             line-height: 156%;
           }
-        }
-      }
-      &:last-child{
-        @include pc{
-          padding-bottom: p(40);
         }
       }
     }

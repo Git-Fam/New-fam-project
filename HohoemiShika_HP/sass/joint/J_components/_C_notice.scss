@@ -11,10 +11,9 @@
   }
   &-TL{
     @include Extrabold;
-    text-shadow: 0px 0px 0.1px $F-363636;
     @include pc{
       font-size: pm(20);
-      margin-left: p(19);
+      margin-left: p(22);
     }
     @include sp{
       font-size: s(18);
@@ -41,7 +40,7 @@
         position: relative;
         @include pc{
           font-size: pm(16);
-          margin:0 0 p(10) p(61);
+          margin:0 0 p(10) p(27);
           line-height: p(25);
         }
         @include sp{
@@ -75,7 +74,7 @@
       @include pc{
         width: p(342);
         height: p(228);
-        margin-left: auto;
+        margin-inline: auto p(28);
       }
       @include sp{
         width: s(330);
@@ -90,7 +89,7 @@
     }
     .list{
       @include pc{
-        width: p(400);
+        width: p(368);
       }
     }
   }

@@ -4,7 +4,7 @@
     <div class="page-doctor">
         <div class="doctor greetings">
             <div class="C_TL">
-                <p class="TL-bg color">Greetings</p>
+                <p class="TL-bg">Greetings</p>
                 <p class="main-TL">院長挨拶</p>
             </div>
             <div class="C_greeting">

@@ -66,8 +66,8 @@
     .C_TL{
       .main-TL{
         @include sp{
+          top: s(-10);
           line-height: 150%;
-          top: -10%;
         }
       }
     }
