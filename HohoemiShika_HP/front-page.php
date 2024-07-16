@@ -105,7 +105,7 @@
                             <div class="content">
                                 <div class="text">
                                     <p class="TX">
-                                        <span class="small">下顎前突治療で歯の</span><span class="medium">負担を減</span><span class="small">らし</span><br>
+                                        <span class="small space">下顎前突治療で歯の</span><span class="medium">負担</span><span class="small space">を</span><span class="medium">減</span><span class="small space">らし</span><br>
                                         <span class="medium">歯の寿命を</span><span class="big">伸ばす</span>
                                     </p>
                                 </div>
@@ -176,7 +176,7 @@
                                 <div class="text">
                                     <p class="TX">
                                         <span class="medium">最先端</span><span class="small">のインプラント治療で</span><br>
-                                        <span class="medium">自然な</span><span class="big">美</span><span class="medium">しさを取り戻す</span>
+                                        <span class="medium space">自然な</span><span class="big">美</span><span class="medium space">しさを取り戻す</span>
                                     </p>
                                 </div>
                                 <!-- page-implantへ -->
@@ -209,8 +209,8 @@
                             </div>
                             <div class="text">
                                 <p class="TX">
-                                    難症例にも対応した多くの 経験を活かして上質な治療を提供します。<br>
-                                    インビザラインでの目立たない治療もおこなっております。
+                                    難症例にも対応した多くの経験を活かし<br class="sp">て上質な治療を提供します。<br>
+                                    インビザラインでの目立たない治療も<br class="sp">おこなっております。
                                 </p>
                             </div>
                             <a class="C_viewMore" href="<?php bloginfo('url'); ?>/orthodontics">
@@ -228,7 +228,7 @@
                             </div>
                             <div class="text">
                                 <p class="TX">
-                                    治療実績300本以上の実績を持つ院長がインプラント治療をすべて担当します。他院で断られている難症例も一度ご相談ください。
+                                    治療実績300本以上の実績を持つ院長がインプラント治療をすべて担当します。他院で断られている難症例も一度ご相談くだ<br class="sp">さい。
                                 </p>
                             </div>
                             <!-- pageインプラント -->
@@ -247,7 +247,7 @@
                             </div>
                             <div class="text">
                                 <p class="TX">
-                                    「やらなければよかった」と後悔しないために、安いだけではなく、上手い歯医者さんを選ぶことも大切です。是非当院にお任せください。
+                                    「やらなければよかった」と後悔しない<br class="sp">ために、安いだけではなく、上手い歯医<br class="sp">者さんを選ぶことも大切です。是非当院に<br class="sp">お任せください。
                                 </p>
                             </div>
                             <!-- page審美 -->

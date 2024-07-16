@@ -20,7 +20,7 @@
 
     @include pc {
       margin-bottom: p(216);
-      @include column(p(125));
+      @include column(p(100));
     }
 
     @include sp {
@@ -89,6 +89,7 @@
       &--contents {
         border: solid $P-937F2A;
         background: rgba(255, 255, 255, 0.50);
+        backdrop-filter: blur(10px);
 
         @include pc {
           border-width: pm(1, 1);
@@ -218,55 +219,55 @@
 }
 
 
-.page-orthodontics__decoration{
+.page-orthodontics__decoration {
 
-  .parts{
+  .parts {
 
-    &.parts-01{
+    &.parts-01 {
       opacity: 0.1;
       rotate: 65deg;
 
-      @include pc{
+      @include pc {
         width: p(1128);
         top: p(1010);
         left: p(-300);
       }
-      
-      @include sp{
+
+      @include sp {
         width: s(350);
         top: s(210);
         left: s(-100);
       }
     }
 
-    &.parts-02{
+    &.parts-02 {
       opacity: 0.11;
       rotate: 114deg;
 
-      @include pc{
+      @include pc {
         width: p(1550);
         top: p(2220);
         left: p(330);
       }
-      
-      @include sp{
+
+      @include sp {
         width: s(350);
         top: s(1810);
         right: s(-100);
       }
     }
 
-    &.parts-03{
+    &.parts-03 {
       opacity: 0.2;
       rotate: 78deg;
 
-      @include pc{
+      @include pc {
         width: p(1550);
         top: p(7640);
         right: p(730);
       }
-      
-      @include sp{
+
+      @include sp {
         width: s(250);
         top: s(3310);
         left: s(-100);

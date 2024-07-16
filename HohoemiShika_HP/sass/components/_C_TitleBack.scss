@@ -31,7 +31,8 @@
     @include sp {
       top: s(720);
       height: s(194);
-      background-size: contain;
+      background-size: 63%;
+      background-position: right bottom;
     }
   }
 

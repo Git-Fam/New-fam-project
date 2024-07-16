@@ -194,7 +194,7 @@
                 <li><a href="<?php bloginfo('url'); ?>/blog" class="hover-opa">ブログ</a></li>
             </ul>
             <a href="<?php echo get_home_url(); ?>" class="copyright">© ほほえみ歯科</a>
-            <a href="#" class="insta-icon" target="_blank"></a>
+            <a href="https://www.instagram.com/hohoemi_dc/" class="insta-icon" target="_blank"></a>
         </nav>
     </div>
 </footer>

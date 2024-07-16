@@ -226,7 +226,7 @@
                                 </p>
                             </div>
                             <div class="item loadRight speed-05 delay-07">
-                                <p class="TX">
+                                <p class="TX space">
                                     難症例<span>でお困りの方も</span>お任せ<span>ください</span>
                                 </p>
                             </div>

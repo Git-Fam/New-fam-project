@@ -14,7 +14,7 @@
   }
 
   @include sp {
-    padding: s(10) 0 s(30);
+    padding: s(5) 0 s(30);
   }
 
   &--example {
@@ -27,14 +27,14 @@
       margin-bottom: s(107);
     }
 
-    // .C_TL{
-    //   .TL-bg{
+    .C_TL{
+      .TL-bg{
 
-    //     @include sp{
-    //       letter-spacing: 0.28rem;
-    //     }
-    //   }
-    // }
+        @include sp{
+          letter-spacing: 0.8rem;
+        }
+      }
+    }
 
     .front--correction {
 
