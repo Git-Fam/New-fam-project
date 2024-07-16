@@ -1315,7 +1315,7 @@
                                 <div class="C_medicalCase--titleWhopper">
                                     <div class="title">
                                         <h3 class="TL">矯正歯科</h3>
-                                        <p class="TX">部分矯正治療症例2</p>
+                                        <p class="TX">部分矯正治療症例2（一期治療）</p>
                                     </div>
                                     <div class="hr"></div>
                                 </div>
@@ -1352,7 +1352,7 @@
                                                 治療内容
                                             </h4>
                                             <p class="TX">
-                                                上顎のみワイヤー矯正。　非抜歯矯正
+                                                上顎のみワイヤー矯正。非抜歯矯正
                                             </p>
                                         </li>
                                         <li>
@@ -1390,35 +1390,27 @@
                 <div class="C_medicalCase">
                     <div class="C_medicalCase--titleWhopper">
                         <div class="title">
-                            <h3 class="TL">矯正歯科</h3>
-                            <p class="TX">上顎前突治療症例1</p>
+                            <h3 class="TL">インビザライン</h3>
+                            <p class="TX">治療症例1</p>
                         </div>
                         <div class="hr"></div>
                     </div>
                     <div class="C_medicalCase--imgWhopper">
                         <div class="item">
-                            <div class="img upperJaw-before-1-1"></div>
-                            <p class="TX">治療前</p>
+                            <div class="img Invisalign-01"></div>
+                            <p class="TX">治療中</p>
                         </div>
                         <div class="item">
-                            <div class="img upperJaw-after-1-1"></div>
-                            <p class="TX">治療後</p>
+                            <div class="img Invisalign-02"></div>
+                            <p class="TX">マウスピース装着していても目立ちません</p>
                         </div>
                         <div class="item">
-                            <div class="img upperJaw-before-1-2"></div>
-                            <p class="TX">治療前</p>
+                            <div class="img Invisalign-03"></div>
+                            <p class="TX">マウスピース</p>
                         </div>
                         <div class="item">
-                            <div class="img upperJaw-after-1-2"></div>
-                            <p class="TX">治療後</p>
-                        </div>
-                        <div class="item">
-                            <div class="img upperJaw-before-1-3"></div>
-                            <p class="TX">治療前</p>
-                        </div>
-                        <div class="item">
-                            <div class="img upperJaw-after-1-3"></div>
-                            <p class="TX">治療後</p>
+                            <div class="img Invisalign-04"></div>
+                            <p class="TX">治療中</p>
                         </div>
                     </div>
                     <div class="C_medicalCase--listsWhopper">
@@ -1428,7 +1420,7 @@
                                     初診時年齢
                                 </h4>
                                 <p class="TX">
-                                    24歳
+                                    11歳
                                 </p>
                             </li>
                             <li>
@@ -1436,7 +1428,7 @@
                                     治療内容
                                 </h4>
                                 <p class="TX">
-                                    上下左右4番抜歯、ワイヤー矯正にて治療。　上顎にインプラントアンカーを使用
+                                    インビザラインにて非抜歯治療
                                 </p>
                             </li>
                             <li>
@@ -1444,7 +1436,7 @@
                                     治療期間
                                 </h4>
                                 <p class="TX">
-                                    約1年9か月
+                                    約2ヶ月半
                                 </p>
                             </li>
                             <li>
@@ -1452,7 +1444,7 @@
                                     治療費概算
                                 </h4>
                                 <p class="TX">
-                                    871,200円（税込）
+                                    850,000円（税抜）＋毎月の調整料が4,400円（税込）
                                 </p>
                             </li>
                         </ul>
@@ -1657,7 +1649,7 @@
                                         唇側矯正（表）
                                         <span>※1回調整料</span>
                                     </p>
-                                    <p class="TX">
+                                    <p class="TX mt">
                                         880,000円
                                         <span>※4,400円</span>
                                     </p>
@@ -1667,17 +1659,17 @@
                                         舌側矯正（裏）
                                         <span>※1回調整料</span>
                                     </p>
-                                    <p class="TX">
+                                    <p class="TX mt">
                                         1,320,000円
                                         <span>※5,500円</span>
                                     </p>
                                 </li>
                                 <li>
-                                    <p class="TL">
+                                    <p class="TL mini">
                                         マウスピース矯正（インビザライン）
                                         <span>※1回調整料</span>
                                     </p>
-                                    <p class="TX">
+                                    <p class="TX mt-10">
                                         935,000円
                                         <span>※4,400円</span>
                                     </p>
@@ -1724,7 +1716,7 @@
                                         矯正Ⅰ期治療（両顎）
                                         <span>※1回調整料</span>
                                     </p>
-                                    <p class="TX">
+                                    <p class="TX mt-10">
                                         275,000円～
                                         <span>※3,300円</span>
                                     </p>
@@ -1734,7 +1726,7 @@
                                         矯正Ⅱ期治療（両顎）
                                         <span>※1回調整料</span>
                                     </p>
-                                    <p class="TX">
+                                    <p class="TX mt-10">
                                         385,000円～
                                         <span>※3,300円</span>
                                     </p>
