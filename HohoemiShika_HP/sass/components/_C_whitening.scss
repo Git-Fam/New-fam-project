@@ -52,7 +52,7 @@
 
           .img {
             aspect-ratio: 145/93;
-            @include imgContain("C_whitening-01.png");
+            @include imgContain("C_whitening-01.jpg");
 
             @include pc {
               width: p(145);
@@ -74,7 +74,7 @@
 
           .img {
             aspect-ratio: 115/76;
-            @include imgContain("C_whitening-02.png");
+            @include imgContain("C_whitening-02.jpg");
 
             @include pc {
               width: p(115);
@@ -96,7 +96,7 @@
 
           .img {
             aspect-ratio: 140/95;
-            @include imgContain("C_whitening-03.png");
+            @include imgContain("C_whitening-03.jpg");
 
             @include pc {
               width: p(140);

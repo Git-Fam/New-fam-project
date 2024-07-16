@@ -46,6 +46,7 @@
   .main-TL {
     color: $F-8B761F;
     @include Extrabold;
+    text-shadow: 0 0 1px $F-8B761F;
     position: absolute;
     left: 50%;
     width: 100%;

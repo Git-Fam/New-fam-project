@@ -16,10 +16,10 @@
   }
   .about {
     @include Extrabold;
-    text-shadow: 0 0 1px ;
     .TX {
       line-height: 205%;
       text-align: center;
+      @include Extrabold;
       @include pc{
         font-size: pm(18);
         letter-spacing: p(2.7);
@@ -47,11 +47,6 @@
     }
     @include sp{
       margin-top: s(115);
-    }
-    .main-TL{
-      @include sp{
-        top: 60%;
-      }
     }
     .C_feature{
       @include pc{
@@ -143,7 +138,6 @@
           .TL{
             @include Extrabold;
             position: relative;
-            text-shadow: 0 0 1px $F-FFFFFF;
             @include pc{
               font-size: pm(20);
             }
@@ -198,7 +192,6 @@
           }
           .TL{
             @include Extrabold;
-            text-shadow: 0 0 1px $F-FFFFFF;
             @include pc{
               font-size: pm(16);
               letter-spacing: p(1.6);
@@ -227,9 +220,7 @@
             }
             .TL{
               position: relative;
-              line-height: 187%;
               @include Extrabold;
-              text-shadow: 0 0 1px;
               @include pc{
                 font-size: pm(16);
               }
@@ -256,7 +247,6 @@
               }
             }
             .TX{
-              line-height: 187%;
               @include pc{
                 font-size: pm(16);
               }

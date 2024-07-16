@@ -41,6 +41,7 @@
       .case {
         border: solid #937F2A;
         background: rgba(255, 255, 255, 0.50);
+        -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
         margin: 0 auto;
         position: relative;
@@ -175,7 +176,14 @@
 
       .C_TL {
 
-        @include sp {}
+        .TL-bg{
+
+          @include pc{
+            letter-spacing: 0.28em;
+          }
+          
+          @include sp{}
+        }
 
         .main-TL {
 

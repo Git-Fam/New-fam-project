@@ -17,9 +17,7 @@
   }
   &_TL{
     @include Extrabold;
-    text-shadow: 0 0 1px $F-FFFFFF;
     text-align: center;
-    white-space: nowrap;
     @include pc{
       font-size: pm(20);
       letter-spacing: p(2);

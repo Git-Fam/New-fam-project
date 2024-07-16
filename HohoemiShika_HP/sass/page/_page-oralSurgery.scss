@@ -33,6 +33,10 @@
       .C_TL {
 
         .TL-bg {
+          @include pc {
+            letter-spacing: 1.8rem;
+          }
+
           @include sp {
             letter-spacing: 0.08rem;
           }
@@ -77,11 +81,17 @@
       margin-bottom: s(123);
     }
 
+
     .C_TL {
 
       .TL-bg {
+        @include pc {
+          letter-spacing: 1.8rem;
+        }
+
         @include sp {
-          letter-spacing: 0.2rem;
+          letter-spacing: 0.3rem;
+          white-space: nowrap;
         }
       }
 
@@ -104,6 +114,31 @@
       }
     }
   }
+
+  &--jawJoint{
+    .C_jawJoint{
+      &--inner{
+        .C_TL{
+          .TL-bg{
+
+            @include pc{
+              letter-spacing: 1.8rem;
+            }
+          }
+        }
+      }
+      &--inner--2{
+        .C_TL{
+          .TL-bg{
+
+            @include pc{
+              letter-spacing: 2.1rem;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .page-oralSurgery__decoration {
@@ -116,7 +151,7 @@
 
       @include pc {
         width: p(1128);
-        top: p(1100);
+        top: p(1000);
         left: p(-250);
       }
 

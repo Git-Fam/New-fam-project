@@ -35,7 +35,6 @@
       }
       .TL{
         @include Extrabold;
-        text-shadow: 0 0 1px;
         @include pc{
           font-size: pm(20);
         }
