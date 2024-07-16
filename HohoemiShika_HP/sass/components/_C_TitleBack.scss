@@ -10,16 +10,17 @@
   z-index: 1;
   width: 100%;
   @include imgCover("C_TitleBack.jpg");
-  background-size: 40%;
   background-position: right top;
   mix-blend-mode: multiply;
 
   @include pc {
-    height: p(419);
+    height: p(500);
+    background-size: contain;
   }
 
   @include sp {
     height: s(194);
+    background-size: 40%;
   }
 
   &.C_TitleBack--KV--front {

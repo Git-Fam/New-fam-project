@@ -128,7 +128,7 @@
 
             .TL {
               @include Extrabold;
-              text-shadow: 0px 0px 0px $F-333130;
+              text-shadow: 0px 0px 1px $F-333130;
 
               @include pc {
                 font-size: p(18);
@@ -138,6 +138,7 @@
               @include sp {
                 font-size: s(17);
                 @include column(s(3));
+                white-space: nowrap;
                 // position: relative;
               }
 
@@ -168,6 +169,18 @@
               @include sp {
                 font-size: s(17);
                 @include column(s(3));
+              }
+
+              &.mt{
+                @include sp{
+                  margin-top: s(-20);
+                }
+              }
+
+              &.mt-10{
+                @include sp{
+                  margin-top: s(-10);
+                }
               }
 
               span {
@@ -201,7 +214,9 @@
 
         .TX {
           color: $F-8B761F;
-          @include Extrabold;
+          // @include Extrabold;
+          text-shadow: 0px 0px 1px $F-8B761F;
+
 
           @include pc {
             font-size: p(16);
@@ -235,7 +250,9 @@
     .title {
 
       .TL {
-        @include Extrabold;
+        // @include Extrabold;
+        @include Medium;
+        text-shadow: 0px 0px 1px $F-74716E;
 
         @include pc {
           font-size: pm(20);
