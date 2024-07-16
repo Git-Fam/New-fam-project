@@ -26,58 +26,57 @@
             <p class="main-TL">治療案内</p>
         </div>
         <p class="TX">様々な治療に対応しております。</p>
+        <div class="ft-nav">
+            <a class="C_footerIcon" href="<?php bloginfo('url'); ?>/orthodontics">
+                    <p class="icon-TL">矯正歯科</p>
+                    <div class="icon ft-icon01"></div>
+                    <p class="icon-TX">歯並び・噛み合わせが<br class="sp">気になる</p>
+            </a>
+            <a class="C_footerIcon" href="<?php bloginfo('url'); ?>/implant">
+                    <p class="icon-TL">インプラント</p>
+                    <div class="icon ft-icon02"></div>
+                    <p class="icon-TX">天然歯に近い<br class="sp">見た目と噛みごたえ</p>
+            </a>
 
-        <ul class="ft-nav">
-            <li class="C_footerIcon">
-                <p class="icon-TL">矯正歯科</p>
-                <div class="icon ft-icon01"></div>
-                <p class="icon-TX">歯並び・噛み合わせが<br class="sp">気になる</p>
-            </li>
-            <li class="C_footerIcon">
-                <p class="icon-TL">インプラント</p>
-                <div class="icon ft-icon02"></div>
-                <p class="icon-TX">天然歯に近い<br class="sp">見た目と噛みごたえ</p>
-            </li>
+            <a class="C_footerIcon" href="<?php bloginfo('url'); ?>/aestheticdentistry">
+                    <p class="icon-TL">審美歯科</p>
+                    <div class="icon ft-icon03"></div>
+                    <p class="icon-TX">歯を白くしたい・<br class="sp">銀歯が気になる</p>
+            </a>
 
-            <li class="C_footerIcon">
-                <p class="icon-TL">審美歯科</p>
-                <div class="icon ft-icon03"></div>
-                <p class="icon-TX">歯を白くしたい・<br class="sp">銀歯が気になる</p>
-            </li>
+            <a class="C_footerIcon" href="<?php bloginfo('url'); ?>/oralsurgery">
+                    <p class="icon-TL">口腔外科</p>
+                    <div class="icon ft-icon04"></div>
+                    <p class="icon-TX">親知らずや<br class="sp">顎関節症の治療に</p>
+            </a>
 
-            <li class="C_footerIcon">
-                <p class="icon-TL">口腔外科</p>
-                <div class="icon ft-icon04"></div>
-                <p class="icon-TX">親知らずや<br class="sp">顎関節症の治療に</p>
-            </li>
-
-            <li class="C_footerIcon">
+            <a class="C_footerIcon" href="<?php bloginfo('url'); ?>/dentures">
                 <p class="icon-TL">入れ歯</p>
                 <div class="icon ft-icon05"></div>
                 <p class="icon-TX">入れ歯の<br class="sp">製作・調整</p>
-            </li>
+            </a>
 
-            <li class="C_footerIcon">
-                <p class="icon-TL">予防歯科</p>
-                <div class="icon ft-icon06"></div>
-                <p class="icon-TX">大人の虫歯・<br class="sp">歯周病予防に</p>
-            </li>
-            <li class="C_footerIcon">
-                <p class="icon-TL">一般歯科</p>
-                <div class="icon ft-icon07"></div>
-                <p class="icon-TX">歯が痛い・<br class="sp">しみる・腫れ</p>
-            </li>
-            <li class="C_footerIcon">
-                <p class="icon-TL">小児歯科</p>
-                <div class="icon ft-icon08"></div>
-                <p class="icon-TX">小児虫歯の<br class="sp">予防・治療</p>
-            </li>
-            <li class="C_footerIcon">
-                <p class="icon-TL">訪問診療</p>
-                <div class="icon ft-icon09"></div>
-                <p class="icon-TX">通院が困難な方へ<br class="sp">　</p>
-            </li>
-        </ul>
+            <a class="C_footerIcon" href="<?php bloginfo('url'); ?>/prevention">
+                    <p class="icon-TL">予防歯科</p>
+                    <div class="icon ft-icon06"></div>
+                    <p class="icon-TX">大人の虫歯・<br class="sp">歯周病予防に</p>
+            </a>
+            <a class="C_footerIcon" href="<?php bloginfo('url'); ?>/general">
+                    <p class="icon-TL">一般歯科</p>
+                    <div class="icon ft-icon07"></div>
+                    <p class="icon-TX">歯が痛い・<br class="sp">しみる・腫れ</p>
+            </a>
+            <a class="C_footerIcon" href="<?php bloginfo('url'); ?>/pediatricdentistry">
+                    <p class="icon-TL">小児歯科</p>
+                    <div class="icon ft-icon08"></div>
+                    <p class="icon-TX">小児虫歯の<br class="sp">予防・治療</p>
+            </a>
+            <a class="C_footerIcon" href="<?php bloginfo('url'); ?>/homevisit">
+                    <p class="icon-TL">訪問診療</p>
+                    <div class="icon ft-icon09"></div>
+                    <p class="icon-TX">通院が困難な方へ<br class="sp">　</p>
+            </a>
+        </div>
     </div>
     <div class="ft-bottom">
         <div class="ft-bottom-content">

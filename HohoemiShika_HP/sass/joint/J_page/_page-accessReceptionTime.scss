@@ -207,16 +207,10 @@
                     }
                   }
                 }
-                .time{
-                  text-shadow: 0px 0px 0.01px $F-363636;
-                }
               }
               .top{
                 @include sp{
                   font-size: s(16);
-                }
-                th{
-                  text-shadow: 0px 0px 0.5px $F-FFFFFF;
                 }
               }               
             }
