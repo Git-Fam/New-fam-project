@@ -20,10 +20,10 @@
     position: relative;
     @include pc{
       display: flex;
-      margin-top: p(88);
+      margin-top: p(78);
     }
     @include sp{
-      margin-top: s(60);
+      margin-top: s(50);
     }
     .textbox{
       @include pc{
@@ -112,9 +112,9 @@
       position: absolute;
       @include iconContain($flow-arrow);
       @include pc{
-        width: p(17);
+        width: p(25);
         height: p(72);
-        top: p(90);
+        top: p(100);
         left: p(-68)
       }
       @include sp{
