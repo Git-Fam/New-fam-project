@@ -1,13 +1,11 @@
 <?php get_header(); ?>
 
 <main class="doctor--main">
-
-
     <div class="page-doctor">
         <div class="doctor greetings">
             <div class="C_TL">
-                <p class="TL-bg color">Greetings</p>
-                <p class="main-TL">院長挨拶</p>
+                <p class="TL-bg color rollAnime">Greetings</p>
+                <h2 class="main-TL up speed-05 delay-03">院長挨拶</h2>
             </div>
             <div class="C_greeting">
                 <p class="C_greeting_TL">
@@ -35,8 +33,8 @@
         </div>
         <div class="doctor visiting">
             <div class="C_TL">
-                <p class="TL-bg">visiting</p>
-                <p class="main-TL">訪問部</p>
+                <p class="TL-bg rollAnime">visiting</p>
+                <h2 class="main-TL up speed-05 delay-03">訪問部</h2>
             </div>
             <div class="C_greeting">
                 <p class="C_greeting_TL">

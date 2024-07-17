@@ -2,13 +2,11 @@
 
 <main>
     <div class="page-medicalExamination">
-        <!-- ここにコンテンツが入ります -->
         <div class="notice">
             <div class="C_TL">
-                <p class="TL-bg rollAnime roll show">Notice</p>
-                <h2 class="main-TL up speed-05 delay-03 show">受診される方へ</h2>
+                <p class="TL-bg rollAnime">Notice</p>
+                <h2 class="main-TL up speed-05 delay-03">受診される方へ</h2>
             </div>
-
             <div class="notice_content">
                 <div class="C_notice">
                     <p class="C_notice-TL">ご来院時にお持ちいただくもの</p>
@@ -95,8 +93,8 @@
 
         <div class="flow">
             <div class="C_TL">
-                <p class="TL-bg rollAnime roll show">Flow</p>
-                <h2 class="main-TL up speed-05 delay-03 show">受診時の流れ</h2>
+                <p class="TL-bg rollAnime">Flow</p>
+                <h2 class="main-TL up speed-05 delay-03">受診時の流れ</h2>
             </div>
 
             <div class="C_flow">
