@@ -154,6 +154,14 @@
     }
   }
 
+  .C_material--inner{
+    .subTitle{
+      @include sp{
+        margin-top: s(65);
+      }
+    }
+  }
+
   &--Whitening {
 
     @include pc {
@@ -206,7 +214,9 @@
             font-size: pm(16);
           }
 
-          @include sp {}
+          @include sp {
+            font-size: s(16);
+          }
         }
       }
     }

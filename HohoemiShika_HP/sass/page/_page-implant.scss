@@ -222,6 +222,7 @@
                 @include sp {
                   font-size: s(18);
                   white-space: nowrap;
+                  line-height: 1.2;
                 }
               }
 
@@ -313,13 +314,12 @@
 
     &.parts-02 {
       opacity: 0.11;
-      rotate: 114deg;
+      rotate:  -11deg;
 
       @include pc {
         width: p(1550);
         top: p(2420);
         right: p(-530);
-
       }
 
       @include sp {
@@ -348,7 +348,7 @@
 
     &.parts-04 {
       opacity: 0.05;
-      rotate: 45deg;
+      rotate: 63deg;
 
       @include pc {
         width: p(2072);
