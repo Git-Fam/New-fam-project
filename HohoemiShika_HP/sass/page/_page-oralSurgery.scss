@@ -117,6 +117,9 @@
 
   &--jawJoint{
     .C_jawJoint{
+      @include sp{
+        padding-bottom: s(148);
+      }
       &--inner{
         .C_TL{
           .TL-bg{

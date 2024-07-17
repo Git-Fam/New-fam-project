@@ -818,7 +818,7 @@
                                                 治療費概算
                                             </h4>
                                             <p class="TX">
-                                                9996,600円（税込）
+                                                996,600円（税込）
                                             </p>
                                         </li>
                                     </ul>
@@ -944,7 +944,7 @@
                                                 治療費概算
                                             </h4>
                                             <p class="TX">
-                                                ￥964,000円（税込）
+                                                964,000円（税込）
                                             </p>
                                         </li>
                                     </ul>
@@ -1450,7 +1450,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="C_pointText">Orthodontic treatment</div>
+                <div class="C_pointText">Invisalign treatment</div>
             </div>
         </section>
 

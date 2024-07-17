@@ -41,7 +41,8 @@
 
   .TX {
     text-align: center;
-    @include Demibold;
+    @include Regular;
+    text-shadow: 0 0 0.1px $F-FFFFFF;
     line-height: 1.5;
     letter-spacing: 0.15em;
     color: #FFFFFF;

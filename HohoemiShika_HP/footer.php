@@ -190,7 +190,7 @@
                 <li><a href="<?php bloginfo('url'); ?>/doctor" class="hover-opa">ドクター紹介</a></li>
                 <li><a href="<?php bloginfo('url'); ?>/clinic" class="hover-opa">クリニック紹介</a></li>
                 <li><a href="<?php bloginfo('url'); ?>/medicalexamination" class="hover-opa">受診される方へ</a></li>
-                <li><a href="<?php bloginfo('url'); ?>/accessreceptiontime" class="hover-opa">アクセス/診療時間</a></li>
+                <li><a href="<?php bloginfo('url'); ?>/accessreceptiontime" class="hover-opa">アクセス・診療時間</a></li>
                 <li><a href="<?php bloginfo('url'); ?>/blog" class="hover-opa">ブログ</a></li>
             </ul>
             <a href="<?php echo get_home_url(); ?>" class="copyright">© ほほえみ歯科</a>

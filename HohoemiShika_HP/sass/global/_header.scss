@@ -498,7 +498,8 @@
               }
 
               p {
-                @include Demibold;
+                @include Regular;
+                text-shadow: 0px 0px 1px $F-FFFFFF;
                 line-height: 1.5;
                 letter-spacing: 0.05em;
                 color: $F-FFFFFF;
