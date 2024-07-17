@@ -43,6 +43,7 @@
       }
     }
   }
+
   &--careContainer{
     .C_careContainer{
       @include pc{
@@ -50,6 +51,20 @@
       }
       @include sp{
         background-position: 70% top;
+      }
+
+      &--inner{
+        .C_TL{
+
+          .TL-bg{
+
+            @include pc{
+              letter-spacing: 1.8rem;
+            }
+            
+            @include sp{}
+          }
+        }
       }
       .content{
         @include sp{

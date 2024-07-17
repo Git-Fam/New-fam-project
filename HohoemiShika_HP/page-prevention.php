@@ -46,7 +46,7 @@
                                     フッ素塗布
                                 </h3>
                                 <p class="TX">
-                                    歯にフッ素を塗布することで、虫歯菌が出<br class="ps">す酸に対する<br class="pc">抵抗力を高め、初期虫歯の修<br class="ps">復を促し、虫歯の進行を防<br class="pc">ぐ効果がありま<br class="ps">す。
+                                    歯にフッ素を塗布することで、虫歯菌が出<br class="sp">す酸に対する<br class="pc">抵抗力を高め、初期虫歯の修<br class="sp">復を促し、虫歯の進行を防<br class="pc">ぐ効果がありま<br class="sp">す。
                                 </p>
                             </div>
                         </div>
@@ -58,7 +58,7 @@
                                     口腔内クリーニング（PMTC）
                                 </h3>
                                 <p class="TX">
-                                    普段の歯磨きでは磨きにくい場所を徹底的<br class="ps">に掃除し、<br class="pc">歯周病や歯肉炎などの歯周疾患<br class="ps">の予防と改善虫歯予防を<br class="pc">行います。
+                                    普段の歯磨きでは磨きにくい場所を徹底的<br class="sp">に掃除し、<br class="pc">歯周病や歯肉炎などの歯周疾患<br class="sp">の予防と改善虫歯予防を<br class="pc">行います。
                                 </p>
                             </div>
                         </div>
