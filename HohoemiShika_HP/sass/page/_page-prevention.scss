@@ -43,6 +43,16 @@
       }
     }
   }
+  &--careContainer{
+    .C_careContainer{
+      @include pc{
+        background-position: 100% top;
+      }
+      @include sp{
+        background-position: 70% top;
+      }
+    }
+  }
 
 }
 
