@@ -6,15 +6,16 @@
 
 .C_periodontalDisease {
   position: relative;
-  @include imgCover("C_periodontalDisease-bg.jpg");
-
+  
   @include pc {
     padding: p(136) 0 p(173);
+    @include imgCover("C_periodontalDisease-bg.jpg");
   }
 
   @include sp {
     padding: s(100) 0 s(108);
-    background-position: top left 33%;
+    @include imgCover("C_periodontalDisease-bg-sp.jpg");
+    background-position: center right 45%;
   }
 
   &::before {

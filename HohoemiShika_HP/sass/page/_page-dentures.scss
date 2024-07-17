@@ -146,6 +146,11 @@
       .C_TL {
 
         .TL-bg {
+
+          @include pc{
+            letter-spacing: 1.8rem;
+          }
+          
           @include sp {
             letter-spacing: 0.03em;
             white-space: nowrap;
@@ -171,7 +176,6 @@
 }
 
 .page-dentures__decoration {
-
   .parts {
 
     &.parts-01 {
@@ -215,7 +219,7 @@
 
       @include pc {
         width: p(1128);
-        top: p(4450);
+        top: p(4350);
         left: p(-90);
       }
 

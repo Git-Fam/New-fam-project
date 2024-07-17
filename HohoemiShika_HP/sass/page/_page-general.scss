@@ -23,6 +23,10 @@
     .C_TL {
       .TL-bg {
 
+        @include pc {
+          letter-spacing: 1.6rem;
+        }
+
         @include sp {
           letter-spacing: 0.45rem;
         }
@@ -59,8 +63,8 @@
         &_TX {
 
           @include pc {
-            padding-left: p(36);
-            padding-right: p(36);
+            padding-left: p(30);
+            padding-right: p(31);
             @include column(p(25));
           }
 
@@ -250,6 +254,9 @@
       .C_TL {
 
         .TL-bg {
+          @include pc{
+            letter-spacing: 1.8rem;
+          }
           @include sp {
             letter-spacing: 0.08rem;
           }
@@ -288,6 +295,8 @@
 
     .C_toothDecay {
       margin: 0 auto;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
 
       @include pc {
         width: p(888);
@@ -297,10 +306,55 @@
         width: s(280);
       }
 
+      .C_toothTL{
+
+        @include sp{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: s(17);
+        }
+
+        .icon{
+
+          @include sp{
+            margin: unset;
+          }
+        }
+      }
+
       .C_toothContent {
         li {
           .label {
             text-shadow: 0px 0px 0.5px $F-333130;
+          }
+        }
+      }
+    }
+  }
+
+  &--periodontalDisease{
+
+    .C_periodontalDisease{
+      &--inner{
+        .C_periodontalDisease--item{
+          .C_bacterial{
+            .C_toothTL{
+
+              @include sp{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: s(17);
+              }
+      
+              .icon{
+      
+                @include sp{
+                  margin: unset;
+                }
+              }
+            }
           }
         }
       }
