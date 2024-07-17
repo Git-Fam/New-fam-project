@@ -273,9 +273,6 @@
                     </li>
                 </ul>
             </div>
-
-
-
         </section>
 
         <section class="page-general--periodontalDisease">

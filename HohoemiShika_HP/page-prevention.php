@@ -33,7 +33,7 @@
             <div class="C_careContainer">
                 <div class="C_careContainer--inner">
                     <div class="C_TL">
-                        <p class="TL-bg rollAnime">Medical</p>
+                        <p class="TL-bg rollAnime color">Medical</p>
                         <h2 class="main-TL up speed-05 delay-03">当院で行うケア</h2>
                     </div>
 
@@ -46,7 +46,7 @@
                                     フッ素塗布
                                 </h3>
                                 <p class="TX">
-                                    歯にフッ素を塗布することで、虫歯菌が出す酸に対する抵抗力を高め、初期虫歯の修復を促し、虫歯の進行を防ぐ効果があります。
+                                    歯にフッ素を塗布することで、虫歯菌が出<br class="ps">す酸に対する<br class="pc">抵抗力を高め、初期虫歯の修<br class="ps">復を促し、虫歯の進行を防<br class="pc">ぐ効果がありま<br class="ps">す。
                                 </p>
                             </div>
                         </div>
@@ -58,7 +58,7 @@
                                     口腔内クリーニング（PMTC）
                                 </h3>
                                 <p class="TX">
-                                    普段の歯磨きでは磨きにくい場所を徹底的に掃除し、歯周病や歯肉炎などの歯周疾患の予防と改善虫歯予防を行います。
+                                    普段の歯磨きでは磨きにくい場所を徹底的<br class="ps">に掃除し、<br class="pc">歯周病や歯肉炎などの歯周疾患<br class="ps">の予防と改善虫歯予防を<br class="pc">行います。
                                 </p>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                                     ブラッシング指導
                                 </h3>
                                 <p class="TX">
-                                    歯ブラシの選び方・握り方・動かし方などのポイントをやさしく丁寧にご指導いたします。
+                                    歯ブラシの選び方・握り方・動かし方な<br class="ps">どのポイントをや<br class="pc">さしく丁寧にご指導い<br class="ps">たします。
                                 </p>
                             </div>
                         </div>

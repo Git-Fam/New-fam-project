@@ -16,6 +16,8 @@
 
   @include sp {
     padding: s(54) 0 s(100);
+    background-position: right 34% bottom 30%;
+    background-size: 640%;
   }
 
   &::before {
@@ -44,7 +46,7 @@
       .main-TL {
         color: $P-FFFFFF;
 
-        @include sp{
+        @include sp {
           white-space: nowrap;
         }
       }
@@ -111,11 +113,11 @@
         .content {
 
           @include pc {
-            padding: p(32) p(71) p(45) p(74);
+            padding: p(32) 0 p(45) p(74);
           }
 
           @include sp {
-            padding: s(30) s(19) s(24) s(23);
+            padding: s(30) 0 s(24) s(20);
           }
 
           .TL {

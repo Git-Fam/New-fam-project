@@ -24,7 +24,7 @@
                                 <p class="TX"></p>
                             </div>
                             <div class="item">
-                                <div class="img dentures1-2"></div>
+                                <div class="img dentures-1-2"></div>
                                 <p class="TX"></p>
                             </div>
                             <div class="item">
@@ -122,7 +122,7 @@
                                         治療期間
                                     </h4>
                                     <p class="TX">
-
+                                        約3ヶ月
                                     </p>
                                 </li>
                                 <li>
@@ -280,8 +280,6 @@
         <div class="parts parts-01"></div>
         <div class="parts parts-02"></div>
         <div class="parts parts-03"></div>
-        <div class="parts parts-04"></div>
-        <div class="parts parts-05"></div>
     </div>
 </main>
 
