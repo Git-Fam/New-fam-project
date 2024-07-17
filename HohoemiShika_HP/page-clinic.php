@@ -5,8 +5,8 @@
     <div class="page-clinic">
         <div class="about">
             <div class="C_TL">
-                <p class="TL-bg rollAnime">About</p>
-                <h2 class="main-TL up speed-05 delay-03">ほほえみ歯科について</h2>
+                <p class="TL-bg">About</p>
+                <p class="main-TL">ほほえみ歯科について</p>
             </div>
             <p class="TX">
                 私たちは、<br class="sp">ただ歯科治療を行うのでなく、<br>
@@ -17,8 +17,8 @@
         </div>
         <div class="feature">
             <div class="C_TL">
-                <p class="TL-bg rollAnime">Features</p>
-                <h2 class="main-TL up speed-05 delay-03">ほほえみ歯科の特徴</h2>
+                <p class="TL-bg">Features</p>
+                <p class="main-TL">ほほえみ歯科の特徴</p>
             </div>
             <ul class="C_feature">
                 <li class="C_feature_content">
@@ -102,8 +102,8 @@
         </a>
         <div class="medical">
             <div class="C_TL">
-                <p class="TL-bg rollAnime color">Medical</p>
-                <h2 class="main-TL up speed-05 delay-03">医療機器</h2>
+                <p class="TL-bg">Medical</p>
+                <p class="main-TL">医療機器</p>
             </div>
             <div class="medical_content">
                 <div class="medical_content_top">

@@ -22,8 +22,8 @@
     </div>
     <div class="ft-main">
         <div class="C_TL">
-            <p class="TL-bg rollAnime">Treatment Menu</p>
-            <h2 class="main-TL up speed-05 delay-03">治療案内</h2>
+            <p class="TL-bg">Treatment Menu</p>
+            <p class="main-TL">治療案内</p>
         </div>
         <p class="TX">様々な治療に対応しております。</p>
         <div class="ft-nav">

@@ -4,8 +4,8 @@
     <div class="page-homeVisit">
         <div class="ourTreatment">
             <div class="C_TL">
-                <p class="TL-bg rollAnime">Our Treatment</p>
-                <h2 class="main-TL up speed-05 delay-03">当院の訪問診療について</h2>
+                <p class="TL-bg">Our Treatment</p>
+                <p class="main-TL">当院の訪問診療について</p>
             </div>
             <p class="TX">
                 訪問診療の専門スタッフが専用の<br class="sp">ポータブルユニットを持参して<br class="sp">訪問歯科診療を行っています。<br>
@@ -16,8 +16,8 @@
         </div>
         <div class="point">
             <div class="C_TL">
-                <p class="TL-bg rollAnime">Point</p>
-                <h2 class="main-TL up speed-05 delay-03">当院の訪問診療のポイント</h2>
+                <p class="TL-bg">Point</p>
+                <p class="main-TL">当院の訪問診療のポイント</p>
             </div>
             <ul class="C_point">
                 <li>
@@ -67,8 +67,8 @@
         </a>
         <div class="medicalCere">
             <div class="C_TL">
-                <p class="TL-bg rollAnime">Medical</p>
-                <h2 class="main-TL up speed-05 delay-03">当院で行う<br class="sp">訪問歯科の治療・ケア</h2>
+                <p class="TL-bg">Medical</p>
+                <p class="main-TL">当院で行う<br class="sp">訪問歯科の治療・ケア</p>
             </div>
             <div class="medicalCere_content">
                 <div class="img"></div>
