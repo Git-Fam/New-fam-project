@@ -6,15 +6,11 @@
             <div class="C_onlyText">
                 <div class="C_TL">
                     <p class="TL-bg rollAnime">Our Treatment</p>
-                    <h2 class="main-TL up speed-05 delay-03">当院の予防歯科について</h2>
+                    <h2 class="main-TL up speed-05 delay-03">当院の小児歯科について</h2>
                 </div>
                 <div class="C_onlyText--text">
                     <p class="TX">
-                        小児歯科は、お子様の虫歯治療のほか虫歯予防、永久歯が生え揃うまでのお口の健康管理を中心に<br class="pc">
-                        行う診療科です。<br class="sp">乳歯は永久歯と比べてとても柔らかいため、虫歯になりやすく、<br class="pc">
-                        いったん虫歯になると短期間で進行していきます。<br class="sp">ほほえみ歯科では、年齢・成長・小児特有の<br class="pc">
-                        背景を踏まえた虫歯治療や予防処置を行い、大人になっても歯のトラブルが少なく健全な食生活を<br class="pc">
-                        送れるよう、治療だけでなく歯の発育に関する相談にも応じております。
+                        小児歯科は、お子様の虫歯治療のほか虫歯予防、永久歯が生え揃うまでのお口の健康管理を中心に<br class="pc">行う診療科です。<br class="sp">乳歯は永久歯と比べてとても柔らかいため、虫歯になりやすく、<br class="pc">いったん虫歯になると短期間で進行していきます。<br class="sp">ほほえみ歯科では、年齢・成長・小児特有の<br class="pc">背景を踏まえた虫歯治療や予防処置を行い、大人になっても歯のトラブルが少なく健全な食生活を<br class="pc">送れるよう、治療だけでなく歯の発育に関する相談にも応じております。
                     </p>
                 </div>
                 <div class="C_onlyText--tel">

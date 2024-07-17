@@ -1,5 +1,5 @@
 @use "../functions" as *;
-
+@use "../joint/J_functions/_J_svg" as *;
 /* -----------------------
   page-pediatricDentistry
 ----------------------- */
@@ -43,6 +43,21 @@
       }
     }
   }
+  &--careContainer{
+    .C_careContainer{
+      @include pc{
+        background-position: 100% top;
+      }
+      @include sp{
+        background-position: 70% top;
+      }
+      .content{
+        @include sp{
+          padding-bottom: s(35);
+        }
+      }
+    }
+  }
 
   &--textbox {
 
@@ -58,7 +73,6 @@
       margin: 0 auto;
 
       &_TL {
-
         @include pc {
           padding-left: p(36);
         }
@@ -71,7 +85,8 @@
           display: flex;
           align-items: center;
           line-height: 1.3;
-
+          @include Regular;
+          text-shadow: 0 0 1px $F-FFFFFF;
           @include pc {
             gap: p(8);
             font-size: p(20);
@@ -86,8 +101,7 @@
             content: "";
             display: block;
             aspect-ratio: 30/23;
-            @include iconContain($brushIcon);
-
+            @include iconContain($brush-icon);
             @include pc {
               width: p(30);
             }
