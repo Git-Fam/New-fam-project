@@ -4,8 +4,8 @@
     <div class="page-accessReceptionTime">
         <div class="access">
             <div class="C_TL">
-                <p class="TL-bg rollAnime roll show"><span style="transition-delay:.0s;">A</span><span style="transition-delay:.1s;">c</span><span style="transition-delay:.2s;">c</span><span style="transition-delay:.3s;">e</span><span style="transition-delay:.4s;">s</span><span style="transition-delay:.5s;">s</span></p>
-                <h2 class="main-TL up speed-05 delay-03 show">アクセス</h2>
+                <p class="TL-bg rollAnime"><span style="transition-delay:.0s;">A</span><span style="transition-delay:.1s;">c</span><span style="transition-delay:.2s;">c</span><span style="transition-delay:.3s;">e</span><span style="transition-delay:.4s;">s</span><span style="transition-delay:.5s;">s</span></p>
+                <h2 class="main-TL up speed-05 delay-03">アクセス</h2>
             </div>
             <div class="access_content">
                 <div class="map">
@@ -36,8 +36,8 @@
         </div>
         <div class="openingHours">
             <div class="C_TL">
-                <p class="TL-bg rollAnime roll show"><span style="transition-delay:.0s;">O</span><span style="transition-delay:.1s;">p</span><span style="transition-delay:.2s;">e</span><span style="transition-delay:.3s;">n</span><span style="transition-delay:.4s;">i</span><span style="transition-delay:.5s;">n</span><span style="transition-delay:.6s;">g</span> <span style="transition-delay: 0.7s;">H</span><span style="transition-delay: 0.8s;">o</span><span style="transition-delay: 0.9s;">u</span><span style="transition-delay: 1s;">r</span><span style="transition-delay: 1.1s;">s</span></p>
-                <h2 class="main-TL up speed-05 delay-03 show">診療時間</h2>
+                <p class="TL-bg rollAnime"><span style="transition-delay:.0s;">O</span><span style="transition-delay:.1s;">p</span><span style="transition-delay:.2s;">e</span><span style="transition-delay:.3s;">n</span><span style="transition-delay:.4s;">i</span><span style="transition-delay:.5s;">n</span><span style="transition-delay:.6s;">g</span> <span style="transition-delay: 0.7s;">H</span><span style="transition-delay: 0.8s;">o</span><span style="transition-delay: 0.9s;">u</span><span style="transition-delay: 1s;">r</span><span style="transition-delay: 1.1s;">s</span></p>
+                <h2 class="main-TL up speed-05 delay-03">診療時間</h2>
             </div>
             <div class="openingHours_content">
                 <div class="C_footerInfo">
