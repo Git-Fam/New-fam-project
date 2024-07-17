@@ -231,14 +231,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const tab = urlParams.get('tab');
 
   if (tab) {
-      const tabs = document.querySelectorAll('.js--selector');
-      const contents = document.querySelectorAll('.js--content');
+      const tabs = document.querySelectorAll('.example__container--tabs .js--selector');
+      const contents = document.querySelectorAll('.example__container--contents .js--content');
 
       tabs.forEach(t => t.classList.remove('active'));
       contents.forEach(c => c.classList.remove('active'));
 
-      const activeTab = document.querySelector(`.js--selector[data-tab="${tab}"]`);
-      const activeContent = document.querySelector(`.js--content[data-content="${tab}"]`);
+      const activeTab = document.querySelector(`.example__container--tabs .js--selector[data-tab="${tab}"]`);
+      const activeContent = document.querySelector(`.example__container--contents .js--content[data-content="${tab}"]`);
 
       if (activeTab && activeContent) {
           activeTab.classList.add('active');

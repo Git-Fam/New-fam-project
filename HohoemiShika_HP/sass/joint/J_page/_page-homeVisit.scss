@@ -6,27 +6,31 @@
 ----------------------- */
 
 .page-homeVisit {
-  @include pc{
+  @include pc {
     padding-bottom: p(150);
   }
-  @include sp{
+
+  @include sp {
     padding-bottom: s(60);
   }
 
   .ourTreatment {
-    .TL-bg{
-      @include sp{
+    .TL-bg {
+      @include sp {
         letter-spacing: 0.08rem;
       }
     }
+
     .TX {
       line-height: 172%;
       text-align: center;
-      @include pc{
+
+      @include pc {
         font-size: pm(18);
         margin-top: p(55);
       }
-      @include sp{
+
+      @include sp {
         font-size: s(18);
         // letter-spacing: s(2.9);
         margin-top: s(60);
@@ -36,124 +40,153 @@
   }
 
   .point {
-    @include pc{
+    @include pc {
       margin-top: p(150);
     }
-    @include sp{
+
+    @include sp {
       margin-top: s(125);
     }
+
     .C_point {
-      @include pc{
+      @include pc {
         margin: p(104) auto 0;
       }
-      @include sp{
+
+      @include sp {
         margin: s(100) auto 0;
       }
     }
   }
+
   .C_mainTelButton {
-    @include pc{
+    @include pc {
       margin: p(100) auto 0;
     }
-    @include sp{
+
+    @include sp {
       margin: s(100) auto 0;
     }
   }
-  .medicalCere{
-    @include pc{
+
+  .medicalCere {
+    @include pc {
       margin-top: p(150);
       padding: 0 p(200);
     }
-    @include sp{
+
+    @include sp {
       margin-top: s(130);
       padding: 0 s(20)
     }
-    .C_TL{
-      .main-TL{
-        @include sp{
+
+    .C_TL {
+      .main-TL {
+        @include sp {
           top: s(-10);
           line-height: 150%;
         }
       }
     }
-    .medicalCere_content{
-      @include pc{
+
+    .medicalCere_content {
+      @include pc {
         margin-top: p(70);
         display: flex;
         justify-content: space-between;
       }
-      @include sp{
+
+      @include sp {
         margin-top: s(60);
       }
-      .img{
+
+      .img {
         @include imgCover("medicalCare.jpg");
-        @include pc{
+
+        @include pc {
           width: p(309);
           height: p(314);
         }
-        @include sp{
+
+        @include sp {
           width: s(350);
           height: s(225);
         }
       }
-      .C_medicalText{
-        @include sp{
+
+      .C_medicalText {
+        @include sp {
           margin-top: s(30);
         }
       }
     }
-    .medicalCare_textbox{
-      @include pc{
+
+    .medicalCare_textbox {
+      @include pc {
         margin-top: p(78);
       }
-      @include sp{
+
+      @include sp {
         margin-top: s(68);
       }
-      .C_textbox{
-        &_TL{
+
+      .C_textbox {
+        &_TL {
           display: flex;
           align-items: center;
-          @include pc{
+
+          @include pc {
             justify-content: center;
           }
-          @include sp{
+
+          @include sp {
             padding-left: s(10);
           }
-          .icon{
+
+          .icon {
             @include iconContain($brush-icon);
-            @include pc{
+
+            @include pc {
               width: p(30);
-              height:p(23) ;
+              height: p(23);
               margin-right: p(9);
             }
-            @include sp{
+
+            @include sp {
               width: s(30);
-              height:s(23) ;
+              height: s(23);
               margin-right: s(9);
             }
           }
-          .TL{
+
+          .TL {
             @include Extrabold;
             text-shadow: 0 0 1px $F-FFFFFF;
-            @include pc{
+
+            @include pc {
               font-size: pm(20);
             }
-            @include sp{
+
+            @include sp {
               font-size: s(20);
             }
           }
         }
-        &_TX{
-          border-top:none;
-          .C_medicalConsider{
-            @include pc{
+
+        &_TX {
+          border-top: none;
+
+          .C_medicalConsider {
+            @include pc {
               margin-top: p(40);
-              
+
             }
-            @include sp{
+
+            @include sp {
               margin-top: s(40);
             }
-            &:first-child{
+
+            &:first-child {
               margin-top: 0;
             }
           }
@@ -162,13 +195,14 @@
     }
   }
 }
-.page-homeVisit__decoration{
+
+.page-homeVisit__decoration {
   .parts {
     z-index: -1;
 
     &.parts-01 {
       opacity: 0.1;
-      rotate:64deg;
+      rotate: 64deg;
 
       @include pc {
         width: p(1128);
@@ -185,7 +219,7 @@
 
     &.parts-02 {
       opacity: 0.05;
-      rotate:85.25deg;
+      rotate: 85.25deg;
 
       @include pc {
         width: p(1594);
@@ -203,7 +237,7 @@
 
     &.parts-03 {
       opacity: 0.05;
-      rotate:-85.25deg;
+      rotate: -85.25deg;
 
       @include sp {
         width: s(583);
