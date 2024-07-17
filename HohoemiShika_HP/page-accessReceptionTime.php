@@ -2,7 +2,7 @@
 
 <main>
     <div class="page-accessReceptionTime">
-        <div class="access">
+        <section class="access">
             <div class="C_TL">
                 <p class="TL-bg rollAnime">Access</p>
                 <h2 class="main-TL up speed-05 delay-03">アクセス</h2>
@@ -33,8 +33,8 @@
                     </a>
                 </div>
             </div>
-        </div>
-        <div class="openingHours">
+        </section>
+        <section class="openingHours">
             <div class="C_TL">
                 <p class="TL-bg rollAnime">Opening Hours</p>
                 <h2 class="main-TL up speed-05 delay-03">診療時間</h2>
@@ -114,7 +114,7 @@
                 </div>
                 <div class="img"></div>
             </div>
-        </div>
+        </section>
     </div>
     <!-- デコレーション -->
     <div class="decorations page-accessReceptionTime__decoration">

@@ -2,14 +2,14 @@
 
 <main>
     <div class="page-medicalExamination">
-        <div class="notice">
+        <section class="notice">
             <div class="C_TL">
                 <p class="TL-bg rollAnime">Notice</p>
                 <h2 class="main-TL up speed-05 delay-03">受診される方へ</h2>
             </div>
             <div class="notice_content">
                 <div class="C_notice">
-                    <p class="C_notice-TL">ご来院時にお持ちいただくもの</p>
+                    <h3 class="C_notice-TL">ご来院時にお持ちいただくもの</h3>
                     <div class="C_notice-content top">
                         <ul class="list">
                             <li>
@@ -27,12 +27,10 @@
                         <div class="img"></div>
                     </div>
                 </div>
-
                 <div class="C_notice">
-                    <p class="C_notice-TL">初診の方</p>
+                    <h3 class="C_notice-TL">初診の方</h3>
                     <div class="C_notice-content">
                         <p class="TL">これまでに受けた治療や<br class="sp">服用中のお薬に関する情報が大切です</p>
-
                         <ul class="list">
                             <li>
                                 初回および月初は、必ず健康保険被保険者証（コピー不可）をお持ちください。
@@ -56,9 +54,8 @@
                         </ul>
                     </div>
                 </div>
-
                 <div class="C_notice">
-                    <p class="C_notice-TL">注意事項</p>
+                    <h3 class="C_notice-TL">注意事項</h3>
                     <div class="C_notice-content">
                         <p class="TL">※以下のような場合は必ず受付時にお申し出ください。</p>
 
@@ -75,11 +72,8 @@
                         </ul>
                     </div>
                 </div>
-
-
-
             </div>
-        </div>
+        </section>
 
         <a class="C_mainTelButton" href="tel:0527154181">
             <div class="C_mainTelButton__icon">
@@ -91,16 +85,15 @@
             </div>
         </a>
 
-        <div class="flow">
+        <section class="flow">
             <div class="C_TL">
                 <p class="TL-bg rollAnime">Flow</p>
                 <h2 class="main-TL up speed-05 delay-03">受診時の流れ</h2>
             </div>
-
             <div class="C_flow">
                 <div class="C_flow_content">
                     <div class="textbox">
-                        <p class="TL">受付</p>
+                        <h3 class="TL">受付</h3>
                         <p class="TX">
                             ご来院いただきましたら、受付に健康保険被保険者証、各種医療証をご提出ください。<br>
                             （紹介状やお薬手帳をお持ちの方はご一緒にご提出をお願いします。）
@@ -108,30 +101,27 @@
                     </div>
                     <div class="img flow01"></div>
                 </div>
-
                 <div class="C_flow_content">
                     <div class="textbox">
-                        <p class="TL">待合室</p>
+                        <h3 class="TL">待合室</h3>
                         <p class="TX">
                             診察までは待合室でお待ち下さい。初診の際には簡単な問診票をお渡しいたします。ご記入をお願いいたします。
                         </p>
                     </div>
                     <div class="img flow02"></div>
                 </div>
-
                 <div class="C_flow_content">
                     <div class="textbox">
-                        <p class="TL">診察/相談</p>
+                        <h3 class="TL">診察/相談</h3>
                         <p class="TX">
                             準備が整いましたらお呼びいたしますので診察室へお入りください。医師とスタッフが協力し、丁寧な診察を行うよう心がけております。
                         </p>
                     </div>
                     <div class="img flow03"></div>
                 </div>
-
                 <div class="C_flow_content">
                     <div class="textbox">
-                        <p class="TL">待合室</p>
+                        <h3 class="TL">待合室</h3>
                         <p class="TX">
                             診察が終了いたしましたら、待合室でお待ち下さい。スタッフがお呼びしますのでお会計をお願いします。お会計時に診察券と処方箋（お薬がある場合）をお渡しいたします。
                         </p>
@@ -139,7 +129,14 @@
                     <div class="img flow04"></div>
                 </div>
             </div>
-        </div>
+        </section>
+    </div>
+
+    <!-- デコレーション -->
+    <div class="decorations page-medicalExamination__decoration">
+        <div class="parts parts-01"></div>
+        <div class="parts parts-02"></div>
+        <div class="parts parts-03"></div>
     </div>
 </main>
 

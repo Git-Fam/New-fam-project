@@ -5,45 +5,54 @@
   page-medicalExamination
 ----------------------- */
 
-.page-medicalExamination{
-  @include pc{
+.page-medicalExamination {
+  @include pc {
     padding-bottom: p(150);
   }
-  @include sp{
+
+  @include sp {
     padding-bottom: s(100);
   }
-  .notice{
-    .C_TL{
-      .main-TL{
-        @include sp{
+
+  .notice {
+    .C_TL {
+      .main-TL {
+        @include sp {
           width: s(213);
         }
       }
     }
-    
-    &_content{
-      @include pc{
+
+    &_content {
+      @include pc {
         padding: 0 p(200);
         margin-top: p(65);
       }
-      @include sp{
+
+      @include sp {
         padding: 0 s(20);
         margin-top: s(55);
       }
     }
-    .C_notice{
+
+    .C_notice {
       background: $B-FFFFFF-05;
-      @include pc{
-        padding: p(67) p(28) p(28) p(39);
+
+      @include pc {
+        padding: p(67) p(24) p(28) p(36);
       }
-      &-content{
-        .TL{
+
+      &-content {
+        .TL {
           @include Extrabold;
-          @include pc{
+          text-shadow: 0 0 1px $F-141414;
+
+          @include pc {
             font-size: pm(18);
             margin-bottom: p(25);
           }
-          @include sp{
+
+          @include sp {
             font-size: s(16);
             margin-bottom: s(30);
             line-height: 156%;
@@ -52,44 +61,52 @@
       }
     }
   }
-  .C_mainTelButton{
-    @include pc{
+
+  .C_mainTelButton {
+    @include pc {
       margin: p(83) auto 0;
     }
-    @include sp{
+
+    @include sp {
       margin: s(60) auto 0;
     }
   }
-  .flow{
-    @include pc{
+
+  .flow {
+    @include pc {
       margin-top: p(178);
     }
-    @include sp{
+
+    @include sp {
       margin-top: s(120);
     }
-    .C_flow{
-      @include pc{
+
+    .C_flow {
+      @include pc {
         margin-top: p(70);
       }
-      @include sp{
+
+      @include sp {
         margin-top: s(64);
       }
     }
   }
 }
 
-.page-medicalExamination__decoration{
+.page-medicalExamination__decoration {
   .parts {
     z-index: -1;
+
     &.parts-01 {
       opacity: 0.1;
-      rotate:65.75deg;
+      rotate: 65.75deg;
 
       @include pc {
         width: p(1128);
         top: p(-288);
         left: p(-475);
       }
+
       @include sp {
         width: s(883);
         top: s(-255);
@@ -99,7 +116,7 @@
 
     &.parts-02 {
       opacity: 0.11;
-      rotate:143.04deg;
+      rotate: 143.04deg;
 
       @include pc {
         width: p(1064);
@@ -116,7 +133,7 @@
 
     &.parts-03 {
       opacity: 0.1;
-      rotate:66.75deg;
+      rotate: 66.75deg;
 
       @include pc {
         width: p(1024);
@@ -130,8 +147,5 @@
         left: s(-480);
       }
     }
-
-
   }
-
 }

@@ -14,12 +14,19 @@
     padding: 0 s(18);
   }
 
+  &.C_greeting__visiting{
+    @include sp{
+      padding: 0 s(22);
+    }
+  }
+
   &_TL {
     @include Extrabold;
     color: $F-C09933;
     position: relative;
     text-align: center;
     margin: 0 auto;
+    text-shadow: 0 0 1px $F-C09933;
 
     @include pc {
       font-size: p(30);

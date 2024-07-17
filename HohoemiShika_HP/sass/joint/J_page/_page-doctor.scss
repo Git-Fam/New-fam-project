@@ -6,52 +6,69 @@
 ----------------------- */
 
 .page-doctor {
-  @include pc{
+  @include pc {
     padding-bottom: p(150);
   }
-  @include sp{
+
+  @include sp {
     padding-bottom: s(100);
   }
+
   .doctor {
-    .C_TL{
+    .C_TL {
       position: relative;
       z-index: 2;
     }
-    
-    .C_greeting{
+
+    .C_greeting {
       position: relative;
       z-index: 2;
       margin-inline: auto;
-      @include pc{
+
+      @include pc {
         margin-top: p(40);
       }
-      @include sp{
+
+      @include sp {
         margin-top: s(62);
       }
-      &_content{
-        .TX{
-          @include sp{
-            letter-spacing: s(0.1)
 
-          }  
+      &_content {
+        .TX {
+          @include sp {
+            letter-spacing: s(0.1)
+          }
         }
       }
     }
   }
-  .greetings{
+
+  .greetings {
     @include imgCover("greeting_bg.jpg");
     position: relative;
-    @include pc{
-      padding:p(180) p(152) p(150);
+
+    @include pc {
+      padding: p(180) p(152) p(150);
     }
-    @include sp{
+
+    @include sp {
       padding: s(118) 0 s(82);
+      background-position: center left 45%;
     }
-    .main-TL{
+
+    .C_TL {
+      .TL-bg {
+        @include pc {
+          letter-spacing: 2rem;
+        }
+      }
+    }
+
+    .main-TL {
       color: $F-FFFFFF;
     }
 
-    &::before{
+    &::before {
       content: "";
       display: block;
       position: absolute;
@@ -60,45 +77,52 @@
       z-index: 1;
     }
   }
-  .visiting{
-    @include pc{
+
+  .visiting {
+    @include pc {
       margin-top: p(150);
     }
-    @include sp{
+
+    @include sp {
       margin-top: s(100);
     }
-    .C_greeting{
-      &_TL{
+
+    .C_greeting {
+      &_TL {
         color: $F-937F2A;
       }
-      &_content{
-        @include pc{
+
+      &_content {
+        @include pc {
           flex-direction: row-reverse;
         }
-    
-        .TX{
+
+        .TX {
           color: $F-363636;
         }
       }
     }
-    .name{
+
+    .name {
       color: $F-363636;
       line-height: 150%;
       text-shadow: 0 0 1px;
-      @include pc{
+
+      @include pc {
         text-align: left;
       }
     }
 
   }
 }
-.page-doctor__decoration{
+
+.page-doctor__decoration {
   .parts {
     z-index: -1;
 
     &.parts-01 {
       opacity: 0.1;
-      rotate:64deg;
+      rotate: 64deg;
 
       @include pc {
         width: p(551);
@@ -115,7 +139,7 @@
 
     &.parts-02 {
       opacity: 0.1;
-      rotate:-120.25deg;
+      rotate: -120.25deg;
 
       @include pc {
         width: p(989);
@@ -129,7 +153,5 @@
         right: s(-300);
       }
     }
-
   }
-
 }

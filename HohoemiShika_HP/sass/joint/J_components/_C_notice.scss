@@ -5,92 +5,109 @@
   C_notice
 ----------------------- */
 
-.C_notice{
-  @include sp{
+.C_notice {
+  @include sp {
     padding: s(44) s(10) s(56);
   }
-  &-TL{
+
+  &-TL {
     @include Extrabold;
-    @include pc{
+    text-shadow: 0 0 1px $F-141414;
+
+    @include pc {
       font-size: pm(20);
-      margin-left: p(22);
+      margin-left: p(18);
     }
-    @include sp{
+
+    @include sp {
       font-size: s(18);
-      
+
     }
   }
-  &-content{
-    @include pc{
+
+  &-content {
+    @include pc {
       border-top: p(1) solid $P-AC7D02;
       margin-top: p(10);
-      padding-top:p(35);
+      padding-top: p(35);
+      padding-left: p(23);
     }
-    @include sp{
+
+    @include sp {
       border-top: s(1) solid $P-AC7D02;
       margin-top: s(10);
-      padding-top:s(25);
+      padding-top: s(25);
     }
-    .list{
-      @include sp{
+
+    .list {
+      @include sp {
         width: s(307);
-        margin-left:s(24);
+        margin-left: s(24);
       }
-      li{
+
+      li {
         position: relative;
-        @include pc{
+
+        @include pc {
           font-size: pm(16);
-          margin:0 0 p(10) p(27);
+          margin: 0 0 p(10) p(27);
           line-height: p(25);
         }
-        @include sp{
+
+        @include sp {
           font-size: s(16);
           margin-bottom: s(10);
           line-height: s(25);
 
         }
-        &::before{
+
+        &::before {
           content: "";
           position: absolute;
           border-radius: 50%;
           background: $P-C09933;
-          @include pc{
+
+          @include pc {
             width: p(9);
             height: p(9);
             left: p(-24);
             top: p(6);
           }
-          @include sp{
+
+          @include sp {
             width: s(9);
             height: s(9);
             left: s(-15);
-            top:s(5)
+            top: s(5)
           }
         }
       }
     }
-    .img{
+
+    .img {
       @include imgCover("notice01.jpg");
-      @include pc{
+
+      @include pc {
         width: p(342);
         height: p(228);
-        margin-inline: auto p(28);
+        margin-inline: auto 0;
       }
-      @include sp{
+
+      @include sp {
         width: s(330);
         height: s(200);
-        margin:s(40) auto 0;
+        margin: s(40) auto 0;
       }
     }
   }
-  .top{
-    @include pc{
+
+  .top {
+    @include pc {
       display: flex;
     }
-    .list{
-      @include pc{
-        width: p(368);
-      }
+
+    .list {
+      @include pc {}
     }
   }
 }

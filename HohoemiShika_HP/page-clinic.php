@@ -3,7 +3,7 @@
 
 <main>
     <div class="page-clinic">
-        <div class="about">
+        <section class="about">
             <div class="C_TL">
                 <p class="TL-bg rollAnime">About</p>
                 <h2 class="main-TL up speed-05 delay-03">ほほえみ歯科について</h2>
@@ -14,8 +14,8 @@
                 地域の皆様の期待に応えられるよう<br class="sp">努力いたします。<br>
                 皆様がいつもまでも笑顔で楽しい<br class="sp">食生活を送れるよう<br class="sp">サポートしてまいります。
             </p>
-        </div>
-        <div class="feature">
+        </section>
+        <section class="feature">
             <div class="C_TL">
                 <p class="TL-bg rollAnime">Features</p>
                 <h2 class="main-TL up speed-05 delay-03">ほほえみ歯科の特徴</h2>
@@ -24,10 +24,10 @@
                 <li class="C_feature_content">
                     <div class="img feature01"></div>
                     <div class="textbox">
-                        <div class="content">
+                        <div class="content mt">
                             <p class="TL">確かな技術力</p>
-                            <p class="TX">
-                                テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                            <p class="TX TX-mini">
+                                保険治療はもちろん、審美、インプラント、さらには矯正まで、勤務医時代からの様々な治療の積み重ねによって磨きあげてきた院長の技術力で、安全・確実な世界水準の歯科医療を提供いたします。
                             </p>
                         </div>
                     </div>
@@ -90,7 +90,7 @@
                     <p class="deco-TX">Visit</p>
                 </li>
             </ul>
-        </div>
+        </section>
         <a class="C_mainTelButton" href="tel:0527154181">
             <div class="C_mainTelButton__icon">
                 <div class="icon"></div>
@@ -100,7 +100,7 @@
                 <p class="TX">052-715-4181</p>
             </div>
         </a>
-        <div class="medical">
+        <section class="medical">
             <div class="C_TL">
                 <p class="TL-bg rollAnime color">Medical</p>
                 <h2 class="main-TL up speed-05 delay-03">医療機器</h2>
@@ -111,7 +111,7 @@
                     <div class="textbox">
                         <p class="TL">3D対応CT/セファログラム</p>
                         <p class="TX">
-                            より少ないX線照射線量で撮影することが可能な3D対応CT/セファログラム装置を導入しております。この装置はインプラント治療から歯のクリーニングに至るまで様々な治療に対応します。矯正治療の際は治療前後の改善確認や診断に利用する頭部X線規格写真の撮影ができ、より正確な治療計画を立てることができます。
+                            より少ないX線照射線量で撮影することが可能な3D対応CT/セファログラム装置を導入しております。この装置はインプラント治療から歯のクリーニングに至るまで様々な治療に対応します。<br class="sp">矯正治療の際は治療前後の改善確認や診断に利用する頭部X線規格写真の撮影ができ、より正確な治療計画を立てることができます。
                         </p>
                     </div>
                 </div>
@@ -178,7 +178,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </section>
         <div class="C_clinicIntroduction">
             <div class="aaa">
                 <div class="img clinic01"></div>

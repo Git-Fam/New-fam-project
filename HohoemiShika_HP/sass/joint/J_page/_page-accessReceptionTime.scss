@@ -6,77 +6,96 @@
 ----------------------- */
 
 .page-accessReceptionTime {
-  @include pc{
+  @include pc {
     padding-bottom: p(150);
   }
-  @include sp{
+
+  @include sp {
     padding-bottom: s(100);
   }
-  .access{
-    @include pc{
+
+  .access {
+    @include pc {
       padding: 0 p(200);
     }
-    @include sp{
+
+    @include sp {
       padding: 0 s(20);
     }
+
     &_content {
-      @include pc{
+      @include pc {
         margin-top: p(60);
       }
-      @include sp{
+
+      @include sp {
         margin-top: s(64);
       }
-      .map{
+
+      .map {
         width: 100%;
-        @include pc{
+
+        @include pc {
           height: p(383);
         }
-        @include sp{
+
+        @include sp {
           height: s(300);
         }
       }
+
       .access_bottom {
-        @include pc{
+        @include pc {
           display: flex;
           margin-top: p(13);
           justify-content: space-between;
           align-items: flex-end;
         }
-        @include sp{
+
+        @include sp {
           margin-top: s(30);
         }
+
         .C_footerInfo {
           .textbox {
             color: $F-363636;
-            @include pc{
+
+            @include pc {
               margin-top: p(18);
             }
-            @include sp{
+
+            @include sp {
               margin-top: s(20);
             }
+
             .adress {
-              span{
-                @include pc{
+              span {
+                @include pc {
                   margin-right: p(12);
                 }
-                @include sp{
+
+                @include sp {
                   margin-right: s(12);
                 }
               }
-            }          
+            }
+
             .root {
-              @include pc{
+              @include pc {
                 margin-top: p(15);
               }
-              @include sp{
+
+              @include sp {
                 margin-top: s(18);
               }
             }
           }
-        } 
+        }
+
         .map_link {
           background-color: $B-FFFFFF;
-          @include pc{
+
+          @include pc {
             width: p(370);
             border: p(1) solid $P-C09933;
             box-shadow: p(2) p(2) p(2) rgba(0, 0, 0, 0.25);
@@ -85,183 +104,228 @@
             align-items: center;
             justify-content: space-between;
           }
+
           .icon {
             @include iconContain($map-icon);
-            @include pc{
+
+            @include pc {
               width: p(20);
               height: p(20);
             }
           }
+
           .TX {
             color: $F-363636;
-            @include pc{
+
+            @include pc {
               font-size: pm(20);
             }
-          }            
-        }               
+          }
+        }
       }
     }
   }
+
   .openingHours {
-    @include pc{
+    @include pc {
       margin-top: p(152);
     }
-    @include sp{
+
+    @include sp {
       margin-top: s(130);
     }
-    .C_TL{
-      .TL-bg{
-        @include sp{
+
+    .C_TL {
+      .TL-bg {
+        @include pc {
+          letter-spacing: 1.8rem;
+        }
+
+        @include sp {
           width: s(333);
           margin: 0 auto;
         }
       }
     }
+
     .openingHours_content {
-      @include pc{
+      @include pc {
         display: flex;
         padding: 0 p(200);
         justify-content: space-between;
-        align-items:flex-start;
+        align-items: flex-start;
         margin-top: p(80);
       }
-      @include sp{
+
+      @include sp {
         padding: 0 s(20);
         margin-top: s(60);
       }
+
       .C_footerInfo {
         .Info-list {
           margin: 0;
-          @include pc{
+
+          @include pc {
             width: p(430);
           }
-          @include sp{
+
+          @include sp {
             width: 100%;
           }
-          li{
+
+          li {
             padding: 0;
-            table{
-              @include pc{
+
+            table {
+              @include pc {
                 border: p(1) solid $P-C09933;
                 font-size: pm(18);
               }
-              @include sp{
+
+              @include sp {
                 border: s(1) solid $P-C09933;
                 margin: 0;
               }
-              tr{
-                @include pc{
+
+              tr {
+                @include pc {
                   border: p(1) solid $P-C09933;
                 }
-                @include sp{
+
+                @include sp {
                   border: s(1) solid $P-C09933;
                 }
-                th,td{
-                  @include pc{
+
+                th,
+                td {
+                  @include pc {
                     padding: p(14) 0;
                   }
-                  @include sp{
+
+                  @include sp {
                     padding: s(10) 0;
                   }
                 }
-                th:first-child{
-                  @include pc{
+
+                th:first-child {
+                  @include pc {
                     border-right: p(1) solid $P-FFFFFF;
-                  }  
-                  @include sp{
+                  }
+
+                  @include sp {
                     border-right: s(1) solid $P-FFFFFF;
                   }
                 }
-                td{
+
+                td {
                   background: $B-FFFFFF;
                   color: $F-363636;
-                  @include sp{
+
+                  @include sp {
                     font-size: s(14);
                   }
+
                   .maru {
-                    @include pc{
-                      border:p(1) solid $F-363636;
+                    @include pc {
+                      border: p(1) solid $F-363636;
                     }
-                    @include sp{
+
+                    @include sp {
                       border: s(1) solid $F-363636;
                     }
                   }
-                  .stu-maru{
+
+                  .stu-maru {
                     background: $B-363636;
                   }
+
                   .slash {
-                    @include pc{
+                    @include pc {
                       border-left: p(1) solid $B-363636;
-                    }    
-                    @include sp{
+                    }
+
+                    @include sp {
                       border-left: s(1) solid $B-363636;
                       margin-top: s(3);
-                    }            
+                    }
                   }
-                  
-                  &:first-child{
-                    @include pc{
+
+                  &:first-child {
+                    @include pc {
                       border-right: p(1) solid $P-C09933;
-                    }    
-                    @include sp{
+                    }
+
+                    @include sp {
                       border-right: s(1) solid $P-C09933;
                     }
                   }
                 }
-                .time-num{
+
+                .time-num {
                   @include Extrabold;
                   text-shadow: 0 0 1px $F-363636;
                 }
               }
-              .top{
-                @include sp{
+
+              .top {
+                @include sp {
                   font-size: s(16);
                 }
-              }               
+              }
             }
           }
         }
+
         .under {
           color: $F-363636;
-          @include pc{
+
+          @include pc {
             margin-top: p(10);
           }
-          @include sp{
+
+          @include sp {
             font-size: s(13);
             margin-top: s(11);
           }
-          .close{
-            @include pc{
+
+          .close {
+            @include pc {
               margin-top: p(13);
             }
-            @include sp{
+
+            @include sp {
               margin-top: s(11);
             }
           }
-        }          
+        }
       }
-      .img{
-        @include imgCover("clinic_01.jpg");
-        @include pc{
+
+      .img {
+        @include imgCover("clinic_02.jpg");
+
+        @include pc {
           width: p(420);
           height: p(280);
         }
-        @include sp{
+
+        @include sp {
           width: s(350);
           height: s(233);
           margin-top: s(60);
         }
       }
-    }    
+    }
   }
 }
 
-.page-accessReceptionTime__decoration{
+.page-accessReceptionTime__decoration {
   .parts {
     z-index: -1;
+
     &.parts-01 {
       opacity: 0.1;
-      rotate:-114.25deg;
+      rotate: -114.25deg;
 
       @include pc {
         width: p(945);
@@ -278,7 +342,7 @@
 
     &.parts-02 {
       opacity: 0.11;
-      rotate:40.04deg;
+      rotate: 40.04deg;
 
       @include pc {
         width: p(982);
@@ -292,7 +356,5 @@
         left: s(-420);
       }
     }
-
   }
-
 }
