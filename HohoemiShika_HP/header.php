@@ -178,6 +178,9 @@
                         </li>
                     </ul>
                 </nav>
+                <a href="#footer" class="Tel_icon">
+                    <div class="icon"></div>
+                </a>
             </div>
             <div class="menu__back"></div>
         </header>
@@ -345,7 +348,7 @@
                         </div>
                     <?php endif; ?>
 
-                    <?php if (is_post_type_archive('post')) : ?>
+                    <?php if (is_post_type_archive('post') || is_singular('post')) : ?>
                         <!-- ブログ -->
                         <div class="KV--tag--inner">
                             <h2 class="TL">ブログ</h2>

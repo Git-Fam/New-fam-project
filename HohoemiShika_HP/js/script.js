@@ -39,6 +39,9 @@ $(function () {
     $(this).removeClass("active");
     $('.menu, .burger, body').removeClass("active");
   });
+  $(".Tel_icon").on("click", function () {
+    $('.menu, .burger, body,.menu__back').removeClass("active");
+  });
 
   // テキスト表示
   $(".C_hoverText").on("click", function () {
@@ -48,11 +51,14 @@ $(function () {
   var prevScrollpos = window.pageYOffset;
   window.onscroll = function () {
     var currentScrollpos = window.pageYOffset;
-    if (prevScrollpos > currentScrollpos || currentScrollpos < 500) {
+    var burgerActive = document.querySelector(".burger").classList.contains("active");
+
+    if ((prevScrollpos > currentScrollpos || currentScrollpos < 500) && !burgerActive) {
       document.querySelector(".header").classList.remove("active");
-    } else {
+    } else if (!burgerActive) {
       document.querySelector(".header").classList.add("active");
     }
+
     prevScrollpos = currentScrollpos;
   }
 
@@ -226,23 +232,23 @@ $(window).on('load', function () {
 
 
 // 画面転換でタブ切り替え
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const urlParams = new URLSearchParams(window.location.search);
   const tab = urlParams.get('tab');
 
   if (tab) {
-      const tabs = document.querySelectorAll('.example__container--tabs .js--selector');
-      const contents = document.querySelectorAll('.example__container--contents .js--content');
+    const tabs = document.querySelectorAll('.example__container--tabs .js--selector');
+    const contents = document.querySelectorAll('.example__container--contents .js--content');
 
-      tabs.forEach(t => t.classList.remove('active'));
-      contents.forEach(c => c.classList.remove('active'));
+    tabs.forEach(t => t.classList.remove('active'));
+    contents.forEach(c => c.classList.remove('active'));
 
-      const activeTab = document.querySelector(`.example__container--tabs .js--selector[data-tab="${tab}"]`);
-      const activeContent = document.querySelector(`.example__container--contents .js--content[data-content="${tab}"]`);
+    const activeTab = document.querySelector(`.example__container--tabs .js--selector[data-tab="${tab}"]`);
+    const activeContent = document.querySelector(`.example__container--contents .js--content[data-content="${tab}"]`);
 
-      if (activeTab && activeContent) {
-          activeTab.classList.add('active');
-          activeContent.classList.add('active');
-      }
+    if (activeTab && activeContent) {
+      activeTab.classList.add('active');
+      activeContent.classList.add('active');
+    }
   }
 });

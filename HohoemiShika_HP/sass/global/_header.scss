@@ -539,6 +539,40 @@
         }
       }
     }
+
+    .Tel_icon {
+      aspect-ratio: 1;
+      @include iconContain($hexagon);
+      @include center;
+      position: absolute;
+      z-index: 3;
+      overflow: hidden;
+
+      @include pc {
+        width: p(100);
+        top: p(230);
+        right: p(15);
+      }
+
+      @include sp {
+        width: s(84);
+        top: s(150);
+        right: s(7);
+      }
+
+      .icon {
+        aspect-ratio: 51/47;
+        @include imgContain("telIcon.svg");
+
+        @include pc {
+          width: p(51);
+        }
+
+        @include sp {
+          width: s(42);
+        }
+      }
+    }
   }
 
   .menu__back {
