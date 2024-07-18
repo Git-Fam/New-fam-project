@@ -167,7 +167,7 @@
                     </li>
                 </ul>
                 <div class="under">
-                    <p class="stu-time">●=14:30~18:00<span>※最終受付：</span></p>
+                    <p class="stu-time">●=14:30~18:00<span>※完全予約制</span></p>
                     <p class="close">【休診日】木曜・日曜・祝日</p>
                 </div>
             </div>
