@@ -13,7 +13,7 @@
   .TL-bg {
     @include contrail;
     font-weight: 400;
-    
+
     @include pc {
       opacity: 0.3;
       color: $F-BCAB64;
@@ -27,8 +27,8 @@
       letter-spacing: s(10);
     }
 
-    &.color{
-      @include sp{
+    &.color {
+      @include sp {
         color: $F-8E8048;
         opacity: 0.3;
       }
@@ -46,7 +46,7 @@
   .main-TL {
     color: $F-8B761F;
     @include Extrabold;
-    text-shadow: 0 0 1px $F-8B761F;
+    text-shadow: 0 0 0.5px $F-8B761F;
     position: absolute;
     left: 50%;
     width: 100%;

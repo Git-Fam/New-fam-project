@@ -6,81 +6,98 @@
   C_medicalConsider
 ----------------------- */
 
-.C_medicalConsider{
-  .TL{
+.C_medicalConsider {
+  .TL {
     color: $F-937F2A;
     position: relative;
     text-align: center;
     width: fit-content;
     margin: 0 auto;
     @include Extrabold;
-    text-shadow: 0 0 1px $F-937F2A;
-    @include pc{
+    text-shadow: 0 0 0.5px $F-937F2A;
+
+    @include pc {
       font-size: pm(16);
     }
-    @include sp{
+
+    @include sp {
       font-size: s(16);
     }
-    &::before{
+
+    &::before {
       content: "";
       position: absolute;
       background: linear-gradient(90deg, rgba(147, 127, 42, 0) 0%, #937F2A 13%, #937F2A 88%, rgba(147, 127, 42, 0) 100%);
       width: 120%;
       left: 50%;
       translate: -50% 0;
-      @include pc{
+
+      @include pc {
         height: p(1);
         bottom: p(-8);
       }
-      @include sp{
+
+      @include sp {
         height: s(1);
         bottom: s(-7);
       }
     }
   }
-  .list{
-    @include pc{
+
+  .list {
+    @include pc {
       margin: p(30) auto 0;
       width: fit-content;
     }
-    @include sp{
+
+    @include sp {
       margin: s(27) auto 0;
       width: s(331);
     }
-    li{
+
+    li {
       display: flex;
-      @include pc{
+
+      @include pc {
         align-items: center;
         margin-top: p(5);
       }
-      @include sp{
+
+      @include sp {
         margin-top: s(5);
       }
-      .icon{
+
+      .icon {
         @include iconContain($list-thooth);
-        @include pc{
+
+        @include pc {
           width: p(13);
           height: p(16);
           margin-right: p(20);
         }
-        @include sp{
+
+        @include sp {
           width: s(13);
           height: s(16);
-          margin:s(5) s(12) 0 0 ;
+          margin: s(5) s(12) 0 0;
         }
       }
-      .TX{
+
+      .TX {
         line-height: 150%;
-        @include pc{
+
+        @include pc {
           font-size: pm(18);
         }
-        @include sp{
+
+        @include sp {
           font-size: s(18);
         }
-      } 
-      &:first-child{
+      }
+
+      &:first-child {
         margin-top: 0;
-      }   
+      }
     }
   }
 }

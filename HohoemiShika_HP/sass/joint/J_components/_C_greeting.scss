@@ -1,5 +1,5 @@
-@use "../../functions"as *;
-@use "../J_functions"as *;
+@use "../../functions" as *;
+@use "../J_functions" as *;
 
 
 /* -----------------------
@@ -10,12 +10,13 @@
   @include pc {
     width: p(980);
   }
-  @include sp{
+
+  @include sp {
     padding: 0 s(18);
   }
 
-  &.C_greeting__visiting{
-    @include sp{
+  &.C_greeting__visiting {
+    @include sp {
       padding: 0 s(22);
     }
   }
@@ -26,7 +27,7 @@
     position: relative;
     text-align: center;
     margin: 0 auto;
-    text-shadow: 0 0 1px $F-C09933;
+    text-shadow: 0 0 0.5px $F-C09933;
 
     @include pc {
       font-size: p(30);
@@ -35,7 +36,7 @@
       width: fit-content;
     }
 
-    @include sp{
+    @include sp {
       width: s(350);
       font-size: s(30);
       padding: s(36) 0;
@@ -43,7 +44,8 @@
       line-height: 116%;
     }
 
-    &::before,&::after {
+    &::before,
+    &::after {
       content: "";
       position: absolute;
       width: 100%;
@@ -52,7 +54,8 @@
       @include pc {
         height: p(1);
       }
-      @include sp{
+
+      @include sp {
         height: s(1);
       }
     }
@@ -63,70 +66,79 @@
     }
 
     &::after {
-      left: 0;  
-      @include pc{
+      left: 0;
+
+      @include pc {
         top: p(107);
       }
-      @include sp{
+
+      @include sp {
         bottom: 0;
       }
     }
   }
-  &_content{
-    @include pc{
+
+  &_content {
+    @include pc {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-top: p(60);
     }
-    .img{
-      @include pc{
+
+    .img {
+      @include pc {
         width: p(390);
         height: p(490);
       }
-      @include sp{
+
+      @include sp {
         width: s(257);
         height: s(323);
         margin: s(60) auto 0;
       }
     }
-    .greeting01{
+
+    .greeting01 {
       @include imgCover("greeting01.jpg");
     }
-    .greeting02{
+
+    .greeting02 {
       @include imgCover("greeting02.jpg");
     }
 
-    .TX{
+    .TX {
       color: $F-FFFFFF;
-      @include pc{
+
+      @include pc {
         font-size: pm(16);
         width: p(540);
         line-height: 187%;
         margin-top: p(5);
       }
-      @include sp{
+
+      @include sp {
         font-size: s(16);
         line-height: 187%;
         margin-top: s(60);
       }
     }
   }
+
   .name {
     color: $F-FFFFFF;
     @include Extrabold;
-    text-shadow: 0 0 1px $F-FFFFFF;
+    text-shadow: 0 0 0.5px $F-FFFFFF;
     text-align: right;
-    @include pc{
+
+    @include pc {
       font-size: p(25);
       margin-top: p(30);
     }
-    @include sp{
+
+    @include sp {
       font-size: s(20);
       margin-top: s(30);
     }
   }
 }
-
-
-

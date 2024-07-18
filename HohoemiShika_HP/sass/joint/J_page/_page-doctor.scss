@@ -106,7 +106,7 @@
     .name {
       color: $F-363636;
       line-height: 150%;
-      text-shadow: 0 0 1px;
+      text-shadow: 0 0 0.5px;
 
       @include pc {
         text-align: left;

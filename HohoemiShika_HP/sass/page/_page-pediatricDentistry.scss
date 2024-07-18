@@ -44,30 +44,32 @@
     }
   }
 
-  &--careContainer{
-    .C_careContainer{
-      @include pc{
+  &--careContainer {
+    .C_careContainer {
+      @include pc {
         background-position: 100% top;
       }
-      @include sp{
+
+      @include sp {
         background-position: 70% top;
       }
 
-      &--inner{
-        .C_TL{
+      &--inner {
+        .C_TL {
 
-          .TL-bg{
+          .TL-bg {
 
-            @include pc{
+            @include pc {
               letter-spacing: 1.8rem;
             }
-            
-            @include sp{}
+
+            @include sp {}
           }
         }
       }
-      .content{
-        @include sp{
+
+      .content {
+        @include sp {
           padding-bottom: s(35);
         }
       }
@@ -101,7 +103,8 @@
           align-items: center;
           line-height: 1.3;
           @include Regular;
-          text-shadow: 0 0 1px $F-FFFFFF;
+          text-shadow: 0 0 0.5px $F-FFFFFF;
+
           @include pc {
             gap: p(8);
             font-size: p(20);
@@ -117,6 +120,7 @@
             display: block;
             aspect-ratio: 30/23;
             @include iconContain($brush-icon);
+
             @include pc {
               width: p(30);
             }
@@ -170,7 +174,7 @@
 
           li {
             display: flex;
-            
+
             @include pc {
               align-items: center;
               gap: p(20);
