@@ -1,6 +1,6 @@
 <?php wp_footer() ?>
 
-<footer>
+<footer id="footer">
     <div class="ft-top">
         <div class="img"></div>
         <div class="textbox">
