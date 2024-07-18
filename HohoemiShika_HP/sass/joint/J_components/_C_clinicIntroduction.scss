@@ -17,7 +17,7 @@
   }
   .aaa{
     display: flex;
-    animation: loop-slide 40s infinite linear 1s both;
+    animation: loop-slide 80s infinite linear 1s both;
     @keyframes loop-slide {
       from {
         transform: translateX(-10%);

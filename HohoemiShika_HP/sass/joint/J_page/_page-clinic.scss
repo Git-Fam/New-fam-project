@@ -24,7 +24,7 @@
       line-height: 205%;
       text-align: center;
       @include Extrabold;
-      text-shadow: 0 0 1px $F-141414;
+      text-shadow: 0 0 0.5px $F-141414;
 
       @include pc {
         font-size: pm(18);

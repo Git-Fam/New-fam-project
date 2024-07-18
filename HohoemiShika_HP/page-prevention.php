@@ -70,7 +70,7 @@
                                     ブラッシング指導
                                 </h3>
                                 <p class="TX">
-                                    歯ブラシの選び方・握り方・動かし方な<br class="ps">どのポイントをや<br class="pc">さしく丁寧にご指導い<br class="ps">たします。
+                                    歯ブラシの選び方・握り方・動かし方な<br class="sp">どのポイントをや<br class="pc">さしく丁寧にご指導い<br class="sp">たします。
                                 </p>
                             </div>
                         </div>

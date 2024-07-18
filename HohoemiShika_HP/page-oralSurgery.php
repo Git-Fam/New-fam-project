@@ -82,11 +82,6 @@
                         <p class="TL-bg rollAnime color">Jaw joint</p>
                         <h2 class="main-TL up speed-05 delay-03">顎関節症の治療</h2>
                     </div>
-                    <div class="subTitle">
-                        <p class="TX">
-                            主な治療方法には、以下のような方法があります。
-                        </p>
-                    </div>
                     <div class="jawJoint--item">
                         <div class="jawJoint--item--inner">
                             <div class="C_toothTL flex">

@@ -129,6 +129,15 @@
             }
           }
         }
+        .jawJoint--item{
+          @include pc{
+            margin-top:p(130);
+          }
+          @include sp{
+            margin-top: s(100);
+          }
+    
+        }
       }
       &--inner--2{
         .C_TL{
