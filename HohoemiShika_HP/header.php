@@ -4,37 +4,29 @@
 <head prefix="og: https://ogp.me/ns#">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
     <meta name="format-detection" content="email=no,telephone=no,address=no" />
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
     <meta property="og:locale" content="ja_JP" />
 
     <!-- ▼SEO -->
     <link rel="”canonical”" href="<?php echo get_home_url(); ?>" />
-    <!-- Primary Meta Tags -->
-    <!-- <title>タイトルタイトルタイトル</title>
+    <title>ほほえみ歯科｜名古屋市名東区の歯医者</title>
     <meta name="title" content="タイトルタイトルタイトル" />
-    <meta name="description" content="テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト" /> -->
+    <meta name="description" content="名古屋市名東区社台の「ほほえみ歯科」です。一般歯科・小児歯科・矯正歯科・口腔外科・審美歯科・インプラント・入れ歯などを診療します。通院が難しい方へ訪問診療も行っています。歯列矯正・インプラントは相談無料。東山線「上社」駅より徒歩10分。" />
 
-    <!-- Open Graph / Facebook -->
-    <!-- <meta property="og:type" content="website" />
+    <meta property="og:type" content="website" />
     <meta property="og:url" content="<?php echo get_home_url(); ?>" />
-    <meta property="og:title" content="タイトルタイトルタイトル" />
-    <meta property="og:description" content="テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト" />
-    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.jpg" /> -->
+    <meta property="og:title" content="ほほえみ歯科｜名古屋市名東区の歯医者" />
+    <meta property="og:description" content="名古屋市名東区社台の「ほほえみ歯科」です。一般歯科・小児歯科・矯正歯科・口腔外科・審美歯科・インプラント・入れ歯などを診療します。通院が難しい方へ訪問診療も行っています。歯列矯正・インプラントは相談無料。東山線「上社」駅より徒歩10分。" />
+    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/ima/meta.png" />
 
-    <!-- Twitter -->
-    <!-- <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="<?php echo get_home_url(); ?>" />
-    <meta property="twitter:title" content="タイトルタイトルタイトル" />
-    <meta property="twitter:description" content="テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト" />
-    <meta property="twitter:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.jpg" /> -->
+    <meta property="twitter:title" content="ほほえみ歯科｜名古屋市名東区の歯医者" />
+    <meta property="twitter:description" content="名古屋市名東区社台の「ほほえみ歯科」です。一般歯科・小児歯科・矯正歯科・口腔外科・審美歯科・インプラント・入れ歯などを診療します。通院が難しい方へ訪問診療も行っています。歯列矯正・インプラントは相談無料。東山線「上社」駅より徒歩10分。" />
+    <meta property="twitter:image" content="<?php echo get_template_directory_uri(); ?>/ima/meta.png" />
 
-    <!-- ▼ファビコン -->
-    <!-- <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri(); ?>/img/favicon_package/apple-touch-icon.png">
+    <!-- <link rel="apple-touch-icon" sizes="76x76" href="<?php echo get_template_directory_uri(); ?>/img/favicon_package/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_template_directory_uri(); ?>/img/favicon_package/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_template_directory_uri(); ?>/img/favicon_package/favicon-16x16.png">
     <link rel="manifest" href="<?php echo get_template_directory_uri(); ?>/img/favicon_package/site.webmanifest">
@@ -42,12 +34,6 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff"> -->
 
-
-    <!-- ▼クロールして欲しくない -->
-    <!-- <meta name="robots" content="noindex,nofollow"> -->
-
-    <!-- ▼テーマカラー -->
-    <!-- <meta name="theme-color" content="#e9c931"> -->
 
     <!-- ▼CSS -->
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/main.css">
