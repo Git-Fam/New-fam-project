@@ -358,7 +358,7 @@
           height: fit-content;
         }
         &__textbox{
-          padding: max(calc(( 28 / 1280) * 100vw),28px) 0 max(calc(( 28 / 1280) * 100vw),28px) calc(( 25 / 1280) * 100vw);
+          padding: max(calc(( 28 / 1280) * 100vw),28px) calc(( 20 / 1280) * 100vw) max(calc(( 28 / 1280) * 100vw),28px) calc(( 20 / 1280) * 100vw);
           width: max(calc(( 498 / 1280) * 100vw),400px);
           height: fit-content;
           border: 3px solid #FCE5B3;
