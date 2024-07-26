@@ -2,21 +2,24 @@
 @use "variables" as *;
 
 // お問い合わせPC
-.contact{
-  @include pc{
-    padding: max(calc(( 100 / 1280) * 100vw),100px) 0;
-    &__text{
+.contact {
+  @include pc {
+    padding: max(calc((100 / 1280) * 100vw), 100px) 0;
+
+    &__text {
       text-align: center;
-      margin-bottom: max(calc(( 50 / 1280) * 100vw),50px);
-      p{
+      margin-bottom: max(calc((50 / 1280) * 100vw), 50px);
+
+      p {
         color: #292929;
         @include Lucida;
-        font-size: max(calc(( 18 / 1280) * 100vw),14px);
+        font-size: max(calc((18 / 1280) * 100vw), 14px);
         font-weight: 500;
-        line-height: max(calc(( 42 / 1280) * 100vw),42px);
-        span{
-          font-size: max(calc(( 20 / 1280) * 100vw),20px);
-          font-weight: 600; 
+        line-height: max(calc((42 / 1280) * 100vw), 42px);
+
+        span {
+          font-size: max(calc((20 / 1280) * 100vw), 20px);
+          font-weight: 600;
           border-bottom: solid 2px #FFE7AB;
         }
       }
@@ -25,22 +28,25 @@
 }
 
 // お問い合わせSP
-.contact{
-  @include sp{
-    padding: calc(( 100 / 390) * 100vw) calc(( 20 / 390) * 100vw);
-    &__text{
+.contact {
+  @include sp {
+    padding: calc((100 / 390) * 100vw) calc((20 / 390) * 100vw);
+
+    &__text {
       text-align: center;
-      margin-bottom: max(calc(( 50 / 390) * 100vw),50px);
-      p{
+      margin-bottom: max(calc((50 / 390) * 100vw), 50px);
+
+      p {
         color: #292929;
         @include Lucida;
-        font-size: calc(( 14 / 390) * 100vw);
+        font-size: calc((14 / 390) * 100vw);
         font-weight: 500;
-        line-height: calc(( 22 / 390) * 100vw);
-        span{
-          font-size: calc(( 16 / 390) * 100vw);
-          font-weight: 600; 
-          padding-bottom: calc(( 3 / 390) * 100vw);
+        line-height: calc((22 / 390) * 100vw);
+
+        span {
+          font-size: calc((16 / 390) * 100vw);
+          font-weight: 600;
+          padding-bottom: calc((3 / 390) * 100vw);
           border-bottom: solid 2px #FFE7AB;
         }
       }
@@ -49,95 +55,120 @@
   }
 }
 
-.wpcf7-response-output{
+.wpcf7-response-output {
   display: none !important;
 }
 
-.contact__main{
-  @include pc{
-    padding:0 calc(( 75 / 1280) * 100vw) max(calc(( 50 / 1280) * 100vw),50px);
+.contact__main {
+  @include pc {
+    padding: 0 calc((75 / 1280) * 100vw) max(calc((50 / 1280) * 100vw), 50px);
     border: 4px solid #FCE5B3;
     background: #FFF;
-    width: max(calc(( 870 / 1280) * 100vw),700px);
+    width: max(calc((870 / 1280) * 100vw), 700px);
     margin: auto;
-    .wpcf7{
+
+    .wpcf7 {
       width: 100%;
-      form{
+
+      form {
         width: 100%;
-        p{
-          &:last-of-type{
+
+        p {
+          &:last-of-type {
             display: flex;
             justify-content: center;
-            gap: calc(( 50 / 1280) * 100vw);
-            margin-top: max(calc(( 45 / 1280) * 100vw),45px);
-            .wpcf7-previous , .input-submit{
+            gap: calc((50 / 1280) * 100vw);
+            margin-top: max(calc((45 / 1280) * 100vw), 45px);
+
+            .wpcf7-previous,
+            .input-submit {
               color: #292929;
               @include Lucida;
-              font-size: max(calc(( 25 / 1280) * 100vw),18px);
+              font-size: max(calc((25 / 1280) * 100vw), 18px);
               font-weight: 600;
-              padding: max(calc(( 16 / 1280) * 100vw),16px) calc(( 70 / 1280) * 100vw);
+              padding: max(calc((16 / 1280) * 100vw), 16px) calc((70 / 1280) * 100vw);
               background: #E4E4E4;
               box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
               border: unset;
             }
-            .input-submit{
+
+            .input-submit {
               background: #FCE5B3;
             }
           }
-          label{
+
+          label {
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 50px;
-            padding: max(calc(( 50 / 1280) * 100vw),50px) calc(( 50 / 1280) * 100vw) calc(( 35 / 1280) * 100vw);
+            padding: max(calc((50 / 1280) * 100vw), 50px) calc((50 / 1280) * 100vw) calc((35 / 1280) * 100vw);
             border-bottom: solid 3px #FCE5B3;
             color: #2B2D33;
             text-align: center;
             @include Lucida;
-            font-size: max(calc(( 18 / 1280) * 100vw),18px);
+            font-size: max(calc((18 / 1280) * 100vw), 18px);
             font-weight: 600;
-            span{
+
+            span {
               width: 60%;
               text-align: left;
               color: #292929;
               @include Lucida;
-              font-size: max(calc(( 16 / 1280) * 100vw),16px);
+              font-size: max(calc((16 / 1280) * 100vw), 16px);
               font-weight: 600;
-              input{
+
+              &.wpcf7-not-valid-tip {
+                color: #F52323;
+              }
+
+              input {
                 width: 100%;
-                height: max(calc(( 58 / 1280) * 100vw),58px);
-                padding: 0 calc(( 20 / 1280) * 100vw);
+                height: max(calc((58 / 1280) * 100vw), 58px);
+                padding: 0 calc((20 / 1280) * 100vw);
                 background: #F8F8F8;
                 border: unset;
                 @include Lucida;
-                font-size: max(calc(( 16 / 1280) * 100vw),16px);
+                font-size: max(calc((16 / 1280) * 100vw), 16px);
                 font-weight: 500;
+
+                &.wpcf7-not-valid {
+                  background: #FFF5F5;
+                  border: calc(( 3 / 1280) * 100vw) solid #F52323;
+                }
               }
-              textarea{
+
+              textarea {
                 width: 100%;
-                height: max(calc(( 233 / 1280) * 100vw),233px);
-                padding: calc(( 30 / 1280) * 100vw) calc(( 20 / 1280) * 100vw) 0 calc(( 20 / 1280) * 100vw);
+                height: max(calc((233 / 1280) * 100vw), 233px);
+                padding: calc((30 / 1280) * 100vw) calc((20 / 1280) * 100vw) 0 calc((20 / 1280) * 100vw);
                 resize: none;
                 background: #F8F8F8;
                 border: unset;
                 @include Lucida;
-                font-size: max(calc(( 16 / 1280) * 100vw),16px);
+                font-size: max(calc((16 / 1280) * 100vw), 16px);
                 font-weight: 500;
+
+                &.wpcf7-not-valid {
+                  background: #FFF5F5;
+                  border: calc(( 3 / 1280) * 100vw) solid #F52323;
+                }
               }
             }
           }
-          .contact--submit{
-            width: max(calc(( 200 / 1280) * 100vw),200px);
-            padding: max(calc(( 16 / 1280) * 100vw),16px) 0;
+
+          .contact--submit {
+            width: max(calc((200 / 1280) * 100vw), 200px);
+            padding: max(calc((16 / 1280) * 100vw), 16px) 0;
             background: #FCE5B3;
             box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
             border: unset;
             color: #292929;
             text-align: center;
             @include Lucida;
-            font-size: max(calc(( 25 / 1280) * 100vw),25px);
+            font-size: max(calc((25 / 1280) * 100vw), 25px);
             font-weight: 600;
-            letter-spacing: max(calc(( 12 / 1280) * 100vw),12px);
+            letter-spacing: max(calc((12 / 1280) * 100vw), 12px);
             display: block;
             cursor: pointer;
           }
@@ -149,109 +180,134 @@
 }
 
 
-.contact__main{
-  @include sp{
-    padding:calc(( 50 / 390) * 100vw) calc(( 30 / 390) * 100vw) calc(( 50 / 390) * 100vw);
+.contact__main {
+  @include sp {
+    padding: calc((50 / 390) * 100vw) calc((30 / 390) * 100vw) calc((50 / 390) * 100vw);
     border: 4px solid #FCE5B3;
     background: #FFF;
     width: 100%;
     margin: auto;
-    .wpcf7{
+
+    .wpcf7 {
       width: 100%;
-      form{
+
+      form {
         width: 100%;
-        p{
-          &:last-of-type{
+
+        p {
+          &:last-of-type {
             display: flex;
             justify-content: center;
-            gap: calc(( 25 / 390) * 100vw);
-            margin-top: calc(( 50 / 390) * 100vw);
+            gap: calc((25 / 390) * 100vw);
+            margin-top: calc((50 / 390) * 100vw);
             position: relative;
-            .wpcf7-previous , .input-submit{
+
+            .wpcf7-previous,
+            .input-submit {
               color: #292929;
               @include Lucida;
-              font-size: calc(( 16 / 390) * 100vw);
+              font-size: calc((16 / 390) * 100vw);
               font-weight: 600;
-              padding: calc(( 12 / 390) * 100vw) calc(( 27 / 390) * 100vw);
+              padding: calc((12 / 390) * 100vw) calc((27 / 390) * 100vw);
               background: #E4E4E4;
               box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
               border: unset;
             }
-            .input-submit{
+
+            .input-submit {
               background: #FCE5B3;
             }
-                &::before{
-                  content: "";
-                  width: 100%;
-                  height: 3px;
-                  background: #FCE5B3;
-                  position: absolute;
-                  top: calc(( -50 / 390) * 100vw);
-                  left: 0;
-                }
+
+            &::before {
+              content: "";
+              width: 100%;
+              height: 3px;
+              background: #FCE5B3;
+              position: absolute;
+              top: calc((-50 / 390) * 100vw);
+              left: 0;
+            }
           }
-          label{
+
+          label {
             display: flex;
             flex-direction: column;
-            padding: calc(( 0 / 390) * 100vw) 0 calc(( 40 / 390) * 100vw);
-            gap: calc(( 20 / 390) * 100vw);
+            padding: calc((0 / 390) * 100vw) 0 calc((40 / 390) * 100vw);
+            gap: calc((20 / 390) * 100vw);
             color: #2B2D33;
             @include Lucida;
-            font-size: calc(( 16 / 390) * 100vw);
+            font-size: calc((16 / 390) * 100vw);
             font-weight: 600;
             position: relative;
-            &::before{
-              content:"";
+
+            &::before {
+              content: "";
               position: absolute;
-              top: calc(( 25 / 390) * 100vw);
+              top: calc((25 / 390) * 100vw);
               left: 0;
               width: 100%;
               height: 3px;
               background: #FCE5B3;
             }
-            span{
+
+            span {
               width: 100%;
               @include Lucida;
-              font-size: calc(( 14 / 390) * 100vw);
+              font-size: calc((14 / 390) * 100vw);
               font-weight: 600;
               color: #292929;
-              input{
+
+              &.wpcf7-not-valid-tip {
+                color: #F52323;
+              }
+
+              input {
                 width: 90%;
-                height: calc(( 58 / 390) * 100vw);
-                padding: 0 calc(( 10 / 390) * 100vw);
+                height: calc((58 / 390) * 100vw);
+                padding: 0 calc((10 / 390) * 100vw);
                 background: #F8F8F8;
                 border: unset;
                 @include Lucida;
-                font-size: calc(( 14 / 390) * 100vw);
+                font-size: calc((14 / 390) * 100vw);
                 font-weight: 600;
 
+                &.wpcf7-not-valid {
+                  background: #FFF5F5;
+                  border: calc(( 3 / 390) * 100vw) solid #F52323;
+                }
               }
-              textarea{
-                width: calc(90% - calc(( 10 / 390) * 100vw));
-                height: calc(( 233 / 390) * 100vw);
-                padding: calc(( 30 / 390) * 100vw) calc(( 10 / 390) * 100vw) 0 calc(( 20 / 390) * 100vw);
+
+              textarea {
+                width: calc(90% - calc((10 / 390) * 100vw));
+                height: calc((233 / 390) * 100vw);
+                padding: calc((30 / 390) * 100vw) calc((10 / 390) * 100vw) 0 calc((20 / 390) * 100vw);
                 resize: none;
                 background: #F8F8F8;
                 border: unset;
                 @include Lucida;
-                font-size: calc(( 14 / 390) * 100vw);
+                font-size: calc((14 / 390) * 100vw);
                 font-weight: 600;
 
+                &.wpcf7-not-valid {
+                  background: #FFF5F5;
+                  border: calc(( 3 / 390) * 100vw) solid #F52323;
+                }
               }
             }
           }
-          .contact--submit{
-            width: calc(( 128 / 390) * 100vw);
-            padding: calc(( 21 / 390) * 100vw) 0;
+
+          .contact--submit {
+            width: calc((128 / 390) * 100vw);
+            padding: calc((21 / 390) * 100vw) 0;
             background: #FCE5B3;
             box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
             border: unset;
             color: #292929;
             text-align: center;
             @include Lucida;
-            font-size: calc(( 16 / 390) * 100vw);
+            font-size: calc((16 / 390) * 100vw);
             font-weight: 600;
-            letter-spacing: calc(( 8 / 390) * 100vw);
+            letter-spacing: calc((8 / 390) * 100vw);
             margin: 0 auto 0;
             display: block;
             cursor: pointer;
@@ -263,11 +319,11 @@
   }
 }
 
-.wpcf7-not-valid-tip{
-width: 100% !important;
-text-align: left;
+.wpcf7-not-valid-tip {
+  width: 100% !important;
+  text-align: left;
 }
 
-.wpcf7-spinner{
+.wpcf7-spinner {
   position: absolute !important;
 }
