@@ -302,11 +302,11 @@ Template Name:トラックページ
                 <div class="trac--content--item--title">
                     <p><?php echo CFS()->get('trac_attachment_1_name'); ?></p>
                 </div>
-                <div class="trac--content--item--container">
+                <div class="trac--content--item--container column">
                     <div class="containerIn width">
                         <img src="<?php echo CFS()->get('trac_attachment_1_img'); ?>" alt="">
                     </div>
-                    <div class="containerIn">
+                    <div class="containerIn width">
                         <div class="text--exception">
                             <p>
                                 <?php echo CFS()->get('trac_attachment_1_memo'); ?>
@@ -332,30 +332,21 @@ Template Name:トラックページ
                 </div>
             </div>
 
-            <!-- 特殊車両 7tセーフティーローダー -->
+            <!-- 特殊車両　10tセーフティーローダー -->
             <div class="trac--content--item">
                 <div class="trac--content--item--title">
                     <p><?php echo CFS()->get('trac_attachment_2_name'); ?></p>
                 </div>
                 <div class="trac--content--item--container">
-                    <div class="containerIn-nocolumn">
-                        <img class="img2" src="<?php echo CFS()->get('trac_attachment_2_img'); ?>" alt="">
-                        <div class="containerIn column">
-                           <img src="<?php echo CFS()->get('trac_attachment_2-2_img'); ?>" alt="">
-                           <img src="<?php echo CFS()->get('trac_attachment_2-3_img'); ?>" alt="">
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="trac--content--item--container ">
-                <div class="containerIn width">
-                        <div class="text--exception">
-                            <p>
-                                <?php echo CFS()->get('trac_attachment_2_memo'); ?>
-                            </p>
-                        </div>
+                    <div class="containerIn">
+                        <img src="<?php echo CFS()->get('trac_attachment_2_img'); ?>" alt="">
                         <div class="text--wap">
                             <div class="text">
+                                <div class="text--exception">
+                                    <p>
+                                        <?php echo CFS()->get('trac_attachment_2_memo'); ?>
+                                    </p>
+                                </div>
                                 <div class="text--detail">
                                     <h3>荷台内寸</h3>
                                     <p><?php echo CFS()->get('trac_attachment_2_list_text_1'); ?></p>
@@ -367,8 +358,11 @@ Template Name:トラックページ
                             </div>
                         </div>
                     </div>
-                     </div>
-
+                    <div class="containerIn">
+                        <img src="<?php echo CFS()->get('trac_attachment_2-2_img'); ?>" alt="">
+                        <img src="<?php echo CFS()->get('trac_attachment_2-3_img'); ?>" alt="">
+                    </div>
+                </div>
             </div>
 
             <div class="flex">
@@ -431,7 +425,7 @@ Template Name:トラックページ
                     </div>
                     <div class="trac--content--item--container">
                         <ul class="container--list">
-                        <li>
+                            <li>
                                 <p><?php echo CFS()->get('trac_nodaOffice_model_1'); ?></p>
                                 <p><?php echo CFS()->get('trac_nodaOffice_count_1'); ?></p>
                             </li>
