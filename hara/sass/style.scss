@@ -200,6 +200,7 @@ body{
         font-weight: 500;
         letter-spacing: calc(( 2.5 / 1280) * 100vw);
         display:block;
+        white-space: nowrap;
       }
     }
   }
@@ -257,6 +258,7 @@ body{
         font-weight: 500;
         letter-spacing: calc(( 1.6 / 390) * 100vw);
         display:block;
+        white-space: nowrap;
       }
     }
   }
