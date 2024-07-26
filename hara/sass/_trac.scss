@@ -1,0 +1,348 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// 追加修正
+.trac {
+  @include pc {
+    padding: max(calc((100 / 1280) * 100vw), 100px) calc((20 / 1280) * 100vw);
+  }
+
+  @include sp {
+    padding: calc((100 / 390) * 100vw) calc((20 / 390) * 100vw);
+  }
+
+  &__text {
+    text-align: center;
+
+    @include pc {
+      margin-bottom: max(calc((50 / 1280) * 100vw), 50px);
+    }
+
+    @include sp {
+      margin-bottom: calc((50 / 390) * 100vw);
+    }
+
+    p {
+      @include Lucida;
+      color: #292929;
+      font-weight: 500;
+
+      @include pc {
+        font-size: max(calc((18 / 1280) * 100vw), 18px);
+        line-height: max(calc((30 / 1280) * 100vw), 30px);
+        letter-spacing: max(calc((1.8 / 1280) * 100vw), 1.8px);
+      }
+
+      @include sp {
+        font-size: calc((14 / 390) * 100vw);
+        line-height: calc((22 / 390) * 100vw);
+      }
+    }
+  }
+  
+  &--content {
+    display: flex;
+    flex-direction: column;
+  
+    @include pc {
+      width: max(calc((879 / 1280) * 100vw), 700px);
+      margin: 0 auto;
+      gap: max(calc((50 / 1280) * 100vw), 50px);
+    }
+  
+    @include sp {
+      width: 100%;
+      gap: calc((20 / 390) * 100vw);
+    }
+  
+    &--item {
+  
+      &--title {
+        width: 100%;
+        background: #FCE5B3;
+        text-align: center;
+  
+        @include pc {
+          padding: max(calc((10 / 1280) * 100vw), 10px);
+        }
+  
+        @include sp {
+          padding: calc((10 / 390) * 100vw);
+        }
+  
+        p {
+          @include Lucida;
+          color: #292929;
+          font-weight: 600;
+  
+          @include pc {
+            font-size: max(calc((25 / 1280) * 100vw), 25px);
+            letter-spacing: max(calc((2.5 / 1280) * 100vw), 2.5px);
+          }
+  
+          @include sp {
+            font-size: calc((18 / 390) * 100vw);
+          }
+        }
+      }
+
+      &--container {
+        width: 100%;
+        background: #FFF;
+        display: flex;
+
+        @include pc {
+          gap: max(calc((11 / 1280) * 100vw), 6px);
+          padding: max(calc((11 / 1280) * 100vw), 6px);
+        }
+      
+        @include sp {
+          gap: calc((5 / 390) * 100vw);
+          padding: calc((5 / 390) * 100vw);
+        }
+
+        &.reverse{
+          @include pc{
+            flex-direction: row-reverse;
+          }
+        }
+
+        &.column{
+          @include sp{
+            flex-direction: column;
+          }
+        }
+
+        .containerIn{
+          display: flex;
+          flex-direction: column;
+          flex-shrink: 0;
+
+          @include pc{
+            gap: max(calc((11 / 1280) * 100vw), 6px);
+            width: calc( 56% - max(calc((11 / 1280) * 100vw), 6px) / 2);
+          }
+
+          @include sp{
+            gap: calc((5 / 390) * 100vw);
+            width: calc( 56% - calc((5 / 390) * 100vw) / 2);
+          }
+
+          &:nth-child(2){
+            @include pc{
+              width: calc( 44% - max(calc((11 / 1280) * 100vw), 6px) / 2);
+            }
+
+            @include sp{
+              width: calc( 44% - calc((5 / 390) * 100vw) / 2);
+            }
+
+            img{
+              aspect-ratio: 362/243;
+            }
+          }
+
+          img{
+            width: 100%;
+            aspect-ratio: 471/334;
+            object-fit: cover;
+            object-position: center;
+          }
+
+          .text--wap{
+            display: flex;
+            align-items: center;
+            height: 100%;
+
+            .text{
+              display: flex;
+              flex-direction: column;
+  
+              @include pc{
+                gap: max(calc((16 / 1280) * 100vw), 10px);
+              }
+  
+              @include sp{
+                gap: calc((7 / 390) * 100vw);
+              }
+  
+              &--detail{
+                display: flex;
+                align-items: center;
+  
+                @include pc{
+                  gap: calc((27 / 1280) * 100vw);
+                }
+  
+                @include sp{
+                  gap: calc((5 / 390) * 100vw);
+                }
+  
+                h3{
+                  color: #292929;
+                  @include Lucida;
+                  font-weight: 600;
+                  border-right: 2px solid #FCE5B3;
+                  
+                  @include pc{
+                    padding: 0.3rem 0;
+                    width: max(calc((100 / 1280) * 100vw), 80px);
+                    font-size: max(calc((16 / 1280) * 100vw), 12px);
+                    letter-spacing: calc((1.6 / 1280) * 100vw);
+                  }
+  
+                  @include sp{
+                    width: calc((55 / 390) * 100vw);
+                    font-size: calc((12 / 390) * 100vw);
+                  }
+                }
+  
+                p{
+                  color: #292929;
+                  @include Lucida;
+                  font-weight: 500;
+  
+                  @include pc{
+                    font-size: max(calc((16 / 1280) * 100vw), 12px);
+                    letter-spacing: calc((1.6 / 1280) * 100vw);
+                  }
+  
+                  @include sp{
+                    font-size: calc((10 / 390) * 100vw);
+                  }
+                }
+              }
+            }
+          }
+
+          .text--exception{
+
+            @include pc{
+              padding: 2rem 2rem 0 0;
+            }
+
+            @include sp{
+              padding: 0 0 0.5rem;
+            }
+
+            p{
+              color: #292929;
+              @include Lucida;
+              font-weight: 500;
+              line-height: 143%;
+              
+              @include pc{
+                font-size: max(calc(( 16 / 1280) * 100vw),12px);
+              }
+
+              @include sp{
+                font-size: calc(( 12 / 390) * 100vw);
+              }
+            }
+          }
+
+          &.width{
+            @include sp{
+              width: 70%;
+              margin: 0 auto;
+            }
+
+            .text{
+                h3{
+                  @include sp{
+                    width: calc((70 / 390) * 100vw);
+                  }
+                }
+            }
+          }
+        }
+      }
+    }
+
+    .flex{
+      display: flex;
+
+      @include pc{
+        gap: calc(( 29 / 1280) * 100vw);
+      }
+
+      @include sp{
+        gap: calc(( 2 / 390) * 100vw);
+      }
+
+      .trac--content--item{
+
+        @include pc{
+          width: calc( 50% - calc(( 29 / 1280) * 100vw) / 2);
+        }
+
+        @include sp{
+          width: calc( 50% - calc(( 2 / 390) * 100vw) / 2);
+        }
+
+        &--container{
+          align-items: center;
+          justify-content: center;
+
+          .container--list{
+            
+            @include pc{
+              padding: 1.5rem 0;
+              width: 80%;
+            }
+
+            @include sp{
+              padding: 0;
+              width: 100%;
+            }
+
+            li{
+              display: flex;
+              justify-content: space-between;
+              border-bottom: 2px solid #FCE5B3;
+              
+              @include pc{
+                padding: 0.5rem 1rem;
+              }
+
+              @include sp{
+                padding: 0.5rem 0;
+              }
+
+              &:last-child{
+                border-bottom: none;
+              }
+
+              p{
+                color: #292929;
+                @include Lucida;
+                font-weight: 600;
+                
+                @include pc{
+                  font-size: max(calc(( 16 / 1280) * 100vw),12px);
+                  letter-spacing: calc((0.32 / 1280) * 100vw);
+                }
+
+                @include sp{
+                  font-size: calc(( 12 / 390) * 100vw);
+                }
+
+                &:nth-child(2){
+                  font-weight: 500;
+                  white-space: nowrap;
+                  
+                  @include pc{
+                    width: 3rem;
+                    letter-spacing: calc((1.6 / 1280) * 100vw);
+                  }
+
+                  @include sp{}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

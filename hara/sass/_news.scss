@@ -1,0 +1,211 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// newsPC
+.news{
+  @include pc{
+    padding: max(calc(( 100 / 1280) * 100vw),100px) 0;
+    &__section{
+      margin: auto;
+      padding: max(calc(( 120 / 1280) * 100vw),120px) calc(( 170 / 1280) * 100vw);
+      border: 5px solid #FCE5B3;
+      background: #FFF;
+      width: max(calc(( 870 / 1280) * 100vw),700px);
+      &__contents{
+        padding: max(calc(( 30 / 1280) * 100vw),30px) calc(( 80 / 1280) * 100vw) max(calc(( 30 / 1280) * 100vw),30px) calc(( 40 / 1280) * 100vw);
+        border-bottom: solid 2px #FCE5B3;
+        position: relative;
+        &::before{
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: max(calc(( 20 / 1280) * 100vw),20px);
+          transform: translateY(-50%) rotate(45deg);
+          width: max(calc(( 10 / 1280) * 100vw),10px);
+          height: max(calc(( 10 / 1280) * 100vw),10px);
+          border-top: solid 2px #292929;
+          border-right: solid 2px #292929;
+        }
+        a{
+          display: flex;
+          align-items: center;
+          gap: calc(( 74 / 1280) * 100vw);
+          p{
+            @include Inter;
+            color: #292929;
+            font-size: max(calc(( 18 / 1280) * 100vw),18px);
+            font-weight: 700;
+            &:nth-child(2){
+            font-weight: 500;
+            }
+          }
+        }
+      }
+      .next{
+        margin-top: max(calc(( 50 / 1280) * 100vw),50px);
+        .wp-pagenavi{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: calc(( 5 / 1280) * 100vw);
+
+          a ,.current ,.extend{
+            background-color: #FFF;
+            border: 2px solid #FCE5B3;
+            padding: max(calc(( 9 / 1280) * 100vw),9px);
+            color: #292929;
+            @include Inter;
+            font-size: max(calc(( 18 / 1280) * 100vw),18px);
+            font-weight: 400;
+            &:nth-child(1){
+              background-color: #FCE5B3;
+              color: #FFF;
+            }
+            &:nth-child(n+4) ,.current ,.extend{
+              background-color: unset;
+              border: unset;
+              color: #FCE5B3;
+            }
+          }
+        }
+      }
+      h2{
+        @include Inter;
+        font-size: max(calc(( 30 / 1280) * 100vw),30px);
+        font-weight: 700;
+      }
+      h3{
+        @include Inter;
+        font-size: max(calc(( 12 / 1280) * 100vw),12px);
+        font-weight: 700;
+        margin: max(calc(( 30 / 1280) * 100vw),30px) 0;
+      }
+      h4{
+        p{
+          @include Inter;
+          font-size: max(calc(( 16 / 1280) * 100vw),16px);
+          font-weight: 500;
+        }
+      }
+      .single-nation{
+        display: flex;
+        align-items: center;
+        gap: calc(( 20 / 1280) * 100vw);
+        margin-top: max(calc(( 30 / 1280) * 100vw),30px) ;
+        div{
+          a{
+              @include Inter;
+              font-size: max(calc(( 12 / 1280) * 100vw),12px);
+              font-weight: 500;
+              color: #292929;
+          }
+        }
+      }
+    }
+  }
+}
+
+// newsSP
+.news{
+  @include sp{
+    padding: calc(( 100 / 390) * 100vw) calc(( 15 / 390) * 100vw);
+    &__section{
+      width: 100%;
+      margin: auto;
+      padding: calc(( 25 / 390) * 100vw) calc(( 15 / 390) * 100vw) calc(( 50 / 390) * 100vw);
+      border: 5px solid #FCE5B3;
+      background: #FFF;
+      &__contents{
+        padding: calc(( 25 / 390) * 100vw) calc(( 40 / 390) * 100vw) calc(( 25 / 390) * 100vw) calc(( 15 / 390) * 100vw);
+        border-bottom: solid 2px #FCE5B3;
+        position: relative;
+        &::before{
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: calc(( 20 / 390) * 100vw);
+          transform: translateY(-50%) rotate(45deg);
+          width: calc(( 10 / 390) * 100vw);
+          height:calc(( 10 / 390) * 100vw);
+          border-top: solid 2px #292929;
+          border-right: solid 2px #292929;
+        }
+        a{
+          display: flex;
+          align-items: center;
+          gap: calc(( 20 / 390) * 100vw);
+          p{
+            @include Inter;
+            color: #292929;
+            font-size: calc(( 14 / 390) * 100vw);
+            font-weight: 700;
+            white-space: nowrap;
+            &:nth-child(2){
+            font-weight: 500;
+            }
+          }
+        }
+      }
+      .next{
+        margin-top: calc(( 37 / 390) * 100vw);
+        .wp-pagenavi{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: calc(( 5 / 390) * 100vw);
+          a ,.current ,.extend{
+            background-color: #FFF;
+            border: 2px solid #FCE5B3;
+            padding:calc(( 7 / 390) * 100vw) calc(( 12 / 390) * 100vw);
+            color: #292929;
+            @include Inter;
+            font-size: calc(( 14 / 390) * 100vw);
+            font-weight: 400;
+            &:nth-child(1){
+              background-color: #FCE5B3;
+              color: #FFF;
+            }
+            &:nth-child(n+4) ,.current ,.extend{
+              background-color: unset;
+              border: unset;
+              color: #FCE5B3;
+              padding: calc(( 7 / 390) * 100vw) 0;
+            }
+          }
+        }
+      }
+      h2{
+        @include Inter;
+        font-size: calc(( 20 / 390) * 100vw);
+        font-weight: 700;
+      }
+      h3{
+        @include Inter;
+        font-size: calc(( 12 / 390) * 100vw);
+        font-weight: 700;
+        margin: calc(( 20 / 390) * 100vw) 0;
+      }
+      h4{
+        p{
+          @include Inter;
+          font-size: calc(( 14 / 390) * 100vw);
+          font-weight: 500;
+        }
+      }
+      .single-nation{
+        display: flex;
+        align-items: center;
+        gap: calc(( 20 / 390) * 100vw);
+        margin-top: calc(( 30 / 390) * 100vw) ;
+        div{
+          a{
+              @include Inter;
+              font-size: calc(( 12 / 390) * 100vw);
+              font-weight: 500;
+              color: #292929;
+          }
+        }
+      }
+    }
+  }
+}

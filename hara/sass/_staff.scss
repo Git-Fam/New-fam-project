@@ -1,0 +1,294 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+
+
+// 追加修正
+.staff {
+
+  @include pc {
+    padding: max(calc((100 / 1280) * 100vw), 100px) 0;
+  }
+
+  @include sp {
+    padding: calc((100 / 390) * 100vw) 0;
+  }
+
+  &__text {
+    text-align: center;
+
+    @include pc {
+      margin-bottom: max(calc((150 / 1280) * 100vw), 150px);
+    }
+
+    @include sp {
+      margin-bottom: calc((132 / 390) * 100vw);
+    }
+
+    p {
+      color: #2B2D33;
+      @include Lucida;
+      font-weight: 500;
+
+      @include pc {
+        font-size: max(calc((18 / 1280) * 100vw), 14px);
+        line-height: max(calc((30 / 1280) * 100vw), 30px);
+      }
+
+      @include sp {
+        font-size: calc((14 / 390) * 100vw);
+        line-height: calc((22 / 390) * 100vw);
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    @include pc {
+      gap: max(calc((72 / 1280) * 100vw), 72px);
+    }
+
+    @include sp {
+      gap: calc((100 / 390) * 100vw);
+    }
+
+    &--item {
+      position: relative;
+
+      @include pc {
+        width: max(calc((833 / 1280) * 100vw), 700px);
+        margin: 0 auto;
+      }
+
+      @include sp {
+        width: calc((334 / 390) * 100vw);
+        margin: 0 auto;
+      }
+
+      &:nth-child(odd) {
+        img {
+          left: 0;
+
+          @include pc {}
+
+          @include sp {}
+        }
+
+        .staff__content--item--textarea {
+
+          @include pc {
+            margin-left: auto;
+          }
+
+          @include sp {}
+
+          .title {
+  
+            p {
+  
+              @include sp {
+                width: fit-content;
+                margin-left: auto;
+              }
+            }
+          }
+        }
+      }
+
+      &:nth-child(even) {
+        img {
+          right: 0;
+
+          @include pc {}
+
+          @include sp {}
+        }
+
+        .staff__content--item--textarea {
+
+          @include pc {
+            margin-right: auto;
+          }
+
+          @include sp {}
+        }
+      }
+
+      img {
+        border: 4px solid #FCE5B3;
+        box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.35);
+        aspect-ratio: 1/1;
+        height: auto;
+        position: absolute;
+
+
+        @include pc {
+          top: calc((-47 / 1280) * 100vw);
+          width: max(calc((285 / 1280) * 100vw), 230px);
+
+        }
+
+        @include sp {
+          top: calc((-64 / 390) * 100vw);
+          width: calc((128 / 390) * 100vw);
+        }
+      }
+
+      &--textarea {
+        border: 4px solid #FCE5B3;
+        background: #FFF;
+        box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.25);
+
+        @include pc {
+          width: max(calc((569 / 1280) * 100vw), 500px);
+        }
+
+        @include sp {
+          width: 100%;
+        }
+
+        .title {
+          background: #FCE5B3;
+
+          @include pc {
+            padding-left: max(calc((60 / 1280) * 100vw), 50px);
+            padding-right: max(calc((60 / 1280) * 100vw), 50px);
+            padding-top: max(calc((20 / 1280) * 100vw), 15px);
+            padding-bottom: max(calc((20 / 1280) * 100vw), 15px);
+          }
+
+          @include sp {
+            padding-left: calc((20 / 390) * 100vw);
+            padding-right: calc((20 / 390) * 100vw);
+            padding-top: calc((20 / 390) * 100vw);
+            padding-bottom: calc((17 / 390) * 100vw);
+          }
+
+          p {
+            color: #292929;
+            @include Lucida;
+            font-weight: 600;
+
+            @include pc {
+              font-size: max(calc((20 / 1280) * 100vw), 16px);
+            }
+
+            @include sp {
+              font-size: calc((14 / 390) * 100vw);
+            }
+          }
+        }
+
+        .text {
+          display: flex;
+          flex-direction: column;
+
+          @include pc {
+            padding-left: max(calc((60 / 1280) * 100vw), 50px);
+            padding-right: max(calc((60 / 1280) * 100vw), 50px);
+            padding-top: max(calc((20 / 1280) * 100vw), 15px);
+            padding-bottom: max(calc((33 / 1280) * 100vw), 25px);
+            gap: max(calc((30 / 1280) * 100vw), 26px);
+          }
+
+          @include sp {
+            padding-left: calc((30 / 390) * 100vw);
+            padding-right: calc((30 / 390) * 100vw);
+            padding-top: calc((13 / 390) * 100vw);
+            padding-bottom: calc((23 / 390) * 100vw);
+            gap: calc((14 / 390) * 100vw);
+          }
+
+          &--content {
+            display: flex;
+
+            @include pc {
+              gap: max(calc((50 / 1280) * 100vw), 40px);
+            }
+
+            @include sp {
+              gap: calc((45 / 390) * 100vw);
+            }
+
+            &--working_rep {
+              display: flex;
+              flex-direction: column;
+
+              @include pc {
+                gap: calc((6 / 1280) * 100vw);
+              }
+
+              @include sp {
+                gap: calc((5 / 390) * 100vw);
+              }
+
+              p {
+                color: #292929;
+                @include Lucida;
+                font-weight: 600;
+
+                @include pc {
+                  font-size: max(calc((16 / 1280) * 100vw), 12px);
+                }
+
+                @include sp {
+                  font-size: calc((12 / 390) * 100vw);
+                }
+
+                &:nth-child(2) {
+                  font-weight: 500;
+
+                  @include pc {
+                    padding-left: 1rem;
+                  }
+
+                  @include sp {}
+                }
+              }
+            }
+          }
+
+          &--message {
+            display: flex;
+            flex-direction: column;
+
+            @include pc {
+              gap: calc((5 / 1280) * 100vw);
+            }
+
+            @include sp {
+              gap: calc((5 / 390) * 100vw);
+            }
+
+            p {
+              color: #292929;
+              @include Lucida;
+              font-weight: 600;
+              line-height: 110%;
+
+              @include pc {
+                font-size: max(calc((16 / 1280) * 100vw), 13px);
+              }
+
+              @include sp {
+                font-size: calc((12 / 390) * 100vw);
+              }
+
+              &:nth-child(2) {
+                font-weight: 500;
+
+                @include pc {
+                  padding-left: 1rem;
+                }
+
+                @include sp {}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

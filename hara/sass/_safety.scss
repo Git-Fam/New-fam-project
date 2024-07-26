@@ -1,0 +1,396 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// safetyPC
+.safety{
+  @include pc{
+    padding: max(calc(( 100 / 1280) * 100vw),100px) 0 0;
+    &__certification{
+      padding: 0 0 max(calc(( 100 / 1280) * 100vw),100px);
+      &__title{
+        text-align: center;
+        margin-bottom: max(calc(( 50 / 1280) * 100vw),50px);
+        p{
+          @include oswald;
+          color: #292929;
+          font-size: calc(( 50 / 1280) * 100vw);
+          line-height: unset;
+          font-weight: 700;
+          &:nth-child(2){
+            font-size: max(calc(( 18 / 1280) * 100vw),18px);
+            font-style: normal;
+            font-weight: 300;
+            line-height: normal;
+            letter-spacing: max(calc(( 1.8 / 1280) * 100vw),1.8px);
+          }
+        }
+      }
+      &__contents{
+        display: flex;
+        justify-content: center;
+        gap: calc(( 33 / 1280) * 100vw);
+        padding: max(calc(( 52 / 1280) * 100vw),52px) 0;
+        border-bottom: solid 3px #FFE7AB;
+        width: fit-content;
+        margin: auto;
+        img{
+          width: max(calc(( 363 / 1280) * 100vw),300px);
+          height: fit-content;
+        }
+        &__text{
+          width: max(calc(( 496 / 1280) * 100vw),400px);
+        p{
+          @include Lucida;
+          color: #292929;
+          font-size: max(calc(( 25 / 1280) * 100vw),25px);
+          font-weight: 600;
+          &:nth-child(2){
+            font-size: max(calc(( 16 / 1280) * 100vw),16px);
+            font-weight: 500;
+            line-height: max(calc(( 28 / 1280) * 100vw),28px);
+            letter-spacing: max(calc(( 0.32 / 1280) * 100vw),0.32px);
+            margin: max(calc(( 32 / 1280) * 100vw),32px) 0 max(calc(( 21 / 1280) * 100vw),21px);
+          }
+        }
+        a{
+          display: flex;
+          align-items: center;
+          gap: calc(( 16 / 1280) * 100vw);
+          color: #FFF;
+          @include Pro;
+          font-size: max(calc(( 25 / 1280) * 100vw),25px);
+          font-weight: 600;
+          padding: max(calc(( 10 / 1280) * 100vw),10px) calc(( 19 / 1280) * 100vw) max(calc(( 10 / 1280) * 100vw),10px) calc(( 14 / 1280) * 100vw);
+          background: #0590F4;
+          box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.35);
+          width: fit-content;
+         img{
+          width: max(calc(( 15 / 1280) * 100vw),15px);
+         } 
+        }
+        }
+      }
+      .safety__certification__contents--first{
+        padding-top: 0;
+      }
+      .safety__certification__contents--second{
+        padding-bottom: 0;
+        border: unset;
+        flex-direction: row-reverse;
+        a{
+          background: #27A860;
+          white-space: nowrap;
+        }
+      }
+    }
+
+    .certificate__certification{
+      padding:max(calc(( 100 / 1280) * 100vw),100px) calc(( 20 / 1280) * 100vw) max(calc(( 125 / 1280) * 100vw),125px);
+      background: #FFF;
+      &__title{
+        text-align: center;
+        margin-bottom: max(calc(( 50 / 1280) * 100vw),50px);
+        p{
+          @include oswald;
+          color: #292929;
+          font-size: calc(( 50 / 1280) * 100vw);
+          line-height: unset;
+          font-weight: 700;
+          &:nth-child(2){
+            font-size: max(calc(( 18 / 1280) * 100vw),18px);
+            font-style: normal;
+            font-weight: 300;
+            line-height: normal;
+            letter-spacing: max(calc(( 1.8 / 1280) * 100vw),1.8px);
+          }
+        }
+      }
+      &__text{
+        text-align: center;
+        margin-bottom: max(calc(( 50 / 1280) * 100vw),50px);
+        p{
+          @include Lucida;
+          color: #2B2D33;
+          font-size: max(calc(( 18 / 1280) * 100vw),14px);
+          font-weight: 500;
+          line-height: max(calc(( 35 / 1280) * 100vw),35px);
+        }
+      }
+      &__section{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: calc(( 50 / 1280) * 100vw);
+        width: max(calc(( 964 / 1280) * 100vw),700px);
+        margin: auto;
+        &__contents{
+          width: calc(50% - calc(( 25 / 1280) * 100vw));
+          &--title{
+            text-align: center;
+            color: #292929;
+            @include Lucida;
+            font-size: max(calc(( 20 / 1280) * 100vw),20px);
+            font-weight: 600;
+            line-height: max(calc(( 42 / 1280) * 100vw),42px);
+            letter-spacing: max(calc(( 2 / 1280) * 100vw),2px);
+            width: 80%;
+            margin: auto;
+            border-bottom: solid 4px #FFE7AB;
+          }
+
+        }
+      }
+    }
+  }
+}
+
+
+// safetySP
+.safety{
+  @include sp{
+    padding: calc(( 100 / 390) * 100vw) 0 0;
+
+    &__certification{
+      padding: 0 0 calc(( 50 / 390) * 100vw);
+      &__title{
+        text-align: center;
+        margin-bottom: calc(( 30 / 390) * 100vw);
+        p{
+          @include oswald;
+          color: #292929;
+          font-size: calc(( 20 / 390) * 100vw);
+          line-height: unset;
+          font-weight: 700;
+          &:nth-child(2){
+            font-size: calc(( 14 / 390) * 100vw);
+            font-style: normal;
+            font-weight: 300;
+            line-height: normal;
+            letter-spacing: calc(( 1.4 / 390) * 100vw);
+          }
+        }
+      }
+      &__contents{
+        padding: calc(( 30 / 390) * 100vw) calc(( 30 / 1280) * 100vw);
+        border-bottom: solid 3px #FFE7AB;
+        width: 90%;
+        margin: auto;
+        p{
+          text-align: center;
+          color: #292929;
+          @include Lucida;
+          font-size: calc(( 14 / 390) * 100vw);
+          font-weight: 600;
+          margin-bottom: calc(( 15 / 390) * 100vw);
+        }
+        img{
+          width: 50%;
+          // height: fit-content;
+          margin: auto;
+        }
+        &__text{
+          width: 100%;
+        p{
+          text-align: left;
+          @include Lucida;
+          color: #292929;
+          font-size: calc(( 12 / 390) * 100vw);
+          font-weight: 500;
+          line-height: calc(( 22 / 390) * 100vw);
+          margin: calc(( 15 / 390) * 100vw) 0 calc(( 30 / 390) * 100vw);
+        }
+        a{
+          display: flex;
+          align-items: center;
+          gap: calc(( 25 / 390) * 100vw);
+          color: #FFF;
+          @include Pro;
+          font-size: calc(( 16 / 390) * 100vw);
+          font-weight: 600;
+          padding: calc(( 12 / 390) * 100vw) calc(( 13 / 390) * 100vw) calc(( 12 / 390) * 100vw) calc(( 30 / 390) * 100vw);
+          background: #0590F4;
+          box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.35);
+          width: fit-content;
+          margin: auto;
+         img{
+          width: calc(( 15 / 390) * 100vw);
+         } 
+        }
+        }
+      }
+      .safety__certification__contents--first{
+        padding-top: 0;
+      }
+      .safety__certification__contents--second{
+        padding-bottom: 0;
+        border: unset;
+        flex-direction: row-reverse;
+        a{
+          background: #27A860;
+          white-space: nowrap;
+        }
+      }
+    }
+
+    .certificate__certification{
+      padding:calc(( 50 / 390) * 100vw) calc(( 20 / 390) * 100vw) calc(( 100 / 390) * 100vw);
+      background: #FFF;
+      &__title{
+        text-align: center;
+        margin-bottom: calc(( 30 / 390) * 100vw);
+        p{
+          @include oswald;
+          color: #292929;
+          font-size: calc(( 25 / 390) * 100vw);
+          line-height: unset;
+          font-weight: 700;
+          &:nth-child(2){
+            font-size: calc(( 14 / 390) * 100vw);
+            font-style: normal;
+            font-weight: 300;
+            line-height: normal;
+            letter-spacing: calc(( 1.4 / 390) * 100vw);
+          }
+        }
+      }
+      &__text{
+        text-align: center;
+        margin-bottom: calc(( 30 / 390) * 100vw);
+        p{
+          @include Lucida;
+          color: #2B2D33;
+          font-size: calc(( 14 / 390) * 100vw);
+          font-weight: 500;
+          line-height: calc(( 22 / 390) * 100vw);
+        }
+      }
+      &__section{
+        width: 100%;
+        margin: auto;
+        &__contents{
+          width: 100%;
+          &--title{
+            text-align: center;
+            color: #292929;
+            @include Lucida;
+            font-size: calc(( 16 / 390) * 100vw);
+            font-weight: 600;
+            letter-spacing: calc(( 1.6 / 390) * 100vw);
+            width: 100%;
+            margin: auto;
+            border-bottom: solid 4px #FFE7AB;
+            padding-bottom: calc(( 10 / 390) * 100vw);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+// 追加修正
+.certificate__certification__section{
+  &__contents{
+    @include pc{
+      margin: calc(( 50 / 1280) * 100vw) 0;
+    }
+
+    @include sp{
+      margin: calc(( 50 / 390) * 100vw) 0;
+    }
+
+    // &:nth-child(2){
+    //   .contents--item{
+    //     img{
+    //       @include pc{
+    //         top: 15%;
+    //       }
+
+    //       @include sp{
+    //         width: 60%;
+    //         top: 6%;
+    //       }
+    //     }
+    //   }
+    // }
+
+    // ラストから２つ
+    &:nth-last-child(-n+2){
+      @include pc{
+        margin-bottom: 0;
+      }
+    }
+
+    &:last-child{
+      @include sp{
+        margin-bottom: 0;
+      }
+    }
+
+
+    .contents--item{
+      position: relative;
+      height: 100%;
+      
+      @include pc{
+        padding: max(calc(( 500 / 1280) * 100vw),360px) 0 0;
+      }
+      
+      @include sp{
+        padding: calc(( 200 / 390) * 100vw) 0 0;
+      }
+      
+      img{
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
+        aspect-ratio: 348 / 488;
+        object-fit: contain;
+        object-position: center;
+        
+        @include pc{
+          top: 5%;
+          width: 80%;
+        }
+
+        @include sp{
+          top: 4%;
+          width: 45%;
+        }
+      }
+      
+      &--text{
+        border: 3px solid #FCE5B3;
+        background: #FFF;
+        box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.25);
+        min-height: calc(( 400 / 1280) * 100vw);
+
+        @include pc{
+          padding: calc(( 75 / 1280) * 100vw) calc(( 42 / 1280) * 100vw) calc(( 50 / 1280) * 100vw);
+        }
+
+        @include sp{
+          padding: calc(( 40 / 390) * 100vw) calc(( 19 / 390) * 100vw) calc(( 30 / 390) * 100vw);
+        }
+
+        p{
+          color: #292929;
+          @include Lucida;
+          font-weight: 500;
+          line-height: 200%;
+          
+          @include pc{
+            font-size: max(calc(( 16 / 1280) * 100vw),12px);
+          }
+
+          @include sp{
+            font-size: calc(( 14 / 390) * 100vw);
+          }
+        }
+      }
+    }
+  }
+}

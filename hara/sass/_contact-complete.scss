@@ -1,0 +1,46 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// お問い合わせ完了PC
+.contact-complete{
+  @include pc{
+    padding: max(calc(( 100 / 1280) * 100vw),100px) 0 max(calc(( 50 / 1280) * 100vw),50px);
+    &__text{
+      p{
+        color: #292929;
+        text-align: center;
+        @include Lucida;
+        font-size: max(calc(( 18 / 1280) * 100vw),18px);
+        font-weight: 500;
+        line-height: max(calc(( 42 / 1280) * 100vw),42px);
+        &:nth-child(1){
+          font-size: max(calc(( 20 / 1280) * 100vw),20px);
+          font-weight: 600;
+          margin-bottom: max(calc(( 50 / 1280) * 100vw),50px);
+        }
+      }
+    }
+  }
+}
+
+// お問い合わせ完了SP
+.contact-complete{
+  @include sp{
+    padding: calc(( 100 / 390) * 100vw) 0;
+    &__text{
+      p{
+        color: #292929;
+        text-align: center;
+        @include Lucida;
+        font-size: calc(( 14 / 390) * 100vw);
+        font-weight: 500;
+        line-height: calc(( 22 / 390) * 100vw);
+        &:nth-child(1){
+          font-size: calc(( 20 / 390) * 100vw);
+          font-weight: 600;
+          margin-bottom: calc(( 30 / 390) * 100vw);
+        }
+      }
+    }
+  }
+}

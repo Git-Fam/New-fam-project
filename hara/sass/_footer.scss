@@ -1,0 +1,122 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// フッターPC
+footer{
+  @include pc{
+    padding: max(calc(( 50 / 1280) * 100vw),50px) 0 max(calc(( 11 / 1280) * 100vw),11px) calc(( 76 / 1280) * 100vw);
+    background-color: #fff;
+    img{
+      width: calc(( 388 / 1280) * 100vw);
+    }
+    .footer__menu{
+      margin: max(calc(( 30 / 1280) * 100vw),30px) 0 max(calc(( 50 / 1280) * 100vw),50px) calc(( 100 / 1280) * 100vw);
+      display: flex;
+      gap: calc(( 60 / 1280) * 100vw);
+      .footer__menu__main{
+        a{
+          @include Pro;
+          color: #535353;
+          font-size: max(calc(( 16 / 1280) * 100vw),14px);
+          font-weight: 600;
+          width: fit-content;
+          &:hover{
+            opacity: 0.6;
+            transition: all .3s ease;
+          }
+        }
+        .footer__sub--menu{
+          .footer__menu__sub--main{
+            a{
+              @include Pro;
+              color: #535353;
+              font-size: max(calc(( 14 / 1280) * 100vw),14px);
+              font-weight: 300;
+              line-height: unset;
+              margin: calc(( 10 / 1280) * 100vw) 0 0 1.5rem;
+              position: relative;
+              &::before{
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: calc(( -15 / 1280) * 100vw);
+                transform: translate(0,-50%);
+                background-image: url("imag/point.svg");
+                background-repeat: no-repeat;
+                background-size: contain;
+                width: max(calc(( 10 / 1280) * 100vw),10px);
+                height: max(calc(( 10 / 1280) * 100vw),10px);
+              }
+            }
+          }
+        }
+      }
+    }
+    p{
+      @include Pro;
+      color: #535353;
+      text-align: center;
+      font-size: calc(( 16 / 1280) * 100vw);
+      font-weight: 300;
+      line-height: calc(( 30 / 1280) * 100vw);
+      letter-spacing: calc(( 1.6 / 1280) * 100vw);
+    }
+  }
+}
+
+// フッターSP
+footer{
+  @include sp{
+    padding: max(calc(( 43 / 390) * 100vw),50px) 0 calc(( 20 / 390) * 100vw) calc(( 20 / 390) * 100vw);
+    background-color: #fff;
+    img{
+      width: calc(( 195 / 390) * 100vw);
+    }
+    .footer__menu{
+      margin: calc(( 19 / 390) * 100vw) 0 calc(( 71 / 390) * 100vw) calc(( 45 / 390) * 100vw);
+      .footer__menu__main{
+        a{
+          @include Pro;
+          color: #535353;
+          font-size: calc(( 14 / 390) * 100vw);
+          font-weight: 600;
+          width: fit-content;
+          margin-top: calc(( 17 / 390) * 100vw)
+        }
+        .footer__sub--menu{
+          .footer__menu__sub--main{
+            a{
+              @include Pro;
+              color: #535353;
+              font-size: calc(( 14 / 390) * 100vw);
+              font-weight: 300;
+              line-height: unset;
+              margin: calc(( 14 / 390) * 100vw) 0 0 3rem;
+              position: relative;
+              &::before{
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: calc(( -15 / 390) * 100vw);
+                transform: translate(0,-50%);
+                background-image: url("imag/point.svg");
+                background-repeat: no-repeat;
+                background-size: contain;
+                width: max(calc(( 10 / 390) * 100vw),10px);
+                height: max(calc(( 10 / 390) * 100vw),10px);
+              }
+            }
+          }
+        }
+      }
+    }
+    p{
+      @include Pro;
+      color: #535353;
+      text-align: center;
+      font-size: calc(( 10 / 390) * 100vw);
+      font-weight: 300;
+      letter-spacing: calc(( 1 / 390) * 100vw);
+    }
+  }
+}

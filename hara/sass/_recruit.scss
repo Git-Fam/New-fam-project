@@ -1,0 +1,679 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// recruitPC
+.recruit{
+  @include pc{
+  &__at{
+    padding: max(calc(( 100 / 1280) * 100vw),100px) 0;
+    background-image: url("imag/recruit--back.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    &::before{
+      content: "";
+      width: 100%;
+      height: 100%;
+      background-color: rgba(207, 207, 207, 0.88);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+    &__text{
+      width: max(calc(( 877 / 1280) * 100vw),700px);
+      text-align: center;
+      border: 10px solid #FFF;
+      margin: max(calc(( 70 / 1280) * 100vw),70px) auto 0;
+      position: relative;
+      z-index: 2;
+      padding: max(calc(( 60 / 1280) * 100vw),60px) calc(( 60 / 1280) * 100vw);
+      &:first-child{
+        margin-top: 0;
+      }
+      p{
+        color: #2B2D33;
+        @include Lucida;
+        color: #292929;
+        font-size: calc(( 35 / 1280) * 100vw);
+        font-weight: 600;
+        line-height: calc(( 50 / 1280) * 100vw);
+        &:nth-child(2){
+          margin-top: max(calc(( 40 / 1280) * 100vw),40px);
+          font-size: max(calc(( 16 / 1280) * 100vw),16px);
+          font-weight: 500;
+          line-height: max(calc(( 35 / 1280) * 100vw),35px);
+        }
+      }
+    }
+  }
+
+  .workflow{
+    padding: max(calc(( 100 / 1280) * 100vw),100px) 0;
+    background: #FFF;
+    &__title{
+      text-align: center;
+      margin-bottom: max(calc(( 50 / 1280) * 100vw),50px);
+      p{
+        @include oswald;
+        color: #292929;
+        font-size: calc(( 50 / 1280) * 100vw);
+        line-height: unset;
+        font-weight: 700;
+        &:nth-child(2){
+          font-size: max(calc(( 18 / 1280) * 100vw),18px);
+          font-style: normal;
+          font-weight: 300;
+          line-height: normal;
+          letter-spacing: max(calc(( 1.8 / 1280) * 100vw),1.8px);
+        }
+      }
+    }
+    &__text{
+      margin-bottom: max(calc(( 50 / 1280) * 100vw),50px);
+      p{
+        color: #2B2D33;
+        text-align: center;
+        @include Lucida;
+        font-size: max(calc(( 18 / 1280) * 100vw),14px);
+        font-weight: 500;
+        line-height: max(calc(( 30 / 1280) * 100vw),30px);
+        letter-spacing: max(calc(( 1.8 / 1280) * 100vw),1.8px);
+      }
+    }
+    &__flow{
+      display: flex;
+      justify-content: center;
+      gap: calc(( 21 / 1280) * 100vw);
+      img{
+        width: max(calc(( 422 / 1280) * 100vw),350px);
+        height: fit-content;
+      }
+    }
+  }
+
+  .voice{
+    padding: max(calc(( 100 / 1280) * 100vw),100px) 0;
+    &__title{
+      text-align: center;
+      margin-bottom: max(calc(( 50 / 1280) * 100vw),50px);
+      p{
+        @include oswald;
+        color: #292929;
+        font-size: calc(( 50 / 1280) * 100vw);
+        line-height: unset;
+        font-weight: 700;
+        &:nth-child(2){
+          font-size: max(calc(( 18 / 1280) * 100vw),18px);
+          font-style: normal;
+          font-weight: 300;
+          line-height: normal;
+          letter-spacing: max(calc(( 1.8 / 1280) * 100vw),1.8px);
+        }
+      }
+    }
+    // &__box{
+    //   width: 80%;
+    //   margin: 0 auto;
+    //   img{
+    //     width: 100%;
+    //   }
+    // }
+  }
+
+  .outline{
+    padding: max(calc(( 100 / 1280) * 100vw),100px) 0;
+    background: #FFF;
+    &__title{
+      text-align: center;
+      margin-bottom: max(calc(( 50 / 1280) * 100vw),50px);
+      p{
+        @include oswald;
+        color: #292929;
+        font-size: calc(( 50 / 1280) * 100vw);
+        line-height: unset;
+        font-weight: 700;
+        &:nth-child(2){
+          font-size: max(calc(( 18 / 1280) * 100vw),18px);
+          font-style: normal;
+          font-weight: 300;
+          line-height: normal;
+          letter-spacing: max(calc(( 1.8 / 1280) * 100vw),1.8px);
+        }
+      }
+    }
+    // &__box{
+    //   width: max(calc(( 827 / 1280) * 100vw),700px);
+    //   margin: 0 auto;
+    //   img{
+    //     width: 100%;
+    //   }
+    // }
+  }
+
+    .how{
+      padding: max(calc(( 100 / 1280) * 100vw),100px) 0;
+      background: #FCE5B3;
+      &__title{
+        text-align: center;
+        margin-bottom: max(calc(( 50 / 1280) * 100vw),50px);
+        p{
+          @include oswald;
+          color: #292929;
+          font-size: calc(( 50 / 1280) * 100vw);
+          line-height: unset;
+          font-weight: 700;
+        }
+      }
+      &__text{
+        margin-bottom: max(calc(( 50 / 1280) * 100vw),50px);
+        p{
+          color: #2B2D33;
+          text-align: center;
+          @include Lucida;
+          font-size: max(calc(( 18 / 1280) * 100vw),14px);
+          font-weight: 500;
+          line-height: max(calc(( 30 / 1280) * 100vw),30px);
+          letter-spacing: max(calc(( 1.8 / 1280) * 100vw),1.8px);
+        }
+      }
+      &__btn{
+        display: flex;
+        justify-content: center;
+        gap: calc(( 58 / 1280) * 100vw);
+        a{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: calc(( 48 / 1280) * 100vw);
+          background: #FFF;
+          box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+          width: max(calc(( 388 / 1280) * 100vw),350px);
+          padding: max(calc(( 15 / 1280) * 100vw),15px) 0;
+          transition: all 0.3s ease;
+          &:hover{
+            transform: scale(1.05);
+          }
+          img{
+            width: max(calc(( 43 / 1280) * 100vw),43px);
+          }
+          p{
+            color: #292929;
+            text-align: center;
+            @include Lucida;
+            font-size: max(calc(( 25 / 1280) * 100vw),25px);
+            font-weight: 600;
+            letter-spacing: max(calc(( 2.5 / 1280) * 100vw),2.5px);
+          }
+        }
+      }
+    }
+  }
+}
+
+// recruitSP
+.recruit{
+  @include sp{
+  &__at{
+    padding: calc(( 100 / 390) * 100vw) 0;
+    background-image: url("imag/recruit--back.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    &::before{
+      content: "";
+      width: 100%;
+      height: 100%;
+      background-color: rgba(207, 207, 207, 0.88);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+    &__text{
+      width:calc(( 353 / 390) * 100vw);
+      text-align: center;
+      border: 5px solid #FFF;
+      margin: calc(( 30 / 390) * 100vw) auto 0;
+      position: relative;
+      z-index: 2;
+      padding: calc(( 24 / 390) * 100vw) calc(( 4 / 390) * 100vw);
+      &:first-child{
+        margin-top: 0;
+      }
+      p{
+        color: #2B2D33;
+        @include Lucida;
+        color: #292929;
+        font-size: calc(( 14 / 390) * 100vw);
+        font-weight: 600;
+        line-height: calc(( 22 / 390) * 100vw);
+        &:nth-child(2){
+          margin-top: calc(( 15 / 390) * 100vw);
+          font-size: calc(( 12 / 390) * 100vw);
+          font-weight: 500;
+          line-height: calc(( 20 / 390) * 100vw);
+          font-feature-settings: "palt";
+        }
+      }
+    }
+  }
+
+  .workflow{
+    padding: calc(( 50 / 390) * 100vw) 0;
+    background: #FFF;
+    &__title{
+      text-align: center;
+      margin-bottom: calc(( 30 / 390) * 100vw);
+      p{
+        @include oswald;
+        color: #292929;
+        font-size: calc(( 25 / 390) * 100vw);
+        line-height: unset;
+        font-weight: 700;
+        &:nth-child(2){
+          font-size: calc(( 14 / 390) * 100vw);
+          font-style: normal;
+          font-weight: 300;
+          line-height: normal;
+          letter-spacing: calc(( 1.4 / 390) * 100vw);
+        }
+      }
+    }
+    &__text{
+      margin-bottom: calc(( 30 / 390) * 100vw);
+      p{
+        color: #2B2D33;
+        text-align: center;
+        @include Lucida;
+        font-size: calc(( 14 / 390) * 100vw);
+        font-weight: 500;
+        line-height: calc(( 30 / 390) * 100vw);
+      }
+    }
+    &__flow{
+      img{
+        width: calc(( 350 / 390) * 100vw);
+        margin: calc(( 50 / 390) * 100vw) auto 0;
+        &:nth-child(1){
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  .voice{
+    padding: calc(( 50 / 390) * 100vw) 0;
+    &__title{
+      text-align: center;
+      margin-bottom: calc(( 30 / 390) * 100vw);
+      p{
+        @include oswald;
+        color: #292929;
+        font-size: calc(( 25 / 390) * 100vw);
+        line-height: unset;
+        font-weight: 700;
+        &:nth-child(2){
+          font-size: calc(( 14 / 390) * 100vw);
+          font-style: normal;
+          font-weight: 300;
+          line-height: normal;
+          letter-spacing: calc(( 1.4 / 390) * 100vw);
+        }
+      }
+    }
+    // &__box{
+    //   width: 90%;
+    //   margin: 0 auto;
+    //   img{
+    //     width: 100%;
+    //   }
+    // }
+  }
+
+  .outline{
+    padding: calc(( 50 / 390) * 100vw) 0;
+    background: #FFF;
+    &__title{
+      text-align: center;
+      margin-bottom: calc(( 30 / 390) * 100vw);
+      p{
+        @include oswald;
+        color: #292929;
+        font-size: calc(( 25 / 390) * 100vw);
+        line-height: unset;
+        font-weight: 700;
+        &:nth-child(2){
+          font-size: calc(( 14 / 390) * 100vw);
+          font-style: normal;
+          font-weight: 300;
+          line-height: normal;
+          letter-spacing: calc(( 1.4 / 390) * 100vw);
+        }
+      }
+    }
+    // &__box{
+    //   width: 90%;
+    //   margin: 0 auto;
+    //   img{
+    //     width: 100%;
+    //   }
+    // }
+  }
+
+    .how{
+      padding: calc(( 50 / 390) * 100vw) 0;
+      background: #FCE5B3;
+      &__title{
+        text-align: center;
+        margin-bottom: calc(( 30 / 390) * 100vw);
+        p{
+          @include oswald;
+          color: #292929;
+          font-size: calc(( 25 / 390) * 100vw);
+          line-height: unset;
+          font-weight: 700;
+        }
+      }
+      &__text{
+        margin-bottom: calc(( 30 / 390) * 100vw);
+        p{
+          color: #2B2D33;
+          text-align: center;
+          @include Lucida;
+          font-size: calc(( 14 / 390) * 100vw);
+          font-weight: 500;
+          line-height: calc(( 22 / 390) * 100vw);
+        }
+      }
+      &__btn{
+        margin-top: calc(( 35 / 390) * 100vw);
+        a{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: calc(( 25 / 390) * 100vw);
+          background: #FFF;
+          box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+          width: calc(( 300 / 390) * 100vw);
+          padding: calc(( 17 / 390) * 100vw) 0;
+          margin: calc(( 20 / 390) * 100vw) auto 0;
+          &:first-child{
+            margin-top: 0;
+          }
+          img{
+            width: calc(( 34 / 390) * 100vw);
+          }
+          p{
+            color: #292929;
+            text-align: center;
+            @include Lucida;
+            font-size: calc(( 20 / 390) * 100vw);
+            font-weight: 600;
+            letter-spacing: calc(( 2 / 390) * 100vw);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// 追加修正
+
+.voice{
+  &__box{
+    display: flex;
+    flex-direction: column;
+
+    @include pc{
+      width: max(calc(( 880 / 1280) * 100vw),700px);
+      margin: calc(( 160 / 1280) * 100vw) auto 0;
+      gap: calc(( 130 / 1280) * 100vw);
+    }
+
+    @include sp{
+      padding: 0 calc(( 20 / 390) * 100vw);
+      width: 100%;
+      margin: calc(( 175 / 390) * 100vw) auto 0;
+      gap: calc(( 178 / 390) * 100vw);
+
+    }
+
+    &--item{
+      position: relative;
+
+      .item--text{
+        background: #FFF;
+        position: relative;
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+
+        @include pc{
+          width: max(60% ,480px);
+          gap: calc(( 23 / 1280) * 100vw);
+          padding: calc(( 37 / 1280) * 100vw) calc(( 37 / 1280) * 100vw) calc(( 37 / 1280) * 100vw) calc(( 51 / 1280) * 100vw);
+        }
+
+        @include sp{
+          width: 95%;
+          gap: calc(( 16 / 390) * 100vw);
+          padding: calc(( 20 / 390) * 100vw) calc(( 14 / 390) * 100vw) calc(( 20 / 390) * 100vw);
+        }
+
+        h3{
+          color: #292929;
+          @include Lucida;
+          font-weight: 600;
+          line-height: 160%;
+          
+          @include pc{
+            font-size: max(calc(( 25 / 1280) * 100vw),20px);
+          }
+
+          @include sp{
+            font-size: calc(( 16 / 390) * 100vw);
+          }
+        }
+
+        p{
+          color: #000;
+          @include Lucida;
+          font-weight: 500;
+          line-height: 150%;
+          
+          @include pc{
+            font-size: max(calc(( 16 / 1280) * 100vw),12px);
+            letter-spacing: calc(( 0.8 / 1280) * 100vw);
+          }
+
+          @include sp{
+            font-size: calc(( 14 / 390) * 100vw);
+          }
+        }
+      }
+
+      img{
+        position: absolute;
+        z-index: 1;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        object-position: top;
+        
+        @include pc{
+         top: calc(( -100 / 1280) * 100vw);
+          left: 0;
+          width: calc(( 387 / 1280) * 100vw);
+        }
+
+        @include sp{
+          top: calc(( -150 / 390) * 100vw);
+          left: 0;
+          width: calc(( 203 / 390) * 100vw);
+        }
+      }
+
+      &:nth-child(odd){
+        .item--text{
+          margin-left: auto;
+        }
+      }
+
+      &:nth-child(even){
+        .item--text{
+            margin-right: auto;
+        }
+        img{
+            left: unset;
+            right: 0;
+        }
+      }
+    }
+  }
+}
+
+
+
+.outline{
+  &__box{
+    
+    @include pc{
+      width: max(calc(( 872 / 1280) * 100vw),700px);
+      margin: 0 auto;
+    }
+  
+    @include sp{
+      padding: 0 calc(( 20 / 390) * 100vw);
+    }
+
+    &--item{
+      display: flex;
+
+      @include sp{
+        flex-direction: column;
+      }
+
+      .item--title{
+        background: #FCE5B3;
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        @include pc{
+          border-bottom: 5px solid #FFF;
+          width: 30%;
+        }
+
+        @include sp{
+          width: 100%;
+          padding:  calc(( 14 / 390) * 100vw) 0;
+        }
+
+        h3{
+          text-align: center;
+          color: #292929;
+          @include Lucida;
+          font-weight: 600;
+
+          
+          @include pc{
+            font-size: max(calc(( 20 / 1280) * 100vw),16px);
+            letter-spacing: calc(( 2 / 1280) * 100vw);
+          }
+
+          @include sp{
+            font-size: calc(( 16 / 390) * 100vw);
+            letter-spacing: calc(( 1.6 / 390) * 100vw);
+          }
+        }
+      }
+
+      .item--content{
+        
+        @include pc{
+          border-right: 5px solid #FCE5B3;
+          border-bottom: 5px solid #FCE5B3;
+          width: 70%;
+          padding: calc(( 48 / 1280) * 100vw) calc(( 40 / 1280) * 100vw) calc(( 40 / 1280) * 100vw) calc(( 67 / 1280) * 100vw);
+        }
+
+        @include sp{
+          width: 100%;
+          padding: calc(( 18 / 390) * 100vw) calc(( 14 / 390) * 100vw) calc(( 20 / 390) * 100vw);
+          border-left: 2px solid #FCE5B3;
+          border-right: 2px solid #FCE5B3;
+          border-bottom: 2px solid #FCE5B3;
+        }
+
+        h4{
+          color: #292929;
+          @include Lucida;
+          font-weight: 600;
+          
+          @include pc{
+            font-size: max(calc(( 16 / 1280) * 100vw),12px);
+            letter-spacing: calc(( 1.6 / 1280) * 100vw);
+            margin-bottom: 1rem;
+          }
+
+          @include sp{
+            font-size: calc(( 14 / 390) * 100vw);
+            letter-spacing: calc(( 1.4 / 390) * 100vw);
+            margin-bottom: calc(( 10 / 390) * 100vw);
+          }
+        }
+
+        p{
+          color: #292929;
+          @include Lucida;
+          font-weight: 500;
+          
+          @include pc{
+            font-size: max(calc(( 16 / 1280) * 100vw),12px);
+            letter-spacing: calc(( 1.6 / 1280) * 100vw);
+          }
+
+          @include sp{
+            font-size: calc(( 12 / 390) * 100vw);
+          }
+        }
+
+        ul{
+          margin-bottom: 1rem;
+
+          @include pc{
+            padding-left: 2rem;
+          }
+
+          @include sp{
+            padding-left: 1rem;
+          }
+
+          li{
+            list-style: outside;
+          }
+        }
+      }
+
+      &:last-child{
+        .item--title{
+          @include pc{
+            border-bottom: none;
+          }
+        }
+      }
+
+      &:first-child{
+        .item--content{
+          @include pc{
+            border-top: 5px solid #FCE5B3;
+          }
+        }
+      }
+    }
+  }
+}

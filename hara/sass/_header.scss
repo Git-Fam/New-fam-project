@@ -1,0 +1,295 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+
+// ヘッダーPC
+header{
+  @include pc{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 998;
+    width: 100%;
+    padding: max(calc(( 15 / 1280) * 100vw),15px) 0 0;
+    background: #292929;
+    .header--content--logo{
+      a{
+        &:hover{
+          img{
+            transition: all 0.5s ease;
+            opacity: 0.7;
+          }
+        }
+        img{
+          width: calc(( 373 / 1280) * 100vw);
+        }
+      }
+    }
+    // ハンバーガーメニュー
+    .menu-trigger{
+      display: none;
+    }
+
+    .header--content--menu{
+        padding-right: calc(( 50 / 1280) * 100vw);
+      .menu--section{
+        display: flex;
+        align-items: center;
+        gap: calc(( 15 / 1280) * 100vw);
+        height: fit-content;
+        .menu--partition{
+          height: calc(( 50 / 1280) * 100vw);
+          border-left:solid 1px #FFF;
+          transform: rotate(15deg);
+        }
+        .menu--contens{
+          a{
+            color: #FFF;
+            @include oswald;
+            font-size: max(calc(( 16 / 1280) * 100vw),16px);
+            font-style: normal;
+            font-weight: 600;
+            line-height: max(calc(( 20 / 1280) * 100vw),20px);
+            text-align: center;
+            &:hover, &:hover span{
+              color: #FCE5B3 !important;
+              transition: all 0.5s ease;
+            }
+            span{
+              color: #FFF;
+              @include oswald;
+              font-size: max(calc(( 12 / 1280) * 100vw),12px);
+              font-style: normal;
+              font-weight: 300;
+              line-height: normal;
+            }
+          }
+        }
+        .menu--contens--secret:hover .secret--menu{
+          display: flex;
+        }
+
+        .secret--menu{
+            position: fixed;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.70);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            padding: max(calc(( 60 / 1280) * 100vw),60px) calc(( 225 / 1280) * 100vw);
+            display: none;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            backdrop-filter: blur(5px);
+            &:hover{
+              display: flex;
+              transition: all 0.5s ease;
+            }
+          li{
+            width: calc(( 336 / 1280) * 100vw);
+            &:nth-child(1){
+              width: 100%;
+              margin-bottom: max(calc(( 60 / 1280) * 100vw),60px);
+              color: #292929;
+              @include Pro;
+              font-size: max(calc(( 20 / 1280) * 100vw),20px);
+              font-weight: 600;
+              letter-spacing: max(calc(( 1 / 1280) * 100vw),1px);
+            }
+            &:nth-child(n+2){
+              margin-bottom: max(calc(( 44 / 1280) * 100vw),44px);
+              border-bottom: solid 1px #292929;
+              position: relative;
+              &::before{
+                content: "";
+                position: absolute;
+                z-index: -1;
+                width: max(calc(( 12 / 1280) * 100vw),12px);
+                height: max(calc(( 12 / 1280) * 100vw),12px);
+                border-top:solid 1px #292929;
+                border-right:solid 1px #292929;
+                transform: rotate(45deg);
+                top: max(calc(( 8 / 1280) * 100vw),8px);
+                right: calc(( 20 / 1280) * 100vw);
+              }
+            }
+            a{
+              color: #292929 !important;
+              @include Lucida;
+              font-size: max(calc(( 18 / 1280) * 100vw),18px);
+              font-weight: 300;
+              letter-spacing: max(calc(( 0.9 / 1280) * 100vw),0.9px);
+              text-align: left;
+              padding: 0 0 calc(( 13 / 1280) * 100vw) calc(( 20 / 1280) * 100vw);
+            }
+          }
+        }
+      }
+    }
+
+
+  }
+}
+
+// ヘッダーSP
+header{
+  @include sp{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 997;
+    width: 100%;
+    padding: calc(( 12 / 390) * 100vw) 0 calc(( 12 / 390) * 100vw) calc(( 20 / 390) * 100vw);
+    background: #292929;
+    .header--content--logo{
+      a{
+        img{
+          width: calc(( 195 / 390) * 100vw);
+        }
+      }
+    }
+    // ハンバーガーメニュー
+    .menu-trigger{
+      width: calc(( 27 / 390) * 100vw);
+      height: calc(( 18 / 390) * 100vw);
+      position: absolute;
+      right: calc(( 40 / 390) * 100vw);
+      z-index: 1000;
+      cursor: pointer;
+      &.active{
+        span{
+          display: block;
+          border-radius: 2px;
+          width: 100%;
+          height: calc(( 3 / 390) * 100vw);
+          background-color: #FFFFFF;
+          transition: all 0.3s ease-in-out;
+          &:first-child{
+            position: relative;
+            transform: rotate(-45deg);
+            top: calc((10/390)*100vw);
+          }
+          &:nth-child(2){
+            opacity: 0;
+            margin-top: 0;
+          }
+          &:nth-child(3){
+            position: absolute;
+            transform: rotate(45deg);
+            top: calc((10/390)*100vw);
+            margin-top: 0;
+          }
+        }
+      }
+      span{
+        display: block;
+        width: 100%;
+        height: calc(( 2 / 390) * 100vw);
+        background-color: #FFFFFF;
+        margin-top: calc(( 7 / 390) * 100vw);
+        transition: all 0.3s ease-in-out;
+        &:first-child{
+          margin-top: 0;
+        }
+      }
+    }
+
+    .back{
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100vh;
+      min-height: 500px;
+      min-height: calc(( 600 / 390) * 100vw);
+      background: rgba(69, 69, 69, 0);
+      z-index: 998;
+      &.active{
+        left: 0;
+      }
+    }
+    .header--content--menu{
+        position: fixed;
+        width: 100%;
+        min-height: 500px;
+        top: calc(( 50 / 390) * 100vw);
+        right: -100%;
+        z-index: 999;
+        background-color: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        padding: calc(( 16 / 390) * 100vw) calc(( 42 / 390) * 100vw) calc(( 40 / 390) * 100vw) calc(( 60 / 390) * 100vw);
+        transition: all 0.3s ease-in-out;
+        &.active{
+          right: 0;
+        }
+      .menu--section{
+        height: fit-content;
+        .menu--partition{
+          display: none;
+        }
+        .menu--contens{
+          a{
+            color: #545454 !important;
+            @include oswald;
+            font-size: calc(( 14 / 390) * 100vw);
+            font-style: normal;
+            font-weight: 600;
+            line-height: calc(( 14 / 390) * 100vw);
+            margin-top: calc(( 5 / 390) * 100vw);
+            span{
+              color: #545454 !important;
+              @include oswald;
+              font-size: calc(( 12 / 390) * 100vw);
+              font-style: normal;
+              font-weight: 600;
+              line-height: normal;
+              margin-left: calc(( 10 / 390) * 100vw);
+            }
+          }
+        }
+        .secret--menu{
+            // padding: max(calc(( 60 / 390) * 100vw),60px) calc(( 225 / 390) * 100vw);
+          li{
+            padding: 0 0 0 calc(( 50 / 390) * 100vw);
+            position: relative;
+            &::before{
+              content: "";
+              position: absolute;
+              top: 50%;
+              right: calc(( 20 / 390) * 100vw);
+              transform: translateY(-180%) rotate(225deg);
+              width: calc(( 5 / 390) * 100vw);
+              height: calc(( 5 / 390) * 100vw);
+              border-bottom: solid 1px #545454;
+              border-left: solid 1px #545454;
+
+            }
+            &:nth-child(1){
+              display: none;
+            }
+            a{
+              color: #545454 !important;
+              @include oswald;
+              font-size: calc(( 12 / 390) * 100vw);
+              font-weight: 300;
+              letter-spacing: calc(( 0.9 / 390) * 100vw);
+              text-align: left;
+              border-bottom: solid 1px #545454;
+              width: 100%;
+              padding: 0 0 calc(( 10 / 390) * 100vw) calc(( 20 / 390) * 100vw);
+            }
+          }
+        }
+      }
+    }
+
+
+  }
+}

@@ -1,0 +1,202 @@
+@use "mixin" as *;
+@use "variables" as *;
+
+// privacypolicyPC
+.priva{
+  @include pc{
+    padding: max(calc(( 100 / 1280) * 100vw),100px) 0;
+    &__text{
+      text-align: center;
+      margin-bottom: max(calc(( 50 / 1280) * 100vw),50px);
+      p{
+        color: #2B2D33;
+        @include Lucida;
+        font-size: max(calc(( 18 / 1280) * 100vw),14px);
+        font-weight: 500;
+        line-height: max(calc(( 30 / 1280) * 100vw),30px);
+      }
+    }
+  }
+}
+
+// privacypolicySP
+.priva{
+  @include sp{
+    padding: calc(( 100 / 390) * 100vw) 0;
+    &__text{
+      text-align: center;
+      margin-bottom: calc(( 30 / 390) * 100vw);
+      p{
+        color: #2B2D33;
+        @include Lucida;
+        font-size: calc(( 14 / 390) * 100vw);
+        font-weight: 500;
+        line-height: calc(( 22 / 390) * 100vw);
+      }
+    }
+  }
+}
+
+
+
+.priva__content{
+  margin: auto;
+  border: 4px solid #FCE5B3;
+  background: #FFF;
+  display: flex;
+  flex-direction: column;
+
+  @include pc{
+    width: max(calc(( 833 / 1280) * 100vw),700px);
+    gap: calc(( 70 / 1280) * 100vw);
+    padding: calc(( 60 / 1280) * 100vw) 0;
+  }
+
+  @include sp{
+    width: calc(( 350 / 390) * 100vw);
+    padding: calc(( 30 / 390) * 100vw) 0;
+    gap: calc(( 30 / 390) * 100vw);
+  }
+
+  &--item{
+    margin: auto;
+
+    @include pc{
+      width: 67%;
+    }
+
+    @include sp{
+      width: 95% ;
+    }
+
+    &--title{
+      color: #292929;
+      text-align: center;
+      @include Lucida;
+      font-weight: 600;
+      
+      @include pc{
+        font-size: max(calc(( 18 / 1280) * 100vw),12px);
+      }
+
+      @include sp{
+        font-size: calc(( 14 / 390) * 100vw);
+      }
+
+      &::after{
+        content: "";
+        display: block;
+        height: 3px;
+        background-color: #FCE5B3;
+        
+        @include pc{
+          width: calc(( 227 / 1280) * 100vw);
+          margin: calc(( 12 / 1280) * 100vw) auto calc(( 27 / 1280) * 100vw);
+        }
+
+        @include sp{
+          width: calc(( 193 / 390) * 100vw);
+          margin: calc(( 10 / 390) * 100vw) auto;
+        }
+      }
+    }
+
+    &--text{
+      color: #292929;
+      @include Lucida;
+      text-align: center;
+      font-weight: 500;
+      line-height: 187%;
+      
+      @include pc{
+        font-size: max(calc(( 16 / 1280) * 100vw),10px);
+
+      }
+
+      @include sp{
+        font-size: calc(( 12 / 390) * 100vw);
+      }
+    }
+
+    ul{
+      padding-left: 1rem;
+
+      @include pc{
+        width: 70%;
+        margin: calc(( 12 / 1280) * 100vw) auto 0;
+      }
+
+      @include sp{
+        width: 95%;
+        margin: calc(( 10 / 390) * 100vw) auto 0;
+      }
+
+      li{
+        color: #292929;
+        @include Lucida;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 187%;
+        list-style: outside;
+        
+        @include pc{
+          font-size: max(calc(( 16 / 1280) * 100vw),10px);
+        }
+
+        @include sp{
+          font-size: calc(( 12 / 390) * 100vw);
+        }
+      }
+    }
+
+    .container{
+      background: #FCE5B3;
+
+      @include pc{
+        margin: calc(( 12 / 1280) * 100vw) auto 0;
+        padding: calc(( 40 / 1280) * 100vw) 0 calc(( 46 / 1280) * 100vw);
+      }
+
+      @include sp{
+        margin: calc(( 10 / 390) * 100vw) auto 0;
+        padding: calc(( 20 / 390) * 100vw) 0 calc(( 30 / 390) * 100vw);
+      }
+
+      h2{
+        color: #292929;
+        text-align: center;
+        @include Lucida;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 222%;
+        
+        @include pc{
+          font-size: max(calc(( 18 / 1280) * 100vw),14px);
+          letter-spacing: calc(( 2.7 / 1280) * 100vw);
+          margin-bottom: calc(( 27 / 1280) * 100vw);
+        }
+
+        @include sp{
+          font-size: calc(( 14 / 390) * 100vw);
+          margin-bottom: calc(( 20 / 390) * 100vw);
+        }
+      }
+
+      p{
+        color: #292929;
+        text-align: center;
+        @include Lucida;
+        font-weight: 500;
+        line-height: 166%;
+        
+        @include pc{
+          font-size: max(calc(( 18 / 1280) * 100vw),14px);
+        }
+
+        @include sp{
+          font-size: calc(( 14 / 390) * 100vw);
+        }
+      }
+    }
+  }
+}
