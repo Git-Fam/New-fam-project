@@ -115,6 +115,9 @@
                                     <li>
                                         <p><?php echo CFS()->get('recruit_outline_list_1_1_3'); ?></p>
                                     </li>
+                                    <li>
+                                        <p><?php echo CFS()->get('recruit_outline_list_1_1_4'); ?></p>
+                                    </li>
                                 </ul>
                                 <h4><?php echo CFS()->get('recruit_outline_text_1_2'); ?></h4>
                                 <ul>
