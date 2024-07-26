@@ -127,7 +127,7 @@ Template Name:カンパニーページ
                         </div>
                         <div class="content--item">
                             <p><?php echo CFS()->get('company_about_table_title2'); ?></p>
-                            <p><?php echo CFS()->get('company_about_table_text2'); ?>＜/p>
+                            <p><?php echo CFS()->get('company_about_table_text2'); ?></p>
                         </div>
                         <div class="content--item">
                             <p><?php echo CFS()->get('company_about_table_title3'); ?></p>
@@ -206,10 +206,20 @@ Template Name:カンパニーページ
                         <div class="content--item">
                             <p><?php echo CFS()->get('company_history_table_title1'); ?></p>
                             <p><?php echo CFS()->get('company_history_table_text1'); ?></p>
+                            <div class="icon sp"></div>
+                            <div class="img--box">
+                                <img src="<?php echo CFS()->get('company_history_table__img1')?>" alt="沿線01">
+                            </div>
                         </div>
+
                         <div class="content--item">
                             <p><?php echo CFS()->get('company_history_table_title2'); ?></p>
                             <p><?php echo CFS()->get('company_history_table_text2'); ?></p>
+                            <div class="icon sp"></div>
+                            <div class="img--box">
+                                <img src="<?php echo CFS()->get('company_history_table__img2')?>" alt="沿線02">
+                            </div>
+
                         </div>
                         <div class="content--item">
                             <p><?php echo CFS()->get('company_history_table_title3'); ?></p>
@@ -218,6 +228,7 @@ Template Name:カンパニーページ
                         <div class="content--item">
                             <p><?php echo CFS()->get('company_history_table_title4'); ?></p>
                             <p><?php echo CFS()->get('company_history_table_text4'); ?></p>
+
                         </div>
                         <div class="content--item">
                             <p><?php echo CFS()->get('company_history_table_title5'); ?></p>
@@ -226,22 +237,35 @@ Template Name:カンパニーページ
                         <div class="content--item">
                             <p><?php echo CFS()->get('company_history_table_title6'); ?></p>
                             <p><?php echo CFS()->get('company_history_table_text6'); ?></p>
+
                         </div>
                         <div class="content--item">
                             <p><?php echo CFS()->get('company_history_table_title7'); ?></p>
                             <p><?php echo CFS()->get('company_history_table_text7'); ?></p>
+
                         </div>
                         <div class="content--item">
                             <p><?php echo CFS()->get('company_history_table_title8'); ?></p>
                             <p><?php echo CFS()->get('company_history_table_text8'); ?></p>
+
                         </div>
                         <div class="content--item">
                             <p><?php echo CFS()->get('company_history_table_title9'); ?></p>
                             <p><?php echo CFS()->get('company_history_table_text9'); ?></p>
+
                         </div>
                         <div class="content--item">
                             <p><?php echo CFS()->get('company_history_table_title10'); ?></p>
                             <p><?php echo CFS()->get('company_history_table_text10'); ?></p>
+                            <div class="icon sp"></div>
+                            <div class="img--box">
+                                <img class="pc" src="<?php echo CFS()->get('company_history_table__img10_pc'); ?>" alt="沿線10">
+                                <img class="pc" src="<?php echo CFS()->get('company_history_table__img10_2_pc'); ?>" alt="沿線10">
+                                <img class="sp" src="<?php echo CFS()->get('company_history_table__img10_sp'); ?>" alt="沿線10">
+                                <img class="sp" src="<?php echo CFS()->get('company_history_table__img10_2_sp'); ?>" alt="沿線10">
+                            </div>
+
+
                         </div>
                         <div class="content--item">
                             <p><?php echo CFS()->get('company_history_table_title11'); ?></p>

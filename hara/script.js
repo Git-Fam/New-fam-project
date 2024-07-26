@@ -153,11 +153,17 @@ $(function(){
         }
       });
 
+      //会社沿革アイコンクリックで写真表示
+      $('.icon').click(function(){
+        $(this).next().slideToggle();
+        $(this).toggleClass('show');
+      });
 
+      
 
 
   
       
     });
- 
+
 

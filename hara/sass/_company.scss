@@ -1,5 +1,5 @@
-@use "mixin" as *;
-@use "variables" as *;
+@use "mixin"as *;
+@use "variables"as *;
 
 // companyPC
 .company {
@@ -529,9 +529,37 @@
       border: 4px solid #FCE5B3;
       background: #FFF;
 
+      .content--item {
+        position: relative;
+      }
+
       img {
         width: 100%;
       }
+
+      .icon {
+        @include sp {
+          position: absolute;
+          // // background-image: open-icon('#3DBF00');
+          // background-image: open-icon(encode('#3DBF00'));
+          @include iconCover($open-icon);
+          width: calc((25 /390)*100vw);
+          height: calc((25 /390)*100vw);
+          top: calc((60 /390)*100vw);
+          right: 0;
+        }
+
+        &.show{
+          @include sp {
+            @include iconCover($close-icon);
+            width: calc((25 /390)*100vw);
+            height: calc((25 /390)*100vw);
+            top: calc((60 /390)*100vw);
+            right: 0;
+          }
+        }
+      }
+
     }
 
     &__img--section {
@@ -566,7 +594,8 @@
 
 
 // 追加
-.about__overview ,.history__overview{
+.about__overview,
+.history__overview {
   background: #FFF;
   border: 4px solid #FCE5B3;
 
@@ -579,56 +608,80 @@
   @include sp {
     width: 100%;
     margin: calc((50 / 390) * 100vw) auto 0;
-    padding: calc((18 / 390) * 100vw) calc((40 / 390) * 100vw) calc(( 30 / 390) * 100vw);
+    padding: calc((18 / 390) * 100vw) calc((40 / 390) * 100vw) calc((30 / 390) * 100vw);
   }
 
   &--content {
     width: 100%;
   }
 
-  .content--item{
+  .content--item {
     display: flex;
-    
-    @include pc{
+
+    @include pc {
       border-bottom: 4px solid #FCE5B3;
-      padding: calc((30 / 1280) * 100vw) 0 calc(( 30 / 1280) * 100vw) calc(( 12 / 1280) * 100vw);
+      padding: calc((30 / 1280) * 100vw) 0 calc((30 / 1280) * 100vw) calc((12 / 1280) * 100vw);
       align-items: center;
+      flex-wrap: wrap;
     }
 
-    @include sp{
+    @include sp {
       flex-direction: column;
-      padding: calc(( 15 / 390) * 100vw) 0;
+      padding: calc((15 / 390) * 100vw) 0;
     }
 
 
-    p{
+    p {
       color: #292929;
       @include Lucida;
       font-weight: 500;
 
-      @include pc{
-        font-size: max(calc(( 18 / 1280) * 100vw),14px);
-        letter-spacing: calc(( 1.8 / 1280) * 100vw);
+      @include pc {
+        font-size: max(calc((18 / 1280) * 100vw), 14px);
+        letter-spacing: calc((1.8 / 1280) * 100vw);
       }
 
-      @include sp{
-        font-size: calc(( 14 / 390) * 100vw);
-        padding: 0 0 0 calc(( 7 / 390) * 100vw);
+      @include sp {
+        font-size: calc((14 / 390) * 100vw);
+        padding: 0 0 0 calc((7 / 390) * 100vw);
       }
-      
-      &:first-child{
+
+      &:first-child {
         font-weight: 600;
-        
-        @include pc{
+
+        @include pc {
           width: 30%;
           flex-shrink: 0;
-          font-size: max(calc(( 20 / 1280) * 100vw),16px);
-          letter-spacing: calc(( 2 / 1280) * 100vw);
+          font-size: max(calc((20 / 1280) * 100vw), 16px);
+          letter-spacing: calc((2 / 1280) * 100vw);
         }
-        
-        @include sp{
+
+        @include sp {
           border-bottom: 4px solid #FCE5B3;
-          font-size: calc(( 16 / 390) * 100vw);
+          font-size: calc((16 / 390) * 100vw);
+        }
+      }
+    }
+
+    .img--box {
+
+      @include pc {
+        width: 100%;
+      }
+
+      @include sp {
+        display: none;
+      }
+
+      img {
+        @include pc {
+          width: calc((500 /1280)*100vw);
+          margin: calc((60 /1280)*100vw) auto 0;
+        }
+
+        @include sp {
+          width: calc((250 /390)*100vw);
+          margin: calc((40 /390)*100vw) auto 0;
         }
       }
     }
