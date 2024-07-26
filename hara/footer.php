@@ -7,6 +7,7 @@
                     <li class="footer__menu__sub--main"><a href="<?php bloginfo('url'); ?>/news">お知らせ</a></li>
                     <li class="footer__menu__sub--main"><a href="<?php bloginfo('url'); ?>/trac">車両案内</a></li>
                     <li class="footer__menu__sub--main"><a href="<?php bloginfo('url'); ?>/safety">安全・環境への取り組み</a></li>
+                    <li class="footer__menu__sub--main"><a href="<?php bloginfo('url'); ?>/attempt">安全への取り組み</a></li>
                     <li class="footer__menu__sub--main"><a href="<?php bloginfo('url'); ?>/staff">スタッフ紹介</a></li>
                     <li class="footer__menu__sub--main"><a href="<?php bloginfo('url'); ?>/privacypolicy">プライバシーポリシー</a></li>
                 </ul>

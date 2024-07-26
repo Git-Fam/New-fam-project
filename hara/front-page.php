@@ -13,8 +13,8 @@
 
         <!-- index--FV -->
         <div class="index--FV">
-            <h1>大切なものを、<br class="sp">大切なあなたへ</h1>
-            <p>HARA</p>
+            <h1>大切なものを、<br><span>大切なあなたへ</span></h1>
+            <!-- <p>HARA</p> -->
 
             <!-- ON OFF ボタン -->
             <!-- <div class="on-off" id="on-off">音声をonにする</div> -->

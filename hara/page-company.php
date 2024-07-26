@@ -67,7 +67,11 @@ Template Name:カンパニーページ
                 </div>
 
                 <div class="company__text">
-                    <p><?php echo CFS()->get('company_message_text2'); ?></p>
+                    <p>
+                        <!-- 次なる50年も企業として存続すること。雇用を確保し社会貢献すること。そして社員とその家族の幸せを実現させたいと強く想っております。その為には、常に安全、迅速、確実により品質の高い輸送サービスを提供し続けることが求められます。今後とも原商事運輸は社員一丸となり全力で取組んで参りますのでお客様をはじめ関係各社様の一層のご支援、ご指導、ご鞭撻を賜りますようお願い致しますとともに、皆々様のご健康、ご多幸を心よりお祈りしてご挨拶といたします。 -->
+                        <?php echo CFS()->get('company_message_text2'); ?>
+
+                    </p>
                     <p>代表取締役社長<br>
                         <span>原 健二</span></p>
                 </div>
@@ -81,7 +85,12 @@ Template Name:カンパニーページ
                 </div>
 
                 <div class="concept__text">
-                    <p><?php echo CFS()->get('company_concept_text'); ?></p>
+                    <p>
+                        <!-- 私たちは物流を通じ社会に貢献し夢と希望をもって<br class="sp">事業の発展を目指す。<br>
+                        安全・迅速・確実にお届けし、お客様に満足・信頼を<br class="sp">頂くことこそが最大の喜びです。 -->
+                        <?php echo CFS()->get('company_concept_text'); ?>
+
+                    </p>
                 </div>
             </div>
 
@@ -95,7 +104,18 @@ Template Name:カンパニーページ
                 <div class="about__img--text">
                     <img src=" <?php echo CFS()->get('company_about_img'); ?>" alt="原商事運送株式会社">
                     <div class="about__text--box">
-                        <p><?php echo CFS()->get('company_about_text'); ?></p>
+                        <p>
+                            <!-- 当社は昭和42年に創業し、創業以来約半世紀、日々精進して参りました。<br>
+                            業務の中で一番大切なことは、安全・迅速・確実にお届けし、<br class="pc">
+                            お客様に満足・信頼をいただくことこそが、最大の喜びであると<br class="pc">
+                            考えております。<br>
+                            私たちは物流を通じ社会に貢献し、夢と希望をもって事業の発展を目指す。<br>
+                            社会をしっかりと見つめ、寄り添いながら、<br class="sp">「スマイルファースト」<br class="pc">
+                            を常に心がけ、高いモラルをもって行動します。 -->
+
+                            <?php echo CFS()->get('company_about_text'); ?>
+
+                        </p>
                     </div>
                 </div>
 
@@ -107,7 +127,7 @@ Template Name:カンパニーページ
                         </div>
                         <div class="content--item">
                             <p><?php echo CFS()->get('company_about_table_title2'); ?></p>
-                            <p><?php echo CFS()->get('company_about_table_text2'); ?></p>
+                            <p><?php echo CFS()->get('company_about_table_text2'); ?>＜/p>
                         </div>
                         <div class="content--item">
                             <p><?php echo CFS()->get('company_about_table_title3'); ?></p>

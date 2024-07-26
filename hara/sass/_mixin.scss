@@ -1,36 +1,37 @@
 // Lucida Grande
-@mixin Lucida{
+@mixin Lucida {
   font-family: 'Lucida Grande', sans-serif;
   font-style: normal;
   line-height: normal;
 }
-@mixin oswald{
+
+@mixin oswald {
   font-family: 'Oswald', sans-serif;
   font-style: normal;
   line-height: normal;
 }
 
 // Hiragino Kaku Gothic Pro
-@mixin Pro{
+@mixin Pro {
   font-family: 'Hiragino Kaku Gothic Pro', sans-serif;
   font-style: normal;
   line-height: normal;
 }
 
 // Hiragino Kaku Gothic StdN
-@mixin StdN{
-  font-family: 'Hiragino Kaku Gothic StdN' , sans-serif;
+@mixin StdN {
+  font-family: 'Hiragino Kaku Gothic StdN', sans-serif;
   font-style: normal;
   line-height: normal;
 }
 
-@mixin Lalezar{
+@mixin Lalezar {
   font-family: 'Lalezar', cursive;
   font-style: normal;
   line-height: normal;
 }
 
-@mixin Inter{
+@mixin Inter {
   font-family: 'Inter', sans-serif;
   font-style: normal;
   line-height: normal;
@@ -39,24 +40,25 @@
 
 
 $pc: 768px; // PC
-$sp: 767px;  // スマホ
+$sp: 767px; // スマホ
 
 @mixin pc {
   @media screen and (min-width: ($pc)) {
     @content;
   }
 }
+
 @mixin sp {
-  @media  screen and (max-width: ($sp)) {
+  @media screen and (max-width: ($sp)) {
     @content;
   }
 }
 
-@mixin more--btn($sidePadding : calc(( 98 / 1280) * 100vw) , $sidemargin : 0 0 0 auto ){
-  .more--btn{
-    @include pc{
+@mixin more--btn($sidePadding : calc((98 / 1280) * 100vw), $sidemargin : 0 0 0 auto) {
+  .more--btn {
+    @include pc {
       background-color: #FFF;
-      padding: calc(( 6 / 1280) * 100vw) $sidePadding calc(( 2 / 1280) * 100vw);
+      padding: calc((6 / 1280) * 100vw) $sidePadding calc((2 / 1280) * 100vw);
       width: fit-content;
       border: solid 1px #FCE5B3;
       box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
@@ -64,75 +66,83 @@ $sp: 767px;  // スマホ
       margin: $sidemargin;
       position: relative;
       transition: all .5s ease;
-      &:hover{
+
+      &:hover {
         transition: all .8s ease;
         background-color: #FCE5B3;
       }
-      &:hover .page--link__more--br{
+
+      &:hover .page--link__more--br {
         transition: all 0.8s ease;
         background-color: #fff;
         box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
 
       }
-      p{
+
+      p {
         @include Lalezar;
         color: #292929;
         text-align: center;
-        font-size: max(calc(( 20 / 1280) * 100vw),20px);
+        font-size: max(calc((20 / 1280) * 100vw), 20px);
         font-weight: 400;
         letter-spacing: 1px;
         margin: 0;
         transform: skew(20deg);
       }
-      .page--link__more--br{
-        width: calc(( 56 / 1280) * 100vw);
-        height: calc(( 2 / 1280) * 100vw);
+
+      .page--link__more--br {
+        width: calc((56 / 1280) * 100vw);
+        height: calc((2 / 1280) * 100vw);
         background-color: #FCE5B3;
         position: absolute;
         top: 50%;
         transform: translate(0, -50%);
-        right:calc(( -25 / 1280) * 100vw);
+        right: calc((-25 / 1280) * 100vw);
         transition: all .5s ease;
       }
     }
   }
 }
 
-@mixin more--btn--sp($sidePadding--sp : calc(( 55 / 390) * 100vw) , $sidemargin--sp : 0 0 0 auto ){
-  .more--btn{
-    @include sp{
+@mixin more--btn--sp($sidePadding--sp : calc((55 / 390) * 100vw), $sidemargin--sp : 0 0 0 auto) {
+  .more--btn {
+    @include sp {
       background-color: #FFF;
-      padding: calc(( 1 / 390) * 100vw) $sidePadding--sp calc(( 2 / 390) * 100vw);
+      padding: calc((1 / 390) * 100vw) $sidePadding--sp calc((2 / 390) * 100vw);
       width: fit-content;
       border: solid 1px #FCE5B3;
       box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
       transform: skew(-20deg);
       margin: $sidemargin--sp;
       position: relative;
-      &:hover{
+
+      &:hover {
         background-color: #FCE5B3;
       }
-      &:hover .page--link__more--br{
+
+      &:hover .page--link__more--br {
         background-color: #fff;
       }
-      p{
+
+      p {
         @include Lalezar;
         color: #292929;
         text-align: center;
-        font-size: calc(( 16 / 390) * 100vw);
+        font-size: calc((16 / 390) * 100vw);
         font-weight: 400;
         letter-spacing: 0.8px;
         margin: 0;
         transform: skew(20deg);
       }
-      .page--link__more--br{
-        width: calc(( 34 / 390) * 100vw);
-        height: calc(( 2 / 390) * 100vw);
+
+      .page--link__more--br {
+        width: calc((34 / 390) * 100vw);
+        height: calc((2 / 390) * 100vw);
         background-color: #FCE5B3;
         position: absolute;
         top: 50%;
         transform: translate(0, -50%);
-        right:calc(( -10 / 390) * 100vw);
+        right: calc((-10 / 390) * 100vw);
       }
     }
   }
