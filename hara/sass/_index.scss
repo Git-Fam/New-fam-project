@@ -533,6 +533,9 @@ Template:
       font-weight: 800;
       line-height: normal;
       letter-spacing: max(calc((7 / 390) * 100vw), 7px);
+      span{
+        font-weight: 800;
+      }
     }
 
     // p {
