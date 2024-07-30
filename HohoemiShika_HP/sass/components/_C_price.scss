@@ -128,7 +128,7 @@
 
             .TL {
               @include Extrabold;
-              text-shadow: 0px 0px 1px $F-333130;
+              text-shadow: 0px 0px 0.5px $F-333130;
 
               @include pc {
                 font-size: p(18);
@@ -215,7 +215,7 @@
         .TX {
           color: $F-8B761F;
           // @include Extrabold;
-          text-shadow: 0px 0px 1px $F-8B761F;
+          text-shadow: 0px 0px 0.5px $F-8B761F;
 
 
           @include pc {
@@ -252,7 +252,7 @@
       .TL {
         // @include Extrabold;
         @include Medium;
-        text-shadow: 0px 0px 1px $F-74716E;
+        text-shadow: 0px 0px 0.5px $F-74716E;
 
         @include pc {
           font-size: pm(20);

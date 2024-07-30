@@ -243,15 +243,19 @@
             }
 
             span {
-
+              
+              position: relative;
               @include pc {
                 font-size: pm(100);
                 letter-spacing: pm(3);
+                top: p(4);
+
               }
 
               @include sp {
                 font-size: s(50);
                 letter-spacing: s(1.5);
+                top: s(3);
               }
             }
           }

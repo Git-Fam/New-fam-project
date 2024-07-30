@@ -18,7 +18,7 @@
                     <div class="img greeting01"></div>
                     <p class="TX">
                         はじめまして、ほほえみ歯科院長の中嶋です。<br>
-                        この度、地元である名東区でほほえみ歯科を開業させていただきました。<br>
+                        この度、地元である名東区で2017年にほほえみ歯科を開業させていただきました。<br>
                         ほほえみ歯科は笑顔をコンセプトにした歯科医<br class="sp">院です。<br>
                         <br>
                         私はかつてひたすらに歯科治療技術のみを追い求めてきましたが、私が一番喜びを感じる瞬間はどんな時かと考えた結果、治療後に患者様が<br class="sp">見せてくれる笑顔だと気付きました。<br>
@@ -33,7 +33,7 @@
         </section>
         <section class="doctor visiting">
             <div class="C_TL">
-                <p class="TL-bg rollAnime">visiting</p>
+                <p class="TL-bg rollAnime">Visiting</p>
                 <h2 class="main-TL up speed-05 delay-03">訪問部</h2>
             </div>
             <div class="C_greeting C_greeting__visiting">

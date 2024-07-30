@@ -1548,6 +1548,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="scrollbar sp">
+                        <div class="scrollbar-thumb sp"></div>
+                    </div>
                 </div>
             </div>
         </section>

@@ -204,6 +204,7 @@
   }
 
   &--invisalignFlow {
+    position: relative;
 
     @include pc {
       margin-bottom: p(171);
@@ -212,6 +213,23 @@
     @include sp {
       margin-bottom: s(50);
     }
+    &::after{
+      content: "Scroll";
+      color: $F-93802A;
+      position: absolute;
+      left: 50%;
+      translate: -50% 0;
+      bottom: 0;
+      @include pc{
+        font-size: pm(30);
+        bottom: s(-20);
+      }
+      @include sp{
+        font-size: s(18);
+        bottom: s(-30);
+      }
+    }
+
   }
 
   // &--price{

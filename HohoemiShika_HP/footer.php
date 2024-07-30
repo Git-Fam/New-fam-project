@@ -1,5 +1,6 @@
 <?php wp_footer() ?>
 
+
 <footer id="footer">
     <div class="ft-top">
         <div class="img"></div>
@@ -99,7 +100,7 @@
                     </li>
                     <li>
                         <p class="TL">最寄駅</p>
-                        <p class="TX">名古屋市営地下鉄　東山線「山社駅」徒歩10分</p>
+                        <p class="TX">名古屋市営地下鉄　東山線「上社駅」徒歩10分</p>
                     </li>
                     <li>
                         <table>
@@ -197,6 +198,8 @@
             <a href="https://www.instagram.com/hohoemi_dc/" class="insta-icon" target="_blank"></a>
         </nav>
     </div>
+    <a class="go-top" href="#"></a>
+
 </footer>
 
 </div>

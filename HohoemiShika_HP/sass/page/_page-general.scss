@@ -88,7 +88,7 @@
 
             span {
               @include Extrabold;
-              text-shadow: 0px 0px 1px $F-363636;
+              text-shadow: 0px 0px 0.5px $F-363636;
             }
           }
 
@@ -287,7 +287,7 @@
 
 
           span {
-            text-shadow: 0px 0px 1px $F-333130;
+            text-shadow: 0px 0px 0.5px $F-333130;
           }
         }
       }

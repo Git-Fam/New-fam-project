@@ -11,7 +11,7 @@
     <!-- ▼SEO -->
     <link rel="”canonical”" href="<?php echo get_home_url(); ?>" />
     <title>ほほえみ歯科｜名古屋市名東区の歯医者</title>
-    <meta name="title" content="タイトルタイトルタイトル" />
+    <meta name="title" content="ほほえみ歯科｜名古屋市名東区の歯医者" />
     <meta name="description" content="名古屋市名東区社台の「ほほえみ歯科」です。一般歯科・小児歯科・矯正歯科・口腔外科・審美歯科・インプラント・入れ歯などを診療します。通院が難しい方へ訪問診療も行っています。歯列矯正・インプラントは相談無料。東山線「上社」駅より徒歩10分。" />
 
     <meta property="og:type" content="website" />
@@ -194,7 +194,7 @@
                         <h2 class="TL">
                             世界水準の<br>
                             インプラント治療<span class="pc">、</span><br class="sp">矯正治療が<br>
-                            受けれる歯科医院です
+                            受けられる歯科医院です
                         </h2>
                     </div>
                     <div class="KV__front--text--middle">

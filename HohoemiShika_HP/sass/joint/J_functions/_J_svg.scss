@@ -5,7 +5,7 @@
 
 
 
-$icon-bg: url('data:image/svg+xml;utf-8,<svg width="199" height="196" viewBox="0 0 199 196" fill="none" xmlns="http://www.w3.org/2000/svg"><path opacity="0.1" d="M198.926 98L149.194 182.871L49.7297 182.871L-0.0023389 98L49.7297 13.1295L149.194 13.1295L198.926 98Z" fill="url(%23paint0_linear_570_3814)"/><defs><linearGradient id="paint0_linear_570_3814" x1="99.4617" y1="-4.32743e-06" x2="99.4617" y2="196" gradientUnits="userSpaceOnUse"><stop stop-color="%23BCAB64"/><stop offset="1" stop-color="%23FFE600"/></linearGradient></defs></svg>');
+$icon-bg: url('data:image/svg+xml;utf-8,<svg width="199" height="196" viewBox="0 0 199 196" fill="none" xmlns="http://www.w3.org/2000/svg"><path opacity="0.3" d="M198.926 98L149.194 182.871L49.7297 182.871L-0.0023389 98L49.7297 13.1295L149.194 13.1295L198.926 98Z" fill="url(%23paint0_linear_570_3814)"/><defs><linearGradient id="paint0_linear_570_3814" x1="99.4617" y1="-4.32743e-06" x2="99.4617" y2="196" gradientUnits="userSpaceOnUse"><stop stop-color="%23BCAB64"/><stop offset="1" stop-color="%23FFE600"/></linearGradient></defs></svg>');
 
 
 $flow-arrow: url('data:image/svg+xml;utf-8,<svg  viewBox="0 0 23 76" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="4.83984" r="4.5" fill="%23E2E0CD"/><circle cx="11" cy="18.8398" r="4.5" fill="%23E2E0CD"/><circle cx="11" cy="32.8398" r="4.5" fill="%23E2E0CD"/><circle cx="11" cy="46.8398" r="4.5" fill="%23E2E0CD"/><path d="M3 64.3398L10.0858 71.4256C10.8668 72.2067 12.1332 72.2067 12.9142 71.4256L20 64.3398" stroke="%23E2E0CD" stroke-width="6" stroke-linecap="round"/></svg>');
@@ -24,6 +24,7 @@ $brush-icon: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 31 24" fill="none" 
 //Googleマップのアイコン
 $map-icon: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="0.128906" y="4.76953" width="16.7153" height="16.7153" rx="2" fill="%23C09933"/><rect x="4.30664" y="0.589844" width="16.7153" height="16.7153" rx="2" fill="%23C09933" stroke="white" stroke-width="0.5"/></svg>');
 
+$slide-icon:url('%23data:image/svg+xml;utf-8,<svg width="27" height="30" viewBox="0 0 27 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26.0361 22.5204L13.2706 29.7812L0.410548 22.3565L0.315902 7.67085L13.0813 0.41001L25.9414 7.83479L26.0361 22.5204Z" fill="url(%23paint0_linear_313_6)"/><defs><linearGradient id="paint0_linear_313_6" x1="20.4915" y1="2.42483" x2="5.8605" y2="27.7664" gradientUnits="userSpaceOnUse"><stop stop-color="%23937F2A"/><stop offset="0.49" stop-color="%23B9A760"/><stop offset="1" stop-color="%23927D27"/></linearGradient></defs></svg>');
 
 // SVG使い方（色変更パターン）
 // @function encode($ColorCode){
