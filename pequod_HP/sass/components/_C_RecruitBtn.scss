@@ -1,0 +1,64 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_RecruitBtn
+----------------------- */
+
+.C_RecruitBtn {
+  display: block;
+  position: relative;
+  @include imgCover('C_RecruitBtnーbg.jpg');
+
+  @include pc {
+    height: p(337);
+    background-position: top 26% center;
+    @include column(p(10));
+  }
+
+  @include sp {}
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30, 30, 30, 0.80);
+    transition: all 0.3s;
+  }
+
+  &:hover {
+    &::before {
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+  }
+
+  &--inner {
+    position: absolute;
+    @include p-center;
+    text-align: center;
+    z-index: 3;
+
+    .TX {
+      color: $F-D7D7D7;
+      @include wt300;
+      
+      @include pc {
+        font-size: pm(13);
+        @include letterS(1.3);
+      }
+
+      @include sp {}
+    }
+
+    .TL {
+
+      @include pc {}
+
+      @include sp {}
+    }
+  }
+}

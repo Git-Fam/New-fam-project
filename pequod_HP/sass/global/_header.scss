@@ -3,3 +3,196 @@
 /* -----------------------
   header
 ----------------------- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+
+  @include pc {
+    padding-left: p(83);
+  }
+
+  @include sp {
+    padding: s(20) 0 0 s(23);
+  }
+
+  &__home {
+    display: block;
+    height: fit-content;
+
+    @include pc {
+      margin-top: p(19);
+    }
+
+    .TL {
+      color: $F-FFF;
+      @include ntr;
+
+      @include pc {
+        font-size: pm(30);
+      }
+
+      @include sp {
+        font-size: s(20);
+      }
+    }
+  }
+
+  .burger {
+    aspect-ratio: 1/1;
+    width: s(60);
+    background: $P-191A1B;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 11;
+    cursor: pointer;
+    padding: s(19) s(15);
+
+    &.active {
+      .burger--inner {
+        span {
+          &:nth-child(1) {
+            @include p-center;
+            rotate: 40deg;
+          }
+
+          &:nth-child(2) {
+            opacity: 0;
+          }
+
+          &:nth-child(3) {
+            @include p-center;
+            rotate: -40deg;
+          }
+        }
+      }
+    }
+
+    &--inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+
+      span {
+        display: block;
+        width: 100%;
+        height: s(2);
+        background-color: $P-FFF;
+        position: absolute;
+        @include p-center-left;
+        transition: 0.3s;
+
+        &:nth-child(1) {
+          top: 0;
+        }
+
+        &:nth-child(2) {
+          top: 50%;
+          @include p-center;
+        }
+
+        &:nth-child(3) {
+          bottom: 0;
+        }
+      }
+    }
+  }
+
+  &__nav {
+
+    @include sp {
+      position: fixed;
+      right: -100%;
+      top: 0;
+      z-index: 10;
+      transition: 0.3s;
+      padding: s(80) s(20) s(30);
+      width: 100%;
+      height: 100%;
+      max-height: s(650);
+      overflow-y: scroll;
+      background: rgba(0, 0, 0, 0.80);
+
+
+      &.active {
+        right: 0;
+      }
+    }
+
+    ul {
+      display: flex;
+      position: relative;
+
+      @include pc {
+        padding-right: pm(150);
+      }
+
+      @include sp {
+        flex-direction: column;
+        gap: s(20);
+      }
+
+      li {
+
+        &:last-child {
+
+          @include pc {
+            position: absolute;
+            right: 0;
+            top: 0;
+          }
+
+          @include sp {}
+
+          a {
+            background: $P-191A1B;
+            color: $F-FFF;
+
+            @include pc {
+              width: pm(150);
+              padding: p(15) 0 p(26);
+            }
+
+            @include sp {
+              padding: s(25) 0;
+            }
+
+            &:hover {
+              background: $F-FFF;
+              color: $P-191A1B;
+            }
+          }
+        }
+
+        a {
+          display: block;
+          color: $F-191A1B;
+          letter-spacing: 0.9px;
+          text-align: center;
+          background: rgba(255, 255, 255, 0.50);
+          transition: 0.3s;
+
+          @include pc {
+            padding: p(14) p(45) p(15);
+            font-size: pm(15);
+          }
+
+          @include sp {
+            padding: s(10) 0;
+            font-size: s(15);
+          }
+
+          &:hover {
+            background: $F-191A1B;
+            color: rgba(255, 255, 255, 0.50);
+          }
+        }
+      }
+    }
+  }
+}

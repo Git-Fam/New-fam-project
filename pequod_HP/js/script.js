@@ -1,15 +1,9 @@
-$(function () {   
-  // // ハンバーガーメニュー
-  //  $(".burger").on("click", function(){
-  //    $(this).toggleClass("active");
-  //    $('.menu').toggleClass("active");
-  //    $('body').toggleClass("active");
-  //  }); 
-  // $(".js-link,.menu").on("click", function(){
-  //   $('.burger').removeClass("active");
-  //   $('.menu').removeClass("active");
-  //   $('body').removeClass("active");
-  // });
+$(function () {
+  // ハンバーガーメニュー
+  $(".burger").on("click", function () {
+    $(this).toggleClass("active");
+    $('.header__nav,body').toggleClass("active");
+  });
 
   // var prevScrollpos = window.pageYOffset;
   // window.onscroll = function() {
