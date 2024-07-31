@@ -22,6 +22,7 @@
     }
 
     .space {
+      display: block;
       @include pc {
         margin-left: p(8);
       }
@@ -86,12 +87,23 @@
 
     .C_TL_main {
       justify-content: center;
+      letter-spacing: 0;
       @include wt700;
+      @include pc{
+        margin-top: p(-10);
+      }
     }
 
     &.light {
       .C_TL_main {
         @include wt500;
+      }
+    }
+    &.long {
+      .C_TL_main {
+        @include sp{
+          font-size: s(28);
+        }
       }
     }
   }

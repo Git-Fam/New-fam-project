@@ -1,0 +1,44 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_greeting
+----------------------- */
+
+.C_greeting {
+  &_content{
+    @include pc{
+      display: flex;
+      justify-content: space-between;
+      width: p(977);
+      margin: p(100) auto;
+    }
+    .img{
+      @include imgCover("C_greeting.jpg");
+      @include pc{
+        width: p(475);
+        height: p(393);
+      }
+      @include sp{
+        width: s(350);
+        height: s(289);
+        margin: s(48) auto 0;
+      }
+
+    }
+    .TX{
+      line-height: 2.5;
+      @include pc{
+        font-size: pm(16);
+        width: p(435);
+        margin: auto 0 auto auto;
+        @include letterS(1.28);
+      }
+      @include sp{
+        font-size: s(16);
+        margin-top: s(48);
+        @include letterS(0.5);
+      }
+    }
+  }
+}

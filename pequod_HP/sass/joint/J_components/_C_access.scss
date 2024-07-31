@@ -1,0 +1,27 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_access
+----------------------- */
+
+.C_access {
+  .C_TL{
+    @include pc{
+      margin-left: p(9);
+    }
+    @include sp{
+      margin-left: s(10);
+    }
+  }
+  .map{
+    @include pc{
+      height: p(351);
+      margin-top: p(15);
+    }
+    @include sp{
+      height: s(204);
+      margin-top: s(15);
+    }
+  }
+}

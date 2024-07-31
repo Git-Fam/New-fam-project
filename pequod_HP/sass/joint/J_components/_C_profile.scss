@@ -1,0 +1,62 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_profile
+----------------------- */
+
+.C_profile {
+  .C_TL{
+    @include pc{
+      margin-left: p(9);
+    }
+    @include sp{
+      margin-left: s(10);
+    }
+  }
+  &_list{
+    @include pc{
+      margin-top: p(26);
+    }
+    @include sp{
+      margin-top: s(26);
+    }
+    li{
+      display: flex;
+      color: $F-505050;
+      @include letterS(1.6);
+      @include pc{
+        padding: p(15) 0 p(15) p(63);
+        font-size: pm(16);
+        border-bottom: p(1) solid $P-D6D6D6;
+      }
+      @include sp{
+        padding: s(15) 0 s(15) s(10);
+        border-bottom: s(1) solid $P-D6D6D6;
+      }
+      .label{
+        @include wt500;
+        @include pc{
+          width: p(193);
+        }
+        @include sp{
+          width: s(84);
+          font-size: s(13);
+        }
+      }
+      .TX{
+        @include sp{
+          font-size: s(16);
+        }
+      }
+      &:first-child{
+        @include pc{
+          border-top: p(1) solid $P-D6D6D6;
+        }
+        @include sp{
+          border-top: s(1) solid $P-D6D6D6;
+        }
+      }
+    }
+  }
+}

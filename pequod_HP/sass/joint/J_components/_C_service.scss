@@ -1,0 +1,42 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  C_service
+----------------------- */
+.C_service {
+  &_box {
+    display: flex;
+    flex-direction: column;
+
+    @include pc {
+      padding: p(100) p(230) p(242);
+      gap: p(100);
+    }
+    @include sp{
+      padding: s(60) s(20) s(200);
+      gap: s(138);
+    }
+
+    .box {
+      .C_TL_main{
+        @include sp{
+          font-size: s(28)
+        }
+      }
+      .TX {
+        @include letterS(1.6);
+        @include pc {
+          margin-top: p(60);
+          font-size: pm(16);
+          line-height: 1.8;
+        }
+        @include sp{
+          margin-top: s(32);
+          font-size: s(16);
+          line-height: 1.8;
+        }
+      }
+    }
+  }
+}
