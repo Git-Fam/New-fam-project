@@ -1,12 +1,13 @@
+@use "../functions" as *;
+
 /* -----------------------
 リセット
 ----------------------- */
-html, body, h1, h2, h3, h4, ul, ol, dl, li, dt, dd, p, div, span, img, a, table, tr, th, td {
+html, body, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p, div, span, img, a, table, tr, th, td {
   margin: 0;
   padding: 0;
   border: 0;
-  // font-weight: normal;
-  // font-size: 100%;
+  @include wt400;
   vertical-align:baseline;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -17,6 +18,10 @@ html, body, h1, h2, h3, h4, ul, ol, dl, li, dt, dd, p, div, span, img, a, table,
   overflow-wrap: break-word;
   word-break: break-all;
   // word-break: normal;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
 }
 article, header, footer, aside, figure, figcaption, nav, section { 
   display:block;

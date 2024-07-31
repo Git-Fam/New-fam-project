@@ -1,0 +1,52 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_MainFooter
+----------------------- */
+
+.C_MainFooter {
+  background: $B-1E1E1E;
+  color: $F-FFF;
+
+  @include pc {}
+
+  @include sp {}
+
+  &__container {
+
+    @include pc {}
+
+    @include sp {}
+
+    &--title{
+
+      @include pc{}
+      
+      @include sp{}
+    }
+  }
+
+  .CopyRight {
+
+    @include pc {
+      padding: p(25) 0 p(21);
+    }
+
+    @include sp {
+      padding: s(24) 0 s(21);
+    }
+
+    .TX {
+      text-align: center;
+      @include julius;
+      
+      @include pc {
+        font-size: p(13);
+      }
+
+      @include sp {
+        font-size: s(13);
+      }
+    }
+  }
+}

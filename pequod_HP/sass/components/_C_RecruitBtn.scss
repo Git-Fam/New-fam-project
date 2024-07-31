@@ -10,12 +10,16 @@
   @include imgCover('C_RecruitBtnーbg.jpg');
 
   @include pc {
-    height: p(337);
-    background-position: top 26% center;
+    height: p(377);
+    background-position: top 27% center;
     @include column(p(10));
   }
 
-  @include sp {}
+  @include sp {
+    height: s(400);
+    background-size: 225%;
+    background-position: top 40% left 22%;
+  }
 
   &::before {
     content: '';
@@ -41,24 +45,41 @@
     @include p-center;
     text-align: center;
     z-index: 3;
+    width: 100%;
+
+    @include pc{
+      @include column(p(10));
+    }
+    
+    @include sp{
+      @include column(s(10));
+    }
 
     .TX {
       color: $F-D7D7D7;
       @include wt300;
-      
+      @include letterS(1.3);
+
       @include pc {
         font-size: pm(13);
-        @include letterS(1.3);
       }
 
-      @include sp {}
+      @include sp {
+        font-size: s(13);
+      }
     }
 
     .TL {
+      color: #FFF;
+      @include julius;
+      
+      @include pc {
+        font-size: p(50);
+      }
 
-      @include pc {}
-
-      @include sp {}
+      @include sp {
+        font-size: s(50);
+      }
     }
   }
 }
