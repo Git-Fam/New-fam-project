@@ -4,12 +4,336 @@
   KV
 ----------------------- */
 
-.KV{
+.KV {
+  position: relative;
+  overflow: hidden;
+  ;
 
-  height: 100vh;
-  background-color: red;
-}
+  @include pc {
+    height: p(300);
+  }
 
-.front-page{
-  height: 100vh;
+  @include sp {
+    height: s(200);
+  }
+
+  &.KV_front {
+
+    @include pc {
+      height: p(650);
+    }
+
+    @include sp {
+      height: s(650);
+    }
+  }
+
+  .img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+
+    // フロント
+    &.img-front {
+      @include imgCover('KV-01.jpg');
+      
+      @include sp {
+        background-position: center right 47%;
+      }
+      
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    // 新着情報
+    &.img-topics {
+      @include imgCover('KV-01.jpg');
+
+      @include sp {
+        background-size: 330%;
+        background-position: center right 33%;
+      }
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+    }
+
+    // 事業内容
+    &.img-service {
+      @include imgCover('KV-02.jpg');
+
+      @include pc {
+        background-position: top 35% center;
+      }
+
+      @include sp {
+        background-size: 200%;
+        background-position: top 30% center;
+      }
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+    }
+
+    // 会社概要
+    &.img-company {
+      @include imgCover('KV-03.jpg');
+
+      @include pc {
+        background-position: top 13% center;
+      }
+
+      @include sp {
+        background-size: 200%;
+        background-position: top 12% left 85%;
+      }
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+    }
+
+    // 代理店
+    &.img-officialPartner {
+      @include imgCover('KV-04.jpg');
+
+      @include sp {
+        background-size: 200%;
+      }
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+    }
+
+    // 採用 // インタビュー
+    &.img-recruit {
+      @include imgCover('KV-05.jpg');
+
+      @include pc {
+        background-position: top 40% center;
+      }
+
+      @include sp {
+        background-size: 133%;
+        background-position: top 35% center;
+      }
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    // お問い合わせ
+    &.img-contact {
+      @include imgCover('KV-06.jpg');
+
+      @include pc {
+        background-position: center;
+      }
+
+      @include sp {
+        background-size: 130%;
+        background-position: top 5% left 50%;
+      }
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+    }
+  }
+
+
+  &--title {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    text-align: center;
+
+    @include pc {
+      @include p-center-left;
+      top: p(139);
+    }
+
+    @include sp {
+      @include p-center;
+    }
+
+    &.KV--title--officialPartner {
+      @include pc {
+        top: p(110);
+      }
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      background-color: $F-FFF;
+      position: absolute;
+      @include p-center-left;
+
+      @include pc {
+        width: p(216);
+        height: p(3);
+        bottom: p(-16);
+      }
+
+      @include sp {
+        width: s(145);
+        height: s(2);
+        bottom: s(-10);
+      }
+    }
+
+
+    .TL {
+      white-space: nowrap;
+      color: $F-FFF;
+      @include julius;
+
+      @include pc {
+        font-size: p(60);
+      }
+
+      @include sp {
+        font-size: s(40);
+      }
+
+      span {
+        color: $F-FFF;
+        @include julius;
+
+        @include pc {
+          font-size: p(60);
+        }
+
+        @include sp {
+          font-size: s(40);
+        }
+      }
+    }
+  }
+
+  &--title--front {
+    position: absolute;
+    z-index: 5;
+    width: fit-content;
+    text-align: left;
+
+    @include pc {
+      top: p(304);
+      left: p(152);
+    }
+
+    @include sp {
+      bottom: s(73);
+      left: s(22);
+    }
+
+    .TL {
+      color: rgba(255, 255, 255, 0.70);
+      @include julius;
+      line-height: 1.16;
+
+      @include pc {
+        font-size: p(64);
+      }
+
+      @include sp {
+        font-size: s(36);
+      }
+
+      span {
+        color: rgba(255, 255, 255, 0.70);
+        @include julius;
+        line-height: 1.16;
+
+        @include pc {
+          font-size: p(64);
+        }
+
+        @include sp {
+          font-size: s(36);
+        }
+      }
+    }
+  }
+
+  .title__fixed {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+
+    @include pc {
+      top: p(159);
+      left: p(152);
+    }
+
+    @include sp {
+      top: s(258);
+      left: s(22);
+    }
+
+
+    .TL {
+      color: $F-F4F4F9;
+
+      @include pc {
+        font-size: p(30);
+      }
+
+      @include sp {
+        font-size: s(30);
+      }
+
+      span {
+
+        @include pc {
+          font-size: p(40);
+        }
+
+        @include sp {
+          font-size: s(40);
+        }
+      }
+    }
+  }
 }
