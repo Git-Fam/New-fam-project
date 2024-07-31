@@ -45,3 +45,32 @@ $(function () {
 
 
 });
+
+$(document).ready(function () {
+  function checkOverlap() {
+    var header = $('.header');
+    var whopper = $('.whopper');
+
+    var headerOffset = header.offset();
+    var whopperOffset = whopper.offset();
+
+    var headerBottom = headerOffset.top + header.outerHeight();
+    var whopperTop = whopperOffset.top;
+
+    if (headerBottom > whopperTop) {
+      header.addClass('active');
+    } else {
+      header.removeClass('active');
+    }
+  }
+
+  checkOverlap();
+
+  $(window).on('scroll', function () {
+    checkOverlap();
+  });
+
+  $(window).on('resize', function () {
+    checkOverlap();
+  });
+});

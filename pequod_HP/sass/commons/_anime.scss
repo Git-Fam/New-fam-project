@@ -12,6 +12,15 @@
   }
 }
 
+// ホバーで青く
+.hover-blue {
+  transition: 0.3s;
+
+  &:hover {
+    color: $F-01BFD5 !important;
+  }
+}
+
 // ホバーで大きく
 .hover-scale {
   transition: 0.3s;

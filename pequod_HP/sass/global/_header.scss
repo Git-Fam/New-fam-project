@@ -11,6 +11,17 @@
   left: 0;
   width: 100%;
   z-index: 999;
+  transition: all 0.3s;
+
+  &.active {
+    background:
+      linear-gradient(180deg,
+        rgba(0, 0, 0, 0.80) 0%,
+        rgba(0, 0, 0, 0.60) 50%,
+        rgba(0, 0, 0, 0) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
 
   @include pc {
     padding-left: p(83);
@@ -116,6 +127,9 @@
       height: 100vh;
       overflow-y: scroll;
       background: rgba(0, 0, 0, 0.80);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
 
 
       &.active {
