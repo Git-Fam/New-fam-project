@@ -261,6 +261,110 @@
   }
 }
 
+// loadフラッシュ
+.text-split {
+  span {
+    opacity: 0;
+
+    .is-active & {
+      animation: flash 0.1s 2 cubic-bezier(0.47, 0, 0.745, 0.715) forwards normal 0.2s;
+
+      @for $i from 1 through 20 {
+        &:nth-child(#{$i}) {
+          animation-delay: #{($i - 1) * 0.025s + .1s};
+        }
+      }
+
+      @keyframes flash {
+        0% {
+          opacity: 1;
+        }
+
+        50% {
+          opacity: 0.4;
+        }
+
+        100% {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+// load晴れ(フロント)
+.loadSunnyFront {
+  filter: grayscale(100%);
+
+  &::before {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  &.show {
+    animation: loadSunnyFront ease forwards;
+
+    &::before {
+      animation: loadSunnyFrontBefore 1s ease 0.5s forwards;
+    }
+
+    @keyframes loadSunnyFront {
+      0% {
+        filter: grayscale(100%);
+      }
+
+      100% {
+        filter: grayscale(0%);
+      }
+    }
+
+    @keyframes loadSunnyFrontBefore {
+      0% {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      100% {
+        background-color: rgba(0, 0, 0, 0);
+      }
+    }
+  }
+}
+
+// load晴れ(その他)
+.loadSunny {
+  filter: grayscale(100%);
+
+  &::before {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  &.show {
+    animation: loadSunny ease forwards;
+
+    &::before {
+      animation: loadSunnyBefore 1s ease 0.5s forwards;
+    }
+
+    @keyframes loadSunny {
+      0% {
+        filter: grayscale(100%);
+      }
+
+      100% {
+        filter: grayscale(50%);
+      }
+    }
+
+    @keyframes loadSunnyBefore {
+      0% {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      100% {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+}
 
 // delay
 .delay-01 {
