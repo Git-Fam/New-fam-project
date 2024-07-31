@@ -304,7 +304,7 @@
     animation: loadSunnyFront ease forwards;
 
     &::before {
-      animation: loadSunnyFrontBefore 1s ease 0.5s forwards;
+      animation: loadSunnyFrontBefore 1.3s ease 0.3s forwards;
     }
 
     @keyframes loadSunnyFront {
@@ -333,16 +333,8 @@
 .loadSunny {
   filter: grayscale(100%);
 
-  &::before {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-
   &.show {
     animation: loadSunny ease forwards;
-
-    &::before {
-      animation: loadSunnyBefore 1s ease 0.5s forwards;
-    }
 
     @keyframes loadSunny {
       0% {
@@ -350,17 +342,7 @@
       }
 
       100% {
-        filter: grayscale(50%);
-      }
-    }
-
-    @keyframes loadSunnyBefore {
-      0% {
-        background-color: rgba(0, 0, 0, 0.8);
-      }
-
-      100% {
-        background-color: rgba(0, 0, 0, 0.5);
+        filter: grayscale(0%);
       }
     }
   }
@@ -450,6 +432,22 @@
 
 .duration-10 {
   animation-duration: 1s !important;
+}
+
+.duration-11 {
+  animation-duration: 1.1s !important;
+}
+
+.duration-12 {
+  animation-duration: 1.2s !important;
+}
+
+.duration-13 {
+  animation-duration: 1.3s !important;
+}
+
+.duration-14 {
+  animation-duration: 1.4s !important;
 }
 
 .duration-15 {
