@@ -1,0 +1,145 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  C_TL
+----------------------- */
+
+.C_TL {
+  &_deco {
+    color: $F-5F5F5F;
+    letter-spacing: 0.2rem;
+    display: flex;
+    line-height: 2;
+    @include wt300;
+
+    @include pc {
+      font-size: pm(16);
+    }
+
+    @include sp {
+      font-size: s(16);
+    }
+
+    .space {
+      @include pc {
+        margin-left: p(8);
+      }
+
+      @include sp {
+        margin-left: s(8);
+      }
+    }
+  
+  }
+
+  &_main {
+    display: flex;
+    letter-spacing: 0.3rem;
+    @include wt500;
+
+    @include pc {
+      font-size: pm(30);
+    }
+
+    @include sp {
+      font-size: s(30);
+    }
+  }
+
+
+  &.type01 {
+    .C_TL_deco {
+      letter-spacing: 0.15rem;
+      color: #838383;
+
+      @include pc {
+        font-size: pm(13);
+      }
+
+      @include sp {
+        font-size: s(13);
+      }
+    }
+
+    .C_TL_main {
+      @include julius;
+
+      @include pc {
+        font-size: pm(40);
+      }
+
+      @include sp {
+        font-size: s(40);
+      }
+    }
+  }
+
+  &.type02 {
+    text-align: center;
+    align-items: center;
+
+    .C_TL_deco {
+      line-height: 2.5;
+      justify-content: center;
+    }
+
+    .C_TL_main {
+      justify-content: center;
+      @include wt700;
+    }
+
+    &.light {
+      .C_TL_main {
+        @include wt500;
+      }
+    }
+  }
+  &.type03 {
+    .C_TL_main {
+      @include wt500;
+    }
+  }
+  &.type04 {
+    .C_TL_deco {
+      color: $F-333333;
+      @include julius;
+      @include pc{
+        font-size: pm(60);
+      }
+      @include sp{
+        font-size: s(40);
+      }
+    }
+    .C_TL_main {
+      @include pc{
+        font-size: pm(16);
+        margin-top: p(20);
+      }
+      @include sp{
+        font-size: s(16);
+        margin-top: s(5);
+      }
+      &::before{
+        content: "";
+        position: relative;
+        border-bottom: p(1) solid $P-333333;
+        top: 50%;
+        translate: 0 -50%;
+        @include pc{
+          width: p(41);
+          margin-right: p(12);
+        }
+        @include sp{
+          width: s(41);
+          margin-right: s(12);
+        }
+      }
+
+    }
+  }
+}
+
+.js-g01 {
+  opacity: 0;
+}
