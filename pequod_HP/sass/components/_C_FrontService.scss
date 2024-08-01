@@ -1,0 +1,99 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_FrontService
+----------------------- */
+
+.C_FrontService {
+  position: relative;
+
+  @include pc {
+    padding: p(140) 0 p(100) p(150);
+  }
+
+  @include sp {
+    padding: s(160) s(20) s(60) s(25);
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    aspect-ratio: 637/623;
+    position: absolute;
+    @include imgContain("C_FrontService-bg.png");
+
+    @include pc {
+      width: p(637);
+      top: p(11);
+      right: p(50);
+    }
+
+    @include sp {
+      width: s(493);
+      top: s(-11);
+      left: s(-13);
+    }
+  }
+
+  &--inner {
+    position: relative;
+    z-index: 2;
+
+    @include pc {
+      @include column(p(90));
+    }
+
+    @include sp {
+      @include column(s(90));
+    }
+
+    .container {
+
+      @include pc {
+        @include column(p(60));
+      }
+
+      .subTitle {
+
+        @include sp {
+          margin-top: s(60)
+        }
+
+        .TL {
+          @include wt500;
+
+          @include pc {
+            font-size: p(30);
+          }
+
+          @include sp {
+            font-size: s(30);
+          }
+        }
+      }
+
+
+      .text {
+
+        @include sp {
+          margin-top: s(30);
+        }
+
+        .TX {
+          color: $F-333;
+          line-height: 1.87;
+          @include letterS(1.6);
+
+          @include pc {
+            font-size: pm(16);
+          }
+
+          @include sp {
+            font-size: s(16);
+            @include letterS(1);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_FrontVision
+----------------------- */
+
+.C_FrontVision {
+  margin: 0 auto;
+
+  @include pc {
+    width: p(980);
+  }
+
+  @include sp {
+    width: s(350)
+  }
+
+  &--inner {
+
+    @include pc {
+      @include column(p(70));
+    }
+
+    @include sp {
+      @include column(s(65));
+    }
+
+    .content {
+      display: flex;
+
+      @include pc {
+        justify-content: space-between;
+      }
+
+      @include sp {
+        flex-direction: column;
+        gap: s(65);
+      }
+
+      .text {
+
+        @include pc {
+          margin-top: p(85);
+        }
+
+
+        .TX {
+          color: $F-1E1E1E;
+          @include wt500;
+          line-height: 1.71;
+          @include letterS(3.2);
+
+          @include pc {
+            font-size: p(32);
+          }
+
+          @include sp {
+            font-size: s(32);
+          }
+        }
+      }
+
+      .img {
+        aspect-ratio: 357/497;
+        @include imgCover('front-vision.jpg');
+        height: fit-content;
+
+        @include pc {
+          width: p(357);
+        }
+
+        @include sp {
+          width: s(294);
+          margin-left: auto;
+        }
+      }
+    }
+  }
+}

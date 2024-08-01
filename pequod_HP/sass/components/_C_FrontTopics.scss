@@ -1,0 +1,119 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_FrontTopics
+----------------------- */
+
+.C_FrontTopics {
+
+  @include pc {
+    padding: p(34) 0 p(33);
+    border-top: p(1) solid $P-000;
+    border-bottom: p(1) solid $P-000;
+  }
+
+  &--inner {
+    margin: 0 auto;
+    display: flex;
+
+    @include pc {
+      width: p(980);
+      padding-left: p(43);
+      align-items: center;
+      gap: p(58);
+    }
+
+    @include sp {
+      flex-direction: column;
+      gap: s(42);
+    }
+
+    .title {
+
+      @include pc {
+        flex-shrink: 0;
+      }
+
+      @include sp {
+        padding-left: s(25);
+      }
+    }
+
+    .container {
+      width: 100%;
+
+      @include sp {
+        border-top: s(1) solid $P-000;
+        border-bottom: s(1) solid $P-000;
+        padding: s(33) 0 s(34);
+      }
+
+      .lists {
+
+        li {
+          border-bottom: solid $P-E1E1E1;
+
+          @include pc {
+            padding: p(22) p(25) p(24);
+            border-bottom-width: pm(0.5, 0.5);
+          }
+
+          @include sp {
+            padding: s(22) s(25) s(24);
+            border-bottom-width: s(0.5);
+          }
+
+          &:first-child {
+            padding-top: unset;
+          }
+
+          &:last-child {
+            border-bottom: none;
+            padding-bottom: unset;
+          }
+
+
+          a {
+
+            @include pc {
+              @include column(p(8));
+            }
+
+            @include sp {
+              @include column(s(8));
+            }
+
+            .date {
+              color: $F-1E1E1E;
+              @include julius;
+
+              @include pc {
+                font-size: pm(16);
+              }
+
+              @include sp {
+                font-size: s(16);
+              }
+            }
+
+            .TL {
+              color: $F-838383;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 1;
+              overflow: hidden;
+
+              @include pc {
+                font-size: pm(16);
+              }
+
+              @include sp {
+                font-size: s(16);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
