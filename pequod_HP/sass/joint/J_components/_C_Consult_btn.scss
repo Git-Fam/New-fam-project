@@ -1,0 +1,136 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  C_Consult_btn
+----------------------- */
+
+.C_Consult_btn {
+  background: $B-031E2A;
+  position: relative;
+
+  @include pc {
+    width: p(882);
+  }
+
+  @include sp {
+    width: s(354);
+    padding-top: s(163);
+  }
+
+  .img {
+    @include imgCover("C_Consult_btn.jpg");
+    position: relative;
+
+    @include pc {
+      width: p(438);
+      height: p(287);
+      margin-left: auto;
+    }
+
+    @include sp {
+      height: s(287);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+
+      @include pc {
+        left: p(-1);
+        background: linear-gradient(106deg, #031E2A 20.44%, rgba(3, 30, 42, 0.30) 42.65%, rgba(255, 255, 255, 0.07) 62.34%);
+      }
+
+      @include sp {
+        background: linear-gradient(167deg, rgba(3, 30, 42, 1) 18.5%, rgba(3, 30, 42, 0.30) 44.19%, rgba(255, 255, 255, 0.07) 66.97%);
+      }
+
+    }
+  }
+
+  &_content {
+    position: absolute;
+
+    @include pc {
+      top: p(35);
+      left: p(35);
+    }
+
+    @include sp {
+      top: s(33);
+      left: 50%;
+      translate: -50% 0;
+      width: 100%;
+    }
+
+    .textbox {
+      color: $F-FFF;
+
+      @include sp {
+        text-align: center;
+      }
+
+      .TL {
+        @include wt700;
+
+        @include pc {
+          font-size: pm(45);
+        }
+
+        @include sp {
+          font-size: s(28);
+        }
+
+        span {
+          @include pc {
+            font-size: pm(57);
+          }
+
+          @include sp {
+            font-size: s(36);
+          }
+        }
+      }
+
+      .TX {
+        @include pc {
+          font-size: pm(25);
+        }
+
+        @include sp {
+          font-size: s(20);
+          margin-top: s(10);
+        }
+      }
+    }
+
+    .btn {
+      background: $B-FFF;
+      display: grid;
+      place-items: center center;
+      color: $F-031E2A;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      @include wt700;
+
+      @include pc {
+        width: p(295);
+        height: p(68);
+        border-radius: p(40);
+        margin-top: p(40);
+        font-size: pm(22);
+      }
+
+      @include sp {
+        width: s(295);
+        height: s(68);
+        border-radius: s(40);
+        margin: s(207) auto 0;
+        font-size: s(22);
+      }
+    }
+  }
+}

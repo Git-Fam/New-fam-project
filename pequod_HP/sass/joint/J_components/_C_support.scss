@@ -1,0 +1,143 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  C_support
+----------------------- */
+
+.C_support {
+  @include pc {
+    padding: p(100) p(200) p(250);
+  }
+
+  @include sp {
+    padding: s(130) s(15) s(200);
+  }
+
+  .TL {
+    text-align: center;
+    @include wt500;
+
+    @include pc {
+      font-size: pm(30);
+    }
+
+    @include sp {
+      font-size: s(30);
+    }
+  }
+
+  &_box {
+    display: flex;
+    flex-direction: column;
+    counter-reset: support;
+
+    @include pc {
+      margin-top: p(100);
+      gap: p(100);
+
+    }
+
+    @include sp {
+      gap: s(100);
+      margin-top: s(60);
+    }
+
+    .box {
+      position: relative;
+      @include pc {
+        display: flex;
+        align-items: center;
+      }
+
+      .img {
+        @include pc {
+          width: p(436);
+          height: p(248);
+        }
+
+        @include sp {
+          width: s(350);
+          height: s(200);
+        }
+
+        &.C_support01 {
+          @include imgCover("C_support01.jpg");
+        }
+
+        &.C_support02 {
+          @include imgCover("C_support02.jpg");
+        }
+
+        &.C_support03 {
+          @include imgCover("C_support03.jpg");
+        }
+
+      }
+
+      .textbox {
+        @include pc {
+          width: p(362);
+          margin-left: p(48);
+        }
+
+        @include sp {
+          margin-top: s(30);
+        }
+
+        .box_TL {
+          @include wt700;
+          @include letterS(-1);
+          @include pc {
+            font-size: pm(25);
+          }
+
+          @include sp {
+            font-size: s(24);
+          }
+        }
+
+        .box_TX {
+          line-height: 1.7;
+
+          @include pc {
+            font-size: pm(16);
+            margin-top: p(25);
+          }
+
+          @include sp {
+            font-size: s(16);
+            margin-top: s(25);
+          }
+        }
+      }
+
+      &:before {
+        counter-increment: support;
+        content: counter(support);
+        color: $F-F4F3F3;
+        mix-blend-mode: multiply;
+        position: absolute;
+        @include wt800;
+        @include pc{
+          font-size: p(250);
+          bottom: p(-80);
+          right: 0;
+        }
+        @include sp{
+          font-size: s(250);
+          bottom: s(-110);
+          right: 0;
+        }
+      }
+    }
+  }
+  .C_Consult_btn{
+    @include pc{
+      margin-top: p(160);
+    }
+    @include sp{
+      margin-top: s(62);
+    }
+  }
+}

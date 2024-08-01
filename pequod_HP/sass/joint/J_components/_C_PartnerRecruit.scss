@@ -1,0 +1,169 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  C_PartnerRecruit
+----------------------- */
+
+.C_PartnerRecruit {
+  background: $B-F7F7F6;
+
+  @include pc {
+    padding: p(65) p(200) p(64);
+  }
+
+  @include sp {
+    padding: s(117) 0;
+  }
+
+
+  .TL {
+    text-align: center;
+    @include wt500;
+
+    @include pc {
+      font-size: pm(30);
+    }
+
+    @include sp {
+      font-size: s(30);
+    }
+  }
+
+  &_box {
+    display: flex;
+
+    @include pc {
+      justify-content: space-between;
+      margin-top: p(46);
+    }
+
+    @include sp {
+      flex-direction: column;
+      align-items: center;
+      gap: s(30);
+      margin-top: s(60);
+    }
+
+    .box {
+      background: $B-031E2A;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      @include pc {
+        width: p(285);
+        height: p(157);
+        border-radius: p(10);
+      }
+
+      @include sp {
+        width: s(285);
+        height: s(157);
+        border-radius: s(10);
+      }
+
+      .icon {
+        &.PartnerRecruit01 {
+          @include iconContain($PartnerRecruit01);
+
+          @include pc {
+            width: p(76);
+            height: p(70);
+          }
+
+          @include sp {
+            width: s(76);
+            height: s(70);
+
+          }
+        }
+
+        &.PartnerRecruit02 {
+          @include iconContain($PartnerRecruit02);
+
+          @include pc {
+            width: p(71);
+            height: p(69);
+          }
+
+          @include sp {
+            width: s(71);
+            height: s(69);
+          }
+
+        }
+
+        &.PartnerRecruit03 {
+          @include iconContain($PartnerRecruit03);
+
+          @include pc {
+            width: p(65);
+            height: p(65);
+          }
+
+          @include sp {
+            width: s(65);
+            height: s(65);
+          }
+
+        }
+
+      }
+
+      .under-TX {
+        color: $F-FFF;
+        text-align: center;
+
+        @include pc {
+          font-size: pm(22);
+        }
+
+        @include sp {
+          font-size: s(22);
+        }
+      }
+
+      &:first-child {
+        .under-TX {
+          @include pc {
+            margin-top: p(15);
+          }
+
+          @include sp {
+            margin-top: s(15);
+          }
+        }
+      }
+    }
+  }
+
+  &_btn {
+    background: $B-FFF;
+    display: grid;
+    place-items: center center;
+    color: $F-031E2A;
+    @include wt700;
+
+    @include pc {
+      border: p(3) solid $B-031E2A;
+      border-radius: p(40);
+      width: p(285);
+      height: p(68);
+      margin: p(60) auto 0;
+      font-size: pm(22);
+
+    }
+
+    @include sp {
+      border: s(3) solid $B-031E2A;
+      border-radius: s(40);
+      width: s(295);
+      height: s(68);
+      margin: s(46) auto 0;
+      font-size: s(22);
+    }
+  }
+
+}
