@@ -1,0 +1,131 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_TopTopics
+----------------------- */
+
+.C_TopTopics {
+  border-top: solid $P-1E1E1E;
+  border-bottom: solid $P-1E1E1E;
+
+  @include pc {
+    padding: p(88) 0 p(83);
+    border-top-width: p(1);
+    border-bottom-width: p(1);
+  }
+
+  @include sp {
+    padding: s(56) s(20) s(69);
+    border-top-width: s(1);
+    border-bottom-width: s(1);
+  }
+
+  .container {
+    margin: 0 auto;
+
+    @include pc {
+      width: p(980);
+      @include column(p(62));
+    }
+
+    @include sp {
+      @include column(s(60));
+    }
+
+    &--top {
+      display: flex;
+
+      @include pc {
+        align-items: center;
+        gap: p(51);
+      }
+
+      @include sp {
+        flex-direction: column;
+        gap: s(38);
+      }
+
+      .iCatch {
+        @include imgCover("C_TopTopics-img.jpg");
+        flex-shrink: 0;
+
+        @include pc {
+          width: p(482);
+          height: p(275);
+        }
+
+        @include sp {
+          width: s(350);
+          height: s(199);
+        }
+      }
+
+      .title {
+
+        @include pc {
+          @include column(p(50));
+        }
+
+        @include sp {
+          @include column(s(30));
+        }
+
+        .TX {
+          color: $F-1E1E1E;
+          @include julius;
+          line-height: 0.93;
+          @include letterS(3.0);
+
+          @include pc {
+            font-size: p(30);
+          }
+
+          @include sp {
+            font-size: s(30);
+          }
+        }
+
+        .TL {
+          color: $F-1E1E1E;
+          font-feature-settings: 'ss04' on;
+          @include wt500;
+          line-height: 1.66;
+          @include letterS(2.4);
+
+
+          @include pc {
+            font-size: p(24);
+          }
+
+          @include sp {
+            font-size: s(24);
+          }
+        }
+      }
+    }
+
+    .contents {
+
+      @include pc {
+        padding-right: p(175);
+      }
+
+      @include sp {}
+
+      .TX {
+        color: $F-1E1E1E;
+        font-feature-settings: 'ss04' on;
+        line-height: 2;
+        @include letterS(1.4);
+
+        @include pc {
+          font-size: pm(14);
+        }
+
+        @include sp {
+          font-size: s(14);
+        }
+      }
+    }
+  }
+}

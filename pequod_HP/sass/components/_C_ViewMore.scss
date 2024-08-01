@@ -1,0 +1,59 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_ViewMore
+----------------------- */
+
+.C_ViewMore {
+  display: block;
+  border-radius: 300px;
+  border: solid $P-1E1E1E;
+  position: relative;
+  overflow: hidden;
+
+  @include pc {
+    width: pm(152);
+    border-width: pm(1, 1);
+    padding: p(7) 0;
+  }
+
+  @include sp {
+    width: s(152);
+    border-width: s(1);
+    padding: s(7) 0;
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #01BFD5;
+    transition: left 0.3s;
+  }
+
+  &:hover::before {
+    left: 0;
+  }
+
+  .TX {
+    position: relative;
+    z-index: 2;
+    color: $F-000;
+    line-height: 1.87;
+    @include letterS(1.6);
+    text-align: center;
+
+    @include pc {
+      font-size: pm(16);
+    }
+
+    @include sp {
+      font-size: s(16);
+    }
+  }
+}

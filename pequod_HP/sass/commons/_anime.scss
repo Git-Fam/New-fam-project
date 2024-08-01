@@ -149,6 +149,39 @@
   }
 }
 
+.example-img {
+  aspect-ratio: 357/492;
+  @include imgCover('front-vision.jpg');
+  margin: 0 auto;
+
+  @include pc {
+    width: p(300);
+  }
+
+  @include sp {
+    width: s(300);
+  }
+}
+
+// 晴れる
+.Sunny {
+  filter: grayscale(100%);
+
+  &.show {
+    animation: Sunny 1.7s ease 0.8s forwards;
+
+    @keyframes Sunny {
+      0% {
+        filter: grayscale(100%);
+      }
+
+      100% {
+        filter: grayscale(0%);
+      }
+    }
+  }
+}
+
 
 // ロード
 // load上へ

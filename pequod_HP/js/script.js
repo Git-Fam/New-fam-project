@@ -5,27 +5,16 @@ $(function () {
     $('.header__nav,body').toggleClass("active");
   });
 
-  // var prevScrollpos = window.pageYOffset;
-  // window.onscroll = function() {
-  //   var currentScrollpos = window.pageYOffset;
-  //   if (prevScrollpos > currentScrollpos || currentScrollpos < 450) {
-  //     document.querySelector(".header").classList.remove("active");
-  //   } else {
-  //     document.querySelector(".header").classList.add("active");
-  //   }
-  //   prevScrollpos = currentScrollpos;
-  // }
-
-  // // 要素が画面下部に来たらshowを付与
-  // $(window).scroll(function () {
-  //   $('.up,.roll').each(function () {
-  //     var top_of_element = $(this).offset().top;
-  //     var bottom_of_window = $(window).scrollTop() + $(window).height();
-  //     if (bottom_of_window > top_of_element) {
-  //       $(this).addClass('show');
-  //     }
-  //   });
-  // });
+  // 要素が画面下部に来たらshowを付与
+  $(window).scroll(function () {
+    $('.Sunny').each(function () {
+      var top_of_element = $(this).offset().top;
+      var bottom_of_window = $(window).scrollTop() + $(window).height();
+      if (bottom_of_window > top_of_element) {
+        $(this).addClass('show');
+      }
+    });
+  });
 
 
   // ローディング
@@ -125,4 +114,39 @@ const SplitText = (target) => {
 window.addEventListener('load', () => {
   SplitText('.text-split');
   ScrollAnimation.set();
+});
+
+
+// ホバーバブル
+// ホバーバブル
+document.addEventListener('DOMContentLoaded', function() {
+  const atWater = document.querySelector('.C_AtWater');
+  const hoverBubbles = atWater.querySelector('.hover-bubbles');
+  let targetX = 0, targetY = 0;
+  let currentX = 0, currentY = 0;
+
+  atWater.addEventListener('mouseenter', () => {
+    hoverBubbles.classList.add('active');
+  });
+
+  atWater.addEventListener('mouseleave', () => {
+    hoverBubbles.classList.remove('active');
+  });
+
+  atWater.addEventListener('mousemove', (e) => {
+    const rect = atWater.getBoundingClientRect();
+    targetX = e.clientX - rect.left;
+    targetY = e.clientY - rect.top;
+  });
+
+  function updatePosition() {
+    currentX += (targetX - currentX) * 0.1;
+    currentY += (targetY - currentY) * 0.1;
+  
+    hoverBubbles.style.transform = `translate(calc(${currentX}px - 50%), calc(${currentY}px - 50%))`;
+  
+    requestAnimationFrame(updatePosition);
+  }
+
+  updatePosition();
 });

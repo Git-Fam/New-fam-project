@@ -1,0 +1,12 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_ContactConfirm
+----------------------- */
+
+.C_ContactConfirm {
+
+  @include pc{}
+  
+  @include sp{}
+}
