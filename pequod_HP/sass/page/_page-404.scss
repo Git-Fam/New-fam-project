@@ -1,0 +1,15 @@
+@use "../functions" as *;
+@use "../joint/J_functions" as *;
+
+/* -----------------------
+  page-404
+----------------------- */
+
+.page-404{
+  padding: 400px 20px;
+
+  .TX{
+    font-size: 30px;
+    text-align: center;
+  }
+}

@@ -12,7 +12,7 @@
   }
 
   @include sp {
-    padding: p(60) 0 p(100);
+    padding: s(60) 0 s(100);
     @include column(s(100));
   }
 

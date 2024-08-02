@@ -1,0 +1,22 @@
+@use "../functions" as *;
+@use "../joint/J_functions" as *;
+
+/* -----------------------
+  page-contact-confirm
+----------------------- */
+
+.page-contact-confirm {
+
+  .Contact_Confirm {
+
+    @include pc {
+      padding: p(100) 0 p(150);
+      @include column(p(55));
+    }
+
+    @include sp {
+      padding: s(60) 0 s(100);
+      @include column(s(120));
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@use "../functions" as *;
+@use "../joint/J_functions" as *;
+
+/* -----------------------
+  page-contact-complete
+----------------------- */
+
+.page-contact-complete {
+
+  @include pc{}
+  
+  @include sp{}
+}
