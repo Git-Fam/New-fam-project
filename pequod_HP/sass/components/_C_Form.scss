@@ -19,56 +19,437 @@
 
     .lists {
 
-      @include pc {}
-
-      @include sp {}
-
       li {
         border-bottom: solid $P-C0C0C0;
+        display: flex;
 
         @include pc {
-          padding: p(23) p(12);
+          align-items: center;
+          padding: p(23) p(20);
           border-bottom-width: p(1);
+          gap: p(43);
         }
 
-        @include sp {}
+        @include sp {
+          padding: s(22) s(10);
+          border-bottom-width: s(1);
+          flex-direction: column;
+          gap: s(8);
+        }
 
         &:last-child {
           border-bottom: none;
         }
 
-        &.last_list {
-          padding: 0;
+        .title {
+          display: flex;
+          align-items: center;
+          flex-shrink: 0;
 
-          @include pc{
-            padding-top: p(40);
+          @include pc {
+            justify-content: space-between;
+            width: p(273);
           }
-          
-          @include sp{}
 
-          .Confirm{
+          @include sp {
+            gap: s(15);
+          }
 
-            @include pc{
-              @include column(p(47));
+          .label {
+            color: $F-333;
+            @include letterS(0);
+            white-space: nowrap;
+
+            @include pc {
+              font-size: p(20);
             }
-            
-            @include sp{}
 
-            .Agreement_area{
-              margin: 0 auto;
-              width: fit-content;
+            @include sp {
+              font-size: s(20);
+            }
+          }
 
-              .Agreement{
+          .required {
+            background-color: $P-01BFD5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $F-FFF;
+            @include letterS(1.6);
 
-                @include pc{}
-                
-                @include sp{}
+            @include pc {
+              font-size: p(16);
+              padding: p(1) p(7);
+            }
+
+            @include sp {
+              font-size: s(16);
+              padding: s(1) s(7);
+            }
+          }
+        }
+
+        .content {
+          width: 100%;
+          position: relative;
+
+          .inputs {
+            width: 100%;
+            border: solid $P-C0C0C0;
+            color: $F-333;
+
+            @include pc {
+              height: pm(50);
+              border-width: p(1);
+              padding: p(10) p(20);
+              font-size: pm(20);
+            }
+
+            @include sp {
+              height: s(50);
+              border-width: s(1);
+              padding: s(14) s(18);
+              font-size: s(16);
+            }
+
+            &::placeholder {
+              color: $F-9F9F9F;
+            }
+
+            &.textarea {
+              resize: none;
+              @include wt400;
+
+              @include pc {
+                height: p(230);
+              }
+
+              @include sp {
+                height: s(230);
               }
             }
 
-            .Btn_area{
-              width: fit-content;
+            &.err {
+              background: rgba(1, 191, 213, 0.10);
+              border: none;
+            }
+          }
+
+          .err-message {
+            color: $F-01BFD5;
+            @include julius;
+            position: absolute;
+            left: 0;
+
+            @include pc {
+              font-size: p(13);
+              top: calc(100% + p(4));
+            }
+
+            @include sp {
+              font-size: s(13);
+              top: calc(100% + s(2));
+            }
+          }
+
+          &--radios {
+            display: flex;
+
+            @include pc {
+              align-items: center;
+              gap: p(29);
+            }
+
+            @include sp {
+              flex-direction: column;
+              gap: s(10);
+              padding-left: s(10);
+            }
+
+            &--inner {
+              display: flex;
+              align-items: center;
+
+              @include pc {
+                gap: p(6);
+              }
+
+              @include sp {
+                gap: s(6);
+              }
+
+              .radio {
+                border: solid $P-C0C0C0;
+                border-radius: 50%;
+
+                @include pc {
+                  width: pm(20);
+                  height: pm(20);
+                  border-width: p(1);
+                }
+
+                @include sp {
+                  width: s(20);
+                  height: s(20);
+                  border-width: s(1);
+                }
+
+                &:checked {
+                  background: $P-01BFD5;
+                }
+              }
+
+              .TX {
+                color: $F-333;
+
+                @include pc {
+                  font-size: pm(20);
+                }
+
+                @include sp {
+                  font-size: s(16);
+                }
+              }
+            }
+          }
+
+          &--address {
+
+            @include pc {
+              @include column(p(13));
+            }
+
+            @include sp {
+              @include column(s(13));
+            }
+
+            &--number {
+              display: flex;
+              align-items: center;
+
+              @include pc {
+                gap: p(12);
+              }
+
+              @include sp {
+                gap: s(3);
+              }
+
+              .first-number {
+                display: flex;
+                align-items: center;
+
+                @include pc {
+                  gap: p(12);
+                }
+
+                @include sp {
+                  gap: s(5);
+                }
+
+
+                .TX {
+                  color: $F-333;
+                  @include julius;
+
+                  @include pc {
+                    font-size: p(20);
+                  }
+
+                  @include sp {
+                    font-size: s(20);
+                  }
+                }
+
+                .inputs {
+
+                  @include pc {
+                    width: p(127);
+                  }
+
+                  @include sp {
+                    width: 100%;
+                  }
+                }
+              }
+            }
+          }
+
+          &--birthDate {
+            display: flex;
+            align-items: center;
+
+            @include pc {
+              gap: p(9);
+            }
+
+            @include sp {
+              gap: s(9);
+            }
+
+            .date {
+              display: flex;
+              align-items: flex-end;
+
+              @include pc {
+                gap: p(9);
+              }
+
+              @include sp {
+                gap: s(9);
+              }
+
+              .TX {
+                color: $F-000;
+                font-weight: 300;
+
+                @include pc {
+                  font-size: p(20);
+                }
+
+                @include sp {
+                  font-size: s(16);
+                }
+              }
+
+              .inputs {
+
+                @include pc {
+                  width: p(86);
+                }
+
+                @include sp {
+                  width: s(80);
+                }
+              }
+            }
+          }
+        }
+
+        &.textarea_list {
+
+          @include pc {
+            align-items: flex-start;
+          }
+        }
+
+        &.last_list {
+          padding: 0;
+          display: block;
+          align-items: unset;
+
+          @include pc {
+            padding-top: p(40);
+          }
+
+          @include sp {
+            padding-top: s(23);
+          }
+
+          .Confirm {
+
+            @include pc {
+              @include column(p(47));
+            }
+
+            @include sp {
+              @include column(s(33));
+            }
+
+            &.Submit{
+
+              @include pc{
+                @include column(p(113));
+              }
+              
+              @include sp{
+                @include column(s(60));
+              }
+            }
+
+            .Agreement_area {
               margin: 0 auto;
+              width: fit-content;
+
+              .Agreement {
+                display: flex;
+                align-items: center;
+
+                @include pc {
+                  gap: p(20);
+                }
+
+                .checkbox {
+                  flex-shrink: 0;
+                  border: solid $P-D9D9D9;
+                  background: #FFF;
+                  border-radius: 0;
+                  position: relative;
+
+                  @include pc {
+                    border-width: p(1);
+                    width: p(30);
+                    height: p(30);
+                  }
+
+                  @include sp {
+                    border-width: s(1);
+                    width: s(23);
+                    height: s(23);
+                  }
+
+                  &:checked:before {
+                    content: '';
+                    position: absolute;
+                    top: 10%;
+                    left: 35%;
+                    transform: rotate(50deg);
+                    border-right: solid $P-000;
+                    border-bottom: solid $P-000;
+                    aspect-ratio: 4 / 8;
+
+                    @include pc {
+                      width: p(8);
+                      border-right-width: p(2);
+                      border-bottom-width: p(2);
+                    }
+
+                    @include sp {
+                      width: s(6);
+                      border-right-width: s(1);
+                      border-bottom-width: s(1);
+                    }
+                  }
+                }
+
+                .TX {
+                  color: $F-333;
+                  @include wt500;
+                  @include letterS(-2);
+
+                  @include pc {
+                    font-size: p(20);
+                  }
+
+                  @include sp {
+                    font-size: s(16);
+                  }
+                }
+              }
+            }
+
+            .Btn_area {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              @include pc{
+                gap: p(108);
+              }
+              
+              @include sp{
+                gap: s(11);
+              }
             }
           }
         }

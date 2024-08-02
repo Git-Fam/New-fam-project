@@ -3,16 +3,38 @@
 /* -----------------------
 リセット
 ----------------------- */
-html, body, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p, div, span, img, a, table, tr, th, td {
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+dl,
+li,
+dt,
+dd,
+p,
+div,
+span,
+img,
+a,
+table,
+tr,
+th,
+td {
   margin: 0;
   padding: 0;
   border: 0;
   @include wt400;
-  vertical-align:baseline;
+  vertical-align: baseline;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  list-style:none;
+  list-style: none;
 
   // 文章折り返し
   overflow-wrap: break-word;
@@ -23,32 +45,57 @@ html, body, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p, div, span, img, a
   margin-inline-start: 0;
   margin-inline-end: 0;
 }
-article, header, footer, aside, figure, figcaption, nav, section { 
-  display:block;
+
+article,
+header,
+footer,
+aside,
+figure,
+figcaption,
+nav,
+section {
+  display: block;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+
 body {
   line-height: 1;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
-ol, ul {
+
+ol,
+ul {
   list-style: none;
   list-style-type: none;
 }
-button{
-background: none;
-border: none;
-outline: none;
--webkit-appearance: none;
--moz-appearance: none;
-appearance: none;
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
-a{
+
+a {
   text-decoration: none;
 }
-img{
+
+img {
   display: block;
+}
+
+input,
+textarea {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  display: block;
+  appearance: none;
+  border: none;
+  outline: none;
 }

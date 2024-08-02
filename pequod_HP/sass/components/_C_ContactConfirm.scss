@@ -6,71 +6,21 @@
 
 .C_ContactConfirm {
 
-  @include pc {
-    padding: p(100) 0 p(153);
-    @include column(p(108));
-  }
-
-  @include sp {
-    padding: p(60) 0 p(100);
-    @include column(s(100));
-  }
-
   .content {
 
-    @include pc {
-      @include column(p(31));
+    @include sp{
+      padding: 0 s(20);
     }
 
-    @include sp {
-      @include column(s(30));
-    }
-
-
-    &--top {
-      text-align: center;
-
-      .TX {
-        color: $F-000;
-        font-feature-settings: 'ss04' on;
-        @include wt700;
-        line-height: 1.4;
-        @include letterS(2.0);
-
-        @include pc {
-          font-size: p(20);
-        }
-
-        @include sp {
-          font-size: s(20);
-          @include letterS(1.5);
-        }
-      }
-    }
-
-    &--bottom {
-      margin: 0 auto;
+    .TX {
+      color: $F-333;
 
       @include pc {
-        width: fit-content;
+        font-size: p(20);
       }
 
       @include sp {
-        width: s(286);
-      }
-
-      .TX {
-        color: $F-333;
-        @include wt500;
-        line-height: 1.87;
-        
-        @include pc {
-          font-size: p(16);
-        }
-
-        @include sp {
-          font-size: s(16);
-        }
+        font-size: s(16);
       }
     }
   }

@@ -89,16 +89,6 @@
       display: none;
       width: 100%;
 
-      &:first-child {
-        background: green;
-      }
-
-      &:last-child {
-        background: greenyellow;
-      }
-
-      height: 50vh;
-
       &.active {
         display: block;
       }
