@@ -1,0 +1,75 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_SubmitBtn
+----------------------- */
+
+.C_SubmitBtn {
+  cursor: pointer;
+  display: block;
+  border-radius: 300px;
+  border: solid $P-333;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  @include center;
+
+  @include pc {
+    width: pm(169);
+    height: pm(56);
+    border-width: pm(1, 1);
+  }
+
+  @include sp {
+    width: s(169);
+    height: s(56);
+    border-width: s(1);
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #01BFD5;
+    transition: left 0.3s;
+  }
+
+  &:hover::before {
+    left: 0;
+  }
+
+  &.Return {
+    border: none;
+    background: $P-DFDFDF;
+
+    &::before {
+      background-color: #c2c2c2;
+    }
+
+    .TX {
+      @include wt400;
+    }
+  }
+
+  .TX {
+    position: relative;
+    z-index: 2;
+    color: $F-333;
+    @include letterS(2);
+    text-align: center;
+    @include wt700;
+
+    @include pc {
+      font-size: pm(20);
+    }
+
+    @include sp {
+      font-size: s(20);
+    }
+  }
+}

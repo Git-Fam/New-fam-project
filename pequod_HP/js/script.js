@@ -31,7 +31,15 @@ $(function () {
     }
   }, 2000);
 
-
+  // formタブ切り替え
+  $(".C_ContactTab__Buttons .BTN").on('click', function(){
+    let index = $(".C_ContactTab__Buttons .BTN").index(this);
+    $(".C_ContactTab__Buttons .BTN").removeClass("active");
+    $(this).addClass("active");
+    $(".C_ContactTab__former .former").removeClass("active");
+    $(".C_ContactTab__former .former").eq(index).addClass("active");
+    return false;
+  });
 
 });
 
@@ -117,7 +125,6 @@ window.addEventListener('load', () => {
 });
 
 
-// ホバーバブル
 // ホバーバブル
 document.addEventListener('DOMContentLoaded', function() {
   const atWater = document.querySelector('.C_AtWater');

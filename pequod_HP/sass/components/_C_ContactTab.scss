@@ -1,0 +1,107 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_ContactTab
+----------------------- */
+
+.C_ContactTab {
+  border-top: solid $P-1E1E1E;
+  border-bottom: solid $P-1E1E1E;
+  position: relative;
+
+  @include pc {
+    padding: p(100) 0 p(47);
+    border-top-width: p(1);
+    border-bottom-width: p(1);
+  }
+
+  @include sp {
+    padding: s(51) 0 s(70);
+    border-top-width: s(1);
+    border-bottom-width: s(1);
+  }
+
+  &__Buttons {
+    position: absolute;
+    @include p-center-left;
+    display: flex;
+    bottom: 100%;
+
+    @include pc {
+      width: p(880);
+    }
+
+    @include sp {
+      width: s(350);
+    }
+
+    .BTN {
+      cursor: pointer;
+      background: $P-C0C0C0;
+      border-bottom: solid $P-1E1E1E;
+
+      @include pc {
+        width: p(248);
+        padding: p(15) 0;
+        border-bottom-width: p(1);
+      }
+
+      @include sp {
+        width: s(130);
+        padding: s(13) 0;
+        border-bottom-width: s(1);
+      }
+
+      &.active {
+        cursor: default;
+        background: $P-FFF;
+        border: solid $P-1E1E1E;
+        border-bottom: none;
+
+        @include pc {
+          border-width: p(1);
+        }
+
+        @include sp {
+          border-width: s(1);
+        }
+      }
+
+      .TX {
+        text-align: center;
+        color: $F-000;
+        @include letterS(-1);
+
+        @include pc {
+          font-size: p(15);
+        }
+
+        @include sp {
+          font-size: s(12);
+        }
+      }
+    }
+  }
+
+  &__former {
+
+    .former {
+      display: none;
+      width: 100%;
+
+      &:first-child {
+        background: green;
+      }
+
+      &:last-child {
+        background: greenyellow;
+      }
+
+      height: 50vh;
+
+      &.active {
+        display: block;
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_ContactTitle
+----------------------- */
+
+.C_ContactTitle {
+
+  @include pc {
+    padding: p(100) 0 p(151);
+    @include column(p(41));
+  }
+
+  @include sp {
+    padding: p(60) 0 p(142);
+    @include column(s(30));
+  }
+
+  .content {
+
+    @include pc {
+      text-align: center;
+      @include column(p(45));
+    }
+
+    @include sp {
+      @include column(s(30));
+    }
+
+
+    &--text {
+
+      @include sp {
+        width: s(330);
+        margin: 0 auto;
+      }
+
+      .TX {
+        color: $F-000;
+        font-feature-settings: 'ss04' on;
+        line-height: 1.75;
+        @include letterS(1.6);
+
+        @include pc {
+          font-size: pm(16);
+        }
+
+        @include sp {
+          font-size: s(16);
+        }
+      }
+
+      a {
+        color: $F-01BFD5;
+        font-feature-settings: 'ss04' on;
+        line-height: 1.75;
+        @include letterS(1.6);
+        text-decoration-line: underline;
+
+        @include pc {
+          font-size: pm(16);
+        }
+
+        @include sp {
+          font-size: s(16);
+        }
+      }
+    }
+  }
+}
