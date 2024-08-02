@@ -33,6 +33,7 @@
       }
 
       &__button {
+        color: $F-1E1E1E;
         cursor: pointer;
 
         @include pc {
@@ -41,6 +42,19 @@
 
         @include sp {
           font-size: s(14);
+        }
+
+        a{
+          color: $F-1E1E1E;
+          cursor: pointer;
+  
+          @include pc {
+            font-size: p(16);
+          }
+  
+          @include sp {
+            font-size: s(14);
+          }
         }
       }
     }

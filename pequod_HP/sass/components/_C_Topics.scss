@@ -55,19 +55,19 @@
             }
           }
 
-          &:nth-child(3n+1){
+          &:nth-child(3n+1) {
             .iCatch {
               @include imgCover("C_Topics-01.jpg");
             }
           }
 
-          &:nth-child(3n+2){
+          &:nth-child(3n+2) {
             .iCatch {
               @include imgCover("C_Topics-02.jpg");
             }
           }
 
-          &:nth-child(3n){
+          &:nth-child(3n) {
             .iCatch {
               @include imgCover("C_Topics-03.png");
             }
@@ -151,9 +151,7 @@
     }
 
     .page_nation {
-      width: 300px;
-      height: 50px;
-      background-color: black;
+
 
       @include pc {
         margin-left: p(50)
@@ -161,7 +159,53 @@
 
       @include sp {}
 
-      ;
+      .wp-pagenavi {
+        display: flex;
+
+        @include pc {
+          gap: p(7);
+        }
+
+        @include sp {
+          gap: s(7);
+        }
+
+        a,
+        .page,
+        .current {
+          aspect-ratio: 1/1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: solid $P-9F9F9F;
+          color: $F-000;
+          @include julius;
+          
+          @include pc {
+            width: p(30);
+            border-width: p(1.5);
+            font-size: p(13);
+          }
+
+          @include sp {
+            width: s(30);
+            border-width: s(1.5);
+            font-size: s(13);
+          }
+        }
+
+        .current {
+          border: solid $P-000;
+
+          @include pc {
+            border-width: p(1.5);
+          }
+
+          @include sp {
+            border-width: s(1.5);
+          }
+        }
+      }
     }
   }
 }
