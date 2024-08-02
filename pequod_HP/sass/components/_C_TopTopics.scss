@@ -112,7 +112,6 @@
 
       @include sp {}
 
-      .TX {
         color: $F-1E1E1E;
         font-feature-settings: 'ss04' on;
         line-height: 2;
@@ -125,7 +124,6 @@
         @include sp {
           font-size: s(14);
         }
-      }
     }
   }
 }

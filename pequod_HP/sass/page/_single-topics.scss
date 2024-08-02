@@ -1,0 +1,62 @@
+@use "../functions" as *;
+@use "../joint/J_functions" as *;
+
+/* -----------------------
+  single-topics
+----------------------- */
+
+.single-topics {
+
+  @include pc {
+    padding: p(60) 0;
+  }
+
+  @include sp {
+    padding: s(40) 0;
+  }
+
+  .Single_Topics {
+
+    .pageNation {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include pc {
+        padding-top: p(30);
+        gap: p(26);
+      }
+
+      @include sp {
+        padding-top: s(30);
+        gap: s(20);
+      }
+
+      &__button {
+        color: $F-1E1E1E;
+        cursor: pointer;
+
+        @include pc {
+          font-size: p(16);
+        }
+
+        @include sp {
+          font-size: s(14);
+        }
+
+        a{
+          color: $F-1E1E1E;
+          cursor: pointer;
+  
+          @include pc {
+            font-size: p(16);
+          }
+  
+          @include sp {
+            font-size: s(14);
+          }
+        }
+      }
+    }
+  }
+}

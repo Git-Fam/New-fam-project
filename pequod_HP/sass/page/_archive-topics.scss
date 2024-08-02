@@ -1,0 +1,13 @@
+@use "../functions" as *;
+@use "../joint/J_functions" as *;
+
+/* -----------------------
+  archive-topics
+----------------------- */
+
+.archive-topics{
+
+  @include pc{}
+  
+  @include sp{}
+}

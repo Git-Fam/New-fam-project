@@ -1,0 +1,24 @@
+@use "../functions" as *;
+@use "../joint/J_functions" as *;
+
+/* -----------------------
+  page-contact
+----------------------- */
+
+.page-contact {
+
+  @include pc {}
+
+  @include sp {}
+
+  .Contact_Tab {
+
+    @include pc {
+      padding-bottom: p(150);
+    }
+
+    @include sp {
+      padding-bottom: s(100);
+    }
+  }
+}

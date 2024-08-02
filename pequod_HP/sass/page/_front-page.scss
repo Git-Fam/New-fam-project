@@ -4,3 +4,17 @@
 /* -----------------------
   front-page
 ----------------------- */
+
+.front-page{
+
+  .Front_Vision{
+
+    @include pc{
+      padding: p(132) 0 p(148);
+    }
+    
+    @include sp{
+      padding: s(60) 0 s(130);
+    }
+  }
+}
