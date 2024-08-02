@@ -1,0 +1,255 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  C_entry
+----------------------- */
+.C_entry {
+  @include pc {
+    padding: p(199) p(200) p(250);
+  }
+
+  @include sp {
+    padding: s(146) s(20) s(200);
+  }
+
+  &_content {
+    font-style: italic;
+    @include wt500;
+
+    .subTL {
+      @include pc {
+        font-size: pm(30);
+        margin-top: p(60);
+      }
+
+      @include sp {
+        font-size: s(24);
+        margin-top: s(100);
+      }
+    }
+
+    .flow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @include pc {
+        margin-top: p(70);
+      }
+
+      @include sp {
+        flex-wrap: wrap;
+        margin-top: s(56);
+      }
+
+      li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+
+        @include pc {
+          width: p(201);
+          padding: p(24) p(23) p(56);
+        }
+
+        @include sp {
+          width: s(166);
+          padding: s(23) s(20) s(46);
+        }
+
+        .number {
+          color: $F-8E8E8E;
+          @include wt900;
+
+          @include pc {
+            font-size: pm(50);
+          }
+
+          @include sp {
+            font-size: s(41);
+          }
+        }
+
+        .TX {
+          @include pc {
+            font-size: pm(30);
+            margin-top: p(21);
+          }
+
+          @include sp {
+            font-size: s(24);
+            margin-top: s(17);
+          }
+        }
+
+        &+li::before {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-right: 0;
+          top: 50%;
+          translate: 0 -50%;
+
+          @include pc {
+            border-top: p(20) solid transparent;
+            border-bottom: p(20) solid transparent;
+            border-left: p(25) solid $P-A7A7A7;
+            left: p(-8);
+          }
+
+          @include sp {
+            border-top: s(15) solid transparent;
+            border-bottom: s(15) solid transparent;
+            border-left: s(20) solid $P-A7A7A7;
+            left: s(-5);
+
+          }
+        }
+      }
+    }
+
+    .list {
+      @include pc {
+        margin-top: p(40);
+        padding: p(85) 0 p(85) p(83);
+        border: p(2) solid;
+      }
+
+      @include sp {
+        margin-top: s(60);
+        padding: s(46) s(20) s(75);
+        border: s(2) solid;
+        font-style: normal;
+      }
+
+      li {
+        display: flex;
+
+        @include pc {
+          align-items: center;
+        }
+
+        @include sp {
+          align-items: start;
+        }
+
+        .label {
+          @include pc {
+            width: p(165);
+            font-size: p(20);
+          }
+
+          @include sp {
+            width: s(92);
+            font-size: s(20);
+          }
+        }
+
+        .TX {
+          @include pc {
+            font-size: p(16);
+          }
+
+          @include sp {
+            font-size: s(16);
+            margin-top: s(3);
+          }
+
+          span {
+            @include pc {
+              font-size: p(13);
+            }
+
+            @include sp {
+              font-size: s(13);
+            }
+          }
+        }
+
+        &+li {
+          @include pc {
+            margin-top: p(40);
+          }
+
+          @include sp {
+            margin-top: s(50);
+          }
+        }
+      }
+    }
+
+    &:last-child {
+      @include pc {
+        margin-top: p(120);
+      }
+
+      @include sp {
+        margin-top: s(122);
+      }
+    }
+  }
+}
+
+.C_entry_btn {
+  @include imgCover("entry_btn.jpg");
+  background-position: 20% left;
+  display: block;
+  position: relative;
+
+  @include pc {
+    width: p(880);
+    height: p(145);
+    border-radius: p(100);
+    margin: p(90) auto;
+  }
+  @include sp{
+    width: s(352);
+    height: s(125);
+    border-radius: s(100);
+    margin: s(60) auto;
+  }
+  .TX{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    color: $F-FFF;
+    display: grid;
+    place-items: center center;
+
+    @include wt700;
+
+    @include pc{
+      outline: p(3) solid $P-FFF;
+      outline-offset: p(-17);
+      font-size: pm(32);
+      border-radius: p(100);
+    }
+    @include sp{
+      outline: s(3) solid $P-FFF;
+      outline-offset: s(-15);
+      font-size: s(24);
+      border-radius: s(100);
+    }
+  }
+
+  &:before {
+    content: "";
+    background: $B-63BABA;
+    mix-blend-mode: multiply;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    @include pc{
+      border-radius: p(100);
+    }
+    @include sp{
+      border-radius: s(100);
+    }
+  }
+}

@@ -20,7 +20,7 @@ document.querySelectorAll(".C_TL").forEach((container) => {
               });
             });
             observer.unobserve(entry.target); // アニメーション発火後に監視を解除
-          }, 800); // 0.8秒後に発火
+          }, 500); // 0.5秒後に発火
         }
       });
     }, { threshold: 0.1 });

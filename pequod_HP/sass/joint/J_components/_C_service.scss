@@ -26,15 +26,15 @@
       }
       .TX {
         @include letterS(1.6);
+        line-height: 1.87;
+
         @include pc {
           margin-top: p(60);
           font-size: pm(16);
-          line-height: 1.8;
         }
         @include sp{
           margin-top: s(32);
           font-size: s(16);
-          line-height: 1.8;
         }
       }
     }

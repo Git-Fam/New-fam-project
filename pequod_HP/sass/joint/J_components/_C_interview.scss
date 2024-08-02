@@ -1,0 +1,167 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  C_interview
+----------------------- */
+
+.C_interview {
+  @include pc {
+    padding: p(161) p(200) 0;
+  }
+
+  @include sp {
+    padding: s(60) s(20) 0;
+  }
+
+  .subTL {
+    line-height: 1.62;
+
+    @include pc {
+      font-size: pm(16);
+      margin-top: p(40);
+    }
+
+    @include sp {
+      font-size: s(16);
+      margin-top: s(40);
+    }
+  }
+
+  &_content {
+    @include pc {
+      width: p(719);
+      margin-top: p(60);
+    }
+
+    @include sp {
+      margin-top: s(100);
+    }
+
+    .top {
+      @include pc {
+        display: flex;
+        align-items: end;
+      }
+
+      .img {
+        @include pc {
+          width: p(347);
+          height: p(278);
+        }
+
+        @include sp {
+          width: s(225);
+          height: s(181);
+        }
+
+        &.interview01 {
+          @include imgCover("C_interview01.jpg");
+        }
+        &.interview02 {
+          @include imgCover("C_interview02.jpg");
+        }
+        &.interview03 {
+          @include imgCover("C_interview03.jpg");
+        }
+
+      }
+
+      .profile {
+        @include pc {
+          margin-left: p(44);
+          font-size: pm(16);
+        }
+
+        @include sp {
+          margin-top: s(30);
+          font-size: s(16);
+        }
+      }
+    }
+
+    .TL {
+      color: $F-FFF;
+      font-style: italic;
+      white-space: nowrap;
+
+      @include pc {
+        margin-top: p(100);
+        font-size: pm(30);
+      }
+
+      @include sp {
+        margin-top: s(83);
+        font-size: s(21);
+      }
+
+      span {
+        background: $B-333333;
+
+        @include pc {
+          padding: p(5) p(10);
+        }
+
+        @include sp {
+          padding: s(4) s(10);
+        }
+
+        &:nth-child(n) {
+          line-height: 1.9;
+        }
+      }
+    }
+
+    .list {
+      @include pc {
+        margin-top: p(30);
+      }
+
+      @include sp {
+        margin-top: s(30);
+      }
+
+      li {
+        .TX {
+          line-height: 1.62;
+
+          @include pc {
+            font-size: pm(16);
+          }
+
+          @include sp {
+            font-size: s(16);
+          }
+
+          span {
+            @include wt700;
+          }
+        }
+
+        &+li {
+          @include pc {
+            margin-top: p(30);
+          }
+
+          @include sp {
+            margin-top: s(30);
+          }
+        }
+      }
+    }
+    & + .C_interview_content {
+      @include pc{
+        margin-top: p(250);
+      }
+      @include sp{
+        margin-top: s(150);
+      }
+    }
+    &.side{
+      @include pc{
+        margin-left: auto;
+      }
+    }
+  }
+
+}

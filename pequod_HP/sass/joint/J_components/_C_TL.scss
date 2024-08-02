@@ -23,6 +23,7 @@
 
     .space {
       display: block;
+
       @include pc {
         margin-left: p(8);
       }
@@ -31,7 +32,7 @@
         margin-left: s(8);
       }
     }
-  
+
   }
 
   &_main {
@@ -89,7 +90,8 @@
       justify-content: center;
       letter-spacing: 0;
       @include wt700;
-      @include pc{
+
+      @include pc {
         margin-top: p(-10);
       }
     }
@@ -99,50 +101,62 @@
         @include wt500;
       }
     }
+
     &.long {
       .C_TL_main {
-        @include sp{
+        @include sp {
           font-size: s(28);
         }
       }
     }
   }
+
   &.type03 {
     .C_TL_main {
       @include wt500;
     }
   }
+
   &.type04 {
     .C_TL_deco {
       color: $F-333333;
       @include julius;
-      @include pc{
+
+      @include pc {
         font-size: pm(60);
       }
-      @include sp{
+
+      @include sp {
         font-size: s(40);
       }
     }
+
     .C_TL_main {
-      @include pc{
+      @include letterS(1);
+
+      @include pc {
         font-size: pm(16);
-        margin-top: p(20);
+        margin-top: p(5);
       }
-      @include sp{
+
+      @include sp {
         font-size: s(16);
         margin-top: s(5);
       }
-      &::before{
+
+      &::before {
         content: "";
         position: relative;
         border-bottom: p(1) solid $P-333333;
         top: 50%;
         translate: 0 -50%;
-        @include pc{
+
+        @include pc {
           width: p(41);
           margin-right: p(12);
         }
-        @include sp{
+
+        @include sp {
           width: s(41);
           margin-right: s(12);
         }

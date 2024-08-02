@@ -1,0 +1,201 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  C_recruit
+----------------------- */
+
+.C_recruit {
+
+  .C_recruit_box {
+    @include pc {
+      display: flex;
+    }
+
+    .img {
+      &.recruit01 {
+        @include imgCover("C_support02.jpg");
+        background-position: left;
+
+        @include pc {
+          width: p(545);
+          height: p(420);
+          margin: p(60) 0 0 auto;
+
+        }
+
+        @include sp {
+          width: s(264);
+          height: s(174);
+          margin-left: auto;
+        }
+      }
+
+      &.recruit02 {
+        @include imgCover("recruit02.jpg");
+
+        @include pc {
+          width: p(233);
+          height: p(328);
+        }
+
+        @include sp {
+          width: s(195);
+          height: s(278);
+        }
+      }
+    }
+
+    .textbox {
+      @include sp {
+        padding: 0 s(20);
+      }
+
+      .subTL {
+        @include wt500;
+        font-style: italic;
+
+        @include pc {
+          font-size: pm(30);
+          margin-top: p(60);
+        }
+
+        @include sp {
+          font-size: s(30);
+          margin-top: s(60);
+        }
+      }
+
+      .TX {
+        line-height: 1.87;
+
+        @include pc {
+          font-size: pm(16);
+          margin-top: p(36);
+        }
+
+        @include sp {
+          font-size: s(16);
+          margin-top: s(30);
+        }
+      }
+    }
+
+    &.message {
+      @include pc {
+        padding-left: p(200);
+        flex-direction: row-reverse;
+      }
+
+      .textbox {
+        @include pc {
+          width: p(500);
+        }
+
+        @include sp {
+          margin-top: s(47);
+          padding: 0 s(20);
+        }
+
+        .TX {
+          line-height: 1.87;
+
+          @include pc {
+            width: p(480);
+          }
+        }
+      }
+    }
+
+    &.bussiness {
+      @include pc {
+        align-items: end;
+        padding: 0 p(200);
+        margin-top: p(161);
+        flex-wrap: wrap;
+      }
+
+      @include sp {
+        margin-top: s(70);
+      }
+
+      .textbox {
+        @include pc {
+          margin-left: auto;
+          width: p(586);
+
+        }
+
+        @include sp {
+          margin-top: s(30);
+        }
+
+        .subTL {
+          @include pc {
+            margin-top: p(100);
+          }
+        }
+
+        .TX {
+          @include pc {}
+
+          @include sp {
+            @include letterS(1);
+          }
+        }
+
+        .bussiness_list {
+          line-height: 1.87;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+
+          @include pc {
+            font-size: pm(16);
+            margin-top: p(40);
+            gap: p(40);
+          }
+
+          @include sp {
+            font-size: s(16);
+            margin-top: s(40);
+            gap: s(40);
+          }
+
+          li {
+            .label {
+              @include wt700;
+            }
+          }
+        }
+
+        &:last-child {
+          @include pc {
+            width: p(740);
+            margin-left: 0;
+          }
+
+          @include sp {
+            margin-top: s(112);
+          }
+
+          .subTL {
+            @include pc {
+              margin-top: p(75);
+            }
+          }
+
+          .TX {
+            @include pc {
+              margin-top: p(60);
+            }
+
+            @include sp {
+              @include letterS(-0.2);
+            }
+          }
+        }
+      }
+    }
+  }
+}
