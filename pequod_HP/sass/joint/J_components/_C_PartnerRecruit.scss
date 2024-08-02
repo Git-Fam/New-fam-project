@@ -2,10 +2,10 @@
 @use "../J_functions"as *;
 
 /* -----------------------
-  C_PartnerRecruit
+  C_partnerRecruit
 ----------------------- */
 
-.C_PartnerRecruit {
+.C_partnerRecruit {
   background: $B-F7F7F6;
 
   @include pc {
@@ -80,7 +80,7 @@
           }
         }
 
-        &.PartnerRecruit02 {
+        &.partnerRecruit02 {
           @include iconContain($PartnerRecruit02);
 
           @include pc {
@@ -95,7 +95,7 @@
 
         }
 
-        &.PartnerRecruit03 {
+        &.partnerRecruit03 {
           @include iconContain($PartnerRecruit03);
 
           @include pc {
@@ -103,7 +103,7 @@
             height: p(65);
           }
 
-          
+
           @include sp {
             width: s(65);
             height: s(65);

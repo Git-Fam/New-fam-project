@@ -1,0 +1,88 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  C_welfare
+----------------------- */
+
+.C_welfare {
+  @include pc {
+    padding: p(246) p(200) p(150);
+  }
+
+  @include sp {
+    padding: s(132) s(20) s(151);
+  }
+
+  &_TX {
+    line-height: 1.87;
+
+    @include pc {
+      margin-top: p(30);
+      font-size: pm(16);
+    }
+
+    @include sp {
+      margin-top: s(30);
+      font-size: s(16);
+    }
+  }
+
+  &_list {
+    @include pc {
+      display: flex;
+      justify-content: space-between;
+      margin-top: p(60);
+    }
+    @include sp{
+      margin-top: s(44);
+    }
+
+    &_box {
+      .list {
+        display: flex;
+        align-items: center;
+        @include wt500;
+
+        @include pc {
+          width: p(427);
+          font-size: pm(14);
+          padding: p(15) 0 p(15) p(30);
+          border-bottom: p(1) solid;
+        }
+
+        @include sp {
+          font-size: s(14);
+          padding: s(15) 0 s(15) s(30);
+          border-bottom: s(1) solid $P-C1C1C1;
+
+        }
+
+        &::before {
+          content: "";
+          display: block;
+          rotate: 45deg;
+
+          @include pc {
+            width: p(9);
+            height: p(9);
+            border: p(1) solid;
+            margin-right: p(3);
+          }
+          @include sp{
+            width: s(9);
+            height: s(9);
+            border: s(1) solid;
+            margin-right: s(3);
+          }
+        }
+
+        &:first-child {
+          @include pc {
+            border-top: p(1) solid;
+          }
+        }
+      }
+    }
+  }
+}

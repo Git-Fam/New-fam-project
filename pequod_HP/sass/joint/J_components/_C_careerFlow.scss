@@ -1,0 +1,61 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  C_careerFlow
+----------------------- */
+.C_careerFlow {
+  position: relative;
+  @include imgCover("C_careerFlow.jpg");
+
+  @include pc {
+    padding: p(114) p(200) p(96);
+  }
+  @include sp{
+    padding: s(118) s(20) s(117);
+  }
+
+  &_content{
+    position: relative;
+    z-index: 10;
+
+    .TX{
+      @include pc{
+        font-size: pm(16);
+        margin-top: p(40);
+      }
+      @include sp{
+        font-size: s(16);
+        margin-top: s(30);
+      }
+    }
+    .img{
+      @include pc{
+        @include imgContain("C_careerFlow_imgPC.svg");
+        width: p(702);
+        height: p(601);
+        margin: p(54) auto 0;
+      }
+      @include sp{
+        @include imgContain("C_careerFlow_imgSP.svg");
+        background-position: right;
+        width: s(350);
+        height: s(324);
+        margin: s(60) auto 0;
+      }
+    }
+  }
+
+
+  &::before {
+    content: "";
+    position: absolute;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.95) 100%);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+  }
+
+}

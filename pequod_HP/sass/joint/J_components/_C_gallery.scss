@@ -1,0 +1,99 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  C_gallery
+----------------------- */
+
+.C_gallery {
+  @include pc {
+    padding: p(250) 0;
+  }
+  @include sp{
+    padding: s(150) 0;
+  }
+
+  .C_TL {
+    @include pc {
+      padding-left: p(200);
+    }
+    @include sp{
+      margin-left: s(20);
+    }
+  }
+
+  &_content {
+    display: flex;
+
+    @include pc {
+      margin-top: p(65);
+      gap: p(29);
+    }
+    @include sp{
+      margin-top: s(30);
+      gap: s(17);
+    }
+
+    .img_box {
+      display: flex;
+
+      @include pc {
+        gap: p(29);
+      }
+      @include sp{
+        gap: s(17);
+      }
+
+      animation: loop-slide 40s infinite linear 1s both;
+
+      @keyframes loop-slide {
+        from {
+          transform: translateX(-10%);
+        }
+
+        to {
+          transform: translateX(-110%);
+        }
+      }
+
+      .img {
+        @include pc {
+          width: p(316);
+          height: p(238);
+        }
+        @include sp{
+          width: s(187);
+          height: s(141);
+        }
+
+        &.C_gallery_img01 {
+          @include imgCover("C_gallery_img01.jpg");
+        }
+
+        &.C_gallery_img02 {
+          @include imgCover("C_gallery_img02.jpg");
+        }
+
+        &.C_gallery_img03 {
+          @include imgCover("C_gallery_img03.jpg");
+        }
+        &:nth-child(2n) {
+          @include pc{
+            margin-top: p(123);
+          }
+          @include sp{
+            margin-top: s(73);
+          }
+        }
+      }
+    }
+  }
+  .C_entry_btn{
+    @include pc{
+      margin-top: p(250);
+    }
+    @include sp{
+      margin-top: s(130);
+    }
+  }
+}
