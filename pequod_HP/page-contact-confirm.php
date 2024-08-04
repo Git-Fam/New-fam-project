@@ -28,7 +28,7 @@
         <!-- 問い合わせ確認 -->
         <div class="C_ContactConfirm">
             <div class="C_Form">
-                <form class="form" action="">
+                <form class="form" action="contact-complete">
                     <ul class="lists">
                         <!-- 問い合わせ内容 -->
                         <li>

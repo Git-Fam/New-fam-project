@@ -60,7 +60,10 @@
                 <!-- 問い合わせ -->
                 <div class="former active">
                     <div class="C_Form">
-                        <form class="form" action="">
+                        <?php
+                        // echo do_shortcode('[contact-form-7 id="7ed9ac7" title="Contact"]');
+                        ?>
+                        <form class="form" action="contact-confirm">
                             <ul class="lists">
                                 <!-- 問い合わせ内容 -->
                                 <li>
@@ -186,7 +189,10 @@
                 <!-- エントリー -->
                 <div class="former">
                     <div class="C_Form">
-                        <form class="form" action="">
+                        <?php
+                        // echo do_shortcode('[contact-form-7 id="7ed9ac7" title="Contact"]');
+                        ?>
+                        <form class="form" action="contact-entry-confirm">
                             <ul class="lists">
                                 <!-- 名前 -->
                                 <li>

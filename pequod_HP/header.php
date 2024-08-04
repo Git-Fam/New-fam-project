@@ -78,11 +78,11 @@
         </div>
         <nav class="header__nav">
             <ul>
-                <li><a href="<?php bloginfo('url'); ?>">会社概要</a></li>
+                <li><a href="<?php bloginfo('url'); ?>/company">会社概要</a></li>
                 <li><a href="<?php bloginfo('url'); ?>/topics">新着情報</a></li>
-                <li><a href="<?php bloginfo('url'); ?>">事業内容</a></li>
-                <li><a href="<?php bloginfo('url'); ?>">代理店</a></li>
-                <li><a href="<?php bloginfo('url'); ?>">採用</a></li>
+                <li><a href="<?php bloginfo('url'); ?>/service">事業内容</a></li>
+                <li><a href="<?php bloginfo('url'); ?>/official-partner">代理店</a></li>
+                <li><a href="<?php bloginfo('url'); ?>/recruit">採用</a></li>
                 <li><a href="<?php bloginfo('url'); ?>/contact">お問い合わせ</a></li>
             </ul>
         </nav>
@@ -112,7 +112,46 @@
             </div>
         </section>
     <?php endif; ?>
+    <?php if (is_page('service')) : ?>
+        <!-- KV/service -->
+        <section class="KV">
+            <div class="img img-service loadSunny delay-03 duration-13"></div>
+            <div class="KV--title title-anime">
+                <h2 class="TL text-split">SERVICE</h2>
+            </div>
+        </section>
+    <?php endif; ?>
+    <?php if (is_page('company')) : ?>
+        <!-- KV/company -->
+        <section class="KV">
+            <div class="img img-company loadSunny delay-03 duration-13"></div>
+            <div class="KV--title title-anime">
+                <h2 class="TL text-split">COMPANY</h2>
+            </div>
+        </section>
+    <?php endif; ?>
+    <?php if (is_page('official-partner')) : ?>
+        <!-- KV/official-partner -->
+        <section class="KV">
+            <div class="img img-officialPartner loadSunny delay-03 duration-13"></div>
+            <div class="KV--title title-anime KV--title title-anime--officialPartner">
+                <h2 class="TL text-split pc">OFFICIAL　PARTNER</h2>
+                <h2 class="TL text-split sp">OFFICIAL</h2>
+                <h2 class="TL text-split sp">PARTNER</h2>
+            </div>
+        </section>
+    <?php endif; ?>
+    <?php if (is_page('recruit') || is_page('interview')) : ?>
+        <!-- KV/recruit/interview -->
+        <section class="KV">
+            <div class="img img-recruit loadSunny delay-03 duration-13"></div>
+            <div class="KV--title title-anime">
+                <h2 class="TL text-split">RECRUIT</h2>
+            </div>
+        </section>
+    <?php endif; ?>
     <?php if (is_page('contact') || is_page('contact-confirm') || is_page('contact-entry-confirm') || is_page('contact-complete')) : ?>
+        <!-- KV/contact -->
         <section class="KV">
             <div class="img img-contact loadSunny delay-03 duration-13"></div>
             <div class="KV--title title-anime">

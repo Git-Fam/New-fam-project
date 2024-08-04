@@ -15,7 +15,7 @@
     width: s(350);
   }
 
-  .form {
+  form {
 
     .lists {
 
@@ -299,6 +299,19 @@
                 gap: s(9);
               }
 
+              &:first-child {
+                .inputs {
+
+                  @include pc {
+                    width: p(110);
+                  }
+
+                  @include sp {
+                    width: s(100);
+                  }
+                }
+              }
+
               .TX {
                 color: $F-000;
                 font-weight: 300;
@@ -319,7 +332,7 @@
                 }
 
                 @include sp {
-                  width: s(80);
+                  width: s(70);
                 }
               }
             }
@@ -356,13 +369,13 @@
               @include column(s(33));
             }
 
-            &.Submit{
+            &.Submit {
 
-              @include pc{
+              @include pc {
                 @include column(p(113));
               }
-              
-              @include sp{
+
+              @include sp {
                 @include column(s(60));
               }
             }
@@ -443,11 +456,11 @@
               align-items: center;
               justify-content: center;
 
-              @include pc{
+              @include pc {
                 gap: p(108);
               }
-              
-              @include sp{
+
+              @include sp {
                 gap: s(11);
               }
             }
@@ -455,5 +468,10 @@
         }
       }
     }
+  }
+
+  .screen-reader-response,
+  .wpcf7-response-output {
+    display: none;
   }
 }

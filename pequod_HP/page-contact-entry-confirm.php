@@ -28,7 +28,7 @@
         <!-- エントリー確認 -->
         <div class="C_ContactConfirm">
             <div class="C_Form">
-                <form class="form" action="">
+                <form class="form" action="contact-complete">
                     <ul class="lists">
                         <!-- 名前 -->
                         <li>

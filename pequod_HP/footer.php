@@ -33,19 +33,19 @@
             <nav class="C_MainFooter__container--nav">
                 <ul class="lists">
                     <li>
-                        <a class="hover-blue" href="<?php bloginfo('url'); ?>">会社概要</a>
+                        <a class="hover-blue" href="<?php bloginfo('url'); ?>/company">会社概要</a>
                     </li>
                     <li>
                         <a class="hover-blue" href="<?php bloginfo('url'); ?>/topics">新着情報</a>
                     </li>
                     <li>
-                        <a class="hover-blue" href="<?php bloginfo('url'); ?>">事業内容</a>
+                        <a class="hover-blue" href="<?php bloginfo('url'); ?>/service">事業内容</a>
                     </li>
                     <li>
-                        <a class="hover-blue" href="<?php bloginfo('url'); ?>">代理店</a>
+                        <a class="hover-blue" href="<?php bloginfo('url'); ?>/official-partner">代理店</a>
                     </li>
                     <li>
-                        <a class="hover-blue" href="<?php bloginfo('url'); ?>">採用</a>
+                        <a class="hover-blue" href="<?php bloginfo('url'); ?>/recruit">採用</a>
                     </li>
                     <li>
                         <a class="hover-blue" href="<?php bloginfo('url'); ?>/contact">お問い合わせ</a>
@@ -67,6 +67,18 @@
 <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/script.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/joint.js"></script>
+
+<?php if (is_front_page() || is_page('official-partner')) : ?>
+    <!-- ホバーバブル -->
+    <script src="<?php echo get_template_directory_uri(); ?>/js/bubble.js"></script>
+<?php endif; ?>
+
+<?php if (is_page('contact')) : ?>
+    <!-- validate -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/validate.js"></script>
+<?php endif; ?>
+
 </body>
 
 </html>
