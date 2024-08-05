@@ -30,15 +30,6 @@
   }
 }
 
-// ホバーで色変更
-.hover-color-blak {
-  transition: color 0.5s;
-
-  &:hover {
-    color: $F-191A1B !important;
-  }
-}
-
 // 上へ
 .up {
   opacity: 0;

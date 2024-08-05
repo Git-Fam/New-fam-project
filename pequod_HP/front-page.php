@@ -53,28 +53,33 @@
                     </div>
                 </div>
                 <div class="container">
-                    <ul class="lists">
-                        <li>
-                            <a class="hover-opa" href="#">
-                                <p class="date">2023.00.0</p>
-                                <h4 class="TL">新型ウォーターサーバー発売のお知らせ</h4>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="hover-opa" href="#">
-                                <p class="date">2023.00.0</p>
-                                <h4 class="TL">
-                                    新規事業を立ち上げました！　一緒に働いてくれる方を募集しています！新規事業を立ち上げました！　一緒に働いてくれる方を募集しています！新規事業を立ち上げました！　一緒に働いてくれる方を募集しています！
-                                </h4>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="hover-opa" href="#">
-                                <p class="date">2023.00.0</p>
-                                <h4 class="TL">新型ウォーターサーバー開発中開始いたしました！</h4>
-                            </a>
-                        </li>
-                    </ul>
+                    <?php
+                    $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+                    $args = array(
+                        'posts_per_page' => 3,
+                        'paged' => $paged,
+                        'post_type' => array('topics', 'post'),
+                    );
+                    $the_query = new WP_Query($args);
+                    if ($the_query->have_posts()) :
+                    ?>
+                        <ul class="lists">
+                            <?php
+                            while ($the_query->have_posts()) :
+                                $the_query->the_post();
+                            ?>
+                                <li>
+                                    <a class="hover-opa" href="<?php the_permalink(); ?>" target="_blank" rel="noopener noreferrer">
+                                        <p class="date"><?php the_time('Y.m.d'); ?></p>
+                                        <h4 class="TL"><?php the_title(); ?></h4>
+                                    </a>
+                                </li>
+                            <?php endwhile; ?>
+                        </ul>
+                    <?php else : ?>
+                        <p>まだ投稿がありません。</p>
+                    <?php endif; ?>
+                    <?php wp_reset_postdata(); ?>
                 </div>
             </div>
         </div>
@@ -114,17 +119,17 @@
                         </p>
                     </div>
                 </div>
-                <a class="C_ViewMore" href="#">
+                <a class="C_ViewMore" href="<?php bloginfo('url'); ?>/service">
                     <p class="TX">view more</p>
                 </a>
             </div>
         </div>
     </section>
     <section class="Front_AtWater">
-        <a class="C_AtWater" href="#" target="_blank" rel="noopener noreferrer">
+        <a class="C_AtWater" href="https://alwater.jp/" target="_blank" rel="noopener noreferrer">
             <div class="content">
                 <h3 class="TL">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/C_AtWater.svg" alt="at water">
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/C_AtWater.svg" alt="at water">
                 </h3>
                 <div class="text">
                     <p class="TX">
@@ -168,7 +173,7 @@
             </div>
             <div class="C_Links--container">
                 <!-- 01 -->
-                <a class="card img01" href="#">
+                <a class="card img01" href="<?php bloginfo('url'); ?>/company/#greeting">
                     <div class="card--bar"></div>
                     <div class="title">
                         <h4 class="TL">代表挨拶</h4>
@@ -178,7 +183,7 @@
                     </div>
                 </a>
                 <!-- 02 -->
-                <a class="card img02" href="#">
+                <a class="card img02" href="<?php bloginfo('url'); ?>/company/#profile">
                     <div class="card--bar"></div>
                     <div class="title">
                         <h4 class="TL">会社概要</h4>
@@ -188,7 +193,7 @@
                     </div>
                 </a>
                 <!-- 03 -->
-                <a class="card img03" href="#">
+                <a class="card img03" href="<?php bloginfo('url'); ?>/company/#access">
                     <div class="card--bar"></div>
                     <div class="title">
                         <h4 class="TL">アクセス</h4>

@@ -93,6 +93,10 @@
           width: 100%;
           position: relative;
 
+          .wpcf7-form-control-wrap{
+            position: unset;
+          }
+
           .inputs {
             width: 100%;
             border: solid $P-C0C0C0;
@@ -141,6 +145,8 @@
             @include julius;
             position: absolute;
             left: 0;
+            width: 100%;
+            display: block;
 
             @include pc {
               font-size: p(13);
