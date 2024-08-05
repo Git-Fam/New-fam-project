@@ -12,6 +12,7 @@
     padding: p(114) p(200) p(96);
   }
   @include sp{
+    background-position: 70%;
     padding: s(118) s(20) s(117);
   }
 
@@ -38,7 +39,6 @@
       }
       @include sp{
         @include imgContain("C_careerFlow_imgSP.svg");
-        background-position: right;
         width: s(350);
         height: s(324);
         margin: s(60) auto 0;

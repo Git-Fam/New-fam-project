@@ -1,0 +1,11 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  page-interview
+----------------------- */
+
+.page-interview {
+  @include pc {
+  }
+}

@@ -16,6 +16,7 @@
   &_content {
     font-style: italic;
     @include wt500;
+    text-shadow: 0px 0px 0px;
 
     .subTL {
       @include pc {
@@ -220,6 +221,7 @@
     display: grid;
     place-items: center center;
 
+    @include letterS(5.0);
     @include wt700;
 
     @include pc{
