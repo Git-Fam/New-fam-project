@@ -46,13 +46,23 @@
   &.Return {
     border: none;
     background: $P-DFDFDF;
+    position: relative;
+    z-index: 2;
+    color: $F-333;
+    @include letterS(2);
+    text-align: center;
+    @include wt700;
 
     &::before {
       background-color: #c2c2c2;
     }
 
-    .TX {
-      @include wt400;
+    @include pc {
+      font-size: pm(20);
+    }
+
+    @include sp {
+      font-size: s(20);
     }
   }
 

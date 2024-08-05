@@ -129,13 +129,14 @@
               }
             }
 
-            &.err {
+            &.wpcf7-not-valid {
               background: rgba(1, 191, 213, 0.10);
               border: none;
             }
           }
 
-          .err-message {
+          .err-message,
+          .wpcf7-not-valid-tip {
             color: $F-01BFD5;
             @include julius;
             position: absolute;
@@ -153,34 +154,67 @@
           }
 
           &--radios {
-            display: flex;
 
-            @include pc {
-              align-items: center;
-              gap: p(29);
-            }
-
-            @include sp {
-              flex-direction: column;
-              gap: s(10);
-              padding-left: s(10);
-            }
-
-            &--inner {
+            .wpcf7-form-control.wpcf7-radio.radio {
               display: flex;
-              align-items: center;
 
               @include pc {
-                gap: p(6);
+                align-items: center;
+                gap: p(29);
               }
 
               @include sp {
-                gap: s(6);
+                flex-direction: column;
+                gap: s(10);
+                padding-left: s(10);
               }
 
-              .radio {
+              &.gender{
+                
+                @include sp{
+                  flex-direction: row;
+                  gap: s(20);
+                }
+              }
+
+              .wpcf7-list-item {
+                margin: 0;
+
+                label {
+                  display: flex;
+                  align-items: center;
+                  flex-direction: row-reverse;
+                  cursor: pointer;
+
+                  @include pc {
+                    gap: p(6);
+                  }
+
+                  @include sp {
+                    gap: s(6);
+                    width: fit-content;
+                    margin-right: auto;
+                  }
+
+                  .wpcf7-list-item-label {
+                    color: $F-333;
+
+                    @include pc {
+                      font-size: pm(20);
+                    }
+
+                    @include sp {
+                      font-size: s(16);
+                    }
+                  }
+                }
+              }
+
+              input[type='radio'] {
                 border: solid $P-C0C0C0;
                 border-radius: 50%;
+                flex-shrink: 0;
+                cursor: pointer;
 
                 @include pc {
                   width: pm(20);
@@ -196,18 +230,6 @@
 
                 &:checked {
                   background: $P-01BFD5;
-                }
-              }
-
-              .TX {
-                color: $F-333;
-
-                @include pc {
-                  font-size: pm(20);
-                }
-
-                @include sp {
-                  font-size: s(16);
                 }
               }
             }
@@ -312,6 +334,10 @@
                 }
               }
 
+              .wpcf7-form-control-wrap {
+                position: unset;
+              }
+
               .TX {
                 color: $F-000;
                 font-weight: 300;
@@ -343,6 +369,22 @@
 
           @include pc {
             align-items: flex-start;
+          }
+
+          .wpcf7-character-count {
+            color: $F-333;
+            @include wt400;
+            display: block;
+            text-align: right;
+
+            @include pc {
+              font-size: p(16);
+            }
+
+            @include sp {
+              font-size: s(16);
+            }
+
           }
         }
 
@@ -385,67 +427,102 @@
               width: fit-content;
 
               .Agreement {
-                display: flex;
-                align-items: center;
+                position: relative;
 
-                @include pc {
-                  gap: p(20);
+                @include pc {}
+
+                .wpcf7-form-control-wrap {
+
+                  .wpcf7-list-item {
+                    margin: 0;
+
+                    label {
+                      display: flex;
+                      align-items: center;
+                      cursor: pointer;
+
+                      @include pc {
+                        gap: p(20);
+                      }
+
+                      @include sp {}
+
+                      input[type='checkbox'] {
+                        flex-shrink: 0;
+                        border: solid $P-D9D9D9;
+                        background: #FFF;
+                        border-radius: 0;
+                        position: relative;
+                        cursor: pointer;
+
+                        @include pc {
+                          border-width: p(1);
+                          width: p(30);
+                          height: p(30);
+                        }
+
+                        @include sp {
+                          border-width: s(1);
+                          width: s(23);
+                          height: s(23);
+                        }
+
+                        &:checked:before {
+                          content: '';
+                          position: absolute;
+                          top: 10%;
+                          left: 35%;
+                          transform: rotate(50deg);
+                          border-right: solid $P-000;
+                          border-bottom: solid $P-000;
+                          aspect-ratio: 4 / 8;
+
+                          @include pc {
+                            width: p(8);
+                            border-right-width: p(2);
+                            border-bottom-width: p(2);
+                          }
+
+                          @include sp {
+                            width: s(6);
+                            border-right-width: s(1);
+                            border-bottom-width: s(1);
+                          }
+                        }
+                      }
+
+                      .wpcf7-list-item-label {
+                        color: $F-333;
+                        @include wt500;
+                        @include letterS(-2);
+
+                        @include pc {
+                          font-size: p(20);
+                        }
+
+                        @include sp {
+                          font-size: s(16);
+                        }
+                      }
+                    }
+                  }
                 }
 
-                .checkbox {
-                  flex-shrink: 0;
-                  border: solid $P-D9D9D9;
-                  background: #FFF;
-                  border-radius: 0;
-                  position: relative;
+
+                .wpcf7-not-valid-tip {
+                  color: $F-01BFD5;
+                  @include julius;
+                  position: absolute;
+                  left: 0;
 
                   @include pc {
-                    border-width: p(1);
-                    width: p(30);
-                    height: p(30);
+                    font-size: p(13);
+                    top: calc(100% + p(4));
                   }
 
                   @include sp {
-                    border-width: s(1);
-                    width: s(23);
-                    height: s(23);
-                  }
-
-                  &:checked:before {
-                    content: '';
-                    position: absolute;
-                    top: 10%;
-                    left: 35%;
-                    transform: rotate(50deg);
-                    border-right: solid $P-000;
-                    border-bottom: solid $P-000;
-                    aspect-ratio: 4 / 8;
-
-                    @include pc {
-                      width: p(8);
-                      border-right-width: p(2);
-                      border-bottom-width: p(2);
-                    }
-
-                    @include sp {
-                      width: s(6);
-                      border-right-width: s(1);
-                      border-bottom-width: s(1);
-                    }
-                  }
-                }
-
-                .TX {
-                  color: $F-333;
-                  @include wt500;
-                  @include letterS(-2);
-
-                  @include pc {
-                    font-size: p(20);
-                  }
-
-                  @include sp {
-                    font-size: s(16);
+                    font-size: s(13);
+                    top: calc(100% + s(2));
                   }
                 }
               }

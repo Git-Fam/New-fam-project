@@ -198,7 +198,7 @@
     }
 
     @include sp {
-      padding: s(24) 0 s(21);
+      padding: s(24) s(20) s(21);
     }
 
     .TX {
@@ -211,6 +211,21 @@
 
       @include sp {
         font-size: s(13);
+      }
+
+      &.reCAPTCHA {
+
+        @include pc {
+          margin-top: p(10);
+        }
+
+        @include sp {
+          margin-top: s(10);
+        }
+
+        a {
+          color: $F-FFF;
+        }
       }
     }
   }
