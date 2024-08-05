@@ -36,6 +36,7 @@
       }
       .label{
         @include wt500;
+        text-shadow: 0px 0px 0px;
         @include pc{
           width: p(193);
         }
@@ -55,6 +56,11 @@
         }
         @include sp{
           border-top: s(1) solid $P-D6D6D6;
+        }
+      }
+      &:last-child{
+        @include sp{
+          line-height: 2.5;
         }
       }
     }

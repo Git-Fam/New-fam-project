@@ -65,7 +65,7 @@
       }
 
       .icon {
-        &.PartnerRecruit01 {
+        &.partnerRecruit01 {
           @include iconContain($PartnerRecruit01);
 
           @include pc {
@@ -76,10 +76,9 @@
           @include sp {
             width: s(76);
             height: s(70);
-
           }
-        }
 
+        }
         &.partnerRecruit02 {
           @include iconContain($PartnerRecruit02);
 

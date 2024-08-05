@@ -1,0 +1,30 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  page-company
+----------------------- */
+.page-company {
+  @include pc {
+    padding: p(100) p(150) p(250);
+  }
+  @include sp{
+    padding: s(60) s(20) s(200);
+  }
+  .C_profile{
+    @include pc{
+      margin-top: p(157);
+    }
+    @include sp{
+      margin-top: s(130);
+    }
+  }
+  .C_access{
+    @include pc{
+      margin-top: p(134);
+    }
+    @include sp{
+      margin-top: s(130);
+    }
+  }
+}
