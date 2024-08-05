@@ -11,7 +11,7 @@
       display: flex;
       justify-content: space-between;
       width: p(977);
-      margin: p(100) auto;
+      margin-top: p(100);
     }
     .img{
       @include imgCover("C_greeting.jpg");
