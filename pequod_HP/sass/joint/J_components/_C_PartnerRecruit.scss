@@ -19,6 +19,7 @@
 
   .TL {
     text-align: center;
+    text-shadow: 0px 0px 0px;
     @include wt500;
 
     @include pc {
@@ -145,6 +146,7 @@
     place-items: center center;
     color: $F-031E2A;
     @include wt700;
+    text-shadow: 0px 0px 0px;
 
     @include pc {
       border: p(3) solid $B-031E2A;

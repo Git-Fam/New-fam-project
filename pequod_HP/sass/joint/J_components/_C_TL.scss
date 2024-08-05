@@ -39,6 +39,7 @@
     display: flex;
     letter-spacing: 0.3rem;
     @include wt500;
+    text-shadow: 0px 0px 0px;
 
     @include pc {
       font-size: pm(30);

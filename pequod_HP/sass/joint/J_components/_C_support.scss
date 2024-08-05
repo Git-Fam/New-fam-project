@@ -17,6 +17,7 @@
   .TL {
     text-align: center;
     @include wt500;
+    text-shadow: 0px 0px 0px;
 
     @include pc {
       font-size: pm(30);
@@ -45,6 +46,7 @@
 
     .box {
       position: relative;
+
       @include pc {
         display: flex;
         align-items: center;
@@ -88,6 +90,7 @@
         .box_TL {
           @include wt700;
           @include letterS(-1);
+
           @include pc {
             font-size: pm(25);
           }
@@ -119,12 +122,14 @@
         mix-blend-mode: multiply;
         position: absolute;
         @include wt800;
-        @include pc{
+
+        @include pc {
           font-size: p(250);
           bottom: p(-80);
           right: 0;
         }
-        @include sp{
+
+        @include sp {
           font-size: s(250);
           bottom: s(-110);
           right: 0;
@@ -132,11 +137,13 @@
       }
     }
   }
-  .C_consult_btn{
-    @include pc{
+
+  .C_consult_btn {
+    @include pc {
       margin-top: p(160);
     }
-    @include sp{
+
+    @include sp {
       margin-top: s(62);
     }
   }

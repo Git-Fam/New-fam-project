@@ -1,0 +1,86 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  page-recruit
+----------------------- */
+.page-recruit {
+  @include pc {
+    padding-top: p(160);
+  }
+
+  @include sp {
+    padding-top: s(30);
+  }
+
+  .interview {
+    @include pc {
+      padding: p(150) p(200) 0;
+    }
+
+    @include sp {
+      padding: s(130) s(20) 0;
+    }
+
+    .TX {
+      @include pc {
+        font-size: pm(16);
+        margin-top: p(10);
+      }
+
+      @include sp {
+        text-wrap: nowrap;
+        font-size: s(16);
+        margin-top: s(30);
+      }
+    }
+
+    .interview_btn {
+      position: relative;
+
+      .img {
+        @include imgCover("interview.jpg");
+        display: inline-block;
+        cursor: pointer;
+
+        @include pc {
+          width: p(869);
+          height: p(344);
+          margin: p(20) auto 0;
+          box-shadow: p(6) p(6) p(15) 0 rgba(0, 0, 0, 0.25);
+        }
+
+        @include sp {
+          width: s(350);
+          height: s(136);
+          margin-top: s(30);
+          box-shadow: s(6) s(6) s(15) 0 rgba(0, 0, 0, 0.25);
+        }
+      }
+
+      .check {
+        position: absolute;
+        border-radius: 50%;
+        background: $B-4B9693;
+        color: $F-FFF;
+        display: grid;
+        place-items: center center;
+
+
+        @include pc {
+          width: p(85);
+          height: p(85);
+          bottom: p(15);
+          right: p(19);
+        }
+
+        @include sp {
+          width: s(59);
+          height: s(59);
+          bottom: s(8);
+          right: s(13);
+        }
+      }
+    }
+  }
+}
