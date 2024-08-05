@@ -55,6 +55,11 @@
         </div>
         <div class="CopyRight">
             <p class="TX">Copyright © pequod.2024</p>
+            <p class="TX reCAPTCHA">
+                This site is protected by reCAPTCHA and the Google
+                <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+                <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+            </p>
         </div>
     </div>
 </footer>
@@ -72,13 +77,6 @@
     <!-- ホバーバブル -->
     <script src="<?php echo get_template_directory_uri(); ?>/js/bubble.js"></script>
 <?php endif; ?>
-
-<?php if (is_page('contact')) : ?>
-    <!-- validate -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/js/validate.js"></script>
-<?php endif; ?>
-
 </body>
 
 </html>
