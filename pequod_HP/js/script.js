@@ -123,3 +123,25 @@ window.addEventListener('load', () => {
   SplitText('.text-split');
   ScrollAnimation.set();
 });
+
+// contactへ戻る時タブ切り替え
+$(document).ready(function() {
+  const referrer = document.referrer;
+  const currentPage = window.location.href;
+
+  // contact-entry-confirmから戻った場合
+  if (referrer.includes('contact-entry-confirm')) {
+      $(".C_ContactTab__Buttons .BTN").removeClass("active");
+      $(".C_ContactTab__Buttons .BTN").eq(1).addClass("active");
+      $(".C_ContactTab__former .former").removeClass("active");
+      $(".C_ContactTab__former .former").eq(1).addClass("active");
+  }
+
+  // recruitまたはinterviewページから通常遷移した場合
+  if (currentPage.includes('contact') && (referrer.includes('recruit') || referrer.includes('interview'))) {
+      $(".C_ContactTab__Buttons .BTN").removeClass("active");
+      $(".C_ContactTab__Buttons .BTN").eq(1).addClass("active");
+      $(".C_ContactTab__former .former").removeClass("active");
+      $(".C_ContactTab__former .former").eq(1).addClass("active");
+  }
+});
