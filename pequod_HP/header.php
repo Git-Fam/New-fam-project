@@ -67,7 +67,7 @@
     <!-- header -->
     <header class="header">
         <a class="header__home" href="<?php echo get_home_url(); ?>">
-            <h1 class="TL hover-color-blak">pequod</h1>
+            <h1 class="TL hover-blue">pequod</h1>
         </a>
         <div class="burger sp">
             <div class="burger--inner">

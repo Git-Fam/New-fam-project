@@ -2,7 +2,7 @@
 
 </main>
 <footer class="footer">
-    <a class="C_RecruitBtn" href="<?php bloginfo('url'); ?>">
+    <a class="C_RecruitBtn" href="<?php bloginfo('url'); ?>/recruit">
         <div class="C_RecruitBtn--inner">
             <p class="TX">採用募集</p>
             <h2 class="TL">RECRUIT</h2>

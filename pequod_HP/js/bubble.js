@@ -1,4 +1,4 @@
-$(function () {
+
 
   // ホバーバブル
   document.addEventListener('DOMContentLoaded', function () {
@@ -33,5 +33,4 @@ $(function () {
     updatePosition();
   });
 
-});
 
