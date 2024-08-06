@@ -79,7 +79,6 @@
 
       .textbox {
         @include pc {
-          width: p(362);
           margin-left: p(48);
         }
 
@@ -104,6 +103,7 @@
           line-height: 1.7;
 
           @include pc {
+            width: p(362);
             font-size: pm(16);
             margin-top: p(25);
           }
@@ -113,28 +113,41 @@
             margin-top: s(25);
           }
         }
+        .number{
+          position: absolute;
+          z-index: -1;
+          right: 0;
+
+          @include pc {
+            width: p(103);
+            height: p(180);
+            bottom: 0;
+          }
+          @include sp{
+            width: s(101);
+            height: s(175);
+            bottom: s(-25);
+
+          }
+          &.number_01{
+            @include imgContain("support_number_1.svg");
+            @include pc {
+              right: p(10);
+            }
+            @include sp{
+              right: s(15);
+
+            }
+          }
+          &.number_02{
+            @include imgContain("support_number_2.svg");
+          }
+          &.number_03{
+            @include imgContain("support_number_3.svg");
+          }
+        }  
       }
 
-      &:before {
-        counter-increment: support;
-        content: counter(support);
-        color: $F-F4F3F3;
-        mix-blend-mode: multiply;
-        position: absolute;
-        @include wt800;
-
-        @include pc {
-          font-size: p(250);
-          bottom: p(-80);
-          right: 0;
-        }
-
-        @include sp {
-          font-size: s(250);
-          bottom: s(-110);
-          right: 0;
-        }
-      }
     }
   }
 

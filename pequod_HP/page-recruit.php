@@ -144,7 +144,7 @@
                 />ぜひ覗いてみて下さい。
             </p>
             <div class="interview_btn">
-                <a class="img Sunny hover-opa" href="<?php bloginfo('url'); ?>/interview"></a>
+                <a class="img" href="<?php bloginfo('url'); ?>/interview"></a>
                 <div class="check hover-scale">CHECK</div>
             </div>
         </section>
@@ -216,9 +216,7 @@
                     <li>
                         <p class="label">勤務地</p>
                         <p class="TX">
-                        東京都渋谷区神泉町20番15号　<br
-                            class="sp"
-                        />神泉モンドビル２F
+                        東京都渋谷区神泉町20番15号　<br class="sp"/>神泉モンドビル２F
                         </p>
                     </li>
                     <li>
