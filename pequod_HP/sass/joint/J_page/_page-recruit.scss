@@ -41,8 +41,6 @@
       .img {
         @include imgCover("interview.jpg");
         display: inline-block;
-        filter: grayscale(100%);
-        transition: all 0.5s;
         cursor: pointer;
 
         @include pc {
@@ -57,10 +55,6 @@
           height: s(136);
           margin-top: s(30);
           box-shadow: s(6) s(6) s(15) 0 rgba(0, 0, 0, 0.25);
-        }
-
-        &:hover {
-          filter: grayscale(0%);
         }
       }
 
