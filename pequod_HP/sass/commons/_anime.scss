@@ -285,6 +285,24 @@
   }
 }
 
+.loadFlash {
+  opacity: 0;
+
+  &.show {
+    animation: loadFlash ease forwards;
+
+    @keyframes loadFlash {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+}
+
 // loadフラッシュ
 .text-split {
   span {

@@ -19,7 +19,7 @@ $(function () {
 
   // ローディング
   var loadingFinished = false;
-  var loading = $('.loadSunnyFront,.loadSunny');
+  var loading = $('.loadSunnyFront,.loadSunny,.loadFlash');
 
   $(window).on('load', function () {
     loading.addClass('show');
