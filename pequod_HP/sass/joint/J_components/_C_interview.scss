@@ -136,10 +136,6 @@
           span {
             @include wt700;
           }
-          .chara{
-            @include wt400;
-            text-shadow: none;
-          }
         }
 
         &+li {
