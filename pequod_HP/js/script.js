@@ -19,20 +19,20 @@ $(function () {
 
   // ローディング
   var loadingFinished = false;
-  var loading = $('.loadSunnyFront,.loadSunny,.loadFlash');
+  var loading = $('.loadSunnyFront,.loadSunny');
 
   $(window).on('load', function () {
     loading.addClass('show');
     loadingFinished = true;
   });
-  setTimeout(function(){
+  setTimeout(function () {
     if (!loadingFinished) {
       loading.addClass('show');
     }
   }, 2000);
 
   // formタブ切り替え
-  $(".C_ContactTab__Buttons .BTN").on('click', function(){
+  $(".C_ContactTab__Buttons .BTN").on('click', function () {
     let index = $(".C_ContactTab__Buttons .BTN").index(this);
     $(".C_ContactTab__Buttons .BTN").removeClass("active");
     $(this).addClass("active");
@@ -86,7 +86,7 @@ const ScrollAnimation = {
     this.instance = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if(entry.isIntersecting) {
+          if (entry.isIntersecting) {
             entry.target.classList.add('is-active');
           }
         });
@@ -97,7 +97,7 @@ const ScrollAnimation = {
         threshold: 0,
       }
     );
-    
+
     const blocks = document.querySelectorAll('.title-anime');
     blocks.forEach((block) => {
       this.instance.observe(block);
@@ -122,26 +122,29 @@ const SplitText = (target) => {
 window.addEventListener('load', () => {
   SplitText('.text-split');
   ScrollAnimation.set();
+  setTimeout(() => {
+    $('.title-anime').addClass('is-active');
+  }, 1000);
 });
 
 // contactへ戻る時タブ切り替え
-$(document).ready(function() {
+$(document).ready(function () {
   const referrer = document.referrer;
   const currentPage = window.location.href;
 
   // contact-entry-confirmから戻った場合
   if (referrer.includes('contact-entry-confirm')) {
-      $(".C_ContactTab__Buttons .BTN").removeClass("active");
-      $(".C_ContactTab__Buttons .BTN").eq(1).addClass("active");
-      $(".C_ContactTab__former .former").removeClass("active");
-      $(".C_ContactTab__former .former").eq(1).addClass("active");
+    $(".C_ContactTab__Buttons .BTN").removeClass("active");
+    $(".C_ContactTab__Buttons .BTN").eq(1).addClass("active");
+    $(".C_ContactTab__former .former").removeClass("active");
+    $(".C_ContactTab__former .former").eq(1).addClass("active");
   }
 
   // recruitまたはinterviewページから通常遷移した場合
   if (currentPage.includes('contact') && (referrer.includes('recruit') || referrer.includes('interview'))) {
-      $(".C_ContactTab__Buttons .BTN").removeClass("active");
-      $(".C_ContactTab__Buttons .BTN").eq(1).addClass("active");
-      $(".C_ContactTab__former .former").removeClass("active");
-      $(".C_ContactTab__former .former").eq(1).addClass("active");
+    $(".C_ContactTab__Buttons .BTN").removeClass("active");
+    $(".C_ContactTab__Buttons .BTN").eq(1).addClass("active");
+    $(".C_ContactTab__former .former").removeClass("active");
+    $(".C_ContactTab__former .former").eq(1).addClass("active");
   }
 });

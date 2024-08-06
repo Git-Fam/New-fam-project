@@ -7,7 +7,6 @@
 .KV {
   position: relative;
   overflow: hidden;
-  ;
 
   @include pc {
     height: p(300);
@@ -272,15 +271,15 @@
       color: rgba(255, 255, 255, 0.70);
       @include julius;
       line-height: 1.16;
-
+      
       @include pc {
         font-size: p(64);
       }
-
+      
       @include sp {
         font-size: s(36);
       }
-
+      
       span {
         color: rgba(255, 255, 255, 0.70);
         @include julius;

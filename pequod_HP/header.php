@@ -94,7 +94,7 @@
             <div class="title__fixed">
                 <h2 class="TL"><span>今</span>ここにない<span>未来</span>は<br class="sp">自分で<span>創</span>る</h2>
             </div>
-            <div class="KV--title--front title-anime loadFlash duration-03">
+            <div class="KV--title--front title-anime">
                 <h2 class="TL text-split">I WILL CREATE</h2>
                 <h2 class="TL text-split pc">A FUTURE THAT CANNOT</h2>
                 <h2 class="TL text-split sp">A FUTURE</h2>
@@ -106,7 +106,7 @@
     <?php if (is_post_type_archive('post') || is_singular('post')) : ?>
         <!-- KV/topics -->
         <section class="KV">
-            <div class="img img-topics loadSunny delay-03 duration-13"></div>
+            <div class="img img-topics loadSunny"></div>
             <div class="KV--title title-anime loadFlash duration-03">
                 <h2 class="TL text-split">TOPICS</h2>
             </div>
@@ -115,7 +115,7 @@
     <?php if (is_page('service')) : ?>
         <!-- KV/service -->
         <section class="KV">
-            <div class="img img-service loadSunny delay-03 duration-13"></div>
+            <div class="img img-service loadSunny"></div>
             <div class="KV--title title-anime loadFlash duration-03">
                 <h2 class="TL text-split">SERVICE</h2>
             </div>
@@ -124,7 +124,7 @@
     <?php if (is_page('company')) : ?>
         <!-- KV/company -->
         <section class="KV">
-            <div class="img img-company loadSunny delay-03 duration-13"></div>
+            <div class="img img-company loadSunny"></div>
             <div class="KV--title title-anime loadFlash duration-03">
                 <h2 class="TL text-split">COMPANY</h2>
             </div>
@@ -133,7 +133,7 @@
     <?php if (is_page('official-partner')) : ?>
         <!-- KV/official-partner -->
         <section class="KV">
-            <div class="img img-officialPartner loadSunny delay-03 duration-13"></div>
+            <div class="img img-officialPartner loadSunny"></div>
             <div class="KV--title title-anime KV--title title-anime--officialPartner loadFlash duration-03">
                 <h2 class="TL text-split pc">OFFICIAL　PARTNER</h2>
                 <h2 class="TL text-split sp">OFFICIAL</h2>
@@ -144,7 +144,7 @@
     <?php if (is_page('recruit') || is_page('interview')) : ?>
         <!-- KV/recruit/interview -->
         <section class="KV">
-            <div class="img img-recruit loadSunny delay-03 duration-13"></div>
+            <div class="img img-recruit loadSunny"></div>
             <div class="KV--title title-anime loadFlash duration-03">
                 <h2 class="TL text-split">RECRUIT</h2>
             </div>
@@ -153,7 +153,7 @@
     <?php if (is_page('contact') || is_page('contact-confirm') || is_page('contact-entry-confirm') || is_page('contact-complete')) : ?>
         <!-- KV/contact -->
         <section class="KV">
-            <div class="img img-contact loadSunny delay-03 duration-13"></div>
+            <div class="img img-contact loadSunny"></div>
             <div class="KV--title title-anime loadFlash duration-03">
                 <h2 class="TL text-split">CONTACT</h2>
             </div>
