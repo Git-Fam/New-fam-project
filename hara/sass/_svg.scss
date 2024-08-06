@@ -1,0 +1,31 @@
+
+// SVG使い方
+// $burgerClose: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="26" height="27" viewBox="0 0 26 27" fill="none"><path d="M1.75879 2L24.7398 24.981" stroke="%23FFF" stroke-width="3"/><path d="M1.75977 24.981L24.7407 1.99999" stroke="%23FFF" stroke-width="3"/></svg>');
+
+
+// SVG使い方（色変更パターン）
+// @function encode($ColorCode){
+//   @return '%23' + str-slice($ColorCode,2,-1);
+// }
+
+// openアイコン
+// @function open($Color) {
+  //   @return  url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 18" fill="none"><path d="M0 9H24" stroke="#{$Color}" stroke-width="2"/><path d="M0 1H24" stroke="#{$Color}" stroke-width="2"/><path d="M0 17H24" stroke="#{$Color}" stroke-width="2"/></svg>');
+// }
+
+// closeアイコン
+// @function close($Color) {
+  //   @return  url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none"><path d="M1.51471 18.4854L18.4853 1.51479" stroke="#{$Color}" stroke-width="2"/><path d="M1.51471 1.51465L18.4853 18.4852" stroke="#{$Color}" stroke-width="2"/></svg>');
+  // }
+  
+  // ↓CSSでは
+  // background-image: svg(encode('#FFF'));
+
+  @function encode($ColorCode) {
+    @return '%23'+str-slice($ColorCode, 2, -1);
+  }
+  
+  @function open-icon($Color) {
+    @return url('data:image/svg+xml;utf-8,<svg viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.5 3.999C7.327 3.999 8 4.672 8 5.499C8 6.326 7.327 6.999 6.5 6.999C5.673 6.999 5 6.326 5 5.499C5 4.672 5.673 3.999 6.5 3.999ZM6.5 2.999C5.83696 2.999 5.20107 3.26239 4.73223 3.73123C4.26339 4.20007 4 4.83596 4 5.499C4 6.16204 4.26339 6.79793 4.73223 7.26677C5.20107 7.73561 5.83696 7.999 6.5 7.999C7.16304 7.999 7.79893 7.73561 8.26777 7.26677C8.73661 6.79793 9 6.16204 9 5.499C9 4.83596 8.73661 4.20007 8.26777 3.73123C7.79893 3.26239 7.16304 2.999 6.5 2.999ZM14 7.999C14.45 8.05 15.27 9.803 15.779 12H4.387C4.821 10.966 5.442 9.999 5.999 9.999C6.805 9.999 7.124 10.184 7.529 10.419C7.976 10.677 8.535 10.999 9.499 10.999C10.637 10.999 11.441 10.114 12.152 9.333C12.779 8.646 13.37 7.999 14 7.999ZM14 6.999C12 6.999 11 9.999 9.5 9.999C8 9.999 8.001 8.999 6 8.999C4 8.999 2.999 12.999 2.999 12.999H17C17 12.999 16 6.999 14 6.999ZM20 2C20 1.46957 19.7893 0.960859 19.4142 0.585786C19.0391 0.210714 18.5304 0 18 0H2C1.46957 0 0.960859 0.210714 0.585786 0.585786C0.210714 0.960859 0 1.46957 0 2V14C0 14.5304 0.210714 15.0391 0.585786 15.4142C0.960859 15.7893 1.46957 16 2 16H18C18.5304 16 19.0391 15.7893 19.4142 15.4142C19.7893 15.0391 20 14.5304 20 14V2ZM18 14H2V2H18.003L18 14Z" fill="#{$Color}"/></svg>');
+  }
+  

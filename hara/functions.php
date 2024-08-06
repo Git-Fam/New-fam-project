@@ -101,14 +101,55 @@ function create_post_type() {
 
 add_theme_support( 'post-thumbnails' );
 
+// 固定ページエディタ削除
+function remove_page_editor() {
+  remove_post_type_support('page', 'editor');
+}
+add_action('init', 'remove_page_editor');
+
 
 
 //リキャプチャの読み込みを問い合わせページ、確認ページのみに限定
-// function load_recaptcha_js() {
-// 	if ( ! is_page('contact') && ! is_page('page-contact-confirm') && ! is_page('contact-complete')) {
-// 		wp_deregister_script( 'google-recaptcha' );
-// 	}
-// }
-// add_action( 'wp_enqueue_scripts', 'load_recaptcha_js',100 );
+function load_recaptcha_js() {
+	if ( ! is_page('contact') && ! is_page('contact-confirm') && ! is_page('contact-complete')) {
+		wp_deregister_script( 'google-recaptcha' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'load_recaptcha_js',100 );
+
+
+
+function create_custom_user_role() {
+  // 新しい役割を追加
+  add_role('custom_editor', 'Custom Editor', array(
+      'read' => true,
+      'edit_posts' => true,
+      'edit_pages' => true,
+      'edit_others_posts' => true,
+      'edit_others_pages' => true,
+      'publish_posts' => true,
+      'publish_pages' => true,
+      'delete_posts' => true,
+      'delete_pages' => true,
+      'delete_others_posts' => true,
+      'delete_others_pages' => true,
+      'read_private_posts' => true,
+      'read_private_pages' => true,
+      'edit_published_posts' => true,
+      'edit_published_pages' => true,
+      'delete_published_posts' => true,
+      'delete_published_pages' => true,
+  ));
+}
+add_action('init', 'create_custom_user_role');
+
+function update_custom_user_role() {
+  $role = get_role('custom_editor');
+  $role->add_cap('edit_published_posts');
+  $role->add_cap('edit_published_pages');
+  $role->add_cap('delete_published_posts');
+  $role->add_cap('delete_published_pages');
+}
+add_action('init', 'update_custom_user_role');
 
 ?>
