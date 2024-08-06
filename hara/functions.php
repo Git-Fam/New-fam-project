@@ -118,7 +118,7 @@ function load_recaptcha_js() {
 add_action( 'wp_enqueue_scripts', 'load_recaptcha_js',100 );
 
 
-// 編集者の権限書き換え
+
 function create_custom_user_role() {
   // 新しい役割を追加
   add_role('custom_editor', 'Custom Editor', array(
@@ -139,7 +139,6 @@ function create_custom_user_role() {
       'edit_published_pages' => true,
       'delete_published_posts' => true,
       'delete_published_pages' => true,
-      'upload_files' => true, // 画像のアップロード権限
   ));
 }
 add_action('init', 'create_custom_user_role');
@@ -150,7 +149,6 @@ function update_custom_user_role() {
   $role->add_cap('edit_published_pages');
   $role->add_cap('delete_published_posts');
   $role->add_cap('delete_published_pages');
-  $role->add_cap('upload_files'); // 画像のアップロード権限
 }
 add_action('init', 'update_custom_user_role');
 
