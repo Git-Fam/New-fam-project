@@ -4,8 +4,27 @@
         <section class="C_interview">
         <!--　type04 -->
             <div class="C_TL type04">
-                <p class="C_TL_deco">INTERVIEW</p>
-                <h3 class="C_TL_main">インタビュー</h3>
+                <p class="C_TL_deco">
+                    <span class="js-g01">I</span>
+                    <span class="js-g01">N</span>
+                    <span class="js-g01">T</span>
+                    <span class="js-g01">E</span>
+                    <span class="js-g01">R</span>
+                    <span class="js-g01">V</span>
+                    <span class="js-g01">I</span>
+                    <span class="js-g01">E</span>
+                    <span class="js-g01">W</span>
+
+                </p>
+                <h3 class="C_TL_main">
+                    <span class="js-g01 deco"></span>
+                    <span class="js-g01">イ</span>
+                    <span class="js-g01">ン</span>
+                    <span class="js-g01">タ</span>
+                    <span class="js-g01">ビ</span>
+                    <span class="js-g01">ュ</span>
+                    <span class="js-g01">ー</span>
+                </h3>
             </div>
             <p class="subTL">
                 pequodで働く人の生の声をお伝えします。<br />
@@ -195,8 +214,27 @@
         <section class="C_gallery">
             <!--　type04 -->
             <div class="C_TL type04">
-                <p class="C_TL_deco">GALLERY</p>
-                <h3 class="C_TL_main">フォトギャラリー</h3>
+                <p class="C_TL_deco">
+                    <span class="js-g01">G</span>
+                    <span class="js-g01">A</span>
+                    <span class="js-g01">L</span>
+                    <span class="js-g01">L</span>
+                    <span class="js-g01">E</span>
+                    <span class="js-g01">R</span>
+                    <span class="js-g01">Y</span>
+                </p>
+                <h3 class="C_TL_main">
+                    <span class="js-g01 deco"></span>
+                    <span class="js-g01">フ</span>
+                    <span class="js-g01">ォ</span>
+                    <span class="js-g01">ト</span>
+                    <span class="js-g01">ギ</span>
+                    <span class="js-g01">ャ</span>
+                    <span class="js-g01">ラ</span>
+                    <span class="js-g01">リ</span>
+                    <span class="js-g01">ー</span>
+
+                </h3>
             </div>
             <!--  end -->
             <div class="C_gallery_content">

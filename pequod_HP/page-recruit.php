@@ -244,7 +244,7 @@
             </p>
             <a class="interview_btn" href="<?php bloginfo('url'); ?>/interview">
                 <div class="img"></div>
-                <div class="check">CHECK</div>
+                <div class="check BiyoBiyo">CHECK</div>
             </a>
         </section>
 
