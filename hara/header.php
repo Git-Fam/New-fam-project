@@ -22,6 +22,17 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600;700&family=Zen+Kaku+Gothic+Antique:wght@300;700&display=swap" rel="stylesheet">
         
+        <script>
+            (function(d) {
+                var config = {
+                kitId: 'qrh2ejs',
+                scriptTimeout: 3000,
+                async: true
+                },
+                h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+            })(document);
+        </script>
+        
         <!-- canonical -->
         <link rel=”canonical” href=”URL”/>
         <title>原商事運輸株式会社 – 川口で創業50年。配送なら原商事運輸株式会社</title>
