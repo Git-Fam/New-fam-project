@@ -162,15 +162,16 @@
           @include sp {}
 
           a {
-            background: $P-01BFD5;
             color: $F-FFF;
 
             @include pc {
+              background: $P-191A1B;
               width: pm(150);
               padding: p(15) 0 p(26);
             }
 
             @include sp {
+              background: $P-01BFD5;
               padding: s(25) 0;
             }
 

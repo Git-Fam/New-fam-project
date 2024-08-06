@@ -39,14 +39,15 @@
         color: $F-000;
         font-feature-settings: 'ss04' on;
         line-height: 1.75;
-        @include letterS(1.6);
 
         @include pc {
+          @include letterS(1.6);
           font-size: pm(16);
         }
 
         @include sp {
-          font-size: s(16);
+          letter-spacing: 0rem;
+          font-size: s(13);
         }
       }
 

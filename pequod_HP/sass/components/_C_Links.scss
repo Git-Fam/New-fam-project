@@ -34,10 +34,10 @@
     .card {
       display: block;
       position: relative;
-      filter: grayscale(100%);
-      transition: all 0.5s;
 
       @include pc {
+        filter: grayscale(100%);
+        transition: all 0.5s;
         width: 100%;
         height: p(152);
       }
@@ -48,11 +48,18 @@
       }
 
       &:hover {
-        filter: grayscale(0%);
+
+        @include pc {
+          filter: grayscale(0%);
+        }
 
         .card--bar {
           width: 100%;
           transition: width 0.5s;
+        }
+
+        .enTitle {
+            opacity: 1;
         }
       }
 
@@ -136,6 +143,8 @@
         @include p-center-top;
         width: 100%;
         z-index: 3;
+        opacity: 0;
+        transition: all 0.5s;
 
         .TX {
           color: $F-FFF;

@@ -23,7 +23,7 @@
                 </h3>
             </div>
             <div class="C_greeting_content">
-                <div class="img Sunny"></div>
+                <div class="img"></div>
                 <p class="TX">
                 株式会社pequod。<br class="pc" />
                 社名の由来はとある小説に登場する船の名前です。<br />

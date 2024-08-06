@@ -30,129 +30,22 @@
   }
 }
 
-// 上へ
-.up {
-  opacity: 0;
-  transform: translateY(100%);
+// BiyoBiyo
+.BiyoBiyo {
+  animation: BiyoBiyo 0.5s ease 0s infinite alternate;
+  transform-origin: center;
 
-  &.show {
-    animation: up 0.5s ease forwards;
+  @keyframes BiyoBiyo {
+    from {
+      transform: scale(0.9, 0.9);
+    }
 
-    @keyframes up {
-      0% {
-        opacity: 0;
-        transform: translateY(100%);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    to {
+      transform: scale(1, 1);
     }
   }
 }
 
-// 下へ
-// .down {
-//   opacity: 0;
-//   transform: translateY(-100%);
-
-//   &.show {
-//     animation: down ease forwards;
-
-//     @keyframes down {
-//       0% {
-//         opacity: 0;
-//         transform: translateY(-100%);
-//       }
-
-//       100% {
-//         opacity: 1;
-//         transform: translateY(0);
-//       }
-//     }
-//   }
-// }
-
-// 右へ
-.left {
-  opacity: 0;
-  transform: translateX(100%);
-
-  &.show {
-    animation: left ease forwards;
-
-    @keyframes left {
-      0% {
-        opacity: 0;
-        transform: translateX(100%);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-  }
-}
-
-// 左へ
-.right {
-  opacity: 0;
-  transform: translateX(-100%);
-
-  &.show {
-    animation: right ease forwards;
-
-    @keyframes right {
-      0% {
-        opacity: 0;
-        transform: translateX(-100%);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-  }
-}
-
-// ふわっと
-.pop {
-  opacity: 0;
-  transform: scale(0.5);
-
-  &.show {
-    animation: pop ease forwards;
-
-    @keyframes pop {
-      0% {
-        opacity: 0;
-        transform: scale(0.5);
-      }
-
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-  }
-}
-
-.example-img {
-  aspect-ratio: 357/492;
-  @include imgCover('front-vision.jpg');
-  margin: 0 auto;
-
-  @include pc {
-    width: p(300);
-  }
-
-  @include sp {
-    width: s(300);
-  }
-}
 
 // 晴れる
 .Sunny {
@@ -175,115 +68,6 @@
 
 
 // ロード
-// load上へ
-.loadUp {
-  opacity: 0;
-  transform: translateY(100%);
-
-  &.show {
-    animation: loadUp ease forwards;
-
-    @keyframes loadUp {
-      0% {
-        opacity: 0;
-        transform: translateY(100%);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  }
-}
-
-// load下へ
-.loadDown {
-  opacity: 0;
-  transform: translateY(-100%);
-
-  &.show {
-    animation: loadDown ease forwards;
-
-    @keyframes loadDown {
-      0% {
-        opacity: 0;
-        transform: translateY(-100%);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  }
-}
-
-// load右へ
-.loadLeft {
-  opacity: 0;
-  transform: translateX(100%);
-
-  &.show {
-    animation: loadLeft ease forwards;
-
-    @keyframes loadLeft {
-      0% {
-        opacity: 0;
-        transform: translateX(100%);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-  }
-}
-
-// load左へ
-.loadRight {
-  opacity: 0;
-  transform: translateX(-100%);
-
-  &.show {
-    animation: loadRight ease forwards;
-
-    @keyframes loadRight {
-      0% {
-        opacity: 0;
-        transform: translateX(-100%);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-  }
-}
-
-// loadふわっと
-.loadPop {
-  opacity: 0;
-  transform: scale(0.5);
-
-  &.show {
-    animation: loadPop ease forwards;
-
-    @keyframes loadPop {
-      0% {
-        opacity: 0;
-        transform: scale(0.5);
-      }
-
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-  }
-}
 
 .loadFlash {
   opacity: 0;

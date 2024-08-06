@@ -6,14 +6,13 @@
 ----------------------- */
 
 .C_partnerRecruit {
-  background: $B-F7F7F6;
 
   @include pc {
-    padding: p(65) p(200) p(64);
+    padding: 0 p(200);
   }
 
   @include sp {
-    padding: s(117) 0;
+    padding: 0;
   }
 
 
@@ -36,14 +35,12 @@
 
     @include pc {
       justify-content: space-between;
-      margin-top: p(46);
     }
 
     @include sp {
       flex-direction: column;
       align-items: center;
       gap: s(30);
-      margin-top: s(60);
     }
 
     .box {
