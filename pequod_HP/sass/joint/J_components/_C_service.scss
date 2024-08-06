@@ -20,12 +20,13 @@
 
     .box {
       .C_TL_main{
+        text-shadow: 0px 0px 0.5px;
         @include sp{
           font-size: s(28)
         }
       }
       .TX {
-        @include letterS(1.6);
+        @include letterS(1.4);
         line-height: 1.87;
 
         @include pc {

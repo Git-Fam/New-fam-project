@@ -20,12 +20,15 @@
     }
   }
   .TX{
+    line-height: 1.62;
     @include pc{
       width: p(800);
       margin: p(50) auto;
+      font-size: pm(16);
     }
     @include sp{
       margin-top: s(30);
+      font-size: s(16);
     }
   }
 }
