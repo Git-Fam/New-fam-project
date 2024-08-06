@@ -7,8 +7,34 @@
                 <div class="textbox">
                     <!--　type04 -->
                     <div class="C_TL type04">
-                        <p class="C_TL_deco">RECRUIT<br />MESSAGE</p>
-                        <h3 class="C_TL_main">代表メッセージ</h3>
+                        <p class="C_TL_deco">
+                            <span class="js-g01">R</span>
+                            <span class="js-g01">E</span>
+                            <span class="js-g01">C</span>
+                            <span class="js-g01">R</span>
+                            <span class="js-g01">U</span>
+                            <span class="js-g01">I</span>
+                            <span class="js-g01">T</span>
+                        </p>
+                        <p class="C_TL_deco">
+                            <span class="js-g01">M</span>
+                            <span class="js-g01">E</span>
+                            <span class="js-g01">S</span>
+                            <span class="js-g01">S</span>
+                            <span class="js-g01">A</span>
+                            <span class="js-g01">G</span>
+                            <span class="js-g01">E</span>
+                        </p>
+                        <h3 class="C_TL_main">
+                            <span class="js-g01 deco"></span>
+                            <span class="js-g01">代</span>
+                            <span class="js-g01">表</span>
+                            <span class="js-g01">メ</span>
+                            <span class="js-g01">ッ</span>
+                            <span class="js-g01">セ</span>
+                            <span class="js-g01">ー</span>
+                            <span class="js-g01">ジ</span>
+                        </h3>
                     </div>
                     <!--  end -->
                     <p class="subTL">
@@ -35,8 +61,29 @@
                 <div class="textbox">
                     <!--　type04 -->
                     <div class="C_TL type04">
-                        <p class="C_TL_deco">OUR<br />BUSSINESS</p>
-                        <h3 class="C_TL_main">事業紹介</h3>
+                        <p class="C_TL_deco">
+                            <span class="js-g01">O</span>
+                            <span class="js-g01">U</span>
+                            <span class="js-g01">R</span>
+                        </p>
+                        <p class="C_TL_deco">
+                            <span class="js-g01">B</span>
+                            <span class="js-g01">U</span>
+                            <span class="js-g01">S</span>
+                            <span class="js-g01">I</span>
+                            <span class="js-g01">N</span>
+                            <span class="js-g01">E</span>
+                            <span class="js-g01">S</span>
+                            <span class="js-g01">S</span>
+                        </p>
+                        <h3 class="C_TL_main">
+                            <span class="js-g01 deco"></span>
+                            <span class="js-g01">事</span>
+                            <span class="js-g01">業</span>
+                            <span class="js-g01">紹</span>
+                            <span class="js-g01">介</span>
+
+                        </h3>
                     </div>
                     <!--  end -->
                     <p class="subTL">ウォーターサーバー事業</p>
@@ -50,8 +97,7 @@
                     <p class="subTL">アライアンス<br class="sp" />パートナー事業</p>
                     <p class="TX">
                         パートナー様の持つ「強み」独自の販売チャネルを活かした業務提携により、費用対効果・営業利益の拡大のお手伝いをさせて頂きます。<br />
-                        最終的にはお客様、パートナー様、弊社それぞれがwin-winな関係になれるようパートナー様のニーズに合わせ、<br />
-                        3タイプの契約形態を展開する事により、さまざまな業種の企業様とのご提携が可能です。また、商品の組み合わせにより、本業の収益向上などのシナジーがあるパートナーシップが可能となります。
+                        最終的にはお客様、パートナー様、弊社それぞれがwin-winな関係になれるようパートナー様のニーズに合わせ、3タイプの契約形態を展開する事により、さまざまな業種の企業様とのご提携が可能です。また、商品の組み合わせにより、本業の収益向上などのシナジーがあるパートナーシップが可能となります。
                     </p>
                     <ul class="bussiness_list">
                         <li>
@@ -81,8 +127,22 @@
         <section class="C_welfare">
             <!--　type04 -->
             <div class="C_TL type04">
-                <p class="C_TL_deco">WELFARE</p>
-                <h3 class="C_TL_main">福利厚生</h3>
+                <p class="C_TL_deco">
+                    <span class="js-g01">W</span>
+                    <span class="js-g01">E</span>
+                    <span class="js-g01">L</span>
+                    <span class="js-g01">F</span>
+                    <span class="js-g01">A</span>
+                    <span class="js-g01">R</span>
+                    <span class="js-g01">E</span>
+                </p>
+                <h3 class="C_TL_main">
+                    <span class="js-g01 deco"></span>
+                    <span class="js-g01">福</span>
+                    <span class="js-g01">利</span>
+                    <span class="js-g01">厚</span>
+                    <span class="js-g01">生</span>
+                </h3>
             </div>
             <!--  end -->
             <p class="C_welfare_TX">
@@ -115,8 +175,29 @@
             <div class="C_careerFlow_content">
                 <!--　type04 -->
                 <div class="C_TL type04">
-                    <p class="C_TL_deco">CAREER FLOW</p>
-                    <h3 class="C_TL_main">キャリア制度</h3>
+                    <p class="C_TL_deco">
+                        <span class="js-g01">C</span>
+                        <span class="js-g01">A</span>
+                        <span class="js-g01">R</span>
+                        <span class="js-g01">E</span>
+                        <span class="js-g01">E</span>
+                        <span class="js-g01">R</span>
+                        <span class="js-g01 space"></span>
+                        <span class="js-g01">F</span>
+                        <span class="js-g01">L</span>
+                        <span class="js-g01">O</span>
+                        <span class="js-g01">W</span>
+
+                    </p>
+                    <h3 class="C_TL_main">
+                        <span class="js-g01 deco"></span>
+                        <span class="js-g01">キ</span>
+                        <span class="js-g01">ャ</span>
+                        <span class="js-g01">リ</span>
+                        <span class="js-g01">ア</span>
+                        <span class="js-g01">制</span>
+                        <span class="js-g01">度</span>
+                    </h3>
                 </div>
                 <!--  end -->
                 <p class="TX">
@@ -133,8 +214,26 @@
         <section class="interview">
             <!--　type04 -->
             <div class="C_TL type04">
-                <p class="C_TL_deco">INTERVIEW</p>
-                <h3 class="C_TL_main">インタビュー</h3>
+                <p class="C_TL_deco">
+                    <span class="js-g01">I</span>
+                    <span class="js-g01">N</span>
+                    <span class="js-g01">T</span>
+                    <span class="js-g01">E</span>
+                    <span class="js-g01">R</span>
+                    <span class="js-g01">V</span>
+                    <span class="js-g01">I</span>
+                    <span class="js-g01">E</span>
+                    <span class="js-g01">W</span>
+                </p>
+                <h3 class="C_TL_main">
+                    <span class="js-g01 deco"></span>
+                    <span class="js-g01">イ</span>
+                    <span class="js-g01">ン</span>
+                    <span class="js-g01">タ</span>
+                    <span class="js-g01">ビ</span>
+                    <span class="js-g01">ュ</span>
+                    <span class="js-g01">ー</span>
+                </h3>
             </div>
             <!--  end -->
             <p class="TX">
@@ -143,10 +242,10 @@
                 class="sp"
                 />ぜひ覗いてみて下さい。
             </p>
-            <div class="interview_btn">
-                <a class="img" href="<?php bloginfo('url'); ?>/interview"></a>
-                <div class="check hover-scale">CHECK</div>
-            </div>
+            <a class="interview_btn" href="<?php bloginfo('url'); ?>/interview">
+                <div class="img"></div>
+                <div class="check">CHECK</div>
+            </a>
         </section>
 
         <!--  end -->
@@ -155,8 +254,21 @@
         <section class="C_entry">
             <!--　type04 -->
             <div class="C_TL type04">
-                <p class="C_TL_deco">ENTRY</p>
-                <h3 class="C_TL_main">エントリー</h3>
+                <p class="C_TL_deco">
+                    <span class="js-g01">E</span>
+                    <span class="js-g01">N</span>
+                    <span class="js-g01">T</span>
+                    <span class="js-g01">R</span>
+                    <span class="js-g01">Y</span>
+                </p>
+                <h3 class="C_TL_main">
+                    <span class="js-g01 deco"></span>
+                    <span class="js-g01">エ</span>
+                    <span class="js-g01">ン</span>
+                    <span class="js-g01">ト</span>
+                    <span class="js-g01">リ</span>
+                    <span class="js-g01">ー</span>
+                </h3>
             </div>
             <!--  end -->
             <!-- 選考の流れ -->
@@ -203,7 +315,7 @@
                     </li>
                     <li>
                         <p class="label">給与</p>
-                        <p class="TX">235,000～</p>
+                        <p class="TX">235,000円～</p>
                     </li>
                     <li>
                         <p class="label">勤務時間</p>
