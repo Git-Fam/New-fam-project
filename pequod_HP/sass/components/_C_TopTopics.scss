@@ -105,6 +105,10 @@
     }
 
     .contents {
+      color: $F-1E1E1E;
+      font-feature-settings: 'ss04' on;
+      line-height: 2;
+      @include letterS(1.4);
 
       @include pc {
         padding-right: p(175);
@@ -112,10 +116,6 @@
 
       @include sp {}
 
-        color: $F-1E1E1E;
-        font-feature-settings: 'ss04' on;
-        line-height: 2;
-        @include letterS(1.4);
 
         @include pc {
           font-size: pm(14);
