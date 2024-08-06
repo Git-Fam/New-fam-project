@@ -1,5 +1,5 @@
-@use "mixin" as *;
-@use "variables" as *;
+@use "mixin"as *;
+@use "variables"as *;
 
 /*
 Theme Name: harasho
@@ -49,20 +49,20 @@ Template:
 
     h1 {
       color: #FFFFFF;
-      text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
-      @include StdN;
+      text-shadow: 0px 0px 7.179px rgba(0, 0, 0, 0.70);
+      @include Toppan;
       // font-size: max(calc((70 / 1280) * 100vw), 30px);
-      font-size: max(calc(( 50 /1280)*100vw),40px);
+      font-size: max(calc((35 /1280)*100vw), 25px);
       font-style: normal;
-      font-weight: 800;
+      font-weight: 900;
       line-height: normal;
-      letter-spacing: max(calc((7 / 1280) * 100vw), 7px);
+      letter-spacing: max(calc((2.5 / 1280) * 100vw), 7px);
       position: absolute;
-      top: calc(( 100 /1280)*100vw);
-      left: calc(( 30 /1280)*100vw);
-      span{
-        margin-left: calc(( 120 /1280)*100vw);
-      }
+      text-wrap: nowrap;
+      top: calc((250 /1280)*100vw);
+      left: 50%;
+      transform: translateX(-50%);
+
     }
 
     p {
@@ -520,20 +520,21 @@ Template:
 
     h1 {
       color: #FFFFFF;
-      // text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+      text-shadow: 0px 0px 7.179px rgba(0, 0, 0, 0.70);
       position: absolute;
       top: 30%;
       left: 51%;
       transform: translateX(-50%);
       width: 100%;
       text-align: center;
-      @include StdN;
+      @include Toppan;
       font-size: calc((30 / 390) * 100vw);
       font-style: normal;
       font-weight: 800;
-      line-height: normal;
+      line-height: 1.5;
       letter-spacing: max(calc((7 / 390) * 100vw), 7px);
-      span{
+
+      span {
         font-weight: 800;
       }
     }
@@ -961,60 +962,60 @@ Template:
 
 
 // YouTube
-.YouTube{
+.YouTube {
   aspect-ratio: 262/70;
   background-image: url("imag/YouTube.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
   position: absolute;
-  
-  @include pc{
+
+  @include pc {
     width: calc((262 / 1280) * 100vw);
-    bottom: calc(( 110 / 1280) * 100vw);
-    right: calc(( 25 / 1280) * 100vw);
+    bottom: calc((110 / 1280) * 100vw);
+    right: calc((25 / 1280) * 100vw);
   }
 
-  @include sp{
+  @include sp {
     width: calc((120 / 390) * 100vw);
-    bottom: calc(( 18 / 390) * 100vw);
-    right: calc(( 10 / 390) * 100vw);
+    bottom: calc((18 / 390) * 100vw);
+    right: calc((10 / 390) * 100vw);
   }
 
-  &::before{
+  &::before {
     content: "";
     display: block;
     position: absolute;
     transform: skew(45deg);
     transition: all 0.3s ease;
 
-    @include pc{
+    @include pc {
       width: calc((39 / 1280) * 100vw);
       height: calc((8 / 1280) * 100vw);
       border-right: solid 1px #FFF;
       border-bottom: solid 1px #FFF;
-      bottom: calc(( 16 / 1280) * 100vw);
-      right: calc(( 0 / 1280) * 100vw);
+      bottom: calc((16 / 1280) * 100vw);
+      right: calc((0 / 1280) * 100vw);
     }
 
-    @include sp{
+    @include sp {
       width: calc((18 / 390) * 100vw);
       height: calc((4 / 390) * 100vw);
       border-right: solid 1px #FFF;
       border-bottom: solid 1px #FFF;
-      bottom: calc(( 4 / 390) * 100vw);
-      right: calc(( 0 / 390) * 100vw);
+      bottom: calc((4 / 390) * 100vw);
+      right: calc((0 / 390) * 100vw);
     }
   }
 
-  &:hover{
-    &::before{
-      @include pc{
-        right: calc(( -10 / 1280) * 100vw);
+  &:hover {
+    &::before {
+      @include pc {
+        right: calc((-10 / 1280) * 100vw);
       }
-  
-      @include sp{
-        right: calc(( -5 / 390) * 100vw);
+
+      @include sp {
+        right: calc((-5 / 390) * 100vw);
       }
     }
   }

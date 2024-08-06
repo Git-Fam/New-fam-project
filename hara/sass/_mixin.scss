@@ -37,6 +37,11 @@
   line-height: normal;
 }
 
+@mixin Toppan{
+  font-family: "toppan-bunkyu-midashi-min-st", serif;
+  font-weight: 900;
+  font-style: normal;
+}
 
 
 $pc: 768px; // PC
