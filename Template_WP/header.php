@@ -13,24 +13,19 @@
 
     <!-- ▼SEO -->
     <link rel="”canonical”" href="<?php echo get_home_url(); ?>" />
-    <!-- Primary Meta Tags -->
-    <!-- <title>タイトルタイトルタイトル</title>
-    <meta name="title" content="タイトルタイトルタイトル" />
-    <meta name="description" content="テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト" /> -->
-
-    <!-- Open Graph / Facebook -->
-    <!-- <meta property="og:type" content="website" />
+    <title><?php bloginfo('name'); ?><?php if (wp_title('', false)) { echo ' | ' . wp_title('', false); } ?></title>
+    <meta name="title" content="<?php bloginfo('name'); ?><?php if (wp_title('', false)) { echo ' | ' . wp_title('', false); } ?>" />
+    <meta name="description" content="<?php bloginfo('description'); ?>" />
+    <meta property="og:type" content="website" />
     <meta property="og:url" content="<?php echo get_home_url(); ?>" />
-    <meta property="og:title" content="タイトルタイトルタイトル" />
-    <meta property="og:description" content="テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト" />
-    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.jpg" /> -->
-
-    <!-- Twitter -->
-    <!-- <meta property="twitter:card" content="summary_large_image" />
+    <meta property="og:title" content="<?php bloginfo('name'); ?><?php if (wp_title('', false)) { echo ' | ' . wp_title('', false); } ?>" />
+    <meta property="og:description" content="<?php bloginfo('description'); ?>" />
+    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.jpg" />
+    <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="<?php echo get_home_url(); ?>" />
-    <meta property="twitter:title" content="タイトルタイトルタイトル" />
-    <meta property="twitter:description" content="テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト" />
-    <meta property="twitter:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.jpg" /> -->
+    <meta property="twitter:title" content="<?php bloginfo('name'); ?><?php if (wp_title('', false)) { echo ' | ' . wp_title('', false); } ?>" />
+    <meta property="twitter:description" content="<?php bloginfo('description'); ?>" />
+    <meta property="twitter:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.jpg" />
 
     <!-- ▼ファビコン -->
     <!-- <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri(); ?>/img/favicon_package/apple-touch-icon.png">

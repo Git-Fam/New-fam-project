@@ -19,6 +19,24 @@ $sp: 767px;  // スマホ
   align-items: center;
 }
 
+// absoluteどセンター
+@mixin p-center{
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+// absolute上下センター
+@mixin p-center-top{
+  top: 50%;
+  translate: 0 -50%;
+}
+
+// absolute左右センター
+@mixin p-center-left{
+  left: 50%;
+  translate: -50% 0;
+}
 
 // 縦並び間空き
 @mixin column($gap){
