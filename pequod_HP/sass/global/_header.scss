@@ -27,16 +27,12 @@
   }
 
   @include sp {
-    padding: s(20) 0 0 s(23);
+    padding: s(10) 0 s(10) s(23);
   }
 
   &__home {
     display: block;
     height: fit-content;
-
-    @include pc {
-      margin-top: p(19);
-    }
 
     .TL {
       color: $F-FFF;
