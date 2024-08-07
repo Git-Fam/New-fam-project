@@ -243,7 +243,7 @@
                 />ぜひ覗いてみて下さい。
             </p>
             <a class="interview_btn" href="<?php bloginfo('url'); ?>/interview">
-                <div class="img"></div>
+                <div class="img hover-scale"></div>
                 <div class="check BiyoBiyo">CHECK</div>
             </a>
         </section>

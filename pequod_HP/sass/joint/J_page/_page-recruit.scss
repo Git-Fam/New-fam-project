@@ -37,24 +37,31 @@
 
     .interview_btn {
       position: relative;
+      display: block;
+      overflow: hidden;
+      width: fit-content;
+      @include pc{
+        box-shadow: p(6) p(6) p(15) 0 rgba(0, 0, 0, 0.25);
+        margin: p(20) auto 0;
+
+      }
+      @include sp{
+        box-shadow: s(6) s(6) s(15) 0 rgba(0, 0, 0, 0.25);
+        margin-top: s(30);
+      }
 
       .img {
         @include imgCover("interview.jpg");
-        display: inline-block;
         cursor: pointer;
 
         @include pc {
           width: p(869);
           height: p(344);
-          margin: p(20) auto 0;
-          box-shadow: p(6) p(6) p(15) 0 rgba(0, 0, 0, 0.25);
         }
 
         @include sp {
           width: s(350);
           height: s(136);
-          margin-top: s(30);
-          box-shadow: s(6) s(6) s(15) 0 rgba(0, 0, 0, 0.25);
         }
       }
 
