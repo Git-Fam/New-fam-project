@@ -1,5 +1,5 @@
-@use "../../functions"as *;
-@use "../J_functions"as *;
+@use "../../functions" as *;
+@use "../J_functions" as *;
 
 /* -----------------------
   C_consult_btn
@@ -115,6 +115,8 @@
       color: $F-031E2A;
       box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
       @include wt700;
+      transition: all 0.3s;
+      border: solid transparent;
 
       @include pc {
         width: p(295);
@@ -122,6 +124,7 @@
         border-radius: p(40);
         margin-top: p(40);
         font-size: pm(22);
+        border-width: p(2);
       }
 
       @include sp {
@@ -130,6 +133,13 @@
         border-radius: s(40);
         margin: s(207) auto 0;
         font-size: s(22);
+        border-width: s(2);
+      }
+
+      &:hover {
+        background: $B-031E2A;
+        color: $F-FFF;
+        border-color: $B-FFF;
       }
     }
   }
