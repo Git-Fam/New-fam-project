@@ -143,6 +143,7 @@
     color: $F-031E2A;
     @include wt700;
     text-shadow: 0px 0px 0px;
+    transition: all 0.3s;
 
     @include pc {
       border: p(3) solid $B-031E2A;
@@ -161,6 +162,10 @@
       height: s(68);
       margin: s(46) auto 0;
       font-size: s(22);
+    }
+    &:hover {
+      background: $B-031E2A;
+      color: $F-FFF;
     }
   }
 
