@@ -7,18 +7,37 @@
 .C_RecruitBtn {
   display: block;
   position: relative;
-  @include imgCover('C_RecruitBtnーbg.jpg');
+  overflow: hidden;
+  --transition-duration: 0.5s;
 
   @include pc {
     height: p(377);
-    background-position: top 27% center;
     @include column(p(10));
   }
 
   @include sp {
     height: s(400);
-    background-size: 225%;
-    background-position: top 40% left 22%;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: auto;
+    width: 100%;
+    height: 100%;
+    @include imgCover('C_RecruitBtnーbg.jpg');
+    transition: all var(--transition-duration);
+    z-index: 1;
+
+    @include pc {
+      background-position: top 27% center;
+    }
+
+    @include sp {
+      background-size: 225%;
+      background-position: top 40% left 22%;
+    }
   }
 
   &::before {
@@ -30,10 +49,16 @@
     width: 100%;
     height: 100%;
     background-color: rgba(30, 30, 30, 0.80);
-    transition: all 0.3s;
+    transition: all var(--transition-duration);
+    z-index: 2;
   }
 
   &:hover {
+
+    &::after {
+      transform: scale(1.1);
+    }
+
     &::before {
       background-color: rgba(30, 30, 30, 0.30);
     }
@@ -68,7 +93,7 @@
       color: $F-D7D7D7;
       @include wt300;
       @include letterS(1.3);
-      transition: all 0.3s;
+      transition: all var(--transition-duration);
 
       @include pc {
         font-size: pm(13);
@@ -82,7 +107,7 @@
     .TL {
       color: #FFF;
       @include julius;
-      transition: all 0.3s;
+      transition: all var(--transition-duration);
 
       @include pc {
         font-size: p(50);

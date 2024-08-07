@@ -129,8 +129,6 @@
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
 
-
-
       &.active {
         right: 0;
       }
@@ -142,6 +140,9 @@
 
       @include pc {
         padding-right: pm(150);
+        background: rgba(255, 255, 255, 0.50);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
       }
 
       @include sp {
@@ -187,10 +188,7 @@
           color: $F-191A1B;
           letter-spacing: 0.9px;
           text-align: center;
-          background: rgba(255, 255, 255, 0.50);
           transition: all 0.3s;
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
 
           @include pc {
             padding: p(14) p(45) p(15);
@@ -198,8 +196,11 @@
           }
 
           @include sp {
+            background: rgba(255, 255, 255, 0.50);
             padding: s(10) 0;
             font-size: s(15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
           }
 
           &:hover {

@@ -2,12 +2,14 @@
 
 </main>
 <footer class="footer">
-    <a class="C_RecruitBtn" href="<?php bloginfo('url'); ?>/recruit">
-        <div class="C_RecruitBtn--inner">
-            <p class="TX">採用募集</p>
-            <h2 class="TL">RECRUIT</h2>
-        </div>
-    </a>
+    <?php if (is_front_page() || is_post_type_archive('post') || is_singular('post') || is_page('service') || is_page('company')) : ?>
+        <a class="C_RecruitBtn" href="<?php bloginfo('url'); ?>/recruit">
+            <div class="C_RecruitBtn--inner">
+                <p class="TX">採用募集</p>
+                <h2 class="TL">RECRUIT</h2>
+            </div>
+        </a>
+    <?php endif; ?>
     <div class="C_MainFooter">
         <div class="C_MainFooter__container">
             <div class="C_MainFooter__container--title">
