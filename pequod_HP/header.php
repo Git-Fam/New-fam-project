@@ -14,26 +14,22 @@
 
     <!-- ▼SEO -->
     <link rel="”canonical”" href="<?php echo get_home_url(); ?>" />
-    <!-- Primary Meta Tags -->
-    <!-- <title>タイトルタイトルタイトル</title>
+    <title>タイトルタイトルタイトル</title>
     <meta name="title" content="タイトルタイトルタイトル" />
-    <meta name="description" content="テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト" /> -->
+    <meta name="description" content="テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト" />
 
-    <!-- Open Graph / Facebook -->
-    <!-- <meta property="og:type" content="website" />
+    <meta property="og:type" content="website" />
     <meta property="og:url" content="<?php echo get_home_url(); ?>" />
     <meta property="og:title" content="タイトルタイトルタイトル" />
     <meta property="og:description" content="テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト" />
-    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.jpg" /> -->
+    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.jpg" />
 
-    <!-- Twitter -->
-    <!-- <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="<?php echo get_home_url(); ?>" />
     <meta property="twitter:title" content="タイトルタイトルタイトル" />
     <meta property="twitter:description" content="テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト" />
-    <meta property="twitter:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.jpg" /> -->
+    <meta property="twitter:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.jpg" />
 
-    <!-- ▼ファビコン -->
     <!-- <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri(); ?>/img/favicon_package/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_template_directory_uri(); ?>/img/favicon_package/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_template_directory_uri(); ?>/img/favicon_package/favicon-16x16.png">
@@ -41,13 +37,6 @@
     <link rel="mask-icon" href="<?php echo get_template_directory_uri(); ?>/img/favicon_package/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff"> -->
-
-
-    <!-- ▼クロールして欲しくない -->
-    <!-- <meta name="robots" content="noindex,nofollow"> -->
-
-    <!-- ▼テーマカラー -->
-    <!-- <meta name="theme-color" content="#e9c931"> -->
 
 
     <!-- ▼フォント -->
