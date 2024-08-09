@@ -1,0 +1,39 @@
+
+// マイページタイトル
+$myTitle: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 379 117" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_d_1_1266)"><path d="M8.40389 38.724C6.63631 36.2658 7.92245 32.8052 10.8714 32.1191C24.8155 28.875 58.0159 21.2432 64.4431 20.6076C72.625 19.7986 83.5028 18.1799 88.3491 21.1457C103.154 30.2055 101.326 74.9323 100.476 87.8044C100.342 89.8373 98.7502 91.4205 96.7228 91.6209C92.9418 91.9948 86.1935 92.6621 76.9881 93.5723C65.8174 94.6769 34.4791 102.748 19.8393 106.625C16.5459 107.497 13.6035 104.341 14.7017 101.116L26.39 66.7928C26.833 65.492 26.6197 64.0573 25.8175 62.9417L8.40389 38.724Z" fill="%233EADDC"/><path d="M370.764 38.6712C372.523 36.2134 371.237 32.7611 368.293 32.0743C354.411 28.8355 321.393 21.2241 315 20.5919C306.858 19.7868 296.034 18.1735 291.21 21.1414C276.474 30.207 278.27 74.9227 279.109 87.7989C279.242 89.8333 280.834 91.4187 282.863 91.6193C286.629 91.9917 293.336 92.6549 302.481 93.5591C313.589 94.6575 344.738 102.704 359.317 106.576C362.607 107.45 365.553 104.301 364.461 101.076L352.842 66.7481C352.404 65.4522 352.616 64.0243 353.412 62.9118L370.764 38.6712Z" fill="%233EADDC"/><path d="M60.9868 15.9014C60.9868 13.7015 62.6336 11.8692 64.8255 11.6816C81.1253 10.2864 145.762 5 189.336 5C232.91 5 297.546 10.2864 313.846 11.6816C316.038 11.8692 317.685 13.7015 317.685 15.9014V82.8909C317.685 85.3881 315.585 87.3532 313.097 87.1413C295.652 85.6559 232.27 80.5237 189.336 80.5237C146.402 80.5237 83.02 85.6559 65.575 87.1413C63.0868 87.3532 60.9868 85.3881 60.9868 82.8909V15.9014Z" fill="%234BC7FB"/></g><defs><filter id="filter0_d_1_1266" x="0.556657" y="0.305187" width="378.049" height="115.856" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy="2.34741"/><feGaussianBlur stdDeviation="3.52111"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_1266"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_1266" result="shape"/></filter></defs></svg>');
+
+// ページクリップ
+$pageClip: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 54 36" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="18" cy="18" r="18" fill="%23D9D9D9"/><path d="M6 17.0268C6 11.6979 9.56497 7.01272 14.7871 5.95135C19.7468 4.94333 25.9026 3.95204 30.75 4.0018C35.1511 4.04698 40.694 4.97312 45.2637 5.92275C50.4617 7.00292 54 11.6769 54 16.9859C54 24.6346 46.8297 30.2535 39.2516 29.2159C36.3075 28.8127 33.3304 28.5235 30.75 28.5002C27.7169 28.4729 24.1667 28.8034 20.7173 29.2711C13.1489 30.2974 6 24.6645 6 17.0268Z" fill="url(%23paint0_linear_1_1247)"/><defs><linearGradient id="paint0_linear_1_1247" x1="38" y1="9.5" x2="13.5" y2="18" gradientUnits="userSpaceOnUse"><stop stop-color="%232E7A51"/><stop offset="1" stop-color="%23235F42"/></linearGradient></defs></svg>');
+
+
+// pageTabGray
+$pageTabGray: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 118 290" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23 7.5L118 0V290H29L0 187.5L23 7.5Z" fill="%23474747" fill-opacity="0.5"/></svg>');
+
+// closeアイコン
+$close: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none"><path d="M1.51471 18.4854L18.4853 1.51479" stroke="%23000" stroke-width="2"/><path d="M1.51471 1.51465L18.4853 18.4852" stroke="%23000" stroke-width="2"/></svg>');
+
+// slickArrow
+$slickArrow: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 30 45" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 5L25 23L4.5 40.5" stroke="%23F38549" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+
+
+
+// SVG使い方（色変更パターン）
+@function encode($ColorCode){
+  @return '%23' + str-slice($ColorCode,2,-1);
+}
+
+// pageTab
+@function pageTab($Color) {
+    @return  url('data:image/svg+xml;utf-8,<svg viewBox="0 0 118 290" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23 7.5L118 0V290H29L0 187.5L23 7.5Z" fill="#{$Color}"/><path d="M108 12L31.1474 19.5L10 185L38.3684 279H108V12Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 5"/></svg>');
+}
+
+// closeアイコン
+// @function close($Color) {
+  //   @return  url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none"><path d="M1.51471 18.4854L18.4853 1.51479" stroke="#{$Color}" stroke-width="2"/><path d="M1.51471 1.51465L18.4853 18.4852" stroke="#{$Color}" stroke-width="2"/></svg>');
+  // }
+  
+  // ↓CSSでは
+  // background-image: svg(encode('#FFF'));
+
+
+

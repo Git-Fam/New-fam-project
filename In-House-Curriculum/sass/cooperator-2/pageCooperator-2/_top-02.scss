@@ -1,0 +1,93 @@
+@use "../../global" as *;
+@use "../globalCooperator-2" as *;
+
+/* -----------------------
+  top 2ページ目
+----------------------- */
+
+#top-02{
+  z-index: 4;
+  position: relative;
+  @include pc{
+    height: 100%;
+    width: 100%;
+  }
+  .cloud01{
+    @include iconContain($cloud01);
+    position: absolute;
+    @include pc{
+      width: 240px;
+      height: 113px;
+      left: -52px;
+      top: -29px;
+    }
+  }
+  .cloud02{
+    @include iconContain($cloud02);
+    position: absolute;
+    @include pc{
+      width: 480px;
+      height: 263px;
+      right: 50px;
+      top: -130px;
+
+    }
+  }
+
+  .butterfly{
+    @include imgContain("top-butterfly01.png");
+    position: absolute;
+    z-index: 300;
+    @include pc{
+      width: 140px;
+      height: 135px;
+      bottom: 150px;
+      right: 300px
+    }
+  }
+  .C_feature{
+    position: relative;
+    z-index: 500;
+    @include pc{
+      padding-top: 117px;
+      margin: 0 auto;
+    }
+    @include sp{
+      padding-top: 15vh;
+    }
+    
+  }
+  .tree{
+    .tree04{
+      position: absolute;
+      @include imgContain("top-tree04.jpg");
+      @include pc{
+        width: 886px;
+        height: 1094px;
+        bottom: -100px;
+        right: -447px
+      }
+    }
+  }
+
+  .grass{
+    .grass03{
+      @include imgCover("top-grass03.jpg");
+      @include pc{
+        width: 942px;
+        height: 200px;
+        bottom: p(-31);
+        left: p(-120);
+        position: absolute;
+      }
+      @include sp{
+        width: 236px;
+        height: 90px;
+        bottom: -10px;
+        left: -20px;
+        position: fixed;
+      }
+    }
+  }
+
+}

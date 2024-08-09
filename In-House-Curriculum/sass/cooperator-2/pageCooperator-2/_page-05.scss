@@ -1,0 +1,118 @@
+@use "../../global" as *;
+@use "../globalCooperator-2" as *;
+
+/* -----------------------
+  page-05
+----------------------- */
+
+
+.page-wappaer{
+  #page-05{
+    position: relative;
+    overflow: hidden;
+    .btn-wrap{
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      @include pc{
+        width: clamp(650px,calc(( 700/1280)*100vw),700px);
+        top: 14%;
+      }
+      @include sp{
+        width: clamp(300px,calc(( 350/390)*100vw),350px);
+        top: 20%;
+
+      }
+      .top-TX{
+        text-align: center;
+        color: $namebg;
+        display: block;
+        @include wt700;
+        @include pc{
+          font-size: clamp(30px,calc(( 35/1280)*100vw),35px);
+        }
+        @include sp{
+          font-size:clamp(16px,calc((20/390)*100vw),20px);
+          line-height: 1.5;
+        }
+      }  
+      .btn{
+        display: flex;
+        background: $P-F38549;
+        @include pc{
+          width: clamp(350px,calc(( 438/1280)*100vw),438px);
+          height: clamp(70px,calc(( 85/1280)*100vw),85px);
+          margin: 40px auto 0;
+          border-radius: p(15);
+        }
+        @include sp{
+          width: clamp(200px,calc(( 250/390)*100vw),250px);
+          height: clamp(45px,calc(( 50/390)*100vw),50px);
+          margin: 33px auto 0;
+          border-radius: s(15);
+        }
+      
+        .TX{
+          color: $F-FFFFFF;
+          text-align: center;
+          margin: 0 auto;
+          @include wt500;
+          @include pc{
+            font-size: clamp(35px,calc((40/1280)*100vw),40px);
+            line-height: clamp(70px,calc(( 85/1280)*100vw),85px);
+          }
+          @include sp{
+            font-size: clamp(20px,calc(( 25/390)*100vw),25px);
+            line-height:clamp(45px,calc(( 50/390)*100vw),50px);
+          }
+        }
+        a{
+          position: absolute;
+          z-index: 999;
+          @include pc{
+            width: clamp(350px,calc(( 438/1280)*100vw),438px);
+            height: clamp(70px,calc(( 85/1280)*100vw),85px);
+          }
+          @include sp{
+            width: clamp(200px,calc(( 250/390)*100vw),250px);
+            height: clamp(45px,calc(( 50/390)*100vw),50px);
+          }  
+        }  
+        &:hover{
+          animation: poyo 1s ease 0s infinite;    
+          @keyframes poyo {
+            from, to { transform: none; }
+            10% { 
+              transform: scale(1.1);
+            }
+            40% {
+              transform: scale(.9);
+            }
+            60% {
+              transform: scale(1.04); 
+            }
+            80% { 
+              transform: scale(.98); 
+            }
+          } 
+        }   
+      }
+    }
+    .C_character{
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      
+      @include pc{
+        width: clamp(450px,calc(( 550/1280)*100vw),550px);
+        height: 100%;
+        bottom: -190px;
+      }
+      @include sp{
+        width: clamp(220px,calc(( 300/390)*100vw),300px);
+        bottom: 30px;
+      }
+    }
+  }
+}

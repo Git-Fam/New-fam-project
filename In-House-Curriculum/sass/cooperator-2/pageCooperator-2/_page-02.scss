@@ -1,0 +1,30 @@
+@use "../../global" as *;
+@use "../globalCooperator-2" as *;
+
+/* -----------------------
+  page-02
+----------------------- */
+
+.page-wappaer{
+  .page-content{
+    .icon{
+      @include iconContain($testIcon);
+      position: absolute;
+      @include pc{
+        width: clamp(100px,calc(( 170/1280)*100vw),170px);
+        height: clamp(100px,calc(( 154/1280)*100vw),154px);
+        top: 10%;
+        left: 15%;
+      }
+      .TX{
+        color: $F-1E673C;
+        font-family: "Reggae One", system-ui;
+        text-align: center;
+        @include pc{
+          font-size: clamp(75px,calc(( 85/1280)*100vw),85px);
+          line-height: clamp(100px,calc(( 150/1280)*100vw),150px);
+        }
+      }
+    }
+  }
+}

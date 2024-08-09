@@ -1,0 +1,34 @@
+@use "../../global" as *;
+@use "../globalCooperator-2" as *;
+
+.C_bubble{
+  @include imgCover("bubble.png");
+  @include pc{
+    width: p(424);
+    height: p(224);
+    padding-top: p(50);
+  }
+  @include sp{
+    width: s(220);
+    height: s(120);
+    padding-top: s(25);
+
+  }
+  .TX{
+    color: $khaki;
+    font-weight: 600;
+    @include pc{
+      width: p(259);
+      font-size: p(25);
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+    @include sp{
+      width: s(150);
+      font-size: s(14);
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+  }
+
+}

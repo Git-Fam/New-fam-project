@@ -1,0 +1,60 @@
+@use "../global" as *;
+
+/* -----------------------
+  registered
+----------------------- */
+
+.registered {
+  @include height;
+  @include imgCover('archive-img.png');
+  position: relative;
+
+  @include pc {
+
+  }
+
+  @include sp {
+   background-position: left center;
+  }
+
+  &--wap{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    @include column(40px);
+
+    &--title{
+
+      .TX{
+        text-align: center;
+        @include wt400;
+        color: $F-202020;
+
+        @include pc {
+          font-size: p(30);
+        }
+
+        @include sp {
+          font-size: s(23);
+        }
+      }
+    }
+
+    &--back{
+        display: block;
+        text-align: center;
+        @include wt400;
+        color: $F-202020;
+
+        @include pc {
+          font-size: p(16);
+        }
+
+        @include sp {
+          font-size: s(16);
+        }
+    }
+  }
+}
+ 

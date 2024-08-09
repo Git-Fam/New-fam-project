@@ -1,0 +1,416 @@
+@use "../global" as *;
+
+/* -----------------------
+  archive
+----------------------- */
+
+.archive {
+  @include height;
+  @include imgCover('archive-img.png');
+  position: relative;
+
+  @include pc {
+    padding: p(0) p(30);
+    min-height: 800px;
+  }
+
+  @include sp {
+    background-position: left center;
+  }
+
+  &--title {
+    @include imgCover('archiveTitle.png');
+    background-position: bottom center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+
+    @include pc {
+      padding: p(15) 0 0 p(35);
+      height: p(59);
+    }
+
+    @include sp {
+      padding: s(15) s(20);
+    }
+
+    .TL {
+      @include wt400;
+      color: $F-FFFFFF;
+
+      @include pc {
+        font-size: p(23);
+      }
+
+      @include sp {
+        font-size: s(23);
+      }
+    }
+  }
+
+  .my--Btn{
+    position: absolute;
+    z-index: 999;
+    border-radius: 50%;
+    background-color: #F38549;
+    aspect-ratio: 1;
+    
+    @include pc{
+      width: p(200);
+      top: p(-110);
+      right: p(-30);
+    }
+
+    @include sp{
+      width: s(150);
+      top: s(-80);
+      right: s(-20);
+    }
+
+    .TX{
+      color: $F-FFFFFF;
+      font-weight: 800;
+      position: absolute;
+      
+      @include pc{
+        bottom: p(50);
+        left: p(30);
+        font-size: p(20);
+      }
+
+      @include sp{
+        bottom: s(40);
+        left: s(20);
+        font-size: s(16);
+      }
+    }
+  }
+
+  &--contents {
+    width: 100%;
+    height: 80%;
+    position: absolute;
+    z-index: 9;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    @include pc {
+      top: 53%;
+    }
+
+    @include sp {
+      top: 50%;
+    }
+
+    .not-login{
+      text-align: center;
+    }
+
+    // &::before {
+    //   content: '';
+    //   position: absolute;
+    //   top: 4%;
+    //   aspect-ratio: 30 / 45;
+    //   @include iconContain($slickArrow);
+    //   z-index: 1;
+    //   animation: arrow 1s infinite;
+
+    //   @include pc {
+    //     width: p(30);
+    //     right: 0%;
+    //   }
+
+    //   @include sp {
+    //     width: s(20);
+    //     right: 0%;
+    //   }
+
+    //   @keyframes arrow {
+
+    //     0%,
+    //     100% {
+    //       transform: translateX(0%);
+    //     }
+
+    //     50% {
+    //       transform: translateX(-50%);
+    //     }
+    //   }
+
+
+    // }
+
+    &--tab {
+      display: flex;
+      overflow-x: scroll;
+      position: relative;
+      margin: 0 auto;
+
+      @include pc {
+        // padding: 0 0 p(60);
+        width: 90%;
+        gap: p(35);
+      }
+
+      @include sp {
+        width: 95%;
+        gap: s(20);
+      }
+
+
+      .archive--item {
+        cursor: pointer;
+        flex-shrink: 0;
+
+        @include pc {
+          width: p(76);
+        }
+
+        @include sp {
+          width: s(50);
+        }
+
+        &.active {
+          cursor: default;
+
+          .archive--item--img {
+            border: solid $P-F38549;
+
+            @include pc {
+              border-width: p(5);
+            }
+
+            @include sp {
+              border-width: s(2);
+            }
+          }
+
+          .archive--item--title {
+            background-color: $P-F38549;
+
+            .TX {
+              color: $F-FFFFFF;
+            }
+          }
+        }
+
+        &:hover {
+          .archive--item--img {
+            border: solid $P-f3844992;
+
+            @include pc {
+              border-width: p(5);
+            }
+
+            @include sp {
+              border-width: s(2);
+            }
+          }
+
+          .archive--item--title {
+            background-color: $P-f3844992;
+
+            .TX {
+              color: $F-FFFFFF;
+            }
+          }
+        }
+
+        &--img {
+          border-radius: 50%;
+          object-fit: cover;
+          object-position: center;
+          transition: all 0.3s;
+
+          @include pc {
+            width: p(76);
+            height: p(76);
+          }
+  
+          @include sp {
+            width: s(50);
+            height: s(50);
+          }
+        }
+
+        &--title {
+          text-align: center;
+          border-radius: 50px;
+          transition: all 0.3s;
+          width: 100%;
+          font-size: 100%;
+
+          @include pc {
+            padding: p(10) 0;
+          }
+
+          @include sp {
+            padding: s(3) 0;
+          }
+
+          .TX {
+            @include wt800;
+            color: #6B644D;
+            transition: all 0.3s;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+
+            @include pc {
+              font-size: p(14);
+            }
+
+            @include sp {
+              font-size: s(14);
+            }
+          }
+        }
+      }
+    }
+
+
+    &--items {
+      position: absolute;
+      overflow-x: scroll;
+      overflow-y: hidden;
+
+      @include pc {
+        width: 80%;
+        top: 60%;
+        right: 0;
+        translate: 0 -50%;
+        padding: p(80) 0 0;
+      }
+
+      @include sp {
+        width: 95%;
+        height: fit-content;
+        margin: 0 auto;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+      }
+
+      &--wap {
+        display: none;
+
+        @include pc {
+          gap: p(35);
+        }
+
+        @include sp {
+          gap: s(20);
+        }
+
+        &.active {
+          display: flex;
+        }
+
+        .archive--items {
+          aspect-ratio: 2/1;
+          flex-shrink: 0;
+          cursor: pointer;
+
+          @include pc {
+            width: p(411);
+            @include column(p(23));
+            padding-right: p(20);
+          }
+
+          @include sp {
+            width: 50%;
+            @include column(s(20));
+          }
+
+          &:hover {
+
+            .items--title {
+              background-color: #F38549;
+
+              .TL {
+                color: $F-FFFFFF;
+              }
+            }
+          }
+
+          @include sp {}
+
+          .items--img {
+            width: 100%;
+            aspect-ratio: 411 / 268;
+            border-radius: 5px;
+            background-color: #ffffff;
+
+            @include pc {
+              padding: p(17);
+            }
+
+            @include sp {
+              padding: s(10);
+            }
+
+            .img {
+              aspect-ratio: 376 / 236;
+              width: 100%;
+              height: fit-content;
+              object-fit: cover;
+              object-position: center;
+
+            }
+
+          }
+
+          .items--title {
+            width: 100%;
+            border-radius: 50px;
+            background-color: #ffffffb4;
+            border: solid #F38549;
+            transition: all 0.3s;
+
+            @include pc {
+              padding: p(3) 0;
+              border-width: p(3);
+            }
+
+            @include sp {
+              padding: s(3) 0;
+              border-width: s(2);
+            }
+
+            .TL {
+              text-align: center;
+              @include wt800;
+              color: #F38549;
+
+              @include pc {
+                font-size: p(32);
+              }
+
+              @include sp {
+                font-size: s(16);
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+    .C_character {
+      position: absolute;
+
+      @include pc {
+        width: p(220);
+        bottom: 0;
+        left: p(30);
+      }
+
+      @include sp {
+        width: s(150);
+        bottom: -10%;
+        left: 0;
+      }
+    }
+  }
+}

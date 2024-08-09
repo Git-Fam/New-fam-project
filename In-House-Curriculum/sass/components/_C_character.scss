@@ -1,0 +1,17 @@
+@use "../global" as *;
+
+/* -----------------------
+  C_character
+----------------------- */
+
+.C_character{
+  aspect-ratio: 1/1;
+
+  &.character-1{
+    @include character('character-1.gif' , p(320) , s(220));
+  }
+
+  &.character-2{
+    @include character('character-2.png' , p(220) , s(220));
+  }
+}

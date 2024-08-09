@@ -1,0 +1,127 @@
+@use "../../global" as *;
+@use "../globalCooperator-2" as *;
+
+/* -----------------------
+  C_top
+----------------------- */
+
+.C_top{
+  text-align: center;
+  color:#FFF;
+  z-index: 500;
+  position: relative;
+  .C_topTL{
+    @include mplus; 
+    position: relative; 
+    .TL-top{
+      @include wt800;
+      @include pc{
+        font-size: 45px;
+        text-shadow: 0 4px 0 rgba(150, 27, 0, 0.25);
+      }
+      @include sp{
+        font-size: s(30);
+        text-shadow: 0 s(2) 0 rgba(150, 27, 0, 0.25);
+      }
+    }
+    .bird{
+      iframe{
+        position: absolute;
+        
+        @include pc{
+          width: 130px;
+          height: 100%;
+          top: -70px;
+          right: 186px;
+        }
+        @include sp{
+          width: s(65);
+          height: s(65);
+          top: s(-20);
+          right: s(60);
+        }
+      }
+    }
+    .TL-main{
+      margin: 0 auto;
+      @include pc{
+        @include imgContain("bg-wood.png");
+        width: 810px;
+        height: 110px;
+        margin-top: 15px;
+      }
+      @include sp{
+        @include imgContain("bg-woodSP.png");
+        width: s(320);
+        height: s(100);
+        margin-top: s(5);
+        display: grid;
+        place-items: center center;
+      }
+      .TX{
+        @include wt900;
+        @include pc{
+          font-size: 45px;
+          line-height: 100px;
+          text-shadow: 0 4px 0 rgba(0, 0, 0, 0.25);
+        }
+        @include sp{
+          font-size: s(25);
+          line-height: s(50);
+          text-shadow: 0 s(2) 0 rgba(0, 0, 0, 0.25);
+          line-height: 150%;
+        }
+        .yellow{
+          @include wt900;
+          color: $yellow;
+        }
+        .large{
+          @include wt900;
+          @include pc{
+            font-size: 55px;
+          }
+          @include sp{
+            font-size: s(35)
+          }
+        }
+      }
+    }
+  }
+  .C_topTX{
+    @include mplus;
+    @include pc{
+      text-shadow: 0 0 15px rgba(0, 0, 0, 0.35);
+      margin-top: 59px;
+    }
+    @include sp{
+      text-shadow: 0 0 s(7) rgba(0, 0, 0, 0.35);
+      margin-top: s(30);
+    }
+    .TX-TL{
+      font-weight: 600;
+      @include pc{
+        font-size:40px;
+        letter-spacing: 4px;
+      }
+      @include sp{
+        font-size: s(20);
+        letter-spacing: s(2);
+      }
+    }
+    .TX{
+      @include pc{
+        font-size:16px;
+        line-height: 2.18; 
+        letter-spacing: 0.64px;
+        margin-top: 20px;
+      }
+      @include sp{
+        width: s(300);
+        margin: 0 auto;
+        font-size: s(14);
+        line-height: 1.5; 
+        margin-top: s(20);
+      }
+    }  
+  }
+}

@@ -1,0 +1,844 @@
+@use "../../global" as *;
+@use "../globalCooperator" as *;
+
+/* -----------------------
+  top-scroll
+----------------------- */
+
+.a {
+  overflow: hidden;
+  position: relative;
+}
+
+.my-btn {
+  display: block;
+  background-color: $F-F38549;
+
+  @include pc {
+    position: absolute;
+    z-index: 999;
+    top: p(-110);
+    left: p(-100);
+    width: p(250);
+    height: p(250);
+    border-radius: p(200);
+  }
+  @include sp {
+    position: absolute;
+    z-index: 999;
+    top: s(-140);
+    left: s(-120);
+    width: s(250);
+    height: s(250);
+    border-radius: p(500);
+  }
+
+  &:hover {
+    animation: poyo 1s ease 0s infinite;
+
+    @keyframes poyo {
+      from,
+      to {
+        transform: none;
+      }
+      10% {
+        transform: scale(1.1);
+      }
+      40% {
+        transform: scale(0.9);
+      }
+      60% {
+        transform: scale(1.04);
+      }
+      80% {
+        transform: scale(0.98);
+      }
+    }
+  }
+
+  .btntx {
+    color: $F-FFFFFF;
+    text-align: center;
+    display: block;
+    @include wt800;
+    @include pc {
+      font-size: p(20);
+      padding: p(150) 0 0 p(90);
+    }
+    @include sp {
+      font-size: s(16);
+      padding: s(170) 0 0 p(320);
+    }
+  }
+}
+
+.scl-wrapper {
+  @include pc {
+    position: relative;
+    @include height;
+    display: flex;
+    width: 500%;
+  }
+  @include sp {
+  }
+
+  .side-scroll {
+    @include pc {
+      background-position: left;
+      @include height;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      min-width: 1280px;
+      margin-right: -1px;
+      &-01 {
+        @include imgCover("scl-bg-1.jpg");
+        background-size: 100% 100%;
+      }
+      &-02 {
+        @include imgCover("scl-bg-2.jpg");
+        background-size: 100% 100%;
+      }
+      &-03 {
+        @include imgCover("scl-bg-3.jpg");
+        background-size: 100% 100%;
+      }
+      &-04 {
+        @include imgCover("scl-bg-4.jpg");
+        background-size: 100% 100%;
+      }
+      &-05 {
+        @include imgCover("scl-bg-5.jpg");
+        background-size: 100% 100%;
+      }
+    }
+
+    @include sp {
+      height: 100vh;
+      padding: 20% 0;
+      // background-attachment: fixed;
+      
+
+      width: 100%;
+
+      &-01 {
+        @include imgCover("scl-bg-1.jpg");
+       transform: inherit!important;
+      }
+      &-02 {
+        @include imgCover("scl-bg-2.jpg");
+        transform: inherit!important;
+      }
+      &-03 {
+        @include imgCover("scl-bg-3.jpg");
+        transform: inherit!important;
+      }
+      &-04 {
+        @include imgCover("scl-bg-4.jpg");
+        transform: inherit!important;
+      }
+      &-05 {
+        @include imgCover("scl-bg-5.jpg");
+        transform: inherit!important;
+        background-position: left;
+      }
+    }
+  }
+
+  /* -----------------------
+  top 1ページ目
+----------------------- */
+
+  .top-wappaer-p {
+    @include pc {
+      @include height;
+    }
+    @include sp {
+      height: auto;
+    }
+
+    .top-p {
+      @include pc {
+        height: 100%;
+        width: 1280px;
+      }
+      @include sp {
+        background-position: left;
+        background-attachment: fixed;
+      }
+      #top-01 {
+        z-index: 5;
+        position: relative;
+        @include pc {
+          height: 100%;
+          width: 100%;
+        }
+
+        .C_character-p {
+          z-index: 300;
+          @include sp {
+            width: clamp(150px, calc((200 / 390) * 100vw), 250px);
+            bottom: s(10);
+            left: s(10);
+            position: fixed;
+            height: s(150);
+          }
+        }
+        // .character-3-p {
+          // @include imgContain("character-3.png");
+        // }
+
+        .tree {
+          position: relative;
+          display: contents;
+          z-index: 400;
+          height: 100%;
+          .tree01 {
+            @include imgContain("top-tree01.jpg");
+            @include pc {
+              position: absolute;
+              width: 409px;
+              height: 833px;
+              bottom: 0;
+              left: p(-80);
+            }
+            @include sp {
+              width: 300px;
+              height: 700px;
+              bottom: 0;
+              left: -100px;
+              position: fixed;
+            }
+          }
+          .tree02 {
+            @include imgContain("top-tree02.jpg");
+            @include pc {
+              width: 400px;
+              height: 526px;
+              bottom: 0;
+              left: 0;
+              position: absolute;
+            }
+            @include sp {
+              width: 280px;
+              height: 368px;
+              bottom: 0;
+              left: -66px;
+              position: fixed;
+            }
+          }
+          .tree03 {
+            @include imgContain("top-tree03.jpg");
+            @include pc {
+              width: 600px;
+              height: 759px;
+              right: p(-170);
+              bottom: 0;
+              position: absolute;
+            }
+            @include sp {
+              width: 452px;
+              height: 650px;
+              right: -230px;
+              bottom: 0;
+              position: fixed;
+            }
+          }
+        }
+        .C_top {
+          @include pc {
+            height: auto;
+            left: 50%;
+            transform: translateX(-50%);
+            position: absolute;
+            padding-top: p(50);
+            top: 0;
+          }
+          @include sp {
+          }
+          .C_feature {
+            margin-top: 100px;
+          }
+
+          .C_topTX {
+            @include sp {
+              margin-top: 60px;
+            }
+          }
+          .TL-main {
+            @include sp {
+              border-radius: s(10);
+            }
+          }
+        }
+        .grass {
+          @include pc {
+            position: absolute;
+            z-index: 999;
+            width: 100%;
+            @include height;
+            top: 0;
+          }
+          @include sp {
+            width: 100%;
+            position: absolute;
+            z-index: 400;
+          }
+          .grass01 {
+            @include imgCover("top-grass01.jpg");
+            @include pc {
+              width: 690px;
+              height: 261px;
+              bottom: p(-31);
+              left: p(-120);
+              position: absolute;
+            }
+            @include sp {
+              width: 236px;
+              height: 90px;
+              bottom: -10px;
+              left: -20px;
+              position: fixed;
+            }
+          }
+          .grass02 {
+            @include imgCover("top-grass02.jpg");
+            @include pc {
+              width: 670px;
+              height: 240px;
+              right: -140px;
+              bottom: -78px;
+              position: absolute;
+              z-index: 700;
+            }
+            @include sp {
+              width: s(206);
+              height: s(78);
+              bottom: s(-20);
+              right: s(-59);
+              position: fixed;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* -----------------------
+  top 2ページ目
+----------------------- */
+.side-scroll-02{
+  @include sp{
+    position: relative;
+  }
+  .raccoon{
+    @include imgContain("raccoon.png");
+    position: absolute;
+    @include pc{
+      width: 210px;
+      height: 210px;
+      top: 60vh;
+      left: 35vh;
+    }
+    @include sp{
+      width: 160px;
+      height: 160px;
+      top: 73vh;
+      left: s(55);
+    }
+  }
+  .mole{
+    iframe{
+      border: none;
+      position: absolute;
+      @include pc{
+        width: 270px;
+        height: 270px;
+        top: 73vh;
+        right: 5vh;
+      }
+      @include sp{
+        width: 160px;
+        height: 160px;
+        top: 80vh;
+        right: s(55);
+      }  
+    }
+  }
+}
+
+
+  #top-02 {
+    z-index: 4;
+    position: relative;
+    @include pc {
+      height: 100%;
+      width: 100%;
+    }
+    .grass02 {
+      @include imgCover("top-grass02.jpg");
+      z-index: 900;
+
+      @include pc {
+        width: 670px;
+        height: 240px;
+        left: -640px;
+        bottom: -78px;
+        position: absolute;
+      }
+      @include sp {
+        width: s(206);
+        height: s(78);
+        bottom: s(-20);
+        right: s(-59);
+        position: fixed;
+      }
+    }
+
+    .tree-p {
+      position: absolute;
+      @include pc {
+        width: 700px;
+        height: 935px;
+        bottom: -75px;
+        left: -30vw;
+        z-index: 800;
+      }
+
+      .tree05 {
+        @include imgContain("top-tree04.jpg");
+        @include pc {
+          width: 700px;
+          height: 935px;
+        }
+      }
+      .rabbit{
+        iframe{
+          position: absolute;
+          @include pc{
+            width: 310px;
+            height: 310px;
+            bottom: 80px;
+            left: 130px;
+            z-index: -10;
+          }
+          @include sp{
+            width: s(150);
+            height: s(150);
+            bottom: 0;
+            right: s(-60);
+            position: fixed;
+          }
+        }
+      }      
+    }
+    .cloud01 {
+      @include iconContain($cloud01);
+      position: absolute;
+      @include pc {
+        width: 240px;
+        height: 113px;
+        left: 80px;
+        top: -29px;
+      }
+    }
+    .cloud02 {
+      @include iconContain($cloud02);
+      position: absolute;
+      @include pc {
+        width: 480px;
+        height: 263px;
+        right: 50px;
+        top: -130px;
+      }
+    }
+    .butterfly {
+      @include imgContain("top-butterfly01.png");
+      position: absolute;
+      z-index: 300;
+      @include pc {
+        width: 140px;
+        height: 135px;
+        bottom: 150px;
+        right: 300px;
+      }
+    }
+    .C_feature {
+      position: relative;
+      z-index: 500;
+      @include pc {
+        padding-top: 117px;
+        margin: 0 auto;
+      }
+      @include sp {
+        padding-top: 15vh;
+      }
+    }
+
+    .grass {
+      .grass03 {
+        @include imgCover("top-grass03.jpg");
+        @include pc {
+          width: 942px;
+          height: 200px;
+          bottom: p(-31);
+          left: p(-120);
+          position: absolute;
+        }
+        @include sp {
+          width: 400px;
+          height: 90px;
+          bottom: -10px;
+          left: -20px;
+          position: fixed;
+          z-index: 100;
+        }
+      }
+    }
+  }
+}
+
+/* -----------------------
+  top 3ページ目
+----------------------- */
+.side-scroll-03{
+  @include sp{
+    position: relative;
+  }
+  .kappa{
+    @include imgContain("kappa.png");
+    position: absolute;
+    @include pc{
+      width: 120px;
+      height: 120px;
+      top: 65vh;
+      left: 65vh;
+    }
+  
+    @include sp{
+      width: 90px;
+      height: 90px;
+      top: 69vh;
+      left: s(110);
+    }
+  }  
+}
+
+#top-03 {
+  z-index: 3;
+  position: relative;
+  @include pc {
+    height: 100%;
+    width: 100%;
+  }
+  .C_feature {
+    position: relative;
+    z-index: 500;
+    @include pc {
+      padding-top: 117px;
+      margin: 0 auto;
+    }
+    @include sp {
+      padding-top: 15vh;
+    }
+  }
+
+  .tree {
+    .tree04 {
+      position: absolute;
+      @include imgContain("top-tree04.jpg");
+      @include pc {
+        width: 760px;
+        height: 1094px;
+        bottom: -100px;
+        left: -370px;
+        z-index: 400;
+      }
+    }
+  }
+}
+
+/* -----------------------
+  top 4ページ目
+----------------------- */
+
+.side-scroll-04{
+  @include sp{
+    position: relative;
+  }
+  .sheep{
+    iframe{
+      position: absolute;
+      @include pc{
+        width: 240px;
+        height: 240px;
+        top: 68vh;
+        left: 16vh;
+      }
+    
+      @include sp{
+        width: 170px;
+        height: 170px;
+        top: 78vh;
+        left: s(110);
+      }  
+    }
+  }  
+}
+
+
+#top-04 {
+  z-index: 2;
+  position: relative;
+  @include pc {
+    height: 100%;
+    width: 100%;
+  }
+
+  .grass {
+    .grass04 {
+      @include imgCover("top-grass04.jpg");
+      @include pc {
+        width: 924px;
+        height: 140px;
+        bottom: 0;
+        right: 735px;
+        position: absolute;
+      }
+      @include sp {
+        width: 236px;
+        height: 90px;
+        bottom: -10px;
+        left: -20px;
+        position: fixed;
+      }
+    }
+  }
+  .C_feature {
+    position: relative;
+    z-index: 500;
+    @include pc {
+      padding-top: 117px;
+      margin: 0 auto;
+    }
+    @include sp {
+      padding-top: 15vh;
+    }
+  }
+  .C_image {
+    position: relative;
+    justify-content: center;
+    z-index: 200;
+    @include pc {
+      margin-top: 30px;
+    }
+  }
+}
+
+/* -----------------------
+  top 5ページ目
+----------------------- */
+.side-scroll-05{
+  @include sp{
+    position: relative;
+  }
+  .bird02{
+    iframe{
+      position: absolute;
+      animation: brid 8s ease 1s infinite alternate-reverse;
+      @include pc{
+        width: 130px;
+        height: 130px;
+        top: 15vh;
+        left: 0;
+      } 
+      @include sp{
+        width: s(65);
+        height: s(65);
+        top: 3vh;
+        right: s(60);
+      }
+      @keyframes brid {
+        0% {
+          transform: translateX(-150%);
+        }
+        100% {
+          transform: translateX(0%);
+        }
+      }  
+    }
+  }
+
+  .cat{
+    iframe{
+      position: absolute;
+      @include pc{
+        width: 310px;
+        height: 310px;
+        top: 58vh;
+      }
+      @include sp{
+        width: 180px;
+        height: 180px;
+        top: 60vh;
+        left: 6vh;
+      }  
+    }
+  }
+  .gray-cat{
+    iframe{
+      @include pc{
+        left: 48vh;
+      }  
+    }
+  }
+  .brown-cat{
+    iframe{
+      @include pc{
+        right: 3vh;
+      }
+      @include sp{
+        left:23vh;
+      }  
+    }
+  }
+}
+
+#top-05 {
+  z-index: 3;
+  position: relative;
+  @include pc {
+    height: 100%;
+    width: 100%;
+  }
+
+  .C_character {
+    z-index: 300;
+    @include pc {
+      width: 310px;
+      top: 55%;
+      left: 130px;
+      position: sticky;
+    }
+  }
+  // .character-3 {
+  //   @include imgContain("character-3.png");
+  // }
+
+  .C_feature {
+    position: relative;
+    z-index: 500;
+    @include pc {
+      padding-top: 117px;
+      margin: 0 auto;
+    }
+    @include sp {
+      padding-top: 15vh;
+    }
+  }
+
+  .cloud01 {
+    @include iconContain($cloud01);
+    position: absolute;
+    @include pc {
+      width: 221px;
+      height: 104px;
+      left: 305px;
+      top: 114px;
+    }
+  }
+  .cloud03 {
+    @include iconContain($cloud01);
+    position: absolute;
+    @include pc {
+      width: 390px;
+      height: 368px;
+      right: -71px;
+      top: -175px;
+    }
+  }
+  .balloon {
+    @include imgContain("balloon.jpg");
+    position: absolute;
+    z-index: 10;
+    left: 40%;
+    transform: translateY(-50%);
+    @include pc {
+      width: 283px;
+      height: 331px;
+    }
+  }
+  .btn-group {
+    position: absolute;
+    top: 30%;
+    left: 35%;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    @include pc {
+      right: 100px;
+    }
+    @include sp {
+      left: 17%;
+    }
+    .btn {
+      display: block;
+
+      @include pc {
+        width: p(438);
+        height: p(85);
+        margin: p(40) auto 0;
+        border-radius: p(15);
+      }
+      @include sp {
+        width: s(250);
+        height: s(85);
+        border-radius: p(15);
+        padding: 10% 0;
+      }
+
+      .TX {
+        color: $F-FFFFFF;
+        text-align: center;
+        display: block;
+        @include wt500;
+        @include pc {
+          font-size: p(40);
+          line-height: p(85);
+        }
+        @include sp {
+          font-size: s(30);
+        }
+      }
+      &:first-child {
+        background: $P-F38549;
+      }
+      &:last-child {
+        background: #4bbfcf;
+      }
+      &:hover {
+        animation: poyo 1s ease 0s infinite;
+
+        @keyframes poyo {
+          from,
+          to {
+            transform: none;
+          }
+          10% {
+            transform: scale(1.1);
+          }
+          40% {
+            transform: scale(0.9);
+          }
+          60% {
+            transform: scale(1.04);
+          }
+          80% {
+            transform: scale(0.98);
+          }
+        }
+      }
+    }
+  }
+}
