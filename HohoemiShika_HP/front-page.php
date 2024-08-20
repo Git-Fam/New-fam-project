@@ -188,6 +188,41 @@
                     </div>
                 </div>
             </div>
+            <!-- インビザライン -->
+            <div class="front--invisalign">
+                <div class="C_frontTreatment">
+                    <div class="C_frontTreatment--title C_frontTreatment--title__right">
+                        <h3 class="TL">インビザライン</h3>
+                        <p class="TX">Invisalign</p>
+                    </div>
+                    <div class="C_frontTreatment--container">
+                        <div class="item--top">
+                            <div class="img img-1-1-invisalign"></div>
+                            <div class="content">
+                                <div class="number number--blue">
+                                    <p class="TX">症例<span>1</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item--bottom">
+                            <div class="img img-1-2-invisalign"></div>
+                            <div class="content">
+                                <div class="text">
+                                    <p class="TX">
+                                        <span class="small">短期間、痛み少なく</span><span class="medium medium_small">目立ちにくい</span><br>
+                                        <span class="big">インビザライン治療</span>
+                                    </p>
+                                </div>
+                                <!-- page-invisalignへ -->
+                                <a class="C_viewMore" href="<?php bloginfo('url'); ?>/orthodontics?tab=invisalign#example">
+                                    <p class="TX">View more</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <div class="C_Features">
             <div class="C_Features--inner">

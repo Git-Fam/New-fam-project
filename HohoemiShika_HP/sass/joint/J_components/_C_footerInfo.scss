@@ -6,25 +6,32 @@
 ----------------------- */
 
 .C_footerInfo {
-  color: $B-FFFFFF;
+  color: $F-FFFFFF;
 
   .Info-TL {
-    @include cinzel;
-    background: linear-gradient(93deg, #947F28 0%, #F1E09B 35.79%, #A69138 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     font-weight: 700;
 
     @include pc {
-      font-size: pm(30);
-      letter-spacing: p(4.5);
+      font-size: pm(25);
+      letter-spacing: p(2.5);
       line-height: 110%;
+      margin-left: p(10);
     }
 
     @include sp {
-      font-size: s(30);
+      font-size: s(25);
       letter-spacing: s(4.5);
+      margin-bottom: s(20);
+    }
+    span{
+      @include pc{
+        font-size: pm(18);
+        margin-right: p(10);
+      }
+      @include sp{
+        font-size: s(18);
+        line-height: 2.5;
+      }
     }
   }
 

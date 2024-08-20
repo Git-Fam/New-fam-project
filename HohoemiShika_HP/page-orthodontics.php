@@ -14,6 +14,8 @@
                     <div class="tab js--selector" data-tab="openBite">開咬</div>
                     <div class="tab js--selector" data-tab="crowd">叢生</div>
                     <div class="tab js--selector">部分矯正</div>
+                    <div class="tab js--selector" data-tab="invisalign">インビザライン</div>
+
 
                 </div>
                 <div class="example__container--contents">
@@ -1377,183 +1379,169 @@
                             <div class="C_pointText">Orthodontic treatment</div>
                         </div>
                     </div>
+                    <!-- インビザライン -->
+                    <div class="content js--content" data-content="invisalign">
+                        <div class="case invisalign" id="invisalign-tab">
+                            <div class="C_medicalCase">
+                                <div class="C_medicalCase--titleWhopper">
+                                    <div class="title">
+                                        <h3 class="TL">インビザライン</h3>
+                                        <p class="TX">治療症例1</p>
+                                    </div>
+                                    <div class="hr"></div>
+                                </div>
+                                <div class="C_medicalCase--imgWhopper">
+                                    <div class="item">
+                                        <div class="img Invisalign-01"></div>
+                                        <p class="TX">治療中</p>
+                                    </div>
+                                    <div class="item">
+                                        <div class="img Invisalign-02"></div>
+                                        <p class="TX">マウスピース装着していても目立ちません</p>
+                                    </div>
+                                    <div class="item">
+                                        <div class="img Invisalign-03"></div>
+                                        <p class="TX">マウスピース</p>
+                                    </div>
+                                    <div class="item">
+                                        <div class="img Invisalign-04"></div>
+                                        <p class="TX">治療中</p>
+                                    </div>
+                                </div>
+
+                                <div class="C_medicalCase--listsWhopper">
+                                    <ul class="list">
+                                        <li>
+                                            <h4 class="TL">
+                                                初診時年齢
+                                            </h4>
+                                            <p class="TX">
+                                                11歳
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <h4 class="TL">
+                                                治療内容
+                                            </h4>
+                                            <p class="TX">
+                                                インビザラインにて非抜歯治療
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <h4 class="TL">
+                                                治療期間
+                                            </h4>
+                                            <p class="TX">
+                                                約2ヶ月半
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <h4 class="TL">
+                                                治療費概算
+                                            </h4>
+                                            <p class="TX">
+                                                850,000円（税抜）＋毎月の調整料が4,400円（税込）
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="C_pointText">Invisalign treatment</div>
+                            </div>
+
+                            <div class="C_InvisalignFlow--container--inner">
+                                <!-- 01 -->
+                                <div class="C_InvisalignFlowItems">
+                                    <div class="title">
+                                        <p class="TX"><span>step</span>01</p>
+                                    </div>
+                                    <div class="C_InvisalignFlowItems--content">
+                                        <div class="img img-01"></div>
+                                        <div class="text">
+                                            <h3 class="TL">インビザライン矯正　術前</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 02 -->
+                                <div class="C_InvisalignFlowItems">
+                                    <div class="title">
+                                        <p class="TX"><span>step</span>02</p>
+                                    </div>
+                                    <div class="C_InvisalignFlowItems--content">
+                                        <div class="img img-02"></div>
+                                        <div class="text">
+                                            <h3 class="TL">実際に使用するマウスピース</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 03 -->
+                                <div class="C_InvisalignFlowItems">
+                                    <div class="title">
+                                        <p class="TX"><span>step</span>03</p>
+                                    </div>
+                                    <div class="C_InvisalignFlowItems--content">
+                                        <div class="img img-03"></div>
+                                        <div class="text">
+                                            <h3 class="TL">針接着剤をこれで貼ります</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 04 -->
+                                <div class="C_InvisalignFlowItems">
+                                    <div class="title">
+                                        <p class="TX"><span>step</span>04</p>
+                                    </div>
+                                    <div class="C_InvisalignFlowItems--content">
+                                        <div class="img img-04"></div>
+                                        <div class="text">
+                                            <h3 class="TL">実際の引っかかりをつけた写真です</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 05 -->
+                                <div class="C_InvisalignFlowItems">
+                                    <div class="title">
+                                        <p class="TX"><span>step</span>05</p>
+                                    </div>
+                                    <div class="C_InvisalignFlowItems--content">
+                                        <div class="img img-05"></div>
+                                        <div class="text">
+                                            <h3 class="TL">歯と歯の隙間をつくる為の器具です</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 06 -->
+                                <div class="C_InvisalignFlowItems">
+                                    <div class="title">
+                                        <p class="TX"><span>step</span>06</p>
+                                    </div>
+                                    <div class="C_InvisalignFlowItems--content">
+                                        <div class="img img-06"></div>
+                                        <div class="text">
+                                            <h3 class="TL">その器具を使った実際の写真</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 07 -->
+                                <div class="C_InvisalignFlowItems">
+                                    <div class="title">
+                                        <p class="TX"><span>step</span>07</p>
+                                    </div>
+                                    <div class="C_InvisalignFlowItems--content">
+                                        <div class="img img-07"></div>
+                                        <div class="text">
+                                            <h3 class="TL">マウスピースをつけている写真です</h3>
+                                        </div>
+                                    </div>
+                                </div>
+            </div>
+
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="page-orthodontics--invisalign">
-            <div class="C_TL">
-                <p class="TL-bg rollAnime">Invisalign</p>
-                <h2 class="main-TL up speed-05 delay-03">インビザライン治療事例</h2>
-            </div>
-            <div class="page-orthodontics--invisalign--content">
-                <div class="C_medicalCase">
-                    <div class="C_medicalCase--titleWhopper">
-                        <div class="title">
-                            <h3 class="TL">インビザライン</h3>
-                            <p class="TX">治療症例1</p>
-                        </div>
-                        <div class="hr"></div>
-                    </div>
-                    <div class="C_medicalCase--imgWhopper">
-                        <div class="item">
-                            <div class="img Invisalign-01"></div>
-                            <p class="TX">治療中</p>
-                        </div>
-                        <div class="item">
-                            <div class="img Invisalign-02"></div>
-                            <p class="TX">マウスピース装着していても目立ちません</p>
-                        </div>
-                        <div class="item">
-                            <div class="img Invisalign-03"></div>
-                            <p class="TX">マウスピース</p>
-                        </div>
-                        <div class="item">
-                            <div class="img Invisalign-04"></div>
-                            <p class="TX">治療中</p>
-                        </div>
-                    </div>
-                    <div class="C_medicalCase--listsWhopper">
-                        <ul class="list">
-                            <li>
-                                <h4 class="TL">
-                                    初診時年齢
-                                </h4>
-                                <p class="TX">
-                                    11歳
-                                </p>
-                            </li>
-                            <li>
-                                <h4 class="TL">
-                                    治療内容
-                                </h4>
-                                <p class="TX">
-                                    インビザラインにて非抜歯治療
-                                </p>
-                            </li>
-                            <li>
-                                <h4 class="TL">
-                                    治療期間
-                                </h4>
-                                <p class="TX">
-                                    約2ヶ月半
-                                </p>
-                            </li>
-                            <li>
-                                <h4 class="TL">
-                                    治療費概算
-                                </h4>
-                                <p class="TX">
-                                    850,000円（税抜）＋毎月の調整料が4,400円（税込）
-                                </p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="C_pointText">Invisalign treatment</div>
-            </div>
-        </section>
-
-        <section class="page-orthodontics--invisalignFlow">
-            <div class="C_InvisalignFlow">
-                <div class="C_TL">
-                    <p class="TL-bg rollAnime">Invisalign Flow</p>
-                    <p class="sub-TL up  speed-05 delay-03">−インビザライン矯正−</p>
-                    <h2 class="main-TL up speed-05 delay-03">治療の流れ</h2>
-                </div>
-                <div class="C_InvisalignFlow--container">
-                    <div class="C_InvisalignFlow--container--inner">
-                        <!-- 01 -->
-                        <div class="C_InvisalignFlowItems">
-                            <div class="title">
-                                <p class="TX"><span>step</span>01</p>
-                            </div>
-                            <div class="C_InvisalignFlowItems--content">
-                                <div class="img img-01"></div>
-                                <div class="text">
-                                    <h3 class="TL">インビザライン矯正　術前</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 02 -->
-                        <div class="C_InvisalignFlowItems">
-                            <div class="title">
-                                <p class="TX"><span>step</span>02</p>
-                            </div>
-                            <div class="C_InvisalignFlowItems--content">
-                                <div class="img img-02"></div>
-                                <div class="text">
-                                    <h3 class="TL">実際に使用するマウスピース</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 03 -->
-                        <div class="C_InvisalignFlowItems">
-                            <div class="title">
-                                <p class="TX"><span>step</span>03</p>
-                            </div>
-                            <div class="C_InvisalignFlowItems--content">
-                                <div class="img img-03"></div>
-                                <div class="text">
-                                    <h3 class="TL">針接着剤をこれで貼ります</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 04 -->
-                        <div class="C_InvisalignFlowItems">
-                            <div class="title">
-                                <p class="TX"><span>step</span>04</p>
-                            </div>
-                            <div class="C_InvisalignFlowItems--content">
-                                <div class="img img-04"></div>
-                                <div class="text">
-                                    <h3 class="TL">実際の引っかかりをつけた写真です</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 05 -->
-                        <div class="C_InvisalignFlowItems">
-                            <div class="title">
-                                <p class="TX"><span>step</span>05</p>
-                            </div>
-                            <div class="C_InvisalignFlowItems--content">
-                                <div class="img img-05"></div>
-                                <div class="text">
-                                    <h3 class="TL">歯と歯の隙間をつくる為の器具です</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 06 -->
-                        <div class="C_InvisalignFlowItems">
-                            <div class="title">
-                                <p class="TX"><span>step</span>06</p>
-                            </div>
-                            <div class="C_InvisalignFlowItems--content">
-                                <div class="img img-06"></div>
-                                <div class="text">
-                                    <h3 class="TL">その器具を使った実際の写真</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 07 -->
-                        <div class="C_InvisalignFlowItems">
-                            <div class="title">
-                                <p class="TX"><span>step</span>07</p>
-                            </div>
-                            <div class="C_InvisalignFlowItems--content">
-                                <div class="img img-07"></div>
-                                <div class="text">
-                                    <h3 class="TL">マウスピースをつけている写真です</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="scrollbar sp">
-                        <div class="scrollbar-thumb sp"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <section class="page-orthodontics--about">
             <div class="C_about">

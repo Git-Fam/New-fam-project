@@ -222,6 +222,11 @@
             @include iconContain($hexagonGradationGray);
           }
 
+          &.number--blue {
+            @include iconContain($hexagonGradationBlue);
+          }
+
+
           .TX {
             color: $F-141414;
             @include Demibold;

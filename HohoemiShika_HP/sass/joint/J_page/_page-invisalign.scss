@@ -1,0 +1,158 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  invisalign
+----------------------- */
+.page-invisalign {
+  @include pc{
+    padding-bottom: p(166);
+  }
+  @include sp{
+    padding-bottom: s(100);
+  }
+  .page-invisalign--Example {
+    @include sp{
+      position: relative;
+    }
+    .page-invisalign--invisalign--content {
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.50);
+      backdrop-filter: blur(10px);
+      position: relative;
+
+      @include pc {
+        width: p(1080);
+        padding: p(74) 0 p(81);
+        margin-top: p(130);
+      }
+
+      @include sp {
+        width: s(350);
+        padding: s(58) 0 s(107);
+        margin-top: s(88);
+      }
+    }
+
+    .C_pointText {
+      @include pc{
+        text-align: right;
+      }
+      @include sp{
+        position: absolute;
+        bottom: s(60);
+        left: s(20);
+      }
+    }
+  }
+
+  .page-invisalign--flow {
+    position: relative;
+    @include pc {
+      margin-top: p(143);
+    }
+
+    @include sp {
+      margin-top: s(111);
+    }
+
+    .C_TL {
+      .sub-TL {
+        position: absolute;
+        width: 100%;
+        color: $F-32302E;
+        text-shadow: 0 0 0 ;
+        @include Extrabold;
+        @include pCenterLeft;
+        top: 10%;
+
+        @include pc {
+          font-size: pm(25);
+          letter-spacing: pm(2.5);
+        }
+
+        @include sp {
+          font-size: s(16);
+          letter-spacing: s(1.6);
+          margin-top: s(10);
+        }
+      }
+    }
+    .C_InvisalignFlow--container--inner{
+      flex-direction: column;
+      align-items: center;
+      @include pc{
+        margin-top: p(207);
+        gap: p(198);
+      }
+      @include sp{
+        margin-top: s(78);
+        gap: s(108);
+      }
+      .C_InvisalignFlowItems{
+        &::before{
+          display: none;
+        }
+      }
+    }
+
+  }
+}
+.page-invisalign__decoration {
+
+  .parts {
+    z-index: -1;
+
+    &.parts-01 {
+      opacity: 0.1;
+      rotate: 65deg;
+
+      @include pc {
+        width: p(1128);
+        top: p(900);
+        left: p(-200);
+      }
+
+      @include sp {
+        width: s(350);
+        top: s(310);
+        left: s(-100);
+      }
+    }
+
+    &.parts-02 {
+      opacity: 0.11;
+      rotate:  -11deg;
+
+      @include pc {
+        width: p(1550);
+        top: p(3520);
+        right: p(-530);
+      }
+
+      @include sp {
+        width: s(350);
+        top: s(1810);
+        right: s(-100);
+      }
+    }
+
+    &.parts-03 {
+      opacity: 0.15;
+      rotate: 78deg;
+
+      @include pc {
+        width: p(1550);
+        top: p(6250);
+        left: p(-710);
+      }
+
+      @include sp {
+        width: s(250);
+        top: s(3310);
+        left: s(-100);
+      }
+    }
+
+  }
+}

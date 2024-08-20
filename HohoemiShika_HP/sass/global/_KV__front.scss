@@ -11,11 +11,13 @@
 
   @include pc {
     height: p(693);
+    margin-top: p(50);
   }
 
   @include sp {
     height: s(700);
     background-position: left 56% top 0%;
+    margin-top: s(50);
   }
 
   &--text {

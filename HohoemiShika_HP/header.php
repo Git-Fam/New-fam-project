@@ -10,20 +10,20 @@
 
     <!-- ▼SEO -->
     <link rel="”canonical”" href="<?php echo get_home_url(); ?>" />
-    <title>ほほえみ歯科｜名古屋市名東区の歯医者</title>
-    <meta name="title" content="ほほえみ歯科｜名古屋市名東区の歯医者" />
-    <meta name="description" content="名古屋市名東区社台の「ほほえみ歯科」です。一般歯科・小児歯科・矯正歯科・口腔外科・審美歯科・インプラント・入れ歯などを診療します。通院が難しい方へ訪問診療も行っています。歯列矯正・インプラントは相談無料。東山線「上社」駅より徒歩10分。" />
+    <title>名古屋市名東区の歯医者ならほほえみ歯科｜土曜も診療可</title>
+    <meta name="title" content="名古屋市名東区の歯医者ならほほえみ歯科｜土曜も診療可" />
+    <meta name="description" content="完全予約制で安心・安全の治療環境が整うほほえみ歯科です。明るい院内はバリアフリー。矯正・小児歯科・インプラントなど様々な治療を行っています。" />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="<?php echo get_home_url(); ?>" />
-    <meta property="og:title" content="ほほえみ歯科｜名古屋市名東区の歯医者" />
-    <meta property="og:description" content="名古屋市名東区社台の「ほほえみ歯科」です。一般歯科・小児歯科・矯正歯科・口腔外科・審美歯科・インプラント・入れ歯などを診療します。通院が難しい方へ訪問診療も行っています。歯列矯正・インプラントは相談無料。東山線「上社」駅より徒歩10分。" />
+    <meta property="og:title" content="名古屋市名東区の歯医者ならほほえみ歯科｜土曜も診療可" />
+    <meta property="og:description" content="完全予約制で安心・安全の治療環境が整うほほえみ歯科です。明るい院内はバリアフリー。矯正・小児歯科・インプラントなど様々な治療を行っています。" />
     <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/ima/meta.png" />
 
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="<?php echo get_home_url(); ?>" />
-    <meta property="twitter:title" content="ほほえみ歯科｜名古屋市名東区の歯医者" />
-    <meta property="twitter:description" content="名古屋市名東区社台の「ほほえみ歯科」です。一般歯科・小児歯科・矯正歯科・口腔外科・審美歯科・インプラント・入れ歯などを診療します。通院が難しい方へ訪問診療も行っています。歯列矯正・インプラントは相談無料。東山線「上社」駅より徒歩10分。" />
+    <meta property="twitter:title" content="名古屋市名東区の歯医者ならほほえみ歯科｜土曜も診療可" />
+    <meta property="twitter:description" content="完全予約制で安心・安全の治療環境が整うほほえみ歯科です。明るい院内はバリアフリー。矯正・小児歯科・インプラントなど様々な治療を行っています。" />
     <meta property="twitter:image" content="<?php echo get_template_directory_uri(); ?>/ima/meta.png" />
 
     <!-- <link rel="apple-touch-icon" sizes="76x76" href="<?php echo get_template_directory_uri(); ?>/img/favicon_package/apple-touch-icon.png">
@@ -52,6 +52,22 @@
     <div class="whopper">
         <!-- header -->
         <header class="header">
+            <div class="logo">
+                <a href="<?php echo get_home_url(); ?>">
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="医療法人立人会 ほほえみ歯科">
+                </a>
+                </div>
+            <div class="header-btn">
+                <a href="tel:052-715-4181" class="btn tel">
+                    <div class="icon"></div>
+                    <p class="TX pc">電話受付</p>
+                </a>
+                <a href="https://www.instagram.com/hohoemi_dc/" class="btn insta" target="_blank">
+                    <div class="icon"></div>
+                    <p class="TX pc">インスタグラム</p>
+                </a>
+
+            </div>
             <div class="burger"></div>
             <div class="menu">
                 <div class="backText">
@@ -178,9 +194,6 @@
                         </li>
                     </ul>
                 </nav>
-                <a href="#footer" class="Tel_icon">
-                    <div class="icon"></div>
-                </a>
             </div>
             <div class="menu__back"></div>
         </header>
@@ -227,13 +240,13 @@
                         </p>
                     </div>
                 </div>
-                <div class="KV__front--title">
+                <!-- <div class="KV__front--title">
                     <h1 class="TL">
                         <span class="rollAnimeLoad">Hohoemi</span>
                         <span class="rollAnimeLoad">Dental</span>
                         <span class="rollAnimeLoad">Clinic</span>
                     </h1>
-                </div>
+                </div> -->
                 <div class="KV__front--smoke"></div>
             </div>
 
@@ -251,6 +264,15 @@
                             <p class="TX">−Orthodontics−</p>
                         </div>
                     <?php endif; ?>
+
+                    <?php if (is_page('invisalign')) : ?>
+                        <!-- インプラント -->
+                        <div class="KV--tag--inner">
+                            <h2 class="TL">インビザライン</h2>
+                            <p class="TX">−Invisalign−</p>
+                        </div>
+                    <?php endif; ?>
+
 
                     <?php if (is_page('implant')) : ?>
                         <!-- インプラント -->
@@ -379,6 +401,7 @@
 
         <?php if (
             is_page('orthodontics') ||
+            is_page('invisalign') ||
             is_page('implant') ||
             is_page('aestheticdentistry') ||
             is_page('dentures') ||

@@ -83,8 +83,7 @@
         <div class="ft-bottom-content">
             <div class="C_footerInfo">
                 <p class="Info-TL">
-                    Hohoemi<br>
-                    Dental Clinic
+                    <span>医療法人立人会</span><br class="sp">ほほえみ歯科
                 </p>
                 <ul class="Info-list">
                     <li>

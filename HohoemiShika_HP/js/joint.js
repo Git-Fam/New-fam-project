@@ -27,7 +27,7 @@ $(document).ready(function() {
   });
 
   
-    //topへ戻る
+    // topへ戻る
     $(function() {
         $(window).on('scroll', function() {
           const windowHeight = $(window).height();
