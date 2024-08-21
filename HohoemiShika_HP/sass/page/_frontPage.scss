@@ -59,48 +59,6 @@
         margin-top: s(129);
       }
     }
-
-    .front--invisalign {
-      @include pc {
-        margin-top: p(180);
-      }
-
-      @include sp {
-        margin-top: s(129);
-      }
-      .C_frontTreatment--container{
-        .item--bottom{
-          .TX{
-
-            .medium{
-              @include pc{
-                font-size: p(25) !important;
-              } 
-              @include sp{
-                font-size: s(25) !important;
-                letter-spacing: s(2.5) !important;
-
-              }
-            }
-            .big{
-              @include pc{
-                letter-spacing: p(2.5) !important;
-                line-height: 2;
-              }
-              @include sp{
-                letter-spacing: s(2.5) !important;
-              }
-            }
-          }  
-        }
-        .img-1-1-invisalign{
-          @include imgCover("C_InvisalignFlowItems-01.jpg");
-        }
-        .img-1-2-invisalign{
-          @include imgCover("C_InvisalignFlowItems-07.jpg");
-        }
-      }
-    }
   }
 }
 

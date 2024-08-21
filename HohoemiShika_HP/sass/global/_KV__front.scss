@@ -15,7 +15,7 @@
   }
 
   @include sp {
-    height: s(700);
+    height: s(650);
     background-position: left 56% top 0%;
     margin-top: s(50);
   }
@@ -44,7 +44,7 @@
       }
 
       @include sp {
-        margin-bottom: s(150);
+        margin-bottom: s(110);
         padding-left: s(20)
       }
 
