@@ -1,0 +1,71 @@
+@use "../../global" as *;
+@use "../globalCooperator-2" as *;
+
+/* -----------------------
+  page-chat
+----------------------- */
+
+#sac-latest-message{
+  font-size: 0px !important;
+  &::before{
+    content: "チャットのタイトル";
+    font-size: 14px;
+  }
+}
+
+/* group_aユーザーにはgroup_bとgroup_cのメッセージを非表示 */
+.group_a_user {
+  .group_b, .group_c {
+    display: none;
+  }
+}
+
+/* group_bユーザーにはgroup_aとgroup_cのメッセージを非表示 */
+.group_b_user {
+  .group_a, .group_c {
+    display: none;
+  }
+}
+
+/* group_cユーザーにはgroup_aとgroup_bのメッセージを非表示 */
+.group_c_user {
+  .group_a, .group_b {
+    display: none;
+  }
+}
+
+#sac-output{
+  background-color: rgb(255 255 255 / 0.5);
+}
+
+#sac-messages {
+  opacity: 0; // Initially hide the element
+  animation: showMessage 0s 0.3s forwards; // Apply animation
+}
+
+@keyframes showMessage {
+  to {
+    opacity: 1; 
+  }
+}
+
+// いいねボタン
+.like-button{
+  background-color: #ffffffcc;
+  border-radius: 50px;
+}
+//すでにいいねしたタイムラインはいいねが赤くなる
+.like-button.liked {
+  color: red;
+  cursor: not-allowed;
+}
+
+
+// // 他のページに新着メッセージ表示させるとき
+// #simple-ajax-chat{
+//   display: none;
+// }
+// #latest-messages{
+//   z-index: 999;
+//   position: relative;
+// }
