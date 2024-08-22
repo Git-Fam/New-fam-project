@@ -1,13 +1,14 @@
-@use "../../global" as *;
-@use "../globalCooperator-2" as *;
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
 
 /* -----------------------
   page-chat
 ----------------------- */
 
-#sac-latest-message{
+#sac-latest-message {
   font-size: 0px !important;
-  &::before{
+
+  &::before {
     content: "チャットのタイトル";
     font-size: 14px;
   }
@@ -15,26 +16,32 @@
 
 /* group_aユーザーにはgroup_bとgroup_cのメッセージを非表示 */
 .group_a_user {
-  .group_b, .group_c {
+
+  .group_b,
+  .group_c {
     display: none;
   }
 }
 
 /* group_bユーザーにはgroup_aとgroup_cのメッセージを非表示 */
 .group_b_user {
-  .group_a, .group_c {
+
+  .group_a,
+  .group_c {
     display: none;
   }
 }
 
 /* group_cユーザーにはgroup_aとgroup_bのメッセージを非表示 */
 .group_c_user {
-  .group_a, .group_b {
+
+  .group_a,
+  .group_b {
     display: none;
   }
 }
 
-#sac-output{
+#sac-output {
   background-color: rgb(255 255 255 / 0.5);
 }
 
@@ -45,20 +52,41 @@
 
 @keyframes showMessage {
   to {
-    opacity: 1; 
+    opacity: 1;
   }
 }
 
-// いいねボタン
-.like-button{
-  background-color: #ffffffcc;
-  border-radius: 50px;
+.timeline {
+  background-color: rgba(0, 135, 0, 0.3);
+  padding: 20px;
+  width: fit-content;
+  height: 200px;
+  overflow-y: scroll;
+  font-size: 12px;
+  line-height: 1.5;
+
+  .timeline-item {
+    margin-bottom: 10px;
+
+    // いいねボタン
+    //すでにいいねしたタイムラインはいいねが赤くなる
+    .like-button {
+      background-color: #ffffffcc;
+      border-radius: 50px;
+      font-size: 13px;
+
+      &.liked {
+        color: red;
+        cursor: not-allowed;
+      }
+    }
+
+
+  }
+
 }
-//すでにいいねしたタイムラインはいいねが赤くなる
-.like-button.liked {
-  color: red;
-  cursor: not-allowed;
-}
+
+
 
 
 // // 他のページに新着メッセージ表示させるとき

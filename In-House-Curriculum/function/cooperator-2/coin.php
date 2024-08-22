@@ -29,4 +29,21 @@ function save_user_coins_field($user_id) {
 }
 add_action('personal_options_update', 'save_user_coins_field');
 add_action('edit_user_profile_update', 'save_user_coins_field');
+
+
+// コインを付与する
+
+function add_user_coins($user_id, $amount) {
+    $current_coins = get_user_meta($user_id, 'user_coins', true) ?: 0;
+    $new_coins = $current_coins + $amount;
+    update_user_meta($user_id, 'user_coins', $new_coins);
+}
+
+// add_user_coins($user_id, 付与するコインの数字);
+// ３コイン付与する場合
+// add_user_coins($user_id, 3);
+
 ?>
+
+
+

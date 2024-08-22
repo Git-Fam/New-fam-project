@@ -1,35 +1,4 @@
 <?php
-// ログインしているユーザーのグループを取得する関数
-function get_current_user_group() {
-    $user_id = get_current_user_id();
-    return $user_id ? get_user_meta($user_id, 'user_group', true) : null;
-}
-
-// グループ名をJavaScriptに渡すためのスクリプトをエンキューする
-function enqueue_user_group_script() {
-    $user_group = get_current_user_group();
-    $current_user = wp_get_current_user();
-    $username = $current_user->exists() ? $current_user->user_login : '';
-
-    wp_enqueue_script('cooperator-script', get_template_directory_uri() . '/js/cooperatorScript.js', array('jquery'), null, true);
-    
-    wp_localize_script('cooperator-script', 'userGroupData', array(
-        'group' => $user_group,
-        'username' => $username,
-        'ajaxurl' => admin_url('admin-ajax.php')
-    ));
-}
-add_action('wp_enqueue_scripts', 'enqueue_user_group_script');
-
-// チャットシステムでログインユーザー名を自動設定するフィルター
-function sac_set_logged_in_username($username) {
-    if (is_user_logged_in()) {
-        $current_user = wp_get_current_user();
-        return $current_user->user_login; // または $current_user->display_name;
-    }
-    return $username;
-}
-add_filter('sac_user_name', 'sac_set_logged_in_username');
 
 // ユーザー名に基づいてグループ情報を取得するAJAXハンドラー
 function get_user_group_by_name() {
