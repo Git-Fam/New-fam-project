@@ -112,3 +112,100 @@
     }
   }
 }
+
+.footer-after {
+
+  @include pc {
+    padding: 200px 20px 100px;
+  }
+
+  @include sp {
+    padding: 130px 20px;
+  }
+
+  &-inner {
+    display: flex;
+    gap: 30px;
+
+    @include pc {
+      justify-content: space-between;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    @include sp {
+      flex-direction: column;
+    }
+
+    .link {
+      @include center;
+      
+      @include pc {
+        width: 500px;
+        height: 147px;
+      }
+
+      @include sp {
+        min-height: 147px;
+        padding: 10px;
+      }
+
+      &.green {
+        border-top: 1px solid #D3E796;
+        border-bottom: 1px solid #D3E796;
+        background: #F5FDEA;
+      }
+
+      &.blue {
+        border-top: 1px solid #C6E6F0;
+        border-bottom: 1px solid #C6E6F0;
+        background: #F3F9FB;
+      }
+
+      &-inner {
+        display: flex;
+        align-items: center;
+        
+        @include pc{
+          gap: 38px;
+        }
+        
+        @include sp{
+          gap: 22px;
+        }
+
+        img {
+          object-fit: contain;
+          object-position: center;
+
+          &.icon-beginner {
+            width: 59px;
+          }
+
+          &.icon-contact {
+            width: 84px;
+          }
+        }
+
+        .text {
+          @include column(8px);
+
+          .TX {
+            color: #585D5F;
+            font-size: 13px;
+            @include wt500;
+            line-height: normal;
+          }
+
+          .TL {
+            color: #585D5F;
+            @include yumincho;
+            font-size: 20px;
+            @include wt800;
+            line-height: 1;
+          }
+        }
+      }
+    }
+  }
+}
