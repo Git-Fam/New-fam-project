@@ -126,7 +126,7 @@
         </div>
     </section>
     <section class="Front_AtWater">
-        <a class="C_AtWater" href="https://alwater.jp/" target="_blank" rel="noopener noreferrer">
+        <div class="C_AtWater">
             <div class="content">
                 <h3 class="TL">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/C_AtWater.svg" alt="at water">
@@ -139,6 +139,10 @@
                         お水で社会に貢献していきたいと<br class="sp">考えています。
                     </p>
                 </div>
+                <a class="C_ViewMore" href="<?php bloginfo('url'); ?>/coming-soon" target="_blank" rel="noopener noreferrer">
+                    <p class="TX">view more</p>
+                </a>
+
             </div>
             <div class="hover-bubbles">
                 <div class="bubble"></div>
@@ -150,7 +154,7 @@
                 <div class="bubble"></div>
                 <div class="bubble"></div>
             </div>
-        </a>
+        </div>
     </section>
     <section class="Front_Links">
         <div class="C_Links">

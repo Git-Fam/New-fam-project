@@ -13,7 +13,7 @@
 
   @include pc {
     width: p(980);
-    padding: p(61) 0;
+    padding: p(39) 0;
     background-size: 120%;
     background-position: top 65% center;
   }
@@ -48,7 +48,7 @@
     transition: all 1s;
 
     @include pc {
-      @include column(p(50));
+      @include column(p(20));
     }
 
     @include sp {
@@ -92,6 +92,14 @@
         @include sp {
           font-size: s(16);
         }
+      }
+    }
+    .C_ViewMore{
+      @include pc{
+        margin: p(10) auto 0;
+      }
+      @include sp{
+        margin: p(10) auto 0;
       }
     }
   }
