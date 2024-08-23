@@ -1,0 +1,31 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  page-officialpartner
+----------------------- */
+
+.officialPartner_top{
+  @include pc{
+    padding: p(100) p(200);
+  }
+  @include sp{
+    padding: s(60) s(20) s(130);
+  }
+  .C_TL{
+    .C_TL_main{
+      .C_TL_main_sp{
+        display: flex;
+      }
+    }
+  }
+  .TX{
+    @include pc{
+      width: p(800);
+      margin: p(50) auto;
+    }
+    @include sp{
+      margin-top: s(30);
+    }
+  }
+}
