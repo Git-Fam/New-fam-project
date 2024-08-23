@@ -1,0 +1,48 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  C_TL
+----------------------- */
+
+@include pc {
+  .C_TL {
+    .icon {
+      @include iconContain($C_TL_drop);
+      width: 62px;
+      height: 29px;
+      margin: 0 auto;
+    }
+
+    .TL {
+      @include yumincho;
+      @include wt800;
+      text-align: center;
+      margin-top: 13px;
+      font-size: 25px;
+      color: $mainF;
+    }
+  }
+}
+
+@include sp{
+  .C_TL {
+
+    .icon {
+      @include iconContain($C_TL_drop);
+      width: 43px;
+      height: 20px;
+      margin: 0 auto;
+    }
+
+    .TL {
+      @include yumincho;
+      @include wt800;
+      text-align: center;
+      margin-top: 13px;
+      font-size: 23px;
+      color: $mainF;
+    }
+  }
+
+}

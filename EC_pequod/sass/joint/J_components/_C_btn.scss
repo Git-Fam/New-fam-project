@@ -1,0 +1,73 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  C_btn
+----------------------- */
+
+.C_btn {
+  display: block;
+  background-color: $button;
+  color: $whiteF;
+  height: 70px;
+  width: 450px;
+  display: grid;
+  place-items: center center;
+
+  @include pc{
+    border-radius: 10px;
+  }
+  @include sp{
+    border-radius: 5px;
+    width: 227px;
+  }
+
+  .TX {
+    text-align: center;
+    letter-spacing: 0.1em;
+
+    @include wt700;
+
+    @include pc {
+      font-size: 20px;
+    }
+
+    @include sp {
+      font-size: 20px;
+      line-height: 1.5;
+    }
+  }
+
+  &.gray{
+    background-color: $buttonBack;
+
+
+    .TX{
+      @include sp{
+        font-size: 15px;
+      }
+    }
+  }
+
+  &.round {
+    border-radius: 60px;
+    background: $buttonBule;
+
+    &.yellow {
+      background-color: $buttonYellow;
+  
+      .TX {
+        @include pc {
+          font-size: 23px;
+        }
+  
+        @include sp {
+          font-size: 23px;
+        }
+      }
+  
+    }  
+
+  }
+
+}
