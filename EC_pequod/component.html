@@ -72,14 +72,169 @@
 
     <div class="component--wapper">
 
-        <!-- what -->
+        <!-- header -->
         <div class="component--item">
             <div class="component--title">
-                what
+                header
             </div>
             <div class="component--main">
 
                 <!-- component -->
+
+                <div class="header_top">
+                    <div class="container header_top_inner form-inline justify-content-between">
+                        <!-- ショップロゴ -->
+                        <div class="logo">
+                            <a href="{$base_url}/">
+                                <img src="{$image_dir}/site-logo.png" alt="{$information.shop_title}">
+                            </a>
+                        </div>
+
+                        <!-- ヘッダナビ -->
+                        <ul class="cartNav form-inline justify-content-between">
+                            {if $session->isAuthenticated()}
+                            <li class="header_icon header_icon_my-page">
+                                <a href="{$base_url}/account/mypage" title="マイページ">
+                                    <div class="header_icon_inner">
+                                        <img src="{$image_dir}/icon-user.svg" class="ic-img">
+                                        <p class="TX">マイページ</p>
+                                    </div>
+                                </a>
+                            </li>
+                            {else}
+                            <li class="header_icon header_icon_my-page">
+                                <a href="{$base_url}/account/signin" title="ログイン">
+                                    <div class="header_icon_inner">
+                                        <img src="{$image_dir}/icon-user.svg" class="ic-img">
+                                        <p class="TX">ログイン</p>
+                                    </div>
+                                </a>
+                            </li>
+                            {/if}
+                            <li class="header_icon header_icon_cart">
+                                <a href="{$base_url}/cart" title="カート">
+                                    <div class="header_icon_inner">
+                                        <img src="{$image_dir}/icon-cart.svg" class="ic-img">
+                                        {if $cart_num > 0}
+                                        <span class="cart_badge">{$cart_num}</span>
+                                        {/if}
+                                        <p class="TX">カート</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="header_icon header_icon_contact">
+                                <a href="{$base_url}/shop/info" title="お問い合わせ">
+                                    <div class="header_icon_inner">
+                                        <img src="{$image_dir}/icon-message.svg" class="ic-img">
+                                        <p class="TX">お問い合わせ</p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <!-- component end -->
+
+            </div>
+        </div>
+
+        <!-- globalNav -->
+        <div class="component--item">
+            <div class="component--title">
+                globalNav
+            </div>
+            <div class="component--main">
+
+                <!-- component -->
+
+
+                <div class="gNav">
+                    <nav class="navs">
+                        <ul class="links">
+                            <li class="link pc hover-opa">
+                                <a href="{$base_url}/">Home</a>
+                            </li>
+                            <li class="link hover-opa">
+                                <a href="{$base_url}/product/list/">商品一覧</a>
+                            </li>
+                            <li class="link hover-opa">
+                                <a href="{$base_url}/fs/free">ご利用ガイド</a>
+                            </li>
+                            <li class="link hover-opa">
+                                <a href="{$base_url}/account/signin">会員登録</a>
+                            </li>
+                            <li class="link hover-opa">
+                                <a href="{$base_url}/product/list/6">付帯サービス</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+
+                <!-- component end -->
+
+            </div>
+        </div>
+
+        <!-- footer -->
+        <div class="component--item">
+            <div class="component--title">
+                footer
+            </div>
+            <div class="component--main">
+
+                <!-- component -->
+
+
+<footer id="footer">
+    <div class="container-sitemap">
+        <div class="item">
+            <h2 class="TL">TOP</h2>
+            <ul>
+                <li><a href="#">マイページ</a></li>
+            </ul>
+        </div>
+        <div class="item">
+            <h2 class="TL">商品一覧</h2>
+            <ul>
+                <li><a href="#">ウォーターサーバー</a></li>
+                <li><a href="#">付帯サービス</a></li>
+            </ul>
+        </div>
+        <div class="item position">
+            <h2 class="TL">ご利用ガイド</h2>
+            <ul>
+                <li><a href="#">〇〇について</a></li>
+                <li><a href="#">返品・交換</a></li>
+                <li><a href="#">返品・交換</a></li>
+                <li><a href="#">〇〇について</a></li>
+            </ul>
+        </div>
+        <div class="item">
+            <h2 class="TL">ポリシー</h2>
+            <ul>
+                <li><a href="#">特定商取引法に基づく表記</a></li>
+                <li><a href="#">プライバシーポリシー</a></li>
+            </ul>
+        </div>
+    </div>
+    {if $session->isAuthenticated()}
+    <aside class="container text-md-right aside">
+        <a href="{$base_url}/account/signout" class="btn logout">ログアウト</a>
+    </aside>
+    {/if}
+    <div class="logo">
+        <a href="{$base_url}/">
+            <img src="{$image_dir}/site-logo.png" alt="{$information.shop_title}">
+        </a>
+    </div>
+    <!-- コピーライト -->
+    <div class="copyright text-center">&copy; {$information.copy_right}</div>
+    <!-- //コピーライト -->
+</footer>
+
 
                 <!-- component end -->
 
@@ -90,7 +245,7 @@
 
 
     </div>
-    
+
     <script src="https://code.jquery.com/jquery-1.7.1.min.js"
         integrity="sha256-iBcUE/x23aI6syuqF7EeT/+JFBxjPs5zeFJEXxumwb0=" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>

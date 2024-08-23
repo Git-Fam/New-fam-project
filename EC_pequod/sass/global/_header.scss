@@ -3,3 +3,219 @@
 /* -----------------------
   header
 ----------------------- */
+
+#header {
+  background-color: #FFF;
+
+  .header_top_inner {
+
+    @include sp {
+      padding-right: unset;
+      padding-block: unset;
+      max-width: unset;
+      min-height: unset;
+    }
+  }
+
+  .logo {
+    @include wt600;
+    line-height: 1.5;
+
+    @include pc {
+      font-size: 4rem;
+    }
+
+    @include sp {
+      font-size: 2.4rem;
+    }
+
+    a {
+      display: block;
+    }
+
+    img {
+      width: 100%;
+
+      @include pc {
+        max-width: min(300px, 50vw);
+      }
+
+      @include sp {
+        max-width: min(142px, s(142));
+      }
+    }
+  }
+
+
+  .cartNav {
+
+    @include sp {
+      padding-right: unset;
+    }
+
+    .header_icon {
+      padding-inline: unset;
+      aspect-ratio: 1;
+      position: relative;
+
+      @include pc {
+        width: 100px;
+      }
+
+      @include sp {
+        width: min(65px, s(65));
+      }
+
+      &.header_icon_my-page {
+        background-color: $header1;
+      }
+
+      &.header_icon_cart {
+        background-color: $header2;
+      }
+
+      &.header_icon_contact {
+        background-color: $header3;
+      }
+
+      a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        position: absolute;
+        width: 100%;
+
+        .header_icon_inner {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+
+          @include pc {
+            gap: 10px;
+          }
+
+          @include sp {
+            gap: 5px;
+          }
+
+          .ic-img {
+            object-fit: contain;
+            object-position: center;
+            margin: 0 auto;
+
+            @include pc {
+              width: 31px;
+            }
+
+            @include sp {
+              width: min(20px, s(20));
+              height: min(20px, s(20));
+            }
+          }
+
+          .cart_badge {
+            color: #000;
+            text-align: center;
+            background-color: #1f3;
+            border-radius: 50%;
+            z-index: 1;
+            @include center;
+
+            @include pc {
+              font-size: 1.6rem;
+              top: -20%;
+              right: -60%;
+              min-width: 2.4rem;
+              height: 2.4rem;
+            }
+
+            @include sp {
+              font-size: 1.2rem;
+              top: -20%;
+              right: -60%;
+              min-width: 1.6rem;
+              height: 1.6rem;
+            }
+          }
+
+          .TX {
+            text-align: center;
+            color: #F3F9FB;
+            @include wt700;
+            line-height: normal;
+            white-space: nowrap;
+
+            @include pc {
+              font-size: 12px;
+              letter-spacing: 0.48px;
+            }
+
+            @include sp {
+              font-size: 10px;
+              letter-spacing: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+.gNav {
+  background-color: $mainC;
+
+  @include pc {
+    padding: 13px 20px;
+  }
+
+  @include sp {
+    padding: 8px 15px 7px;
+  }
+
+  .navs {
+    margin: 0 auto;
+
+    @include pc {
+      max-width: 781px;
+    }
+
+    @include sp {
+      max-width: 313px;
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+
+      .link {
+
+        a {
+          color: #585D5F;
+          @include wt500;
+          line-height: normal;
+          
+          @include pc {
+            font-size: 16px;
+            letter-spacing: 0.64px;
+          }
+
+          @include sp {
+            font-size: 10px;
+            letter-spacing: 0.4px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -4,3 +4,111 @@
 /* -----------------------
   footer
 ----------------------- */
+
+#footer {
+  background: linear-gradient(180deg, #A8DAE9 0%, #D5EEF6 100%);
+  padding: 55px 0 0;
+
+  @include sp {
+    padding-inline: 20px;
+  }
+
+  .container-sitemap {
+    margin: 0 auto;
+    display: flex;
+
+    @include pc {
+      width: 90%;
+      max-width: 880px;
+      margin-bottom: 75px;
+      gap: 70px;
+    }
+
+    @include sp {
+      margin-bottom: 60px;
+      flex-direction: column;
+      gap: 30px;
+      position: relative;
+    }
+
+    .item {
+      @include column(15px);
+      width: fit-content;
+
+      &.position {
+
+        @include sp {
+          position: absolute;
+          top: 0;
+          left: 180px;
+        }
+      }
+
+      .TL {
+        color: $whiteF;
+        @include wt700;
+        line-height: normal;
+        font-size: 12px;
+        text-align: left;
+      }
+
+      ul {
+        @include column(15px);
+
+        li {
+
+          a {
+            color: #FFF;
+            color: $whiteF;
+            @include wt700;
+            line-height: normal;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+
+  .aside {
+    margin-bottom: 30px;
+
+    a {
+      @include sp {
+        width: fit-content;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .logo {
+    @include wt600;
+    line-height: 1.5;
+    width: fit-content;
+    margin: 0 auto;
+
+    @include pc {
+      font-size: 4rem;
+    }
+
+    @include sp {
+      font-size: 2.4rem;
+    }
+
+    a {
+      display: block;
+    }
+
+    img {
+      width: 100%;
+
+      @include pc {
+        max-width: min(300px, 50vw);
+      }
+
+      @include sp {
+        max-width: min(142px, s(142));
+      }
+    }
+  }
+}

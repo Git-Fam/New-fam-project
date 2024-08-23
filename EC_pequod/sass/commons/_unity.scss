@@ -24,8 +24,7 @@ html {
 }
 
 body {
-
-  // @include serif;
+  @include yugothic;
 
   &.active {
 
