@@ -1,0 +1,53 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  C_specifications
+----------------------- */
+
+.C_specifications {
+  @include pc {
+    padding: 0 15%;
+  }
+  @include sp{
+    padding: 0 5%;
+  }
+  li {
+    display: flex;
+    max-width: 880px;
+    margin: 0 auto;
+
+
+    .TL {
+      background: $backgroundBule;
+      color: $whiteF;
+      display: grid;
+      place-items: center center;
+      @include wt700;
+      font-size: 15px;
+
+      @include pc {
+        padding: 20px 0;
+        width: 150px;
+      }
+      @include sp{
+        padding: 15px 0;
+        width: 114px;
+      }
+    }
+
+    .TX {
+      background: $backgroundBulegray;
+      color: $mainF;
+      flex: 1;
+      line-height: 1.5;
+
+      @include pc {
+        padding: 20px 44px;
+      }
+      @include sp{
+        padding:15px 50px;
+      }
+    }
+  }
+}
