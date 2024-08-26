@@ -1,0 +1,264 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  line-up
+----------------------- */
+.line-up {
+
+  .main_item {
+
+    @include pc {
+      margin-top: 100px;
+      @include column(30px);
+    }
+
+    @include sp {
+      margin-top: 60px;
+      @include column(60px);
+    }
+
+    &--detail {
+      position: relative;
+
+      img {
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+
+        @include pc {
+          height: 448px;
+        }
+
+        @include sp {
+          height: 222px;
+        }
+      }
+
+      .text_box {
+        background: #FFF;
+
+        @include pc {
+          width: 477px;
+          position: absolute;
+          top: 50%;
+          left: 106px;
+          translate: 0 -50%;
+          padding: 42px 29px 29px 29px;
+        }
+
+        @include sp {
+          padding: 30px 20px 0;
+        }
+
+        .title {
+          @include column(8px);
+
+          .TL {
+            color: #585D5F;
+            @include wt700;
+            line-height: normal;
+            @include yugothic;
+            font-size: 20px;
+          }
+
+          .tags {
+            display: flex;
+            gap: 11px;
+
+            .TX {
+              border-radius: 100px;
+              background: #EBFAFF;
+              width: fit-content;
+              color: #57C6EA;
+              @include yugothic;
+              @include wt500;
+              line-height: normal;
+              padding: 3px 13px;
+              font-size: 13px;
+            }
+          }
+        }
+
+        .text {
+          margin-top: 30px;
+
+          .TX {
+            @include yugothic;
+            color: #585D5F;
+            @include wt500;
+            line-height: 1.5;
+            font-size: 15px;
+            letter-spacing: 0.75px;
+          }
+        }
+
+        .C_view_more {
+          margin: 28px 0 0 auto;
+        }
+      }
+    }
+
+    &--contents {
+
+      .contents--inner {
+        display: flex;
+        flex-wrap: wrap;
+
+        @include pc {
+          gap: 25px;
+        }
+
+        @include sp {
+          gap: 30px 16px;
+          justify-content: center;
+          padding-inline: 20px;
+        }
+
+        img {
+          object-fit: cover;
+          object-position: center;
+
+          @include pc {
+            width: 250px;
+            height: 250px;
+          }
+
+          @include sp {
+            width: 167px;
+            height: 167px;
+          }
+        }
+      }
+    }
+  }
+
+  .main_supports {
+    background-size: cover;
+
+    @include pc {
+      background-position: center;
+      padding: 66px 0 57px;
+      margin-top: 200px;
+    }
+
+    @include sp {
+      padding: 47px 45px;
+      margin-top: 160px;
+    }
+
+    &-container {
+      background: #FFF;
+
+      @include pc {
+        max-width: 880px;
+        width: 90%;
+        margin: 0 auto;
+        padding: 38px 0 30px;
+      }
+
+      @include sp {
+        padding: 39px 10px;
+      }
+
+      .title {
+        text-align: center;
+
+        @include pc {
+          @include column(10px);
+        }
+
+        @include sp {
+          @include column(12px);
+        }
+
+        .TX {
+          border-radius: 100px;
+          background: #EBFAFF;
+          width: fit-content;
+          margin: 0 auto;
+          color: #57C6EA;
+          @include wt500;
+          line-height: 1.5;
+          font-size: 13px;
+          padding: 2px 13px 3px;
+        }
+
+        .TL {
+          color: #585D5F;
+          @include wt700;
+          line-height: 1.5;
+          font-size: 20px;
+        }
+      }
+
+      .text {
+        text-align: center;
+
+        @include pc {
+          margin: 30px auto 0;
+          width: 497px;
+        }
+
+        @include sp {
+          margin: 60px auto 0;
+          width: 90%;
+        }
+
+        .TX {
+          color: #585D5F;
+          font-size: 15px;
+          @include wt500;
+          line-height: 150%;
+          letter-spacing: 1.5px;
+        }
+      }
+
+      .contents {
+        text-align: center;
+        display: flex;
+        
+        @include pc {
+          justify-content: space-between;
+          max-width: 610px;
+          width: 95%;
+          margin: 42px auto 0;
+          gap: 20px;
+        }
+
+        @include sp {
+          flex-direction: column;
+          gap: 50px;
+          align-items: center;
+          margin-top: 30px
+        }
+
+        .contents-card {
+          @include center;
+          @include iconContain($drip);
+          width: 190px;
+          height: 102px;
+
+          .TX {
+            color: #989898;
+            font-size: 15px;
+            @include wt700;
+            line-height: 1.5;
+            letter-spacing: 1.5px;
+            white-space: nowrap;
+          }
+        }
+      }
+
+      .C_view_more {
+
+        @include pc {
+          margin: 26px 44px 0 auto;
+        }
+
+        @include sp {
+          margin: 59px auto 0;
+        }
+      }
+    }
+  }
+}
