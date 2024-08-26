@@ -1,0 +1,13 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_line
+----------------------- */
+
+.C_line {
+  @include iconContain($C_buying-guid-TL);
+  background-repeat: repeat-x;
+  width: 100%;
+  height: 3px;
+}

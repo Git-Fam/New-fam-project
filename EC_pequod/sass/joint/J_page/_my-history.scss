@@ -1,0 +1,122 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  my-history
+----------------------- */
+
+.my-history {
+  color: $mainF;
+
+  @include sp {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .myPageHistory {
+    @include pc {
+      margin-top: 100px;
+    }
+
+    @include sp {
+      margin-top: 120px;
+    }
+
+    h3 {
+      color: $subF;
+      font-size: 16px;
+      letter-spacing: 1.6px;
+      @include wt700;
+    }
+
+    .C_line {
+      margin-top: 8px;
+    }
+
+    .history {
+      color: $subF;
+      font-size: 16px;
+      letter-spacing: 1.6px;
+      margin-top: 8px;
+
+      .number {
+        color: $F-blue;
+        letter-spacing: 2.4px;
+        @include wt700;
+        margin-left: 20px;
+      }
+    }
+
+    .historyBox {
+      margin-top: 26px;
+
+      .item {
+        display: flex;
+
+        @include sp {
+          flex-wrap: wrap;
+        }
+
+        .historyDetailCol {
+          width: 100%;
+
+          @include sp {
+            width: 50%;
+          }
+
+          dt {
+            background: $backgroundgray;
+            padding: 13px 18px;
+          }
+
+          dd {
+            padding: 13px 18px;
+          }
+
+          @include pc {
+            &.Detail-1 {
+              width: calc(194 / 880 * 100%);
+            }
+
+            &.Detail-2 {
+              width: calc(219 / 880 * 100%);
+            }
+
+            &.Detail-3 {
+              width: calc(134 / 880 * 100%);
+            }
+
+            &.Detail-4 {
+              width: calc(332 / 880 * 100%);
+            }
+          }
+        }
+
+        .history-content {
+          display: flex;
+          padding: 23px 0 23px 31px;
+
+
+
+          .img {
+            height: 130px;
+            width: 130px;
+            aspect-ratio: 1/1;
+
+          }
+
+          &-TX {
+            font-size: 16px;
+            line-height: 2;
+            margin: 11px 0 0 28px;
+          }
+        }
+      }
+
+      .C_line {
+        margin-top: 0;
+      }
+    }
+
+  }
+}
