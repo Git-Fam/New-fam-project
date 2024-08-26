@@ -1,0 +1,769 @@
+{$view->setLayoutVar('title', 'お届け先・購入者情報のご入力')}
+{$view->setLayoutVar('keywords', '')}
+{$view->setLayoutVar('description', '')}
+
+{$view->setLayoutVar("css_files", "columnless.css", true)}
+
+
+<div id="contents">
+	<section class="container">
+		<aside class="flow">
+			<ul class="d-flex justify-content-center">
+				<li>カート</li>
+				<li>&gt;</li>
+				<li class="current">入力</li>
+				<li>&gt;</li>
+				<li>確認</li>
+				<li>&gt;</li>
+				<li>完了</li>
+			</ul>
+		</aside>
+
+		<!-- Amazonペイメント用のスクリプト呼び出しstart -->
+		{if !empty($amazon_config['cv2'])}
+		{else}
+		<script id="amazon"
+						src="/common/js/amazon/amazonBase.js"
+						data-client_id="{$amazon_config['client_id']}"
+						data-merchant_id="{$amazon_config['merchant_id']}"
+						data-paybutton_class="AmazonPayButton"
+						data-development="true"
+						data-logout="true">
+		</script>
+		{/if}
+		<!-- Amazonペイメント用のスクリプト呼び出しend -->
+
+		<h2>お届け先・購入者情報のご入力</h2>
+
+		{if $errors|@count > 0}<div class="errorDisp">{include file='errors.tpl' errors=$errors}</div>{/if}
+
+		<section class="buyForm row justify-content-between mb-5">
+			<div class="col-md-6">
+				<!-- ログインフォーム[非ログイン時のみ表示] -->
+				{if !$user.id}
+				<form method="post" action="{$base_url}/order/buycheck" class="cartLoginForm">
+					<div class="caption">会員登録がお済みの方</div>
+					<ul class="pt-3">
+						<li>
+							<div>メールアドレス</div>
+							<input type="email" name="login_mail" value="" class="ime_d allow_submit form-control">
+						</li>
+						<li>
+							<div>パスワード</div>
+							<input type="password" name="login_pass" value="" class="ime_d allow_submit form-control">
+						</li>
+					</ul>
+
+					<div class="btnArea text-center">
+						<div class="btn-wrap w-100"><input type="submit" value="ログイン" class="btn_m w-100"></div>
+						<input type="hidden" name="login_sub" value="1">
+						<input type="hidden" name="_token" value="{$_token}">
+
+					</div>
+
+					<div class="text-right"><a href="{$base_url}/account/passwd">パスワードをお忘れの方 &rarr;</a></div>
+				</form>
+				{/if}
+				<!-- //ログインフォーム[非ログイン時のみ表示] -->
+			</div>
+
+			<!-- Amazonペイメント購入ボタン表示start -->
+			{if !empty($amazon_config['amazon_pym_flag'])}
+			<div class="col-md-5 align-self-end my-5">
+				{if !empty($amazon_config['cv2'])}
+				<script id="amazon" src="/common/js/amazonV2/amazonV2Button.js?{$db_cache_mtime}"
+								data-placement="Order" data-merchant_id="{$amazon_config['merchantId']}" data-sandbox="{if !empty($amazon_config['sandbox'])}true{else}false{/if}"
+								data-payload='{$amazon_config['payload']}'
+								data-signature="{$amazon_config['signature']}"
+								data-public_key_id="{$amazon_config['public_key_id']}"
+								data-button_color="DarkGray" ></script>
+				<script src="https://static-fe.payments-amazon.com/checkout.js"></script>
+				<div id="AmazonPayButton" class="AmazonPayButton" style="width: 100%; height: 80px;"></div>
+				{else}
+				<div id="AmazonPayButtonId" class="text-center AmazonPayButton"
+						 data-button='{literal}{"type":"PwA", "color":"LightGray", "size":"large"}{/literal}'
+						 data-item='{literal}{{/literal}"id": "{$item_id}", "num": "1", "clear": "true"{literal}}{/literal}'
+						 style="margin-top:20px;"></div>
+				{/if}
+			</div>
+			{/if}
+			<!-- Amazonペイメント購入ボタン表示end -->
+		</section>
+
+
+		<form method="post" action="{$base_url}/order/buycheck">
+
+
+
+			<section class="buyForm row justify-content-between flex-column-reverse flex-md-row">
+				<div class="mainForm col-md-7">
+					{if $user.id == 0}
+					<table>
+						<caption>未登録の方</caption>
+						<tr>
+							<td>
+								<div>会員登録されていない方は以下にご入力ください。</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div>メールアドレス<span class="required"></span></div>
+								<div class="efoBox"><input type="email" name="mail" value="{$view->escape($mail)}" class="ime_d form-control" placeholder="example@example.jp"></div>
+								<div class="description red">※携帯電話各社が提供している迷惑メールフィルタ(ドメイン/メール指定受信機能)をご利用いただいている場合は、当店からのメールを受け取れない可能性がありますので「{$mail_domain}」のドメイン指定解除を設定してください。</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div>会員登録</div>
+								<ul class="radioArea form-inline">
+									<li class="form-check">
+										<input type="radio" name="user_flag" value="1" id="user_reg_yes" class="form-check-input" {$checked_user[1]}><label for="user_reg_yes" class="form-check-label">会員登録をする</label>
+									</li>
+									<li class="form-check">
+										<input type="radio" name="user_flag" value="2" id="user_reg_no" class="form-check-input" {$checked_user[2]}><label for="user_reg_no" class="form-check-label">会員登録をしない</label>
+									</li>
+								</ul>
+							</td>
+						</tr>
+						{if $information.password_area_flag == 1}
+						<tr class="password_area">
+							<td>
+								<div><span class="m-small">希望するパスワードを半角英数字{Config::$init['passwd_s']}～{Config::$init['passwd_e']}文字（記号不可）でご入力ください。</span><span class="required"></span></div>
+								<div class="efoBox"><input type="password" name="passwd_flag" value="{$passwd_flag}" maxlength="{Config::$init['passwd_e']}" class="ime_d form-control"></div>
+							</td>
+						</tr>
+						{/if}
+					</table>
+					{else}
+					<table>
+						<tr>
+							<td>
+								<div>メールアドレス<span class="required"></span></div>
+								<div class="efoBox"><input type="email" name="mail" value="{$view->escape($mail)}" class="ime_d form-control" placeholder=""></div>
+							</td>
+						</tr>
+					</table>
+					{/if}
+
+					<!-- お届け先 -->
+					<table>
+						<caption>お届け先
+							<div class="float-right"><button type="button" id="delivery-info-reset" class="btn small">お届け先情報をクリア</button></div></caption>
+						<!-- 登録住所一覧[ログイン時のみ表示] -->
+						{if $user.id}
+						{if !empty($users_address_list)}
+						<tr>
+							<td>
+								<div>住所一覧</div>
+								<div class="form-group">
+									<select name="address_list" id="address_list" class="custom-select">
+										{foreach from=$users_address_list item=val}
+										<option id="{$val.usa_id}" value="{$val.usa_id}">{$val.first_name}{$val.last_name}&emsp;{$val.pref_name}{$val.address1}{$val.address2}</option>
+										{/foreach}
+									</select>
+								</div>
+								<ul class="radioArea">
+									{* 住所登録数の上限に達していたら非表示 *}
+									{if count($users_address_list) < $regist_add_count}
+									<li class="form-check">
+										<input type="radio" name="address_change" value="1" id="address_list_add" class="form-check-input" {$add_change_checked[1]}><label for="address_list_add" class="form-check-label">お届け先を追加登録する</label>
+									</li>
+									{/if}
+									<li class="form-check">
+										<input type="radio" name="address_change" value="2" id="address_list_change" class="form-check-input" {$add_change_checked[2]}><label for="address_list_change" class="form-check-label">選択したお届け先情報を変更する</label>
+									</li>
+									<li class="form-check">
+										<input type="radio" name="address_change" value="0" id="address_list_keep" class="form-check-input" {$add_change_checked[0]}><label for="address_list_keep" class="form-check-label">変更はしない</label>
+									</li>
+								</ul>
+							</td>
+						</tr>
+						{/if}
+						{/if}
+						<!-- //登録住所一覧[ログイン時のみ表示] -->
+
+						<tr>
+							<td>
+								<div>お名前<span class="required"></span></div>
+								<ul class="inputName d-flex justify-content-between">
+									<li class="efoBox"><input type="text" name="first_name" value="{$view->escape($first_name)}" maxlength="50" class="ime_a form-control" placeholder="姓"></li>
+									<li class="efoBox"><input type="text" name="last_name" value="{$view->escape($last_name)}" maxlength="50" class="ime_a form-control" placeholder="名"></li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div>フリガナ<span class="required"></span></div>
+								<ul class="inputName d-flex justify-content-between">
+									<li class="efoBox"><input type="text" name="first_name_kana" value="{$view->escape($first_name_kana)}" maxlength="50" class="ime_a form-control" placeholder="セイ"></li>
+									<li class="efoBox"><input type="text" name="last_name_kana" value="{$view->escape($last_name_kana)}" maxlength="50" class="ime_a form-control" placeholder="メイ"></li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td class="inputPostal">
+								<div>郵便番号<span class="required"></span></div>
+								<div class="form-inline">
+									<div class="efoBox"><input type="text" name="postal_code_top" value="{$view->escape($postal_code_top)}" maxlength="3" class="ime_d postalTop form-control" placeholder="111"></div> - <div class="efoBox"><input type="text" name="postal_code_under" value="{$view->escape($postal_code_under)}" maxlength="4" class="ime_d postalUnder form-control" onKeyUp="AjaxZip3.zip2addr('postal_code_top','postal_code_under','pref_id','address1');" placeholder="2222"></div>
+									<div class="description"><a href="https://www.post.japanpost.jp/zipcode/" target="_blank" rel="noopener" class="btn_s">郵便番号検索</a></div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div>住所<span class="required"></span></div>
+								<ul class="inputAddress">
+									<li class="efoBox">
+										<select name="pref_id" class="prefSelect custom-select">
+											<option value="">▼選択</option>
+											{foreach from=$pref_data item=pref}
+											{if $pref.pref_id == $address_id}
+											<option value="{$pref.pref_id}" selected>{$pref.pref_name}</option>
+											{else}
+											<option value="{$pref.pref_id}">{$pref.pref_name}</option>
+											{/if}
+											{/foreach}
+										</select>
+									</li>
+									<li class="efoBox"><input type="text" name="address1" value="{$view->escape($address1)}" class="ime_a form-control" placeholder="○○市○○町○○番地"></li>
+									<li class="efoBox"><input type="text" name="address2" value="{$view->escape($address2)}" class="ime_a form-control" placeholder="○○第3ビル○F"></li>
+								</ul>
+								<div class="description">建物名（マンション、アパートなど）、部屋番号まで必ず記入してください</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div>電話番号<span class="required"></span></div>
+								<span class="attention"></span>
+								<div class="efoBox"><input type="tel" name="phone" value="{$view->escape($phone)}" maxlength="16" class="ime_d form-control" placeholder="01234567890"></div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div>お届け希望日</div>
+								<select name="delivery_date" class="custom-select">
+									{foreach from=$deliveryDateArr item=val}
+									{if !empty($smarty.session.post.delivery_date) && $smarty.session.post.delivery_date == $val.key}
+									<option value="{$val.key}" selected>{$val.value}</option>
+									{else}
+									<option value="{$val.key}">{$val.value}</option>
+									{/if}
+									{/foreach}
+								</select>
+								<div class="description">指定なしで最短到着日になります。メール便発送の商品は希望日・時間帯の指定は出来ません。</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div>お届け希望時間帯</div>
+								<select name="delivery_hour" class="custom-select">
+									{foreach from=$deliveryHourArr item=val}
+									{if !empty($smarty.session.post.delivery_hour) && $smarty.session.post.delivery_hour == $val.key}
+									<option value="{$val.key}" selected>{$val.value}</option>
+									{else}
+									<option value="{$val.key}">{$val.value}</option>
+									{/if}
+									{/foreach}
+								</select>
+							</td>
+						</tr>
+					</table>
+					<!-- //お届け先 -->
+
+					<!-- ご請求先 -->
+					<table>
+						<caption>請求書送付先<div class="float-right"><button type="button" id="payment-info-reset" class="btn small">請求先情報をクリア</button></div></caption>
+						<tr>
+							<td>
+								<div class="form-inline form-check">
+									<input type="checkbox" name="new_add_flag" value="1" id="new_add_flag" class="form-check-input" {$new_add_checked}><label for="new_add_flag" class="form-check-label">お届け先とは別の請求先を入力する</label>
+								</div>
+							</td>
+						</tr>
+						<tr class="new_add_area">
+							<td>
+								<div>お名前<span class="required"></span></div>
+								<ul class="inputName d-flex justify-content-between">
+									<li class="efoBox"><input type="text" name="first_name2" value="{$view->escape($first_name2)}" maxlength="50" class="ime_a form-control" placeholder="姓"></li>
+									<li class="efoBox"><input type="text" name="last_name2" value="{$view->escape($last_name2)}" maxlength="50" class="ime_a form-control" placeholder="名"></li>
+								</ul>
+							</td>
+						</tr>
+						<tr class="new_add_area">
+							<td>
+								<div>フリガナ<span class="required"></span></div>
+								<ul class="inputName d-flex justify-content-between">
+									<li class="efoBox"><input type="text" name="first_name_kana2" value="{$view->escape($first_name_kana2)}" maxlength="50" class="ime_a form-control" placeholder="セイ"></li>
+									<li class="efoBox"><input type="text" name="last_name_kana2" value="{$view->escape($last_name_kana2)}" maxlength="50" class="ime_a form-control" placeholder="メイ"></li>
+								</ul>
+							</td>
+						</tr>
+						<tr class="new_add_area">
+							<td class="inputPostal">
+								<div>郵便番号<span class="required"></span></div>
+								<div class="form-inline">
+									<div class="efoBox"><input type="text" name="postal_code_top2" value="{$view->escape($postal_code_top2)}" maxlength="3" class="ime_d postalTop form-control" placeholder="111"></div> - <div class="efoBox"><input type="text" name="postal_code_under2" value="{$view->escape($postal_code_under2)}" maxlength="4" class="ime_d postalUnder form-control" onKeyUp="AjaxZip3.zip2addr('postal_code_top2','postal_code_under2','pref_id2','new_address1');" placeholder="2222"></div>
+									<div class="description"><a href="https://www.post.japanpost.jp/zipcode/" target="_blank" rel="noopener" class="btn_s">郵便番号検索</a></div>
+								</div>
+							</td>
+						</tr>
+						<tr class="new_add_area">
+							<td>
+								<div>住所<span class="required"></span></div>
+								<ul class="inputAddress">
+									<li class="efoBox">
+										<select name="pref_id2" class="prefSelect custom-select">
+											<option value="">▼選択</option>
+											{foreach from=$pref_data item=pref}
+											{if $pref.pref_id == $address_id2}
+											<option value="{$pref.pref_id}" selected>{$pref.pref_name}</option>
+											{else}
+											<option value="{$pref.pref_id}">{$pref.pref_name}</option>
+											{/if}
+											{/foreach}
+										</select>
+									</li>
+									<li class="efoBox"><input type="text" name="new_address1" value="{$view->escape($new_address1)}" class="ime_a form-control" placeholder="○○市○○町○○番地"></li>
+									<li class="efoBox"><input type="text" name="new_address2" value="{$view->escape($new_address2)}" class="ime_a form-control" placeholder="○○第3ビル○F"></li>
+								</ul>
+								<div class="description">建物名（マンション、アパートなど）、部屋番号まで必ず記入してください</div>
+							</td>
+						</tr>
+						<tr class="new_add_area">
+							<td>
+								<div>電話番号<span class="required"></span></div>
+								<span class="attention"></span>
+								<div class="efoBox"><input type="tel" name="phone2" value="{$view->escape($phone2)}" maxlength="16" class="ime_d form-control" placeholder="01234567890"></div>
+							</td>
+						</tr>
+					</table>
+					<!-- //ご請求先 -->
+
+					<table>
+						<caption>お支払い<span class="required"></span></caption>
+						<tr>
+							<td>
+								{if !empty($pay_arr)}
+								<ul id="reg_payment" class="radioArea form-inline">
+									{foreach from=$pay_arr item=val}
+									<li id="pymli{$val.pym_value}" class="form-check col-6 mb-2 py-2 justify-content-start">
+										<input type="radio" name="payment" value="{$val.pym_value}" id="pym{$val.pym_value}" class="form-check-input" {if !empty($smarty.session.payment) and $smarty.session.payment == $val.pym_value}checked{/if}><label for="pym{$val.pym_value}" class="form-check-label">{$val.pym_name}</label>
+									</li>
+									{/foreach}
+								</ul>
+								{* クレジット選択時の表示 *}
+								<div class="creditPayment paymentDescription">
+									{include file='credit.tpl' credit=$credit loader=true}
+								</div>
+								#freeparts/paymentDescription#
+								{/if}
+							</td>
+						</tr>
+					</table>
+
+					<!-- クーポン オプション機能 -->
+					{if $menuCoupon == 1}
+					<table>
+						<caption>クーポン利用</caption>
+						<tr>
+							<td>
+								<div>クーポンをお持ちの方はコードを入力してください</div>
+								<input type="text" name="coupon_code" value="{$view->escape($coupon_code)}" maxlength="100" class="form-control" placeholder="">
+							</td>
+						</tr>
+					</table>
+					{/if}
+					<input type="hidden" name="menuCoupon" value="{$menuCoupon}">
+					<!-- //クーポン オプション機能 -->
+
+					{if $user.id != 0 && !empty($information.point_division)}
+					<table>
+						<caption>ポイント利用</caption>
+						<tr>
+							<td>
+								{if $reg_item === false}
+								<p>1ポイントを1円としてご利用いただけます。<br>「ポイントを利用する」にチェックを入れ、ご利用になるポイント数を入力してください。</p>
+								{elseif $properties.regular_buy === 'true'}
+								<p>定期購入にはポイントを利用できません。予めご了承ください。</p>
+								{/if}
+								<p class="point">現在ご利用可能ポイント:{$user.service_point}pt</p>
+
+								{* POST時エラーメッセージの表示 *}
+								{if !empty($error.use_point)}{$error.use_point}{/if}
+
+								{if $reg_item === false}
+								<ul class="radioArea">
+									<li class="form-inline form-check">
+										<input type="radio" name="up_flag" value="2" id="yes" class="form-check-input" {$checked_point[2]}><label for="yes" class="form-check-label">ポイントを利用する</label>
+										<input type="text" name="use_point" value="{$use_point}" class="ime_d form-control" {$checked_point[1]}>Pt利用する
+									</li>
+									<li class="form-inline form-check">
+										<input type="radio" name="up_flag" value="1" id="no" class="form-check-input" {$checked_point[1]}>
+										<label for="no" class="form-check-label">ポイントを利用しない</label>
+									</li>
+								</ul>
+								{else}
+								<div class="noData">定期購入ではポイントのご利用はできません</div>
+								{/if}
+							</td>
+						</tr>
+					</table>
+					{/if}
+
+					<table>
+						<caption>ご購入者さま情報</caption>
+						<tr>
+							<td>
+								<div>性別</div>
+								<ul class="radioArea form-inline">
+									<li class="form-check col-6 col-md-auto">
+										<input type="radio" name="sex" value="1" id="man" class="form-check-input" {$checked_sex[1]}><label for="man" class="form-check-label">男性</label>
+									</li>
+									<li class="form-check col-6 col-md-auto">
+										<input type="radio" name="sex" value="2" id="woman" class="form-check-input" {$checked_sex[2]}><label for="woman" class="form-check-label">女性</label>
+									</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div>生年月日</div>
+								<div class="row align-items-end">
+									<div class="col-4 pr-2 noWrap"><select name="birthday_y" class="custom-select">{$year_box}</select>年</div>
+									<div class="col-lg-3 col-4 pr-2"><select name="birthday_m" class="custom-select">{$month_box}</select>月</div>
+									<div class="col-lg-3 col-4 pr-2"><select name="birthday_d" class="custom-select">{$day_box}</select>日</div>
+								</div>
+							</td>
+						</tr>
+
+						<!-- メルマガ・DMエリア -->
+						{if $user.id == 0}
+						<!-- メルマガ可否 -->
+						{if $information.merumaga_area_flag == 1}
+						<tr class="merumaga_area">
+							<td>
+								<div>メルマガ</div>
+								<ul class="radioArea form-inline">
+									<li class="form-check">
+										<input type="radio" name="merumaga_flag" value="1" id="merumaga_all" class="form-check-input" {$merumaga_checked[1]}><label for="merumaga_all" class="form-check-label">HTMLメール＋テキストメールを受信</label>
+									</li>
+									<li class="form-check">
+										<input type="radio" name="merumaga_flag" value="2" id="merumaga_txt" class="form-check-input" {$merumaga_checked[2]}><label for="merumaga_txt" class="form-check-label">テキストメールを受信</label>
+									</li>
+									<li class="form-check">
+										<input type="radio" name="merumaga_flag" value="0" id="merumaga_no" class="form-check-input" {$merumaga_checked[0]}><label for="merumaga_no" class="form-check-label">受信しない</label>
+									</li>
+								</ul>
+							</td>
+						</tr>
+						{/if}
+						<!-- //メルマガ可否 -->
+						<!-- DM可否 -->
+						{if $information.dm_area_flag == 1}
+						<tr class="dm_area">
+							<td>
+								<div>DM</div>
+								<ul class="radioArea form-inline">
+									<li class="form-check">
+										<input type="radio" name="dm_flag" value="1" id="dm_yes" class="form-check-input" {$dm_checked[1]}><label for="dm_yes" class="form-check-label">受け取る</label>
+									</li>
+									<li class="form-check">
+										<input type="radio" name="dm_flag" value="0" id="dm_no" class="form-check-input" {$dm_checked[0]}><label for="dm_no" class="form-check-label">受け取らない</label>
+									</li>
+								</ul>
+							</td>
+						</tr>
+						{/if}
+						<!-- //DM可否 -->
+						{/if}
+						<!-- //メルマガ・DMエリア -->
+					</table>
+
+					<table>
+						<caption>備考</caption>
+						<tr>
+							<td>
+								<div class="description">ご意見ご要望などございましたらご記入ください。</div>
+								<textarea name="bikou" id="bikou" class="form-control">{if !empty($smarty.session.post.bikou)}{$smarty.session.post.bikou}{/if}</textarea>
+							</td>
+						</tr>
+					</table>
+
+					<table>
+						<caption class="form-inline">プライバシーポリシー<span class="required"></span>
+							<div class="form-inline form-check pr-5 ml-auto w-auto efoBox">
+								<input type="checkbox" name="privacy" value="1" id="privacy" class="form-check-input"><label for="privacy" class="form-check-label">同意する</label>
+							</div>
+						</caption>
+						<tr>
+							<td>
+								<div id="privacy_box">
+									{if $privacy_arr|@count !== 0}
+									<dl>
+										{foreach from=$privacy_arr item=val}
+										{if !empty($val.pry_title)}
+										<dt>{$val.pry_title}</dt>
+										<dd>{($val.pry_desc)|nl2br}</dd>
+										{/if}
+										{/foreach}
+									</dl>
+									{else}
+									<div class="noData">プライバシーポリシーが設定されておりません</div>
+									{/if}
+								</div>
+							</td>
+						</tr>
+					</table>
+
+					<div class="btnArea text-center">
+						<button type="submit" id="sub">入力した内容を確認する</button>
+						<input type="hidden" name="_token" value="{$_token}">
+
+					</div>
+					<div id="submitError" style="display:none;">
+						<button disabled>必須項目を全て入力してください</button>
+					</div>
+				</div><!-- //.mainForm -->
+
+				<div class="buyFormCart col-md-5 mb-5">
+					<div class="caption">ショッピングカート</div>
+
+					{foreach from=$cart_arr item=val}
+					<div class="cart_item_box">
+						<div class="d-flex">
+							<a href="{$base_url}/product/{$val.item_id}" target="_blank" rel="noopener"><img src="/item_sum_l_image/{$val.main_image}" class="thumb120"></a>
+							<div class="cart_item_spec ml-4">
+								<a href="{$base_url}/product/{$val.item_id}" target="_blank" rel="noopener">{$view->escape($val.item_name)}{if $val.variant_class_and_name}（{$val.variant_class_and_name}）{/if}</a>
+								{if $val.campaign_flag === true}<div class="campaignFlag">キャンペーン対象商品</div>{/if}
+								{if empty($val.pwd_data)}<div>{$val.item_size_str}</div>{/if}
+
+								<div class="text-right">
+									{if empty($val.sale_price)}
+									&yen; {$val.item_price_tax|number_format}
+									{else}
+									&yen; {$val.item_price_tax|number_format}<br class="sp">&rarr; &yen; <span class="price">{$val.sale_price|number_format}</span>
+									{/if}
+								</div>
+							</div>
+						</div>
+						<div class="d-flex justify-content-end align-items-baseline">
+							<div class="cart_amount">
+								数量：{$val.item_num}
+							</div>
+							<div class="priceRow">
+								{if empty($val.sale_price)}
+								&yen; {($val.item_price_tax * $val.item_num)|number_format}
+								{else}
+								&yen; {($val.sale_price * $val.item_num)|number_format}
+								{/if}
+							</div>
+						</div>
+
+						{if $reg_item !== false}
+						{if $type_arr.0.request_select == 1}
+						<table>
+							<caption>配送ペース -定期購入-<span class="required"></span></caption>
+							<tr>
+								<td>
+									{if !empty($type_arr)}
+									<div class="efoBox form-group">
+										<select name="regury_pase" class="custom-select">
+											<option value="">▼選択</option>
+											{foreach from=$type_arr item=val}
+											{if $regury_pase == $val.reg_pase}
+											<option value="{$val.reg_pase}" selected>{$val.reg_name}</option>
+											{else}
+											<option value="{$val.reg_pase}">{$val.reg_name}</option>
+											{/if}
+											{/foreach}
+										</select>
+									</div>
+									{/if}
+								</td>
+							</tr>
+						</table>
+
+						<table>
+							<caption>2回目以降のお届け日</caption>
+							<tr>
+								<td>
+									<div id="month_select_area">
+										<ul class="radioArea">
+											<li class="nextDlvArea form-inline">
+												<div class="form-check">
+													<input type="radio" name="month_flag" value="1" id="by_day" class="form-check-input" {$month_flag_checked[1]}><label for="by_day" class="form-check-label">お届け月の</label>
+												</div>
+												<div class="form-group col-sm-auto">
+													<select name="second_day" class="custom-select">
+														<option value="">指定なし</option>
+														{foreach from=$secondDayArr item=val}
+														{if $second_day == $val.span}
+														<option value="{$val.span}" selected>{$val.day}日</option>
+														{else}
+														<option value="{$val.span}">{$val.day}日</option>
+														{/if}
+														{/foreach}
+														{if $second_day == "END"}
+														<option value="END" selected>月末</option>
+														{else}
+														<option value="END">月末</option>
+														{/if}
+													</select>
+												</div>
+											</li>
+											<li class="nextDlvArea form-inline">
+												<div class="form-check">
+													<input type="radio" name="month_flag" value="2" id="by_week" class="form-check-input" {$month_flag_checked[2]}><label for="by_week" class="form-check-label">お届け月の</label>
+												</div>
+												<div class="form-group row col-sm-auto">
+													<div class="col-6 pr-0">
+														<select name="regury_num_w" class="custom-select w-100">
+															<option value="" {$reg_num_w_selected[0]}>▼選択</option>
+															<option value="1" {$reg_num_w_selected[1]}>第1</option>
+															<option value="2" {$reg_num_w_selected[2]}>第2</option>
+															<option value="3" {$reg_num_w_selected[3]}>第3</option>
+															<option value="4" {$reg_num_w_selected[4]}>第4</option>
+														</select>
+													</div>
+													<div class="col-6 pl-2">
+														<select name="regury_select" class="custom-select">
+															<option value="" {$regury_selected[0]}>▼選択</option>
+															<option value="SUN" {$regury_selected[1]}>日曜日</option>
+															<option value="MON" {$regury_selected[2]}>月曜日</option>
+															<option value="TUE" {$regury_selected[3]}>火曜日</option>
+															<option value="WED" {$regury_selected[4]}>水曜日</option>
+															<option value="THU" {$regury_selected[5]}>木曜日</option>
+															<option value="FRI" {$regury_selected[6]}>金曜日</option>
+															<option value="SAT" {$regury_selected[7]}>土曜日</option>
+														</select>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+
+									<div id="week_select_area">
+										<ul class="radioArea">
+											<li class="nextDlvArea form-inline">
+												<div class="form-check">
+													<label>お届け週の</label>
+												</div>
+												<div class="form-group col-sm-auto">
+													<select name="week_select" class="custom-select">
+														<option value="" {$week_selected[0]}>▼選択</option>
+														<option value="SUN" {$week_selected[1]}>日曜日</option>
+														<option value="MON" {$week_selected[2]}>月曜日</option>
+														<option value="TUE" {$week_selected[3]}>火曜日</option>
+														<option value="WED" {$week_selected[4]}>水曜日</option>
+														<option value="THU" {$week_selected[5]}>木曜日</option>
+														<option value="FRI" {$week_selected[6]}>金曜日</option>
+														<option value="SAT" {$week_selected[7]}>土曜日</option>
+													</select>
+												</div>
+											</li>
+										</ul>
+									</div>
+									<div class="description">2回目以降のお届け日を選択されない場合は最短日基準でのお届けになります。</div>
+								</td>
+							</tr>
+						</table>
+						{else}
+						<input type="hidden" name="regury_pase" value="{$type_arr.0.reg_pase}">
+						{/if}
+						{/if}
+
+						<!-- アンケート オプション機能 -->
+						{if !empty($free_arr)}
+						<table class="questionnaire mt-4">
+							<caption>アンケートにご協力ください。</caption>
+							{foreach from=$free_arr item=val}
+							<tr>
+								<td>
+									<div>{$view->escape($val.free_title)} {if $val.free_required == 2}<span class="required"></span>{/if}</div>
+
+									{if $val.free_type == "text"}<!-- テキストボックスの場合 -->
+									<input type="text" name="free_data[{$val.free_master_id}]" value="{$view->escape($free_data[{$val.free_master_id}])}" id="free_data{$val.free_master_id}" {$val.free_size} {$val.view_required} class="ime_a form-control">
+									{elseif $val.free_type == "textarea"}<!-- テキストエリアの場合 -->
+									<textarea name="free_data[{$val.free_master_id}]" id="free_data{$val.free_master_id}" {$val.free_cols} {$val.free_rows} {$val.view_required} class="ime_a form-control">{$view->escape($free_data[$val.free_master_id])}</textarea>
+									{elseif $val.free_type == "radio"}<!-- ラジオボタンの場合 -->
+									<div class="radioArea form-check form-inline">
+										{foreach from=$val.list key=key2 item=val2}
+										<label>
+											<input type="radio" name="free_data[{$val.free_master_id}]" value="{$view->escape($val2.free_list_id)}" id="free_data{$val.free_master_id}-{$val2.free_list_id}" {$f_radio_checked[$val.free_master_id][$key2]} {$val.view_required} class="form-check-input"><span>{$view->escape($val2.free_name)}</span>
+										</label>
+										{/foreach}
+									</div>
+									{elseif $val.free_type == "select"}<!-- セレクトボックスの場合 -->
+									<select name="free_data[{$val.free_master_id}]" id="free_data{$val.free_master_id}" {$val.view_required} class="custom-select">
+										{foreach from=$val.list key=key2 item=val2}
+										<option value="{$view->escape($val2.free_list_id)}" {$f_select_selected[$val.free_master_id][$key2]}>{$view->escape($val2.free_name)}</option>
+										{/foreach}
+									</select>
+									{elseif $val.free_type == "checkbox"}<!-- チェックボックスの場合 -->
+									<div class="radioArea form-check form-inline">
+										{foreach from=$val.list key=key2 item=val2}
+										<label>
+											<input type="checkbox" name="free_data[{$val.free_master_id}][]" value="{$view->escape($val2.free_list_id)}" id="free_data{$val.free_master_id}-{$val2.free_list_id}" {$f_checkbox_checked[$val.free_master_id][$key2]} {$val.view_required} class="form-check-input"><span>{$view->escape($val2.free_name)}</span>
+										</label>
+										{/foreach}
+									</div>
+									{/if}
+									<input type="hidden" name="free_title[{$val.free_master_id}]" value="{$val.free_title}">
+									<input type="hidden" name="free_master_id[{$val.free_master_id}]" value="{$val.free_master_id}">
+									<input type="hidden" name="free_type[{$val.free_master_id}]" value="{$val.free_type}">
+									<input type="hidden" name="free_required[{$val.free_master_id}]" value="{$val.free_required}">
+									<input type="hidden" name="free_point[{$val.free_master_id}]" value="{$val.free_point}">
+								</td>
+							</tr>
+							{/foreach}
+						</table>
+						<div class="mb-4">アンケートにご協力いただき、誠にありがとうございました。</div>
+						{/if}
+						<!-- //アンケート オプション機能 -->
+					</div><!-- //cart_item_box -->
+					{/foreach}
+
+					{* 同梱物 *}
+					{if !empty($present)}
+					{foreach from=$present item=val}
+					{if !empty($val.check_flag)}
+					<div class="cart_item_box d-flex">
+						<img src="/item_sum_l_image/{$val.main_image}" class="thumb120">
+						<div>
+							<div>同梱物：{$view->escape($val.item_name)}</div>
+							<div>数量：{$val.present_num}</div>
+						</div>
+					</div>
+					{/if}
+					{/foreach}
+					{/if}
+					{* //同梱物 *}
+
+					<div class="cart_item_total d-flex justify-content-end">
+						<div>商品合計（税込）</div>
+						<div class="priceRow">&yen; {$sum_price|number_format}</div>
+					</div>
+				</div><!-- //.buyFormCart -->
+			</section><!-- //.buyForm -->
+			<input type="hidden" name="cart_id" id="cart_id" value="">
+			<input type="hidden" name="cart_mode" id="cart_mode" value="">
+			<input type="hidden" name="item_status" id="item_status" value="">
+			<input type="hidden" name="cart_change_flg" id="cart_change_flg" value="">
+		</form>
+
+	</section><!-- //.container -->
+</div><!-- //#contents -->
+
+
+<!-- [必須]郵便番号自動入力 -->
+<script src="https://ajaxzip3.github.io/ajaxzip3.js"></script>
+
+<!-- [必須]クレジット関係 -->
+<script src="{$js_dir}/show-credit-form.js"></script>
+<script src="{$common_js_dir}/credit/credit-auto-authori.js?{$db_cache_mtime}"></script>
+<!-- [必須]定期配送ペース関係 -->
+<script src="{$js_dir}/order_form.js"></script>
+<!-- [必須]住所関係 -->
+<script src="{$js_dir}/order_form_address.js"></script>
+<!-- [必須]メルマガ・DMエリア -->
+<script src="{$js_dir}/merumaga_dm_flag.js"></script>

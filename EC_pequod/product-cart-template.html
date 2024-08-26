@@ -1,0 +1,312 @@
+{$view->setLayoutVar('title', 'カート')}
+{$view->setLayoutVar('keywords', '')}
+{$view->setLayoutVar('description', '')}
+
+{$view->setLayoutVar("css_files", "columnless.css", true)}
+
+
+<!-- AmazonペイJS設定start -->
+{if !empty($amazon_config['amazon_pym_flag'])}
+{if !empty($amazon_config['cv2'])}
+<script id="amazon" src="/common/js/amazonV2/amazonV2Button.js?{$db_cache_mtime}" data-placement="Cart"
+    data-merchant_id="{$amazon_config['merchantId']}"
+    data-sandbox="{if !empty($amazon_config['sandbox'])}true{else}false{/if}" data-payload='{$amazon_config['
+    payload']}' data-signature="{$amazon_config['signature']}"
+    data-public_key_id="{$amazon_config['public_key_id']}"></script>
+<script src="https://static-fe.payments-amazon.com/checkout.js"></script>
+{else}
+<script id="amazon" src="/common/js/amazon/amazonBase.js" data-client_id="{$amazon_config['client_id']}"
+    data-merchant_id="{$amazon_config['merchant_id']}" data-paybutton_class="AmazonPayButton" data-redirect="true"
+    data-logout="true">
+    </script>
+{/if}
+{/if}
+<!-- AmazonペイJS設定end -->
+
+<div id="contents">
+    <section class="container">
+        <aside class="flow">
+            <ul class="d-flex justify-content-center">
+                <li class="current">カート</li>
+                <li>&gt;</li>
+                <li>入力</li>
+                <li>&gt;</li>
+                <li>確認</li>
+                <li>&gt;</li>
+                <li>完了</li>
+            </ul>
+        </aside>
+
+        <h2>ショッピングカート</h2>
+
+        {if $information.point_division}
+        <p>
+            ポイント制度をご利用になられる場合は、会員登録後ログインしていただきますようお願い致します。<br>
+            ポイントは商品購入時に1pt＝1円として使用することができます。
+        </p>
+        {/if}
+        {if !empty($cart_arr)}<p>現在のお買い上げ合計金額は <span class="price">{$sum_price|number_format}円</span> です。</p>{/if}
+
+        {if $information.shipping_conditions !=0}
+        <div>{$information.shipping_conditions|number_format}円以上お買い上げで<span class="important">送料無料！</span></div>
+        {/if}
+
+        {if $errors|@count > 0}<div class="errorDisp">{include file='errors.tpl' errors=$errors}</div>{/if}
+
+        <div id="cart">
+            {if !empty($cart_arr)}
+            <div class="row">
+                <div class="col-md-7">
+
+                    {foreach from=$cart_arr key=key item=val}
+                    <div class="cart_item_box">
+                        <div><a href="{$base_url}/cart/{$val.cart_id}" class="btn_delete">削除</a></div>
+                        <div class="d-flex">
+                            <a href="{$base_url}/product/{$val.item_id}" target="_blank" rel="noopener"><img
+                                    src="{$val.main_image}" {if $carrier=='p' }class="thumb150" {elseif $carrier=='s'
+                                    }class="thumb120" {/if}></a>
+                            <div class="cart_item_spec ml-4">
+                                <a href="{$base_url}/product/{$val.item_id}" target="_blank"
+                                    rel="noopener">{$view->escape($val.item_name)}{if
+                                    $val.variant_class_and_name}（{$val.variant_class_and_name}）{/if}</a>
+                                {if $val.reserve == 1}<div class="reserveFlag">予約商品</div>{/if}
+                                {if $val.campaign_flag === true}<div class="campaignFlag">キャンペーン対象商品</div>{/if}
+                                {if empty($val.pwd_data)}<div>{$val.item_size_str}</div>{/if}{* サイズ表示/不要の際は非表示に *}
+
+                                <div class="text-right">
+                                    {if empty($val.sale_price)}
+                                    &yen; {$val.item_price_tax|number_format}
+                                    {else}
+                                    &yen; {$val.item_price_tax|number_format}<br class="sp">
+                                    &rarr; &yen; <span class="price">{$val.sale_price|number_format}</span>
+                                    {/if}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end align-items-baseline mt-4">
+                            <form method="post" action="{$smarty.server.REQUEST_URI|escape}"
+                                class="form-inline cart_amount">
+                                数量：{$val.item_num}
+                                <div class="form-check ml-3">
+                                    <input type="submit" name="sub_p" value="+" class="form-check-input">
+                                    {if ($val.item_num - 1) < 1} <input type="submit" value="-" class="form-check-input"
+                                        disabled>
+                                        {else}
+                                        <input type="submit" name="sub_m" value="-" class="form-check-input">
+                                        {/if}
+                                </div>
+                                <input type="hidden" name="cart_id" value="{$val.cart_id}">
+                                <input type="hidden" name="edit_sub" value="1">
+                                <input type="hidden" name="reserve" value="{$val.reserve}">
+                            </form>
+                            <div class="priceRow">
+                                {if empty($val.sale_price)}
+                                &yen; {($val.item_price_tax * $val.item_num)|number_format}
+                                {else}
+                                &yen; {($val.sale_price * $val.item_num)|number_format}
+                                {/if}
+                            </div>
+                        </div>
+                    </div>
+                    {/foreach}
+
+                    {* 同梱物 *}
+                    {if !empty($present)}
+                    {foreach from=$present item=val}
+                    {if !empty($val.check_flag)}
+                    <div class="cart_item_box d-flex py-2">
+                        <img src="/item_main_m_image/{$val.main_image}" {if $carrier=='p' }class="thumb150" {elseif
+                            $carrier=='s' }class="thumb120" {/if}>
+                        <div class="cart_item_spec ml-4">
+                            <div>同梱物：{$view->escape($val.item_name)}</div>
+                            <div>数量：{$val.present_num}</div>
+                        </div>
+                    </div>
+                    {/if}
+                    {/foreach}
+                    {/if}
+                    {* //同梱物 *}
+
+                    <div class="cart_item_total d-flex justify-content-end">
+                        <div>商品合計（税込）</div>
+                        <div class="priceRow">&yen; {$sum_price|number_format}</div>
+                    </div>
+
+                    {if $information.point_division}
+                    <div class="cart_point_disp d-flex justify-content-end mt-2">
+                        <div>今回加算ポイント</div>
+                        <div class="priceRow">{$point_division}pt</div>
+                    </div>
+                    {/if}
+
+                    {if $information.shipping_conditions != 0 || $information.cod != 0}
+                    <div class="commission mt-3">
+                        {if $information.shipping_conditions != 0}
+                        {if $conditions_flag1}
+                        送料無料まで後・・・<span class="price">&yen; {$no_charge1|number_format}</span>
+                        {else}
+                        <span class="red font-weight-bold">現在送料無料！</span>
+                        {/if}
+                        {else}
+                        <!--<span class="price">現在送料無料！</span>-->
+                        {/if}
+                    </div>
+                    {/if}
+                    <div class="description mt-3 text-right">
+                        送料はまだ計算されていません。<br>
+                        ポイント/クーポンは次の画面でご利用いただけます。
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="btnArea text-center">
+                        <a href="{$base_url}/order/buy" class="btn btn_proceed">購入手続きへ</a>
+
+                        {if !empty($amazon_config['amazon_pym_flag'])}
+                        <!-- Amazonペイ購入ボタン表示start -->
+                        {if !empty($amazon_config['cv2'])}
+                        <div id="AmazonPayButton" class="AmazonPayButton mt-4"
+                            style="width: 500px; max-width: 100%; height:140px;"></div>
+                        {else}
+                        <div id="AmazonPayButtonId" class="AmazonPayButton mt-4"
+                            data-button='{literal}{"type":"PwA", "color":"Gold", "size":"x-large"}{/literal}'></div>
+                        {/if}
+                        <!-- Amazonペイ購入ボタン表示end -->
+                        {/if}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-end">
+                <div class="col-md-5">
+                    <a href="{$base_url}/product/list/" class="btn btn_back">お買い物を続ける</a>
+                </div>
+            </div>
+            {else}
+            <div class="noData">カートの中身はありません。</div>
+
+            <div class="btnArea text-center">
+                <a href="{$base_url}/product/list/" class="btn_m">商品一覧ページへ</a>
+            </div>
+            {/if}
+        </div><!-- /#cart -->
+    </section><!-- //.container -->
+
+    <section class="swiperArea container">
+        {if $user.id != 0}
+        {if !empty($related_list)}
+        <script>
+            $(function () {
+                var swiperRltd = new Swiper('.swipeAreaRelated', {
+                    slidesPerView: 3,
+                    spaceBetween: 0,
+                    slidesPerGroup: 1,
+                    loop: true,
+                    loopFillGroupWithBlank: true,
+                    observer: true,
+                    observeParents: true,
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    breakpoints: {
+                        767: {
+                            slidesPerView: 5,
+                            slidesPerGroup: 5,
+                            spaceBetween: 30
+                        }
+                    }
+                });
+            });
+        </script>
+
+        <div class="item-slider">
+            <h3>{$view->escape($use_nick.show_nickname)}様におすすめの商品</h3>
+            <div class="swipeAreaRelated swiper-container">
+                <div class="swiper-wrapper">
+                    {foreach from=$related_list item=val}
+                    <div class="swiper-slide">
+                        <a href="{$base_url}/product/{$val.item_id}">
+                            <figure><img src="/item_main_m_image/{$val.main_image}"></figure>
+                            <h4 class="m-small">{$view->escape($val.item_name)|mb_strimwidth:0:50:'...':'UTF-8'}</h4>
+                        </a>
+                        <p class="text-right m-small">
+                            {if empty($val.sale_price)}
+                            &yen; {$val.item_price_tax|number_format}
+                            {else}
+                            &yen; {$val.item_price_tax|number_format}<br class="sp">
+                            &rarr; &yen; <span class="price">{$val.sale_price|number_format}</span>
+                            {/if}
+                        </p>
+                    </div>
+                    {/foreach}
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+        {/if}
+        {else}
+        {if !empty($recommend_item)}
+        <script>
+            $(function () {
+                var swiperRcmd = new Swiper('.swipeAreaRecommend', {
+                    slidesPerView: 3,
+                    spaceBetween: 0,
+                    slidesPerGroup: 1,
+                    loop: true,
+                    loopFillGroupWithBlank: true,
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    observer: true,
+                    observeParents: true,
+                    breakpoints: {
+                        767: {
+                            slidesPerView: 5,
+                            slidesPerGroup: 5,
+                            spaceBetween: 30
+                        }
+                    }
+                });
+            });
+        </script>
+
+        <div class="item-slider">
+            <h3>おすすめの商品</h3>
+            <div class="swipeAreaRecommend swiper-container">
+                <div class="swiper-wrapper">
+                    {foreach from=$recommend_item item=val}
+                    <div class="swiper-slide">
+                        <a href="{$base_url}/product/{$val.item_id}">
+                            <figure><img src="/item_main_m_image/{$val.main_image}"></figure>
+                            <h4 class="m-small">{$view->escape($val.item_name)|mb_strimwidth:0:50:'...':'UTF-8'}</h4>
+                        </a>
+                        <p class="text-right m-small">
+                            {if empty($val.sale_price)}
+                            &yen; {$val.item_price_tax|number_format}
+                            {else}
+                            &yen; {$val.item_price_tax|number_format}<br class="sp">
+                            &rarr; &yen; <span class="price">{$val.sale_price|number_format}</span>
+                            {/if}
+                        </p>
+                    </div>
+                    {/foreach}
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+        {/if}
+        {/if}
+    </section><!-- //.swiperArea -->
+
+</div><!-- //#contents -->
