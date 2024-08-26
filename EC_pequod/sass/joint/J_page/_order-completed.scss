@@ -1,0 +1,76 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  application-completed
+----------------------- */
+
+.order {
+  padding-top: 133px;
+
+
+  .C_TL {
+    @include pc {
+      margin-top: 96px;
+    }
+
+    @include sp {
+      margin-top: 60px;
+    }
+  }
+
+
+  &.order-completed {
+    .C_TL {
+      .TL {
+        color: $F-blue;
+      }
+    }
+
+    .order-completed-TX {
+      text-align: center;
+      font-size: 16px;
+      line-height: 2.1;
+      display: flex;
+      flex-direction: column;
+      color: $subF;
+      margin-top: 60px;
+      letter-spacing: 1.6px;
+      @include wt700;
+
+      @include pc {
+        gap: 45px;
+      }
+
+      @include sp {
+        gap: 50px;
+      }
+
+      @media screen and (max-width: 460px) {
+        font-size: 14px;
+
+      }
+
+    }
+  }
+
+  .C_btn {
+    width: auto;
+    max-width: 284px;
+    height: 62px;
+    @include pc{
+      margin: 100px auto 0;
+    }
+    @include sp{
+      margin: 60px auto 0;
+    }
+    @media screen and (max-width: 460px) {
+      height: 55px;
+
+      .TX{
+        font-size: 18px;
+      }
+
+    }
+  }
+}

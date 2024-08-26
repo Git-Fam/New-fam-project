@@ -1,0 +1,119 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_flow
+----------------------- */
+
+.C_flow {
+  margin: 0 auto;
+
+  @include pc {
+    width: 785px;
+  }
+
+  @include sp {
+    width: 90%;
+  }
+
+  .flow-item {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin: 0 auto;
+    counter-reset: flow;
+    // gap: 3px;
+
+    li {
+      position: relative;
+      font-size: 15px;
+      @include wt700;
+      color: $subF;
+      letter-spacing: 1.5px;
+
+      @media screen and (max-width: 460px) {
+        font-size: 10px;
+        
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        border-radius: 10px;
+        background: $P-white;
+        left: 50%;
+        translate: -50% 0;
+        border: 3px solid $flow-point-border;
+
+        @include pc {
+          width: 10px;
+          height: 10px;
+          top: -27px;
+        }
+
+        @include sp {
+          width: 10px;
+          height: 10px;
+          top: -22px;
+        }
+      }
+
+      &::after {
+        counter-increment: flow;
+        content: counter(flow);
+        position: absolute;
+        background: $flow-point-border;
+        color: $subF;
+        border-radius: 50%;
+        text-align: center;
+        left: 50%;
+        translate: -50% 0;
+        font-size: 16px;
+        line-height: 30px;
+        width: 30px;
+        height: 30px;
+        @include wt800;
+
+        @include pc {
+          top: -70px;
+        }
+        @include sp{
+          top: -65px;
+
+        }
+
+      }
+
+      &.current {
+        color: $mainF;
+
+        &::before {
+          background: $flow-poin-current;
+          border: 3px solid $flow-poin-current;
+        }
+
+        &::after {
+          background: $flow-poin-current;
+          color: $whiteF;
+        }
+      }
+    }
+
+    &::before {
+      content: "";
+      border: 2px solid $flow-point-border;
+      position: absolute;
+      left: 50%;
+      translate: -50% 0;
+
+      @include pc {
+        width: 700px;
+        top: -20px;
+      }
+      @include sp{
+        top: -15px;
+        width: 85.7%;
+      }
+    }
+  }
+}
