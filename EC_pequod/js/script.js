@@ -1,26 +1,4 @@
-$(function () {   
-  // // ハンバーガーメニュー
-  //  $(".burger").on("click", function(){
-  //    $(this).toggleClass("active");
-  //    $('.menu').toggleClass("active");
-  //    $('body').toggleClass("active");
-  //  }); 
-  // $(".js-link,.menu").on("click", function(){
-  //   $('.burger').removeClass("active");
-  //   $('.menu').removeClass("active");
-  //   $('body').removeClass("active");
-  // });
-
-  // var prevScrollpos = window.pageYOffset;
-  // window.onscroll = function() {
-  //   var currentScrollpos = window.pageYOffset;
-  //   if (prevScrollpos > currentScrollpos || currentScrollpos < 450) {
-  //     document.querySelector(".header").classList.remove("active");
-  //   } else {
-  //     document.querySelector(".header").classList.add("active");
-  //   }
-  //   prevScrollpos = currentScrollpos;
-  // }
+$(function () {
 
   // 要素が画面下部に来たらshowを付与
   // $(window).scroll(function () {

@@ -1,0 +1,640 @@
+{$view->setLayoutVar('title', $product[0]['item_name'])}
+{$view->setLayoutVar('keywords', $product.0.shop_keywords)}
+{$view->setLayoutVar('description', strip_tags($product.0.item_desc))}
+
+{* metaタグ追加 = 「販売情報登録・修正」で「リンク先を知っている方のみ販売」にチェックを入れると発動します *}
+{if !empty($product.0.sale_link_flag)}{$view->setLayoutVar('meta', '<meta name="robots" content="noindex">')}{/if}
+
+{* [必須] 複数在庫プルダウン用 *}
+{$view->setLayoutVar('common_js_files', 'product_item_size.js', true)}
+{* 画像リスト *}
+{$view->setLayoutVar('js_files', 'detail.js', true)}
+{* 商品拡大画像 *}
+{$view->setLayoutVar("css_files", "lightbox.css", true)}
+{$view->setLayoutVar("js_files", "lightbox.js", true)}
+{* セールタイマー *}
+{$view->setLayoutVar('common_js_files', 'limit_count.js', true)}
+
+<!-- 複数在庫商品に使用するスクリプト -->
+<script>
+	$(function(){
+		$('.normal_color1').bind('change', function() {
+			var defined_c = $('.normal_color1 option:selected').val();
+			$(".normal_color2").val(defined_c);
+		});
+
+		$('.normal_size1').bind('change', function() {
+			var defined_s = $('.normal_size1 option:selected').val();
+			$(".normal_size2").val(defined_s);
+		});
+
+		$('.q_color1').bind('change', function() {
+			var defined_r = $('.q_color1 option:selected').val();
+			$(".q_color2").val(defined_r);
+		});
+
+		$('.q_right1').bind('change', function() {
+			var defined_r = $('.q_right1 option:selected').val();
+			$(".q_right2").val(defined_r);
+		});
+
+		$('.q_left1').bind('change', function() {
+			var defined_l = $('.q_left1 option:selected').val();
+			$(".q_left2").val(defined_l);
+		});
+
+		$('.q_set1').bind('change', function() {
+			var defined_s = $('.q_set1 option:selected').val();
+			$(".q_set2").val(defined_s);
+		});
+
+		$('.q_num1').bind('keyup', function() {
+			$(".q_num2").val($(this).val());
+		});
+
+		$('.normal_color2').bind('change', function() {
+			var defined_c = $('.normal_color2 option:selected').val();
+			$(".normal_color1").val(defined_c);
+		});
+
+		$('.normal_size2').bind('change', function() {
+			var defined_s = $('.normal_size2 option:selected').val();
+			$(".normal_size1").val(defined_s);
+		});
+
+		$('.q_color2').bind('change', function() {
+			var defined_r = $('.q_color2 option:selected').val();
+			$(".q_color1").val(defined_r);
+		});
+
+		$('.q_right2').bind('change', function() {
+			var defined_r = $('.q_right2 option:selected').val();
+			$(".q_right1").val(defined_r);
+		});
+
+		$('.q_left2').bind('change', function() {
+			var defined_l = $('.q_left2 option:selected').val();
+			$(".q_left1").val(defined_l);
+		});
+
+		$('.q_set2').bind('change', function() {
+			var defined_s = $('.q_set2 option:selected').val();
+			$(".q_set1").val(defined_s);
+		});
+
+		$('.q_num2').bind('keyup', function() {
+			$(".q_num1").val($(this).val());
+		});
+	});
+</script>
+<!-- //複数在庫商品に使用するスクリプト -->
+
+<!-- facebook SDK -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v5.0"></script>
+<!-- //facebook SDK -->
+
+
+<div id="contents">
+	{if $errors|count > 0}
+	<input type="hidden" name="error_move" value="1">
+	{else}
+	<input type="hidden" name="error_move" value="0">
+	{/if}
+
+	<div class="breadcrumb small"><a href="{$base_url}/">TOP</a><br>{$pankuzu}<br>＞{$view->escape($product.0.item_name)}</div>
+
+	<section class="container">
+		<h2>{if $product.0.regbuy == 0}<span class="regularIcon">定期購入対象商品</span>{/if}{$view->escape($product.0.item_name)}{if $product.0.pre_order_flag == 1}<span class="reserveIcon">予約商品</span>{/if}</h2>
+
+		<div class="row">
+			<div class="col-md-6">
+				<!-- メイン商品画像 -->
+				<div class="product-photo">
+					{if isset($product.0.contents_main_image) && !empty($product.0.contents_main_image)}
+					<a href="{$product.0.contents_main_image}" id="popup" rel="lightbox_main[group]" relative="{$base_url}" title="{$view->escape($product.0.contents_item_name)}" data-lightbox="lightbox_images">
+						<img src="{$product.0.contents_main_image}" id="mainimage">
+					</a>
+					{if isset($contents_image_list)}
+					{foreach from=$contents_image_list item=val key=keyval}
+					{if $val != $product.0.contents_main_image}
+					<a href="{$val.url}" rel="lightbox_main[group]" relative="" title="{$view->escape($val.alt)}" filename="{$val.url}"></a>
+					{/if}
+					{/foreach}
+					{if $contents_image_list|count lt 2}
+					{foreach from=$image_list item=val2 key=keyval2}
+					{if $keyval2 gt $keyval}
+					<a href="/item_main_image/{$val2}" rel="lightbox_main[group]" relative="" title="{$view->escape($val2.alt)}" filename="/item_main_image/{$val2}"></a>
+					{/if}
+					{/foreach}
+					{/if}
+					{else}
+					<div class="noData">画像リストはありません</div>
+					{/if}
+					{else}
+					<a href="/item_main_image/{$product.0.main_image}" id="popup" rel="lightbox_main[group]" relative="{$base_url}" title="{$view->escape($product.0.item_name)}" data-lightbox="lightbox_images">
+						<img src="/item_main_image/{$product.0.main_image}" id="mainimage">
+					</a>
+					{if isset($image_list)}
+					{foreach from=$image_list item=val}
+					{if $val != $product.0.main_image}
+					<a href="/item_main_image/{$val}" rel="lightbox_main[group]" filename="{$val}" relative="" title="{$view->escape($product.0.item_name)}" data-lightbox="lightbox_images"></a>
+					{/if}
+					{/foreach}
+					{else}
+					<div class="noData">画像リストはありません</div>
+					{/if}
+					{/if}
+				</div>
+				<!-- //メイン商品画像 -->
+				<!-- サムネイル -->
+				<div class="product-photo-thumb">
+					{if isset($image_list)}
+					<ul class="form-inline mt-4">
+						{foreach from=$image_list item=val}
+						<li class="text-center">
+							<a href="/item_main_image/{$val}" rel="lightbox_thumb[group]" filename="{$val}" relative="" title="{$view->escape($product.0.item_name)}">
+								<img src="/item_sum_l_image/{$val}">
+							</a>
+						</li>
+						{/foreach}
+					</ul>
+					{else}
+					<div class="noData">画像リストはありません</div>
+					{/if}
+				</div>
+				<!-- //サムネイル -->
+			</div>
+
+			<div class="col-md-6">
+				{if $product.0.variant_type != '0'}
+				<div class="variant mb-5">
+					<label>{$view->escape($product.0.variant_class)}</label>
+					<select class="variant_name_select custom-select">
+						<option value="{$variant_base_id}">選択してください</option>
+						{if $variant_group_items|count > 0}
+						{foreach from=$variant_group_items key=key1 item=val1}
+						<optgroup label="{$key1}">
+							{foreach from=$val1 key=key2 item=val2}
+							<option value="{$val2.item_id}"{if $product.0.item_id == $val2.item_id}} selected{/if}>
+								{$val2.variant_name1}、{$val2.variant_name2}{if $val2.unlimited == 0 && $val2.item_num < 1} (品切れ中){/if}
+							</option>
+							{/foreach}
+						</optgroup>
+						{/foreach}
+						{else}
+						{foreach from=$variant_items key=key item=val}
+						{if $product.0.item_id == $val.item_id}
+						<option value="{$val.item_id}" selected>{$val.variant_name}{if $val.unlimited == 0 && $val.item_num < 1} (品切れ中){/if}</option>
+						{else}
+						<option value="{$val.item_id}">{$val.variant_name}{if $val.unlimited == 0 && $val.item_num < 1} (品切れ中){/if}</option>
+						{/if}
+						{/foreach}
+						{/if}
+					</select>
+				</div>
+				{/if}
+
+				<div class="mb-5">
+					{if $sale_flag}
+					<div class="d-none sale_bar pl-2">
+						{if $s_point.sale_type == 1}いまなら<span>{$s_point['sale_num']}</span>ポイントプレゼント{elseif $s_point.sale_type == 2}いまならポイント<span>{$s_point['sale_num']}</span>倍！{elseif $s_point.sale_type == 4}いまなら<span>大特価</span>ご奉仕中！{/if}
+					</div>
+					{/if}
+
+					<div class="form-inline justify-content-between align-items-end">
+						<div class="flex-grow-1">
+							{if $product.0.variant_type == '1'}
+							{elseif empty($product.0.sale_price)}
+							価格：<span class="price">&yen; {$product.0.item_price_tax|number_format}</span> <small>(税込)</small>
+							{else}
+							通常価格：&yen; {$product.0.item_price_tax|number_format} <small>(税込)</small><br>
+							&rarr; 特別価格：<span class="price">&yen; {$product.0.sale_price|number_format}</span> <small>(税込)</small>
+							{/if}
+						</div>
+
+						{if $service_point_flag}
+						<div class="flex-grow-1 m-small text-right">
+							獲得ポイント：{$product_point}{if $s_point.sale_type == 1 || $s_point.sale_type == 2} &rarr; <span class="point">{$s_point.service_point}</span>{/if}pt
+						</div>
+						{/if}
+					</div>
+
+					<!-- お気に入り登録(ログイン時表示) -->
+					{if $user.id > 0}
+					<div class="addFav text-right py-2">
+						{if $bmk_data|count === 0}
+						<a href="javascript:void(0);" onclick="document.bmk_form.submit()">お気に入りに追加する</a>
+						<form method="post" action="{$smarty.server.REQUEST_URI|escape}" name="bmk_form">
+							<input type="hidden" name="bmk" value="1">
+							<input type="hidden" name="_token" value="{$_token}">
+							<input type="hidden" name="bmk_item_id" value="{$item_id}">
+						</form>
+						{else}
+						<span class="favAdded">お気に入りに追加済み {$bmk_data.regist_date|substr:0:-3}</span>
+						{/if}
+					</div>
+					{/if}
+					<!-- //お気に入り登録(ログイン時表示) -->
+
+					{if $sale_flag && $product.0.end_date != 0}
+					<div class="timeRemain sale_bar text-center">セール終了まで残り <span class="TimeView font-weight-bold"></span></div>
+					<input type="hidden" class="TimerEnd" value="{$product.0.e_format_date}">
+					<input type="hidden" class="TimerEndText" value="0分　SALEは終了しました">
+					<input type="hidden" class="TimerLimitType" value="{$product.0.limit_type}">
+					{/if}
+				</div>
+
+				{* 商品説明 *}
+				<div id="detailCommentArea">
+					{$product.0.item_desc}
+				</div>
+
+				{if $errors|@count > 0}<div class="errorDisp">{include file='errors.tpl' errors=$errors}</div>{/if}
+
+				<form method="post" action="{$smarty.server.REQUEST_URI|escape}" class="ctaArea">
+					{* 複数在庫 *}
+					{if $product.0.stock_flag == 2}
+					<ul class="mb-4">
+						<li>
+							<label for="color_select" class="fs14">{$product.0.option_id1}：</label>
+							<select name="item_color" id="color_select" item_id="{$product.0.item_id}" class="normal_color2 custom-select">
+								<option value="0">選択してください</option>
+								{foreach from=$itemArrSize key=key item=val}
+								{if $item_color == $key}
+								<option value="{$key}" selected>{$key}</option>
+								{else}
+								<option value="{$key}">{$key}</option>
+								{/if}
+								{/foreach}
+							</select>
+						</li>
+						<li>
+							<label for="item_size" class="fs14">{$product.0.option_id2}：</label>
+							<select name="item_size" id="item_size" class="normal_size2 custom-select" {$disabled}>
+								<option value="0">選択してください</option>
+								{foreach from=$sizename item=val}
+								{if $item_size == $val.item_size}
+								<option value="{$val.id}" selected>{$val.item_size} 在庫：{$val.item_stock}{$val.item_unit}</option>
+								{else}
+								<option value="{$val.id}">{$val.item_size} 在庫：{$val.item_stock}{$val.item_unit}</option>
+								{/if}
+								{/foreach}
+							</select>
+						</li>
+					</ul>
+					{/if}
+					{* //複数在庫 *}
+
+					<div class="text-right">
+						{if $num_error_flag && $product.0.variant_type != '1'}
+						<label for="item_num" class="fs14">数量：</label>
+						{assign var=selectItems value=["xxx"=>"1","yyy"=>"4"]}{* "商品ID"=>"個数上限" *}
+						{if array_key_exists($product.0.item_id, $selectItems)}
+						<select name="item_num" class="custom-select">
+							{for $idx= 1 to $selectItems[$product.0.item_id]}
+							<option value="{$idx}">{$idx}</option>
+							{/for}
+						</select>
+						{else}
+						<select name="item_num" class="custom-select">
+							{for $idx= 1 to 20}
+							<option value="{$idx}">{$idx}</option>
+							{/for}
+						</select>
+						{/if}
+						{$product.0.unit}
+
+						{* 単一在庫 *}
+						{if $product.0.stock_flag == 1}
+						<div class="ml-3">
+							<span class="fs14">在庫： {if $product.0.unlimited > 0}あり{else}{$product.0.stock_view}{/if}</span>
+							<small>（△：3以下&emsp;×：在庫なし）</small>
+						</div>
+						{/if}
+						{* //単一在庫 *}
+
+						{if $product.0.item_num_limit != 0}
+						<div class="red">この商品はお一人様{$product.0.item_num_limit}点限りです。</div>
+						{/if}
+						{/if}
+						{if $product.0.reserve}
+						<div class="mb-4">この商品は<span class="important">予約商品</span>です。</div>
+						<input type="hidden" name="reserve" value="{$product.0.reserve}">
+						{/if}
+					</div><!-- .text-right -->
+
+					{if !empty($amazon_config['amazon_pym_flag'])}
+					{if empty($amazon_config['cv2'])}
+					<!-- Amazon Pay JS -->
+					<script id="amazon" src="/common/js/amazon/amazonBase.js"
+									data-client_id="{$amazon_config['client_id']}"
+									data-merchant_id="{$amazon_config['merchant_id']}"
+									data-paybutton_class="AmazonPayButton"
+									data-development="true"
+									data-redirect="true"
+									data-logout="true">
+					</script>
+					<!-- //Amazon Pay JS -->
+					{/if}
+					{/if}
+
+					{if $product.0.variant_type != '1'}
+					{if $num_error_flag}
+					<div class="btnArea row flex-md-row-reverse">
+						{if $product.0.cart_select != 2}
+						<div class="col-xl-6 px-xl-3">
+							<div class="border p-3 mb-3"><input type="submit" value="カートに入れる" class="btn_s btn_cart"></div>
+						</div>
+						<div class="col-xl-6 px-xl-3">
+							{if !empty($amazon_config['amazon_pym_flag'])}
+							<div class="border p-3">
+								{if !empty($amazon_config['cv2'])}
+								<!-- Amazonペイボタン表示start -->
+								<script id="amazon" src="/common/js/amazonV2/amazonV2Button.js?{$db_cache_mtime}" data-item_key="{$item_id}" 
+												data-placement="Product" data-merchant_id="{$amazon_config['merchantId']}" data-sandbox="{if !empty($amazon_config['sandbox'])}true{else}false{/if}"
+												data-payload='{$amazon_config['payload']}'
+												data-signature="{$amazon_config['signature']}"
+												data-public_key_id="{$amazon_config['public_key_id']}"></script>
+								<script src="https://static-fe.payments-amazon.com/checkout.js"></script>
+								<div id="AmazonPayButton" class="AmazonPayButton" style="width: 100%; height: 74px;"></div>
+								<input type="hidden" name="amazon_referrer" value='{$amazon_referrer}'>
+								<!-- Amazonペイ購入ボタン表示end -->
+								{else}
+								<!-- Amazon Pay ボタン -->
+								<div id="AmazonPayButtonId_normal" class="AmazonPayButton" data-button='{literal}{"type":"PwA", "color":"Gold", "size":"x-large"}{/literal}' data-item='{literal}{{/literal}"id": "{$item_id}", "num": "1"{literal}}{/literal}'></div>
+								<!-- //Amazon Pay ボタン -->
+								{/if}
+								<div class="text-left small">amazon.co.jpのアカウント情報でご購入いただけます。</div>
+							</div>
+							{/if}
+						</div>
+						{/if}
+						{if $properties.regular_buy === 'true' && !$product.0.regbuy}
+						{if $product.0.cart_select != 1}
+						<div class="col-xl-6 px-xl-3">
+							<div class="border p-3 mb-3">
+								<input type="submit" name="regular_sub" value="定期購入する" class="btn_s btn_cart">
+								<div class="text-left small mt-1"><a href="/fs/teiki_info" target="_blank">定期購入について（必ずお読みください）</a></div>
+							</div>
+						</div>
+						<div class="col-xl-6 px-xl-3">
+							{if !empty($amazon_config['amazon_pym_flag'])}
+							<div class="border p-3">
+								{if !empty($amazon_config['cv2'])}
+								<!-- Amazonペイボタン表示start -->
+								<script id="amazon" src="/common/js/amazonV2/amazonV2Button.js?{$db_cache_mtime}" data-item_key="{$item_id}"
+												data-placement="Product" data-merchant_id="{$amazon_config['merchantId']}" data-sandbox="{if !empty($amazon_config['sandbox'])}true{else}false{/if}"
+												data-payload='{$amazon_config['payload']}'
+												data-signature="{$amazon_config['signature']}"
+												data-public_key_id="{$amazon_config['public_key_id']}"></script>
+								<script src="https://static-fe.payments-amazon.com/checkout.js"></script>
+								<div id="AmazonPayButton" class="AmazonPayButton" style="width: 100%; height: 74px;"></div>
+								<input type="hidden" name="amazon_referrer" value='{$amazon_referrer}'>
+								<!-- Amazonペイ購入ボタン表示end -->
+								{else}
+								<!-- Amazon Pay ボタン -->
+								<div id="AmazonPayButtonId_regular" class="AmazonPayButton" data-button='{literal}{"type":"PwA", "color":"Gold", "size":"x-large"}{/literal}' data-item='{literal}{{/literal}"id": "{$item_id}", "num": "1"{literal}}{/literal}'></div>
+								<!-- //Amazon Pay ボタン -->
+								{/if}
+								<div class="text-left small">amazon.co.jpのアカウント情報でご購入いただけます。</div>
+							</div>
+							{/if}
+						</div>
+						{/if}
+						{/if}
+					</div>
+					{else}
+					<div class="noData">在庫がないため購入できません。</div>
+					{/if}
+					{/if}
+
+					<input type="hidden" name="item_id" value="{$product.0.item_id}">
+					<input type="hidden" name="sub" value="1">
+				</form>
+
+				<div class="snsArea row m-0 pt-3 justify-content-end">
+					<!-- 紹介機能 廃止 -->
+					<!--a href="{$base_url}/introduce/item/{$product.0.item_id}" class="btn btn_introduce">お友達に教える</a-->
+
+					<!-- LINEボタン -->
+					<div class="line-it-button" style="display: none;" data-lang="ja" data-type="share-a" data-ver="3" data-url="https://{$smarty.server.SERVER_NAME}{$base_url}/product/{$product.0.item_id}" data-color="default" data-size="small" data-count="false"></div>
+					<script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+					<!-- //LINEボタン -->
+
+					<!-- facebookボタン -->
+					<div class="fb-like" data-href="https://{$smarty.server.SERVER_NAME}{$base_url}/product/{$product.0.item_id}" data-width="90" data-layout="button_count" data-action="like" data-size="small" data-share="true"></div>
+					<!-- //facebookボタン -->
+
+					<!-- Twitterボタン -->
+					<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-lang="ja" data-show-count="false">Tweet</a>
+					<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+					<!-- //Twitterボタン -->
+				</div><!-- //.snsArea -->
+
+			</div>
+		</div>
+	</section><!-- //.container -->
+
+	<!-- 閲覧商品 -->
+	{if !empty($checked_data)}
+	<section class="swiperArea container">
+		<script>
+			$(function() {
+				var swiper01 = new Swiper('.swiper01', {
+					slidesPerView: 2,
+					spaceBetween: 0,
+					slidesPerGroup: 1,
+					loop: true,
+					loopFillGroupWithBlank: true,
+					observer: true,
+					observeParents: true,
+					navigation: {
+						nextEl: '.swiper-button-next',
+						prevEl: '.swiper-button-prev',
+					},
+					breakpoints: {
+						767: {
+							slidesPerView: 5,
+							slidesPerGroup: 5,
+							spaceBetween: 30
+						}
+					}
+				});
+			});
+		</script>
+		<div class="item-slider">
+			<h3>この商品を購入した方は、こんな商品も見ています</h3>
+			<!-- Swiper -->
+			<div class="swiper-container swiper01">
+				<div class="swiper-wrapper">
+					{foreach from=$checked_data item=val}
+					<div class="swiper-slide">
+						<a href="{$base_url}/product/{$val.item_id}">
+							<figure><img src="/item_main_m_image/{$val.main_image}" alt="{$view->escape($val.item_name)}"></figure>
+							<h4 class="m-small">{$view->escape($val.item_name)|mb_strimwidth:0:36:'...':'UTF-8'}</h4>
+							<p class="text-right m-small">
+								{if empty($val.sale_price)}
+								&yen; {$val.item_price_tax|number_format}
+								{else}
+								&yen; {$val.item_price_tax|number_format}<br class="sp">
+								&rarr; &yen; <span class="price">{$val.sale_price|number_format}</span>
+								{/if}
+							</p>
+						</a>
+					</div>
+					{/foreach}
+				</div>
+				<!-- Add Pagination -->
+				<div class="swiper-pagination"></div>
+				<!-- Add Arrows -->
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+			</div>
+		</div>
+	</section><!-- //.swiperArea -->
+	{/if}
+	<!-- //閲覧商品 -->
+
+	<!-- おすすめ商品 -->
+	{if !empty($upsell_data)}
+	<section class="swiperArea container">
+		<script>
+			$(function() {
+				var swiper02 = new Swiper('.swiper02', {
+					slidesPerView: 2,
+					spaceBetween: 0,
+					slidesPerGroup: 1,
+					loop: true,
+					loopFillGroupWithBlank: true,
+					navigation: {
+						nextEl: '.swiper-button-next',
+						prevEl: '.swiper-button-prev',
+					},
+					observer: true,
+					observeParents: true,
+					breakpoints: {
+						767: {
+							slidesPerView: 5,
+							slidesPerGroup: 5,
+							spaceBetween: 30
+						}
+					}
+				});
+			});
+		</script>
+		<div class="item-slider">
+			<h3>おすすめの関連商品</h3>
+			<!-- Swiper -->
+			<div class="swiper-container swiper02">
+				<div class="swiper-wrapper">
+					{foreach from=$upsell_data item=val}
+					<div class="swiper-slide">
+						<a href="{$base_url}/product/{$val.item_id}">
+							<figure><img src="/item_main_m_image/{$val.main_image}" alt="{$view->escape($val.item_name)}"></figure>
+							<h4 class="m-small">{$view->escape($val.item_name)|mb_strimwidth:0:36:'...':'UTF-8'}</h4>
+							<p class="text-right m-small">
+								{if empty($val.sale_price)}
+								&yen; {$val.item_price_tax|number_format}
+								{else}
+								&yen; {$val.item_price_tax|number_format}<br class="sp">
+								&rarr; &yen; <span class="price">{$val.sale_price|number_format}</span>
+								{/if}
+							</p>
+						</a>
+					</div>
+					{/foreach}
+				</div>
+				<!-- Add Pagination -->
+				<div class="swiper-pagination"></div>
+				<!-- Add Arrows -->
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+			</div>
+		</div>
+	</section><!-- //.swiperArea -->
+	{/if}
+	<!-- //おすすめ商品 -->
+
+	<!-- レビュー -->
+	{if $information.rvw_flag == 1}
+	<section class="reviewArea container">
+		<h2>商品レビュー</h2>
+		{if !empty($rvwtop3)}
+		<div class="reviewStats row mb-5">
+			<div class="col-md-7 reviewStatsLeft">
+				<table>
+					{foreach from=$data item=val}
+					<tr>
+						<td class="reviewGraphSide text-center"><a href="{$base_url}/review/starrvw/{$product.0.item_id}/{$val.0}">★{$val.0}</a></td>
+						<td><div class="reviewStatsBar" style="{$val.graph}"></div></td>
+						<td class="reviewGraphSide text-center"><a href="{$base_url}/review/starrvw/{$product.0.item_id}/{$val.0}">{$val.1}</a></td>
+					</tr>
+					{/foreach}
+				</table>
+			</div>
+			<div class="reviewStatsRight col-md-5 d-flex flex-column justify-content-between">
+				<div class="reviewStatsRightTop mb-5">
+					<span>現在の評価：</span><img src="{$image_dir}/star0{$average}.png" class="rvwStar" width="120" height="25">
+					{if !empty($count)}<p><a href="{$base_url}/review/allrvw/{$product.0.item_id}">すべてのレビューを見る【全{$count}件】</a></p>{/if}
+				</div>
+				<div class="reviewStatsRightBottom">
+					{if $error_flag}
+					<span class="posted">レビュー投稿済み</span>
+					{else}
+					<a href="{$base_url}/review/rvwform/{$product.0.item_id}" class="btn_m">レビューを作成する</a>
+					{/if}
+				</div>
+			</div>
+		</div><!-- //.reviewStats -->
+
+		{foreach from=$rvwtop3 item=val name=rvwtop}
+		<table class="reviewList">
+			{if $smarty.foreach.rvwtop.first}<caption class="bestVote text-center">最も評価が高いレビュー</caption>{/if}
+			<tr>
+				<td>
+					<ul>
+						<li>
+							<div class="form-inline">
+								<img src="{$image_dir}/star0{$val.star_flag}.png" class="rvwStar mr-2" width="120" height="25">
+								<div>投稿者：{$view->escape($val.show_nickname)}{if $val.buy_flag == 1}<span class="customer">購入済み</span>{/if}</div>
+								<div class="ml-auto">参考になった人：<span class="font-weight-bold">{$val.rvw_reference_yes}人</span> / {$val.total_count}人中</div>
+							</div>
+						</li>
+						<li>
+							<div class="form-inline align-items-baseline">
+								タイトル：{$view->escape($val.rvw_title)}<div class="ml-auto small">投稿日時：{$val.rvw_time}</div>
+							</div>
+						</li>
+						<li>{nl2br($view->escape($val.rvw_desc))}</li>
+						<li>
+							<div class="form-inline align-items-end">
+								{if $val.flag}
+								参考になりましたか？<a href="{$base_url}/product/judge/{$product.0.item_id}/y/{$val.rvw_id}" class="btnVote">はい</a><a href="{$base_url}/product/judge/{$product.0.item_id}/n/{$val.rvw_id}" class="btnVote">いいえ</a>
+								{else}
+								<span class="estimated">評価済み</span>
+								{/if}
+								<div class="ml-auto pt-md-0 pt-4 violation"><a href="{$base_url}/review/violation/{$product.0.item_id}/{$val.rvw_id}">違反報告</a></div>
+							</div>
+						</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+		{/foreach}
+
+		{else}
+		<div class="text-center">
+			{if $error_flag}
+			<span class="posted">レビュー投稿済み</span>
+			{else}
+			<div class="mb-3">お買いものに役立つ情報をレビューにお寄せください。</div>
+			<a href="{$base_url}/review/rvwform/{$product.0.item_id}" class="btn_m">レビューを作成する</a>
+			{/if}
+		</div>
+		{/if}
+	</section><!-- //.reviewArea -->
+	{/if}
+	<!-- //レビュー -->
+
+</div><!-- //#contents -->
