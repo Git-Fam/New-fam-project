@@ -21,6 +21,8 @@
       margin-top: 13px;
       font-size: 25px;
       color: $mainF;
+      letter-spacing: 1.8;
+
     }
   }
 }
@@ -33,6 +35,7 @@
       width: 43px;
       height: 20px;
       margin: 0 auto;
+      
     }
 
     .TL {
@@ -42,7 +45,17 @@
       margin-top: 13px;
       font-size: 23px;
       color: $mainF;
+      letter-spacing: 1.8;
     }
   }
 
+}
+
+.padding{
+  @include pc{
+    padding-inline: 200px;
+  }
+  @include sp{
+    padding-inline: 20px;
+  }
 }

@@ -1,0 +1,61 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  law
+----------------------- */
+
+.law {
+  color: $mainF;
+  line-height: 1.6;
+
+  .law-list {
+    display: flex;
+    flex-direction: column;
+    @include pc{
+      max-width: 746px;
+      margin:100px auto 0;
+      gap:  57px;
+    }
+    @include sp{
+      width: 90%;
+      margin: 114px auto 0;
+      gap:  53px;
+
+    }
+    li {
+      .label {
+        @include wt700;
+        font-size: 20px;
+        letter-spacing: 2px;
+      }
+
+      .sublabel{
+        @include wt700;
+        font-style: 15px;
+        margin-top: 25px;
+        @include pc{
+          margin-left: 25px;
+        }
+        @include sp{
+          margin-left: 15px;
+        }
+      }
+      .TX {
+        font-size: 15px;
+        letter-spacing: 1.5px;
+        margin-top: 3px;
+        @include pc{
+          margin-left: 25px;
+        }
+        @include sp{
+          margin-left: 15px;
+        }
+        a{
+          color: $mainF;
+          border-bottom: 1px solid;
+        }
+      }
+    }
+  }
+}
