@@ -49,6 +49,7 @@
 
     .historyBox {
       margin-top: 26px;
+      border: none;
 
       .item {
         display: flex;
@@ -71,6 +72,7 @@
 
           dd {
             padding: 13px 18px;
+            border: none;
           }
 
           @include pc {

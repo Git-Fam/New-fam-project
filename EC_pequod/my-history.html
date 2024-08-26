@@ -51,12 +51,12 @@
 						<h3>購入履歴一覧</h3>
 						<div class="C_line"></div>
 
-						<!-- {if $my_history} -->
+						{if $my_history}
 						<div class="history">
 							購入履歴<span class="number">{$my_history_count}</span>件
 						</div>
 
-						<!-- {foreach from=$my_history item=value} -->
+						{foreach from=$my_history item=value}
 						<div class="historyBox">
 							<div class="C_line"></div>
 							<div class="item">
@@ -84,7 +84,7 @@
 							</div>
 							<div class="C_line"></div>
 							<div class="item">
-								<!-- {foreach from=$value.item_datas item=value2} -->
+								{foreach from=$value.item_datas item=value2}
 								<dl class="history-content">
 									<dt>
 										<a href="{$base_url}/product/{$value2.item_id}"
@@ -98,11 +98,11 @@
 										{$value2.item_price_tax|number_format}円
 									</dd>
 								</dl>
-								<!-- {/foreach} -->
+								{/foreach}
 							</div>
 						</div>
-						<div class="C_line"></div>
 						{/foreach} 
+						<div class="C_line"></div>
 						
 						{else}
 						<div class="noData">購入履歴はありません</div>
