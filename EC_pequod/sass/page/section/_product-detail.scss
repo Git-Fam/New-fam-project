@@ -1,0 +1,306 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  product-detail
+----------------------- */
+.product-detail {
+  padding-top: 9px;
+  margin-bottom: 0;
+
+  @include sp {
+    padding-inline: 20px;
+  }
+
+  // パンくず
+  .breadcrumb-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    @include pc {
+      gap: 3px;
+      margin-bottom: 127px;
+    }
+
+    @include sp {
+      padding-left: 18px;
+      gap: 3px;
+      margin-bottom: 60px;
+    }
+
+    p {
+      color: #8B9396;
+      @include wt500;
+      line-height: normal;
+
+      @include pc {
+        font-size: 13px;
+        letter-spacing: 1.3px;
+      }
+
+      @include sp {
+        font-size: 10px;
+        letter-spacing: 1px;
+      }
+    }
+  }
+
+  // 商品
+  &_main {
+    display: flex;
+
+    @include pc {
+      gap: 50px;
+    }
+
+    @include sp {
+      flex-direction: column;
+    }
+
+    .product_img {
+
+      @include pc {
+        width: min(445px, p(445));
+        flex-shrink: 0;
+      }
+
+      @include sp {
+        margin-top: 30px;
+      }
+
+
+      img {
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+      }
+
+      &-thumbnail {
+
+        @include pc {
+          margin-bottom: 26px;
+        }
+
+        @include sp {
+          margin-bottom: 25px;
+        }
+      }
+
+      &-other {
+        display: flex;
+        flex-wrap: wrap;
+
+        @include pc {
+          gap: 20px;
+        }
+
+        @include sp {
+          gap: 16px;
+        }
+
+        .other-item {
+
+          @include pc {
+            width: 95px;
+          }
+
+          @include sp {
+            width: 75px;
+          }
+
+          img {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .product_name {
+
+      @include pc {
+        @include column(10px);
+      }
+
+      @include sp {
+        @include column(7px);
+      }
+
+      .TL {
+        color: #585D5F;
+        font-size: 20px;
+        @include wt700;
+        line-height: 1.5;
+        text-align: left;
+      }
+
+      // タグ
+      .tags {
+        text-align: center;
+        display: flex;
+        gap: 11px;
+
+        .TX {
+          border-radius: 100px;
+          background: #EBFAFF;
+          width: fit-content;
+          color: #57C6EA;
+          @include yugothic;
+          @include wt500;
+          line-height: 1.5;
+          padding: 3px 13px;
+          font-size: 13px;
+        }
+      }
+    }
+
+    .product_container {
+
+      .product_content {
+
+        @include pc {
+          margin-top: 28px;
+        }
+
+        @include sp {
+          margin-top: 60px;
+        }
+
+        .TX {
+          color: #585D5F;
+          font-size: 15px;
+          @include wt500;
+          line-height: 1.5;
+
+          span {
+            @include wt700;
+          }
+        }
+      }
+
+      .product_control {
+        background: #F3F9FB;
+        border-top: dotted 1px #A9DAEA;
+
+        @include pc {
+          margin-top: 13px;
+          padding: 21px 21px 45px;
+        }
+
+        @include sp {
+          margin-top: 60px;
+          padding: 21px 22px 30px;
+        }
+
+        &-list {
+          @include column(28px);
+
+          &-item {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+
+            .item-title {
+              flex-shrink: 0;
+
+              .TL,
+              label {
+                color: #515151;
+                font-size: 15px;
+                @include wt700;
+                line-height: 1.5;
+                letter-spacing: 0.6px;
+              }
+            }
+
+            .item-in {
+
+              .TX {
+                color: #515151;
+                font-size: 24px;
+                @include wt700;
+                line-height: 1.5;
+                letter-spacing: 0.96px;
+
+                span {
+                  color: #515151;
+                  font-size: 15px;
+                  @include wt500;
+                  letter-spacing: 0.6px;
+                }
+              }
+
+              select {
+                border-radius: 5px;
+                border: 2px solid #AAA;
+                background: #FFF;
+              }
+            }
+          }
+        }
+
+        .C_btn {
+          width: 100%;
+          border: none;
+
+
+          @include pc {
+            margin-top: 70px;
+          }
+
+          @include sp {
+            margin-top: 60px;
+          }
+
+          text-align: center;
+          letter-spacing: 0.1em;
+
+          @include wt700;
+
+          @include pc {
+            font-size: 20px;
+          }
+
+          @include sp {
+            font-size: 20px;
+            line-height: 1.5;
+          }
+        }
+      }
+    }
+  }
+
+
+  // 商品仕様
+  &_specification {
+
+    @include pc {
+      margin-top: 100px;
+    }
+
+    @include sp {
+      margin-top: 60px;
+    }
+
+    .title {
+      padding-left: 34px;
+
+      @include pc {
+        margin-bottom: 20px;
+      }
+
+      @include sp {
+        margin-bottom: 25px;
+      }
+
+      .TL {
+        color: #585D5F;
+        @include wt700;
+        line-height: normal;
+        font-size: 20px;
+      }
+    }
+
+    .C_specifications {
+      padding: unset;
+    }
+  }
+}

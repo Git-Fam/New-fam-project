@@ -37,11 +37,365 @@
 
 <body>
 
-    <div class="template_wrap">
-        <div class="template_inner880">
-            <section class="product-detail"></section>
+{$view->setLayoutVar('title', $product[0]['item_name'])}
+{$view->setLayoutVar('keywords', $product.0.shop_keywords)}
+{$view->setLayoutVar('description', strip_tags($product.0.item_desc))}
+
+{* metaタグ追加 = 「販売情報登録・修正」で「リンク先を知っている方のみ販売」にチェックを入れると発動します *}
+{if !empty($product.0.sale_link_flag)}{$view->setLayoutVar('meta', '<meta name="robots" content="noindex">')}{/if}
+
+{* [必須] 複数在庫プルダウン用 *}
+{$view->setLayoutVar('common_js_files', 'product_item_size.js', true)}
+{* 画像リスト *}
+{$view->setLayoutVar('js_files', 'detail.js', true)}
+{* 商品拡大画像 *}
+{$view->setLayoutVar("css_files", "lightbox.css", true)}
+{$view->setLayoutVar("js_files", "lightbox.js", true)}
+{* セールタイマー *}
+{$view->setLayoutVar('common_js_files', 'limit_count.js', true)}
+
+<!-- 複数在庫商品に使用するスクリプト -->
+<script>
+    $(function(){
+        $('.normal_color1').bind('change', function() {
+            var defined_c = $('.normal_color1 option:selected').val();
+            $(".normal_color2").val(defined_c);
+        });
+
+        $('.normal_size1').bind('change', function() {
+            var defined_s = $('.normal_size1 option:selected').val();
+            $(".normal_size2").val(defined_s);
+        });
+
+        $('.q_color1').bind('change', function() {
+            var defined_r = $('.q_color1 option:selected').val();
+            $(".q_color2").val(defined_r);
+        });
+
+        $('.q_right1').bind('change', function() {
+            var defined_r = $('.q_right1 option:selected').val();
+            $(".q_right2").val(defined_r);
+        });
+
+        $('.q_left1').bind('change', function() {
+            var defined_l = $('.q_left1 option:selected').val();
+            $(".q_left2").val(defined_l);
+        });
+
+        $('.q_set1').bind('change', function() {
+            var defined_s = $('.q_set1 option:selected').val();
+            $(".q_set2").val(defined_s);
+        });
+
+        $('.q_num1').bind('keyup', function() {
+            $(".q_num2").val($(this).val());
+        });
+
+        $('.normal_color2').bind('change', function() {
+            var defined_c = $('.normal_color2 option:selected').val();
+            $(".normal_color1").val(defined_c);
+        });
+
+        $('.normal_size2').bind('change', function() {
+            var defined_s = $('.normal_size2 option:selected').val();
+            $(".normal_size1").val(defined_s);
+        });
+
+        $('.q_color2').bind('change', function() {
+            var defined_r = $('.q_color2 option:selected').val();
+            $(".q_color1").val(defined_r);
+        });
+
+        $('.q_right2').bind('change', function() {
+            var defined_r = $('.q_right2 option:selected').val();
+            $(".q_right1").val(defined_r);
+        });
+
+        $('.q_left2').bind('change', function() {
+            var defined_l = $('.q_left2 option:selected').val();
+            $(".q_left1").val(defined_l);
+        });
+
+        $('.q_set2').bind('change', function() {
+            var defined_s = $('.q_set2 option:selected').val();
+            $(".q_set1").val(defined_s);
+        });
+
+        $('.q_num2').bind('keyup', function() {
+            $(".q_num1").val($(this).val());
+        });
+    });
+</script>
+<!-- //複数在庫商品に使用するスクリプト -->
+
+<!-- facebook SDK -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v5.0"></script>
+<!-- //facebook SDK -->
+
+<div class="template_inner880">
+    <section class="product-detail">
+        <!-- パンくず -->
+        <div class="breadcrumb-list">
+            <a href="{$base_url}/">
+                <p>HOME</p>
+            </a>
+            <p>{$pankuzu}</p>
+            <p>＞</p>
+            <p>{$view->escape($product.0.item_name)}</p>
         </div>
-    </div>
+
+        <!-- 商品 -->
+        <div class="product-detail_main">
+            <div class="product_name sp">
+                <h2 class="TL">{$view->escape($product.0.item_name)}</h2>
+                <div class="tags">
+                    <p class="TX">家族向け</p>
+                    <p class="TX">省スペース</p>
+                </div>
+            </div>
+            <div class="product_img">
+                <div class="product_img-thumbnail">
+                    <img id="mainImage" src="/item_sum_l_image/{$image_list[0]}" alt="商品画像">
+                </div>
+                {if isset($image_list)}
+                <div class="product_img-other">
+                    {foreach from=$image_list item=val}
+                    <div class="other-item">
+                        <img src="/item_sum_l_image/{$val}" alt="商品画像"
+                            onclick="switchImage('/item_sum_l_image/{$val}')">
+                    </div>
+                    {/foreach}
+                </div>
+                {/if}
+            </div>
+
+            <!-- 画像切り替え -->
+            <script>
+                function switchImage(imageSrc) {
+                    document.getElementById('mainImage').src = imageSrc;
+                }
+            </script>
+
+            <div class="product_container">
+                <div class="product_name pc">
+                    <h2 class="TL">{$view->escape($product.0.item_name)}</h2>
+                    <div class="tags">
+                        <p class="TX">家族向け</p>
+                        <p class="TX">省スペース</p>
+                    </div>
+                </div>
+                <div class="product_content">
+                    <p class="TX">{$product.0.item_desc}</p>
+                </div>
+                <div class="product_control">
+                    <form method="post" action="{$smarty.server.REQUEST_URI|escape}" class="ctaArea">
+                        {* 複数在庫 *}
+                        {if $product.0.stock_flag == 2}
+                        <ul class="mb-4">
+                            <li>
+                                <label for="color_select" class="fs14">{$product.0.option_id1}：</label>
+                                <select name="item_color" id="color_select" item_id="{$product.0.item_id}" class="normal_color2 custom-select">
+                                    <option value="0">選択してください</option>
+                                    {foreach from=$itemArrSize key=key item=val}
+                                    {if $item_color == $key}
+                                    <option value="{$key}" selected>{$key}</option>
+                                    {else}
+                                    <option value="{$key}">{$key}</option>
+                                    {/if}
+                                    {/foreach}
+                                </select>
+                            </li>
+                            <li>
+                                <label for="item_size" class="fs14">{$product.0.option_id2}：</label>
+                                <select name="item_size" id="item_size" class="normal_size2 custom-select" {$disabled}>
+                                    <option value="0">選択してください</option>
+                                    {foreach from=$sizename item=val}
+                                    {if $item_size == $val.item_size}
+                                    <option value="{$val.id}" selected>{$val.item_size} 在庫：{$val.item_stock}{$val.item_unit}</option>
+                                    {else}
+                                    <option value="{$val.id}">{$val.item_size} 在庫：{$val.item_stock}{$val.item_unit}</option>
+                                    {/if}
+                                    {/foreach}
+                                </select>
+                            </li>
+                        </ul>
+                        {/if}
+                        {* //複数在庫 *}
+
+                        <div class="product_control-list">
+                            <div class="product_control-list-item">
+                                <div class="item-title">
+                                    <p class="TL">価格</p>
+                                </div>
+                                <div class="item-in">
+                                    <p class="TX">{$product.0.item_price_tax|number_format}円<span>(税込)</span>　<span>送料000円</span></p>
+                                </div>
+                            </div>
+                            <div class="product_control-list-item">
+                                {if $num_error_flag && $product.0.variant_type != '1'}
+                                <div class="item-title">
+                                    <label for="item_num" class="TL">数量</label>
+                                </div>
+                                {assign var=selectItems value=["xxx"=>"1","yyy"=>"4"]}{* "商品ID"=>"個数上限" *}
+                                {if array_key_exists($product.0.item_id, $selectItems)}
+                                <div class="item-in">
+                                    <select name="item_num" class="custom-select">
+                                        {for $idx= 1 to $selectItems[$product.0.item_id]}
+                                        <option value="{$idx}">{$idx}</option>
+                                        {/for}
+                                    </select>
+                                </div>
+                                {else}
+                                <div class="item-in">
+                                    <select name="item_num" class="custom-select">
+                                        {for $idx= 1 to 20}
+                                        <option value="{$idx}">{$idx}</option>
+                                        {/for}
+                                    </select>
+                                </div>
+                                {/if}
+                                {$product.0.unit}
+        
+                                {if $product.0.item_num_limit != 0}
+                                <div class="red">この商品はお一人様{$product.0.item_num_limit}点限りです。</div>
+                                {/if}
+                                {/if}
+                                {if $product.0.reserve}
+                                <div class="mb-4">この商品は<span class="important">予約商品</span>です。</div>
+                                <input type="hidden" name="reserve" value="{$product.0.reserve}">
+                                {/if}
+                            </div>
+                        </div>
+    
+                        {if !empty($amazon_config['amazon_pym_flag'])}
+                        {if empty($amazon_config['cv2'])}
+                        <!-- Amazon Pay JS -->
+                        <script id="amazon" src="/common/js/amazon/amazonBase.js"
+                                        data-client_id="{$amazon_config['client_id']}"
+                                        data-merchant_id="{$amazon_config['merchant_id']}"
+                                        data-paybutton_class="AmazonPayButton"
+                                        data-development="true"
+                                        data-redirect="true"
+                                        data-logout="true">
+                        </script>
+                        <!-- //Amazon Pay JS -->
+                        {/if}
+                        {/if}
+    
+                        {if $product.0.variant_type != '1'}
+                        {if $num_error_flag}
+                        <div class="">
+                            {if $product.0.cart_select != 2}
+                            <div class="">
+                                <div class=""><input  class="C_btn round yellow" type="submit" value="カートに入れる" class="btn_s btn_cart"></div>
+                            </div>
+                            <div class="col-xl-6 px-xl-3">
+                                {if !empty($amazon_config['amazon_pym_flag'])}
+                                <div class="border p-3">
+                                    {if !empty($amazon_config['cv2'])}
+                                    <!-- Amazonペイボタン表示start -->
+                                    <script id="amazon" src="/common/js/amazonV2/amazonV2Button.js?{$db_cache_mtime}" data-item_key="{$item_id}" 
+                                                    data-placement="Product" data-merchant_id="{$amazon_config['merchantId']}" data-sandbox="{if !empty($amazon_config['sandbox'])}true{else}false{/if}"
+                                                    data-payload='{$amazon_config['payload']}'
+                                                    data-signature="{$amazon_config['signature']}"
+                                                    data-public_key_id="{$amazon_config['public_key_id']}"></script>
+                                    <script src="https://static-fe.payments-amazon.com/checkout.js"></script>
+                                    <div id="AmazonPayButton" class="AmazonPayButton" style="width: 100%; height: 74px;"></div>
+                                    <input type="hidden" name="amazon_referrer" value='{$amazon_referrer}'>
+                                    <!-- Amazonペイ購入ボタン表示end -->
+                                    {else}
+                                    <!-- Amazon Pay ボタン -->
+                                    <div id="AmazonPayButtonId_normal" class="AmazonPayButton" data-button='{literal}{"type":"PwA", "color":"Gold", "size":"x-large"}{/literal}' data-item='{literal}{{/literal}"id": "{$item_id}", "num": "1"{literal}}{/literal}'></div>
+                                    <!-- //Amazon Pay ボタン -->
+                                    {/if}
+                                    <div class="text-left small">amazon.co.jpのアカウント情報でご購入いただけます。</div>
+                                </div>
+                                {/if}
+                            </div>
+                            {/if}
+                            {if $properties.regular_buy === 'true' && !$product.0.regbuy}
+                            {if $product.0.cart_select != 1}
+                            <div class="">
+                                <div class="">
+                                    <input class="C_btn round yellow" type="submit" name="regular_sub" value="定期購入する" class="btn_s btn_cart">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 px-xl-3">
+                                {if !empty($amazon_config['amazon_pym_flag'])}
+                                <div class="border p-3">
+                                    {if !empty($amazon_config['cv2'])}
+                                    <!-- Amazonペイボタン表示start -->
+                                    <script id="amazon" src="/common/js/amazonV2/amazonV2Button.js?{$db_cache_mtime}" data-item_key="{$item_id}"
+                                                    data-placement="Product" data-merchant_id="{$amazon_config['merchantId']}" data-sandbox="{if !empty($amazon_config['sandbox'])}true{else}false{/if}"
+                                                    data-payload='{$amazon_config['payload']}'
+                                                    data-signature="{$amazon_config['signature']}"
+                                                    data-public_key_id="{$amazon_config['public_key_id']}"></script>
+                                    <script src="https://static-fe.payments-amazon.com/checkout.js"></script>
+                                    <div id="AmazonPayButton" class="AmazonPayButton" style="width: 100%; height: 74px;"></div>
+                                    <input type="hidden" name="amazon_referrer" value='{$amazon_referrer}'>
+                                    <!-- Amazonペイ購入ボタン表示end -->
+                                    {else}
+                                    <!-- Amazon Pay ボタン -->
+                                    <div id="AmazonPayButtonId_regular" class="AmazonPayButton" data-button='{literal}{"type":"PwA", "color":"Gold", "size":"x-large"}{/literal}' data-item='{literal}{{/literal}"id": "{$item_id}", "num": "1"{literal}}{/literal}'></div>
+                                    <!-- //Amazon Pay ボタン -->
+                                    {/if}
+                                    <div class="text-left small">amazon.co.jpのアカウント情報でご購入いただけます。</div>
+                                </div>
+                                {/if}
+                            </div>
+                            {/if}
+                            {/if}
+                        </div>
+                        {else}
+                        <div class="noData">在庫がないため購入できません。</div>
+                        {/if}
+                        {/if}
+    
+                        <input type="hidden" name="item_id" value="{$product.0.item_id}">
+                        <input type="hidden" name="sub" value="1">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- 商品仕様 id=24の時だけ表示 -->
+       {if $product.0.item_id == 24}
+        <div class="product-detail_specification">
+            <div class="title">
+                <h3 class="TL">商品仕様</h3>
+            </div>
+            <ul class="C_specifications">
+                <li>
+                    <p class="TL">商品仕様</p>
+                    <p class="TX">この文章はダミーです</p>
+                </li>
+                <li>
+                    <p class="TL">商品仕様</p>
+                    <p class="TX">この文章はダミーです</p>
+                </li>
+                <li>
+                    <p class="TL">商品仕様</p>
+                    <p class="TX">この文章はダミーです</p>
+                </li>
+                <li>
+                    <p class="TL">商品仕様</p>
+                    <p class="TX">この文章はダミーです</p>
+                </li>
+                <li>
+                    <p class="TL">商品仕様</p>
+                    <p class="TX">この文章はダミーです</p>
+                </li>
+                <li>
+                    <p class="TL">商品仕様</p>
+                    <p class="TX">この文章はダミーです</p>
+                </li>
+            </ul>
+        </div>
+        {/if}
+     
+    </section>
+</div>
 
 
 
