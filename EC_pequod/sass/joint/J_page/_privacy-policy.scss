@@ -1,0 +1,129 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  privacy-policy
+----------------------- */
+
+.privacy-policy {
+  color: $mainF;
+  line-height: 1.6;
+  letter-spacing: 1.6px;
+
+  @include sp {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .top-TX {
+    font-size: 16px;
+    @include wt700;
+
+    @include pc {
+      margin-top: 100px;
+    }
+
+    @include sp {
+      margin-top: 60px;
+    }
+  }
+
+  .content {
+    margin-top: 70px;
+
+    &-TL {
+      font-size: 20px;
+      @include wt700;
+    }
+
+    &-TX {
+      font-size: 15px;
+    }
+
+
+
+    .table-wrap {
+      @include sp {
+        width: 100%;
+        overflow-x: auto;
+      }
+
+      .table {
+        margin-top: 30px;
+
+        @include pc {
+          width: 100%;
+        }
+
+        @include sp {
+          width: 880px;
+        }
+
+        .top {
+          color: $whiteF;
+          font-size: 15px;
+          @include wt700;
+          background: $subC;
+          padding: 8px 0;
+        }
+
+        .item {
+          font-size: 10px;
+
+          .label {
+            background: $backgroundtable;
+            padding: 11px 0 11px 3%;
+          }
+
+          .TX {
+            background: $mainC;
+            padding: 11px 0 11px 3%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            .point {
+              &::before {
+                content: "";
+                width: 6px;
+                height: 6px;
+                background: $mainF;
+                border-radius: 50%;
+                display: inline-block;
+                margin-right: 12px;
+              }
+            }
+          }
+        }
+
+        .label {
+          width: calc(282 / 880 * 100%);
+        }
+      }
+    }
+
+    &-subTL {
+      font-size: 18px;
+      margin-top: 60px;
+      @include wt700;
+    }
+    .listbox {
+      margin: 30px 0 0 50px;
+      counter-reset: circle;
+
+      .list {
+        position: relative;
+
+        &::before {
+          counter-increment: circle;
+          content: counter(circle) ".";
+          position: absolute;
+          top: 0;
+          left: -35px;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+
+}

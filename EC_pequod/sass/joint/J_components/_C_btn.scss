@@ -14,10 +14,11 @@
   display: grid;
   place-items: center center;
 
-  @include pc{
+  @include pc {
     border-radius: 10px;
   }
-  @include sp{
+
+  @include sp {
     border-radius: 5px;
     width: 227px;
   }
@@ -38,12 +39,12 @@
     }
   }
 
-  &.gray{
+  &.gray {
     background-color: $buttonBack;
 
 
-    .TX{
-      @include sp{
+    .TX {
+      @include sp {
         font-size: 15px;
       }
     }
@@ -55,19 +56,22 @@
 
     &.yellow {
       background-color: $buttonYellow;
-  
+
       .TX {
         @include pc {
           font-size: 23px;
         }
-  
+
         @include sp {
           font-size: 23px;
         }
       }
-  
-    }  
+
+    }
 
   }
 
+  &:hover {
+    color: $whiteF;
+  }
 }
