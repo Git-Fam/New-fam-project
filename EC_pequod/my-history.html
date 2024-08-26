@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head prefix="og: https://ogp.me/ns#">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
+		<meta name="format-detection" content="email=no,telephone=no,address=no" />
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+		<meta property="og:locale" content="ja_JP" />
+
+		<!-- ▼SEO -->
+		<link rel="”canonical”" href="”URL”" />
+		<!-- ジェネレーターURL→ https://metatags.io/ -->
+
+		<!-- ▼ファビコン -->
+		<!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
+
+		<!-- ▼クロールして欲しくない -->
+		<!-- <meta name="robots" content="noindex,nofollow"> -->
+
+		<!-- ▼テーマカラー -->
+		<!-- <meta name="theme-color" content="#e9c931"> -->
+
+		<!-- ▼CSS -->
+		<link rel="stylesheet" href="css/main.css?ver=1.0.0" />
+		<link rel="stylesheet" href="css/main-sp.css?ver=1.0.0" />
+
+		<!-- ▼フォント -->
+	</head>
+
+	<body>
+		<div class="whopper">
+			<div class="template_wrap template_inner880 my-history" id="content">
+				<div class="C_TL">
+					<div class="icon"></div>
+					<h2 class="TL">マイページ</h2>
+				</div>
+				<div id="mypage">
+					<div class="C_mypageMenu">
+						<a href="/account/mypage" class="btn current">購入履歴</a>
+						<a href="/account/profile" class="btn">登録情報変更</a>
+						<a href="/account/destination" class="btn">お届け先の編集</a>
+						<a href="/account/regular" class="btn">定期購入一覧</a>
+						<a href="/account/info" class="btn">お問い合わせ履歴</a>
+					</div>
+
+					<div class="myPageHistory">
+						<h3>購入履歴一覧</h3>
+						<div class="C_line"></div>
+
+						<!-- {if $my_history} -->
+						<div class="history">
+							購入履歴<span class="number">{$my_history_count}</span>件
+						</div>
+
+						<!-- {foreach from=$my_history item=value} -->
+						<div class="historyBox">
+							<div class="C_line"></div>
+							<div class="item">
+								<dl class="historyDetailCol Detail-1">
+									<dt>注文番号</dt>
+									<dd>
+										<a
+											href="{$base_url}/account/mypage/detail/{$value.order_id}"
+											>{$value.order_id}
+										</a>
+									</dd>
+								</dl>
+								<dl class="historyDetailCol Detail-2">
+									<dt>購入日時</dt>
+									<dd>{$value.buy_date_f}</dd>
+								</dl>
+								<dl class="historyDetailCol Detail-3">
+									<dt>合計金額</dt>
+									<dd>{$value.item_price_sum|number_format}円</dd>
+								</dl>
+								<dl class="historyDetailCol Detail-4">
+									<dt>決済方法</dt>
+									<dd>{$value.payment_metod}</dd>
+								</dl>
+							</div>
+							<div class="C_line"></div>
+							<div class="item">
+								<!-- {foreach from=$value.item_datas item=value2} -->
+								<dl class="history-content">
+									<dt>
+										<a href="{$base_url}/product/{$value2.item_id}"
+											><img src="{$value2.main_image}" class="img"
+										/></a>
+									</dt>
+									<dd class="history-content-TX">
+										<a href="{$base_url}/product/{$value2.item_id}"
+											>{$view->escape($value2.item_name)}</a
+										><br />
+										{$value2.item_price_tax|number_format}円
+									</dd>
+								</dl>
+								<!-- {/foreach} -->
+							</div>
+						</div>
+						<div class="C_line"></div>
+						{/foreach} 
+						
+						{else}
+						<div class="noData">購入履歴はありません</div>
+						{/if}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script
+			src="https://code.jquery.com/jquery-1.7.1.min.js"
+			integrity="sha256-iBcUE/x23aI6syuqF7EeT/+JFBxjPs5zeFJEXxumwb0="
+			crossorigin="anonymous"
+		></script>
+		<script src="js/script.js"></script>
+		<script src="js/joint.js"></script>
+	</body>
+</html>

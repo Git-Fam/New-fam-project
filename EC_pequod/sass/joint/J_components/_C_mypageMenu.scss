@@ -1,0 +1,39 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_mypageMenu
+----------------------- */
+
+.C_mypageMenu {
+  display: flex;
+  margin-top: 60px;
+  @include pc{
+    gap: 11px;
+  }
+  @include sp{
+    max-width: 350px;
+    gap: 10px 5px;
+    flex-wrap: wrap;
+    margin-inline: auto;
+  }
+  .btn{
+    background: $subC;
+    border-radius: 20px;
+    text-align: center;
+    padding: 8px 0;
+    color: $whiteF;
+    @include wt700;
+    @include pc{
+      width: 140px;
+      font-size: 12px;
+    }
+    @include sp{
+      width: calc(110 / 350 * 100%);
+      font-size: 10px;
+    }
+    &.current{
+      background: $button;
+    }
+  }
+}
