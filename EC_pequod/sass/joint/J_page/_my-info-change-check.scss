@@ -73,6 +73,11 @@
           width: calc(152 / 350 * 100%);
           min-width: 211px;
         }
+        .btn-wrap{
+          &::after{
+            display: none;
+          }
+        }
       }
 
       &.wrap-2 {
@@ -83,6 +88,13 @@
         @include sp {
           width: calc(152 / 350 * 100%);
           min-width: initial;
+        }
+        .btn-wrap{
+          &::after{
+            border-top: 1px solid $whiteF;
+            border-right: 1px solid $whiteF;
+            left:calc(65 / 242 * 100%);
+          }
         }
       }
     }
