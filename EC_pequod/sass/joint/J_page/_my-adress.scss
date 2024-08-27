@@ -1,0 +1,84 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  my-adress
+----------------------- */
+
+.my-adress {
+
+  .TX {
+    font-size: 16px;
+    letter-spacing: 1.6px;
+    line-height: 1.8;
+
+    &.top {
+      margin-top: 12px;
+    }
+
+    &.second {
+      margin-top: 35px;
+
+      a {
+        color: $F-blue;
+      }
+    }
+  }
+
+  .mainForm {
+    .delivAddressBox {
+      font-size: 16px;
+
+      .delivAddCol {
+        border: none;
+        color: $subF;
+
+        dt {
+          border: none;
+          padding: 13px 0 13px 18px;
+          @include wt700;
+        }
+
+        dd {
+          line-height: 1.5;
+
+          .btn-box {
+            .btn {
+              color: $whiteF;
+
+              @include pc {
+                width: 68px;
+                height: 30px;
+              }
+              @include sp{
+                width: calc(107 / 350 * 100%);
+                height: 37px;
+              }
+
+              &.btn-1 {
+                background: $subC;
+              }
+
+              &.btn-1 {
+                background: $P-gray;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .C_btn {
+      height: 52px;
+
+      @include pc {
+        width: 284px;
+      }
+
+      @include sp {
+        width: calc(284 / 350 * 100%);
+      }
+    }
+  }
+
+}

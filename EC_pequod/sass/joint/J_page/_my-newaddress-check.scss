@@ -1,0 +1,84 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  my-newaddress-check
+----------------------- */
+
+.my-newaddress-check {
+  .C_specifications{
+    padding: 0;
+    @include pc{
+      margin: 100px auto 0;
+      width: calc( 692 / 880 * 100%);
+    }
+    @include sp{
+      margin-top: 35px;
+    }
+  }
+  .btn-box {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+
+    @include pc {
+      margin: 100px auto 0;
+      gap: 23px;
+      width: calc( 692 / 880 * 100%);
+    }
+
+    @include sp {
+      margin-top: 60px;
+      gap: 15px;
+    }
+
+    .C_btn_wrap {
+      @include pc {
+        height: 70px;
+      }
+
+      @include sp {
+        height: 50px;
+      }
+
+      &.wrap-1 {
+        @include pc {
+          width: calc(427 / 692 * 100%);
+        }
+
+        @include sp {
+          width: calc(152 / 350 * 100%);
+          min-width: 211px;
+        }
+      }
+
+      &.wrap-2 {
+        @include pc {
+          width: calc(242 / 692 * 100%);
+        }
+
+        @include sp {
+          width: calc(152 / 350 * 100%);
+          min-width: initial;
+        }
+      }
+    }
+
+    .C_btn {
+      width: 100%;
+      border: none;
+
+
+
+      input {
+        background: none;
+        border: none;
+        outline: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        color: $whiteF;
+      }
+    }
+  }
+}

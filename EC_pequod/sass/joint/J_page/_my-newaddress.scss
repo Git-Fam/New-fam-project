@@ -1,0 +1,162 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  my-newaddress
+----------------------- */
+
+.my-newaddress {
+  @include sp {
+    width: 100%;
+  }
+
+  .size {
+    @include sp {
+      width: 90%;
+      margin-inline: auto;
+    }
+  }
+
+  .TX {
+    font-size: 16px;
+    letter-spacing: 1.6px;
+    line-height: 1.8;
+    color: $subF;
+    margin-top: 10px;
+  }
+
+  .form {
+
+    background: $mainC;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    @include pc {
+      margin-top: 30px;
+      padding: 53px calc(107 / 846 * 100%) 76px;
+    }
+
+    @include sp {
+      margin-top: 34px;
+      padding: 36px calc(35 / 390 * 100%) 76px;
+
+    }
+
+    @include sp {
+      margin-top: 34px;
+    }
+
+    .item {
+      .label {
+        font-size: 13px;
+        color: $subF;
+      }
+      .under-TX{
+        font-size: 10px;
+        color: $subF;
+        @include pc{
+          margin-top: 5px;
+        }
+        @include sp{
+          margin-top: 10px;
+        }
+      }
+
+      .content {
+        margin-top: 4px;
+        display: flex;
+        flex-direction: row;
+
+        @include pc {
+          gap: 10px;
+        }
+
+        @include sp {
+          gap: 5px;
+        }
+
+        input {
+          border: none;
+          height: 46px;
+        }
+
+        .name , .address-item ,.number{
+          width: 100%;
+          padding-left: 12px;
+        }
+
+        .address-number {
+          @include pc {
+            width: calc(70 / 846 * 100%);
+          }
+
+          @include sp {
+            width: calc(70 / 390 * 100%);
+          }
+        }
+
+        .address-numberbtn {
+          background: $subC;
+          border-radius: 5px;
+          padding: 8px 33px 8px 17px;
+          @include wt700;
+          margin-left: auto;
+          display: inline-block;
+
+          .TX {
+            color: $whiteF;
+            font-size: 13px;
+            line-height: normal;
+            position: relative;
+
+            &::before {
+              content: "";
+              position: absolute;
+              border-right: 1px solid;
+              border-bottom: 1px solid;
+              width: 8px;
+              height: 8px;
+              rotate: -45deg;
+              top: 50%;
+              translate: 0 -50%;
+              right: -15px;
+            }
+          }
+        }
+        &.address-form{
+          flex-direction: column;
+        }
+        &.number{
+          @include pc{
+            gap: 21px;
+          }
+          @include sp{
+            gap: 10px;
+          }
+        }
+      }
+    }
+    .C_btn{
+      @include pc{
+        width: 450px;
+        margin: 60px auto 0;
+      }
+      @include sp{
+        font-size: 15px;
+        width: 183px;
+        height: 58px;
+        margin: 30px auto 0;
+      }
+      input {
+        background: none;
+        border: none;
+        outline: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        color: $whiteF;
+      }  
+    }
+  }
+}

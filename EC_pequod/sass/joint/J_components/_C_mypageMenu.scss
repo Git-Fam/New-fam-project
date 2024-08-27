@@ -8,14 +8,16 @@
 .C_mypageMenu {
   display: flex;
   margin-top: 60px;
-  justify-content: center;
   @include pc{
-    gap: 11px;
+    gap: 11px; 
+    justify-content: center;
+
   }
   @include sp{
     max-width: 350px;
     gap: 10px 5px;
     flex-wrap: wrap;
+    margin-inline: auto;
   }
   .btn{
     background: $subC;
