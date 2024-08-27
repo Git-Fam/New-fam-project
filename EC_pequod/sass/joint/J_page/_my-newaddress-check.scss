@@ -41,6 +41,10 @@
         height: 50px;
       }
 
+      input{
+        width: 100%;
+      }
+
       &.wrap-1 {
         @include pc {
           width: calc(427 / 692 * 100%);
@@ -48,7 +52,12 @@
 
         @include sp {
           width: calc(152 / 350 * 100%);
-          min-width: 211px;
+          min-width: 140px;
+        }
+        .btn-wrap{
+          &::after{
+            display: none;
+          }  
         }
       }
 
@@ -61,6 +70,19 @@
           width: calc(152 / 350 * 100%);
           min-width: initial;
         }
+
+        .btn-wrap{
+          &::after{
+            border-color: $P-white;
+            @include pc{
+              left: 50px;
+            }
+            @include sp{
+              left: 35px;
+            }
+          }  
+        }
+
       }
     }
 

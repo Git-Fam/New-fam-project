@@ -6,43 +6,53 @@
 ----------------------- */
 
 .my-contact {
-  .my-wrap{
-    @include pc{}
-  }
-  .under-TX{
-      margin-top: 10px;
+
+  .under-TX {
+    color:$subF;
+    margin-top: 10px;
   }
 
-  .pagerArea{
-    @include pc{
-      margin-top: 46px;
+  .pagerArea {
+    @include pc {
+      margin: 46px 0 5px;
     }
-    @include sp{
-      margin-top: 30px;
+
+    @include sp {
+      margin: 30px 0 11px;
     }
-    .form-inline{
+
+    .form-inline {
       font-size: 10px;
       color: $subF;
-    }
-  }
-  .myInfoHistoryBox{
-    li{
-      @include sp{
-        flex-direction: column;
-      }
-      .historyDetailCol{
-        width: 100%;
-        dt{
-          color: &subF;
-          font-size: 16px;
-          padding: 13px 0 13px  18px;
-        }
-        dd{
-          font-size: 16px;
-          padding: 13px 0 13px  18px;
-        }
+      .custom-select{
+        font-size: 10px;
+        border-radius: 5px;
+        color: $subF;
       }
     }
   }
 
+  .myInfoHistoryBox {
+    li {
+      @include sp {
+        flex-direction: column;
+      }
+
+      .historyDetailCol {
+        width: 100%;
+
+        dt {
+          color: $subF;
+          font-size: 16px;
+          padding: 13px 0 13px 18px;
+          @include wt700;
+        }
+
+        dd {
+          font-size: 16px;
+          padding: 13px 0 13px 18px;
+        }
+      }
+    }
+  }
 }

@@ -1,0 +1,27 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  top
+----------------------- */
+
+.top{
+  .top-TX{
+    text-align: center;
+    font-size:  16px;
+    letter-spacing: 1.6px;
+    line-height: 2.1;
+    color: $subF;
+    @include pc{
+      max-width: 668px;
+      margin: 60px auto 0;
+    }
+    @include sp{
+      width: 90%;
+      margin: 43px auto 0;
+    }
+  }
+  .main_supports{
+    margin-top: 100px;
+  }
+}

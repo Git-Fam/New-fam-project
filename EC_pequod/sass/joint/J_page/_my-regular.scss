@@ -6,15 +6,24 @@
 ----------------------- */
 
 .my-regular {
-  .under-TX ,.noData{
+
+  .under-TX,
+  .noData {
     font-size: 16px;
     color: $subF;
     letter-spacing: 1.6px;
   }
-  .under-TX{
+
+  .under-TX {
     margin-top: 10px;
   }
-  .noData{
+
+  .noData {
     margin-top: 25px;
+  }
+
+  .subscHistoryBox {
+    margin-top: 25px;
+    border: none;
   }
 }
