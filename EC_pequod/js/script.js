@@ -1,5 +1,9 @@
 $(function () {
 
+  // 利用規約チェック
+  $('.rule-container_btn').on('click', function () {
+    $(this).toggleClass('active');
+  });
   // 要素が画面下部に来たらshowを付与
   // $(window).scroll(function () {
   //   $('.up,.down,.right,.left,.pop').each(function () {

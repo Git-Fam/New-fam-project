@@ -1,0 +1,440 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  signup
+----------------------- */
+
+.signup-container {
+
+  @include pc {
+    @include column(160px);
+  }
+
+  @include sp {
+    @include column(100px);
+  }
+
+  .rule-container {
+    margin: 0 auto;
+
+    @include pc {
+      margin-top: 100px;
+      max-width: 700px;
+    }
+
+    @include sp {
+      margin-top: 60px;
+      padding: 0 20px;
+    }
+
+    &_title {
+      padding-bottom: 10px;
+      border-bottom: dashed 3px #A9DAEA;
+
+      .TL {
+        color: #989898;
+        @include wt700;
+        line-height: 1.5;
+        letter-spacing: 1.6px;
+        font-size: 16px;
+      }
+    }
+
+    &_text {
+      margin-top: 10px;
+
+      .TX {
+        color: #989898;
+        @include wt500;
+        line-height: 1.5;
+        letter-spacing: 1.3px;
+        font-size: 13px;
+      }
+    }
+
+    &_main {
+      padding: 15px 23px;
+      overflow-y: scroll;
+      border-radius: 5px;
+      background: #F2F2F2;
+      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10) inset;
+      width: 100%;
+      height: 200px;
+
+      @include pc {
+        margin-top: 60px;
+      }
+
+      @include sp {
+        margin-top: 30px;
+        padding-inline: 11px;
+      }
+
+      .TX {
+        color: #989898;
+        @include wt500;
+        line-height: 180%;
+        letter-spacing: 1px;
+        font-size: 10px;
+      }
+    }
+
+    &_btn {
+      border-radius: 5px;
+      border: 2px solid #EED06E;
+      background: #FFF;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      @include pc {
+        padding: 18px 0 22px;
+        margin-top: 40px;
+      }
+
+      @include sp {
+        padding: 21px 4px 22px 63px;
+        margin-top: 30px;
+      }
+
+      &:hover {
+        .TX {
+          &:before {
+            opacity: 1;
+          }
+        }
+      }
+
+      &.active {
+        border: 2px #EED06E;
+        background: #EED06E;
+
+        .TX {
+          color: #FFF;
+
+          &:before {
+            opacity: 1;
+            background-image: check(encode('#FFF'));
+          }
+        }
+      }
+
+      .TX {
+        color: #EED06E;
+        display: block;
+        width: fit-content;
+        margin: 0 auto;
+        @include wt700;
+        line-height: 1.5;
+        position: relative;
+        transition: all 0.3s;
+
+        @include pc {
+          font-size: 20px;
+          letter-spacing: 2px;
+        }
+
+        @include sp {
+          font-size: 18px;
+          letter-spacing: 1px;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 55%;
+          translate: 0 -50%;
+          width: 54px;
+          height: 36px;
+          background-image: check(encode('#EED06E'));
+          background-size: contain;
+          background-position: center;
+          opacity: 0.2;
+          transition: all 0.3s;
+
+          @include pc {
+            right: calc(100% + 20px);
+          }
+
+          @include sp {
+            right: calc(100% + 10px);
+          }
+        }
+      }
+    }
+  }
+
+  .register-container {
+    margin: 0 auto;
+
+    @include pc {
+      margin-top: 80px;
+    }
+
+    @include sp {
+      margin-top: 60px;
+    }
+
+    &_text {
+
+      @include pc {
+        margin: 10px 0 30px;
+      }
+
+      @include sp {
+        padding: 0 20px;
+        margin: 0 0 30px;
+      }
+
+      .TX {
+        color: #989898;
+        @include wt500;
+        line-height: 1.5;
+        letter-spacing: 1.2px;
+        font-size: 12px;
+      }
+    }
+
+    &_content {
+      background: #F3F9FB;
+      @include column(60px);
+
+      @include pc {
+        padding: 63px 94px 104px;
+      }
+
+      @include sp {
+        padding: 30px 20px 40px;
+      }
+
+      &-item {
+
+        .item-title {
+          padding-bottom: 3px;
+          border-bottom: dashed 3px #A9DAEA;
+
+          .TL {
+            color: #989898;
+            @include wt700;
+            line-height: 1.5;
+            letter-spacing: 1.6px;
+            font-size: 16px;
+          }
+        }
+
+        .item-form {
+          margin-top: 32px;
+          padding-inline: 13px;
+
+          @include pc {
+            @include column(15px);
+          }
+
+          @include sp {
+            @include column(30px);
+          }
+
+          .form-cards {
+
+            input,
+            select {
+              width: 100%;
+              background: #FFF;
+              border: none;
+              appearance: none;
+              height: 46px;
+            }
+
+            .form-cards-title {
+              margin-bottom: 4px;
+
+              .TX {
+                color: #989898;
+                @include wt500;
+                line-height: 1.5;
+                font-size: 13px;
+                
+                @include pc{
+                  letter-spacing: 1.3px;
+                }
+                
+                @include sp{
+                  letter-spacing: 1px;
+                }
+              }
+            }
+
+            .form-cards-inputs {
+              display: flex;
+
+              @include pc {
+                gap: 10px;
+              }
+
+              @include sp {
+                gap: 5px;
+              }
+
+              .inputs-block {
+                width: 100%;
+              }
+
+              &.form-cards-inputs-sex {
+                gap: 40px;
+
+                .inputs-block {
+                  width: fit-content;
+                  display: flex;
+                  align-items: center;
+                  gap: 16px;
+
+                  input {
+                    flex-shrink: 0;
+                    border-radius: 50%;
+                    appearance: none;
+                    position: relative;
+                    width: 24px;
+                    height: 24px;
+                    flex-shrink: 0;
+
+                    &:checked {
+
+                      &::before {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        translate: -50% -50%;
+                        width: 60%;
+                        height: 60%;
+                        background: #A9DAEA;
+                        border-radius: 50%;
+                      }
+                    }
+                  }
+
+                  label {
+                    color: #989898;
+                    @include wt500;
+                    line-height: 1.5;
+                    letter-spacing: 1.3px;
+                    font-size: 13px;
+                    white-space: nowrap;
+                  }
+                }
+              }
+
+              &.form-cards-inputs-birthdate {
+
+                @include pc {
+                  gap: 40px;
+                }
+
+                @include sp {
+                  gap: 9px;
+                }
+
+                .inputs-block {
+                  width: fit-content;
+                  display: flex;
+                  align-items: center;
+                  gap: 3px;
+
+                  .select-wrap {
+                    position: relative;
+
+                    &::before {
+                      content: "";
+                      display: block;
+                      width: 6px;
+                      height: 15px;
+                      @include iconContain($selectArrow);
+                      position: absolute;
+                      top: 50%;
+                      translate: 0 -50%;
+                      right: 5px;
+                    }
+                  }
+
+                  &:nth-child(1) {
+                    select {
+                      
+                      @include pc{
+                        width: 115px;
+                      }
+                      
+                      @include sp{
+                        max-width: 115px;
+                        width: s(115);
+                      }
+                    }
+                  }
+
+                  &:nth-child(2),
+                  &:nth-child(3) {
+                    select {
+
+                      @include pc{
+                        width: 70px;
+                      }
+                      
+                      @include sp{
+                        max-width: 70px;
+                        width: s(70);
+                      }
+                    }
+                  }
+
+                  .TX {
+                    color: #989898;
+                    @include wt500;
+                    line-height: 1.5;
+                    letter-spacing: 1.3px;
+                    font-size: 13px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      
+      &-btn {
+
+        button {
+          appearance: none;
+          border: none;
+          border-radius: 5px;
+          background: #D1D1D1;
+          margin: 0 auto;
+          display: block;
+          color: #FFF;
+          text-align: center;
+          @include wt700;
+          line-height: 1.5;
+          height: 70px;
+          pointer-events: none;
+          cursor: default;
+          
+          @include pc {
+            font-size: 20px;
+            letter-spacing: 2px;
+            width: 450px;
+          }
+          
+          @include sp {
+            font-size: 15px;
+            letter-spacing: 1.5px;
+            width: 225px;
+            word-break: keep-all;
+          }
+          
+          &.all-ok {
+            cursor: pointer;
+            background: #57C6EA;
+            pointer-events: auto;
+          }
+        }
+      }
+    }
+  }
+}

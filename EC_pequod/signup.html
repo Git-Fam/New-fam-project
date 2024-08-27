@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og: https://ogp.me/ns#">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
+    <meta name="format-detection" content="email=no,telephone=no,address=no" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta property="og:locale" content="ja_JP" />
+
+    <!-- ▼SEO -->
+    <link rel="”canonical”" href="”URL”" />
+    <!-- ジェネレーターURL→ https://metatags.io/ -->
+
+    <!-- ▼ファビコン -->
+    <!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
+
+    <!-- ▼クロールして欲しくない -->
+    <!-- <meta name="robots" content="noindex,nofollow"> -->
+
+    <!-- ▼テーマカラー -->
+    <!-- <meta name="theme-color" content="#e9c931"> -->
+
+    <!-- ▼CSS -->
+    <link rel="stylesheet" href="css/main.css?ver=1.0.0" />
+    <link rel="stylesheet" href="css/main-sp.css?ver=1.0.0" />
+
+    <!-- ▼フォント -->
+
+
+</head>
+
+<body>
+
+
+<div class="template_wrap">
+    <div class="template_inner880">
+        <div class="signup-container">
+
+            <!-- 利用規約 -->
+            <section>
+                <div class="C_TL">
+                    <div class="icon"></div>
+                    <h2 class="TL">ご利用規約</h2>
+                </div>
+                <div class="rule-container">
+                    <div class="rule-container_title">
+                        <h3 class="TL">会員登録をされる前に、以下のご利用規約をよくお読みください。</h3>
+                    </div>
+                    <div class="rule-container_text">
+                        <p class="TX">
+                            規約には、本サービスを使用するに当たってのあなたの権利と義務が規定されております。<br
+                                class="pc">規約に同意して会員登録をするをクリックすると、あなたが本規約の全ての条件に同意したことになります。
+                        </p>
+                    </div>
+                    <div class="rule-container_main">
+                        <p class="TX">
+                            {if $rules|@count > 0}
+                            {$rules.rules_desc}
+                            {else}
+                            利用規約が設定されておりません
+                            {/if}
+                        </p>
+                    </div>
+                    {if !$user.id}
+                    <div class="rule-container_btn">
+                        <p class="TX">規約に同意して会員登録をする</p>
+                    </div>
+                    {/if}
+                </div>
+            </section>
+
+            <!-- 入力フォーム -->
+            <section>
+                <div class="C_TL">
+                    <div class="icon"></div>
+                    <h2 class="TL">会員登録</h2>
+                </div>
+
+                {if $errors|@count > 0}<div class="errorDisp">{include file='errors.tpl' errors=$errors}</div>{/if}
+
+                <div class="register-container">
+                    <div class="register-container_text">
+                        <p class="TX">
+                            下記項目をご入力ください。<br>
+                            ユーザー名は[マイページ] → 登録情報変更で変更することが出来ます。<br class="pc">
+                            入力後、「入力内容を確認する」ボタンをクリックしてください。
+                        </p>
+                    </div>
+                    <form method="post" action="{$base_url}/account/post">
+                        <div class="register-container_content">
+                            <div class="register-container_content-item">
+                                <div class="item-title">
+                                    <h3 class="TL">お客様情報</h3>
+                                </div>
+                                <div class="item-form">
+                                    <div class="form-cards">
+                                        <div class="form-cards-title">
+                                            <p class="TX">お名前</p>
+                                        </div>
+                                        <div class="form-cards-inputs">
+                                            <div class="inputs-block">
+                                                <input type="text" name="show_nickname"
+                                                    value="{$view->escape($show_nickname)}"
+                                                    maxlength="{Config::$init.show_nick_length_max}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="form-cards">
+                                        <div class="form-cards-title">
+                                            <p class="TX">フリガナ</p>
+                                        </div>
+                                        <div class="form-cards-inputs">
+                                            <div class="inputs-block">
+                                                <input type="text" name="show_nickname" value="{$view->escape($show_nickname)}" maxlength="{Config::$init.show_nick_length_max}">
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <div class="form-cards">
+                                        <div class="form-cards-title">
+                                            <p class="TX">性別</p>
+                                        </div>
+                                        <div class="form-cards-inputs form-cards-inputs-sex">
+                                            <div class="inputs-block">
+                                                <input type="radio" name="sex" value="1" id="man" {$checked_sex[1]}>
+                                                <label for="man">男性</label>
+                                            </div>
+                                            <div class="inputs-block">
+                                                <input type="radio" name="sex" value="2" id="woman"
+                                                    {$checked_sex[2]}>
+                                                <label for="woman">女性</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-cards">
+                                        <div class="form-cards-title">
+                                            <p class="TX">生年月日</p>
+                                        </div>
+                                        <div class="form-cards-inputs form-cards-inputs-birthdate">
+                                            <div class="inputs-block">
+                                                <div class="select-wrap">
+                                                    <select name="birthday_y">{$year_box}</select>
+                                                </div>
+                                                <p class="TX">年</p>
+                                            </div>
+                                            <div class="inputs-block">
+                                                <div class="select-wrap">
+                                                    <select name="birthday_m">{$month_box}</select>
+                                                </div>
+                                                <p class="TX">月</p>
+                                            </div>
+                                            <div class="inputs-block">
+                                                <div class="select-wrap">
+                                                    <select name="birthday_d">{$day_box}</select>
+                                                </div>
+                                                <p class="TX">日</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="register-container_content-item">
+                                <div class="item-title">
+                                    <h3 class="TL">ログイン情報</h3>
+                                </div>
+                                <div class="item-form">
+                                    <div class="form-cards">
+                                        <div class="form-cards-title">
+                                            <p class="TX">メールアドレス</p>
+                                        </div>
+                                        <div class="form-cards-inputs">
+                                            <div class="inputs-block">
+                                                <input type="email" name="mail" value="{$view->escape($mail)}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-cards">
+                                        <div class="form-cards-title">
+                                            <p class="TX">パスワード</p>
+                                        </div>
+                                        <div class="form-cards-inputs">
+                                            <div class="inputs-block">
+                                                <input type="password" name="passwd" value=""
+                                                    maxlength="{$passwd_e}" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-cards">
+                                        <div class="form-cards-title">
+                                            <p class="TX">パスワード（確認のためもう一度入してください）</p>
+                                        </div>
+                                        <div class="form-cards-inputs">
+                                            <div class="inputs-block">
+                                                <input type="password" name="re_passwd" value=""
+                                                    maxlength="{$passwd_e}" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" name="merumaga_flag" value="1" id="html">
+                            <input type="hidden" name="dm_flag" value="1">
+                            <!-- ボタン↓ -->
+                            <div class="register-container_content-btn">
+                                <!-- <button class="button-submit button-submit-fist" type="submit">必須項目をすべて入力<br class="sp">してください</button> -->
+                                <button class="button-submit button-submit-second all-ok" type="submit">入力内容を確認する</button>
+                            </div>
+                        </div>
+                        <input type="hidden" name="regist_sub" value="1">
+                        <input type="hidden" name="prof" value="1">
+                        <input type="hidden" name="_token" value="{$_token}">
+                        <input type="hidden" name="query" value="{$view->escape($query)}">
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-1.7.1.min.js"
+        integrity="sha256-iBcUE/x23aI6syuqF7EeT/+JFBxjPs5zeFJEXxumwb0=" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+    <script src="js/joint.js"></script>
+</body>
+
+</html>

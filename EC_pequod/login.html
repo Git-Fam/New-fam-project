@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og: https://ogp.me/ns#">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
+    <meta name="format-detection" content="email=no,telephone=no,address=no" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta property="og:locale" content="ja_JP" />
+
+    <!-- ▼SEO -->
+    <link rel="”canonical”" href="”URL”" />
+    <!-- ジェネレーターURL→ https://metatags.io/ -->
+
+    <!-- ▼ファビコン -->
+    <!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
+
+    <!-- ▼クロールして欲しくない -->
+    <!-- <meta name="robots" content="noindex,nofollow"> -->
+
+    <!-- ▼テーマカラー -->
+    <!-- <meta name="theme-color" content="#e9c931"> -->
+
+    <!-- ▼CSS -->
+    <link rel="stylesheet" href="css/main.css?ver=1.0.0" />
+    <link rel="stylesheet" href="css/main-sp.css?ver=1.0.0" />
+
+    <!-- ▼フォント -->
+
+
+</head>
+
+<body>
+
+
+<div class="template_wrap">
+    <div class="template_inner880">
+        <section>
+            <div class="C_TL">
+                <div class="icon"></div>
+                <h2 class="TL">お申し込み内容のご確認</h2>
+            </div>
+            <div class="login-container">
+
+                {if $errors|@count > 0}<div class="errorDisp">{include file='errors.tpl' errors=$errors}</div>{/if}
+                {if isset($smarty.get.error) }<div class="errorDisp">{include file='errors.tpl'
+                    errors=array($smarty.get.error)}</div>{/if}
+
+                <div class="login-content">
+                    <div class="content_title">
+                        <h2 class="TL">会員登録がお済みの方</h2>
+                    </div>
+                    <div class="content_text">
+                        <p class="TX">
+                            会員の方は、登録時に入力されたメールアドレスとパスワードでログインしてください。
+                        </p>
+                    </div>
+                    <div class="content_block">
+                        <form method="post" action="{$base_url}/account/authenticate">
+                            <ul class="log-in-inputs">
+                                <li>
+                                    <p class="TX">メールアドレス</p>
+                                    <input type="email" name="login_mail" value="{$login_mail}">
+                                </li>
+                                <li>
+                                    <p class="TX">パスワード</p>
+                                    <input type="password" name="login_pass" value="{$login_pass}">
+                                    <input type="hidden" name="move_page" value="{$move_page}">
+                                </li>
+                            </ul>
+                            <div class="log-in-area">
+                                <input class="jump_btn" type="submit" value="ログイン">
+                                <input type="hidden" name="login_sub" value="1">
+                                <input type="hidden" name="_token" value="{$_token}">
+                            </div>
+                            <div class="text">
+                                <p class="TX">
+                                    ※パスワードを忘れた方はこちらからパス<br>ワードの再発行を行ってください。
+                                </p>
+                            </div>
+                            <a class="pass-end" href="{$base_url}/account/passwd">パスワードをお忘れの方はこちら</a>
+                        </form>
+                    </div>
+                </div>
+                <div class="login-content">
+                    <div class="content_title">
+                        <h2 class="TL">会員登録がまだの方はこちら</h2>
+                    </div>
+                    <div class="content_text">
+                        <p class="TX">
+                            まだ会員でない方も、今すぐ！簡単に！無料で！登録いただけます。
+                        </p>
+                    </div>
+                    <div class="content_block new_block">
+                        <div class="log-in-area">
+                            <a class="jump_btn" href="{$base_url}/shop/rules">新規会員登録</a>
+                        </div>
+                        <div class="text">
+                            <p class="TX">
+                                会員登録をすると便利なマイページをご利用いただけます。<br>
+                                また、ログインするだけで毎回お名前や住所などを入力することなく、スムーズ<br>
+                                にお買い物をお楽しみいただけます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-1.7.1.min.js"
+        integrity="sha256-iBcUE/x23aI6syuqF7EeT/+JFBxjPs5zeFJEXxumwb0=" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+    <script src="js/joint.js"></script>
+</body>
+
+</html>

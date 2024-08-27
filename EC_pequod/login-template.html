@@ -1,0 +1,95 @@
+{$view->setLayoutVar('title', 'マイページ - ログイン')}
+{$view->setLayoutVar('keywords', '')}
+{$view->setLayoutVar('description', '')}
+
+{$view->setLayoutVar("css_files", "columnless.css", true)}
+
+
+<div id="contents">
+	<section class="container">
+		<h2>マイページ - ログイン</h2>
+
+		<div class="login_panel">
+			<h3>会員登録がお済みの方</h3>
+
+			<p>会員の方は、登録時に入力されたメールアドレスとパスワードでログインしてください。</p>
+
+			{if $errors|@count > 0}<div class="errorDisp">{include file='errors.tpl' errors=$errors}</div>{/if}
+			{if isset($smarty.get.error) }<div class="errorDisp">{include file='errors.tpl' errors=array($smarty.get.error)}</div>{/if}
+
+			<div class="row">
+				<form method="post" action="{$base_url}/account/authenticate" class="col-md-7 m-auto">
+					<ul>
+						<li class="pb-2">
+							<div>メールアドレス</div>
+							<input type="email" name="login_mail" value="{$login_mail}" class="ime_d allow_submit form-control">
+						</li>
+						<li class="pb-2">
+							<div>パスワード</div>
+							<input type="password" name="login_pass" value="{$login_pass}" class="ime_d allow_submit form-control">
+							<input type="hidden" name="move_page" value="{$move_page}">
+						</li>
+					</ul>
+
+					<div class="btnArea text-center">
+						<div class="btn-wrap"><input type="submit" value="ログイン" class="btn_m"></div>
+					</div>
+					<input type="hidden" name="login_sub" value="1">
+					<input type="hidden" name="_token" value="{$_token}">
+
+					<div class="text-right"><a href="{$base_url}/account/passwd">パスワードをお忘れの方 &rarr;</a></div>
+				</form>
+			</div>
+		</div><!-- //.login_panel -->
+
+		<div class="amznLogin_panel">
+			<h3>Amazonアカウントでログイン</h3>
+
+			<p>Amazonアカウントでご購入された方は、Amazonアカウントでログインすることが可能です。</p>
+
+			{if !empty($amazon_config['cv2'])}
+			<!-- AmazonペイCV2ログインボタン表示start -->
+			<script id="amazon" src="/common/js/amazonV2/amazonV2Button.js?{$db_cache_mtime}"
+							data-placement="Login" data-merchant_id="{$amazon_config['merchantId']}" data-sandbox="{if !empty($amazon_config['sandbox'])}true{else}false{/if}"
+							data-payload='{$amazon_config['payload']}'
+							data-signature="{$amazon_config['signature']}"
+							data-public_key_id="{$amazon_config['public_key_id']}"
+							data-button_color="DarkGray"></script>
+			<script src="https://static-fe.payments-amazon.com/checkout.js"></script>
+			<div class="btnArea text-center">
+				<div id="AmazonPayButton" class="AmazonLoginButton" style="display: inline-block; vertical-align: bottom; width: 300px; height: 50px;"></div>
+			</div>
+			<!-- AmazonペイCV2ログインボタン表示end -->
+			{else}
+			<!-- Amazon Pay JS設定 -->
+			<script id="amazon" src="/common/js/amazon/amazonBase.js"
+							data-client_id="{$amazon_config['client_id']}"
+							data-merchant_id="{$amazon_config['merchant_id']}"
+							data-paybutton_class="AmazonLoginButton"
+							data-redirect="true"
+							data-logout="true">
+			</script>
+			<!-- //Amazon Pay JS設定 -->
+			<div class="btnArea text-center">
+				<div id="AmazonLogin" class="AmazonLoginButton" data-button='{literal}{"type":"LwA", "color":"DarkGray", "size":"large"}{/literal}'></div>
+			</div>
+			{/if}
+		</div><!-- //.amznLogin_panel -->
+
+		<div class="register_panel">
+			<h3>まだ会員登録されてない方</h3>
+
+			<p>まだ会員でない方も、今すぐ！簡単に！無料で！登録出来ます。会員になると...</p>
+
+			<div class="d-flex justify-content-center px-5">
+				<ul>
+					<li>2回目からのショッピングで住所入力の手間がなくなる！</li>
+					<li>会員限定のセール情報や限定アイテムがGET出来る！！</li>
+				</ul>
+			</div>
+
+			<div class="btnArea text-center"><a href="{$base_url}/shop/rules" class="btn_m">無料で会員登録する</a></div>
+		</div><!-- //.register_panel -->
+
+	</section><!-- //.container -->
+</div><!-- //#contents -->
