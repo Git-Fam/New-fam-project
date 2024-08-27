@@ -1,0 +1,131 @@
+{$view->setLayoutVar('title', '会員登録 - 入力フォーム')}
+{$view->setLayoutVar('keywords', '')}
+{$view->setLayoutVar('description', '')}
+
+{$view->setLayoutVar('common_css_files', 'jquery.toastmessage.css', true)}
+
+{$view->setLayoutVar('common_js_files', 'jquery.json-2.3.min.js', true)}
+{$view->setLayoutVar('common_js_files', 'jquery.toastmessage.js', true)}
+{$view->setLayoutVar('common_js_files', 'postal.js', true)}
+{$view->setLayoutVar('common_js_files', 'toast.js', true)}
+
+{$view->setLayoutVar("css_files", "columnless.css", true)}
+
+
+<div id="contents">
+	<section class="container">
+		<h2>会員登録 - 入力フォーム</h2>
+
+		<p>
+			下記項目にご入力ください。<br>
+			ユーザー名はマイページ &rarr; <em class="em_frame">登録情報変更</em>で変更することが出来ます。<br>
+			入力後、「入力内容を確認する」ボタンをクリックしてください。
+		</p>
+
+		{if $errors|@count > 0}<div class="errorDisp">{include file='errors.tpl' errors=$errors}</div>{/if}
+
+		<form method="post" action="{$base_url}/account/post">
+			<div class="mainForm registerForm">
+				<div class="caption">お客様情報</div>
+				<dl class="row m-0">
+					<dt>ユーザー名<span class="required"></span></dt>
+					<dd>
+						<input type="text" name="show_nickname" value="{$view->escape($show_nickname)}" maxlength="{Config::$init.show_nick_length_max}" class="ime_a form-control">
+						<div class="description">{*全角・半角を問わず*}{Config::$init.show_nick_length_max}文字以内で設定してください。</div>
+					</dd>
+
+					<dt>性別</dt>
+					<dd>
+						<div class="radioArea form-inline">
+							<div class="form-check">
+								<input type="radio" name="sex" value="1" id="man" class="form-check-input" {$checked_sex[1]}><label for="man" class="form-check-label">男性</label>
+							</div>
+							<div class="form-check">
+								<input type="radio" name="sex" value="2" id="woman" class="form-check-input" {$checked_sex[2]}><label for="woman" class="form-check-label">女性</label>
+							</div>
+						</div>
+					</dd>
+
+					<dt>生年月日</dt>
+					<dd>
+						<div class="row align-items-end">
+							<div class="col-md-3 col-4 pr-2"><select name="birthday_y" class="custom-select">{$year_box}</select>年</div>
+							<div class="col-md-3 col-4 pr-2"><select name="birthday_m" class="custom-select">{$month_box}</select>月</div>
+							<div class="col-md-3 col-4 pr-2"><select name="birthday_d" class="custom-select">{$day_box}</select>日</div>
+						</div>
+					</dd>
+				</dl>
+
+				<div class="caption">ログイン情報</div>
+				<dl class="row m-0">
+					<dt>メールアドレス<span class="required"></span></dt>
+					<dd>
+						<input type="email" name="mail" value="{$view->escape($mail)}" class="ime_d form-control">
+						{*<input type="text" name="re_mail" value="{$view->escape($re_mail_conf)}"><div class="description">確認のためもう一度入力してください。</div>*}
+						<div class="d-flex justify-content-end align-items-end mt-2">
+							<small>入力されたアドレス宛にテストメールを送信します。&rarr;</small><span id="testmail" class="btn_s ml-2">テストメール送信</span>
+						</div>
+					</dd>
+
+					<dt>パスワード<span class="required"></span></dt>
+					<dd>
+						<div class="description">パスワードを半角英数字{$passwd_s}〜{$passwd_e}文字（記号不可）で入力してください。</div>
+						<input type="password" name="passwd" value="" maxlength="{$passwd_e}" autocomplete="off" class="ime_d form-control">
+						<div class="description">確認のためもう一度入力してください。</div>
+						<input type="password" name="re_passwd" value="" maxlength="{$passwd_e}" autocomplete="off" class="ime_d form-control">
+					</dd>
+
+					<!-- メルマガ可否 -->
+					{if $information.merumaga_area_flag == 1}
+					<dt>メルマガ</dt>
+					<dd>
+						<div class="radioArea form-inline">
+							<div class="form-check">
+								<input type="radio" name="merumaga_flag" value="1" id="merumaga_all" class="form-check-input" {$merumaga_checked[1]}><label for="merumaga_all" class="form-check-label">HTMLメール＋テキストメールを受信</label>
+							</div>
+							<div class="form-check">
+								<input type="radio" name="merumaga_flag" value="2" id="merumaga_txt" class="form-check-input" {$merumaga_checked[2]}><label for="merumaga_txt" class="form-check-label">テキストメールを受信</label>
+							</div>
+							<div class="form-check">
+								<input type="radio" name="merumaga_flag" value="0" id="merumaga_no" class="form-check-input" {$merumaga_checked[0]}><label for="merumaga_no" class="form-check-label">受信しない</label>
+							</div>
+						</div>
+					</dd>
+					{else}
+					<input type="hidden" name="merumaga_flag" value="1" id="html">
+					{/if}
+					<!-- //メルマガ可否 -->
+
+					<!-- DM可否 -->
+					{if $information.dm_area_flag == 1}
+					<dt>DM</dt>
+					<dd>
+						<div class="radioArea form-inline">
+							<div class="form-check">
+								<input type="radio" name="dm_flag" value="1" id="dm_yes" class="form-check-input" {$dm_checked[1]}><label for="dm_yes" class="form-check-label">受け取る</label>
+							</div>
+							<div class="form-check">
+								<input type="radio" name="dm_flag" value="0" id="dm_no" class="form-check-input" {$dm_checked[0]}><label for="dm_no" class="form-check-label">受け取らない</label>
+							</div>
+						</div>
+					</dd>
+					{else}
+					<input type="hidden" name="dm_flag" value="1">
+					{/if}
+					<!-- //DM可否 -->
+				</dl>
+
+				<div class="btnArea text-center">
+					<div class="btn-wrap">
+						<input type="submit" value="入力内容を確認する" class="btn_m">
+					</div>
+				</div>
+				<input type="hidden" name="regist_sub" value="1">
+				<input type="hidden" name="prof" value="1">
+				<input type="hidden" name="_token" value="{$_token}">
+				<input type="hidden" name="query" value="{$view->escape($query)}">
+			</div>
+		</form>
+
+	</section><!-- //.container -->
+</div><!-- //#contents -->

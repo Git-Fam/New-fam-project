@@ -149,10 +149,12 @@
         <div class="product-detail_main">
             <div class="product_name sp">
                 <h2 class="TL">{$view->escape($product.0.item_name)}</h2>
+                {if $reg_item !== false}
                 <div class="tags">
                     <p class="TX">家族向け</p>
                     <p class="TX">省スペース</p>
                 </div>
+                {/if}
             </div>
             <div class="product_img">
                 <div class="product_img-thumbnail">
@@ -180,10 +182,12 @@
             <div class="product_container">
                 <div class="product_name pc">
                     <h2 class="TL">{$view->escape($product.0.item_name)}</h2>
+                    {if $reg_item !== false}
                     <div class="tags">
                         <p class="TX">家族向け</p>
                         <p class="TX">省スペース</p>
                     </div>
+                    {/if}
                 </div>
                 <div class="product_content">
                     <p class="TX">{$product.0.item_desc}</p>
@@ -229,7 +233,7 @@
                                     <p class="TL">価格</p>
                                 </div>
                                 <div class="item-in">
-                                    <p class="TX">{$product.0.item_price_tax|number_format}円<span>(税込)</span>　<span>送料000円</span></p>
+                                    <p class="TX">{$product.0.item_price_tax|number_format}円<span>(税込)</span>　<span>送料{$send_price|number_format}円</span></p>
                                 </div>
                             </div>
                             <div class="product_control-list-item">

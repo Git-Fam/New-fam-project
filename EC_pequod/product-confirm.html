@@ -38,169 +38,169 @@
 <body>
 
 
-<div class="template_inner880">
-    <div class="product-confirm">
-        <aside class="C_flow">
-            <ul class="flow-item">
-                <li>買い物かご</li>
-                <li>申し込みフォーム</li>
-                <li class="current">内容のご確認</li>
-                <li>ご注文完了</li>
-            </ul>
-        </aside>
-        <section class="shopping-confirm">
-            <div class="C_TL">
-                <div class="icon"></div>
-                <h2 class="TL">お申し込み内容のご確認</h2>
-            </div>
-            <div class="shopping-confirm-container">
-                <div class="confirm-content_wrap">
+    <div class="template_inner880">
+        <div class="product-confirm">
+            <aside class="C_flow">
+                <ul class="flow-item">
+                    <li>買い物かご</li>
+                    <li>申し込みフォーム</li>
+                    <li class="current">内容のご確認</li>
+                    <li>ご注文完了</li>
+                </ul>
+            </aside>
+            <section class="shopping-confirm">
+                <div class="C_TL">
+                    <div class="icon"></div>
+                    <h2 class="TL">お申し込み内容のご確認</h2>
+                </div>
+                <div class="shopping-confirm-container">
+                    <div class="confirm-content_wrap">
 
-                    <div class="confirm-content confirm-content_first">
-                        <div class="confirm-content_title">
-                            <h3 class="TL">ショッピングカート</h3>
-                        </div>
-                        <div class="cart-confirm">
-                            <div class="cart-confirm_inner">
-                                <ul>
-                                    {foreach from=$di_cart item=val}
-                                    <li>
-                                        <div class="item-detail">
-                                            <img src="/item_sum_l_image/{$val.main_image}" alt="">
-                                            <div class="item-detail-content">
-                                                <div class="item-detail-content-title">
-                                                    <h3 class="TL">{$view->escape($val.item_name)}</h3>
-                                                </div>
-                                                <div class="item-detail-content-text">
-                                                    <div class="text-in">
-                                                        <p class="TL">カラー</p>
-                                                        <p class="TX">{$view->escape($val.color)}</p>
+                        <div class="confirm-content confirm-content_first">
+                            <div class="confirm-content_title">
+                                <h3 class="TL">ショッピングカート</h3>
+                            </div>
+                            <div class="cart-confirm">
+                                <div class="cart-confirm_inner">
+                                    <ul>
+                                        {foreach from=$di_cart item=val}
+                                        <li>
+                                            <div class="item-detail">
+                                                <img src="/item_sum_l_image/{$val.main_image}" alt="">
+                                                <div class="item-detail-content">
+                                                    <div class="item-detail-content-title">
+                                                        <h3 class="TL">{$view->escape($val.item_name)}</h3>
                                                     </div>
-                                                    <div class="text-in">
-                                                        <p class="TL">数量</p>
-                                                        <p class="TX">{$val.item_num}</p>
+                                                    <div class="item-detail-content-text">
+                                                        <div class="text-in">
+                                                            <p class="TL">カラー</p>
+                                                            <p class="TX">{$view->escape($val.color)}</p>
+                                                        </div>
+                                                        <div class="text-in">
+                                                            <p class="TL">数量</p>
+                                                            <p class="TX">{$val.item_num}</p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="item-price">
+                                                <p class="TX">{$all_price_t|number_format}円</p>
+                                            </div>
+                                        </li>
+                                        {/foreach}
+                                    </ul>
+                                    <div class="gate">
+                                        <div class="postage flex-item">
+                                            <p class="TX">送料</p>
+                                            <p class="TX TX-right">{$send_price|number_format}円</p>
                                         </div>
-                                        <div class="item-price">
-                                            <p class="TX">{$all_price_t|number_format}円</p>
+                                        <div class="all_set flex-item">
+                                            <p class="TX">合計金額</p>
+                                            <p class="TX TX-right">{$all_price|number_format}円</p>
                                         </div>
-                                    </li>
-                                    {/foreach}
-                                </ul>
-                                <div class="gate">
-                                    <div class="postage flex-item">
-                                        <p class="TX">送料</p>
-                                        <p class="TX TX-right">{$send_price|number_format}円</p>
-                                    </div>
-                                    <div class="all_set flex-item">
-                                        <p class="TX">合計金額</p>
-                                        <p class="TX TX-right">{$all_price|number_format}円</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="confirm-content">
-                        <div class="confirm-content_title">
-                            <h3 class="TL">お届け先</h3>
+                        <div class="confirm-content">
+                            <div class="confirm-content_title">
+                                <h3 class="TL">お届け先</h3>
+                            </div>
+                            <div class="text-confirm">
+                                <div class="text-confirm_content">
+                                    <p class="TX">
+                                        {if !empty($destination.postal_code_top) &&
+                                        !empty($destination.postal_code_under)}
+                                        {$destination.postal_code_top}-{$destination.postal_code_under}
+                                        {else}
+                                        未入力
+                                        {/if}<br>
+                                        {$view->escape($destination.pref_name)}{$view->escape($destination.address1)}<br>
+                                        {$view->escape($destination.address2)}<br>
+                                        <small>{$view->escape($destination.first_name_kana)}
+                                            {$view->escape($destination.last_name_kana)}</small><br>
+                                        {$view->escape($destination.first_name)}
+                                        {$view->escape($destination.last_name)}様<br>
+                                        {($destination.phone1)? $destination.phone1: '未入力'}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="text-confirm">
-                            <div class="text-confirm_content">
-                                <p class="TX">
-                                    {if !empty($destination.postal_code_top) &&
-                                    !empty($destination.postal_code_under)}
-                                    {$destination.postal_code_top}-{$destination.postal_code_under}
+
+                        <div class="confirm-content">
+                            <div class="confirm-content_title">
+                                <h3 class="TL">お届け希望日時</h3>
+                            </div>
+                            <div class="text-confirm">
+                                <div class="text-confirm_content">
+                                    <p class="TX">
+                                        {if $reg_item !== false}
+                                    <div>定期お届け周期：{$reg_span_str}</div>
+                                    <table class="reguler_buy_delivery my-3">
+                                        <tr>
+                                            <th><span>初回</span>{$deliveryDateStr}</th>
+                                            {if $reg_end_count >= 2}
+                                            <th><span>2回目</span>{$sub_next_buy_date}</th>
+                                            {/if}
+                                            {if $reg_end_count >= 3}
+                                            <th><span>3回目</span>{$after_next_buy_date}</th>
+                                            {/if}
+                                        </tr>
+                                    </table>
+                                    <div>時間帯：{$deliveryHourStr}</div>
                                     {else}
-                                    未入力
-                                    {/if}<br>
-                                    {$view->escape($destination.pref_name)}{$view->escape($destination.address1)}<br>
-                                    {$view->escape($destination.address2)}<br>
-                                    <small>{$view->escape($destination.first_name_kana)}
-                                        {$view->escape($destination.last_name_kana)}</small><br>
-                                    {$view->escape($destination.first_name)}
-                                    {$view->escape($destination.last_name)}様<br>
-                                    {($destination.phone1)? $destination.phone1: '未入力'}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="confirm-content">
-                        <div class="confirm-content_title">
-                            <h3 class="TL">お届け希望日時</h3>
-                        </div>
-                        <div class="text-confirm">
-                            <div class="text-confirm_content">
-                                <p class="TX">
+                                    {$deliveryDateStr}<span class="ml-4">{$deliveryHourStr}</span>
+                                    {/if}
                                     {if $reg_item !== false}
-                                <div>定期お届け周期：{$reg_span_str}</div>
-                                <table class="reguler_buy_delivery my-3">
-                                    <tr>
-                                        <th><span>初回</span>{$deliveryDateStr}</th>
-                                        {if $reg_end_count >= 2}
-                                        <th><span>2回目</span>{$sub_next_buy_date}</th>
-                                        {/if}
-                                        {if $reg_end_count >= 3}
-                                        <th><span>3回目</span>{$after_next_buy_date}</th>
-                                        {/if}
-                                    </tr>
-                                </table>
-                                <div>時間帯：{$deliveryHourStr}</div>
-                                {else}
-                                {$deliveryDateStr}<span class="ml-4">{$deliveryHourStr}</span>
-                                {/if}
-                                {if $reg_item !== false}
-                                <div>
-                                    決済方法2回目以降、初回の購入時と同様のお支払方法（{$pay_name}）が利用されます。
+                                    <div>
+                                        決済方法2回目以降、初回の購入時と同様のお支払方法（{$pay_name}）が利用されます。
+                                    </div>
+                                    {/if}
+                                    </p>
                                 </div>
-                                {/if}
-                                </p>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="confirm-content">
-                        <div class="confirm-content_title">
-                            <h3 class="TL">お支払い</h3>
-                        </div>
-                        <div class="text-confirm">
-                            <div class="text-confirm_content">
-                                <p class="TX">
-                                    {$pay_name}
-                                    <br>
-                                    {if $smarty.session.payment == 3}{* 銀行振込 口座情報を表示 *}
+                        <div class="confirm-content">
+                            <div class="confirm-content_title">
+                                <h3 class="TL">お支払い</h3>
+                            </div>
+                            <div class="text-confirm">
+                                <div class="text-confirm_content">
+                                    <p class="TX">
+                                        {$pay_name}
+                                        <br>
+                                        {if $smarty.session.payment == 3}{* 銀行振込 口座情報を表示 *}
                                     <div>
                                         お振込先<br>{nl2br($information.account_info)}
                                     </div>
                                     {/if}
-                                </p>
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="confirm-content">
-                        <div class="confirm-content_title">
-                            <h3 class="TL">備考</h3>
-                        </div>
-                        <div class="text-confirm">
-                            <div class="text-confirm_content">
-                                <p class="TX">
-                                    {$view->escape($bikou)|nl2br}
-                                </p>
+                        <div class="confirm-content">
+                            <div class="confirm-content_title">
+                                <h3 class="TL">備考</h3>
+                            </div>
+                            <div class="text-confirm">
+                                <div class="text-confirm_content">
+                                    <p class="TX">
+                                        {$view->escape($bikou)|nl2br}
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="confirm-content">
-                        <div class="confirm-content_title">
-                            <h3 class="TL">購入後について</h3>
-                        </div>
-                        <div class="text-confirm">
-                            <div class="text-confirm_content">
-                                <p class="TX">
+                        <div class="confirm-content">
+                            <div class="confirm-content_title">
+                                <h3 class="TL">購入後について</h3>
+                            </div>
+                            <div class="text-confirm">
+                                <div class="text-confirm_content">
+                                    <p class="TX">
                                     <div>解約方法、条件、期限</div>
                                     <div>
                                         {nl2br($view->escape($information.returned_limit))}
@@ -213,72 +213,72 @@
                                     <div>
                                         {nl2br($view->escape($information.shop_message))}
                                     </div>
-                                </p>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <form method="post" action="{$form_url}">
+                        <div class="confirm-content_btn">
+                            <input type="submit" name="back_sub_x" value="<　内容を修正する" class="btn_back">
+                            <input type="submit" name="next_sub_x" value="注文する" class="btn_submit">
+                        </div>
+
+                        <input type="hidden" name="payment" value="{$smarty.session.payment}">
+                        <input type="hidden" name="payment_metod" value="{$pay_name}">
+                        <input type="hidden" name="confirm_order" value="1">
+                        <input type="hidden" name="send_price" value="{$send_price}">
+                        <input type="hidden" name="cod_price" value="{$cod_price}">
+                        <input type="hidden" name="service_point" value="{$service_point}">
+                        <input type="hidden" name="use_point" value="{$point_price}">
+                        <input type="hidden" name="send_all_price" value="{$all_price}">
+                        <input type="hidden" name="deliveryDateStr" value="{$deliveryDateStr}">
+                        <input type="hidden" name="deliveryHourStr" value="{$deliveryHourStr}">
+                        <input type="hidden" name="point_division" value="{$point_division}">
+
+                        {if $payment == 4}<input type="hidden" name="kod_price" value="{$kod_price}">{/if}
+                        {if $payment == 5 || $payment == 6 || $payment == 7 || $payment == 8 || $payment == 13 ||
+                        $payment == 14}<input type="hidden" name="pym_np_price" value="{$pym_np_price}">{/if}
+
+                        <!-- クレジット決済の必要情報 -->
+                        <input type="hidden" name="item_all_price" value="{$all_price_t}">
+                        <input type="hidden" name="point_price" value="{$point_price}">
+                        <input type="hidden" name="post_rate" value="{$send_price + $cod_price}">
+                        <input type="hidden" name="user_flag" value="{$user_flag}">
+
+                        <!-- クーポン オプション機能 -->
+                        <input type="hidden" name="menuCoupon" value="{$menuCoupon}">
+                        <input type="hidden" name="discount" value="{$discount}"><!-- クーポン割引金額 -->
+                        <input type="hidden" name="percedown_price" value="{$percedown_price}">
+                        <!-- //クーポン オプション機能 -->
+
+                        <!-- atone -->
+                        <input type="hidden" name="atone_order_id" value="{$atone_order_id}" id="atone_order_id">
+                        <!-- //atone -->
+                    </form>
                 </div>
-
-                <form method="post" action="{$form_url}">
-                    <div class="confirm-content_btn">
-                        <input type="submit" name="back_sub_x" value="<　内容を修正する" class="btn_back">
-                        <input type="submit" name="next_sub_x" value="注文する" class="btn_submit">
-                    </div>
-
-                    <input type="hidden" name="payment" value="{$smarty.session.payment}">
-                    <input type="hidden" name="payment_metod" value="{$pay_name}">
-                    <input type="hidden" name="confirm_order" value="1">
-                    <input type="hidden" name="send_price" value="{$send_price}">
-                    <input type="hidden" name="cod_price" value="{$cod_price}">
-                    <input type="hidden" name="service_point" value="{$service_point}">
-                    <input type="hidden" name="use_point" value="{$point_price}">
-                    <input type="hidden" name="send_all_price" value="{$all_price}">
-                    <input type="hidden" name="deliveryDateStr" value="{$deliveryDateStr}">
-                    <input type="hidden" name="deliveryHourStr" value="{$deliveryHourStr}">
-                    <input type="hidden" name="point_division" value="{$point_division}">
-
-                    {if $payment == 4}<input type="hidden" name="kod_price" value="{$kod_price}">{/if}
-                    {if $payment == 5 || $payment == 6 || $payment == 7 || $payment == 8 || $payment == 13 ||
-                    $payment == 14}<input type="hidden" name="pym_np_price" value="{$pym_np_price}">{/if}
-
-                    <!-- クレジット決済の必要情報 -->
-                    <input type="hidden" name="item_all_price" value="{$all_price_t}">
-                    <input type="hidden" name="point_price" value="{$point_price}">
-                    <input type="hidden" name="post_rate" value="{$send_price + $cod_price}">
-                    <input type="hidden" name="user_flag" value="{$user_flag}">
-
-                    <!-- クーポン オプション機能 -->
-                    <input type="hidden" name="menuCoupon" value="{$menuCoupon}">
-                    <input type="hidden" name="discount" value="{$discount}"><!-- クーポン割引金額 -->
-                    <input type="hidden" name="percedown_price" value="{$percedown_price}">
-                    <!-- //クーポン オプション機能 -->
-
-                    <!-- atone -->
-                    <input type="hidden" name="atone_order_id" value="{$atone_order_id}" id="atone_order_id">
-                    <!-- //atone -->
-                </form>
-            </div>
-        </section>
+            </section>
+        </div>
     </div>
-</div>
 
-<!-- atone -->
-<input type="hidden" name="atone_item_price" value="{$atone_item_price}">
-{if $payment == 17 && $atone_item_price != 0}
-{literal}
-<script>
-    $('div.atone-btn-view').append('<input name="keep_submit" value="注文する" id="atone-button" class="btn_s w-100 btnFinish">');
-</script>
-<script src="https://ct-auth.a-to-ne.jp/v1/atone.js"></script>
-<script src="/common/js/atone/atone.js"></script>
-<script>
-    $('input[name="next_sub_x"]').remove();
-    var data = {/ literal}{ $atone_data } { literal };
-    data["shop_transaction_no"] = {/ literal}"{$atone_order_id}"{ literal };
-    var atone_api_id = {/ literal}"{$atone_api_id}"{ literal };
-</script>
-{/literal}
-{/if}
+    <!-- atone -->
+    <input type="hidden" name="atone_item_price" value="{$atone_item_price}">
+    {if $payment == 17 && $atone_item_price != 0}
+    {literal}
+    <script>
+        $('div.atone-btn-view').append('<input name="keep_submit" value="注文する" id="atone-button" class="btn_s w-100 btnFinish">');
+    </script>
+    <script src="https://ct-auth.a-to-ne.jp/v1/atone.js"></script>
+    <script src="/common/js/atone/atone.js"></script>
+    <script>
+        $('input[name="next_sub_x"]').remove();
+        var data = {/ literal}{ $atone_data } { literal };
+        data["shop_transaction_no"] = {/ literal}"{$atone_order_id}"{ literal };
+        var atone_api_id = {/ literal}"{$atone_api_id}"{ literal };
+    </script>
+    {/literal}
+    {/if}
 
 
 
