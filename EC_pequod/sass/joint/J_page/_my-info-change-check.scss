@@ -1,0 +1,107 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  my-info-change-check
+----------------------- */
+
+.my-info-change-check {
+
+  .change-content {
+    @include pc {
+      margin-top: 30px !important;
+    }
+
+    @include sp {
+      margin-top: 35px !important;
+    }
+  }
+
+  .caption {
+    @include pc {
+      margin-top: 35px;
+    }
+
+    @include sp {
+      margin-top: 32px;
+    }
+  }
+
+  .second {
+    .item {
+      .content {
+        width: 100% !important;
+        padding-block: 18px;
+      }
+    }
+
+    &.top-second {
+      margin-top: 15px;
+    }
+  }
+
+  .btn-box {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+
+    @include pc {
+      margin-top: 100px;
+      gap: 23px;
+    }
+
+    @include sp {
+      margin-top: 60px;
+      gap: 15px;
+    }
+
+    .C_btn_wrap {
+      @include pc {
+        height: 70px;
+      }
+
+      @include sp {
+        height: 50px;
+      }
+
+      &.wrap-1 {
+        @include pc {
+          width: calc(427 / 692 * 100%);
+        }
+
+        @include sp {
+          width: calc(152 / 350 * 100%);
+          min-width: 211px;
+        }
+      }
+
+      &.wrap-2 {
+        @include pc {
+          width: calc(242 / 692 * 100%);
+        }
+
+        @include sp {
+          width: calc(152 / 350 * 100%);
+          min-width: initial;
+        }
+      }
+    }
+
+    .C_btn {
+      width: 100%;
+      border: none;
+
+
+
+      input {
+        background: none;
+        border: none;
+        outline: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        color: $whiteF;
+      }
+    }
+  }
+}

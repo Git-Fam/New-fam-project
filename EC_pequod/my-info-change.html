@@ -49,7 +49,7 @@
 						<a href="/account/regular" class="btn">定期購入一覧</a>
 						<a href="/account/info" class="btn">お問い合わせ履歴</a>
 					</div>
-
+		
 					<div class="change-wrap">
 						<div class="my-wrap">
 							<h3>会員情報</h3>
@@ -58,10 +58,10 @@
 						<p class="top-TX">
 							登録された会員情報の変更ができます。<br />入力後、[確認ページへ]をクリックしてください。
 						</p>
-
-						<!-- {if $errors|@count > 0}<div class="errorDisp">{include file='errors.tpl' errors=$errors}</div>{/if}
-						{if $success|@count > 0}<div class="successDisp">{include file='success.tpl' success=$success}</div>{/if} -->
-
+		
+						{if $errors|@count > 0}<div class="errorDisp">{include file='errors.tpl' errors=$errors}</div>{/if}
+						{if $success|@count > 0}<div class="successDisp">{include file='success.tpl' success=$success}</div>{/if}
+		
 						<form
 							method="post"
 							action="{$base_url}/account/profile/send"
@@ -71,24 +71,20 @@
 								<div class="item">
 									<dt class="label">お名前</dt>
 									<dd class="content">
-										<!-- {if $nick_list|count === 0}{* 登録0件のとき *}
+										{if $nick_list|count === 0}{* 登録0件のとき *}
 										<div class="noData">まだ登録されていません</div>
 										<a href="{$base_url}/nickname/regist">ユーザー名の登録</a>
-										{else} -->
+										{else}
 										<ul>
-											<!-- {foreach from=$nick_list item=nick_data} -->
-											<li>
-												<input type="radio" name="p_id" value="{$nick_data.id}"
-												class="form-check-input" {if !$p_id}{if $use_nick.id ===
-												$nick_data.id}checked{/if}{else}{if $p_id ===
-												$nick_data.id}checked{/if}{/if}>
-												<!-- {$view->escape($nick_data.show_nickname)} -->
-												<a href="{$base_url}/nickname" class="btn"> 編集 </a>
+											{foreach from=$nick_list item=nick_data}
+											<li class="name-tem">
+												<input type="radio" name="p_id" value="{$nick_data.id}" class="form-check-input d-none" {if !$p_id}{if $use_nick.id === $nick_data.id}checked{/if}{else}{if $p_id === $nick_data.id}checked{/if}{/if}>
+												{$view->escape($nick_data.show_nickname)}<a href="{$base_url}/nickname" class="btn"> 編集 </a>
 												<!--{if $use_nick.id === $nick_data.id}<span class="blue">|使用中</span>{/if}-->
 											</li>
-											<!-- {/foreach} -->
+											{/foreach}
 										</ul>
-										<!-- {/if} -->
+										{/if}
 									</dd>
 								</div>
 								<div class="item">
@@ -165,7 +161,7 @@
 								</div>
 								<div class="item">
 									<dt class="label label-none pc"></dt>
-									<dd class="content edit">
+									<dd class="content edit pull-item">
 										<div id="edit_mail">
 											<div class="description">
 												新しいログインメールアドレスを入力してください。
@@ -200,6 +196,7 @@
 									<dt class="label">パスワード</dt>
 									<dd class="content edit">
 										<div class="form-inline checkToggle pass-btn">
+									   
 											<input
 												type="checkbox"
 												name="edit_passwd"
@@ -207,13 +204,13 @@
 												id="check2"
 												class="form-check-input"
 												{$checked_edit_passwd}
-											/><label for="check2 " class="btn">変更する</label>
+											/><label for="check2" class="btn">変更する</label>
 										</div>
 									</dd>
 								</div>
 								<div class="item">
 									<dt class="label label-none pc"></dt>
-									<dd class="content edit">
+									<dd class="content edit pull-item">
 										<div id="passwd">
 											<div class="description">
 												現在のパスワードを入力してください。
@@ -261,19 +258,20 @@
 							<input type="hidden" name="prof" value="1" />
 							<input type="hidden" name="_token" value="{$_token}" />
 						</form>
-
+						
+						{if $info.use_payment == 'gmopayment'}
 						<h3>会員情報 - カード情報登録</h3>
 						<div class="C_line h3-under"></div>
 						<div id="regular_list_detail">
 							<form method="post" action="{$base_url}/account/profile">
 								<div id="creditForm">
-									<!-- {include file='credit.tpl' credit=$credit loader=true} -->
+									{include file='credit.tpl' credit=$credit loader=true}
 								</div>
 								<input type="hidden" name="saveCredit" value="カード情報登録" />
 							</form>
 						</div>
-						<!-- {/if} {if $info.use_payment == 'gmopayment' || $info.use_payment ==
-						'yamatoMember'} -->
+						{/if}
+						{if $info.use_payment == 'gmopayment' || $info.use_payment =='yamatoMember'}
 						<h3 class="new-card">会員情報 - カード情報登録</h3>
 						<div class="C_line h3-under"></div>
 						<div id="regular_list_detail">
@@ -294,7 +292,8 @@
 													<option value="{$cardList_val.CardSeq}">
 														{$cardList_val.CardNo}&emsp;{$cardList_val.Expire}
 													</option>
-													{/foreach} {/if}
+													{/foreach}
+													{/if}
 												</select>
 											</td>
 										</tr>
@@ -307,7 +306,7 @@
 				</div>
 			</div>
 		</div>
-
+		
 		<script
 			src="https://code.jquery.com/jquery-1.7.1.min.js"
 			integrity="sha256-iBcUE/x23aI6syuqF7EeT/+JFBxjPs5zeFJEXxumwb0="

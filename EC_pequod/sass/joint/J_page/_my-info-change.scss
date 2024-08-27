@@ -59,6 +59,7 @@
 
             @include sp {
               width: calc(122 / 350 * 100%);
+
             }
           }
 
@@ -75,7 +76,12 @@
 
             @include sp {
               padding-inline: 15px 6px;
-              flex: 1;
+              width: calc(226 / 350 * 100%);
+            }
+
+            .name-item {
+              display: flex;
+              align-items: center;
             }
 
             .btn {
@@ -166,6 +172,11 @@
               }
 
               .number {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                color:$mainF;
+
                 .custom-select {
                   border: none;
                   height: 35px;
@@ -251,6 +262,7 @@
 
                 .mail {
                   font-size: 15px;
+                  color: $mainF;
                 }
               }
 
@@ -258,6 +270,10 @@
                 background: $P-white;
                 border: 1px solid $subC;
                 color: $subC;
+                padding: 5px 23px 5px 13px;
+                &::after{
+                  right: 1.2em;
+                }
               }
 
 
@@ -266,6 +282,7 @@
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
+                justify-content: center;
 
 
                 @include pc {
@@ -273,7 +290,6 @@
 
                 }
 
-                padding-block: 18px;
 
                 #passwd {
                   width: 100%;
@@ -310,6 +326,9 @@
 
                   }
                 }
+                &.pull-item{
+                  padding-block: 18px;
+                }
               }
             }
 
@@ -325,6 +344,10 @@
             margin-top: 60px;
           }
         }
+      }
+
+      .caption{
+        border: none;
       }
 
       .btnArea {
@@ -381,7 +404,7 @@
               flex: 1;
 
               .m-small {
-                font-size: 0;
+                font-size: 0 !important;
                 position: relative;
 
                 &::before {
@@ -421,15 +444,16 @@
 
         }
       }
-      .credit{
-        tbody{
-          tr{
-            td{
-              .custom-select{
+
+      .credit {
+        tbody {
+          tr {
+            td {
+              .custom-select {
                 border: none;
                 height: 46px;
                 margin-top: 4px;
-                
+
               }
             }
           }

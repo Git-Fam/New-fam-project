@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head prefix="og: https://ogp.me/ns#">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
+		<meta name="format-detection" content="email=no,telephone=no,address=no" />
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+		<meta property="og:locale" content="ja_JP" />
+
+		<!-- ▼SEO -->
+		<link rel="”canonical”" href="”URL”" />
+		<!-- ジェネレーターURL→ https://metatags.io/ -->
+
+		<!-- ▼ファビコン -->
+		<!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
+
+		<!-- ▼クロールして欲しくない -->
+		<!-- <meta name="robots" content="noindex,nofollow"> -->
+
+		<!-- ▼テーマカラー -->
+		<!-- <meta name="theme-color" content="#e9c931"> -->
+
+		<!-- ▼CSS -->
+		<link rel="stylesheet" href="css/main.css?ver=1.0.0" />
+		<link rel="stylesheet" href="css/main-sp.css?ver=1.0.0" />
+
+		<!-- ▼フォント -->
+	</head>
+
+	<body>
+<div class="whopper">
+	<div
+		class="template_wrap template_inner880 my-info-change my-info-change-check my"
+		id="content"
+	>
+		<div class="C_TL">
+			<div class="icon"></div>
+			<h2 class="TL">マイページ</h2>
+		</div>
+		<div id="mypage">
+			<div class="C_mypageMenu">
+				<a href="/account/mypage" class="btn">購入履歴</a>
+				<a href="/account/profile" class="btn current">登録情報変更</a>
+				<a href="/account/destination" class="btn">お届け先の編集</a>
+				<a href="/account/regular" class="btn">定期購入一覧</a>
+				<a href="/account/info" class="btn">お問い合わせ履歴</a>
+			</div>
+
+			<div class="change-wrap">
+				<div class="my-wrap">
+					<h3>会員情報 - 変更確認</h3>
+					<div class="C_line h3-under"></div>
+				</div>
+
+				<form
+					method="post"
+					action="{$base_url}/account/update"
+					class="change-content"
+				>
+					<div class="form">
+						<div class="item">
+							<dt class="label">お名前</dt>
+							<dd class="content">
+								{if $nickname && $show_nickname}
+								{$view->escape($show_nickname)} {else} 未設定 {/if}
+								<input
+									type="hidden"
+									name="p_id"
+									value="{$view->escape($p_id)}"
+								/>
+							</dd>
+						</div>
+						<div class="item">
+							<dt class="label">性別</dt>
+							<dd class="content">
+								{if $sex == 1}
+								<div class="man">男性</div>
+								{elseif $sex == 2}
+								<div class="woman">女性</div>
+								{else} 指定なし {/if}
+								<input
+									type="hidden"
+									name="sex"
+									value="{$view->escape($sex)}"
+								/>
+							</dd>
+						</div>
+						<div class="item">
+							<dt class="label">生年月日</dt>
+							<dd class="content birthday">
+								{if !empty($birthday_y) && !empty($birthday_m) &&
+								!empty($birthday_d)} {$view->escape($birthday_y)}年
+								{$view->escape($birthday_m)}月
+								{$view->escape($birthday_d)}日 {else} 未記入 {/if}
+								<input
+									type="hidden"
+									name="birthday_y"
+									value="{$birthday_y}"
+								/>
+								<input
+									type="hidden"
+									name="birthday_m"
+									value="{$birthday_m}"
+								/>
+								<input
+									type="hidden"
+									name="birthday_d"
+									value="{$birthday_d}"
+								/>
+							</dd>
+						</div>
+					</div>
+					<h3 class="caption">ログイン情報</h3>
+					<div class="form second top-second">
+						<div class="item">
+							<dt class="label">メールアドレス</dt>
+							<dd class="content">
+								{if $edit_mail} {$view->escape($now_mail)}
+								<input
+									type="hidden"
+									name="now_mail"
+									value="{$view->escape($now_mail)}"
+								/>
+								{else} 変更なし {/if}
+								<input
+									type="hidden"
+									name="now_mail_passwd"
+									value="{$view->escape($now_mail_passwd)}"
+								/>
+								<input
+									type="hidden"
+									name="edit_mail"
+									value="{$view->escape($edit_mail)}"
+								/>
+							</dd>
+						</div>
+					</div>
+					<div class="form second">
+						<div class="item">
+							<dt class="label">パスワード</dt>
+							<dd class="content">
+								{if $edit_passwd} {$hidden_pass}
+								<input
+									type="hidden"
+									name="passwd"
+									value="{$view->escape($passwd)}"
+								/>
+								<input
+									type="hidden"
+									name="re_passwd"
+									value="{$view->escape($re_passwd)}"
+								/>
+								<input
+									type="hidden"
+									name="now_passwd"
+									value="{$view->escape($now_passwd)}"
+								/>
+								{else} 変更なし {/if}
+								<input
+									type="hidden"
+									name="edit_passwd"
+									value="{$view->escape($edit_passwd)}"
+								/>
+							</dd>
+						</div>
+					</div>
+					<input type="hidden" name="regist_sub" value="1" />
+					<input type="hidden" name="prof" value="1" />
+					<input type="hidden" name="_token" value="{$_token}" />
+				</form>
+				<div class="btnArea btn-box">
+					<div class="C_btn_wrap wrap-1">
+						<div class="btn-wrap C_btn"><input type="submit" name="confirm_sub_x" value="この内容で登録する" class="btn_s TX"></div>
+					</div>
+					<div class="C_btn_wrap wrap-2">
+						<div class="btn-wrap  C_btn gray refuse"><input type="submit" name="return_sub_x" value="戻る" class="btn_s TX"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+		<script
+			src="https://code.jquery.com/jquery-1.7.1.min.js"
+			integrity="sha256-iBcUE/x23aI6syuqF7EeT/+JFBxjPs5zeFJEXxumwb0="
+			crossorigin="anonymous"
+		></script>
+		<script src="js/script.js"></script>
+		<script src="js/joint.js"></script>
+	</body>
+</html>
