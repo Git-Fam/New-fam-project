@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head prefix="og: https://ogp.me/ns#">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
+		<meta name="format-detection" content="email=no,telephone=no,address=no" />
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+		<meta property="og:locale" content="ja_JP" />
+
+		<!-- ▼SEO -->
+		<link rel="”canonical”" href="”URL”" />
+		<!-- ジェネレーターURL→ https://metatags.io/ -->
+
+		<!-- ▼ファビコン -->
+		<!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
+
+		<!-- ▼クロールして欲しくない -->
+		<!-- <meta name="robots" content="noindex,nofollow"> -->
+
+		<!-- ▼テーマカラー -->
+		<!-- <meta name="theme-color" content="#e9c931"> -->
+
+		<!-- ▼CSS -->
+		<link rel="stylesheet" href="css/main.css?ver=1.0.0" />
+		<link rel="stylesheet" href="css/main-sp.css?ver=1.0.0" />
+
+		<!-- ▼フォント -->
+	</head>
+
+	<body>
+
+<div class="whopper">
+	<div
+	class="template_wrap template_inner880 my-newaddress my"
+	id="content">
+
+		<div class="C_TL">
+			<div class="icon"></div>
+			<h2 class="TL">マイページ</h2>
+		</div>
+		<div id="mypage">
+			<div class="C_mypageMenu">
+				<a href="/account/mypage" class="btn">購入履歴</a>
+				<a href="/account/profile" class="btn">登録情報変更</a>
+				<a href="/account/destination" class="btn current">お届け先の編集</a>
+				<a href="/account/regular" class="btn">定期購入一覧</a>
+				<a href="/account/info" class="btn">お問い合わせ履歴</a>
+			</div>
+
+			<div class="my-wrap size">
+				<h3>お届け先 - {if $usa_id > 0}編集{else}登録{/if}</h3>
+				<div class="C_line h3-under"></div>
+			</div>
+
+			<p class="TX size">
+				下記項目にご入力ください。<br>
+				入力後、一番下の[確認]をクリックしてください。
+			</p>
+
+			{if $errors|@count > 0}<div class="errorDisp">{include file='errors.tpl' errors=$errors}</div>{/if}
+
+
+			<form method="post" action="{$base_url}/order/user/address/post">
+
+				<div class="item">
+					<div class="label">お名前</div>
+					<div class="content">
+						<input type="text" name="first_name" value="{$view->escape($first_name)}" maxlength="50" class="name">
+						<input type="text" name="last_name" value="{$view->escape($last_name)}" maxlength="50" class="name">
+					</div>
+				</div>
+				<div class="item">
+					<div class="label">フリガナ</div>
+					<div class="content">
+						<input type="text" name="first_name_kana" value="{$view->escape($first_name_kana)}" maxlength="50" class="name">
+						<input type="text" name="last_name_kana" value="{$view->escape($last_name_kana)}" maxlength="50" class="name">
+					</div>
+				</div>
+				<div class="item">
+					<div class="label">郵便番号</div>
+					<div class="content">
+						<input type="number" name="postal_code_top" value="{$view->escape($postal_code_top)}" maxlength="3" class="address-number">
+						<input type="number" name="postal_code_under" value="{$view->escape($postal_code_under)}" maxlength="4" class="address-number">
+						<a href="https://www.post.japanpost.jp/zipcode/" target="_blank" class="address-numberbtn">
+							<p class="TX">郵便番号検索</p>
+						</a>	
+					</div>
+				</div>
+				<div class="item">
+					<div class="label">住所</div>
+					<div class="content address-form">
+						<select name="pref_id" class="prefecture address-item">
+							<option value="">▼選択</option>
+							{foreach from=$pref_data item=pref}
+							{if $pref.pref_id == $pref_id}
+							<option value="{$pref.pref_id}" selected>{$pref.pref_name}</option>
+							{else}
+							<option value="{$pref.pref_id}">{$pref.pref_name}</option>
+							{/if}
+							{/foreach}
+						</select>
+						<input type="text" name="address1" value="{$view->escape($address1)}" class="city address-item" placeholder="○○市○○町○○番地">
+						<input type="text" name="address2" value="{$view->escape($address2)}" class="building address-item" placeholder="○○第3ビル○F">
+					</div>
+					<p class="under-TX">建物名（マンション、アパートなど）、部屋番号まで必ず記入してください</p>
+				</div>
+				<div class="item">
+					<div class="label">電話番号</div>
+					<div class="content number">
+						<input type="tel" name="phone" value="{$view->escape($phone)}" maxlength="16" class="number">
+					</div>
+				</div>
+
+				<div class="C_btn">
+					<input type="submit" value="確認" class="TX">
+				</div>
+
+				<input type="hidden" name="_token" value="{$_token}">
+				{if $usa_id > 0}<input type="hidden" name="usa_id" value="{$usa_id}">{/if}
+				{if !empty($smarty.session.mypage_redirect)}<input type="hidden" name="mypage_redirect" value="1">{/if}
+
+			</form>
+		</div>
+	</div>
+</div>
+
+		<script
+			src="https://code.jquery.com/jquery-1.7.1.min.js"
+			integrity="sha256-iBcUE/x23aI6syuqF7EeT/+JFBxjPs5zeFJEXxumwb0="
+			crossorigin="anonymous"
+		></script>
+		<script src="js/script.js"></script>
+		<script src="js/joint.js"></script>
+	</body>
+</html>

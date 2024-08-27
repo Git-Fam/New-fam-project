@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head prefix="og: https://ogp.me/ns#">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
+		<meta name="format-detection" content="email=no,telephone=no,address=no" />
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+		<meta property="og:locale" content="ja_JP" />
+
+		<!-- ▼SEO -->
+		<link rel="”canonical”" href="”URL”" />
+		<!-- ジェネレーターURL→ https://metatags.io/ -->
+
+		<!-- ▼ファビコン -->
+		<!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
+
+		<!-- ▼クロールして欲しくない -->
+		<!-- <meta name="robots" content="noindex,nofollow"> -->
+
+		<!-- ▼テーマカラー -->
+		<!-- <meta name="theme-color" content="#e9c931"> -->
+
+		<!-- ▼CSS -->
+		<link rel="stylesheet" href="css/main.css?ver=1.0.0" />
+		<link rel="stylesheet" href="css/main-sp.css?ver=1.0.0" />
+
+		<!-- ▼フォント -->
+	</head>
+
+	<body>
+
+<div class="whopper">
+	<div
+	class="template_wrap template_inner880 my-newaddress-check my"
+	id="content">
+
+		<div class="C_TL">
+			<div class="icon"></div>
+			<h2 class="TL">マイページ</h2>
+		</div>
+		<div id="mypage">
+			<div class="C_mypageMenu">
+				<a href="/account/mypage" class="btn">購入履歴</a>
+				<a href="/account/profile" class="btn">登録情報変更</a>
+				<a href="/account/destination" class="btn current">お届け先の編集</a>
+				<a href="/account/regular" class="btn">定期購入一覧</a>
+				<a href="/account/info" class="btn">お問い合わせ履歴</a>
+			</div>
+
+			<div class="my-wrap size">
+				<h3>お届け先 - 確認</h3>
+				<div class="C_line h3-under"></div>
+			</div>
+
+			<form method="post" action="{$base_url}/order/user/address/comp">
+
+				<ul class="C_specifications">
+					<li>
+						<p class="TL">お名前</p>
+						<p class="TX">{$view->escape($first_name)} {$view->escape($last_name)}</p>
+					</li>
+					<li>
+						<p class="TL">フリガナ</p>
+						<p class="TX">{$view->escape($first_name_kana)} {$view->escape($last_name_kana)}</p>
+					</li>
+					<li>
+						<p class="TL">郵便番号</p>
+						<p class="TX">
+							{if $postal_code_top && $postal_code_under}
+							{$view->escape($postal_code_top)} - {$view->escape($postal_code_under)}
+							{else}
+							指定なし
+							{/if}
+						</p>
+					</li>
+					<li>
+						<p class="TL">住所</p>
+						<p class="TX">{$view->escape($pref_name)} {$view->escape($address1)} {$view->escape($address2)}</p>
+					</li>
+					<li>
+						<p class="TL">電話番号</p>
+						<p class="TX">{$view->escape($phone)}</p>
+					</li>
+					<li>
+						<p class="TL">商品仕様</p>
+						<p class="TX">この文章はダミーです</p>
+					</li>
+				</ul>
+				<input type="hidden" name="first_name" value="{$view->escape($first_name)}">
+				<input type="hidden" name="last_name" value="{$view->escape($last_name)}">
+				<input type="hidden" name="first_name_kana" value="{$view->escape($first_name_kana)}">
+				<input type="hidden" name="last_name_kana" value="{$view->escape($last_name_kana)}">
+				{if $postal_code_top && $postal_code_under}
+				<input type="hidden" name="postal_code_top" value="{$view->escape($postal_code_top)}">
+				<input type="hidden" name="postal_code_under" value="{$view->escape($postal_code_under)}">
+				{else}
+				<input type="hidden" name="postal_code_top" value="">
+				<input type="hidden" name="postal_code_under" value="">
+				{/if}
+				<input type="hidden" name="pref_id" value="{$view->escape($pref_id)}">
+				<input type="hidden" name="address1" value="{$view->escape($address1)}">
+				<input type="hidden" name="address2" value="{$view->escape($address2)}">
+				<input type="hidden" name="phone" value="{$view->escape($phone)}">
+
+				<div class="btnArea btn-box">
+					<div class="C_btn_wrap wrap-1">
+						<div class="btn-wrap C_btn"><input type="submit" name="confirm_sub_x" value="登録する" class="btn_s TX"></div>
+					</div>
+					<div class="C_btn_wrap wrap-2">
+						<div class="btn-wrap  C_btn gray refuse"><input type="submit" name="return_sub_x" value="戻る" class="btn_s TX"></div>
+					</div>
+				</div>		
+				<input type="hidden" name="sub" value="1">
+				<input type="hidden" name="_token" value="{$_token}">
+				{if $usa_id > 0}<input type="hidden" name="usa_id" value="{$usa_id}">{/if}
+
+			</form>
+		</div>
+
+	</div>
+
+</div>
+
+		<script
+			src="https://code.jquery.com/jquery-1.7.1.min.js"
+			integrity="sha256-iBcUE/x23aI6syuqF7EeT/+JFBxjPs5zeFJEXxumwb0="
+			crossorigin="anonymous"
+		></script>
+		<script src="js/script.js"></script>
+		<script src="js/joint.js"></script>
+	</body>
+</html>
