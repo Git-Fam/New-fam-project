@@ -4,8 +4,7 @@
 /* -----------------------
   my-history
 ----------------------- */
-
-.my-history {
+.my {
   color: $mainF;
 
   @include sp {
@@ -13,7 +12,18 @@
     margin: 0 auto;
   }
 
-  .myPageHistory {
+  h3 {
+    color: $subF;
+    font-size: 16px;
+    letter-spacing: 1.6px;
+    @include wt700;
+  }
+
+  .h3-under {
+    margin-top: 8px;
+  }
+
+  .my-wrap{
     @include pc {
       margin-top: 100px;
     }
@@ -21,17 +31,15 @@
     @include sp {
       margin-top: 120px;
     }
+  }
 
-    h3 {
-      color: $subF;
-      font-size: 16px;
-      letter-spacing: 1.6px;
-      @include wt700;
-    }
 
-    .C_line {
-      margin-top: 8px;
-    }
+
+}
+
+.my-history {
+
+  .myPageHistory {
 
     .history {
       color: $subF;

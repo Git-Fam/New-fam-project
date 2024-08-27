@@ -33,7 +33,7 @@
 
 	<body>
 		<div class="whopper">
-			<div class="template_wrap template_inner880 my-history" id="content">
+			<div class="template_wrap template_inner880 my-history my" id="content">
 				<div class="C_TL">
 					<div class="icon"></div>
 					<h2 class="TL">マイページ</h2>
@@ -47,9 +47,9 @@
 						<a href="/account/info" class="btn">お問い合わせ履歴</a>
 					</div>
 
-					<div class="myPageHistory">
+					<div class="myPageHistory my-wrap">
 						<h3>購入履歴一覧</h3>
-						<div class="C_line"></div>
+						<div class="C_line h3-under"></div>
 
 						{if $my_history}
 						<div class="history">
@@ -63,10 +63,7 @@
 								<dl class="historyDetailCol Detail-1">
 									<dt>注文番号</dt>
 									<dd>
-										<a
-											href="{$base_url}/account/mypage/detail/{$value.order_id}"
-											>{$value.order_id}
-										</a>
+										{$value.order_id}
 									</dd>
 								</dl>
 								<dl class="historyDetailCol Detail-2">
