@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head prefix="og: https://ogp.me/ns#">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
+		<meta name="format-detection" content="email=no,telephone=no,address=no" />
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+		<meta property="og:locale" content="ja_JP" />
+
+		<!-- ▼SEO -->
+		<link rel="”canonical”" href="”URL”" />
+		<!-- ジェネレーターURL→ https://metatags.io/ -->
+
+		<!-- ▼ファビコン -->
+		<!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
+
+		<!-- ▼クロールして欲しくない -->
+		<!-- <meta name="robots" content="noindex,nofollow"> -->
+
+		<!-- ▼テーマカラー -->
+		<!-- <meta name="theme-color" content="#e9c931"> -->
+
+		<!-- ▼CSS -->
+		<link rel="stylesheet" href="css/main.css?ver=1.0.0" />
+		<link rel="stylesheet" href="css/main-sp.css?ver=1.0.0" />
+
+		<!-- ▼フォント -->
+	</head>
+
+	<body>
+<div class="whopper">
+	<div
+		id="contents"
+		class="template_wrap template_inner880 my-content my"
+	>
+		<section class="container">
+			<div class="C_TL">
+				<div class="icon"></div>
+				<h2 class="TL">マイページ</h2>
+			</div>
+			<div id="mypage">
+				<div class="C_mypageMenu">
+					<a href="/account/mypage" class="btn">購入履歴</a>
+					<a href="/account/profile" class="btn">登録情報変更</a>
+					<a href="/account/destination" class="btn">お届け先の編集</a>
+					<a href="/account/regular" class="btn">定期購入一覧</a>
+					<a href="/account/info" class="btn current">お問い合わせ履歴</a>
+				</div>
+				<div class="my-wrap">
+					<h3>お問い合わせ一覧</h3>
+					<div class="C_line h3-under"></div>
+				</div>
+
+				<p class="under-TX">
+					{$view->escape($use_nick.show_nickname)}様のお問い合わせ一覧です。
+				</p>
+
+				<ul class="pagerArea row justify-content-end align-items-baseline">
+					<li class="form-inline">
+						<span class="text-nowrap">表示順：</span>
+						<select name="order" class="custom-select">
+							<option value="desc" {$selected_order.desc}>新しい順</option>
+							<option value="asc" {$selected_order.asc}>古い順</option>
+						</select>
+					</li>
+				</ul>
+
+				{if $contact_list|count > 0} {foreach from=$contact_list
+				item=contact}
+				<ul class="myInfoHistoryBox mb-5">
+					<li class="row m-0">
+						<dl class="historyDetailCol">
+							<dt>件名</dt>
+							<dd>
+								<a href="{$base_url}/account/info/detail/{$contact.cnt_id}"
+									>{$view->escape($contact.sbt_name)}<i class="far fa-file-alt"></i
+								></a>
+							</dd>
+						</dl>
+						<dl class="historyDetailCol">
+							<dt>お問い合わせ日時</dt>
+							<dd>{$view->escape($contact.cnt_date|substr:0:-3)}</dd>
+						</dl>
+						<dl class="historyDetailCol">
+							<dt>運営者回答</dt>
+							<dd>
+								{if $contact.rtn_id > 0}
+								<span class="replied">返信済み</span>
+								{else}
+								<span class="notReply">未回答</span>
+								{/if}
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				{/foreach} {else}
+				<div class="noData">お問い合わせ履歴がありません</div>
+				{/if}
+
+				<ul
+					class="pagerArea row justify-content-center align-items-baseline"
+				></ul>
+			</div>
+			<!-- //#mypage -->
+		</section>
+		<!-- //.container -->
+	</div>
+	<!-- //#contents -->
+</div>
+
+		<script
+			src="https://code.jquery.com/jquery-1.7.1.min.js"
+			integrity="sha256-iBcUE/x23aI6syuqF7EeT/+JFBxjPs5zeFJEXxumwb0="
+			crossorigin="anonymous"
+		></script>
+		<script src="js/script.js"></script>
+		<script src="js/joint.js"></script>
+	</body>
+</html>

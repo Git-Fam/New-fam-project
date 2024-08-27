@@ -1,0 +1,49 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  my-contact
+----------------------- */
+
+.my-contact {
+  .my-wrap{
+    @include pc{}
+  }
+  .under-TX{
+      margin-top: 10px;
+  }
+
+  .pagerArea{
+    @include pc{
+      margin-top: 46px;
+    }
+    @include sp{
+      margin-top: 30px;
+    }
+    .form-inline{
+      font-size: 10px;
+      color: $subF;
+    }
+  }
+  .myInfoHistoryBox{
+    li{
+      @include sp{
+        flex-direction: column;
+      }
+      .historyDetailCol{
+        width: 100%;
+        dt{
+          color: &subF;
+          font-size: 16px;
+          padding: 13px 0 13px  18px;
+        }
+        dd{
+          font-size: 16px;
+          padding: 13px 0 13px  18px;
+        }
+      }
+
+    }
+  }
+
+}

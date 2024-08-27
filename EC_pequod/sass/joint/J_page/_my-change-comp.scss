@@ -1,0 +1,26 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  my-change-comp
+----------------------- */
+
+.my-change-comp {
+  .TX{
+    font-size: 16px;
+    color: $subF;
+    line-height: 1.8;
+    letter-spacing: 1.6px;
+    @include pc{
+      margin-top: 10px;
+    }
+    @include sp{
+      margin-top: 20px;
+    }
+  }
+  .C_btn{
+    width: 284px;
+    height: 62px;
+    margin: 60px auto 0;
+  }
+}
