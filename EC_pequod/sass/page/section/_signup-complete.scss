@@ -1,0 +1,90 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  signup-complete
+----------------------- */
+
+.signup-complete-container {
+
+  .C_TL {
+    .TL {
+      &.color {
+        color: #57C6EA;
+      }
+    }
+  }
+
+  .signup-complete-content {
+
+    @include pc {
+      margin-top: 80px;
+      @include column(65px);
+    }
+
+    @include sp {
+      margin-top: 60px;
+      @include column(60px);
+      padding: 0 20px;
+    }
+
+    .complete_text {
+      margin: 0 auto;
+
+      @include pc {
+        width: 500px;
+      }
+
+      &.complete_text_contact {
+        @include column(30px);
+
+        @include pc {
+          width: 720px;
+        }
+      }
+
+      .TX {
+        color: #989898;
+        text-align: center;
+        @include wt500;
+        letter-spacing: 1.5px;
+        font-size: 15px;
+
+        @include pc {
+          line-height: 1.5;
+        }
+
+        @include sp {
+          line-height: 2.1;
+        }
+
+        a {
+          color: #57C6EA;
+          font-size: 15px;
+          @include wt500;
+          line-height: 30px;
+          letter-spacing: 1.5px;
+          text-decoration-line: underline;
+        }
+      }
+    }
+
+    .complete_btn {
+      border-radius: 100px;
+      background: #A8DAE9;
+      display: block;
+      margin: 0 auto;
+      width: 284px;
+      padding: 16px 0;
+
+
+      .TX {
+        color: #FFF;
+        text-align: center;
+        font-size: 20px;
+        @include wt700;
+        line-height: 1.5;
+        letter-spacing: 2.4px;
+      }
+    }
+  }
+}
