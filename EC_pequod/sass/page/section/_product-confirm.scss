@@ -1,0 +1,334 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  product-confirm
+----------------------- */
+.product-confirm {
+
+  @include pc {
+    padding-top: 133px;
+  }
+
+  @include sp {
+    padding: 90px 20px 0;
+  }
+
+  .C_flow {
+    width: 100%;
+
+    .flow-item {
+
+      &::before {
+
+        @include pc {
+          width: 90%;
+          top: -17px;
+        }
+
+        @include sp {
+          width: 87%;
+        }
+      }
+    }
+  }
+
+  .shopping-confirm {
+
+    @include pc {
+      margin-top: 100px;
+    }
+
+    @include sp {
+      margin-top: 60px;
+    }
+
+    .C_TL {
+      .TL {
+        line-height: 1.5;
+      }
+    }
+
+    &-container {
+
+      @include pc {
+        margin-top: 100px;
+        padding-inline: 90px;
+      }
+
+      @include sp {
+        margin-top: 60px;
+      }
+
+      .confirm-content_wrap {
+        @include column(60px);
+
+        .confirm-content {
+
+          &.confirm-content_first {
+            margin-bottom: 40px;
+          }
+
+          &_title {
+            border-bottom: dashed 3px #A9DAEA;
+            padding-bottom: 5px;
+
+            .TL {
+              color: #989898;
+              @include wt700;
+              line-height: 1.5;
+              font-size: 16px;
+              letter-spacing: 1.6px;
+            }
+          }
+
+          .cart-confirm {
+
+            @include pc {
+              margin-top: 60px;
+            }
+
+            @include sp {
+              margin-top: 30px;
+            }
+
+            &_inner {
+
+              ul {
+
+                li {
+                  background: #F3F9FB;
+                  display: flex;
+                  border-bottom: dashed 3px #A9DAEA;
+
+                  @include pc {
+                    padding: 34px 38px 37px 41px;
+                    align-items: center;
+                    justify-content: space-between;
+                  }
+
+                  @include sp {
+                    padding: 30px 35px;
+                    flex-direction: column;
+                    gap: 30px;
+                  }
+
+                  .item-detail {
+                    display: flex;
+
+                    @include pc {
+                      gap: 36px;
+                    }
+
+                    @include sp {
+                      flex-direction: column;
+                      gap: 37px;
+                    }
+
+                    img {
+                      aspect-ratio: 1;
+                      flex-shrink: 0;
+
+                      @include pc {
+                        width: 202px;
+                      }
+
+                      @include sp {
+                        width: 100%;
+                        max-width: 400px;
+                        margin: 0 auto;
+                      }
+                    }
+
+                    &-content {
+                      @include column(32px);
+
+                      @include pc {
+                        padding-top: 10px;
+                      }
+
+                      &-title {
+                        .TL {
+                          color: #585D5F;
+                          @include wt700;
+                          line-height: 1.5;
+                          font-size: 20px;
+                        }
+                      }
+
+                      &-text {
+                        @include column(17px);
+
+                        .text-in {
+                          display: flex;
+                          align-items: center;
+                          flex-wrap: wrap;
+                          gap: 10px;
+
+                          .TL {
+                            color: #515151;
+                            @include wt700;
+                            line-height: 1.5;
+                            font-size: 15px;
+                            letter-spacing: 0.6px;
+                            min-width: 60px;
+                          }
+
+                          .TX {
+                            color: #989898;
+                            @include wt700;
+                            line-height: 1.5;
+                            font-size: 13px;
+                            letter-spacing: 0.52px;
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  .item-price {
+                    flex-shrink: 0;
+
+                    .TX {
+                      color: #515151;
+                      @include wt700;
+                      line-height: 1.5;
+                      font-size: 24px;
+                      letter-spacing: 0.96px;
+                    }
+                  }
+
+                }
+              }
+
+              .gate {
+                margin: 30px 0 0 auto;
+                width: fit-content;
+                min-width: 195px;
+                @include column(12px);
+
+                .flex-item {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: flex-end;
+                  gap: 10px;
+                }
+
+                .postage {
+
+                  .TX {
+                    color: #515151;
+                    font-size: 15px;
+                    @include wt700;
+                    line-height: 1.5;
+                    letter-spacing: 0.6px;
+
+                    &.TX-right {
+                      @include wt500;
+                    }
+                  }
+                }
+
+                .all_set {
+
+                  .TX {
+                    color: #F27676;
+                    font-size: 15px;
+                    @include wt700;
+                    line-height: 1.5;
+                    letter-spacing: 0.6px;
+
+                    &.TX-right {
+                      font-size: 20px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .text-confirm {
+            margin-top: 35px;
+
+            &_content {
+
+              @include sp {
+                padding-inline: 23px;
+              }
+
+              .TX,
+              div {
+                color: #989898;
+                @include wt700;
+                line-height: 1.5;
+                letter-spacing: 1.6px;
+                font-size: 16px;
+              }
+            }
+          }
+        }
+      }
+
+      .confirm-content_btn {
+        display: flex;
+
+        @include pc {
+          margin-top: 160px;
+          gap: 23px;
+        }
+
+        @include sp {
+          margin-top: 84px;
+          gap: 15px;
+        }
+
+        .btn_back,
+        .btn_submit {
+          color: #FFF;
+          @include wt700;
+          line-height: 1.5;
+          font-size: 20px;
+          letter-spacing: 2px;
+          cursor: pointer;
+          border-radius: 5px;
+          @include center;
+          position: relative;
+          border: none;
+          margin: 0;
+
+          @include pc {
+            height: 70px;
+          }
+
+          @include sp {
+            height: 58px;
+          }
+        }
+
+        .btn_back {
+          background: #D1D1D1;
+
+          @include pc {
+            width: max(calc((242 / 700) * 100%), 242px);
+          }
+
+          @include sp {
+            font-size: 13px;
+            width: max(calc((152 / 350) * 100%), 152px);
+          }
+        }
+
+        .btn_submit {
+          background: #57C6EA;
+
+          @include pc {
+            width: calc((427 / 700) * 100%);
+          }
+
+          @include sp {
+            width: calc((183 / 350) * 100%);
+          }
+        }
+      }
+    }
+  }
+}

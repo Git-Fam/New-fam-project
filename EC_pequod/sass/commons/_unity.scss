@@ -17,6 +17,15 @@
   }
 }
 
+.pc-inline {
+  @include pc{
+    display: inline !important;
+  }
+  @include sp {
+    display: none !important;
+  }
+}
+
 
 html {
   scroll-behavior: smooth;

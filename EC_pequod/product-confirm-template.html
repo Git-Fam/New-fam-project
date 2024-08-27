@@ -1,0 +1,612 @@
+{$view->setLayoutVar('title', 'お申し込み内容のご確認')}
+{$view->setLayoutVar('keywords', '')}
+{$view->setLayoutVar('description', '')}
+
+{$view->setLayoutVar("css_files", "columnless.css", true)}
+
+
+<div id="contents">
+	<section class="container">
+		<aside class="flow">
+			<ul class="d-flex justify-content-center">
+				<li>カート</li>
+				<li>&gt;</li>
+				<li>入力</li>
+				<li>&gt;</li>
+				<li class="current">確認</li>
+				<li>&gt;</li>
+				<li>完了</li>
+			</ul>
+		</aside>
+
+		<h2>お申し込み内容のご確認</h2>
+
+		<section class="buyForm row justify-content-between flex-column-reverse flex-md-row">
+			<div class="mainForm col-md-7">
+				<!-- お届け先 -->
+				<table>
+					<caption>お届け先</caption>
+					<tr>
+						<td>
+							{if !empty($destination.postal_code_top) && !empty($destination.postal_code_under)}
+							{$destination.postal_code_top}-{$destination.postal_code_under}
+							{else}
+							未入力
+							{/if}<br>
+							{$view->escape($destination.pref_name)}{$view->escape($destination.address1)}<br>
+							{$view->escape($destination.address2)}<br>
+							<small>{$view->escape($destination.first_name_kana)} {$view->escape($destination.last_name_kana)}</small><br>
+							{$view->escape($destination.first_name)} {$view->escape($destination.last_name)}様<br>
+							{($destination.phone1)? $destination.phone1: '未入力'}
+						</td>
+					</tr>
+				</table>
+				<!-- //お届け先 -->
+
+				<!-- 特定商取引法6月1日改定　定期購入継続内容 -->
+				{if $reg_item !== false}
+				<table>
+					<caption>定期購入継続内容</caption>
+					<tr>
+						<td>
+							<div class="font-weight-bold">購入商品の数量</div>
+							2回目以降、初回の購入時と同様の商品・数量をお届けいたします。
+							<div class="font-weight-bold">決済方法</div>
+							決済方法2回目以降、初回の購入時と同様のお支払方法（{$pay_name}）が利用されます。
+							{if !empty($promise_num) && !empty($promise_total)}
+							<div class="font-weight-bold">最低購入回数制限</div>
+							{$promise_num}回　/　{$promise_total|number_format}円
+							{if !empty($promise_msg)}
+							<div class="font-weight-bold">最低購入回数制限について</div>
+							{$promise_msg}
+							{/if}
+							{/if}
+							{if !empty($reg_end_count) && !empty($reg_end_total)}
+							<div class="font-weight-bold">満了回数</div>
+							{$reg_end_count}回　/　{$reg_end_total|number_format}円
+							{if !empty($reg_end_msg)}
+							<div class="font-weight-bold">満了回数について</div>
+							{$reg_end_msg}
+							{/if}
+							{else}
+							<div class="font-weight-bold">無期限</div>
+							本商品は自動継続の定期商品です。解約をご希望の場合は所定の方法にてご依頼ください
+							{/if}
+						</td>
+					</tr>
+				</table>
+				{/if}
+				<!-- //特定商取引法6月1日改定　定期購入継続内容 -->
+
+				<!-- 特定商取引法6月1日改定　購入について -->
+				{if !empty($commercial_transactions_msg)}
+				<table>
+					<caption>購入について</caption>
+					<tr>
+						<td>
+							{foreach from=$di_cart key=key item=val}
+							{assign var="commercial_item_id" value=$val.item_id}
+							{assign var="commercial_transactions_data" value=$commercial_transactions_msg.$commercial_item_id}
+							{if !empty($commercial_transactions_data)}
+							<div class="font-weight-bold">ご注意({$val.item_name})</div>
+							{nl2br($view->escape($commercial_transactions_data))|auto_link}
+							{/if}
+							{/foreach}
+						</td>
+					</tr>
+				</table>
+				{/if}
+				<!-- //特定商取引法6月1日改定　購入について -->
+
+				<!-- お届け日時指定 -->
+				<table>
+					<caption>お届け希望日時</caption>
+					<tr>
+						<td>
+							{if $reg_item !== false}
+							<div>定期お届け周期：{$reg_span_str}</div>
+							<table class="reguler_buy_delivery my-3">
+								<tr>
+									<th><span>初回</span>{$deliveryDateStr}</th>
+									{if $reg_end_count >= 2}
+									<th><span>2回目</span>{$sub_next_buy_date}</th>
+									{/if}
+									{if $reg_end_count >= 3}
+									<th><span>3回目</span>{$after_next_buy_date}</th>
+									{/if}
+								</tr>
+							</table>
+							<div>時間帯：{$deliveryHourStr}</div>
+							{else}
+							{$deliveryDateStr}<span class="ml-4">{$deliveryHourStr}</span>
+							{/if}
+						</td>
+					</tr>
+				</table>
+				<!-- //お届け日時指定 -->
+
+				<!-- ご請求先 -->
+				{if !empty($new_add_flag)}
+				<table>
+					<caption>請求書送付先</caption>
+					<tr>
+						<td>
+							{if !empty($postal_code_top2) && !empty($postal_code_under2)}
+							{$postal_code_top2}-{$postal_code_under2}
+							{else}
+							未入力
+							{/if}<br>
+							{$view->escape($pref_name2)}{$view->escape($new_address1)}<br>
+							{$view->escape($new_address2)}<br>
+							<small>{$view->escape($first_name_kana2)} {$view->escape($last_name_kana2)}</small><br>
+							{$view->escape($first_name2)} {$view->escape($last_name2)}様<br>
+							{($phone2)? $phone2: '未入力'}
+						</td>
+					</tr>
+				</table>
+				{/if}
+				<!-- //ご請求先 -->
+
+				<!-- お支払い -->
+				<table>
+					<caption>お支払い</caption>
+					<tr>
+						<td>{$pay_name}</td>
+					</tr>
+					{if $smarty.session.payment == 3}{* 銀行振込 口座情報を表示 *}
+					<tr>
+						<td>
+							お振込先<br>{nl2br($information.account_info)}
+						</td>
+					</tr>
+					{/if}
+				</table>
+				<!-- //お支払い -->
+
+				<!-- パスワードエリア -->
+				{if $user.id == 0 && $user_flag == 1 && $information.password_area_flag == 1}
+				<table>
+					<caption>希望するパスワード</caption>
+					<tr>
+						<td>{$passwd_flag}</td>
+					</tr>
+				</table>
+				{/if}
+				<!-- //パスワードエリア -->
+
+				<!-- メルマガ・DMエリア -->
+				{if $user.id == 0 && $user_flag == 1}
+				<table>
+					<!-- メルマガ可否 -->
+					{if $information.merumaga_area_flag == 1}
+					<tr>
+						<td>
+							<div>メルマガ</div>
+							{if $merumaga_flag == 1}
+							HTMLメール＋テキストメールを受信
+							{elseif $merumaga_flag == 2}
+							テキストメールを受信
+							{else}
+							受信しない
+							{/if}
+						</td>
+					</tr>
+					{/if}
+					<!-- //メルマガ可否 -->
+					<!-- DM可否 -->
+					{if $information.dm_area_flag == 1}
+					<tr>
+						<td>
+							<div>DM</div>
+							{if $dm_flag == 1}
+							受け取る
+							{else}
+							受け取らない
+							{/if}
+						</td>
+					</tr>
+					{/if}
+					<!-- //DM可否 -->
+				</table>
+				{/if}
+				<!-- //メルマガ・DMエリア -->
+
+				<table>
+					<caption>備考</caption>
+					<tr>
+						<td>{$view->escape($bikou)|nl2br}</td>
+					</tr>
+				</table>
+
+				<!-- 特定商取引法6月1日改定　購入後について -->
+				<table>
+					<caption>購入後について</caption>
+					<tr>
+						<td>
+							<div class="font-weight-bold">解約方法、条件、期限</div>
+							{nl2br($view->escape($information.returned_limit))}
+							<div class="font-weight-bold">引渡し時期</div>
+							{nl2br($view->escape($information.delivery_time))}
+							<div class="font-weight-bold">支払い時期</div>
+							{nl2br($view->escape($information.shop_message))}
+						</td>
+					</tr>
+				</table>
+				<!-- //特定商取引法6月1日改定　購入後について -->
+			</div><!-- //.mainForm -->
+
+			<div class="buyFormCart col-md-5 mb-5">
+				<div class="caption">ショッピングカート</div>
+
+				{foreach from=$di_cart item=val}
+				<div class="cart_item_box">
+					<div class="form-inline align-items-start">
+						<a href="{$base_url}/product/{$val.item_id}" target="_blank" rel="noopener"><img src="/item_sum_l_image/{$val.main_image}" class="thumb120"></a>
+						<div class="cart_item_spec ml-4">
+							<a href="{$base_url}/product/{$val.item_id}" target="_blank" rel="noopener">{$view->escape($val.item_name)}
+                            {if $val.variant_class_and_name}（{$val.variant_class_and_name}）{/if}</a>
+							<!--[予約表示]-->{if $val.reserve_image}<div class="reserveFlag">予約商品</div>{/if}
+							{if empty($val.pwd_data)}<div>{$val.item_size_str}</div>{/if}
+
+							<div class="text-right">
+								{if empty($val.sale_price)}
+								&yen; {$val.item_price_tax|number_format}
+								{else}
+								&yen; {$val.item_price_tax|number_format}<br class="sp">
+								&rarr; &yen; <span class="price">{$val.sale_price|number_format}</span>
+								{/if}
+							</div>
+						</div>
+					</div>
+
+					<div class="d-flex justify-content-end align-items-baseline">
+						<div>数量：{$val.item_num}</div>
+						<div class="priceRow">&yen; {$val.item_syoukei|number_format}</div>
+					</div>
+
+					<!-- アンケート オプション機能 -->
+					{if !empty($free_title)}
+					<table class="questionnaire my-4">
+						<caption>アンケート</caption>
+						{foreach from=$free_title key=key1 item=val1}
+						<tr>
+							<td>
+								<div>{$view->escape($val1)}</div>
+								{if $free_type[$key1] == "textarea"}<!-- テキストエリアの場合 -->
+								{$view->escape($free_data[$key1])|nl2br}
+								{elseif $free_type[$key1] == "checkbox"}<!-- チェックボックスの場合 -->
+								{if !empty($free_data[$key1])}
+								{foreach from=$free_data[$key1] key=key2 item=val2}
+								{$view->escape($val2)}<br>
+								{/foreach}
+								{else}
+								{$view->escape($free_data[$key1])}
+								{/if}
+								{else}<!-- その他 -->
+								{$view->escape($free_data[$key1])}
+								{/if}
+							</td>
+						</tr>
+						{/foreach}
+					</table>
+					{/if}
+					<!-- //アンケート オプション機能 -->
+				</div>
+				{/foreach}
+
+				{* 同梱物 *}
+				{if !empty($present)}
+				{foreach from=$present item=val}
+				{if !empty($val.check_flag)}
+				<div class="cart_item_box">
+					<div class="d-flex">
+						<img src="/item_sum_l_image/{$val.main_image}" class="thumb120">
+						<div>
+							<div>同梱物：{$view->escape($val.item_name)}</div>
+							<div>数量：{$val.present_num}</div>
+						</div>
+					</div>
+				</div>
+				{/if}
+				{/foreach}
+				{/if}
+				{* //同梱物 *}
+
+				<div class="cart_item_box">
+					<div class="d-flex justify-content-end">
+						<div>小計</div>
+						<div class="priceRow">&yen; {$all_price_t|number_format}</div>
+					</div>
+
+					{if $point_price != 0}
+					<div class="d-flex justify-content-end">
+						<div>ポイント値引き</div>
+						<div class="priceRow">&yen; -{$point_price|number_format}</div>
+					</div>
+					{/if}
+					<!-- クーポン オプション機能 -->
+					{if $menuCoupon == 1 && $discount != 0 && $percedown_price != 0}
+					<!-- ％割引 -->
+					<div class="d-flex justify-content-end">
+						<div>クーポン割引き({$discount_percentage|number_format}%)</div>
+						<div class="priceRow">&yen; -{$percedown_price|number_format}</div>
+					</div>
+					{else if $menuCoupon == 1 && $discount != 0}
+					<!-- 金額割引 -->
+					<div class="d-flex justify-content-end">
+						<div>クーポン割引き(&yen; {$master_discount|number_format})</div>
+						<div class="priceRow">&yen; -{$discount|number_format}</div>
+					</div>
+					{/if}
+					<!-- //クーポン オプション機能 -->
+
+					<div class="d-flex justify-content-end">
+						<div>送料
+							{if $information.shipping_conditions != 0 && $send_price != 0}<div class="small">{$information.shipping_conditions|number_format}円以上お買い上げで<span class="font-weight-bold">送料無料！</span></div>{/if}
+						</div>
+						<div class="priceRow">&yen; {$send_price|number_format}</div>
+					</div>
+
+					<div class="d-flex justify-content-end">
+						{if $payment == 2}
+						<div>代金引換手数料
+							{if $information.cod != 0 && $cod_price != 0}<div>{$information.cod|number_format}円以上お買い上げで<span class="font-weight-bold">代金引換手数料無料！</span></div>{/if}
+						</div>
+						<div class="priceRow">&yen; {$cod_price|number_format}</div>
+						{elseif $payment == 5}
+						<div>NP後払い手数料
+							{if $information.ato != 0 && $pym_np_price != 0}<div>{$information.ato|number_format}円以上お買い上げで<span class="font-weight-bold">NP後払い手数料無料！</span></div>{/if}
+						</div>
+						<div class="priceRow">&yen; {$pym_np_price|number_format}</div>
+						{elseif $payment == 6}
+						<div>スコア後払い手数料
+							{if $information.ato != 0 && $pym_np_price != 0}<div>{$information.ato|number_format}円以上お買い上げで<span class="font-weight-bold">スコア後払い手数料無料！</span></div>{/if}
+						</div>
+						<div class="priceRow">&yen; {$pym_np_price|number_format}</div>
+						{elseif $payment == 7}
+						<div>後払い.com手数料
+							{if $information.ato != 0 && $pym_np_price != 0}<div>{$information.ato|number_format}円以上お買い上げで<span class="font-weight-bold">後払い.com手数料無料！</span></div>{/if}
+						</div>
+						<div class="priceRow">&yen; {$pym_np_price|number_format}</div>
+						{elseif $payment == 8}
+						<div>クロネコ後払い手数料
+							{if $information.ato != 0 && $pym_np_price != 0}<div>{$information.ato|number_format}円以上お買い上げで<span class="font-weight-bold">クロネコ後払い手数料無料！</span></div>{/if}
+						</div>
+						<div class="priceRow">&yen; {$pym_np_price|number_format}</div>
+						{elseif $payment == 13}
+						<div>GMO後払い手数料
+							{if $information.ato != 0 && $pym_np_price != 0}<div>{$information.ato|number_format}円以上お買い上げで<span class="font-weight-bold">GMO後払い手数料無料！</span></div>{/if}
+						</div>
+						<div class="priceRow">&yen; {$pym_np_price|number_format}</div>
+						{elseif $payment == 14}
+						<div>後払い手数料
+							{if $information.ato != 0 && $pym_np_price != 0}<div>{$information.ato|number_format}円以上お買い上げで<span class="font-weight-bold">後払い手数料無料！</span></div>{/if}
+						</div>
+						<div class="priceRow">&yen; {$pym_np_price|number_format}</div>
+						{/if}
+					</div>
+				</div>
+
+				{* 定期購入ではないとき、送料無料まであと・・・などを表示 *}
+				{if $reg_item === false}
+				<div class="commission">
+					{if $flag1}
+					{if $conditions_flag1 && $send_price != 0}
+					送料無料まで後・・・<span class="price">&yen; {$no_charge1|number_format}</span><br>
+					{else}
+					{if $information.shipping_conditions != 0}<span class="price">現在送料無料！</span><br>{/if}
+					{/if}
+					{/if}
+
+					{if $flag2}
+					{if $conditions_flag2 && $cod_price != 0}
+					代金引換手数料無料まで後・・・<span class="price">&yen; {$no_charge2|number_format}</span>
+					{else}
+					{if $information.cod != 0 && $payment == 2}<span class="price">現在代金引換手数料無料！</span>{/if}
+					{/if}
+
+					{elseif $flag4}
+					{if $conditions_flag4 && $pym_np_price != 0}
+					後払い手数料無料まで後・・・<span class="price">&yen; {$no_charge4|number_format}</span>
+					{else}
+					{if $information.ato != 0 && ($payment == 5 || $payment == 6 || $payment == 7 || $payment == 8 || $payment == 13 || $payment == 14)}<span class="price">後払い手数料無料！</span>{/if}
+					{/if}
+					{/if}
+				</div>
+				{/if}
+
+				<div class="cart_item_total d-flex justify-content-end">
+					<div>総合計（税込）</div>
+					<div class="priceRow">&yen; {$all_price|number_format}</div>
+				</div>
+
+				<!-- ポイント -->
+				{if $user.id != 0 && !empty($information.point_division)}
+				<div class="cart_point_disp d-flex justify-content-end">
+					<div>獲得ポイント</div>
+					<div class="priceRow">{floor($point_division)}pt</div>
+				</div>
+				<table class="d-none">
+					<caption>
+						サービスポイント
+						{* ポイント利用時 *}
+						{if $destination.use_point > 0}<div class="font-weight-bold">ポイント値引きを利用しているため、今回は加算されません。</div>{/if}
+					</caption>
+					<tr>
+						<th>ご注文前のポイント</th>
+						<td>{$user.service_point}pt</td>
+					</tr>
+					<tr>
+						<th>ご使用ポイント</th>
+						<td>{$point_price}pt</td>
+					</tr>
+					<tr>
+						<th>ご注文完了後のポイント</th>
+						<td>{$service_point}pt</td>
+					</tr>
+				</table>
+				{/if}
+				<!-- //ポイント -->
+
+				<!-- 特定商取引法6月1日改定　定期2回目以降自動計算 -->
+				{if $reg_item !== false}
+				{if $reg_end_count != 1}
+				<div class="caption">2回目以降の定期決済</div>
+				<div class="cart_item_box d-flex justify-content-end">
+					<div></div>
+					<div class="priceRow">単価（税抜）</div>
+					<div class="priceRow">小計（税込）</div>
+				</div>
+				{foreach from=$continuing_price_list item=reg_count_price name=reg_counting}
+				{assign var="reg_count" value=$smarty.foreach.reg_counting.iteration+1}
+				<div class="cart_item_box d-flex justify-content-end">
+					<div>{$reg_count}回目</div>
+					<div class="priceRow">&yen; {$reg_count_price.item_price|number_format}</div>
+					<div class="priceRow">&yen; {$reg_count_price.shoukei_price|number_format}</div>
+				</div>
+				{/foreach}
+				<div class="cart_item_box d-flex justify-content-end">
+					<div>
+						送料（1回当たり）
+						{if $information.cart_type_postage_flag != '1'}
+						{if $information.shipping_conditions > 0}
+						<br><span class="red">※各回が税込 &yen; {$information.shipping_conditions|number_format}以上の場合は無料</span>
+						{/if}
+						{/if}
+					</div>
+					<div class="priceRow">&yen; {$continuing_price_list.0.send_price|number_format}</div>
+				</div>
+				{if in_array($continuing_price_list.0.pym_id, $continuing_price_list.0.pym_id_list)}
+				<div class="cart_item_box d-flex justify-content-end align-items-end">
+					{assign var="tokusyouColspan" value="2"}
+					{assign var="tokusyouTdStyle" value="background-color: #90ee90;"}
+					{assign var="tokusyouDivStyle" value=""}
+					{if $continuing_price_list.0.pym_id == '2'}
+					{if !empty($continuing_price_list.0.edit_coll_arr)}
+					{assign var="tokusyouColspan" value="3"}
+					{assign var="tokusyouTdStyle" value=""}
+					{assign var="tokusyouDivStyle" value="margin-left:70px;text-align:left;"}
+					{/if}
+					{/if}
+					<div style="{$tokusyouDivStyle}">
+						{assign var="atoNotPymFlg" value="0"}
+						{if !empty($continuing_price_list.0.atoNotPym)}
+						{if !in_array($continuing_price_list.0.pym_id, $continuing_price_list.0.atoNotPym)}
+						{assign var="atoNotPymFlg" value="1"}
+						{/if}
+						{/if}
+						{if $continuing_price_list.0.pym_id == '2'}
+						{if empty($continuing_price_list.0.edit_coll_arr)}
+						{$continuing_price_list.0.pym_name}手数料（1回当たり）
+						{else}
+						{$continuing_price_list.0.pym_name}手数料（1回当たり）
+						{foreach from=$continuing_price_list.0.edit_coll_arr item=edit_coll_val name=edit_coll_key}
+						<br>※税込 &yen; {$edit_coll_val.rate_min|number_format}～&yen; {$edit_coll_val.rate_max|number_format}時は&yen; {$edit_coll_val.rate_price|number_format}
+						{/foreach}
+						{/if}
+						{if $information.cod > 0}
+						<br><span class="red">※{if !empty($continuing_price_list.0.edit_coll_arr)}ただし、{/if}各回が税込 &yen; {$information.cod|number_format}以上の場合は無料</span>
+						{/if}
+						{else if $continuing_price_list.0.pym_id == '4'}
+						{$continuing_price_list.0.pym_name}手数料（1回当たり）
+						{if $information.kod > 0}
+						<br><span class="red">※各回が税込 &yen; {$information.kod|number_format}以上の場合は無料</span>
+						{/if}
+						{else if $atoNotPymFlg == '1'}
+						{$continuing_price_list.0.pym_name}手数料（1回当たり）
+						{if $information.ato > 0}
+						<br><span class="red">※各回が税込 &yen; {$information.ato|number_format}以上の場合は無料</span>
+						{/if}
+						{/if}
+					</div>
+					{if $tokusyouColspan != '3'}
+					<div class="priceRow">&yen; {$continuing_price_list.0.np_price|number_format}</div>
+					{/if}
+				</div>
+				{/if}
+				<div>{$continuing_price_list.0.continuing_limit + 1}回分までのお支払い総額（税込）</div>
+				<div class="cart_item_box d-flex justify-content-end">
+					<div class="pr-3 noWrap">合計</div>
+					<div class="text-right">&yen; {($continuing_price_list.0.sum_price + $all_price)|number_format}<br>（送料と手数料込）</div>
+				</div>
+				{if $continuing_price_list.0.continuing_type != 4}
+				<div class="cart_item_box d-flex justify-content-end">
+					<div class="pr-3 noWrap">継続</div>
+					<div class="text-right">{$continuing_price_list.0.continuing_limit + 2}回目以降は、&yen; {$continuing_price_list.0.last_price|number_format}の請求となります。<br>（送料と手数料込）</div>
+				</div>
+				{else}
+				<div class="cart_item_box d-flex justify-content-end">
+					<div class="pr-3 noWrap">満了</div>
+					<div class="text-right">{$continuing_price_list.0.continuing_limit + 1}回目を決済いただくと定期は解約となります。</div>
+				</div>
+				{/if}
+				{/if}
+				{/if}
+				<!-- //特定商取引法6月1日改定　定期2回目以降自動計算 -->
+			</div><!-- //.buyFormCart -->
+		</section><!-- //.buyForm -->
+
+		<form method="post" action="{$form_url}">
+			<div class="btnArea row flex-sm-row-reverse">
+				<div class="col-sm-6 p-4">
+					<div class="btn-wrap w-100 atone-btn-view"><input type="submit" name="next_sub_x" value="注文する" class="btn_s w-100 btnFinish"></div>
+				</div>
+				<div class="col-sm-6 p-4">
+					<div class="btn-wrap w-100 refuse"><input type="submit" name="back_sub_x" value="内容を修正する" class="btn_s w-100"></div>
+				</div>
+			</div>
+
+			<input type="hidden" name="payment" value="{$smarty.session.payment}">
+			<input type="hidden" name="payment_metod" value="{$pay_name}">
+			<input type="hidden" name="confirm_order" value="1">
+			<input type="hidden" name="send_price" value="{$send_price}">
+			<input type="hidden" name="cod_price" value="{$cod_price}">
+			<input type="hidden" name="service_point" value="{$service_point}">
+			<input type="hidden" name="use_point" value="{$point_price}">
+			<input type="hidden" name="send_all_price" value="{$all_price}">
+			<input type="hidden" name="deliveryDateStr" value="{$deliveryDateStr}">
+			<input type="hidden" name="deliveryHourStr" value="{$deliveryHourStr}">
+			<input type="hidden" name="point_division" value="{$point_division}">
+
+
+			{if $payment == 4}<input type="hidden" name="kod_price" value="{$kod_price}">{/if}
+			{if $payment == 5 || $payment == 6 || $payment == 7 || $payment == 8 || $payment == 13 || $payment == 14}<input type="hidden" name="pym_np_price" value="{$pym_np_price}">{/if}
+
+			<!-- クレジット決済の必要情報 -->
+			<input type="hidden" name="item_all_price" value="{$all_price_t}">
+			<input type="hidden" name="point_price" value="{$point_price}">
+			<input type="hidden" name="post_rate" value="{$send_price + $cod_price}">
+			<input type="hidden" name="user_flag" value="{$user_flag}">
+
+			<!-- クーポン オプション機能 -->
+			<input type="hidden" name="menuCoupon" value="{$menuCoupon}">
+			<input type="hidden" name="discount" value="{$discount}"><!-- クーポン割引金額 -->
+			<input type="hidden" name="percedown_price" value="{$percedown_price}">
+			<!-- //クーポン オプション機能 -->
+
+			<!-- atone -->
+			<input type="hidden" name="atone_order_id" value="{$atone_order_id}" id="atone_order_id">
+			<!-- //atone -->
+		</form>
+
+	</section><!-- //.container -->
+</div><!-- //#contents -->
+
+<!-- atone -->
+<input type="hidden" name="atone_item_price" value="{$atone_item_price}">
+{if $payment == 17 && $atone_item_price != 0}
+{literal}
+<script>
+	$('div.atone-btn-view').append('<input name="keep_submit" value="注文する" id="atone-button" class="btn_s w-100 btnFinish">');
+</script>
+<script src="https://ct-auth.a-to-ne.jp/v1/atone.js"></script>
+<script src="/common/js/atone/atone.js"></script>
+<script>
+	$('input[name="next_sub_x"]').remove();
+	var data = {/literal}{$atone_data}{literal};
+							data["shop_transaction_no"] = {/literal}"{$atone_order_id}"{literal};
+							var atone_api_id = {/literal}"{$atone_api_id}"{literal};
+</script>
+{/literal}
+{/if}
+<!-- //atone -->
