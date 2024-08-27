@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og: https://ogp.me/ns#">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
+    <meta name="format-detection" content="email=no,telephone=no,address=no" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta property="og:locale" content="ja_JP" />
+
+    <!-- ▼SEO -->
+    <link rel="”canonical”" href="”URL”" />
+    <!-- ジェネレーターURL→ https://metatags.io/ -->
+
+    <!-- ▼ファビコン -->
+    <!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
+
+    <!-- ▼クロールして欲しくない -->
+    <!-- <meta name="robots" content="noindex,nofollow"> -->
+
+    <!-- ▼テーマカラー -->
+    <!-- <meta name="theme-color" content="#e9c931"> -->
+
+    <!-- ▼CSS -->
+    <link rel="stylesheet" href="css/main.css?ver=1.0.0" />
+    <link rel="stylesheet" href="css/main-sp.css?ver=1.0.0" />
+
+    <!-- ▼フォント -->
+
+
+</head>
+
+<body>
+
+
+<div class="template_wrap">
+    <div class="template_inner880">
+        <div class="signup-confirm-container">
+            <section>
+                <div class="C_TL">
+                    <div class="icon"></div>
+                    <h2 class="TL">登録内容のご確認</h2>
+                </div>
+                <div class="signup-confirm-content">
+                    <div class="signup-confirm-content-text">
+                        <p class="TX">
+                            メールアドレスは、ログインメールアドレス、ご注文時の連絡先メールアドレスに登録されます。<br>
+                            連絡先メールアドレスは登録完了後、[マイページ]→登録情報変更で変更することができます。
+                        </p>
+                    </div>
+                    <form method="post" action="{$base_url}/account/register">
+                        <div class="signup-confirm-form">
+                            <!-- 客情報 -->
+                            <div class="form_content">
+                                <div class="form_content-title">
+                                    <h3 class="TL">お客様情報</h3>
+                                </div>
+                                <div class="form_content-main">
+                                    <div class="main_item">
+                                        <div class="main_item-title">
+                                            <h4 class="TL">お名前</h4>
+                                        </div>
+                                        <div class="main_item-text">
+                                            <p class="TX">
+                                                {$view->escape($show_nickname)}<input type="hidden"
+                                                    name="show_nickname" value="{$view->escape($show_nickname)}">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="main_item">
+                                        <div class="main_item-title">
+                                            <h4 class="TL">フリガナ</h4>
+                                        </div>
+                                        <div class="main_item-text">
+                                            <p class="TX">
+                                                {$view->escape($show_nickname)}<input type="hidden"
+                                                    name="show_nickname" value="{$view->escape($show_nickname)}">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="main_item">
+                                        <div class="main_item-title">
+                                            <h4 class="TL">性別</h4>
+                                        </div>
+                                        <div class="main_item-text">
+                                            <p class="TX">
+                                                {if $sex == 1}
+                                                男性
+                                                {else}
+                                                女性
+                                                {/if}
+                                                <input type="hidden" name="sex" value="{$view->escape($sex)}">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="main_item">
+                                        <div class="main_item-title">
+                                            <h4 class="TL">生年月日</h4>
+                                        </div>
+                                        <div class="main_item-text">
+                                            <p class="TX">
+                                                {$view->escape($birthday_y)}年　{$view->escape($birthday_m)}月　{$view->escape($birthday_d)}日
+                                                <input type="hidden" name="birthday_y"
+                                                    value="{$view->escape($birthday_y)}">
+                                                <input type="hidden" name="birthday_m"
+                                                    value="{$view->escape($birthday_m)}">
+                                                <input type="hidden" name="birthday_d"
+                                                    value="{$view->escape($birthday_d)}">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ログイン情報 -->
+                            <div class="form_content">
+                                <div class="form_content-title">
+                                    <h3 class="TL">ログイン情報</h3>
+                                </div>
+                                <div class="form_content-main">
+                                    <div class="main_item">
+                                        <div class="main_item-title">
+                                            <h4 class="TL">メールアドレス</h4>
+                                        </div>
+                                        <div class="main_item-text">
+                                            <p class="TX">
+                                                {$view->escape($mail)}
+                                                <input type="hidden" name="mail" value="{$view->escape($mail)}">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="main_item">
+                                        <div class="main_item-title">
+                                            <h4 class="TL">パスワード</h4>
+                                        </div>
+                                        <div class="main_item-text">
+                                            <p class="TX">{$hidden_pass}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="confirm-content_btn">
+                            <input type="submit" name="return_sub_x" value="<　内容を修正する" class="btn_back">
+                            <input type="submit" name="confirm_sub_x" value="登録する" class="btn_submit">
+                        </div>
+                        <input type="hidden" name="merumaga_flag" value="{$merumaga_flag}">
+                        <input type="hidden" name="dm_flag" value="{$dm_flag}">
+                        {if $carrier == 'p'}
+                        <input type="hidden" name="carrier" value="PC">
+                        {elseif $carrier == 's'}
+                        <input type="hidden" name="carrier" value="SP">
+                        {/if}
+                        <input type="hidden" name="sub" value="1">
+                        <input type="hidden" name="_token" value="{$_token}">
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-1.7.1.min.js"
+        integrity="sha256-iBcUE/x23aI6syuqF7EeT/+JFBxjPs5zeFJEXxumwb0=" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+    <script src="js/joint.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+{$view->setLayoutVar('title', '会員登録 - 登録内容確認')}
+{$view->setLayoutVar('keywords', '')}
+{$view->setLayoutVar('description', '')}
+
+{$view->setLayoutVar("css_files", "columnless.css", true)}
+
+
+<div id="contents">
+	<section class="container">
+		<h2>会員登録 - 登録内容確認</h2>
+
+		<p>
+			メールアドレスは、ログインメールアドレス・ご注文時の連絡先メールアドレスに登録されます。<br>
+			連絡先メールアドレスは登録完了後、[マイページ] &rarr; <em class="em_frame">登録情報変更</em>で変更することができます。
+		</p>
+
+		<form method="post" action="{$base_url}/account/register">
+			<div class="mainForm registerForm">
+				<div class="caption">お客様情報</div>
+				<dl class="row m-0">
+					<dt>ユーザー名</dt>
+					<dd>{$view->escape($show_nickname)}<input type="hidden" name="show_nickname" value="{$view->escape($show_nickname)}"></dd>
+
+					<dt>性別</dt>
+					<dd>
+						{if $sex == 1}
+						男性
+						{else}
+						女性
+						{/if}
+						<input type="hidden" name="sex" value="{$view->escape($sex)}">
+					</dd>
+
+					<dt>生年月日</dt>
+					<dd>
+						{$view->escape($birthday_y)}年 {$view->escape($birthday_m)}月 {$view->escape($birthday_d)}日
+						<input type="hidden" name="birthday_y" value="{$view->escape($birthday_y)}">
+						<input type="hidden" name="birthday_m" value="{$view->escape($birthday_m)}">
+						<input type="hidden" name="birthday_d" value="{$view->escape($birthday_d)}">
+					</dd>
+				</dl>
+
+				<div class="caption">ログイン情報</div>
+				<dl class="row m-0">
+					<dt>メールアドレス</dt>
+					<dd>
+						{$view->escape($mail)}
+						<input type="hidden" name="mail" value="{$view->escape($mail)}">
+						{* <input type="hidden" name="re_mail" value="{$view->escape($re_mail)}"> *}
+					</dd>
+
+					<dt>パスワード</dt>
+					<dd>{$hidden_pass}</dd>
+
+					{if $information.merumaga_area_flag == 1}
+					<dt>メルマガ</dt>
+					<dd>
+						{if $merumaga_flag == 1}
+						HTMLメール＋テキストメールを受信
+						{elseif $merumaga_flag == 2}
+						テキストメールを受信
+						{else}
+						受信しない
+						{/if}
+					</dd>
+					{/if}
+
+					{if $information.dm_area_flag == 1}
+					<dt>DM</dt>
+					<dd>
+						{if $dm_flag == 1}
+						受け取る
+						{else}
+						受け取らない
+						{/if}
+					</dd>
+					{/if}
+				</dl>
+
+				<div class="btnArea row flex-sm-row-reverse">
+					<div class="col-sm-6 p-4">
+						<div class="btn-wrap w-100"><input type="submit" name="confirm_sub_x" value="登録する" class="btn_s w-100"></div>
+					</div>
+					<div class="col-sm-6 p-4">
+						<div class="btn-wrap w-100 refuse"><input type="submit" name="return_sub_x" value="戻る" class="btn_s w-100"></div>
+					</div>
+				</div>
+
+				<input type="hidden" name="merumaga_flag" value="{$merumaga_flag}">
+				<input type="hidden" name="dm_flag" value="{$dm_flag}">
+				{if $carrier == 'p'}
+				<input type="hidden" name="carrier" value="PC">
+				{elseif $carrier == 's'}
+				<input type="hidden" name="carrier" value="SP">
+				{/if}
+				<input type="hidden" name="sub" value="1">
+				<input type="hidden" name="_token" value="{$_token}">
+			</div>
+		</form>
+
+	</section><!-- //.container -->
+</div><!-- //#contents -->
