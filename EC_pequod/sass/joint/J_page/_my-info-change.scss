@@ -1,0 +1,450 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  my-info-change
+----------------------- */
+
+.my-info-change {
+  .top-TX {
+    color: $subF;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    line-height: 1.5;
+
+    @include pc {
+      margin-top: 10px;
+    }
+
+    @include sp {
+      margin-top: 17px;
+    }
+  }
+
+  .change-wrap {
+    @include pc {
+      width: calc(692 / 880 * 100%);
+      margin: 0 auto;
+    }
+
+    .change-content {
+      @include pc {
+        margin-top: 11px;
+      }
+
+      @include sp {
+        margin-top: 20px;
+      }
+
+      .form {
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+
+        .item {
+          display: flex;
+
+          .label {
+            background: $subC;
+            color: $whiteF;
+            font-size: 15px;
+            padding: 18px 0;
+            display: grid;
+            place-content: center center;
+            @include wt700;
+
+            @include pc {
+              min-width: 147px;
+            }
+
+            @include sp {
+              width: calc(122 / 350 * 100%);
+            }
+          }
+
+          .content {
+            background: $mainC;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            margin-left: 1px;
+
+            @include pc {
+              padding-left: 38px;
+            }
+
+            @include sp {
+              padding-inline: 15px 6px;
+              flex: 1;
+            }
+
+            .btn {
+              background: $subC;
+              color: $whiteF;
+              font-size: 10px;
+              padding: 8px 12px;
+              border-radius: 5px;
+              width: fit-content;
+              display: flex;
+              @include wt700;
+
+              @include pc {
+                margin-left: 22px;
+              }
+
+              @include sp {
+                margin-left: auto;
+              }
+            }
+
+            ul {
+              width: 100%;
+
+              li {
+                width: 100%;
+
+                .form-check-input {
+                  display: none;
+                }
+              }
+            }
+
+            .radioArea {
+              display: flex;
+
+              @include pc {
+                gap: 40px;
+              }
+
+              @include sp {
+                gap: 25px;
+              }
+
+              .form-check {
+                display: flex;
+                align-items: center;
+              }
+
+              input[type="radio"] {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+              }
+
+              input[type="radio"] {
+                position: relative;
+                width: 24px;
+                height: 24px;
+                background: $P-white;
+                border-radius: 50%;
+                vertical-align: -2px;
+                margin: 0 12px 0 0;
+              }
+
+              input[type="radio"]:checked:before {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                translate: -50% -50%;
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+                background: $subC;
+                content: '';
+              }
+            }
+
+            &.birthday {
+              display: flex;
+
+              @include pc {
+                gap: 24px;
+              }
+
+              @include sp {
+                width: 100%;
+              }
+
+              .number {
+                .custom-select {
+                  border: none;
+                  height: 35px;
+                }
+
+                &.birthday_y {
+                  @include pc {
+                    width: calc(131 / 544 * 100%);
+                  }
+
+                  @include sp {
+                    width: calc(90 / 226 * 100%);
+                  }
+
+                  .custom-select {
+                    @include pc {
+                      width: calc(115 / 131 * 100%);
+                    }
+
+                    @include sp {
+                      width: calc(65 /86 * 100%);
+                    }
+                  }
+                }
+
+
+                &.birthday_m,
+                &.birthday_d {
+                  @include pc {
+                    width: calc(86 / 544 * 100%);
+                  }
+
+                  @include sp {
+                    width: calc(70 / 226 * 100%);
+                  }
+
+                  .custom-select {
+                    @include pc {
+                      width: calc(70 / 86 * 100%);
+                    }
+
+                    @include sp {
+                      width: calc(40 /59 * 100%);
+                    }
+                  }
+
+                }
+
+              }
+
+            }
+          }
+        }
+
+        &.second {
+          display: flex;
+
+          .label-none {
+            background-color: $mainC;
+          }
+
+          .item {
+            @include sp {
+              flex-direction: column;
+            }
+
+            .label {
+              @include sp {
+                width: 100%;
+                display: block;
+                padding-left: 21px;
+              }
+            }
+
+            .content {
+              .blue {
+                display: flex;
+                align-items: center;
+
+                @include pc {
+                  margin-left: 8px;
+                }
+
+                .mail {
+                  font-size: 15px;
+                }
+              }
+
+              .btn {
+                background: $P-white;
+                border: 1px solid $subC;
+                color: $subC;
+              }
+
+
+              &.edit {
+                color: $subF;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+
+
+                @include pc {
+                  gap: 15px;
+
+                }
+
+                padding-block: 18px;
+
+                #passwd {
+                  width: 100%;
+                }
+
+                .pass-btn {
+                  display: flex;
+                  align-items: flex-start;
+
+                  @include sp {
+                    margin-left: 14px;
+                  }
+                }
+
+                .description {
+                  font-size: 10px;
+                  line-height: 1.5;
+                  letter-spacing: 0.5px;
+                  width: calc(441 /506 * 100%);
+                }
+
+                .ime_d {
+                  border: none;
+                  height: 35px;
+
+                  @include pc {
+                    width: calc(454 /506 * 100%);
+                    margin: 5px 0 15px;
+                  }
+
+                  @include sp {
+                    width: calc(291 / 330 * 100%);
+                    margin: 3px 0 15px;
+
+                  }
+                }
+              }
+            }
+
+          }
+        }
+
+        &.pass-form {
+          @include pc {
+            margin-top: 30px;
+          }
+
+          @include sp {
+            margin-top: 60px;
+          }
+        }
+      }
+
+      .btnArea {
+        .btn-check {
+          background: $button;
+          color: $whiteF;
+          font-size: 15px;
+          letter-spacing: 1.5px;
+          text-align: center;
+          border: none;
+          border-radius: 5px;
+          display: block;
+          margin: 60px auto 0;
+          @include wt700;
+
+          @include pc {
+            width: 427px;
+            padding: 16px;
+          }
+
+          @include sp {
+            width: 183px;
+            padding: 18px 0;
+          }
+
+        }
+      }
+    }
+
+    #regular_list_detail {
+      background: $mainC;
+      font-size: 13px;
+
+      @include pc {
+        margin-top: 36px;
+        padding: 47px 40px 50px;
+      }
+
+      @include sp {
+        margin-top: 47px;
+        padding: 47px 20px 50px;
+      }
+
+      #creditForm {
+        tbody {
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+
+          tr {
+            display: flex;
+
+            td {
+              flex: 1;
+
+              .m-small {
+                font-size: 0;
+                position: relative;
+
+                &::before {
+                  content: "セキュリティコードとは";
+                  font-size: 13px;
+                }
+
+                &::after {
+                  content: "?";
+                  font-size: 13px;
+                  width: 23px;
+                  height: 23px;
+                  border: 1px solid $subF;
+                  border-radius: 50%;
+                  display: grid;
+                  align-items: center center;
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                }
+              }
+            }
+          }
+
+          .ime_d .expireY {
+            height: 46px;
+            margin-top: 4px;
+            background: $P-white;
+            border: none;
+          }
+        }
+
+        .btn {
+          background: $buttonYellow;
+          color: $whiteF;
+          height: 46px;
+
+        }
+      }
+      .credit{
+        tbody{
+          tr{
+            td{
+              .custom-select{
+                border: none;
+                height: 46px;
+                margin-top: 4px;
+                
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .new-card {
+      @include pc {
+        margin-top: 100px;
+      }
+
+      @include sp {
+        margin-top: 60px;
+      }
+    }
+  }
+}

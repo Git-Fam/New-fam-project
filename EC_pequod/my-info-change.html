@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head prefix="og: https://ogp.me/ns#">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
+		<meta name="format-detection" content="email=no,telephone=no,address=no" />
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+		<meta property="og:locale" content="ja_JP" />
+
+		<!-- ▼SEO -->
+		<link rel="”canonical”" href="”URL”" />
+		<!-- ジェネレーターURL→ https://metatags.io/ -->
+
+		<!-- ▼ファビコン -->
+		<!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
+
+		<!-- ▼クロールして欲しくない -->
+		<!-- <meta name="robots" content="noindex,nofollow"> -->
+
+		<!-- ▼テーマカラー -->
+		<!-- <meta name="theme-color" content="#e9c931"> -->
+
+		<!-- ▼CSS -->
+		<link rel="stylesheet" href="css/main.css?ver=1.0.0" />
+		<link rel="stylesheet" href="css/main-sp.css?ver=1.0.0" />
+
+		<!-- ▼フォント -->
+	</head>
+
+	<body>
+		<div class="whopper">
+			<div
+				class="template_wrap template_inner880 my-info-change my"
+				id="content"
+			>
+				<div class="C_TL">
+					<div class="icon"></div>
+					<h2 class="TL">マイページ</h2>
+				</div>
+				<div id="mypage">
+					<div class="C_mypageMenu">
+						<a href="/account/mypage" class="btn">購入履歴</a>
+						<a href="/account/profile" class="btn current">登録情報変更</a>
+						<a href="/account/destination" class="btn">お届け先の編集</a>
+						<a href="/account/regular" class="btn">定期購入一覧</a>
+						<a href="/account/info" class="btn">お問い合わせ履歴</a>
+					</div>
+
+					<div class="change-wrap">
+						<div class="my-wrap">
+							<h3>会員情報</h3>
+							<div class="C_line h3-under"></div>
+						</div>
+						<p class="top-TX">
+							登録された会員情報の変更ができます。<br />入力後、[確認ページへ]をクリックしてください。
+						</p>
+
+						<!-- {if $errors|@count > 0}<div class="errorDisp">{include file='errors.tpl' errors=$errors}</div>{/if}
+						{if $success|@count > 0}<div class="successDisp">{include file='success.tpl' success=$success}</div>{/if} -->
+
+						<form
+							method="post"
+							action="{$base_url}/account/profile/send"
+							class="change-content"
+						>
+							<div class="form">
+								<div class="item">
+									<dt class="label">お名前</dt>
+									<dd class="content">
+										<!-- {if $nick_list|count === 0}{* 登録0件のとき *}
+										<div class="noData">まだ登録されていません</div>
+										<a href="{$base_url}/nickname/regist">ユーザー名の登録</a>
+										{else} -->
+										<ul>
+											<!-- {foreach from=$nick_list item=nick_data} -->
+											<li>
+												<input type="radio" name="p_id" value="{$nick_data.id}"
+												class="form-check-input" {if !$p_id}{if $use_nick.id ===
+												$nick_data.id}checked{/if}{else}{if $p_id ===
+												$nick_data.id}checked{/if}{/if}>
+												<!-- {$view->escape($nick_data.show_nickname)} -->
+												<a href="{$base_url}/nickname" class="btn"> 編集 </a>
+												<!--{if $use_nick.id === $nick_data.id}<span class="blue">|使用中</span>{/if}-->
+											</li>
+											<!-- {/foreach} -->
+										</ul>
+										<!-- {/if} -->
+									</dd>
+								</div>
+								<div class="item">
+									<dt class="label">性別</dt>
+									<dd class="content">
+										<div class="radioArea">
+											<div class="form-check">
+												<input
+													type="radio"
+													name="sex"
+													value="1"
+													id="man"
+													class="form-check-input"
+													{$checked_sex[1]}
+												/><label for="man" class="form-check-label">男性</label>
+											</div>
+											<div class="form-check">
+												<input
+													type="radio"
+													name="sex"
+													value="2"
+													id="woman"
+													class="form-check-input"
+													{$checked_sex[2]}
+												/><label for="woman" class="form-check-label"
+													>女性</label
+												>
+											</div>
+										</div>
+									</dd>
+								</div>
+								<div class="item">
+									<dt class="label">生年月日</dt>
+									<dd class="content birthday">
+										<div class="number birthday_y">
+											<select name="birthday_y" class="custom-select">
+												{$year_box}</select
+											>年
+										</div>
+										<div class="number birthday_m">
+											<select name="birthday_m" class="custom-select">
+												{$month_box}</select
+											>月
+										</div>
+										<div class="number birthday_d">
+											<select name="birthday_d" class="custom-select">
+												{$day_box}</select
+											>日
+										</div>
+									</dd>
+								</div>
+							</div>
+							<h3 class="caption">ログイン情報</h3>
+							<div class="form second">
+								<div class="item">
+									<dt class="label">メールアドレス</dt>
+									<dd class="content">
+										<div class="blue">
+											<p class="d-inline-block mail">
+												【{$view->escape($user.login_mail_address)}】
+											</p>
+											<div class="form-inline justify-content-end checkToggle">
+												<input
+													type="checkbox"
+													name="edit_mail"
+													value="1"
+													id="check1"
+													class="form-check-input"
+													{$checked_edit_passwd2}
+												/><label for="check1" class="btn">変更する</label>
+											</div>
+										</div>
+									</dd>
+								</div>
+								<div class="item">
+									<dt class="label label-none pc"></dt>
+									<dd class="content edit">
+										<div id="edit_mail">
+											<div class="description">
+												新しいログインメールアドレスを入力してください。
+											</div>
+											<input
+												type="text"
+												name="now_mail"
+												value="{$view->escape($now_mail)}"
+												autocomplete="off"
+												class="ime_d form-control"
+											/>
+											<div class="description">
+												現在のパスワードを入力してください。
+											</div>
+											<input
+												type="password"
+												name="now_mail_passwd"
+												value="{if $passwd_flag === true}{$view->escape($now_mail_passwd)}{/if}"
+												maxlength="{$passwd_e}"
+												autocomplete="off"
+												class="ime_d form-control"
+											/>
+											<div class="description mt-3">
+												新しいメールアドレス宛に「変更確認メール」が送信されますので、メール内のリンクをクリックして変更を完了してください。
+											</div>
+										</div>
+									</dd>
+								</div>
+							</div>
+							<div class="form second pass-form">
+								<div class="item">
+									<dt class="label">パスワード</dt>
+									<dd class="content edit">
+										<div class="form-inline checkToggle pass-btn">
+											<input
+												type="checkbox"
+												name="edit_passwd"
+												value="1"
+												id="check2"
+												class="form-check-input"
+												{$checked_edit_passwd}
+											/><label for="check2 " class="btn">変更する</label>
+										</div>
+									</dd>
+								</div>
+								<div class="item">
+									<dt class="label label-none pc"></dt>
+									<dd class="content edit">
+										<div id="passwd">
+											<div class="description">
+												現在のパスワードを入力してください。
+											</div>
+											<input
+												type="password"
+												name="now_passwd"
+												value="{if $passwd_flag === true}{$view->escape($now_passwd)}{/if}"
+												maxlength="{$passwd_e}"
+												autocomplete="off"
+												class="ime_d form-control"
+											/>
+											<div class="description mt-3">
+												新しいパスワードを半角英数字{$passwd_s}〜{$passwd_e}文字（記号不可）で入力してください。
+											</div>
+											<input
+												type="password"
+												name="passwd"
+												value="{if $passwd_flag === true}{$view->escape($passwd)}{/if}"
+												maxlength="{$passwd_e}"
+												autocomplete="off"
+												class="ime_d form-control"
+											/>
+											<div class="description">
+												確認のため新しいパスワードをもう一度入力してください。
+											</div>
+											<input
+												type="password"
+												name="re_passwd"
+												value="{if $passwd_flag === true}{$view->escape($re_passwd)}{/if}"
+												maxlength="{$passwd_e}"
+												autocomplete="off"
+												class="ime_d form-control"
+											/>
+										</div>
+									</dd>
+								</div>
+							</div>
+							<div class="btnArea">
+								<div class="btn-wrap">
+									<input type="submit" value="確認ページへ" class="btn-check" />
+								</div>
+							</div>
+							<input type="hidden" name="regist_sub" value="1" />
+							<input type="hidden" name="prof" value="1" />
+							<input type="hidden" name="_token" value="{$_token}" />
+						</form>
+
+						<h3>会員情報 - カード情報登録</h3>
+						<div class="C_line h3-under"></div>
+						<div id="regular_list_detail">
+							<form method="post" action="{$base_url}/account/profile">
+								<div id="creditForm">
+									<!-- {include file='credit.tpl' credit=$credit loader=true} -->
+								</div>
+								<input type="hidden" name="saveCredit" value="カード情報登録" />
+							</form>
+						</div>
+						<!-- {/if} {if $info.use_payment == 'gmopayment' || $info.use_payment ==
+						'yamatoMember'} -->
+						<h3 class="new-card">会員情報 - カード情報登録</h3>
+						<div class="C_line h3-under"></div>
+						<div id="regular_list_detail">
+							<form
+								method="post"
+								action="{$base_url}/account/profile"
+								enctype="multipart/form-data"
+							>
+								<table class="credit form">
+									<tbody>
+										<tr>
+											<td>
+												<div>ご登録クレジット情報</div>
+												<select name="credit_select" class="custom-select">
+													<option value=""></option>
+													{if count($cardList) > 0 } {foreach $cardList as
+													$cardList_val}
+													<option value="{$cardList_val.CardSeq}">
+														{$cardList_val.CardNo}&emsp;{$cardList_val.Expire}
+													</option>
+													{/foreach} {/if}
+												</select>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</form>
+						</div>
+						{/if}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script
+			src="https://code.jquery.com/jquery-1.7.1.min.js"
+			integrity="sha256-iBcUE/x23aI6syuqF7EeT/+JFBxjPs5zeFJEXxumwb0="
+			crossorigin="anonymous"
+		></script>
+		<script src="js/script.js"></script>
+		<script src="js/joint.js"></script>
+	</body>
+</html>
