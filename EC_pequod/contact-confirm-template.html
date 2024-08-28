@@ -1,0 +1,70 @@
+{$view->setLayoutVar('title', 'お問い合わせ - 内容確認')}
+{$view->setLayoutVar('keywords', '')}
+{$view->setLayoutVar('description', '')}
+
+
+<div id="contents">
+	<section class="container">
+		<h2>お問い合わせ - 内容確認</h2>
+
+		<form method="post" action="{$base_url}/shop/send">
+			<div class="mainForm askForm">
+				<dl class="row m-0">
+					<dt>お名前</dt>
+					<dd>
+						{$view->escape($name)}
+						<input type="hidden" name="name" value="{$view->escape($name)}">
+					</dd>
+
+					<dt>フリガナ</dt>
+					<dd>
+						{$view->escape($kana)}
+						<input type="hidden" name="kana" value="{$view->escape($kana)}">
+					</dd>
+
+					<dt>メールアドレス</dt>
+					<dd>
+						{$view->escape($address)}
+						<input type="hidden" name="address" value="{$view->escape($address)}">
+					</dd>
+
+					<dt>電話番号</dt>
+					<dd>
+						{if $tel1 && $tel2 && $tel3}
+						{$view->escape($tel1)} - {$view->escape($tel2)} - {$view->escape($tel3)}
+						{else}
+						入力なし
+						{/if}
+						<input type="hidden" name="tel1" value="{$view->escape($tel1)}">
+						<input type="hidden" name="tel2" value="{$view->escape($tel2)}">
+						<input type="hidden" name="tel3" value="{$view->escape($tel3)}">
+					</dd>
+
+					<dt>お問い合わせ件名</dt>
+					<dd>
+						{$sbt_name}
+						<input type="hidden" name="sbt_name" value="{$sbt_name}">
+						<input type="hidden" name="sbt_id" value="{$sbt_id}">
+					</dd>
+
+					<dt>お問い合わせ内容</dt>
+					<dd>
+						{$view->escape($contact)|nl2br}
+						<input type="hidden" name="contact" value="{$view->escape($contact)}">
+					</dd>
+				</dl>
+
+				<div class="btnArea row flex-sm-row-reverse">
+					<div class="col-sm-6 p-4">
+						<div class="btn-wrap w-100"><input type="submit" name="send_x" value="送信" class="btn_s w-100"></div>
+					</div>
+					<div class="col-sm-6 p-4">
+						<div class="btn-wrap w-100 refuse"><input type="submit" name="edit_x" value="修正" class="btn_s w-100"></div>
+					</div>
+				</div>
+				<input type="hidden" name="_token" value="{$_token}">
+			</div>
+		</form>
+
+	</section><!-- //.container -->
+</div><!-- //#contents -->

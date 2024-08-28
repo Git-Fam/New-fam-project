@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og: https://ogp.me/ns#">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
+    <meta name="format-detection" content="email=no,telephone=no,address=no" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta property="og:locale" content="ja_JP" />
+
+    <!-- ▼SEO -->
+    <link rel="”canonical”" href="”URL”" />
+    <!-- ジェネレーターURL→ https://metatags.io/ -->
+
+    <!-- ▼ファビコン -->
+    <!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
+
+    <!-- ▼クロールして欲しくない -->
+    <!-- <meta name="robots" content="noindex,nofollow"> -->
+
+    <!-- ▼テーマカラー -->
+    <!-- <meta name="theme-color" content="#e9c931"> -->
+
+    <!-- ▼CSS -->
+    <link rel="stylesheet" href="css/main.css?ver=1.0.0" />
+    <link rel="stylesheet" href="css/main-sp.css?ver=1.0.0" />
+
+    <!-- ▼フォント -->
+
+
+</head>
+
+<body>
+
+
+<div class="template_wrap">
+    <div class="template_inner880">
+        <div class="contact-container">
+            <section>
+                <div class="C_TL">
+                    <div class="icon"></div>
+                    <h2 class="TL">お問い合わせ内容のご確認</h2>
+                </div>
+
+                <div class="contact-content">
+                    <form method="post" action="{$base_url}/shop/send">
+
+                        <div class="contact-confirm-content_inner">
+                            <div class="contact-confirm-text">
+                                <p class="TX">
+                                    メールアドレスは、ログインメールアドレス、ご注文時の連絡先メールアドレスに登録されます。<br>
+                                    連絡先メールアドレスは登録完了後、[マイページ]→登録情報変更で変更することができます。
+                                </p>
+                            </div>
+                            <div class="contact-confirm-form">
+
+                                <div class="form_content">
+                                    <div class="form_content-main">
+                                        <div class="main_item">
+                                            <div class="main_item-title">
+                                                <h4 class="TL">お名前</h4>
+                                            </div>
+                                            <div class="main_item-text">
+                                                <p class="TX">
+                                                    {$view->escape($name)}
+                                                    <input type="hidden" name="name" value="{$view->escape($name)}">
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="main_item">
+                                            <div class="main_item-title">
+                                                <h4 class="TL">フリガナ</h4>
+                                            </div>
+                                            <div class="main_item-text">
+                                                <p class="TX">
+                                                    {$view->escape($kana)}
+                                                    <input type="hidden" name="kana" value="{$view->escape($kana)}">
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="main_item">
+                                            <div class="main_item-title">
+                                                <h4 class="TL">メールアドレス</h4>
+                                            </div>
+                                            <div class="main_item-text">
+                                                <p class="TX">
+                                                    {$view->escape($address)}
+                                                    <input type="hidden" name="address"
+                                                        value="{$view->escape($address)}">
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="main_item">
+                                            <div class="main_item-title">
+                                                <h4 class="TL">電話番号</h4>
+                                            </div>
+                                            <div class="main_item-text">
+                                                <p class="TX">
+                                                    {if $tel1 && $tel2 && $tel3}
+                                                    {$view->escape($tel1)} - {$view->escape($tel2)} -
+                                                    {$view->escape($tel3)}
+                                                    {else}
+                                                    入力なし
+                                                    {/if}
+                                                    <input type="hidden" name="tel1" value="{$view->escape($tel1)}">
+                                                    <input type="hidden" name="tel2" value="{$view->escape($tel2)}">
+                                                    <input type="hidden" name="tel3" value="{$view->escape($tel3)}">
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="main_item">
+                                            <div class="main_item-title">
+                                                <h4 class="TL">お問い合わせ件名</h4>
+                                            </div>
+                                            <div class="main_item-text">
+                                                <p class="TX">
+                                                    {$sbt_name}
+                                                    <input type="hidden" name="sbt_name" value="{$sbt_name}">
+                                                    <input type="hidden" name="sbt_id" value="{$sbt_id}">
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="main_item">
+                                            <div class="main_item-title">
+                                                <h4 class="TL">お問い合わせ内容</h4>
+                                            </div>
+                                            <div class="main_item-text">
+                                                <p class="TX">
+                                                    {$view->escape($contact)|nl2br}
+                                                    <input type="hidden" name="contact"
+                                                        value="{$view->escape($contact)}">
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="confirm-content_btn">
+                                <input type="submit" name="edit_x" value="<　内容を修正する" class="btn_back">
+                                <input type="submit" name="send_x" value="送信" class="btn_submit">
+                            </div>
+                            <input type="hidden" name="_token" value="{$_token}">
+                        </div>
+                    </form>
+                </div>
+
+            </section>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-1.7.1.min.js"
+        integrity="sha256-iBcUE/x23aI6syuqF7EeT/+JFBxjPs5zeFJEXxumwb0=" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+    <script src="js/joint.js"></script>
+</body>
+
+</html>
