@@ -63,8 +63,15 @@
           color: $whiteF;
           font-size: 15px;
           @include wt700;
-          background: $subC;
           padding: 8px 0;
+          th{
+            background: $subC;
+          }
+        }
+
+        th,td{
+          border: none;
+          margin-top: 1px;
         }
 
         .item {
@@ -83,6 +90,7 @@
             gap: 8px;
 
             .point {
+              color: $mainF;
               &::before {
                 content: "";
                 width: 6px;
