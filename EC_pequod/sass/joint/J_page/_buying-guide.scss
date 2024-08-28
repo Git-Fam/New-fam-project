@@ -31,7 +31,6 @@
 
     .link {
       text-align: center;
-      padding: 16px 0 46px;
       border-right: 1px solid $header3;
 
       @include pc {
@@ -42,7 +41,12 @@
         width: 50%;
       }
 
-
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 16px 0 46px;
+      }
 
 
       .TX {
@@ -69,8 +73,8 @@
           border-bottom: 2px solid $P-white;
           border-radius: 1px;
           position: absolute;
-          width: 4px;
-          height: 5px;
+          width: 6px;
+          height: 7px;
           top: 31px;
           left: 50%;
           translate: -50% 0;
@@ -113,10 +117,11 @@
       li {
         margin-top: 60px;
 
-          display: flex;
-          @include sp{
-            flex-direction: column;
-          }
+        display: flex;
+
+        @include sp {
+          flex-direction: column;
+        }
 
 
         .img {
@@ -159,7 +164,8 @@
               left: 55%;
               width: 100%;
             }
-            @include sp{
+
+            @include sp {
               order: 1;
             }
 
@@ -174,7 +180,8 @@
               flex: 1;
               margin-top: 25px;
             }
-            @include sp{
+
+            @include sp {
               order: 3;
             }
           }
