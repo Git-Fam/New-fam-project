@@ -126,7 +126,8 @@
               .form-check {
                 display: flex;
                 align-items: center;
-                @include sp{
+
+                @include sp {
                   padding-left: 0;
                 }
               }
@@ -176,7 +177,7 @@
                 display: flex;
                 align-items: center;
                 gap: 5px;
-                color:$mainF;
+                color: $mainF;
 
                 .custom-select {
                   border: none;
@@ -253,12 +254,14 @@
             }
 
             .content {
-              @include sp{
+              @include sp {
                 width: 100%;
                 padding-block: 14px;
               }
+
               .blue {
                 align-items: center;
+                display: flex;
 
                 @include pc {
                   margin-left: 8px;
@@ -275,13 +278,15 @@
                 border: 1px solid $subC;
                 color: $subC;
                 padding: 5px 23px 5px 13px;
-                &::after{
+
+                &::after {
                   right: 1.2em;
                   rotate: 90deg;
                 }
-                checkToggle [type=checkbox]:checked + label::after {
-                  rotate: 180deg !important;
-                }
+              }
+
+              [type=checkbox]:checked+label::after {
+                rotate: 180deg !important;
               }
 
 
@@ -334,7 +339,8 @@
 
                   }
                 }
-                &.pull-item{
+
+                &.pull-item {
                   padding-block: 18px;
                 }
               }
@@ -354,19 +360,22 @@
         }
       }
 
-      .caption{
+      .caption {
         border: none;
       }
 
       .btnArea {
         width: fit-content;
-        @include pc{
+
+        @include pc {
           margin: 60px auto 150px;
         }
-        @include sp{
+
+        @include sp {
           margin: 60px auto 100px;
         }
-        .btn-wrap{
+
+        .btn-wrap {
 
           .btn-check {
             background: $button;
@@ -378,20 +387,20 @@
             border-radius: 5px;
             display: block;
             @include wt700;
-  
+
             @include pc {
               width: 427px;
               padding: 16px;
             }
-  
+
             @include sp {
               width: 183px;
               padding: 18px 0;
             }
-  
+
           }
 
-          &::after{
+          &::after {
             display: none;
           }
 
@@ -425,13 +434,21 @@
             td {
               flex: 1;
 
-              .align-items-baseline{
+              .align-items-baseline {
                 align-items: center !important;
               }
 
               .m-small {
                 font-size: 0 !important;
                 position: relative;
+
+                a{
+                  display: block;
+                  width: 100%;
+                  height: 20px;
+                  position: absolute;
+                  top: 0;
+                }
 
                 &::before {
                   content: "セキュリティコードとは";
@@ -462,10 +479,12 @@
             margin-top: 4px;
             background: $P-white;
             border: none;
-            @include pc{
+
+            @include pc {
               margin-top: 40px;
             }
-            @include sp{
+
+            @include sp {
               margin-top: 48px;
             }
           }
@@ -475,6 +494,7 @@
           background: $buttonYellow;
           color: $whiteF;
           height: 46px;
+          margin-top: 35px;
 
 
         }

@@ -46,7 +46,13 @@
         border: 3px solid $flow-point-border;
         width: 12px;
         height: 12px;
-        top: -22px;
+
+        @include pc {
+          top: -24px;
+        }
+        @include sp{
+          top: -19px;
+        }
       }
 
       &::after {
