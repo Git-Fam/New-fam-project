@@ -434,6 +434,16 @@
             td {
               flex: 1;
 
+              .efoBox {
+                input , select{
+                  height: 46px;
+                  margin-top: 4px;
+                  background: $P-white;
+                  border: none;
+
+                }
+              }
+
               .align-items-baseline {
                 align-items: center !important;
               }
@@ -441,8 +451,9 @@
               .m-small {
                 font-size: 0 !important;
                 position: relative;
+                top: 33px;
 
-                a{
+                a {
                   display: block;
                   width: 100%;
                   height: 20px;
@@ -474,20 +485,6 @@
             }
           }
 
-          .ime_d .expireY {
-            height: 46px;
-            margin-top: 4px;
-            background: $P-white;
-            border: none;
-
-            @include pc {
-              margin-top: 40px;
-            }
-
-            @include sp {
-              margin-top: 48px;
-            }
-          }
         }
 
         .btn {
