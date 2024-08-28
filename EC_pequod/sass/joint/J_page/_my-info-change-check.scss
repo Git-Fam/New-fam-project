@@ -31,7 +31,7 @@
     .item {
       .content {
         width: 100% !important;
-        padding-block: 18px;
+        padding-block: 18px !important;
       }
     }
 
@@ -51,6 +51,7 @@
     }
 
     @include sp {
+      width: 90%;
       margin-top: 60px;
       gap: 15px;
     }
@@ -71,9 +72,17 @@
 
         @include sp {
           width: calc(152 / 350 * 100%);
-          min-width: 211px;
+          min-width: 200px;
+        }
+        @media screen and (max-width: 460px) {
+          min-width: 170px;
         }
         .btn-wrap{
+          .TX{
+            @media screen and (max-width: 460px) {
+              font-size: 16px;
+            }
+          }
           &::after{
             display: none;
           }
@@ -87,7 +96,6 @@
 
         @include sp {
           width: calc(152 / 350 * 100%);
-          min-width: initial;
         }
         .btn-wrap{
           &::after{

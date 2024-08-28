@@ -25,5 +25,11 @@
   .subscHistoryBox {
     margin-top: 25px;
     border: none;
+
+    .historyDetailCol {
+      @include pc {
+        flex-basis: calc(100% / 3) !important;
+      }
+    }
   }
 }
