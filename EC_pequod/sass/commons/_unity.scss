@@ -75,3 +75,10 @@ body {
     margin: 0 auto;
   }
 }
+
+.cartNav{
+
+  @include pc{
+    display: flex !important;
+  }
+}
