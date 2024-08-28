@@ -1,0 +1,312 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  contact
+----------------------- */
+
+.contact-container {
+
+  .contact-content {
+
+    @include pc {
+      margin-top: 100px;
+    }
+
+    @include sp {
+      margin-top: 60px;
+    }
+
+    // 入力
+    &_inner {
+
+      @include pc {
+        @include column(100px);
+      }
+
+      @include sp {
+        @include column(30px);
+        background: #F3F9FB;
+        padding: 35px 30px 33px;
+
+      }
+
+      .contact_main {
+
+        @include pc {
+          background: #F3F9FB;
+          padding: 71px 107px 101px;
+          @include column(15px);
+        }
+
+        @include sp {
+          @include column(30px);
+        }
+
+        .contact_main_items {
+          .item_title {
+            margin-bottom: 4px;
+
+            .TX {
+              color: #989898;
+              @include wt500;
+              line-height: 1.5;
+              letter-spacing: 1.3px;
+              font-size: 13px;
+
+              span {
+
+                @include sp {
+                  font-size: 10px;
+                  letter-spacing: 1px;
+                }
+              }
+            }
+          }
+
+          .item_input {
+            display: flex;
+
+            @include pc {
+              gap: 21px;
+            }
+
+            @include sp {
+              gap: 10px;
+            }
+
+            .input_block {
+              width: 100%;
+
+              .input {
+                width: 100%;
+                display: block;
+                border: none;
+                appearance: none;
+                resize: none;
+                height: 46px;
+
+                &.textarea {
+                  height: 200px;
+                }
+              }
+
+              .select-wrap {
+                position: relative;
+
+                &::before {
+                  content: "";
+                  display: block;
+                  width: 6px;
+                  height: 15px;
+                  @include iconContain($selectArrow);
+                  position: absolute;
+                  top: 50%;
+                  translate: 0 -50%;
+                  right: 5px;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .contact_btn {
+
+        input {
+          border-radius: 5px;
+          background: #57C6EA;
+          border: none;
+          margin: 0 auto;
+          display: block;
+          color: #FFF;
+          @include wt700;
+          line-height: 1.5;
+
+          @include pc {
+            width: 427px;
+            padding-block: 16px;
+            letter-spacing: 2.5px;
+            font-size: 25px;
+          }
+
+          @include sp {
+            width: 183px;
+            padding-block: 17px 18px;
+            font-size: 15px;
+            letter-spacing: 1.5px;
+          }
+        }
+      }
+    }
+
+    // 確認
+    .contact-confirm-content_inner{
+
+      @include pc{
+        padding-inline: 60px;
+      }
+      
+      @include sp{
+        padding-inline: 20px;
+      }
+
+      .contact-confirm-text {
+        margin-bottom: 30px;
+  
+        .TX {
+          color: #989898;
+          @include wt500;
+          line-height: 1.5;
+          letter-spacing: 1.2px;
+          font-size: 12px;
+        }
+      }
+
+      .contact-confirm-form {
+
+        @include pc {
+          @include column(30px);
+        }
+  
+        @include sp {
+          @include column(60px);
+        }
+  
+        .form_content {
+  
+          .form_content-main {
+            @include column(1px);
+  
+            .main_item {
+              display: flex;
+              gap: 1px;
+  
+              @include pc {
+                min-height: 70px;
+              }
+  
+              @include sp {
+                min-height: 58px;
+              }
+  
+              &-title {
+                background: #A8DAE9;
+                flex-shrink: 0;
+                padding: 5px;
+                
+                @include pc {
+                  width: 147px;
+                  padding-top: 25px;
+                }
+  
+                @include sp {
+                  width: 111px;
+                  padding-top: 20px;
+                }
+  
+                .TL {
+                  color: #FFF;
+                  @include wt700;
+                  text-align: center;
+                  
+                  @include pc{
+                    line-height: 1.5;
+                    font-size: 15px;
+                  }
+                  
+                  @include sp{
+                    line-height: 1;
+                    font-size: 12px;
+                  }
+                }
+              }
+  
+              &-text {
+                background: #F3F9FB;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 100%;
+                padding: 5px 38px;
+  
+                @include sp{
+                  padding-inline: 15px;
+                }
+  
+                .TX {
+                  color: #585D5F;
+                  @include wt500;
+                  line-height: 1.5;
+                  font-size: 15px;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .confirm-content_btn {
+        display: flex;
+        justify-content: center;
+  
+        @include pc {
+          margin-top: 50px;
+          gap: 23px;
+        }
+  
+        @include sp {
+          margin-top: 60px;
+          gap: 15px;
+        }
+  
+        .btn_back,
+        .btn_submit {
+          color: #FFF;
+          @include wt700;
+          line-height: 1.5;
+          font-size: 20px;
+          letter-spacing: 2px;
+          cursor: pointer;
+          border-radius: 5px;
+          @include center;
+          position: relative;
+          border: none;
+          margin: 0;
+  
+          @include pc {
+            height: 70px;
+          }
+  
+          @include sp {
+            height: 58px;
+          }
+        }
+  
+        .btn_back {
+          background: #D1D1D1;
+  
+          @include pc {
+            width: max(calc((242 / 700) * 100%), 242px);
+          }
+  
+          @include sp {
+            font-size: 13px;
+            width: max(calc((152 / 350) * 100%), 152px);
+          }
+        }
+  
+        .btn_submit {
+          background: #57C6EA;
+  
+          @include pc {
+            width: calc((427 / 700) * 100%);
+          }
+  
+          @include sp {
+            width: calc((183 / 350) * 100%);
+          }
+        }
+      }
+    }
+  }
+}

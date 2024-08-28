@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og: https://ogp.me/ns#">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
+    <meta name="format-detection" content="email=no,telephone=no,address=no" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta property="og:locale" content="ja_JP" />
+
+    <!-- ▼SEO -->
+    <link rel="”canonical”" href="”URL”" />
+    <!-- ジェネレーターURL→ https://metatags.io/ -->
+
+    <!-- ▼ファビコン -->
+    <!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
+
+    <!-- ▼クロールして欲しくない -->
+    <!-- <meta name="robots" content="noindex,nofollow"> -->
+
+    <!-- ▼テーマカラー -->
+    <!-- <meta name="theme-color" content="#e9c931"> -->
+
+    <!-- ▼CSS -->
+    <link rel="stylesheet" href="css/main.css?ver=1.0.0" />
+    <link rel="stylesheet" href="css/main-sp.css?ver=1.0.0" />
+
+    <!-- ▼フォント -->
+
+
+</head>
+
+<body>
+
+
+<div class="template_wrap">
+    <div class="template_inner880">
+        <div class="contact-container">
+            <section>
+                <div class="C_TL">
+                    <div class="icon"></div>
+                    <h2 class="TL">お問い合わせ-フォーム</h2>
+                </div>
+                {if $errors|@count > 0}<div class="errorDisp">{include file='errors.tpl' errors=$errors}</div>{/if}
+                <div class="contact-content">
+                    <form method="post" action="{$base_url}/shop/post">
+
+                        <div class="contact-content_inner">
+                            <div class="contact_main">
+
+                                <div class="contact_main_items">
+                                    <div class="item_title">
+                                        <p class="TX">お名前</p>
+                                    </div>
+                                    <div class="item_input">
+                                        <div class="input_block">
+                                            <input type="text" name="name" value="{$view->escape($name)}"
+                                                maxlength="50" class="input">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="contact_main_items">
+                                    <div class="item_title">
+                                        <p class="TX">フリガナ</p>
+                                    </div>
+                                    <div class="item_input">
+                                        <div class="input_block">
+                                            <input type="text" name="kana" value="{$view->escape($kana)}"
+                                                maxlength="50" class="input">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="contact_main_items">
+                                    <div class="item_title">
+                                        <p class="TX">メールアドレス</p>
+                                    </div>
+                                    <div class="item_input">
+                                        <div class="input_block">
+                                            <input type="email" name="address" value="{$view->escape($address)}"
+                                                maxlength="100" class="input">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="contact_main_items">
+                                    <div class="item_title">
+                                        <p class="TX">メールアドレス<span>（確認のためもう一度入してください）</span></p>
+                                    </div>
+                                    <div class="item_input">
+                                        <div class="input_block">
+                                            <input type="email" name="address2" value="{$view->escape($address2)}"
+                                                maxlength="100" class="input">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="contact_main_items">
+                                    <div class="item_title">
+                                        <p class="TX">電話番号</p>
+                                    </div>
+                                    <div class="item_input">
+                                        <div class="input_block">
+                                            <input type="tel" name="tel1" value="{$view->escape($tel1)}"
+                                                maxlength="6" class="input">
+                                        </div>
+                                        <div class="input_block">
+                                            <input type="tel" name="tel2" value="{$view->escape($tel2)}"
+                                                maxlength="6" class="input">
+                                        </div>
+                                        <div class="input_block">
+                                            <input type="tel" name="tel3" value="{$view->escape($tel3)}"
+                                                maxlength="6" class="input">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="contact_main_items">
+                                    <div class="item_title">
+                                        <p class="TX">お問い合わせ件名</p>
+                                    </div>
+                                    <div class="item_input">
+                                        <div class="input_block">
+                                            <div class="select-wrap">
+                                                <select name="sbt_id" class="input">
+                                                    {if $sbt_list|count > 0}
+                                                    {foreach from=$sbt_list item=value}
+                                                    {if $value.sbt_id === $sbt_id}
+                                                    <option value="{$value.sbt_id}" selected>{$value.sbt_name}
+                                                    </option>
+                                                    {else}
+                                                    <option value="{$value.sbt_id}">{$value.sbt_name}</option>
+                                                    {/if}
+                                                    {/foreach}
+                                                    {else}
+                                                    <option value="0">その他お問い合わせ</option>
+                                                    {/if}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="contact_main_items">
+                                    <div class="item_title">
+                                        <p class="TX">お問い合わせ内容　<span>(全角1500文字以内)</span></p>
+                                    </div>
+                                    <div class="item_input">
+                                        <div class="input_block">
+                                            <textarea name="contact" class="input textarea">{$view->escape($contact)}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="contact_btn">
+                                <input type="submit" name="confirm_sub" value="入力内容を確認する">
+                                <input type="hidden" name="_token" value="{$_token}">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-1.7.1.min.js"
+        integrity="sha256-iBcUE/x23aI6syuqF7EeT/+JFBxjPs5zeFJEXxumwb0=" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+    <script src="js/joint.js"></script>
+</body>
+
+</html>

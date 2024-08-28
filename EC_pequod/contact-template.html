@@ -1,0 +1,66 @@
+{$view->setLayoutVar('title', 'お問い合わせ - 入力フォーム')}
+{$view->setLayoutVar('keywords', '')}
+{$view->setLayoutVar('description', '')}
+
+
+<div id="contents">
+	<section class="container">
+		<h2>お問い合わせ - 入力フォーム</h2>
+
+		{if $errors|@count > 0}<div class="errorDisp">{include file='errors.tpl' errors=$errors}</div>{/if}
+
+		<form method="post" action="{$base_url}/shop/post">
+			<div class="mainForm askForm">
+				<dl class="row m-0">
+					<dt>お名前<span class="required"></span></dt>
+					<dd><input type="text" name="name" value="{$view->escape($name)}" maxlength="50" class="ime_a form-control"></dd>
+
+					<dt>フリガナ<span class="required"></span></dt>
+					<dd><input type="text" name="kana" value="{$view->escape($kana)}" maxlength="50" class="ime_a form-control"></dd>
+
+					<dt>メールアドレス<span class="required"></span></dt>
+					<dd>
+						<input type="email" name="address" value="{$view->escape($address)}" maxlength="100" class="ime_d form-control">
+						<div class="description">確認のためもう一度入力してください</div>
+						<input type="email" name="address2" value="{$view->escape($address2)}" maxlength="100" class="ime_d form-control">
+					</dd>
+
+					<dt>電話番号</dt>
+					<dd>
+						<div class="row">
+							<div class="col-4"><input type="tel" name="tel1" value="{$view->escape($tel1)}" maxlength="6" class="ime_d form-control"></div>
+							<div class="col-4"><input type="tel" name="tel2" value="{$view->escape($tel2)}" maxlength="6" class="ime_d form-control"></div>
+							<div class="col-4"><input type="tel" name="tel3" value="{$view->escape($tel3)}" maxlength="6" class="ime_d form-control"></div>
+						</div>
+					</dd>
+
+					<dt>お問い合わせ件名<span class="required"></span></dt>
+					<dd>
+						<select name="sbt_id" class="custom-select">
+							{if $sbt_list|count > 0}
+							{foreach from=$sbt_list item=value}
+							{if $value.sbt_id === $sbt_id}
+							<option value="{$value.sbt_id}" selected>{$value.sbt_name}</option>
+							{else}
+							<option value="{$value.sbt_id}">{$value.sbt_name}</option>
+							{/if}
+							{/foreach}
+							{else}
+							<option value="0">その他お問い合わせ</option>
+							{/if}
+						</select>
+					</dd>
+
+					<dt>お問い合わせ内容<span class="required"></span><br><span class="description">(全角1500文字以内)</span></dt>
+					<dd><textarea name="contact" class="ime_a form-control">{$view->escape($contact)}</textarea></dd>
+				</dl>
+
+				<div class="btnArea text-center">
+					<div class="btn-wrap"><input type="submit" name="confirm_sub" value="入力内容を確認する" class="btn_m"></div>
+					<input type="hidden" name="_token" value="{$_token}">
+				</div>
+			</div>
+		</form>
+
+	</section><!-- //.container -->
+</div><!-- //#contents -->
