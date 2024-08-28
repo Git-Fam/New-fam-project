@@ -109,10 +109,13 @@
 
 
           .img {
-            height: 130px;
-            width: 130px;
-            aspect-ratio: 1/1;
-
+            aspect-ratio: 1/1;  
+            @include pc{
+              width: 130px;
+            }
+            @include sp{
+              width: 103px;
+            }
           }
 
           &-TX {
