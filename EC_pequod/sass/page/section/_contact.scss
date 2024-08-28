@@ -140,19 +140,19 @@
     }
 
     // 確認
-    .contact-confirm-content_inner{
+    .contact-confirm-content_inner {
 
-      @include pc{
+      @include pc {
         padding-inline: 60px;
       }
-      
-      @include sp{
+
+      @include sp {
         padding-inline: 20px;
       }
 
       .contact-confirm-text {
         margin-bottom: 30px;
-  
+
         .TX {
           color: #989898;
           @include wt500;
@@ -167,60 +167,60 @@
         @include pc {
           @include column(30px);
         }
-  
+
         @include sp {
           @include column(60px);
         }
-  
+
         .form_content {
-  
+
           .form_content-main {
             @include column(1px);
-  
+
             .main_item {
               display: flex;
               gap: 1px;
-  
+
               @include pc {
                 min-height: 70px;
               }
-  
+
               @include sp {
                 min-height: 58px;
               }
-  
+
               &-title {
                 background: #A8DAE9;
                 flex-shrink: 0;
                 padding: 5px;
-                
+
                 @include pc {
                   width: 147px;
                   padding-top: 25px;
                 }
-  
+
                 @include sp {
                   width: 111px;
                   padding-top: 20px;
                 }
-  
+
                 .TL {
                   color: #FFF;
                   @include wt700;
                   text-align: center;
-                  
-                  @include pc{
+
+                  @include pc {
                     line-height: 1.5;
                     font-size: 15px;
                   }
-                  
-                  @include sp{
+
+                  @include sp {
                     line-height: 1;
                     font-size: 12px;
                   }
                 }
               }
-  
+
               &-text {
                 background: #F3F9FB;
                 display: flex;
@@ -228,11 +228,11 @@
                 justify-content: center;
                 width: 100%;
                 padding: 5px 38px;
-  
-                @include sp{
+
+                @include sp {
                   padding-inline: 15px;
                 }
-  
+
                 .TX {
                   color: #585D5F;
                   @include wt500;
@@ -248,17 +248,17 @@
       .confirm-content_btn {
         display: flex;
         justify-content: center;
-  
+
         @include pc {
           margin-top: 50px;
           gap: 23px;
         }
-  
+
         @include sp {
           margin-top: 60px;
           gap: 15px;
         }
-  
+
         .btn_back,
         .btn_submit {
           color: #FFF;
@@ -272,36 +272,36 @@
           position: relative;
           border: none;
           margin: 0;
-  
+
           @include pc {
             height: 70px;
           }
-  
+
           @include sp {
             height: 58px;
           }
         }
-  
+
         .btn_back {
           background: #D1D1D1;
-  
+
           @include pc {
             width: max(calc((242 / 700) * 100%), 242px);
           }
-  
+
           @include sp {
             font-size: 13px;
             width: max(calc((152 / 350) * 100%), 152px);
           }
         }
-  
+
         .btn_submit {
           background: #57C6EA;
-  
+
           @include pc {
             width: calc((427 / 700) * 100%);
           }
-  
+
           @include sp {
             width: calc((183 / 350) * 100%);
           }
