@@ -41,12 +41,13 @@
       color: $mainF;
       flex: 1;
       line-height: 1.5;
+      font-size: 15px;
 
       @include pc {
         padding: 20px 44px;
       }
       @include sp{
-        padding:15px 50px;
+        padding:15px calc(27 / 236* 100%);
       }
     }
   }
