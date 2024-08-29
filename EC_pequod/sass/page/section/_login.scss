@@ -130,6 +130,10 @@
         @include sp{
           width: 100%;
         }
+
+        &:hover {
+          background: #57C6EA;
+        }
       }
 
       .text {

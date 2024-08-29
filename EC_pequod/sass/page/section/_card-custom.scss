@@ -1,0 +1,53 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  card-custom
+----------------------- */
+
+.product-form {
+
+  .paymentDescription {
+
+    select,
+    input {
+      border: 1px solid #ccc !important;
+      margin-top: 10px;
+    }
+
+    .efoBox {
+      gap: 10px;
+    }
+
+    .selectWrap {
+      position: relative;
+      width: 100px;
+    }
+
+    .m-small {
+      position: relative;
+
+      @include pc{
+        top: 33px;
+      }
+      
+      @include sp{
+        top: 11px;
+      }
+
+      &::after {
+        content: "?";
+        font-size: 13px;
+        width: 23px;
+        height: 23px;
+        border: 1px solid #989898;
+        border-radius: 50%;
+        display: grid;
+        place-items: center center;
+        position: absolute;
+        top: 50%;
+        translate: 0 -50%;
+        left: -28px;
+      }
+    }
+  }
+}

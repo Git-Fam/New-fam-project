@@ -7,6 +7,11 @@
 #header {
   background-color: #FFF;
 
+  .container{
+    max-width: unset !important;
+    padding-right: 0 !important;
+  }
+
   .header_top_inner {
 
     @include sp {
