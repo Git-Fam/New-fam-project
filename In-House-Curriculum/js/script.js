@@ -14,6 +14,10 @@ $('.gorilla').on('click', function() {
   $('.my--content').removeClass('active');
 });
 
+$('.info_button').on('click', function() {
+  $('.my--info').toggleClass('active');
+});
+
 
 
 // input要素の値を取得して表示
