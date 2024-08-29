@@ -8,11 +8,11 @@
   @include height;
   width: 100%;
   @include imgCover('page-my.jpg');
-  background-position: center left;
+  background-position: bottom left;
   position: relative;
 
   @include pc {
-    padding: p(20) 0 p(40) p(40);
+    padding: p(20) 0 pm(40, 40) p(40);
   }
 
   @include sp {
@@ -93,6 +93,7 @@
       flex-shrink: 0;
       height: 100%;
       position: relative;
+      z-index: 9;
 
       @include pc {
         width: pm(371);
@@ -179,13 +180,406 @@
       }
     }
 
-    .my--content {
+    .my--info {
+      height: 100%;
+      position: absolute;
+      top: 0;
 
       @include pc {
+        width: 70%;
+        right: 0;
+        z-index: 8;
+      }
+
+      @include sp {
         width: 100%;
+        z-index: 9;
+        left: -100%;
+        transition: left 0.3s;
+
+        &.active {
+          left: 0;
+
+          &::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: rgba(143, 143, 143, 0.826);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+          }
+        }
+      }
+
+      .bbs {
+        @include imgContain('bbs.png');
+        background-position: center bottom;
+        aspect-ratio: 558/ 499;
+        position: absolute;
+        z-index: 1;
+
+        @include pc {
+          width: clamp(500px, p(558), 750px);
+          left: p(20);
+          bottom: p(40);
+          padding: clamp(80px, p(90), 110px) clamp(80px, p(90), 110px) clamp(140px, p(160), 200px);
+        }
+
+        @include sp {
+          width: 90%;
+          left: 50%;
+          translate: -50% 0;
+          bottom: 30%;
+          padding: s(50) s(40) s(80);
+        }
+
+        .chicken {
+          position: absolute;
+          z-index: 2;
+          display: flex;
+
+          @include pc {
+            right: p(0);
+            top: p(-60);
+          }
+
+          @include sp {
+            right: 0;
+            top: s(-40);
+          }
+
+          &--serif {
+            background: #FFF;
+            position: relative;
+            height: fit-content;
+
+            @include pc {
+              padding: p(20) p(15) p(20) p(25);
+              border-radius: p(100);
+            }
+
+            @include sp {
+              padding: s(10);
+              border-radius: s(100);
+            }
+
+            &::before {
+              content: "";
+              display: block;
+              aspect-ratio: 22/16;
+              position: absolute;
+              @include iconContain($horn);
+              rotate: 35deg;
+
+              @include pc {
+                width: p(22);
+                right: p(-10);
+                bottom: 0;
+              }
+
+              @include sp {
+                width: s(15);
+                right: s(-5);
+                bottom: 0;
+              }
+            }
+
+            .TX {
+              color: #3EADDC;
+              @include wt700;
+              letter-spacing: p(1.6);
+
+              @include pc {
+                font-size: p(16);
+              }
+
+              @include sp {
+                font-size: s(14);
+                white-space: nowrap;
+              }
+            }
+          }
+
+          &--bird {
+            aspect-ratio: 150/109;
+
+            @include pc {
+              width: p(150);
+            }
+
+            @include sp {
+              width: s(100);
+            }
+
+            iframe {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+
+        &--content {
+          height: 100%;
+          overflow-y: scroll;
+
+          @include pc {
+            @include column(p(18));
+          }
+
+          @include sp {
+            @include column(s(10));
+          }
+
+          .title {
+            .TL {
+              color: #FFF;
+              text-align: center;
+              @include wt700;
+
+              @include pc {
+                font-size: clamp(14px, p(16), 18px);
+              }
+
+              @include sp {
+                font-size: s(14);
+              }
+            }
+          }
+
+          .sentence {
+
+            li {
+              border-top: dashed #D6AC87;
+              position: relative;
+
+              @include pc {
+                padding: clamp(7px, p(8), 10px) clamp(18px, p(22), 25px) clamp(9px, p(10), 12px);
+                border-top-width: p(1);
+                @include column(p(2));
+              }
+
+              @include sp {
+                padding: s(5) s(10) s(5);
+                border-top-width: s(1);
+                @include column(s(2));
+              }
+
+              &:last-child {
+                border-bottom: dashed #D6AC87;
+
+                @include pc {
+                  border-bottom-width: p(1);
+                }
+
+                @include sp {
+                  border-bottom-width: s(1);
+                }
+              }
+
+              .time {
+                color: #E0E0E0;
+                @include wt400;
+
+                @include pc {
+                  font-size: clamp(8px, p(10), 12px);
+                }
+
+                @include sp {
+                  font-size: s(10);
+                }
+              }
+
+              .text {
+                color: #FFF;
+                @include wt500;
+                line-height: normal;
+
+                @include pc {
+                  font-size: clamp(12px, p(14), 16px);
+                }
+
+                @include sp {
+                  font-size: s(12);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .spy {
+        position: absolute;
+        z-index: 2;
+        display: flex;
+
+        @include pc {
+          left: p(-30);
+          bottom: p(-30);
+        }
+
+        @include sp {
+          align-items: center;
+          left: s(-50);
+          bottom: 20%;
+        }
+
+        .mole {
+          aspect-ratio: 150/109;
+
+          @include pc {
+            width: p(300);
+          }
+
+          @include sp {
+            width: s(200);
+          }
+
+          iframe {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        &--text {
+          position: relative;
+
+          @include pc {
+            @include column(p(24));
+            top: p(50);
+            left: p(-60);
+          }
+
+          @include sp {
+            @include column(s(10));
+            top: s(10);
+            left: s(-60);
+          }
+
+          &--serif {
+            background: #FFF;
+            position: relative;
+            height: fit-content;
+
+            @include pc {
+              padding: p(20) p(15) p(20) p(25);
+              border-radius: p(100);
+            }
+
+            @include sp {
+              padding: s(10);
+              border-radius: s(100);
+            }
+
+            &::before {
+              content: "";
+              display: block;
+              aspect-ratio: 22/16;
+              position: absolute;
+              @include iconContain($horn);
+              rotate: 333deg;
+              scale: -1 1;
+
+              @include pc {
+                width: p(22);
+                left: p(-10);
+                bottom: 0;
+              }
+
+              @include sp {
+                width: s(15);
+                left: s(-5);
+                bottom: 0;
+              }
+            }
+
+            .TX {
+              color: #F69082;
+              @include wt700;
+              letter-spacing: p(1.6);
+
+              @include pc {
+                font-size: p(16);
+              }
+
+              @include sp {
+                font-size: s(14);
+                white-space: nowrap;
+              }
+            }
+          }
+
+          &--column {
+            rotate: -2.7deg;
+
+            a {
+              color: #7A6649;
+              text-shadow: 0px 4px 20px #B58F56;
+              @include wt900;
+              display: block;
+              width: fit-content;
+              transition: all 0.3s;
+
+              @include pc {
+                margin-left: auto;
+                font-size: p(26);
+                letter-spacing: p(2.6);
+
+                &:hover {
+
+                  @include pc {
+                    translate: 5% 0;
+                  }
+                }
+              }
+
+              @include sp {
+                font-size: s(20);
+                letter-spacing: s(2);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .info_button {
+      position: fixed;
+      border-radius: 50%;
+      background: $P-F38549;
+      aspect-ratio: 1 / 1;
+      z-index: 10;
+      display: block;
+      transition: all 0.3s;
+      width: s(200);
+      top: s(-100);
+      left: s(-100);
+      cursor: pointer;
+
+      .TX {
+        color: $F-FFFFFF;
+        position: absolute;
+        bottom: 25%;
+        right: 15%;
+        text-align: center;
+        line-height: 1.5;
+        @include wt900;
+        font-size: p(18);
+        font-size: s(14);
+      }
+    }
+
+    .my--content {
+      transition: right 0.3s;
+      z-index: 10;
+
+      @include pc {
+        width: 50%;
         height: 100%;
-        position: relative;
-        right: p(-5);
+        position: absolute;
+        right: -48%;
       }
 
       @include sp {
@@ -193,12 +587,15 @@
         height: 98%;
         position: fixed;
         right: -85%;
-        top: 50%;
-        translate: 0% -50%;
-        transition: right 0.3s;
+        top: 0;
       }
 
       &.active {
+
+        @include pc {
+          right: p(-5);
+        }
+
         @include sp {
           right: 0;
         }
@@ -366,12 +763,22 @@
 
         .gorilla {
           position: absolute;
-          left: s(10);
-          top: s(10);
           z-index: 10;
           aspect-ratio: 1 / 1;
           @include iconContain($close);
-          width: s(20);
+          cursor: pointer;
+
+          @include pc {
+            width: p(20);
+            left: p(40);
+            top: p(20);
+          }
+
+          @include sp {
+            width: s(20);
+            left: s(10);
+            top: s(10);
+          }
         }
 
         .tab--content {
@@ -584,7 +991,7 @@
 
                         &:focus {
 
-                          @include pc{
+                          @include pc {
                             box-shadow: 0 0 3px rgb(0, 161, 255);
                           }
                         }
@@ -592,7 +999,7 @@
                         // -webkit-向けのつまみ
                         &::-webkit-slider-thumb {
 
-                          @include pc{
+                          @include pc {
                             -webkit-appearance: none;
                             width: 0;
                             height: 0;
@@ -631,14 +1038,14 @@
                         // Firefoxで点線が周りに表示されてしまう問題の解消
                         &::-moz-focus-outer {
 
-                          @include pc{
+                          @include pc {
                             border: 0;
                           }
                         }
 
                         // つまみをドラッグしているときのスタイル
                         &:active::-webkit-slider-thumb {
-                          @include pc{
+                          @include pc {
                             filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.3));
                           }
                         }

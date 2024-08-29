@@ -7,7 +7,6 @@
             
             <div class="single--wap">
                 <div class="single--wap--content">
-
                     <div class="single--wap--content--title">
                         <div class="single--wap--content--title--img">
                             <img class="img" src="<?php echo has_post_thumbnail() ? get_the_post_thumbnail_url() : get_template_directory_uri() . '/img/no-img.png'; ?>" alt="">
@@ -19,10 +18,8 @@
                             <p class="TX"><?php the_time('Y.m.d'); ?></p>
                         </div>
                     </div>
-
                     <div class="single--wap--content--text">
                         <p><?php the_content(); ?></p>
-
                         <div class="single-nation">
                             <div class="single-nation-text">
                                 <?php 
@@ -42,7 +39,6 @@
                                 <?php endif; ?>
                             </div>
                         </div>
-
                     </div>
     
                 </div>
