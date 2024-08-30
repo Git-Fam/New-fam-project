@@ -102,11 +102,11 @@ $SEO01_value = get_user_meta($user_id, 'SEO01', true) ?: '0';
                                     <p class="time"><?php echo get_the_date('Y.m.d'); ?></p>
                                     <p class="text"><?php the_title(); ?></p>
                                 </li>
-                        <?php
+                            <?php
                             endwhile;
                             wp_reset_postdata();
                         else :
-                        ?>
+                            ?>
                             <li>
                                 <p class="text">お知らせはありません。</p>
                             </li>
@@ -534,14 +534,14 @@ $SEO01_value = get_user_meta($user_id, 'SEO01', true) ?: '0';
             </div>
         </div>
 
-    </div>
+        <!-- ログイン中のみ表示 -->
+        <?php if (is_user_logged_in()): ?>
+            <a class="curriculum--btn" href="<?php bloginfo('url'); ?>/curriculum" target="_blank" rel="noopener noreferrer">
+                <p class="TX">カリキュラム<br>一覧</p>
+            </a>
+        <?php endif; ?>
 
-    <!-- ログイン中のみ表示 -->
-    <?php if (is_user_logged_in()): ?>
-        <a class="curriculum--btn" href="<?php bloginfo('url'); ?>/curriculum" target="_blank" rel="noopener noreferrer">
-            <p class="TX">カリキュラム<br>一覧</p>
-        </a>
-    <?php endif; ?>
+    </div>
 </div>
 
 <?php get_footer(); ?>

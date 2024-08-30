@@ -14,6 +14,7 @@ $('.gorilla').on('click', function() {
   $('.my--content').removeClass('active');
 });
 
+
 $('.info_button').on('click', function() {
   $('.my--info').toggleClass('active');
 });
