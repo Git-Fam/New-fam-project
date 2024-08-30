@@ -27,15 +27,15 @@
     position: absolute;
     
     @include pc{
-      width: pm(20);
-      right: pm(-52);
-      bottom : pm(168);
+      width: pm(35);
+      right: p(-90);
+      bottom : pm(210);
     }
     
     @include sp{
-      width: s(10);
+      width: s(15);
       right: s(-20);
-      bottom : s(60);
+      bottom : s(90);
     }
   }
 
@@ -176,7 +176,7 @@
         }
 
         @include sp {
-          font-size: s(16);
+          font-size: s(13);
           letter-spacing: s(1);
         }
       }

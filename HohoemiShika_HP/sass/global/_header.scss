@@ -1,4 +1,4 @@
-@use "../functions" as *;
+@use "../functions"as *;
 
 /* -----------------------
   header
@@ -8,21 +8,138 @@
   width: 100%;
   position: fixed;
   top: 0;
-  top: -100%;
   left: 0;
   z-index: 999;
-  transition: top 0.3s ease-in-out;
+  // transition: top 0.3s ease-in-out;
+  background: $B-FFFFFF;
+  display: flex;
+
+  @include pc {
+    padding: 0 p(120) 0 p(30);
+  }
+
+  @include sp {
+    padding:0 s(93) 0 s(11);
+    align-items: center;
+
+  }
 
   &.active {
     top: 0;
   }
 
   @include pc {
-    height: p(65);
+    height: p(60);
   }
 
   @include sp {
-    height: s(63);
+    height: s(55);
+  }
+
+  .logo {
+    img {
+      @include pc {
+        width: p(182);
+        height: p(55);
+      }
+
+      @include sp {
+        width: s(133);
+        height: s(33);
+      }
+    }
+  }
+
+  .header-btn {
+    display: flex;
+    margin-left: auto;
+
+    @include pc {
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      opacity: 0.8;
+      color: $F-FFFFFF;
+      text-shadow: 0 0 0;
+      justify-content: center;
+
+      @include pc {
+        height: p(50);
+        letter-spacing: p(4.9);
+      }
+
+      @include sp {
+        width: s(35);
+        height: s(35);
+      }
+
+      .TX {
+        @include pc {
+          font-size: p(13);
+          text-align: center;
+        }
+      }
+
+    }
+
+
+
+    .tel {
+      background: linear-gradient(88deg, #DCC875 2.22%, #B6A45B 98.58%);
+
+      @include pc {
+        border-radius: 0 0 0 p(10);
+        width: p(137);
+      }
+      @include sp{
+        border-radius:s(5) 0 0 s(5); 
+      }
+
+      .icon {
+        @include imgContain("telIcon.svg");
+
+        @include pc {
+          width: p(22);
+          height: p(22);
+          margin-right: p(5);
+        }
+
+        @include sp {
+          width: s(21);
+          height: s(20);
+        }
+      }
+
+    }
+
+    .insta {
+      background: linear-gradient(90deg, #DCC875 3.33%, #B6A45B 100%);
+
+      @include pc {
+        border-radius: 0 0 p(10) 0;
+        width: p(183);
+      }
+      @include sp{
+        border-radius: 0 s(5) s(5) 0;
+      }
+
+      .icon {
+        @include imgContain("insta.png");
+
+        @include pc {
+          width: p(23);
+          height: p(23);
+          margin-right: p(5);
+        }
+
+        @include sp {
+          width: s(21);
+          height: s(21);
+        }
+      }
+    }
   }
 
   .burger {
@@ -36,12 +153,14 @@
 
     @include pc {
       width: p(70);
+      top: p(10);
       right: p(18);
     }
 
     @include sp {
       width: s(70);
       right: s(14);
+      top: s(5);
     }
 
     &.active {

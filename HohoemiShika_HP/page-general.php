@@ -279,7 +279,7 @@
             <div class="C_periodontalDisease">
                 <div class="C_periodontalDisease--inner">
                     <div class="C_TL">
-                        <p class="TL-bg rollAnime color">periodontal <br class="sp">disease</p>
+                        <p class="TL-bg rollAnime color">Periodontal <br class="sp">disease</p>
                         <h2 class="main-TL up speed-05 delay-03">歯周病治療</h2>
                     </div>
 

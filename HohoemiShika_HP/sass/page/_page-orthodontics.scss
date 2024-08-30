@@ -1,4 +1,4 @@
-@use "../functions" as *;
+@use "../functions"as *;
 
 /* -----------------------
   page-orthodontics
@@ -64,6 +64,8 @@
             padding: s(12) 0;
             border-top-width: s(1);
             border-left-width: s(1);
+            display: grid;
+            place-items: center center;
           }
 
           &:last-child {
@@ -146,6 +148,41 @@
             }
           }
         }
+
+        .invisalign {
+          .C_medicalCase{
+            position: relative;
+            .C_pointText {
+              position: absolute;
+              @include pc {
+                text-align: right;
+                margin-top: p(20);
+              }
+  
+              @include sp {
+                bottom: s(-30);
+                left: s(0);
+              }
+            }  
+          }
+          .C_InvisalignFlow--container--inner{
+            flex-direction: column;
+            align-items: center;
+            @include pc{
+              margin-top: p(207);
+              gap: p(198);
+            }
+            @include sp{
+              margin-top: s(78);
+              gap: s(108);
+            }
+            .C_InvisalignFlowItems{
+              &::before{
+                display: none;
+              }
+            }
+          }      
+        }
       }
     }
   }
@@ -204,6 +241,7 @@
   }
 
   &--invisalignFlow {
+    position: relative;
 
     @include pc {
       margin-bottom: p(171);
@@ -212,6 +250,26 @@
     @include sp {
       margin-bottom: s(50);
     }
+
+    &::after {
+      content: "Scroll";
+      color: $F-93802A;
+      position: absolute;
+      left: 50%;
+      translate: -50% 0;
+      bottom: 0;
+
+      @include pc {
+        font-size: pm(30);
+        bottom: s(-20);
+      }
+
+      @include sp {
+        font-size: s(18);
+        bottom: s(-30);
+      }
+    }
+
   }
 
   // &--price{

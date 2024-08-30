@@ -49,18 +49,44 @@ $(function () {
   });
 
   var prevScrollpos = window.pageYOffset;
-  window.onscroll = function () {
-    var currentScrollpos = window.pageYOffset;
-    var burgerActive = document.querySelector(".burger").classList.contains("active");
+window.onscroll = function () {
+  var currentScrollpos = window.pageYOffset;
+  var burgerActive = document.querySelector(".burger").classList.contains("active");
 
-    if ((prevScrollpos > currentScrollpos || currentScrollpos < 500) && !burgerActive) {
-      document.querySelector(".header").classList.remove("active");
-    } else if (!burgerActive) {
-      document.querySelector(".header").classList.add("active");
-    }
-
-    prevScrollpos = currentScrollpos;
+  if (prevScrollpos > currentScrollpos && !burgerActive) {
+    document.querySelector(".header").classList.remove("active");
+  } else if (!burgerActive) {
+    document.querySelector(".header").classList.add("active");
   }
+
+  prevScrollpos = currentScrollpos;
+}
+
+window.onscroll = function () {
+  var currentScrollpos = window.pageYOffset;
+  var burgerActive = document.querySelector(".burger").classList.contains("active");
+  var header = document.querySelector(".header");
+
+  if (currentScrollpos < 200) {
+    header.classList.remove("active");
+  } else if (!burgerActive) {
+    header.classList.add("active");
+  }
+
+  prevScrollpos = currentScrollpos;
+};
+
+  // window.onscroll = function () {
+  //   var currentScrollpos = window.pageYOffset;
+  //   var burgerActive = document.querySelector(".burger").classList.contains("active");
+  //   if ((prevScrollpos > currentScrollpos || currentScrollpos < 200) && !burgerActive) {
+  //     document.querySelector(".header").classList.remove("active");
+  //   } else if (!burgerActive) {
+  //     document.querySelector(".header").classList.add("active");
+  //   }
+
+  //   prevScrollpos = currentScrollpos;
+  // }
 
   // 要素が画面下部に来たらshowを付与
   $(window).scroll(function () {
@@ -251,4 +277,6 @@ document.addEventListener('DOMContentLoaded', function () {
       activeContent.classList.add('active');
     }
   }
-});
+
+
+  });

@@ -153,11 +153,44 @@
                         </div>
                     </div>
                 </div>
+                <!-- 05 -->
+                <div class="C_frontTreatment">
+                    <div class="C_frontTreatment--title C_frontTreatment--title__left">
+                        <h3 class="TL">矯正治療(インビザライン)</h3>
+                        <p class="TX">Orthodontic treatment</p>
+                    </div>
+                    <div class="C_frontTreatment--container">
+                        <div class="item--top">
+                            <div class="img img-5-1"></div>
+                            <div class="content">
+                                <div class="number">
+                                    <p class="TX">症例<span>5</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item--bottom">
+                            <div class="img img-5-2"></div>
+                            <div class="content">
+                                <div class="text">
+                                    <p class="TX invisalign">
+                                        <span class="small">短期間、痛み少なく</span><span class="medium medium_small">目立ちにくい</span><br>
+                                        <span class="big">インビザライン治療</span>
+                                    </p>
+                                </div>
+                                <!-- page-orthodonticsのインビザラインへ -->
+                                <a class="C_viewMore" href="<?php bloginfo('url'); ?>/orthodontics?tab=invisalign#example">
+                                    <p class="TX">View more</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <!-- インプラント -->
             <div class="front--implant">
                 <div class="C_frontTreatment">
-                    <div class="C_frontTreatment--title C_frontTreatment--title__left">
+                    <div class="C_frontTreatment--title C_frontTreatment--title__right">
                         <h3 class="TL">インプラント治療</h3>
                         <p class="TX">Orthodontic treatment</p>
                     </div>

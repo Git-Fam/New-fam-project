@@ -290,4 +290,33 @@ footer{
       }
     }
   }
+  .go-top{
+    @include imgContain("go-top.svg");
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+
+    @include pc{
+      width: p(77);
+      height: p(77);
+    }
+    @include sp{
+      width: s(50);
+      height: s(50);
+    }
+  }
+  .active{
+    opacity: 1;
+    position: fixed;
+    z-index: 999;
+
+    
+    @include pc{
+      bottom: p(30);
+      right: p(30);
+    }
+    @include sp{
+      bottom: s(20);
+      right: s(20);
+    }
+  }
 }

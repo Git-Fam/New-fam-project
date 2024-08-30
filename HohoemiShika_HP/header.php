@@ -9,30 +9,38 @@
     <meta property="og:locale" content="ja_JP" />
 
     <!-- ▼SEO -->
-    <link rel="”canonical”" href="<?php echo get_home_url(); ?>" />
-    <title>ほほえみ歯科｜名古屋市名東区の歯医者</title>
-    <meta name="title" content="ほほえみ歯科｜名古屋市名東区の歯医者" />
-    <meta name="description" content="名古屋市名東区社台の「ほほえみ歯科」です。一般歯科・小児歯科・矯正歯科・口腔外科・審美歯科・インプラント・入れ歯などを診療します。通院が難しい方へ訪問診療も行っています。歯列矯正・インプラントは相談無料。東山線「上社」駅より徒歩10分。" />
+    <link rel="canonical" href="<?php echo get_home_url(); ?>" />
+    <title><?php bloginfo('name'); ?><?php if (wp_title('', false)) {
+                                            echo ' | ' . wp_title('', false);
+                                        } ?></title>
+    <meta name="title" content="<?php bloginfo('name'); ?><?php if (wp_title('', false)) {
+                                                                echo ' | ' . wp_title('', false);
+                                                            } ?>" />
+    <meta name="description" content="<?php bloginfo('description'); ?>" />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="<?php echo get_home_url(); ?>" />
-    <meta property="og:title" content="ほほえみ歯科｜名古屋市名東区の歯医者" />
-    <meta property="og:description" content="名古屋市名東区社台の「ほほえみ歯科」です。一般歯科・小児歯科・矯正歯科・口腔外科・審美歯科・インプラント・入れ歯などを診療します。通院が難しい方へ訪問診療も行っています。歯列矯正・インプラントは相談無料。東山線「上社」駅より徒歩10分。" />
-    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/ima/meta.png" />
+    <meta property="og:title" content="<?php bloginfo('name'); ?><?php if (wp_title('', false)) {
+                                                                        echo ' | ' . wp_title('', false);
+                                                                    } ?>" />
+    <meta property="og:description" content="<?php bloginfo('description'); ?>" />
+    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.png" />
 
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="<?php echo get_home_url(); ?>" />
-    <meta property="twitter:title" content="ほほえみ歯科｜名古屋市名東区の歯医者" />
-    <meta property="twitter:description" content="名古屋市名東区社台の「ほほえみ歯科」です。一般歯科・小児歯科・矯正歯科・口腔外科・審美歯科・インプラント・入れ歯などを診療します。通院が難しい方へ訪問診療も行っています。歯列矯正・インプラントは相談無料。東山線「上社」駅より徒歩10分。" />
-    <meta property="twitter:image" content="<?php echo get_template_directory_uri(); ?>/ima/meta.png" />
+    <meta property="twitter:title" content="<?php bloginfo('name'); ?><?php if (wp_title('', false)) {
+                                                                            echo ' | ' . wp_title('', false);
+                                                                        } ?>" />
+    <meta property="twitter:description" content="<?php bloginfo('description'); ?>" />
+    <meta property="twitter:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.png" />
 
-    <!-- <link rel="apple-touch-icon" sizes="76x76" href="<?php echo get_template_directory_uri(); ?>/img/favicon_package/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="<?php echo get_template_directory_uri(); ?>/img/favicon_package/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_template_directory_uri(); ?>/img/favicon_package/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_template_directory_uri(); ?>/img/favicon_package/favicon-16x16.png">
     <link rel="manifest" href="<?php echo get_template_directory_uri(); ?>/img/favicon_package/site.webmanifest">
     <link rel="mask-icon" href="<?php echo get_template_directory_uri(); ?>/img/favicon_package/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff"> -->
+    <meta name="theme-color" content="#ffffff">
 
 
     <!-- ▼CSS -->
@@ -52,6 +60,22 @@
     <div class="whopper">
         <!-- header -->
         <header class="header">
+            <div class="logo">
+                <a href="<?php echo get_home_url(); ?>">
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="医療法人立人会 ほほえみ歯科">
+                </a>
+            </div>
+            <div class="header-btn">
+                <a href="tel:052-715-4181" class="btn tel">
+                    <div class="icon"></div>
+                    <p class="TX pc">電話受付</p>
+                </a>
+                <a href="https://www.instagram.com/hohoemi_dc/" class="btn insta" target="_blank">
+                    <div class="icon"></div>
+                    <p class="TX pc">インスタグラム</p>
+                </a>
+
+            </div>
             <div class="burger"></div>
             <div class="menu">
                 <div class="backText">
@@ -178,9 +202,6 @@
                         </li>
                     </ul>
                 </nav>
-                <a href="#footer" class="Tel_icon">
-                    <div class="icon"></div>
-                </a>
             </div>
             <div class="menu__back"></div>
         </header>
@@ -194,7 +215,7 @@
                         <h2 class="TL">
                             世界水準の<br>
                             インプラント治療<span class="pc">、</span><br class="sp">矯正治療が<br>
-                            受けれる歯科医院です
+                            受けられる歯科医院です
                         </h2>
                     </div>
                     <div class="KV__front--text--middle">
@@ -227,13 +248,13 @@
                         </p>
                     </div>
                 </div>
-                <div class="KV__front--title">
+                <!-- <div class="KV__front--title">
                     <h1 class="TL">
                         <span class="rollAnimeLoad">Hohoemi</span>
                         <span class="rollAnimeLoad">Dental</span>
                         <span class="rollAnimeLoad">Clinic</span>
                     </h1>
-                </div>
+                </div> -->
                 <div class="KV__front--smoke"></div>
             </div>
 
@@ -251,6 +272,15 @@
                             <p class="TX">−Orthodontics−</p>
                         </div>
                     <?php endif; ?>
+
+                    <?php if (is_page('invisalign')) : ?>
+                        <!-- インプラント -->
+                        <div class="KV--tag--inner">
+                            <h2 class="TL">インビザライン</h2>
+                            <p class="TX">−Invisalign−</p>
+                        </div>
+                    <?php endif; ?>
+
 
                     <?php if (is_page('implant')) : ?>
                         <!-- インプラント -->
@@ -379,6 +409,7 @@
 
         <?php if (
             is_page('orthodontics') ||
+            is_page('invisalign') ||
             is_page('implant') ||
             is_page('aestheticdentistry') ||
             is_page('dentures') ||

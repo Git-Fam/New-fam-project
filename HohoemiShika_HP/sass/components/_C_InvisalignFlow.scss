@@ -5,7 +5,8 @@
 ----------------------- */
 
 .C_InvisalignFlow {
-
+  // overflow: hidden;//add
+  position: relative;//add
   .C_TL {
     .sub-TL {
       position: absolute;
@@ -28,7 +29,11 @@
   }
 
   &--container {
-    overflow-x: scroll;
+    // overflow-x: scroll;
+    overflow-x: auto;//add
+    // position: relative;
+    // -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
 
     @include pc {
       padding: p(105) p(330) p(30);
@@ -53,5 +58,78 @@
         flex-shrink: 0;
       }
     }
+    .scrollbar {
+      @include sp{
+        position: absolute;
+        width: 100%;
+        bottom: s(-10);
+        left: 50%;
+        right: 0;
+        translate: -50%;
+        background: linear-gradient(90deg, rgba(147, 127, 42, 0.00) 0%, rgba(147, 127, 42, 0.30) 9%, rgba(147, 127, 42, 0.30) 90%, rgba(147, 127, 42, 0.00) 100%);   
+        padding: 0 s(50);
+        height: s(20);
+      }
+
+      .scrollbar-thumb {
+        @include sp{
+          @include imgContain("scroll-icon.svg");
+          position: absolute;  
+          height: s(20);
+          width: s(20);
+        }
+      }
+    }
+
+    &::-webkit-scrollbar {
+      @include pc{
+        height: p(30);
+      }
+
+      @include sp{
+        display: none;
+      }
+    }
+
+    &::-webkit-scrollbar-track {
+      @include pc{
+        position: relative;
+        background: linear-gradient(90deg, rgba(147, 127, 42, 0.00) 0%, rgba(147, 127, 42, 0.30) 9%, rgba(147, 127, 42, 0.30) 90%, rgba(147, 127, 42, 0.00) 100%);   
+      }
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      @include pc{
+        @include imgContain("scroll-icon.svg");
+        position: absolute;  
+        width: p(30);
+        height: p(30);
+      }
+    }
+
+
+    // &::-webkit-scrollbar {
+    //   @include pc{
+    //     height: p(30);
+    //   }
+    //   @include sp{
+    //     height: s(20);
+    //   }
+    // }
+    // &::-webkit-scrollbar-track {
+    //   position: relative;
+    //   background: linear-gradient(90deg, rgba(147, 127, 42, 0.00) 0%, rgba(147, 127, 42, 0.30) 9%, rgba(147, 127, 42, 0.30) 90%, rgba(147, 127, 42, 0.00) 100%);    }
+    // &::-webkit-scrollbar-thumb {
+    //   @include imgContain("scroll-icon.svg");
+    //   position: absolute;
+    //   @include pc{
+    //     width: p(30);
+    //     height: p(30);
+    //   }
+    //   @include sp{
+    //     width: s(20);
+    //     height: s(20);
+    //   }
+    // }
   }
 }

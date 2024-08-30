@@ -11,11 +11,13 @@
 
   @include pc {
     height: p(693);
+    margin-top: p(50);
   }
 
   @include sp {
-    height: s(700);
+    height: s(650);
     background-position: left 56% top 0%;
+    margin-top: s(50);
   }
 
   &--text {
@@ -42,24 +44,25 @@
       }
 
       @include sp {
-        margin-bottom: s(170);
+        margin-bottom: s(110);
         padding-left: s(20)
       }
 
       .TL {
         @include Regular;
         line-height: 151%;
-        letter-spacing: 0.15em;
         color: $F-FFFFFF;
         text-shadow: 0px 0px 3px $F-FFFFFF;
 
         @include pc {
           font-size: pm(45);
+          letter-spacing: 0.15em;
         }
 
         @include sp {
           font-size: s(28);
-          text-align: left
+          text-align: left;
+          letter-spacing: 0.12em;
         }
       }
     }

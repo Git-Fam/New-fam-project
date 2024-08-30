@@ -871,15 +871,18 @@
           line-height: 1.5;
           color: $F-FFFFFF;
           flex-shrink: 0;
+          text-align: center;
 
           @include pc {
             font-size: pm(20);
             padding: p(5) p(20);
+            width: p(180);
           }
 
           @include sp {
             font-size: s(16);
             padding: s(3) s(18);
+            width: s(120);
           }
         }
 

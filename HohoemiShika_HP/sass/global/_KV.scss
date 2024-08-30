@@ -10,11 +10,13 @@
   z-index: 100;
 
   @include pc {
-    height: p(409);
+    height: p(350);
+    margin-top: p(55);
   }
 
   @include sp {
     height: s(250);
+    margin-top: s(50);
   }
 
   &--img {
