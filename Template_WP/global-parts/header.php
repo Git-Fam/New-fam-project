@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head prefix="og: https://ogp.me/ns#">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -61,4 +62,16 @@
     <?php wp_head(); ?>
 
 </head>
+
 <body>
+
+
+
+
+    <header class="header">
+        <a href="<?php bloginfo('url'); ?>/voi">voi</a>
+        <a href="<?php echo get_home_url(); ?>">home</a>
+    </header>
+
+    <div class="whopper">
+        <?php get_template_part('global-parts/kv'); ?>
