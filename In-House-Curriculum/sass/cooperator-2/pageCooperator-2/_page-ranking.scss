@@ -1,0 +1,896 @@
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
+
+/* -----------------------
+  page-01
+----------------------- */
+
+
+.ranking {
+  position: relative;
+  @include height;
+  @include imgCover("ranking-bg.png");
+
+  @include sp {
+    background-position: 20%;
+  }
+
+  .bg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    &-left {
+      @include imgContain("ranking-bg-left.png");
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+
+      @include pc {
+        width: pm(430);
+        height: fit-content;
+        height: pm(344);
+      }
+
+      @include sp {
+        width: s(260);
+        height: s(208);
+      }
+
+    }
+
+    &-right {
+      @include imgCover("ranking-bg-right.png");
+      position: absolute;
+      top: 0;
+      right: 0;
+      @include height;
+
+      @include pc {
+        width: 520px;
+      }
+
+      @include sp {
+        width: s(430);
+        right: s(-135);
+      }
+
+    }
+
+    .stump-back {
+      @include imgContain("stump-back.png");
+      position: absolute;
+
+      @include pc {
+        width: p(160);
+        height: p(145);
+        bottom: p(100);
+        left: 0;
+      }
+
+      @include sp {
+        width: clamp(104px, calc((104 / 390) * 100vw), 130px);
+        height: s(94);
+        bottom: s(60);
+        left: 0;
+      }
+    }
+
+    .character-box {
+      position: absolute;
+      z-index: 3;
+
+      @include pc {
+        bottom: p(20);
+        left: p(20);
+      }
+
+      @include sp {
+        bottom: s(20);
+        left: s(20);
+      }
+
+      .C_character {
+        @include pc {
+          width: p(350);
+          margin-bottom: p(-60);
+        }
+
+        @include sp {
+          width: clamp(180px, calc((180 / 390) * 100vw), 195px);
+          margin-bottom: s(-30);
+        }
+
+      }
+
+      .stump {
+        @include imgContain("stump.png");
+
+        @include pc {
+          width: p(340);
+          height: p(114);
+          margin: 0 auto;
+        }
+
+        @include sp {
+          width: clamp(166px, calc((166 / 390) * 100vw), 180px);
+          height: s(56);
+          margin: 0 auto;
+        }
+
+      }
+    }
+
+    .stump-front {
+      @include imgContain("stump-front.png");
+      position: absolute;
+      z-index: 3;
+
+      @include pc {
+        width: p(400);
+        height: p(280);
+        bottom: 0;
+        left: 0;
+      }
+
+      @include sp {
+        width: clamp(242px, calc((242 / 390) * 100vw), 263px);
+        height: s(170);
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
+
+  .ranking-header {
+    @include iconCover($ranking-header);
+    display: grid;
+    position: relative;
+    z-index: 999;
+    width: 100%;
+
+    @include pc {
+      place-items: center left;
+      padding-left: p(43);
+      height: p(73);
+    }
+
+    @include sp {
+      place-items: center center;
+      height: clamp(40px, calc(50 / 390 * 100vw), 50px);
+    }
+
+    .TL {
+      color: $F-FFFFFF;
+      font-weight: 900;
+
+      @include pc {
+        font-size: p(26);
+      }
+
+      @include sp {
+        font-size: clamp(16px, calc((18 / 390) * 100vw), 18px);
+        margin-top: s(-3);
+      }
+    }
+  }
+
+  .inner {
+    position: relative;
+    z-index: 2;
+
+    @include pc {
+      top: 45%;
+      translate: 0 -50%;
+    }
+
+    @include sp {
+      top: 5%;
+    }
+
+
+    .main {
+      display: flex;
+      align-items: start;
+      justify-content: center;
+      height: fit-content;
+
+      @include pc {
+        margin: auto;
+      }
+
+      @include sp {
+        margin: 0 auto;
+        width: fit-content;
+        max-width: 424px;
+        flex-direction: column;
+      }
+
+      .my-info {
+        background: linear-gradient(180deg, #4BC7FB 0%, #B0E8FF 100%);
+
+        @include pc {
+          width: p(300);
+          padding: p(18) p(15);
+          border-radius: p(10);
+        }
+
+        @include sp {
+          width: clamp(190px, calc((206 / 390) * 100vw), 223px);
+          padding: clamp(8px, calc((13 / 390) * 100vw), 18px) clamp(13px, calc((13 / 206) * 100%), 15px);
+          border-radius: clamp(5px, calc((5 / 390) * 100vw), 10px);
+        }
+
+        .name-box {
+          display: flex;
+          align-items: center;
+          height: auto;
+
+          @include pc {
+            padding-left: p(12);
+          }
+
+          @include sp {
+            padding-left: clamp(7px, calc(7 / 208 * 100%), 12px);
+          }
+
+          .img {
+            border-radius: 50%;
+
+            @include pc {
+              width: p(36);
+              height: p(36);
+              border: p(4) solid $F-FFFFFF;
+            }
+
+            @include sp {
+              width: clamp(26px, calc((26 / 390) * 100vw), 36px);
+              height: clamp(26px, calc((26 / 390) * 100vw), 36px);
+              border: clamp(3px, calc((3 / 390) * 100vw), 4px) solid $F-FFFFFF;
+            }
+          }
+
+          .name {
+            color: $F-FFFFFF;
+            @include wt900;
+
+            @include pc {
+              font-size: p(16);
+              margin-left: p(10);
+            }
+
+            @include sp {
+              font-size: clamp(14px, calc((14 / 390) * 100vw), 16px);
+              margin-left: clamp(5px, calc(5 / 208 * 100vw), 10px);
+            }
+          }
+        }
+
+        .result-box {
+          background: $F-FFFFFF;
+          display: flex;
+          align-items: center;
+          color: $F-F5A274;
+
+          @include pc {
+            padding: p(6) p(18);
+            margin-top: p(13);
+            border-radius: p(10);
+          }
+
+          @include sp {
+            padding: clamp(5px, calc((5 / 390) * 100vw), 6px) clamp(12px, calc((12 / 390) * 100vw), 13px);
+            border-radius: clamp(5px, calc((5 / 390) * 100vw), 10px);
+            margin-top: clamp(5px, calc((5 / 390) * 100vw), 13px);
+          }
+
+          .number {
+            font-weight: 900;
+
+            @include pc {
+              font-size: p(20);
+            }
+
+            @include sp {
+              font-size: clamp(12px, calc((14 / 390) * 100vw), 16px);
+            }
+          }
+
+          .icon {
+            @include iconContain($ranking-trophy);
+
+            @include pc {
+              width: p(30);
+              height: p(30);
+              margin-left: p(56);
+            }
+
+            @include sp {
+              width: clamp(13px, calc((19 / 390) * 100vw), 20px);
+              height: clamp(21px, calc((21 / 390) * 100vw), 30px);
+              margin-left: auto;
+            }
+          }
+
+          .point {
+            font-weight: 900;
+
+            @include pc {
+              font-size: p(28);
+              margin-left: p(15);
+            }
+
+            @include sp {
+              font-size: clamp(16px, calc((18 / 390) * 100vw), 20px);
+              margin-left: clamp(9px, calc((9 / 390) * 100vw), 15px);
+            }
+          }
+        }
+      }
+
+      .ranking-bord {
+        @include imgContain("ranking-bord.png");
+        position: relative;
+
+        @include pc {
+          width: p(876);
+          height: p(551);
+        }
+
+        @include sp {
+          width: clamp(300px, calc(369 / 390 * 100vw), 424px);
+          height: clamp(200px, calc(243 / 390 * 100vw), 280px);
+          margin-top: calc(20 / 390 * 100vw); // 元の記述を使用
+        }
+
+        .TL-bg {
+          @include iconContain($ranking-ribbon);
+          position: relative;
+          z-index: 2;
+
+          @include pc {
+            width: p(482);
+            height: p(103);
+            margin: p(-25) auto 0;
+          }
+
+          @include sp {
+            width: clamp(180px, calc(203 / 390 * 100vw), 250px);
+            height: clamp(30px, calc(43 / 390 * 100vw), 50px);
+            margin: calc(-6 / 390 * 100vw) auto 0; // 元の記述を使用
+          }
+
+          .TL {
+            margin: 0 auto;
+
+            @include pc {
+              width: p(250);
+              height: p(77);
+            }
+
+            @include sp {
+              width: clamp(100px, calc(119 / 390 * 100vw), 150px);
+              height: clamp(20px, calc(28 / 390 * 100vw), 35px);
+            }
+          }
+        }
+
+        .ranking-list {
+          margin: 0 auto;
+          overflow-y: scroll;
+
+          @include pc {
+            width: 74%;
+            height: p(451);
+            margin-top: p(-30);
+            border-radius: p(10);
+          }
+
+          @include sp {
+            width: clamp(240px, calc(274 / 369 * 100%), 300px);
+            height: clamp(150px, calc(189 / 390 * 100vw), 210px);
+            margin-top: calc(-8 / 390 * 100vw); // 元の記述を使用
+            border-radius: clamp(3px, calc(5 / 390 * 100vw), 10px);
+          }
+
+          .list-item {
+            background: $B-FFFFFF;
+
+            @include pc {
+              border-radius: p(10);
+            }
+
+            @include sp {
+              border-radius: clamp(3px, calc(5 / 390 * 100vw), 10px);
+            }
+
+            &.top-group {
+              @include pc {
+                padding: p(22) p(70);
+              }
+
+              @include sp {
+                padding: clamp(4px, calc(6 / 390 * 100vw), 10px) clamp(20px, calc(29 / 390 * 100vw), 40px);
+              }
+
+              .rank {
+                display: flex;
+                align-items: end;
+
+                @include pc {
+                  gap: p(18);
+                }
+
+                @include sp {
+                  // gap: clamp(5px, calc(8 / 390 * 100vw), 8px);
+                  justify-content: space-between;
+                }
+
+                .rank-item {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  width: 100%;
+
+                  @include sp{
+                    width: clamp( 60px, calc( 66 / 390 * 100vw), 70px);
+                  }
+
+                  .img {
+                    position: relative;
+                    border-radius: 50%;
+
+                    .user-icon {
+                      border-radius: 50%;
+                      position: relative;
+                      top: 50%;
+                      left: 50%;
+                      translate: -50% -50%;
+                      background: $B-FFFFFF;
+                    }
+
+                    &::before {
+                      position: absolute;
+                      font-weight: 900;
+
+                      @include pc {
+                        top: p(8);
+                        left: p(-27);
+                      }
+
+                      @include sp {
+                        top: clamp(3px, calc(5 / 390 * 100vw), 8px);
+                        left: calc(-10 / 390 * 100vw); // ネガティブマージンはcalcで比率を保持
+                      }
+                    }
+                  }
+
+                  .name-box {
+                    background: linear-gradient(180deg, #FCC491 0%, #F5A274 100%);
+                    width: 100%;
+
+                    @include pc {
+                      border-radius: p(5);
+                    }
+
+                    @include sp {
+                      border-radius: clamp(2px, calc(3 / 390 * 100vw), 5px);
+                    }
+
+                    .name {
+                      color: $F-FFFFFF;
+                      text-align: center;
+                      @include wt900;
+
+                      @include pc {
+                        font-size: p(16);
+                      }
+
+                      @include sp {
+                        font-size: clamp(7px, calc(9 / 390 * 100vw), 9px);
+                      }
+                    }
+
+                    .point-box {
+                      background: $P-F9C1A1;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+
+                      @include pc {
+                        border-radius: p(3);
+                        padding: p(5) p(8);
+                        margin-top: p(5);
+                      }
+
+                      @include sp {
+                        border-radius: clamp(1px, calc(2 / 390 * 100vw), 3px);
+                        padding: clamp(1px, calc(2 / 390 * 100vw), 4px) clamp(2px, calc(3 / 390 * 100vw), 5px);
+                        margin-top: clamp(1px, calc(2 / 390 * 100vw), 5px);
+                      }
+
+                      .icon {
+                        @include iconContain($ranking-trophy);
+
+                        @include pc {
+                          width: p(18);
+                          height: p(20);
+                        }
+
+                        @include sp {
+                          width: clamp(6px, calc(8 / 390 * 100vw), 10px);
+                          height: clamp(6px, calc(8 / 390 * 100vw), 10px);
+                        }
+                      }
+
+                      .point {
+                        @include wt900;
+
+                        @include pc {
+                          font-size: p(23);
+                          margin-left: p(5);
+                        }
+
+                        @include sp {
+                          font-size: clamp(8px, calc(10 / 390 * 100vw), 12px);
+                          margin-left: clamp(2px, calc(3 / 390 * 100vw), 5px);
+                        }
+                      }
+                    }
+                  }
+
+                  &.second {
+                    .img {
+                      background: linear-gradient(160deg, #E5E1E1 12.75%, #ADADAD 34.61%, #E5E1E1 55.68%, #ADADAD 78.32%);
+
+                      @include pc {
+                        width: p(100);
+                        height: p(100);
+                        margin-bottom: p(-15);
+                      }
+
+                      @include sp {
+                        width: clamp(30px, calc(40 / 390 * 100vw), 50px);
+                        height: clamp(30px, calc(40 / 390 * 100vw), 50px);
+                        margin-bottom: calc(-7 / 390 * 100vw); // ネガティブマージンはcalcで比率を保持
+                      }
+
+                      .user-icon {
+                        @include pc {
+                          width: p(75);
+                          height: p(75);
+                        }
+
+                        @include sp {
+                          width: clamp(20px, calc(32 / 390 * 100vw), 40px);
+                          height: clamp(20px, calc(32 / 390 * 100vw), 40px);
+                        }
+                      }
+
+                      &::before {
+                        content: "2nd";
+                        color: $F-AFAFAF;
+
+                        @include pc {
+                          font-size: p(20);
+                        }
+
+                        @include sp {
+                          font-size: clamp(6px, calc(8 / 390 * 100vw), 10px);
+                        }
+                      }
+                    }
+
+                    .name-box {
+                      @include pc {
+                        padding: p(21) p(16) p(9);
+                      }
+
+                      @include sp {
+                        padding: clamp(5px, calc(10 / 390 * 100vw), 12px) clamp(3px, calc(6 / 390 * 100vw), 8px) clamp(3px, calc(6 / 390 * 100vw), 8px);
+                      }
+                    }
+
+                    .point-box {
+                      .point {
+                        color: $F-AAA3A3;
+                      }
+                    }
+                  }
+
+                  &.first {
+                    .img {
+                      background: linear-gradient(147deg, #FFECAB 21.97%, #96833F 44.46%, #FFECAB 67.64%, #96833F 90.13%);
+
+                      @include pc {
+                        width: p(105);
+                        height: p(105);
+                        margin-bottom: p(-23);
+                      }
+
+                      @include sp {
+                        width: clamp(34px, calc(44 / 390 * 100vw), 50px);
+                        height: clamp(34px, calc(44 / 390 * 100vw), 50px);
+                        margin-bottom: calc(-10 / 390 * 100vw); // ネガティブマージンはcalcで比率を保持
+                      }
+
+                      .user-icon {
+                        @include pc {
+                          width: p(85);
+                          height: p(85);
+                        }
+
+                        @include sp {
+                          width: clamp(28px, calc(35 / 390 * 100vw), 40px);
+                          height: clamp(28px, calc(35 / 390 * 100vw), 40px);
+                        }
+                      }
+
+                      &::before {
+                        content: "1st";
+                        color: $F-9B8845;
+
+                        @include pc {
+                          font-size: p(24);
+                        }
+
+                        @include sp {
+                          font-size: clamp(8px, calc(10 / 390 * 100vw), 12px);
+                        }
+                      }
+                    }
+
+                    .name-box {
+                      @include pc {
+                        padding: p(40) p(16) p(9);
+                      }
+
+                      @include sp {
+                        padding: clamp(10px, calc(16 / 390 * 100vw), 20px) clamp(4px, calc(7 / 390 * 100vw), 10px) clamp(3px, calc(6 / 390 * 100vw), 8px);
+                      }
+                    }
+
+                    .point-box {
+                      .point {
+                        color: $F-A79451;
+                      }
+                    }
+                  }
+
+                  &.third {
+                    .img {
+                      background: linear-gradient(147deg, #CC9D66 21.97%, #917048 44.46%, #CC9D66 67.64%, #917048 90.13%);
+
+                      @include pc {
+                        width: p(85);
+                        height: p(85);
+                        margin-bottom: p(-8);
+                      }
+
+                      @include sp {
+                        width: clamp(26px, calc(36 / 390 * 100vw), 40px);
+                        height: clamp(26px, calc(36 / 390 * 100vw), 40px);
+                      }
+
+                      .user-icon {
+                        @include pc {
+                          width: p(65);
+                          height: p(65);
+                        }
+
+                        @include sp {
+                          width: clamp(18px, calc(27 / 390 * 100vw), 30px);
+                          height: clamp(18px, calc(27 / 390 * 100vw), 30px);
+                        }
+                      }
+
+                      &::before {
+                        content: "3rd";
+                        color: $F-96734B;
+
+                        @include pc {
+                          font-size: p(18);
+                        }
+
+                        @include sp {
+                          font-size: clamp(6px, calc(8 / 390 * 100vw), 10px);
+                        }
+                      }
+                    }
+
+                    .name-box {
+                      @include pc {
+                        padding: p(8) p(16) p(9);
+                      }
+
+                      @include sp {
+                        padding: clamp(3px, calc(5 / 390 * 100vw), 7px) clamp(4px, calc(7 / 390 * 100vw), 10px) clamp(3px, calc(6 / 390 * 100vw), 8px);
+                      }
+                    }
+
+                    .point-box {
+                      .point {
+                        color: $F-A79451;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .onward {
+          display: flex;
+          flex-direction: column;
+          counter-reset: rank 3;
+
+          @include pc {
+            gap: p(10);
+            margin-top: p(10);
+          }
+
+          @include sp {
+            gap: clamp(2px, calc(4 / 390 * 100vw), 6px);
+            margin-top: calc(4 / 390 * 100vw); // 元の記述を使用
+          }
+
+          li {
+            background: $B-FFFFFF;
+            display: flex;
+            align-items: center;
+            position: relative;
+
+            @include pc {
+              border-radius: p(10);
+              padding: p(5) p(45) p(5) p(51);
+            }
+
+            @include sp {
+              border-radius: clamp(2px, calc(5 / 390 * 100vw), 10px);
+              padding: clamp(1px, calc(2 / 390 * 100vw), 3px) clamp(5px, calc(9 / 390 * 100vw), 12px) clamp(1px, calc(2 / 390 * 100vw), 3px) clamp(15px, calc(21 / 390 * 100vw), 30px);
+            }
+
+            .img {
+              position: relative;
+              border-radius: 50%;
+              background: $P-B29975;
+
+              @include pc {
+                width: p(60);
+                height: p(60);
+              }
+
+              @include sp {
+                width: clamp(15px, calc(25 / 390 * 100vw), 30px);
+                height: clamp(15px, calc(25 / 390 * 100vw), 30px);
+              }
+
+              .user-icon {
+                border-radius: 50%;
+                position: relative;
+                top: 50%;
+                left: 50%;
+                translate: -50% -50%;
+                background: $B-FFFFFF;
+
+                @include pc {
+                  width: p(50);
+                  height: p(50);
+                }
+
+                @include sp {
+                  width: clamp(10px, calc(20 / 390 * 100vw), 25px);
+                  height: clamp(10px, calc(20 / 390 * 100vw), 25px);
+                }
+              }
+            }
+
+            .name {
+              @include wt900;
+              color: $P-B29975;
+
+              @include pc {
+                font-size: p(16);
+                margin-left: p(15);
+              }
+
+              @include sp {
+                font-size: clamp(8px, calc(10 / 390 * 100vw), 12px);
+                margin-left: calc(5 / 390 * 100vw); // 元の記述を使用
+              }
+            }
+
+            .point-box {
+              display: flex;
+              align-items: center;
+              margin-left: auto;
+
+              .icon {
+                @include iconContain($ranking-trophy);
+
+                @include pc {
+                  width: p(29);
+                  height: p(31);
+                }
+
+                @include sp {
+                  width: clamp(8px, calc(12 / 390 * 100vw), 15px);
+                  height: clamp(8px, calc(13 / 390 * 100vw), 15px);
+                }
+              }
+
+              .point {
+                color: $F-F5A274;
+                @include wt900;
+
+                @include pc {
+                  font-size: p(20);
+                  margin-left: p(5);
+                }
+
+                @include sp {
+                  font-size: clamp(8px, calc(10 / 390 * 100vw), 12px);
+                  margin-left: clamp(2px, calc(3 / 390 * 100vw), 5px);
+                }
+              }
+            }
+
+            &::before {
+              content: counter(rank);
+              counter-increment: rank;
+              color: $F-F5A274;
+              position: absolute;
+              @include wt900;
+              top: 50%;
+              translate: 0 -50%;
+
+              @include pc {
+                font-size: p(16);
+                margin-right: p(20);
+                left: p(21);
+              }
+
+              @include sp {
+                font-size: clamp(5px, calc(8 / 390 * 100vw), 10px);
+                margin-right: calc(8 / 390 * 100vw); // 元の記述を使用
+                left: calc(7 / 390 * 100vw); // 元の記述を使用
+              }
+            }
+          }
+        }
+      }
+
+      .btn {
+        color: $F-FFFFFF;
+        background-color: #F5A274;
+        border-radius: 50%;
+        display: grid;
+        place-items: center center;
+        position: absolute;
+        @include wt700;
+
+        @include pc {
+          font-size: p(16);
+          width: p(50);
+          height: p(50);
+          right: p(100);
+          bottom: p(65);
+        }
+
+        @include sp {
+          font-size: clamp(6px, calc(8 / 390 * 100vw), 10px);
+          width: clamp(20px, calc(25 / 390 * 100vw), 30px);
+          height: clamp(20px, calc(25 / 390 * 100vw), 30px);
+          right: calc(18 / 390 * 100vw); // 元の記述を使用
+          bottom: calc(25 / 390 * 100vw); // 元の記述を使用
+        }
+      }
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
