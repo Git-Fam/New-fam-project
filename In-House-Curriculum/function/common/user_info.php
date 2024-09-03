@@ -46,6 +46,7 @@ function add_user_info(){
   return $user_info;
 }
 
-
+// ツールバーデフォルト非表示
+add_filter('show_admin_bar', '__return_false');
 
 ?>

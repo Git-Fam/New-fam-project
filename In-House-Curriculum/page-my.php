@@ -79,7 +79,23 @@ $SEO01_value = get_user_meta($user_id, 'SEO01', true) ?: '0';
             <div class="bbs">
                 <div class="chicken">
                     <div class="chicken--serif">
-                        <p class="TX">新着のお知らせがあるよ！</p>
+                        <?php
+                        $recent_news_query = new WP_Query(array(
+                            'post_type' => 'news',
+                            'posts_per_page' => 1,
+                            'date_query' => array(
+                                array(
+                                    // ３日間
+                                    'after' => '72 hours ago'
+                                )
+                            )
+                        ));
+                        if ($recent_news_query->have_posts()) :
+                        ?>
+                            <p class="TX">新着のお知らせがあるよ！</p>
+                        <?php else : ?>
+                            <p class="TX">お知らせだよ！</p>
+                        <?php endif; ?>
                     </div>
                     <div class="chicken--bird">
                         <iframe src="https://lottie.host/embed/421d3b3d-d381-49ba-b751-5d7dc96c02c8/XLrfuoTBb0.json"></iframe>
@@ -121,7 +137,37 @@ $SEO01_value = get_user_meta($user_id, 'SEO01', true) ?: '0';
                 </div>
                 <div class="spy--text">
                     <div class="spy--text--serif">
-                        <p class="TX">今週の表彰者が発表されたよ！</p>
+                        <p class="TX">
+                            <?php
+                            $latest_post = new WP_Query(array(
+                                'post_type' => 'column',
+                                'posts_per_page' => 1,
+                                'orderby' => 'date',
+                                'order' => 'DESC'
+                            ));
+
+                            $nothing_echo = "コラムだよ！";
+
+                            if ($latest_post->have_posts()) {
+                                $latest_post->the_post();
+                                $post_categories = get_the_terms(get_the_ID(), 'column-cat');
+                                if ($post_categories && !is_wp_error($post_categories)) {
+                                    $category = array_shift($post_categories);
+                                    $category_description = $category->description;
+                                    if (!empty($category_description)) {
+                                        echo esc_html($category_description);
+                                    } else {
+                                        echo $nothing_echo;
+                                    }
+                                } else {
+                                    echo $nothing_echo;
+                                }
+                                wp_reset_postdata();
+                            } else {
+                                echo $nothing_echo;
+                            }
+                            ?>
+                        </p>
                     </div>
                     <div class="spy--text--column">
                         <a href="<?php bloginfo('url'); ?>/column" target="_blank" rel="noopener noreferrer">コラムを見に行く ▶</a>
@@ -174,11 +220,9 @@ $SEO01_value = get_user_meta($user_id, 'SEO01', true) ?: '0';
                     <div class="tab--content--progress active">
                         <!-- ログイン中のみ表示 -->
                         <?php if (is_user_logged_in()): ?>
-                            <!--                                     <form class="progress" action="/registered" method="post"> -->
-                            <form class="progress" action="/test-hp-2/registered" method="post">
-
+                            <!-- <form class="progress" action="/test-hp-2/registered" method="post"> -->
+                            <form class="progress" action="<?php echo home_url('/registered'); ?>" method="post">
                                 <div class="progress--content">
-
                                     <!-- HTML -->
                                     <div class="item active">
                                         <div class="progress--title">
