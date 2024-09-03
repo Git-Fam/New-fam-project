@@ -52,8 +52,8 @@
       }
 
       @include sp {
-        width: s(430);
-        right: s(-135);
+        width: clamp(430px, calc((430 / 390) * 100vw), 450px);
+        right:clamp(-135px, calc((-135 / 390) * 100vw), -115px);
       }
 
     }
@@ -71,8 +71,8 @@
 
       @include sp {
         width: clamp(104px, calc((104 / 390) * 100vw), 130px);
-        height: s(94);
-        bottom: s(60);
+        height: clamp(94px, calc((94 / 390) * 100vw), 117px);
+        bottom: clamp(60px, calc((60 / 390) * 100vw), 70px);
         left: 0;
       }
     }
@@ -87,7 +87,7 @@
       }
 
       @include sp {
-        bottom: s(20);
+        bottom: 20px;
         left: s(20);
       }
 
@@ -99,7 +99,7 @@
 
         @include sp {
           width: clamp(180px, calc((180 / 390) * 100vw), 195px);
-          margin-bottom: s(-30);
+          margin-bottom: clamp(-30px, calc((-30 / 390) * 100vw), -10px);
         }
 
       }
@@ -115,7 +115,7 @@
 
         @include sp {
           width: clamp(166px, calc((166 / 390) * 100vw), 180px);
-          height: s(56);
+          height: clamp(56px, calc((56 / 390) * 100vw), 61px);
           margin: 0 auto;
         }
 
@@ -136,7 +136,7 @@
 
       @include sp {
         width: clamp(242px, calc((242 / 390) * 100vw), 263px);
-        height: s(170);
+        height: clamp(170px, calc((170 / 390) * 100vw), 184px);
         bottom: 0;
         left: 0;
       }
@@ -218,7 +218,7 @@
 
         @include sp {
           width: clamp(190px, calc((206 / 390) * 100vw), 223px);
-          padding: clamp(8px, calc((13 / 390) * 100vw), 18px) clamp(13px, calc((13 / 206) * 100%), 15px);
+          padding: clamp(8px, calc((13 / 390) * 100vw), 15px) clamp(13px, calc((13 / 206) * 100%), 15px);
           border-radius: clamp(5px, calc((5 / 390) * 100vw), 10px);
         }
 
@@ -894,3 +894,5 @@
 .hidden {
   display: none;
 }
+
+
