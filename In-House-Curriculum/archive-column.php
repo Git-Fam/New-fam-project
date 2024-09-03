@@ -1,3 +1,16 @@
+<!-- 
+コメント欄追加方法 
+
+左メニューバーの「投稿」→「投稿一覧」を表示します。﻿
+コメントを設定したい投稿にマウスカーソルを合わせ、「クイック編集」をクリックします。﻿
+「コメントを許可」にチェックを入れます。﻿
+「更新」をクリックします。﻿
+
+
+ -->
+
+
+
 <?php get_header(); ?>
 
 <div class="columns">
@@ -21,7 +34,7 @@
                     <div class="columns_category border">
                         <p class="TX">Category >
                             <?php
-                            if (is_tax('column-cat')) {
+                            if (is_tax('question-cat')) {
                                 single_term_title();
                             } else {
                                 echo 'ALL';
@@ -31,7 +44,7 @@
                     </div>
                     <div class="columns_search border">
                         <div class="search-item">
-                            <?php get_template_part('searchform', 'column'); ?>
+                            <?php get_template_part('searchform', 'question'); ?>
                         </div>
                     </div>
                     <div class="columns_contents border">
@@ -42,13 +55,13 @@
                             $args = array(
                                 'posts_per_page' => 8,
                                 'paged' => $paged,
-                                'post_type' => 'column',
+                                'post_type' => 'question',
                             );
 
-                            if (is_tax('column-cat')) {
+                            if (is_tax('question-cat')) {
                                 $args['tax_query'] = array(
                                     array(
-                                        'taxonomy' => 'column-cat',
+                                        'taxonomy' => 'question-cat',
                                         'field'    => 'slug',
                                         'terms'    => get_queried_object()->slug,
                                     ),
