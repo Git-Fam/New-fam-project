@@ -70,6 +70,36 @@ $SEO01_value = get_user_meta($user_id, 'SEO01', true) ?: '0';
                     ?>
                 </p>
             </div>
+            <div class="my--title--points">
+                <div class="coin-point">
+                    <p class="TX">現在の獲得コイン:
+                        <span>
+                            <?php
+                            $user_coins = get_user_meta($user_id, 'user_coins', true) ?: 0;
+                            echo esc_html($user_coins);
+                            ?>&nbsp;coins
+                        </span>
+                    </p>
+                </div>
+                <div class="coin-point">
+                    <p class="TX">現在の獲得ポイント:
+                        <span>
+                            <?php
+                            $user_id = get_current_user_id();
+                            $user_points = get_user_meta($user_id, 'user_point', true) ?: 0;
+                            echo esc_html($user_points);
+                            ?>&nbsp;points
+                        </span>
+                    </p>
+                </div>
+
+                <!-- 優先チケット -->
+                <?php display_priority_ticket(); ?>
+
+                <!-- 連続１０日ログインボーナス -->
+                <?php display_login_bonus(); ?>
+
+            </div>
             <div class="C_character">
                 <dotlottie-player src="https://lottie.host/e60cec2b-65a9-4722-99fa-d9218781a66b/TBEXhkebbF.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></dotlottie-player>
             </div>
@@ -576,6 +606,7 @@ $SEO01_value = get_user_meta($user_id, 'SEO01', true) ?: '0';
                 </div>
 
             </div>
+            <a class="logout--button" href="?swpm-logout=true">ログアウト</a>
         </div>
 
         <!-- ログイン中のみ表示 -->
