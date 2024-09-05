@@ -1,0 +1,21 @@
+@use "../../global" as *;
+@use "../globalCooperator-2" as *;
+
+/* -----------------------
+  archive-question
+----------------------- */
+
+.question{
+  .question-main{
+    background:$B-FDFFEF;
+    @include pc{
+      width: p(1141);
+      margin: auto;
+      padding: p(97) p(65) p(40) p(61);
+    }
+
+    &-menu{
+      display: flex;
+    }
+  }
+}

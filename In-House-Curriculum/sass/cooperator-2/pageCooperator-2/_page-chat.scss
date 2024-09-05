@@ -5,6 +5,97 @@
   page-chat
 ----------------------- */
 
+.chat {
+  background: rgba(122, 122, 122, 0.75);
+  width: 100%;
+  height: 100%;
+
+  .header {
+    @include iconCover($header);
+    width: 100%;
+    display: grid;
+
+    @include pc {
+      height: p(73);
+      padding-left: p(34);
+      place-items: center left;
+    }
+
+    @include sp {
+      height: clamp(40px, calc(50 / 390 * 100vw), 60px);
+      place-items: center center;
+    }
+
+    .TL {
+      color: $F-FFFFFF;
+      @include wt900;
+
+      @include pc {
+        font-size: p(23);
+      }
+
+      @include sp {
+        font-size: clamp(16px, calc((18 / 390) * 100vw), 25px);
+      }
+    }
+  }
+
+  .chat-contents {
+    margin: auto;
+    background: $B-F69064;
+    position: relative;
+
+    @include pc {
+      width: p(1182);
+      display: flex;
+      border-radius: p(15);
+    }
+    @include sp{
+      width: clamp(320px, calc((350 / 390) * 100vw), 400px);
+      border-radius: s(10);
+    }
+    .timeline-TL {
+      position: absolute;
+      color: $B-F69064;
+      background: $B-FFDFAF;
+      border-radius: 20px 20px 20px 0px;
+      @include wt800;
+
+      @include pc {
+        font-size: p(16);
+        letter-spacing: p(1.6);
+        padding: p(8) p(15);
+        top: p(-15);
+        left: 0;
+      }
+      @include sp{
+        font-size: clamp(14px, calc((16 / 390) * 100vw), 20px);
+        letter-spacing: s(1.6);
+        padding: clamp(5px, calc((8 / 390) * 100vw), 10px) clamp(10px, calc((15 / 390) * 100vw), 20px);
+        top: clamp(-10px, calc((-15 / 390) * 100vw), -23px);
+        left: 0;
+      }
+    }
+
+    .timeline-wrap {
+      @include pc {
+        padding: p(26) p(25) p(12) p(22);
+      }
+      @include sp{
+        padding: s(26) s(15) s(12) s(15);
+      }
+      .timeline{
+        background: radial-gradient(50% 50% at 50% 50%, rgba(255, 201, 61, 0.00) 0%, rgba(255, 201, 61, 0.13) 100%), #EFFAFF;
+        @include pc{
+          border-radius: p(15);
+        }
+      }
+    }
+
+  }
+}
+
+
 #sac-latest-message {
   font-size: 0px !important;
 
@@ -57,7 +148,6 @@
 }
 
 .timeline {
-  background-color: rgba(0, 135, 0, 0.3);
   padding: 20px;
   width: fit-content;
   height: 200px;

@@ -1,0 +1,76 @@
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
+
+/* -----------------------
+  single-question
+----------------------- */
+
+
+.comment {
+  .comments-area {
+    .comment-list {
+      display: flex;
+      flex-direction: column;
+
+      @include pc {
+        gap: p(25);
+      }
+
+      li {
+        display: flex;
+        flex-direction: column;
+
+        @include pc {
+          gap: p(25);
+        }
+
+        .comment-body {
+          background: $B-FFFFFF;
+
+          @include pc {
+            padding: p(32) p(41) p(26);
+          }
+
+          .vcard {
+            display: none;
+          }
+
+          .commentmetadata {
+            font-size: 0;
+
+            @include pc {
+              padding-top: p(10);
+            }
+
+            &::before {
+              content: "";
+              border-bottom: p(2) solid $P-7FBF99;
+              display: block;
+              width: 100%;
+            }
+          }
+
+          p {
+            width: 100%;
+            background-image: linear-gradient(#ccc 1px, transparent 1px);
+            background-size: 100% 3em;
+            line-height: 3;
+          }
+
+          &::before {
+            content: "";
+            @include imgContain("staff-icon.png");
+            display: inline-block;
+            top: 0;
+            left: 0;
+
+            @include pc {
+              width: p(32);
+              height: p(32);
+            }
+          }
+        }
+      }
+    }
+  }
+}

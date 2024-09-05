@@ -4,68 +4,71 @@
 /* -----------------------
   load
 ----------------------- */
-.inner {
-  @include pc{
-    padding: 0 p(30);
-  }
-  .content {
-    overflow-y: scroll;
-    padding-bottom: p(20);
+#page-road {
+  .inner {
+    @include pc {
+      padding: 0 p(30);
+    }
 
-    .road {
-      display: flex;
-      padding-top: 450px;
-      justify-content: space-between;
-      position: relative;
-      width: fit-content;
+    .content {
+      overflow-y: scroll;
+      padding-bottom: p(20);
 
-
-
-
-      @include pc{
-        gap: p(30);
-      }
-
-      .destination {
+      .road {
+        display: flex;
+        padding-top: 450px;
+        justify-content: space-between;
         position: relative;
+        width: fit-content;
+
+
+
 
         @include pc {
-          width: p(220);
+          gap: p(30);
         }
 
-        .goal {
+        .destination {
           position: relative;
-          left: 78%;
 
           @include pc {
-            width: p(100);
-            height: p(100);
-            background-color: pink;
+            width: p(220);
           }
 
-        }
-
-        .character-box {
-          position: absolute;
-          bottom: 0;
-          translate: -50% 0;
-
-          .character {
-            transition: left 0.5s ease;
-            margin: 0 auto;
+          .goal {
+            position: relative;
+            left: 78%;
 
             @include pc {
-              width: p(40);
-              height: p(80);
-              background: white;
+              width: p(100);
+              height: p(100);
+              background-color: pink;
             }
+
           }
 
-          .name {
-            @include pc {
-              width: p(40);
-              font-size: p(13);
-              text-align: center;
+          .character-box {
+            position: absolute;
+            bottom: 0;
+            translate: -50% 0;
+
+            .character {
+              transition: left 0.5s ease;
+              margin: 0 auto;
+
+              @include pc {
+                width: p(40);
+                height: p(80);
+                background: white;
+              }
+            }
+
+            .name {
+              @include pc {
+                width: p(40);
+                font-size: p(13);
+                text-align: center;
+              }
             }
           }
         }
