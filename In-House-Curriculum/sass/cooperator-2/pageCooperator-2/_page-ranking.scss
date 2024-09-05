@@ -144,7 +144,7 @@
   }
 
   .ranking-header {
-    @include iconCover($ranking-header);
+    @include iconCover($header);
     display: grid;
     position: relative;
     z-index: 999;
