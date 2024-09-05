@@ -599,7 +599,7 @@
     }
 
     .info_button {
-      position: fixed;
+      position: absolute;
       border-radius: 50%;
       background: $P-F38549;
       aspect-ratio: 1 / 1;
@@ -607,8 +607,8 @@
       display: block;
       transition: all 0.3s;
       width: s(200);
-      top: s(-100);
-      left: s(-100);
+      top: s(-150);
+      left: s(-120);
       cursor: pointer;
 
       .TX {
@@ -627,18 +627,17 @@
     .my--content {
       transition: right 0.3s;
       z-index: 11;
+      position: absolute;
 
       @include pc {
         width: 50%;
         height: 100%;
-        position: absolute;
         right: -48%;
       }
 
       @include sp {
         width: 80%;
         height: 98%;
-        position: fixed;
         right: -85%;
         top: 0;
       }
@@ -650,7 +649,7 @@
         }
 
         @include sp {
-          right: 0;
+          right: s(-20);
         }
       }
 
