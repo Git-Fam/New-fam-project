@@ -1,7 +1,8 @@
 <?php
 
 // ユーザーがログインするたびにポイントを付与する
-function add_login_points($user_login, $user) {
+function add_login_points($user_login, $user)
+{
     $user_id = $user->ID;
     $points_to_add = 5; // 通常ログインポイント
     $bonus_points = 10; // 復活ボーナスのポイント
@@ -10,6 +11,11 @@ function add_login_points($user_login, $user) {
     $normal_month = 30 * DAY_IN_SECONDS; // 1ヶ月
     $continuous_days = 10; // 10日
     $after_day = 3; // 3日
+
+    // $normal_day = 20; //テスト
+    // $normal_month = 30 * DAY_IN_SECONDS; //テスト
+    // $continuous_days = 10; //テスト 
+    // $after_day = 3; //テスト 
 
     // 最後にポイントが付与された日付を取得
     $last_point_date = get_user_meta($user_id, 'last_point_date', true);
@@ -67,4 +73,3 @@ function add_login_points($user_login, $user) {
     }
 }
 add_action('wp_login', 'add_login_points', 10, 2);
-?>
