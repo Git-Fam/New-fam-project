@@ -12,9 +12,9 @@ function add_login_points($user_login, $user)
     $continuous_days = 10; // 10日
     $after_day = 3; // 3日
 
-    // $normal_day = 20; //テスト
+    // $normal_day = 15; //テスト
     // $normal_month = 30 * DAY_IN_SECONDS; //テスト
-    // $continuous_days = 10; //テスト 
+    // $continuous_days = 3; //テスト 
     // $after_day = 3; //テスト 
 
     // 最後にポイントが付与された日付を取得

@@ -58,7 +58,7 @@ get_header(); ?>
                 $user_id = $user->ID;
                 $priority_ticket = get_user_meta($user_id, 'priority_ticket', true) ?: 0;
                 $user_coins = get_user_meta($user_id, 'user_coins', true) ?: 0;
-                $user_points = get_user_meta($user_id, 'user_points', true) ?: 0;
+                $user_points = get_user_meta($user_id, 'user_point', true) ?: 0;
                 $user_group = get_user_meta($user_id, 'user_group', true) ?: '未設定';
                 $last_login = get_user_meta($user_id, 'last_login', true) ?: '不明';
             ?>
