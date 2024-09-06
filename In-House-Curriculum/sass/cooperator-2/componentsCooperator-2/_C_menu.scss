@@ -1,0 +1,169 @@
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
+
+/* -----------------------
+  C_menu
+----------------------- */
+
+.C_menu {
+  display: flex;
+  align-items: center;
+
+  @include pc {
+    gap: p(12);
+  }
+
+
+  .menu-item {
+    color: $P-7FBF99;
+
+    @include pc {
+      width: p(141);
+      font-size: p(10);
+      letter-spacing: p(1);
+      border-radius: p(20);
+      padding: p(4) p(12) p(4) p(12);
+      border: p(1) solid $P-7FBF99;
+
+    }
+
+  }
+
+  .post {
+    background: $P-7FBF99;
+    color: $F-FFFFFF;
+
+    @include pc {
+      box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25), inset 0px 0px 10px 0px #BCF3D3;
+      padding: p(7) p(25);
+      border-radius: p(5);
+      font-size: p(12);
+      letter-spacing: p(1.2);
+    }
+  }
+
+  .category {
+    .category-content {
+      position: relative;
+      cursor: pointer;
+
+      .select-content {
+        display: none;
+        opacity: 0;
+        transition: 0.3s;
+        position: absolute;
+
+        @include pc {
+          top: p(15);
+        }
+
+
+        .select {
+          color: $F-FFFFFF;
+          width: 100%;
+          background: $P-7FBF99;
+          left: 0;
+          display: flex;
+          flex-direction: column;
+
+          @include pc {
+            padding: p(10);
+            border-radius: p(5);
+            gap: p(10);
+          }
+
+          .TX {
+            color: $F-1E673C;
+
+            @include pc {
+              font-size: p(12);
+            }
+          }
+
+          a {
+            color: $F-FFFFFF;
+            display: inline-block;
+
+            @include pc {
+              margin: p(5) 0 0 p(5);
+            }
+          }
+        }
+
+        &.show {
+          display: block;
+          opacity: 0;
+          animation: down 0.8s ease 0s forwards;
+
+          @keyframes down {
+            0% {
+              opacity: 0;
+            }
+
+            100% {
+              opacity: 1;
+            }
+          }
+        }
+
+      }
+
+
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+
+        @include pc {
+          width: p(3);
+          height: p(3);
+          border-right: p(1) solid $P-7FBF99;
+          border-bottom: p(1) solid $P-7FBF99;
+        }
+      }
+
+      &::before {
+        rotate: -135deg;
+
+        @include pc {
+          top: p(2);
+        }
+
+      }
+
+      &::after {
+        rotate: 45deg;
+
+        @include pc {
+          bottom: p(2);
+        }
+      }
+    }
+  }
+
+  .search {
+    background: rgba(156, 196, 83, 0.24);
+    border: none;
+    position: relative;
+
+    @include pc {
+      margin-left: p(20);
+    }
+
+    &::before {
+      content: "";
+      @include iconContain($search);
+      position: absolute;
+      top: 50%;
+      translate: 0 -50%;
+
+      @include pc {
+        width: p(20);
+        height: p(17);
+        left: p(-22);
+      }
+    }
+  }
+}

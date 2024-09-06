@@ -1,21 +1,136 @@
-@use "../../global" as *;
-@use "../globalCooperator-2" as *;
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
 
 /* -----------------------
   archive-question
 ----------------------- */
 
-.question{
-  .question-main{
-    background:$B-FDFFEF;
-    @include pc{
+.question {
+  background: linear-gradient(180deg, #9EC653 0%, #FDFFEF 98.5%);
+
+  @include pc {
+    padding: p(48) 0 p(39);
+  }
+
+  .question-main {
+    background: $B-FDFFEF;
+    position: relative;
+
+    @include pc {
       width: p(1141);
+      height: calc(613 / 700 * 100vh);
       margin: auto;
+      border-radius: p(18);
       padding: p(97) p(65) p(40) p(61);
+      box-shadow: inset 0px 0px p(10) 0px rgba(0, 0, 0, 0.25);
     }
 
-    &-menu{
-      display: flex;
+    &-TL {
+      @include iconContain($question-ribbon);
+      position: absolute;
+      left: 50%;
+      translate: -50% 0;
+
+      @include pc {
+        width: p(650);
+        height: p(122);
+        top: p(-40);
+      }
+
+      .TL {
+        color: $F-FFFFFF;
+        @include wt900;
+        text-align: center;
+
+        @include pc {
+          font-size: p(40);
+          margin-top: p(20);
+          letter-spacing: p(4);
+        }
+
+        @include sp {
+          font-size: clamp(16px, calc((18 / 390) * 100vw), 25px);
+        }
+      }
+    }
+
+    &-post {
+      @include pc {
+        width: p(700);
+        padding-right: p(47);
+        border-right: p(2) dashed $P-7FBF99;
+      }
+    }
+
+  }
+
+  .post-modal {
+    display: none;
+    position: relative;
+    &.open {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: rgba(71, 71, 71, 0.50);
+      position: fixed;
+      top: 0;
+      left: 0;
+      .letter{
+        @include iconContain($letter);
+        position: absolute;
+        left: 50%;
+        translate: -50% -50%;
+        @include pc{
+          width: 120%;
+          height: 120%;
+          top: 45%;
+        }
+      }
+      .note-bg{
+        background: $B-FFFFFF;
+        position: absolute;
+        left: 50%;
+        translate: -50% -50%;
+        @include pc{
+          height: p(578);
+          top: 55%;
+          aspect-ratio: 619 / 578;
+          max-height: calc(578 / 700 * 100vh);
+          padding: p(32) p(40) p(30);
+        }
+        .img-icon{
+          @include iconContain($img-icon);
+          position: relative;
+          @include pc{
+            width: p(20);
+            height: p(20);
+            margin: p(-17) 0 0 auto;
+          }
+          &::before{
+            content: "↑";
+            position: absolute;
+            z-index: 10;
+            color: $P-7FBF99;
+            @include wt900;
+            @include pc{
+              font-size: p(10);
+              top: p(-5);
+              right: p(0);
+            }
+          }
+          &::after{
+            content: "";
+            position: absolute;
+            background: $B-FFFFFF;
+            top: 0;
+            @include pc{
+              width: p(3);
+              height: p(2);
+              right: p(3);
+            }
+          }
+        }
+      }
     }
   }
 }
