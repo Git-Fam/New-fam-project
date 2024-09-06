@@ -30,7 +30,7 @@ function create_post_type()
         'title',
         'editor',
         'thumbnail',
-        'revisions'
+        'revisions',
       ),
     )
   );

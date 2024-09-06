@@ -13,25 +13,20 @@
     <meta property="og:locale" content="ja_JP" />
 
     <!-- ▼SEO -->
-    <link rel="”canonical”" href="<?php echo get_home_url(); ?>" />
-    <!-- Primary Meta Tags -->
-    <!-- <title>株式会社Intence</title>
-    <meta name="title" content="株式会社Intence" />
-    <meta name="description" content="株式会社Intenceは人材サービス業を中心に、セールスコンサルティング・キャリアラボ事業・Tech事業に従事しています。人々が笑顔で満足のいく形で仕事や社会と関われる、そんな企業を目指しています。" /> -->
-
-    <!-- Open Graph / Facebook -->
-    <!-- <meta property="og:type" content="website" />
+    <link rel="canonical" href="<?php echo get_home_url(); ?>" />
+    <title><?php bloginfo('name'); ?><?php if (wp_title('', false)) { echo ' | ' . wp_title('', false);} ?></title>
+    <meta name="title" content="<?php bloginfo('name'); ?><?php if (wp_title('', false)) { echo ' | ' . wp_title('', false);} ?>" />
+    <meta name="description" content="<?php bloginfo('description'); ?>" />
+    <meta property="og:type" content="website" />
     <meta property="og:url" content="<?php echo get_home_url(); ?>" />
-    <meta property="og:title" content="株式会社Intence" />
-    <meta property="og:description" content="株式会社Intenceは人材サービス業を中心に、セールスコンサルティング・キャリアラボ事業・Tech事業に従事しています。人々が笑顔で満足のいく形で仕事や社会と関われる、そんな企業を目指しています。" />
-    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.png" /> -->
-
-    <!-- Twitter -->
-    <!-- <meta property="twitter:card" content="summary_large_image" />
+    <meta property="og:title" content="<?php bloginfo('name'); ?><?php if (wp_title('', false)) { echo ' | ' . wp_title('', false);} ?>" />
+    <meta property="og:description" content="<?php bloginfo('description'); ?>" />
+    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.jpg" />
+    <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="<?php echo get_home_url(); ?>" />
-    <meta property="twitter:title" content="株式会社Intence" />
-    <meta property="twitter:description" content="株式会社Intenceは人材サービス業を中心に、セールスコンサルティング・キャリアラボ事業・Tech事業に従事しています。人々が笑顔で満足のいく形で仕事や社会と関われる、そんな企業を目指しています。" />
-    <meta property="twitter:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.png" /> -->
+    <meta property="twitter:title" content="<?php bloginfo('name'); ?><?php if (wp_title('', false)) { echo ' | ' . wp_title('', false); } ?>" />
+    <meta property="twitter:description" content="<?php bloginfo('description'); ?>" />
+    <meta property="twitter:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.jpg" />
 
     <!-- ▼ファビコン -->
     <!-- <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri(); ?>/img/favicon_package/apple-touch-icon.png">
