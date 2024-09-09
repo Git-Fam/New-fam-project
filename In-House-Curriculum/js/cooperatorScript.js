@@ -331,15 +331,87 @@ $(function () {
 	});
 
 	//質問広場　質問投稿時カテゴリー選択
-	document.addEventListener("DOMContentLoaded", function () {
-		var postSelector = document.getElementById("post-selector");
+	jQuery(document).ready(function ($) {
+		const selectPostItems = $("#select-post li");
+		const commentForm = $("#commentform");
+		const categoryTextElement = $(".category-content-TX");
+		const errorMessageElement = $(
+			"<p class='error-message' style='color: red; display: none;'>カテゴリーを選択してください。</p>"
+		);
 
-		postSelector.addEventListener("change", function () {
-			var selectedOption = this.options[this.selectedIndex];
-			var postID = selectedOption.value; // 選択された記事IDを取得
+		// エラーメッセージをフォームに追加
+		commentForm.prepend(errorMessageElement);
 
-			// コメントフォームのhiddenフィールドを更新
-			document.querySelector("#comment_post_ID").value = postID;
-		});
+		let isCategorySelected = false;
+
+		if (
+			selectPostItems.length > 0 &&
+			commentForm.length > 0 &&
+			categoryTextElement.length > 0
+		) {
+			selectPostItems.on("click", function () {
+				const selectedPostId = $(this).data("value"); // data-value属性から投稿IDを取得
+				const selectedPostTitle = $(this).text().trim(); // 選択された投稿のタイトルを取得
+
+				// `<p>`タグのテキストを選択された投稿のタイトルに変更
+				categoryTextElement.text(selectedPostTitle);
+
+				const commentPostIdInput = commentForm.find(
+					'input[name="comment_post_ID"]'
+				);
+
+				if (commentPostIdInput.length > 0) {
+					// フォームのcomment_post_IDフィールドを選択された投稿IDに更新
+					commentPostIdInput.val(selectedPostId);
+					isCategorySelected = true; // カテゴリーが選択されたことをフラグで保持
+					errorMessageElement.hide(); // エラーメッセージを非表示にする
+				}
+			});
+
+			commentForm.on("submit", function (event) {
+				// カテゴリーが選択されていない場合
+				if (!isCategorySelected) {
+					event.preventDefault(); // フォームの送信をキャンセル
+					errorMessageElement.show(); // エラーメッセージを表示
+				}
+			});
+		} else {
+			console.error("必要な要素が見つかりませんでした。");
+		}
 	});
+
+	jQuery(document).ready(function ($) {
+		// コメントフォームを取得
+		var commentForm = $(".comment-form form");
+
+		if (commentForm.length) {
+			// フォームの送信イベントを監視
+			commentForm.on("submit", function (event) {
+				event.preventDefault(); // デフォルトのフォーム送信を防止
+
+				// Ajaxでコメントを送信
+				var formData = new FormData(this);
+				$.ajax({
+					url: commentForm.attr("action"), // フォームの送信先URL
+					type: "POST",
+					data: formData,
+					processData: false,
+					contentType: false,
+					success: function (response) {
+						// 送信成功時にモーダルの内容を変更
+						$(".letter").hide(); // .letterを非表示にする
+						$(".success").show(); // .successを表示する
+					},
+					error: function () {
+						// エラーハンドリング（必要に応じて追加）
+						alert(
+							"コメントの送信中にエラーが発生しました。もう一度お試しください。"
+						);
+					},
+				});
+			});
+		}
+	});
+
+	
 });

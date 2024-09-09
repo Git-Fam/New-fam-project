@@ -67,24 +67,15 @@
   .post-modal {
     display: none;
     position: relative;
-    &.open {
-      display: block;
-      width: 100%;
-      height: 100%;
-      background: rgba(71, 71, 71, 0.50);
-      position: fixed;
-      top: 0;
-      left: 0;
-      .letter{
-        @include iconContain($letter);
-        position: absolute;
-        left: 50%;
-        translate: -50% -50%;
-        @include pc{
-          width: 120%;
-          height: 120%;
-          top: 45%;
-        }
+    .letter{
+      @include iconContain($letter);
+      position: absolute;
+      left: 50%;
+      translate: -50% -50%;
+      @include pc{
+        width: 120%;
+        height: 120%;
+        top: 45%;
       }
       .note-bg{
         background: $B-FFFFFF;
@@ -130,7 +121,19 @@
             }
           }
         }
-      }
+      }  
+    }
+    .success{
+      display: none;
+    }
+    &.open {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: rgba(71, 71, 71, 0.50);
+      position: fixed;
+      top: 0;
+      left: 0;
     }
   }
 }
