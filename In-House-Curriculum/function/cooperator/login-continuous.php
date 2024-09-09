@@ -43,18 +43,4 @@ function save_user_login_continuous_field($user_id) {
 add_action('personal_options_update', 'save_user_login_continuous_field');
 add_action('edit_user_profile_update', 'save_user_login_continuous_field');
 
-// ユーザーが10日連続ログインを達成したときに達成日と回数を更新する
-function update_login_continuous_10days($user_id) {
-    $consecutive_login_days = get_user_meta($user_id, 'consecutive_login_days', true);
-    if ($consecutive_login_days == 10) {
-        update_user_meta($user_id, 'login_continuous_10days', current_time('mysql'));
-        
-        // 10日連続ログイン達成回数を更新
-        $login_continuous_10days_count = get_user_meta($user_id, 'login_continuous_10days_count', true) ?: 0;
-        $login_continuous_10days_count++;
-        update_user_meta($user_id, 'login_continuous_10days_count', $login_continuous_10days_count);
-    }
-}
-add_action('wp_login', 'update_login_continuous_10days', 20, 1);
-
 ?>

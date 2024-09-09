@@ -84,16 +84,17 @@
         margin: 0 auto;
         background: rgba(255, 255, 255, 0.8);
         border-radius: 10px;
+        position: relative;
 
         @include pc {
           width: pm(290);
-          padding: pm(10) pm(10);
+          padding: pm(20) pm(150) pm(20) pm(25);
           margin-top: pm(20);
         }
 
         @include sp {
           width: 80%;
-          padding: s(10) s(10);
+          padding: s(15) s(130) s(15) s(10);
           margin-top: s(20);
         }
 
@@ -107,6 +108,23 @@
 
           @include sp {
             font-size: s(16);
+          }
+        }
+
+        .badge{
+          position: absolute;
+          top: 50%;
+          translate: 0 -50%;
+          aspect-ratio: 450/100;
+          
+          @include pc{
+            width: pm(200);
+            left: calc(100% - pm(140));
+          }
+          
+          @include sp{
+            width: s(160);
+            left: calc(100% - s(120));
           }
         }
       }
