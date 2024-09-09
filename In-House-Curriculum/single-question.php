@@ -54,8 +54,9 @@ offにすればコメントできる -->
             <div class="question-content">
 
                 <?php
-                // コメントを表示
-                comments_template();
+                if (comments_open() || get_comments_number()) :
+                    comments_template();
+                endif;
                 ?>
 
             </div>
@@ -80,11 +81,18 @@ offにすればコメントできる -->
                 </div>
                 <div class="img-icon"></div>
                 <div class="comment-form">
-                    <?php comment_form(); ?> 
+                    <?php
+// コメントフォームのみを表示
+if (comments_open() || get_comments_number()) :
+    display_comment_form(); // コメントフォームのみを表示
+endif;                    ?>
                 </div>
             </div>
         </div>
 
+    </div>
+    <div class="success">
+        <p class="TX">コメントを送信しました。</p>
     </div>
 </div>
 
