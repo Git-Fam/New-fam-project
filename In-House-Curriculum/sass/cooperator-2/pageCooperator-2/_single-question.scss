@@ -8,7 +8,7 @@
 
 .question-content {
   overflow: scroll;
-  height: calc(462 / 700 * 100vh);
+  height: calc(472 / 519 * 100%);
 
   @include pc {
     margin-top: p(30);
@@ -37,6 +37,7 @@
           @include pc {
             width: p(619);
             padding: p(32) p(41) p(26);
+            box-shadow: 0 p(1) p(4) 0 rgba(0, 0, 0, 0.25);
           }
 
           .comment-title{

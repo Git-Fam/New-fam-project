@@ -17,10 +17,9 @@ offにすればコメントできる -->
         <div class="question-main-TL">
             <p class="TL">質問広場</p>
         </div>
-
+        
+        <!-- 左側 -->
         <div class="question-main-post">
-
-
             <ul class="C_menu">
                 <li class="post">
                     <div class="post-content">質問を作成する</div>
@@ -46,14 +45,20 @@ offにすればコメントできる -->
                         </div>
                     </div>
                 </li>
-                <li class="menu-item search">
-                    <div class="search-content">検索</div>
+                <li class="search">
+                    <div class="search-content menu-item">
+                        <input type="text" id="comment-search-input" placeholder="検索" class="search-input">
+                        <button id="comment-search-button"></button>
+                    </div>
+                    
                 </li>
             </ul>
 
+
             <div class="question-content">
 
-                <?php
+            <div class="comment-search-result">
+            <?php
                 if (comments_open() || get_comments_number()) :
                     comments_template();
                 endif;
@@ -61,44 +66,99 @@ offにすればコメントできる -->
 
             </div>
 
+            </div>
+
         </div>
 
-    </div>
-
-    <div class="post-modal">
-        <div class="letter">
-            <div class="note-bg">
-                <div class="C_menu">
-                    <div class="menu-item category">
-                    <div class="category-content">
-                            <select id="post-selector" class="select">
-                                <option value="" disabled selected>選択してください</option>
-                                <option value="2247" data-url="<?php bloginfo('url'); ?>/question/div01">divパズル01</option>
-                                <option value="2251" data-url="<?php bloginfo('url'); ?>/question/div02">divパズル02</option>
-                                <option value="2253" data-url="<?php bloginfo('url'); ?>/question/その他の質問">その他の質問</option>
-                            </select>
-                    </div>
+        <!-- 右側 -->
+        <div class="C_chatbot">
+            <div class="chatbot-content">
+                <div class="top-message bot-message">
+                    <div class="icon"></div>
+                    <p class="textbox">
+                        こんにちは！よく聞かれる内容についてお答えします！
+                    </p>
                 </div>
-                <div class="img-icon"></div>
-                <div class="comment-form">
+                <div class="q-and-a">
                     <?php
-// コメントフォームのみを表示
-if (comments_open() || get_comments_number()) :
-    display_comment_form(); // コメントフォームのみを表示
-endif;                    ?>
+                    // カスタム投稿タイプ「チャットボット」を取得するためのクエリ
+                    $args = array(
+                        'post_type' => 'chatbot', // カスタム投稿タイプ「チャットボット」を指定
+                        'posts_per_page' => -1    // すべての投稿を取得
+                    );
+
+                    $chatbot_query = new WP_Query($args);
+
+                    if ($chatbot_query->have_posts()) :
+                        echo '<ul id="q-and-a-list">';
+                        while ($chatbot_query->have_posts()) : $chatbot_query->the_post();
+                            // 各投稿のタイトルをリンクとして表示し、投稿IDをdata属性に設定
+                            echo '<li class="up"><a href="#" class="chatbot-title" data-id="' . get_the_ID() . '">' . get_the_title() . '</a></li>';
+                        endwhile;
+                        echo '</ul>';
+                    else :
+                        echo '質問は見つかりませんでした。';
+                    endif;
+
+                    // クエリのリセット
+                    wp_reset_postdata();
+                    ?>
+                </div>
+                <div class="q-and-a-answer answer-message up">
+                    <div class="bot-message">
+                        <div class="icon"></div>
+                        <p class="textbox answer"><!-- クリックされた投稿の内容がここに表示される --></p>
+                    </div>  
+                </div>
+
+                <div class="search-word up">
+                    <p class="word"></p>
+                    <div class="icon"></div>
+                </div>
+
+                <div class="search-result q-and-a up"></div>
+
+                <div class="search-result-answer answer-message  up">
+                    <div class="bot-message">
+                        <div class="icon"></div>
+                        <p class="textbox search-answer"><!-- クリックされた投稿の内容がここに表示される --></p>
+                    </div>  
+                </div>
+
+
+                <div class="search">
+                    <input type="text" id="search-input" placeholder="質問を入力する">
+                    <button id="search-button"></button>
                 </div>
             </div>
         </div>
 
     </div>
-    <div class="success">
-        <p class="TX">コメントを送信しました。</p>
+    <div class="post-modal open">
+        <div class="letter">
+            <div class="note-bg">
+                <div class="img-icon"></div>
+                <div class="comment-form-content">
+                <?php
+                    // comments.phpがまだインクルードされていない場合はインクルードする
+                    if (!function_exists('display_comment_form')) {
+                        include get_template_directory() . '/comments.php'; // テーマディレクトリのcomments.phpをインクルード
+                    }
+
+                    // コメントフォームのみを表示
+                    if (comments_open() || get_comments_number()) :
+                        display_comment_form(); // コメントフォームのみを表示
+                    endif;
+                    ?>
+                </div>
+            </div>
+        </div>
+        <div class="success">
+            <p class="TX">コメントを送信しました。</p>
+        </div>
     </div>
+
+
 </div>
 
 <?php get_footer(); ?>
-
-
-<script>
-    var postTitle = '<?php echo esc_js(get_the_title()); ?>'; // PHPで記事タイトルを取得してJavaScriptに渡す
-</script>

@@ -1,11 +1,98 @@
 <?php
 
+if (!function_exists('mytheme_comment')) {
+    function mytheme_comment($comment, $args, $depth) {
+        if ($comment->comment_approved != '1') {
+            return;
+        }
+        $GLOBALS['comment'] = $comment;
+        $comment_ID = $comment->comment_ID;
+        $get_comment_title = esc_attr(get_comment_meta($comment->comment_ID, 'comtitle', true));
+        $comment_image = esc_url(get_comment_meta($comment->comment_ID, 'comment_image', true));
+        $post_title = get_the_title($comment->comment_post_ID); // コメントが属する投稿のタイトルを取得
+        ?>
+
+        <li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
+            <div id="div-comment-<?php comment_ID(); ?>" class="comment-body">
+                <?php if ($get_comment_title) : ?>
+                    <div class="comment-title"><?php echo esc_html($get_comment_title); ?></div>
+                <?php endif; ?>
+
+                <div class="comment-meta commentmetadata">
+                    <a href="<?php echo esc_url(get_comment_link($comment->comment_ID)); ?>"><?php printf(esc_html__('%1$s at %2$s', 'In-House-Curriculum'), get_comment_date(), get_comment_time()); ?></a>
+                </div>
+
+                <?php comment_text(); ?>
+
+                <!-- コメントが属する投稿のタイトルを表示 -->
+                <div class="post-title"><?php echo esc_html($post_title); ?></div>
+
+                <!-- 画像を表示させる部分 -->
+                <?php if ($comment_image) : ?>
+                    <div class="comment-image">
+                        <img src="<?php echo esc_url($comment_image); ?>" alt="<?php esc_attr_e('コメント画像', 'In-House-Curriculum'); ?>" style="max-width: 300px; height: auto;">
+                    </div>
+                <?php endif; ?>
+            </div>
+            <?php if (get_children(array('post_id' => $comment->comment_ID, 'status' => 'approve'))) : ?>
+                <ol class="children">
+                    <?php wp_list_comments(array('style' => 'ol', 'callback' => 'mytheme_comment'), get_children(array('post_id' => $comment->comment_ID, 'status' => 'approve'))); ?>
+                </ol>
+            <?php endif; ?>
+        </li>
+        <?php
+    }
+}
+
+
+// コメントフォームのカスタマイズ: コメントフィールドの直前にタイトルフィールドを追加
+add_action('comment_form_field_comment', 'add_title_comment_field');
+function add_title_comment_field($comment_field) {
+    $title_field = '
+    <p class="comment-form-title"><label for="comtitle">' . esc_html__('タイトル:', 'In-House-Curriculum') . '</label>
+    <input id="comtitle" name="comtitle" type="text" value="" size="15"></p>';
+    return $title_field . $comment_field;
+}
+
 // コメントフォームに画像添付フィールドを追加
 add_action('comment_form_logged_in_after', 'add_image_upload_field');
 function add_image_upload_field() {
     echo '<p class="comment-form-image"><label for="comment_image">' . esc_html__('画像を添付:', 'In-House-Curriculum') . '</label>
     <input type="file" name="comment_image" id="comment_image" accept="image/*"></p>';
 }
+
+// コメントメタデータとして追加項目を保存
+function save_custom_comment_field($comment_id) {
+    if (!$comment = get_comment($comment_id)) {
+        return;
+    }
+    $custom_key_comment_title = 'comtitle';
+    $get_comment_title = isset($_POST[$custom_key_comment_title]) ? esc_attr($_POST[$custom_key_comment_title]) : '';
+
+    if ('' == get_comment_meta($comment_id, $custom_key_comment_title)) {
+        add_comment_meta($comment_id, $custom_key_comment_title, $get_comment_title, true);
+    } else if ($get_comment_title != get_comment_meta($comment_id, $custom_key_comment_title)) {
+        update_comment_meta($comment_id, $custom_key_comment_title, $get_comment_title);
+    } else if ('' == $get_comment_title) {
+        delete_comment_meta($comment_id, $custom_key_comment_title);
+    }
+
+    // 画像のアップロードと保存
+    if (!empty($_FILES['comment_image']['name'])) {
+        $file = $_FILES['comment_image'];
+        $upload = wp_handle_upload($file, array('test_form' => false));
+
+        if (!isset($upload['error']) && isset($upload['url'])) {
+            $image_url = $upload['url'];
+            add_comment_meta($comment_id, 'comment_image', $image_url);
+            error_log('Image successfully uploaded: ' . $image_url);
+        } else {
+            error_log('Image upload error: ' . $upload['error']);
+        }
+    }
+}
+add_action('comment_post', 'save_custom_comment_field');
+add_action('edit_comment', 'save_custom_comment_field');
 
 // 管理画面でコメント編集時にタイトルと画像を表示するためのメタボックスを追加
 function add_title_comment_field_box() {
@@ -44,36 +131,26 @@ add_action('admin_footer', 'add_enctype_to_comment_edit_form');
 // コメント編集時の画像保存処理
 function save_edited_comment_image($comment_id) {
     if (!current_user_can('edit_comment', $comment_id)) {
-        error_log('Debugging: User does not have permission to edit comment ' . $comment_id);
         return;
     }
 
     // 画像の保存処理
     if (!empty($_FILES['comment_image']['name'])) {
         $file = $_FILES['comment_image'];
-        error_log('Debugging: Image upload attempt from admin during comment edit. Filename: ' . $file['name']);
 
+        // ファイルが正しくアップロードされたか確認
         if (is_uploaded_file($file['tmp_name'])) {
-            error_log('Debugging: File is uploaded correctly. Temp file: ' . $file['tmp_name']);
-
             $upload = wp_handle_upload($file, array('test_form' => false));
 
+            // アップロードの成功を確認
             if (!isset($upload['error']) && isset($upload['url'])) {
                 $image_url = $upload['url'];
                 update_comment_meta($comment_id, 'comment_image', $image_url);
-                error_log('Debugging: Image successfully uploaded from admin during comment edit for comment ID ' . $comment_id . ': ' . $image_url);
-            } else {
-                error_log('Debugging: Image upload error from admin during comment edit: ' . $upload['error']);
             }
-        } else {
-            error_log('Debugging: File was not uploaded correctly. Temporary file: ' . $file['tmp_name']);
         }
-    } else {
-        error_log('Debugging: No file selected for upload during comment edit.');
     }
 }
 add_action('edit_comment', 'save_edited_comment_image');
-
 
 
 
@@ -169,6 +246,5 @@ function add_enctype_to_comment_form($defaults) {
     return $defaults;
 }
 
-error_log('Debugging: $_FILES content: ' . print_r($_FILES, true));
 
 ?>
