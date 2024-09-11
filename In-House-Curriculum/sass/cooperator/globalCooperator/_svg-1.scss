@@ -18,7 +18,6 @@ $cloud02: url('data:image/svg+xml;utf-8,<svg viewBox="0 0 468 407" fill="none" x
 
 
 
-
 // SVG使い方（色変更パターン）
 @function encode($ColorCode){
   @return '%23' + str-slice($ColorCode,2,-1);

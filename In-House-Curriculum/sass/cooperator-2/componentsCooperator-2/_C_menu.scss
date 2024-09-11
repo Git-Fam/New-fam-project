@@ -22,7 +22,7 @@
       font-size: p(10);
       letter-spacing: p(1);
       border-radius: p(20);
-      padding: p(4) p(12) p(4) p(12);
+      padding: p(4) p(12);
       border: p(1) solid $P-7FBF99;
 
     }
@@ -144,12 +144,45 @@
   }
 
   .search {
-    background: rgba(156, 196, 83, 0.24);
-    border: none;
     position: relative;
 
     @include pc {
       margin-left: p(20);
+    }
+
+    &-content {
+      background: rgba(156, 196, 83, 0.24);
+      position: relative;
+      border: none;
+
+      @include pc {
+        width: p(138);
+        height: p(20);
+        padding: p(2) p(12) ;
+
+      }
+
+      .search-input {
+        background: none;
+        border: none;
+        outline: none;
+        color: $P-7FBF99;
+
+        
+
+        @include pc {
+          max-width: 100%;
+          margin-top: p(2);
+          font-size: p(10);
+        }
+
+
+
+        &::placeholder {
+          color: $P-7FBF99;
+        }
+      }
+
     }
 
     &::before {

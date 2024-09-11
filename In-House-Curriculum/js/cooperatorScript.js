@@ -319,15 +319,31 @@ $(function () {
 		}
 	});
 
-	//質問広場　記事タイトルを表示
-	var postTitle = window.postTitle || ""; // テンプレートから渡された記事タイトルを取得
-	$(".comment-body > p").each(function () {
-		$(this).after('<div class="post-title">' + postTitle + "</div>");
-	});
-
 	//質問広場　質問モーダル
 	$(".post-content").on("click", function () {
 		$(".post-modal").addClass("open");
+	});
+
+	//質問広場　コメントタイトル　プレイスホルダー
+	jQuery(document).ready(function ($) {
+		var $input = $("#comtitle");
+		var $commentFormTitle = $(".comment-form-title");
+
+		// 初期チェック - inputがすでに入力されている場合
+		togglePlaceholder($input.val());
+
+		// inputの内容を監視
+		$input.on("input", function () {
+			togglePlaceholder($(this).val());
+		});
+
+		function togglePlaceholder(value) {
+			if (value.trim() !== "") {
+				$commentFormTitle.addClass("input-has-value");
+			} else {
+				$commentFormTitle.removeClass("input-has-value");
+			}
+		}
 	});
 
 	//質問広場　質問投稿時カテゴリー選択
@@ -350,10 +366,9 @@ $(function () {
 			categoryTextElement.length > 0
 		) {
 			selectPostItems.on("click", function () {
-				const selectedPostId = $(this).data("value"); // data-value属性から投稿IDを取得
-				const selectedPostTitle = $(this).text().trim(); // 選択された投稿のタイトルを取得
+				const selectedPostId = $(this).data("value");
+				const selectedPostTitle = $(this).text().trim();
 
-				// `<p>`タグのテキストを選択された投稿のタイトルに変更
 				categoryTextElement.text(selectedPostTitle);
 
 				const commentPostIdInput = commentForm.find(
@@ -361,10 +376,9 @@ $(function () {
 				);
 
 				if (commentPostIdInput.length > 0) {
-					// フォームのcomment_post_IDフィールドを選択された投稿IDに更新
 					commentPostIdInput.val(selectedPostId);
-					isCategorySelected = true; // カテゴリーが選択されたことをフラグで保持
-					errorMessageElement.hide(); // エラーメッセージを非表示にする
+					isCategorySelected = true;
+					errorMessageElement.hide();
 				}
 			});
 
@@ -373,20 +387,10 @@ $(function () {
 				if (!isCategorySelected) {
 					event.preventDefault(); // フォームの送信をキャンセル
 					errorMessageElement.show(); // エラーメッセージを表示
+					return false; // 完全に送信を防ぐ
 				}
-			});
-		} else {
-			console.error("必要な要素が見つかりませんでした。");
-		}
-	});
 
-	jQuery(document).ready(function ($) {
-		// コメントフォームを取得
-		var commentForm = $(".comment-form form");
-
-		if (commentForm.length) {
-			// フォームの送信イベントを監視
-			commentForm.on("submit", function (event) {
+				// カテゴリーが選択されている場合
 				event.preventDefault(); // デフォルトのフォーム送信を防止
 
 				// Ajaxでコメントを送信
@@ -410,8 +414,201 @@ $(function () {
 					},
 				});
 			});
+		} else {
+			console.error("必要な要素が見つかりませんでした。");
 		}
 	});
 
-	
+	// チャットボット
+	// よくある質問をクリックしたら、その内容が表示される
+
+	jQuery(document).ready(function ($) {
+		// よくある質問のタイトルクリックイベント
+		$(".chatbot-title").on("click", function (e) {
+			e.preventDefault(); // リンクのデフォルト動作を防ぐ
+
+			var post_id = $(this).data("id"); // クリックされたリンクの投稿IDを取得
+
+			$.post(
+				chatbot_ajax.ajax_url,
+				{
+					action: "get_chatbot_content", // AJAXアクションフック
+					post_id: post_id,
+				},
+				function (response) {
+					$(".answer").html(response); // 取得した内容を.answerに表示
+				}
+			);
+			$(".q-and-a-answer").addClass("show");
+		});
+
+		// chatbot検索
+		jQuery(document).ready(function ($) {
+			// 検索ボタンのクリックイベント
+			$("#search-button").on("click", function () {
+				executeSearch(); // 検索を実行
+			});
+
+			// エンターキーでの検索イベント
+			$("#search-input").on("keyup", function (event) {
+				if (event.keyCode === 13) {
+					// エンターキーが押されたとき
+					executeSearch(); // 検索を実行
+				}
+			});
+
+			// 検索処理を関数に分離
+			function executeSearch() {
+				var searchTerm = $("#search-input").val(); // 検索キーワードを取得
+
+				$(".search-result").removeClass("show").empty(); // 検索結果をクリアして非表示
+				$(".search-result-answer").removeClass("show"); // 検索内容を非表示にする
+				$(".search-word").removeClass("show"); // 検索ワードの表示をリセット
+				// 検索ワードを.wordに表示
+				$(".word").text(searchTerm);
+
+				// 検索ワード全体の表示を有効にする
+				$(".search-word").addClass("show");
+
+				// AJAXで検索リクエストを送信
+				$.post(
+					chatbot_ajax.ajax_url,
+					{
+						action: "search_chatbot_posts", // 検索用のAJAXアクションフック
+						search: searchTerm,
+					},
+					function (response) {
+						$(".search-result").html(response); // 取得した検索結果を.search-resultに表示
+						$(".search-result").addClass("show");
+
+						// 検索結果内のタイトルクリックイベントを再度バインド
+						$(".search-result .chatbot-title").on("click", function (e) {
+							e.preventDefault(); // リンクのデフォルト動作を防ぐ
+
+							var post_id = $(this).data("id"); // クリックされたリンクの投稿IDを取得
+
+							$.post(
+								chatbot_ajax.ajax_url,
+								{
+									action: "get_chatbot_content", // AJAXアクションフック
+									post_id: post_id,
+								},
+								function (response) {
+									$(".search-answer").html(response); // 取得した内容を.answerに表示
+								}
+							);
+							$(".search-result-answer").addClass("show");
+						});
+					}
+				);
+			}
+		});
+	});
+
+	// 各li要素に順番にupクラスを付与
+	$("#q-and-a-list li").each(function (index) {
+		$(this)
+			.delay(index * 300)
+			.queue(function (next) {
+				$(this).addClass("show"); // upクラスを追加
+			});
+	});
+
+	//常に一番下にスクロールした状態
+	jQuery(document).ready(function ($) {
+		// スクロール可能な要素を取得
+		var chatbotContent = $(".chatbot-content");
+		var shouldScrollToBottom = true; // 自動スクロールのフラグ
+
+		// 要素をゆっくりと一番下までスクロール
+		function scrollToBottom() {
+			chatbotContent.animate(
+				{ scrollTop: chatbotContent[0].scrollHeight },
+				2000 // 2秒かけてスクロール
+			);
+		}
+
+		// 初期ロード時に一番下までスクロール
+		scrollToBottom();
+
+		// 要素の変化を監視するためのMutationObserverを設定
+		var observer = new MutationObserver(function (mutations) {
+			mutations.forEach(function (mutation) {
+				// 要素に変化があった場合
+				if (mutation.type === "childList" || mutation.type === "subtree") {
+					if (shouldScrollToBottom) {
+						scrollToBottom(); // スクロール実行
+					}
+				}
+			});
+		});
+
+		// 監視の設定
+		observer.observe(chatbotContent[0], {
+			childList: true, // 子ノードの変更を監視
+			subtree: true, // 子孫ノード（深い階層の子も含む）も監視
+		});
+
+		// スクロール位置が手動で変更されたら自動スクロールを一時的に解除
+		chatbotContent.on("scroll", function () {
+			// ユーザーが手動でスクロールした場合、フラグを解除
+			shouldScrollToBottom =
+				chatbotContent[0].scrollTop + chatbotContent.outerHeight() >=
+				chatbotContent[0].scrollHeight - 10;
+		});
+
+		// コンテンツに変化があったら自動スクロールを再有効化
+		chatbotContent.on("DOMNodeInserted", function () {
+			shouldScrollToBottom = true;
+		});
+	});
+
+	//質問の検索
+	jQuery(document).ready(function ($) {
+		// .archive-questionクラスの存在でアーカイブページかどうかを判別
+		var isArchivePage = $(".archive-question").length > 0;
+
+		// ページロード時に全てのコメントを取得する (アーカイブページの場合のみ)
+		if (isArchivePage) {
+			$.post(
+				chatbot_ajax.ajax_url,
+				{
+					action: "get_all_comments", // すべてのコメントを取得するためのAJAXアクション
+				},
+				function (response) {
+					$(".comment-search-result").html(response); // 取得した全コメントを.comment-search-resultに表示
+				}
+			);
+		}
+
+		// コメント検索ボタンのクリックイベント
+		$("#comment-search-button").on("click", function () {
+			executeSearch(); // 検索を実行
+		});
+
+		// エンターキーでのコメント検索イベント
+		$("#comment-search-input").on("keyup", function (event) {
+			if (event.keyCode === 13) {
+				// エンターキーが押されたとき
+				executeSearch(); // 検索を実行
+			}
+		});
+
+		// 検索処理を関数に分離
+		function executeSearch() {
+			var searchTerm = $("#comment-search-input").val(); // 検索キーワードを取得
+
+			// AJAXで検索リクエストを送信
+			$.post(
+				chatbot_ajax.ajax_url,
+				{
+					action: "search_comments", // コメント検索用のAJAXアクションフック
+					search: searchTerm,
+				},
+				function (response) {
+					$(".comment-search-result").html(response); // 取得した検索結果を.comment-search-resultに表示
+				}
+			);
+		}
+	});
 });

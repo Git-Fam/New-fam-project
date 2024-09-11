@@ -23,6 +23,7 @@
       border-radius: p(18);
       padding: p(97) p(65) p(40) p(61);
       box-shadow: inset 0px 0px p(10) 0px rgba(0, 0, 0, 0.25);
+      display: flex;
     }
 
     &-TL {
@@ -67,65 +68,180 @@
   .post-modal {
     display: none;
     position: relative;
-    .letter{
+
+    .letter {
       @include iconContain($letter);
       position: absolute;
       left: 50%;
       translate: -50% -50%;
-      @include pc{
+
+      @include pc {
         width: 120%;
         height: 120%;
         top: 45%;
       }
-      .note-bg{
+
+      .note-bg {
         background: $B-FFFFFF;
         position: absolute;
         left: 50%;
         translate: -50% -50%;
-        @include pc{
+
+        @include pc {
           height: p(578);
           top: 55%;
           aspect-ratio: 619 / 578;
           max-height: calc(578 / 700 * 100vh);
           padding: p(32) p(40) p(30);
         }
-        .img-icon{
+
+        .img-icon {
           @include iconContain($img-icon);
           position: relative;
-          @include pc{
+
+          @include pc {
             width: p(20);
             height: p(20);
             margin: p(-17) 0 0 auto;
+            top: p(15);
           }
-          &::before{
+
+          &::before {
             content: "↑";
             position: absolute;
             z-index: 10;
             color: $P-7FBF99;
             @include wt900;
-            @include pc{
+
+            @include pc {
               font-size: p(10);
               top: p(-5);
               right: p(0);
             }
           }
-          &::after{
+
+          &::after {
             content: "";
             position: absolute;
             background: $B-FFFFFF;
             top: 0;
-            @include pc{
+
+            @include pc {
               width: p(3);
               height: p(2);
               right: p(3);
             }
           }
         }
-      }  
+
+        .comment-form-content {
+          .comment-respond {
+            .comment-reply-title {
+              display: none;
+            }
+          }
+
+          .comment-form {
+            position: relative;
+
+            .error-message {
+              position: absolute;
+
+              @include pc {
+                margin-top: p(-12);
+                font-size: p(10);
+              }
+            }
+
+            .logged-in-as {
+              display: none;
+            }
+
+            .comment-form-image {
+              position: absolute;
+              opacity: 0;
+
+              @include pc {
+                top: p(-30);
+                right: 0;
+                width: p(30);
+              }
+
+              label {
+                display: none;
+              }
+
+              .comment_image {
+                max-width: 100%;
+              }
+            }
+
+            .comment-form-title {
+              display: flex;
+              position: relative;
+              align-items: center;
+
+
+              @include pc {
+                border-top: p(1) solid $P-7FBF99;
+                border-bottom: p(1) solid $P-7FBF99;
+                margin-top: p(15);
+                padding: p(13) 0;
+              }
+
+              label {
+                display: none;
+              }
+
+              #comtitle {
+                width: 100%;
+                height: 100%;
+                border: none;
+                outline: none;
+                color: $F-6D6D6D;
+                @include pc {
+                  margin-left: p(11);
+                }
+
+              }
+
+              &::before {
+                content: "";
+                @include imgContain("staff-icon.png");
+                display: block;
+
+                @include pc {
+                  width: p(30);
+                  height: p(30);
+                }
+              }
+
+              &::after {
+                content: "タイトルを記入";
+                position: absolute;
+                color: $F-D9D9D9;
+
+                @include pc {
+                  left: p(40);
+                  font-size: p(16);
+                }
+              }
+
+              &.input-has-value {
+                &::after {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
     }
-    .success{
+
+    .success {
       display: none;
     }
+
     &.open {
       display: block;
       width: 100%;
