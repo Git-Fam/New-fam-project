@@ -193,7 +193,7 @@ $Design09_3_value = get_user_meta($user_id, 'Design09_3', true) ?: '0';
 
                 <!-- バッジ -->
                 <?php badge_display(); ?>
-                
+
             </div>
             <div class="my--title--points">
                 <div class="coin-point">
@@ -214,6 +214,18 @@ $Design09_3_value = get_user_meta($user_id, 'Design09_3', true) ?: '0';
                             $user_points = get_user_meta($user_id, 'user_point', true) ?: 0;
                             echo esc_html($user_points);
                             ?>&nbsp;points
+                        </span>
+                    </p>
+                </div>
+
+                <div class="coin-point">
+                    <p class="TX">連続ログイン日数:
+                        <span>
+                            <?php
+                            $user_id = get_current_user_id();
+                            $consecutive_login_days = get_user_meta($user_id, 'consecutive_login_days', true) ?: 0;
+                            echo esc_html($consecutive_login_days);
+                            ?>&nbsp;日
                         </span>
                     </p>
                 </div>

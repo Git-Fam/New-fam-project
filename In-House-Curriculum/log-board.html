@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og: https://ogp.me/ns#">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
+    <meta name="format-detection" content="email=no,telephone=no,address=no" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta property="og:locale" content="ja_JP" />
+
+    <!-- ▼SEO -->
+    <link rel="canonical" href="<?php echo get_home_url(); ?>" />
+    <title>
+        <?php bloginfo('name'); ?>
+        <?php if (wp_title('', false)) { echo ' | ' . wp_title('', false);} ?>
+    </title>
+    <meta name="title"
+        content="<?php bloginfo('name'); ?><?php if (wp_title('', false)) { echo ' | ' . wp_title('', false);} ?>" />
+    <meta name="description" content="<?php bloginfo('description'); ?>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<?php echo get_home_url(); ?>" />
+    <meta property="og:title"
+        content="<?php bloginfo('name'); ?><?php if (wp_title('', false)) { echo ' | ' . wp_title('', false);} ?>" />
+    <meta property="og:description" content="<?php bloginfo('description'); ?>" />
+    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.jpg" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="<?php echo get_home_url(); ?>" />
+    <meta property="twitter:title"
+        content="<?php bloginfo('name'); ?><?php if (wp_title('', false)) { echo ' | ' . wp_title('', false); } ?>" />
+    <meta property="twitter:description" content="<?php bloginfo('description'); ?>" />
+    <meta property="twitter:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.jpg" />
+
+    <!-- ▼ファビコン -->
+    <!-- <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri(); ?>/img/favicon_package/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_template_directory_uri(); ?>/img/favicon_package/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_template_directory_uri(); ?>/img/favicon_package/favicon-16x16.png">
+    <link rel="manifest" href="<?php echo get_template_directory_uri(); ?>/img/favicon_package/site.webmanifest">
+    <link rel="mask-icon" href="<?php echo get_template_directory_uri(); ?>/img/favicon_package/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff"> -->
+
+
+    <!-- ▼クロールして欲しくない -->
+    <!-- <meta name="robots" content="noindex,nofollow"> -->
+
+    <!-- ▼テーマカラー -->
+    <!-- <meta name="theme-color" content="#e9c931"> -->
+
+    <!-- ▼CSS -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- ▼フォント -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@100..900&family=Kavoon&display=swap"
+        rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <div class="my-warp">
+
+        <!-- main -->
+        <div class="log-board">
+
+            <div class="log-board--top">
+                <!-- 丘-->
+                <div class="log-board--top__hills"></div>
+
+                <!-- 木 -->
+                <div class="log-board--top__trees">
+                    <div class="trees__img trees-01"></div>
+                    <div class="trees__img trees-02"></div>
+                </div>
+
+                <!-- キャラクター -->
+                <div class="log-board--top__characters">
+                    <div class="characters__img characters-01"></div>
+                    <div class="characters__img characters-02"></div>
+                    <div class="characters__img characters-03"></div>
+                </div>
+
+                <!-- メイン -->
+                <div class="log-board--top__main">
+                    <div class="main__title">
+                        <h2 class="TL">ログインボーナス</h2>
+                    </div>
+                    <div class="main__month">
+                        <p class="TX">
+                            <!-- 10 -->
+                            <img src="img/log-board/log-board-month-10.png" alt="">
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 草 -->
+                <div class="log-board--top__grassy"></div>
+
+                <!-- 日光 -->
+                <div class="log-board--top__sunlight">
+                    <div class="sunlight__img sunlight-01"></div>
+                    <div class="sunlight__img sunlight-02"></div>
+                    <div class="sunlight__img sunlight-03"></div>
+                    <div class="sunlight__img sunlight-04"></div>
+                </div>
+            </div>
+
+            <div class="log-board--content">
+                <div class="log-board--content__lists">
+                    <ul>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+                        <!-- cards -->
+                        <li>
+                            <div class="cards">
+                                <div class="cards__number">11</div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 連続ログイン -->
+        <div class="continuous-board">
+            <div class="continuous-board__container">
+
+                <div class="container__title">
+                    <h2 class="TL" data-text="連続ログインボーナス！">連続ログインボーナス！</h2>
+                    <div class="TX">
+                        <img src="img/log-board/continuous-board-belt.svg" alt="毎日ログインして豪華アイテムをGET!">
+                    </div>
+                </div>
+
+                <div class="container__content">
+                    <div class="container__content__inner">
+                        <div class="content__title">
+                            <div class="content__title__inner">
+                                <p class="TX"><span>10日</span>連続ログイン中！</p>
+                            </div>
+                        </div>
+
+                        <div class="content__stamp">
+                            <div class="stamp__item"></div>
+                            <div class="stamp__item"></div>
+                            <div class="stamp__item"></div>
+                            <div class="stamp__item"></div>
+                            <div class="stamp__item"></div>
+                            <div class="stamp__item"></div>
+                            <div class="stamp__item"></div>
+                            <div class="stamp__item"></div>
+                            <div class="stamp__item__gool"></div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+    <script src="js/script.js"></script>
+    <script src="js/cooperatorScript.js"></script>
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+
+</body>
+
+</html>

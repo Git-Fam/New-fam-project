@@ -88,14 +88,14 @@
 
         @include pc {
           width: pm(290);
-          padding: pm(20) pm(150) pm(20) pm(25);
-          margin-top: pm(20);
+          padding: pm(20) pm(25);
+          margin-top: pm(30);
         }
 
         @include sp {
           width: 80%;
-          padding: s(15) s(130) s(15) s(10);
-          margin-top: s(20);
+          padding: s(15) s(10);
+          margin-top: s(30);
         }
 
         .TX {
@@ -113,18 +113,18 @@
 
         .badge{
           position: absolute;
-          top: 50%;
-          translate: 0 -50%;
           aspect-ratio: 450/100;
           
           @include pc{
-            width: pm(200);
-            left: calc(100% - pm(140));
+            width: pm(130);
+            right: pm(0);
+            bottom: calc(100% + pm(3));
           }
           
           @include sp{
-            width: s(160);
-            left: calc(100% - s(120));
+            width: s(120);
+            right: s(0);
+            bottom: calc(100% + s(3));
           }
         }
       }
