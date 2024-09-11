@@ -1,41 +1,47 @@
 // フォント
 
 
-@mixin mplus{
+@mixin mplus {
   font-family: "M PLUS 1", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
 }
 
-@mixin wt100{
+@mixin kavoon {
+  font-family: "Kavoon", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin wt100 {
   font-weight: 100;
 }
 
-@mixin wt300{
+@mixin wt300 {
   font-weight: 300;
 }
 
-@mixin wt400{
+@mixin wt400 {
   font-weight: 400;
 }
 
-@mixin wt500{
+@mixin wt500 {
   font-weight: 500;
 }
 
-@mixin wt600{
+@mixin wt600 {
   font-weight: 600;
 }
 
-@mixin wt700{
+@mixin wt700 {
   font-weight: 700;
 }
 
-@mixin wt800{
+@mixin wt800 {
   font-weight: 800;
 }
 
-@mixin wt900{
+@mixin wt900 {
   font-weight: 900;
 }
 
@@ -45,6 +51,7 @@
   $rate: calc(100 / $viewport);
   @return $rate * $size * 1vw;
 }
+
 // font-size: p(50);
 
 @function pm($size, $maxSize: $size, $viewport: 1280) {
@@ -52,6 +59,7 @@
   $calculatedSize: $rate * $size * 1vw;
   @return max(#{$calculatedSize}, #{$maxSize}px);
 }
+
 // font-size: pm(50,40);
 
 @function pmi($size, $maxSize: $size, $viewport: 1280) {
@@ -59,12 +67,14 @@
   $calculatedSize: $rate * $size * 1vw;
   @return min(#{$calculatedSize}, #{$maxSize}px);
 }
+
 // font-size: pmi(50,40);
 
 @function s($size, $viewport: 390) {
   $rate: calc(100 / $viewport);
   @return $rate * $size * 1vw;
 }
+
 // font-size: s(50);
 
 @function sm($size, $maxSize: $size, $viewport: 390) {
@@ -72,7 +82,5 @@
   $calculatedSize: $rate * $size * 1vw;
   @return max(#{$calculatedSize}, #{$maxSize}px);
 }
+
 // font-size: sm(50,40);
-
-
-

@@ -1,0 +1,239 @@
+@use "../global" as *;
+
+/* -----------------------
+  continuous-board
+----------------------- */
+
+
+.continuous-board {
+  @include height;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(71, 71, 71, 0.60);
+  z-index: 100;
+
+  @include pc {
+    min-height: pm(700, 700);
+  }
+
+  @include sp {
+
+    @media screen and (max-width: 767px) and (min-width: 550px) {
+      min-height: 900px;
+    }
+  }
+
+  &__container {
+    background: #F4E7BC;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    border-radius: 10px;
+
+    @include pc {
+      width: p(1148);
+      // height: p(565);
+    }
+
+    @include sp {}
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      width: 100%;
+      height: 100%;
+      @include imgCover("log-board/continuous-board-wrap.png");
+      background-position: center top;
+      z-index: 3;
+    }
+
+    .container__title {
+
+      @include pc {
+        padding: p(10) p(20) 0 p(30);
+      }
+
+      @include sp {}
+
+      .TL {
+        line-height: 1.3;
+        @include wt900;
+        letter-spacing: 0.2rem;
+        position: relative;
+        -webkit-text-stroke-color: #887537;
+
+        @include pc {
+          -webkit-text-stroke-width: p(10);
+          font-size: p(57);
+        }
+
+        @include sp {}
+
+        &::before {
+          content: attr(data-text);
+          position: absolute;
+          -webkit-text-stroke: 0px;
+          top: 50%;
+          left: 50%;
+          translate: -50% -50%;
+          background: linear-gradient(358deg, #BAA661 11.27%, #FDF1C7 59.24%, #A7924D 89.55%);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          width: 100%;
+        }
+
+        &::after {
+          content: attr(data-text);
+          width: 100%;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          translate: -50% -50%;
+          z-index: -1;
+          text-shadow: 0px 0px 20px #fff;
+
+          @include pc {
+            font-size: p(57);
+          }
+
+          @include sp {}
+        }
+      }
+
+      .TX {
+        aspect-ratio: 510/158;
+        position: absolute;
+        rotate: 7deg;
+        z-index: 6;
+
+        @include pc {
+          width: p(510);
+          right: p(-70);
+          top: p(-16);
+        }
+
+        @include sp {}
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          object-position: center;
+        }
+      }
+    }
+
+    .container__content {
+      width: 100%;
+      border-radius: 0 0 10px 10px;
+      position: relative;
+      z-index: 4;
+      background: linear-gradient(179deg,
+          #aa9b6b 0%,
+          #f4e7bc 15%,
+          #786835 65%,
+          #ede0b4 100%);
+
+      @include pc {
+        margin-top: p(15);
+        padding: 0 p(10) p(10);
+      }
+
+      @include sp {}
+
+      &__inner {
+        width: 100%;
+        background: #fff;
+
+        @include pc {
+          padding: p(30) p(30) p(40);
+        }
+
+        @include sp {}
+
+        .content__title {
+          background: linear-gradient(179deg,
+              #aa9b6b 0%,
+              #f4e7bc 15%,
+              #786835 65%,
+              #ede0b4 100%);
+          width: fit-content;
+          border-radius: 20px;
+
+
+          @include pc {
+            padding: p(6);
+          }
+
+          @include sp {}
+
+          &__inner {
+            background-color: #444444;
+            border-radius: 15px;
+
+            @include pc {
+              padding: p(1) p(4) p(6) p(12);
+            }
+
+            @include sp {}
+
+            .TX {
+              color: #FFF;
+              @include wt700;
+              line-height: 1.5;
+              letter-spacing: 0.115rem;
+
+              @include pc {
+                font-size: p(23);
+              }
+
+              @include sp {}
+
+              span {
+                color: #75FC51;
+                @include wt700;
+
+                @include pc {
+                  font-size: p(30);
+                }
+
+                @include sp {}
+              }
+            }
+          }
+        }
+
+        .content__stamp {
+          display: flex;
+          align-items: center;
+
+          @include pc {
+            margin-top: p(34);
+            gap: p(26);
+          }
+
+          @include sp {}
+
+          .stamp__item {
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            @include iconContain($dot-circle);
+
+            @include pc{
+              width: calc(100% / 9 - (p(26) * 8 / 9));
+            }
+            
+            @include sp{}
+          }
+        }
+      }
+    }
+  }
+}
