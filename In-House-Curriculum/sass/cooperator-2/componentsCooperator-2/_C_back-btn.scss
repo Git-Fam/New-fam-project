@@ -1,0 +1,21 @@
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
+
+/* -----------------------
+  C_back-btn
+----------------------- */
+
+.C_back-btn {
+  background: $B-C8C8C8;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25), inset 0px 0px 10px 0px #F1F9F4;
+  color: $F-FFFFFF;
+  @include wt800;
+
+  @include pc {
+    width: p(81);
+    border-radius: p(5);
+    padding: p(7) p(25);
+    letter-spacing: p(1.2);
+    font-size: p(12);
+  }
+}

@@ -13,6 +13,11 @@
     gap: p(12);
   }
 
+  @include sp {
+    flex-wrap: wrap;
+    gap: s(10);
+  }
+
 
   .menu-item {
     color: $P-7FBF99;
@@ -24,7 +29,15 @@
       border-radius: p(20);
       padding: p(4) p(12);
       border: p(1) solid $P-7FBF99;
+    }
 
+    @include sp {
+      width: s(120);
+      font-size: s(10);
+      letter-spacing: s(1);
+      border-radius: s(20);
+      padding: s(3) s(10);
+      border: s(1) solid $P-7FBF99;
     }
 
   }
@@ -34,11 +47,27 @@
     color: $F-FFFFFF;
 
     @include pc {
-      box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25), inset 0px 0px 10px 0px #BCF3D3;
+      box-shadow: 0px p(2) p(4) 0px rgba(0, 0, 0, 0.25), inset 0px 0px p(10) 0px #BCF3D3;
       padding: p(7) p(25);
       border-radius: p(5);
       font-size: p(12);
       letter-spacing: p(1.2);
+    }
+    @include sp{
+      box-shadow: 0px s(2) s(4) 0px rgba(0, 0, 0, 0.25), inset 0px 0px s(10) 0px #BCF3D3;
+      padding: s(3) s(21) s(4);
+      border-radius: s(3);
+      font-size: s(10);
+      letter-spacing: s(1);
+    }
+    .post-content{
+      @include pc{
+        @include wt800;
+      }
+      @include sp{
+        @include wt600;
+      }
+
     }
   }
 
@@ -56,6 +85,9 @@
         @include pc {
           top: p(15);
         }
+        @include sp{
+          top: s(13);
+        }
 
 
         .select {
@@ -71,12 +103,20 @@
             border-radius: p(5);
             gap: p(10);
           }
+          @include sp{
+            padding: s(8);
+            border-radius: s(3);
+            gap: s(7);
+          }
 
           .TX {
             color: $F-1E673C;
 
             @include pc {
               font-size: p(12);
+            }
+            @include sp{
+              font-size: s(12);
             }
           }
 
@@ -85,7 +125,13 @@
             display: inline-block;
 
             @include pc {
+              font-size: p(10);
               margin: p(5) 0 0 p(5);
+            }
+            @include sp{
+              font-size: s(10);
+              margin: s(4) 0 0 s(4);
+
             }
           }
         }
@@ -122,13 +168,22 @@
           border-right: p(1) solid $P-7FBF99;
           border-bottom: p(1) solid $P-7FBF99;
         }
+        @include sp{
+          width: s(2);
+          height: s(2);
+          border-right: s(1) solid $P-7FBF99;
+          border-bottom: s(1) solid $P-7FBF99;
+        }
       }
 
       &::before {
         rotate: -135deg;
 
         @include pc {
-          top: p(2);
+          top: p(0);
+        }
+        @include sp{
+          top: s(2);
         }
 
       }
@@ -137,7 +192,10 @@
         rotate: 45deg;
 
         @include pc {
-          bottom: p(2);
+          bottom: p(0);
+        }
+        @include sp{
+          bottom: s(2);
         }
       }
     }
@@ -149,6 +207,9 @@
     @include pc {
       margin-left: p(20);
     }
+    @include sp{
+      margin-left: s(15);
+    }
 
     &-content {
       background: rgba(156, 196, 83, 0.24);
@@ -158,8 +219,11 @@
       @include pc {
         width: p(138);
         height: p(20);
-        padding: p(2) p(12) ;
-
+        padding: p(2) p(12);
+      }
+      @include sp{
+        width: s(106);
+        height: s(18);
       }
 
       .search-input {
@@ -167,13 +231,14 @@
         border: none;
         outline: none;
         color: $P-7FBF99;
-
-        
+        max-width: 100%;
 
         @include pc {
-          max-width: 100%;
           margin-top: p(2);
           font-size: p(10);
+        }
+        @include sp{
+          font-size: s(10);
         }
 
 
@@ -196,6 +261,11 @@
         width: p(20);
         height: p(17);
         left: p(-22);
+      }
+      @include sp{
+        width: s(18);
+        height: s(16);
+        left: s(-20);
       }
     }
   }

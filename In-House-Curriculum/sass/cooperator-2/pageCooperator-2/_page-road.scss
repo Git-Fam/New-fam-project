@@ -4,62 +4,148 @@
 /* -----------------------
   load
 ----------------------- */
-#page-road {
-  .inner {
+.road-wappaer {
+  position: relative;
+  width: 100%;
+  @include height;
+
+  .road-header {
+    @include iconCover($green-header);
+    position: relative;
+    z-index: 15;
+    width: 100%;
+
     @include pc {
-      padding: 0 p(30);
+      height: p(60);
     }
 
-    .content {
-      overflow-y: scroll;
-      padding-bottom: p(20);
+    .TL {
+      color: $F-FFFFFF;
+      @include wt700;
 
-      .road {
-        display: flex;
-        padding-top: 450px;
-        justify-content: space-between;
-        position: relative;
+      @include pc {
+        font-size: p(23);
+        padding: p(15) 0 0 p(34);
+      }
+    }
+  }
+
+  .archive--contents--tab {
+    z-index: 20;
+
+    @include pc {
+      width: 85%;
+      margin-top: p(13);
+    }
+
+    .archive--item {
+      @include pc {
         width: fit-content;
+      }
 
+      &--img {
+        @include pc {
+          width: p(67);
+          height: p(67);
+        }
+      }
+    }
+  }
 
+  .arrow {
+    position: relative;
 
+    @include pc {
+      top: p(-65);
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      background: $P-F69082;
+      z-index: 30;
+
+      @include pc {
+        width: p(32);
+        height: p(8);
+        border-radius: p(10);
+        right: p(40);
+      }
+    }
+
+    &::before {
+      @include pc {
+        top: p(-8);
+        rotate: 40deg;
+      }
+    }
+
+    &::after {
+      @include pc {
+        top: p(8);
+        rotate: -40deg;
+      }
+    }
+
+  }
+
+  #road {
+
+    .content {
+      width: 100%;
+      height: 100%;
+
+      .road-content {
+        position: relative;
+        width: 100%;
+        height: 100%;
 
         @include pc {
           gap: p(30);
         }
 
         .destination {
-          position: relative;
-
-          @include pc {
-            width: p(220);
-          }
+          position: absolute;
 
           .goal {
+            @include imgContain("goal.png");
             position: relative;
-            left: 78%;
+            left: 73%;
 
             @include pc {
-              width: p(100);
-              height: p(100);
-              background-color: pink;
+              width: p(107);
+              height: p(62);
             }
 
+            &.clear {
+              @include imgContain("clear.png");
+            }
+
+            &.not {
+              @include imgContain("not.png");
+
+              @include pc {
+                width: p(83);
+                height: p(40);
+              }
+            }
           }
 
           .character-box {
             position: absolute;
             bottom: 0;
             translate: -50% 0;
+            z-index: 10;
 
             .character {
+              @include imgContain("koneko.png");
               transition: left 0.5s ease;
               margin: 0 auto;
 
               @include pc {
-                width: p(40);
-                height: p(80);
-                background: white;
+                width: p(57);
+                height: p(54);
               }
             }
 
@@ -70,8 +156,364 @@
                 text-align: center;
               }
             }
+
+            &.me {
+              animation: floating-y 2s ease-in-out infinite alternate-reverse;
+
+              @keyframes floating-y {
+                0% {
+                  transform: translateY(0%);
+                }
+
+                100% {
+                  transform: translateY(-5%);
+                }
+              }
+
+              @include pc {
+                top: p(-260) !important;
+              }
+
+              .character {
+                @include imgContain("me.png");
+
+                @include pc {
+                  width: p(165);
+                  height: p(257);
+                }
+              }
+            }
           }
         }
+      }
+    }
+  }
+
+  &.puzzle {
+    background: linear-gradient(180deg, #BCFAFF 0%, #FFF 100%);
+
+    .cloud-box {
+      .road-cloud {
+        @include iconContain($road-cloud);
+        position: absolute;
+
+        &:nth-child(1),
+        &:nth-child(7) {
+          @include pc {
+            width: p(250);
+            height: p(160);
+            bottom: p(551);
+            left: p(-90);
+          }
+        }
+
+        &:nth-child(2) {
+          z-index: 10;
+          scale: -1 1;
+
+          @include pc {
+            width: p(147);
+            height: p(108);
+            bottom: p(474);
+            left: 0;
+          }
+        }
+
+        &:nth-child(3),
+        &:nth-child(9) {
+          @include pc {
+            width: p(168);
+            height: p(124);
+            bottom: p(495);
+            left: p(195);
+          }
+        }
+
+        &:nth-child(4),
+        &:nth-child(8) {
+          @include pc {
+            width: p(147);
+            height: p(108);
+            bottom: p(554);
+            right: p(502);
+          }
+        }
+
+        &:nth-child(5),
+        &:nth-child(10) {
+          scale: -1 1;
+
+          @include pc {
+            width: p(127);
+            height: p(93);
+            bottom: p(576);
+            right: p(81);
+          }
+        }
+
+        &:nth-child(6) {
+          z-index: 10;
+
+          @include pc {
+            width: p(147);
+            height: p(108);
+            bottom: p(497);
+            right: p(-20);
+          }
+        }
+
+        &:nth-child(11) {
+          z-index: 10;
+          @include pc {
+            width:p(290);
+            height: p(210);
+            bottom: p(-60);
+            left: p(-70);
+          }
+        }
+
+        &:nth-child(12) {
+          z-index: 10;
+          @include pc {
+            width:p(225);
+            height: p(170);
+            bottom: p(-40);
+            right: p(-100);
+          }
+        }
+
+        &.road-cloud02 {
+          @include iconContain($road-cloud02);
+        }
+      }
+    }
+
+    #road {
+      @include imgContain("road-bg.png");
+      position: absolute;
+      bottom: 0;
+      z-index: 5;
+
+
+      @include pc {
+        width: p(1280);
+        height: p(700);
+      }
+
+      .road-inner {
+        @include imgContain("road.png");
+        position: relative;
+
+        @include pc {
+          width: p(1032);
+          height: p(360);
+          margin: p(228) 0 0 p(210);
+        }
+
+        .road-wood {
+          @include imgContain("road-wood.png");
+          position: absolute;
+
+          @include pc {
+            width: p(277);
+            height: p(298);
+            right: p(-80);
+            top: p(-80);
+          }
+        }
+
+        .road-wood-02 {
+          @include imgContain("road-wood-02.png");
+          position: absolute;
+          z-index: 20;
+
+          @include pc {
+            width: p(182);
+            height: p(193);
+            left: p(-213);
+            bottom: p(-53);
+          }
+        }
+
+        .content {
+          .road-content {
+            .destination {
+              @include pc {
+                width: p(180);
+              }
+
+              &:nth-child(1) {
+                @include pc {
+                  bottom: p(-11);
+                  left: p(-100);
+                }
+              }
+
+              &:nth-child(2) {
+                @include pc {
+                  bottom: p(15);
+                  left: p(108);
+                }
+
+                .character-box {
+                  @include pc {
+                    top: p(-50);
+                  }
+                }
+              }
+
+              &:nth-child(3) {
+                @include pc {
+                  bottom: p(25);
+                  left: p(310);
+                }
+
+                .character-box {
+                  @include pc {
+                    bottom: p(-30);
+                  }
+                }
+              }
+
+              &:nth-child(4) {
+                @include pc {
+                  bottom: p(-5);
+                  right: p(290);
+                }
+
+                .character-box {
+                  @include pc {
+                    top: p(-80);
+                  }
+                }
+              }
+
+              &:nth-child(5) {
+                @include pc {
+                  top: p(213);
+                  right: p(167);
+                  rotate: -90deg;
+                }
+
+                .goal,
+                .character-box {
+                  @include pc {
+                    rotate: 90deg;
+                  }
+                }
+
+                .character-box {
+                  @include pc {
+                    bottom: p(-100);
+                  }
+                }
+
+                .goal {
+                  @include pc {
+                    left: 50%;
+                  }
+                }
+              }
+
+              &:nth-child(6) {
+                @include pc {
+                  width: p(150);
+                  top: p(105);
+                  right: p(355);
+                  scale: -1 1;
+                  rotate: 65deg;
+                }
+
+                .goal,
+                .character-box {
+                  @include pc {
+                    rotate: 65deg;
+                  }
+                }
+
+                .goal {
+                  @include pc {
+                    left: 45%;
+                    top: p(4);
+                  }
+                }
+
+                .character-box {
+                  @include pc {
+                    scale: -1 1;
+                  }
+
+                  &.me {
+                    @include pc {
+                      top: p(-125) !important;
+                      margin-left: p(132);
+
+                    }
+                  }
+                }
+
+              }
+
+              &:nth-child(7) {
+                @include pc {
+                  width: p(200);
+                  top: p(40);
+                  left: p(243);
+                  scale: -1 1;
+                  rotate: -12deg;
+
+                  .goal,
+                  .character-box {
+                    @include pc {
+                      rotate: -12deg;
+                    }
+                  }
+
+                  .character-box {
+                    @include pc {
+                      scale: -1 1;
+                    }
+                  }
+
+                }
+              }
+
+              &:nth-child(8) {
+                @include pc {
+                  top: p(103);
+                  left: p(99);
+                  rotate: -30deg;
+                  scale: -1 1;
+
+                  .goal,
+                  .character-box {
+                    @include pc {
+                      rotate: -30deg;
+                    }
+                  }
+
+                  .character-box {
+                    @include pc {
+                      scale: -1 1;
+                      bottom: p(-59);
+                    }
+                  }
+
+                  .goal {
+                    left: 109%;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .road-chat{
+      position: relative;
+      z-index: 20;
+      #simple-ajax-chat{
+        display: none;
       }
     }
   }
