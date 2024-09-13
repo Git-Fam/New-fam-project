@@ -8,11 +8,16 @@
 
 .question-content {
   overflow: scroll;
-  height: calc(472 / 519 * 100%);
 
   @include pc {
+    height: calc(472 / 519 * 100%);
     margin-top: p(30);
   }
+  @include sp{
+    height: s(250);
+    margin-top: s(22);
+  }
+
 
   .comments-area {
     .comment-list {
@@ -22,6 +27,9 @@
       @include pc {
         gap: p(25);
       }
+      @include sp{
+        gap: s(14);
+      }
 
       li {
         display: flex;
@@ -29,6 +37,9 @@
 
         @include pc {
           gap: p(25);
+        }
+        @include sp{
+          gap: s(14);
         }
 
         .comment-body {
@@ -39,6 +50,12 @@
             padding: p(32) p(41) p(26);
             box-shadow: 0 p(1) p(4) 0 rgba(0, 0, 0, 0.25);
           }
+          @include sp{
+            width: s(245);
+            padding: s(11) s(16) s(15);
+            box-shadow: 0 s(1) s(4) 0 rgba(0, 0, 0, 0.25);
+
+          }
 
           .comment-title{
             color: $F-6D6D6D;
@@ -46,6 +63,10 @@
             @include pc{
               font-size: p(16);
               margin: p(-25) 0 p(5) p(40);
+            }
+            @include sp{
+              font-size: s(12);
+              margin: s(-15) 0 s(5) s(26);
             }
           }
           .vcard {
@@ -58,7 +79,6 @@
             @include pc {
               padding-top: p(10);
             }
-
             &::before {
               content: "";
               border-bottom: p(2) solid $P-7FBF99;
@@ -79,6 +99,12 @@
               background-size: p(6) 100%, 100% 2em;
               padding-left: p(10);
             }
+            @include sp{
+              font-size: s(10);
+              line-height: 2em;
+              background-size: s(6) 100%, 100% 2em;
+              padding-left: s(5);
+            }
           }
 
           .post-title {
@@ -93,6 +119,14 @@
               padding: p(5) p(14);
               border-radius: p(20);
               margin: p(14) p(0) p(0) auto;
+            }
+            @include sp{
+              font-size: s(8);
+              letter-spacing: s(0.8);
+              padding: s(3) s(10);
+              border-radius: s(20);
+              margin: s(8) 0 0 auto;
+
             }
           }
 
@@ -112,6 +146,10 @@
             @include pc {
               width: p(32);
               height: p(32);
+            }
+            @include sp{
+              width: s(17);
+              height: s(17);
             }
           }
         }
@@ -157,6 +195,14 @@
               font-size: p(16);
               letter-spacing: p(1.6);
               top: p(-15);
+            }
+            @include sp{
+              padding: s(3) s(10) s(3) s(5);
+              border-radius: s(20) s(20) s(20) 0;
+              font-size: s(12);
+              letter-spacing: s(1);
+              top: s(-10);
+
             }
           }
 

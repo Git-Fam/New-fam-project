@@ -134,12 +134,12 @@ offにすればコメントできる -->
         </div>
 
     </div>
-    <div class="post-modal open">
+    <div class="post-modal">
         <div class="letter">
             <div class="note-bg">
                 <div class="img-icon"></div>
                 <div class="comment-form-content">
-                <?php
+                    <?php
                     // comments.phpがまだインクルードされていない場合はインクルードする
                     if (!function_exists('display_comment_form')) {
                         include get_template_directory() . '/comments.php'; // テーマディレクトリのcomments.phpをインクルード
@@ -150,11 +150,20 @@ offにすればコメントできる -->
                         display_comment_form(); // コメントフォームのみを表示
                     endif;
                     ?>
+                    <div class="C_back-btn">戻る</div>
+
                 </div>
             </div>
         </div>
         <div class="success">
-            <p class="TX">コメントを送信しました。</p>
+            <div class="success-content">
+                <p class="TX">
+                    質問を送りました<br>
+                    承認後に反映されます。
+                </p>
+                <div class="img"></div>
+                <div class="C_back-btn">戻る</div>
+            </div>
         </div>
     </div>
 

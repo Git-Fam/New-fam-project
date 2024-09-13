@@ -130,27 +130,11 @@ $(function () {
 					);
 				});
 
-				// 最新2件を抽出して表示
-				var latestMessages = messages.slice(0, 2).clone();
+				// 最新6件を抽出して表示
+				var latestMessages = messages.slice(0, 6).clone();
 				$("#latest-messages").empty().append(latestMessages);
 			}
 		});
-
-		// 他のページで最新2件のメッセージを表示
-		function displayLatestMessages(targetSelector, userGroupClass) {
-			var messages = $("#sac-messages li." + userGroupClass);
-
-			if (messages.length > 0) {
-				messages.sort(function (a, b) {
-					return (
-						new Date($(b).attr("data-time")) - new Date($(a).attr("data-time"))
-					);
-				});
-
-				var latestMessages = messages.slice(0, 2).clone();
-				$(targetSelector).empty().append(latestMessages);
-			}
-		}
 
 		// 実行例
 		displayLatestMessages("#another-page-latest-messages", "group_a");
@@ -214,57 +198,47 @@ $(function () {
 			typeof allUsersProgress !== "undefined" &&
 			allUsersProgress.length > 0
 		) {
-			const $loadContainer = $(".road");
-
-			// 基本のチェックポイントセクション
-			const checkpoints = [
-				"div01",
-				"div02",
-				"div03",
-				"div04",
-				"div05",
-				"div06",
-				"div07",
-				"responsive",
-			];
-
-			// `JQ`セクションを表示するかどうかのフラグに基づいて追加
-			if (showJQSection) {
-				for (let i = 1; i <= 10; i++) {
-					const jqCheckpoint = "JQ" + String(i).padStart(2, "0"); // JQ01, JQ02, ..., JQ10
-					checkpoints.push(jqCheckpoint);
-				}
-			}
-
-			// チェックポイント要素を追加
-			checkpoints.forEach((checkpointClass) => {
-				const $checkpointElement = $("<div>")
-					.addClass("destination " + checkpointClass)
-					.append($("<div>").addClass("goal"))
-					.appendTo($loadContainer);
-
-				// `JQ`セクションが表示されている場合は`div`セクションと`responsive`セクションを非表示にする
-				if (
-					showJQSection &&
-					(checkpointClass.startsWith("div") ||
-						checkpointClass === "responsive")
-				) {
-					$checkpointElement.hide(); // `div`および`responsive`セクションを非表示に設定
+			// ログインしているユーザーの進捗に基づいて .clear クラスを付与
+			allUsersProgress.forEach((user) => {
+				const userProgress = user.progress;
+				const username = user.username;
+	
+				// 現在のユーザー名と一致する場合のみ .clear クラスを付与
+				if ($.trim(username) === $.trim(currentUsername)) {
+					console.log(
+						"クリアしたセクションに対して.clearを付与するユーザー:",
+						username
+					);
+	
+					// ユーザーの進捗をループして、クリアしたセクションに対して処理
+					$.each(userProgress, (key, value) => {
+						const progressValue = parseInt(value) || 0;
+	
+						// 進捗値が100の場合、セクションをクリアしたと見なす
+						if (progressValue === 100) {
+							$("." + key + " .goal").addClass("clear"); // クリアしたセクションにのみ.clearを付与
+						} else if (progressValue === 0) {
+							// 進捗がないセクションに .not を付与
+							$("." + key + " .goal").addClass("not");
+						} else {
+							$("." + key + " .goal").removeClass("clear not");
+						}
+					});
 				}
 			});
-
+	
 			// 各ユーザーの進捗に基づいてキャラクターを表示
 			allUsersProgress.forEach((user) => {
 				const userProgress = user.progress;
 				const username = user.username;
 				console.log("表示中のユーザー名:", username); // 表示するユーザー名の確認
-
+	
 				let shouldDisplayCharacter = true; // キャラクターを表示するかどうかのフラグ
-
+	
 				// JQセクションを表示する場合のみ、JQ01の進捗値をチェック
 				if (showJQSection) {
 					const jq01Value = parseInt(userProgress["JQ01"]) || 0;
-
+	
 					// JQ01の進捗が0の場合は非表示にする
 					if (jq01Value === 0) {
 						console.log(
@@ -274,14 +248,14 @@ $(function () {
 						shouldDisplayCharacter = false; // キャラクターを表示しない
 					}
 				}
-
+	
 				if (!shouldDisplayCharacter) {
 					return; // キャラクターを表示しない場合は処理を終了
 				}
-
+	
 				let lastCheckpointClass = "",
 					lastProgressValue = 0;
-
+	
 				$.each(userProgress, (key, value) => {
 					const progressValue = parseInt(value) || 0;
 					if (progressValue > 0 && progressValue <= 100) {
@@ -289,24 +263,28 @@ $(function () {
 						lastProgressValue = progressValue;
 					}
 				});
-
+	
 				if (lastCheckpointClass) {
 					const $checkpointElement = $("." + lastCheckpointClass);
 					if ($checkpointElement.length) {
+						// character-box 要素を動的に生成
 						const $characterBox = $("<div>")
 							.addClass("character-box")
 							.css({
 								position: "absolute",
-								left: lastProgressValue + "%",
+								left: lastProgressValue + "%", // 進捗に応じたleftの値
 							});
+	
 						const $nameElement = $("<p>").addClass("name").text(username);
-
-						// 現在のユーザー名と一致する場合は文字色を赤に設定
+	
+						// 現在のユーザー名と一致する場合は文字色を赤に設定し、.meクラスを追加
 						if ($.trim(username) === $.trim(currentUsername)) {
 							console.log("赤くするユーザー名:", username); // 赤くするユーザー名の確認
 							$nameElement.css("color", "red");
+							$characterBox.addClass("me");
 						}
-
+	
+						// character-box に要素を追加し、DOMに追加
 						$characterBox
 							.append($nameElement)
 							.append($("<div>").addClass("character"))
@@ -318,10 +296,13 @@ $(function () {
 			console.error("全ユーザーの進捗データが読み込まれていません。");
 		}
 	});
-
+	
 	//質問広場　質問モーダル
 	$(".post-content").on("click", function () {
 		$(".post-modal").addClass("open");
+	});
+	$(".C_back-btn").on("click", function () {
+		$(".post-modal").removeClass("open");
 	});
 
 	//質問広場　コメントタイトル　プレイスホルダー
@@ -524,7 +505,7 @@ $(function () {
 		function scrollToBottom() {
 			chatbotContent.animate(
 				{ scrollTop: chatbotContent[0].scrollHeight },
-				2000 // 2秒かけてスクロール
+				3000 // 3秒かけてスクロール
 			);
 		}
 
@@ -537,7 +518,9 @@ $(function () {
 				// 要素に変化があった場合
 				if (mutation.type === "childList" || mutation.type === "subtree") {
 					if (shouldScrollToBottom) {
-						scrollToBottom(); // スクロール実行
+						setTimeout(function () {
+							scrollToBottom(); // スクロール実行
+						}, 2500); // 2秒（1000ミリ秒）後に実行
 					}
 				}
 			});

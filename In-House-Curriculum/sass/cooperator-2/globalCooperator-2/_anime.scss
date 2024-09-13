@@ -1,4 +1,3 @@
-
 /* -----------------------
   anime Cooperator-2
 ----------------------- */
@@ -6,22 +5,23 @@
 // 上下の動きループ
 // 適性診断の矢印
 
-.vertical{
+.vertical {
   animation: vertical 1.5s ease 8s infinite;
-  
+
   @keyframes vertical {
     0% {
       transform: translateY(0%);
     }
-  
+
     50% {
       transform: translateY(30%);
     }
+
     100% {
       transform: translateY(0%);
     }
 
-  }  
+  }
 }
 
 
@@ -30,6 +30,7 @@
   opacity: 0;
   transform: scale(0.5);
   animation: pop 0.5s ease 6s forwards;
+
   @keyframes pop {
     0% {
       opacity: 0;
@@ -46,80 +47,159 @@
 
 //雲の動き
 
-.cloudAnime{
+.cloudAnime {
   animation: cloudAnime 5s ease 0.5s infinite;
-  
+
   @keyframes cloudAnime {
     0% {
       transform: translateY(0%);
     }
-  
+
     50% {
       transform: translateY(10%);
     }
+
     100% {
       transform: translateY(0%);
     }
 
-  }  
+  }
 }
 
-.cloudAnime02{
+.cloudAnime02 {
   animation: cloudAnime 7s ease 1s infinite;
-  
+
   @keyframes cloudAnime {
     0% {
       transform: translateY(0%);
     }
-  
+
     50% {
       transform: translateY(15%);
     }
+
     100% {
       transform: translateY(0%);
     }
 
-  }  
+  }
 }
 
+// 道のり　雲
+.flowing {
+  animation: flowing 50s linear 0s infinite;
+
+  @keyframes flowing {
+    0% {
+      transform: translateX(0%) translateY(200%);
+      scale: 0.4;
+    }
+
+    100% {
+      transform: translateX(200%) translateY(-60vh);
+      scale: 1.8;
+    }
+  }
+}
+
+.flowing02 {
+  animation: flowing02 50s linear -10s infinite;
+
+  @keyframes flowing02 {
+    0% {
+      transform: translateX(0%) translateY(200%);
+      scale: 0.4;
+    }
+
+    100% {
+      transform: translateX(200%) translateY(-60vh);
+      scale: 1.8;
+    }
+  }
+
+}
+
+.flowing03 {
+  animation: flowing03 50s linear -25s infinite;
+
+  @keyframes flowing03 {
+    0% {
+      transform: translateX(0%) translateY(200%);
+      scale: 0.4;
+    }
+
+    100% {
+      transform: translateX(200%) translateY(-60vh);
+      scale: 1.8;
+    }
+  }
+
+}
+.flowing04 {
+  animation: flowing04 50s linear -40s infinite;
+
+  @keyframes flowing04 {
+    0% {
+      transform: translateX(0%) translateY(200%);
+      scale: 0.4;
+    }
+
+    100% {
+      transform: translateX(200%) translateY(-60vh);
+      scale: 1.8;
+    }
+  }
+
+}
+
+
+
+
+
 .bird {
-  iframe{
+  iframe {
     opacity: 0;
+
     &.show {
       animation: fade-in 3s ease-in-out 1s forwards;
-  
+
       @keyframes fade-in {
         0% {
-          transform: translate(150% ,-100%);
+          transform: translate(150%, -100%);
           opacity: 1;
         }
-  
+
         100% {
           transform: translate(0);
           opacity: 1;
         }
-      }  
-    }  
+      }
+    }
   }
 }
 
-.rabbit{
-  iframe{
+.rabbit {
+  iframe {
     opacity: 0;
+
     &.show {
       animation: yurayura 5s infinite 1s alternate;
       transform-origin: center bottom;
 
       @keyframes yurayura {
-        0% , 100%{
-            transform: rotate(10deg);
-            opacity: 1;
+
+        0%,
+        100% {
+          transform: rotate(10deg);
+          opacity: 1;
         }
-        40%,80%{
-            transform: rotate(-10deg);
-            opacity: 1;
+
+        40%,
+        80% {
+          transform: rotate(-10deg);
+          opacity: 1;
         }
-      }  
+      }
     }
   }
 }
