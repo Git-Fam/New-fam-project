@@ -60,6 +60,35 @@ function my_enqueue_scripts() {
 add_action('wp_enqueue_scripts', 'my_enqueue_scripts');
 
 
+// ユーザーのいいね情報を取得する関数
+function get_user_like_info() {
+    $user_id = get_current_user_id();
+    $like_count_today = get_user_meta($user_id, 'like_count_today', true) ?: 0;
+    $last_like_date = get_user_meta($user_id, 'last_like_date', true);
+    $today_date = date('Y-m-d');
+
+    // 日付が変わっていたらカウントをリセット
+    if ($last_like_date !== $today_date) {
+        $like_count_today = 0; // カウントをリセット
+        update_user_meta($user_id, 'like_count_today', 0);
+        update_user_meta($user_id, 'last_like_date', $today_date); // 新しい日付を保存
+    }
+
+    return array(
+        'like_count_today' => $like_count_today
+    );
+}
+
+// ユーザーのいいね情報をJavaScriptに渡す
+function enqueue_like_data_script() {
+    $user_like_info = get_user_like_info();
+    wp_enqueue_script('my-script', get_template_directory_uri() . '/js/cooperatorScript.js', array('jquery'), null, true);
+    wp_localize_script('my-script', 'userLikeInfo', $user_like_info);
+}
+add_action('wp_enqueue_scripts', 'enqueue_like_data_script');
+
+
+
 // テスト用いいねリセット
 // function reset_today_likes_for_user($user_id) {
 //     // 今日のいいねカウントをリセット

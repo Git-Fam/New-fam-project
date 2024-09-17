@@ -1,0 +1,40 @@
+@use "../../global" as *;
+@use "../globalCooperator-2" as *;
+
+/* -----------------------
+  C_chat-content
+----------------------- */
+
+.C_chat-content{
+  #latest-messages{
+    display: flex;
+    flex-direction: column;
+    @include pc{
+      gap: p(15);
+    }
+    .sac-chat-message{
+      color: $F-B29975;
+      background: $B-FFFFFF;
+      position: relative;
+      @include pc{
+        width: p(132);
+        font-size: p(10);
+        padding: p(7) p(16);
+        border-radius: p(3);
+      }
+      &::before{
+        content: "";
+        clip-path: polygon(75% 0, 100% 100%, 10% 100%);
+        background: $B-FFFFFF;
+        position: absolute;
+        bottom: 0;
+        @include pc{
+          width: p(17);
+          height: p(6);
+          left: p(-7);
+        }
+
+      }  
+    }
+  }
+}

@@ -6,7 +6,7 @@
                     <div class="header">
                         <p class="TL">カリキュラム＞　アクションページ</p>
                     </div>
-                    <div class="chat-contents">
+                    <div class="chat-content">
                         <p class="timeline-TL">完了タイムライン</p>
                         <div class="timeline-wrap">
                             <div class="timeline">

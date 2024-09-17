@@ -135,6 +135,7 @@
   }
 
 }
+
 .flowing04 {
   animation: flowing04 50s linear -40s infinite;
 
@@ -151,6 +152,56 @@
   }
 
 }
+
+//コインゲット
+
+.get {
+
+  .icon {
+    animation: get 5s ease-in 0.5s infinite;
+
+    @keyframes get {
+      0% {
+        transform: rotateY(0);
+        /* Y軸を中心に0°回転 */
+      }
+
+      3% {
+        transform: rotateY(180deg);
+        /* Y軸を中心に180°回転（裏） */
+      }
+
+      6% {
+        transform: rotateY(0);
+        /* Y軸を中心に180°回転（裏） */
+      }
+
+      100% {
+        transform: rotateY(0);
+        /* Y軸を中心に180°回転（裏） */
+      }
+
+    }
+  }
+}
+
+.pyon {
+  &.hover {
+
+    animation: pyon 1s linear 0s forwards;
+
+    @keyframes pyon {
+      0%   { transform: scale(1.0, 1.0) translate(0%, 0%); }
+      40%  { transform: scale(0.95, 1.2) translate(0%, -25%); }
+      50%  { transform: scale(1.1, 0.9) translate(0%, 5%); }
+      60%  { transform: scale(0.95, 1.05) translate(0%, -3%); }
+      70%  { transform: scale(1.05, 0.95) translate(0%, 3%); }
+      80%  { transform: scale(1.0, 1.0) translate(0%, 0%); }
+      100% { transform: scale(1.0, 1.0) translate(0%, 0%); }
+      }
+  }
+}
+
 
 
 

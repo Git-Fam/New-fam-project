@@ -109,6 +109,7 @@
           position: absolute;
 
           .goal {
+            display: block;
             @include imgContain("goal.png");
             position: relative;
             left: 73%;
@@ -137,11 +138,13 @@
             bottom: 0;
             translate: -50% 0;
             z-index: 10;
+            pointer-events: none;
 
             .character {
               @include imgContain("koneko.png");
               transition: left 0.5s ease;
               margin: 0 auto;
+              
 
               @include pc {
                 width: p(57);
@@ -264,8 +267,9 @@
 
         &:nth-child(11) {
           z-index: 10;
+
           @include pc {
-            width:p(290);
+            width: p(290);
             height: p(210);
             bottom: p(-60);
             left: p(-70);
@@ -274,8 +278,9 @@
 
         &:nth-child(12) {
           z-index: 10;
+
           @include pc {
-            width:p(225);
+            width: p(225);
             height: p(170);
             bottom: p(-40);
             right: p(-100);
@@ -509,11 +514,181 @@
         }
       }
     }
-    .road-chat{
-      position: relative;
+
+    .road-chat {
+      position: absolute;
       z-index: 20;
-      #simple-ajax-chat{
+      height: fit-content;
+      @include pc{
+        left: 0;
+        bottom: p(45);
+      }
+
+      #simple-ajax-chat {
         display: none;
+      }
+
+      .C_chat-content {
+        #latest-messages {
+          @include pc {
+            padding-left:p(15);
+          }
+
+          .sac-chat-name {
+            display: none;
+          }
+        }
+
+        .timeline-wrap {
+          .timeline {
+            background: linear-gradient(0deg, rgba(92, 92, 92, 0.00) 0%, rgba(92, 92, 92, 0.40) 15.5%, rgba(92, 92, 92, 0.60) 29%, rgba(92, 92, 92, 0.60) 71.5%, rgba(92, 92, 92, 0.40) 87.5%, rgba(92, 92, 92, 0.00) 100%);
+            color: $F-F1FCD4;
+
+            @include pc {
+              font-size: p(10);
+              width: p(165);
+              height: fit-content;
+              padding: p(15) p(10);
+              margin-top: p(23);
+            }
+          }
+        }
+        .reaction{
+          background: $B-F69064;
+          position: relative;
+          @include pc{
+            width: p(165);
+            border-radius: 0 p(15) p(15) 0;
+            margin-top: p(23);
+            padding: p(10) p(8) p(10) p(10);
+          }
+          .TX{
+            color: $F-F4FFCB;
+            @include wt800;
+            @include pc{
+              font-size: p(13);
+              letter-spacing: p(1.2);
+              line-height: 1.3;
+            }
+          }
+          .reaction-counter{
+            color: $F-FFFFFF;
+            position: absolute;
+            @include wt800;
+            @include pc{
+              font-size: p(13);
+              letter-spacing: p(1.2);
+              top: p(30);
+              right: p(67);
+            }
+          }
+          .coin-counter{
+            background: $B-FFFFFF;
+            display: flex;
+            align-items: center;
+            filter: brightness(80%);
+            @include pc{
+              width: fit-content;
+              border-radius: p(20);
+              margin: p(3) 0 0 auto;
+              padding: p(4) p(13) p(4) p(8);
+            }
+            .icon{
+              @include imgContain("/log-board/log-board-item-02.png");
+              @include pc{
+                width: p(30);
+                height: p(30);
+              }
+            }
+            .number{
+              color: $B-F69064;
+              @include wt800;
+              @include pc{
+                font-size: p(21);
+                margin-left: p(5);
+              }
+            }
+            &.get{
+              filter: brightness(100%);
+            }
+          }
+        }
+      }
+    }
+    .under-menu{
+      position: absolute;
+      z-index: 99;
+      background: rgba(92, 92, 92, 0.50);
+      width: 100%;
+      transition: all 0.5s;
+      @include pc{
+        padding: p(64) p(38) p(34);
+        bottom: p(-160);
+      }
+      .menu-arrow{
+        position: absolute;
+        left: 50%;
+        translate: -50% 0;
+        @include pc{
+          top: p(14);
+        }
+        
+        &::before,&::after{
+          content: "";
+          position: absolute;
+          background-color: $B-FFFFFF;
+          top: 0;
+          @include pc{
+            border-radius: p(4);
+            width: p(30);
+            height: p(4);
+          }
+        }
+        &::before{
+          @include pc{
+            rotate: -30deg;
+            right: p(-3);
+          }
+        }
+        &::after{
+          @include pc{
+            rotate: 30deg;
+            left: p(-4);
+          }
+        }    
+      }
+      .menu-box{
+        display: flex;
+        justify-content: right;
+        @include pc{
+          gap: p(20);
+        }
+        .btn{
+          @include pc{
+            width: p(92);
+            height: p(92);
+          }
+          &.road-my-btn{
+            @include imgContain("my-btn.png");
+          }
+          &.road-ranking-btn{
+            @include imgContain("ranking-btn.png");
+          }
+          &.road-column-btn{
+            @include imgContain("column-btn.png");
+          }
+          &.road-question-btn{
+            @include imgContain("question-btn.png");
+          }
+          &.road-game-btn{
+            @include imgContain("game-btn.png");
+          }
+        }
+        
+      }
+      &.open{
+        bottom: 0;
+        transition: all 0.5s;
       }
     }
   }

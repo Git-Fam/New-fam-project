@@ -1,8 +1,14 @@
 $(function () {
 	//show付与
-	$(".category-content").on("click", function () {
-		$(".select-content").toggleClass("show");
+	$(".category-content,#cover-btn").on("click", function () {
+		$(".select-content,#tab-wrap").toggleClass("show");
 	});
+
+	$("#cover-curriculum").hover(function () {
+		$(".pyon").toggleClass("hover");
+	});
+
+
 
 	// 適性診断　文字をタイピング風に表示
 	function TextTypingAnime() {
@@ -147,14 +153,17 @@ $(function () {
 	}
 
 	// いいね機能
-	$(document).ready(function ($) {
+	jQuery(document).ready(function ($) {
+		// ページロード時にユーザーのいいね情報を取得して表示を更新
+		updateLikeInfo();
+
+		// いいねボタンのクリックイベントを設定
 		$(".like-button").on("click", function () {
 			var $button = $(this);
-
 			var itemId = $button.data("item-id");
 
-			// // ボタンを無効化して多重クリックを防止
-			// $button.prop("disabled", true);
+			// ボタンを無効化して多重クリックを防止
+			$button.prop("disabled", true);
 
 			$.ajax({
 				url: myAjax.ajaxurl,
@@ -167,10 +176,21 @@ $(function () {
 					console.log("AJAX Response:", response);
 
 					if (response.success) {
-						$("#like-count-" + itemId).text(response.data.new_count);
+						// 新しいカウントを取得して表示を更新
+						var new_count = response.data.new_count;
+						var like_count_today = response.data.like_count_today; // 今日のいいね数
+
+						// アイテムごとのいいね数を更新
+						$("#like-count-" + itemId).text(new_count);
 						$button.addClass("liked");
+
+						// ページのいいね情報を更新
+						updateLikeInfo(like_count_today);
+
+						// メッセージをアラートで表示（オプション）
 						alert(response.data.message);
 					} else {
+						// エラーメッセージをアラートで表示
 						alert(response.data.message || "エラーメッセージがありません。");
 					}
 				},
@@ -179,10 +199,27 @@ $(function () {
 					alert("AJAXリクエストに失敗しました: " + error);
 				},
 				complete: function () {
+					// ボタンを再び有効化
 					$button.prop("disabled", false);
 				},
 			});
 		});
+
+		// いいね情報を更新する関数
+		function updateLikeInfo(like_count_today = null) {
+			if (like_count_today === null) {
+				// 初回ページロード時にいいね情報を取得
+				like_count_today = userLikeInfo.like_count_today;
+			}
+
+			// いいねの回数を表示する要素を更新
+			$(".reaction-counter").text(like_count_today + "/5");
+
+			// 5回目のいいねの場合、コインカウンターにクラス 'get' を追加
+			if (like_count_today == 5) {
+				$(".coin-counter").addClass("get");
+			}
+		}
 	});
 
 	// ランキングの切り替え
@@ -202,18 +239,18 @@ $(function () {
 			allUsersProgress.forEach((user) => {
 				const userProgress = user.progress;
 				const username = user.username;
-	
+
 				// 現在のユーザー名と一致する場合のみ .clear クラスを付与
 				if ($.trim(username) === $.trim(currentUsername)) {
 					console.log(
 						"クリアしたセクションに対して.clearを付与するユーザー:",
 						username
 					);
-	
+
 					// ユーザーの進捗をループして、クリアしたセクションに対して処理
 					$.each(userProgress, (key, value) => {
 						const progressValue = parseInt(value) || 0;
-	
+
 						// 進捗値が100の場合、セクションをクリアしたと見なす
 						if (progressValue === 100) {
 							$("." + key + " .goal").addClass("clear"); // クリアしたセクションにのみ.clearを付与
@@ -226,19 +263,19 @@ $(function () {
 					});
 				}
 			});
-	
+
 			// 各ユーザーの進捗に基づいてキャラクターを表示
 			allUsersProgress.forEach((user) => {
 				const userProgress = user.progress;
 				const username = user.username;
 				console.log("表示中のユーザー名:", username); // 表示するユーザー名の確認
-	
+
 				let shouldDisplayCharacter = true; // キャラクターを表示するかどうかのフラグ
-	
+
 				// JQセクションを表示する場合のみ、JQ01の進捗値をチェック
 				if (showJQSection) {
 					const jq01Value = parseInt(userProgress["JQ01"]) || 0;
-	
+
 					// JQ01の進捗が0の場合は非表示にする
 					if (jq01Value === 0) {
 						console.log(
@@ -248,14 +285,14 @@ $(function () {
 						shouldDisplayCharacter = false; // キャラクターを表示しない
 					}
 				}
-	
+
 				if (!shouldDisplayCharacter) {
 					return; // キャラクターを表示しない場合は処理を終了
 				}
-	
+
 				let lastCheckpointClass = "",
 					lastProgressValue = 0;
-	
+
 				$.each(userProgress, (key, value) => {
 					const progressValue = parseInt(value) || 0;
 					if (progressValue > 0 && progressValue <= 100) {
@@ -263,7 +300,7 @@ $(function () {
 						lastProgressValue = progressValue;
 					}
 				});
-	
+
 				if (lastCheckpointClass) {
 					const $checkpointElement = $("." + lastCheckpointClass);
 					if ($checkpointElement.length) {
@@ -274,16 +311,16 @@ $(function () {
 								position: "absolute",
 								left: lastProgressValue + "%", // 進捗に応じたleftの値
 							});
-	
+
 						const $nameElement = $("<p>").addClass("name").text(username);
-	
+
 						// 現在のユーザー名と一致する場合は文字色を赤に設定し、.meクラスを追加
 						if ($.trim(username) === $.trim(currentUsername)) {
 							console.log("赤くするユーザー名:", username); // 赤くするユーザー名の確認
 							$nameElement.css("color", "red");
 							$characterBox.addClass("me");
 						}
-	
+
 						// character-box に要素を追加し、DOMに追加
 						$characterBox
 							.append($nameElement)
@@ -296,7 +333,7 @@ $(function () {
 			console.error("全ユーザーの進捗データが読み込まれていません。");
 		}
 	});
-	
+
 	//質問広場　質問モーダル
 	$(".post-content").on("click", function () {
 		$(".post-modal").addClass("open");
@@ -594,4 +631,10 @@ $(function () {
 			);
 		}
 	});
+
+	//道のりページ　under-menu
+	$(".under-menu").click(function() {
+		$(this).toggleClass("open"); 
+	});
+
 });

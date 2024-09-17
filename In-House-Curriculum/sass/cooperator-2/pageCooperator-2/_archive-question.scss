@@ -12,7 +12,8 @@
     padding: p(48) 0 p(39);
   }
   @include sp{
-    padding: s(46) 0 s(25);
+    padding: 46px 0 25px;
+    @include height;
   }
 
   .question-main {
@@ -29,11 +30,11 @@
       display: flex;
     }
     @include sp{
-      width: s(300);
-      height: calc(( 580 / 650) *100vh);
+      width: clamp(300px, s(300), 420px);
+      height: 580px;
       margin: auto;
       border-radius: s(15);
-      padding: s(40) s(20);
+      padding: 40px s(20);
       box-shadow: inset 0px 0px s(10) 0px rgba(0, 0, 0, 0.25);
     }
 
@@ -49,7 +50,7 @@
         top: p(-40);
       }
       @include sp{
-        width: s(250);
+        width: clamp(250px, s(250), 330px);
         height: s(50);
         top: s(-20);
       }
@@ -65,8 +66,8 @@
           letter-spacing: p(4);
         }
         @include sp{
-          font-size: s(17);
-          margin-top: s(10);
+          font-size: clamp(14px, s(17), 25px);
+          margin-top: clamp(0px, s(12), 30px);
           letter-spacing: s(1.7);
         }
 
@@ -80,7 +81,7 @@
         border-right: p(2) dashed $P-7FBF99;
       }
       @include sp{
-        padding-bottom: s(20);
+        padding-bottom: clamp(10px, s(20), 20px);
         border-bottom: s(2) dashed $P-7FBF99;
       }
     }
@@ -90,6 +91,7 @@
   .post-modal {
     display: none;
     position: relative;
+    z-index: 10;
 
     .letter {
       @include iconContain($letter);
@@ -98,9 +100,14 @@
       translate: -50% -50%;
 
       @include pc {
-        width: 120%;
-        height: 120%;
+        width: p(848);
+        height: p(848);
         top: 45%;
+      }
+      @include sp{
+        width: clamp(285px, s(360),500px);
+        height: clamp(287px, s(368),505px);
+        top: 40%;
       }
 
       .note-bg {
@@ -116,6 +123,12 @@
           max-height: calc(578 / 700 * 100vh);
           padding: p(32) p(40) p(70);
         }
+        @include sp{
+          height: calc(247 / 368 * 100%);
+          aspect-ratio: 619 / 578;
+          top: 60%;
+          padding:13px 18px clamp( 25px, s(32), 44px);
+        }
 
         .img-icon {
           @include iconContain($img-icon);
@@ -126,6 +139,12 @@
             height: p(20);
             margin: p(-17) 0 0 auto;
             top: p(15);
+          }
+          @include sp{
+            width: clamp(9px, s(9), 12px);
+            height: clamp(9px, s(9), 12px);
+            margin: -12px 0 0 auto;
+            top: 15px;
           }
 
           &::before {
@@ -140,6 +159,11 @@
               top: p(-5);
               right: p(0);
             }
+            @include sp{
+              font-size: clamp(6px, s(6), 7px);
+              top: -3px;
+              right: 0;
+            }
           }
 
           &::after {
@@ -153,12 +177,25 @@
               height: p(2);
               right: p(3);
             }
+            @include sp{
+              width: 2px;
+              height: 1px;
+              right: clamp(2px, s(2), 3px);
+            }
           }
         }
 
         .comment-form-content {
 
           .C_menu {
+            @include sp{
+              justify-content: left;
+            }
+            .menu-item{
+              @include sp{
+                padding: 3px 6px;
+              }
+            }
             .select-content {
               z-index: 1;
             }
@@ -180,6 +217,10 @@
                 margin-top: p(-12);
                 font-size: p(10);
               }
+              @include sp{
+                margin-top: -10px;
+                font-size: 8px;
+              }
             }
 
             .logged-in-as {
@@ -191,9 +232,14 @@
               opacity: 0;
 
               @include pc {
-                top: p(-30);
+                top: p(-35);
                 right: 0;
                 width: p(30);
+              }
+              @include sp{
+                top: -40px;
+                right: -4px;
+                width: 20px;
               }
 
               label {
@@ -217,6 +263,12 @@
                 margin-top: p(15);
                 padding: p(13) 0;
               }
+              @include sp{
+                margin-top: clamp(10px, s(12), 16px);
+                border-top: s(1) solid $P-7FBF99;
+                border-bottom: s(1) solid $P-7FBF99;
+                padding: clamp(3px, s(5), 8px) 0;
+              }
 
               label {
                 display: none;
@@ -232,6 +284,9 @@
                 @include pc {
                   margin-left: p(11);
                 }
+                @include sp{
+                  margin-left: 6px;
+                }
 
               }
 
@@ -244,6 +299,10 @@
                   width: p(30);
                   height: p(30);
                 }
+                @include sp{
+                  width: clamp(13px, s(13), 20px);
+                  height: clamp(13px, s(13), 20px);
+                }
               }
 
               &::after {
@@ -254,6 +313,10 @@
                 @include pc {
                   left: p(40);
                   font-size: p(16);
+                }
+                @include sp{
+                  left: 23px;
+                  font-size: clamp(10px, s(10), 12px);
                 }
               }
 
@@ -278,6 +341,14 @@
                 padding: 0 p(10);
                 border-bottom: p(2) solid $P-7FBF99;
               }
+              @include sp{
+                font-size: clamp(10px, s(10), 12px);
+                height: clamp(100px, s(148), 225px);
+                line-height: 1.7em;
+                background-size: p(6) 100%, 100% 1.7em;
+                padding: 0 5px;
+                border-bottom: s(1) solid $P-7FBF99;
+              }
 
               label {
                 display: none;
@@ -289,21 +360,29 @@
                 background: none;
                 border: none;
                 outline: none;
+                color: $F-6D6D6D;
 
                 @include pc {
                   font-size: p(14);
                   line-height: 1.7em;
                   padding-left: p(10);
                 }
+                @include sp{
+                  font-size: clamp(10px, s(10), 12px);
+                  line-height: 1.7em;
+                  padding-left: 5px;
+                }
               }
             }
 
             .form-submit {
               position: relative;
-
+              width: fit-content;
               @include pc {
-                width: fit-content;
                 margin: p(13) 0 0 auto;
+              }
+              @include sp{
+                margin: clamp(0px, s(5), 5px) 0 0 auto;
               }
 
               input {
@@ -314,14 +393,18 @@
                 -moz-appearance: none;
                 appearance: none;
                 font-size: 0;
-
+                box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25), inset 0px 0px 10px 0px #BCF3D3;
 
                 @include pc {
                   width: p(141);
                   height: p(27);
-                  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25), inset 0px 0px 10px 0px #BCF3D3;
                   padding: p(7) p(25);
                   border-radius: p(5);
+                }
+                @include sp{
+                  width: clamp(61px, s(81), 112px);
+                  height: clamp(11px, s(15), 21px);
+                  border-radius: 3px;
                 }
               }
 
@@ -329,6 +412,7 @@
                 content: "質問を送る";
                 position: absolute;
                 color: $F-FFFFFF;
+                pointer-events: none;
                 top: 50%;
                 left: 50%;
                 translate: -50% -50%;
@@ -338,6 +422,13 @@
                   font-size: p(12);
                   letter-spacing: p(1.2);
                 }
+                @include sp{
+                  width: 100%;
+                  font-size: clamp(10px, s(10), 10px);
+                  letter-spacing: 1.2px;
+                  margin: auto;
+                  text-align: center;
+                }
 
               }
             }
@@ -346,7 +437,10 @@
             position: absolute;
             @include pc {
               bottom: p(26);
-            }          
+            } 
+            @include sp{
+              bottom: 8px;
+            }         
           }  
         }
       }
@@ -373,16 +467,26 @@
           border-radius: p(30);
           padding-top: p(20);
         }
+        @include sp{
+          width: clamp(242px, s(300), 429px);
+          aspect-ratio: 1/1;
+          border-radius: 20px;
+          padding-top: 20px;
+        }
 
         .TX {
           @include wt800;
           color: $F-6D6D6D;
           text-align: center;
+          line-height: 1.3;
 
           @include pc {
             font-size: p(20);
             letter-spacing: p(2);
-            line-height: 1.3;
+          }
+          @include sp{
+            font-size: clamp(10px, s(10), 12px);
+            letter-spacing: 2px;
           }
         }
         .img{
@@ -392,10 +496,18 @@
             height: p(167);
             margin-left: p(-50);
           }
+          @include sp{
+            width: clamp(58px, s(72), 104px);
+            height: clamp(55px, s(68), 99px);
+            margin-left: -8%;
+          }
         }
         .C_back-btn{
           @include pc{
             margin: p(10) p(30) 0 0;
+          }
+          @include sp{
+            margin: 5px 15px 0 0 ;
           }
 
         }

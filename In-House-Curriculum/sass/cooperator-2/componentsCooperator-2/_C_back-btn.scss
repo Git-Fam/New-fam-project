@@ -18,4 +18,13 @@
     letter-spacing: p(1.2);
     font-size: p(12);
   }
+  @include sp{
+    width: clamp(35px, s(46), 64px);
+    height: clamp(11px, s(15), 21px);
+    border-radius: 3px;
+    letter-spacing: 1.2px;
+    font-size: clamp(10px, s(10), 10px);
+    display: grid;
+    place-items: center center;
+  }
 }

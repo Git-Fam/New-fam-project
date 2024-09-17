@@ -11,13 +11,14 @@
   height: 100%;
 
   .header {
-    @include iconCover($header);
+    @include iconContain($header);
+    background-repeat: repeat-x;
     width: 100%;
     display: grid;
 
     @include pc {
-      height: p(73);
-      padding-left: p(34);
+      height: pmi(60);
+      padding-left: pmi(34);
       place-items: center left;
     }
 
@@ -40,7 +41,7 @@
     }
   }
 
-  .chat-contents {
+  .chat-content {
     margin: auto;
     background: $B-F69064;
     position: relative;

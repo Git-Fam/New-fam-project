@@ -1,0 +1,446 @@
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
+
+/* -----------------------
+  page-cover
+----------------------- */
+
+.cover-wrapper {
+  position: relative;
+  background: linear-gradient(180deg, #BCFAFF 0%, #FFF 100%);
+  @include height;
+
+  .cover {
+    @include imgCover("cover-bg.png");
+    z-index: 1;
+
+    @include pc {
+      width: 100%;
+      height: 100%;
+    }
+
+    &-header {
+      @include iconCover($green-header);
+      position: relative;
+      z-index: 20;
+      width: 100%;
+
+      @include pc {
+        height: p(60);
+        padding: p(15) p(20);
+
+      }
+
+      .TL {
+        color: $F-FFFFFF;
+        @include wt500;
+
+        @include pc {
+          font-size: pmi(23);
+        }
+      }
+
+      .btn {
+        @include imgContain("butterfly03.png");
+        position: absolute;
+
+        @include pc {
+          width: pmi(94);
+          height: pmi(89);
+          top: pmi(10);
+          right: pmi(20);
+        }
+
+        &::before {
+          content: "ジャンル選択";
+          position: relative;
+          color: $P-C2DFE7;
+          top: 0;
+
+          @include pc {
+            font-size: pmi(14);
+            right: pmi(65);
+            letter-spacing: pmi(1.5);
+          }
+        }
+
+        &::after {
+          content: "";
+          position: relative;
+          border-right: pmi(3) solid $P-C2DFE7;
+          border-bottom: pmi(3) solid $P-C2DFE7;
+          rotate: -135deg;
+          display: block;
+
+          @include pc {
+            width: pmi(11);
+            height: pmi(11);
+            right: pmi(25);
+            top: p(10);
+          }
+        }
+      }
+    }
+
+    .tab-wrap {
+      @include iconCover($tab-wrap);
+      position: absolute;
+      top: -500px;
+      z-index: 10;
+      transition: all 0.5s;
+
+      @include pc {
+        width: p(1280);
+        height: p(200);
+        padding: p(67) pmi(0) p(17);
+      }
+
+      &.show {
+        top: 0;
+        transition: all 0.5s;
+      }
+    }
+
+    .chara-link {
+      position: absolute;
+
+      .link {
+        background: $B-FFFFFF;
+        color: $F-898069;
+        position: absolute;
+        z-index: 10;
+        @include wt700;
+
+        @include pc {
+          white-space: nowrap;
+          padding: pmi(21) pmi(32);
+          border-radius: pmi(100);
+        }
+
+        &::before {
+          content: "";
+          background: $B-FFFFFF;
+          position: absolute;
+
+          @include pc {
+            width: pmi(25);
+            height: pmi(10);
+            bottom: pmi(-8);
+          }
+        }
+      }
+
+      &.koinubox {
+        @include pc {
+          bottom: pmi(180);
+          left: pmi(80);
+        }
+
+        .koinu {
+          @include imgContain("koinu.png");
+          transition: all 1s;
+
+          @include pc {
+            width: pmi(187);
+            height: pmi(198);
+          }
+
+          &:hover {
+            transform-origin: center bottom;
+            transition: all 2s;
+            rotate: 20deg;
+          }
+        }
+
+        .link {
+          @include pc {
+            top: pmi(-85);
+            left: pmi(70);
+          }
+
+          &::before {
+            clip-path: polygon(90% 0, 100% 100%, 10% 100%);
+
+            @include pc {
+              right: pmi(32);
+              rotate: -45deg;
+            }
+          }
+        }
+      }
+
+      &.goatbox {
+        @include pc {
+          bottom: pmi(120);
+          right: clamp(p(8), p(8), 8px);
+        }
+
+        .goat {
+          @include imgContain("goat.png");
+          transition: all 1s;
+
+          @include pc {
+            width: pmi(240);
+            height: pmi(230);
+          }
+
+          &:hover {
+            transform-origin: center bottom;
+            transition: all 2s;
+            rotate: -20deg;
+          }
+        }
+
+        .link {
+          @include pc {
+            top: pmi(-61);
+            left: pmi(-20);
+          }
+
+          &::before {
+            clip-path: polygon(10% 0, 100% 100%, 10% 100%);
+
+            @include pc {
+              rotate: 45deg;
+              left: pmi(25);
+              bottom: pmi(-5);
+            }
+          }
+        }
+      }
+
+
+    }
+
+    .tree {
+      @include imgCover("top-tree05.jpg");
+      position: absolute;
+      pointer-events: none;
+
+
+      &.tree01 {
+        @include pc {
+          width: pmi(594);
+          height: pmi(671);
+          bottom: pmi(161);
+          left: clamp(-162px, p(-162), -100px);
+        }
+      }
+
+      &.tree02 {
+        @include pc {
+          width: clamp(470px, p(563), p(563));
+          height: clamp(550px, p(654), p(654));
+          bottom: pmi(113);
+          right: clamp(-400px, p(-215), -200px);
+        }
+      }
+    }
+
+
+    .tree03 {
+      @include imgContain("cover-tree.png");
+      position: absolute;
+
+      @include pc {
+        width: clamp(470px, p(563), p(563));
+        height: clamp(550px, p(654), p(654));
+        bottom: 113px;
+        right: clamp(p(-290), p(-200), -215px);
+      }
+    }
+
+    &-content {
+      height: 100%;
+      position: relative;
+      margin: 0 auto;
+
+      @include pc {
+        width: p(558);
+      }
+
+      .intermediate-page {
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        translate: -50% -50%;
+
+        @include pc {}
+
+        .TL-wrap {
+          @include iconContain($cover-ribbon);
+
+          @include pc {
+            width: pmi(558);
+            height: auto;
+          }
+
+          .post-TL {
+            color: $F-7F8180;
+            text-align: center;
+            @include wt600;
+
+            @include pc {
+              padding: pmi(15) pmi(80) pmi(47);
+              font-size: pmi(30);
+              line-height: 1.2;
+            }
+
+            &.error {
+              @include pc {
+                margin-top: pmi(-40);
+              }
+            }
+          }
+        }
+
+        .post-thumbnail {
+          @include pc {
+            width: pmi(558);
+            height: pmi(334);
+            margin: 0 auto;
+          }
+
+          a {
+            img {
+              background-size: contain;
+              height: 100%;
+              width: 100%;
+
+            }
+          }
+        }
+
+        .start-btn {
+          background: $P-ED863A;
+          color: $F-FFFFFF;
+          display: block;
+          width: fit-content;
+          @include wt700;
+
+          @include pc {
+            box-shadow: 0px pmi(2) 0px 0px #E28738, 0px 0px pmi(34) 0px #F6D741 inset;
+            padding: pmi(15) pmi(73);
+            border-radius: pmi(5);
+            margin: pmi(25) auto 0;
+            letter-spacing: pmi(1.1);
+            font-size: pmi(23)
+          }
+        }
+      }
+
+      .shironeko-wrap{
+        position: absolute;
+        @include pc {
+          width: pmi(257);
+          height: pmi(250);
+          left: pmi(-134);
+          bottom: p(90);
+        }
+        .shironeko {
+          @include imgContain("shironeko.png");
+  
+          @include pc {
+            width: pmi(257);
+            height: pmi(250);
+          }
+        }
+        .shadow {
+          @include imgContain("shironeko-shadow.png");
+  
+          @include pc{
+            width: pmi(193);
+            height: pmi(39);
+            margin: -15px auto;
+            
+          }
+        }  
+      }
+    }
+
+    .back-wrap {
+      position: absolute;
+      pointer-events: none;
+
+      @include pc {
+        width: pmi(569);
+        height: pmi(1051);
+        bottom: 0;
+        left: clamp(-300px, p(-300), -200px);
+      }
+
+      .back {
+        @include imgContain("back-balloon.png");
+
+        @include pc {
+          width: pmi(569);
+          height: pmi(1051);
+          bottom: 0;
+          left: clamp(-300px, p(-300), -200px);
+        }
+      }
+
+      .TX {
+        position: absolute;
+        color: $F-FFFFFF;
+        pointer-events:fill;
+
+        @include pc {
+          font-size: pmi(20);
+          letter-spacing: p(1.2);
+          height: p(50);
+          bottom: pmi(240);
+          right: pmi(189);
+        }
+      }
+    }
+  }
+
+  .next {
+    @include imgContain("next.png");
+    position: absolute;
+
+    @include pc {
+      width: pmi(202);
+      height: pmi(185);
+      bottom: -41px;
+      right: 89px;
+      padding: pmi(35) 0 0 pmi(30);
+    }
+    .next-link{
+      color: $F-FFFFFF;
+      @include wt600;
+      @include pc{
+        font-size: pmi(27);
+        letter-spacing: pmi(1.3);
+      }
+    }
+  }
+
+  .grass {
+    position: absolute;
+
+    &.grass01 {
+      @include imgContain("cover-grass01.png");
+
+      @include pc {
+        width: pmi(389);
+        height: pmi(215);
+        bottom: -81px;
+        left: -140px;
+      }
+    }
+
+    &.grass02 {
+      @include imgContain("cover-grass02.png");
+      pointer-events: none;
+
+      @include pc {
+        width: pmi(337);
+        height: pmi(201);
+        right: -114px;
+        bottom: -104px;
+      }
+    }
+  }
+}

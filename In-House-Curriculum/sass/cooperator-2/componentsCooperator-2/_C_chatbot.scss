@@ -9,12 +9,18 @@
 .C_chatbot {
   background: $B-F9FFD2;
   position: relative;
+  flex: 1;
 
   @include pc {
-    flex: 1;
     border-radius: p(30);
     padding: p(29) p(21) p(76);
     margin-left: p(21);
+  }
+  @include sp{
+    border-radius: clamp(20px, s(27), 30px);
+    padding: 12px 25px;
+    margin-top: 15px;
+    height: calc(215 / 579  * 100%);
   }
 
   .chatbot-content {
@@ -23,6 +29,9 @@
 
     @include pc {
       padding-bottom: p(20);
+    }
+    @include sp{
+      padding-bottom: clamp(50px, s(60), 60px);
     }
 
     .bot-message {
@@ -35,6 +44,10 @@
           width: p(27);
           height: p(27);
         }
+        @include sp{
+          width: clamp(25px, s(25), 35px);
+          height: clamp(25px, s(25), 35px);
+        }
       }
 
       .textbox {
@@ -42,6 +55,7 @@
         color: $F-B29975;
         line-height: 1.5;
         margin-right: auto;
+        flex: 1;
         @include wt600;
 
         @include pc {
@@ -53,12 +67,25 @@
           border-radius: p(3);
           filter: drop-shadow(0 p(3) p(5) rgba(0, 0, 0, 0.15));
         }
+        @include sp{
+          font-size: clamp(12px, s(12), 14px);
+          padding: 8px 15px;
+          margin-left: s(10);
+          letter-spacing: s(1);
+          border-radius: s(3);
+          filter: drop-shadow(0 s(3) s(5) rgba(0, 0, 0, 0.15));
+
+        }
 
         h2 {
           @include pc {
             @include wt600;
             font-size: p(13);
             margin-bottom: p(10);
+          }
+          @include sp{
+            font-size: clamp(12px, s(12), 14px);
+            margin-bottom: s(10);
           }
         }
       }
@@ -76,12 +103,19 @@
             border-radius: p(3);
             filter: drop-shadow(0 p(3) p(5) rgba(0, 0, 0, 0.15));
           }
+          @include sp{
+            margin-top: s(10);
+            padding: s(5) 0 s(5) s(10);
+          }
 
           .chatbot-title {
             color: $F-FFFFFF;
 
             @include pc {
               font-size: p(10);
+            }
+            @include sp{
+              font-size: clamp(11px, s(11), 13px);
             }
           }
 
@@ -96,6 +130,9 @@
     .answer-message {
       @include pc {
         margin-top: p(10);
+      }
+      @include sp{
+        margin: s(10) 0;
       }
 
       &.show {
@@ -116,7 +153,9 @@
         color: $F-B29975;
         margin-left: auto;
         line-height: 1.5;
+        display: block;
         @include wt600;
+        flex: 1;
 
         @include pc {
           max-width: p(206);
@@ -125,6 +164,13 @@
           letter-spacing: p(0.6);
           border-radius: p(3);
           filter: drop-shadow(0 p(3) p(5) rgba(0, 0, 0, 0.15));
+        }
+        @include sp{
+          max-width: 90%;
+          font-size: clamp(12px, s(12), 14px);
+          padding: s(5) s(10);
+          border-radius: s(3);
+          filter: drop-shadow(0 s(3) s(5) rgba(0, 0, 0, 0.15));
         }
 
       }
@@ -136,6 +182,11 @@
           width: p(27);
           height: p(27);
           margin-left: p(12);
+        }
+        @include sp{
+          width: clamp(25px, s(25), 27px);
+          height: clamp(25px, s(25), 27px);
+          margin-left: s(10);
         }
       }
 
@@ -149,6 +200,9 @@
 
       @include pc {
         margin-top: p(10);
+      }
+      @include sp{
+        margin-top: s(10);
       }
 
 
@@ -167,6 +221,14 @@
         bottom: p(12);
         border-radius: p(20);
         padding: 0 0 p(15) p(20);
+      }
+      @include sp{
+        width: clamp( 227px, s(205), 282px);
+        height: clamp(40px, s(40), 50px);
+        bottom: 10px;
+        border-radius: clamp(14px, s(16), 25px);
+        margin: 0 auto;
+        padding: s(5) 0 s(15) s(20);
       }
 
       #search-input {
@@ -188,6 +250,9 @@
 
           @include pc {
             font-size: p(12);
+          }
+          @include sp{
+            font-size: clamp(12px, s(12), 14px);
           }
         }
       }
