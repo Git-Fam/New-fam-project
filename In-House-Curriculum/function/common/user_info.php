@@ -166,9 +166,6 @@ function add_user_info(){
   $user_info['Design09_2'] = 'Design09_2';
   $user_info['Design09_3'] = 'Design09_3';
 
-
-
-
   return $user_info;
 }
 

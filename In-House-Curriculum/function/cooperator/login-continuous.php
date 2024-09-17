@@ -11,7 +11,7 @@ function show_user_login_continuous_field($user) {
         <tr>
             <th><label for="user_login_continuous">連続ログイン日数</label></th>
             <td>
-                <input type="text" name="user_login_continuous" id="user_login_continuous" value="<?php echo esc_attr(get_user_meta($user->ID, 'consecutive_login_days', true)); ?>" class="regular-text" />
+                <input type="number" name="user_login_continuous" id="user_login_continuous" value="<?php echo esc_attr(get_user_meta($user->ID, 'consecutive_login_days', true)); ?>" class="regular-text" />
                 <p class="description">このユーザーの連続ログイン日数</p>
             </td>
         </tr>
@@ -37,8 +37,18 @@ function save_user_login_continuous_field($user_id) {
     if (!current_user_can('edit_user', $user_id)) {
         return false;
     }
-    // 連続ログイン日数は手動で更新しないため、ここでは何もしません
-    update_user_meta($user_id, 'login_continuous_10days_count', intval($_POST['user_login_continuous_10days_count']));
+    // 連続ログイン日数を保存
+    if (isset($_POST['user_login_continuous'])) {
+        update_user_meta($user_id, 'consecutive_login_days', intval($_POST['user_login_continuous']));
+    }
+    // 10日連続ログイン達成回数を保存
+    if (isset($_POST['user_login_continuous_10days_count'])) {
+        update_user_meta($user_id, 'login_continuous_10days_count', intval($_POST['user_login_continuous_10days_count']));
+    }
+    // 10日連続ログイン達成日を保存
+    if (isset($_POST['user_login_continuous_10days'])) {
+        update_user_meta($user_id, 'login_continuous_10days', sanitize_text_field($_POST['user_login_continuous_10days']));
+    }
 }
 add_action('personal_options_update', 'save_user_login_continuous_field');
 add_action('edit_user_profile_update', 'save_user_login_continuous_field');
