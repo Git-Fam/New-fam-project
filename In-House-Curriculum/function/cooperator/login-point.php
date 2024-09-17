@@ -1,15 +1,15 @@
 <?php
 
-$normal_day = DAY_IN_SECONDS; // 1日
-$normal_month = MONTH_IN_SECONDS; // 1ヶ月
-$continuous_days = 10; // 連続ログイン
-$after_day = 3; // 復活後連続ログイン
+// $normal_day = DAY_IN_SECONDS; // 1日
+// $normal_month = MONTH_IN_SECONDS; // 1ヶ月
+// $continuous_days = 10; // 連続ログイン
+// $after_day = 3; // 復活後連続ログイン
 
 // テスト
-// $normal_day = 20; // 日にちテスト
-// $normal_month = 120; // 復活テスト
-// $continuous_days = 2; // 連続ログインテスト
-// $after_day = 5; // 復活後連続ログイン
+$normal_day = 10; // 日にちテスト
+$normal_month = 30; // 復活テスト
+$continuous_days = 5; // 連続ログインテスト
+$after_day = 3; // 復活後連続ログイン
 
 // ユーザーがログインするたびにポイントを付与する
 function add_login_points($user_login, $user)
@@ -38,20 +38,26 @@ function add_login_points($user_login, $user)
         // 連続ログイン日数を取得
         $consecutive_login_days = get_user_meta($user_id, 'consecutive_login_days', true) ?: 0;
 
+        // 復活後連続ログイン日数を取得
+        $comeback_login_days = get_user_meta($user_id, 'comeback_login_days', true) ?: 0;
+
         // 1ヶ月経過しているか確認して復活ボーナスポイントを追加
         if ($last_point_date && ($current_timestamp - $last_point_date) >= $normal_month) {
             $new_points += $bonus_points;
 
             // 連続ログイン日数をリセット
             $consecutive_login_days = 1;
+            $comeback_login_days = 1; // 復活後連続ログイン日数をリセット
             update_user_meta($user_id, 'bonus_coins_given', false); // ボーナスコイン付与フラグをリセット
         } else {
             // 1日以上経過している場合、連続ログイン日数をリセットして1からスタート
             if ($last_point_date && ($current_timestamp - $last_point_date) >= $normal_day * 2) {
                 $consecutive_login_days = 1;
+                $comeback_login_days = 1; // 復活後連続ログイン日数をリセット
             } else {
                 // 連続ログイン日数を更新
                 $consecutive_login_days++;
+                $comeback_login_days++; // 復活後連続ログイン日数を更新
             }
         }
 
@@ -70,14 +76,22 @@ function add_login_points($user_login, $user)
 
         // 復活後連続ログインを確認してボーナスコインを追加
         $bonus_coins_given = get_user_meta($user_id, 'bonus_coins_given', true);
-        if ($consecutive_login_days == $after_day && !$bonus_coins_given) {
+        if ($comeback_login_days == $after_day && !$bonus_coins_given) {
             add_user_coins($user_id, $bonus_coins);
             // ボーナスコイン付与フラグを設定
             update_user_meta($user_id, 'bonus_coins_given', true);
+
+            // 復活後連続ログイン達成回数を更新
+            $comeback_login_count = get_user_meta($user_id, 'comeback_login_count', true) ?: 0;
+            $comeback_login_count++;
+            update_user_meta($user_id, 'comeback_login_count', $comeback_login_count);
         }
 
         // 連続ログイン日数を保存
         update_user_meta($user_id, 'consecutive_login_days', $consecutive_login_days);
+
+        // 復活後連続ログイン日数を保存
+        update_user_meta($user_id, 'comeback_login_days', $comeback_login_days);
 
         // 新しいポイント数を保存
         update_user_meta($user_id, 'user_point', $new_points);

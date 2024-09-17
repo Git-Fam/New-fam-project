@@ -11,6 +11,7 @@
   background-position: bottom left;
   position: relative;
   overflow: hidden;
+
   @include pc {
     padding: p(20) 0 pm(40, 40) p(40);
     min-height: pm(650, 650);
@@ -43,6 +44,56 @@
 
     @media screen and (max-width: 767px) and (min-width: 550px) {
       min-height: 900px;
+    }
+  }
+
+  &.none {
+    display: none;
+  }
+
+  .board-close {
+    position: absolute;
+    aspect-ratio: 1/1;
+    background: #000;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 999;
+
+    @include pc {
+      width: p(30);
+      top: p(20);
+      right: p(20);
+    }
+
+    @include sp {
+      width: s(20);
+      top: s(10);
+      right: s(10);
+    }
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      width: 60%;
+      background-color: #fff;
+
+      @include pc {
+        height: p(4);
+      }
+
+      @include sp {
+        height: s(2);
+      }
+
+      &:nth-child(1) {
+        rotate: 40deg;
+      }
+
+      &:nth-child(2) {
+        rotate: -40deg;
+      }
     }
   }
 
@@ -359,6 +410,10 @@
     position: relative;
     z-index: 2;
     overflow-y: scroll;
+
+    @include pc {
+      padding-bottom: p(50);
+    }
 
     &__lists {
       padding: pm(60) 0 pm(50);

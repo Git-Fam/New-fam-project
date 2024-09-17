@@ -1603,6 +1603,18 @@ $Design09_3_value = get_user_meta($user_id, 'Design09_3', true) ?: '0';
         <?php endif; ?>
 
     </div>
+
+
+    <!-- ログインボーナス -->
+    <?php log_board(); ?>
+
+    <!-- 連続ログインボーナス -->
+    <?php continuous_board(); ?>
+
+    <!-- カムバックボーナス -->
+    <?php comeback_board(); ?>
+
+    
 </div>
 
 <?php get_footer(); ?>
