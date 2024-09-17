@@ -61,24 +61,26 @@ function log_board()
         </div>
         <div class="log-board--content">
             <div class="log-board--content__lists">
-            <ul>
+                <ul>
                     <?php
                     $days_in_month = date('t'); // 現在の月の日数を取得
-                    $current_day = date('j'); // 現在の日付を取得
                     $login_history = get_user_meta($user_id, 'login_history', true);
                     if (!is_array($login_history)) {
                         $login_history = [];
                     }
-                    $login_days = array_map(function($login_time) {
+                    $login_days = array_map(function ($login_time) {
                         return date('j', strtotime($login_time));
                     }, $login_history);
 
+                    // ログイン回数を取得
+                    $login_count = count($login_days);
+
                     for ($day = 1; $day <= $days_in_month; $day++) {
                         $classes = [];
-                        if (in_array($day, $login_days) && $day != $current_day) {
+                        if ($day <= $login_count - 1) {
                             $classes[] = 'checked__cards';
                         }
-                        if ($day == $current_day) {
+                        if ($day == $login_count) {
                             $classes[] = 'todays__cards';
                         }
                         if ($day % 5 == 0) {
@@ -86,15 +88,15 @@ function log_board()
                         }
                         $class = implode(' ', $classes);
                     ?>
-                    <!-- cards -->
-                    <li class="<?php echo $class; ?>">
-                        <div class="cards">
-                            <div class="cards__number"><?php echo $day; ?></div>
-                            <div class="item__img"></div>
-                            <div class="item__highlight"></div>
-                            <div class="check__img"></div>
-                        </div>
-                    </li>
+                        <!-- cards -->
+                        <li class="<?php echo $class; ?>">
+                            <div class="cards">
+                                <div class="cards__number"><?php echo $day; ?></div>
+                                <div class="item__img"></div>
+                                <div class="item__highlight"></div>
+                                <div class="check__img"></div>
+                            </div>
+                        </li>
                     <?php
                     }
                     ?>
