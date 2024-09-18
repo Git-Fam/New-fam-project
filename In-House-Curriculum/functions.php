@@ -6,6 +6,7 @@ $function_dirs = [
   __DIR__ . '/function/common',
   __DIR__ . '/function/cooperator',  
   __DIR__ . '/function/cooperator-2', 
+  __DIR__ . '/function/cooperator-3', 
 ];
 
 foreach ($function_dirs as $dir) {
