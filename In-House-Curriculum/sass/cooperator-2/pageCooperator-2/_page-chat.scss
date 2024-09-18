@@ -21,9 +21,6 @@
       padding-left: p(34);
       place-items: center left;
     }
-    @include sp{
-      height: smi();
-    }
 
     @include sp {
       height: clamp(40px, calc(50 / 390 * 100vw), 60px);
@@ -61,33 +58,8 @@
       border-radius: s(10);
     }
 
-    .timeline-TL {
-      position: absolute;
-      color: $B-F69064;
-      background: $B-FFDFAF;
-      border-radius: 20px 20px 20px 0px;
-      @include wt800;
-
+    .timeline-mdoal {
       @include pc {
-        font-size: p(16);
-        letter-spacing: p(1.6);
-        padding: p(8) p(15);
-        top: p(-15);
-        left: 0;
-      }
-
-      @include sp {
-        font-size: clamp(14px, calc((16 / 390) * 100vw), 20px);
-        letter-spacing: s(1.6);
-        padding: clamp(5px, calc((8 / 390) * 100vw), 10px) clamp(10px, calc((15 / 390) * 100vw), 20px);
-        top: clamp(-10px, calc((-15 / 390) * 100vw), -23px);
-        left: 0;
-      }
-    }
-
-    .timeline-wrap {
-      @include pc {
-        min-width: p(389);
         padding: p(26) p(25) p(69) p(22);
       }
 
@@ -95,85 +67,91 @@
         padding: s(26) s(15) s(12) s(15);
       }
 
-      .timeline {
-        background: radial-gradient(50% 50% at 50% 50%, rgba(255, 201, 61, 0.00) 0%, rgba(255, 201, 61, 0.13) 100%), #EFFAFF;
-        overflow-y: scroll;
-        display: flex;
-        flex-direction: column;
+      .timeline-TL {
+        position: absolute;
+        color: $B-F69064;
+        background: $B-FFDFAF;
+        border-radius: 20px 20px 20px 0px;
+        @include wt800;
 
         @include pc {
-          border-radius: p(15);
-          height: 100%;
-          padding: p(19) p(7);
-          gap: p(23);
+          font-size: p(16);
+          letter-spacing: p(1.6);
+          padding: p(8) p(15);
+          top: p(-15);
+          left: 0;
         }
 
-        .timeline-item {
+        @include sp {
+          font-size: clamp(14px, calc((16 / 390) * 100vw), 20px);
+          letter-spacing: s(1.6);
+          padding: clamp(5px, calc((8 / 390) * 100vw), 10px) clamp(10px, calc((15 / 390) * 100vw), 20px);
+          top: clamp(-10px, calc((-15 / 390) * 100vw), -23px);
+          left: 0;
+        }
+      }
+
+      .timeline-wrap {
+        @include pc {
+          min-width: p(389);
+          height: 100%;
+        }
+
+        .timeline {
+          background: radial-gradient(50% 50% at 50% 50%, rgba(255, 201, 61, 0.00) 0%, rgba(255, 201, 61, 0.13) 100%), #EFFAFF;
+          overflow-y: scroll;
+          display: flex;
+          flex-direction: column;
+
           @include pc {
-            padding: 0 p(20) p(12) p(11);
-            border-bottom: p(1) solid $F-6D6D6D;
+            border-radius: p(15);
+            height: 100%;
+            padding: p(19) p(7);
+            gap: p(23);
           }
 
-          h3 {
-            @include wt600;
-            color: $F-6D6D6D;
-
+          .timeline-item {
             @include pc {
-              font-size: p(16);
-              line-height: 1.5;
-            }
-          }
-
-          .like-button-wrap {
-            display: flex;
-
-            @include pc {
-              gap: p(25);
-              justify-content: right;
-              margin-top: p(9);
+              padding: 0 p(20) p(12) p(11);
+              border-bottom: p(1) solid $F-6D6D6D;
             }
 
-            .like-button {
-              background-color: $B-FFFFFF;
-              border-radius: 50px;
-              position: relative;
+            h3 {
+              @include wt600;
+              color: $F-6D6D6D;
 
               @include pc {
-                width: p(32);
-                height: p(32);
+                font-size: p(16);
+                line-height: 1.5;
+              }
+            }
+
+            .like-button-wrap {
+              display: flex;
+
+              @include pc {
+                gap: p(25);
+                justify-content: right;
+                margin-top: p(9);
               }
 
-              .icon {
-                position: absolute;
-                background-size: contain;
-                background-repeat: no-repeat;
-                top: 50%;
-                left: 50%;
-                translate: -50% -50%;
+              .like-button {
+                background-color: $B-FFFFFF;
+                border-radius: 50px;
+                position: relative;
 
                 @include pc {
-                  width: p(19);
-                  height: p(16);
-                }
-              }
-
-              .like-TX {
-                white-space: nowrap;
-                color: $F-6D6D6D;
-                position: absolute;
-                left: 50%;
-                translate: -50% 0;
-
-                @include pc {
-                  font-size: p(10);
-                  bottom: p(-7);
+                  width: p(32);
+                  height: p(32);
                 }
 
-              }
-
-              &.heart {
                 .icon {
-                  background-image: heart(encode('#ABABAB'));
+                  position: absolute;
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                  top: 50%;
+                  left: 50%;
+                  translate: -50% -50%;
 
                   @include pc {
                     width: p(19);
@@ -181,123 +159,148 @@
                   }
                 }
 
-                &.liked {
-                  .icon {
-                    background-image: heart(encode('#F29A9A'));
+                .like-TX {
+                  white-space: nowrap;
+                  color: $F-6D6D6D;
+                  position: absolute;
+                  left: 50%;
+                  translate: -50% 0;
+
+                  @include pc {
+                    font-size: p(10);
+                    bottom: p(-7);
                   }
 
-                  .like-TX {
-                    color: #F29A9A;
+                }
+
+                &.heart {
+                  .icon {
+                    background-image: heart(encode('#ABABAB'));
+
+                    @include pc {
+                      width: p(19);
+                      height: p(16);
+                    }
+                  }
+
+                  &.liked {
+                    .icon {
+                      background-image: heart(encode('#F29A9A'));
+                    }
+
+                    .like-TX {
+                      color: #F29A9A;
+                    }
+                  }
+                }
+
+                &.hand {
+                  .icon {
+                    @include iconContain($hand-before);
+                  }
+
+                  &.liked {
+                    .icon {
+                      @include iconContain($hand-after);
+                    }
+
+                    .like-TX {
+                      color: #EFC73C;
+                    }
+                  }
+                }
+
+                &.cat {
+                  .icon {
+                    @include iconContain($cat-before);
+                  }
+
+                  &.liked {
+                    .icon {
+                      @include iconContain($cat-after);
+                    }
+
+                    .like-TX {
+                      color: #8CCBF5;
+                    }
                   }
                 }
               }
 
-              &.hand {
-                .icon {
-                  @include iconContain($hand-before);
-                }
-
-                &.liked {
-                  .icon {
-                    @include iconContain($hand-after);
-                  }
-
-                  .like-TX {
-                    color: #EFC73C;
-                  }
-                }
-              }
-
-              &.cat {
-                .icon {
-                  @include iconContain($cat-before);
-                }
-
-                &.liked {
-                  .icon {
-                    @include iconContain($cat-after);
-                  }
-
-                  .like-TX {
-                    color: #8CCBF5;
-                  }
-                }
-              }
             }
 
           }
-
-        }
-      }
-
-      .reaction {
-        display: flex;
-
-        @include pc {
-          margin-top: p(12);
-          gap: p(12);
         }
 
-        .coin-counter {
-          background: $B-FFFFFF;
+        .reaction {
           display: flex;
-          align-items: center;
-          filter: brightness(80%);
 
           @include pc {
-            width: fit-content;
-            border-radius: p(20);
-            padding: p(4) p(16) p(4) p(10);
+            margin-top: p(12);
+            gap: p(12);
           }
 
-          .icon {
-            @include imgContain("/log-board/log-board-item-02.png");
+          .coin-counter {
+            background: $B-FFFFFF;
+            display: flex;
+            align-items: center;
+            filter: brightness(80%);
 
             @include pc {
-              width: p(36);
-              height: p(36);
+              width: fit-content;
+              border-radius: p(20);
+              padding: p(4) p(16) p(4) p(10);
+            }
+
+            .icon {
+              @include imgContain("/log-board/log-board-item-02.png");
+
+              @include pc {
+                width: p(36);
+                height: p(36);
+              }
+            }
+
+            .number {
+              color: $B-F69064;
+              @include wt800;
+
+              @include pc {
+                font-size: p(26);
+                margin-left: p(7);
+              }
+            }
+
+            &.get {
+              filter: brightness(100%);
             }
           }
 
-          .number {
-            color: $B-F69064;
-            @include wt800;
+          .textbox {
+            .TX {
+              color: $F-F4FFCB;
+              @include wt800;
 
-            @include pc {
-              font-size: p(26);
-              margin-left: p(7);
+              @include pc {
+                font-size: p(16);
+                letter-spacing: p(1.2);
+                line-height: 1.3;
+              }
+            }
+
+            .reaction-counter {
+              color: $F-FFFFFF;
+              @include wt800;
+
+              @include pc {
+                font-size: p(16);
+                letter-spacing: p(1.2);
+                margin-top: p(5);
+              }
             }
           }
 
-          &.get {
-            filter: brightness(100%);
-          }
         }
-
-        .textbox {
-          .TX {
-            color: $F-F4FFCB;
-            @include wt800;
-
-            @include pc {
-              font-size: p(16);
-              letter-spacing: p(1.2);
-              line-height: 1.3;
-            }
-          }
-
-          .reaction-counter {
-            color: $F-FFFFFF;
-            @include wt800;
-
-            @include pc {
-              font-size: p(16);
-              letter-spacing: p(1.2);
-              margin-top: p(5);
-            }
-          }
-        }
-
       }
     }
 
@@ -407,13 +410,15 @@
                 height: p(45);
                 border-radius: p(30);
               }
-              .submit{
+
+              .submit {
                 opacity: 0;
                 cursor: pointer;
                 width: 100%;
-                height:100% ;
+                height: 100%;
               }
-              &::before{
+
+              &::before {
                 content: "";
                 @include iconContain($chat-plant);
                 pointer-events: none;
@@ -423,12 +428,13 @@
                 left: 50%;
                 top: 50%;
                 translate: -50% -50%;
-                @include pc{
+
+                @include pc {
                   width: p(38);
                   height: p(38);
                 }
-              }      
-            
+              }
+
             }
 
             &::before {
