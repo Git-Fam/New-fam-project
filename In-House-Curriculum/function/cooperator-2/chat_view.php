@@ -17,7 +17,20 @@ function get_user_group_by_name() {
 
         if ($user) {
             $user_group = get_user_meta($user->ID, 'user_group', true);
-            $user_group ? wp_send_json_success(array('group' => $user_group)) : wp_send_json_error('User group not found');
+            
+            // 現在のユーザー名を取得
+            $current_user = wp_get_current_user();
+            $is_current_user = ($current_user && $current_user->user_login === $username);
+
+            // 結果を返す
+            if ($user_group) {
+                wp_send_json_success(array(
+                    'group' => $user_group,
+                    'is_current_user' => $is_current_user // 自分のユーザーかどうかのフラグ
+                ));
+            } else {
+                wp_send_json_error('User group not found');
+            }
         } else {
             wp_send_json_error('User not found');
         }
