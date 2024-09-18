@@ -1,0 +1,6 @@
+@function smi($size, $maxSize: $size, $viewport: 390) {
+    $rate: calc(100 / $viewport);
+    $calculatedSize: $rate * $size * 1vw;
+    @return min(#{$calculatedSize}, #{$maxSize}px);
+  }
+  

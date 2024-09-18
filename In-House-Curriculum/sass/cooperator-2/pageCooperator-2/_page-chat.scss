@@ -21,6 +21,9 @@
       padding-left: p(34);
       place-items: center left;
     }
+    @include sp{
+      height: smi();
+    }
 
     @include sp {
       height: clamp(40px, calc(50 / 390 * 100vw), 60px);
@@ -406,8 +409,26 @@
               }
               .submit{
                 opacity: 0;
-                
+                cursor: pointer;
+                width: 100%;
+                height:100% ;
               }
+              &::before{
+                content: "";
+                @include iconContain($chat-plant);
+                pointer-events: none;
+                position: absolute;
+                display: block;
+                z-index: 20;
+                left: 50%;
+                top: 50%;
+                translate: -50% -50%;
+                @include pc{
+                  width: p(38);
+                  height: p(38);
+                }
+              }      
+            
             }
 
             &::before {
@@ -531,19 +552,6 @@
             }
           }
         }
-        // &::before{
-        //   content: "";
-        //   @include iconContain($chat-plant);
-        //   position: absolute;
-        //   display: block;
-        //   z-index: 20;
-        //   @include pc{
-        //     width: p(38);
-        //     height: p(38);
-        //     bottom: 10px;
-        //   }
-        // }      
-
       }
     }
   }
