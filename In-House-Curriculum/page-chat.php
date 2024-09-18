@@ -7,6 +7,7 @@
                         <p class="TL">カリキュラム＞　アクションページ</p>
                     </div>
                     <div class="chat-content">
+                        <div class="timeline-mdoal">
                         <p class="timeline-TL">完了タイムライン</p>
                         <div class="timeline-wrap">
                             <div class="timeline">
@@ -123,6 +124,7 @@
                                     <div class="reaction-counter">0/5</div>
                                 </div>
                             </div>
+                        </div>
                         </div>
 
                         <div class="chat-wrap">
