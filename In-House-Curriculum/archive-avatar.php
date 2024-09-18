@@ -133,9 +133,12 @@
         <div class="change-clothes__control">
 
             <div class="control__category">
+
+
                 <!-- カテゴリー -->
                 <div class="category__list">
                     <ul class="category__list__items">
+                        <!-- 追加されたカテゴリーがここに並ぶ -->
                         <li class="active">
                             <div class="category__item">
                                 <div class="icon"></div>
@@ -148,10 +151,15 @@
                         </li>
                     </ul>
                 </div>
+
+
                 <!-- タグ -->
                 <div class="tag__list">
+
+                <!-- カテゴリー別のタグを表示 -->
                     <div class="tag__list__area active">
                         <ul class="tag__list__items">
+                            <!-- 追加されたタグがここに並ぶ -->
                             <li>
                                 <div class="tag__item active"></div>
                             </li>
@@ -160,8 +168,11 @@
                             </li>
                         </ul>
                     </div>
+
+                <!-- カテゴリー別のタグを表示 -->
                     <div class="tag__list__area">
                         <ul class="tag__list__items">
+                            <!-- 追加されたタグがここに並ぶ -->
                             <li>
                                 <div class="tag__item active"></div>
                             </li>
@@ -170,17 +181,20 @@
                             </li>
                         </ul>
                     </div>
+
                 </div>
+
             </div>
 
             <div class="control__item">
                 <div class="control__item__inner">
-                    
-                    <!-- カテゴリー別 -->
+
+                    <!-- 投稿を表示 -->
                     <div class="control__list__wrap active">
-                        <!-- タグ別 -->
+                        <!-- カテゴリー、タグ別の投稿を表示 -->
                         <div class="control__category-tag__list active">
                             <ul>
+                                <!-- 追加された投稿がここに並ぶ -->
                                 <li>
                                     <input class="category-tag__item--wrap" type="radio" name="category-tag-1-1"
                                         onclick="toggleRadio(this)">
@@ -195,9 +209,10 @@
                                 </li>
                             </ul>
                         </div>
-                        <!-- タグ別 -->
+                        <!-- カテゴリー、タグ別の投稿を表示 -->
                         <div class="control__category-tag__list">
                             <ul>
+                                <!-- 追加された投稿がここに並ぶ -->
                                 <li>
                                     <input class="category-tag__item--wrap" type="radio" name="category-tag-1-2"
                                         onclick="toggleRadio(this)">
@@ -214,11 +229,12 @@
                         </div>
                     </div>
 
-                    <!-- カテゴリー別 -->
+                    <!-- 投稿を表示 -->
                     <div class="control__list__wrap">
-                        <!-- タグ別 -->
+                        <!-- カテゴリー、タグ別の投稿を表示 -->
                         <div class="control__category-tag__list active">
                             <ul>
+                                <!-- 追加された投稿がここに並ぶ -->
                                 <li>
                                     <input class="category-tag__item--wrap" type="radio" name="category-tag-2-1"
                                         onclick="toggleRadio(this)">
@@ -233,9 +249,10 @@
                                 </li>
                             </ul>
                         </div>
-                        <!-- タグ別 -->
+                        <!-- カテゴリー、タグ別の投稿を表示 -->
                         <div class="control__category-tag__list">
                             <ul>
+                                <!-- 追加された投稿がここに並ぶ -->
                                 <li>
                                     <input class="category-tag__item--wrap" type="radio" name="category-tag-2-2"
                                         onclick="toggleRadio(this)">
@@ -256,7 +273,7 @@
             </div>
         </div>
 
-        
+
     </div>
 </form>
 
