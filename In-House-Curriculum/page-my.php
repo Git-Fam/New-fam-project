@@ -240,7 +240,7 @@ $Design09_3_value = get_user_meta($user_id, 'Design09_3', true) ?: '0';
             <div class="C_character js-character-edit">
                 <dotlottie-player src="https://lottie.host/e60cec2b-65a9-4722-99fa-d9218781a66b/TBEXhkebbF.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></dotlottie-player>
 
-                <a class="clothes--change__button" href="<?php bloginfo('url'); ?>/clothes" target="_blank" rel="noopener noreferrer">編集する</a>
+                <a class="clothes--change__button" href="<?php bloginfo('url'); ?>/avatar" target="_blank" rel="noopener noreferrer">編集する</a>
 
             </div>
         </div>
