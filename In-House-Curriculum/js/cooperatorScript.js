@@ -8,8 +8,6 @@ $(function () {
 		$(".pyon").toggleClass("hover");
 	});
 
-
-
 	// 適性診断　文字をタイピング風に表示
 	function TextTypingAnime() {
 		$(".C_test .TX-bg .TX").each(function () {
@@ -71,13 +69,13 @@ $(function () {
 		function processMessages(nodes) {
 			nodes.each(function () {
 				var node = $(this);
-				if (!node.hasClass("group-processed")) {
-					var username = node
-						.find(".sac-chat-name")
-						.text()
-						.split(":")[0]
-						.trim();
 
+				// メッセージから送信者のユーザー名を取得
+				var usernameElement = node.find(".sac-chat-name");
+				if (usernameElement.length > 0) {
+					var username = usernameElement.text().split(":")[0].trim();
+
+					// Ajaxでユーザー情報を取得
 					$.ajax({
 						url: userGroupData.ajaxurl,
 						method: "POST",
@@ -88,6 +86,11 @@ $(function () {
 						success: function (response) {
 							if (response.success) {
 								node.addClass(response.data.group).addClass("group-processed");
+
+								// 'me'クラスを付与するかどうかを確認
+								if (response.data.is_current_user) {
+									node.addClass("me");
+								}
 
 								// ユーザーのグループに一致するメッセージを表示
 								if (node.hasClass(userGroupData.group)) {
@@ -182,13 +185,24 @@ $(function () {
 
 						// アイテムごとのいいね数を更新
 						$("#like-count-" + itemId).text(new_count);
+
+						// 他のすべてのlike-buttonからlikedクラスを削除
+						$button
+							.closest(".like-button-wrap")
+							.find(".like-button")
+							.removeClass("liked");
+
+						// クリックされたボタンにのみlikedクラスを追加
 						$button.addClass("liked");
+
+						// 全てのボタンを無効化
+						$button
+							.closest(".like-button-wrap")
+							.find(".like-button")
+							.prop("disabled", true);
 
 						// ページのいいね情報を更新
 						updateLikeInfo(like_count_today);
-
-						// メッセージをアラートで表示（オプション）
-						alert(response.data.message);
 					} else {
 						// エラーメッセージをアラートで表示
 						alert(response.data.message || "エラーメッセージがありません。");
@@ -199,8 +213,7 @@ $(function () {
 					alert("AJAXリクエストに失敗しました: " + error);
 				},
 				complete: function () {
-					// ボタンを再び有効化
-					$button.prop("disabled", false);
+					// ボタンを再び有効化する必要はないので、この行は不要です
 				},
 			});
 		});
@@ -220,6 +233,25 @@ $(function () {
 				$(".coin-counter").addClass("get");
 			}
 		}
+	});
+
+	// クラスAを持つ要素をクラスBで囲む
+	$(".sac-chat-name").wrap('<p class="sac-chat-name-wrap"></p>');
+	// $(".highlight-text").wrap('<p class="text-wrap"></p>');
+
+	jQuery(document).ready(function ($) {
+		// クラス名 'sac-chat-message' を持つすべてのリストアイテムに対して
+		$(".sac-chat-message").each(function () {
+			// このリストアイテム内のテキストノードを取得
+			$(this)
+				.contents()
+				.filter(function () {
+					// テキストノードかどうかをチェック（nodeType === 3）
+					// trim()で空白を取り除き、非空白のテキストのみを対象に
+					return this.nodeType === 3 && $.trim(this.nodeValue).length > 0;
+				})
+				.wrap('<span class="highlight-text"></span>'); // 選択したテキストノードを <span> でラップ
+		});
 	});
 
 	// ランキングの切り替え
@@ -344,8 +376,9 @@ $(function () {
 
 	//質問広場　コメントタイトル　プレイスホルダー
 	jQuery(document).ready(function ($) {
-		var $input = $("#comtitle");
-		var $commentFormTitle = $(".comment-form-title");
+		// 質問広場 コメントタイトル プレイスホルダー
+		var $input = $("#comtitle, #sac_chat");
+		var $commentFormTitle = $(".comment-form-title, #sac-form");
 
 		// 初期チェック - inputがすでに入力されている場合
 		togglePlaceholder($input.val());
@@ -633,8 +666,7 @@ $(function () {
 	});
 
 	//道のりページ　under-menu
-	$(".under-menu").click(function() {
-		$(this).toggleClass("open"); 
+	$(".under-menu").click(function () {
+		$(this).toggleClass("open");
 	});
-
 });

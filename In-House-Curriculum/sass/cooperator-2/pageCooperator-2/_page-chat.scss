@@ -17,8 +17,8 @@
     display: grid;
 
     @include pc {
-      height: pmi(60);
-      padding-left: pmi(34);
+      height: p(60);
+      padding-left: p(34);
       place-items: center left;
     }
 
@@ -42,19 +42,22 @@
   }
 
   .chat-content {
-    margin: auto;
     background: $B-F69064;
     position: relative;
 
     @include pc {
       width: p(1182);
+      height: calc(569 / 700 * 100%);
       display: flex;
       border-radius: p(15);
+      margin: p(41) auto 0;
     }
-    @include sp{
+
+    @include sp {
       width: clamp(320px, calc((350 / 390) * 100vw), 400px);
       border-radius: s(10);
     }
+
     .timeline-TL {
       position: absolute;
       color: $B-F69064;
@@ -69,7 +72,8 @@
         top: p(-15);
         left: 0;
       }
-      @include sp{
+
+      @include sp {
         font-size: clamp(14px, calc((16 / 390) * 100vw), 20px);
         letter-spacing: s(1.6);
         padding: clamp(5px, calc((8 / 390) * 100vw), 10px) clamp(10px, calc((15 / 390) * 100vw), 20px);
@@ -80,19 +84,468 @@
 
     .timeline-wrap {
       @include pc {
-        padding: p(26) p(25) p(12) p(22);
+        min-width: p(389);
+        padding: p(26) p(25) p(69) p(22);
       }
-      @include sp{
+
+      @include sp {
         padding: s(26) s(15) s(12) s(15);
       }
-      .timeline{
+
+      .timeline {
         background: radial-gradient(50% 50% at 50% 50%, rgba(255, 201, 61, 0.00) 0%, rgba(255, 201, 61, 0.13) 100%), #EFFAFF;
-        @include pc{
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+
+        @include pc {
           border-radius: p(15);
+          height: 100%;
+          padding: p(19) p(7);
+          gap: p(23);
         }
+
+        .timeline-item {
+          @include pc {
+            padding: 0 p(20) p(12) p(11);
+            border-bottom: p(1) solid $F-6D6D6D;
+          }
+
+          h3 {
+            @include wt600;
+            color: $F-6D6D6D;
+
+            @include pc {
+              font-size: p(16);
+              line-height: 1.5;
+            }
+          }
+
+          .like-button-wrap {
+            display: flex;
+
+            @include pc {
+              gap: p(25);
+              justify-content: right;
+              margin-top: p(9);
+            }
+
+            .like-button {
+              background-color: $B-FFFFFF;
+              border-radius: 50px;
+              position: relative;
+
+              @include pc {
+                width: p(32);
+                height: p(32);
+              }
+
+              .icon {
+                position: absolute;
+                background-size: contain;
+                background-repeat: no-repeat;
+                top: 50%;
+                left: 50%;
+                translate: -50% -50%;
+
+                @include pc {
+                  width: p(19);
+                  height: p(16);
+                }
+              }
+
+              .like-TX {
+                white-space: nowrap;
+                color: $F-6D6D6D;
+                position: absolute;
+                left: 50%;
+                translate: -50% 0;
+
+                @include pc {
+                  font-size: p(10);
+                  bottom: p(-7);
+                }
+
+              }
+
+              &.heart {
+                .icon {
+                  background-image: heart(encode('#ABABAB'));
+
+                  @include pc {
+                    width: p(19);
+                    height: p(16);
+                  }
+                }
+
+                &.liked {
+                  .icon {
+                    background-image: heart(encode('#F29A9A'));
+                  }
+
+                  .like-TX {
+                    color: #F29A9A;
+                  }
+                }
+              }
+
+              &.hand {
+                .icon {
+                  @include iconContain($hand-before);
+                }
+
+                &.liked {
+                  .icon {
+                    @include iconContain($hand-after);
+                  }
+
+                  .like-TX {
+                    color: #EFC73C;
+                  }
+                }
+              }
+
+              &.cat {
+                .icon {
+                  @include iconContain($cat-before);
+                }
+
+                &.liked {
+                  .icon {
+                    @include iconContain($cat-after);
+                  }
+
+                  .like-TX {
+                    color: #8CCBF5;
+                  }
+                }
+              }
+            }
+
+          }
+
+        }
+      }
+
+      .reaction {
+        display: flex;
+
+        @include pc {
+          margin-top: p(12);
+          gap: p(12);
+        }
+
+        .coin-counter {
+          background: $B-FFFFFF;
+          display: flex;
+          align-items: center;
+          filter: brightness(80%);
+
+          @include pc {
+            width: fit-content;
+            border-radius: p(20);
+            padding: p(4) p(16) p(4) p(10);
+          }
+
+          .icon {
+            @include imgContain("/log-board/log-board-item-02.png");
+
+            @include pc {
+              width: p(36);
+              height: p(36);
+            }
+          }
+
+          .number {
+            color: $B-F69064;
+            @include wt800;
+
+            @include pc {
+              font-size: p(26);
+              margin-left: p(7);
+            }
+          }
+
+          &.get {
+            filter: brightness(100%);
+          }
+        }
+
+        .textbox {
+          .TX {
+            color: $F-F4FFCB;
+            @include wt800;
+
+            @include pc {
+              font-size: p(16);
+              letter-spacing: p(1.2);
+              line-height: 1.3;
+            }
+          }
+
+          .reaction-counter {
+            color: $F-FFFFFF;
+            @include wt800;
+
+            @include pc {
+              font-size: p(16);
+              letter-spacing: p(1.2);
+              margin-top: p(5);
+            }
+          }
+        }
+
       }
     }
 
+    .chat-wrap {
+      background: $B-4BC7FB;
+      position: relative;
+      flex: 1;
+
+      @include pc {
+        border-radius: p(15);
+        padding: p(19) p(21) p(69);
+      }
+
+      .chat-TL {
+        @include iconContain($cover-ribbon);
+        position: absolute;
+        left: 50%;
+        translate: -50% 0;
+        z-index: 10;
+
+        @include pc {
+          width: p(580);
+          height: p(123);
+          padding-top: p(30);
+          top: p(-35);
+        }
+
+        .TL {
+          color: $F-C7B82F;
+          text-align: center;
+          @include wt900;
+
+          @include pc {
+            font-size: p(30);
+            letter-spacing: p(1.3);
+          }
+        }
+      }
+
+      #simple-ajax-chat {
+        height: 100%;
+
+        #sac-output {
+          background: radial-gradient(50% 50% at 50% 50%, rgba(61, 255, 255, 0.00) 0%, rgba(61, 255, 255, 0.13) 100%), #EFFAFF;
+          box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25) inset;
+          width: 100%;
+          height: 100%;
+
+          @include pc {
+            padding: p(90) p(50) p(20) p(45);
+            border-radius: p(15);
+          }
+
+          #sac-latest-message {
+            display: none;
+          }
+        }
+
+        #sac-panel {
+          float: none;
+          position: absolute;
+          bottom: 0;
+
+          #sac-form {
+            display: flex;
+
+            @include pc {
+              gap: p(20);
+            }
+
+            #sac-user-info {
+              display: none;
+            }
+
+            #sac-user-chat {
+              label {
+                display: none;
+
+              }
+
+              #sac_chat {
+                border: none;
+                float: none;
+                position: relative;
+                display: border-box;
+
+                @include pc {
+                  width: p(590);
+                  height: p(30);
+                  border-radius: p(10);
+                  padding: p(11) p(24);
+                }
+
+                &::placeholder {
+                  font-size: 0;
+                }
+              }
+            }
+
+            #sac-user-submit {
+              position: relative;
+              background: linear-gradient(0deg, rgba(75, 199, 251, 0.00) 0%, #5DCFFF 100%), #307DF1;
+              box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.54) inset, 0px 2px 3px 0px #3C5C8A;
+
+              @include pc {
+                min-width: p(92);
+                height: p(45);
+                border-radius: p(30);
+              }
+              .submit{
+                opacity: 0;
+                
+              }
+            }
+
+            &::before {
+              content: "コメントを入力する";
+              position: absolute;
+              pointer-events: none;
+              z-index: 10;
+              @include wt800;
+
+              @include pc {
+                color: $F-D2D2D2;
+                font-size: p(16);
+                padding: p(11) p(24);
+              }
+            }
+
+            &.input-has-value {
+              &::before {
+                display: none;
+              }
+            }
+          }
+
+        }
+
+        #sac-messages {
+          display: flex;
+          flex-direction: column;
+          position: relative;
+
+          @include pc {
+            gap: p(10);
+          }
+
+          .sac-chat-message {
+            position: relative;
+
+            &::before {
+              content: "";
+              @include imgContain("staff-icon.png");
+              display: block;
+
+              @include pc {
+                width: p(53);
+                height: p(53);
+              }
+            }
+
+            .sac-chat-name-wrap {
+              position: absolute;
+
+              @include pc {
+                overflow: hidden;
+                top: 0;
+                left: p(73);
+                height: fit-content;
+              }
+
+              .sac-chat-name {
+                display: block;
+                color: $F-857763;
+                @include wt800;
+
+                @include pc {
+                  white-space: nowrap;
+                  font-size: p(16);
+                  letter-spacing: p(1.6);
+                  margin-right: p(-10);
+                }
+              }
+            }
+
+            .highlight-text {
+              color: $F-B29975;
+              position: absolute;
+              @include iconCover($chat-bubble);
+              @include wt600;
+              display: grid;
+              place-items: center left;
+
+
+              @include pc {
+                width: p(508);
+                height: p(50);
+                font-size: p(16);
+                padding: 0 p(30);
+                border-radius: p(3);
+                top: p(20);
+                left: p(60);
+              }
+            }
+
+            &.me {
+              .sac-chat-name-wrap {
+                @include pc {
+                  left: auto;
+                  right: p(73);
+                }
+
+                .sac-chat-name {
+                  color: $P-F6AA64;
+                }
+              }
+
+              .highlight-text {
+                @include iconCover($chat-me);
+                color: $P-F6AA64;
+                place-items: center right;
+
+                @include pc {
+                  left: auto;
+                  right: p(60);
+                }
+              }
+
+              &::before {
+                content: "";
+                @include imgContain("me-icon.png");
+                margin-left: auto;
+              }
+            }
+          }
+        }
+        // &::before{
+        //   content: "";
+        //   @include iconContain($chat-plant);
+        //   position: absolute;
+        //   display: block;
+        //   z-index: 20;
+        //   @include pc{
+        //     width: p(38);
+        //     height: p(38);
+        //     bottom: 10px;
+        //   }
+        // }      
+
+      }
+    }
   }
 }
 
@@ -146,35 +599,6 @@
   to {
     opacity: 1;
   }
-}
-
-.timeline {
-  padding: 20px;
-  width: fit-content;
-  height: 200px;
-  overflow-y: scroll;
-  font-size: 12px;
-  line-height: 1.5;
-
-  .timeline-item {
-    margin-bottom: 10px;
-
-    // いいねボタン
-    //すでにいいねしたタイムラインはいいねが赤くなる
-    .like-button {
-      background-color: #ffffffcc;
-      border-radius: 50px;
-      font-size: 13px;
-
-      &.liked {
-        color: red;
-        cursor: not-allowed;
-      }
-    }
-
-
-  }
-
 }
 
 
