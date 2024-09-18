@@ -19,7 +19,7 @@
   @include sp {
     padding: s(40) s(20);
 
-    @media screen and (max-width: 767px) and (min-width: 550px){
+    @media screen and (max-width: 767px) and (min-width: 550px) {
       min-height: 900px;
     }
   }
@@ -54,7 +54,7 @@
         @include iconContain($myTitle);
         aspect-ratio: 371 / 103;
         margin: 0 auto;
-        
+
         @include pc {
           width: 60%;
           padding-top: pm(15);
@@ -111,17 +111,17 @@
           }
         }
 
-        .badge{
+        .badge {
           position: absolute;
           aspect-ratio: 450/100;
-          
-          @include pc{
+
+          @include pc {
             width: pm(130);
             right: pm(0);
             bottom: calc(100% + pm(3));
           }
-          
-          @include sp{
+
+          @include sp {
             width: s(120);
             right: s(0);
             bottom: calc(100% + s(3));
@@ -131,12 +131,12 @@
 
       &--points {
 
-        @include pc{
+        @include pc {
           @include column(p(5));
           margin-top: p(10)
         }
-        
-        @include sp{
+
+        @include sp {
           @include column(s(5));
           margin-top: s(10);
         }
@@ -145,19 +145,19 @@
           margin: 0 auto;
           background: rgba(255, 255, 255, 0.8);
           border-radius: 10px;
-  
+
           @include pc {
             width: pm(290);
             padding: pm(10);
             @include column(p(5));
           }
-  
+
           @include sp {
             width: 80%;
             padding: s(10) s(10);
             @include column(s(5));
           }
-  
+
           .TX {
             @include wt400;
             color: $F-6B644D;
@@ -165,42 +165,42 @@
             align-items: flex-end;
             justify-content: space-between;
             gap: 1rem;
-  
+
             @include pc {
               font-size: pm(12);
             }
-  
+
             @include sp {
               font-size: s(12);
             }
-  
+
             span {
               @include wt400;
               color: $F-6B644D;
               word-break: break-all;
-    
+
               @include pc {
                 font-size: pm(14);
               }
-    
+
               @include sp {
                 font-size: s(14);
               }
             }
           }
 
-          &-select{
+          &-select {
             display: flex;
 
-            @include pc{
+            @include pc {
               gap: p(5);
             }
-            
-            @include sp{
+
+            @include sp {
               gap: s(5);
             }
 
-            .coin-point_button{
+            .coin-point_button {
               width: 100%;
               text-align: center;
               cursor: pointer;
@@ -208,23 +208,23 @@
               color: $F-6B644D;
               border-radius: 5px;
               box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-              
+
               @include pc {
                 padding: p(8) 0;
                 font-size: pm(14);
               }
-    
+
               @include sp {
                 padding: s(5) 0;
                 font-size: s(11);
               }
 
-              
-              &.blue{
+
+              &.blue {
                 background-color: #4BC7FB;
               }
 
-              &.gold{
+              &.gold {
                 background-color: gold;
               }
             }
@@ -241,11 +241,63 @@
         @include pc {
           width: clamp(200px, p(300), 300px);
           bottom: 0;
+
+          &:hover {
+            .clothes--change__button {
+              pointer-events: auto;
+              opacity: 1;
+              bottom: 0;
+              transition: all 0.5s;
+            }
+          }
         }
 
         @include sp {
           width: clamp(100px, s(200), 300px);
           bottom: 0;
+
+          &.js-character-edit {
+            &.active {
+              .clothes--change__button {
+                pointer-events: auto;
+                opacity: 1;
+              }
+            }
+          }
+        }
+
+
+
+
+
+        .clothes--change__button {
+          position: absolute;
+          right: 0;
+          background: rgba(0, 0, 0, 0.5);
+          color: #FFF;
+          line-height: 1.5;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          pointer-events: none;
+          transition: all 0.5s;
+
+          @include pc {
+            width: pm(100);
+            height: pm(25);
+            font-size: pm(10);
+            bottom: -15%;
+            transition-delay: 0.5s;
+          }
+
+          @include sp {
+            width: s(100);
+            height: s(25);
+            font-size: s(10);
+            bottom: 0;
+          }
+
         }
       }
     }
@@ -393,7 +445,7 @@
 
         &--content {
           overflow-y: scroll;
-          
+
           @include pc {
             height: 100%;
             @include column(p(18));
@@ -1285,23 +1337,23 @@
         }
       }
 
-      .logout--button{
+      .logout--button {
         display: block;
         position: absolute;
         z-index: 7;
         background-color: gray;
         color: white;
         cursor: pointer;
-        
-        @include pc{
+
+        @include pc {
           bottom: p(20);
           right: p(40);
           padding: p(10);
           border-radius: p(5);
           font-size: p(14);
         }
-        
-        @include sp{
+
+        @include sp {
           bottom: s(20);
           right: s(40);
           padding: s(10);

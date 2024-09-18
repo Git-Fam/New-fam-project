@@ -1,15 +1,15 @@
 <?php
 
-// $normal_day = DAY_IN_SECONDS; // 1日
-// $normal_month = MONTH_IN_SECONDS; // 1ヶ月
-// $continuous_days = 10; // 連続ログイン
-// $after_day = 3; // 復活後連続ログイン
+$normal_day = DAY_IN_SECONDS; // 1日
+$normal_month = MONTH_IN_SECONDS; // 1ヶ月
+$continuous_days = 10; // 連続ログイン
+$after_day = 3; // 復活後連続ログイン
 
 // テスト
-$normal_day = 10; // 日にちテスト
-$normal_month = 30; // 復活テスト
-$continuous_days = 5; // 連続ログインテスト
-$after_day = 3; // 復活後連続ログイン
+// $normal_day = 10; // 日にちテスト
+// $normal_month = 30; // 復活テスト
+// $continuous_days = 5; // 連続ログインテスト
+// $after_day = 3; // 復活後連続ログイン
 
 // ユーザーがログインするたびにポイントを付与する
 function add_login_points($user_login, $user)

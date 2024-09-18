@@ -13,6 +13,7 @@
 
   <script src="<?php echo get_template_directory_uri(); ?>/js/script.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/js/cooperatorScript.js"></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/colorPicker.js"></script>
   <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
 
 </body>

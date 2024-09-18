@@ -24,7 +24,10 @@ $(function () {
     $(this).closest('.comeback-board ,.log-board ,.continuous-board').addClass('none');
   });
 
-
+  // SPキャラクタークリック
+  $('.js-character-edit').on('click', function() {
+      $(this).toggleClass('active');
+  });
 
   // input要素の値を取得して表示
   document.querySelectorAll('.update--item').forEach(function (checkElement) {
