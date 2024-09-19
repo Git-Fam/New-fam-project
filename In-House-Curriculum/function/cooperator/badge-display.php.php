@@ -47,7 +47,7 @@
     // if ($all_div_fields_100) {
         // 全てのdivフィールドが100%の場合にバッジを表示
 ?>
-        <img class="badge" src="<?php echo get_template_directory_uri(); ?>/img/badge-html.png" alt="バッジ">
+        <!-- <img class="badge" src="<?php echo get_template_directory_uri(); ?>/img/badge-html.png" alt="バッジ"> -->
 <?php
     //     return;
     // }
