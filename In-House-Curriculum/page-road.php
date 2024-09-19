@@ -242,7 +242,7 @@ foreach ($users as $user) {
 
             </div>
 
-            <div class="reaction">
+            <div class="C_reaction">
                 <p class="TX">5回リアクションを<br>送ろう！</p>
                 <div class="reaction-counter">0/5</div>
                 <div class="coin-counter">

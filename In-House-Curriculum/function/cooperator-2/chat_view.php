@@ -71,3 +71,4 @@ function get_latest_group_messages($group_class, $limit = 2) {
     );
     return $wpdb->get_results($query);
 }
+

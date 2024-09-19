@@ -185,6 +185,28 @@
   }
 }
 
+//チャットページSP いいねに飛ぶ
+.good-jamp {
+  animation: good-jamp 2s ease 1s infinite;
+
+  @keyframes good-jamp {
+    0% {
+      transform: translateY(0%);
+    }
+
+    50% {
+      transform: translateY(15%);
+    }
+
+    100% {
+      transform: translateY(0%);
+    }
+
+  }
+}
+
+
+
 .pyon {
   &.hover {
 
