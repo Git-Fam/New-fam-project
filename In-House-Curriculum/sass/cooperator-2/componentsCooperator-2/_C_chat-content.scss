@@ -38,3 +38,71 @@
     }
   }
 }
+
+.C_reaction{
+  position: relative;
+  .TX{
+    color: $F-F4FFCB;
+    line-height: 1.3;
+    @include wt800;
+    @include pc{
+      font-size: p(13);
+      letter-spacing: p(1.2);
+    }
+    @include sp{
+      font-size: smi(12);
+      letter-spacing: s(1);
+    }
+  }
+  .reaction-counter{
+    color: $F-FFFFFF;
+    @include wt800;
+    @include pc{
+      font-size: p(13);
+      letter-spacing: p(1.2);
+    }
+    @include sp{
+      font-size: smi(10);
+      letter-spacing: s(1);
+    }
+  }
+  .coin-counter{
+    background: $B-FFFFFF;
+    display: flex;
+    align-items: center;
+    filter: brightness(80%);
+    width: fit-content;
+    @include pc{
+      border-radius: p(20);
+      padding: p(4) p(13) p(4) p(8);
+    }
+    @include sp{
+      border-radius: smi(20);
+      padding: smi(2) smi(10) smi(2) smi(6);
+    }
+
+    .icon{
+      @include imgContain("/log-board/log-board-item-02.png");
+      @include pc{
+        width: p(30);
+        height: p(30);
+      }
+      @include sp{
+        width: smi(20);
+        height: smi(20);
+      }
+    }
+    .number{
+      @include wt800;
+      color: $B-F69064;
+      @include pc{
+        font-size: p(21);
+        margin-left: p(5);
+      }
+      @include sp{
+        font-size: smi(14);
+        margin-left: smi(3);
+      }
+    }
+  }
+}

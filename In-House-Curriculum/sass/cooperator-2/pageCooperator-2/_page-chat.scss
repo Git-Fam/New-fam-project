@@ -4,7 +4,6 @@
 /* -----------------------
   page-chat
 ----------------------- */
-
 .chat {
   background: rgba(122, 122, 122, 0.75);
   width: 100%;
@@ -23,7 +22,7 @@
     }
 
     @include sp {
-      height:smi(60);
+      height: smi(60);
       place-items: center center;
     }
 
@@ -47,23 +46,31 @@
     @include pc {
       background: $B-F69064;
       width: p(1182);
-      height: calc(569 / 700 * 100%);
+      height: calc((569 / 700)* 100%);
       display: flex;
       border-radius: p(15);
       margin: p(41) auto 0;
     }
 
-    @include sp{
-      padding-top: s(30);
+    @include sp {
+      height: calc(546 / 650 * 100%);
+      padding-top: s(50);
     }
 
-    .timeline-mdoal {
+    .timeline-modal {
       @include pc {
         padding: p(26) p(25) p(69) p(22);
       }
 
       @include sp {
         display: none;
+        height: 100%;
+        width: smi(351, 450);
+        position: relative;
+        margin: 0 auto;
+        background: $B-F69064;
+        padding: smi(25) smi(15) smi(100);
+        border-radius: s(8);
       }
 
       .timeline-TL {
@@ -82,19 +89,25 @@
         }
 
         @include sp {
-          font-size: clamp(14px, calc((16 / 390) * 100vw), 20px);
-          letter-spacing: s(1.6);
-          padding: clamp(5px, calc((8 / 390) * 100vw), 10px) clamp(10px, calc((15 / 390) * 100vw), 20px);
-          top: clamp(-10px, calc((-15 / 390) * 100vw), -23px);
+          font-size: smi(16, 20);
+          letter-spacing: smi(1.6);
+          padding: smi(8) smi(15);
+          top: s(-15);
           left: 0;
+
         }
       }
 
       .timeline-wrap {
+
         @include pc {
           min-width: p(389);
           height: 100%;
         }
+        @include sp{
+          height: 100%;
+        }
+
 
         .timeline {
           background: radial-gradient(50% 50% at 50% 50%, rgba(255, 201, 61, 0.00) 0%, rgba(255, 201, 61, 0.13) 100%), #EFFAFF;
@@ -108,30 +121,48 @@
             padding: p(19) p(7);
             gap: p(23);
           }
+          @include sp{
+            height: 100%;
+            border-radius: s(8);
+            padding: smi(20) smi(10) smi(85);
+            gap: smi(20);
+          }
 
           .timeline-item {
             @include pc {
               padding: 0 p(20) p(12) p(11);
               border-bottom: p(1) solid $F-6D6D6D;
             }
+            @include sp{
+              padding: 0 smi(20) smi(12) smi(11);
+              border-bottom:s(1) solid $F-6D6D6D;
+
+            }
 
             h3 {
               @include wt600;
               color: $F-6D6D6D;
+              line-height: 1.5;
 
               @include pc {
                 font-size: p(16);
-                line-height: 1.5;
+              }
+              @include sp{
+                font-size: smi(14,18);
               }
             }
 
             .like-button-wrap {
               display: flex;
+              justify-content: right;
 
               @include pc {
                 gap: p(25);
-                justify-content: right;
                 margin-top: p(9);
+              }
+              @include sp{
+                gap: smi(28);
+                margin-top: smi(5);
               }
 
               .like-button {
@@ -142,6 +173,10 @@
                 @include pc {
                   width: p(32);
                   height: p(32);
+                }
+                @include sp{
+                  width: smi(35,45);
+                  height: smi(35,45);
                 }
 
                 .icon {
@@ -156,6 +191,11 @@
                     width: p(19);
                     height: p(16);
                   }
+                  @include sp{
+                    width: smi(19,25);
+                    height: smi(16,23);
+
+                  }
                 }
 
                 .like-TX {
@@ -169,17 +209,16 @@
                     font-size: p(10);
                     bottom: p(-7);
                   }
+                  @include sp{
+                    font-size: smi(12,14);
+                    bottom: smi(-5);
+                  }
 
                 }
 
                 &.heart {
                   .icon {
                     background-image: heart(encode('#ABABAB'));
-
-                    @include pc {
-                      width: p(19);
-                      height: p(16);
-                    }
                   }
 
                   &.liked {
@@ -231,12 +270,17 @@
           }
         }
 
-        .reaction {
+        .C_reaction {
           display: flex;
 
           @include pc {
             margin-top: p(12);
             gap: p(12);
+          }
+          @include sp{
+            margin-top: smi(12);
+            gap: smi(12);
+
           }
 
           .coin-counter {
@@ -244,11 +288,15 @@
             display: flex;
             align-items: center;
             filter: brightness(80%);
+            width: fit-content;
 
             @include pc {
-              width: fit-content;
               border-radius: p(20);
               padding: p(4) p(16) p(4) p(10);
+            }
+            @include sp{
+              border-radius: s(50);
+              padding: smi(5) smi(15) smi(5) smi(10);
             }
 
             .icon {
@@ -257,6 +305,10 @@
               @include pc {
                 width: p(36);
                 height: p(36);
+              }
+              @include sp{
+                width: smi(30);
+                height: smi(30);
               }
             }
 
@@ -268,37 +320,58 @@
                 font-size: p(26);
                 margin-left: p(7);
               }
+              @include sp{
+                font-size: smi(22,25);
+                margin-left: smi(5);
+              }
             }
 
-            &.get {
-              filter: brightness(100%);
-            }
           }
 
           .textbox {
             .TX {
-              color: $F-F4FFCB;
-              @include wt800;
 
               @include pc {
                 font-size: p(16);
-                letter-spacing: p(1.2);
-                line-height: 1.3;
+              }
+              @include sp{
+                font-size: smi(16,20);
               }
             }
 
             .reaction-counter {
-              color: $F-FFFFFF;
-              @include wt800;
-
               @include pc {
                 font-size: p(16);
-                letter-spacing: p(1.2);
                 margin-top: p(5);
+              }
+              @include sp{
+                font-size: smi(16,18);
+                margin-top: smi(3);
               }
             }
           }
 
+        }
+        .chat-back{
+          display: flex;
+          align-items: center;
+          margin-left: smi(5,10);
+          .icon{
+            @include iconContain($back-arrow);
+            width: smi(29,38);
+            height: smi(31,41);  
+          }
+          .TX{
+            @include wt800;
+            color: $F-857763;
+            font-size: smi(16,20);
+          }
+        }
+      }
+
+      &.show {
+        @include sp {
+          display: block;
         }
       }
     }
@@ -312,12 +385,14 @@
         padding: p(19) p(21) p(69);
         flex: 1;
       }
-      @include sp{
-        width: smi(351,450);
-        height: calc(546 / 650 * 100%);
+
+      @include sp {
+        width: smi(351, 450);
+        height: 100%;
         margin: 0 auto;
         border-radius: s(8);
-        padding: smi(15) smi(15) s(60);
+        padding: smi(15) smi(15) smi(60);
+
       }
 
       .chat-TL {
@@ -333,11 +408,12 @@
           padding-top: p(30);
           top: p(-35);
         }
-        @include sp{
-          width: smi(322,400);
-          height: smi(67,85);
+
+        @include sp {
+          width: smi(322, 400);
+          height: smi(67, 85);
           top: smi(-20);
-          padding-top: smi(12,18);
+          padding-top: smi(12, 18);
         }
 
         .TL {
@@ -349,8 +425,9 @@
             font-size: p(30);
             letter-spacing: p(1.3);
           }
-          @include sp{
-            font-size: smi(20,24);
+
+          @include sp {
+            font-size: smi(20, 24);
             letter-spacing: s(1.3);
           }
         }
@@ -369,10 +446,12 @@
             padding: p(90) p(50) p(20) p(45);
             border-radius: p(15);
           }
-          @include sp{
+
+          @include sp {
             border-radius: s(8);
-            padding: smi(44) smi(10) smi(85) ;
+            padding: smi(44) smi(10) smi(85);
           }
+
           #sac-latest-message {
             display: none;
           }
@@ -382,7 +461,8 @@
           float: none;
           position: absolute;
           bottom: 0;
-          @include sp{
+
+          @include sp {
             width: 100%;
           }
 
@@ -392,10 +472,12 @@
 
             @include pc {
               gap: p(20);
-              margin-bottom: 0;
+              margin-bottom: p(5);
             }
-            @include sp{
+
+            @include sp {
               gap: s(8);
+              margin-bottom: smi(5);
             }
 
             #sac-user-info {
@@ -403,6 +485,8 @@
             }
 
             #sac-user-chat {
+              margin-bottom: 0;
+
               label {
                 display: none;
 
@@ -416,14 +500,15 @@
                 display: border-box;
 
                 @include pc {
-                  width: p(590);
-                  height: p(30);
+                  width: p(540);
+                  height: p(25);
                   border-radius: p(10);
                   padding: p(11) p(24);
                 }
-                @include sp{
-                  width: calc(( 282 /351)*100%);
-                  height: s(29);
+
+                @include sp {
+                  width: calc((282 /351)*100%);
+                  height: smi(29);
                   border-radius: s(5);
                   padding: s(5) s(10);
                 }
@@ -444,11 +529,12 @@
                 height: p(45);
                 border-radius: p(30);
               }
-              @include sp{
+
+              @include sp {
                 width: s(40);
                 height: s(19);
                 border-radius: s(15);
-                right: s(20) ;
+                right: smi(35);
               }
 
               .submit {
@@ -473,7 +559,8 @@
                   width: p(38);
                   height: p(38);
                 }
-                @include sp{
+
+                @include sp {
                   width: s(18);
                   height: s(18);
                 }
@@ -492,6 +579,11 @@
               @include pc {
                 font-size: p(16);
                 padding: p(11) p(24);
+              }
+
+              @include sp {
+                font-size: smi(14);
+                padding-left: smi(10);
               }
             }
 
@@ -513,6 +605,10 @@
             gap: p(10);
           }
 
+          @include sp {
+            gap: s(7);
+          }
+
           .sac-chat-message {
             position: relative;
 
@@ -525,16 +621,28 @@
                 width: p(53);
                 height: p(53);
               }
+
+              @include sp {
+                width: smi(33, 43);
+                height: smi(33, 43);
+              }
             }
 
             .sac-chat-name-wrap {
               position: absolute;
+              overflow: hidden;
+              top: 0;
+
+
 
               @include pc {
-                overflow: hidden;
-                top: 0;
                 left: p(73);
                 height: fit-content;
+              }
+
+              @include sp {
+                top: smi(-3);
+                left: smi(50, 65);
               }
 
               .sac-chat-name {
@@ -547,6 +655,13 @@
                   font-size: p(16);
                   letter-spacing: p(1.6);
                   margin-right: p(-10);
+                }
+
+                @include sp {
+                  font-size: smi(12, 14);
+                  letter-spacing: s(1);
+                  margin-right: smi(-8);
+
                 }
               }
             }
@@ -565,17 +680,30 @@
                 height: p(50);
                 font-size: p(16);
                 padding: 0 p(30);
-                border-radius: p(3);
                 top: p(20);
                 left: p(60);
+              }
+
+              @include sp {
+                width: smi(240, 328);
+                height: smi(22, 30);
+                font-size: smi(12, 16);
+                top: smi(15);
+                left: smi(45, 55);
+                padding: 0 smi(15, 20);
               }
             }
 
             &.me {
               .sac-chat-name-wrap {
+                left: auto;
+
                 @include pc {
-                  left: auto;
                   right: p(73);
+                }
+
+                @include sp {
+                  right: smi(50, 65);
                 }
 
                 .sac-chat-name {
@@ -587,10 +715,14 @@
                 @include iconCover($chat-me);
                 color: $P-F6AA64;
                 place-items: center right;
+                left: auto;
 
                 @include pc {
-                  left: auto;
                   right: p(60);
+                }
+
+                @include sp {
+                  right: smi(45, 55);
                 }
               }
 
@@ -601,6 +733,33 @@
               }
             }
           }
+        }
+      }
+
+      .C_reaction {
+        background: $B-F69064;
+        width: fit-content;
+        border-radius: smi(10);
+        padding: smi(5) smi(15);
+        position: absolute;
+        bottom: smi(75);
+        right: smi(30);
+
+        .textbox {
+          .reaction-counter {
+            margin-top: smi(5);
+          }
+        }
+
+        .coin-counter {
+          margin-left: auto;
+          margin-top: smi(-10);
+        }
+      }
+
+      &.show {
+        @include sp {
+          display: none;
         }
       }
     }

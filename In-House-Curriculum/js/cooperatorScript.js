@@ -1,7 +1,7 @@
 $(function () {
 	//show付与
-	$(".category-content,#cover-btn").on("click", function () {
-		$(".select-content,#tab-wrap").toggleClass("show");
+	$(".category-content,#cover-btn,.timeline-jamp").on("click", function () {
+		$(".select-content,#tab-wrap,.timeline-modal,.chat-wrap").toggleClass("show");
 	});
 
 	$("#cover-curriculum").hover(function () {
