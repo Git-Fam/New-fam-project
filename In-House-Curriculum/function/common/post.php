@@ -44,7 +44,4 @@ function create_post_type()
 
 
 
-
-
-
 add_theme_support('post-thumbnails');

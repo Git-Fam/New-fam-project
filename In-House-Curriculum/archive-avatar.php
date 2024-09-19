@@ -135,143 +135,131 @@
 
             <div class="control__category">
 
-
                 <!-- カテゴリー -->
                 <div class="category__list">
                     <ul class="category__list__items">
-                        <!-- 追加されたカテゴリーがここに並ぶ -->
-                        <li class="active">
-                            <div class="category__item">
-                                <div class="icon"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="category__item">
-                                <div class="icon"></div>
-                            </div>
-                        </li>
+                        <?php
+                        $categories = get_terms(array(
+                            'taxonomy' => 'avatar-cat',
+                            'hide_empty' => false,
+                        ));
+                        foreach ($categories as $index => $category) {
+                            $active_class = $index === 0 ? 'active' : '';
+                            $png_url = get_template_directory_uri() . '/img/avatar-top-icon/' . esc_attr($category->slug) . '.png';
+                            $svg_url = get_template_directory_uri() . '/img/avatar-top-icon/' . esc_attr($category->slug) . '.svg';
+                            $image_url = file_exists(get_template_directory() . '/img/avatar-top-icon/' . esc_attr($category->slug) . '.png') ? $png_url : $svg_url;
+                            echo '<li class="' . $active_class . '">';
+                            echo '<div class="category__item">';
+                            echo '<div class="icon" style="background-image: url(' . esc_url($image_url) . ');"></div>';
+                            echo '</div>';
+                            echo '</li>';
+                        }
+                        ?>
                     </ul>
                 </div>
 
-
                 <!-- タグ -->
                 <div class="tag__list">
+                    <?php
+                    $categories = get_terms(array(
+                        'taxonomy' => 'avatar-cat',
+                        'hide_empty' => false,
+                    ));
+                    foreach ($categories as $index => $category) {
+                        $active_class = $index === 0 ? 'active' : '';
+                        echo '<div class="tag__list__area ' . $active_class . '">';
+                        echo '<ul class="tag__list__items">';
 
-                <!-- カテゴリー別のタグを表示 -->
-                    <div class="tag__list__area active">
-                        <ul class="tag__list__items">
-                            <!-- 追加されたタグがここに並ぶ -->
-                            <li>
-                                <div class="tag__item active"></div>
-                            </li>
-                            <li>
-                                <div class="tag__item"></div>
-                            </li>
-                        </ul>
-                    </div>
+                        // カテゴリーに紐付いたタグを取得
+                        $tags = get_terms(array(
+                            'taxonomy' => 'avatar-tag',
+                            'hide_empty' => false,
+                            'meta_query' => array(
+                                array(
+                                    'key' => 'category_slug',
+                                    'value' => $category->slug,
+                                    'compare' => '='
+                                )
+                            )
+                        ));
 
-                <!-- カテゴリー別のタグを表示 -->
-                    <div class="tag__list__area">
-                        <ul class="tag__list__items">
-                            <!-- 追加されたタグがここに並ぶ -->
-                            <li>
-                                <div class="tag__item active"></div>
-                            </li>
-                            <li>
-                                <div class="tag__item"></div>
-                            </li>
-                        </ul>
-                    </div>
+                        foreach ($tags as $tag) {
+                            $png_url = get_template_directory_uri() . '/img/avatar-top-icon/' . esc_attr($category->slug) . '-' . esc_attr($tag->slug) . '.png';
+                            $svg_url = get_template_directory_uri() . '/img/avatar-top-icon/' . esc_attr($category->slug) . '-' . esc_attr($tag->slug) . '.svg';
+                            $image_url = file_exists(get_template_directory() . '/img/avatar-top-icon/' . esc_attr($category->slug) . '-' . esc_attr($tag->slug) . '.png') ? $png_url : $svg_url;
+                            echo '<li>';
+                            echo '<div class="tag__item" style="background-image: url(' . esc_url($image_url) . ');"></div>';
+                            echo '</li>';
+                        }
 
+                        echo '</ul>';
+                        echo '</div>';
+                    }
+                    ?>
                 </div>
 
             </div>
 
+            <!-- itemたち -->
             <div class="control__item">
                 <div class="control__item__inner">
+                    <?php
+                    $categories = get_terms(array(
+                        'taxonomy' => 'avatar-cat',
+                        'hide_empty' => false,
+                    ));
+                    foreach ($categories as $category_index => $category) {
+                        $category_active_class = $category_index === 0 ? 'active' : '';
+                        echo '<div class="control__list__wrap ' . $category_active_class . '">';
 
-                    <!-- 投稿を表示 -->
-                    <div class="control__list__wrap active">
-                        <!-- カテゴリー、タグ別の投稿を表示 -->
-                        <div class="control__category-tag__list active">
-                            <ul>
-                                <!-- 追加された投稿がここに並ぶ -->
-                                <li>
-                                    <input class="category-tag__item--wrap" type="radio" name="category-tag-1-1"
-                                        onclick="toggleRadio(this)">
-                                    <div class="category-tag__item">1-1</div>
-                                    <div class="nothing-item active"></div>
-                                </li>
-                                <li>
-                                    <input class="category-tag__item--wrap" type="radio" name="category-tag-1-1"
-                                        onclick="toggleRadio(this)">
-                                    <div class="category-tag__item">1-1</div>
-                                    <div class="nothing-item"></div>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- カテゴリー、タグ別の投稿を表示 -->
-                        <div class="control__category-tag__list">
-                            <ul>
-                                <!-- 追加された投稿がここに並ぶ -->
-                                <li>
-                                    <input class="category-tag__item--wrap" type="radio" name="category-tag-1-2"
-                                        onclick="toggleRadio(this)">
-                                    <div class="category-tag__item">1-2</div>
-                                    <div class="nothing-item active"></div>
-                                </li>
-                                <li>
-                                    <input class="category-tag__item--wrap" type="radio" name="category-tag-1-2"
-                                        onclick="toggleRadio(this)">
-                                    <div class="category-tag__item">1-2</div>
-                                    <div class="nothing-item"></div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                        // カテゴリーに紐づくタグを取得
+                        $tags = get_terms(array(
+                            'taxonomy' => 'avatar-tag',
+                            'hide_empty' => false,
+                            'meta_query' => array(
+                                array(
+                                    'key' => 'category_slug',
+                                    'value' => $category->slug,
+                                    'compare' => '='
+                                )
+                            )
+                        ));
 
-                    <!-- 投稿を表示 -->
-                    <div class="control__list__wrap">
-                        <!-- カテゴリー、タグ別の投稿を表示 -->
-                        <div class="control__category-tag__list active">
-                            <ul>
-                                <!-- 追加された投稿がここに並ぶ -->
-                                <li>
-                                    <input class="category-tag__item--wrap" type="radio" name="category-tag-2-1"
-                                        onclick="toggleRadio(this)">
-                                    <div class="category-tag__item">2-1</div>
-                                    <div class="nothing-item active"></div>
-                                </li>
-                                <li>
-                                    <input class="category-tag__item--wrap" type="radio" name="category-tag-2-1"
-                                        onclick="toggleRadio(this)">
-                                    <div class="category-tag__item">2-1</div>
-                                    <div class="nothing-item"></div>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- カテゴリー、タグ別の投稿を表示 -->
-                        <div class="control__category-tag__list">
-                            <ul>
-                                <!-- 追加された投稿がここに並ぶ -->
-                                <li>
-                                    <input class="category-tag__item--wrap" type="radio" name="category-tag-2-2"
-                                        onclick="toggleRadio(this)">
-                                    <div class="category-tag__item">2-2</div>
-                                    <div class="nothing-item active"></div>
-                                </li>
-                                <li>
-                                    <input class="category-tag__item--wrap" type="radio" name="category-tag-2-2"
-                                        onclick="toggleRadio(this)">
-                                    <div class="category-tag__item">2-2</div>
-                                    <div class="nothing-item"></div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                        foreach ($tags as $tag_index => $tag) {
+                            $tag_active_class = $tag_index === 0 ? 'active' : '';
+                            echo '<div class="control__category-tag__list ' . $tag_active_class . '">';
+                            echo '<ul>';
 
+                            // タグに紐づく投稿を取得
+                            $posts = get_posts(array(
+                                'post_type' => 'avatar',
+                                'tax_query' => array(
+                                    array(
+                                        'taxonomy' => 'avatar-tag',
+                                        'field' => 'slug',
+                                        'terms' => $tag->slug,
+                                    )
+                                )
+                            ));
+
+                            foreach ($posts as $post) {
+                                echo '<li>';
+                                echo '<input class="category-tag__item--wrap" type="radio" name="category-tag-' . esc_attr($category->term_id) . '-' . esc_attr($tag->term_id) . '" onclick="toggleRadio(this)">';
+                                echo '<div class="category-tag__item">' . apply_filters('the_content', $post->post_content) . '</div>';
+                                echo '<div class="nothing-item active"></div>';
+                                echo '</li>';
+                            }
+
+                            echo '</ul>';
+                            echo '</div>';
+                        }
+
+                        echo '</div>';
+                    }
+                    ?>
                 </div>
             </div>
+
         </div>
 
 
