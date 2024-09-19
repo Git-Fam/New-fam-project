@@ -151,4 +151,56 @@ function register_avatar_post_type()
 
 
 
+
+
+
+
+  // // カスタム投稿タイプ「アバター」
+  // register_post_type(
+  //   'avatar',
+  //   array(
+  //     'label' => 'アバター',
+  //     'public' => true,
+  //     'has_archive' => true,
+  //     'rewrite' => array('slug' => 'avatar'), // スラッグを設定
+  //     'menu_position' => 6,
+  //     'show_in_rest' => true,
+  //     'supports' => array(
+  //       'title',
+  //       'editor',
+  //       'thumbnail',
+  //       'revisions',
+  //     ),
+  //   )
+  // );
+
+  // // カスタム投稿タイプ「アバター」のカテゴリー
+  // register_taxonomy(
+  //   'avatar-cat',
+  //   'avatar',
+  //   array(
+  //     'label' => 'カテゴリー',
+  //     'hierarchical' => true,
+  //     'public' => true,
+  //     'show_in_rest' => true,
+  //     'rewrite' => array('slug' => 'avatar-cat'), // スラッグを設定
+  //   )
+  // );
+
+  // // カスタム投稿タイプ「アバター」のタグ
+  // register_taxonomy(
+  //   'avatar-tag',
+  //   'avatar',
+  //   array(
+  //     'label' => 'タグ',
+  //     'hierarchical' => false,
+  //     'public' => true,
+  //     'show_in_rest' => true,
+  //     'update_count_callback' => '_update_post_term_count',
+  //   )
+  // );
+
+
+
+
 }
