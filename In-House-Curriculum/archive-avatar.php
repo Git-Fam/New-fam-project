@@ -1,5 +1,6 @@
 <?php get_header(); ?>
 
+
 <form action="">
     <div class="change-clothes">
         <!-- ディスプレイ -->
