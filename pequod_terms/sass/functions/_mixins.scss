@@ -1,58 +1,61 @@
 $pc: 768px; // PC
-$sp: 767px;  // スマホ
+$sp: 767px; // スマホ
 
 @mixin pc {
   @media screen and (min-width: ($pc)) {
     @content;
   }
 }
+
 @mixin sp {
-  @media  screen and (max-width: ($sp)) {
+  @media screen and (max-width: ($sp)) {
     @content;
   }
 }
 
 // どセンター
-@mixin center{
+@mixin center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 // absoluteどセンター
-@mixin p-center{
+@mixin p-center {
   top: 50%;
   left: 50%;
   translate: -50% -50%;
 }
 
 // absolute上下センター
-@mixin p-center-top{
+@mixin p-center-top {
   top: 50%;
   translate: 0 -50%;
 }
 
 // absolute左右センター
-@mixin p-center-left{
+@mixin p-center-left {
   left: 50%;
   translate: -50% 0;
 }
 
 
 // 縦並び間空き
-@mixin column($gap){
+@mixin column($gap) {
   display: flex;
   flex-direction: column;
   gap: $gap;
 }
+
 // ↓CSSでは
 // @include column( p(10) );
 
 
 // 横並び◯列
-@mixin row($division, $gap){
-  width: calc((100% / #{$division}) - ( #{$gap} * (#{$division} - 1) / #{$division} ) );
+@mixin row($division, $gap) {
+  width: calc((100% / #{$division}) - (#{$gap} * (#{$division} - 1) / #{$division}));
 }
+
 // 3列の間がp(10)の場合
 // @include row(3, p(10));
 // ↓CSSでは
@@ -60,45 +63,49 @@ $sp: 767px;  // スマホ
 
 
 // background-contain
-@mixin imgContain($img){
+@mixin imgContain($img) {
   background-image: url('../img/#{$img}');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
+
 // ↓CSSでは
 // @include imgContain('example.jpg');
 
 
 // background-cover
-@mixin imgCover($img){
+@mixin imgCover($img) {
   background-image: url('../img/#{$img}');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
+
 // ↓CSSでは
 // @include imgCover('example.jpg');
 
 
 // backgroundIcon-contain
-@mixin iconContain($img){
+@mixin iconContain($img) {
   background-image: $img;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
+
 // ↓CSSでは
 // @include iconContain($dot);
 
 
 // backgroundIcon-cover
-@mixin iconCover($img){
+@mixin iconCover($img) {
   background-image: $img;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
+
 // ↓CSSでは
 // @include iconCover($dot);
 
@@ -111,6 +118,7 @@ $screenSizeSP: 390;
   $rate: calc(100 / $viewport);
   @return $rate * $size * 1vw;
 }
+
 // font-size: p(50);
 
 @function pm($size, $maxSize: ($size * 3 / 4), $viewport: $screenSizePC) {
@@ -118,16 +126,18 @@ $screenSizeSP: 390;
   $calculatedSize: $rate * $size * 1vw;
   @return max(#{$calculatedSize}, #{$maxSize}px);
 }
+
 // 入力値に*3/4した値とvwの値を比較して大きい方を返す
 // font-size: pm(50,40);
 // or
 // font-size: pm(50);
 
-@function pmin($size, $maxSize:  ($size * 3 / 4), $viewport: $screenSizePC) {
+@function pmin($size, $maxSize: ($size * 3 / 4), $viewport: $screenSizePC) {
   $rate: calc(100 / $viewport);
   $calculatedSize: $rate * $size * 1vw;
   @return min(#{$calculatedSize}, #{$maxSize}px);
 }
+
 // 入力値に*3/4した値とvwの値を比較して大きい方を返す
 // font-size: pmin(-50,-40);
 // or
@@ -137,13 +147,15 @@ $screenSizeSP: 390;
   $rate: calc(100 / $viewport);
   @return $rate * $size * 1vw;
 }
+
 // font-size: s(50);
 
 
 // line-height
 @mixin lineHeight($font-size, $line-height) {
-  line-height: $line-height / $font-size; 
+  line-height: $line-height / $font-size;
 }
+
 // ↓CSSでは
 // @include lineHeight(50, 75);
 // これでline-heightが単位なしで計算される
@@ -151,8 +163,9 @@ $screenSizeSP: 390;
 
 // letter-spacing
 @mixin letterSpacing($font-size, $letter-spacing) {
-  letter-spacing: $letter-spacing / $font-size * 1em; 
+  letter-spacing: $letter-spacing / $font-size * 1em;
 }
+
 // ↓CSSでは
 // @include letterSpacing(16, 2);
 // これでletter-spacingがem単位で計算される

@@ -47,7 +47,7 @@ main{
   @include pc{
     padding: 100px 200px 230px;
 
-    @media screen and (max-width: 1000px) and (min-width: 768px){
+    @media screen and (max-width: 1200px) and (min-width: 768px){
       padding-inline: 50px;
     }
   }
