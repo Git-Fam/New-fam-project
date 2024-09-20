@@ -5,7 +5,7 @@
     <nav class="nav nav-btn">
         <ul class="nav-wrap">
             <li class="nav-item">
-                <p class="label">ホーム</p>
+                <a href="#" class="label">ホーム</a>
                 <ul class="link-list">
                     <li class="link"><a href="#">HOZON</a></li>
                     <li class="link"><a href="#">SEITON</a></li>
@@ -14,14 +14,14 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <p class="label">Q&A</p>
+                <a href="#" class="label">Q&A</a>
                 <ul class="link-list">
                     <li class="link"><a href="#">◯◯について</a></li>
                     <li class="link"><a href="#">◯◯について</a></li>
                 </ul>
             </li>
             <li class="nav-item">
-                <p class="label">会社概要</p>
+                <a href="#" class="label">会社概要</a>
                 <ul class="link-list">
                     <li class="link"><a href="#">事業概要</a></li>
                     <li class="link"><a href="#">アクセス</a></li>
