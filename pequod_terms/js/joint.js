@@ -62,9 +62,20 @@ $(function () {
 	})(document);
 
 	$(".nav-item").hover(function () {
-		$(this).toggleClass("open");
-	})
+		$(this).toggleClass("show");
+	});
+
 	$(".nav-btn").click(function () {
-		$(this).toggleClass("open");
-	})
+		$(this).toggleClass("active");
+		$(".nav").toggleClass("active");
+		$("body").toggleClass("active");
+		$(".background").toggleClass("active");
+	});
+
+	$(".background").click(function () {
+		$(this).removeClass("active");
+		$(".nav").removeClass("active");
+		$("body").removeClass("active");
+		$(".nav-btn").removeClass("active");
+	});
 });
