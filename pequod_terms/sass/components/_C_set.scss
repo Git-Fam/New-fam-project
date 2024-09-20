@@ -12,4 +12,35 @@
   }
 
   @include sp {}
+
+  &--top {
+
+    @include pc {}
+
+    @include sp {}
+
+    .top--title {
+      color: $blue-font;
+
+      .title {
+
+        @include pc{}
+        
+        @include sp{}
+
+        .TL {
+          @include wt700;
+          @include letterSpacing(23, 2.3);
+          
+          @include pc {
+            font-size: 23px;
+          }
+
+          @include sp {}
+        }
+      }
+    }
+
+    .TX {}
+  }
 }
