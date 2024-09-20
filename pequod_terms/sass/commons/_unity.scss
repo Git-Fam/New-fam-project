@@ -25,7 +25,11 @@ html {
 
 body {
 
-  // @include serif;
+  @include yu;
+  @include wt500;
+  line-height: 1.5;
+  
+
 
   &.active {
 
