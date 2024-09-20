@@ -1,0 +1,25 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_Water_drop-title
+----------------------- */
+
+.C_Water_drop-title {
+  @include iconContain($water_drop);
+  background-size: 100% 100%;
+  aspect-ratio: 94/130;
+  height: fit-content;
+  position: relative;
+  width: 94px;
+
+  .TL {
+    color: $white-font;
+    @include wt700;
+    @include letterSpacing(23, 2.3);
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: 23px;
+    bottom: 36px;
+  }
+}

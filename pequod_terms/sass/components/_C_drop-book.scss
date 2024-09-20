@@ -1,0 +1,26 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_drop-book
+----------------------- */
+
+.C_drop-book {
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+
+
+  .C_bookmark {
+    position: absolute;
+
+    @include pc{
+      bottom: 9px;
+      left: calc(100% + 28px);
+    }
+    
+    @include sp{
+      bottom: 8px;
+      left: calc(100% + 21px);
+    }
+  }
+}
