@@ -97,9 +97,15 @@
 
     &__wrap {
       position: absolute;
-      @include p-center-top;
       width: 100%;
       text-align: center;
+      left: 0;
+
+      @include pc{
+        bottom: 75px
+      }
+      
+      @include sp{}
 
       &.top__title {}
 
@@ -125,8 +131,13 @@
       }
 
       .TL {
+        @include mincho;
+        @include wt800;
+        @include letterSpacing(30, 3);
 
-        @include pc {}
+        @include pc {
+          font-size: 30px;
+        }
 
         @include sp {}
       }

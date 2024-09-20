@@ -24,9 +24,8 @@ html {
 }
 
 body {
-
   @include yu;
-  
+  color: $main-font;
 
 
   &.active {
