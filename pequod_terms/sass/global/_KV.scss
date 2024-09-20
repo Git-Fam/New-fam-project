@@ -23,7 +23,7 @@
       width: 100%;
 
       &.top__img {
-        --kv-bg: url("/img/KV_top.jpg");
+        --kv-bg: url("../img/KV_top.jpg");
 
         @include pc {
           background:
@@ -40,56 +40,55 @@
         }
       }
 
-      // &.qa__img {
-      //   --kv-bg: url("/img/KV_QA.jpg");
+      &.qa__img {
+        --kv-bg: url("../img/KV_QA.jpg");
 
-      //   @include pc {
-      //     background:
-      //       linear-gradient(90deg, rgba(133, 166, 176, 0.00) 0%, rgba(133, 166, 176, 0.30) 31%, rgba(179, 216, 227, 0.30) 84.5%),
-      //       var(--kv-bg) lightgray right top 65% / 109% no-repeat;
-      //   }
+        @include pc {
+          background:
+            linear-gradient(90deg, rgba(133, 166, 176, 0.00) 0%, rgba(133, 166, 176, 0.30) 31%, rgba(179, 216, 227, 0.30) 84.5%),
+            var(--kv-bg) lightgray right top 65% / 109% no-repeat;
+        }
 
-      //   @include sp {
-      //     background:
-      //       linear-gradient(90deg, rgba(133, 166, 176, 0.00) 0%, rgba(133, 166, 176, 0.30) 31%, rgba(179, 216, 227, 0.30) 84.5%),
-      //       var(--kv-bg) lightgray 60% 62%/268.501% no-repeat;
-      //   }
-      // }
+        @include sp {
+          background:
+            linear-gradient(90deg, rgba(133, 166, 176, 0.00) 0%, rgba(133, 166, 176, 0.30) 31%, rgba(179, 216, 227, 0.30) 84.5%),
+            var(--kv-bg) lightgray 60% 62%/268.501% no-repeat;
+        }
+      }
 
-      // &.privacy__img {
-      //   --kv-bg: url("/img/KV_privacy.jpg");
+      &.privacy__img {
+        --kv-bg: url("../img/KV_privacy.jpg");
 
-      //   @include pc {
-      //     background:
-      //       linear-gradient(90deg, rgba(139, 170, 127, 0.48) 33.41%, rgba(182, 190, 181, 0.00) 100%),
-      //       var(--kv-bg) lightgray 0px 25% / 100% no-repeat;
-      //   }
+        @include pc {
+          background:
+            linear-gradient(90deg, rgba(139, 170, 127, 0.48) 33.41%, rgba(182, 190, 181, 0.00) 100%),
+            var(--kv-bg) lightgray 0px 25% / 100% no-repeat;
+        }
 
-      //   @include sp {
-      //     background:
-      //       linear-gradient(90deg, rgba(139, 170, 127, 0.48) 33.41%, rgba(182, 190, 181, 0.00) 100%),
-      //       var(--kv-bg) lightgray 80% 33% /282.604% no-repeat;
-      //   }
-      // }
+        @include sp {
+          background:
+            linear-gradient(90deg, rgba(139, 170, 127, 0.48) 33.41%, rgba(182, 190, 181, 0.00) 100%),
+            var(--kv-bg) lightgray 80% 33% /282.604% no-repeat;
+        }
+      }
 
-      // &.company__img {
-      //   --kv-bg: url("/img/KV_company.jpg");
+      &.company__img {
+        --kv-bg: url("../img/KV_company.jpg");
 
-      //   @include pc {
-      //     background:
-      //       linear-gradient(90deg, #F2FBFB 0%, rgba(215, 240, 241, 0.09) 42.67%),
-      //       linear-gradient(90deg, rgba(178, 197, 189, 0.00) 0%, rgba(178, 197, 189, 0.40) 46%),
-      //       var(--kv-bg) lightgray center 84% / 117.422% no-repeat;
-      //   }
+        @include pc {
+          background:
+            linear-gradient(90deg, #F2FBFB 0%, rgba(215, 240, 241, 0.09) 42.67%),
+            linear-gradient(90deg, rgba(178, 197, 189, 0.00) 0%, rgba(178, 197, 189, 0.40) 46%),
+            var(--kv-bg) lightgray center 84% / 117.422% no-repeat;
+        }
 
-      //   @include sp {
-      //     background:
-      //       linear-gradient(90deg, #F2FBFB 0%, rgba(215, 240, 241, 0.09) 42.67%),
-      //       linear-gradient(90deg, rgba(178, 197, 189, 0.00) 0%, rgba(178, 197, 189, 0.40) 46%),
-      //       var(--kv-bg) lightgray 60% 84%/334.041% no-repeat;
-      //   }
-      // }
-
+        @include sp {
+          background:
+            linear-gradient(90deg, #F2FBFB 0%, rgba(215, 240, 241, 0.09) 42.67%),
+            linear-gradient(90deg, rgba(178, 197, 189, 0.00) 0%, rgba(178, 197, 189, 0.40) 46%),
+            var(--kv-bg) lightgray 60% 84%/334.041% no-repeat;
+        }
+      }
     }
   }
 
@@ -101,47 +100,51 @@
       text-align: center;
       left: 0;
 
-      @include pc{
+      @include pc {
         bottom: 75px
       }
-      
-      @include sp{}
 
-      &.top__title {}
-
-      // &.qa__title{
-      // }
-
-      // &.privacy__title{
-      // }
-
-      // &.company__title{
-      // }
+      @include sp {
+        bottom: 55px
+      }
 
       .TX {
         @include mincho;
         @include wt600;
         @include letterSpacing(20, 4);
+        background: linear-gradient(95deg, #D3EEF6 12.19%, #92E3FB 43.9%, #D3EEF6 82.93%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        mix-blend-mode: screen;
+        width: fit-content;
+        margin: 0 auto;
 
         @include pc {
           font-size: 20px;
         }
 
-        @include sp {}
+        @include sp {
+          font-size: 15px;
+        }
       }
 
       .TL {
         @include mincho;
         @include wt800;
         @include letterSpacing(30, 3);
+        color: $white-font;
+        width: fit-content;
+        margin: 0 auto;
 
         @include pc {
           font-size: 30px;
         }
 
-        @include sp {}
+        @include sp {
+          font-size: 25px;
+        }
       }
-
     }
   }
 }
