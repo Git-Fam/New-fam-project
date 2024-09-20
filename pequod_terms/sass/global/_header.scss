@@ -3,3 +3,169 @@
 /* -----------------------
   header
 ----------------------- */
+
+
+.header {
+  background: rgba(255, 255, 255, 0.80);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+
+  @include pc {
+    padding: 8px 33px 8px 26px;
+  }
+
+  @include sp {
+    padding: 9px 22px 9px 21px;
+  }
+
+  .logo {
+    @include imgContain("logo.png");
+
+    @include pc {
+      width: 142px;
+      height: 44px;
+
+    }
+
+    @include sp {
+      width: 103px;
+      height: 32px;
+    }
+  }
+
+  .nav {
+    &-wrap {
+      display: flex;
+
+      @include pc {
+        gap: 60px;
+      }
+
+      @include sp {
+        display: block;
+        opacity: 0;
+        position: absolute;
+        gap: 20px;
+        max-width: 305px;
+        top: 50px;
+        right: -100%;
+        background: $main-bg;
+        padding: 30px 50px 177px;
+        transition: all 0.5s;
+        z-index: 1;
+      }
+
+      .nav-item {
+        position: relative;
+        @include pc{
+          cursor: pointer;
+        }
+        @include sp{
+          margin-top: 20px;
+        }
+
+        .label {
+          color: $main-font;
+          @include wt700;
+          font-size: 15px;
+          letter-spacing: 1.5px;
+          position: relative;
+        }
+
+        .link-list {
+          @include pc {
+            display: none;
+            position: absolute;
+            width: 120px;
+            top: 20px;
+            // left: 50%;
+            // translate: -50%;
+            background: #ffffff;
+            padding: 10px;
+            z-index: 10;
+          }
+          @include sp{
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+          }
+          li {
+            a {
+              color: $sub-font;
+              font-size: 10px;
+              white-space: nowrap;
+            }
+            &:hover {
+              @include pc{
+                border-bottom: 1px solid $blue-03-parts;
+              }
+            }
+          }
+        }
+        &.open {
+          .link-list {
+            @include pc {
+              display: block;
+            }
+          }
+        }
+        &:first-child{
+          @include sp{
+            margin-top: 0;
+          }
+        }
+      }
+    }
+
+    &.nav-btn {
+      @include sp {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+        cursor: pointer;
+
+        &::before,
+        &::after {
+          content: "";
+          display:block;
+          width: 37px;
+          height: 3px;
+          background: $blue-03-parts;
+          border-radius: 3px;
+        }
+      }
+
+
+      &.open {
+        @include sp {
+          gap: 0;
+
+          .nav-wrap{
+            right: 0;
+            opacity: 1;
+            transition: all 0.5s;
+          }
+          &::before,
+          &::after {
+            content: "";
+            position: absolute;
+            right: 22px;
+            top: 50%;
+            translate: 0 -50%;
+          }  
+          &::before {
+            transform: rotate(45deg);
+          }
+          &::after {
+            transform: rotate(-45deg);
+          }
+        }
+      }
+    }
+  }
+
+}

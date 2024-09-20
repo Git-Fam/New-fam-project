@@ -1,114 +1,172 @@
 <!DOCTYPE html>
 <html lang="ja">
+	<head prefix="og: https://ogp.me/ns#">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head prefix="og: https://ogp.me/ns#">
+		<!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
+		<meta name="format-detection" content="email=no,telephone=no,address=no" />
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+		<meta property="og:locale" content="ja_JP" />
+
+		<!-- ▼SEO -->
+		<link rel="”canonical”" href="”URL”" />
+		<!-- ジェネレーターURL→ https://metatags.io/ -->
+
+		<!-- ▼ファビコン -->
+		<!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
+
+		<!-- ▼クロールして欲しくない -->
+		<!-- <meta name="robots" content="noindex,nofollow"> -->
+
+		<!-- ▼テーマカラー -->
+		<!-- <meta name="theme-color" content="#e9c931"> -->
+
+		<!-- ▼CSS -->
+		<link rel="stylesheet" href="css/main.css?ver=1.0.0" />
+
+		<!-- ▼フォント -->
+	</head>
+
+	<body>
+		<style>
+			.component--wapper {
+				display: flex;
+				flex-direction: column;
+				gap: 120px;
+				padding: 100px 0;
+				background-color: #000000;
+				overflow: hidden;
+			}
+
+			.component--item {
+				border: 1px solid #000000;
+				padding: 50px 0;
+				background-color: #bbbbbb;
+			}
+
+			.component--title {
+				font-size: 20px;
+				font-weight: bold;
+				padding: 30px;
+				border-bottom: 1px dotted #000000;
+				margin: 0 0 30px 40px;
+				width: fit-content;
+			}
+
+			.component--main {
+				padding: 60px 0px;
+				border: 1px solid #000000;
+				background-color: rgb(210, 210, 210);
+			}
+		</style>
+
+		<div class="component--wapper">
+			<!-- C_header -->
+			<div class="component--item">
+				<div class="component--title">header</div>
+				<div class="component--main">
+					<!-- component -->
+                    <header class="header">
+						<h1 class="logo"></h1>
+						<nav class="nav nav-btn">
+							<ul class="nav-wrap">
+								<li class="nav-item">
+									<p class="label">ホーム</p>
+									<ul class="link-list">
+										<li><a href="#">HOZON</a></li>
+										<li><a href="#">SEITON</a></li>
+										<li><a href="#">メディカルレスキュー</a></li>
+										<li><a href="#">ライフレスキュー</a></li>
+									</ul>
+								</li>
+                                <li class="nav-item">
+									<p class="label">Q&A</p>
+									<ul class="link-list">
+										<li><a href="#">◯◯について</a></li>
+										<li><a href="#">◯◯について</a></li>
+									</ul>
+								</li>
+                                <li class="nav-item">
+									<p class="label">会社概要</p>
+									<ul class="link-list">
+										<li><a href="#">事業概要</a></li>
+										<li><a href="#">アクセス</a></li>
+									</ul>
+								</li>
+                                <li class="nav-item">
+                                    <a class="label" href="#">プライバシーポリシー</a>
+                                </li>
+							</ul>
+						</nav>
+					</header>
+
+					<!-- component end -->
+				</div>
+
+				<div class="component--title">footer</div>
+				<div class="component--main">
+					<!-- component -->
+                    <footer class="footer">
+                        <nav class="nav">
+                            <ul class="nav-wrap">
+								<li class="nav-item">
+									<p class="label">ホーム</p>
+									<ul class="link-list">
+										<li><a href="#">HOZON</a></li>
+										<li><a href="#">SEITON</a></li>
+										<li><a href="#">メディカルレスキュー</a></li>
+										<li><a href="#">ライフレスキュー</a></li>
+									</ul>
+								</li>
+                                <li class="nav-item">
+									<p class="label">Q&A</p>
+									<ul class="link-list">
+										<li><a href="#">◯◯について</a></li>
+										<li><a href="#">◯◯について</a></li>
+									</ul>
+								</li>
+                                <li class="nav-item">
+									<p class="label">会社概要</p>
+									<ul class="link-list">
+										<li><a href="#">事業概要</a></li>
+										<li><a href="#">アクセス</a></li>
+									</ul>
+								</li>
+                                <li class="nav-item">
+                                    <a class="label" href="#">プライバシーポリシー</a>
+                                </li>
+							</ul>
+                        </nav>
+
+                        <div class="logo"></div>
+                        <p class="copyright">＠Copyright.waterwater</p>
 
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                    </footer>
 
-    <!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
-    <meta name="format-detection" content="email=no,telephone=no,address=no" />
+					<!-- component end -->
+				</div>
+			</div>
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-    <meta property="og:locale" content="ja_JP" />
-
-    <!-- ▼SEO -->
-    <link rel="”canonical”" href="”URL”" />
-    <!-- ジェネレーターURL→ https://metatags.io/ -->
-
-    <!-- ▼ファビコン -->
-    <!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
-
-    <!-- ▼クロールして欲しくない -->
-    <!-- <meta name="robots" content="noindex,nofollow"> -->
-
-    <!-- ▼テーマカラー -->
-    <!-- <meta name="theme-color" content="#e9c931"> -->
-
-    <!-- ▼CSS -->
-    <link rel="stylesheet" href="css/main.css?ver=1.0.0" />
-
-    <!-- ▼フォント -->
-
-
-</head>
-
-<body>
-
-    <style>
-        .component--wapper {
-            display: flex;
-            flex-direction: column;
-            gap: 120px;
-            padding: 100px 0;
-            background-color: #000000;
-            overflow: hidden;
-        }
-
-        .component--item {
-            border: 1px solid #000000;
-            padding: 50px 0;
-            background-color: #bbbbbb;
-        }
-
-        .component--title {
-            font-size: 20px;
-            font-weight: bold;
-            padding: 30px;
-            border-bottom: 1px dotted #000000;
-            margin: 0 0 30px 40px;
-            width: fit-content;
-        }
-
-        .component--main {
-            padding: 60px 0px;
-            border: 1px solid #000000;
-            background-color: rgb(210, 210, 210);
-        }
-    </style>
-
-    <div class="component--wapper">
-
-        <!-- what -->
-        <div class="component--item">
-            <div class="component--title">
-                what
-            </div>
+            <div class="component--title">what</div>
             <div class="component--main">
-
-                
-
                 <!-- component -->
 
                 <!-- component end -->
-
             </div>
-
-
-            <div class="component--title">
-                what
-            </div>
-            <div class="component--main">
-
-                <!-- component -->
-
-                <!-- component end -->
-
-            </div>
-
         </div>
 
+		</div>
 
-
-
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
-        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-    <script src="js/script.js"></script>
-    <script src="js/joint.js"></script>
-</body>
-
+		<script
+			src="https://code.jquery.com/jquery-3.7.0.min.js"
+			integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+			crossorigin="anonymous"
+		></script>
+		<script src="js/script.js"></script>
+		<script src="js/joint.js"></script>
+	</body>
 </html>
