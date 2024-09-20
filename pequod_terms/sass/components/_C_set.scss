@@ -4,3 +4,12 @@
   C_set
 ----------------------- */
 
+.C_set {
+  background: #F3F9FB;
+
+  @include pc {
+    padding: 28px 30px 33px;
+  }
+
+  @include sp {}
+}
