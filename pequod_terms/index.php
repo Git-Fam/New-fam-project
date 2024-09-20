@@ -33,7 +33,7 @@
                 <?php echo $root; ?><br>
                 <?php echo $dev_root; ?><br>
                 <?php
-                $section_title = 'いいいいい';
+                $section_title = 'いいいいaaaaい';
                 include($dev_root . '/assets/section-title.php');
                 ?>
             </div>

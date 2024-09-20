@@ -1,0 +1,79 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_Title
+----------------------- */
+
+.C_Title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &--title {
+    margin-top: 10px;
+
+    .TL {
+      @include wt700;
+      @include letterSpacing(20, 2);
+      font-size: 20px;
+    }
+  }
+
+  &.C_Title_another {
+
+    @include pc {
+      @include column(15px);
+    }
+  }
+
+  .C_Title_another--text {
+    border-radius: 100px;
+    background: #EBFAFF;
+
+    @include pc {
+      padding: 7px 22px 6px;
+    }
+
+    @include sp {
+      padding: 6px 10px 5px;
+      margin-top: 9px;
+    }
+
+    .TX {
+      color: $blue-font;
+      @include wt500;
+      
+      @include pc {
+        @include letterSpacing(20, 2);
+        font-size: 20px;
+      }
+
+      @include sp {
+        font-size: 15px;
+
+        @media screen and (max-width: 370px) {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+
+  .C_Title_another--title {
+
+    @include sp{
+      margin-top: 20px;
+    }
+
+    .TL {
+      color: $blue-font;
+      @include wt700;
+      @include letterSpacing(28, 2.8);
+      font-size: 28px;
+      text-align: center;
+
+      @media screen and (max-width: 370px) {
+        font-size: 20px;
+      }
+    }
+  }
+}

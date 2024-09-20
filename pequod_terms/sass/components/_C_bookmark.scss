@@ -1,0 +1,31 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_bookmark
+----------------------- */
+
+.C_bookmark {
+  @include iconContain($bookmark);
+  aspect-ratio: 70/88;
+  height: fit-content;
+  position: relative;
+  width: 56px;
+  
+  &.tx-in{
+    width: 70px;
+  }
+
+  .TX {
+    color: $white-font;
+    font-size: 20px;
+    @include wt700;
+    line-height: 120%;
+    @include letterSpacing(20, 2);
+    position: absolute;
+    top: 11px;
+    left: 50%;
+    translate: -50% 0;
+    width: 100%;
+    text-align: center;
+  }
+}

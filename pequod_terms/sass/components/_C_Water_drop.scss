@@ -1,0 +1,38 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_Water_drop
+----------------------- */
+
+.C_Water_drop {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+
+  .icon{
+    aspect-ratio: 22/29;
+    height: fit-content;
+    @include iconContain($water_drop);
+    background-size: 100% 100%;
+
+    @include pc{
+      width: 22px;
+    }
+    
+    @include sp{
+      width: 19px;
+    }
+
+    &:first-child,
+    &:last-child{
+
+      @include pc{
+        width: 16px;
+      }
+      
+      @include sp{
+        width: 14px;
+      }
+    }
+  }
+}
