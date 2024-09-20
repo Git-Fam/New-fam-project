@@ -5,42 +5,270 @@
 ----------------------- */
 
 .C_set {
-  background: #F3F9FB;
+  background: $sky-bg;
 
   @include pc {
     padding: 28px 30px 33px;
   }
 
-  @include sp {}
+  @include sp {
+    padding: 20px 23px 41px;
+  }
+
+  &.color__change {
+    background: $gray-bg;
+  }
 
   &--top {
 
-    @include pc {}
-
-    @include sp {}
-
     .top--title {
       color: $blue-font;
+      display: flex;
+      align-items: center;
+
+      @include pc {
+        border-bottom: dashed 3px $blue-02-parts;
+        justify-content: space-between;
+        padding: 0 14px 10px 16px
+      }
+
+      @include sp {
+        flex-direction: column;
+        gap: 16px;
+      }
 
       .title {
 
-        @include pc{}
-        
-        @include sp{}
+        @include sp {
+          border-bottom: dashed 3px $blue-02-parts;
+          padding-bottom: 10px;
+          width: 100%;
+        }
 
         .TL {
           @include wt700;
           @include letterSpacing(23, 2.3);
-          
-          @include pc {
-            font-size: 23px;
-          }
+          font-size: 23px;
 
-          @include sp {}
+          @include sp {
+            text-align: center
+          }
+        }
+      }
+
+      .TX {
+        @include wt700;
+        @include letterSpacing(23, 2.3);
+        font-size: 23px;
+
+        span {
+          @include wt700;
+          @include letterSpacing(20, 2.3);
+          font-size: 20px;
         }
       }
     }
 
-    .TX {}
+    .top--content {
+
+      @include pc {
+        padding: 24px 10px 31px;
+        @include column(40px);
+      }
+
+      @include sp {
+        padding: 30px 0 60px;
+        @include column(57px);
+      }
+
+      .content--tags {
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+
+          @include pc {
+            gap: 40px;
+          }
+
+          @include sp{
+            gap: 8px 0 ;
+          }
+
+          li {
+            background-color: $blue-01-parts;
+            width: fit-content;
+            border-radius: 100px;
+            position: relative;
+            padding: 4px 16px 6px;
+            
+            @include sp{
+              margin-left: 22px;
+            }
+
+            &:not(:first-child) {
+
+              &::before {
+                content: '＋';
+                position: absolute;
+                top: 50%;
+                translate: 0 -50%;
+                color: $blue-font;
+                @include wt700;
+                font-size: 23px;
+
+                @include pc {
+                  right: calc(100% + 8px);
+                }
+
+                @include sp {
+                  right: calc(100% + 0px);
+                }
+              }
+            }
+
+            .TX {
+              color: $white-font;
+              @include wt700;
+              font-size: 16px;
+
+              @media screen and (max-width: 368px) {
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+
+      .content--sentence {
+
+        @include pc {
+          width: max(85%, 550px);
+        }
+
+        @include sp {}
+
+        .sentence--lists {
+          @include column(60px);
+
+          .list {
+
+            .list--title {
+
+              .TL {
+                margin: 0;
+                padding: 0;
+                @include wt700;
+                line-height: 135%;
+                @include letterSpacing(20, 2);
+                font-size: 20px;
+              }
+            }
+
+            .list--text {
+
+              .TX {
+                @include wt500;
+                letter-spacing: 1.5px;
+                line-height: 170%;
+                @include letterSpacing(15, 1.5);
+                font-size: 15px;
+              }
+            }
+
+            .inner--lists {
+              margin-top: 30px;
+              @include column(30px);
+
+              .inner--list {
+
+                .TL {
+                  margin: 0;
+                  padding: 0;
+                  @include wt500;
+                  line-height: 170%;
+                  @include letterSpacing(18, 1.8);
+                  font-size: 18px;
+                }
+
+                .TX {
+                  @include wt500;
+                  letter-spacing: 1.5px;
+                  line-height: 170%;
+                  @include letterSpacing(15, 1.5);
+                  font-size: 15px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &--bottom {
+    .bottom--content {
+
+      .list {
+        border-top: dashed 3px $blue-02-parts;
+
+        @include pc {
+          padding: 24px 25px 30px;
+        }
+
+        @include sp {
+          padding: 25px 0;
+        }
+
+        &:last-child {
+          padding-bottom: 0;
+        }
+
+
+        .list--inner {
+          display: flex;
+
+          @include pc {
+            gap: 24px;
+            align-items: center;
+          }
+
+          @include sp {
+            gap: 11px;
+          }
+
+          .C_bookmark {
+            flex-shrink: 0;
+          }
+
+          .inner--text {
+            color: #FD8166;
+
+            @include pc {
+              @include column(2px);
+            }
+
+            @include sp {
+              @include column(7px);
+            }
+
+            .TX {
+              @include wt700;
+              @include letterSpacing(16, 1.6);
+              font-size: 16px;
+              
+              @include pc {
+                word-break: keep-all;
+              }
+            }
+
+            small {
+              @include wt500;
+              @include letterSpacing(10, 1);
+              font-size: 10px;
+            }
+          }
+        }
+      }
+    }
   }
 }

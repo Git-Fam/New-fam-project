@@ -1,0 +1,36 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_single
+----------------------- */
+
+.C_single {
+  background: $sky-bg;
+
+  @include pc {
+    padding: 82px  0 95px;
+  }
+
+  @include sp {}
+
+  &--inner{
+
+    @include pc{}
+    
+    @include sp{}
+
+    .single--lists{
+
+      @include pc{}
+      
+      @include sp{}
+    }
+
+    .single--img{
+
+      @include pc{}
+      
+      @include sp{}
+    }
+  }
+}
