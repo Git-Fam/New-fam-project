@@ -60,4 +60,11 @@ $(function () {
 		};
 		s.parentNode.insertBefore(tk, s);
 	})(document);
+
+	$(".nav-item").hover(function () {
+		$(this).toggleClass("open");
+	})
+	$(".nav-btn").click(function () {
+		$(this).toggleClass("open");
+	})
 });
