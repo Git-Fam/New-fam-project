@@ -41,3 +41,26 @@ body {
   overflow: hidden;
 }
 
+
+main{
+  
+  @include pc{
+    padding: 100px 50px 230px;
+  }
+  
+  @include sp{
+    padding: 60px 20px 160px;
+  }
+
+  .wrap{
+    margin: 0 auto;
+
+    @include pc{
+      width: min(100%,1200px);
+    }
+    
+    @include sp{
+      width: min(100%,600px);
+    }
+  }
+}

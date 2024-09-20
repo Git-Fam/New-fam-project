@@ -3,3 +3,134 @@
 /* -----------------------
   KV
 ----------------------- */
+
+.KV {
+  position: relative;
+
+  @include pc {
+    height: 300px;
+  }
+
+  @include sp {
+    height: 230px;
+  }
+
+  &__bg {
+
+    &__img {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+
+      &.top__img {
+        --kv-bg: url("/img/KV_top.jpg");
+
+        @include pc {
+          background:
+            linear-gradient(90deg, rgba(255, 255, 255, 0.00) 74.45%, #F1EEED 86.76%, #FFF 100%),
+            linear-gradient(0deg, rgba(113, 127, 127, 0.35) 0%, rgba(113, 127, 127, 0.35) 100%),
+            var(--kv-bg) lightgray -40.466px -28.21px / 90% no-repeat;
+        }
+
+        @include sp {
+          background:
+            linear-gradient(90deg, rgba(255, 255, 255, 0.00) 74.45%, #F1EEED 86.76%, #FFF 100%),
+            linear-gradient(0deg, rgba(113, 127, 127, 0.35) 0%, rgba(113, 127, 127, 0.35) 100%),
+            var(--kv-bg) lightgray 60% 0% / 175.41% no-repeat;
+        }
+      }
+
+      // &.qa__img {
+      //   --kv-bg: url("/img/KV_QA.jpg");
+
+      //   @include pc {
+      //     background:
+      //       linear-gradient(90deg, rgba(133, 166, 176, 0.00) 0%, rgba(133, 166, 176, 0.30) 31%, rgba(179, 216, 227, 0.30) 84.5%),
+      //       var(--kv-bg) lightgray right top 65% / 109% no-repeat;
+      //   }
+
+      //   @include sp {
+      //     background:
+      //       linear-gradient(90deg, rgba(133, 166, 176, 0.00) 0%, rgba(133, 166, 176, 0.30) 31%, rgba(179, 216, 227, 0.30) 84.5%),
+      //       var(--kv-bg) lightgray 60% 62%/268.501% no-repeat;
+      //   }
+      // }
+
+      // &.privacy__img {
+      //   --kv-bg: url("/img/KV_privacy.jpg");
+
+      //   @include pc {
+      //     background:
+      //       linear-gradient(90deg, rgba(139, 170, 127, 0.48) 33.41%, rgba(182, 190, 181, 0.00) 100%),
+      //       var(--kv-bg) lightgray 0px 25% / 100% no-repeat;
+      //   }
+
+      //   @include sp {
+      //     background:
+      //       linear-gradient(90deg, rgba(139, 170, 127, 0.48) 33.41%, rgba(182, 190, 181, 0.00) 100%),
+      //       var(--kv-bg) lightgray 80% 33% /282.604% no-repeat;
+      //   }
+      // }
+
+      // &.company__img {
+      //   --kv-bg: url("/img/KV_company.jpg");
+
+      //   @include pc {
+      //     background:
+      //       linear-gradient(90deg, #F2FBFB 0%, rgba(215, 240, 241, 0.09) 42.67%),
+      //       linear-gradient(90deg, rgba(178, 197, 189, 0.00) 0%, rgba(178, 197, 189, 0.40) 46%),
+      //       var(--kv-bg) lightgray center 84% / 117.422% no-repeat;
+      //   }
+
+      //   @include sp {
+      //     background:
+      //       linear-gradient(90deg, #F2FBFB 0%, rgba(215, 240, 241, 0.09) 42.67%),
+      //       linear-gradient(90deg, rgba(178, 197, 189, 0.00) 0%, rgba(178, 197, 189, 0.40) 46%),
+      //       var(--kv-bg) lightgray 60% 84%/334.041% no-repeat;
+      //   }
+      // }
+
+    }
+  }
+
+  &__title {
+
+    &__wrap {
+      position: absolute;
+      @include p-center-top;
+      width: 100%;
+      text-align: center;
+
+      &.top__title {}
+
+      // &.qa__title{
+      // }
+
+      // &.privacy__title{
+      // }
+
+      // &.company__title{
+      // }
+
+      .TX {
+        @include mincho;
+        @include wt600;
+        @include letterSpacing(20, 4);
+
+        @include pc {
+          font-size: 20px;
+        }
+
+        @include sp {}
+      }
+
+      .TL {
+
+        @include pc {}
+
+        @include sp {}
+      }
+
+    }
+  }
+}

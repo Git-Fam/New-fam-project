@@ -149,6 +149,13 @@ $screenSizeSP: 390;
 // これでline-heightが単位なしで計算される
 
 
+// letter-spacing
+@mixin letterSpacing($font-size, $letter-spacing) {
+  letter-spacing: $letter-spacing / $font-size * 1em; 
+}
+// ↓CSSでは
+// @include letterSpacing(16, 2);
+// これでletter-spacingがem単位で計算される
 
 
 // 関数の使い方
