@@ -1,0 +1,118 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  privacy
+----------------------- */
+
+.privacy-policy {
+  .top-TX {
+    font-size: 16px;
+    @include letterSpacing(16, 1.6);
+    @include wt700;
+
+    @include pc {
+      margin-top: 100px;
+    }
+
+    @include sp {
+      margin-top: 50px;
+    }
+  }
+
+  .content-wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+    margin-top: 50px;
+    .content {
+      &-TL {
+        @include wt700;
+        @include letterSpacing(16, 1.6);
+        font-size: 20px;
+  
+      }
+  
+      &-TX {
+        @include letterSpacing(15, 1.5);
+        font-size: 15px;
+      }
+  
+      .table-wrap {
+        @include sp {
+          width: 100%;
+          overflow-x: auto;
+        }
+  
+        .table {
+          margin-top: 30px;
+  
+          @include pc {
+            width: 100%;
+          }
+  
+          @include sp {
+            width: 880px;
+          }
+  
+          .top {
+            color: $white-font;
+            font-size: 15px;
+            padding: 8px 0;
+            text-align: center;
+  
+            th {
+              background:$table-TL;
+              @include wt700;
+            }
+          }
+  
+          th,
+          td {
+            border: none;
+            margin-top: 1px;
+          }
+  
+          .item {
+            font-size: 10px;
+  
+            .label {
+              background: $table-label;
+              padding: 11px 0 11px 3%;
+              @include wt700;
+            }
+  
+            .TX {
+              background: $sky-bg;
+              padding: 11px 0 11px 3%;
+  
+              .point {
+                margin-bottom: 4px;
+  
+                &::before {
+                  content: "";
+                  width: 6px;
+                  height: 6px;
+                  background: $main-font;
+                  border-radius: 50%;
+                  display: inline-block;
+                  margin-right: 12px;
+                }
+              }
+            }
+          }
+  
+          .label {
+            width: calc(282 / 880 * 100%);
+          }
+        }
+      }
+  
+      .content-subTL{
+        margin-top: 60px;
+        font-size: 18px;
+      }
+    }
+  
+  }
+}
