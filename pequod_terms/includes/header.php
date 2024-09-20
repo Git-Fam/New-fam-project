@@ -1,8 +1,14 @@
 <header class="header">
     <h1 class="logo">
-        <a href="#"></a>
+        <a href="#">
+            <img src="./img/logo.png" alt="logo">
+        </a>
     </h1>
-    <nav class="nav nav-btn">
+    <div class="nav-btn sp">
+        <span></span>
+        <span></span>
+    </div>
+    <nav class="nav">
         <ul class="nav-wrap">
             <li class="nav-item">
                 <a href="#" class="label">ホーム</a>
@@ -36,3 +42,5 @@
         </ul>
     </nav>
 </header>
+<div class="background"></div>
+
