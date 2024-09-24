@@ -1,0 +1,60 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_linkIn
+----------------------- */
+
+.C_linkIn {
+  display: flex;
+  flex-wrap: wrap;
+
+  @include pc {
+    gap: 6px;
+  }
+
+  @include sp {
+    gap: 8px;
+    padding: 0 20px;
+  }
+
+  .C_linkIn--item {
+    display: block;
+    border-radius: 84.942px;
+    background: $blue-03-parts;
+
+    @include pc {
+      @include row(4, 6px);
+      padding: 6px 0;
+    }
+
+    @include sp {
+      @include row(2, 8px);
+      padding: 5px 0 3px;
+    }
+
+    &.active {
+      background: $blue-01-parts;
+      pointer-events: none;
+    }
+
+    .TX {
+      color: $white-font;
+      font-size: 16px;
+      @include letterSpacing(16, 1.6);
+      @include wt700;
+      text-align: center;
+
+      @media screen and (max-width: 1030px) and (min-width: 768px) {
+        font-size: 12px;
+      }
+
+      @include sp {
+        font-size: 13px;
+      }
+
+      @media screen and (max-width: 350px) {
+        font-size: 10px;
+      }
+    }
+  }
+}
