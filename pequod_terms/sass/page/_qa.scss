@@ -1,0 +1,74 @@
+@use "../functions" as *;
+
+/* -----------------------
+  qa
+----------------------- */
+
+.qa {
+
+  &__prevalent {
+
+    &--top {
+
+      &--text {
+        margin: 0 auto;
+        margin-top: 30px;
+
+        @include pc {
+          width: 500px;
+        }
+
+        .TX {
+          text-align: center;
+          font-size: 15px;
+          line-height: 180%;
+          @include wt500;
+          @include letterSpacing(15, 1.5);
+        }
+      }
+    }
+
+    &--links {
+
+      @include pc {
+        margin-top: 103px;
+      }
+
+      @include sp {
+        margin-top: 60px;
+      }
+    }
+
+    &--content {
+
+      @include pc {
+        margin-top: 113px;
+        @include column(130px);
+      }
+
+      @include sp {
+        margin-top: 100px;
+        @include column(100px);
+      }
+
+      .content--item {
+
+        .item--title {
+          margin-bottom: 30px;
+
+          .TL {
+            color: $blue-font;
+            font-size: 25px;
+            @include wt700;
+            @include letterSpacing(25, 2.5);
+            text-align: center;
+          }
+        }
+
+        .item--container {
+          @include column(30px);
+        }
+      }
+    }
+  }
+}

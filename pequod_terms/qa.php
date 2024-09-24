@@ -29,9 +29,82 @@
 
         <main>
             <div class="wrap">
-                <?php echo $title; ?><br>
-                <?php echo $root; ?><br>
-                <?php echo $dev_root; ?>
+                <div class="qa wrap-sp">
+                    <section class="qa__prevalent">
+                        <div class="qa__prevalent--top">
+                            <div class="C_Title">
+                                <div class="C_Water_drop">
+                                    <div class="icon"></div>
+                                    <div class="icon"></div>
+                                    <div class="icon"></div>
+                                </div>
+                                <div class="C_Title--title">
+                                    <h3 class="TL">よくあるご質問</h3>
+                                </div>
+                            </div>
+                            <div class="qa__prevalent--top--text">
+                                <p class="TX">
+                                    当社のサービスについて、お客様からよくいただくご質問とご回答をまとめております。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="qa__prevalent--links">
+                            <div class="C_linkIn">
+                                <a href="#hozon" class="C_linkIn--item hover-opa" id="link-hozon">
+                                    <p class="TX">HOZON</p>
+                                </a>
+                                <a href="#seiton" class="C_linkIn--item hover-opa" id="link-seiton">
+                                    <p class="TX">SEITON</p>
+                                </a>
+                                <a href="#medical" class="C_linkIn--item hover-opa" id="link-medical">
+                                    <p class="TX">メディカルレスキュー</p>
+                                </a>
+                                <a href="#life" class="C_linkIn--item hover-opa" id="link-life">
+                                    <p class="TX">ライフレスキュー</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="qa__prevalent--content">
+
+                            <div class="content--item" id="hozon">
+                                <div class="item--title">
+                                    <h4 class="TL">HOZON</h4>
+                                </div>
+                                <div class="item--container">
+                                    <!-- ここにQAのコンテンツ入れてく感じで！ -->
+                                </div>
+                            </div>
+
+                            <div class="content--item" id="seiton">
+                                <div class="item--title">
+                                    <h4 class="TL">SEITON</h4>
+                                </div>
+                                <div class="item--container">
+                                    <!-- ここにQAのコンテンツ入れてく感じで！ -->
+                                </div>
+                            </div>
+
+                            <div class="content--item" id="medical">
+                                <div class="item--title">
+                                    <h4 class="TL">メディカルレスキュー</h4>
+                                </div>
+                                <div class="item--container">
+                                    <!-- ここにQAのコンテンツ入れてく感じで！ -->
+                                </div>
+                            </div>
+
+                            <div class="content--item" id="life">
+                                <div class="item--title">
+                                    <h4 class="TL">ライフレスキュー</h4>
+                                </div>
+                                <div class="item--container">
+                                    <!-- ここにQAのコンテンツ入れてく感じで！ -->
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+                </div>
             </div>
         </main>
 

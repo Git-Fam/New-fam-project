@@ -9,12 +9,12 @@
 				</ul>
 			</li>
 			<li class="nav-item">
-				<a href="#" class="label">Q&A</a>
+				<a href="<?php echo $dev; ?>/qa.php" class="label">Q&A</a>
 				<ul class="link-list">
-					<li><a href="#">HOZON</a></li>
-					<li><a href="#">SEITON</a></li>
-					<li><a href="#">メディカルレスキュー</a></li>
-					<li><a href="#">ライフレスキュー</a></li>
+					<li><a href="<?php echo $dev; ?>/qa.php#hozon">HOZON</a></li>
+					<li><a href="<?php echo $dev; ?>/qa.php#seiton">SEITON</a></li>
+					<li><a href="<?php echo $dev; ?>/qa.php#medical">メディカルレスキュー</a></li>
+					<li><a href="<?php echo $dev; ?>/qa.php#life">ライフレスキュー</a></li>
 				</ul>
 			</li>
 			<li class="nav-item">
