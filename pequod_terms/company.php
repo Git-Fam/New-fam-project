@@ -12,11 +12,8 @@
     $title = '会社概要';
     $description = 'ディスクリプション';
     $url = '';
-    $is_home = true; // トップページのみ記載
     include($dev_root . '/includes/head.php');
     ?>
-
-    <!-- ▼フォント -->
 </head>
 
 <body>

@@ -25,7 +25,7 @@
 				</ul>
 			</li>
 			<li class="nav-item">
-				<a class="label" href="#">プライバシーポリシー</a>
+				<a class="label" href="<?php echo $dev; ?>/privacy.php">プライバシーポリシー</a>
 			</li>
 		</ul>
 	</nav>
