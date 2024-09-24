@@ -20,146 +20,151 @@
     gap: 30px;
 
     .item {
-      .tab-wrap {
-        .tab-TL {
-          gap: 15px;
+      .tab-TL {
+        gap: 15px;
 
-          .icon {
-            background: $main-bg;
-            min-width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: grid;
-            place-items: center center;
-            @include mincho;
-            font-size: 18px;
-          }
+        .icon {
+          background: $main-bg;
+          min-width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          display: grid;
+          place-items: center center;
+          @include mincho;
+          font-size: 18px;
+        }
+      }
+
+      .question {
+        background: $blue-03-parts;
+        color: $white-font;
+        font-size: 18px;
+        border-radius: 20px 20px 20px 20px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        transition: all 0.3s;
+        @include wt700;
+
+        @include pc {
+          padding: 14px 0 13px 32px;
         }
 
-        &.question {
-          background: $blue-03-parts;
-          color: $white-font;
-          font-size: 18px;
-          border-radius: 20px 20px 20px 20px;
-          position: relative;
-          @include wt700;
+        @include sp {
+          padding: 14px 36px 17px 20px;
+        }
+
+        .icon {
+          color: $blue-01-parts;
+        }
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          translate: 0 -50%;
+          border-radius: 10px;
+          background: $main-bg;
 
           @include pc {
-            padding: 14px 0 13px 32px;
+            width: 12px;
+            height: 3px;
           }
 
           @include sp {
-            padding: 14px 36px 17px 20px;
+            width: 7px;
+            height: 1.5px;
+          }
+        }
+
+        &::before {
+          rotate: -40deg;
+
+          @include pc {
+            right: 37px;
           }
 
-          .tab-TL {
-            display: flex;
-            align-items: center;
+          @include sp {
+            right: 14px;
+          }
 
-            .icon {
-              color: $blue-01-parts;
-            }
+        }
 
-            &::before,
-            &::after {
-              content: "";
-              position: absolute;
-              top: 50%;
-              translate: 0 -50%;
-              border-radius: 10px;
-              background: $main-bg;
+        &::after {
+          rotate: 40deg;
 
-              @include pc {
-                width: 12px;
-                height: 3px;
-              }
+          @include pc {
+            right: 44px;
+          }
 
-              @include sp {
-                width: 7px;
-                height: 1.5px;
-              }
-            }
+          @include sp {
+            right: 18.5px;
+          }
+        }
+
+        &.show {
+          transition: all 0.3s;
+          border-radius: 20px 20px 0 0;
+
 
             &::before {
               rotate: 40deg;
-
-              @include pc {
-                right: 37px;
-              }
-
-              @include sp {
-                right: 14px;
-              }
-
             }
 
             &::after {
               rotate: -40deg;
-
-              @include pc {
-                right: 44px;
-              }
-
-              @include sp {
-                right: 18.5px;
-              }
             }
-          }
+        }
+      }
 
-          &.show {
-            border-radius: 20px 20px 0 0;
+      .answer {
+        display: none;
+        background: $sky-bg;
+        line-height: 2;
+        font-size: 15px;
+        border-radius: 0 0 20px 20px;
 
-            .tab-TL{
 
-              &::before{
-                rotate: -40deg;
-              }
+        @include pc {
+          padding: 29px 55px 46px 32px;
+        }
 
-              &::after{
-                rotate: 40deg;
-              }
-            }
+        @include sp {
+          padding: 31px 22px 37px 33px;
+        }
+
+        .answer-inner {
+          @include pc{
+            display:flex;
           }
         }
 
-        &.answer {
-          background: $sky-bg;
-          line-height: 2;
-          font-size: 15px;
-          border-radius: 0 0 20px 20px;
-          display: none;
 
-          @include pc {
+        .TX {
+          color: $sub-font;
+          @include pc{
             display: flex;
-            padding: 29px 55px 46px 32px;
+            gap: 15px;
           }
-
-          @include sp {
-            padding: 31px 22px 37px 33px;
-          }
-
-          .tab-TL {
-            position: relative;
-
-            @include pc {
-              display: flex;
-            }
-          }
-
-          .icon {
+          &::before{
+            content: "A";
+            @include wt700;
+            background: $main-bg;
             color: $icon-color;
-
-            @include sp {
-              float: left;
-              margin-inline: -10px 10px;
+            min-width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            @include mincho;
+            font-size: 18px;  
+            text-align: center;
+            @include sp{
+              display: inline-block;
+              margin-inline: -10px 5px;
             }
           }
-
-          .TX {
-            color: $sub-font;
-          }
-
         }
+
       }
 
     }
