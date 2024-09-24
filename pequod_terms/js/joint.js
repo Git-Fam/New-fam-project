@@ -78,4 +78,9 @@ $(function () {
 		$("body").removeClass("active");
 		$(".nav-btn").removeClass("active");
 	});
+
+	$(".question").click(function () {
+		$(this).next().slideToggle();
+		$(this).toggleClass("show");
+	});
 });
