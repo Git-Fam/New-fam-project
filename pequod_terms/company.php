@@ -4,6 +4,7 @@
 <head prefix="og: https://ogp.me/ns#">
     <?php
     // 開発用
+    // $dev = '';
     $dev = '/pequod_terms';
 
     $root = $_SERVER['DOCUMENT_ROOT'];
