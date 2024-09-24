@@ -29,9 +29,13 @@
 
         <main>
             <div class="wrap">
-                <?php echo $title; ?><br>
+            <?php echo $title; ?><br>
                 <?php echo $root; ?><br>
-                <?php echo $dev_root; ?>
+                <?php echo $dev_root; ?><br>
+                <?php
+                $section_title = 'いいいいaaaaい';
+                include($dev_root . '/assets/section-title.php');
+                ?>
             </div>
         </main>
 

@@ -53,7 +53,7 @@ main{
   }
   
   @include sp{
-    padding: 60px 20px 160px;
+    padding: 60px 0px 160px;
   }
 
   .wrap{
@@ -65,6 +65,15 @@ main{
     
     @include sp{
       width: min(100%,600px);
+    }
+  }
+
+
+  .wrap-sp{
+
+    @include sp{
+      margin-inline: auto;
+      width: calc(( 350 / 390) * 100%);
     }
   }
 }

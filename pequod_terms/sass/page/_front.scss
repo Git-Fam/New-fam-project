@@ -1,0 +1,66 @@
+@use "../functions" as *;
+
+/* -----------------------
+  front
+----------------------- */
+
+.front{
+
+  &__support {
+  
+    @include pc{
+      margin-bottom: 130px;
+    }
+    
+    @include sp{
+      margin-bottom: 82px;
+    }
+  
+    &--text {
+      margin: 0 auto;
+      margin-top: 30px;
+  
+      @include pc {
+        width: 497px;
+      }
+  
+  
+      .TX {
+        font-size: 15px;
+        @include letterSpacing(15, 1.5);
+        @include wt500;
+        text-align: center;
+      }
+    }
+  }
+  
+  &__set {
+  
+    @include pc{
+      margin-bottom: 200px;
+    }
+    
+    @include sp{
+      margin-bottom: 100px;
+    }
+  
+    &--content{
+      margin-top: 60px;
+  
+      @include pc{
+        @include column(100px);
+      }
+      
+      @include sp{
+        @include column(60px);
+      }
+    }
+  }
+  
+  &__single {
+  
+    &--content{
+      margin-top: 30px;
+    }
+  }
+}

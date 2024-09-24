@@ -1,0 +1,23 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_underLine
+----------------------- */
+
+.C_underLine {
+  border-bottom: dashed 3px $blue-02-parts;
+
+  @include pc {
+    padding-bottom: 10px;
+  }
+
+  @include sp {
+    padding: 0 0 10px 9px;
+  }
+
+  .TL {
+    font-size: 20px;
+    @include wt700;
+    @include letterSpacing(20, 2);
+  }
+}

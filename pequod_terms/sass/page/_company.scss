@@ -1,0 +1,16 @@
+@use "../functions" as *;
+
+/* -----------------------
+  company
+----------------------- */
+
+.company {
+
+  @include pc{
+    @include column(100px);
+  }
+  
+  @include sp{
+    @include column(60px);
+  }
+}

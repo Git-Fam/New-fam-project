@@ -8,29 +8,95 @@
   background: $sky-bg;
 
   @include pc {
-    padding: 82px  0 95px;
+    padding: 82px 0 95px;
   }
 
-  @include sp {}
+  @include sp {
+    padding: 65px 20px 69px;
+  }
 
-  &--inner{
+  .single--inner {
+    margin: 0 auto;
 
-    @include pc{}
-    
-    @include sp{}
-
-    .single--lists{
-
-      @include pc{}
-      
-      @include sp{}
+    @include pc {
+      width: clamp(600px, calc((600 / 880) * 100%), 1000px);
+      @include column(100px);
     }
 
-    .single--img{
+    @include sp {
+      @include column(85px);
+    }
 
-      @include pc{}
-      
-      @include sp{}
+    .single--lists {
+
+      .list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: dashed 3px $blue-02-parts;
+        
+        @include pc {
+          padding: 30px 14px 10px 17px;
+        }
+
+        @include sp {
+          padding: 55px 0 12px;
+          flex-direction: column;
+          @include column(10px);
+        }
+
+        &:first-child {
+          padding-top: 0;
+        }
+
+        .item {
+          .TX {
+            color: $blue-font;
+            @include wt700;
+            @include letterSpacing(23, 2.3);
+            font-size: 23px;
+            word-break: keep-all;
+
+            @include sp {
+              text-align: center;
+            }
+          }
+        }
+
+        .cost {
+
+          .TX {
+            color: $blue-font;
+            @include wt700;
+            @include letterSpacing(23, 2.3);
+            font-size: 23px;
+
+            span {
+              @include wt700;
+              @include letterSpacing(20, 2);
+              font-size: 20px;
+            }
+          }
+        }
+
+      }
+    }
+
+    .single--img {
+
+      .img {
+        @include imgContain("ComingSoon.png");
+        aspect-ratio: 1/1;
+        margin: 0 auto;
+
+        @include pc {
+          width: clamp(200px, calc((311 / 600) * 100%), 400px);
+        }
+
+        @include sp {
+          width: calc(( 311 / 350) * 100%);
+        }
+      }
     }
   }
 }
