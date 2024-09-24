@@ -4,6 +4,7 @@
 <head prefix="og: https://ogp.me/ns#">
     <?php
     // 開発用
+    // $dev = '';
     $dev = '/pequod_terms';
 
     $root = $_SERVER['DOCUMENT_ROOT'];
@@ -108,6 +109,9 @@
                                                     <small>
                                                         ※動産総合保険は、家電安心サポートのお申し込み日の属する月の翌々1日からご利用いただけます。
                                                     </small>
+                                                    <a href="<?php echo $dev; ?>" target="_blank" rel="noopener noreferrer">
+                                                        【保険サービス利用規約】スマホ安心サポート
+                                                    </a>
                                                 </div>
                                             </div>
                                         </li>
@@ -163,6 +167,9 @@
                                                     <small>
                                                         ※通信端末修理費用保険は、スマホ安心サポートのお申し込み日の属する月の翌々1日からご利用いただけます。
                                                     </small>
+                                                    <a href="<?php echo $dev; ?>" target="_blank" rel="noopener noreferrer">
+                                                        【保険サービス利用規約】スマホ安心サポート
+                                                    </a>
                                                 </div>
                                             </div>
                                         </li>
@@ -302,6 +309,9 @@
                                                     <small>
                                                         ※通信端末修理費用保険は、スマホ安心サポートのお申し込み日の属する月の翌々1日からご利用いただけます。
                                                     </small>
+                                                    <a href="<?php echo $dev; ?>" target="_blank" rel="noopener noreferrer">
+                                                        プレミアム安心保証パック 家電住設
+                                                    </a>
                                                 </div>
                                             </div>
                                         </li>
@@ -316,6 +326,9 @@
                                                     <small>
                                                         ※動産総合保険は、家電安心サポートのお申し込み日の属する月の翌々1日からご利用いただけます。
                                                     </small>
+                                                    <a href="<?php echo $dev; ?>" target="_blank" rel="noopener noreferrer">
+                                                        プレミアム安心保証パック 通信端末
+                                                    </a>
                                                 </div>
                                             </div>
                                         </li>
