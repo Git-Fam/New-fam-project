@@ -34,9 +34,9 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="label" href="#">プライバシーポリシー</a>
+                <a class="label" href="<?php echo $dev; ?>/privacy.php">プライバシーポリシー</a>
                 <ul class="link-list">
-                    <li class="pc link"><a href="#">プライバシーポリシー</a></li>
+                    <li class="pc link"><a href="<?php echo $dev; ?>/privacy.php">プライバシーポリシー</a></li>
                 </ul>
             </li>
         </ul>

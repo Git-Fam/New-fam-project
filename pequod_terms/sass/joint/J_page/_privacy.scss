@@ -42,6 +42,7 @@
         @include sp {
           width: 100%;
           overflow-x: auto;
+          padding-inline: calc(20 / 390 * 100%);
         }
   
         .table {
