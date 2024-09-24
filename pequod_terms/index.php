@@ -50,7 +50,7 @@
                             </p>
                         </div>
                     </section>
-                    <section class="front__set wrap-sp">
+                    <section class="front__set wrap-sp" id="set">
                         <div class="C_drop-book">
                             <div class="C_Water_drop-title">
                                 <h3 class="TL">セット</h3>
@@ -326,7 +326,7 @@
                             </div>
                         </div>
                     </section>
-                    <section class="front__single">
+                    <section class="front__single" id="single">
                         <div class="C_Water_drop-title">
                             <h3 class="TL">単品</h3>
                         </div>

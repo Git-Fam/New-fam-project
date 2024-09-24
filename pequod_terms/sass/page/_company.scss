@@ -8,9 +8,11 @@
 
   @include pc{
     @include column(100px);
+    padding-top: 30px;
   }
   
   @include sp{
     @include column(60px);
+    padding-top: 40px;
   }
 }
