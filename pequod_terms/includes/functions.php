@@ -1,7 +1,9 @@
 <?php
 function getDevPath() {
-  // 開発用
+  // ポート 8888 の場合
+  if ($_SERVER['SERVER_PORT'] == '8888') {
     return '/pequod_terms';
-    // 本番用
-    // return '';
+  }
+  // それ以外の場合
+  return '';
 }
