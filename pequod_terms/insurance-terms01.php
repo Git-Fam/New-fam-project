@@ -12,7 +12,7 @@
 
   $title = ' | ';
   $description = '';
-  $url = '';
+  $url = '/insurance-terms01.php';
   include($dev_root . '/includes/head.php');
   ?>
 </head>

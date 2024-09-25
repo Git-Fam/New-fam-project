@@ -43,11 +43,11 @@
                                 <h3 class="TL">ウォーターサーバー<br class="sp">総合窓口安心サポート</h3>
                             </div>
                         </div>
-                        <div class="front__support--text">
+                        <!-- <div class="front__support--text">
                             <p class="TX">
                                 この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。
                             </p>
-                        </div>
+                        </div> -->
                     </section>
                     <section class="front__set wrap-sp" id="set">
                         <div class="C_drop-book">
