@@ -1,4 +1,4 @@
-@use "../functions" as *;
+@use "../functions"as *;
 
 /* -----------------------
   C_bookmark
@@ -9,8 +9,9 @@
   aspect-ratio: 70/88;
   position: relative;
   width: 56px;
-  
-  &.tx-in{
+  background-position: top;
+
+  &.tx-in {
     width: 70px;
   }
 
