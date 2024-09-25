@@ -10,8 +10,8 @@
     $root = $_SERVER['DOCUMENT_ROOT'];
     $dev_root = $root . $dev;
 
-    $title = 'Q&A';
-    $description = 'ディスクリプション';
+    $title = ' | Q&A';
+    $description = '';
     $url = '';
     $is_home = true; // トップページのみ記載
     include($dev_root . '/includes/head.php');

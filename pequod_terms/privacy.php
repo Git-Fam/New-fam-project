@@ -10,8 +10,8 @@
     $root = $_SERVER['DOCUMENT_ROOT'];
     $dev_root = $root . $dev;
 
-    $title = 'プライバシーポリシー';
-    $description = 'ディスクリプション';
+    $title = ' | プライバシーポリシー';
+    $description = '';
     $url = '';
     include($dev_root . '/includes/head.php');
     ?>

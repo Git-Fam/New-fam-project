@@ -10,8 +10,8 @@
     $root = $_SERVER['DOCUMENT_ROOT'];
     $dev_root = $root . $dev;
 
-    $title = '会社概要';
-    $description = 'ディスクリプション';
+    $title = ' | 会社概要';
+    $description = '';
     $url = '';
     include($dev_root . '/includes/head.php');
     ?>
