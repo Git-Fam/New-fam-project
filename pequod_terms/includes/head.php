@@ -6,4 +6,5 @@
 <link rel="”canonical”" href="https://usm.shop.pequod.jp/<?php echo $url; ?>" />
 <title><?php echo $title; ?></title>
 <meta name="description" content="<?php echo $description; ?>">
-<link rel="stylesheet" href="css/main.css?ver=1.0.0" />
+<!-- <link rel="stylesheet" href="css/main.css?ver=1.0.0" /> -->
+<link rel="stylesheet" href="css/main.css?ver=<?php echo filemtime('css/main.css'); ?>" />
