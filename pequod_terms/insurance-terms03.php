@@ -7,13 +7,10 @@
 
   $dev = getDevPath();
 
-  $root = $_SERVER['DOCUMENT_ROOT'];
-  $dev_root = $root . $dev;
-
   $title = ' | ';
   $description = '';
   $url = '/insurance-terms03.php';
-  include($dev_root . '/includes/head.php');
+  include('./includes/head.php');
   ?>
 </head>
 
@@ -27,7 +24,7 @@
     </main>
   </div>
 
-  <?php include($dev_root . '/includes/jq.php'); ?>
+  <?php include('./includes/jq.php'); ?>
 </body>
 
 </html>

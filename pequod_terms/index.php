@@ -7,23 +7,20 @@
 
     $dev = getDevPath();
 
-    $root = $_SERVER['DOCUMENT_ROOT'];
-    $dev_root = $root . $dev;
-
     $title = ' | TOP';
     $description = '';
     $url = '';
     $is_home = true; // トップページのみ記載
-    include($dev_root . '/includes/head.php');
+    include('./includes/head.php');
     ?>
 </head>
 
 <body>
-    <?php include($dev_root . '/includes/header.php'); ?>
+    <?php include('./includes/header.php'); ?>
     <div class="whopper">
         <?php
         $section = 'top';
-        include($dev_root . '/includes/kv.php');
+        include('./includes/kv.php');
         ?>
 
         <main>
@@ -398,9 +395,9 @@
             </div>
         </main>
 
-        <?php include($dev_root . '/includes/footer.php'); ?>
+        <?php include('./includes/footer.php'); ?>
     </div>
-    <?php include($dev_root . '/includes/jq.php'); ?>
+    <?php include('./includes/jq.php'); ?>
 </body>
 
 </html>
