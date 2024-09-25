@@ -118,7 +118,7 @@
         }
 
         .label {
-          color: $main-font;
+          color: $sub-font;
           @include wt700;
           font-size: 15px;
           @include letterSpacing(15, 1.5);
