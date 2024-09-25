@@ -108,13 +108,13 @@
           border-radius: 20px 20px 0 0;
 
 
-            &::before {
-              rotate: 40deg;
-            }
+          &::before {
+            rotate: 40deg;
+          }
 
-            &::after {
-              rotate: -40deg;
-            }
+          &::after {
+            rotate: -40deg;
+          }
         }
       }
 
@@ -127,7 +127,7 @@
 
 
         @include pc {
-          padding: 29px 55px 46px 32px;
+          padding: 29px 55px 46px 82px;
         }
 
         @include sp {
@@ -135,19 +135,35 @@
         }
 
         .answer-inner {
-          @include pc{
-            display:flex;
+          @include pc {
+            display: flex;
           }
         }
 
 
         .TX {
           color: $sub-font;
-          @include pc{
-            display: flex;
-            gap: 15px;
+          position: relative;
+
+          .bold {
+            text-shadow: 0 0 0.3px;
           }
-          &::before{
+
+          .red {
+            color: red;
+          }
+
+          .table {
+            display: flex;
+            @include pc{
+              gap: 15px;
+            }
+            .number{
+              min-width: 2rem;
+            }
+          }
+
+          &::before {
             content: "A";
             @include wt700;
             background: $main-bg;
@@ -156,11 +172,17 @@
             height: 35px;
             border-radius: 50%;
             @include mincho;
-            font-size: 18px;  
+            font-size: 18px;
             text-align: center;
-            @include sp{
+
+            @include sp {
               display: inline-block;
               margin-inline: -10px 5px;
+            }
+
+            @include pc {
+              position: absolute;
+              left: -50px;
             }
           }
         }
