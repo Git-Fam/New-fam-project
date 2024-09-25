@@ -109,7 +109,7 @@
                                                     <small>
                                                         ※動産総合保険は、家電安心サポートのお申し込み日の属する月の翌々1日からご利用いただけます。
                                                     </small>
-                                                    <a href="<?php echo $dev; ?>" target="_blank" rel="noopener noreferrer">
+                                                    <a href="<?php echo $dev; ?>/contents-terms01.php" target="_blank" rel="noopener noreferrer">
                                                         【保険サービス利用規約】スマホ安心サポート
                                                     </a>
                                                 </div>
@@ -167,7 +167,7 @@
                                                     <small>
                                                         ※通信端末修理費用保険は、スマホ安心サポートのお申し込み日の属する月の翌々1日からご利用いただけます。
                                                     </small>
-                                                    <a href="<?php echo $dev; ?>" target="_blank" rel="noopener noreferrer">
+                                                    <a href="<?php echo $dev; ?>/insurance-terms01.php" target="_blank" rel="noopener noreferrer">
                                                         【保険サービス利用規約】スマホ安心サポート
                                                     </a>
                                                 </div>
@@ -248,7 +248,7 @@
                                                                 水まわりのトラブル
                                                             </h5>
                                                             <p class="TX">
-                                                                トイレが詰まった／水が出ない、止まらないなど
+                                                                トイレが詰まった/水が出ない、止まらないなど
                                                             </p>
                                                         </li>
                                                         <li class="inner--list">
@@ -256,7 +256,7 @@
                                                                 ガラスのトラブル
                                                             </h5>
                                                             <p class="TX">
-                                                                強風でガラスが割れたノガラスにヒビが入っているなど
+                                                                強風でガラスが割れたガラスにヒビが入っているなど
                                                             </p>
                                                         </li>
                                                         <li class="inner--list">
@@ -309,7 +309,7 @@
                                                     <small>
                                                         ※通信端末修理費用保険は、スマホ安心サポートのお申し込み日の属する月の翌々1日からご利用いただけます。
                                                     </small>
-                                                    <a href="<?php echo $dev; ?>" target="_blank" rel="noopener noreferrer">
+                                                    <a href="<?php echo $dev; ?>/insurance-terms02.php" target="_blank" rel="noopener noreferrer">
                                                         プレミアム安心保証パック 家電住設
                                                     </a>
                                                 </div>
@@ -326,7 +326,7 @@
                                                     <small>
                                                         ※動産総合保険は、家電安心サポートのお申し込み日の属する月の翌々1日からご利用いただけます。
                                                     </small>
-                                                    <a href="<?php echo $dev; ?>" target="_blank" rel="noopener noreferrer">
+                                                    <a href="<?php echo $dev; ?>/insurance-terms03.php" target="_blank" rel="noopener noreferrer">
                                                         プレミアム安心保証パック 通信端末
                                                     </a>
                                                 </div>

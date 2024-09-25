@@ -3,9 +3,9 @@
 
 <head prefix="og: https://ogp.me/ns#">
   <?php
-  // 開発用
-  // $dev = '';
-  $dev = '/pequod_terms';
+  include('./includes/functions.php');
+
+  $dev = getDevPath();
 
   $root = $_SERVER['DOCUMENT_ROOT'];
   $dev_root = $root . $dev;
@@ -18,6 +18,14 @@
 </head>
 
 <body>
+
+  <div class="whopper">
+    <main>
+      <div class="wrap wrap-sp">
+        contents-terms01
+      </div>
+    </main>
+  </div>
 
   <?php include($dev_root . '/includes/jq.php'); ?>
 </body>
