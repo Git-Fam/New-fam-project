@@ -45,6 +45,7 @@
         align-items: center;
         transition: all 0.3s;
         @include wt700;
+        cursor: pointer;
 
         @include pc {
           padding: 14px 0 13px 32px;
