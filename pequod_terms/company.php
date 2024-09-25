@@ -3,16 +3,16 @@
 
 <head prefix="og: https://ogp.me/ns#">
     <?php
-    // 開発用
-    // $dev = '';
-    $dev = '/pequod_terms';
+    include('./includes/functions.php');
+
+    $dev = getDevPath();
 
     $root = $_SERVER['DOCUMENT_ROOT'];
     $dev_root = $root . $dev;
 
     $title = ' | 会社概要';
     $description = '';
-    $url = '';
+    $url = '/company.php';
     include($dev_root . '/includes/head.php');
     ?>
 </head>

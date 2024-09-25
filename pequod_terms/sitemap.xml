@@ -9,33 +9,54 @@
   <changefreq>weekly</changefreq>
 </url>
 
-<!-- <url>
-  <loc>https://usm.shop.pequod.jp</loc>
-  <priority>1.0</priority>
+<url>
+  <loc>https://usm.shop.pequod.jp/qa.php</loc>
+  <priority>0.8</priority>
   <lastmod>2024-09-25</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 
 <url>
-  <loc>https://usm.shop.pequod.jp</loc>
-  <priority>1.0</priority>
+  <loc>https://usm.shop.pequod.jp/company.php</loc>
+  <priority>0.8</priority>
   <lastmod>2024-09-25</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 
 <url>
-  <loc>https://usm.shop.pequod.jp</loc>
-  <priority>1.0</priority>
+  <loc>https://usm.shop.pequod.jp/privacy.php</loc>
+  <priority>0.8</priority>
   <lastmod>2024-09-25</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 
 <url>
-  <loc>https://usm.shop.pequod.jp</loc>
-  <priority>1.0</priority>
+  <loc>https://usm.shop.pequod.jp/contents-terms01.php</loc>
+  <priority>0.8</priority>
   <lastmod>2024-09-25</lastmod>
   <changefreq>weekly</changefreq>
-</url> -->
+</url>
+
+<url>
+  <loc>https://usm.shop.pequod.jp/insurance-terms01.php</loc>
+  <priority>0.8</priority>
+  <lastmod>2024-09-25</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
+
+<url>
+  <loc>https://usm.shop.pequod.jp/insurance-terms02.php</loc>
+  <priority>0.8</priority>
+  <lastmod>2024-09-25</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
+
+<url>
+  <loc>https://usm.shop.pequod.jp/insurance-terms03.php</loc>
+  <priority>0.8</priority>
+  <lastmod>2024-09-25</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
 
 
 

@@ -3,17 +3,16 @@
 
 <head prefix="og: https://ogp.me/ns#">
     <?php
-    // 開発用
-    // $dev = '';
-    $dev = '/pequod_terms';
+    include('./includes/functions.php');
+
+    $dev = getDevPath();
 
     $root = $_SERVER['DOCUMENT_ROOT'];
     $dev_root = $root . $dev;
 
     $title = ' | Q&A';
     $description = '';
-    $url = '';
-    $is_home = true; // トップページのみ記載
+    $url = '/qa.php';
     include($dev_root . '/includes/head.php');
     ?>
 
