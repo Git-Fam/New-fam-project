@@ -30,7 +30,7 @@
 		</ul>
 	</nav>
 
-	<a href="#" class="logo"></a>
+	<a href="<?php echo $dev; ?>/index.php" class="logo"><img src="./img/logo.png" alt="logo"></a>
 	<p class="copyright">＠Copyright.waterwater</p>
 
 
