@@ -7,7 +7,7 @@
 
     $dev = getDevPath();
 
-    $title = ' | TOP';
+    $title = '';
     $description = '';
     $url = '';
     $is_home = true; // トップページのみ記載
