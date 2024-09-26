@@ -332,6 +332,139 @@
                                     </ul>
                                 </div>
                             </div>
+
+                            <div class="C_set">
+                                <div class="C_set--top">
+                                    <div class="top--title">
+                                        <div class="title">
+                                            <h4 class="TL">動産総合保険（付帯サービス）</h4>
+                                        </div>
+                                    </div>
+                                    <div class="top--content">
+                                        <div class="content--sentence">
+                                            <ul class="sentence--lists">
+                                                <li class="list">
+                                                    <ul class="inner--lists">
+                                                        <li class="inner--list">
+                                                            <h5 class="TL">
+                                                                対象の機器
+                                                            </h5>
+                                                            <p class="TX">
+                                                                ウォーターサーバー<br>
+                                                                冷蔵庫・冷凍庫<br>
+                                                                コーヒーメーカー<br>
+                                                                ※本サービス利用契約開始日時点で、5年以内に新品として購入した機器
+                                                            </p>
+                                                        </li>
+                                                        <li class="inner--list">
+                                                            <h5 class="TL">
+                                                                対象の損害
+                                                            </h5>
+                                                            <p class="TX">
+                                                                外装の破損、損壊、水濡れ、電気的機械的故障
+                                                            </p>
+                                                        </li>
+                                                        <li class="inner--list">
+                                                            <h5 class="TL">
+                                                                免責金額
+                                                            </h5>
+                                                            <p class="TX">
+                                                                なし
+                                                            </p>
+                                                        </li>
+                                                        <li class="inner--list">
+                                                            <h5 class="TL">
+                                                                保険金額
+                                                            </h5>
+                                                            <p class="TX">
+                                                                最大30万円
+                                                            </p>
+                                                        </li>
+                                                        <li class="inner--list">
+                                                            <p class="TX">
+                                                                【保険金請求に関するお問い合わせ先】<br>
+                                                                さくら損害保険 保険金請求窓口　 電話番号：0120-502-720<br>
+                                                                受付時間：10:00～19:00（年末年始は除く）
+                                                            </p>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="C_set">
+                                <div class="C_set--top">
+                                    <div class="top--title">
+                                        <div class="title">
+                                            <h4 class="TL">通信端末修理費用保険（付帯サービス）</h4>
+                                        </div>
+                                    </div>
+                                    <div class="top--content">
+                                        <div class="content--sentence">
+                                            <ul class="sentence--lists">
+                                                <li class="list">
+                                                    <ul class="inner--lists">
+                                                        <li class="inner--list">
+                                                            <h5 class="TL">
+                                                                対象の機器
+                                                            </h5>
+                                                            <p class="TX">
+                                                                スマートフォン<br>
+                                                                タブレット端末（タブレットPCを含みます。）<br>
+                                                                ノートパソコン<br>
+                                                            </p>
+                                                        </li>
+                                                        <li class="inner--list">
+                                                            <h5 class="TL">
+                                                                対象の損害
+                                                            </h5>
+                                                            <p class="TX">
+                                                            外装破損・損壊、水濡れ、盗難、全損、故障(ただし、自然災害、経年劣化によるものは対象外とします。)
+                                                            </p>
+                                                        </li>
+                                                        <li class="inner--list">
+                                                            <h5 class="TL">
+                                                                免責金額
+                                                            </h5>
+                                                            <p class="TX">
+                                                                なし
+                                                            </p>
+                                                        </li>
+                                                        <li class="inner--list">
+                                                            <h5 class="TL">
+                                                                年間保険金額
+                                                            </h5>
+                                                            <p class="TX">
+                                                                上限5万円上限
+                                                            </p>
+                                                        </li>
+                                                        <li class="inner--list">
+                                                            <h5 class="TL">
+                                                                年間保険回数
+                                                            </h5>
+                                                            <p class="TX">
+                                                                1回
+                                                            </p>
+                                                        </li>
+                                                        <li class="inner--list">
+                                                            <p class="TX">
+                                                                【保険金請求に関するお問い合わせ先】<br>
+                                                                さくら損害保険 保険金請求窓口　 電話番号：0120-982-267<br>
+                                                                受付時間：10:00～19:00（年末年始は除く）
+                                                            </p>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
                         </div>
                     </section>
                     <section class="front__single" id="single">

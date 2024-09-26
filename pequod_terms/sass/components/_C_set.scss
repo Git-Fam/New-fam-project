@@ -281,6 +281,10 @@
               @include sp {
                 margin-top: 7px;
               }
+              &:hover {
+                color: $blue-font;
+                transition: all 0.3s;
+              }
             }
           }
         }

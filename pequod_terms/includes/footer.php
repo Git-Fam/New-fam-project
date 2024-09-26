@@ -6,6 +6,14 @@
 				<ul class="link-list">
 					<li><a href="<?php echo $dev; ?>/index.php#set">セット</a></li>
 					<li><a href="<?php echo $dev; ?>/index.php#single">単品</a></li>
+					<li>
+						<p class="TX">利用規約</p>
+						<a class="terms" href="<?php echo $dev; ?>/insurance-terms01.php">こちらをご確認ください</a>
+					</li>
+					<li>
+						<p class="TX">利用規約</p>
+						<a class="terms" href="<?php echo $dev; ?>/insurance-terms02.php">こちらをご確認ください</a>
+					</li>
 				</ul>
 			</li>
 			<li class="nav-item">
