@@ -266,13 +266,11 @@
               font-size: 10px;
             }
 
-            a {
+            .terms--link {
               color: $main-font;
               font-size: 10px;
               @include wt500;
-              @include letterSpacing(10, 1);
-              font-size: 10px;
-              text-decoration-line: underline;
+              @include letterSpacing(10, 1);  
 
               @include pc {
                 margin-top: 10px;
@@ -281,9 +279,17 @@
               @include sp {
                 margin-top: 7px;
               }
-              &:hover {
-                color: $blue-font;
-                transition: all 0.3s;
+
+              a {
+                color: $main-font;
+                font-size: 10px;
+                @include wt500;
+                @include letterSpacing(10, 1);             text-decoration-line: underline;
+
+                &:hover {
+                  color: $blue-font;
+                  transition: all 0.3s;
+                }
               }
             }
           }

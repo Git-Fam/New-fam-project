@@ -1,0 +1,148 @@
+@use "../functions" as *;
+
+/* -----------------------
+  terms
+----------------------- */
+
+.terms {
+  margin-top: 250px;
+
+  &:first-child {
+    margin-top: 0px;
+  }
+
+  h1 {
+    font-size: 18px;
+    @include wt500;
+  }
+
+  h2 {
+    font-size: 16px;
+    @include wt500;
+  }
+
+  h3 {
+    font-size: 14px;
+    @include wt500;
+  }
+
+  h4 {
+    font-size: 14px;
+    @include wt500;
+  }
+
+  p {
+    font-size: 12px;
+    @include wt500;
+
+    span {
+      @include wt500;
+      color: red;
+    }
+  }
+
+  .terms--title {
+    text-align: center;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    padding: 5px 0;
+    margin-bottom: 20px;
+  }
+
+  .terms--container {
+    @include column(20px);
+
+    .terms--item {
+      @include column(10px);
+
+      .item--title {}
+
+      .item-content {
+        @include column(10px);
+        --indent: 1.5em;
+
+        &-card {
+          @include column(8px);
+        }
+
+        .indent-left {
+          text-indent: calc(-1 * var(--indent));
+          padding-left: var(--indent);
+        }
+
+        .indent-right {
+          text-indent: calc(var(--indent) - 0.5em);
+          padding-right: calc(var(--indent) - 0.5em);
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          border: 1px solid #000;
+
+          th,
+          td {
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: left;
+
+            h3 {
+              text-align: center;
+            }
+
+            &.vertical-align {
+              vertical-align: middle;
+            }
+
+            .text-center {
+              text-align: center;
+            }
+
+            &[rowspan] {
+              vertical-align: middle;
+              text-align: center;
+            }
+
+            ul{
+              padding: 0
+            }
+          }
+        }
+
+        ul {
+          @include column(3px);
+          padding-left: calc(var(--indent) - 0.5em);
+
+          li {
+            .indent-left {
+              text-indent: calc(-0.5 * var(--indent));
+              padding-left: calc(var(--indent) - 0.5em);
+            }
+            .indent-left-full {
+              text-indent: calc(-0.6 * var(--indent));
+              padding-left: var(--indent);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .terms--info {
+    margin-top: 30px;
+    padding-left: 2em;
+
+    p {
+      padding-left: 1em;
+
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+  }
+
+  .terms--end {
+    text-align: right;
+    margin-top: 30px;
+  }
+}

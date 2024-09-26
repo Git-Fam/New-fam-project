@@ -106,9 +106,12 @@
                                                     <small>
                                                         ※動産総合保険は、家電安心サポートのお申し込み日の属する月の翌々1日からご利用いただけます。
                                                     </small>
-                                                    <a href="<?php echo $dev; ?>/contents-terms01.php" target="_blank" rel="noopener noreferrer">
-                                                        【保険サービス利用規約】スマホ安心サポート
-                                                    </a>
+                                                    <p class="terms--link">
+                                                        利用規約<br>
+                                                        <a href="<?php echo $dev; ?>/terms/appliances-support.php" target="_blank" rel="noopener noreferrer">
+                                                            こちらをご確認ください
+                                                        </a>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </li>
@@ -164,9 +167,12 @@
                                                     <small>
                                                         ※通信端末修理費用保険は、スマホ安心サポートのお申し込み日の属する月の翌々1日からご利用いただけます。
                                                     </small>
-                                                    <a href="<?php echo $dev; ?>/insurance-terms01.php" target="_blank" rel="noopener noreferrer">
-                                                        【保険サービス利用規約】スマホ安心サポート
-                                                    </a>
+                                                    <p class="terms--link">
+                                                        利用規約<br>
+                                                        <a href="<?php echo $dev; ?>/terms/smartphone-support.php" target="_blank" rel="noopener noreferrer">
+                                                            こちらをご確認ください
+                                                        </a>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </li>
@@ -306,9 +312,12 @@
                                                     <small>
                                                         ※通信端末修理費用保険は、スマホ安心サポートのお申し込み日の属する月の翌々1日からご利用いただけます。
                                                     </small>
-                                                    <a href="<?php echo $dev; ?>/insurance-terms02.php" target="_blank" rel="noopener noreferrer">
-                                                        プレミアム安心保証パック 家電住設
-                                                    </a>
+                                                    <p class="terms--link">
+                                                        利用規約<br>
+                                                        <a href="<?php echo $dev; ?>/terms/warranty-pack.php" target="_blank" rel="noopener noreferrer">
+                                                            こちらをご確認ください
+                                                        </a>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </li>
@@ -323,9 +332,12 @@
                                                     <small>
                                                         ※動産総合保険は、家電安心サポートのお申し込み日の属する月の翌々1日からご利用いただけます。
                                                     </small>
-                                                    <a href="<?php echo $dev; ?>/insurance-terms03.php" target="_blank" rel="noopener noreferrer">
-                                                        プレミアム安心保証パック 通信端末
-                                                    </a>
+                                                    <p class="terms--link">
+                                                        利用規約<br>
+                                                        <a href="<?php echo $dev; ?>/terms/safety-pack.php" target="_blank" rel="noopener noreferrer">
+                                                            こちらをご確認ください
+                                                        </a>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </li>
@@ -422,7 +434,7 @@
                                                                 対象の損害
                                                             </h5>
                                                             <p class="TX">
-                                                            外装破損・損壊、水濡れ、盗難、全損、故障(ただし、自然災害、経年劣化によるものは対象外とします。)
+                                                                外装破損・損壊、水濡れ、盗難、全損、故障(ただし、自然災害、経年劣化によるものは対象外とします。)
                                                             </p>
                                                         </li>
                                                         <li class="inner--list">

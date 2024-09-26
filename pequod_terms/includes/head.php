@@ -25,3 +25,4 @@ $mainUrl = 'https://usm.shop.pequod.jp';
 <!-- <meta property="twitter:image" content="https://metatags.io/images/meta-tags.png" /> -->
 
 <link rel="stylesheet" href="css/main.css?ver=<?php echo filemtime('css/main.css'); ?>" />
+<link rel="stylesheet" href="../css/main.css?ver=<?php echo filemtime('../css/main.css'); ?>" />

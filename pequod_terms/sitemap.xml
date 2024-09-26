@@ -5,59 +5,78 @@
 <url>
   <loc>https://usm.shop.pequod.jp</loc>
   <priority>1.0</priority>
-  <lastmod>2024-09-25</lastmod>
+  <lastmod>2024-09-27</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
+
+<url>
+  <loc>https://usm.shop.pequod.jp/index.php</loc>
+  <priority>1.0</priority>
+  <lastmod>2024-09-27</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 
 <url>
   <loc>https://usm.shop.pequod.jp/qa.php</loc>
   <priority>0.8</priority>
-  <lastmod>2024-09-25</lastmod>
+  <lastmod>2024-09-27</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 
 <url>
   <loc>https://usm.shop.pequod.jp/company.php</loc>
   <priority>0.8</priority>
-  <lastmod>2024-09-25</lastmod>
+  <lastmod>2024-09-27</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 
 <url>
   <loc>https://usm.shop.pequod.jp/privacy.php</loc>
   <priority>0.8</priority>
-  <lastmod>2024-09-25</lastmod>
+  <lastmod>2024-09-27</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 
 <url>
-  <loc>https://usm.shop.pequod.jp/contents-terms01.php</loc>
-  <priority>0.8</priority>
-  <lastmod>2024-09-25</lastmod>
+  <loc>https://usm.shop.pequod.jp/terms/appliances-support.php</loc>
+  <priority>0.6</priority>
+  <lastmod>2024-09-27</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 
 <url>
-  <loc>https://usm.shop.pequod.jp/insurance-terms01.php</loc>
-  <priority>0.8</priority>
-  <lastmod>2024-09-25</lastmod>
+  <loc>https://usm.shop.pequod.jp/terms/smartphone-support.php</loc>
+  <priority>0.6</priority>
+  <lastmod>2024-09-27</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 
 <url>
-  <loc>https://usm.shop.pequod.jp/insurance-terms02.php</loc>
-  <priority>0.8</priority>
-  <lastmod>2024-09-25</lastmod>
+  <loc>https://usm.shop.pequod.jp/terms/warranty-pack.php</loc>
+  <priority>0.6</priority>
+  <lastmod>2024-09-27</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 
 <url>
-  <loc>https://usm.shop.pequod.jp/insurance-terms03.php</loc>
-  <priority>0.8</priority>
-  <lastmod>2024-09-25</lastmod>
+  <loc>https://usm.shop.pequod.jp/terms/safety-pack.php</loc>
+  <priority>0.6</priority>
+  <lastmod>2024-09-27</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 
+<url>
+  <loc>https://usm.shop.pequod.jp/terms/content-terms-no.php</loc>
+  <priority>0.6</priority>
+  <lastmod>2024-09-27</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
 
+<url>
+  <loc>https://usm.shop.pequod.jp/terms/content-terms-has.php</loc>
+  <priority>0.6</priority>
+  <lastmod>2024-09-27</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
 
 </urlset>
