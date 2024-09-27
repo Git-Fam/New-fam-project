@@ -1,4 +1,4 @@
-@use "../../functions" as *;
+@use "../../functions"as *;
 
 /* -----------------------
   product-form
@@ -213,7 +213,54 @@
 
                   @include sp {}
                 }
+
               }
+
+              #billing-check {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                position: relative;
+
+                @include pc {
+                  width: 20px;
+                  height: 20px;
+                }
+                @include sp{
+                  width: 20px;
+                  height: 20px;
+                }
+
+                &:checked {
+                  &::before {
+                    content: '';
+                    width: 80%;
+                    height: 30%;
+                    background: unset;
+                    border-radius: 0;
+                    border-bottom: solid 2px #A8DAE9;
+                    border-left: solid 2px #A8DAE9;
+                    position: absolute;
+                    top: 30%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) rotate(-45deg);
+                  }
+                }
+              }
+
+              .check-TX {
+                color: #989898;
+                font-size: 14px;
+                @include wt500;
+                letter-spacing: 1px;
+                @include pc{
+                  margin-top: -15px;
+                }
+                @include sp{
+                  margin-top: -15px;
+                }
+              }
+
 
               .input-area {
                 @include column(30px);
@@ -458,7 +505,9 @@
                     font-size: 16px;
                   }
                 }
+
               }
+
             }
 
             .submit-btn {
@@ -481,7 +530,7 @@
 
               #sub {
                 background: #57C6EA !important;
-            }
+              }
             }
 
             #submitError {

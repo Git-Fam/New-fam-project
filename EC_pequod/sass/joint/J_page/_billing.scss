@@ -1,0 +1,79 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+    billing
+----------------------- */
+
+.product-form {
+
+  .shopping-form {
+
+    &-container {
+      .form_container {
+        .form_content {
+
+
+          // 未登録
+          form {
+
+            .form_content-item {
+
+              .billing-check {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                position: relative;
+
+                @include pc {
+                  width: 20px;
+                  height: 20px;
+                }
+
+                @include sp {
+                  width: 20px;
+                  height: 20px;
+                }
+
+                &:checked {
+                  &::before {
+                    content: '';
+                    width: 80%;
+                    height: 30%;
+                    background: unset;
+                    border-radius: 0;
+                    border-bottom: solid 2px #A8DAE9;
+                    border-left: solid 2px #A8DAE9;
+                    position: absolute;
+                    top: 30%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) rotate(-45deg);
+                  }
+                }
+              }
+
+              .check-TX {
+                color: #989898;
+                font-size: 14px;
+                @include wt500;
+                letter-spacing: 1px;
+              }
+
+            }
+
+          }
+        }
+      }
+    }
+  }
+}
+
+.billing-input{
+  &.input-area{
+    display: none !important;
+  }
+}
+#new_add_flag:checked ~ .billing-input {
+  display: flex !important;
+}
+
