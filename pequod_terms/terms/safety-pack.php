@@ -421,9 +421,6 @@
               </div>
               <div class="item-content">
                 <div class="item-content-card">
-                  <p>
-                    以下のいずれかに当たる場合には、保険金支払の対象外とします。
-                  </p>
                   <!-- リスト -->
                   <ul>
                     <li>
@@ -442,6 +439,7 @@
                       </p>
                     </li>
                   </ul>
+                  <h3>【提出必要書類】</h3>
                   <!-- テーブル -->
                   <table class="table-terms-type01">
                     <tbody>

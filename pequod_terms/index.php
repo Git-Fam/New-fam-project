@@ -314,7 +314,7 @@
                                                     </small>
                                                     <p class="terms--link">
                                                         利用規約<br>
-                                                        <a href="<?php echo $dev; ?>/terms/warranty-pack.php" target="_blank" rel="noopener noreferrer">
+                                                        <a href="<?php echo $dev; ?>/terms/safety-pack.php" target="_blank" rel="noopener noreferrer">
                                                             こちらをご確認ください
                                                         </a>
                                                     </p>
@@ -334,7 +334,7 @@
                                                     </small>
                                                     <p class="terms--link">
                                                         利用規約<br>
-                                                        <a href="<?php echo $dev; ?>/terms/safety-pack.php" target="_blank" rel="noopener noreferrer">
+                                                        <a href="<?php echo $dev; ?>/terms/warranty-pack.php" target="_blank" rel="noopener noreferrer">
                                                             こちらをご確認ください
                                                         </a>
                                                     </p>
