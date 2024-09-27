@@ -83,6 +83,11 @@ $chat-plant: url('data:image/svg+xml;utf-8,<svg width="43" height="46" viewBox="
 $back-arrow: url('data:image/svg+xml;utf-8,<svg width="64" height="70" viewBox="0 0 64 70" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_d_1011_11931)"><path d="M30.1773 38.2527V20.2216C46.794 18.5044 53.256 27.2337 54.4099 31.813C58.69 49.3289 44.0245 56.57 36.1568 58.001L38.9892 54.9958C50.3187 39.8841 37.8352 37.5372 30.1773 38.2527Z" fill="url(%23paint0_linear_1011_11931)"/><path d="M5.19336 28.0607L31.9543 4.81641L31.6191 51.6855L5.19336 28.0607Z" fill="url(%23paint1_linear_1011_11931)"/></g><defs><filter id="filter0_d_1011_11931" x="-2.80664" y="0.816406" width="65.9844" height="69.1855" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy="4"/><feGaussianBlur stdDeviation="4"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0.00124461 0 0 0 0 0.00124461 0 0 0 0 0.00124461 0 0 0 0.25 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1011_11931"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1011_11931" result="shape"/></filter><linearGradient id="paint0_linear_1011_11931" x1="45.9998" y1="46.501" x2="5.19336" y2="31.4087" gradientUnits="userSpaceOnUse"><stop stop-color="white"/><stop offset="1" stop-color="%23FBE94B"/></linearGradient><linearGradient id="paint1_linear_1011_11931" x1="45.9998" y1="46.501" x2="5.19336" y2="31.4087" gradientUnits="userSpaceOnUse"><stop stop-color="white"/><stop offset="1" stop-color="%23FBE94B"/></linearGradient></defs></svg>');
 
 
+//道のり　次のページに進む
+$next-section: url('data:image/svg+xml;utf-8,<svg width="44" height="121" viewBox="0 0 44 121" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(%23filter0_ii_1110_25179)"><path d="M7 7L37 60.0697L7 114" stroke="%23F9FAF7" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></g><defs><filter id="filter0_ii_1110_25179" x="0.5" y="-3.50098" width="43" height="124.002" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy="-4"/><feGaussianBlur stdDeviation="2"/><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/><feBlend mode="normal" in2="shape" result="effect1_innerShadow_1110_25179"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy="-2"/><feGaussianBlur stdDeviation="4"/><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/><feColorMatrix type="matrix" values="0 0 0 0 0.945098 0 0 0 0 0.858824 0 0 0 0 0.447059 0 0 0 1 0"/><feBlend mode="normal" in2="effect1_innerShadow_1110_25179" result="effect2_innerShadow_1110_25179"/></filter></defs></svg>');
+
+
+
 // // SVG使い方（色変更パターン）
 // @function encode($ColorCode){
 //   @return '%23' + str-slice($ColorCode,2,-1);
@@ -97,6 +102,7 @@ $back-arrow: url('data:image/svg+xml;utf-8,<svg width="64" height="70" viewBox="
 @function heart($Color) {
   @return  url('data:image/svg+xml;utf-8,<svg viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.80702 4.26134C9.80702 4.26134 10.4588 -0.150006 16.0407 1.25532C18.5513 1.88738 18.8326 4.26129 18.6203 6.84531C18.2219 11.6924 9.80702 15.644 9.80702 15.644C9.80702 15.644 1.40871 11.6776 1.00837 6.83071C0.796143 4.26137 1.73354 1.49004 4.239 1.25536C9.80701 0.733811 9.80702 4.26134 9.80702 4.26134Z" fill="#{$Color}"/></svg>');
 }
+
 
 
 

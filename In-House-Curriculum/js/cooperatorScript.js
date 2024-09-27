@@ -1,7 +1,9 @@
 $(function () {
 	//show付与
 	$(".category-content,#cover-btn,.timeline-jamp").on("click", function () {
-		$(".select-content,#tab-wrap,.timeline-modal,.chat-wrap").toggleClass("show");
+		$(".select-content,#tab-wrap,.timeline-modal,.chat-wrap").toggleClass(
+			"show"
+		);
 	});
 
 	$("#cover-curriculum").hover(function () {
@@ -97,9 +99,6 @@ $(function () {
 									node.show();
 								}
 							}
-						},
-						error: function (xhr, status, error) {
-							console.error("AJAX error:", error);
 						},
 					});
 				}
@@ -207,10 +206,6 @@ $(function () {
 						// エラーメッセージをアラートで表示
 						alert(response.data.message || "エラーメッセージがありません。");
 					}
-				},
-				error: function (xhr, status, error) {
-					console.error("AJAX error:", error);
-					alert("AJAXリクエストに失敗しました: " + error);
 				},
 				complete: function () {
 					// ボタンを再び有効化する必要はないので、この行は不要です
@@ -361,8 +356,6 @@ $(function () {
 					}
 				}
 			});
-		} else {
-			console.error("全ユーザーの進捗データが読み込まれていません。");
 		}
 	});
 
@@ -465,8 +458,6 @@ $(function () {
 					},
 				});
 			});
-		} else {
-			console.error("必要な要素が見つかりませんでした。");
 		}
 	});
 
@@ -566,7 +557,7 @@ $(function () {
 	});
 
 	//常に一番下にスクロールした状態
-	jQuery(document).ready(function ($) {
+	$(function () {
 		// スクロール可能な要素を取得
 		var chatbotContent = $(".chatbot-content");
 		var shouldScrollToBottom = true; // 自動スクロールのフラグ
@@ -668,5 +659,24 @@ $(function () {
 	//道のりページ　under-menu
 	$(".under-menu").click(function () {
 		$(this).toggleClass("open");
+	});
+
+	$(".next-section").click(function () {
+		var currentSection = $(".page-section.show");
+		var nextSection = currentSection.next(".page-section");
+
+		if (nextSection.length) {
+			currentSection.removeClass("show");
+			nextSection.addClass("show");
+		}
+	});
+	$(".back-section").click(function () {
+		var currentSection = $(".page-section.show");
+		var prevSection = currentSection.prev(".page-section");
+
+		if (prevSection.length) {
+			currentSection.removeClass("show");
+			prevSection.addClass("show");
+		}
 	});
 });

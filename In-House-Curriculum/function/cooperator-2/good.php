@@ -10,10 +10,10 @@ function handle_like() {
     // 今日の日付
     $today_date = date('Y-m-d');
 
-    // ユーザーが最後にいいねした日付を取得
+    // ユーザーが最後にリアクションした日付を取得
     $last_like_date = get_user_meta($user_id, 'last_like_date', true);
 
-    // いいねカウントを取得、もしくは初期化
+    // リアクションカウントを取得、もしくは初期化
     $like_count_today = get_user_meta($user_id, 'like_count_today', true) ?: 0;
 
     // 日付が変わっていたらカウントをリセット
@@ -23,33 +23,33 @@ function handle_like() {
         update_user_meta($user_id, 'last_like_date', $today_date); // 新しい日付を保存
     }
 
-    // 既にいいねしている場合
+    // 既にリアクションしている場合
     $liked_items = get_user_meta($user_id, 'liked_items', true) ?: array();
     if (in_array($item_id, $liked_items)) {
-        wp_send_json_error(array('message' => 'このタイムラインには既に「いいね」しています。'));
+        wp_send_json_error(array('message' => 'このタイムラインには既に「リアクション」しています。'));
     }
 
-    // 今日のいいね数が5回以上の場合
+    // 今日のリアクション数が5回以上の場合
     if ($like_count_today >= 5) {
-        wp_send_json_error(array('message' => '今日はこれ以上「いいね」できません。'));
+        wp_send_json_error(array('message' => '今日はこれ以上「リアクション」できません。'));
     }
 
-    // いいねカウントを増やす
+    // リアクションカウントを増やす
     $like_count += 1;
     update_option('global_like_count_' . $item_id, $like_count);
     update_user_meta($user_id, 'like_count_today', $like_count_today + 1);
 
-    // いいねしたアイテムを保存
+    // リアクションしたアイテムを保存
     $liked_items[] = $item_id;
     update_user_meta($user_id, 'liked_items', $liked_items);
 
-    // 5回目のいいねの場合
+    // 5回目のリアクションの場合
     if ($like_count_today + 1 == 5) {
         // 3コインを追加
         add_user_coins($user_id, 3);
-        wp_send_json_success(array('new_count' => $like_count, 'message' => '5回いいねしました、3コイン獲得です！'));
+        wp_send_json_success(array('new_count' => $like_count, 'message' => '5回リアクションしました、3コイン獲得です！'));
     } else {
-        wp_send_json_success(array('new_count' => $like_count, 'message' => '「いいね」が成功しました。'));
+        wp_send_json_success(array('new_count' => $like_count, 'message' => '「リアクション」が成功しました。'));
     }
 }
 // スクリプトの登録とajaxurlの設定
@@ -60,7 +60,7 @@ function my_enqueue_scripts() {
 add_action('wp_enqueue_scripts', 'my_enqueue_scripts');
 
 
-// ユーザーのいいね情報を取得する関数
+// ユーザーのリアクション情報を取得する関数
 function get_user_like_info() {
     $user_id = get_current_user_id();
     $like_count_today = get_user_meta($user_id, 'like_count_today', true) ?: 0;
@@ -79,7 +79,7 @@ function get_user_like_info() {
     );
 }
 
-// ユーザーのいいね情報をJavaScriptに渡す
+// ユーザーのリアクション情報をJavaScriptに渡す
 function enqueue_like_data_script() {
     $user_like_info = get_user_like_info();
     wp_enqueue_script('my-script', get_template_directory_uri() . '/js/cooperatorScript.js', array('jquery'), null, true);
@@ -89,18 +89,18 @@ add_action('wp_enqueue_scripts', 'enqueue_like_data_script');
 
 
 
-// テスト用いいねリセット
+// テスト用リアクションリセット
 // function reset_today_likes_for_user($user_id) {
-//     // 今日のいいねカウントをリセット
+//     // 今日のリアクションカウントをリセット
 //     update_user_meta($user_id, 'like_count_today', 0);
 
-//     // 最後にいいねした日付をリセット
+//     // 最後にリアクションした日付をリセット
 //     delete_user_meta($user_id, 'last_like_date');
 
 //     // 成功メッセージを返す
-//     return "User ID {$user_id} の今日のいいね数がリセットされました。";
+//     return "User ID {$user_id} の今日のリアクション数がリセットされました。";
 // }
 
-// // 例えば、現在ログインしているユーザーのいいね数をリセットする場合
+// // 例えば、現在ログインしているユーザーのリアクション数をリセットする場合
 // $current_user_id = get_current_user_id();
 // echo reset_today_likes_for_user($current_user_id);

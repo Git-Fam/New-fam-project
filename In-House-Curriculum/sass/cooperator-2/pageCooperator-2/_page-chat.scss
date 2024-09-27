@@ -69,7 +69,7 @@
         position: relative;
         margin: 0 auto;
         background: $B-F69064;
-        padding: smi(25) smi(15) smi(100);
+        padding: smi(25) smi(15) smi(90,100);
         border-radius: s(8);
       }
 
@@ -287,7 +287,6 @@
             background: $B-FFFFFF;
             display: flex;
             align-items: center;
-            filter: brightness(80%);
             width: fit-content;
 
             @include pc {
@@ -355,16 +354,16 @@
         .chat-back{
           display: flex;
           align-items: center;
-          margin-left: smi(5,10);
+          margin:smi(5) 0 0 smi(5,10);
           .icon{
             @include iconContain($back-arrow);
-            width: smi(29,38);
-            height: smi(31,41);  
+            width: smi(23,33);
+            height: smi(25,35);  
           }
           .TX{
             @include wt800;
             color: $F-857763;
-            font-size: smi(16,20);
+            font-size: smi(12,14);
           }
         }
       }

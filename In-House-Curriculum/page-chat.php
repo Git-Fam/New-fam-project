@@ -6,7 +6,7 @@
                     <p class="TL">カリキュラム＞　アクションページ</p>
                 </div>
                 <div class="chat-content">
-                    <div class="timeline-modal show">
+                    <div class="timeline-modal">
                         <p class="timeline-TL">完了タイムライン</p>
                         <div class="timeline-wrap">
                             <div class="timeline">
@@ -130,7 +130,7 @@
                         </div>
                     </div>
 
-                    <div class="chat-wrap show">
+                    <div class="chat-wrap">
                         <div class="chat-TL">
                         <p class="TL"><?php echo esc_html($user_group); ?>チャット</p>
                         </div>

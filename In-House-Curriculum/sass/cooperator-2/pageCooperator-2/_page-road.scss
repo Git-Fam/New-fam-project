@@ -5,6 +5,7 @@
   load
 ----------------------- */
 .road-wappaer {
+  background: linear-gradient(180deg, #BCFAFF 0%, #FFF 100%);
   position: relative;
   width: 100%;
   @include height;
@@ -39,15 +40,18 @@
     }
 
     .archive--item {
-      @include pc {
-        width: fit-content;
-      }
 
       &--img {
+        margin: 0 auto;
+
         @include pc {
           width: p(67);
           height: p(67);
         }
+      }
+
+      &--title {
+        text-align: center;
       }
     }
   }
@@ -90,7 +94,7 @@
 
   }
 
-  #road {
+  .page-section {
 
     .content {
       width: 100%;
@@ -105,95 +109,405 @@
           gap: p(30);
         }
 
-        .destination {
+        .archive--contents {
+          width: 100%;
+          height: 80%;
           position: absolute;
+          z-index: 9;
+          left: 50%;
+          transform: translate(-50%, -50%);
 
-          .goal {
-            display: block;
-            @include imgContain("goal.png");
-            position: relative;
-            left: 73%;
+          @include pc {
+            top: 53%;
+          }
+
+          @include sp {
+            top: 50%;
+          }
+
+          .not-login {
+            text-align: center;
+          }
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 4%;
+            aspect-ratio: 30 / 45;
+            @include iconContain($slickArrow);
+            z-index: 1;
+            animation: arrow 1s infinite;
 
             @include pc {
-              width: p(107);
-              height: p(62);
+              width: p(30);
+              right: 0%;
             }
 
-            &.clear {
-              @include imgContain("clear.png");
+            @include sp {
+              width: s(20);
+              right: 0%;
             }
 
-            &.not {
-              @include imgContain("not.png");
+            @keyframes arrow {
+
+              0%,
+              100% {
+                transform: translateX(0%);
+              }
+
+              50% {
+                transform: translateX(-50%);
+              }
+            }
+
+
+          }
+
+          &--tab {
+            display: flex;
+            overflow-x: scroll;
+            position: relative;
+            margin: 0 auto;
+
+            @include pc {
+              // padding: 0 0 p(60);
+              width: 90%;
+              gap: p(35);
+            }
+
+            @include sp {
+              width: 95%;
+              gap: s(20);
+            }
+
+
+            .archive--item {
+              cursor: pointer;
+              flex-shrink: 0;
 
               @include pc {
-                width: p(83);
-                height: p(40);
+                width: p(76);
+              }
+
+              @include sp {
+                width: s(50);
+              }
+
+              &.active {
+                cursor: default;
+
+                .archive--item--img {
+                  border: solid $P-F38549;
+
+                  @include pc {
+                    border-width: p(5);
+                  }
+
+                  @include sp {
+                    border-width: s(2);
+                  }
+                }
+
+                .archive--item--title {
+                  background-color: $P-F38549;
+
+                  .TX {
+                    color: $F-FFFFFF;
+                  }
+                }
+              }
+
+              &:hover {
+                .archive--item--img {
+                  border: solid $P-f3844992;
+
+                  @include pc {
+                    border-width: p(5);
+                  }
+
+                  @include sp {
+                    border-width: s(2);
+                  }
+                }
+
+                .archive--item--title {
+                  background-color: $P-f3844992;
+
+                  .TX {
+                    color: $F-FFFFFF;
+                  }
+                }
+              }
+
+              &--img {
+                border-radius: 50%;
+                object-fit: cover;
+                object-position: center;
+                transition: all 0.3s;
+
+                @include pc {
+                  width: p(76);
+                  height: p(76);
+                }
+
+                @include sp {
+                  width: s(50);
+                  height: s(50);
+                }
+              }
+
+              &--title {
+                text-align: center;
+                border-radius: 50px;
+                transition: all 0.3s;
+                width: 100%;
+                font-size: 100%;
+
+                @include pc {
+                  padding: p(10) 0;
+                }
+
+                @include sp {
+                  padding: s(3) 0;
+                }
+
+                .TX {
+                  @include wt800;
+                  color: #6B644D;
+                  transition: all 0.3s;
+                  overflow-wrap: break-word;
+                  word-wrap: break-word;
+
+                  @include pc {
+                    font-size: p(14);
+                  }
+
+                  @include sp {
+                    font-size: s(14);
+                  }
+                }
               }
             }
           }
 
-          .character-box {
+
+          &--items {
             position: absolute;
-            bottom: 0;
-            translate: -50% 0;
-            z-index: 10;
-            pointer-events: none;
+            overflow-x: scroll;
+            overflow-y: hidden;
 
-            .character {
-              @include imgContain("koneko.png");
-              transition: left 0.5s ease;
+            @include pc {
+              width: 80%;
+              top: 60%;
+              right: 0;
+              translate: 0 -50%;
+              padding: p(80) 0 0;
+            }
+
+            @include sp {
+              width: 95%;
+              height: fit-content;
               margin: 0 auto;
-              
-
-              @include pc {
-                width: p(57);
-                height: p(54);
-              }
+              top: 50%;
+              left: 50%;
+              translate: -50% -50%;
             }
 
-            .name {
-              @include pc {
-                width: p(40);
-                font-size: p(13);
-                text-align: center;
-              }
-            }
-
-            &.me {
-              animation: floating-y 2s ease-in-out infinite alternate-reverse;
-
-              @keyframes floating-y {
-                0% {
-                  transform: translateY(0%);
-                }
-
-                100% {
-                  transform: translateY(-5%);
-                }
-              }
+            &--wap {
+              display: none;
 
               @include pc {
-                top: p(-260) !important;
+                gap: p(35);
               }
 
-              .character {
-                @include imgContain("me.png");
+              @include sp {
+                gap: s(20);
+              }
+
+              &.active {
+                display: flex;
+              }
+
+              .archive--items {
+                aspect-ratio: 2/1;
+                flex-shrink: 0;
+                cursor: pointer;
 
                 @include pc {
-                  width: p(165);
-                  height: p(257);
+                  width: p(411);
+                  @include column(p(23));
+                  padding-right: p(20);
                 }
+
+                @include sp {
+                  width: 50%;
+                  @include column(s(20));
+                }
+
+                &:hover {
+
+                  .items--title {
+                    background-color: #F38549;
+
+                    .TL {
+                      color: $F-FFFFFF;
+                    }
+                  }
+                }
+
+                @include sp {}
+
+                .items--img {
+                  width: 100%;
+                  aspect-ratio: 411 / 268;
+                  border-radius: 5px;
+                  background-color: #ffffff;
+
+                  @include pc {
+                    padding: p(17);
+                  }
+
+                  @include sp {
+                    padding: s(10);
+                  }
+
+                  .img {
+                    aspect-ratio: 376 / 236;
+                    width: 100%;
+                    height: fit-content;
+                    object-fit: cover;
+                    object-position: center;
+                  }
+                }
+
+                .items--title {
+                  width: 100%;
+                  border-radius: 50px;
+                  background-color: #ffffffb4;
+                  border: solid #F38549;
+                  transition: all 0.3s;
+
+                  @include pc {
+                    padding: p(3) 0;
+                    border-width: p(3);
+                  }
+
+                  @include sp {
+                    padding: s(3) 0;
+                    border-width: s(2);
+                  }
+
+                  .TL {
+                    text-align: center;
+                    @include wt800;
+                    color: #F38549;
+
+                    @include pc {
+                      font-size: p(32);
+                    }
+
+                    @include sp {
+                      font-size: s(16);
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+
+        }
+
+
+      }
+      .destination {
+        position: absolute;
+
+        .goal {
+          display: block;
+          @include imgContain("goal.png");
+          position: relative;
+          left: 73%;
+
+          @include pc {
+            width: p(107);
+            height: p(62);
+          }
+
+          &.clear {
+            @include imgContain("clear.png");
+          }
+
+          &.not {
+            @include imgContain("not.png");
+
+            @include pc {
+              width: p(83);
+              height: p(40);
+            }
+          }
+        }
+
+        .character-box {
+          position: absolute;
+          bottom: 0;
+          translate: -50% 0;
+          z-index: 10;
+          pointer-events: none;
+
+          .character {
+            @include imgContain("koneko.png");
+            transition: left 0.5s ease;
+            margin: 0 auto;
+
+
+            @include pc {
+              width: p(57);
+              height: p(54);
+            }
+          }
+
+          .name {
+            @include pc {
+              width: p(40);
+              font-size: p(13);
+              text-align: center;
+            }
+          }
+
+          &.me {
+            animation: floating-y 2s ease-in-out infinite alternate-reverse;
+
+            @keyframes floating-y {
+              0% {
+                transform: translateY(0%);
+              }
+
+              100% {
+                transform: translateY(-5%);
+              }
+            }
+
+            @include pc {
+              top: p(-260) !important;
+            }
+
+            .character {
+              @include imgContain("me.png");
+
+              @include pc {
+                width: p(165);
+                height: p(257);
               }
             }
           }
         }
       }
+
     }
   }
 
   &.puzzle {
-    background: linear-gradient(180deg, #BCFAFF 0%, #FFF 100%);
 
     .cloud-box {
       .road-cloud {
@@ -293,20 +607,30 @@
       }
     }
 
-    #road {
-      @include imgContain("road-bg.png");
+    .wrap{
+      width: p(1280);
+    }
+    .page-section{
+      z-index: 5;
       position: absolute;
       bottom: 0;
-      z-index: 5;
-
+      display: none;
 
       @include pc {
         width: p(1280);
         height: p(700);
       }
 
+      &.page1{
+        @include imgContain("road-bg.png");
+      }
+      &.page2{
+        @include imgContain("bg-c.png");
+      }
+      &.show{
+        display: block;
+      }
       .road-inner {
-        @include imgContain("road.png");
         position: relative;
 
         @include pc {
@@ -346,171 +670,29 @@
               @include pc {
                 width: p(180);
               }
-
-              &:nth-child(1) {
-                @include pc {
-                  bottom: p(-11);
-                  left: p(-100);
-                }
-              }
-
-              &:nth-child(2) {
-                @include pc {
-                  bottom: p(15);
-                  left: p(108);
-                }
-
-                .character-box {
-                  @include pc {
-                    top: p(-50);
-                  }
-                }
-              }
-
-              &:nth-child(3) {
-                @include pc {
-                  bottom: p(25);
-                  left: p(310);
-                }
-
-                .character-box {
-                  @include pc {
-                    bottom: p(-30);
-                  }
-                }
-              }
-
-              &:nth-child(4) {
-                @include pc {
-                  bottom: p(-5);
-                  right: p(290);
-                }
-
-                .character-box {
-                  @include pc {
-                    top: p(-80);
-                  }
-                }
-              }
-
-              &:nth-child(5) {
-                @include pc {
-                  top: p(213);
-                  right: p(167);
-                  rotate: -90deg;
-                }
-
-                .goal,
-                .character-box {
-                  @include pc {
-                    rotate: 90deg;
-                  }
-                }
-
-                .character-box {
-                  @include pc {
-                    bottom: p(-100);
-                  }
-                }
-
-                .goal {
-                  @include pc {
-                    left: 50%;
-                  }
-                }
-              }
-
-              &:nth-child(6) {
-                @include pc {
-                  width: p(150);
-                  top: p(105);
-                  right: p(355);
-                  scale: -1 1;
-                  rotate: 65deg;
-                }
-
-                .goal,
-                .character-box {
-                  @include pc {
-                    rotate: 65deg;
-                  }
-                }
-
-                .goal {
-                  @include pc {
-                    left: 45%;
-                    top: p(4);
-                  }
-                }
-
-                .character-box {
-                  @include pc {
-                    scale: -1 1;
-                  }
-
-                  &.me {
-                    @include pc {
-                      top: p(-125) !important;
-                      margin-left: p(132);
-
-                    }
-                  }
-                }
-
-              }
-
-              &:nth-child(7) {
-                @include pc {
-                  width: p(200);
-                  top: p(40);
-                  left: p(243);
-                  scale: -1 1;
-                  rotate: -12deg;
-
-                  .goal,
-                  .character-box {
-                    @include pc {
-                      rotate: -12deg;
-                    }
-                  }
-
-                  .character-box {
-                    @include pc {
-                      scale: -1 1;
-                    }
-                  }
-
-                }
-              }
-
-              &:nth-child(8) {
-                @include pc {
-                  top: p(103);
-                  left: p(99);
-                  rotate: -30deg;
-                  scale: -1 1;
-
-                  .goal,
-                  .character-box {
-                    @include pc {
-                      rotate: -30deg;
-                    }
-                  }
-
-                  .character-box {
-                    @include pc {
-                      scale: -1 1;
-                      bottom: p(-59);
-                    }
-                  }
-
-                  .goal {
-                    left: 109%;
-                  }
-                }
-              }
             }
           }
+        }
+        .section-arrow{
+          @include iconContain($next-section);
+          position: relative;
+          @include pc{
+            width: p(46);
+            height: p(120);
+            bottom: p(268);
+          }
+
+          &.next-section{
+            @include pc{
+              margin-left: auto;
+            }
+          }
+          &.back-section{
+            scale: -1 1;
+            @include pc{
+              margin-right: auto;
+            }
+          }  
         }
       }
     }
@@ -519,7 +701,8 @@
       position: absolute;
       z-index: 20;
       height: fit-content;
-      @include pc{
+
+      @include pc {
         left: 0;
         bottom: p(45);
       }
@@ -531,7 +714,7 @@
       .C_chat-content {
         #latest-messages {
           @include pc {
-            padding-left:p(15);
+            padding-left: p(15);
           }
 
           .sac-chat-name {
@@ -550,107 +733,129 @@
               height: fit-content;
               padding: p(15) p(10);
               margin-top: p(23);
+              line-height: 1.5;
             }
           }
         }
-        .C_reaction{
+
+        .C_reaction {
           background: $B-F69064;
-          @include pc{
+
+          @include pc {
             width: p(165);
             border-radius: 0 p(15) p(15) 0;
             margin-top: p(23);
             padding: p(10) p(8) p(10) p(10);
           }
-          .reaction-counter{
+
+          .reaction-counter {
             position: absolute;
-            @include pc{
+
+            @include pc {
               top: p(30);
-              right: p(67);        
+              right: p(67);
             }
           }
-          .coin-counter{
-            @include pc{
+
+          .coin-counter {
+            @include pc {
               margin: p(3) 0 0 auto;
             }
           }
         }
       }
     }
-    .under-menu{
+
+    .under-menu {
       position: absolute;
       z-index: 99;
       background: rgba(92, 92, 92, 0.50);
       width: 100%;
       transition: all 0.5s;
-      @include pc{
+
+      @include pc {
         padding: p(64) p(38) p(34);
         bottom: p(-160);
       }
-      .menu-arrow{
+
+      .menu-arrow {
         position: absolute;
         left: 50%;
         translate: -50% 0;
-        @include pc{
+
+        @include pc {
           top: p(14);
         }
-        
-        &::before,&::after{
+
+        &::before,
+        &::after {
           content: "";
           position: absolute;
           background-color: $B-FFFFFF;
           top: 0;
-          @include pc{
+
+          @include pc {
             border-radius: p(4);
             width: p(30);
             height: p(4);
           }
         }
-        &::before{
-          @include pc{
+
+        &::before {
+          @include pc {
             rotate: -30deg;
             right: p(-3);
           }
         }
-        &::after{
-          @include pc{
+
+        &::after {
+          @include pc {
             rotate: 30deg;
             left: p(-4);
           }
-        }    
+        }
       }
-      .menu-box{
+
+      .menu-box {
         display: flex;
         justify-content: right;
-        @include pc{
+
+        @include pc {
           gap: p(20);
         }
-        .btn{
-          @include pc{
+
+        .btn {
+          @include pc {
             width: p(92);
             height: p(92);
           }
-          &.road-my-btn{
+
+          &.road-my-btn {
             @include imgContain("my-btn.png");
           }
-          &.road-ranking-btn{
+
+          &.road-ranking-btn {
             @include imgContain("ranking-btn.png");
           }
-          &.road-column-btn{
+
+          &.road-column-btn {
             @include imgContain("column-btn.png");
           }
-          &.road-question-btn{
+
+          &.road-question-btn {
             @include imgContain("question-btn.png");
           }
-          &.road-game-btn{
+
+          &.road-game-btn {
             @include imgContain("game-btn.png");
           }
         }
-        
       }
-      &.open{
+      &.open {
         bottom: 0;
         transition: all 0.5s;
       }
     }
   }
 }
+
