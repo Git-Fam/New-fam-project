@@ -679,4 +679,14 @@ $(function () {
 			prevSection.addClass("show");
 		}
 	});
+	$(".archive--item--img").click(function () {
+		var currentSection = $(".page-section.show");
+		currentSection.removeClass("show");
+		$(".page1").addClass("show");
+	});
+
+	//道のり　SPchat
+	$(".C_chat-content").click(function () {
+		$(this).toggleClass("open");
+	});
 });

@@ -1,12 +1,9 @@
-
 <?php
 get_header(); 
-
 
 // 現在のユーザー名を取得
 $current_user = wp_get_current_user();
 $current_username = $current_user->display_name; // 現在のログインユーザーの表示名
-
 
 // 全ユーザーの進捗データを格納する配列
 $all_users_progress = [];
@@ -31,7 +28,6 @@ foreach ($users as $user) {
 
     $progress_data["JQ01"] = get_user_meta($user_id, "JQ01", true) ?: '0';
 
-
     // ユーザーごとの進捗データを配列に追加
     $all_users_progress[] = array(
         'user_id' => $user_id,
@@ -41,7 +37,8 @@ foreach ($users as $user) {
 }
 ?>
 
-<div class="road-wappaer puzzle">
+<div class="sp-wrap">
+<div class="road-wappaer">
     <div class="cloud-box">
         <div class="road-cloud flowing"></div>
         <div class="road-cloud cloudAnime"></div>
@@ -56,9 +53,7 @@ foreach ($users as $user) {
         <div class="road-cloud road-cloud02"></div>
         <div class="road-cloud road-cloud02"></div>
     </div>
-    <div class="road-header">
-        <p class="TL">カリキュラム選択　〉<?php echo $category->name; ?></p>
-    </div>
+
     <div class="archive--contents--tab">
         <?php
         $categories = get_categories(array('parent' => 0)); // 最上位のカテゴリーのみを取得する
@@ -76,105 +71,415 @@ foreach ($users as $user) {
     </div>
     <div class="arrow"></div>
 
-
     <?php
         $categories = get_categories(array('parent' => 0)); // 最上位のカテゴリーのみを取得する
         $firstCategory = true; // 最初のカテゴリーを識別するためのフラグ
         foreach ($categories as $category):
-            ?>
-            <div class="archive--contents--items--wap<?php if ($firstCategory) echo ' active'; // 最初のカテゴリーにのみ.activeを追加 ?> <?php echo $category->name; ?>">
-                <section id="road-01" class="page-section page1 show">
-                    <div class="road-inner">
-                        <div class="content">
-                            <div class="road-content">
-                
-                                <?php
-                                $args = array(
-                                    'category__in' => array($category->term_id),
-                                    'posts_per_page' => -1, // すべての投稿を取得
-                                );
-                                $query = new WP_Query($args);
-                                if ($query->have_posts()):
-                                    $index = 1; // 投稿ごとに異なるdivクラス名を使用するためのカウンタ
-                                    while ($query->have_posts()): $query->the_post();
-
-                                    $div_class = $progress_data["div0{$index}"] ?? 'div01'; // カスタムフィールドがない場合、デフォルトで div01 を使用
-                                    
-                                        ?>
-
-                                        <div class="destination <?php echo esc_attr($div_class); ?>">
-                                            <a class="goal" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" target="_blank" rel="noopener noreferrer">
-                                            </a>
-                                        </div>
-                                        <?php
-                                    endwhile;
-                                else:
-                                    ?>
-                                    <p>このカテゴリーには投稿がありません。</p>
-                                    <?php
-                                endif;
-                                wp_reset_postdata();
-                                ?>
-                            </div>
-                        </div>
-                        <!-- 動的リンクの表示 -->
-                        <div class="section-arrow next-section"></div>
-                    </div>
-                </section>
-
-            </div>
-            <?php
-            $firstCategory = false; // 最初のカテゴリー後はフラグをfalseに設定
-        endforeach;
     ?>
 
-    
+    <div class="archive--contents--items--wap<?php if ($firstCategory) echo ' active'; ?> <?php echo esc_attr($category->name); ?>">
+    <div class="road-header">
+            <p class="TL">カリキュラム選択　〉<?php echo esc_html($category->name); ?></p>
+    </div>
 
-    <section id="road-02" class="page-section page2">
+<?php
+// カテゴリー内のすべての投稿を取得
+$args = array(
+    'category__in' => array($category->term_id),
+    'posts_per_page' => -1, // すべての投稿を取得
+);
+$query = new WP_Query($args);
+$total_posts = $query->found_posts;
+
+// 投稿数が4つ以下の場合はセクション5のみ表示
+if ($total_posts <= 4) {
+    // クラス名を投稿数に応じて変更
+    $class_name = '';
+    if ($total_posts == 4) {
+        $class_name = 'four-posts';
+    } elseif ($total_posts == 3) {
+        $class_name = 'three-posts';
+    } elseif ($total_posts == 2) {
+        $class_name = 'two-posts';
+    } elseif ($total_posts == 1) {
+        $class_name = 'one-post';
+    }
+    ?>
+
+    <!-- セクション5 (投稿数が4つ以下の場合のみ表示) -->
+    <section class="page-section page5 onepage <?php echo $class_name; ?>">
+        <div class="road"></div>
         <div class="road-inner">
             <div class="content">
+                <div class="tree tree-left"></div>
+                <div class="tree tree-right"></div>
+                <div class="castle"></div>
                 <div class="road-content">
                     <?php
-                        $categories = get_categories(array('parent' => 0)); // 最上位のカテゴリーのみを取得する
-                        $firstCategory = true; // 最初のカテゴリーを識別するためのフラグ
-                        foreach ($categories as $category):
-                            ?>
-                            <!-- <div class="archive--contents--items--wap<?php if ($firstCategory) echo ' active'; // 最初のカテゴリーにのみ.activeを追加 ?> <?php echo $category->name; ?>"> -->
-                                <?php
-                                $args = array(
-                                    'category__in' => array($category->term_id),
-                                    'posts_per_page' => -1, // すべての投稿を取得
-                                );
-                                $query = new WP_Query($args);
-                                if ($query->have_posts()):
-                                    while ($query->have_posts()): $query->the_post();
-                                        ?>
+                    if ($query->have_posts()):
+                        while ($query->have_posts()): $query->the_post();
 
-                                        <div class="destination div01">
-                                            <a class="goal" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" target="_blank" rel="noopener noreferrer">
-                                            </a>
-                                        </div>
-                                        <?php
-                                    endwhile;
-                                else:
-                                    ?>
-                                    <p>このカテゴリーには投稿がありません。</p>
-                                    <?php
-                                endif;
-                                wp_reset_postdata();
-                                ?>
-                            <!-- </div> -->
+                            // 記事に付与されたタグを取得
+                            $post_tags = get_the_tags();
+                            $tag_classes = '';
+
+                            if ($post_tags) {
+                                foreach ($post_tags as $tag) {
+                                    $tag_classes .= ' ' . esc_attr($tag->slug);
+                                }
+                            }
+                            ?>
+
+                            <div class="destination <?php echo $tag_classes; ?>">
+                                <div class="goal-wrap">
+                                    <a class="goal" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" target="_blank" rel="noopener noreferrer">
+                                    </a>
+                                    <div class="goal-bg"></div>
+                                </div>
+                            </div>
+
                             <?php
-                            $firstCategory = false; // 最初のカテゴリー後はフラグをfalseに設定
-                        endforeach;
+                        endwhile;
+                    else:
+                        ?>
+                        <p>このカテゴリーには投稿がありません。</p>
+                        <?php
+                    endif;
+
+                    wp_reset_postdata(); // クエリをリセット
+                    ?>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<?php
+} else {
+    // 投稿数が5つ以上の場合は通常のセクション表示ロジック
+    ?>
+    <!-- セクション1 -->
+    <section class="page-section page1 show">
+        <div class="road-inner">
+            <div class="content">
+                <div class="tree"></div>
+                <div class="road-content">
+
+                    <?php
+                    // 全ての投稿数から最後の4つを引く
+                    $remaining_posts = $total_posts - 4;
+
+                    // 表示する投稿数をセクションごとに分割するロジック
+                    if ($total_posts > 36) {
+                        $num_sections = 4; // 36投稿以上の場合は、4つのセクションに分ける
+                    } elseif ($total_posts > 26) {
+                        $num_sections = 3; // 26投稿以上の場合は、3つのセクションに分ける
+                    } elseif ($total_posts > 16) {
+                        $num_sections = 2; // 16投稿以上の場合は、2つのセクションに分ける
+                    } else {
+                        $num_sections = 1; // 16投稿未満の場合は、1つのセクション
+                    }            
+                    // セクションごとの平均投稿数
+                    $posts_per_section = floor($remaining_posts / $num_sections);
+
+                    // 余りの計算
+                    $remainder = $remaining_posts % $num_sections;
+
+                    // 投稿表示ロジック
+                    $post_index = 0;
+
+                    if ($query->have_posts()):
+                        while ($query->have_posts()): $query->the_post();
+
+                            // セクション1には余り分を加算
+                            if ($post_index >= ($posts_per_section + $remainder)) {
+                                break; // セクション1の投稿を表示するループを終了
+                            }
+
+                            // 記事に付与されたタグを取得
+                            $post_tags = get_the_tags();
+                            $tag_classes = '';
+
+                            if ($post_tags) {
+                                foreach ($post_tags as $tag) {
+                                    $tag_classes .= ' ' . esc_attr($tag->slug);
+                                }
+                            }
+                            ?>
+
+                            <div class="destination <?php echo $tag_classes; ?>">
+                                <div class="goal-wrap">
+                                    <a class="goal" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" target="_blank" rel="noopener noreferrer">
+                                    </a>
+                                    <div class="goal-bg"></div>
+                                </div>
+                            </div>
+
+                            <?php
+                            $post_index++;
+                        endwhile;
+                    endif;
+
+                    wp_reset_postdata(); // クエリをリセット
                     ?>
                 </div>
             </div>
             <!-- 動的リンクの表示 -->
-            <div class="section-arrow back-section"></div>
+             <div class="arrow-box">
+                <div class="section-arrow next-section"></div>
+             </div>
         </div>
     </section>
 
+        <?php if ($total_posts > 16): // 投稿数が16以上の場合のみ中間セクションを表示 ?>
+        <!-- セクション2 (中間セクション) -->
+        <section class="page-section page2">
+            <div class="road-inner">
+                <div class="content">
+                    <div class="tree"></div>
+                    <div class="road-content">
+                
+                        <?php
+                        // 中間の投稿を取得
+                        $args = array(
+                            'category__in' => array($category->term_id),
+                            'posts_per_page' =>$posts_per_section,  // 次のセクションに表示する投稿数
+                            'offset' => ($posts_per_section + $remainder), // セクション1で表示した投稿数をスキップ
+                        );
+                        $query = new WP_Query($args);
+
+                        if ($query->have_posts()):
+                            while ($query->have_posts()): $query->the_post();
+
+                                // 記事に付与されたタグを取得
+                                $post_tags = get_the_tags();
+                                $tag_classes = '';
+
+                                if ($post_tags) {
+                                    foreach ($post_tags as $tag) {
+                                        $tag_classes .= ' ' . esc_attr($tag->slug);
+                                    }
+                                }
+                                ?>
+
+                                <div class="destination <?php echo $tag_classes; ?>">
+                                <div class="goal-wrap">
+                                    <a class="goal" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" target="_blank" rel="noopener noreferrer">
+                                    </a>
+                                    <div class="goal-bg"></div>
+                                </div>
+                                </div>
+
+                                <?php
+                            endwhile;
+                        else:
+                            ?>
+                            <p>このカテゴリーには投稿がありません。</p>
+                            <?php
+                        endif;
+
+                        wp_reset_postdata(); // クエリをリセット
+                        ?>
+                    </div>
+                </div>
+                <!-- 動的リンクの表示 -->
+                <div class="arrow-box">
+                    <div class="section-arrow back-section"></div>
+                    <div class="section-arrow next-section"></div>
+                </div>
+            </div>
+        </section>
+        <?php endif; ?>
+
+        <?php if ($total_posts > 26): // 投稿数が26以上の場合にさらに中間セクションを表示 ?>
+        <!-- セクション3 -->
+        <section class="page-section page3">
+            <div class="road-inner">
+                <div class="content">
+                    <div class="tree"></div>
+                    <div class="road-content">
+                
+                        <?php
+                        // セクション3の投稿を取得
+                        $args = array(
+                            'category__in' => array($category->term_id),
+                            'posts_per_page' => $posts_per_section,  // 次のセクションに表示する投稿数
+                            'offset' => ($posts_per_section * 2 + $remainder), // セクション1と2で表示した投稿数をスキップ
+                        );
+                        $query = new WP_Query($args);
+
+                        if ($query->have_posts()):
+                            while ($query->have_posts()): $query->the_post();
+
+                                // 記事に付与されたタグを取得
+                                $post_tags = get_the_tags();
+                                $tag_classes = '';
+
+                                if ($post_tags) {
+                                    foreach ($post_tags as $tag) {
+                                        $tag_classes .= ' ' . esc_attr($tag->slug);
+                                    }
+                                }
+                                ?>
+
+                                <div class="destination <?php echo $tag_classes; ?>">
+                                <div class="goal-wrap">
+                                    <a class="goal" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" target="_blank" rel="noopener noreferrer">
+                                    </a>
+                                    <div class="goal-bg"></div>
+                                </div>
+                                </div>
+
+                                <?php
+                            endwhile;
+                        else:
+                            ?>
+                            <p>このカテゴリーには投稿がありません。</p>
+                            <?php
+                        endif;
+
+                        wp_reset_postdata(); // クエリをリセット
+                        ?>
+                    </div>
+                </div>
+                <!-- 動的リンクの表示 -->
+                <div class="arrow-box">
+                    <div class="section-arrow back-section"></div>
+                    <div class="section-arrow next-section"></div>
+                </div>
+            </div>
+        </section>
+        <?php endif; ?>
+
+        <?php if ($total_posts > 36): // 投稿数が36以上の場合にさらに中間セクションを表示 ?>
+        <!-- セクション4 -->
+        <section class="page-section page4">
+            <div class="road-inner">
+                <div class="content">
+                    <div class="tree"></div>
+                    <div class="road-content">
+                
+                        <?php
+                        // セクション4の投稿を取得
+                        $args = array(
+                            'category__in' => array($category->term_id),
+                            'posts_per_page' => $posts_per_section,  // 次のセクションに表示する投稿数
+                            'offset' => ($posts_per_section * 3 + $remainder), // セクション1と2と3で表示した投稿数をスキップ
+                        );
+                        $query = new WP_Query($args);
+
+                        if ($query->have_posts()):
+                            while ($query->have_posts()): $query->the_post();
+
+                                // 記事に付与されたタグを取得
+                                $post_tags = get_the_tags();
+                                $tag_classes = '';
+
+                                if ($post_tags) {
+                                    foreach ($post_tags as $tag) {
+                                        $tag_classes .= ' ' . esc_attr($tag->slug);
+                                    }
+                                }
+                                ?>
+
+                                <div class="destination <?php echo $tag_classes; ?>">
+                                <div class="goal-wrap">
+                                    <a class="goal" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" target="_blank" rel="noopener noreferrer">
+                                    </a>
+                                    <div class="goal-bg"></div>
+                                </div>
+                                </div>
+
+                                <?php
+                            endwhile;
+                        else:
+                            ?>
+                            <p>このカテゴリーには投稿がありません。</p>
+                            <?php
+                        endif;
+
+                        wp_reset_postdata(); // クエリをリセット
+                        ?>
+                    </div>
+                </div>
+                <!-- 動的リンクの表示 -->
+                <div class="arrow-box">
+                    <div class="section-arrow back-section"></div>
+                    <div class="section-arrow next-section"></div>
+                </div>
+            </div>
+        </section>
+        <?php endif; ?>
+
+
+        <!-- セクション5 (最後の5つの投稿) -->
+        <section class="page-section page5">
+                <div class="load"></div>
+
+                <div class="road-inner">
+    
+                    <div class="content">
+                        <div class="tree tree-left"></div>
+                        <div class="tree tree-right"></div>
+                        <div class="castle"></div>
+                        <div class="road-content">
+                            <?php
+                            // 最後の4つの投稿を取得
+                            $args = array(
+                                'category__in' => array($category->term_id),
+                                'posts_per_page' => 4,  // 最後の4つのみ取得
+                                'offset' => $total_posts - 4, // 最後の4つを取得するためのオフセット
+                            );
+                            $query = new WP_Query($args);
+
+                            if ($query->have_posts()):
+                                while ($query->have_posts()): $query->the_post();
+
+                                    // 記事に付与されたタグを取得
+                                    $post_tags = get_the_tags();
+                                    $tag_classes = '';
+
+                                    if ($post_tags) {
+                                        foreach ($post_tags as $tag) {
+                                            $tag_classes .= ' ' . esc_attr($tag->slug);
+                                        }
+                                    }
+                                    ?>
+
+                                    <div class="destination <?php echo $tag_classes; ?>">
+                                        <div class="goal-wrap">
+                                            <a class="goal" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" target="_blank" rel="noopener noreferrer">
+                                            </a>
+                                            <div class="goal-bg"></div>
+                                        </div>
+                                    </div>
+
+                                    <?php
+                                endwhile;
+                            else:
+                                ?>
+                                <p>このカテゴリーには投稿がありません。</p>
+                                <?php
+                            endif;
+
+                            wp_reset_postdata(); // クエリをリセット
+                            ?>
+                        </div>
+                    </div>
+                    <!-- 動的リンクの表示 -->
+                    <div class="arrow-box">
+                        <div class="section-arrow back-section"></div>
+                    </div>
+                </div>
+            </section>
+
+        <?php
+        }
+        ?>
+    </div>
+            <?php
+            $firstCategory = false; // 最初のカテゴリー後はフラグをfalseに設定
+        endforeach;
+    ?>
 
     <div class="road-chat">
         <div class="C_chat-content">
@@ -183,7 +488,6 @@ foreach ($users as $user) {
             <!-- この要素追加で新着メッセージ表示 -->
             <div id="latest-messages"></div>
 
-            <!-- <p class="timeline-TL">完了タイムライン</p> -->
             <div class="timeline-wrap">
                 <div class="timeline">
                     <?php
@@ -293,7 +597,6 @@ foreach ($users as $user) {
                     }
                     ?>
                 </div>
-
             </div>
 
             <div class="C_reaction">
@@ -321,7 +624,7 @@ foreach ($users as $user) {
     </div>
 </div>
 
-
+</div>
 <!-- データの受け渡し用スクリプト -->
 <script>
     const allUsersProgress = <?php echo json_encode($all_users_progress); ?>;

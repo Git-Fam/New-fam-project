@@ -13,6 +13,10 @@
     @include pc {
       gap: p(15);
     }
+    @include sp{
+      display: none;
+      gap: 15px;
+    }
 
     .sac-chat-message {
       color: $F-B29975;
@@ -24,6 +28,12 @@
         font-size: p(10);
         padding: p(7) p(16);
         border-radius: p(3);
+      }
+      @include sp{
+        width: 132px;
+        font-size: 10px;
+        padding: 7px 16px;
+        border-radius: 3px;
       }
 
       &::before {
@@ -39,6 +49,18 @@
           left: p(-7);
         }
 
+        @include sp{
+          width: 17px;
+          height: 6px;
+          left: -7px;
+        }
+      }
+    }  
+  }
+  &.open{
+    #latest-messages{
+      @include sp{
+        display: flex;
       }
     }
   }
