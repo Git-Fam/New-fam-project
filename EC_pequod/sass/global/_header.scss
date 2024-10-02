@@ -7,7 +7,7 @@
 #header {
   background-color: #FFF;
 
-  .container{
+  .container {
     max-width: unset !important;
     padding-right: 0 !important;
   }
@@ -116,6 +116,7 @@
 
             @include pc {
               width: 31px;
+              height: 31px;
             }
 
             @include sp {
@@ -209,7 +210,7 @@
           color: #585D5F;
           @include wt500;
           line-height: normal;
-          
+
           @include pc {
             font-size: 16px;
             letter-spacing: 0.64px;

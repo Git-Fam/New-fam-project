@@ -128,7 +128,7 @@
     gap: 30px;
 
     @include pc {
-      justify-content: space-between;
+      justify-content: center;
       max-width: 1080px;
       margin: 0 auto;
     }

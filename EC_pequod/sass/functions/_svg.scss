@@ -5,6 +5,9 @@ $drip: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" wid
 // selectArrow
 $selectArrow: url('data:image/svg+xml;utf-8,<svg width="6" height="15" viewBox="0 0 6 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 1.76L0.282 6.47H5.718L3 1.76Z" fill="%23989898"/><path d="M3 13.24L0.282 8.53H5.718L3 13.24Z" fill="%23989898"/></svg>');
 
+// bookmark
+$bookmark: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="70" height="88" viewBox="0 0 70 88" fill="none"><path d="M0 0H70V88L35 68.5191L0 88V0Z" fill="url(%23paint0_linear_359_4214)" /><defs><linearGradient id="paint0_linear_359_4214" x1="35" y1="0" x2="35" y2="88" gradientUnits="userSpaceOnUse" ><stop stop-color="%23FFBE81" /><stop offset="0.355" stop-color="%23FFBE81" /><stop offset="1" stop-color="%23F9ED82" /></linearGradient></defs></svg>');
+
 
 // SVG使い方（色変更パターン）
 @function encode($ColorCode){
