@@ -2444,6 +2444,55 @@ body {
 }
 
 /* -----------------------
+    billing
+----------------------- */
+.product-form .shopping-form-container .form_container .form_content form .form_content-item .billing-check {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+}
+@media screen and (min-width: 768px) {
+  .product-form .shopping-form-container .form_container .form_content form .form_content-item .billing-check {
+    width: 20px;
+    height: 20px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .product-form .shopping-form-container .form_container .form_content form .form_content-item .billing-check {
+    width: 20px;
+    height: 20px;
+  }
+}
+.product-form .shopping-form-container .form_container .form_content form .form_content-item .billing-check:checked::before {
+  content: "";
+  width: 80%;
+  height: 30%;
+  background: unset;
+  border-radius: 0;
+  border-bottom: solid 2px #A8DAE9;
+  border-left: solid 2px #A8DAE9;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.product-form .shopping-form-container .form_container .form_content form .form_content-item .check-TX {
+  color: #989898;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.billing-input.input-area {
+  display: none !important;
+}
+
+#new_add_flag:checked ~ .billing-input {
+  display: flex !important;
+}
+
+/* -----------------------
   C_example
 ----------------------- */
 /* -----------------------
@@ -5729,56 +5778,6 @@ body {
   top: 50%;
   translate: 0 -50%;
   left: -28px;
-}
-
-/* -----------------------
-    billing
------------------------ */
-.product-form .shopping-form-container .form_container .form_content form .form_content-item .billing-check {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  position: relative;
-}
-@media screen and (min-width: 768px) {
-  .product-form .shopping-form-container .form_container .form_content form .form_content-item .billing-check {
-    width: 20px;
-    height: 20px;
-  }
-}
-@media screen and (max-width: 767px) {
-  .product-form .shopping-form-container .form_container .form_content form .form_content-item .billing-check {
-    width: 20px;
-    height: 20px;
-  }
-}
-.product-form .shopping-form-container .form_container .form_content form .form_content-item .billing-check:checked::before {
-  content: "";
-  width: 80%;
-  height: 30%;
-  background: unset;
-  border-radius: 0;
-  border-bottom: solid 2px #A8DAE9;
-  border-left: solid 2px #A8DAE9;
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-45deg);
-}
-.product-form .shopping-form-container .form_container .form_content form .form_content-item .check-TX {
-  color: #989898;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  margin-top: -15px;
-}
-
-.billing-input.input-area {
-  display: none !important;
-}
-
-#new_add_flag:checked ~ .billing-input {
-  display: flex !important;
 }
 
 /*# sourceMappingURL=main.css.map */
