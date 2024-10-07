@@ -187,11 +187,9 @@
       }
     }
 
-    .display__character {
-      aspect-ratio: 234/274;
-      background-color: #00000080;
-      position: absolute;
+    .display_character-wap {
       z-index: 2;
+      position: absolute;
       left: 50%;
       translate: -50% 0;
 
@@ -204,6 +202,7 @@
         bottom: s(30);
         width: s(130);
       }
+
     }
 
     .display__character__ground {
@@ -339,12 +338,9 @@
               left: 50%;
               translate: -50% -50%;
               aspect-ratio: 1/1;
-              background-color: #00000086;
-              background-position: center;
-              background-size: contain;
-              background-repeat: no-repeat;
+              object-fit: contain;
+              object-position: center;
               width: 80%;
-
             }
           }
 
@@ -912,7 +908,7 @@
 
 
                 @include pc {
-                  width: calc(100% / 9 - (pmi(18) * 8 / 9));
+                  width: max(calc(100% / 9 - (pmi(18) * 8 / 9)), 120px);
 
                 }
 
@@ -975,7 +971,7 @@
                   pointer-events: none;
                   @include center;
 
-                  img{
+                  img {
                     width: 100%;
                     height: 100%;
                     object-fit: contain;

@@ -143,12 +143,4 @@ function register_avatar_post_type()
     }
   }
   add_action('save_post', 'save_avatar_meta_box');
-
-
-
-
-
-
-
-
 }

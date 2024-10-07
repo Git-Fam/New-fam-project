@@ -38,6 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   // FAM
   $FAM01 = $_POST['FAM01'];
+  $FAM02 = $_POST['FAM02'];
+  $FAM03 = $_POST['FAM03'];
 
   // test
   $test01 = $_POST['test01'];
@@ -213,6 +215,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     'Form01' => $Form01,
     // FAM
     'FAM01' => $FAM01,
+    'FAM02' => $FAM02,
+    'FAM03' => $FAM03,
     // test
     'test01' => $test01,
     // JS

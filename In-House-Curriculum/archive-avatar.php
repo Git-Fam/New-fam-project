@@ -1,13 +1,107 @@
 <?php get_header(); ?>
 
 
-<form action="">
+
+<?php
+// 保存処理
+// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+//     $user_id = get_current_user_id();
+//     $selected_items = [];
+//     $owned_items = [];
+
+//     foreach ($_POST as $key => $value) {
+
+//         // キャラクターの保存処理
+//         if (strpos($key, 'selected_items-character-character') === 0) {
+//             $selected_character = sanitize_text_field($value);
+//             update_user_meta($user_id, 'selected_character', $selected_character);
+//             // 持っているキャラクターを蓄積保存
+//             $existing_owned_characters = get_user_meta($user_id, 'owned_characters', true);
+//             if ($existing_owned_characters) {
+//                 $existing_owned_characters = json_decode($existing_owned_characters, true);
+//             } else {
+//                 $existing_owned_characters = [];
+//             }
+//             if (!is_array($existing_owned_characters)) {
+//                 $existing_owned_characters = [];
+//             }
+//             if (!in_array($selected_character, $existing_owned_characters)) {
+//                 $existing_owned_characters[] = $selected_character;
+//             }
+//             update_user_meta($user_id, 'owned_characters', json_encode($existing_owned_characters));
+//         }
+
+//         // 帽子の保存処理
+//         if (strpos($key, 'selected_items-item-hat') === 0) {
+//             $selected_hat = sanitize_text_field($value);
+//             update_user_meta($user_id, 'selected_hat', $selected_hat);
+//             // 持っている帽子を蓄積保存
+//             $existing_owned_hats = get_user_meta($user_id, 'owned_hats', true);
+//             if ($existing_owned_hats) {
+//                 $existing_owned_hats = json_decode($existing_owned_hats, true);
+//             } else {
+//                 $existing_owned_hats = [];
+//             }
+//             if (!is_array($existing_owned_hats)) {
+//                 $existing_owned_hats = [];
+//             }
+//             if (!in_array($selected_hat, $existing_owned_hats)) {
+//                 $existing_owned_hats[] = $selected_hat;
+//             }
+//             update_user_meta($user_id, 'owned_hats', json_encode($existing_owned_hats));
+//         }
+
+//         // メガネの保存処理
+//         if (strpos($key, 'selected_items-item-glasses') === 0) {
+//             $selected_glasses = sanitize_text_field($value);
+//             update_user_meta($user_id, 'selected_glasses', $selected_glasses);
+//             // 持っているメガネを蓄積保存
+//             $existing_owned_glasses = get_user_meta($user_id, 'owned_glasses', true);
+//             if ($existing_owned_glasses) {
+//                 $existing_owned_glasses = json_decode($existing_owned_glasses, true);
+//             } else {
+//                 $existing_owned_glasses = [];
+//             }
+//             if (!is_array($existing_owned_glasses)) {
+//                 $existing_owned_glasses = [];
+//             }
+//             if (!in_array($selected_glasses, $existing_owned_glasses)) {
+//                 $existing_owned_glasses[] = $selected_glasses;
+//             }
+//             update_user_meta($user_id, 'owned_glasses', json_encode($existing_owned_glasses));
+//         }
+//     }
+// }
+
+// 共通の保存処理関数をインクルード
+include_once './function/cooperator/common-avatar-save.php';
+include_once './function/cooperator/avatar-id-get.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $user_id = get_current_user_id();
+
+    foreach ($_POST as $key => $value) {
+        save_user_item($user_id, $key, $value);
+    }
+}
+
+
+
+?>
+
+
+
+
+
+<form action="" method="POST">
     <div class="change-clothes">
         <!-- ディスプレイ -->
         <div class="change-clothes__display">
             <header class="display__header">
 
-                <a class="return__button hover-opa" href="#" onclick="if (confirm('変更があった場合、情報は失われます。本当に閉じますか？')) { window.close(); } return false;"></a>
+                <a class="return__button hover-opa" href="<?php bloginfo('url'); ?>/my" onclick="return confirm('本当に戻りますか？変更があった場合、情報は失われます。');">
+                    <div class="icon icon-01"></div>
+                </a>
 
                 <div class="self__area">
                     <!-- 所持金 -->
@@ -34,13 +128,18 @@
                     </div>
 
                     <!-- 保存ボタン -->
-                    <button class="saving__button" type="submit" disabled>
+                    <button class="saving__button" type="submit" disable>
                         <p class="TX">保存する</p>
                     </button>
                 </div>
 
             </header>
-            <div class="display__character"></div>
+
+            <!-- display-character -->
+            <div class="display_character-wap">
+                <?php display_character(); ?>
+            </div>
+
             <div class="display__character__ground"></div>
 
             <!-- キャラクターのセリフ -->
@@ -51,11 +150,11 @@
                     </div>
                     <div class="item__info">
                         <div class="item__img__frame">
-                            <div class="item__img"></div>
+                            <img class="item__img" src="" alt="">
                         </div>
                         <div class="item__cost">
-                            <div class="icon coin"></div>
-                            <p class="TX">100000</p>
+                            <div class="icon "></div>
+                            <p class="TX"></p>
                         </div>
                     </div>
                     <div class="item__button">
@@ -65,8 +164,13 @@
                 </div>
             </div>
 
+            <script type="text/javascript">
+                var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
+                var user_id = "<?php echo get_current_user_id(); ?>";
+            </script>
+
             <!-- キャラクターの色変更 -->
-            <div class="display__character__color none">
+            <!-- <div class="display__character__color none">
                 <div class="color__area">
                     <div class="gradient__area">
                         <canvas id="color-display" class="gradient__item"></canvas>
@@ -80,53 +184,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <!-- ボタン -->
-            <div class="display__sideButton">
-                <button class="sideButton__button" type="button" onclick="restorePreviousState();">
-                    <div class="sideButton__text">
-                        <div class="icon icon-01"></div>
-                        <p class="TX">ひとつ戻す</p>
-                    </div>
-                </button>
-                <script>
-                    // 状態を保存するオブジェクト
-                    let previousState = {};
-
-                    // 現在の状態を保存する関数
-                    function saveCurrentState() {
-                        previousState = {
-                            checkboxes: Array.from(document.querySelectorAll('input[type="checkbox"]')).map(checkbox => checkbox.checked),
-                            radios: Array.from(document.querySelectorAll('input[type="radio"]')).map(radio => radio.checked)
-                        };
-                    }
-
-                    // 前の状態に戻す関数
-                    function restorePreviousState() {
-                        document.querySelectorAll('input[type="checkbox"]').forEach((checkbox, index) => {
-                            checkbox.checked = previousState.checkboxes[index];
-                        });
-                        document.querySelectorAll('input[type="radio"]').forEach((radio, index) => {
-                            radio.checked = previousState.radios[index];
-                        });
-                    }
-
-                    // ページ読み込み時に現在の状態を保存
-                    document.addEventListener('DOMContentLoaded', saveCurrentState);
-
-                    // チェックボックスやラジオボタンの変更時に現在の状態を保存
-                    document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(input => {
-                        input.addEventListener('change', saveCurrentState);
-                    });
-                </script>
-                <button class="sideButton__button" type="button">
-                    <div class="sideButton__text">
-                        <div class="icon icon-02"></div>
-                        <p class="TX">リセット</p>
-                    </div>
-                </button>
-            </div>
+            <?php display_back_button();?>
 
         </div>
 
@@ -243,10 +303,27 @@
                             ));
 
                             foreach ($posts as $post) {
+                                $thumbnail_url = get_the_post_thumbnail_url($post->ID, 'full');
+                                $input_value = esc_attr($category->slug . '-' . $tag->slug . '-' . $post->ID);
+                                $is_selected_item = in_array($input_value, $selected_items) ? 'checked' : '';
+                                $is_owned_character = in_array($input_value, $owned_characters) ? 'active' : '';
+                                $is_owned_hat = in_array($input_value, $owned_hats) ? 'active' : '';
+                                $is_owned_glasses = in_array($input_value, $owned_glasses) ? 'active' : '';
+                                $price = get_post_meta($post->ID, '_avatar_price', true);
+                                $payment_type = get_post_meta($post->ID, '_avatar_radio_payment', true);
+
                                 echo '<li>';
-                                echo '<input class="category-tag__item--wrap" type="radio" name="category-tag-' . esc_attr($category->term_id) . '-' . esc_attr($tag->term_id) . '" onclick="toggleRadio(this)">';
-                                echo '<div class="category-tag__item">' . apply_filters('the_content', $post->post_content) . '</div>';
-                                echo '<div class="nothing-item active"></div>';
+                                echo '<div class="price" style="display: none;">' . $price . '</div>';
+                                echo '<div class="payment_type" style="display: none;">' . $payment_type . '</div>';
+                                echo '<input class="category-tag__item--wrap" type="radio" name="selected_items-' . esc_attr($category->slug) . '-' . esc_attr($tag->slug) . '" value="' . $input_value . '" ' . $is_selected_item . ' onclick="toggleRadio(this)">';
+                                echo '<div class="category-tag__item">';
+                                if ($thumbnail_url) {
+                                    echo '<img src="' . esc_url($thumbnail_url) . '" alt="' . esc_attr($post->post_title) . '">';
+                                } else {
+                                    echo 'No image available';
+                                }
+                                echo '</div>';
+                                echo '<div class="nothing-item ' . $is_owned_character . ' ' . $is_owned_hat . ' ' . $is_owned_glasses . '"></div>';
                                 echo '</li>';
                             }
 
