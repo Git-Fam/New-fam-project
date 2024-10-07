@@ -29,6 +29,7 @@ $JQLast_value = get_user_meta($user_id, 'JQLast', true) ?: '0';
 // LP
 $LP01_value = get_user_meta($user_id, 'LP01', true) ?: '0';
 
+
 // Sass
 $Sass01_value = get_user_meta($user_id, 'Sass01', true) ?: '0';
 $Sass02_value = get_user_meta($user_id, 'Sass02', true) ?: '0';
@@ -39,6 +40,8 @@ $Form01_value = get_user_meta($user_id, 'Form01', true) ?: '0';
 
 // FAM
 $FAM01_value = get_user_meta($user_id, 'FAM01', true) ?: '0';
+$FAM02_value = get_user_meta($user_id, 'FAM02', true) ?: '0';
+$FAM03_value = get_user_meta($user_id, 'FAM03', true) ?: '0';
 
 // test
 $test01_value = get_user_meta($user_id, 'test01', true) ?: '0';
@@ -238,10 +241,8 @@ $Design09_3_value = get_user_meta($user_id, 'Design09_3', true) ?: '0';
 
             </div>
             <div class="C_character js-character-edit">
-                <dotlottie-player src="https://lottie.host/e60cec2b-65a9-4722-99fa-d9218781a66b/TBEXhkebbF.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></dotlottie-player>
-
-                <a class="clothes--change__button" href="<?php bloginfo('url'); ?>/avatar" target="_blank" rel="noopener noreferrer">編集する</a>
-
+                <?php display_character(); ?>
+                <a class="clothes--change__button" href="<?php bloginfo('url'); ?>/avatar">編集する</a>
             </div>
         </div>
 
@@ -633,10 +634,24 @@ $Design09_3_value = get_user_meta($user_id, 'Design09_3', true) ?: '0';
                                         <div class="progress--update">
                                             <div class="update--item">
                                                 <div class="update--item--title">
-                                                    <p class="TX"><span class="deco"></span>FAM</p>
+                                                    <p class="TX"><span class="deco"></span>FAM-クリニック</p>
                                                     <p class="count"><output class="count" id="value"><?php echo esc_attr($FAM01_value); ?></output>%</p>
                                                 </div>
                                                 <input class="progressBar" id="pi_input" name="FAM01" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($FAM01_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>FAM-占い</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($FAM02_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="FAM02" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($FAM02_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>FAM-さくらんぼ</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($FAM03_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="FAM03" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($FAM03_value); ?>" />
                                             </div>
                                         </div>
                                     </div>
@@ -1583,7 +1598,7 @@ $Design09_3_value = get_user_meta($user_id, 'Design09_3', true) ?: '0';
 
                             </form>
                         <?php endif; ?>
-                        <!-- ログインしていない時に表示する文字 -->
+                        <!-- ログインしていないトップにリダイレクト -->
                         <?php if (!is_user_logged_in()): ?>
                             <p class="TX">ログインしていません。</p>
                         <?php endif; ?>

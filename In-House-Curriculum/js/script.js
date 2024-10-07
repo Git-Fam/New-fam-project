@@ -25,8 +25,8 @@ $(function () {
   });
 
   // SPキャラクタークリック
-  $('.js-character-edit').on('click', function() {
-      $(this).toggleClass('active');
+  $('.js-character-edit').on('click', function () {
+    $(this).toggleClass('active');
   });
 
   // input要素の値を取得して表示
@@ -92,7 +92,7 @@ $(function () {
     });
   });
 
-  // カテゴリータブ切り替え(スキン編集画面)
+
   // カテゴリータブ切り替え(スキン編集画面)
   $(document).ready(function () {
     $('.category__list__items li').on('click', function () {
@@ -144,5 +144,127 @@ $(function () {
 
 
 
+  // マイページのタブ切り替え
+  $('.item__button .buttons.cancel').on('click', function () {
+    $('.display__character__serif').addClass('none');
+  });
 
+
+
+
+
+});
+
+
+
+
+
+
+
+$(function() {
+  // 操作履歴を保存するためのスタック
+  var actionStack = [];
+
+  // 操作をスタックにプッシュする関数
+  function pushAction(action) {
+      actionStack.push(action);
+  }
+
+  // 操作を元に戻す関数
+  function popAction() {
+      return actionStack.pop();
+  }
+
+  // input要素の::beforeがある場合の処理
+  $('input.category-tag__item--wrap').on('change', function() {
+      var paymentType = $(this).closest('li').find('.payment_type').text();
+      var thumbnailUrl = $(this).closest('li').find('img').attr('src'); // 画像のURLを取得
+      var tag = $(this).data('tag'); // データ属性からタグを取得
+      var name = $(this).attr('name');
+
+      // 現在の状態をスタックにプッシュ
+      pushAction({
+          name: name,
+          previousUrl: $('.' + name).attr('src')
+      });
+
+      if ($(this).is(':checked') && !$(this).siblings('.nothing-item').hasClass('active')) {
+          $('.display__character__serif').removeClass('none');
+          $('.item__cost .icon').removeClass('coin point').addClass(paymentType); // 以前のクラスを削除してから追加
+          $('.item__cost .TX').text($(this).closest('li').find('.price').text()); // 価格を設定
+          $('.item__img').attr('src', thumbnailUrl); // 画像のURLを設定
+          $('.character__' + tag).attr('src', thumbnailUrl); // タグに対応する画像のURLを設定
+      } else {
+          $('.display__character__serif').addClass('none');
+          $('.item__cost .icon').removeClass('coin point'); // すべてのクラスを削除
+          $('.item__img').attr('src', ''); // 画像のURLをクリア
+          $('.character__' + tag).attr('src', ''); // タグに対応する画像のURLをクリア
+      }
+
+      // saving__buttonのdisabled属性の制御
+      var allActiveChecked = true;
+      $('input.category-tag__item--wrap').each(function() {
+          if ($(this).is(':checked') && !$(this).siblings('.nothing-item').hasClass('active')) {
+              allActiveChecked = false;
+          }
+      });
+
+      if (allActiveChecked) {
+          $('.saving__button').removeAttr('disabled');
+      } else {
+          $('.saving__button').attr('disabled', 'disabled');
+      }
+  });
+
+  // クリックでimgを変更（着せ替え）
+  $('input.category-tag__item--wrap').on('change', function() {
+      var name = $(this).attr('name');
+      var thumbnailUrl = $(this).closest('li').find('img').attr('src');
+
+      // 現在の状態をスタックにプッシュ
+      pushAction({
+          name: name,
+          previousUrl: $('.' + name).attr('src')
+      });
+
+      // 対応するクラスのimg要素のsrcを変更
+      $('.' + name).attr('src', thumbnailUrl);
+  });
+
+  // ひとつ戻すボタンのクリックイベント
+  $('.sideButton__button').on('click', function() {
+      var lastAction = popAction();
+      if (lastAction) {
+          $('.' + lastAction.name).attr('src', lastAction.previousUrl);
+      }
+  });
+
+  // 交換するボタンのクリックイベント
+  $('.buttons.exchange').on('click', function() {
+      var paymentType = $('.item__cost .icon').hasClass('coin') ? 'coin' : 'point';
+      var cost = parseInt($('.item__cost .TX').text(), 10);
+      var selectedItem = $('input.category-tag__item--wrap:checked').val();
+
+      if (confirm('本当に交換しますか？')) {
+          $.ajax({
+              url: ajaxurl, // WordPressのAjax URL
+              type: 'POST',
+              data: {
+                  action: 'exchange_item',
+                  payment_type: paymentType,
+                  cost: cost,
+                  user_id: user_id, // 現在のユーザーID
+                  selected_item: selectedItem // 選択されたアイテム
+              },
+              success: function(response) {
+                  if (response.success) {
+                      alert('交換が成功しました！');
+                      location.reload(); // ページをリロードして最新の情報を表示
+                  } else {
+                      alert('交換に失敗しました: ' + response.data);
+                  }
+              }
+          });
+      }
+  });
 });

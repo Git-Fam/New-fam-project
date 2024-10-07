@@ -27,6 +27,7 @@ function add_user_info(){
   $user_info['JQLast'] = 'JQLast';
   // LP
   $user_info['LP01'] = 'LP01';
+
   // Sass
   $user_info['Sass01'] = 'Sass01';
   $user_info['Sass02'] = 'Sass02';
@@ -35,6 +36,8 @@ function add_user_info(){
   $user_info['Form01'] = 'Form01';
   // FAM
   $user_info['FAM01'] = 'FAM01';
+  $user_info['FAM02'] = 'FAM02';
+  $user_info['FAM03'] = 'FAM03';
   // test
   $user_info['test01'] = 'test01';
   // JS

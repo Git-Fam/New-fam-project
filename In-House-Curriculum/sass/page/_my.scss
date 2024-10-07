@@ -19,7 +19,7 @@
   @include sp {
     padding: s(40) s(20);
 
-    @media screen and (max-width: 767px) and (min-width: 550px) {
+    @media screen and (max-width: 767px) and (min-width: 0px) {
       min-height: 900px;
     }
   }
@@ -94,8 +94,8 @@
 
         @include sp {
           width: 80%;
-          padding: s(15) s(10);
-          margin-top: s(30);
+          padding: min(s(15),10px) min(s(10),7px);
+          margin-top: min(s(30));
         }
 
         .TX {
@@ -107,7 +107,7 @@
           }
 
           @include sp {
-            font-size: s(16);
+            font-size: min(s(16),16px);
           }
         }
 
@@ -122,7 +122,7 @@
           }
 
           @include sp {
-            width: s(120);
+            width: min(s(120),200px);
             right: s(0);
             bottom: calc(100% + s(3));
           }
@@ -137,7 +137,7 @@
         }
 
         @include sp {
-          @include column(s(5));
+          @include column(min(s(5), 5px));
           margin-top: s(10);
         }
 
@@ -154,7 +154,7 @@
 
           @include sp {
             width: 80%;
-            padding: s(10) s(10);
+            padding: min(s(10),10px) min(s(10),10px);
             @include column(s(5));
           }
 
@@ -171,7 +171,7 @@
             }
 
             @include sp {
-              font-size: s(12);
+              font-size: min(s(12),12px);
             }
 
             span {
@@ -184,7 +184,7 @@
               }
 
               @include sp {
-                font-size: s(14);
+                font-size: min(s(14),12px);
               }
             }
           }
@@ -216,7 +216,7 @@
 
               @include sp {
                 padding: s(5) 0;
-                font-size: s(11);
+                font-size: min(s(11),11px);
               }
 
 
@@ -239,7 +239,7 @@
         translate: -50% 0;
 
         @include pc {
-          width: clamp(200px, p(300), 300px);
+          width: clamp(100px, p(300), 200px);
           bottom: 0;
 
           &:hover {
@@ -253,7 +253,7 @@
         }
 
         @include sp {
-          width: clamp(100px, s(200), 300px);
+          width: clamp(0px, s(200), 180px);
           bottom: 0;
 
           &.js-character-edit {
