@@ -37,7 +37,7 @@
                                 <p class="TX">初回サーバー契約時に同時お申し込み限定</p>
                             </div>
                             <div class="C_Title_another--title">
-                                <h3 class="TL">ウォーターサーバー<br class="sp">総合窓口安心サポート</h3>
+                                <h3 class="TL">窓口の安心サポート</h3>
                             </div>
                         </div>
                         <!-- <div class="front__support--text">
@@ -75,7 +75,7 @@
                                                     <p class="TX">ウォーターサーバーの相談窓口</p>
                                                 </li>
                                                 <li>
-                                                    <p class="TX">家電保険</p>
+                                                    <p class="TX">動産総合保険</p>
                                                 </li>
                                             </ul>
                                         </div>
@@ -100,8 +100,8 @@
                                                 <div class="C_bookmark"></div>
                                                 <div class="inner--text">
                                                     <p class="TX">
-                                                        家電保険(動産総合保険)には付帯サービスとして、<wbr>
-                                                        家電の修理費用の特典が付いています！
+                                                        動産総合保険は付帯サービスになります。<wbr>
+                                                        家電の修理費用を補償いたします。
                                                     </p>
                                                     <small>
                                                         ※動産総合保険は、家電安心サポートのお申し込み日の属する月の翌々1日からご利用いただけます。
@@ -110,6 +110,16 @@
                                                         利用規約<br>
                                                         <a href="<?php echo $dev; ?>/terms/appliances-support.php" target="_blank" rel="noopener noreferrer">
                                                             こちらをご確認ください
+                                                        </a>
+                                                    </p>
+                                                    <p class="terms--link">
+                                                        <a href="sakura-ins-form.jp" target="_blank" rel="noopener noreferrer">
+                                                            家具安心サポートWEB請求フォームはこちら
+                                                        </a>
+                                                    </p>
+                                                    <p class="terms--link">
+                                                        <a href="https://www.sakura-ins.co.jp/agencydocument/pequod/kadenanshinsupportClaim.pdf" target="_blank" rel="noopener noreferrer">
+                                                            家具安心サポート郵送からの請求書はこちら
                                                         </a>
                                                     </p>
                                                 </div>
@@ -136,7 +146,7 @@
                                                     <p class="TX">ウォーターサーバーの相談窓口</p>
                                                 </li>
                                                 <li>
-                                                    <p class="TX">スマホ保険</p>
+                                                    <p class="TX">通信端末修理費用保険</p>
                                                 </li>
                                             </ul>
                                         </div>
@@ -161,8 +171,8 @@
                                                 <div class="C_bookmark"></div>
                                                 <div class="inner--text">
                                                     <p class="TX">
-                                                        スマホ保険(通信端末修理費用保険)付帯サービスとして、<wbr>
-                                                        スマホの修理費用を補填いたします！
+                                                        通信端末修理費用保険は付帯サービスになります。<wbr>
+                                                        スマホの修理費用を補償いたします。
                                                     </p>
                                                     <small>
                                                         ※通信端末修理費用保険は、スマホ安心サポートのお申し込み日の属する月の翌々1日からご利用いただけます。
@@ -171,6 +181,16 @@
                                                         利用規約<br>
                                                         <a href="<?php echo $dev; ?>/terms/smartphone-support.php" target="_blank" rel="noopener noreferrer">
                                                             こちらをご確認ください
+                                                        </a>
+                                                    </p>
+                                                    <p class="terms--link">
+                                                        <a href="https://www.sakura-ins-form.jp/form/66fd04d15e43c" target="_blank" rel="noopener noreferrer">
+                                                            スマホ安心サポート（通信端末修理費用保険）WEB請求フォームはこちら
+                                                        </a>
+                                                    </p>
+                                                    <p class="terms--link">
+                                                        <a href="https://www.sakura-ins.co.jp/agencydocument/pequod/sumahoanshinsupportClaim.pdf" target="_blank" rel="noopener noreferrer">
+                                                            スマホ安心サポート（通信端末修理費用保険）郵送からのご請求はこちら
                                                         </a>
                                                     </p>
                                                 </div>
@@ -203,10 +223,10 @@
                                                     <p class="TX">健康相談</p>
                                                 </li>
                                                 <li>
-                                                    <p class="TX">家電保険</p>
+                                                    <p class="TX">動産総合保険</p>
                                                 </li>
                                                 <li>
-                                                    <p class="TX">スマホ保険</p>
+                                                    <p class="TX">通信端末修理費用保険</p>
                                                 </li>
                                             </ul>
                                         </div>
@@ -306,8 +326,8 @@
                                                 <div class="C_bookmark"></div>
                                                 <div class="inner--text">
                                                     <p class="TX">
-                                                        スマホ保険(通信端末修理費用保険)付帯サービスとして、<wbr>
-                                                        スマホの修理費用を補填いたします！
+                                                        通信端末修理費用保険は付帯サービスになります。<wbr>
+                                                        スマホの修理費用を補償いたします。
                                                     </p>
                                                     <small>
                                                         ※通信端末修理費用保険は、スマホ安心サポートのお申し込み日の属する月の翌々1日からご利用いただけます。
@@ -318,6 +338,16 @@
                                                             こちらをご確認ください
                                                         </a>
                                                     </p>
+                                                    <p class="terms--link">
+                                                        <a href="https://www.sakura-ins-form.jp/form/66fd04d15e43c" target="_blank" rel="noopener noreferrer">
+                                                            プレミアム安心保証パック（通信端末修理費用保険）WEB請求フォームはこちら
+                                                        </a>
+                                                    </p>
+                                                    <p class="terms--link">
+                                                        <a href="https://www.sakura-ins.co.jp/agencydocument/pequod/sumahoanshinsupportClaim.pdf" target="_blank" rel="noopener noreferrer">
+                                                            プレミアム安心保証パック（通信端末修理費用保険）郵送からのご請求はこちら
+                                                        </a>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </li>
@@ -326,8 +356,8 @@
                                                 <div class="C_bookmark"></div>
                                                 <div class="inner--text">
                                                     <p class="TX">
-                                                        家電保険(動産総合保険)には付帯サービスとして、<wbr>
-                                                        家電の修理費用の特典が付いています！
+                                                        動産総合保険は付帯サービスになります。<wbr>
+                                                        家電の修理費用を補償いたします。
                                                     </p>
                                                     <small>
                                                         ※動産総合保険は、家電安心サポートのお申し込み日の属する月の翌々1日からご利用いただけます。
@@ -336,6 +366,16 @@
                                                         利用規約<br>
                                                         <a href="<?php echo $dev; ?>/terms/warranty-pack.php" target="_blank" rel="noopener noreferrer">
                                                             こちらをご確認ください
+                                                        </a>
+                                                    </p>
+                                                    <p class="terms--link">
+                                                        <a href="https://www.sakura-ins-form.jp/form/66fd0201a7bb9" target="_blank" rel="noopener noreferrer">
+                                                            プレミアム安心保証パック（動産総合保険）WEB請求フォームはこちら
+                                                        </a>
+                                                    </p>
+                                                    <p class="terms--link">
+                                                        <a href="https://www.sakura-ins.co.jp/agencydocument/pequod/premiumanshinhosyoupuckClaim.pdf" target="_blank" rel="noopener noreferrer">
+                                                            プレミアム安心保証パック（動産総合保険）郵送からのご請求はこちら
                                                         </a>
                                                     </p>
                                                 </div>
@@ -365,7 +405,7 @@
                                                                 ウォーターサーバー<br>
                                                                 冷蔵庫・冷凍庫<br>
                                                                 コーヒーメーカー<br>
-                                                                ※本サービス利用契約開始日時点で、5年以内に新品として購入した機器
+                                                                ※事故日を機起算日として5年以内に新品として購入した機器
                                                             </p>
                                                         </li>
                                                         <li class="inner--list">
@@ -373,7 +413,7 @@
                                                                 対象の損害
                                                             </h5>
                                                             <p class="TX">
-                                                                外装の破損、損壊、水濡れ、電気的機械的故障
+                                                                外装の破損、損壊、水濡れ、電気的機械的故障、盗難
                                                             </p>
                                                         </li>
                                                         <li class="inner--list">
@@ -390,6 +430,14 @@
                                                             </h5>
                                                             <p class="TX">
                                                                 最大30万円
+                                                            </p>
+                                                        </li>
+                                                        <li class="inner--list">
+                                                            <h5 class="TL">
+                                                                年間使用上限回数
+                                                            </h5>
+                                                            <p class="TX">
+                                                                1回
                                                             </p>
                                                         </li>
                                                         <li class="inner--list">
@@ -450,7 +498,7 @@
                                                                 年間保険金額
                                                             </h5>
                                                             <p class="TX">
-                                                                上限5万円上限
+                                                                上限5万円
                                                             </p>
                                                         </li>
                                                         <li class="inner--list">
@@ -524,14 +572,14 @@
                                                 <p class="TX">ウォーターサーバーの<wbr>相談窓口</p>
                                             </div>
                                             <div class="cost">
-                                                <p class="TX"><span>月額&nbsp;</span>550円</p>
+                                                <p class="TX"><span>月額&nbsp;</span>980円</p>
                                             </div>
                                         </li>
 
                                     </ul>
-                                    <div class="single--img">
+                                    <!-- <div class="single--img">
                                         <div class="img"></div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>

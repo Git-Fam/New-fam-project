@@ -20,6 +20,7 @@
             <li class="nav-item">
                 <a href="<?php echo $dev; ?>/qa.php" class="label">Q&A</a>
                 <ul class="link-list">
+                    <li class="link"><a href="<?php echo $dev; ?>/qa.php#server">ウォーターサーバーの相談窓口</a></li>
                     <li class="link"><a href="<?php echo $dev; ?>/qa.php#hozon">HOZON</a></li>
                     <li class="link"><a href="<?php echo $dev; ?>/qa.php#seiton">SEITON</a></li>
                     <li class="link"><a href="<?php echo $dev; ?>/qa.php#medical">メディカルレスキュー</a></li>

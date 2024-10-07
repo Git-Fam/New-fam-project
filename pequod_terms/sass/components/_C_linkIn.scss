@@ -21,15 +21,18 @@
     display: block;
     border-radius: 84.942px;
     background: $blue-03-parts;
+    display: grid;
+    place-items: center center;
 
     @include pc {
-      @include row(4, 6px);
+      @include row(5, 6px);
       padding: 6px 0;
     }
 
     @include sp {
       @include row(2, 8px);
       padding: 5px 0 3px;
+      height: 47px;
     }
 
     &.active {
@@ -43,6 +46,7 @@
       @include letterSpacing(16, 1.6);
       @include wt700;
       text-align: center;
+      
 
       @media screen and (max-width: 1030px) and (min-width: 768px) {
         font-size: 12px;

@@ -47,6 +47,9 @@
                         </div>
                         <div class="qa__prevalent--links">
                             <div class="C_linkIn">
+                                <a href="#server" class="C_linkIn--item hover-opa" id="link-server">
+                                    <p class="TX">ウォーターサーバーの<br>相談窓口</p>
+                                </a>
                                 <a href="#hozon" class="C_linkIn--item hover-opa" id="link-hozon">
                                     <p class="TX">HOZON</p>
                                 </a>
@@ -62,6 +65,45 @@
                             </div>
                         </div>
                         <div class="qa__prevalent--content">
+
+                        <div class="content--item" id="server">
+                                <div class="item--title">
+                                    <h4 class="TL">ウォーターサーバーの<br class="sp">相談窓口</h4>
+                                </div>
+                                <div class="item--container">
+                                    <div class="C_qa">
+                                        <ul class="C_qa-list">
+                                            <li class="item">
+                                                <div class="tab-TL question">
+                                                    <div class="icon">Q</div>
+                                                    <p class="TX">ウォーターサーバーの相談窓口への問い合わせ先は？</p>
+                                                </div>
+                                                <div class="tab-TL answer">
+                                                    <div class="answer-inner">
+                                                        <p class="TX">
+                                                            ウォーターサーバーの相談窓口の電話番号はお申込翌日、Eメールにて電話番号を記載しております。    
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="item">
+                                                <div class="tab-TL question">
+                                                    <div class="icon">Q</div>
+                                                    <p class="TX">解約方法を教えてください。</p>
+                                                </div>
+                                                <div class="tab-TL answer">
+                                                    <div class="answer-inner">
+                                                        <p class="TX">
+                                                        解約については、マイページの「定期購入一覧」より解約手続きをお願いいたします。<br>
+                                                        ご不明な方は、カスタマーセンター「shop-support@pequod.jp」までお問合せください。
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
 
                             <div class="content--item" id="hozon">
                                 <div class="item--title">
@@ -138,9 +180,22 @@
                                                     <p class="TX">解約方法を教えてください。</p>
                                                 </div>
                                                 <div class="tab-TL answer">
+                                                <p class="TX">
+                                                    解約については、マイページの「定期購入一覧」より解約手続きをお願いいたします。<br>
+                                                    ご不明な方は、カスタマーセンター「shop-support@pequod.jp」までお問合せください。
+                                                </p>
+                                                </div>
+                                            </li>
+                                            <li class="item">
+                                                <div class="tab-TL question">
+                                                    <div class="icon">Q</div>
+                                                    <p class="TX">お問い合わせ先</p>
+                                                </div>
+                                                <div class="tab-TL answer">
                                                     <div class="answer-inner">
                                                         <p class="TX">
-                                                            解約については、カスタマーセンター「support@shop.pequod.jp」までお問合せください。                                                        </p>
+                                                        050-5835-2516　<br class="sp">サポート時間10:00~18:00
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </li>
@@ -265,6 +320,19 @@
                                                     </div>
                                                 </div>
                                             </li>
+                                            <li class="item">
+                                                <div class="tab-TL question">
+                                                    <div class="icon">Q</div>
+                                                    <p class="TX">お問い合わせ先</p>
+                                                </div>
+                                                <div class="tab-TL answer">
+                                                    <div class="answer-inner">
+                                                        <p class="TX">
+                                                        050-5835-2516　<br class="sp">サポート時間10:00~18:00
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
                                         </ul>
                                     </div>
 
@@ -326,8 +394,23 @@
                                                 </div>
                                                 <div class="tab-TL answer">
                                                     <div class="answer-inner">
+                                                    <p class="TX">
+                                                        解約については、マイページの「定期購入一覧」より解約手続きをお願いいたします。<br>
+                                                        ご不明な方は、カスタマーセンター「shop-support@pequod.jp」までお問合せください。
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="item">
+                                                <div class="tab-TL question">
+                                                    <div class="icon">Q</div>
+                                                    <p class="TX">お問い合わせ先</p>
+                                                </div>
+                                                <div class="tab-TL answer">
+                                                    <div class="answer-inner">
                                                         <p class="TX">
-                                                            解約については、カスタマーセンター「support@shop.pequod.jp」までお問合せください。                                                        </p>
+                                                        050-5835-2516　<br class="sp">サポート時間10:00~18:00
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </li>
@@ -411,7 +494,21 @@
                                                 <div class="tab-TL answer">
                                                     <div class="answer-inner">
                                                         <p class="TX">
-                                                            解約については、カスタマーセンター「support@shop.pequod.jp」までお問合せください。
+                                                            解約については、マイページの「定期購入一覧」より解約手続きをお願いいたします。<br>
+                                                            ご不明な方は、カスタマーセンター「shop-support@pequod.jp」までお問合せください。
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="item">
+                                                <div class="tab-TL question">
+                                                    <div class="icon">Q</div>
+                                                    <p class="TX">お問い合わせ先</p>
+                                                </div>
+                                                <div class="tab-TL answer">
+                                                    <div class="answer-inner">
+                                                        <p class="TX">
+                                                        050-5835-2516　<br class="sp">サポート時間10:00~18:00
                                                         </p>
                                                     </div>
                                                 </div>

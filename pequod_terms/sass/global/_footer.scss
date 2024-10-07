@@ -89,7 +89,7 @@
 
         &:nth-child(2) {
           @include pc {
-            margin-right: -100px;
+            // margin-right: -100px;
           }
 
           @include sp {
@@ -109,11 +109,11 @@
 
         // &:nth-child(3) {
         //   @include pc {
-        //     margin-right: 100px;
+        //     width: 261px;
         //   }
-        //   @include sp{
-        //     margin-right: 110px;
-        //   }
+          // @include sp{
+          //   margin-right: 110px;
+          // }
         // }
       }
     }
