@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og: https://ogp.me/ns#">
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
+	<meta name="format-detection" content="email=no,telephone=no,address=no" />
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+	<meta property="og:locale" content="ja_JP" />
+
+	<!-- ▼SEO -->
+	<link rel="”canonical”" href="”URL”" />
+	<!-- ジェネレーターURL→ https://metatags.io/ -->
+
+	<!-- ▼ファビコン -->
+	<!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
+
+	<!-- ▼クロールして欲しくない -->
+	<!-- <meta name="robots" content="noindex,nofollow"> -->
+
+	<!-- ▼テーマカラー -->
+	<!-- <meta name="theme-color" content="#e9c931"> -->
+
+	<!-- ▼CSS -->
+	<link rel="stylesheet" href="css/main.css?ver=1.0.0" />
+	<link rel="stylesheet" href="css/main-sp.css?ver=1.0.0" />
+
+	<!-- ▼フォント -->
+</head>
+
+<body>
+
+
+	{$view->setLayoutVar('title', 'カート')}
+	{$view->setLayoutVar('keywords', '')}
+	{$view->setLayoutVar('description', '')}
+
+	{$view->setLayoutVar("css_files", "columnless.css", true)}
+	{$view->setLayoutVar("css_files", "multicart.css", true)}
+
+
+<!-- AmazonペイJS設定start -->
+{if !empty($amazon_config['amazon_pym_flag']) && $cart_arr[0].shipping_type != 2}
+{if !empty($amazon_config['cv2'])}
+<script src="/common/js/amazonV2/amazonV2Button.js?{$db_cache_mtime}"></script>
+<script src="https://static-fe.payments-amazon.com/checkout.js"></script>
+<script id="amazon"
+				data-placement="MultiCart"
+				data-button_index="{$button_index}"
+				data-button_color="Orange"
+				data-merchant_id="{$amazon_config['merchantId']}"
+				data-sandbox="{if !empty($amazon_config['sandbox'])}true{else}false{/if}"
+				data-payload='{$amazon_config['payload']}'
+				data-signature="{$amazon_config['signature']}"
+				data-public_key_id="{$amazon_config['public_key_id']}"
+				data-recurring_payload='{$amazon_config['recurring_payload']}'
+				data-recurring_signature="{$amazon_config['recurring_signature']}">
+</script>
+{else}
+<script id="amazon" src="/common/js/amazon/amazonBase.js"
+				data-client_id="{$amazon_config['client_id']}"
+				data-merchant_id="{$amazon_config['merchant_id']}"
+				data-paybutton_class="AmazonPayButton"
+				data-logout="true"
+				data-development="false"
+				data-host="{"Config::DOMAIN_NAME"|constant}">
+</script>
+{/if}
+{/if}
+<!-- AmazonペイJS設定end -->
+
+
+
+
+	<div class="template_inner880">
+		<div class="product-cart">
+			<aside class="C_flow">
+				<ul class="flow-item">
+					<li class="current">買い物かご</li>
+					<li>申し込みフォーム</li>
+					<li>内容のご確認</li>
+					<li>ご注文完了</li>
+				</ul>
+			</aside>
+
+			{if !empty($cart_arr)}
+			<section class="shopping-cart">
+				<div class="C_TL">
+					<div class="icon"></div>
+					<h2 class="TL">ショッピングカート</h2>
+				</div>
+
+				<!-- カート本体 -->
+				<div class="cart-in">
+					<div class="all__delete">
+						<!-- <a href="{$base_url}/cart/{$val.cart_id}">すべて削除</a> -->
+					</div>
+					<div class="cart--items">
+
+						{foreach from=$cart_arr key=key item=val}
+						<div class="shopping--item">
+							<div class="shopping--item--inner">
+								<div class="shopping--item--inner_variation">
+									<img src="{$val.main_image}" alt="">
+									<div class="variation_name">
+										<h3 class="TL">{$view->escape($val.item_name)}{if
+											$val.variant_class_and_name}（{$val.variant_class_and_name}）{/if}</h3>
+									</div>
+								</div>
+								<form method="post" action="{$smarty.server.REQUEST_URI|escape}">
+									<div class="shopping--item--inner_contents">
+										<div class="counts">
+											<p class="TX">{$val.item_num}</p>
+										</div>
+										<div class="yen">
+											<p class="TX">
+												{if empty($val.sale_price)}
+												{($val.item_price_tax * $val.item_num)|number_format}
+												{else}
+												{($val.sale_price * $val.item_num)|number_format}
+												{/if}
+											</p>
+											<input type="hidden" name="cart_id" value="{$val.cart_id}">
+											<input type="hidden" name="edit_sub" value="1">
+											<input type="hidden" name="reserve" value="{$val.reserve}">
+										</div>
+										<div class="delete">
+											<a href="{$base_url}/cart/{$val.cart_id}">削除</a>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						{/foreach}
+
+					</div>
+					<div class="gate">
+						<div class="postage flex-item">
+							<p class="TX">送料</p>
+							<p class="TX TX-right">{$send_price|number_format}円</p>
+						</div>
+						<div class="all_set flex-item">
+							<p class="TX">合計金額</p>
+							<p class="TX TX-right">{$sum_price|number_format}円</p>
+						</div>
+					</div>
+				</div>
+
+			</section>
+
+			<div class="step__up">
+				<div class="step__up--top">
+					<p class="TX">
+						お買物内容をご確認の上、お間違いがないようでしたら下記へお進みください。
+					</p>
+				</div>
+				<div class="step__up--inner">
+					<!-- 新規 -->
+					<!-- <div class="step--item">
+												<div class="title">
+														<h3 class="TL">会員登録がまだの方はこちら</h3>
+												</div>
+												<a class="jump_btn" href="{$base_url}/account/signin">新規会員登録</a>
+												<div class="text">
+														<p class="TX">
+																会員登録をすると便利なマイページをご利用いただけます。<br>
+																また、ログインするだけで毎回お名前や住所などを入力することなく、スムーズにお買い物をお楽しみいただけます。
+														</p>
+												</div>
+										</div> -->
+					<!-- ログイン -->
+					<!-- <div class="step--item">
+												<form method="post" action="{$base_url}/order/buy">
+														<div class="title">
+																<h3 class="TL">ログイン</h3>
+														</div>
+														<div class="inputs">
+																<div class="inputs--item">
+																		<label for="">メールアドレス</label>
+																		<input type="email" name="login_mail" value="">
+																</div>
+																<div class="inputs--item">
+																		<label for="">パスワード</label>
+																		<input type="password" name="login_pass" value="">
+																</div>
+														</div>
+														<input class="jump_btn" type="submit" value="ログイン">
+														<input type="hidden" name="login_sub" value="1">
+														<input type="hidden" name="_token" value="{$_token}">
+														<div class="text">
+																<p class="TX">
+																		※パスワードを忘れた方はこちらからパスワードの再発行を行ってください。
+																</p>
+																<a class="TX" href="{$base_url}/account/passwd">パスワードをお忘れの方はこちら</a>
+														</div>
+												</form>
+										</div> -->
+					<div class="step--item">
+						<div class="title">
+							<h3 class="TL">購入手続き</h3>
+						</div>
+						<a class="jump_btn" href="{$base_url}/order/buy">購入手続きへ</a>
+					</div>
+				</div>
+			</div>
+
+			{else}
+
+			<br><br><br>
+			<div class="noData">カートの中身はありません。</div>
+			<br><br><br>
+			<div class="btnArea text-center">
+				<a href="{$base_url}/product/list/6" class="btn_m">商品一覧ページへ</a>
+			</div>
+			{/if}
+		</div>
+	</div>
+
+
+
+
+	<script src="https://code.jquery.com/jquery-1.7.1.min.js"
+		integrity="sha256-iBcUE/x23aI6syuqF7EeT/+JFBxjPs5zeFJEXxumwb0=" crossorigin="anonymous"></script>
+	<script src="js/script.js"></script>
+	<script src="js/joint.js"></script>
+</body>
+
+</html>
