@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og: https://ogp.me/ns#">
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
+	<meta name="format-detection" content="email=no,telephone=no,address=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta property="og:locale" content="ja_JP" />
+	<link rel="”canonical”" href="”URL”" />
+	<link rel="stylesheet" href="css/main.css?ver=1.0.0" />
+	<link rel="stylesheet" href="css/main-sp.css?ver=1.0.0" />
+</head>
+
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	{$view->setLayoutVar('title', 'カート')}
+	{$view->setLayoutVar('keywords', '')}
+	{$view->setLayoutVar('description', '')}
+
+	{$view->setLayoutVar("css_files", "columnless.css", true)}
+	{$view->setLayoutVar("css_files", "multicart.css", true)}
+
+	<!-- AmazonペイJS設定start -->
+	{if !empty($amazon_config['amazon_pym_flag']) && $cart_arr[0].shipping_type != 2}
+	{if !empty($amazon_config['cv2'])}
+	<script src="/common/js/amazonV2/amazonV2Button.js?{$db_cache_mtime}"></script>
+	<script src="https://static-fe.payments-amazon.com/checkout.js"></script>
+	<script id="amazon" data-placement="MultiCart" data-button_index="{$button_index}" data-button_color="Orange"
+		data-merchant_id="{$amazon_config['merchantId']}"
+		data-sandbox="{if !empty($amazon_config['sandbox'])}true{else}false{/if}" data-payload='{$amazon_config['
+		payload']}' data-signature="{$amazon_config['signature']}" data-public_key_id="{$amazon_config['public_key_id']}"
+		data-recurring_payload='{$amazon_config[' recurring_payload']}'
+		data-recurring_signature="{$amazon_config['recurring_signature']}">
+		</script>
+	{else}
+	<script id="amazon" src="/common/js/amazon/amazonBase.js" data-client_id="{$amazon_config['client_id']}"
+		data-merchant_id="{$amazon_config['merchant_id']}" data-paybutton_class="AmazonPayButton" data-logout="true"
+		data-development="false" data-host="{" Config::DOMAIN_NAME"|constant}">
+		</script>
+	{/if}
+	{/if}
+	<!-- AmazonペイJS設定end -->
+
+
+	<div id="contents" class="template_inner880">
+		<div class="product-cart">
+			<aside class="C_flow">
+				<ul class="flow-item">
+					<li class="current">買い物かご</li>
+					<li>申し込みフォーム</li>
+					<li>内容のご確認</li>
+					<li>ご注文完了</li>
+				</ul>
+			</aside>
+
+
+			<section class="shopping-cart">
+				<div class="C_TL">
+					<div class="icon"></div>
+					<h2 class="TL">ショッピングカート</h2>
+				</div>
+
+				{if $information.point_division}
+				<div class="pc sp">
+					<p>
+						ポイント制度をご利用になられる場合は、会員登録後ログインしていただきますようお願い致します。<br>
+						ポイントは商品購入時に1pt＝1円として使用することができます。
+					</p>
+					{/if}
+					{if !empty($cart_arr)}<p>現在のお買い上げ合計金額は <span class="price">{$sum_price|number_format}円</span> です。</p>{/if}
+
+					{if $information.shipping_conditions !=0}
+					<div>{$information.shipping_conditions|number_format}円以上お買い上げで<span class="important">送料無料！</span></div>
+					{/if}
+
+					{if $errors|@count > 0}
+					<div class="errorDisp">
+						<ul id="submit_error" class="error_list">
+							{foreach from=$errors item=error}
+							<li><a href="#cart_{$cart_group}">▼</a> {$view->escape($error)}</li>
+							{/foreach}
+						</ul>
+					</div>
+				</div>
+				{/if}
+
+
+
+
+
+				<div id="cart" class="cart-in">
+
+
+
+					{if !empty($cart_arr_per_transaction)}
+					{foreach from=$cart_arr_per_transaction key=transaction_id item=cart_arr name=cart_group}
+					<!-- {if !empty($target_combined)} -->
+					<!-- {foreach from=$target_combined key=combined_key item=combined_val} -->
+					<!-- {foreach from=$combined_val key=child_combined_key item=child_combined_val name=combined_group} -->
+					<!-- {if $transaction_id == $child_combined_key && $smarty.foreach.combined_group.first} -->
+					<div class="cart--items 2">
+						<!-- {/if} -->
+						<!-- {/foreach} -->
+						<!-- {/foreach} -->
+
+						<!-- {foreach from=$target_combined key=combined_key item=combined_val} -->
+						<div class="shopping--item 2">
+							<!-- {foreach from=$combined_val key=child_combined_key item=child_combined_val name=combined_group} -->
+							<!-- {if $transaction_id == $child_combined_key && $smarty.foreach.combined_group.first} -->
+							<div class="step__up">
+								<div class="step__up--top">
+									<p class="TX">
+										お買物内容をご確認の上、お間違いがないようでしたら下記へお進みください。
+									</p>
+								</div>
+								<div class="step__up--inner">
+									<div class="step--item">
+										<div class="title">
+											<h3 class="TL">購入手続き</h3>
+										</div>
+										<form method="post" action="{$base_url}/order/combinedbuy">
+											<button type="submit" class="jump_btn">購入手続きへ</button>
+											<input type="hidden" name="deliv_combined_items"
+												value="{$combined_transaction_id_list[$combined_key]}">
+										</form>
+									</div>
+								</div>
+							</div>
+							<!-- {/if} -->
+							<!-- {/foreach} -->
+							<!-- {/foreach} -->
+							<!-- {/if} -->
+
+							<div id="cart_{$smarty.foreach.cart_group.index}" class="">
+
+								<!-- {if !empty($target_combined)} -->
+										<!-- {foreach from=$target_combined key=combined_key item=combined_val} -->
+										<!-- {if array_key_exists($transaction_id, $combined_val)} -->
+										<!-- <p>個別で発送をご希望の場合は「購入手続きへ」をクリックしてください。</p> -->
+										<!-- {/if} -->
+										<!-- {/foreach} -->
+										<!-- {/if} -->
+
+								<div class="pc sp">
+									<span id="amazon_pay_layer_{$smarty.foreach.cart_group.index}" class="processing_layer"
+										style="display:none"></span>
+									<span id="amazon_pay_message_{$smarty.foreach.cart_group.index}" class="processing_message"
+										style="display:none"></span>
+									<h2 id="{$bundle_tran_id}" class="cart_title" data-cartTransaction="{$bundle_tran_id}"
+										style="display: none;">
+										{$shipping_types[$cart_arr[0].shipping_type]}{if $cart_arr[0].type_num != 0} -
+										{$cart_types[$cart_arr[0].type_num]}{/if}{if $cart_arr[0].shipping_type != 0} -
+										{$cart_arr[0].item_name}{/if}
+									</h2>
+								</div>
+
+								<div class="shopping--item--inner">
+
+									<div id="{$transaction_id}" class="" data-cartTransaction="{$transaction_id}">
+
+										{foreach from=$cart_arr item=val}
+										<div class="cart_item_box cart_item_tr" data-cartId="{$val.cart_id}">
+											<div>
+												<button name="sub_d" class="btn_delete"
+													onclick="cartNumChange('{$val.cart_id}', '2', '{$transaction_id}');">削除</button>
+											</div>
+											<div class="">
+												<a href="{$val.product_url}" target="_blank" rel="noopener"><img src="{$val.main_image}" {if
+														$carrier=='p' }class="thumb150" {elseif $carrier=='s' }class="thumb120" {/if}></a>
+												<div class="cart_item_spec ml-4">
+													<a href="{$val.product_url}" target="_blank" rel="noopener">{$view->escape($val.item_name)}
+														{if $val.variant_class_and_name}（{$val.variant_class_and_name}）{/if}</a>
+													{if $val.reserve == 1}<div class="pc sp">予約商品</div>{/if}
+													{if $val.campaign_flag === true}<div class="sp pc">キャンペーン対象商品</div>{/if}
+													{if empty($val.pwd_data)}<div style="display: none;">{$val.item_size_str}</div>{/if}{*
+													サイズ表示/不要の際は非表示に *}
+													<div class="pc sp">
+														{if empty($val.sale_price)}
+														&yen; {$val.item_price_tax|number_format}
+														{else}
+														&yen; {$val.item_price_tax|number_format}<br class="sp">
+														&rarr; &yen; <span class="price">{$val.sale_price|number_format}</span>
+														{/if}
+														<input type="hidden" value="{$val.item_price_tax}" class="cart_item_price"
+															data-cartId="{$val.cart_id}">
+													</div>
+												</div>
+											</div>
+
+											<div class="d-flex justify-content-end align-items-baseline mt-4">
+												<form method="post" action="{$smarty.server.REQUEST_URI|escape}"
+													class="form-inline cart_amount">
+													数量：<span class="cart_item_num" data-cartId="{$val.cart_id}">{$val.item_num}</span>
+													<div class="sp pc">
+														<input type="submit" name="sub_p" value="+" class="form-check-input">
+														{if ($val.item_num - 1) < 1} <input type="submit" value="-" class="form-check-input"
+															disabled>
+															{else}
+															<input type="submit" name="sub_m" value="-" class="form-check-input">
+															{/if}
+													</div>
+													<input type="hidden" name="cart_id" value="{$val.cart_id}">
+												</form>
+												<div class="priceRow cart_item_syoukei_span" data-cartId="{$val.cart_id}">
+													{if empty($val.sale_price)}
+													&yen; {($val.item_price_tax * $val.item_num)|number_format}
+													<input type="hidden" value="{$val.item_price_tax * $val.item_num}"
+														class="cart_item_syoukei_val" data-cartId="{$val.cart_id}">
+													{else}
+													&yen; {($val.sale_price * $val.item_num)|number_format}
+													<input type="hidden" value="{$val.sale_price * $val.item_num}" class="cart_item_syoukei_val"
+														data-cartId="{$val.cart_id}">
+													{/if}
+												</div>
+											</div>
+										</div>
+										{/foreach}
+
+										<!-- {* 同梱物 *}
+												{if !empty($present[{$transaction_id}])}
+												{foreach from=$present[{$transaction_id}] item=val}
+												{if !empty($val.check_flag)}
+												<div class="cart_item_box d-flex py-2">
+													<img src="/item_main_m_image/{$val.main_image}" {if $carrier=='p' }class="thumb150" {elseif
+														$carrier=='s' }class="thumb120" {/if}>
+													<div class="cart_item_spec ml-4">
+														<div>同梱物：{$view->escape($val.item_name)}</div>
+														<div>数量：{$val.present_num}</div>
+													</div>
+												</div>
+												{/if}
+												{/foreach}
+												{/if}
+												{* //同梱物 *} -->
+
+										<div class="pc sp">
+											<div>商品合計（税込）</div>
+											<div class="priceRow">&yen; <span class="cart_tran_syoukei_span"
+													data-transactionId="{$transaction_id}">{number_format($sum_price[$transaction_id])}</span>
+											</div>
+											<input type="hidden" value="{$sum_price[$transaction_id]}" class="cart_tran_syoukei_val"
+												data-transactionId="{$transaction_id}">
+										</div>
+
+										{if $information.point_division}
+										<div class="sp pc">
+											<div>今回加算ポイント</div>
+											<div class="priceRow">{$point_division[$transaction_id]}pt</div>
+										</div>
+										{/if}
+
+										{if $information.shipping_conditions != 0 || $information.cod != 0}
+										<div class="pc sp">
+											{if $information.shipping_conditions != 0}
+											{if $delivery[$transaction_id].conditions_flag1}
+											送料無料まで後・・・<span class="price">&yen;
+												{$delivery[$transaction_id].no_charge1|number_format}</span>
+											{else}
+											<span class="red font-weight-bold">現在送料無料！</span><br>
+											{/if}
+											{else}
+											<!--<span class="price">現在送料無料！</span><br>-->
+											{/if}
+										</div>
+										{/if}
+										<div class="pc sp">
+											送料はまだ計算されていません。<br>
+											ポイント/クーポンは次の画面でご利用いただけます。
+										</div>
+									</div>
+
+									<!-- 購入ボタン -->
+									<div class="col-md-5">
+										<div class="btnArea text-center">
+											<form method="post" {if $cart_arr[0].shipping_type !=2}action="{$base_url}/order/buy"
+												{else}action="{$base_url}/preorder/buy" {/if}>
+												{if $cart_arr[0].shipping_type != 1}
+												<input type="submit" value="購入手続きへ" class="btn btn_proceed">
+												{else}
+												<input type="submit" name="regular_sub" value="定期購入手続き" class="btn btn_proceed">
+												{/if}
+
+												{if !empty($amazon_config['amazon_pym_flag']) && $cart_arr[0].shipping_type != 2}
+												<!-- Amazonペイ購入ボタン表示start -->
+												{if !empty($amazon_config['cv2'])}
+												<script id="amazon{$smarty.foreach.cart_group.index}" data-transaction_id="{$transaction_id}"
+													data-placement="Cart" data-button_index="{$smarty.foreach.cart_group.index}"
+													data-shipping_type="{$cart_arr[0].shipping_type}"></script>
+												<div id="AmazonPayButton{$smarty.foreach.cart_group.index}" class="AmazonPayButton mt-4"
+													style="width: 500px; max-width: 100%; min-height: 140px;"></div>
+												{else}
+												<div id="AmazonPayButton{$smarty.foreach.cart_group.index}" class="AmazonPayButton mt-4"
+													data-button='{literal}{"type":"PwA", "color":"Gold", "size":"x-large"}{/literal}'
+													data-item='{literal}{{/literal}"id": "{$item_id}", "num": "1", "transaction_id": "{$transaction_id}"{literal}}{/literal}'
+													data-cart='{$smarty.foreach.cart_group.index}'>
+												</div>
+												{/if}
+												<!-- Amazonペイ購入ボタン表示end -->
+												{/if}
+												<input type="hidden" name="transaction_id" value="{$transaction_id}"
+													id="tran_{$smarty.foreach.cart_group.index}">
+											</form>
+										</div>
+									</div>
+
+								</div>
+							</div><!-- //#cart_{$smarty.foreach.cart_group.index} -->
+
+							<!-- {if !empty($target_combined)} -->
+							<!-- {foreach from=$target_combined key=combined_key item=combined_val} -->
+						</div>
+						<!-- {foreach from=$combined_val key=child_combined_key item=child_combined_val name=combined_group} -->
+						<!-- {if $transaction_id == $child_combined_key && $smarty.foreach.combined_group.last} -->
+					</div>
+					<!-- {/if} -->
+					<!-- {/foreach} -->
+					<!-- {/foreach} -->
+
+
+
+
+					<!-- {/if} -->
+					{/foreach}
+
+
+					<div class="row justify-content-end mt-4">
+						<div class="col-md-5">
+							<a href="{$base_url}/product/list/" class="btn btn_back">お買い物を続ける</a>
+						</div>
+					</div>
+
+					{else}
+
+					<br><br><br>
+					<div>
+						<div class="noData">カートの中身はありません。</div>
+						<div class="btnArea text-center">
+							<a href="{$base_url}/product/list/" class="btn_m">商品一覧ページへ</a>
+						</div>
+					</div>
+					{/if}
+				</div>
+
+
+
+
+
+
+
+
+
+
+
+			</section>
+
+		</div>
+
+	</div><!-- //#contents -->
+
+
+
+
+
+
+
+
+	<script src="https://code.jquery.com/jquery-1.7.1.min.js"
+		integrity="sha256-iBcUE/x23aI6syuqF7EeT/+JFBxjPs5zeFJEXxumwb0=" crossorigin="anonymous"></script>
+	<script src="js/script.js"></script>
+	<script src="js/joint.js"></script>
+</body>
+
+</html>

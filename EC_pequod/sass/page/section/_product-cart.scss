@@ -83,17 +83,8 @@
           }
 
           &--inner {
-            display: flex;
+            position: relative;
 
-            @include pc {
-              align-items: center;
-              justify-content: space-between;
-            }
-
-            @include sp {
-              flex-direction: column;
-              gap: 37px;
-            }
 
             &_variation {
               display: flex;
@@ -199,6 +190,170 @@
                   font-size: 14px;
                   letter-spacing: 0.56px;
                   padding: 2px 18px;
+                }
+              }
+            }
+
+
+            // 追加
+            &--info {
+              display: flex;
+              align-items: center;
+              gap: 20px;
+              
+              @include pc {
+                justify-content: space-between;
+              }
+
+              @include sp {
+                flex-direction: column;
+                gap: 20px;
+              }
+
+              .info--image {
+                
+                @include pc {
+                  flex-shrink: 0;
+                  width: 202px;
+                }
+
+                @include sp {
+                  width: 80%;
+                  max-width: 300px;
+                }
+
+
+                a {
+                  display: block;
+                  width: 100%;
+
+                  img {
+                    width: 100%;
+                  }
+                }
+              }
+
+              .info--name {
+                width: 100%;
+
+                @include pc {
+                  // align-self: baseline;
+                  padding-top: 10px;
+                }
+
+                @include sp {}
+
+                a {
+                  color: #515151;
+                  font-size: 20px;
+                  @include wt700;
+                  line-height: 1.5;
+                  letter-spacing: 0.8px;
+
+                  @include sp {
+                    text-align: center;
+                  }
+                }
+              }
+
+              .info--amount {
+                
+                @include pc {
+                  flex-shrink: 0;
+                  width: 200px;
+                }
+
+                @include sp {
+                  width: 100%;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 10px;
+                }
+
+                &--inner {
+                  display: flex;
+                  align-items: center;
+                  justify-content: flex-end;
+                  gap: 10px;
+
+                  &--count {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                    gap: 10px;
+
+                    @include pc {}
+
+                    @include sp {}
+
+                    form {
+                      .TX {
+                        color: #515151;
+                        font-size: 18px;
+                        line-height: 1.5;
+                        letter-spacing: 0.8px;
+                        background: #FFF;
+                        padding: 6px;
+                        border: 1px solid #AAA;
+                        border-radius: 5px;
+                      }
+                    }
+
+                    .price {
+                      color: #515151;
+                      font-size: 18px;
+                      line-height: 1.5;
+                      letter-spacing: 0.8px;
+                    }
+                  }
+
+                  &--delete {
+
+                    button {
+                      color: #FFF;
+                      font-size: 12px;
+                      line-height: 1.5;
+                      background: #757575;
+                      border-radius: 100px;
+                      padding: 2px 18px;
+                      border: unset;
+                      cursor: pointer;
+                      white-space: nowrap;
+                    }
+                  }
+                }
+
+                &--buy {
+
+                  @include pc {
+                    position: absolute;
+                    bottom: -20px;
+                    right: 0;
+                    width: 200px;
+                  }
+
+                  @include sp {}
+
+                  .TX {
+                    color: #515151;
+                    font-size: 14px;
+                    line-height: 1.5;
+                  }
+
+                  form {
+                    .btn {
+                      width: 100%;
+                      padding: 5px 0;
+                      font-size: 14px;
+                      line-height: 1;
+                      @include wt700;
+                      letter-spacing: 2.4px;
+                      background: $subC;
+                      color: $whiteF;
+                      border: unset;
+                      cursor: pointer;
+                    }
+                  }
                 }
               }
             }

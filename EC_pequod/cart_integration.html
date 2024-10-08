@@ -34,11 +34,10 @@
 
 <body>
 
-
 	{$view->setLayoutVar('title', 'カート')}
 	{$view->setLayoutVar('keywords', '')}
 	{$view->setLayoutVar('description', '')}
-
+	
 	{$view->setLayoutVar("css_files", "columnless.css", true)}
 	{$view->setLayoutVar("css_files", "multicart.css", true)}
 
@@ -159,46 +158,6 @@
 					</p>
 				</div>
 				<div class="step__up--inner">
-					<!-- 新規 -->
-					<!-- <div class="step--item">
-												<div class="title">
-														<h3 class="TL">会員登録がまだの方はこちら</h3>
-												</div>
-												<a class="jump_btn" href="{$base_url}/account/signin">新規会員登録</a>
-												<div class="text">
-														<p class="TX">
-																会員登録をすると便利なマイページをご利用いただけます。<br>
-																また、ログインするだけで毎回お名前や住所などを入力することなく、スムーズにお買い物をお楽しみいただけます。
-														</p>
-												</div>
-										</div> -->
-					<!-- ログイン -->
-					<!-- <div class="step--item">
-												<form method="post" action="{$base_url}/order/buy">
-														<div class="title">
-																<h3 class="TL">ログイン</h3>
-														</div>
-														<div class="inputs">
-																<div class="inputs--item">
-																		<label for="">メールアドレス</label>
-																		<input type="email" name="login_mail" value="">
-																</div>
-																<div class="inputs--item">
-																		<label for="">パスワード</label>
-																		<input type="password" name="login_pass" value="">
-																</div>
-														</div>
-														<input class="jump_btn" type="submit" value="ログイン">
-														<input type="hidden" name="login_sub" value="1">
-														<input type="hidden" name="_token" value="{$_token}">
-														<div class="text">
-																<p class="TX">
-																		※パスワードを忘れた方はこちらからパスワードの再発行を行ってください。
-																</p>
-																<a class="TX" href="{$base_url}/account/passwd">パスワードをお忘れの方はこちら</a>
-														</div>
-												</form>
-										</div> -->
 					<div class="step--item">
 						<div class="title">
 							<h3 class="TL">購入手続き</h3>
@@ -219,6 +178,8 @@
 			{/if}
 		</div>
 	</div>
+
+
 
 
 
