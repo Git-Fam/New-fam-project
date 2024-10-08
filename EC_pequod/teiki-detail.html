@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og: https://ogp.me/ns#">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
+    <meta name="format-detection" content="email=no,telephone=no,address=no" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta property="og:locale" content="ja_JP" />
+
+    <!-- ▼SEO -->
+    <link rel="”canonical”" href="”URL”" />
+    <!-- ジェネレーターURL→ https://metatags.io/ -->
+
+    <!-- ▼ファビコン -->
+    <!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
+
+    <!-- ▼クロールして欲しくない -->
+    <!-- <meta name="robots" content="noindex,nofollow"> -->
+
+    <!-- ▼テーマカラー -->
+    <!-- <meta name="theme-color" content="#e9c931"> -->
+
+    <!-- ▼CSS -->
+    <link rel="stylesheet" href="css/main.css?ver=1.0.0" />
+    <link rel="stylesheet" href="css/main-sp.css?ver=1.0.0" />
+
+    <!-- ▼フォント -->
+
+
+</head>
+
+<body>
+
+
+
+    <div id="contents">
+        <section class="container">
+            <h2>マイページ</h2>
+            
+            {$my_history.0.item_id}
+    
+            <div id="mypage">
+                #freeparts/myPageNav#
+    
+                <h3>定期購入 - 詳細</h3>
+    
+                <section id="regular_list_detail">
+                    {if $regular_buy_data.delete_flag == 1}<div class="renounced mb-3">解約済</div>{/if}
+                    <form method="post" action="{$base_url}/account/regular/{$my_history.0.regular_id}">
+                        {if $errors_check|@count > 0}<div class="errorDisp">{include file='errors.tpl' errors=$errors_check}</div>{/if}
+                        {if $success_update|@count > 0}<div class="successDisp">{include file='success.tpl' success=$success_update}</div>{/if}
+    
+                        <input type="hidden" name="last_update_date" value="{date('Y-m-d', strtotime($regular_buy_data.last_update_date))}">
+                        <input type="hidden" name="history_last_update_date" value="{date('Y-m-d', strtotime($regular_buy_data.last_update_date))}">
+                        <input type="hidden" name="edit_next_buy_date" value="{$regular_buy_data.next_buy_date}">
+                        <input type="hidden" name="init_buy_request_date" value="{Config::$init['buy_request_date'] }">
+                        <input type="hidden" name="delivery_hour" value="{$delivery_hour}">
+                        <input type="hidden" name="pym" value="{$pym}">
+                        <input type="hidden" name="edit_pym" value="{$payment_method}">
+                        <input type="hidden" name="convenience" value="{$convenience|count}">
+                        <input type="hidden" name="use_payment" value="{$use_payment}">
+                        <input type="hidden" name="edit_pref" value="{$my_history.0.pref}">
+                        <input type="hidden" name="edit_a_pref" {if isset($my_history.0.another_add.a_pref)}value="{$my_history.0.another_add.a_pref}"{else}value=""{/if}>
+                        <input type="hidden" name="another_address" value="{$another_address}">
+                        <input type="hidden" name="all_price" value="{$my_history.0.item_price_tax_sum}">
+                        <input type="hidden" name="deli_id" value="{$my_history.0.deli_id}">
+                        <input type="hidden" name="group_id" value="{$my_history.0.group_id}">
+                        <input type="hidden" name="item_postage" value="{$my_history.0.item_postage}">
+                        <input type="hidden" name="item_post_fee" value="{$my_history.0.item_post_fee}">
+                        <input type="hidden" name="user_id" value="{$user_id}">
+                        <input type="hidden" name="item_num" value="{$my_history.0.item_num}">
+                        <input type="hidden" name="conveni_price" value="{$my_history.0.conveni_price}">
+                        <input type="hidden" name="mail_post_flag" value="{$my_history.0.mail_post_flag}">
+                        <input type="hidden" name="show_credit" value="{$show_credit}">
+                        <input type="hidden" name="postage" value="{$my_history.0.postage}">
+                        <input type="hidden" name="post_fee" value="{$my_history.0.post_fee}">
+                        <input type="hidden" name="free_order_id" value="{$my_history.0.order_id}">
+    
+                        <section class="detailWrap row justify-content-between mb-5">
+                            <div class="detailBlock col-lg-6">
+                                <div class="detailBox mb-4">
+                                    <dl class="row m-0">
+                                        <dt>注文番号</dt><dd>{$my_history.0.order_id}</dd>
+                                        <dt>購入日時</dt><dd>{date('Y-m-d', strtotime($my_history.0.buy_date))}</dd>
+                                        <dt>購入間隔</dt><dd>{RegularBuy::changeRegularBuyString($regular_buy_data.span)}</dd>
+                                        <dt>次回受注日</dt><dd><span>{$last_update_date|date_format:"%Y"}年{$last_update_date|date_format:"%m"}月{$last_update_date|date_format:"%d"}日</span> &rarr; <span class="text-nowrap">{$regular_buy_data.last_update_date|date_format:"%Y"}年{$regular_buy_data.last_update_date|date_format:"%m"}月{$regular_buy_data.last_update_date|date_format:"%d"}日</span></dd>
+                                    </dl>
+                                </div>
+    
+                                <div class="detailBox mb-4 nextDeliver">
+                                    <dl class="row m-0 align-items-baseline mb-3">
+                                        <dt>次回お届け日</dt>
+                                        <dd class="row m-0 align-items-baseline justify-content-between">
+                                            <div>
+                                                {$next_buy_date|date_format:"%Y"}年{$next_buy_date|date_format:"%m"}月{$next_buy_date|date_format:"%d"}日 &rarr;
+                                            </div>
+                                            <div class="form-inline">
+                                                <select name="next_delivery_year" class="custom-select">
+                                                    {for $year=($smarty.now|date_format:"%Y") to ($smarty.now|date_format:"%Y" + 1)}
+                                                    <option value="{$year}" {if ($regular_buy_data.next_buy_date|date_format:"%Y") == $year}selected=""{/if}>{$year}</option>
+                                                    {/for}
+                                                </select>年
+                                                <select name="next_delivery_month" class="custom-select">
+                                                    {for $month=1 to 12}
+                                                    <option value="{$month}" {if ($regular_buy_data.next_buy_date|date_format:"%m") == $month}selected=""{/if}>{$month}</option>
+                                                    {/for}
+                                                </select>月
+                                                <select name="next_delivery_day" class="custom-select">
+                                                    {for $day=1 to 31}
+                                                    <option value="{$day}" {if ($regular_buy_data.next_buy_date|date_format:"%d") == $day}selected=""{/if}>{$day}</option>
+                                                    {/for}
+                                                </select>日
+                                            </div>
+                                        </dd>
+                                    </dl>
+    
+                                    <dl class="row m-0 align-items-baseline mb-3">
+                                        <dt>お届け時間帯</dt>
+                                        <dd class="form-inline justify-content-between">
+                                            <div>
+                                                {$my_history.0.delivery_hour} &rarr;
+                                            </div>
+                                            <div>
+                                                <select name="delivery_time_zone" class="custom-select" style="min-width: 11em;">
+                                                    {foreach from=$delivery_time_zone item=delivery_time}
+                                                    <option value="{$delivery_time.key}" {if $delivery_hour == $delivery_time.value}selected=""{/if}>{$delivery_time.value}</option>
+                                                    {/foreach}
+                                                </select>
+                                            </div>
+                                        </dd>
+                                    </dl>
+    
+                                    <dl class="row m-0 align-items-baseline mb-3">
+                                        <dt>決済方法</dt>
+                                        <dd class="form-inline justify-content-between">
+                                            <div>
+                                                {$my_history.0.payment_metod} &rarr;
+                                            </div>
+                                            <div>
+                                                <select name="payment_method" class="payment_method custom-select" style="min-width: 11em;">
+                                                    {foreach from=$pay_arr item=pym}
+                                                    {if $pym.pym_id == 10 }
+                                                    {if $my_history.0.system_pym_name == 'Amazon Pay'}
+                                                    <option value="{$pym.pym_id}" {if $pym.pym_name == $payment_method} selected="" {/if}>{$pym.pym_name}</option>
+                                                    {/if}
+                                                    {elseif $pym.pym_id == 20 }
+                                                    {if $my_history.0.system_pym_name == 'Amazon Pay' || $my_history.0.system_pym_name == 'AmazonPay'}
+                                                    <option value="{$pym.pym_id}" {if $pym.pym_name == $payment_method} selected="" {/if}>{$pym.pym_name}</option>
+                                                    {/if}
+                                                    {elseif $pym.pym_id == 17 }
+                                                    {if $my_history.0.system_pym_name == 'atone'}
+                                                    <option value="{$pym.pym_id}" {if $pym.pym_name == $payment_method} selected="" {/if}>{$pym.pym_name}</option>
+                                                    {/if}
+                                                    {else}
+                                                    <option value="{$pym.pym_id}" {if $pym.pym_name == $payment_method} selected="" {/if}>{$pym.pym_name}</option>
+                                                    {/if}
+                                                    {/foreach}
+                                                </select>
+                                            </div>
+                                        </dd>
+                                    </dl>
+    
+                                    {* クレジット選択時に表示 *}
+                                    <div class="credit_used_btn mb-3" style="display: none;">
+                                        <button type="button" id="show_credit_btn" onclick="showCreditForm()">カード情報を更新する</button>
+                                    </div>
+                                    <div class="credit_used mb-3" style="display: none;">
+                                        <div>現在のカード情報</div>
+                                        <ul>
+                                            <li>カード番号</li><li>{$card_no}</li>
+                                            <li>カード有効期限</li><li>{$expire}</li>
+                                            <li class="holderName">名義人</li><li class="holderName">{$holderName}</li>
+                                        </ul>
+                                        <button type="button" id="show_credit_btn" onclick="showCreditForm()">カード情報を更新する</button>
+                                    </div>
+                                    <div id="creditForm" style="display: none;">
+                                        {include file='credit.tpl' credit=$credit loader=true}
+                                    </div>
+                                    {* コンビニ選択時に表示 廃止 *}
+                                    <!--div id="convenienceForm" class="detailBox" style="display: none;">
+                                    <div>お支払いになるコンビニエンスストアを選択してください。</div>
+                                    <ul>
+                                    {foreach from=$convenience key=key item=val name=conveni}
+                                    <li>
+                                    <input type="radio" name="pay_cvs" value="{$val.pay_cvs}" id="cvs{$val.pay_cvs}" {if !empty($my_history.0.pay_cvs) and $my_history.0.pay_cvs == $val.pay_cvs}checked{/if}>
+                                    <label for="cvs{$val.pay_cvs}"><img src="{$val.images}" alt="{$val.name}"></label>
+                                    </li>
+                                    {/foreach}
+                                    </ul>
+                                    </div-->
+                                    <dl class="row m-0 align-items-baseline mt-3">
+                                        <dt class="align-self-start">メールアドレス</dt>
+                                        <dd>
+                                            {$view->escape($my_history.0.mail_address)} &rarr;
+                                            <div>
+                                                <input type="email" name="mail_address" value="{$view->escape($mail)}" maxlength="50" class="ime_d form-control w-100">
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div><!-- //.detailBlock -->
+    
+                            <div class="detailBlock col-lg-6">
+                                <!-- お届け先 -->
+                                <div class="detailBox mb-4">
+                                    <div class="detailHeader">お届け先</div>
+                                    <ul>
+                                        <li>
+                                            <div class="form-inline inputPostal">
+                                                <input type="text" name="postal_code_top" value="{$my_history.0.postal_code_top}" maxlength="3" class="ime_d postalTop form-control" placeholder="111"> - <input type="text" name="postal_code_under" value="{$my_history.0.postal_code_under}" maxlength="4" class="ime_d postalUnder form-control" placeholder="2222" onkeyup="AjaxZip3.zip2addr('postal_code_top', 'postal_code_under', 'pref_id', 'address1')">
+                                                <div class="description ml-auto"><a href="https://www.post.japanpost.jp/zipcode/" target="_blank" class="btn_s">郵便番号検索</a></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <select name="pref_id" class="custom-select">
+                                                <option value="">▼選択</option>
+                                                {foreach from=$pref_data item=pref}
+                                                {if $pref.pref_name == $my_history.0.pref}
+                                                <option value="{$pref.pref_id}" selected>{$pref.pref_name}</option>
+                                                {else}
+                                                <option value="{$pref.pref_id}">{$pref.pref_name}</option>
+                                                {/if}
+                                                {/foreach}
+                                            </select>
+                                        </li>
+                                        <li><input type="text" name="address1" value="{$view->escape($my_history.0.address1)}" class="ime_a form-control" placeholder="○○市○○町○○番地"></li>
+                                        <li><input type="text" name="address2" value="{$view->escape($my_history.0.address2)}" class="ime_a form-control" placeholder="○○第3ビル○F"></li>
+                                        <li class="d-flex justify-content-between">
+                                            <input type="text" name="first_name" value="{$view->escape($my_history.0.first_name)}" maxlength="50" class="ime_a widthHalf form-control" placeholder="鈴木">
+                                            <input type="text" name="last_name" value="{$view->escape($my_history.0.last_name)}" maxlength="50" class="ime_a widthHalf form-control" placeholder="太郎">
+                                        </li>
+                                        <li class="d-flex justify-content-between">
+                                            <input type="text" name="first_name_kana" value="{$view->escape($my_history.0.first_name_kana)}" maxlength="50" class="ime_a widthHalf form-control" placeholder="スズキ">
+                                            <input type="text" name="last_name_kana" value="{$view->escape($my_history.0.last_name_kana)}" maxlength="50" class="ime_a widthHalf form-control" placeholder="タロウ">
+                                        </li>
+                                        <li><input type="tel" name="phone" value="{$my_history.0.phone1}" maxlength="16" class="ime_d form-control" placeholder="01234567890"></li>
+                                    </ul>
+                                </div>
+                                <!-- //お届け先 -->
+    
+                                <!-- ご請求先 -->
+                                <div class="form-check checkToggle">
+                                    <input type="checkbox" name="new_add_flag" value="1" id="new_add_flag" class="form-check-input" {if $another_address == 1 }checked="" {/if}><label for="new_add_flag">請求書の送付先を指定する</label>
+                                </div>
+                                <div id="new_address" class="detailBox mb-4" style="display: none;">
+                                    <div class="detailHeader">ご請求先</div>
+                                    <ul>
+                                        <li>
+                                            <div class="form-inline inputPostal">
+                                                <input type="text" name="postal_code_top2" {if isset($my_history.0.another_add.postal_code_top)}value="{$my_history.0.another_add.postal_code_top}"{else}value=""{/if} maxlength="3" class="ime_d postalTop form-control" placeholder="111"> - <input type="text" name="postal_code_under2" {if isset($my_history.0.another_add.postal_code_under)}value="{$my_history.0.another_add.postal_code_under}"{else}value=""{/if} maxlength="4" class="ime_d postalUnder form-control" placeholder="2222" onkeyup="AjaxZip3.zip2addr('postal_code_top2', 'postal_code_under2', 'pref_id2', 'a_address1')">
+                                                <div class="description ml-auto"><a href="https://www.post.japanpost.jp/zipcode/" target="_blank" class="btn_s">郵便番号検索</a></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <select name="pref_id2" class="custom-select">
+                                                <option value="">▼選択</option>
+                                                {foreach from=$pref_data item=pref}
+                                                {if isset($my_history.0.another_add.a_pref) && $pref.pref_name == $my_history.0.another_add.a_pref}
+                                                <option value="{$pref.pref_id}" selected>{$pref.pref_name}</option>
+                                                {else}
+                                                <option value="{$pref.pref_id}">{$pref.pref_name}</option>
+                                                {/if}
+                                                {/foreach}
+                                            </select>
+                                        </li>
+                                        <li>
+                                            <input type="text" name="a_address1" {if isset($my_history.0.another_add.a_address1)} value="{$my_history.0.another_add.a_address1}" {else} value="" {/if} class="ime_a form-control" placeholder="○○市○○町○○番地">
+                                        </li>
+                                        <li>
+                                            <input type="text" name="a_address2" {if isset($my_history.0.another_add.a_address2)} value="{$my_history.0.another_add.a_address2}" {else} value="" {/if} class="ime_a form-control" placeholder="○○第3ビル○F">
+                                        </li>
+                                        <li class="d-flex justify-content-between">
+                                            <input type="text" name="first_name2" {if isset($my_history.0.another_add.a_first_name)} value="{$view->escape($my_history.0.another_add.a_first_name)}" {else} value="" {/if} maxlength="50" class="ime_a widthHalf form-control" placeholder="鈴木">
+                                            <input type="text" name="last_name2" {if isset($my_history.0.another_add.a_last_name)} value="{$view->escape($my_history.0.another_add.a_last_name)}" {else} value="" {/if} maxlength="50" class="ime_a widthHalf form-control" placeholder="太郎">
+                                        </li>
+                                        <li class="d-flex justify-content-between">
+                                            <input type="text" name="first_name_kana2" {if isset($my_history.0.another_add.a_first_name_kana)} value="{$view->escape($my_history.0.another_add.a_first_name_kana)}" {else} value="" {/if} maxlength="50" class="ime_a widthHalf form-control" placeholder="スズキ">
+                                            <input type="text" name="last_name_kana2" {if isset($my_history.0.another_add.a_last_name_kana)} value="{$view->escape($my_history.0.another_add.a_last_name_kana)}" {else} value="" {/if} maxlength="50" class="ime_a widthHalf form-control" placeholder="タロウ">
+                                        </li>
+                                        <li><input type="tel" name="phone2" {if isset($my_history.0.another_add.a_phone1)} value="{$my_history.0.another_add.a_phone1}" {else} value="" {/if} maxlength="16" class="ime_d form-control" placeholder="01234567890"></li>
+                                    </ul>
+                                </div>
+                                <!-- //ご請求先 -->
+                            </div><!-- //.detailBlock -->
+                        </section><!-- //.detailWrap -->
+    
+                        <section class="mb-5">
+                            {foreach from=$my_history item=value}
+                            <div class="historyItem">
+                                <img src="/item_sum_l_image/{$value.main_image}" alt="{$view->escape($value.item_name)}">
+                                <div>
+                                    <a href="{$base_url}/product/{$value.item_id}" target="_blank">{$view->escape($value.item_name)}</a><br>
+                                    {if empty($value.pwd_data)}サイズ：{$value.item_size_str}<br>{/if}
+                                    数　量：{$value.item_num}<br>
+                                    単　価：{$value.item_price_tax_one|number_format}円
+                                    <div class="text-right">小計：{$value.item_price_tax_sum|number_format}円</div>
+                                </div>
+                            </div>
+                            {/foreach}
+    
+                            <div class="historyCart">
+                                <dl class="row m-0 align-items-baseline text-right">
+                                    <dt>商品合計</dt><dd id="subtotal">{$value.item_price_tax_sum|number_format}円</dd>
+                                    <dt>送料</dt><dd id="postage">{$my_history.0.postage|number_format}円</dd>
+                                    <dt id="postfeeStr">手数料</dt><dd id="postfee">{$my_history.0.post_fee|number_format}円</dd>
+                                    <dt class="d-none">ポイント値引き</dt><dd id="point" class="d-none">-{$my_history.0.point|number_format}円</dd>
+                                    <dt>次回ご請求金額</dt><dd class="price">{$all_price|number_format}円</dd>
+                                </dl>
+                            </div>
+                        </section>
+    
+                        <div class="btnArea text-center">
+                            {if $regular_buy_data.delete_flag !== '1'}
+                            <div class="btn-wrap">
+                                <input type="submit" name="updateRegular" value="変更内容を登録" onclick="return confirm('上記の内容を登録してもよろしいでしょうか？')" class="btn_m">
+                            </div>
+                            {else}
+                            <div class="noData">解約済みのため契約内容の変更は無効です。</div>
+                            {/if}
+                            <input type="hidden" name="submit" value="1">
+                        </div>
+                    </form>
+                </section><!-- //#regular_list_detail -->
+    
+                {foreach from=$my_history item=value}
+                {if $my_history.0.item_id >= 1 && $my_history.0.item_id <= 10}
+               
+                <section class="cancelWrap">
+                    <h3>定期購入 - 解約手続き</h3>
+    
+                    <div class="regular_buy_delete">
+                        {if $regular_buy_data.delete_flag !== '1'}
+                        <!-- アンケート オプション機能 -->
+                        {if !empty($free_arr)}
+                        <table class="questionnaire my-4">
+                            <caption>差し支えなければ、解約を希望される理由をお聞かせください。</caption>
+                            {foreach from=$free_arr key=key1 item=val}
+                            <tr>
+                                <td>
+                                    <div>{$view->escape($val.free_title)} {if $val.free_required == 2}<span class="required"></span>{/if}</div>
+    
+                                    {if $val.free_type == "text"}<!-- テキストボックスの場合 -->
+                                    <input type="text" name="free_data[{$val.free_master_id}]" value="{$view->escape($free_data[$val.free_master_id])}" id="free_data{$val.free_master_id}" {$val.free_size} {$val.view_required} class="ime_a form-control">
+                                    {elseif $val.free_type == "textarea"}<!-- テキストエリアの場合 -->
+                                    <textarea name="free_data[{$val.free_master_id}]" id="free_data{$val.free_master_id}" {$val.free_cols} {$val.free_rows} {$val.view_required} class="ime_a form-control">{$view->escape($free_data[$val.free_master_id])}</textarea>
+                                    {elseif $val.free_type == "radio"}<!-- ラジオボタンの場合 -->
+                                    <div class="radioArea form-check form-inline">
+                                        {foreach from=$val.list key=key2 item=val2}
+                                        <label>
+                                            <input type="radio" name="free_data[{$val.free_master_id}]" value="{$view->escape($val2.free_list_id)}" id="free_data{$val.free_master_id}" {$f_radio_checked[$val.free_master_id][$key2]} {$val.view_required} class="form-check-input"><span>{$view->escape($val2.free_name)}</span>
+                                        </label>
+                                        {/foreach}
+                                    </div>
+                                    {elseif $val.free_type == "select"}<!-- セレクトボックスの場合 -->
+                                    <select name="free_data[{$val.free_master_id}]" id="free_data{$val.free_master_id}" {$val.view_required} class="custom-select">
+                                        {foreach from=$val.list key=key2 item=val2}
+                                        <option value="{$view->escape($val2.free_list_id)}" {$f_select_selected[$val.free_master_id][$key2]}>{$view->escape($val2.free_name)}</option>
+                                        {/foreach}
+                                    </select>
+                                    {elseif $val.free_type == "checkbox"}<!-- チェックボックスの場合 -->
+                                    <div class="radioArea form-check form-inline">
+                                        {foreach from=$val.list key=key2 item=val2}
+                                        <label>
+                                            <input type="checkbox" name="free_data[{$val.free_master_id}][]" value="{$view->escape($val2.free_list_id)}" id="free_data{$val.free_master_id}-{$val2.free_list_id}" {$f_checkbox_checked[$val.free_master_id][$key2]} {$val.view_required} class="form-check-input"><span>{$view->escape($val2.free_name)}</span>
+                                        </label>
+                                        {/foreach}
+                                    </div>
+                                    {/if}
+                                    <input type="hidden" name="free_type[{$val.free_master_id}]" value="{$val.free_type}">
+                                    <input type="hidden" name="free_title[{$val.free_master_id}]" value="{$val.free_title}" free_master_id="{$val.free_master_id}" free_type="{$val.free_type}" free_required="{$val.free_required}" free_point="{$val.free_point}" class="free_data">
+                                </td>
+                            </tr>
+                            {/foreach}
+                        </table>
+    
+                        <div class="btnArea text-center">
+                            <div class="btn-wrap btn-cancel"><input type="submit" name="del_sub" value="定期解約" class="btn_s"></div>
+                            <ul class="error_list errorMessage"></ul>
+                        </div>
+                        <input type="hidden" name="url" value="{$base_url}/account/regular/remove/{$my_history.0.regular_id}" id="url">
+                        <input type="hidden" name="free_order_id" value="{$my_history[0]['order_id']}" id="free_order_id">
+                        <input type="hidden" name="free_user_id" value="{$my_history[0]['user_id']}" id="free_user_id">
+                        <!-- アンケート登録JSファイル -->
+                        <script type="text/javascript" src="{$js_dir}/free_list.js"></script>
+                        <!-- //アンケート オプション機能 -->
+                        {else}
+                        <div class="btnArea text-center btn-cancel"><a href="{$base_url}/account/regular/remove/{$my_history.0.regular_id}" onclick="return confirm('解約した定期購入は元に戻せませんがよろしいですか？');" class="btn_s">定期解約</a></div>
+                        {/if}
+                        {else}
+                        <div class="renounced">解約済み</div>
+                        {/if}
+                    </div>
+                </section>
+                {/if}
+                {/foreach}
+            </div><!-- //#mypage -->
+    
+        </section><!-- //.container -->
+    </div><!-- //#contents -->
+    
+    <!-- [必須]郵便番号自動入力 -->
+    <script src="https://ajaxzip3.github.io/ajaxzip3.js"></script>
+    <!-- サムネイル表示用 -->
+    <script src="{$js_dir}/jquery.MyThumbnail.js"></script>
+    <script>
+        $(".historyItem img").MyThumbnail({
+            thumbWidth:120,
+            thumbHeight:120,
+        });
+    </script>
+    <!-- //サムネイル表示用 -->
+
+
+    <script src="https://code.jquery.com/jquery-1.7.1.min.js"
+        integrity="sha256-iBcUE/x23aI6syuqF7EeT/+JFBxjPs5zeFJEXxumwb0=" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+    <script src="js/joint.js"></script>
+</body>
+
+</html>
