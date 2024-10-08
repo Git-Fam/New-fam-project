@@ -213,6 +213,58 @@
           letter-spacing: 1.5px;
         }
       }
+      
+      .contents-card-wrap{
+        position: relative;
+        
+        &.contents-card-wrap-1{
+          width: fit-content;
+          margin: 40px auto;
+        }
+
+        .contents-card {
+          // @include center;
+          @include iconContain($drip);
+          width: 190px;
+          height: 102px;
+          position: relative;
+
+          .TX {
+            color: #989898;
+            font-size: 15px;
+            @include wt700;
+            line-height: 1.5;
+            letter-spacing: 1.5px;
+            white-space: nowrap;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            translate: -50% 0;
+          }
+        }
+
+        .contents-bookmark{
+          width: 40px;
+          aspect-ratio: 70/88;
+          @include iconContain($bookmark);
+          position: absolute;
+          bottom: -10%;
+          right: 5%;
+
+          .TX{
+            color: #FFF;
+            font-size: 13px;
+            @include wt700;
+            line-height: 1;
+            letter-spacing: 1.3px;
+            white-space: nowrap;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            translate: -50% -50%;
+          }
+        }
+      }
 
       .contents {
         text-align: center;
@@ -232,53 +284,6 @@
           gap: 50px;
           align-items: center;
           margin-top: 30px
-        }
-
-        .contents-card-wrap{
-          position: relative;
-
-          .contents-card {
-            // @include center;
-            @include iconContain($drip);
-            width: 190px;
-            height: 102px;
-            position: relative;
-  
-            .TX {
-              color: #989898;
-              font-size: 15px;
-              @include wt700;
-              line-height: 1.5;
-              letter-spacing: 1.5px;
-              white-space: nowrap;
-              position: absolute;
-              top: 40%;
-              left: 50%;
-              translate: -50% 0;
-            }
-          }
-
-          .contents-bookmark{
-            width: 40px;
-            aspect-ratio: 70/88;
-            @include iconContain($bookmark);
-            position: absolute;
-            bottom: -10%;
-            right: 5%;
-
-            .TX{
-              color: #FFF;
-              font-size: 13px;
-              @include wt700;
-              line-height: 1;
-              letter-spacing: 1.3px;
-              white-space: nowrap;
-              position: absolute;
-              top: 40%;
-              left: 50%;
-              translate: -50% -50%;
-            }
-          }
         }
       }
 
