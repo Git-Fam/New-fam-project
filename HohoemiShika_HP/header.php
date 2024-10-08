@@ -64,7 +64,7 @@
                 <a href="<?php echo get_home_url(); ?>">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="医療法人立人会 ほほえみ歯科">
                 </a>
-            </div>
+                </div>
             <div class="header-btn">
                 <a href="tel:052-715-4181" class="btn tel">
                     <div class="icon"></div>
