@@ -17,6 +17,10 @@
   }
 }
 
+.none{
+  display: none !important;
+}
+
 .pc-inline {
   @include pc{
     display: inline !important;
