@@ -140,9 +140,9 @@
 
         .TX {
           border-radius: 100px;
-          background: #EBFAFF;
+          background: #606060;
           width: fit-content;
-          color: #57C6EA;
+          color: #FFFFFF;
           @include yugothic;
           @include wt500;
           line-height: 1.5;
@@ -177,8 +177,8 @@
       }
 
       .product_control {
-        background: #F3F9FB;
-        border-top: dotted 1px #A9DAEA;
+        background: #F4F4F4;
+        border-top: dotted 1px #757575;
 
         @include pc {
           margin-top: 13px;
