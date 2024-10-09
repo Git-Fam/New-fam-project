@@ -1,4 +1,5 @@
 @use "../functions" as *;
+@use "../joint/J_functions/"as *;
 
 
 /* -----------------------
@@ -6,7 +7,7 @@
 ----------------------- */
 
 #footer {
-  background: linear-gradient(180deg, #A8DAE9 0%, #D5EEF6 100%);
+  background: $B-dark;
   padding: 55px 0 0;
 
   @include sp {
@@ -157,9 +158,9 @@
       }
 
       &.blue {
-        border-top: 1px solid #C6E6F0;
-        border-bottom: 1px solid #C6E6F0;
-        background: #F3F9FB;
+        border-top: 1px solid #807F7F;
+        border-bottom: 1px solid #807F7F;
+        background: #EBEBEB;
       }
 
       &-inner {
