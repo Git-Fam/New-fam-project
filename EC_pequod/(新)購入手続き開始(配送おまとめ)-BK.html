@@ -118,7 +118,6 @@
                             </div>
                             <div class="form_content">
                                 <div class="form-group">
-
                                     <input type="hidden" name="bundle_flag" value="1">
                                     <input type="hidden" name="bundle_id" value="{$bundle_id}">
 
@@ -671,20 +670,24 @@
 
 
 
-                        <div class="buyFormCart">
-                            <div class="caption">ショッピングカート</div>
+                        <div class="buyFormCart" style="margin-top: 60px;">
+                            <div class="form_container-title">
+                                <h3 class="TL">ショッピングカート</h3>
+                            </div>
 
 
                             <!-- 注文数変更用カート -->
                             {if !empty($bundle_cart_arr)}
                             {foreach from=$bundle_cart_arr key=bundle_tran_id item=bundle_cart name="bundle"}
-                            <div class="bundle_unit">
-                                <h2 class="cart_title" data-cartTransaction="{$bundle_tran_id}" id="{$bundle_tran_id}">
-                                    {$shipping_types[$bundle_cart.cart_arr[0].shipping_type]}{if
-                                    $bundle_cart.cart_arr[0].type_num != 0} -
-                                    {$cart_types[$bundle_cart.cart_arr[0].type_num]}{/if}{if
-                                    $bundle_cart.cart_arr[0].shipping_type != 0} -
-                                    {$bundle_cart.cart_arr[0].item_name}{/if}</h2>
+                            <div class="bundle_unit form_content">
+                                <div class="form_content-item-title">
+                                    <h4 class="TL" data-cartTransaction="{$bundle_tran_id}" id="{$bundle_tran_id}">
+                                        {$shipping_types[$bundle_cart.cart_arr[0].shipping_type]}{if
+                                        $bundle_cart.cart_arr[0].type_num != 0} -
+                                        {$cart_types[$bundle_cart.cart_arr[0].type_num]}{/if}{if
+                                        $bundle_cart.cart_arr[0].shipping_type != 0} -
+                                        {$bundle_cart.cart_arr[0].item_name}{/if}</h4>
+                                </div>
 
                                 <div class="cart_table" data-cartTransaction="{$bundle_tran_id}">
                                     {foreach from=$bundle_cart.cart_arr item=val}
@@ -741,9 +744,6 @@
                                                 {/if}
                                             </div>
                                         </div>
-
-
-
 
 
                                         {if $val.item_id < 29 || $val.item_id> 36}
@@ -1300,10 +1300,6 @@
 
 
                     </form>
-
-
-
-
 
                 </div>
 
