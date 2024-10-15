@@ -1,0 +1,90 @@
+@use "../global" as *;
+
+
+.trouble {
+  position: relative;
+
+  @include pc {
+    padding: calc((141 / 1280) * 100vw) 0 0;
+  }
+
+  @include sp {
+    padding: calc((120 / 390) * 100vw) calc((0 / 390) * 100vw) 0;
+  }
+
+  .decoration{
+
+    .deco{
+      position: absolute;
+      z-index: -1;
+
+      &.deco--8{
+        
+        @include pc{
+          @include icon($deco--8);
+          aspect-ratio: 239 / 269;
+          width: calc((269 / 1280) * 100vw);
+          top: calc((1100 / 1280) * 100vw);
+          right: calc((-120 / 1280) * 100vw);
+          scale: -1 1;
+        }
+
+        @include sp{
+          @include icon($deco--8);
+          aspect-ratio: 239 / 269;
+          width: calc((269 / 390) * 100vw);
+          bottom: calc((-100 / 390) * 100vw);
+          left: calc((-180 / 390) * 100vw);
+        }
+      }
+
+      &.deco--9{
+        
+        @include pc{
+          @include icon($deco--9);
+          aspect-ratio: 748/682;
+          width: calc((786 / 1280) * 100vw);
+          top: calc((530 / 1280) * 100vw);
+          right: calc((-120 / 1280) * 100vw);
+          scale: -1 1;
+        }
+
+        @include sp{
+          @include icon($deco--9);
+          aspect-ratio: 748/682;
+          width: calc((542 / 390) * 100vw);
+          top: calc((310 / 390) * 100vw);
+          left: calc((-260 / 390) * 100vw);
+        }
+      }
+    }
+  }
+
+  .C-title{
+
+    @include pc{
+      margin: 0 auto calc((100 / 1280) * 100vw);
+    }
+
+    @include sp{
+      margin: 0 auto calc((30 / 390) * 100vw);
+    }
+  }
+
+  &--content{
+      display: flex;
+      flex-wrap: wrap;
+    
+      @include pc {
+        width: max(calc((1080 / 1280) * 100vw), 700px);
+        margin: 0 auto;
+        gap: calc((40 / 1280) * 100vw);
+      }
+    
+      @include sp {
+        width: 100%;
+        padding: 0 calc((20 / 390) * 100vw);
+        gap: calc((20 / 390) * 100vw);
+      }
+    }
+}

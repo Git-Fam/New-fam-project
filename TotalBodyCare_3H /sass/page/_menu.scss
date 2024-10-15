@@ -1,0 +1,121 @@
+@use "../global" as *;
+
+
+.menu {
+
+  @include pc {
+    padding: calc((139 / 1280) * 100vw) 0 0;
+  }
+
+  @include sp {
+    padding: calc((120 / 390) * 100vw) calc((20 / 390) * 100vw) 0;
+  }
+
+  .decoration{
+
+    .deco{
+      position: absolute;
+      z-index: -1;
+
+      &.deco--8{
+        
+        @include pc{
+          @include icon($deco--8);
+          aspect-ratio: 239 / 269;
+          width: calc((359 / 1280) * 100vw);
+          top: calc((1220 / 1280) * 100vw);
+          left: calc((-120 / 1280) * 100vw);
+        }
+
+        @include sp{
+          @include icon($deco--8);
+          aspect-ratio: 239 / 269;
+          width: calc((269 / 390) * 100vw);
+          bottom: calc((1000 / 390) * 100vw);
+          right: calc((-120 / 390) * 100vw);
+          scale: -1 1;
+        }
+      }
+
+      &.deco--9{
+        
+        @include pc{
+          @include icon($deco--9);
+          aspect-ratio: 748/682;
+          width: calc((786 / 1280) * 100vw);
+          top: calc((660 / 1280) * 100vw);
+          left: calc((-120 / 1280) * 100vw);
+        }
+
+        @include sp{
+          @include icon($deco--9);
+          aspect-ratio: 748/682;
+          width: calc((542 / 390) * 100vw);
+          bottom: calc((1110 / 390) * 100vw);
+          right: calc((-260 / 390) * 100vw);
+          scale: -1 1;
+        }
+      }
+
+      &.deco--10{
+        
+        @include pc{
+          @include icon($deco--10);
+          aspect-ratio: 1383/525;
+          width: 120%;
+          bottom: calc((-160 / 1280) * 100vw);
+          left:50%;
+          translate: -50% 0;
+        }
+
+        @include sp{
+          @include icon($deco--10);
+          aspect-ratio: 1383/525;
+          width: 300%;
+          bottom: calc((-90 / 390) * 100vw);
+          left:0;
+        }
+      }
+    }
+  }
+
+  .C-title {
+
+    @include pc {
+      margin: 0 auto calc((120 / 1280) * 100vw) calc((296 / 1280) * 100vw);
+      position: relative;
+
+      &::before {
+        content: '';
+        display: block;
+        // width: calc(( 168 / 1280) * 100vw);
+        width: calc((0 / 1280) * 100vw);
+        height: calc((1 / 1280) * 100vw);
+        background-color: $mainColor;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        left: calc((-296 / 1280) * 100vw);
+      }
+    }
+
+    @include sp {
+      margin: 0 auto calc((40 / 390) * 100vw);
+    }
+  }
+
+  &--sns{
+    align-items: center;
+
+    @include pc{
+      margin: calc((216 / 1280) * 100vw) 0 0;
+      @include column(calc((48 / 1280) * 100vw));
+    }
+
+    @include sp{
+      margin: calc((130 / 390) * 100vw) 0 0;
+      @include column(calc((26 / 390) * 100vw));
+    }
+  }
+}

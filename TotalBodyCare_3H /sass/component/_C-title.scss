@@ -1,0 +1,54 @@
+@use "../global" as *;
+
+.C-slide--wap{
+
+  @include pc{}
+
+  @include sp{}
+}
+
+
+.C-title {
+
+  @include pc{
+    @include column( calc(( 10 / 1280) * 100vw) );
+    width: fit-content;
+  }
+
+  @include sp{
+    @include column( calc(( 5 / 390) * 100vw) );
+    text-align: center;
+  }
+
+  h2{
+    color: $mainColor;
+    text-align: center;
+    @include zen;
+    font-weight: 700;
+    
+    @include pc{
+      font-size: calc(( 50 / 1280) * 100vw);
+    }
+
+    @include sp{
+      font-size: calc(( 30 / 390) * 100vw);
+    }
+  }
+
+  p{
+    color: $subColor;
+    text-align: center;
+    @include sans;
+    font-weight: 400;
+
+    @include pc{
+      font-size: max(calc(( 16 / 1280) * 100vw),12px);
+      letter-spacing: calc(( 0.64 / 1280) * 100vw);
+    }
+
+    @include sp{
+      font-size: calc(( 16 / 390) * 100vw);
+      letter-spacing: calc(( 0.64 / 390) * 100vw);
+    }
+  }
+}
