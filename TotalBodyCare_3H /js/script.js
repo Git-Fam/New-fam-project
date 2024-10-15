@@ -4,7 +4,6 @@ $(function () {
   $(".burger").on("click", function () {
       $('.menu--back').toggleClass("active");
       $('.header--nav').toggleClass("active");
-      
       $('body').toggleClass("active");
   });
 
