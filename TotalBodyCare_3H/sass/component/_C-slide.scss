@@ -1,0 +1,140 @@
+@use "../global" as *;
+
+.C-slide--wap{
+
+  @include pc{}
+
+  @include sp{}
+}
+
+.C-slide {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  @include pc {
+    padding: max(calc((10 / 1280) * 100vw), 8px) 0;
+  }
+
+  @include sp {
+    padding: calc((10 / 390) * 100vw) 0;
+  }
+
+  .slide-wrapper {
+    display: flex;
+    animation: slide-flow 30s infinite linear 1s both;
+
+    @keyframes slide-flow {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    .slide {
+      height: fit-content;
+
+      @include pc {
+        width: max(calc((200 / 1280) * 100vw), 150px);
+        margin: 0 max(calc((20 / 1280) * 100vw), 15px);
+      }
+
+      @include sp {
+        width: calc((140 / 390) * 100vw);
+        margin: 0 calc((16 / 390) * 100vw);
+      }
+
+      // 1,4,7枚目
+      &:nth-child(1),
+      &:nth-child(4),
+      &:nth-child(7) {
+        transform: rotate(-2deg);
+      }
+
+      // 2,5,8枚目
+      &:nth-child(2),
+      &:nth-child(5),
+      &:nth-child(8) {
+        transform: rotate(0deg);
+      }
+
+      // 3,6,9枚目
+      &:nth-child(3),
+      &:nth-child(6),
+      &:nth-child(9) {
+        transform: rotate(2deg);
+      }
+
+
+
+      &--img {
+        aspect-ratio: 1/1;
+        width: 100%;
+        border: 3px solid $mainColor;
+
+        @include pc {
+          border-radius: calc((4 / 1280) * 100vw);
+        }
+
+        @include sp {
+          border-radius: calc((4 / 390) * 100vw);
+        }
+
+        // 1枚目
+        &.img--1 {
+          @include imgCover('slide-img-1.jpg');
+        }
+
+        // 2枚目
+        &.img--2 {
+          @include imgCover('slide-img-2.jpg');
+        }
+
+        // 3枚目
+        &.img--3 {
+          @include imgCover('slide-img-3.jpg');
+        }
+
+        // 4枚目
+        &.img--4 {
+          @include imgCover('slide-img-4.jpg');
+        }
+
+        // 5枚目
+        &.img--5 {
+          @include imgCover('slide-img-5.jpg');
+        }
+
+        // 6枚目
+        &.img--6 {
+          @include imgCover('slide-img-6.jpg');
+        }
+      }
+
+      p {
+        color: $black;
+        text-align: center;
+        @include zen;
+        font-weight: 400;
+
+        @include pc {
+          font-size: max(calc((12 / 1280) * 100vw), 10px);
+          margin-top: max(calc((10 / 1280) * 100vw), 6px);
+        }
+
+        @include sp {
+          font-size: calc((10 / 390) * 100vw);
+          margin-top: calc((10 / 390) * 100vw);
+        }
+
+        &:empty {
+          display: none;
+        }
+      }
+    }
+  }
+}

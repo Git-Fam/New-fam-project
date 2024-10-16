@@ -1,0 +1,163 @@
+@use "../global" as *;
+
+.C-sns--wap{
+
+  @include sp{
+    padding: 0 calc(( 20 / 390) * 100vw);
+  }
+}
+
+
+// C-HotPepper
+.C-HotPepper{
+  display: block;
+  border-radius: 30px;
+  background:linear-gradient(130deg, #DEB0C1 0%, #AD2A5B 100%);
+  padding: 4px;
+  
+  @include pc{
+    width: fit-content;
+  }
+  
+  @include sp{
+    width: 100%;
+  }
+  &--inner{
+    width: 100%;
+    height: 100%;
+    background: #FFF;
+    border-radius: 30px;
+    
+    @include pc{
+      padding: calc((12 / 1280) * 100vw) calc(( 42 / 1280) * 100vw);
+    }
+    
+    @include sp{
+      padding: calc(( 12 / 390) * 100vw) 0;
+    }
+  
+    p{
+      color: #AD2A5B;
+      @include web;
+      font-weight: 400;
+      text-align: center;
+  
+      @include pc{
+        font-size: max(calc(( 16 / 1280) * 100vw),12px);
+      }
+  
+      @include sp{
+        font-size: calc(( 16 / 390) * 100vw);
+      }
+    }
+  
+    span{
+      display: block;
+      aspect-ratio: 203/64;
+      @include imgContain('C-HotPepper.png');
+  
+      @include pc{
+        margin: calc(( 7 / 1280) * 100vw) auto 0;
+        width: calc(( 203 / 1280) * 100vw);
+      }
+  
+      @include sp{
+        margin: calc(( 6 / 390) * 100vw) auto 0;
+        width: calc(( 203 / 390) * 100vw);
+      }
+    }
+  }
+}
+
+
+// C-Line
+.C-Line{
+  display: block;
+  border-radius: 30px;
+  background: linear-gradient(180deg, #22BA4F 5%, #1FA647 85.5%);
+  padding: 5px;
+
+  @include pc{
+    width: fit-content;
+  }
+
+  @include sp{
+    width: 100%;
+  }
+
+  &--inner{
+    width: 100%;
+    height: 100%;
+
+    .top--title{
+
+      @include pc{
+        padding: calc(( 23 / 1280) * 100vw) 0;
+      }
+
+      @include sp{
+        padding: calc(( 23 / 390) * 100vw) 0 calc(( 16 / 390) * 100vw);
+      }
+
+      p{
+        text-align: center;
+        color: #FFF;
+        @include sans;
+        font-weight: 700;
+
+        @include pc{
+          font-size: calc(( 34 / 1280) * 100vw);
+        }
+
+        @include sp{
+          font-size: calc(( 30 / 390) * 100vw);
+        }
+      }
+    }
+
+    .top--text{
+      background: #FFF;
+      border-radius: 0 0 30px 30px;
+
+      @include pc{
+        padding: calc(( 9 / 1280) * 100vw) calc(( 83 / 1280) * 100vw) calc(( 10 / 1280) * 100vw);
+      }
+
+      @include sp{
+        padding: calc(( 5 / 390) * 100vw) 0 calc(( 9 / 390) * 100vw);
+      }
+
+      p{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $subColor;
+        @include sans;
+        font-weight: 700;
+
+        @include pc{
+          font-size: max(calc(( 16 / 1280) * 100vw),12px);
+        }
+
+        @include sp{
+          font-size: calc(( 14 / 390) * 100vw);
+        }
+
+        span{
+          display: block;
+          aspect-ratio: 60/40;
+          height: fit-content;
+          @include imgContain('C-line.png');
+
+          @include pc{
+            width: calc(( 60 / 1280) * 100vw);
+          }
+
+          @include sp{
+            width: calc(( 50 / 390) * 100vw);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,139 @@
+@use "../global" as *;
+
+
+.newOpen {
+  position: relative;
+  @include pc {
+    padding: calc((97 / 1280) * 100vw) 0 0;
+  }
+
+  @include sp {
+    padding: calc((40 / 390) * 100vw) 0 0;
+  }
+
+  .decoration{
+
+    .deco{
+      position: absolute;
+      z-index: -1;
+
+      &.deco--3{
+        
+        @include pc{
+          @include icon($deco--3);
+          aspect-ratio: 748 / 628;
+          width: calc((748 / 1280) * 100vw);
+          top: calc((-490 / 1280) * 100vw);
+          right: calc((-120 / 1280) * 100vw);
+        }
+
+        @include sp{
+          @include icon($deco--4);
+          aspect-ratio: 239 / 269;
+          width: calc((239 / 390) * 100vw);
+          top: calc((-180 / 390) * 100vw);
+          right: calc((-180 / 390) * 100vw);
+        }
+      }
+
+      &.deco--4{
+        
+        @include pc{
+          @include icon($deco--4);
+          aspect-ratio: 239 / 269;
+          width: calc((239 / 1280) * 100vw);
+          top: calc((-60 / 1280) * 100vw);
+          right: calc((40 / 1280) * 100vw);
+        }
+
+        @include sp{
+          @include icon($deco--7);
+          aspect-ratio: 526 / 287;
+          width: 130%;
+          top: calc((200 / 390) * 100vw);
+          left: 50%;
+          translate: -50% 0;
+        }
+      }
+
+      &.deco--5{
+        
+        @include pc{
+          @include icon($deco--5);
+          aspect-ratio: 239 / 269;
+          width: calc((239 / 1280) * 100vw);
+          top: calc((120 / 1280) * 100vw);
+          left: calc((-120 / 1280) * 100vw);
+        }
+
+        @include sp{
+          display: none;
+        }
+      }
+    }
+  }
+
+  &--title {
+
+    h2 {
+      color: $mainColor;
+      text-align: center;
+      @include zen;
+      font-weight: 900;
+      position: relative;
+      background-image: linear-gradient(316deg, #F28300 0%, #F28300 25%, #FFF 50%, #F28300 75%, #F28300 100%);
+      background-size: 500% 100%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: shiney 5s infinite;
+
+      @keyframes shiney {
+        0% {
+          background-position: 100% 50%;
+        }
+
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      @include pc {
+        font-size: calc((110 / 1280) * 100vw);
+      }
+
+      @include sp {
+        font-size: calc((50 / 390) * 100vw);
+      }
+    }
+  }
+
+  &--text {
+
+    @include pc {
+      margin: calc((60 / 1280) * 100vw) 0 calc((80 / 1280) * 100vw);
+    }
+
+    @include sp {
+      margin: calc((50 / 390) * 100vw) 0;
+    }
+
+    p {
+      color: $subColor;
+      text-align: center;
+      @include sans;
+      font-weight: 500;
+      line-height: 175%;
+
+      @include pc {
+        font-size: max(calc((20 / 1280) * 100vw), 16px);
+        letter-spacing: calc((0.8 / 1280) * 100vw);
+      }
+
+      @include sp {
+        font-size: max(calc((16 / 390) * 100vw), 10px);
+        letter-spacing: calc((0.64 / 390) * 100vw);
+      }
+    }
+  }
+}

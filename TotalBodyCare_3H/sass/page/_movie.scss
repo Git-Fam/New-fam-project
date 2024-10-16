@@ -1,0 +1,108 @@
+@use "../global" as *;
+
+
+.movie {
+
+  @include pc {
+    padding: calc((135 / 1280) * 100vw) 0 0;
+  }
+
+  @include sp {
+    padding: calc((120 / 390) * 100vw) calc((20 / 390) * 100vw) 0;
+  }
+
+  .decoration{
+
+    .deco{
+      position: absolute;
+      z-index: -1;
+
+      &.deco--9{
+        
+        @include pc{
+          @include icon($deco--9);
+          aspect-ratio: 748/682;
+          width: calc(( 910 / 1280) * 100vw);
+          bottom: calc(( -700 / 1280) * 100vw);
+          left: calc((-360 / 1280) * 100vw);
+          rotate: 40deg;
+        }
+
+        @include sp{
+          @include icon($deco--9);
+          aspect-ratio: 748/682;
+          width: calc(( 300 / 390) * 100vw);
+          bottom: calc(( -160 / 390) * 100vw);
+          left: calc((-120 / 390) * 100vw);
+          rotate: 80deg;
+        }
+      }
+    }
+  }
+
+  .C-title{
+
+    @include pc{
+      margin: 0 auto calc((42 / 1280) * 100vw);
+    }
+
+    @include sp{
+      margin: 0 auto calc((35 / 390) * 100vw);
+    }
+    
+    span{
+      display: block;
+      text-align: center;
+      color: $subColor ;
+      @include zen;
+      font-weight: 700;
+
+      @include pc{
+        font-size: max(calc((30 / 1280) * 100vw), 24px);
+      }
+
+      @include sp{
+        font-size: calc((16 / 390) * 100vw);
+      }
+    }
+  }
+
+  &--content{
+    position: relative;
+    aspect-ratio: 939/624;
+
+    @include pc{
+      width: max(calc(( 800 / 1280) * 100vw),700px);
+      margin: 0 auto;
+    }
+
+    @include sp{
+      width: 100%;
+    }
+
+    .youtube{
+      aspect-ratio: 939/624;
+      height: fit-content;
+      width: 98%;
+      position: relative;
+      z-index: 10;
+
+      iframe{
+        border-radius: 20px;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .youtube--back{
+      aspect-ratio: 939/624;
+      // height: fit-content;
+      width: 98%;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #F28300 0%, #FFF510 100%);
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+}

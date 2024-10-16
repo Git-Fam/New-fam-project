@@ -1,0 +1,205 @@
+@use "../global" as *;
+
+.C-reserve--wap {
+
+  @include sp {
+    padding: 0 calc((20 / 390) * 100vw);
+  }
+}
+
+// C-reserve
+.C-reserve {
+  background: #FFF;
+  box-shadow: 0px 0px 10px 0px rgba(93, 61, 23, 0.20);
+  display: flex;
+  justify-content: center;
+
+  @include pc {
+    border-radius: 30px;
+    width: max(calc((879 / 1280) * 100vw), 700px);
+    margin: 0 auto;
+    padding: calc((30 / 1280) * 100vw) 0;
+  }
+
+  @include sp {
+    border-radius: 10px;
+    flex-direction: column;
+    width: 100%;
+    padding: calc((43 / 390) * 100vw) 0 calc((39 / 390) * 100vw);
+    @include column(calc((103 / 390) * 100vw));
+  }
+
+  &--content {
+
+    @include pc {
+      width: 50%;
+      padding: calc((10 / 1280) * 100vw) 0;
+      @include column(calc((10 / 1280) * 100vw));
+    }
+
+    @include sp {
+      width: 100%;
+      padding: 0;
+      @include column(calc((10 / 390) * 100vw));
+    }
+
+    &:first-child {
+      @include pc {
+        border-right: 1px solid $subColor;
+      }
+
+      @include sp {
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          width: 30%;
+          height: 1px;
+          bottom: calc((-50 / 390) * 100vw);
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          background: $subColor;
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      @include pc{
+        justify-content: center;
+      }
+    }
+
+    &--title {
+      color: $subColor;
+      text-align: center;
+      @include sans;
+      font-weight: 400;
+
+      @include pc {
+        font-size: max(calc((16 / 1280) * 100vw), 12px);
+        letter-spacing: calc((1.28 / 1280) * 100vw);
+      }
+
+      @include sp {
+        font-size: calc((16 / 390) * 100vw);
+        letter-spacing: calc((1.28 / 390) * 100vw);
+      }
+    }
+
+    &--tel {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $subColor;
+      @include sans;
+      font-weight: 500;
+      width: fit-content;
+      margin: 0 auto;
+
+      @include pc {
+        gap: calc((4 / 1280) * 100vw);
+        font-size: max(calc((30 / 1280) * 100vw), 24px);
+        letter-spacing: calc((2.4 / 1280) * 100vw);
+      }
+
+      @include sp {
+        gap: calc((4 / 390) * 100vw);
+        font-size: calc((30 / 390) * 100vw);
+        letter-spacing: calc((2.4 / 390) * 100vw);
+      }
+
+      span {
+        display: block;
+        aspect-ratio: 1/1;
+        height: fit-content;
+        @include icon($phone);
+
+        @include pc {
+          width: max(calc((25 / 1280) * 100vw), 20px);
+        }
+
+        @include sp {
+          width: calc((25 / 390) * 100vw);
+        }
+      }
+    }
+
+    &--time {
+      text-align: center;
+      color: $subColor;
+      @include sans;
+      font-style: normal;
+      font-weight: 400;
+
+      @include pc {
+        font-size: max(calc((14 / 1280) * 100vw), 10px);
+      }
+
+      @include sp {
+        font-size: calc((14 / 390) * 100vw);
+      }
+    }
+
+    &--btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include pc {
+        gap: calc((12 / 1280) * 100vw);
+      }
+
+      @include sp {
+        flex-direction: column;
+        gap: calc((9 / 390) * 100vw);
+      }
+
+      .btn {
+        background: #06C755;
+        border-radius: 4px;
+
+        @include pc {
+          padding: calc((12 / 1280) * 100vw) calc((10 / 1280) * 100vw);
+        }
+
+        @include sp {
+          width: calc((189 / 390) * 100vw);
+          padding: calc((18 / 390) * 100vw) 0;
+        }
+
+        &:nth-child(1) {
+          background: #9B2A57;
+        }
+
+        p {
+          color: #FFF;
+          @include sans;
+          font-weight: 500;
+
+          @include pc {
+            font-size: max(calc((20 / 1280) * 100vw), 16px);
+          }
+
+          @include sp {
+            text-align: center;
+            font-size: calc((18 / 390) * 100vw);
+          }
+
+          span {
+            font-weight: 500;
+
+            @include pc {
+              font-size: max(calc((16 / 1280) * 100vw), 12px);
+            }
+
+            @include sp {
+              font-size: calc((15 / 390) * 100vw);
+            }
+          }
+        }
+      }
+    }
+  }
+}
