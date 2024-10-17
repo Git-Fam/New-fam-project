@@ -40,11 +40,6 @@
                                 <h3 class="TL">窓口の安心サポート</h3>
                             </div>
                         </div>
-                        <!-- <div class="front__support--text">
-                            <p class="TX">
-                                この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。この文章はダミーです。文字の大きさ、量、字間、行間等を確認するために入れています。
-                            </p>
-                        </div> -->
                     </section>
                     <section class="front__set wrap-sp" id="set">
                         <div class="C_drop-book">
@@ -113,7 +108,7 @@
                                                         </a>
                                                     </p>
                                                     <p class="terms--link">
-                                                        <a href="sakura-ins-form.jp" target="_blank" rel="noopener noreferrer">
+                                                        <a href="https://www.sakura-ins-form.jp/form/66fd0201a7bb9" target="_blank" rel="noopener noreferrer">
                                                             家具安心サポートWEB請求フォームはこちら
                                                         </a>
                                                     </p>
@@ -444,7 +439,7 @@
                                                             <p class="TX">
                                                                 【保険金請求に関するお問い合わせ先】<br>
                                                                 さくら損害保険 保険金請求窓口　 電話番号：0120-502-720<br>
-                                                                受付時間：10:00～19:00（年末年始は除く）
+                                                                受付時間：9:00～17:00（年末年始は除く）
                                                             </p>
                                                         </li>
                                                     </ul>

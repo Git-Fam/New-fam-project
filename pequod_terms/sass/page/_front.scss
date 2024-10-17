@@ -15,23 +15,6 @@
     @include sp{
       margin-bottom: 82px;
     }
-  
-    &--text {
-      margin: 0 auto;
-      margin-top: 30px;
-  
-      @include pc {
-        width: 497px;
-      }
-  
-  
-      .TX {
-        font-size: 15px;
-        @include letterSpacing(15, 1.5);
-        @include wt500;
-        text-align: center;
-      }
-    }
   }
   
   &__set {
