@@ -211,12 +211,12 @@
               </div>
               <div class="item-content">
                 <div class="item-content-card">
-                  <h2>
-                    ・ 補償対象事故
-                  </h2>
+                  <p>・ 補償対象事故</p>
                   <p>
                     上記3.「補償期間」中に、偶然な事故、電気的・機械的事故、盗難により上記2.「対象機器」に生じた損害（外装の破損、損壊、水濡れ、電気的機械的故障、盗難）に対して、保険金を支払います。
                   </p>
+                </div>
+                <div class="item-content-card">
                   <p>・ 保険金額</p>
                   <p>
                     以下の各対象機器について修理可能な場合、保険金額を限度として修理費用をお支払いします。
@@ -497,14 +497,18 @@
                     </li>
                   </ul>
                 </div>
+              </div>
+            </div>
+
+            <!-- 7 -->
+            <div class="terms--item">
+              <div class="item--title">
+                <h2>• 保険金請求先</h2>
+              </div>
+              <div class="item-content">
                 <div class="item-content-card">
                   <!-- リスト -->
                   <ul>
-                    <li>
-                      <p>
-                        • 保険金請求先
-                      </p>
-                    </li>
                     <li>
                       <p>
                         • 当社サービスページ「https://www.」にアクセスし、WEB保険金請求画面に移動します。（該当ボタンクリック）
