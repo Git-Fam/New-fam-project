@@ -213,14 +213,34 @@
     animation: pyon 1s linear 0s forwards;
 
     @keyframes pyon {
-      0%   { transform: scale(1.0, 1.0) translate(0%, 0%); }
-      40%  { transform: scale(0.95, 1.2) translate(0%, -25%); }
-      50%  { transform: scale(1.1, 0.9) translate(0%, 5%); }
-      60%  { transform: scale(0.95, 1.05) translate(0%, -3%); }
-      70%  { transform: scale(1.05, 0.95) translate(0%, 3%); }
-      80%  { transform: scale(1.0, 1.0) translate(0%, 0%); }
-      100% { transform: scale(1.0, 1.0) translate(0%, 0%); }
+      0% {
+        transform: scale(1.0, 1.0) translate(0%, 0%);
       }
+
+      40% {
+        transform: scale(0.95, 1.2) translate(0%, -25%);
+      }
+
+      50% {
+        transform: scale(1.1, 0.9) translate(0%, 5%);
+      }
+
+      60% {
+        transform: scale(0.95, 1.05) translate(0%, -3%);
+      }
+
+      70% {
+        transform: scale(1.05, 0.95) translate(0%, 3%);
+      }
+
+      80% {
+        transform: scale(1.0, 1.0) translate(0%, 0%);
+      }
+
+      100% {
+        transform: scale(1.0, 1.0) translate(0%, 0%);
+      }
+    }
   }
 }
 
@@ -251,28 +271,82 @@
   }
 }
 
+.bird02 {
+  animation: brid 8s ease 1s infinite alternate-reverse;
+
+  @keyframes brid {
+    0% {
+      transform: translateX(-100%);
+    }
+
+    50% {
+      transform: translateX(0%) translateY(20%);
+    }
+
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}
+
+
 .rabbit {
   iframe {
-    opacity: 0;
 
-    &.show {
-      animation: yurayura 5s infinite 1s alternate;
-      transform-origin: center bottom;
+    animation: yurayura 5s infinite 1s alternate;
+    transform-origin: center bottom;
 
-      @keyframes yurayura {
+    @keyframes yurayura {
 
-        0%,
-        100% {
-          transform: rotate(10deg);
-          opacity: 1;
-        }
-
-        40%,
-        80% {
-          transform: rotate(-10deg);
-          opacity: 1;
-        }
+      0%,
+      100% {
+        transform: rotate(10deg);
+        opacity: 1;
       }
+
+      40%,
+      80% {
+        transform: rotate(-10deg);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.platypus01 {
+  animation: pyon01 2s infinite 1s alternate;
+
+  @keyframes pyon01 {
+
+    0%,
+    10%,
+    20%,
+    100% {
+      transform: translateY(0%);
+    }
+
+    5%,
+    15% {
+      transform: translateY(-5%);
+    }
+  }
+}
+
+.platypus02 {
+  animation: pyon02 2s infinite 4s alternate;
+
+  @keyframes pyon02 {
+
+    0%,
+    10%,
+    20%,
+    100% {
+      transform: translateY(0%);
+    }
+
+    5%,
+    15% {
+      transform: translateY(-5%);
     }
   }
 }
