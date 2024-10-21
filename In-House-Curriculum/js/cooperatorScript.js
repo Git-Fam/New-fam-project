@@ -1,4 +1,61 @@
-$(function () {
+jQuery(function () {
+	//道のりページ　under-menu
+	$(".under-menu")
+		.off("click")
+		.on("click", function () {
+			$(this).toggleClass("open");
+		});
+
+	// クリック回数を保持する変数（グローバルスコープに定義）
+	var clickCount = 0;
+
+	$(".next-section")
+		.off("click")
+		.on("click", function () {
+			// クリックが発生するたびにカウントをインクリメント
+			clickCount++;
+
+			var currentSection = $(".page-section.show");
+			var nextSection = currentSection.next(".page-section");
+
+			if (nextSection.length) {
+				currentSection.removeClass("show");
+				nextSection.addClass("show");
+			}
+		});
+
+	// クリック回数を保持する変数
+	var backClickCount = 0;
+
+	// クリックイベントを複数回バインドしないようにoff()でリセット
+	$(".back-section")
+		.off("click")
+		.on("click", function () {
+			// クリック回数をカウント
+			backClickCount++;
+
+			// 現在の表示されているセクションを取得
+			var currentSection = $(".page-section.show");
+			var prevSection = currentSection.prev(".page-section");
+
+			// 前のセクションが存在する場合、クラスを切り替える
+			if (prevSection.length) {
+				currentSection.removeClass("show");
+				prevSection.addClass("show");
+			}
+		});
+
+	$(".archive--item--img").click(function () {
+		var currentSection = $(".page-section.show");
+		currentSection.removeClass("show");
+		$(".page1").addClass("show");
+	});
+
+	//道のり　SPchat
+	$(".C_chat-content").click(function () {
+		$(this).toggleClass("open");
+	});
+
 	//show付与
 	$(".category-content,#cover-btn,.timeline-jamp").on("click", function () {
 		$(".select-content,#tab-wrap,.timeline-modal,.chat-wrap").toggleClass(
@@ -10,60 +67,115 @@ $(function () {
 		$(".pyon").toggleClass("hover");
 	});
 
-	// 適性診断　文字をタイピング風に表示
-	function TextTypingAnime() {
-		$(".C_test .TX-bg .TX").each(function () {
-			var elemPos = $(this).offset().top - 50;
-			var scroll = $(window).scrollTop();
-			var windowHeight = $(window).height();
-			var thisChild = "";
-			if (scroll >= elemPos - windowHeight) {
-				thisChild = $(this).children(); //spanタグを取得
-				//spanタグの要素の１つ１つ処理を追加
-				thisChild.each(function (i) {
-					var time = 100;
-					//時差で表示する為にdelayを指定しその時間後にfadeInで表示させる
-					$(this)
-						.delay(time * i)
-						.fadeIn(time);
-				});
-			} else {
-				thisChild = $(this).children();
-				thisChild.each(function () {
-					$(this).stop(); //delay処理を止める
-					$(this).css("display", "none"); //spanタグ非表示
-				});
-			}
-		});
-	}
-	$(window).on("load", function () {
-		//spanタグを追加する
-		var element = $(".C_test .TX-bg .TX-wrap .TX");
-		element.each(function () {
-			var text = $(this).html();
-			var textbox = "";
-			text.split("").forEach(function (t) {
-				if (t !== " ") {
-					textbox += "<span>" + t + "</span>";
-				} else {
-					textbox += t;
-				}
-			});
-			$(this).html(textbox);
-		});
+	//トップページスクロール
 
-		TextTypingAnime(); /* アニメーション用の関数を呼ぶ*/
+	$(".topPage").on("wheel", function (e) {
+		if (Math.abs(e.originalEvent.deltaY) < Math.abs(e.originalEvent.deltaX))
+			return;
+		const maxScrollLeft = this.scrollWidth - this.clientWidth;
+		if (
+			(this.scrollLeft <= 0 && e.originalEvent.deltaY < 0) ||
+			(this.scrollLeft >= maxScrollLeft && e.originalEvent.deltaY > 0)
+		)
+			return;
+
+		e.preventDefault();
+		this.scrollLeft += e.originalEvent.deltaY;
 	});
 
-	// var items = ['1番目','2番目','3番目'];
-	//   rand = items[Math.floor(Math.random()*items.length)];
-	//   $('.random').text(rand);;
+	// C_character要素を取得
+	const characterElement = document.querySelector(".C_character");
 
-	rand = Math.floor(Math.random() * (100 + 1 - 80)) + 80;
-	$(".random").text(rand);
+	// スクロール速度を制御するための変数
+	let scrollX = 0;
+	let scrollY = 0;
+	let isScrolling = false;
+
+	// 慣性スクロールの動きを作る関数
+	function applyInertiaScroll() {
+		if (!isScrolling) return;
+
+		// 慣性の減衰を両方向に適用
+		scrollX *= 0.9; // 横方向の減衰
+		scrollY *= 0.2; // 縦方向の減衰
+
+		// 要素の位置を更新 (translateX, translateYを同時に適用)
+		characterElement.style.transform = `translate(${scrollX}px, ${scrollY}px)`;
+
+		// 両方向の移動が十分に小さくなるまで慣性を続ける
+		if (Math.abs(scrollX) > 0.5 || Math.abs(scrollY) > 0.5) {
+			requestAnimationFrame(applyInertiaScroll);
+		} else {
+			isScrolling = false;
+		}
+	}
+
+	// ホイールスクロール時のイベントを監視
+	window.addEventListener("wheel", (e) => {
+		// ホイールのスクロール量を移動に変換
+		scrollX += e.deltaX; // 横方向のスクロール
+		scrollY += e.deltaY; // 縦方向のスクロール
+
+		if (!isScrolling) {
+			isScrolling = true;
+			requestAnimationFrame(applyInertiaScroll); // 慣性スクロールを開始
+		}
+	});
+
+	// // 適性診断　文字をタイピング風に表示
+	// function TextTypingAnime() {
+	// 	$(".C_test .TX-bg .TX").each(function () {
+	// 		var elemPos = $(this).offset().top - 50;
+	// 		var scroll = $(window).scrollTop();
+	// 		var windowHeight = $(window).height();
+	// 		var thisChild = "";
+	// 		if (scroll >= elemPos - windowHeight) {
+	// 			thisChild = $(this).children(); //spanタグを取得
+	// 			//spanタグの要素の１つ１つ処理を追加
+	// 			thisChild.each(function (i) {
+	// 				var time = 100;
+	// 				//時差で表示する為にdelayを指定しその時間後にfadeInで表示させる
+	// 				$(this)
+	// 					.delay(time * i)
+	// 					.fadeIn(time);
+	// 			});
+	// 		} else {
+	// 			thisChild = $(this).children();
+	// 			thisChild.each(function () {
+	// 				$(this).stop(); //delay処理を止める
+	// 				$(this).css("display", "none"); //spanタグ非表示
+	// 			});
+	// 		}
+	// 	});
+	// }
+	// $(window).on("load", function () {
+	// 	//spanタグを追加する
+	// 	var element = $(".C_test .TX-bg .TX-wrap .TX");
+	// 	element.each(function () {
+	// 		var text = $(this).html();
+	// 		var textbox = "";
+	// 		text.split("").forEach(function (t) {
+	// 			if (t !== " ") {
+	// 				textbox += "<span>" + t + "</span>";
+	// 			} else {
+	// 				textbox += t;
+	// 			}
+	// 		});
+	// 		$(this).html(textbox);
+	// 	});
+
+	// 	TextTypingAnime(); /* アニメーション用の関数を呼ぶ*/
+	// });
+
+	// // var items = ['1番目','2番目','3番目'];
+	// //   rand = items[Math.floor(Math.random()*items.length)];
+	// //   $('.random').text(rand);;
+
+	// rand = Math.floor(Math.random() * (100 + 1 - 80)) + 80;
+	// $(".random").text(rand);
 
 	// チャットクラス名付与
-	$(document).ready(function ($) {
+	$(function ($) {
 		// メッセージリストを初期状態で非表示
 		$("#sac-messages").css("visibility", "hidden");
 
@@ -143,9 +255,6 @@ $(function () {
 				$("#latest-messages").empty().append(latestMessages);
 			}
 		});
-
-		// 実行例
-		displayLatestMessages("#another-page-latest-messages", "group_a");
 	});
 
 	// ボタンの文字変更
@@ -234,19 +343,17 @@ $(function () {
 	$(".sac-chat-name").wrap('<p class="sac-chat-name-wrap"></p>');
 	// $(".highlight-text").wrap('<p class="text-wrap"></p>');
 
-	jQuery(document).ready(function ($) {
-		// クラス名 'sac-chat-message' を持つすべてのリストアイテムに対して
-		$(".sac-chat-message").each(function () {
-			// このリストアイテム内のテキストノードを取得
-			$(this)
-				.contents()
-				.filter(function () {
-					// テキストノードかどうかをチェック（nodeType === 3）
-					// trim()で空白を取り除き、非空白のテキストのみを対象に
-					return this.nodeType === 3 && $.trim(this.nodeValue).length > 0;
-				})
-				.wrap('<span class="highlight-text"></span>'); // 選択したテキストノードを <span> でラップ
-		});
+	// クラス名 'sac-chat-message' を持つすべてのリストアイテムに対して
+	$(".sac-chat-message").each(function () {
+		// このリストアイテム内のテキストノードを取得
+		$(this)
+			.contents()
+			.filter(function () {
+				// テキストノードかどうかをチェック（nodeType === 3）
+				// trim()で空白を取り除き、非空白のテキストのみを対象に
+				return this.nodeType === 3 && $.trim(this.nodeValue).length > 0;
+			})
+			.wrap('<span class="highlight-text"></span>'); // 選択したテキストノードを <span> でラップ
 	});
 
 	// ランキングの切り替え
@@ -257,126 +364,120 @@ $(function () {
 		$(this).text($("#point-ranking").hasClass("hidden") ? "Point" : "Login");
 	});
 
-	$(document).ready(function () {
-		if (
-			typeof allUsersProgress !== "undefined" &&
-			allUsersProgress.length > 0
-		) {
-			// ログインしているユーザーの進捗に基づいて .clear クラスを付与
-			allUsersProgress.forEach((user) => {
-				const userProgress = user.progress;
-				const username = user.username;
-
-				// 現在のユーザー名と一致する場合のみ .clear クラスを付与
-				if ($.trim(username) === $.trim(currentUsername)) {
-					console.log(
-						"クリアしたセクションに対して.clearを付与するユーザー:",
-						username
-					);
-
-					// ユーザーの進捗をループして、クリアしたセクションに対して処理
-					$.each(userProgress, (key, value) => {
-						const progressValue = parseInt(value) || 0;
-
-						// 進捗値が100の場合、セクションをクリアしたと見なす
-						if (progressValue === 100) {
-							$("." + key + " .goal").addClass("clear"); // クリアしたセクションにのみ.clearを付与
-						} else if (progressValue === 0) {
-							// 進捗がないセクションに .not を付与
-							$("." + key + " .goal").addClass("not");
-						} else {
-							$("." + key + " .goal").removeClass("clear not");
-						}
-					});
-				}
-			});
-
+	function displayCharacters() {
+		if (typeof allUsersProgress !== "undefined" && allUsersProgress.length > 0) {
 			// 各ユーザーの進捗に基づいてキャラクターを表示
 			allUsersProgress.forEach((user) => {
 				const userProgress = user.progress;
 				const username = user.username;
-				console.log("表示中のユーザー名:", username); // 表示するユーザー名の確認
-
-				let shouldDisplayCharacter = true; // キャラクターを表示するかどうかのフラグ
-
-				// JQセクションを表示する場合のみ、JQ01の進捗値をチェック
-				if (showJQSection) {
-					const jq01Value = parseInt(userProgress["JQ01"]) || 0;
-
-					// JQ01の進捗が0の場合は非表示にする
-					if (jq01Value === 0) {
-						console.log(
-							"JQ01の進捗が0のため、非表示にするユーザー名:",
-							username
-						);
-						shouldDisplayCharacter = false; // キャラクターを表示しない
-					}
-				}
-
-				if (!shouldDisplayCharacter) {
-					return; // キャラクターを表示しない場合は処理を終了
-				}
-
-				let lastCheckpointClass = "",
-					lastProgressValue = 0;
-
-				$.each(userProgress, (key, value) => {
-					const progressValue = parseInt(value) || 0;
-					if (progressValue > 0 && progressValue <= 100) {
-						lastCheckpointClass = key;
-						lastProgressValue = progressValue;
-					}
-				});
-
-				if (lastCheckpointClass) {
-					const $checkpointElement = $("." + lastCheckpointClass);
-					if ($checkpointElement.length) {
-						// character-box 要素を動的に生成
-						const $characterBox = $("<div>")
-							.addClass("character-box")
-							.css({
-								position: "absolute",
-								left: lastProgressValue + "%", // 進捗に応じたleftの値
-							});
-
-						const $nameElement = $("<p>").addClass("name").text(username);
-
-						// 現在のユーザー名と一致する場合は文字色を赤に設定し、.meクラスを追加
-						if ($.trim(username) === $.trim(currentUsername)) {
-							console.log("赤くするユーザー名:", username); // 赤くするユーザー名の確認
-							$nameElement.css("color", "red");
-							$characterBox.addClass("me");
+	
+				console.log("表示中のユーザー名:", username);
+	
+				let lastCheckpointClass = "";
+				let lastProgressValue = 0;
+	
+				// 現在アクティブなカテゴリーの要素を取得
+				const $activeCategory = $(".archive--contents--items--wap.active");
+	
+				if ($activeCategory.length) {
+					// アクティブカテゴリー内で対応する進捗を確認
+					$.each(userProgress, (key, value) => {
+						const progressValue = parseInt(value) || 0;
+	
+						// 現在の進捗値が0より大きい場合のみ、最後の進捗ポイントとして保存
+						if (progressValue > 0) {
+							// アクティブなカテゴリー内にそのクラスが存在するか確認
+							if ($activeCategory.find(`.${key}`).length > 0) {
+								lastCheckpointClass = key; // 例: div06, JQ04
+								lastProgressValue = progressValue; // 進捗値に応じた位置設定用
+							}
 						}
-
-						// character-box に要素を追加し、DOMに追加
-						$characterBox
-							.append($nameElement)
-							.append($("<div>").addClass("character"))
-							.appendTo($checkpointElement);
+					});
+	
+					if (lastCheckpointClass) {
+						// アクティブなカテゴリー内の最後の進捗箇所にキャラクターを配置
+						const $checkpointElement = $activeCategory.find(`.${lastCheckpointClass}`);
+						console.log("チェックポイント要素を探しています: ", $checkpointElement);
+	
+						if ($checkpointElement.length) {
+							// character-box 要素を動的に生成
+							const $characterBox = $("<div>")
+								.addClass("character-box")
+								.css({
+									position: "absolute",
+									left: lastProgressValue + "%", // 進捗に応じたleftの値
+								});
+	
+							const $nameElement = $("<p>").addClass("name").text(username);
+	
+							// 現在のユーザー名と一致する場合は文字色を赤に設定し、.meクラスを追加
+							if ($.trim(username) === $.trim(currentUsername)) {
+								console.log("赤くするユーザー名:", username);
+								$nameElement.css("color", "red");
+								$characterBox.addClass("me");
+							}
+	
+							// character-box に要素を追加し、DOMに追加
+							$characterBox
+								.append($nameElement)
+								.append($("<div>").addClass("character"))
+								.appendTo($checkpointElement);
+						} else {
+							console.warn("チェックポイント要素が見つかりません: ", lastCheckpointClass);
+						}
 					}
+				} else {
+					console.warn("アクティブなカテゴリー要素が見つかりません。");
 				}
 			});
 		}
+	}
+		
+
+
+	// ページロード時の初期表示
+	displayCharacters();
+
+	// タブのクリックイベントにキャラクター描画処理を追加
+	$(".archive--item").on("click", function () {
+		// タブの切り替え処理を実行（activeクラスの付け替えなどがされる想定）
+		$(".archive--contents--items--wap").removeClass("active");
+		const categoryClass = $(this).find(".TX").text();
+		$(".archive--contents--items--wap." + categoryClass).addClass("active");
+		console.log("タブの切り替え: 新しいアクティブクラスは", categoryClass);
+
+		// 新しくactiveになったカテゴリーに対してキャラクターを再描画
+		displayCharacters();
+	});
+	// MutationObserver のセットアップ（タブ切り替えの要素追加を監視）
+	const observer = new MutationObserver((mutationsList, observer) => {
+		mutationsList.forEach((mutation) => {
+			if (mutation.type === "childList" && mutation.addedNodes.length > 0) {
+			}
+		});
 	});
 
-	//質問広場　質問モーダル
-	$(".post-content").on("click", function () {
-		$(".post-modal").addClass("open");
-	});
-	$(".C_back-btn").on("click", function () {
-		$(".post-modal").removeClass("open");
-	});
+	// タブ切り替えコンテナの監視を開始
+	const containerToObserve = document.querySelector(".archive--contents--tab");
+	if (containerToObserve) {
+		observer.observe(containerToObserve, { childList: true, subtree: true });
+	}
 
-	//質問広場　コメントタイトル　プレイスホルダー
-	jQuery(document).ready(function ($) {
+	$(document).ready(function () {
+		// 質問広場 質問モーダルの開閉
+		$(".post-content").on("click", function () {
+			$(".post-modal").addClass("open");
+		});
+		$(".C_back-btn").on("click", function () {
+			$(".post-modal").removeClass("open");
+		});
+
 		// 質問広場 コメントタイトル プレイスホルダー
 		var $input = $("#comtitle, #sac_chat");
 		var $commentFormTitle = $(".comment-form-title, #sac-form");
 
-		// 初期チェック - inputがすでに入力されている場合
-		togglePlaceholder($input.val());
+		togglePlaceholder($input.val()); // 初期チェック
 
-		// inputの内容を監視
 		$input.on("input", function () {
 			togglePlaceholder($(this).val());
 		});
@@ -388,18 +489,14 @@ $(function () {
 				$commentFormTitle.removeClass("input-has-value");
 			}
 		}
-	});
 
-	//質問広場　質問投稿時カテゴリー選択
-	jQuery(document).ready(function ($) {
+		// 質問広場 質問投稿時のカテゴリー選択
 		const selectPostItems = $("#select-post li");
 		const commentForm = $("#commentform");
 		const categoryTextElement = $(".category-content-TX");
 		const errorMessageElement = $(
 			"<p class='error-message' style='color: red; display: none;'>カテゴリーを選択してください。</p>"
 		);
-
-		// エラーメッセージをフォームに追加
 		commentForm.prepend(errorMessageElement);
 
 		let isCategorySelected = false;
@@ -414,11 +511,9 @@ $(function () {
 				const selectedPostTitle = $(this).text().trim();
 
 				categoryTextElement.text(selectedPostTitle);
-
 				const commentPostIdInput = commentForm.find(
 					'input[name="comment_post_ID"]'
 				);
-
 				if (commentPostIdInput.length > 0) {
 					commentPostIdInput.val(selectedPostId);
 					isCategorySelected = true;
@@ -427,266 +522,163 @@ $(function () {
 			});
 
 			commentForm.on("submit", function (event) {
-				// カテゴリーが選択されていない場合
 				if (!isCategorySelected) {
-					event.preventDefault(); // フォームの送信をキャンセル
-					errorMessageElement.show(); // エラーメッセージを表示
-					return false; // 完全に送信を防ぐ
+					event.preventDefault();
+					errorMessageElement.show();
+					return false;
 				}
+				event.preventDefault();
 
-				// カテゴリーが選択されている場合
-				event.preventDefault(); // デフォルトのフォーム送信を防止
-
-				// Ajaxでコメントを送信
 				var formData = new FormData(this);
 				$.ajax({
-					url: commentForm.attr("action"), // フォームの送信先URL
+					url: commentForm.attr("action"),
 					type: "POST",
 					data: formData,
 					processData: false,
 					contentType: false,
-					success: function (response) {
-						// 送信成功時にモーダルの内容を変更
-						$(".letter").hide(); // .letterを非表示にする
-						$(".success").show(); // .successを表示する
+					success: function () {
+						$(".letter").hide();
+						$(".success").show();
 					},
 					error: function () {
-						// エラーハンドリング（必要に応じて追加）
-						alert(
-							"コメントの送信中にエラーが発生しました。もう一度お試しください。"
-						);
+						alert("コメントの送信中にエラーが発生しました。");
 					},
 				});
 			});
 		}
-	});
 
-	// チャットボット
-	// よくある質問をクリックしたら、その内容が表示される
+		// チャットボット 各li要素に順番にupクラスを付与
+		$("#q-and-a-list li").each(function (index) {
+			$(this)
+				.delay(index * 300)
+				.queue(function (next) {
+					$(this).addClass("show");
+					next();
+				});
+		});
 
-	jQuery(document).ready(function ($) {
-		// よくある質問のタイトルクリックイベント
+		// よくある質問クリック時の表示
 		$(".chatbot-title").on("click", function (e) {
-			e.preventDefault(); // リンクのデフォルト動作を防ぐ
-
-			var post_id = $(this).data("id"); // クリックされたリンクの投稿IDを取得
+			e.preventDefault();
+			var post_id = $(this).data("id");
 
 			$.post(
 				chatbot_ajax.ajax_url,
-				{
-					action: "get_chatbot_content", // AJAXアクションフック
-					post_id: post_id,
-				},
+				{ action: "get_chatbot_content", post_id: post_id },
 				function (response) {
-					$(".answer").html(response); // 取得した内容を.answerに表示
+					$(".answer").html(response);
 				}
 			);
+
 			$(".q-and-a-answer").addClass("show");
 		});
 
-		// chatbot検索
-		jQuery(document).ready(function ($) {
-			// 検索ボタンのクリックイベント
-			$("#search-button").on("click", function () {
-				executeSearch(); // 検索を実行
-			});
+		// チャットボットの検索処理
+		function executeChatbotSearch() {
+			var searchTerm = $("#search-input").val();
 
-			// エンターキーでの検索イベント
-			$("#search-input").on("keyup", function (event) {
-				if (event.keyCode === 13) {
-					// エンターキーが押されたとき
-					executeSearch(); // 検索を実行
-				}
-			});
+			$(".search-result").removeClass("show").empty();
+			$(".search-result-answer").removeClass("show");
+			$(".search-word").removeClass("show");
+			$(".word").text(searchTerm);
 
-			// 検索処理を関数に分離
-			function executeSearch() {
-				var searchTerm = $("#search-input").val(); // 検索キーワードを取得
+			$(".search-word").addClass("show");
 
-				$(".search-result").removeClass("show").empty(); // 検索結果をクリアして非表示
-				$(".search-result-answer").removeClass("show"); // 検索内容を非表示にする
-				$(".search-word").removeClass("show"); // 検索ワードの表示をリセット
-				// 検索ワードを.wordに表示
-				$(".word").text(searchTerm);
-
-				// 検索ワード全体の表示を有効にする
-				$(".search-word").addClass("show");
-
-				// AJAXで検索リクエストを送信
-				$.post(
-					chatbot_ajax.ajax_url,
-					{
-						action: "search_chatbot_posts", // 検索用のAJAXアクションフック
-						search: searchTerm,
-					},
-					function (response) {
-						$(".search-result").html(response); // 取得した検索結果を.search-resultに表示
-						$(".search-result").addClass("show");
-
-						// 検索結果内のタイトルクリックイベントを再度バインド
-						$(".search-result .chatbot-title").on("click", function (e) {
-							e.preventDefault(); // リンクのデフォルト動作を防ぐ
-
-							var post_id = $(this).data("id"); // クリックされたリンクの投稿IDを取得
+			$.post(
+				chatbot_ajax.ajax_url,
+				{ action: "search_chatbot_posts", search: searchTerm },
+				function (response) {
+					$(".search-result").html(response).addClass("show");
+					$(".search-result .chatbot-title")
+						.off("click")
+						.on("click", function (e) {
+							e.preventDefault();
+							var post_id = $(this).data("id");
 
 							$.post(
 								chatbot_ajax.ajax_url,
-								{
-									action: "get_chatbot_content", // AJAXアクションフック
-									post_id: post_id,
-								},
+								{ action: "get_chatbot_content", post_id: post_id },
 								function (response) {
-									$(".search-answer").html(response); // 取得した内容を.answerに表示
+									$(".search-answer").html(response);
 								}
 							);
+
 							$(".search-result-answer").addClass("show");
 						});
-					}
-				);
-			}
-		});
-	});
-
-	// 各li要素に順番にupクラスを付与
-	$("#q-and-a-list li").each(function (index) {
-		$(this)
-			.delay(index * 300)
-			.queue(function (next) {
-				$(this).addClass("show"); // upクラスを追加
-			});
-	});
-
-	//常に一番下にスクロールした状態
-	$(function () {
-		// スクロール可能な要素を取得
-		var chatbotContent = $(".chatbot-content");
-		var shouldScrollToBottom = true; // 自動スクロールのフラグ
-
-		// 要素をゆっくりと一番下までスクロール
-		function scrollToBottom() {
-			chatbotContent.animate(
-				{ scrollTop: chatbotContent[0].scrollHeight },
-				3000 // 3秒かけてスクロール
+				}
 			);
 		}
 
-		// 初期ロード時に一番下までスクロール
-		scrollToBottom();
+		$("#search-button").on("click", executeChatbotSearch);
+		$("#search-input").on("keyup", function (event) {
+			if (event.keyCode === 13) {
+				executeChatbotSearch();
+			}
+		});
 
-		// 要素の変化を監視するためのMutationObserverを設定
-		var observer = new MutationObserver(function (mutations) {
-			mutations.forEach(function (mutation) {
-				// 要素に変化があった場合
-				if (mutation.type === "childList" || mutation.type === "subtree") {
-					if (shouldScrollToBottom) {
-						setTimeout(function () {
-							scrollToBottom(); // スクロール実行
-						}, 2500); // 2秒（1000ミリ秒）後に実行
-					}
+		// チャットボット スクロール処理
+		var chatbotContent = $(".chatbot-content");
+		var shouldScrollToBottom = true;
+
+		if (chatbotContent.length > 0) {
+			function scrollToBottom() {
+				chatbotContent.animate(
+					{ scrollTop: chatbotContent[0].scrollHeight },
+					1000
+				);
+			}
+
+			scrollToBottom();
+
+			var observer = new MutationObserver(function () {
+				if (shouldScrollToBottom) {
+					setTimeout(scrollToBottom, 500);
 				}
 			});
+
+			observer.observe(chatbotContent[0], { childList: true, subtree: true });
+
+			chatbotContent.on("scroll", function () {
+				shouldScrollToBottom =
+					chatbotContent[0].scrollTop + chatbotContent.outerHeight() >=
+					chatbotContent[0].scrollHeight - 10;
+			});
+
+			chatbotContent.on("DOMNodeInserted", function () {
+				shouldScrollToBottom = true;
+			});
+		}
+
+		// コメント検索処理
+		function executeCommentSearch() {
+			var searchTerm = $("#comment-search-input").val();
+
+			$.post(
+				chatbot_ajax.ajax_url,
+				{ action: "search_comments", search: searchTerm },
+				function (response) {
+					$(".comment-search-result").html(response);
+				}
+			);
+		}
+
+		$("#comment-search-button").on("click", executeCommentSearch);
+		$("#comment-search-input").on("keyup", function (event) {
+			if (event.keyCode === 13) {
+				executeCommentSearch();
+			}
 		});
 
-		// 監視の設定
-		observer.observe(chatbotContent[0], {
-			childList: true, // 子ノードの変更を監視
-			subtree: true, // 子孫ノード（深い階層の子も含む）も監視
-		});
-
-		// スクロール位置が手動で変更されたら自動スクロールを一時的に解除
-		chatbotContent.on("scroll", function () {
-			// ユーザーが手動でスクロールした場合、フラグを解除
-			shouldScrollToBottom =
-				chatbotContent[0].scrollTop + chatbotContent.outerHeight() >=
-				chatbotContent[0].scrollHeight - 10;
-		});
-
-		// コンテンツに変化があったら自動スクロールを再有効化
-		chatbotContent.on("DOMNodeInserted", function () {
-			shouldScrollToBottom = true;
-		});
-	});
-
-	//質問の検索
-	jQuery(document).ready(function ($) {
-		// .archive-questionクラスの存在でアーカイブページかどうかを判別
+		// 質問のアーカイブ処理
 		var isArchivePage = $(".archive-question").length > 0;
-
-		// ページロード時に全てのコメントを取得する (アーカイブページの場合のみ)
 		if (isArchivePage) {
 			$.post(
 				chatbot_ajax.ajax_url,
-				{
-					action: "get_all_comments", // すべてのコメントを取得するためのAJAXアクション
-				},
+				{ action: "get_all_comments" },
 				function (response) {
-					$(".comment-search-result").html(response); // 取得した全コメントを.comment-search-resultに表示
+					$(".comment-search-result").html(response);
 				}
 			);
 		}
-
-		// コメント検索ボタンのクリックイベント
-		$("#comment-search-button").on("click", function () {
-			executeSearch(); // 検索を実行
-		});
-
-		// エンターキーでのコメント検索イベント
-		$("#comment-search-input").on("keyup", function (event) {
-			if (event.keyCode === 13) {
-				// エンターキーが押されたとき
-				executeSearch(); // 検索を実行
-			}
-		});
-
-		// 検索処理を関数に分離
-		function executeSearch() {
-			var searchTerm = $("#comment-search-input").val(); // 検索キーワードを取得
-
-			// AJAXで検索リクエストを送信
-			$.post(
-				chatbot_ajax.ajax_url,
-				{
-					action: "search_comments", // コメント検索用のAJAXアクションフック
-					search: searchTerm,
-				},
-				function (response) {
-					$(".comment-search-result").html(response); // 取得した検索結果を.comment-search-resultに表示
-				}
-			);
-		}
-	});
-
-	//道のりページ　under-menu
-	$(".under-menu").click(function () {
-		$(this).toggleClass("open");
-	});
-
-	$(".next-section").click(function () {
-		var currentSection = $(".page-section.show");
-		var nextSection = currentSection.next(".page-section");
-
-		if (nextSection.length) {
-			currentSection.removeClass("show");
-			nextSection.addClass("show");
-		}
-	});
-	$(".back-section").click(function () {
-		var currentSection = $(".page-section.show");
-		var prevSection = currentSection.prev(".page-section");
-
-		if (prevSection.length) {
-			currentSection.removeClass("show");
-			prevSection.addClass("show");
-		}
-	});
-	$(".archive--item--img").click(function () {
-		var currentSection = $(".page-section.show");
-		currentSection.removeClass("show");
-		$(".page1").addClass("show");
-	});
-
-	//道のり　SPchat
-	$(".C_chat-content").click(function () {
-		$(this).toggleClass("open");
 	});
 });

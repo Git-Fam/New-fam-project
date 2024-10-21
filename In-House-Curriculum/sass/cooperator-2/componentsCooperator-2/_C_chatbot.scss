@@ -242,6 +242,10 @@
         @include pc {
           width: 100%;
           height: 100%;
+          font-size: p(12);
+        }
+        @include sp{
+          font-size: clamp(12px, s(12), 14px);
         }
 
         &::placeholder {

@@ -89,7 +89,7 @@ add_action('wp_enqueue_scripts', 'enqueue_like_data_script');
 
 
 
-// テスト用リアクションリセット
+// // テスト用リアクションリセット
 // function reset_today_likes_for_user($user_id) {
 //     // 今日のリアクションカウントをリセット
 //     update_user_meta($user_id, 'like_count_today', 0);

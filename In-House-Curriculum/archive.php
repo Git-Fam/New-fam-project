@@ -15,18 +15,21 @@ foreach ($users as $user) {
     $user_id = $user->ID;
     $username = $user->display_name; // ユーザー名を取得
 
-    // 各ユーザーの進捗データを取得
-    $progress_data = [];
+    // 各ユーザーのすべてのメタデータを取得
+    $user_meta = get_user_meta($user_id); 
+    $progress_data = []; // 各ユーザーの進捗データを格納する配列
 
-    // div01からdiv07のデータを取得
-    for ($i = 1; $i <= 7; $i++) {
-        $progress_data["div0{$i}"] = get_user_meta($user_id, "div0{$i}", true) ?: '0';
+    error_log("User: " . $username);
+    error_log(print_r("meta " . $user_meta, true));
+    
+    // メタデータをループして進捗データのみを取得
+    foreach ($user_meta as $meta_key => $meta_value) {
+        // 特定の進捗に関連するキーのみをフィルタリング
+        if (preg_match('/^(div|responsive|JQ|LP|Sass|React|Java|Design|SEO|Form|FAM|test|JS|WP)/', $meta_key)) {
+            // 進捗データに追加（空白値の場合は '0' にする）
+            $progress_data[$meta_key] = !empty($meta_value[0]) ? $meta_value[0] : '0';
+        }
     }
-
-    // responsiveのデータを取得
-    $progress_data["responsive"] = get_user_meta($user_id, "responsive", true) ?: '0';
-
-    $progress_data["JQ01"] = get_user_meta($user_id, "JQ01", true) ?: '0';
 
     // ユーザーごとの進捗データを配列に追加
     $all_users_progress[] = array(
@@ -35,6 +38,24 @@ foreach ($users as $user) {
         'progress' => $progress_data,
     );
 }
+
+// カテゴリー情報を取得する
+$categories = get_categories(array('hide_empty' => false));
+$category_data = [];
+foreach ($categories as $category) {
+    $category_data[$category->term_id] = $category->name;
+}
+
+// JavaScriptにユーザーの進捗とカテゴリー情報を渡す
+wp_enqueue_script('cooperator-script', get_template_directory_uri() . '/js/cooperatorScript.js', array('jquery'), null, true);
+wp_localize_script('cooperator-script', 'wpData', array(
+    'userGroupData' => array(
+        'username' => wp_get_current_user()->user_login,
+        'ajaxurl' => admin_url('admin-ajax.php'),
+    ),
+    'allUsersProgress' => $all_users_progress,
+    'categories' => $category_data,
+));
 ?>
 
 <div class="sp-wrap">
@@ -82,6 +103,7 @@ foreach ($users as $user) {
             <p class="TL">カリキュラム選択　〉<?php echo esc_html($category->name); ?></p>
     </div>
 
+
 <?php
 // カテゴリー内のすべての投稿を取得
 $args = array(
@@ -123,13 +145,23 @@ if ($total_posts <= 4) {
                             $post_tags = get_the_tags();
                             $tag_classes = '';
 
-                            if ($post_tags) {
-                                foreach ($post_tags as $tag) {
-                                    $tag_classes .= ' ' . esc_attr($tag->slug);
-                                }
+                            if ($post_tags && !is_wp_error($post_tags)) {
+                                // タグが存在する場合のみクラス名を追加
+                                $tag_names = array_map(function($tag) {
+                                    // タグの名前を取得して、クラス名として使えるように変換
+                                    $tag_name = esc_attr($tag->name);
+                                    $tag_name = preg_replace('/[^a-zA-Z0-9]/', '_', $tag_name); // 非アルファベット・非数字はアンダースコアに置換
+                                    return $tag_name; 
+                                }, $post_tags);
+                                $tag_classes = implode(' ', $tag_names);
                             }
-                            ?>
 
+                            // クラス名が空の場合の処理
+                            if (empty($tag_classes)) {
+                                $tag_classes = 'no-tags'; // タグがない場合にデフォルトのクラスを設定
+                            }
+
+                            ?>
                             <div class="destination <?php echo $tag_classes; ?>">
                                 <div class="goal-wrap">
                                     <a class="goal" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" target="_blank" rel="noopener noreferrer">
@@ -199,10 +231,20 @@ if ($total_posts <= 4) {
                             $post_tags = get_the_tags();
                             $tag_classes = '';
 
-                            if ($post_tags) {
-                                foreach ($post_tags as $tag) {
-                                    $tag_classes .= ' ' . esc_attr($tag->slug);
-                                }
+                            if ($post_tags && !is_wp_error($post_tags)) {
+                                // タグが存在する場合のみクラス名を追加
+                                $tag_names = array_map(function($tag) {
+                                    // タグの名前を取得して、クラス名として使えるように変換
+                                    $tag_name = esc_attr($tag->name);
+                                    $tag_name = preg_replace('/[^a-zA-Z0-9]/', '_', $tag_name); // 非アルファベット・非数字はアンダースコアに置換
+                                    return $tag_name; 
+                                }, $post_tags);
+                                $tag_classes = implode(' ', $tag_names);
+                            }
+
+                            // クラス名が空の場合の処理
+                            if (empty($tag_classes)) {
+                                $tag_classes = 'no-tags'; // タグがない場合にデフォルトのクラスを設定
                             }
                             ?>
 
@@ -224,9 +266,7 @@ if ($total_posts <= 4) {
                 </div>
             </div>
             <!-- 動的リンクの表示 -->
-             <div class="arrow-box">
-                <div class="section-arrow next-section"></div>
-             </div>
+            <div class="section-arrow next-section"></div>
         </div>
     </section>
 
@@ -254,13 +294,23 @@ if ($total_posts <= 4) {
                                 $post_tags = get_the_tags();
                                 $tag_classes = '';
 
-                                if ($post_tags) {
-                                    foreach ($post_tags as $tag) {
-                                        $tag_classes .= ' ' . esc_attr($tag->slug);
-                                    }
+                                if ($post_tags && !is_wp_error($post_tags)) {
+                                    // タグが存在する場合のみクラス名を追加
+                                    $tag_names = array_map(function($tag) {
+                                        // タグの名前を取得して、クラス名として使えるように変換
+                                        $tag_name = esc_attr($tag->name);
+                                        $tag_name = preg_replace('/[^a-zA-Z0-9]/', '_', $tag_name); // 非アルファベット・非数字はアンダースコアに置換
+                                        return $tag_name; 
+                                    }, $post_tags);
+                                    $tag_classes = implode(' ', $tag_names);
                                 }
-                                ?>
-
+    
+                                // クラス名が空の場合の処理
+                                if (empty($tag_classes)) {
+                                    $tag_classes = 'no-tags'; // タグがない場合にデフォルトのクラスを設定
+                                }
+                                    ?>
+    
                                 <div class="destination <?php echo $tag_classes; ?>">
                                 <div class="goal-wrap">
                                     <a class="goal" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" target="_blank" rel="noopener noreferrer">
@@ -282,10 +332,8 @@ if ($total_posts <= 4) {
                     </div>
                 </div>
                 <!-- 動的リンクの表示 -->
-                <div class="arrow-box">
-                    <div class="section-arrow back-section"></div>
-                    <div class="section-arrow next-section"></div>
-                </div>
+                <div class="section-arrow back-section"></div>
+                <div class="section-arrow next-section"></div>
             </div>
         </section>
         <?php endif; ?>
@@ -314,13 +362,23 @@ if ($total_posts <= 4) {
                                 $post_tags = get_the_tags();
                                 $tag_classes = '';
 
-                                if ($post_tags) {
-                                    foreach ($post_tags as $tag) {
-                                        $tag_classes .= ' ' . esc_attr($tag->slug);
-                                    }
+                                if ($post_tags && !is_wp_error($post_tags)) {
+                                    // タグが存在する場合のみクラス名を追加
+                                    $tag_names = array_map(function($tag) {
+                                        // タグの名前を取得して、クラス名として使えるように変換
+                                        $tag_name = esc_attr($tag->name);
+                                        $tag_name = preg_replace('/[^a-zA-Z0-9]/', '_', $tag_name); // 非アルファベット・非数字はアンダースコアに置換
+                                        return $tag_name; 
+                                    }, $post_tags);
+                                    $tag_classes = implode(' ', $tag_names);
                                 }
-                                ?>
-
+    
+                                // クラス名が空の場合の処理
+                                if (empty($tag_classes)) {
+                                    $tag_classes = 'no-tags'; // タグがない場合にデフォルトのクラスを設定
+                                }
+                                    ?>
+    
                                 <div class="destination <?php echo $tag_classes; ?>">
                                 <div class="goal-wrap">
                                     <a class="goal" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" target="_blank" rel="noopener noreferrer">
@@ -342,10 +400,8 @@ if ($total_posts <= 4) {
                     </div>
                 </div>
                 <!-- 動的リンクの表示 -->
-                <div class="arrow-box">
-                    <div class="section-arrow back-section"></div>
-                    <div class="section-arrow next-section"></div>
-                </div>
+                <div class="section-arrow back-section"></div>
+                <div class="section-arrow next-section"></div>
             </div>
         </section>
         <?php endif; ?>
@@ -374,13 +430,23 @@ if ($total_posts <= 4) {
                                 $post_tags = get_the_tags();
                                 $tag_classes = '';
 
-                                if ($post_tags) {
-                                    foreach ($post_tags as $tag) {
-                                        $tag_classes .= ' ' . esc_attr($tag->slug);
-                                    }
+                                if ($post_tags && !is_wp_error($post_tags)) {
+                                    // タグが存在する場合のみクラス名を追加
+                                    $tag_names = array_map(function($tag) {
+                                        // タグの名前を取得して、クラス名として使えるように変換
+                                        $tag_name = esc_attr($tag->name);
+                                        $tag_name = preg_replace('/[^a-zA-Z0-9]/', '_', $tag_name); // 非アルファベット・非数字はアンダースコアに置換
+                                        return $tag_name; 
+                                    }, $post_tags);
+                                    $tag_classes = implode(' ', $tag_names);
                                 }
-                                ?>
-
+    
+                                // クラス名が空の場合の処理
+                                if (empty($tag_classes)) {
+                                    $tag_classes = 'no-tags'; // タグがない場合にデフォルトのクラスを設定
+                                }
+                                    ?>
+    
                                 <div class="destination <?php echo $tag_classes; ?>">
                                 <div class="goal-wrap">
                                     <a class="goal" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" target="_blank" rel="noopener noreferrer">
@@ -402,10 +468,8 @@ if ($total_posts <= 4) {
                     </div>
                 </div>
                 <!-- 動的リンクの表示 -->
-                <div class="arrow-box">
-                    <div class="section-arrow back-section"></div>
-                    <div class="section-arrow next-section"></div>
-                </div>
+                <div class="section-arrow back-section"></div>
+                <div class="section-arrow next-section"></div>
             </div>
         </section>
         <?php endif; ?>
@@ -438,13 +502,23 @@ if ($total_posts <= 4) {
                                     $post_tags = get_the_tags();
                                     $tag_classes = '';
 
-                                    if ($post_tags) {
-                                        foreach ($post_tags as $tag) {
-                                            $tag_classes .= ' ' . esc_attr($tag->slug);
-                                        }
+                                    if ($post_tags && !is_wp_error($post_tags)) {
+                                        // タグが存在する場合のみクラス名を追加
+                                        $tag_names = array_map(function($tag) {
+                                            // タグの名前を取得して、クラス名として使えるように変換
+                                            $tag_name = esc_attr($tag->name);
+                                            $tag_name = preg_replace('/[^a-zA-Z0-9]/', '_', $tag_name); // 非アルファベット・非数字はアンダースコアに置換
+                                            return $tag_name; 
+                                        }, $post_tags);
+                                        $tag_classes = implode(' ', $tag_names);
                                     }
-                                    ?>
-
+        
+                                    // クラス名が空の場合の処理
+                                    if (empty($tag_classes)) {
+                                        $tag_classes = 'no-tags'; // タグがない場合にデフォルトのクラスを設定
+                                    }
+                                            ?>
+        
                                     <div class="destination <?php echo $tag_classes; ?>">
                                         <div class="goal-wrap">
                                             <a class="goal" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" target="_blank" rel="noopener noreferrer">
@@ -466,9 +540,7 @@ if ($total_posts <= 4) {
                         </div>
                     </div>
                     <!-- 動的リンクの表示 -->
-                    <div class="arrow-box">
-                        <div class="section-arrow back-section"></div>
-                    </div>
+                    <div class="section-arrow back-section"></div>
                 </div>
             </section>
 
@@ -500,7 +572,8 @@ if ($total_posts <= 4) {
                     wp_localize_script('cooperator-script', 'userGroupData', array(
                         'group' => $user_group,
                         'username' => wp_get_current_user()->user_login,
-                        'ajaxurl' => admin_url('admin-ajax.php')
+                        'ajaxurl' => admin_url('admin-ajax.php'),
+                        'allUsersProgress' => $all_users_progress
                     ));
 
                     // 同じグループに所属するユーザーを取得
@@ -629,7 +702,6 @@ if ($total_posts <= 4) {
 <script>
     const allUsersProgress = <?php echo json_encode($all_users_progress); ?>;
     const currentUsername = <?php echo json_encode($current_username); ?>;
-    const showJQSection = <?php echo is_page('road-jq') ? 'true' : 'false'; ?>; // ページによるJQ表示の切り替え
 </script>
 
 <?php get_footer(); ?>

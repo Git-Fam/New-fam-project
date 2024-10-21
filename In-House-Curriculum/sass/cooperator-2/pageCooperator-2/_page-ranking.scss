@@ -205,6 +205,7 @@
         width: fit-content;
         max-width: 424px;
         flex-direction: column;
+        position: relative;
       }
 
       .my-info {
@@ -869,6 +870,7 @@
         display: grid;
         place-items: center center;
         position: absolute;
+        cursor: pointer;
         @include wt700;
 
         @include pc {
@@ -881,9 +883,9 @@
 
         @include sp {
           font-size: clamp(6px, calc(8 / 390 * 100vw), 10px);
-          width: clamp(20px, calc(25 / 390 * 100vw), 30px);
-          height: clamp(20px, calc(25 / 390 * 100vw), 30px);
-          right: calc(18 / 390 * 100vw); // 元の記述を使用
+          width: clamp(18px, calc(25 / 390 * 100vw), 30px);
+          height: clamp(18px, calc(25 / 390 * 100vw), 30px);
+          right: scl(18);// 元の記述を使用
           bottom: calc(25 / 390 * 100vw); // 元の記述を使用
         }
       }
