@@ -20,18 +20,20 @@ function display_character()
     }
 
     // 選択された帽子のIDを取得
-    $selected_hat_parts = explode('-', $selected_hat);
-    $selected_hat_id = end($selected_hat_parts);
+    $selected_hat_thumbnail = '';
+    if (!empty($selected_hat)) {
+        $selected_hat_parts = explode('-', $selected_hat);
+        $selected_hat_id = end($selected_hat_parts);
+        $selected_hat_thumbnail = get_the_post_thumbnail_url($selected_hat_id, 'full');
+    }
 
     // 選択されたメガネのIDを取得
-    $selected_glasses_parts = explode('-', $selected_glasses);
-    $selected_glasses_id = end($selected_glasses_parts);
-
-    // 選択された帽子のアイキャッチ画像を取得
-    $selected_hat_thumbnail = get_the_post_thumbnail_url($selected_hat_id, 'full');
-
-    // 選択されたメガネのアイキャッチ画像を取得
-    $selected_glasses_thumbnail = get_the_post_thumbnail_url($selected_glasses_id, 'full');
+    $selected_glasses_thumbnail = '';
+    if (!empty($selected_glasses)) {
+        $selected_glasses_parts = explode('-', $selected_glasses);
+        $selected_glasses_id = end($selected_glasses_parts);
+        $selected_glasses_thumbnail = get_the_post_thumbnail_url($selected_glasses_id, 'full');
+    }
 
 ?>
 

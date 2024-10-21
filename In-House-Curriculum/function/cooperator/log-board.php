@@ -72,6 +72,16 @@ function log_board()
                         return date('j', strtotime($login_time));
                     }, $login_history);
 
+                    $last_login_month = get_user_meta($user_id, 'last_login_month', true);
+                    $current_month = date('n');
+
+                    if ($last_login_month != $current_month) {
+                        // 月が変わった場合、ログイン履歴をリセット
+                        $login_history = [];
+                        update_user_meta($user_id, 'login_history', $login_history);
+                        update_user_meta($user_id, 'last_login_month', $current_month);
+                    }
+
                     // ログイン回数を取得
                     $login_count = count($login_days);
 
