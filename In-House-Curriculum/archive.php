@@ -18,9 +18,6 @@ foreach ($users as $user) {
     // 各ユーザーのすべてのメタデータを取得
     $user_meta = get_user_meta($user_id); 
     $progress_data = []; // 各ユーザーの進捗データを格納する配列
-
-    error_log("User: " . $username);
-    error_log(print_r("meta " . $user_meta, true));
     
     // メタデータをループして進捗データのみを取得
     foreach ($user_meta as $meta_key => $meta_value) {
