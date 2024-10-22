@@ -83,8 +83,8 @@ jQuery(function () {
 		this.scrollLeft += e.originalEvent.deltaY;
 	});
 
-	// C_character要素を取得
-	const characterElement = document.querySelector(".C_character");
+	// top-mainchara要素を取得
+	const characterElement = document.querySelector("#top-mainchara");
 
 	// スクロール速度を制御するための変数
 	let scrollX = 0;
@@ -681,4 +681,10 @@ jQuery(function () {
 			);
 		}
 	});
+
+	//ミニゲーム　レベル選択
+	$(".level-list li").hover(function () {
+		$(".level-list li").removeClass("active");
+		$(this).addClass("active");
+	})
 });

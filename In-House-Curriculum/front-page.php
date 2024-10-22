@@ -7,7 +7,7 @@
 
 	<div class="topPage-wrapper" id="topPage-wrapper">
 		<!-- キャラ -->
-		<div class="C_character mainchara-box">
+		<div class="C_character mainchara-box" id="top-mainchara">
 			<iframe
 				class="mainchara"
 				src="https://lottie.host/embed/e60cec2b-65a9-4722-99fa-d9218781a66b/TBEXhkebbF.json"

@@ -1,0 +1,289 @@
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
+
+/* -----------------------
+  page-game
+----------------------- */
+
+@font-face {
+  font-family: 'BestTenDot';
+  src: url('../font/BestTen-DOT.woff2') format('woff2'),
+    url('../font/BestTen-DOT.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+.game-main {
+  @include height;
+  font-family: 'BestTenDot', sans-serif;
+
+
+  @include pc {
+    @include imgCover("game-bg.jpg");
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: end;
+    overflow-x: auto;
+  }
+
+  .game-wrap {
+    @include pc {
+      @include iconContain($game-wrap-bg);
+      width: pm(1210, 1000);
+      height: pm(666, 550);
+      position: relative;
+      // bottom: 0;
+      padding: p(18) pm(50) 0;
+      margin: 0 auto;
+    }
+
+    .inner {
+      @include pc {
+        @include iconContain($game-inner-bg);
+        width: pm(1108, 900);
+        height: pm(540, 450);
+        position: relative;
+        left: 50%;
+        translate: -50% 0;
+      }
+
+      .game-container {
+        &.game-top {
+          @include pc {
+            padding: pm(55, 40) pm(130, 90) pm(55, 40) pm(110, 90);
+          }
+
+          .TL-box {
+            display: flex;
+
+            @include pc {
+              gap: pm(38);
+              align-items: end;
+            }
+
+            .TL {
+              img {
+                @include pc {
+                  width: pm(331, 266);
+                  height: pm(104, 83);
+                }
+              }
+            }
+
+            .TX {
+              color: $F-43505F;
+
+              @include pc {
+                line-height: 1.68;
+                font-size: pm(16, 14);
+              }
+            }
+          }
+
+          .level {
+            &-list {
+              @include pc {
+                display: flex;
+                justify-content: space-between;
+                width: pm(819, 700);
+                align-items: center;
+                margin: pm(108, 80) auto 0;
+              }
+
+              li {
+                .level-item {
+                  @include pc {
+                    display: block;
+                    width: pm(200, 150);
+                    height: pm(200, 150);
+                  }
+
+                  .item-bg {
+                    background: $B-B4C1B0;
+
+                    @include pc {
+                      width: 100%;
+                      height: 100%;
+                      display: grid;
+                      place-items: center center;
+                    }
+
+                    .chara {
+                      @include pc {
+                        width: pm(121, 100);
+                        height: pm(137, 110);
+                      }
+                    }
+                  }
+                }
+
+                &.beginner {
+                  .chara {
+                    @include pc {
+                      @include imgContain("beginner-icon.png");
+                    }
+                  }
+                }
+
+                &.intermediate {
+                  .chara {
+                    @include pc {
+                      @include imgContain("intermediate-icon.png");
+                    }
+                  }
+                }
+
+                &.advanced {
+                  .chara {
+                    @include pc {
+                      @include imgContain("advanced-icon.png");
+                    }
+                  }
+                }
+
+                &.active {
+                  position: relative;
+
+                  .level-item {
+                    .item-bg {
+                      @include pc {
+                        @include imgCover("level-hover-bg.png");
+                        background-size: 200%;
+                        background-repeat: repeat;
+                        animation: level 4s linear infinite;
+
+                        @keyframes level {
+                          0% {
+                            background-position: -100% 100%;
+                          }
+                          10% {
+                            background-position: -75% 75%; // 中間点を追加
+                          }
+                          20% {
+                            background-position: -50% 50%; // 中間点を追加
+                          }
+                          30% {
+                            background-position: -25% 25%; // 中間点を追加
+                          }
+                          50% {
+                            background-position: 0 0;
+                          }
+                          70% {
+                            background-position: 25% -25%; // 中間点を追加
+                          }
+                          80% {
+                            background-position: 50% -50%; // 中間点を追加
+                          }
+                          90% {
+                            background-position: 75% -75%; // 中間点を追加
+                          }
+                          100% {
+                            background-position: 100% -100%;
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  &::before {
+                    content: "";
+
+                    @include pc {
+                      background: $B-45565E;
+                      width: pm(239, 190);
+                      height: pm(273, 210);
+                      position: absolute;
+                      bottom: pm(-23, -18);
+                      z-index: -1;
+                      left: 50%;
+                      translate: -50% 0;
+                    }
+                  }
+
+                  &::after {
+                    content: "";
+
+                    @include pc {
+                      @include imgContain("level01.svg");
+                      position: absolute;
+                      width: pm(46, 35);
+                      height: pm(25, 20);
+                      left: 50%;
+                      translate: -50% 0;
+                      top: pm(-45, -40);
+                    }
+                  }
+
+                  &.beginner {
+                    .item-bg {
+                      .chara {
+                        @include imgContain("beginner-icon-hover.png");
+                      }
+                    }
+
+                    &::after {
+                      @include pc {
+                        @include imgContain("level01.svg");
+                      }
+                    }
+                  }
+
+                  &.intermediate {
+                    .item-bg {
+                      .chara {
+                        @include imgContain("intermediate-icon-hover.png");
+                      }
+                    }
+
+                    &::after {
+                      @include pc {
+                        @include imgContain("level02.svg");
+                      }
+                    }
+                  }
+
+                  &.advanced {
+                    .item-bg {
+                      .chara {
+                        @include imgContain("advanced-icon-hover.png");
+                      }
+                    }
+                    &::after {
+                      @include pc {
+                        @include imgContain("level03.svg");
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+          }
+        }
+      }
+    }
+    .lever{
+      @include pc{
+        @include iconContain($game-lever);
+        width: pm(58, 50);
+        height: pm(127,100);
+        position: absolute;
+        bottom: pm(50, 40);
+        left: pm(100, 80);
+      }
+    }
+    .btn{
+      @include pc{
+        @include iconContain($game-btn);
+        width: pm(118, 90);
+        height: pm(54, 40);
+        position: absolute;
+        bottom: pm(30, 20);
+        right: pm(100, 80);
+      }
+    }
+  }
+}
