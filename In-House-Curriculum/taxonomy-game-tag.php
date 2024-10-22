@@ -105,13 +105,5 @@
         </div>
     </div>
 </div>
-<?php
-// デバッグ用に、クエリパラメータを表示
-$selected_cat = get_query_var('game-cat'); // クエリパラメータから選択されたカテゴリーを取得
-
-echo '<pre>';
-echo 'Selected Category: ' . $selected_cat;
-echo '</pre>';
-?>
 
 <?php get_footer(); ?>

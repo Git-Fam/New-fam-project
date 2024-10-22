@@ -1,0 +1,235 @@
+@use "../global" as *;
+@use "../cooperator-2/globalCooperator-2" as *;
+
+/* -----------------------
+  page-game-single
+----------------------- */
+.game-wrap {
+  #game-single_inner {
+    @include iconContain($game-inner-single-bg);
+  }
+}
+
+.game-single_wrap {
+  display: flex;
+  height: 100%;
+
+  @include pc {
+    gap: p(12);
+    padding: pm(47) pm(53);
+  }
+
+  @include sp {}
+
+
+  .game-single_comment {
+    background: #3D5361;
+    height: fit-content;
+    position: relative;
+
+    @include pc {
+      width: 30%;
+      min-height: pm(250);
+      padding: pm(11) pm(11) pm(60);
+    }
+
+    @include sp {}
+
+    .game-single_comment_title {
+      @include iconContain($game-title-frame);
+      width: fit-content;
+      margin: 0 auto;
+
+      @include pc {
+        padding: pm(8) pm(34) pm(9);
+        margin-bottom: pm(17);
+      }
+
+      @include sp {}
+
+      .TL {
+        color: #F0FAED;
+        text-align: center;
+
+        @include pc {
+          font-size: pm(18);
+        }
+
+        @include sp {}
+      }
+    }
+
+    .game-single_comment_selection {
+
+      @include pc {
+        padding-left: pm(11);
+      }
+
+      @include sp {}
+
+      p {
+        color: #F0FAED;
+        line-height: 150%;
+
+        @include pc {
+          font-size: pm(16);
+        }
+
+        @include sp {}
+      }
+    }
+
+    .game-single_comment_input {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+
+      @include pc {
+        bottom: pm(11);
+        gap: pm(10);
+      }
+
+      @include sp {}
+
+      .input-wrap {
+        width: 100%;
+        position: relative;
+
+        @include pc {
+          height: pm(40);
+          padding-inline: pm(3);
+        }
+
+        @include sp {}
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          background: #B6C3B2;
+
+          @include pc{
+            width: pm(6);
+            height: 80%;
+          }
+          
+          @include sp{}
+        }
+
+        &::after {
+          left: unset;
+          right: 0;
+        }
+
+        input {
+          width: 100%;
+          height: 100%;
+          box-sizing: border-box;
+          border: none;
+          font-family: 'BestTenDot', sans-serif;
+          background: #B6C3B2;
+          color: #3D5361;
+          outline: none;
+          
+          @include pc {
+            padding: pm(10) pm(10);
+            font-size: pm(14);
+          }
+
+          @include sp {}
+        }
+      }
+
+
+      button {
+        font-family: 'BestTenDot', sans-serif;
+        flex-shrink: 0;
+        border: 3px solid #F0FAED;
+        background: #B6C3B2;
+        padding: 0;
+        margin: 0;
+        aspect-ratio: 1/1;
+        color: #3D5361;
+
+        @include pc {
+          width: pm(40);
+          font-size: pm(14);
+        }
+
+        @include sp {}
+      }
+    }
+  }
+
+  .game-single_content {
+    background: #3D5361;
+
+    @include pc {
+      width: calc(70% - p(12));
+      height: 90%;
+      padding: pm(11) pm(10) pm(8);
+    }
+
+    @include sp {}
+
+    &_wrap {
+      overflow-y: scroll;
+      height: 100%;
+      background: #3D5361;
+
+      @include pc {
+        border: pm(3) solid #F0FAED;
+        padding: pm(40) pm(47) pm(30) pm(40);
+      }
+
+      @include sp {}
+
+      &_inner {
+
+        .game-single_content_title {
+
+          @include pc {
+            margin-bottom: pm(30);
+          }
+
+          @include sp {}
+
+          .TL {
+            color: #F0FAED;
+
+            @include pc {
+              font-size: pm(20);
+            }
+
+            @include sp {}
+          }
+        }
+
+        .game-single_content_text {
+
+          p,
+          span {
+            color: #F0FAED;
+            line-height: 150%;
+
+            @include pc {
+              font-size: pm(16);
+            }
+
+            @include sp {}
+          }
+
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
