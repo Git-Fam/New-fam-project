@@ -755,16 +755,19 @@
                 }
 
                 .name {
+                  position: relative;
                   @include pc {
                     width: p(40);
                     font-size: p(13);
                     text-align: center;
+                    bottom: p(-10);
                   }
 
                   @include sp {
                     width: 40px;
                     font-size: 13px;
                     text-align: center;
+                    bottom: -10px;
                   }
                 }
 
@@ -782,25 +785,42 @@
                   }
 
                   @include pc {
-                    top: p(-260) !important;
+                    top: p(-100) !important;
                   }
 
                   @include sp {
-                    top: -260px !important;
+                    top: -100px !important;
                   }
 
+                  .display__character{
+                    position: relative;
+                    @include pc{
+                      width: p(56);
+                      height: p(65);
+                    }
+                    @include sp{
+                      width: 56px;
+                      height: 65px;
+                    }
+                    &::after{
+                      content: "";
+                      position: absolute;
+                      @include imgContain("me.png");
+                      left: 50%;
+                      translate: -50% 0;
+                      @include pc {
+                        width: p(165);
+                        height: p(257);
+                        top: p(-170);
+                      }
+                      @include sp {
+                        width: 165px;
+                        height: 257px;
+                        top: -170px;
+                      }  
+                    }
+                  }
                   .character {
-                    @include imgContain("me.png");
-
-                    @include pc {
-                      width: p(165);
-                      height: p(257);
-                    }
-
-                    @include sp {
-                      width: 165px;
-                      height: 257px;
-                    }
                   }
                 }
               }
@@ -1096,11 +1116,11 @@
                         z-index: 10;
 
                         @include pc {
-                          bottom: p(-269);
+                          bottom: p(-100);
                         }
 
                         @include sp {
-                          bottom: -269px;
+                          bottom: -100px;
                         }
                       }
                     }
@@ -1583,11 +1603,11 @@
 
                   &.me {
                     @include pc {
-                      bottom: p(-216);
+                      bottom: p(-76);
                     }
 
                     @include sp {
-                      bottom: -216px;
+                      bottom: -76px;
                     }
                   }
                 }

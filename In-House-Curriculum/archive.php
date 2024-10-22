@@ -1,21 +1,32 @@
 <?php
 get_header(); 
 
-// 現在のユーザー名を取得
+// 現在のユーザー情報を取得
 $current_user = wp_get_current_user();
 $current_username = $current_user->display_name; // 現在のログインユーザーの表示名
+$original_user_id = $current_user->ID; // 元のユーザーIDを保持
 
-// 全ユーザーの進捗データを格納する配列
+// 全ユーザーの進捗データとキャラクターHTMLを格納する配列
 $all_users_progress = [];
+$all_users_characters = [];
 
 // 全ユーザーを取得
 $users = get_users();
 
 foreach ($users as $user) {
     $user_id = $user->ID;
-    $username = $user->display_name; // ユーザー名を取得
+    ob_start();
+    wp_set_current_user($user_id); // ユーザーを一時的に切り替え
+    display_character(); // ユーザーごとのキャラクターHTMLを取得
+    $character_html = ob_get_clean();
 
-    // 各ユーザーのすべてのメタデータを取得
+    // ユーザーごとのキャラクターHTMLを保存
+    $all_users_characters[] = array(
+        'username' => $user->display_name,
+        'character_html' => $character_html,
+    );
+
+    // 各ユーザーのメタデータ（進捗データ）を取得
     $user_meta = get_user_meta($user_id); 
     $progress_data = []; // 各ユーザーの進捗データを格納する配列
     
@@ -31,29 +42,21 @@ foreach ($users as $user) {
     // ユーザーごとの進捗データを配列に追加
     $all_users_progress[] = array(
         'user_id' => $user_id,
-        'username' => $username,
+        'username' => $user->display_name,
         'progress' => $progress_data,
     );
 }
 
-// カテゴリー情報を取得する
-$categories = get_categories(array('hide_empty' => false));
-$category_data = [];
-foreach ($categories as $category) {
-    $category_data[$category->term_id] = $category->name;
-}
+// ユーザーIDを元に戻す
+wp_set_current_user($original_user_id);
 
-// JavaScriptにユーザーの進捗とカテゴリー情報を渡す
+// JavaScriptに全ユーザーの進捗データとキャラクターHTMLを渡す
 wp_enqueue_script('cooperator-script', get_template_directory_uri() . '/js/cooperatorScript.js', array('jquery'), null, true);
 wp_localize_script('cooperator-script', 'wpData', array(
-    'userGroupData' => array(
-        'username' => wp_get_current_user()->user_login,
-        'ajaxurl' => admin_url('admin-ajax.php'),
-    ),
     'allUsersProgress' => $all_users_progress,
-    'categories' => $category_data,
-));
-?>
+    'allUsersCharacters' => $all_users_characters, // キャラクターHTMLをJavaScriptに渡す
+));?>
+
 
 <div class="sp-wrap">
 <div class="road-wappaer">
@@ -699,6 +702,7 @@ if ($total_posts <= 4) {
 <script>
     const allUsersProgress = <?php echo json_encode($all_users_progress); ?>;
     const currentUsername = <?php echo json_encode($current_username); ?>;
+    const characterHtml = <?php echo json_encode($character_html); ?>;
 </script>
 
 <?php get_footer(); ?>

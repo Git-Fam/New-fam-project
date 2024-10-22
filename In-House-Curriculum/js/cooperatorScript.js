@@ -410,6 +410,15 @@ jQuery(function () {
 	
 							const $nameElement = $("<p>").addClass("name").text(username);
 	
+							// 対応するユーザーのキャラクターHTMLを取得
+							const userCharacter = wpData.allUsersCharacters.find(c => c.username === username);
+							if (userCharacter) {
+								const $characterDiv = $("<div>").addClass("character").html(userCharacter.character_html);
+								$characterBox.append($characterDiv);
+							} else {
+								$characterBox.append($("<div>").addClass("character"));
+							}
+	
 							// 現在のユーザー名と一致する場合は文字色を赤に設定し、.meクラスを追加
 							if ($.trim(username) === $.trim(currentUsername)) {
 								console.log("赤くするユーザー名:", username);
@@ -420,7 +429,6 @@ jQuery(function () {
 							// character-box に要素を追加し、DOMに追加
 							$characterBox
 								.append($nameElement)
-								.append($("<div>").addClass("character"))
 								.appendTo($checkpointElement);
 						} else {
 							console.warn("チェックポイント要素が見つかりません: ", lastCheckpointClass);
@@ -432,12 +440,10 @@ jQuery(function () {
 			});
 		}
 	}
-		
-
-
+	
 	// ページロード時の初期表示
 	displayCharacters();
-
+	
 	// タブのクリックイベントにキャラクター描画処理を追加
 	$(".archive--item").on("click", function () {
 		// タブの切り替え処理を実行（activeクラスの付け替えなどがされる想定）
