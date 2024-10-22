@@ -12,7 +12,7 @@ function register_game_post_type()
       'label' => 'ミニゲーム',
       'public' => true,
       'has_archive' => true,
-      'rewrite' => array('slug' => 'archive-game'), // スラッグを設定
+      'rewrite' => array('slug' => 'gamepost'), // スラッグを設定
       'menu_position' => 8,
       'show_in_rest' => true,
       'supports' => array(

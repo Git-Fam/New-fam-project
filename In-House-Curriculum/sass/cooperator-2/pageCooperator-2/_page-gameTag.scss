@@ -1,0 +1,117 @@
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
+
+/* -----------------------
+  page-gameTag
+----------------------- */
+
+
+.level-select {
+  @include pc {
+    display: flex;
+    gap: pm(40, 30);
+    padding: pm(80, 60) pm(100, 80) 0 pm(115, 95);
+  }
+
+  .category-list {
+    ul {
+      @include pc {
+        display: flex;
+        flex-direction: column;
+        gap: pm(30, 20);
+      }
+
+      li {
+        a {
+          @include pc {
+            color: #EDEFD1;
+            text-shadow: 0 0 2px #505D51, 0 0 2px #505D51, 0 0 2px #505D51, 0 0 2px #505D51, 0 0 2px #505D51, 0 0 2px #505D51, 0 0 2px #505D51, 0 0 2px #505D51, 0 0 0px #505D51, 0 0 0px #505D51, 0 0 0px #505D51, 0 0 0px #505D51, 0 0 0px #505D51, 0 0 0px #505D51, 0 0 0px #505D51, 0 0 0px #505D51;
+            text-wrap: nowrap;
+          }
+        }
+
+        &.active {
+          position: relative;
+
+          a {
+            @include pc {
+              text-shadow: 0 0 2px #191F22, 0 0 2px #191F22, 0 0 2px #191F22, 0 0 2px #191F22, 0 0 2px #191F22, 0 0 2px #191F22, 0 0 2px #191F22, 0 0 2px #191F22, 0 0 0px #191F22, 0 0 0px #191F22, 0 0 0px #191F22, 0 0 0px #191F22, 0 0 0px #191F22, 0 0 0px #191F22, 0 0 0px #191F22, 0 0 0px #191F22;
+
+            }
+          }
+
+          &::before {
+            @include pc {
+              content: "";
+              @include iconContain($game-arrow);
+              width: pm(20, 15);
+              height: pm(27, 20);
+              position: absolute;
+              left: pm(-45, -35);
+              top: 50%;
+              translate: 0 -50%;
+              animation: arrow 1s infinite;
+
+              @keyframes arrow {
+                0% {
+                  opacity: 1;
+                  transform: translateX(0%);
+                }
+
+                50% {
+                  opacity: 0.3;
+                  transform: translateX(10%);
+
+                }
+
+                100% {
+                  opacity: 1;
+                  transform: translateX(0%);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .game-post {
+    @include pc {
+      width: pm(800, 600);
+      overflow-x: scroll;
+      padding-bottom: pm(20, 15);
+    }
+
+    .post-list {
+      @include pc {
+        display: flex;
+        gap: pm(30, 20);
+      }
+      .game{
+        @include pc{
+        }
+        .content{
+          @include pc{
+            @include iconContain($game-frame);
+            width: pm(352, 266);
+            height: pm(261, 198);
+            display: grid;
+            place-items: center center;  
+          }
+          .thumbnail{
+            img{
+              @include pc{
+              width: pm(330, 250);
+              height: pm(242, 183);    
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  .game-tag {}
+}

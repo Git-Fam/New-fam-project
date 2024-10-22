@@ -683,8 +683,8 @@ jQuery(function () {
 	});
 
 	//ミニゲーム　レベル選択
-	$(".level-list li").hover(function () {
-		$(".level-list li").removeClass("active");
+	$(".level-list li,.cat-select").hover(function () {
+		$(".level-list li,.cat-select").removeClass("active");
 		$(this).addClass("active");
 	})
 });
