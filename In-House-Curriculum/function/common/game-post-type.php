@@ -12,7 +12,7 @@ function register_game_post_type()
       'label' => 'ミニゲーム',
       'public' => true,
       'has_archive' => true,
-      'rewrite' => array('slug' => 'game'), // スラッグを設定
+      'rewrite' => array('slug' => 'archive-game'), // スラッグを設定
       'menu_position' => 8,
       'show_in_rest' => true,
       'supports' => array(
@@ -38,7 +38,7 @@ function register_game_post_type()
     )
   );
 
-  // カス���ム投稿タイプ「ミニゲーム」のタグ
+  // カスタム投稿タイプ「ミニゲーム」のタグ
   register_taxonomy(
     'game-tag',
     'game',
@@ -47,7 +47,10 @@ function register_game_post_type()
       'hierarchical' => false,
       'public' => true,
       'show_in_rest' => true,
+      'rewrite' => array('slug' => 'game-tag'), // スラッグを設定
       'update_count_callback' => '_update_post_term_count',
     )
   );
 }
+
+
