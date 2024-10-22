@@ -103,6 +103,8 @@
                 </div>
             </div>
         </div>
+        <div class="lever"></div>
+        <div class="btn"></div>
     </div>
 </div>
 
