@@ -81,6 +81,17 @@
                     </div>
                 </div>
             </div>
+
+            <div class="game-character">
+                <div class="img"></div>
+                <div class="text-frame">
+                    <p class="TX">きみならできる！</p>
+                </div>
+            </div>
+
+            <div class="game-mob">
+                <div class="img"></div>
+            </div>
         </div>
         <div class="lever"></div>
         <div class="btn"></div>

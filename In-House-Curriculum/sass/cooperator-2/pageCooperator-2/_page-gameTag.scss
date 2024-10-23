@@ -17,7 +17,7 @@
   @include sp {
     flex-direction: column;
     gap: min(s(15), 15px);
-    padding: min(s(20), 20px) min(s(10), 10px);
+    padding: min(s(20), 20px) min(s(10), 10px) min(s(150), 150px);
   }
 
   .category-list {
