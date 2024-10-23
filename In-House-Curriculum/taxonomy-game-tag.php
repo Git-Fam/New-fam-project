@@ -84,21 +84,22 @@
                             <?php endwhile; ?>
                         </div>
 
-                        <!-- ページネーション -->
-                        <div class="pagination">
-                            <?php
-                            if (function_exists('wp_pagenavi')) {
-                                wp_pagenavi(array('query' => $the_query));
-                            }
-                            ?>
-                        </div>
-
                     <?php else : ?>
                         <p>該当する投稿がありません。</p>
                     <?php endif; ?>
 
                     <?php wp_reset_postdata(); ?>
                 </div>
+            </div>
+
+            <div class="game-character">
+                <div class="img"></div>
+            </div>
+
+            <div class="game-mob">
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
             </div>
         </div>
         <div class="lever"></div>

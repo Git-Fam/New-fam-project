@@ -66,6 +66,16 @@
       }
 
       .game-container {
+        position: relative;
+
+        @include pc {
+          z-index: 2;
+        }
+
+        @include sp {
+          z-index: 1;
+        }
+
         &.game-top {
           @include pc {
             padding: pm(55, 40) pm(130, 90) pm(55, 40) pm(110, 90);
@@ -299,7 +309,7 @@
                     }
 
                     &::after {
-                        @include imgContain("level02.svg");
+                      @include imgContain("level02.svg");
                     }
                   }
 
@@ -320,6 +330,67 @@
           }
         }
       }
+
+      .game-character {
+        position: absolute;
+
+        @include pc {
+          z-index: 1;
+          bottom: pm(20, 20);
+          left: pm(120, 100);
+        }
+
+        @include sp {
+          z-index: 2;
+        }
+
+        .img {
+          @include imgContain("beginner-icon-hover.png");
+          aspect-ratio: 121 / 137;
+
+          @include pc {
+            width: pm(121, 100);
+          }
+        }
+      }
+
+      .game-mob {
+
+        .img {
+          @include iconContain($game-mob);
+          aspect-ratio: 82 / 63;
+          position: absolute;
+
+          @include pc {
+            width: pm(82, 75);
+            z-index: 1;
+            bottom: pm(20, 20);
+            right: pm(120, 100);
+          }
+
+          @include sp {
+            z-index: 2;
+          }
+
+          &:nth-child(2) {
+            @include pc {
+              right: pm(240, 220);
+              bottom: pm(60, 60);
+            }
+
+            @include sp {}
+          }
+
+          &:nth-child(3) {
+            @include pc {
+              right: pm(360, 340);
+            }
+
+            @include sp {}
+          }
+        }
+      }
+
     }
 
     .lever {
