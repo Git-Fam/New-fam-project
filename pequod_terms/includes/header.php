@@ -40,6 +40,11 @@
                     <li class="pc link"><a href="<?php echo $dev; ?>/privacy.php">プライバシーポリシー</a></li>
                 </ul>
             </li>
+            <li class="nav-item my-page">
+            <a class="label hover-opa" href="https://shop.pequod.jp/account/mypage" target="_blank">マイページ</a>
+            </li>
+
+
         </ul>
     </nav>
 </header>

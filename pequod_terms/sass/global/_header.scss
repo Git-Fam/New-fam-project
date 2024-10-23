@@ -94,8 +94,12 @@
 
       @include pc {
         gap: 60px;
+        align-items: center;
       }
 
+      @media screen and (max-width: 860px) {
+        gap: 40px;
+      }
       @include sp {
         display: block;
         opacity: 0;
@@ -184,7 +188,21 @@
                 transition: all 0.3s;
               }
             }
-
+          }
+        }
+        &.my-page{
+          .label{
+            background: $blue-03-parts;
+            display: grid;
+            place-items: center center;
+            @include pc{
+              padding: 10px 12px;
+              margin-left: -20px;
+            }
+            @include sp{
+              padding: 11px 40px;
+            }  
+            color: $white-font;
           }
         }
 
