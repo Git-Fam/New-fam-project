@@ -126,6 +126,8 @@ $game-arrow: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/sv
 //ミニゲーム　サムネイル枠
 $game-frame:url('data:image/svg+xml;utf-8,<svg width="352" height="261" viewBox="0 0 352 261" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3.5" y="1.5" width="347" height="256" stroke="%23505D51" stroke-width="3"/><rect x="6" y="17" width="2" height="6" transform="rotate(90 6 17)" fill="%23EDEFD1"/><rect x="2" y="21" width="3" height="18" fill="%23EDEFD1"/><rect x="246" y="261" width="2" height="6" transform="rotate(-180 246 261)" fill="%23EDEFD1"/><rect x="242" y="256" width="3" height="6" transform="rotate(90 242 256)" fill="%23EDEFD1"/><rect width="3" height="24" transform="matrix(-4.37114e-08 1 1 4.37114e-08 296 0)" fill="%23EDEFD1"/><rect width="3" height="2" transform="matrix(-4.37114e-08 1 1 4.37114e-08 290 0)" fill="%23EDEFD1"/></svg>');
 
+//ミニゲーム吹き出し
+$game-bubble:url('data:image/svg+xml;utf-8,<svg width="146" height="52" viewBox="0 0 146 52" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M139.854 2H6.66423V6.59789H2V36.1558H6.66423V41.4105H15.6074V50H17.5474V48.4842H19.6204V46.4632H21.6934V44.4421H23.7664V42.4211H26.8759V41.4105H139.854V36.1558H144V6.59789H139.854V2Z" fill="%23F0FAED" stroke="%2343505F" stroke-width="4"/></svg>');
 
 
 // // SVG使い方（色変更パターン）

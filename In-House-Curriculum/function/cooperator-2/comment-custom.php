@@ -1,10 +1,16 @@
 <?php
-
 if (!function_exists('mytheme_comment')) {
     function mytheme_comment($comment, $args, $depth) {
+        // コメントが属する投稿のタイプが 'question' であるかを確認
+        $post_type = get_post_type($comment->comment_post_ID);
+        if ($post_type !== 'question') {
+            return; // 投稿タイプが 'question' でない場合は終了
+        }
+
         if ($comment->comment_approved != '1') {
             return;
         }
+
         $GLOBALS['comment'] = $comment;
         $comment_ID = $comment->comment_ID;
         $get_comment_title = esc_attr(get_comment_meta($comment->comment_ID, 'comtitle', true));
@@ -44,28 +50,34 @@ if (!function_exists('mytheme_comment')) {
     }
 }
 
-
 // コメントフォームのカスタマイズ: コメントフィールドの直前にタイトルフィールドを追加
 add_action('comment_form_field_comment', 'add_title_comment_field');
 function add_title_comment_field($comment_field) {
-    $title_field = '
-    <p class="comment-form-title"><label for="comtitle">' . esc_html__('タイトル:', 'In-House-Curriculum') . '</label>
-    <input id="comtitle" name="comtitle" type="text" value="" size="15"></p>';
-    return $title_field . $comment_field;
+    if (is_singular('question')) { // 投稿タイプが 'question' である場合のみ実行
+        $title_field = '
+        <p class="comment-form-title"><label for="comtitle">' . esc_html__('タイトル:', 'In-House-Curriculum') . '</label>
+        <input id="comtitle" name="comtitle" type="text" value="" size="15"></p>';
+        return $title_field . $comment_field;
+    }
+    return $comment_field; // 'question' でない場合は通常のコメントフィールドを返す
 }
 
 // コメントフォームに画像添付フィールドを追加
 add_action('comment_form_logged_in_after', 'add_image_upload_field');
 function add_image_upload_field() {
-    echo '<p class="comment-form-image"><label for="comment_image">' . esc_html__('画像を添付:', 'In-House-Curriculum') . '</label>
-    <input type="file" name="comment_image" id="comment_image" accept="image/*"></p>';
+    if (is_singular('question')) { // 投稿タイプが 'question' である場合のみ画像フィールドを追加
+        echo '<p class="comment-form-image"><label for="comment_image">' . esc_html__('画像を添付:', 'In-House-Curriculum') . '</label>
+        <input type="file" name="comment_image" id="comment_image" accept="image/*"></p>';
+    }
 }
 
 // コメントメタデータとして追加項目を保存
 function save_custom_comment_field($comment_id) {
-    if (!$comment = get_comment($comment_id)) {
-        return;
+    $comment = get_comment($comment_id);
+    if (get_post_type($comment->comment_post_ID) !== 'question') {
+        return; // 投稿タイプが 'question' でない場合は終了
     }
+
     $custom_key_comment_title = 'comtitle';
     $get_comment_title = isset($_POST[$custom_key_comment_title]) ? esc_attr($_POST[$custom_key_comment_title]) : '';
 
@@ -151,9 +163,6 @@ function save_edited_comment_image($comment_id) {
     }
 }
 add_action('edit_comment', 'save_edited_comment_image');
-
-
-
 
 // 管理画面でコメント返信時にタイトルフィールドを追加
 function add_title_to_admin_reply_form() {
@@ -245,6 +254,5 @@ function add_enctype_to_comment_form($defaults) {
     $defaults['enctype'] = 'multipart/form-data';
     return $defaults;
 }
-
 
 ?>

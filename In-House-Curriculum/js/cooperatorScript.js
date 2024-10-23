@@ -365,25 +365,28 @@ jQuery(function () {
 	});
 
 	function displayCharacters() {
-		if (typeof allUsersProgress !== "undefined" && allUsersProgress.length > 0) {
+		if (
+			typeof allUsersProgress !== "undefined" &&
+			allUsersProgress.length > 0
+		) {
 			// 各ユーザーの進捗に基づいてキャラクターを表示
 			allUsersProgress.forEach((user) => {
 				const userProgress = user.progress;
 				const username = user.username;
-	
+
 				console.log("表示中のユーザー名:", username);
-	
+
 				let lastCheckpointClass = "";
 				let lastProgressValue = 0;
-	
+
 				// 現在アクティブなカテゴリーの要素を取得
 				const $activeCategory = $(".archive--contents--items--wap.active");
-	
+
 				if ($activeCategory.length) {
 					// アクティブカテゴリー内で対応する進捗を確認
 					$.each(userProgress, (key, value) => {
 						const progressValue = parseInt(value) || 0;
-	
+
 						// 現在の進捗値が0より大きい場合のみ、最後の進捗ポイントとして保存
 						if (progressValue > 0) {
 							// アクティブなカテゴリー内にそのクラスが存在するか確認
@@ -393,12 +396,17 @@ jQuery(function () {
 							}
 						}
 					});
-	
+
 					if (lastCheckpointClass) {
 						// アクティブなカテゴリー内の最後の進捗箇所にキャラクターを配置
-						const $checkpointElement = $activeCategory.find(`.${lastCheckpointClass}`);
-						console.log("チェックポイント要素を探しています: ", $checkpointElement);
-	
+						const $checkpointElement = $activeCategory.find(
+							`.${lastCheckpointClass}`
+						);
+						console.log(
+							"チェックポイント要素を探しています: ",
+							$checkpointElement
+						);
+
 						if ($checkpointElement.length) {
 							// character-box 要素を動的に生成
 							const $characterBox = $("<div>")
@@ -407,31 +415,36 @@ jQuery(function () {
 									position: "absolute",
 									left: lastProgressValue + "%", // 進捗に応じたleftの値
 								});
-	
+
 							const $nameElement = $("<p>").addClass("name").text(username);
-	
+
 							// 対応するユーザーのキャラクターHTMLを取得
-							const userCharacter = wpData.allUsersCharacters.find(c => c.username === username);
+							const userCharacter = wpData.allUsersCharacters.find(
+								(c) => c.username === username
+							);
 							if (userCharacter) {
-								const $characterDiv = $("<div>").addClass("character").html(userCharacter.character_html);
+								const $characterDiv = $("<div>")
+									.addClass("character")
+									.html(userCharacter.character_html);
 								$characterBox.append($characterDiv);
 							} else {
 								$characterBox.append($("<div>").addClass("character"));
 							}
-	
+
 							// 現在のユーザー名と一致する場合は文字色を赤に設定し、.meクラスを追加
 							if ($.trim(username) === $.trim(currentUsername)) {
 								console.log("赤くするユーザー名:", username);
 								$nameElement.css("color", "red");
 								$characterBox.addClass("me");
 							}
-	
+
 							// character-box に要素を追加し、DOMに追加
-							$characterBox
-								.append($nameElement)
-								.appendTo($checkpointElement);
+							$characterBox.append($nameElement).appendTo($checkpointElement);
 						} else {
-							console.warn("チェックポイント要素が見つかりません: ", lastCheckpointClass);
+							console.warn(
+								"チェックポイント要素が見つかりません: ",
+								lastCheckpointClass
+							);
 						}
 					}
 				} else {
@@ -440,10 +453,10 @@ jQuery(function () {
 			});
 		}
 	}
-	
+
 	// ページロード時の初期表示
 	displayCharacters();
-	
+
 	// タブのクリックイベントにキャラクター描画処理を追加
 	$(".archive--item").on("click", function () {
 		// タブの切り替え処理を実行（activeクラスの付け替えなどがされる想定）
@@ -692,5 +705,16 @@ jQuery(function () {
 	$(".level-list li,.cat-select").hover(function () {
 		$(".level-list li,.cat-select").removeClass("active");
 		$(this).addClass("active");
-	})
+	});
+
+	// ボタンの文字変更
+	var currentURL = window.location.href;
+
+	// URLに "gamepost" が含まれているか確認する
+	if (currentURL.indexOf("gamepost") !== -1) {
+		var submitButton = $("#submit");
+		if (submitButton.length) {
+			submitButton.val("送信"); // ボタンのテキストを変更
+		}
+	}
 });
