@@ -69,11 +69,11 @@
         position: relative;
 
         @include pc {
-          z-index: 2;
+          z-index: 1;
         }
 
         @include sp {
-          z-index: 1;
+          z-index: 2;
         }
 
         &.game-top {
@@ -332,16 +332,19 @@
       }
 
       .game-character {
-        position: absolute;
-
+        
         @include pc {
-          z-index: 1;
+          position: absolute;
+          z-index: 2;
           bottom: pm(20, 20);
-          left: pm(120, 100);
+          left: pm(90, 80);
         }
 
         @include sp {
-          z-index: 2;
+          position: relative;
+          z-index: 1;
+          bottom: 5%;
+          left: 10%;
         }
 
         .img {
@@ -351,6 +354,46 @@
           @include pc {
             width: pm(121, 100);
           }
+
+          @include sp {
+            width: min(s(100), 100px);
+          }
+        }
+
+        .text-frame {
+          @include iconContain($game-character-text-frame);
+          aspect-ratio: 146 / 52;
+          
+          @include pc {
+            position: absolute;
+            padding: pm(14, 12) 0 pm(21, 20);
+            width: pm(146, 120);
+            left: 100%;
+            bottom: 90%;
+            z-index: 2;
+          }
+
+          @include sp {
+            padding: min(s(10), 10px) 0 min(s(14), 12px);
+            width: min(s(120), 120px);
+            z-index: 1;
+            left: 90%;
+            bottom: 100%;
+          }
+
+          .TX {
+            color: #43505F;
+            line-height: 1;
+            text-align: center;
+
+            @include pc {
+              font-size: pm(13, 12);
+            }
+
+            @include sp {
+              font-size: min(s(12), 12px);
+            }
+          }
         }
       }
 
@@ -359,17 +402,20 @@
         .img {
           @include iconContain($game-mob);
           aspect-ratio: 82 / 63;
-          position: absolute;
-
+          
           @include pc {
+            position: absolute;
             width: pm(82, 75);
-            z-index: 1;
+            z-index: 2;
             bottom: pm(20, 20);
             right: pm(120, 100);
           }
 
           @include sp {
-            z-index: 2;
+            width: min(s(75), 75px);
+            z-index: 1;
+            bottom: 5%;
+            right: 10%;
           }
 
           &:nth-child(2) {
@@ -378,7 +424,9 @@
               bottom: pm(60, 60);
             }
 
-            @include sp {}
+            @include sp {
+              display: none;
+            }
           }
 
           &:nth-child(3) {
@@ -386,7 +434,9 @@
               right: pm(360, 340);
             }
 
-            @include sp {}
+            @include sp {
+              display: none;
+            }
           }
         }
       }

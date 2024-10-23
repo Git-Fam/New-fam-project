@@ -46,9 +46,9 @@
 
 .game-single_wrap {
   display: flex;
-  height: 100%;
-
+  
   @include pc {
+    height: 100%;
     gap: p(12);
     padding: pm(47) pm(53);
   }
@@ -266,7 +266,7 @@
 
     @include pc {
       width: calc(70% - p(12));
-      height: 90%;
+      height: 95%;
       padding: pm(11) pm(10) pm(8);
     }
 
@@ -322,6 +322,7 @@
           span {
             color: #F0FAED;
             line-height: 150%;
+            word-break: break-all;
 
             @include pc {
               font-size: pm(16);
