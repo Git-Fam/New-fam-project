@@ -18,6 +18,10 @@
       width: 100%;
       height: 100%;
     }
+    @include sp{
+      width: 100%;
+      height: 100%;
+    }
 
     &-header {
       @include iconCover($green-header);
@@ -28,7 +32,10 @@
       @include pc {
         height: p(60);
         padding: p(15) p(20);
-
+      }
+      @include sp{
+        height: scl(32);
+        padding: scl(7) scl(10);
       }
 
       .TL {
@@ -37,6 +44,9 @@
 
         @include pc {
           font-size: pmi(23);
+        }
+        @include sp{
+          font-size: scl(14);
         }
       }
 
@@ -50,17 +60,30 @@
           top: pmi(10);
           right: pmi(20);
         }
+        @include sp{
+          width: scl(40);
+          height: scl(36);
+          top: scl(20);
+          right: scl(10);
+        }
 
         &::before {
           content: "ジャンル選択";
           position: relative;
           color: $P-C2DFE7;
-          top: 0;
 
           @include pc {
             font-size: pmi(14);
             right: pmi(65);
             letter-spacing: pmi(1.5);
+            top: 0;
+          }
+          @include sp{
+            font-size: scl(10);
+            right: scl(35);
+            letter-spacing: scl(1.5);
+            white-space: nowrap;
+            top: scl(-20);
           }
         }
 
@@ -78,6 +101,12 @@
             right: pmi(25);
             top: p(10);
           }
+          @include sp{
+            width: scl(6);
+            height: scl(6);
+            right: scl(10);
+            top: scl(-12);
+          }
         }
       }
     }
@@ -94,6 +123,49 @@
         height: p(200);
         padding: p(67) pmi(0) p(17);
       }
+      @include sp{
+        width: 100%;
+        height: scl(100);
+      }
+      .archive--contents--tab {
+        z-index: 20;
+        position: absolute;
+        width: 85%;
+        left: 50%;
+        translate: -50% 0;
+  
+        @include pc {
+          top: p(73);
+        }
+  
+        @include sp {
+          top: scl(35);
+          width: 80%;
+          gap: scl(15);
+        }
+  
+        .archive--item {
+  
+          &--img {
+            margin: 0 auto;
+  
+            @include pc {
+              width: p(67);
+              height: p(67);
+            }
+  
+            @include sp {
+              width: scl(30);
+              height: scl(30);
+            }
+          }
+  
+          &--title {
+            text-align: center;
+          }
+        }
+      }
+  
 
       &.show {
         top: 0;
@@ -116,6 +188,11 @@
           padding: pmi(21) pmi(32);
           border-radius: pmi(100);
         }
+        @include sp{
+          white-space: nowrap;
+          padding: scl(5) scl(10);
+          border-radius: pmi(100);
+        }
 
         &::before {
           content: "";
@@ -127,6 +204,11 @@
             height: pmi(10);
             bottom: pmi(-8);
           }
+          @include sp{
+            width: scl(10);
+            height: scl(5);
+            bottom: scl(-2);  
+          }
         }
       }
 
@@ -134,6 +216,10 @@
         @include pc {
           bottom: pmi(180);
           left: pmi(80);
+        }
+        @include sp{
+          bottom: scl(140);
+          left: scl(60);
         }
 
         .koinu {
@@ -143,6 +229,10 @@
           @include pc {
             width: pmi(187);
             height: pmi(198);
+          }
+          @include sp{
+            width: scl(100);
+            height: scl(100); 
           }
 
           &:hover {
@@ -157,6 +247,10 @@
             top: pmi(-85);
             left: pmi(70);
           }
+          @include sp{
+            top: scl(-50);
+            left: scl(50);
+          }
 
           &::before {
             clip-path: polygon(90% 0, 100% 100%, 10% 100%);
@@ -164,6 +258,11 @@
             @include pc {
               right: pmi(32);
               rotate: -45deg;
+            }
+            @include sp{
+              right: scl(20);
+              rotate: -45deg;
+              bottom: scl(-5);
             }
           }
         }
@@ -174,7 +273,10 @@
           bottom: pmi(120);
           right: clamp(p(8), p(8), 8px);
         }
-
+        @include sp{
+          bottom: scl(120);
+          right: scl(8);
+        }
         .goat {
           @include imgContain("goat.png");
           transition: all 1s;
@@ -182,6 +284,10 @@
           @include pc {
             width: pmi(240);
             height: pmi(230);
+          }
+          @include sp{
+            width: scl(150);
+            height: scl(150);
           }
 
           &:hover {
@@ -196,6 +302,10 @@
             top: pmi(-61);
             left: pmi(-20);
           }
+          @include sp{
+            top: scl(-30);
+            left: scl(-10);
+          }
 
           &::before {
             clip-path: polygon(10% 0, 100% 100%, 10% 100%);
@@ -204,6 +314,11 @@
               rotate: 45deg;
               left: pmi(25);
               bottom: pmi(-5);
+            }
+            @include sp{
+              rotate: 45deg;
+              left: scl(10);
+              bottom: scl(-5);
             }
           }
         }
@@ -225,6 +340,12 @@
           bottom: pmi(161);
           left: clamp(-162px, p(-162), -100px);
         }
+        @include sp{
+          width: scl(300);
+          height: scl(300);
+          bottom: smi(161);
+          left: clamp(-162px, p(-162), -100px);
+        }
       }
 
       &.tree02 {
@@ -233,6 +354,12 @@
           height: clamp(550px, p(654), p(654));
           bottom: pmi(113);
           right: clamp(-400px, p(-215), -200px);
+        }
+        @include sp{
+          width: scl(300);
+          height: scl(400);
+          bottom: smi(101);
+          right: clamp(-450px, p(-240), -150px);
         }
       }
     }

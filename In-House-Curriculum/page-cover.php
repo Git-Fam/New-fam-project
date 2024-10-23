@@ -108,32 +108,12 @@ get_header();
             <a href="javascript:window.close()" class="TX">戻る</a>
         </div>
 
-    </div>
-    <?php 
+        <?php 
         if ($queried_post):
-            // 現在の投稿の公開日を取得
-            $current_post_date = $queried_post->post_date;
-
-            // 次の記事を取得するカスタムクエリ
-            $args = array(
-                'post_type'      => 'post', // 投稿タイプを指定
-                'posts_per_page' => 1,
-                'order'          => 'ASC',
-                'orderby'        => 'date',
-                'date_query'     => array(
-                    array(
-                        'after' => $current_post_date, // 現在の記事の公開日以降
-                        'inclusive' => false, // 現在の記事の公開日は含まない
-                    ),
-                ),
-                'post_status' => 'publish'
-            );
-            $next_post_query = new WP_Query($args);
-
-            // 次の記事が存在する場合の表示
-            if ($next_post_query->have_posts()): 
-                $next_post_query->the_post();
-                $next_post_id = get_the_ID(); // 次の記事のIDを取得
+            // 次の投稿を取得
+            $next_post = get_next_post();
+            if ($next_post):
+                $next_post_id = $next_post->ID; // 次の記事のIDを取得
         ?>
                 <!-- 次の記事のリンクを作成し、URLにIDをパラメータとして付与 -->
                 <a href="<?php echo esc_url( site_url('/cover/?post_id=' . $next_post_id) ); ?>" class="next">
@@ -144,12 +124,10 @@ get_header();
                 echo '<p>次の記事はありません。</p>';
             endif;
 
-            // クエリをリセット
-            wp_reset_postdata();
         else:
             echo '<p>記事が選択されていません。</p>';
         endif;
-    ?>
+        ?>
     <div class="grass grass01"></div>
     <div class="grass grass02"></div>
 </div>
