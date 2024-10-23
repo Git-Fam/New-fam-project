@@ -4,8 +4,6 @@
     <div class="game-wrap">
         <div class="inner">
             <div class="game-container level-select game-tag">
-
-
                 <!-- カテゴリー選択リンクを表示 -->
                 <div class="category-list">
                     <ul>

@@ -1,5 +1,5 @@
-@use "../../global"as *;
-@use "../globalCooperator-2"as *;
+@use "../../global" as *;
+@use "../globalCooperator-2" as *;
 
 /* -----------------------
   page-gameTag
@@ -7,68 +7,83 @@
 
 
 .level-select {
+  display: flex;
+
   @include pc {
-    display: flex;
     gap: pm(40, 30);
     padding: pm(80, 60) pm(100, 80) 0 pm(115, 95);
   }
 
+  @include sp {
+    flex-direction: column;
+    gap: min(s(15), 15px);
+    padding: min(s(20), 20px) min(s(10), 10px);
+  }
+
   .category-list {
     ul {
+      display: flex;
+      flex-direction: column;
+
       @include pc {
-        display: flex;
-        flex-direction: column;
         gap: pm(30, 20);
+      }
+
+      @include sp {
+        gap: min(s(10), 10px);
+        padding-left: min(s(30), 30px);
       }
 
       li {
         a {
-          @include pc {
-            color: #EDEFD1;
-            text-shadow: 0 0 2px #505D51, 0 0 2px #505D51, 0 0 2px #505D51, 0 0 2px #505D51, 0 0 2px #505D51, 0 0 2px #505D51, 0 0 2px #505D51, 0 0 2px #505D51, 0 0 0px #505D51, 0 0 0px #505D51, 0 0 0px #505D51, 0 0 0px #505D51, 0 0 0px #505D51, 0 0 0px #505D51, 0 0 0px #505D51, 0 0 0px #505D51;
-            text-wrap: nowrap;
-          }
+          color: #EDEFD1;
+          text-shadow: 0 0 2px #505D51, 0 0 2px #505D51, 0 0 2px #505D51, 0 0 2px #505D51, 0 0 2px #505D51, 0 0 2px #505D51, 0 0 2px #505D51, 0 0 2px #505D51, 0 0 0px #505D51, 0 0 0px #505D51, 0 0 0px #505D51, 0 0 0px #505D51, 0 0 0px #505D51, 0 0 0px #505D51, 0 0 0px #505D51, 0 0 0px #505D51;
+          text-wrap: nowrap;
         }
 
         &.active {
           position: relative;
 
           a {
-            @include pc {
-              text-shadow: 0 0 2px #191F22, 0 0 2px #191F22, 0 0 2px #191F22, 0 0 2px #191F22, 0 0 2px #191F22, 0 0 2px #191F22, 0 0 2px #191F22, 0 0 2px #191F22, 0 0 0px #191F22, 0 0 0px #191F22, 0 0 0px #191F22, 0 0 0px #191F22, 0 0 0px #191F22, 0 0 0px #191F22, 0 0 0px #191F22, 0 0 0px #191F22;
-
-            }
+            text-shadow: 0 0 2px #191F22, 0 0 2px #191F22, 0 0 2px #191F22, 0 0 2px #191F22, 0 0 2px #191F22, 0 0 2px #191F22, 0 0 2px #191F22, 0 0 2px #191F22, 0 0 0px #191F22, 0 0 0px #191F22, 0 0 0px #191F22, 0 0 0px #191F22, 0 0 0px #191F22, 0 0 0px #191F22, 0 0 0px #191F22, 0 0 0px #191F22;
           }
 
           &::before {
+            content: "";
+            @include iconContain($game-arrow);
+            position: absolute;
+            top: 50%;
+            translate: 0 -50%;
+            animation: arrow 1s infinite;
+
+            @keyframes arrow {
+              0% {
+                opacity: 1;
+                transform: translateX(0%);
+              }
+
+              50% {
+                opacity: 0.3;
+                transform: translateX(10%);
+
+              }
+
+              100% {
+                opacity: 1;
+                transform: translateX(0%);
+              }
+            }
+
             @include pc {
-              content: "";
-              @include iconContain($game-arrow);
               width: pm(20, 15);
               height: pm(27, 20);
-              position: absolute;
               left: pm(-45, -35);
-              top: 50%;
-              translate: 0 -50%;
-              animation: arrow 1s infinite;
+            }
 
-              @keyframes arrow {
-                0% {
-                  opacity: 1;
-                  transform: translateX(0%);
-                }
-
-                50% {
-                  opacity: 0.3;
-                  transform: translateX(10%);
-
-                }
-
-                100% {
-                  opacity: 1;
-                  transform: translateX(0%);
-                }
-              }
+            @include sp {
+              width: min(s(20), 15px);
+              height: min(s(27), 20px);
+              left: -10%;
             }
           }
         }
@@ -77,33 +92,89 @@
   }
 
   .game-post {
+
     @include pc {
       width: pm(800, 600);
       overflow-x: scroll;
       padding-bottom: pm(20, 15);
     }
 
+    @include sp {
+      width: 90%;
+      margin: 0 auto;
+    }
+
     .post-list {
+      display: flex;
+
       @include pc {
-        display: flex;
         gap: pm(30, 20);
       }
-      .game{
-        @include pc{
-        }
-        .content{
-          @include pc{
-            @include iconContain($game-frame);
+
+      @include sp {
+        flex-direction: column;
+        gap: min(s(10), 10px);
+      }
+
+      .game {
+
+        .content {
+          @include iconContain($game-frame);
+          display: grid;
+          place-items: center center;
+
+          @include pc {
             width: pm(352, 266);
             height: pm(261, 198);
-            display: grid;
-            place-items: center center;  
           }
-          .thumbnail{
-            img{
-              @include pc{
-              width: pm(330, 250);
-              height: pm(242, 183);    
+
+          @include sp {
+            width: 100%;
+            aspect-ratio: 352 / 261;
+          }
+
+          .thumbnail {
+            img {
+              object-fit: cover;
+              object-position: center;
+
+              @include pc {
+                width: pm(330, 250);
+                height: pm(242, 183);
+              }
+
+
+              @include sp {
+                width: 90%;
+                margin: 0 auto;
+                aspect-ratio: 330 / 242;
+              }
+            }
+          }
+        }
+
+        .post-TL {
+          @include pc {
+            margin-top: pm(40, 30);
+          }
+
+          @include sp {
+            margin-top: min(s(20), 20px);
+          }
+
+          .TL {
+            a {
+              color: #505D51;
+              text-align: center;
+              display: block;
+
+              @include pc {
+                font-size: pm(20, 15);
+              }
+
+
+              @include sp {
+                font-size: min(s(15), 15px);
               }
             }
           }
