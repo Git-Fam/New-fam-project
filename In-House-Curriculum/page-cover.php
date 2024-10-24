@@ -1,16 +1,30 @@
 <?php
-        // クエリパラメータから記事IDを取得
-        $post_id = isset($_GET['post_id']) ? intval($_GET['post_id']) : 0;
-        if ($post_id) :
-        $queried_post = get_post($post_id);
+// クエリパラメータから記事IDを取得
+$post_id = isset($_GET['post_id']) ? intval($_GET['post_id']) : 0;
+if ($post_id) :
+    $queried_post = get_post($post_id);
 
-        if ($queried_post) :
-    ?>
-    <?php
-        endif;
-        endif;
+    if ($queried_post) :
+        // 現在の投稿IDを取得
+        $current_post_id = $queried_post->ID;
+
+        // 投稿一覧を取得（Post Types Orderの並び順に従う）
+        $args = array(
+            'post_type'      => 'post',
+            'posts_per_page' => -1,  // 全ての投稿を取得
+            'orderby'        => 'menu_order',
+            'order'          => 'ASC',
+            'post_status'    => 'publish',
+            'suppress_filters' => false,
+        );
+
+        $all_posts = new WP_Query($args);
+
+        // クエリをリセット
+        wp_reset_postdata();
+    endif;
+endif;
 ?>
-
 <?php
 get_header();
 ?>
@@ -18,7 +32,19 @@ get_header();
     <div class="cover">
 
         <div class="cover-header">
-            <p class="TL">カリキュラム選択　〉HTML　〉<?php echo esc_html($queried_post->post_title); ?></p>
+        <p class="TL">
+            カリキュラム選択 〉
+            <?php
+                // 投稿のカテゴリーを取得
+                $categories = get_the_category($queried_post->ID);
+                
+                if (!empty($categories)) {
+                    // 最初のカテゴリー名を出力
+                    echo esc_html($categories[0]->name);
+                }
+            ?> 
+            〉<?php echo esc_html($queried_post->post_title); ?>
+        </p>
             <div class="btn" id="cover-btn"></div>
         </div>
 
@@ -108,24 +134,65 @@ get_header();
             <a href="javascript:window.close()" class="TX">戻る</a>
         </div>
 
-        <?php 
-        if ($queried_post):
-            // 次の投稿を取得
-            $next_post = get_next_post();
-            if ($next_post):
-                $next_post_id = $next_post->ID; // 次の記事のIDを取得
-        ?>
-                <!-- 次の記事のリンクを作成し、URLにIDをパラメータとして付与 -->
-                <a href="<?php echo esc_url( site_url('/cover/?post_id=' . $next_post_id) ); ?>" class="next">
-                    <p class="next-link">次に進む</p>
-                </a>
         <?php
-            else:
-                echo '<p>次の記事はありません。</p>';
-            endif;
+        // クエリパラメータから記事IDを取得
+        $post_id = isset($_GET['post_id']) ? intval($_GET['post_id']) : 0;
+        if ($post_id) :
+            $queried_post = get_post($post_id);
 
-        else:
-            echo '<p>記事が選択されていません。</p>';
+            if ($queried_post) :
+                // 現在の投稿IDを取得
+                $current_post_id = $queried_post->ID;
+
+                // 投稿一覧を取得（Post Types Orderの並び順に従う）
+                $args = array(
+                    'post_type'      => 'post',
+                    'posts_per_page' => -1,  // 全ての投稿を取得
+                    'orderby'        => 'menu_order',  // 手動の順序に従う
+                    'order'          => 'ASC',
+                    'post_status'    => 'publish',
+                    'suppress_filters' => false,  // 並び順を適用
+                );
+
+                $all_posts = new WP_Query($args);
+                $next_post_id = null;
+
+                if ($all_posts->have_posts()) :
+                    $found_current = false;
+                    while ($all_posts->have_posts()) : $all_posts->the_post();
+                        // 現在の投稿が見つかったら次の投稿を取得
+                        if ($found_current) {
+                            $next_post_id = get_the_ID();
+                            break;
+                        }
+                        if (get_the_ID() == $current_post_id) {
+                            $found_current = true;
+                        }
+                    endwhile;
+
+                    // 最後の投稿だった場合は、最初の投稿に戻る
+                    if (!$next_post_id && $found_current) {
+                        // 最初の投稿を次の記事に設定
+                        $all_posts->rewind_posts();
+                        $all_posts->the_post();
+                        $next_post_id = get_the_ID();
+                    }
+                endif;
+
+                // クエリをリセット
+                wp_reset_postdata();
+
+                if ($next_post_id):
+        ?>
+                    <!-- 次の記事のリンクを作成し、URLにIDをパラメータとして付与 -->
+                    <a href="<?php echo esc_url(site_url('/cover/?post_id=' . $next_post_id)); ?>" class="next">
+                        <p class="next-link">次に進む</p>
+                    </a>
+        <?php
+                else:
+                    echo '<p>次の記事はありません。</p>';
+                endif;
+            endif;
         endif;
         ?>
     <div class="grass grass01"></div>

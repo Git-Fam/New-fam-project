@@ -10,10 +10,12 @@
 
   @include pc {
     padding: p(48) 0 p(39);
+    height: 100vh;
+
   }
   @include sp{
-    padding: 46px 0 25px;
     @include height;
+    padding: 46px 0 25px;
   }
 
   .question-main {
@@ -105,8 +107,8 @@
         top: 45%;
       }
       @include sp{
-        width: clamp(285px, s(360),500px);
-        height: clamp(287px, s(368),505px);
+        width: scl(360);
+        height:scl(368);
         top: 40%;
       }
 
@@ -124,10 +126,10 @@
           padding: p(32) p(40) p(70);
         }
         @include sp{
-          height: calc(247 / 368 * 100%);
+          height: scl(247);
           aspect-ratio: 619 / 578;
           top: 60%;
-          padding:13px 18px clamp( 25px, s(32), 44px);
+          padding: scl(13) scl(18) scl(32);
         }
 
         .img-icon {
@@ -141,10 +143,10 @@
             top: p(15);
           }
           @include sp{
-            width: clamp(9px, s(9), 12px);
-            height: clamp(9px, s(9), 12px);
-            margin: -12px 0 0 auto;
-            top: 15px;
+            width:scl(9);
+            height:scl(9);
+            margin: scl(-12) 0 0 auto;
+            top: scl(15);
           }
 
           &::before {
@@ -160,8 +162,8 @@
               right: p(0);
             }
             @include sp{
-              font-size: clamp(6px, s(6), 7px);
-              top: -3px;
+              font-size: scl(6);
+              top: scl(-3);
               right: 0;
             }
           }
@@ -178,9 +180,9 @@
               right: p(3);
             }
             @include sp{
-              width: 2px;
-              height: 1px;
-              right: clamp(2px, s(2), 3px);
+              width: scl(2);
+              height: scl(1);
+              right: scl(2);
             }
           }
         }
@@ -218,8 +220,8 @@
                 font-size: p(10);
               }
               @include sp{
-                margin-top: -10px;
-                font-size: 8px;
+                margin-top:scl(-10);
+                font-size: scl(8);
               }
             }
 
@@ -237,9 +239,9 @@
                 width: p(30);
               }
               @include sp{
-                top: -40px;
-                right: -4px;
-                width: 20px;
+                top: scl(-40);
+                right: scl(-4);
+                width: scl(20);
               }
 
               label {
@@ -264,10 +266,11 @@
                 padding: p(13) 0;
               }
               @include sp{
-                margin-top: clamp(10px, s(12), 16px);
-                border-top: s(1) solid $P-7FBF99;
-                border-bottom: s(1) solid $P-7FBF99;
-                padding: clamp(3px, s(5), 8px) 0;
+                border-top: scl(1) solid $P-7FBF99;
+                border-bottom: scl(1) solid $P-7FBF99;
+                margin-top: scl(12);
+                padding: scl(5) 0;
+              
               }
 
               label {
@@ -285,7 +288,7 @@
                   margin-left: p(11);
                 }
                 @include sp{
-                  margin-left: 6px;
+                  margin-left: scl(6);
                 }
 
               }
@@ -300,8 +303,8 @@
                   height: p(30);
                 }
                 @include sp{
-                  width: clamp(13px, s(13), 20px);
-                  height: clamp(13px, s(13), 20px);
+                  width: scl(13);
+                  height: scl(13);
                 }
               }
 
@@ -315,8 +318,8 @@
                   font-size: p(16);
                 }
                 @include sp{
-                  left: 23px;
-                  font-size: clamp(10px, s(10), 12px);
+                  left: scl(23);
+                  font-size: scl(10);
                 }
               }
 
@@ -342,12 +345,12 @@
                 border-bottom: p(2) solid $P-7FBF99;
               }
               @include sp{
-                font-size: clamp(10px, s(10), 12px);
-                height: clamp(100px, s(148), 225px);
+                font-size: scl(10);
+                height: scl(148);
                 line-height: 1.7em;
-                background-size: p(6) 100%, 100% 1.7em;
-                padding: 0 5px;
-                border-bottom: s(1) solid $P-7FBF99;
+                background-size: scl(6) 100%, 100% 1.7em;
+                padding: 0 scl(5);
+                border-bottom: scl(1) solid $P-7FBF99;
               }
 
               label {
@@ -368,21 +371,24 @@
                   padding-left: p(10);
                 }
                 @include sp{
-                  font-size: clamp(10px, s(10), 12px);
+                  font-size: scl(10);
                   line-height: 1.7em;
-                  padding-left: 5px;
+                  padding-left: scl(5);
                 }
               }
             }
 
             .form-submit {
-              position: relative;
+              position: absolute;
               width: fit-content;
               @include pc {
-                margin: p(13) 0 0 auto;
+                margin: p(7) 0 0 auto;
+                right: 0;
               }
               @include sp{
-                margin: clamp(0px, s(5), 5px) 0 0 auto;
+                margin-left: auto;
+                bottom: -13%;
+                right: 0;
               }
 
               input {
@@ -402,9 +408,9 @@
                   border-radius: p(5);
                 }
                 @include sp{
-                  width: clamp(61px, s(81), 112px);
-                  height: clamp(11px, s(15), 21px);
-                  border-radius: 3px;
+                  width: scl(81);
+                  height: scl(15);
+                  border-radius: scl(3);
                 }
               }
 
@@ -424,10 +430,11 @@
                 }
                 @include sp{
                   width: 100%;
-                  font-size: clamp(10px, s(10), 10px);
-                  letter-spacing: 1.2px;
+                  font-size: scl(10);
+                  letter-spacing: scl(1.2);
                   margin: auto;
                   text-align: center;
+                  top: 60%;
                 }
 
               }
@@ -439,7 +446,7 @@
               bottom: p(26);
             } 
             @include sp{
-              bottom: 8px;
+              bottom: scl(8);
             }         
           }  
         }
@@ -468,10 +475,10 @@
           padding-top: p(20);
         }
         @include sp{
-          width: clamp(242px, s(300), 429px);
+          width: scl(300);
           aspect-ratio: 1/1;
-          border-radius: 20px;
-          padding-top: 20px;
+          border-radius: scl(20);
+          padding-top: scl(20);
         }
 
         .TX {
@@ -485,8 +492,8 @@
             letter-spacing: p(2);
           }
           @include sp{
-            font-size: clamp(10px, s(10), 12px);
-            letter-spacing: 2px;
+            font-size: scl(10);
+            letter-spacing: scl(2);
           }
         }
         .img{
@@ -497,8 +504,8 @@
             margin-left: p(-50);
           }
           @include sp{
-            width: clamp(58px, s(72), 104px);
-            height: clamp(55px, s(68), 99px);
+            width: scl(72);
+            height: scl(68);
             margin-left: -8%;
           }
         }
@@ -507,7 +514,7 @@
             margin: p(10) p(30) 0 0;
           }
           @include sp{
-            margin: 5px 15px 0 0 ;
+            margin: scl(5) scl(15) 0 0 ;
           }
 
         }
@@ -524,5 +531,20 @@
       top: 0;
       left: 0;
     }
+  }
+}
+.question-grass{
+  @include imgContain("question-grass.png");
+  pointer-events: none;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  @include pc{
+    width: p(1280);
+    height: p(117);
+  }
+  @include sp{
+    width:s(800);
+    height: s(73);
   }
 }

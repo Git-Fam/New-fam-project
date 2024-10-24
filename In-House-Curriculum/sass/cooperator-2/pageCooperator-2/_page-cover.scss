@@ -46,7 +46,7 @@
           font-size: pmi(23);
         }
         @include sp{
-          font-size: scl(14);
+          font-size: s(12);
         }
       }
 
@@ -61,10 +61,10 @@
           right: pmi(20);
         }
         @include sp{
-          width: scl(40);
-          height: scl(36);
-          top: scl(20);
-          right: scl(10);
+          width: s(40);
+          height: s(36);
+          top: s(20);
+          right: s(10);
         }
 
         &::before {
@@ -79,11 +79,11 @@
             top: 0;
           }
           @include sp{
-            font-size: scl(10);
-            right: scl(35);
-            letter-spacing: scl(1.5);
+            font-size: s(10);
+            right: s(35);
+            letter-spacing: s(1.5);
             white-space: nowrap;
-            top: scl(-20);
+            top: s(-20);
           }
         }
 
@@ -102,10 +102,10 @@
             top: p(10);
           }
           @include sp{
-            width: scl(6);
-            height: scl(6);
-            right: scl(10);
-            top: scl(-12);
+            width: s(6);
+            height: s(6);
+            right: s(10);
+            top: s(-12);
           }
         }
       }
@@ -219,7 +219,7 @@
         }
         @include sp{
           bottom: scl(140);
-          left: scl(60);
+          left: scl(-20);
         }
 
         .koinu {
@@ -249,7 +249,7 @@
           }
           @include sp{
             top: scl(-50);
-            left: scl(50);
+            left: scl(20);
           }
 
           &::before {
@@ -274,8 +274,8 @@
           right: clamp(p(8), p(8), 8px);
         }
         @include sp{
-          bottom: scl(120);
-          right: scl(8);
+          bottom: scl(100);
+          right: scl(-20);
         }
         .goat {
           @include imgContain("goat.png");
@@ -286,8 +286,8 @@
             height: pmi(230);
           }
           @include sp{
-            width: scl(150);
-            height: scl(150);
+            width: scl(130);
+            height: scl(130);
           }
 
           &:hover {
@@ -304,7 +304,7 @@
           }
           @include sp{
             top: scl(-30);
-            left: scl(-10);
+            left: scl(10);
           }
 
           &::before {
@@ -341,10 +341,10 @@
           left: clamp(-162px, p(-162), -100px);
         }
         @include sp{
-          width: scl(300);
-          height: scl(300);
-          bottom: smi(161);
-          left: clamp(-162px, p(-162), -100px);
+          width: scl(280);
+          height: scl(380);
+          bottom: smi(141);
+          left: clamp(-180px, s(-120), -120px);
         }
       }
 
@@ -359,7 +359,7 @@
           width: scl(300);
           height: scl(400);
           bottom: smi(101);
-          right: clamp(-450px, p(-240), -150px);
+          right: clamp(-200px, s(-150), -150px);
         }
       }
     }
@@ -385,20 +385,31 @@
       @include pc {
         width: p(558);
       }
+      @include sp{
+        width: fit-content;
+      }
 
       .intermediate-page {
         position: absolute;
         left: 50%;
-        top: 40%;
         translate: -50% -50%;
 
-        @include pc {}
+        @include pc {
+          top: 40%;
+        }
+        @include sp{
+          top: 32%;
+        }
 
         .TL-wrap {
           @include iconContain($cover-ribbon);
 
           @include pc {
             width: pmi(558);
+            height: auto;
+          }
+          @include sp{
+            width: scl(280);
             height: auto;
           }
 
@@ -412,10 +423,18 @@
               font-size: pmi(30);
               line-height: 1.2;
             }
+            @include sp{
+              padding: scl(30) scl(40) scl(43);
+              font-size: scl(18);
+              line-height: 1.2;
+            }
 
             &.error {
               @include pc {
                 margin-top: pmi(-40);
+              }
+              @include sp{
+                margin-top: scl(-40);
               }
             }
           }
@@ -427,13 +446,17 @@
             height: pmi(334);
             margin: 0 auto;
           }
+          @include sp{
+            width: scl(280);
+            height: scl(168);
+            margin: 0 auto;
+          }
 
           a {
             img {
               background-size: contain;
               height: 100%;
               width: 100%;
-
             }
           }
         }
@@ -453,6 +476,14 @@
             letter-spacing: pmi(1.1);
             font-size: pmi(23)
           }
+          @include sp{
+            box-shadow: 0px scl(2) 0px 0px #E28738, 0px 0px scl(34) 0px #F6D741 inset;
+            padding: scl(15) scl(53);
+            border-radius: scl(5);
+            margin: scl(25) auto 0;
+            letter-spacing: scl(1.1);
+            font-size: scl(18)
+          }
         }
       }
 
@@ -464,12 +495,22 @@
           left: pmi(-134);
           bottom: p(90);
         }
+        @include sp{
+          width: scl(150);
+          height: scl(150);
+          left: scl(-150);
+          bottom: scl(90);
+        }
         .shironeko {
           @include imgContain("shironeko.png");
   
           @include pc {
             width: pmi(257);
             height: pmi(250);
+          }
+          @include sp{
+            width: scl(150);
+            height: scl(150);
           }
         }
         .shadow {
@@ -480,6 +521,11 @@
             height: pmi(39);
             margin: -15px auto;
             
+          }
+          @include sp{
+            width: scl(100);
+            height: scl(20);
+            margin: -10px auto;
           }
         }  
       }
@@ -495,6 +541,12 @@
         bottom: 0;
         left: clamp(-300px, p(-300), -200px);
       }
+      @include sp{
+        width: scl(200);
+        height: scl(370);
+        top: scl(-160);
+        left: scl(-100);
+      }
 
       .back {
         @include imgContain("back-balloon.png");
@@ -504,6 +556,12 @@
           height: pmi(1051);
           bottom: 0;
           left: clamp(-300px, p(-300), -200px);
+        }
+        @include sp{
+          width: scl(200);
+          height: scl(370);
+          top: scl(-160);
+          left: scl(-100);
         }
       }
 
@@ -516,8 +574,15 @@
           font-size: pmi(20);
           letter-spacing: p(1.2);
           height: p(50);
-          bottom: pmi(240);
+          bottom: pmi(255);
           right: pmi(189);
+        }
+        @include sp{
+          font-size: scl(10);
+          letter-spacing: scl(1.2);
+          height: scl(30);
+          bottom: scl(80);
+          right: scl(65);
         }
       }
     }
@@ -534,12 +599,23 @@
       right: 89px;
       padding: pmi(35) 0 0 pmi(30);
     }
+    @include sp{
+      width: scl(100);
+      height: scl(91);
+      bottom: 0;
+      right: 0;
+      padding: scl(15) 0 0 scl(10);
+    }
     .next-link{
       color: $F-FFFFFF;
       @include wt600;
       @include pc{
         font-size: pmi(27);
         letter-spacing: pmi(1.3);
+      }
+      @include sp{
+        font-size: scl(16);
+        letter-spacing: scl(1.3);
       }
     }
   }
@@ -556,6 +632,12 @@
         bottom: -81px;
         left: -140px;
       }
+      @include sp{
+        width: scl(150);
+        height: scl(83);
+        bottom: -30px;
+        left: -10px;
+      }
     }
 
     &.grass02 {
@@ -567,6 +649,12 @@
         height: pmi(201);
         right: -114px;
         bottom: -104px;
+      }
+      @include sp{
+        width: scl(100);
+        height: scl(60);
+        right: -20px;
+        bottom: -20px;
       }
     }
   }

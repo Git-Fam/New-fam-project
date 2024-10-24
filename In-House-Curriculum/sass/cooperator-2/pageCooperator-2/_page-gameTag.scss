@@ -1,5 +1,5 @@
-@use "../../global" as *;
-@use "../globalCooperator-2" as *;
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
 
 /* -----------------------
   page-gameTag
@@ -163,19 +163,17 @@
           }
 
           .TL {
-            a {
-              color: #505D51;
-              text-align: center;
-              display: block;
+            color: #505D51;
+            text-align: center;
+            display: block;
 
-              @include pc {
-                font-size: pm(20, 15);
-              }
+            @include pc {
+              font-size: pm(20, 15);
+            }
 
 
-              @include sp {
-                font-size: min(s(15), 15px);
-              }
+            @include sp {
+              font-size: min(s(15), 15px);
             }
           }
         }

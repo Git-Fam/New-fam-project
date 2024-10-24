@@ -15,38 +15,19 @@
       @include iconContain($game-inner-single-bg-sp);
     }
 
-    .game-charabox {
-      @include pc {
-        left: pm(75);
-      }
-
-      .game-bubble {
-        @include pc {
-          @include iconContain($game-bubble);
-          position: absolute;
-          width: pm(142, 130);
-          height: pm(48);
-          padding-top: pm(14);
-          top: clamp(-44px, p(-34), 10px);
-          left: 110%;
-          justify-content: center;
-        }
-
-        .TX {
-          text-align: center;
-
-          @include pc {
-            font-size: pm(13);
-          }
-        }
+    .game-single_wrap {
+      @include sp {
+        padding: min(s(20), 20px) min(s(10), 10px) min(s(150), 150px);
       }
     }
+
+
   }
 }
 
 .game-single_wrap {
   display: flex;
-  
+
   @include pc {
     height: 100%;
     gap: p(12);

@@ -390,10 +390,10 @@
           }
 
           @include sp {
-            width: scl(366);
-            height: scl(650);
+            width: smi(400);
+            height: smi(710);
             bottom: 0;
-            left: -200px;
+            left: clamp(-180px, s(-200), -200px);
             position: fixed;
           }
         }
@@ -409,10 +409,10 @@
           }
 
           @include sp {
-            width: scl(505);
-            height: scl(750);
+            width: smi(550);
+            height: smi(816);
             bottom: 0;
-            right: -300px;
+            right: clamp(-300px, s(-330), -330px);
             position: fixed;
           }
         }
