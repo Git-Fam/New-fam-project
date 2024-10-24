@@ -390,89 +390,67 @@ jQuery(function () {
 	});
 
 	function displayCharacters() {
-		if (
-			typeof allUsersProgress !== "undefined" &&
-			allUsersProgress.length > 0
-		) {
-			// 各ユーザーの進捗に基づいてキャラクターを表示
+		if (typeof allUsersProgress !== "undefined" && allUsersProgress.length > 0) {
 			allUsersProgress.forEach((user) => {
 				const userProgress = user.progress;
 				const username = user.username;
-
-
+	
 				let lastCheckpointClass = "";
 				let lastProgressValue = 0;
-
+	
 				// 現在アクティブなカテゴリーの要素を取得
 				const $activeCategory = $(".archive--contents--items--wap.active");
-
+	
 				if ($activeCategory.length) {
-					// アクティブカテゴリー内で対応する進捗を確認
-					$.each(userProgress, (key, value) => {
-						const progressValue = parseInt(value) || 0;
-
-						// 現在の進捗値が0より大きい場合のみ、最後の進捗ポイントとして保存
-						if (progressValue > 0) {
-							// アクティブなカテゴリー内にそのクラスが存在するか確認
-							if ($activeCategory.find(`.${key}`).length > 0) {
-								lastCheckpointClass = key; // 例: div06, JQ04
-								lastProgressValue = progressValue; // 進捗値に応じた位置設定用
+					const categoryId = $activeCategory.data('category-id'); // カテゴリーIDを取得
+	
+					// 進捗が100%で1週間経過しているかを確認
+					const isOneWeekPassed = lastPostProgress[categoryId] && lastPostProgress[categoryId][user.user_id];
+	
+					if (!isOneWeekPassed) {
+						// 1週間経過していない場合のみキャラクターを表示
+						$.each(userProgress, (key, value) => {
+							const progressValue = parseInt(value) || 0;
+	
+							if (progressValue > 0) {
+								// アクティブなカテゴリー内にそのクラスが存在するか確認
+								if ($activeCategory.find(`.${key}`).length > 0) {
+									lastCheckpointClass = key;
+									lastProgressValue = progressValue;
+								}
 							}
-						}
-					});
-
-					if (lastCheckpointClass) {
-						// アクティブなカテゴリー内の最後の進捗箇所にキャラクターを配置
-						const $checkpointElement = $activeCategory.find(
-							`.${lastCheckpointClass}`
-						);
-
-						if ($checkpointElement.length) {
-							// character-box 要素を動的に生成
-							const $characterBox = $("<div>")
-								.addClass("character-box")
-								.css({
-									position: "absolute",
-									left: lastProgressValue + "%", // 進捗に応じたleftの値
-								});
-
-							const $nameElement = $("<p>").addClass("name").text(username);
-
-							// 対応するユーザーのキャラクターHTMLを取得
-							const userCharacter = wpData.allUsersCharacters.find(
-								(c) => c.username === username
-							);
-							if (userCharacter) {
-								const $characterDiv = $("<div>")
-									.addClass("character")
-									.html(userCharacter.character_html);
-								$characterBox.append($characterDiv);
-							} else {
-								$characterBox.append($("<div>").addClass("character"));
+						});
+	
+						if (lastCheckpointClass) {
+							const $checkpointElement = $activeCategory.find(`.${lastCheckpointClass}`);
+	
+							if ($checkpointElement.length) {
+								const $characterBox = $("<div>")
+									.addClass("character-box")
+									.css({ position: "absolute", left: lastProgressValue + "%" });
+	
+								const $nameElement = $("<p>").addClass("name").text(username);
+	
+								const userCharacter = wpData.allUsersCharacters.find((c) => c.username === username);
+								if (userCharacter) {
+									const $characterDiv = $("<div>").addClass("character").html(userCharacter.character_html);
+									$characterBox.append($characterDiv);
+								}
+	
+								if ($.trim(username) === $.trim(currentUsername)) {
+									$nameElement.css("color", "red");
+									$characterBox.addClass("me");
+								}
+	
+								$characterBox.append($nameElement).appendTo($checkpointElement);
 							}
-
-							// 現在のユーザー名と一致する場合は文字色を赤に設定し、.meクラスを追加
-							if ($.trim(username) === $.trim(currentUsername)) {
-								$nameElement.css("color", "red");
-								$characterBox.addClass("me");
-							}
-
-							// character-box に要素を追加し、DOMに追加
-							$characterBox.append($nameElement).appendTo($checkpointElement);
-						} else {
-							console.warn(
-								"チェックポイント要素が見つかりません: ",
-								lastCheckpointClass
-							);
 						}
 					}
-				} else {
-					console.warn("アクティブなカテゴリー要素が見つかりません。");
 				}
 			});
 		}
 	}
-
+	
 	// ページロード時の初期表示
 	displayCharacters();
 
