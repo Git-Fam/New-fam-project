@@ -1,5 +1,19 @@
 <?php
 
+
+// question投稿タイプに対するコメントを承認待ちにする
+function set_comments_pending_for_question($comment_id, $comment_approved, $commentdata) {
+    // 投稿タイプが 'question' の場合のみ
+    if (get_post_type($commentdata['comment_post_ID']) === 'question') {
+        // コメントを承認待ち（0）に設定
+        if ($comment_approved !== '0') { // 既に承認されていない場合
+            wp_set_comment_status($comment_id, 'hold');
+        }
+    }
+}
+add_action('comment_post', 'set_comments_pending_for_question', 10, 3);
+
+
 if (!function_exists('mytheme_comment')) {
     function mytheme_comment($comment, $args, $depth) {
         // コメントが属する投稿の投稿タイプが 'question' であるかを確認
@@ -173,46 +187,57 @@ function save_edited_comment_image($comment_id) {
 }
 add_action('edit_comment', 'save_edited_comment_image');
 
-// 管理画面でコメント返信時にタイトルフィールドを追加
+// 管理画面でコメント返信時にタイトルフィールドを追加（条件付き）
 function add_title_to_admin_reply_form() {
     ?>
     <script type="text/javascript">
     jQuery(document).ready(function($) {
-        console.log('JavaScript loaded');
+        const replyRow = document.getElementById('replyrow');
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                    const isVisible = $(replyRow).is(':visible');
+                    const isReplyMode = $('#replyhead').is(':visible');
 
-        // 返信フォームにタイトルフィールドを追加
-        $('#wp-replycontent-editor-container').append(
-            '<p><label for="reply-title"><?php echo esc_html__('返信のタイトル', 'In-House-Curriculum'); ?>: </label>' +
-            '<input type="text" name="comtitle" id="reply-title" class="widefat" /></p>'
-        );
+                    if (isVisible && isReplyMode) {
+                        if ($('#reply-title-container').length === 0) {
+                            $('#wp-replycontent-editor-container').append(
+                                '<p id="reply-title-container"><label for="reply-title">返信のタイトル: </label>' +
+                                '<input type="text" name="comtitle" id="reply-title" class="widefat" /></p>'
+                            );
+                        }
+                    }
+                }
+            });
+        });
+
+        observer.observe(replyRow, { attributes: true });
 
         $(document).on('click', 'button.save.button-primary', function(event) {
-            console.log('Save button clicked');
             event.preventDefault();
 
-            var formData = new FormData();
+            const replyTitle = $('#reply-title').val();
+            const formData = new FormData();
             formData.append('action', 'save_reply_title_from_admin'); 
             formData.append('_ajax_nonce', ajaxNonce); 
-            formData.append('comtitle', $('#reply-title').val());
+            formData.append('comtitle', replyTitle); 
             formData.append('comment_ID', $('input[name="comment_ID"]').val());
 
-            console.log('FormData prepared with all necessary fields.');
-
             $.ajax({
-                url: ajaxurl, // WordPressで定義されたadmin-ajax.phpのURL
+                url: ajaxurl,
                 type: 'POST',
                 data: formData,
                 contentType: false,
                 processData: false,
                 success: function(response) {
                     if (response.success) {
-                        console.log('Form successfully submitted.', response);
+                        console.log('Reply title saved successfully.', response);
                     } else {
-                        console.error('Error in form submission:', response.data);
+                        console.error('Error in saving reply title:', response.data);
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    console.error('Error in form submission:', textStatus, errorThrown);
+                    console.error('Error in saving reply title:', textStatus, errorThrown);
                 }
             });
         });
@@ -222,30 +247,27 @@ function add_title_to_admin_reply_form() {
 }
 add_action('admin_print_footer_scripts', 'add_title_to_admin_reply_form');
 
-// 返信時にタイトルのみを保存
+// 返信時のタイトル保存処理
 function save_reply_title_from_admin() {
-    error_log('Debugging: save_reply_title_from_admin function called.');
-
-    // セキュリティチェック: Nonceの検証
     if (!isset($_POST['_ajax_nonce']) || !wp_verify_nonce($_POST['_ajax_nonce'], 'save_reply_nonce')) {
         wp_send_json_error('セキュリティチェックに失敗しました');
         exit;
     }
 
-    // タイトルの保存のみ行う
     if (isset($_POST['comtitle'])) {
         $comment_id = intval($_POST['comment_ID']);
         $reply_title = sanitize_text_field($_POST['comtitle']);
+        
         if (!empty($reply_title)) {
-            update_comment_meta($comment_id, 'comtitle', $reply_title);
-            error_log('Debugging: Title saved successfully for comment ID ' . $comment_id);
+            update_comment_meta($comment_id, 'reply_comtitle', $reply_title);
+            error_log('Debugging: Reply title saved successfully for comment ID ' . $comment_id);
         } else {
-            delete_comment_meta($comment_id, 'comtitle');
-            error_log('Debugging: Title deleted successfully for comment ID ' . $comment_id);
+            delete_comment_meta($comment_id, 'reply_comtitle');
+            error_log('Debugging: Reply title deleted successfully for comment ID ' . $comment_id);
         }
     }
 
-    wp_send_json_success(array('message' => 'コメントが更新されました'));
+    wp_send_json_success(array('message' => '返信コメントが更新されました'));
 }
 add_action('wp_ajax_save_reply_title_from_admin', 'save_reply_title_from_admin');
 
@@ -263,6 +285,4 @@ function add_enctype_to_comment_form($defaults) {
     $defaults['enctype'] = 'multipart/form-data';
     return $defaults;
 }
-
-
 ?>

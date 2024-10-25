@@ -52,9 +52,11 @@ jQuery(function () {
 	});
 
 	//道のり　SPchat
-	$(".C_chat-content").off("click").on("click", function () {
-		$(this).toggleClass("open");
-	});
+	$(".C_chat-content")
+		.off("click")
+		.on("click", function () {
+			$(this).toggleClass("open");
+		});
 
 	//show付与
 	$(".category-content,#cover-btn,.timeline-jamp").on("click", function () {
@@ -390,28 +392,33 @@ jQuery(function () {
 	});
 
 	function displayCharacters() {
-		if (typeof allUsersProgress !== "undefined" && allUsersProgress.length > 0) {
+		if (
+			typeof allUsersProgress !== "undefined" &&
+			allUsersProgress.length > 0
+		) {
 			allUsersProgress.forEach((user) => {
 				const userProgress = user.progress;
 				const username = user.username;
-	
+
 				let lastCheckpointClass = "";
 				let lastProgressValue = 0;
-	
+
 				// 現在アクティブなカテゴリーの要素を取得
 				const $activeCategory = $(".archive--contents--items--wap.active");
-	
+
 				if ($activeCategory.length) {
-					const categoryId = $activeCategory.data('category-id'); // カテゴリーIDを取得
-	
+					const categoryId = $activeCategory.data("category-id"); // カテゴリーIDを取得
+
 					// 進捗が100%で1週間経過しているかを確認
-					const isOneWeekPassed = lastPostProgress[categoryId] && lastPostProgress[categoryId][user.user_id];
-	
+					const isOneWeekPassed =
+						lastPostProgress[categoryId] &&
+						lastPostProgress[categoryId][user.user_id];
+
 					if (!isOneWeekPassed) {
 						// 1週間経過していない場合のみキャラクターを表示
 						$.each(userProgress, (key, value) => {
 							const progressValue = parseInt(value) || 0;
-	
+
 							if (progressValue > 0) {
 								// アクティブなカテゴリー内にそのクラスが存在するか確認
 								if ($activeCategory.find(`.${key}`).length > 0) {
@@ -420,28 +427,34 @@ jQuery(function () {
 								}
 							}
 						});
-	
+
 						if (lastCheckpointClass) {
-							const $checkpointElement = $activeCategory.find(`.${lastCheckpointClass}`);
-	
+							const $checkpointElement = $activeCategory.find(
+								`.${lastCheckpointClass}`
+							);
+
 							if ($checkpointElement.length) {
 								const $characterBox = $("<div>")
 									.addClass("character-box")
 									.css({ position: "absolute", left: lastProgressValue + "%" });
-	
+
 								const $nameElement = $("<p>").addClass("name").text(username);
-	
-								const userCharacter = wpData.allUsersCharacters.find((c) => c.username === username);
+
+								const userCharacter = wpData.allUsersCharacters.find(
+									(c) => c.username === username
+								);
 								if (userCharacter) {
-									const $characterDiv = $("<div>").addClass("character").html(userCharacter.character_html);
+									const $characterDiv = $("<div>")
+										.addClass("character")
+										.html(userCharacter.character_html);
 									$characterBox.append($characterDiv);
 								}
-	
+
 								if ($.trim(username) === $.trim(currentUsername)) {
 									$nameElement.css("color", "red");
 									$characterBox.addClass("me");
 								}
-	
+
 								$characterBox.append($nameElement).appendTo($checkpointElement);
 							}
 						}
@@ -450,7 +463,7 @@ jQuery(function () {
 			});
 		}
 	}
-	
+
 	// ページロード時の初期表示
 	displayCharacters();
 
@@ -536,13 +549,13 @@ jQuery(function () {
 				}
 			});
 
-			commentForm.on("submit", function (event) {
+			commentForm.off("submit").on("submit", function (event) {
+				event.preventDefault(); // 一度だけpreventDefaultを呼び出します
+
 				if (!isCategorySelected) {
-					event.preventDefault();
 					errorMessageElement.show();
 					return false;
 				}
-				event.preventDefault();
 
 				var formData = new FormData(this);
 				$.ajax({
@@ -631,7 +644,6 @@ jQuery(function () {
 			}
 		});
 
-		// チャットボット スクロール処理
 		// チャットボット スクロール処理
 		var chatbotContent = $(".chatbot-content");
 		var shouldScrollToBottom = true;

@@ -200,6 +200,7 @@
               background: #B6C3B2;
               color: #3D5361;
               outline: none;
+              resize: none;
 
               @include pc {
                 padding: pm(10) pm(10);

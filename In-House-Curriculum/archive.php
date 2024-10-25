@@ -751,11 +751,11 @@ if ($total_posts <= 4) {
     <div class="under-menu">
         <div class="menu-arrow"></div>
         <div class="menu-box">
-            <a href="<?php echo home_url(); ?>/my" class="btn road-my-btn"></a>
-            <a href="<?php echo home_url(); ?>/ranking" class="btn road-ranking-btn"></a>
-            <a href="<?php echo home_url(); ?>/column" class="btn road-column-btn"></a>
-            <a href="<?php echo home_url(); ?>/question" class="btn road-question-btn"></a>
-            <a href="<?php echo home_url(); ?>/game" class="btn road-game-btn"></a>
+            <a href="<?php echo home_url();?>/my" class="btn road-my-btn" target="_blank"></a>
+            <a href="<?php echo home_url(); ?>/ranking" class="btn road-ranking-btn" target="_blank"></a>
+            <a href="<?php echo home_url(); ?>/column" class="btn road-column-btn" target="_blank"></a>
+            <a href="<?php echo home_url(); ?>/question" class="btn road-question-btn" target="_blank"></a>
+            <a href="<?php echo home_url(); ?>/game" class="btn road-game-btn" target="_blank"></a>
 
         </div>
     </div>
