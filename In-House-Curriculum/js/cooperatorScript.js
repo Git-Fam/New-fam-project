@@ -59,10 +59,14 @@ jQuery(function () {
 		});
 
 	//show付与
-	$(".category-content,#cover-btn,.timeline-jamp").on("click", function () {
-		$(".select-content,#tab-wrap,.timeline-modal,.chat-wrap").toggleClass(
+	$("#cover-btn,.timeline-jamp").on("click", function () {
+		$("#tab-wrap,.timeline-modal,.chat-wrap").toggleClass(
 			"show"
 		);
+	});
+
+	$(".category-content").on("click", function () {
+		$(this).find(".select-content").toggleClass("show"); 
 	});
 
 	$("#cover-curriculum").hover(function () {

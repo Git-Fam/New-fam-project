@@ -106,14 +106,14 @@
             border-radius: p(5);
             gap: p(10);
             height: p(160);
-            width: p(00);
+            width: p(150);
           }
           @include sp{
             padding: clamp(4px, s(8),10px );
             border-radius: s(3);
             gap: s(7);
             height: scl(160);
-            width: scl(100);
+            width: scl(150);
           }
 
           .TX {
