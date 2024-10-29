@@ -1,0 +1,259 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_brio
+----------------------- */
+
+.C_brio {
+  margin-top: 100px;
+
+  &--title {
+    margin-bottom: 100px;
+
+    .TL {
+      text-align: center;
+      color: #585D5F;
+
+      @include pc {
+        font-size: 25px;
+      }
+
+      @include sp {
+        font-size: 23px;
+      }
+    }
+  }
+
+  &--content {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin-bottom: 100px;
+
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+
+      @include sp {
+        flex-direction: column;
+      }
+
+      &.item--reverse {
+        @include pc {
+          flex-direction: row-reverse;
+        }
+      }
+
+      &--img {
+
+        @include pc {
+          width: calc(50% - 20px);
+        }
+
+        @include sp {
+          width: 90%;
+        }
+
+        img {
+          width: 100%;
+        }
+      }
+
+      &--text {
+
+        @include pc {
+          width: calc(50% - 20px);
+        }
+
+        @include sp {
+          width: 90%;
+        }
+
+        .title {
+          position: relative;
+
+          @include pc {
+            margin-bottom: 50px;
+          }
+
+          @include sp {
+            margin-bottom: 30px;
+          }
+
+          &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background-color: #585D5F;
+
+            @include pc {
+              bottom: -25px;
+            }
+
+            @include sp {
+              bottom: -15px;
+            }
+          }
+
+          .TL {
+            font-size: 20px;
+            color: #585D5F;
+          }
+        }
+
+        .text {
+
+          &+.text {
+            margin-top: 10px;
+          }
+
+          .TL {
+            font-size: 18px;
+            color: #585D5F;
+            margin-bottom: 5px;
+            border-left: 3px solid #585D5F;
+            padding-left: 3px;
+            line-height: 1.8;
+          }
+
+          .TX {
+            font-size: 16px;
+            color: #585D5F;
+            line-height: 1.8;
+          }
+        }
+      }
+    }
+  }
+
+  &--specification {
+
+    .title {
+      margin-bottom: 50px;
+
+      .TL {
+        font-size: 20px;
+        color: #585D5F;
+        text-align: center;
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 100px;
+          height: 3px;
+          background-color: #585D5F;
+          bottom: -15px;
+        }
+      }
+    }
+
+    .specification--content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+
+      @include sp {
+        flex-direction: column;
+      }
+
+      .specification--img {
+
+        @include pc {
+          width: calc(50% - 20px);
+        }
+
+        @include sp {
+          width: 90%;
+        }
+
+        img {
+          width: 100%;
+        }
+      }
+
+      .specification--text {
+
+        @include pc {
+          width: calc(50% - 20px);
+        }
+
+        @include sp {
+          width: 90%;
+        }
+
+        &--table {
+          width: 100%;
+
+          tr {
+            color: #585D5F;
+
+            th,
+            td {
+              padding: 15px 5px;
+              background-color: #F5F5F5;
+              border: 1px solid #fff;
+            }
+
+            th {
+              width: 30%;
+            }
+
+            td {
+              width: 70%;
+            }
+          }
+        }
+
+
+        &--detail {
+          margin-top: 30px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+
+          a {
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid #585D5F;
+            width: fit-content;
+            transition: 0.3s;
+            position: relative;
+
+            &::after {
+              content: "";
+              position: absolute;
+              left: calc(100% + 10px);
+              bottom: 0;
+              transform:skew(40deg);
+              border-bottom: 1px solid #585D5F;
+              border-right: 1px solid #585D5F;
+              width: 45px;
+              height: 7px;
+              transition: 0.3s;
+            }
+
+            &:hover {
+              opacity: 0.7;
+              
+              &::after {
+                width: 100px;
+              }
+            }
+
+            .TX {
+              font-size: 16px;
+              color: #585D5F;
+              line-height: 1.8;
+            }
+          }
+        }
+      }
+    }
+  }
+}
