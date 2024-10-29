@@ -1,5 +1,5 @@
-@use "../../global" as *;
-@use "../globalCooperator-2" as *;
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
 
 /* -----------------------
   page-game
@@ -331,53 +331,80 @@
         }
       }
 
-      .game-character {
-        
-        @include pc {
-          position: absolute;
-          z-index: 2;
-          bottom: pm(20, 20);
-          left: pm(90, 80);
-        }
-
+      .chara-box {
         @include sp {
           position: relative;
-          z-index: 1;
+          display: flex;
           bottom: 5%;
-          left: 10%;
         }
 
-        .img {
-          @include imgContain("beginner-icon-hover.png");
-          aspect-ratio: 121 / 137;
+
+        .game-character {
 
           @include pc {
-            width: pm(121, 100);
+            position: absolute;
+            z-index: 2;
+            bottom: pm(20, 20);
+            left: pm(90, 80);
           }
 
           @include sp {
-            width: min(s(100), 100px);
+            position: relative;
+            z-index: 1;
+            bottom: 5%;
+            left: 10%;
           }
+
+          animation: scale 2s infinite 0s reverse;
+
+          @keyframes scale {
+
+            0%,
+            21%,
+            100% {
+              transform: scale(1);
+            }
+
+            1%,
+            20% {
+              transform: scale(-1, 1);
+            }
+          }
+
+          .img {
+            @include imgContain("beginner-icon-hover.png");
+            aspect-ratio: 121 / 137;
+
+            @include pc {
+              width: pm(121, 100);
+            }
+
+            @include sp {
+              width: min(s(100), 100px);
+            }
+          }
+
         }
 
         .text-frame {
           @include iconContain($game-character-text-frame);
           aspect-ratio: 146 / 52;
-          
+
           @include pc {
             position: absolute;
             padding: pm(14, 12) 0 pm(21, 20);
             width: pm(146, 120);
-            left: 100%;
-            bottom: 90%;
+            left: 20%;
+            bottom: 27%;
             z-index: 2;
           }
 
           @include sp {
+            position: absolute;
             padding: min(s(10), 10px) 0 min(s(14), 12px);
             width: min(s(120), 120px);
             z-index: 1;
-            left: 90%;
+            left: 40%;
             bottom: 100%;
           }
 
@@ -395,47 +422,71 @@
             }
           }
         }
-      }
 
-      .game-mob {
 
-        .img {
-          @include iconContain($game-mob);
-          aspect-ratio: 82 / 63;
-          
-          @include pc {
-            position: absolute;
-            width: pm(82, 75);
-            z-index: 2;
-            bottom: pm(20, 20);
-            right: pm(120, 100);
-          }
+        .game-mob {
 
-          @include sp {
-            width: min(s(75), 75px);
-            z-index: 1;
-            bottom: 5%;
-            right: 10%;
-          }
 
-          &:nth-child(2) {
+          .img {
+            @include iconContain($game-mob);
+            aspect-ratio: 82 / 63;
+
             @include pc {
-              right: pm(240, 220);
-              bottom: pm(60, 60);
+              position: absolute;
+              width: pm(82, 75);
+              z-index: 2;
+              bottom: pm(20, 20);
+              right: pm(120, 100);
             }
 
             @include sp {
-              display: none;
-            }
-          }
-
-          &:nth-child(3) {
-            @include pc {
-              right: pm(360, 340);
+              position: absolute;
+              width: min(s(75), 75px);
+              z-index: 1;
+              bottom: 0;
+              right: 10%;
             }
 
-            @include sp {
-              display: none;
+            &:nth-child(2) {
+              @include pc {
+                right: pm(240, 220);
+              }
+
+              @include sp {
+                display: none;
+              }
+
+            }
+
+            &:nth-child(3) {
+              @include pc {
+                right: pm(360, 340);
+              }
+
+              @include sp {
+                display: none;
+              }
+            }
+
+            animation: game-pyon 3s infinite;
+
+            @keyframes game-pyon {
+              0% {
+                transform: translateY(0%);
+              }
+
+              10% {
+                transform: translateY(15%);
+              }
+
+              20% {
+                transform: translateY(-50%);
+              }
+
+              40%,
+              100% {
+                transform: translateY(0%);
+              }
             }
           }
         }

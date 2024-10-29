@@ -29,7 +29,7 @@ function register_question_post_type()
     'question-cat',
     'question',
     array(
-      'label' => '��テゴリー',
+      'label' => 'カテゴリー',
       'hierarchical' => true,
       'public' => true,
       'show_in_rest' => true,

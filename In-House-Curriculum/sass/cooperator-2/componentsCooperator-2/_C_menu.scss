@@ -88,7 +88,7 @@
           top: p(15);
         }
         @include sp{
-          top: s(13);
+          top: s(16);
         }
 
 
@@ -99,16 +99,21 @@
           left: 0;
           display: flex;
           flex-direction: column;
+          overflow: scroll;
 
           @include pc {
             padding: p(10);
             border-radius: p(5);
             gap: p(10);
+            height: p(160);
+            width: p(00);
           }
           @include sp{
             padding: clamp(4px, s(8),10px );
             border-radius: s(3);
             gap: s(7);
+            height: scl(160);
+            width: scl(100);
           }
 
           .TX {
@@ -135,6 +140,9 @@
               margin: s(4) 0 0 s(4);
 
             }
+          }
+          li{
+            white-space: nowrap;
           }
         }
 

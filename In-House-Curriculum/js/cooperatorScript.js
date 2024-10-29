@@ -52,9 +52,11 @@ jQuery(function () {
 	});
 
 	//道のり　SPchat
-	$(".C_chat-content").click(function () {
-		$(this).toggleClass("open");
-	});
+	$(".C_chat-content")
+		.off("click")
+		.on("click", function () {
+			$(this).toggleClass("open");
+		});
 
 	//show付与
 	$(".category-content,#cover-btn,.timeline-jamp").on("click", function () {
@@ -94,6 +96,11 @@ jQuery(function () {
 	// 慣性スクロールの動きを作る関数
 	function applyInertiaScroll() {
 		if (!isScrolling) return;
+
+		// characterElementがnullでないことを確認
+		if (!characterElement) {
+			return; // 要素が見つからない場合は処理を中断
+		}
 
 		// 慣性の減衰を両方向に適用
 		scrollX *= 0.9; // 横方向の減衰
@@ -220,39 +227,59 @@ jQuery(function () {
 		// リロード時に既存のメッセージにクラスを付与
 		processMessages($("#sac-messages li"));
 
-		// 新しいメッセージが追加されたときの処理
-		var observer = new MutationObserver(function (mutationsList) {
-			mutationsList.forEach(function (mutation) {
-				if (mutation.type === "childList") {
-					processMessages($(mutation.addedNodes).filter("li"));
-				}
-			});
-		});
-		observer.observe(document.getElementById("sac-messages"), {
-			childList: true,
-		});
+		// sac-messages要素が存在するか確認
+		var targetNode = document.getElementById("sac-messages");
 
+		if (targetNode) {
+			// 新しいメッセージが追加されたときの処理
+			var observer = new MutationObserver(function (mutationsList) {
+				mutationsList.forEach(function (mutation) {
+					if (mutation.type === "childList") {
+						processMessages($(mutation.addedNodes).filter("li"));
+					}
+				});
+			});
+
+			// MutationObserverで対象のノードを監視
+			observer.observe(targetNode, {
+				childList: true,
+			});
+		}
 		// すべての処理が完了した後にメッセージリスト全体を表示
 		$("#sac-messages").css("visibility", "visible");
 
 		// ユーザーグループクラスをメッセージリストに追加
-		$("#sac-messages").addClass(userGroupData.group + "_user");
+		// sac-messages 要素が存在するか確認
+		var targetNode = document.getElementById("sac-messages");
 
-		// グループのクラス名が付与された後にそのクラスの最新2件のメッセージを抽出
+		if (
+			targetNode &&
+			typeof userGroupData !== "undefined" &&
+			userGroupData.group
+		) {
+			// userGroupDataが定義されており、groupプロパティが存在する場合のみクラスを追加
+			$("#sac-messages").addClass(userGroupData.group + "_user");
+		}
+
+		// グループのクラス名が付与された後にそのクラスの最新6件のメッセージを抽出
 		$(document).ajaxStop(function () {
-			var messages = $("#sac-messages li." + userGroupData.group);
+			// userGroupData が定義されているか確認
+			if (typeof userGroupData !== "undefined" && userGroupData.group) {
+				var messages = $("#sac-messages li." + userGroupData.group);
 
-			if (messages.length > 0) {
-				// ソート処理
-				messages.sort(function (a, b) {
-					return (
-						new Date($(b).attr("data-time")) - new Date($(a).attr("data-time"))
-					);
-				});
+				if (messages.length > 0) {
+					// ソート処理
+					messages.sort(function (a, b) {
+						return (
+							new Date($(b).attr("data-time")) -
+							new Date($(a).attr("data-time"))
+						);
+					});
 
-				// 最新6件を抽出して表示
-				var latestMessages = messages.slice(0, 6).clone();
-				$("#latest-messages").empty().append(latestMessages);
+					// 最新6件を抽出して表示
+					var latestMessages = messages.slice(0, 6).clone();
+					$("#latest-messages").empty().append(latestMessages);
+				}
 			}
 		});
 	});
@@ -264,12 +291,13 @@ jQuery(function () {
 	}
 
 	// いいね機能
-	jQuery(document).ready(function ($) {
-		// ページロード時にユーザーのいいね情報を取得して表示を更新
-		updateLikeInfo();
+	// ページロード時にユーザーのいいね情報を取得して表示を更新
+	updateLikeInfo();
 
-		// いいねボタンのクリックイベントを設定
-		$(".like-button").on("click", function () {
+	// いいねボタンのクリックイベントを設定
+	$(".like-button")
+		.off("click")
+		.on("click", function () {
 			var $button = $(this);
 			var itemId = $button.data("item-id");
 
@@ -322,22 +350,21 @@ jQuery(function () {
 			});
 		});
 
-		// いいね情報を更新する関数
-		function updateLikeInfo(like_count_today = null) {
-			if (like_count_today === null) {
-				// 初回ページロード時にいいね情報を取得
-				like_count_today = userLikeInfo.like_count_today;
-			}
-
-			// いいねの回数を表示する要素を更新
-			$(".reaction-counter").text(like_count_today + "/5");
-
-			// 5回目のいいねの場合、コインカウンターにクラス 'get' を追加
-			if (like_count_today == 5) {
-				$(".coin-counter").addClass("get");
-			}
+	// いいね情報を更新する関数
+	function updateLikeInfo(like_count_today = null) {
+		if (like_count_today === null) {
+			// 初回ページロード時にいいね情報を取得
+			like_count_today = userLikeInfo.like_count_today;
 		}
-	});
+
+		// いいねの回数を表示する要素を更新
+		$(".reaction-counter").text(like_count_today + "/5");
+
+		// 5回目のいいねの場合、コインカウンターにクラス 'get' を追加
+		if (like_count_today == 5) {
+			$(".coin-counter").addClass("get");
+		}
+	}
 
 	// クラスAを持つ要素をクラスBで囲む
 	$(".sac-chat-name").wrap('<p class="sac-chat-name-wrap"></p>');
@@ -369,12 +396,9 @@ jQuery(function () {
 			typeof allUsersProgress !== "undefined" &&
 			allUsersProgress.length > 0
 		) {
-			// 各ユーザーの進捗に基づいてキャラクターを表示
 			allUsersProgress.forEach((user) => {
 				const userProgress = user.progress;
 				const username = user.username;
-
-				console.log("表示中のユーザー名:", username);
 
 				let lastCheckpointClass = "";
 				let lastProgressValue = 0;
@@ -383,72 +407,58 @@ jQuery(function () {
 				const $activeCategory = $(".archive--contents--items--wap.active");
 
 				if ($activeCategory.length) {
-					// アクティブカテゴリー内で対応する進捗を確認
-					$.each(userProgress, (key, value) => {
-						const progressValue = parseInt(value) || 0;
+					const categoryId = $activeCategory.data("category-id"); // カテゴリーIDを取得
 
-						// 現在の進捗値が0より大きい場合のみ、最後の進捗ポイントとして保存
-						if (progressValue > 0) {
-							// アクティブなカテゴリー内にそのクラスが存在するか確認
-							if ($activeCategory.find(`.${key}`).length > 0) {
-								lastCheckpointClass = key; // 例: div06, JQ04
-								lastProgressValue = progressValue; // 進捗値に応じた位置設定用
+					// 進捗が100%で1週間経過しているかを確認
+					const isOneWeekPassed =
+						lastPostProgress[categoryId] &&
+						lastPostProgress[categoryId][user.user_id];
+
+					if (!isOneWeekPassed) {
+						// 1週間経過していない場合のみキャラクターを表示
+						$.each(userProgress, (key, value) => {
+							const progressValue = parseInt(value) || 0;
+
+							if (progressValue > 0) {
+								// アクティブなカテゴリー内にそのクラスが存在するか確認
+								if ($activeCategory.find(`.${key}`).length > 0) {
+									lastCheckpointClass = key;
+									lastProgressValue = progressValue;
+								}
 							}
-						}
-					});
+						});
 
-					if (lastCheckpointClass) {
-						// アクティブなカテゴリー内の最後の進捗箇所にキャラクターを配置
-						const $checkpointElement = $activeCategory.find(
-							`.${lastCheckpointClass}`
-						);
-						console.log(
-							"チェックポイント要素を探しています: ",
-							$checkpointElement
-						);
-
-						if ($checkpointElement.length) {
-							// character-box 要素を動的に生成
-							const $characterBox = $("<div>")
-								.addClass("character-box")
-								.css({
-									position: "absolute",
-									left: lastProgressValue + "%", // 進捗に応じたleftの値
-								});
-
-							const $nameElement = $("<p>").addClass("name").text(username);
-
-							// 対応するユーザーのキャラクターHTMLを取得
-							const userCharacter = wpData.allUsersCharacters.find(
-								(c) => c.username === username
+						if (lastCheckpointClass) {
+							const $checkpointElement = $activeCategory.find(
+								`.${lastCheckpointClass}`
 							);
-							if (userCharacter) {
-								const $characterDiv = $("<div>")
-									.addClass("character")
-									.html(userCharacter.character_html);
-								$characterBox.append($characterDiv);
-							} else {
-								$characterBox.append($("<div>").addClass("character"));
-							}
 
-							// 現在のユーザー名と一致する場合は文字色を赤に設定し、.meクラスを追加
-							if ($.trim(username) === $.trim(currentUsername)) {
-								console.log("赤くするユーザー名:", username);
-								$nameElement.css("color", "red");
-								$characterBox.addClass("me");
-							}
+							if ($checkpointElement.length) {
+								const $characterBox = $("<div>")
+									.addClass("character-box")
+									.css({ position: "absolute", left: lastProgressValue + "%" });
 
-							// character-box に要素を追加し、DOMに追加
-							$characterBox.append($nameElement).appendTo($checkpointElement);
-						} else {
-							console.warn(
-								"チェックポイント要素が見つかりません: ",
-								lastCheckpointClass
-							);
+								const $nameElement = $("<p>").addClass("name").text(username);
+
+								const userCharacter = wpData.allUsersCharacters.find(
+									(c) => c.username === username
+								);
+								if (userCharacter) {
+									const $characterDiv = $("<div>")
+										.addClass("character")
+										.html(userCharacter.character_html);
+									$characterBox.append($characterDiv);
+								}
+
+								if ($.trim(username) === $.trim(currentUsername)) {
+									$nameElement.css("color", "red");
+									$characterBox.addClass("me");
+								}
+
+								$characterBox.append($nameElement).appendTo($checkpointElement);
+							}
 						}
 					}
-				} else {
-					console.warn("アクティブなカテゴリー要素が見つかりません。");
 				}
 			});
 		}
@@ -463,7 +473,6 @@ jQuery(function () {
 		$(".archive--contents--items--wap").removeClass("active");
 		const categoryClass = $(this).find(".TX").text();
 		$(".archive--contents--items--wap." + categoryClass).addClass("active");
-		console.log("タブの切り替え: 新しいアクティブクラスは", categoryClass);
 
 		// 新しくactiveになったカテゴリーに対してキャラクターを再描画
 		displayCharacters();
@@ -502,7 +511,7 @@ jQuery(function () {
 		});
 
 		function togglePlaceholder(value) {
-			if (value.trim() !== "") {
+			if (typeof value === "string" && value.trim() !== "") {
 				$commentFormTitle.addClass("input-has-value");
 			} else {
 				$commentFormTitle.removeClass("input-has-value");
@@ -540,13 +549,13 @@ jQuery(function () {
 				}
 			});
 
-			commentForm.on("submit", function (event) {
+			commentForm.off("submit").on("submit", function (event) {
+				event.preventDefault(); // 一度だけpreventDefaultを呼び出します
+
 				if (!isCategorySelected) {
-					event.preventDefault();
 					errorMessageElement.show();
 					return false;
 				}
-				event.preventDefault();
 
 				var formData = new FormData(this);
 				$.ajax({
@@ -647,24 +656,28 @@ jQuery(function () {
 				);
 			}
 
+			// 初期ロード時にスクロール
 			scrollToBottom();
 
-			var observer = new MutationObserver(function () {
-				if (shouldScrollToBottom) {
-					setTimeout(scrollToBottom, 500);
-				}
+			// MutationObserver を使用して、DOMの変化を監視
+			var observer = new MutationObserver(function (mutationsList) {
+				// DOMに新しいノードが追加された時のみ
+				mutationsList.forEach(function (mutation) {
+					if (mutation.type === "childList" && shouldScrollToBottom) {
+						setTimeout(scrollToBottom, 500);
+					}
+				});
 			});
 
+			// 監視設定
 			observer.observe(chatbotContent[0], { childList: true, subtree: true });
 
+			// ユーザーがスクロール操作をしたかどうかを検知
 			chatbotContent.on("scroll", function () {
-				shouldScrollToBottom =
-					chatbotContent[0].scrollTop + chatbotContent.outerHeight() >=
-					chatbotContent[0].scrollHeight - 10;
-			});
-
-			chatbotContent.on("DOMNodeInserted", function () {
-				shouldScrollToBottom = true;
+				var scrollPosition =
+					chatbotContent[0].scrollTop + chatbotContent.outerHeight();
+				var scrollHeight = chatbotContent[0].scrollHeight;
+				shouldScrollToBottom = scrollPosition >= scrollHeight - 10;
 			});
 		}
 

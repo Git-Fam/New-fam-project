@@ -82,16 +82,22 @@
                 </div>
             </div>
 
-            <div class="game-character">
-                <div class="img"></div>
+            <div class="chara-box">
+                <div class="game-character">
+                    <div class="img">
+                    </div>
+                </div>
                 <div class="text-frame">
                     <p class="TX">きみならできる！</p>
                 </div>
+
+                <div class="game-mob">
+                    <div class="img delay-04"></div>
+                    <div class="img"></div>
+                    <div class="img delay-04"></div>
+                </div>
             </div>
 
-            <div class="game-mob">
-                <div class="img"></div>
-            </div>
         </div>
         <div class="lever"></div>
         <div class="btn"></div>

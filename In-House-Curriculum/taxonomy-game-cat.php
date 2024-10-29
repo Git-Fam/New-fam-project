@@ -62,26 +62,26 @@
                         <div class="post-list">
                             <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
                                 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
-                                    <div class="content">
-                                        <!-- サムネイル表示 -->
-                                        <div class="thumbnail">
-                                            <?php
-                                            if (has_post_thumbnail()) {
-                                                the_post_thumbnail();
-                                            } else {
-                                                echo '<img src="' . esc_url(get_template_directory_uri() . '/img/noimage.jpg') . '" alt="No image available">';
-                                            }
-                                            ?>
+                                    <a href="<?php the_permalink(); ?>">
+                                        <div class="content">
+                                            <!-- サムネイル表示 -->
+                                            <div class="thumbnail">
+                                                <?php
+                                                if (has_post_thumbnail()) {
+                                                    the_post_thumbnail();
+                                                } else {
+                                                    echo '<img src="' . esc_url(get_template_directory_uri() . '/img/noimage.jpg') . '" alt="No image available">';
+                                                }
+                                                ?>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="post-TL">
-                                        <p class="TL">
-                                            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                                        </p>
-                                    </div>
-
+                                        <div class="post-TL">
+                                            <p class="TL">
+                                                <?php the_title(); ?>
+                                            </p>
+                                        </div>
+                                    </a>
                                 </div>
                             <?php endwhile; ?>
                         </div>
@@ -94,14 +94,16 @@
                 </div>
             </div>
 
-            <div class="game-character">
-                <div class="img"></div>
-            </div>
+            <div class="chara-box">
+                <div class="game-character">
+                    <div class="img"></div>
+                </div>
 
-            <div class="game-mob">
-                <div class="img"></div>
-                <div class="img"></div>
-                <div class="img"></div>
+                <div class="game-mob">
+                    <div class="img delay-04"></div>
+                    <div class="img"></div>
+                    <div class="img delay-04"></div>
+                </div>
             </div>
         </div>
         <div class="lever"></div>

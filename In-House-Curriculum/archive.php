@@ -9,9 +9,64 @@ $original_user_id = $current_user->ID; // 元のユーザーIDを保持
 // 全ユーザーの進捗データとキャラクターHTMLを格納する配列
 $all_users_progress = [];
 $all_users_characters = [];
+$last_post_progress = []; // 最後の投稿が100%になってから1週間経過したかどうか
 
 // 全ユーザーを取得
 $users = get_users();
+
+function get_last_post_in_category($category_id) {
+    // カテゴリーの最後の投稿を取得
+    $args = array(
+        'category__in' => array($category_id),
+        'posts_per_page' => 1, // 最後の投稿を1つだけ取得
+        'orderby' => 'date',
+        'order' => 'DESC',
+    );
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) {
+        $query->the_post();
+        return get_the_ID(); // 投稿IDを返す
+    }
+
+    return null; // 投稿がない場合
+}
+
+function check_last_post_progress($user_id, $category_id) {
+    // カテゴリーの最後の投稿IDを取得
+    $last_post_id = get_last_post_in_category($category_id);
+
+    if ($last_post_id) {
+        // 最後の投稿に紐付く進捗フィールド
+        $progress_field = 'progress_field_' . $last_post_id;
+        $progress_value = get_user_meta($user_id, $progress_field, true);
+
+        // 進捗が100%かどうか
+        if (intval($progress_value) === 100) {
+            // 進捗が100%になった日時を取得（ない場合は保存する）
+            $completion_date_field = $progress_field . '_date'; // 日時を保存するカスタムフィールド
+            $completion_date = get_user_meta($user_id, $completion_date_field, true);
+
+            if (!$completion_date) {
+                // 初めて100%になった場合、現在の日時を保存
+                $completion_date = current_time('mysql');
+                update_user_meta($user_id, $completion_date_field, $completion_date);
+            }
+
+            // 100%になってから1週間経過したかをチェック
+            $one_week_later = strtotime($completion_date) + (7 * 24 * 60 * 60); // 1週間後
+            $current_time = current_time('timestamp');
+
+            if ($current_time >= $one_week_later) {
+                return true; // 1週間経過したら非表示にする
+            } else {
+                return false; // 1週間経過していない場合は表示する
+            }
+        }
+    }
+
+    return false; // 進捗が100%でないか、投稿が見つからない場合
+}
 
 foreach ($users as $user) {
     $user_id = $user->ID;
@@ -45,18 +100,27 @@ foreach ($users as $user) {
         'username' => $user->display_name,
         'progress' => $progress_data,
     );
+
+    // 各カテゴリーごとの最後の投稿に紐付く進捗をチェック
+    $categories = get_categories(array('parent' => 0)); // 最上位のカテゴリーを取得
+    foreach ($categories as $category) {
+        $category_id = $category->term_id;
+        $last_post_progress[$category_id][$user_id] = check_last_post_progress($user_id, $category_id);
+    }
 }
 
 // ユーザーIDを元に戻す
 wp_set_current_user($original_user_id);
 
-// JavaScriptに全ユーザーの進捗データとキャラクターHTMLを渡す
+// JavaScriptに全ユーザーの進捗データとキャラクターHTML、そして最後の投稿の進捗情報を渡す
 wp_enqueue_script('cooperator-script', get_template_directory_uri() . '/js/cooperatorScript.js', array('jquery'), null, true);
 wp_localize_script('cooperator-script', 'wpData', array(
     'allUsersProgress' => $all_users_progress,
     'allUsersCharacters' => $all_users_characters, // キャラクターHTMLをJavaScriptに渡す
-));?>
+    'lastPostProgress' => $last_post_progress, // 最後の投稿に紐付く進捗情報（1週間経過フラグ付き）
+));
 
+?>
 
 <div class="sp-wrap">
 <div class="road-wappaer">
@@ -687,11 +751,11 @@ if ($total_posts <= 4) {
     <div class="under-menu">
         <div class="menu-arrow"></div>
         <div class="menu-box">
-            <a href="<?php echo home_url(); ?>/my" class="btn road-my-btn"></a>
-            <a href="<?php echo home_url(); ?>/ranking" class="btn road-ranking-btn"></a>
-            <a href="<?php echo home_url(); ?>/column" class="btn road-column-btn"></a>
-            <a href="<?php echo home_url(); ?>/question" class="btn road-question-btn"></a>
-            <a href="<?php echo home_url(); ?>/game" class="btn road-game-btn"></a>
+            <a href="<?php echo home_url();?>/my" class="btn road-my-btn" target="_blank"></a>
+            <a href="<?php echo home_url(); ?>/ranking" class="btn road-ranking-btn" target="_blank"></a>
+            <a href="<?php echo home_url(); ?>/column" class="btn road-column-btn" target="_blank"></a>
+            <a href="<?php echo home_url(); ?>/question" class="btn road-question-btn" target="_blank"></a>
+            <a href="<?php echo home_url(); ?>/game" class="btn road-game-btn" target="_blank"></a>
 
         </div>
     </div>
@@ -703,6 +767,7 @@ if ($total_posts <= 4) {
     const allUsersProgress = <?php echo json_encode($all_users_progress); ?>;
     const currentUsername = <?php echo json_encode($current_username); ?>;
     const characterHtml = <?php echo json_encode($character_html); ?>;
+    const lastPostProgress = <?php echo json_encode($last_post_progress); ?>; // 追加
 </script>
 
 <?php get_footer(); ?>

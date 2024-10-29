@@ -30,7 +30,8 @@ get_header(); ?>
                     <p class="TX">ユーザー名</p>
                 </div>
                 <div class="user_data">
-                    <p class="TX">姓 名</p>
+ 
+                <p class="TX">姓 名</p>
                 </div>
                 <div class="user_data">
                     <p class="TX">メールアドレス</p>
