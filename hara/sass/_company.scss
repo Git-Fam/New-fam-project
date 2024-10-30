@@ -36,15 +36,15 @@
       gap: calc((30 / 1280) * 100vw);
 
       img {
-        width: max(calc((403 / 1280) * 100vw), 300px);
-        height: max(calc((511 / 1280) * 100vw), 350px);
+        width: max(calc((280 / 1280) * 100vw), 280px);
+        height: max(calc((354 / 1280) * 100vw), 350px);
         object-fit: cover;
         object-position: center;
         box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
       }
 
       p {
-        width: max(calc((560 / 1280) * 100vw), 400px);
+        width: max(calc((680 / 1280) * 100vw), 500px);
         @include Lucida;
         color: #292929;
         font-size: max(calc((16 / 1280) * 100vw), 16px);
@@ -55,7 +55,7 @@
 
     &__text {
       width: max(calc((993 / 1280) * 100vw), 700px);
-      margin: calc((50 / 1280) * 100vw) auto 0;
+      margin: calc((30 / 1280) * 100vw) auto 0;
 
       p {
         @include Lucida;
