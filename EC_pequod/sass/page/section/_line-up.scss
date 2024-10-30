@@ -5,6 +5,18 @@
 ----------------------- */
 .line-up {
 
+  .top-TX{
+    color: #585D5F;
+    line-height: 1.5;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 50px;
+
+    span{
+      @include wt700;
+    }
+  }
+
   .main_item {
 
     @include pc {
