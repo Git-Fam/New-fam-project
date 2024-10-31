@@ -262,22 +262,23 @@
               }
 
 
+              
               .input-area {
                 @include column(30px);
-
+  
                 @include pc {
                   padding-inline: 13px;
                 }
-
+  
                 @include sp {
                   padding-left: 13px;
                 }
-
+  
                 &-list {
-
+  
                   &-title {
                     margin-bottom: 4px;
-
+  
                     .TX {
                       color: #989898;
                       font-size: 13px;
@@ -286,20 +287,20 @@
                       letter-spacing: 1.3px;
                     }
                   }
-
+  
                   .check-area {
                     @include column(10px);
                   }
-
+  
                   &-item {
                     display: flex;
                     align-items: center;
                     gap: 10px;
-
+  
                     &.column {
                       flex-direction: column;
                     }
-
+  
                     &.column-sp {
                       @include sp {
                         flex-direction: column;
@@ -307,12 +308,12 @@
                         gap: 17px;
                       }
                     }
-
+  
                     &.check {
                       gap: 40px;
                     }
-
-
+  
+  
                     &.column-check-sp {
                       @include sp {
                         flex-direction: column;
@@ -320,8 +321,8 @@
                         gap: 10px;
                       }
                     }
-
-
+  
+  
                     .first-check {
                       flex-shrink: 0;
                       border-radius: 5px;
@@ -335,14 +336,14 @@
                       letter-spacing: 1.5px;
                       width: 284px;
                       height: 60px;
-
+  
                       @include pc {
                         margin-right: 77px;
                       }
-
+  
                       @include sp {}
                     }
-
+  
                     .input-half {
                       width: 100%;
                       color: #989898;
@@ -350,43 +351,43 @@
                       line-height: 1;
                       font-size: 13px;
                       letter-spacing: 1.3px;
-
+  
                       &.W_half {
                         width: 70px;
                       }
-
+  
                       &.birthdate {
                         display: flex;
                         align-items: center;
                         gap: 3px;
-
+  
                         &:nth-child(1) {
                           width: 128px;
                         }
-
+  
                         &:nth-child(2) {
                           width: 83px;
                         }
-
+  
                         &:nth-child(3) {
                           width: 83px;
                         }
                       }
-
+  
                       &.family {
                         display: flex;
                         align-items: center;
                         gap: 3px;
-
+  
                         select {
                           width: 115px;
                         }
                       }
                     }
-
+  
                     .input-full {
                       width: 100%;
-
+  
                       .TX {
                         color: #989898;
                         font-size: 10px;
@@ -394,17 +395,17 @@
                         line-height: 1.5;
                         letter-spacing: 1px;
                       }
-
+  
                       &.check {
                         display: flex;
                         align-items: center;
                         gap: 16px;
                         width: fit-content;
-
+  
                         &:has(input[type="checkbox"]) {
                           margin-left: auto;
                         }
-
+  
                         input[type='radio'],
                         input[type='checkbox'] {
                           width: 24px;
@@ -415,7 +416,7 @@
                           appearance: none;
                           position: relative;
                           flex-shrink: 0;
-
+  
                           &:checked {
                             &::before {
                               content: '';
@@ -430,12 +431,12 @@
                             }
                           }
                         }
-
+  
                         input[type='checkbox'] {
                           width: 14px;
                           height: 14px;
                           border-radius: 0;
-
+  
                           &:checked {
                             &::before {
                               content: '';
@@ -452,7 +453,7 @@
                             }
                           }
                         }
-
+  
                         label {
                           color: #989898;
                           @include wt500;
@@ -462,7 +463,7 @@
                         }
                       }
                     }
-
+  
                     .search_description {
                       @include center;
                       border-radius: 5px;
@@ -471,7 +472,7 @@
                       width: fit-content;
                       ;
                       padding: 13px 17px;
-
+  
                       a {
                         color: #FFF;
                         font-size: 13px;
@@ -481,7 +482,7 @@
                       }
                     }
                   }
-
+  
                   .add-text {
                     margin: 10px 0 20px;
                     color: #989898;
@@ -491,7 +492,7 @@
                     line-height: 1.5;
                     letter-spacing: 0.5px;
                   }
-
+  
                   .privacy_box {
                     width: 100%;
                     height: 200px;
@@ -505,9 +506,8 @@
                     font-size: 16px;
                   }
                 }
-
+  
               }
-
             }
 
             .submit-btn {
