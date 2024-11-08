@@ -109,12 +109,12 @@
                                                     </p>
                                                     <p class="terms--link">
                                                         <a href="https://www.sakura-ins-form.jp/form/66fd0201a7bb9" target="_blank" rel="noopener noreferrer">
-                                                            家具安心サポートWEB請求フォームはこちら
+                                                            家電安心サポート(動産総合保険)WEB請求フォームはこちら
                                                         </a>
                                                     </p>
                                                     <p class="terms--link">
                                                         <a href="https://www.sakura-ins.co.jp/agencydocument/pequod/kadenanshinsupportClaim.pdf" target="_blank" rel="noopener noreferrer">
-                                                            家具安心サポート郵送からの請求書はこちら
+                                                            家電安心サポート(動産総合保険)郵送からの請求書はこちら
                                                         </a>
                                                     </p>
                                                 </div>
