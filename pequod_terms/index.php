@@ -212,10 +212,10 @@
                                                     <p class="TX">ウォーターサーバーの相談窓口</p>
                                                 </li>
                                                 <li>
-                                                    <p class="TX">駆けつけ</p>
+                                                    <p class="TX">ライフレスキュー</p>
                                                 </li>
                                                 <li>
-                                                    <p class="TX">健康相談</p>
+                                                    <p class="TX">メディカルレスキュー</p>
                                                 </li>
                                                 <li>
                                                     <p class="TX">動産総合保険</p>
