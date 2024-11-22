@@ -113,7 +113,7 @@ $screenSizeSP: 390;
 }
 // font-size: p(50);
 
-@function pm($size, $maxSize: ($size * 3 / 4), $viewport: $screenSizePC) {
+@function pm($size, $maxSize: ($size * 3 / 5), $viewport: $screenSizePC) {
   $rate: calc(100 / $viewport);
   $calculatedSize: $rate * $size * 1vw;
   @return max(#{$calculatedSize}, #{$maxSize}px);
@@ -123,7 +123,7 @@ $screenSizeSP: 390;
 // or
 // font-size: pm(50);
 
-@function pmin($size, $maxSize:  ($size * 3 / 4), $viewport: $screenSizePC) {
+@function pmin($size, $maxSize:  ($size * 3 / 5), $viewport: $screenSizePC) {
   $rate: calc(100 / $viewport);
   $calculatedSize: $rate * $size * 1vw;
   @return min(#{$calculatedSize}, #{$maxSize}px);

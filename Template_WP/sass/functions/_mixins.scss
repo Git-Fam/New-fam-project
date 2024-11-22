@@ -113,22 +113,22 @@ $screenSizeSP: 390;
 }
 // font-size: p(50);
 
-@function pm($size, $maxSize: ($size * 3 / 4), $viewport: $screenSizePC) {
+@function pm($size, $maxSize: ($size * 3 / 5), $viewport: $screenSizePC) {
   $rate: calc(100 / $viewport);
   $calculatedSize: $rate * $size * 1vw;
   @return max(#{$calculatedSize}, #{$maxSize}px);
 }
-// 入力値に*3/4した値とvwの値を比較して大きい方を返す
+// 入力値に*3/5した値とvwの値を比較して大きい方を返す
 // font-size: pm(50,40);
 // or
 // font-size: pm(50);
 
-@function pmin($size, $maxSize:  ($size * 3 / 4), $viewport: $screenSizePC) {
+@function pmin($size, $maxSize:  ($size * 3 / 5), $viewport: $screenSizePC) {
   $rate: calc(100 / $viewport);
   $calculatedSize: $rate * $size * 1vw;
   @return min(#{$calculatedSize}, #{$maxSize}px);
 }
-// 入力値に*3/4した値とvwの値を比較して大きい方を返す
+// 入力値に*3/5した値とvwの値を比較して大きい方を返す
 // font-size: pmin(-50,-40);
 // or
 // font-size: pmin(-50);

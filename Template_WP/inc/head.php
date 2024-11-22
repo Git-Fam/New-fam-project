@@ -64,14 +64,3 @@
 </head>
 
 <body>
-
-
-
-
-    <header class="header">
-        <a href="<?php bloginfo('url'); ?>/voi">voi</a>
-        <a href="<?php echo get_home_url(); ?>">home</a>
-    </header>
-
-    <div class="whopper">
-        <?php get_template_part('global-parts/kv'); ?>
