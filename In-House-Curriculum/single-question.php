@@ -31,17 +31,55 @@ offにすればコメントできる -->
                     <div class="category-content">
                         <p class="category-content-TX">カテゴリー選択</p>
                         <div class="select-content">
-                            <ul class="select">
-                                <li>
-                                    <p class="TX">divパズル</p>
-                                    <a href="<?php bloginfo('url'); ?>/question/div01">divパズル01</a>
-                                    <a href="<?php bloginfo('url'); ?>/question/div02">divパズル02</a>
-                                </li>
-                                <li>
-                                    <p class="TX">その他</p>
-                                    <a href="<?php bloginfo('url'); ?>/question/その他の質問">その他の質問</a>
-                                </li>
-                            </ul>
+                        <?php
+                            echo '<ul class="select">';
+
+                            // 'question' 投稿タイプのカテゴリー（タクソノミー 'question-cat'）を取得
+                            $categories = get_terms([
+                                'taxonomy' => 'question-cat',  // カスタムタクソノミー名
+                                'hide_empty' => true           // 空のカテゴリーは表示しない
+                            ]);
+
+                            if (!empty($categories) && !is_wp_error($categories)) {
+                                foreach ($categories as $category) {
+                                    echo '<li>';
+                                    echo '<p class="TX">' . esc_html($category->name) . '</p>';
+                                    
+                                    // カテゴリー内の 'question' 投稿タイプの投稿を取得
+                                    $args = [
+                                        'post_type' => 'question',  // カスタム投稿タイプを指定
+                                        'tax_query' => [
+                                            [
+                                                'taxonomy' => 'question-cat',  // カスタムタクソノミーを指定
+                                                'field' => 'slug',
+                                                'terms' => $category->slug,
+                                            ],
+                                        ],
+                                        'posts_per_page' => -1   // すべての投稿を取得
+                                    ];
+                                    $query = new WP_Query($args);
+                                    
+                                    // 投稿がある場合、リンクをリストとして表示
+                                    if ($query->have_posts()) {
+                                        while ($query->have_posts()) {
+                                            $query->the_post();
+                                            echo '<a href="' . esc_url(get_permalink()) . '">' . esc_html(get_the_title()) . '</a><br>';
+                                        }
+                                    } else {
+                                        echo '<p>投稿がありません</p>';  // 投稿がない場合のメッセージ
+                                    }
+                                    
+                                    // クエリをリセット
+                                    wp_reset_postdata();
+                                    
+                                    echo '</li>';
+                                }
+                            } else {
+                                echo '<p>カテゴリーがありません</p>'; // カテゴリーがない場合のメッセージ
+                            }
+
+                            echo '</ul>';
+                        ?>
                         </div>
                     </div>
                 </li>

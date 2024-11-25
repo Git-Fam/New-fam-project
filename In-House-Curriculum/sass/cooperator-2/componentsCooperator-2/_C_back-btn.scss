@@ -12,11 +12,11 @@
   @include wt800;
 
   @include pc {
-    width: p(81);
-    border-radius: p(5);
-    padding: p(7) p(25);
-    letter-spacing: p(1.2);
-    font-size: p(12);
+    width: cl(81);
+    border-radius: cl(5);
+    padding: cl(7) cl(25);
+    letter-spacing: cl(1.2);
+    font-size: cl(12);
   }
   @include sp{
     width:scl(46);

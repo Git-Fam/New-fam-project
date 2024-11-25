@@ -43,7 +43,7 @@
 						></iframe>
 					</div>
 					<div class="TL">
-						<h1 class="TL-text">なんかタイトルほしいねー</h1>
+						<h1 class="TL-text">プログラミング学習</h1>
 					</div>
 					<div class="textbox">
 						<p class="textbox-top">同じ夢を持つ仲間と一緒に、<br class="sp">夢を叶えよう！</p>

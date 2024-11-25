@@ -12,7 +12,7 @@
                         <ul class="columns_contents--inner">
                             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                                 <li class="hover-opa">
-                                    <a href="<?php the_permalink(); ?>" target="_blank" rel="noopener noreferrer">
+                                    <a href="<?php the_permalink(); ?>">
                                         <div class="thumbnail">
                                             <img src="<?php echo get_the_post_thumbnail_url() ? get_the_post_thumbnail_url() : get_template_directory_uri() . '/img/noimage.jpg'; ?>" alt="">
                                         </div>

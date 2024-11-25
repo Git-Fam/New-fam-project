@@ -59,10 +59,14 @@ jQuery(function () {
 		});
 
 	//show付与
-	$(".category-content,#cover-btn,.timeline-jamp").on("click", function () {
-		$(".select-content,#tab-wrap,.timeline-modal,.chat-wrap").toggleClass(
+	$("#cover-btn,.timeline-jamp").off("click").on("click", function () {
+		$("#tab-wrap,.timeline-modal,.chat-wrap").toggleClass(
 			"show"
 		);
+	});
+
+	$(".category-content").off("click").on("click", function () {
+		$(this).find(".select-content").toggleClass("show"); 
 	});
 
 	$("#cover-curriculum").hover(function () {
@@ -367,9 +371,19 @@ jQuery(function () {
 	}
 
 	// クラスAを持つ要素をクラスBで囲む
-	$(".sac-chat-name").wrap('<p class="sac-chat-name-wrap"></p>');
-	// $(".highlight-text").wrap('<p class="text-wrap"></p>');
+	// .sac-chat-name が既に .sac-chat-name-wrap で包まれているか確認
+	$(".sac-chat-name").each(function() {
+		if (!$(this).parent().hasClass("sac-chat-name-wrap")) {
+			$(this).wrap('<p class="sac-chat-name-wrap"></p>');
+		}
+	});
 
+	// .highlight-text が既に .text-wrap で包まれているか確認
+	$(".highlight-text").each(function() {
+		if (!$(this).parent().hasClass("text-wrap")) {
+			$(this).wrap('<p class="text-wrap"></p>');
+		}
+	});
 	// クラス名 'sac-chat-message' を持つすべてのリストアイテムに対して
 	$(".sac-chat-message").each(function () {
 		// このリストアイテム内のテキストノードを取得
@@ -399,26 +413,26 @@ jQuery(function () {
 			allUsersProgress.forEach((user) => {
 				const userProgress = user.progress;
 				const username = user.username;
-
+	
 				let lastCheckpointClass = "";
 				let lastProgressValue = 0;
-
+	
 				// 現在アクティブなカテゴリーの要素を取得
 				const $activeCategory = $(".archive--contents--items--wap.active");
-
+	
 				if ($activeCategory.length) {
 					const categoryId = $activeCategory.data("category-id"); // カテゴリーIDを取得
-
+	
 					// 進捗が100%で1週間経過しているかを確認
 					const isOneWeekPassed =
 						lastPostProgress[categoryId] &&
 						lastPostProgress[categoryId][user.user_id];
-
+	
 					if (!isOneWeekPassed) {
 						// 1週間経過していない場合のみキャラクターを表示
 						$.each(userProgress, (key, value) => {
 							const progressValue = parseInt(value) || 0;
-
+	
 							if (progressValue > 0) {
 								// アクティブなカテゴリー内にそのクラスが存在するか確認
 								if ($activeCategory.find(`.${key}`).length > 0) {
@@ -427,19 +441,19 @@ jQuery(function () {
 								}
 							}
 						});
-
+	
 						if (lastCheckpointClass) {
 							const $checkpointElement = $activeCategory.find(
 								`.${lastCheckpointClass}`
 							);
-
+	
 							if ($checkpointElement.length) {
 								const $characterBox = $("<div>")
 									.addClass("character-box")
 									.css({ position: "absolute", left: lastProgressValue + "%" });
-
+	
 								const $nameElement = $("<p>").addClass("name").text(username);
-
+	
 								const userCharacter = wpData.allUsersCharacters.find(
 									(c) => c.username === username
 								);
@@ -449,12 +463,12 @@ jQuery(function () {
 										.html(userCharacter.character_html);
 									$characterBox.append($characterDiv);
 								}
-
+	
 								if ($.trim(username) === $.trim(currentUsername)) {
 									$nameElement.css("color", "red");
 									$characterBox.addClass("me");
 								}
-
+	
 								$characterBox.append($nameElement).appendTo($checkpointElement);
 							}
 						}
@@ -463,9 +477,49 @@ jQuery(function () {
 			});
 		}
 	}
-
+	
+	// ゴールのクラスを更新する関数
+	function updateGoalClasses() {
+		if (typeof allUsersProgress !== "undefined" && allUsersProgress.length > 0) {
+			// 現在のユーザーの進捗データのみを取得
+			const currentUserProgress = allUsersProgress.find(
+				(user) => user.username === currentUsername
+			);
+	
+			if (currentUserProgress && currentUserProgress.progress) {
+				const userProgress = currentUserProgress.progress;
+	
+				// .destination 要素をループして、進捗データに基づいて .goal にクラスを追加
+				$(".destination").each(function () {
+					const $destination = $(this);
+					const $goalElement = $destination.find(".goal");
+	
+					// 進捗キーとして使えるクラス名を取得（最初のクラスのみ使用）
+					const tagClass = $destination.attr("class").split(" ").find(function (className) {
+						return userProgress.hasOwnProperty(className);
+					});
+	
+					if (tagClass) {
+						const progressValue = parseInt(userProgress[tagClass], 10);
+	
+						if (progressValue === 0 || isNaN(progressValue)) {
+							$goalElement.addClass("not");
+						} else if (progressValue === 100) {
+							$goalElement.addClass("clear");
+						}
+						// 1~99%の進捗はクラスを追加しない
+					} else {
+						// 該当するクラス名がない場合はデフォルトで .not を追加
+						$goalElement.addClass("not");
+					}
+				});
+			}
+		}
+	}
+		
 	// ページロード時の初期表示
 	displayCharacters();
+	updateGoalClasses();
 
 	// タブのクリックイベントにキャラクター描画処理を追加
 	$(".archive--item").on("click", function () {

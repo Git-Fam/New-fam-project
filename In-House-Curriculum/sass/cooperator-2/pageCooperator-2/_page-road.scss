@@ -756,6 +756,7 @@
 
                 .name {
                   position: relative;
+
                   @include pc {
                     width: p(40);
                     font-size: p(13);
@@ -792,36 +793,41 @@
                     top: -100px !important;
                   }
 
-                  .display__character{
+                  .display__character {
                     position: relative;
-                    @include pc{
+
+                    @include pc {
                       width: p(56);
                       height: p(65);
                     }
-                    @include sp{
+
+                    @include sp {
                       width: 56px;
                       height: 65px;
                     }
-                    &::after{
+
+                    &::after {
                       content: "";
                       position: absolute;
                       @include imgContain("me.png");
                       left: 50%;
                       translate: -50% 0;
+
                       @include pc {
                         width: p(165);
                         height: p(257);
                         top: p(-170);
                       }
+
                       @include sp {
                         width: 165px;
                         height: 257px;
                         top: -170px;
-                      }  
+                      }
                     }
                   }
-                  .character {
-                  }
+
+                  .character {}
                 }
               }
             }
@@ -1661,7 +1667,8 @@
       }
 
       &.Java,
-      &.React {
+      &.React ,
+      &.Design {
         .page1 {
           .road-content {
             .destination {
@@ -1982,6 +1989,53 @@
       }
 
       &.React {
+        .page1 {
+          .road-content {
+            .destination {
+              &:nth-child(7) {
+                @include pc {
+                  left: p(70);
+                  bottom: p(138);
+                }
+
+                @include sp {
+                  left: 70px;
+                  bottom: 138px;
+                }
+              }
+
+              &:nth-child(8) {
+                @include pc {
+                  right: p(600);
+                  bottom: p(102);
+                  z-index: 17;
+                }
+
+                @include sp {
+                  right: 600px;
+                  bottom: 102px;
+                  z-index: 17;
+                }
+              }
+
+
+              &:nth-child(9) {
+                @include pc {
+                  right: p(380);
+                  bottom: p(84);
+                }
+
+                @include sp {
+                  right: 380px;
+                  bottom: 84px;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &.Design {
         .page1 {
           .road-content {
             .destination {

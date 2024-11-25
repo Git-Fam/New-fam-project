@@ -1,5 +1,6 @@
 
 
+
 <?php get_header(); ?>
 
 <div class="question archive-question">
@@ -21,48 +22,55 @@
                     <div class="category-content">
                         <p class="category-content-TX">カテゴリー選択</p>
                         <div class="select-content">
-                            <ul class="select">
-                                <li>
-                                    <p class="TX">divパズル</p>
-                                    <a href="<?php bloginfo('url'); ?>/question/div01">divパズル01</a>
-                                    <a href="<?php bloginfo('url'); ?>/question/div02">divパズル02</a>
-                                    <a href="<?php bloginfo('url'); ?>/question/div03">divパズル03</a>
-                                    <a href="<?php bloginfo('url'); ?>/question/div04">divパズル04</a> 
-                                    <a href="<?php bloginfo('url'); ?>/question/div05">divパズル05</a>
-                                    <a href="<?php bloginfo('url'); ?>/question/div06">divパズル06</a>
-                                    <a href="<?php bloginfo('url'); ?>/question/div07">divパズル07</a>
-                                    <a href="<?php bloginfo('url'); ?>/question/responsive">レスポンシブ</a>
-                                </li>
-                                <li>
-                                    <p class="TX">jQuery</p>
-                                    <a href="<?php bloginfo('url'); ?>/question/jquery01">jQuery01</a>
-                                    <a href="<?php bloginfo('url'); ?>/question/jquery02">jQuery02</a>
-                                    <a href="<?php bloginfo('url'); ?>/question/jquery03">jQuery03</a>
-                                    <a href="<?php bloginfo('url'); ?>/question/jquery04">jQuery04</a>
-                                    <a href="<?php bloginfo('url'); ?>/question/jquery05">jQuery05</a>
-                                    <a href="<?php bloginfo('url'); ?>/question/jquery06">jQuery06</a>
-                                    <a href="<?php bloginfo('url'); ?>/question/jquery07">jQuery07</a>
-                                    <a href="<?php bloginfo('url'); ?>/question/jquery08">jQuery08</a>
-                                    <a href="<?php bloginfo('url'); ?>/question/jquery09">jQuery09</a>
-                                    <a href="<?php bloginfo('url'); ?>/question/jquery10">jQuery10</a>
-                                    <a href="<?php bloginfo('url'); ?>/question/jqueryLast">jQuery最終課題</a>
-                                </li>
-                                <li>
-                                    <p class="TX">サイト制作</p>
-                                    <a href="<?php bloginfo('url'); ?>/question/site">サイト制作</a>
-                                </li>
-                                <li>
-                                    <p class="TX">FAM課題</p>
-                                    <a href="<?php bloginfo('url'); ?>/question/fam01">クリニック</a><br>
-                                    <a href="<?php bloginfo('url'); ?>/question/fam02">占い</a><br>
-                                    <a href="<?php bloginfo('url'); ?>/question/fam03">さくらんぼ</a>
+                            <?php
+                                echo '<ul class="select">';
 
-                                </li>
-                                <li>
-                                    <p class="TX">その他</p>
-                                    <a href="<?php bloginfo('url'); ?>/question/その他の質問">その他の質問</a>
-                                </li>
-                            </ul>
+                                // 'question' 投稿タイプのカテゴリー（タクソノミー 'question-cat'）を取得
+                                $categories = get_terms([
+                                    'taxonomy' => 'question-cat',  // カスタムタクソノミー名
+                                    'hide_empty' => true           // 空のカテゴリーは表示しない
+                                ]);
+
+                                if (!empty($categories) && !is_wp_error($categories)) {
+                                    foreach ($categories as $category) {
+                                        echo '<li>';
+                                        echo '<p class="TX">' . esc_html($category->name) . '</p>';
+                                        
+                                        // カテゴリー内の 'question' 投稿タイプの投稿を取得
+                                        $args = [
+                                            'post_type' => 'question',  // カスタム投稿タイプを指定
+                                            'tax_query' => [
+                                                [
+                                                    'taxonomy' => 'question-cat',  // カスタムタクソノミーを指定
+                                                    'field' => 'slug',
+                                                    'terms' => $category->slug,
+                                                ],
+                                            ],
+                                            'posts_per_page' => -1   // すべての投稿を取得
+                                        ];
+                                        $query = new WP_Query($args);
+                                        
+                                        // 投稿がある場合、リンクをリストとして表示
+                                        if ($query->have_posts()) {
+                                            while ($query->have_posts()) {
+                                                $query->the_post();
+                                                echo '<a href="' . esc_url(get_permalink()) . '">' . esc_html(get_the_title()) . '</a><br>';
+                                            }
+                                        } else {
+                                            echo '<p>投稿がありません</p>';  // 投稿がない場合のメッセージ
+                                        }
+                                        
+                                        // クエリをリセット
+                                        wp_reset_postdata();
+                                        
+                                        echo '</li>';
+                                    }
+                                } else {
+                                    echo '<p>カテゴリーがありません</p>'; // カテゴリーがない場合のメッセージ
+                                }
+
+                                echo '</ul>';
+                            ?>
                         </div>
                     </div>
                 </li>

@@ -228,7 +228,7 @@ if ($total_posts <= 4) {
                             ?>
                             <div class="destination <?php echo $tag_classes; ?>">
                                 <div class="goal-wrap">
-                                    <a class="goal" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" target="_blank" rel="noopener noreferrer">
+                                    <a class="goal hover-scale" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" >
                                     </a>
                                     <div class="goal-bg"></div>
                                 </div>
@@ -314,7 +314,7 @@ if ($total_posts <= 4) {
 
                             <div class="destination <?php echo $tag_classes; ?>">
                                 <div class="goal-wrap">
-                                    <a class="goal" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" target="_blank" rel="noopener noreferrer">
+                                    <a class="goal hover-scale" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" >
                                     </a>
                                     <div class="goal-bg"></div>
                                 </div>
@@ -377,7 +377,7 @@ if ($total_posts <= 4) {
     
                                 <div class="destination <?php echo $tag_classes; ?>">
                                 <div class="goal-wrap">
-                                    <a class="goal" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" target="_blank" rel="noopener noreferrer">
+                                    <a class="goal hover-scale" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" >
                                     </a>
                                     <div class="goal-bg"></div>
                                 </div>
@@ -445,7 +445,7 @@ if ($total_posts <= 4) {
     
                                 <div class="destination <?php echo $tag_classes; ?>">
                                 <div class="goal-wrap">
-                                    <a class="goal" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" target="_blank" rel="noopener noreferrer">
+                                    <a class="goal hover-scale" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" >
                                     </a>
                                     <div class="goal-bg"></div>
                                 </div>
@@ -513,7 +513,7 @@ if ($total_posts <= 4) {
     
                                 <div class="destination <?php echo $tag_classes; ?>">
                                 <div class="goal-wrap">
-                                    <a class="goal" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" target="_blank" rel="noopener noreferrer">
+                                    <a class="goal hover-scale" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" >
                                     </a>
                                     <div class="goal-bg"></div>
                                 </div>
@@ -585,7 +585,7 @@ if ($total_posts <= 4) {
         
                                     <div class="destination <?php echo $tag_classes; ?>">
                                         <div class="goal-wrap">
-                                            <a class="goal" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" target="_blank" rel="noopener noreferrer">
+                                            <a class="goal hover-scale" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" >
                                             </a>
                                             <div class="goal-bg"></div>
                                         </div>
@@ -622,7 +622,7 @@ if ($total_posts <= 4) {
             <?php if (function_exists('simple_ajax_chat')) simple_ajax_chat(); ?>
 
             <!-- この要素追加で新着メッセージ表示 -->
-            <div id="latest-messages"></div>
+            <a href="<?php echo home_url(); ?>/chat" id="latest-messages"></a>
 
             <div class="timeline-wrap">
                 <div class="timeline">
@@ -654,59 +654,36 @@ if ($total_posts <= 4) {
 
                     // グループユーザーの進捗をチェック
                     foreach ($group_users as $user) {
-                        $user_id = $user->ID;  // ループ内のユーザーID
+                        $user_id = $user->ID;
                         $user_name = $user->display_name;
-
+                    
                         // ユーザーの進捗を取得（各項目の100%チェック）
-                        $progress_data = array(
-                            'div01パズル' => get_user_meta($user_id, 'div01', true) ?: '0',
-                            'div02パズル' => get_user_meta($user_id, 'div02', true) ?: '0',
-                            'div03パズル' => get_user_meta($user_id, 'div03', true) ?: '0',
-                            'div04パズル' => get_user_meta($user_id, 'div04', true) ?: '0',
-                            'div05パズル' => get_user_meta($user_id, 'div05', true) ?: '0',
-                            'div06パズル' => get_user_meta($user_id, 'div06', true) ?: '0',
-                            'div07パズル' => get_user_meta($user_id, 'div07', true) ?: '0',
-                            'responsive' => get_user_meta($user_id, 'responsive', true) ?: '0',
-                            'jQuery01' => get_user_meta($user_id, 'JQ01', true) ?: '0',
-                            'jQuery02' => get_user_meta($user_id, 'JQ02', true) ?: '0',
-                            'jQuery03' => get_user_meta($user_id, 'JQ03', true) ?: '0',
-                            'jQuery04' => get_user_meta($user_id, 'JQ04', true) ?: '0',
-                            'jQuery05' => get_user_meta($user_id, 'JQ05', true) ?: '0',
-                            'jQuery06' => get_user_meta($user_id, 'JQ06', true) ?: '0',
-                            'jQuery07' => get_user_meta($user_id, 'JQ07', true) ?: '0',
-                            'jQuery08' => get_user_meta($user_id, 'JQ08', true) ?: '0',
-                            'jQuery09' => get_user_meta($user_id, 'JQ09', true) ?: '0',
-                            'jQuery10' => get_user_meta($user_id, 'JQ10', true) ?: '0',
-                            'jQuery最終課題' => get_user_meta($user_id, 'JQLast', true) ?: '0',
-                            'サイト制作' => get_user_meta($user_id, 'LP01', true) ?: '0',
-                            'Sass01' => get_user_meta($user_id, 'Sass01', true) ?: '0',
-                            'FAM01' => get_user_meta($user_id, 'FAM01', true) ?: '0',
-                            'JS01' => get_user_meta($user_id, 'JS01', true) ?: '0',
-                            'WP01' => get_user_meta($user_id, 'WP01', true) ?: '0',
-                            'SEO01' => get_user_meta($user_id, 'SEO01', true) ?: '0',
-                        );
-
-                        // 日時を保存するカスタムフィールド名
-                        $date_fields = array(
-                            'div01_date', 'div02_date', 'div03_date', 'div04_date', 'div05_date',
-                            'div06_date', 'div07_date', 'responsive_date', 'JQ01_date', 'JQ02_date',
-                            'JQ03_date', 'JQ04_date', 'JQ05_date', 'JQ06_date', 'JQ07_date',
-                            'JQ08_date', 'JQ09_date', 'JQ10_date', 'JQLast_date', 'LP01_date',
-                            'Sass01_date', 'FAM01_date', 'JS01_date', 'WP01_date', 'SEO01_date'
-                        );
-
-                        // 100%の項目をタイムラインに表示
-                        $i = 0;
+                        $progress_data = array();
+                        $user_info = add_user_info(); // add_user_info 関数で追加したフィールドを取得
+                    
+                        foreach ($user_info as $key => $label) {
+                            $progress_data[$label] = get_user_meta($user_id, $key, true) ?: '0';
+                        }
+                    
+                        // 日時を保存するカスタムフィールド名の準備
+                        $latest_completion_date = null;  // 最新の完了日時を初期化
+                        $latest_completion = null;       // 最新の完了項目の情報を初期化
+                    
                         foreach ($progress_data as $key => $value) {
                             if ($value == '100') {
-                                if (!get_user_meta($user_id, $date_fields[$i], true)) {
+                                // 日付フィールド名を動的に取得
+                                $date_field_key = $key . '_date';
+                    
+                                // 日付が未設定の場合、現在の日時を設定
+                                if (!get_user_meta($user_id, $date_field_key, true)) {
                                     $current_time = current_time('mysql');
-                                    update_user_meta($user_id, $date_fields[$i], $current_time);
+                                    update_user_meta($user_id, $date_field_key, $current_time);
                                 }
-
-                                $completion_date = get_user_meta($user_id, $date_fields[$i], true);
+                    
+                                // 完了日時を取得
+                                $completion_date = get_user_meta($user_id, $date_field_key, true);
                                 $formatted_date = date_i18n('n月j日 G:i', strtotime($completion_date));
-
+                    
                                 // 最新の完了項目かどうかをチェック
                                 if (is_null($latest_completion_date) || strtotime($completion_date) > strtotime($latest_completion_date)) {
                                     $latest_completion_date = $completion_date;
@@ -718,11 +695,9 @@ if ($total_posts <= 4) {
                                     );
                                 }
                             }
-                            $i++;
                         }
                     }
-
-                    // 最新の完了項目を表示
+                                        // 最新の完了項目を表示
                     if ($latest_completion) {
                         $like_count = get_option('global_like_count_' . $latest_completion['item_id'], 0); // グローバルいいね数を取得
                         $liked_items = get_user_meta(get_current_user_id(), 'liked_items', true) ?: array();
@@ -736,14 +711,14 @@ if ($total_posts <= 4) {
                 </div>
             </div>
 
-            <div class="C_reaction">
+            <a href="<?php echo home_url();?>/chat" class="C_reaction">
                 <p class="TX">5回リアクションを<br>送ろう！</p>
                 <div class="reaction-counter">0/5</div>
                 <div class="coin-counter">
                     <div class="icon"></div>
                     <div class="number">3</div>
                 </div>
-            </div>
+            </a>
 
         </div>
     </div>
@@ -751,11 +726,11 @@ if ($total_posts <= 4) {
     <div class="under-menu">
         <div class="menu-arrow"></div>
         <div class="menu-box">
-            <a href="<?php echo home_url();?>/my" class="btn road-my-btn" target="_blank"></a>
-            <a href="<?php echo home_url(); ?>/ranking" class="btn road-ranking-btn" target="_blank"></a>
-            <a href="<?php echo home_url(); ?>/column" class="btn road-column-btn" target="_blank"></a>
-            <a href="<?php echo home_url(); ?>/question" class="btn road-question-btn" target="_blank"></a>
-            <a href="<?php echo home_url(); ?>/game" class="btn road-game-btn" target="_blank"></a>
+            <a href="<?php echo home_url();?>/my" class="btn road-my-btn"></a>
+            <a href="<?php echo home_url(); ?>/ranking" class="btn road-ranking-btn"></a>
+            <a href="<?php echo home_url(); ?>/column" class="btn road-column-btn"></a>
+            <a href="<?php echo home_url(); ?>/question" class="btn road-question-btn"></a>
+            <a href="<?php echo home_url(); ?>/game" class="btn road-game-btn"></a>
 
         </div>
     </div>

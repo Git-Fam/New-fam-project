@@ -19,21 +19,21 @@
                 <div class="level">
                     <ul class="level-list">
                         <li class="beginner active">
-                            <a href="<?php echo home_url('/game-tag/beginner/'); ?>" target=_blank class="level-item">
+                            <a href="<?php echo home_url('/game-tag/beginner/'); ?>" class="level-item">
                                 <div class="item-bg">
                                     <div class="chara"></div>
                                 </div>
                             </a>
                         </li>
                         <li class="intermediate">
-                            <a href="<?php echo home_url('/game-tag/intermediate/'); ?>" target=_blank class="level-item">
+                            <a href="<?php echo home_url('/game-tag/intermediate/'); ?>" class="level-item">
                                 <div class="item-bg">
                                     <div class="chara"></div>
                                 </div>
                             </a>
                         </li>
                         <li class="advanced">
-                            <a href="<?php echo home_url('/game-tag/advanced/'); ?>" target=_blank class="level-item">
+                            <a href="<?php echo home_url('/game-tag/advanced/'); ?>" class="level-item">
                                 <div class="item-bg">
                                     <div class="chara"></div>
                                 </div>

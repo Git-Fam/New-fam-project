@@ -503,6 +503,7 @@
                   height: p(25);
                   border-radius: p(10);
                   padding: p(11) p(24);
+                  font-size: p(16);
                 }
 
                 @include sp {
@@ -510,6 +511,7 @@
                   height: smi(29);
                   border-radius: s(5);
                   padding: s(5) s(10);
+                  font-size: smi(16);
                 }
 
                 &::placeholder {
@@ -600,13 +602,6 @@
           flex-direction: column;
           position: relative;
 
-          @include pc {
-            gap: p(10);
-          }
-
-          @include sp {
-            gap: s(7);
-          }
 
           .sac-chat-message {
             position: relative;
@@ -636,7 +631,7 @@
 
               @include pc {
                 left: p(73);
-                height: fit-content;
+                height: p(23);
               }
 
               @include sp {
@@ -667,30 +662,51 @@
 
             .highlight-text {
               color: $F-B29975;
-              position: absolute;
-              @include iconCover($chat-bubble);
+              position: relative;
+              // @include iconCover($chat-bubble);
               @include wt600;
               display: grid;
               place-items: center left;
-
+              background-color: $B-FFFFFF;
+              line-height: 1.2;
+              filter: drop-shadow(0px 3px 5px rgba(0, 0, 0, 0.15));
 
               @include pc {
-                width: p(508);
-                height: p(50);
+                width: p(460);
                 font-size: p(16);
-                padding: 0 p(30);
-                top: p(20);
-                left: p(60);
+                padding: p(8) p(30);
+                top: p(-30);
+                left: p(70);
+                border-radius: p(5);
               }
 
               @include sp {
-                width: smi(240, 328);
-                height: smi(22, 30);
+                width: smi(220, 308);
                 font-size: smi(12, 16);
-                top: smi(15);
-                left: smi(45, 55);
-                padding: 0 smi(15, 20);
+                top: s(-15);
+                left: smi(50, 60);
+                padding: smi(8,10) smi(15, 20);
+                border-radius: smi(3);
               }
+              &::before {
+                content: "";
+                clip-path: polygon(75% 0, 100% 100%, 10% 100%);
+                background: $B-FFFFFF;
+                position: absolute;
+                bottom: 0;
+        
+                @include pc {
+                  width: p(27);
+                  height: p(16);
+                  left: p(-12);
+                }
+        
+                @include sp{
+                  width: 20px;
+                  height: 12px;
+                  left: -7px;
+                }
+              }        
             }
 
             &.me {
@@ -711,18 +727,40 @@
               }
 
               .highlight-text {
-                @include iconCover($chat-me);
+                // @include iconCover($chat-me);
                 color: $P-F6AA64;
                 place-items: center right;
                 left: auto;
+                background: $B-FFFDED;
+
 
                 @include pc {
-                  right: p(60);
+                  right: p(-60);
                 }
 
                 @include sp {
-                  right: smi(45, 55);
+                  right: smi(-5, -15);
                 }
+                &::before {
+                  content: "";
+                  clip-path: polygon(10% 0%, 100% 100%, 10% 100%);
+                  background: $B-FFFFFF;
+                  position: absolute;
+                  bottom: 0;
+          
+                  @include pc {
+                    width: p(27);
+                    height: p(16);
+                    right: p(-12);
+                    left: initial;
+                  }
+          
+                  @include sp{
+                    right: -6px;
+                    left: initial;
+                  }
+                }        
+  
               }
 
               &::before {

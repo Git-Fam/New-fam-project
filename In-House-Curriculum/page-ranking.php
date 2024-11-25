@@ -74,7 +74,7 @@ function display_user_item($user, $rank_class = '') {
             <p class="name"><?php echo esc_html($user_name); ?></p>
             <div class="point-box">
                 <div class="icon"></div>
-                <p class="point"><?php echo number_format($user_points); ?></p>
+                <p class="point"><?php echo number_format($user_points); ?> pt</p>
             </div>
         </div>
     </li>
@@ -136,7 +136,7 @@ foreach ($login_days_users as $index => $user_info) {
                             <div class="result-box">
                                 <p class="number"><?php echo $current_user_rank; ?></p>
                                 <div class="icon"></div>
-                                <p class="point"><?php echo number_format($user_points); ?></p>
+                                <p class="point"><?php echo number_format($user_points); ?> pt</p>
                             </div>
                         </div>
                         <!-- ログイン日数情報 -->
@@ -186,7 +186,7 @@ foreach ($login_days_users as $index => $user_info) {
                                         <p class="name"><?php echo esc_html($user_name); ?></p>
                                         <div class="point-box">
                                             <div class="icon"></div>
-                                            <p class="point"><?php echo number_format($user_points); ?></p>
+                                            <p class="point"><?php echo number_format($user_points); ?> pt</p>
                                         </div>
                                     </li>
                                 <?php endfor; ?>

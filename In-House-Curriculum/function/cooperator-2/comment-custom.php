@@ -1,6 +1,5 @@
 <?php
 
-
 // question投稿タイプに対するコメントを承認待ちにする
 function set_comments_pending_for_question($comment_id, $comment_approved, $commentdata) {
     // 投稿タイプが 'question' の場合のみ
@@ -12,7 +11,6 @@ function set_comments_pending_for_question($comment_id, $comment_approved, $comm
     }
 }
 add_action('comment_post', 'set_comments_pending_for_question', 10, 3);
-
 
 if (!function_exists('mytheme_comment')) {
     function mytheme_comment($comment, $args, $depth) {
@@ -88,6 +86,12 @@ function add_image_upload_field() {
 
 // コメントメタデータとして追加項目を保存
 function save_custom_comment_field($comment_id) {
+
+    if (!function_exists('wp_handle_upload')) {
+        require_once(ABSPATH . 'wp-admin/includes/file.php');
+    }
+
+    
     $comment = get_comment($comment_id);
     if (get_post_type($comment->comment_post_ID) !== 'question') {
         return; // 投稿タイプが 'question' でない場合は終了
@@ -145,20 +149,6 @@ function add_title_comment_field_box() {
 }
 add_action('add_meta_boxes_comment', 'add_title_comment_field_box');
 
-// 管理画面のコメント編集フォームにenctypeを追加
-function add_enctype_to_comment_edit_form() {
-    ?>
-    <script type="text/javascript">
-    jQuery(document).ready(function($) {
-        // コメント編集フォームにenctypeを追加
-        $('#post').attr('enctype', 'multipart/form-data');
-        console.log('enctype added to comment edit form');
-    });
-    </script>
-    <?php
-}
-add_action('admin_footer', 'add_enctype_to_comment_edit_form');
-
 // コメント編集時の画像保存処理
 function save_edited_comment_image($comment_id) {
     if (!current_user_can('edit_comment', $comment_id)) {
@@ -169,15 +159,10 @@ function save_edited_comment_image($comment_id) {
         return;
     }
 
-    // 画像の保存処理
     if (!empty($_FILES['comment_image']['name'])) {
         $file = $_FILES['comment_image'];
-
-        // ファイルが正しくアップロードされたか確認
         if (is_uploaded_file($file['tmp_name'])) {
             $upload = wp_handle_upload($file, array('test_form' => false));
-
-            // アップロードの成功を確認
             if (!isset($upload['error']) && isset($upload['url'])) {
                 $image_url = $upload['url'];
                 update_comment_meta($comment_id, 'comment_image', $image_url);
@@ -187,7 +172,7 @@ function save_edited_comment_image($comment_id) {
 }
 add_action('edit_comment', 'save_edited_comment_image');
 
-// 管理画面でコメント返信時にタイトルフィールドを追加（条件付き）
+// 管理画面でコメント返信時にタイトルフィールドを追加
 function add_title_to_admin_reply_form() {
     ?>
     <script type="text/javascript">
@@ -196,10 +181,7 @@ function add_title_to_admin_reply_form() {
         const observer = new MutationObserver(function(mutations) {
             mutations.forEach(function(mutation) {
                 if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-                    const isVisible = $(replyRow).is(':visible');
-                    const isReplyMode = $('#replyhead').is(':visible');
-
-                    if (isVisible && isReplyMode) {
+                    if ($('#replyrow').is(':visible') && $('#replyhead').is(':visible')) {
                         if ($('#reply-title-container').length === 0) {
                             $('#wp-replycontent-editor-container').append(
                                 '<p id="reply-title-container"><label for="reply-title">返信のタイトル: </label>' +
@@ -212,10 +194,9 @@ function add_title_to_admin_reply_form() {
         });
 
         observer.observe(replyRow, { attributes: true });
-
+        
         $(document).on('click', 'button.save.button-primary', function(event) {
             event.preventDefault();
-
             const replyTitle = $('#reply-title').val();
             const formData = new FormData();
             formData.append('action', 'save_reply_title_from_admin'); 
@@ -247,7 +228,6 @@ function add_title_to_admin_reply_form() {
 }
 add_action('admin_print_footer_scripts', 'add_title_to_admin_reply_form');
 
-// 返信時のタイトル保存処理
 function save_reply_title_from_admin() {
     if (!isset($_POST['_ajax_nonce']) || !wp_verify_nonce($_POST['_ajax_nonce'], 'save_reply_nonce')) {
         wp_send_json_error('セキュリティチェックに失敗しました');
@@ -260,13 +240,10 @@ function save_reply_title_from_admin() {
         
         if (!empty($reply_title)) {
             update_comment_meta($comment_id, 'reply_comtitle', $reply_title);
-            error_log('Debugging: Reply title saved successfully for comment ID ' . $comment_id);
         } else {
             delete_comment_meta($comment_id, 'reply_comtitle');
-            error_log('Debugging: Reply title deleted successfully for comment ID ' . $comment_id);
         }
     }
-
     wp_send_json_success(array('message' => '返信コメントが更新されました'));
 }
 add_action('wp_ajax_save_reply_title_from_admin', 'save_reply_title_from_admin');
@@ -277,12 +254,4 @@ function add_ajax_nonce_to_admin_footer() {
     echo '<script type="text/javascript">var ajaxNonce = "' . $ajax_nonce . '";</script>';
 }
 add_action('admin_footer', 'add_ajax_nonce_to_admin_footer');
-
-// コメントフォームの属性をフィルターで追加
-add_filter('comment_form_defaults', 'add_enctype_to_comment_form');
-function add_enctype_to_comment_form($defaults) {
-    $defaults['id_form'] = 'commentform';
-    $defaults['enctype'] = 'multipart/form-data';
-    return $defaults;
-}
 ?>
