@@ -1,15 +1,14 @@
-$(function () {   
+$(function () {
+
   // // ハンバーガーメニュー
-  //  $(".burger").on("click", function(){
-  //    $(this).toggleClass("active");
-  //    $('.menu').toggleClass("active");
-  //    $('body').toggleClass("active");
-  //  }); 
-  // $(".js-link,.menu").on("click", function(){
-  //   $('.burger').removeClass("active");
-  //   $('.menu').removeClass("active");
-  //   $('body').removeClass("active");
-  // });
+  $(".burger").on("click", function () {
+    $('.header').toggleClass("active");
+    $('body').toggleClass("active");
+  });
+  $(".nav--back").on("click", function () {
+    $('.header').removeClass("active");
+    $('body').removeClass("active");
+  });
 
   // var prevScrollpos = window.pageYOffset;
   // window.onscroll = function() {

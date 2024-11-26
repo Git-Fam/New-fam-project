@@ -11,6 +11,17 @@ $sp: 767px;  // スマホ
     @content;
   }
 }
+@mixin media($min: 768px, $max: 900px) {
+  @media screen and (min-width: #{$min}) and (max-width: #{$max}) {
+    @content;
+  }
+}
+// ↓CSSでは
+// 768px以上900px以下の場合
+// @include media(768px, 900px) {
+//   // ここにスタイル
+// }
+
 
 // どセンター
 @mixin center{

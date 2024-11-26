@@ -24,17 +24,51 @@ html {
 }
 
 body {
-
-  // @include serif;
+  @include hiragino;
+  @include wt300;
+  color: $F-main;
 
   &.active {
-
-    @include sp {
-      overflow: hidden;
-    }
+    overflow: hidden;
   }
 }
 
 .whopper {
   overflow: hidden;
+}
+
+
+.main {
+  padding-inline: 20px;
+
+  @include pc {
+    padding-block: 110px 200px;
+  }
+
+  @include sp {
+    padding-block: 56px 100px;
+  }
+
+  &.main--other {
+
+    @include pc {
+      padding-top: 100px;
+    }
+
+    @include sp {
+      padding-top: 61px;
+    }
+  }
+
+  &__inner {
+    margin: 0 auto;
+
+    @include pc {
+      max-width: 1000px;
+    }
+
+    @include sp {
+      max-width: 450px;
+    }
+  }
 }

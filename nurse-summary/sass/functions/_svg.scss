@@ -1,6 +1,11 @@
+// ドットボーダー
+$dot-border: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="5" viewBox="0 0 12 5" fill="none"><rect width="6" height="5" rx="2.5" fill="%23E66F84"/></svg>');
 
-// SVG使い方
-// $burgerClose: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="26" height="27" viewBox="0 0 26 27" fill="none"><path d="M1.75879 2L24.7398 24.981" stroke="%23FFF" stroke-width="3"/><path d="M1.75977 24.981L24.7407 1.99999" stroke="%23FFF" stroke-width="3"/></svg>');
+// KV-king
+$KV-king: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="46" height="36" viewBox="0 0 46 36" fill="none"><g filter="url(%23filter0_d_472_7010)" > <path d="M6.15022 13.6408L8.43567 28.2883C8.43567 28.2883 16.3005 29.0837 22.7824 29.0837C29.7706 29.0837 37 27.713 37 27.713L39.5 13.6408L31.5 15.7169L22.7824 6.87707L14.2981 15.7169L6.15022 13.6408Z" fill="white" /> </g> <defs> <filter id="filter0_d_472_7010" x="0.150391" y="0.875" width="45.3496" height="34.2109" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB" > <feFlood flood-opacity="0" result="BackgroundImageFix" /> <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /> <feOffset/> <feGaussianBlur stdDeviation="3" /> <feComposite in2="hardAlpha" operator="out" /> <feColorMatrix type="matrix" values="0 0 0 0 0.905882 0 0 0 0 0.376471 0 0 0 0 0.435294 0 0 0 1 0" /> <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_472_7010" /> <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_472_7010" result="shape" /> </filter> </defs> </svg>');
+
+// リボンKV
+$ribbon-KV: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="585" height="88" viewBox="0 0 585 88" fill="none"><g filter="url(%23filter0_d_472_7005)" > <path d="M573.25 12.0938H12L29.3308 44.1031L12 76.1124H573.25L557.252 44.1031L573.25 12.0938Z" fill="white" /> </g> <defs> <filter id="filter0_d_472_7005" x="0.750001" y="0.843751" width="583.75" height="86.5156" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB" > <feFlood flood-opacity="0" result="BackgroundImageFix" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /> <feOffset/> <feGaussianBlur stdDeviation="5.625" /> <feComposite in2="hardAlpha" operator="out" /> <feColorMatrix type="matrix" values="0 0 0 0 0.898039 0 0 0 0 0.419608 0 0 0 0 0.505882 0 0 0 1 0" /> <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_472_7005" /> <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_472_7005" result="shape" /> </filter> </defs> </svg>');
 
 
 // SVG使い方（色変更パターン）
@@ -10,16 +15,13 @@
 
 // openアイコン
 // @function open($Color) {
-  //   @return  url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 18" fill="none"><path d="M0 9H24" stroke="#{$Color}" stroke-width="2"/><path d="M0 1H24" stroke="#{$Color}" stroke-width="2"/><path d="M0 17H24" stroke="#{$Color}" stroke-width="2"/></svg>');
+//   @return  url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 18" fill="none"><path d="M0 9H24" stroke="#{$Color}" stroke-width="2"/><path d="M0 1H24" stroke="#{$Color}" stroke-width="2"/><path d="M0 17H24" stroke="#{$Color}" stroke-width="2"/></svg>');
 // }
 
 // closeアイコン
 // @function close($Color) {
-  //   @return  url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none"><path d="M1.51471 18.4854L18.4853 1.51479" stroke="#{$Color}" stroke-width="2"/><path d="M1.51471 1.51465L18.4853 18.4852" stroke="#{$Color}" stroke-width="2"/></svg>');
-  // }
-  
-  // ↓CSSでは
-  // background-image: svg(encode('#FFF'));
+//   @return  url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none"><path d="M1.51471 18.4854L18.4853 1.51479" stroke="#{$Color}" stroke-width="2"/><path d="M1.51471 1.51465L18.4853 18.4852" stroke="#{$Color}" stroke-width="2"/></svg>');
+// }
 
-
-
+// ↓CSSでは
+// background-image: svg(encode('#FFF'));

@@ -3,3 +3,216 @@
 /* -----------------------
   header
 ----------------------- */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+
+
+  @include pc {
+    padding: 10px 33px;
+  }
+
+  @include sp {
+    padding: 8px 24px;
+  }
+
+  &.active {
+
+    .burger {
+
+      span {
+        translate: -50% -50%;
+        --rotate: 15deg;
+
+        &:nth-child(1) {
+          top: 50%;
+          rotate: var(--rotate);
+        }
+
+        &:nth-child(2) {
+          bottom: unset;
+          top: 50%;
+          rotate: calc(var(--rotate) * -1);
+        }
+      }
+    }
+
+    .nav--back {
+      opacity: 0.5;
+      pointer-events: auto;
+    }
+
+    .header--nav {
+      right: 0;
+    }
+  }
+
+  .burger {
+    position: relative;
+    cursor: pointer;
+    margin-left: auto;
+    z-index: 3;
+
+    @include pc {
+      width: 64px;
+      height: 64px;
+    }
+
+    @include sp {
+      width: 36px;
+      height: 36px;
+    }
+
+    span {
+      display: block;
+      width: 100%;
+      background-color: $P-E66F84;
+      border-radius: 100px;
+      position: absolute;
+      left: 50%;
+      translate: -50% 0;
+      transition: all .3s;
+
+      @include pc {
+        height: 5px;
+      }
+
+      @include sp {
+        height: 4px;
+      }
+
+      &:nth-child(1) {
+
+        @include pc {
+          top: 35%;
+        }
+
+        @include sp {
+          top: 28%;
+        }
+      }
+
+      &:nth-child(2) {
+
+        @include pc {
+          bottom: 35%;
+        }
+
+        @include sp {
+          bottom: 28%;
+        }
+      }
+    }
+  }
+
+  .nav--back {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: $B-F7E5ED;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .3s;
+  }
+
+  &--nav {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: -100%;
+    border-radius: 0px 0px 0px 100px;
+    background: $P-FFF;
+    transition: all .3s;
+
+    @include pc {
+      width: 420px;
+      padding-block: 164px 239px;
+    }
+
+    @include sp {
+      width: 270px;
+      padding-block: 100px 150px;
+    }
+
+    ul {
+      margin-inline: auto;
+
+      @include pc {
+        width: 252px;
+        @include column(61px);
+      }
+
+      @include sp {
+        width: 170px;
+        @include column(40px);
+      }
+
+      li {
+
+        a {
+          color: $F-FEA3A6;
+          @include tsuku;
+          @include wt700;
+          line-height: 1;
+          display: block;
+          position: relative;
+
+          @include pc {
+            font-size: 28.268px;
+            letter-spacing: 1.413px;
+          }
+
+          @include sp {
+            font-size: 16px;
+            letter-spacing: 0.9px;
+          }
+
+          &:hover {
+
+            &::before {
+              width: 100%;
+            }
+          }
+
+          &::after,
+          &::before {
+            content: "";
+            display: block;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            @include iconContain($dot-border);
+            background-repeat: repeat-x;
+            background-position: left center;
+            transition: all .3s;
+            pointer-events: none;
+
+            @include pc {
+              height: 5px;
+              bottom: -17px;
+            }
+
+            @include sp {
+              height: 4px;
+              bottom: -12px;
+            }
+          }
+
+          &::before {
+            background-image: unset;
+            background-color: $P-E66F84;
+            border-radius: 100px;
+            width: 0;
+          }
+        }
+      }
+    }
+  }
+}

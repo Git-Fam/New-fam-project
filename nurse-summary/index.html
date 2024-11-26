@@ -30,26 +30,35 @@
     <link rel="stylesheet" href="css/main.css?ver=1.0.0" />
 
     <!-- ▼フォント -->
-                
-    
+    <script>
+        (function (d) {
+            var config = {
+                kitId: 'wxg1png',
+                scriptTimeout: 3000,
+                async: true
+            },
+                h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+
+
 </head>
+
 <body>
 
-
-    <header class="header"></header>
-
     <div class="whopper">
-    
-    
-    
-    
-    
-    
-    
-        <footer class="footer"></footer>
+        <header class="header"></header>
+        <div class="KV"></div>
 
+        <main class="main">
+            <div class="main__inner">
+
+            </div>
+        </main>
+
+        <footer class="footer"></footer>
     </div>
-    
+
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
