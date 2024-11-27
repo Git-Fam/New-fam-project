@@ -223,6 +223,10 @@
         bottom: -22px;
         right: -58px;
       }
+
+      @include media(0, 375px) {
+        width: 150px;
+      }
     }
   }
 }

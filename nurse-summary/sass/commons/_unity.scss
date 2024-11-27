@@ -27,6 +27,7 @@ body {
   @include hiragino;
   @include wt300;
   color: $F-main;
+  background: $B-F7E5ED;
 
   &.active {
     overflow: hidden;
@@ -69,6 +70,17 @@ body {
 
     @include sp {
       max-width: 450px;
+    }
+
+    .C_banner {
+
+      @include pc {
+        margin-top: 160px;
+      }
+
+      @include sp {
+        margin-top: 100px;
+      }
     }
   }
 }
