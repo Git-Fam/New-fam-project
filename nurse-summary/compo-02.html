@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head prefix="og: https://ogp.me/ns#">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
+		<meta name="format-detection" content="email=no,telephone=no,address=no" />
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+		<meta property="og:locale" content="ja_JP" />
+
+		<!-- ▼SEO -->
+		<link rel="”canonical”" href="”URL”" />
+		<!-- ジェネレーターURL→ https://metatags.io/ -->
+
+		<!-- ▼ファビコン -->
+		<!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
+
+		<!-- ▼クロールして欲しくない -->
+		<!-- <meta name="robots" content="noindex,nofollow"> -->
+
+		<!-- ▼テーマカラー -->
+		<!-- <meta name="theme-color" content="#e9c931"> -->
+
+		<!-- ▼CSS -->
+		<link rel="stylesheet" href="css/main.css?ver=1.0.0" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Kiwi+Maru&family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+Javanese:wght@400..700&display=swap"
+			rel="stylesheet"
+		/>
+
+		<script>
+			(function (d) {
+				var config = {
+						kitId: "wxg1png",
+						scriptTimeout: 3000,
+						async: true,
+					},
+					h = d.documentElement,
+					t = setTimeout(function () {
+						h.className =
+							h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+					}, config.scriptTimeout),
+					tk = d.createElement("script"),
+					f = false,
+					s = d.getElementsByTagName("script")[0],
+					a;
+				h.className += " wf-loading";
+				tk.src = "https://use.typekit.net/" + config.kitId + ".js";
+				tk.async = true;
+				tk.onload = tk.onreadystatechange = function () {
+					a = this.readyState;
+					if (f || (a && a != "complete" && a != "loaded")) return;
+					f = true;
+					clearTimeout(t);
+					try {
+						Typekit.load(config);
+					} catch (e) {}
+				};
+				s.parentNode.insertBefore(tk, s);
+			})(document);
+		</script>
+	</head>
+
+	<body>
+		<style>
+			.component--wapper {
+				display: flex;
+				flex-direction: column;
+				gap: 120px;
+				padding: 100px 0;
+				background-color: #000000;
+				overflow: hidden;
+			}
+
+			.component--item {
+				border: 1px solid #000000;
+				padding: 50px 0;
+				background-color: #bbbbbb;
+			}
+
+			.component--title {
+				font-size: 20px;
+				font-weight: bold;
+				padding: 30px;
+				border-bottom: 1px dotted #000000;
+				margin: 0 0 30px 40px;
+				width: fit-content;
+			}
+
+			.component--main {
+				padding: 60px 0px;
+				border: 1px solid #000000;
+				background: #f7e5ed;
+			}
+
+			.component--main__inner {
+				padding-inline: 20px;
+			}
+
+			.component--main__inner--inner {
+				margin: 0 auto;
+			}
+
+			@media screen and (min-width: 768px) {
+				.component--main__inner--inner {
+					max-width: 1000px;
+				}
+			}
+
+			@media screen and (max-width: 767px) {
+				.component--main__inner--inner {
+					max-width: 450px;
+				}
+			}
+		</style>
+
+		<div class="component--wapper">
+			<!-- 比較　タブ -->
+			<div class="component--item">
+				<div class="component--title">C_compare-tab</div>
+				<div class="component--main">
+					<div class="component--main__inner">
+						<!-- ←Max1000pxの場合。それ以外は外す -->
+						<div class="component--main__inner--inner">
+							<!-- ←Max1000pxの場合。それ以外は外す -->
+
+							<!-- start -->
+							<div class="tab-wrapper">
+								<div class="C_compare-tab">
+									<ul class="C_compare-tab-btn" id="tab-btn">
+										<li class="active">
+											<p class="tab-TL">総合</p>
+										</li>
+										<li>
+											<p class="tab-TL">取り扱い求人</p>
+										</li>
+										<li>
+											<p class="tab-TL">サービス内容</p>
+										</li>
+									</ul>
+									<div class="C_compare-tab-content">
+										<!-- 総合 -->
+										<table class="content-01">
+											<tbody>
+												<tr>
+													<th>転職サイト名</th>
+													<th>おすすめ度</th>
+													<th>求人数</th>
+													<th>特徴</th>
+													<th>詳細</th>
+												</tr>
+												<tr>
+													<td class="logo">
+														<img src="img/Compare-logo-01.png" />
+													</td>
+													<td class="rating">
+														<div class="star-box">
+															<img src="img/star-full.png" class="star" />
+															<img src="img/star-full.png" class="star" />
+															<img src="img/star-full.png" class="star" />
+															<img src="img/star-full.png" class="star" />
+															<img src="img/star-half.png" class="star" />
+														</div>
+														<div class="rating-number">4.6</div>
+													</td>
+													<td class="good jobCount">
+														<div class="inner">
+															<img class="icon" src="img/excellent.png" />
+															<p class="number">140,000</p>
+														</div>
+													</td>
+													<td class="feature">
+														<p class="TX">
+															<span>ここにしかない優良非公開求人</span
+															>は絶対見るべき！
+														</p>
+													</td>
+													<td class="detail">
+														<a href="#">
+															<p class="TX">詳細を見る</p>
+														</a>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<!-- 取り扱い求人 -->
+										<table class="content-02">
+											<tbody>
+												<tr>
+													<th>転職サイト名</th>
+													<th>求人職種</th>
+													<th>勤務形態</th>
+													<th>詳細</th>
+												</tr>
+												<tr>
+													<td class="logo">
+														<img src="img/Compare-logo-01.png" />
+													</td>
+													<td class="iconTX industry">
+														<div class="inner">
+															<p class="TX industry01">正看護師</p>
+															<p class="TX industry02">准看護師</p>
+															<p class="TX industry03">保健師</p>
+															<p class="TX industry04">助産師</p>
+														</div>
+													</td>
+													<td class="iconTX workStyle">
+														<div class="inner">
+															<p class="TX workStyle01">常勤<br />(夜勤あり)</p>
+															<p class="TX workStyle02">常勤<br />(夜勤なし)</p>
+														</div>
+													</td>
+													<td class="detail">
+														<a href="#">
+															<p class="TX">詳細を見る</p>
+														</a>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<!-- サービス内容 -->
+										<table class="content-03">
+											<tbody>
+												<tr>
+													<th>転職サイト名</th>
+													<th>対応エリア</th>
+													<th>転職時期</th>
+													<th>詳細</th>
+												</tr>
+												<tr>
+													<td class="logo">
+														<img src="img/Compare-logo-01.png" />
+													</td>
+													<td class="good area">
+														<div class="inner">
+															<img class="icon" src="img/excellent.png" />
+															<p class="number">全国</p>
+														</div>
+													</td>
+													<td class="timing">
+														<p class="TX">6か月以内</p>
+													</td>
+													<td class="detail">
+														<a href="#">
+															<p class="TX">詳細を見る</p>
+														</a>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<!--  end -->
+						</div>
+						<!-- ←Max1000pxの場合。それ以外は外す -->
+					</div>
+					<!-- ←Max1000pxの場合。それ以外は外す -->
+				</div>
+			</div>
+
+			<!-- ミニコラム -->
+			<div class="component--item">
+				<div class="component--title">C_miniColumn</div>
+				<div class="component--main">
+					<div class="component--main__inner">
+						<!-- ←Max1000pxの場合。それ以外は外す -->
+						<div class="component--main__inner--inner">
+							<!-- ←Max1000pxの場合。それ以外は外す -->
+
+							<!-- start -->
+							<div class="C_miniColumn">
+								<div class="C_noFrame">
+									<h2 class="TL">看護師転職ミニコラム</h2>
+								</div>
+								<div class="C_miniColumn-content">
+									<p class="C_miniColumn-content-TL">
+										後悔しない転職をするための<span>秘訣</span>
+									</p>
+									<div class="C_miniColumn-content-01 content">
+										<div class="textbox textbox01">
+											<p class="TX">
+												転職サイトには<br />
+												<span class="border">2~3サイト登録しよう！</span>
+											</p>
+										</div>
+										<div class="img"></div>
+									</div>
+									<div class="C_miniColumn-content-02 content">
+										<p class="content-TL">
+											なんで2~3サイト<br class="sp" />登録した方が良いの？
+										</p>
+										<div class="textbox textbox02">
+											<div class="inner">
+												<div class="mainTX">
+													<p class="label">理由1</p>
+													<p class="TX">
+														好条件の求人が<br
+															class="sp"
+														/>たくさん見られるようになる
+													</p>
+												</div>
+												<div class="mainTX TX02">
+													<p class="label">理由2</p>
+													<p class="TX">
+														手厚いサポートを<br
+															class="sp"
+														/>してもらいやすくなる
+													</p>
+												</div>
+												<p class="underTX">
+													病院側が求人を募集する際は１つの転職サイトにしか求人を掲載しないケースが多いです。<br />
+													そのため、登録が１サイトだけでは他の転職サイトにある、希望に近い条件の求人を見逃してしまう可能性があります。<br />
+													また、担当してくれるエージェントの方によってサポートの量や質も異なるので、より良いサポートを受けるため、最低２～３サイトは登録するようにしましょう。
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--  end -->
+						</div>
+						<!-- ←Max1000pxの場合。それ以外は外す -->
+					</div>
+					<!-- ←Max1000pxの場合。それ以外は外す -->
+				</div>
+			</div>
+
+			<!-- フレームなしタイトル -->
+			<div class="component--item">
+				<div class="component--title">C_noFrame</div>
+				<div class="component--main">
+					<div class="component--main__inner">
+						<!-- ←Max1000pxの場合。それ以外は外す -->
+						<div class="component--main__inner--inner">
+							<!-- ←Max1000pxの場合。それ以外は外す -->
+
+							<!-- start -->
+							<div class="C_noFrame">
+								<h2 class="TL">看護師転職ミニコラム</h2>
+							</div>
+							<!--  end -->
+						</div>
+						<!-- ←Max1000pxの場合。それ以外は外す -->
+					</div>
+					<!-- ←Max1000pxの場合。それ以外は外す -->
+				</div>
+			</div>
+
+			<!-- 規約タイトル -->
+			<div class="component--item">
+				<div class="component--title">C_terms > C_terms-TL</div>
+				<div class="component--main">
+					<div class="component--main__inner">
+						<!-- ←Max1000pxの場合。それ以外は外す -->
+						<div class="component--main__inner--inner">
+							<!-- ←Max1000pxの場合。それ以外は外す -->
+
+							<!-- start -->
+							<div class="C_terms-TL">
+								<h1 class="TL">利用規約</h1>
+							</div>
+							<!--  end -->
+						</div>
+						<!-- ←Max1000pxの場合。それ以外は外す -->
+					</div>
+					<!-- ←Max1000pxの場合。それ以外は外す -->
+				</div>
+			</div>
+
+			<!-- 規約内容 -->
+			<div class="component--item">
+				<div class="component--title">C_terms > C_terms-content</div>
+				<div class="component--main">
+					<div class="component--main__inner">
+						<!-- ←Max1000pxの場合。それ以外は外す -->
+						<div class="component--main__inner--inner">
+							<!-- ←Max1000pxの場合。それ以外は外す -->
+
+							<!-- start -->
+							<div class="C_terms-content">
+								<p class="TX">
+									<span>当社が取得する情報</span> <br />(1)
+									お客様が当社に直接提供する情報<br />1　氏名<br />2　住所<br />3　電話番号<br />4　年齢<br />5　性別<br />6　所属団体・企業名<br />7　メールアドレス<br />8　その他当社が指定するお客様に関する情報
+								</p>
+							</div>
+							<!--  end -->
+						</div>
+						<!-- ←Max1000pxの場合。それ以外は外す -->
+					</div>
+					<!-- ←Max1000pxの場合。それ以外は外す -->
+				</div>
+			</div>
+
+			<!-- 運営会社 -->
+			<div class="component--item">
+				<div class="component--title">C_terms > C_terms-content company</div>
+				<div class="component--main">
+					<div class="component--main__inner">
+						<!-- ←Max1000pxの場合。それ以外は外す -->
+						<div class="component--main__inner--inner">
+							<!-- ←Max1000pxの場合。それ以外は外す -->
+
+							<!-- start -->
+							<div class="C_terms-content company">
+								<ul class="list">
+									<li class="item">
+										<p class="label">運営者</p>
+										<p class="TX">インターグ株式会社</p>
+									</li>
+									<li class="item">
+										<p class="label">住所</p>
+										<p class="TX">東京都港区六本木6-2-5 Bizflex六本木8階</p>
+									</li>
+									<li class="item">
+										<p class="label">電話番号</p>
+										<p class="TX">インターグ株式会社</p>
+									</li>
+									<li class="item">
+										<p class="label">会社ホームページ</p>
+										<p class="TX">https://</p>
+									</li>
+									<li class="item">
+										<p class="label">事業内容</p>
+										<p class="TX">
+											広告運用代行事業／グロースハック事業
+											<br class="sp" />／Webサイト制作事業
+											<br class="sp" />／インターネットメディア運営事業
+										</p>
+									</li>
+									<li class="item">
+										<p class="label">代表者名</p>
+										<p class="TX">山田孝之</p>
+									</li>
+									<li class="item">
+										<p class="label">設立</p>
+										<p class="TX">2017年6月</p>
+									</li>
+									<li class="item">
+										<p class="label">お問合せ先</p>
+										<p class="TX">
+											当サイトに関するお問い合わせは<br class="sp" />以下にお願いいたします。<br />ads@interg.co.jp<br />※メール送信の際、件名に<br class="sp" />【看護師転職応援サイト宛】と入力を<br class="sp" />お願いします。
+										</p>
+									</li>
+								</ul>
+							</div>
+							<!--  end -->
+						</div>
+						<!-- ←Max1000pxの場合。それ以外は外す -->
+					</div>
+					<!-- ←Max1000pxの場合。それ以外は外す -->
+				</div>
+			</div>
+
+			<!-- what -->
+			<div class="component--item">
+				<div class="component--title">what</div>
+				<div class="component--main">
+					<div class="component--main__inner">
+						<!-- ←Max1000pxの場合。それ以外は外す -->
+						<div class="component--main__inner--inner">
+							<!-- ←Max1000pxの場合。それ以外は外す -->
+
+							<!-- start -->
+							<div class="what"></div>
+							<!--  end -->
+						</div>
+						<!-- ←Max1000pxの場合。それ以外は外す -->
+					</div>
+					<!-- ←Max1000pxの場合。それ以外は外す -->
+				</div>
+			</div>
+		</div>
+
+		<script
+			src="https://code.jquery.com/jquery-3.7.0.min.js"
+			integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+			crossorigin="anonymous"
+		></script>
+		<script src="js/script.js"></script>
+		<script src="js/joint.js"></script>
+	</body>
+</html>
