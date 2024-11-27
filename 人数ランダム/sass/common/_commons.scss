@@ -1,0 +1,39 @@
+@use "../global" as *;
+
+/* -----------------------
+  commons
+----------------------- */
+
+// 表示・非表示
+.sp{
+  @include pc{
+    display: none !important;
+  }
+}
+.pc{
+  @include sp{
+    display: none !important;
+  }
+}
+
+
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: 10%;
+}
+
+body{
+
+  @include sans;
+  
+  &.active{
+
+    @include sp{
+      overflow: hidden;
+    }
+  }
+}
+
+.wapper{
+  overflow: hidden;
+}

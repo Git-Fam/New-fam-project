@@ -1,0 +1,81 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  single
+----------------------- */
+
+.C_other-contents--container {
+
+  // シングルページ
+  &.container__single {
+    @include pc {
+      padding: 50px 50px 87px;
+    }
+
+    @include sp {
+      padding: 27px 19px 28px;
+      min-height: 1027px;
+    }
+
+    .C_other-contents--container--inner {
+      border-top: var(--border) solid #C3C3C3;
+      border-bottom: var(--border) solid #C3C3C3;
+
+      @include pc {
+        min-height: 1302px;
+        --border: 1px;
+        padding: 11px 0 50px;
+      }
+
+      @include sp {
+        min-height: 1027px;
+        --border: 0.727px;
+        padding: 13px 0 28px;
+      }
+    }
+  }
+
+
+  .single--contents {
+
+    &--img {
+      width: 100%;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    &--text {
+
+      @include pc {
+        margin-top: 55px;
+        padding-inline: 22px;
+      }
+
+      @include sp {
+        margin-top: 30px;
+        padding-inline: 4px;
+      }
+
+      p,
+      span,
+      a,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: $F-main;
+        @include wt300;
+        line-height: 173%;
+        font-size: 15px;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

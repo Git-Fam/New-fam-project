@@ -1,0 +1,232 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_ranking-review
+----------------------- */
+
+.C_ranking-review {
+  background: rgba(250, 176, 192, 0.40);
+  position: relative;
+
+  @include pc {
+    padding: 33px 52px 44px;
+  }
+
+  @include sp {
+    padding: 21px 12px 63px;
+  }
+
+  .title {
+    @include iconContain($C_ranking-review-ribbon);
+    aspect-ratio: 426 / 50;
+    margin: 0 auto;
+    @include center;
+
+    @include pc {
+      width: 426px;
+    }
+
+    @include sp {
+      width: 100%;
+    }
+
+    .TL {
+      color: $F-sub;
+      @include tsuku;
+      @include wt700;
+
+      @include pc {
+        font-size: 26px;
+        letter-spacing: 2.6px;
+      }
+
+      @include sp {
+        font-size: 19.028px;
+        letter-spacing: 1.903px;
+      }
+
+      @include media(0, 350px) {
+        font-size: 16px;
+        letter-spacing: 1.6px;
+      }
+    }
+  }
+
+  .reviews {
+
+    @include pc {
+      margin-block: 21px 69px;
+    }
+
+    @include sp {
+      margin-block: 26px 30px;
+    }
+
+    .reviews--lists {
+      @include column(20px);
+
+      &.active {
+        .list {
+          &:nth-child(n + 3) {
+            display: block;
+          }
+        }
+      }
+
+      .list {
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.50);
+
+        &:nth-child(n + 3) {
+          display: none;
+        }
+
+        .list--inner {
+
+          @include pc {
+            padding: 19px 60px 19px 25px;
+          }
+
+          @include sp {
+            padding: 19px 16px 23px;
+          }
+
+          .review_stars {
+            display: flex;
+            align-items: center;
+
+            @include pc {
+              gap: 3px;
+            }
+
+            @include sp {
+              gap: 3px;
+            }
+
+            img {
+              width: 21px;
+              filter: drop-shadow(0px 0px 5.068px rgba(229, 110, 132, 0.72));
+            }
+          }
+
+          .review_title {
+
+            @include pc {
+              margin-block: 3px 7px;
+            }
+
+
+            @include sp {
+              margin-block: 3px 11px;
+            }
+
+            .TX {
+              color: $F-E66F84;
+              @include wt700;
+              @include tsuku;
+              line-height: 1.5;
+
+              @include pc {
+                font-size: 18px;
+                letter-spacing: 1.8px;
+              }
+
+              @include sp {
+                font-size: 16.218px;
+                letter-spacing: 1.622px;
+              }
+            }
+          }
+
+
+          .review_text {
+
+            p,
+            span,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+              line-height: 1.6;
+
+              @include pc {
+                font-size: 13px;
+                letter-spacing: 1.3px;
+              }
+
+              @include sp {
+                font-size: 13.178px;
+                letter-spacing: 1.318px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .more {
+    width: fit-content;
+    margin: 0 auto;
+    position: relative;
+    cursor: pointer;
+    color: $F-E66F84;
+    line-height: 161%;
+    font-size: 13px;
+    letter-spacing: 1.3px;
+
+    &.active {
+      &::before {
+        rotate: 180deg;
+        top: unset;
+        bottom: calc(100% + 6px);
+      }
+    }
+
+    &::before {
+      content: "";
+      @include iconContain($C_ranking-review-arrow);
+      aspect-ratio: 23 / 5;
+      display: block;
+      position: absolute;
+      left: 50%;
+      translate: -50% 0;
+      width: 23px;
+
+      @include pc {
+        top: calc(100% + 6px);
+      }
+
+      @include sp {
+        top: calc(100% + 5px);
+      }
+    }
+  }
+
+  .deco {
+    .img {
+      position: absolute;
+      aspect-ratio: 225/192;
+      @include imgContain("ranking-review-img.png");
+      pointer-events: none;
+
+      @include pc {
+        width: 255px;
+        bottom: -35px;
+        right: -63px;
+      }
+
+      @include sp {
+        width: 186px;
+        bottom: -22px;
+        right: -58px;
+      }
+
+      @include media(0, 375px) {
+        width: 150px;
+      }
+    }
+  }
+}

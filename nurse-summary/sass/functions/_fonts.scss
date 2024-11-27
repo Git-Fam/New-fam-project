@@ -11,7 +11,11 @@
   font-style: normal;
 }
 
-
+// font-family: "Kiwi Maru";
+@mixin kiwi {
+  font-family: "Kiwi Maru", serif;
+  font-style: normal;
+}
 
 // font-weight:;
 @mixin wt100 {

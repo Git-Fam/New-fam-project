@@ -1,0 +1,167 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_ranking-btn
+----------------------- */
+
+.C_ranking-btn {
+  display: block;
+  border-radius: var(--radius);
+  border: var(--border) solid #FFF;
+  box-shadow: 0px var(--shadow) var(--shadow) 0px rgba(0, 0, 0, 0.25);
+  position: relative;
+  background: linear-gradient(90deg, #e74664 0%, #edb8c0 100%);
+  animation: btn_animation 4s ease-in-out alternate infinite;
+  background-size: 500% 500%;
+
+  @keyframes btn_animation {
+    0% {
+      background-position: 0% 50%
+    }
+
+    100% {
+      background-position: 100% 50%
+    }
+  }
+
+  @include pc {
+    --radius: 4px;
+    --border: 5px;
+    --shadow: 4px;
+    padding: 44px 180px 20px;
+  }
+
+  @include sp {
+    --radius: 1.868px;
+    --border: 2.335px;
+    --shadow: 1.868px;
+    padding: 16px 50px 12px;
+  }
+
+  &:hover {
+    .deco {
+
+      .radius {
+        background: $P-FFF;
+
+        .arrow {
+          background-image: ranking-btn-arrow(encode('#E56C82'));
+          animation: arrow_animation 1s ease-in-out alternate infinite;
+
+          @keyframes arrow_animation {
+            0% {
+              transform: translateX(-50%);
+            }
+
+            100% {
+              transform: translateX(50%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .text {
+    text-align: center;
+    width: fit-content;
+    margin: 0 auto;
+    @include tsuku;
+    color: $F-sub;
+    position: relative;
+    z-index: 2;
+
+    .TX {
+      font-style: normal;
+      @include wt700;
+
+      @include pc {
+        font-size: 29.363px;
+        letter-spacing: 2.936px;
+        line-height: 1.8;
+      }
+
+      @include sp {
+        font-size: 16.218px;
+        line-height: 1.5;
+        letter-spacing: 1.622px;
+      }
+    }
+
+    .TX--sub {
+      line-height: 1;
+      @include wt400;
+
+      @include pc {
+        font-size: 13.757px;
+        letter-spacing: 1.376px;
+      }
+
+      @include sp {
+        font-size: 10.137px;
+        letter-spacing: 1.014px;
+      }
+    }
+  }
+
+  .deco {
+    .img {
+      aspect-ratio: 196 / 135;
+      @include imgContain("ranking-btn.png");
+      position: absolute;
+      z-index: 1;
+      bottom: 0;
+
+      @include pc {
+        left: min(p(43), 43px);
+        width: 196px;
+      }
+
+      @include sp {
+        left: max(s(-10), -10px);
+        width: 82px;
+      }
+    }
+
+    .radius {
+      aspect-ratio: 1 / 1;
+      background: $P-E56C82;
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      translate: 0 -50%;
+      border-radius: 50%;
+      transition: all 0.3s;
+
+      @include pc {
+        width: 62px;
+        right: min(p(43), 43px);
+      }
+
+      @include sp {
+        width: 22px;
+        right: min(s(10), 10px);
+      }
+
+      .arrow {
+        background-image: ranking-btn-arrow(encode('#FFF'));
+        background-size: contain;
+        background-repeat: no-repeat;
+        aspect-ratio: 19 / 36;
+        position: absolute;
+        top: 50%;
+        left: 55%;
+        translate: -50% -50%;
+        transition: all 0.3s;
+
+        @include pc {
+          width: 19px;
+        }
+
+        @include sp {
+          width: 7px;
+        }
+      }
+    }
+  }
+}
