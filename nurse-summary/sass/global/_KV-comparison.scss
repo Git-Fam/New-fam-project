@@ -1,10 +1,10 @@
 @use "../functions" as *;
 
 /* -----------------------
-  KV-home
+  KV-comparison
 ----------------------- */
 
-.KV-home {
+.KV-comparison {
   padding-inline: 20px;
 
   @include pc {
@@ -18,12 +18,12 @@
   &--container {
     margin-inline: auto;
     border-radius: 20px;
-    background: linear-gradient(180deg, #FAB0C0 0%, #F9C9D3 100%);
+    background: linear-gradient(180deg, #F792AE 0%, #F6B5A3 100%);
     position: relative;
-    
+
     @include pc {
       max-width: 1066px;
-      padding-block: 35px 49px;
+      padding-block: 30px 15px;
     }
 
     @include media(768px, 1066px) {
@@ -32,7 +32,7 @@
 
     @include sp {
       max-width: 450px;
-      padding-block: 17px 12px;
+      padding-block: 17px 6px;
     }
 
     @include media(0px, 389px) {
@@ -75,28 +75,6 @@
           @include sp {
             font-size: 20.519px;
             letter-spacing: 2.052px;
-
-          }
-        }
-
-
-        &::before {
-          content: "";
-          display: block;
-          aspect-ratio: 46 / 36;
-          @include iconContain($KV-king);
-          position: absolute;
-          left: 50%;
-          translate: -50% 0;
-
-          @include pc {
-            top: -19px;
-            width: 46px;
-          }
-
-          @include sp {
-            top: -13px;
-            width: 37px;
           }
         }
       }
@@ -105,31 +83,69 @@
 
         @include pc {
           translate: -25px 0;
-          margin-top: 10px;
         }
 
         @include sp {
-          translate: -10px 0;
-          margin-top: 5px;
+          translate: -30px 0;
+        }
+
+        @include media(0px, 389px) {
+          translate: 0px 0;
         }
 
         .TL {
           color: $F-sub;
-          text-shadow: 0px 0px 13.907px $F-E56B81;
-          -webkit-text-stroke-width: 1.2782427072525024;
+          text-shadow: 0px 0px 26.906px $F-E56B81;
+          -webkit-text-stroke-width: 0.7913544178009033;
           -webkit-text-stroke-color: $F-sub;
           @include tsuku;
           @include wt700;
-          line-height: 1;
+          line-height: 173%;
+          display: flex;
+          align-items: flex-end;
 
           @include pc {
-            font-size: 84.028px;
-            letter-spacing: -2.521px;
+            font-size: 63.004px;
           }
 
           @include sp {
-            font-size: 38.678px;
-            letter-spacing: -1.16px;
+            font-size: 30.178px;
+          }
+
+          &__size {
+            object-fit: contain;
+            object-position: center;
+
+            @include pc {
+              width: 181px;
+            }
+
+            @include sp {
+              width: 80px;
+            }
+          }
+
+          &__point {
+            position: relative;
+
+            &::before {
+              content: "";
+              aspect-ratio: 1;
+              background: $F-sub;
+              border-radius: 50%;
+              position: absolute;
+              left: 50%;
+              translate: -50% 0;
+              top: 0px;
+
+              @include pc {
+                width: 11px;
+              }
+
+              @include sp {
+                width: 4.5px;
+              }
+            }
           }
         }
       }
@@ -141,76 +157,26 @@
         }
 
         @include sp {
-          margin-top: 15px;
+          margin-top: 6px;
         }
 
         .TX {
-          color: #E56B81;
           text-align: center;
           @include tsuku;
-          @include wt700;
-          line-height: 1;
+          line-height: 140%;
+          background: linear-gradient(180deg, #F3EBD0 0%, #FFF 100%);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
 
           @include pc {
-            font-size: 23px;
-            letter-spacing: 1.15px;
+            font-size: 35.976px;
+            letter-spacing: 3.598px;
           }
 
           @include sp {
-            font-size: 11.934px;
-            letter-spacing: 0.597px;
-          }
-
-          &__size {
-            line-height: 1;
-
-            @include pc {
-              font-size: 29px;
-              letter-spacing: 1.45px;
-            }
-
-            @include sp {
-              font-size: 15.048px;
-              letter-spacing: 0.752px;
-            }
-          }
-
-          &__span {
-            color: $F-sub;
-            text-shadow: 0px 0px 10.927px $F-E56B81;
-            -webkit-text-stroke-width: 1.00433349609375;
-            -webkit-text-stroke-color: $F-sub;
-            display: inline-block;
-
-            @include pc {
-              font-size: 66.022px;
-              line-height: 1;
-              letter-spacing: -1.981px;
-              margin-inline: 10px;
-            }
-
-            @include sp {
-              font-size: 34.258px;
-              letter-spacing: -1.028px;
-              margin-inline: 10px 5px;
-            }
-          }
-
-          &__mark {
-            line-height: 1;
-            display: inline-block;
-            rotate: 9.946deg;
-            letter-spacing: 0;
-
-            @include pc {
-              translate: -10px 5px;
-              font-size: 56.542px;
-            }
-
-            @include sp {
-              translate: -5px 3px;
-              font-size: 29.339px;
-            }
+            font-size: 17.232px;
+            letter-spacing: 1.723px;
           }
         }
       }
@@ -222,34 +188,38 @@
         z-index: 1;
 
         @include pc {
-          left: 20px;
-          bottom: -10px;
+          left: -35px;
+          bottom: 3px;
         }
 
         @include media(768px, 1066px) {
-          left: 80px;
+          left: 50px;
         }
 
         @include sp {
-          left: -15px;
-          bottom: -10px;
+          left: -14px;
+          bottom: -27px;
         }
 
         @include media(0px, 389px) {
-          left: 0px;
-          bottom: -5px;
+          left: 20px;
+          bottom: 0px;
         }
 
         .img {
-          aspect-ratio: 289 / 249;
-          @include imgContain("KV-img-01.png");
+          aspect-ratio: 270 / 181;
+          @include imgContain("KV-img-02.png");
 
           @include pc {
-            width: 289px;
+            width: 270px;
           }
 
           @include sp {
-            width: 128px;
+            width: 90px;
+          }
+
+          @include media(0px, 389px) {
+            width: 120px;
           }
         }
       }
@@ -259,21 +229,24 @@
         z-index: 1;
 
         @include pc {
-          right: -21px;
-          bottom: -18px;
+          right: 0;
+          bottom: 0;
+          z-index: 2;
         }
 
         @include media(768px, 1066px) {
-          right: 80px;
+          right: 50px;
+          z-index: 1;
         }
 
         @include sp {
-          right: -16px;
-          bottom: -1px;
+          right: -25px;
+          bottom: -14px;
+          z-index: 2;
         }
 
         @include media(0px, 389px) {
-          right: 20px;
+          right: 10px;
           bottom: -5px;
         }
 
@@ -282,19 +255,31 @@
           aspect-ratio: 1 /1;
           border-radius: 50%;
           position: absolute;
-          
+
           @include pc {
             rotate: -11deg;
-            top: -120px;
-            left: 16px;
-            width: 174px;
+            top: -70px;
+            left: 75px;
+            width: 147px;
+          }
+
+          @include media(768px, 890px) {
+            rotate: 11deg;
+            left: unset;
+            right: 0;
           }
 
           @include sp {
-            rotate: 18deg;
-            top: -60px;
-            left: 31px;
-            width: 83px;
+            rotate: -11deg;
+            top: -40px;
+            left: 50px;
+            width: 70px;
+          }
+
+          @include media(0px, 350px) {
+            rotate: 11deg;
+            top: -35px;
+            left: 60px;
           }
 
           .TX {
@@ -305,7 +290,7 @@
             @include wt700;
             line-height: 126%;
             position: absolute;
-            top: 50%;
+            top: 40%;
             left: 50%;
             translate: -50% -60%;
 
@@ -315,8 +300,8 @@
             }
 
             @include sp {
-              font-size: 9.225px;
-              letter-spacing: -0.184px;
+              font-size: 9.101px;
+              letter-spacing: 0.455px;
             }
           }
         }
@@ -324,15 +309,15 @@
         .img {
           position: relative;
           z-index: 2;
-          aspect-ratio: 270 / 181;
-          @include imgContain("KV-img-02.png");
+          aspect-ratio: 311 / 239;
+          @include imgContain("KV-img-03.png");
 
           @include pc {
-            width: 270px;
+            width: 311px;
           }
 
           @include sp {
-            width: 106px;
+            width: 132px;
           }
         }
       }
