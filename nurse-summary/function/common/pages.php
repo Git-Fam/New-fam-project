@@ -6,8 +6,7 @@ function custom_page_template($template)
 	$new_template = '';
 
 	$page_templates = array(
-		'voi' => 'pages/page-voi',
-		'ggg' => 'pages/page-ggg',
+		'comparison' => 'pages/page-comparison',
 		// 複数ある場合は以下に追加していく
 	);
 

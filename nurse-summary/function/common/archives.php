@@ -7,7 +7,6 @@ function custom_archive_template($template)
 	$new_template = '';
 
 	$archive_templates = array(
-		'blog' => 'archives/archive-blog.php',
 		'column' => 'archives/archive-column.php',
 		// 他のカスタム投稿タイプやアーカイブタイプをここに追加
 	);
