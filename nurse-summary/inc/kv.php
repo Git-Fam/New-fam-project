@@ -1,46 +1,61 @@
 <!-- front -->
 <?php if (is_front_page()) : ?>
-  <div>KV-frontKV</div>
-<?php else : ?>
+    <div class="KV-home">
+        <div class="KV-home--container">
+            <div class="contents">
+                <div class="title">
+                    <h1 class="TL">看護師転職サイト</h1>
+                </div>
+                <div class="sub-title">
+                    <h2 class="TL">人気ランキング</h2>
+                </div>
+                <div class="text">
+                    <p class="TX">現役ナースが選んだ<br class="sp"><span class="TX__size">人気</span><span
+                            class="TX__span">No.1</span>はどこ<span class="TX__mark">？</span></p>
+                </div>
+            </div>
+            <div class="deco">
+                <div class="deco--left">
+                    <div class="img"></div>
+                </div>
+                <div class="deco--right">
+                    <div class="text">
+                        <p class="TX">保健師・助産師の<br>転職にも対応！</p>
+                    </div>
+                    <div class="img"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
 
-  <!-- voi -->
-  <?php if (is_page('voi')) : ?>
-    <div>KV-voi</div>
-  <?php endif; ?>
-
-  <!-- ggg -->
-  <?php if (is_page('ggg')) : ?>
-    <div>KV-ggg</div>
-  <?php endif; ?>
-
-  <!-- archive -->
-  <?php if (is_post_type_archive('post')) : ?>
-    <div>KV-news</div>
-  <?php endif; ?>
-
-  <!-- single -->
-  <?php if (is_singular('post')) : ?>
-    <div>KV-single-news</div>
-  <?php endif; ?>
-
-  <!-- archive-blog -->
-  <?php if (is_post_type_archive('blog')) : ?>
-    <div>KV-blog</div>
-  <?php endif; ?>
-
-  <!-- single-blog -->
-  <?php if (is_singular('blog')) : ?>
-    <div>KV-single-blog</div>
-  <?php endif; ?>
-
-  <!-- archive-column -->
-  <?php if (is_post_type_archive('column')) : ?>
-    <div>KV-column</div>
-  <?php endif; ?>
-
-  <!-- single-column -->
-  <?php if (is_singular('column')) : ?>
-    <div>KV-single-column</div>
-  <?php endif; ?>
-
+<!-- comparison -->
+<?php if (is_page('comparison')) : ?>
+    <div class="KV-comparison">
+        <div class="KV-comparison--container">
+            <div class="contents">
+                <div class="title">
+                    <h1 class="TL">看護師転職サイト</h1>
+                </div>
+                <div class="sub-title">
+                    <h2 class="TL">主要<img class="TL__size" src="<?php echo get_template_directory_uri(); ?>/img/KV-15.png" alt="15">社&nbsp;<span
+                            class="TL__point">比</span><span class="TL__point">較</span>表</h2>
+                </div>
+                <div class="text">
+                    <p class="TX">2024年最新情報</p>
+                </div>
+            </div>
+            <div class="deco">
+                <div class="deco--left">
+                    <div class="img"></div>
+                </div>
+                <div class="deco--right">
+                    <div class="text">
+                        <p class="TX">ハローワーク<br>求人にも対応！</p>
+                    </div>
+                    <div class="img"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 <?php endif; ?>

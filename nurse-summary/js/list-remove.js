@@ -27,10 +27,21 @@ $(function () {
 
 });
 
+// ランキングの特徴の空のリストを削除
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll('.C_ranking-contents .list').forEach(function (listItem) {
     if (!listItem.textContent.trim()) {
       listItem.remove();
     }
   });
+});
+
+// ランキングの口コミの空のリストを削除
+document.querySelectorAll('.reviews--lists .list').forEach(function(list) {
+  var title = list.querySelector('.review_title p').textContent.trim();
+  var text = list.querySelector('.review_text p').textContent.trim();
+  
+  if (title === "" && text === "") {
+      list.remove();
+  }
 });

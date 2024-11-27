@@ -1,12 +1,18 @@
-<header class="header">
-  <a href="<?php echo get_home_url(); ?>">home</a>
-  <a href="<?php bloginfo('url'); ?>/voi">voi</a>
-  <a href="<?php bloginfo('url'); ?>/ggg">ggg</a>
-  <a href="<?php bloginfo('url'); ?>/news">news</a>
-  <a href="<?php bloginfo('url'); ?>/blog">blog</a>
-  <a href="<?php bloginfo('url'); ?>/column">column</a>
-
-</header>
-
 <div class="whopper">
-  <?php get_template_part('./inc/kv'); ?>
+    <header class="header">
+        <div class="burger">
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav--back"></div>
+        <nav class="header--nav">
+            <ul>
+                <li>
+                    <a href="<?php echo get_home_url(); ?>">人気ランキング</a>
+                </li>
+                <li>
+                    <a href="<?php echo get_home_url(); ?>/comparison">転職サイト比較表</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
