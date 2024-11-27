@@ -1,0 +1,49 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_ranking-title
+----------------------- */
+
+.C_ranking-title {
+  @include iconContain($C_ranking-title);
+  aspect-ratio: 651 / 87;
+  margin-inline: auto;
+  position: relative;
+
+  @include pc {
+    width: 651px;
+  }
+
+  @include sp {
+    max-width: 370px;
+    container-type: inline-size;
+    font-size: 100%;
+  }
+
+  .TL {
+    color: $F-sub;
+    @include tsuku;
+    @include wt700;
+    line-height: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 100%;
+    text-align: center;
+
+    @include pc {
+      font-size: 42px;
+      letter-spacing: 4.2px;
+    }
+
+    @include sp {
+      font-size: 23.86px;
+      letter-spacing: 2.386px;
+    }
+
+    @container (max-width: 369px) {
+      font-size: s(21);
+    }
+  }
+}

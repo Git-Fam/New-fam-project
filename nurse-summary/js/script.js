@@ -10,6 +10,7 @@ $(function () {
     $('body').removeClass("active");
   });
 
+
   // var prevScrollpos = window.pageYOffset;
   // window.onscroll = function() {
   //   var currentScrollpos = window.pageYOffset;

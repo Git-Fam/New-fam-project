@@ -1,0 +1,51 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_ranking-detail
+----------------------- */
+
+.C_ranking-detail {
+  --border: 5px;
+  border-radius: 9px;
+  border: var(--border) solid #FEA3A6;
+  background: rgba(255, 255, 255, 0.60);
+  position: relative;
+
+  @include pc {
+    padding: 37px 54px 50px;
+  }
+
+  @include sp {
+    padding: 58px 12px 53px;
+  }
+
+  .C_flag-number{
+    position: absolute;
+    z-index: 2;
+
+    @include pc{
+      width: 70px;
+      top: calc(var(--border) * -1);
+      left: 25px;
+    }
+    
+    @include sp{
+      width: 52px;
+      top: calc(var(--border) * -1);
+      left: 29px;
+    }
+  }
+
+  &--inner{
+    position: relative;
+    z-index: 1;
+
+    @include pc{
+      @include column(30px);
+    }
+    
+    @include sp{
+      @include column(20px);
+    }
+  }
+}
