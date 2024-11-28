@@ -43,7 +43,7 @@
                             <?php
                             $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                             $args = array(
-                                'posts_per_page' => 5,
+                                'posts_per_page' => 15,
                                 'paged' => $paged,
                                 'post_type' => array('post'),
                             );
@@ -236,7 +236,7 @@
                                 <?php
                                 $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                                 $args = array(
-                                    'posts_per_page' => 5,
+                                    'posts_per_page' => 15,
                                     'paged' => $paged,
                                     'post_type' => array('post'),
                                 );
@@ -348,7 +348,7 @@
                                     <?php
                                     $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                                     $args = array(
-                                        'posts_per_page' => 5,
+                                        'posts_per_page' => 15,
                                         'paged' => $paged,
                                         'post_type' => array('post'),
                                     );
