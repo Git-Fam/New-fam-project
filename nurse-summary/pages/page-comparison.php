@@ -14,6 +14,7 @@ Template Path: pages/
 <main class="main">
   <div class="main__inner">
 
+    <?php get_template_part('./inc/compare'); ?>
     <?php get_template_part('./inc/mini-column'); ?>
     <?php get_template_part('./inc/ranking'); ?>
     <?php get_template_part('./inc/banner'); ?>
