@@ -161,7 +161,12 @@
                                                 }
                                                 ?>
                                             </div>
-                                            <div class="rating-number"><?php echo post_custom('site-score'); ?></div>
+                                            <a href="#detail-0<?php echo $counter; ?>">
+                                                <div class="rating-number">
+                                                    <?php echo post_custom('site-score'); ?>
+                                                </div>
+                                            </a>
+
                                         </td>
                                         <td class="good jobCount">
                                             <div class="inner">
