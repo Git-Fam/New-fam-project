@@ -567,7 +567,7 @@
                                     <p class="TX--sub">（公式サイトへ）</p>
                                 </div>
                                 <div class="deco">
-                                    <div class="img"></div>
+                                    <div class="img loopScale"></div>
                                     <div class="radius">
                                         <div class="arrow"></div>
                                     </div>
@@ -703,7 +703,7 @@
                                 </div>
 
                                 <div class="deco">
-                                    <div class="img"></div>
+                                    <div class="img loop"></div>
                                 </div>
 
                             </div>
@@ -714,7 +714,7 @@
                                     <p class="TX--sub">（公式サイトへ）</p>
                                 </div>
                                 <div class="deco">
-                                    <div class="img"></div>
+                                    <div class="img loopScale"></div>
                                     <div class="radius">
                                         <div class="arrow"></div>
                                     </div>
