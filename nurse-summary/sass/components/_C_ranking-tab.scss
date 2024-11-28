@@ -192,6 +192,18 @@
             width: 100%;
           }
 
+          &.align-contents {
+            align-items: unset;
+            width: fit-content;
+            margin: 0 auto;
+
+            .evaluation--item {
+              @include sp {
+                justify-content: unset;
+              }
+            }
+          }
+
           .evaluation--item {
             display: flex;
             align-items: center;
@@ -301,12 +313,6 @@
 
               &.TX--star {
                 color: $F-E56B81;
-                text-decoration-line: underline;
-                text-decoration-style: solid;
-                text-decoration-skip-ink: none;
-                text-decoration-thickness: auto;
-                text-underline-offset: auto;
-                text-underline-position: from-font;
                 font-size: 17px;
                 letter-spacing: 1.7px;
               }

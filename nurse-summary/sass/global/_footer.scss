@@ -80,8 +80,15 @@
       @include wt400;
       line-height: 1.7;
       text-align: center;
-      font-size: 10px;
       letter-spacing: 0.5px;
+      
+      @include pc{
+        font-size: 13px;
+      }
+      
+      @include sp{
+        font-size: 10px;
+      }
     }
   }
 }
