@@ -22,6 +22,9 @@ Template Path: pages/
         <div class="C_other-contents--container--inner">
 
 
+          <div class="custom_text">
+            <p><?php echo post_custom('survey_text'); ?></p>
+          </div>
 
 
         </div>
