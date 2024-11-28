@@ -8,19 +8,19 @@
                     <a class="hover-opa" href="<?php echo get_home_url(); ?>">TOP</a>
                 </li>
                 <li>
-                    <a class="hover-opa" href="<?php echo get_home_url(); ?>/">利用規約</a>
+                    <a class="hover-opa" href="<?php echo get_home_url(); ?>/terms">利用規約</a>
                 </li>
                 <li>
-                    <a class="hover-opa" href="<?php echo get_home_url(); ?>/">プライバシーポリシー</a>
+                    <a class="hover-opa" href="<?php echo get_home_url(); ?>/privacy-policy">プライバシーポリシー</a>
                 </li>
                 <li>
-                    <a class="hover-opa" href="<?php echo get_home_url(); ?>/">運営会社</a>
+                    <a class="hover-opa" href="<?php echo get_home_url(); ?>/company">運営会社</a>
                 </li>
                 <li>
-                    <a class="hover-opa" href="<?php echo get_home_url(); ?>/">調査概要</a>
+                    <a class="hover-opa" href="<?php echo get_home_url(); ?>/survey">調査概要</a>
                 </li>
                 <li>
-                    <a class="hover-opa" href="<?php echo get_home_url(); ?>/">編集方針</a>
+                    <a class="hover-opa" href="<?php echo get_home_url(); ?>/edit">編集方針</a>
                 </li>
                 <li>
                     <a class="hover-opa" href="<?php echo get_home_url(); ?>/column">転職に関するコラム記事はこちら</a>

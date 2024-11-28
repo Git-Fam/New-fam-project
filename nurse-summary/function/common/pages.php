@@ -7,6 +7,11 @@ function custom_page_template($template)
 
 	$page_templates = array(
 		'comparison' => 'pages/page-comparison',
+		'terms' => 'pages/page-terms',
+		'privacy-policy' => 'pages/page-privacy-policy',
+		'company' => 'pages/page-company',
+		'survey' => 'pages/page-survey',
+		'edit' => 'pages/page-edit',
 		// 複数ある場合は以下に追加していく
 	);
 
