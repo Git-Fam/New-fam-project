@@ -36,7 +36,7 @@
                                                                             echo ' | ' . wp_title('', false);
                                                                         } ?>" />
     <meta property="twitter:description" content="<?php bloginfo('description'); ?>" />
-    <meta property="twitter:image" content="<?php echo get_template_directory_uri(); ?>/img" />
+    <meta property="twitter:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.jpg" />
 
     <!-- ▼ファビコン -->
     <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri(); ?>/img">

@@ -307,7 +307,7 @@
                                                     <?php
                                                     } elseif ($job_business_style === 'both') {
                                                     ?>
-                                                        <p class="TX workStyle03">常勤<br />(夜勤あり)</p>
+                                                        <p class="TX workStyle01">常勤<br />(夜勤あり)</p>
                                                         <p class="TX workStyle02">常勤<br />(夜勤なし)</p>
                                                     <?php
                                                     }
