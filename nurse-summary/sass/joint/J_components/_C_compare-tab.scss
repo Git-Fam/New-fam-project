@@ -10,14 +10,16 @@
 
   @include pc {
     border: 2px solid $P-FEA3A6;
-    padding: 168px 47px 83px;
+    padding: 43px 47px 83px;
     border-radius: 8.289px;
+    margin-bottom: 160px;
   }
 
   @include sp {
     border: 1.8px solid $P-FEA3A6;
-    padding: 120px 16px 38px;
+    padding: 24px 16px 38px;
     border-radius: 8.289px;
+    margin-bottom: 106px;
   }
 }
 
@@ -28,10 +30,12 @@
     align-items: center;
 
     @include pc {
+      margin-top: 52px;
       gap: 9px;
     }
 
     @include sp {
+      margin-top: 29px;
       gap: 7px;
     }
 

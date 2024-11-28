@@ -37,8 +37,14 @@
 }
 
 .C_miniColumn {
-  @include tsuku;
 
+  @include pc{
+    margin-bottom: 170px;
+  }
+  @include sp{
+    margin-bottom: 106px;
+  }
+  @include tsuku;
   .C_noFrame {
     margin: 0 auto;
   }
