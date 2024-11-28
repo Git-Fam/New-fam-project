@@ -1,6 +1,5 @@
 <?php
 
-// 投稿
 function post_has_archive($args, $post_type)
 { // 設定後に（パーマリンク更新すること）
 	if ('post' == $post_type) {
@@ -12,6 +11,12 @@ function post_has_archive($args, $post_type)
 }
 add_filter('register_post_type_args', 'post_has_archive', 10, 2);
 
+function modify_post_supports()
+{
+	remove_post_type_support('post', 'editor'); // テキストエディタを削除
+	remove_post_type_support('post', 'thumbnail'); // アイキャッチを削除
+}
+add_action('init', 'modify_post_supports');
 
 // カスタム投稿追加
 /* ---------- カスタム投稿の追加 ---------- */
@@ -55,10 +60,6 @@ function create_post_type()
 			'update_count_callback' => '_update_post_term_count',
 		)
 	);
-
-
 }
 
 add_theme_support('post-thumbnails');
-
-
