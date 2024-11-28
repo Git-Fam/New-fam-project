@@ -161,7 +161,12 @@
                                                 }
                                                 ?>
                                             </div>
-                                            <div class="rating-number"><?php echo post_custom('site-score'); ?></div>
+                                            <a href="#detail-0<?php echo $counter; ?>">
+                                                <div class="rating-number">
+                                                    <?php echo post_custom('site-score'); ?>
+                                                </div>
+                                            </a>
+
                                         </td>
                                         <td class="good jobCount">
                                             <div class="inner">
@@ -302,7 +307,7 @@
                                                     <?php
                                                     } elseif ($job_business_style === 'both') {
                                                     ?>
-                                                        <p class="TX workStyle03">常勤<br />(夜勤あり)</p>
+                                                        <p class="TX workStyle01">常勤<br />(夜勤あり)</p>
                                                         <p class="TX workStyle02">常勤<br />(夜勤なし)</p>
                                                     <?php
                                                     }

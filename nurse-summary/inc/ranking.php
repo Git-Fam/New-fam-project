@@ -361,7 +361,7 @@
                                             <div class="title">
                                                 <p class="TX">求人職種</p>
                                             </div>
-                                            <div class="evaluation">
+                                            <div class="evaluation align-contents">
                                                 <?php
                                                 $site_job_category = SCF::get('site-job_category');
 
