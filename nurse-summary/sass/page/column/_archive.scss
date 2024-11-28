@@ -1,4 +1,4 @@
-@use "../../functions" as *;
+@use "../../functions"as *;
 
 /* -----------------------
   archive
@@ -15,6 +15,55 @@
     @include sp {
       padding: 36px 19px 32px;
     }
+
+    &.terms-pa {
+      @include pc {
+        padding: 46px 74px 64px;
+      }
+
+      @include sp {
+        padding: 27px 23px 21px;
+      }
+    }
+
+    &.survey-pa {
+      @include pc {
+        padding: 54px 74px 69px;
+      }
+
+      @include sp {
+        padding: 27px 23px 40px;
+      }
+    }
+
+    &.privacy-policy-pa {
+      @include pc {
+        padding: 46px 74px 154px;
+      }
+
+      @include sp {
+        padding: 24px 23px 63px;
+      }
+    }
+
+    &.edit-pa {
+      @include pc {
+        padding: 54px 61px 75px;
+      }
+
+      @include sp {
+        padding: 27px 23px 37px;
+      }
+    }
+    &.company-pa {
+      @include pc {
+        padding: 41px 74px 44px 26px;
+      }    
+      @include sp {
+        padding: 20px 20px 30px;
+      }
+    }
+
   }
 
   &--inner {

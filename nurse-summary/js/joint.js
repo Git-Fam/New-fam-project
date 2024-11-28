@@ -8,6 +8,14 @@ $(function () {
 		return false;
 	});
 
+	document.querySelectorAll('.item').forEach(item => {
+		const isEmpty = Array.from(item.querySelectorAll('p')).every(p => !p.textContent.trim());
+		if (isEmpty) {
+			item.style.display = 'none';
+		}
+	});
+	
+
 	function updateRandomPeopleCount() {
 		// 95から630の間でランダムな数を生成
 		var min = 95;

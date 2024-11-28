@@ -2,7 +2,7 @@
 <?php if (is_front_page()) : ?>
     <div class="KV-home">
         <div class="KV-home--container">
-            <div class="contents">
+            <div class="contents loadUp">
                 <div class="title">
                     <h1 class="TL">看護師転職サイト</h1>
                 </div>
@@ -15,14 +15,14 @@
                 </div>
             </div>
             <div class="deco">
-                <div class="deco--left">
+                <div class="deco--left loadscale">
                     <div class="img"></div>
                 </div>
                 <div class="deco--right">
-                    <div class="text">
+                    <div class="text loadPop">
                         <p class="TX">保健師・助産師の<br>転職にも対応！</p>
                     </div>
-                    <div class="img"></div>
+                    <div class="img loadscale"></div>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
 <?php if (is_page('comparison')) : ?>
     <div class="KV-comparison">
         <div class="KV-comparison--container">
-            <div class="contents">
+            <div class="contents loadUp">
                 <div class="title">
                     <h1 class="TL">看護師転職サイト</h1>
                 </div>
@@ -46,14 +46,14 @@
                 </div>
             </div>
             <div class="deco">
-                <div class="deco--left">
+                <div class="deco--left loadscale">
                     <div class="img"></div>
                 </div>
-                <div class="deco--right">
-                    <div class="text">
+                <div class="deco--right ">
+                    <div class="text loadPop">
                         <p class="TX">ハローワーク<br>求人にも対応！</p>
                     </div>
-                    <div class="img"></div>
+                    <div class="img loadscale"></div>
                 </div>
             </div>
         </div>

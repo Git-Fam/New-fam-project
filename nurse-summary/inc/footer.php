@@ -42,6 +42,7 @@
 
 <?php if (is_front_page() || is_page('comparison')) : ?>
     <script src="<?php echo get_template_directory_uri(); ?>/js/list-remove.js"></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/anime.js"></script>
 <?php endif; ?>
 </body>
 

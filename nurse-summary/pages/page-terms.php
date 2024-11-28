@@ -18,11 +18,11 @@ Template Path: pages/
       <div class="title">
         <h1 class="TL">利用規約</h1>
       </div>
-      <div class="C_other-contents--container container__archive">
+      <div class="C_other-contents--container container__archive terms-pa">
         <div class="C_other-contents--container--inner">
 
-          <div class="custom_text">
-            <p><?php echo post_custom('terms_text'); ?></p>
+          <div class="C_terms-content">
+            <p class="TX"><?php echo post_custom('terms_text'); ?></p>
           </div>
           
         </div>

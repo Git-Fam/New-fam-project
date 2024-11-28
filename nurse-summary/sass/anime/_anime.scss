@@ -138,7 +138,7 @@
   transform: translateY(100%);
 
   &.show {
-    animation: loadUp ease forwards;
+    animation: loadUp 1.3s ease forwards;
 
     @keyframes loadUp {
       0% {
@@ -146,9 +146,33 @@
         transform: translateY(100%);
       }
 
+      50% {
+        opacity: 0;
+      }
+
       100% {
         opacity: 1;
         transform: translateY(0);
+      }
+    }
+  }
+}
+
+.loadscale {
+  opacity: 0;
+
+  &.show {
+    animation: loadscale 1.3s ease 1s forwards;
+
+    @keyframes loadscale {
+      0% {
+        opacity: 0;
+        scale: -1 1;
+      }
+
+      100% {
+        opacity: 1;
+        scale: 1 1;
       }
     }
   }
@@ -226,7 +250,7 @@
   transform: scale(0.5);
 
   &.show {
-    animation: loadPop ease forwards;
+    animation: loadPop 0.8s ease 2s forwards;
 
     @keyframes loadPop {
       0% {
@@ -234,10 +258,55 @@
         transform: scale(0.5);
       }
 
+      65% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
       100% {
         opacity: 1;
         transform: scale(1);
       }
+    }
+  }
+}
+
+.loop {
+  transform-origin: 50% 100%;
+  animation: loop 3s ease infinite;
+
+  @keyframes loop {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    10%,
+    30% {
+      transform: rotate(-5deg);
+
+    }
+
+    20%,
+    40% {
+      transform: rotate(0deg);
+    }
+  }
+}
+
+.loopScale {
+  animation: loopScale 3s ease infinite;
+
+  @keyframes loopScale {
+    0% {
+      scale: 1 1;
+    }
+
+    15%{
+      scale: -1 1;
+    }
+
+    30% {
+      scale: 1 1;
     }
   }
 }

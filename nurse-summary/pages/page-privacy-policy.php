@@ -18,9 +18,12 @@ Template Path: pages/
       <div class="title">
         <h1 class="TL">プライバシーポリシー</h1>
       </div>
-      <div class="C_other-contents--container container__archive">
+      <div class="C_other-contents--container container__archive privacy-policy-pa">
         <div class="C_other-contents--container--inner">
 
+        <div class="C_terms-content">
+            <p class="TX"><?php echo post_custom('privacy-policy_text'); ?></p>
+          </div>
 
 
 

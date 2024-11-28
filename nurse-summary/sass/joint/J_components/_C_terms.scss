@@ -23,19 +23,8 @@
   }
 }
 
+
 .C_terms-content {
-  background-color: $B-FFF;
-  border-radius: 9px;
-
-  @include pc {
-    padding: 46px 74px 64px;
-    margin-top: 30px;
-  }
-
-  @include sp {
-    padding: 27px 23px 40px;
-    margin-top: 60px;
-  }
 
   .TX {
     font-size: 15px;
@@ -48,12 +37,6 @@
 
   
   &.company{
-    @include pc{
-      padding: 41px 74px 44px 26px;
-    }
-    @include sp{
-      padding: 20px 20px 30px;
-    }
     .list{
       .item{
         border-bottom: 1px solid $P-C3C3C3;
@@ -89,7 +72,12 @@
         &:first-child{
           margin-top: 0;
         }  
+        & p:empty {
+          display: none; /* 空のpを非表示 */
+        }
+        
       }
     }
   }
 }
+
