@@ -146,12 +146,13 @@
 
         .link {
           position: absolute;
-          bottom: 0;
-          left: 50%;
-          translate: -50% 0;
-          width: 100%;
           display: block;
           background: $P-FCA7AA;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 100%;
+          border-radius: 0 0 var(--border-width) var(--border-width);
 
           @include pc {
             padding-block: 3px 8px;
@@ -159,6 +160,8 @@
 
           @include sp {
             padding-block: 3px 4px;
+            width: calc(100% + var(--border-width));
+            bottom: calc(var(--border-width) * -1);
           }
 
           .TX {
@@ -186,7 +189,7 @@
               position: absolute;
               left: 50%;
               top: 100%;
-              translate: -50% 0;
+              transform: translate(-50%, 0);
 
               @include pc {
                 width: 18px;

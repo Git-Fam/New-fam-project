@@ -30,13 +30,13 @@
 
         &:nth-child(1) {
           top: 50%;
-          rotate: var(--rotate);
+          transform: rotate(var(--rotate));
         }
 
         &:nth-child(2) {
           bottom: unset;
           top: 50%;
-          rotate: calc(var(--rotate) * -1);
+          transform: rotate(calc(var(--rotate) * -1));
         }
       }
     }

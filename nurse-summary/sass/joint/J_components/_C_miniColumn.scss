@@ -104,7 +104,7 @@
         position: absolute;
         bottom: 0;
         left: 50%;
-        translate: -50% 0;
+        transform: translateX(-50%);
         width: 100%;
 
         @include pc {
@@ -216,7 +216,7 @@
 
       .img {
         object-fit: contain;
-        rotate: 2.8deg;
+        transform: rotate(2.8deg);
         position: absolute;
         @include imgContain("miniColumn.png");
 
@@ -235,8 +235,12 @@
         @include sp {
           width: 181px;
           height: 116px;
-          right: -10px;
           top: 60px;
+          right: -10px;
+        }
+
+        @include media(390px, 440px) {
+          right: -40px;
         }
 
         @include media(0px, 389px) {
@@ -290,8 +294,8 @@
         &::before {
           content: "";
           @include iconContain($miniColumn-bubble);
-          @include p-center-left;
           position: absolute;
+          transform: translateX(-50%);
 
           @include pc {
             width: 463px;

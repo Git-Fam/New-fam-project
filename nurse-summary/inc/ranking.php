@@ -584,15 +584,14 @@
 
 
                                         <?php
-                                        $site_reviews = SCF::get('site-reviews');
-                                        foreach ($site_reviews as $fields) {
+                                        $siteReviews = SCF::get('site-reviews');
+                                        foreach ($siteReviews as $fields) {
+                                            $site_review_star = $fields['site-review-star']; 
                                         ?>
                                             <li class="list">
                                                 <div class="list--inner">
                                                     <div class="review_stars">
                                                         <?php
-                                                        $site_review_star = post_custom('site-review-star');
-
                                                         if ($site_review_star === 'star0') {
                                                         ?>
                                                             <img src="<?php echo get_template_directory_uri(); ?>/img/review-star-none.svg" alt="星なし">

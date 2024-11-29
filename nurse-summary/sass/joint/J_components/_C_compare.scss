@@ -26,7 +26,8 @@
       }
       @include sp{
         position: relative;
-        @include p-center-left;
+        left: 50%;
+        transform: translateX(-50%);
         width: 105%;
         padding:22px 24px;
       }

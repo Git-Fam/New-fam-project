@@ -284,14 +284,12 @@
           position: absolute;
           
           @include pc {
-            rotate: -11deg;
             top: -120px;
             left: 16px;
             width: 174px;
           }
 
           @include sp {
-            rotate: 18deg;
             top: -60px;
             left: 31px;
             width: 83px;
@@ -307,14 +305,15 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            translate: -50% -60%;
-
+            
             @include pc {
+              transform: translate(-50%, -50%) rotate(-11deg);
               font-size: 19px;
               letter-spacing: 0.95px;
             }
 
             @include sp {
+              transform: translate(-50%, -50%) rotate(18deg);
               font-size: 9.225px;
               letter-spacing: -0.184px;
             }

@@ -257,27 +257,23 @@
           position: absolute;
 
           @include pc {
-            rotate: -11deg;
             top: -70px;
             left: 75px;
             width: 147px;
           }
 
           @include media(768px, 890px) {
-            rotate: 11deg;
             left: unset;
             right: 0;
           }
 
           @include sp {
-            rotate: -11deg;
             top: -40px;
             left: 50px;
             width: 70px;
           }
 
           @include media(0px, 350px) {
-            rotate: 11deg;
             top: -35px;
             left: 60px;
           }
@@ -292,16 +288,25 @@
             position: absolute;
             top: 40%;
             left: 50%;
-            translate: -50% -60%;
 
             @include pc {
               font-size: 19px;
               letter-spacing: 0.95px;
+              transform: translate(-50%, -50%) rotate(-11deg);
+            }
+
+            @include media(768px, 890px) {
+              transform: translate(-50%, -50%) rotate(11deg);
             }
 
             @include sp {
               font-size: 9.101px;
               letter-spacing: 0.455px;
+              transform: translate(-50%, -50%) rotate(-11deg);
+            }
+
+            @include media(0px, 350px) {
+              transform: translate(-50%, -50%) rotate(11deg);
             }
           }
         }

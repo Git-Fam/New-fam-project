@@ -187,6 +187,8 @@
                 .icon {
                   aspect-ratio: 1/1;
                   margin: 0 auto;
+                  object-fit: contain;
+                  object-position: center;
 
                   @include pc {
                     width: 41px;
@@ -495,7 +497,7 @@
 
                 @include sp {
                   padding-left: 10%;
-                  width: 52px;
+                  width: 90%;
 
                 }
 
@@ -546,7 +548,7 @@
 
                 @include sp {
                   padding-left: 10%;
-                  width: 57px;
+                  width: 90%;
                 }
 
                 .TX {

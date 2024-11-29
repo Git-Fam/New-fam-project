@@ -48,7 +48,7 @@
     <meta name="theme-color" content="#ffffff">
 
     <!-- ▼CSS -->
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/main.css?ver=1.0.0">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/main.css?ver=1.0.1">
 
     <!-- ▼フォント -->
     <script>
