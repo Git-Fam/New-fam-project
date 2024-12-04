@@ -1,6 +1,16 @@
-@use "../../../functions" as *;
-@use "../../J_functions" as *;
+@use "../../../functions"as *;
+@use "../../J_functions"as *;
 
 /* -----------------------
   forth
 ----------------------- */
+
+.select{
+  display: flex;
+}
+section{
+  display: none;
+  &.active{
+    display: block;
+  }
+}

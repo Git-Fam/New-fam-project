@@ -1,59 +1,151 @@
 <!DOCTYPE html>
 <html lang="ja">
+	<head prefix="og: https://ogp.me/ns#">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head prefix="og: https://ogp.me/ns#">
+		<!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
+		<meta name="format-detection" content="email=no,telephone=no,address=no" />
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
-    <meta name="format-detection" content="email=no,telephone=no,address=no" />
+		<meta property="og:locale" content="ja_JP" />
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<!-- ▼SEO -->
+		<link rel="”canonical”" href="”URL”" />
+		<!-- ジェネレーターURL→ https://metatags.io/ -->
 
-    <meta property="og:locale" content="ja_JP" />
+		<!-- ▼ファビコン -->
+		<!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
 
-    <!-- ▼SEO -->
-    <link rel="”canonical”" href="”URL”" />
-    <!-- ジェネレーターURL→ https://metatags.io/ -->
+		<!-- ▼クロールして欲しくない -->
+		<!-- <meta name="robots" content="noindex,nofollow"> -->
 
-    <!-- ▼ファビコン -->
-    <!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
+		<!-- ▼テーマカラー -->
+		<!-- <meta name="theme-color" content="#e9c931"> -->
 
-    <!-- ▼クロールして欲しくない -->
-    <!-- <meta name="robots" content="noindex,nofollow"> -->
+		<!-- ▼CSS -->
+		<link rel="stylesheet" href="css/main.css?ver=1.0.0" />
 
-    <!-- ▼テーマカラー -->
-    <!-- <meta name="theme-color" content="#e9c931"> -->
+		<!-- ▼フォント -->
 
-    <!-- ▼CSS -->
-    <link rel="stylesheet" href="css/main.css?ver=1.0.0" />
+		<!-- <style type="text/css">
+			body {
+				counter-reset: count-a count-b count-c;
+			}
+			input[value="a"]:checked {
+				counter-increment: count-a;
+			}
+			input[value="b"]:checked {
+				counter-increment: count-b;
+			}
+			input[value="c"]:checked {
+				counter-increment: count-c;
+			}
+			.total:after {
+				content: "A" counter(count-a) "個 B" counter(count-b) "個 C"
+					counter(count-c) "個";
+			}
+		</style> -->
+	</head>
+	<body>
+		<!-- <p>問1</p>
+		<input type="radio" name="quertion" value="1" />A<br />
+		<input type="radio" name="quertion" value="1" />B<br />
+		<input type="radio" name="quertion" value="3" />C<br />
+		<p>問2</p>
+		<input type="radio" name="quertion2" value="a" />A<br />
+		<input type="radio" name="quertion2" value="b" />B<br />
+		<input type="radio" name="quertion2" value="c" />C<br />
+		<p class="total"></p> -->
 
-    <!-- ▼フォント -->
+		<section class="section-radio index01 active" id="index01">
+			<h4>問題1</h4>
+			<p class="TX">
+				業務や作業に取り組む際、小さな詳細にも注意を払い、ミスを防ぐようにしていますか？
+			</p>
+			<div class="select">
+				<input type="radio" class="radio" data-number="1" name="question01" />1
+				<input type="radio" class="radio" data-number="2" name="question01" />2
+				<input type="radio" class="radio" data-number="3" name="question01" />3
+				<input type="radio" class="radio" data-number="4" name="question01" />4
+				<input type="radio" class="radio" data-number="5" name="question01" />5
+			</div>
+			<h4>問題2</h4>
+			<p class="TX">
+				協力性、リーダーシップ、規律性、綿密さを発揮し、チームの目標を達成するために細部まで配慮しつつ役割を果たすことができますか？
+			</p>
+			<div class="select holistic">
+				<input type="radio" class="radio" data-number="1" name="question02" />1
+				<input type="radio" class="radio" data-number="2" name="question02" />2
+				<input type="radio" class="radio" data-number="3" name="question02" />3
+				<input type="radio" class="radio" data-number="4" name="question02" />4
+				<input type="radio" class="radio" data-number="5" name="question02" />5
+			</div>
+
+			<form class="" method="">
+				<input
+					type="text"
+					class="result"
+					name="result01"
+					id="result_index01"
+					size="30"
+					disabled="disabled"
+				/>
+			</form>
+
+			<p class="next">次へ</p>
+			<p class="prev">前へ</p>
+		</section>
+
+		<section class="section-radio index02" id="index02">
+			<h4>問題1</h4>
+			<p class="TX">
+				他のメンバーと協力しつつ規律を守り、細かな点に配慮してチームをまとめることが得意ですか？
+			</p>
+			<div class="select">
+				<input type="radio" class="radio" data-number="1" name="question03" />1
+				<input type="radio" class="radio" data-number="2" name="question03" />2
+				<input type="radio" class="radio" data-number="3" name="question03" />3
+				<input type="radio" class="radio" data-number="4" name="question03" />4
+				<input type="radio" class="radio" data-number="5" name="question03" />5
+			</div>
+			<h4>問題2</h4>
+			<p class="TX">
+				興味を持ったことに対して、深く調べたり、新しい情報を積極的に探したりすることが好きですか？
+			</p>
+			<div class="select holistic">
+				<input type="radio" class="radio" data-number="1" name="question04" />1
+				<input type="radio" class="radio" data-number="2" name="question04" />2
+				<input type="radio" class="radio" data-number="3" name="question04" />3
+				<input type="radio" class="radio" data-number="4" name="question04" />4
+				<input type="radio" class="radio" data-number="5" name="question04" />5
+			</div>
+
+			<form class="" method="">
+				<input
+					type="text"
+					class="result"
+					name="result02"
+					id="result_index02"
+					size="30"
+					disabled="disabled"
+				/>
+			</form>
+
+			<!-- <p class="next">次へ</p> -->
+            <p class="prev">前へ</p>
+		</section>
+
+        <button id="checkHighest">合計が一番高いセクションを確認</button>
 
 
-</head>
-
-<body>
-
-    <header class="header"></header>
-
-    <div class="whopper">
-
-
-
-
-
-
-
-        <footer class="footer"></footer>
-
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
-        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-    <script src="js/script.js"></script>
-    <script src="js/joint.js"></script>
-</body>
-
+		<script
+			src="https://code.jquery.com/jquery-3.7.0.min.js"
+			integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+			crossorigin="anonymous"
+		></script>
+		<script src="js/script.js"></script>
+		<script src="js/joint.js"></script>
+	</body>
 </html>
