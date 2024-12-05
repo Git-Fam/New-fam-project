@@ -29,7 +29,7 @@ $(function () {
 	// 各セクションの結果を更新
 	const updateResults = () =>
 		$(".section-radio").each(function () {
-			$(`#result_${this.id}`).val(calculateSectionTotal(this).toLocaleString());
+			const total = calculateSectionTotal(this); 
 		});
 
 	// 最も高い数字が多いセクションのIDを取得
@@ -78,7 +78,7 @@ $(function () {
 			isFormChanged = false; // 全て入力済みの場合、リロード警告を解除
 			$(window).off("beforeunload", handleBeforeUnload); // beforeunload イベント解除
 			const highestSectionId = getSectionWithMostHighNumbers();
-			window.location.href = `/index.html?section=${highestSectionId || "unknown"}`;
+			window.location.href = `/result.html?section=${highestSectionId || "unknown"}`;
 		}
 	});
 
