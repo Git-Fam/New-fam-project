@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og: https://ogp.me/ns#">
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
+	<meta name="format-detection" content="email=no,telephone=no,address=no" />
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+	<meta property="og:locale" content="ja_JP" />
+
+	<title>性格診断</title>
+
+	<!-- ▼SEO -->
+	<link rel="”canonical”" href="”URL”" />
+	<!-- ジェネレーターURL→ https://metatags.io/ -->
+
+	<!-- ▼ファビコン -->
+	<!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
+
+	<!-- ▼クロールして欲しくない -->
+	<!-- <meta name="robots" content="noindex,nofollow"> -->
+
+	<!-- ▼テーマカラー -->
+	<!-- <meta name="theme-color" content="#e9c931"> -->
+
+	<!-- ▼CSS -->
+	<link rel="stylesheet" href="css/main.css?ver=1.0.0" />
+
+	<!-- ▼フォント -->
+	<script>
+		(function (d) {
+			var config = {
+				kitId: "wxg1png",
+				scriptTimeout: 3000,
+				async: true,
+			},
+				h = d.documentElement,
+				t = setTimeout(function () {
+					h.className =
+						h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+				}, config.scriptTimeout),
+				tk = d.createElement("script"),
+				f = false,
+				s = d.getElementsByTagName("script")[0],
+				a;
+			h.className += " wf-loading";
+			tk.src = "https://use.typekit.net/" + config.kitId + ".js";
+			tk.async = true;
+			tk.onload = tk.onreadystatechange = function () {
+				a = this.readyState;
+				if (f || (a && a != "complete" && a != "loaded")) return;
+				f = true;
+				clearTimeout(t);
+				try {
+					Typekit.load(config);
+				} catch (e) { }
+			};
+			s.parentNode.insertBefore(tk, s);
+		})(document);
+	</script>
+</head>
+
+<body>
+
+	<div class="aptitude-choice">
+		<div class="aptitude-choice__inner">
+			<div class="choice--area">
+				<div class="choice--item choice--item--engineer">
+					<div class="choice--item--title">
+						<p class="TL">
+							<img src="img/aptitude-choice-engineer.png" alt="エンジニア">
+						</p>
+					</div>
+					<div class="choice--item--img img-engineer">
+						<div class="icon-star"></div>
+					</div>
+				</div>
+				<div class="choice--item choice--item--designer">
+					<div class="choice--item--title">
+						<p class="TL">
+							<img src="img/aptitude-choice-designer.png" alt="デザイナー">
+						</p>
+					</div>
+					<div class="choice--item--img img-designer">
+						<div class="icon-star"></div>
+					</div>
+				</div>
+			</div>
+			<div class="character--area">
+				<div class="character--message">
+					<div class="character--message--inner">
+						<p class="TX no-choice">
+							適性検査を受けに来たんだね！<br>
+							今からぼくが、きみの可能性をズバっと見抜いちゃうよ<br>
+							さっそく質問だよ！きみがなりたいと思ってるのはどっちかな？
+						</p>
+						<p class="TX TX-engineer">
+							なるほど！<br>
+							きみはエンジニアになりたいんだね！<br>
+							エンジニア用の適性検査をはじめるよ！
+						</p>
+						<p class="TX TX-designer">
+							なるほど！<br>
+							きみはデザイナーになりたいんだね！<br>
+							デザイナー用の適性検査をはじめるよ！
+						</p>
+					</div>
+					<a href="#" class="btn engineer-btn">
+						<div class="btn-arrow"></div>
+					</a>
+					<a href="#" class="btn designer-btn">
+						<div class="btn-arrow"></div>
+					</a>
+				</div>
+				<div class="character--texture">
+					<div class="img"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.7.0.min.js"
+		integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+	<script src="js/aptitude-choice.js"></script>
+</body>
+
+</html>
