@@ -27,10 +27,10 @@ $(function () {
 			.reduce((sum, el) => sum + $(el).data("number"), 0);
 
 	// 各セクションの結果を更新
-	const updateResults = () =>
-		$(".section-radio").each(function () {
-			const total = calculateSectionTotal(this); 
-		});
+	// const updateResults = () =>
+	// 	$(".section-radio").each(function () {
+	// 		$(`#result_${this.id}`).val(calculateSectionTotal(this).toLocaleString());
+	// 	});
 
 	// 最も高い数字が多いセクションのIDを取得
 	function getSectionWithMostHighNumbers() {
