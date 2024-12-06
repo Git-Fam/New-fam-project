@@ -80,21 +80,46 @@ $ellipse-dot-aptitude: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.o
 //nate-arrow-aptitude
 $nate-arrow-aptitude: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="29" viewBox="0 0 32 29" fill="none"><path d="M0.831244 11.5663C0.304655 12.2118 0.401039 13.162 1.04652 13.6886L11.5653 22.2698C12.2108 22.7964 13.161 22.7 13.6876 22.0545C14.2141 21.4091 14.1178 20.4589 13.4723 19.9323L4.12223 12.3045L11.75 2.95447C12.2766 2.30899 12.1802 1.35883 11.5348 0.832241C10.8893 0.305651 9.93911 0.402036 9.41252 1.04752L0.831244 11.5663ZM28.2452 26.9995C28.2452 27.8325 28.9205 28.5078 29.7535 28.5078C30.5866 28.5078 31.2619 27.8325 31.2619 26.9995H28.2452ZM2.15223 14.0204C12.5454 12.9662 19.0685 13.5559 22.9667 15.6575C24.8552 16.6756 26.1405 18.0572 26.976 19.8573C27.827 21.6907 28.2452 24.034 28.2452 26.9995H31.2619C31.2619 23.7809 30.8128 20.9582 29.7123 18.5873C28.5964 16.183 26.8462 14.3218 24.3982 13.0021C19.6234 10.4279 12.2698 9.96194 1.84777 11.0192L2.15223 14.0204Z" fill="%23948975"/></svg>');
 
+//character-message-btn-arrow
+$character-message-btn-arrow: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="34" height="31" viewBox="0 0 34 31" fill="none"><path d="M21.0361 3L31.5932 15.8193L21.0361 28.6386" stroke="white" stroke-width="4.72289" stroke-linecap="round" stroke-linejoin="round"/><path d="M29 16.1563L3 16.1562" stroke="white" stroke-width="4.72289" stroke-linecap="round"/></svg>');
 
-    // SVG使い方（色変更パターン）
-    @function encode($ColorCode) {
-    @return '%23' + str-slice($ColorCode, 2, -1);
-  }
 
-  // pageTab
-  @function pageTab($Color) {
-    @return url('data:image/svg+xml;utf-8,<svg viewBox="0 0 118 290" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23 7.5L118 0V290H29L0 187.5L23 7.5Z" fill="#{$Color}"/><path d="M108 12L31.1474 19.5L10 185L38.3684 279H108V12Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 5"/></svg>');
-  }
+//choice--item--engineer
+$choice-item-engineer: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="487" height="300" viewBox="0 0 487 300" fill="none"><path d="M182.638 72.9592C182.638 99.377 155.165 120.793 121.276 120.793C87.3861 120.793 59.9131 99.377 59.9131 72.9592C59.9131 46.5413 87.3861 25.1253 121.276 25.1253C155.165 25.1253 182.638 46.5413 182.638 72.9592Z" fill="white" /> <path d="M486.069 175.391C486.069 205.545 453.188 229.989 412.627 229.989C372.066 229.989 339.185 205.545 339.185 175.391C339.185 145.238 372.066 120.793 412.627 120.793C453.188 120.793 486.069 145.238 486.069 175.391Z" fill="white" /> <path d="M474.473 100.017C474.473 144.046 422.772 179.74 358.995 179.74C295.219 179.74 243.518 144.046 243.518 100.017C243.518 55.9868 295.219 20.2935 358.995 20.2935C422.772 20.2935 474.473 55.9868 474.473 100.017Z" fill="white" /> <path d="M435.819 219.841C435.819 263.871 388.661 299.565 330.488 299.565C272.315 299.565 225.157 263.871 225.157 219.841C225.157 175.812 272.315 140.118 330.488 140.118C388.661 140.118 435.819 175.812 435.819 219.841Z" fill="white" /> <path d="M339.185 80.2062C339.185 124.503 292.243 160.412 234.337 160.412C176.431 160.412 129.489 124.503 129.489 80.2062C129.489 35.9095 176.431 0 234.337 0C292.243 0 339.185 35.9095 339.185 80.2062Z" fill="white" /> <path d="M301.818 220.109C301.818 263.16 330.291 301.794 180.925 297.126C86.6835 294.181 60.0317 263.16 60.0317 220.109C60.0317 177.058 114.157 142.159 180.925 142.159C247.693 142.159 301.818 177.058 301.818 220.109Z" fill="white" /> <path d="M166.21 147.366C166.21 191.396 129.003 227.089 83.1052 227.089C37.2075 227.089 0 191.396 0 147.366C0 103.337 37.2075 67.6433 83.1052 67.6433C129.003 67.6433 166.21 103.337 166.21 147.366Z" fill="white" /> <path d="M436.785 150.267C436.785 212.442 350.473 262.845 244.001 262.845C137.529 262.845 51.2159 212.442 51.2159 150.267C51.2159 88.0912 137.529 37.688 244.001 37.688C350.473 37.688 436.785 88.0912 436.785 150.267Z" fill="white" /> </svg>');
 
-  // closeアイコン
-  // @function close($Color) {
-  //   @return  url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none"><path d="M1.51471 18.4854L18.4853 1.51479" stroke="#{$Color}" stroke-width="2"/><path d="M1.51471 1.51465L18.4853 18.4852" stroke="#{$Color}" stroke-width="2"/></svg>');
-  // }
+//choice-item-engineer-medium%23
+$choice-item-engineer-medium: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="104" height="84" viewBox="0 0 104 84" fill="none"><ellipse cx="24.7388" cy="22.8717" rx="24.7388" ry="22.8717" transform="matrix(1 0 0 -1 51.3447 51.3359)" fill="%23F7FBF8" /> <ellipse cx="25.1706" cy="21.3532" rx="25.1706" ry="21.3532" transform="matrix(1 0 0 -1 53.0791 77.6406)" fill="%23F7FBF8" /> <ellipse cx="22.8536" cy="21.4826" rx="22.8536" ry="21.4826" transform="matrix(1 0 0 -1 28.2246 83.0781)" fill="%23F7FBF8" /> <ellipse cx="23.8015" cy="21.4826" rx="23.8015" ry="21.4826" transform="matrix(1 0 0 -1 18.1143 42.9609)" fill="%23F7FBF8" /> <ellipse cx="18.1144" cy="21.3532" rx="18.1144" ry="21.3532" transform="matrix(1 0 0 -1 0 64.9609)" fill="%23F7FBF8" /> <ellipse cx="42.0212" cy="30.1533" rx="42.0212" ry="30.1533" transform="matrix(1 0 0 -1 11.1631 72.9844)" fill="%23F7FBF8" /> </svg>');
 
-  // ↓CSSでは
-  // background-image: svg(encode('#FFF'));
+//choice-item-engineer-small
+$choice-item-engineer-small: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none"><ellipse cx="11.1961" cy="10.6068" rx="11.1961" ry="10.6068" transform="matrix(-1 0 0 1 34.25 0)" fill="%23F0F6F2" /> <ellipse cx="11.204" cy="9.50481" rx="11.204" ry="9.50481" transform="matrix(-1 0 0 1 22.4082 6.02344)" fill="%23F0F6F2" /> <ellipse cx="10.2196" cy="9.50481" rx="10.2196" ry="9.50481" transform="matrix(-1 0 0 1 24.1895 20.3125)" fill="%23F0F6F2" /> <ellipse cx="10.5946" cy="9.56241" rx="10.5946" ry="9.56241" transform="matrix(-1 0 0 1 37.9717 21.4609)" fill="%23F0F6F2" /> <ellipse cx="8.06314" cy="9.50481" rx="8.06314" ry="9.50481" transform="matrix(-1 0 0 1 40.1426 10.6094)" fill="%23F0F6F2" /> <ellipse cx="15.3209" cy="13.2585" rx="15.3209" ry="13.2585" transform="matrix(-1 0 0 1 34.25 8.25)" fill="%23F0F6F2" /> </svg>');
+
+//choice--item--designer
+$choice-item-designer: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="477" height="300" viewBox="0 0 477 300" fill="none"><path d="M214.124 58.3462C214.124 87.4765 178.597 111.091 134.773 111.091C90.9486 111.091 55.422 87.4765 55.422 58.3462C55.422 29.216 90.9486 5.60124 134.773 5.60124C178.597 5.60124 214.124 29.216 214.124 58.3462Z" fill="white" /> <path d="M476.448 175.391C476.448 205.545 444.218 229.989 404.46 229.989C364.702 229.989 332.472 205.545 332.472 175.391C332.472 145.238 364.702 120.793 404.46 120.793C444.218 120.793 476.448 145.238 476.448 175.391Z" fill="white" /> <path d="M465.082 100.017C465.082 144.046 414.404 179.74 351.89 179.74C289.375 179.74 238.698 144.046 238.698 100.017C238.698 55.9868 289.375 20.2935 351.89 20.2935C414.404 20.2935 465.082 55.9868 465.082 100.017Z" fill="white" /> <path d="M427.193 219.841C427.193 263.871 380.968 299.565 323.947 299.565C266.926 299.565 220.701 263.871 220.701 219.841C220.701 175.812 266.926 140.118 323.947 140.118C380.968 140.118 427.193 175.812 427.193 219.841Z" fill="white" /> <path d="M332.472 80.2062C332.472 124.503 286.459 160.412 229.699 160.412C172.94 160.412 126.927 124.503 126.927 80.2062C126.927 35.9095 172.94 0 229.699 0C286.459 0 332.472 35.9095 332.472 80.2062Z" fill="white" /> <path d="M287.229 213.702C326.615 279.595 239.308 293.909 180.194 293.909C121.08 293.909 73.1592 257.999 73.1592 213.702C73.1592 169.406 121.08 133.496 180.194 133.496C239.308 133.496 287.229 169.406 287.229 213.702Z" fill="white" /> <path d="M162.921 147.366C162.921 191.396 126.45 227.089 81.4604 227.089C36.471 227.089 0 191.396 0 147.366C0 103.337 36.471 67.6433 81.4604 67.6433C126.45 67.6433 162.921 103.337 162.921 147.366Z" fill="white" /> <path d="M428.141 150.267C428.141 212.442 343.536 262.845 239.171 262.845C134.807 262.845 50.2024 212.442 50.2024 150.267C50.2024 88.0912 134.807 37.688 239.171 37.688C343.536 37.688 428.141 88.0912 428.141 150.267Z" fill="white" /> </svg>');
+
+//choice-item-designer-medium
+$choice-item-designer-medium: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="59" viewBox="0 0 80 59" fill="none"><ellipse cx="23.5615" cy="20.188" rx="21.3223" ry="16.2183" transform="rotate(180 23.5615 20.188)" fill="%23F7FBF8" /> <ellipse cx="21.6942" cy="39.921" rx="21.6944" ry="15.1415" transform="rotate(180 21.6942 39.921)" fill="%23F7FBF8" /> <ellipse cx="45.1131" cy="43.6808" rx="19.6975" ry="15.2333" transform="rotate(180 45.1131 43.6808)" fill="%23F7FBF8" /> <ellipse cx="53.01" cy="15.2355" rx="20.5144" ry="15.2333" transform="rotate(180 53.01 15.2355)" fill="%23F7FBF8" /> <ellipse cx="43.2977" cy="30.3762" rx="36.2179" ry="21.3816" transform="rotate(180 43.2977 30.3762)" fill="%23F7FBF8" /> </svg>');
+
+//choice-item-designer-small
+$choice-item-designer-small: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="31" viewBox="0 0 30 31" fill="none"><ellipse cx="12.7647" cy="7.92317" rx="8.36335" ry="7.92317" fill="%23F0F6F2" /> <ellipse cx="21.6164" cy="11.6" rx="8.36929" ry="7.09999" fill="%23F0F6F2" /> <ellipse cx="19.5509" cy="22.2719" rx="7.63391" ry="7.09999" fill="%23F0F6F2" /> <ellipse cx="9.53515" cy="23.1743" rx="7.91405" ry="7.14302" fill="%23F0F6F2" /> <ellipse cx="6.02309" cy="15.0219" rx="6.02309" ry="7.09999" fill="%23F0F6F2" /> <ellipse cx="15.8459" cy="16.068" rx="11.4446" ry="9.90396" fill="%23F0F6F2" /> </svg>');
+
+//choice-item-icon-star
+$choice-item-icon-star: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="25" height="31" viewBox="0 0 25 31" fill="none"><path d="M12.4961 0L24.3774 15.3617L12.4961 31L0.337342 15.6393L12.4961 0Z" fill="%23EEE367" /> </svg>');
+
+
+// SVG使い方（色変更パターン）  
+@function encode($ColorCode) {
+  @return '%23'+str-slice($ColorCode, 2, -1);
+}
+
+// pageTab
+@function pageTab($Color) {
+  @return url('data:image/svg+xml;utf-8,<svg viewBox="0 0 118 290" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M23 7.5L118 0V290H29L0 187.5L23 7.5Z" fill="#{$Color}"/><path d="M108 12L31.1474 19.5L10 185L38.3684 279H108V12Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 5"/></svg>');
+}
+
+// closeアイコン
+// @function close($Color) {
+//   @return  url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none"><path d="M1.51471 18.4854L18.4853 1.51479" stroke="#{$Color}" stroke-width="2"/><path d="M1.51471 1.51465L18.4853 18.4852" stroke="#{$Color}" stroke-width="2"/></svg>');
+// }
+
+// ↓CSSでは
+// background-image: svg(encode('#FFF'));
