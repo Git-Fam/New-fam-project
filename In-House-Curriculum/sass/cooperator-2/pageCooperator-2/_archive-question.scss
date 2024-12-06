@@ -1,0 +1,550 @@
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
+
+/* -----------------------
+  archive-question
+----------------------- */
+
+.question {
+  background: linear-gradient(180deg, #9EC653 0%, #FDFFEF 98.5%);
+
+  @include pc {
+    padding: p(48) 0 p(39);
+    height: 100vh;
+
+  }
+  @include sp{
+    @include height;
+    padding: 46px 0 25px;
+  }
+
+  .question-main {
+    background: $B-FDFFEF;
+    position: relative;
+
+    @include pc {
+      width: p(1141);
+      height: calc(613 / 700 * 100vh);
+      margin: auto;
+      border-radius: p(18);
+      padding: p(97) p(65) p(40) p(61);
+      box-shadow: inset 0px 0px p(10) 0px rgba(0, 0, 0, 0.25);
+      display: flex;
+    }
+    @include sp{
+      width: clamp(300px, s(300), 420px);
+      height: 580px;
+      margin: auto;
+      border-radius: s(15);
+      padding: 40px s(20);
+      box-shadow: inset 0px 0px s(10) 0px rgba(0, 0, 0, 0.25);
+    }
+
+    &-TL {
+      @include iconContain($question-ribbon);
+      position: absolute;
+      left: 50%;
+      translate: -50% 0;
+
+      @include pc {
+        width: p(650);
+        height: p(122);
+        top: p(-40);
+      }
+      @include sp{
+        width: clamp(250px, s(250), 330px);
+        height: s(50);
+        top: s(-20);
+      }
+
+      .TL {
+        color: $F-FFFFFF;
+        @include wt900;
+        text-align: center;
+
+        @include pc {
+          font-size: p(40);
+          margin-top: p(20);
+          letter-spacing: p(4);
+        }
+        @include sp{
+          font-size: clamp(14px, s(17), 25px);
+          margin-top: clamp(0px, s(12), 30px);
+          letter-spacing: s(1.7);
+        }
+
+      }
+    }
+
+    &-post {
+      @include pc {
+        width: p(700);
+        padding-right: p(47);
+        border-right: p(2) dashed $P-7FBF99;
+      }
+      @include sp{
+        padding-bottom: clamp(10px, s(20), 20px);
+        border-bottom: s(2) dashed $P-7FBF99;
+      }
+    }
+
+  }
+
+  .post-modal {
+    display: none;
+    position: relative;
+    z-index: 10;
+    overflow: scroll;
+
+    .letter {
+      @include iconContain($letter);
+      position: absolute;
+      left: 50%;
+      translate: -50% -50%;
+
+      @include pc {
+        width: cl(848);
+        height: cl(848);
+        top: 45%;
+      }
+      @include sp{
+        width: scl(360);
+        height:scl(368);
+        top: 40%;
+      }
+
+      .note-bg {
+        background: $B-FFFFFF;
+        position: absolute;
+        left: 50%;
+        translate: -50% -50%;
+
+        @include pc {
+          height: cl(578);
+          top: 55%;
+          aspect-ratio: 619 / 578;
+          padding: cl(32) cl(40) cl(70);
+        }
+        @include sp{
+          height: scl(247);
+          aspect-ratio: 619 / 578;
+          top: 60%;
+          padding: scl(13) scl(18) scl(32);
+        }
+
+        .img-icon {
+          @include iconContain($img-icon);
+          position: relative;
+
+          @include pc {
+            width: cl(20);
+            height: cl(20);
+            margin: cl(-17) 0 0 auto;
+            top: cl(15);
+          }
+          @include sp{
+            width:scl(9);
+            height:scl(9);
+            margin: scl(-12) 0 0 auto;
+            top: scl(15);
+          }
+
+          &::before {
+            content: "↑";
+            position: absolute;
+            z-index: 10;
+            color: $P-7FBF99;
+            @include wt900;
+
+            @include pc {
+              font-size: cl(10);
+              top: cl(-5);
+              right: cl(0);
+            }
+            @include sp{
+              font-size: scl(6);
+              top: scl(-3);
+              right: 0;
+            }
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            background: $B-FFFFFF;
+            top: 0;
+
+            @include pc {
+              width: cl(3);
+              height: cl(2);
+              right: cl(3);
+            }
+            @include sp{
+              width: scl(2);
+              height: scl(1);
+              right: scl(2);
+            }
+          }
+        }
+
+        .comment-form-content {
+
+          .C_menu {
+            @include sp{
+              justify-content: left;
+            }
+            .menu-item{
+              @include sp{
+                padding: 3px 6px;
+              }
+            }
+            .select-content {
+              z-index: 1;
+            }
+          }
+
+          .comment-respond {
+            .comment-reply-title {
+              display: none;
+            }
+          }
+
+          .comment-form {
+            position: relative;
+
+            .error-message {
+              position: absolute;
+
+              @include pc {
+                margin-top: cl(-12);
+                font-size: cl(10);
+              }
+              @include sp{
+                margin-top:scl(-10);
+                font-size: scl(8);
+              }
+            }
+
+            .logged-in-as {
+              display: none;
+            }
+
+            .comment-form-image {
+              position: absolute;
+              opacity: 0;
+
+              @include pc {
+                top: cl(-35);
+                right: 0;
+                width: cl(30);
+              }
+              @include sp{
+                top: scl(-40);
+                right: scl(-4);
+                width: scl(20);
+              }
+
+              label {
+                display: none;
+              }
+
+              .comment_image {
+                max-width: 100%;
+              }
+            }
+
+            .comment-form-title {
+              display: flex;
+              position: relative;
+              align-items: center;
+
+
+              @include pc {
+                border-top: cl(2) solid $P-7FBF99;
+                border-bottom: cl(2) solid $P-7FBF99;
+                margin-top: cl(15);
+                padding: cl(13) 0;
+              }
+              @include sp{
+                border-top: scl(1) solid $P-7FBF99;
+                border-bottom: scl(1) solid $P-7FBF99;
+                margin-top: scl(12);
+                padding: scl(5) 0;
+              
+              }
+
+              label {
+                display: none;
+              }
+
+              #comtitle {
+                width: 100%;
+                height: 100%;
+                border: none;
+                outline: none;
+                color: $F-6D6D6D;
+
+                @include pc {
+                  margin-left: cl(11);
+                }
+                @include sp{
+                  margin-left: scl(6);
+                }
+
+              }
+
+              &::before {
+                content: "";
+                @include imgContain("staff-icon.png");
+                display: block;
+
+                @include pc {
+                  width: cl(30);
+                  height: cl(30);
+                }
+                @include sp{
+                  width: scl(13);
+                  height: scl(13);
+                }
+              }
+
+              &::after {
+                content: "タイトルを記入";
+                position: absolute;
+                color: $F-D9D9D9;
+
+                @include pc {
+                  left: cl(40);
+                  font-size: cl(16);
+                }
+                @include sp{
+                  left: scl(23);
+                  font-size: scl(10);
+                }
+              }
+
+              &.input-has-value {
+                &::after {
+                  display: none;
+                }
+              }
+            }
+
+            .comment-form-comment {
+              width: 100%;
+              color: $F-6D6D6D;
+              background-image: linear-gradient(90deg, rgba(127, 191, 153, 0) 0%, rgba(127, 191, 153, 0) 55%, rgba(255, 255, 255, 100) 50%, rgba(255, 255, 255, 100) 100%), linear-gradient(180deg, rgba(127, 191, 153, 0) 0%, rgba(127, 191, 153, 0) 96.5%, rgba(127, 191, 153, 100) 96%);
+              background-repeat: repeat-x, repeat-y;
+              
+              @include pc {
+                font-size: cl(12);
+                height: cl(382);
+                line-height: 2em;
+                background-size: cl(6) 100%, 100% 2em;
+                padding: 0 cl(10);
+                border-bottom: cl(2) solid $P-7FBF99;
+              }
+              @include sp{
+                font-size: scl(10);
+                height: scl(148);
+                line-height: 1.7em;
+                background-size: scl(6) 100%, 100% 1.7em;
+                padding: 0 scl(5);
+                border-bottom: scl(1) solid $P-7FBF99;
+              }
+
+              label {
+                display: none;
+              }
+
+              #comment {
+                width: 100%;
+                height: 95%;
+                background: none;
+                border: none;
+                outline: none;
+                color: $F-6D6D6D;
+
+                @include pc {
+                  font-size: cl(14);
+                  line-height: 1.7em;
+                  padding-left: cl(10);
+                }
+                @include sp{
+                  font-size: scl(10);
+                  line-height: 1.7em;
+                  padding-left: scl(5);
+                }
+              }
+            }
+
+            .form-submit {
+              position: absolute;
+              width: fit-content;
+              @include pc {
+                margin: 3% 0 0 auto;
+                right: 0;
+              }
+              @include sp{
+                margin-left: auto;
+                bottom: -13%;
+                right: 0;
+              }
+
+              input {
+                background: $P-7FBF99;
+                border: none;
+                outline: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                font-size: 0;
+                box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25), inset 0px 0px 10px 0px #BCF3D3;
+
+                @include pc {
+                  width: cl(141);
+                  height: cl(27);
+                  padding: cl(7) cl(25);
+                  border-radius: cl(5);
+                }
+                @include sp{
+                  width: scl(81);
+                  height: scl(15);
+                  border-radius: scl(3);
+                }
+              }
+
+              &::before {
+                content: "質問を送る";
+                position: absolute;
+                color: $F-FFFFFF;
+                pointer-events: none;
+                top: 50%;
+                left: 50%;
+                translate: -50% -50%;
+                @include wt800;
+
+                @include pc {
+                  font-size: cl(12);
+                  letter-spacing: cl(1.2);
+                }
+                @include sp{
+                  width: 100%;
+                  font-size: scl(10);
+                  letter-spacing: scl(1.2);
+                  margin: auto;
+                  text-align: center;
+                  top: 60%;
+                }
+
+              }
+            }
+          }
+          .C_back-btn{
+            position: absolute;
+            @include pc {
+              bottom: 4%;
+            } 
+            @include sp{
+              bottom: 5%;
+            }         
+          }  
+        }
+      }
+    }
+
+    .success {
+      display: none;
+
+      &-content {
+        position: absolute;
+        background: $B-FFFFFF;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: cl(20);
+
+        @include pc {
+          width: calc(725 / 1280 * 100vw);
+          height: calc(476 / 1280 * 100vw);
+          border-radius: cl(30);
+          padding-top: cl(20);
+        }
+        @include sp{
+          width: scl(300);
+          aspect-ratio: 1/1;
+          border-radius: scl(20);
+          padding-top: scl(20);
+        }
+
+        .TX {
+          @include wt800;
+          color: $F-6D6D6D;
+          text-align: center;
+          line-height: 1.3;
+
+          @include pc {
+            font-size: cl(20);
+            letter-spacing: cl(2);
+          }
+          @include sp{
+            font-size: scl(10);
+            letter-spacing: scl(2);
+          }
+        }
+        .img{
+          @include imgContain("goat.png");
+          @include pc{
+            width: cl(175);
+            height: cl(167);
+            margin-left: cl(-50);
+          }
+          @include sp{
+            width: scl(72);
+            height: scl(68);
+            margin-left: -8%;
+          }
+        }
+        .C_back-btn{
+          @include pc{
+            margin: cl(10) cl(30) 0 0;
+          }
+          @include sp{
+            margin: scl(5) scl(15) 0 0 ;
+          }
+
+        }
+      }
+
+    }
+
+    &.open {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: rgba(71, 71, 71, 0.50);
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+.question-grass{
+  @include imgContain("question-grass.png");
+  pointer-events: none;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  @include pc{
+    width: cl(1280);
+    height: cl(117);
+  }
+  @include sp{
+    width:s(800);
+    height: s(73);
+  }
+}

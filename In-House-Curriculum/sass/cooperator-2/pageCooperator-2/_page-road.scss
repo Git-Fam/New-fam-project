@@ -1,0 +1,2397 @@
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
+
+/* -----------------------
+  load
+----------------------- */
+
+.sp-wrap {
+  @include sp {
+    height: 100vh;
+    position: relative;
+  }
+
+  .road-wappaer {
+    background: linear-gradient(180deg, #BCFAFF 0%, #FFF 100%);
+    position: relative;
+
+    @include pc {
+      width: 100%;
+      @include height;
+    }
+
+    @include sp {
+      width: 100%;
+      height: 100vh;
+    }
+
+    .cloud-box {
+      .road-cloud {
+        @include iconContain($road-cloud);
+        position: absolute;
+
+        &:nth-child(1),
+        &:nth-child(7) {
+          @include pc {
+            width: p(250);
+            height: p(160);
+            bottom: p(551);
+            left: p(-90);
+          }
+
+          @include sp {
+            width: 250px;
+            height: 160px;
+            bottom: 551px;
+            left: -90px;
+          }
+        }
+
+        &:nth-child(2) {
+          z-index: 10;
+          scale: -1 1;
+
+          @include pc {
+            width: p(147);
+            height: p(108);
+            bottom: p(474);
+            left: 0;
+          }
+
+          @include sp {
+            width: 120px;
+            height: 77px;
+            bottom: 510px;
+            left: -20px;
+          }
+        }
+
+        &:nth-child(3),
+        &:nth-child(9) {
+          @include pc {
+            width: p(168);
+            height: p(124);
+            bottom: p(495);
+            left: p(195);
+          }
+
+          @include sp {
+            width: 168px;
+            height: 124px;
+            bottom: 395px;
+            left: 95px;
+          }
+        }
+
+        &:nth-child(4),
+        &:nth-child(8) {
+          @include pc {
+            width: p(147);
+            height: p(108);
+            bottom: p(554);
+            right: p(502);
+          }
+
+          @include sp {
+            width: 147px;
+            height: 108px;
+            bottom: 554px;
+            right: 502px;
+          }
+        }
+
+        &:nth-child(5),
+        &:nth-child(10) {
+          scale: -1 1;
+
+          @include pc {
+            width: p(127);
+            height: p(93);
+            bottom: p(576);
+            right: p(81);
+          }
+
+          @include sp {
+            width: 127px;
+            height: 93px;
+            bottom: 476px;
+            right: 81px;
+          }
+        }
+
+        &:nth-child(6) {
+          z-index: 10;
+
+          @include pc {
+            width: p(147);
+            height: p(108);
+            bottom: p(497);
+            right: p(-20);
+          }
+        }
+
+        &:nth-child(11) {
+          z-index: 10;
+
+          @include pc {
+            width: p(290);
+            height: p(210);
+            bottom: p(-60);
+            left: p(-70);
+          }
+        }
+
+        &:nth-child(12) {
+          z-index: 10;
+
+          @include pc {
+            width: p(225);
+            height: p(170);
+            bottom: p(-40);
+            right: p(-100);
+          }
+        }
+
+        &.road-cloud02 {
+          @include iconContain($road-cloud02);
+        }
+      }
+    }
+
+    .archive--contents--tab {
+      z-index: 20;
+      position: absolute;
+      width: 85%;
+      left: 50%;
+      translate: -50% 0;
+
+      @include pc {
+        top: p(73);
+      }
+
+      @include sp {
+        top: s(35);
+        width: 80%;
+        gap: s(15);
+      }
+
+      .archive--item {
+
+        &--img {
+          margin: 0 auto;
+
+          @include pc {
+            width: p(67);
+            height: p(67);
+          }
+
+          @include sp {
+            width: s(30);
+            height: s(30);
+          }
+        }
+
+        &--title {
+          text-align: center;
+        }
+      }
+    }
+
+    .arrow {
+      position: relative;
+
+      @include pc {
+        top: p(105);
+      }
+
+      @include sp {
+        top: s(55);
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        background: $P-F69082;
+        z-index: 30;
+
+        @include pc {
+          width: p(32);
+          height: p(8);
+          border-radius: p(10);
+          right: p(40);
+        }
+
+        @include sp {
+          width: s(20);
+          height: s(4);
+          border-radius: s(10);
+          right: s(10);
+        }
+      }
+
+      &::before {
+        rotate: 40deg;
+
+        @include pc {
+          top: p(-8);
+        }
+
+        @include sp {
+          top: s(-5);
+        }
+      }
+
+      &::after {
+        rotate: -40deg;
+
+        @include pc {
+          top: p(8);
+        }
+
+        @include sp {
+          top: s(5);
+        }
+      }
+
+    }
+
+    .archive--contents--items--wap {
+      display: none;
+
+      @include sp {
+        overflow-x: scroll;
+        width: 115%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+
+      &.active {
+        display: block;
+      }
+
+      .road-header {
+        @include iconCover($green-header);
+        position: absolute;
+        z-index: 20;
+        width: 100%;
+        top: 0;
+
+        @include pc {
+          height: p(60);
+        }
+
+        @include sp {
+          height: s(32);
+          position: fixed;
+        }
+
+        .TL {
+          color: $F-FFFFFF;
+          @include wt700;
+
+          @include pc {
+            font-size: p(23);
+            padding: p(15) 0 0 p(34);
+          }
+
+          @include sp {
+            font-size: s(14);
+            padding: s(7) 0 0 s(10);
+          }
+        }
+
+      }
+
+
+
+      .page-section {
+        z-index: 5;
+        position: absolute;
+        bottom: 0;
+        display: none;
+
+        @include pc {
+          width: p(1280);
+          height: p(700);
+        }
+
+        @include sp {
+          position: static;
+          margin-left: -50px;
+          width: 1280px;
+          height: 700px;
+          overflow: hidden;
+        }
+
+
+        .road-inner {
+          position: relative;
+
+          @include pc {
+            width: p(1032);
+            height: p(360);
+            margin: p(228) 0 0 p(210);
+          }
+
+          @include sp {
+            position: absolute;
+            width: 983px;
+            height: 360px;
+            margin-left: 210px;
+            bottom: 16%;
+          }
+
+
+          .content {
+            width: 100%;
+            height: 100%;
+
+            .road-content {
+              position: relative;
+              width: 100%;
+              height: 100%;
+
+
+              .archive--contents {
+                width: 100%;
+                height: 80%;
+                position: absolute;
+                z-index: 9;
+                left: 50%;
+                transform: translate(-50%, -50%);
+
+                @include pc {
+                  top: 53%;
+                }
+
+                @include sp {
+                  top: 50%;
+                }
+
+                .not-login {
+                  text-align: center;
+                }
+
+                &::before {
+                  content: '';
+                  position: absolute;
+                  top: 4%;
+                  aspect-ratio: 30 / 45;
+                  @include iconContain($slickArrow);
+                  z-index: 1;
+                  animation: arrow 1s infinite;
+
+                  @include pc {
+                    width: p(30);
+                    right: 0%;
+                  }
+
+                  @include sp {
+                    width: s(20);
+                    right: 0%;
+                  }
+
+                  @keyframes arrow {
+
+                    0%,
+                    100% {
+                      transform: translateX(0%);
+                    }
+
+                    50% {
+                      transform: translateX(-50%);
+                    }
+                  }
+
+
+                }
+
+                &--tab {
+                  display: flex;
+                  overflow-x: scroll;
+                  position: relative;
+                  margin: 0 auto;
+
+                  @include pc {
+                    // padding: 0 0 p(60);
+                    width: 90%;
+                    gap: p(35);
+                  }
+
+                  @include sp {
+                    width: 95%;
+                    gap: s(20);
+                  }
+
+
+                  .archive--item {
+                    cursor: pointer;
+                    flex-shrink: 0;
+
+                    @include pc {
+                      width: p(76);
+                    }
+
+                    @include sp {
+                      width: s(50);
+                    }
+
+                    &.active {
+                      cursor: default;
+
+                      .archive--item--img {
+                        border: solid $P-F38549;
+
+                        @include pc {
+                          border-width: p(5);
+                        }
+
+                        @include sp {
+                          border-width: s(2);
+                        }
+                      }
+
+                      .archive--item--title {
+                        background-color: $P-F38549;
+
+                        .TX {
+                          color: $F-FFFFFF;
+                        }
+                      }
+                    }
+
+                    &:hover {
+                      .archive--item--img {
+                        border: solid $P-f3844992;
+
+                        @include pc {
+                          border-width: p(5);
+                        }
+
+                        @include sp {
+                          border-width: s(2);
+                        }
+                      }
+
+                      .archive--item--title {
+                        background-color: $P-f3844992;
+
+                        .TX {
+                          color: $F-FFFFFF;
+                        }
+                      }
+                    }
+
+                    &--img {
+                      border-radius: 50%;
+                      object-fit: cover;
+                      object-position: center;
+                      transition: all 0.3s;
+
+                      @include pc {
+                        width: p(76);
+                        height: p(76);
+                      }
+
+                      @include sp {
+                        width: s(50);
+                        height: s(50);
+                      }
+                    }
+
+                    &--title {
+                      text-align: center;
+                      border-radius: 50px;
+                      transition: all 0.3s;
+                      width: 100%;
+                      font-size: 100%;
+
+                      @include pc {
+                        padding: p(10) 0;
+                      }
+
+                      @include sp {
+                        padding: s(3) 0;
+                      }
+
+                      .TX {
+                        @include wt800;
+                        color: #6B644D;
+                        transition: all 0.3s;
+                        overflow-wrap: break-word;
+                        word-wrap: break-word;
+
+                        @include pc {
+                          font-size: p(14);
+                        }
+
+                        @include sp {
+                          font-size: s(14);
+                        }
+                      }
+                    }
+                  }
+                }
+
+
+                &--items {
+                  position: absolute;
+                  overflow-x: scroll;
+                  overflow-y: hidden;
+
+                  @include pc {
+                    width: 80%;
+                    top: 60%;
+                    right: 0;
+                    translate: 0 -50%;
+                    padding: p(80) 0 0;
+                  }
+
+                  @include sp {
+                    width: 95%;
+                    height: fit-content;
+                    margin: 0 auto;
+                    top: 50%;
+                    left: 50%;
+                    translate: -50% -50%;
+                  }
+
+                  &--wap {
+                    display: none;
+
+                    @include pc {
+                      gap: p(35);
+                    }
+
+                    @include sp {
+                      gap: s(20);
+                    }
+
+                    &.active {
+                      display: flex;
+                    }
+
+                    .archive--items {
+                      aspect-ratio: 2/1;
+                      flex-shrink: 0;
+                      cursor: pointer;
+
+                      @include pc {
+                        width: p(411);
+                        @include column(p(23));
+                        padding-right: p(20);
+                      }
+
+                      @include sp {
+                        width: 50%;
+                        @include column(s(20));
+                      }
+
+                      &:hover {
+
+                        .items--title {
+                          background-color: #F38549;
+
+                          .TL {
+                            color: $F-FFFFFF;
+                          }
+                        }
+                      }
+
+                      @include sp {}
+
+                      .items--img {
+                        width: 100%;
+                        aspect-ratio: 411 / 268;
+                        border-radius: 5px;
+                        background-color: #ffffff;
+
+                        @include pc {
+                          padding: p(17);
+                        }
+
+                        @include sp {
+                          padding: s(10);
+                        }
+
+                        .img {
+                          aspect-ratio: 376 / 236;
+                          width: 100%;
+                          height: fit-content;
+                          object-fit: cover;
+                          object-position: center;
+                        }
+                      }
+
+                      .items--title {
+                        width: 100%;
+                        border-radius: 50px;
+                        background-color: #ffffffb4;
+                        border: solid #F38549;
+                        transition: all 0.3s;
+
+                        @include pc {
+                          padding: p(3) 0;
+                          border-width: p(3);
+                        }
+
+                        @include sp {
+                          padding: s(3) 0;
+                          border-width: s(2);
+                        }
+
+                        .TL {
+                          text-align: center;
+                          @include wt800;
+                          color: #F38549;
+
+                          @include pc {
+                            font-size: p(32);
+                          }
+
+                          @include sp {
+                            font-size: s(16);
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+
+
+              }
+
+
+            }
+
+            .destination {
+              position: absolute;
+
+              .goal-wrap {
+                position: relative;
+                left: 73%;
+                width: fit-content;
+
+                .goal {
+                  display: block;
+                  @include imgContain("goal.png");
+                  z-index: 10;
+                  position: absolute;
+                  left: 50%;
+                  top: 50%;
+                  translate: -50% -50%;
+
+                  @include pc {
+                    width: p(107);
+                    height: p(62);
+                  }
+
+                  @include sp {
+                    width: 107px;
+                    height: 62px;
+                  }
+
+                  &.clear {
+                    @include imgContain("clear.png");
+                  }
+
+                  &.not {
+                    @include imgContain("not.png");
+
+                    @include pc {
+                      width: p(83);
+                      height: p(40);
+                    }
+
+                    @include sp {
+                      width: 83px;
+                      height: 40px;
+                    }
+                  }
+                }
+
+                .goal-bg {
+                  z-index: 5;
+                  @include imgContain("goal-bg.png");
+
+                  @include pc {
+                    width: p(127);
+                    height: p(61);
+                  }
+
+                  @include sp {
+                    width: 127px;
+                    height: 61px;
+                  }
+                }
+
+                .title-board {
+                  @include imgContain("next.png");
+                  position: absolute;
+
+                  @include pc {
+                    width: p(86);
+                    height: p(79);
+                    top: p(-50);
+                    left: 0;
+                  }
+
+                  @include sp {
+                    width: 86px;
+                    height: 79px;
+                    top: -50px;
+                    left: 0;
+                  }
+
+                  .board-TX {
+                    color: $F-FFFFFF;
+
+                    @include pc {
+                      width: p(84);
+                      height: p(38);
+                      line-height: p(38);
+                      padding-left: p(10);
+                      font-size: p(13);
+                    }
+
+                    @include sp {
+                      width: 84px;
+                      height: 38px;
+                      line-height: 38px;
+                      padding-left: 10px;
+                      font-size: 13px;
+                    }
+                  }
+                }
+              }
+
+
+              .character-box {
+                position: absolute;
+                bottom: 0;
+                translate: -50% 0;
+                z-index: 20;
+                pointer-events: none;
+
+                .character {
+                  @include imgContain("koneko.png");
+                  transition: left 0.5s ease;
+                  margin: 0 auto;
+
+
+                  @include pc {
+                    width: p(57);
+                    height: p(54);
+                  }
+
+                  @include sp {
+                    width: 57px;
+                    height: 54px;
+                  }
+                }
+
+                .name {
+                  position: relative;
+
+                  @include pc {
+                    width: p(40);
+                    font-size: p(13);
+                    text-align: center;
+                    bottom: p(-10);
+                  }
+
+                  @include sp {
+                    width: 40px;
+                    font-size: 13px;
+                    text-align: center;
+                    bottom: -10px;
+                  }
+                }
+
+                &.me {
+                  animation: floating-y 2s ease-in-out infinite alternate-reverse;
+
+                  @keyframes floating-y {
+                    0% {
+                      transform: translateY(0%);
+                    }
+
+                    100% {
+                      transform: translateY(-5%);
+                    }
+                  }
+
+                  @include pc {
+                    top: p(-100) !important;
+                  }
+
+                  @include sp {
+                    top: -100px !important;
+                  }
+
+                  .display__character {
+                    position: relative;
+
+                    @include pc {
+                      width: p(56);
+                      height: p(65);
+                    }
+
+                    @include sp {
+                      width: 56px;
+                      height: 65px;
+                    }
+
+                    &::after {
+                      content: "";
+                      position: absolute;
+                      @include imgContain("me.png");
+                      left: 50%;
+                      translate: -50% 0;
+
+                      @include pc {
+                        width: p(165);
+                        height: p(257);
+                        top: p(-170);
+                      }
+
+                      @include sp {
+                        width: 165px;
+                        height: 257px;
+                        top: -170px;
+                      }
+                    }
+                  }
+
+                  .character {}
+                }
+              }
+            }
+          }
+
+          .section-arrow {
+            @include iconContain($next-section);
+            cursor: pointer;
+            position: absolute;
+            z-index: 20;
+
+            @include pc {
+              width: p(46);
+              height: p(120);
+              bottom: p(250);
+            }
+
+            @include sp {
+              width: 46px;
+              height: 120px;
+              bottom: 200px;
+            }
+
+            &.next-section {
+              right: 0;
+            }
+
+            &.back-section {
+              scale: -1 1;
+
+              left: 0;
+
+              @include sp {
+                left: -140px;
+              }
+            }
+          }
+
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          mix-blend-mode: plus-lighter;
+        }
+
+
+        &.page1 {
+          @include imgContain("road-bg.png");
+
+          .content {
+            .tree {
+              @include imgContain("page1-tree.png");
+              position: absolute;
+              z-index: 15;
+
+              @include pc {
+                width: p(132);
+                height: p(151);
+                right: p(304);
+                bottom: p(130);
+              }
+
+              @include sp {
+                width: 132px;
+                height: 151px;
+                right: 304px;
+                bottom: 130px;
+              }
+            }
+
+            .road-content {
+              .destination {
+                &:nth-child(1) {
+                  @include pc {
+                    left: p(-83);
+                    bottom: 0;
+                  }
+
+                  @include sp {
+                    left: -83px;
+                    bottom: 0;
+                  }
+                }
+              }
+            }
+          }
+
+          &::before {
+            @include imgContain("filter-A.png");
+            left: 50%;
+            translate: -50% 0;
+
+            @include pc {
+              width: p(1087);
+              height: p(415);
+              bottom: p(100)
+            }
+          }
+        }
+
+        &.page2,
+        &.page3,
+        &.page4 {
+          @include imgContain("bg-b.png");
+
+          .road-inner {
+            .content {
+              .tree {
+                @include imgContain("page2-tree.png");
+                pointer-events: none;
+                position: absolute;
+                z-index: 15;
+
+                @include pc {
+                  width: p(245);
+                  height: p(234);
+                  left: p(186);
+                  bottom: p(50);
+                }
+
+                @include sp {
+                  width: 245px;
+                  height: 234px;
+                  left: 186px;
+                  bottom: 50px;
+                }
+              }
+            }
+          }
+
+          &::before {
+            @include imgContain("filter-B.png");
+            left: 0;
+
+            @include pc {
+              width: p(1155);
+              height: p(397);
+              bottom: p(100)
+            }
+
+            @include sp {
+              width: 1155px;
+              height: 397px;
+              bottom: 100px
+            }
+          }
+        }
+
+        &.page5 {
+          @include imgContain("bg-c.png");
+
+          .load {
+            @include imgContain("load-c.png");
+            position: absolute;
+
+            @include pc {
+              width: p(715);
+              height: p(220);
+              left: 0;
+              bottom: p(100);
+            }
+
+            @include sp {
+              width: 715px;
+              height: 220px;
+              left: -66px;
+              bottom: 100px;
+            }
+          }
+
+          .road-inner {
+            .content {
+              .tree {
+                position: absolute;
+                z-index: 5;
+                pointer-events: none;
+              }
+
+              .tree-left {
+                @include imgContain("page5-left.png");
+
+                @include pc {
+                  width: p(620);
+                  height: p(565);
+                  left: p(-147);
+                  bottom: p(189);
+                }
+
+                @include sp {
+                  width: 620px;
+                  height: 565px;
+                  left: -147px;
+                  bottom: 189px;
+                }
+              }
+
+              .tree-right {
+
+                @include pc {
+                  @include imgContain("page5-right.png");
+                  width: p(729);
+                  height: p(587);
+                  right: p(-293);
+                  bottom: p(182);
+                }
+
+                @include sp {
+                  @include imgContain("page5-right-sp.png");
+                  width: 472px;
+                  height: 675px;
+                  right: -74px;
+                  bottom: 157px;
+                }
+              }
+
+              .castle {
+                @include imgContain("goal-castle.png");
+                position: absolute;
+
+                @include pc {
+                  width: p(385);
+                  height: p(454);
+                  right: p(326);
+                  bottom: p(163);
+                }
+
+                @include sp {
+                  width: 385px;
+                  height: 454px;
+                  right: 294px;
+                  bottom: 163px;
+                }
+              }
+
+              .road-content {
+                .destination {
+                  &:nth-child(1) {
+                    @include pc {
+                      left: p(-149);
+                      bottom: p(61);
+                    }
+
+                    @include sp {
+                      left: -149px;
+                      bottom: 58px;
+                    }
+                  }
+
+                  &:nth-child(2) {
+                    @include pc {
+                      left: p(45);
+                      bottom: p(30);
+                    }
+
+                    @include sp {
+                      left: 45px;
+                      bottom: 24px;
+                    }
+                  }
+
+                  &:nth-child(3) {
+                    @include pc {
+                      left: p(220);
+                      bottom: p(-22);
+                    }
+
+                    @include sp {
+                      left: 220px;
+                      bottom: -22px;
+                    }
+                  }
+
+                  &:nth-child(4) {
+                    rotate: -90deg;
+
+                    @include pc {
+                      left: p(428);
+                      bottom: p(20);
+                    }
+
+                    @include sp {
+                      left: 410px;
+                      bottom: 20px;
+                    }
+
+                    .goal-wrap,
+                    .character-box {
+                      rotate: 90deg;
+
+                      &.me {
+                        z-index: 10;
+
+                        @include pc {
+                          bottom: p(-100);
+                        }
+
+                        @include sp {
+                          bottom: -100px;
+                        }
+                      }
+                    }
+                  }
+
+                }
+              }
+            }
+          }
+
+          &::before {
+            @include imgContain("filter-C.png");
+            left: 0;
+
+            @include pc {
+              width: p(1177);
+              height: p(254);
+              bottom: p(70)
+            }
+
+            @include sp {
+              width: 1177px;
+              height: 254px;
+              bottom: 70px
+            }
+          }
+
+          &.onepage {
+            display: block;
+
+            &.one-post {
+              .destination {
+                rotate: -11deg;
+
+                @include pc {
+                  width: p(500);
+                  left: p(37) !important;
+                  bottom: p(57) !important;
+                }
+
+                @include sp {
+                  width: 500px;
+                  left: 49px !important;
+                  bottom: 79px !important;
+                }
+
+                .goal-wrap,
+                .character-box {
+                  rotate: 11deg;
+                }
+              }
+            }
+
+            &.two-posts {
+              .road {
+                @include iconContain($load-c-02);
+                position: absolute;
+
+                @include pc {
+                  width: p(86);
+                  height: p(198);
+                  left: p(634);
+                  bottom: p(97);
+                }
+
+                @include sp {
+                  width: 86px;
+                  height: 198px;
+                  left: 563px;
+                  bottom: 97px;
+                }
+              }
+
+              .road-inner {
+                .content {
+                  .road-content {
+                    .destination {
+                      &:nth-child(1) {
+                        @include pc {
+                          left: p(302);
+                          bottom: p(-23);
+                        }
+
+                        @include sp {
+                          left: 270px;
+                          bottom: -23px;
+                        }
+                      }
+
+                      &:nth-child(2) {
+                        rotate: -90deg;
+
+                        @include pc {
+                          left: p(425);
+                          bottom: p(20);
+                        }
+
+                        @include sp {
+                          left: 409px;
+                          bottom: 20px;
+                        }
+
+                        .goal-wrap,
+                        .character-box {
+                          rotate: 90deg;
+
+                          &.me {
+                            z-index: 10;
+
+                            @include pc {
+                              bottom: p(-269);
+                            }
+
+                            @include sp {
+                              bottom: -269px;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            &.three-posts {
+              .road {
+                @include iconContain($load-c-03);
+                position: absolute;
+
+                @include pc {
+                  width: p(354);
+                  height: p(205);
+                  left: p(364);
+                  bottom: p(90);
+                }
+
+                @include sp {
+                  width: 354px;
+                  height: 205px;
+                  left: 298px;
+                  bottom: 90px;
+                }
+              }
+
+              .road-inner {
+                .content {
+                  .road-content {
+                    .destination {
+                      &:nth-child(1) {
+                        @include pc {
+                          left: p(10);
+                          bottom: p(32);
+                        }
+
+                        @include sp {
+                          left: 10px;
+                          bottom: 32px;
+                        }
+                      }
+
+                      &:nth-child(2) {
+                        @include pc {
+                          left: p(258);
+                          bottom: p(-35);
+                        }
+
+                        @include sp {
+                          left: 218px;
+                          bottom: -35px;
+                        }
+                      }
+
+                      &:nth-child(3) {
+                        rotate: -90deg;
+
+                        @include pc {
+                          left: p(425);
+                          bottom: p(20);
+                        }
+
+                        @include sp {
+                          left: 408px;
+                          bottom: 20px;
+                        }
+
+                        .goal-wrap,
+                        .character-box {
+                          rotate: 90deg;
+
+                          &.me {
+                            z-index: 10;
+
+                            @include pc {
+                              bottom: p(-269);
+                            }
+
+                            @include sp {
+                              bottom: -269px;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            &.four-posts {
+              .road {
+                @include iconContain($load-c-04);
+                position: absolute;
+
+                @include pc {
+                  width: p(653);
+                  height: p(205);
+                  left: p(112);
+                  bottom: p(87);
+                }
+
+                @include sp {
+                  width: 653px;
+                  height: 205px;
+                  left: 45px;
+                  bottom: 87px;
+                }
+              }
+
+              .road-inner {
+                .content {
+                  .road-content {
+                    .destination {
+                      &:nth-child(1) {
+                        @include pc {
+                          left: p(-173);
+                          bottom: p(42);
+                        }
+
+                        @include sp {
+                          left: -173px;
+                          bottom: 42px;
+                        }
+                      }
+
+
+                      &:nth-child(2) {
+                        @include pc {
+                          left: p(30);
+                          bottom: p(22);
+                        }
+
+                        @include sp {
+                          left: 30px;
+                          bottom: 13px;
+                        }
+                      }
+
+                      &:nth-child(3) {
+                        @include pc {
+                          left: p(258);
+                          bottom: p(-35);
+                        }
+
+                        @include sp {
+                          left: 258px;
+                          bottom: -35px;
+                        }
+                      }
+
+                      &:nth-child(4) {
+                        rotate: -90deg;
+
+                        @include pc {
+                          left: p(425);
+                          bottom: p(20);
+                        }
+
+                        @include sp {
+                          left: 409px;
+                          bottom: 20px;
+                        }
+
+                        .goal-wrap,
+                        .character-box {
+                          rotate: 90deg;
+
+                          &.me {
+                            z-index: 10;
+
+                            @include pc {
+                              bottom: p(-269);
+                            }
+
+                            @include sp {
+                              bottom: -269px;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+
+            }
+          }
+        }
+
+        &.show {
+          display: block;
+        }
+
+      }
+
+      &.HTML {
+        .page1 {
+          .road-content {
+            .destination {
+              &:nth-child(2) {
+                @include pc {
+                  width: p(250);
+                  right: p(513);
+                  bottom: p(-3);
+                }
+
+                @include sp {
+                  width: 250px;
+                  right: 513px;
+                  bottom: -3px;
+                }
+              }
+
+              &:nth-child(3) {
+                rotate: -140deg;
+
+                @include pc {
+                  width: p(300);
+                  right: p(180);
+                  bottom: p(180);
+                }
+
+                @include sp {
+                  width: 300px;
+                  right: 131px;
+                  bottom: 178px;
+                }
+
+                .goal-wrap,
+                .character-box {
+                  rotate: 140deg;
+                }
+
+                .goal-wrap {
+                  @include pc {
+                    top: p(-44);
+                  }
+
+                  @include sp {
+                    top: -46px;
+                  }
+
+                  .goal-bg {
+                    opacity: 0;
+                  }
+                }
+
+                .character-box {
+                  @include pc {
+                    top: p(-52);
+                  }
+                }
+
+              }
+
+              &:nth-child(4) {
+                scale: -1 1;
+                rotate: 200deg;
+
+                @include pc {
+                  width: p(250);
+                  left: p(24);
+                  bottom: p(177);
+                }
+
+                @include sp {
+                  width: 250px;
+                  left: 15px;
+                  bottom: 178px;
+                }
+
+                .goal-wrap,
+                .character-box {
+                  scale: -1 1;
+                  rotate: 200deg;
+                }
+              }
+
+              &:nth-child(5) {
+                @include pc {
+                  width: p(400);
+                  right: p(44);
+                  bottom: p(68);
+                }
+
+                @include sp {
+                  width: 400px;
+                  right: 34px;
+                  bottom: 68px;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &.jQuery {
+        .page1 {
+          .road-content {
+            .destination {
+              &:nth-child(2) {
+                @include pc {
+                  left: p(198);
+                  bottom: p(14);
+                }
+
+                @include sp {
+                  left: 198px;
+                  bottom: 14px;
+                }
+              }
+
+              &:nth-child(3) {
+                @include pc {
+                  right: p(314);
+                  bottom: 0;
+                }
+
+                @include sp {
+                  right: 314px;
+                  bottom: 0;
+                }
+              }
+
+              &:nth-child(4) {
+                rotate: -90deg;
+
+                @include pc {
+                  right: p(193);
+                  bottom: p(51);
+                }
+
+                @include sp {
+                  right: 193px;
+                  bottom: 83px;
+                }
+
+                .goal-wrap,
+                .character-box {
+                  rotate: 90deg;
+                }
+              }
+
+              &:nth-child(5) {
+                rotate: 180deg;
+
+                @include pc {
+                  left: p(280);
+                  bottom: p(260);
+                }
+
+                @include sp {
+                  left: 280px;
+                  bottom: 260px;
+                }
+
+                .goal-wrap,
+                .character-box {
+                  rotate: 180deg;
+
+                  &.me {
+                    @include pc {
+                      bottom: p(-76);
+                    }
+
+                    @include sp {
+                      bottom: -76px;
+                    }
+                  }
+                }
+              }
+
+              &:nth-child(6) {
+                rotate: 58deg;
+
+                @include pc {
+                  left: p(107);
+                  bottom: p(217);
+                }
+
+                @include sp {
+                  left: 107px;
+                  bottom: 217px;
+                }
+
+                .goal-wrap,
+                .character-box {
+                  rotate: -58deg;
+                }
+              }
+
+              &:nth-child(7) {
+                @include pc {
+                  left: p(340);
+                  bottom: p(91);
+                }
+
+                @include sp {
+                  left: 340px;
+                  bottom: 91px;
+                }
+              }
+
+              &:nth-child(8) {
+                @include pc {
+                  right: p(117);
+                  bottom: p(80);
+                }
+
+                @include sp {
+                  right: 77px;
+                  bottom: 71px;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &.Java,
+      &.React,
+      &.Design {
+        .page1 {
+          .road-content {
+            .destination {
+              &:nth-child(2) {
+                @include pc {
+                  left: p(177);
+                  bottom: p(15);
+                }
+
+                @include sp {
+                  left: 177px;
+                  bottom: 15px;
+                }
+              }
+
+              &:nth-child(3) {
+                @include pc {
+                  right: p(468);
+                  bottom: p(-15);
+                }
+
+                @include sp {
+                  right: 468px;
+                  bottom: -7px;
+                }
+              }
+
+              &:nth-child(4) {
+                rotate: -119deg;
+
+                @include pc {
+                  right: p(142);
+                  bottom: p(51);
+                }
+
+                @include sp {
+                  right: 112px;
+                  bottom: 68px;
+                }
+
+                .goal-wrap,
+                .character-box {
+                  rotate: 119deg;
+                }
+              }
+
+              &:nth-child(5) {
+                rotate: -140deg;
+
+                @include pc {
+                  right: p(280);
+                  bottom: p(213);
+                }
+
+                @include sp {
+                  right: 230px;
+                  bottom: 213px;
+                }
+
+                .goal-wrap,
+                .character-box {
+                  rotate: 140deg;
+                }
+
+                .goal-wrap {
+                  @include pc {
+                    top: p(-44);
+                  }
+
+                  @include sp {
+                    top: -44px;
+                  }
+
+                  .goal-bg {
+                    opacity: 0;
+                  }
+                }
+
+                .character-box {
+                  @include pc {
+                    top: p(-52);
+                  }
+
+                  @include sp {
+                    top: -52px;
+                  }
+                }
+
+              }
+
+              &:nth-child(6) {
+                rotate: 180deg;
+
+                @include pc {
+                  left: p(230);
+                  bottom: p(253);
+                }
+
+                @include sp {
+                  left: 230px;
+                  bottom: 253px;
+                }
+
+                .goal-wrap,
+                .character-box {
+                  rotate: 180deg;
+
+                }
+              }
+
+              &:last-child {
+                @include pc {
+                  right: p(109);
+                  bottom: p(68);
+                }
+
+                @include sp {
+                  right: 80px;
+                  bottom: 68px;
+                }
+              }
+            }
+          }
+        }
+
+        .page2,
+        .page3,
+        .page4 {
+          .road-content {
+            .destination {
+              &:nth-child(1) {
+                @include pc {
+                  left: p(-100);
+                  bottom: p(100);
+                }
+
+                @include sp {
+                  left: -100px;
+                  bottom: 100px;
+                }
+              }
+
+              &:nth-child(2) {
+                rotate: -30deg;
+
+                @include pc {
+                  left: p(68);
+                  bottom: p(161);
+                }
+
+                @include sp {
+                  left: 68px;
+                  bottom: 161px;
+                }
+
+                .goal-wrap,
+                .character-box {
+                  rotate: 30deg;
+                }
+              }
+
+              &:nth-child(3) {
+                rotate: -15deg;
+
+                @include pc {
+                  left: p(280);
+                  bottom: p(231);
+                }
+
+                @include sp {
+                  left: 280px;
+                  bottom: 231px;
+                }
+
+                .goal-wrap,
+                .character-box {
+                  rotate: 15deg;
+                }
+              }
+
+              &:nth-child(4) {
+                rotate: 30deg;
+
+                @include pc {
+                  right: p(403);
+                  bottom: p(255);
+                }
+
+                @include sp {
+                  right: 352px;
+                  bottom: 266px;
+                }
+
+                .goal-wrap,
+                .character-box {
+                  rotate: -30deg;
+                }
+              }
+
+              &:nth-child(5) {
+                rotate: 121deg;
+
+                @include pc {
+                  right: p(302);
+                  bottom: p(129);
+                }
+
+                @include sp {
+                  right: 283px;
+                  bottom: 105px;
+                }
+
+                .goal-wrap,
+                .character-box {
+                  rotate: -121deg;
+                }
+              }
+
+              &:nth-child(6) {
+                rotate: 169deg;
+
+                @include pc {
+                  right: p(464);
+                  bottom: p(18);
+                }
+
+                @include sp {
+                  right: 415px;
+                  bottom: 18px;
+                }
+
+                .goal-wrap,
+                .character-box {
+                  rotate: -169deg;
+                }
+              }
+
+              &:nth-child(7) {
+                rotate: 212deg;
+
+                @include pc {
+                  left: p(272);
+                  bottom: p(10);
+                }
+
+                @include sp {
+                  left: 249px;
+                  bottom: 10px;
+                }
+
+                .goal-wrap,
+                .character-box {
+                  rotate: -212deg;
+                }
+              }
+
+              &:nth-child(8) {
+                @include pc {
+                  left: p(338);
+                  bottom: p(141);
+                }
+
+                @include sp {
+                  left: 338px;
+                  bottom: 141px;
+                }
+              }
+
+
+              &:nth-child(9) {
+                @include pc {
+                  right: p(197);
+                  bottom: p(68);
+                }
+
+                @include sp {
+                  right: 197px;
+                  bottom: 68px;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &.Java {
+        .page1 {
+          .road-content {
+            .destination {
+              &:nth-child(7) {
+                @include pc {
+                  left: p(103);
+                  bottom: p(138);
+                }
+
+                @include sp {
+                  left: 103px;
+                  bottom: 138px;
+                }
+              }
+
+              &:nth-child(8) {
+                @include pc {
+                  right: p(537);
+                  bottom: p(92);
+                  z-index: 17;
+                }
+
+                @include sp {
+                  right: 537px;
+                  bottom: 92px;
+                  z-index: 17;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &.React {
+        .page1 {
+          .road-content {
+            .destination {
+              &:nth-child(7) {
+                @include pc {
+                  left: p(70);
+                  bottom: p(138);
+                }
+
+                @include sp {
+                  left: 70px;
+                  bottom: 138px;
+                }
+              }
+
+              &:nth-child(8) {
+                @include pc {
+                  right: p(600);
+                  bottom: p(102);
+                  z-index: 17;
+                }
+
+                @include sp {
+                  right: 600px;
+                  bottom: 102px;
+                  z-index: 17;
+                }
+              }
+
+
+              &:nth-child(9) {
+                @include pc {
+                  right: p(380);
+                  bottom: p(84);
+                }
+
+                @include sp {
+                  right: 380px;
+                  bottom: 84px;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &.Design {
+        .page1 {
+          .road-content {
+            .destination {
+              &:nth-child(7) {
+                @include pc {
+                  left: p(70);
+                  bottom: p(138);
+                }
+
+                @include sp {
+                  left: 70px;
+                  bottom: 138px;
+                }
+              }
+
+              &:nth-child(8) {
+                @include pc {
+                  right: p(600);
+                  bottom: p(102);
+                  z-index: 17;
+                }
+
+                @include sp {
+                  right: 600px;
+                  bottom: 102px;
+                  z-index: 17;
+                }
+              }
+
+
+              &:nth-child(9) {
+                @include pc {
+                  right: p(380);
+                  bottom: p(84);
+                }
+
+                @include sp {
+                  right: 380px;
+                  bottom: 84px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .road-chat {
+      position: absolute;
+      z-index: 20;
+      height: fit-content;
+
+      @include pc {
+        left: 0;
+        bottom: p(45);
+      }
+
+      @include sp {
+        bottom: 45px;
+        left: 0;
+      }
+
+      #simple-ajax-chat {
+        display: none;
+      }
+
+      .C_chat-content {
+        #latest-messages {
+          @include pc {
+            padding-left: p(15);
+          }
+
+          @include sp {
+            padding-left: 15px;
+          }
+
+          .sac-chat-name {
+            display: none;
+          }
+        }
+
+        .timeline-wrap {
+          .timeline {
+            background: linear-gradient(0deg, rgba(92, 92, 92, 0.00) 0%, rgba(92, 92, 92, 0.40) 15.5%, rgba(92, 92, 92, 0.60) 29%, rgba(92, 92, 92, 0.60) 71.5%, rgba(92, 92, 92, 0.40) 87.5%, rgba(92, 92, 92, 0.00) 100%);
+            color: $F-F1FCD4;
+            position: relative;
+
+            @include pc {
+              font-size: p(10);
+              width: p(165);
+              height: fit-content;
+              padding: p(15) p(10);
+              margin-top: p(23);
+              line-height: 1.5;
+            }
+
+            @include sp {
+              font-size: 10px;
+              width: 165px;
+              height: fit-content;
+              padding: 15px 10px;
+              margin-top: 23px;
+              line-height: 1.5;
+            }
+
+            &::before {
+              @include sp {
+                content: "CHAT";
+                color: $F-857763;
+                background: $B-FFFDED;
+                position: absolute;
+                font-size: 14px;
+                width: 60px;
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+                border-radius: 5px;
+                top: -20px;
+                animation: good-jamp 2s ease 1s infinite;
+
+                @keyframes good-jamp {
+                  0% {
+                    transform: translateY(0%);
+                  }
+
+                  50% {
+                    transform: translateY(15%);
+                  }
+
+                  100% {
+                    transform: translateY(0%);
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .C_reaction {
+          background: $B-F69064;
+
+          @include pc {
+            width: p(165);
+            border-radius: 0 p(15) p(15) 0;
+            margin-top: p(23);
+            padding: p(10) p(8) p(10) p(10);
+          }
+
+          @include sp {
+            width: 165px;
+            border-radius: 0 15px 15px 0;
+            margin-top: 23px;
+            padding: 10px 8px 10px 10px;
+          }
+
+          .TX {
+            @include sp {
+              font-size: 13px;
+            }
+          }
+
+          .reaction-counter {
+            position: absolute;
+
+            @include pc {
+              top: p(30);
+              right: p(67);
+            }
+
+            @include sp {
+              top: 30px;
+              right: 67px;
+            }
+          }
+
+          .reaction-counter {
+            @include sp {
+              font-size: 12px;
+            }
+          }
+
+          .coin-counter {
+            @include pc {
+              margin: p(3) 0 0 auto;
+            }
+
+            @include sp {
+              margin: 3px 0 0 auto;
+            }
+          }
+        }
+      }
+    }
+
+    .under-menu {
+      position: absolute;
+      z-index: 99;
+      background: rgba(92, 92, 92, 0.50);
+      width: 100%;
+      transition: all 0.5s;
+
+      @include pc {
+        padding: p(64) p(38) p(34);
+        bottom: p(-160);
+      }
+
+      @include sp {
+        padding: 53px 10px 18px 10px;
+        bottom: -87px;
+      }
+
+      .menu-arrow {
+        position: absolute;
+        left: 50%;
+        translate: -50% 0;
+
+        @include pc {
+          top: p(14);
+        }
+
+        @include sp {
+          top: 15px;
+        }
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          background-color: $B-FFFFFF;
+          top: 0;
+
+          @include pc {
+            border-radius: p(4);
+            width: p(30);
+            height: p(4);
+          }
+
+          @include sp {
+            width: 14px;
+            height: 2px;
+            border-radius: 2px;
+          }
+        }
+
+        &::before {
+          rotate: -30deg;
+
+          @include pc {
+            right: p(-3);
+          }
+
+          @include sp {
+            right: -1px;
+          }
+        }
+
+        &::after {
+          rotate: 30deg;
+
+          @include pc {
+            left: p(-4);
+          }
+
+          @include sp {
+            left: -2px;
+          }
+        }
+      }
+
+      .menu-box {
+        display: flex;
+        justify-content: right;
+
+        @include pc {
+          gap: p(20);
+        }
+
+        @include sp {
+          gap: 10px;
+        }
+
+        .btn {
+          @include pc {
+            width: p(92);
+            height: p(92);
+          }
+
+          @include sp {
+            width: 57px;
+            height: 57px;
+          }
+
+          &.road-my-btn {
+            @include imgContain("my-btn.png");
+          }
+
+          &.road-ranking-btn {
+            @include imgContain("ranking-btn.png");
+          }
+
+          &.road-column-btn {
+            @include imgContain("column-btn.png");
+          }
+
+          &.road-question-btn {
+            @include imgContain("question-btn.png");
+          }
+
+          &.road-game-btn {
+            @include imgContain("game-btn.png");
+          }
+        }
+      }
+
+      &.open {
+        bottom: 0;
+        transition: all 0.5s;
+      }
+    }
+  }
+}

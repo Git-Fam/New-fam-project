@@ -1,0 +1,705 @@
+@use "../global" as *;
+
+/* -----------------------
+  continuous-board
+----------------------- */
+
+
+.continuous-board {
+  @include height;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(71, 71, 71, 0.60);
+  z-index: 100;
+
+  @include pc {
+    min-height: pm(700, 700);
+  }
+
+  @include sp {
+
+    @media screen and (max-width: 767px) and (min-width: 550px) {
+      min-height: 900px;
+    }
+  }
+
+  &.none {
+    display: none;
+  }
+
+
+  .board-close {
+    position: absolute;
+    aspect-ratio: 1/1;
+    background: #000;
+    border-radius: 50%;
+    cursor: pointer;
+
+    @include pc {
+      width: p(30);
+      top: p(20);
+      right: p(20);
+    }
+
+    @include sp {
+      width: s(20);
+      top: s(10);
+      right: s(10);
+    }
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      width: 60%;
+      background-color: #fff;
+
+      @include pc {
+        height: p(4);
+      }
+
+      @include sp {
+        height: s(2);
+      }
+
+      &:nth-child(1) {
+        rotate: 40deg;
+      }
+
+      &:nth-child(2) {
+        rotate: -40deg;
+      }
+    }
+  }
+
+
+  &__container {
+    background: #F4E7BC;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    border-radius: 10px;
+
+    @include pc {
+      width: p(1148);
+      // height: p(565);
+    }
+
+    @include sp {
+      width: 95%;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      width: 100%;
+      height: 100%;
+      @include imgCover("log-board/continuous-board-wrap.png");
+      background-position: center top;
+      z-index: 3;
+      mix-blend-mode: plus-lighter;
+    }
+
+    .container__title {
+
+      @include pc {
+        padding: p(10) p(20) 0 p(30);
+      }
+
+      @include sp {
+        padding: s(5) s(10) 0 s(15);
+      }
+
+      .TL {
+        line-height: 1.3;
+        @include wt900;
+        letter-spacing: 0.2rem;
+        position: relative;
+        -webkit-text-stroke-color: #887537;
+
+        @include pc {
+          -webkit-text-stroke-width: p(10);
+          font-size: p(57);
+        }
+
+        @include sp {
+          -webkit-text-stroke-width: s(3);
+          font-size: s(15);
+        }
+
+        &::before {
+          content: attr(data-text);
+          position: absolute;
+          -webkit-text-stroke: 0px;
+          top: 50%;
+          left: 50%;
+          translate: -50% -50%;
+          background: linear-gradient(358deg, #BAA661 11.27%, #FDF1C7 59.24%, #A7924D 89.55%);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          width: 100%;
+        }
+
+        &::after {
+          content: attr(data-text);
+          width: 100%;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          translate: -50% -50%;
+          z-index: -1;
+          text-shadow: 0px 0px 20px #fff;
+
+          @include pc {
+            font-size: p(57);
+          }
+
+          @include sp {
+            font-size: s(15);
+          }
+        }
+      }
+
+      .TX {
+        aspect-ratio: 510/158;
+        position: absolute;
+        rotate: 7deg;
+        z-index: 6;
+
+        @include pc {
+          width: p(510);
+          right: p(-70);
+          top: p(-16);
+        }
+
+        @include sp {
+          width: s(170);
+          right: s(-10);
+          top: s(-10);
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          object-position: center;
+        }
+      }
+    }
+
+    .container__content {
+      width: 100%;
+      border-radius: 0 0 10px 10px;
+      position: relative;
+      z-index: 4;
+      background: linear-gradient(179deg,
+          #aa9b6b 0%,
+          #f4e7bc 15%,
+          #786835 65%,
+          #ede0b4 100%);
+
+      @include pc {
+        margin-top: p(15);
+        padding: 0 p(10) p(10);
+      }
+
+      @include sp {
+        margin-top: s(8);
+        padding: 0 s(5) s(5);
+      }
+
+      &__inner {
+        width: 100%;
+        background: #fff;
+
+        @include pc {
+          padding: p(30) p(30) p(40);
+        }
+
+        @include sp {
+          padding: s(10) s(10) s(20);
+        }
+
+        .content__title {
+          background: linear-gradient(179deg,
+              #aa9b6b 0%,
+              #f4e7bc 15%,
+              #786835 65%,
+              #ede0b4 100%);
+          width: fit-content;
+          border-radius: 20px;
+
+
+          @include pc {
+            padding: p(6);
+          }
+
+          @include sp {
+            padding: s(3);
+          }
+
+          &__inner {
+            background-color: #444444;
+            border-radius: 15px;
+
+            @include pc {
+              padding: p(1) p(4) p(6) p(12);
+            }
+
+            @include sp {
+              padding: s(1) s(2) s(3) s(6);
+            }
+
+            .TX {
+              color: #FFF;
+              @include wt700;
+              line-height: 1.5;
+              letter-spacing: 0.115rem;
+
+              @include pc {
+                font-size: p(23);
+              }
+
+              @include sp {
+                font-size: s(13);
+              }
+
+              span {
+                color: #75FC51;
+                @include wt700;
+
+                @include pc {
+                  font-size: p(30);
+                }
+
+                @include sp {
+                  font-size: s(15);
+                }
+              }
+            }
+          }
+        }
+
+        .content__stamp {
+          display: flex;
+          align-items: center;
+          position: relative;
+
+          @include pc {
+            width: p(868);
+            margin-top: p(34);
+            gap: p(26);
+          }
+
+          @include sp {
+            width: s(260);
+            margin-top: s(10);
+            gap: s(5);
+          }
+
+          .stamp__item {
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            @include iconContain($dot-circle);
+
+            @include pc {
+              width: calc(100% / 9 - (p(26) * 8 / 9));
+            }
+
+            @include sp {
+              width: calc(100% / 9 - (s(5) * 8 / 9));
+            }
+
+            &.stamp-clear {
+              background-image: unset;
+              border: solid #D3BE74;
+              position: relative;
+
+              @include pc {
+                border-width: p(5);
+              }
+
+              @include sp {
+                border-width: s(2);
+              }
+
+              &::before {
+                content: "";
+                aspect-ratio: 70/51;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                translate: -50% -50%;
+                width: 90%;
+                @include iconContain($dog-trace);
+                rotate: -37deg;
+              }
+            }
+          }
+
+          .stamp__item__gale {
+            aspect-ratio: 1/1;
+            position: absolute;
+            background: linear-gradient(140deg, #d3be74 0%, #f2e7c2 40%, #c7b46f 100%);
+            border-radius: 50%;
+            bottom: 0;
+
+            @include pc {
+              width: p(142);
+              left: calc(100% + p(26));
+              padding: p(7);
+            }
+
+            @include sp {
+              width: s(50);
+              left: calc(100% + s(16));
+              padding: s(2);
+            }
+
+            &.stamp-clear {
+              .stamp__item__gale__inner {
+                .ticket-img {
+                  animation: stamp-ticket-scale 2s linear infinite;
+
+                  @keyframes stamp-ticket-scale {
+                    0%,
+                    100% {
+                      transform: scale(1);
+                    }
+
+                    50% {
+                      transform: scale(1.1);
+                    }
+                  }
+                }
+
+                .flash-img {
+                  animation: stamp-flash-rotate 3.5s linear infinite;
+                  display: block;
+
+                  @keyframes stamp-flash-rotate {
+                    0% {
+                      transform: rotate(0deg);
+                    }
+
+                    100% {
+                      transform: rotate(360deg);
+                    }
+                  }
+                }
+              }
+            }
+
+            &__inner {
+              width: 100%;
+              height: 100%;
+              border-radius: 50%;
+              background-color: #ede5c7;
+              position: relative;
+
+              .ticket-img {
+                aspect-ratio: 199/118;
+                @include iconContain($ticket-img);
+                position: absolute;
+                top: 50%;
+                translate: 0 -50%;
+                rotate: 162deg;
+                filter: drop-shadow(5px -5px 10px #00000054);
+
+
+                @include pc {
+                  width: p(180);
+                  left: p(-5);
+                }
+
+                @include sp {
+                  width: s(55);
+                  left: s(-2);
+                }
+              }
+
+              .flash-img {
+                aspect-ratio: 167/180;
+                @include imgContain("log-board/log-board-item-highlight.png");
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                translate: -50% -50%;
+                opacity: 0.3;
+                mix-blend-mode: plus-lighter;
+                filter: blur(2px);
+                display: none;
+
+                @include pc {
+                  width: p(180);
+                }
+
+                @include sp {
+                  width: s(55);
+                }
+              }
+            }
+
+            &__text {
+              position: absolute;
+              width: fit-content;
+              left: 50%;
+              translate: -50% 0;
+
+              @include pc {
+                top: calc(100% + p(2));
+              }
+
+              @include sp {
+                top: calc(100% + s(1));
+              }
+
+              .TX {
+                color: #D5C27C;
+                @include wt700;
+                line-height: 1.5;
+                white-space: nowrap;
+
+                @include pc {
+                  letter-spacing: 0.115rem;
+                  font-size: p(23);
+                }
+
+                @include sp {
+                  letter-spacing: 0;
+                  font-size: s(10);
+                }
+
+                span {
+                  @include wt700;
+                  line-height: 1.5;
+
+                  @include pc {
+                    letter-spacing: 0.115rem;
+                    font-size: p(20);
+                  }
+
+                  @include sp {
+                    letter-spacing: 0;
+
+                    font-size: s(9);
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .content__plus {
+          border-radius: 10px;
+          background: #FBF8D9;
+          position: relative;
+
+          @include pc {
+            margin-top: p(55);
+            padding: p(43) 0 p(43) p(109);
+          }
+
+          @include sp {
+            margin-top: s(20);
+            padding: s(25) 0 s(20) s(10);
+          }
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            width: 100%;
+            height: 100%;
+            @include imgCover("log-board/continuous-board-wrap.png");
+            background-position: center top;
+            z-index: 1;
+            mix-blend-mode: plus-lighter;
+          }
+
+
+          .plus__more {
+            background: linear-gradient(270deg, #F6E468 0%, #F2D50C 100%);
+            width: fit-content;
+            border-radius: 50%;
+            position: absolute;
+            z-index: 2;
+
+            @include pc {
+              padding: p(27) p(17);
+              top: p(-22);
+              left: p(16);
+            }
+
+            @include sp {
+              padding: s(10) s(6);
+              top: s(-15);
+              left: s(5);
+            }
+
+            .TX {
+              color: #FFF;
+              @include wt900;
+              line-height: 1.5;
+              letter-spacing: 0.115rem;
+
+              @include pc {
+                font-size: p(28);
+              }
+
+              @include sp {
+                font-size: s(12);
+              }
+            }
+          }
+
+          &__inner {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+
+            @include pc {
+              gap: p(51);
+            }
+
+            @include sp {
+              gap: s(20);
+            }
+
+            .inner__text {
+
+              .TX {
+                color: #887537;
+                @include wt700;
+                line-height: 1.5;
+                letter-spacing: 0.115rem;
+
+                @include pc {
+                  font-size: p(28);
+                }
+
+                @include sp {
+                  font-size: s(12);
+                }
+
+                span {
+                  color: #887537;
+                  @include wt700;
+                  line-height: 1.5;
+
+                  @include pc {
+                    padding-left: p(70);
+                    font-size: p(23);
+                  }
+
+                  @include sp {
+                    padding-left: s(10);
+                    font-size: s(10);
+                  }
+                }
+              }
+            }
+
+            .inner__img {
+              position: relative;
+              width: fit-content;
+
+              .img--badge {
+                position: relative;
+                z-index: 3;
+                aspect-ratio: 301/67;
+                @include imgContain("badge-month.png");
+
+                @include pc {
+                  width: p(301);
+                }
+
+                @include sp {
+                  width: s(90);
+                }
+              }
+
+              .img--ticket {
+                aspect-ratio: 183/97;
+                @include iconContain($ticket-img);
+                position: absolute;
+                z-index: 1;
+                rotate: 17deg;
+
+                @include pc {
+                  width: p(108);
+                  top: p(-10);
+                  right: p(-67);
+                }
+
+                @include sp {
+                  width: s(40);
+                  top: s(-10);
+                  right: s(-20);
+                }
+              }
+
+              .img--coin {
+                @include imgContain("log-board/log-board-item-02.png");
+                aspect-ratio: 1/1;
+                border-radius: 50%;
+                background-color: #fff;
+                border: solid #fff;
+                position: absolute;
+                z-index: 2;
+                box-shadow: 0px 0px 3px #00000054;
+
+                @include pc {
+                  width: p(47);
+                  border-width: p(2);
+                }
+
+                @include sp {
+                  width: s(15);
+                  border-width: s(1);
+                }
+
+                &.coin-01 {
+
+                  @include pc {
+                    bottom: 0;
+                    right: p(-24);
+                  }
+
+                  @include sp {
+                    bottom: 0;
+                    right: s(-8);
+                  }
+                }
+
+                &.coin-02 {
+
+                  @include pc {
+                    bottom: p(-12);
+                    left: calc(100% + p(10));
+                  }
+
+                  @include sp {
+                    bottom: s(-4);
+                    left: calc(100% + s(3));
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

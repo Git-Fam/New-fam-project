@@ -1,0 +1,323 @@
+@use "../global" as *;
+
+/* -----------------------
+  entry
+----------------------- */
+
+.entry {
+  @include height;
+  width: 100%;
+  position: relative;
+  background: radial-gradient(73.57% 73.57% at 50% 50%, #FFFFFE 50%, #DFF675 95%);
+  
+  &.singin{
+
+    @include pc{
+      height: unset;
+      padding: 100px 0;
+    }
+
+    @include sp{
+      height: unset;
+      padding: 100px 0;
+    }
+
+    .entry--sheet{
+      top: unset;
+      left: unset;
+      translate: unset;
+      margin: 0 auto;
+    }
+  }
+
+  &--letter {
+    aspect-ratio: 698 / 759;
+    top: 30%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: 1;
+    @include imgContain('letter.png');
+    position: fixed;
+    
+    @include pc {
+      // position: absolute;
+      width: 750px;
+    }
+
+    @include sp {
+      width: 100%;
+    }
+  }
+
+  &--sheet {
+    background: $B-FFF8F1;
+    border-radius: 5px;
+    z-index: 2;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    
+    @include pc {
+      width: 523px;
+      padding: 50px 23px 70px;
+    }
+
+    @include sp {
+      width: 80%;
+      padding: 50px 10px 70px;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      @include imgCover('entry-sheet-ribbon.png');
+
+      @include pc {
+        height: 23px;
+      }
+
+      @include sp {
+        height: 15px;
+      }
+    }
+
+    &::after {
+      rotate: 180deg;
+      top: unset;
+      bottom: 0;
+    }
+
+    &--title {
+
+      @include pc {
+        margin-bottom: 30px;
+      }
+
+      @include sp {
+        margin-bottom: 20px;
+      }
+
+      .TL {
+        @include wt800;
+        text-align: center;
+        letter-spacing: 0.04em;
+        color: $F-877E61;
+
+        @include pc {
+          font-size: 33px;
+
+        }
+
+        @include sp {
+          font-size: 25px;
+        }
+      }
+    }
+
+    &--inputs {
+      width: 100%;
+      // background: #ffffff;
+
+      // フォーーーーーーム
+      form {
+
+        .swpm-registration-form-section {
+          display: flex;
+          flex-direction: column;
+
+          .swpm-username-row{
+            order: 1;
+
+            .swpm-form-desc{
+
+              ul{
+
+                li{
+
+                  &:nth-child(2){
+                  color: transparent;
+                  position: relative;
+
+                  &::before{
+                    content: '3文字以上でご記入ください';
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    translate: 0 -50%;
+                    color: #cc0000 ;
+                  }
+                }
+
+                }
+              }
+            }
+          }
+          .swpm-email-row{
+            order: 2;
+          }
+          .swpm-password-row{
+            order: 3;
+          }
+          .swpm-repass-row{
+            order: 4;
+
+            .swpm-form-desc{
+
+              ul{
+
+                li{
+                  color: transparent;
+                  position: relative;
+
+                  &::before{
+                    content: 'パスワードが一致しません';
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    translate: 0 -50%;
+                    color: #cc0000 ;
+                  }
+
+                }
+              }
+            }
+          }
+          .swpm-firstname-row {
+            order: 6;
+          }
+          .swpm-lastname-row {
+            order: 5;
+          }
+          .swpm-membership-level-row{
+            order: 7;
+          }
+          .swpm-submit-section{
+            order: 8;
+          }
+        }
+
+        label {
+          display: block;
+          margin-bottom: 10px;
+          @include wt900;
+          color: $F-877E61;
+
+          @include pc {
+            font-size: 16px;
+          }
+
+          @include sp {}
+
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"],
+        button[type="submit"] {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          box-sizing: border-box;
+          width: 100%;
+          padding: 10px;
+          margin: 0;
+          border: none;
+          background: $P-F5EADE;
+          border-radius: 5px;
+          @include wt900;
+          color: $F-877E61;
+
+          @include pc {
+            font-size: 16px;
+          }
+
+          @include sp {}
+        }
+
+        input[type="submit"],
+        button[type="submit"] {
+          background: #F38549;
+          color: $F-F8F7F8;
+        }
+
+        .swpm-subscription-button-submit{
+          margin: 0 auto !important;
+          display: block;
+        }
+
+        .swpm-remember-me {
+          display: flex;
+
+          @include pc {
+            gap: 10px;
+          }
+
+          @include sp {}
+        }
+
+        .swpm-forgot-pass-link,
+        .swpm-join-us-link {
+          .swpm-login-form-pw-reset-link,
+          .swpm-login-form-register-link {
+            color: $F-877E61;
+            font-size: 12px;
+
+          }
+        }
+
+        .swpm-login-error-msg {
+          font-size: 12px;
+        }
+
+        .swpm-form-membership-level-value {
+          @include wt900;
+          color: $F-877E61;
+
+          @include pc {
+            font-size: 20px;
+          }
+
+          @include sp {}
+
+        }
+
+        // .swpm-join-us-link {
+        //   display: none;
+        // }
+
+
+
+      }
+
+      .swpm-login-widget-logged{
+        @include column(20px);
+
+        .swpm-logged-label{
+          @include wt900;
+          color: $F-877E61;
+          font-size: 16px;
+        }
+        .swpm-logged-value{
+          @include wt600;
+          color: $F-877E61;
+          font-size: 16px;
+          margin-top: 10px;
+        }
+
+        .swpm-edit-profile-link,
+        .swpm-logged-logout-link{
+          a{
+            @include wt400;
+            color: $F-877E61;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}

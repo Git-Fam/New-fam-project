@@ -1,0 +1,108 @@
+@use "../../global" as *;
+@use "../globalCooperator-2" as *;
+
+/* -----------------------
+  page-04
+----------------------- */
+
+
+.page-wappaer{
+  .page{
+    .flag{
+      @include iconContain($testFlag);
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      @include pc{
+        width:p(770);
+        height:p(229);
+        top: -2%;
+      }
+      @include sp{
+        width: s(350);
+        height: s(100);
+        top: -1.5%;
+      }
+      .TX{
+        color: #FFF;
+        @include pc{
+          font-size: p(60);
+        }
+        @include sp{
+          font-size: s(28);
+        }
+        span{
+          @include wt900;
+          position: absolute;
+          &:nth-child(1){
+            transform: rotate(11.003deg);
+            @include pc{
+              top: 26%;
+              left: 14%;
+            }
+            @include sp{
+              top: 26%;
+              left: 14%;
+            }
+          }
+          &:nth-child(2){
+            transform: rotate(1.236deg);
+            @include pc{
+              top: 35%;
+              left: 34.5%;
+            }
+            @include sp{
+              top: 35%;
+              left: 34.5%;
+            }
+          }  
+          &:nth-child(3){
+            transform: rotate(-1.236deg);
+            @include pc{
+              top: 35%;
+              right: 35.5%;
+            }
+            @include sp{
+              top: 35%;
+              right: 35.5%;
+            }
+          }  
+          &:nth-child(4){
+            transform: rotate(-10.328deg);
+            @include pc{
+              top: 26%;
+              right: 14%;
+            }
+            @include sp{
+              top: 26%;
+              right: 14%;
+            }
+          }    
+        }
+      } 
+    }
+    .TX-bg{
+      @include pc{
+        height:clamp(200px,calc((250/1280)*100vw),250px);
+      }
+    }
+    .TX-wrap{
+      .result{
+        text-align: center;
+        color: $namebg;
+        @include wt900;
+        @include pc{
+          font-size: clamp(80px,calc(( 110/1280)*100vw),110px);
+        }
+        @include sp{
+          font-size: clamp(40px,calc(( 70/390)*100vw),70px);
+
+        }
+        span{
+          @include wt900;
+        }
+      }
+    }
+  }
+}

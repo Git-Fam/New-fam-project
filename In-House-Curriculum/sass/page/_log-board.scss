@@ -1,0 +1,665 @@
+@use "../global" as *;
+
+/* -----------------------
+  log-board
+----------------------- */
+
+.my-warp {
+  @include height;
+  width: 100%;
+  @include imgCover('page-my.jpg');
+  background-position: bottom left;
+  position: relative;
+  overflow: hidden;
+
+  @include pc {
+    padding: p(20) 0 pm(40, 40) p(40);
+    min-height: pm(650, 650);
+  }
+
+  @include sp {
+    padding: s(40) s(20);
+
+    @media screen and (max-width: 767px) and (min-width: 550px) {
+      min-height: 900px;
+    }
+  }
+}
+
+
+.log-board {
+  @include height;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #BBE651;
+  z-index: 99;
+
+  @include pc {
+    min-height: pm(700, 700);
+  }
+
+  @include sp {
+
+    @media screen and (max-width: 767px) and (min-width: 550px) {
+      min-height: 900px;
+    }
+  }
+
+  &.none {
+    display: none;
+  }
+
+  .board-close {
+    position: absolute;
+    aspect-ratio: 1/1;
+    background: #000;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 999;
+
+    @include pc {
+      width: p(30);
+      top: p(20);
+      right: p(20);
+    }
+
+    @include sp {
+      width: s(20);
+      top: s(10);
+      right: s(10);
+    }
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      width: 60%;
+      background-color: #fff;
+
+      @include pc {
+        height: p(4);
+      }
+
+      @include sp {
+        height: s(2);
+      }
+
+      &:nth-child(1) {
+        rotate: 40deg;
+      }
+
+      &:nth-child(2) {
+        rotate: -40deg;
+      }
+    }
+  }
+
+
+  &--top {
+    height: 42.86%;
+    @include imgCover('log-board/log-board-bg.jpg');
+    background-position: center top 60%;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+
+    // 丘
+    &__hills {
+      width: 100%;
+      @include imgCover('log-board/log-board-top-hills.png');
+      background-position: center bottom;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+
+      @include pc {
+        height: 30%;
+      }
+
+      @include sp {
+        height: 40%;
+      }
+    }
+
+    // 木
+    &__trees {
+
+      .trees__img {
+        position: absolute;
+        z-index: 3;
+
+        &.trees-01 {
+          @include imgContain('log-board/log-board-top-trees-01.png');
+          aspect-ratio: 488/633;
+
+          @include pc {
+            left: clamp(-70px, p(-70), -10px);
+            bottom: 0;
+            width: clamp(400px, p(600), 500px);
+          }
+
+          @include sp {
+            left: -30px;
+            bottom: 30px;
+            height: 100%;
+          }
+        }
+
+        &.trees-02 {
+          @include imgContain('log-board/log-board-top-trees-02.png');
+          right: 0;
+          aspect-ratio: 503/636;
+
+          @include pc {
+            right: clamp(-20px, p(-20), -20px);
+            bottom: 0;
+            width: clamp(400px, p(500), 550px);
+          }
+
+          @include sp {
+            right: -30px;
+            bottom: 10px;
+            height: 100%;
+          }
+        }
+      }
+    }
+
+    // キャラクター
+    &__characters {
+
+      .characters__img {
+        position: absolute;
+
+        // 猫
+        &.characters-01 {
+          @include imgContain('log-board/log-board-chars-01.png');
+          aspect-ratio: 252/279;
+          z-index: 5;
+          rotate: 8deg;
+
+          @include pc {
+            width: clamp(200px, p(252), 230px);
+            left: clamp(60px, p(180), 200px);
+            bottom: clamp(15px, p(30), 30px);
+
+            @media screen and (max-width: 1100px) and (min-width: 768px) {
+              left: 30px;
+            }
+          }
+
+          @include sp {
+            width: clamp(0px, s(150), 150px);
+            left: 0px;
+            bottom: 30px;
+          }
+        }
+
+        // たぬき
+        &.characters-02 {
+          @include imgContain('log-board/log-board-chars-02.png');
+          aspect-ratio: 222/183;
+          z-index: 2;
+          rotate: -5deg;
+
+          @include pc {
+            width: clamp(200px, p(300), 250px);
+            right: clamp(60px, p(200), 230px);
+            bottom: clamp(15px, p(50), 50px);
+
+            @media screen and (max-width: 1100px) and (min-width: 768px) {
+              right: 30px;
+            }
+          }
+
+          @include sp {
+            width: clamp(0px, s(150), 150px);
+            right: 0px;
+            bottom: 30px;
+          }
+        }
+
+        // うさぎ
+        &.characters-03 {
+          @include imgContain('log-board/log-board-chars-03.png');
+          aspect-ratio: 89/133;
+          z-index: 2;
+
+          @include pc {
+            width: clamp(89px, p(89), 100px);
+            right: clamp(10px, p(20), 20px);
+            bottom: clamp(10px, p(30), 20px);
+            bottom: p(80);
+          }
+
+          @include sp {
+            width: clamp(0px, s(80), 80px);
+            right: -20px;
+            bottom: 30px;
+          }
+        }
+      }
+    }
+
+    // メイン
+    &__main {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      z-index: 5;
+      top: 50%;
+      translate: 0 -50%;
+
+      .main__title {
+        aspect-ratio: 467/80;
+        @include iconContain($log-board-title);
+        margin: 0 auto;
+
+        @include pc {
+          width: clamp(300px, p(467), 467px);
+          padding-top: clamp(5px, p(5), 5px);
+        }
+
+        @include sp {
+          width: clamp(0px, s(200), 300px);
+          padding-top: clamp(0px, s(3), 5px);
+        }
+
+        .TL {
+          text-align: center;
+          color: #FAFD76;
+          @include wt900;
+          line-height: 1.5;
+          letter-spacing: 0.15rem;
+          background: linear-gradient(180deg, #f26c59, #f7c06b 40%, #f26c59);
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+
+          @include pc {
+            font-size: clamp(20px, p(30), 30px);
+          }
+
+          @include sp {
+            font-size: clamp(0px, s(14), 20px);
+          }
+        }
+      }
+
+      .main__month {
+
+        .TX {
+          text-align: center;
+          color: #f49754;
+          @include kavoon;
+          line-height: 0.8;
+          text-shadow: 1px 1px 1px #0000006b;
+
+          @include pc {
+            font-size: clamp(100px, p(255), 255px);
+          }
+
+          @include sp {
+            font-size: clamp(0px, s(100), 100px);
+          }
+
+          img {
+            margin: 0 auto;
+            aspect-ratio: 1.5/1;
+            object-fit: contain;
+            object-position: center;
+
+            @include pc {
+              margin-top: clamp(20px, p(50), 20px);
+              width: clamp(200px, p(256), 256px);
+            }
+
+            @include sp {
+              margin-top: clamp(0px, s(20), 20px);
+              width: clamp(0px, s(180), 200px);
+            }
+          }
+        }
+      }
+    }
+
+    // 草
+    &__grassy {
+      width: 100%;
+      @include imgCover('log-board/log-board-top-grassy.png');
+      background-position: center top;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 6;
+      height: 60%;
+    }
+
+    // 日光
+    &__sunlight {
+
+      .sunlight__img {
+        position: absolute;
+        z-index: 7;
+
+        &.sunlight-01 {
+          @include imgContain('log-board/log-board-top-sunlight-01.png');
+          aspect-ratio: 105/165;
+          opacity: 0.5;
+
+          @include pc {
+            width: clamp(100px, p(105), 105px);
+            bottom: p(10);
+            left: p(10);
+          }
+
+          @include sp {}
+        }
+
+        &.sunlight-02 {
+          @include imgContain('log-board/log-board-top-sunlight-02.png');
+          aspect-ratio: 251/236;
+          opacity: 0.5;
+
+          @include pc {
+            width: clamp(200px, p(251), 251px);
+            top: p(20);
+            left: 28%;
+          }
+
+          @include sp {}
+
+        }
+
+        &.sunlight-03 {
+          @include imgContain('log-board/log-board-top-sunlight-03.png');
+          aspect-ratio: 56/43;
+          opacity: 0.5;
+
+          @include pc {
+            width: clamp(100px, p(56), 56px);
+            top: p(150);
+            right: 28%;
+          }
+
+          @include sp {}
+        }
+
+        &.sunlight-04 {
+          @include imgContain('log-board/log-board-top-sunlight-01.png');
+          aspect-ratio: 105/165;
+          opacity: 0.5;
+
+          @include pc {
+            width: clamp(100px, p(105), 105px);
+            bottom: p(100);
+            right: p(30);
+          }
+
+          @include sp {}
+        }
+      }
+    }
+  }
+
+  &--content {
+    height: 57.14%;
+    position: relative;
+    z-index: 2;
+    overflow-y: scroll;
+
+    @include pc {
+      padding-bottom: p(50);
+    }
+
+    &__lists {
+      padding: pm(60) 0 pm(50);
+      overflow: hidden;
+
+      ul {
+        margin: 0 auto;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+
+        @include pc {
+          width: p(1180);
+          gap: p(28) p(20);
+        }
+
+        @include sp {
+          width: s(350);
+          gap: s(10) s(10);
+        }
+
+        li {
+          aspect-ratio: 1/1;
+
+          @include pc {
+            width: calc(100% / 10 - (p(20) * 9 / 10));
+          }
+
+          @include sp {
+            width: calc(100% / 5 - (s(10) * 4 / 5));
+          }
+
+          // コインの日
+          &.coins__cards {
+            .cards {
+              .item__img {
+                @include imgContain('log-board/log-board-item-02.png');
+                width: 60%;
+              }
+            }
+          }
+
+          // 今日のチェック
+          &.todays__cards {
+            .cards {
+              position: relative;
+
+              &::before {
+                content: '';
+                position: absolute;
+                z-index: 1;
+                top: 50%;
+                left: 50%;
+                translate: -50% -50%;
+                width: 100%;
+                height: 100%;
+                border-radius: 15px;
+                animation: scaleHighlight 0.5s linear forwards;
+
+                @include pc {
+                  border: p(3) solid #FFF400;
+                }
+
+                @include sp {
+                  border: s(2) solid #FFF400;
+                }
+              }
+
+              .item__highlight {
+                display: block;
+                animation:
+                  rotateHighlight 10s linear infinite,
+                  scaleHighlight 0.5s linear forwards;
+
+                @keyframes rotateHighlight {
+                  0% {
+                    transform: rotate(0deg);
+                  }
+
+                  100% {
+                    transform: rotate(360deg);
+                  }
+                }
+
+                @keyframes scaleHighlight {
+                  0% {
+                    scale: 0;
+                  }
+
+                  100% {
+                    scale: 1;
+                  }
+                }
+              }
+            }
+          }
+
+          // チェック済み
+          &.checked__cards {
+
+            .cards {
+
+              &::before {
+                content: '';
+                position: absolute;
+                z-index: 5;
+                top: 50%;
+                left: 50%;
+                translate: -50% -50%;
+                width: 100%;
+                height: 100%;
+                background: #0000006b;
+                border-radius: 10px;
+                animation: opacityCheck 0.3s linear forwards;
+
+                @keyframes opacityCheck {
+                  0% {
+                    opacity: 0;
+                  }
+
+                  100% {
+                    opacity: 1;
+                  }
+                }
+              }
+
+              .cards__number {
+                z-index: 6;
+
+                &::before {
+                  content: '';
+                  position: absolute;
+                  z-index: 5;
+                  top: 50%;
+                  left: 50%;
+                  translate: -50% -50%;
+                  width: 100%;
+                  height: 100%;
+                  background: #0000006b;
+                  border-radius: 50%;
+                  animation: opacityCheck 0.3s linear forwards;
+                }
+              }
+
+              .check__img {
+                display: block;
+                animation: scaleCheck 0.3s linear forwards;
+
+                @keyframes scaleCheck {
+                  0% {
+                    transform: scale(1.5);
+                  }
+
+                  100% {
+                    transform: scale(1);
+                  }
+                }
+              }
+            }
+          }
+
+          .cards {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            background: #F9FAF8;
+            box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.25);
+            position: relative;
+
+            .cards__number {
+              position: absolute;
+              color: #FFF;
+              @include wt600;
+              aspect-ratio: 1/1;
+              background: #F49754;
+              border-radius: 50%;
+              @include center;
+              z-index: 2;
+
+              @include pc {
+                top: p(-10);
+                left: p(-10);
+                font-size: p(20);
+                width: p(32);
+              }
+
+              @include sp {
+                top: s(-10);
+                left: s(-10);
+                font-size: s(10);
+                width: s(18);
+              }
+            }
+
+            .item__img {
+              @include imgContain('log-board/log-board-item-01.png');
+              aspect-ratio: 1/1;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              translate: -50% -50%;
+              z-index: 3;
+
+              @include pc {
+                width: 80%;
+              }
+
+              @include sp {
+                width: 80%;
+              }
+            }
+
+            .item__highlight {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              translate: -50% -50%;
+              z-index: 2;
+              width: 180%;
+              aspect-ratio: 1/1;
+              @include imgContain('log-board/log-board-item-highlight.png');
+              display: none;
+              mix-blend-mode: plus-lighter;
+            }
+
+            .check__img {
+              aspect-ratio: 73/52;
+              @include iconContain($log-board-check);
+              position: absolute;
+              z-index: 6;
+              top: 50%;
+              left: 50%;
+              translate: -50% -50%;
+              display: none;
+
+              @include pc {
+                width: p(73);
+              }
+
+              @include sp {
+                width: s(40);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

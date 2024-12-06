@@ -1,0 +1,91 @@
+@use "../../global" as *;
+@use "../globalCooperator-2" as *;
+
+/* -----------------------
+  top 5ページ目
+----------------------- */
+
+#top-05{
+  z-index: 3;
+  position: relative;
+  @include pc{
+    height: 100%;
+    width: 100%;
+  }
+  .C_feature{
+    position: relative;
+    z-index: 500;
+    @include pc{
+      padding-top: 117px;
+      margin: 0 auto;
+    }
+    @include sp{
+      padding-top: 15vh;
+    }
+  }
+
+  .cloud01{
+    @include iconContain($cloud01);
+    position: absolute;
+    @include pc{
+      width: 221px;
+      height: 104px;
+      left: 200px;
+      top: 114px;
+    }
+  }
+  .cloud03{
+    @include iconContain($cloud01);
+    position: absolute;
+    @include pc{
+      width: 390px;
+      height: 368px;
+      right: -71px;
+      top: -175px;
+
+    }
+  }
+  .balloon{
+    @include imgContain("balloon.jpg");
+    position: absolute;
+    z-index: 10;
+    left: 30%;
+    transform: translateY(-50%);
+    @include pc{
+      width: 283px;
+      height: 331px;
+    }
+  }
+  .btn-group{
+    position: absolute;
+    top: 12%;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    @include pc{
+      right: 100px;
+
+    }
+    .btn{
+      background: $P-D9D9D9;
+      display: block;
+    
+      @include pc{
+        width: p(438);
+        height: p(85);
+        margin: p(40) auto 0;
+      }
+      .TX{
+        // color: $F-405164;
+        text-align: center;
+        display: block;
+        @include wt500;
+        @include pc{
+          font-size: p(40);
+          line-height: p(85);
+        }
+      }
+    }  
+  }
+}
