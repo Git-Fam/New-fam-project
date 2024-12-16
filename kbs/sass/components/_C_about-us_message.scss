@@ -1,0 +1,115 @@
+@use "../functions" as *;
+
+
+/* -----------------------
+  C_about-us_message
+----------------------- */
+
+.C_about-us_message {
+  display: flex;
+  position: relative;
+
+  @include pc {
+    gap: pclamp(60);
+  }
+
+  @include sp {
+    flex-direction: column;
+    gap: s(30);
+  }
+
+  .img--wrapper {
+    background-color: $F-7C7C7C;
+
+    @include pc {
+      width: pclamp(232);
+      height: pclamp(247);
+      flex-shrink: 0;
+    }
+
+    @include sp {
+      width: s(232);
+      height: s(247);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .contents--wrapper {
+
+    .title {
+
+      @include sp {
+        position: absolute;
+        top: s(-27);
+        right: s(27);
+      }
+
+      .TL {
+        color: $F-000000;
+        
+        @include pc {
+          line-height: 129%;
+          font-size: pclamp(24);
+        }
+
+        @include sp {
+          line-height: 1;
+          font-size: s(24);
+          writing-mode: vertical-rl;
+          width: s(24);
+          letter-spacing: s(5);
+        }
+      }
+    }
+
+    .text {
+      @include pc {
+        margin-top: pclamp(20);
+      }
+
+      .TX {
+        
+        @include pc {
+          line-height: 250%;
+          font-size: pclamp(16);
+        }
+
+        @include sp {
+          line-height: 187%;
+          font-size: s(16);
+        }
+
+      }
+    }
+
+    .name {
+      width: fit-content;
+      margin-left: auto;
+
+      @include pc {
+        margin-top: pclamp(36);
+      }
+
+      @include sp {
+        margin-top: s(36);
+      }
+
+      .TX {
+        line-height: 140%;
+
+        @include pc {
+          font-size: pclamp(20);
+        }
+
+        @include sp {
+          font-size: s(20);
+        }
+      }
+    }
+  }
+}

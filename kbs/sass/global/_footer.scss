@@ -1,0 +1,145 @@
+@use "../functions" as *;
+
+
+/* -----------------------
+  footer
+----------------------- */
+
+.footer {
+
+  @include pc {
+    padding: pclamp(25) 0 pclamp(5);
+  }
+
+  @include sp {
+    padding: s(6) s(20) s(2) s(16);
+  }
+
+  .footer--inner {
+
+    .footer--contents {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @include pc {
+        padding-inline: pclamp(100) pclamp(115);
+      }
+
+      @include media(767,800) {
+        padding-inline: pclamp(50) pclamp(60);
+      }
+
+      .logo {
+
+        @include pc {
+          width: pclamp(106);
+        }
+
+        @include sp {
+          width: s(52);
+        }
+
+        a {
+          display: block;
+          width: 100%;
+
+          img {
+            width: 100%;
+            mix-blend-mode: multiply;
+          }
+        }
+      }
+
+      .nav {
+
+        @include pc {
+          transform: translateY(50%);
+        }
+
+        .links {
+          display: flex;
+
+          @include pc {
+            gap: pclamp(60);
+          }
+
+          @include sp {
+            gap: s(15);
+          }
+
+          li {
+
+            a,
+            .TX {
+              display: block;
+              color: $F-1A1919;
+              transition: color 0.3s;
+
+              @include pc {
+                font-size: pclamp(13);
+                letter-spacing: pclamp(0.78);
+              }
+
+              @include sp {
+                font-size: s(10);
+                letter-spacing: s(0.6);
+              }
+
+              &:hover {
+                color: $F-D77F3F;
+              }
+            }
+
+            .TX {
+              &:hover {
+                color: $F-1A1919;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .copylight {
+
+      @include pc {
+        padding-inline: pclamp(20);
+        margin-top: pclamp(10);
+      }
+
+      @include sp {
+        margin-top: s(-4);
+      }
+
+      .TX {
+        text-align: center;
+
+        @include pc {
+          font-size: pclamp(13);
+          letter-spacing: pclamp(0.78);
+        }
+
+        @include sp {
+          font-size: s(8);
+          letter-spacing: s(0.48);
+        }
+
+        &.TX--small {
+          @include pc {
+            font-size: pclamp(10);
+            letter-spacing: pclamp(0.6);
+          }
+
+          @include sp {
+            font-size: s(6);
+          }
+        }
+
+        a {
+          color: $F-1A1919;
+        }
+      }
+    }
+  }
+}

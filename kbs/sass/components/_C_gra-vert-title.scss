@@ -1,0 +1,47 @@
+@use "../functions" as *;
+
+
+/* -----------------------
+  C_gra-vert-title
+----------------------- */
+
+.C_gra-vert-title {
+  width: fit-content;
+
+  .TL {
+    background-clip: text;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-clip: text;
+    color: transparent;
+    writing-mode: vertical-rl;
+    line-height: 1;
+
+    &.type-01 {
+      @include imgCover("text_BK.png");
+      background-position: left 62% top;
+    }
+
+    &.type-02 {
+      @include imgCover("text_BK_type02.png");
+      background-position: left 62% top;
+    }
+
+    &.type-03 {
+      @include imgCover("text_BK_type03.png");
+      background-position: left 44% top;
+    }
+
+    @include pc {
+      font-size: pclamp(36);
+      width: pclamp(36);
+      letter-spacing: pclamp(10);
+    }
+
+    @include sp {
+      font-size: s(36);
+      width: s(36);
+      letter-spacing: s(10);
+    }
+  }
+}

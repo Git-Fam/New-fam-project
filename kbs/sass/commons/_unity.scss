@@ -1,0 +1,71 @@
+@use "../functions" as *;
+
+/* -----------------------
+  unity
+----------------------- */
+
+// 表示・非表示
+.sp {
+  @include pc {
+    display: none !important;
+  }
+}
+
+.pc {
+  @include sp {
+    display: none !important;
+  }
+}
+
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 10%;
+}
+
+body {
+  @include ryumin;
+  line-height: 1.5;
+  @include wt300;
+  color: $F-1A1919;
+
+  @include imgCover("all_BK.jpg");
+  background-size: 100% 100%;
+  background-size: 100%;
+  background-position: center top;
+  background-repeat: repeat-y;
+
+  &.active {
+
+    @include sp {
+      overflow: hidden;
+    }
+  }
+}
+
+.whopper {
+  overflow: hidden;
+}
+
+
+.max-size-large {
+  @include pc{
+    width: pmin(1280);
+    margin: 0 auto;
+  }
+}
+
+.max-size-medium {
+  @include pc{
+    width: pmin(1080);
+    margin: 0 auto;
+  }
+}
+
+.max-size-small {
+  @include pc{
+    width: pmin(880);
+    margin: 0 auto;
+  }
+}
+
