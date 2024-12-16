@@ -1,0 +1,149 @@
+@use "../functions" as *;
+
+
+/* -----------------------
+  KV
+----------------------- */
+
+.KV {
+  position: relative;
+
+  &.KV_front {
+    @include imgCover("KV_front.png");
+    background-position: center top;
+
+    @include pc {
+      height: pclamp(466);
+    }
+
+    @include sp {
+      height: s(500);
+    }
+  }
+
+  &.KV_about-us {
+    @include imgCover("KV_about-us.jpg");
+    background-position: center;
+
+    @include pc {
+      height: pclamp(288);
+    }
+
+    @include sp {
+      height: s(200);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      @include pc {
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.50) 15.5%, rgba(255, 255, 255, 0.00) 33.5%);
+      }
+
+      @include sp {
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.80) 15.5%, rgba(255, 255, 255, 0.00) 33.5%);
+      }
+    }
+  }
+
+  &.KV_business {
+    @include imgCover("KV_business.jpg");
+    background-position: center top 65%;
+
+    @include pc {
+      height: pclamp(288);
+    }
+
+    @include sp {
+      height: s(200);
+      background-size: 220%;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      @include pc {
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.50) 15.5%, rgba(255, 255, 255, 0.00) 33.5%);
+      }
+
+      @include sp {
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.80) 15.5%, rgba(255, 255, 255, 0.00) 33.5%);
+      }
+    }
+  }
+
+  &.KV_example {
+    @include imgCover("KV_example.jpg");
+    transform: scale(-1, 1);
+
+    @include pc {
+      height: pclamp(288);
+    }
+
+    @include sp {
+      height: s(200);
+      background-size: 140%;
+      background-position: left 84% top 25%;
+    }
+  }
+
+  &.KV_recruit {
+    @include imgCover("KV_recruit.jpg");
+
+    @include pc {
+      height: pclamp(288);
+      background-position: center top 57%;
+    }
+
+    @include sp {
+      height: s(200);
+      background-size: 220%;
+      background-position: left 39% top 60%;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.50) 11%, rgba(255, 255, 255, 0.00) 34.5%);
+    }
+  }
+
+  &.KV_contact {
+    @include imgCover("KV_contact.png");
+
+    @include pc {
+      height: pclamp(288);
+      background-position: center top 72%;
+    }
+
+    @include sp {
+      height: s(200);
+      background-size: 140%;
+      background-position: left top 71%;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.64) 20%, rgba(255, 255, 255, 0.00) 100%);
+    }
+  }
+}

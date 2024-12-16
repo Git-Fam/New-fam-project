@@ -1,0 +1,203 @@
+$pc: 768px; // PC
+$sp: 767px; // スマホ
+
+@mixin pc {
+  @media screen and (min-width: ($pc)) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media screen and (max-width: ($sp)) {
+    @content;
+  }
+}
+
+// ◯px〜◯px
+@mixin media($min, $max) {
+  @media screen and (max-width: (#{$max}px)) and (min-width: (#{$min}px)) {
+    @content;
+  }
+}
+
+// どセンター
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+// 縦並び間空き
+@mixin column($gap) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+// ↓CSSでは
+// @include column( p(10) );
+
+
+// 横並び◯列
+@mixin row($division, $gap) {
+  width: calc((100% / #{$division}) - (#{$gap} * (#{$division} - 1) / #{$division}));
+}
+
+// 3列の間がp(10)の場合
+// @include row(3, p(10));
+// ↓CSSでは
+// width: calc(100% / ◯ - (□ * (◯ - 1) / ◯));
+
+
+// background-contain
+@mixin imgContain($img) {
+  background-image: url('../img/#{$img}');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+// ↓CSSでは
+// @include imgContain('example.jpg');
+
+
+// background-cover
+@mixin imgCover($img) {
+  background-image: url('../img/#{$img}');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+// ↓CSSでは
+// @include imgCover('example.jpg');
+
+
+// backgroundIcon-contain
+@mixin iconContain($img) {
+  background-image: $img;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+// ↓CSSでは
+// @include iconContain($dot);
+
+
+// backgroundIcon-cover
+@mixin iconCover($img) {
+  background-image: $img;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+// ↓CSSでは
+// @include iconCover($dot);
+
+
+$screenSizePC: 1280;
+$screenSizeSP: 390;
+
+// サイズ
+@function p($size, $viewport: $screenSizePC) {
+  $rate: calc(100 / $viewport);
+  @return $rate * $size * 1vw;
+}
+
+// font-size: p(50);
+
+// 最小サイズ
+@function pmax($size, $maxSize: ($size * 3 / 4), $viewport: $screenSizePC) {
+  $rate: calc(100 / $viewport);
+  $calculatedSize: $rate * $size * 1vw;
+  @return max(#{$calculatedSize}, #{$maxSize}px);
+}
+
+// 入力値に*3/5した値とvwの値を比較して大きい方を返す
+// font-size: pm(50,40);
+// or
+// font-size: pm(50);
+
+// 最大サイズ
+@function pmin($size, $maxSize: ($size * 5 / 4), $viewport: $screenSizePC) {
+  $rate: calc(100 / $viewport);
+  $calculatedSize: $rate * $size * 1vw;
+  @return min(#{$calculatedSize}, #{$maxSize}px);
+}
+
+// 入力値に*3/5した値とvwの値を比較して大きい方を返す
+// font-size: pmin(-50,-40);
+// or
+// font-size: pmin(-50);
+
+// クランプ
+@function pclamp($size, $minSize: ($size * 3 / 4), $maxSize: ($size * 5 / 4), $viewport: $screenSizePC) {
+  $rate: calc(100 / $viewport);
+  $calculatedSize: $rate * $size * 1vw;
+  @return clamp(#{$minSize}px, #{$calculatedSize}, #{$maxSize}px);
+}
+
+// 使用例:
+// font-size: clamp(50);                  // デフォルト値を使用 (min=30px, max=75px)
+// font-size: clamp(50, 40, 60);          // カスタム min/max
+// font-size: clamp(50, 40, 60, 1440);    // カスタム min/max とビューポート
+// font-size: clamp(50, 30);                  // デフォルト値を使用 (min=30px, max=75px)
+
+@function s($size, $viewport: $screenSizeSP) {
+  $rate: calc(100 / $viewport);
+  @return $rate * $size * 1vw;
+}
+
+// font-size: s(50);
+
+// SP最小サイズ
+@function smax($size, $maxSize: ($size * 3 / 4), $viewport: $screenSizeSP) {
+  $rate: calc(100 / $viewport);
+  $calculatedSize: $rate * $size * 1vw;
+  @return max(#{$calculatedSize}, #{$maxSize}px);
+}
+
+// 最大サイズ
+@function smin($size, $maxSize: ($size * 5 / 4), $viewport: $screenSizeSP) {
+  $rate: calc(100 / $viewport);
+  $calculatedSize: $rate * $size * 1vw;
+  @return min(#{$calculatedSize}, #{$maxSize}px);
+}
+
+
+// 入力値に*3/5した値とvwの値を比較して大きい方を返す
+// font-size: pm(50,40);
+// or
+// font-size: pm(50);
+
+@function percent($size, $viewport: $screenSizePC) {
+  @return calc((#{$size} / #{$viewport}) * 100%);
+}
+
+// font-size: percent(50);
+// or
+// font-size: percent(100, 500);
+
+
+
+
+// 関数の使い方
+// @mixin test($sidePadding : calc(( 98 / 1280) * 100vw) , $sidemargin : 0 0 0 auto ){
+//   .test--btn{
+//     padding: calc(( 6 / 1280) * 100vw) $sidePadding calc(( 2 / 1280) * 100vw);
+//     margin: $sidemargin;
+//   }
+// }
+
+
+// @mixin img($img){
+//   background-image: url('/img/#{$img}');
+//   background-size: contain;
+//   background-position: center;
+//   background-repeat: no-repeat;
+// }
+// ↓CSSでは
+// @include img('example.jpg');

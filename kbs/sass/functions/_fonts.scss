@@ -1,0 +1,50 @@
+// フォント
+
+// font-family: "A-OTF Ryumin Pr6N";
+@mixin ryumin {
+  font-family: "a-otf-ryumin-pr6n", serif;
+  font-style: normal;
+}
+
+// font-family: Zen Kaku Gothic New;
+@mixin kaku {
+  font-family: "Zen Kaku Gothic New", serif;
+  font-style: normal;
+}
+
+// font-weight:;
+@mixin wt100 {
+  font-weight: 100;
+}
+
+@mixin wt200 {
+  font-weight: 200;
+}
+
+@mixin wt300 {
+  font-weight: 300;
+}
+
+@mixin wt400 {
+  font-weight: 400;
+}
+
+@mixin wt500 {
+  font-weight: 500;
+}
+
+@mixin wt600 {
+  font-weight: 600;
+}
+
+@mixin wt700 {
+  font-weight: 700;
+}
+
+@mixin wt800 {
+  font-weight: 800;
+}
+
+@mixin wt900 {
+  font-weight: 900;
+}
