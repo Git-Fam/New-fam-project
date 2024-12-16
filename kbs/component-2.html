@@ -1,106 +1,123 @@
 <!DOCTYPE html>
 <html lang="ja">
+	<head prefix="og: https://ogp.me/ns#">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head prefix="og: https://ogp.me/ns#">
+		<!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
+		<meta name="format-detection" content="email=no,telephone=no,address=no" />
 
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta property="og:locale" content="ja_JP" />
 
-    <!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
-    <meta name="format-detection" content="email=no,telephone=no,address=no" />
+		<!-- ▼SEO -->
+		<link rel="”canonical”" href="”URL”" />
+		<!-- ジェネレーターURL→ https://metatags.io/ -->
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<!-- ▼ファビコン -->
+		<!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
 
-    <meta property="og:locale" content="ja_JP" />
+		<!-- ▼クロールして欲しくない -->
+		<!-- <meta name="robots" content="noindex,nofollow"> -->
 
-    <!-- ▼SEO -->
-    <link rel="”canonical”" href="”URL”" />
-    <!-- ジェネレーターURL→ https://metatags.io/ -->
+		<!-- ▼テーマカラー -->
+		<!-- <meta name="theme-color" content="#e9c931"> -->
 
-    <!-- ▼ファビコン -->
-    <!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
+		<!-- ▼CSS -->
+		<link rel="stylesheet" href="css/main.css?ver=1.0.0" />
 
-    <!-- ▼クロールして欲しくない -->
-    <!-- <meta name="robots" content="noindex,nofollow"> -->
+		<!-- ▼フォント -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap"
+			rel="stylesheet"
+		/>
+		<script>
+			(function (d) {
+				var config = {
+						kitId: "iwo8ojf",
+						scriptTimeout: 3000,
+						async: true,
+					},
+					h = d.documentElement,
+					t = setTimeout(function () {
+						h.className =
+							h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+					}, config.scriptTimeout),
+					tk = d.createElement("script"),
+					f = false,
+					s = d.getElementsByTagName("script")[0],
+					a;
+				h.className += " wf-loading";
+				tk.src = "https://use.typekit.net/" + config.kitId + ".js";
+				tk.async = true;
+				tk.onload = tk.onreadystatechange = function () {
+					a = this.readyState;
+					if (f || (a && a != "complete" && a != "loaded")) return;
+					f = true;
+					clearTimeout(t);
+					try {
+						Typekit.load(config);
+					} catch (e) {}
+				};
+				s.parentNode.insertBefore(tk, s);
+			})(document);
+		</script>
+	</head>
 
-    <!-- ▼テーマカラー -->
-    <!-- <meta name="theme-color" content="#e9c931"> -->
+	<body>
+		<style>
+			.component--wapper {
+				display: flex;
+				flex-direction: column;
+				gap: 120px;
+				padding: 100px 0;
+				background-color: #000000;
+				overflow: hidden;
+			}
 
-    <!-- ▼CSS -->
-    <link rel="stylesheet" href="css/main.css?ver=1.0.0" />
+			.component--item {
+				border: 1px solid #000000;
+				padding: 50px 0;
+				background-color: #bbbbbb;
+			}
 
-    <!-- ▼フォント -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap"
-        rel="stylesheet">
+			.component--title {
+				font-size: 20px;
+				font-weight: bold;
+				padding: 30px;
+				border-bottom: 1px dotted #000000;
+				margin: 0 0 30px 40px;
+				width: fit-content;
+			}
 
-</head>
+			.component--main {
+				padding: 60px 0px;
+				border: 1px solid #000000;
+				background-color: rgb(255, 255, 255);
+			}
+		</style>
 
-<body>
+		<div class="component--wapper max-size-large">
+			<!-- what -->
+			<div class="component--item">
+				<div class="component--title">what</div>
+				<div class="component--main">
+					<!-- start -->
 
-    <style>
-        .component--wapper {
-            display: flex;
-            flex-direction: column;
-            gap: 120px;
-            padding: 100px 0;
-            background-color: #000000;
-            overflow: hidden;
-        }
+					<!--  end -->
+				</div>
+			</div>
+		</div>
 
-        .component--item {
-            border: 1px solid #000000;
-            padding: 50px 0;
-            background-color: #bbbbbb;
-        }
-
-        .component--title {
-            font-size: 20px;
-            font-weight: bold;
-            padding: 30px;
-            border-bottom: 1px dotted #000000;
-            margin: 0 0 30px 40px;
-            width: fit-content;
-        }
-
-        .component--main {
-            padding: 60px 0px;
-            border: 1px solid #000000;
-            background-color: rgb(255, 255, 255);
-        }
-    </style>
-
-
-
-    <div class="component--wapper">
-
-        <!-- what -->
-        <div class="component--item">
-            <div class="component--title">
-                what
-            </div>
-            <div class="component--main">
-
-                <!-- start -->
-
-                <!--  end -->
-
-            </div>
-        </div>
-
-
-
-
-    </div>
-
-
-
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
-        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-    <script src="js/script.js"></script>
-    <script src="js/joint.js"></script>
-</body>
-
+		<script
+			src="https://code.jquery.com/jquery-3.7.0.min.js"
+			integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+			crossorigin="anonymous"
+		></script>
+		<script src="js/script.js"></script>
+		<script src="js/joint.js"></script>
+	</body>
 </html>
