@@ -1,0 +1,50 @@
+@use "../functions" as *;
+
+
+/* -----------------------
+  C_vert-text
+----------------------- */
+
+.C_vert-text {
+  width: fit-content;
+
+  &--inner {
+    display: flex;
+    flex-direction: row-reverse;
+
+    @include pc {
+      gap: pclamp(20);
+    }
+
+    @include sp {
+      gap: s(20);
+    }
+
+    .TX {
+      line-height: 1;
+      writing-mode: vertical-rl;
+
+      @include pc {
+        font-size: pclamp(20);
+        width: pclamp(20);
+        letter-spacing: pclamp(8);
+      }
+
+      @include sp {
+        font-size: s(20);
+        width: s(20);
+        letter-spacing: s(8);
+      }
+
+      span {
+        @include imgCover("text_BK_type02.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: left 70% top;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+    }
+  }
+}

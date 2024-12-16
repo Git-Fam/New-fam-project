@@ -1,0 +1,82 @@
+@use "../functions" as *;
+
+
+/* -----------------------
+  C_front_contact
+----------------------- */
+
+.C_front_contact {
+  position: relative;
+
+  &::before {
+    content: "";
+    @include imgCover("front_contact.jpg");
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(-1, 1);
+
+    @include sp {
+      background-position: top 10% right 47%;
+      background-size: 179%;
+    }
+  }
+
+  &--inner {
+    position: relative;
+    z-index: 2;
+    margin: 0 auto;
+
+    @include pc {
+      width: calc(pmin(1080) - (pmin(24) * 2));
+      padding: pclamp(239) 0 pclamp(33);
+    }
+
+    @include sp {
+      width: 100%;
+      padding: s(28) 0 s(279) s(95);
+    }
+
+    .C_gra-vert-title {
+      position: absolute;
+      top: 0;
+      transform: translateY(-29%);
+
+      @include pc {
+        left: 0;
+      }
+
+      @include sp {
+        left: s(36);
+      }
+    }
+
+    .contents--wrapper {
+
+      @include pc {
+        @include column(pclamp(30));
+      }
+
+      @include sp {
+        @include column(s(30));
+      }
+
+      .text--wrapper {
+
+        .TX {
+          line-height: 187%;
+
+          @include pc {
+            font-size: pclamp(16);
+          }
+
+          @include sp {
+            font-size: s(16);
+          }
+        }
+      }
+    }
+  }
+}

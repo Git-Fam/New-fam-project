@@ -28,6 +28,18 @@ $(function () {
     lastScrollTop = scrollTop;
   });
 
+  // ホバー
+  // $(".C_selector .list").hover(function () {
+  //   $(".C_selector .list").removeClass("active");
+  //   $(this).addClass("active");
+  // }, function () {
+  //   $(this).removeClass("active");
+  // });
+
+  $(".C_selector .list").on("click", function () {
+    $(".C_selector .list").removeClass("selected");
+    $(this).addClass("selected");
+  });
 
   // var prevScrollpos = window.pageYOffset;
   // window.onscroll = function() {
