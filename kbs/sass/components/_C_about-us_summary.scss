@@ -1,0 +1,126 @@
+@use "../functions" as *;
+
+
+/* -----------------------
+  C_about-us_summary
+----------------------- */
+
+.C_about-us_summary {
+
+  .summary--title {
+
+    @include pc {
+      margin-bottom: pclamp(60);
+    }
+
+    @include sp {
+      margin-bottom: s(30);
+      padding-left: s(28);
+    }
+
+    .TL {
+      color: $F-000000;
+      line-height: 1;
+      writing-mode: vertical-rl;
+      @include wt300;
+
+      @include pc {
+        font-size: pclamp(36);
+        width: pclamp(36);
+        letter-spacing: pclamp(5);
+      }
+
+      @include sp {
+        font-size: s(24);
+        width: s(24);
+        letter-spacing: s(5);
+      }
+    }
+  }
+
+
+  .summary--contents {
+    li {
+      border-bottom: solid $P-D6D6D6;
+      display: flex;
+
+      @include pc {
+        border-bottom-width: pclamp(1);
+        gap: pclamp(20);
+        padding: pclamp(20) pclamp(34);
+      }
+
+      @include sp {
+        border-bottom-width: s(1);
+        padding: s(20) s(10) s(20) s(28);
+        gap: s(10);
+      }
+
+      &:first-child {
+        border-top: solid $P-D6D6D6;
+
+        @include pc {
+          border-top-width: pclamp(1);
+        }
+
+        @include sp {
+          border-top-width: s(1);
+        }
+      }
+
+      .list--title {
+        flex-shrink: 0;
+
+        @include pc {
+          width: pclamp(182);
+        }
+
+        @include sp {
+          width: s(79);
+        }
+
+        .TX {
+          color: $F-7C7C7C;
+          @include wt300;
+
+          @include pc {
+            font-size: pclamp(16);
+            letter-spacing: pclamp(-0.16);
+          }
+
+          @include sp {
+            font-size: s(16);
+            letter-spacing: s(-0.16);
+          }
+        }
+      }
+
+
+      .list--contents {
+
+        .TX {
+          color: $F-292929;
+          @include wt300;
+
+          @include pc {
+            font-size: pclamp(16);
+            letter-spacing: pclamp(1.6);
+          }
+
+          @include sp {
+            font-size: s(16);
+            letter-spacing: s(1.6);
+          }
+
+          span {
+
+            @include sp {
+              display: inline-block;
+              margin-top: s(10);
+            }
+          }
+        }
+      }
+    }
+  }
+}

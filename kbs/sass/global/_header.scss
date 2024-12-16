@@ -221,6 +221,14 @@
 
               &:hover {
                 color: $F-D77F3F;
+
+                &::before {
+                  transform: translateY(-80%);
+                }
+
+                &::after {
+                  width: 100%;
+                }
               }
 
               &::before {
@@ -230,6 +238,7 @@
                 transform: translateY(-50%);
                 left: 0;
                 aspect-ratio: 24/18;
+                transition: transform 0.3s;
 
                 @include pc {
                   width: pclamp(24);
@@ -237,6 +246,25 @@
 
                 @include sp {
                   width: s(24);
+                }
+              }
+
+              &::after {
+                content: "";
+                position: absolute;
+                top: 100%;
+                left: 0;
+                transition: width 0.3s;
+                width: 0;
+                height: 1px;
+                background-color: $F-D77F3F;
+
+                @include pc {
+                  height: pclamp(1);
+                }
+
+                @include sp {
+                  height: s(1);
                 }
               }
             }
