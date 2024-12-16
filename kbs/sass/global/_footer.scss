@@ -26,6 +26,10 @@
         padding-inline: pclamp(100) pclamp(115);
       }
 
+      @include media(767,800) {
+        padding-inline: pclamp(50) pclamp(60);
+      }
+
       .logo {
 
         @include pc {
@@ -42,6 +46,7 @@
 
           img {
             width: 100%;
+            mix-blend-mode: multiply;
           }
         }
       }
@@ -51,36 +56,44 @@
         @include pc {
           transform: translateY(50%);
         }
-        
+
         .links {
           display: flex;
-          
+
           @include pc {
             gap: pclamp(60);
           }
-          
+
           @include sp {
             gap: s(15);
           }
-          
+
           li {
-            a {
+
+            a,
+            .TX {
               display: block;
               color: $F-1A1919;
               transition: color 0.3s;
 
-              @include pc{
+              @include pc {
                 font-size: pclamp(13);
                 letter-spacing: pclamp(0.78);
               }
-              
-              @include sp{
+
+              @include sp {
                 font-size: s(10);
                 letter-spacing: s(0.6);
               }
 
               &:hover {
                 color: $F-D77F3F;
+              }
+            }
+
+            .TX {
+              &:hover {
+                color: $F-1A1919;
               }
             }
           }
