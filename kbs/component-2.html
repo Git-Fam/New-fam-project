@@ -96,17 +96,276 @@
 			.component--main {
 				padding: 60px 0px;
 				border: 1px solid #000000;
-				background-color: rgb(255, 255, 255);
+				background-color: #F3F3F3;
 			}
 		</style>
 
-		<div class="component--wapper max-size-large">
+		<div class="component--wapper">
 			<!-- what -->
 			<div class="component--item">
 				<div class="component--title">what</div>
 				<div class="component--main">
 					<!-- start -->
 
+					<!--  end -->
+				</div>
+			</div>
+
+			<!-- 問い合わせフォーム -->
+			<!-- エラーは.wpcf7-not-valid -->
+			<div class="component--item">
+				<div class="component--title">C_contact_form</div>
+				<div class="component--main">
+					<!-- start -->
+					<div class="contact-wrap C_contact_form">
+						<!-- padding-bottom 個別で設定 -->
+						<ul class="C_contact">
+							<li>
+								<div class="title">
+									<label for="" class="label">お名前</label>
+									<p class="required form-s">必須</p>
+								</div>
+								<div class="input-area">
+									<input
+										type="text"
+										class="form-TX wpcf7-not-valid"
+										placeholder="田中　太郎"
+									/>
+									<p class="wpcf7-not-valid-tip">
+										必須項目です。入力してください。
+									</p>
+								</div>
+							</li>
+							<li>
+								<div class="title">
+									<label for="" class="label">フリガナ</label>
+									<p class="required form-s">必須</p>
+								</div>
+								<div class="input-area">
+									<input
+										type="text"
+										class="form-TX"
+										placeholder="タナカ　タロウ"
+									/>
+									<p class="wpcf7-not-valid-tip">
+										必須項目です。入力してください。
+									</p>
+								</div>
+							</li>
+							<li>
+								<div class="title">
+									<label for="" class="label">住所</label>
+								</div>
+								<div class="input-area">
+									<div class="postal">
+										<p class="postal-TX">〒</p>
+										<input type="text" class="form-TX postal01" />
+										<p class="postal-TX">-</p>
+										<input
+											type="text"
+											class="form-TX postal02"
+											placeholder="0000"
+										/>
+									</div>
+									<input
+										type="text"
+										class="form-TX address"
+										placeholder="〇〇県××市△△丁目0-0 〇〇ビル101"
+									/>
+								</div>
+							</li>
+							<li>
+								<div class="title">
+									<label for="" class="label">連絡可能電話番号</label>
+									<p class="required form-s">必須</p>
+								</div>
+								<div class="input-area">
+									<input
+										type="text"
+										class="form-TX"
+										placeholder="000-0000-0000"
+									/>
+									<p class="wpcf7-not-valid-tip">
+										必須項目です。入力してください。
+									</p>
+								</div>
+							</li>
+							<li>
+								<div class="title">
+									<label for="" class="label">メールアドレス</label>
+									<p class="required form-s">必須</p>
+								</div>
+								<div class="input-area">
+									<input
+										type="text"
+										class="form-TX"
+										placeholder="info@abcdef.jp"
+									/>
+									<p class="wpcf7-not-valid-tip">
+										必須項目です。入力してください。
+									</p>
+								</div>
+							</li>
+							<li>
+								<div class="title">
+									<label for="" class="label"
+										>メールアドレス<br />(確認)
+									</label>
+									<p class="required form-s">必須</p>
+								</div>
+								<div class="input-area">
+									<input
+										type="text"
+										class="form-TX"
+										placeholder="info@abcdef.jp"
+									/>
+									<p class="wpcf7-not-valid-tip">
+										必須項目です。入力してください。
+									</p>
+								</div>
+							</li>
+							<li class="message">
+								<div class="title">
+									<label for="" class="label">お問い合わせ内容</label>
+									<p class="required form-s">必須</p>
+								</div>
+								<div class="input-area">
+									<textarea
+										type="text"
+										class="form-TX"
+										placeholder="お問い合わせ内容の記入"
+									></textarea>
+									<p class="wpcf7-not-valid-tip">
+										必須項目です。入力してください。
+									</p>
+								</div>
+							</li>
+							<li class="policy">
+								<div class="title">
+									<label for="" class="label">プライバシーポリシー</label>
+								</div>
+								<div class="input-area policy-content">
+									<div class="form-TX">
+										<p class="policy-TX">
+											株式会社KBSでは、お客様のプライバシーを尊重しお客様の個人情報を大切に保護することを重要な責務と考え、個人情報保護に関する法令を遵守するとともに、個人情報の取扱いに関して以下の事項を定めています。<br />
+											1.個人情報の利用目的<br />お客様からご提供いただいた個人情報の利用目的は以下のとおりです。<br />お客様との契約に関する事項の確認<br />
+										</p>
+									</div>
+								</div>
+								<div class="agree-content">
+									<label>
+										<input type="checkbox" />
+										<span>プライバシーポリシーに同意する</span>
+									</label>
+								</div>
+							</li>
+						</ul>
+
+						<div class="btn-area">
+							<button class="submit"><p class="btn-TX">確認</p></button>
+						</div>
+					</div>
+					<!--  end -->
+				</div>
+			</div>
+
+			<!-- 問い合わせフォーム 確認 -->
+			<div class="component--item">
+				<div class="component--title">C_contact_confirm</div>
+				<div class="component--main">
+					<!-- start -->
+					<div class="contact-wrap C_contact_confirm">
+						<!-- padding-bottom 個別で設定 -->
+						<ul class="C_contact">
+							<li>
+								<div class="title">
+									<label for="" class="label">お名前</label>
+								</div>
+								<div class="input-area">
+									<p class="form-TX">田中　太郎</p>
+								</div>
+							</li>
+							<li>
+								<div class="title">
+									<label for="" class="label">フリガナ</label>
+								</div>
+								<div class="input-area">
+									<p class="form-TX">タナカ　タロウ</p>
+								</div>
+							</li>
+							<li>
+								<div class="title">
+									<label for="" class="label">住所</label>
+								</div>
+								<div class="input-area">
+									<div class="postal">
+										<p class="postal-TX">〒</p>
+										<p class="form-TX postal01">000</p>
+										<p class="postal-TX">-</p>
+										<p class="form-TX postal02">0000</p>
+									</div>
+									<p class="form-TX address">〇〇県××市△△丁目0-0 〇〇ビル101</p>
+								</div>
+							</li>
+							<li>
+								<div class="title">
+									<label for="" class="label">連絡可能電話番号</label>
+								</div>
+								<div class="input-area">
+									<p class="form-TX">000-0000-0000</p>
+								</div>
+							</li>
+							<li>
+								<div class="title">
+									<label for="" class="label">メールアドレス</label>
+								</div>
+								<div class="input-area">
+									<p class="form-TX">info@abcdef.jp</p>
+								</div>
+							</li>
+							<li>
+								<div class="title">
+									<label for="" class="label">メールアドレス<br />(確認)</label>
+								</div>
+								<div class="input-area">
+									<p class="form-TX">info@abcdef.jp</p>
+								</div>
+							</li>
+							<li class="message">
+								<div class="title">
+									<label for="" class="label">お問い合わせ内容</label>
+								</div>
+								<div class="input-area">
+									<p class="form-TX">
+										お問い合わせ内容お問い合わせ内容お問い合わせ内容お問い合わせ内容お問い合わせ内容お問い合わせ内容お問い合わせ内容お問い合わせ内容お問い合わせ内容お問い合わせ内容お問い合わせ内容お問い合わせ内容
+									</p>
+								</div>
+							</li>
+							<li class="policy">
+								<div class="title">
+									<label for="" class="label">プライバシーポリシー</label>
+								</div>
+								<div class="input-area policy-content">
+									<div class="form-TX">
+										<p class="policy-TX">
+											株式会社KBSでは、お客様のプライバシーを尊重しお客様の個人情報を大切に保護することを重要な責務と考え、個人情報保護に関する法令を遵守するとともに、個人情報の取扱いに関して以下の事項を定めています。<br />
+											1.個人情報の利用目的<br />お客様からご提供いただいた個人情報の利用目的は以下のとおりです。<br />お客様との契約に関する事項の確認<br />
+										</p>
+									</div>
+								</div>
+								<div class="agree-content">
+									<label>
+										<input type="checkbox" checked />
+										<span>プライバシーポリシーに同意する</span>
+									</label>
+								</div>
+							</li>
+						</ul>
+						<div class="btn-area">
+							<button class="submit back"><p class="btn-TX">戻る</p></button>
+							<button class="submit"><p class="btn-TX">確認</p></button>
+						</div>
+					</div>
 					<!--  end -->
 				</div>
 			</div>

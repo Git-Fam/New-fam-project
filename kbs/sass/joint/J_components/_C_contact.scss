@@ -1,0 +1,265 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  C_contact
+----------------------- */
+.contact-wrap {
+
+  @include pc {
+    padding: pclamp(160) pclamp(267) 0;
+  }
+
+  @include sp {
+    padding: s(100) s(20) 0;
+  }
+}
+
+.C_contact {
+  li {
+    @include pc {
+      padding-inline: pclamp(5);
+      border-bottom: pclamp(1) solid $P-D6D6D6;
+      display: flex;
+    }
+
+    @include sp {
+      padding-inline: s(18);
+      border-bottom: s(1) solid $P-D6D6D6;
+    }
+
+    .title {
+      @include pc {
+        width: pclamp(212);
+        font-size: pclamp(20);
+        letter-spacing: pclamp(-0.2);
+      }
+
+      @include sp {
+        font-size: s(20);
+        letter-spacing: s(-0.2);
+      }
+    }
+
+    .input-area {
+      position: relative;
+
+      @include pc {
+        margin-left: pclamp(43);
+        flex: 1;
+      }
+
+      .form-TX {
+        width: 100%;
+        box-sizing: border-box;
+
+        @include pc {
+          font-size: pclamp(20);
+          letter-spacing: pclamp(-0.2);
+        }
+
+      }
+
+      .postal {
+        display: flex;
+        align-items: center;
+
+        .postal-TX {
+          @include pc {
+            font-size: pclamp(20);
+            letter-spacing: pclamp(-0.1);
+          }
+
+          @include sp {
+            font-size: s(20);
+            letter-spacing: s(-0.1);
+          }
+        }
+
+      }
+    }
+    &.message{
+      .form-TX{
+        @include pc{
+          line-height: 1.8;
+        }
+        @include sp{
+          line-height: 2;
+        }
+      }
+    }
+
+    &.policy {
+      @include pc {
+        flex-wrap: wrap;
+      }
+
+      .policy-content {
+        .form-TX {
+          overflow-y: scroll;
+
+          @include pc {
+            height: pclamp(174);
+          }
+
+          @include sp {
+            height: s(230);
+          }
+
+          .policy-TX {
+            @include pc {
+              font-size: pclamp(13);
+              letter-spacing: pclamp(-0.13);
+              line-height: 1.8;
+            }
+
+            @include sp {
+              font-size: s(13);
+              letter-spacing: s(-0.13);
+              line-height: 2;
+            }
+          }
+        }
+      }
+
+      .agree-content {
+        text-align: center;
+
+        @include pc {
+          width: 100%;
+          margin-top: pclamp(30);
+        }
+
+        @include sp {
+          margin-top: s(30);
+        }
+
+        input[type="checkbox"] {
+          position: relative;
+          background-color: $F-FFFFFF;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+
+          @include pc {
+            width: pclamp(30);
+            height: pclamp(30);
+            border: pclamp(1) solid $P-D9D9D9;
+            vertical-align: pclamp(-5);
+          }
+
+          @include sp {
+            width: s(23);
+            height: s(23);
+            border: s(1) solid $P-D9D9D9;
+            vertical-align: s(-10);
+          }
+        }
+
+        input[type="checkbox"]:checked {
+          background-color: $F-D77F3F;
+        }
+
+        input[type="checkbox"]:checked:before {
+          position: absolute;
+          content: '';
+
+          @include pc {
+            top: pclamp(2);
+            left: pclamp(10);
+            transform: rotate(35deg);
+            width: pclamp(7);
+            height: pclamp(18);
+            border-right: pclamp(2) solid $F-FFFFFF;
+            border-bottom: pclamp(2) solid $F-FFFFFF;
+          }
+
+          @include sp {
+            top: s(1);
+            left: s(7);
+            transform: rotate(35deg);
+            width: s(6);
+            height: s(14);
+            border-right: s(2) solid $F-FFFFFF;
+            border-bottom: s(2) solid $F-FFFFFF;
+          }
+        }
+
+        span {
+          @include pc {
+            font-size: pclamp(20);
+            letter-spacing: pclamp(-0.2);
+          }
+
+          @include sp {
+            font-size: s(16);
+            letter-spacing: s(-0.16);
+          }
+        }
+      }
+
+    }
+
+
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+  }
+}
+
+.btn-area {
+  display: flex;
+  justify-content: center;
+  @include pc{
+    margin-top: pclamp(60);
+  }
+  @include sp{
+    margin-top: s(30);
+  }
+
+  .submit {
+    transition: all 0.3s ease;
+
+    @include pc {
+      width: pclamp(169);
+      padding-block: pclamp(13);
+      background-color: $B-FFFFFF;
+      border: pclamp(1) solid;
+    }
+
+    @include sp {
+      width: s(169);
+      padding-block: s(14);
+      background-color: $B-FFFFFF;
+      border: s(1) solid;
+    }
+
+    .btn-TX {
+      text-align: center;
+      @include ryumin;
+
+      @include pc {
+        font-size: pclamp(20);
+        letter-spacing: pclamp(6);
+      }
+
+      @include sp {
+        font-size: s(20);
+        letter-spacing: s(6);
+      }
+    }
+
+    &:hover {
+      background-color: $B-1A1919;
+      transition: all 0.3s ease;
+
+      .btn-TX {
+        color: $F-FFFFFF;
+      }
+    }
+  }
+}
+
+
+
