@@ -16,6 +16,7 @@
   .section__wrapper {
 
     .main__title {
+      white-space: nowrap;
 
       @include pc {
         transform: translateY(-50%);

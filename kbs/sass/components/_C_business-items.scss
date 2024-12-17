@@ -83,6 +83,7 @@
 
       .title {
         width: fit-content;
+        white-space: nowrap;
 
         @include sp {
           flex-shrink: 0;

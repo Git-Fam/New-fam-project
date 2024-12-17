@@ -58,6 +58,7 @@
         width: fit-content;
         position: absolute;
         z-index: 3;
+        white-space: nowrap;
 
         @include pc {
           top: 0;

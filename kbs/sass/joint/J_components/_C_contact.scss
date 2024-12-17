@@ -17,6 +17,7 @@
 
   .C_gra-vert-title {
     position: absolute;
+    white-space: nowrap;
     top: 0;
     left: 0;
 
@@ -30,11 +31,11 @@
       left: s(20);
     }
 
-    // .TL{
-    //   @include sp{
-    //     font-size: s(28);
-    //   }
-    // }
+    .TL{
+      @include sp{
+        font-size: s(28);
+      }
+    }
   }
 
   .contact-wrap {
