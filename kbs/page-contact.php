@@ -7,7 +7,7 @@
 <main class="main">
   <div class="main__contact contact_form max-size-large">
     <div class="C_gra-vert-title">
-      <h2 class="TL">お問い合わせ</h2>
+      <h2 class="TL type-03">お問い合わせ</h2>
     </div>
 
     <div class="contact-wrap C_contact_form">

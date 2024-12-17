@@ -2,6 +2,97 @@
   anime
 ----------------------- */
 
+
+// 画像黒塗りから出現
+.imgAnime {
+  >* {
+    opacity: 0;
+  }
+
+  &.show {
+    position: relative;
+
+    >* {
+      opacity: 0;
+      animation: imgAnime 1.1s ease-in-out 0.5s forwards;
+
+      @keyframes imgAnime {
+        40% {
+          opacity: 0;
+        }
+
+        100% {
+          opacity: 1;
+        }
+
+      }
+    }
+
+
+    &::after {
+      content: "";
+      display: block;
+      width: 0%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 1);
+      position: absolute;
+      top: 0;
+      z-index: 2;
+      animation: imgAnime-filter 1.1s ease-in-out 0.5s forwards;
+
+      @keyframes imgAnime-filter {
+        0% {
+          width: 0%;
+          left: 0;
+        }
+
+        40% {
+          width: 100%;
+          left: 0;
+        }
+
+        60% {
+          width: 100%;
+          left: 0;
+        }
+
+        100% {
+          width: 0%;
+          left: 100%;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+// 左へ
+.right {
+  opacity: 0;
+  transform: translateX(-100%);
+
+  &.show {
+    animation: right 0.8s ease 0.5s forwards;
+
+    @keyframes right {
+      0% {
+        opacity: 0;
+        transform: translateX(-100%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+}
+
+
+
 // ホバーで薄く
 .hover-opa {
   transition: 0.3s;
@@ -70,7 +161,7 @@
   transform: translateX(100%);
 
   &.show {
-    animation: left ease forwards;
+    animation: left 0.8s ease forwards;
 
     @keyframes left {
       0% {
@@ -86,27 +177,6 @@
   }
 }
 
-// 左へ
-.right {
-  opacity: 0;
-  transform: translateX(-100%);
-
-  &.show {
-    animation: right ease forwards;
-
-    @keyframes right {
-      0% {
-        opacity: 0;
-        transform: translateX(-100%);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-  }
-}
 
 // ふわっと
 .pop {

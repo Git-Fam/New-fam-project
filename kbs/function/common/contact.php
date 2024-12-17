@@ -24,11 +24,11 @@
 
 
   //リキャプチャの読み込みを問い合わせページ、確認ページのみに限定
-// function load_recaptcha_js() {
-// 	if ( ! is_page('contact') && ! is_page('page-contact-confirm') && ! is_page('contact-complete')) {
-// 		wp_deregister_script( 'google-recaptcha' );
-// 	}
-// }
-// add_action( 'wp_enqueue_scripts', 'load_recaptcha_js',100 );
+function load_recaptcha_js() {
+	if ( ! is_page('contact') && ! is_page('page-contact-confirm') && ! is_page('contact-complete')) {
+		wp_deregister_script( 'google-recaptcha' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'load_recaptcha_js',100 );
 
 ?>
