@@ -23,7 +23,7 @@ Template Path: pages/
         数日中に担当者よりご連絡いたします。
       </p>
       <?php
-        echo do_shortcode('[contact-form-7 id="07b0658" title="Contact form"]');
+        echo do_shortcode('[contact-form-7 id="83625bc" title="Contact form"]');
       ?>
     </div>
   </div>
