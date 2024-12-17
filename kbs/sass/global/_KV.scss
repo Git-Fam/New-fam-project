@@ -9,7 +9,7 @@
   position: relative;
 
   &.KV_front {
-    @include imgCover("KV_front.png");
+    @include imgCover("KV_front.jpg");
     background-position: center top;
 
     @include pc {
@@ -127,13 +127,13 @@
 
     @include pc {
       height: pclamp(288);
-      background-position: center top 72%;
+      background-position: center top 48%;
     }
 
     @include sp {
       height: s(200);
       background-size: 140%;
-      background-position: left top 71%;
+      background-position: left top 50%;
     }
 
     &::before {

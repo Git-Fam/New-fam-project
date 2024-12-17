@@ -26,8 +26,7 @@
         }
 
         &.img-01 {
-          @include imgCover("business-item-05.png");
-          transform: scale(-1, 1);
+          @include imgCover("business-item-05.jpg");
 
           @include pc {
             width: pmin(840);
