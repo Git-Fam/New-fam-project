@@ -286,7 +286,7 @@
             &:nth-child(1) {
               a {
                 &::before {
-                  @include imgContain("icon_tel.svg");
+                  @include imgContain("icon_tel.png");
                 }
               }
             }

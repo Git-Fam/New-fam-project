@@ -5,7 +5,7 @@
         <div class="footer--contents">
             <div class="logo">
                 <a href="<?php echo get_home_url(); ?>">
-                        <img class="hover-opa" src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="PAINT & REFORM KBS">
+                        <img class="hover-opa" src="<?php echo get_template_directory_uri(); ?>/img/logo.png" alt="PAINT & REFORM KBS">
                 </a>
             </div>
             <nav class="nav">
