@@ -310,14 +310,16 @@
       width: pclamp(169);
       padding-block: pclamp(13);
       background-color: $B-FFFFFF;
-      border: pclamp(1) solid;
+      border: pclamp(1) solid $B-1A1919;
+      color: $B-1A1919;
     }
 
     @include sp {
       width: s(169);
       padding-block: s(14);
       background-color: $B-FFFFFF;
-      border: s(1) solid;
+      border: s(1) solid $B-1A1919;
+      color: $B-1A1919;
     }
 
     .btn-TX {
