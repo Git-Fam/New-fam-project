@@ -16,8 +16,13 @@
   background-position: center top;
   transition: all 0.3s;
 
-  &.active{
-    top: -100%;
+  &.active {
+
+    @include pc {
+      top: -100%;
+    }
+
+    @include sp {}
   }
 
   @include pc {
@@ -47,6 +52,7 @@
         width: s(45);
         position: relative;
         z-index: 100;
+        mix-blend-mode: multiply;
       }
 
       a {
@@ -83,7 +89,7 @@
         right: 0;
         background-color: $F-1A1919;
         height: 1px;
-        transition: all 0.3s;
+        // transition: all 0.3s;
 
         @include media(391, 767) {
           height: 2px;
@@ -208,8 +214,12 @@
                 font-size: pclamp(16);
                 letter-spacing: pclamp(1.6);
                 width: pclamp(173);
-                border-bottom-width: pclamp(1);
+                border-bottom-width: 1px;
                 padding-left: pclamp(27);
+              }
+
+              @media screen and (min-width: 1280px) {
+                border-bottom-width: 2px;
               }
 
               @include sp {
@@ -260,7 +270,11 @@
                 background-color: $F-D77F3F;
 
                 @include pc {
-                  height: pclamp(1);
+                  height: 1px;
+                }
+
+                @media screen and (min-width: 1280px) {
+                  height: 2px;
                 }
 
                 @include sp {
@@ -272,7 +286,7 @@
             &:nth-child(1) {
               a {
                 &::before {
-                  @include imgContain("icon_tel.svg");
+                  @include imgContain("icon_tel.png");
                 }
               }
             }
@@ -295,14 +309,13 @@
           right: unset;
           left: 50%;
           top: 50%;
-          transform: translate(-50%, -50%);
-          transition: all 0.3s;
+          transform: translate(-50%, -50%) rotate(0deg);
 
           &:nth-child(1) {
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%) rotate(25deg);
-            width: 80%;
+            width: 100%;
           }
 
           &:nth-child(2) {
@@ -314,7 +327,7 @@
             top: 50%;
             transform: translate(-50%, -50%) rotate(-25deg);
             bottom: unset;
-            width: 80%;
+            width: 100%;
           }
         }
       }
