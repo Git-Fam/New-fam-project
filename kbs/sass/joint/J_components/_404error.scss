@@ -1,0 +1,30 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  404error
+----------------------- */
+
+.error-404-wrap {
+  @include pc {
+    padding: pclamp(160) pclamp(200);
+  }
+
+  @include sp {
+    padding: s(100) s(20);
+  }
+
+  .error-404 {
+    &-TX {
+      text-align: center;
+
+      @include pc {
+        font-size: pclamp(30);
+      }
+
+      @include sp {
+        font-size: s(18);
+      }
+    }
+  }
+}

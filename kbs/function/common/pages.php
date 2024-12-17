@@ -6,8 +6,12 @@ function custom_page_template($template)
 	$new_template = '';
 
 	$page_templates = array(
-		'voi' => 'pages/page-voi',
-		'ggg' => 'pages/page-ggg',
+		'about-us' => 'pages/page-about-us',
+		'business' => 'pages/page-business',
+		'recruit' => 'pages/page-recruit',
+		'contact' => 'pages/page-contact.php',
+		'contact-confirm' => 'pages/page-contact-confirm.php',
+		'contact-complete' => 'pages/page-contact-complete.php',
 		// 複数ある場合は以下に追加していく
 	);
 
