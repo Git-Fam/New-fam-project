@@ -2,7 +2,7 @@
 <?php get_template_part('./inc/head'); ?>
 <?php get_template_part('./inc/header'); ?>
 
-<div class="KV KV_front"></div>
+<div class="KV KV_front right"></div>
 
 <!-- メイン -->
 <main class="main">
@@ -15,7 +15,7 @@
                 </div>
                 <div class="contents--wrapper">
                     <div class="C_vert-text">
-                        <div class="C_vert-text--inner">
+                        <div class="C_vert-text--inner right">
                             <p class="TX"><span>私たちの仕事は</span></p>
                             <p class="TX">ただ塗る</p>
                             <p class="TX">ただ施工する</p>
@@ -39,7 +39,7 @@
                 <div class="C_gra-vert-title">
                     <h2 class="TL type-01">施工事例</h2>
                 </div>
-                <div class="links--wrapper">
+                <div class="links--wrapper right">
                     <a class="link" href="<?php echo get_home_url(); ?>/example#footwork">
                         <p class="TX">足場</p>
                     </a>
@@ -77,7 +77,7 @@
                             </div>
                             <div class="text">
                                 <div class="C_vert-text">
-                                    <div class="C_vert-text--inner">
+                                    <div class="C_vert-text--inner right delay-10">
                                         <p class="TX">塗装・内装・屋根工事などの</p>
                                         <p class="TX">施工を行っています</p>
                                         <p class="TX">対応エリア・東京２３区他</p>
@@ -105,7 +105,7 @@
                             </div>
                             <div class="text">
                                 <div class="C_vert-text">
-                                    <div class="C_vert-text--inner">
+                                    <div class="C_vert-text--inner right delay-10">
                                         <p class="TX">お客様と地域社会に</p>
                                         <p class="TX">貢献する取り組みで</p>
                                         <p class="TX">頼られる存在に</p>
@@ -133,7 +133,7 @@
                             </div>
                             <div class="text">
                                 <div class="C_vert-text">
-                                    <div class="C_vert-text--inner">
+                                    <div class="C_vert-text--inner right delay-10">
                                         <p class="TX">共に成長し未来を築く</p>
                                         <p class="TX">仲間を募集しています</p>
                                     </div>
@@ -156,7 +156,7 @@
                     <div class="C_gra-vert-title">
                         <h2 class="TL type-03">お問い合わせ</h2>
                     </div>
-                    <div class="contents--wrapper">
+                    <div class="contents--wrapper right ">
                         <div class="text--wrapper">
                             <p class="TX">
                                 施工に関するご質問やご相談、<br>
