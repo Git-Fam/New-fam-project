@@ -81,7 +81,7 @@
 
     .title {
       @include pc {
-        width: pclamp(162);
+        width: pclamp(192);
         font-size: pclamp(20);
         letter-spacing: pclamp(-0.2);
       }
