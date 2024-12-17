@@ -116,11 +116,13 @@
 
       .C_vert-title {
         position: absolute;
+        white-space: nowrap;
 
         @include pc {
           top: 0;
           transform: translateY(-60%);
           left: pclamp(37);
+          
         }
 
         @include sp {

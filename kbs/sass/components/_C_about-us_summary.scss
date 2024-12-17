@@ -1,5 +1,5 @@
-@use "../functions" as *;
-@use "../joint/J_functions" as *;
+@use "../functions"as *;
+@use "../joint/J_functions"as *;
 
 
 /* -----------------------
@@ -35,6 +35,7 @@
         font-size: s(24);
         width: s(24);
         letter-spacing: s(5);
+        height: s(63);
       }
     }
   }

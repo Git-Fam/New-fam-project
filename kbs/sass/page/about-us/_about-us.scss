@@ -19,10 +19,12 @@
 
       @include pc {
         transform: translateY(-80%);
+        height: pclamp(250);
       }
 
       @include sp {
         transform: translateY(-160%);
+        height: s(157);
       }
     }
   }
