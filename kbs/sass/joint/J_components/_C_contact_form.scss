@@ -16,6 +16,7 @@
 
     .title {
       display: flex;
+      display: block;
 
       @include pc {
         align-items: flex-start;

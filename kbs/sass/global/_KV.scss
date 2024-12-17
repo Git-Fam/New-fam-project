@@ -18,6 +18,7 @@
 
     @include sp {
       height: s(500);
+      background-position: center left 30%;
     }
   }
 
@@ -123,7 +124,7 @@
   }
 
   &.KV_contact {
-    @include imgCover("KV_contact.png");
+    @include imgCover("KV_contact.jpg");
 
     @include pc {
       height: pclamp(288);

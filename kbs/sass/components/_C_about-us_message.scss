@@ -30,6 +30,7 @@
     @include sp {
       width: s(232);
       height: s(247);
+      margin: 0 auto;
     }
 
     img {
@@ -41,37 +42,7 @@
 
   .contents--wrapper {
 
-    .title {
-
-      @include sp {
-        position: absolute;
-        top: s(-27);
-        right: s(27);
-      }
-
-      .TL {
-        color: $F-000000;
-        
-        @include pc {
-          line-height: 129%;
-          font-size: pclamp(24);
-        }
-
-        @include sp {
-          line-height: 1;
-          font-size: s(24);
-          writing-mode: vertical-rl;
-          width: s(24);
-          letter-spacing: s(5);
-          height: s(190);
-        }
-      }
-    }
-
     .text {
-      @include pc {
-        margin-top: pclamp(20);
-      }
 
       .TX {
         

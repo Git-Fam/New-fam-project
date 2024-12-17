@@ -10,7 +10,10 @@ $(function () {
   });
 
   // スクロールでヘッダーをずらす
+  // スクロールでヘッダーをずらす
   var lastScrollTop = 0;
+  var scrollTimeout;
+
   $(window).scroll(function () {
     var kvHeight = $('.KV').outerHeight();
     var scrollTop = $(window).scrollTop();
@@ -21,9 +24,10 @@ $(function () {
       $('.header').removeClass('active');
     }
 
-    if (scrollTop < lastScrollTop) {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(function () {
       $('.header').removeClass('active');
-    }
+    }, 300);
 
     lastScrollTop = scrollTop;
   });
