@@ -55,7 +55,7 @@ Template Path: pages/
                     <h3 class="TL">概要</h3>
                 </div>
                 <ul class="summary--contents right">
-                    <li class="right">
+                    <li>
                         <div class="list--title">
                             <p class="TX">社名</p>
                         </div>
@@ -63,7 +63,7 @@ Template Path: pages/
                             <p class="TX">株式会社KBS</p>
                         </div>
                     </li>
-                    <li class="right">
+                    <li>
                         <div class="list--title">
                             <p class="TX">代表者名</p>
                         </div>
@@ -71,7 +71,7 @@ Template Path: pages/
                             <p class="TX">桐部 貴大</p>
                         </div>
                     </li>
-                    <li class="right">
+                    <li>
                         <div class="list--title">
                             <p class="TX">設立日</p>
                         </div>
@@ -79,7 +79,7 @@ Template Path: pages/
                             <p class="TX">0000年00月00日</p>
                         </div>
                     </li>
-                    <li class="right">
+                    <li>
                         <div class="list--title">
                             <p class="TX">住所</p>
                         </div>
@@ -87,7 +87,7 @@ Template Path: pages/
                             <p class="TX">206-0823 　<br class="sp"><span>東京都稲城市平尾 2-75-4</span></p>
                         </div>
                     </li>
-                    <li class="right">
+                    <li>
                         <div class="list--title">
                             <p class="TX">電話番号</p>
                         </div>
@@ -95,7 +95,7 @@ Template Path: pages/
                             <p class="TX">042-378-2111</p>
                         </div>
                     </li>
-                    <li class="right">
+                    <li>
                         <div class="list--title">
                             <p class="TX">事業内容</p>
                         </div>

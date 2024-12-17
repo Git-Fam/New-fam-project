@@ -30,10 +30,12 @@ Template Path: pages/
             <ul class="C_business-items">
                 <!-- 01 -->
                 <li class="item">
+                    <div class="img--wrapper imgAnime">
                     <div class="item--img img--01"></div>
+                    </div>
                     <div class="item--contents">
                         <div class="title">
-                            <h3 class="TL">足場</h3>
+                            <h3 class="TL right delay-10">足場</h3>
                         </div>
                         <div class="TX--containaer">
                             <p class="TX">
@@ -44,10 +46,12 @@ Template Path: pages/
                 </li>
                 <!-- 02 -->
                 <li class="item">
+                    <div class="img--wrapper imgAnime">
                     <div class="item--img img--02"></div>
+                    </div>
                     <div class="item--contents">
                         <div class="title">
-                            <h3 class="TL">塗装</h3>
+                            <h3 class="TL right delay-10">塗装</h3>
                         </div>
                         <div class="TX--containaer">
                             <p class="TX">
@@ -58,10 +62,12 @@ Template Path: pages/
                 </li>
                 <!-- 03 -->
                 <li class="item">
+                    <div class="img--wrapper imgAnime">
                     <div class="item--img img--03"></div>
+                    </div>
                     <div class="item--contents">
                         <div class="title">
-                            <h3 class="TL">シーリング</h3>
+                            <h3 class="TL right delay-10">シーリング</h3>
                         </div>
                         <div class="TX--containaer">
                             <p class="TX">
@@ -72,10 +78,12 @@ Template Path: pages/
                 </li>
                 <!-- 04 -->
                 <li class="item">
+                    <div class="img--wrapper imgAnime">
                     <div class="item--img img--04"></div>
+                    </div>
                     <div class="item--contents">
                         <div class="title">
-                            <h3 class="TL">防水</h3>
+                            <h3 class="TL right delay-10">防水</h3>
                         </div>
                         <div class="TX--containaer">
                             <p class="TX">
@@ -87,10 +95,12 @@ Template Path: pages/
                 </li>
                 <!-- 05 -->
                 <li class="item">
+                    <div class="img--wrapper imgAnime">
                     <div class="item--img img--05"></div>
+                    </div>
                     <div class="item--contents">
                         <div class="title">
-                            <h3 class="TL">屋根工事</h3>
+                            <h3 class="TL right delay-10">屋根工事</h3>
                         </div>
                         <div class="TX--containaer">
                             <p class="TX">
@@ -101,10 +111,12 @@ Template Path: pages/
                 </li>
                 <!-- 06 -->
                 <li class="item">
+                    <div class="img--wrapper imgAnime">
                     <div class="item--img img--06"></div>
+                    </div>
                     <div class="item--contents">
                         <div class="title">
-                            <h3 class="TL">内装工事</h3>
+                            <h3 class="TL right delay-10">内装工事</h3>
                         </div>
                         <div class="TX--containaer">
                             <p class="TX">
@@ -120,7 +132,7 @@ Template Path: pages/
             <div class="C_business-area">
                 <div class="area--item">
                     <div class="area--title">
-                        <h3 class="TL">対応エリア</h3>
+                        <h3 class="TL right">対応エリア</h3>
                     </div>
                     <div class="area--contents">
                         <p class="TX">東京23区内外・神奈川</p>
@@ -128,7 +140,7 @@ Template Path: pages/
                 </div>
                 <div class="area--item">
                     <div class="area--title">
-                        <h3 class="TL">相談可能エリア</h3>
+                        <h3 class="TL right">相談可能エリア</h3>
                     </div>
                     <div class="area--contents">
                         <p class="TX">その他関東地域・山梨・長野</p>
