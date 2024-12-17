@@ -53,6 +53,7 @@
     .C_vert-text {
       @include pc{
         padding-top: pmin(38);
+        height: pclamp(531);
       }
       
       @include sp{

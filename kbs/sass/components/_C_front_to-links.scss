@@ -100,6 +100,7 @@
         display: flex;
         flex-direction: row-reverse;
         justify-content: space-between;
+        height: pclamp(550);
         margin-bottom: pclamp(200);
       }
 
@@ -151,7 +152,7 @@
       @include pc {
         display: flex;
         gap: pmin(99);
-        margin-bottom: pclamp(120);
+        margin-bottom: pclamp(180);
       }
 
       @include sp {}
@@ -169,6 +170,7 @@
 
           @include pc {
             width: fit-content;
+            height: pclamp(270);
           }
 
           @include sp {}
@@ -177,8 +179,9 @@
 
             @include pc {
               width: fit-content;
+              height: pclamp(185);
               margin-left: auto;
-              margin-bottom: pmin(100);
+              margin-bottom: pmin(70);
             }
           }
         }
@@ -206,6 +209,8 @@
         flex-direction: row-reverse;
         gap: pmin(55);
         padding-inline: pmin(96);
+        height: pclamp(344);
+
       }
 
       .contents--wrapper {
