@@ -6,6 +6,7 @@
 ----------------------- */
 .main__contact {
   position: relative;
+
   @include pc {
     padding-block: pclamp(160) pclamp(220);
   }
@@ -16,22 +17,26 @@
 
   .C_gra-vert-title {
     position: absolute;
-    top:0;
+    top: 0;
     left: 0;
-    @include pc{
-      top:pclamp(26);
+
+    @include pc {
+      top: pclamp(26);
       left: pclamp(103);
     }
-    @include sp{
-      top:s(-164);
+
+    @include sp {
+      top: s(-164);
       left: s(20);
     }
+
     // .TL{
     //   @include sp{
     //     font-size: s(28);
     //   }
     // }
   }
+
   .contact-wrap {
 
     @include pc {
@@ -126,9 +131,11 @@
 
     &.message {
       position: relative;
-      @include pc{
+
+      @include pc {
         padding-bottom: pclamp(35);
       }
+
       .form-TX {
         @include pc {
           line-height: 1.8;
@@ -138,23 +145,27 @@
           line-height: 2;
         }
       }
-      .down{
+
+      .down {
         opacity: 1 !important;
         transform: none !important;
         position: absolute;
         bottom: 0;
         right: 0;
-        @include pc{
+
+        @include pc {
           font-size: pclamp(13);
           bottom: pclamp(20);
         }
-        @include sp{
+
+        @include sp {
           font-size: s(13);
           right: s(30);
         }
       }
-      .wpcf7-not-valid-tip{
-        @include pc{
+
+      .wpcf7-not-valid-tip {
+        @include pc {
           bottom: -100%;
         }
       }
@@ -332,7 +343,8 @@
       }
     }
   }
-  .back{
+
+  .back {
     text-align: center;
     @include ryumin;
 
@@ -348,7 +360,11 @@
   }
 }
 
-// リキャプチャー非表示
-.grecaptcha-badge {
-  visibility: hidden; 
+.wpcf7-response-output {
+  display: none;
 }
+
+// リキャプチャー非表示
+// .grecaptcha-badge {
+//   visibility: hidden; 
+// }

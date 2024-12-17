@@ -97,12 +97,12 @@
         }
       }
 
-      .form-TX{
+      .form-TX {
         &.address {
           @include pc {
             margin-top: pclamp(19);
           }
-  
+
           @include sp {
             margin-top: s(13);
           }
@@ -222,5 +222,3 @@
     }
   }
 }
-
-
