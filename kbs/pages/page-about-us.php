@@ -36,7 +36,7 @@ Template Path: pages/
                         <h3 class="TL">代表あいさつ</h3>
                     </div>
                     <div class="text">
-                        <p class="TX">
+                        <p class="TX right delay-10">
                             私たちは創業以来、常に「安全・品質・信頼」を最優先に考え、お客様のご要望に合わせて丁寧に対応することで事業を通じて地域社会に貢献し、お客様に頼られる会社を目指しています。<br>
                             近年、建設業界はますます厳しい競争と変化の中で進化し続けていますが、当社はこれまで培った技術力と経験を活かし、どんなご依頼にも迅速かつ確実に対応してまいります。<br>
                             社員一丸となって、品質向上を目指し、常に前進していく所存です。これからもお客様と共に成長できるよう、努力を惜しまず取り組んでまいりますので、引き続きご愛顧賜りますようお願い申し上げます。
@@ -54,8 +54,8 @@ Template Path: pages/
                 <div class="summary--title">
                     <h3 class="TL">概要</h3>
                 </div>
-                <ul class="summary--contents">
-                    <li>
+                <ul class="summary--contents right">
+                    <li class="right">
                         <div class="list--title">
                             <p class="TX">社名</p>
                         </div>
@@ -63,7 +63,7 @@ Template Path: pages/
                             <p class="TX">株式会社KBS</p>
                         </div>
                     </li>
-                    <li>
+                    <li class="right">
                         <div class="list--title">
                             <p class="TX">代表者名</p>
                         </div>
@@ -71,7 +71,7 @@ Template Path: pages/
                             <p class="TX">桐部 貴大</p>
                         </div>
                     </li>
-                    <li>
+                    <li class="right">
                         <div class="list--title">
                             <p class="TX">設立日</p>
                         </div>
@@ -79,7 +79,7 @@ Template Path: pages/
                             <p class="TX">0000年00月00日</p>
                         </div>
                     </li>
-                    <li>
+                    <li class="right">
                         <div class="list--title">
                             <p class="TX">住所</p>
                         </div>
@@ -87,7 +87,7 @@ Template Path: pages/
                             <p class="TX">206-0823 　<br class="sp"><span>東京都稲城市平尾 2-75-4</span></p>
                         </div>
                     </li>
-                    <li>
+                    <li class="right">
                         <div class="list--title">
                             <p class="TX">電話番号</p>
                         </div>
@@ -95,7 +95,7 @@ Template Path: pages/
                             <p class="TX">042-378-2111</p>
                         </div>
                     </li>
-                    <li>
+                    <li class="right">
                         <div class="list--title">
                             <p class="TX">事業内容</p>
                         </div>

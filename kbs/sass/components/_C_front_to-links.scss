@@ -14,6 +14,7 @@
   .to-link--item {
 
     .img--wrapper {
+      height: fit-content;
 
       @include sp {
         margin-bottom: s(30);
