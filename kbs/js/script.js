@@ -36,8 +36,6 @@ $(function () {
 });
 
 
-
-// 施工事例の飛び先セレクタ切り替えとフィルター
 document.addEventListener('DOMContentLoaded', function () {
   const lists = document.querySelectorAll('.C_selector .list');
   const items = document.querySelectorAll('.C_example-item .item');
@@ -55,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // URLのハッシュを取得
-  const urlHash = window.location.hash.substring(1);
+  const urlHash = window.location.hash.substring(1) || 'all'; // Default to 'all'
 
   function updateItems(selectedData) {
     let anyVisible = false;
