@@ -217,6 +217,21 @@
             letter-spacing: s(-0.16);
           }
         }
+        .wpcf7-not-valid-tip{
+          color: $F-D77F3F;
+          // position: absolute;
+          white-space: nowrap;
+  
+          @include pc {
+            font-size: pclamp(16);
+            letter-spacing: pclamp(-0.16);
+          }
+  
+          @include sp {
+            font-size: s(16);
+            letter-spacing: s(-0.16);
+          }  
+        }
       }
 
     }
