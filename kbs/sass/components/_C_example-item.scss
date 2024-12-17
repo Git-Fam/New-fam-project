@@ -17,12 +17,18 @@
 
   .item {
 
-    @include pc {
-      @include column(pclamp(35));
-    }
+    &:last-child {
+      p {
+        text-align: center;
 
-    @include sp {
-      @include column(s(82));
+        @include pc {
+          font-size: pclamp(16);
+        }
+
+        @include sp {
+          font-size: s(16);
+        }
+      }
     }
 
     .img--area {
@@ -99,6 +105,14 @@
 
     .contents-area {
       position: relative;
+
+      @include pc {
+        padding-top: pclamp(35);
+      }
+
+      @include sp {
+        padding-top: s(82);
+      }
 
       .C_vert-title {
         position: absolute;
