@@ -12,8 +12,6 @@ Template Path: pages/
 <?php get_template_part('./inc/head'); ?>
 <?php get_template_part('./inc/header'); ?>
 
-<div class="KV KV_contact"></div>
-
 <!-- メイン -->
 <main class="main">
   <div class="main__contact contact_confirm max-size-large">

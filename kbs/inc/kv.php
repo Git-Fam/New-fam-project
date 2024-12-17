@@ -1,46 +1,31 @@
 <!-- front -->
 <?php if (is_front_page()) : ?>
-  <div>KV-frontKV</div>
+  <div class="KV KV_front"></div>
 <?php else : ?>
 
-  <!-- voi -->
-  <?php if (is_page('voi')) : ?>
-    <div>KV-voi</div>
+  <!-- about-us -->
+  <?php if (is_page('about-us')) : ?>
+    <div class="KV KV_about-us"></div>
   <?php endif; ?>
 
-  <!-- ggg -->
-  <?php if (is_page('ggg')) : ?>
-    <div>KV-ggg</div>
+  <!-- business -->
+  <?php if (is_page('business')) : ?>
+    <div class="KV KV_business"></div>
   <?php endif; ?>
 
-  <!-- archive -->
+  <!-- example -->
   <?php if (is_post_type_archive('post')) : ?>
-    <div>KV-news</div>
+    <div class="KV KV_example"></div>
   <?php endif; ?>
 
-  <!-- single -->
-  <?php if (is_singular('post')) : ?>
-    <div>KV-single-news</div>
+  <!-- recruit -->
+  <?php if (is_page('recruit')) : ?>
+    <div class="KV KV_recruit"></div>
   <?php endif; ?>
 
-  <!-- archive-blog -->
-  <?php if (is_post_type_archive('blog')) : ?>
-    <div>KV-blog</div>
-  <?php endif; ?>
-
-  <!-- single-blog -->
-  <?php if (is_singular('blog')) : ?>
-    <div>KV-single-blog</div>
-  <?php endif; ?>
-
-  <!-- archive-column -->
-  <?php if (is_post_type_archive('column')) : ?>
-    <div>KV-column</div>
-  <?php endif; ?>
-
-  <!-- single-column -->
-  <?php if (is_singular('column')) : ?>
-    <div>KV-single-column</div>
+  <!-- contact -->
+  <?php if (is_page('contact') || is_page('contact-complete') || is_page('contact-confirm')) : ?>
+    <div class="KV KV_contact"></div>
   <?php endif; ?>
 
 <?php endif; ?>

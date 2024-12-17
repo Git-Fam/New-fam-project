@@ -1,14 +1,9 @@
 <?php get_template_part('./inc/head'); ?>
 <?php get_template_part('./inc/header'); ?>
 
-
-
-
 <!-- メイン -->
 <main class="main">
-
     <div class="main__example">
-
         <div class="section__wrapper max-size-medium">
             <div class="main__title">
                 <div class="C_gra-vert-title">
@@ -16,9 +11,7 @@
                 </div>
             </div>
         </div>
-
         <section class="section_example max-size-small">
-
             <div class="C_selector">
                 <div class="C_selector--inner">
                     <ul class="lists">
@@ -93,13 +86,8 @@
                     <?php endwhile; ?>
                 </ul>
             <?php endif; ?>
-
         </section>
-
     </div>
-
 </main>
-
-
 
 <?php get_template_part('./inc/footer'); ?>

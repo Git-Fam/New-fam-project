@@ -10,9 +10,6 @@ Template Path: pages/
 <?php get_template_part('./inc/head'); ?>
 <?php get_template_part('./inc/header'); ?>
 
-
-<div class="KV KV_business"></div>
-
 <!-- メイン -->
 <main class="main">
 

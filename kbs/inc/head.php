@@ -45,12 +45,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri(); ?>/img/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="<?php echo get_template_directory_uri(); ?>/img/favicon/site.webmanifest" />
 
-    <!-- ▼クロールして欲しくない -->
-    <!-- <meta name="robots" content="noindex,nofollow"> -->
-
-    <!-- ▼テーマカラー -->
-    <!-- <meta name="theme-color" content="#e9c931"> -->
-
     <!-- ▼CSS -->
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/main.css">
 
