@@ -4,14 +4,59 @@
 /* -----------------------
   C_contact
 ----------------------- */
-.contact-wrap {
-
+.main__contact {
+  position: relative;
   @include pc {
-    padding: pclamp(160) pclamp(267) 0;
+    padding-block: pclamp(160) pclamp(220);
   }
 
   @include sp {
-    padding: s(100) s(20) 0;
+    padding-block: s(100) s(130);
+  }
+
+  .C_gra-vert-title {
+    position: absolute;
+    top:0;
+    left: 0;
+    @include pc{
+      top:pclamp(26);
+      left: pclamp(103);
+    }
+    @include sp{
+      top:s(-164);
+      left: s(20);
+    }
+    // .TL{
+    //   @include sp{
+    //     font-size: s(28);
+    //   }
+    // }
+  }
+  .contact-wrap {
+
+    @include pc {
+      padding-inline: pclamp(267);
+    }
+
+    @include sp {
+      padding-inline: s(20);
+    }
+
+    .contact-TL {
+      line-height: 1.75;
+
+      @include pc {
+        text-align: center;
+        font-size: pclamp(16);
+        letter-spacing: pclamp(1.28);
+      }
+
+      @include sp {
+        font-size: s(16);
+        letter-spacing: s(1.28);
+
+      }
+    }
   }
 }
 
@@ -78,13 +123,39 @@
 
       }
     }
-    &.message{
-      .form-TX{
-        @include pc{
+
+    &.message {
+      position: relative;
+      @include pc{
+        padding-bottom: pclamp(35);
+      }
+      .form-TX {
+        @include pc {
           line-height: 1.8;
         }
-        @include sp{
+
+        @include sp {
           line-height: 2;
+        }
+      }
+      .down{
+        opacity: 1 !important;
+        transform: none !important;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        @include pc{
+          font-size: pclamp(13);
+          bottom: pclamp(20);
+        }
+        @include sp{
+          font-size: s(13);
+          right: s(30);
+        }
+      }
+      .wpcf7-not-valid-tip{
+        @include pc{
+          bottom: -100%;
         }
       }
     }
@@ -211,10 +282,12 @@
 .btn-area {
   display: flex;
   justify-content: center;
-  @include pc{
+
+  @include pc {
     margin-top: pclamp(60);
   }
-  @include sp{
+
+  @include sp {
     margin-top: s(30);
   }
 
@@ -259,7 +332,23 @@
       }
     }
   }
+  .back{
+    text-align: center;
+    @include ryumin;
+
+    @include pc {
+      font-size: pclamp(20);
+      letter-spacing: pclamp(6);
+    }
+
+    @include sp {
+      font-size: s(20);
+      letter-spacing: s(6);
+    }
+  }
 }
 
-
-
+// リキャプチャー非表示
+.grecaptcha-badge {
+  visibility: hidden; 
+}

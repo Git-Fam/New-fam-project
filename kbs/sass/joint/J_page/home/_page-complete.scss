@@ -1,0 +1,62 @@
+@use "../../../functions"as *;
+@use "../../J_functions"as *;
+
+/* -----------------------
+  page-complete
+----------------------- */
+
+.contact_complete{
+  @include sp{
+    padding-top: s(132) !important;
+  }
+  .contact-wrap{
+    @include pc{
+      padding-inline: pclamp(200) !important;
+    }
+  }
+  .contact_complete_content{
+    background-color: $B-FFFFFF;
+    text-align: center;
+    @include pc{
+      padding: pclamp(63) pclamp(199);
+    }
+    @include sp{
+      padding: s(53) s(9) s(64);
+    }
+    .TL{
+      @include pc{
+        font-size: pclamp(20);
+        letter-spacing: pclamp(1.6);  
+        line-height: 1.4;
+      }
+      @include sp{
+        font-size: s(18);
+        letter-spacing: s(1.44);
+        line-height: 1.5;
+      }
+    }
+    .TX{
+      line-height: 1.87;
+      @include pc{
+        font-size: pclamp(16);
+        margin-top: p(30);
+      }
+      @include sp{
+        font-size: s(16);
+        margin-top: s(20);
+      }
+    }
+  }
+}
+
+//   .C_contact_confirm {
+//     .C_contact {
+//       @include pc {
+//         margin-top: pclamp(75);
+//       }
+
+//       @include sp {
+//         margin-top: s(40);
+//       }
+//     }
+//   }

@@ -1,0 +1,18 @@
+@use "../../../functions"as *;
+@use "../../J_functions"as *;
+
+/* -----------------------
+  page-contact
+----------------------- */
+.C_contact_form {
+
+  .C_contact {
+    @include pc {
+      margin-top: pclamp(75);
+    }
+
+    @include sp {
+      margin-top: s(50);
+    }
+  }
+}

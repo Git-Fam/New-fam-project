@@ -1,0 +1,18 @@
+@use "../../../functions"as *;
+@use "../../J_functions"as *;
+
+/* -----------------------
+  page-confirm
+----------------------- */
+
+.C_contact_confirm {
+  .C_contact {
+    @include pc {
+      margin-top: pclamp(75);
+    }
+
+    @include sp {
+      margin-top: s(40);
+    }
+  }
+}
