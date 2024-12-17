@@ -43,30 +43,30 @@
       }
 
       &:nth-child(1) {
-        @include imgCover("front_example_01.jpg");
+        @include imgCover("business-item-01.jpg");
       }
 
       &:nth-child(2) {
-        @include imgCover("front_example_02.png");
+        @include imgCover("business-item-02.jpg");
         background-position: center right 46%;
       }
 
       &:nth-child(3) {
-        @include imgCover("front_example_03.png");
+        @include imgCover("business-item-03.png");
         background-position: center right 55%;
       }
 
       &:nth-child(4) {
-        @include imgCover("front_example_04.jpg");
+        @include imgCover("business-item-04.jpg");
       }
 
       &:nth-child(5) {
-        @include imgCover("front_example_05.png");
+        @include imgCover("business-item-05.jpg");
         background-position: center right 30%;
       }
 
       &:nth-child(6) {
-        @include imgCover("front_example_06.jpg");
+        @include imgCover("business-item-06.jpg");
       }
 
       &:before,
