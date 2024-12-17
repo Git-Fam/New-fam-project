@@ -14,10 +14,10 @@
   @include imgCover("all_BK.jpg");
   background-size: 100%;
   background-position: center top;
-  transition: transform 0.3s;
+  transition: all 0.3s;
 
   &.active{
-    transform: translateY(-100%);
+    top: -100%;
   }
 
   @include pc {

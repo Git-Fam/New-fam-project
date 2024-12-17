@@ -1,0 +1,36 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  recruit
+----------------------- */
+.main__recruit {
+
+  @include pc {
+    padding-block: pclamp(160) pclamp(225);
+  }
+
+  @include sp {
+    padding-block: s(160) s(136);
+  }
+
+  .section__wrapper {
+
+    .main__title {
+
+      @include pc {
+        transform: translateY(-50%);
+      }
+
+      @include sp {
+        transform: translateY(-160%);
+      }
+    }
+  }
+
+  .section__recruit {
+
+    @include sp {
+      padding-inline: s(20);
+    }
+  }
+}

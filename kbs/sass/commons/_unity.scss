@@ -69,3 +69,47 @@ body {
   }
 }
 
+.max-size-small-other {
+  @include pc{
+    width: pclamp(656);
+    margin: 0 auto;
+  }
+}
+
+
+.section__wrapper {
+  position: relative;
+
+  .main__title {
+    position: absolute;
+    top: 0;
+    width: fit-content;
+    z-index: 10;
+    
+    @include pc {
+      left: 0;
+    }
+
+    @include sp {
+      left: s(20);
+    }
+
+    .C_gra-vert-title {
+      .TL {
+        line-height: 1;
+
+        @include pc {
+          font-size: pclamp(42);
+          width: pclamp(42);
+          letter-spacing: pclamp(20);
+        }
+
+        @include sp {
+          font-size: s(28);
+          width: s(28);
+          letter-spacing: s(10);
+        }
+      }
+    }
+  }
+}

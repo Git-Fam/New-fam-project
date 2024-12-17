@@ -1,0 +1,53 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  about-us
+----------------------- */
+.main__about-us {
+
+  @include pc {
+    padding-block: pclamp(225) 0;
+  }
+
+  @include sp {
+    padding-block: s(160) 0;
+  }
+
+  .section__wrapper {
+
+    .main__title {
+
+      @include pc {
+        transform: translateY(-80%);
+      }
+
+      @include sp {
+        transform: translateY(-160%);
+      }
+    }
+  }
+
+  .section_about-us_message {
+
+    @include pc {
+      margin-bottom: pclamp(160);
+    }
+
+    @include sp {
+      padding-inline: s(20);
+      margin-bottom: s(100);
+    }
+  }
+
+  .section_about-us_summary {
+
+    @include pc {
+      margin-bottom: pclamp(120);
+    }
+
+    @include sp {
+      padding-inline: s(20);
+      margin-bottom: s(160);
+    }
+  }
+}

@@ -19,6 +19,9 @@ $sp: 767px; // スマホ
     @content;
   }
 }
+// @include media(767px , 1024px){
+//   @content;
+// }
 
 // どセンター
 @mixin center {

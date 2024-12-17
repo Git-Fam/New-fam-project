@@ -1,0 +1,37 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  example
+----------------------- */
+.main__example {
+
+  @include pc {
+    padding-block: pclamp(30) pclamp(225);
+  }
+
+  @include sp {
+    padding-block: s(100) s(136);
+  }
+
+  .section__wrapper {
+
+    .main__title {
+
+      @include sp {
+        transform: translateY(-125%);
+      }
+    }
+  }
+
+  .section_example{
+
+    @include pc {
+      @include column(pclamp(100));
+    }
+
+    @include sp {
+      @include column(s(197));
+      padding-inline: s(20);
+    }
+  }
+}

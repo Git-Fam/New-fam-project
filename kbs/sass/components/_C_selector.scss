@@ -9,6 +9,7 @@
 
   @include pc {
     width: fit-content;
+    margin-left: auto;
   }
 
   @include sp {
@@ -47,11 +48,11 @@
         transition: all 0.5s ease;
 
         @include pc {
-          padding-block: pclamp(15) pclamp(35);
+          padding-block: pclamp(15) pclamp(55);
         }
 
         @include sp {
-          padding-block: pclamp(8) pclamp(31);
+          padding-block: s(8) s(41);
         }
 
         &::before {
@@ -61,10 +62,17 @@
           top: 0%;
           left: 50%;
           transform: translateX(-50%);
-          width: 240%;
           height: 0%;
           background: linear-gradient(180deg, #D77F3F 0%, rgba(215, 127, 63, 0.00) 100%);
           transition: all 0.5s ease;
+
+          @include pc {
+            width: 240%;
+          }
+
+          @include sp {
+            width: 200%;
+          }
         }
 
         .TX {
@@ -72,6 +80,7 @@
           writing-mode: vertical-rl;
           position: relative;
           z-index: 2;
+          transition: all 0.5s ease;
 
           @include pc {
             font-size: pclamp(24);
@@ -80,41 +89,46 @@
           }
 
           @include sp {
-            font-size: pclamp(20);
-            width: pclamp(20);
-            letter-spacing: pclamp(10);
+            font-size: s(20);
+            width: s(20);
+            letter-spacing: s(10);
           }
         }
 
         &:hover {
-
-          @include pc {
-            padding-top: pclamp(34);
-          }
-
-          @include sp {
-            padding-top: pclamp(24);
-          }
 
           &::before {
             height: 100%;
             background: linear-gradient(180deg, #D77F3F 0%, rgba(215, 127, 63, 0.00) 100%);
             opacity: 0.6;
           }
+
+          .TX {
+
+            @include pc {
+              transform: translateY(pclamp(17));
+            }
+
+            @include sp {
+              transform: translateY(s(12));
+            }
+          }
         }
 
         &.selected {
 
-          @include pc {
-            padding-top: pclamp(34);
-          }
-
-          @include sp {
-            padding-top: pclamp(24);
-          }
-
           &::before {
             height: 100%;
+          }
+
+          .TX {
+            @include pc {
+              transform: translateY(pclamp(17));
+            }
+
+            @include sp {
+              transform: translateY(s(12));
+            }
           }
         }
       }

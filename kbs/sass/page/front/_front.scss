@@ -5,7 +5,44 @@
 ----------------------- */
 .main__front {
 
-  @include pc {}
+  @include pc {
+    padding-block: pclamp(130) 0;
+  }
 
-  @include sp {}
+  @include sp {
+    padding-block: s(30) 0;
+  }
+
+  .section_front_about-us {
+
+    @include pc {
+      margin-bottom: pclamp(100);
+    }
+
+    @include sp {
+      margin-bottom: s(100);
+    }
+  }
+
+  .section_front_example {
+
+    @include pc {
+      margin-bottom: pclamp(238);
+    }
+
+    @include sp {
+      margin-bottom: s(100);
+    }
+  }
+
+  .section_front_to-links {
+
+    @include pc {
+      margin-bottom: pclamp(213);
+    }
+
+    @include sp {
+      margin-bottom: s(178);
+    }
+  }
 }
