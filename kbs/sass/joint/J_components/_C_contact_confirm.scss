@@ -7,6 +7,7 @@
 .C_contact_confirm {
   li {
     align-items: center;
+
     @include pc {
       padding: pclamp(30) pclamp(25) pclamp(30) pclamp(8);
     }
@@ -15,57 +16,69 @@
       padding: s(22) s(25) s(22) s(18);
     }
   }
-  .input-area{
-    @include sp{
+
+  .input-area {
+    @include sp {
       margin-top: s(30);
     }
-    .form-TX{
-      @include sp{
+
+    .form-TX {
+      @include sp {
         font-size: s(20);
         letter-spacing: s(1);
       }
     }
+
     .postal {
-      @include pc{
+      @include pc {
         margin-left: pclamp(-20);
       }
+
       .form-TX {
-        &.postal01{
-          @include pc{
+        &.postal01 {
+          @include pc {
             width: pclamp(50);
             margin-inline: pclamp(32) pclamp(45);
           }
-          @include sp{
+
+          @include sp {
             width: s(35);
-            margin-inline: s(12) s(96);
+            margin-inline: s(12);
           }
         }
-        &.postal02{
-          @include pc{
+
+        &.postal02 {
+          @include pc {
             width: pclamp(43);
             margin-left: pclamp(50);
           }
-          @include sp{
+
+          @include sp {
             width: s(47);
             margin-left: s(13);
           }
         }
       }
     }
+
     .address {
-      @include pc{
+      @include pc {
         margin-top: pclamp(18);
       }
-      @include sp{
+
+      @include sp {
         margin-top: s(25);
       }
     }
-    &.policy-content{
-      @include sp{
+
+    &.policy-content {
+      @include sp {
         margin-top: s(5);
       }
-      .form-TX{
+
+      .form-TX {
         background-color: $B-FAFAFA;
+
         @include pc {
           padding: pclamp(15) pclamp(20);
         }
@@ -76,17 +89,20 @@
       }
     }
   }
-  .btn-area{
-    @include pc{
+
+  .btn-area {
+    @include pc {
       gap: pclamp(200);
     }
-    @include sp{
+
+    @include sp {
       flex-direction: column;
       align-items: center;
       gap: s(20);
     }
-    .back{
-      border:none;
+
+    .back {
+      border: none;
       background-color: $B-BCBCBC;
     }
   }

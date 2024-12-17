@@ -58,6 +58,7 @@
 
       .form-TX {
         border: none;
+        outline: none;
         background-color: $B-FFFFFF;
         @include ryumin;
 
@@ -112,6 +113,7 @@
       .wpcf7-not-valid-tip {
         color: $F-D77F3F;
         position: absolute;
+        white-space: nowrap;
 
         @include pc {
           font-size: pclamp(16);
