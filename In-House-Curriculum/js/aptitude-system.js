@@ -173,7 +173,7 @@ $(function () {
 			isFormChanged = false; // 全て入力済みの場合、リロード警告を解除
 			$(window).off("beforeunload", handleBeforeUnload); // beforeunload イベント解除
 			const highestSectionId = getSectionWithMostHighNumbers();
-			window.location.href = `/result.html?section=${
+			window.location.href = `/aptitude-result-engineer?section=${
 				highestSectionId || "unknown"
 			}`;
 		}
@@ -189,7 +189,7 @@ $(function () {
 			isFormChanged = false; // 全て入力済みの場合、リロード警告を解除
 			$(window).off("beforeunload", handleBeforeUnload); // beforeunload イベント解除
 			const highestSectionId = getSectionWithMostHighNumbers();
-			window.location.href = `/result-2.html?section=${
+			window.location.href = `/aptitude-result-designer?section=${
 				highestSectionId || "unknown"
 			}`;
 		}

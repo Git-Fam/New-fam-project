@@ -20,11 +20,17 @@
   <script src="<?php echo get_template_directory_uri(); ?>/js/aptitude-choice.js"></script>
 <?php endif; ?>
 
-<?php if (is_page('aptitude-engineer') || is_page('aptitude-designer')) : ?>
+<?php if (is_page('aptitude-engineer') || is_page('aptitude-designer') || is_page('aptitude-result-engineer') || is_page('aptitude-result-designer')) : ?>
   <script src="<?php echo get_template_directory_uri(); ?>/js/aptitude-system.js"></script>
+<?php endif; ?>
+
+<?php if (is_page('aptitude-engineer') || is_page('aptitude-designer')) : ?>
   <script src="<?php echo get_template_directory_uri(); ?>/js/aptitude.js"></script>
 <?php endif; ?>
 
+<?php if (is_page('aptitude-result-engineer') || is_page('aptitude-result-designer')) : ?>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/aptitude-result.js"></script>
+<?php endif; ?>
 
 
 
