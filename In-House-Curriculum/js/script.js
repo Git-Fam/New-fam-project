@@ -76,21 +76,21 @@ $(function () {
     });
   });
 
-  // タブ切り替え
-  $(document).ready(function () {
-    $('.archive--item').on('click', function () {
-      // すべての.archive--itemから.activeを削除
-      $('.archive--item').removeClass('active');
-      // クリックされた.archive--itemに.activeを追加
-      $(this).addClass('active');
+  // // タブ切り替え
+  // $(document).ready(function () {
+  //   $('.archive--item').on('click', function () {
+  //     // すべての.archive--itemから.activeを削除
+  //     $('.archive--item').removeClass('active');
+  //     // クリックされた.archive--itemに.activeを追加
+  //     $(this).addClass('active');
 
-      // すべての.archive--contents--items--wapから.activeを削除
-      $('.archive--contents--items--wap').removeClass('active');
-      // クリックされた.archive--itemのインデックスに基づいて対応する.archive--contents--items--wapに.activeを追加
-      var index = $('.archive--item').index(this);
-      $('.archive--contents--items--wap').eq(index).addClass('active');
-    });
-  });
+  //     // すべての.archive--contents--items--wapから.activeを削除
+  //     $('.archive--contents--items--wap').removeClass('active');
+  //     // クリックされた.archive--itemのインデックスに基づいて対応する.archive--contents--items--wapに.activeを追加
+  //     var index = $('.archive--item').index(this);
+  //     $('.archive--contents--items--wap').eq(index).addClass('active');
+  //   });
+  // });
 
 
   // カテゴリータブ切り替え(スキン編集画面)

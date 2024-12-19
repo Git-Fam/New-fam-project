@@ -1,4 +1,11 @@
-<?php get_header(); ?>
+<?php 
+if (!is_user_logged_in()) {
+    wp_redirect(home_url('/login'));
+    exit;
+}
+
+get_header();
+?>
 
 <div class="game-main">
     <div class="game-wrap">

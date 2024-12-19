@@ -29,16 +29,27 @@ get_header();
 <div class="cover-wrapper">
     <div class="cover">
         <div class="cover-header">
-            <p class="TL">
-                カリキュラム選択 〉
-                <?php
-                    $categories = get_the_category($queried_post->ID);
-                    if (!empty($categories)) {
-                        echo esc_html($categories[0]->name);
-                    }
-                ?> 
-                〉<?php echo esc_html($queried_post->post_title); ?>
-            </p>
+<p class="TL">
+    カリキュラム選択 〉
+    <?php
+$categories = get_the_category($queried_post->ID);
+if (!empty($categories) && isset($categories[0]->name)) {
+    $category_url = site_url('/curriculum?category=' . urlencode($categories[0]->name));
+    echo '<a href="' . esc_url($category_url) . '">' . esc_html($categories[0]->name) . '</a>';
+} else {
+    echo '<p>カテゴリーが設定されていません。</p>';
+}
+?>
+<!-- ">
+        <?php
+        $categories = get_the_category($queried_post->ID);
+        if (!empty($categories)) {
+            echo esc_html($categories[0]->name);
+        }
+        ?> 
+    </a> -->
+    〉<?php echo esc_html($queried_post->post_title); ?>
+</p>
             <div class="btn" id="cover-btn"></div>
         </div>
 
@@ -74,6 +85,7 @@ get_header();
             <p class="link">チャット...</p>
         </a>
         <div class="tree tree01"></div>
+        <div class="tree01-02"></div>
         <a href="<?php echo site_url('/question'); ?>" class="chara-link goatbox">
             <div class="goat"></div>
             <p class="link">質問する？</p>
@@ -113,7 +125,7 @@ get_header();
 
         <div class="back-wrap">
             <div class="back"></div>
-            <a href="javascript:window.close()" class="TX">戻る</a>
+            <a href="#" onclick="history.back()" class="TX">戻る</a>
         </div>
 
         <?php
@@ -129,36 +141,62 @@ get_header();
 
             $all_posts = new WP_Query($args);
             $next_post_id = null;
+            $prev_post_id = null;
 
             if ($all_posts->have_posts()) :
+                $prev_post_id = null;
+                $last_post_id = null;
                 $found_current = false;
+                
                 while ($all_posts->have_posts()) : $all_posts->the_post();
+                    $current_id = get_the_ID();
+                
                     if ($found_current) {
-                        $next_post_id = get_the_ID();
+                        // 次の記事を見つけたらループを抜ける
+                        $next_post_id = $current_id;
                         break;
                     }
-                    if (get_the_ID() == $current_post_id) {
+                
+                    if ($current_id == $current_post_id) {
+                        // 現在の投稿を見つけた場合
                         $found_current = true;
+                    } else {
+                        // 前の記事を設定
+                        $prev_post_id = $current_id;
                     }
+                
+                    // 最後の記事IDを記録
+                    $last_post_id = $current_id;
                 endwhile;
-
+                
+                // 次がない場合、最初の投稿を次として設定
                 if (!$next_post_id && $found_current) {
                     $all_posts->rewind_posts();
                     $all_posts->the_post();
                     $next_post_id = get_the_ID();
                 }
-            endif;
+                
+                // 前がない場合、最後の投稿を前として設定
+                if (!$prev_post_id) {
+                    $prev_post_id = $last_post_id;
+                }
+                endif;
             wp_reset_postdata();
 
-            if ($next_post_id):
-        ?>
-                <a href="<?php echo esc_url(site_url('/cover/?post_id=' . $next_post_id)); ?>" class="next">
-                    <p class="next-link">次に進む</p>
+            // リンク生成
+            if ($prev_post_id): ?>
+                <a href="<?php echo esc_url(site_url('/cover/?post_id=' . $prev_post_id)); ?>" class="board prev">
+                    <p class="link-TX prev-link">前に戻る</p>
                 </a>
-        <?php
-            else:
-                echo '<p>次の記事はありません。</p>';
-            endif;
+            <?php endif;
+
+            if ($next_post_id): ?>
+                <a href="<?php echo esc_url(site_url('/cover/?post_id=' . $next_post_id)); ?>" class="board next">
+                    <p class="link-TX next-link">次に進む</p>
+                </a>
+            <?php else: ?>
+                <p>次の記事はありません。</p>
+            <?php endif;
         endif;
         ?>
         <div class="grass grass01"></div>
@@ -168,3 +206,7 @@ get_header();
 <?php
 get_footer();
 ?>
+
+
+
+

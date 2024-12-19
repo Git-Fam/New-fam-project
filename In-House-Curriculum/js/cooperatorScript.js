@@ -59,15 +59,17 @@ jQuery(function () {
 		});
 
 	//show付与
-	$("#cover-btn,.timeline-jamp").off("click").on("click", function () {
-		$("#tab-wrap,.timeline-modal,.chat-wrap").toggleClass(
-			"show"
-		);
-	});
+	$("#cover-btn,.timeline-jamp")
+		.off("click")
+		.on("click", function () {
+			$("#tab-wrap,.timeline-modal,.chat-wrap").toggleClass("show");
+		});
 
-	$(".category-content").off("click").on("click", function () {
-		$(this).find(".select-content").toggleClass("show"); 
-	});
+	$(".category-content")
+		.off("click")
+		.on("click", function () {
+			$(this).find(".select-content").toggleClass("show");
+		});
 
 	$("#cover-curriculum").hover(function () {
 		$(".pyon").toggleClass("hover");
@@ -372,14 +374,14 @@ jQuery(function () {
 
 	// クラスAを持つ要素をクラスBで囲む
 	// .sac-chat-name が既に .sac-chat-name-wrap で包まれているか確認
-	$(".sac-chat-name").each(function() {
+	$(".sac-chat-name").each(function () {
 		if (!$(this).parent().hasClass("sac-chat-name-wrap")) {
 			$(this).wrap('<p class="sac-chat-name-wrap"></p>');
 		}
 	});
 
 	// .highlight-text が既に .text-wrap で包まれているか確認
-	$(".highlight-text").each(function() {
+	$(".highlight-text").each(function () {
 		if (!$(this).parent().hasClass("text-wrap")) {
 			$(this).wrap('<p class="text-wrap"></p>');
 		}
@@ -413,26 +415,39 @@ jQuery(function () {
 			allUsersProgress.forEach((user) => {
 				const userProgress = user.progress;
 				const username = user.username;
-	
+
 				let lastCheckpointClass = "";
 				let lastProgressValue = 0;
-	
+
 				// 現在アクティブなカテゴリーの要素を取得
 				const $activeCategory = $(".archive--contents--items--wap.active");
-	
+
 				if ($activeCategory.length) {
 					const categoryId = $activeCategory.data("category-id"); // カテゴリーIDを取得
-	
+
 					// 進捗が100%で1週間経過しているかを確認
-					const isOneWeekPassed =
-						lastPostProgress[categoryId] &&
-						lastPostProgress[categoryId][user.user_id];
-	
+					// const isOneWeekPassed =
+					// 	lastPostProgress[categoryId] &&
+					// 	lastPostProgress[categoryId][user.user_id];
+					const isOneWeekPassed = (() => {
+						const lastDateStr = lastPostProgress?.[categoryId]?.[user.user_id];
+						if (!lastDateStr || lastDateStr === false) return false; // データがない場合は1週間経過していないとみなす
+
+						const lastDate = new Date(lastDateStr);
+						const currentDate = new Date();
+
+						// 1週間（7日分）をミリ秒で計算
+						const oneWeekInMs = 7 * 24 * 60 * 60 * 1000;
+
+						// 現在日時との差を計算して1週間以上か確認
+						return currentDate - lastDate > oneWeekInMs;
+					})();
+
 					if (!isOneWeekPassed) {
 						// 1週間経過していない場合のみキャラクターを表示
 						$.each(userProgress, (key, value) => {
 							const progressValue = parseInt(value) || 0;
-	
+
 							if (progressValue > 0) {
 								// アクティブなカテゴリー内にそのクラスが存在するか確認
 								if ($activeCategory.find(`.${key}`).length > 0) {
@@ -441,19 +456,19 @@ jQuery(function () {
 								}
 							}
 						});
-	
+
 						if (lastCheckpointClass) {
 							const $checkpointElement = $activeCategory.find(
 								`.${lastCheckpointClass}`
 							);
-	
+
 							if ($checkpointElement.length) {
 								const $characterBox = $("<div>")
 									.addClass("character-box")
 									.css({ position: "absolute", left: lastProgressValue + "%" });
-	
+
 								const $nameElement = $("<p>").addClass("name").text(username);
-	
+
 								const userCharacter = wpData.allUsersCharacters.find(
 									(c) => c.username === username
 								);
@@ -463,45 +478,59 @@ jQuery(function () {
 										.html(userCharacter.character_html);
 									$characterBox.append($characterDiv);
 								}
-	
+
 								if ($.trim(username) === $.trim(currentUsername)) {
 									$nameElement.css("color", "red");
 									$characterBox.addClass("me");
 								}
-	
+
 								$characterBox.append($nameElement).appendTo($checkpointElement);
 							}
 						}
 					}
 				}
+				// const categoryId = 2; // 調べたいカテゴリーID
+				// const userId = 31; // 調べたいユーザーID
+
+				// if (lastPostProgress[categoryId] && lastPostProgress[categoryId][userId] !== undefined) {
+				// 	console.log(`User ${userId} in Category ${categoryId}:`, lastPostProgress[categoryId][userId]);
+				// } else {
+				// 	console.log(`No data for User ${userId} in Category ${categoryId}.`);
+				// }
 			});
 		}
 	}
-	
+
 	// ゴールのクラスを更新する関数
 	function updateGoalClasses() {
-		if (typeof allUsersProgress !== "undefined" && allUsersProgress.length > 0) {
+		if (
+			typeof allUsersProgress !== "undefined" &&
+			allUsersProgress.length > 0
+		) {
 			// 現在のユーザーの進捗データのみを取得
 			const currentUserProgress = allUsersProgress.find(
 				(user) => user.username === currentUsername
 			);
-	
+
 			if (currentUserProgress && currentUserProgress.progress) {
 				const userProgress = currentUserProgress.progress;
-	
+
 				// .destination 要素をループして、進捗データに基づいて .goal にクラスを追加
 				$(".destination").each(function () {
 					const $destination = $(this);
 					const $goalElement = $destination.find(".goal");
-	
+
 					// 進捗キーとして使えるクラス名を取得（最初のクラスのみ使用）
-					const tagClass = $destination.attr("class").split(" ").find(function (className) {
-						return userProgress.hasOwnProperty(className);
-					});
-	
+					const tagClass = $destination
+						.attr("class")
+						.split(" ")
+						.find(function (className) {
+							return userProgress.hasOwnProperty(className);
+						});
+
 					if (tagClass) {
 						const progressValue = parseInt(userProgress[tagClass], 10);
-	
+
 						if (progressValue === 0 || isNaN(progressValue)) {
 							$goalElement.addClass("not");
 						} else if (progressValue === 100) {
@@ -516,7 +545,7 @@ jQuery(function () {
 			}
 		}
 	}
-		
+
 	// ページロード時の初期表示
 	displayCharacters();
 	updateGoalClasses();

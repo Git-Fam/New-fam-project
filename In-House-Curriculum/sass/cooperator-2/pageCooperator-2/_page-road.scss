@@ -727,6 +727,44 @@
                   }
                 }
 
+                .title-board {
+                  @include imgContain("next.png");
+                  position: absolute;
+
+                  @include pc {
+                    width: p(86);
+                    height: p(79);
+                    top: p(-50);
+                    left: 0;
+                  }
+
+                  @include sp {
+                    width: 86px;
+                    height: 79px;
+                    top: -50px;
+                    left: 0;
+                  }
+
+                  .board-TX {
+                    color: $F-FFFFFF;
+
+                    @include pc {
+                      width: p(84);
+                      height: p(38);
+                      line-height: p(38);
+                      padding-left: p(10);
+                      font-size: p(13);
+                    }
+
+                    @include sp {
+                      width: 84px;
+                      height: 38px;
+                      line-height: 38px;
+                      padding-left: 10px;
+                      font-size: 13px;
+                    }
+                  }
+                }
               }
 
 
@@ -734,7 +772,7 @@
                 position: absolute;
                 bottom: 0;
                 translate: -50% 0;
-                z-index: 10;
+                z-index: 20;
                 pointer-events: none;
 
                 .character {
@@ -1667,7 +1705,7 @@
       }
 
       &.Java,
-      &.React ,
+      &.React,
       &.Design {
         .page1 {
           .road-content {

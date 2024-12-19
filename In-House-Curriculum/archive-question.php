@@ -1,14 +1,18 @@
+<?php
+if (!is_user_logged_in()) {
+    wp_redirect(home_url('/login'));
+    exit;
+}
 
-
-
-<?php get_header(); ?>
+get_header();
+?>
 
 <div class="question archive-question">
     <div class="question-main">
         <div class="question-main-TL">
             <p class="TL">質問広場</p>
         </div>
-        
+
         <!-- 左側 -->
         <div class="question-main-post">
             <ul class="C_menu">
@@ -23,53 +27,53 @@
                         <p class="category-content-TX">カテゴリー選択</p>
                         <div class="select-content">
                             <?php
-                                echo '<ul class="select">';
+                            echo '<ul class="select">';
 
-                                // 'question' 投稿タイプのカテゴリー（タクソノミー 'question-cat'）を取得
-                                $categories = get_terms([
-                                    'taxonomy' => 'question-cat',  // カスタムタクソノミー名
-                                    'hide_empty' => true           // 空のカテゴリーは表示しない
-                                ]);
+                            // 'question' 投稿タイプのカテゴリー（タクソノミー 'question-cat'）を取得
+                            $categories = get_terms([
+                                'taxonomy' => 'question-cat',  // カスタムタクソノミー名
+                                'hide_empty' => true           // 空のカテゴリーは表示しない
+                            ]);
 
-                                if (!empty($categories) && !is_wp_error($categories)) {
-                                    foreach ($categories as $category) {
-                                        echo '<li>';
-                                        echo '<p class="TX">' . esc_html($category->name) . '</p>';
-                                        
-                                        // カテゴリー内の 'question' 投稿タイプの投稿を取得
-                                        $args = [
-                                            'post_type' => 'question',  // カスタム投稿タイプを指定
-                                            'tax_query' => [
-                                                [
-                                                    'taxonomy' => 'question-cat',  // カスタムタクソノミーを指定
-                                                    'field' => 'slug',
-                                                    'terms' => $category->slug,
-                                                ],
+                            if (!empty($categories) && !is_wp_error($categories)) {
+                                foreach ($categories as $category) {
+                                    echo '<li>';
+                                    echo '<p class="TX">' . esc_html($category->name) . '</p>';
+
+                                    // カテゴリー内の 'question' 投稿タイプの投稿を取得
+                                    $args = [
+                                        'post_type' => 'question',  // カスタム投稿タイプを指定
+                                        'tax_query' => [
+                                            [
+                                                'taxonomy' => 'question-cat',  // カスタムタクソノミーを指定
+                                                'field' => 'slug',
+                                                'terms' => $category->slug,
                                             ],
-                                            'posts_per_page' => -1   // すべての投稿を取得
-                                        ];
-                                        $query = new WP_Query($args);
-                                        
-                                        // 投稿がある場合、リンクをリストとして表示
-                                        if ($query->have_posts()) {
-                                            while ($query->have_posts()) {
-                                                $query->the_post();
-                                                echo '<a href="' . esc_url(get_permalink()) . '">' . esc_html(get_the_title()) . '</a><br>';
-                                            }
-                                        } else {
-                                            echo '<p>投稿がありません</p>';  // 投稿がない場合のメッセージ
-                                        }
-                                        
-                                        // クエリをリセット
-                                        wp_reset_postdata();
-                                        
-                                        echo '</li>';
-                                    }
-                                } else {
-                                    echo '<p>カテゴリーがありません</p>'; // カテゴリーがない場合のメッセージ
-                                }
+                                        ],
+                                        'posts_per_page' => -1   // すべての投稿を取得
+                                    ];
+                                    $query = new WP_Query($args);
 
-                                echo '</ul>';
+                                    // 投稿がある場合、リンクをリストとして表示
+                                    if ($query->have_posts()) {
+                                        while ($query->have_posts()) {
+                                            $query->the_post();
+                                            echo '<a href="' . esc_url(get_permalink()) . '">' . esc_html(get_the_title()) . '</a><br>';
+                                        }
+                                    } else {
+                                        echo '<p>投稿がありません</p>';  // 投稿がない場合のメッセージ
+                                    }
+
+                                    // クエリをリセット
+                                    wp_reset_postdata();
+
+                                    echo '</li>';
+                                }
+                            } else {
+                                echo '<p>カテゴリーがありません</p>'; // カテゴリーがない場合のメッセージ
+                            }
+
+                            echo '</ul>';
                             ?>
                         </div>
                     </div>
@@ -79,34 +83,34 @@
                         <input type="text" id="comment-search-input" placeholder="検索" class="search-input">
                         <button id="comment-search-button"></button>
                     </div>
-                    
+
                 </li>
             </ul>
 
 
             <div class="question-content">
 
-            <div class="comment-search-result">
-            <?php
-            // コメントを取得して表示
-            $args = array(
-                'post_id' => get_the_ID(), // 現在の投稿ID
-                'status' => 'approve' // 承認済みのコメントのみ取得
-            );
+                <div class="comment-search-result">
+                    <?php
+                    // コメントを取得して表示
+                    $args = array(
+                        'post_id' => get_the_ID(), // 現在の投稿ID
+                        'status' => 'approve' // 承認済みのコメントのみ取得
+                    );
 
-            $comments = get_comments($args);
-            if ($comments) {
-                echo '<div id="comments" class="comments-area"><ol class="comment-list">';
-                wp_list_comments(array(
-                    'style' => 'ol',
-                    'callback' => 'mytheme_comment'
-                ), $comments);
-                echo '</ol></div>';
-            } else {
-                echo '<p>' . esc_html__('質問はありません。', 'your-textdomain') . '</p>';
-            }
-            ?>
-            </div>
+                    $comments = get_comments($args);
+                    if ($comments) {
+                        echo '<div id="comments" class="comments-area"><ol class="comment-list">';
+                        wp_list_comments(array(
+                            'style' => 'ol',
+                            'callback' => 'mytheme_comment'
+                        ), $comments);
+                        echo '</ol></div>';
+                    } else {
+                        echo '<p>' . esc_html__('質問はありません。', 'your-textdomain') . '</p>';
+                    }
+                    ?>
+                </div>
 
             </div>
 
@@ -150,7 +154,7 @@
                     <div class="bot-message">
                         <div class="icon"></div>
                         <p class="textbox answer"><!-- クリックされた投稿の内容がここに表示される --></p>
-                    </div>  
+                    </div>
                 </div>
 
                 <div class="search-word up">
@@ -164,7 +168,7 @@
                     <div class="bot-message">
                         <div class="icon"></div>
                         <p class="textbox search-answer"><!-- クリックされた投稿の内容がここに表示される --></p>
-                    </div>  
+                    </div>
                 </div>
 
 

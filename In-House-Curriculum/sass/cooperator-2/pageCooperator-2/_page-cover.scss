@@ -18,7 +18,8 @@
       width: 100%;
       height: 100%;
     }
-    @include sp{
+
+    @include sp {
       width: 100%;
       height: 100%;
     }
@@ -33,7 +34,8 @@
         height: p(60);
         padding: p(15) p(20);
       }
-      @include sp{
+
+      @include sp {
         height: scl(32);
         padding: scl(7) scl(10);
       }
@@ -45,8 +47,14 @@
         @include pc {
           font-size: pmi(23);
         }
-        @include sp{
+
+        @include sp {
           font-size: s(12);
+        }
+
+        a {
+          @include wt500;
+          color: $F-FFFFFF;
         }
       }
 
@@ -60,7 +68,8 @@
           top: pmi(10);
           right: pmi(20);
         }
-        @include sp{
+
+        @include sp {
           width: s(40);
           height: s(36);
           top: s(20);
@@ -78,7 +87,8 @@
             letter-spacing: pmi(1.5);
             top: 0;
           }
-          @include sp{
+
+          @include sp {
             font-size: s(10);
             right: s(35);
             letter-spacing: s(1.5);
@@ -101,7 +111,8 @@
             right: pmi(25);
             top: p(10);
           }
-          @include sp{
+
+          @include sp {
             width: s(6);
             height: s(6);
             right: s(10);
@@ -123,49 +134,51 @@
         height: p(200);
         padding: p(67) pmi(0) p(17);
       }
-      @include sp{
+
+      @include sp {
         width: 100%;
         height: scl(100);
       }
+
       .archive--contents--tab {
         z-index: 20;
         position: absolute;
         width: 85%;
         left: 50%;
         translate: -50% 0;
-  
+
         @include pc {
           top: p(73);
         }
-  
+
         @include sp {
           top: scl(35);
           width: 80%;
           gap: scl(15);
         }
-  
+
         .archive--item {
-  
+
           &--img {
             margin: 0 auto;
-  
+
             @include pc {
               width: p(67);
               height: p(67);
             }
-  
+
             @include sp {
               width: scl(30);
               height: scl(30);
             }
           }
-  
+
           &--title {
             text-align: center;
           }
         }
       }
-  
+
 
       &.show {
         top: 0;
@@ -188,7 +201,8 @@
           padding: pmi(21) pmi(32);
           border-radius: pmi(100);
         }
-        @include sp{
+
+        @include sp {
           white-space: nowrap;
           padding: scl(5) scl(10);
           border-radius: pmi(100);
@@ -204,10 +218,11 @@
             height: pmi(10);
             bottom: pmi(-8);
           }
-          @include sp{
+
+          @include sp {
             width: scl(10);
             height: scl(5);
-            bottom: scl(-2);  
+            bottom: scl(-2);
           }
         }
       }
@@ -217,7 +232,8 @@
           bottom: pmi(180);
           left: pmi(80);
         }
-        @include sp{
+
+        @include sp {
           bottom: scl(140);
           left: scl(-20);
         }
@@ -230,9 +246,10 @@
             width: pmi(187);
             height: pmi(198);
           }
-          @include sp{
+
+          @include sp {
             width: scl(100);
-            height: scl(100); 
+            height: scl(100);
           }
 
           &:hover {
@@ -247,7 +264,8 @@
             top: pmi(-85);
             left: pmi(70);
           }
-          @include sp{
+
+          @include sp {
             top: scl(-50);
             left: scl(20);
           }
@@ -259,7 +277,8 @@
               right: pmi(32);
               rotate: -45deg;
             }
-            @include sp{
+
+            @include sp {
               right: scl(20);
               rotate: -45deg;
               bottom: scl(-5);
@@ -273,10 +292,12 @@
           bottom: pmi(120);
           right: clamp(p(8), p(8), 8px);
         }
-        @include sp{
+
+        @include sp {
           bottom: scl(100);
           right: scl(-20);
         }
+
         .goat {
           @include imgContain("goat.png");
           transition: all 1s;
@@ -285,7 +306,8 @@
             width: pmi(240);
             height: pmi(230);
           }
-          @include sp{
+
+          @include sp {
             width: scl(130);
             height: scl(130);
           }
@@ -302,7 +324,8 @@
             top: pmi(-61);
             left: pmi(-20);
           }
-          @include sp{
+
+          @include sp {
             top: scl(-30);
             left: scl(10);
           }
@@ -315,7 +338,8 @@
               left: pmi(25);
               bottom: pmi(-5);
             }
-            @include sp{
+
+            @include sp {
               rotate: 45deg;
               left: scl(10);
               bottom: scl(-5);
@@ -340,7 +364,8 @@
           bottom: pmi(161);
           left: clamp(-162px, p(-162), -100px);
         }
-        @include sp{
+
+        @include sp {
           width: scl(280);
           height: scl(380);
           bottom: smi(141);
@@ -350,12 +375,13 @@
 
       &.tree02 {
         @include pc {
-          width: clamp(470px, p(563), p(563));
-          height: clamp(550px, p(654), p(654));
+          width: pmi(563);
+          height: pmi(654);
           bottom: pmi(113);
-          right: clamp(-400px, p(-215), -200px);
+          right: clamp(-230px, p(-215), -180px);
         }
-        @include sp{
+
+        @include sp {
           width: scl(300);
           height: scl(400);
           bottom: smi(101);
@@ -363,6 +389,18 @@
         }
       }
     }
+    .tree01-02{
+      @include imgContain("top-tree01-02.png");
+      position: absolute;
+      @include pc{
+        width: clamp(500px, p(680), 680px);
+        height: clamp(800px, p(1092), 1092px);
+        bottom: p(-50);
+        right: clamp(-220px, s(-200), -200px);
+        z-index: 10;
+      }
+    }
+
 
 
     .tree03 {
@@ -385,7 +423,8 @@
       @include pc {
         width: p(558);
       }
-      @include sp{
+
+      @include sp {
         width: fit-content;
       }
 
@@ -397,7 +436,8 @@
         @include pc {
           top: 40%;
         }
-        @include sp{
+
+        @include sp {
           top: 32%;
         }
 
@@ -408,7 +448,8 @@
             width: pmi(558);
             height: auto;
           }
-          @include sp{
+
+          @include sp {
             width: scl(280);
             height: auto;
           }
@@ -423,7 +464,8 @@
               font-size: pmi(30);
               line-height: 1.2;
             }
-            @include sp{
+
+            @include sp {
               padding: scl(30) scl(40) scl(43);
               font-size: scl(18);
               line-height: 1.2;
@@ -433,7 +475,8 @@
               @include pc {
                 margin-top: pmi(-40);
               }
-              @include sp{
+
+              @include sp {
                 margin-top: scl(-40);
               }
             }
@@ -446,7 +489,8 @@
             height: pmi(334);
             margin: 0 auto;
           }
-          @include sp{
+
+          @include sp {
             width: scl(280);
             height: scl(168);
             margin: 0 auto;
@@ -476,7 +520,8 @@
             letter-spacing: pmi(1.1);
             font-size: pmi(23)
           }
-          @include sp{
+
+          @include sp {
             box-shadow: 0px scl(2) 0px 0px #E28738, 0px 0px scl(34) 0px #F6D741 inset;
             padding: scl(15) scl(53);
             border-radius: scl(5);
@@ -487,47 +532,53 @@
         }
       }
 
-      .shironeko-wrap{
+      .shironeko-wrap {
         position: absolute;
+
         @include pc {
           width: pmi(257);
           height: pmi(250);
           left: pmi(-134);
           bottom: p(90);
         }
-        @include sp{
+
+        @include sp {
           width: scl(150);
           height: scl(150);
           left: scl(-150);
           bottom: scl(90);
         }
+
         .shironeko {
           @include imgContain("shironeko.png");
-  
+
           @include pc {
             width: pmi(257);
             height: pmi(250);
           }
-          @include sp{
+
+          @include sp {
             width: scl(150);
             height: scl(150);
           }
         }
+
         .shadow {
           @include imgContain("shironeko-shadow.png");
-  
-          @include pc{
+
+          @include pc {
             width: pmi(193);
             height: pmi(39);
             margin: -15px auto;
-            
+
           }
-          @include sp{
+
+          @include sp {
             width: scl(100);
             height: scl(20);
             margin: -10px auto;
           }
-        }  
+        }
       }
     }
 
@@ -541,7 +592,8 @@
         bottom: 0;
         left: clamp(-300px, p(-300), -200px);
       }
-      @include sp{
+
+      @include sp {
         width: scl(200);
         height: scl(370);
         top: scl(-160);
@@ -557,7 +609,8 @@
           bottom: 0;
           left: clamp(-300px, p(-300), -200px);
         }
-        @include sp{
+
+        @include sp {
           width: scl(200);
           height: scl(370);
           top: scl(-160);
@@ -568,16 +621,17 @@
       .TX {
         position: absolute;
         color: $F-FFFFFF;
-        pointer-events:fill;
+        pointer-events: fill;
 
         @include pc {
           font-size: pmi(20);
           letter-spacing: p(1.2);
-          height: p(50);
+          height: pmi(50);
           bottom: pmi(255);
           right: pmi(189);
         }
-        @include sp{
+
+        @include sp {
           font-size: scl(10);
           letter-spacing: scl(1.2);
           height: scl(30);
@@ -588,35 +642,81 @@
     }
   }
 
-  .next {
-    @include imgContain("next.png");
+  .board {
     position: absolute;
+    z-index: 20;
 
     @include pc {
       width: pmi(202);
       height: pmi(185);
-      bottom: -41px;
-      right: 89px;
-      padding: pmi(35) 0 0 pmi(30);
     }
-    @include sp{
+
+    @include sp {
       width: scl(100);
       height: scl(91);
-      bottom: 0;
-      right: 0;
-      padding: scl(15) 0 0 scl(10);
     }
-    .next-link{
+
+    .link-TX {
       color: $F-FFFFFF;
       @include wt600;
-      @include pc{
+
+      @include pc {
         font-size: pmi(27);
         letter-spacing: pmi(1.3);
       }
-      @include sp{
+
+      @include sp {
         font-size: scl(16);
         letter-spacing: scl(1.3);
       }
+    }
+
+    &.next {
+      @include imgContain("next.png");
+
+      @include pc {
+        bottom: p(-40);
+        right: 60px;
+        padding: pmi(35) 0 0 pmi(30);
+      }
+
+      @include sp {
+        bottom: -10px;
+        right: 0;
+        padding: scl(15) 0 0 scl(10);
+      }
+    }
+
+    &.prev {
+      @include imgContain("back.png");
+
+      @include pc {
+        bottom: p(-51);
+        right: clamp(210px, p(275), 275px);
+        padding: pmi(28) 0 0 pmi(48);
+        width: pmi(175);
+        height: pmi(150);
+      }
+
+      @include sp {
+        bottom: -27px;
+        right: 130px;
+        padding: scl(17) 0 0 scl(23);
+        width: scl(88);
+        height: scl(85);
+      }
+
+      .link-TX {
+
+        @include pc {
+          font-size: pmi(23);
+        }
+
+        @include sp {
+          font-size: scl(13);
+        }
+      }
+
     }
   }
 
@@ -632,7 +732,8 @@
         bottom: -81px;
         left: -140px;
       }
-      @include sp{
+
+      @include sp {
         width: scl(150);
         height: scl(83);
         bottom: -30px;
@@ -643,6 +744,7 @@
     &.grass02 {
       @include imgContain("cover-grass02.png");
       pointer-events: none;
+      z-index: 30;
 
       @include pc {
         width: pmi(337);
@@ -650,7 +752,8 @@
         right: -114px;
         bottom: -104px;
       }
-      @include sp{
+
+      @include sp {
         width: scl(100);
         height: scl(60);
         right: -20px;

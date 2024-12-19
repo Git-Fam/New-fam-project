@@ -10,14 +10,20 @@ offにすればコメントできる -->
 これにチェックを入れることで、すべてのコメントは管理者の承認を受けるまで表示されません。
  -->
 
- <?php get_header(); ?>
+<?php 
+if (!is_user_logged_in()) {
+    wp_redirect(home_url('/login'));
+    exit;
+}
+get_header();
+?>
 
 <div class="question">
     <div class="question-main">
         <div class="question-main-TL">
             <p class="TL">質問広場</p>
         </div>
-        
+
         <!-- 左側 -->
         <div class="question-main-post">
             <ul class="C_menu">
@@ -31,7 +37,7 @@ offにすればコメントできる -->
                     <div class="category-content">
                         <p class="category-content-TX">カテゴリー選択</p>
                         <div class="select-content">
-                        <?php
+                            <?php
                             echo '<ul class="select">';
 
                             // 'question' 投稿タイプのカテゴリー（タクソノミー 'question-cat'）を取得
@@ -44,7 +50,7 @@ offにすればコメントできる -->
                                 foreach ($categories as $category) {
                                     echo '<li>';
                                     echo '<p class="TX">' . esc_html($category->name) . '</p>';
-                                    
+
                                     // カテゴリー内の 'question' 投稿タイプの投稿を取得
                                     $args = [
                                         'post_type' => 'question',  // カスタム投稿タイプを指定
@@ -58,7 +64,7 @@ offにすればコメントできる -->
                                         'posts_per_page' => -1   // すべての投稿を取得
                                     ];
                                     $query = new WP_Query($args);
-                                    
+
                                     // 投稿がある場合、リンクをリストとして表示
                                     if ($query->have_posts()) {
                                         while ($query->have_posts()) {
@@ -68,10 +74,10 @@ offにすればコメントできる -->
                                     } else {
                                         echo '<p>投稿がありません</p>';  // 投稿がない場合のメッセージ
                                     }
-                                    
+
                                     // クエリをリセット
                                     wp_reset_postdata();
-                                    
+
                                     echo '</li>';
                                 }
                             } else {
@@ -79,7 +85,7 @@ offにすればコメントできる -->
                             }
 
                             echo '</ul>';
-                        ?>
+                            ?>
                         </div>
                     </div>
                 </li>
@@ -88,21 +94,21 @@ offにすればコメントできる -->
                         <input type="text" id="comment-search-input" placeholder="検索" class="search-input">
                         <button id="comment-search-button"></button>
                     </div>
-                    
+
                 </li>
             </ul>
 
 
             <div class="question-content">
 
-            <div class="comment-search-result">
-            <?php
-                if (comments_open() || get_comments_number()) :
-                    comments_template();
-                endif;
-                ?>
+                <div class="comment-search-result">
+                    <?php
+                    if (comments_open() || get_comments_number()) :
+                        comments_template();
+                    endif;
+                    ?>
 
-            </div>
+                </div>
 
             </div>
 
@@ -146,7 +152,7 @@ offにすればコメントできる -->
                     <div class="bot-message">
                         <div class="icon"></div>
                         <p class="textbox answer"><!-- クリックされた投稿の内容がここに表示される --></p>
-                    </div>  
+                    </div>
                 </div>
 
                 <div class="search-word up">
@@ -160,7 +166,7 @@ offにすればコメントできる -->
                     <div class="bot-message">
                         <div class="icon"></div>
                         <p class="textbox search-answer"><!-- クリックされた投稿の内容がここに表示される --></p>
-                    </div>  
+                    </div>
                 </div>
 
 

@@ -1,4 +1,5 @@
 <?php
+
 // 現在ログインしているユーザーのIDを取得
 $user_id = get_current_user_id();
 
@@ -177,7 +178,14 @@ $Design09_3_value = get_user_meta($user_id, 'Design09_3', true) ?: '0';
 
 ?>
 
-<?php get_header(); ?>
+<?php
+if (!is_user_logged_in()) {
+    wp_redirect(home_url('/login'));
+    exit;
+}
+
+get_header();
+?>
 <!-- page-my -->
 <div class="my">
     <div class="my--inner">

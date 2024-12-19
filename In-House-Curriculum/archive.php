@@ -1,4 +1,9 @@
 <?php
+if (!is_user_logged_in()) {
+    wp_redirect(home_url('/login'));
+    exit;
+}
+
 get_header(); 
 
 // 現在のユーザー情報を取得
@@ -120,7 +125,16 @@ wp_localize_script('cooperator-script', 'wpData', array(
     'lastPostProgress' => $last_post_progress, // 最後の投稿に紐付く進捗情報（1週間経過フラグ付き）
 ));
 
+
+
+// URLのcategoryパラメータを取得
+$active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
+
 ?>
+<script>
+    var selectCategory = <?php echo json_encode($active_category); ?>;
+</script>
+
 
 <div class="sp-wrap">
 <div class="road-wappaer">
@@ -317,8 +331,16 @@ if ($total_posts <= 4) {
                                     <a class="goal hover-scale" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" >
                                     </a>
                                     <div class="goal-bg"></div>
+                                    <div class="title-board">
+                                        <?php
+                                        $slug = get_post_field('post_name', get_the_ID());
+                                        $decoded_slug = urldecode($slug); // URLエンコードされている場合にデコード
+                                        ?>
+                                        <p class="board-TX"> <?php echo esc_html($decoded_slug); ?></p>
+                                    </div>
                                 </div>
                             </div>
+
 
                             <?php
                             $post_index++;
@@ -736,6 +758,7 @@ if ($total_posts <= 4) {
     </div>
 </div>
 
+
 </div>
 <!-- データの受け渡し用スクリプト -->
 <script>
@@ -746,3 +769,6 @@ if ($total_posts <= 4) {
 </script>
 
 <?php get_footer(); ?>
+
+
+
