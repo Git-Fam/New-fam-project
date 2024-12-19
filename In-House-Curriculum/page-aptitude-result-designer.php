@@ -1592,7 +1592,8 @@
 			<div class="character--message">
 				<div class="character--message--inner">
 					<p class="TX">
-						エラーが出たよ！もう一度やり直してみてね！
+						きみの適正結果が出たよ！デザイナーの可能性がみえるね〜！<br>
+						ラッキーアイテムはぼくの独断と偏見で入れておいたよ
 					</p>
 				</div>
 			</div>
