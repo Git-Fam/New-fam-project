@@ -728,17 +728,21 @@
                 }
 
                 .title-board {
-                  @include imgContain("title-board.png");
+                  @include imgContain("next.png");
                   position: absolute;
 
                   @include pc {
                     width: p(86);
-                    height: p(64);
+                    height: p(79);
+                    top: p(-50);
+                    left: 0;
                   }
 
                   @include sp {
                     width: 86px;
-                    height: 64px;
+                    height: 79px;
+                    top: -50px;
+                    left: 0;
                   }
 
                   .board-TX {
@@ -944,16 +948,6 @@
                   @include sp {
                     left: -83px;
                     bottom: 0;
-                  }
-                  .title-board{
-                    @include pc{
-                      left: p(10);
-                      top: p(-40);
-                    }
-                    @include sp{
-                      left: 10px;
-                      top:40px;
-                    }
                   }
                 }
               }
@@ -1502,18 +1496,6 @@
                   right: 513px;
                   bottom: -3px;
                 }
-                .title-board{
-                  @include pc{
-                    bottom: 0;
-                    left: p(10);
-                    top: p(-45);
-                  }
-                  @include sp{
-                    left: 10px;
-                    top: -45px;
-                  }
-                }
-
               }
 
               &:nth-child(3) {
@@ -1548,28 +1530,6 @@
                   .goal-bg {
                     opacity: 0;
                   }
-                  .title-board{
-                    @include imgContain("title-board-02.png");
-                    @include pc{
-                      left: p(10);
-                      top: p(-80);
-                    }
-                    @include sp{
-                      left: 10px;
-                      top: -80px;
-                    }
-                    .board-TX {
-                      text-align: right;
-                      @include pc {
-                        padding-right: p(15);
-                      }
-  
-                      @include sp {
-                        padding-right: 15px;
-                      }
-                    }
-  
-                  }
                 }
 
                 .character-box {
@@ -1601,17 +1561,6 @@
                   scale: -1 1;
                   rotate: 200deg;
                 }
-                .title-board{
-                  @include pc{
-                    left: p(10);
-                    top: p(-45);
-                  }
-                  @include sp{
-                    left: 10px;
-                    top: -45px;
-                  }
-
-                }
               }
 
               &:nth-child(5) {
@@ -1625,17 +1574,6 @@
                   width: 400px;
                   right: 34px;
                   bottom: 68px;
-                }
-
-                .title-board{
-                  @include pc{
-                    left: p(10);
-                    top: p(-45);
-                  }
-                  @include sp{
-                    left: 10px;
-                    top: -45px;
-                  }
                 }
               }
             }
@@ -1657,7 +1595,6 @@
                   left: 198px;
                   bottom: 14px;
                 }
-                
               }
 
               &:nth-child(3) {
