@@ -406,8 +406,11 @@ jQuery(function () {
 		).toggleClass("hidden");
 		$(this).text($("#point-ranking").hasClass("hidden") ? "Point" : "Login");
 	});
+	
 
 	function displayCharacters() {
+		$(".character-box").remove();
+
 		if (
 			typeof allUsersProgress !== "undefined" &&
 			allUsersProgress.length > 0

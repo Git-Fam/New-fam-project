@@ -728,8 +728,9 @@
                 }
 
                 .title-board {
-                  @include imgContain("next.png");
+                  @include imgContain("road-board.png");
                   position: absolute;
+                  z-index: 20;
 
                   @include pc {
                     width: p(86);
@@ -752,7 +753,7 @@
                       width: p(84);
                       height: p(38);
                       line-height: p(38);
-                      padding-left: p(10);
+                      padding: p(5)0 0 p(10);
                       font-size: p(13);
                     }
 
@@ -760,7 +761,7 @@
                       width: 84px;
                       height: 38px;
                       line-height: 38px;
-                      padding-left: 10px;
+                      padding: 5px 0 0 10px;
                       font-size: 13px;
                     }
                   }
@@ -1167,7 +1168,18 @@
                           bottom: -100px;
                         }
                       }
+
+                      .title-board {
+                        @include pc {
+                          left: p(-70);
+                        }
+
+                        @include sp {
+                          left: -70px;
+                        }
+                      }
                     }
+
                   }
 
                 }
@@ -1214,6 +1226,17 @@
                 .goal-wrap,
                 .character-box {
                   rotate: 11deg;
+
+                  .title-board {
+                    @include pc {
+                      left: p(-70);
+                    }
+
+                    @include sp {
+                      left: -70px;
+                    }
+                  }
+
                 }
               }
             }
@@ -1280,6 +1303,16 @@
 
                             @include sp {
                               bottom: -269px;
+                            }
+                          }
+
+                          .title-board {
+                            @include pc {
+                              left: p(-70);
+                            }
+
+                            @include sp {
+                              left: -70px;
                             }
                           }
                         }
@@ -1366,6 +1399,17 @@
                               bottom: -269px;
                             }
                           }
+
+                          .title-board {
+                            @include pc {
+                              left: p(-70);
+                            }
+
+                            @include sp {
+                              left: -70px;
+                            }
+                          }
+
                         }
                       }
                     }
@@ -1463,6 +1507,16 @@
                               bottom: -269px;
                             }
                           }
+
+                          .title-board {
+                            @include pc {
+                              left: p(-70);
+                            }
+
+                            @include sp {
+                              left: -70px;
+                            }
+                          }
                         }
                       }
                     }
@@ -1529,6 +1583,22 @@
 
                   .goal-bg {
                     opacity: 0;
+                  }
+
+                  .title-board {
+                    transform: scale(-1, 1);
+
+                    @include pc {
+                      top: p(-90);
+                    }
+
+                    @include sp {
+                      top: -90px;
+                    }
+
+                    .board-TX {
+                      transform: scale(-1, 1);
+                    }
                   }
                 }
 
@@ -1652,6 +1722,14 @@
 
                     @include sp {
                       bottom: -76px;
+                    }
+                  }
+
+                  .title-board {
+                    transform: scale(-1, 1);
+
+                    .board-TX {
+                      transform: scale(-1, 1);
                     }
                   }
                 }
@@ -1783,6 +1861,22 @@
                   .goal-bg {
                     opacity: 0;
                   }
+
+                  .title-board {
+                    transform: scale(-1, 1);
+
+                    @include pc {
+                      top: p(-80);
+                    }
+
+                    @include sp {
+                      top: -80px;
+                    }
+
+                    .board-TX {
+                      transform: scale(-1, 1);
+                    }
+                  }
                 }
 
                 .character-box {
@@ -1814,8 +1908,16 @@
                 .character-box {
                   rotate: 180deg;
 
+                  .title-board {
+                    transform: scale(-1, 1);
+
+                    .board-TX {
+                      transform: scale(-1, 1);
+                    }
+                  }
                 }
               }
+
 
               &:last-child {
                 @include pc {
@@ -1922,6 +2024,14 @@
                 .goal-wrap,
                 .character-box {
                   rotate: -121deg;
+
+                  .title-board {
+                    transform: scale(-1, 1);
+
+                    .board-TX {
+                      transform: scale(-1, 1);
+                    }
+                  }
                 }
               }
 
@@ -1941,6 +2051,15 @@
                 .goal-wrap,
                 .character-box {
                   rotate: -169deg;
+
+                  .title-board {
+                    transform: scale(-1, 1);
+
+                    .board-TX {
+                      transform: scale(-1, 1);
+                    }
+                  }
+
                 }
               }
 
@@ -1960,6 +2079,14 @@
                 .goal-wrap,
                 .character-box {
                   rotate: -212deg;
+
+                  .title-board {
+                    transform: scale(-1, 1);
+
+                    .board-TX {
+                      transform: scale(-1, 1);
+                    }
+                  }
                 }
               }
 
@@ -2067,6 +2194,15 @@
                   right: 380px;
                   bottom: 84px;
                 }
+                .title-board{
+                  @include pc{
+                    left: p(-50);
+                  }
+                  @include sp{
+                    left: -50px;
+                  }
+                }
+
               }
             }
           }
@@ -2114,6 +2250,17 @@
                   right: 380px;
                   bottom: 84px;
                 }
+
+                .title-board {
+                  @include pc {
+                    left: p(-50);
+                  }
+
+                  @include sp {
+                    left: -50px;
+                  }
+                }
+
               }
             }
           }
