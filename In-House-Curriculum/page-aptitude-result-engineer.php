@@ -1,4 +1,6 @@
 <?php get_header(); ?>
+
+
 <div class="aptitude-result">
 	<div class="aptitude-result__inner">
 		<!-- 結果 -->
