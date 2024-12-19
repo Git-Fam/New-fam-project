@@ -1,4 +1,10 @@
-<?php get_header(); ?>
+<?php 
+if (!is_user_logged_in()) {
+    wp_redirect(home_url('/login'));
+    exit;
+}
+get_header();
+?>
 
 <div class="columns">
     <div class="columns--main">
@@ -12,7 +18,7 @@
                         <ul class="columns_contents--inner">
                             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                                 <li class="hover-opa">
-                                    <a href="<?php the_permalink(); ?>" target="_blank" rel="noopener noreferrer">
+                                    <a href="<?php the_permalink(); ?>">
                                         <div class="thumbnail">
                                             <img src="<?php echo get_the_post_thumbnail_url() ? get_the_post_thumbnail_url() : get_template_directory_uri() . '/img/noimage.jpg'; ?>" alt="">
                                         </div>

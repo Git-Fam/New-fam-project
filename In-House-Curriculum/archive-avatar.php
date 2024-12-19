@@ -1,4 +1,12 @@
-<?php get_header(); ?>
+<?php
+
+if (!is_user_logged_in()) {
+    wp_redirect(home_url('/login'));
+    exit;
+}
+
+get_header();
+?>
 
 
 
@@ -117,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </div> -->
 
-            <?php display_back_button();?>
+            <?php display_back_button(); ?>
 
         </div>
 

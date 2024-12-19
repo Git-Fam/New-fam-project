@@ -13,6 +13,11 @@
   font-style: normal;
 }
 
+@mixin tsuku {
+  font-family: fot-tsukuardgothic-std, sans-serif;
+  font-style: normal;
+}
+
 @mixin wt100 {
   font-weight: 100;
 }

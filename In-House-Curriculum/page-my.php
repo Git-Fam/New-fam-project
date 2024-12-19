@@ -1,4 +1,5 @@
 <?php
+
 // 現在ログインしているユーザーのIDを取得
 $user_id = get_current_user_id();
 
@@ -177,7 +178,14 @@ $Design09_3_value = get_user_meta($user_id, 'Design09_3', true) ?: '0';
 
 ?>
 
-<?php get_header(); ?>
+<?php
+if (!is_user_logged_in()) {
+    wp_redirect(home_url('/login'));
+    exit;
+}
+
+get_header();
+?>
 <!-- page-my -->
 <div class="my">
     <div class="my--inner">
@@ -341,11 +349,12 @@ $Design09_3_value = get_user_meta($user_id, 'Design09_3', true) ?: '0';
                         </p>
                     </div>
                     <div class="spy--text--column">
-                        <a href="<?php bloginfo('url'); ?>/column" target="_blank" rel="noopener noreferrer">コラムを見に行く ▶</a>
+                        <a href="<?php bloginfo('url'); ?>/column">コラムを見に行く ▶</a>
                     </div>
                 </div>
             </div>
         </div>
+
 
         <div class="info_button sp">
             <p class="TX">
@@ -1615,7 +1624,7 @@ $Design09_3_value = get_user_meta($user_id, 'Design09_3', true) ?: '0';
 
         <!-- ログイン中のみ表示 -->
         <?php if (is_user_logged_in()): ?>
-            <a class="curriculum--btn" href="<?php bloginfo('url'); ?>/curriculum" target="_blank" rel="noopener noreferrer">
+            <a class="curriculum--btn" href="<?php bloginfo('url'); ?>/curriculum">
                 <p class="TX">カリキュラム<br>一覧</p>
             </a>
         <?php endif; ?>

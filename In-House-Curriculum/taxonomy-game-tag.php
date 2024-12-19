@@ -1,4 +1,11 @@
-<?php get_header(); ?>
+<?php
+if (!is_user_logged_in()) {
+    wp_redirect(home_url('/login'));
+    exit;
+}
+
+get_header();
+?>
 
 <div class="game-main">
     <div class="game-wrap">
@@ -7,7 +14,7 @@
                 <!-- カテゴリー選択リンクを表示 -->
                 <div class="category-list">
                     <ul>
-                        <li  class="cat-select active"><a href="<?php echo esc_url(add_query_arg('game-cat', '', home_url($wp->request))); ?>">すべてのゲーム</a></li>
+                        <li class="cat-select active"><a href="<?php echo esc_url(add_query_arg('game-cat', '', home_url($wp->request))); ?>">すべてのゲーム</a></li>
                         <?php
                         $categories = get_terms(array(
                             'taxonomy' => 'game-cat',

@@ -10,7 +10,8 @@ $user_points = get_user_meta($current_user->ID, 'user_point', true);
 $user_points = $user_points ? $user_points : 0; // ポイント数が設定されていない場合は0
 
 // 全ユーザーをポイント数で取得する関数
-function get_ranked_users() {
+function get_ranked_users()
+{
     $args = array(
         'number' => -1, // 全ユーザーを取得
         'meta_key' => 'user_point', // 'user_point' メタキーを基に
@@ -22,7 +23,8 @@ function get_ranked_users() {
 }
 
 // 今月のログイン日数を取得する関数
-function get_user_login_days_this_month($user_id) {
+function get_user_login_days_this_month($user_id)
+{
     $current_month = date('Y-m');
     $login_dates = get_user_meta($user_id, 'login_dates', true);
 
@@ -32,7 +34,7 @@ function get_user_login_days_this_month($user_id) {
     }
 
     // 今月のログイン日付をフィルタリング
-    $login_days_this_month = array_filter($login_dates, function($date) use ($current_month) {
+    $login_days_this_month = array_filter($login_dates, function ($date) use ($current_month) {
         return strpos($date, $current_month) === 0;
     });
 
@@ -41,7 +43,8 @@ function get_user_login_days_this_month($user_id) {
 }
 
 // 今月のログイン日数でユーザーをランキングする関数
-function get_login_days_users() {
+function get_login_days_users()
+{
     $users = get_users(array('number' => -1)); // 全ユーザーを取得
     $login_days_users = [];
 
@@ -52,7 +55,7 @@ function get_login_days_users() {
     }
 
     // ログイン日数で降順にソート
-    usort($login_days_users, function($a, $b) {
+    usort($login_days_users, function ($a, $b) {
         return $b['login_count'] - $a['login_count'];
     });
 
@@ -60,12 +63,13 @@ function get_login_days_users() {
 }
 
 // ユーザーのリストアイテムを表示する関数
-function display_user_item($user, $rank_class = '') {
+function display_user_item($user, $rank_class = '')
+{
     $user_name = $user->display_name;
     $user_points = get_user_meta($user->ID, 'user_point', true);
     $user_points = $user_points ? $user_points : 0;
     $avatar_url = get_avatar_url($user->ID);
-    ?>
+?>
     <li class="rank-item <?php echo esc_attr($rank_class); ?>">
         <div class="img">
             <img src="<?php echo esc_url($avatar_url); ?>" alt="" class="user-icon">
@@ -74,11 +78,11 @@ function display_user_item($user, $rank_class = '') {
             <p class="name"><?php echo esc_html($user_name); ?></p>
             <div class="point-box">
                 <div class="icon"></div>
-                <p class="point"><?php echo number_format($user_points); ?></p>
+                <p class="point"><?php echo number_format($user_points); ?> pt</p>
             </div>
         </div>
     </li>
-    <?php
+<?php
 }
 
 // 今月のログイン日数で並べたユーザーリストを取得
@@ -106,7 +110,13 @@ foreach ($login_days_users as $index => $user_info) {
 }
 ?>
 
-<?php get_header(); ?>
+<?php
+if (!is_user_logged_in()) {
+    wp_redirect(home_url('/login'));
+    exit;
+}
+get_header();
+?>
 <div class="page-wappaer">
     <section id="pageーranking" class="ranking">
         <div class="bg">
@@ -136,7 +146,7 @@ foreach ($login_days_users as $index => $user_info) {
                             <div class="result-box">
                                 <p class="number"><?php echo $current_user_rank; ?></p>
                                 <div class="icon"></div>
-                                <p class="point"><?php echo number_format($user_points); ?></p>
+                                <p class="point"><?php echo number_format($user_points); ?> pt</p>
                             </div>
                         </div>
                         <!-- ログイン日数情報 -->
@@ -186,7 +196,7 @@ foreach ($login_days_users as $index => $user_info) {
                                         <p class="name"><?php echo esc_html($user_name); ?></p>
                                         <div class="point-box">
                                             <div class="icon"></div>
-                                            <p class="point"><?php echo number_format($user_points); ?></p>
+                                            <p class="point"><?php echo number_format($user_points); ?> pt</p>
                                         </div>
                                     </li>
                                 <?php endfor; ?>
@@ -209,7 +219,7 @@ foreach ($login_days_users as $index => $user_info) {
                                         $user_info = $login_days_users[$index];
                                         $user = $user_info['user'];
                                         $login_count = $user_info['login_count'];
-                                        ?>
+                                    ?>
                                         <li class="rank-item <?php echo esc_attr($rank_class); ?>">
                                             <div class="img">
                                                 <img src="<?php echo esc_url(get_avatar_url($user->ID)); ?>" alt="" class="user-icon">
@@ -253,4 +263,3 @@ foreach ($login_days_users as $index => $user_info) {
     </section>
 </div>
 <?php get_footer(); ?>
-
