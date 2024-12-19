@@ -187,7 +187,7 @@
 					<a href="<?php bloginfo('url'); ?>/singin" class="btn top-btn">
 						<p class="TX">無料ではじめる</p>
 					</a>
-					<a href="<?php bloginfo('url'); ?>/testing01" class="btn bottom-btn">
+					<a href="<?php bloginfo('url'); ?>/aptitude-start" class="btn bottom-btn">
 						<p class="TX">適性検査</p>
 					</a>
 				</div>
