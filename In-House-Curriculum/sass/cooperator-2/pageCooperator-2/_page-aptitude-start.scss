@@ -1,0 +1,463 @@
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
+
+/* -----------------------
+  top 1ページ目
+----------------------- */
+
+// .aptitude-choice {
+//   background-position: center bottom;
+//   position: relative;
+//   overflow: hidden;
+
+//   @include pc {
+//     height: 100vh;
+//     min-height: 700px;
+//   }
+
+//   @media screen and (min-width: 1500px) {
+//     min-height: 1000px;
+//   }
+
+//   @include sp {
+//     min-height: 100vh;
+//     padding: s(50) s(20);
+//   }
+// }
+
+.aptitude-start {
+  background-color: $B-CFC6B6;
+  position: relative;
+  overflow: hidden;
+
+  @include sp {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+
+  .TL-wrap {
+    width: 100%;
+    @include pc {
+      position: absolute;
+      top: calc(165 / 700 * 100vh);
+      padding: pm(30) pm(45) pm(23);
+    }
+
+    @include sp {
+      top: s(138);
+      padding: s(15) 0 ;
+      font-size: s(21);
+      order: 1;
+      display: flex;
+      flex-direction: column;
+      gap: s(20);      
+    }
+
+    .TL {
+      @include pc {
+        width: pmi(509);
+      }
+      @include sp{
+        width: s(213);
+        margin: 0 auto;
+      }
+    }
+
+    .TX {
+      color: #7E7360;
+      line-height: 160%;
+      @include pc {
+        font-size: p(20);
+        margin-top: pmi(20);
+      }
+      @include sp{
+        font-size: s(10);
+        text-align: center;
+      }
+    }
+    .start-btn{
+      background-color: #80C868;
+      display: block;
+      @include pc{
+        border: pmi(10) solid $B-FFFFFF;
+        border-radius: pmi(8);
+        width: clamp(230px , p(286) , 300px);
+        padding: 5px pmi(30) 5px pmi(70);
+        top: pmi(28);
+        right: pmi(40);
+        position: absolute;
+      }
+      @include sp{
+        border: s(4) solid $B-FFFFFF;
+        border-radius: s(3);
+        width: s(120);
+        padding: s(3) s(13) s(3) s(28);
+        margin: 0 auto;
+      }
+      .start-TX{
+        color: $F-FFFFFF;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @include wt900;
+        @include pc{
+          font-size: clamp(26px , p(31) , 36px);
+        }
+        @include sp{
+          font-size: s(13);
+        }
+        &::after{
+          content: "";
+          @include iconContain($aptitude-start-btn);
+          display: block;
+          @include pc{
+            width: clamp(13px, p(15) , 20px);
+            height: clamp(15px, p(17) , 22px);
+          }
+          @include sp{
+            width: s(7);
+            height: s(8);
+          }
+        }
+      }
+    }
+
+
+  }
+
+  .img-wrap {
+    @include pc {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    @include sp {
+      display: contents;
+    }
+
+    .sp-group {
+      @include pc {
+        display: contents;
+      }
+
+      @include sp {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      &:nth-child(1) {
+        @include sp {
+          order: 0;
+        }
+      }
+
+      &:nth-child(2) {
+        @include sp {
+          order: 2;
+        }
+      }
+    }
+
+    .img {
+      @include pc {
+        height: calc(165 / 700 * 100vh);
+        aspect-ratio: 256 / 165;
+        flex: 1;
+      }
+
+      @include sp {
+        height: s(111);
+        aspect-ratio: 128 / 111;
+        flex: 1;
+      }
+
+      .animal {
+        width: 100%;
+        height: 100%;
+        background-size: 95% !important;
+
+        @include pc {
+          max-width: 256px;
+          margin: 0 auto;
+        }
+      }
+
+      &.img1 {
+        background-color: #8DC47B;
+
+        @include pc {
+          margin-bottom: pm(205);
+          // margin-bottom: p(205);
+          margin-bottom:clamp(130px,p(205),235px);
+          background-size: 95%;
+        }
+
+        .animal {
+          @include imgCover("aptitude-star-chara/apti-chara01.svg");
+
+          @include pc {
+            background-position: center top !important;
+            width: 130%;
+            max-width: 400px;
+          }
+
+          @include sp {
+            background-size: 148% !important;
+            background-position: center -46%;
+          }
+        }
+      }
+
+      &.img2 {
+        background-color: #A0DF69;
+
+        .animal {
+          @include imgCover("aptitude-star-chara/apti-chara02.svg");
+
+          @include pc {
+            background-position: center 10%;
+          }
+
+          @include sp {
+            background-position: center -35%;
+
+          }
+        }
+
+      }
+
+      &.img3 {
+        background-color: #E7D88A;
+
+        .animal {
+          @include imgCover("aptitude-star-chara/apti-chara03.svg");
+
+          @include pc {
+            background-position: center 0%;
+          }
+
+          @include sp {
+            background-position: center -46%;
+
+          }
+        }
+
+      }
+
+      &.img4 {
+        background-color: #E9B84F;
+
+        .animal {
+          @include imgCover("aptitude-star-chara/apti-chara04.svg");
+
+          @include pc {
+            background-position: center 0%;
+          }
+
+          @include sp {
+            background-position: center -46%;
+
+          }
+        }
+
+      }
+
+      &.img5 {
+        background-color: #EC9A4D;
+
+        .animal {
+          @include imgCover("aptitude-star-chara/apti-chara05.svg");
+
+          @include pc {
+            background-position: center 40%;
+          }
+
+          @include sp {
+            background-position: center 40%;
+
+          }
+        }
+
+      }
+
+      &.img6 {
+        background-color: #D86F6A;
+
+        .animal {
+          @include imgCover("aptitude-star-chara/apti-chara06.svg");
+
+          @include pc {
+            background-position: center 23%;
+          }
+
+          @include sp {
+            background-position: center -46%;
+
+          }
+        }
+      }
+
+      &.img7 {
+        background-color: #EE8E7E;
+
+        .animal {
+          @include imgCover("aptitude-star-chara/apti-chara07.svg");
+
+          @include pc {
+            background-position: center 5%;
+          }
+
+          @include sp {
+            background-position: center -46%;
+
+          }
+        }
+      }
+
+      &.img8 {
+        background-color: #F1CDCD;
+
+        .animal {
+          @include imgCover("aptitude-star-chara/apti-chara08.svg");
+
+          @include sp {
+            background-position: center 36%;
+
+          }
+        }
+
+      }
+
+      &.img9 {
+        background-color: #EB7A98;
+
+        .animal {
+          @include imgCover("aptitude-star-chara/apti-chara09.svg");
+
+          @include pc {
+            background-position: center 32%;
+
+          }
+
+          @include sp {
+            background-position: center -16%;
+            background-size: 110% !important;
+          }
+        }
+
+      }
+
+      &.img10 {
+        background-color: #CD82BE;
+
+        .animal {
+          @include imgCover("aptitude-star-chara/apti-chara10.svg");
+
+          @include pc {
+            background-position: center top 5%;
+            width: 140%;
+            max-width: 400px;
+          }
+
+          @include sp {
+            background-position: center -76%;
+            background-size: 140% !important;
+          }
+        }
+
+      }
+
+      &.img11 {
+        background-color: #698FA5;
+
+        .animal {
+          @include imgCover("aptitude-star-chara/apti-chara11.svg");
+
+          @include pc {
+            background-position: center 23%;
+          }
+
+          @include sp {
+            background-position: center -46%;
+
+          }
+        }
+
+      }
+
+      &.img12 {
+        background-color: #73C8DA;
+
+        .animal {
+          @include imgCover("aptitude-star-chara/apti-chara12.svg");
+
+          @include pc {
+            background-position: center 20%;
+          }
+
+          @include sp {
+            background-position: center -26%;
+
+          }
+        }
+
+      }
+
+      &.img13 {
+        background-color: #7BC4C0;
+
+        .animal {
+          @include imgCover("aptitude-star-chara/apti-chara13.svg");
+
+          @include pc {
+            background-position: center 20%;
+          }
+
+          @include sp {
+            background-position: center -60%;
+
+          }
+        }
+
+      }
+
+      &.img14 {
+        background-color: #6D945E;
+
+        .animal {
+          @include imgCover("aptitude-star-chara/apti-chara14.svg");
+
+          @include pc {
+            background-position: center 0%;
+          }
+
+          @include sp {
+            background-position: center -80%;
+            background-size: 100% !important;
+          }
+        }
+
+      }
+
+      &.img15 {
+        background-color: #A192C5;
+
+        .animal {
+          @include imgCover("aptitude-star-chara/apti-chara15.svg");
+
+          @include pc {
+            background-position: center 10%;
+          }
+
+          @include sp {
+            background-position: center -46%;
+
+          }
+        }
+      }
+    }
+  }
+}

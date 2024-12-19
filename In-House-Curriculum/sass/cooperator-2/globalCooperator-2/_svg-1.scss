@@ -129,6 +129,9 @@ $game-frame:url('data:image/svg+xml;utf-8,<svg width="352" height="261" viewBox=
 //ミニゲーム吹き出し
 $game-bubble:url('data:image/svg+xml;utf-8,<svg width="146" height="52" viewBox="0 0 146 52" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M139.854 2H6.66423V6.59789H2V36.1558H6.66423V41.4105H15.6074V50H17.5474V48.4842H19.6204V46.4632H21.6934V44.4421H23.7664V42.4211H26.8759V41.4105H139.854V36.1558H144V6.59789H139.854V2Z" fill="%23F0FAED" stroke="%2343505F" stroke-width="4"/></svg>');
 
+//適性検査スタートボタン
+$aptitude-start-btn:url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none"><path d="M0 17V0L15.5 8.5L0 17Z" fill="white"/></svg>');
+
 
 // // SVG使い方（色変更パターン）
 // @function encode($ColorCode){
