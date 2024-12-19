@@ -1,40 +1,9 @@
-<!DOCTYPE html>
-<html lang="ja">
-	<head prefix="og: https://ogp.me/ns#">
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<?php get_header();?>
 
-		<!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
-		<meta name="format-detection" content="email=no,telephone=no,address=no" />
-
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-		<meta property="og:locale" content="ja_JP" />
-
-		<!-- ▼SEO -->
-		<link rel="”canonical”" href="”URL”" />
-		<!-- ジェネレーターURL→ https://metatags.io/ -->
-
-		<!-- ▼ファビコン -->
-		<!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
-
-		<!-- ▼クロールして欲しくない -->
-		<!-- <meta name="robots" content="noindex,nofollow"> -->
-
-		<!-- ▼テーマカラー -->
-		<!-- <meta name="theme-color" content="#e9c931"> -->
-
-		<!-- ▼CSS -->
-		<link rel="stylesheet" href="css/main.css?ver=1.0.0" />
-
-		<!-- ▼フォント -->
-	</head>
-
-	<body>
 		<div class="aptitude-start">
 			<div class="TL-wrap">
 				<img
-					src="img/aptitude-star-chara/apti-TL.svg"
+					src="<?php echo get_template_directory_uri(); ?>/img/aptitude-start-chara/apti-TL.svg"
 					class="TL"
 					alt="適性検査"
 				/>
@@ -42,7 +11,7 @@
 					質問に答えて、あなたがエンジニア・デザイナーとして<br class="sp">どんな強みや素質を持っているのかを知ることができます<br>
 					自分の強みや向き不向きを知ることで、<br class="sp">これからのキャリアのヒントになるはず
 				</p>
-				<a href="#" class="start-btn start-btn-anime">
+				<a href="<?php echo home_url();?>/aptitude-choice" class="start-btn start-btn-anime">
 					<p class="start-TX">スタート</p>
 				</a>
 			</div>
@@ -69,12 +38,4 @@
 			</div>
 		</div>
 
-		<script
-			src="https://code.jquery.com/jquery-3.7.0.min.js"
-			integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
-			crossorigin="anonymous"
-		></script>
-		<script src="js/script.js"></script>
-		<script src="js/aptitude-system.js"></script>
-	</body>
-</html>
+<?php get_footer(); ?>

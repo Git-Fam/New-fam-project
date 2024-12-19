@@ -69,6 +69,7 @@
     .TX {
       color: #7E7360;
       line-height: 160%;
+      @include wt700;
       @include pc {
         font-size: p(20);
         margin-top: pmi(20);
@@ -81,6 +82,7 @@
     .start-btn{
       background-color: #80C868;
       display: block;
+      box-shadow: 1.254px 1.672px 2.508px 0px rgba(0, 0, 0, 0.25);
       @include pc{
         border: pmi(10) solid $B-FFFFFF;
         border-radius: pmi(8);
@@ -196,11 +198,11 @@
         }
 
         .animal {
-          @include imgCover("aptitude-star-chara/apti-chara01.svg");
+          @include imgCover("aptitude-start-chara/apti-chara01.svg");
 
           @include pc {
             background-position: center top !important;
-            width: 130%;
+            background-size: 108% !important;
             max-width: 400px;
           }
 
@@ -215,7 +217,7 @@
         background-color: #A0DF69;
 
         .animal {
-          @include imgCover("aptitude-star-chara/apti-chara02.svg");
+          @include imgCover("aptitude-start-chara/apti-chara02.svg");
 
           @include pc {
             background-position: center 10%;
@@ -233,7 +235,7 @@
         background-color: #E7D88A;
 
         .animal {
-          @include imgCover("aptitude-star-chara/apti-chara03.svg");
+          @include imgCover("aptitude-start-chara/apti-chara03.svg");
 
           @include pc {
             background-position: center 0%;
@@ -251,7 +253,7 @@
         background-color: #E9B84F;
 
         .animal {
-          @include imgCover("aptitude-star-chara/apti-chara04.svg");
+          @include imgCover("aptitude-start-chara/apti-chara04.svg");
 
           @include pc {
             background-position: center 0%;
@@ -269,7 +271,7 @@
         background-color: #EC9A4D;
 
         .animal {
-          @include imgCover("aptitude-star-chara/apti-chara05.svg");
+          @include imgCover("aptitude-start-chara/apti-chara05.svg");
 
           @include pc {
             background-position: center 40%;
@@ -287,7 +289,7 @@
         background-color: #D86F6A;
 
         .animal {
-          @include imgCover("aptitude-star-chara/apti-chara06.svg");
+          @include imgCover("aptitude-start-chara/apti-chara06.svg");
 
           @include pc {
             background-position: center 23%;
@@ -304,7 +306,7 @@
         background-color: #EE8E7E;
 
         .animal {
-          @include imgCover("aptitude-star-chara/apti-chara07.svg");
+          @include imgCover("aptitude-start-chara/apti-chara07.svg");
 
           @include pc {
             background-position: center 5%;
@@ -321,7 +323,7 @@
         background-color: #F1CDCD;
 
         .animal {
-          @include imgCover("aptitude-star-chara/apti-chara08.svg");
+          @include imgCover("aptitude-start-chara/apti-chara08.svg");
 
           @include sp {
             background-position: center 36%;
@@ -335,10 +337,11 @@
         background-color: #EB7A98;
 
         .animal {
-          @include imgCover("aptitude-star-chara/apti-chara09.svg");
+          @include imgCover("aptitude-start-chara/apti-chara09.svg");
 
           @include pc {
-            background-position: center 32%;
+            background-position: center 25%;
+            background-size: 103% !important;
 
           }
 
@@ -354,11 +357,11 @@
         background-color: #CD82BE;
 
         .animal {
-          @include imgCover("aptitude-star-chara/apti-chara10.svg");
+          @include imgCover("aptitude-start-chara/apti-chara10.svg");
 
           @include pc {
             background-position: center top 5%;
-            width: 140%;
+            background-size: 115% !important;
             max-width: 400px;
           }
 
@@ -374,7 +377,7 @@
         background-color: #698FA5;
 
         .animal {
-          @include imgCover("aptitude-star-chara/apti-chara11.svg");
+          @include imgCover("aptitude-start-chara/apti-chara11.svg");
 
           @include pc {
             background-position: center 23%;
@@ -392,7 +395,7 @@
         background-color: #73C8DA;
 
         .animal {
-          @include imgCover("aptitude-star-chara/apti-chara12.svg");
+          @include imgCover("aptitude-start-chara/apti-chara12.svg");
 
           @include pc {
             background-position: center 20%;
@@ -410,7 +413,7 @@
         background-color: #7BC4C0;
 
         .animal {
-          @include imgCover("aptitude-star-chara/apti-chara13.svg");
+          @include imgCover("aptitude-start-chara/apti-chara13.svg");
 
           @include pc {
             background-position: center 20%;
@@ -428,7 +431,7 @@
         background-color: #6D945E;
 
         .animal {
-          @include imgCover("aptitude-star-chara/apti-chara14.svg");
+          @include imgCover("aptitude-start-chara/apti-chara14.svg");
 
           @include pc {
             background-position: center 0%;
@@ -446,7 +449,7 @@
         background-color: #A192C5;
 
         .animal {
-          @include imgCover("aptitude-star-chara/apti-chara15.svg");
+          @include imgCover("aptitude-start-chara/apti-chara15.svg");
 
           @include pc {
             background-position: center 10%;

@@ -279,30 +279,30 @@
 
 .start-btn-anime {
 
-  animation: start-btn-anime 2s linear 0s infinite;
+  animation: start-btn-anime 2.3s linear 0s infinite;
 
   @keyframes start-btn-anime {
     0% {
       transform: scale(1.0, 1.0) translate(0%, 0%);
     }
 
-    20% {
-      transform: scale(0.95, 1.2) translate(0%, -25%);
+    10% {
+      transform: scale(0.95, 1.1) translate(0%, -25%);
     }
 
-    25% {
+    13% {
       transform: scale(1.1, 0.9) translate(0%, 5%);
     }
 
-    30% {
+    18% {
       transform: scale(0.95, 1.03) translate(0%, -3%);
     }
 
-    35% {
+    23% {
       transform: scale(1.03, 0.95) translate(0%, 3%);
     }
 
-    40% {
+    28% {
       transform: scale(1.0, 1.0) translate(0%, 0%);
     }
 
