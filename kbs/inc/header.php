@@ -1,5 +1,3 @@
-
-
 <header class="header">
     <div class="header--inner">
         <div class="header--logo">
@@ -25,7 +23,7 @@
                 </ul>
                 <ul class="sns">
                     <li><a href="tel:042-378-2111">042-378-2111</a></li>
-                    <li><a href="#" target="_blank" rel="noopener noreferrer">instagram</a></li>
+                    <li><a href="https://www.instagram.com/kiribisou/profilecard/?igsh=Z3U3eDluM3A2YzAw" target="_blank" rel="noopener noreferrer">instagram</a></li>
                 </ul>
             </nav>
         </div>

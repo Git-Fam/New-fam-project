@@ -26,7 +26,7 @@ Template Path: pages/
         <section class="section_about-us_message max-size-small">
             <div class="C_about-us_message">
                 <div class="img--wrapper imgAnime">
-                    <img src="<?php echo get_template_directory_uri(); ?>" alt="代表取締役　桐部 貴大">
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/about-us.jpg" alt="代表取締役　桐部 貴大">
                 </div>
                 <div class="contents--wrapper">
                     <div class="text">
@@ -70,7 +70,7 @@ Template Path: pages/
                             <p class="TX">設立日</p>
                         </div>
                         <div class="list--contents">
-                            <p class="TX">0000年00月00日</p>
+                            <p class="TX">2019年 5月</p>
                         </div>
                     </li>
                     <li>
