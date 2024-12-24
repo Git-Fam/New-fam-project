@@ -1,4 +1,3 @@
-
 <?php get_template_part('./inc/head'); ?>
 <?php get_template_part('./inc/header'); ?>
 
@@ -44,7 +43,7 @@
                     <a class="link" href="<?php echo get_home_url(); ?>/example#paint">
                         <p class="TX">塗装</p>
                     </a>
-                    <a class="link" href="<?php echo get_home_url(); ?>/example#waterproof">
+                    <a class="link" href="<?php echo get_home_url(); ?>/example#ceiling">
                         <p class="TX">シーリング</p>
                     </a>
                     <a class="link" href="<?php echo get_home_url(); ?>/example#waterproof">
