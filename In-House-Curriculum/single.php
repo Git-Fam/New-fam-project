@@ -6,6 +6,7 @@ if (!is_user_logged_in()) {
 
 get_header();
 ?>
+<?php get_template_part('inc/loading'); ?>
 
 <!-- single -->
 <div class="single">
