@@ -345,6 +345,7 @@
 
         @include pc {
           width: clamp(500px, p(558), 750px);
+          height: clamp(400px, p(499), 600px);
           left: p(20);
           bottom: p(40);
           padding: clamp(80px, p(90), 110px) clamp(80px, p(90), 110px) clamp(140px, p(160), 200px);
@@ -365,7 +366,8 @@
 
           @include pc {
             right: p(0);
-            top: p(-60);
+            // top: p(-60);
+            bottom: 100%;
           }
 
           @include sp {
@@ -1361,6 +1363,21 @@
           font-size: s(14);
         }
       }
+    }
+  }
+
+  .my--menu-btn {
+    position: absolute;
+    z-index: 10;
+    
+    @include pc{
+      top: p(10);
+      right: p(10);
+    }
+
+    @include sp {
+      top: s(10);
+      right: s(10);
     }
   }
 

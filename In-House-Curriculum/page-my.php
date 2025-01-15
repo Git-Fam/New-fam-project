@@ -187,6 +187,7 @@ if (!is_user_logged_in()) {
 get_header();
 ?>
 <!-- page-my -->
+
 <div class="my">
     <div class="my--inner">
         <div class="my--title">
@@ -1631,6 +1632,9 @@ get_header();
 
     </div>
 
+    <div class="my--menu-btn">
+        <?php get_template_part('inc/menu-btn'); ?>
+    </div>
 
     <!-- ログインボーナス -->
     <?php log_board(); ?>

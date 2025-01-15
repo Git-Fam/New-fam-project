@@ -1,0 +1,92 @@
+@use "../global" as *;
+
+/* -----------------------
+  C_menu-btn
+----------------------- */
+
+@function pclamp-menu-btn($size, $minSize: ($size * 1 / 4), $maxSize: ($size * 3 / 4), $viewport: $screenSizePC) {
+  $rate: calc(100 / $viewport);
+  $calculatedSize: $rate * $size * 1vw;
+  @return clamp(#{$minSize}px, #{$calculatedSize}, #{$maxSize}px);
+}
+
+
+.C_all-menu-btn {
+  display: block;
+  border-radius: 13.257px;
+  border: solid #FFF;
+  background: linear-gradient(180deg, #F69082 0%, #F4BBB4 100%);
+  box-shadow: 0px 3.314px 6.629px 0px rgba(0, 0, 0, 0.25);
+  width: fit-content;
+  transition: all 0.3s ease-in-out;
+  
+  @include pc {
+    padding: pclamp-menu-btn(13) pclamp-menu-btn(28) pclamp-menu-btn(17) pclamp-menu-btn(14);
+    border-width: pclamp-menu-btn(3.314);
+  }
+
+  @include sp {
+    padding: s(3) s(5) s(4) s(5);
+    border-width: s(2);
+  }
+
+  &__inner {
+    display: flex;
+
+    @include pc {
+      align-items: flex-end;
+      gap: pclamp-menu-btn(9);
+    }
+
+    @include sp {
+      align-items: center;
+      gap: s(3);
+    }
+
+    &__img {
+      @include iconContain($all-menu-character);
+      transition: background-image 0.3s ease-in-out;
+
+      @include pc {
+        width: pclamp-menu-btn(113);
+        height: pclamp-menu-btn(87);
+      }
+
+      @include sp {
+        width: s(20);
+        height: s(17);
+      }
+    }
+
+    &__text {
+
+      .TX {
+        color: #FFF;
+        @include wt600;
+        line-height: 1.5;
+
+        @include pc {
+          font-size: pclamp-menu-btn(53.028);
+          letter-spacing: pclamp-menu-btn(2.651);
+        }
+
+        @include sp {
+          font-size: s(12);
+          letter-spacing: s(1);
+        }
+      }
+    }
+  }
+
+  &:hover {
+    box-shadow: unset;
+    transform: translate(3.314px, 3.314px);
+
+    .C_all-menu-btn__inner {
+
+      &__img {
+        @include iconContain($all-menu-character-ver2);
+      }
+    }
+  }
+}
