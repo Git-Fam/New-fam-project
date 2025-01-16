@@ -1,0 +1,197 @@
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
+
+/* -----------------------
+  C_first
+----------------------- */
+//見出し
+.C_first_label {
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+
+  @include pc {
+    width: p(440);
+    height: p(47);
+    padding-left: p(23);
+    gap: p(7);
+  }
+
+  .number {
+    background-color: $B-F8F8F8;
+    display: grid;
+    place-items: center;
+
+    @include pc {
+      width: p(31);
+      height: p(29);
+      border-radius: p(4);
+      font-size: p(17);
+    }
+  }
+
+  &--TX {
+    @include wt500;
+    text-shadow: 0 0 0.5px;
+
+    @include pc {
+      font-size: p(19);
+      letter-spacing: p(0.57);
+      line-height: p(47);
+    }
+  }
+
+  &.label01 {
+    background: $B-9FC944-03;
+
+    .number {
+      color: $F-007B5A;
+    }
+
+    .C_first_label--TX {
+      color: $P-6B960E;
+    }
+  }
+
+  &.label02 {
+    background: $B-CBE8F4;
+
+    .number {
+      color: $F-405164;
+    }
+
+    .C_first_label--TX {
+      color: $P-6593A6;
+    }
+  }
+}
+
+
+//タイトル
+.C_first_TL {
+  color: $F-4C4C4C;
+
+  @include pc {
+    border-bottom: p(5) solid;
+    padding-bottom: p(15);
+  }
+
+  &--TX {
+    @include wt800;
+    text-align: center;
+
+    @include pc {
+      font-size: p(32);
+    }
+  }
+}
+
+// タグ
+/* -----------------------
+PC
+  ①はじめに・学べること：126px
+  ②はじめに・学べること：118px
+  ③はじめに・はじめに：111px
+----------------------- */
+.C_first_tag {
+  background: $P-6B960E;
+  display: grid;
+  border-radius: 999px 0px 0px 999px;
+  overflow: hidden;
+
+  @include pc {
+    height: pmi(45);
+    line-height: pmi(45);
+    padding-left: pmi(16);
+  }
+
+  &--TX {
+    color: $F-FFFFFF;
+    white-space: nowrap;
+    @include wt800;
+
+    @include pc {
+      font-size: pmi(18)
+    }
+  }
+
+  &.tag01 {
+    @include pc {
+      width: pmi(126);
+      
+    }
+  }
+
+  &.tag02 {
+    @include pc {
+      width: pmi(118);
+    }
+  }
+
+  &.tag03 {
+    @include pc {
+      width: pmi(112);
+    }
+  }
+
+  &.active {
+    background: $P-9FC944;
+
+    @include pc {
+      width: pmi(162);
+    }
+
+    .C_first_tag--TX {
+      color: $F-FBFF00;
+    }
+  }
+}
+
+// 本めくる
+.cssbk-wrap {
+  @include imgContain("book.png");
+  width: 100%;
+  height: 100%;
+
+  .cssbk {
+    position: relative;
+    width: 100%;
+    padding-bottom: 72%;
+  }
+
+  .cssbk input {
+    display: none;
+  }
+
+  .cssbk input~span {
+    transition: 1.5s;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    position: absolute;
+    width: 45%;
+    height: 75%;
+    top: 12%;
+    transform: translateY(-50%);
+    background-color: #F8F8F8;
+  }
+
+  .cssbk input+span {
+    left: 53%;
+    transform-origin: left;
+    transform: perspective(1500px) rotateY(0deg);
+  }
+
+  .cssbk input+span+span {
+    right: 50%;
+    transform-origin: right;
+    transform: perspective(1500px) rotateY(180deg);
+  }
+
+  .cssbk input:checked+span {
+    transform: perspective(1500px) rotateY(-180deg);
+  }
+
+  .cssbk input:checked+span+span {
+    transform: perspective(1500px) rotateY(0deg);
+  }
+}
