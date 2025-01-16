@@ -1,0 +1,71 @@
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
+
+/* -----------------------
+  はじめに
+----------------------- */
+
+.first {
+  @include imgCover("first-bg.jpg");
+  width: 100%;
+
+  @include pc {
+    height: 100vh;
+  }
+  @include sp{
+    min-height: 650px;
+  }
+
+  &-inner {
+    .first-content {
+
+      @include pc {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding-inline: pmi(119) pmi(13);
+      }
+
+      @include sp {
+        padding: s(55) 0 s(14) s(13);
+      }
+
+      .book-bg {
+        position: relative;
+
+        @include pc {
+          @include imgContain("book.png");
+          width: pmi(1148);
+          aspect-ratio: 1148 / 676;
+        }
+
+        @include sp {
+          @include imgContain("book-sp.png");
+          width: s(378);
+          aspect-ratio: 378 / 581;
+        }
+
+        // 高さが1000px以下で、横幅が1000px以上の場合
+        @media screen and (min-width: 768px) {
+          @media screen and (max-height: 680px) and (min-height: 0px) {
+            width: pmi(950);
+          }
+        }
+
+        .book-tag {
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+
+          @include pc {
+            gap: pmi(5);
+            left: -9.2%;
+            top: pmi(39);
+          }
+
+        }
+      }
+    }
+  }
+}

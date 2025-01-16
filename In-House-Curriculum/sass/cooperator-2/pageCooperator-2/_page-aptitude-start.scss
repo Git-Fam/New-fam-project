@@ -71,7 +71,7 @@
       line-height: 160%;
       @include wt700;
       @include pc {
-        font-size: p(20);
+        font-size: pmi(20);
         margin-top: pmi(20);
       }
       @include sp{
@@ -201,8 +201,8 @@
           @include imgCover("aptitude-start-chara/apti-chara01.svg");
 
           @include pc {
-            background-position: center top !important;
-            background-size: 108% !important;
+            background-position: center -5% !important;
+            background-size: 118% !important;
             max-width: 400px;
           }
 

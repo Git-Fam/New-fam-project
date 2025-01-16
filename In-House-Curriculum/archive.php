@@ -244,7 +244,15 @@ if ($total_posts <= 4) {
                                 <div class="goal-wrap">
                                     <a class="goal hover-scale" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" >
                                     </a>
-                                    <div class="goal-bg"></div>
+                                    <div class="goal-bg">
+                                        <div class="title-board">
+                                            <?php
+                                            $slug = get_post_field('post_name', get_the_ID());
+                                            $decoded_slug = urldecode($slug); // URLエンコードされている場合にデコード
+                                            ?>
+                                            <p class="board-TX"> <?php echo esc_html($decoded_slug); ?></p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -331,13 +339,13 @@ if ($total_posts <= 4) {
                                     <a class="goal hover-scale" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" >
                                     </a>
                                     <div class="goal-bg"></div>
-                                    <div class="title-board">
-                                        <?php
-                                        $slug = get_post_field('post_name', get_the_ID());
-                                        $decoded_slug = urldecode($slug); // URLエンコードされている場合にデコード
-                                        ?>
-                                        <p class="board-TX"> <?php echo esc_html($decoded_slug); ?></p>
-                                    </div>
+                                        <div class="title-board">
+                                            <?php
+                                            $slug = get_post_field('post_name', get_the_ID());
+                                            $decoded_slug = urldecode($slug); // URLエンコードされている場合にデコード
+                                            ?>
+                                            <p class="board-TX"> <?php echo esc_html($decoded_slug); ?></p>
+                                        </div>
                                 </div>
                             </div>
 
@@ -401,7 +409,22 @@ if ($total_posts <= 4) {
                                 <div class="goal-wrap">
                                     <a class="goal hover-scale" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" >
                                     </a>
-                                    <div class="goal-bg"></div>
+                                    <div class="goal-bg">
+                                        <div class="title-board">
+                                            <?php
+                                            $slug = get_post_field('post_name', get_the_ID());
+                                            $decoded_slug = urldecode($slug); // URLエンコードされている場合にデコード
+                                            ?>
+                                            <p class="board-TX"> <?php echo esc_html($decoded_slug); ?></p>
+                                        </div>
+                                    <div class="title-board">
+                                        <?php
+                                        $slug = get_post_field('post_name', get_the_ID());
+                                        $decoded_slug = urldecode($slug); // URLエンコードされている場合にデコード
+                                        ?>
+                                        <p class="board-TX"> <?php echo esc_html($decoded_slug); ?></p>
+                                    </div>
+                                    </div>
                                 </div>
                                 </div>
 
@@ -469,7 +492,15 @@ if ($total_posts <= 4) {
                                 <div class="goal-wrap">
                                     <a class="goal hover-scale" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" >
                                     </a>
-                                    <div class="goal-bg"></div>
+                                    <div class="goal-bg">
+                                        <div class="title-board">
+                                            <?php
+                                            $slug = get_post_field('post_name', get_the_ID());
+                                            $decoded_slug = urldecode($slug); // URLエンコードされている場合にデコード
+                                            ?>
+                                            <p class="board-TX"> <?php echo esc_html($decoded_slug); ?></p>
+                                        </div>
+                                    </div>
                                 </div>
                                 </div>
 
@@ -537,7 +568,15 @@ if ($total_posts <= 4) {
                                 <div class="goal-wrap">
                                     <a class="goal hover-scale" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" >
                                     </a>
-                                    <div class="goal-bg"></div>
+                                    <div class="goal-bg">
+                                        <div class="title-board">
+                                            <?php
+                                            $slug = get_post_field('post_name', get_the_ID());
+                                            $decoded_slug = urldecode($slug); // URLエンコードされている場合にデコード
+                                            ?>
+                                            <p class="board-TX"> <?php echo esc_html($decoded_slug); ?></p>
+                                        </div>
+                                    </div>
                                 </div>
                                 </div>
 
@@ -609,7 +648,15 @@ if ($total_posts <= 4) {
                                         <div class="goal-wrap">
                                             <a class="goal hover-scale" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" >
                                             </a>
-                                            <div class="goal-bg"></div>
+                                            <div class="goal-bg">
+                                                <div class="title-board">
+                                                    <?php
+                                                    $slug = get_post_field('post_name', get_the_ID());
+                                                    $decoded_slug = urldecode($slug); // URLエンコードされている場合にデコード
+                                                    ?>
+                                                    <p class="board-TX"> <?php echo esc_html($decoded_slug); ?></p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
