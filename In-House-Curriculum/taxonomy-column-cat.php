@@ -8,6 +8,9 @@ get_header();
 ?>
 
 <div class="columns">
+    <div class="columns--menu-btn">
+        <?php get_template_part('inc/menu-btn'); ?>
+    </div>
     <div class="columns--main">
         <?php
         get_template_part('category-side');
