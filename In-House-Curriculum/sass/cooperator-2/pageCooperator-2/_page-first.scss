@@ -1,5 +1,5 @@
-@use "../../global"as *;
-@use "../globalCooperator-2"as *;
+@use "../../global" as *;
+@use "../globalCooperator-2" as *;
 
 /* -----------------------
   はじめに
@@ -8,11 +8,13 @@
 .first {
   @include imgCover("first-bg.jpg");
   width: 100%;
+  position: relative;
 
   @include pc {
-    height: 100vh;
+    height: max(100vh, 700px);
   }
-  @include sp{
+
+  @include sp {
     min-height: 650px;
   }
 
@@ -38,6 +40,10 @@
           @include imgContain("book.png");
           width: pmi(1148);
           aspect-ratio: 1148 / 676;
+
+          // @media screen and (max-height: 680px) and (min-height: 0px) {
+          //   width: pmi(950);
+          // }
         }
 
         @include sp {
@@ -46,12 +52,6 @@
           aspect-ratio: 378 / 581;
         }
 
-        // 高さが1000px以下で、横幅が1000px以上の場合
-        @media screen and (min-width: 768px) {
-          @media screen and (max-height: 680px) and (min-height: 0px) {
-            width: pmi(950);
-          }
-        }
 
         .book-tag {
           position: absolute;
@@ -64,6 +64,56 @@
             top: pmi(39);
           }
 
+        }
+
+        .book--contents--wrapper {
+          height: 100%;
+
+          .book--contents {
+            background-color: #0000008c;
+            height: 100%;
+            display: none;
+
+            @include pc {
+              padding: pmi(60) pmi(60);
+            }
+
+            @include sp {}
+
+            &.active {
+              display: block;
+            }
+
+            &__inner {
+              height: 100%;
+
+              @include pc {
+                display: flex;
+                column-gap: pmi(100);
+              }
+
+              @include sp {}
+
+              .book--contents__page {
+
+                @include pc {
+                  width: calc(50% - (pmi(100) * 1/2));
+                  height: 100%;
+                  overflow-y: scroll;
+                }
+
+                @include sp {}
+
+                &:nth-child(1) {
+                  background-color: #00ff518c;
+                }
+
+                &:nth-child(2) {
+                  background-color: #0051ff8c;
+                }
+              }
+            }
+          }
         }
       }
     }
