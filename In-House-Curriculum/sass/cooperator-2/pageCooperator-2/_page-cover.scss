@@ -691,7 +691,7 @@
       @include imgContain("back.png");
 
       @include pc {
-        bottom: p(-51);
+        bottom: -51px;
         right: clamp(210px, p(275), 275px);
         padding: pmi(28) 0 0 pmi(48);
         width: pmi(175);
