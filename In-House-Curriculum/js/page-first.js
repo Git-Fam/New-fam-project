@@ -8,4 +8,12 @@ $(function () {
     $('.book--contents').eq(index).addClass('active');
   });
 
+  $('.book--contents--nation__btn .TX').on('click', function () {
+    $(this).addClass('active');
+    $(this).siblings().removeClass('active');
+    var index = $('.book--contents--nation__btn .TX').index(this);
+    $('.book--contents__inner__page').removeClass('active');
+    $('.book--contents__inner__page').eq(index).addClass('active');
+  });
+
 });

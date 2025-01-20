@@ -95,14 +95,22 @@ PC
 ----------------------- */
 .C_first_tag {
   background: $P-6B960E;
-  display: grid;
-  border-radius: 999px 0px 0px 999px;
   overflow: hidden;
-
+  display: grid;
+  cursor: pointer;
+  
   @include pc {
+    border-radius: 999px 0px 0px 999px;
     height: pmi(45);
     line-height: pmi(45);
     padding-left: pmi(16);
+  }
+
+  @include sp{
+    border-radius: 10px 10px 0px 0px;
+    height: s(24);
+    padding: s(5) s(10) 0;
+    width: fit-content;
   }
 
   &--TX {
@@ -112,6 +120,10 @@ PC
 
     @include pc {
       font-size: pmi(18)
+    }
+
+    @include sp{
+      font-size: s(12);
     }
   }
 
@@ -134,11 +146,22 @@ PC
     }
   }
 
+  &.sp-type02{
+    @include sp{
+      height: s(36);
+      background: #73A800;
+    }
+  }
+  
   &.active {
     background: $P-9FC944;
 
     @include pc {
       width: pmi(162);
+    }
+
+    @include sp{
+      height: s(36);
     }
 
     .C_first_tag--TX {
