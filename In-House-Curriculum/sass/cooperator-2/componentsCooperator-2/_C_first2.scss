@@ -9,9 +9,18 @@
 .C_first_genre{
   display: flex;
   justify-content: space-between;
+  @include pc{
+    padding-inline: pmi(15);
+  }
+  @include sp{
+    padding-inline: s(10);
+  }
   li{
     @include pc{
       width: pmi(136);
+    }
+    @include sp{
+      width: s(80);
     }
     .genre_img{
       aspect-ratio: 1/1;
@@ -20,6 +29,11 @@
       transition: all 0.3s ease;
       @include pc{
         box-shadow: 0px 0px p(4) 0px rgba(0, 0, 0, 0.25);
+        border-radius: pmi(6);
+      }
+      @include sp{
+        border-radius: s(3);
+        box-shadow: 0px 0px s(4) 0px rgba(0, 0, 0, 0.25);
       }
       &.img_01{
         @include imgCover("html.png");
@@ -38,6 +52,10 @@
         letter-spacing: pmi(0.45);
         margin-top: p(8);
       }
+      @include sp{
+        font-size: s(12);
+        margin-top: s(8);
+      }
     }
     .genre_TX{
       line-height: normal;
@@ -46,6 +64,10 @@
         letter-spacing: pmi(0.3);
         margin-top: p(5);
       } 
+      @include sp{
+        font-size: s(10);
+        margin-top: s(5);
+      }
     }
     &:hover{
       .genre_img{
@@ -70,11 +92,19 @@
     padding: pmi(17) pmi(139) pmi(24) pmi(26); 
     box-shadow: pmi(2) pmi(3) pmi(5) 0px rgba(0, 0, 0, 0.25);
   }
+  @include sp{
+    padding: s(10) s(65) s(12) s(13); 
+    box-shadow: s(1) s(2) s(3) 0px rgba(0, 0, 0, 0.25);
+  }
   &--TL{
     @include wt800;
     @include pc{
       letter-spacing: pmi(0.57);
       font-size: pmi(19);
+    }
+    @include sp{
+      letter-spacing: s(0.3);
+      font-size: s(14);
     }
   }
   &--TX{
@@ -85,18 +115,30 @@
       letter-spacing: pmi(0.39);
       margin: pmi(15) 0 0 pmi(6);
     }
+    @include sp{
+      font-size: s(10);
+      letter-spacing: s(0.2);
+      margin: s(8) 0 0 s(3);
+    }
   }
   .imgbox{
     display: flex;
-    justify-content: space-between;
     align-items: center;
     @include pc{
       margin-top: pmi(10);
+      justify-content: space-between;
+    }
+    @include sp{
+      margin-top: s(8);
+      gap: s(8);
     }
     .img{
       aspect-ratio: 1/1;
       @include pc{
         width: pmi(63);
+      }
+      @include sp{
+        width: s(40);
       }
       &.img01{
         @include imgCover("html.png");
@@ -123,6 +165,12 @@
       bottom: pmi(17);
       right: pmi(14);
     }
+    @include sp{
+      width: s(70);
+      height: s(80);
+      bottom: s(5);
+      right: s(5);
+    }
   }
 }
 
@@ -138,6 +186,10 @@
     border-radius: pmi(20);
     padding: pmi(17) pmi(14) pmi(38);
   }
+  @include sp{
+    border-radius: s(10);
+    padding: s(12) s(7) s(87);
+  }
   &--TL{
     background: $B-FFFFFF;
     color: #6B960E;
@@ -148,15 +200,27 @@
       padding: pmi(7) pmi(22);
       border-radius: pmi(5);
     }
+    @include sp{
+      padding: s(4) s(11);
+      border-radius: s(3);
+    }
   }
   .textbox{
     @include pc{
       margin-top: pmi(25);
       @include column(pmi(15));
     }
+    @include sp{
+      margin-top: s(10);
+      @include column(s(10));
+    }
     p{
       @include pc{
         font-size: pmi(13);
+      }
+      @include sp{
+        font-size: s(12);
+        line-height: normal;
       }
     }
   }
@@ -167,7 +231,11 @@
     right: 0;
     @include pc{
       width: pmi(130);
-      height: pmi(100);
+      height: pmi(88);
+    }
+    @include sp{
+      width: s(120);
+      height: s(80);
     }
   }
 }
@@ -178,6 +246,7 @@
 ----------------------- */
 .C_first-TX15{
   @include wt500;
+  text-shadow: 0 0 0;
   line-height: normal;
   @include pc{
     font-size: pmi(15);
@@ -199,6 +268,7 @@
 
 .C_first-TX {
   @include wt500;
+  text-shadow: 0 0 0;
   line-height: normal;
 
   @include pc {
@@ -207,7 +277,8 @@
   }
 
   @include sp {
-    font-size: s(14);
+    font-size: s(13);
     letter-spacing: s(0.4);
   }
 }
+
