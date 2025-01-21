@@ -19,6 +19,15 @@
   <script src="<?php echo get_template_directory_uri(); ?>/js/curriculum-tab.js"></script>
 <?php endif; ?>
 
+<?php if (is_page('first')) : ?>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/page-first.js"></script>
+<?php endif; ?>
+
+<?php if (is_page('ranking')) : ?>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/ranking.js"></script>
+<?php endif; ?>
+
+
 <?php if (is_page('aptitude-choice')) : ?>
   <script src="<?php echo get_template_directory_uri(); ?>/js/aptitude-choice.js"></script>
 <?php endif; ?>

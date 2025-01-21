@@ -236,7 +236,7 @@ get_header();
                                 <ul class="rank">
                                     <?php
                                     // 上位3名を表示順に合わせて出力
-                                    $rank_positions = [1 => 'second', 0 => 'first', 2 => 'third'];
+                                    $rank_positions = [1 => 'second', 0 => 'r-first', 2 => 'third'];
                                     foreach ($rank_positions as $index => $rank_class) {
                                         if (!isset($point_users[$index])) continue;
                                         display_user_item($point_users[$index], $rank_class);
@@ -278,7 +278,7 @@ get_header();
                                 <ul class="rank">
                                     <?php
                                     // 上位3名を表示順に合わせて出力
-                                    $rank_positions = [1 => 'second', 0 => 'first', 2 => 'third'];
+                                    $rank_positions = [1 => 'second', 0 => 'r-first', 2 => 'third'];
                                     foreach ($rank_positions as $index => $rank_class) {
                                         if (!isset($users[$index])) continue;
 
@@ -338,7 +338,7 @@ get_header();
                                 <ul class="rank">
                                 <?php
                                     // 上位3名を表示順に合わせて出力
-                                    $rank_positions = [1 => 'second', 0 => 'first', 2 => 'third'];
+                                    $rank_positions = [1 => 'second', 0 => 'r-first', 2 => 'third'];
                                     foreach ($rank_positions as $index => $rank_class) {
                                         if (!isset($question_users[$index])) continue;
 
@@ -400,7 +400,7 @@ get_header();
                                 <ul class="rank">
                                     <?php
                                     // 上位3名を表示順に合わせて出力
-                                    $rank_positions = [1 => 'second', 0 => 'first', 2 => 'third'];
+                                    $rank_positions = [1 => 'second', 0 => 'r-first', 2 => 'third'];
                                     foreach ($rank_positions as $index => $rank_class) {
                                         if (!isset($login_days_users[$index])) continue;
                                         $user_info = $login_days_users[$index];

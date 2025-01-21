@@ -31,6 +31,10 @@
     border-width: s(2);
   }
 
+  &.is-bk {
+    background: linear-gradient(180deg, #8291f6 0%, #b4c2f4 100%);
+  }
+
   &__inner {
     display: flex;
 

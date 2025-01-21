@@ -4,6 +4,12 @@ if (!is_user_logged_in()) {
     exit;
 }
 
+// 前のURLが /login だった場合、/my にリダイレクト
+if (isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], '/login') !== false) {
+    wp_redirect(home_url('/my'));
+    exit;
+}
+
 get_header(); 
 
 // 現在のユーザー情報を取得
@@ -216,7 +222,9 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
             <p class="TL">カリキュラム選択　〉<?php echo esc_html($category->name); ?></p>
             <div class="btn-box">
                 <div class="list-btn"></div>
-                <div class="menu">MENU</div>
+                <div class="road-menu-btn">
+                    <?php get_template_part('inc/menu-btn'); ?>
+                </div>
             </div>
     </div>
 
