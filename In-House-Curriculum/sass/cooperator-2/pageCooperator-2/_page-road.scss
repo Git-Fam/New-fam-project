@@ -275,7 +275,7 @@
         }
 
         @include sp {
-          height: s(32);
+          height: s(40);
           position: fixed;
           padding-inline: s(10);
         }
@@ -296,6 +296,7 @@
         .btn-box {
           display: flex;
           margin-left: auto;
+          align-items: center;
 
           @include pc {
             gap: p(17);
@@ -371,7 +372,8 @@
                 content: "一覧を閉じる";
               }
             }
-            &:hover{
+
+            &:hover {
               transition: all 0.3s ease-in-out;
               box-shadow: unset;
               transform: translate(2px, 2px);
@@ -387,20 +389,21 @@
               }
 
               @include sp {
-                border-radius: 4px;
-                padding: 4px 8px 5px 4px;
-                border-width: 1px;
+                border-radius: s(4);
+                padding: s(3) s(5) s(3) s(4);
+                border-width: s(1);
               }
 
               &__inner {
                 display: flex;
                 align-items: flex-end;
+
                 @include pc {
                   gap: p(3);
                 }
 
                 @include sp {
-                  gap: 3px;
+                  gap: s(3);
                 }
 
                 &__img {
@@ -413,8 +416,8 @@
                   }
 
                   @include sp {
-                    width: 33px;
-                    height: 25px;
+                    width: s(25);
+                    height: s(18);
                   }
                 }
 
@@ -431,8 +434,8 @@
                     }
 
                     @include sp {
-                      font-size: 16px;
-                      letter-spacing: 0.8px;
+                      font-size: s(14);
+                      letter-spacing: s(0.8);
                     }
                   }
                 }
@@ -1029,7 +1032,7 @@
                       height: p(38);
                       line-height: p(38);
                       padding: p(5)0 0 p(10);
-                      font-size: p(13);
+                      font-size: p(11);
                     }
 
                     @include sp {
@@ -1037,7 +1040,7 @@
                       height: 38px;
                       line-height: 38px;
                       padding: 5px 0 0 10px;
-                      font-size: 13px;
+                      font-size: 11px;
                     }
                   }
                 }
@@ -1219,7 +1222,7 @@
                 width: 132px;
                 height: 151px;
                 right: 304px;
-                bottom: 130px;
+                bottom: 159px;
               }
             }
 
@@ -1228,12 +1231,12 @@
                 &:nth-child(1) {
                   @include pc {
                     left: p(-83);
-                    bottom: 0;
+                    bottom: p(30);
                   }
 
                   @include sp {
                     left: -83px;
-                    bottom: 0;
+                    bottom: 30px;
                   }
                 }
               }
@@ -1850,104 +1853,235 @@
                 @include sp {
                   width: 250px;
                   right: 665px;
-                  bottom: 14px;
+                  bottom: 45px;
                 }
               }
 
               &:nth-child(3) {
-                // rotate: -140deg;
-
-                @include pc {
-                  width: p(300);
-                  right: p(180);
-                  bottom: p(180);
-                }
-
-                @include sp {
-                  width: 300px;
-                  right: 131px;
-                  bottom: 178px;
-                }
-
-                // .goal-wrap,
-                // .character-box {
-                //   rotate: 140deg;
-                // }
-
-                // .goal-wrap {
-                //   @include pc {
-                //     top: p(-44);
-                //   }
-
-                //   @include sp {
-                //     top: -46px;
-                //   }
-
-                //   .goal-bg {
-                //     opacity: 0;
-                //   }
-
-                  // .title-board {
-                  //   transform: scale(-1, 1);
-
-                  //   @include pc {
-                  //     top: p(-90);
-                  //   }
-
-                  //   @include sp {
-                  //     top: -90px;
-                  //   }
-
-                  //   .board-TX {
-                  //     transform: scale(-1, 1);
-                  //   }
-                  // }
-                // }
-
-                // .character-box {
-                //   @include pc {
-                //     top: p(-52);
-                //   }
-                // }
-
-              }
-
-              &:nth-child(4) {
-                scale: -1 1;
-                rotate: 200deg;
 
                 @include pc {
                   width: p(250);
-                  left: p(24);
-                  bottom: p(177);
+                  right: p(365);
+                  bottom: p(-14);
                 }
 
                 @include sp {
                   width: 250px;
-                  left: 15px;
-                  bottom: 178px;
+                  right: 365px;
+                  bottom: 15px;
+                }
+              }
+
+              &:nth-child(4) {
+                transform: rotate(-73deg);
+
+                @include pc {
+                  width: p(250);
+                  right: p(166);
+                  bottom: p(32);
+                }
+
+                @include sp {
+                  width: 250px;
+                  right: 122px;
+                  bottom: 52px;
                 }
 
                 .goal-wrap,
                 .character-box {
-                  scale: -1 1;
-                  rotate: 200deg;
+                  transform: rotate(73deg);
                 }
+
               }
 
+
               &:nth-child(5) {
+                rotate: -140deg;
+
+                // scale: -1 1;
+                // rotate: 200deg;
+
                 @include pc {
-                  width: p(400);
-                  right: p(44);
-                  bottom: p(68);
+                  width: p(230);
+                  right: p(223);
+                  bottom: p(200);
                 }
 
                 @include sp {
-                  width: 400px;
-                  right: 34px;
-                  bottom: 68px;
+                  width: 230px;
+                  right: 178px;
+                  bottom: 235px;
+                }
+
+                .goal-wrap,
+                .character-box {
+                  rotate: 140deg;
+                }
+
+                .goal-wrap {
+                  @include pc {
+                    top: p(-44);
+                  }
+
+                  @include sp {
+                    top: -40px;
+                  }
+
+                  .goal-bg {
+                    opacity: 0;
+                  }
+
+                  .title-board {
+                    transform: scale(-1, 1);
+
+                    @include pc {
+                      top: p(-80);
+                    }
+
+                    @include sp {
+                      top: -80px;
+                    }
+
+                    .board-TX {
+                      transform: scale(-1, 1);
+                    }
+                  }
+                }
+
+                .character-box {
+                  @include pc {
+                    top: p(-52);
+                  }
+                }
+
+                // .goal-wrap,
+                // .character-box {
+                //   scale: -1 1;
+                //   rotate: 200deg;
+                // }
+              }
+
+              &:nth-child(6) {
+                transform: rotate(180deg);
+
+                @include pc {
+                  width: p(250);
+                  left: p(300);
+                  top: p(40);
+                }
+
+                @include sp {
+                  width: 250px;
+                  left: 300px;
+                  top: 8px;
+                }
+
+                .goal-wrap,
+                .character-box {
+                  rotate: 180deg;
+                }
+
+                .title-board {
+                  transform: scale(-1, 1);
+
+                  .board-TX {
+                    transform: scale(-1, 1);
+                  }
                 }
               }
+
+              &:nth-child(7) {
+                transform: rotate(160deg);
+
+                @include pc {
+                  width: p(200);
+                  left: p(120);
+                  top: p(50);
+                }
+
+                @include sp {
+                  width: 200px;
+                  left: 104px;
+                  top: 50px;
+                }
+
+                .goal-wrap,
+                .character-box {
+                  rotate: -160deg;
+                }
+
+                .title-board {
+                  transform: scale(-1, 1);
+
+                  .board-TX {
+                    transform: scale(-1, 1);
+                  }
+                }
+              }
+
+              &:nth-child(8) {
+
+                @include pc {
+                  width: p(200);
+                  left: p(70);
+                  top: p(165);
+                }
+
+                @include sp {
+                  width: 200px;
+                  left: 70px;
+                  top: 138px;
+                }
+
+              }
+
+              &:nth-child(9) {
+
+                @include pc {
+                  width: p(200);
+                  left: p(300);
+                  top: p(210);
+                }
+
+                @include sp {
+                  width: 200px;
+                  left: 70px;
+                  top: 179px;
+                }
+              }
+
+              &:nth-child(10) {
+
+                @include pc {
+                  width: p(200);
+                  right: p(320);
+                  bottom: p(80);
+                }
+
+                @include sp {
+                  width: 200px;
+                  right: 301px;
+                  bottom: 111px;
+                }
+
+              }
+              &:nth-child(11) {
+
+                @include pc {
+                  width: p(200);
+                  right: p(80);
+                  bottom: p(70);
+                }
+
+                @include sp {
+                  width: 200px;
+                  right: 62px;
+                  bottom: 100px;
+                }
+
+              }
+
+
             }
           }
         }
