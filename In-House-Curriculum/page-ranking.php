@@ -1,4 +1,11 @@
 <?php
+
+// 共通関数でメタデータを取得しデフォルト値を設定
+function get_meta_with_default($user_id, $meta_key, $default = 0) {
+    $value = get_user_meta($user_id, $meta_key, true);
+    return $value ? $value : $default;
+}
+
 // 現在のユーザー情報を取得
 $current_user = wp_get_current_user();
 
@@ -137,8 +144,13 @@ foreach ($point_users as $index => $user) {
 }
 
 // 全ユーザーのコイン数の順位を取得
+$current_user_coin_rank = 0; // 初期値
 $users = get_users_by_coins();
+
 foreach ($users as $index => $user) {
+    $user_coins = get_user_meta($user->ID, 'user_coins', true);
+    $user_coins = $user_coins ? $user_coins : 0; // デフォルト値を設定
+
     if ($user->ID == $current_user->ID) {
         $current_user_coin_rank = $index + 1; // 順位は0から始まるため+1
         break;
@@ -146,10 +158,13 @@ foreach ($users as $index => $user) {
 }
 
 // 現在のユーザーの質問数ランキング順位を計算
-$current_user_question_rank = 0;
+$current_user_question_rank = 0; // 初期値
 $question_users = get_users_by_question_comment_count();
 
 foreach ($question_users as $index => $user) {
+    $question_comment_count = get_user_meta($user->ID, '_question_comment_count', true);
+    $question_comment_count = $question_comment_count ? (int)$question_comment_count : 0; // デフォルト値を設定
+
     if ($user->ID == $current_user->ID) {
         $current_user_question_rank = $index + 1; // 順位は0から始まるため+1
         break;
@@ -180,7 +195,11 @@ get_header();
             <div class="stump-front"></div>
             <div class="ranking-header">
                 <p class="TL">学んであつめて！ポイントランキング！</p>
+                <div class="rank--menu-btn">
+                    <?php get_template_part('inc/menu-btn'); ?>
+                </div>
             </div>
+
             <div class="inner">
                 <div class="main">
                     <!-- ポイント数情報 -->

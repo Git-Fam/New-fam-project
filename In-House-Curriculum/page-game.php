@@ -9,7 +9,11 @@ get_header();
 
 <div class="game-main">
 
+
     <div class="game-wrap">
+    <div class="game--menu-btn">
+        <?php get_template_part('inc/menu-btn'); ?>
+    </div>
         <div class="inner">
             <div class="game-container game-top">
                 <div class="TL-box">

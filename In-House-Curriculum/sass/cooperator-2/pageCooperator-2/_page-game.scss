@@ -24,10 +24,11 @@
   display: flex;
   align-items: center;
 
-
   @include pc {
     overflow-x: auto;
   }
+
+
 
   .game-wrap {
     position: relative;
@@ -44,6 +45,82 @@
       @include iconContain($game-wrap-bg-sp);
       width: min(90%, 378px);
       aspect-ratio: 378 / 681;
+    }
+
+    .game--menu-btn {
+      position: fixed;
+      z-index: 99;
+
+      @include pc {
+        top: p(10);
+        right: p(20);
+      }
+
+      @include sp {
+        top: 10px;
+        right: 20px;
+      }
+
+      .C_all-menu-btn {
+        @include pc {
+          border-radius: pm(13.257);
+          padding: pm(8) pm(18) pm(11) pm(8);
+          border-width: pm(3.314);
+        }
+
+        @include sp {
+          border-radius: 13.257px;
+          padding: 3px 5px 4px 5px;
+          border-width: 2px;
+        }
+
+
+        &__inner {
+          display: flex;
+
+          @include pc {
+            gap: pm(5);
+          }
+
+          @include sp {
+            gap: 3px;
+          }
+
+          &__img {
+
+            @include pc {
+              width: pm(80);
+              height: pm(50);
+            }
+
+            @include sp {
+              width: 35px;
+              height: 32px;
+            }
+          }
+
+          &__text {
+
+            .TX {
+              line-height: 1.5;
+
+              @include pc {
+                font-size: pm(34);
+                letter-spacing: pm(2.651);
+              }
+
+              @include sp {
+                font-size: 16px;
+                letter-spacing: 2px;
+              }
+            }
+          }
+        }
+
+        &:hover {
+          transform: translate(3.314px, 3.314px);
+        }
+      }
     }
 
     .inner {

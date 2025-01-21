@@ -74,7 +74,7 @@ if (!empty($categories) && isset($categories[0]->name)) {
                             <img class="archive--item--img" src="<?php echo get_template_directory_uri(); ?>/img/<?php echo $image_file_name ?>" alt="">
                         </a>
                         <div class="archive--item--title">
-                            <p class="TX"><?php echo esc_html($category->name); ?></p>
+                            <!-- <p class="TX"><?php echo esc_html($category->name); ?></p> -->
                         </div>
                     </div>
                 <?php endforeach; ?>
