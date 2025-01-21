@@ -4,12 +4,6 @@ if (!is_user_logged_in()) {
     exit;
 }
 
-// 前のURLが /login だった場合、/my にリダイレクト
-if (isset($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], '/login') !== false) {
-    wp_redirect(home_url('/my'));
-    exit;
-}
-
 get_header(); 
 
 // 現在のユーザー情報を取得

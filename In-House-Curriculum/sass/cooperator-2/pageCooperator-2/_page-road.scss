@@ -1028,16 +1028,16 @@
                       width: p(84);
                       height: p(38);
                       line-height: p(38);
-                      padding: p(8)0 0 p(10);
-                      font-size: p(11);
+                      padding: p(5)0 0 p(10);
+                      font-size: p(13);
                     }
 
                     @include sp {
                       width: 84px;
                       height: 38px;
                       line-height: 38px;
-                      padding: 8px 0 0 10px;
-                      font-size: 11px;
+                      padding: 5px 0 0 10px;
+                      font-size: 13px;
                     }
                   }
                 }
@@ -1048,7 +1048,7 @@
                 position: absolute;
                 bottom: 0;
                 translate: -50% 0;
-                z-index: 21;
+                z-index: 20;
                 pointer-events: none;
 
                 .character {
@@ -1843,19 +1843,19 @@
               &:nth-child(2) {
                 @include pc {
                   width: p(250);
-                  right: p(513);
-                  bottom: p(-3);
+                  right: p(665);
+                  bottom: p(14);
                 }
 
                 @include sp {
                   width: 250px;
-                  right: 513px;
-                  bottom: -3px;
+                  right: 665px;
+                  bottom: 14px;
                 }
               }
 
               &:nth-child(3) {
-                rotate: -140deg;
+                // rotate: -140deg;
 
                 @include pc {
                   width: p(300);
@@ -1869,46 +1869,46 @@
                   bottom: 178px;
                 }
 
-                .goal-wrap,
-                .character-box {
-                  rotate: 140deg;
-                }
+                // .goal-wrap,
+                // .character-box {
+                //   rotate: 140deg;
+                // }
 
-                .goal-wrap {
-                  @include pc {
-                    top: p(-44);
-                  }
+                // .goal-wrap {
+                //   @include pc {
+                //     top: p(-44);
+                //   }
 
-                  @include sp {
-                    top: 5px;
-                  }
+                //   @include sp {
+                //     top: -46px;
+                //   }
 
-                  .goal-bg {
-                    opacity: 0;
-                  }
+                //   .goal-bg {
+                //     opacity: 0;
+                //   }
 
-                  .title-board {
-                    transform: scale(-1, 1);
+                  // .title-board {
+                  //   transform: scale(-1, 1);
 
-                    @include pc {
-                      top: p(-90);
-                    }
+                  //   @include pc {
+                  //     top: p(-90);
+                  //   }
 
-                    @include sp {
-                      top: -90px;
-                    }
+                  //   @include sp {
+                  //     top: -90px;
+                  //   }
 
-                    .board-TX {
-                      transform: scale(-1, 1);
-                    }
-                  }
-                }
+                  //   .board-TX {
+                  //     transform: scale(-1, 1);
+                  //   }
+                  // }
+                // }
 
-                .character-box {
-                  @include pc {
-                    top: p(-52);
-                  }
-                }
+                // .character-box {
+                //   @include pc {
+                //     top: p(-52);
+                //   }
+                // }
 
               }
 
@@ -1925,7 +1925,7 @@
                 @include sp {
                   width: 250px;
                   left: 15px;
-                  bottom: 208px;
+                  bottom: 178px;
                 }
 
                 .goal-wrap,
@@ -1945,7 +1945,7 @@
                 @include sp {
                   width: 400px;
                   right: 34px;
-                  bottom: 110px;
+                  bottom: 68px;
                 }
               }
             }
@@ -2574,7 +2574,7 @@
 
     .road-chat {
       position: absolute;
-      z-index: 30;
+      z-index: 20;
       height: fit-content;
 
       @include pc {
@@ -2665,7 +2665,7 @@
 
         .C_reaction {
           background: $B-F69064;
-          z-index: 30;
+
           @include pc {
             width: p(165);
             border-radius: 0 p(15) p(15) 0;
