@@ -159,102 +159,91 @@
     }
 
     .archive--contents--tab {
-      z-index: 20;
+      z-index: 30;
       position: absolute;
-      width: 85%;
       left: 50%;
       translate: -50% 0;
 
       @include pc {
-        top: p(73);
+        top: 0;
+        padding: p(60) 0 0 p(30);
       }
 
       @include sp {
-        top: s(35);
-        width: 80%;
-        gap: s(15);
+        top: 0;
+        gap: s(10);
+        padding: s(25) 0 0 s(15);
       }
 
       .archive--item {
+        @include imgCover("icon-bg.png");
+        position: relative;
+
+        @include pc {
+          width: p(83);
+          height: p(126);
+          top: p(-35);
+        }
+
+        @include sp {
+          min-width: s(65);
+          height: s(105);
+          top: s(-20);
+        }
 
         &--img {
-          margin: 0 auto;
+          position: relative;
+          left: 50%;
+          top: 65%;
+          transform: translate(-50%, -50%);
 
           @include pc {
-            width: p(67);
-            height: p(67);
+            width: p(60);
+            height: p(60);
           }
 
           @include sp {
-            width: s(30);
-            height: s(30);
+            width: s(50);
+            height: s(50);
           }
+
         }
 
         &--title {
           text-align: center;
+
+          .TX {
+            display: none;
+
+          }
+        }
+
+        &:hover {
+          transition: all 0.3s;
+
+          @include pc {
+            top: p(-43);
+          }
+
+          @include sp {
+            top: s(-25);
+          }
+        }
+
+        &.active {
+          transition: all 0.3s;
+
+          @include pc {
+            top: p(-10);
+          }
+
+          @include sp {
+            top: s(-5);
+          }
         }
       }
     }
 
-    .arrow {
-      position: relative;
-
-      @include pc {
-        top: p(105);
-      }
-
-      @include sp {
-        top: s(55);
-      }
-
-      &::before,
-      &::after {
-        content: "";
-        position: absolute;
-        background: $P-F69082;
-        z-index: 30;
-
-        @include pc {
-          width: p(32);
-          height: p(8);
-          border-radius: p(10);
-          right: p(40);
-        }
-
-        @include sp {
-          width: s(20);
-          height: s(4);
-          border-radius: s(10);
-          right: s(10);
-        }
-      }
-
-      &::before {
-        rotate: 40deg;
-
-        @include pc {
-          top: p(-8);
-        }
-
-        @include sp {
-          top: s(-5);
-        }
-      }
-
-      &::after {
-        rotate: -40deg;
-
-        @include pc {
-          top: p(8);
-        }
-
-        @include sp {
-          top: s(5);
-        }
-      }
-
-    }
 
     .archive--contents--items--wap {
       display: none;
@@ -263,7 +252,7 @@
         overflow-x: scroll;
         width: 115%;
         position: absolute;
-        bottom: 0;
+        bottom: -42px;
         left: 0;
       }
 
@@ -274,17 +263,21 @@
       .road-header {
         @include iconCover($green-header);
         position: absolute;
-        z-index: 20;
+        z-index: 30;
         width: 100%;
         top: 0;
+        display: flex;
+        align-items: center;
 
         @include pc {
           height: p(60);
+          padding-inline: p(34);
         }
 
         @include sp {
           height: s(32);
           position: fixed;
+          padding-inline: s(10);
         }
 
         .TL {
@@ -293,18 +286,221 @@
 
           @include pc {
             font-size: p(23);
-            padding: p(15) 0 0 p(34);
           }
 
           @include sp {
             font-size: s(14);
-            padding: s(7) 0 0 s(10);
+          }
+        }
+
+        .btn-box {
+          display: flex;
+          margin-left: auto;
+
+          @include pc {
+            gap: p(17);
+          }
+
+          @include sp {
+            gap: s(8);
+          }
+
+          .list-btn {
+            background: linear-gradient(180deg, #D9D5BB 0%, #B99E76 100%);
+            box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25);
+            color: $F-FFFFFF;
+            position: relative;
+            cursor: pointer;
+            @include wt600;
+
+            @include pc {
+              width: p(170);
+              height: p(35);
+              border-radius: p(4);
+              border: p(1) solid $F-FFFFFF;
+              line-height: p(35);
+              padding-left: p(13);
+            }
+
+            @include sp {
+              width: s(100);
+              height: s(20);
+              border-radius: s(3);
+              border: s(1) solid #FFF;
+              line-height: s(18);
+              padding-left: s(5);
+            }
+
+            &::before {
+              content: "〉";
+              position: absolute;
+              top: 65%;
+              transform: translateY(-50%) rotate(90deg);
+
+              @include pc {
+                font-size: p(16);
+                right: p(10);
+              }
+
+              @include sp {
+                font-size: s(11);
+                right: s(2);
+              }
+            }
+
+            &::after {
+              content: "道のり投稿一覧";
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+
+              @include pc {
+                letter-spacing: p(0.8);
+                font-size: p(16);
+              }
+
+              @include sp {
+                font-size: s(10);
+                letter-spacing: s(0.8);
+              }
+            }
+
+            &.active {
+              &::after {
+                content: "一覧を閉じる";
+              }
+            }
           }
         }
 
       }
 
+      .post-list {
+        background-color: $B-C9EBD9;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: -100%;
+        left: 0;
+        z-index: 25;
+        transition: all 0.3s;
+        overflow-y: scroll;
 
+        &-inner {
+          @include pc {
+            padding: p(208) p(44) p(100);
+          }
+
+          @include sp {
+            padding: s(130) s(20) s(50);
+          }
+
+          ul {
+            display: flex;
+
+            @include pc {
+              flex-wrap: wrap;
+              gap: p(15) p(20);
+            }
+
+            @include sp {
+              flex-direction: column;
+              gap: s(15);
+            }
+
+            li {
+              background: $B-FFFFFF;
+              position: relative;
+
+              @include pc {
+                width: p(586);
+                padding: p(9) p(11);
+                border-radius: p(3);
+              }
+
+              @include sp {
+                padding: s(6) s(8);
+                border-radius: s(2);
+              }
+
+              .post-link {
+                display: flex;
+                align-items: center;
+                position: relative;
+                z-index: 1;
+
+                .items--img {
+                  background-color: $B-FFFFFF;
+
+                  img {
+                    @include pc {
+                      width: p(170);
+                      height: p(97);
+                      border-radius: p(3);
+                    }
+
+                    @include sp {
+                      width: s(90);
+                      height: s(51);
+                      border-radius: s(2);
+                    }
+                  }
+                }
+
+                .items--title {
+                  width: 100%;
+                  background-color: $B-FFFFFF;
+                  display: grid;
+                  place-items: center center;
+
+                  @include pc {
+                    height: p(97);
+                  }
+
+                  @include sp {
+                    height: s(51);
+                  }
+
+                  .TL {
+                    color: $F-646464;
+
+                    @include pc {
+                      font-size: p(16);
+                    }
+
+                    @include sp {
+                      font-size: s(12);
+                    }
+                  }
+                }
+              }
+
+              &::before {
+                content: "";
+                background: linear-gradient(93deg, #5BAD83 1.53%, #ACDEC3 63.13%);
+                transition: all 0.3s;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                opacity: 0;
+              }
+
+              &:hover {
+                &::before {
+                  opacity: 1;
+                }
+              }
+            }
+          }
+        }
+
+        &.active {
+          top: 0;
+          transition: all 0.3s;
+        }
+      }
 
       .page-section {
         z-index: 5;
@@ -339,8 +535,8 @@
             position: absolute;
             width: 983px;
             height: 360px;
-            margin-left: 210px;
             bottom: 16%;
+            margin-left: 210px;
           }
 
 
@@ -408,132 +604,132 @@
 
                 }
 
-                &--tab {
-                  display: flex;
-                  overflow-x: scroll;
-                  position: relative;
-                  margin: 0 auto;
+                // &--tab {
+                //   display: flex;
+                //   overflow-x: scroll;
+                //   position: relative;
+                //   margin: 0 auto;
 
-                  @include pc {
-                    // padding: 0 0 p(60);
-                    width: 90%;
-                    gap: p(35);
-                  }
+                //   @include pc {
+                //     // padding: 0 0 p(60);
+                //     width: 90%;
+                //     gap: p(35);
+                //   }
 
-                  @include sp {
-                    width: 95%;
-                    gap: s(20);
-                  }
+                //   @include sp {
+                //     width: 95%;
+                //     gap: s(20);
+                //   }
 
 
-                  .archive--item {
-                    cursor: pointer;
-                    flex-shrink: 0;
+                //   .archive--item {
+                //     cursor: pointer;
+                //     flex-shrink: 0;
 
-                    @include pc {
-                      width: p(76);
-                    }
+                //     @include pc {
+                //       width: p(76);
+                //     }
 
-                    @include sp {
-                      width: s(50);
-                    }
+                //     @include sp {
+                //       width: s(50);
+                //     }
 
-                    &.active {
-                      cursor: default;
+                //     &.active {
+                //       cursor: default;
 
-                      .archive--item--img {
-                        border: solid $P-F38549;
+                //       .archive--item--img {
+                //         border: solid $P-F38549;
 
-                        @include pc {
-                          border-width: p(5);
-                        }
+                //         @include pc {
+                //           border-width: p(5);
+                //         }
 
-                        @include sp {
-                          border-width: s(2);
-                        }
-                      }
+                //         @include sp {
+                //           border-width: s(2);
+                //         }
+                //       }
 
-                      .archive--item--title {
-                        background-color: $P-F38549;
+                //       .archive--item--title {
+                //         background-color: $P-F38549;
 
-                        .TX {
-                          color: $F-FFFFFF;
-                        }
-                      }
-                    }
+                //         .TX {
+                //           color: $F-FFFFFF;
+                //         }
+                //       }
+                //     }
 
-                    &:hover {
-                      .archive--item--img {
-                        border: solid $P-f3844992;
+                //     &:hover {
+                //       .archive--item--img {
+                //         border: solid $P-f3844992;
 
-                        @include pc {
-                          border-width: p(5);
-                        }
+                //         @include pc {
+                //           border-width: p(5);
+                //         }
 
-                        @include sp {
-                          border-width: s(2);
-                        }
-                      }
+                //         @include sp {
+                //           border-width: s(2);
+                //         }
+                //       }
 
-                      .archive--item--title {
-                        background-color: $P-f3844992;
+                //       .archive--item--title {
+                //         background-color: $P-f3844992;
 
-                        .TX {
-                          color: $F-FFFFFF;
-                        }
-                      }
-                    }
+                //         .TX {
+                //           color: $F-FFFFFF;
+                //         }
+                //       }
+                //     }
 
-                    &--img {
-                      border-radius: 50%;
-                      object-fit: cover;
-                      object-position: center;
-                      transition: all 0.3s;
+                //     &--img {
+                //       border-radius: 50%;
+                //       object-fit: cover;
+                //       object-position: center;
+                //       transition: all 0.3s;
 
-                      @include pc {
-                        width: p(76);
-                        height: p(76);
-                      }
+                //       @include pc {
+                //         width: p(76);
+                //         height: p(76);
+                //       }
 
-                      @include sp {
-                        width: s(50);
-                        height: s(50);
-                      }
-                    }
+                //       @include sp {
+                //         width: s(50);
+                //         height: s(50);
+                //       }
+                //     }
 
-                    &--title {
-                      text-align: center;
-                      border-radius: 50px;
-                      transition: all 0.3s;
-                      width: 100%;
-                      font-size: 100%;
+                //     &--title {
+                //       text-align: center;
+                //       border-radius: 50px;
+                //       transition: all 0.3s;
+                //       width: 100%;
+                //       font-size: 100%;
 
-                      @include pc {
-                        padding: p(10) 0;
-                      }
+                //       @include pc {
+                //         padding: p(10) 0;
+                //       }
 
-                      @include sp {
-                        padding: s(3) 0;
-                      }
+                //       @include sp {
+                //         padding: s(3) 0;
+                //       }
 
-                      .TX {
-                        @include wt800;
-                        color: #6B644D;
-                        transition: all 0.3s;
-                        overflow-wrap: break-word;
-                        word-wrap: break-word;
+                //       .TX {
+                //         @include wt800;
+                //         color: #6B644D;
+                //         transition: all 0.3s;
+                //         overflow-wrap: break-word;
+                //         word-wrap: break-word;
 
-                        @include pc {
-                          font-size: p(14);
-                        }
+                //         @include pc {
+                //           font-size: p(14);
+                //         }
 
-                        @include sp {
-                          font-size: s(14);
-                        }
-                      }
-                    }
-                  }
-                }
+                //         @include sp {
+                //           font-size: s(14);
+                //         }
+                //       }
+                //     }
+                //   }
+                // }
 
 
                 &--items {
@@ -866,7 +1062,6 @@
                     }
                   }
 
-                  .character {}
                 }
               }
             }
@@ -916,6 +1111,17 @@
 
         &.page1 {
           @include imgContain("road-bg.png");
+
+          @include pc {
+            margin-bottom: p(-40);
+          }
+
+
+          .road-inner {
+            @include sp {
+              margin-bottom: -30px;
+            }
+          }
 
           .content {
             .tree {
@@ -973,7 +1179,17 @@
         &.page4 {
           @include imgContain("bg-b.png");
 
+          @include pc {
+            margin-bottom: p(-40);
+          }
+
+
+
           .road-inner {
+            @include sp {
+              margin-bottom: -30px;
+            }
+
             .content {
               .tree {
                 @include imgContain("page2-tree.png");
@@ -1019,6 +1235,12 @@
         &.page5 {
           @include imgContain("bg-c.png");
 
+          @include pc {
+            margin-bottom: p(-40);
+          }
+
+
+
           .load {
             @include imgContain("load-c.png");
             position: absolute;
@@ -1039,6 +1261,7 @@
           }
 
           .road-inner {
+
             .content {
               .tree {
                 position: absolute;
@@ -2067,7 +2290,7 @@
                 rotate: 212deg;
 
                 @include pc {
-                  left: p(272);
+                  left: p(240);
                   bottom: p(10);
                 }
 
@@ -2194,11 +2417,13 @@
                   right: 380px;
                   bottom: 84px;
                 }
-                .title-board{
-                  @include pc{
+
+                .title-board {
+                  @include pc {
                     left: p(-50);
                   }
-                  @include sp{
+
+                  @include sp {
                     left: -50px;
                   }
                 }

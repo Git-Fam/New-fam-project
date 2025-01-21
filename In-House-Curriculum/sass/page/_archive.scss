@@ -150,8 +150,8 @@
 
       @include pc {
         // padding: 0 0 p(60);
-        width: 90%;
-        gap: p(35);
+        width: 100%;
+        gap: p(20);
       }
 
       @include sp {
