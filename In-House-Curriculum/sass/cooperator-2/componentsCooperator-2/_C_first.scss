@@ -12,10 +12,10 @@
   margin: 0 auto;
 
   @include pc {
-    width: p(440);
-    height: p(47);
-    padding-left: p(23);
-    gap: p(7);
+    width: pmi(440);
+    height: pmi(47);
+    padding-left: pmi(23);
+    gap: pmi(7);
   }
   @include sp{
     width: 95%;
@@ -30,10 +30,10 @@
     place-items: center;
 
     @include pc {
-      width: p(31);
-      height: p(29);
-      border-radius: p(4);
-      font-size: p(17);
+      width: pmi(31);
+      height: pmi(29);
+      border-radius: pmi(4);
+      font-size: pmi(17);
     }
     @include sp{
       width: s(22);
@@ -48,9 +48,9 @@
     text-shadow: 0 0 0.5px;
 
     @include pc {
-      font-size: p(19);
-      letter-spacing: p(0.57);
-      line-height: p(47);
+      font-size: pmi(19);
+      letter-spacing: pmi(0.57);
+      line-height: pmi(47);
     }
     @include sp{
       font-size: s(16);
