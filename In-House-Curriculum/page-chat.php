@@ -12,6 +12,9 @@ get_header();
         <div class="chat">
             <div class="header">
                 <p class="TL">カリキュラム＞　アクションページ</p>
+                <div class="chat--menu-btn">
+                    <?php get_template_part('inc/menu-btn'); ?>
+                </div>
             </div>
             <div class="chat-content">
                 <div class="timeline-modal">

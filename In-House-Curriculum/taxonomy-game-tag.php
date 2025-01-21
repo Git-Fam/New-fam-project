@@ -9,6 +9,10 @@ get_header();
 
 <div class="game-main">
     <div class="game-wrap">
+        <div class="game--menu-btn">
+            <?php get_template_part('inc/menu-btn'); ?>
+        </div>
+
         <div class="inner">
             <div class="game-container level-select game-tag">
                 <!-- カテゴリー選択リンクを表示 -->

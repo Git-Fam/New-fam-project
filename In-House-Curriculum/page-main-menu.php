@@ -91,7 +91,7 @@ get_header();
             <div class="menu__item__minigame__strap"></div>
         </a>
         <!-- ヘルプ -->
-        <a class="menu__item__help" href="<?php echo home_url('/help'); ?>">
+        <a class="menu__item__help" href="<?php echo home_url('/first'); ?>">
             <div class="menu__item__help__inner">
                 <div class="menu__item__help__text">
                     <p class="TX" data-text="？">？</p>

@@ -311,6 +311,7 @@
             color: $F-FFFFFF;
             position: relative;
             cursor: pointer;
+            transition: all 0.3s ease-in-out;
             @include wt600;
 
             @include pc {
@@ -370,9 +371,87 @@
                 content: "一覧を閉じる";
               }
             }
+            &:hover{
+              transition: all 0.3s ease-in-out;
+              box-shadow: unset;
+              transform: translate(2px, 2px);
+            }
+          }
+
+          .road-menu-btn {
+            .C_all-menu-btn {
+              @include pc {
+                border-radius: p(4);
+                padding: p(4) p(8) p(5) p(4);
+                border-width: p(1);
+              }
+
+              @include sp {
+                border-radius: 4px;
+                padding: 4px 8px 5px 4px;
+                border-width: 1px;
+              }
+
+              &__inner {
+                display: flex;
+                align-items: flex-end;
+                @include pc {
+                  gap: p(3);
+                }
+
+                @include sp {
+                  gap: 3px;
+                }
+
+                &__img {
+                  @include iconContain($all-menu-character);
+                  transition: background-image 0.3s ease-in-out;
+
+                  @include pc {
+                    width: p(33);
+                    height: p(25);
+                  }
+
+                  @include sp {
+                    width: 33px;
+                    height: 25px;
+                  }
+                }
+
+                &__text {
+
+                  .TX {
+                    color: #FFF;
+                    @include wt600;
+                    line-height: 1.5;
+
+                    @include pc {
+                      font-size: p(16);
+                      letter-spacing: p(0.8);
+                    }
+
+                    @include sp {
+                      font-size: 16px;
+                      letter-spacing: 0.8px;
+                    }
+                  }
+                }
+              }
+
+              &:hover {
+                box-shadow: unset;
+                transform: translate(2px, 2px);
+
+                .C_all-menu-btn__inner {
+
+                  &__img {
+                    @include iconContain($all-menu-character-ver2);
+                  }
+                }
+              }
+            }
           }
         }
-
       }
 
       .post-list {

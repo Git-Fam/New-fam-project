@@ -216,7 +216,9 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
             <p class="TL">カリキュラム選択　〉<?php echo esc_html($category->name); ?></p>
             <div class="btn-box">
                 <div class="list-btn"></div>
-                <div class="menu">MENU</div>
+                <div class="road-menu-btn">
+                    <?php get_template_part('inc/menu-btn'); ?>
+                </div>
             </div>
     </div>
 

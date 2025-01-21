@@ -163,7 +163,8 @@
 
     @include sp {
       place-items: center center;
-      height: clamp(40px, calc(50 / 390 * 100vw), 50px);
+      height: clamp(50px, calc(60 / 390 * 100vw), 60px);
+
     }
 
     .TL {
@@ -177,6 +178,88 @@
       @include sp {
         font-size: clamp(16px, calc((18 / 390) * 100vw), 18px);
         margin-top: s(-3);
+      }
+    }
+
+    .rank--menu-btn {
+      position: absolute;
+
+      @include pc {
+        top: p(8);
+        right: p(15);
+      }
+      @include sp{
+        top:clamp(1px, calc((3 / 390) * 100vw), 5px);
+        right: clamp(2px, calc((5 / 390) * 100vw), 8px);
+      }
+
+      .C_all-menu-btn {
+        box-shadow: 0px 3.314px 6.629px 0px rgba(0, 0, 0, 0.25);
+
+        @include pc {
+          border-radius: p(13.257);
+          padding: p(5) p(10) p(6) p(7);
+          border-width: p(2);
+        }
+
+        @include sp {
+          border-radius: clamp(12px, calc((15 / 390) * 100vw), 118px);;
+          padding: clamp(1px, calc((3 / 390) * 100vw), 5px) clamp(2px, calc((5 / 390) * 100vw), 8px) clamp(2px, calc((4 / 390) * 100vw), 6px) clamp(2px, calc((5 / 390) * 100vw), 8px);;
+          border-width: s(2);
+        }
+
+        &__inner {
+
+          @include pc {
+            gap: p(5);
+          }
+
+          @include sp {
+            gap: clamp(1px, calc((3 / 390) * 100vw), 5px);;
+          }
+
+          &__img {
+
+            @include pc {
+              width: p(50);
+              height: p(40);
+            }
+
+            @include sp {
+              width: clamp(30px, calc((35 / 390) * 100vw), 40px);;
+              height: clamp(20px, calc((25 / 390) * 100vw), 30px);
+            }
+          }
+
+          &__text {
+
+            .TX {
+              line-height: 1.5;
+
+              @include pc {
+                font-size: p(24);
+                letter-spacing: p(1);
+              }
+
+              @include sp {
+                font-size: clamp(12px, calc((15 / 390) * 100vw), 18px);
+              }
+            }
+          }
+        }
+
+        &:hover {
+          transform: translate(3.314px, 3.314px);
+          @include sp{
+            transform: translate(2px, 2px);
+          }
+          .C_all-menu-btn__inner {
+
+            &__img {
+              @include iconContain($all-menu-character-ver2);
+            }
+          }
+        }
       }
     }
   }
@@ -331,23 +414,29 @@
               font-size: clamp(16px, calc((18 / 390) * 100vw), 20px);
               margin-left: clamp(9px, calc((9 / 390) * 100vw), 15px);
             }
-            span{
+
+            span {
               font-weight: 900;
-              @include pc{
+
+              @include pc {
                 font-size: p(20);
               }
-              @include sp{
-                font-size:clamp(7px, calc(12 / 390 * 100vw), 16px);
+
+              @include sp {
+                font-size: clamp(7px, calc(12 / 390 * 100vw), 16px);
               }
             }
           }
         }
-        &.rank-1{
+
+        &.rank-1 {
           background: linear-gradient(105deg, #FFECAB 4.94%, #CFBC7A 30.71%, #FFECAB 49.25%, #9E8B48 72.31%, #BBA865 94.92%);
         }
+
         &.rank-2 {
           background: linear-gradient(105deg, #E5E1E1 4.94%, #C1C0C0 30.71%, #D9D7D7 49.25%, #7F7D7D 72.31%, #ADADAD 94.92%);
         }
+
         &.rank-3 {
           background: linear-gradient(105deg, #CB9C65 4.94%, #AA8355 30.71%, #CB9C65 49.25%, #86653E 72.31%, #A78153 94.92%);
         }
@@ -386,7 +475,7 @@
             width: clamp(180px, calc(203 / 390 * 100vw), 250px);
             height: clamp(30px, calc(43 / 390 * 100vw), 50px);
             margin: 0 auto; // 元の記述を使用
-            top: clamp( -20px, calc(-16 / 390 * 100vw), -10px);
+            top: clamp(-20px, calc(-16 / 390 * 100vw), -10px);
             padding-top: clamp(5px, calc(5 / 390 * 100vw), 10px);
           }
 
@@ -569,15 +658,18 @@
                           font-size: clamp(8px, calc(10 / 390 * 100vw), 12px);
                           margin-left: clamp(2px, calc(3 / 390 * 100vw), 5px);
                         }
-                        span{
+
+                        span {
                           @include wt900;
-                          @include pc{
+
+                          @include pc {
                             font-size: p(16);
                           }
-                          @include sp{
+
+                          @include sp {
                             font-size: clamp(7px, calc(9 / 390 * 100vw), 9px);
                           }
-                        }  
+                        }
 
                       }
                     }
@@ -642,7 +734,7 @@
                     }
                   }
 
-                  &.first {
+                  &.r-first {
                     .img {
                       background: linear-gradient(147deg, #FFECAB 21.97%, #96833F 44.46%, #FFECAB 67.64%, #96833F 90.13%);
 
@@ -877,15 +969,18 @@
                   font-size: clamp(8px, calc(10 / 390 * 100vw), 12px);
                   margin-left: clamp(2px, calc(3 / 390 * 100vw), 5px);
                 }
-                span{
+
+                span {
                   @include wt900;
-                  @include pc{
+
+                  @include pc {
                     font-size: p(16);
                   }
-                  @include sp{
+
+                  @include sp {
                     font-size: clamp(7px, calc(9 / 390 * 100vw), 9px);
                   }
-                }  
+                }
               }
             }
 
@@ -921,7 +1016,8 @@
           right: p(40);
           bottom: p(15);
         }
-        @include sp{
+
+        @include sp {
           right: scl(-15); // 元の記述を使用
           bottom: calc(10 / 390 * 100vw); // 元の記述を使用
         }
@@ -986,7 +1082,8 @@
             height: p(68);
             padding-top: p(20);
           }
-          @include sp{
+
+          @include sp {
             width: clamp(48px, calc(65 / 390 * 100vw), 70px);
             height: clamp(24px, calc(30 / 390 * 100vw), 35px);
             padding-top: clamp(6px, calc(8 / 390 * 100vw), 10px);
@@ -1002,7 +1099,8 @@
               font-size: p(14);
               letter-spacing: p(0.6);
             }
-            @include sp{
+
+            @include sp {
               font-size: clamp(5px, calc(6 / 390 * 100vw), 7px);
               letter-spacing: clamp(0.3px, calc(0.4 / 390 * 100vw), 0.6px);
             }
@@ -1018,7 +1116,8 @@
             @include pc {
               top: p(-140);
             }
-            @include sp{
+
+            @include sp {
               top: -70px;
             }
           }
@@ -1027,7 +1126,8 @@
             @include pc {
               top: p(-70);
             }
-            @include sp{
+
+            @include sp {
               top: -35px;
             }
           }

@@ -15,7 +15,7 @@
   }
   @include sp{
     @include height;
-    padding: 46px 0 25px;
+    padding: 80px 0 25px;
   }
 
   .question-main {
@@ -39,6 +39,94 @@
       padding: 40px s(20);
       box-shadow: inset 0px 0px s(10) 0px rgba(0, 0, 0, 0.25);
     }
+    .question--menu-btn {
+      position: absolute;
+
+      @include pc {
+        top: p(8);
+        right: p(15);
+      }
+      @include sp{
+        top:-60px;
+        right: smi(-30);
+      }
+      // @media screen and (min-width: 480px) and (max-width: 767px) {
+      //   top: -60px;
+      // }
+      @media screen and (max-width: 370px) {
+        right: s(0);
+      }
+
+      .C_all-menu-btn {
+        box-shadow: 0px 3.314px 6.629px 0px rgba(0, 0, 0, 0.25);
+
+        @include pc {
+          border-radius: p(13.257);
+          padding: p(5) p(10) p(6) p(7);
+          border-width: p(2);
+        }
+
+        @include sp {
+          border-radius: clamp(12px, calc((15 / 390) * 100vw), 118px);;
+          padding: clamp(1px, calc((3 / 390) * 100vw), 5px) clamp(2px, calc((5 / 390) * 100vw), 8px) clamp(2px, calc((4 / 390) * 100vw), 6px) clamp(2px, calc((5 / 390) * 100vw), 8px);;
+          border-width: s(2);
+        }
+
+        &__inner {
+
+          @include pc {
+            gap: p(5);
+          }
+
+          @include sp {
+            gap: clamp(1px, calc((3 / 390) * 100vw), 5px);;
+          }
+
+          &__img {
+
+            @include pc {
+              width: p(50);
+              height: p(40);
+            }
+
+            @include sp {
+              width: clamp(30px, calc((35 / 390) * 100vw), 40px);;
+              height: clamp(20px, calc((25 / 390) * 100vw), 30px);
+            }
+          }
+
+          &__text {
+
+            .TX {
+              line-height: 1.5;
+
+              @include pc {
+                font-size: p(24);
+                letter-spacing: p(1);
+              }
+
+              @include sp {
+                font-size: clamp(12px, calc((15 / 390) * 100vw), 18px);
+              }
+            }
+          }
+        }
+
+        &:hover {
+          transform: translate(3.314px, 3.314px);
+          @include sp{
+            transform: translate(2px, 2px);
+          }
+          .C_all-menu-btn__inner {
+
+            &__img {
+              @include iconContain($all-menu-character-ver2);
+            }
+          }
+        }
+      }
+    }
+
 
     &-TL {
       @include iconContain($question-ribbon);
