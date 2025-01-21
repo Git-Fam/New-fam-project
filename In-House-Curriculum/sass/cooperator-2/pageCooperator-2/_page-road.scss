@@ -1028,16 +1028,16 @@
                       width: p(84);
                       height: p(38);
                       line-height: p(38);
-                      padding: p(5)0 0 p(10);
-                      font-size: p(13);
+                      padding: p(8)0 0 p(10);
+                      font-size: p(11);
                     }
 
                     @include sp {
                       width: 84px;
                       height: 38px;
                       line-height: 38px;
-                      padding: 5px 0 0 10px;
-                      font-size: 13px;
+                      padding: 8px 0 0 10px;
+                      font-size: 11px;
                     }
                   }
                 }
@@ -1048,7 +1048,7 @@
                 position: absolute;
                 bottom: 0;
                 translate: -50% 0;
-                z-index: 20;
+                z-index: 21;
                 pointer-events: none;
 
                 .character {
@@ -1880,7 +1880,7 @@
                   }
 
                   @include sp {
-                    top: -46px;
+                    top: 5px;
                   }
 
                   .goal-bg {
@@ -1925,7 +1925,7 @@
                 @include sp {
                   width: 250px;
                   left: 15px;
-                  bottom: 178px;
+                  bottom: 208px;
                 }
 
                 .goal-wrap,
@@ -1945,7 +1945,7 @@
                 @include sp {
                   width: 400px;
                   right: 34px;
-                  bottom: 68px;
+                  bottom: 110px;
                 }
               }
             }
@@ -2574,7 +2574,7 @@
 
     .road-chat {
       position: absolute;
-      z-index: 20;
+      z-index: 30;
       height: fit-content;
 
       @include pc {
@@ -2665,7 +2665,7 @@
 
         .C_reaction {
           background: $B-F69064;
-
+          z-index: 30;
           @include pc {
             width: p(165);
             border-radius: 0 p(15) p(15) 0;
