@@ -1231,7 +1231,7 @@
                 &:nth-child(1) {
                   @include pc {
                     left: p(-83);
-                    bottom: p(30);
+                    bottom: p(0);
                   }
 
                   @include sp {
@@ -2040,12 +2040,12 @@
                 @include pc {
                   width: p(200);
                   left: p(300);
-                  top: p(210);
+                  top: p(190);
                 }
 
                 @include sp {
                   width: 200px;
-                  left: 70px;
+                  left: 268px;
                   top: 179px;
                 }
               }
@@ -2065,6 +2065,7 @@
                 }
 
               }
+
               &:nth-child(11) {
 
                 @include pc {
@@ -2099,7 +2100,7 @@
 
                 @include sp {
                   left: 198px;
-                  bottom: 14px;
+                  bottom: 44px;
                 }
               }
 
@@ -2111,7 +2112,7 @@
 
                 @include sp {
                   right: 314px;
-                  bottom: 0;
+                  bottom: 20px;
                 }
               }
 
@@ -2124,7 +2125,7 @@
                 }
 
                 @include sp {
-                  right: 193px;
+                  right: 163px;
                   bottom: 83px;
                 }
 
@@ -2144,7 +2145,7 @@
 
                 @include sp {
                   left: 280px;
-                  bottom: 260px;
+                  bottom: 290px;
                 }
 
                 .goal-wrap,
@@ -2181,7 +2182,7 @@
 
                 @include sp {
                   left: 107px;
-                  bottom: 217px;
+                  bottom: 247px;
                 }
 
                 .goal-wrap,
@@ -2198,7 +2199,7 @@
 
                 @include sp {
                   left: 340px;
-                  bottom: 91px;
+                  bottom: 121px;
                 }
               }
 
@@ -2210,9 +2211,147 @@
 
                 @include sp {
                   right: 77px;
-                  bottom: 71px;
+                  bottom: 101px;
                 }
               }
+            }
+          }
+        }
+      }
+
+      &.WordPress {
+        .page1 {
+          .road-content {
+            .destination {
+              &:nth-child(n+2) {
+                @include pc {
+                  width: p(300);
+                }
+
+                @include sp {
+                  width: 300px;
+                }
+              }
+
+              &:nth-child(2) {
+                @include pc {
+                  left: p(188);
+                  bottom: p(0);
+                }
+
+                @include sp {
+                  left: 188px;
+                  bottom: 30px;
+                }
+              }
+
+              &:nth-child(3) {
+                rotate: -136deg;
+
+                @include pc {
+                  right: p(197);
+                  top: p(148);
+                }
+
+                @include sp {
+                  right: 147px;
+                  top: 118px;
+                }
+
+                .goal-wrap,
+                .character-box {
+                  rotate: 136deg;
+                }
+
+                .goal-bg {
+                  opacity: 0;
+                }
+
+                .title-board {
+                  transform: scale(-1, 1);
+
+                  @include pc {
+                    top: p(-80);
+                    left: p(-15);
+                  }
+
+                  @include sp {
+                    top: -80px;
+                    left: -15px;
+                  }
+
+                  .board-TX {
+                    transform: scale(-1, 1);
+                  }
+                }
+              }
+
+              &:nth-child(4) {
+                rotate: 180deg;
+
+                @include pc {
+                  left: p(110);
+                  top: p(78);
+                }
+
+                @include sp {
+                  left: 110px;
+                  top: 48px;
+                }
+
+                .goal-wrap,
+                .character-box {
+                  rotate: 180deg;
+
+                  &.me {
+                    @include pc {
+                      bottom: p(-76);
+                    }
+
+                    @include sp {
+                      bottom: -76px;
+                    }
+                  }
+
+                  .title-board {
+                    transform: scale(-1, 1);
+
+                    .board-TX {
+                      transform: scale(-1, 1);
+                    }
+                  }
+                }
+              }
+
+              &:nth-child(5) {
+                rotate: 10deg;
+                @include pc {
+                  left: p(38);
+                  bottom:p(150);
+                }
+
+                @include sp {
+                  left: 38px;
+                  bottom: 180px;
+                }
+                .goal-wrap,
+                .character-box {
+                  rotate: -10deg;
+                }
+              }
+
+              &:nth-child(6) {
+                @include pc {
+                  right: p(279);
+                  bottom: p(79);
+                }
+
+                @include sp {
+                  right: 279px;
+                  bottom: 109px;
+                }
+              }
+
             }
           }
         }
@@ -2232,7 +2371,7 @@
 
                 @include sp {
                   left: 177px;
-                  bottom: 15px;
+                  bottom: 45px;
                 }
               }
 
@@ -2244,7 +2383,7 @@
 
                 @include sp {
                   right: 468px;
-                  bottom: -7px;
+                  bottom: 27px;
                 }
               }
 
@@ -2257,8 +2396,8 @@
                 }
 
                 @include sp {
-                  right: 112px;
-                  bottom: 68px;
+                  right: 100px;
+                  bottom: 88px;
                 }
 
                 .goal-wrap,
@@ -2277,7 +2416,7 @@
 
                 @include sp {
                   right: 230px;
-                  bottom: 213px;
+                  bottom: 243px;
                 }
 
                 .goal-wrap,
@@ -2337,7 +2476,7 @@
 
                 @include sp {
                   left: 230px;
-                  bottom: 253px;
+                  bottom: 283px;
                 }
 
                 .goal-wrap,
@@ -2363,7 +2502,7 @@
 
                 @include sp {
                   right: 80px;
-                  bottom: 68px;
+                  bottom: 98px;
                 }
               }
             }
@@ -2383,7 +2522,7 @@
 
                 @include sp {
                   left: -100px;
-                  bottom: 100px;
+                  bottom: 130px;
                 }
               }
 
@@ -2397,7 +2536,7 @@
 
                 @include sp {
                   left: 68px;
-                  bottom: 161px;
+                  bottom: 191px;
                 }
 
                 .goal-wrap,
@@ -2416,7 +2555,7 @@
 
                 @include sp {
                   left: 280px;
-                  bottom: 231px;
+                  bottom: 261px;
                 }
 
                 .goal-wrap,
@@ -2435,7 +2574,7 @@
 
                 @include sp {
                   right: 352px;
-                  bottom: 266px;
+                  bottom: 296px;
                 }
 
                 .goal-wrap,
@@ -2454,7 +2593,7 @@
 
                 @include sp {
                   right: 283px;
-                  bottom: 105px;
+                  bottom: 135px;
                 }
 
                 .goal-wrap,
@@ -2481,7 +2620,7 @@
 
                 @include sp {
                   right: 415px;
-                  bottom: 18px;
+                  bottom: 48px;
                 }
 
                 .goal-wrap,
@@ -2509,7 +2648,7 @@
 
                 @include sp {
                   left: 249px;
-                  bottom: 10px;
+                  bottom: 40px;
                 }
 
                 .goal-wrap,
@@ -2534,7 +2673,7 @@
 
                 @include sp {
                   left: 338px;
-                  bottom: 141px;
+                  bottom: 171px;
                 }
               }
 
@@ -2547,7 +2686,7 @@
 
                 @include sp {
                   right: 197px;
-                  bottom: 68px;
+                  bottom: 98px;
                 }
               }
             }
@@ -2567,7 +2706,7 @@
 
                 @include sp {
                   left: 103px;
-                  bottom: 138px;
+                  bottom: 168px;
                 }
               }
 
@@ -2580,7 +2719,7 @@
 
                 @include sp {
                   right: 537px;
-                  bottom: 92px;
+                  bottom: 122px;
                   z-index: 17;
                 }
               }
@@ -2601,7 +2740,7 @@
 
                 @include sp {
                   left: 70px;
-                  bottom: 138px;
+                  bottom: 168px;
                 }
               }
 
@@ -2614,7 +2753,7 @@
 
                 @include sp {
                   right: 600px;
-                  bottom: 102px;
+                  bottom: 132px;
                   z-index: 17;
                 }
               }
@@ -2628,7 +2767,7 @@
 
                 @include sp {
                   right: 380px;
-                  bottom: 84px;
+                  bottom: 114px;
                 }
 
                 .title-board {
@@ -2659,7 +2798,7 @@
 
                 @include sp {
                   left: 70px;
-                  bottom: 138px;
+                  bottom: 168px;
                 }
               }
 
@@ -2672,7 +2811,7 @@
 
                 @include sp {
                   right: 600px;
-                  bottom: 102px;
+                  bottom: 132px;
                   z-index: 17;
                 }
               }
@@ -2685,8 +2824,8 @@
                 }
 
                 @include sp {
-                  right: 380px;
-                  bottom: 84px;
+                  right: 360px;
+                  bottom: 114px;
                 }
 
                 .title-board {
