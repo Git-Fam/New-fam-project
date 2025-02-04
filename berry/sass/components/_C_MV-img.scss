@@ -1,0 +1,188 @@
+@use "../functions"as *;
+
+/* -----------------------
+  C_MV-img
+----------------------- */
+
+.C_MV-img {
+  &01{
+    @include imgContain("MV-img-01.png");
+    @include pc{
+      width: p(117);
+      height: p(112);
+    }
+    @include sp{
+      width: s(78);
+      height: s(75);
+    }
+  }
+  &02 {
+    position: relative;
+    width: fit-content;
+
+    .img {
+      position: relative;
+      border-radius: 57% 43% 27% 73% / 40% 55% 45% 60%;
+      @include imgCover("MV-img-02.jpg");
+      transform: rotate(-26.149deg);
+      z-index: 10;
+
+      @include pc {
+        width: p(268);
+        height: p(295);
+      }
+      @include sp{
+        width: s(153);
+        height: s(168);
+      }
+
+
+      &::after {
+        content: "";
+        position: absolute;
+        @include iconContain($MV-berry);
+        transform: rotate(146deg);
+
+        @include pc {
+          width: p(166);
+          height: p(56);
+          top: p(-8);
+          left: p(-43);
+        }
+      }
+
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+    }
+
+    &::before {
+      @include imgContain("MV-img-02-TX.svg");
+
+      @include pc {
+        width: p(216);
+        height: p(106);
+        top: p(-25);
+        right: p(-5);
+      }
+      @include sp{
+        width: s(135);
+        height: s(69);
+        top: s(-20);
+        right: s(-12);
+      }
+    }
+
+    &::after {
+      @include imgContain("MV-img-02-bg.png");
+
+      @include pc {
+        width: p(324);
+        height: p(287);
+        bottom: p(-20);
+        left: p(-25);
+      }
+      @include sp{
+        width: s(182);
+        height: s(161);
+        bottom: s(-8);
+        right: s(-10);
+      }
+    }
+  }
+
+  &03{
+    position: relative;
+    width: fit-content;
+    .img{
+      position: relative;
+      border-radius: 44% 56% 68% 32% / 49% 38% 62% 51% ;
+      @include imgCover("MV-img-03.png");
+      transform: rotate(13.42deg);
+      z-index: 10;
+
+      @include pc {
+        width: p(372);
+        height: p(410);
+      }
+      @include sp{
+        width: s(199);
+        height: s(219);
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        @include iconContain($MV-berry);
+        transform: rotate(-150deg) scale(-1 ,1);
+
+        @include pc {
+          width: p(231);
+          height: p(78);
+          top: p(-20);
+          right: p(-80);
+        }
+        @include sp{
+          width: s(124);
+          height: s(42);
+          top: s(0);
+          right: s(-35);
+        }
+      }
+    }
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+    }
+
+    &::before {
+      @include imgContain("MV-img-03-TX.svg");
+
+      @include pc {
+        width: p(362);
+        height: p(339);
+        bottom: p(-135);
+        right: p(-10);
+      }
+      @include sp{
+        width: s(225);
+        height: s(210);
+        bottom: s(-80);
+        right: s(-25);
+      }
+    }
+
+    &::after {
+      @include imgContain("MV-img-03-bg.png");
+
+      @include pc {
+        width: p(390);
+        height: p(402);
+        top: p(15);
+        right: p(-20);
+        z-index: 1;
+      }
+      @include sp{
+        width: s(200);
+        height: s(210);
+        bottom: s(-5);
+        right: s(-10);
+      }
+    }
+  }
+  &04{
+    @include imgContain("MV-img-04.png");
+    @include pc{
+      width: p(198);
+      height: p(209);
+    }
+    @include sp{
+      transform: scale(-1,1);
+      width: s(143);
+      height: s(151);
+    }
+  }
+}

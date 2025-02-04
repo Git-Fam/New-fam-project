@@ -4,3 +4,74 @@
 /* -----------------------
   footer
 ----------------------- */
+footer{
+  .footer-inner{
+    background-color: $B-white;
+    @include pc{
+      padding: p(62) p(100) p(53);
+      display: flex;
+      align-items: center;
+    }
+    @include sp{
+      padding: s(20) s(20) s(10) ;
+    }  
+    .logo{
+      img{
+        @include pc{
+          width: p(157);
+          height: p(44);
+        }
+        @include sp{
+          width: s(91);
+          height: s(26);
+        }
+      }
+    }
+    nav{
+      @include pc{
+        width: fit-content;
+        margin-left: auto;
+      }
+      @include sp{
+        margin-top: s(20);
+      }
+      .nav-list{
+        @include wt700;
+        @include center;
+        @include pc{
+          font-size: p(15);
+          gap: p(54);
+        }
+        @include sp{
+          flex-wrap: wrap;
+          gap:s(10) s(20);
+          font-size: s(10);
+        }
+        a{
+          transition: all 0.2s ease;
+          color: $F-CE2C27;
+          &:hover{
+            transition: all 0.2s ease;
+            color: $F-FF7678;
+          }
+        }
+      }
+    }
+  }
+  .footer-under{
+    background: $B-CE2C27;
+    @include pc{
+      padding: p(15) p(8);
+    }
+    @include sp{
+      padding-block: s(13) s(7);
+    }
+    &-TX{
+      color: $F-white;
+      text-align: center;
+      @include sp{
+        font-size: s(10);
+      }
+    }
+  }
+}

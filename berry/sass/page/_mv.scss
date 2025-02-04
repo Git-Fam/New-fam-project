@@ -1,0 +1,167 @@
+@use "../functions"as *;
+
+
+/* -----------------------
+  MV
+----------------------- */
+
+.MV {
+  position: relative;
+  background-color: $B-FFF6F6;
+
+  @include pc {
+    padding: p(90) 0 p(20) 0;
+  }
+  @include sp{
+    padding: s(196) 0 s(12) 0 ;
+  }
+
+  &-bg-box {
+    .MV-bg {
+      position: absolute;
+      background: rgba(255, 157, 157, 0.20);
+
+      @include pc {
+        // transform: rotate(112.009deg);
+        clip-path: path("M8.51333 141.583C-19.8235 202.313 29.9035 269.004 63.4747 327.005C91.7598 375.873 129.279 417.346 181.102 439.764C234.343 462.796 293.966 470.799 348.184 450.171C404.335 428.806 451.952 385.575 472.197 329.01C491.791 274.261 470.627 217.312 451.13 162.528C429.794 102.58 416.68 26.6396 356.862 4.94355C297.507 -16.5842 243.999 43.0279 185.221 66.0835C123.231 90.3989 36.6692 81.2405 8.51333 141.583Z");
+      }
+
+      animation: morph 4s infinite ease-in-out;
+
+      @keyframes morph {
+        0% {
+          clip-path: path("M8.51333 141.583C-19.8235 202.313 29.9035 269.004 63.4747 327.005C91.7598 375.873 129.279 417.346 181.102 439.764C234.343 462.796 293.966 470.799 348.184 450.171C404.335 428.806 451.952 385.575 472.197 329.01C491.791 274.261 470.627 217.312 451.13 162.528C429.794 102.58 416.68 26.6396 356.862 4.94355C297.507 -16.5842 243.999 43.0279 185.221 66.0835C123.231 90.3989 36.6692 81.2405 8.51333 141.583Z");
+        }
+
+        50% {
+          clip-path: path("M20 160C-10 210 40 280 80 340C110 380 150 420 200 450C260 470 320 480 380 460C440 440 480 400 500 340C520 280 480 220 460 160C440 100 420 30 360 10C300 -10 250 50 190 70C120 100 40 90 20 160Z");
+        }
+
+        100% {
+          clip-path: path("M8.51333 141.583C-19.8235 202.313 29.9035 269.004 63.4747 327.005C91.7598 375.873 129.279 417.346 181.102 439.764C234.343 462.796 293.966 470.799 348.184 450.171C404.335 428.806 451.952 385.575 472.197 329.01C491.791 274.261 470.627 217.312 451.13 162.528C429.794 102.58 416.68 26.6396 356.862 4.94355C297.507 -16.5842 243.999 43.0279 185.221 66.0835C123.231 90.3989 36.6692 81.2405 8.51333 141.583Z");
+        }
+      }
+
+      &.bg01 {
+        @include pc {
+          width: p(469);
+          height: p(500);
+          top: p(100);
+          right: 0;
+        }
+      }
+      &.bg02 {
+        @include pc {
+          transform: scale(0.7);
+          width: p(331);
+          height: p(353);
+          left: 0;
+        }
+      }
+    }
+
+  }
+
+  .img-box {
+    .C_MV-img {
+      .MV-img {
+        position: absolute;
+      }
+
+      &01 {
+        @include pc {
+          left: p(300);
+          top: p(40);
+        }
+        @include sp{
+          position: relative;
+          left: s(106);
+          top: s(102);
+          z-index: 20;
+        }
+      }
+
+      &02 {
+        @include pc {
+          left: p(40);
+          top: p(80);
+        }
+        @include sp{
+          left: s(-22);
+          top: s(40);
+        }
+      }
+
+      &03 {
+        @include pc {
+          right: p(10);
+          bottom: p(80);
+        }
+        @include sp{
+          right: s(30);
+          bottom: s(50);
+        }
+      }
+
+      &04 {
+        @include pc {
+          right: p(360);
+          bottom: p(40);
+          z-index: 0;
+        }
+        @include sp{
+          right: s(-18);
+          top: s(45);
+        }
+      }
+    }
+  }
+
+  .C_MV-TL {
+    position: relative;
+    z-index: 20;
+  }
+
+  .C_MV-award {
+    @include pc {
+      margin-top: p(27);
+    }
+    @include sp{
+      margin-top: s(22);
+    }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    @include p-center;
+    background: rgba(255, 23, 23, 0.30);
+    filter: blur(182px);
+    aspect-ratio: 1/1;
+
+    @include pc {
+      width: p(189);
+    }
+    @include sp{
+      width: s(145);
+    }
+  }
+
+  &::after {
+    content: "";
+    @include imgContain("MV-bg-berry.png");
+    position: absolute;
+    @include p-center;
+
+    @include pc {
+      width: p(203);
+      height: p(191);
+      top: 45%;
+    }
+    @include sp{
+      width: s(156);
+      height: s(147);
+      top: 45%;
+    }
+  }
+}

@@ -1,0 +1,618 @@
+@charset "UTF-8";
+/* -----------------------
+    PCのみ最小値
+----------------------- */
+/* -----------------------
+    どちらも純粋なvw
+----------------------- */
+/* -----------------------
+リセット
+----------------------- */
+html, body, h1, h2, h3, h4, ul, ol, dl, li, dt, dd, p, div, span, img, a, table, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  box-sizing: border-box;
+  list-style: none;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+article, header, footer, aside, figure, figcaption, nav, section {
+  display: block;
+  box-sizing: border-box;
+}
+
+body {
+  line-height: 1;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+ol, ul {
+  list-style: none;
+  list-style-type: none;
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+}
+
+/* -----------------------
+  unity
+----------------------- */
+@media screen and (min-width: 768px) {
+  .sp {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .pc {
+    display: none !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 10%;
+}
+
+body {
+  font-family: "Zen Maru Gothic", serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #333;
+}
+@media screen and (min-width: 768px) {
+  body {
+    font-size: max(1.25vw, 12px);
+  }
+}
+@media screen and (max-width: 767px) {
+  body {
+    font-size: 4.1025641026vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  body.active {
+    overflow: hidden;
+  }
+}
+
+.whopper {
+  overflow: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  section .default {
+    padding-inline: 15.625vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  section .default {
+    padding-inline: 5.1282051282vw;
+  }
+}
+
+/* -----------------------
+  header
+----------------------- */
+/* -----------------------
+  footer
+----------------------- */
+/* -----------------------
+  C_
+----------------------- */
+/* -----------------------
+  C_MV-TL
+----------------------- */
+.C_MV-TL {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.C_MV-TL-top img {
+  aspect-ratio: 1/1;
+}
+@media screen and (min-width: 768px) {
+  .C_MV-TL-top img {
+    width: max(25.859375vw, 248.25px);
+    margin-bottom: max(-13.28125vw, -127.5px);
+  }
+}
+@media screen and (max-width: 767px) {
+  .C_MV-TL-top img {
+    width: 48.2051282051vw;
+    margin-bottom: -17.9487179487vw;
+  }
+}
+.C_MV-TL-main img {
+  aspect-ratio: 545/109;
+}
+@media screen and (min-width: 768px) {
+  .C_MV-TL-main img {
+    width: max(42.578125vw, 408.75px);
+  }
+}
+@media screen and (max-width: 767px) {
+  .C_MV-TL-main img {
+    width: 81.0256410256vw;
+  }
+}
+.C_MV-TL-under {
+  font-family: "Aoboshi One", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #FF1717;
+}
+@media screen and (min-width: 768px) {
+  .C_MV-TL-under {
+    font-size: max(2.8125vw, 27px);
+    margin-top: max(2.34375vw, 22.5px);
+  }
+}
+@media screen and (max-width: 767px) {
+  .C_MV-TL-under {
+    font-size: 4.8717948718vw;
+    margin-top: 5.1282051282vw;
+  }
+}
+
+/* -----------------------
+  C_MV-img
+----------------------- */
+.C_MV-img01 {
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.C_MV-img01 .img {
+  position: relative;
+  border-radius: 57% 43% 27% 73%/40% 55% 45% 60%;
+  background-image: url("../img/MV-img-01.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: rotate(-26.149deg);
+  z-index: 10;
+}
+@media screen and (min-width: 768px) {
+  .C_MV-img01 .img {
+    width: 20.9375vw;
+    height: 23.046875vw;
+  }
+}
+.C_MV-img01 .img::after {
+  content: "";
+  position: absolute;
+  background-image: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="168" height="57" viewBox="0 0 168 57" fill="none"><mask id="path-1-inside-1_2045_21319" fill="white"><path d="M84.89 1.32078C66.8705 19.7007 23.9119 55.0551 0.558594 55.92C28.3087 57.722 84.89 50.6222 84.89 1.32078Z"/><path d="M85.3049 0.337814C93.0671 24.8791 93.9401 30.8246 94.4186 49.9735C89.5666 45.9183 70.3838 25.2572 85.3049 0.337814Z"/><path d="M28.3696 17.3822C52.3242 7.96402 58.1963 6.68745 77.268 4.90375C73.5532 10.0211 54.2488 30.5687 28.3696 17.3822Z"/><path d="M88.6741 0.0238414C106.694 18.4038 143.706 29.6473 167.059 30.5123C158.41 47.8112 88.6741 49.3253 88.6741 0.0238414Z"/></mask><path d="M84.89 1.32078L64.1552 -19.0075L113.927 -69.7752L113.927 1.32078H84.89ZM0.558594 55.92L-1.32299 84.8964L-0.516129 26.9025L0.558594 55.92ZM85.3049 0.337814L60.3921 -14.5794L93.5351 -69.9304L112.991 -8.41882L85.3049 0.337814ZM94.4186 49.9735L123.447 49.2481L125.051 113.419L75.7971 72.2539L94.4186 49.9735ZM28.3696 17.3822L15.1866 43.2546L-42.2964 13.9647L17.7447 -9.64153L28.3696 17.3822ZM77.268 4.90375L74.564 -24.0075L138.476 -29.9849L100.767 21.9619L77.268 4.90375ZM88.6741 0.0238414H59.6367V-71.0721L109.409 -20.3044L88.6741 0.0238414ZM167.059 30.5123L168.134 1.49474L213.198 3.16378L193.031 43.4981L167.059 30.5123ZM105.625 21.649C95.4314 32.0464 78.8614 46.6209 61.4825 58.9022C52.7689 65.06 43.2758 71.0524 33.838 75.6803C24.9674 80.0301 13.5402 84.4965 1.63332 84.9375L-0.516129 26.9025C-0.746373 26.911 1.95373 26.6338 8.26911 23.537C14.0173 20.7184 20.7689 16.5612 27.9664 11.4748C42.41 1.26778 56.3292 -11.0249 64.1552 -19.0075L105.625 21.649ZM2.44018 26.9436C13.6909 27.6742 29.6498 26.3664 41.484 21.1848C47.0867 18.7316 50.5047 15.9629 52.4744 13.3643C54.1687 11.1288 55.8526 7.68376 55.8526 1.32078H113.927C113.927 19.6085 108.539 35.539 98.7568 48.4445C89.2503 60.9868 76.7886 69.1243 64.7772 74.3836C41.3832 84.6267 15.1764 85.9678 -1.32299 84.8964L2.44018 26.9436ZM112.991 -8.41882C116.89 3.90856 119.564 13.0892 121.173 22.0427C122.836 31.2989 123.202 39.4324 123.447 49.2481L65.3902 50.6989C65.157 41.3657 64.8469 36.952 64.0134 32.3129C63.1254 27.3711 61.4824 21.3084 57.6193 9.09445L112.991 -8.41882ZM75.7971 72.2539C70.7153 68.0066 61.2705 58.1339 55.5098 43.8226C49.2114 28.1755 47.457 7.02315 60.3921 -14.5794L110.218 15.2551C108.91 17.4389 108.786 18.6976 108.765 19.2171C108.738 19.891 108.857 20.8275 109.384 22.1368C109.937 23.51 110.801 24.9357 111.791 26.2107C112.842 27.5653 113.519 28.0936 113.04 27.6932L75.7971 72.2539ZM17.7447 -9.64153C29.7774 -14.3724 38.7542 -17.667 47.5771 -19.8828C56.6982 -22.1735 64.7879 -23.0932 74.564 -24.0075L79.9719 33.815C70.6764 34.6844 66.2941 35.2948 61.7227 36.4429C56.853 37.6659 50.9164 39.7187 38.9945 44.406L17.7447 -9.64153ZM100.767 21.9619C96.876 27.3216 87.6706 37.418 73.7857 44.1415C58.6046 51.4927 37.6213 54.686 15.1866 43.2546L41.5526 -8.49015C43.8206 -7.33452 45.0848 -7.2969 45.6045 -7.31124C46.2787 -7.32984 47.2049 -7.51256 48.4752 -8.12767C49.8075 -8.7728 51.1708 -9.73283 52.3754 -10.8068C53.6551 -11.9478 54.136 -12.6596 53.7692 -12.1544L100.767 21.9619ZM109.409 -20.3044C114.121 -15.4981 123.322 -9.96186 135.742 -5.47048C147.838 -1.096 159.949 1.19161 168.134 1.49474L165.984 59.5298C150.816 58.968 132.744 55.2013 115.991 49.1428C99.5616 43.2012 81.2468 33.9257 67.9393 20.3521L109.409 -20.3044ZM193.031 43.4981C188.578 52.4049 181.505 57.9564 175.876 61.251C170.02 64.6792 163.69 66.8775 157.743 68.2613C145.886 71.0203 132.214 71.3158 119.049 68.7405C105.919 66.1722 91.2057 60.3132 79.4109 48.7872C66.9778 36.6374 59.6367 19.9265 59.6367 0.0238414H117.712C117.712 4.77192 119.087 6.35976 120 7.25152C121.551 8.76713 124.812 10.6924 130.198 11.7459C135.548 12.7924 140.93 12.5472 144.582 11.6976C146.389 11.2771 146.927 10.9042 146.539 11.131C146.38 11.2243 143.378 12.9443 141.087 17.5264L193.031 43.4981Z" fill="%2349854A" mask="url(%23path-1-inside-1_2045_21319)"/></svg>');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: rotate(146deg);
+}
+@media screen and (min-width: 768px) {
+  .C_MV-img01 .img::after {
+    width: 12.96875vw;
+    height: 4.375vw;
+    top: -0.625vw;
+    left: -3.359375vw;
+  }
+}
+.C_MV-img01::before, .C_MV-img01::after {
+  content: "";
+  position: absolute;
+}
+.C_MV-img01::before {
+  background-image: url("../img/MV-img-01-TX.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+@media screen and (min-width: 768px) {
+  .C_MV-img01::before {
+    width: 16.875vw;
+    height: 8.28125vw;
+    top: -2.34375vw;
+    right: -0.390625vw;
+  }
+}
+.C_MV-img01::after {
+  background-image: url("../img/MV-img-01-bg.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+@media screen and (min-width: 768px) {
+  .C_MV-img01::after {
+    width: 25.3125vw;
+    height: 22.421875vw;
+    bottom: -1.5625vw;
+    left: -1.5625vw;
+  }
+}
+.C_MV-img03 {
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.C_MV-img03 .img {
+  position: relative;
+  border-radius: 44% 56% 74% 26%/49% 38% 62% 51%;
+  background-image: url("../img/MV-img-03.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: rotate(8.42deg);
+  z-index: 10;
+}
+@media screen and (min-width: 768px) {
+  .C_MV-img03 .img {
+    width: 29.0625vw;
+    height: 32.03125vw;
+  }
+}
+.C_MV-img03 .img::after {
+  content: "";
+  position: absolute;
+  background-image: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="168" height="57" viewBox="0 0 168 57" fill="none"><mask id="path-1-inside-1_2045_21319" fill="white"><path d="M84.89 1.32078C66.8705 19.7007 23.9119 55.0551 0.558594 55.92C28.3087 57.722 84.89 50.6222 84.89 1.32078Z"/><path d="M85.3049 0.337814C93.0671 24.8791 93.9401 30.8246 94.4186 49.9735C89.5666 45.9183 70.3838 25.2572 85.3049 0.337814Z"/><path d="M28.3696 17.3822C52.3242 7.96402 58.1963 6.68745 77.268 4.90375C73.5532 10.0211 54.2488 30.5687 28.3696 17.3822Z"/><path d="M88.6741 0.0238414C106.694 18.4038 143.706 29.6473 167.059 30.5123C158.41 47.8112 88.6741 49.3253 88.6741 0.0238414Z"/></mask><path d="M84.89 1.32078L64.1552 -19.0075L113.927 -69.7752L113.927 1.32078H84.89ZM0.558594 55.92L-1.32299 84.8964L-0.516129 26.9025L0.558594 55.92ZM85.3049 0.337814L60.3921 -14.5794L93.5351 -69.9304L112.991 -8.41882L85.3049 0.337814ZM94.4186 49.9735L123.447 49.2481L125.051 113.419L75.7971 72.2539L94.4186 49.9735ZM28.3696 17.3822L15.1866 43.2546L-42.2964 13.9647L17.7447 -9.64153L28.3696 17.3822ZM77.268 4.90375L74.564 -24.0075L138.476 -29.9849L100.767 21.9619L77.268 4.90375ZM88.6741 0.0238414H59.6367V-71.0721L109.409 -20.3044L88.6741 0.0238414ZM167.059 30.5123L168.134 1.49474L213.198 3.16378L193.031 43.4981L167.059 30.5123ZM105.625 21.649C95.4314 32.0464 78.8614 46.6209 61.4825 58.9022C52.7689 65.06 43.2758 71.0524 33.838 75.6803C24.9674 80.0301 13.5402 84.4965 1.63332 84.9375L-0.516129 26.9025C-0.746373 26.911 1.95373 26.6338 8.26911 23.537C14.0173 20.7184 20.7689 16.5612 27.9664 11.4748C42.41 1.26778 56.3292 -11.0249 64.1552 -19.0075L105.625 21.649ZM2.44018 26.9436C13.6909 27.6742 29.6498 26.3664 41.484 21.1848C47.0867 18.7316 50.5047 15.9629 52.4744 13.3643C54.1687 11.1288 55.8526 7.68376 55.8526 1.32078H113.927C113.927 19.6085 108.539 35.539 98.7568 48.4445C89.2503 60.9868 76.7886 69.1243 64.7772 74.3836C41.3832 84.6267 15.1764 85.9678 -1.32299 84.8964L2.44018 26.9436ZM112.991 -8.41882C116.89 3.90856 119.564 13.0892 121.173 22.0427C122.836 31.2989 123.202 39.4324 123.447 49.2481L65.3902 50.6989C65.157 41.3657 64.8469 36.952 64.0134 32.3129C63.1254 27.3711 61.4824 21.3084 57.6193 9.09445L112.991 -8.41882ZM75.7971 72.2539C70.7153 68.0066 61.2705 58.1339 55.5098 43.8226C49.2114 28.1755 47.457 7.02315 60.3921 -14.5794L110.218 15.2551C108.91 17.4389 108.786 18.6976 108.765 19.2171C108.738 19.891 108.857 20.8275 109.384 22.1368C109.937 23.51 110.801 24.9357 111.791 26.2107C112.842 27.5653 113.519 28.0936 113.04 27.6932L75.7971 72.2539ZM17.7447 -9.64153C29.7774 -14.3724 38.7542 -17.667 47.5771 -19.8828C56.6982 -22.1735 64.7879 -23.0932 74.564 -24.0075L79.9719 33.815C70.6764 34.6844 66.2941 35.2948 61.7227 36.4429C56.853 37.6659 50.9164 39.7187 38.9945 44.406L17.7447 -9.64153ZM100.767 21.9619C96.876 27.3216 87.6706 37.418 73.7857 44.1415C58.6046 51.4927 37.6213 54.686 15.1866 43.2546L41.5526 -8.49015C43.8206 -7.33452 45.0848 -7.2969 45.6045 -7.31124C46.2787 -7.32984 47.2049 -7.51256 48.4752 -8.12767C49.8075 -8.7728 51.1708 -9.73283 52.3754 -10.8068C53.6551 -11.9478 54.136 -12.6596 53.7692 -12.1544L100.767 21.9619ZM109.409 -20.3044C114.121 -15.4981 123.322 -9.96186 135.742 -5.47048C147.838 -1.096 159.949 1.19161 168.134 1.49474L165.984 59.5298C150.816 58.968 132.744 55.2013 115.991 49.1428C99.5616 43.2012 81.2468 33.9257 67.9393 20.3521L109.409 -20.3044ZM193.031 43.4981C188.578 52.4049 181.505 57.9564 175.876 61.251C170.02 64.6792 163.69 66.8775 157.743 68.2613C145.886 71.0203 132.214 71.3158 119.049 68.7405C105.919 66.1722 91.2057 60.3132 79.4109 48.7872C66.9778 36.6374 59.6367 19.9265 59.6367 0.0238414H117.712C117.712 4.77192 119.087 6.35976 120 7.25152C121.551 8.76713 124.812 10.6924 130.198 11.7459C135.548 12.7924 140.93 12.5472 144.582 11.6976C146.389 11.2771 146.927 10.9042 146.539 11.131C146.38 11.2243 143.378 12.9443 141.087 17.5264L193.031 43.4981Z" fill="%2349854A" mask="url(%23path-1-inside-1_2045_21319)"/></svg>');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: rotate(-150deg) scale(-1, 1);
+}
+@media screen and (min-width: 768px) {
+  .C_MV-img03 .img::after {
+    width: 18.046875vw;
+    height: 6.09375vw;
+    top: -1.5625vw;
+    right: -6.25vw;
+  }
+}
+.C_MV-img03::before, .C_MV-img03::after {
+  content: "";
+  position: absolute;
+}
+.C_MV-img03::before {
+  background-image: url("../img/MV-img-03-TX.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+@media screen and (min-width: 768px) {
+  .C_MV-img03::before {
+    width: 28.28125vw;
+    height: 26.484375vw;
+    bottom: -10.546875vw;
+    right: -0.78125vw;
+  }
+}
+.C_MV-img03::after {
+  background-image: url("../img/MV-img-03-bg.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+@media screen and (min-width: 768px) {
+  .C_MV-img03::after {
+    width: 30.46875vw;
+    height: 31.40625vw;
+    top: 1.171875vw;
+    right: -1.171875vw;
+  }
+}
+
+/* -----------------------
+  forth
+----------------------- */
+/* -----------------------
+  C_example
+----------------------- */
+/* -----------------------
+  MV
+----------------------- */
+.MV {
+  position: relative;
+  background-color: #FFF6F6;
+}
+
+/* -----------------------
+  anime
+----------------------- */
+.hover-opa {
+  transition: 0.3s;
+}
+.hover-opa:hover {
+  opacity: 0.6;
+}
+
+.hover-scale {
+  transition: 0.3s;
+}
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.up {
+  opacity: 0;
+  transform: translateY(100%);
+}
+.up.show {
+  animation: up 0.5s ease forwards;
+}
+@keyframes up {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.down {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+.down.show {
+  animation: down ease forwards;
+}
+@keyframes down {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.left {
+  opacity: 0;
+  transform: translateX(100%);
+}
+.left.show {
+  animation: left ease forwards;
+}
+@keyframes left {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.right {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+.right.show {
+  animation: right ease forwards;
+}
+@keyframes right {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.pop {
+  opacity: 0;
+  transform: scale(0.5);
+}
+.pop.show {
+  animation: pop ease forwards;
+}
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.loadUp {
+  opacity: 0;
+  transform: translateY(100%);
+}
+.loadUp.show {
+  animation: loadUp ease forwards;
+}
+@keyframes loadUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.loadDown {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+.loadDown.show {
+  animation: loadDown ease forwards;
+}
+@keyframes loadDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.loadLeft {
+  opacity: 0;
+  transform: translateX(100%);
+}
+.loadLeft.show {
+  animation: loadLeft ease forwards;
+}
+@keyframes loadLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.loadRight {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+.loadRight.show {
+  animation: loadRight ease forwards;
+}
+@keyframes loadRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.loadPop {
+  opacity: 0;
+  transform: scale(0.5);
+}
+.loadPop.show {
+  animation: loadPop ease forwards;
+}
+@keyframes loadPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.delay-01 {
+  animation-delay: 0.1s !important;
+}
+
+.delay-02 {
+  animation-delay: 0.2s !important;
+}
+
+.delay-03 {
+  animation-delay: 0.3s !important;
+}
+
+.delay-04 {
+  animation-delay: 0.4s !important;
+}
+
+.delay-05 {
+  animation-delay: 0.5s !important;
+}
+
+.delay-06 {
+  animation-delay: 0.6s !important;
+}
+
+.delay-07 {
+  animation-delay: 0.7s !important;
+}
+
+.delay-08 {
+  animation-delay: 0.8s !important;
+}
+
+.delay-09 {
+  animation-delay: 0.9s !important;
+}
+
+.delay-10 {
+  animation-delay: 1s !important;
+}
+
+.delay-15 {
+  animation-delay: 1.5s !important;
+}
+
+.duration-01 {
+  animation-duration: 0.1s !important;
+}
+
+.duration-02 {
+  animation-duration: 0.2s !important;
+}
+
+.duration-03 {
+  animation-duration: 0.3s !important;
+}
+
+.duration-04 {
+  animation-duration: 0.4s !important;
+}
+
+.duration-05 {
+  animation-duration: 0.5s !important;
+}
+
+.duration-06 {
+  animation-duration: 0.6s !important;
+}
+
+.duration-07 {
+  animation-duration: 0.7s !important;
+}
+
+.duration-08 {
+  animation-duration: 0.8s !important;
+}
+
+.duration-09 {
+  animation-duration: 0.9s !important;
+}
+
+.duration-10 {
+  animation-duration: 1s !important;
+}
+
+.duration-15 {
+  animation-duration: 1.5s !important;
+}/*# sourceMappingURL=main.css.map */

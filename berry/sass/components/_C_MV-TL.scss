@@ -1,0 +1,46 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_MV-TL
+----------------------- */
+
+.C_MV-TL{
+  // width: fit-content;
+  @include center;
+  flex-direction: column;
+  &-top{
+    img{
+      aspect-ratio: 340/90;
+      @include pc{
+        width: pm(331);
+      }
+      @include sp{
+        width: s(188);
+      }    
+    }
+  }
+  &-main{
+    img{
+      aspect-ratio: 545/109;
+      @include pc{
+        width: pm(545);
+        margin-top: p(20);
+      }
+      @include sp{
+        width: s(316);
+      }
+    }
+  }
+  &-under{
+    @include aoboshi;
+    color: $F-FF1717;
+    @include pc{
+      font-size: pm(36);
+      margin-top: pm(30);
+    }
+    @include sp{
+      font-size: s(19);
+      margin-top: s(20);
+    }
+  }
+}

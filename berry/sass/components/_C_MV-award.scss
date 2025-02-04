@@ -1,0 +1,130 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_MV-award
+----------------------- */
+
+.C_MV-award{
+  background: $B-white;
+  @include pc{
+    border-radius: 0 p(10) p(10) 0;
+    padding-block: p(17) p(5);
+    width: p(558);
+  }
+  @include sp{
+    border-radius: 0 s(10) s(10) 0;
+    padding: s(17) s(13) s(8) s(9);
+    width: s(130);
+  }
+  &-box{
+    @include center;
+    @include pc{
+      gap: p(24);
+    }
+    @include sp{
+      justify-content: space-between;
+      flex-wrap: wrap;
+      row-gap: s(8);
+    }
+    .C_MV-award-box-img{
+      &.img-round{
+        @include pc{
+          width: p(73);
+          height: p(71);
+        }
+        @include sp{
+          width: s(45);
+          height: s(44);
+        }
+      }
+      &.img01{
+        @include imgContain("C_MV-award-box01.png");
+        @include pc{
+          width: p(105);
+          height: p(71);
+        }
+        @include sp{
+          width: s(60);
+          height: s(39);
+        }
+      }
+      &.img02{
+        @include imgContain("C_MV-award-box02.png");
+      }
+      &.img03{
+        @include imgContain("C_MV-award-box03.png");
+      }
+      &.img04{
+        @include imgContain("C_MV-award-box04.png");
+      }
+      &.img05{
+        @include pc{
+          width: p(65);
+          height: p(77);
+        }
+        @include sp{
+          width: s(34);
+          height: s(41);
+          margin-left: s(5);
+        }
+        @include imgContain("C_MV-award-box05.png");
+      }
+    }
+  }
+  .C_MV-award-textbox{
+    @include pc{
+      display: flex;
+      justify-content: center;  
+      margin-top: p(30);
+    }
+    @include sp{
+      position: relative;
+      margin-top: s(15);
+    }
+    &-deco{
+      @include imgContain("MV-award-textbox-deco.png");
+      @include pc{
+        width: p(69);
+        height: p(66);
+      }
+      @include sp{
+        position: absolute;
+      }
+      &.deco01{
+        transform: rotate(146deg);
+        @include sp{
+          width: s(25);
+          height: s(24);
+          top: s(-23);
+          right: s(16);
+        }  
+      }
+      &.deco02{
+        transform: rotate(210.877deg) scale(-1, 1);
+        @include pc{
+          margin-left: p(40);
+        }
+        @include sp{
+          width: s(32);
+          height: s(30);
+          top: s(18);
+          right: s(-5);
+        }  
+      }
+    }
+    .TX{
+      line-height: 1.5;
+      @include wt500;
+      @include pc{
+        text-align: center;
+        margin:pm(-10) 0 0 pm(46);
+        letter-spacing: pm(0.9);
+        font-size: pm(18);
+      }
+      @include sp{
+        font-size: s(10);
+        letter-spacing: s(0.5);
+      }
+    }
+  }
+}
