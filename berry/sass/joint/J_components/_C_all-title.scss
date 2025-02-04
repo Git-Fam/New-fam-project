@@ -9,28 +9,272 @@
   width: fit-content;
   margin: 0 auto;
 
-  @include pc {}
+  .sub-title {
+    border-radius: 50px;
+    background: $B-E1231D;
+    width: fit-content;
+    margin: 0 auto;
 
-  @include sp {}
-
-  .TL {
-    color: $F-E1231D;
-    @include wt700;
-    line-height: 157.2%;
-    text-align: center;
-    
     @include pc {
-      font-size: pm(36);
-      letter-spacing: pm(3.6);
+      padding: pm(5) pm(28);
     }
 
-    @include sp {}
+    @include sp {
+      padding: s(5) s(28);
+    }
 
-    &_big {
-      @include aoboshi;
 
-      @include pc{
-        margin-left: calc(pm(10) * -1);
+    .TX {
+      color: $F-white;
+      @include wt700;
+
+      @include pc {
+        font-size: pm(20);
+        letter-spacing: pm(1.6);
+      }
+
+      @include sp {
+        font-size: s(16);
+        letter-spacing: s(1.28);
+      }
+    }
+  }
+
+  .title-wrap {
+    .TL {
+      color: $F-E1231D;
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      span {
+        display: block;
+      }
+
+      &_normal {
+        @include wt700;
+        line-height: 157.2%;
+        text-align: center;
+
+        @include pc {
+          font-size: pm(36);
+          letter-spacing: pm(3.6);
+        }
+
+        @include sp {
+          font-size: s(24);
+          letter-spacing: s(2.4);
+        }
+      }
+
+      &_big {
+        @include aoboshi;
+        line-height: 157.2%;
+        @include wt400;
+
+        @include am(font-size 48,
+          letter-spacing 4.8);
+      }
+    }
+  }
+
+
+  &.is_notice {
+
+    .title-wrap {
+      .TL {
+        color: $F-white;
+        align-items: center;
+
+        &_normal {
+
+          @include pc {
+            font-size: pm(40);
+            letter-spacing: pm(4);
+          }
+
+          @include sp {
+            font-size: s(24);
+            letter-spacing: s(2.4);
+            margin-bottom: s(-9)
+          }
+        }
+
+        &_big {
+
+          @include pc {
+            font-size: pm(81.306);
+            letter-spacing: pm(8.131);
+            margin-left: calc(pm(25) * -1);
+          }
+
+          @include sp {
+            font-size: s(48);
+            letter-spacing: s(4.8);
+          }
+        }
+      }
+    }
+  }
+
+  &.is_what-kind {
+    display: flex;
+    flex-direction: column;
+
+    @include pc {
+      gap: pm(15);
+    }
+
+    @include sp {
+      gap: s(30);
+    }
+
+    .title-wrap {
+      .TL {
+  
+        &_normal {
+  
+          @include pc {
+            margin-left: calc(pm(5) * -1);
+          }
+        }
+  
+        &_big {
+  
+          @include sp {
+            margin-bottom: s(-6)
+          }
+        }
+      }
+    }
+  }
+
+  &.is_made {
+    display: flex;
+    flex-direction: column;
+
+    @include pc {
+      gap: pm(1);
+    }
+
+    @include sp {
+      gap: s(10);
+    }
+
+    .sub-title {
+      &.is_no-wrap {
+        background: none;
+        border-radius: 0;
+        padding: 0;
+
+        .TX {
+          color: $F-E1231D;
+          letter-spacing: unset;
+
+          @include pc {
+            font-size: pm(24);
+          }
+
+          @include sp {
+            font-size: s(16);
+          }
+        }
+      }
+    }
+
+    .title-wrap{
+      .TL {
+  
+        &_normal {
+  
+          @include sp {
+            margin-bottom: s(10)
+          }
+        }
+  
+        &_big {
+  
+          @include pc {
+            margin-left: calc(pm(9) * -1);
+          }
+  
+        }
+      }
+    }
+  }
+
+  &.is_feature {}
+
+  &.is_delivery {
+    display: flex;
+    flex-direction: column;
+
+    @include pc {
+      gap: pm(22);
+    }
+
+    @include sp {
+      gap: s(20);
+    }
+  }
+
+  &.is_lineup {
+    .title-wrap{
+      .TL {
+        color: $F-white;
+        @include wt700;
+        line-height: 157.2%;
+  
+        @include pc {
+          font-size: pm(40);
+          letter-spacing: pm(4);
+        }
+  
+        @include sp {
+          font-size: s(24);
+          letter-spacing: s(2.4);
+        }
+      }
+    }
+  }
+
+  &.is_i-see {
+    text-align: center;
+    .title-wrap{
+      .TL {
+        color: $F-E1231D;
+        @include wt900;
+        line-height: 157.2%;
+        display: unset;
+  
+        @include pc {
+          font-size: pm(40);
+          letter-spacing: pm(4);
+        }
+  
+        @include sp {
+          line-height: 147.2%;
+          font-size: s(24);
+          letter-spacing: s(2.4);
+        }
+  
+        &_big {
+          display: inline;
+          @include maru;
+          @include wt900;
+          line-height: 157.2%;
+  
+          @include pc {
+            font-size: pm(64);
+            letter-spacing: pm(6.4);
+          }
+  
+          @include sp {
+            font-size: s(36);
+            letter-spacing: s(3.6);
+          }
+        }
       }
     }
   }
