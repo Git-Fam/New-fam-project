@@ -14,9 +14,11 @@
     padding: pm(8) pm(122) pm(16);
   }
 
-  @include sp {}
+  @include sp {
+    padding: s(16) s(0) s(18);
+  }
 
-  @media screen and (max-width: 940px) and (min-width: 768px) {
+  @media screen and (max-width: 950px) and (min-width: 768px) {
     padding-top: pm(20);
   }
 
@@ -27,13 +29,16 @@
       @include imgCover("C_count-down-icon.png");
 
       @include pc {
-        bottom: p(11);
-        left: p(36);
-        width: p(67);
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+        left: pm(36);
+        width: pm(67);
+        height: pm(49);
       }
 
       @include sp {
-        bottom: s(11);
+        bottom: s(14);
         left: s(14);
         width: s(46);
       }
@@ -63,9 +68,13 @@
       gap: p(10);
     }
 
-    @include sp {}
+    @include sp {
+      flex-direction: column;
+      align-items: center;
+      gap: s(4);
+    }
 
-    @media screen and (max-width: 940px) and (min-width: 768px) {
+    @media screen and (max-width: 950px) and (min-width: 768px) {
       justify-content: center;
       gap: p(5);
     }
@@ -74,30 +83,40 @@
       color: #498043;
       @include maru;
       @include wt900;
-      line-height: 101%;
       white-space: nowrap;
 
       @include pc {
+        line-height: 101%;
         font-size: pm(24);
         letter-spacing: pm(2.4);
       }
 
-      @include sp {}
+      @include sp {
+        text-align: center;
+        line-height: 113%;
+        font-size: s(16);
+        letter-spacing: s(1.6);
+      }
 
       span {
         color: #EA4141;
         @include maru;
         @include wt900;
         line-height: 1;
-        vertical-align: text-bottom;
-
+        
         @include pc {
           font-size: pm(48);
           letter-spacing: pm(4.8);
-          padding: 0 pm(10);
+          padding-inline: pm(10);
+          vertical-align: text-bottom;
         }
 
-        @include sp {}
+        @include sp {
+          font-size: s(36);
+          letter-spacing: s(3.6);
+          padding-inline: s(2);
+          vertical-align: baseline;
+        }
 
         span {
           display: contents;
@@ -107,6 +126,12 @@
       &:nth-child(2) {
         color: #333;
         @include wt700;
+
+        @include sp {
+          line-height: 101%;
+          font-size: s(20);
+          letter-spacing: s(2);
+        }
       }
     }
   }

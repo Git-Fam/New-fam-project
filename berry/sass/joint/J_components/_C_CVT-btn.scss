@@ -50,8 +50,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%) scale(0);
-      width: 100%;
-      padding-top: 100%;
+      width: 110%;
+      padding-top: 110%;
       background-color: #FF7678;
       transition: all 0.6s ease-in-out;
       border-radius: 50%;
@@ -106,6 +106,72 @@
 
           span {
             color: #FFF4AA;
+          }
+        }
+      }
+    }
+  }
+
+  &.is_mini {
+    @include pc {
+      width: pm(683);
+    }
+
+    @include sp {
+      width: s(314);
+      border-radius: calc(infinity * 1px);
+    }
+
+    .CVT-btn__innner {
+
+      @include pc {
+        border-radius: calc(infinity * 1px);
+        padding: p(14) p(0);
+      }
+
+      @include sp {
+        padding: s(4) s(0);
+        border-radius: calc(infinity * 1px);
+      }
+
+      .text__wrap {
+
+        .text {
+
+          &:first-child {
+
+            @include sp {
+              margin-bottom: s(-3);
+            }
+          }
+
+          .TX {
+            color: $F-white;
+            @include aoboshi;
+            line-height: 157.2%;
+            @include wt400;
+
+            @include pc {
+              font-size: pm(24);
+            }
+
+            @include sp {
+              font-size: s(20);
+            }
+
+            &.TX-big {
+
+              @include sp {
+                text-align: center;
+                font-size: s(20);
+                letter-spacing: s(2.4);
+                line-height: 157.2%;
+              }
+            }
+
+            span {
+              color: #FFF4AA;
+            }
           }
         }
       }
