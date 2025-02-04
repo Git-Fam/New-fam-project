@@ -1,0 +1,108 @@
+$(function () {   
+  // // ハンバーガーメニュー
+  //  $(".burger").on("click", function(){
+  //    $(header).toggleClass("active");
+  //  }); 
+  // $(".js-link,.menu").on("click", function(){
+  //   $('header').removeClass("active");
+  // });
+
+  // var prevScrollpos = window.pageYOffset;
+  // window.onscroll = function() {
+  //   var currentScrollpos = window.pageYOffset;
+  //   if (prevScrollpos > currentScrollpos || currentScrollpos < 450) {
+  //     document.querySelector(".header").classList.remove("active");
+  //   } else {
+  //     document.querySelector(".header").classList.add("active");
+  //   }
+  //   prevScrollpos = currentScrollpos;
+  // }
+
+  // 要素が画面下部に来たらshowを付与
+  // $(window).scroll(function () {
+  //   $('.up,.down,.right,.left,.pop').each(function () {
+  //     var top_of_element = $(this).offset().top;
+  //     var bottom_of_window = $(window).scrollTop() + $(window).height();
+  //     if (bottom_of_window > top_of_element) {
+  //       $(this).addClass('show');
+  //     }
+  //   });
+  // });
+
+
+  // ローディング
+  // var loadingFinished = false;
+  // var loading = $('.loadUp,.loadDown,.loadRight,.loadLeft,.loadPop');
+
+  // $(window).on('load', function () {
+  //   loading.addClass('show');
+  //   loadingFinished = true;
+  // });
+  // setTimeout(function(){
+  //   if (!loadingFinished) {
+  //     loading.addClass('show');
+  //   }
+  // }, 2000);
+
+
+  // アコーディオン
+  // $('.js_onClick').on('click', function () {
+  //   $(this).next().slideToggle();
+  //   $(this).toggleClass('active');
+  // });
+
+
+	// カウントダウンの終了日時を設定
+	let countdownDate = new Date("2025-12-29T00:00:00");
+
+	let x = setInterval(function () {
+		// 現在の日時を取得
+		let now = new Date();
+
+		// カウントダウンまでの残り時間を計算
+		let distance = countdownDate - now;
+
+		// 残り時間を日数に変換
+		let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+		// カウントダウンが終了した場合はメッセージを表示してタイマーを停止
+		if (distance < 0) {
+			clearInterval(x);
+			$(".countdown").html("<span>終了</span>");
+		} else {
+			// 日数を文字列に変換して一文字ずつspanで囲む
+			let daysStr = days
+				.toString()
+				.split("")
+				.map((num) => `<span>${num}</span>`)
+				.join("");
+			$(".days").html(daysStr);
+		}
+	}, 1000);
+
+
+});
+
+// 初回やリロード時は更新
+// その後は30分ごとに更新
+
+// // カウントダウンの終了日時を設定
+// let countdownDate = new Date("2025-01-29T00:00:00");
+// // カウントダウン計算関数
+// function updateCountdown() {
+// 	let now = new Date();
+// 	let distance = countdownDate - now;
+// 	let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+// 	if (distance < 0) {
+// 		clearInterval(x);
+// 		$("#countdown").html("<span>終了</span>");
+// 	} else {
+// 		$("#days").text(days + "日");
+// 	}
+// }
+// // 初回実行
+// updateCountdown();
+
+// // 30分ごとに更新
+// let x = setInterval(updateCountdown, 1800000);

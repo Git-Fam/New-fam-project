@@ -1,0 +1,59 @@
+@use "../functions"as *;
+
+/* -----------------------
+  unity
+----------------------- */
+
+// 表示・非表示
+.sp {
+  @include pc {
+    display: none !important;
+  }
+}
+
+.pc {
+  @include sp {
+    display: none !important;
+  }
+}
+
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 10%;
+}
+
+body {
+
+  @include maru;
+  @include wt400;
+  color: $F-main;
+
+  @include am(
+    font-size 16,
+    // letter-spacing 1.2
+    );
+
+  &.active {
+
+    @include sp {
+      overflow: hidden;
+    }
+  }
+}
+
+.whopper {
+  overflow: hidden;
+}
+
+section {
+  .default {
+    @include pc {
+      padding-inline: p(200);
+    }
+
+    @include sp {
+      padding-inline: s(20);
+    }
+  }
+}

@@ -1,0 +1,80 @@
+// フォント
+// font-family: Noto Serif JP;
+// @mixin serif {
+//   font-family: "Noto Serif JP", serif;
+//   font-weight: 400;
+//   font-style: normal;
+//   line-height: normal;
+// }
+
+// font-family:vdl-penletter;
+@mixin vdl {
+  font-family: "vdl-penletter", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+// font-family:vdl-penletter;
+@mixin kinuta {
+  font-family: "kinuta-maruminold-stdn", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+// font-family: Zen Maru Gothic;
+@mixin maru {
+  font-family: "Zen Maru Gothic", serif;
+  font-style: normal;
+}
+
+// font-family:Aoboshi One;
+@mixin aoboshi {
+  font-family: "Aoboshi One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+// font-family:Inter;
+@mixin inter {
+  font-family: "Inter", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+// font-weight:;
+@mixin wt100 {
+  font-weight: 100;
+}
+
+@mixin wt200 {
+  font-weight: 200;
+}
+
+@mixin wt300 {
+  font-weight: 300;
+}
+
+@mixin wt400 {
+  font-weight: 400;
+}
+
+@mixin wt500 {
+  font-weight: 500;
+}
+
+@mixin wt600 {
+  font-weight: 600;
+}
+
+@mixin wt700 {
+  font-weight: 700;
+}
+
+@mixin wt800 {
+  font-weight: 800;
+}
+
+@mixin wt900 {
+  font-weight: 900;
+}
