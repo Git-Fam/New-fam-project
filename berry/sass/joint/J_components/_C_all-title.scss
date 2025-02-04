@@ -1,0 +1,37 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_all-title
+----------------------- */
+
+.C_all-title {
+  width: fit-content;
+  margin: 0 auto;
+
+  @include pc {}
+
+  @include sp {}
+
+  .TL {
+    color: $F-E1231D;
+    @include wt700;
+    line-height: 157.2%;
+    text-align: center;
+    
+    @include pc {
+      font-size: pm(36);
+      letter-spacing: pm(3.6);
+    }
+
+    @include sp {}
+
+    &_big {
+      @include aoboshi;
+
+      @include pc{
+        margin-left: calc(pm(10) * -1);
+      }
+    }
+  }
+}
