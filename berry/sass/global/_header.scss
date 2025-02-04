@@ -1,5 +1,300 @@
-@use "../functions" as *;
+@use "../functions"as *;
 
 /* -----------------------
   header
 ----------------------- */
+
+header {
+  background-color: $B-white;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 300;
+
+  @include pc {
+    padding: p(13) p(28) p(21) p(40);
+  }
+
+  @include sp {
+    padding: s(12) s(20) s(10) s(10);
+  }
+
+  .header-inner {
+    position: relative;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+
+    @include pc {}
+
+    .logo {
+      position: relative;
+      z-index: 100;
+
+      img {
+        object-fit: contain;
+
+        @include pc {
+          width: p(159);
+          height: p(44);
+        }
+
+        @include sp {
+          width: s(144);
+          height: s(38);
+        }
+
+      }
+    }
+
+    .nav-berry-bg{
+      @include iconContain($burger-bg);
+      width: 0%;
+      height: 0;
+      position: fixed;
+      @include p-center;
+
+    }
+    nav {
+      @include pc {
+        margin-left: auto;
+      }
+
+      @include sp {
+        position: fixed;
+        left: 120%;
+        width: 100%;
+        top: s(134);
+        top: 0;
+        height: 100vh;
+        background: $B-white;
+        padding-block: s(114) s(98);
+      }
+      .nav-inner{
+        @include sp{
+          height: 100%;
+          overflow-y: scroll;  
+        }
+        .nav-list {
+          display: flex;
+          align-items: center;
+  
+          @include pc {
+            gap: p(50);
+          }
+  
+          @include sp {
+            flex-direction: column;
+            gap: s(30);
+            // height: s(500);
+          }
+  
+          li {
+            a {
+              transition: all 0.2s ease;
+              @include center;
+              flex-direction: column;
+  
+              .icon {
+                @include all (width 57,
+                  height 45);
+              }
+  
+              .nav-TX {
+                color: $F-FF2D31;
+                @include wt700;
+                @include all(font-size 15,
+                );
+                text-shadow: 0px 4px 3px rgba(183, 101, 100, 0.50);
+  
+                @include all (margin-top 5);
+              }
+  
+              &:hover {
+                .icon {
+                  transition: all 0.2s ease;
+                  transform: scale(1.15);
+                }
+  
+                .nav-TX {
+                  color: $F-FF7678;
+                  text-shadow: none;
+                }
+              }
+            }
+  
+            &:nth-child(1) {
+              .icon {
+                @include imgContain("nav-icon01.png");
+              }
+            }
+  
+            &:nth-child(2) {
+              .icon {
+                @include imgContain("nav-icon02.png");
+              }
+            }
+  
+            &:nth-child(3) {
+              .icon {
+                @include imgContain("nav-icon03.png");
+              }
+            }
+  
+            &:nth-child(4) {
+              .icon {
+                @include imgContain("nav-icon04.png");
+              }
+            }
+  
+            &:nth-child(5) {
+              .icon {
+                @include imgContain("nav-icon05.png");
+              }
+            }
+          }
+        }
+  
+      }
+
+    }
+
+    .header-link {
+      background: $B-CE2C27;
+      text-align: center;
+      position: relative;
+      display: inline-block;
+
+      @include pc {
+        border-radius: 0 0 p(10) p(10);
+        padding: p(15) p(5) p(10);
+        margin: p(-22) 0 0 p(56);
+      }
+
+      @include sp {
+        border-radius: 0 0 s(10) s(10);
+        padding: s(5) s(5) s(8);
+        position: absolute;
+        top: s(-12);
+        right: s(0);
+      }
+
+      &-top {
+        color: $F-white;
+        @include center;
+        @include wt500;
+        @include vdl;
+        @include am(font-size 13,
+        );
+        @include all(gap 3);
+
+        &::before {
+          content: "";
+          @include imgContain("header-link-icon.png");
+          display: block;
+          @include all(width 26,
+            height 18.5);
+        }
+      }
+
+      &-main {
+        color: $F-white;
+        @include aoboshi;
+        @include am(font-size 18, margin-top 10);
+
+        span {
+          color: $F-FFF4AA;
+        }
+      }
+
+      &-under {
+        @include aoboshi;
+        color: $F-FF9D9D;
+        @include am(font-size 10, margin-top 5);
+      }
+
+      &::before {
+        content: "";
+        @include imgContain("berry-man.png");
+        position: absolute;
+        left: 0;
+        z-index: -1;
+        transition: all 0.3s ease;
+
+        @include all(width 60,
+          height 85,
+          bottom -3);
+
+      }
+
+      &:hover {
+        &::before {
+          transition: all 0.3s ease;
+          @include all(left -50);
+        }
+      }
+    }
+  }
+
+  .menu-btn {
+    position: fixed;
+    background-color: $B-006835;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    width: s(59);
+    right: s(20);
+    bottom: s(12);
+    z-index: 200;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+
+    &::before {
+      content: "MENU";
+      color: $F-white;
+      font-size: s(10);
+      @include aoboshi;
+    }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @include iconCover($hedaer-bg);
+    background-position: bottom;
+    z-index: 20;
+
+    @include pc {
+      top: p(40);
+    }
+
+    @include sp {
+      top: s(20);
+    }
+  }
+
+  &.active {
+    .nav-berry-bg{
+      transition: all 1s ease;
+      width: 420vw;
+      height: 420vh;
+    }
+
+    nav {
+      @include sp {
+        transition: all 0.3s ease 0.5s;
+        left: 0;
+      }
+    }
+
+    .menu-btn {
+      &::before {
+        content: "CLOSE";
+      }
+    }
+  }
+}
