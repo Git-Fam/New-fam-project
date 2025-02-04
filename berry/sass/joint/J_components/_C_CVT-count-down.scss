@@ -1,0 +1,138 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_CVT-count-down
+----------------------- */
+
+.C_CVT-count-down {
+  background-color: #EDFFEB;
+  position: relative;
+
+
+  @include pc {
+    padding: pm(8) pm(122) pm(16);
+  }
+
+  @include sp {
+    padding: s(16) s(0) s(18);
+  }
+
+  @media screen and (max-width: 950px) and (min-width: 768px) {
+    padding-top: pm(20);
+  }
+
+  .CVT-count-down--icons {
+    .icon {
+      position: absolute;
+      aspect-ratio: 67/49;
+      @include imgCover("C_CVT-count-down-icon.png");
+
+      @include pc {
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+        left: pm(36);
+        width: pm(67);
+        height: pm(49);
+      }
+
+      @include sp {
+        bottom: s(14);
+        left: s(14);
+        width: s(46);
+      }
+
+      &:nth-child(2) {
+        left: unset;
+        transform: scale(-1, 1);
+
+        @include pc {
+          right: p(36);
+        }
+
+        @include sp {
+          right: s(19);
+        }
+      }
+    }
+  }
+
+  .CVT-count-down--text {
+    display: flex;
+    align-items: baseline;
+
+    @include pc {
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: p(10);
+    }
+
+    @include sp {
+      flex-direction: column;
+      align-items: center;
+      gap: s(4);
+    }
+
+    @media screen and (max-width: 950px) and (min-width: 768px) {
+      justify-content: center;
+      gap: p(5);
+    }
+
+    .TX {
+      color: #498043;
+      @include maru;
+      @include wt900;
+      white-space: nowrap;
+
+      @include pc {
+        line-height: 101%;
+        font-size: pm(24);
+        letter-spacing: pm(2.4);
+      }
+
+      @include sp {
+        text-align: center;
+        line-height: 113%;
+        font-size: s(16);
+        letter-spacing: s(1.6);
+      }
+
+      span {
+        color: #EA4141;
+        @include maru;
+        @include wt900;
+        line-height: 1;
+        
+        @include pc {
+          font-size: pm(48);
+          letter-spacing: pm(4.8);
+          padding-inline: pm(10);
+          vertical-align: text-bottom;
+        }
+
+        @include sp {
+          font-size: s(36);
+          letter-spacing: s(3.6);
+          padding-inline: s(2);
+          vertical-align: baseline;
+        }
+
+        span {
+          display: contents;
+        }
+      }
+
+      &:nth-child(2) {
+        color: #333;
+        @include wt700;
+
+        @include sp {
+          line-height: 101%;
+          font-size: s(20);
+          letter-spacing: s(2);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+/* -----------------------
+  anime
+----------------------- */
+
+:root {
+  --animate-duration: 1s;
+  --animate-delay: 1.5s;
+  --animate-repeat: 1;
+}
+
+.is_bounceInDown {
+  opacity: 0;
+  -webkit-transform: translate3d(0, -50%, 0) scaleY(3);
+  transform: translate3d(0, -50%, 0) scaleY(3);
+
+  &.show {
+    -webkit-animation-name: bounceInDown;
+    animation-name: bounceInDown;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-duration: var(--animate-duration);
+    animation-duration: var(--animate-duration);
+    -webkit-animation-delay: var(--animate-delay);
+    animation-delay: var(--animate-delay);
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes bounceInDown {
+
+    0%,
+    60%,
+    75%,
+    90%,
+    100% {
+      -webkit-animation-timing-function: cubic-bezier(.215, .61, .355, 1);
+      animation-timing-function: cubic-bezier(.215, .61, .355, 1);
+    }
+
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0) scaleY(2);
+      transform: translate3d(0, -100%, 0) scaleY(2);
+    }
+
+    60% {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 10%, 0) scaleY(.9);
+      transform: translate3d(0, 10%, 0) scaleY(.9);
+    }
+
+    75% {
+      opacity: 1;
+      -webkit-transform: translate3d(0, -10%, 0) scaleY(.95);
+      transform: translate3d(0, -10%, 0) scaleY(.95);
+    }
+
+    90% {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 5%, 0) scaleY(.985);
+      transform: translate3d(0, 5%, 0) scaleY(.985);
+    }
+
+    100% {
+      opacity: 1;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+  }
+}
+
+
+.is_poyopoyo {
+  animation: poyopoyo 2s ease-out infinite;
+
+  @keyframes poyopoyo {
+
+    0%,
+    40%,
+    60%,
+    80% {
+      transform: scale(1.0);
+    }
+
+    50%,
+    70% {
+      transform: scale(0.95);
+    }
+  }
+}

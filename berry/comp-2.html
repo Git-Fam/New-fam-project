@@ -1,126 +1,331 @@
 <!DOCTYPE html>
 <html lang="ja">
-	<head prefix="og: https://ogp.me/ns#">
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
-		<meta name="format-detection" content="email=no,telephone=no,address=no" />
+<head prefix="og: https://ogp.me/ns#">
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
+	<meta name="format-detection" content="email=no,telephone=no,address=no" />
 
-		<meta property="og:locale" content="ja_JP" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-		<!-- ▼SEO -->
-		<link rel="”canonical”" href="”URL”" />
-		<!-- ジェネレーターURL→ https://metatags.io/ -->
+	<meta property="og:locale" content="ja_JP" />
 
-		<!-- ▼ファビコン -->
-		<!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
+	<!-- ▼SEO -->
+	<link rel="”canonical”" href="”URL”" />
+	<!-- ジェネレーターURL→ https://metatags.io/ -->
 
-		<!-- ▼クロールして欲しくない -->
-		<!-- <meta name="robots" content="noindex,nofollow"> -->
+	<!-- ▼ファビコン -->
+	<!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
 
-		<!-- ▼テーマカラー -->
-		<!-- <meta name="theme-color" content="#e9c931"> -->
+	<!-- ▼クロールして欲しくない -->
+	<!-- <meta name="robots" content="noindex,nofollow"> -->
 
-		<!-- ▼CSS -->
-		<link rel="stylesheet" href="css/main.css?ver=1.0.0" />
+	<!-- ▼テーマカラー -->
+	<!-- <meta name="theme-color" content="#e9c931"> -->
 
-		<!-- ▼フォント -->
-		<script>
-			(function (d) {
-				var config = {
-						kitId: "qrh2ejs",
-						scriptTimeout: 3000,
-						async: true,
-					},
-					h = d.documentElement,
-					t = setTimeout(function () {
-						h.className =
-							h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
-					}, config.scriptTimeout),
-					tk = d.createElement("script"),
-					f = false,
-					s = d.getElementsByTagName("script")[0],
-					a;
-				h.className += " wf-loading";
-				tk.src = "https://use.typekit.net/" + config.kitId + ".js";
-				tk.async = true;
-				tk.onload = tk.onreadystatechange = function () {
-					a = this.readyState;
-					if (f || (a && a != "complete" && a != "loaded")) return;
-					f = true;
-					clearTimeout(t);
-					try {
-						Typekit.load(config);
-					} catch (e) {}
-				};
-				s.parentNode.insertBefore(tk, s);
-			})(document);
-		</script>
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap"
-			rel="stylesheet"
-		/>
-	</head>
+	<!-- ▼CSS -->
+	<link rel="stylesheet" href="css/main.css?ver=1.0.0" />
 
-	<body>
-		<style>
-			.component--wapper {
-				display: flex;
-				flex-direction: column;
-				gap: 120px;
-				padding: 100px 0;
-				background-color: #000000;
-				overflow: hidden;
-			}
+	<!-- ▼フォント -->
+	<script>
+		(function (d) {
+			var config = {
+				kitId: "qrh2ejs",
+				scriptTimeout: 3000,
+				async: true,
+			},
+				h = d.documentElement,
+				t = setTimeout(function () {
+					h.className =
+						h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+				}, config.scriptTimeout),
+				tk = d.createElement("script"),
+				f = false,
+				s = d.getElementsByTagName("script")[0],
+				a;
+			h.className += " wf-loading";
+			tk.src = "https://use.typekit.net/" + config.kitId + ".js";
+			tk.async = true;
+			tk.onload = tk.onreadystatechange = function () {
+				a = this.readyState;
+				if (f || (a && a != "complete" && a != "loaded")) return;
+				f = true;
+				clearTimeout(t);
+				try {
+					Typekit.load(config);
+				} catch (e) { }
+			};
+			s.parentNode.insertBefore(tk, s);
+		})(document);
+	</script>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Aoboshi+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap"
+		rel="stylesheet" />
+</head>
 
-			.component--item {
-				border: 1px solid #000000;
-				padding: 50px 0;
-				background-color: #bbbbbb;
-			}
+<body>
+	<style>
+		.component--wapper {
+			display: flex;
+			flex-direction: column;
+			gap: 120px;
+			padding: 100px 0;
+			background-color: #000000;
+			overflow: hidden;
+		}
 
-			.component--title {
-				font-size: 20px;
-				font-weight: bold;
-				padding: 30px;
-				border-bottom: 1px dotted #000000;
-				margin: 0 0 30px 40px;
-				width: fit-content;
-			}
+		.component--item {
+			border: 1px solid #000000;
+			padding: 50px 0;
+			background-color: #bbbbbb;
+		}
 
-			.component--main {
-				padding: 60px 0px;
-				border: 1px solid #000000;
-				background-color: rgb(210, 210, 210);
-			}
-		</style>
+		.component--title {
+			font-size: 20px;
+			font-weight: bold;
+			padding: 30px;
+			border-bottom: 1px dotted #000000;
+			margin: 0 0 30px 40px;
+			width: fit-content;
+		}
 
-		<div class="component--wapper">
-			<!-- what -->
-			<div class="component--item">
-				<div class="component--title">what</div>
-				<div class="component--main">
-					<!-- component -->
-					<div class="countdown">
-						<p class="days"></p>
+		.component--main {
+			padding: 60px 0px;
+			border: 1px solid #000000;
+			background-color: rgb(210, 210, 210);
+		}
+	</style>
+
+	<div class="component--wapper">
+
+		<!-- C_all-title -->
+		<div class="component--item">
+			<div class="component--title">C_all-title</div>
+			<div class="component--main">
+				<!-- component -->
+
+
+				<div class="C_all-title is_notice">
+					<div class="title-wrap is_bounceInDown">
+						<h2 class="TL"><span class="TL_normal">メディアでも注目の</span><span class="TL_big">『あまりん』</span></h2>
 					</div>
-					<!-- component end -->
 				</div>
-				<p>野菜ソムリエいちご</p>
+
+				<br><br>
+				<hr><br><br>
+
+				<div class="C_all-title is_what-kind">
+					<div class="sub-title">
+						<p class="TX">一度食べたら忘れられない！？</p>
+					</div>
+					<div class="title-wrap is_bounceInDown">
+						<h2 class="TL"><span class="TL_big">『あまりん』</span><span class="TL_normal">ってどんないちご？</span></h2>
+					</div>
+				</div>
+
+				<br><br>
+				<hr><br><br>
+
+				<div class="C_all-title is_made">
+					<div class="sub-title is_no-wrap">
+						<p class="TX">食べごちが厳選！</p>
+					</div>
+					<div class="title-wrap is_bounceInDown">
+						<h2 class="TL"><span class="TL_normal">3つの農家で作られた</span><span class="TL_big">『あまりん』</span></h2>
+					</div>
+				</div>
+
+				<br><br>
+				<hr><br><br>
+
+				<div class="C_all-title is_feature">
+					<div class="title-wrap is_bounceInDown">
+						<h2 class="TL"><span class="TL_big">『あまりん』</span><span class="TL_normal">の特徴</span></h2>
+					</div>
+				</div>
+
+				<br><br>
+				<hr><br><br>
+
+				<div class="C_all-title is_delivery">
+					<div class="sub-title">
+						<p class="TX">特別な日に贈りたい　ギフトにも！</p>
+					</div>
+					<div class="title-wrap is_bounceInDown">
+						<h2 class="TL"><span class="TL_normal">食べごちは、<br class="sp">一番美味しい瞬間を届けます</span></h2>
+					</div>
+				</div>
+
+				<br><br>
+				<hr><br><br>
+
+				<div class="C_all-title is_lineup">
+					<div class="title-wrap is_bounceInDown">
+						<h2 class="TL">商品一覧</h2>
+					</div>
+				</div>
+
+				<br><br>
+				<hr><br><br>
+
+				<div class="C_all-title is_i-see">
+					<div class="title-wrap is_bounceInDown">
+						<h2 class="TL">手にした人だけがわかる、<br class="sp">この<span class="TL_big">甘さ</span>。</h2>
+					</div>
+				</div>
+
+				<br><br>
+				<hr><br><br>
+
+				<div class="C_all-title is_question">
+					<div class="title-wrap is_bounceInDown">
+						<h2 class="TL"><span class="TL_big">『あまりん』</span><br class="sp"><span class="TL_normal">のよくある質問</span></h2>
+					</div>
+				</div>
+
+
+
+				<!-- component end -->
 			</div>
 		</div>
 
-		<script
-			src="https://code.jquery.com/jquery-3.7.0.min.js"
-			integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
-			crossorigin="anonymous"
-		></script>
-		<script src="js/script.js"></script>
-		<script src="js/joint.js"></script>
-	</body>
+		<!-- C_CVT-btn -->
+		<div class="component--item">
+			<div class="component--title">C_CVT-btn</div>
+			<div class="component--main">
+				<!-- component -->
+
+				<a class="C_CVT-btn is_poyopoyo" href="#" target="_blank" rel="noopener noreferrer">
+					<div class="CVT-btn__innner">
+						<div class="text__wrap">
+							<div class="text">
+								<p class="TX TX-big">➜『あまりん』</p>
+							</div>
+							<div class="text">
+								<p class="TX">おもとめは<span>コチラ</span>から</p>
+							</div>
+						</div>
+					</div>
+				</a>
+
+				<br><br>
+				<hr><br><br>
+
+				<a class="C_CVT-btn is_mini is_poyopoyo" href="#" target="_blank" rel="noopener noreferrer">
+					<div class="CVT-btn__innner">
+						<div class="text__wrap">
+							<div class="text">
+								<p class="TX TX-big">➜U FIRM!の『あまりん』</p>
+							</div>
+							<div class="text">
+								<p class="TX">おもとめは<span>コチラ</span>から</p>
+							</div>
+						</div>
+					</div>
+				</a>
+
+				<!-- component end -->
+			</div>
+		</div>
+
+		<!-- C_CVT -->
+		<div class="component--item">
+			<div class="component--title">C_CVT</div>
+			<div class="component--main">
+				<!-- component -->
+
+				<div class="C_CVT">
+					<div class="btn__wapper">
+						<div class="arch-text">
+							<p class="TX">
+								<img src="img/CVT_arch-text.svg" alt="毎年売り切れ必至！早い者勝ち！">
+							</p>
+						</div>
+						<a class="C_CVT-btn is_poyopoyo" href="#" target="_blank" rel="noopener noreferrer">
+							<div class="CVT-btn__innner">
+								<div class="text__wrap">
+									<div class="text">
+										<p class="TX TX-big">➜『あまりん』</p>
+									</div>
+									<div class="text">
+										<p class="TX">おもとめは<span>コチラ</span>から</p>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<!-- component end -->
+			</div>
+		</div>
+
+		<!-- C_CVT-count-down -->
+		<div class="component--item">
+			<div class="component--title">C_CVT-count-down</div>
+			<div class="component--main">
+				<!-- component -->
+
+				<div class="C_CVT-count-down">
+					<div class="CVT-count-down--icons">
+						<div class="icon"></div>
+						<div class="icon"></div>
+					</div>
+					<div class="CVT-count-down--text">
+						<p class="TX">数量限定！お求めの方は<br class="sp">早めのご注文をおすすめします</p>
+						<p class="TX">販売終了まであと<span class="days"></span>日</p>
+					</div>
+				</div>
+
+				<!-- component end -->
+			</div>
+		</div>
+
+		<!-- C_count-down -->
+		<div class="component--item">
+			<div class="component--title">C_count-down</div>
+			<div class="component--main">
+				<!-- component -->
+
+				<div class="C_count-down">
+					<div class="count-down__inner">
+						<div class="count-down--title">
+							<p class="TX">販売期間！</p>
+							<p class="TX">02/10~04/10</p>
+						</div>
+						<div class="count-down--text">
+							<div class="text">
+								<p class="TX">販売終了まで</p>
+								<p class="TX">あと</p>
+							</div>
+							<div class="number">
+								<div class="days"></div>
+								<p class="TX">日</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- component end -->
+			</div>
+		</div>
+
+
+
+
+
+
+
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.7.0.min.js"
+		integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+	<script src="js/script.js"></script>
+	<script src="js/joint.js"></script>
+</body>
+
 </html>
