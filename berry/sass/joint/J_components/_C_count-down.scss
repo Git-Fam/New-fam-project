@@ -1,0 +1,113 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_count-down
+----------------------- */
+
+.C_count-down {
+  background-color: #EDFFEB;
+  position: relative;
+
+
+  @include pc {
+    padding: pm(8) pm(122) pm(16);
+  }
+
+  @include sp {}
+
+  @media screen and (max-width: 940px) and (min-width: 768px) {
+    padding-top: pm(20);
+  }
+
+  .count-down--icons {
+    .icon {
+      position: absolute;
+      aspect-ratio: 67/49;
+      @include imgCover("C_count-down-icon.png");
+
+      @include pc {
+        bottom: p(11);
+        left: p(36);
+        width: p(67);
+      }
+
+      @include sp {
+        bottom: s(11);
+        left: s(14);
+        width: s(46);
+      }
+
+      &:nth-child(2) {
+        left: unset;
+        transform: scale(-1, 1);
+
+        @include pc {
+          right: p(36);
+        }
+
+        @include sp {
+          right: s(19);
+        }
+      }
+    }
+  }
+
+  .count-down-text {
+    display: flex;
+    align-items: baseline;
+
+    @include pc {
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: p(10);
+    }
+
+    @include sp {}
+
+    @media screen and (max-width: 940px) and (min-width: 768px) {
+      justify-content: center;
+      gap: p(5);
+    }
+
+    .TX {
+      color: #498043;
+      @include maru;
+      @include wt900;
+      line-height: 101%;
+      white-space: nowrap;
+
+      @include pc {
+        font-size: pm(24);
+        letter-spacing: pm(2.4);
+      }
+
+      @include sp {}
+
+      span {
+        color: #EA4141;
+        @include maru;
+        @include wt900;
+        line-height: 1;
+        vertical-align: text-bottom;
+
+        @include pc {
+          font-size: pm(48);
+          letter-spacing: pm(4.8);
+          padding: 0 pm(10);
+        }
+
+        @include sp {}
+
+        span {
+          display: contents;
+        }
+      }
+
+      &:nth-child(2) {
+        color: #333;
+        @include wt700;
+      }
+    }
+  }
+}
