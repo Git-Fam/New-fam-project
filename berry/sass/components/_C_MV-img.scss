@@ -174,15 +174,19 @@
     }
   }
   &04{
-    @include imgContain("MV-img-04.png");
     @include pc{
       width: p(198);
       height: p(209);
     }
     @include sp{
-      transform: scale(-1,1);
       width: s(143);
       height: s(151);
+    }
+    .img{
+      @include imgContain("MV-img-04.png");
+      transform: scale(-1,1);
+      width:100%;
+      height: 100%;
     }
   }
 }

@@ -1,5 +1,5 @@
-@use "../../functions" as *;
-@use "../J_functions" as *;
+@use "../../functions"as *;
+@use "../J_functions"as *;
 
 /* -----------------------
   C_CVT
@@ -60,6 +60,60 @@
             width: s(314);
           }
         }
+      }
+    }
+
+    .cta-parson {
+      position: absolute;
+      z-index: 10;
+
+      &.cta-parson-01 {
+        @include imgContain("cta-parson01.png");
+
+        @include pc {
+          width: p(246);
+          height: p(260);
+          top: p(-173);
+          right: p(-23);
+
+        }
+        @include sp{
+          width: s(110);
+          height: s(116);
+          top: s(-56);
+          right: s(-30);
+        }
+      }
+
+      &.cta-parson-02 {
+        @include imgContain("cta-parson02.png");
+        aspect-ratio: 1/1;
+
+        @include pc {
+          width: p(198);
+          left: 0;
+          bottom: p(-77);
+        }
+        @include sp{
+          width: s(91);
+          bottom:s(-51);
+          left: s(-17);
+        }
+      }
+
+    }
+  }
+
+  &.C_CVT_last {
+    @include sp {
+      padding: s(100) 0 s(20);
+      background-position: left 30% bottom 30%;
+      background-size: 150%;
+    }
+
+    .arch-text {
+      @include sp {
+        bottom: calc(100% - s(-13));
       }
     }
   }

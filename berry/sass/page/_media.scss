@@ -14,9 +14,10 @@
 
   @include pc {
     margin-top: p(-20);
-    padding-block: p(90) p(102);
+    padding-block: p(120) p(102);
   }
-  @include sp{
+
+  @include sp {
     padding-block: s(57) s(60);
     margin-top: s(-10);
   }
@@ -26,24 +27,79 @@
     @include iconCover($mv-under);
     width: 100%;
     top: 0;
-    @include pc{
+
+    @include pc {
       height: p(57);
     }
-    @include sp{
-      height: s(24);
+
+    @include sp {
+      height: s(34);
     }
   }
 
-  .C_media-card {
-    transform: rotate(-3deg);
+  .C_all-title {
     @include pc {
-      margin: p(121) 0 0 p(155);
-    }
-    @include sp{
-      margin: s(165) 0 0 p(40);
+      margin-left: p(95);
     }
 
-    &-decoimg {
+    &.is_notice {
+      @include pc {
+        .TL {
+          display: block;
+
+          &_normal,
+          &_big {
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+
+  &-parson-img01 {
+    @include imgContain("media-parson-img01.png");
+
+    @include pc {
+      position: absolute;
+      width: p(390);
+      height: p(553);
+      top: p(80);
+      right: p(100);
+    }
+
+    @include sp {
+      position: relative;
+      width: s(199);
+      height: s(281);
+      margin: s(41) auto 0;
+    }
+
+    img {
+      aspect-ratio: 396/121;
+
+      @include pc {
+        width: p(396);
+      }
+
+      @include sp {
+        width: s(347);
+        position: absolute;
+        @include p-center-left;
+        top: s(-30);
+      }
+    }
+  }
+
+  .C_media-card-wrap {
+    transform: rotate(-3deg);
+    @include pc {
+      margin: p(140) 0 0 p(125);
+    }
+
+    @include sp {
+      margin: s(64) 0 0 p(40);
+    }
+    .C_media-card-decoimg {
       .decoimg {
         position: absolute;
         @include all(border-width 8);
@@ -55,11 +111,13 @@
           @include all(width 200,
             height 190,
           );
-          @include pc{
+
+          @include pc {
             bottom: 0;
             right: p(-110);
           }
-          @include sp{
+
+          @include sp {
             bottom: s(-140);
             right: s(30);
           }
@@ -72,58 +130,100 @@
           @include all(width 170,
             height 160,
           );
-          @include pc{
-            right:p(-20);
+
+          @include pc {
+            right: p(-20);
             bottom: p(-110);
           }
-          @include sp{
+
+          @include sp {
             left: 0;
             bottom: s(-250);
           }
         }
       }
     }
+
   }
 
-  &-bottom{
+  .C_media-card {
+    // @include pc {
+    //   margin: p(140) 0 0 p(125);
+    // }
+    // @include sp{
+    //   margin: s(64) 0 0 p(40);
+    // }
+
+  }
+
+  &-bottom {
     background: $B-white-opa;
     @include all(border-radius 10);
-    @include pc{
+    position: relative;
+
+    @include pc {
       padding: p(44) p(52) p(44) p(55);
       margin: p(128) auto 0;
       width: p(880);
     }
-    @include sp{
+
+    @include sp {
       padding: s(44) s(22) s(40);
-      margin: s(336) auto 0;
+      margin: s(450) auto 0;
       width: s(348);
     }
-    &-TX{
+
+    &-TX {
       text-align: center;
       @include wt500;
       line-height: normal;
-      @include pc{
+
+      @include pc {
         font-size: p(24);
       }
-      @include sp{
+
+      @include sp {
         font-size: s(20);
         letter-spacing: s(0.2);
       }
-      span{
+
+      span {
         color: $F-E1231D;
       }
     }
-    &-img{
-      img{
+
+    &-img {
+      img {
         aspect-ratio: 352/100;
         margin-inline: auto;
         @include all(margin-top 30);
-        @include pc{
+
+        @include pc {
           width: p(352);
         }
-        @include sp{
+
+        @include sp {
           width: s(288);
-        }  
+        }
+      }
+    }
+
+    .media-parson-img02 {
+      position: absolute;
+      @include imgContain("media-parson-img02.png");
+
+      @include pc {
+        width: p(303);
+        height: p(239);
+        bottom: p(-41);
+        left: p(-143);
+      }
+
+      @include sp {
+        width: s(247);
+        height: s(195);
+        top: s(-163);
+        left: s(-41);
       }
     }
   }

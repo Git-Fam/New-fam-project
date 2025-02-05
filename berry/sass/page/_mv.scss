@@ -134,6 +134,33 @@
       margin-top: s(22);
     }
   }
+  .mv-arrow{
+    @include iconContain($mv-arrow);
+    position: absolute;
+    @include p-center-left;
+    animation: arrow 2s ease infinite;
+    @include all(width 25);
+    @include pc{
+      height: p(86);
+      bottom: p(-50);
+    }
+    @include sp{
+      height: s(47);
+      bottom: s(-30);
+    }
+    @keyframes arrow {
+    0%{
+      transform: translateY(0%);
+    }
+      50%{
+        transform: translateY(30%);
+      }
+      100%{
+        transform: translateY(0%);
+      }
+  
+    }
+  }
 
   &::before {
     content: "";

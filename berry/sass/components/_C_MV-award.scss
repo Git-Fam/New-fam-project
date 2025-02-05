@@ -164,11 +164,11 @@
 
   &::after {
     position: absolute;
-    top: 0%;
-    left: -150%;
+    top: 0;
+    left: -200%;
     content: "";
-    height: 100%;
-    width: 70px;
+    height: 200%;
+    width: 200%;
     background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.6) 40%, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
     background: linear-gradient(132deg, rgba(217, 217, 217, 0.00) 32.48%, rgba(255, 255, 255, 0.88) 46.05%, rgba(255, 255, 255, 0.88) 52.9%, rgba(115, 115, 115, 0.00) 70.78%);
     background: linear-gradient(132deg, rgba(217, 217, 217, 0.00) 32.48%, rgba(255, 255, 255, 0.70) 46.05%, rgba(255, 255, 255, 0.70) 52.9%, rgba(115, 115, 115, 0.00) 70.78%);
@@ -177,7 +177,7 @@
 
     @keyframes kira {
       0% {
-        left: -100%;
+        left: -200%;
       }
 
       20% {

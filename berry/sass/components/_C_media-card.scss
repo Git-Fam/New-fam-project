@@ -3,76 +3,79 @@
 /* -----------------------
   C__media-card
 ----------------------- */
-
-.C_media-card {
-  background: $B-white;
+.C_media-card-wrap {
   position: relative;
 
-  // rotate: -3deg;
   @include pc {
     width: p(880);
-    padding: p(18) p(67) p(43) p(48);
   }
 
   @include sp {
     width: s(361);
-    padding: s(18) s(14) s(74) s(8);
+
   }
 
-  &-txdeco {
+  .C_media-card-txdeco {
     @include pc {
       position: absolute;
       display: flex;
       top: p(-121);
       left: 0;
     }
-    @include sp{
-    }
-    .txdeco{
-      @include sp{
+
+    @include sp {}
+
+    .txdeco {
+      @include sp {
         position: absolute;
         left: 0;
       }
-      &.txdeco01{
-        @include sp{
-          top: s(-160);
+
+      &.txdeco02 {
+        @include sp {
+          top: s(-90);
         }
-        img{
-          aspect-ratio: 396/121;
-          @include pc{
-            width: p(396);
-          }
-          @include sp{
-            width: s(347);
-          }
-        }
-      }
-      &.txdeco02{
-        @include sp{
-          top: s(-110);
-          transform: rotate(-16.7deg);
-        }
-        img{
+
+        img {
           aspect-ratio: 251/142;
-          @include pc{
+
+          @include pc {
             width: p(251);
           }
-          @include sp{
+
+          @include sp {
             width: s(219);
           }
         }
       }
-  
+
     }
+  }
+
+}
+
+.C_media-card {
+  background: $B-white;
+
+  // rotate: -3deg;
+  @include pc {
+    // width: p(880);
+    padding: p(18) p(67) p(43) p(48);
+  }
+
+  @include sp {
+    // width: s(361);
+    padding: s(18) s(14) s(74) s(8);
   }
 
   &-top {
     @include center;
     justify-content: space-between;
 
-    @include sp{
+    @include sp {
       gap: s(10);
     }
+
     &-img {
       @include imgContain("award-batch.png");
 
@@ -80,7 +83,8 @@
         width: p(120);
         height: p(167);
       }
-      @include sp{
+
+      @include sp {
         min-width: s(63);
         height: s(93);
       }
@@ -89,46 +93,54 @@
     &-TLbox {
       &-TX {
         @include kinuta;
-        @include all(border-width 1 );
+        @include all(border-width 1);
         border-bottom: dashed $P-B2B2B2;
-        &.top-TL{
-          @include pc{
+
+        &.top-TL {
+          @include pc {
             font-size: pm(24);
             line-height: 200%;
             letter-spacing: p(1.2);
           }
-          @include sp{
+
+          @include sp {
             line-height: 130%;
             letter-spacing: s(0.8);
-            padding:0 s(23) s(4) 0;
+            padding: 0 s(23) s(4) 0;
           }
         }
-        &.under-TL{
-          @include pc{
+
+        &.under-TL {
+          @include pc {
             font-size: pm(32);
             line-height: 150%;
             letter-spacing: p(1.6);
             margin-top: p(10);
           }
-          @include sp{
+
+          @include sp {
             line-height: 180%;
             letter-spacing: s(0.8);
             font-size: s(22);
             white-space: nowrap;
           }
-          span{
+
+          span {
             background: linear-gradient(165deg, #AC803C 18.32%, #D2C13B 45.24%, #B48C45 56.58%, #E4C44D 80.2%, #AC803C 112.79%);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            @include pc{
+
+            @include pc {
               letter-spacing: p(2.35);
             }
-            &.number{
-              @include pc{
+
+            &.number {
+              @include pc {
                 font-size: pm(47);
               }
-              @include sp{
+
+              @include sp {
                 font-size: s(37);
               }
             }
@@ -137,21 +149,25 @@
       }
     }
   }
-  &-TX{
+
+  &-TX {
     @include kinuta;
     color: $F-000;
-    @include pc{
+
+    @include pc {
       margin: p(21) auto 0;
       width: p(747);
       letter-spacing: p(0.48);
       line-height: 175%;
     }
-    @include sp{
+
+    @include sp {
       margin: s(25) auto 0;
       width: s(327);
       line-height: 168%;
     }
-    span{
+
+    span {
       color: $F-E1231D;
     }
   }
