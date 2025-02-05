@@ -1,0 +1,197 @@
+@use "../functions"as *;
+
+/* -----------------------
+  C_about-list
+----------------------- */
+
+.C_about-list {
+  background: $B-white;
+
+  &-box {
+    position: relative;
+
+    .textbox {
+      @include pc {
+        width: fit-content;
+        display: flex;
+        gap: p(30);
+      }
+
+      .label {
+        @include iconContain($about-label);
+        text-align: center;
+        position: relative;
+        @include all(width 131,
+          height 135,
+          padding-top 20);
+
+        &-TX {
+          color: $F-E1231D;
+          @include wt500;
+          @include all(font-size 81,
+          );
+        }
+
+        .point {
+          position: absolute;
+          width: 100%;
+          color: $F-E1231D;
+          @include wt700;
+          @include all(letter-spacing 0.83,
+            bottom 5,
+          );
+
+          span {
+            @include all(font-size 24,
+            );
+          }
+        }
+
+        &:nth-child(1) {}
+      }
+
+      .text-wrap {
+        .TL {
+          line-height: 150%;
+          color: $F-E1231D;
+          @include wt700;
+          @include am(font-size 24,
+          );
+
+          @include sp {
+            margin-top: s(30);
+          }
+
+          span {
+            @include am(font-size 36,
+            );
+
+          }
+        }
+
+        .TX {
+          color: $F-000;
+          line-height: normal;
+          @include am(letter-spacing 0.8,
+            margin-top 20);
+
+          @include pc {
+            width: p(386);
+          }
+
+          @include sp {
+            margin-top: s(20);
+          }
+        }
+      }
+    }
+
+    .about-img {
+      position: absolute;
+
+      &.img01 {
+        @include imgContain("about-img01.png");
+        @include all(width 252,
+          height 286,
+        );
+
+        @include pc {
+          top: p(40);
+          right: p(-85);
+        }
+
+        @include sp {
+          bottom: s(-350);
+          right: s(-20);
+        }
+
+        &:before {
+          content: "";
+          position: absolute;
+          @include iconContain($MV-berry);
+          @include p-center-left;
+          left: 55%;
+          transform: scale(1, -1) rotate(-6deg);
+          @include all(width 154,
+            height 52,
+            top -45,
+          );
+
+        }
+      }
+      &.img02 {
+        @include pc {
+          @include imgContain("about-img02-PC.png");
+          width: p(426);
+          height: p(412);
+          top: p(0);
+          left: p(-100);
+        }
+
+        @include sp {
+          @include imgContain("about-img02-SP.png");
+          width: s(426);
+          height: s(342);
+          bottom: s(-350);
+          left: s(-40);
+        }
+
+      }
+      &.img03 {
+        @include imgContain("about-img03.png");
+        @include all(width 251,
+          height 273,
+        );
+
+        @include pc {
+          top: p(0);
+          right: p(-60);
+        }
+
+        @include sp {
+          bottom: s(-350);
+          left: s(0);
+        }
+
+        &:before {
+          content: "";
+          position: absolute;
+          @include iconContain($MV-berry);
+          transform: rotate(150deg);
+          @include all(width 154,
+            height 52,
+            top -25,
+            left -40
+          );
+
+        }
+      }
+    }
+
+    &:nth-child(2){
+      @include pc{
+        margin-top: p(110);
+      }
+      @include sp{
+        margin-top: s(395);
+      }
+    }
+    &:nth-child(3){
+      @include pc{
+        margin-top: p(142);
+      }
+      @include sp{
+        margin-top: s(386);
+      }
+    }
+
+
+    &:nth-child(2n) {
+      .textbox {
+        @include pc {
+          margin-left: auto;
+        }
+      }
+    }
+  }
+}

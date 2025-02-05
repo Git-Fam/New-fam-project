@@ -12,10 +12,28 @@
   @include pc{
     padding-block: p(103) p(130);
   }
+  @include sp{
+    padding-block: s(60);
+  }
   .about-content{
+    position: relative;
     background: $B-white;
+    z-index: 10;
     @include pc{
       padding: p(66) p(60) p(93) p(48); 
+      border-radius: p(60);
+    }
+    @include sp{
+      padding: s(38) s(13) s(387) s(17);
+      border-radius: s(30);
+    }
+    .C_about-list{
+      @include pc{
+        margin-top: p(100);
+      }
+      @include sp{
+        margin-top: s(34);
+      }
     }
   }
   &::before{
