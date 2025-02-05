@@ -211,8 +211,20 @@ header {
 
       &-under {
         @include aoboshi;
-        color: $F-FF9D9D;
+        color: rgba(255, 255, 255, 0.5);
         @include am(font-size 10, margin-top 5);
+        animation: color 3s ease infinite;
+        @keyframes color{
+          0%{
+            color: rgba(255, 255, 255, 0.5);
+          }
+          50%{
+            color: rgba(255, 255, 255, 1);
+          }
+          100%{
+            color: rgba(255, 255, 255, 0.5);
+          }
+        }
       }
 
       &::before {

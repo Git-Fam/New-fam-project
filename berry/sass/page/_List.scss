@@ -5,13 +5,246 @@
   List
 ----------------------- */
 
-.List{
+.List {
   background: $B-B6231E;
-  @include pc{
+  position: relative;
+  overflow: hidden;
+
+  @include pc {
     padding-block: p(100) p(152);
   }
-  @include sp{
+
+  @include sp {
     padding-block: s(67) s(96);
   }
-}
 
+  .C_all-title {
+    @include pc {
+      margin: 0;
+    }
+  }
+
+  .list-topTX {
+    color: $F-white;
+    // line-height: 157%;
+    @include wt500;
+
+    @include pc {
+      margin-top: p(60);
+      letter-spacing: p(1.6);
+      line-height: 258%;
+    }
+
+    @include sp {
+      text-align: center;
+      margin-top: s(30);
+      line-height: 200%;
+    }
+  }
+
+  .List-wrap {
+    position: relative;
+
+    @include pc {
+      margin-top: p(68);
+    }
+
+    @include sp {
+      margin-top: s(120);
+    }
+
+    .List-parson {
+      width: fit-content;
+      z-index: 10;
+
+      @include pc {
+        position: absolute;
+        top: p(-235);
+        right: p(133);
+      }
+
+      @include sp {
+        position: relative;
+        left: s(80);
+      }
+
+      &-bubble {
+        @include iconContain($List-bubble);
+        position: absolute;
+
+        @include pc {
+          width: p(412);
+          height: p(142);
+          padding-top: p(40);
+          top: p(-152);
+          left: p(30);
+        }
+
+        @include sp {
+          width: s(273);
+          height: s(94);
+          padding-top: s(25);
+          top: s(-100);
+          left: s(10);
+        }
+
+        .TX {
+          @include vdl;
+          color: $F-B6231E;
+          text-align: center;
+          transform: rotate(-3deg);
+          line-height: 177%;
+
+          @include pc {
+            letter-spacing: p(1.6);
+
+          }
+
+          @include sp {
+            font-size: s(10.6);
+            letter-spacing: s(1.06);
+          }
+        }
+      }
+
+      &-img {
+        @include imgContain("List-parson.png");
+        aspect-ratio: 265/235;
+        position: relative;
+        z-index: 10;
+
+        @include pc {
+          width: p(265);
+        }
+
+        @include sp {
+          width: s(176);
+        }
+      }
+
+      .name {
+        position: absolute;
+        color: #B7D2AF;
+        @include wt700;
+
+        @include sp {
+          font-size: s(6.6);
+          line-height: 117%;
+          letter-spacing: s(0.4);
+        }
+
+        span {
+          @include sp {
+            font-size: s(10.6);
+          }
+        }
+
+        &.name01 {
+          @include pc {
+            top: p(80);
+            left: p(-90);
+          }
+
+          @include sp {
+            top: s(51);
+            left: s(-23);
+          }
+        }
+
+        &.name02 {
+          @include pc {
+            top: p(50);
+            right: p(-90);
+          }
+
+          @include sp {
+            top: s(40);
+            right: s(-30);
+          }
+        }
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        @include imgContain("List-parson-bg.png");
+
+        @include pc {
+          width: p(427);
+          height: p(411);
+          top: p(130);
+          left: p(-80);
+        }
+
+        @include sp {
+          width: s(279);
+          height: s(269);
+          top: s(90);
+          left: s(-50);
+        }
+      }
+    }
+
+    .C_List_content {
+      position: relative;
+      z-index: 20;
+    }
+  }
+
+  .List-rotate-anime {
+    position: absolute;
+    transform: translateY(-180%);
+    left: 10%;
+    width: fit-content;
+    animation: Listanime 30s ease infinite;
+
+
+    @keyframes Listanime {
+      0% {
+        transform: translateY(-180%);
+      }
+
+      90%{
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(3000%);
+        opacity: 0;
+
+      }
+
+    }
+    .List-rotate-deco {
+      @include imgContain("List-rotate-deco.png");
+      // position: absolute;
+  
+      @include pc {
+        width: p(212);
+        height: p(166);
+      }
+      @include sp{
+        width: s(127);
+        height: s(93);
+      }
+  
+      animation: Listdeco 10s  infinite;
+  
+      @keyframes Listdeco {
+        0% {
+          transform: rotate(0deg);
+        }
+  
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    }
+    &.List-rotate-anime02{
+      animation: Listanime 30s ease 5s infinite;
+      left: 80%;
+    }
+  }
+
+}

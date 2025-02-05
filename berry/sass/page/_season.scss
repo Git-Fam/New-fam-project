@@ -7,26 +7,31 @@
 
 .season {
   position: relative;
-  @include pc{
-    padding-block:p(164) p(106); 
+
+  @include pc {
+    padding-block: p(164) p(106);
   }
-  @include sp{
-    padding-block:s(90) s(60); 
+
+  @include sp {
+    padding-block: s(90) s(60);
 
   }
 
-  &-bg{
+  &-bg {
     @include imgCover("season-bg.jpg");
     position: absolute;
     width: 100%;
     top: 0;
     left: 0;
-    @include pc{
+
+    @include pc {
       height: p(482);
     }
-    @include sp{
+
+    @include sp {
       height: s(283);
     }
+
     &::before,
     &::after {
       content: "";
@@ -36,14 +41,28 @@
       height: 100%;
       top: 0;
       left: 0;
-    }  
+    }
   }
-  .C_all-title{
-  &.is_delivery{
+
+  .C_season-title {
     position: relative;
     z-index: 20;
-
   }
-}
 
+  .C_season-contents {
+    @include pc {
+      margin-top: p(217);
+    }
+    @include sp{
+      margin-top: s(137);
+    }
+  }
+  .C_season-img{
+    @include pc{
+      margin-top: p(190);
+    }
+    @include sp{
+      margin-top: s(80);
+    }
+  }
 }

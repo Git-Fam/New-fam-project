@@ -40,6 +40,8 @@
         position: absolute;
         top: 0;
         left: 0;
+        z-index: 10;
+        opacity: 0;
 
         @include pc {
           border-radius: p(10);
@@ -51,30 +53,133 @@
 
         &.main-img01 {
           @include imgCover("List-img01.png");
+          animation: fadeimg01 15s ease 0s infinite;
+          @keyframes fadeimg01 {
+            0%{
+              opacity: 0;
+            }
+            50%{
+              opacity: 1;
+            }
+            100%{
+              opacity: 0;
+              z-index: 0;
+            }
+          }  
         }
 
         &.main-img02 {
           @include imgCover("List-img02.png");
+          animation: fadeimg02 15s ease 0s infinite;
+          @keyframes fadeimg02 {
+            0%{
+              opacity: 1;
+            }
+            50%{
+              opacity: 0;
+              z-index: 0;
+            }
+            100%{
+              opacity: 1;
+            }
+          }  
         }
 
-        &::before {
-          content: "";
-          @include imgContain("List-img-deco01.png");
-          position: absolute;
+        &.main-img03 {
+          @include imgCover("List-img03.png");
+          animation: fadeimg03 21s ease 0s infinite;
+          @keyframes fadeimg03 {
+            0%{
+              opacity: 1;
+            }
+            33%{
+              opacity: 0;
+              z-index: 0;
+            }
+            66%{
+              opacity: 0;
+              z-index: 0;
 
-          @include pc {
-            width: p(147);
-            height: p(105);
-            bottom: p(-9);
-            left: p(-17);
-          }
+            }
+            100%{
+              opacity: 1;
+            }
+          }  
 
-          @include sp {
-            width: s(112);
-            height: s(80);
-            bottom: s(-8);
-            left: s(-16);
-          }
+        }
+
+        &.main-img04 {
+          @include imgCover("List-img04.png");
+          animation: fadeimg04 21s ease 0s infinite;
+          @keyframes fadeimg04 {
+            0%{
+              opacity: 0;
+            }
+            33%{
+              opacity: 1;
+            }
+            66%{
+              opacity: 0;
+              z-index: 0;
+            }
+            100%{
+              opacity: 0;
+              z-index: 0;
+            }
+          }  
+
+        }
+
+        &.main-img05 {
+          @include imgCover("List-img05.png");
+          animation: fadeimg05 21s ease 0s infinite;
+          @keyframes fadeimg05 {
+            0%{
+              opacity: 0;
+            }
+            33%{
+              opacity: 0;
+            }
+            66%{
+              opacity: 1;
+            }
+            100%{
+              opacity: 0;
+              z-index: 0;
+            }
+          }  
+        }
+
+        &.main-img06 {
+          @include imgCover("List-img06.png");
+          animation: fadeimg01 15s ease 0s infinite;
+        }
+
+        &.main-img07 {
+          @include imgCover("List-img07.png");
+          background-position: bottom;
+          animation: fadeimg02 15s ease 0s infinite;
+        }
+
+      }
+      &::before {
+        content: "";
+        @include imgContain("List-img-deco01.png");
+        position: absolute;
+        z-index: 20;
+
+        @include pc {
+          width: p(147);
+          height: p(105);
+          bottom: p(-9);
+          left: p(-17);
+        }
+
+        @include sp {
+          width: s(112);
+          height: s(80);
+          bottom: s(-8);
+          left: s(-16);
         }
       }
     }
@@ -93,26 +198,120 @@
 
       .sub-img {
         &.sub-img01 {
-          @include imgCover("C_MV-award-box02.png");
-          aspect-ratio: 1/1;
+          @include imgContain("C_MV-award-box02.png");
+          aspect-ratio: 1.03/1;
 
           @include pc {
             width: p(86);
           }
-          @include sp{
+
+          @include sp {
             width: s(66);
           }
         }
 
         &.sub-img02 {
-          @include imgCover("List-sub-img02.jpg");
+          @include imgContain("List-sub-img02.jpg");
           aspect-ratio: 84/81;
 
           @include pc {
             width: p(84);
           }
-          @include sp{
+
+          @include sp {
             width: s(64);
+          }
+        }
+
+        &.sub-img03 {
+          @include imgContain("C_MV-award-box04.png");
+          aspect-ratio: 1.03/1;
+
+          @include pc {
+            width: p(85);
+          }
+
+          @include sp {
+            width: s(67);
+          }
+        }
+
+        &.sub-img04 {
+          @include imgContain("C_MV-award-box05.png");
+          aspect-ratio: 56/72;
+
+          @include pc {
+            width: p(56);
+          }
+
+          @include sp {
+            width: s(44);
+          }
+        }
+
+        &.sub-img05 {
+          @include imgContain("C_MV-award-box03.png");
+          aspect-ratio: 1.03/1;
+
+          @include pc {
+            width: p(60);
+          }
+
+          @include sp {
+            width: s(53);
+          }
+        }
+
+        &.sub-img06 {
+          @include imgContain("C_MV-award-box04.png");
+          aspect-ratio: 1.03/1;
+
+          @include pc {
+            width: p(60);
+          }
+
+          @include sp {
+            width: s(53);
+          }
+        }
+
+        &.sub-img07 {
+          @include imgContain("C_MV-award-box01.png");
+          aspect-ratio: 85/50;
+
+          @include pc {
+            width: p(80);
+          }
+
+          @include sp {
+            width: s(70);
+          }
+        }
+
+        &.sub-img08 {
+          @include imgContain("C_MV-award-box05.png");
+          aspect-ratio: 50/60;
+
+          @include pc {
+            width: p(50);
+          }
+
+          @include sp {
+            width: s(44);
+          }
+        }
+
+        &.sub-img09 {
+          @include imgContain("C_MV-award-box06.png");
+          aspect-ratio: 1.03/1;
+          mix-blend-mode: multiply;
+
+          @include pc {
+            width: p(60);
+          }
+
+          @include sp {
+            width: s(53);
           }
         }
       }
@@ -124,45 +323,53 @@
       order: 1;
       margin-top: s(30);
     }
-    .TLbox{
+
+    .TLbox {
       @include wt700;
-      .top-TL{
-        @include am(
-          letter-spacing 1.6,
+
+      .top-TL {
+        @include am(letter-spacing 1.6,
         )
       }
-      .TL{
-        @include am(
-          font-size 32,
+
+      .TL {
+        @include am(font-size 32,
           letter-spacing 3.2,
           margin-top 20,
         )
       }
     }
-    .detail{
+
+    .detail {
       display: flex;
       flex-direction: column;
-      @include pc{
+
+      @include pc {
         gap: p(15);
         margin-top: p(30);
       }
-      @include sp{
+
+      @include sp {
         gap: s(10);
         margin-top: s(21);
       }
-      .detail-TX{
-        span{
+
+      .detail-TX {
+        span {
           @include wt500;
         }
       }
     }
-    .TX{
+
+    .TX {
       line-height: normal;
-      @include pc{
+
+      @include pc {
         margin-top: p(39);
         width: p(360);
       }
-      @include sp{
+
+      @include sp {
         margin-top: s(30);
       }
     }

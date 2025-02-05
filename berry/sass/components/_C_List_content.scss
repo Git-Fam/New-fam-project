@@ -12,11 +12,13 @@
   @include pc {
     border-radius: p(60);
     padding: p(45) p(54) p(73);
+    margin-top: p(100);
   }
 
   @include sp {
     border-radius: s(30);
     padding: s(24) s(20) s(48);
+    margin-top: s(100);
   }
 
   &-logo {
@@ -44,7 +46,6 @@
     @include all(border-weight 2,
     );
     border-top: solid #C6C6C6;
-    border-bottom: solid #C6C6C6;
 
     @include pc {
       padding: p(30) p(171) p(30) p(17);
@@ -83,12 +84,14 @@
   }
 
   .List-under {
+    @include all(border-weight 2,);
+    border-top: solid #C6C6C6;
     @include pc {
-      margin-top: p(30);
+      padding-top: p(30);
     }
 
     @include sp {
-      margin-top: s(58);
+      padding-top: s(58);
     }
 
     &-TL {
@@ -207,7 +210,8 @@
   }
 
   &:nth-child(1) {
-    .logo {
+    margin:0;
+    .C_List_content-logo {
       @include all(width 103,
         height 49,
       )
@@ -235,18 +239,88 @@
   }
 
   &:nth-child(2) {
-    .logo {
+    .C_List_content-logo {
       @include all(width 73,
         height 69,
       )
     }
+    .C_List{
+      .main-img{
+        &::before{
+          @include imgContain("List-img-deco02.png");
+          left: auto;
+          @include pc{
+            right: p(-20);
+          }
+          @include sp{
+            right: s(-10);
+          }
+        }
+      }
+      .sub-imgbox{
+        @include pc{
+          margin: p(38) 0 0 p(17);
+        } 
+        @include sp{
+          margin-top: s(29);
+        }
+      }
+      &-textbox{
+        .TL{
+          @include sp{
+            white-space: nowrap;
+            margin-left: s(-19);
+            letter-spacing: s(1.2);
+          }
+        }
+      }
+    }
+    .List-under{
+      @include pc{
+        margin-top: p(35);
+      }
+      @include sp{
+        margin-top: s(21);
+      }
+      &-content {
+        &-img {
+          @include imgContain("List-under-img02.jpg");
+        }
+      }
+    }
+
   }
 
   &:nth-child(3) {
-    .logo {
+    .C_List_content-logo {
+      mix-blend-mode: multiply;
       @include all(width 233,
         height 66,
       )
+    }
+    .sub-imgbox{
+      flex-wrap: wrap;
+      @include pc{
+        width: p(250);
+        margin: p(30) 0 0 p(17);
+      }
+      @include sp{
+        margin-top: s(20);
+        width: s(220);
+      }
+    }
+    .List-under{
+      @include pc{
+        margin-top: p(35);
+      }
+      @include sp{
+        margin-top: s(21);
+      }
+      &-content {
+        &-img {
+          @include imgContain("List-under-img03.jpg");
+        }
+      }
     }
   }
 
