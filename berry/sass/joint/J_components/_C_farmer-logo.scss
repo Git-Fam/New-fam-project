@@ -1,0 +1,79 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_farmer-logo
+----------------------- */
+
+.C_farmer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include pc {
+    gap: p(109);
+  }
+
+  @include sp {
+    gap: s(33);
+  }
+
+  .logo--item {
+    border-radius: 50%;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+    background-color: #FFF;
+    position: relative;
+
+    @include pc {
+      width: p(168);
+    }
+
+    @include sp {
+      width: s(93);
+    }
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &:nth-child(1) {
+      img {
+        @include pc {
+          width: p(102);
+        }
+
+        @include sp {
+          width: s(56);
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      img {
+        @include pc {
+          width: p(71);
+        }
+
+        @include sp {
+          width: s(39);
+        }
+      }
+    }
+
+    &:nth-child(3) {
+      img {
+        @include pc {
+          width: p(151);
+        }
+
+        @include sp {
+          width: s(84);
+        }
+      }
+    }
+  }
+}
