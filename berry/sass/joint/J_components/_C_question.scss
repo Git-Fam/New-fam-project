@@ -1,0 +1,146 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_question
+----------------------- */
+
+.C_question {
+  @include imgCover("C_question-BK.jpg");
+  background-position: bottom center;
+
+  @include pc {
+    padding-block: p(100);
+  }
+
+  @include sp {
+    padding-block: s(60) s(55);
+  }
+
+  &--inner {
+
+    .question--container {
+      background: #FFF;
+
+      @include pc {
+        border-radius: p(60);
+        padding: p(52) p(80) p(73);
+      }
+
+      @include sp {
+        border-radius: s(30);
+        padding: s(30) 0 s(57);
+      }
+    }
+
+    .question--lists {
+
+      @include pc {
+        margin-top: p(64);
+        @include column(p(60));
+      }
+
+      @include sp {
+        margin-top: s(60);
+        @include column(s(60));
+        padding-inline: s(20);
+      }
+
+      .question--item {
+
+        @include pc {
+          @include column(p(8));
+        }
+
+        @include sp {
+          @include column(s(8));
+        }
+
+        .title {
+          display: flex;
+          align-items: center;
+
+          @include pc {
+            gap: p(15);
+          }
+
+          @include sp {
+            gap: s(15);
+          }
+
+          .mark {
+            border-radius: 50%;
+            border: solid #333;
+            position: relative;
+
+            @include pc {
+              width: pm(30);
+              height: pm(30);
+              border-width: p(2);
+            }
+
+            @include sp {
+              width: s(30);
+              height: s(30);
+              border-width: s(2);
+            }
+
+            .TL {
+              position: absolute;
+              top: 50%;
+              left: 52%;
+              transform: translate(-50%, -50%);
+            }
+          }
+
+          .TL {
+            line-height: 1;
+            @include maru;
+            @include wt700;
+            line-height: 157.2%;
+
+            @include pc {
+              font-size: pm(20);
+              letter-spacing: pm(2);
+            }
+
+            @include sp {
+              font-size: s(20);
+              letter-spacing: s(2);
+            }
+          }
+        }
+
+        .text {
+
+          @include pc {
+            @include column(p(20));
+          }
+
+          @include sp {
+            @include column(s(20));
+          }
+
+          &--item {
+
+            .TX {
+              @include maru;
+              @include wt500;
+              line-height: 157.2%;
+
+              @include pc {
+                font-size: pm(16);
+                letter-spacing: pm(1.6);
+              }
+
+              @include sp {
+                font-size: s(16);
+                letter-spacing: s(1.6);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

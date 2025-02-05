@@ -5,8 +5,46 @@
   C_feature 
 ----------------------- */
 
+.feature {
+  background: #FFE9EC;
+  position: relative;
+  overflow: hidden;
+
+  @include pc {
+    padding-block: p(100);
+  }
+
+  @include sp {
+    padding-block: s(65);
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    transform: translateX(-50%);
+    mix-blend-mode: darken;
+    @include imgCover("feature-BK.png");
+    
+    @include pc {
+      top: p(180);
+      left: 50%;
+      width: 100%;
+      height: p(1619);
+    }
+
+    @include sp {
+      bottom: s(-12);
+      left: 48%;
+      width: s(724);
+      height: s(916);
+    }
+  }
+}
+
 .C_feature {
   background: #FFF;
+  position: relative;
+  z-index: 3;
 
   @include pc {
     border-radius: p(60);
