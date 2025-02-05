@@ -47,7 +47,7 @@ body {
 }
 
 section {
-  &.default {
+  .default {
     @include pc {
       padding-inline: p(200);
     }
