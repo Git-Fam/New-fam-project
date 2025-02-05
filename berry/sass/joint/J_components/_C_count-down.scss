@@ -6,21 +6,42 @@
 ----------------------- */
 
 .C_count-down {
-  @include imgCover("C_count-down-BK.jpg");
   position: relative;
-
+  overflow: hidden;
+  
   @include pc {
     padding: pm(38) p(153) pm(34);
   }
-
+  
   @include sp {
     padding: s(20) s(0) s(36) s(20);
   }
-
+  
   &::before {
     content: "";
     position: absolute;
-    z-index: 1;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    margin: auto;
+    @include imgCover("C_count-down-BK.jpg");
+    animation: scale 10s ease-in-out infinite alternate;
+  
+    @keyframes scale {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.5);
+      }
+    }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
     width: 100%;
     height: 100%;
     top: 0;
@@ -30,7 +51,7 @@
 
   .count-down__inner {
     position: relative;
-    z-index: 2;
+    z-index: 3;
 
     .count-down--title {
       width: fit-content;
