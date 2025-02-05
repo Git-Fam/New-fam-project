@@ -1,0 +1,67 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_season-img
+----------------------- */
+
+.C_season-img {
+  width: 100%;
+  position: relative;
+
+  .img--wrap {
+    position: relative;
+    width: fit-content;
+
+    .img {
+      border: solid #FFF;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      aspect-ratio: 357/238;
+
+      @include pc {
+        border-width: p(10);
+      }
+
+      @include sp {
+        border-width: s(4);
+      }
+    }
+
+    &:nth-child(1) {
+      z-index: 2;
+      transform: rotate(8deg);
+
+      .img {
+        @include imgCover("C_season-img-01.jpg");
+
+        @include pc {
+          width: p(357.98);
+        }
+
+        @include sp {
+          width: s(142);
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      position: absolute;
+      z-index: 1;
+      right: 0;
+      top: 30%;
+      transform: translateY(-50%) rotate(-5deg);
+
+      .img {
+        @include imgCover("C_season-img-02.jpg");
+
+        @include pc {
+          width: p(594.945);
+        }
+
+        @include sp {
+          width: s(237);
+        }
+      }
+    }
+  }
+}

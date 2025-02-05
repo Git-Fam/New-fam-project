@@ -16,11 +16,11 @@
     margin: 0 auto;
 
     @include pc {
-      padding: pm(5) pm(28);
+      padding: pm(7) pm(28);
     }
 
     @include sp {
-      padding: s(5) s(28);
+      padding: s(10) s(23);
     }
 
 

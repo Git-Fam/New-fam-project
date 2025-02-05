@@ -1,0 +1,252 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_feature 
+----------------------- */
+
+.C_feature {
+  background: #FFF;
+
+  @include pc {
+    border-radius: p(60);
+    padding: p(51) 0 p(96);
+  }
+
+  @include sp {
+    border-radius: s(30);
+    padding: s(34) 0 s(56);
+  }
+
+  .C_all-title {
+
+    @include pc {
+      margin-bottom: p(30);
+    }
+
+    @include sp {
+      margin-bottom: s(30);
+    }
+  }
+
+  &__memo {
+
+    @include pc {
+      margin-bottom: p(49);
+      padding-inline: p(23) p(76);
+    }
+
+    @include sp {
+      margin-bottom: s(75);
+      padding-inline: s(12);
+    }
+
+    .memo__inner {
+      display: flex;
+
+      @include pc {
+        gap: p(51);
+      }
+
+      @media screen and (max-width: 860px) and (min-width: 768px) {
+        align-items: center;
+      }
+
+      @include sp {
+        flex-direction: column;
+        gap: s(30);
+      }
+
+      .img {
+        @include imgContain("C_feature__memo.png");
+
+        @include pc {
+          flex-shrink: 0;
+          width: p(391);
+          height: p(387);
+        }
+
+        @include sp {
+          width: s(243);
+          height: s(218);
+          margin: 0 auto;
+        }
+      }
+
+      .text {
+
+        @include pc {
+          margin-top: p(65);
+          @include column(p(25));
+        }
+
+        @media screen and (max-width: 860px) and (min-width: 768px) {
+          margin-top: 0;
+        }
+
+        @include sp {}
+
+        .TX {
+          @include maru;
+          @include wt400;
+          line-height: 157.2%;
+
+          @include pc {
+            font-size: pm(16);
+            letter-spacing: pm(1.6);
+          }
+
+          @include sp {
+            font-size: s(16);
+            letter-spacing: s(1.6);
+          }
+
+          .TX-color {
+            color: #E1231D;
+            @include wt500;
+            line-height: 157.2%;
+
+            @include pc {
+              font-size: pm(24);
+              letter-spacing: pm(2.4);
+            }
+
+            @include sp {
+              font-size: s(24);
+              letter-spacing: s(2.4);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__flames {
+
+    @include pc {
+      padding-inline: p(84);
+      @include column(p(60));
+    }
+
+    @include sp {
+      padding-inline: s(15);
+      @include column(s(60));
+    }
+
+    .dot__flame {
+      position: relative;
+      border: dashed #E1231D;
+
+      @include pc {
+        border-radius: p(10);
+        padding: p(44) p(29) p(32);
+        border-width: p(3);
+      }
+
+      @include sp {
+        border-radius: s(10);
+        padding: s(44) s(13) s(40) s(14);
+        border-width: s(3);
+      }
+
+      .title {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: calc(infinity * 1px);
+        background: #E1231D;
+        width: fit-content;
+
+        @include pc {
+          padding: p(3) p(15) p(5);
+        }
+
+        @include sp {
+          padding: s(8) s(6);
+        }
+
+        .TL {
+          color: #FFF;
+          @include maru;
+          @include wt700;
+          white-space: nowrap;
+
+          @include pc {
+            font-size: pm(20);
+            letter-spacing: pm(1.6);
+          }
+
+          @include sp {
+            font-size: s(16);
+            letter-spacing: s(1.28);
+          }
+        }
+      }
+
+
+      .text {
+
+        .TX {
+          @include maru;
+          @include wt400;
+          line-height: 157.2%;
+
+          @include pc {
+            font-size: pm(16);
+            letter-spacing: pm(1.6);
+          }
+
+          @include sp {
+            font-size: s(16);
+            letter-spacing: s(1.6);
+          }
+
+          .TX-color {
+            @include wt400;
+            color: #E1231D;
+          }
+        }
+      }
+    }
+
+    .chart__flame {
+
+      @include pc {
+        @include column(p(10));
+      }
+
+      @include sp {
+        @include column(s(10));
+      }
+
+      .title {
+        .TL {
+          color: #E1231D;
+          text-align: center;
+          @include maru;
+          @include wt700;
+
+          @include pc {
+            font-size: pm(24);
+            letter-spacing: pm(1.92);
+          }
+
+          @include sp {
+            font-size: s(24);
+            letter-spacing: s(1.92);
+          }
+        }
+      }
+
+      .chary__img {
+        width: 100%;
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+}

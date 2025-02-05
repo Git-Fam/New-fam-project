@@ -1,0 +1,172 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_season-contents
+----------------------- */
+
+.C_season-contents {
+  .contents--items {
+    display: flex;
+    align-items: center;
+
+    @include pc {
+      gap: p(31);
+    }
+
+    @include sp {
+      gap: s(9);
+    }
+
+    .item__wrap {
+      position: relative;
+
+      @include pc {
+        @include row(5, p(31));
+      }
+
+      @include sp {
+        @include row(5, s(9));
+      }
+
+      .item {
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        position: relative;
+        width: 100%;
+
+        .img {
+          aspect-ratio: 1/1;
+          border-radius: 50%;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          overflow: hidden;
+
+          @include pc {
+            width: calc((100 / 150) * 100%);
+          }
+
+          @include sp {
+            width: calc((41 / 62) * 100%);
+          }
+        }
+      }
+
+      .text {
+        position: absolute;
+        
+        @include pc {
+          width: pm(541.43);
+          bottom: 115%;
+          left: 50%;
+        }
+
+        @include sp {
+          width: s(313);
+          bottom: 130%;
+          left: 33%;
+        }
+
+        img {
+          width: 100%;
+        }
+      }
+
+      &:nth-child(1) {
+
+        .item {
+          background-color: #E1231D;
+          animation: flashing 1.5s ease-in-out infinite;
+
+          @keyframes flashing {
+            0% {
+              opacity: 1;
+            }
+
+            50% {
+              opacity: 0.1;
+            }
+          }
+
+          &::before {
+            content: '';
+            position: absolute;
+            aspect-ratio: 53/25;
+            @include iconContain($C_season-contents-dot);
+            transform: rotate(164.923deg);
+
+            @include pc {
+              width: p(53);
+              bottom: 93%;
+              right: 70%;
+            }
+
+            @include sp {
+              width: s(22);
+              bottom: 93%;
+              right: 70%;
+            }
+          }
+
+          .img {
+            @include imgContain('C_season-contents-item-01.png');
+          }
+        }
+      }
+
+      &:nth-child(2) {
+        .item {
+          background-color: #F65050;
+
+          .img {
+            @include imgContain('C_season-contents-item-02.png');
+          }
+        }
+      }
+
+      &:nth-child(3) {
+        .item {
+          background-color: #F77A7A;
+
+          .img {
+            @include imgContain('C_season-contents-item-03.png');
+          }
+        }
+      }
+
+      &:nth-child(4) {
+        .item {
+          background-color: #F69A9A;
+
+          .img {
+            @include imgContain('C_season-contents-item-04.png');
+          }
+        }
+      }
+
+      &:nth-child(5) {
+        .item {
+          background-color: #FDCBCB;
+
+          .img {
+            @include imgContain('C_season-contents-item-05.png');
+
+            &::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              border-radius: 50%;
+              background: linear-gradient(151deg, rgba(255, 255, 255, 0.00) 14.9%, rgba(254, 81, 77, 0.50) 86.11%);
+              transform: rotate(17.84deg);
+            }
+          }
+        }
+      }
+    }
+  }
+}

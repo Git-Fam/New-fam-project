@@ -1,0 +1,53 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_season-title
+----------------------- */
+
+.C_season-title {
+
+  .C_all-title {
+    .title-wrap {
+      .TL {
+        .TL_normal {
+          @media screen and (max-width: 850px) and (min-width: 768px) {
+            font-size: pm(30);
+          }
+        }
+      }
+    }
+  }
+
+  .text {
+
+    @include pc {
+      margin-top: p(30);
+    }
+
+    @include sp {
+      margin-top: s(30);
+    }
+
+    .TX {
+      @include maru;
+      @include wt400;
+      line-height: 157.2%;
+
+      @include pc {
+        text-align: center;
+        font-size: pm(16);
+        letter-spacing: pm(1.6);
+      }
+
+      @include sp {
+        font-size: s(16);
+        letter-spacing: s(1.6);
+      }
+
+      &-color {
+        color: #E1231D;
+      }
+    }
+  }
+}
