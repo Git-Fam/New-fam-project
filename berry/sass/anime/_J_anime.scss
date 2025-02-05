@@ -88,3 +88,23 @@
     }
   }
 }
+
+.is_rotate-left{
+  transform: rotateY(90deg);
+  transition: all 3s;
+  transition-duration: 2s;
+
+  &.show{
+    transform: rotateY(0deg);
+  }
+}
+
+.is_rotate-right{
+  transform: rotateY(90deg);
+  transition: all 3s;
+  transition-duration: 2s;
+
+  &.show{
+    transform: rotateY(0deg);
+  }
+}

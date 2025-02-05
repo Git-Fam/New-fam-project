@@ -8,15 +8,15 @@
 .C_count-down {
   position: relative;
   overflow: hidden;
-  
+
   @include pc {
     padding: pm(38) p(153) pm(34);
   }
-  
+
   @include sp {
     padding: s(20) s(0) s(36) s(20);
   }
-  
+
   &::before {
     content: "";
     position: absolute;
@@ -27,11 +27,16 @@
     margin: auto;
     @include imgCover("C_count-down-BK.jpg");
     animation: scale 10s ease-in-out infinite alternate;
-  
+
+    @include sp {
+      background-position: center left 40%;
+    }
+
     @keyframes scale {
       0% {
         transform: scale(1);
       }
+
       100% {
         transform: scale(1.5);
       }
