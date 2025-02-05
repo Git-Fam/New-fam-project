@@ -1,6 +1,6 @@
 $(function () {
 	// ハンバーガーメニュー
-	$(".menu-btn").on("click", function () {
+	$(".menu-btn,.nav-list li").on("click", function () {
 		//  $(this).toggleClass("active");
 		//  $('.menu').toggleClass("active");
 		$("body").toggleClass("active");

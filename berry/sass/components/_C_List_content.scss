@@ -191,7 +191,8 @@
 
             @include sp {
               font-size: s(18);
-              letter-spacing: s(1.8);
+              letter-spacing: s(1);
+              white-space: nowrap;
             }
           }
         }
@@ -200,6 +201,8 @@
   }
 
   .C_CVT-btn {
+    position: relative;
+    @include p-center-left;
     @include pc {
       margin-top: p(60);
     }
@@ -303,10 +306,12 @@
       @include pc{
         width: p(250);
         margin: p(30) 0 0 p(17);
+        gap: p(10);
       }
       @include sp{
         margin-top: s(20);
         width: s(220);
+        gap: s(10);
       }
     }
     .List-under{

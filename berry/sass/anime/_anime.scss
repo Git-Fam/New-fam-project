@@ -87,7 +87,7 @@
   transform: translateY(100%);
 
   &.show {
-    animation: up 0.8s ease 0.2s forwards;
+    animation: up 0.8s ease 0.1s forwards;
 
     @keyframes up {
       0% {
