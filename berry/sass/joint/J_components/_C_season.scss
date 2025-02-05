@@ -1,0 +1,76 @@
+@use "../../functions" as *;
+@use "../J_functions" as *;
+
+/* -----------------------
+  C_season
+----------------------- */
+
+.C_season {
+  background-color: #FFF;
+  position: relative;
+
+  @include pc {
+    padding-block: p(160) p(180);
+  }
+
+  @include sp {
+    padding-block: s(90);
+  }
+
+  &--bg {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    @include imgCover("C_question-BK.jpg");
+
+    @include pc {
+      height: p(482);
+    }
+
+    @include sp {
+      height: s(283);
+      background-size: 210%;
+      background-position: center left 60%;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 1) 90%);
+    }
+  }
+
+  &--inner {
+    position: relative;
+    z-index: 3;
+
+    .C_season-title{
+
+      @include pc {
+        margin-bottom: p(217);
+      }
+
+      @include sp {
+        margin-bottom: s(137);
+      }
+    }
+
+    .C_season-contents{
+
+      @include pc {
+        margin-bottom: p(200);
+      }
+
+      @include sp {
+        margin-bottom: s(90);
+      }
+    }
+  }
+}
