@@ -57,6 +57,7 @@ header {
 
     }
     nav {
+      transition: all 0.3s ease;
       @include pc {
         margin-left: auto;
       }
@@ -279,14 +280,14 @@ header {
 
   &.active {
     .nav-berry-bg{
-      transition: all 1s ease;
+      transition: all 1s ease-in;
       width: 420vw;
       height: 420vh;
     }
 
     nav {
       @include sp {
-        transition: all 0.3s ease 0.5s;
+        transition: all 0.3s ease 0.8s;
         left: 0;
       }
     }

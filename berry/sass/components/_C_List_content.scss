@@ -1,0 +1,253 @@
+@use "../functions"as *;
+
+/* -----------------------
+  C_List_content
+----------------------- */
+
+.C_List_content {
+  @include imgCover("farmer-bg.jpg");
+  background-repeat: repeat-y;
+  width: 100%;
+
+  @include pc {
+    border-radius: p(60);
+    padding: p(45) p(54) p(73);
+  }
+
+  @include sp {
+    border-radius: s(30);
+    padding: s(24) s(20) s(48);
+  }
+
+  &-logo {
+    width: fit-content;
+    margin: 0 auto;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .C_List {
+    @include pc {
+      margin-top: p(60);
+    }
+
+    @include sp {
+      margin-top: s(30);
+    }
+  }
+
+  &-firstTX {
+    position: relative;
+    @include all(border-weight 2,
+    );
+    border-top: solid #C6C6C6;
+    border-bottom: solid #C6C6C6;
+
+    @include pc {
+      padding: p(30) p(171) p(30) p(17);
+      margin-top: p(50);
+    }
+
+    @include sp {
+      padding-block: s(20);
+      margin-top: s(20);
+    }
+
+    .firstTX {
+      line-height: 176%;
+      @include am(font-size 13,
+      )
+    }
+
+    &::before {
+      content: "";
+      @include imgContain("List_content-first.png");
+      position: absolute;
+      @include all(width 118,
+        height 145,
+      );
+
+      @include pc {
+        top: p(0);
+        right: p(17);
+      }
+
+      @include sp {
+        bottom: s(-36);
+        right: s(-7);
+      }
+    }
+  }
+
+  .List-under {
+    @include pc {
+      margin-top: p(30);
+    }
+
+    @include sp {
+      margin-top: s(58);
+    }
+
+    &-TL {
+      color: $F-EA4141;
+      @include wt700;
+      line-height: 157%;
+      @include am(font-size 32,
+        letter-spacing 3.2,
+      );
+    }
+
+    &-TX {
+      line-height: 143%;
+      @include all(margin-top 30,
+      )
+    }
+
+    &-content {
+      @include all(margin-top 60,
+        padding-bottom 60,
+      );
+
+      @include pc {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        border-bottom: p(3) solid #C6C6C6;
+      }
+
+      @include sp {
+        border-bottom: s(2) solid #C6C6C6;
+      }
+
+      &-img {
+        @include all(border-radius 10,
+        );
+
+        @include pc {
+          width: p(355);
+          height: p(328);
+        }
+
+        @include sp {
+          width: s(304);
+          height: s(280);
+          margin: 0 auto;
+        }
+      }
+
+      &-textbox {
+        display: flex;
+        flex-direction: column;
+
+        @include pc {
+          gap: p(41);
+        }
+
+        @include sp {
+          margin-top: s(25);
+          gap: s(30);
+        }
+
+        li {
+          display: flex;
+          align-items: center;
+          @include all(border-weight 3,
+            padding-bottom 8,
+          );
+          border-bottom: solid $F-FF9D9D;
+
+          @include pc {
+            width: p(366);
+            gap: p(20);
+          }
+
+          @include sp {
+            gap: s(15);
+          }
+
+          .number {
+            color: $F-FF9D9D;
+            @include aoboshi;
+            @include am(font-size 70,
+              letter-spacing 7,
+            );
+
+          }
+
+          .TX {
+            @include wt700;
+            line-height: normal;
+
+            @include pc {
+              font-size: pm(20);
+              letter-spacing: p(2);
+            }
+
+            @include sp {
+              font-size: s(18);
+              letter-spacing: s(1.8);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .C_CVT-btn {
+    @include pc {
+      margin-top: p(60);
+    }
+
+    @include sp {
+      margin-top: s(41);
+    }
+  }
+
+  &:nth-child(1) {
+    .logo {
+      @include all(width 103,
+        height 49,
+      )
+    }
+
+    .C_List {
+      .sub-imgbox {
+        @include pc {
+          margin: p(42) 0 0 p(17);
+        }
+
+        @include sp {
+          margin-top: s(30);
+        }
+      }
+    }
+
+    .List-under {
+      &-content {
+        &-img {
+          @include imgContain("List-under-img01.jpg");
+        }
+      }
+    }
+  }
+
+  &:nth-child(2) {
+    .logo {
+      @include all(width 73,
+        height 69,
+      )
+    }
+  }
+
+  &:nth-child(3) {
+    .logo {
+      @include all(width 233,
+        height 66,
+      )
+    }
+  }
+
+}

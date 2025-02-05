@@ -1,0 +1,17 @@
+@use "../functions"as *;
+
+
+/* -----------------------
+  List
+----------------------- */
+
+.List{
+  background: $B-B6231E;
+  @include pc{
+    padding-block: p(100) p(152);
+  }
+  @include sp{
+    padding-block: s(67) s(96);
+  }
+}
+

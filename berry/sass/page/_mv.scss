@@ -8,55 +8,83 @@
 .MV {
   position: relative;
   background-color: $B-FFF6F6;
-  z-index: 10;
+  z-index: 100;
 
   @include pc {
     padding: p(90) 0 p(220) 0;
   }
-  @include sp{
-    padding: s(196) 0 s(260) 0 ;
+
+  @include sp {
+    padding: s(196) 0 s(260) 0;
   }
 
   &-bg-box {
     .MV-bg {
       position: absolute;
-      background: rgba(255, 157, 157, 0.20);
 
       @include pc {
         // transform: rotate(112.009deg);
-        clip-path: path("M8.51333 141.583C-19.8235 202.313 29.9035 269.004 63.4747 327.005C91.7598 375.873 129.279 417.346 181.102 439.764C234.343 462.796 293.966 470.799 348.184 450.171C404.335 428.806 451.952 385.575 472.197 329.01C491.791 274.261 470.627 217.312 451.13 162.528C429.794 102.58 416.68 26.6396 356.862 4.94355C297.507 -16.5842 243.999 43.0279 185.221 66.0835C123.231 90.3989 36.6692 81.2405 8.51333 141.583Z");
+        // clip-path: path("M8.51333 141.583C-19.8235 202.313 29.9035 269.004 63.4747 327.005C91.7598 375.873 129.279 417.346 181.102 439.764C234.343 462.796 293.966 470.799 348.184 450.171C404.335 428.806 451.952 385.575 472.197 329.01C491.791 274.261 470.627 217.312 451.13 162.528C429.794 102.58 416.68 26.6396 356.862 4.94355C297.507 -16.5842 243.999 43.0279 185.221 66.0835C123.231 90.3989 36.6692 81.2405 8.51333 141.583Z");
       }
 
-      animation: morph 4s infinite ease-in-out;
+      // animation: morph 4s infinite ease-in-out;
 
-      @keyframes morph {
-        0% {
-          clip-path: path("M8.51333 141.583C-19.8235 202.313 29.9035 269.004 63.4747 327.005C91.7598 375.873 129.279 417.346 181.102 439.764C234.343 462.796 293.966 470.799 348.184 450.171C404.335 428.806 451.952 385.575 472.197 329.01C491.791 274.261 470.627 217.312 451.13 162.528C429.794 102.58 416.68 26.6396 356.862 4.94355C297.507 -16.5842 243.999 43.0279 185.221 66.0835C123.231 90.3989 36.6692 81.2405 8.51333 141.583Z");
-        }
+      // @keyframes morph {
 
-        50% {
-          clip-path: path("M20 160C-10 210 40 280 80 340C110 380 150 420 200 450C260 470 320 480 380 460C440 440 480 400 500 340C520 280 480 220 460 160C440 100 420 30 360 10C300 -10 250 50 190 70C120 100 40 90 20 160Z");
-        }
+      //   0% {
+      //     transform: translate(0px, 0px) scale(1);
+      //   }
 
-        100% {
-          clip-path: path("M8.51333 141.583C-19.8235 202.313 29.9035 269.004 63.4747 327.005C91.7598 375.873 129.279 417.346 181.102 439.764C234.343 462.796 293.966 470.799 348.184 450.171C404.335 428.806 451.952 385.575 472.197 329.01C491.791 274.261 470.627 217.312 451.13 162.528C429.794 102.58 416.68 26.6396 356.862 4.94355C297.507 -16.5842 243.999 43.0279 185.221 66.0835C123.231 90.3989 36.6692 81.2405 8.51333 141.583Z");
-        }
-      }
+      //   25% {
+      //     transform: translate(-10px, 10px) scale(1.05) rotate(20deg);
+      //   }
+
+      //   50% {
+      //     transform: translate(10px, -10px) scale(0.95) rotate(40deg);
+      //   }
+
+      //   75% {
+      //     transform: translate(-5px, 5px) scale(1.02) rotate(1deg);
+      //   }
+
+      //   100% {
+      //     transform: translate(0px, 0px) scale(1);
+      //   }
+      // }
 
       &.bg01 {
+
         @include pc {
-          width: p(469);
+          width: p(500);
           height: p(500);
-          top: p(100);
+          top: p(30);
           right: 0;
+          transform: rotate(90deg);
+        }
+        @include sp{
+          width: s(250);
+          height: s(250);
+          bottom: s(-30);
+          right: s(-30);
+          transform: rotate(230deg);
+
         }
       }
+
       &.bg02 {
         @include pc {
-          transform: scale(0.7);
-          width: p(331);
-          height: p(353);
-          left: 0;
+          width: p(431);
+          height: p(453);
+          left: p(-170);
+          top: p(-60);
+        }
+        @include sp{
+          width: s(200);
+          height: s(200);
+          top: s(-20);
+          left: s(-30);
+          transform: rotate(0deg);
+
         }
       }
     }
@@ -74,7 +102,8 @@
           left: p(300);
           top: p(40);
         }
-        @include sp{
+
+        @include sp {
           position: relative;
           left: s(106);
           top: s(102);
@@ -87,7 +116,8 @@
           left: p(40);
           top: p(80);
         }
-        @include sp{
+
+        @include sp {
           left: s(-22);
           top: s(40);
         }
@@ -98,7 +128,8 @@
           right: p(10);
           bottom: p(80);
         }
-        @include sp{
+
+        @include sp {
           right: s(30);
           bottom: s(40);
         }
@@ -110,7 +141,8 @@
           bottom: p(40);
           z-index: 0;
         }
-        @include sp{
+
+        @include sp {
           right: s(-18);
           top: s(45);
         }
@@ -127,38 +159,46 @@
     position: absolute;
     bottom: 0;
     left: 0;
+
     @include pc {
       bottom: p(-15);
     }
-    @include sp{
+
+    @include sp {
       margin-top: s(22);
     }
   }
-  .mv-arrow{
+
+  .mv-arrow {
     @include iconContain($mv-arrow);
     position: absolute;
     @include p-center-left;
     animation: arrow 2s ease infinite;
     @include all(width 25);
-    @include pc{
+
+    @include pc {
       height: p(86);
       bottom: p(-50);
     }
-    @include sp{
+
+    @include sp {
       height: s(47);
       bottom: s(-30);
     }
+
     @keyframes arrow {
-    0%{
-      transform: translateY(0%);
-    }
-      50%{
-        transform: translateY(30%);
-      }
-      100%{
+      0% {
         transform: translateY(0%);
       }
-  
+
+      50% {
+        transform: translateY(30%);
+      }
+
+      100% {
+        transform: translateY(0%);
+      }
+
     }
   }
 
@@ -173,7 +213,8 @@
     @include pc {
       width: p(189);
     }
-    @include sp{
+
+    @include sp {
       width: s(145);
     }
   }
@@ -189,7 +230,8 @@
       height: p(191);
       top: 45%;
     }
-    @include sp{
+
+    @include sp {
       width: s(156);
       height: s(147);
       top: 45%;

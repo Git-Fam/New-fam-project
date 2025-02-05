@@ -1,0 +1,170 @@
+@use "../functions"as *;
+
+/* -----------------------
+  C_List
+----------------------- */
+
+.C_List {
+  display: flex;
+
+  @include pc {
+    gap: p(35);
+  }
+
+  @include sp {
+    flex-direction: column;
+  }
+
+  .pc-imgbox {
+    @include sp {
+      display: contents;
+    }
+
+    .main-imgbox {
+      position: relative;
+
+      @include pc {
+        width: p(355);
+        height: p(213);
+      }
+
+      @include sp {
+        width: s(310);
+        height: s(186);
+        order: 0;
+      }
+
+      .main-img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        @include pc {
+          border-radius: p(10);
+        }
+
+        @include sp {
+          border-radius: s(8);
+        }
+
+        &.main-img01 {
+          @include imgCover("List-img01.png");
+        }
+
+        &.main-img02 {
+          @include imgCover("List-img02.png");
+        }
+
+        &::before {
+          content: "";
+          @include imgContain("List-img-deco01.png");
+          position: absolute;
+
+          @include pc {
+            width: p(147);
+            height: p(105);
+            bottom: p(-9);
+            left: p(-17);
+          }
+
+          @include sp {
+            width: s(112);
+            height: s(80);
+            bottom: s(-8);
+            left: s(-16);
+          }
+        }
+      }
+    }
+
+    .sub-imgbox {
+      display: flex;
+
+      @include pc {
+        gap: p(20);
+      }
+
+      @include sp {
+        order: 2;
+        gap: s(15)
+      }
+
+      .sub-img {
+        &.sub-img01 {
+          @include imgCover("C_MV-award-box02.png");
+          aspect-ratio: 1/1;
+
+          @include pc {
+            width: p(86);
+          }
+          @include sp{
+            width: s(66);
+          }
+        }
+
+        &.sub-img02 {
+          @include imgCover("List-sub-img02.jpg");
+          aspect-ratio: 84/81;
+
+          @include pc {
+            width: p(84);
+          }
+          @include sp{
+            width: s(64);
+          }
+        }
+      }
+    }
+  }
+
+  &-textbox {
+    @include sp {
+      order: 1;
+      margin-top: s(30);
+    }
+    .TLbox{
+      @include wt700;
+      .top-TL{
+        @include am(
+          letter-spacing 1.6,
+        )
+      }
+      .TL{
+        @include am(
+          font-size 32,
+          letter-spacing 3.2,
+          margin-top 20,
+        )
+      }
+    }
+    .detail{
+      display: flex;
+      flex-direction: column;
+      @include pc{
+        gap: p(15);
+        margin-top: p(30);
+      }
+      @include sp{
+        gap: s(10);
+        margin-top: s(21);
+      }
+      .detail-TX{
+        span{
+          @include wt500;
+        }
+      }
+    }
+    .TX{
+      line-height: normal;
+      @include pc{
+        margin-top: p(39);
+        width: p(360);
+      }
+      @include sp{
+        margin-top: s(30);
+      }
+    }
+  }
+}
