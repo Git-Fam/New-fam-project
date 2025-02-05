@@ -8,12 +8,13 @@
 .MV {
   position: relative;
   background-color: $B-FFF6F6;
+  z-index: 10;
 
   @include pc {
-    padding: p(90) 0 p(20) 0;
+    padding: p(90) 0 p(220) 0;
   }
   @include sp{
-    padding: s(196) 0 s(12) 0 ;
+    padding: s(196) 0 s(260) 0 ;
   }
 
   &-bg-box {
@@ -99,7 +100,7 @@
         }
         @include sp{
           right: s(30);
-          bottom: s(50);
+          bottom: s(40);
         }
       }
 
@@ -123,8 +124,11 @@
   }
 
   .C_MV-award {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     @include pc {
-      margin-top: p(27);
+      bottom: p(-15);
     }
     @include sp{
       margin-top: s(22);
@@ -164,4 +168,9 @@
       top: 45%;
     }
   }
+}
+.mv-under{
+  @include iconCover($mv-under);
+  width: 100%;
+  height: p(57);
 }

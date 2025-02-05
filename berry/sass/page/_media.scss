@@ -1,0 +1,14 @@
+@use "../functions"as *;
+
+
+/* -----------------------
+  media
+----------------------- */
+
+#media{
+  @include imgCover("media-bg.png");
+  width: 100%;
+  @include pc{
+    margin-top: p(-20);
+  }
+}

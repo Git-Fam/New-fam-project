@@ -1,13 +1,13 @@
-$(function () {   
-  // // ハンバーガーメニュー
-  //  $(".burger").on("click", function(){
-  //    $(header).toggleClass("active");
-  //  }); 
-  // $(".js-link,.menu").on("click", function(){
-  //   $('header').removeClass("active");
-  // });
-
-  // var prevScrollpos = window.pageYOffset;
+  $(function () {
+    // ハンバーガーメニュー
+    $(".menu-btn").on("click", function () {
+      //  $(this).toggleClass("active");
+      //  $('.menu').toggleClass("active");
+       $('body').toggleClass("active");
+      $("header").toggleClass("active");
+    });
+  
+    // var prevScrollpos = window.pageYOffset;
   // window.onscroll = function() {
   //   var currentScrollpos = window.pageYOffset;
   //   if (prevScrollpos > currentScrollpos || currentScrollpos < 450) {
@@ -53,7 +53,7 @@ $(function () {
 
 
 	// カウントダウンの終了日時を設定
-	let countdownDate = new Date("2025-12-29T00:00:00");
+	let countdownDate = new Date("2025-04-10T00:00:00");
 
 	let x = setInterval(function () {
 		// 現在の日時を取得
