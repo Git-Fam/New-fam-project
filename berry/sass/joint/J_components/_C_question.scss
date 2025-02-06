@@ -114,7 +114,7 @@
         .text {
 
           @include pc {
-            @include column(p(20));
+            @include column(p(28));
           }
 
           @include sp {

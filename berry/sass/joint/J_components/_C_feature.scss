@@ -197,7 +197,7 @@
         width: fit-content;
 
         @include pc {
-          padding: p(3) p(15) p(5);
+          padding: p(8) p(15) p(8);
         }
 
         @include sp {
@@ -251,7 +251,7 @@
     .chart__flame {
 
       @include pc {
-        @include column(p(10));
+        @include column(p(14));
       }
 
       @include sp {
