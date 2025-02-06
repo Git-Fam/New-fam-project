@@ -119,7 +119,7 @@
 
     @include sp {
       width: s(314);
-      border-radius: calc(infinity * 1px);
+      border-radius: s(100);
     }
 
     .CVT-btn__innner {
@@ -131,7 +131,7 @@
 
       @include sp {
         padding: s(4) s(0);
-        border-radius: calc(infinity * 1px);
+        border-radius: s(100);
       }
 
       .text__wrap {
