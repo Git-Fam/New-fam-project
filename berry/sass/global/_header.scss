@@ -11,6 +11,7 @@ header {
   top: 0;
   left: 0;
   z-index: 300;
+  transition: all 0.3s ease;
 
   @include pc {
     padding: p(13) p(28) p(21) p(40);
@@ -287,6 +288,13 @@ header {
 
     @include sp {
       top: s(20);
+    }
+  }
+
+  &.show{
+    @include pc{
+      top: -100%;
+      transition: all 0.3s ease;
     }
   }
 

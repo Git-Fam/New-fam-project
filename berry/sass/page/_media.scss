@@ -24,15 +24,16 @@
 
   .mv-under {
     position: absolute;
-    @include iconCover($mv-under);
     width: 100%;
     top: 0;
 
     @include pc {
+      @include iconCover($mv-under);
       height: p(57);
     }
 
     @include sp {
+      @include iconCover($mv-underSP);
       height: s(34);
     }
   }
