@@ -127,9 +127,15 @@
         color: #B7D2AF;
         @include wt700;
 
+        @include pc {
+          line-height: 165%;
+          letter-spacing: p(0.7);
+          font-size: p(10);
+        }
+
         @include sp {
-          font-size: s(6.6);
           line-height: 117%;
+          font-size: s(6.6);
           letter-spacing: s(0.4);
         }
 
@@ -137,12 +143,16 @@
           @include sp {
             font-size: s(10.6);
           }
+
+          @include pc {
+            font-size: p(16);
+          }
         }
 
         &.name01 {
           @include pc {
-            top: p(80);
-            left: p(-90);
+            top: p(60);
+            left: p(-40);
           }
 
           @include sp {
@@ -153,8 +163,8 @@
 
         &.name02 {
           @include pc {
-            top: p(50);
-            right: p(-90);
+            top: p(40);
+            right: p(-50);
           }
 
           @include sp {
@@ -205,7 +215,7 @@
         transform: translateY(-180%);
       }
 
-      90%{
+      90% {
         opacity: 1;
       }
 
@@ -216,32 +226,35 @@
       }
 
     }
+
     .List-rotate-deco {
       @include imgContain("List-rotate-deco.png");
       // position: absolute;
-  
+
       @include pc {
         width: p(212);
         height: p(166);
       }
-      @include sp{
+
+      @include sp {
         width: s(127);
         height: s(93);
       }
-  
-      animation: Listdeco 10s  infinite;
-  
+
+      animation: Listdeco 10s infinite;
+
       @keyframes Listdeco {
         0% {
           transform: rotate(0deg);
         }
-  
+
         100% {
           transform: rotate(360deg);
         }
       }
     }
-    &.List-rotate-anime02{
+
+    &.List-rotate-anime02 {
       animation: Listanime 30s ease 5s infinite;
       left: 80%;
     }

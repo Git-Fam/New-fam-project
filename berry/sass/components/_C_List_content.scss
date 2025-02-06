@@ -63,8 +63,7 @@
       )
     }
 
-    &::before {
-      content: "";
+    .first-img {
       @include imgContain("List_content-first.png");
       position: absolute;
       @include all(width 118,
@@ -84,8 +83,9 @@
   }
 
   .List-under {
-    @include all(border-weight 2,);
+    @include all(border-weight 2, );
     border-top: solid #C6C6C6;
+
     @include pc {
       padding-top: p(30);
     }
@@ -201,19 +201,21 @@
   }
 
   .C_CVT-btn {
-    position: relative;
-    @include p-center-left;
-    @include pc {
-      margin-top: p(60);
-    }
+    &.is_mini {
+      @include pc {
+        width: p(683);
+        margin-top: p(60);
+      }
 
-    @include sp {
-      margin-top: s(41);
+      @include sp {
+        margin-top: s(41);
+      }
     }
   }
 
   &:nth-child(1) {
-    margin:0;
+    margin: 0;
+
     .C_List_content-logo {
       @include all(width 103,
         height 49,
@@ -247,30 +249,36 @@
         height 69,
       )
     }
-    .C_List{
-      .main-img{
-        &::before{
+
+    .C_List {
+      .main-imgbox {
+        &::before {
           @include imgContain("List-img-deco02.png");
           left: auto;
-          @include pc{
+
+          @include pc {
             right: p(-20);
           }
-          @include sp{
+
+          @include sp {
             right: s(-10);
           }
         }
       }
-      .sub-imgbox{
-        @include pc{
+
+      .sub-imgbox {
+        @include pc {
           margin: p(38) 0 0 p(17);
-        } 
-        @include sp{
+        }
+
+        @include sp {
           margin-top: s(29);
         }
       }
-      &-textbox{
-        .TL{
-          @include sp{
+
+      &-textbox {
+        .TL {
+          @include sp {
             white-space: nowrap;
             margin-left: s(-19);
             letter-spacing: s(1.2);
@@ -278,13 +286,16 @@
         }
       }
     }
-    .List-under{
-      @include pc{
+
+    .List-under {
+      @include pc {
         margin-top: p(35);
       }
-      @include sp{
+
+      @include sp {
         margin-top: s(21);
       }
+
       &-content {
         &-img {
           @include imgContain("List-under-img02.jpg");
@@ -301,26 +312,40 @@
         height 66,
       )
     }
-    .sub-imgbox{
+    .C_List {
+      .main-imgbox {
+        &::before {
+          @include imgContain("List-img-deco03.png");
+        }
+      }
+    }
+
+
+    .sub-imgbox {
       flex-wrap: wrap;
-      @include pc{
+
+      @include pc {
         width: p(250);
         margin: p(30) 0 0 p(17);
         gap: p(10);
       }
-      @include sp{
+
+      @include sp {
         margin-top: s(20);
         width: s(220);
         gap: s(10);
       }
     }
-    .List-under{
-      @include pc{
+
+    .List-under {
+      @include pc {
         margin-top: p(35);
       }
-      @include sp{
+
+      @include sp {
         margin-top: s(21);
       }
+
       &-content {
         &-img {
           @include imgContain("List-under-img03.jpg");

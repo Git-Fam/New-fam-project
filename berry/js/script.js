@@ -7,6 +7,31 @@ $(function () {
 		$("header").toggleClass("active");
 	});
 
+	var headerHeight = $('header').outerHeight(),
+    startPos = 0,
+    scrollTimer = null; // スクロール停止を検知するためのタイマー
+
+$(window).on('load scroll', function() {
+    var scrollPos = $(this).scrollTop();
+    
+    // スクロール中の処理（スクロール時にクラスを付ける）
+    if (scrollPos > startPos && scrollPos > headerHeight) {
+        $('header').addClass("show");
+    } else {
+        $('header').removeClass("show");
+    }
+    
+    // スクロールが止まったときの処理
+    clearTimeout(scrollTimer); // 既存のタイマーをクリア
+    scrollTimer = setTimeout(function() {
+        $('header').removeClass("show"); // スクロール停止時にクラス追加
+    }, 200); // 200ms間スクロールがない場合に実行
+    
+    $('header').addClass("show"); // スクロールが開始されたら削除
+    
+    startPos = scrollPos;
+});
+
 	// var prevScrollpos = window.pageYOffset;
 	// window.onscroll = function() {
 	//   var currentScrollpos = window.pageYOffset;

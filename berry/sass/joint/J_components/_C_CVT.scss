@@ -83,6 +83,9 @@
           top: s(-56);
           right: s(-30);
         }
+        @media screen and (min-width: 768px) and (max-width: 930px) {
+          top: p(-190);
+        }
       }
 
       &.cta-parson-02 {
@@ -98,6 +101,9 @@
           width: s(91);
           bottom:s(-51);
           left: s(-17);
+        }
+        @media screen and (min-width: 768px) and (max-width: 930px) {
+          bottom: p(-120);
         }
       }
 
