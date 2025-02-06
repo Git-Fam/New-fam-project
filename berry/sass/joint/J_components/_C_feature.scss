@@ -96,7 +96,7 @@
       }
 
       .img {
-        @include imgContain("C_feature__memo.png");
+        @include imgContain("C_feature__memo.svg");
 
         @include pc {
           flex-shrink: 0;
