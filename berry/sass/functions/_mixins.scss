@@ -30,7 +30,7 @@ $sp: 767px; // スマホ
 // absolute上下センター
 @mixin p-center-top {
   top: 50%;
-  translate: 0 -50%;
+  transform: translate(0, -50%);
 }
 
 // absolute左右センター
