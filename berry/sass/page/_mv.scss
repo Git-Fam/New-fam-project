@@ -15,56 +15,70 @@
   }
 
   @include sp {
-    padding: s(196) 0 s(260) 0;
+    padding: s(196) 0 s(250) 0;
   }
 
   &-bg-box {
     .MV-bg {
       position: absolute;
 
-      @include pc {
-        // transform: rotate(112.009deg);
-        // clip-path: path("M8.51333 141.583C-19.8235 202.313 29.9035 269.004 63.4747 327.005C91.7598 375.873 129.279 417.346 181.102 439.764C234.343 462.796 293.966 470.799 348.184 450.171C404.335 428.806 451.952 385.575 472.197 329.01C491.791 274.261 470.627 217.312 451.13 162.528C429.794 102.58 416.68 26.6396 356.862 4.94355C297.507 -16.5842 243.999 43.0279 185.221 66.0835C123.231 90.3989 36.6692 81.2405 8.51333 141.583Z");
+      border-radius: 61% 39% 16% 84% / 57% 72% 28% 43%;
+      background: rgba(255, 157, 157, 0.20);
+
+      animation: morph 40s infinite ease-in-out;
+
+      @keyframes morph {
+        0% {
+          border-radius: 70% 30% 80% 20% / 80% 20% 70% 30%;
+        }
+
+        12.5% {
+          border-radius: 40% 90% 30% 100% / 60% 80% 90% 50%;
+        }
+
+        25% {
+          border-radius: 80% 20% 90% 10% / 20% 90% 10% 80%;
+        }
+
+        37.5% {
+          border-radius: 50% 50% 20% 80% / 90% 40% 60% 30%;
+        }
+
+        50% {
+          border-radius: 10% 90% 20% 80% / 50% 90% 40% 70%;
+        }
+
+        62.5% {
+          border-radius: 90% 10% 80% 20% / 20% 80% 30% 90%;
+        }
+
+        75% {
+          border-radius: 60% 40% 90% 10% / 70% 30% 20% 80%;
+        }
+
+        87.5% {
+          border-radius: 20% 80% 60% 40% / 40% 60% 90% 10%;
+        }
+
+        100% {
+          border-radius: 70% 30% 80% 20% / 80% 20% 70% 30%;
+        }
       }
-
-      // animation: morph 4s infinite ease-in-out;
-
-      // @keyframes morph {
-
-      //   0% {
-      //     transform: translate(0px, 0px) scale(1);
-      //   }
-
-      //   25% {
-      //     transform: translate(-10px, 10px) scale(1.05) rotate(20deg);
-      //   }
-
-      //   50% {
-      //     transform: translate(10px, -10px) scale(0.95) rotate(40deg);
-      //   }
-
-      //   75% {
-      //     transform: translate(-5px, 5px) scale(1.02) rotate(1deg);
-      //   }
-
-      //   100% {
-      //     transform: translate(0px, 0px) scale(1);
-      //   }
-      // }
 
       &.bg01 {
 
         @include pc {
-          width: p(500);
-          height: p(500);
-          top: p(30);
-          right: 0;
-          transform: rotate(90deg);
+          width: p(420);
+          height: p(420);
+          bottom: p(0);
+          right: p(-20);
+          transform: rotate(180deg);
         }
-        @include sp{
-          width: s(250);
-          height: s(250);
-          bottom: s(-30);
+
+        @include sp {
+          width: s(230);
+          height: s(230);
+          bottom: s(-17);
           right: s(-30);
           transform: rotate(230deg);
 
@@ -78,7 +92,8 @@
           left: p(-170);
           top: p(-60);
         }
-        @include sp{
+
+        @include sp {
           width: s(200);
           height: s(200);
           top: s(-20);
@@ -165,7 +180,7 @@
     }
 
     @include sp {
-      margin-top: s(22);
+      bottom: s(-22);
     }
   }
 
@@ -188,15 +203,15 @@
 
     @keyframes arrow {
       0% {
-        transform: translate(-50%,0%);
+        transform: translate(-50%, 0%);
       }
 
       50% {
-        transform: translate(-50%,30%);
+        transform: translate(-50%, 30%);
       }
 
       100% {
-        transform: translate(-50%,0%);
+        transform: translate(-50%, 0%);
       }
 
     }

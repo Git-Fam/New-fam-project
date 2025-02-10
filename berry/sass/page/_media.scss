@@ -34,7 +34,7 @@
 
     @include sp {
       @include iconCover($mv-underSP);
-      height: s(34);
+      height: s(44);
     }
   }
 
@@ -64,7 +64,7 @@
       position: absolute;
       width: p(390);
       height: p(553);
-      top: p(80);
+      top: p(230);
       right: p(100);
     }
 
@@ -76,17 +76,20 @@
     }
 
     img {
-      aspect-ratio: 396/121;
+      aspect-ratio: 296/177;
+      position: absolute;
 
       @include pc {
+        transform: rotate(16deg);
         width: p(396);
+        top: p(-80);
+        left: p(-30);
       }
 
       @include sp {
-        width: s(347);
-        position: absolute;
-        @include p-center-left;
-        top: s(-30);
+        width: s(296);
+        top: s(-60);
+        left: s(-80);
       }
     }
   }
@@ -94,11 +97,11 @@
   .C_media-card-wrap {
     transform: rotate(-3deg);
     @include pc {
-      margin: p(140) 0 0 p(125);
+      margin: p(288) 0 0 p(125);
     }
 
     @include sp {
-      margin: s(64) 0 0 p(40);
+      margin: s(141) 0 0 p(40);
     }
     .C_media-card-decoimg {
       .decoimg {
@@ -116,12 +119,12 @@
 
           @include pc {
             bottom: 0;
-            right: p(-110);
+            right: p(-200);
           }
 
           @include sp {
             bottom: s(-140);
-            right: s(30);
+            right: s(10);
           }
         }
 
@@ -134,12 +137,12 @@
           );
 
           @include pc {
-            right: p(-20);
+            right: p(-100);
             bottom: p(-110);
           }
 
           @include sp {
-            left: 0;
+            left: s(80);
             bottom: s(-250);
           }
         }

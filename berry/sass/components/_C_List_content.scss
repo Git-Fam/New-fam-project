@@ -312,10 +312,21 @@
         height 66,
       )
     }
+
     .C_List {
       .main-imgbox {
         &::before {
           @include imgContain("List-img-deco03.png");
+        }
+      }
+
+      &-textbox {
+        .TL{
+          white-space: nowrap;
+          @include am(
+            margin-left -25,
+            letter-spacing 1,
+          );
         }
       }
     }

@@ -7,51 +7,70 @@
 
 
 
-.about{
+.about {
   position: relative;
-  @include pc{
+
+  @include pc {
     padding-block: p(103) p(130);
   }
-  @include sp{
+
+  @include sp {
     padding-block: s(60);
   }
-  .about-content{
+
+  .about-content {
     position: relative;
     background: $B-white;
     z-index: 10;
-    @include pc{
-      padding: p(66) p(60) p(93) p(48); 
+
+    @include pc {
+      padding: p(66) p(60) p(93) p(48);
       border-radius: p(60);
     }
-    @include sp{
+
+    @include sp {
       padding: s(38) s(13) s(387) s(17);
       border-radius: s(30);
     }
-    .C_about-list{
-      @include pc{
+
+    .C_all-title {
+      &.is_what-kind{
+        @include sp {
+          gap: s(15);
+        }
+      }
+    }
+
+    .C_about-list {
+      @include pc {
         margin-top: p(100);
       }
-      @include sp{
+
+      @include sp {
         margin-top: s(34);
       }
     }
   }
-  &::before{
+
+  &::before {
     content: "";
     position: absolute;
     @include p-center;
     @include imgCover("about-bg.jpg");
     width: 100%;
     height: 100%;
-    animation: aboutBg 4s ease infinite ;
+    animation: aboutBg 4s ease infinite;
+
     @keyframes aboutBg {
-      0%{
+      0% {
         opacity: 1;
       }
-      50%{
+
+      50% {
         opacity: 0.6;
       }
-      100%{
+
+      100% {
         opacity: 1;
       }
     }

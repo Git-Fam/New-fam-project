@@ -172,6 +172,7 @@ header {
         border-radius: 0 0 p(10) p(10);
         padding: p(15) p(5) p(10);
         margin: p(-22) 0 0 p(56);
+        width: p(171);
       }
 
       @include sp {
@@ -180,6 +181,7 @@ header {
         position: absolute;
         top: s(-12);
         right: s(-5);
+        width: s(171);
       }
 
       &-top {
@@ -203,11 +205,12 @@ header {
       &-main {
         color: $F-white;
         @include aoboshi;
-        @include am(font-size 18, margin-top 10);
-
+        @include am(font-size 18, margin-top 5);
+        white-space: nowrap;
         span {
           color: $F-FFF4AA;
         }
+
       }
 
       &-under {

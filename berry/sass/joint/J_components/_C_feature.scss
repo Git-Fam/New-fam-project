@@ -96,7 +96,7 @@
       }
 
       .img {
-        @include imgContain("C_feature__memo.svg");
+        @include imgContain("amarin_img01.png");
 
         @include pc {
           flex-shrink: 0;
@@ -108,6 +108,9 @@
           width: s(243);
           height: s(218);
           margin: 0 auto;
+        }
+        .textbox{
+
         }
       }
 

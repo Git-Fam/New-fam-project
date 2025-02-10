@@ -54,100 +54,118 @@
         &.main-img01 {
           @include imgCover("List-img01.png");
           animation: fadeimg01 15s ease 0s infinite;
+
           @keyframes fadeimg01 {
-            0%{
+            0% {
               opacity: 0;
             }
-            50%{
+
+            50% {
               opacity: 1;
             }
-            100%{
+
+            100% {
               opacity: 0;
               z-index: 0;
             }
-          }  
+          }
         }
 
         &.main-img02 {
           @include imgCover("List-img02.png");
           animation: fadeimg02 15s ease 0s infinite;
+
           @keyframes fadeimg02 {
-            0%{
+            0% {
               opacity: 1;
             }
-            50%{
+
+            50% {
               opacity: 0;
               z-index: 0;
             }
-            100%{
+
+            100% {
               opacity: 1;
             }
-          }  
+          }
         }
 
         &.main-img03 {
           @include imgCover("List-img03.png");
           animation: fadeimg03 21s ease 0s infinite;
+
           @keyframes fadeimg03 {
-            0%{
+            0% {
               opacity: 1;
             }
-            33%{
+
+            33% {
               opacity: 0;
               z-index: 0;
             }
-            66%{
+
+            66% {
               opacity: 0;
               z-index: 0;
 
             }
-            100%{
+
+            100% {
               opacity: 1;
             }
-          }  
+          }
 
         }
 
         &.main-img04 {
           @include imgCover("List-img04.png");
           animation: fadeimg04 21s ease 0s infinite;
+
           @keyframes fadeimg04 {
-            0%{
+            0% {
               opacity: 0;
             }
-            33%{
+
+            33% {
               opacity: 1;
             }
-            66%{
+
+            66% {
               opacity: 0;
               z-index: 0;
             }
-            100%{
+
+            100% {
               opacity: 0;
               z-index: 0;
             }
-          }  
+          }
 
         }
 
         &.main-img05 {
           @include imgCover("List-img05.png");
           animation: fadeimg05 21s ease 0s infinite;
+
           @keyframes fadeimg05 {
-            0%{
+            0% {
               opacity: 0;
             }
-            33%{
+
+            33% {
               opacity: 0;
             }
-            66%{
+
+            66% {
               opacity: 1;
             }
-            100%{
+
+            100% {
               opacity: 0;
               z-index: 0;
             }
-          }  
+          }
         }
 
         &.main-img06 {
@@ -162,6 +180,7 @@
         }
 
       }
+
       &::before {
         content: "";
         @include imgContain("List-img-deco01.png");
@@ -334,7 +353,7 @@
 
       .TL {
         @include am(font-size 32,
-          letter-spacing 3.2,
+          letter-spacing 3,
           margin-top 20,
         )
       }

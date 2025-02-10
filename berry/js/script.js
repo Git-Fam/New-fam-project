@@ -1,6 +1,6 @@
 $(function () {
 	// ハンバーガーメニュー
-	$(".menu-btn,.nav-list li").on("click", function () {
+	$(".menu-btn,header .nav-list li").on("click", function () {
 		//  $(this).toggleClass("active");
 		//  $('.menu').toggleClass("active");
 		$("body").toggleClass("active");
@@ -25,14 +25,23 @@ $(function () {
 		clearTimeout(scrollTimer); // 既存のタイマーをクリア
 		scrollTimer = setTimeout(function () {
 			$("header").removeClass("show"); // スクロール停止時にクラス追加
-		}, 200); // 200ms間スクロールがない場合に実行
+		}, 300); // 200ms間スクロールがない場合に実行
 
 		$("header").addClass("show"); // スクロールが開始されたら削除
 
 		startPos = scrollPos;
 	});
 
-	// var prevScrollpos = window.pageYOffset;
+	var originalText = $(".header-link").html(); // 元のHTMLを保存
+
+	$(".header-link").hover(
+		function () {
+			$(".header-link-main").html("あまりんをかう");
+		},
+		function () {
+			$(this).html(originalText);
+		}
+	); // var prevScrollpos = window.pageYOffset;
 	// window.onscroll = function() {
 	//   var currentScrollpos = window.pageYOffset;
 	//   if (prevScrollpos > currentScrollpos || currentScrollpos < 450) {
@@ -67,18 +76,18 @@ $(function () {
 	});
 
 	// ローディング
-	// var loadingFinished = false;
-	// var loading = $('.loadUp,.loadDown,.loadRight,.loadLeft,.loadPop');
+	var loadingFinished = false;
+	var loading = $(".mvpop");
 
-	// $(window).on('load', function () {
-	//   loading.addClass('show');
-	//   loadingFinished = true;
-	// });
-	// setTimeout(function(){
-	//   if (!loadingFinished) {
-	//     loading.addClass('show');
-	//   }
-	// }, 2000);
+	$(window).on("load", function () {
+		loading.addClass("show");
+		loadingFinished = true;
+	});
+	setTimeout(function () {
+		if (!loadingFinished) {
+			loading.addClass("show");
+		}
+	}, 2000);
 
 	// アコーディオン
 	// $('.js_onClick').on('click', function () {
@@ -88,7 +97,7 @@ $(function () {
 
 	// カウントダウンの終了日時を設定
 	// カウントダウンの終了日時を設定
-	let countdownDate = new Date("2025-04-10T00:00:00");
+	let countdownDate = new Date("2025-04-20T00:00:00");
 
 	// カウントダウン計算関数
 	function updateCountdown() {

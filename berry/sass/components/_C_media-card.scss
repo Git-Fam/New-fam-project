@@ -18,9 +18,9 @@
   .C_media-card-txdeco {
     @include pc {
       position: absolute;
-      display: flex;
-      top: p(-121);
-      left: 0;
+      // display: flex;
+      top: p(-171);
+      left: p(-50);
     }
 
     @include sp {}
@@ -30,10 +30,39 @@
         position: absolute;
         left: 0;
       }
+      &.txdeco01 {
+        @include pc{
+          top: p(200);
+        }
+        @include sp {
+          top: s(-150);
+          left: 0;
+        }
+
+        img {
+          aspect-ratio: 341/103;
+
+          @include pc {
+            width: p(408);
+          }
+
+          @include sp {
+            width: s(341);
+          }
+        }
+      }
+
 
       &.txdeco02 {
+        @include pc{
+          top: p(50);
+          left: p(80);
+          position: absolute;
+        }
         @include sp {
-          top: s(-90);
+          transform: rotate(-16deg);
+          top: s(-110);
+          left: 0;
         }
 
         img {
