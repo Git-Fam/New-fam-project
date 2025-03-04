@@ -16,7 +16,7 @@ const uploadToLStep = async () => {
         await driver.get('https://manager.linestep.net/account/login');
 
         // メールアドレスとパスワードを入力
-        await driver.findElement(By.name('id')).sendKeys(process.env.LSTEP_ID);
+        await driver.findElement(By.name('name')).sendKeys(process.env.LSTEP_ID);
         await driver.findElement(By.name('password')).sendKeys(process.env.LSTEP_PASSWORD, Key.RETURN);
 
         // ダッシュボードに遷移するまで待機

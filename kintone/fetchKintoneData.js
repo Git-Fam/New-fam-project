@@ -6,10 +6,10 @@ const { parse } = require('json2csv');
 const fetchKintoneData = async () => {
     try {
         const urlBase = `https://fullcomunication.cybozu.com/k/v1/records.json?app=35&totalCount=true`;
-        const authToken = process.env.KINTONE_AUTH_TOKEN;
+        const authToken = process.env.KINTONE_PASS;
 
         if (!authToken) {
-            throw new Error("環境変数 KINTONE_AUTH_TOKEN が設定されていません！.env を確認してください。");
+            throw new Error("環境変数 KINTONE_PASS が設定されていません！.env を確認してください。");
         }
 
         console.log("🚀 Fetching data from Kintone...");
