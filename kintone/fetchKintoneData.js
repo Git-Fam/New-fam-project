@@ -97,7 +97,7 @@ const saveDataAsCSV = (records) => {
         const formattedData = records.map(record => ({
             ID: record["文字列__1行__42"]?.value || "",  
             TraiL_ID: record["文字列__1行__19"]?.value || "",  
-            申し込み日: record["文字列__1行__36"]?.value || "",
+            申込日: record["文字列__1行__36"]?.value || "",
             申し込み完了日: record["文字列__1行__37"]?.value || "", 
             ステータス: record["文字列__1行__30"]?.value || "", 
             代理店ID: record["文字列__1行__21"]?.value || "", 
