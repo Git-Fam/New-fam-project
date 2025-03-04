@@ -12,6 +12,7 @@
   "dependencies": {
     "chromedriver": "^133.0.3",
     "dotenv": "^16.4.7",
+    "iconv-lite": "^0.6.3",
     "json2csv": "^6.0.0-alpha.2",
     "node-fetch": "^2.7.0",
     "selenium-webdriver": "^4.29.0"
