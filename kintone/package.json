@@ -1,0 +1,19 @@
+{
+  "name": "kintone",
+  "version": "1.0.0",
+  "main": "custom.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "chromedriver": "^133.0.3",
+    "dotenv": "^16.4.7",
+    "json2csv": "^6.0.0-alpha.2",
+    "node-fetch": "^2.7.0",
+    "selenium-webdriver": "^4.29.0"
+  }
+}
