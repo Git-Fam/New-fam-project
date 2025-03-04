@@ -2,11 +2,13 @@ require('dotenv').config();
 const fetch = require('node-fetch');
 const fs = require('fs'); 
 const { parse } = require('json2csv');
+const appID = 35;
 
 const fetchKintoneData = async () => {
     try {
-        const urlBase = `https://fullcomunication.cybozu.com/k/v1/records.json?app=35&totalCount=true`;
+        const urlBase = `https://fullcomunication.cybozu.com/k/v1/records.json?app=${appID}&totalCount=true`;
         const authToken = process.env.KINTONE_PASS;
+    
 
         if (!authToken) {
             throw new Error("環境変数 KINTONE_PASS が設定されていません！.env を確認してください。");
@@ -46,7 +48,7 @@ const fetchKintoneData = async () => {
         }
 
         while (offset < totalRecords) {
-            const url = `https://fullcomunication.cybozu.com/k/v1/records.json?app=35&limit=${limit}&offset=${offset}`;
+            const url = `https://fullcomunication.cybozu.com/k/v1/records.json?app=${appID}&limit=${limit}&offset=${offset}`;
             console.log(`🔄 Fetching records from offset ${offset}...`);
 
             const response = await fetch(url, {
@@ -95,13 +97,16 @@ const saveDataAsCSV = (records) => {
         const formattedData = records.map(record => ({
             ID: record["文字列__1行__42"]?.value || "",  
             TraiL_ID: record["文字列__1行__19"]?.value || "",  
+            申し込み日: record["文字列__1行__36"]?.value || "",
             申し込み完了日: record["文字列__1行__37"]?.value || "", 
             ステータス: record["文字列__1行__30"]?.value || "", 
             代理店ID: record["文字列__1行__21"]?.value || "", 
             代理店顧客ID: record["文字列__1行__23"]?.value || "", 
             端末配送希望日: record["文字列__1行__43"]?.value || "", 
             所属会社: record["ドロップダウン_4"]?.value || "", 
-            出荷日: record["文字列__1行__44"]?.value || "" 
+            出荷日: record["文字列__1行__44"]?.value || "" ,
+            解約日: record["文字列__1行__38"]?.value || "" 
+
         }));
 
         // JSON → CSV 変換
