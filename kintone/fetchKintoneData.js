@@ -108,9 +108,9 @@ const saveDataAsCSV = (records) => {
         const csv = parse(formattedData);
 
         // CSVファイルに書き込み
-        fs.writeFileSync("kintone_data.csv", csv, "utf-8");
+        fs.writeFileSync("kintoneData.csv", csv, "utf-8");
 
-        console.log(`✅ CSV file saved with ${records.length} records: kintone_data.csv`);
+        console.log(`✅ CSV file saved with ${records.length} records: kintoneData.csv`);
     } catch (error) {
         console.error("❌ Error converting data to CSV:", error.message);
     }

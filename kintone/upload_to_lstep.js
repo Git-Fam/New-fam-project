@@ -28,7 +28,7 @@ const uploadToLStep = async () => {
 
         // CSVファイルのアップロード
         let fileInput = await driver.findElement(By.name('csv')); // アップロードボタンの input 要素
-        let filePath = path.resolve(__dirname, 'kintone_data.csv'); // CSVファイルのパス
+        let filePath = path.resolve(__dirname, 'kintoneData.csv'); // CSVファイルのパス
         await fileInput.sendKeys(filePath);
 
         // アップロードボタンをクリック
