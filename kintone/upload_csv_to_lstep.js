@@ -58,12 +58,6 @@ const uploadCSVToLStep = async () => {
         await page.waitForSelector('input[name="csv"]', { timeout: 10000 })
             .catch(e => console.error("❌ CSVファイル入力フィールドが見つかりません:", e.message));
 
-        // ファイル選択ダイアログをデバッグ
-        page.on('dialog', async dialog => {
-            console.log('ダイアログが表示されました:', dialog.message());
-            await dialog.accept();
-        });
-
         // CSVファイルをアップロード
         console.log("📂 CSVファイルをアップロード...");
         const fileInput = await page.$('input[name="csv"]');
@@ -106,24 +100,59 @@ const uploadCSVToLStep = async () => {
         const afterUploadUrl = await page.url();
         console.log(`✅ アップロード後のページURL: ${afterUploadUrl}`);
         
-        // 成功メッセージを確認
-        const pageText = await page.evaluate(() => document.body.innerText);
-        if (pageText.includes('成功') || pageText.includes('完了') || pageText.includes('アップロード')) {
-            console.log("✅ CSV アップロード成功の可能性があります！");
+        // 「このデータを反映する」ボタンを探す
+        console.log("🔍 「このデータを反映する」ボタンを探しています...");
+        await page.waitForSelector('input.btn.btn-primary[value="このデータを反映する"]', { timeout: 10000 })
+            .catch(e => console.log("ボタン待機中:", e.message));
+            
+        const confirmButton = await page.$('input.btn.btn-primary[value="このデータを反映する"]');
+        if (!confirmButton) {
+            console.error("❌ 「このデータを反映する」ボタンが見つかりません！");
+            // 他に可能性のあるセレクタを試す
+            const possibleButtons = await page.$$('input.btn.btn-primary, input[type="submit"].btn-primary, button.btn.btn-primary');
+            console.log(`可能性のあるボタンが ${possibleButtons.length} 個見つかりました`);
+            
+            if (possibleButtons.length > 0) {
+                console.log("一致する可能性のあるボタンをクリックします...");
+                await possibleButtons[0].click();
+                console.log("✅ ボタンをクリックしました");
+            } else {
+                // ページ上の全てのボタンをリスト
+                const allFinalButtons = await page.$$eval('button, input[type="submit"]', buttons => 
+                    buttons.map(b => ({ 
+                        type: b.tagName, 
+                        value: b.value || b.textContent, 
+                        id: b.id, 
+                        class: b.className 
+                    }))
+                );
+                console.log("ページ上のボタン:", JSON.stringify(allFinalButtons, null, 2));
+                return;
+            }
         } else {
-            console.log("⚠️ 成功メッセージが確認できません。アップロード状況を確認してください。");
+            // 「このデータを反映する」ボタンをクリック
+            await confirmButton.click();
+            console.log("✅ 「このデータを反映する」ボタンをクリックしました");
         }
+        
+        // 最終処理の完了を待機
+        await page.waitForNavigation({ waitUntil: 'networkidle2', timeout: 30000 })
+            .catch(e => console.log("最終ナビゲーション待機中:", e.message));
+            
+        // 最終的なURLを確認
+        const finalUrl = await page.url();
+        console.log(`✅ 最終的なページURL: ${finalUrl}`);
 
         // 操作の様子を確認するために少し待機
         await new Promise(resolve => setTimeout(resolve, 5000));
-        console.log("✅ CSV アップロード処理が完了しました");
+        console.log("✅ 全ての処理が完了しました");
 
     } catch (error) {
-        console.error("❌ アップロード中にエラー発生:", error.message);
+        console.error("❌ 処理中にエラー発生:", error.message);
     } finally {
         // スクリーンショットを撮影
-        await page.screenshot({ path: 'upload_result.png', fullPage: true });
-        console.log("📸 スクリーンショットを保存しました: upload_result.png");
+        await page.screenshot({ path: 'final_result.png', fullPage: true });
+        console.log("📸 スクリーンショットを保存しました: final_result.png");
         
         await browser.close();
     }
