@@ -1,0 +1,21 @@
+{
+  "name": "kintone",
+  "version": "1.0.0",
+  "main": "fetchKintoneData.js",
+  "scripts": {
+    "start": "node fetchKintoneData.js",
+    "stop": "node fetchKintoneData.js --stop",
+    "schedule": "node fetchKintoneData.js --schedule"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "iconv-lite": "^0.6.3",
+    "json2csv": "^6.0.0-alpha.2",
+    "node-cron": "^3.0.3",
+    "node-fetch": "^2.7.0"
+  }
+}
