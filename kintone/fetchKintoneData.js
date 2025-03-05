@@ -2,6 +2,7 @@ require('dotenv').config();
 const fetch = require('node-fetch');
 const fs = require('fs');
 const { parse } = require('json2csv');
+const cron = require('node-cron');
 const appID = 17;
 
 const fetchKintoneData = async () => {
@@ -127,5 +128,54 @@ const saveDataAsCSV = (records) => {
     }
 };
 
-// スクリプトを実行
-fetchKintoneData();
+// 時間設定
+const schedule = {
+    everyMinute: '* * * * *', // 毎分
+    hourly: '0 * * * *', // 毎時
+    daily: '0 0 * * *', // 毎日
+    everyMorning: '0 8 * * *' // 毎朝8時
+};
+
+let cronJob = null; // cronジョブを保持する変数
+
+// cronジョブの設定
+const startCron = () => {
+    if (cronJob) {
+        console.log('⚠️ 既存のスケジュールを停止します...');
+        cronJob.stop();
+    }
+
+    console.log('🕒 新しいスケジュールを開始します...');
+    cronJob = cron.schedule(schedule.everyMinute, async () => {
+        console.log('🕒 Starting scheduled Kintone data fetch at:', new Date().toLocaleString());
+        await fetchKintoneData();
+    });
+};
+
+// cronジョブの停止
+const stopCron = () => {
+    if (cronJob) {
+        console.log('⏹️ スケジュールを停止します');
+        cronJob.stop();
+        cronJob = null;
+        return true;
+    }
+    console.log('ℹ️ 実行中のスケジュールはありません');
+    return false;
+};
+
+// コマンドライン引数の処理
+const args = process.argv.slice(2);
+if (args.includes('--stop')) {
+    stopCron();
+    process.exit(0);
+} else if (args.includes('--schedule')) {
+    startCron();
+} else {
+    // 引数なしの場合は即時実行
+    console.log('🚀 Running immediate fetch...');
+    fetchKintoneData();
+}
+
+// モジュールとしてエクスポート
+module.exports = { fetchKintoneData, startCron, stopCron };
