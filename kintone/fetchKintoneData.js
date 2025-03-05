@@ -1,14 +1,14 @@
 require('dotenv').config();
 const fetch = require('node-fetch');
-const fs = require('fs'); 
+const fs = require('fs');
 const { parse } = require('json2csv');
-const appID = 35;
+const appID = 17;
 
 const fetchKintoneData = async () => {
     try {
         const urlBase = `https://fullcomunication.cybozu.com/k/v1/records.json?app=${appID}&totalCount=true`;
         const authToken = process.env.KINTONE_PASS;
-    
+
 
         if (!authToken) {
             throw new Error("環境変数 KINTONE_PASS が設定されていません！.env を確認してください。");
@@ -95,27 +95,33 @@ const saveDataAsCSV = (records) => {
 
     try {
         const formattedData = records.map(record => ({
-            ID: record["文字列__1行__42"]?.value || "",  
-            TraiL_ID: record["文字列__1行__19"]?.value || "",  
+            ID: record["文字列__1行__42"]?.value || "",
+            表示名: record["文字列__1行__33"]?.value || "",
+            TraiL_ID: record["文字列__1行__19"]?.value || "",
             申込日: record["文字列__1行__36"]?.value || "",
-            申し込み完了日: record["文字列__1行__37"]?.value || "", 
-            ステータス: record["文字列__1行__30"]?.value || "", 
-            代理店ID: record["文字列__1行__21"]?.value || "", 
-            代理店顧客ID: record["文字列__1行__23"]?.value || "", 
-            端末配送希望日: record["文字列__1行__43"]?.value || "", 
-            所属会社: record["ドロップダウン_4"]?.value || "", 
-            出荷日: record["文字列__1行__44"]?.value || "" ,
-            解約日: record["文字列__1行__38"]?.value || "" 
+            申し込み完了日: record["文字列__1行__37"]?.value || "",
+            ステータス: record["文字列__1行__30"]?.value || "",
+            代理店ID: record["文字列__1行__21"]?.value || "",
+            代理店顧客ID: record["文字列__1行__23"]?.value || "",
+            端末配送希望日: record["文字列__1行__43"]?.value || "",
+            所属会社: record["ドロップダウン_4"]?.value || "",
+            出荷日: record["文字列__1行__44"]?.value || "",
+            解約日: record["文字列__1行__38"]?.value || ""
 
         }));
 
         // JSON → CSV 変換
         const csv = parse(formattedData);
 
-        // CSVファイルに書き込み
-        fs.writeFileSync("kintoneData.csv", csv, "utf-8");
+        // "登録ID"をCSVの先頭に追加
+        const header = '"登録ID","","友だち情報_2104833","友だち情報_2102021","友だち情報_2102020","友だち情報_2104441","友だち情報_2104443","友だち情報_2104444","友だち情報_2104445","友だち情報_2104446","友だち情報_2104447","友だち情報_2104841"\n';
+        const csvWithHeader = header + csv;
 
-        console.log(`✅ CSV file saved with ${records.length} records: kintoneData.csv`);
+        // CSVファイルに書き込み Shift JISで
+        const iconv = require('iconv-lite');
+        fs.writeFileSync("kintoneData.csv", iconv.encode(csvWithHeader, 'Shift_JIS'));
+
+        console.log(`✅ CSV file saved with ${records.length} records: kintoneData.csv (Shift-JIS encoded)`);
     } catch (error) {
         console.error("❌ Error converting data to CSV:", error.message);
     }
