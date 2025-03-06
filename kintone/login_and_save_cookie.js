@@ -1,4 +1,8 @@
-// login_and_save_cookie.js の修正版
+/**------------------------------------------
+ *  手動での Cookie 取得に使用するファイル
+ *  普段は使わない
+ *  -----------------------------------------*/
+
 require("dotenv").config();
 const puppeteer = require("puppeteer");
 const fs = require("fs");
@@ -32,25 +36,31 @@ const loginToLStep = async () => {
 		// 手動で reCAPTCHA を突破し、ログイン
 		console.log("🛑 手動で reCAPTCHA を突破してログインしてください...");
 		console.log("🛑 ログイン完了したら、任意のキーを押してください...");
-		
+
 		// ユーザーが手動でログインするのを待つ（120秒に延長）
 		// この間にreCAPTCHAを突破してログインする
-		await page.waitForNavigation({ 
-			waitUntil: "networkidle2", 
-			timeout: 120000 
-		}).catch(e => console.log("ナビゲーション待機中: 手動でログインを続けてください"));
-		
+		await page
+			.waitForNavigation({
+				waitUntil: "networkidle2",
+				timeout: 120000,
+			})
+			.catch((e) =>
+				console.log("ナビゲーション待機中: 手動でログインを続けてください")
+			);
+
 		// ユーザーがログインを完了するのを待つ
 		// プロンプトでユーザー入力を待つなどの方法もあります
 		// 簡易的な方法として、しばらく待機
-		await new Promise(resolve => setTimeout(resolve, 5000));
-		
+		await new Promise((resolve) => setTimeout(resolve, 5000));
+
 		// ログイン後のページにいるか確認
 		const currentUrl = await page.url();
 		console.log(`現在のURL: ${currentUrl}`);
-		
-		if (currentUrl.includes('/account/login')) {
-			console.log("❌ まだログインページにいます。ログインが完了していません。");
+
+		if (currentUrl.includes("/account/login")) {
+			console.log(
+				"❌ まだログインページにいます。ログインが完了していません。"
+			);
 			return;
 		}
 
@@ -63,12 +73,11 @@ const loginToLStep = async () => {
 		} else {
 			console.log("❌ Cookie が取得できませんでした。");
 		}
-		
 	} catch (error) {
 		console.error("❌ エラーが発生しました:", error.message);
 	} finally {
 		// 最後にブラウザを閉じる前に少し待機
-		await new Promise(resolve => setTimeout(resolve, 3000));
+		await new Promise((resolve) => setTimeout(resolve, 3000));
 		await browser.close();
 	}
 };
