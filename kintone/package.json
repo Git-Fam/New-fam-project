@@ -1,0 +1,28 @@
+{
+  "name": "kintone",
+  "version": "1.0.0",
+  "main": "fetchKintoneData.js",
+  "scripts": {
+    "start": "node fetchKintoneData.js",
+    "stop": "node fetchKintoneData.js --stop",
+    "schedule": "node fetchKintoneData.js --schedule",
+    "upload": "node auto_upload.js",
+    "watch": "node watch_and_upload.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "chromedriver": "^133.0.3",
+    "dotenv": "^16.4.7",
+    "firebase": "^11.4.0",
+    "iconv-lite": "^0.6.3",
+    "json2csv": "^6.0.0-alpha.2",
+    "node-cron": "^3.0.3",
+    "node-fetch": "^2.7.0",
+    "puppeteer": "^24.3.1"
+  }
+}
+
+
