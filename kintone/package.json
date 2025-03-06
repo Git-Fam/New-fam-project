@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "main": "fetchKintoneData.js",
   "scripts": {
-    "start": "node fetchKintoneData.js",
-    "stop": "node fetchKintoneData.js --stop",
-    "schedule": "node fetchKintoneData.js --schedule",
+    "start": "pm2 start fetchKintoneData.js",
+    "stop": "pm2 stop fetchKintoneData",
     "upload": "node auto_upload.js",
     "watch": "node watch_and_upload.js"
   },
