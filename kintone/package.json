@@ -5,8 +5,12 @@
   "scripts": {
     "start": "pm2 start fetchKintoneData.js",
     "stop": "pm2 stop fetchKintoneData",
+    "start_upload": "pm2 start auto_upload.js",
+    "stop_upload": "pm2 stop auto_upload",
     "upload": "node auto_upload.js",
-    "watch": "node watch_and_upload.js"
+    "watch": "node watch_and_upload.js",
+    "start:all": "npm-run-all --parallel start start_upload",
+    "stop:all": "npm-run-all --parallel stop stop_upload"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +25,8 @@
     "node-cron": "^3.0.3",
     "node-fetch": "^2.7.0",
     "puppeteer": "^24.3.1"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
   }
 }
-
-
