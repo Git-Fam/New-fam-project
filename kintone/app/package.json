@@ -5,6 +5,7 @@
   "scripts": {
     "start": "pm2 start fetchKintoneData.js",
     "stop": "pm2 stop fetchKintoneData",
+    "log": "pm2 list",
     "start_upload": "pm2 start auto_upload.js",
     "stop_upload": "pm2 stop auto_upload",
     "upload": "node auto_upload.js",
