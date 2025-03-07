@@ -10,8 +10,8 @@ const LSTEP_LOGIN_URL = 'https://manager.linestep.net/account/login';
 const LSTEP_UPLOAD_URL = 'https://manager.linestep.net/line/importer';
 const COOKIE_FILE = path.join(__dirname, 'lstep_cookies.json');
 const CSV_FILE_PATH = path.resolve(__dirname, 'kintoneData.csv');
-const UPLOAD_SCHEDULE = '30 8 * * *'; // 毎日朝8時半に実行（cron形式）
-// const UPLOAD_SCHEDULE = '*/30 1 * * * *'; // 1分半に実行（cron形式）テスト
+// const UPLOAD_SCHEDULE = '30 8 * * *'; // 毎日朝8時半に実行（cron形式）
+const UPLOAD_SCHEDULE = '*/30 1 * * * *'; // 1分半に実行（cron形式）テスト
 
 // Lステップにログインしてクッキーを保存する関数
 const loginToLStep = async (forceNewLogin = false) => {

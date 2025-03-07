@@ -132,7 +132,7 @@ const minute = '* * * * *'; // 1分ごとに実行（テスト）
 const day = '0 8 * * *'; // 毎日朝8時に実行 (本番)
 
 // cronジョブの設定
-cron.schedule(day, async () => {
+cron.schedule(minute, async () => {
     console.log('🕒 Starting scheduled Kintone data fetch at:', new Date().toLocaleString());
     await fetchKintoneData();
 });
