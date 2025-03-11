@@ -12,15 +12,15 @@ fi
 # NVMを使ってNode.jsをインストール
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-nvm install 18
+nvm install 20
 if [ $? -ne 0 ]; then
-  echo "Error: Failed to install Node.js version 18."
+  echo "Error: Failed to install Node.js version 20."
   exit 1
 fi
 
-nvm use 18
+nvm use 20
 if [ $? -ne 0 ]; then
-  echo "Error: Failed to use Node.js version 18."
+  echo "Error: Failed to use Node.js version 20."
   exit 1
 fi
 

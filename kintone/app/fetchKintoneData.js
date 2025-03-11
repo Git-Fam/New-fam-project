@@ -5,11 +5,11 @@ const { parse } = require('json2csv');
 const cron = require('node-cron');
 const appID = 17;
 
+
 const fetchKintoneData = async () => {
     try {
-        const urlBase = `https://fullcomunication.cybozu.com/k/v1/records.json?app=${appID}&totalCount=true`;
+        const urlBase = `https://fullcomunication.cybozu.com/k/v1/records.json?app=${appID}`;
         const authToken = process.env.KINTONE_PASS;
-
 
         if (!authToken) {
             throw new Error("環境変数 KINTONE_PASS が設定されていません！.env を確認してください。");
@@ -19,38 +19,12 @@ const fetchKintoneData = async () => {
 
         let allRecords = [];
         let offset = 0;
-        const limit = 100; // Kintone API の 1 回の取得上限
-        let totalRecords = 0;
+        const limit = 500; // 一度に取得する最大件数
 
-        // まず totalCount を取得（全件数を把握する）
-        const initialResponse = await fetch(urlBase, {
-            method: 'GET',
-            headers: {
-                'X-Cybozu-Authorization': authToken
-            }
-        });
-
-        if (!initialResponse.ok) {
-            const errorText = await initialResponse.text();
-            console.error(`❌ Error! HTTP Status: ${initialResponse.status}`);
-            console.error("Response Body:", errorText);
-            throw new Error(`HTTP error! Status: ${initialResponse.status}`);
-        }
-
-        const initialData = await initialResponse.json();
-        totalRecords = parseInt(initialData.totalCount, 10) || 0;
-
-        console.log(`📊 Kintone に存在するレコード数: ${totalRecords} 件`);
-
-        // もしデータが 1 件もない場合は終了
-        if (totalRecords === 0) {
-            console.log("✅ No records found. Exiting...");
-            return;
-        }
-
-        while (offset < totalRecords) {
-            const url = `https://fullcomunication.cybozu.com/k/v1/records.json?app=${appID}&limit=${limit}&offset=${offset}`;
-            console.log(`🔄 Fetching records from offset ${offset}...`);
+        while (true) {
+            const query = `limit ${limit} offset ${offset}`;
+            const url = `${urlBase}&query=${encodeURIComponent(query)}`;
+            console.log(`🔄 Fetching records with query: ${query}`);
 
             const response = await fetch(url, {
                 method: 'GET',
@@ -74,7 +48,12 @@ const fetchKintoneData = async () => {
             }
 
             allRecords = allRecords.concat(data.records);
-            offset += limit;
+            offset += limit; // 次のページを取得するためにオフセットを増やす
+
+            // もし取得したレコードが500件未満であれば、これ以上のデータはないと判断
+            if (data.records.length < limit) {
+                break;
+            }
         }
 
         console.log(`✅ Successfully fetched ${allRecords.length} records from Kintone!`);
@@ -95,7 +74,10 @@ const saveDataAsCSV = (records) => {
     }
 
     try {
-        const formattedData = records.map(record => ({
+        // "ID"が存在するレコードのみをフィルタリング
+        const filteredRecords = records.filter(record => record["文字列__1行__42"]?.value);
+
+        const formattedData = filteredRecords.map(record => ({
             ID: record["文字列__1行__42"]?.value || "",
             表示名: record["文字列__1行__33"]?.value || "",
             TraiL_ID: record["文字列__1行__19"]?.value || "",
@@ -108,7 +90,6 @@ const saveDataAsCSV = (records) => {
             所属会社: record["ドロップダウン_4"]?.value || "",
             出荷日: record["文字列__1行__44"]?.value || "",
             解約日: record["文字列__1行__38"]?.value || ""
-
         }));
 
         // JSON → CSV 変換
@@ -122,7 +103,7 @@ const saveDataAsCSV = (records) => {
         const iconv = require('iconv-lite');
         fs.writeFileSync("kintoneData.csv", iconv.encode(csvWithHeader, 'Shift_JIS'));
 
-        console.log(`✅ CSV file saved with ${records.length} records: kintoneData.csv (Shift-JIS encoded)`);
+        console.log(`✅ CSV file saved with ${filteredRecords.length} records: kintoneData.csv (Shift-JIS encoded)`);
     } catch (error) {
         console.error("❌ Error converting data to CSV:", error.message);
     }
