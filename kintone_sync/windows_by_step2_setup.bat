@@ -41,4 +41,3 @@ timeout /t 2 /nobreak > nul
 echo npm installが完了しました。
 
 endlocal
-pause

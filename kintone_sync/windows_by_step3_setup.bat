@@ -14,5 +14,5 @@ rem 2秒間待機
 timeout /t 2 /nobreak > nul
 
 echo すべてのインストールが完了しました。
+
 endlocal
-pause

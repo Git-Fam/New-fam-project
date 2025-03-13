@@ -52,4 +52,3 @@ timeout /t 2 /nobreak > nul
 echo Node.jsのインストールが完了しました。
 
 endlocal
-pause
