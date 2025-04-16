@@ -1,0 +1,192 @@
+@use "../functions" as *;
+
+
+/* -----------------------
+  footer
+----------------------- */
+
+.footer {
+  .footer--map {
+
+    @include pc {
+      height: p(335);
+    }
+
+    @include sp {
+      height: s(225);
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .footer--main {
+    background: linear-gradient(180deg, #03B9FF 0%, #0C8CE4 100%);
+
+    @include pc {
+      padding: p(60) p(36) p(20) p(57);
+    }
+
+    @include sp {
+      padding: s(35) s(20) s(17);
+    }
+
+    &--containaer {
+      display: flex;
+
+      @include pc {
+        justify-content: space-between;
+        margin-bottom: p(52);
+      }
+
+      @include sp {
+        flex-direction: column;
+        gap: s(47);
+        margin-bottom: s(60);
+      }
+
+      .footer__info {
+
+        @include pc {
+          @include column(p(31));
+          margin-bottom: p(2);
+        }
+
+        @include sp {
+          @include column(s(31));
+        }
+
+        .title {
+
+          .TL {
+            color: $F-ffffff;
+
+            @include pc {
+              font-size: pm(24);
+            }
+
+            @include sp {
+              font-size: s(24);
+            }
+          }
+        }
+
+        .text {
+
+          @include pc {
+            @include column(p(3));
+          }
+
+          @include sp {
+            @include column(s(3));
+          }
+
+          .TX {
+            color: $F-ffffff;
+            @include noto-sans;
+            @include wt700;
+
+            @include pc {
+              font-size: pm(13);
+              letter-spacing: pm(1.3);
+            }
+
+            @include sp {
+              font-size: s(13);
+              letter-spacing: s(1.3);
+            }
+          }
+        }
+      }
+
+
+      .footer__menu {
+
+        &--nav {
+
+          &--list {
+            display: flex;
+            align-items: center;
+
+            @include pc {
+              gap: p(60);
+            }
+
+            @include sp {
+              gap: s(30);
+            }
+
+            .item {
+
+              .TX {
+                color: $F-ffffff;
+                @include wt700;
+
+                @include pc {
+                  font-size: pm(16);
+                  letter-spacing: pm(1.6);
+                }
+
+                @include sp {
+                  font-size: s(13);
+                  letter-spacing: s(1.3);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &--copyright {
+      position: relative;
+
+      @include pc {
+        padding: p(17) 0 0;
+      }
+
+      @include sp {
+        padding: s(11) 0 0;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: $P-FFFFFF;
+
+        @include pc {
+          height: p(2);
+        }
+
+        @include sp {
+          height: s(2);
+        }
+      }
+
+      .TX {
+        color: $F-ffffff;
+        @include noto-sans;
+        text-align: center;
+
+        @include pc {
+          font-size: pm(13);
+          letter-spacing: pm(1.3);
+        }
+
+        @include sp {
+          font-size: s(13);
+          letter-spacing: s(1.3);
+        }
+
+        a {
+          color: $F-ffffff;
+        }
+      }
+    }
+  }
+}

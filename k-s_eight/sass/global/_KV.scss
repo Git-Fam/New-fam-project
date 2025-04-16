@@ -1,0 +1,476 @@
+@use "../functions" as *;
+
+
+/* -----------------------
+  KV
+----------------------- */
+
+.KV {
+
+
+  &.KV__front {
+    @include imgCover("KV/KV_front.jpg");
+    position: relative;
+
+    @include pc {
+      height: pm(620);
+      background-position: left top;
+    }
+
+    @include sp {
+      height: s(600);
+      background-position: center top;
+    }
+
+    .KV__front--title {
+
+      @include pc {
+        position: absolute;
+        top: p(85);
+        left: p(100);
+      }
+
+      @include sp {
+        display: contents;
+      }
+
+      .TL {
+        color: $F-333333;
+        @include wt600;
+
+        @include pc {
+          font-size: pm(58);
+          letter-spacing: pm(7.54);
+          line-height: 146.552%;
+        }
+
+        @include sp {
+          font-size: s(48);
+          letter-spacing: s(6.24);
+          line-height: 125%;
+          writing-mode: vertical-rl;
+          position: absolute;
+          top: s(13);
+          left: s(35);
+          height: fit-content;
+        }
+
+        span {
+          display: inline-block;
+          position: relative;
+
+          @include pc {
+            width: fit-content;
+            transform: scaleX(0);
+            transform-origin: left;
+          }
+
+          @include sp {
+            height: fit-content;
+            transform: scaleY(0);
+            transform-origin: top;
+          }
+
+          &::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: $F-333333;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            @include pc {
+              transform: scaleX(1);
+              transform-origin: right;
+            }
+
+            @include sp {
+              transform: scaleY(1);
+              transform-origin: bottom;
+            }
+          }
+        }
+      }
+
+      .TX {
+        color: $F-333333;
+        @include noto-sans;
+        line-height: 175%;
+
+        @include pc {
+          font-size: pm(16);
+          letter-spacing: pm(1.6);
+          margin-top: p(30);
+        }
+
+        @include sp {
+          font-size: s(13);
+          letter-spacing: s(1.4);
+          position: absolute;
+          bottom: s(17);
+          left: s(35);
+        }
+
+        span {
+          display: inline-block;
+          position: relative;
+          transform: scaleY(0);
+          transform-origin: top;
+
+          &::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: $F-333333;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: scaleY(1);
+            transform-origin: bottom;
+          }
+        }
+      }
+
+      &.is-active {
+        .TL {
+          span {
+            animation: fadeInSlideFrontTL 0.5s 0.5s ease forwards;
+
+            @include pc {
+              @keyframes fadeInSlideFrontTL {
+                0% {
+                  transform: scaleX(0);
+                }
+
+                100% {
+                  transform: scaleX(1);
+                }
+              }
+            }
+
+            @include sp {
+              @keyframes fadeInSlideFrontTL {
+                0% {
+                  transform: scaleY(0);
+                }
+
+                100% {
+                  transform: scaleY(1);
+                }
+              }
+            }
+
+            &::before {
+              animation: fadeOutSlideFrontTL 0.5s 1.3s ease forwards;
+
+
+              @include pc {
+                @keyframes fadeOutSlideFrontTL {
+                  0% {
+                    transform: scaleX(1);
+                  }
+
+                  100% {
+                    transform: scaleX(0);
+                  }
+                }
+              }
+
+              @include sp {
+                @keyframes fadeOutSlideFrontTL {
+                  0% {
+                    transform: scaleY(1);
+                  }
+
+                  100% {
+                    transform: scaleY(0);
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .TX {
+          span {
+            animation: fadeInSlideFrontTX 0.5s 1.5s ease forwards;
+
+            @keyframes fadeInSlideFrontTX {
+              0% {
+                transform: scaleY(0);
+              }
+
+              100% {
+                transform: scaleY(1);
+              }
+            }
+
+
+            &::before {
+              animation: fadeOutSlideFrontTX 0.5s 2s ease forwards;
+
+              @keyframes fadeOutSlideFrontTX {
+                0% {
+                  transform: scaleY(1);
+                }
+
+                100% {
+                  transform: scaleY(0);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.KV__service {
+    @include imgCover("KV/KV_service.jpg");
+
+    @include pc {
+      background-position: center top 33%;
+    }
+
+    @include sp {
+      background-position: left 30% top 35%;
+      background-size: 215%;
+    }
+  }
+
+  &.KV__works {
+    @include imgCover("KV/KV_works.jpg");
+
+    @include sp {
+      background-position: center top 75%;
+    }
+  }
+
+  &.KV__contact {
+    @include imgCover("KV/KV_contact.jpg");
+
+    @include pc {
+      background-position: center top 51%;
+    }
+
+    @include sp {
+      background-position: left 40% top 66%;
+      background-size: 130%;
+    }
+  }
+
+  &.KV__cover {
+    position: relative;
+
+    @include pc {
+      height: pm(250);
+    }
+
+    @include sp {
+      height: s(160);
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 184, 255, 0.62);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+  }
+
+  .KV__all--title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: fit-content;
+    z-index: 2;
+
+    .TL {
+      @include bona;
+      @include wt400;
+      line-height: 1;
+      background: linear-gradient(87deg, #FFF 2.58%, #B3EEE9 146.84%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      white-space: nowrap;
+      position: relative;
+      transform: scaleY(0);
+      transform-origin: top;
+
+      @include pc {
+        font-size: pm(110);
+        letter-spacing: pm(5.5);
+      }
+
+      @include sp {
+        font-size: s(70);
+        letter-spacing: s(3.5);
+      }
+
+      &::before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(87deg, #FFF 2.58%, #B3EEE9 146.84%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: scaleY(1);
+        transform-origin: bottom;
+      }
+    }
+
+    .text {
+      display: flex;
+      align-items: center;
+
+      @include pc {
+        gap: p(10);
+        padding-right: p(5);
+      }
+
+      @include sp {
+        gap: s(6);
+      }
+
+      .text-bar {
+        background: $F-ffffff;
+        width: 100%;
+        transform: scaleX(0);
+        transform-origin: left;
+
+        @include pc {
+          height: pm(1);
+        }
+
+        @include sp {
+          height: s(1);
+        }
+      }
+
+      .TX {
+        color: $F-ffffff;
+        @include wt700;
+        position: relative;
+        width: fit-content;
+        flex-shrink: 0;
+        white-space: nowrap;
+        position: relative;
+        transform: scaleX(0);
+        transform-origin: left;
+
+        @include pc {
+          font-size: pm(20);
+          letter-spacing: pm(1.6);
+          margin-top: p(3);
+        }
+
+        @include sp {
+          font-size: s(13);
+          letter-spacing: s(1.04);
+        }
+
+        &::before {
+          content: "";
+          display: block;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(87deg, #FFF 2.58%, #B3EEE9 146.84%);
+          position: absolute;
+          top: 0;
+          left: 0;
+          transform: scaleX(1);
+          transform-origin: right;
+        }
+      }
+    }
+
+    &.is-active {
+
+      .TL {
+        animation: fadeInSlideKvAllTL 0.5s 0.5s ease forwards;
+
+        @keyframes fadeInSlideKvAllTL {
+          0% {
+            transform: scaleY(0);
+          }
+
+          100% {
+            transform: scaleY(1);
+          }
+        }
+
+        &::before {
+          animation: fadeInSlideKvAllTLCover 0.5s 1.3s ease forwards;
+
+          @keyframes fadeInSlideKvAllTLCover {
+            0% {
+              transform: scaleY(1);
+            }
+
+            100% {
+              transform: scaleY(0);
+            }
+          }
+        }
+      }
+
+      .text {
+
+        .text-bar {
+          animation: fadeInSlideKvAllTextBar 0.5s 1.0s ease forwards;
+
+          @keyframes fadeInSlideKvAllTextBar {
+            0% {
+              transform: scaleX(0);
+            }
+
+            100% {
+              transform: scaleX(1);
+            }
+          }
+        }
+
+        .TX {
+          animation: fadeInSlideKvAllTX 0.5s 1.8s ease forwards;
+
+          @keyframes fadeInSlideKvAllTX {
+            0% {
+              transform: scaleX(0);
+            }
+
+            100% {
+              transform: scaleX(1);
+            }
+          }
+
+          &::before {
+            animation: fadeInSlideKvAllTXCover 0.5s 2.5s ease forwards;
+
+            @keyframes fadeInSlideKvAllTXCover {
+              0% {
+                transform: scaleX(1);
+              }
+
+              100% {
+                transform: scaleX(0);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

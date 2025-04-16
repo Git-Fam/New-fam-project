@@ -1,0 +1,392 @@
+@use "../functions" as *;
+
+/* -----------------------
+  header
+----------------------- */
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+
+  &--wapper {
+    position: relative;
+    background: $B-FFFFFF;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: linear-gradient(90deg, #FFF 23.5%, #00B8FF 100%);
+      width: 100%;
+      height: 100%;
+      transition: all 0.3s ease-in-out;
+      transform: scaleX(1);
+      transform-origin: right;
+    }
+
+    .header--inner {
+      position: relative;
+
+      @include pc {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: p(15) 0 p(16) p(44);
+      }
+
+      @include sp {
+        padding: s(19) 0 s(20) s(19);
+      }
+
+      .header--logo {
+        display: block;
+        width: fit-content;
+
+        .TL {
+          color: $F-2480BA;
+          @include wt700;
+          width: fit-content;
+          transition: all 0.3s ease-in-out;
+
+          @include pc {
+            font-size: pm(24);
+            letter-spacing: pm(1.2);
+          }
+
+          @include sp {
+            font-size: s(16);
+            letter-spacing: s(0.8);
+          }
+        }
+
+
+      }
+
+      .burger {
+        border-radius: s(40.533) 0 0 s(40.533);
+        background: $P-EDF7F6;
+        width: s(66);
+        height: s(37);
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        cursor: pointer;
+
+        .burger--inner {
+          width: s(27);
+          height: s(15);
+          position: absolute;
+          top: 50%;
+          right: s(20);
+          transform: translateY(-50%);
+
+
+          span {
+            display: block;
+            width: 100%;
+            height: s(2);
+            border-radius: s(50);
+            background: $P-0064A8;
+            position: absolute;
+            left: 0;
+            transition:
+              opacity 300ms 50ms ease,
+              top 300ms 350ms ease,
+              transform 300ms 50ms ease;
+
+
+            &:nth-child(1) {
+              top: 0;
+            }
+
+            &:nth-child(2) {
+              top: calc(50% - s(1));
+            }
+
+            &:nth-child(3) {
+              top: calc(100% - s(2));
+            }
+          }
+        }
+      }
+
+      .header--nav {
+
+        @include sp {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          max-height: calc(100vh - 100px);
+          z-index: -1;
+          border-radius: 0 0 s(50) s(50);
+          background: $B-FFFFFF;
+          padding: s(160) s(20) s(120);
+          overflow-y: scroll;
+          transform: translateY(-100%);
+          transition: all 0.3s ease-in-out;
+        }
+
+        &--list {
+          display: flex;
+          align-items: center;
+          transition: all 0.3s ease-in-out;
+
+          @include pc {
+            background: $P-E6F8FF;
+            border-radius: p(38);
+            gap: p(60);
+            padding: p(15) pm(328, 230) p(15) p(44);
+          }
+
+          @include sp {
+            flex-direction: column;
+          }
+
+          &.is-color {
+
+            @include pc {
+              background: $F-2480BA;
+            }
+          }
+
+          .header--nav--item {
+
+            @include sp {
+              text-align: center;
+              margin-top: s(30);
+            }
+
+            .header--nav--link {
+
+              @include sp {
+                display: block;
+                background: $P-E6F8FF;
+                width: s(236);
+                border-radius: s(38);
+                padding: s(15) 0;
+                transition: all 0.3s ease-in-out;
+              }
+
+              .TX {
+                @include wt700;
+
+                @include pc {
+                  color: $F-2480BA;
+                  font-size: pm(16);
+                  letter-spacing: pm(1.6);
+                }
+
+                @include sp {
+                  color: $P-0064A8;
+                  font-size: s(16);
+                  letter-spacing: s(1.6);
+                  transition: all 0.3s ease-in-out;
+                }
+              }
+
+              &.is-color {
+
+                @include sp {
+                  background: $F-2480BA;
+                }
+
+                .TX {
+                  @include pc {
+                    color: $P-E6F8FF;
+                  }
+
+                  @include sp {
+                    color: $P-E6F8FF;
+                  }
+                }
+              }
+            }
+
+            &:first-child {
+              @include sp {
+                margin-top: 0;
+              }
+            }
+
+            &:last-child {
+              transition: all 0.3s ease-in-out;
+
+              @include pc {
+                position: absolute;
+                right: 0;
+                top: 0;
+                height: 100%;
+                border-radius: p(170) p(0) p(0) p(170);
+                width: pm(280, 210);
+                background: $P-FFFFFF;
+                text-align: center;
+              }
+
+              @include sp {
+                margin-top: s(41);
+              }
+
+              .header--nav--link {
+
+                @include pc {
+                  height: 100%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  flex-direction: column;
+                  gap: p(1);
+                  padding-left: p(42);
+                }
+
+                @include sp {
+                  width: s(289);
+                  background: $P-0EB9FD;
+                  padding: s(29) 0 s(35);
+                  transition: all 0.3s ease-in-out;
+                }
+
+                span {
+                  @include wt700;
+
+                  @include pc {
+                    color: $F-2480BA;
+                    font-size: pm(13);
+                    letter-spacing: pm(1.04);
+                  }
+
+                  @include sp {
+                    color: $F-ffffff;
+                    font-size: s(13);
+                    letter-spacing: s(1.04);
+                    transition: all 0.3s ease-in-out;
+                  }
+                }
+
+                .TX {
+                  @include wt700;
+
+                  @include pc {
+                    color: $F-2480BA;
+                    font-size: pm(24);
+                    letter-spacing: pm(1.92);
+                  }
+
+                  @include sp {
+                    color: $F-ffffff;
+                    font-size: s(24);
+                    letter-spacing: s(1.92);
+                    transition: all 0.3s ease-in-out;
+                  }
+                }
+              }
+
+              &:hover {
+                @include pc {
+                  width: 70%;
+                }
+
+                .header--nav--link {
+
+                  @include sp {
+                    background: $F-ffffff;
+                  }
+
+                  span {
+
+                    @include sp {
+                      color: $P-0EB9FD;
+                    }
+                  }
+
+                  .TX {
+
+                    @include sp {
+                      color: $P-0EB9FD;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .nav-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.40);
+        z-index: -2;
+        transition: all 0.3s ease-in-out;
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+  }
+
+  &.is-active {
+
+    .burger {
+      .burger--inner {
+
+        span {
+          transition:
+            opacity 300ms 50ms ease,
+            top 300ms 50ms ease,
+            transform 300ms 350ms ease;
+
+          &:nth-child(1) {
+            top: calc(50% - s(1));
+            transform: rotate(25deg);
+          }
+
+          &:nth-child(2) {
+            opacity: 0;
+          }
+
+          &:nth-child(3) {
+            top: calc(50% - s(1));
+            transform: rotate(-25deg);
+          }
+        }
+      }
+    }
+
+    .header--nav {
+
+      @include sp {
+        transform: translateY(0);
+      }
+    }
+
+    .nav-bg {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  &.is-color {
+    .header--wapper {
+      &::before {
+        transform: scaleX(2);
+      }
+
+      .header--inner {
+        .header--logo {
+          .TL {
+            color: $F-ffffff;
+          }
+        }
+      }
+    }
+  }
+
+}
