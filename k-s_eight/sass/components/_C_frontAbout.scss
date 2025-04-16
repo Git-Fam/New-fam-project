@@ -1,0 +1,209 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_frontAbout
+----------------------- */
+
+.C_frontAbout {
+
+  .list {
+
+    @include pc {
+      @include column(p(100));
+    }
+
+    @include sp {
+      @include column(s(124));
+    }
+
+    .item {
+
+      .item--inner {
+        display: flex;
+
+
+        @include pc {
+          gap: p(62);
+          justify-content: right;
+        }
+
+        @include sp {
+          gap: s(30);
+          flex-direction: column;
+        }
+
+
+        .contents {
+
+          @include pc {
+            padding: p(162) 0 p(30) p(100);
+          }
+
+
+          .title {
+            position: relative;
+
+            @include sp {
+              display: flex;
+              gap: s(10);
+            }
+
+            .TX {
+              color: $F-C3E3F8;
+              @include bona;
+              @include wt400;
+              line-height: 1;
+
+              @include pc {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%) translateX(-150%);
+                font-size: pm(64);
+                letter-spacing: pm(5.12);
+              }
+
+              @include sp {
+                font-size: s(64);
+                letter-spacing: s(5.12);
+              }
+            }
+
+            .TL {
+              color: $F-ffffff;
+              @include wt700;
+
+              @include pc {
+                font-size: pm(32);
+                letter-spacing: pm(2.56);
+              }
+
+              @include sp {
+                font-size: s(32);
+                letter-spacing: s(2.56);
+                padding-top: s(15);
+              }
+            }
+          }
+
+          .text {
+
+            @include pc {
+              margin-top: p(30);
+            }
+
+            @include sp {
+              margin-top: s(30);
+              width: s(274);
+            }
+
+
+            .TX {
+              color: $F-ffffff;
+              @include noto-sans;
+              line-height: 175%;
+
+              @include pc {
+                font-size: pm(16);
+                letter-spacing: pm(1.6);
+              }
+
+              @include sp {
+                font-size: s(16);
+                letter-spacing: s(1.6);
+              }
+            }
+          }
+        }
+
+        .img {
+          flex-shrink: 0;
+
+          @include pc {
+            border-radius: p(50) 0px 0px 0px;
+            width: p(630);
+            min-height: p(396);
+          }
+
+          @include sp {
+            border-radius: s(50) 0px 0px 0px;
+            width: s(370);
+            height: s(266);
+          }
+
+          &.img-01 {
+            @include imgCover("front-about-01.jpg");
+
+            @include sp {
+              background-position: center left 0;
+            }
+          }
+
+          &.img-02 {
+            @include imgCover("front-about-02.jpg");
+          }
+
+          &.img-03 {
+            @include imgCover("front-about-03.jpg");
+          }
+        }
+      }
+
+      &:nth-child(1) {
+        .item--inner {
+          .contents {
+
+            @include pc {
+              padding: p(162) 0 p(30) p(100);
+            }
+          }
+
+          .img {
+            @include imgCover("front-about-01.jpg");
+
+            @include sp {
+              background-position: center left 0;
+            }
+          }
+        }
+      }
+
+      &:nth-child(2) {
+        .item--inner {
+          .contents {
+
+            @include pc {
+              padding: p(95) 0 p(30) p(100);
+            }
+          }
+
+          .img {
+            @include imgCover("front-about-02.jpg");
+
+            @include sp {
+              background-position: center left 0;
+            }
+          }
+        }
+      }
+
+      &:nth-child(3) {
+        .item--inner {
+          .contents {
+
+            @include pc {
+              padding: p(24) 0 p(30) p(100);
+            }
+          }
+
+          .img {
+            @include imgCover("front-about-03.jpg");
+
+            @include sp {
+              background-position: center left 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
