@@ -1,0 +1,208 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_service
+----------------------- */
+
+.C_service {
+
+  @include pc {
+    padding: 0 p(100) 0 p(46);
+  }
+
+  @include sp {
+    padding: 0 s(28) 0 s(42);
+  }
+
+  .list {
+    @include pc {
+      @include column(p(100));
+    }
+
+    @include sp {
+      @include column(s(100));
+    }
+
+    .item {
+
+      .item--inner {
+        display: flex;
+
+        @include pc {
+          gap: p(87);
+        }
+
+        @include sp {
+          flex-direction: column;
+        }
+
+        .img {
+
+          @include pc {
+            width: p(575);
+            height: p(373);
+            border-radius: p(10);
+          }
+
+          @include sp {
+            aspect-ratio: 319 / 207;
+            width: 100%;
+            border-radius: s(10);
+            order: 3;
+            margin-bottom: s(11);
+          }
+
+          &.img-01 {
+            @include imgCover("C_service-img-01.jpg");
+          }
+
+          &.img-02 {
+            @include imgCover("C_service-img-02.jpg");
+          }
+
+          &.img-03 {
+            @include imgCover("C_service-img-03.jpg");
+          }
+
+          &.img-04 {
+            @include imgCover("C_service-img-04.jpg");
+          }
+
+          &.img-05 {
+            @include imgCover("C_service-img-05.jpg");
+          }
+        }
+
+        .pc-wrap {
+
+          @include pc {
+            @include column(p(30));
+            width: pm(472);
+            flex-shrink: 0;
+          }
+
+          @include sp {
+            display: contents;
+          }
+
+          .title {
+
+            @include sp {
+              order: 1;
+              margin-bottom: s(30);
+              padding-inline: s(7) s(5);
+            }
+
+
+            .TL {
+              color: $F-ffffff;
+              @include wt700;
+
+              @include pc {
+                font-size: pm(48);
+                letter-spacing: pm(3.84);
+              }
+
+              @include sp {
+                font-size: s(36);
+                letter-spacing: s(2.88);
+              }
+            }
+          }
+
+          .text {
+
+            @include pc {
+              padding-right: p(19);
+            }
+
+            @include sp {
+              order: 2;
+              margin-bottom: s(23);
+              padding-inline: s(7) s(5);
+            }
+
+            .TX {
+              color: $F-ffffff;
+              @include noto-sans;
+              @include wt400;
+              line-height: 175%;
+
+              @include pc {
+                font-size: pm(16);
+                letter-spacing: pm(1.6);
+              }
+
+              @include sp {
+                font-size: s(16);
+                letter-spacing: s(1.6);
+              }
+            }
+          }
+
+
+          .point {
+
+            @include pc {
+              @include column(p(10));
+            }
+
+            @include sp {
+              order: 4;
+              @include column(s(6));
+            }
+
+            .element {
+              background: $P-E6F8FF;
+              position: relative;
+
+              @include pc {
+                border-radius: p(38);
+                padding: p(12) p(15) p(12) p(45);
+              }
+
+              @include sp {
+                border-radius: s(38);
+                padding: s(8) s(8) s(8) s(30);
+              }
+
+              &::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                aspect-ratio: 21 / 16;
+                @include iconContain($point);
+
+                @include pc {
+                  width: p(21);
+                  left: p(17);
+                }
+
+                @include sp {
+                  width: s(15);
+                  left: s(10);
+                }
+              }
+
+              .TX {
+                color: $F-126FA7;
+                @include wt700;
+
+                @include pc {
+                  font-size: pm(16);
+                  letter-spacing: pm(1.6);
+                }
+
+                @include sp {
+                  font-size: s(10.847);
+                  letter-spacing: s(1.085);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
