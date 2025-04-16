@@ -1,0 +1,243 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_frontW-C
+----------------------- */
+
+.C_frontW-C {
+  display: flex;
+
+  @include pc {
+    gap: p(21);
+  }
+
+  @include media(1000px, 768px) {
+    flex-direction: column;
+  }
+
+  @include sp {
+    flex-direction: column;
+    gap: s(10);
+  }
+
+  .item {
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      transition: all 0.5s ease-in-out;
+    }
+
+    .item--wrap {
+      position: relative;
+      z-index: 3;
+      background: rgba(0, 184, 255, 0.5);
+      transition: all 0.3s ease-in-out;
+
+      @include pc {
+        padding-block: p(55) p(82);
+      }
+
+      @include sp {
+        padding: s(40) s(20) s(20);
+      }
+
+      .item--inner {
+
+        @include pc {
+          width: fit-content;
+        }
+
+        .C_title {
+
+          @include sp {
+            margin: 0 auto;
+          }
+        }
+
+        .content {
+          color: $F-ffffff;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          @include pc {
+            margin-top: p(24);
+            min-height: p(151);
+            gap: p(20);
+          }
+
+          @include sp {
+            margin-top: s(20);
+            min-height: s(185);
+            gap: s(20);
+          }
+
+          .text {
+
+            .TX {
+              @include noto-sans;
+              @include wt400;
+
+              @include pc {
+                font-size: pm(16);
+                letter-spacing: pm(1.6);
+                line-height: 175%;
+              }
+
+              @include sp {
+                font-size: s(16);
+                letter-spacing: s(0.8);
+                line-height: 156%;
+              }
+            }
+          }
+
+          .link {
+            display: flex;
+            align-items: center;
+
+            @include pc {
+              gap: p(6);
+            }
+
+            @include sp {
+              gap: s(6);
+              justify-content: flex-end;
+            }
+
+            .TX {
+              color: #FFF;
+              @include bona;
+              @include wt400;
+              line-height: 187%;
+
+              @include pc {
+                font-size: pm(16);
+                letter-spacing: pm(0.8);
+              }
+
+              @include sp {
+                font-size: s(16);
+                letter-spacing: s(0.8);
+              }
+            }
+
+            &::after {
+              content: "";
+              display: block;
+              background: $F-ffffff;
+
+              @include pc {
+                width: p(30);
+                height: p(1);
+              }
+
+              @include sp {
+                width: s(30);
+                height: s(1);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &:nth-child(1) {
+
+      .item--wrap {
+        @include pc {
+          padding-inline: p(113) p(90);
+        }
+
+        @include sp {}
+
+        .item--inner {
+          .content {
+            .text {
+              @include sp {
+                width: s(263);
+                margin: 0 auto;
+              }
+            }
+          }
+        }
+      }
+
+      &::after {
+        @include imgCover("front-W_C-01.jpg");
+        background-position: center bottom 5%;
+      }
+    }
+
+    &:nth-child(2) {
+
+      .item--wrap {
+
+        @include pc {
+          padding-inline: p(64) p(50);
+        }
+
+        @include sp {}
+
+        .item--inner {
+          @include media(1000px, 768px) {
+            margin-left: auto;
+          }
+
+          .content {
+            .text {
+              @include sp {
+                width: s(297);
+                margin: 0 auto;
+              }
+            }
+          }
+        }
+      }
+
+      &::after {
+        @include imgCover("front-W_C-02.jpg");
+      }
+    }
+
+    &:hover {
+
+      &::after {
+        transform: scale(1.1);
+      }
+
+      .item--wrap {
+        background: rgba(12, 140, 228, 0.50);
+        backdrop-filter: blur(3px);
+
+        .item--inner {
+          .content {
+            .link {
+              &::after {
+                animation: frontW-C-hover 1s infinite linear both alternate;
+
+                @keyframes frontW-C-hover {
+                  0% {
+                    transform: translateX(0);
+                  }
+
+                  100% {
+                    transform: translateX(50%);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

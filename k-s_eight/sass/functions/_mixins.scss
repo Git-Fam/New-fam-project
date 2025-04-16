@@ -12,6 +12,15 @@ $sp: 767px;  // スマホ
   }
 }
 
+@mixin media($max , $min){
+  @media screen and (max-width: ($max)) and (min-width: ($min)) {
+    @content;
+  }
+}
+// ↓CSSでは
+// @include media(1000px, 768px){}
+
+
 // どセンター
 @mixin center{
   display: flex;
