@@ -1,0 +1,109 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_title
+----------------------- */
+
+.C_title {
+  width: fit-content;
+
+  .title {
+
+    .TL {
+      @include bona;
+      @include wt400;
+      line-height: 1;
+      white-space: nowrap;
+
+      @include pc {
+        font-size: pm(110);
+        letter-spacing: pm(5.5);
+      }
+
+      @include sp {
+        font-size: s(70);
+        letter-spacing: s(3.5);
+      }
+
+      &.ch-blue {
+        background: linear-gradient(75deg, #2FBCF7 60%, #D5FDFA 200%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      &.ch-white {
+        background: linear-gradient(75deg, #FFF 30%, #B3EEE9 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+
+  .text {
+    display: flex;
+    align-items: center;
+
+    @include pc {
+      gap: p(10);
+      padding-right: p(5);
+    }
+
+    @include sp {
+      gap: s(6);
+      padding-right: s(3);
+    }
+
+    .text-bar {
+      width: 100%;
+
+      @include pc {
+        height: pm(1);
+      }
+
+      @include sp {
+        height: s(1);
+      }
+    }
+
+    .TX {
+      @include wt700;
+      position: relative;
+      width: fit-content;
+      flex-shrink: 0;
+      white-space: nowrap;
+
+      @include pc {
+        font-size: pm(20);
+        letter-spacing: pm(1.6);
+        margin-top: p(3);
+      }
+
+      @include sp {
+        font-size: s(13);
+        letter-spacing: s(1.04);
+      }
+    }
+
+    &.ch-blue {
+      .text-bar {
+        background: $F-01B8FF;
+      }
+
+      .TX {
+        color: $F-01B8FF;
+      }
+    }
+
+    &.ch-white {
+      .text-bar {
+        background: $F-ffffff;
+      }
+
+      .TX {
+        color: $F-ffffff;
+      }
+    }
+  }
+}

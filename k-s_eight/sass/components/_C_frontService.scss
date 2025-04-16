@@ -1,0 +1,245 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_frontService
+----------------------- */
+
+.C_frontService {
+  position: relative;
+
+  @include pc {
+    padding: 0 0 p(52) p(68);
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: calc(100% - p(161));
+      background: $P-E6F8FF;
+      z-index: 1;
+    }
+  }
+
+  @include sp {
+    padding-left: s(49);
+  }
+
+  .service__contents {
+
+    @include pc {
+      position: relative;
+      z-index: 2;
+    }
+
+    @include sp {}
+
+    .list {
+      display: flex;
+      flex-wrap: wrap;
+
+      @include pc {
+        gap: p(26);
+      }
+
+      @include sp {
+        gap: s(30) s(15);
+      }
+
+      .item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        z-index: 1;
+
+        @include pc {
+          @include row(5, p(26));
+          min-height: p(466);
+
+          &:nth-child(5n) {
+            .item__info {
+              .text {
+                padding-right: p(6)
+              }
+            }
+          }
+        }
+
+        @include sp {
+          @include row(2, s(15));
+          min-height: s(356);
+          padding-bottom: s(21);
+
+          &:nth-child(odd) {
+            &::before {
+              content: "";
+              display: block;
+              position: absolute;
+              bottom: 0;
+              left: calc(-1 * s(49));
+              width: calc(200% + (s(49) + s(15)));
+              height: calc(100% - s(147));
+              background-color: $P-E6F8FF;
+              z-index: -1;
+            }
+          }
+        }
+
+        &:nth-child(2) {
+          .item__info {
+            .img--wrap {
+              img {
+                object-position: 0 0;
+              }
+            }
+          }
+        }
+
+
+        &__info {
+
+          .img--wrap {
+            width: 100%;
+
+            @include pc {
+              height: p(278);
+              margin-bottom: p(25);
+            }
+
+            @include sp {
+              height: s(203);
+              margin-bottom: s(17);
+            }
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+
+          .title {
+
+            @include pc {
+              margin-bottom: p(11);
+              padding-left: p(1);
+            }
+
+            @include sp {
+              margin-bottom: s(10);
+            }
+
+            .TL {
+              @include wt600;
+              line-height: 108%;
+
+              @include pc {
+                font-size: pm(24);
+                letter-spacing: pm(-0.24);
+              }
+
+              @include sp {
+                font-size: s(20);
+                letter-spacing: s(-0.2);
+              }
+            }
+          }
+
+
+          .text {
+
+            @include pc {
+              margin-bottom: p(28);
+              padding-left: p(1);
+            }
+
+            @include sp {
+              margin-bottom: s(10);
+            }
+
+            .TX {
+              @include noto-sans;
+              line-height: 176%;
+
+              @include pc {
+                font-size: pm(13);
+                letter-spacing: pm(0.65);
+              }
+
+              @include sp {
+                font-size: s(13);
+                letter-spacing: s(0.65);
+              }
+            }
+          }
+        }
+
+        .link {
+          display: flex;
+          align-items: center;
+          width: fit-content;
+
+          @include pc {
+            gap: p(6);
+
+            &:hover {
+              &::after {
+                animation: underline 1s infinite linear both alternate;
+              }
+            }
+          }
+
+          @include sp {
+            gap: s(6);
+          }
+
+          .TX {
+            color: $F-126FA7;
+            @include bona;
+            line-height: 187%;
+
+            @include pc {
+              font-size: pm(16);
+              letter-spacing: pm(0.8);
+            }
+
+            @include sp {
+              font-size: s(16);
+              letter-spacing: s(0.8);
+            }
+          }
+
+          &::after {
+            content: "";
+            display: block;
+            background-color: $F-126FA7;
+
+            @include pc {
+              width: p(30);
+              height: pm(1);
+            }
+
+            @include sp {
+              width: s(30);
+              height: s(1);
+              animation: underline 1s infinite linear both alternate;
+            }
+          }
+
+          @keyframes underline {
+            0% {
+              transform: translateX(0);
+            }
+
+            100% {
+              transform: translateX(50%);
+            }
+          }
+        }
+      }
+    }
+  }
+}

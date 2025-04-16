@@ -27,6 +27,7 @@ body {
   @include noto-serif;
   line-height: 1.3;
   @include wt400;
+  color: $F-333333;
 
 
   &.is-active {
