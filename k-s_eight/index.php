@@ -1,6 +1,12 @@
-<?php get_template_part('inchead'); ?>
-<?php get_template_part('incheader'); ?>
+<?php get_template_part('./inc/head'); ?>
+<?php get_template_part('./inc/header'); ?>
 
-<div class="bbb">404</div>
+<div class="notfound">
+  <div class="text">
+    <h3 class="TL">404</h3>
+    <p class="TX">ページが見つかりません。</p>
+  </div>
 
-<?php get_template_part('incfooter'); ?>
+</div>
+
+<?php get_template_part('./inc/footer'); ?>

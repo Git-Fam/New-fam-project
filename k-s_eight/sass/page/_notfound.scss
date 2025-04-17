@@ -1,0 +1,24 @@
+@use "../functions" as *;
+
+/* -----------------------
+  notfound
+----------------------- */
+
+.notfound {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .text {
+    text-align: center;
+
+    .TL {
+      font-size: 100px;
+    }
+
+    .TX {
+      font-size: 20px;
+    }
+  }
+}

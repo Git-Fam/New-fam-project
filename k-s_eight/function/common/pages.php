@@ -6,9 +6,9 @@ function custom_page_template($template)
 	$new_template = '';
 
 	$page_templates = array(
-		// 'voi' => 'pages/page-voi',
-		// 'ggg' => 'pages/page-ggg',
 		// 複数ある場合は以下に追加していく
+		'service' => 'pages/page-service',
+		'works' => 'pages/page-works',
 		'contact' => 'pages/page-contact',
 		'contact-confirm' => 'pages/page-contact-confirm',
 		'contact-complete' => 'pages/page-contact-complete',
