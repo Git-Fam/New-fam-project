@@ -1,0 +1,86 @@
+@use "../functions" as *;
+
+/* -----------------------
+  service
+----------------------- */
+
+.service {
+
+  @include pc {
+    padding-top: p(60);
+  }
+
+  @include sp {
+    padding-top: s(30);
+  }
+
+  &__service {
+
+    &--text {
+      @include pc {
+        padding-inline: p(100);
+        margin-right: p(82);
+        margin-bottom: p(89);
+      }
+
+      @include sp {
+        padding-inline: s(20);
+        margin-bottom: s(60);
+      }
+
+      .TX {
+        @include noto-sans;
+        @include wt400;
+        
+        @include pc {
+          font-size: pm(16);
+          letter-spacing: pm(1.6);
+          line-height: 175%;
+        }
+
+        @include sp {
+          font-size: s(16);
+          letter-spacing: s(0.8);
+          line-height: 156%;
+        }
+      }
+    }
+
+    &--contents {
+      position: relative;
+
+      @include pc {
+        padding: p(122) 0 p(160);
+      }
+
+      @include sp {
+        padding: s(130) 0 s(150);
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        height: 100%;
+        background: linear-gradient(188deg, #DAEEFE 1.8%, #85C4E8 20.7%, #01B8FF 94.02%);
+
+        @include pc {
+          width: calc(100% - p(100));
+          border-radius: p(140) 0 0 0;
+        }
+
+        @include sp {
+          width: calc(100% - s(20));
+          border-radius: s(120) 0 0 0;
+        }
+      }
+
+      .C_service {
+        position: relative;
+        z-index: 2;
+      }
+    }
+  }
+}

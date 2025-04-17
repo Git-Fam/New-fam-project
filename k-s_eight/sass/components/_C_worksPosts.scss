@@ -121,6 +121,7 @@
 
         .TX {
           @include noto-sans;
+          @include wt400;
           line-height: 162%;
 
           @include pc {

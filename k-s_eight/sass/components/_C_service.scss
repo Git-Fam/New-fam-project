@@ -96,7 +96,7 @@
 
             .TL {
               color: $F-ffffff;
-              @include wt700;
+              @include wt600;
 
               @include pc {
                 font-size: pm(48);
