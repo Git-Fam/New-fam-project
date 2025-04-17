@@ -10,7 +10,7 @@
     margin-top: p(100);
     .complete-text {
       text-align: center;
-      .complete-title{
+      .complete-title {
         @include noto-serif;
         font-size: pm(20);
         font-weight: bold;
@@ -26,7 +26,7 @@
     padding: p(60) p(100) p(160);
     @include noto-sans;
     font-size: pm(16);
-    
+
     .contact-text {
       text-align: center;
       margin-bottom: p(50);
@@ -75,14 +75,15 @@
 
         label {
           @include noto-serif;
-          font-size: pm(20);
+          font-size: pm(16);
           font-weight: bold;
           display: flex;
           justify-content: space-between;
           width: p(232);
+          padding-top: p(13);
 
           span {
-            font-size: pm(16);
+            font-size: pm(13);
             color: $B-FFFFFF;
             display: inline-block;
             width: p(50);
@@ -92,8 +93,12 @@
             color: $B-FFFFFF;
             background: $P-2480BA;
             border-radius: p(3);
-            padding: p(2) 0;
+            padding: p(1) 0 0;
           }
+        }
+
+        .pd-t {
+          padding-top: p(13);
         }
       }
 
@@ -178,6 +183,8 @@
       }
 
       .form-sub .btn-submit {
+        @include noto-serif;
+        font-weight: bold;
         border-radius: p(5);
         border: p(1) solid #333;
         background-color: #fff;
@@ -194,6 +201,8 @@
       }
 
       .form-sub .btn-back {
+        @include noto-serif;
+        font-weight: bold;
         border-radius: p(5);
         width: p(169);
         height: p(56);
@@ -215,7 +224,7 @@
     margin-top: s(100);
     .complete-text {
       text-align: center;
-      .complete-title{
+      .complete-title {
         @include noto-serif;
         font-size: s(20);
         font-weight: bold;
@@ -379,6 +388,11 @@
       .form-sub {
         display: flex;
         gap: s(10);
+
+        button {
+          @include noto-serif;
+          font-weight: bold;
+        }
       }
 
       .form-sub .btn-submit {
