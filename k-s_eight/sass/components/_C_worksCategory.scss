@@ -1,0 +1,68 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_worksCategory
+----------------------- */
+
+.C_worksCategory {
+
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+
+    @include pc {
+      gap: p(5);
+    }
+
+    @include sp {
+      gap: s(5);
+    }
+
+
+    .item {
+
+      &.is-active {
+        .item--inner {
+          background: $P-2480BA;
+
+          .TX {
+            color: $F-ffffff
+          }
+        }
+      }
+
+      .item--inner {
+        display: inline-block;
+        background: $P-EDF7F6;
+        user-select: none;
+
+        @include pc {
+          min-width: p(100);
+          padding: p(5) p(13);
+        }
+
+        @include sp {
+          min-width: s(100);
+          padding: s(5) s(13);
+        }
+
+        .TX {
+          color: $F-2480BA;
+          @include wt700;
+          line-height: 2;
+          text-align: center;
+
+          @include pc {
+            font-size: pm(13);
+            letter-spacing: pm(-0.13);
+          }
+
+          @include sp {
+            font-size: s(13);
+            letter-spacing: s(-0.13);
+          }
+        }
+      }
+    }
+  }
+}

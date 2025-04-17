@@ -1,0 +1,179 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_worksPosts
+----------------------- */
+
+.aaa {
+
+  @include pc {
+    padding-inline: p(100);
+  }
+
+  @include sp {
+    padding-inline: s(20);
+  }
+}
+
+.C_worksPosts {
+
+  .list {
+
+    @include pc {
+      @include column(p(150));
+    }
+
+    @include sp {
+      @include column(s(100));
+    }
+
+    .item {
+
+      .img__area {
+        display: flex;
+
+        .card--img {
+          position: relative;
+
+          @include pc {
+            height: p(575);
+          }
+
+          @include sp {
+            height: s(229);
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+
+          &--title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.70);
+
+            @include pc {
+              padding: p(2) p(17) p(2) p(11);
+            }
+
+            @include sp {
+              padding: s(2) s(5) s(2) s(4);
+            }
+
+            .TL {
+              @include bona;
+              @include wt700;
+              line-height: 162.5%;
+
+              @include pc {
+                font-size: pm(16);
+                letter-spacing: pm(1.6);
+              }
+
+              @include sp {
+                font-size: s(13);
+                letter-spacing: s(1.3);
+              }
+            }
+          }
+
+          &:nth-child(2) {
+            border-left: solid $P-01B8FF;
+
+            @include pc {
+              border-left-width: p(3);
+            }
+
+            @include sp {
+              border-left-width: s(3);
+            }
+
+
+            .card--img--title {
+
+              .TL {
+                text-align: right;
+              }
+            }
+          }
+        }
+      }
+
+
+      .category__area {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+
+        @include pc {
+          gap: 0 pm(16);
+          margin-top: p(11);
+        }
+
+        @include sp {
+          gap: 0 s(16);
+          margin-top: s(12);
+        }
+
+        .TX {
+          @include noto-sans;
+          line-height: 162%;
+
+          @include pc {
+            font-size: pm(16);
+            letter-spacing: pm(-0.16);
+          }
+
+          @include sp {
+            font-size: s(16);
+            letter-spacing: s(-0.16);
+          }
+
+          &::before {
+            content: "/";
+          }
+
+          &:first-child {
+            &::before {
+              content: "";
+            }
+          }
+        }
+      }
+
+      .text__area {
+        background: $P-E6F8FF;
+
+        @include pc {
+          padding: p(54) p(51) p(53) p(38);
+          margin-top: p(23);
+        }
+
+        @include sp {
+          padding: s(31) s(25) s(34);
+          margin-top: s(30);
+        }
+
+        .TX {
+          @include noto-sans;
+          @include wt400;
+          line-height: 175%;
+
+          @include pc {
+            font-size: pm(16);
+            letter-spacing: pm(1.6);
+          }
+
+          @include sp {
+            font-size: s(16);
+            letter-spacing: s(1.6);
+          }
+        }
+      }
+    }
+  }
+}
