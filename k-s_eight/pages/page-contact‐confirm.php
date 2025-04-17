@@ -1,81 +1,21 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head prefix="og: https://ogp.me/ns#">
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<?php
+ 
+ /*
+ Template Name: contact-confirm
+ Template Post Type: page
+ Template Path: pages/
+*/
 
-    <!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
-    <meta name="format-detection" content="email=no,telephone=no,address=no" />
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+?>
 
-    <meta property="og:locale" content="ja_JP" />
+<?php get_template_part('./inc/head'); ?>
+<?php get_template_part('./inc/header'); ?>
 
-    <!-- ▼SEO -->
-    <link rel="”canonical”" href="”URL”" />
-    <!-- ジェネレーターURL→ https://metatags.io/ -->
 
-    <!-- ▼ファビコン -->
-    <!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
-
-    <!-- ▼クロールして欲しくない -->
-    <!-- <meta name="robots" content="noindex,nofollow"> -->
-
-    <!-- ▼テーマカラー -->
-    <!-- <meta name="theme-color" content="#e9c931"> -->
-
-    <!-- ▼CSS -->
-    <link rel="stylesheet" href="css/main.css?ver=1.0.0" />
-
-    <!-- ▼フォント -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+JP:wght@200..900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
-
-    <script>
-      (function (d) {
-        var config = {
-            kitId: "gxb5lkc",
-            scriptTimeout: 3000,
-            async: true,
-          },
-          h = d.documentElement,
-          t = setTimeout(function () {
-            h.className =
-              h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
-          }, config.scriptTimeout),
-          tk = d.createElement("script"),
-          f = false,
-          s = d.getElementsByTagName("script")[0],
-          a;
-        h.className += " wf-loading";
-        tk.src = "https://use.typekit.net/" + config.kitId + ".js";
-        tk.async = true;
-        tk.onload = tk.onreadystatechange = function () {
-          a = this.readyState;
-          if (f || (a && a != "complete" && a != "loaded")) return;
-          f = true;
-          clearTimeout(t);
-          try {
-            Typekit.load(config);
-          } catch (e) {}
-        };
-        s.parentNode.insertBefore(tk, s);
-      })(document);
-    </script>
-  </head>
-
-  <body>
-    <header class="header"></header>
-
-    <div class="whopper">
-      <div class="KV"></div>
-
-      <main>
-        <div class="contact-form-wrapper">
+<!-- <div class="bbb">contact-confirm</div> -->
+<!-- mainよりも中の部分だけを入れ込む -->
+ <div class="contact-form-wrapper">
           <p class="contact-text">
             ご入力いただいた内容に間違いがないか、<br class="sp" />
             確認をお願いいたします。
@@ -165,17 +105,5 @@
             </div>
           </form>
         </div>
-      </main>
 
-      <footer class="footer"></footer>
-    </div>
-
-    <script
-      src="https://code.jquery.com/jquery-3.7.0.min.js"
-      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
-      crossorigin="anonymous"
-    ></script>
-    <script src="js/script.js"></script>
-    <script src="js/joint.js"></script>
-  </body>
-</html>
+<?php get_template_part('./inc/footer'); ?>
