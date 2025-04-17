@@ -20,8 +20,16 @@
 
 
     .item {
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
 
       &.is-active {
+
+        &:hover {
+          opacity: 1;
+          cursor: default;
+        }
+
         .item--inner {
           background: $P-2480BA;
 
@@ -31,26 +39,40 @@
         }
       }
 
+      &:hover {
+        opacity: 0.5;
+
+        .item--inner {
+          background: $P-2480BA;
+
+          .TX {
+            color: $F-ffffff;
+          }
+        }
+      }
+
       .item--inner {
         display: inline-block;
         background: $P-EDF7F6;
-        user-select: none;
-
+        transition: all 0.3s ease-in-out;
+        
         @include pc {
           min-width: p(100);
           padding: p(5) p(13);
         }
-
+        
         @include sp {
           min-width: s(100);
           padding: s(5) s(13);
         }
-
+        
         .TX {
           color: $F-2480BA;
           @include wt700;
           line-height: 2;
           text-align: center;
+          user-select: none;
+          transition: all 0.3s ease-in-out;
 
           @include pc {
             font-size: pm(13);

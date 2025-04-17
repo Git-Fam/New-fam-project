@@ -4,3 +4,246 @@
   front
 ----------------------- */
 
+.front {
+
+  @include pc {
+    padding-top: p(137);
+  }
+
+  @include sp {
+    padding-top: s(100);
+  }
+
+  &__vision {
+    position: relative;
+
+    @include pc {
+      padding: 0 p(188) p(55) p(200);
+    }
+
+    @include sp {
+      padding: 0 s(20) s(110);
+    }
+
+    .vision__contents {
+      position: relative;
+      z-index: 2;
+
+      display: flex;
+
+      @include pc {
+        gap: p(132);
+      }
+
+      @include media(1020px, 768px) {
+        flex-direction: column;
+
+        .title {
+          br {
+            display: none;
+          }
+        }
+      }
+
+      @include sp {
+        flex-direction: column;
+        gap: s(30);
+      }
+
+      .title {
+
+        @include pc {
+          flex-shrink: 0;
+          padding-top: p(75);
+        }
+
+
+        .TL {
+          @include wt700;
+          line-height: 168.75%;
+
+          @include pc {
+            font-size: pm(32);
+            letter-spacing: pm(2.56);
+          }
+
+          @include sp {
+            font-size: s(32);
+            letter-spacing: s(2.56);
+          }
+        }
+      }
+
+      .text {
+
+        @include pc {
+          @include column(pm(20));
+        }
+
+        @include sp {
+          @include column(s(22));
+        }
+
+        .TX {
+          @include noto-sans;
+          @include wt400;
+          line-height: 175%;
+
+          @include pc {
+            font-size: pm(16);
+            letter-spacing: pm(1.6);
+          }
+
+          @include sp {
+            font-size: s(16);
+            letter-spacing: s(0.8);
+          }
+        }
+      }
+    }
+
+    .C_sentRoll {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1;
+    }
+  }
+
+  &__service {
+
+    @include pc {
+      margin-top: p(160);
+    }
+
+    @include sp {
+      margin-top: s(100);
+    }
+
+    .C_title {
+
+      @include pc {
+        padding-left: p(100);
+      }
+
+      @include sp {
+        padding-left: s(20);
+      }
+    }
+
+    .C_frontService {
+
+      @include pc {
+        margin-top: p(116);
+      }
+
+      @include sp {
+        margin-top: s(59);
+      }
+    }
+  }
+
+  &__about {
+    position: relative;
+
+    @include pc {
+      margin-top: p(100);
+    }
+
+    @include sp {
+      margin-top: s(60);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      height: 100%;
+      background: linear-gradient(188deg, #DAEEFE 1.8%, #85C4E8 20.7%, #01B8FF 94.02%);
+      
+      @include pc{
+        width: calc(( 776 / 1280) * 100%);
+        border-radius: 0px p(140) 0px 0px;
+      }
+
+      @include sp {
+        width: calc(( 370 / 390) * 100%);
+        border-radius: 0px s(140) 0px 0px;
+      }
+    }
+
+    &--inner {
+      position: relative;
+      z-index: 2;
+
+      @include pc {
+        padding-top: p(120);
+        padding-left: p(100);
+      }
+
+      @include sp {
+        padding-top: s(90);
+        padding-left: s(20);
+      }
+
+      .C_title{
+
+        @include pc{
+          margin-bottom: p(-31);
+        }
+        
+        @include sp{
+          margin-bottom: s(100);
+        }
+      }
+    }
+  }
+
+  &__w-c-a {
+    background: rgba(79, 173, 164, 0.10);
+
+    @include pc {
+      padding: p(200) 0 p(160);
+    }
+
+    @include sp {
+      padding: s(60) 0 s(130);
+    }
+  }
+
+  &__w-c {
+
+    @include pc {
+      margin-bottom: p(100);
+    }
+
+    @include sp {
+      margin-bottom: s(90);
+    }
+  }
+
+  &__access {
+
+    @include pc {
+      padding-inline: p(100);
+    }
+
+    @include sp {
+      padding-inline: s(20);
+    }
+
+    .C_title {
+
+      @include pc {
+        margin-bottom: p(60);
+      }
+
+      @include sp {
+        margin-bottom: s(48);
+      }
+    }
+  }
+}
