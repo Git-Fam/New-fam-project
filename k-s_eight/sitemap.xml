@@ -5,24 +5,49 @@
 <url>
   <loc>URL</loc>
   <priority>1.0</priority>
-  <lastmod>2023-12-18</lastmod>
+  <lastmod>2025-04-18</lastmod>
   <changefreq>weekly</changefreq>
 </url>
 
-<!-- 2ページ目以降 -->
-<!-- <url>
-  <loc>URL</loc>
+<!-- サービスページ -->
+<url>
+  <loc>URL/service</loc>
   <priority>0.8</priority>
-  <lastmod>2020-02-19</lastmod>
+  <lastmod>2025-04-18</lastmod>
   <changefreq>weekly</changefreq>
-</url> -->
+</url>
 
-<!-- <url>
-  <loc>URL</loc>
+<!-- 施工事例ページ -->
+<url>
+  <loc>URL/works</loc>
   <priority>0.8</priority>
-  <lastmod>2020-02-19</lastmod>
+  <lastmod>2025-04-18</lastmod>
   <changefreq>weekly</changefreq>
-</url> -->
+</url>
 
+<!-- お問い合わせページ -->
+<url>
+  <loc>URL/contact</loc>
+  <priority>0.8</priority>
+  <lastmod>2025-04-18</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
+
+<!-- お問い合わせ-確認ページ -->
+<url>
+  <loc>URL/contact-confirm</loc>
+  <priority>0.8</priority>
+  <lastmod>2025-04-18</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
+
+<!-- お問い合わせ-完了ページ -->
+<url>
+  <loc>URL/contact-complete</loc>
+  <priority>0.8</priority>
+  <lastmod>2025-04-18</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
 
 </urlset>
+

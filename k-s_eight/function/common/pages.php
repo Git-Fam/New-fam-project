@@ -8,6 +8,7 @@ function custom_page_template($template)
 	$page_templates = array(
 		// 複数ある場合は以下に追加していく
 		'service' => 'pages/page-service',
+		'works' => 'pages/page-works',
 		'contact' => 'pages/page-contact',
 		'contact-confirm' => 'pages/page-contact-confirm',
 		'contact-complete' => 'pages/page-contact-complete',
@@ -27,4 +28,3 @@ function custom_page_template($template)
 	return $template;
 }
 add_filter('page_template', 'custom_page_template');
-

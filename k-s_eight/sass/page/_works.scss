@@ -25,5 +25,41 @@
         margin-bottom: s(56);
       }
     }
+
+    .C_worksPosts {
+      .page-nav {
+        margin-top: p(100);
+
+        @include sp {
+          margin-top: s(80);
+        }
+
+        .wp-pagenavi {
+          width: fit-content;
+          margin: 0 auto;
+
+          a,
+          span {
+            border: none;
+
+            @include pc {
+              font-size: pm(16);
+            }
+
+            @include sp {
+              font-size: s(14);
+            }
+          }
+
+          a {
+            color: $F-333333;
+          }
+
+          span {
+            color: $F-2480BA;
+          }
+        }
+      }
+    }
   }
 }
