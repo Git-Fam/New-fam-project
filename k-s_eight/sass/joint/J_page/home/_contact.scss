@@ -51,7 +51,8 @@
         input[type="text"],
         input[type="email"],
         input[type="tel"],
-        textarea {
+        .inpt,
+        #message {
           height: p(50);
           flex: 1;
           padding: 0 p(12);
@@ -66,11 +67,12 @@
           }
         }
 
-        textarea {
+        #message {
           padding-top: p(10);
           resize: none;
           height: p(230);
           overflow-y: auto;
+          width: 100%;
         }
 
         label {
@@ -99,6 +101,10 @@
 
         .pd-t {
           padding-top: p(13);
+        }
+
+        .text-inpt {
+          flex: 1;
         }
       }
 
@@ -158,6 +164,7 @@
           overflow-y: auto;
           scrollbar-width: thin;
           scrollbar-color: #ccc transparent;
+          flex: 1;
         }
       }
 
@@ -167,10 +174,33 @@
         justify-content: center;
         align-items: center;
         margin: p(30) 0;
+
+        .wpcf7-list-item-label {
+          padding-bottom: p(10);
+        }
+
+        .wpcf7-list-item label {
+          display: flex;
+          align-items: center;
+          gap: p(8); /* チェックボックスとテキストの間隔（お好みで調整） */
+        }
+
+        .wpcf7-list-item input[type="checkbox"] {
+          margin: 0;
+        }
       }
 
       .form-sub {
         gap: p(200);
+
+        .wpcf7-spinner {
+          display: none !important;
+        }
+
+        .wpcf7-previous {
+          border: none !important;
+          border-width: 0px !important;
+        }
       }
 
       .form-policy input[type="checkbox"] {
@@ -216,6 +246,15 @@
         background-color: $P-888888;
       }
     }
+  }
+
+  .wpcf7-not-valid-tip {
+    color: $F-126FA7 !important;
+    font-size: pm(13) !important;
+    margin-top: p(3) !important;
+  }
+  .wpcf7-response-output {
+    display: none !important;
   }
 }
 
@@ -393,7 +432,26 @@
           @include noto-serif;
           font-weight: bold;
         }
+
+        .wpcf7-previous {
+          border: none !important;
+          border-width: 0px !important;
+        }
+
+        .wpcf7-spinner {
+          display: none !important;
+        }
       }
+
+      .wpcf7-list-item label {
+          display: flex;
+          align-items: center;
+          gap: s(8);
+        }
+
+        .wpcf7-list-item input[type="checkbox"] {
+          margin: 0; 
+        }
 
       .form-sub .btn-submit {
         border-radius: s(5);
@@ -426,4 +484,20 @@
       }
     }
   }
+  .wpcf7-not-valid-tip {
+    color: $F-126FA7 !important;
+    font-size: s(12) !important;
+    margin-top: s(5) !important;
+  }
+
+  .wpcf7-response-output {
+    display: none !important;
+  }
+}
+
+
+// エラー時の入力欄
+.wpcf7-not-valid {
+  border: 2px solid $F-2480BA !important;
+  background-color: $F-C3E3F8 !important;
 }
