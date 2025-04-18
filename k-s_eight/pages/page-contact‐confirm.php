@@ -21,7 +21,7 @@
             確認をお願いいたします。
           </p>
 
-          <form class="contact-form" action="/submit" method="POST">
+          <!-- <form class="contact-form" action="/submit" method="POST">
             <div class="form-group">
               <label>お名前</label>
               <p class="confirm-value pd-t">田中 太郎</p>
@@ -103,7 +103,9 @@
               </button>
               <button type="submit" class="btn-submit">送信する</button>
             </div>
-          </form>
+          </form> -->
+
+           <?php echo do_shortcode('[contact-form-7 id="d35fcf5" title="Contact-Confirm"]'); ?>
         </div>
 
 <?php get_template_part('./inc/footer'); ?>

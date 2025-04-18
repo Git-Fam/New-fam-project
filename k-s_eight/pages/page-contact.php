@@ -21,7 +21,7 @@
             数日中に担当者よりご連絡いたします。
           </p>
 
-          <form class="contact-form" action="/submit" method="POST">
+          <!-- <form class="contact-form" action="/submit" method="POST">
             <div class="form-group">
               <label for="name"
                 >お名前 <span class="required">必須</span></label
@@ -139,7 +139,9 @@
             <div class="form-sub">
               <button type="submit" class="btn-submit">確認</button>
             </div>
-          </form>
+          </form> -->
+         <?php echo do_shortcode('[contact-form-7 id="7213716" title="Contact"]'); ?>
+
         </div>
         
 <?php get_template_part('./inc/footer'); ?>
