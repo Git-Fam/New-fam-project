@@ -63,12 +63,14 @@
           }
         }
       }
-      
+
 
       .cont {
 
         .TX {
-          
+          @include noto-sans;
+          font-weight: 400;
+
           @include pc {
             font-size: p(16);
             letter-spacing: pm(1.6);
