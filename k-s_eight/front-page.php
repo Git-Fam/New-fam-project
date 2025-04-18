@@ -339,6 +339,14 @@
               <p class="TX">足場工事・屋根工事・塗装工事・防水工事・大規模修繕・リノベーション・テナント工事・現状復旧</p>
             </div>
           </li>
+          <li class="item">
+            <div class="title">
+              <p class="TX">建設許可番号</p>
+            </div>
+            <div class="cont">
+              <p class="TX">(般一6)第92640号</p>
+            </div>
+          </li>
         </ul>
       </div>
     </section>
