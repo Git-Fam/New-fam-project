@@ -26,14 +26,14 @@
       }
 
       &.ch-blue {
-        background: linear-gradient(75deg, #2FBCF7 60%, #D5FDFA 200%);
+        background: linear-gradient(75deg, #2FBCF7 60%, #D5FDFA 140%);
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
 
       &.ch-white {
-        background: linear-gradient(75deg, #FFF 30%, #B3EEE9 100%);
+        background: linear-gradient(75deg, #FFF 30%, #B3EEE9 180%);
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -68,7 +68,7 @@
     }
 
     .TX {
-      @include wt700;
+      @include wt400;
       position: relative;
       width: fit-content;
       flex-shrink: 0;

@@ -101,6 +101,7 @@
               color: $F-ffffff;
               @include noto-sans;
               line-height: 175%;
+              @include wt300;
 
               @include pc {
                 font-size: pm(16);
