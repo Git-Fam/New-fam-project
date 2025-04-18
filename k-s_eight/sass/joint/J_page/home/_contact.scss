@@ -55,16 +55,23 @@
         #message {
           height: p(50);
           flex: 1;
-          padding: 0 p(12);
           background-color: #ffffff;
           border: none;
           font-size: pm(16);
           box-sizing: border-box;
-
+          width: 100%;
           outline: none;
+
           &::placeholder {
             color: #aaa;
           }
+        }
+
+        input[type="email" i],
+        input[type="tel" i],
+        input[type="text" i],
+        textarea {
+          padding-inline: p(12);
         }
 
         #message {
@@ -176,7 +183,7 @@
         margin: p(30) 0;
 
         .wpcf7-list-item-label {
-          padding-bottom: p(10);
+          padding-bottom: p(3);
         }
 
         .wpcf7-list-item label {
@@ -203,12 +210,65 @@
         }
       }
 
-      .form-policy input[type="checkbox"] {
+
+      /* 元のチェックボックスを非表示 */
+      .custom-checkbox input[type="checkbox"] {
+        opacity: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: p(30);
+        height: p(30);
+        margin: 0;
+        z-index: 1;
+        cursor: pointer;
+      }
+
+      .custom-checkbox .wpcf7-list-item-label {
+        position: relative;
+        padding-left: p(42); 
+        cursor: pointer;
+      }
+
+      // チェックボック
+      .custom-checkbox .wpcf7-list-item-label::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
         width: p(30);
         height: p(30);
         border-radius: p(3);
-        border: p(1) 1 solid #d9d9d9;
+        border: p(1) solid #d9d9d9;
         background-color: #fff;
+        transition: all 0.2s ease;
+      }
+
+      /* チェックされた時のスタイル */
+      .custom-checkbox
+        input[type="checkbox"]:checked
+        + .wpcf7-list-item-label::before {
+        background-color: #126fa7;
+        border-color: #126fa7;
+        background-image: url('data:image/svg+xml;utf8,<svg fill="white" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M7.629 13.314L4.314 10l-1.414 1.414 4.729 4.729 10-10L16.314 4l-8.685 9.314z"/></svg>');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: p(24)p(24);
+      }
+
+      // チェック済み
+      .check-check {
+         width: p(30);
+        height: p(30);
+        border-radius: p(3);
+        border: p(1) solid #d9d9d9;
+        background-color: #126fa7;
+        border-color: #126fa7;
+        background-image: url('data:image/svg+xml;utf8,<svg fill="white" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M7.629 13.314L4.314 10l-1.414 1.414 4.729 4.729 10-10L16.314 4l-8.685 9.314z"/></svg>');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: p(24)p(24);
         margin-right: p(8);
       }
 
@@ -415,14 +475,74 @@
         margin: s(30) 0;
       }
 
-      .form-policy input[type="checkbox"] {
+      // .form-policy input[type="checkbox"] {
+      //   width: s(23);
+      //   height: s(23);
+      //   border-radius: s(3);
+      //   border: s(1) solid #d9d9d9;
+      //   background-color: #fff;
+      //   margin-right: s(8);
+      // }
+      /* 元のチェックボックスを非表示 */
+      .custom-checkbox input[type="checkbox"] {
+        opacity: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: s(23);
+        height: s(23);
+        margin: 0;
+        z-index: 1;
+        cursor: pointer;
+      }
+
+      .custom-checkbox .wpcf7-list-item-label {
+        position: relative;
+        padding-left: s(32); 
+        cursor: pointer;
+      }
+
+      .custom-checkbox .wpcf7-list-item-label::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
         width: s(23);
         height: s(23);
         border-radius: s(3);
         border: s(1) solid #d9d9d9;
         background-color: #fff;
+        transition: all 0.2s ease;
+      }
+
+      /* チェックされた時のスタイル */
+      .custom-checkbox
+        input[type="checkbox"]:checked
+        + .wpcf7-list-item-label::before {
+        background-color: #126fa7;
+        border-color: #126fa7;
+        background-image: url('data:image/svg+xml;utf8,<svg fill="white" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M7.629 13.314L4.314 10l-1.414 1.414 4.729 4.729 10-10L16.314 4l-8.685 9.314z"/></svg>');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: s(18) s(18);
+      }
+
+      // チェック済み
+      .check-check {
+         width: s(23);
+        height: s(23);
+        border-radius: s(3);
+        border: s(1) solid #d9d9d9;
+        background-color: #126fa7;
+        border-color: #126fa7;
+        background-image: url('data:image/svg+xml;utf8,<svg fill="white" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M7.629 13.314L4.314 10l-1.414 1.414 4.729 4.729 10-10L16.314 4l-8.685 9.314z"/></svg>');
+        background-repeat: no-repeat;
+        background-position: center;
+         background-size: s(18) s(18);
         margin-right: s(8);
       }
+
 
       .form-sub {
         display: flex;
@@ -444,19 +564,22 @@
       }
 
       .wpcf7-list-item label {
-          display: flex;
-          align-items: center;
-          gap: s(8);
-        }
+        display: flex;
+        align-items: center;
+        gap: s(8);
+      }
 
-        .wpcf7-list-item input[type="checkbox"] {
-          margin: 0; 
-        }
+      .wpcf7-list-item input[type="checkbox"] {
+        margin: 0;
+      }
 
       .form-sub .btn-submit {
+        @include noto-serif;
+        font-weight: bold;
+        color: #333;
         border-radius: s(5);
         border: s(1) solid #333;
-        background-color: #fff;
+        background-color: $F-ffffff;
         width: s(182);
         height: s(56);
         font-size: s(16);
@@ -464,12 +587,15 @@
         transition: background-color 0.3s ease, color 0.3s ease;
       }
 
-      .form-sub btn-submit:hover {
+      .form-sub .btn-submit:hover {
         background-color: $F-126FA7;
         color: $F-ffffff;
       }
 
       .form-sub .btn-back {
+        @include noto-serif;
+        font-weight: bold;
+        color: #333;
         border-radius: s(5);
         width: s(115);
         height: s(56);
@@ -495,9 +621,15 @@
   }
 }
 
-
 // エラー時の入力欄
 .wpcf7-not-valid {
   border: 2px solid $F-2480BA !important;
   background-color: $F-C3E3F8 !important;
+}
+
+/* チェックボックスにだけ適用を打ち消す */
+.wpcf7-checkbox.wpcf7-not-valid {
+  border: none !important;
+  background-color: transparent !important;
+  padding: 0 !important;
 }
