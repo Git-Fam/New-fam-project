@@ -1,0 +1,375 @@
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
+
+/* -----------------------
+  道のり 2ページ目
+----------------------- */
+.archive--contents--items--wap {
+  .page-section {
+
+    &.page2,
+    &.page3,
+    &.page4,
+    &.page4-5,
+    &.page4-6 {
+      .road-content {
+        .destination {
+          &:nth-child(1) {
+            @include pc {
+              left: p(-100);
+              bottom: p(100);
+            }
+
+            @include sp {
+              left: -100px;
+              bottom: 130px;
+            }
+          }
+
+          &:nth-child(2) {
+            rotate: -15deg;
+
+            @include pc {
+              left: p(20);
+              bottom: p(161);
+            }
+
+            @include sp {
+              left: 20px;
+              bottom: 171px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate: 15deg;
+            }
+          }
+
+          &:nth-child(3) {
+            rotate: -15deg;
+
+            @include pc {
+              left: p(200);
+              bottom: p(221);
+            }
+
+            @include sp {
+              left: 200px;
+              bottom: 231px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate: 15deg;
+            }
+          }
+
+
+
+          &:nth-child(4) {
+
+            @include pc {
+              right: p(520);
+              bottom: p(255);
+            }
+
+            @include sp {
+              right: 520px;
+              bottom: 266px;
+            }
+
+          }
+
+          &:nth-child(5) {
+            rotate: 60deg;
+
+            @include pc {
+              right: p(350);
+              bottom: p(250);
+            }
+
+            @include sp {
+              right: 350px;
+              bottom: 135px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate: -60deg;
+
+              .title-board {
+                transform: scale(-1, 1);
+
+                .board-TX {
+                  transform: scale(-1, 1);
+                }
+              }
+            }
+          }
+
+          &:nth-child(6) {
+            rotate: 128deg;
+            z-index: 30;
+
+            @include pc {
+              right: p(280);
+              bottom: p(128);
+            }
+
+            @include sp {
+              right: 200px;
+              bottom: 108px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate: -128deg;
+
+              .title-board {
+                transform: scale(-1, 1);
+
+                .board-TX {
+                  transform: scale(-1, 1);
+                }
+              }
+            }
+          }
+
+          &:nth-child(7) {
+            rotate: 180deg;
+
+            @include pc {
+              right: p(420);
+              bottom: p(0);
+            }
+
+            @include sp {
+              right: 420px;
+              bottom: 30px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate: -180deg;
+
+              .title-board {
+                transform: scale(-1, 1);
+
+                .board-TX {
+                  transform: scale(-1, 1);
+                }
+              }
+            }
+          }
+
+          &:nth-child(8) {
+            rotate: -156deg;
+
+            @include pc {
+              left: p(250);
+              bottom: p(0);
+            }
+
+            @include sp {
+              left: 250px;
+              bottom: 21px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate: 156deg;
+
+              .title-board {
+                transform: scale(-1, 1);
+
+                .board-TX {
+                  transform: scale(-1, 1);
+                }
+              }
+            }
+
+          }
+
+          &:nth-child(9) {
+            @include pc {
+              left: p(350);
+              bottom: p(140);
+            }
+
+            @include sp {
+              left: 350px;
+              bottom: 170px;
+            }
+          }
+
+          &:nth-child(10) {
+            @include pc {
+              right: p(297);
+              bottom: p(90);
+            }
+
+            @include sp {
+              right: 297px;
+              bottom: 120px;
+            }
+          }
+
+          &:nth-child(11) {
+            @include pc {
+              right: p(127);
+              bottom: p(68);
+            }
+
+            @include sp {
+              right: 127px;
+              bottom: 98px;
+            }
+          }
+
+        }
+      }
+    }
+  }
+
+  &.HTML {
+
+    .page2 {
+      .road-content {
+        .destination {
+          &:nth-child(1) {
+            rotate: -30deg;
+
+            @include pc {
+              left: p(68);
+              bottom: p(161);
+            }
+
+            @include sp {
+              left: 68px;
+              bottom: 191px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate: 30deg;
+            }
+          }
+
+          &:nth-child(2) {
+            rotate: -15deg;
+
+            @include pc {
+              left: p(280);
+              bottom: p(231);
+            }
+
+            @include sp {
+              left: 280px;
+              bottom: 261px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate: 15deg;
+            }
+          }
+
+          &:nth-child(3) {
+            rotate: 30deg;
+            left: auto;
+
+            @include pc {
+              right: p(403);
+              bottom: p(255);
+            }
+
+            @include sp {
+              right: 352px;
+              bottom: 296px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate: -30deg;
+            }
+          }
+
+          &:nth-child(4) {
+            rotate: 169deg;
+            z-index: 30;
+
+            @include pc {
+              right: p(464);
+              bottom: p(18);
+            }
+
+            @include sp {
+              right: 415px;
+              bottom: 48px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate: -169deg;
+
+              .title-board {
+                transform: scale(-1, 1);
+
+                .board-TX {
+                  transform: scale(-1, 1);
+                }
+              }
+            }
+          }
+
+          &:nth-child(5) {
+            right: auto;
+            rotate: unset;
+
+            @include pc {
+              left: p(338);
+              bottom: p(141);
+            }
+
+            @include sp {
+              left: 338px;
+              bottom: 171px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate: unset;
+            }
+          }
+
+          &:nth-child(6) {
+            rotate: unset;
+
+            @include pc {
+              right: p(197);
+              bottom: p(68);
+            }
+
+            @include sp {
+              right: 197px;
+              bottom: 98px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate: unset;
+
+              .title-board {
+                transform: unset;
+
+                .board-TX {
+                  transform: unset;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

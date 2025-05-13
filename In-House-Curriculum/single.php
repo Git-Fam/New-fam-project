@@ -6,7 +6,10 @@ if (!is_user_logged_in()) {
 
 get_header();
 ?>
-<?php get_template_part('inc/loading'); ?>
+
+<!-- <?php 
+ get_template_part('inc/loading');  
+?> -->
 
 <!-- single -->
 <div class="single">
@@ -37,7 +40,7 @@ get_header();
                         <?php endif; ?>
                     </div>
                     <div class="single-nation-text">
-                        <a href="javascript:window.close()">戻る</a>
+                        <a href="<?php bloginfo('url'); ?>/curriculum">戻る</a>
                     </div>
                     <div class="single-nation-text">
                         <?php
