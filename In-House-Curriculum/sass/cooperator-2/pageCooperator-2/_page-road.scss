@@ -816,11 +816,12 @@
                 .goal {
                   display: block;
                   @include imgContain("goal.png");
-                  z-index: 10;
+                  z-index: 21;
                   position: absolute;
                   left: 50%;
                   top: 50%;
                   translate: -50% -50%;
+                  transition: all 0.3s;
 
                   @include pc {
                     width: p(107);
@@ -876,7 +877,7 @@
                     width: p(86);
                     height: p(79);
                     top: p(-50);
-                    left: 0;
+                    left: p(-5);
                   }
 
                   @include sp {
@@ -904,6 +905,12 @@
                       padding: 5px 0 0 10px;
                       font-size: 11px;
                     }
+                  }
+                }
+                &:hover{
+                  .goal{
+                    transition: all 0.2s;
+                    scale: 1.15;
                   }
                 }
               }
