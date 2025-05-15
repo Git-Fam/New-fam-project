@@ -392,6 +392,7 @@
     .tree01-02{
       @include imgContain("top-tree01-02.png");
       position: absolute;
+      pointer-events: none;
       @include pc{
         width: clamp(500px, p(680), 680px);
         height: clamp(800px, p(1092), 1092px);
