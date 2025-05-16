@@ -1,0 +1,1010 @@
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
+
+/* -----------------------
+  道のり 1ページ目
+----------------------- */
+.archive--contents--items--wap {
+  .page-section {
+    &.page1 {
+      .road-content {
+        .destination {
+          &:nth-child(1) {
+            @include pc {
+              left: p(-83);
+              bottom: p(0);
+            }
+
+            @include sp {
+              left: -83px;
+              bottom: 30px;
+            }
+          }
+
+          &:nth-child(2) {
+            @include pc {
+              left: p(177);
+              bottom: p(15);
+            }
+
+            @include sp {
+              left: 177px;
+              bottom: 45px;
+            }
+          }
+
+          &:nth-child(3) {
+            @include pc {
+              right: p(468);
+              bottom: p(-15);
+            }
+
+            @include sp {
+              right: 468px;
+              bottom: 27px;
+            }
+          }
+
+          &:nth-child(4) {
+            @include pc {
+              right: p(242);
+              bottom: p(15);
+            }
+
+            @include sp {
+              right: 200px;
+              bottom: 42px;
+            }
+          }
+
+
+          &:nth-child(5) {
+             rotate:-119deg;
+
+            @include pc {
+              right: p(142);
+              bottom: p(51);
+            }
+
+            @include sp {
+              right: 100px;
+              bottom: 88px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate:119deg;
+            }
+          }
+
+          &:nth-child(6) {
+            rotate:-140deg;
+
+            @include pc {
+              right: p(280);
+              bottom: p(213);
+            }
+
+            @include sp {
+              right: 230px;
+              bottom: 243px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate:140deg;
+            }
+
+            .goal-wrap {
+              @include pc {
+                top: p(-44);
+              }
+
+              @include sp {
+                top: -44px;
+              }
+
+              .goal-bg {
+                opacity: 0;
+              }
+
+              .title-board {
+                transform: scale(-1, 1);
+
+                @include pc {
+                  top: p(-80);
+                }
+
+                @include sp {
+                  top: -80px;
+                }
+
+                .board-TX {
+                  transform: scale(-1, 1);
+                }
+              }
+            }
+
+            .character-box {
+              @include pc {
+                top: p(-52);
+              }
+
+              @include sp {
+                top: -52px;
+              }
+            }
+          }
+
+          &:nth-child(7) {
+            rotate:180deg;
+
+            @include pc {
+              left: p(340);
+              bottom: p(263);
+            }
+
+            @include sp {
+              left: 230px;
+              bottom: 283px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate:180deg;
+
+              .title-board {
+                transform: scale(-1, 1);
+
+                .board-TX {
+                  transform: scale(-1, 1);
+                }
+              }
+            }
+          }
+
+          &:nth-child(8) {
+            rotate:160deg;
+
+            @include pc {
+              width: p(200);
+              left: p(120);
+              top: p(50);
+            }
+
+            @include sp {
+              width: 200px;
+              left: 104px;
+              top: 50px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate:-160deg;
+            }
+
+            .title-board {
+              transform: scale(-1, 1);
+
+              .board-TX {
+                transform: scale(-1, 1);
+              }
+            }
+          }
+
+          &:nth-child(9) {
+            @include pc {
+              width: p(200);
+              left: p(70);
+              top: p(165);
+            }
+
+            @include sp {
+              width: 200px;
+              left: 70px;
+              top: 138px;
+            }
+          }
+
+          &:nth-child(10) {
+            @include pc {
+              width: p(200);
+              left: p(300);
+              top: p(190);
+            }
+
+            @include sp {
+              width: 200px;
+              left: 268px;
+              top: 179px;
+            }
+          }
+
+          &:nth-child(11) {
+            @include pc {
+              width: p(200);
+              right: p(320);
+              bottom: p(80);
+            }
+
+            @include sp {
+              width: 200px;
+              right: 301px;
+              bottom: 111px;
+            }
+          }
+
+          &:nth-child(12) {
+            @include pc {
+              width: p(200);
+              right: p(80);
+              bottom: p(70);
+            }
+
+            @include sp {
+              width: 200px;
+              right: 62px;
+              bottom: 100px;
+            }
+          }
+
+          &:nth-child(13) {
+            @include pc {
+              right: p(109);
+              bottom: p(68);
+            }
+
+            @include sp {
+              right: 80px;
+              bottom: 98px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.HTML {
+    .page1 {
+      .road-content {
+        .destination {
+          &:nth-child(2) {
+            @include pc {
+              width: p(250);
+              right: p(665);
+              bottom: p(14);
+            }
+
+            @include sp {
+              width: 250px;
+              right: 665px;
+              bottom: 45px;
+            }
+          }
+
+          &:nth-child(3) {
+            @include pc {
+              width: p(250);
+              right: p(365);
+              bottom: p(-14);
+            }
+
+            @include sp {
+              width: 250px;
+              right: 365px;
+              bottom: 15px;
+            }
+          }
+
+          &:nth-child(4) {
+            rotate:-73deg;
+
+            @include pc {
+              width: p(250);
+              right: p(166);
+              bottom: p(32);
+            }
+
+            @include sp {
+              width: 250px;
+              right: 122px;
+              bottom: 52px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate:73deg;
+            }
+          }
+
+          &:nth-child(5) {
+            rotate:-140deg;
+
+
+            @include pc {
+              width: p(230);
+              right: p(223);
+              bottom: p(200);
+            }
+
+            @include sp {
+              width: 230px;
+              right: 178px;
+              bottom: 235px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate:140deg;
+            }
+
+            .goal-wrap {
+              @include pc {
+                top: p(-44);
+              }
+
+              @include sp {
+                top: -40px;
+              }
+
+              .goal-bg {
+                opacity: 0;
+              }
+
+              .title-board {
+                transform: scale(-1, 1);
+
+                @include pc {
+                  top: p(-80);
+                }
+
+                @include sp {
+                  top: -80px;
+                }
+
+                .board-TX {
+                  transform: scale(-1, 1);
+                }
+              }
+            }
+
+            .character-box {
+              @include pc {
+                top: p(-52);
+              }
+            }
+
+          }
+
+          &:last-child {
+            rotate:180deg;
+            right: auto;
+
+            @include pc {
+              width: p(250);
+              left: p(300);
+              bottom: p(173)
+            }
+
+            @include sp {
+              width: 250px;
+              left: 300px;
+              bottom: 203px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate:180deg;
+
+              .goal-bg {
+                opacity: 1;
+              }
+            }
+
+            .title-board {
+              transform: scale(-1, 1);
+
+              .board-TX {
+                transform: scale(-1, 1);
+              }
+            }
+          }
+
+        }
+      }
+    }
+
+  }
+
+  &.jQuery {
+    .page1 {
+      .road-content {
+        .destination {
+          &:nth-child(2) {
+            left: auto;
+
+            @include pc {
+              right: p(314);
+              bottom: 0;
+            }
+
+            @include sp {
+              right: 314px;
+              bottom: 20px;
+            }
+          }
+
+
+          &:nth-child(3) {
+            rotate:58deg;
+            right: auto;
+
+            @include pc {
+              left: p(107);
+              bottom: p(217);
+            }
+
+            @include sp {
+              left: 107px;
+              bottom: 247px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate: -58deg;
+            }
+
+          }
+        }
+      }
+    }
+  }
+
+  &.Java,
+  &.React,
+  &.Design,
+  &.SQL {
+    .page1 {
+      .road-content {
+        .destination {
+          &:nth-child(2) {
+            @include pc {
+              left: p(177);
+              bottom: p(15);
+            }
+
+            @include sp {
+              left: 177px;
+              bottom: 45px;
+            }
+          }
+
+          &:nth-child(3) {
+            @include pc {
+              right: p(468);
+              bottom: p(-15);
+            }
+
+            @include sp {
+              right: 468px;
+              bottom: 27px;
+            }
+          }
+
+          &:nth-child(4) {
+            rotate: -119deg;
+
+            @include pc {
+              right: p(142);
+              bottom: p(51);
+            }
+
+            @include sp {
+              right: 100px;
+              bottom: 88px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate: 119deg;
+            }
+          }
+
+          &:nth-child(5) {
+            rotate:-140deg;
+
+            @include pc {
+              right: p(280);
+              bottom: p(213);
+            }
+
+            @include sp {
+              right: 250px;
+              bottom: 243px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate:140deg;
+            }
+
+            .goal-wrap {
+              @include pc {
+                top: p(-44);
+              }
+
+              @include sp {
+                top: -44px;
+              }
+
+              .goal-bg {
+                opacity: 0;
+              }
+
+              .title-board {
+                transform: scale(-1, 1);
+
+                @include pc {
+                  top: p(-80);
+                }
+
+                @include sp {
+                  top: -80px;
+                }
+
+                .board-TX {
+                  transform: scale(-1, 1);
+                }
+              }
+            }
+
+            .character-box {
+              @include pc {
+                top: p(-52);
+              }
+
+              @include sp {
+                top: -52px;
+              }
+            }
+          }
+
+          &:nth-child(6) {
+            rotate:180deg;
+            right: auto;
+
+
+            @include pc {
+              left: p(340);
+              bottom: p(310);
+            }
+
+            @include sp {
+              left: 270px;
+              bottom: 340px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate:180deg;
+
+              .goal-bg {
+                opacity: 1;
+              }
+
+              .title-board {
+                transform: scale(-1, 1);
+
+                .board-TX {
+                  transform: scale(-1, 1);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.Java,
+  &.SQL {
+    .page1 {
+      .road-content {
+        .destination {
+          &:nth-child(7) {
+            rotate: unset;
+
+            @include pc {
+              left: p(100);
+              bottom: p(142);
+              z-index: 17;
+            }
+
+            @include sp {
+              left: 100px;
+              bottom: 162px;
+              z-index: 17;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate: unset;
+
+              .title-board {
+                transform: unset;
+
+                .board-TX {
+                  transform: unset;
+                }
+
+              }
+            }
+          }
+
+          &:nth-child(8) {
+            rotate: unset;
+            left: auto;
+
+            @include pc {
+              right: p(550);
+              top: p(200);
+              z-index: 17;
+            }
+
+            @include sp {
+              right: 500px;
+              top: 170px;
+              z-index: 17;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate: unset;
+
+              .title-board {
+                transform: unset;
+
+                .board-TX {
+                  transform: unset;
+                }
+
+              }
+            }
+
+          }
+
+          &:nth-child(9) {
+            left: auto;
+            top: auto;
+
+            @include pc {
+              right: p(117);
+              bottom: p(72);
+              z-index: 17;
+            }
+
+            @include sp {
+              right: 60px;
+              bottom: 110px;
+              z-index: 17;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.React {
+    .page1 {
+      .road-content {
+        .destination {
+          &:nth-child(7) {
+            rotate: unset;
+
+            @include pc {
+              left: p(70);
+              bottom: p(138);
+            }
+
+            @include sp {
+              left: 70px;
+              bottom: 168px;
+            }
+
+            .character-box,
+            .goal-wrap {
+              rotate: unset;
+
+              .title-board {
+                transform: unset;
+
+                .board-TX {
+                  transform: unset;
+                }
+              }
+            }
+          }
+
+          &:nth-child(8) {
+            rotate: unset;
+            left: auto;
+            top: auto;
+
+            @include pc {
+              right: p(600);
+              bottom: p(102);
+              z-index: 17;
+            }
+
+            @include sp {
+              right: 500px;
+              bottom: 122px;
+              z-index: 17;
+            }
+
+            .character-box,
+            .goal-wrap {
+              rotate: unset;
+
+              .title-board {
+                transform: unset;
+
+                .board-TX {
+                  transform: unset;
+                }
+              }
+            }
+          }
+
+          &:nth-child(9) {
+            left: auto;
+            top: auto;
+
+            @include pc {
+              right: p(120);
+              bottom: p(74);
+            }
+
+            @include sp {
+              right: 70px;
+              bottom: 104px;
+            }
+
+            .title-board {
+              @include pc {
+                left: p(-50);
+              }
+
+              @include sp {
+                left: -50px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.Design {
+    .page1 {
+      .road-content {
+        .destination {
+          &:nth-child(7) {
+            @include pc {
+              left: p(70);
+              bottom: p(138);
+            }
+
+            @include sp {
+              left: 70px;
+              bottom: 168px;
+            }
+          }
+
+          &:nth-child(8) {
+            @include pc {
+              right: p(600);
+              bottom: p(102);
+              z-index: 17;
+            }
+
+            @include sp {
+              right: 600px;
+              bottom: 132px;
+              z-index: 17;
+            }
+          }
+
+          &:nth-child(9) {
+            @include pc {
+              right: p(380);
+              bottom: p(84);
+            }
+
+            @include sp {
+              right: 360px;
+              bottom: 114px;
+            }
+
+            .title-board {
+              @include pc {
+                left: p(-50);
+              }
+
+              @include sp {
+                left: -50px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.WordPress {
+    .page1 {
+      .road-content {
+        .destination {
+          &:nth-child(n + 2) {
+            @include pc {
+              width: p(300);
+            }
+
+            @include sp {
+              width: 300px;
+            }
+          }
+
+          &:nth-child(2) {
+            @include pc {
+              left: p(188);
+              bottom: p(0);
+            }
+
+            @include sp {
+              left: 188px;
+              bottom: 30px;
+            }
+          }
+
+          &:nth-child(3) {
+            bottom: auto;
+            rotate: -136deg;
+
+            @include pc {
+              right: p(197);
+              top: p(148);
+            }
+
+            @include sp {
+              right: 147px;
+              top: 118px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate: 136deg;
+            }
+
+            .goal-bg {
+              opacity: 0;
+            }
+
+            .title-board {
+              transform: scale(-1, 1);
+
+              @include pc {
+                top: p(-80);
+                left: p(-15);
+              }
+
+              @include sp {
+                top: -80px;
+                left: -15px;
+              }
+
+              .board-TX {
+                transform: scale(-1, 1);
+              }
+            }
+          }
+
+          &:nth-child(4) {
+            rotate: 180deg;
+            bottom: auto;
+            right: auto;
+
+            @include pc {
+              left: p(110);
+              top: p(78);
+            }
+
+            @include sp {
+              left: 110px;
+              top: 48px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate: 180deg;
+
+              &.me {
+                @include pc {
+                  bottom: p(-76);
+                }
+
+                @include sp {
+                  bottom: -76px;
+                }
+              }
+
+              .title-board {
+                transform: scale(-1, 1);
+
+                .board-TX {
+                  transform: scale(-1, 1);
+                }
+              }
+            }
+          }
+
+          &:nth-child(5) {
+            rotate: unset;
+            right: auto;
+            top: auto;
+
+            @include pc {
+              left: p(38);
+              bottom: p(130);
+            }
+
+            @include sp {
+              left: 38px;
+              bottom: 150px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate: unset;
+            }
+          }
+
+          &:nth-child(6) {
+            rotate: unset;
+            left: auto;
+            top: auto;
+
+            @include pc {
+              right: p(90);
+              bottom: p(29);
+            }
+
+            @include sp {
+              right: 40px;
+              bottom: 60px;
+            }
+
+            .goal-wrap,
+            .character-box {
+              rotate: unset;
+
+              .goal-bg {
+                opacity: 1;
+              }
+
+              .title-board {
+                transform: unset;
+
+                .board-TX {
+                  transform: unset;
+                }
+              }
+            }
+
+          }
+        }
+      }
+    }
+  }
+}
+

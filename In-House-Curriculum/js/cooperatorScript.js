@@ -349,100 +349,90 @@ jQuery(function () {
 
 	function displayCharacters() {
 		$(".character-box").remove();
-
+	
 		if (
 			typeof allUsersProgress !== "undefined" &&
 			allUsersProgress.length > 0
 		) {
+			// 各 destination に対する表示済みカウントを保持
+			const destinationUserMap = new Map();
+	
 			allUsersProgress.forEach((user) => {
 				const userProgress = user.progress;
 				const username = user.username;
-
+	
 				let lastCheckpointClass = "";
 				let lastProgressValue = 0;
-
-				// 現在アクティブなカテゴリーの要素を取得
+	
 				const $activeCategory = $(".archive--contents--items--wap.active");
-
+	
 				if ($activeCategory.length) {
-					const categoryId = $activeCategory.data("category-id"); // カテゴリーIDを取得
-
-					// 進捗が100%で1週間経過しているかを確認
-					// const isOneWeekPassed =
-					// 	lastPostProgress[categoryId] &&
-					// 	lastPostProgress[categoryId][user.user_id];
+					const categoryId = $activeCategory.data("category-id");
+	
 					const isOneWeekPassed = (() => {
 						const lastDateStr = lastPostProgress?.[categoryId]?.[user.user_id];
-						if (!lastDateStr || lastDateStr === false) return false; // データがない場合は1週間経過していないとみなす
-
+						if (!lastDateStr || lastDateStr === false) return false;
 						const lastDate = new Date(lastDateStr);
 						const currentDate = new Date();
-
-						// 1週間（7日分）をミリ秒で計算
-						const oneWeekInMs = 7 * 24 * 60 * 60 * 1000;
-
-						// 現在日時との差を計算して1週間以上か確認
-						return currentDate - lastDate > oneWeekInMs;
+						return currentDate - lastDate > 7 * 24 * 60 * 60 * 1000;
 					})();
-
+	
 					if (!isOneWeekPassed) {
-						// 1週間経過していない場合のみキャラクターを表示
 						$.each(userProgress, (key, value) => {
 							const progressValue = parseInt(value) || 0;
-
-							if (progressValue > 0) {
-								// アクティブなカテゴリー内にそのクラスが存在するか確認
-								if ($activeCategory.find(`.${key}`).length > 0) {
-									lastCheckpointClass = key;
-									lastProgressValue = progressValue;
-								}
+							if (progressValue > 0 && $activeCategory.find(`.${key}`).length > 0) {
+								lastCheckpointClass = key;
+								lastProgressValue = progressValue;
 							}
 						});
-
+	
 						if (lastCheckpointClass) {
-							const $checkpointElement = $activeCategory.find(
-								`.${lastCheckpointClass}`
-							);
-
+							const $checkpointElement = $activeCategory.find(`.${lastCheckpointClass}`);
 							if ($checkpointElement.length) {
-								const $characterBox = $("<div>")
-									.addClass("character-box")
-									.css({ position: "absolute", left: lastProgressValue + "%" });
-
-								const $nameElement = $("<p>").addClass("name").text(username);
-
-								const userCharacter = wpData.allUsersCharacters.find(
-									(c) => c.username === username
-								);
-								if (userCharacter) {
-									const $characterDiv = $("<div>")
-										.addClass("character")
-										.html(userCharacter.character_html);
-									$characterBox.append($characterDiv);
+								const destinationKey = $checkpointElement.get(0);
+	
+								// ユーザーが自分かどうかを判定
+								const isMe = $.trim(username) === $.trim(currentUsername);
+	
+								// 目的地ごとの表示数を管理（自分は制限外）
+								let count = destinationUserMap.get(destinationKey) || 0;
+	
+								if (isMe || count < 10) {
+									const $characterBox = $("<div>")
+										.addClass("character-box")
+										.css({ position: "absolute", left: lastProgressValue + "%" });
+	
+									const $nameElement = $("<p>").addClass("name").text(username);
+									if (isMe) {
+										$nameElement.css("color", "red");
+										$characterBox.addClass("me");
+									}
+	
+									const userCharacter = wpData.allUsersCharacters.find(
+										(c) => c.username === username
+									);
+									if (userCharacter) {
+										const $characterDiv = $("<div>")
+											.addClass("character")
+											.html(userCharacter.character_html);
+										$characterBox.append($characterDiv);
+									}
+	
+									$characterBox.append($nameElement).appendTo($checkpointElement);
+	
+									// 自分以外ならカウント
+									if (!isMe) {
+										destinationUserMap.set(destinationKey, count + 1);
+									}
 								}
-
-								if ($.trim(username) === $.trim(currentUsername)) {
-									$nameElement.css("color", "red");
-									$characterBox.addClass("me");
-								}
-
-								$characterBox.append($nameElement).appendTo($checkpointElement);
 							}
 						}
 					}
 				}
-				// const categoryId = 2; // 調べたいカテゴリーID
-				// const userId = 31; // 調べたいユーザーID
-
-				// if (lastPostProgress[categoryId] && lastPostProgress[categoryId][userId] !== undefined) {
-				// 	console.log(`User ${userId} in Category ${categoryId}:`, lastPostProgress[categoryId][userId]);
-				// } else {
-				// 	console.log(`No data for User ${userId} in Category ${categoryId}.`);
-				// }
 			});
 		}
 	}
-
+	
 	// ゴールのクラスを更新する関数
 	function updateGoalClasses() {
 		if (

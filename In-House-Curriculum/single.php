@@ -20,9 +20,9 @@ if (!in_array(get_the_ID(), $allowed_posts)) {
 get_header();
 ?>
 
-<!-- <?php
-        get_template_part('inc/loading');
-        ?> -->
+<!-- <?php 
+ get_template_part('inc/loading');  
+?> -->
 
 <!-- single -->
 <div class="single">
