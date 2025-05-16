@@ -94,7 +94,7 @@
 
         @include sp {
           width: 80%;
-          padding: min(s(15),10px) min(s(10),7px);
+          padding: min(s(15), 10px) min(s(10), 7px);
           margin-top: min(s(30));
         }
 
@@ -107,7 +107,7 @@
           }
 
           @include sp {
-            font-size: min(s(16),16px);
+            font-size: min(s(16), 16px);
           }
         }
 
@@ -122,7 +122,7 @@
           }
 
           @include sp {
-            width: min(s(120),200px);
+            width: min(s(120), 200px);
             right: s(0);
             bottom: calc(100% + s(3));
           }
@@ -154,7 +154,7 @@
 
           @include sp {
             width: 80%;
-            padding: min(s(10),10px) min(s(10),10px);
+            padding: min(s(10), 10px) min(s(10), 10px);
             @include column(s(5));
           }
 
@@ -171,7 +171,7 @@
             }
 
             @include sp {
-              font-size: min(s(12),12px);
+              font-size: min(s(12), 12px);
             }
 
             span {
@@ -184,7 +184,7 @@
               }
 
               @include sp {
-                font-size: min(s(14),12px);
+                font-size: min(s(14), 12px);
               }
             }
           }
@@ -216,7 +216,7 @@
 
               @include sp {
                 padding: s(5) 0;
-                font-size: min(s(11),11px);
+                font-size: min(s(11), 11px);
               }
 
 
@@ -345,6 +345,7 @@
 
         @include pc {
           width: clamp(500px, p(558), 750px);
+          height: clamp(400px, p(499), 600px);
           left: p(20);
           bottom: p(40);
           padding: clamp(80px, p(90), 110px) clamp(80px, p(90), 110px) clamp(140px, p(160), 200px);
@@ -365,7 +366,8 @@
 
           @include pc {
             right: p(0);
-            top: p(-60);
+            // top: p(-60);
+            bottom: 100%;
           }
 
           @include sp {
@@ -701,8 +703,10 @@
 
       @include pc {
         width: 50%;
-        height: 100%;
+        height: 90%;
         right: -48%;
+        top: 50%;
+        transform: translateY(-50%);
       }
 
       @include sp {
@@ -1359,6 +1363,62 @@
           padding: s(10);
           border-radius: s(5);
           font-size: s(14);
+        }
+      }
+    }
+  }
+
+  .my--menu-btn {
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+
+    @include pc {
+      top: pmin(10);
+      right: pmin(10);
+      gap: pmin(10);
+    }
+
+    @include sp {
+      top: s(10);
+      right: s(10);
+      gap: s(10);
+    }
+
+    .C_all-menu-btn {
+
+      @include pc {
+        border-radius: pmin(13.257);
+        padding: pmin(8) pmin(18) pmin(7) pmin(4);
+        border-width: pmin(2);
+      }
+
+      &__inner {
+        @include pc {
+          align-items: flex-end;
+          gap: pmin(6);
+        }
+
+        &__img {
+          @include pc {
+            width: pmin(80);
+            height: pmin(60);
+          }
+        }
+
+        &__text {
+
+          .TX {
+            color: #FFF;
+            @include wt600;
+            line-height: 1.5;
+
+            @include pc {
+              font-size: pmin(38);
+              letter-spacing: pmin(1);
+            }
+          }
         }
       }
     }

@@ -9,6 +9,10 @@ get_header();
 
 <div class="question archive-question">
     <div class="question-main">
+        <div class="question--menu-btn">
+            <?php get_template_part('inc/menu-btn'); ?>
+        </div>
+
         <div class="question-main-TL">
             <p class="TL">質問広場</p>
         </div>

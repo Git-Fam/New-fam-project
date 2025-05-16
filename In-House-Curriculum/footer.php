@@ -1,8 +1,11 @@
 <?php wp_footer() ?>
 
 </div>
+
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"
   integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  
+<script src="<?php echo get_template_directory_uri(); ?>/js/loading.js"></script>
 
 <?php if (is_home()) : ?>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
@@ -15,6 +18,15 @@
   <script src="<?php echo get_template_directory_uri(); ?>/js/cover.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/js/curriculum-tab.js"></script>
 <?php endif; ?>
+
+<?php if (is_page('first')) : ?>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/page-first.js"></script>
+<?php endif; ?>
+
+<?php if (is_page('ranking')) : ?>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/ranking.js"></script>
+<?php endif; ?>
+
 
 <?php if (is_page('aptitude-choice')) : ?>
   <script src="<?php echo get_template_directory_uri(); ?>/js/aptitude-choice.js"></script>

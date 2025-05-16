@@ -11,8 +11,13 @@
   @include height;
   @include imgCover("ranking-bg.png");
 
+  @include pc {
+    min-height: p(700);
+  }
+
   @include sp {
     background-position: 20%;
+    min-height: 100vh;
   }
 
   .bg {
@@ -53,7 +58,7 @@
 
       @include sp {
         width: clamp(430px, calc((430 / 390) * 100vw), 450px);
-        right:clamp(-135px, calc((-135 / 390) * 100vw), -115px);
+        right: clamp(-135px, calc((-135 / 390) * 100vw), -115px);
       }
 
     }
@@ -77,7 +82,7 @@
       }
     }
 
-    .character-box {
+    .rank-character-box {
       position: absolute;
       z-index: 3;
 
@@ -144,7 +149,7 @@
   }
 
   .ranking-header {
-    @include iconCover($header);
+    @include iconCover($rank-header);
     display: grid;
     position: relative;
     z-index: 999;
@@ -158,7 +163,8 @@
 
     @include sp {
       place-items: center center;
-      height: clamp(40px, calc(50 / 390 * 100vw), 50px);
+      height: clamp(50px, calc(60 / 390 * 100vw), 60px);
+
     }
 
     .TL {
@@ -172,6 +178,88 @@
       @include sp {
         font-size: clamp(16px, calc((18 / 390) * 100vw), 18px);
         margin-top: s(-3);
+      }
+    }
+
+    .rank--menu-btn {
+      position: absolute;
+
+      @include pc {
+        top: p(8);
+        right: p(15);
+      }
+      @include sp{
+        top:clamp(1px, calc((3 / 390) * 100vw), 5px);
+        right: clamp(2px, calc((5 / 390) * 100vw), 8px);
+      }
+
+      .C_all-menu-btn {
+        box-shadow: 0px 3.314px 6.629px 0px rgba(0, 0, 0, 0.25);
+
+        @include pc {
+          border-radius: p(13.257);
+          padding: p(5) p(10) p(6) p(7);
+          border-width: p(2);
+        }
+
+        @include sp {
+          border-radius: clamp(12px, calc((15 / 390) * 100vw), 118px);;
+          padding: clamp(1px, calc((3 / 390) * 100vw), 5px) clamp(2px, calc((5 / 390) * 100vw), 8px) clamp(2px, calc((4 / 390) * 100vw), 6px) clamp(2px, calc((5 / 390) * 100vw), 8px);;
+          border-width: s(2);
+        }
+
+        &__inner {
+
+          @include pc {
+            gap: p(5);
+          }
+
+          @include sp {
+            gap: clamp(1px, calc((3 / 390) * 100vw), 5px);;
+          }
+
+          &__img {
+
+            @include pc {
+              width: p(50);
+              height: p(40);
+            }
+
+            @include sp {
+              width: clamp(30px, calc((35 / 390) * 100vw), 40px);;
+              height: clamp(20px, calc((25 / 390) * 100vw), 30px);
+            }
+          }
+
+          &__text {
+
+            .TX {
+              line-height: 1.5;
+
+              @include pc {
+                font-size: p(24);
+                letter-spacing: p(1);
+              }
+
+              @include sp {
+                font-size: clamp(12px, calc((15 / 390) * 100vw), 18px);
+              }
+            }
+          }
+        }
+
+        &:hover {
+          transform: translate(3.314px, 3.314px);
+          @include sp{
+            transform: translate(2px, 2px);
+          }
+          .C_all-menu-btn__inner {
+
+            &__img {
+              @include iconContain($all-menu-character-ver2);
+            }
+          }
+        }
       }
     }
   }
@@ -193,11 +281,11 @@
     .main {
       display: flex;
       align-items: start;
-      justify-content: center;
       height: fit-content;
 
       @include pc {
-        margin: auto;
+        gap: p(29);
+        padding-left: p(43);
       }
 
       @include sp {
@@ -209,7 +297,7 @@
       }
 
       .my-info {
-        background: linear-gradient(180deg, #4BC7FB 0%, #B0E8FF 100%);
+        background: $B-D1D1D1;
 
         @include pc {
           width: p(300);
@@ -304,7 +392,7 @@
             @include pc {
               width: p(30);
               height: p(30);
-              margin-left: p(56);
+              margin-left: p(30);
             }
 
             @include sp {
@@ -326,17 +414,42 @@
               font-size: clamp(16px, calc((18 / 390) * 100vw), 20px);
               margin-left: clamp(9px, calc((9 / 390) * 100vw), 15px);
             }
+
+            span {
+              font-weight: 900;
+
+              @include pc {
+                font-size: p(20);
+              }
+
+              @include sp {
+                font-size: clamp(7px, calc(12 / 390 * 100vw), 16px);
+              }
+            }
           }
+        }
+
+        &.rank-1 {
+          background: linear-gradient(105deg, #FFECAB 4.94%, #CFBC7A 30.71%, #FFECAB 49.25%, #9E8B48 72.31%, #BBA865 94.92%);
+        }
+
+        &.rank-2 {
+          background: linear-gradient(105deg, #E5E1E1 4.94%, #C1C0C0 30.71%, #D9D7D7 49.25%, #7F7D7D 72.31%, #ADADAD 94.92%);
+        }
+
+        &.rank-3 {
+          background: linear-gradient(105deg, #CB9C65 4.94%, #AA8355 30.71%, #CB9C65 49.25%, #86653E 72.31%, #A78153 94.92%);
         }
       }
 
       .ranking-bord {
-        @include imgContain("ranking-bord.png");
+        background-color: rgba(251, 193, 142, 0.74);
         position: relative;
 
         @include pc {
-          width: p(876);
-          height: p(551);
+          width: p(735);
+          height: p(536);
+          border-radius: p(15);
         }
 
         @include sp {
@@ -351,28 +464,36 @@
           z-index: 2;
 
           @include pc {
-            width: p(482);
-            height: p(103);
+            width: p(600);
+            height: p(107);
             margin: p(-25) auto 0;
+            padding-top: p(20);
           }
 
           @include sp {
+            position: relative;
             width: clamp(180px, calc(203 / 390 * 100vw), 250px);
             height: clamp(30px, calc(43 / 390 * 100vw), 50px);
-            margin: calc(-6 / 390 * 100vw) auto 0; // 元の記述を使用
+            margin: 0 auto; // 元の記述を使用
+            top: clamp(-20px, calc(-16 / 390 * 100vw), -10px);
+            padding-top: clamp(5px, calc(5 / 390 * 100vw), 10px);
           }
 
           .TL {
-            margin: 0 auto;
+            text-align: center;
+            color: $F-FFFFFF;
+            @include wt900;
 
             @include pc {
-              width: p(250);
-              height: p(77);
+              font-size: p(40);
+              letter-spacing: p(2);
+              margin-left: p(18);
             }
 
             @include sp {
-              width: clamp(100px, calc(119 / 390 * 100vw), 150px);
-              height: clamp(20px, calc(28 / 390 * 100vw), 35px);
+              // white-space: nowrap;
+              font-size: clamp(12px, calc(16 / 390 * 100vw), 18px);
+              margin-left: clamp(3px, calc(5 / 390 * 100vw), 8px);
             }
           }
         }
@@ -382,7 +503,7 @@
           overflow-y: scroll;
 
           @include pc {
-            width: 74%;
+            width: calc(650 / 735 * 100%);
             height: p(451);
             margin-top: p(-30);
             border-radius: p(10);
@@ -408,11 +529,11 @@
 
             &.top-group {
               @include pc {
-                padding: p(22) p(70);
+                padding: p(22) p(40);
               }
 
               @include sp {
-                padding: clamp(4px, calc(6 / 390 * 100vw), 10px) clamp(20px, calc(29 / 390 * 100vw), 40px);
+                padding: clamp(4px, calc(6 / 390 * 100vw), 10px) clamp(10px, calc(15 / 390 * 100vw), 30px);
               }
 
               .rank {
@@ -434,8 +555,8 @@
                   align-items: center;
                   width: 100%;
 
-                  @include sp{
-                    width: clamp( 60px, calc( 66 / 390 * 100vw), 70px);
+                  @include sp {
+                    width: clamp(65px, calc(75 / 390 * 100vw), 75px);
                   }
 
                   .img {
@@ -537,6 +658,19 @@
                           font-size: clamp(8px, calc(10 / 390 * 100vw), 12px);
                           margin-left: clamp(2px, calc(3 / 390 * 100vw), 5px);
                         }
+
+                        span {
+                          @include wt900;
+
+                          @include pc {
+                            font-size: p(16);
+                          }
+
+                          @include sp {
+                            font-size: clamp(7px, calc(9 / 390 * 100vw), 9px);
+                          }
+                        }
+
                       }
                     }
                   }
@@ -600,7 +734,7 @@
                     }
                   }
 
-                  &.first {
+                  &.r-first {
                     .img {
                       background: linear-gradient(147deg, #FFECAB 21.97%, #96833F 44.46%, #FFECAB 67.64%, #96833F 90.13%);
 
@@ -835,6 +969,18 @@
                   font-size: clamp(8px, calc(10 / 390 * 100vw), 12px);
                   margin-left: clamp(2px, calc(3 / 390 * 100vw), 5px);
                 }
+
+                span {
+                  @include wt900;
+
+                  @include pc {
+                    font-size: p(16);
+                  }
+
+                  @include sp {
+                    font-size: clamp(7px, calc(9 / 390 * 100vw), 9px);
+                  }
+                }
               }
             }
 
@@ -863,30 +1009,185 @@
         }
       }
 
-      .btn {
-        color: $F-FFFFFF;
-        background-color: #F5A274;
-        border-radius: 50%;
-        display: grid;
-        place-items: center center;
+      .btn-area {
         position: absolute;
-        cursor: pointer;
-        @include wt700;
 
         @include pc {
-          font-size: p(16);
-          width: p(50);
-          height: p(50);
-          right: p(100);
-          bottom: p(65);
+          right: p(40);
+          bottom: p(15);
         }
 
         @include sp {
-          font-size: clamp(6px, calc(8 / 390 * 100vw), 10px);
-          width: clamp(18px, calc(25 / 390 * 100vw), 30px);
-          height: clamp(18px, calc(25 / 390 * 100vw), 30px);
-          right: scl(18);// 元の記述を使用
-          bottom: calc(25 / 390 * 100vw); // 元の記述を使用
+          right: scl(-15); // 元の記述を使用
+          bottom: calc(10 / 390 * 100vw); // 元の記述を使用
+        }
+
+        .ranking-btn {
+          color: $F-FFFFFF;
+          //ホバー後の色
+          background: linear-gradient(143deg, #F3A22E 21.68%, #DFCA79 80.36%);
+          border-radius: 50%;
+          display: grid;
+          place-items: center center;
+          cursor: pointer;
+
+          @include pc {
+            width: p(150);
+            height: p(150);
+          }
+
+          @include sp {
+            width: clamp(48px, calc(65 / 390 * 100vw), 70px);
+            height: clamp(48px, calc(65 / 390 * 100vw), 70px);
+          }
+
+          p {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            @include wt700;
+            line-height: 1.5;
+
+            @include pc {
+              font-size: p(16);
+            }
+
+            @include sp {
+              font-size: clamp(6px, calc(8 / 390 * 100vw), 10px);
+            }
+          }
+
+          &::before {
+            content: "";
+            //ホバー前の色
+            background: linear-gradient(143deg, #B29975 21.68%, #DFCA79 80.36%);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+          }
+
+        }
+
+        .switch-btn {
+          @include imgContain("rank-switch-btn.png");
+          position: absolute;
+          cursor: pointer;
+          opacity: 0;
+          transition: all 0.3s ease;
+
+          @include pc {
+            width: p(150);
+            height: p(68);
+            padding-top: p(20);
+          }
+
+          @include sp {
+            width: clamp(48px, calc(65 / 390 * 100vw), 70px);
+            height: clamp(24px, calc(30 / 390 * 100vw), 35px);
+            padding-top: clamp(6px, calc(8 / 390 * 100vw), 10px);
+          }
+
+          &-TX {
+            text-align: center;
+            @include wt800;
+            color: $F-B29975;
+            transition: all 0.2s ease;
+
+            @include pc {
+              font-size: p(14);
+              letter-spacing: p(0.6);
+            }
+
+            @include sp {
+              font-size: clamp(5px, calc(6 / 390 * 100vw), 7px);
+              letter-spacing: clamp(0.3px, calc(0.4 / 390 * 100vw), 0.6px);
+            }
+
+            &:hover {
+              color: $F-F3A32E;
+              transition: all 0.2s ease;
+            }
+          }
+
+
+          &.switch-btn01 {
+            @include pc {
+              top: p(-140);
+            }
+
+            @include sp {
+              top: -70px;
+            }
+          }
+
+          &.switch-btn02 {
+            @include pc {
+              top: p(-70);
+            }
+
+            @include sp {
+              top: -35px;
+            }
+          }
+
+        }
+
+        &.click {
+          .ranking-btn {
+            animation: poyon 0.8s ease 0s forwards;
+
+            @keyframes poyon {
+              0% {
+                transform: scale(1.0, 1.0) translate(0%, 0%);
+              }
+
+              15% {
+                transform: scale(0.9, 0.9) translate(0%, 5%);
+              }
+
+              30% {
+                transform: scale(1.3, 0.8) translate(0%, 10%);
+              }
+
+              50% {
+                transform: scale(0.8, 1.3) translate(0%, -10%);
+              }
+
+              70% {
+                transform: scale(1.1, 0.9) translate(0%, 5%);
+              }
+
+              100% {
+                transform: scale(1.0, 1.0) translate(0%, 0%);
+              }
+            }
+
+            &::before {
+              opacity: 0;
+              transition: all 0.3s ease;
+            }
+          }
+
+          .switch-btn {
+            opacity: 0;
+            transition: all 0.3s ease;
+            transform: translateY(100%);
+            animation: up 0.5s ease 0s forwards;
+
+            @keyframes up {
+              0% {
+                opacity: 0;
+                transform: translateY(100%);
+              }
+
+              100% {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+          }
         }
       }
     }
@@ -896,5 +1197,3 @@
 .hidden {
   display: none;
 }
-
-

@@ -143,7 +143,7 @@
       .archive--contents--tab {
         z-index: 20;
         position: absolute;
-        width: 85%;
+        width: 98%;
         left: 50%;
         translate: -50% 0;
 
@@ -153,7 +153,7 @@
 
         @include sp {
           top: scl(35);
-          width: 80%;
+          width: 98%;
           gap: scl(15);
         }
 
@@ -161,15 +161,14 @@
 
           &--img {
             margin: 0 auto;
+            aspect-ratio: 1 / 1;
 
             @include pc {
-              width: p(67);
-              height: p(67);
+              width: p(80);
             }
 
             @include sp {
-              width: scl(30);
-              height: scl(30);
+              width: scl(40);
             }
           }
 
@@ -183,6 +182,7 @@
       &.show {
         top: 0;
         transition: all 0.5s;
+        z-index: 11;
       }
     }
 
@@ -691,7 +691,7 @@
       @include imgContain("back.png");
 
       @include pc {
-        bottom: p(-51);
+        bottom: -51px;
         right: clamp(210px, p(275), 275px);
         padding: pmi(28) 0 0 pmi(48);
         width: pmi(175);

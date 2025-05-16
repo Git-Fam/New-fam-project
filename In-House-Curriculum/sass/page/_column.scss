@@ -19,6 +19,20 @@
     padding: 100px 10px 300px;
   }
 
+  &--menu-btn {
+    position: absolute;
+    z-index: 10;
+    @include pc {
+      top: p(10);
+      right: p(10);
+    }
+
+    @include sp {
+      top: s(10);
+      right: s(10);
+    }
+  }
+
   &--main {
     display: flex;
     justify-content: center;
@@ -182,18 +196,19 @@
 
             .search-item {
 
-              form{
+              form {
                 display: flex;
                 align-items: center;
                 justify-content: flex-end;
                 gap: 4;
+
                 button {
                   aspect-ratio: 18/16;
                   @include iconContain($lupe);
                   cursor: pointer;
                   width: 18px;
                 }
-  
+
                 input {
                   color: #7FBF99;
                   @include wt600;
@@ -207,7 +222,7 @@
                   width: 141px;
                   height: 20px;
                   padding: 0 12px;
-  
+
                   &::placeholder {
                     color: #7FBF99;
                   }
