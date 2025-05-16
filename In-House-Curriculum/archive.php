@@ -317,9 +317,9 @@ if ($total_posts <= 4) {
 
                             ?>
                             <div class="destination <?php echo $tag_classes; ?>">
-                                <div class="goal-wrap">
-                                    <a class="goal hover-scale" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" >
-                                    </a>
+                                <a class="goal-wrap" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>">
+                                    <div class="goal hover-scale"  >
+                        </div>
                                     <div class="goal-bg"></div>
                                     <div class="title-board">
                                         <?php
@@ -329,7 +329,7 @@ if ($total_posts <= 4) {
                                         <p class="board-TX"> <?php echo esc_html($decoded_slug); ?></p>
                                     </div>
 
-                                </div>
+                                </a>
                             </div>
 
                             <?php
@@ -362,30 +362,33 @@ if ($total_posts <= 4) {
                     // 全ての投稿数から最後の4つを引く
                     $remaining_posts = $total_posts - 4;
 
-                    // 表示する投稿数をセクションごとに分割するロジック
-                    if ($total_posts > 36) {
-                        $num_sections = 4; // 36投稿以上の場合は、4つのセクションに分ける
-                    } elseif ($total_posts > 26) {
-                        $num_sections = 3; // 26投稿以上の場合は、3つのセクションに分ける
-                    } elseif ($total_posts > 16) {
-                        $num_sections = 2; // 16投稿以上の場合は、2つのセクションに分ける
-                    } else {
-                        $num_sections = 1; // 16投稿未満の場合は、1つのセクション
-                    }            
-                    // セクションごとの平均投稿数
-                    $posts_per_section = floor($remaining_posts / $num_sections);
+                        // 表示する投稿数をセクションごとに分割するロジック
+                        if ($total_posts > 55) {
+                            $num_sections = 6; // 55投稿以上の場合は、5つのセクションに分ける
+                        } elseif ($total_posts > 46) {
+                                $num_sections = 5; // 46投稿以上の場合は、4つのセクションに分ける
+                        } elseif ($total_posts > 36) {
+                            $num_sections = 4; // 36投稿以上の場合は、4つのセクションに分ける
+                        } elseif ($total_posts > 26) {
+                            $num_sections = 3; // 26投稿以上の場合は、3つのセクションに分ける
+                        } elseif ($total_posts > 16) {
+                            $num_sections = 2; // 16投稿以上の場合は、2つのセクションに分ける
+                        } else {
+                            $num_sections = 1; // 16投稿未満の場合は、1つのセクション
+                        }                        // セクションごとの平均投稿数
+                        $posts_per_section = floor($remaining_posts / $num_sections);
 
-                    // 余りの計算
-                    $remainder = $remaining_posts % $num_sections;
+                        // 余りの計算
+                        $remainder = $remaining_posts % $num_sections;
 
-                    // 投稿表示ロジック
-                    $post_index = 0;
+                        // 投稿表示ロジック
+                        $post_index = 0;
 
                     if ($query->have_posts()):
                         while ($query->have_posts()): $query->the_post();
 
                             // セクション1には余り分を加算
-                            if ($post_index >= ($posts_per_section + $remainder)) {
+                            if ($post_index >= $posts_per_section + ($num_sections == 1 ? $remainder : 0)) {
                                 break; // セクション1の投稿を表示するループを終了
                             }
 
@@ -411,9 +414,9 @@ if ($total_posts <= 4) {
                             ?>
 
                             <div class="destination <?php echo $tag_classes; ?>">
-                                <div class="goal-wrap">
-                                    <a class="goal hover-scale" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" >
-                                    </a>
+                            <a class="goal-wrap" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>">
+                            <div class="goal hover-scale" >
+                        </div>
                                     <div class="goal-bg"></div>
                                     <div class="title-board">
                                         <?php
@@ -422,7 +425,7 @@ if ($total_posts <= 4) {
                                         ?>
                                         <p class="board-TX"> <?php echo esc_html($decoded_slug); ?></p>
                                     </div>
-                                </div>
+                        </a>
                             </div>
 
 
@@ -482,9 +485,9 @@ if ($total_posts <= 4) {
                                     ?>
     
                                 <div class="destination <?php echo $tag_classes; ?>">
-                                <div class="goal-wrap">
-                                    <a class="goal hover-scale" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" >
-                                    </a>
+                                <a class="goal-wrap" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>">
+                                    <div class="goal hover-scale">
+                                    </div>
                                     <div class="goal-bg"></div>
                                     <div class="title-board">
                                         <?php
@@ -494,7 +497,7 @@ if ($total_posts <= 4) {
                                         <p class="board-TX"> <?php echo esc_html($decoded_slug); ?></p>
                                     </div>
 
-                                </div>
+                            </a>
                                 </div>
 
                                 <?php
@@ -558,9 +561,9 @@ if ($total_posts <= 4) {
                                     ?>
     
                                 <div class="destination <?php echo $tag_classes; ?>">
-                                <div class="goal-wrap">
-                                    <a class="goal hover-scale" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" >
-                                    </a>
+                                <a class="goal-wrap" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>">
+                                    <div class="goal">
+                                    </div>
                                     <div class="goal-bg"></div>
                                     <div class="title-board">
                                         <?php
@@ -570,7 +573,7 @@ if ($total_posts <= 4) {
                                         <p class="board-TX"> <?php echo esc_html($decoded_slug); ?></p>
                                     </div>
 
-                                </div>
+                            </a>
                                 </div>
 
                                 <?php
@@ -634,9 +637,9 @@ if ($total_posts <= 4) {
                                     ?>
     
                                 <div class="destination <?php echo $tag_classes; ?>">
-                                <div class="goal-wrap">
-                                    <a class="goal hover-scale" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" >
-                                    </a>
+                                <a class="goal-wrap" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>">
+                                    <div class="goal hover-scale">
+                                    </div>
                                     <div class="goal-bg"></div>
                                     <div class="title-board">
                                         <?php
@@ -646,7 +649,7 @@ if ($total_posts <= 4) {
                                         <p class="board-TX"> <?php echo esc_html($decoded_slug); ?></p>
                                     </div>
 
-                                </div>
+                            </a>
                                 </div>
 
                                 <?php
@@ -667,6 +670,154 @@ if ($total_posts <= 4) {
             </div>
         </section>
         <?php endif; ?>
+
+
+        <?php if ($total_posts > 46): // 投稿数が46以上の場合にセクション4.5を表示 ?>
+        <!-- セクション4.5 -->
+        <section class="page-section page4-5">
+            <div class="road-inner">
+                <div class="content">
+                    <div class="tree"></div>
+                    <div class="road-content">
+                        <?php
+                        // セクション4.5の投稿を取得
+                        $args = array(
+                            'category__in' => array($category->term_id),
+                            'posts_per_page' => $posts_per_section,  // ここで表示する投稿数
+                            'offset' => ($posts_per_section * 4 + $remainder), // セクション1から4まで表示した投稿数をスキップ
+                        );
+                        $query = new WP_Query($args);
+
+                        if ($query->have_posts()):
+                            while ($query->have_posts()): $query->the_post();
+
+                                // 記事に付与されたタグを取得
+                                $post_tags = get_the_tags();
+                                $tag_classes = '';
+
+                                if ($post_tags && !is_wp_error($post_tags)) {
+                                    // タグが存在する場合のみクラス名を追加
+                                    $tag_names = array_map(function($tag) {
+                                        // タグの名前を取得して、クラス名として使えるように変換
+                                        $tag_name = esc_attr($tag->name);
+                                        $tag_name = preg_replace('/[^a-zA-Z0-9]/', '_', $tag_name); // 非アルファベット・非数字はアンダースコアに置換
+                                        return $tag_name; 
+                                    }, $post_tags);
+                                    $tag_classes = implode(' ', $tag_names);
+                                }
+
+                                // クラス名が空の場合の処理
+                                if (empty($tag_classes)) {
+                                    $tag_classes = 'no-tags'; // タグがない場合にデフォルトのクラスを設定
+                                }
+                                ?>
+
+                                <div class="destination <?php echo $tag_classes; ?>">
+                                    <a class="goal-wrap" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>">
+                                        <div class="goal hover-scale"></div>
+                                        <div class="goal-bg"></div>
+                                        <div class="title-board">
+                                            <?php
+                                            $slug = get_post_field('post_name', get_the_ID());
+                                            $decoded_slug = urldecode($slug); // URLエンコードされている場合にデコード
+                                            ?>
+                                            <p class="board-TX"><?php echo esc_html($decoded_slug); ?></p>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <?php
+                            endwhile;
+                        endif;
+
+                        wp_reset_postdata(); // クエリをリセット
+                        ?>
+                    </div>
+                </div>
+                <!-- 動的リンクの表示 -->
+                <div class="section-arrow back-section"></div>
+                <div class="section-arrow next-section"></div>
+            </div>
+        </section>
+        <?php endif; ?>
+
+
+
+        
+
+        <?php if ($total_posts > 55): // 投稿数が56以上の場合にセクション4.6を表示 ?>
+        <!-- セクション4.6 -->
+        <section class="page-section page4-6">
+            <div class="road-inner">
+                <div class="content">
+                    <div class="tree"></div>
+                    <div class="road-content">
+                        <?php
+                        // セクション4.6の投稿を取得
+                        $args = array(
+                            'category__in' => array($category->term_id),
+                            'posts_per_page' => $posts_per_section,  // ここで表示する投稿数
+                            'offset' => ($posts_per_section * 5 + $remainder), // セクション1から4.5まで表示した投稿数をスキップ
+                        );
+                        $query = new WP_Query($args);
+
+                        if ($query->have_posts()):
+                            while ($query->have_posts()): $query->the_post();
+
+                                // 記事に付与されたタグを取得
+                                $post_tags = get_the_tags();
+                                $tag_classes = '';
+
+                                if ($post_tags && !is_wp_error($post_tags)) {
+                                    // タグが存在する場合のみクラス名を追加
+                                    $tag_names = array_map(function($tag) {
+                                        // タグの名前を取得して、クラス名として使えるように変換
+                                        $tag_name = esc_attr($tag->name);
+                                        $tag_name = preg_replace('/[^a-zA-Z0-9]/', '_', $tag_name); // 非アルファベット・非数字はアンダースコアに置換
+                                        return $tag_name; 
+                                    }, $post_tags);
+                                    $tag_classes = implode(' ', $tag_names);
+                                }
+
+                                // クラス名が空の場合の処理
+                                if (empty($tag_classes)) {
+                                    $tag_classes = 'no-tags'; // タグがない場合にデフォルトのクラスを設定
+                                }
+
+                                ?>
+
+                                <div class="destination <?php echo $tag_classes; ?>">
+                                    <a class="goal-wrap" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>">
+                                        <div class="goal hover-scale"></div>
+                                        <div class="goal-bg"></div>
+                                        <div class="title-board">
+                                            <?php
+                                            $slug = get_post_field('post_name', get_the_ID());
+                                            $decoded_slug = urldecode($slug); // URLエンコードされている場合にデコード
+                                            ?>
+                                            <p class="board-TX"><?php echo esc_html($decoded_slug); ?></p>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <?php
+                            endwhile;
+                        endif;
+
+                        wp_reset_postdata(); // クエリをリセット
+                        ?>
+                    </div>
+                </div>
+                <!-- 動的リンクの表示 -->
+                <div class="section-arrow back-section"></div>
+                <div class="section-arrow next-section"></div>
+            </div>
+        </section>
+        <?php endif; ?>
+
+
+
+
 
 
         <!-- セクション5 (最後の5つの投稿) -->
@@ -714,9 +865,9 @@ if ($total_posts <= 4) {
                                             ?>
         
                                     <div class="destination <?php echo $tag_classes; ?>">
-                                        <div class="goal-wrap">
-                                            <a class="goal hover-scale" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" >
-                                            </a>
+                                    <a class="goal-wrap" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>">
+                                            <div class="goal hover-scale" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" >
+                                            </div>
                                             <div class="goal-bg"></div>
                                             <div class="title-board">
                                                 <?php
@@ -726,8 +877,8 @@ if ($total_posts <= 4) {
                                                 <p class="board-TX"> <?php echo esc_html($decoded_slug); ?></p>
                                             </div>
 
-                                        </div>
-                                    </div>
+                                </a>
+                                </div>
 
                                     <?php
                                 endwhile;

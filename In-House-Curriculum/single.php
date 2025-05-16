@@ -4,9 +4,25 @@ if (!is_user_logged_in()) {
     exit;
 }
 
+// 閲覧権限チェック
+$current_user = wp_get_current_user();
+$allowed_posts = get_user_meta($current_user->ID, 'allowed_posts', true);
+if (!is_array($allowed_posts) || empty($allowed_posts)) {
+    // デフォルトは全て許可
+    $all_posts = get_posts(['numberposts' => -1, 'post_type' => 'post', 'post_status' => 'publish']);
+    $allowed_posts = wp_list_pluck($all_posts, 'ID');
+}
+if (!in_array(get_the_ID(), $allowed_posts)) {
+    wp_redirect(home_url('/viewing-limit'));
+    exit;
+}
+
 get_header();
 ?>
-<?php get_template_part('inc/loading'); ?>
+
+<!-- <?php
+        get_template_part('inc/loading');
+        ?> -->
 
 <!-- single -->
 <div class="single">
@@ -37,7 +53,7 @@ get_header();
                         <?php endif; ?>
                     </div>
                     <div class="single-nation-text">
-                        <a href="javascript:window.close()">戻る</a>
+                        <a href="<?php bloginfo('url'); ?>/curriculum">戻る</a>
                     </div>
                     <div class="single-nation-text">
                         <?php

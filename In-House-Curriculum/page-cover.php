@@ -26,7 +26,9 @@ endif;
 <?php
 get_header();
 ?>
-<?php get_template_part('inc/loading'); ?>
+<!--  <?php
+ get_template_part('inc/loading');
+?> -->
 <div class="cover-wrapper">
     <div class="cover">
         <div class="cover-header">
