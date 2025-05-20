@@ -4467,7 +4467,7 @@
                                 </div>
                                 <div class="btn result-btn designer" id="result-item">
                                     <div class="btn--inner">
-                                        <p class="TX">結果発表！！</p>
+                                        <p class="TX TX-bg">結果発表！！</p>
                                     </div>
                                 </div>
                             </div>

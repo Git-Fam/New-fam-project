@@ -2781,8 +2781,8 @@
 
             &--inner {
               .book--title {
-                .book--pict {
-                }
+                .book--pict {}
+
                 .TL {
                   color: #bababa;
                 }
@@ -2853,6 +2853,57 @@
             background: #bababa;
           }
         }
+      }
+    }
+
+    .aptitude-result__btns {
+      position: absolute;
+      display: flex;
+      justify-content: space-between;
+      z-index: 3;
+
+      @include pc {
+        top: pmin(20);
+        right: pmin(20);
+        gap: pmin(20);
+      }
+
+      @include sp {
+        top: s(-40);
+        right: s(-10);
+        gap: s(20);
+      }
+
+      .btn {
+        border-radius: 10px;
+        background: #F38549;
+        box-shadow: -4px -4px 8px 0px rgba(0, 0, 0, 0.15) inset, 4px 4px 8px 0px rgba(247, 229, 229, 0.25) inset;
+
+        @include pc {
+          padding: pmi(10) pmi(20);
+        }
+
+        @include sp {
+          padding: s(10) s(20);
+        }
+
+        &:nth-child(2) {
+          background: #62C7D5;
+        }
+
+        .TX {
+          @include wt700;
+          color: #FFF;
+
+          @include pc {
+            font-size: pmi(16);
+          }
+
+          @include sp {
+            font-size: s(16);
+          }
+        }
+
       }
     }
 

@@ -656,6 +656,16 @@
                         @include sp {
                           font-size: s(13);
                         }
+
+                        &.TX-bg {
+                          @include pc {
+                            font-size: pmi(26);
+                          }
+
+                          @include sp{
+                            font-size: s(20);
+                          }
+                        }
                       }
                     }
                   }

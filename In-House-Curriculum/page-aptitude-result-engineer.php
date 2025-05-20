@@ -1569,6 +1569,17 @@
 			</div>
 
 		</div>
+
+		<!-- ボタン -->
+		<div class="aptitude-result__btns">
+			<a class="btn hover-opa" href="<?php bloginfo('url'); ?>/singin">
+				<p class="TX">会員登録</p>
+			</a>
+			<a class="btn hover-opa" href="<?php bloginfo('url'); ?>">
+				<p class="TX">ホーム</p>
+			</a>
+		</div>
+
 		<!-- キャラクター -->
 		<div class="aptitude-result__character">
 			<div class="character--message">
