@@ -29,6 +29,7 @@
   background-color: $B-CFC6B6;
   position: relative;
   overflow: hidden;
+  height: 100vh;
 
   @include sp {
     min-height: 100vh;

@@ -13,12 +13,13 @@
   &.singin{
 
     @include pc{
-      height: unset;
+      min-height: 100vh;
+      // height: unset;
       padding: 100px 0;
     }
 
     @include sp{
-      height: unset;
+      // height: unset;
       padding: 100px 0;
     }
 
