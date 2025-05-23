@@ -22,6 +22,9 @@ get_header();
                     <div class="timeline-wrap">
                         <div class="timeline">
                             <?php
+                            // --- タイムラインデータをためる配列 ---
+                            $timeline_items = array();
+
                             // ログインしているユーザーのグループを取得
                             $current_user_id = get_current_user_id();
                             $user_group = $current_user_id ? get_user_meta($current_user_id, 'user_group', true) : null;
@@ -42,105 +45,96 @@ get_header();
 
                             $group_users = get_users($args);
 
-                            // グループユーザーの進捗をチェック
+                            // キー名と日本語課題名の対応表（必要なら増やして）
+                            $task_names = array(
+                                'div01' => 'DIVパズル１',
+                                'div02' => 'DIVパズル２',
+                                'div03' => 'DIVパズル３',
+                                'div04' => 'DIVパズル４',
+                                'div05' => 'DIVパズル５',
+                                'div06' => 'DIVパズル６',
+                                'div07' => 'DIVパズル７',
+                                'responsive' => 'レスポンシブ課題',
+                                'JQ01' => 'jQuery１',
+                                'JQ02' => 'jQuery２',
+                                'JQ03' => 'jQuery３',
+                                'JQ04' => 'jQuery４',
+                                'JQ05' => 'jQuery５',
+                                'JQ06' => 'jQuery６',
+                                'JQ07' => 'jQuery７',
+                                'JQ08' => 'jQuery８',
+                                'JQ09' => 'jQuery９',
+                                'JQ10' => 'jQuery１０',
+                                'JQLast' => 'JQ最終課題',
+                                'LP01' => 'サイト制作',
+                                'Sass01' => 'Sass01',
+                                'FAM01' => 'FAM01',
+                                'JS01' => 'JS01',
+                                'WP01' => 'WP01',
+                                'SEO01' => 'SEO01',
+                            );
+
+                            // 進捗メタキー（日本語配列じゃなくキー名のみで管理）
+                            $progress_keys = array(
+                                'div01', 'div02', 'div03', 'div04', 'div05', 'div06', 'div07',
+                                'responsive', 'JQ01', 'JQ02', 'JQ03', 'JQ04', 'JQ05', 'JQ06', 'JQ07', 'JQ08', 'JQ09', 'JQ10',
+                                'JQLast', 'LP01', 'Sass01', 'FAM01', 'JS01', 'WP01', 'SEO01'
+                            );
+
+                            // --- 各ユーザーごとに100%課題をタイムライン配列に格納 ---
                             foreach ($group_users as $user) {
-                                $user_id = $user->ID;  // ループ内のユーザーID
+                                $user_id = $user->ID;
                                 $user_name = $user->display_name;
-
-                                // ユーザーの進捗を取得（各項目の100%チェック）
-                                $progress_data = array(
-                                    'DIVパズル１' => get_user_meta($user_id, 'div01', true) ?: '0',
-                                    'DIVパズル２' => get_user_meta($user_id, 'div02', true) ?: '0',
-                                    'DIVパズル３' => get_user_meta($user_id, 'div03', true) ?: '0',
-                                    'DIVパズル４' => get_user_meta($user_id, 'div04', true) ?: '0',
-                                    'DIVパズル５' => get_user_meta($user_id, 'div05', true) ?: '0',
-                                    'DIVパズル６' => get_user_meta($user_id, 'div06', true) ?: '0',
-                                    'DIVパズル７' => get_user_meta($user_id, 'div07', true) ?: '0',
-                                    'レスポンシブ課題' => get_user_meta($user_id, 'responsive', true) ?: '0',
-                                    'jQuery１' => get_user_meta($user_id, 'JQ01', true) ?: '0',
-                                    'jQuery２' => get_user_meta($user_id, 'JQ02', true) ?: '0',
-                                    'jQuery３' => get_user_meta($user_id, 'JQ03', true) ?: '0',
-                                    'jQuery４' => get_user_meta($user_id, 'JQ04', true) ?: '0',
-                                    'jQuery５' => get_user_meta($user_id, 'JQ05', true) ?: '0',
-                                    'jQuery６' => get_user_meta($user_id, 'JQ06', true) ?: '0',
-                                    'jQuery７' => get_user_meta($user_id, 'JQ07', true) ?: '0',
-                                    'jQuery８' => get_user_meta($user_id, 'JQ08', true) ?: '0',
-                                    'jQuery９' => get_user_meta($user_id, 'JQ09', true) ?: '0',
-                                    'jQuery１０' => get_user_meta($user_id, 'JQ10', true) ?: '0',
-                                    'JQ最終課題' => get_user_meta($user_id, 'JQLast', true) ?: '0',
-                                    'サイト制作' => get_user_meta($user_id, 'LP01', true) ?: '0',
-                                    'Sass01' => get_user_meta($user_id, 'Sass01', true) ?: '0',
-                                    'FAM01' => get_user_meta($user_id, 'FAM01', true) ?: '0',
-                                    'JS01' => get_user_meta($user_id, 'JS01', true) ?: '0',
-                                    'WP01' => get_user_meta($user_id, 'WP01', true) ?: '0',
-                                    'SEO01' => get_user_meta($user_id, 'SEO01', true) ?: '0',
-                                );
-
-                                // 日時を保存するカスタムフィールド名
-                                $date_fields = array(
-                                    'div01_date',
-                                    'div02_date',
-                                    'div03_date',
-                                    'div04_date',
-                                    'div05_date',
-                                    'div06_date',
-                                    'div07_date',
-                                    'responsive_date',
-                                    'JQ01_date',
-                                    'JQ02_date',
-                                    'JQ03_date',
-                                    'JQ04_date',
-                                    'JQ05_date',
-                                    'JQ06_date',
-                                    'JQ07_date',
-                                    'JQ08_date',
-                                    'JQ09_date',
-                                    'JQ10_date',
-                                    'JQLast_date',
-                                    'LP01_date',
-                                    'Sass01_date',
-                                    'FAM01_date',
-                                    'JS01_date',
-                                    'WP01_date',
-                                    'SEO01_date'
-                                );
-
-                                // 100%の項目をタイムラインに表示
-                                $i = 0;
-                                foreach ($progress_data as $key => $value) {
+                                foreach ($progress_keys as $meta_key) {
+                                    $value = get_user_meta($user_id, $meta_key, true);
                                     if ($value == '100') {
-                                        if (!get_user_meta($user_id, $date_fields[$i], true)) {
+                                        $date_meta_key = $meta_key . '_date';
+                                        // 未保存の場合のみ日付を保存
+                                        if (!get_user_meta($user_id, $date_meta_key, true)) {
                                             $current_time = current_time('mysql');
-                                            update_user_meta($user_id, $date_fields[$i], $current_time);
+                                            update_user_meta($user_id, $date_meta_key, $current_time);
                                         }
-
-                                        $completion_date = get_user_meta($user_id, $date_fields[$i], true);
-                                        $formatted_date = date_i18n('n月j日 G:i', strtotime($completion_date));
-
-                                        // 正しいitem_idを使用していいねカウントを取得
-                                        $item_id = $user_id . '_' . $key;
-                                        $like_count = get_option('global_like_count_' . $item_id, 0); // グローバルいいね数を取得
-
-                                        // 既にいいねしているか確認
-                                        $liked_items = get_user_meta(get_current_user_id(), 'liked_items', true) ?: array();
-
-                                        // 投稿に対して一度でもいいねされているかを確認するフラグ
-                                        $already_liked_any = in_array($item_id . '_heart', $liked_items) || in_array($item_id . '_hand', $liked_items) || in_array($item_id . '_cat', $liked_items);
-
-                                        echo '<div class="timeline-item">';
-                                        echo '<h3>' . esc_html($user_name) . 'さんが<br>' . esc_html($key) . 'を完了しました！'  . '</h3>';
-                                        echo '<div class="like-button-wrap">';
-
-                                        // ボタンごとに異なるitem_idを設定し、どれか一つでも「いいね」されている場合は全てのボタンを無効化
-                                        echo '<button class="like-button heart' . (in_array($item_id . '_heart', $liked_items) ? ' liked' : '') . '" data-item-id="' . esc_attr($item_id . '_heart') . '"' . ($already_liked_any ? ' disabled' : '') . '><div class="icon"></div><p class="like-TX">いいね</button>';
-                                        echo '<button class="like-button hand' . (in_array($item_id . '_hand', $liked_items) ? ' liked' : '') . '" data-item-id="' . esc_attr($item_id . '_hand') . '"' . ($already_liked_any ? ' disabled' : '') . '><div class="icon"></div><p class="like-TX">おめでとう</button>';
-                                        echo '<button class="like-button cat' . (in_array($item_id . '_cat', $liked_items) ? ' liked' : '') . '" data-item-id="' . esc_attr($item_id . '_cat') . '"' . ($already_liked_any ? ' disabled' : '') . '><div class="icon"></div><p class="like-TX">負けないよ</button>';
-
-                                        echo '</div>';
-                                        echo '</div>';
+                                        $completion_date = get_user_meta($user_id, $date_meta_key, true);
+                                        if ($completion_date) {
+                                            $timeline_items[] = array(
+                                                'user_name' => $user_name,
+                                                'meta_key' => $meta_key,
+                                                'task_name' => isset($task_names[$meta_key]) ? $task_names[$meta_key] : $meta_key,
+                                                'user_id' => $user_id,
+                                                'completion_date' => $completion_date,
+                                                'formatted_date' => date_i18n('n月j日 G:i', strtotime($completion_date)),
+                                            );
+                                        }
                                     }
-                                    $i++;
                                 }
+                            }
+
+                            // --- 完了日（降順）で並び替え ---
+                            usort($timeline_items, function($a, $b) {
+                                return strtotime($b['completion_date']) - strtotime($a['completion_date']);
+                            });
+
+
+                            $count = 0; // ← カウンタ追加
+                            // --- タイムライン出力 ---
+                            foreach ($timeline_items as $item) {
+                                if ($count >= 50) break; // ← 50件でストップ
+
+                                $item_id = $item['user_id'] . '_' . $item['meta_key'];
+                                $liked_items = get_user_meta(get_current_user_id(), 'liked_items', true) ?: array();
+                                $already_liked_any = in_array($item_id . '_heart', $liked_items) || in_array($item_id . '_hand', $liked_items) || in_array($item_id . '_cat', $liked_items);
+
+                                echo '<div class="timeline-item">';
+                                echo '<h3>' . esc_html($item['user_name']) . 'さんが<br>' . esc_html($item['task_name']) . 'を完了しました！</h3>';
+                                echo '<div style="font-size:0.9em;color:#888;">' . esc_html($item['formatted_date']) . '</div>';
+                                echo '<div class="like-button-wrap">';
+                                echo '<button class="like-button heart' . (in_array($item_id . '_heart', $liked_items) ? ' liked' : '') . '" data-item-id="' . esc_attr($item_id . '_heart') . '"' . ($already_liked_any ? ' disabled' : '') . '><div class="icon"></div><p class="like-TX">いいね</button>';
+                                echo '<button class="like-button hand' . (in_array($item_id . '_hand', $liked_items) ? ' liked' : '') . '" data-item-id="' . esc_attr($item_id . '_hand') . '"' . ($already_liked_any ? ' disabled' : '') . '><div class="icon"></div><p class="like-TX">おめでとう</button>';
+                                echo '<button class="like-button cat' . (in_array($item_id . '_cat', $liked_items) ? ' liked' : '') . '" data-item-id="' . esc_attr($item_id . '_cat') . '"' . ($already_liked_any ? ' disabled' : '') . '><div class="icon"></div><p class="like-TX">負けないよ</button>';
+                                echo '</div>';
+                                echo '</div>';
+
+                                $count++; // ← カウントアップ
                             }
                             ?>
                         </div>
@@ -179,15 +173,11 @@ get_header();
 
                 </div>
 
-
-
-
-
             </div>
 
         </div>
     </section>
 </div>
 
-
 <?php get_footer(); ?>
+                            

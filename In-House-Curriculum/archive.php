@@ -9,7 +9,7 @@ get_header();
 // 現在のユーザー情報を取得
 $current_user = wp_get_current_user();
 $current_username = $current_user->display_name; // 現在のログインユーザーの表示名
-$original_user_id = $current_user->ID; // 元のユーザーIDを保持
+$current_user_id = $current_user->ID; // 元のユーザーIDを保持
 
 // 全ユーザーの進捗データとキャラクターHTMLを格納する配列
 $all_users_progress = [];
@@ -25,18 +25,25 @@ function get_last_post_in_category($category_id)
     $args = array(
         'category__in' => array($category_id),
         'posts_per_page' => 1, // 最後の投稿を1つだけ取得
-        'orderby' => 'date',
+        'orderby' => 'menu_order',
         'order' => 'DESC',
+        'post_type'       => 'post',
+        'suppress_filters'=> false, // Post Types Orderのorderbyフックを有効にするため
+        'fields'           => 'ids', // 念のため投稿IDのみ
     );
     $query = new WP_Query($args);
 
-    if ($query->have_posts()) {
-        $query->the_post();
-        return get_the_ID(); // 投稿IDを返す
+    // if ($query->have_posts()) {
+    //     $query->the_post();
+    //     return get_the_ID(); // 投稿IDを返す
+    // }
+    if (!empty($query->posts)) {
+        return $query->posts[0]; // これが一番下
     }
 
     return null; // 投稿がない場合
 }
+
 
 function check_last_post_progress($user_id, $category_id)
 {
@@ -53,7 +60,9 @@ function check_last_post_progress($user_id, $category_id)
             // 進捗が100%になった日時を取得（ない場合は保存する）
             $completion_date_field = $progress_field . '_date'; // 日時を保存するカスタムフィールド
             $completion_date = get_user_meta($user_id, $completion_date_field, true);
-
+            if (is_array($completion_date)) {
+                $completion_date = reset($completion_date); // 最初の要素を使う
+            }
             if (!$completion_date) {
                 // 初めて100%になった場合、現在の日時を保存
                 $completion_date = current_time('mysql');
@@ -64,13 +73,18 @@ function check_last_post_progress($user_id, $category_id)
             $one_week_later = strtotime($completion_date) + (7 * 24 * 60 * 60); // 1週間後
             $current_time = current_time('timestamp');
 
+
             if ($current_time >= $one_week_later) {
                 return true; // 1週間経過したら非表示にする
             } else {
                 return false; // 1週間経過していない場合は表示する
             }
         }
+                        // ★ここでログに出す
+                        error_log($last_post_id);
+
     }
+
 
     return false; // 進捗が100%でないか、投稿が見つからない場合
 }
@@ -152,7 +166,7 @@ if ($last_updated_field) {
 
 
 // ユーザーIDを元に戻す
-wp_set_current_user($original_user_id);
+wp_set_current_user($current_user_id);
 
 // JavaScriptに全ユーザーの進捗データとキャラクターHTML、そして最後の投稿の進捗情報を渡す
 wp_enqueue_script('cooperator-script', get_template_directory_uri() . '/js/cooperatorScript.js', array('jquery'), null, true);
@@ -168,10 +182,7 @@ wp_localize_script('cooperator-script', 'wpData', array(
 $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
 
 ?>
-<script>
-    var selectCategory = <?php echo json_encode($active_category); ?>;
-    console.log("Active Category:", selectCategory);
-</script>
+
 
 
 <div class="sp-wrap">
@@ -296,6 +307,23 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                                     <?php
                                     if ($query->have_posts()):
                                         while ($query->have_posts()): $query->the_post();
+
+
+                                        $post_id = get_the_ID();
+
+                                        // ▼ 進捗100%かつ1週間経過で非表示
+                                        $progress_field = 'progress_field_' . $post_id;
+                                        $progress_value = get_user_meta($current_user_id, $progress_field, true);
+                                        $completion_date_field = $progress_field . '_date';
+                                        $completion_date = get_user_meta($current_user_id, $completion_date_field, true);
+
+                                        if ($progress_value == '100' && $completion_date) {
+                                            $one_week_later = strtotime($completion_date) + (7 * 24 * 60 * 60);
+                                            if (current_time('timestamp') >= $one_week_later) {
+                                                continue; // ここで出力スキップ＝非表示
+                                            }
+                                        }
+                                        error_log('completion_date: ' . $completion_date);
 
                                             // 記事に付与されたタグを取得
                                             $post_tags = get_the_tags();
@@ -1032,3 +1060,5 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
 </script>
 
 <?php get_footer(); ?>
+
+

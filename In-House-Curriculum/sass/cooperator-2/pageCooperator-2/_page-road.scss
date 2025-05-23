@@ -180,7 +180,7 @@
         position: relative;
 
         @include pc {
-          width: p(83);
+          min-width: p(83);
           height: p(126);
           top: p(-35);
         }
@@ -1684,7 +1684,7 @@
 
     .road-chat {
       position: absolute;
-      z-index: 20;
+      z-index: 500;
       height: fit-content;
 
       @include pc {

@@ -59,7 +59,7 @@
 
 
           &:nth-child(5) {
-             rotate:-119deg;
+            rotate: -119deg;
 
             @include pc {
               right: p(142);
@@ -73,12 +73,12 @@
 
             .goal-wrap,
             .character-box {
-              rotate:119deg;
+              rotate: 119deg;
             }
           }
 
           &:nth-child(6) {
-            rotate:-140deg;
+            rotate: -140deg;
 
             @include pc {
               right: p(280);
@@ -92,7 +92,7 @@
 
             .goal-wrap,
             .character-box {
-              rotate:140deg;
+              rotate: 140deg;
             }
 
             .goal-wrap {
@@ -137,7 +137,7 @@
           }
 
           &:nth-child(7) {
-            rotate:180deg;
+            rotate: 180deg;
 
             @include pc {
               left: p(340);
@@ -151,7 +151,7 @@
 
             .goal-wrap,
             .character-box {
-              rotate:180deg;
+              rotate: 180deg;
 
               .title-board {
                 transform: scale(-1, 1);
@@ -164,7 +164,7 @@
           }
 
           &:nth-child(8) {
-            rotate:160deg;
+            rotate: 160deg;
 
             @include pc {
               width: p(200);
@@ -180,7 +180,7 @@
 
             .goal-wrap,
             .character-box {
-              rotate:-160deg;
+              rotate: -160deg;
             }
 
             .title-board {
@@ -210,7 +210,7 @@
             @include pc {
               width: p(200);
               left: p(300);
-              top: p(190);
+              top: p(200);
             }
 
             @include sp {
@@ -223,7 +223,7 @@
           &:nth-child(11) {
             @include pc {
               width: p(200);
-              right: p(320);
+              right: p(330);
               bottom: p(80);
             }
 
@@ -297,7 +297,7 @@
           }
 
           &:nth-child(4) {
-            rotate:-73deg;
+            rotate: -73deg;
 
             @include pc {
               width: p(250);
@@ -313,12 +313,12 @@
 
             .goal-wrap,
             .character-box {
-              rotate:73deg;
+              rotate: 73deg;
             }
           }
 
           &:nth-child(5) {
-            rotate:-140deg;
+            rotate: -140deg;
 
 
             @include pc {
@@ -335,7 +335,7 @@
 
             .goal-wrap,
             .character-box {
-              rotate:140deg;
+              rotate: 140deg;
             }
 
             .goal-wrap {
@@ -377,7 +377,7 @@
           }
 
           &:last-child {
-            rotate:180deg;
+            rotate: 180deg;
             right: auto;
 
             @include pc {
@@ -394,7 +394,7 @@
 
             .goal-wrap,
             .character-box {
-              rotate:180deg;
+              rotate: 180deg;
 
               .goal-bg {
                 opacity: 1;
@@ -436,7 +436,7 @@
 
 
           &:nth-child(3) {
-            rotate:58deg;
+            rotate: 58deg;
             right: auto;
 
             @include pc {
@@ -511,7 +511,7 @@
           }
 
           &:nth-child(5) {
-            rotate:-140deg;
+            rotate: -140deg;
 
             @include pc {
               right: p(280);
@@ -525,7 +525,7 @@
 
             .goal-wrap,
             .character-box {
-              rotate:140deg;
+              rotate: 140deg;
             }
 
             .goal-wrap {
@@ -570,7 +570,7 @@
           }
 
           &:nth-child(6) {
-            rotate:180deg;
+            rotate: 180deg;
             right: auto;
 
 
@@ -586,7 +586,7 @@
 
             .goal-wrap,
             .character-box {
-              rotate:180deg;
+              rotate: 180deg;
 
               .goal-bg {
                 opacity: 1;
@@ -1007,4 +1007,3 @@
     }
   }
 }
-
