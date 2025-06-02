@@ -19,115 +19,62 @@ $last_post_progress = []; // 最後の投稿が100%になってから1週間経�
 // 全ユーザーを取得
 $users = get_users();
 
-function get_last_post_in_category($category_id)
-{
-    // カテゴリーの最後の投稿を取得
-    $args = array(
-        'category__in' => array($category_id),
-        'posts_per_page' => 1, // 最後の投稿を1つだけ取得
-        'orderby' => 'menu_order',
-        'order' => 'DESC',
-        'post_type'       => 'post',
-        'suppress_filters'=> false, // Post Types Orderのorderbyフックを有効にするため
-        'fields'           => 'ids', // 念のため投稿IDのみ
-    );
-    $query = new WP_Query($args);
-
-    // if ($query->have_posts()) {
-    //     $query->the_post();
-    //     return get_the_ID(); // 投稿IDを返す
-    // }
-    if (!empty($query->posts)) {
-        return $query->posts[0]; // これが一番下
-    }
-
-    return null; // 投稿がない場合
-}
 
 
-function check_last_post_progress($user_id, $category_id)
-{
-    // カテゴリーの最後の投稿IDを取得
-    $last_post_id = get_last_post_in_category($category_id);
 
-    if ($last_post_id) {
-        // 最後の投稿に紐付く進捗フィールド
-        $progress_field = 'progress_field_' . $last_post_id;
-        $progress_value = get_user_meta($user_id, $progress_field, true);
+$last_post_progress = [];
 
-        // 進捗が100%かどうか
-        if (intval($progress_value) === 100) {
-            // 進捗が100%になった日時を取得（ない場合は保存する）
-            $completion_date_field = $progress_field . '_date'; // 日時を保存するカスタムフィールド
-            $completion_date = get_user_meta($user_id, $completion_date_field, true);
-            if (is_array($completion_date)) {
-                $completion_date = reset($completion_date); // 最初の要素を使う
-            }
-            if (!$completion_date) {
-                // 初めて100%になった場合、現在の日時を保存
-                $completion_date = current_time('mysql');
-                update_user_meta($user_id, $completion_date_field, $completion_date);
-            }
-
-            // 100%になってから1週間経過したかをチェック
-            $one_week_later = strtotime($completion_date) + (7 * 24 * 60 * 60); // 1週間後
-            $current_time = current_time('timestamp');
-
-
-            if ($current_time >= $one_week_later) {
-                return true; // 1週間経過したら非表示にする
-            } else {
-                return false; // 1週間経過していない場合は表示する
-            }
-        }
-                        // ★ここでログに出す
-                        error_log($last_post_id);
-
-    }
-
-
-    return false; // 進捗が100%でないか、投稿が見つからない場合
-}
-
+// $users ループはこれだけでOK！
 foreach ($users as $user) {
     $user_id = $user->ID;
+    $user_meta = get_user_meta($user_id);
+
+    // 進捗データ格納用
+    $progress_data = [];
+
+    foreach ($user_meta as $meta_key => $meta_value) {
+        if (preg_match('/^(div|responsive|JQ|LP|Sass|React|Java|Design|SEO|Form|FAM|test|JS|WP)/i', $meta_key)) {
+            
+
+            $progress = intval($meta_value[0]);
+            $progress_data[$meta_key] = $progress;
+            
+
+            if ($progress === 100) {
+                $completion_date_field = $meta_key . '_date';
+                $progress_completion_date = get_user_meta($user_id, $completion_date_field, true);
+            
+                // 既にcompletion_dateが存在するか確認
+                if (!metadata_exists('user', $user_id, $completion_date_field)) {
+                    $progress_completion_date = current_time('mysql');
+                    update_user_meta($user_id, $completion_date_field, $progress_completion_date);
+                }   
+
+                $one_week_later = strtotime($progress_completion_date) + (7 * 24 * 60 * 60);
+                $current_time = current_time('timestamp');
+                $is_expired = ($current_time >= $one_week_later);
+            
+                $last_post_progress[$user_id][$meta_key] = $is_expired;
+            }
+        }
+    }
+
+    // キャラクターHTML生成
     ob_start();
-    wp_set_current_user($user_id); // ユーザーを一時的に切り替え
-    display_character(); // ユーザーごとのキャラクターHTMLを取得
+    wp_set_current_user($user_id);
+    display_character();
     $character_html = ob_get_clean();
 
-    // ユーザーごとのキャラクターHTMLを保存
     $all_users_characters[] = array(
         'username' => $user->display_name,
         'character_html' => $character_html,
     );
 
-    // 各ユーザーのメタデータ（進捗データ）を取得
-    $user_meta = get_user_meta($user_id);
-    $progress_data = []; // 各ユーザーの進捗データを格納する配列
-
-    // メタデータをループして進捗データのみを取得
-    foreach ($user_meta as $meta_key => $meta_value) {
-        // 特定の進捗に関連するキーのみをフィルタリング
-        if (preg_match('/^(div|responsive|JQ|LP|Sass|React|Java|Design|SEO|Form|FAM|test|JS|WP)/', $meta_key)) {
-            // 進捗データに追加（空白値の場合は '0' にする）
-            $progress_data[$meta_key] = !empty($meta_value[0]) ? $meta_value[0] : '0';
-        }
-    }
-
-    // ユーザーごとの進捗データを配列に追加
     $all_users_progress[] = array(
         'user_id' => $user_id,
         'username' => $user->display_name,
         'progress' => $progress_data,
     );
-
-    // 各カテゴリーごとの最後の投稿に紐付く進捗をチェック
-    $categories = get_categories(array('parent' => 0)); // 最上位のカテゴリーを取得
-    foreach ($categories as $category) {
-        $category_id = $category->term_id;
-        $last_post_progress[$category_id][$user_id] = check_last_post_progress($user_id, $category_id);
-    }
 }
 
 // クエリパラメータからカスタムフィールド名を取得
@@ -174,6 +121,7 @@ wp_localize_script('cooperator-script', 'wpData', array(
     'allUsersProgress' => $all_users_progress,
     'allUsersCharacters' => $all_users_characters, // キャラクターHTMLをJavaScriptに渡す
     'lastPostProgress' => $last_post_progress, // 最後の投稿に紐付く進捗情報（1週間経過フラグ付き）
+    
 ));
 
 
@@ -207,7 +155,7 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
             $categories = get_categories(array('parent' => 0)); // 最上位のカテゴリーのみを取得する
             foreach ($categories as $category):
                 // カテゴリーに対応する画像ファイル名を想定しています。実際には適切に設定してください。
-                $image_file_name = $category->slug . '.png';
+                $image_file_name = $category->slug . '.webp';
             ?>
                 <div class="archive--item">
                     <img class="archive--item--img" src="<?php echo get_template_directory_uri(); ?>/img/<?php echo $image_file_name ?>" alt="">
@@ -258,7 +206,7 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                                         <!-- <a href="<?php the_permalink(); ?>" class="post-link"> -->
                                         <a href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" class="post-link">
                                             <div class="items--img">
-                                                <img class="img" src="<?php echo has_post_thumbnail() ? get_the_post_thumbnail_url() : get_template_directory_uri() . '/img/no-img.png'; ?>" alt="">
+                                                <img class="img" src="<?php echo has_post_thumbnail() ? get_the_post_thumbnail_url() : get_template_directory_uri() . '/img/no-img.webp'; ?>" alt="">
                                             </div>
                                             <div class="items--title">
                                                 <p class="TL"><?php the_title(); ?></p>
@@ -310,20 +258,6 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
 
 
                                         $post_id = get_the_ID();
-
-                                        // ▼ 進捗100%かつ1週間経過で非表示
-                                        $progress_field = 'progress_field_' . $post_id;
-                                        $progress_value = get_user_meta($current_user_id, $progress_field, true);
-                                        $completion_date_field = $progress_field . '_date';
-                                        $completion_date = get_user_meta($current_user_id, $completion_date_field, true);
-
-                                        if ($progress_value == '100' && $completion_date) {
-                                            $one_week_later = strtotime($completion_date) + (7 * 24 * 60 * 60);
-                                            if (current_time('timestamp') >= $one_week_later) {
-                                                continue; // ここで出力スキップ＝非表示
-                                            }
-                                        }
-                                        error_log('completion_date: ' . $completion_date);
 
                                             // 記事に付与されたタグを取得
                                             $post_tags = get_the_tags();
@@ -941,7 +875,7 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
         endforeach;
         ?>
 
-        <div class="road-chat">
+<div class="road-chat">
             <div class="C_chat-content">
                 <?php if (function_exists('simple_ajax_chat')) simple_ajax_chat(); ?>
 
@@ -998,11 +932,11 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                                     // 日付フィールド名を動的に取得
                                     $date_field_key = $key . '_date';
 
-                                    // 日付が未設定の場合、現在の日時を設定
-                                    if (!get_user_meta($user_id, $date_field_key, true)) {
-                                        $current_time = current_time('mysql');
-                                        update_user_meta($user_id, $date_field_key, $current_time);
-                                    }
+                                    // // 日付が未設定の場合、現在の日時を設定
+                                    // if (!get_user_meta($user_id, $date_field_key, true)) {
+                                    //     $current_time = current_time('mysql');
+                                    //     update_user_meta($user_id, $date_field_key, $current_time);
+                                    // }
 
                                     // 完了日時を取得
                                     $completion_date = get_user_meta($user_id, $date_field_key, true);

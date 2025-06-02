@@ -24,10 +24,10 @@
   .image01{
     transform: rotate(-4.443deg);
     .img{
-      @include imgCover("image01.png");
+      @include imgCover("image01.webp");
     }
     .butterfly{
-      @include imgContain("butterfly01.png");
+      @include imgContain("butterfly01.webp");
       position: absolute;
       @include pc{
         width: 68px;
@@ -40,10 +40,10 @@
   .image02{
     transform: rotate(3.885deg);
     .img{
-      @include imgCover("image01.png");
+      @include imgCover("image01.webp");
     }
     .butterfly{
-      @include imgContain("butterfly02.png");
+      @include imgContain("butterfly02.webp");
       position: absolute;
       @include pc{
         width: 70px;
@@ -56,10 +56,10 @@
   .image03{
     transform: rotate(-5.816deg);
     .img{
-      @include imgCover("image01.png");
+      @include imgCover("image01.webp");
     }
     .butterfly{
-      @include imgContain("butterfly03.png");
+      @include imgContain("butterfly03.webp");
       position: absolute;
       @include pc{
         width: 66px;

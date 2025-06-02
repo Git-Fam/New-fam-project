@@ -5,7 +5,7 @@
 ----------------------- */
 
 .aptitude-result {
-  @include imgCover("aptitude-bk.jpg");
+  @include imgCover("aptitude-bk.webp");
   background-position: center bottom;
   position: relative;
   overflow: hidden;
@@ -656,7 +656,7 @@
             position: absolute;
             width: 20%;
             aspect-ratio: 1/1;
-            @include imgContain("aptitude-result-paper-mark.png");
+            @include imgContain("aptitude-result-paper-mark.webp");
 
             @include pc {
               bottom: 10%;
@@ -843,7 +843,7 @@
           .pict {
             .pict--inner {
               .pict--img {
-                @include imgContain("aptitude-result-characters/Tanuki.png");
+                @include imgContain("aptitude-result-characters/Tanuki.webp");
                 aspect-ratio: 436/397;
                 position: absolute;
                 top: 50%;
@@ -978,7 +978,7 @@
           .pict {
             .pict--inner {
               .pict--img {
-                @include imgContain("aptitude-result-characters/Hashikamo.png");
+                @include imgContain("aptitude-result-characters/Hashikamo.webp");
                 aspect-ratio: 351/396;
                 position: absolute;
                 top: 50%;
@@ -1115,7 +1115,7 @@
           .pict {
             .pict--inner {
               .pict--img {
-                @include imgContain("aptitude-result-characters/oinu.png");
+                @include imgContain("aptitude-result-characters/oinu.webp");
                 aspect-ratio: 367/429;
                 position: absolute;
                 top: 50%;
@@ -1250,7 +1250,7 @@
           .pict {
             .pict--inner {
               .pict--img {
-                @include imgContain("aptitude-result-characters/usazou.png");
+                @include imgContain("aptitude-result-characters/usazou.webp");
                 aspect-ratio: 436/397;
                 position: absolute;
                 top: 50%;
@@ -1385,7 +1385,7 @@
           .pict {
             .pict--inner {
               .pict--img {
-                @include imgContain("aptitude-result-characters/hashikuro.png");
+                @include imgContain("aptitude-result-characters/hashikuro.webp");
                 aspect-ratio: 436/397;
                 position: absolute;
                 top: 50%;
@@ -1520,7 +1520,7 @@
           .pict {
             .pict--inner {
               .pict--img {
-                @include imgContain("aptitude-result-characters/usapo.png");
+                @include imgContain("aptitude-result-characters/usapo.webp");
                 aspect-ratio: 436/397;
                 position: absolute;
                 top: 50%;
@@ -1655,7 +1655,7 @@
           .pict {
             .pict--inner {
               .pict--img {
-                @include imgContain("aptitude-result-characters/guruneko.png");
+                @include imgContain("aptitude-result-characters/guruneko.webp");
                 aspect-ratio: 436/397;
                 position: absolute;
                 top: 50%;
@@ -1790,7 +1790,7 @@
           .pict {
             .pict--inner {
               .pict--img {
-                @include imgContain("aptitude-result-characters/tareusa.png");
+                @include imgContain("aptitude-result-characters/tareusa.webp");
                 aspect-ratio: 436/397;
                 position: absolute;
                 top: 50%;
@@ -1928,7 +1928,7 @@
           .pict {
             .pict--inner {
               .pict--img {
-                @include imgContain("aptitude-result-characters/hituzi.png");
+                @include imgContain("aptitude-result-characters/hituzi.webp");
                 aspect-ratio: 436/397;
                 position: absolute;
                 top: 50%;
@@ -2066,7 +2066,7 @@
           .pict {
             .pict--inner {
               .pict--img {
-                @include imgContain("aptitude-result-characters/tsukikuma.png");
+                @include imgContain("aptitude-result-characters/tsukikuma.webp");
                 aspect-ratio: 436/397;
                 position: absolute;
                 top: 50%;
@@ -2204,7 +2204,7 @@
           .pict {
             .pict--inner {
               .pict--img {
-                @include imgContain("aptitude-result-characters/chatora.png");
+                @include imgContain("aptitude-result-characters/chatora.webp");
                 aspect-ratio: 436/397;
                 position: absolute;
                 top: 50%;
@@ -2341,7 +2341,7 @@
           .pict {
             .pict--inner {
               .pict--img {
-                @include imgContain("aptitude-result-characters/haitora.png");
+                @include imgContain("aptitude-result-characters/haitora.webp");
                 aspect-ratio: 436/397;
                 position: absolute;
                 top: 50%;
@@ -2479,7 +2479,7 @@
           .pict {
             .pict--inner {
               .pict--img {
-                @include imgContain("aptitude-result-characters/kuroneko.png");
+                @include imgContain("aptitude-result-characters/kuroneko.webp");
                 aspect-ratio: 436/397;
                 position: absolute;
                 top: 50%;
@@ -2617,7 +2617,7 @@
           .pict {
             .pict--inner {
               .pict--img {
-                @include imgContain("aptitude-result-characters/kappa.png");
+                @include imgContain("aptitude-result-characters/kappa.webp");
                 aspect-ratio: 436/397;
                 position: absolute;
                 top: 50%;
@@ -2755,7 +2755,7 @@
           .pict {
             .pict--inner {
               .pict--img {
-                @include imgContain("aptitude-result-characters/yagisan.png");
+                @include imgContain("aptitude-result-characters/yagisan.webp");
                 aspect-ratio: 436/397;
                 position: absolute;
                 top: 50%;

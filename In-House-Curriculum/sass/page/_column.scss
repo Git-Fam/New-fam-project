@@ -6,7 +6,7 @@
 
 .columns {
   width: 100%;
-  @include imgCover('board-bg.jpg');
+  @include imgCover('board-bg.webp');
   position: relative;
 
   @include pc {
@@ -56,7 +56,7 @@
 
       .columns--title {
         aspect-ratio: 558 / 105;
-        @include imgContain('column-title.png');
+        @include imgContain('column-title.webp');
         position: absolute;
         z-index: 3;
         left: 50%;
@@ -422,7 +422,7 @@
 
   .kinta {
     aspect-ratio: 417 / 463;
-    @include imgContain('kinta.png');
+    @include imgContain('kinta.webp');
     position: absolute;
     z-index: 5;
     rotate: 12deg;

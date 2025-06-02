@@ -10,7 +10,7 @@
   overflow: hidden;
 
   @include pc {
-    @include imgCover("aptitude-choice-BK.jpg");
+    @include imgCover("aptitude-choice-BK.webp");
     height: 100vh;
     min-height: 700px;
   }
@@ -26,7 +26,7 @@
 
   &::before {
     content: "";
-    @include imgCover("aptitude-choice-BK.jpg");
+    @include imgCover("aptitude-choice-BK.webp");
     display: block;
     position: fixed;
     top: 0;
@@ -241,7 +241,7 @@
           }
 
           &.img-engineer {
-            @include imgContain("aptitude-choice-img-engineer.png");
+            @include imgContain("aptitude-choice-img-engineer.webp");
 
             @include pc {
               bottom: calc((22 / 300) * 100%);
@@ -278,7 +278,7 @@
           }
 
           &.img-designer {
-            @include imgContain("aptitude-choice-img-designer.png");
+            @include imgContain("aptitude-choice-img-designer.webp");
 
             @include pc {
               bottom: calc((19 / 300) * 100%);
@@ -540,7 +540,7 @@
 
         .img {
           aspect-ratio: 507 / 563;
-          @include imgContain("character-2.png");
+          @include imgContain("character-2.webp");
 
           @include pc {
             width: clamp(200px, p(507), 700px);

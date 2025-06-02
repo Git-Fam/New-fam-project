@@ -14,7 +14,7 @@ $owned_glasses = json_decode(get_user_meta($user_id, 'owned_glasses', true), tru
 $owned_items = json_decode(get_user_meta($user_id, 'owned_items', true), true) ?: [];
 
 // 選択されたキャラクターのIDを取得
-$selected_character_thumbnail = get_template_directory_uri() . '/img/avatar-img/avatar01.png'; // デフォルト画像
+$selected_character_thumbnail = get_template_directory_uri() . '/img/avatar-img/avatar01.webp'; // デフォルト画像
 if (!empty($selected_character)) {
     $selected_character_parts = explode('-', $selected_character);
     $selected_character_id = end($selected_character_parts);

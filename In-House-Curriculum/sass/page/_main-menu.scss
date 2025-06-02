@@ -32,19 +32,19 @@
     z-index: 1;
 
     @include pc {
-      @include imgCover("main-menu/main-menu-BK_pc.jpg");
+      @include imgCover("main-menu/main-menu-BK_pc.webp");
       background-size: 100% 100%;
     }
 
     @include sp {
-      @include imgCover("main-menu/main-menu-BK_sp.jpg");
+      @include imgCover("main-menu/main-menu-BK_sp.webp");
       background-size: 100% 100%;
     }
   }
 
   .total_title {
     z-index: 3;
-    @include imgContain("main-menu/main-menu_signboard.png");
+    @include imgContain("main-menu/main-menu_signboard.webp");
     aspect-ratio: 451 / 120;
 
     @include pc {
@@ -207,7 +207,7 @@
     }
 
     &__img {
-      @include imgCover("main-menu/menu-map.png");
+      @include imgCover("main-menu/menu-map.webp");
       aspect-ratio: 645.538 / 219.716;
       width: 100%;
     }
@@ -372,7 +372,7 @@
     }
 
     &__img {
-      @include imgCover("main-menu/menu-ranking.png");
+      @include imgCover("main-menu/menu-ranking.webp");
       background-position: center top;
       aspect-ratio: 371 / 142;
       width: 100%;
@@ -533,7 +533,7 @@
     }
 
     &__img {
-      @include imgCover("main-menu/menu-mypage.png");
+      @include imgCover("main-menu/menu-mypage.webp");
       background-position: center;
       aspect-ratio: 428 / 169;
       width: 100%;
@@ -700,7 +700,7 @@
     }
 
     &__img {
-      @include imgCover("main-menu/menu-column.png");
+      @include imgCover("main-menu/menu-column.webp");
       background-position: center;
       background-size: 130%;
       aspect-ratio: 170 / 110;

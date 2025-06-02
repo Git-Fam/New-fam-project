@@ -10,7 +10,7 @@ get_header();
     <div class="main-menu--BK"></div>
 
     <div class="total_title">
-        <img class="TL" src="<?php echo get_template_directory_uri(); ?>/img/main-menu/main-menu_signboard_title.png" alt="メインメニュー">
+        <img class="TL" src="<?php echo get_template_directory_uri(); ?>/img/main-menu/main-menu_signboard_title.webp" alt="メインメニュー">
     </div>
     <div class="main-menu--inner">
 

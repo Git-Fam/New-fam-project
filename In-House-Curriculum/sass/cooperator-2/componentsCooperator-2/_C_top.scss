@@ -45,13 +45,13 @@
     .TL-main{
       margin: 0 auto;
       @include pc{
-        @include imgContain("bg-wood.png");
+        @include imgContain("bg-wood.webp");
         width: 810px;
         height: 110px;
         margin-top: 15px;
       }
       @include sp{
-        @include imgContain("bg-woodSP.png");
+        @include imgContain("bg-woodSP.webp");
         width: s(320);
         height: s(100);
         margin-top: s(5);

@@ -5,7 +5,7 @@
 ----------------------- */
 
 .aptitude {
-  @include imgCover("aptitude-bk.jpg");
+  @include imgCover("aptitude-bk.webp");
   background-position: center bottom;
   position: relative;
 
@@ -809,7 +809,7 @@
           }
 
           &.item-01 {
-            @include imgContain("aptitude-characters/character-01.png");
+            @include imgContain("aptitude-characters/character-01.webp");
             aspect-ratio: 1203/885;
 
             @include pc {
@@ -822,7 +822,7 @@
           }
 
           &.item-02 {
-            @include imgContain("aptitude-characters/character-02.png");
+            @include imgContain("aptitude-characters/character-02.webp");
             aspect-ratio: 776/1229;
 
             @include pc {
@@ -835,7 +835,7 @@
           }
 
           &.item-03 {
-            @include imgContain("aptitude-characters/character-03.png");
+            @include imgContain("aptitude-characters/character-03.webp");
             aspect-ratio: 842/1252;
 
             @include pc {
@@ -848,7 +848,7 @@
           }
 
           &.item-04 {
-            @include imgContain("aptitude-characters/character-04.png");
+            @include imgContain("aptitude-characters/character-04.webp");
             aspect-ratio: 795/839;
 
             @include pc {
@@ -861,7 +861,7 @@
           }
 
           &.item-05 {
-            @include imgContain("aptitude-characters/character-05.png");
+            @include imgContain("aptitude-characters/character-05.webp");
             aspect-ratio: 716/858;
             opacity: 1;
 
@@ -875,7 +875,7 @@
           }
 
           &.item-06 {
-            @include imgContain("aptitude-characters/character-06.png");
+            @include imgContain("aptitude-characters/character-06.webp");
             aspect-ratio: 716/858;
 
             @include pc {
@@ -888,7 +888,7 @@
           }
 
           &.item-07 {
-            @include imgContain("aptitude-characters/character-07.png");
+            @include imgContain("aptitude-characters/character-07.webp");
             aspect-ratio: 726/527;
             bottom: 0%;
             transform: translateX(50%) rotate(0deg);
@@ -907,7 +907,7 @@
           }
 
           &.item-08 {
-            @include imgContain("aptitude-characters/character-08.png");
+            @include imgContain("aptitude-characters/character-08.webp");
             aspect-ratio: 280/304;
             bottom: 0%;
             transform: translateX(-50%) rotate(0deg);
@@ -922,7 +922,7 @@
           }
 
           &.item-09 {
-            @include imgContain("aptitude-characters/character-09.png");
+            @include imgContain("aptitude-characters/character-09.webp");
             aspect-ratio: 817/998;
 
             @include pc {
@@ -935,7 +935,7 @@
           }
 
           &.item-10 {
-            @include imgContain("aptitude-characters/character-10.png");
+            @include imgContain("aptitude-characters/character-10.webp");
             aspect-ratio: 817/998;
 
             @include pc {
@@ -948,7 +948,7 @@
           }
 
           &.item-11 {
-            @include imgContain("aptitude-characters/character-11.png");
+            @include imgContain("aptitude-characters/character-11.webp");
             aspect-ratio: 817/998;
 
             @include pc {
@@ -961,7 +961,7 @@
           }
 
           &.item-12 {
-            @include imgContain("aptitude-characters/character-12.png");
+            @include imgContain("aptitude-characters/character-12.webp");
             aspect-ratio: 817/998;
 
             @include pc {
@@ -974,7 +974,7 @@
           }
 
           &.item-13 {
-            @include imgContain("aptitude-characters/character-13.png");
+            @include imgContain("aptitude-characters/character-13.webp");
             aspect-ratio: 987/979;
 
             @include pc {
@@ -987,7 +987,7 @@
           }
 
           &.item-14 {
-            @include imgContain("aptitude-characters/character-14.png");
+            @include imgContain("aptitude-characters/character-14.webp");
             aspect-ratio: 920/891;
 
             @include pc {
@@ -1000,7 +1000,7 @@
           }
 
           &.item-15 {
-            @include imgContain("aptitude-characters/character-15.png");
+            @include imgContain("aptitude-characters/character-15.webp");
             aspect-ratio: 817/998;
 
             @include pc {

@@ -69,7 +69,7 @@ if (!empty($categories) && isset($categories[0]->name)) {
                         ));
                         $first_post_id = !empty($first_post) ? $first_post[0]->ID : null;
 
-                        $image_file_name = $category->slug . '.png';
+                        $image_file_name = $category->slug . '.webp';
                 ?>
                     <div class="archive--item">
                         <a href="<?php echo esc_url(site_url('/cover/?post_id=' . $first_post_id)); ?>" class="archive--item--link">
@@ -112,7 +112,7 @@ if (!empty($categories) && isset($categories[0]->name)) {
                             if ($queried_post && has_post_thumbnail($queried_post)) {
                                 echo '<img class="img" src="' . esc_url(get_the_post_thumbnail_url($queried_post)) . '" alt="">';
                             } else {
-                                echo '<img class="img" src="' . esc_url(get_template_directory_uri() . '/img/no-img.png') . '" alt="No Image Available">';
+                                echo '<img class="img" src="' . esc_url(get_template_directory_uri() . '/img/no-img.webp') . '" alt="No Image Available">';
                             }
                         ?>
                     </a>

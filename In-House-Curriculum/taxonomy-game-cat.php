@@ -81,7 +81,7 @@ get_header();
                                                 if (has_post_thumbnail()) {
                                                     the_post_thumbnail();
                                                 } else {
-                                                    echo '<img src="' . esc_url(get_template_directory_uri() . '/img/noimage.jpg') . '" alt="No image available">';
+                                                    echo '<img src="' . esc_url(get_template_directory_uri() . '/img/noimage.webp') . '" alt="No image available">';
                                                 }
                                                 ?>
                                             </div>

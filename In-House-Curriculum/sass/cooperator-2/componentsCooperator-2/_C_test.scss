@@ -51,7 +51,7 @@
       }
     }
     .arrow{
-      @include imgContain("testarrow.png");
+      @include imgContain("testarrow.webp");
       position: absolute;
       @include pc{
         width: clamp(30px,calc(( 33/1280)*100vw),33px);

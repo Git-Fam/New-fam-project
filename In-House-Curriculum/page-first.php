@@ -230,7 +230,7 @@
 													<a
 														href="<?php bloginfo('url'); ?>/curriculum/?category=LP"
 														><img
-															src="<?php echo get_template_directory_uri(); ?>/img/lp.png"
+															src="<?php echo get_template_directory_uri(); ?>/img/lp.webp"
 															class="img"
 															alt="LP"
 													/></a>
@@ -239,7 +239,7 @@
 													<a
 														href="<?php bloginfo('url'); ?>/curriculum/?category=FAM"
 														><img
-															src="<?php echo get_template_directory_uri(); ?>/img/fam.png"
+															src="<?php echo get_template_directory_uri(); ?>/img/fam.webp"
 															class="img"
 															alt="FAM"
 													/></a>
@@ -268,7 +268,7 @@
 										</p>
 										<a href="<?php bloginfo('url'); ?>/ranking"
 											><img
-												src="<?php echo get_template_directory_uri(); ?>/img/first-ranking.png"
+												src="<?php echo get_template_directory_uri(); ?>/img/first-ranking.webp"
 												class="first-ranking"
 												alt="ランキングへ"
 										/></a>

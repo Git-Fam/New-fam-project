@@ -7,7 +7,7 @@
 .book--contents__inner {
   &.page01 {
     .first-top {
-      @include imgContain("first-top.png");
+      @include imgContain("first-top.webp");
       width: 100%;
 
       @include pc {
@@ -151,10 +151,10 @@
               border-radius: s(3);
             }
             // &.img01{
-            //   @include imgContain("lp.png");
+            //   @include imgContain("lp.webp");
             // }
             // &.img02{
-            //   @include imgContain("fam.png");
+            //   @include imgContain("fam.webp");
             // }
           }
         }
@@ -178,7 +178,7 @@
       }
     }
     .first-ranking{
-      // @include imgContain("first-ranking.png");
+      // @include imgContain("first-ranking.webp");
       width: 100%;
       @include pc{
         height: pmi(194);
@@ -195,7 +195,7 @@
       padding-bottom: s(10)
     }
     .first-my{
-      @include imgContain("first-my.png");
+      @include imgContain("first-my.webp");
       width: 100%;
       @include pc{
         height: pmi(228);

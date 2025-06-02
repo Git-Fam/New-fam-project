@@ -76,7 +76,7 @@
 					<div class="TL TL-bg">
 						<h2 class="TL-text">
 							<img
-								src="<?php echo get_template_directory_uri(); ?>/img/top-TL01.png"
+								src="<?php echo get_template_directory_uri(); ?>/img/top-TL01.webp"
 								alt="コミュニティ"
 							/>を通じて<br class="sp">切磋琢磨しよう！
 						</h2>
@@ -107,7 +107,7 @@
 				<div class="content">
 					<div class="TL TL-bg">
 						<h2 class="TL-text">
-							成長する<img src="<?php echo get_template_directory_uri(); ?>/img/top-TL02.png" alt="楽しさ" /> <br class="sp">を体験しよう！
+							成長する<img src="<?php echo get_template_directory_uri(); ?>/img/top-TL02.webp" alt="楽しさ" /> <br class="sp">を体験しよう！
 						</h2>
 					</div>
 					<div class="textbox">
@@ -139,7 +139,7 @@
 					<div class="TL TL-bg">
 						<h2 class="TL-text">
 							サポートを活用してぐんぐん<br class="sp">
-							<img src="<?php echo get_template_directory_uri(); ?>/img/top-TL03.png" alt="スキルアップ" />
+							<img src="<?php echo get_template_directory_uri(); ?>/img/top-TL03.webp" alt="スキルアップ" />
 						</h2>
 					</div>
 					<div class="textbox">

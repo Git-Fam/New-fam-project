@@ -21,7 +21,7 @@ get_header();
                             <h2 class="TL"><?php the_title(); ?></h2>
                         </div>
                         <div class="content">
-                            <img class="thumbnail" src="<?php echo $thumbnail_url ? $thumbnail_url : get_template_directory_uri() . '/img/noimage.jpg'; ?>" alt="">
+                            <img class="thumbnail" src="<?php echo $thumbnail_url ? $thumbnail_url : get_template_directory_uri() . '/img/noimage.webp'; ?>" alt="">
                             <div class="content--text">
                                 <p><?php the_content(); ?></p>
                             </div>

@@ -12,7 +12,7 @@
 }
 
 .first {
-  @include imgCover("first-bg.jpg");
+  @include imgCover("first-bg.webp");
   width: 100%;
   position: relative;
 
@@ -44,13 +44,13 @@
         position: relative;
 
         @include pc {
-          @include imgContain("book.png");
+          @include imgContain("book.webp");
           width: pmi(1148);
           aspect-ratio: 1148 / 676;
         }
 
         @include sp {
-          @include imgContain("book-sp.png");
+          @include imgContain("book-sp.webp");
           width: s(378);
           aspect-ratio: 378 / 581;
         }

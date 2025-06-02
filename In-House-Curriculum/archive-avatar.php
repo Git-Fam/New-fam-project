@@ -144,9 +144,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         ));
                         foreach ($categories as $index => $category) {
                             $active_class = $index === 0 ? 'active' : '';
-                            $png_url = get_template_directory_uri() . '/img/avatar-top-icon/' . esc_attr($category->slug) . '.png';
+                            $png_url = get_template_directory_uri() . '/img/avatar-top-icon/' . esc_attr($category->slug) . '.webp';
                             $svg_url = get_template_directory_uri() . '/img/avatar-top-icon/' . esc_attr($category->slug) . '.svg';
-                            $image_url = file_exists(get_template_directory() . '/img/avatar-top-icon/' . esc_attr($category->slug) . '.png') ? $png_url : $svg_url;
+                            $image_url = file_exists(get_template_directory() . '/img/avatar-top-icon/' . esc_attr($category->slug) . '.webp') ? $png_url : $svg_url;
                             echo '<li class="' . $active_class . '">';
                             echo '<div class="category__item">';
                             echo '<div class="icon" style="background-image: url(' . esc_url($image_url) . ');"></div>';
@@ -183,9 +183,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         ));
 
                         foreach ($tags as $tag) {
-                            $png_url = get_template_directory_uri() . '/img/avatar-top-icon/' . esc_attr($category->slug) . '-' . esc_attr($tag->slug) . '.png';
+                            $png_url = get_template_directory_uri() . '/img/avatar-top-icon/' . esc_attr($category->slug) . '-' . esc_attr($tag->slug) . '.webp';
                             $svg_url = get_template_directory_uri() . '/img/avatar-top-icon/' . esc_attr($category->slug) . '-' . esc_attr($tag->slug) . '.svg';
-                            $image_url = file_exists(get_template_directory() . '/img/avatar-top-icon/' . esc_attr($category->slug) . '-' . esc_attr($tag->slug) . '.png') ? $png_url : $svg_url;
+                            $image_url = file_exists(get_template_directory() . '/img/avatar-top-icon/' . esc_attr($category->slug) . '-' . esc_attr($tag->slug) . '.webp') ? $png_url : $svg_url;
                             echo '<li>';
                             echo '<div class="tag__item" style="background-image: url(' . esc_url($image_url) . ');"></div>';
                             echo '</li>';

@@ -5,7 +5,7 @@
 				<div class="choice--item choice--item--engineer">
 					<div class="choice--item--title">
 						<p class="TL">
-							<img src="<?php echo get_template_directory_uri(); ?>/img/aptitude-choice-engineer.png" alt="エンジニア">
+							<img src="<?php echo get_template_directory_uri(); ?>/img/aptitude-choice-engineer.webp" alt="エンジニア">
 						</p>
 					</div>
 					<div class="choice--item--img img-engineer">
@@ -15,7 +15,7 @@
 				<div class="choice--item choice--item--designer">
 					<div class="choice--item--title">
 						<p class="TL">
-							<img src="<?php echo get_template_directory_uri(); ?>/img/aptitude-choice-designer.png" alt="デザイナー">
+							<img src="<?php echo get_template_directory_uri(); ?>/img/aptitude-choice-designer.webp" alt="デザイナー">
 						</p>
 					</div>
 					<div class="choice--item--img img-designer">

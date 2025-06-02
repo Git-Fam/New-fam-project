@@ -50,7 +50,7 @@
   .tree{
     .tree05{
       position: absolute;
-      @include imgContain("top-tree05.jpg");
+      @include imgContain("top-tree05.webp");
       @include pc{
         width: 439px;
         height: 495px;
@@ -62,7 +62,7 @@
 
   .grass{
     .grass04{
-      @include imgCover("top-grass04.jpg");
+      @include imgCover("top-grass04.webp");
       @include pc{
         width: 924px;
         height: 140px;

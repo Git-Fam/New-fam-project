@@ -381,7 +381,7 @@
             }
 
             .icon {
-              @include imgContain("/log-board/log-board-item-02.png");
+              @include imgContain("/log-board/log-board-item-02.webp");
 
               @include pc {
                 width: p(36);
@@ -690,7 +690,7 @@
 
             &::before {
               content: "";
-              @include imgContain("staff-icon.png");
+              @include imgContain("staff-icon.webp");
               display: block;
 
               @include pc {
@@ -847,7 +847,7 @@
 
               &::before {
                 content: "";
-                @include imgContain("me-icon.png");
+                @include imgContain("me-icon.webp");
                 margin-left: auto;
               }
             }

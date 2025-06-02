@@ -44,7 +44,7 @@ function log_board()
                 <div class="main__month">
                     <p class="TX">
                         <?php $month = date('n'); ?>
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/log-board/log-board-month-<?php echo $month; ?>.png" alt="">
+                        <img src="<?php echo get_template_directory_uri(); ?>/img/log-board/log-board-month-<?php echo $month; ?>.webp" alt="">
                     </p>
                 </div>
             </div>

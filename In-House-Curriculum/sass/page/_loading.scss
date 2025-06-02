@@ -62,7 +62,7 @@
       // background-color: #00ff0079;
       width: 100%;
       min-width: 1280px;
-      @include imgContain("loading_ground.png");
+      @include imgContain("loading_ground.webp");
       animation: loading__ground-rotate 15s linear infinite;
 
       @keyframes loading__ground-rotate {

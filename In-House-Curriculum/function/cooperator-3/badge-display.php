@@ -13,7 +13,7 @@ function badge_display()
     if ($lp_value == '100') {
         // LPフィールドが100%の場合にバッジを表示
 ?>
-        <img class="badge" src="<?php echo get_template_directory_uri(); ?>/img/badge-lp.png" alt="バッジ">
+        <img class="badge" src="<?php echo get_template_directory_uri(); ?>/img/badge-lp.webp" alt="バッジ">
 <?php
         return;
     }
@@ -30,7 +30,7 @@ function badge_display()
     if ($all_jq_fields_100) {
         // 全てのJQフィールドが100%の場合にバッジを表示
 ?>
-        <img class="badge" src="<?php echo get_template_directory_uri(); ?>/img/badge-jq.png" alt="バッジ">
+        <img class="badge" src="<?php echo get_template_directory_uri(); ?>/img/badge-jq.webp" alt="バッジ">
 <?php
         return;
     }
@@ -47,14 +47,14 @@ function badge_display()
     if ($all_div_fields_100) {
         // 全てのdivフィールドが100%の場合にバッジを表示
 ?>
-        <img class="badge" src="<?php echo get_template_directory_uri(); ?>/img/badge-html.png" alt="バッジ">
+        <img class="badge" src="<?php echo get_template_directory_uri(); ?>/img/badge-html.webp" alt="バッジ">
 <?php
         return;
     }
 
     // それ以外の場合にバッジを表示
 ?>
-    <img class="badge" src="<?php echo get_template_directory_uri(); ?>/img/badge-beginner.png" alt="バッジ">
+    <img class="badge" src="<?php echo get_template_directory_uri(); ?>/img/badge-beginner.webp" alt="バッジ">
 <?php
 }
 ?>

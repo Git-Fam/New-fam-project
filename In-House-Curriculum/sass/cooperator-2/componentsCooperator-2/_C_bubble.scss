@@ -2,7 +2,7 @@
 @use "../globalCooperator-2" as *;
 
 .C_bubble{
-  @include imgCover("bubble.png");
+  @include imgCover("bubble.webp");
   @include pc{
     width: p(424);
     height: p(224);

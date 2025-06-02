@@ -49,7 +49,7 @@ function comeback_board()
             </div>
             <div class="container__title">
                 <h3 class="TL">
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/log-board/comeback-board-title.png" alt="カムバックボーナス">
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/log-board/comeback-board-title.webp" alt="カムバックボーナス">
                 </h3>
             </div>
             <div class="container__text">

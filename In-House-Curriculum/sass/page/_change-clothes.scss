@@ -26,7 +26,7 @@
 
   &__display {
     height: 53.86%;
-    @include imgCover('log-board/log-board-bg.jpg');
+    @include imgCover('log-board/log-board-bg.webp');
     background-position: center top 60%;
     position: relative;
     z-index: 1;
@@ -108,7 +108,7 @@
             .icon {
               &.icon-01 {
                 aspect-ratio: 1/1;
-                @include imgContain('log-board/log-board-item-02.png');
+                @include imgContain('log-board/log-board-item-02.webp');
 
                 @include pc {
                   width: pmi(29, 29);
@@ -121,7 +121,7 @@
 
               &.icon-02 {
                 aspect-ratio: 84/71;
-                @include imgContain('log-board/log-board-item-01.png');
+                @include imgContain('log-board/log-board-item-01.webp');
 
                 @include pc {
                   width: pmi(40, 40);
@@ -363,7 +363,7 @@
 
               &.coin {
                 aspect-ratio: 1/1;
-                @include imgContain('log-board/log-board-item-02.png');
+                @include imgContain('log-board/log-board-item-02.webp');
 
                 @include pc {
                   width: pmi(26);
@@ -376,7 +376,7 @@
 
               &.point {
                 aspect-ratio: 84/71;
-                @include imgContain('log-board/log-board-item-01.png');
+                @include imgContain('log-board/log-board-item-01.webp');
 
                 @include pc {
                   width: pmi(36);
@@ -858,7 +858,7 @@
     }
 
     .control__item {
-      @include imgCover("control__item--bg.png");
+      @include imgCover("control__item--bg.webp");
       height: 100%;
 
       @include pc {

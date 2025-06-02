@@ -383,7 +383,7 @@
 
               &::before {
                 content: "";
-                @include imgContain("staff-icon.png");
+                @include imgContain("staff-icon.webp");
                 display: block;
 
                 @include pc {
@@ -585,7 +585,7 @@
           }
         }
         .img{
-          @include imgContain("goat.png");
+          @include imgContain("goat.webp");
           @include pc{
             width: cl(175);
             height: cl(167);
@@ -622,7 +622,7 @@
   }
 }
 .question-grass{
-  @include imgContain("question-grass.png");
+  @include imgContain("question-grass.webp");
   pointer-events: none;
   bottom: 0;
   left: 0;

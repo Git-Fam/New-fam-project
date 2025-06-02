@@ -283,7 +283,7 @@
 
 
       &.bg01 {
-        @include imgCover("scl-bg-1.jpg");
+        @include imgCover("scl-bg-1.webp");
 
         @include pc {
           bottom: 0;
@@ -306,7 +306,7 @@
         }
 
         .grayneko {
-          @include imgContain("grayneko.png");
+          @include imgContain("grayneko.webp");
 
           @include pc {
             width: cl(151);
@@ -340,7 +340,7 @@
         }
 
         .grass01 {
-          @include imgCover("top-grass01.jpg");
+          @include imgCover("top-grass01.webp");
 
           @include pc {
             width: cl(668);
@@ -360,7 +360,7 @@
         }
 
         .grass02 {
-          @include imgCover("top-grass02.jpg");
+          @include imgCover("top-grass02.webp");
 
           @include pc {
             width: cl(1004);
@@ -380,7 +380,7 @@
         }
 
         .tree01 {
-          @include imgContain("top-tree01.jpg");
+          @include imgContain("top-tree01.webp");
 
           @include pc {
             width: cl(494);
@@ -399,7 +399,7 @@
         }
 
         .tree02 {
-          @include imgContain("top-tree02.jpg");
+          @include imgContain("top-tree02.webp");
 
           @include pc {
             width: cl(630);
@@ -418,7 +418,7 @@
         }
 
         .tree03 {
-          @include imgContain("top-tree03.jpg");
+          @include imgContain("top-tree03.webp");
 
           @include pc {
             width: cl(887);
@@ -461,7 +461,7 @@
           }
 
           .TL {
-            @include imgContain("top-TL-bg.png");
+            @include imgContain("top-TL-bg.webp");
 
             @include pc {
               width: cl(890);
@@ -501,7 +501,7 @@
       }
 
       &.bg02 {
-        @include imgCover("scl-bg-2.jpg");
+        @include imgCover("scl-bg-2.webp");
 
         .page02-cloud01 {
           @include pc {
@@ -552,7 +552,7 @@
         }
 
         .grass03 {
-          @include imgContain("top-grass03.jpg");
+          @include imgContain("top-grass03.webp");
 
           @include pc {
             width: cl(924);
@@ -603,7 +603,7 @@
           }
 
           &-img01 {
-            @include imgContain("content-img01.png");
+            @include imgContain("content-img01.webp");
 
             @include pc {
               width: cl(248);
@@ -623,7 +623,7 @@
           }
 
           &-img02 {
-            @include imgContain("content-img02.png");
+            @include imgContain("content-img02.webp");
 
             @include pc {
               width: cl(256);
@@ -644,7 +644,7 @@
             &::before {
               content: "";
               position: absolute;
-              @include imgContain("top-butterfly01.png");
+              @include imgContain("top-butterfly01.webp");
 
               @include pc {
                 width: cl(140);
@@ -667,7 +667,7 @@
       }
 
       &.bg03 {
-        @include imgCover("scl-bg-3.jpg");
+        @include imgCover("scl-bg-3.webp");
 
         @include sp {
           background-position: 40% center;
@@ -690,7 +690,7 @@
         }
 
         .platypus01 {
-          @include imgContain("platypus01.png");
+          @include imgContain("platypus01.webp");
 
           @include pc {
             width: cl(166);
@@ -708,7 +708,7 @@
         }
 
         .platypus02 {
-          @include imgContain("platypus02.png");
+          @include imgContain("platypus02.webp");
 
           @include pc {
             width: cl(163);
@@ -726,7 +726,7 @@
         }
 
         .tree04 {
-          @include imgContain("top-tree04.jpg");
+          @include imgContain("top-tree04.webp");
 
           @include pc {
             width: cl(887);
@@ -773,7 +773,7 @@
           }
 
           &-img03 {
-            @include imgContain("content-img03.png");
+            @include imgContain("content-img03.webp");
 
             @include pc {
               width: cl(319);
@@ -793,7 +793,7 @@
           }
 
           &-img04 {
-            @include imgContain("content-img04.png");
+            @include imgContain("content-img04.webp");
 
             @include pc {
               width: cl(253);
@@ -814,7 +814,7 @@
             &::before {
               content: "";
               position: absolute;
-              @include imgContain("content-img04-deco.png");
+              @include imgContain("content-img04-deco.webp");
               width: cl(194);
               height: cl(112);
               bottom: -50px;
@@ -839,7 +839,7 @@
       }
 
       &.bg04 {
-        @include imgCover("scl-bg-4.jpg");
+        @include imgCover("scl-bg-4.webp");
 
         .cloud01 {
           @include pc {
@@ -874,7 +874,7 @@
         }
 
         .grass04 {
-          @include imgContain("top-grass04.jpg");
+          @include imgContain("top-grass04.webp");
 
           @include pc {
             width: cl(924);
@@ -928,7 +928,7 @@
             }
 
             &.content-img05 {
-              @include imgContain("content-img05.png");
+              @include imgContain("content-img05.webp");
               rotate: -4.4deg;
 
               @include pc {
@@ -944,7 +944,7 @@
               &::before {
                 content: "";
                 position: absolute;
-                @include imgContain("butterfly01.png");
+                @include imgContain("butterfly01.webp");
 
                 @include pc {
                   width: cl(92);
@@ -963,7 +963,7 @@
             }
 
             &.content-img06 {
-              @include imgContain("content-img06.png");
+              @include imgContain("content-img06.webp");
               rotate: 3.6deg;
 
               @include pc {
@@ -980,7 +980,7 @@
               &::before {
                 content: "";
                 position: absolute;
-                @include imgContain("butterfly02.png");
+                @include imgContain("butterfly02.webp");
 
                 @include pc {
                   width: cl(94);
@@ -999,7 +999,7 @@
             }
 
             &.content-img07 {
-              @include imgContain("content-img07.png");
+              @include imgContain("content-img07.webp");
               rotate: -4.35deg;
 
               @include pc {
@@ -1015,7 +1015,7 @@
               &::before {
                 content: "";
                 position: absolute;
-                @include imgContain("butterfly03.png");
+                @include imgContain("butterfly03.webp");
 
                 @include pc {
                   width: cl(89);
@@ -1037,7 +1037,7 @@
       }
 
       &.bg05 {
-        @include imgCover("scl-bg-5.jpg");
+        @include imgCover("scl-bg-5.webp");
 
         .cloud01 {
           @include pc {
@@ -1072,7 +1072,7 @@
         }
 
         .balloon {
-          @include imgContain("balloon.jpg");
+          @include imgContain("balloon.webp");
 
           @include pc {
             width: cl(259);
@@ -1090,7 +1090,7 @@
         }
 
         .rabbit02 {
-          @include imgContain("rabbit02.png");
+          @include imgContain("rabbit02.webp");
 
           @include pc {
             width: cl(188);
@@ -1150,7 +1150,7 @@
         }
 
         .grass05 {
-          @include imgContain("top-grass05.jpg");
+          @include imgContain("top-grass05.webp");
 
           @include pc {
             width: cl(455);
@@ -1161,7 +1161,7 @@
         }
 
         .grass06 {
-          @include imgContain("top-grass04.jpg");
+          @include imgContain("top-grass04.webp");
 
           @include pc {
             width: cl(924);

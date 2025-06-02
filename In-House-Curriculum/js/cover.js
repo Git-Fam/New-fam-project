@@ -1,27 +1,30 @@
 $(function () {
-	// ローカルストレージからselectCategoryを読み取る
-	const savedCategory = localStorage.getItem("selectCategory");
-	let selectCategory = ""; // 初期化
+	// 1️⃣ URLパラメータ取得
+	const urlParams = new URLSearchParams(window.location.search);
+	const categoryParam = urlParams.get("category");
+	let selectCategory = "";
 
-	if (savedCategory) {
+	// 2️⃣ ローカルストレージから読み取り（ただしURLパラメータが優先）
+	const savedCategory = localStorage.getItem("selectCategory");
+	if (categoryParam) {
+		selectCategory = categoryParam;
+	} else if (savedCategory) {
 		selectCategory = savedCategory;
 		localStorage.removeItem("selectCategory");
 	}
 
-	// 詳細ページのパンくずリストから戻ってくる
+	// 3️⃣ カテゴリー表示の切り替え
 	if (selectCategory) {
 		$(".archive--contents--items--wap").each(function () {
-			// 現在の要素のクラスからカテゴリー名を取得
 			const classes = $(this).attr("class").split(" ");
 			if (classes.includes(selectCategory)) {
+				$(".archive--contents--items--wap").removeClass("active");
 				$(this).addClass("active");
-			} else {
-				$(this).removeClass("active");
 			}
 		});
 	}
 
-	// ページロード時にローカルストレージの初期化（初回のみ）
+	// 4️⃣ ローカルストレージの初期化（フォームの値を保存）
 	if (!localStorage.getItem("initialized")) {
 		$("form")
 			.serializeArray()
@@ -30,20 +33,18 @@ $(function () {
 			});
 		localStorage.setItem("initialized", true);
 	} else {
-		// すでに初期化されている場合、デバッグ用に現在の状態を確認
-		$("form").serializeArray();
+		$("form").serializeArray(); // 確認用
 	}
 
-	// 更新ボタンがクリックされたとき
+	// 5️⃣ 更新ボタンがクリックされたとき
 	$('input[type="submit"][value="更新"]').on("click", function (event) {
 		event.preventDefault(); // フォーム送信を一時停止
 
 		const formData = $("form").serializeArray();
-		console.log("Form Data:", formData); // デバッグ用: フォームデータを確認
+		console.log("Form Data:", formData);
 
-		// カスタムフィールドの値を比較して変更があった項目を取得
 		const updatedFields = formData.filter((field) => {
-			const originalValue = localStorage.getItem(field.name); // 保存された値と比較
+			const originalValue = localStorage.getItem(field.name);
 			console.log(
 				"Comparing:",
 				field.name,
@@ -51,44 +52,44 @@ $(function () {
 				originalValue,
 				"New:",
 				field.value
-			); // デバッグ用
-			return originalValue !== field.value; // 値が変わった場合
+			);
+			return originalValue !== field.value;
 		});
 
 		if (updatedFields.length > 0) {
-			// 最後に変更されたフィールド名を取得
 			const lastUpdatedField = updatedFields[updatedFields.length - 1].name;
-			console.log("Last Updated Field:", lastUpdatedField); // デバッグ用
 
-			// カテゴリーマッピングをサーバーで取得するリクエスト
 			$.ajax({
-				url: "/wp-json/custom-endpoint/get-category", // カスタムエンドポイント
+				url: "/wp-json/custom-endpoint/get-category",
 				method: "POST",
 				data: {
 					field: lastUpdatedField,
 				},
 				success: function (response) {
 					if (response && response.category) {
-						const mappedCategory = response.category; // サーバーからのカテゴリー名
-						console.log("Mapped Category:", mappedCategory); // デバッグ用
+						const mappedCategory = response.category;
 
-						// ローカルストレージに変更されたカテゴリー名を保存
-						localStorage.setItem("lastUpdatedCategory", mappedCategory);
+						localStorage.setItem("selectCategory", mappedCategory);
 
-						// ページリダイレクトを設定
 						window.location.href =
 							"/curriculum?category=" + encodeURIComponent(mappedCategory);
-					} else {
-						console.error("Category not found for field:", lastUpdatedField);
 					}
-				},
-				error: function (xhr, status, error) {
-					console.error("Error fetching category:", error);
 				},
 			});
 		} else {
-			console.log("No fields updated"); // デバッグ用
-			$(this).closest("form").submit(); // 通常のフォーム送信
+			$(this).closest("form").submit();
 		}
+	});
+
+	$(function () {
+		// カテゴリータブクリック時の処理
+		$(".archive--item").on("click", function () {
+			const categoryName = $(this).find(".TX").text().trim();
+
+			// カテゴリー名をパラメータに付与してリロード
+			const currentUrl = new URL(window.location.href);
+			currentUrl.searchParams.set("category", categoryName);
+			window.location.href = currentUrl.toString();
+		});
 	});
 });

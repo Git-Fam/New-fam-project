@@ -11,7 +11,7 @@
   @include height;
 
   .cover {
-    @include imgCover("cover-bg.png");
+    @include imgCover("cover-bg.webp");
     z-index: 1;
 
     @include pc {
@@ -59,7 +59,7 @@
       }
 
       .btn {
-        @include imgContain("butterfly03.png");
+        @include imgContain("butterfly03.webp");
         position: absolute;
 
         @include pc {
@@ -239,7 +239,7 @@
         }
 
         .koinu {
-          @include imgContain("koinu.png");
+          @include imgContain("koinu.webp");
           transition: all 1s;
 
           @include pc {
@@ -299,7 +299,7 @@
         }
 
         .goat {
-          @include imgContain("goat.png");
+          @include imgContain("goat.webp");
           transition: all 1s;
 
           @include pc {
@@ -352,7 +352,7 @@
     }
 
     .tree {
-      @include imgCover("top-tree05.jpg");
+      @include imgCover("top-tree05.webp");
       position: absolute;
       pointer-events: none;
 
@@ -390,7 +390,7 @@
       }
     }
     .tree01-02{
-      @include imgContain("top-tree01-02.png");
+      @include imgContain("top-tree01-02.webp");
       position: absolute;
       pointer-events: none;
       @include pc{
@@ -405,7 +405,7 @@
 
 
     .tree03 {
-      @include imgContain("cover-tree.png");
+      @include imgContain("cover-tree.webp");
       position: absolute;
 
       @include pc {
@@ -551,7 +551,7 @@
         }
 
         .shironeko {
-          @include imgContain("shironeko.png");
+          @include imgContain("shironeko.webp");
 
           @include pc {
             width: pmi(257);
@@ -565,7 +565,7 @@
         }
 
         .shadow {
-          @include imgContain("shironeko-shadow.png");
+          @include imgContain("shironeko-shadow.webp");
 
           @include pc {
             width: pmi(193);
@@ -602,7 +602,7 @@
       }
 
       .back {
-        @include imgContain("back-balloon.png");
+        @include imgContain("back-balloon.webp");
 
         @include pc {
           width: pmi(569);
@@ -673,7 +673,7 @@
     }
 
     &.next {
-      @include imgContain("next.png");
+      @include imgContain("next.webp");
 
       @include pc {
         bottom: p(-40);
@@ -689,7 +689,7 @@
     }
 
     &.prev {
-      @include imgContain("back.png");
+      @include imgContain("back.webp");
 
       @include pc {
         bottom: -51px;
@@ -725,7 +725,7 @@
     position: absolute;
 
     &.grass01 {
-      @include imgContain("cover-grass01.png");
+      @include imgContain("cover-grass01.webp");
 
       @include pc {
         width: pmi(389);
@@ -743,7 +743,7 @@
     }
 
     &.grass02 {
-      @include imgContain("cover-grass02.png");
+      @include imgContain("cover-grass02.webp");
       pointer-events: none;
       z-index: 30;
 

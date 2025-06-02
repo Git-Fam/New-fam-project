@@ -33,7 +33,7 @@ get_header();
         <div class="single--wap--content">
             <div class="single--wap--content--title">
                 <div class="single--wap--content--title--img">
-                    <img class="img" src="<?php echo has_post_thumbnail() ? get_the_post_thumbnail_url() : get_template_directory_uri() . '/img/no-img.png'; ?>" alt="">
+                    <img class="img" src="<?php echo has_post_thumbnail() ? get_the_post_thumbnail_url() : get_template_directory_uri() . '/img/no-img.webp'; ?>" alt="">
                 </div>
                 <div class="single--wap--content--title--title">
                     <p class="TL"><?php the_title(); ?></p>

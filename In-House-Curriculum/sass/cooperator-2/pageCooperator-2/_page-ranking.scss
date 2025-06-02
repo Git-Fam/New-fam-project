@@ -9,7 +9,7 @@
 .ranking {
   position: relative;
   @include height;
-  @include imgCover("ranking-bg.png");
+  @include imgCover("ranking-bg.webp");
 
   @include pc {
     min-height: p(700);
@@ -26,7 +26,7 @@
     height: 100%;
 
     &-left {
-      @include imgContain("ranking-bg-left.png");
+      @include imgContain("ranking-bg-left.webp");
       position: absolute;
       top: 0;
       left: 0;
@@ -46,7 +46,7 @@
     }
 
     &-right {
-      @include imgCover("ranking-bg-right.png");
+      @include imgCover("ranking-bg-right.webp");
       position: absolute;
       top: 0;
       right: 0;
@@ -64,7 +64,7 @@
     }
 
     .stump-back {
-      @include imgContain("stump-back.png");
+      @include imgContain("stump-back.webp");
       position: absolute;
 
       @include pc {
@@ -110,7 +110,7 @@
       }
 
       .stump {
-        @include imgContain("stump.png");
+        @include imgContain("stump.webp");
 
         @include pc {
           width: p(340);
@@ -128,7 +128,7 @@
     }
 
     .stump-front {
-      @include imgContain("stump-front.png");
+      @include imgContain("stump-front.webp");
       position: absolute;
       z-index: 3;
 
@@ -1071,7 +1071,7 @@
         }
 
         .switch-btn {
-          @include imgContain("rank-switch-btn.png");
+          @include imgContain("rank-switch-btn.webp");
           position: absolute;
           cursor: pointer;
           opacity: 0;

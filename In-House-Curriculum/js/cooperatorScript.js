@@ -349,65 +349,76 @@ jQuery(function () {
 
 	function displayCharacters() {
 		$(".character-box").remove();
-	
+
 		if (
 			typeof allUsersProgress !== "undefined" &&
 			allUsersProgress.length > 0
 		) {
 			// 各 destination に対する表示済みカウントを保持
 			const destinationUserMap = new Map();
-	
+
 			allUsersProgress.forEach((user) => {
 				const userProgress = user.progress;
 				const username = user.username;
-	
+
 				let lastCheckpointClass = "";
 				let lastProgressValue = 0;
-	
+
 				const $activeCategory = $(".archive--contents--items--wap.active");
-	
+
 				if ($activeCategory.length) {
 					const categoryId = $activeCategory.data("category-id");
-	
-					const isOneWeekPassed = (() => {
-						const lastDateStr = lastPostProgress?.[categoryId]?.[user.user_id];
-						if (!lastDateStr || lastDateStr === false) return false;
-						const lastDate = new Date(lastDateStr);
-						const currentDate = new Date();
-						return currentDate - lastDate > 7 * 24 * 60 * 60 * 1000;
-					})();
-	
+
+					const isOneWeekPassed =
+						lastPostProgress?.[user.user_id]?.[lastCheckpointClass] === true;
+
 					if (!isOneWeekPassed) {
 						$.each(userProgress, (key, value) => {
 							const progressValue = parseInt(value) || 0;
-							if (progressValue > 0 && $activeCategory.find(`.${key}`).length > 0) {
+							if (
+								progressValue > 0 &&
+								$activeCategory.find(`.${key}`).length > 0
+							) {
 								lastCheckpointClass = key;
 								lastProgressValue = progressValue;
 							}
 						});
-	
+
+						// 目的地の要素が見つかった後、キャラクター表示処理の直前で期限切れチェック
 						if (lastCheckpointClass) {
-							const $checkpointElement = $activeCategory.find(`.${lastCheckpointClass}`);
+							const $checkpointElement = $activeCategory.find(
+								`.${lastCheckpointClass}`
+							);
 							if ($checkpointElement.length) {
 								const destinationKey = $checkpointElement.get(0);
-	
+
+								// === ここで期限切れチェック追加 ===
+								const isExpired =
+									lastPostProgress?.[user.user_id]?.[lastCheckpointClass] ===
+									true;
+
+								if (isExpired) return;
+
 								// ユーザーが自分かどうかを判定
 								const isMe = $.trim(username) === $.trim(currentUsername);
-	
+
 								// 目的地ごとの表示数を管理（自分は制限外）
 								let count = destinationUserMap.get(destinationKey) || 0;
-	
+
 								if (isMe || count < 10) {
 									const $characterBox = $("<div>")
 										.addClass("character-box")
-										.css({ position: "absolute", left: lastProgressValue + "%" });
-	
+										.css({
+											position: "absolute",
+											left: lastProgressValue + "%",
+										});
+
 									const $nameElement = $("<p>").addClass("name").text(username);
 									if (isMe) {
 										$nameElement.css("color", "red");
 										$characterBox.addClass("me");
 									}
-	
+
 									const userCharacter = wpData.allUsersCharacters.find(
 										(c) => c.username === username
 									);
@@ -417,9 +428,11 @@ jQuery(function () {
 											.html(userCharacter.character_html);
 										$characterBox.append($characterDiv);
 									}
-	
-									$characterBox.append($nameElement).appendTo($checkpointElement);
-	
+
+									$characterBox
+										.append($nameElement)
+										.appendTo($checkpointElement);
+
 									// 自分以外ならカウント
 									if (!isMe) {
 										destinationUserMap.set(destinationKey, count + 1);
@@ -432,7 +445,7 @@ jQuery(function () {
 			});
 		}
 	}
-	
+
 	// ゴールのクラスを更新する関数
 	function updateGoalClasses() {
 		if (

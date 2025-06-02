@@ -17,7 +17,7 @@
 .game-main {
   @include height;
   font-family: 'BestTenDot', sans-serif;
-  @include imgCover("game-bg.jpg");
+  @include imgCover("game-bg.webp");
   width: 100%;
   height: 100vh;
   position: relative;
@@ -259,19 +259,19 @@
 
                 &.beginner {
                   .chara {
-                    @include imgContain("beginner-icon.png");
+                    @include imgContain("beginner-icon.webp");
                   }
                 }
 
                 &.intermediate {
                   .chara {
-                    @include imgContain("intermediate-icon.png");
+                    @include imgContain("intermediate-icon.webp");
                   }
                 }
 
                 &.advanced {
                   .chara {
-                    @include imgContain("advanced-icon.png");
+                    @include imgContain("advanced-icon.webp");
                   }
                 }
 
@@ -280,7 +280,7 @@
 
                   .level-item {
                     .item-bg {
-                      @include imgCover("level-hover-bg.png");
+                      @include imgCover("level-hover-bg.webp");
                       background-size: 200%;
                       background-repeat: repeat;
                       animation: level 4s linear infinite;
@@ -369,7 +369,7 @@
                   &.beginner {
                     .item-bg {
                       .chara {
-                        @include imgContain("beginner-icon-hover.png");
+                        @include imgContain("beginner-icon-hover.webp");
                       }
                     }
 
@@ -381,7 +381,7 @@
                   &.intermediate {
                     .item-bg {
                       .chara {
-                        @include imgContain("intermediate-icon-hover.png");
+                        @include imgContain("intermediate-icon-hover.webp");
                       }
                     }
 
@@ -393,7 +393,7 @@
                   &.advanced {
                     .item-bg {
                       .chara {
-                        @include imgContain("advanced-icon-hover.png");
+                        @include imgContain("advanced-icon-hover.webp");
                       }
                     }
 
@@ -449,7 +449,7 @@
           }
 
           .img {
-            @include imgContain("beginner-icon-hover.png");
+            @include imgContain("beginner-icon-hover.webp");
             aspect-ratio: 121 / 137;
 
             @include pc {

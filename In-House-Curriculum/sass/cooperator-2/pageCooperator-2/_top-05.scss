@@ -46,7 +46,7 @@
     }
   }
   .balloon{
-    @include imgContain("balloon.jpg");
+    @include imgContain("balloon.webp");
     position: absolute;
     z-index: 10;
     left: 30%;

@@ -7,7 +7,7 @@
 .my {
   @include height;
   width: 100%;
-  @include imgCover('page-my.jpg');
+  @include imgCover('page-my.webp');
   background-position: bottom left;
   position: relative;
 
@@ -337,7 +337,7 @@
       }
 
       .bbs {
-        @include imgContain('bbs.png');
+        @include imgContain('bbs.webp');
         background-position: center bottom;
         aspect-ratio: 558/ 499;
         position: absolute;
@@ -763,7 +763,7 @@
         height: 100%;
 
         .my--content--page {
-          @include imgCover('note-paper.jpg');
+          @include imgCover('note-paper.webp');
           border: solid #048664;
           border-radius: 10px 0 0 10px;
           height: 100%;

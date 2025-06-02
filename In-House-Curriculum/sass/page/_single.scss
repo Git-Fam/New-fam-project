@@ -22,7 +22,7 @@
     z-index: -1;
     width: 100%;
     height: 100%;
-    @include imgCover('page-my.jpg');
+    @include imgCover('page-my.webp');
     background-position: center left;
   }
 
@@ -67,7 +67,7 @@
 
           .img {
             width: 100%;
-            @include imgCover('page-my.jpg');
+            @include imgCover('page-my.webp');
             margin: 0 auto;
           }
         }
