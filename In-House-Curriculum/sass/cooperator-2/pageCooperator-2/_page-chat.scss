@@ -29,13 +29,29 @@
     .TL {
       color: $F-FFFFFF;
       @include wt900;
-
+      
       @include pc {
         font-size: p(23);
       }
 
       @include sp {
         font-size: smi(20);
+      }
+      
+      a{
+        color: $F-FFFFFF;
+        @include wt900;
+        cursor: pointer;
+        text-decoration: underline;
+        line-height: 1.5;
+  
+        @include pc {
+          font-size: p(23);
+        }
+  
+        @include sp {
+          font-size: smi(20);
+        }
       }
     }
     .chat--menu-btn {

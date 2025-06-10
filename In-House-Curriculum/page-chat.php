@@ -11,7 +11,7 @@ get_header();
     <section id="pageーchat" class="page">
         <div class="chat">
             <div class="header">
-                <p class="TL">カリキュラム＞　アクションページ</p>
+                <p class="TL"><a href="<?php echo home_url('/curriculum'); ?>">カリキュラム</a>＞　アクションページ</p>
                 <div class="chat--menu-btn">
                     <?php get_template_part('inc/menu-btn'); ?>
                 </div>
