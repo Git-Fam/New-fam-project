@@ -1,33 +1,65 @@
 <?php
-function save_user_item($user_id, $key, $value) {
-    if (strpos($key, 'selected_items-character-character') === 0) {
-        $selected_character = sanitize_text_field($value);
-        update_user_meta($user_id, 'selected_character', $selected_character);
-        $existing_owned_characters = json_decode(get_user_meta($user_id, 'owned_characters', true), true) ?: [];
-        if (!in_array($selected_character, $existing_owned_characters)) {
-            $existing_owned_characters[] = $selected_character;
-        }
-        update_user_meta($user_id, 'owned_characters', json_encode($existing_owned_characters));
+
+/**
+ * アバターアイテムの保存処理を行う関数
+ * 
+ * @param int $user_id ユーザーID
+ * @param string $key 保存するキー
+ * @param string $value 保存する値
+ * @return bool 保存が成功したかどうか
+ */
+function save_user_item($user_id, $key, $value)
+{
+    if (!is_numeric($user_id) || empty($key) || empty($value)) {
+        return false;
     }
 
-    if (strpos($key, 'selected_items-item-hat') === 0) {
-        $selected_hat = sanitize_text_field($value);
-        update_user_meta($user_id, 'selected_hat', $selected_hat);
-        $existing_owned_hats = json_decode(get_user_meta($user_id, 'owned_hats', true), true) ?: [];
-        if (!in_array($selected_hat, $existing_owned_hats)) {
-            $existing_owned_hats[] = $selected_hat;
+    // アイテムタイプの定義
+    $item_types = [
+        'selected_items-character-character' => [
+            'meta_key' => 'selected_character',
+            'owned_key' => 'owned_characters'
+        ],
+        'selected_items-item-hat' => [
+            'meta_key' => 'selected_hat',
+            'owned_key' => 'owned_hats'
+        ],
+        'selected_items-item-glasses' => [
+            'meta_key' => 'selected_glasses',
+            'owned_key' => 'owned_glasses'
+        ]
+    ];
+
+    // アイテムタイプの判定
+    $item_type = null;
+    foreach ($item_types as $prefix => $config) {
+        if (strpos($key, $prefix) === 0) {
+            $item_type = $config;
+            break;
         }
-        update_user_meta($user_id, 'owned_hats', json_encode($existing_owned_hats));
     }
 
-    if (strpos($key, 'selected_items-item-glasses') === 0) {
-        $selected_glasses = sanitize_text_field($value);
-        update_user_meta($user_id, 'selected_glasses', $selected_glasses);
-        $existing_owned_glasses = json_decode(get_user_meta($user_id, 'owned_glasses', true), true) ?: [];
-        if (!in_array($selected_glasses, $existing_owned_glasses)) {
-            $existing_owned_glasses[] = $selected_glasses;
+    if (!$item_type) {
+        return false;
+    }
+
+    try {
+        // 値のサニタイズ
+        $sanitized_value = sanitize_text_field($value);
+
+        // 選択アイテムの保存
+        update_user_meta($user_id, $item_type['meta_key'], $sanitized_value);
+
+        // 所持アイテムの更新
+        $existing_owned_items = json_decode(get_user_meta($user_id, $item_type['owned_key'], true), true) ?: [];
+        if (!in_array($sanitized_value, $existing_owned_items)) {
+            $existing_owned_items[] = $sanitized_value;
+            update_user_meta($user_id, $item_type['owned_key'], json_encode($existing_owned_items));
         }
-        update_user_meta($user_id, 'owned_glasses', json_encode($existing_owned_glasses));
+
+        return true;
+    } catch (Exception $e) {
+        error_log('Avatar save error: ' . $e->getMessage());
+        return false;
     }
 }
-?>

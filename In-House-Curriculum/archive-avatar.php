@@ -6,39 +6,59 @@ if (!is_user_logged_in()) {
 }
 
 get_header();
-?>
-
-
-
-<?php
 
 // 共通の保存処理関数をインクルード
-include_once './function/cooperator/common-avatar-save.php';
-include_once './function/cooperator/avatar-id-get.php';
+include_once get_template_directory() . '/function/cooperator/common-avatar-save.php';
+include_once get_template_directory() . '/function/cooperator/avatar-id-get.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+$success = false;
+$error_message = '';
+
+// POSTリクエストの処理
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && check_admin_referer('avatar_update', 'avatar_nonce')) {
     $user_id = get_current_user_id();
+    $success = true;
 
     foreach ($_POST as $key => $value) {
-        save_user_item($user_id, $key, $value);
+        if (strpos($key, 'selected_items-') === 0) {
+            if (!save_user_item($user_id, $key, $value)) {
+                $success = false;
+                $error_message = 'アイテムの保存に失敗しました。';
+                break;
+            }
+        }
     }
 }
-
-
-
 ?>
 
-
-
-
+<?php if ($success): ?>
+    <script>
+        alert('アバターの変更を保存しました！');
+        window.location.href = '<?php echo esc_js(add_query_arg('updated', '1', wp_get_referer())); ?>';
+    </script>
+<?php endif; ?>
 
 <form action="" method="POST">
+    <?php wp_nonce_field('avatar_update', 'avatar_nonce'); ?>
+
+    <?php if (isset($_GET['updated'])): ?>
+        <div class="notice notice-success">
+            <p>アバターの変更を保存しました。</p>
+        </div>
+    <?php endif; ?>
+
+    <?php if (!empty($error_message)): ?>
+        <div class="notice notice-error">
+            <p><?php echo esc_html($error_message); ?></p>
+        </div>
+    <?php endif; ?>
+
     <div class="change-clothes">
         <!-- ディスプレイ -->
         <div class="change-clothes__display">
             <header class="display__header">
-
-                <a class="return__button hover-opa" href="<?php bloginfo('url'); ?>/my" onclick="return confirm('本当に戻りますか？変更があった場合、情報は失われます。');">
+                <a class="return__button hover-opa" href="<?php echo esc_url(home_url('/my')); ?>"
+                    onclick="return confirm('<?php echo esc_js('本当に戻りますか？変更があった場合、情報は失われます。'); ?>');">
                     <div class="icon icon-01"></div>
                 </a>
 
@@ -48,30 +68,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="possession__item">
                             <div class="icon icon-01"></div>
                             <p class="TX">
-                                <?php
-                                $user_id = get_current_user_id();
-                                $user_coins = get_user_meta($user_id, 'user_coins', true) ?: 0;
-                                echo esc_html($user_coins);
-                                ?>
+                                <?php echo esc_html(get_user_meta($user_id, 'user_coins', true) ?: 0); ?>
                             </p>
                         </div>
                         <div class="possession__item">
                             <div class="icon icon-02"></div>
                             <p class="TX">
-                                <?php
-                                $user_points = get_user_meta($user_id, 'user_point', true) ?: 0;
-                                echo esc_html($user_points);
-                                ?>
+                                <?php echo esc_html(get_user_meta($user_id, 'user_point', true) ?: 0); ?>
                             </p>
                         </div>
                     </div>
 
                     <!-- 保存ボタン -->
-                    <button class="saving__button" type="submit" disable>
+                    <button class="saving__button" type="submit" onclick="return confirm('<?php echo esc_js('変更を保存しますか？'); ?>');">
                         <p class="TX">保存する</p>
                     </button>
                 </div>
-
             </header>
 
             <!-- display-character -->
@@ -92,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <img class="item__img" src="" alt="">
                         </div>
                         <div class="item__cost">
-                            <div class="icon "></div>
+                            <div class="icon"></div>
                             <p class="TX"></p>
                         </div>
                     </div>
@@ -104,29 +116,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <script type="text/javascript">
-                var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
-                var user_id = "<?php echo get_current_user_id(); ?>";
+                var ajaxurl = "<?php echo esc_js(admin_url('admin-ajax.php')); ?>";
+                var user_id = "<?php echo esc_js(get_current_user_id()); ?>";
             </script>
 
-            <!-- キャラクターの色変更 -->
-            <!-- <div class="display__character__color none">
-                <div class="color__area">
-                    <div class="gradient__area">
-                        <canvas id="color-display" class="gradient__item"></canvas>
-                    </div>
-                    <div class="picker__area">
-                        <input id="selected-color" class="color__now" type="text" name="color" id="color"
-                            value="rgb(247, 251, 248)">
-                        <div class="color__bar__container">
-                            <canvas id="color-bar" class="color__bar"></canvas>
-                            <div id="color-bar-marker" class="color__bar__marker"></div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
             <?php display_back_button(); ?>
-
         </div>
 
         <!-- コントロール -->
