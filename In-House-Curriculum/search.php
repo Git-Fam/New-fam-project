@@ -4,7 +4,7 @@ if (!is_user_logged_in()) {
     exit;
 }
 get_header();
-?>
+?>  
 
 <div class="columns">
     <div class="columns--main">

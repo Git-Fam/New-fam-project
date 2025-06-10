@@ -70,15 +70,22 @@ if (!empty($categories) && isset($categories[0]->name)) {
                         $first_post_id = !empty($first_post) ? $first_post[0]->ID : null;
 
                         $image_file_name = $category->slug . '.webp';
+                        $image_src = get_template_directory_uri() . '/img/' . $image_file_name;
+                        $noimg_src = get_template_directory_uri() . '/img/noimg.webp';
                 ?>
-                    <div class="archive--item">
-                        <a href="<?php echo esc_url(site_url('/cover/?post_id=' . $first_post_id)); ?>" class="archive--item--link">
-                            <img class="archive--item--img" src="<?php echo get_template_directory_uri(); ?>/img/<?php echo $image_file_name ?>" alt="">
-                        </a>
-                        <div class="archive--item--title">
-                            <!-- <p class="TX"><?php echo esc_html($category->name); ?></p> -->
-                        </div>
+                <div class="archive--item">
+                    <a href="<?php echo esc_url(site_url('/cover/?post_id=' . $first_post_id)); ?>" class="archive--item--link">
+                        <img 
+                            class="archive--item--img" 
+                            src="<?php echo $image_src; ?>" 
+                            alt=""
+                            onerror="this.onerror=null;this.src='<?php echo $noimg_src; ?>';"
+                        >
+                    </a>
+                    <div class="archive--item--title">
+                        <!-- <p class="TX"><?php echo esc_html($category->name); ?></p> -->
                     </div>
+                </div>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -123,12 +130,24 @@ if (!empty($categories) && isset($categories[0]->name)) {
             <div class="shironeko-wrap">
                 <div class="shironeko pyon"></div>
                 <div class="shadow"></div>
-            </div>
+            </div>  
         </div>
 
         <div class="back-wrap">
             <div class="back"></div>
-            <a href="#" onclick="history.back()" class="TX">戻る</a>
+            <?php
+            $categories = get_the_category($queried_post->ID);
+
+            if (!empty($categories) && isset($categories[0]->name)) {
+                $category_name = $categories[0]->name;
+                $category_url = site_url('/curriculum?category=' . urlencode($category_name));
+            } else {
+                $category_url = '#';
+            }
+            ?>
+
+            <a href="<?php echo esc_url($category_url); ?>" class="TX">戻る</a>
+
         </div>
 
         <?php

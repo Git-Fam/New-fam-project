@@ -5,6 +5,15 @@ add_filter('user_contactmethods', 'add_user_info');
 function add_user_info(){
   $user_info = array();
   // divパズル
+  $user_info['ENV0'] = 'ENV0';
+  $user_info['ENV01'] = 'ENV01';
+  $user_info['ENV02'] = 'ENV02';
+  $user_info['ENV03'] = 'ENV03';
+  $user_info['VAL01'] = 'VAL01';
+  $user_info['VAL02'] = 'VAL02';
+  $user_info['VAL03'] = 'VAL03';
+  $user_info['INIT01'] = 'INIT01';
+  $user_info['INIT02'] = 'INIT02';
   $user_info['div01'] = 'Div01';
   $user_info['div02'] = 'Div02';
   $user_info['div03'] = 'Div03';
@@ -20,12 +29,8 @@ function add_user_info(){
   $user_info['JQ04'] = 'JQ04';
   $user_info['JQ05'] = 'JQ05';
   $user_info['JQ06'] = 'JQ06';
-  $user_info['JQ07'] = 'JQ07';
-  $user_info['JQ08'] = 'JQ08';
-  $user_info['JQ09'] = 'JQ09';
-  $user_info['JQ10'] = 'JQ10';
-  $user_info['JQLast'] = 'JQLast';
   // LP
+  $user_info['MiniLP01'] = 'MiniLP01';
   $user_info['LP01'] = 'LP01';
 
   // Sass
@@ -61,10 +66,12 @@ function add_user_info(){
   $user_info['React02_7'] = 'React02_7';
   $user_info['React02_8'] = 'React02_8';
   $user_info['React02_9'] = 'React02_9';
+  $user_info['React02__5'] = 'React02__5';
   $user_info['React03_1'] = 'React03_1';
   $user_info['React03_2'] = 'React03_2';
   $user_info['React03_3'] = 'React03_3';
   $user_info['React03_4'] = 'React03_4';
+  $user_info['React03_5'] = 'React03_5';
   $user_info['React03__5'] = 'React03__5';
   $user_info['React04'] = 'React04';
   $user_info['React04_1'] = 'React04_1';
@@ -92,8 +99,25 @@ function add_user_info(){
   $user_info['React10'] = 'React10';
   $user_info['React11'] = 'React11';
 
+  //TypeScript
+  $user_info['React12'] = 'React12';
+  $user_info['React13_1'] = 'React13_1';
+  $user_info['React13_2'] = 'React13_2';
+  $user_info['React13_3'] = 'React13_3';
+  $user_info['React14_1'] = 'React14_1';
+  $user_info['React14_2'] = 'React14_2';
+  $user_info['React15'] = 'React15';
+  $user_info['React15__5'] = 'React15__5';
+  $user_info['React16'] = 'React16';
+  $user_info['React17'] = 'React17';
+  $user_info['React18_1'] = 'React18_1';
+  $user_info['React18_2'] = 'React18_2';
+  $user_info['React18_3'] = 'React18_3';
+  $user_info['React18_4'] = 'React18_4';
+  $user_info['React19'] = 'React19';
 
   // Java
+  $user_info['Java0'] = 'Java0';
   $user_info['Java01'] = 'Java01';
   $user_info['Java02'] = 'Java02';
   $user_info['Java03'] = 'Java03';
@@ -128,12 +152,50 @@ function add_user_info(){
   $user_info['Java_springBoot_09'] = 'Java_springBoot_09';
   $user_info['Java_springBoot_10'] = 'Java_springBoot_10';
   $user_info['Java_springBoot_11'] = 'Java_springBoot_11';
+  $user_info['Java_springBoot_12'] = 'Java_springBoot_12';
+  $user_info['Java_springBoot_13'] = 'Java_springBoot_13';
   $user_info['Java_WebsoketSTOMP_01'] = 'Java_WebsoketSTOMP_01';
   $user_info['Java_WebsoketSTOMP_02'] = 'Java_WebsoketSTOMP_02';
   $user_info['Java_WebsoketSTOMP_03'] = 'Java_WebsoketSTOMP_03';
   $user_info['Java_WebsoketSTOMP_04'] = 'Java_WebsoketSTOMP_04';
   $user_info['Java_WebsoketSTOMP_05'] = 'Java_WebsoketSTOMP_05';
   $user_info['Java_WebsoketSTOMP_06'] = 'Java_WebsoketSTOMP_06';
+
+  //SQL
+  $user_info['SQL01'] = 'SQL01';
+  $user_info['SQL02'] = 'SQL02';
+  $user_info['SQL03'] = 'SQL03';
+  $user_info['SQL04'] = 'SQL04';
+  $user_info['SQL_ex01'] = 'SQL_ex01';
+  $user_info['SQL05'] = 'SQL05';
+  $user_info['SQL06'] = 'SQL06';
+  $user_info['SQL07'] = 'SQL07';
+  $user_info['SQL_ex02'] = 'SQL_ex02';
+  $user_info['SQL08_1'] = 'SQL08_1';
+  $user_info['SQL08_2'] = 'SQL08_2';
+  $user_info['SQL09_1'] = 'SQL09_1';
+  $user_info['SQL09_2'] = 'SQL09_2';
+  $user_info['SQL09_3'] = 'SQL09_3';
+  $user_info['SQL09_4'] = 'SQL09_4';
+  $user_info['SQL_ex03'] = 'SQL_ex03';
+  $user_info['SQL10_1'] = 'SQL10_1';
+  $user_info['SQL10_2'] = 'SQL10_2';
+  $user_info['SQL10_3'] = 'SQL10_3';
+  $user_info['SQL11_1'] = 'SQL11_1';
+  $user_info['SQL11_2'] = 'SQL11_2';
+  $user_info['SQL11_3'] = 'SQL11_3';
+  $user_info['SQL12'] = 'SQL12';
+  $user_info['SQL_ex04'] = 'SQL_ex04';
+  $user_info['SQL13_1'] = 'SQL13_1';
+  $user_info['SQL13_2'] = 'SQL13_2';
+  $user_info['SQL14_1'] = 'SQL14_1';
+  $user_info['SQL14_2'] = 'SQL14_2';
+  $user_info['SQL15'] = 'SQL15';
+  $user_info['SQL_ex05'] = 'SQL_ex05';
+  $user_info['SQL16'] = 'SQL16';
+  $user_info['SQL_last'] = 'SQL_last';
+            
+
 
 
   // Design
@@ -168,6 +230,21 @@ function add_user_info(){
   $user_info['Design09'] = 'Design09';
   $user_info['Design09_2'] = 'Design09_2';
   $user_info['Design09_3'] = 'Design09_3';
+
+  //設計書
+  $user_info['Spec01'] = 'Spec01';
+
+  //WordPress
+  $user_info['wordpress01'] = 'wordpress01';
+  $user_info['wordpress02'] = 'wordpress02';
+  $user_info['wordpress03'] = 'wordpress03';
+  $user_info['wordpress04'] = 'wordpress04';
+  $user_info['wordpress05'] = 'wordpress05';
+  $user_info['wordpress06'] = 'wordpress06';
+  $user_info['wordpress07'] = 'wordpress07';
+  $user_info['wordpress08'] = 'wordpress08';
+  $user_info['wordpress09'] = 'wordpress09';
+  $user_info['wordpress10'] = 'wordpress10';
 
   return $user_info;
 }

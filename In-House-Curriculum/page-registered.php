@@ -2,7 +2,15 @@
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  // div
+  $ENV0 = $_POST['ENV0'];
+  $ENV01 = $_POST['ENV01'];
+  $ENV02 = $_POST['ENV02'];
+  $ENV03 = $_POST['ENV03'];
+  $VAL01 = $_POST['VAL01'];
+  $VAL02 = $_POST['VAL02'];
+  $VAL03 = $_POST['VAL03'];
+  $INIT01 = $_POST['INIT01'];
+  $INIT02 = $_POST['INIT02'];
   $div01 = $_POST['div01'];
   $div02 = $_POST['div02'];
   $div03 = $_POST['div03'];
@@ -19,13 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $JQ04 = $_POST['JQ04'];
   $JQ05 = $_POST['JQ05'];
   $JQ06 = $_POST['JQ06'];
-  $JQ07 = $_POST['JQ07'];
-  $JQ08 = $_POST['JQ08'];
-  $JQ09 = $_POST['JQ09'];
-  $JQ10 = $_POST['JQ10'];
-  $JQLast = $_POST['JQLast'];
 
   // LP
+  $MiniLP = $_POST['MiniLP'];
   $LP01 = $_POST['LP01'];
 
   // Sass
@@ -67,10 +71,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $React02_7 = $_POST['React02_7'];
   $React02_8 = $_POST['React02_8'];
   $React02_9 = $_POST['React02_9'];
+  $React02__5 = $_POST['React02__5'];
   $React03_1 = $_POST['React03_1'];
   $React03_2 = $_POST['React03_2'];
   $React03_3 = $_POST['React03_3'];
   $React03_4 = $_POST['React03_4'];
+  $React03_5 = $_POST['React03_5'];
   $React03__5 = $_POST['React03__5'];
   $React04 = $_POST['React04'];
   $React04_1 = $_POST['React04_1'];
@@ -98,8 +104,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $React10 = $_POST['React10'];
   $React11 = $_POST['React11'];
 
+  //TypeScript
+  $React12 = $_POST['React12'];
+  $React13_1 = $_POST['React13_1'];
+  $React13_2 = $_POST['React13_2'];
+  $React13_3 = $_POST['React13_3'];
+  $React14_1 = $_POST['React14_1'];
+  $React14_2 = $_POST['React14_2'];
+  $React15 = $_POST['React15'];
+  $React15__5 = $_POST['React15__5'];
+  $React16 = $_POST['React16'];
+  $React17 = $_POST['React17'];
+  $React18_1 = $_POST['React18_1'];
+  $React18_2 = $_POST['React18_2'];
+  $React18_3 = $_POST['React18_3'];
+  $React18_4 = $_POST['React18_4'];
+  $React19 = $_POST['React19'];
+
+
+
 
   // Java
+  $Java0 = $_POST['Java0'];
   $Java01 = $_POST['Java01'];
   $Java02 = $_POST['Java02'];
   $Java03 = $_POST['Java03'];
@@ -134,12 +160,67 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $Java_springBoot_09 = $_POST['Java_springBoot_09'];
   $Java_springBoot_10 = $_POST['Java_springBoot_10'];
   $Java_springBoot_11 = $_POST['Java_springBoot_11'];
+  $Java_springBoot_12 = $_POST['Java_springBoot_12'];
+  $Java_springBoot_13 = $_POST['Java_springBoot_13'];
   $Java_WebsoketSTOMP_01 = $_POST['Java_WebsoketSTOMP_01'];
   $Java_WebsoketSTOMP_02 = $_POST['Java_WebsoketSTOMP_02'];
   $Java_WebsoketSTOMP_03 = $_POST['Java_WebsoketSTOMP_03'];
   $Java_WebsoketSTOMP_04 = $_POST['Java_WebsoketSTOMP_04'];
   $Java_WebsoketSTOMP_05 = $_POST['Java_WebsoketSTOMP_05'];
   $Java_WebsoketSTOMP_06 = $_POST['Java_WebsoketSTOMP_06'];
+  $Java_SpringBatch_01 = $_POST['Java_SpringBatch_01'];
+  $Java_SpringBatch_02 = $_POST['Java_SpringBatch_02'];
+  $Java_SpringBatch_03 = $_POST['Java_SpringBatch_03'];
+  $Java_SpringBatch_04 = $_POST['Java_SpringBatch_04'];
+  $Java_SpringBatch_05 = $_POST['Java_SpringBatch_05'];
+  $Java_Test_01 = $_POST['Java_Test_01'];
+  $Java_Test_02 = $_POST['Java_Test_02'];
+  $Java_Test_03 = $_POST['Java_Test_03'];
+  $Java_Test_04 = $_POST['Java_Test_04'];
+  $Java_Test_05 = $_POST['Java_Test_05'];
+  $Java_Test_06 = $_POST['Java_Test_06'];
+  $Java_Test_07 = $_POST['Java_Test_07'];
+  $Java_Test_08 = $_POST['Java_Test_08'];
+  $Java_Test_09 = $_POST['Java_Test_09'];
+  $Java_Test_10 = $_POST['Java_Test_10'];
+  $Java_Test_11 = $_POST['Java_Test_11'];
+  $Java_Test_12 = $_POST['Java_Test_12'];
+
+  //SQL
+  $SQL01 = $_POST['SQL01'];
+  $SQL02 = $_POST['SQL02'];
+  $SQL03 = $_POST['SQL03'];
+  $SQL04 = $_POST['SQL04'];
+  $SQL_ex01 = $_POST['SQL_ex01'];
+  $SQL05 = $_POST['SQL05'];
+  $SQL06 = $_POST['SQL06'];
+  $SQL07 = $_POST['SQL07'];
+  $SQL_ex02 = $_POST['SQL_ex02'];
+  $SQL08_1 = $_POST['SQL08_1'];
+  $SQL08_2 = $_POST['SQL08_2'];
+  $SQL09_1 = $_POST['SQL09_1'];
+  $SQL09_2 = $_POST['SQL09_2'];
+  $SQL09_3 = $_POST['SQL09_3'];
+  $SQL09_4 = $_POST['SQL09_4'];
+  $SQL_ex03 = $_POST['SQL_ex03'];
+  $SQL10_1 = $_POST['SQL10_1'];
+  $SQL10_2 = $_POST['SQL10_2'];
+  $SQL10_3 = $_POST['SQL10_3'];
+  $SQL11_1 = $_POST['SQL11_1'];
+  $SQL11_2 = $_POST['SQL11_2'];
+  $SQL11_3 = $_POST['SQL11_3'];
+  $SQL12 = $_POST['SQL12'];
+  $SQL_ex04 = $_POST['SQL_ex04'];
+  $SQL13_1 = $_POST['SQL13_1'];
+  $SQL13_2 = $_POST['SQL13_2'];
+  $SQL14_1 = $_POST['SQL14_1'];
+  $SQL14_2 = $_POST['SQL14_2'];
+  $SQL15 = $_POST['SQL15'];
+  $SQL_ex05 = $_POST['SQL_ex05'];
+  $SQL16 = $_POST['SQL16'];
+  $SQL_last = $_POST['SQL_last'];
+
+
 
   // Design
   $Design01 = $_POST['Design01'];
@@ -173,9 +254,62 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $Design09 = $_POST['Design09'];
   $Design09_2 = $_POST['Design09_2'];
   $Design09_3 = $_POST['Design09_3'];
-  
+
+  //設計書
+  $Spec01 = $_POST['Spec01'];
+
+  //WordPress
+  $wordpress01 = $_POST['wordpress01'];
+  $wordpress02 = $_POST['wordpress02'];
+  $wordpress03 = $_POST['wordpress03'];
+  $wordpress04 = $_POST['wordpress04'];
+  $wordpress05 = $_POST['wordpress05'];
+  $wordpress06 = $_POST['wordpress06'];
+  $wordpress07 = $_POST['wordpress07'];
+  $wordpress08 = $_POST['wordpress08'];
+  $wordpress09 = $_POST['wordpress09'];
+  $wordpress10 = $_POST['wordpress10'];
+
+  //JSTQB
+  $jstqb0 = $_POST['jstqb0'];
+  $jstqb01_1 = $_POST['jstqb01_1'];
+  $jstqb01_2 = $_POST['jstqb01_2'];
+  $jstqb01_3 = $_POST['jstqb01_3'];
+  $jstqb01_4 = $_POST['jstqb01_4'];
+  $jstqb01_5 = $_POST['jstqb01_5'];
+  $jstqb02_1 = $_POST['jstqb02_1'];
+  $jstqb02_2 = $_POST['jstqb02_2'];
+  $jstqb02_3 = $_POST['jstqb02_3'];
+  $jstqb03_1 = $_POST['jstqb03_1'];
+  $jstqb03_2 = $_POST['jstqb03_2'];
+  $jstqb04_1 = $_POST['jstqb04_1'];
+  $jstqb04_2 = $_POST['jstqb04_2'];
+  $jstqb04_3 = $_POST['jstqb04_3'];
+  $jstqb04_4 = $_POST['jstqb04_4'];
+  $jstqb04_5 = $_POST['jstqb04_5'];
+  $jstqb05_1 = $_POST['jstqb05_1'];
+  $jstqb05_2 = $_POST['jstqb05_2'];
+  $jstqb05_3 = $_POST['jstqb05_3'];
+  $jstqb05_4 = $_POST['jstqb05_4'];
+  $jstqb05_5 = $_POST['jstqb05_5'];
+  $jstqb06_1 = $_POST['jstqb06_1'];
+  $jstqb06_2 = $_POST['jstqb06_2'];
 
 
+
+
+
+// ★ここで保存前の値を取得
+$user_id = get_current_user_id();
+$user_meta = get_user_meta($user_id);
+
+$last_updated_key = null;
+foreach ($_POST as $key => $val) {
+    $old_val = isset($user_meta[$key][0]) ? $user_meta[$key][0] : null;
+    if ($old_val !== $val) {
+        $last_updated_key = $key;
+    }
+}
 
 
 
@@ -185,6 +319,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $userdata = array(
     'ID' => $user_id,
     // div
+    'ENV0' => $ENV0,
+    'ENV01' => $ENV01,
+    'ENV02' => $ENV02,
+    'ENV03' => $ENV03,
+    'VAL01' => $VAL01,
+    'VAL02' => $VAL02,
+    'VAL03' => $VAL03,
+    'INIT01' => $INIT01,
+    'INIT02' => $INIT02,
     'div01' => $div01,
     'div02' => $div02,
     'div03' => $div03,
@@ -240,10 +383,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     'React02_7' => $React02_7,
     'React02_8' => $React02_8,
     'React02_9' => $React02_9,
+    'React02__5' => $React02__5,
     'React03_1' => $React03_1,
     'React03_2' => $React03_2,
     'React03_3' => $React03_3,
     'React03_4' => $React03_4,
+    'React03_5' => $React03_5,
     'React03__5' => $React03__5,
     'React04' => $React04,
     'React04_1' => $React04_1,
@@ -270,7 +415,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     'React10' => $React10,
     'React11' => $React11,
 
+    //Typescript
+    'React12' => $React12,
+    'React13_1' => $React13_1,
+    'React13_2' => $React13_2,
+    'React13_3' => $React13_3,
+    'React14_1' => $React14_1,
+    'React14_2' => $React14_2,
+    'React15' => $React15,
+    'React15__5' => $React15__5,
+    'React16' => $React16,
+    'React17' => $React17,
+    'React18_1' => $React18_1,
+    'React18_2' => $React18_2,
+    'React18_3' => $React18_3,
+    'React18_4' => $React18_4,
+    'React19' => $React19,
+    
     // Java
+    'Java0' => $Java0,
     'Java01' => $Java01,
     'Java02' => $Java02,
     'Java03' => $Java03,
@@ -305,12 +468,68 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     'Java_springBoot_09' => $Java_springBoot_09,
     'Java_springBoot_10' => $Java_springBoot_10,
     'Java_springBoot_11' => $Java_springBoot_11,
+    'Java_springBoot_12' => $Java_springBoot_12,
+    'Java_springBoot_13' => $Java_springBoot_13,
     'Java_WebsoketSTOMP_01' => $Java_WebsoketSTOMP_01,
     'Java_WebsoketSTOMP_02' => $Java_WebsoketSTOMP_02,
     'Java_WebsoketSTOMP_03' => $Java_WebsoketSTOMP_03,
     'Java_WebsoketSTOMP_04' => $Java_WebsoketSTOMP_04,
     'Java_WebsoketSTOMP_05' => $Java_WebsoketSTOMP_05,
     'Java_WebsoketSTOMP_06' => $Java_WebsoketSTOMP_06,
+    'Java_SpringBatch_01' => $Java_SpringBatch_01,
+    'Java_SpringBatch_02' => $Java_SpringBatch_02,
+    'Java_SpringBatch_03' => $Java_SpringBatch_03,
+    'Java_SpringBatch_04' => $Java_SpringBatch_04,
+    'Java_SpringBatch_05' => $Java_SpringBatch_05,
+    'Java_Test_01' => $Java_Test_01,
+    'Java_Test_02' => $Java_Test_02,
+    'Java_Test_03' => $Java_Test_03,
+    'Java_Test_04' => $Java_Test_04,
+    'Java_Test_05' => $Java_Test_05,
+    'Java_Test_06' => $Java_Test_06,
+    'Java_Test_07' => $Java_Test_07,
+    'Java_Test_08' => $Java_Test_08,
+    'Java_Test_09' => $Java_Test_09,
+    'Java_Test_10' => $Java_Test_10,
+    'Java_Test_11' => $Java_Test_11,
+    'Java_Test_12' => $Java_Test_12,
+
+    //SQL
+    'SQL01' => $SQL01,
+    'SQL02' => $SQL02,
+    'SQL03' => $SQL03,
+    'SQL04' => $SQL04,
+    'SQL_ex01' => $SQL_ex01,
+    'SQL05' => $SQL05,
+    'SQL06' => $SQL06,
+    'SQL07' => $SQL07,
+    'SQL_ex02' => $SQL_ex02,
+    'SQL08_1' => $SQL08_1,
+    'SQL08_2' => $SQL08_2,
+    'SQL09_1' => $SQL09_1,
+    'SQL09_2' => $SQL09_2,
+    'SQL09_3' => $SQL09_3,
+    'SQL09_4' => $SQL09_4,
+    'SQL_ex03' => $SQL_ex03,
+    'SQL10_1' => $SQL10_1,
+    'SQL10_2' => $SQL10_2,
+    'SQL10_3' => $SQL10_3,
+    'SQL11_1' => $SQL11_1,
+    'SQL11_2' => $SQL11_2,
+    'SQL11_3' => $SQL11_3,
+    'SQL12' => $SQL12,
+    'SQL_ex04' => $SQL_ex04,
+    'SQL13_1' => $SQL13_1,
+    'SQL13_2' => $SQL13_2,
+    'SQL14_1' => $SQL14_1,
+    'SQL14_2' => $SQL14_2,
+    'SQL15' => $SQL15,
+    'SQL_ex05' => $SQL_ex05,
+    'SQL16' => $SQL16,
+    'SQL_last' => $SQL_last,
+
+
+
 
     // Design
     'Design01' => $Design01,
@@ -345,10 +564,58 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     'Design09_2' => $Design09_2,
     'Design09_3' => $Design09_3,
 
+    //設計書
+    'Spec01' => $Spec01,
+
+    //WordPress
+    'wordpress01' => $wordpress01,
+    'wordpress02' => $wordpress02,
+    'wordpress03' => $wordpress03,
+    'wordpress04' => $wordpress04,
+    'wordpress05' => $wordpress05,
+    'wordpress06' => $wordpress06,
+    'wordpress07' => $wordpress07,
+    'wordpress08' => $wordpress08,
+    'wordpress09' => $wordpress09,
+    'wordpress10' => $wordpress10,
+
+    //JSTQB
+    'jstqb0' => $jstqb0,
+    'jstqb01_1' => $jstqb01_1,
+    'jstqb01_2' => $jstqb01_2,
+    'jstqb01_3' => $jstqb01_3,
+    'jstqb01_4' => $jstqb01_4,
+    'jstqb01_5' => $jstqb01_5,
+    'jstqb02_1' => $jstqb02_1,
+    'jstqb02_2' => $jstqb02_2,
+    'jstqb02_3' => $jstqb02_3,
+    'jstqb03_1' => $jstqb03_1,
+    'jstqb03_2' => $jstqb03_2,
+    'jstqb04_1' => $jstqb04_1,
+    'jstqb04_2' => $jstqb04_2,
+    'jstqb04_3' => $jstqb04_3,
+    'jstqb04_4' => $jstqb04_4,
+    'jstqb04_5' => $jstqb04_5,
+    'jstqb05_1' => $jstqb05_1,
+    'jstqb05_2' => $jstqb05_2,
+    'jstqb05_3' => $jstqb05_3,
+    'jstqb05_4' => $jstqb05_4,
+    'jstqb05_5' => $jstqb05_5,
+    'jstqb06_1' => $jstqb06_1,
+    'jstqb06_2' => $jstqb06_2,
+  
 
   );
 
   wp_update_user($userdata);
+
+
+
+  if ($last_updated_key) {
+    update_user_meta($user_id, 'last_progress_key', $last_updated_key);
+}
+
+
 
   //   wp_redirect(bloginfo('url') . '/my');
   // wp_redirect(bloginfo('url') . '/test-hp-2/my');

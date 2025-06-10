@@ -5,6 +5,15 @@ $user_id = get_current_user_id();
 
 // ユーザーのメタデータの値を取得。デフォルト値は0。
 // Div
+$ENV0_value = get_user_meta($user_id, 'ENV0', true) ?: '0';
+$ENV01_value = get_user_meta($user_id, 'ENV01', true) ?: '0';
+$ENV02_value = get_user_meta($user_id, 'ENV02', true) ?: '0';
+$ENV03_value = get_user_meta($user_id, 'ENV03', true) ?: '0';
+$VAL01_value = get_user_meta($user_id, 'VAL01', true) ?: '0';
+$VAL02_value = get_user_meta($user_id, 'VAL02', true) ?: '0';
+$VAL03_value = get_user_meta($user_id, 'VAL03', true) ?: '0';
+$INIT01_value = get_user_meta($user_id, 'INIT01', true) ?: '0';
+$INIT02_value = get_user_meta($user_id, 'INIT02', true) ?: '0';
 $div01_value = get_user_meta($user_id, 'div01', true) ?: '0';
 $div02_value = get_user_meta($user_id, 'div02', true) ?: '0';
 $div03_value = get_user_meta($user_id, 'div03', true) ?: '0';
@@ -21,13 +30,9 @@ $JQ03_value = get_user_meta($user_id, 'JQ03', true) ?: '0';
 $JQ04_value = get_user_meta($user_id, 'JQ04', true) ?: '0';
 $JQ05_value = get_user_meta($user_id, 'JQ05', true) ?: '0';
 $JQ06_value = get_user_meta($user_id, 'JQ06', true) ?: '0';
-$JQ07_value = get_user_meta($user_id, 'JQ07', true) ?: '0';
-$JQ08_value = get_user_meta($user_id, 'JQ08', true) ?: '0';
-$JQ09_value = get_user_meta($user_id, 'JQ09', true) ?: '0';
-$JQ10_value = get_user_meta($user_id, 'JQ10', true) ?: '0';
-$JQLast_value = get_user_meta($user_id, 'JQLast', true) ?: '0';
 
 // LP
+$MiniLP_value = get_user_meta($user_id, 'MiniLP', true) ?: '0';
 $LP01_value = get_user_meta($user_id, 'LP01', true) ?: '0';
 
 
@@ -50,11 +55,6 @@ $test01_value = get_user_meta($user_id, 'test01', true) ?: '0';
 // JS
 $JS01_value = get_user_meta($user_id, 'JS01', true) ?: '0';
 
-// WP
-$WP01_value = get_user_meta($user_id, 'WP01', true) ?: '0';
-$WP02_value = get_user_meta($user_id, 'WP02', true) ?: '0';
-$WP03_value = get_user_meta($user_id, 'WP03', true) ?: '0';
-
 // SEO
 $SEO01_value = get_user_meta($user_id, 'SEO01', true) ?: '0';
 
@@ -70,10 +70,12 @@ $React02_6_value = get_user_meta($user_id, 'React02_6', true) ?: '0';
 $React02_7_value = get_user_meta($user_id, 'React02_7', true) ?: '0';
 $React02_8_value = get_user_meta($user_id, 'React02_8', true) ?: '0';
 $React02_9_value = get_user_meta($user_id, 'React02_9', true) ?: '0';
+$React02__5_value = get_user_meta($user_id, 'React02__5', true) ?: '0';
 $React03_1_value = get_user_meta($user_id, 'React03_1', true) ?: '0';
 $React03_2_value = get_user_meta($user_id, 'React03_2', true) ?: '0';
 $React03_3_value = get_user_meta($user_id, 'React03_3', true) ?: '0';
 $React03_4_value = get_user_meta($user_id, 'React03_4', true) ?: '0';
+$React03_5_value = get_user_meta($user_id, 'React03_5', true) ?: '0';
 $React03__5_value = get_user_meta($user_id, 'React03__5', true) ?: '0';
 $React04_value = get_user_meta($user_id, 'React04', true) ?: '0';
 $React04_1_value = get_user_meta($user_id, 'React04_1', true) ?: '0';
@@ -101,7 +103,26 @@ $React09_6_value = get_user_meta($user_id, 'React09_6', true) ?: '0';
 $React10_value = get_user_meta($user_id, 'React10', true) ?: '0';
 $React11_value = get_user_meta($user_id, 'React11', true) ?: '0';
 
+//TypeScript
+$React12_value = get_user_meta($user_id, 'React12', true) ?: '0';
+$React13_1_value = get_user_meta($user_id, 'React13_1', true) ?: '0';
+$React13_2_value = get_user_meta($user_id, 'React13_2', true) ?: '0';
+$React13_3_value = get_user_meta($user_id, 'React13_3', true) ?: '0';
+$React14_1_value = get_user_meta($user_id, 'React14_1', true) ?: '0';
+$React14_2_value = get_user_meta($user_id, 'React14_2', true) ?: '0';
+$React15_value = get_user_meta($user_id, 'React15', true) ?: '0';
+$React15__5_value = get_user_meta($user_id, 'React15__5', true) ?: '0';
+$React16_value = get_user_meta($user_id, 'React16', true) ?: '0';
+$React17_value = get_user_meta($user_id, 'React17', true) ?: '0';
+$React18_1_value = get_user_meta($user_id, 'React18_1', true) ?: '0';
+$React18_2_value = get_user_meta($user_id, 'React18_2', true) ?: '0';
+$React18_3_value = get_user_meta($user_id, 'React18_3', true) ?: '0';
+$React18_4_value = get_user_meta($user_id, 'React18_4', true) ?: '0';
+$React19_value = get_user_meta($user_id, 'React19', true) ?: '0';
+
+
 // Java
+$Java0_value = get_user_meta($user_id, 'Java0', true) ?: '0';
 $Java01_value = get_user_meta($user_id, 'Java01', true) ?: '0';
 $Java02_value = get_user_meta($user_id, 'Java02', true) ?: '0';
 $Java03_value = get_user_meta($user_id, 'Java03', true) ?: '0';
@@ -136,12 +157,66 @@ $Java_springBoot_08_value = get_user_meta($user_id, 'Java_springBoot_08', true) 
 $Java_springBoot_09_value = get_user_meta($user_id, 'Java_springBoot_09', true) ?: '0';
 $Java_springBoot_10_value = get_user_meta($user_id, 'Java_springBoot_10', true) ?: '0';
 $Java_springBoot_11_value = get_user_meta($user_id, 'Java_springBoot_11', true) ?: '0';
+$Java_springBoot_12_value = get_user_meta($user_id, 'Java_springBoot_12', true) ?: '0';
+$Java_springBoot_13_value = get_user_meta($user_id, 'Java_springBoot_13', true) ?: '0';
 $Java_WebsoketSTOMP_01_value = get_user_meta($user_id, 'Java_WebsoketSTOMP_01', true) ?: '0';
 $Java_WebsoketSTOMP_02_value = get_user_meta($user_id, 'Java_WebsoketSTOMP_02', true) ?: '0';
 $Java_WebsoketSTOMP_03_value = get_user_meta($user_id, 'Java_WebsoketSTOMP_03', true) ?: '0';
 $Java_WebsoketSTOMP_04_value = get_user_meta($user_id, 'Java_WebsoketSTOMP_04', true) ?: '0';
 $Java_WebsoketSTOMP_05_value = get_user_meta($user_id, 'Java_WebsoketSTOMP_05', true) ?: '0';
 $Java_WebsoketSTOMP_06_value = get_user_meta($user_id, 'Java_WebsoketSTOMP_06', true) ?: '0';
+$Java_SpringBatch_01_value =  get_user_meta($user_id, 'Java_SpringBatch_01', true) ?: '0';
+$Java_SpringBatch_02_value =  get_user_meta($user_id, 'Java_SpringBatch_02', true) ?: '0';
+$Java_SpringBatch_03_value =  get_user_meta($user_id, 'Java_SpringBatch_03', true) ?: '0';
+$Java_SpringBatch_04_value =  get_user_meta($user_id, 'Java_SpringBatch_04', true) ?: '0';
+$Java_SpringBatch_05_value =  get_user_meta($user_id, 'Java_SpringBatch_05', true) ?: '0';
+$Java_Test_01_value =  get_user_meta($user_id, 'Java_Test_01', true) ?: '0';
+$Java_Test_02_value =  get_user_meta($user_id, 'Java_Test_02', true) ?: '0';
+$Java_Test_03_value =  get_user_meta($user_id, 'Java_Test_03', true) ?: '0';
+$Java_Test_04_value =  get_user_meta($user_id, 'Java_Test_04', true) ?: '0';
+$Java_Test_05_value =  get_user_meta($user_id, 'Java_Test_05', true) ?: '0';
+$Java_Test_06_value =  get_user_meta($user_id, 'Java_Test_06', true) ?: '0';
+$Java_Test_07_value =  get_user_meta($user_id, 'Java_Test_07', true) ?: '0';
+$Java_Test_08_value =  get_user_meta($user_id, 'Java_Test_08', true) ?: '0';
+$Java_Test_09_value =  get_user_meta($user_id, 'Java_Test_09', true) ?: '0';
+$Java_Test_10_value =  get_user_meta($user_id, 'Java_Test_10', true) ?: '0';
+$Java_Test_11_value =  get_user_meta($user_id, 'Java_Test_11', true) ?: '0';
+$Java_Test_12_value =  get_user_meta($user_id, 'Java_Test_12', true) ?: '0';
+
+//SQL
+$SQL01_value = get_user_meta($user_id, 'SQL01', true) ?: '0';
+$SQL02_value = get_user_meta($user_id, 'SQL02', true) ?: '0';
+$SQL03_value = get_user_meta($user_id, 'SQL03', true) ?: '0';
+$SQL04_value = get_user_meta($user_id, 'SQL04', true) ?: '0';
+$SQL_ex01_value = get_user_meta($user_id, 'SQL_ex01', true) ?: '0';
+$SQL05_value = get_user_meta($user_id, 'SQL05', true) ?: '0';
+$SQL06_value = get_user_meta($user_id, 'SQL06', true) ?: '0';
+$SQL07_value = get_user_meta($user_id, 'SQL07', true) ?: '0';
+$SQL_ex02_value = get_user_meta($user_id, 'SQL_ex02', true) ?: '0';
+$SQL08_1_value = get_user_meta($user_id, 'SQL08_1', true) ?: '0';
+$SQL08_2_value = get_user_meta($user_id, 'SQL08_2', true) ?: '0';
+$SQL09_1_value = get_user_meta($user_id, 'SQL09_1', true) ?: '0';
+$SQL09_2_value = get_user_meta($user_id, 'SQL09_2', true) ?: '0';
+$SQL09_3_value = get_user_meta($user_id, 'SQL09_3', true) ?: '0';
+$SQL09_4_value = get_user_meta($user_id, 'SQL09_4', true) ?: '0';
+$SQL_ex03_value = get_user_meta($user_id, 'SQL_ex03', true) ?: '0';
+$SQL10_1_value = get_user_meta($user_id, 'SQL10_1', true) ?: '0';
+$SQL10_2_value = get_user_meta($user_id, 'SQL10_2', true) ?: '0';
+$SQL10_3_value = get_user_meta($user_id, 'SQL10_3', true) ?: '0';
+$SQL11_1_value = get_user_meta($user_id, 'SQL11_1', true) ?: '0';
+$SQL11_2_value = get_user_meta($user_id, 'SQL11_2', true) ?: '0';
+$SQL11_3_value = get_user_meta($user_id, 'SQL11_3', true) ?: '0';
+$SQL12_value = get_user_meta($user_id, 'SQL12', true) ?: '0';
+$SQL_ex04_value = get_user_meta($user_id, 'SQL_ex04', true) ?: '0';
+$SQL13_1_value = get_user_meta($user_id, 'SQL13_1', true) ?: '0';
+$SQL13_2_value = get_user_meta($user_id, 'SQL13_2', true) ?: '0';
+$SQL14_1_value = get_user_meta($user_id, 'SQL14_1', true) ?: '0';
+$SQL14_2_value = get_user_meta($user_id, 'SQL14_2', true) ?: '0';
+$SQL15_value = get_user_meta($user_id, 'SQL15', true) ?: '0';
+$SQL_ex05_value = get_user_meta($user_id, 'SQL_ex05', true) ?: '0';
+$SQL16_value = get_user_meta($user_id, 'SQL16', true) ?: '0';
+$SQL_last_value = get_user_meta($user_id, 'SQL_last', true) ?: '0';
+
 
 // Design
 $Design01_value = get_user_meta($user_id, 'Design01', true) ?: '0';
@@ -175,6 +250,46 @@ $Design08_2_value = get_user_meta($user_id, 'Design08_2', true) ?: '0';
 $Design09_value = get_user_meta($user_id, 'Design09', true) ?: '0';
 $Design09_2_value = get_user_meta($user_id, 'Design09_2', true) ?: '0';
 $Design09_3_value = get_user_meta($user_id, 'Design09_3', true) ?: '0';
+
+// 設計書
+$Spec01_value = get_user_meta($user_id, 'Spec01', true) ?: '0';
+
+//ワードプレス
+$wordpress01_value = get_user_meta($user_id, 'wordpress01', true) ?: '0';
+$wordpress02_value = get_user_meta($user_id, 'wordpress02', true) ?: '0';
+$wordpress03_value = get_user_meta($user_id, 'wordpress03', true) ?: '0';
+$wordpress04_value = get_user_meta($user_id, 'wordpress04', true) ?: '0';
+$wordpress05_value = get_user_meta($user_id, 'wordpress05', true) ?: '0';
+$wordpress06_value = get_user_meta($user_id, 'wordpress06', true) ?: '0';
+$wordpress07_value = get_user_meta($user_id, 'wordpress07', true) ?: '0';
+$wordpress08_value = get_user_meta($user_id, 'wordpress08', true) ?: '0';
+$wordpress09_value = get_user_meta($user_id, 'wordpress09', true) ?: '0';
+$wordpress10_value = get_user_meta($user_id, 'wordpress10', true) ?: '0';
+
+//JSTQB
+$jstqb0_value = get_user_meta($user_id, 'jstqb0', true) ?: '0';
+$jstqb01_1_value = get_user_meta($user_id, 'jstqb01_1', true) ?: '0';
+$jstqb01_2_value = get_user_meta($user_id, 'jstqb01_2', true) ?: '0';
+$jstqb01_3_value = get_user_meta($user_id, 'jstqb01_3', true) ?: '0';
+$jstqb01_4_value = get_user_meta($user_id, 'jstqb01_4', true) ?: '0';
+$jstqb01_5_value = get_user_meta($user_id, 'jstqb01_5', true) ?: '0';
+$jstqb02_1_value = get_user_meta($user_id, 'jstqb02_1', true) ?: '0';
+$jstqb02_2_value = get_user_meta($user_id, 'jstqb02_2', true) ?: '0';
+$jstqb02_3_value = get_user_meta($user_id, 'jstqb02_3', true) ?: '0';
+$jstqb03_1_value = get_user_meta($user_id, 'jstqb03_1', true) ?: '0';
+$jstqb03_2_value = get_user_meta($user_id, 'jstqb03_2', true) ?: '0';
+$jstqb04_1_value = get_user_meta($user_id, 'jstqb04_1', true) ?: '0';
+$jstqb04_2_value = get_user_meta($user_id, 'jstqb04_2', true) ?: '0';
+$jstqb04_3_value = get_user_meta($user_id, 'jstqb04_3', true) ?: '0';
+$jstqb04_4_value = get_user_meta($user_id, 'jstqb04_4', true) ?: '0';
+$jstqb04_5_value = get_user_meta($user_id, 'jstqb04_5', true) ?: '0';
+$jstqb05_1_value = get_user_meta($user_id, 'jstqb05_1', true) ?: '0';
+$jstqb05_2_value = get_user_meta($user_id, 'jstqb05_2', true) ?: '0';
+$jstqb05_3_value = get_user_meta($user_id, 'jstqb05_3', true) ?: '0';
+$jstqb05_4_value = get_user_meta($user_id, 'jstqb05_4', true) ?: '0';
+$jstqb05_5_value = get_user_meta($user_id, 'jstqb05_5', true) ?: '0';
+$jstqb06_1_value = get_user_meta($user_id, 'jstqb06_1', true) ?: '0';
+$jstqb06_2_value = get_user_meta($user_id, 'jstqb06_2', true) ?: '0';
 
 ?>
 
@@ -410,6 +525,78 @@ get_header();
                                             <h3 class="TL">HTML</h3>
                                         </div>
                                         <div class="progress--update">
+                                        <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>環境構築について</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($ENV0_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="ENV0" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($ENV0_value); ?>" />
+                                            </div>
+
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>環境構築①　GitとSourcetree</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($ENV01_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="ENV01" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($ENV01_value); ?>" />
+                                            </div>
+
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>環境構築②　VSコード</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($ENV02_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="ENV02" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($ENV02_value); ?>" />
+                                            </div>
+
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>環境構築③　ブラウザ</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($ENV03_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="ENV03" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($ENV03_value); ?>" />
+                                            </div>
+
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>検証ツール（デベロッパーツール）の使い方</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($VAL01_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="VAL01" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($VAL01_value); ?>" />
+                                            </div>
+
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>検証をしてみよう！</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($VAL02_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="VAL02" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($VAL02_value); ?>" />
+                                            </div>
+
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>検証の重要性</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($VAL03_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="VAL03" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($VAL03_value); ?>" />
+                                            </div>
+
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>HTML/CSSとは</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($INIT01_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="INIT01" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($INIT01_value); ?>" />
+                                            </div>
+
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>学習をはじめる前に</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($INIT02_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="INIT02" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($INIT02_value); ?>" />
+                                            </div>
+                                        
                                             <div class="update--item">
                                                 <div class="update--item--title">
                                                     <p class="TX"><span class="deco"></span>DIVパズル01</p>
@@ -531,46 +718,6 @@ get_header();
                                                 <input class="progressBar" id="pi_input" name="JQ06" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($JQ06_value); ?>" />
                                             </div>
 
-                                            <div class="update--item">
-                                                <div class="update--item--title">
-                                                    <p class="TX"><span class="deco"></span>JQuery07</p>
-                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($JQ07_value); ?></output>%</p>
-                                                </div>
-                                                <input class="progressBar" id="pi_input" name="JQ07" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($JQ07_value); ?>" />
-                                            </div>
-
-                                            <div class="update--item">
-                                                <div class="update--item--title">
-                                                    <p class="TX"><span class="deco"></span>JQuery08</p>
-                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($JQ08_value); ?></output>%</p>
-                                                </div>
-                                                <input class="progressBar" id="pi_input" name="JQ08" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($JQ08_value); ?>" />
-                                            </div>
-
-                                            <div class="update--item">
-                                                <div class="update--item--title">
-                                                    <p class="TX"><span class="deco"></span>JQuery09</p>
-                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($JQ09_value); ?></output>%</p>
-                                                </div>
-                                                <input class="progressBar" id="pi_input" name="JQ09" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($JQ09_value); ?>" />
-                                            </div>
-
-                                            <div class="update--item">
-                                                <div class="update--item--title">
-                                                    <p class="TX"><span class="deco"></span>JQuery10</p>
-                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($JQ10_value); ?></output>%</p>
-                                                </div>
-                                                <input class="progressBar" id="pi_input" name="JQ10" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($JQ10_value); ?>" />
-                                            </div>
-
-                                            <div class="update--item">
-                                                <div class="update--item--title">
-                                                    <p class="TX"><span class="deco"></span>JQuery最終課題</p>
-                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($JQLast_value); ?></output>%</p>
-                                                </div>
-                                                <input class="progressBar" id="pi_input" name="JQLast" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($JQLast_value); ?>" />
-                                            </div>
-
                                         </div>
                                     </div>
 
@@ -579,6 +726,17 @@ get_header();
                                         <div class="progress--title">
                                             <h3 class="TL">LP</h3>
                                         </div>
+
+                                        <div class="progress--update">
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>ミニサイト制作</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($MiniLP_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="MiniLP" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($MiniLP_value); ?>" />
+                                            </div>
+                                        </div>
+
                                         <div class="progress--update">
                                             <div class="update--item">
                                                 <div class="update--item--title">
@@ -707,24 +865,74 @@ get_header();
                                             <div class="update--item">
                                                 <div class="update--item--title">
                                                     <p class="TX"><span class="deco"></span>Word Press01</p>
-                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($WP01_value); ?></output>%</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($wordpress01_value); ?></output>%</p>
                                                 </div>
-                                                <input class="progressBar" id="pi_input" name="WP01" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($WP01_value); ?>" />
+                                                <input class="progressBar" id="pi_input" name="wordpress01" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($wordpress01_value); ?>" />
                                             </div>
                                             <div class="update--item">
                                                 <div class="update--item--title">
                                                     <p class="TX"><span class="deco"></span>Word Press02</p>
-                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($WP02_value); ?></output>%</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($wordpress02_value); ?></output>%</p>
                                                 </div>
-                                                <input class="progressBar" id="pi_input" name="WP02" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($WP02_value); ?>" />
+                                                <input class="progressBar" id="pi_input" name="wordpress02" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($wordpress02_value); ?>" />
                                             </div>
                                             <div class="update--item">
                                                 <div class="update--item--title">
                                                     <p class="TX"><span class="deco"></span>Word Press03</p>
-                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($WP03_value); ?></output>%</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($wordpress03_value); ?></output>%</p>
                                                 </div>
-                                                <input class="progressBar" id="pi_input" name="WP03" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($WP03_value); ?>" />
+                                                <input class="progressBar" id="pi_input" name="wordpress03" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($wordpress03_value); ?>" />
                                             </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Word Press04</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($wordpress04_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="wordpress04" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($wordpress04_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Word Press05</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($wordpress05_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="wordpress05" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($wordpress05_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Word Press06</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($wordpress06_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="wordpress06" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($wordpress06_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Word Press07</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($wordpress07_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="wordpress07" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($wordpress07_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Word Press08</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($wordpress08_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="wordpress08" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($wordpress08_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Word Press09</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($wordpress09_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="wordpress09" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($wordpress09_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Word Press10</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($wordpress10_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="wordpress10" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($wordpress10_value); ?>" />
+                                            </div>
+
                                         </div>
                                     </div>
 
@@ -827,6 +1035,16 @@ get_header();
                                                 </div>
                                                 <input class="progressBar" id="pi_input" name="React02_9" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($React02_9_value); ?>" />
                                             </div>
+
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>React 2.5 基礎マスターガイド</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($React02__5_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="$React02__5" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($React02__5_value); ?>" />
+                                            </div>
+
+
                                             <div class="update--item">
                                                 <div class="update--item--title">
                                                     <p class="TX"><span class="deco"></span>React03①</p>
@@ -855,6 +1073,15 @@ get_header();
                                                 </div>
                                                 <input class="progressBar" id="pi_input" name="React03_4" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($React03_4_value); ?>" />
                                             </div>
+
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>React03⑤</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($React03_5_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="React03_5" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($React03_5_value); ?>" />
+                                            </div>
+                                            
                                             <div class="update--item">
                                                 <div class="update--item--title">
                                                     <p class="TX"><span class="deco"></span>React03.5</p>
@@ -1040,12 +1267,136 @@ get_header();
                                         </div>
                                     </div>
 
+                                    <!-- TypeScript -->
+                                    <div class="item">
+                                        <div class="progress--title">
+                                            <h3 class="TL">TypeScript</h3>
+                                        </div>
+                                        <div class="progress--update">
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>React12</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($React12_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="React12" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($React12_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>React13①</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($React13_1_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="React13_1" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($React13_1_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>React13②</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($React13_2_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="React13_2" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($React13_2_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>React13③</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($React13_3_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="React13_3" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($React13_3_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>React14①</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($React14_1_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="React14_1" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($React14_1_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>React14②</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($React14_2_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="React14_2" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($React14_2_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>React15</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($React15_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="React15" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($React15_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>React15.5</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($React15__5_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="React15__5" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($React15__5_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>React16</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($React16_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="React16" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($React16_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>React17</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($React17_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="React17" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($React17_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>React18①</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($React18_1_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="React18_1" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($React18_1_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>React18②</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($React18_2_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="React18_2" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($React18_2_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>React18③</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($React18_3_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="React18_3" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($React18_3_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>React18④</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($React18_4_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="React18_4" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($React18_4_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>React19</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($React19_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="React19" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($React19_value); ?>" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                     <!-- Java -->
                                     <div class="item">
                                         <div class="progress--title">
                                             <h3 class="TL">Java</h3>
                                         </div>
                                         <div class="progress--update">
+
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>はじめに</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($Java0_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="Java0" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($Java0_value); ?>" />
+                                            </div>
+
                                             <div class="update--item">
                                                 <div class="update--item--title">
                                                     <p class="TX"><span class="deco"></span>Java01</p>
@@ -1284,6 +1635,21 @@ get_header();
                                                 </div>
                                                 <input class="progressBar" id="pi_input" name="Java_springBoot_11" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($Java_springBoot_11_value); ?>" />
                                             </div>
+                                            <!-- <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Java SpringBoot12</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($Java_springBoot_12_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="Java_springBoot_12" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($Java_springBoot_12_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Java SpringBoot13</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($Java_springBoot_13_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="Java_springBoot_13" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($Java_springBoot_13_value); ?>" />
+                                            </div> -->
+
                                             <div class="update--item">
                                                 <div class="update--item--title">
                                                     <p class="TX"><span class="deco"></span>Java Websoket・STOMP1</p>
@@ -1326,8 +1692,363 @@ get_header();
                                                 </div>
                                                 <input class="progressBar" id="pi_input" name="Java_WebsoketSTOMP_06" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($Java_WebsoketSTOMP_06_value); ?>" />
                                             </div>
+                                            <!-- <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Java Spring Batch01</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($Java_SpringBatch_01_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="Java_SpringBatch_01" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($Java_SpringBatch_01_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Java Spring Batch02</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($Java_SpringBatch_02_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="Java_SpringBatch_02" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($Java_SpringBatch_02_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Java Spring Batch03</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($Java_SpringBatch_03_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="Java_SpringBatch_03" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($Java_SpringBatch_03_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Java Spring Batch04</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($Java_SpringBatch_04_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="Java_SpringBatch_04" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($Java_SpringBatch_04_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Java Spring Batch05</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($Java_SpringBatch_05_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="Java_SpringBatch_05" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($Java_SpringBatch_05_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Java  Test01</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($Java_Test_01_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="Java_Test_01" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($Java_Test_01_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Java  Test02</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($Java_Test_02_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="Java_Test_02" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($Java_Test_02_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Java  Test03</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($Java_Test_02_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="Java_Test_03" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($Java_Test_03_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Java  Test04</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($Java_Test_04_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="Java_Test_04" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($Java_Test_04_value); ?>" />
+                                            </div>  
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Java  Test05</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($Java_Test_05_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="Java_Test_05" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($Java_Test_05_value); ?>" />
+                                            </div> 
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Java  Test06</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($Java_Test_06_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="Java_Test_06" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($Java_Test_06_value); ?>" />
+                                            </div>  
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Java  Test07</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($Java_Test_07_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="Java_Test_07" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($Java_Test_07_value); ?>" />
+                                            </div>  
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Java Test08</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($Java_Test_08_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="Java_Test_08" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($Java_Test_08_value); ?>" />
+                                            </div>  
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Java  Test09</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($Java_Test_09_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="Java_Test_09" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($Java_Test_09_value); ?>" />
+                                            </div>  
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Java  Test10</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($Java_Test_10_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="Java_Test_10" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($Java_Test_10_value); ?>" />
+                                            </div>  
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Java  Test11</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($Java_Test_11_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="Java_Test_11" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($Java_Test_11_value); ?>" />
+                                            </div>  
+
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>Java  Test12</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($Java_Test_12_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="Java_Test_12" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($Java_Test_12_value); ?>" />
+                                            </div>   -->
                                         </div>
                                     </div>
+
+                                    <!-- SQL -->
+                                    <div class="item">
+                                        <div class="progress--title">
+                                            <h3 class="TL">SQL</h3>
+                                        </div>
+                                        <div class="progress--update">
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL01</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL01_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL01" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL01_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL02</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL02_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL02" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL02_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL03</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL03_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL03" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL03_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL04</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL04_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL04" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL04_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL 演習問題①</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL_ex01_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL_ex01" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL_ex01_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL05</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL05_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL05" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL05_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL06</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL06_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL06" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL06_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL07</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL07_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL07" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL07_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL 演習問題②</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL_ex02_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL_ex02" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL_ex02_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL08①</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL08_1_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL08_1" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL08_1_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL08②</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL08_2_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL08_2" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL08_2_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL09①</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL09_1_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL09_1" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL09_1_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL09②</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL09_2_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL09_2" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL09_2_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL09③</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL09_3_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL09_3" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL09_3_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL09④</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL09_4_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL09_4" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL09_4_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL 演習問題③</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL_ex03_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL_ex03" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL_ex03_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL10①</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL10_1_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL10_1" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL10_1_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL10②</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL10_2_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL10_2" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL10_2_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL10③</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL10_3_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL10_3" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL10_3_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL11①</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL11_1_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL11_1" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL11_1_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL11②</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL11_2_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL11_2" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL11_2_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL11③</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL11_3_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL11_3" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL11_3_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL12</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL12_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL12" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL12_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL 演習問題④</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL_ex04_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL_ex04" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL_ex04_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL13①</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL13_1_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL13_1" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL13_1_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL13②</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL13_2_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL13_2" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL13_2_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL14①</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL14_1_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL14_1" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL14_1_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL14②</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL14_2_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL14_2" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL14_2_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL15</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL15_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL15" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL15_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL 演習問題⑤</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL_ex05_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL_ex05" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL_ex05_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL16</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL16_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL16" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL16_value); ?>" />
+                                            </div>
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>SQL 最終問題</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($SQL_last_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="SQL_last" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($SQL_last_value); ?>" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
 
                                     <!-- Design -->
                                     <div class="item">
@@ -1555,6 +2276,24 @@ get_header();
                                         </div>
                                     </div>
 
+                                    <!-- 設計書 -->
+                                    <div class="item">
+                                        <div class="progress--title">
+                                            <h3 class="TL">設計書</h3>
+                                        </div>
+                                        <div class="progress--update">
+                                            <div class="update--item">
+                                                <div class="update--item--title">
+                                                    <p class="TX"><span class="deco"></span>設計書を作成しよう</p>
+                                                    <p class="count"><output class="count" id="value"><?php echo esc_attr($Spec01_value); ?></output>%</p>
+                                                </div>
+                                                <input class="progressBar" id="pi_input" name="Spec01" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($Spec01_value); ?>" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
                                 </div>
 
                                 <div class="progress--TOC">
@@ -1593,14 +2332,24 @@ get_header();
                                             <p class="TX">・React</p>
                                         </li>
                                         <li class="progress--TOC--ul--li">
+                                            <p class="TX">・TypeScript</p>
+                                        </li>
+                                        <li class="progress--TOC--ul--li">
                                             <p class="TX">・Java</p>
+                                        </li>
+                                        <li class="progress--TOC--ul--li">
+                                            <p class="TX">・SQL</p>
                                         </li>
                                         <li class="progress--TOC--ul--li">
                                             <p class="TX">・Design</p>
                                         </li>
-
+                                        <li class="progress--TOC--ul--li">
+                                            <p class="TX">・設計書</p>
+                                        </li>
                                     </ul>
                                 </div>
+
+
 
                                 <div class="progress--submit">
                                     <input type="submit" value="更新">

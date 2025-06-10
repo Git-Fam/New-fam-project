@@ -25,6 +25,10 @@
   <script src="<?php echo get_template_directory_uri(); ?>/js/ranking.js"></script>
 <?php endif; ?>
 
+<?php if (is_archive('question') ||is_singular('question')) : ?>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/question.js"></script>
+<?php endif; ?>
+
 
 <?php if (is_page('aptitude-choice')) : ?>
   <script src="<?php echo get_template_directory_uri(); ?>/js/aptitude-choice.js"></script>

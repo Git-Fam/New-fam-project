@@ -29,6 +29,41 @@ get_header();
 
     <div class="single--img"></div>
 
+    <div class="single--link">
+        <div class="single--link--chara"></div>
+        <div class="single--link--bg">
+            <div class="single--link--text">
+                <?php
+                $next_post = get_adjacent_post(true, '', false, 'category');
+                if (!empty($next_post)): ?>
+                    <a href="<?php echo get_permalink($next_post->ID); ?>">前の記事へ</a>
+                <?php endif; ?>
+            </div>
+            <div class="single--link--text">
+                <?php
+                $prev_post = get_adjacent_post(true, '', true, 'category');
+                if (!empty($prev_post)): ?>
+                    <a href="<?php echo get_permalink($prev_post->ID); ?>">次の記事へ</a>
+                <?php endif; ?>
+            </div>
+            <div class="single--link--text">
+                <?php
+                    $categories = get_the_category();
+                    $category_param = '';
+                    if (!empty($categories)) {
+                        $category_param = '?category=' . urlencode($categories[0]->name);
+                    }
+                ?>
+                <a href="<?php bloginfo('url'); ?>/curriculum<?php echo $category_param; ?>">MAPへ戻る</a>
+            </div>
+            <div class="single--link--text">
+                <a href="#">ページTOPへ</a>
+            </div>
+
+        </div>
+        
+    </div>
+
     <div class="single--wap">
         <div class="single--wap--content">
             <div class="single--wap--content--title">
@@ -53,7 +88,14 @@ get_header();
                         <?php endif; ?>
                     </div>
                     <div class="single-nation-text">
-                        <a href="<?php bloginfo('url'); ?>/curriculum">戻る</a>
+                        <?php
+                            $categories = get_the_category();
+                            $category_param = '';
+                            if (!empty($categories)) {
+                                $category_param = '?category=' . urlencode($categories[0]->name);
+                            }
+                        ?>
+                        <a href="<?php bloginfo('url'); ?>/curriculum<?php echo $category_param; ?>">戻る</a>
                     </div>
                     <div class="single-nation-text">
                         <?php

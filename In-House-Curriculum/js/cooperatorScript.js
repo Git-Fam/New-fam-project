@@ -347,6 +347,48 @@ jQuery(function () {
 			.wrap('<span class="highlight-text"></span>'); // 選択したテキストノードを <span> でラップ
 	});
 
+	// 質問広場 コメントタイトル プレイスホルダー
+	var $input = $("#sac_chat");
+	var $commentFormTitle = $("#sac-form");
+
+	togglePlaceholder($input.val()); // 初期チェック
+
+	$input.on("input", function () {
+		togglePlaceholder($(this).val());
+	});
+
+	function togglePlaceholder(value) {
+		if (typeof value === "string" && value.trim() !== "") {
+			$commentFormTitle.addClass("input-has-value");
+		} else {
+			$commentFormTitle.removeClass("input-has-value");
+		}
+	}
+
+	jQuery(function ($) {
+		var $input = $("#sac_chat");
+		var $form = $("#sac-form");
+
+		// まず、textareaのonkeypress属性を削除（これが超重要！！）
+		$input.removeAttr("onkeypress");
+
+		// フォームsubmitを全てブロック（Enterで送信させない）
+		$form.on("submit", function (e) {
+			e.preventDefault();
+			return false;
+		});
+
+		// textareaではEnter/Shift+Enter共に何も送信させない（デフォで改行だけできる）
+		$input.on("keydown", function (e) {
+			if (e.keyCode === 13) {
+				e.preventDefault(); //これ消すとtextareaでは改行ができる
+				// 何もしない（送信は絶対にされない、改行だけできる）
+				e.stopPropagation();
+				e.stopImmediatePropagation();
+			}
+		});
+	});
+
 	function displayCharacters() {
 		$(".character-box").remove();
 
@@ -356,6 +398,9 @@ jQuery(function () {
 		) {
 			// 各 destination に対する表示済みカウントを保持
 			const destinationUserMap = new Map();
+
+			// ★進捗値ごとの表示数を管理（重なり回避用）
+			const progressCountMap = new Map();
 
 			allUsersProgress.forEach((user) => {
 				const userProgress = user.progress;
@@ -429,6 +474,22 @@ jQuery(function () {
 										$characterBox.append($characterDiv);
 									}
 
+									// ★★★ ここから縦横ずらしロジック追加！ ★★★
+									const progressKey = `${lastCheckpointClass}-${lastProgressValue}`;
+									let stackedCount = progressCountMap.get(progressKey) || 0;
+									progressCountMap.set(progressKey, stackedCount + 1);
+
+									// 縦に等間隔（24pxごと下にずらす）
+									const verticalOffset = stackedCount * 24;
+
+									// 交互に横へずらす
+									const horizontalOffset = stackedCount % 2 === 0 ? 20 : -20; // 偶数:右、奇数:左
+
+									$characterBox.css({
+										left: `calc(${lastProgressValue}% + ${horizontalOffset}px)`,
+										top: verticalOffset + "px",
+									});
+									// ★★★ ここまで追加！ ★★★
 									$characterBox
 										.append($nameElement)
 										.appendTo($checkpointElement);
@@ -452,20 +513,19 @@ jQuery(function () {
 			typeof allUsersProgress !== "undefined" &&
 			allUsersProgress.length > 0
 		) {
-			// 現在のユーザーの進捗データのみを取得
 			const currentUserProgress = allUsersProgress.find(
 				(user) => user.username === currentUsername
 			);
 
 			if (currentUserProgress && currentUserProgress.progress) {
 				const userProgress = currentUserProgress.progress;
+				let prevWasClear = false; // 直前がclearかどうか
 
-				// .destination 要素をループして、進捗データに基づいて .goal にクラスを追加
 				$(".destination").each(function () {
 					const $destination = $(this);
 					const $goalElement = $destination.find(".goal");
+					let isClear = false; // 今回のclear判定用
 
-					// 進捗キーとして使えるクラス名を取得（最初のクラスのみ使用）
 					const tagClass = $destination
 						.attr("class")
 						.split(" ")
@@ -473,19 +533,28 @@ jQuery(function () {
 							return userProgress.hasOwnProperty(className);
 						});
 
+					let progressValue = null;
 					if (tagClass) {
-						const progressValue = parseInt(userProgress[tagClass], 10);
+						progressValue = parseInt(userProgress[tagClass], 10);
 
 						if (progressValue === 0 || isNaN(progressValue)) {
 							$goalElement.addClass("not");
 						} else if (progressValue === 100) {
 							$goalElement.addClass("clear");
+							isClear = true;
 						}
-						// 1~99%の進捗はクラスを追加しない
+						// 1~99%は何もしない
 					} else {
-						// 該当するクラス名がない場合はデフォルトで .not を追加
 						$goalElement.addClass("not");
 					}
+
+					// next判定
+					if (prevWasClear && (progressValue === 0 || isNaN(progressValue))) {
+						$goalElement.addClass("next");
+					}
+
+					// 次のループ用に状態更新
+					prevWasClear = isClear;
 				});
 			}
 		}
@@ -494,6 +563,46 @@ jQuery(function () {
 	// ページロード時の初期表示
 	displayCharacters();
 	updateGoalClasses();
+
+	$(function () {
+		// パラメータ(category)の有無を調べる
+		const urlParams = new URLSearchParams(window.location.search);
+		const categoryParam = urlParams.get("category");
+
+		if (categoryParam) {
+			// パラメータ優先: そのカテゴリ名の.archive--contents--items--wapにactiveを付ける
+			$(".archive--contents--items--wap").removeClass("active");
+			$(`.archive--contents--items--wap.${categoryParam}`).addClass("active");
+		} else {
+			// パラメータが無いときだけ進捗ベースでactiveを付ける
+			const currentUser = allUsersProgress.find(
+				(user) => user.username === currentUsername
+			);
+
+			if (currentUser && currentUser.progress) {
+				// last_progress_key が一番確実
+				const lastProgressKey = window.wpData?.last_progress_key;
+				let targetKey = lastProgressKey;
+
+				if (!targetKey) {
+					targetKey = Object.keys(currentUser.progress).find(
+						(key) => currentUser.progress[key] > 0
+					);
+				}
+
+				if (targetKey) {
+					const $targetDestination = $(`.destination.${targetKey}`).first();
+					if ($targetDestination.length) {
+						const $parentWap = $targetDestination.closest(
+							".archive--contents--items--wap"
+						);
+						$(".archive--contents--items--wap").removeClass("active");
+						$parentWap.addClass("active");
+					}
+				}
+			}
+		}
+	});
 
 	// タブのクリックイベントにキャラクター描画処理を追加
 	$(".archive--item").on("click", function () {
@@ -519,229 +628,6 @@ jQuery(function () {
 		observer.observe(containerToObserve, { childList: true, subtree: true });
 	}
 
-	$(document).ready(function () {
-		// 質問広場 質問モーダルの開閉
-		$(".post-content").on("click", function () {
-			$(".post-modal").addClass("open");
-		});
-		$(".C_back-btn").on("click", function () {
-			$(".post-modal").removeClass("open");
-		});
-
-		// 質問広場 コメントタイトル プレイスホルダー
-		var $input = $("#comtitle, #sac_chat");
-		var $commentFormTitle = $(".comment-form-title, #sac-form");
-
-		togglePlaceholder($input.val()); // 初期チェック
-
-		$input.on("input", function () {
-			togglePlaceholder($(this).val());
-		});
-
-		function togglePlaceholder(value) {
-			if (typeof value === "string" && value.trim() !== "") {
-				$commentFormTitle.addClass("input-has-value");
-			} else {
-				$commentFormTitle.removeClass("input-has-value");
-			}
-		}
-
-		// 質問広場 質問投稿時のカテゴリー選択
-		const selectPostItems = $("#select-post li");
-		const commentForm = $("#commentform");
-		const categoryTextElement = $(".category-content-TX");
-		const errorMessageElement = $(
-			"<p class='error-message' style='color: red; display: none;'>カテゴリーを選択してください。</p>"
-		);
-		commentForm.prepend(errorMessageElement);
-
-		let isCategorySelected = false;
-
-		if (
-			selectPostItems.length > 0 &&
-			commentForm.length > 0 &&
-			categoryTextElement.length > 0
-		) {
-			selectPostItems.on("click", function () {
-				const selectedPostId = $(this).data("value");
-				const selectedPostTitle = $(this).text().trim();
-
-				categoryTextElement.text(selectedPostTitle);
-				const commentPostIdInput = commentForm.find(
-					'input[name="comment_post_ID"]'
-				);
-				if (commentPostIdInput.length > 0) {
-					commentPostIdInput.val(selectedPostId);
-					isCategorySelected = true;
-					errorMessageElement.hide();
-				}
-			});
-
-			commentForm.off("submit").on("submit", function (event) {
-				event.preventDefault(); // 一度だけpreventDefaultを呼び出します
-
-				if (!isCategorySelected) {
-					errorMessageElement.show();
-					return false;
-				}
-
-				var formData = new FormData(this);
-				$.ajax({
-					url: commentForm.attr("action"),
-					type: "POST",
-					data: formData,
-					processData: false,
-					contentType: false,
-					success: function () {
-						$(".letter").hide();
-						$(".success").show();
-					},
-					error: function () {
-						alert("コメントの送信中にエラーが発生しました。");
-					},
-				});
-			});
-		}
-
-		// チャットボット 各li要素に順番にupクラスを付与
-		$("#q-and-a-list li").each(function (index) {
-			$(this)
-				.delay(index * 300)
-				.queue(function (next) {
-					$(this).addClass("show");
-					next();
-				});
-		});
-
-		// よくある質問クリック時の表示
-		$(".chatbot-title").on("click", function (e) {
-			e.preventDefault();
-			var post_id = $(this).data("id");
-
-			$.post(
-				chatbot_ajax.ajax_url,
-				{ action: "get_chatbot_content", post_id: post_id },
-				function (response) {
-					$(".answer").html(response);
-				}
-			);
-
-			$(".q-and-a-answer").addClass("show");
-		});
-
-		// チャットボットの検索処理
-		function executeChatbotSearch() {
-			var searchTerm = $("#search-input").val();
-
-			$(".search-result").removeClass("show").empty();
-			$(".search-result-answer").removeClass("show");
-			$(".search-word").removeClass("show");
-			$(".word").text(searchTerm);
-
-			$(".search-word").addClass("show");
-
-			$.post(
-				chatbot_ajax.ajax_url,
-				{ action: "search_chatbot_posts", search: searchTerm },
-				function (response) {
-					$(".search-result").html(response).addClass("show");
-					$(".search-result .chatbot-title")
-						.off("click")
-						.on("click", function (e) {
-							e.preventDefault();
-							var post_id = $(this).data("id");
-
-							$.post(
-								chatbot_ajax.ajax_url,
-								{ action: "get_chatbot_content", post_id: post_id },
-								function (response) {
-									$(".search-answer").html(response);
-								}
-							);
-
-							$(".search-result-answer").addClass("show");
-						});
-				}
-			);
-		}
-
-		$("#search-button").on("click", executeChatbotSearch);
-		$("#search-input").on("keyup", function (event) {
-			if (event.keyCode === 13) {
-				executeChatbotSearch();
-			}
-		});
-
-		// チャットボット スクロール処理
-		var chatbotContent = $(".chatbot-content");
-		var shouldScrollToBottom = true;
-
-		if (chatbotContent.length > 0) {
-			function scrollToBottom() {
-				chatbotContent.animate(
-					{ scrollTop: chatbotContent[0].scrollHeight },
-					1000
-				);
-			}
-
-			// 初期ロード時にスクロール
-			scrollToBottom();
-
-			// MutationObserver を使用して、DOMの変化を監視
-			var observer = new MutationObserver(function (mutationsList) {
-				// DOMに新しいノードが追加された時のみ
-				mutationsList.forEach(function (mutation) {
-					if (mutation.type === "childList" && shouldScrollToBottom) {
-						setTimeout(scrollToBottom, 500);
-					}
-				});
-			});
-
-			// 監視設定
-			observer.observe(chatbotContent[0], { childList: true, subtree: true });
-
-			// ユーザーがスクロール操作をしたかどうかを検知
-			chatbotContent.on("scroll", function () {
-				var scrollPosition =
-					chatbotContent[0].scrollTop + chatbotContent.outerHeight();
-				var scrollHeight = chatbotContent[0].scrollHeight;
-				shouldScrollToBottom = scrollPosition >= scrollHeight - 10;
-			});
-		}
-
-		// コメント検索処理
-		function executeCommentSearch() {
-			var searchTerm = $("#comment-search-input").val();
-
-			$.post(
-				chatbot_ajax.ajax_url,
-				{ action: "search_comments", search: searchTerm },
-				function (response) {
-					$(".comment-search-result").html(response);
-				}
-			);
-		}
-
-		$("#comment-search-button").on("click", executeCommentSearch);
-		$("#comment-search-input").on("keyup", function (event) {
-			if (event.keyCode === 13) {
-				executeCommentSearch();
-			}
-		});
-
-		// 質問のアーカイブ処理
-		var isArchivePage = $(".archive-question").length > 0;
-		if (isArchivePage) {
-			$.post(
-				chatbot_ajax.ajax_url,
-				{ action: "get_all_comments" },
-				function (response) {
-					$(".comment-search-result").html(response);
-				}
-			);
-		}
-	});
-
 	//ミニゲーム　レベル選択
 	$(".level-list li,.cat-select").hover(function () {
 		$(".level-list li,.cat-select").removeClass("active");
@@ -758,4 +644,61 @@ jQuery(function () {
 			submitButton.val("送信"); // ボタンのテキストを変更
 		}
 	}
+
+	$(".castle").on("click", function () {
+		$(".castle-animal").addClass("show");
+	});
+
+	// 例: jQuery風
+	const bird = document.querySelector(".sec3-anime-bird");
+	if (bird) {
+		bird.addEventListener("touchstart", () => bird.classList.add("active"));
+		bird.addEventListener("touchend", () => bird.classList.remove("active"));
+	}
+
+	$(".road-action").on("click", function () {
+		$(".action-modal").addClass("show");
+	});
+	$(".action-close").on("click", function () {
+		$(".action-modal").removeClass("show");
+	});
+
+	//記事ページリンク
+	//スクロールしたら.single--linkにshowクラス付与、ページの最下部からPCは500px、SPは300pxまでスクロールしたら.single--linkからshowクラス削除
+	//さらにスクロールが止まって2秒経った時もshowクラスを削除
+	$(function () {
+		let removeShowTimeout = null;
+		const $singleLink = $(".single--link");
+
+		$(window).on("scroll", function () {
+			var scrollTop = $(window).scrollTop();
+			var windowHeight = $(window).height();
+			var documentHeight = $(document).height();
+			var scrollBottom = scrollTop + windowHeight;
+
+			// デバイス判定（SPかどうか）
+			var isSP = window.innerWidth <= 767;
+			var removeThreshold = isSP ? 300 : 500;
+			var isScrolledToBottom = scrollBottom >= documentHeight - removeThreshold;
+
+			// --- まず「下部なら消す」 ---
+			if (isScrolledToBottom) {
+				$singleLink.removeClass("show");
+				if (removeShowTimeout) clearTimeout(removeShowTimeout);
+				return; // ここで終了
+			}
+
+			// --- スクロールしたらshowクラス付与 ---
+			$singleLink.addClass("show");
+
+			// --- スクロールが止まった3秒後に消す ---
+			if (removeShowTimeout) clearTimeout(removeShowTimeout);
+			removeShowTimeout = setTimeout(function () {
+				$singleLink.removeClass("show");
+			}, 3000);
+		});
+
+		// ページ読み込み時に初期化
+		$(".single--link").removeClass("show");
+	});
 });

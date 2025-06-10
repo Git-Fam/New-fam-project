@@ -21,6 +21,34 @@ $users = get_users();
 
 
 
+$user_id = get_current_user_id();
+$last_progress_key = get_user_meta($user_id, 'last_progress_key', true);
+
+$active_category_slug = '';
+if ($last_progress_key) {
+    $args = [
+        'post_type'  => 'post',
+        'meta_query' => [
+            [
+                'key'     => $last_progress_key,
+                'compare' => 'EXISTS',
+            ],
+        ],
+        'posts_per_page' => 1,
+    ];
+    $progress_post_query = new WP_Query($args);
+
+    if ($progress_post_query->have_posts()) {
+        $progress_post_query->the_post();
+        $categories = get_the_category();
+        if (!empty($categories)) {
+            $active_category_slug = $categories[0]->slug;
+        }
+        wp_reset_postdata();
+    }
+    error_log($last_progress_key);
+}
+
 
 $last_post_progress = [];
 
@@ -33,7 +61,7 @@ foreach ($users as $user) {
     $progress_data = [];
 
     foreach ($user_meta as $meta_key => $meta_value) {
-        if (preg_match('/^(div|responsive|JQ|LP|Sass|React|Java|Design|SEO|Form|FAM|test|JS|WP)/i', $meta_key)) {
+        if (preg_match('/^(ENV|VAL|INIT|div|responsive|JQ|LP|MiniLP|Sass|React|Java|SQL|Design|SEO|Form|FAM|test|JS|WP)/i', $meta_key)) {
             
 
             $progress = intval($meta_value[0]);
@@ -121,8 +149,11 @@ wp_localize_script('cooperator-script', 'wpData', array(
     'allUsersProgress' => $all_users_progress,
     'allUsersCharacters' => $all_users_characters, // キャラクターHTMLをJavaScriptに渡す
     'lastPostProgress' => $last_post_progress, // 最後の投稿に紐付く進捗情報（1週間経過フラグ付き）
-    
+    'last_progress_key' => get_user_meta(get_current_user_id(), 'last_progress_key', true)
 ));
+error_log('last_progress_key: ' . print_r($last_progress_key, true));
+error_log('active_category_slug: ' . print_r($active_category_slug, true));
+
 
 
 
@@ -135,6 +166,11 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
 
 <div class="sp-wrap">
     <div class="road-wappaer">
+        <div class="action-modal">
+            <div class="modal-content"></div>
+            <div class="action-close"></div>
+        </div>
+
         <div class="cloud-box">
             <div class="road-cloud flowing"></div>
             <div class="road-cloud cloudAnime"></div>
@@ -152,13 +188,19 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
 
         <div class="archive--contents--tab">
             <?php
-            $categories = get_categories(array('parent' => 0)); // 最上位のカテゴリーのみを取得する
+            $categories = get_categories(array('parent' => 0));
             foreach ($categories as $category):
-                // カテゴリーに対応する画像ファイル名を想定しています。実際には適切に設定してください。
                 $image_file_name = $category->slug . '.webp';
+                $image_src = get_template_directory_uri() . '/img/' . $image_file_name;
+                $noimg_src = get_template_directory_uri() . '/img/noimg.webp';
             ?>
                 <div class="archive--item">
-                    <img class="archive--item--img" src="<?php echo get_template_directory_uri(); ?>/img/<?php echo $image_file_name ?>" alt="">
+                    <img 
+                        class="archive--item--img" 
+                        src="<?php echo $image_src; ?>" 
+                        alt=""
+                        onerror="this.onerror=null;this.src='<?php echo $noimg_src; ?>';"
+                    >
                     <div class="archive--item--title">
                         <p class="TX"><?php echo $category->name; ?></p>
                     </div>
@@ -170,12 +212,26 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
         $categories = get_categories(array('parent' => 0)); // 最上位のカテゴリーのみを取得する
         $firstCategory = true; // 最初のカテゴリーを識別するためのフラグ
         foreach ($categories as $category):
+        $is_active = ($category->slug === $active_category_slug) ? 'active' : '';
         ?>
 
-            <div class="archive--contents--items--wap<?php if ($firstCategory) echo ' active'; ?> <?php echo esc_attr($category->name); ?>">
+            <div class="archive--contents--items--wap<?php echo $is_active; ?> <?php echo esc_attr($category->name); ?>">
                 <div class="road-header">
                     <p class="TL">カリキュラム選択　〉<?php echo esc_html($category->name); ?></p>
                     <div class="btn-box">
+
+
+
+                        <div class="columns_search border">
+                            <div class="search-item">
+                                <?php get_template_part('searchform-map', 'post'); ?>
+                            </div>
+                        </div>
+
+
+
+
+
                         <div class="list-btn"></div>
                         <div class="road-menu-btn">
                             <?php get_template_part('inc/menu-btn'); ?>
@@ -250,7 +306,11 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                             <div class="content">
                                 <div class="tree tree-left"></div>
                                 <div class="tree tree-right"></div>
-                                <div class="castle"></div>
+                                <div class="castle">
+                                    <div class="castle-animal">
+                                        <iframe src="https://lottie.host/embed/b4994f66-3673-48c5-a9f8-a2dc72b38c6e/eWk4vLyDMj.json"></iframe>
+                                    </div>
+                                </div>
                                 <div class="road-content">
                                     <?php
                                     if ($query->have_posts()):
@@ -282,8 +342,7 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                                     ?>
                                             <div class="destination <?php echo $tag_classes; ?>">
                                                 <a class="goal-wrap" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>">
-                                                    <div class="goal hover-scale">
-                                                    </div>
+                                                    <div class="goal hover-scale"></div>
                                                     <div class="goal-bg"></div>
                                                     <div class="title-board">
                                                         <?php
@@ -319,7 +378,7 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                     <section class="page-section page1 show">
                         <div class="road-inner">
                             <div class="content">
-                                <div class="tree"></div>
+                                <div class="tree tree-anime"></div>
                                 <div class="road-content">
 
                                     <?php
@@ -413,7 +472,13 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                         <section class="page-section page2">
                             <div class="road-inner">
                                 <div class="content">
-                                    <div class="tree"></div>
+                                    <div class="tree tree-anime-animal">
+                                        <div class="tree-animal">
+                                        <iframe src="https://lottie.host/embed/8b84527e-a415-4e0b-a5cd-1de6cd3ffb1a/lxsh6nihf2.json" ></iframe>
+                                        </div>
+                                    </div>
+
+                                    <div class="tree tree-anime-animal"></div>
                                     <div class="road-content">
 
                                         <?php
@@ -488,6 +553,11 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                     ?>
                         <!-- セクション3 -->
                         <section class="page-section page3">
+                        <div class="sec3-anime-coaster">
+                            <div class="sec3-anime-bird">
+                                <iframe src="https://lottie.host/embed/421d3b3d-d381-49ba-b751-5d7dc96c02c8/XLrfuoTBb0.json"></iframe>
+                            </div>
+                        </div>
                             <div class="road-inner">
                                 <div class="content">
                                     <div class="tree"></div>
@@ -564,7 +634,11 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                     <?php if ($total_posts > 36): // 投稿数が36以上の場合にさらに中間セクションを表示 
                     ?>
                         <!-- セクション4 -->
+
                         <section class="page-section page4">
+                            <div class="road-action">
+                                <div class="action-hover"></div>
+                            </div>
                             <div class="road-inner">
                                 <div class="content">
                                     <div class="tree"></div>
@@ -798,7 +872,11 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                             <div class="content">
                                 <div class="tree tree-left"></div>
                                 <div class="tree tree-right"></div>
-                                <div class="castle"></div>
+                                <div class="castle">
+                                    <div class="castle-animal">
+                                        <iframe src="https://lottie.host/embed/b4994f66-3673-48c5-a9f8-a2dc72b38c6e/eWk4vLyDMj.json"></iframe>
+                                    </div>
+                                </div>
                                 <div class="road-content">
                                     <?php
                                     // 最後の4つの投稿を取得
