@@ -1041,7 +1041,7 @@ get_header();
                                                     <p class="TX"><span class="deco"></span>React 2.5 基礎マスターガイド</p>
                                                     <p class="count"><output class="count" id="value"><?php echo esc_attr($React02__5_value); ?></output>%</p>
                                                 </div>
-                                                <input class="progressBar" id="pi_input" name="$React02__5" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($React02__5_value); ?>" />
+                                                <input class="progressBar" id="pi_input" name="React02__5" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($React02__5_value); ?>" />
                                             </div>
 
 

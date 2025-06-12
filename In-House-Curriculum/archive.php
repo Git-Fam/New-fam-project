@@ -6,6 +6,13 @@ if (!is_user_logged_in()) {
 
 get_header();
 
+if (!function_exists('to_safe_class')) {
+    function to_safe_class($str) {
+        return preg_replace('/[^a-zA-Z0-9_-]/', '_', $str);
+    }
+}
+
+
 // 現在のユーザー情報を取得
 $current_user = wp_get_current_user();
 $current_username = $current_user->display_name; // 現在のログインユーザーの表示名
@@ -61,7 +68,7 @@ foreach ($users as $user) {
     $progress_data = [];
 
     foreach ($user_meta as $meta_key => $meta_value) {
-        if (preg_match('/^(ENV|VAL|INIT|div|responsive|JQ|LP|MiniLP|Sass|React|Java|SQL|Design|SEO|Form|FAM|test|JS|WP)/i', $meta_key)) {
+        if (preg_match('/^(ENV|VAL|INIT|div|responsive|JQ|LP|MiniLP|Sass|React|Java|SQL|Design|SEO|Form|FAM|test|JS|wordpress|jstqb)/i', $meta_key)) {
             
 
             $progress = intval($meta_value[0]);
@@ -166,6 +173,7 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
 
 <div class="sp-wrap">
     <div class="road-wappaer">
+        <div class="moon-deco"></div>
         <div class="action-modal">
             <div class="modal-content"></div>
             <div class="action-close"></div>
@@ -376,6 +384,7 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                 ?>
                     <!-- セクション1 -->
                     <section class="page-section page1 show">
+                        <div class="daytime-deco"></div>
                         <div class="road-inner">
                             <div class="content">
                                 <div class="tree tree-anime"></div>
