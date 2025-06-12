@@ -660,22 +660,22 @@ jQuery(function () {
 	function startRandomShow() {
 		const target = document.querySelector(".daytime-deco");
 
-		// function showOnce() {
-		// 	target.classList.add("show");
-		// 	// 1時間後に消す
-		// 	setTimeout(() => target.classList.remove("show"), 1 * 60 * 60 * 1000);
-
-		// 	// 次は71時間後に再びshow
-		// 	setTimeout(showOnce, 71 * 60 * 60 * 1000);
-		// }
-
 		function showOnce() {
 			target.classList.add("show");
-			// 10分後に消す
-			setTimeout(() => target.classList.remove("show"), 10 * 60 * 1000);
-			// 次は30分後後に再びshow
-			setTimeout(showOnce, 30 * 60 * 1000);}
-		showOnce();
+			// 1時間後に消す
+			setTimeout(() => target.classList.remove("show"), 1 * 60 * 60 * 1000);
+
+			// 次は71時間後に再びshow
+			setTimeout(showOnce, 71 * 60 * 60 * 1000);
+		}
+
+		// function showOnce() {
+		// 	target.classList.add("show");
+		// 	// 10分後に消す
+		// 	setTimeout(() => target.classList.remove("show"), 10 * 60 * 1000);
+		// 	// 次は30分後後に再びshow
+		// 	setTimeout(showOnce, 30 * 60 * 1000);}
+		// showOnce();
 	}
 
 	startRandomShow();
