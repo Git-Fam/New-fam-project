@@ -565,6 +565,27 @@ jQuery(function () {
 	updateGoalClasses();
 
 	$(function () {
+		// archive--itemにactiveを付ける関数（使い回せるようにwindowに出しておく）
+		window.updateArchiveItemActive = function () {
+			$(".archive--item").removeClass("active");
+			const $activeWap = $(".archive--contents--items--wap.active").first();
+			if ($activeWap.length) {
+				const classes = $activeWap.attr("class").split(" ");
+				// 'archive--contents--items--wap'と'active'以外がカテゴリ名
+				const categoryClass = classes.find(
+					(c) => c !== "archive--contents--items--wap" && c !== "active"
+				);
+				if (categoryClass) {
+					$(".archive--item").each(function () {
+						const tx = $(this).find(".TX").text().trim();
+						if (tx === categoryClass) {
+							$(this).addClass("active");
+						}
+					});
+				}
+			}
+		};
+
 		// パラメータ(category)の有無を調べる
 		const urlParams = new URLSearchParams(window.location.search);
 		const categoryParam = urlParams.get("category");
@@ -572,7 +593,10 @@ jQuery(function () {
 		if (categoryParam) {
 			// パラメータ優先: そのカテゴリ名の.archive--contents--items--wapにactiveを付ける
 			$(".archive--contents--items--wap").removeClass("active");
-			$(`.archive--contents--items--wap.${categoryParam}`).addClass("active");
+			// ←ここも念のためエスケープしておくと安心（特に記号含む場合）
+			const safeCategory = CSS.escape(categoryParam);
+			$(`.archive--contents--items--wap.${safeCategory}`).addClass("active");
+			window.updateArchiveItemActive(); // ←★追加
 		} else {
 			// パラメータが無いときだけ進捗ベースでactiveを付ける
 			const currentUser = allUsersProgress.find(
@@ -591,18 +615,73 @@ jQuery(function () {
 				}
 
 				if (targetKey) {
-					const $targetDestination = $(`.destination.${targetKey}`).first();
+					// ★ここでescape
+					const safeKey = CSS.escape(targetKey);
+					const $targetDestination = $(`.destination.${safeKey}`).first();
 					if ($targetDestination.length) {
 						const $parentWap = $targetDestination.closest(
 							".archive--contents--items--wap"
 						);
 						$(".archive--contents--items--wap").removeClass("active");
 						$parentWap.addClass("active");
+						window.updateArchiveItemActive(); // ←★追加
 					}
 				}
 			}
 		}
+		displayCharacters();
 	});
+
+	// 時間帯によって背景画像を切り替える関数
+	function updateTimeClass() {
+		const now = new Date();
+		const hour = now.getHours(); // 0〜23
+
+		let timeClass = "";
+
+		if (hour >= 4 && hour < 7) {
+			timeClass = "morning";
+		} else if (hour >= 7 && hour < 16) {
+			timeClass = "daytime";
+		} else if (hour >= 16 && hour < 18) {
+			timeClass = "afternoon";
+		} else {
+			// 18時〜翌4時
+			timeClass = "night";
+		}
+
+		// すでにmorning, daytime, afternoon, nightがついてたら消す
+		$(".road-wappaer")
+			.removeClass("morning daytime afternoon night")
+			.addClass(timeClass);
+	}
+
+	// 71時間ごとに1時間だけshowを付与 虹
+	function startRandomShow() {
+		const target = document.querySelector(".daytime-deco");
+
+		// function showOnce() {
+		// 	target.classList.add("show");
+		// 	// 1時間後に消す
+		// 	setTimeout(() => target.classList.remove("show"), 1 * 60 * 60 * 1000);
+
+		// 	// 次は71時間後に再びshow
+		// 	setTimeout(showOnce, 71 * 60 * 60 * 1000);
+		// }
+
+		function showOnce() {
+			target.classList.add("show");
+			// 10分後に消す
+			setTimeout(() => target.classList.remove("show"), 10 * 60 * 1000);
+			// 次は30分後後に再びshow
+			setTimeout(showOnce, 30 * 60 * 1000);}
+		showOnce();
+	}
+
+	startRandomShow();
+
+	// 最初に1回実行
+	updateTimeClass();
 
 	// タブのクリックイベントにキャラクター描画処理を追加
 	$(".archive--item").on("click", function () {

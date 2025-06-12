@@ -1,9 +1,9 @@
 @use "../../global"as *;
 @use "../globalCooperator-2"as *;
+
 /* -----------------------
   road-nime
 ----------------------- */
-
 
 // 1枚目木が揺れる
 .tree-anime {
@@ -320,16 +320,18 @@
 
   }
 
-  .action-close{
+  .action-close {
     position: absolute;
     @include iconContain($action-close);
-    @include pc{
-      width:  p(74);
+
+    @include pc {
+      width: p(74);
       height: p(44);
       top: p(50);
       right: p(50);
     }
-    @include sp{
+
+    @include sp {
       width: 74px;
       height: 44px;
       top: 20px;
@@ -337,8 +339,10 @@
     }
 
   }
-  &.show{
+
+  &.show {
     @include center;
+
     .modal-content {
       animation: road-action 1s ease-in-out 1s;
       animation-fill-mode: forwards;

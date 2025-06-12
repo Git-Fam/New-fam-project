@@ -4,6 +4,70 @@
 /* -----------------------
   load
 ----------------------- */
+.btn-box {
+  position: relative;
+
+  .columns_search {
+    padding: 6px 3px;
+
+    @include sp {
+      padding: s(6) s(3);
+      position: absolute;
+      bottom: s(-20);
+      left: s(-20);
+    }
+
+    .search-item {
+
+      form {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 4;
+
+        button {
+          aspect-ratio: 18/16;
+          @include iconContain($lupe);
+          cursor: pointer;
+          width: 18px;
+
+          @include sp {
+            width: s(18);
+          }
+        }
+
+        input {
+          color: #7FBF99;
+          @include wt600;
+          line-height: 140%;
+          letter-spacing: 1px;
+          border: none;
+          border-radius: 20px;
+          background: #E2F9EB;
+          outline: none;
+          font-size: 10px;
+          width: 141px;
+          height: 20px;
+          padding: 0 12px;
+
+          @include sp {
+            letter-spacing: s(1);
+            border-radius: s(20);
+            width: s(80);
+            height: s(20);
+            padding: s(0) s(12);
+            font-size: s(10);
+          }
+
+          &::placeholder {
+            color: #7FBF99;
+          }
+        }
+      }
+    }
+  }
+
+}
 
 
 
@@ -25,6 +89,68 @@
     @include sp {
       width: 100%;
       height: 100vh;
+    }
+
+    .daytime-deco {
+      @include imgContain("daytime.webp");
+      pointer-events: none;
+      opacity: 0;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      transition: all 1s;
+
+      @include pc {
+        width: p(549);
+        height: p(434);
+        bottom: p(250);
+        z-index: 30;
+      }
+    }
+
+    .moon-deco {
+      position: absolute;
+
+      @include pc {
+        width: p(92);
+        height: p(91);
+        bottom: p(564);
+        left: p(276);
+      }
+
+      @include sp {
+        width: 92px;
+        height: 91px;
+        bottom:  564px;
+        left: 76px;
+      }
+      }
+
+    &.morning {
+      background: linear-gradient(180deg, #7ABBE7 0%, #F3D4C4 26.92%, #FCF3C6 35.58%);
+    }
+
+    &.daytime {
+      background: linear-gradient(180deg, #47A2F7 0%, #72E3F9 24.04%, #C5F3FC 33.42%);
+
+      .daytime-deco.show {
+        opacity: 1;
+        transition: all 1s;
+      }
+    }
+
+    &.afternoon {
+      background: linear-gradient(180deg, #76D8FF 0%, #E8BE8D 23.08%, #D58A6D 37.98%);
+      .moon-deco {
+        @include imgContain("afternoon.webp");
+      }
+    }
+
+    &.night{
+      background: linear-gradient(180deg, #012658 0%, #155796 22.6%, #62C6D4 36.54%);
+      .moon-deco{
+        @include imgContain("night.webp");
+      }
     }
 
     .cloud-box {
@@ -172,7 +298,7 @@
       }
 
       @include sp {
-        top: 0;
+        top: s(20);
         gap: s(10);
         padding: s(25) 0 0 s(15);
       }
@@ -275,7 +401,7 @@
         }
 
         @include sp {
-          height: s(40);
+          height: s(60);
           position: fixed;
           padding-inline: s(10);
         }
@@ -304,6 +430,8 @@
 
           @include sp {
             gap: s(8);
+            align-items: start;
+            margin-top: s(-10);
           }
 
           .list-btn {
