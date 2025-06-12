@@ -607,15 +607,15 @@ jQuery(function () {
 				// last_progress_key が一番確実
 				const lastProgressKey = window.wpData?.last_progress_key;
 				let targetKey = lastProgressKey;
-
+			
 				if (!targetKey) {
 					targetKey = Object.keys(currentUser.progress).find(
 						(key) => currentUser.progress[key] > 0
 					);
 				}
-
+			
 				if (targetKey) {
-					// ★ここでescape
+					// 通常の進捗アクティブ処理
 					const safeKey = CSS.escape(targetKey);
 					const $targetDestination = $(`.destination.${safeKey}`).first();
 					if ($targetDestination.length) {
@@ -624,11 +624,16 @@ jQuery(function () {
 						);
 						$(".archive--contents--items--wap").removeClass("active");
 						$parentWap.addClass("active");
-						window.updateArchiveItemActive(); // ←★追加
+						window.updateArchiveItemActive();
 					}
+				} else {
+					// ★進捗が全くなかった場合は .HTML のタブをactiveにする
+					$(".archive--contents--items--wap").removeClass("active");
+					$(".archive--contents--items--wap.HTML").addClass("active");
+					window.updateArchiveItemActive();
 				}
 			}
-		}
+					}
 		displayCharacters();
 	});
 
