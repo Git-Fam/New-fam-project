@@ -17,6 +17,13 @@
   <script src="<?php echo get_template_directory_uri(); ?>/js/curriculum-tab.js"></script>
 <?php endif; ?>
 
+<?php if (is_single()) : ?>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/single.js"></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/single-2.js"></script>
+
+<?php endif; ?>
+
+
 <?php if (is_page('first')) : ?>
   <script src="<?php echo get_template_directory_uri(); ?>/js/page-first.js"></script>
 <?php endif; ?>

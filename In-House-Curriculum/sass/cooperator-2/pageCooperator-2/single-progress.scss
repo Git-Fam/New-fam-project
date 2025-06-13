@@ -1,0 +1,147 @@
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
+
+/* -----------------------
+  road-nime
+----------------------- */
+
+
+.single-progress {
+  @include pc{
+    width: 40%;
+    margin: p(100) auto 0;
+  }
+  @include sp{
+    width: 70%;
+    margin: s(70) auto 0;
+  }
+  .count {
+    @include wt500;
+    color: $F-4BC7FB;
+    text-align: end;
+
+    @include pc {
+      font-size: p(40);
+      // padding-right: p(20);
+
+    }
+
+    @include sp {
+      font-size: s(25);
+    }
+  }
+
+  .progressBar {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    background: #8acdff;
+    width: 100%;
+    border-radius: 10px;
+    border: solid 3px #dff1ff;
+    outline: 0;
+    position: relative;
+
+    @include pc {
+      height: p(5);
+    }
+
+    @include sp {
+      height: s(5);
+      margin: 0 auto;
+    }
+
+    &:focus {
+
+      @include pc {
+        box-shadow: 0 0 3px rgb(0, 161, 255);
+      }
+    }
+
+    // -webkit-向けのつまみ
+    &::-webkit-slider-thumb {
+
+      @include pc {
+        -webkit-appearance: none;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-right: solid transparent;
+        border-left: solid transparent;
+        border-top: solid #53aeff;
+        border-bottom: 0;
+        filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.15));
+        border-top-width: p(25);
+        border-right-width: p(15);
+        border-left-width: p(15);
+        transform: translateY(-50%);
+      }
+    }
+
+    // -moz-向けのつまみ
+    &::-moz-range-thumb {
+      @include pc {
+        filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.15));
+        -webkit-appearance: none;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-right: solid transparent;
+        border-left: solid transparent;
+        border-top: solid #53aeff;
+        border-bottom: 0;
+        border-top-width: p(30);
+        border-right-width: p(20);
+        border-left-width: p(20);
+      }
+
+    }
+
+    // Firefoxで点線が周りに表示されてしまう問題の解消
+    &::-moz-focus-outer {
+
+      @include pc {
+        border: 0;
+      }
+    }
+
+    // つまみをドラッグしているときのスタイル
+    &:active::-webkit-slider-thumb {
+      @include pc {
+        filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.3));
+      }
+    }
+  }
+  .progress--submit {
+    display: flex;
+    justify-content: center;
+    @include pc{
+      margin-top: p(20);
+    }
+    @include sp{
+      margin-top: s(10);
+    }
+
+    input[type="submit"] {
+      background: $P-4BC7FB;
+      color: $F-FFFFFF;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+
+      @include pc {
+        padding: p(10) p(20);
+        font-size: p(16);
+        width: 30%;
+      }
+
+      @include sp {
+        padding: s(5) s(10);
+        font-size: s(14);
+        width: 50%;
+      }
+    }
+  }
+
+}

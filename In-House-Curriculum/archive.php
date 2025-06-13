@@ -68,7 +68,7 @@ foreach ($users as $user) {
     $progress_data = [];
 
     foreach ($user_meta as $meta_key => $meta_value) {
-        if (preg_match('/^(ENV|VAL|INIT|div|responsive|JQ|LP|MiniLP|Sass|React|Java|SQL|Design|SEO|Form|FAM|test|JS|wordpress|jstqb)/i', $meta_key)) {
+        if (preg_match('/^(env|VAL|INIT|div|responsive|JQ|LP|MiniLP|Sass|React|Java|SQL|Design|SEO|Form|FAM|test|JS|wordpress|jstqb)/i', $meta_key)) {
             
 
             $progress = intval($meta_value[0]);

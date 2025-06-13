@@ -1,4 +1,6 @@
 @use "../global"as *;
+@use "../cooperator-2/globalCooperator-2/"as *;
+
 
 /* -----------------------
   single
@@ -75,15 +77,18 @@
         @include pc {
           margin-top: p(10);
         }
-        @include sp{
+
+        @include sp {
           margin-top: s(5);
         }
+
         transition: all 0.3s;
 
         @include pc {
           font-size: p(18);
         }
-        @include sp{
+
+        @include sp {
           font-size: s(13);
         }
 
@@ -96,6 +101,7 @@
           display: inline-block;
           color: $F-FFFFFF;
         }
+
         &:hover {
           a {
             color: #846A40;
@@ -223,7 +229,7 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          margin: 150px auto 0;
+          margin: 100px auto 0;
           gap: 20px;
 
           &-text,
@@ -246,5 +252,67 @@
         }
       }
     }
+  }
+
+}
+
+.confetti {
+  height: 0;
+  width: 0;
+  position: fixed;
+  background: rgba(47, 47, 47, 0.50);
+  top: 0;
+  left: 0;
+  display: none;
+
+  canvas {
+    #confettiBurst{
+      z-index: 200;
+      position: relative;
+    }
+  }
+
+  &--main {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+
+    img {
+      @include pc {
+        width: p(723);
+        height: p(159);
+      }
+    }
+
+    &-chara {
+      @include imgContain("single-complete-chara.webp");
+
+      @include pc {
+        width: p(676);
+        height: p(487);
+      }
+    }
+  }
+
+  .close {
+    @include iconContain($action-close);
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+
+    @include pc {
+      width: p(50);
+      height: p(50);
+    }
+  }
+  &.show{
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    transition: all 0.3s
+    ;
   }
 }
