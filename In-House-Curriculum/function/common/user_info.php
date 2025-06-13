@@ -257,6 +257,9 @@
 //     echo "Error deleting meta entries: " . $wpdb->last_error;
 // }
 
+// メモリ制限を緩和
+ini_set('memory_limit', '512M');
+
 // 欄追加
 add_filter('user_contactmethods', 'add_user_info');
 function add_user_info()
@@ -267,7 +270,8 @@ function add_user_info()
   $categories = get_categories(array(
     'orderby' => 'term_order',
     'order' => 'ASC',
-    'hide_empty' => false
+    'hide_empty' => false,
+    'number' => 100 // 一度に取得するカテゴリー数を制限
   ));
 
   // 各カテゴリーごとにタグを取得して保存スペースを作成
@@ -276,7 +280,7 @@ function add_user_info()
     $posts = get_posts(array(
       'post_type' => 'post',
       'category_name' => $category->slug,
-      'posts_per_page' => -1,
+      'posts_per_page' => 100, // 一度に取得する投稿数を制限
       'orderby' => 'menu_order',
       'order' => 'ASC'
     ));
@@ -286,12 +290,13 @@ function add_user_info()
     foreach ($posts as $post) {
       $post_tags = wp_get_object_terms($post->ID, 'post_tag', array(
         'orderby' => 'term_order',
-        'order' => 'ASC'
+        'order' => 'ASC',
+        'fields' => 'slugs' // スラッグのみを取得してメモリ使用量を削減
       ));
 
       if (!is_wp_error($post_tags) && !empty($post_tags)) {
-        foreach ($post_tags as $tag) {
-          $tag_array[$tag->slug] = $tag->name;
+        foreach ($post_tags as $tag_slug) {
+          $tag_array[$tag_slug] = $tag_slug;
         }
       }
     }
@@ -301,6 +306,26 @@ function add_user_info()
   }
 
   return $user_info;
+}
+
+// 新規ユーザー登録時にデフォルト値を設定
+add_action('user_register', 'set_default_progress_values');
+function set_default_progress_values($user_id)
+{
+  $user_info = add_user_info();
+
+  // バッチ処理でメタデータを追加
+  $batch_size = 50;
+  $tag_slugs = array_keys($user_info);
+  $batches = array_chunk($tag_slugs, $batch_size);
+
+  foreach ($batches as $batch) {
+    foreach ($batch as $tag_slug) {
+      add_user_meta($user_id, $tag_slug, '0', true);
+    }
+    // メモリを解放
+    wp_cache_flush();
+  }
 }
 
 // 投稿タグが更新されたときに保存スペースを更新
