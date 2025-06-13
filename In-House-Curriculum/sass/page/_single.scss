@@ -278,20 +278,32 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
+    @include sp{
+      bottom: s(-8);
+    }
 
     img {
       @include pc {
         width: p(723);
         height: p(159);
       }
+      @include sp{
+        width: s(373);
+        height: s(81);
+      }
     }
 
     &-chara {
       @include imgContain("single-complete-chara.webp");
-
+      margin: 0 auto;
       @include pc {
         width: p(676);
         height: p(487);
+      }
+      @include sp{
+        width: s(277);
+        height: s(200);
+        margin-top: s(50);
       }
     }
   }
@@ -306,6 +318,10 @@
     @include pc {
       width: p(50);
       height: p(50);
+    }
+    @include sp{
+      width: s(40);
+      height: s(40);
     }
   }
   &.show{
