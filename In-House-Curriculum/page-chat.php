@@ -45,41 +45,22 @@ get_header();
 
                             $group_users = get_users($args);
 
-                            // キー名と日本語課題名の対応表（必要なら増やして）
-                            $task_names = array(
-                                'div01' => 'DIVパズル１',
-                                'div02' => 'DIVパズル２',
-                                'div03' => 'DIVパズル３',
-                                'div04' => 'DIVパズル４',
-                                'div05' => 'DIVパズル５',
-                                'div06' => 'DIVパズル６',
-                                'div07' => 'DIVパズル７',
-                                'responsive' => 'レスポンシブ課題',
-                                'JQ01' => 'jQuery１',
-                                'JQ02' => 'jQuery２',
-                                'JQ03' => 'jQuery３',
-                                'JQ04' => 'jQuery４',
-                                'JQ05' => 'jQuery５',
-                                'JQ06' => 'jQuery６',
-                                'JQ07' => 'jQuery７',
-                                'JQ08' => 'jQuery８',
-                                'JQ09' => 'jQuery９',
-                                'JQ10' => 'jQuery１０',
-                                'JQLast' => 'JQ最終課題',
-                                'LP01' => 'サイト制作',
-                                'Sass01' => 'Sass01',
-                                'FAM01' => 'FAM01',
-                                'JS01' => 'JS01',
-                                'WP01' => 'WP01',
-                                'SEO01' => 'SEO01',
-                            );
+                            // 自動進捗キー生成（グループ内全員分から取得＆ユニーク化）
+                            $all_progress_keys = array();
+                            foreach ($group_users as $user) {
+                                $user_meta = get_user_meta($user->ID);
+                                foreach ($user_meta as $meta_key => $meta_value) {
+                                    if (preg_match('/^(env|VAL|INIT|div|responsive|JQ|LP|MiniLP|Sass|React|Java|SQL|Design|SEO|Form|FAM|test|JS|wordpress|jstqb)/i', $meta_key)) {
+                                        // 末尾が _date のフィールドは除外
+                                        if (substr($meta_key, -5) !== '_date') {
+                                            $all_progress_keys[] = $meta_key;
+                                        }
+                                    }
+                                }
+                            }
+                            $progress_keys = array_unique($all_progress_keys);
+                            sort($progress_keys);
 
-                            // 進捗メタキー（日本語配列じゃなくキー名のみで管理）
-                            $progress_keys = array(
-                                'div01', 'div02', 'div03', 'div04', 'div05', 'div06', 'div07',
-                                'responsive', 'JQ01', 'JQ02', 'JQ03', 'JQ04', 'JQ05', 'JQ06', 'JQ07', 'JQ08', 'JQ09', 'JQ10',
-                                'JQLast', 'LP01', 'Sass01', 'FAM01', 'JS01', 'WP01', 'SEO01'
-                            );
 
                             // --- 各ユーザーごとに100%課題をタイムライン配列に格納 ---
                             foreach ($group_users as $user) {
@@ -96,10 +77,24 @@ get_header();
                                         }
                                         $completion_date = get_user_meta($user_id, $date_meta_key, true);
                                         if ($completion_date) {
+                            
+                                            // ここから追加！タグのスラッグが $meta_key の投稿タイトルを取得
+                                            $task_post_title = $meta_key;
+                                            $task_query = new WP_Query(array(
+                                                'posts_per_page' => 1,
+                                                'tag' => $meta_key,
+                                            ));
+                                            if ($task_query->have_posts()) {
+                                                $task_query->the_post();
+                                                $task_post_title = get_the_title();
+                                                wp_reset_postdata();
+                                            }
+                                            // ここまで追加
+                            
                                             $timeline_items[] = array(
                                                 'user_name' => $user_name,
                                                 'meta_key' => $meta_key,
-                                                'task_name' => isset($task_names[$meta_key]) ? $task_names[$meta_key] : $meta_key,
+                                                'task_name' => $task_post_title, // ←ここだけ変わる
                                                 'user_id' => $user_id,
                                                 'completion_date' => $completion_date,
                                                 'formatted_date' => date_i18n('n月j日 G:i', strtotime($completion_date)),
@@ -108,24 +103,22 @@ get_header();
                                     }
                                 }
                             }
-
                             // --- 完了日（降順）で並び替え ---
                             usort($timeline_items, function($a, $b) {
                                 return strtotime($b['completion_date']) - strtotime($a['completion_date']);
                             });
 
-
-                            $count = 0; // ← カウンタ追加
+                            $count = 0;
                             // --- タイムライン出力 ---
                             foreach ($timeline_items as $item) {
-                                if ($count >= 50) break; // ← 50件でストップ
+                                if ($count >= 50) break;
 
                                 $item_id = $item['user_id'] . '_' . $item['meta_key'];
                                 $liked_items = get_user_meta(get_current_user_id(), 'liked_items', true) ?: array();
                                 $already_liked_any = in_array($item_id . '_heart', $liked_items) || in_array($item_id . '_hand', $liked_items) || in_array($item_id . '_cat', $liked_items);
 
                                 echo '<div class="timeline-item">';
-                                echo '<h3>' . esc_html($item['user_name']) . 'さんが<br>' . esc_html($item['task_name']) . 'を完了しました！</h3>';
+                                echo '<h3>' . esc_html($item['user_name']) . 'さんが<br>' . esc_html($item['task_name']) . ' を完了しました！</h3>';
                                 echo '<div style="font-size:0.9em;color:#888;">' . esc_html($item['formatted_date']) . '</div>';
                                 echo '<div class="like-button-wrap">';
                                 echo '<button class="like-button heart' . (in_array($item_id . '_heart', $liked_items) ? ' liked' : '') . '" data-item-id="' . esc_attr($item_id . '_heart') . '"' . ($already_liked_any ? ' disabled' : '') . '><div class="icon"></div><p class="like-TX">いいね</button>';
@@ -134,8 +127,10 @@ get_header();
                                 echo '</div>';
                                 echo '</div>';
 
-                                $count++; // ← カウントアップ
+                                $count++;
                             }
+
+                        
                             ?>
                         </div>
                         <div class="C_reaction timeline-jamp">
@@ -180,4 +175,3 @@ get_header();
 </div>
 
 <?php get_footer(); ?>
-                            

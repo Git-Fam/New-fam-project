@@ -427,8 +427,9 @@ jQuery(function () {
 								lastCheckpointClass = key;
 								lastProgressValue = progressValue;
 							}
-						});
 
+						});
+						
 						// 目的地の要素が見つかった後、キャラクター表示処理の直前で期限切れチェック
 						if (lastCheckpointClass) {
 							const $checkpointElement = $activeCategory.find(
@@ -459,6 +460,7 @@ jQuery(function () {
 										});
 
 									const $nameElement = $("<p>").addClass("name").text(username);
+
 									if (isMe) {
 										$nameElement.css("color", "red");
 										$characterBox.addClass("me");
@@ -607,13 +609,13 @@ jQuery(function () {
 				// last_progress_key が一番確実
 				const lastProgressKey = window.wpData?.last_progress_key;
 				let targetKey = lastProgressKey;
-			
+
 				if (!targetKey) {
 					targetKey = Object.keys(currentUser.progress).find(
 						(key) => currentUser.progress[key] > 0
 					);
 				}
-			
+
 				if (targetKey) {
 					// 通常の進捗アクティブ処理
 					const safeKey = CSS.escape(targetKey);
@@ -633,7 +635,7 @@ jQuery(function () {
 					window.updateArchiveItemActive();
 				}
 			}
-					}
+		}
 		displayCharacters();
 	});
 

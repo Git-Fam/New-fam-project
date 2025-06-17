@@ -7,6 +7,7 @@ if (!is_user_logged_in()) {
 get_header();
 
 if (!function_exists('to_safe_class')) {
+
     function to_safe_class($str) {
         return preg_replace('/[^a-zA-Z0-9_-]/', '_', $str);
     }
@@ -17,7 +18,7 @@ if (!function_exists('to_safe_class')) {
 $current_user = wp_get_current_user();
 $current_username = $current_user->display_name; // 現在のログインユーザーの表示名
 $current_user_id = $current_user->ID; // 元のユーザーIDを保持
-
+    
 // 全ユーザーの進捗データとキャラクターHTMLを格納する配列
 $all_users_progress = [];
 $all_users_characters = [];
@@ -144,6 +145,7 @@ if ($last_updated_field) {
         wp_reset_postdata();
     }
 }
+
 
 
 
@@ -333,14 +335,14 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
 
                                             if ($post_tags && !is_wp_error($post_tags)) {
                                                 // タグが存在する場合のみクラス名を追加
-                                                $tag_names = array_map(function ($tag) {
-                                                    // タグの名前を取得して、クラス名として使えるように変換
-                                                    $tag_name = esc_attr($tag->name);
-                                                    $tag_name = preg_replace('/[^a-zA-Z0-9]/', '_', $tag_name); // 非アルファベット・非数字はアンダースコアに置換
-                                                    return $tag_name;
+                                                $tag_slugs = array_map(function ($tag) {
+                                                    // タグのスラッグを取得して、クラス名として使えるように変換
+                                                    $tag_slug = esc_attr($tag->slug);
+                                                    $tag_slug = preg_replace('/[^a-zA-Z0-9_-]/', '_', $tag_slug); // スラッグにも念のためサニタイズ
+                                                    return $tag_slug;
                                                 }, $post_tags);
-                                                $tag_classes = implode(' ', $tag_names);
-                                            }
+                                                $tag_classes = implode(' ', $tag_slugs);
+                                                }
 
                                             // クラス名が空の場合の処理
                                             if (empty($tag_classes)) {
@@ -430,14 +432,14 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
 
                                             if ($post_tags && !is_wp_error($post_tags)) {
                                                 // タグが存在する場合のみクラス名を追加
-                                                $tag_names = array_map(function ($tag) {
-                                                    // タグの名前を取得して、クラス名として使えるように変換
-                                                    $tag_name = esc_attr($tag->name);
-                                                    $tag_name = preg_replace('/[^a-zA-Z0-9]/', '_', $tag_name); // 非アルファベット・非数字はアンダースコアに置換
-                                                    return $tag_name;
+                                                $tag_slugs = array_map(function ($tag) {
+                                                    // タグのスラッグを取得して、クラス名として使えるように変換
+                                                    $tag_slug = esc_attr($tag->slug);
+                                                    $tag_slug = preg_replace('/[^a-zA-Z0-9_-]/', '_', $tag_slug); // スラッグにも念のためサニタイズ
+                                                    return $tag_slug;
                                                 }, $post_tags);
-                                                $tag_classes = implode(' ', $tag_names);
-                                            }
+                                                $tag_classes = implode(' ', $tag_slugs);
+                                                }
 
                                             // クラス名が空の場合の処理
                                             if (empty($tag_classes)) {
@@ -508,14 +510,14 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
 
                                                 if ($post_tags && !is_wp_error($post_tags)) {
                                                     // タグが存在する場合のみクラス名を追加
-                                                    $tag_names = array_map(function ($tag) {
-                                                        // タグの名前を取得して、クラス名として使えるように変換
-                                                        $tag_name = esc_attr($tag->name);
-                                                        $tag_name = preg_replace('/[^a-zA-Z0-9]/', '_', $tag_name); // 非アルファベット・非数字はアンダースコアに置換
-                                                        return $tag_name;
+                                                    $tag_slugs = array_map(function ($tag) {
+                                                        // タグのスラッグを取得して、クラス名として使えるように変換
+                                                        $tag_slug = esc_attr($tag->slug);
+                                                        $tag_slug = preg_replace('/[^a-zA-Z0-9_-]/', '_', $tag_slug); // スラッグにも念のためサニタイズ
+                                                        return $tag_slug;
                                                     }, $post_tags);
-                                                    $tag_classes = implode(' ', $tag_names);
-                                                }
+                                                    $tag_classes = implode(' ', $tag_slugs);
+                                                    }
 
                                                 // クラス名が空の場合の処理
                                                 if (empty($tag_classes)) {
@@ -590,14 +592,14 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
 
                                                 if ($post_tags && !is_wp_error($post_tags)) {
                                                     // タグが存在する場合のみクラス名を追加
-                                                    $tag_names = array_map(function ($tag) {
-                                                        // タグの名前を取得して、クラス名として使えるように変換
-                                                        $tag_name = esc_attr($tag->name);
-                                                        $tag_name = preg_replace('/[^a-zA-Z0-9]/', '_', $tag_name); // 非アルファベット・非数字はアンダースコアに置換
-                                                        return $tag_name;
+                                                    $tag_slugs = array_map(function ($tag) {
+                                                        // タグのスラッグを取得して、クラス名として使えるように変換
+                                                        $tag_slug = esc_attr($tag->slug);
+                                                        $tag_slug = preg_replace('/[^a-zA-Z0-9_-]/', '_', $tag_slug); // スラッグにも念のためサニタイズ
+                                                        return $tag_slug;
                                                     }, $post_tags);
-                                                    $tag_classes = implode(' ', $tag_names);
-                                                }
+                                                    $tag_classes = implode(' ', $tag_slugs);
+                                                        }
 
                                                 // クラス名が空の場合の処理
                                                 if (empty($tag_classes)) {
@@ -671,13 +673,13 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
 
                                                 if ($post_tags && !is_wp_error($post_tags)) {
                                                     // タグが存在する場合のみクラス名を追加
-                                                    $tag_names = array_map(function ($tag) {
-                                                        // タグの名前を取得して、クラス名として使えるように変換
-                                                        $tag_name = esc_attr($tag->name);
-                                                        $tag_name = preg_replace('/[^a-zA-Z0-9]/', '_', $tag_name); // 非アルファベット・非数字はアンダースコアに置換
-                                                        return $tag_name;
-                                                    }, $post_tags);
-                                                    $tag_classes = implode(' ', $tag_names);
+                                            $tag_slugs = array_map(function ($tag) {
+                                                // タグのスラッグを取得して、クラス名として使えるように変換
+                                                $tag_slug = esc_attr($tag->slug);
+                                                $tag_slug = preg_replace('/[^a-zA-Z0-9_-]/', '_', $tag_slug); // スラッグにも念のためサニタイズ
+                                                return $tag_slug;
+                                            }, $post_tags);
+                                            $tag_classes = implode(' ', $tag_slugs);
                                                 }
 
                                                 // クラス名が空の場合の処理
@@ -748,13 +750,13 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
 
                                                 if ($post_tags && !is_wp_error($post_tags)) {
                                                     // タグが存在する場合のみクラス名を追加
-                                                    $tag_names = array_map(function ($tag) {
-                                                        // タグの名前を取得して、クラス名として使えるように変換
-                                                        $tag_name = esc_attr($tag->name);
-                                                        $tag_name = preg_replace('/[^a-zA-Z0-9]/', '_', $tag_name); // 非アルファベット・非数字はアンダースコアに置換
-                                                        return $tag_name;
-                                                    }, $post_tags);
-                                                    $tag_classes = implode(' ', $tag_names);
+                                            $tag_slugs = array_map(function ($tag) {
+                                                // タグのスラッグを取得して、クラス名として使えるように変換
+                                                $tag_slug = esc_attr($tag->slug);
+                                                $tag_slug = preg_replace('/[^a-zA-Z0-9_-]/', '_', $tag_slug); // スラッグにも念のためサニタイズ
+                                                return $tag_slug;
+                                            }, $post_tags);
+                                            $tag_classes = implode(' ', $tag_slugs);
                                                 }
 
                                                 // クラス名が空の場合の処理
@@ -822,13 +824,13 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
 
                                                 if ($post_tags && !is_wp_error($post_tags)) {
                                                     // タグが存在する場合のみクラス名を追加
-                                                    $tag_names = array_map(function ($tag) {
-                                                        // タグの名前を取得して、クラス名として使えるように変換
-                                                        $tag_name = esc_attr($tag->name);
-                                                        $tag_name = preg_replace('/[^a-zA-Z0-9]/', '_', $tag_name); // 非アルファベット・非数字はアンダースコアに置換
-                                                        return $tag_name;
-                                                    }, $post_tags);
-                                                    $tag_classes = implode(' ', $tag_names);
+                                            $tag_slugs = array_map(function ($tag) {
+                                                // タグのスラッグを取得して、クラス名として使えるように変換
+                                                $tag_slug = esc_attr($tag->slug);
+                                                $tag_slug = preg_replace('/[^a-zA-Z0-9_-]/', '_', $tag_slug); // スラッグにも念のためサニタイズ
+                                                return $tag_slug;
+                                            }, $post_tags);
+                                            $tag_classes = implode(' ', $tag_slugs);
                                                 }
 
                                                 // クラス名が空の場合の処理
@@ -905,14 +907,14 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
 
                                             if ($post_tags && !is_wp_error($post_tags)) {
                                                 // タグが存在する場合のみクラス名を追加
-                                                $tag_names = array_map(function ($tag) {
-                                                    // タグの名前を取得して、クラス名として使えるように変換
-                                                    $tag_name = esc_attr($tag->name);
-                                                    $tag_name = preg_replace('/[^a-zA-Z0-9]/', '_', $tag_name); // 非アルファベット・非数字はアンダースコアに置換
-                                                    return $tag_name;
+                                                $tag_slugs = array_map(function ($tag) {
+                                                    // タグのスラッグを取得して、クラス名として使えるように変換
+                                                    $tag_slug = esc_attr($tag->slug);
+                                                    $tag_slug = preg_replace('/[^a-zA-Z0-9_-]/', '_', $tag_slug); // スラッグにも念のためサニタイズ
+                                                    return $tag_slug;
                                                 }, $post_tags);
-                                                $tag_classes = implode(' ', $tag_names);
-                                            }
+                                                $tag_classes = implode(' ', $tag_slugs);
+                                                }
 
                                             // クラス名が空の場合の処理
                                             if (empty($tag_classes)) {
@@ -1016,19 +1018,23 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
 
                             foreach ($progress_data as $key => $value) {
                                 if ($value == '100') {
-                                    // 日付フィールド名を動的に取得
                                     $date_field_key = $key . '_date';
-
-                                    // // 日付が未設定の場合、現在の日時を設定
-                                    // if (!get_user_meta($user_id, $date_field_key, true)) {
-                                    //     $current_time = current_time('mysql');
-                                    //     update_user_meta($user_id, $date_field_key, $current_time);
-                                    // }
-
-                                    // 完了日時を取得
                                     $completion_date = get_user_meta($user_id, $date_field_key, true);
                                     $formatted_date = date_i18n('n月j日 G:i', strtotime($completion_date));
-
+                            
+                                    // タグスラッグに一致する投稿タイトルを取得
+                                    $title = $key; // デフォルトはkey
+                                    $args = array(
+                                        'tag' => $key,
+                                        'posts_per_page' => 1,
+                                        'orderby' => 'date',
+                                        'order' => 'DESC',
+                                    );
+                                    $posts = get_posts($args);
+                                    if ($posts) {
+                                        $title = get_the_title($posts[0]->ID);
+                                    }
+                            
                                     // 最新の完了項目かどうかをチェック
                                     if (is_null($latest_completion_date) || strtotime($completion_date) > strtotime($latest_completion_date)) {
                                         $latest_completion_date = $completion_date;
@@ -1036,7 +1042,8 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                                             'user_name' => $user_name,
                                             'key' => $key,
                                             'date' => $formatted_date,
-                                            'item_id' => $user_id . '_' . $key
+                                            'item_id' => $user_id . '_' . $key,
+                                            'post_title' => $title // 追加
                                         );
                                     }
                                 }
@@ -1049,7 +1056,7 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                             $already_liked = in_array($latest_completion['item_id'], $liked_items);
 
                             echo '<div class="timeline-item">';
-                            echo '<h3>' . esc_html($latest_completion['user_name']) . 'さんが<br>' . esc_html($latest_completion['key']) . 'を完了しました' . '</h3>';
+                            echo '<h3>' . esc_html($latest_completion['user_name']) . 'さんが<br>' . esc_html($latest_completion['post_title']) . 'を完了しました' . '</h3>';
                             echo '</div>';
                         }
                         ?>
