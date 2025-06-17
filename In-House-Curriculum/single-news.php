@@ -9,7 +9,6 @@ get_header();
 
 <div class="columns">
     <div class="columns--main columns--main--single">
-        <?php get_template_part('category-side'); ?>
 
         <?php
         if (have_posts()) : while (have_posts()) : the_post();
@@ -33,7 +32,7 @@ get_header();
                                 <?php endif; ?>
                             </div>
                             <div class="single--nation--text">
-                                <a href="<?php echo home_url('/column'); ?>">戻る</a>
+                                <a href="<?php echo home_url('/my'); ?>">戻る</a>
                             </div>
                             <div class="single--nation--text">
                                 <?php if (get_previous_post()): ?>

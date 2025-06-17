@@ -146,22 +146,25 @@ get_header();
                         <iframe src="https://lottie.host/embed/421d3b3d-d381-49ba-b751-5d7dc96c02c8/XLrfuoTBb0.json"></iframe>
                     </div>
                 </div>
+                <div class="title">
+                    <h2 class="TL">お知らせ</h2>
+                </div>
                 <div class="bbs--content">
-                    <div class="title">
-                        <h2 class="TL">お知らせ</h2>
-                    </div>
                     <ul class="sentence">
                         <?php
                         $news_query = new WP_Query(array(
                             'post_type' => 'news',
                             'posts_per_page' => 5, // 表示する投稿数
+                            'paged' => $paged, 
                         ));
                         if ($news_query->have_posts()) :
                             while ($news_query->have_posts()) : $news_query->the_post();
                         ?>
                                 <li>
-                                    <p class="time"><?php echo get_the_date('Y.m.d'); ?></p>
-                                    <p class="text"><?php the_title(); ?></p>
+                                    <a href="<?php the_permalink(); ?>">
+                                        <p class="time"><?php echo get_the_date('Y.m.d'); ?></p>
+                                        <p class="text"><?php the_title(); ?></p>
+                                    </a>
                                 </li>
                             <?php
                             endwhile;
@@ -173,6 +176,13 @@ get_header();
                             </li>
                         <?php endif; ?>
                     </ul>
+                </div>
+                <div class="bbs--content--pageNation">
+                    <?php
+                    if (function_exists('wp_pagenavi')) {
+                        wp_pagenavi(array('query' => $news_query));
+                    }
+                    ?>
                 </div>
             </div>
 

@@ -89,14 +89,34 @@
             s.parentNode.insertBefore(tk, s)
         })(document);
     </script>
-        <script>
-        (function (d) {
+    <script>
+        (function(d) {
             var config = {
-                kitId: 'wxg1png',
-                scriptTimeout: 3000,
-                async: true
-            },
-                h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
+                    kitId: 'wxg1png',
+                    scriptTimeout: 3000,
+                    async: true
+                },
+                h = d.documentElement,
+                t = setTimeout(function() {
+                    h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+                }, config.scriptTimeout),
+                tk = d.createElement("script"),
+                f = false,
+                s = d.getElementsByTagName("script")[0],
+                a;
+            h.className += " wf-loading";
+            tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+            tk.async = true;
+            tk.onload = tk.onreadystatechange = function() {
+                a = this.readyState;
+                if (f || a && a != "complete" && a != "loaded") return;
+                f = true;
+                clearTimeout(t);
+                try {
+                    Typekit.load(config)
+                } catch (e) {}
+            };
+            s.parentNode.insertBefore(tk, s)
         })(document);
     </script>
 
@@ -105,6 +125,34 @@
 </head>
 
 <body>
+
+    <?php if (is_user_logged_in()) : ?>
+        <?php
+        $recent_news_query = new WP_Query(array(
+            'post_type' => 'news',
+            'posts_per_page' => 1,
+            'date_query' => array(
+                array(
+                    'after' => '7 days ago'
+                )
+            )
+        ));
+        $has_recent_news = $recent_news_query->have_posts() ? 'true' : 'false';
+        wp_reset_postdata();
+        ?>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var today = new Date().toISOString().slice(0, 10);
+                var lastAlertDate = localStorage.getItem('newsAlertDate');
+
+                if (window.hasRecentNews && lastAlertDate !== today) {
+                    alert('新着のお知らせがあります！');
+                    localStorage.setItem('newsAlertDate', today);
+                }
+            });
+            window.hasRecentNews = <?php echo $has_recent_news; ?>;
+        </script>
+    <?php endif; ?>
 
 
     <?php if (is_home()) : ?>
