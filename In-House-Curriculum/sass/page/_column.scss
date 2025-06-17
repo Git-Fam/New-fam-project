@@ -16,6 +16,8 @@
   }
 
   @include sp {
+    height: 100vh;
+    min-height: 650px;
     padding: 100px 10px 300px;
   }
 

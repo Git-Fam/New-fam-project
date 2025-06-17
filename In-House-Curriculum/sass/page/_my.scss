@@ -348,7 +348,7 @@
           height: clamp(400px, p(499), 600px);
           left: p(20);
           bottom: p(40);
-          padding: clamp(80px, p(90), 110px) clamp(80px, p(90), 110px) clamp(140px, p(160), 200px);
+          padding: clamp(50px, p(70), 75px) clamp(80px, p(90), 110px) clamp(140px, p(160), 200px);
         }
 
         @include sp {
@@ -445,34 +445,44 @@
           }
         }
 
+        .title {
+
+          @include pc {
+            margin-bottom: clamp(20px, p(30), 30px);
+          }
+
+          @include sp {
+            margin-bottom: s(10);
+          }
+
+          .TL {
+            color: #FFF;
+            text-align: center;
+            @include wt700;
+
+            @include pc {
+              font-size: clamp(14px, p(16), 18px);
+            }
+
+            @include sp {
+              font-size: s(14);
+            }
+          }
+        }
+
         &--content {
           overflow-y: scroll;
 
           @include pc {
-            height: 100%;
+            height: 70%;
             @include column(p(18));
           }
 
           @include sp {
-            height: s(150);
+            height: 65%;
             @include column(s(10));
           }
 
-          .title {
-            .TL {
-              color: #FFF;
-              text-align: center;
-              @include wt700;
-
-              @include pc {
-                font-size: clamp(14px, p(16), 18px);
-              }
-
-              @include sp {
-                font-size: s(14);
-              }
-            }
-          }
 
           .sentence {
 
@@ -533,12 +543,47 @@
             }
           }
         }
+
+        &--content--pageNation {
+          width: fit-content;
+          margin: 0 auto;
+
+          @include pc {
+            margin-top: clamp(20px, p(30), 30px);
+          }
+
+          @include sp {
+            margin-top: s(10);
+          }
+
+          a {
+            color: #FFF;
+          }
+
+          span {
+            color: #333;
+          }
+
+          a,span {
+            @include wt500;
+
+
+            @include pc {
+              font-size: clamp(12px, p(14), 16px);
+            }
+
+            @include sp {
+              font-size: s(12);
+            }
+          }
+        }
       }
 
       .spy {
         position: absolute;
         z-index: 2;
         display: flex;
+        pointer-events: none;
 
         @include pc {
           left: p(-30);
@@ -646,6 +691,7 @@
               display: block;
               width: fit-content;
               transition: all 0.3s;
+              pointer-events: auto;
 
               @include pc {
                 margin-left: auto;
