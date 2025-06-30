@@ -15,6 +15,8 @@
 <?php if (is_archive() || is_page('cover')) : ?>
   <script src="<?php echo get_template_directory_uri(); ?>/js/cover.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/js/curriculum-tab.js"></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/road-random.js"></script>
+
 <?php endif; ?>
 
 <?php if (is_single()) : ?>
@@ -57,6 +59,10 @@
   <script src="<?php echo get_template_directory_uri(); ?>/js/aptitude-result.js"></script>
 <?php endif; ?>
 
+<?php if (is_page('randomevent')) : ?>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/random-event.js"></script>
+<?php endif; ?>
+
 
 
 <script src="<?php echo get_template_directory_uri(); ?>/js/script.js"></script>
@@ -67,3 +73,6 @@
 </body>
 
 </html>
+
+
+
