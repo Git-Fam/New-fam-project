@@ -338,7 +338,15 @@
 
             .goal-wrap,
             .character-box {
-              rotate: unset;
+              rotate: unset !important;
+              .title-board {
+                transform: unset;
+
+                .board-TX {
+                  transform: unset;
+                }
+              }
+
             }
           }
 

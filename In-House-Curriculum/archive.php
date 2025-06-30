@@ -177,7 +177,15 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
     <div class="road-wappaer">
         <div class="moon-deco"></div>
         <div class="action-modal">
-            <div class="modal-content"></div>
+            <div class="modal-content">
+
+                <div class="random-thumbnail"></div>  <!-- 画像（<img>を入れる想定） -->
+                <h2 class="random-TL"></h2>            <!-- タイトル -->
+                <div class="random-TX"></div>      
+                
+                <div class="lost-button"></div>
+                <div class="lost-pass-button"></div>
+            </div>
             <div class="action-close"></div>
         </div>
 
@@ -330,42 +338,7 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                                         $post_id = get_the_ID();
 
                                             // 記事に付与されたタグを取得
-                                            $post_tags = get_the_tags();
-                                            $tag_classes = '';
-
-                                            if ($post_tags && !is_wp_error($post_tags)) {
-                                                // タグが存在する場合のみクラス名を追加
-                                                $tag_slugs = array_map(function ($tag) {
-                                                    // タグのスラッグを取得して、クラス名として使えるように変換
-                                                    $tag_slug = esc_attr($tag->slug);
-                                                    $tag_slug = preg_replace('/[^a-zA-Z0-9_-]/', '_', $tag_slug); // スラッグにも念のためサニタイズ
-                                                    return $tag_slug;
-                                                }, $post_tags);
-                                                $tag_classes = implode(' ', $tag_slugs);
-                                                }
-
-                                            // クラス名が空の場合の処理
-                                            if (empty($tag_classes)) {
-                                                $tag_classes = 'no-tags'; // タグがない場合にデフォルトのクラスを設定
-                                            }
-
-                                    ?>
-                                            <div class="destination <?php echo $tag_classes; ?>">
-                                                <a class="goal-wrap" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>">
-                                                    <div class="goal hover-scale"></div>
-                                                    <div class="goal-bg"></div>
-                                                    <div class="title-board">
-                                                        <?php
-                                                        $slug = get_post_field('post_name', get_the_ID());
-                                                        $decoded_slug = urldecode($slug); // URLエンコードされている場合にデコード
-                                                        ?>
-                                                        <p class="board-TX"> <?php echo esc_html($decoded_slug); ?></p>
-                                                    </div>
-
-                                                </a>
-                                            </div>
-
-                                        <?php
+                                            echo generate_destination_item(get_the_ID());
                                         endwhile;
                                     else:
                                         ?>
@@ -389,6 +362,8 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                         <div class="daytime-deco"></div>
                         <div class="road-inner">
                             <div class="content">
+                                <div class="road-lost jQuery"></div>
+
                                 <div class="tree tree-anime"></div>
                                 <div class="road-content">
 
@@ -426,44 +401,7 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                                                 break; // セクション1の投稿を表示するループを終了
                                             }
 
-                                            // 記事に付与されたタグを取得
-                                            $post_tags = get_the_tags();
-                                            $tag_classes = '';
-
-                                            if ($post_tags && !is_wp_error($post_tags)) {
-                                                // タグが存在する場合のみクラス名を追加
-                                                $tag_slugs = array_map(function ($tag) {
-                                                    // タグのスラッグを取得して、クラス名として使えるように変換
-                                                    $tag_slug = esc_attr($tag->slug);
-                                                    $tag_slug = preg_replace('/[^a-zA-Z0-9_-]/', '_', $tag_slug); // スラッグにも念のためサニタイズ
-                                                    return $tag_slug;
-                                                }, $post_tags);
-                                                $tag_classes = implode(' ', $tag_slugs);
-                                                }
-
-                                            // クラス名が空の場合の処理
-                                            if (empty($tag_classes)) {
-                                                $tag_classes = 'no-tags'; // タグがない場合にデフォルトのクラスを設定
-                                            }
-                                    ?>
-
-                                            <div class="destination <?php echo $tag_classes; ?>">
-                                                <a class="goal-wrap" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>">
-                                                    <div class="goal hover-scale">
-                                                    </div>
-                                                    <div class="goal-bg"></div>
-                                                    <div class="title-board">
-                                                        <?php
-                                                        $slug = get_post_field('post_name', get_the_ID());
-                                                        $decoded_slug = urldecode($slug); // URLエンコードされている場合にデコード
-                                                        ?>
-                                                        <p class="board-TX"> <?php echo esc_html($decoded_slug); ?></p>
-                                                    </div>
-                                                </a>
-                                            </div>
-
-
-                                    <?php
+                                            echo generate_destination_item(get_the_ID());
                                             $post_index++;
                                         endwhile;
                                     endif;
@@ -490,6 +428,7 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                                     </div>
 
                                     <div class="tree tree-anime-animal"></div>
+                                    <div class="road-lost HTML"></div>
                                     <div class="road-content">
 
                                         <?php
@@ -505,43 +444,8 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                                             while ($query->have_posts()): $query->the_post();
 
                                                 // 記事に付与されたタグを取得
-                                                $post_tags = get_the_tags();
-                                                $tag_classes = '';
+                                                echo generate_destination_item(get_the_ID());
 
-                                                if ($post_tags && !is_wp_error($post_tags)) {
-                                                    // タグが存在する場合のみクラス名を追加
-                                                    $tag_slugs = array_map(function ($tag) {
-                                                        // タグのスラッグを取得して、クラス名として使えるように変換
-                                                        $tag_slug = esc_attr($tag->slug);
-                                                        $tag_slug = preg_replace('/[^a-zA-Z0-9_-]/', '_', $tag_slug); // スラッグにも念のためサニタイズ
-                                                        return $tag_slug;
-                                                    }, $post_tags);
-                                                    $tag_classes = implode(' ', $tag_slugs);
-                                                    }
-
-                                                // クラス名が空の場合の処理
-                                                if (empty($tag_classes)) {
-                                                    $tag_classes = 'no-tags'; // タグがない場合にデフォルトのクラスを設定
-                                                }
-                                        ?>
-
-                                                <div class="destination <?php echo $tag_classes; ?>">
-                                                    <a class="goal-wrap" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>">
-                                                        <div class="goal hover-scale">
-                                                        </div>
-                                                        <div class="goal-bg"></div>
-                                                        <div class="title-board">
-                                                            <?php
-                                                            $slug = get_post_field('post_name', get_the_ID());
-                                                            $decoded_slug = urldecode($slug); // URLエンコードされている場合にデコード
-                                                            ?>
-                                                            <p class="board-TX"> <?php echo esc_html($decoded_slug); ?></p>
-                                                        </div>
-
-                                                    </a>
-                                                </div>
-
-                                            <?php
                                             endwhile;
                                         else:
                                             ?>
@@ -587,43 +491,7 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                                             while ($query->have_posts()): $query->the_post();
 
                                                 // 記事に付与されたタグを取得
-                                                $post_tags = get_the_tags();
-                                                $tag_classes = '';
-
-                                                if ($post_tags && !is_wp_error($post_tags)) {
-                                                    // タグが存在する場合のみクラス名を追加
-                                                    $tag_slugs = array_map(function ($tag) {
-                                                        // タグのスラッグを取得して、クラス名として使えるように変換
-                                                        $tag_slug = esc_attr($tag->slug);
-                                                        $tag_slug = preg_replace('/[^a-zA-Z0-9_-]/', '_', $tag_slug); // スラッグにも念のためサニタイズ
-                                                        return $tag_slug;
-                                                    }, $post_tags);
-                                                    $tag_classes = implode(' ', $tag_slugs);
-                                                        }
-
-                                                // クラス名が空の場合の処理
-                                                if (empty($tag_classes)) {
-                                                    $tag_classes = 'no-tags'; // タグがない場合にデフォルトのクラスを設定
-                                                }
-                                        ?>
-
-                                                <div class="destination <?php echo $tag_classes; ?>">
-                                                    <a class="goal-wrap" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>">
-                                                        <div class="goal">
-                                                        </div>
-                                                        <div class="goal-bg"></div>
-                                                        <div class="title-board">
-                                                            <?php
-                                                            $slug = get_post_field('post_name', get_the_ID());
-                                                            $decoded_slug = urldecode($slug); // URLエンコードされている場合にデコード
-                                                            ?>
-                                                            <p class="board-TX"> <?php echo esc_html($decoded_slug); ?></p>
-                                                        </div>
-
-                                                    </a>
-                                                </div>
-
-                                            <?php
+                                                echo generate_destination_item(get_the_ID());
                                             endwhile;
                                         else:
                                             ?>
@@ -668,43 +536,7 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                                             while ($query->have_posts()): $query->the_post();
 
                                                 // 記事に付与されたタグを取得
-                                                $post_tags = get_the_tags();
-                                                $tag_classes = '';
-
-                                                if ($post_tags && !is_wp_error($post_tags)) {
-                                                    // タグが存在する場合のみクラス名を追加
-                                            $tag_slugs = array_map(function ($tag) {
-                                                // タグのスラッグを取得して、クラス名として使えるように変換
-                                                $tag_slug = esc_attr($tag->slug);
-                                                $tag_slug = preg_replace('/[^a-zA-Z0-9_-]/', '_', $tag_slug); // スラッグにも念のためサニタイズ
-                                                return $tag_slug;
-                                            }, $post_tags);
-                                            $tag_classes = implode(' ', $tag_slugs);
-                                                }
-
-                                                // クラス名が空の場合の処理
-                                                if (empty($tag_classes)) {
-                                                    $tag_classes = 'no-tags'; // タグがない場合にデフォルトのクラスを設定
-                                                }
-                                        ?>
-
-                                                <div class="destination <?php echo $tag_classes; ?>">
-                                                    <a class="goal-wrap" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>">
-                                                        <div class="goal hover-scale">
-                                                        </div>
-                                                        <div class="goal-bg"></div>
-                                                        <div class="title-board">
-                                                            <?php
-                                                            $slug = get_post_field('post_name', get_the_ID());
-                                                            $decoded_slug = urldecode($slug); // URLエンコードされている場合にデコード
-                                                            ?>
-                                                            <p class="board-TX"> <?php echo esc_html($decoded_slug); ?></p>
-                                                        </div>
-
-                                                    </a>
-                                                </div>
-
-                                            <?php
+                                                echo generate_destination_item(get_the_ID());
                                             endwhile;
                                         else:
                                             ?>
@@ -744,43 +576,8 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                                         if ($query->have_posts()):
                                             while ($query->have_posts()): $query->the_post();
 
-                                                // 記事に付与されたタグを取得
-                                                $post_tags = get_the_tags();
-                                                $tag_classes = '';
-
-                                                if ($post_tags && !is_wp_error($post_tags)) {
-                                                    // タグが存在する場合のみクラス名を追加
-                                            $tag_slugs = array_map(function ($tag) {
-                                                // タグのスラッグを取得して、クラス名として使えるように変換
-                                                $tag_slug = esc_attr($tag->slug);
-                                                $tag_slug = preg_replace('/[^a-zA-Z0-9_-]/', '_', $tag_slug); // スラッグにも念のためサニタイズ
-                                                return $tag_slug;
-                                            }, $post_tags);
-                                            $tag_classes = implode(' ', $tag_slugs);
-                                                }
-
-                                                // クラス名が空の場合の処理
-                                                if (empty($tag_classes)) {
-                                                    $tag_classes = 'no-tags'; // タグがない場合にデフォルトのクラスを設定
-                                                }
-                                        ?>
-
-                                                <div class="destination <?php echo $tag_classes; ?>">
-                                                    <a class="goal-wrap" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>">
-                                                        <div class="goal hover-scale"></div>
-                                                        <div class="goal-bg"></div>
-                                                        <div class="title-board">
-                                                            <?php
-                                                            $slug = get_post_field('post_name', get_the_ID());
-                                                            $decoded_slug = urldecode($slug); // URLエンコードされている場合にデコード
-                                                            ?>
-                                                            <p class="board-TX"><?php echo esc_html($decoded_slug); ?></p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-                                        <?php
-                                            endwhile;
+                                            echo generate_destination_item(get_the_ID());
+                                        endwhile;
                                         endif;
 
                                         wp_reset_postdata(); // クエリをリセット
@@ -818,44 +615,8 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                                         if ($query->have_posts()):
                                             while ($query->have_posts()): $query->the_post();
 
-                                                // 記事に付与されたタグを取得
-                                                $post_tags = get_the_tags();
-                                                $tag_classes = '';
-
-                                                if ($post_tags && !is_wp_error($post_tags)) {
-                                                    // タグが存在する場合のみクラス名を追加
-                                            $tag_slugs = array_map(function ($tag) {
-                                                // タグのスラッグを取得して、クラス名として使えるように変換
-                                                $tag_slug = esc_attr($tag->slug);
-                                                $tag_slug = preg_replace('/[^a-zA-Z0-9_-]/', '_', $tag_slug); // スラッグにも念のためサニタイズ
-                                                return $tag_slug;
-                                            }, $post_tags);
-                                            $tag_classes = implode(' ', $tag_slugs);
-                                                }
-
-                                                // クラス名が空の場合の処理
-                                                if (empty($tag_classes)) {
-                                                    $tag_classes = 'no-tags'; // タグがない場合にデフォルトのクラスを設定
-                                                }
-
-                                        ?>
-
-                                                <div class="destination <?php echo $tag_classes; ?>">
-                                                    <a class="goal-wrap" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>">
-                                                        <div class="goal hover-scale"></div>
-                                                        <div class="goal-bg"></div>
-                                                        <div class="title-board">
-                                                            <?php
-                                                            $slug = get_post_field('post_name', get_the_ID());
-                                                            $decoded_slug = urldecode($slug); // URLエンコードされている場合にデコード
-                                                            ?>
-                                                            <p class="board-TX"><?php echo esc_html($decoded_slug); ?></p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-
-                                        <?php
-                                            endwhile;
+                                            echo generate_destination_item(get_the_ID());
+                                        endwhile;
                                         endif;
 
                                         wp_reset_postdata(); // クエリをリセット
@@ -902,43 +663,7 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                                         while ($query->have_posts()): $query->the_post();
 
                                             // 記事に付与されたタグを取得
-                                            $post_tags = get_the_tags();
-                                            $tag_classes = '';
-
-                                            if ($post_tags && !is_wp_error($post_tags)) {
-                                                // タグが存在する場合のみクラス名を追加
-                                                $tag_slugs = array_map(function ($tag) {
-                                                    // タグのスラッグを取得して、クラス名として使えるように変換
-                                                    $tag_slug = esc_attr($tag->slug);
-                                                    $tag_slug = preg_replace('/[^a-zA-Z0-9_-]/', '_', $tag_slug); // スラッグにも念のためサニタイズ
-                                                    return $tag_slug;
-                                                }, $post_tags);
-                                                $tag_classes = implode(' ', $tag_slugs);
-                                                }
-
-                                            // クラス名が空の場合の処理
-                                            if (empty($tag_classes)) {
-                                                $tag_classes = 'no-tags'; // タグがない場合にデフォルトのクラスを設定
-                                            }
-                                    ?>
-
-                                            <div class="destination <?php echo $tag_classes; ?>">
-                                                <a class="goal-wrap" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>">
-                                                    <div class="goal hover-scale" href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>">
-                                                    </div>
-                                                    <div class="goal-bg"></div>
-                                                    <div class="title-board">
-                                                        <?php
-                                                        $slug = get_post_field('post_name', get_the_ID());
-                                                        $decoded_slug = urldecode($slug); // URLエンコードされている場合にデコード
-                                                        ?>
-                                                        <p class="board-TX"> <?php echo esc_html($decoded_slug); ?></p>
-                                                    </div>
-
-                                                </a>
-                                            </div>
-
-                                        <?php
+                                            echo generate_destination_item(get_the_ID());
                                         endwhile;
                                     else:
                                         ?>
@@ -964,7 +689,7 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
         endforeach;
         ?>
 
-<div class="road-chat">
+        <div class="road-chat">
             <div class="C_chat-content">
                 <?php if (function_exists('simple_ajax_chat')) simple_ajax_chat(); ?>
 

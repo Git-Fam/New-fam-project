@@ -427,9 +427,8 @@ jQuery(function () {
 								lastCheckpointClass = key;
 								lastProgressValue = progressValue;
 							}
-
 						});
-						
+
 						// 目的地の要素が見つかった後、キャラクター表示処理の直前で期限切れチェック
 						if (lastCheckpointClass) {
 							const $checkpointElement = $activeCategory.find(
@@ -663,33 +662,14 @@ jQuery(function () {
 			.addClass(timeClass);
 	}
 
-	// 71時間ごとに1時間だけshowを付与 虹
-	function startRandomShow() {
-		const target = document.querySelector(".daytime-deco");
-
-		function showOnce() {
-			target.classList.add("show");
-			// 1時間後に消す
-			setTimeout(() => target.classList.remove("show"), 1 * 60 * 60 * 1000);
-
-			// 次は71時間後に再びshow
-			setTimeout(showOnce, 71 * 60 * 60 * 1000);
-		}
-
-		// function showOnce() {
-		// 	target.classList.add("show");
-		// 	// 10分後に消す
-		// 	setTimeout(() => target.classList.remove("show"), 10 * 60 * 1000);
-		// 	// 次は30分後後に再びshow
-		// 	setTimeout(showOnce, 30 * 60 * 1000);}
-		// showOnce();
-	}
-
-	startRandomShow();
-
 	// 最初に1回実行
 	updateTimeClass();
 
+	//.daytime-decoに20%の確率でshowクラスを付与
+	if (Math.random() <= 0.05) {
+		$(".daytime-deco").addClass("show");
+	}
+	
 	// タブのクリックイベントにキャラクター描画処理を追加
 	$(".archive--item").on("click", function () {
 		// タブの切り替え処理を実行（activeクラスの付け替えなどがされる想定）
