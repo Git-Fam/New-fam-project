@@ -348,7 +348,7 @@
           height: clamp(400px, p(499), 600px);
           left: p(20);
           bottom: p(40);
-          padding: clamp(50px, p(70), 75px) clamp(80px, p(90), 110px) clamp(140px, p(160), 200px);
+          padding: clamp(40px, p(90), 80px) clamp(80px, p(90), 110px) clamp(140px, p(160), 200px);
         }
 
         @include sp {
@@ -564,7 +564,8 @@
             color: #333;
           }
 
-          a,span {
+          a,
+          span {
             @include wt500;
 
 
@@ -1221,6 +1222,76 @@
                         &:active::-webkit-slider-thumb {
                           @include pc {
                             filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.3));
+                          }
+                        }
+                      }
+
+                      &.active {
+
+                        .update--item--title {
+
+                          .count {
+                            color: #F38549;
+                          }
+                        }
+
+                        .progressBar {
+                          background: #F38549;
+                          border: solid 3px #ffffff31;
+
+                          &:focus {
+
+                            @include pc {
+                              box-shadow: 0 0 3px #ffffff31;
+                            }
+                          }
+
+                          // -webkit-向けのつまみ
+                          &::-webkit-slider-thumb {
+
+                            @include pc {
+                              border-top: solid #F38549;
+                              border-bottom: 0;
+                              filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.15));
+                              border-top-width: p(25);
+                              border-right-width: p(15);
+                              border-left-width: p(15);
+                              transform: translateY(-50%);
+                            }
+                          }
+
+                          // -moz-向けのつまみ
+                          &::-moz-range-thumb {
+                            @include pc {
+                              filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.15));
+                              -webkit-appearance: none;
+                              width: 0;
+                              height: 0;
+                              border-style: solid;
+                              border-right: solid transparent;
+                              border-left: solid transparent;
+                              border-top: solid #F38549;
+                              border-bottom: 0;
+                              border-top-width: p(30);
+                              border-right-width: p(20);
+                              border-left-width: p(20);
+                            }
+
+                          }
+
+                          // Firefoxで点線が周りに表示されてしまう問題の解消
+                          &::-moz-focus-outer {
+
+                            @include pc {
+                              border: 0;
+                            }
+                          }
+
+                          // つまみをドラッグしているときのスタイル
+                          &:active::-webkit-slider-thumb {
+                            @include pc {
+                              filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.3));
+                            }
                           }
                         }
                       }

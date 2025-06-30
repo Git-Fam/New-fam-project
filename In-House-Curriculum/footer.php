@@ -28,6 +28,10 @@
   <script src="<?php echo get_template_directory_uri(); ?>/js/page-first.js"></script>
 <?php endif; ?>
 
+<?php if (is_page('my')) : ?>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/page-my.js"></script>
+<?php endif; ?>
+
 <?php if (is_page('ranking')) : ?>
   <script src="<?php echo get_template_directory_uri(); ?>/js/ranking.js"></script>
 <?php endif; ?>

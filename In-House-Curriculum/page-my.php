@@ -155,7 +155,7 @@ get_header();
                         $news_query = new WP_Query(array(
                             'post_type' => 'news',
                             'posts_per_page' => 5, // 表示する投稿数
-                            'paged' => $paged, 
+                            'paged' => $paged,
                         ));
                         if ($news_query->have_posts()) :
                             while ($news_query->have_posts()) : $news_query->the_post();
@@ -336,7 +336,7 @@ get_header();
                                                                 <div class="update--item">
                                                                     <div class="update--item--title">
                                                                         <p class="TX"><span class="deco"></span><?php echo esc_html($post->post_title); ?></p>
-                                                                        <p class="count"><output class="count" id="value"><?php echo esc_attr($progress_value); ?></output>%</p>
+                                                                        <p class="count"><output class="count count--js" id="value"><?php echo esc_attr($progress_value); ?></output>%</p>
                                                                     </div>
                                                                     <input class="progressBar" id="pi_input" name="<?php echo esc_attr($tag->slug); ?>" type="range" min="0" max="100" step="1" value="<?php echo esc_attr($progress_value); ?>" />
                                                                 </div>
