@@ -402,10 +402,10 @@
             }
 
             .title-board {
-              transform: scale(-1, 1);
+              transform: scale(1) !important;
 
               .board-TX {
-                transform: scale(-1, 1);
+                transform: scale(1) !important;
               }
             }
           }

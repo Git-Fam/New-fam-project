@@ -321,8 +321,67 @@
 
   }
 
+  .lost-button {
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+
+    @include pc {
+      width: 80%;
+      height: p(50);
+      bottom: p(-100);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 100%;
+      color: $F-FFFFFF;
+
+      @include pc {
+        font-size: p(18);
+      }
+    }
+  }
+  .lost-pass-button {
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+
+    @include pc {
+      width: 80%;
+      height: p(50);
+      bottom: p(-100);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 100%;
+      color: $F-FFFFFF;
+
+      @include pc {
+        font-size: p(18);
+      }
+    }
+  }
+
+
   .action-close {
     position: absolute;
+    cursor: pointer;
     @include iconContain($action-close);
 
     @include pc {
@@ -340,6 +399,60 @@
     }
 
   }
+
+  &.HTML {
+    .modal-content {
+      @include imgContain("road-lost-HTML.webp");
+    }
+
+    .lost-button {
+      display: block;
+      background: #3A96ED;
+      box-shadow: 0px 2px 0px 0px #38A1E2, 0px 0px 34px 0px #41F3F6 inset;
+
+      &::before {
+        content: "落とし物を拾う";
+      }
+    }
+  }
+  &.HTML-lostchara {
+    .modal-content {
+      @include imgContain("HTML-lostchara.webp");
+    }
+
+    .lost-pass-button {
+      display: block;
+      background: #3A96ED;
+      box-shadow: 0px 2px 0px 0px #38A1E2, 0px 0px 34px 0px #41F3F6 inset;
+
+      &::before {
+        content: "落とし物を渡す";
+      }
+    }
+  }
+  &.HTML-pass{
+    .modal-content {
+      @include imgContain("HTML-passchara.webp");
+    }
+  }
+  
+
+  &.jQuery {
+    .modal-content {
+      @include imgContain("road-lost-jQuery.webp");
+    }
+
+    .lost-button {
+      display: block;
+      background: #3A96ED;
+      box-shadow: 0px 2px 0px 0px #38A1E2, 0px 0px 34px 0px #41F3F6 inset;
+
+      &::before {
+        content: "jQueryの落とし物を拾う";
+      }
+    }
+  }
+
 
   &.show {
     @include center;

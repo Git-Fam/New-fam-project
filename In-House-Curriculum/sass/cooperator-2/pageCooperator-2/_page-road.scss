@@ -8,8 +8,9 @@
   position: relative;
 
   .columns_search {
-    padding: 6px 3px;
-
+    @include pc{
+      padding: p(6) p(3);
+    }
     @include sp {
       padding: s(6) s(3);
       position: absolute;
@@ -42,13 +43,15 @@
           line-height: 140%;
           letter-spacing: 1px;
           border: none;
-          border-radius: 20px;
           background: #E2F9EB;
           outline: none;
-          font-size: 10px;
-          width: 141px;
-          height: 20px;
-          padding: 0 12px;
+          @include pc{
+            border-radius: p(20);
+            font-size: p(10);
+            width: p(141);
+            height: p(20);
+            padding: p(0) p(12);
+          }
 
           @include sp {
             letter-spacing: s(1);
@@ -157,6 +160,7 @@
       .road-cloud {
         @include iconContain($road-cloud);
         position: absolute;
+        pointer-events: none;
 
         &:nth-child(1),
         &:nth-child(7) {
@@ -734,6 +738,7 @@
 
         .road-inner {
           position: relative;
+          pointer-events: none;
 
           @include pc {
             width: p(1032);
@@ -752,11 +757,14 @@
           .content {
             width: 100%;
             height: 100%;
+            pointer-events: none;
+
 
             .road-content {
               position: relative;
               width: 100%;
               height: 100%;
+              pointer-events: none;
 
               .archive--contents {
                 width: 100%;
@@ -937,6 +945,7 @@
 
             .destination {
               position: absolute;
+              pointer-events: auto;
 
               .goal-wrap {
                 position: relative;
@@ -982,6 +991,10 @@
                       height: 40px;
                     }
 
+                    & ~ .title-board {
+                      filter: brightness(0.5);
+                    }
+
                     &.next {
                       @include imgContain("next-goal.webp");
 
@@ -994,6 +1007,10 @@
                         width: 101px;
                         height: 68px;
                       }
+
+                      & ~ .title-board {
+                        filter: none;
+                      }  
 
                       &::before {
                         content: "";
@@ -1276,6 +1293,8 @@
           .section-arrow {
             @include iconContain($next-section);
             cursor: pointer;
+            pointer-events: auto;
+
             position: absolute;
             z-index: 22;
 

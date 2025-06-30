@@ -1,6 +1,6 @@
 <?php
 
-// global $wpdb;
+global $wpdb;
 
 // // 削除するメタキーの配列
 // $meta_keys = array(
@@ -293,6 +293,11 @@ function add_user_info()
         'order' => 'ASC',
         'fields' => 'slugs' // スラッグのみを取得してメモリ使用量を削減
       ));
+
+       // storyタグが付いている場合はこの投稿をスキップ
+       if (in_array('story', $post_tags)) {
+        continue;
+      }
 
       if (!is_wp_error($post_tags) && !empty($post_tags)) {
         foreach ($post_tags as $tag_slug) {

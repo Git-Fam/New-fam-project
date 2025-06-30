@@ -282,6 +282,9 @@
 
     @include sp {
       font-size: s(18);
+      padding: s(10) s(30);
+      border-radius: s(5);
+      margin-top: s(30);
     }
 
     &::before {
@@ -294,6 +297,12 @@
         height: p(96);
         right: p(-55);
         bottom: p(-7);
+      }
+      @include sp{
+        width: s(41);
+        height: s(48);
+        right: s(-30);
+        bottom: s(-4);
       }
 
     }

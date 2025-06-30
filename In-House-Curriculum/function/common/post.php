@@ -38,6 +38,10 @@ function create_post_type()
 
   // アバター
   register_avatar_post_type();
+
+
+  //道のりランダムイベント
+  register_random_post_type();
 }
 
 
