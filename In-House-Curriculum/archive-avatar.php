@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && check_admin_referer('avatar_update'
             <div class="display__character__serif none">
                 <div class="serif__area">
                     <div class="item__serif">
-                        <p class="TX">まだ持っていないアイテムだよ！</p>
+                        <p class="TX">まだ持っていないよ！</p>
                     </div>
                     <div class="item__info">
                         <div class="item__img__frame">
@@ -128,145 +128,242 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && check_admin_referer('avatar_update'
 
             <div class="control__category">
 
-                <!-- カテゴリー -->
+                <!-- 投稿（アバターかアイテムか...） -->
                 <div class="category__list">
                     <ul class="category__list__items">
-                        <?php
-                        $categories = get_terms(array(
-                            'taxonomy' => 'avatar-cat',
-                            'hide_empty' => false,
-                        ));
-                        foreach ($categories as $index => $category) {
-                            $active_class = $index === 0 ? 'active' : '';
-                            $png_url = get_template_directory_uri() . '/img/avatar-top-icon/' . esc_attr($category->slug) . '.webp';
-                            $svg_url = get_template_directory_uri() . '/img/avatar-top-icon/' . esc_attr($category->slug) . '.svg';
-                            $image_url = file_exists(get_template_directory() . '/img/avatar-top-icon/' . esc_attr($category->slug) . '.webp') ? $png_url : $svg_url;
-                            echo '<li class="' . $active_class . '">';
-                            echo '<div class="category__item">';
-                            echo '<div class="icon" style="background-image: url(' . esc_url($image_url) . ');"></div>';
-                            echo '</div>';
-                            echo '</li>';
-                        }
-                        ?>
+                        <!-- 着せ替えの種類を増やす場合はliを増やす -->
+                        <!-- アバター -->
+                        <li class="active">
+                            <div class="category__item">
+                                <div class="icon" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/avatar-top-icon/avatar.webp);"></div>
+                            </div>
+                        </li>
+                        <!-- アイテム -->
+                        <li>
+                            <div class="category__item">
+                                <div class="icon" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/avatar-top-icon/item.webp);"></div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
 
-                <!-- タグ -->
+                <!-- アバター、アイテムそれぞれのカテゴリー -->
                 <div class="tag__list">
-                    <?php
-                    $categories = get_terms(array(
-                        'taxonomy' => 'avatar-cat',
-                        'hide_empty' => false,
-                    ));
-                    foreach ($categories as $index => $category) {
-                        $active_class = $index === 0 ? 'active' : '';
-                        echo '<div class="tag__list__area ' . $active_class . '">';
-                        echo '<ul class="tag__list__items">';
+                    <!-- 着せ替えの種類を増やす場合は.tag__list__areaを増やす -->
+                    <!-- アバターのカテゴリー -->
+                    <div class="tag__list__area active">
+                        <ul class="tag__list__items">
+                            <?php
+                            $avatar_categories = get_terms(array(
+                                'taxonomy' => 'avatar-cat',
+                                'hide_empty' => false,
+                            ));
+                            if (is_array($avatar_categories) && !empty($avatar_categories)) {
+                                foreach ($avatar_categories as $category) {
+                                    // $categoryがオブジェクトか配列かを判定
+                                    $category_slug = '';
+                                    if (is_object($category) && isset($category->slug)) {
+                                        $category_slug = $category->slug;
+                                    } elseif (is_array($category) && isset($category['slug'])) {
+                                        $category_slug = $category['slug'];
+                                    } else {
+                                        continue; // スラッグが取得できない場合はスキップ
+                                    }
 
-                        // カテゴリーに紐付いたタグを取得
-                        $tags = get_terms(array(
-                            'taxonomy' => 'avatar-tag',
-                            'hide_empty' => false,
-                            'meta_query' => array(
-                                array(
-                                    'key' => 'category_slug',
-                                    'value' => $category->slug,
-                                    'compare' => '='
-                                )
-                            )
-                        ));
+                                    $image_url = get_template_directory_uri() . '/img/avatar-top-icon/avatar-' . esc_attr($category_slug) . '.webp';
+                                    echo '<li>';
+                                    echo '<div class="tag__item" style="background-image: url(' . esc_url($image_url) . ');"></div>';
+                                    echo '</li>';
+                                }
+                            }
+                            ?>
+                        </ul>
+                    </div>
 
-                        foreach ($tags as $tag) {
-                            $png_url = get_template_directory_uri() . '/img/avatar-top-icon/' . esc_attr($category->slug) . '-' . esc_attr($tag->slug) . '.webp';
-                            $svg_url = get_template_directory_uri() . '/img/avatar-top-icon/' . esc_attr($category->slug) . '-' . esc_attr($tag->slug) . '.svg';
-                            $image_url = file_exists(get_template_directory() . '/img/avatar-top-icon/' . esc_attr($category->slug) . '-' . esc_attr($tag->slug) . '.webp') ? $png_url : $svg_url;
-                            echo '<li>';
-                            echo '<div class="tag__item" style="background-image: url(' . esc_url($image_url) . ');"></div>';
-                            echo '</li>';
-                        }
+                    <!-- アイテムのカテゴリー -->
+                    <div class="tag__list__area">
+                        <ul class="tag__list__items">
+                            <?php
+                            $item_categories = get_terms(array(
+                                'taxonomy' => 'item-cat',
+                                'hide_empty' => false,
+                            ));
+                            if (is_array($item_categories) && !empty($item_categories)) {
+                                foreach ($item_categories as $category) {
+                                    // $categoryがオブジェクトか配列かを判定
+                                    $category_slug = '';
+                                    if (is_object($category) && isset($category->slug)) {
+                                        $category_slug = $category->slug;
+                                    } elseif (is_array($category) && isset($category['slug'])) {
+                                        $category_slug = $category['slug'];
+                                    } else {
+                                        continue; // スラッグが取得できない場合はスキップ
+                                    }
 
-                        echo '</ul>';
-                        echo '</div>';
-                    }
-                    ?>
+                                    $image_url = get_template_directory_uri() . '/img/avatar-top-icon/item-' . esc_attr($category_slug) . '.webp';
+                                    echo '<li>';
+                                    echo '<div class="tag__item" style="background-image: url(' . esc_url($image_url) . ');"></div>';
+                                    echo '</li>';
+                                }
+                            }
+                            ?>
+                        </ul>
+                    </div>
                 </div>
 
             </div>
 
-            <!-- itemたち -->
+            <!-- アバター、アイテムたち -->
             <div class="control__item">
                 <div class="control__item__inner">
-                    <?php
-                    $categories = get_terms(array(
-                        'taxonomy' => 'avatar-cat',
-                        'hide_empty' => false,
-                    ));
-                    foreach ($categories as $category_index => $category) {
-                        $category_active_class = $category_index === 0 ? 'active' : '';
-                        echo '<div class="control__list__wrap ' . $category_active_class . '">';
-
-                        // カテゴリーに紐づくタグを取得
-                        $tags = get_terms(array(
-                            'taxonomy' => 'avatar-tag',
+                    <!-- アバター -->
+                    <div class="control__list__wrap active">
+                        <?php
+                        $avatar_categories = get_terms(array(
+                            'taxonomy' => 'avatar-cat',
                             'hide_empty' => false,
-                            'meta_query' => array(
-                                array(
-                                    'key' => 'category_slug',
-                                    'value' => $category->slug,
-                                    'compare' => '='
-                                )
-                            )
                         ));
-
-                        foreach ($tags as $tag_index => $tag) {
-                            $tag_active_class = $tag_index === 0 ? 'active' : '';
-                            echo '<div class="control__category-tag__list ' . $tag_active_class . '">';
-                            echo '<ul>';
-
-                            // タグに紐づく投稿を取得
-                            $posts = get_posts(array(
-                                'post_type' => 'avatar',
-                                'tax_query' => array(
-                                    array(
-                                        'taxonomy' => 'avatar-tag',
-                                        'field' => 'slug',
-                                        'terms' => $tag->slug,
-                                    )
-                                )
-                            ));
-
-                            foreach ($posts as $post) {
-                                $thumbnail_url = get_the_post_thumbnail_url($post->ID, 'full');
-                                $input_value = esc_attr($category->slug . '-' . $tag->slug . '-' . $post->ID);
-                                $is_selected_item = in_array($input_value, $selected_items) ? 'checked' : '';
-                                $is_owned_character = in_array($input_value, $owned_characters) ? 'active' : '';
-                                $is_owned_hat = in_array($input_value, $owned_hats) ? 'active' : '';
-                                $is_owned_glasses = in_array($input_value, $owned_glasses) ? 'active' : '';
-                                $price = get_post_meta($post->ID, '_avatar_price', true);
-                                $payment_type = get_post_meta($post->ID, '_avatar_radio_payment', true);
-
-                                echo '<li>';
-                                echo '<div class="price" style="display: none;">' . $price . '</div>';
-                                echo '<div class="payment_type" style="display: none;">' . $payment_type . '</div>';
-                                echo '<input class="category-tag__item--wrap" type="radio" name="selected_items-' . esc_attr($category->slug) . '-' . esc_attr($tag->slug) . '" value="' . $input_value . '" ' . $is_selected_item . ' onclick="toggleRadio(this)">';
-                                echo '<div class="category-tag__item">';
-                                if ($thumbnail_url) {
-                                    echo '<img src="' . esc_url($thumbnail_url) . '" alt="' . esc_attr($post->post_title) . '">';
+                        if (is_array($avatar_categories) && !empty($avatar_categories)) {
+                            foreach ($avatar_categories as $category_index => $category) {
+                                // $categoryがオブジェクトか配列かを判定
+                                $category_slug = '';
+                                if (is_object($category) && isset($category->slug)) {
+                                    $category_slug = $category->slug;
+                                } elseif (is_array($category) && isset($category['slug'])) {
+                                    $category_slug = $category['slug'];
                                 } else {
-                                    echo 'No image available';
+                                    continue; // スラッグが取得できない場合はスキップ
                                 }
+                                
+                                $category_active_class = $category_index === 0 ? 'active' : '';
+                                echo '<div class="control__category-tag__list ' . $category_active_class . '">';
+                                echo '<ul>';
+
+                                // カテゴリーに直接紐づく投稿を取得
+                                $posts = get_posts(array(
+                                    'post_type' => 'avatar',
+                                    'tax_query' => array(
+                                        array(
+                                            'taxonomy' => 'avatar-cat',
+                                            'field' => 'slug',
+                                            'terms' => $category_slug,
+                                        )
+                                    )
+                                ));
+
+                                foreach ($posts as $post) {
+                                    $thumbnail_url = get_the_post_thumbnail_url($post->ID, 'full');
+                                    $input_value = esc_attr($category_slug . '-' . $post->ID);
+                                    $is_selected_item = in_array($input_value, $selected_items) ? 'checked' : '';
+
+                                    // 所持アイテムの判定
+                                    $is_owned = in_array($input_value, $owned_avatars) ? 'active' : '';
+
+                                    $price = get_post_meta($post->ID, '_avatar_price', true);
+                                    $payment_type = get_post_meta($post->ID, '_avatar_radio_payment', true);
+                                    $aspect_ratio = get_post_meta($post->ID, '_avatar_aspect_ratio', true);
+                                    $avatar_style = get_post_meta($post->ID, '_avatar_style', true);
+                                    $avatar_item_styles = get_post_meta($post->ID, '_avatar_item_styles', true);
+
+                                    echo '<li>';
+                                    echo '<div class="price" style="display: none;">' . $price . '</div>';
+                                    echo '<div class="payment_type" style="display: none;">' . $payment_type . '</div>';
+                                    echo '<div class="aspect-ratio" style="display: none;">' . esc_attr($aspect_ratio) . '</div>';
+                                    echo '<div class="avatar-style" style="display: none;">' . esc_attr($avatar_style) . '</div>';
+                                    echo '<div class="avatar-item-styles" style="display: none;">' . esc_attr(json_encode($avatar_item_styles)) . '</div>';
+                                    echo '<input class="category-tag__item--wrap" type="radio" name="selected_items-' . esc_attr($category_slug) . '" value="' . $input_value . '" ' . $is_selected_item . ' onclick="toggleRadio(this)">';
+                                    echo '<div class="category-tag__item">';
+                                    if ($thumbnail_url) {
+                                        echo '<img src="' . esc_url($thumbnail_url) . '" alt="' . esc_attr($post->post_title) . '">';
+                                    } else {
+                                        echo 'No image available';
+                                    }
+                                    echo '</div>';
+                                    echo '<div class="nothing-item ' . $is_owned . '"></div>';
+                                    echo '</li>';
+                                }
+
+                                echo '</ul>';
                                 echo '</div>';
-                                echo '<div class="nothing-item ' . $is_owned_character . ' ' . $is_owned_hat . ' ' . $is_owned_glasses . '"></div>';
-                                echo '</li>';
                             }
-
-                            echo '</ul>';
-                            echo '</div>';
                         }
+                        ?>
+                    </div>
 
-                        echo '</div>';
-                    }
-                    ?>
+                    <!-- アイテム -->
+                    <div class="control__list__wrap">
+                        <?php
+                        $item_categories = get_terms(array(
+                            'taxonomy' => 'item-cat',
+                            'hide_empty' => false,
+                        ));
+                        if (is_array($item_categories) && !empty($item_categories)) {
+                            foreach ($item_categories as $category_index => $category) {
+                                // $categoryがオブジェクトか配列かを判定
+                                $category_slug = '';
+                                if (is_object($category) && isset($category->slug)) {
+                                    $category_slug = $category->slug;
+                                } elseif (is_array($category) && isset($category['slug'])) {
+                                    $category_slug = $category['slug'];
+                                } else {
+                                    continue; // スラッグが取得できない場合はスキップ
+                                }
+                                
+                                $category_active_class = $category_index === 0 ? 'active' : '';
+                                echo '<div class="control__category-tag__list ' . $category_active_class . '">';
+                                echo '<ul>';
+
+                                // カテゴリーに直接紐づく投稿を取得
+                                $posts = get_posts(array(
+                                    'post_type' => 'item',
+                                    'tax_query' => array(
+                                        array(
+                                            'taxonomy' => 'item-cat',
+                                            'field' => 'slug',
+                                            'terms' => $category_slug,
+                                        )
+                                    )
+                                ));
+
+                                foreach ($posts as $post) {
+                                    $thumbnail_url = get_the_post_thumbnail_url($post->ID, 'full');
+                                    $input_value = esc_attr($category_slug . '-' . $post->ID);
+                                    $is_selected_item = in_array($input_value, $selected_items) ? 'checked' : '';
+
+                                    // 所持アイテムの判定（カテゴリー別）
+                                    $is_owned = false;
+                                    if (isset($owned_items[$category_slug])) {
+                                        $is_owned = in_array($input_value, $owned_items[$category_slug]) ? 'active' : '';
+                                    }
+
+                                    $price = get_post_meta($post->ID, '_item_price', true);
+                                    $payment_type = get_post_meta($post->ID, '_item_radio_payment', true);
+                                    $aspect_ratio = get_post_meta($post->ID, '_item_aspect_ratio', true);
+                                    $item_style = get_post_meta($post->ID, '_item_style', true);
+
+                                    echo '<li>';
+                                    echo '<div class="price" style="display: none;">' . $price . '</div>';
+                                    echo '<div class="payment_type" style="display: none;">' . $payment_type . '</div>';
+                                    echo '<div class="aspect-ratio" style="display: none;">' . esc_attr($aspect_ratio) . '</div>';
+                                    echo '<div class="item-style" style="display: none;">' . esc_attr($item_style) . '</div>';
+                                    echo '<input class="category-tag__item--wrap" type="radio" name="selected_items-' . esc_attr($category_slug) . '" value="' . $input_value . '" ' . $is_selected_item . ' onclick="toggleRadio(this)">';
+                                    echo '<div class="category-tag__item">';
+                                    if ($thumbnail_url) {
+                                        echo '<img src="' . esc_url($thumbnail_url) . '" alt="' . esc_attr($post->post_title) . '">';
+                                    } else {
+                                        echo 'No image available';
+                                    }
+                                    echo '</div>';
+                                    echo '<div class="nothing-item ' . $is_owned . '"></div>';
+                                    echo '</li>';
+                                }
+
+                                echo '</ul>';
+                                echo '</div>';
+                            }
+                        }
+                        ?>
+                    </div>
                 </div>
             </div>
 
@@ -276,13 +373,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && check_admin_referer('avatar_update'
     </div>
 </form>
 
-
 <script>
     function toggleRadio(radio) {
         if (radio.previousChecked) {
             radio.checked = false;
+            radio.previousChecked = false;
+            // 選択解除時にセリフエリアを非表示
+            document.querySelector('.display__character__serif').classList.add('none');
+        } else {
+            // 同じname属性の他のラジオボタンのpreviousCheckedをリセット
+            var name = radio.name;
+            var radios = document.querySelectorAll('input[name="' + name + '"]');
+            radios.forEach(function(r) {
+                r.previousChecked = false;
+            });
+            radio.previousChecked = true;
         }
-        radio.previousChecked = radio.checked;
     }
 </script>
 

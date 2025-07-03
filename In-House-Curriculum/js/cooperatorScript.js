@@ -669,7 +669,7 @@ jQuery(function () {
 	if (Math.random() <= 0.05) {
 		$(".daytime-deco").addClass("show");
 	}
-	
+
 	// タブのクリックイベントにキャラクター描画処理を追加
 	$(".archive--item").on("click", function () {
 		// タブの切り替え処理を実行（activeクラスの付け替えなどがされる想定）

@@ -7,8 +7,12 @@ add_action('wp_ajax_nopriv_exchange_item', 'exchange_item');
 
 function exchange_item()
 {
+    error_log('=== exchange_item() called ===');
+    error_log('POST data: ' . print_r($_POST, true));
+
     // ユーザーがログインしているか確認
     if (!is_user_logged_in()) {
+        error_log('User not logged in');
         wp_send_json_error('ログインが必要です。');
     }
 
@@ -18,29 +22,48 @@ function exchange_item()
     $cost = intval($_POST['cost']);
     $selected_item = sanitize_text_field($_POST['selected_item']);
 
+    error_log('user_id: ' . $user_id);
+    error_log('payment_type: ' . $payment_type);
+    error_log('cost: ' . $cost);
+    error_log('selected_item: ' . $selected_item);
+
     // ユーザーの現在のコインまたはポイントを取得
     if ($payment_type === 'coin') {
         $current_coins = get_user_meta($user_id, 'user_coins', true) ?: 0;
         if ($current_coins < $cost) {
+            error_log('Insufficient coins: ' . $current_coins . ' < ' . $cost);
             wp_send_json_error('コインが不足しています。');
         }
         $new_coins = $current_coins - $cost;
         update_user_meta($user_id, 'user_coins', $new_coins);
+        error_log('Coins updated: ' . $current_coins . ' -> ' . $new_coins);
     } elseif ($payment_type === 'point') {
         $current_points = get_user_meta($user_id, 'user_point', true) ?: 0;
         if ($current_points < $cost) {
+            error_log('Insufficient points: ' . $current_points . ' < ' . $cost);
             wp_send_json_error('ポイントが不足しています。');
         }
         $new_points = $current_points - $cost;
         update_user_meta($user_id, 'user_point', $new_points);
+        error_log('Points updated: ' . $current_points . ' -> ' . $new_points);
     } else {
+        error_log('Invalid payment type: ' . $payment_type);
         wp_send_json_error('無効な支払いタイプです。');
     }
 
-    // 選択されたアイテムを保存
-    save_user_item($user_id, 'selected_items-' . $selected_item, $selected_item);
+    // アイテムタイプを判定
+    $item_parts = explode('-', $selected_item);
+    $category = $item_parts[0];
+    $is_avatar = is_avatar_category($category);
 
-    wp_send_json_success();
+    error_log('category: ' . $category);
+    error_log('is_avatar: ' . ($is_avatar ? 'true' : 'false'));
+
+    // 購入したアイテムを所持一覧に追加
+    add_purchased_item($user_id, $is_avatar ? 'avatar' : 'item', $selected_item);
+
+    error_log('=== exchange_item() completed ===');
+    wp_send_json_success('購入が完了しました');
 }
 
 // チケット・コイン・ポイント管理用のAJAXハンドラー

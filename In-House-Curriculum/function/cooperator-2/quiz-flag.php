@@ -4,7 +4,8 @@
 // =========================
 
 // 「クイズあり」チェックボックスを投稿画面に追加
-function add_quiz_checkbox_meta_box() {
+function add_quiz_checkbox_meta_box()
+{
     add_meta_box(
         'quiz_checkbox',
         'クイズ設定',
@@ -20,7 +21,8 @@ function add_quiz_checkbox_meta_box() {
 add_action('add_meta_boxes', 'add_quiz_checkbox_meta_box');
 
 // チェックボックスの保存処理
-function save_quiz_checkbox_meta($post_id) {
+function save_quiz_checkbox_meta($post_id)
+{
     if (
         !isset($_POST['quiz_checkbox_nonce_name']) ||
         !wp_verify_nonce($_POST['quiz_checkbox_nonce_name'], 'quiz_checkbox_nonce_action')
@@ -35,7 +37,8 @@ add_action('save_post', 'save_quiz_checkbox_meta');
 // Ajax: 進捗を100に更新
 // =========================
 
-function ajax_set_progress_100() {
+function ajax_set_progress_100()
+{
     if (!is_user_logged_in()) wp_send_json_error('ログインしていません');
 
     $user_id = get_current_user_id();
@@ -53,18 +56,19 @@ function ajax_set_progress_100() {
 }
 add_action('wp_ajax_set_progress_100', 'ajax_set_progress_100');
 
-function enqueue_custom_progress_script() {
-  wp_enqueue_script(
-      'progress-complete-script',
-      get_template_directory_uri() . '/js/progress-complete.js', // あなたのファイルパス
-      ['jquery'], // jQuery使ってないなら [] でもOK
-      null,
-      true // フッターで読み込む
-  );
+function enqueue_custom_progress_script()
+{
+    wp_enqueue_script(
+        'progress-complete-script',
+        get_template_directory_uri() . '/js/progress-complete.js', // あなたのファイルパス
+        ['jquery'], // jQuery使ってないなら [] でもOK
+        null,
+        true // フッターで読み込む
+    );
 
-  // admin-ajax.php のURLを JS に渡す
-  wp_localize_script('progress-complete-script', 'ajax_data', [
-      'ajax_url' => admin_url('admin-ajax.php'),
-  ]);
+    // admin-ajax.php のURLを JS に渡す
+    wp_localize_script('progress-complete-script', 'ajax_data', [
+        'ajax_url' => admin_url('admin-ajax.php'),
+    ]);
 }
 add_action('wp_enqueue_scripts', 'enqueue_custom_progress_script');

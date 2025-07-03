@@ -15,22 +15,49 @@ function get_avatar_meta_data($user_id)
     try {
         // 基本メタデータの取得
         $meta_data = [
-            'selected_character' => get_user_meta($user_id, 'selected_character', true),
-            'selected_hat' => get_user_meta($user_id, 'selected_hat', true),
-            'selected_glasses' => get_user_meta($user_id, 'selected_glasses', true),
             'selected_items' => json_decode(get_user_meta($user_id, 'selected_items', true), true) ?: [],
-            'owned_characters' => json_decode(get_user_meta($user_id, 'owned_characters', true), true) ?: [],
-            'owned_hats' => json_decode(get_user_meta($user_id, 'owned_hats', true), true) ?: [],
-            'owned_glasses' => json_decode(get_user_meta($user_id, 'owned_glasses', true), true) ?: [],
+            'owned_avatars' => json_decode(get_user_meta($user_id, 'owned_avatars', true), true) ?: [],
             'owned_items' => json_decode(get_user_meta($user_id, 'owned_items', true), true) ?: []
         ];
 
-        // サムネイル画像の取得
-        $meta_data['thumbnails'] = [
-            'character' => get_avatar_thumbnail($meta_data['selected_character'], 'avatar01.png'),
-            'hat' => get_avatar_thumbnail($meta_data['selected_hat']),
-            'glasses' => get_avatar_thumbnail($meta_data['selected_glasses'])
-        ];
+        // 選択中のアバターを取得（カテゴリー別）
+        $avatar_categories = get_terms(array(
+            'taxonomy' => 'avatar-cat',
+            'hide_empty' => false,
+        ));
+
+        if (is_array($avatar_categories) && !empty($avatar_categories)) {
+            foreach ($avatar_categories as $category) {
+                // $categoryがオブジェクトか配列かを判定
+                $category_slug = '';
+                if (is_object($category) && isset($category->slug)) {
+                    $category_slug = $category->slug;
+                } elseif (is_array($category) && isset($category['slug'])) {
+                    $category_slug = $category['slug'];
+                } else {
+                    continue; // スラッグが取得できない場合はスキップ
+                }
+
+                $selected_avatar = get_user_meta($user_id, 'selected_avatar_' . $category_slug, true);
+                if ($selected_avatar) {
+                    // アバターはselected_itemsには保存しない（アイテム専用）
+                    // $meta_data['selected_items'][$category_slug] = $selected_avatar;
+                }
+            }
+        }
+
+        // デフォルト値の設定
+        // normal-7376をデフォルトで所持
+        if (empty($meta_data['owned_avatars'])) {
+            $meta_data['owned_avatars'] = ['normal-7376'];
+        } else if (!in_array('normal-7376', $meta_data['owned_avatars'])) {
+            $meta_data['owned_avatars'][] = 'normal-7376';
+        }
+
+        // normal-7376をデフォルトで選択（normalカテゴリー）
+        if (empty($meta_data['selected_items']['normal'])) {
+            $meta_data['selected_items']['normal'] = 'normal-7376';
+        }
 
         return $meta_data;
     } catch (Exception $e) {
@@ -66,8 +93,35 @@ $avatar_meta = get_avatar_meta_data($user_id);
 // 変数の展開
 extract($avatar_meta);
 
+// 選択されたアイテムの配列を取得（archive-avatar.phpで使用）
+$selected_items = $selected_items ?: [];
+
+// 所持アイテムの配列を取得（archive-avatar.phpで使用）
+$owned_avatars = $owned_avatars ?: ['normal-7376'];
+$owned_items = $owned_items ?: [];
+
 // 選択されたキャラクターのIDを取得
-$selected_character_thumbnail = get_template_directory_uri() . '/img/avatar-img/avatar01.webp'; // デフォルト画像
+$selected_character = get_user_meta($user_id, 'selected_avatar_normal', true) ?: 'normal-7376';
+
+// 選択されたアイテムの配列を取得（archive-avatar.phpで使用）
+$selected_items_array = [];
+if (!empty($selected_items)) {
+    foreach ($selected_items as $category => $tags) {
+        if (is_array($tags)) {
+            foreach ($tags as $tag => $item) {
+                $selected_items_array[] = $item;
+            }
+        }
+    }
+}
+
+// 所持アイテムの配列を取得（archive-avatar.phpで使用）
+$owned_characters = $owned_avatars ?: ['normal-7376'];
+$owned_hats = [];
+$owned_glasses = [];
+
+// 選択されたキャラクターのIDを取得
+// $selected_character_thumbnail = get_template_directory_uri() . '/img/avatar-img/avatar01.webp'; // デフォルト画像
 if (!empty($selected_character)) {
     $selected_character_parts = explode('-', $selected_character);
     $selected_character_id = end($selected_character_parts);
@@ -75,11 +129,11 @@ if (!empty($selected_character)) {
 }
 
 // 選択された帽子のIDを取得
-$selected_hat_parts = explode('-', $selected_hat);
+$selected_hat_parts = explode('-', $selected_items['hat'] ?? '');
 $selected_hat_id = end($selected_hat_parts);
 
 // 選択されたメガネのIDを取得
-$selected_glasses_parts = explode('-', $selected_glasses);
+$selected_glasses_parts = explode('-', $selected_items['glasses'] ?? '');
 $selected_glasses_id = end($selected_glasses_parts);
 
 // 選択された帽子のアイキャッチ画像を取得

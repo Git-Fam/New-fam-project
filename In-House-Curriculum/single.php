@@ -69,7 +69,7 @@ if (!in_array(get_the_ID(), $allowed_posts)) {
 get_header();
 ?>
 
-<div class="single">
+<div class="single <?php echo esc_attr($slug); ?>">
     <div class="single--img"></div>
 
     <div class="single--link">

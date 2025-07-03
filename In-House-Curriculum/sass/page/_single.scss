@@ -254,6 +254,31 @@
     }
   }
 
+  &.story {
+    padding: 0;
+
+    .single--wap {
+      max-width: unset;
+      min-height: 100vh;
+
+      &--content {
+        @include pc {
+          padding-top: p(50);
+        }
+      }
+    }
+
+    .single--wap--content--title--img,
+    .single--wap--content--title--time,
+    .is-complete {
+      display: none;
+    }
+
+    .wp-video {
+      width: 100% !important;
+
+    }
+  }
 }
 
 .hdq_toggle {
@@ -298,7 +323,8 @@
         right: p(-55);
         bottom: p(-7);
       }
-      @include sp{
+
+      @include sp {
         width: s(41);
         height: s(48);
         right: s(-30);

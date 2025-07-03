@@ -173,9 +173,8 @@ $(function () {
 			isFormChanged = false; // 全て入力済みの場合、リロード警告を解除
 			$(window).off("beforeunload", handleBeforeUnload); // beforeunload イベント解除
 			const highestSectionId = getSectionWithMostHighNumbers();
-			window.location.href = `/aptitude-result-engineer?section=${
-				highestSectionId || "unknown"
-			}`;
+			window.location.href = `/aptitude-result-engineer?section=${highestSectionId || "unknown"
+				}`;
 		}
 	});
 	$("#result-item.designer").click(function () {
@@ -190,9 +189,8 @@ $(function () {
 			$(window).off("beforeunload", handleBeforeUnload); // beforeunload イベント解除
 			const highestSectionId = getSectionWithMostHighNumbers();
 			// テスト
-			window.location.href = `/aptitude-result-designer?section=${
-				highestSectionId || "unknown"
-			}`;
+			window.location.href = `/aptitude-result-designer?section=${highestSectionId || "unknown"
+				}`;
 			// 本番
 			// window.location.href = `/test-hp-2/aptitude-result-designer?section=${
 			// 	highestSectionId || "unknown"

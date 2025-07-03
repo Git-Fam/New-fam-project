@@ -89,9 +89,9 @@ $(function () {
 				if ($goal.length && $goal.find(".lost-chara").length === 0) {
 					$goal.append(
 						'<div class="lost-chara ' +
-							categoryClass +
-							disabledClass +
-							'"></div>'
+						categoryClass +
+						disabledClass +
+						'"></div>'
 					);
 				}
 			}
