@@ -10,52 +10,45 @@ $(function () {
   var currentSelectedAvatar = null;
 
   // カテゴリータブ切り替え(スキン編集画面)
-  $(document).ready(function () {
-    $('.category__list__items li').on('click', function () {
-      $('.category__list__items li').removeClass('active');
-      $(this).addClass('active');
+  $(document).on('click', '.category__list__items li', function () {
+    console.log('Category tab clicked:', $(this).text());
+    $('.category__list__items li').removeClass('active');
+    $(this).addClass('active');
 
-      $('.tag__list__area').removeClass('active');
-      var index = $('.category__list__items li').index(this);
-      $('.tag__list__area').eq(index).addClass('active');
+    $('.tag__list__area').removeClass('active');
+    var index = $('.category__list__items li').index(this);
+    $('.tag__list__area').eq(index).addClass('active');
 
-      $('.control__list__wrap').removeClass('active');
-      $('.control__list__wrap').eq(index).addClass('active');
+    $('.control__list__wrap').removeClass('active');
+    $('.control__list__wrap').eq(index).addClass('active');
 
-      // 1つ目の.tag__itemに.activeを付与
-      var activeTagListArea = $('.tag__list__area').eq(index);
-      activeTagListArea.find('.tag__item').removeClass('active');
-      activeTagListArea.find('.tag__item').first().addClass('active');
+    // 1つ目の.tag__itemに.activeを付与
+    var activeTagListArea = $('.tag__list__area').eq(index);
+    activeTagListArea.find('.tag__item').removeClass('active');
+    activeTagListArea.find('.tag__item').first().addClass('active');
 
-      // .tag__item.activeに対応した.control__category-tag__listにactiveを付与
-      var controlListWrap = $('.control__list__wrap').eq(index);
-      controlListWrap.find('.control__category-tag__list').removeClass('active');
-      controlListWrap.find('.control__category-tag__list').first().addClass('active');
-    });
+    // .tag__item.activeに対応した.control__category-tag__listにactiveを付与
+    var controlListWrap = $('.control__list__wrap').eq(index);
+    controlListWrap.find('.control__category-tag__list').removeClass('active');
+    controlListWrap.find('.control__category-tag__list').first().addClass('active');
   });
 
   // タグタブ切り替え(スキン編集画面)
-  $(document).ready(function () {
-    $('.tag__list__items li .tag__item').on('click', function () {
-      $('.tag__list__items li .tag__item').removeClass('active');
-      $(this).addClass('active');
+  $(document).on('click', '.tag__list__items li .tag__item', function () {
+    console.log('Tag tab clicked:', $(this).text());
+    $('.tag__list__items li .tag__item').removeClass('active');
+    $(this).addClass('active');
 
-      $('.control__category-tag__list').removeClass('active');
-      var index = $('.tag__list__items li .tag__item').index(this);
-      $('.control__category-tag__list').eq(index).addClass('active');
-    });
+    $('.control__category-tag__list').removeClass('active');
+    var index = $('.tag__list__items li .tag__item').index(this);
+    $('.control__category-tag__list').eq(index).addClass('active');
   });
 
-
   // やめるボタン
-  $('.item__button .buttons.cancel').on('click', function () {
+  $(document).on('click', '.item__button .buttons.cancel', function () {
     $('.display__character__serif').addClass('none');
     $('input.category-tag__item--wrap').prop('checked', false);
   });
-
-
-
-
 
   // 操作履歴を保存するためのスタック
   var actionStack = [];
@@ -70,9 +63,8 @@ $(function () {
     return actionStack.pop();
   }
 
-
   // クリックでimgを変更（着せ替え）
-  $('input.category-tag__item--wrap').on('change', function () {
+  $(document).on('change', 'input.category-tag__item--wrap', function () {
     console.log('=== Input change event triggered ===');
     console.log('this:', this);
     console.log('$(this).attr("name"):', $(this).attr('name'));
@@ -132,6 +124,9 @@ $(function () {
         style: avatarStyle
       };
       console.log('currentSelectedAvatar updated:', currentSelectedAvatar);
+      // hidden inputを更新
+      $('#selected_avatar_input').val(value);
+      console.log('selected_avatar input updated:', value);
     } else {
       console.log('Processing as item');
       // アバターのカテゴリー名（normal等）の場合はスキップ
@@ -183,8 +178,19 @@ $(function () {
         }
       }
 
-      if (styleAttr) {
-        $itemElement.attr('style', styleAttr);
+      // 既存のスタイル情報を保持（display-character.phpで生成されたスタイル）
+      var existingStyle = $itemElement.attr('style') || '';
+      if (existingStyle && !existingStyle.includes('aspect-ratio:')) {
+        // 既存のスタイルにアスペクト比が含まれていない場合は追加
+        if (aspectRatio) {
+          existingStyle = 'aspect-ratio: ' + aspectRatio + '; ' + existingStyle;
+        }
+      }
+
+      // 最終的なスタイルを適用
+      var finalStyle = styleAttr || existingStyle;
+      if (finalStyle) {
+        $itemElement.attr('style', finalStyle);
       }
     }
 
@@ -193,18 +199,15 @@ $(function () {
   });
 
   // ひとつ戻すボタンのクリックイベント
-  $('.sideButton__button').on('click', function () {
+  $(document).on('click', '.sideButton__button', function () {
     var lastAction = popAction();
     if (lastAction) {
       $('.' + lastAction.name).attr('src', lastAction.previousUrl);
     }
   });
 
-
-
-
   // input要素の::beforeがある場合の処理
-  $('input.category-tag__item--wrap').on('change', function () {
+  $(document).on('change', 'input.category-tag__item--wrap', function () {
     console.log('=== Purchase dialog change event triggered ===');
     console.log('this:', this);
     console.log('$(this).is(":checked"):', $(this).is(':checked'));
@@ -229,111 +232,53 @@ $(function () {
       previousUrl: $('.' + name).attr('src')
     });
 
+    // 購入ダイアログの表示条件を修正
+    // チェックされている かつ 所持していないアイテムの場合に表示
     if ($(this).is(':checked') && !$(this).siblings('.nothing-item').hasClass('active')) {
       console.log('=== Showing purchase dialog ===');
+      console.log('Dialog element exists:', $('.display__character__serif').length);
+      console.log('Dialog current classes:', $('.display__character__serif').attr('class'));
       $('.display__character__serif').removeClass('none');
+      console.log('Dialog classes after removing none:', $('.display__character__serif').attr('class'));
       $('.item__cost .icon').removeClass('coin point').addClass(paymentType); // 以前のクラスを削除してから追加
       $('.item__cost .TX').text(price); // 価格を設定
       $('.item__img').attr('src', thumbnailUrl); // 画像のURLを設定
-      $('.character__' + tag).attr('src', thumbnailUrl); // タグに対応する画像のURLを設定
+      if (tag) {
+        $('.character__' + tag).attr('src', thumbnailUrl); // タグに対応する画像のURLを設定
+      }
 
       console.log('=== Purchase dialog updated ===');
       console.log('Cost display:', $('.item__cost .TX').text());
       console.log('Payment type class:', $('.item__cost .icon').attr('class'));
+      console.log('Exchange button exists:', $('.buttons.exchange').length);
+      console.log('Exchange button disabled:', $('.buttons.exchange').prop('disabled'));
+    } else if ($(this).is(':checked') && $(this).siblings('.nothing-item').hasClass('active')) {
+      // 所持しているアイテムの場合は購入ダイアログを非表示
+      console.log('=== Item already owned, hiding purchase dialog ===');
+      $('.display__character__serif').addClass('none');
     } else {
       console.log('=== Hiding purchase dialog ===');
       $('.display__character__serif').addClass('none');
       $('.item__cost .icon').removeClass('coin point'); // すべてのクラスを削除
       $('.item__cost .TX').text(''); // 価格をクリア
       $('.item__img').attr('src', ''); // 画像のURLをクリア
-      $('.character__' + tag).attr('src', ''); // タグに対応する画像のURLをクリア
+      if (tag) {
+        $('.character__' + tag).attr('src', ''); // タグに対応する画像のURLをクリア
+      }
     }
 
     // saving__buttonのdisabled属性の制御
-    var allActiveChecked = true;
+    var hasUnpurchasedItem = false;
     $('input.category-tag__item--wrap').each(function () {
       if ($(this).is(':checked') && !$(this).siblings('.nothing-item').hasClass('active')) {
-        allActiveChecked = false;
+        hasUnpurchasedItem = true;
       }
     });
 
-    if (allActiveChecked) {
-      $('.saving__button').removeAttr('disabled');
-    } else {
+    if (hasUnpurchasedItem) {
       $('.saving__button').attr('disabled', 'disabled');
-    }
-  });
-
-  // 交換するボタンのクリックイベント
-  $(document).on('click', '.buttons.exchange', function () {
-    console.log('=== Exchange button clicked (document.on) ===');
-    console.log('Exchange button element:', this);
-
-    var paymentType = $('.item__cost .icon').hasClass('coin') ? 'coin' : 'point';
-    var costText = $('.item__cost .TX').text();
-    var cost = parseInt(costText, 10);
-    var selectedItem = $('input.category-tag__item--wrap:checked').val();
-
-    console.log('=== Exchange button clicked ===');
-    console.log('paymentType:', paymentType);
-    console.log('costText:', costText);
-    console.log('cost:', cost);
-    console.log('selectedItem:', selectedItem);
-    console.log('user_id:', user_id);
-    console.log('ajaxurl:', ajaxurl);
-
-    // デバッグ: チェックされている要素の詳細を確認
-    console.log('=== Checked elements debug ===');
-    $('input.category-tag__item--wrap:checked').each(function (index) {
-      console.log('Checked element ' + index + ':');
-      console.log('  name:', $(this).attr('name'));
-      console.log('  value:', $(this).val());
-      console.log('  category:', $(this).attr('name').replace('selected_items-', ''));
-      console.log('  price:', $(this).closest('li').find('.price').text());
-      console.log('  payment_type:', $(this).closest('li').find('.payment_type').text());
-    });
-
-    // コストが無効な場合はエラー
-    if (isNaN(cost) || cost <= 0) {
-      console.error('Invalid cost:', cost);
-      alert('価格が正しく設定されていません。');
-      return;
-    }
-
-    // 選択されたアイテムがない場合はエラー
-    if (!selectedItem) {
-      console.error('No item selected');
-      alert('アイテムが選択されていません。');
-      return;
-    }
-
-    if (confirm('本当に交換しますか？')) {
-      console.log('=== Sending AJAX request ===');
-      $.ajax({
-        url: ajaxurl, // WordPressのAjax URL
-        type: 'POST',
-        data: {
-          action: 'exchange_item',
-          nonce: exchange_ajax.nonce,
-          payment_type: paymentType,
-          cost: cost,
-          user_id: user_id, // 現在のユーザーID
-          selected_item: selectedItem // 選択されたアイテム
-        },
-        success: function (response) {
-          console.log('AJAX success response:', response);
-          if (response.success) {
-            alert('交換が成功しました！');
-            location.reload(); // ページをリロードして最新の情報を表示
-          } else {
-            alert('交換に失敗しました: ' + response.data);
-          }
-        },
-        error: function (xhr, status, error) {
-          console.log('AJAX error:', xhr, status, error);
-          alert('通信エラーが発生しました: ' + error);
-        }
-      });
+    } else {
+      $('.saving__button').removeAttr('disabled');
     }
   });
 
@@ -390,6 +335,9 @@ $(function () {
         aspectRatio: avatarAspectRatio,
         style: avatarStyle
       };
+      // hidden inputを更新
+      $('#selected_avatar_input').val(selectedAvatar);
+      console.log('selected_avatar input updated in updateCharacterDisplay:', selectedAvatar);
     } else {
       // アバターが選択されていない場合はデフォルト画像に戻す
       var defaultAvatarUrl = '/wp-content/themes/In-House-Curriculum/img/avatar-img/avatar01.webp';
@@ -465,8 +413,19 @@ $(function () {
         }
       }
 
-      if (styleAttr) {
-        $itemElement.attr('style', styleAttr);
+      // 既存のスタイル情報を保持（display-character.phpで生成されたスタイル）
+      var existingStyle = $itemElement.attr('style') || '';
+      if (existingStyle && !existingStyle.includes('aspect-ratio:')) {
+        // 既存のスタイルにアスペクト比が含まれていない場合は追加
+        if (itemAspectRatio) {
+          existingStyle = 'aspect-ratio: ' + itemAspectRatio + '; ' + existingStyle;
+        }
+      }
+
+      // 最終的なスタイルを適用
+      var finalStyle = styleAttr || existingStyle;
+      if (finalStyle) {
+        $itemElement.attr('style', finalStyle);
       }
     });
   }
@@ -474,23 +433,42 @@ $(function () {
   // アバター別のアイテムスタイルを取得する関数
   function getAvatarItemStyles(avatarId) {
     console.log('Getting avatar item styles for avatar ID:', avatarId);
-    // アバターのアイテムスタイルを取得
-    var $avatarInput = $('input[value*="-' + avatarId + '"]').first();
-    console.log('Found avatar input:', $avatarInput.length > 0);
-    if ($avatarInput.length > 0) {
-      var avatarItemStylesData = $avatarInput.closest('li').find('.avatar-item-styles').text();
-      console.log('Raw avatar item styles data:', avatarItemStylesData);
+
+    // 現在選択されているアバターのinputから直接取得
+    var $currentAvatarInput = $('input[value="' + currentSelectedAvatar.value + '"]');
+    if ($currentAvatarInput.length > 0) {
+      var avatarItemStylesData = $currentAvatarInput.closest('li').find('.avatar-item-styles').text();
+      console.log('Raw avatar item styles data from current avatar:', avatarItemStylesData);
       if (avatarItemStylesData && avatarItemStylesData !== 'null' && avatarItemStylesData !== '') {
         try {
           var parsedStyles = JSON.parse(avatarItemStylesData);
-          console.log('Parsed avatar item styles:', parsedStyles);
+          console.log('Parsed avatar item styles from current avatar:', parsedStyles);
           return parsedStyles;
         } catch (e) {
-          console.log('Failed to parse avatar item styles:', e);
+          console.log('Failed to parse avatar item styles from current avatar:', e);
           console.log('Raw data:', avatarItemStylesData);
         }
       }
     }
+
+    // フォールバック: アバターIDで検索
+    var $avatarInput = $('input[value*="-' + avatarId + '"]').first();
+    console.log('Found avatar input by ID:', $avatarInput.length > 0);
+    if ($avatarInput.length > 0) {
+      var avatarItemStylesData = $avatarInput.closest('li').find('.avatar-item-styles').text();
+      console.log('Raw avatar item styles data by ID:', avatarItemStylesData);
+      if (avatarItemStylesData && avatarItemStylesData !== 'null' && avatarItemStylesData !== '') {
+        try {
+          var parsedStyles = JSON.parse(avatarItemStylesData);
+          console.log('Parsed avatar item styles by ID:', parsedStyles);
+          return parsedStyles;
+        } catch (e) {
+          console.log('Failed to parse avatar item styles by ID:', e);
+          console.log('Raw data:', avatarItemStylesData);
+        }
+      }
+    }
+
     return null;
   }
 
@@ -536,7 +514,7 @@ $(function () {
   });
 
   // ラジオボタンのチェック解除時の処理
-  $('input.category-tag__item--wrap').on('change', function () {
+  $(document).on('change', 'input.category-tag__item--wrap', function () {
     var name = $(this).attr('name');
     var category = name.replace('selected_items-', '');
 
@@ -559,6 +537,90 @@ $(function () {
           $itemElement.hide();
         }
       }
+    }
+  });
+
+  // 交換するボタンのクリックイベント
+  $(document).on('click', '.buttons.exchange', function () {
+    console.log('=== Exchange button clicked (document.on) ===');
+    console.log('Exchange button element:', this);
+
+    // 未所持かつ選択中のinputを探す
+    var $checkedInput = $('input.category-tag__item--wrap:checked').filter(function () {
+      return !$(this).siblings('.nothing-item').hasClass('active');
+    });
+
+    if ($checkedInput.length === 0) {
+      alert('交換できるアイテムが選択されていません。');
+      return;
+    }
+
+    var selectedItem = $checkedInput.val();
+    var paymentType = $checkedInput.closest('li').find('.payment_type').text();
+    var costText = $checkedInput.closest('li').find('.price').text();
+    var cost = parseInt(costText, 10);
+
+    console.log('=== Exchange button clicked ===');
+    console.log('paymentType:', paymentType);
+    console.log('costText:', costText);
+    console.log('cost:', cost);
+    console.log('selectedItem:', selectedItem);
+    console.log('user_id:', user_id);
+    console.log('ajaxurl:', ajaxurl);
+
+    // デバッグ: チェックされている要素の詳細を確認
+    console.log('=== Checked elements debug ===');
+    $checkedInput.each(function (index) {
+      console.log('Checked element ' + index + ':');
+      console.log('  name:', $(this).attr('name'));
+      console.log('  value:', $(this).val());
+      console.log('  category:', $(this).attr('name').replace('selected_items-', ''));
+      console.log('  price:', $(this).closest('li').find('.price').text());
+      console.log('  payment_type:', $(this).closest('li').find('.payment_type').text());
+      console.log('  is_owned:', $(this).siblings('.nothing-item').hasClass('active'));
+    });
+
+    // コストが無効な場合はエラー
+    if (isNaN(cost) || cost <= 0) {
+      console.error('Invalid cost:', cost);
+      alert('価格が正しく設定されていません。');
+      return;
+    }
+
+    // 選択されたアイテムがない場合はエラー
+    if (!selectedItem) {
+      console.error('No item selected');
+      alert('アイテムが選択されていません。');
+      return;
+    }
+
+    if (confirm('本当に交換しますか？')) {
+      console.log('=== Sending AJAX request ===');
+      $.ajax({
+        url: ajaxurl, // WordPressのAjax URL
+        type: 'POST',
+        data: {
+          action: 'exchange_item',
+          nonce: exchange_ajax.nonce,
+          payment_type: paymentType,
+          cost: cost,
+          user_id: user_id, // 現在のユーザーID
+          selected_item: selectedItem // 選択されたアイテム
+        },
+        success: function (response) {
+          console.log('AJAX success response:', response);
+          if (response.success) {
+            alert('交換が成功しました！');
+            location.reload(); // ページをリロードして最新の情報を表示
+          } else {
+            alert('交換に失敗しました: ' + response.data);
+          }
+        },
+        error: function (xhr, status, error) {
+          console.log('AJAX error:', xhr, status, error);
+          alert('通信エラーが発生しました: ' + error);
+        }
+      });
     }
   });
 

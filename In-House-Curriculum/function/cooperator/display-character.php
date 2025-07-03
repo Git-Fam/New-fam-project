@@ -4,12 +4,19 @@ function display_character()
 {
     // 保存された値を取得
     $user_id = get_current_user_id();
-    $selected_character = get_user_meta($user_id, 'selected_avatar_normal', true);
+    $selected_character = get_user_meta($user_id, 'selected_avatar', true);
     $selected_items = json_decode(get_user_meta($user_id, 'selected_items', true), true) ?: [];
 
     // デフォルトアバターの設定
     if (empty($selected_character)) {
-        $selected_character = 'normal-7376';
+        // 所持アバター一覧から最初のアバターを取得
+        $owned_avatars = json_decode(get_user_meta($user_id, 'owned_avatars', true), true) ?: [];
+        if (!empty($owned_avatars)) {
+            $selected_character = $owned_avatars[0];
+        } else {
+            // 所持アバターがない場合はデフォルト
+            $selected_character = 'normal-7376';
+        }
     }
 
     // 選択されたキャラクターのIDを取得

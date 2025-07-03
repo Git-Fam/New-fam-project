@@ -4,7 +4,7 @@
 
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"
   integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-  
+
 <!-- <script src="<?php echo get_template_directory_uri(); ?>/js/loading.js"></script> -->
 
 <?php if (is_home()) : ?>
@@ -37,7 +37,7 @@
   <script src="<?php echo get_template_directory_uri(); ?>/js/ranking.js"></script>
 <?php endif; ?>
 
-<?php if (is_archive('question') ||is_singular('question')) : ?>
+<?php if (is_archive('question') || is_singular('question')) : ?>
   <script src="<?php echo get_template_directory_uri(); ?>/js/question.js"></script>
 <?php endif; ?>
 
@@ -62,7 +62,7 @@
   <script src="<?php echo get_template_directory_uri(); ?>/js/random-event.js"></script>
 <?php endif; ?>
 
-<?php if (is_archive('avatar')) : ?>
+<?php if (is_archive('avatar') || is_singular('avatar')) : ?>
   <script src="<?php echo get_template_directory_uri(); ?>/js/avatar.js"></script>
 <?php endif; ?>
 
@@ -76,6 +76,3 @@
 </body>
 
 </html>
-
-
-

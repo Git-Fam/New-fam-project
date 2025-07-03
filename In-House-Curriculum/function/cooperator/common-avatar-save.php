@@ -48,6 +48,13 @@ function is_avatar_category($category)
     }
     error_log('判定するカテゴリー: ' . $category);
     error_log('アバターカテゴリー一覧: ' . print_r($avatar_categories, true));
+
+    // normal, limited は必ずアバター扱い
+    if (in_array($category, ['normal', 'limited'])) {
+        error_log('normal/limited判定: TRUE');
+        return true;
+    }
+
     return in_array($category, $avatar_categories);
 }
 
@@ -74,8 +81,8 @@ function save_avatar_selection($user_id, $category, $value)
  */
 function save_item_selection($user_id, $category, $value)
 {
-    // アバターID形式（例: normal-xxxx）は保存しない
-    if (preg_match('/^normal-\\d+$/', $value)) {
+    // アバターID形式（例: normal-xxxx, limited-xxxx）は保存しない
+    if (preg_match('/^(normal|limited)-\\d+$/', $value)) {
         return false;
     }
     // 選択中のアイテムを保存（カテゴリー別）

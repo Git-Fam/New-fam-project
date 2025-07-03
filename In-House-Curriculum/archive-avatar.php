@@ -11,13 +11,27 @@ get_header();
 include_once get_template_directory() . '/function/cooperator/common-avatar-save.php';
 include_once get_template_directory() . '/function/cooperator/avatar-id-get.php';
 
+$user_id = get_current_user_id();
 $success = false;
 $error_message = '';
 
+// ユーザーの所持アイテム情報を取得
+$owned_avatars = json_decode(get_user_meta($user_id, 'owned_avatars', true), true) ?: [];
+$owned_items = json_decode(get_user_meta($user_id, 'owned_items', true), true) ?: [];
+$selected_items = json_decode(get_user_meta($user_id, 'selected_items', true), true) ?: [];
+$selected_avatar = get_user_meta($user_id, 'selected_avatar', true) ?: 'normal-7376';
+
 // POSTリクエストの処理
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && check_admin_referer('avatar_update', 'avatar_nonce')) {
-    $user_id = get_current_user_id();
     $success = true;
+
+    // 選択中のアバターを保存
+    if (isset($_POST['selected_avatar'])) {
+        $selected_avatar = sanitize_text_field($_POST['selected_avatar']);
+        if (!empty($selected_avatar)) {
+            update_user_meta($user_id, 'selected_avatar', $selected_avatar);
+        }
+    }
 
     foreach ($_POST as $key => $value) {
         if (strpos($key, 'selected_items-') === 0) {
@@ -40,6 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && check_admin_referer('avatar_update'
 
 <form action="" method="POST">
     <?php wp_nonce_field('avatar_update', 'avatar_nonce'); ?>
+
+    <!-- 選択中のアバターを保存するためのhidden input -->
+    <input type="hidden" id="selected_avatar_input" name="selected_avatar" value="<?php echo esc_attr($selected_avatar); ?>">
 
     <?php if (isset($_GET['updated'])): ?>
         <div class="notice notice-success">
@@ -234,7 +251,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && check_admin_referer('avatar_update'
                                 } else {
                                     continue; // スラッグが取得できない場合はスキップ
                                 }
-                                
+
                                 $category_active_class = $category_index === 0 ? 'active' : '';
                                 echo '<div class="control__category-tag__list ' . $category_active_class . '">';
                                 echo '<ul>';
@@ -254,9 +271,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && check_admin_referer('avatar_update'
                                 foreach ($posts as $post) {
                                     $thumbnail_url = get_the_post_thumbnail_url($post->ID, 'full');
                                     $input_value = esc_attr($category_slug . '-' . $post->ID);
-                                    $is_selected_item = in_array($input_value, $selected_items) ? 'checked' : '';
+                                    $is_selected_item = ($input_value === $selected_avatar) ? 'checked' : '';
 
-                                    // 所持アイテムの判定
+                                    // 所持アバターの判定
                                     $is_owned = in_array($input_value, $owned_avatars) ? 'active' : '';
 
                                     $price = get_post_meta($post->ID, '_avatar_price', true);
@@ -308,7 +325,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && check_admin_referer('avatar_update'
                                 } else {
                                     continue; // スラッグが取得できない場合はスキップ
                                 }
-                                
+
                                 $category_active_class = $category_index === 0 ? 'active' : '';
                                 echo '<div class="control__category-tag__list ' . $category_active_class . '">';
                                 echo '<ul>';

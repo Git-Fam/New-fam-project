@@ -12,32 +12,11 @@ function show_user_avatar_items_field($user)
 
         <!-- 選択中のアバター -->
         <tr>
-            <th><label>選択中のアバター（カテゴリー別）</label></th>
+            <th><label>選択中のアバター</label></th>
             <td>
                 <?php
-                $avatar_categories = get_terms(array(
-                    'taxonomy' => 'avatar-cat',
-                    'hide_empty' => false,
-                ));
-                if (is_array($avatar_categories) && !empty($avatar_categories)) {
-                    foreach ($avatar_categories as $category) {
-                        // $categoryがオブジェクトか配列かを判定
-                        $category_slug = '';
-                        $category_name = '';
-                        if (is_object($category)) {
-                            $category_slug = isset($category->slug) ? $category->slug : '';
-                            $category_name = isset($category->name) ? $category->name : '';
-                        } elseif (is_array($category)) {
-                            $category_slug = isset($category['slug']) ? $category['slug'] : '';
-                            $category_name = isset($category['name']) ? $category['name'] : '';
-                        }
-
-                        if (!empty($category_slug)) {
-                            $selected_avatar = get_user_meta($user->ID, 'selected_avatar_' . $category_slug, true);
-                            echo '<p><strong>' . esc_html($category_name) . ':</strong> ' . esc_html($selected_avatar ?: '未選択') . '</p>';
-                        }
-                    }
-                }
+                $selected_avatar = get_user_meta($user->ID, 'selected_avatar', true);
+                echo '<p> ' . esc_html($selected_avatar ?: '未選択') . '</p>';
                 ?>
             </td>
         </tr>
@@ -100,8 +79,11 @@ function save_user_avatar_items_field($user_id)
 add_action('wp_enqueue_scripts', 'add_exchange_nonce');
 function add_exchange_nonce()
 {
-    wp_localize_script('jquery', 'exchange_ajax', array(
-        'nonce' => wp_create_nonce('exchange_item_nonce')
-    ));
+    // avatar.jsが読み込まれるページでのみnonceを設定
+    if (is_archive('avatar') || is_singular('avatar')) {
+        wp_localize_script('jquery', 'exchange_ajax', array(
+            'nonce' => wp_create_nonce('exchange_item_nonce')
+        ));
+    }
 }
 ?>
