@@ -18,6 +18,25 @@
     padding: s(30) s(50);
   }
 
+  .randomevent-close-btn {
+    position: absolute;
+    @include iconContain($action-close);
+
+    @include pc {
+      width: p(50);
+      height: p(50);
+      top: p(30);
+      right: p(30);
+    }
+
+    @include sp {
+      width: s(20);
+      height: s(20);
+      top: s(10);
+      right: s(10);
+    }
+  }
+
   .inner {
     background-color: #FFF;
     width: 100%;
@@ -215,7 +234,7 @@
 
 
         .event_character {
-          @include imgContain("newspaper.webp");
+          @include imgContain("lock.webp");
 
           @include pc {
             width: p(135);
@@ -231,6 +250,8 @@
 
       .random-coin-get {
         display: none;
+        width: fit-content;
+        margin: 0 auto;
 
         .get-content {
           margin: 0;
@@ -248,10 +269,18 @@
     color: #4EA772;
 
     @include pc {
-      padding: p(180) p(250);
+      padding: p(140) p(250);
     }
 
     .inner {
+      @include pc {
+        padding: p(60) p(50);
+      }
+
+      @include sp {
+        padding: s(30) s(20);
+      }
+
 
       .TL_wrap {
         border-bottom: p(4) dotted #4EA772;
@@ -282,6 +311,11 @@
       @include pc {
         width: p(848);
         height: p(859);
+      }
+
+      @include sp {
+        width: s(400);
+        height: s(400);
       }
     }
   }

@@ -291,6 +291,16 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                     <div class="post-list-inner">
                         <ul>
                             <?php
+                            $story_tag = get_term_by('slug', 'story', 'post_tag');
+                            $story_tag_id = $story_tag ? $story_tag->term_id : 0;
+
+                            $args = [
+                                'post_type' => 'post',
+                                'cat' => $category->term_id,
+                                'posts_per_page' => -1,
+                                'tag__not_in' => [$story_tag_id],
+                            ];
+                            $query = new WP_Query($args);
                             if ($query->have_posts()):
                                 while ($query->have_posts()): $query->the_post();
                             ?>

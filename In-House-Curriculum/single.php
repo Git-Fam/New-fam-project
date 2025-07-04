@@ -56,12 +56,8 @@ if ($locked) {
 
 // === 閲覧権限制御 ===
 $current_user = wp_get_current_user();
-$allowed_posts = get_user_meta($current_user->ID, 'allowed_posts', true);
-if (!is_array($allowed_posts) || empty($allowed_posts)) {
-    $all_posts = get_posts(['numberposts' => -1, 'post_type' => 'post', 'post_status' => 'publish']);
-    $allowed_posts = wp_list_pluck($all_posts, 'ID');
-}
-if (!in_array(get_the_ID(), $allowed_posts)) {
+// 閲覧権限を判定
+if (!user_can_view_post($current_user->ID, get_the_ID())) {
     wp_redirect(home_url('/viewing-limit'));
     exit;
 }
