@@ -6,7 +6,7 @@ $id   = intval($_GET['id'] ?? 0);
 
 $wrap_classes = ['random-wrap'];
 
-if ($type && $id) {
+    if ($type && $id) {
     $post = get_post($id);
 
     if ($post && $post->post_type === $type) {
@@ -35,13 +35,19 @@ if ($type && $id) {
                 <div class="event-content"><?php the_content(); ?></div>
 
                 <?php if ($type === 'post') :
-$id = intval($_GET['id'] ?? 0);
-$hint = get_field('hint_img', $id);
+                    $id = intval($_GET['id'] ?? 0);
 
-if (!empty($hint) && is_array($hint) && isset($hint['url'])) {
-    echo '<img class="hint" src="' . esc_url($hint['url']) . '" alt="' . esc_attr($hint['alt'] ?? '') . '">';
-}
+                    // 1つめの画像フィールド
+                    $hint = get_field('hint', $id);
+                    if (!empty($hint) && is_array($hint) && isset($hint['url'])) {
+                        echo '<img class="hint" src="' . esc_url($hint['url']) . '" alt="' . esc_attr($hint['alt'] ?? '') . '">';
+                    }
 
+                    // 2つめの画像フィールド（hint_2）
+                    $hint2 = get_field('hint2', $id);
+                    if (!empty($hint2) && is_array($hint2) && isset($hint2['url'])) {
+                        echo '<img class="hint hint-2" src="' . esc_url($hint2['url']) . '" alt="' . esc_attr($hint2['alt'] ?? '') . '">';
+                    }
                 endif; ?>
 
                 <?php if ($type === 'random') : ?>

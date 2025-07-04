@@ -376,37 +376,51 @@
 
           }
 
-          &:last-child {
-            rotate: 180deg;
-            right: auto;
+          &:nth-child(6) {
+            rotate: 160deg;
 
             @include pc {
-              width: p(250);
-              left: p(300);
-              bottom: p(173)
+              width: p(200);
+              left: p(120);
+              top: p(60);
+              bottom: auto;
             }
 
             @include sp {
-              width: 250px;
-              left: 300px;
-              bottom: 203px;
+              width: 200px;
+              left: 104px;
+              top: 20px;
+              bottom: auto;
             }
 
             .goal-wrap,
             .character-box {
-              rotate: 180deg;
+              rotate: -160deg;
+            }
 
-              .goal-bg {
-                opacity: 1;
-              }
+            .goal-bg {
+              opacity: 1 !important;
             }
 
             .title-board {
-              transform: scale(1) !important;
+              transform: scale(-1, 1);
 
               .board-TX {
-                transform: scale(1) !important;
+                transform: scale(-1, 1);
               }
+            }
+          }
+
+
+          &:last-child {
+            @include pc {
+              right: p(109);
+              bottom: p(100);
+            }
+
+            @include sp {
+              right: 80px;
+              bottom: 150px;
             }
           }
 

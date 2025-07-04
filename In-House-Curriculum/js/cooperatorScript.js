@@ -45,11 +45,11 @@ jQuery(function () {
 			}
 		});
 
-	$(".archive--item--img").click(function () {
-		var currentSection = $(".page-section.show");
-		currentSection.removeClass("show");
-		$(".page1").addClass("show");
-	});
+	// $(".archive--item--img").click(function () {
+	// 	var currentSection = $(".page-section.show");
+	// 	currentSection.removeClass("show");
+	// 	$(".page1").addClass("show");
+	// });
 
 	//道のり　SPchat
 	$(".C_chat-content")
@@ -605,18 +605,27 @@ jQuery(function () {
 			);
 
 			if (currentUser && currentUser.progress) {
-				// last_progress_key が一番確実
 				const lastProgressKey = window.wpData?.last_progress_key;
 				let targetKey = lastProgressKey;
 
-				if (!targetKey) {
+				// 進捗0以外が1つでもあるか判定
+				const hasAnyProgress = Object.values(currentUser.progress).some(
+					(val) => parseInt(val, 10) > 0
+				);
+
+				if (!targetKey && !hasAnyProgress) {
+					// 進捗が全くない場合
+					$(".archive--contents--items--wap").removeClass("active");
+					$(".archive--contents--items--wap.HTML").addClass("active");
+					window.updateArchiveItemActive();
+				} else if (!targetKey && hasAnyProgress) {
+					// 進捗がひとつでもある場合、その最初のkeyで動く（従来通り）
 					targetKey = Object.keys(currentUser.progress).find(
-						(key) => currentUser.progress[key] > 0
+						(key) => parseInt(currentUser.progress[key], 10) > 0
 					);
 				}
 
 				if (targetKey) {
-					// 通常の進捗アクティブ処理
 					const safeKey = CSS.escape(targetKey);
 					const $targetDestination = $(`.destination.${safeKey}`).first();
 					if ($targetDestination.length) {
@@ -627,13 +636,10 @@ jQuery(function () {
 						$parentWap.addClass("active");
 						window.updateArchiveItemActive();
 					}
-				} else {
-					// ★進捗が全くなかった場合は .HTML のタブをactiveにする
-					$(".archive--contents--items--wap").removeClass("active");
-					$(".archive--contents--items--wap.HTML").addClass("active");
-					window.updateArchiveItemActive();
 				}
 			}
+			var $el = $(".archive--contents--items--wap.HTML");
+			$el.addClass("active");
 		}
 		displayCharacters();
 	});

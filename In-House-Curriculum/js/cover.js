@@ -85,11 +85,17 @@ $(function () {
 		// カテゴリータブクリック時の処理
 		$(".archive--item").on("click", function () {
 			const categoryName = $(this).find(".TX").text().trim();
+			$(".archive--item").removeClass("active");
+			$(this).addClass("active");
+			// var currentSection = $(".page-section.show");
+			// currentSection.removeClass("show");
+			// $(".page1").addClass("show");
+	
 
 			// カテゴリー名をパラメータに付与してリロード
-			const currentUrl = new URL(window.location.href);
-			currentUrl.searchParams.set("category", categoryName);
-			window.location.href = currentUrl.toString();
+			// const currentUrl = new URL(window.location.href);
+			// currentUrl.searchParams.set("category", categoryName);
+			// window.location.href = currentUrl.toString();
 		});
 	});
 });

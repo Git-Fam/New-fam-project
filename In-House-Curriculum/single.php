@@ -10,9 +10,20 @@ unset($_SESSION['confetti_show']);
 
 // 完了判定用
 $tags = get_the_tags();
-$slug = ($tags && !is_wp_error($tags)) ? $tags[0]->slug : '';
-$is_story = ($slug === 'story');
-$progress = get_user_meta(get_current_user_id(), $slug, true);
+// 全てのタグのslagを取得
+$slugs = '';
+$is_story = false;
+if ($tags && !is_wp_error($tags)) {
+    $slugs_arr = [];
+    foreach ($tags as $tag) {
+        $slugs_arr[] = $tag->slug;
+        if ($tag->slug === 'story') {
+            $is_story = true;
+        }
+    }
+    $slugs = implode(' ', $slugs_arr);
+}
+$progress = get_user_meta(get_current_user_id(), $slugs, true);
 $is_complete = intval($progress) >= 100;
 $has_quiz = get_post_meta(get_the_ID(), '_has_quiz', true);
 
@@ -80,7 +91,7 @@ if (!user_can_view_post($current_user->ID, get_the_ID())) {
 get_header();
 ?>
 
-<div class="single <?php echo esc_attr($slug); ?>">
+<div class="single <?php echo esc_attr($slugs); ?>">
     <div class="single--img"></div>
 
     <div class="single--link">
@@ -145,7 +156,7 @@ get_header();
 
                 <!-- 完了ボタン：★story記事は非表示 -->
                 <?php if (!$is_story): ?>
-                <div class="progress-complete-button-wrapper" data-tag="<?php echo esc_attr($slug); ?>" data-next-url="<?php echo esc_url($next_post_url); ?>">
+                <div class="progress-complete-button-wrapper" data-tag="<?php echo esc_attr($slugs); ?>" data-next-url="<?php echo esc_url($next_post_url); ?>">
                     <?php if ($is_complete): ?>
                         <button disabled class="is-complete">完了済み</button>
                     <?php else: ?>

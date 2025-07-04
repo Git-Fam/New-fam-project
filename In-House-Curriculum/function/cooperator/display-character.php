@@ -15,7 +15,7 @@ function display_character()
             $selected_character = $owned_avatars[0];
         } else {
             // 所持アバターがない場合はデフォルト
-            $selected_character = 'normal-7376';
+            $selected_character = 'normal-7547';
         }
     }
 

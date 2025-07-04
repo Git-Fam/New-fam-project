@@ -47,16 +47,16 @@ function get_avatar_meta_data($user_id)
         }
 
         // デフォルト値の設定
-        // normal-7376をデフォルトで所持
+        // normal-7547をデフォルトで所持
         if (empty($meta_data['owned_avatars'])) {
-            $meta_data['owned_avatars'] = ['normal-7376'];
-        } else if (!in_array('normal-7376', $meta_data['owned_avatars'])) {
-            $meta_data['owned_avatars'][] = 'normal-7376';
+            $meta_data['owned_avatars'] = ['normal-7547'];
+        } else if (!in_array('normal-7547', $meta_data['owned_avatars'])) {
+            $meta_data['owned_avatars'][] = 'normal-7547';
         }
 
-        // normal-7376をデフォルトで選択（normalカテゴリー）
+        // normal-7547をデフォルトで選択（normalカテゴリー）
         if (empty($meta_data['selected_items']['normal'])) {
-            $meta_data['selected_items']['normal'] = 'normal-7376';
+            $meta_data['selected_items']['normal'] = 'normal-7547';
         }
 
         return $meta_data;
@@ -97,11 +97,11 @@ extract($avatar_meta);
 $selected_items = $selected_items ?: [];
 
 // 所持アイテムの配列を取得（archive-avatar.phpで使用）
-$owned_avatars = $owned_avatars ?: ['normal-7376'];
+$owned_avatars = $owned_avatars ?: ['normal-7547'];
 $owned_items = $owned_items ?: [];
 
 // 選択されたキャラクターのIDを取得
-$selected_character = get_user_meta($user_id, 'selected_avatar_normal', true) ?: 'normal-7376';
+$selected_character = get_user_meta($user_id, 'selected_avatar_normal', true) ?: 'normal-7547';
 
 // 選択されたアイテムの配列を取得（archive-avatar.phpで使用）
 $selected_items_array = [];
@@ -116,7 +116,7 @@ if (!empty($selected_items)) {
 }
 
 // 所持アイテムの配列を取得（archive-avatar.phpで使用）
-$owned_characters = $owned_avatars ?: ['normal-7376'];
+$owned_characters = $owned_avatars ?: ['normal-7547'];
 $owned_hats = [];
 $owned_glasses = [];
 

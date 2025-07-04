@@ -295,22 +295,21 @@
           }
 
           &:nth-child(4) {
-            rotate: 169deg;
-            z-index: 30;
+            rotate: 180deg;
 
             @include pc {
-              right: p(464);
-              bottom: p(18);
+              right: p(420);
+              bottom: p(0);
             }
 
             @include sp {
-              right: 415px;
-              bottom: 48px;
+              right: 420px;
+              bottom: 30px;
             }
 
             .goal-wrap,
             .character-box {
-              rotate: -169deg;
+              rotate: -180deg;
 
               .title-board {
                 transform: scale(-1, 1);
@@ -323,58 +322,87 @@
           }
 
           &:nth-child(5) {
-            right: auto;
-            rotate: unset;
+            rotate: -156deg;
+            right: unset;
 
             @include pc {
-              left: p(338);
-              bottom: p(141);
+              left: p(250);
+              bottom: p(0);
             }
 
             @include sp {
-              left: 338px;
-              bottom: 171px;
+              left: 250px;
+              bottom: 21px;
             }
 
             .goal-wrap,
             .character-box {
-              rotate: unset !important;
+              rotate: 156deg;
+
               .title-board {
-                transform: unset;
+                transform: scale(-1, 1);
 
                 .board-TX {
-                  transform: unset;
+                  transform: scale(-1, 1);
                 }
               }
-
             }
+
           }
 
           &:nth-child(6) {
+            right: unset;
+            top: unset;
             rotate: unset;
 
             @include pc {
-              right: p(197);
-              bottom: p(68);
+              left: p(350);
+              bottom: p(140);
             }
 
             @include sp {
-              right: 197px;
-              bottom: 98px;
+              left: 350px;
+              bottom: 170px;
             }
 
-            .goal-wrap,
-            .character-box {
+            .goal-wrap {
               rotate: unset;
+            }
 
-              .title-board {
-                transform: unset;
+            .title-board {
+              transform: unset !important;
 
-                .board-TX {
-                  transform: unset;
-                }
+              .board-TX {
+                transform: unset !important;
               }
             }
+          }
+
+          &:nth-child(7) {
+            rotate: unset;
+
+            @include pc {
+              right: p(297);
+              bottom: p(90);
+            }
+
+            @include sp {
+              right: 278px;
+              bottom: 127px;
+            }
+
+            .goal-wrap {
+              rotate: unset;
+            }
+
+            .title-board {
+              transform: unset !important;
+
+              .board-TX {
+                transform: unset !important;
+              }
+            }
+
           }
         }
       }

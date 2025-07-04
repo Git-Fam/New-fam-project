@@ -19,7 +19,7 @@ $error_message = '';
 $owned_avatars = json_decode(get_user_meta($user_id, 'owned_avatars', true), true) ?: [];
 $owned_items = json_decode(get_user_meta($user_id, 'owned_items', true), true) ?: [];
 $selected_items = json_decode(get_user_meta($user_id, 'selected_items', true), true) ?: [];
-$selected_avatar = get_user_meta($user_id, 'selected_avatar', true) ?: 'normal-7376';
+$selected_avatar = get_user_meta($user_id, 'selected_avatar', true) ?: 'normal-7547';
 
 // POSTリクエストの処理
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && check_admin_referer('avatar_update', 'avatar_nonce')) {
