@@ -244,7 +244,7 @@ function register_avatar_post_type()
                     rows="3"
                     cols="50"
                     placeholder="CSSスタイルを入力してください"><?php echo esc_textarea($current_style); ?></textarea>
-                  <p class="description">例: aspect-ratio: 1/2; width: 80%; top: 10%; left: 50%; transform: translateY(-50%);</p>
+                  <p class="description">例: width: 80%; top: 10%; left: 50%; transform: translateX(-50%);</p>
                 </td>
               </tr>
             <?php endforeach; ?>
