@@ -181,6 +181,80 @@
           }
         }
       }
+      &.received {
+        position: relative;
+        background-color: #FFFCE8;
+        @include center;
+        width: fit-content;
+
+        @include pc {
+          border: p(11) solid rgba(255, 234, 74, 0.89);
+          border-radius: p(20);
+          padding: p(8) p(30) p(8) p(30);
+          margin: p(100) auto 0;
+          gap: p(10)
+        }
+
+        @include sp {
+          border: s(5) solid rgba(255, 234, 74, 0.89);
+          border-radius: s(10);
+          padding: s(5) s(15) s(5) s(15);
+          margin: s(50) auto 0;
+          gap: s(5)
+        }
+
+        .get-coin {
+          @include imgContain("log-board/log-board-item-02.webp");
+          aspect-ratio: 1 / 1;
+          animation: getcoin 2s infinite;
+
+          @keyframes getcoin {
+
+            0%,
+            40%,
+            60%,
+            100% {
+              transform: scale(1, 1);
+            }
+
+            50% {
+              transform: scale(-1, 1);
+            }
+          }
+
+          @include pc {
+            width: p(41);
+          }
+
+          @include sp {
+            width: s(20);
+          }
+        }
+
+        .get-TX {
+          @include wt700;
+          color: #BAA661;
+
+          @include pc {
+            font-size: p(20);
+          }
+
+          @include sp {
+            font-size: s(13);
+          }
+
+          span {
+            @include pc {
+              font-size: p(40);
+            }
+
+            @include sp {
+              font-size: s(20);
+            }
+          }
+        }
+      }
+
 
     }
 
@@ -362,18 +436,16 @@
       }
 
       .hint {
-        line-height: 150%;
+
+        width: 100%;
+        height: auto;
 
         @include pc {
           margin-top: p(50);
-          font-size: p(18);
-          letter-spacing: p(1.8);
         }
 
         @include sp {
           margin-top: s(30);
-          font-size: s(13);
-          letter-spacing: s(1.3);
         }
       }
 

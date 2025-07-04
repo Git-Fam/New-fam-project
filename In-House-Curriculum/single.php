@@ -8,9 +8,10 @@ if (session_status() === PHP_SESSION_NONE) session_start();
 $show_confetti = !empty($_SESSION['confetti_show']);
 unset($_SESSION['confetti_show']);
 
-// 完了判定用：先に取得しておく
+// 完了判定用
 $tags = get_the_tags();
 $slug = ($tags && !is_wp_error($tags)) ? $tags[0]->slug : '';
+$is_story = ($slug === 'story');
 $progress = get_user_meta(get_current_user_id(), $slug, true);
 $is_complete = intval($progress) >= 100;
 $has_quiz = get_post_meta(get_the_ID(), '_has_quiz', true);
@@ -33,16 +34,31 @@ if ($categories) {
     $current_post_id = get_the_ID();
     $my_index = array_search($current_post_id, $post_ids);
 
+    // ★ storyの進捗は持たず、「直前の非story記事が未完了ならロック」
     if ($my_index !== false && $my_index > 0) {
-        $prev_post_id = $post_ids[$my_index - 1];
-        $prev_tags = get_the_tags($prev_post_id);
-        if ($prev_tags && !is_wp_error($prev_tags)) {
-            foreach ($prev_tags as $tag) {
-                $field_name = $tag->slug;
-                $progress = get_user_meta($current_user_id, $field_name, true);
-                if (intval($progress) < 100) {
-                    $locked = true;
-                    break;
+        for ($i = $my_index - 1; $i >= 0; $i--) {
+            $prev_post_id = $post_ids[$i];
+            $prev_tags = get_the_tags($prev_post_id);
+
+            if ($prev_tags && !is_wp_error($prev_tags)) {
+                $has_story_tag = false;
+                foreach ($prev_tags as $tag) {
+                    if ($tag->slug === 'story') {
+                        $has_story_tag = true;
+                        break;
+                    }
+                }
+                if (!$has_story_tag) {
+                    // 非story記事が見つかった
+                    foreach ($prev_tags as $tag) {
+                        $field_name = $tag->slug;
+                        $progress = get_user_meta($current_user_id, $field_name, true);
+                        if (intval($progress) < 100) {
+                            $locked = true;
+                            break 2; // 二重ループ脱出
+                        }
+                    }
+                    break; // 判定終わったのでbreak
                 }
             }
         }
@@ -56,7 +72,6 @@ if ($locked) {
 
 // === 閲覧権限制御 ===
 $current_user = wp_get_current_user();
-// 閲覧権限を判定
 if (!user_can_view_post($current_user->ID, get_the_ID())) {
     wp_redirect(home_url('/viewing-limit'));
     exit;
@@ -83,10 +98,11 @@ get_header();
 
             <!-- 次の記事へ：完了済みのときのみ表示（非表示で出しておく） -->
             <?php
+            // ★ story記事の場合は「次の記事」ボタン常に表示
             $next_post = get_adjacent_post(true, '', true, 'category');
             $next_post_url = $next_post ? get_permalink($next_post->ID) : '';
             if (!empty($next_post)): ?>
-                <div class="single--link--text next-post-link" style="<?php echo $is_complete ? '' : 'display:none;'; ?>">
+                <div class="single--link--text next-post-link" style="<?php echo (!$is_story && !$is_complete) ? 'display:none;' : ''; ?>">
                     <a href="<?php echo esc_url($next_post_url); ?>">次の記事へ</a>
                 </div>
             <?php endif; ?>
@@ -127,7 +143,8 @@ get_header();
             <div class="single--wap--content--text">
                 <p><?php the_content(); ?></p>
 
-                <!-- 完了ボタン -->
+                <!-- 完了ボタン：★story記事は非表示 -->
+                <?php if (!$is_story): ?>
                 <div class="progress-complete-button-wrapper" data-tag="<?php echo esc_attr($slug); ?>" data-next-url="<?php echo esc_url($next_post_url); ?>">
                     <?php if ($is_complete): ?>
                         <button disabled class="is-complete">完了済み</button>
@@ -135,6 +152,7 @@ get_header();
                         <button style="<?php echo $has_quiz ? 'display:none;' : ''; ?>">完了!</button>
                     <?php endif; ?>
                 </div>
+                <?php endif; ?>
                 <!-- 完了ボタン end -->
 
                 <div class="single-nation">
@@ -152,9 +170,9 @@ get_header();
                         <a href="<?php bloginfo('url'); ?>/curriculum<?php echo $category_param; ?>">戻る</a>
                     </div>
 
-                    <!-- 次の記事へ：完了済みのときのみ表示（非表示で出しておく） -->
+                    <!-- 次の記事へ：完了済みのときのみ表示 -->
                     <?php if (!empty($next_post)): ?>
-                        <div class="single-nation-text next-post-link" style="<?php echo $is_complete ? '' : 'display:none;'; ?>">
+                        <div class="single-nation-text next-post-link" style="<?php echo (!$is_story && !$is_complete) ? 'display:none;' : ''; ?>">
                             <a href="<?php echo esc_url($next_post_url); ?>">次の記事へ</a>
                         </div>
                     <?php endif; ?>
@@ -163,14 +181,14 @@ get_header();
         </div>
     </div>
 
-    <div class="confetti"> 
+    <div class="confetti close-area"> 
         <canvas id="confettiBurst"></canvas>
         <canvas id="confettiRain" ></canvas>
         <div class="confetti--main">
             <img src="<?php echo get_template_directory_uri(); ?>/img/single-complete.webp" alt="完了おめでとう！">
             <div class="confetti--main-chara"></div>
         </div>
-        <div class="close"></div>
+        <div class="close close-area"></div>
     </div>
 </div>
 

@@ -135,7 +135,7 @@ window.addEventListener("DOMContentLoaded", function () {
 	}
 
 	const confetti = document.querySelector(".confetti");
-	const closeBtn = document.querySelector(".confetti .close");
+	const closeBtn = document.querySelector(".close-area");
 
 	if (closeBtn) {
 		closeBtn.addEventListener("click", function () {

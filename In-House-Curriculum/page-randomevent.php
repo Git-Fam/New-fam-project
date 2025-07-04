@@ -35,10 +35,13 @@ if ($type && $id) {
                 <div class="event-content"><?php the_content(); ?></div>
 
                 <?php if ($type === 'post') :
-                    $hint = get_field('hint', $id);
-                    if (!empty($hint)) : ?>
-                        <div class="hint"><?php echo esc_html($hint); ?></div>
-                    <?php endif;
+$id = intval($_GET['id'] ?? 0);
+$hint = get_field('hint_img', $id);
+
+if (!empty($hint) && is_array($hint) && isset($hint['url'])) {
+    echo '<img class="hint" src="' . esc_url($hint['url']) . '" alt="' . esc_attr($hint['alt'] ?? '') . '">';
+}
+
                 endif; ?>
 
                 <?php if ($type === 'random') : ?>

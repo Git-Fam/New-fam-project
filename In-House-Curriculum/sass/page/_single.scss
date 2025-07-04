@@ -351,6 +351,7 @@
   left: 0;
   display: none;
   inset: 0;
+  z-index: 999;
 
   canvas {
     pointer-events: none;

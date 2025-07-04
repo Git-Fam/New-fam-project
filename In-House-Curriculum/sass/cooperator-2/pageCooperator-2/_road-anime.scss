@@ -332,6 +332,13 @@
       width: 80%;
       height: p(50);
       bottom: p(-100);
+      border-radius: p(10);
+    }
+    @include sp{
+      width: 80%;
+      height: 50px;
+      bottom: -100px;
+      border-radius: 10px;
     }
 
     &::before {
@@ -360,6 +367,14 @@
       width: 80%;
       height: p(50);
       bottom: p(-100);
+      border-radius: p(10);
+    }
+
+    @include sp{
+      width: 80%;
+      height: 50px;
+      bottom: -100px;
+      border-radius: 10px;
     }
 
     &::before {
@@ -452,6 +467,27 @@
       }
     }
   }
+  &.jQuery-lostchara {
+    .modal-content {
+      @include imgContain("jQuery-lostchara.webp");
+    }
+
+    .lost-pass-button {
+      display: block;
+      background: #3A96ED;
+      box-shadow: 0px 2px 0px 0px #38A1E2, 0px 0px 34px 0px #41F3F6 inset;
+
+      &::before {
+        content: "落とし物を渡す";
+      }
+    }
+  }
+  &.jQuery-pass{
+    .modal-content {
+      @include imgContain("jQuery-passchara.webp");
+    }
+  }
+
 
 
   &.show {

@@ -107,38 +107,39 @@ $(function () {
 			.find(
 				(cls) => cls !== "archive--contents--items--wap" && cls !== "active"
 			);
-
+	
 		const $destinations = $wap.find(".page-section .destination");
 		const $roadLost = $wap.find(".road-lost." + categoryClass);
 		let shouldShow = false;
-
+	
+		const alreadyOwned = window.LOST_ITEMS?.owned?.[categoryClass] === true;
+		const everPicked = window.LOST_ITEMS?.history?.[categoryClass] === true; // ★履歴も取得
+	
+		// どちらかに該当したら非表示にしたい場合
+		if (alreadyOwned || everPicked) {
+			$roadLost.removeClass("is-visible");
+			return;
+		}
+	
 		$destinations.each(function () {
 			const $this = $(this);
-			const classList = $this.attr("class");
-
+	
 			if ($this.hasClass("lost-trigger")) {
-
 				const hasClear = $this.find(".goal").hasClass("clear");
-				const alreadyOwned = window.LOST_ITEMS?.owned?.[categoryClass] === true;
-
-
-				if (hasClear && !alreadyOwned) {
+				if (hasClear) {
 					shouldShow = true;
 				}
 			}
 		});
-
-		// 🌟 ここにランダム判定を追加
-
-		if (shouldShow && Math.random() <= 1) {
-			// 40%の確率で表示
+	
+		// ランダム判定
+		if (shouldShow && Math.random() <= 0.5) {
 			$roadLost.addClass("is-visible");
 		} else {
 			$roadLost.removeClass("is-visible");
 		}
 	};
-
-	// 初期実行
+		// 初期実行
 	updateLostCharaMarkers();
 	setTimeout(() => {
 		checkLostTriggers();
@@ -203,7 +204,7 @@ function generateGlittersForSection($section) {
 
 	if (!$roadInner.length || !sectionId) return;
 
-	const glitterCount = Math.floor(Math.random() * 6); // 0〜5
+	const glitterCount = Math.floor(Math.random() * 3); // 0〜2
 	const width = $roadInner.outerWidth();
 	const height = $roadInner.outerHeight();
 
@@ -214,7 +215,7 @@ function generateGlittersForSection($section) {
 		const y = Math.random() * (height - 40);
 
 		let url = null;
-		const isHint = Math.random() < 0.5;
+		const isHint = Math.random() < 0.3;
 
 		if (isHint) {
 			const $activeWap = $(".archive--contents--items--wap.active");
@@ -273,3 +274,5 @@ $(function () {
 		}, 300);
 	});
 });
+
+
