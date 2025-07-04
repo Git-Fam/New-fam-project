@@ -266,12 +266,41 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                     'posts_per_page' => -1, // すべての投稿を取得
                 );
                 $query = new WP_Query($args);
-                $total_posts = $query->found_posts;
+                $filtered_posts = [];
+                    if ($query->have_posts()) {
+                        foreach ($query->posts as $post_obj) {
+                            $tags = get_the_tags($post_obj->ID);
+                            $has_story = false;
+                            if ($tags && !is_wp_error($tags)) {
+                                foreach ($tags as $tag) {
+                                    if ($tag->slug === 'story') {
+                                        $has_story = true;
+                                        break;
+                                    }
+                                }
+                            }
+                            if (!$has_story) {
+                                $filtered_posts[] = $post_obj;
+                            }
+                        }
+                    }
+                    $total_posts = count($filtered_posts);
+                    // 投稿表示ロジック
                 ?>
                 <div class="post-list">
                     <div class="post-list-inner">
                         <ul>
                             <?php
+                            $story_tag = get_term_by('slug', 'story', 'post_tag');
+                            $story_tag_id = $story_tag ? $story_tag->term_id : 0;
+
+                            $args = [
+                                'post_type' => 'post',
+                                'cat' => $category->term_id,
+                                'posts_per_page' => -1,
+                                'tag__not_in' => [$story_tag_id],
+                            ];
+                            $query = new WP_Query($args);
                             if ($query->have_posts()):
                                 while ($query->have_posts()): $query->the_post();
                             ?>
@@ -358,65 +387,84 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                     // 投稿数が5つ以上の場合は通常のセクション表示ロジック
                 ?>
                     <!-- セクション1 -->
-                    <section class="page-section page1 show">
-                        <div class="daytime-deco"></div>
-                        <div class="road-inner">
-                            <div class="content">
-                                <div class="road-lost jQuery"></div>
+                    <?php
+// === セクションの分割ロジックはここで決める ===
+$remaining_posts = $total_posts - 4;
 
-                                <div class="tree tree-anime"></div>
-                                <div class="road-content">
+// セクション分けの分岐
+if ($total_posts > 55) {
+    $num_sections = 6;
+} elseif ($total_posts > 46) {
+    $num_sections = 5;
+} elseif ($total_posts > 36) {
+    $num_sections = 4;
+} elseif ($total_posts > 26) {
+    $num_sections = 3;
+} elseif ($total_posts > 16) {
+    $num_sections = 2;
+} else {
+    $num_sections = 1;
+}
 
-                                    <?php
-                                    // 全ての投稿数から最後の4つを引く
-                                    $remaining_posts = $total_posts - 4;
 
-                                    // 表示する投稿数をセクションごとに分割するロジック
-                                    if ($total_posts > 55) {
-                                        $num_sections = 6; // 55投稿以上の場合は、6つのセクションに分ける
-                                    } elseif ($total_posts > 46) {
-                                        $num_sections = 5; // 46投稿以上の場合は、5つのセクションに分ける
-                                    } elseif ($total_posts > 36) {
-                                        $num_sections = 4; // 36投稿以上の場合は、4つのセクションに分ける
-                                    } elseif ($total_posts > 26) {
-                                        $num_sections = 3; // 26投稿以上の場合は、3つのセクションに分ける
-                                    } elseif ($total_posts > 16) {
-                                        $num_sections = 2; // 16投稿以上の場合は、2つのセクションに分ける
-                                    } else {
-                                        $num_sections = 1; // 16投稿未満の場合は、1つのセクション
-                                    }                        // セクションごとの平均投稿数
-                                    $posts_per_section = floor($remaining_posts / $num_sections);
+$posts_per_section = floor($remaining_posts / $num_sections);
+$remainder = $remaining_posts % $num_sections;
+$offset = 0;
+// section1
+$section1_count = $posts_per_section + ($num_sections == 1 ? $remainder : 0);
+$section1_posts = array_slice($filtered_posts, $offset, $section1_count);
+$offset += $section1_count;
 
-                                    // 余りの計算
-                                    $remainder = $remaining_posts % $num_sections;
+// section2～
+$section2_posts = [];
+$section3_posts = [];
+$section4_posts = [];
+$section4_5_posts = [];
+$section4_6_posts = [];
 
-                                    // 投稿表示ロジック
-                                    $post_index = 0;
+if ($num_sections >= 2) {
+    $section2_posts = array_slice($filtered_posts, $offset, $posts_per_section);
+    $offset += $posts_per_section;
+}
+if ($num_sections >= 3) {
+    $section3_posts = array_slice($filtered_posts, $offset, $posts_per_section);
+    $offset += $posts_per_section;
+}
+if ($num_sections >= 4) {
+    $section4_posts = array_slice($filtered_posts, $offset, $posts_per_section);
+    $offset += $posts_per_section;
+}
+if ($num_sections >= 5) {
+    $section4_5_posts = array_slice($filtered_posts, $offset, $posts_per_section);
+    $offset += $posts_per_section;
+}
+if ($num_sections >= 6) {
+    $section4_6_posts = array_slice($filtered_posts, $offset, $posts_per_section);
+    $offset += $posts_per_section;
+}
 
-                                    if ($query->have_posts()):
-                                        while ($query->have_posts()): $query->the_post();
+// 最後の4つ
+$last4_posts = array_slice($filtered_posts, -4);
+?>
 
-                                            // セクション1には余り分を加算
-                                            if ($post_index >= $posts_per_section + ($num_sections == 1 ? $remainder : 0)) {
-                                                break; // セクション1の投稿を表示するループを終了
-                                            }
+<section class="page-section page1 show">
+    <div class="daytime-deco"></div>
+    <div class="road-inner">
+        <div class="content">
+            <div class="road-lost jQuery"></div>
+            <div class="tree tree-anime"></div>
+            <div class="road-content">
+            <?php foreach ($section1_posts as $post_obj): setup_postdata($post_obj); ?>
+            <?php echo generate_destination_item($post_obj->ID); ?>
+        <?php endforeach; wp_reset_postdata(); ?>
+                </div>
+        </div>
+        <!-- 動的リンクの表示 -->
+        <div class="section-arrow next-section"></div>
+    </div>
+</section>
 
-                                            echo generate_destination_item(get_the_ID());
-                                            $post_index++;
-                                        endwhile;
-                                    endif;
-
-                                    wp_reset_postdata(); // クエリをリセット
-                                    ?>
-                                </div>
-                            </div>
-                            <!-- 動的リンクの表示 -->
-                            <div class="section-arrow next-section"></div>
-                        </div>
-                    </section>
-
-                    <?php if ($total_posts > 16): // 投稿数が16以上の場合のみ中間セクションを表示 
-                    ?>
+    <?php if ($num_sections >= 2): ?>
                         <!-- セクション2 (中間セクション) -->
                         <section class="page-section page2">
                             <div class="road-inner">
@@ -431,30 +479,9 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                                     <div class="road-lost HTML"></div>
                                     <div class="road-content">
 
-                                        <?php
-                                        // 中間の投稿を取得
-                                        $args = array(
-                                            'category__in' => array($category->term_id),
-                                            'posts_per_page' => $posts_per_section,  // 次のセクションに表示する投稿数
-                                            'offset' => ($posts_per_section + $remainder), // セクション1で表示した投稿数をスキップ
-                                        );
-                                        $query = new WP_Query($args);
-
-                                        if ($query->have_posts()):
-                                            while ($query->have_posts()): $query->the_post();
-
-                                                // 記事に付与されたタグを取得
-                                                echo generate_destination_item(get_the_ID());
-
-                                            endwhile;
-                                        else:
-                                            ?>
-                                            <p>このカテゴリーには投稿がありません。</p>
-                                        <?php
-                                        endif;
-
-                                        wp_reset_postdata(); // クエリをリセット
-                                        ?>
+                                    <?php foreach ($section2_posts as $post_obj): setup_postdata($post_obj); ?>
+                                    <?php echo generate_destination_item($post_obj->ID); ?>
+                                    <?php endforeach; wp_reset_postdata(); ?>
                                     </div>
                                 </div>
                                 <!-- 動的リンクの表示 -->
@@ -464,8 +491,8 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                         </section>
                     <?php endif; ?>
 
-                    <?php if ($total_posts > 26): // 投稿数が26以上の場合にさらに中間セクションを表示 
-                    ?>
+
+                    <?php if ($num_sections >= 3): ?>
                         <!-- セクション3 -->
                         <section class="page-section page3">
                         <div class="sec3-anime-coaster">
@@ -478,29 +505,9 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                                     <div class="tree"></div>
                                     <div class="road-content">
 
-                                        <?php
-                                        // セクション3の投稿を取得
-                                        $args = array(
-                                            'category__in' => array($category->term_id),
-                                            'posts_per_page' => $posts_per_section,  // 次のセクションに表示する投稿数
-                                            'offset' => ($posts_per_section * 2 + $remainder), // セクション1と2で表示した投稿数をスキップ
-                                        );
-                                        $query = new WP_Query($args);
-
-                                        if ($query->have_posts()):
-                                            while ($query->have_posts()): $query->the_post();
-
-                                                // 記事に付与されたタグを取得
-                                                echo generate_destination_item(get_the_ID());
-                                            endwhile;
-                                        else:
-                                            ?>
-                                            <p>このカテゴリーには投稿がありません。</p>
-                                        <?php
-                                        endif;
-
-                                        wp_reset_postdata(); // クエリをリセット
-                                        ?>
+                                    <?php foreach ($section3_posts as $post_obj): setup_postdata($post_obj); ?>
+                                    <?php echo generate_destination_item($post_obj->ID); ?>
+                                    <?php endforeach; wp_reset_postdata(); ?>
                                     </div>
                                 </div>
                                 <!-- 動的リンクの表示 -->
@@ -510,7 +517,7 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                         </section>
                     <?php endif; ?>
 
-                    <?php if ($total_posts > 36): // 投稿数が36以上の場合にさらに中間セクションを表示 
+                    <?php if ($num_sections >= 4):  // 投稿数が36以上の場合にさらに中間セクションを表示 
                     ?>
                         <!-- セクション4 -->
 
@@ -523,30 +530,9 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                                     <div class="tree"></div>
                                     <div class="road-content">
 
-                                        <?php
-                                        // セクション4の投稿を取得
-                                        $args = array(
-                                            'category__in' => array($category->term_id),
-                                            'posts_per_page' => $posts_per_section,  // 次のセクションに表示する投稿数
-                                            'offset' => ($posts_per_section * 3 + $remainder), // セクション1と2と3で表示した投稿数をスキップ
-                                        );
-                                        $query = new WP_Query($args);
-
-                                        if ($query->have_posts()):
-                                            while ($query->have_posts()): $query->the_post();
-
-                                                // 記事に付与されたタグを取得
-                                                echo generate_destination_item(get_the_ID());
-                                            endwhile;
-                                        else:
-                                            ?>
-                                            <p>このカテゴリーには投稿がありません。</p>
-                                        <?php
-                                        endif;
-
-                                        wp_reset_postdata(); // クエリをリセット
-                                        ?>
-                                    </div>
+                                    <?php foreach ($section4_posts as $post_obj): setup_postdata($post_obj); ?>
+                                    <?php echo generate_destination_item($post_obj->ID); ?>
+                                    <?php endforeach; wp_reset_postdata(); ?>                                    </div>
                                 </div>
                                 <!-- 動的リンクの表示 -->
                                 <div class="section-arrow back-section"></div>
@@ -556,7 +542,7 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                     <?php endif; ?>
 
 
-                    <?php if ($total_posts > 46): // 投稿数が46以上の場合にセクション4.5を表示 
+                    <?php if ($num_sections >= 5): // 投稿数が46以上の場合にセクション4.5を表示 
                     ?>
                         <!-- セクション4.5 -->
                         <section class="page-section page4-5">
@@ -564,24 +550,9 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                                 <div class="content">
                                     <div class="tree"></div>
                                     <div class="road-content">
-                                        <?php
-                                        // セクション4.5の投稿を取得
-                                        $args = array(
-                                            'category__in' => array($category->term_id),
-                                            'posts_per_page' => $posts_per_section,  // ここで表示する投稿数
-                                            'offset' => ($posts_per_section * 4 + $remainder), // セクション1から4まで表示した投稿数をスキップ
-                                        );
-                                        $query = new WP_Query($args);
-
-                                        if ($query->have_posts()):
-                                            while ($query->have_posts()): $query->the_post();
-
-                                            echo generate_destination_item(get_the_ID());
-                                        endwhile;
-                                        endif;
-
-                                        wp_reset_postdata(); // クエリをリセット
-                                        ?>
+                                    <?php foreach ($section4_5_posts as $post_obj): setup_postdata($post_obj); ?>
+                                    <?php echo generate_destination_item($post_obj->ID); ?>
+                                    <?php endforeach; wp_reset_postdata(); ?>
                                     </div>
                                 </div>
                                 <!-- 動的リンクの表示 -->
@@ -592,10 +563,7 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                     <?php endif; ?>
 
 
-
-
-
-                    <?php if ($total_posts > 55): // 投稿数が56以上の場合にセクション4.6を表示 
+                    <?php if ($num_sections >= 6): // 投稿数が56以上の場合にセクション4.6を表示 
                     ?>
                         <!-- セクション4.6 -->
                         <section class="page-section page4-6">
@@ -603,24 +571,9 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                                 <div class="content">
                                     <div class="tree"></div>
                                     <div class="road-content">
-                                        <?php
-                                        // セクション4.6の投稿を取得
-                                        $args = array(
-                                            'category__in' => array($category->term_id),
-                                            'posts_per_page' => $posts_per_section,  // ここで表示する投稿数
-                                            'offset' => ($posts_per_section * 5 + $remainder), // セクション1から4.5まで表示した投稿数をスキップ
-                                        );
-                                        $query = new WP_Query($args);
-
-                                        if ($query->have_posts()):
-                                            while ($query->have_posts()): $query->the_post();
-
-                                            echo generate_destination_item(get_the_ID());
-                                        endwhile;
-                                        endif;
-
-                                        wp_reset_postdata(); // クエリをリセット
-                                        ?>
+                                    <?php foreach ($section4_6_posts as $post_obj): setup_postdata($post_obj); ?>
+                                        <?php echo generate_destination_item($post_obj->ID); ?>
+                                    <?php endforeach; wp_reset_postdata(); ?>
                                     </div>
                                 </div>
                                 <!-- 動的リンクの表示 -->
@@ -650,29 +603,9 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                                     </div>
                                 </div>
                                 <div class="road-content">
-                                    <?php
-                                    // 最後の4つの投稿を取得
-                                    $args = array(
-                                        'category__in' => array($category->term_id),
-                                        'posts_per_page' => 4,  // 最後の4つのみ取得
-                                        'offset' => $total_posts - 4, // 最後の4つを取得するためのオフセット
-                                    );
-                                    $query = new WP_Query($args);
-
-                                    if ($query->have_posts()):
-                                        while ($query->have_posts()): $query->the_post();
-
-                                            // 記事に付与されたタグを取得
-                                            echo generate_destination_item(get_the_ID());
-                                        endwhile;
-                                    else:
-                                        ?>
-                                        <p>このカテゴリーには投稿がありません。</p>
-                                    <?php
-                                    endif;
-
-                                    wp_reset_postdata(); // クエリをリセット
-                                    ?>
+                                <?php foreach ($last4_posts as $post_obj): setup_postdata($post_obj); ?>
+                                    <?php echo generate_destination_item($post_obj->ID); ?>
+                                <?php endforeach; wp_reset_postdata(); ?>
                                 </div>
                             </div>
                             <!-- 動的リンクの表示 -->
@@ -774,6 +707,7 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                                 }
                             }
                         }
+
                         // 最新の完了項目を表示
                         if ($latest_completion) {
                             $like_count = get_option('global_like_count_' . $latest_completion['item_id'], 0); // グローバルいいね数を取得

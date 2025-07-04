@@ -56,7 +56,8 @@
           @include wt500;
           color: $F-FFFFFF;
           border-bottom: 2px solid $F-FFFFFF;
-          &:hover{
+
+          &:hover {
             opacity: 0.7;
           }
         }
@@ -393,11 +394,13 @@
         }
       }
     }
-    .tree01-02{
+
+    .tree01-02 {
       @include imgContain("top-tree01-02.webp");
       position: absolute;
       pointer-events: none;
-      @include pc{
+
+      @include pc {
         width: clamp(500px, p(680), 680px);
         height: clamp(800px, p(1092), 1092px);
         bottom: p(-50);
@@ -521,7 +524,7 @@
             box-shadow: 0px pmi(2) 0px 0px #E28738, 0px 0px pmi(34) 0px #F6D741 inset;
             padding: pmi(15) pmi(73);
             border-radius: pmi(5);
-            margin: pmi(25) auto 0;
+            margin: pmi(55) auto 0;
             letter-spacing: pmi(1.1);
             font-size: pmi(23)
           }
@@ -535,10 +538,13 @@
             font-size: scl(18)
           }
         }
+
+
       }
 
       .shironeko-wrap {
         position: absolute;
+        z-index: 50;
 
         @include pc {
           width: pmi(257);
@@ -584,6 +590,88 @@
             margin: -10px auto;
           }
         }
+
+        .buddy {
+          border-radius: 999px;
+          background: #fff;
+          position: absolute;
+          // left: 50%;
+          // transform: translateX(-50%);
+          pointer-events: none;
+          z-index: 100;
+
+          @include pc {
+            height: pmi(63);
+            line-height: pmi(63);
+            padding-inline: pmi(19);
+            box-shadow: 0 pmi(6) pmi(10) rgba(0, 0, 0, 0.20);
+            bottom: pmi(45);
+            left: pmi(210);
+          }
+
+          @include sp {
+            height: scl(43);
+            line-height: scl(43);
+            padding-inline: scl(19);
+            box-shadow: 0 scl(6) scl(10) rgba(0, 0, 0, 0.20);
+            bottom: smi(0);
+            left: 60%;
+            transform: translateX(-50%);
+          }
+
+          &_TX {
+            @include wt700;
+            color: #898069;
+            white-space: nowrap;
+
+            @include pc {
+              font-size: pmi(16);
+              letter-spacing: pmi(1.6);
+            }
+
+            @include sp {
+              font-size: scl(12);
+              letter-spacing: scl(1.2);
+            }
+
+            span {
+              @include wt700;
+              color: #F75F9E;
+              position: relative;
+
+              @include pc {
+                font-size: pmi(38);
+                letter-spacing: pmi(3.8);
+                vertical-align: middle;
+                top: pmi(-5);
+              }
+
+              @include sp {
+                font-size: scl(22);
+                letter-spacing: scl(2.4);
+                vertical-align: middle;
+                top: scl(-5);
+              }
+            }
+          }
+
+          &::before {
+            clip-path: polygon(90% 0, 100% 100%, 10% 100%);
+            content: "";
+            background: $B-FFFFFF;
+            position: absolute;
+
+            @include pc {
+              width: p(25);
+              height: p(10);
+              bottom: p(-3);
+              left: 0;
+              rotate: -20deg;
+            }
+
+          }
+        }
+
       }
     }
 

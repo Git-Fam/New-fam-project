@@ -26,6 +26,7 @@ if ($type && $id) {
         }
         ?>
         <div class="<?php echo implode(' ', $wrap_classes); ?>">
+            <button onclick="window.close()" class="randomevent-close-btn"></button>
             <div class="inner">
                 <div class="TL_wrap">
                 <h1><?php the_title(); ?><span>のヒント</span></h1>

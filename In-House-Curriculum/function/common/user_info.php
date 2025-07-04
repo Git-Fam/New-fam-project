@@ -294,7 +294,7 @@ function add_user_info()
         'fields' => 'slugs' // スラッグのみを取得してメモリ使用量を削減
       ));
 
-       // storyタグが付いている場合はこの投稿をスキップ
+      //  storyタグが付いている場合はこの投稿をスキップ
        if (in_array('story', $post_tags)) {
         continue;
       }

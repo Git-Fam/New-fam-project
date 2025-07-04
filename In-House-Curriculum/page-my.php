@@ -32,6 +32,9 @@ foreach ($categories as $category) {
 
         if (!is_wp_error($post_tags) && !empty($post_tags)) {
             foreach ($post_tags as $tag) {
+                if ($tag->slug === 'story') {
+                    continue; // storyタグはスキップ
+                }
                 // タグのスラッグ名を変数名として使用（小文字に統一）
                 $var_name = $tag->slug . '_value';
                 // ユーザーメタデータから値を取得（デフォルトは'0'）
@@ -330,6 +333,10 @@ get_header();
                                                         if (!is_wp_error($post_tags) && !empty($post_tags)) {
                                                             foreach ($post_tags as $tag) {
                                                                 // タグのスラッグに対応する変数名を生成
+                                                                if ($tag->slug === 'story') {
+                                                                    continue; // storyタグはスキップ
+                                                                }
+                                                
                                                                 $var_name = $tag->slug . '_value';
                                                                 $progress_value = isset($$var_name) ? $$var_name : '0';
                                                     ?>

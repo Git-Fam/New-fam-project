@@ -15,6 +15,7 @@
   @include imgCover("first-bg.webp");
   width: 100%;
   position: relative;
+  
 
   @include pc {
     height: max(100vh, 700px);
