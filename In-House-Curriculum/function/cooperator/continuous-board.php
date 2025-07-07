@@ -35,6 +35,8 @@ function continuous_board()
                             <?php
                             $user_id = get_current_user_id(); // 現在のユーザーIDを取得
                             $consecutive_login_days = get_user_meta($user_id, 'consecutive_login_days', true);
+                            // 連続ログイン日数を整数に変換
+                            $consecutive_login_days = intval($consecutive_login_days);
                             ?>
                             <p class="TX"><span><?php echo $consecutive_login_days; ?>日</span>連続ログイン中！</p>
                         </div>
@@ -46,6 +48,8 @@ function continuous_board()
                         $days_to_display = 9; // 9日目までのスタンプ
                         $reset_day = 10; // 10日目にリセット
 
+                        // 連続ログイン日数を整数に変換してから計算
+                        $consecutive_login_days = intval($consecutive_login_days);
                         // 連続ログイン日数をリセット
                         $effective_login_days = ($consecutive_login_days - 1) % $reset_day + 1;
 
