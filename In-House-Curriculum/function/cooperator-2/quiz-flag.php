@@ -58,13 +58,13 @@ add_action('wp_ajax_set_progress_100', 'ajax_set_progress_100');
 
 function enqueue_custom_progress_script()
 {
-    wp_enqueue_script(
-        'progress-complete-script',
-        get_template_directory_uri() . '/js/progress-complete.js', // あなたのファイルパス
-        ['jquery'], // jQuery使ってないなら [] でもOK
-        null,
-        true // フッターで読み込む
-    );
+    // wp_enqueue_script(
+    //     'progress-complete-script',
+    //     get_template_directory_uri() . '/js/progress-complete.js', // あなたのファイルパス
+    //     ['jquery'], // jQuery使ってないなら [] でもOK
+    //     null,
+    //     true // フッターで読み込む
+    // );
 
     // admin-ajax.php のURLを JS に渡す
     wp_localize_script('progress-complete-script', 'ajax_data', [
