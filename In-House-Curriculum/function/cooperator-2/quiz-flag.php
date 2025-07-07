@@ -58,6 +58,7 @@ add_action('wp_ajax_set_progress_100', 'ajax_set_progress_100');
 
 function enqueue_custom_progress_script()
 {
+<<<<<<< HEAD
     // wp_enqueue_script(
     //     'progress-complete-script',
     //     get_template_directory_uri() . '/js/progress-complete.js', // あなたのファイルパス
@@ -68,6 +69,17 @@ function enqueue_custom_progress_script()
 
     // admin-ajax.php のURLを JS に渡す
     wp_localize_script('progress-complete-script', 'ajax_data', [
+=======
+    wp_enqueue_script(
+        'single-script',
+        get_template_directory_uri() . '/js/single.js',
+        [],
+        null,
+        true
+    );
+    
+    wp_localize_script('single-script', 'ajax_data', [
+>>>>>>> new2_in_house_kaku
         'ajax_url' => admin_url('admin-ajax.php'),
     ]);
 }
