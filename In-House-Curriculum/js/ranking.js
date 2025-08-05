@@ -67,6 +67,10 @@ $(function () {
 				.html('<p class="switch-btn-TX coin-rank-TX">コインランキング</p>');
 		}
 	});
+	$(".switch-btn").on("click", function () {
+		$(".btn-area").removeClass("click");
+	})
+
 
 	// ランキング切り替え処理
 	$(document).on("click", ".question-rank", function () {

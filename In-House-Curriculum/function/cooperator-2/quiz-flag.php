@@ -47,6 +47,12 @@ function ajax_set_progress_100()
     // 進捗保存
     update_user_meta($user_id, $tag_slug, 100);
     update_user_meta($user_id, 'last_progress_key', $tag_slug);
+    
+    // 完了日を保存（初回のみ）
+    $completion_date_key = $tag_slug . '_date';
+    if (!get_user_meta($user_id, $completion_date_key, true)) {
+        update_user_meta($user_id, $completion_date_key, current_time('mysql'));
+    }
 
     // 紙吹雪フラグ
     if (session_status() === PHP_SESSION_NONE) session_start();

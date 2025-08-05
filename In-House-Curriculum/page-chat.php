@@ -4,6 +4,10 @@ if (!is_user_logged_in()) {
     wp_redirect(home_url('/login'));
     exit;
 }
+function is_valid_role($user_id) {
+    $user = get_userdata($user_id);
+    return in_array('subscriber', (array) $user->roles, true);
+}
 
 get_header();
 ?>
@@ -65,6 +69,12 @@ get_header();
                             // --- 各ユーザーごとに100%課題をタイムライン配列に格納 ---
                             foreach ($group_users as $user) {
                                 $user_id = $user->ID;
+
+                                // 購読者以外はスキップ
+                                if (!is_valid_role($user_id)) {
+                                    continue;
+                                }
+                                
                                 $user_name = $user->display_name;
                                 foreach ($progress_keys as $meta_key) {
                                     $value = get_user_meta($user_id, $meta_key, true);

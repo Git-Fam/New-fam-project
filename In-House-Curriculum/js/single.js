@@ -206,24 +206,10 @@ window.addEventListener("DOMContentLoaded", function () {
 						// 次の記事リンクを表示
 						const nextUrl = btnWrapper.dataset.nextUrl;
 						if (nextUrl) {
-							// 1つ目のリンクを作って追加
-							let nextPostLinkWrapper =
-								document.querySelector(".single--link--bg");
-							if (nextPostLinkWrapper) {
-								const newDiv = document.createElement("div");
-								newDiv.className = "single--link--text next-post-link";
-								newDiv.innerHTML = `<a href="${nextUrl}">次の記事へ</a>`;
-								nextPostLinkWrapper.appendChild(newDiv);
-							}
-
-							// 2つ目のリンクを作って追加
-							let singleNation = document.querySelector(".single-nation");
-							if (singleNation) {
-								const newDiv = document.createElement("div");
-								newDiv.className = "single-nation-text next-post-link";
-								newDiv.innerHTML = `<a href="${nextUrl}">次の記事へ</a>`;
-								singleNation.appendChild(newDiv);
-							}
+							// 「次の記事へ」リンクを表示
+							document.querySelectorAll(".next-post-link").forEach((link) => {
+								link.style.display = "block";
+							});
 						}
 					} else {
 						alert("エラー: " + data.data);

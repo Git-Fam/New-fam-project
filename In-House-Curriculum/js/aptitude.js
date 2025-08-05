@@ -31,7 +31,7 @@ $(function () {
 			$btn_area_parent.next().addClass("active");
 			$btn_area_parent.next()[0].scrollIntoView({
 				// behavior: "smooth", // アニメーションスクロール
-				block: "start"      // 要素の先頭が表示される
+				block: "start", // 要素の先頭が表示される
 			});
 			updateProgress(); // 進捗を更新
 		}
@@ -43,7 +43,7 @@ $(function () {
 		$btn_area_parent.prev().addClass("active");
 		$btn_area_parent.prev()[0].scrollIntoView({
 			// behavior: "smooth", // アニメーションスクロール
-			block: "start"      // 要素の先頭が表示される
+			block: "start", // 要素の先頭が表示される
 		});
 		updateProgress(); // 進捗を更新
 	});
@@ -63,7 +63,8 @@ $(function () {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				const messages = ["ふむふむ...", "なるほど...", "うんうん..."];
-				const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+				const randomMessage =
+					messages[Math.floor(Math.random() * messages.length)];
 				$(".character--message").addClass("active");
 				$(".character--message .TX").text(randomMessage);
 			}, 100);
@@ -79,8 +80,7 @@ $(function () {
 			}
 		}
 
-
-		// デザイナー
+		// クリエイター
 		if (id === "designer-item1-question3-answer1") {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
@@ -92,7 +92,9 @@ $(function () {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("トレンドやニーズに迅速に対応できるのはいい武器だね！");
+				$(".character--message .TX").text(
+					"トレンドやニーズに迅速に対応できるのはいい武器だね！"
+				);
 			}, 100);
 		}
 
@@ -107,7 +109,9 @@ $(function () {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("柔軟に行動できる力...いろんな状況で役に立つね！");
+				$(".character--message .TX").text(
+					"柔軟に行動できる力...いろんな状況で役に立つね！"
+				);
 			}, 100);
 		}
 
@@ -115,7 +119,9 @@ $(function () {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("物事を深く理解して判断できる力は、的確なデザインや提案につながるんだ！");
+				$(".character--message .TX").text(
+					"物事を深く理解して判断できる力は、的確なデザインや提案につながるんだ！"
+				);
 			}, 100);
 		}
 
@@ -123,14 +129,18 @@ $(function () {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("ぼくも苦手...確認作業を習慣化するといいんだって！");
+				$(".character--message .TX").text(
+					"ぼくも苦手...確認作業を習慣化するといいんだって！"
+				);
 			}, 100);
 		}
 		if (id === "designer-item4-question22-answer5") {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("細かい部分まで気を配れると、大きな信頼につながるね！");
+				$(".character--message .TX").text(
+					"細かい部分まで気を配れると、大きな信頼につながるね！"
+				);
 			}, 100);
 		}
 
@@ -145,7 +155,9 @@ $(function () {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("冷静に計画を調整できるのはデザイナーとしても活かせそうだね");
+				$(".character--message .TX").text(
+					"冷静に計画を調整できるのはクリエイターとしても活かせそうだね"
+				);
 			}, 100);
 		}
 
@@ -198,7 +210,9 @@ $(function () {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("半分終わったよ！その調子でいっちゃおう！");
+				$(".character--message .TX").text(
+					"半分終わったよ！その調子でいっちゃおう！"
+				);
 			}, 100);
 		}
 
@@ -206,14 +220,18 @@ $(function () {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("結果はどうあれ、約束を守る意識をすることが大事だね");
+				$(".character--message .TX").text(
+					"結果はどうあれ、約束を守る意識をすることが大事だね"
+				);
 			}, 100);
 		}
 		if (id === "designer-item9-question53-answer5") {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("すごいね！ぼくもきみに頼み事しちゃおうかな！");
+				$(".character--message .TX").text(
+					"すごいね！ぼくもきみに頼み事しちゃおうかな！"
+				);
 			}, 100);
 		}
 
@@ -258,7 +276,9 @@ $(function () {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("（ぼくが明日の夜ご飯のこと考えてたのバレてないよね...）");
+				$(".character--message .TX").text(
+					"（ぼくが明日の夜ご飯のこと考えてたのバレてないよね...）"
+				);
 			}, 100);
 		}
 
@@ -273,7 +293,9 @@ $(function () {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("チームでの協力は、成果を最大化できる！");
+				$(".character--message .TX").text(
+					"チームでの協力は、成果を最大化できる！"
+				);
 			}, 100);
 		}
 
@@ -288,7 +310,9 @@ $(function () {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("細かい点に気づけるデザイナーは需要あるらしいよ..");
+				$(".character--message .TX").text(
+					"細かい点に気づけるクリエイターは需要あるらしいよ.."
+				);
 			}, 100);
 		}
 
@@ -304,7 +328,9 @@ $(function () {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("ぼくも効率よくおさんぽできるようになりたい！");
+				$(".character--message .TX").text(
+					"ぼくも効率よくおさんぽできるようになりたい！"
+				);
 			}, 100);
 		}
 		if (id === "designer-item15-question91-answer5") {
@@ -342,7 +368,9 @@ $(function () {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("優先順位をつけて動けるのは素晴らしいね");
+				$(".character--message .TX").text(
+					"優先順位をつけて動けるのは素晴らしいね"
+				);
 			}, 100);
 		}
 
@@ -358,14 +386,18 @@ $(function () {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("いろんな視点で物事をみれるひとすごいよね！");
+				$(".character--message .TX").text(
+					"いろんな視点で物事をみれるひとすごいよね！"
+				);
 			}, 100);
 		}
 		if (id === "engineer-item3-question17-answer5") {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("創造的な解決力は大きな武器になるね！");
+				$(".character--message .TX").text(
+					"創造的な解決力は大きな武器になるね！"
+				);
 			}, 100);
 		}
 
@@ -403,14 +435,18 @@ $(function () {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("いろんな考えをまとめられるようになりたいな");
+				$(".character--message .TX").text(
+					"いろんな考えをまとめられるようになりたいな"
+				);
 			}, 100);
 		}
 		if (id === "engineer-item6-question34-answer5") {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("他の意見を受け入れられるのは素敵な強みだね");
+				$(".character--message .TX").text(
+					"他の意見を受け入れられるのは素敵な強みだね"
+				);
 			}, 100);
 		}
 
@@ -440,7 +476,9 @@ $(function () {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("相手の視点に立てるのはすばらしいね！");
+				$(".character--message .TX").text(
+					"相手の視点に立てるのはすばらしいね！"
+				);
 			}, 100);
 		}
 
@@ -448,7 +486,9 @@ $(function () {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("半分終わったよ！その調子でいっちゃおう！");
+				$(".character--message .TX").text(
+					"半分終わったよ！その調子でいっちゃおう！"
+				);
 			}, 100);
 		}
 
@@ -456,14 +496,18 @@ $(function () {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("ぼくもみんなにうまく説明できるように意識しないと...");
+				$(".character--message .TX").text(
+					"ぼくもみんなにうまく説明できるように意識しないと..."
+				);
 			}, 100);
 		}
 		if (id === "engineer-item9-question53-answer5") {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("論理的に説明ができるってかっこいいな....");
+				$(".character--message .TX").text(
+					"論理的に説明ができるってかっこいいな...."
+				);
 			}, 100);
 		}
 
@@ -516,7 +560,9 @@ $(function () {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("公平に判断するのは簡単じゃないよね..");
+				$(".character--message .TX").text(
+					"公平に判断するのは簡単じゃないよね.."
+				);
 			}, 100);
 		}
 
@@ -524,14 +570,18 @@ $(function () {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("結果はどうあれ、約束を守る意識をすることが大事だね");
+				$(".character--message .TX").text(
+					"結果はどうあれ、約束を守る意識をすることが大事だね"
+				);
 			}, 100);
 		}
 		if (id === "engineer-item14-question84-answer5") {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("すごいね！ぼくもきみに頼み事しちゃおうかな！");
+				$(".character--message .TX").text(
+					"すごいね！ぼくもきみに頼み事しちゃおうかな！"
+				);
 			}, 100);
 		}
 
@@ -547,7 +597,9 @@ $(function () {
 			$(".character--message").removeClass("active");
 			setTimeout(function () {
 				$(".character--message").addClass("active");
-				$(".character--message .TX").text("ぼくも緊張しちゃうと冷静になれないんだ");
+				$(".character--message .TX").text(
+					"ぼくも緊張しちゃうと冷静になれないんだ"
+				);
 			}, 100);
 		}
 		if (id === "engineer-item15-question92-answer5") {
@@ -557,7 +609,6 @@ $(function () {
 				$(".character--message .TX").text("精神力強いんだね！見習いたいなあ");
 			}, 100);
 		}
-
 
 		// キャラクターアニメーション
 		if (name === "designer-answer02" || name === "engineer-answer02") {
@@ -620,7 +671,6 @@ $(function () {
 			$(".character--animation .character-item.item-15").addClass("active");
 		}
 	});
-
 });
 
 document.querySelectorAll(".answer-radio").forEach(function (radio) {

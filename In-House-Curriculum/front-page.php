@@ -43,14 +43,14 @@
 						></iframe>
 					</div>
 					<div class="TL">
-						<h1 class="TL-text">プログラミング学習</h1>
+						<h1 class="TL-text">ユメクル</h1>
 					</div>
 					<div class="textbox">
 						<p class="textbox-top">同じ夢を持つ仲間と一緒に、<br class="sp">夢を叶えよう！</p>
 						<p class="textbox-under">
-							未経験からエンジニア・デザイナーへ！<br />
-							全くの未経験からでも、<br class="sp">開発現場で活躍するエンジニアを<br class="sp">輩出してきた実績から<br />
-							エンジニアの卵たちの学習を通して、<br />
+							未経験からエンジニア・クリエイターへ！<br />
+							全くの未経験からでも、<br class="sp">開発現場で活躍するエンジニア・クリエイターを<br class="sp">輩出してきた実績から<br />
+							エンジニア・クリエイターの卵たちの学習を通して、<br />
 							初心者にもわかりやすく構成されたカリキュラムです。
 						</p>
 					</div>

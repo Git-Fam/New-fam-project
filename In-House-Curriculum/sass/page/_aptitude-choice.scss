@@ -214,7 +214,7 @@
           .TL {
 
             @include pc {
-              width: clamp(180px, p(255), 300px);
+              width: clamp(120px, p(306), 350px);
             }
 
             @include sp {
@@ -414,7 +414,7 @@
           }
         }
 
-        // デザイナー選択時
+        // クリエイター選択時
         &.choice-designer {
 
           @include pc {

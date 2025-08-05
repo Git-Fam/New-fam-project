@@ -492,6 +492,7 @@
         }
 
         .post-thumbnail {
+          position: relative;
           @include pc {
             width: pmi(558);
             height: pmi(334);
@@ -511,8 +512,76 @@
               width: 100%;
             }
           }
+          .buddy {
+            border-radius: 999px;
+            background: #fff;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+            z-index: 100;
+  
+            @include pc {
+              height: pmi(63);
+              line-height: pmi(63);
+              padding-inline: pmi(19);
+              box-shadow: 0 pmi(6) pmi(10) rgba(0, 0, 0, 0.20);
+              top: pmi(-30);
+            }
+  
+            @include sp {
+              height: scl(43);
+              line-height: scl(43);
+              padding-inline: scl(19);
+              box-shadow: 0 scl(6) scl(10) rgba(0, 0, 0, 0.20);
+              top: smi(-20);
+            }
+  
+            &_TX {
+              @include wt700;
+              color: #898069;
+              white-space: nowrap;
+  
+              @include pc {
+                font-size: pmi(16);
+                letter-spacing: pmi(1.6);
+              }
+  
+              @include sp {
+                font-size: scl(12);
+                letter-spacing: scl(1.2);
+              }
+  
+              span {
+                @include wt700;
+                color: #F75F9E;
+                position: relative;
+  
+                @include pc {
+                  font-size: pmi(38);
+                  letter-spacing: pmi(3.8);
+                  vertical-align: middle;
+                  top: pmi(-5);
+                }
+  
+                @include sp {
+                  font-size: scl(22);
+                  letter-spacing: scl(2.4);
+                  vertical-align: middle;
+                  top: scl(-5);
+                }
+              }
+            }
+  
+          }
+  
+  
         }
 
+        
+        .start-btn-wrap{
+          position: relative;
+        }
         .start-btn {
           background: $P-ED863A;
           color: $F-FFFFFF;
@@ -538,7 +607,6 @@
             font-size: scl(18)
           }
         }
-
 
       }
 
@@ -591,86 +659,6 @@
           }
         }
 
-        .buddy {
-          border-radius: 999px;
-          background: #fff;
-          position: absolute;
-          // left: 50%;
-          // transform: translateX(-50%);
-          pointer-events: none;
-          z-index: 100;
-
-          @include pc {
-            height: pmi(63);
-            line-height: pmi(63);
-            padding-inline: pmi(19);
-            box-shadow: 0 pmi(6) pmi(10) rgba(0, 0, 0, 0.20);
-            bottom: pmi(45);
-            left: pmi(210);
-          }
-
-          @include sp {
-            height: scl(43);
-            line-height: scl(43);
-            padding-inline: scl(19);
-            box-shadow: 0 scl(6) scl(10) rgba(0, 0, 0, 0.20);
-            bottom: smi(0);
-            left: 60%;
-            transform: translateX(-50%);
-          }
-
-          &_TX {
-            @include wt700;
-            color: #898069;
-            white-space: nowrap;
-
-            @include pc {
-              font-size: pmi(16);
-              letter-spacing: pmi(1.6);
-            }
-
-            @include sp {
-              font-size: scl(12);
-              letter-spacing: scl(1.2);
-            }
-
-            span {
-              @include wt700;
-              color: #F75F9E;
-              position: relative;
-
-              @include pc {
-                font-size: pmi(38);
-                letter-spacing: pmi(3.8);
-                vertical-align: middle;
-                top: pmi(-5);
-              }
-
-              @include sp {
-                font-size: scl(22);
-                letter-spacing: scl(2.4);
-                vertical-align: middle;
-                top: scl(-5);
-              }
-            }
-          }
-
-          &::before {
-            clip-path: polygon(90% 0, 100% 100%, 10% 100%);
-            content: "";
-            background: $B-FFFFFF;
-            position: absolute;
-
-            @include pc {
-              width: p(25);
-              height: p(10);
-              bottom: p(-3);
-              left: 0;
-              rotate: -20deg;
-            }
-
-          }
-        }
 
       }
     }

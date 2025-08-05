@@ -15,7 +15,7 @@
 				<div class="choice--item choice--item--designer">
 					<div class="choice--item--title">
 						<p class="TL">
-							<img src="<?php echo get_template_directory_uri(); ?>/img/aptitude-choice-designer.webp" alt="デザイナー">
+							<img src="<?php echo get_template_directory_uri(); ?>/img/aptitude-choice-designer.webp" alt="クリエイター">
 						</p>
 					</div>
 					<div class="choice--item--img img-designer">
@@ -38,8 +38,8 @@
 						</p>
 						<p class="TX TX-designer">
 							なるほど！<br>
-							きみはデザイナーになりたいんだね！<br>
-							デザイナー用の適性検査をはじめるよ！
+							きみはクリエイターになりたいんだね！<br>
+							クリエイター用の適性検査をはじめるよ！
 						</p>
 					</div>
 					<a href="<?php bloginfo('url'); ?>/aptitude-engineer" class="btn engineer-btn">

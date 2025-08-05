@@ -14,22 +14,23 @@
     width: 100%;
     display: grid;
     position: relative;
+    place-items: center left;
+
 
     @include pc {
       height: p(73);
       padding-left: p(34);
-      place-items: center left;
     }
 
     @include sp {
       height: smi(60);
-      place-items: center center;
+      padding-left: smi(20);
     }
 
     .TL {
       color: $F-FFFFFF;
       @include wt900;
-      
+
       @include pc {
         font-size: p(23);
       }
@@ -37,23 +38,24 @@
       @include sp {
         font-size: smi(20);
       }
-      
-      a{
+
+      a {
         color: $F-FFFFFF;
         @include wt900;
         cursor: pointer;
         text-decoration: underline;
         line-height: 1.5;
-  
+
         @include pc {
           font-size: p(23);
         }
-  
+
         @include sp {
           font-size: smi(20);
         }
       }
     }
+
     .chat--menu-btn {
       position: absolute;
 
@@ -61,8 +63,9 @@
         top: p(8);
         right: p(15);
       }
-      @include sp{
-        top:clamp(1px, calc((3 / 390) * 100vw), 5px);
+
+      @include sp {
+        top: clamp(1px, calc((3 / 390) * 100vw), 5px);
         right: clamp(2px, calc((5 / 390) * 100vw), 8px);
       }
 
@@ -76,8 +79,10 @@
         }
 
         @include sp {
-          border-radius: clamp(12px, calc((15 / 390) * 100vw), 118px);;
-          padding: clamp(1px, calc((3 / 390) * 100vw), 5px) clamp(2px, calc((5 / 390) * 100vw), 8px) clamp(2px, calc((4 / 390) * 100vw), 6px) clamp(2px, calc((5 / 390) * 100vw), 8px);;
+          border-radius: clamp(12px, calc((15 / 390) * 100vw), 118px);
+          ;
+          padding: clamp(1px, calc((3 / 390) * 100vw), 5px) clamp(2px, calc((5 / 390) * 100vw), 8px) clamp(2px, calc((4 / 390) * 100vw), 6px) clamp(2px, calc((5 / 390) * 100vw), 8px);
+          ;
           border-width: s(2);
         }
 
@@ -88,7 +93,8 @@
           }
 
           @include sp {
-            gap: clamp(1px, calc((3 / 390) * 100vw), 5px);;
+            gap: clamp(1px, calc((3 / 390) * 100vw), 5px);
+            ;
           }
 
           &__img {
@@ -99,7 +105,8 @@
             }
 
             @include sp {
-              width: clamp(30px, calc((35 / 390) * 100vw), 40px);;
+              width: clamp(30px, calc((35 / 390) * 100vw), 40px);
+              ;
               height: clamp(20px, calc((25 / 390) * 100vw), 30px);
             }
           }
@@ -123,9 +130,11 @@
 
         &:hover {
           transform: translate(3.314px, 3.314px);
-          @include sp{
+
+          @include sp {
             transform: translate(2px, 2px);
           }
+
           .C_all-menu-btn__inner {
 
             &__img {
@@ -167,7 +176,7 @@
         position: relative;
         margin: 0 auto;
         background: $B-F69064;
-        padding: smi(25) smi(15) smi(90,100);
+        padding: smi(25) smi(15) smi(90, 100);
         border-radius: s(8);
       }
 
@@ -202,7 +211,8 @@
           min-width: p(389);
           height: 100%;
         }
-        @include sp{
+
+        @include sp {
           height: 100%;
         }
 
@@ -219,7 +229,8 @@
             padding: p(19) p(7);
             gap: p(23);
           }
-          @include sp{
+
+          @include sp {
             height: 100%;
             border-radius: s(8);
             padding: smi(20) smi(10) smi(85);
@@ -232,9 +243,10 @@
               border-bottom: p(1) solid $F-6D6D6D;
               max-width: p(386);
             }
-            @include sp{
+
+            @include sp {
               padding: 0 smi(20) smi(12) smi(11);
-              border-bottom:s(1) solid $F-6D6D6D;
+              border-bottom: s(1) solid $F-6D6D6D;
 
             }
 
@@ -246,17 +258,19 @@
               @include pc {
                 font-size: p(16);
               }
-              @include sp{
-                font-size: smi(14,18);
+
+              @include sp {
+                font-size: smi(14, 18);
               }
             }
 
-            div{
-              @include pc{
-                font-size: p(13)!important;
+            div {
+              @include pc {
+                font-size: p(13) !important;
               }
-              @include sp{
-                font-size: smi(10,12)!important;
+
+              @include sp {
+                font-size: smi(10, 12) !important;
               }
             }
 
@@ -268,7 +282,8 @@
                 gap: p(25);
                 margin-top: p(9);
               }
-              @include sp{
+
+              @include sp {
                 gap: smi(28);
                 margin-top: smi(5);
               }
@@ -282,9 +297,10 @@
                   width: p(32);
                   height: p(32);
                 }
-                @include sp{
-                  width: smi(35,45);
-                  height: smi(35,45);
+
+                @include sp {
+                  width: smi(35, 45);
+                  height: smi(35, 45);
                 }
 
                 .icon {
@@ -294,16 +310,19 @@
                   top: 50%;
                   left: 50%;
                   translate: -50% -50%;
+                  z-index: 2;
 
                   @include pc {
                     width: p(19);
                     height: p(16);
                   }
-                  @include sp{
-                    width: smi(19,25);
-                    height: smi(16,23);
+
+                  @include sp {
+                    width: smi(19, 25);
+                    height: smi(16, 23);
 
                   }
+
                 }
 
                 .like-TX {
@@ -317,8 +336,9 @@
                     font-size: p(10);
                     bottom: p(-7);
                   }
-                  @include sp{
-                    font-size: smi(12,14);
+
+                  @include sp {
+                    font-size: smi(12, 14);
                     bottom: smi(-5);
                   }
 
@@ -371,6 +391,42 @@
                     }
                   }
                 }
+
+                &::before {
+                  content: "";
+                  position: absolute;
+                  @include imgContain("like-icon-back.svg");
+                  width: 100%;
+                  height: 100%;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  z-index: 1;
+                  opacity: 0;
+                }
+
+                &.click {
+                  &::before {
+                    animation: like 0.8s ease-out forwards;
+
+                    @keyframes like {
+
+                      0% {
+                        opacity: 0;
+                        transform: translate(-50%, -50%);
+                      }
+
+                      50% {
+                        opacity: 1;
+                        transform: translate(-50%, -50%) scale(1.1);
+                      }
+                      100%{
+                        opacity: 0;
+                        transform: translate(-50%, -50%) scale(1.2);
+                      }
+                    }
+                  }
+                }
               }
 
             }
@@ -385,7 +441,8 @@
             margin-top: p(12);
             gap: p(12);
           }
-          @include sp{
+
+          @include sp {
             margin-top: smi(12);
             gap: smi(12);
 
@@ -401,7 +458,8 @@
               border-radius: p(20);
               padding: p(4) p(16) p(4) p(10);
             }
-            @include sp{
+
+            @include sp {
               border-radius: s(50);
               padding: smi(5) smi(15) smi(5) smi(10);
             }
@@ -413,7 +471,8 @@
                 width: p(36);
                 height: p(36);
               }
-              @include sp{
+
+              @include sp {
                 width: smi(30);
                 height: smi(30);
               }
@@ -427,8 +486,9 @@
                 font-size: p(26);
                 margin-left: p(7);
               }
-              @include sp{
-                font-size: smi(22,25);
+
+              @include sp {
+                font-size: smi(22, 25);
                 margin-left: smi(5);
               }
             }
@@ -441,8 +501,9 @@
               @include pc {
                 font-size: p(16);
               }
-              @include sp{
-                font-size: smi(16,20);
+
+              @include sp {
+                font-size: smi(16, 20);
               }
             }
 
@@ -451,27 +512,31 @@
                 font-size: p(16);
                 margin-top: p(5);
               }
-              @include sp{
-                font-size: smi(16,18);
+
+              @include sp {
+                font-size: smi(16, 18);
                 margin-top: smi(3);
               }
             }
           }
 
         }
-        .chat-back{
+
+        .chat-back {
           display: flex;
           align-items: center;
-          margin:smi(5) 0 0 smi(5,10);
-          .icon{
+          margin: smi(5) 0 0 smi(5, 10);
+
+          .icon {
             @include iconContain($back-arrow);
-            width: smi(23,33);
-            height: smi(25,35);  
+            width: smi(23, 33);
+            height: smi(25, 35);
           }
-          .TX{
+
+          .TX {
             @include wt800;
             color: $F-857763;
-            font-size: smi(12,14);
+            font-size: smi(12, 14);
           }
         }
       }
@@ -793,28 +858,29 @@
                 font-size: smi(12, 16);
                 top: s(-15);
                 left: smi(50, 60);
-                padding: smi(8,10) smi(15, 20);
+                padding: smi(8, 10) smi(15, 20);
                 border-radius: smi(3);
               }
+
               &::before {
                 content: "";
                 clip-path: polygon(75% 0, 100% 100%, 10% 100%);
                 background: $B-FFFFFF;
                 position: absolute;
                 bottom: 0;
-        
+
                 @include pc {
                   width: p(27);
                   height: p(16);
                   left: p(-12);
                 }
-        
-                @include sp{
+
+                @include sp {
                   width: 20px;
                   height: 12px;
                   left: -7px;
                 }
-              }        
+              }
             }
 
             &.me {
@@ -849,26 +915,27 @@
                 @include sp {
                   right: smi(-5, -15);
                 }
+
                 &::before {
                   content: "";
                   clip-path: polygon(10% 0%, 100% 100%, 10% 100%);
                   background: $B-FFFDED;
                   position: absolute;
                   bottom: 0;
-          
+
                   @include pc {
                     width: p(27);
                     height: p(16);
                     right: p(-12);
                     left: initial;
                   }
-          
-                  @include sp{
+
+                  @include sp {
                     right: -6px;
                     left: initial;
                   }
-                }        
-  
+                }
+
               }
 
               &::before {
