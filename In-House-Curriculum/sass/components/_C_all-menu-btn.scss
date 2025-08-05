@@ -35,6 +35,10 @@
     background: linear-gradient(180deg, #8291f6 0%, #b4c2f4 100%);
   }
 
+  &.is-green {
+    background: linear-gradient(180deg, #82f682 0%, #bcf4b4 100%);
+  }
+
   &__inner {
     display: flex;
 
@@ -79,6 +83,7 @@
           font-size: s(12);
           letter-spacing: s(1);
         }
+
       }
     }
   }
