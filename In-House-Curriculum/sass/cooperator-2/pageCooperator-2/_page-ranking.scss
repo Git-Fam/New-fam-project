@@ -188,8 +188,9 @@
         top: p(8);
         right: p(15);
       }
-      @include sp{
-        top:clamp(1px, calc((3 / 390) * 100vw), 5px);
+
+      @include sp {
+        top: clamp(1px, calc((3 / 390) * 100vw), 5px);
         right: clamp(2px, calc((5 / 390) * 100vw), 8px);
       }
 
@@ -203,8 +204,10 @@
         }
 
         @include sp {
-          border-radius: clamp(12px, calc((15 / 390) * 100vw), 118px);;
-          padding: clamp(1px, calc((3 / 390) * 100vw), 5px) clamp(2px, calc((5 / 390) * 100vw), 8px) clamp(2px, calc((4 / 390) * 100vw), 6px) clamp(2px, calc((5 / 390) * 100vw), 8px);;
+          border-radius: clamp(12px, calc((15 / 390) * 100vw), 118px);
+          ;
+          padding: clamp(1px, calc((3 / 390) * 100vw), 5px) clamp(2px, calc((5 / 390) * 100vw), 8px) clamp(2px, calc((4 / 390) * 100vw), 6px) clamp(2px, calc((5 / 390) * 100vw), 8px);
+          ;
           border-width: s(2);
         }
 
@@ -215,7 +218,8 @@
           }
 
           @include sp {
-            gap: clamp(1px, calc((3 / 390) * 100vw), 5px);;
+            gap: clamp(1px, calc((3 / 390) * 100vw), 5px);
+            ;
           }
 
           &__img {
@@ -226,7 +230,8 @@
             }
 
             @include sp {
-              width: clamp(30px, calc((35 / 390) * 100vw), 40px);;
+              width: clamp(30px, calc((35 / 390) * 100vw), 40px);
+              ;
               height: clamp(20px, calc((25 / 390) * 100vw), 30px);
             }
           }
@@ -250,9 +255,11 @@
 
         &:hover {
           transform: translate(3.314px, 3.314px);
-          @include sp{
+
+          @include sp {
             transform: translate(2px, 2px);
           }
+
           .C_all-menu-btn__inner {
 
             &__img {
@@ -326,6 +333,7 @@
 
           .img {
             border-radius: 50%;
+            overflow: hidden;
 
             @include pc {
               width: p(36);
@@ -337,6 +345,22 @@
               width: clamp(26px, calc((26 / 390) * 100vw), 36px);
               height: clamp(26px, calc((26 / 390) * 100vw), 36px);
               border: clamp(3px, calc((3 / 390) * 100vw), 4px) solid $F-FFFFFF;
+            }
+
+          }
+
+          .display__character {
+            @include pc {
+              margin-top: p(3);
+            }
+
+            @include sp {
+              margin-top: s(2);
+            }
+
+            .selected_items-character-character {
+              width: 90%;
+              margin: 0 auto;
             }
           }
 
@@ -570,6 +594,23 @@
                       left: 50%;
                       translate: -50% -50%;
                       background: $B-FFFFFF;
+                      overflow: hidden;
+
+
+                      .display__character {
+                        @include pc {
+                          margin-top: p(8);
+                        }
+
+                        @include sp {
+                          margin-top: s(4);
+                        }
+
+                        .selected_items-character-character {
+                          width: 90%;
+                          margin: 0 auto;
+                        }
+                      }
                     }
 
                     &::before {
@@ -909,6 +950,7 @@
                 left: 50%;
                 translate: -50% -50%;
                 background: $B-FFFFFF;
+                overflow: hidden;
 
                 @include pc {
                   width: p(50);
@@ -919,6 +961,22 @@
                   width: clamp(10px, calc(20 / 390 * 100vw), 25px);
                   height: clamp(10px, calc(20 / 390 * 100vw), 25px);
                 }
+
+                .display__character {
+                  @include pc {
+                    margin-top: p(6);
+                  }
+
+                  @include sp {
+                    margin-top: s(1);
+                  }
+
+                  .selected_items-character-character {
+                    width: 90%;
+                    margin: 0 auto;
+                  }
+                }
+
               }
             }
 

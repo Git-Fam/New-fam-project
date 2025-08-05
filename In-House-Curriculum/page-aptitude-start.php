@@ -8,7 +8,7 @@
 					alt="適性検査"
 				/>
 				<p class="TX">
-					質問に答えて、あなたがエンジニア・デザイナーとして<br class="sp">どんな強みや素質を持っているのかを知ることができます<br>
+					質問に答えて、あなたがエンジニア・クリエイターとして<br class="sp">どんな強みや素質を持っているのかを知ることができます<br>
 					自分の強みや向き不向きを知ることで、<br class="sp">これからのキャリアのヒントになるはず
 				</p>
 				<a href="<?php echo home_url();?>/aptitude-choice" class="start-btn start-btn-anime">

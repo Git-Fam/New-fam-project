@@ -464,13 +464,13 @@
             @include imgContain("top-TL-bg.webp");
 
             @include pc {
-              width: cl(890);
+              width: cl(707);
               height: cl(164);
               padding-top: cl(40);
             }
 
             @include sp {
-              width: scl(350);
+              width: scl(258);
               height: scl(60);
               padding-top: scl(15);
             }

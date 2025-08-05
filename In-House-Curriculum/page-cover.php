@@ -44,19 +44,122 @@ wp_reset_postdata();
 
 // --- 進捗カウント（buddy用） ---
 $count = 0;
+
 if ($queried_post) {
     $tags = get_the_tags($queried_post->ID);
     if ($tags && !is_wp_error($tags)) {
         $progress_key = $tags[0]->slug;
         $users = get_users();
+
         foreach ($users as $user) {
             $progress = get_user_meta($user->ID, $progress_key, true);
-            if (is_numeric($progress) && $progress >= 1 && $progress < 100) {
-                $count++;
+
+            if (is_numeric($progress)) {
+                // 100に到達した瞬間に完了日時を記録（なければ）
+                if ($progress == 100) {
+                    $completed_meta_key = $progress_key . '_date';
+                    $completed_at = get_user_meta($user->ID, $completed_meta_key, true);
+
+                    if (!$completed_at) {
+                        // 初めて100に達した場合のみ記録
+                        update_user_meta($user->ID, $completed_meta_key, current_time('mysql'));
+                        $completed_at = current_time('mysql'); // 直後に使うため再セット
+                    }
+
+                    $completed_timestamp = strtotime($completed_at);
+                    $one_week_ago = strtotime('-1 week');
+
+                    // 100到達後1週間以内ならカウント
+                    if ($completed_timestamp && $completed_timestamp >= $one_week_ago) {
+                        $count++;
+                    }
+                } elseif ($progress >= 1 && $progress < 100) {
+                    $count++;
+                }
             }
         }
     }
 }
+
+$users = get_users();
+
+// 動的に進捗キーを取得（page-my.phpと同じ方法）
+$progress_keys = array();
+
+// カテゴリーを取得（並び替え順に従う）
+$categories = get_categories(array(
+    'orderby' => 'term_order',
+    'order' => 'ASC',
+    'hide_empty' => false
+));
+
+// 各カテゴリーごとにタグの値を取得
+foreach ($categories as $category) {
+    // カテゴリー内の投稿を取得（menu_order順）
+    $posts = get_posts(array(
+        'post_type' => 'post',
+        'category_name' => $category->slug,
+        'posts_per_page' => -1,
+        'orderby' => 'menu_order',
+        'order' => 'ASC'
+    ));
+
+    // 投稿ごとにタグを取得して進捗キーとして追加
+    foreach ($posts as $post) {
+        $post_tags = wp_get_object_terms($post->ID, 'post_tag', array(
+            'orderby' => 'term_order',
+            'order' => 'ASC'
+        ));
+
+        if (!is_wp_error($post_tags) && !empty($post_tags)) {
+            foreach ($post_tags as $tag) {
+                if ($tag->slug === 'story') {
+                    continue; // storyタグはスキップ
+                }
+                // 進捗キーとして追加
+                if (!in_array($tag->slug, $progress_keys)) {
+                    $progress_keys[] = $tag->slug;
+                }
+            }
+        }
+    }
+}
+
+// 完了日データを設定（初回のみ実行）
+/*
+echo '<div style="background: #f0f0f0; padding: 10px; margin: 10px 0; border: 1px solid #ccc;">';
+echo '<strong>完了日データ設定のデバッグ情報:</strong><br>';
+
+foreach ($users as $user) {
+    echo '<div style="margin: 10px 0; padding: 5px; border-left: 3px solid #007cba;">';
+    echo '<strong>ユーザー: ' . esc_html($user->display_name) . '</strong><br>';
+    
+    foreach ($progress_keys as $progress_key) {
+        $progress = get_user_meta($user->ID, $progress_key, true);
+
+        if ($progress == 100) {
+            $meta_key = $progress_key . '_date';
+            $existing_date = get_user_meta($user->ID, $meta_key, true);
+            
+            echo $progress_key . ': 進捗100%<br>';
+            
+            if ($existing_date) {
+                // 既に完了日が設定されている場合は1週間前に変更
+                $one_week_ago = date('Y-m-d H:i:s', strtotime('-1 week', current_time('timestamp')));
+                update_user_meta($user->ID, $meta_key, $one_week_ago);
+                echo '  → 既存完了日: ' . $existing_date . ' → 1週間前に変更: ' . $one_week_ago . '<br>';
+            } else {
+                // 完了日が設定されていない場合は現在時刻で設定
+                $current_time = current_time('mysql');
+                update_user_meta($user->ID, $meta_key, $current_time);
+                echo '  → 新規完了日設定: ' . $current_time . '<br>';
+            }
+        }
+    }
+    echo '</div>';
+}
+echo '</div>';
+*/
 
 // --- 前後の記事ID（story除外リストでループ） ---
 $current_post_id = $queried_post->ID;
@@ -164,17 +267,18 @@ if ($next_post_id === null && count($filtered_posts) > 1) {
                         }
                         ?>
                     </a>
+                    <div class="buddy">
+                        <p class="buddy_TX">いま同じ場所を頑張っている人が<span><?php echo $count + 2; ?></span>人いるよ！</p>
+                    </div>
                 </div>
-                <?php if ($queried_post): ?>
-                    <a href="<?php echo get_permalink($queried_post); ?>" class="start-btn">はじめる</a>
-                <?php endif; ?>
+                    <?php if ($queried_post): ?>
+                        <a href="<?php echo get_permalink($queried_post); ?>" class="start-btn">はじめる</a>
+                    <?php endif; ?>
+
             </div>
             <div class="shironeko-wrap">
                 <div class="shironeko pyon"></div>
                 <div class="shadow"></div>
-                <div class="buddy">
-                    <p class="buddy_TX">いま同じ場所を頑張っている人が<span><?php echo $count + 2; ?></span>人いるよ！</p>
-                </div>
             </div>
         </div>
 

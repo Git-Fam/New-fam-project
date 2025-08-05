@@ -422,7 +422,7 @@
             position: absolute;
             z-index: 2;
             bottom: pm(20, 20);
-            left: pm(90, 80);
+            left: pm(70, 50);
           }
 
           @include sp {
@@ -471,8 +471,8 @@
             position: absolute;
             padding: pm(14, 12) 0 pm(21, 20);
             width: pm(146, 120);
-            left: 20%;
-            bottom: 27%;
+            left: 13%;
+            bottom: 29%;
             z-index: 2;
           }
 
