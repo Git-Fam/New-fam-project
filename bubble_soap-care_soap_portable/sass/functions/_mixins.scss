@@ -1,5 +1,5 @@
 $pc: 768px; // PC
-$sp: 767px; // スマホ
+$sp: 830px; // スマホ
 
 @mixin pc {
   @media screen and (min-width: ($pc)) {
