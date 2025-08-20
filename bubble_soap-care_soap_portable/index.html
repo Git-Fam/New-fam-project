@@ -1,282 +1,640 @@
 <!DOCTYPE html>
 <html lang="ja">
+	<head prefix="og: https://ogp.me/ns#">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head prefix="og: https://ogp.me/ns#">
+		<!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
+		<meta name="format-detection" content="email=no,telephone=no,address=no" />
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
-    <meta name="format-detection" content="email=no,telephone=no,address=no" />
+		<meta property="og:locale" content="ja_JP" />
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<!-- ▼SEO -->
+		<link rel="”canonical”" href="”URL”" />
+		<!-- ジェネレーターURL→ https://metatags.io/ -->
 
-    <meta property="og:locale" content="ja_JP" />
+		<!-- ▼ファビコン -->
+		<!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
 
-    <!-- ▼SEO -->
-    <link rel="”canonical”" href="”URL”" />
-    <!-- ジェネレーターURL→ https://metatags.io/ -->
+		<!-- ▼クロールして欲しくない -->
+		<!-- <meta name="robots" content="noindex,nofollow"> -->
 
-    <!-- ▼ファビコン -->
-    <!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
+		<!-- ▼テーマカラー -->
+		<!-- <meta name="theme-color" content="#e9c931"> -->
 
-    <!-- ▼クロールして欲しくない -->
-    <!-- <meta name="robots" content="noindex,nofollow"> -->
+		<!-- ▼CSS -->
+		<link rel="stylesheet" href="css/reset.css?ver=1.0.0" />
+		<link rel="stylesheet" href="css/main.css?ver=1.0.0" />
 
-    <!-- ▼テーマカラー -->
-    <!-- <meta name="theme-color" content="#e9c931"> -->
+		<!-- ▼フォント -->
+		<script>
+			(function (d) {
+				var config = {
+						kitId: "mls2xxl",
+						scriptTimeout: 3000,
+						async: true,
+					},
+					h = d.documentElement,
+					t = setTimeout(function () {
+						h.className =
+							h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+					}, config.scriptTimeout),
+					tk = d.createElement("script"),
+					f = false,
+					s = d.getElementsByTagName("script")[0],
+					a;
+				h.className += " wf-loading";
+				tk.src = "https://use.typekit.net/" + config.kitId + ".js";
+				tk.async = true;
+				tk.onload = tk.onreadystatechange = function () {
+					a = this.readyState;
+					if (f || (a && a != "complete" && a != "loaded")) return;
+					f = true;
+					clearTimeout(t);
+					try {
+						Typekit.load(config);
+					} catch (e) {}
+				};
+				s.parentNode.insertBefore(tk, s);
+			})(document);
 
-    <!-- ▼CSS -->
-    <link rel="stylesheet" href="css/reset.css?ver=1.0.0" />
-    <link rel="stylesheet" href="css/main.css?ver=1.0.0" />
+			(function (d) {
+				var config = {
+						kitId: "mls2xxl",
+						scriptTimeout: 3000,
+						async: true,
+					},
+					h = d.documentElement,
+					t = setTimeout(function () {
+						h.className =
+							h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+					}, config.scriptTimeout),
+					tk = d.createElement("script"),
+					f = false,
+					s = d.getElementsByTagName("script")[0],
+					a;
+				h.className += " wf-loading";
+				tk.src = "https://use.typekit.net/" + config.kitId + ".js";
+				tk.async = true;
+				tk.onload = tk.onreadystatechange = function () {
+					a = this.readyState;
+					if (f || (a && a != "complete" && a != "loaded")) return;
+					f = true;
+					clearTimeout(t);
+					try {
+						Typekit.load(config);
+					} catch (e) {}
+				};
+				s.parentNode.insertBefore(tk, s);
+			})(document);
 
-    <!-- ▼フォント -->
-    <script>
-        (function (d) {
-            var config = {
-                kitId: 'mls2xxl',
-                scriptTimeout: 3000,
-                async: true
-            },
-                h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
-        })(document);
+			(function (d) {
+				var config = {
+						kitId: "mls2xxl",
+						scriptTimeout: 3000,
+						async: true,
+					},
+					h = d.documentElement,
+					t = setTimeout(function () {
+						h.className =
+							h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+					}, config.scriptTimeout),
+					tk = d.createElement("script"),
+					f = false,
+					s = d.getElementsByTagName("script")[0],
+					a;
+				h.className += " wf-loading";
+				tk.src = "https://use.typekit.net/" + config.kitId + ".js";
+				tk.async = true;
+				tk.onload = tk.onreadystatechange = function () {
+					a = this.readyState;
+					if (f || (a && a != "complete" && a != "loaded")) return;
+					f = true;
+					clearTimeout(t);
+					try {
+						Typekit.load(config);
+					} catch (e) {}
+				};
+				s.parentNode.insertBefore(tk, s);
+			})(document);
+		</script>
+	</head>
 
-        (function (d) {
-            var config = {
-                kitId: 'mls2xxl',
-                scriptTimeout: 3000,
-                async: true
-            },
-                h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
-        })(document);
+	<body>
+		<div class="wrapper">
+			<section class="FV">
+				<div class="FV--main">
+					<div class="title__area">
+						<div>
+							<div class="sub">
+								<p class="TX">全身まるごと、“やさしさ”と出かけよう。</p>
+							</div>
+							<div class="title">
+								<h1 class="TL">
+									<img
+										src="img/FV-TL.webp"
+										alt="全身ケアソープ バブルガード ポータブル"
+									/>
+								</h1>
+							</div>
+							<div class="text">
+								<p class="TX">
+									香料・殺菌剤・合成界面活性剤 不使用<span>無添加</span>
+								</p>
+							</div>
+						</div>
+						<div class="type">
+							<p class="TX">
+								泡
+								<span>タイプ</span>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="FV--sub">
+					<div class="tag">
+						<img src="img/tag.webp" alt="頭・顔・体・デリケートゾーン・足" />
+					</div>
+					<ul>
+						<li>
+							<p class="TX">
+								全身<br />
+								これ1本
+							</p>
+						</li>
+						<li>
+							<p class="TX">時 短</p>
+						</li>
+						<li>
+							<p class="TX">
+								洗い上がり<br />
+								しっとり
+							</p>
+						</li>
+						<li>
+							<p class="TX">
+								携帯に<br />
+								便利
+							</p>
+						</li>
+					</ul>
+				</div>
+				<div class="FV--BK">
+					<div class="bubbles pc"></div>
+					<div class="img">
+						<div class="white"></div>
+					</div>
+				</div>
+			</section>
 
-        (function (d) {
-            var config = {
-                kitId: 'mls2xxl',
-                scriptTimeout: 3000,
-                async: true
-            },
-                h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
-        })(document);
-    </script>
+			<section class="mini__section">
+				<div class="mini--top">
+					<div class="ttl">
+						<h2 class="TL">
+							「全身ケアソープバブルガード」の<br />
+							<span class="TL-txt"
+								>持ち運びに便利なミニサイズが新登場!<span></span
+							></span>
+						</h2>
+					</div>
+					<div class="img__area">
+						<div class="img__area--inner">
+							<div class="img--item"></div>
+							<div class="img--item"></div>
+						</div>
+					</div>
+					<div class="scene__signboard">
+						<div class="page">
+							<div class="page--ttl">
+								<h2 class="TL"><span>こんなシーンに</span>大活躍</h2>
+							</div>
+							<div class="page--icons">
+								<img
+									class="pc"
+									src="img/icon/page--icons-pc.webp"
+									alt="旅行/スパ・サウナ/運動/アウトドア/入院/介護/災害時"
+								/>
+								<img
+									class="sp"
+									src="img/icon/page--icons-sp.webp"
+									alt="旅行/スパ・サウナ/運動/アウトドア/入院/介護/災害時"
+								/>
+							</div>
+						</div>
+						<div class="face">
+							<div class="hands"></div>
+						</div>
+					</div>
+				</div>
+				<div class="mini--contents">
+					<ul class="contents--lists">
+						<li class="list--item">
+							<ul class="img--lists">
+								<li class="img--item">
+									<div class="icon--item">
+										<img src="img/icon/travel.webp" alt="旅行" />
+										<h4 class="TL">旅行</h4>
+									</div>
+									<img
+										class="img--item--thumbnail"
+										src="img/mini-contents-img-01.webp"
+										alt=""
+									/>
+								</li>
+								<li class="img--item">
+									<div class="icon--item">
+										<img src="img/icon/spa_sauna.webp" alt="スパ・サウナ" />
+										<h4 class="TL">スパ・サウナ</h4>
+									</div>
+									<img
+										class="img--item--thumbnail"
+										src="img/mini-contents-img-02.webp"
+										alt=""
+									/>
+								</li>
+							</ul>
+							<ul class="text--lists">
+								<li class="text--item">
+									<p class="TX">
+										慣れない場所での肌トラブルが気になる旅行先でも、肌にやさしい成分で安心して全身を洗えます。
+									</p>
+								</li>
+								<li class="text--item">
+									<p class="TX">
+										シャンプー、リンス、ボディソープなどを複数持っていく必要がなく、これ1本で済むので荷物が減らせます。
+									</p>
+								</li>
+							</ul>
+						</li>
 
+						<li class="list--item">
+							<ul class="img--lists">
+								<li class="img--item">
+									<div class="icon--item">
+										<img src="img/icon/movement.webp" alt="運動" />
+										<h4 class="TL">運動</h4>
+									</div>
+									<img
+										class="img--item--thumbnail"
+										src="img/mini-contents-img-03.webp"
+										alt=""
+									/>
+								</li>
+								<li class="img--item">
+									<div class="icon--item">
+										<img src="img/icon/outdoor.webp" alt="アウトドア" />
+										<h4 class="TL">アウトドア</h4>
+									</div>
+									<img
+										class="img--item--thumbnail"
+										src="img/mini-contents-img-04.webp"
+										alt=""
+									/>
+								</li>
+							</ul>
+							<ul class="text--lists">
+								<li class="text--item">
+									<p class="TX">
+										運動で汗をかいた後、シャワーを浴びる時間がない時でも、これ1本で全身さっぱり！
+									</p>
+								</li>
+								<li class="text--item">
+									<p class="TX">
+										汗やニオイが気になる時も、拭き取るだけで簡単にケアでき、快適さを保てます。
+									</p>
+								</li>
+							</ul>
+						</li>
 
-</head>
+						<li class="list--item">
+							<ul class="img--lists">
+								<li class="img--item">
+									<div class="icon--item">
+										<img src="img/icon/admission.webp" alt="入院" />
+										<h4 class="TL">入院</h4>
+									</div>
+									<img
+										class="img--item--thumbnail"
+										src="img/mini-contents-img-05.webp"
+										alt=""
+									/>
+								</li>
+								<li class="img--item">
+									<div class="icon--item">
+										<img src="img/icon/nursing_care.webp" alt="介護" />
+										<h4 class="TL">介護</h4>
+									</div>
+									<img
+										class="img--item--thumbnail"
+										src="img/mini-contents-img-06.webp"
+										alt=""
+									/>
+								</li>
+								<li class="img--item">
+									<div class="icon--item">
+										<img src="img/icon/when_disaster.webp" alt="災害時" />
+										<h4 class="TL">災害時</h4>
+									</div>
+									<img
+										class="img--item--thumbnail"
+										src="img/mini-contents-img-07.webp"
+										alt=""
+									/>
+								</li>
+							</ul>
+							<ul class="text--lists">
+								<li class="text--item">
+									<p class="TX">
+										入浴できない時（災害・病気・介護）でも、清拭料（頭以外）としても拭き取るだけで全身を清潔に保てます。
+									</p>
+								</li>
+								<li class="text--item text--item--deco">
+									<p class="TX">
+										医療・介護現場での使用にも適しており、糖尿病患者のフットケアなどにも手軽に使えます。
+									</p>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</section>
 
-<body>
+			<section class="recommend bg-side">
+				<div class="C_recommend">
+					<div class="C_recommend--TL">
+						<p class="top-TL">
+							頭からつま先まで全身これ1本!!<br class="sp" /><span
+								>髪も肌もイキイキ♪</span
+							>
+						</p>
+						<p class="TL">
+							全身ケアソープバブルガードの<br /><span>おすすめポイント</span>
+						</p>
+					</div>
 
-    <div class="wrapper">
+					<ul class="C_recommend_content">
+						<li class="C_recommend_content--item">
+							<div class="icon-wrap">
+								<div class="icon">
+									<p class="point">point</p>
+									<p class="number">1</p>
+								</div>
+							</div>
+							<div class="TL-wrap">
+								<p class="TL pc">香料・殺菌剤・合成界面活性剤不使用</p>
+								<p class="TL sp">香料・殺菌剤・</p>
+								<p class="TL sp TL-2">合成界面活性剤不使用</p>
+							</div>
+						</li>
 
-        <section class="FV">
-            <div class="FV--main">
-                <div class="title__area">
-                    <div>
-                        <div class="sub">
-                            <p class="TX">全身まるごと、“やさしさ”と出かけよう。</p>
-                        </div>
-                        <div class="title">
-                            <h1 class="TL">
-                                <img src="img/FV-TL.webp" alt="全身ケアソープ バブルガード ポータブル">
-                            </h1>
-                        </div>
-                        <div class="text">
-                            <p class="TX">香料・殺菌剤・合成界面活性剤 不使用<span>無添加</span></p>
-                        </div>
-                    </div>
-                    <div class="type">
-                        <p class="TX">
-                            泡
-                            <span>タイプ</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="FV--sub">
-                <div class="tag">
-                    <img src="img/tag.webp" alt="頭・顔・体・デリケートゾーン・足">
-                </div>
-                <ul>
-                    <li>
-                        <p class="TX">
-                            全身<br>
-                            これ1本
-                        </p>
-                    </li>
-                    <li>
-                        <p class="TX">
-                            時 短
-                        </p>
-                    </li>
-                    <li>
-                        <p class="TX">
-                            洗い上がり<br>
-                            しっとり
-                        </p>
-                    </li>
-                    <li>
-                        <p class="TX">
-                            携帯に<br>
-                            便利
-                        </p>
-                    </li>
-                </ul>
-            </div>
-            <div class="FV--BK">
-                <div class="bubbles pc"></div>
-                <div class="img">
-                    <div class="white"></div>
-                </div>
-            </div>
-        </section>
+						<li class="C_recommend_content--item">
+							<div class="icon-wrap">
+								<div class="icon">
+									<p class="point">point</p>
+									<p class="number">2</p>
+								</div>
+							</div>
+							<div class="TL-wrap">
+								<p class="TL">洗浄成分は石けん成分のみ</p>
+								<div class="second-deco">
+									<p class="deco-TX">
+										オレイン酸<br class="pc" />カリウム<br class="pc" />含む
+									</p>
+								</div>
+							</div>
+							<p class="TX">
+								洗浄成分であるカリ石ケン素地<br
+									class="sp"
+								/>（脂肪酸カリウム）には、<br />
+								石けん成分（脂肪酸カリウム）の一種である<br />
+								「オレイン酸カリウム」を含んでいます。<br />
+								石けんの原料となる天然油脂には<br
+									class="sp"
+								/>脂肪酸と保湿成分が含まれており、<br />
+								油脂の種類によって含まれる脂肪酸が異なります。
+							</p>
+						</li>
 
-        <section class="mini__section">
-            <div class="mini--top">
-                <div class="ttl">
-                    <h2 class="TL">
-                        「全身ケアソープバブルガード」の<br>
-                        <span class="TL-txt">持ち運びに便利なミニサイズが新登場!<span></span></span>
-                    </h2>
-                </div>
-                <div class="img__area">
-                    <div class="img__area--inner">
-                        <div class="img--item"></div>
-                        <div class="img--item"></div>
-                    </div>
-                </div>
-                <div class="scene__signboard">
-                    <div class="page">
-                        <div class="page--ttl">
-                            <h2 class="TL">
-                                <span>こんなシーンに</span>大活躍
-                            </h2>
-                        </div>
-                        <div class="page--icons">
-                            <img class="pc" src="img/icon/page--icons-pc.webp" alt="旅行/スパ・サウナ/運動/アウトドア/入院/介護/災害時">
-                            <img class="sp" src="img/icon/page--icons-sp.webp" alt="旅行/スパ・サウナ/運動/アウトドア/入院/介護/災害時">
-                        </div>
-                    </div>
-                    <div class="face">
-                        <div class="hands"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="mini--contents">
-                <ul class="contents--lists">
+						<li class="C_recommend_content--item">
+							<div class="icon-wrap">
+								<div class="icon">
+									<p class="point">point</p>
+									<p class="number">3</p>
+								</div>
+							</div>
+							<div class="TL-wrap">
+								<p class="TL">これ1本で全身ケア</p>
+							</div>
+							<p class="TX">
+								これ1本で頭・顔・体・足・<br
+									class="sp"
+								/>デリケートゾーンまで全身洗えるので<br />シャンプーや洗顔フォーム、ボディソープと<br
+									class="sp"
+								/>色々な洗浄剤を<br class="pc" />買いそろえなくてもOK!!<br
+									class="sp"
+								/>色々置かなくても良いので浴室もスッキリ！
+							</p>
+						</li>
+						<li class="C_recommend_content--item">
+							<div class="icon-wrap">
+								<div class="icon">
+									<p class="point">point</p>
+									<p class="number">4</p>
+								</div>
+							</div>
+							<div class="TL-wrap">
+								<p class="TL pc">せっけん“ならでは”の優れたすすぎ性</p>
+								<p class="TL sp">せっけん“ならでは”の</p>
+								<p class="TL sp TL-2">優れたすすぎ性</p>
+							</div>
+							<p class="TX">
+								石けんは泡切れが非常に良いため、<br
+									class="sp"
+								/>すすぎが早く終わります。<br />洗った後もヌルつかずさっと洗い流せます。
+							</p>
+						</li>
 
-                    <li class="list--item">
-                        <ul class="img--lists">
-                            <li class="img--item">
-                                <div class="icon--item">
-                                    <img src="img/icon/travel.webp" alt="旅行">
-                                    <h4 class="TL">旅行</h4>
-                                </div>
-                                <img class="img--item--thumbnail" src="img/mini-contents-img-01.webp" alt="">
-                            </li>
-                            <li class="img--item">
-                                <div class="icon--item">
-                                    <img src="img/icon/spa_sauna.webp" alt="スパ・サウナ">
-                                    <h4 class="TL">スパ・サウナ</h4>
-                                </div>
-                                <img class="img--item--thumbnail" src="img/mini-contents-img-02.webp" alt="">
-                            </li>
-                        </ul>
-                        <ul class="text--lists">
-                            <li class="text--item">
-                                <p class="TX">
-                                    慣れない場所での肌トラブルが気になる旅行先でも、肌にやさしい成分で安心して全身を洗えます。
-                                </p>
-                            </li>
-                            <li class="text--item">
-                                <p class="TX">
-                                    シャンプー、リンス、ボディソープなどを複数持っていく必要がなく、これ1本で済むので荷物が減らせます。
-                                </p>
-                            </li>
-                        </ul>
-                    </li>
+						<li class="C_recommend_content--item">
+							<div class="icon-wrap">
+								<div class="icon">
+									<p class="point">point</p>
+									<p class="number">5</p>
+								</div>
+							</div>
+							<div class="TL-wrap">
+								<p class="TL">ワンプッシュでたっぷり泡</p>
+							</div>
+							<p class="TX">
+								泡で出てくるので泡立ていらず。<br />
+								ワンプッシュでたっぷりのボリューム泡が出ます。<br />
+								肌トラブルを招く外的要因でもある<br
+									class="sp"
+								/>「皮膚の摩擦」を防ぐためにも<br />
+								手のひら洗いでやさしく体を洗いましょう。
+							</p>
+						</li>
+						<li class="C_recommend_content--item">
+							<div class="icon-wrap">
+								<div class="icon">
+									<p class="point">point</p>
+									<p class="number">6</p>
+								</div>
+							</div>
+							<div class="TL-wrap">
+								<p class="TL">洗い上がりしっとり</p>
+							</div>
+							<p class="TX">
+								釜炊き職人がこだわって作る<br
+									class="sp"
+								/>釜炊き製法「ケン化法」で、手間ヒマかけて製造。<br />
+								原料の天然油脂に含まれる天然の保湿成分が<br />
+								出来上がった石けんにも残り、<br
+									class="sp"
+								/>洗い上がりしっとり。
+							</p>
+						</li>
 
+						<li class="C_recommend_content--item">
+							<div class="icon-wrap">
+								<div class="icon">
+									<p class="point">point</p>
+									<p class="number">7</p>
+								</div>
+							</div>
+							<div class="TL-wrap">
+								<p class="TL">しっかり洗浄</p>
+							</div>
+							<p class="TX">石けんの洗浄力で、汚れをしっかり洗浄。</p>
+						</li>
+						<li class="C_recommend_content--item">
+							<div class="icon-wrap">
+								<div class="icon">
+									<p class="point">point</p>
+									<p class="number">8</p>
+								</div>
+							</div>
+							<div class="TL-wrap">
+								<p class="TL">清拭料としても使える</p>
+							</div>
+							<p class="TX">
+								ふき取りだけの清拭料としても使用できるので、<br />
+								入浴ができない介護や災害時にもおすすめ。
+							</p>
+						</li>
+					</ul>
+					<div class="C_recommend_how">
+						<div class="C_recommend_how--TL">
+							<p class="TL">清拭料としての使い方</p>
+						</div>
+						<div class="C_recommend_how--content">
+							<p class="TX">
+								蒸しタオル等に適量の泡をのせて<br
+									class="sp"
+								/>体（頭以外）を拭き、<br class="pc" />泡が残らないように<br
+									class="sp"
+								/>充分に拭き取ってください。<br />
+								洗い流す必要はありません。<br />
+							</p>
+							<div class="img"></div>
+						</div>
+					</div>
+				</div>
+			</section>
 
-                    <li class="list--item">
-                        <ul class="img--lists">
-                            <li class="img--item">
-                                <div class="icon--item">
-                                    <img src="img/icon/movement.webp" alt="運動">
-                                    <h4 class="TL">運動</h4>
-                                </div>
-                                <img class="img--item--thumbnail" src="img/mini-contents-img-03.webp" alt="">
-                            </li>
-                            <li class="img--item">
-                                <div class="icon--item">
-                                    <img src="img/icon/outdoor.webp" alt="アウトドア">
-                                    <h4 class="TL">アウトドア</h4>
-                                </div>
-                                <img class="img--item--thumbnail" src="img/mini-contents-img-04.webp" alt="">
-                            </li>
-                        </ul>
-                        <ul class="text--lists">
-                            <li class="text--item">
-                                <p class="TX">
-                                    運動で汗をかいた後、シャワーを浴びる時間がない時でも、これ1本で全身さっぱり！
-                                </p>
-                            </li>
-                            <li class="text--item">
-                                <p class="TX">
-                                    汗やニオイが気になる時も、拭き取るだけで簡単にケアでき、快適さを保てます。
-                                </p>
-                            </li>
-                        </ul>
-                    </li>
+			<section class="question bg-side">
+				<div class="C_question">
+					<div class="C_question--TL-wrap">
+						<p class="TL">全身ケアソープ バブルガード</p>
+						<div class="TL-box">
+							<p class="TL-main"><img src="img/Q&A.svg" alt="Q&A" /></p>
+							<div class="img"></div>
+						</div>
+					</div>
+					<ul class="C_question_content">
+						<li class="C_question_content--item">
+							<div class="TL-wrap item-style">
+								<p class="icon"></p>
+								<p class="TL">
+									洗い上がりがしっとりなものを<br class="sp" />探しています。<br
+										class="pc"
+									/>全身ケアソープバブル<br class="sp" />ガードはどうですか？
+								</p>
+							</div>
+							<div class="TX-wrap item-style">
+								<p class="icon"></p>
+								<p class="TX">
+									原料油脂に含まれる天然の保湿成分が<br
+										class="sp"
+									/>出来上がった石けんにも<br class="pc" />残っているので、<br
+										class="sp"
+									/>洗い上がりしっとりしています。
+								</p>
+							</div>
+						</li>
+						<li class="C_question_content--item">
+							<div class="TL-wrap item-style">
+								<p class="icon"></p>
+								<p class="TL">本当に全身洗えますか？</p>
+							</div>
+							<div class="TX-wrap item-style">
+								<p class="icon"></p>
+								<p class="TX">
+									洗浄成分は石けん成分のみで、<br
+										class="sp"
+									/>髪からつま先まで<br class="sp" />全身洗っていただけます。<br
+										class="sp"
+									/><span
+										>※清拭料として使用する場合は、 頭には使用できません。</span
+									>
+								</p>
+							</div>
+						</li>
+						<li class="C_question_content--item">
+							<div class="TL-wrap item-style">
+								<p class="icon"></p>
+								<p class="TL">子どもにも使えますか？</p>
+							</div>
+							<div class="TX-wrap item-style">
+								<p class="icon"></p>
+								<p class="TX">
+									お子さまから大人の方まで<br
+										class="sp"
+									/>家族全員で使っていただけます。
+								</p>
+							</div>
+						</li>
+						<li class="C_question_content--item">
+							<div class="TL-wrap item-style">
+								<p class="icon"></p>
+								<p class="TL">
+									清拭料として使ったときに、<br />
+									肌がベタついたりぬるついたりする<br
+										class="sp"
+									/>ことはないですか？
+								</p>
+							</div>
+							<div class="TX-wrap item-style">
+								<p class="icon"></p>
+								<p class="TX">
+									別の蒸しタオルなどで泡が残らないよう念入りに<br
+										class="pc"
+									/>拭き取っていただければ<br class="sp" />問題ございません。
+								</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+		</div>
 
-
-                    <li class="list--item">
-                        <ul class="img--lists">
-                            <li class="img--item">
-                                <div class="icon--item">
-                                    <img src="img/icon/admission.webp" alt="入院">
-                                    <h4 class="TL">入院</h4>
-                                </div>
-                                <img class="img--item--thumbnail" src="img/mini-contents-img-05.webp" alt="">
-                            </li>
-                            <li class="img--item">
-                                <div class="icon--item">
-                                    <img src="img/icon/nursing_care.webp" alt="介護">
-                                    <h4 class="TL">介護</h4>
-                                </div>
-                                <img class="img--item--thumbnail" src="img/mini-contents-img-06.webp" alt="">
-                            </li>
-                            <li class="img--item">
-                                <div class="icon--item">
-                                    <img src="img/icon/when_disaster.webp" alt="災害時">
-                                    <h4 class="TL">災害時</h4>
-                                </div>
-                                <img class="img--item--thumbnail" src="img/mini-contents-img-07.webp" alt="">
-                            </li>
-                        </ul>
-                        <ul class="text--lists">
-                            <li class="text--item">
-                                <p class="TX">
-                                    入浴できない時（災害・病気・介護）でも、清拭料（頭以外）としても拭き取るだけで全身を清潔に保てます。
-                                </p>
-                            </li>
-                            <li class="text--item text--item--deco">
-                                <p class="TX">
-                                    医療・介護現場での使用にも適しており、糖尿病患者のフットケアなどにも手軽に使えます。
-                                </p>
-                            </li>
-                        </ul>
-                    </li>
-
-                </ul>
-            </div>
-        </section>
-
-
-
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
-        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-    <script src="js/script.js"></script>
-    <script src="js/joint.js"></script>
-</body>
-
+		<script
+			src="https://code.jquery.com/jquery-3.7.0.min.js"
+			integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+			crossorigin="anonymous"
+		></script>
+		<script src="js/script.js"></script>
+		<script src="js/joint.js"></script>
+	</body>
 </html>
