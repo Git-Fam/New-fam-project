@@ -25,8 +25,8 @@ html {
 
 body {
 
-  // @include serif;
-
+  @include maru;
+  @include wt400;
   &.active {
 
     @include sp {
