@@ -1,0 +1,116 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  C_question
+----------------------- */
+.C_question_content {
+  display: flex;
+  flex-direction: column;
+  @include pc{
+    gap: 25px;
+  }
+  @include sp{
+    gap: s(25);
+  }
+  &--item {
+    .item-style {
+      background-color: #FFF;
+      display: flex;
+      color: #4e4e4e;
+
+      @include pc {
+        gap: 34px;
+        padding-inline: 34px;
+      }
+      @include sp{
+        gap: s(40);
+        padding-inline: s(30);
+
+      }
+
+      .icon {
+        @include pc {
+          width: 25px;
+          min-width: 25px;
+          height: 25px;
+          margin-top: 5px;
+        }
+        @include sp{
+          width: s(33);
+          min-width: s(33);
+          height: s(33);
+          margin-top: s(5);
+        }
+      }
+      .TL{
+        @include yu;
+        @include wt800;
+        @include pc{
+          text-shadow: 0 0 0.5px;
+          font-size: 25px;
+          line-height: 150%;
+        }
+        @include sp{
+          font-size: s(28);
+          text-shadow: 0 0 s(0.5);
+          line-height: 140%;
+
+        }
+      }
+      .TX{
+        @include tbudr;
+        @include pc{
+          font-size: 22px;
+          line-height: 140%;
+        }
+        @include sp{
+          font-size: s(27);
+          line-height: 140%;
+        }
+        span{
+          display: block;
+          @include pc{
+            margin-top:10px;
+          }
+          @include sp{
+            margin-top: s(10);
+          }
+        }
+      }
+
+      &.TL-wrap {
+        @include pc{
+          padding-block: 30px 20px;
+          border-radius: 15px 15px 0 0;
+        }
+        @include sp{
+          border-radius: s(15) s(15) 0 0;
+          padding-block: s(35) s(43);
+
+        }
+        .icon {
+          @include imgContain("q-icon.svg");
+        }
+      }
+
+      &.TX-wrap {
+        @include pc{
+          padding-block: 30px;
+          border-radius: 0 0 15px 15px;
+          margin-top: 2px;
+        }
+        @include sp{
+          padding-block: s(35);
+          border-radius: 0 0 s(15) s(15);
+          margin-top: s(2);
+
+        }
+        .icon {
+          @include imgContain("a-icon.svg");
+        }
+      }
+
+    }
+  }
+}

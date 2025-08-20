@@ -13,11 +13,13 @@
     @include pc {
       border-radius: 30px 30px 0 0;
       padding-block: 20px;
-      @include pc{
-        font-size: 36px;
-      }
+      font-size: 36px;
     }
-
+    @include sp{
+      border-radius: s(30) s(30) 0 0;
+      padding-block: s(21);
+      font-size: s(35);
+    }
     .TL {
       text-align: center;
       color: #FFF;
@@ -33,6 +35,11 @@
         height: 30px;
         bottom: -25px;
       }
+      @include sp{
+        width: s(50);
+        height: s(30);
+        bottom: s(-25);
+      }
     }
   }
 
@@ -43,15 +50,22 @@
     @include pc{
       padding-block: 55px 32px;
     }
+    @include sp{
+      padding-block: s(63) s(30);
+    }
     .TX {
       color: #4e4e4e;
       text-align: center;
       @include yu;
       font-weight: bold;
-      text-shadow: 0 0 0.5px;
       @include pc{
         font-size: 24px;
         line-height: 150%;
+        text-shadow: 0 0 0.5px;
+      }
+      @include sp{
+        font-size: s(28);
+        line-height: 160%;
       }
     }
     .img{
@@ -60,6 +74,11 @@
         width: 171px;
         height: 272px;
         margin: 18px auto 0;
+      }
+      @include sp{
+        width: s(171);
+        height: s(272);
+        margin: s(10) auto 0; 
       }
     }
   }
