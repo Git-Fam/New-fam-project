@@ -5,3 +5,88 @@
   C_recommend
 ----------------------- */
 
+.C_recommend{
+  background: #FFF;
+  margin: 0 auto;
+  @include pc{
+    max-width: 1050px;
+    border: 4px solid #51ace2;
+    border-radius: 50px;
+    padding: 90px 60px 52px;
+  }
+  @include sp{
+    border: s(4) solid #51ace2;
+    border-radius: s(50);
+    padding: s(70) s(40) s(40);
+  }
+  &--TL{
+    text-align: center;
+    color: #51ace2 ;
+    @include wt800;
+    .top-TL{
+      @include pc{
+        font-size: 27px;
+      }
+      @include sp{
+        font-size: s(30);
+        line-height: 150%;
+      }
+      span{
+        @media screen and (max-width: 860px) {
+          display: block;
+        }
+      }
+    }
+    .TL{
+      @include pc{
+        font-size: 58px;
+        margin-top: 20px;
+      }
+      @media screen and (max-width: 1000px) {
+        font-size: 44px;
+      }
+      
+      @media screen and (max-width: 860px) {
+        font-size: 38px;
+      }
+      @include sp{
+        font-size: s(48);
+        margin-top: s(25);
+        letter-spacing: s(-3);
+      }
+      span{
+        line-height: 150%;
+        @include pc{
+          font-size: 70px;
+        }
+        @media screen and (max-width: 860px) {
+          font-size: 60px;
+        }
+        @include sp{
+          font-size: s(70);
+          letter-spacing: s(1);
+        }
+      }
+    }
+  }
+  &_content{
+    display: flex;
+    flex-direction: column;
+    @include pc{
+      margin-top: 48px;
+      gap: 90px;
+    }
+    @include sp{
+      margin-top: s(30);
+      gap: s(85);
+    }
+  }
+  &_how{
+    @include pc{
+      margin-top: 106px;
+    }
+    @include sp{
+      margin-top: s(50);
+    }
+  }
+}

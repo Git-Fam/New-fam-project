@@ -4,3 +4,34 @@
 /* -----------------------
   forth
 ----------------------- */
+
+
+.bg-side{
+  background-color: #eef7f9;
+  @include pc{
+    padding-inline:100px;
+  }
+  @media screen and (max-width: 950px) {
+    padding-inline:50px;
+  }
+  @include sp{
+    padding-inline: s(50);
+  }
+
+}
+.recommend{
+  @include pc{
+    padding-top: 100px;
+  }
+  @include sp{
+    padding-top: s(90);
+  }
+}
+.question{
+  @include pc{
+    padding-block: 70px 120px;
+  }
+  @include sp{
+    padding-block: s(90);
+  }
+}

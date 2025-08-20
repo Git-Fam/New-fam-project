@@ -1,0 +1,113 @@
+@use "../../functions"as *;
+@use "../J_functions"as *;
+
+/* -----------------------
+  C_question
+----------------------- */
+.C_question {
+  margin: 0 auto;
+  background-color: rgba(245, 170, 190, 0.7);
+
+  @include pc {
+    max-width: 1050px;
+    border-radius: 50px;
+    padding: 30px 75px 65px;
+  }
+
+  @include sp {
+    border-radius: s(50);
+    padding: s(60) s(36) s(38);
+  }
+
+  &--TL-wrap {
+    color: #FFF;
+
+    @include pc {
+      display: flex;
+      align-items: center;
+      margin-left: calc(56 / 1050) *100%;
+    }
+    @media screen and (max-width: 1160px) {
+      flex-direction: column;
+      gap: 30px;
+    }
+    @include sp{
+
+    }
+
+    .TL {
+      @include wt800;
+      text-align: center;
+
+      @include pc {
+        font-size: 35px;
+      }
+      @include sp{
+        font-size: s(47);
+      }
+
+    }
+
+    .TL-box {
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      @include pc {
+        gap: 20px;
+      }
+
+      .TL-main {
+        @include pc {
+          margin: 5px 0 0 30px;
+        }
+        @media screen and (max-width: 1160px) {
+          margin: 0 0 0 -100px;
+        }
+        @include sp{
+          margin: s(40) 0 0 s(156);
+        }
+
+        img {
+          aspect-ratio: 142 / 89;
+          @include pc {
+            width: 142px;
+          }
+          @include sp{
+            width: s(176);
+          }
+        }
+      }
+
+      .img {
+        @include imgContain("question-img.webp");
+        aspect-ratio: 125 / 126;
+
+        @include pc {
+          position: absolute;
+          width: 125px;
+          top: -40px;
+          right: -130px;
+        }
+        @media screen and (max-width: 1160px) {
+          top: -20px;
+        }
+        @include sp{
+          position: relative;
+          width: s(142);
+          top: s(10);
+          right: s(-10);
+        }
+      }
+    }
+  }
+
+  &_content {
+    @include pc {
+      margin-top: 30px;
+    }
+    @include sp{
+      margin-top: s(30);
+    }
+  }
+}
