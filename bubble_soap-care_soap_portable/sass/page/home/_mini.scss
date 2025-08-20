@@ -1,0 +1,594 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  mini__section
+----------------------- */
+
+.mini__section {
+  position: relative;
+  z-index: 2;
+
+  @include pc {
+    margin-top: -45px;
+  }
+
+  @include me(1153, 768) {
+    margin-top: 50px;
+  }
+
+  @include sp {
+    padding: s(58) 0 0;
+  }
+
+  .mini--top {
+    position: relative;
+    z-index: 2;
+
+    .ttl {
+      width: fit-content;
+      margin: 0 auto;
+
+      .TL {
+        text-align: center;
+        color: #51ace2;
+        line-height: 1.8;
+        font-weight: 800;
+
+        @include pc {
+          font-size: 30px;
+        }
+
+        @include me(1153, 768) {
+          font-size: 25px;
+        }
+
+        @include sp {
+          font-size: s(36);
+        }
+
+        .TL-txt {
+          color: #0062b0;
+          line-height: 1;
+          font-weight: 800;
+          display: inline-block;
+          position: relative;
+          z-index: 1;
+
+          @include pc {
+            font-size: 40px;
+            padding-inline: 50px;
+          }
+
+          @include me(1153, 768) {
+            font-size: 35px;
+          }
+
+          @include sp {
+            font-size: s(40);
+            padding-inline: s(33);
+          }
+
+          &::before,
+          &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            transform: translateY(-50%);
+            aspect-ratio: 1;
+            @include imgContain("star-icon.webp");
+
+            @include pc {
+              top: 50%;
+              left: 5px;
+              width: 40px;
+            }
+
+            @include sp {
+              top: 0;
+              left: s(-5);
+              width: s(40);
+            }
+          }
+
+          &::after {
+
+            @include pc {
+              left: unset;
+              right: 5px;
+            }
+
+            @include sp {
+              left: unset;
+              right: s(-5);
+            }
+          }
+
+          span {
+            display: block;
+            position: absolute;
+            top: 75%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 70%;
+            background-color: #fffb5d;
+            z-index: -1;
+          }
+        }
+      }
+    }
+
+    .img__area {
+      position: relative;
+
+      @include pc {
+        height: 398px;
+      }
+
+      @include sp {
+        height: s(538);
+      }
+
+      .img__area--inner {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+
+        @include pc {
+          top: 64px;
+          width: 1130px;
+          height: 335px;
+        }
+
+        @include sp {
+          top: s(100);
+          width: s(1200);
+          height: s(437);
+        }
+
+        .img--item {
+          aspect-ratio: 499/334;
+          position: absolute;
+          top: 0;
+          height: 100%;
+
+          &:nth-child(1) {
+            left: 0;
+            @include imgContain("mini-img01.webp");
+          }
+
+          &:nth-child(2) {
+            right: 0;
+            @include imgContain("mini-img02.webp");
+          }
+
+          @include pc {
+            &::before {
+              content: "";
+              display: block;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: 110%;
+              height: 110%;
+              background-image: linear-gradient(90deg, #FFF 0%, #FFF 5%, #ffffff00 50%, #FFF 95%, #FFF 100%);
+            }
+          }
+        }
+
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          @include imgContain("mini-img-center.webp");
+          aspect-ratio: 92 / 336;
+          z-index: 2;
+
+          @include pc {
+            top: -28px;
+            width: 92px;
+          }
+
+          @include sp {
+            top: s(-64);
+            width: s(127);
+          }
+        }
+
+        &::after {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 110%;
+          height: 110%;
+          background-image: linear-gradient(90deg,
+              #ffffff00 0%,
+              #ffffff00 20%,
+              #ffffff 50%,
+              #ffffff00 80%,
+              #FFF 100%);
+        }
+      }
+    }
+
+    .scene__signboard {
+      position: relative;
+      z-index: 2;
+
+      @include pc {
+        padding-inline: 50px;
+      }
+
+      @include sp {
+        padding: 0 s(50) 0;
+        margin-top: s(112);
+      }
+
+      .page {
+        width: 100%;
+        background-color: #eef7f9;
+        border: solid #646262;
+        margin-inline: auto;
+        border-radius: 10px;
+        position: relative;
+        z-index: 2;
+
+        @include pc {
+          max-width: 1042px;
+          border-width: 2px;
+          padding: 40px 67px 40px 40px;
+        }
+
+        @include sp {
+          border-width: s(2);
+          padding: s(38) s(44) s(37) s(76);
+        }
+
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+
+          @include pc {
+            @include imgContain("Book-closer-pc.webp");
+            aspect-ratio: 29/269;
+            left: -10px;
+            width: 29px;
+          }
+
+          @include sp {
+            @include imgContain("Book-closer-sp.webp");
+            aspect-ratio: 43/480;
+            left: s(-15);
+            width: s(43);
+          }
+        }
+
+        &--ttl {
+
+          @include pc {
+            margin-bottom: 34px;
+          }
+
+          @include sp {
+            margin-bottom: s(35);
+          }
+
+          .TL {
+            color: #0062b0;
+            font-weight: 800;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            @include pc {
+              font-size: 54px;
+            }
+
+            @include sp {
+              font-size: s(68);
+            }
+
+            span {
+              display: inline-block;
+              border-top: solid #0062b0;
+              border-bottom: solid #0062b0;
+
+              @include pc {
+                border-top-width: 2px;
+                border-bottom-width: 2px;
+                margin-right: 10px;
+                font-size: 25px;
+                padding-block: 10px;
+              }
+
+              @include sp {
+                border-top-width: s(2);
+                border-bottom-width: s(2);
+                margin-right: s(10);
+                font-size: s(32);
+                padding-block: s(10);
+              }
+            }
+          }
+        }
+
+        &--icons {
+          width: 100%;
+
+          img {
+            width: 100%;
+          }
+        }
+      }
+
+      .face {
+        aspect-ratio: 119/63;
+        @include imgContain("Book-face.webp");
+        position: absolute;
+        z-index: 3;
+
+        @include pc {
+          bottom: 100%;
+          right: 33%;
+          width: 119px;
+        }
+
+        @include sp {
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: 100%;
+          width: s(140);
+        }
+
+        .hands {
+          aspect-ratio: 138/29;
+          @include imgContain("Book-hands.webp");
+          position: absolute;
+          left: 45%;
+          transform: translateX(-50%);
+
+          @include pc {
+            top: calc(100% - 15px);
+            width: 138px;
+          }
+
+          @include sp {
+            top: calc(100% - s(15));
+            width: s(160);
+          }
+        }
+      }
+    }
+  }
+
+  .mini--contents {
+    position: relative;
+    z-index: 1;
+    background-color: #dceff3;
+
+    @include pc {
+      padding: 90px 50px;
+      margin-top: -40px;
+    }
+
+    @include sp {
+      padding: s(190) s(50) s(72);
+      margin-top: s(-112);
+    }
+
+    .contents--lists {
+
+      @include pc {
+        @include column(30px);
+        margin-inline: auto;
+        max-width: 1042px;
+      }
+
+      @include sp {
+        @include column(s(30));
+      }
+
+      .list--item {
+        width: 100%;
+
+        .img--lists {
+          background-color: #fff;
+          display: flex;
+
+          @include pc {
+            gap: 12px;
+            border-radius: 50px 50px 0 0;
+            padding: 43px 117px 84px;
+          }
+
+          @include me(1153, 768) {
+            padding-inline: 50px;
+          }
+
+          @include sp {
+            gap: s(12);
+            border-radius: s(50) s(50) 0 0;
+            padding: s(43) s(33) s(100);
+          }
+
+          .img--item {
+
+            .icon--item {
+
+              @include pc {
+                margin-bottom: 18px;
+              }
+
+              @include sp {
+                margin-bottom: s(15);
+              }
+
+              img {
+                margin-inline: auto;
+
+                @include pc {
+                  width: 80px;
+                  margin-bottom: 10px;
+                }
+
+                @include sp {
+                  width: s(110);
+                  margin-bottom: s(10);
+                }
+              }
+
+              .TL {
+                color: #2696d8;
+                font-weight: 800;
+                text-align: center;
+                line-height: 1;
+
+                @include pc {
+                  font-size: min(calc((28 / 1440) * 100vw), 28px);
+                }
+
+                @include sp {
+                  font-size: s(38);
+                }
+              }
+            }
+
+            &--thumbnail {
+              width: 100%;
+            }
+          }
+        }
+
+        .text--lists {
+          background-color: #fffd9d;
+          position: relative;
+
+
+          @include pc {
+            border-radius: 0 0 50px 50px;
+            padding: 0 117px 70px;
+            @include column(20px);
+          }
+
+          @include me(1153, 768) {
+            padding-inline: 50px;
+          }
+
+          @include sp {
+            border-radius: 0 0 s(50) s(50);
+            padding: 0 s(46) s(46) s(39);
+            @include column(s(25));
+          }
+
+          &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            @include imgCover("wave-item.webp");
+            background-position: top center;
+
+            @include pc {
+              height: 61px;
+            }
+
+            @include sp {
+              height: s(61);
+            }
+          }
+
+          .text--item {
+
+            .TX {
+              color: #595757;
+              line-height: 1.5;
+              display: flex;
+              align-items: baseline;
+
+              @include pc {
+                font-size: 22px;
+                letter-spacing: -0.09em;
+                gap: 14px;
+              }
+
+              @include sp {
+                font-size: s(30);
+                letter-spacing: -0.1em;
+                gap: s(14);
+              }
+
+              &::before {
+                content: "";
+                display: block;
+                background-color: #3d98d7;
+                border-radius: 50%;
+                flex-shrink: 0;
+
+                @include pc {
+                  width: 18px;
+                  height: 18px;
+                }
+
+                @include sp {
+                  width: s(30);
+                  height: s(30);
+                  transform: translateY(s(5));
+                }
+              }
+            }
+
+            &.text--item--deco {
+              position: relative;
+
+              &::after {
+                content: "";
+                display: block;
+                aspect-ratio: 140/101;
+                @include imgContain("text-item-deco-01.webp");
+
+                @include pc {
+                  position: absolute;
+                  top: 30%;
+                  transform: translate(0%, -50%);
+                  left: calc(100% - 70px);
+                  width: 140px;
+                }
+
+                @include me(1153, 768) {
+                  left: calc(100% - 90px);
+                  width: 120px;
+                }
+
+                @include sp {
+                  width: s(251);
+                  margin: s(30) auto 0;
+                }
+              }
+
+              .TX {
+
+                @include pc {
+                  padding-right: 95px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

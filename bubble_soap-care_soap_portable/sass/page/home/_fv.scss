@@ -5,15 +5,20 @@
 ----------------------- */
 
 .FV {
-  background-color: #cba9a9;
+  position: relative;
+  z-index: 1;
 
   @include pc {
     padding: 35px 30px 0;
   }
 
-  @include sp {}
+  @include sp {
+    padding: s(30) s(50) 0;
+  }
 
   &--main {
+    position: relative;
+    z-index: 2;
 
     .title__area {
       width: fit-content;
@@ -27,7 +32,11 @@
         flex-wrap: wrap;
       }
 
-      @include sp {}
+      @include sp {
+        flex-direction: column;
+        align-items: center;
+        gap: s(16);
+      }
 
       .sub {
 
@@ -35,7 +44,9 @@
           margin-bottom: 10px;
         }
 
-        @include sp {}
+        @include sp {
+          margin-bottom: s(11);
+        }
 
         .TX {
           line-height: 1;
@@ -45,7 +56,10 @@
             font-size: 32.5px;
           }
 
-          @include sp {}
+          @include sp {
+            font-size: s(38);
+            text-align: center;
+          }
         }
       }
 
@@ -56,34 +70,36 @@
           margin-bottom: 17px;
         }
 
-        @include sp {}
+        @include sp {
+          width: 100%;
+          margin-bottom: s(17);
+        }
 
         img {
           width: 100%;
-          object-fit: contain;
-          object-position: center;
         }
       }
 
       .text {
-
-        @include pc {}
-
-        @include sp {}
 
         .TX {
           color: #51ACE2;
           line-height: 1;
           display: flex;
           align-items: center;
-          justify-content: flex-end;
+          font-weight: 800;
 
           @include pc {
             gap: 10px;
             font-size: 23px;
+            justify-content: flex-end;
           }
 
-          @include sp {}
+          @include sp {
+            gap: s(10);
+            font-size: s(33);
+            justify-content: center;
+          }
 
           span {
             display: inline-block;
@@ -91,7 +107,6 @@
             color: #0062b0;
             line-height: 1;
             border: solid #0062b0;
-            font-weight: 800;
 
             @include pc {
               border-radius: 100px;
@@ -100,7 +115,12 @@
               border-width: 2px;
             }
 
-            @include sp {}
+            @include sp {
+              border-radius: s(100);
+              padding: s(8) s(18);
+              font-size: s(32);
+              border-width: s(4);
+            }
           }
         }
       }
@@ -120,10 +140,13 @@
         }
 
         @include me(834, 768) {
-            margin-left: auto;
+          margin-left: auto;
         }
 
-        @include sp {}
+        @include sp {
+          width: s(134);
+          height: s(134);
+        }
 
         &::before {
           content: "";
@@ -136,12 +159,10 @@
           z-index: -1;
         }
 
-
         @include pc {
           margin-top: 23px;
         }
 
-        @include sp {}
 
         .TX {
           text-align: center;
@@ -152,7 +173,9 @@
             font-size: 47px;
           }
 
-          @include sp {}
+          @include sp {
+            font-size: s(47);
+          }
 
 
           span {
@@ -163,6 +186,10 @@
             @include pc {
               font-size: 24px;
             }
+
+            @include sp {
+              font-size: s(28);
+            }
           }
         }
       }
@@ -171,12 +198,15 @@
 
   &--sub {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    position: relative;
+    z-index: 2;
 
     @include pc {
-      margin-top: -40px;
+      align-items: center;
+      justify-content: center;
       flex-wrap: wrap;
+      margin-top: -40px;
+      gap: 0px;
     }
 
     @include me(1152, 768) {
@@ -191,14 +221,11 @@
       margin-top: -180px;
     }
 
-    @include sp {}
-
-
-    @include pc {
-      gap: 20px;
+    @include sp {
+      flex-direction: column;
+      gap: s(10);
+      margin-top: s(-34);
     }
-
-    @include sp {}
 
     .tag {
 
@@ -206,7 +233,10 @@
         width: 384px;
       }
 
-      @include sp {}
+      @include sp {
+        width: s(511);
+        margin-left: s(-30);
+      }
 
       img {
         width: 100%;
@@ -218,9 +248,14 @@
 
       @include pc {
         gap: 12px;
+        transform: translateX(-20px);
       }
 
-      @include sp {}
+      @include sp {
+        gap: s(10);
+        justify-content: center;
+        align-items: center;
+      }
 
       li {
         display: flex;
@@ -236,8 +271,10 @@
           width: 163px;
         }
 
-        @include sp {}
-
+        @include sp {
+          border-width: s(2);
+          width: s(178);
+        }
 
         &:last-child {
           background-color: #004cb0;
@@ -253,11 +290,84 @@
             font-size: 26px;
           }
 
-          @include sp {}
+          @include sp {
+            font-size: s(29);
+          }
         }
       }
     }
   }
 
+  &--BK {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+
+    @include pc {
+      max-width: 1440px;
+    }
+
+
+    .bubbles {
+      position: absolute;
+      aspect-ratio: 356 / 534;
+      @include imgContain("bubbles.webp");
+      z-index: 3;
+
+      @include pc {
+        width: 356px;
+        top: 40px;
+        left: -40px;
+      }
+    }
+
+
+    .img {
+      position: absolute;
+      aspect-ratio: 733 / 473;
+      @include imgContain("FV-bg.webp");
+      z-index: 1;
+
+      @include pc {
+        width: 733px;
+        top: -10px;
+        right: -10px;
+      }
+
+      @include me(1152, 768) {
+        top: 30%;
+      }
+
+      @include sp {
+        width: s(733);
+        top: 55%;
+        right: 0;
+        transform: translateY(-50%);
+      }
+
+      .white {
+        background-image: linear-gradient(90deg, #FFF 0%, #FFF 50%, #ffffff00 100%);
+        position: absolute;
+        top: 0;
+        z-index: 2;
+
+        @include pc {
+          aspect-ratio: 522 / 499;
+          left: -240px;
+          width: 522px;
+        }
+
+        @include sp {
+          aspect-ratio: 474 / 499;
+          left: 0;
+          width: s(474);
+        }
+      }
+    }
+  }
 
 }
