@@ -1,5 +1,5 @@
 $pc: 768px; // PC
-$sp: 830px; // スマホ
+$sp: 767px; // スマホ
 
 @mixin pc {
   @media screen and (min-width: ($pc)) {
@@ -118,7 +118,7 @@ $sp: 830px; // スマホ
 
 
 $screenSizePC: 1280;
-$screenSizeSP: 390;
+$screenSizeSP: 828;
 
 // サイズ
 @function p($size, $viewport: $screenSizePC) {
