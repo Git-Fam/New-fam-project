@@ -1,0 +1,334 @@
+/* -----------------------
+  anime
+----------------------- */
+
+// ホバーで薄く
+.hover-opa {
+  transition: 0.3s;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+// ホバーで大きく
+.hover-scale {
+  transition: 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+// 上へ
+.up {
+  opacity: 0;
+  transform: translateY(100px);
+
+  &.show {
+    animation: up 0.5s ease forwards;
+
+    @keyframes up {
+      0% {
+        opacity: 0;
+        transform: translateY(100px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+// 下へ
+.down {
+  opacity: 0;
+  transform: translateY(-100px);
+
+  &.show {
+    animation: down ease forwards;
+
+    @keyframes down {
+      0% {
+        opacity: 0;
+        transform: translateY(-100px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+// 右へ
+.left {
+  opacity: 0;
+  transform: translateX(100%);
+
+  &.show {
+    animation: left ease forwards;
+
+    @keyframes left {
+      0% {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+}
+
+// 左へ
+.right {
+  opacity: 0;
+  transform: translateX(-100%);
+
+  &.show {
+    animation: right ease forwards;
+
+    @keyframes right {
+      0% {
+        opacity: 0;
+        transform: translateX(-100%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+}
+
+// ふわっと
+.pop {
+  opacity: 0;
+  transform: scale(0.5);
+
+  &.show {
+    animation: pop ease forwards;
+
+    @keyframes pop {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+
+// ロード
+// load上へ
+.loadUp {
+  opacity: 0;
+  transform: translateY(100%);
+
+  &.show {
+    animation: loadUp ease forwards;
+
+    @keyframes loadUp {
+      0% {
+        opacity: 0;
+        transform: translateY(100%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+// load下へ
+.loadDown {
+  opacity: 0;
+  transform: translateY(-100%);
+
+  &.show {
+    animation: loadDown ease forwards;
+
+    @keyframes loadDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-100%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+// load右へ
+.loadLeft {
+  opacity: 0;
+  transform: translateX(100%);
+
+  &.show {
+    animation: loadLeft ease forwards;
+
+    @keyframes loadLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+}
+
+// load左へ
+.loadRight {
+  opacity: 0;
+  transform: translateX(-100%);
+
+  &.show {
+    animation: loadRight ease forwards;
+
+    @keyframes loadRight {
+      0% {
+        opacity: 0;
+        transform: translateX(-100%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+}
+
+// loadふわっと
+.loadPop {
+  opacity: 0;
+  transform: scale(0.5);
+
+  &.show {
+    animation: loadPop ease forwards;
+
+    @keyframes loadPop {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+}
+
+
+// delay
+.delay-01 {
+  animation-delay: 0.1s !important;
+}
+
+.delay-02 {
+  animation-delay: 0.2s !important;
+}
+
+.delay-03 {
+  animation-delay: 0.3s !important;
+}
+
+.delay-04 {
+  animation-delay: 0.4s !important;
+}
+
+.delay-05 {
+  animation-delay: 0.5s !important;
+}
+
+.delay-06 {
+  animation-delay: 0.6s !important;
+}
+
+.delay-07 {
+  animation-delay: 0.7s !important;
+}
+
+.delay-08 {
+  animation-delay: 0.8s !important;
+}
+
+.delay-09 {
+  animation-delay: 0.9s !important;
+}
+
+.delay-10 {
+  animation-delay: 1s !important;
+}
+
+.delay-15 {
+  animation-delay: 1.5s !important;
+}
+
+// duration
+.duration-01 {
+  animation-duration: 0.1s !important;
+}
+
+.duration-02 {
+  animation-duration: 0.2s !important;
+}
+
+.duration-03 {
+  animation-duration: 0.3s !important;
+}
+
+.duration-04 {
+  animation-duration: 0.4s !important;
+}
+
+.duration-05 {
+  animation-duration: 0.5s !important;
+}
+
+.duration-06 {
+  animation-duration: 0.6s !important;
+}
+
+.duration-07 {
+  animation-duration: 0.7s !important;
+}
+
+.duration-08 {
+  animation-duration: 0.8s !important;
+}
+
+.duration-09 {
+  animation-duration: 0.9s !important;
+}
+
+.duration-10 {
+  animation-duration: 1s !important;
+}
+
+.duration-15 {
+  animation-duration: 1.5s !important;
+}
