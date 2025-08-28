@@ -1,6 +1,5 @@
-@use "../global"as *;
-@use "../cooperator-2/globalCooperator-2/"as *;
-
+@use "../global" as *;
+@use "../cooperator-2/globalCooperator-2/" as *;
 
 /* -----------------------
   single
@@ -24,7 +23,7 @@
     z-index: -1;
     width: 100%;
     height: 100%;
-    @include imgCover('page-my.webp');
+    @include imgCover("page-my.webp");
     background-position: center left;
   }
 
@@ -104,7 +103,7 @@
 
         &:hover {
           a {
-            color: #846A40;
+            color: #846a40;
             transition: all 0.3s;
           }
         }
@@ -138,7 +137,6 @@
       max-width: 1100px;
     }
 
-
     &--content {
       width: 100%;
       height: 100%;
@@ -164,16 +162,14 @@
             padding: 20px;
           }
 
-
           .img {
             width: 100%;
-            @include imgCover('page-my.webp');
+            @include imgCover("page-my.webp");
             margin: 0 auto;
           }
         }
 
         &--title {
-
           .TL {
             text-align: center;
             color: $F-202020;
@@ -183,7 +179,6 @@
         }
 
         &--time {
-
           .TX {
             text-align: right;
             color: $F-202020;
@@ -193,7 +188,6 @@
       }
 
       &--text {
-
         @include pc {
           padding: 0 20px;
         }
@@ -215,7 +209,6 @@
           @include sp {
             font-size: 14px;
           }
-
         }
 
         ul,
@@ -237,17 +230,63 @@
             color: $F-202020;
             font-size: 11px;
             white-space: nowrap;
-
           }
         }
 
         .swpm-post-no-access-msg,
         .swpm-post-not-logged-in-msg {
+
+          // 画像　：要らなければあとで削除
+          .no-access-img-container {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-bottom: 15px;
+            @include pc {
+              width: p(800);
+              height: p(500);
+              margin: auto;
+            }
+
+            @include sp {
+              width: s(250);
+              height: s(140);
+              margin: auto;
+            }
+           
+          }
+          .character {
+            background-image: url("../img/thankyou_play.webp");
+          }
+          //画像　：ここまで
+
           color: $F-6B644D;
+
+          @include pc {
+            font-size: x-large;
+            line-height: 36px;
+            text-align: center;
+          }
+
+          @include sp {
+            font-size: scl(20);
+            line-height: 26px;
+            text-align: center;
+          }
 
           a {
             color: $F-F38549;
-            font-size: 18px;
+            margin-top: 10px;
+
+            @include pc {
+              font-size: xx-large;
+              line-height: cl(60);
+            }
+
+            @include sp {
+              font-size: x-large;
+              line-height: scl(30);
+            }
           }
         }
       }
@@ -276,7 +315,6 @@
 
     .wp-video {
       width: 100% !important;
-
     }
   }
 }
@@ -291,8 +329,8 @@
   button {
     color: $F-FFFFFF;
     margin: 0 auto;
-    background: #ED863A;
-    box-shadow: 0px 2px 0px 0px #E28738, 0px 0px 34px 0px #F6D741 inset;
+    background: #ed863a;
+    box-shadow: 0px 2px 0px 0px #e28738, 0px 0px 34px 0px #f6d741 inset;
     position: relative;
     letter-spacing: 0.1rem;
     @include wt700;
@@ -330,14 +368,12 @@
         right: s(-30);
         bottom: s(-4);
       }
-
     }
-
   }
 
   button.is-complete {
-    background: #A5ED3A;
-    box-shadow: 0px 2px 0px 0px #38E252, 0px 0px 34px 0px #41F647 inset;
+    background: #a5ed3a;
+    box-shadow: 0px 2px 0px 0px #38e252, 0px 0px 34px 0px #41f647 inset;
     cursor: not-allowed;
   }
 }
@@ -346,7 +382,7 @@
   height: 0;
   width: 0;
   position: fixed;
-  background: rgba(47, 47, 47, 0.50);
+  background: rgba(47, 47, 47, 0.5);
   top: 0;
   left: 0;
   display: none;
@@ -358,7 +394,6 @@
     position: absolute;
     width: 100%;
     height: 100%;
-
   }
 
   &--main {
@@ -424,6 +459,5 @@
     width: 100vw;
     height: 100vh;
     transition: all 1s;
-
   }
 }

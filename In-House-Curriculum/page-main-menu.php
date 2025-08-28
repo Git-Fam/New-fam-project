@@ -108,6 +108,10 @@ get_header();
             <div class="deco__clover__tape"></div>
         </div>
     </div>
+
+    <div class="main-menu--btn_area">
+        <?php get_template_part('inc/enquete-btn'); ?>
+    </div>
 </div>
 
 <?php get_footer(); ?>

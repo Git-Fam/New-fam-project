@@ -6,6 +6,7 @@
     <p class="page-description">プライベートチャンネル（鍵付き）のみを表示しています。</p>
 
     <?php
+    require_once get_template_directory() . '/function/common/slack-api.php';
     // Slack API接続テスト
     $connection_test = test_slack_api_connection();
 
@@ -22,7 +23,7 @@
 
       <?php
       // チャンネル情報を取得
-      $channels = get_slack_channels_with_message_count();
+      $channels = get_slack_channels();
 
       if (empty($channels)): ?>
         <div class="alert alert-warning">
@@ -64,20 +65,20 @@
                       <?php if ($channel['is_private']): ?>
                         <span class="private-icon" title="プライベートチャンネル">🔒</span>
                       <?php endif; ?>
-                      <?php echo esc_html($channel['display_name']); ?>
+                      <?php echo esc_html($channel['name']); ?>
                     </span>
                     <?php if ($channel['is_archived']): ?>
                       <span class="archived-badge">アーカイブ済み</span>
                     <?php endif; ?>
                   </td>
                   <td class="message-count">
-                    <span class="count-number"><?php echo esc_html($channel['message_count']); ?></span>
+                    <span class="count-number"><?php echo esc_html($channel['message_count'] ?? '未取得'); ?></span>
                   </td>
                   <td class="member-count">
-                    <?php echo esc_html($channel['member_count']); ?>
+                    <?php echo esc_html($channel['num_members']); ?>
                   </td>
                   <td class="channel-topic">
-                    <?php echo esc_html($channel['topic']); ?>
+                    <?php echo esc_html($channel['topic']['value'] ?? ''); ?>
                   </td>
                 </tr>
               <?php endforeach; ?>

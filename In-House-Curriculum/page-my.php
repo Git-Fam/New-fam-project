@@ -336,7 +336,7 @@ get_header();
                                                                 if ($tag->slug === 'story') {
                                                                     continue; // storyタグはスキップ
                                                                 }
-                                                
+
                                                                 $var_name = $tag->slug . '_value';
                                                                 $progress_value = isset($$var_name) ? $$var_name : '0';
                                                     ?>
@@ -415,15 +415,18 @@ get_header();
             <a class="curriculum--btn" href="<?php bloginfo('url'); ?>/curriculum">
                 <p class="TX">カリキュラム<br>一覧</p>
             </a>
-            
+
         <?php endif; ?>
 
     </div>
 
     <div class="my--menu-btn">
-        <?php get_template_part('inc/enquete-btn'); ?>
         <?php get_template_part('inc/first-btn'); ?>
         <?php get_template_part('inc/menu-btn'); ?>
+    </div>
+
+    <div class="my--menu-slack-bid">
+        <?php get_template_part('inc/slack-bid-btn'); ?>
     </div>
 
     <!-- ログインボーナス -->

@@ -1,10 +1,98 @@
-@use "../../global"as *;
-@use "../globalCooperator"as *;
-@use "../../cooperator-2/globalCooperator-2"as *;
+@use "../../global" as *;
+@use "../globalCooperator" as *;
+@use "../../cooperator-2/globalCooperator-2" as *;
 
 /* -----------------------
   top-scroll
 ----------------------- */
+
+.top-btn-box {
+  @include center;
+  position: fixed;
+  z-index: 900;
+
+  @include pc {
+    width: cl(600);
+    top: 85%;
+    right: 0%;
+    display: flex;
+    gap: cl(10);
+  }
+
+  @include sp {
+    right: 10px;
+    bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: scl(10);
+  }
+
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  pointer-events: auto;
+
+  .btn {
+    @include center;
+    box-shadow: -4px -4px 8px 0px rgba(0, 0, 0, 0.15) inset,
+      4px 4px 8px 0px rgba(247, 229, 229, 0.25) inset;
+
+    @include pc {
+      width: cl(250);
+      height: cl(65);
+      border-radius: cl(10);
+    }
+
+    @include sp {
+      width: scl(180);
+      height: scl(53);
+      border-radius: 5px;
+    }
+
+    &.top-btn {
+      background: $P-F38549;
+    }
+
+    &.bottom-btn {
+      background: $P-62C7D5;
+    }
+
+    &:hover {
+      animation: poyo 1s ease infinite;
+    }
+  }
+
+  .TX {
+    color: $F-FFFFFF;
+    @include wt800;
+
+    @include pc {
+      font-size: cl(30);
+    }
+
+    @include sp {
+      font-size: scl(20);
+    }
+  }
+
+  @keyframes poyo {
+    from,
+    to {
+      transform: none;
+    }
+    10% {
+      transform: scale(1.1);
+    }
+    40% {
+      transform: scale(0.9);
+    }
+    60% {
+      transform: scale(1.04);
+    }
+    80% {
+      transform: scale(0.98);
+    }
+  }
+}
 
 .my-btn {
   display: block;
@@ -34,7 +122,6 @@
     animation: poyo 1s ease 0s infinite;
 
     @keyframes poyo {
-
       from,
       to {
         transform: none;
@@ -111,7 +198,6 @@
   }
 
   .topPage {
-
     @include pc {
       width: 100vw;
       overflow-x: auto;
@@ -197,7 +283,6 @@
         }
 
         .TL {
-
           &.TL-bg {
             background: $B-FFFFFF;
             border-radius: 9999px;
@@ -205,13 +290,15 @@
             place-items: center center;
 
             @include pc {
-              box-shadow: -5px -4px 12px 0px rgba(0, 0, 0, 0.13) inset, 7px 4px 14px 0px rgba(253, 237, 151, 0.42) inset;
+              box-shadow: -5px -4px 12px 0px rgba(0, 0, 0, 0.13) inset,
+                7px 4px 14px 0px rgba(253, 237, 151, 0.42) inset;
               padding-inline: cl(40);
             }
 
             @include sp {
               width: fit-content;
-              box-shadow: -2.5px -2px 6px 0px rgba(0, 0, 0, 0.13) inset, 3.5px 2px 7px 0px rgba(253, 237, 151, 0.42) inset;
+              box-shadow: -2.5px -2px 6px 0px rgba(0, 0, 0, 0.13) inset,
+                3.5px 2px 7px 0px rgba(253, 237, 151, 0.42) inset;
               padding-inline: scl(40);
               margin: 0 auto;
             }
@@ -234,7 +321,6 @@
               }
             }
           }
-
         }
 
         .textbox {
@@ -271,7 +357,6 @@
               letter-spacing: scl(0.64);
               margin-top: scl(20);
               text-shadow: 0px 0px scl(15) rgba(0, 0, 0, 0.35);
-
             }
           }
         }
@@ -280,7 +365,6 @@
           position: absolute;
         }
       }
-
 
       &.bg01 {
         @include imgCover("scl-bg-1.webp");
@@ -319,7 +403,7 @@
             width: scl(70);
             height: scl(90);
             bottom: 50px;
-            left: -10px
+            left: -10px;
           }
         }
 
@@ -466,7 +550,7 @@
             @include pc {
               width: cl(707);
               height: cl(164);
-              padding-top: cl(40);
+              padding-top: cl(20);
             }
 
             @include sp {
@@ -486,10 +570,23 @@
 
               @include pc {
                 font-size: cl(49);
+                display: inline-grid;
+                place-items: center center;
+                line-height: 1.2;
               }
 
               @include sp {
-                font-size: scl(20);
+                font-size: scl(16);
+              }
+
+              span {
+                @include pc {
+                  font-size: cl(20);
+                }
+
+                @include sp {
+                  font-size: scl(10);
+                }
               }
             }
           }
@@ -661,9 +758,7 @@
               }
             }
           }
-
         }
-
       }
 
       &.bg03 {
@@ -713,7 +808,7 @@
           @include pc {
             width: cl(163);
             height: cl(190);
-            right: calc((140 /1280)*100%);
+            right: calc((140 / 1280) * 100%);
             bottom: 35px;
           }
 
@@ -778,8 +873,8 @@
             @include pc {
               width: cl(319);
               height: cl(207);
-              left: calc((-260 / 678) *100%);
-              bottom: calc((-160 / 241) *100%);
+              left: calc((-260 / 678) * 100%);
+              bottom: calc((-160 / 241) * 100%);
               rotate: -4.4deg;
             }
 
@@ -798,7 +893,7 @@
             @include pc {
               width: cl(253);
               height: cl(165);
-              right: calc((-290 / 678) *100%);
+              right: calc((-290 / 678) * 100%);
               top: 0px;
               rotate: 6.57deg;
             }
@@ -933,7 +1028,7 @@
 
               @include pc {
                 left: calc(-85 / 1160 * 100%);
-                bottom: calc(-300 /300 * 100%);
+                bottom: calc(-300 / 300 * 100%);
               }
 
               @include sp {
@@ -968,7 +1063,7 @@
 
               @include pc {
                 left: calc(430 / 1160 * 100%);
-                bottom: calc(-320 /300 * 100%);
+                bottom: calc(-320 / 300 * 100%);
               }
 
               @include sp {
@@ -1004,7 +1099,7 @@
 
               @include pc {
                 right: calc(-220 / 1160 * 100%);
-                bottom: calc(-280 /300 * 100%);
+                bottom: calc(-280 / 300 * 100%);
               }
 
               @include sp {
@@ -1130,7 +1225,7 @@
 
           &.gray-cat {
             @include pc {
-              left: calc((380 /1280)*100%);
+              left: calc((380 / 1280) * 100%);
             }
 
             @include sp {
@@ -1140,7 +1235,7 @@
 
           &.brown-cat {
             @include pc {
-              right: calc((0 /1280)*100%);
+              right: calc((0 / 1280) * 100%);
             }
 
             @include sp {
@@ -1191,7 +1286,8 @@
           .btn {
             display: grid;
             place-items: center center;
-            box-shadow: -4px -4px 8px 0px rgba(0, 0, 0, 0.15) inset, 4px 4px 8px 0px rgba(247, 229, 229, 0.25) inset;
+            box-shadow: -4px -4px 8px 0px rgba(0, 0, 0, 0.15) inset,
+              4px 4px 8px 0px rgba(247, 229, 229, 0.25) inset;
 
             @include pc {
               width: cl(438);
@@ -1230,7 +1326,6 @@
               animation: poyo 1s ease 0s infinite;
 
               @keyframes poyo {
-
                 from,
                 to {
                   transform: none;
@@ -1253,7 +1348,6 @@
                 }
               }
             }
-
           }
         }
       }

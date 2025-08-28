@@ -101,11 +101,26 @@ $(function () {
   // URLの取得と'/charged/'を追加
   var currentURL = window.location.href + 'charged/';
   // URLを埋め込む
-  $('.swpm-post-no-access-msg').html(`このコンテンツを閲覧するには<a href="${currentURL}">有料会員レベル</a>が必要です。`);
+  // $('.swpm-post-no-access-msg').html(`このコンテンツを閲覧するには<a href="${currentURL}">有料会員レベル</a>が必要です。`);
 
-  $('.swpm-post-not-logged-in-msg').html(`このコンテンツを閲覧するには<a href="${currentURL}">有料会員レベル</a>が必要です。`);
+  // $('.swpm-post-not-logged-in-msg').html(`このコンテンツを閲覧するには<a href="${currentURL}">有料会員レベル</a>が必要です。`);
 
+  //25.0822変更　ランダムに訴求分を表示
+ var noAccessMessages = [
+   `<div class="no-access-img-container character"></div>この先はスタンダード専用です！<br>同期メンバーはもう次の冒険へ進んでいます。<br>あなたも一緒に挑戦を続けませんか?<br><a href="${currentURL}">スタンダード会員になる</a>`,
+   `<div class="no-access-img-container character"></div>今、仲間が盛り上がっています！<br>スタンダードになるとコメント・質問・交流がすぐ可能に。<br>仲間と支え合って成長を加速させましょう！<br><a href="${currentURL}">スタンダード会員になる</a>`,
+   `<div class="no-access-img-container character"></div>その疑問、すぐ解決できます！<br>スタンダードなら月15回まで質問OK。<br>つまずきを解消して、挫折しない学習へ！<br><a href="${currentURL}">スタンダード会員になる</a>`,
+   `<div class="no-access-img-container character"></div>同期との交流イベントが間もなく開催！<br>スタンダード会員以上が参加可能な特別な時間！<br>学びと刺激を持ち帰ろう！<br><a href="${currentURL}">スタンダード会員になる</a>`,
+   `<div class="no-access-img-container character"></div>クエストクリアおめでとう！<br>残りのステージはスタンダード専用です。<br>同期と一緒に最後まで走り抜けよう！<br><a href="${currentURL}">スタンダード会員になる</a>`,
+ ];
 
+ // 配列からランダムにメッセージを選択
+ var randomMessage =
+   noAccessMessages[Math.floor(Math.random() * noAccessMessages.length)];
+
+ // 選択したメッセージを要素に埋め込む
+ $(".swpm-post-no-access-msg").html(randomMessage);
+ $(".swpm-post-not-logged-in-msg").html(randomMessage);
 
 
 
