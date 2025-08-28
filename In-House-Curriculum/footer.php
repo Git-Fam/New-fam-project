@@ -23,6 +23,10 @@
   <script src="<?php echo get_template_directory_uri(); ?>/js/single-2.js"></script>
 <?php endif; ?>
 
+<?php if (is_front_page()) : ?>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/top-scroll.js"></script>
+<?php endif; ?>
+
 
 <?php if (is_page('first')) : ?>
   <script src="<?php echo get_template_directory_uri(); ?>/js/page-first.js"></script>

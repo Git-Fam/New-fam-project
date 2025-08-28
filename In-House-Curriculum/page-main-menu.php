@@ -52,10 +52,11 @@ get_header();
             </div>
             <div class="menu__item__column__img"></div>
             <div class="menu__item__column__text">
-                <p class="TX">現役エンジニアやデザイナーのコラムが読めるよ！<br>
+                <p class="TX">現役エンジニアやクリエイターのコラムが読めるよ！<br>
                     現場で活かせる豆知識やIT情報、表彰発表も！</p>
             </div>
         </a>
+
         <!-- チャット -->
         <a class="menu__item__chat" href="<?php echo home_url('/chat'); ?>">
             <div class="menu__item__chat__title">
@@ -73,7 +74,7 @@ get_header();
                 <h2 class="TL" data-text="質問広場">質問広場</h2>
             </div>
             <div class="menu__item__qa__text">
-                <p class="TX">質問の投稿に現役エンジニアが回答するよ。わからないことがあれば聞いてみよう！</p>
+                <p class="TX">質問の投稿に現役エンジニア・クリエイターが回答するよ。わからないことがあれば聞いてみよう！</p>
                 <div class="menu__item__qa__text__deco">
                     <div class="deco"></div>
                     <div class="deco"></div>
@@ -106,6 +107,10 @@ get_header();
             <div class="deco__clover__leaf"></div>
             <div class="deco__clover__tape"></div>
         </div>
+    </div>
+
+    <div class="main-menu--btn_area">
+        <?php get_template_part('inc/enquete-btn'); ?>
     </div>
 </div>
 

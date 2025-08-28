@@ -20,7 +20,7 @@
 
   @include sp {
     padding: 0 s(16) s(80);
-    
+
   }
 
 
@@ -961,7 +961,7 @@
       position: absolute;
       z-index: 1;
       width: 80%;
-      
+
       @include pc {
         min-height: pclamp(140.849);
         padding: pclamp(10) pclamp(15) 0;
@@ -1016,11 +1016,11 @@
           &:nth-child(2) {
             transform: rotate(5deg);
             left: 40%;
-            
-            @include pc{
+
+            @include pc {
               bottom: 11%;
             }
-            
+
             @include sp {
               bottom: 13%;
             }
@@ -1263,8 +1263,8 @@
       width: 100%;
       left: 50%;
       transform: translate(-50%, -50%);
-      
-      @include pc{
+
+      @include pc {
         top: 40%;
       }
 
@@ -1438,6 +1438,22 @@
       @include sp {
         width: s(45);
       }
+    }
+  }
+
+
+  &--btn_area {
+    position: absolute;
+    z-index: 3;
+    
+    @include pc{
+      bottom: pclamp(20);
+      right: pclamp(40);
+    }
+    
+    @include sp{
+      bottom: s(20);
+      right: s(40);
     }
   }
 }

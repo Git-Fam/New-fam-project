@@ -8,7 +8,8 @@ get_header();
 
 if (!function_exists('to_safe_class')) {
 
-    function to_safe_class($str) {
+    function to_safe_class($str)
+    {
         return preg_replace('/[^a-zA-Z0-9_-]/', '_', $str);
     }
 }
@@ -18,7 +19,7 @@ if (!function_exists('to_safe_class')) {
 $current_user = wp_get_current_user();
 $current_username = $current_user->display_name; // 現在のログインユーザーの表示名
 $current_user_id = $current_user->ID; // 元のユーザーIDを保持
-    
+
 // 全ユーザーの進捗データとキャラクターHTMLを格納する配列
 $all_users_progress = [];
 $all_users_characters = [];
@@ -70,26 +71,26 @@ foreach ($users as $user) {
 
     foreach ($user_meta as $meta_key => $meta_value) {
         if (preg_match('/^(env|VAL|INIT|div|responsive|JQ|LP|MiniLP|Sass|React|Java|SQL|Design|SEO|Form|FAM|test|JS|wordpress|jstqb)/i', $meta_key)) {
-            
+
 
             $progress = intval($meta_value[0]);
             $progress_data[$meta_key] = $progress;
-            
+
 
             if ($progress === 100) {
                 $completion_date_field = $meta_key . '_date';
                 $progress_completion_date = get_user_meta($user_id, $completion_date_field, true);
-            
+
                 // 既にcompletion_dateが存在するか確認
                 if (!metadata_exists('user', $user_id, $completion_date_field)) {
                     $progress_completion_date = current_time('mysql');
                     update_user_meta($user_id, $completion_date_field, $progress_completion_date);
-                }   
+                }
 
                 $one_week_later = strtotime($progress_completion_date) + (7 * 24 * 60 * 60);
                 $current_time = current_time('timestamp');
                 $is_expired = ($current_time >= $one_week_later);
-            
+
                 $last_post_progress[$user_id][$meta_key] = $is_expired;
             }
         }
@@ -179,10 +180,10 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
         <div class="action-modal">
             <div class="modal-content">
 
-                <div class="random-thumbnail"></div>  <!-- 画像（<img>を入れる想定） -->
-                <h2 class="random-TL"></h2>            <!-- タイトル -->
-                <div class="random-TX"></div>      
-                
+                <div class="random-thumbnail"></div> <!-- 画像（<img>を入れる想定） -->
+                <h2 class="random-TL"></h2> <!-- タイトル -->
+                <div class="random-TX"></div>
+
                 <div class="lost-button"></div>
                 <div class="lost-pass-button"></div>
             </div>
@@ -213,12 +214,11 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                 $noimg_src = get_template_directory_uri() . '/img/noimg.webp';
             ?>
                 <div class="archive--item">
-                    <img 
-                        class="archive--item--img" 
-                        src="<?php echo $image_src; ?>" 
+                    <img
+                        class="archive--item--img"
+                        src="<?php echo $image_src; ?>"
                         alt=""
-                        onerror="this.onerror=null;this.src='<?php echo $noimg_src; ?>';"
-                    >
+                        onerror="this.onerror=null;this.src='<?php echo $noimg_src; ?>';">
                     <div class="archive--item--title">
                         <p class="TX"><?php echo $category->name; ?></p>
                     </div>
@@ -230,7 +230,7 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
         $categories = get_categories(array('parent' => 0)); // 最上位のカテゴリーのみを取得する
         $firstCategory = true; // 最初のカテゴリーを識別するためのフラグ
         foreach ($categories as $category):
-        $is_active = ($category->slug === $active_category_slug) ? 'active' : '';
+            $is_active = ($category->slug === $active_category_slug) ? 'active' : '';
         ?>
 
             <div class="archive--contents--items--wap<?php echo $is_active; ?> <?php echo esc_attr($category->name); ?>">
@@ -267,25 +267,25 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                 );
                 $query = new WP_Query($args);
                 $filtered_posts = [];
-                    if ($query->have_posts()) {
-                        foreach ($query->posts as $post_obj) {
-                            $tags = get_the_tags($post_obj->ID);
-                            $has_story = false;
-                            if ($tags && !is_wp_error($tags)) {
-                                foreach ($tags as $tag) {
-                                    if ($tag->slug === 'story') {
-                                        $has_story = true;
-                                        break;
-                                    }
+                if ($query->have_posts()) {
+                    foreach ($query->posts as $post_obj) {
+                        $tags = get_the_tags($post_obj->ID);
+                        $has_story = false;
+                        if ($tags && !is_wp_error($tags)) {
+                            foreach ($tags as $tag) {
+                                if ($tag->slug === 'story') {
+                                    $has_story = true;
+                                    break;
                                 }
                             }
-                            if (!$has_story) {
-                                $filtered_posts[] = $post_obj;
-                            }
+                        }
+                        if (!$has_story) {
+                            $filtered_posts[] = $post_obj;
                         }
                     }
-                    $total_posts = count($filtered_posts);
-                    // 投稿表示ロジック
+                }
+                $total_posts = count($filtered_posts);
+                // 投稿表示ロジック
                 ?>
                 <div class="post-list">
                     <div class="post-list-inner">
@@ -364,13 +364,13 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                                         while ($query->have_posts()): $query->the_post();
 
 
-                                        $post_id = get_the_ID();
+                                            $post_id = get_the_ID();
 
                                             // 記事に付与されたタグを取得
                                             echo generate_destination_item(get_the_ID());
                                         endwhile;
                                     else:
-                                        ?>
+                                    ?>
                                         <p>このカテゴリーには投稿がありません。</p>
                                     <?php
                                     endif;
@@ -388,90 +388,91 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                 ?>
                     <!-- セクション1 -->
                     <?php
-// === セクションの分割ロジックはここで決める ===
-$remaining_posts = $total_posts - 4;
+                    // === セクションの分割ロジックはここで決める ===
+                    $remaining_posts = $total_posts - 4;
 
-// セクション分けの分岐
-if ($total_posts > 55) {
-    $num_sections = 6;
-} elseif ($total_posts > 46) {
-    $num_sections = 5;
-} elseif ($total_posts > 36) {
-    $num_sections = 4;
-} elseif ($total_posts > 26) {
-    $num_sections = 3;
-} elseif ($total_posts > 16) {
-    $num_sections = 2;
-} else {
-    $num_sections = 1;
-}
+                    // セクション分けの分岐
+                    if ($total_posts > 55) {
+                        $num_sections = 6;
+                    } elseif ($total_posts > 46) {
+                        $num_sections = 5;
+                    } elseif ($total_posts > 36) {
+                        $num_sections = 4;
+                    } elseif ($total_posts > 26) {
+                        $num_sections = 3;
+                    } elseif ($total_posts > 16) {
+                        $num_sections = 2;
+                    } else {
+                        $num_sections = 1;
+                    }
 
 
-$posts_per_section = floor($remaining_posts / $num_sections);
-$remainder = $remaining_posts % $num_sections;
-$offset = 0;
-// section1
-$section1_count = $posts_per_section + ($num_sections == 1 ? $remainder : 0);
-$section1_posts = array_slice($filtered_posts, $offset, $section1_count);
-$offset += $section1_count;
+                    $posts_per_section = floor($remaining_posts / $num_sections);
+                    $remainder = $remaining_posts % $num_sections;
+                    $offset = 0;
+                    // section1
+                    $section1_count = $posts_per_section + ($num_sections == 1 ? $remainder : 0);
+                    $section1_posts = array_slice($filtered_posts, $offset, $section1_count);
+                    $offset += $section1_count;
 
-// section2～
-$section2_posts = [];
-$section3_posts = [];
-$section4_posts = [];
-$section4_5_posts = [];
-$section4_6_posts = [];
+                    // section2～
+                    $section2_posts = [];
+                    $section3_posts = [];
+                    $section4_posts = [];
+                    $section4_5_posts = [];
+                    $section4_6_posts = [];
 
-if ($num_sections >= 2) {
-    $section2_posts = array_slice($filtered_posts, $offset, $posts_per_section);
-    $offset += $posts_per_section;
-}
-if ($num_sections >= 3) {
-    $section3_posts = array_slice($filtered_posts, $offset, $posts_per_section);
-    $offset += $posts_per_section;
-}
-if ($num_sections >= 4) {
-    $section4_posts = array_slice($filtered_posts, $offset, $posts_per_section);
-    $offset += $posts_per_section;
-}
-if ($num_sections >= 5) {
-    $section4_5_posts = array_slice($filtered_posts, $offset, $posts_per_section);
-    $offset += $posts_per_section;
-}
-if ($num_sections >= 6) {
-    $section4_6_posts = array_slice($filtered_posts, $offset, $posts_per_section);
-    $offset += $posts_per_section;
-}
+                    if ($num_sections >= 2) {
+                        $section2_posts = array_slice($filtered_posts, $offset, $posts_per_section);
+                        $offset += $posts_per_section;
+                    }
+                    if ($num_sections >= 3) {
+                        $section3_posts = array_slice($filtered_posts, $offset, $posts_per_section);
+                        $offset += $posts_per_section;
+                    }
+                    if ($num_sections >= 4) {
+                        $section4_posts = array_slice($filtered_posts, $offset, $posts_per_section);
+                        $offset += $posts_per_section;
+                    }
+                    if ($num_sections >= 5) {
+                        $section4_5_posts = array_slice($filtered_posts, $offset, $posts_per_section);
+                        $offset += $posts_per_section;
+                    }
+                    if ($num_sections >= 6) {
+                        $section4_6_posts = array_slice($filtered_posts, $offset, $posts_per_section);
+                        $offset += $posts_per_section;
+                    }
 
-// 最後の4つ
-$last4_posts = array_slice($filtered_posts, -4);
-?>
+                    // 最後の4つ
+                    $last4_posts = array_slice($filtered_posts, -4);
+                    ?>
 
-<section class="page-section page1 show">
-    <div class="daytime-deco"></div>
-    <div class="road-inner">
-        <div class="content">
-            <div class="road-lost jQuery"></div>
-            <div class="tree tree-anime"></div>
-            <div class="road-content">
-            <?php foreach ($section1_posts as $post_obj): setup_postdata($post_obj); ?>
-            <?php echo generate_destination_item($post_obj->ID); ?>
-        <?php endforeach; wp_reset_postdata(); ?>
-                </div>
-        </div>
-        <!-- 動的リンクの表示 -->
-        <div class="section-arrow next-section"></div>
-    </div>
-</section>
+                    <section class="page-section page1 show">
+                        <div class="daytime-deco"></div>
+                        <div class="road-inner">
+                            <div class="content">
+                                <div class="road-lost jQuery"></div>
+                                <div class="tree tree-anime"></div>
+                                <div class="road-content">
+                                    <?php foreach ($section1_posts as $post_obj): setup_postdata($post_obj); ?>
+                                        <?php echo generate_destination_item($post_obj->ID); ?>
+                                    <?php endforeach;
+                                    wp_reset_postdata(); ?>
+                                </div>
+                            </div>
+                            <!-- 動的リンクの表示 -->
+                            <div class="section-arrow next-section"></div>
+                        </div>
+                    </section>
 
-    <?php if ($num_sections >= 2): ?>
+                    <?php if ($num_sections >= 2): ?>
                         <!-- セクション2 (中間セクション) -->
                         <section class="page-section page2">
                             <div class="road-inner">
                                 <div class="content">
                                     <div class="tree tree-anime-animal">
                                         <div class="tree-animal">
-                                        <iframe src="https://lottie.host/embed/8b84527e-a415-4e0b-a5cd-1de6cd3ffb1a/lxsh6nihf2.json" ></iframe>
+                                            <iframe src="https://lottie.host/embed/8b84527e-a415-4e0b-a5cd-1de6cd3ffb1a/lxsh6nihf2.json"></iframe>
                                         </div>
                                     </div>
 
@@ -479,9 +480,10 @@ $last4_posts = array_slice($filtered_posts, -4);
                                     <div class="road-lost HTML"></div>
                                     <div class="road-content">
 
-                                    <?php foreach ($section2_posts as $post_obj): setup_postdata($post_obj); ?>
-                                    <?php echo generate_destination_item($post_obj->ID); ?>
-                                    <?php endforeach; wp_reset_postdata(); ?>
+                                        <?php foreach ($section2_posts as $post_obj): setup_postdata($post_obj); ?>
+                                            <?php echo generate_destination_item($post_obj->ID); ?>
+                                        <?php endforeach;
+                                        wp_reset_postdata(); ?>
                                     </div>
                                 </div>
                                 <!-- 動的リンクの表示 -->
@@ -495,19 +497,20 @@ $last4_posts = array_slice($filtered_posts, -4);
                     <?php if ($num_sections >= 3): ?>
                         <!-- セクション3 -->
                         <section class="page-section page3">
-                        <div class="sec3-anime-coaster">
-                            <div class="sec3-anime-bird">
-                                <iframe src="https://lottie.host/embed/421d3b3d-d381-49ba-b751-5d7dc96c02c8/XLrfuoTBb0.json"></iframe>
+                            <div class="sec3-anime-coaster">
+                                <div class="sec3-anime-bird">
+                                    <iframe src="https://lottie.host/embed/421d3b3d-d381-49ba-b751-5d7dc96c02c8/XLrfuoTBb0.json"></iframe>
+                                </div>
                             </div>
-                        </div>
                             <div class="road-inner">
                                 <div class="content">
                                     <div class="tree"></div>
                                     <div class="road-content">
 
-                                    <?php foreach ($section3_posts as $post_obj): setup_postdata($post_obj); ?>
-                                    <?php echo generate_destination_item($post_obj->ID); ?>
-                                    <?php endforeach; wp_reset_postdata(); ?>
+                                        <?php foreach ($section3_posts as $post_obj): setup_postdata($post_obj); ?>
+                                            <?php echo generate_destination_item($post_obj->ID); ?>
+                                        <?php endforeach;
+                                        wp_reset_postdata(); ?>
                                     </div>
                                 </div>
                                 <!-- 動的リンクの表示 -->
@@ -530,9 +533,10 @@ $last4_posts = array_slice($filtered_posts, -4);
                                     <div class="tree"></div>
                                     <div class="road-content">
 
-                                    <?php foreach ($section4_posts as $post_obj): setup_postdata($post_obj); ?>
-                                    <?php echo generate_destination_item($post_obj->ID); ?>
-                                    <?php endforeach; wp_reset_postdata(); ?>                                    </div>
+                                        <?php foreach ($section4_posts as $post_obj): setup_postdata($post_obj); ?>
+                                            <?php echo generate_destination_item($post_obj->ID); ?>
+                                        <?php endforeach;
+                                        wp_reset_postdata(); ?> </div>
                                 </div>
                                 <!-- 動的リンクの表示 -->
                                 <div class="section-arrow back-section"></div>
@@ -550,9 +554,10 @@ $last4_posts = array_slice($filtered_posts, -4);
                                 <div class="content">
                                     <div class="tree"></div>
                                     <div class="road-content">
-                                    <?php foreach ($section4_5_posts as $post_obj): setup_postdata($post_obj); ?>
-                                    <?php echo generate_destination_item($post_obj->ID); ?>
-                                    <?php endforeach; wp_reset_postdata(); ?>
+                                        <?php foreach ($section4_5_posts as $post_obj): setup_postdata($post_obj); ?>
+                                            <?php echo generate_destination_item($post_obj->ID); ?>
+                                        <?php endforeach;
+                                        wp_reset_postdata(); ?>
                                     </div>
                                 </div>
                                 <!-- 動的リンクの表示 -->
@@ -571,9 +576,10 @@ $last4_posts = array_slice($filtered_posts, -4);
                                 <div class="content">
                                     <div class="tree"></div>
                                     <div class="road-content">
-                                    <?php foreach ($section4_6_posts as $post_obj): setup_postdata($post_obj); ?>
-                                        <?php echo generate_destination_item($post_obj->ID); ?>
-                                    <?php endforeach; wp_reset_postdata(); ?>
+                                        <?php foreach ($section4_6_posts as $post_obj): setup_postdata($post_obj); ?>
+                                            <?php echo generate_destination_item($post_obj->ID); ?>
+                                        <?php endforeach;
+                                        wp_reset_postdata(); ?>
                                     </div>
                                 </div>
                                 <!-- 動的リンクの表示 -->
@@ -603,9 +609,10 @@ $last4_posts = array_slice($filtered_posts, -4);
                                     </div>
                                 </div>
                                 <div class="road-content">
-                                <?php foreach ($last4_posts as $post_obj): setup_postdata($post_obj); ?>
-                                    <?php echo generate_destination_item($post_obj->ID); ?>
-                                <?php endforeach; wp_reset_postdata(); ?>
+                                    <?php foreach ($last4_posts as $post_obj): setup_postdata($post_obj); ?>
+                                        <?php echo generate_destination_item($post_obj->ID); ?>
+                                    <?php endforeach;
+                                    wp_reset_postdata(); ?>
                                 </div>
                             </div>
                             <!-- 動的リンクの表示 -->
@@ -679,7 +686,7 @@ $last4_posts = array_slice($filtered_posts, -4);
                                     $date_field_key = $key . '_date';
                                     $completion_date = get_user_meta($user_id, $date_field_key, true);
                                     $formatted_date = date_i18n('n月j日 G:i', strtotime($completion_date));
-                            
+
                                     // タグスラッグに一致する投稿タイトルを取得
                                     $title = $key; // デフォルトはkey
                                     $args = array(
@@ -692,7 +699,7 @@ $last4_posts = array_slice($filtered_posts, -4);
                                     if ($posts) {
                                         $title = get_the_title($posts[0]->ID);
                                     }
-                            
+
                                     // 最新の完了項目かどうかをチェック
                                     if (is_null($latest_completion_date) || strtotime($completion_date) > strtotime($latest_completion_date)) {
                                         $latest_completion_date = $completion_date;
@@ -747,5 +754,3 @@ $last4_posts = array_slice($filtered_posts, -4);
 </script>
 
 <?php get_footer(); ?>
-
-

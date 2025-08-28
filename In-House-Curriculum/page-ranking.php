@@ -1,10 +1,11 @@
 <?php
 
 // 共通関数でメタデータを取得しデフォルト値を設定
-function get_meta_with_default($user_id, $meta_key, $default = 0) {
-    $value = get_user_meta($user_id, $meta_key, true);
-    return $value ? $value : $default;
+function is_valid_role($user_id) {
+    $user = get_userdata($user_id);
+    return in_array('subscriber', (array) $user->roles, true);
 }
+
 
 // 現在のユーザー情報を取得
 $current_user = wp_get_current_user();
@@ -19,14 +20,21 @@ $user_points = $user_points ? $user_points : 0; // ポイント数が設定さ�
 // 全ユーザーをポイント数で取得する関数
 function get_ranked_users() {
     $args = array(
-        'number' => -1, // 全ユーザーを取得
-        'meta_key' => 'user_point', // 'user_point' メタキーを基に
-        'orderby' => 'meta_value_num', // メタ値（ポイント数）で並び替え
-        'order' => 'DESC' // 降順でソート（高い順）
+        'number' => -1,
+        'meta_key' => 'user_point',
+        'orderby' => 'meta_value_num',
+        'order' => 'DESC'
     );
     $user_query = new WP_User_Query($args);
-    return $user_query->get_results();
+    $all_users = $user_query->get_results();
+
+    $filtered_users = array_filter($all_users, function($user) {
+        return is_valid_role($user->ID);
+    });
+
+    return array_values($filtered_users);
 }
+
 
 // 現在のユーザーのコイン数を取得
 $user_coins = get_user_meta($current_user->ID, 'user_coins', true);
@@ -35,13 +43,19 @@ $user_coins = $user_coins ? $user_coins : 0; // コイン数が設定されて�
 // 全ユーザーをコイン数で取得する関数
 function get_users_by_coins() {
     $args = array(
-        'number' => -1, // 全ユーザーを取得
-        'meta_key' => 'user_coins', // 'user_coins' メタキーを基に
-        'orderby' => 'meta_value_num', // メタ値（コイン数）で並び替え
-        'order' => 'DESC' // 降順でソート（高い順）
+        'number' => -1,
+        'meta_key' => 'user_coins',
+        'orderby' => 'meta_value_num',
+        'order' => 'DESC'
     );
     $user_query = new WP_User_Query($args);
-    return $user_query->get_results();
+    $all_users = $user_query->get_results();
+
+    $filtered_users = array_filter($all_users, function($user) {
+        return is_valid_role($user->ID);
+    });
+
+    return array_values($filtered_users);
 }
 
 // 現在のユーザーの質問数を取得
@@ -50,17 +64,18 @@ $question_comment_count = $question_comment_count ? (int) $question_comment_coun
 
 // 全ユーザーを質問コメント数でランキングする関数
 function get_users_by_question_comment_count() {
-    $users = get_users(array('number' => -1)); // 全ユーザーを取得
+    $users = get_users(array('number' => -1));
     $users_with_counts = [];
 
     foreach ($users as $user) {
-        $user_id = $user->ID;
-        $question_comment_count = get_user_meta($user_id, '_question_comment_count', true);
-        $question_comment_count = $question_comment_count ? (int) $question_comment_count : 0;
+        if (!is_valid_role($user->ID)) continue;
+
+        $count = get_user_meta($user->ID, '_question_comment_count', true);
+        $count = $count ? (int)$count : 0;
 
         $users_with_counts[] = [
             'user' => $user,
-            'question_count' => $question_comment_count
+            'question_count' => $count
         ];
     }
 
@@ -91,12 +106,14 @@ function get_user_login_days_this_month($user_id) {
 
 // 今月のログイン日数でユーザーをランキングする関数
 function get_login_days_users() {
-    $users = get_users(array('number' => -1)); // 全ユーザーを取得
+    $users = get_users(array('number' => -1));
     $login_days_users = [];
 
     foreach ($users as $user) {
-        $login_count = get_user_login_days_this_month($user->ID);
-        $login_days_users[] = ['user' => $user, 'login_count' => $login_count];
+        if (!is_valid_role($user->ID)) continue;
+
+        $count = get_user_login_days_this_month($user->ID);
+        $login_days_users[] = ['user' => $user, 'login_count' => $count];
     }
 
     usort($login_days_users, function ($a, $b) {
@@ -105,6 +122,7 @@ function get_login_days_users() {
 
     return $login_days_users;
 }
+
 
 // ユーザーのリストアイテムを表示する関数
 function display_user_item($user, $rank_class = '') {
@@ -115,7 +133,8 @@ function display_user_item($user, $rank_class = '') {
 ?>
     <li class="rank-item <?php echo esc_attr($rank_class); ?>">
         <div class="img">
-            <img src="<?php echo esc_url($avatar_url); ?>" alt="" class="user-icon">
+        <div class="user-icon"><?php display_character_for_user($user->ID); ?>
+</div>
         </div>
         <div class="name-box">
             <p class="name"><?php echo esc_html($user_name); ?></p>
@@ -205,7 +224,8 @@ get_header();
                     <!-- ポイント数情報 -->
                     <div class="my-info">
                         <div class="name-box">
-                            <img src="<?php echo esc_url($avatar_url); ?>" alt="" class="img">
+                            <div class="img"><?php display_character_for_user($user->ID); ?>
+</div>
                             <p class="name"><?php echo esc_html($current_user->display_name); ?></p>
                         </div>
                         <!-- ポイント情報 -->
@@ -275,7 +295,8 @@ get_header();
                                     ?>
                                     <li>
                                         <div class="img">
-                                            <img src="<?php echo esc_url($avatar_url); ?>" alt="" class="user-icon">
+                                            <div class="user-icon"><?php display_character_for_user($user->ID); ?>
+</div>
                                         </div>
                                         <p class="name"><?php echo esc_html($user_name); ?></p>
                                         <div class="point-box">
@@ -310,7 +331,8 @@ get_header();
                                         ?>
                                         <li class="rank-item <?php echo esc_attr($rank_class); ?>">
                                             <div class="img">
-                                                <img src="<?php echo esc_url(get_avatar_url($user->ID)); ?>" alt="" class="user-icon">
+                                                <div class="user-icon"><?php display_character_for_user($user->ID); ?>
+</div>
                                             </div>
                                             <div class="name-box">
                                                 <p class="name"><?php echo esc_html($user->display_name); ?></p>
@@ -335,7 +357,8 @@ get_header();
                                     ?>
                                     <li>
                                         <div class="img">
-                                            <img src="<?php echo esc_url(get_avatar_url($user->ID)); ?>" alt="" class="user-icon">
+                                            <div class="user-icon"><?php display_character_for_user($user->ID); ?>
+</div>
                                         </div>
                                         <p class="name"><?php echo esc_html($user->display_name); ?></p>
                                         <div class="point-box">
@@ -369,7 +392,8 @@ get_header();
                                         ?>
                                         <li class="rank-item <?php echo esc_attr($rank_class); ?>">
                                             <div class="img">
-                                                <img src="<?php echo esc_url(get_avatar_url($user->ID)); ?>" alt="" class="user-icon">
+                                                <div class="user-icon"><?php display_character_for_user($user->ID); ?>
+</div>
                                             </div>
                                             <div class="name-box">
                                                 <p class="name"><?php echo esc_html($user->display_name); ?></p>
@@ -396,7 +420,8 @@ get_header();
                                     ?>
                                     <li>
                                         <div class="img">
-                                            <img src="<?php echo esc_url($avatar_url); ?>" alt="" class="user-icon">
+                                            <div class="user-icon"><?php display_character_for_user($user->ID); ?>
+</div>
                                         </div>
                                         <p class="name"><?php echo esc_html($user_name); ?></p>
                                         <div class="point-box">

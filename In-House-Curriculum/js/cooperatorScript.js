@@ -302,6 +302,8 @@ jQuery(function () {
 					// ボタンを再び有効化する必要はないので、この行は不要です
 				},
 			});
+			//.like-buttonにclickクラスを付与
+			$(this).addClass("click");
 		});
 
 	// いいね情報を更新する関数

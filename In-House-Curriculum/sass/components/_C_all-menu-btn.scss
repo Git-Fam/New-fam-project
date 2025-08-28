@@ -18,7 +18,7 @@
   box-shadow: 0px 3.314px 6.629px 0px rgba(0, 0, 0, 0.25);
   width: fit-content;
   transition: all 0.3s ease-in-out;
-  
+
   @include pc {
     border-radius: pclamp-menu-btn(13.257);
     padding: pclamp-menu-btn(13) pclamp-menu-btn(28) pclamp-menu-btn(17) pclamp-menu-btn(14);
@@ -68,6 +68,7 @@
     }
 
     &__text {
+      position: relative;
 
       .TX {
         color: #FFF;
@@ -83,7 +84,37 @@
           font-size: s(12);
           letter-spacing: s(1);
         }
+      }
 
+      .TX-sub {
+        color: #FFF;
+        @include wt600;
+        line-height: 1.5;
+        width: fit-content;
+        position: absolute;
+        right: 0;
+        bottom: 100%;
+        text-align: center;
+        background: linear-gradient(180deg, #82f682 0%, #bcf4b4 100%);
+        border: solid #FFF;
+        box-shadow: 0px 3.314px 6.629px 0px rgba(0, 0, 0, 0.25);
+        
+        
+        @include pc {
+          font-size: pclamp-menu-btn(30);
+          letter-spacing: pclamp-menu-btn(1);
+          border-radius: pclamp-menu-btn(13.257);
+          padding: pclamp-menu-btn(5);
+          border-width: pclamp-menu-btn(2);
+        }
+        
+        @include sp {
+          font-size: s(10);
+          letter-spacing: s(0.5);
+          border-radius: s(13.257);
+          padding: s(3);
+          border-width: s(1);
+        }
       }
     }
   }

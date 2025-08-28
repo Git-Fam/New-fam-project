@@ -13,6 +13,16 @@
 				src="https://lottie.host/embed/e60cec2b-65a9-4722-99fa-d9218781a66b/TBEXhkebbF.json"
 			></iframe>
 		</div>
+		<!-- 固定ボタン -->
+		<div class="top-btn-box">
+			<a href="<?php bloginfo('url'); ?>/singin" class="btn top-btn">
+				<p class="TX">無料ではじめる</p>
+			</a>
+			<a href="<?php bloginfo('url'); ?>/aptitude-start" class="btn bottom-btn">
+				<p class="TX">適性検査</p>
+			</a>
+		</div>
+
 		<div class="topPage">
 			<!-- 1ページ -->
 			<section id="topPage01" class="topPage-bg bg01">
@@ -43,15 +53,15 @@
 						></iframe>
 					</div>
 					<div class="TL">
-						<h1 class="TL-text">プログラミング学習</h1>
+						<h1 class="TL-text">ユメクル <span>〜夢を叶えるRPG〜</span></h1>
 					</div>
 					<div class="textbox">
 						<p class="textbox-top">同じ夢を持つ仲間と一緒に、<br class="sp">夢を叶えよう！</p>
 						<p class="textbox-under">
-							未経験からエンジニア・デザイナーへ！<br />
-							全くの未経験からでも、<br class="sp">開発現場で活躍するエンジニアを<br class="sp">輩出してきた実績から<br />
-							エンジニアの卵たちの学習を通して、<br />
-							初心者にもわかりやすく構成されたカリキュラムです。
+							未経験からエンジニア・クリエイターへ！<br />
+							全くの未経験からでも、<br class="sp">挑戦を通じて現場で活躍できるスキルを獲得。<br />
+							これまで数多くのエンジニア・Webデザイナー<br class="sp">を輩出してきた実績をもとに、<br />
+							初心者でも安心して<br class="sp">成長できるカリキュラムを揃えています。
 						</p>
 					</div>
 				</div>

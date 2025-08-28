@@ -1543,6 +1543,21 @@
     }
   }
 
+  .my--menu-slack-bid{
+    position: absolute;
+    z-index: 10;
+    transform-origin: bottom right;
+    bottom: 1%;
+    right: 1%;
+    
+    @include pc{
+      transform: scale(0.5);
+    }
+    @include sp{
+      transform: scale(0.7);
+    }
+  }
+
   .curriculum--btn {
     position: absolute;
     border-radius: 50%;

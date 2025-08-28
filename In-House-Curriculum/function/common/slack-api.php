@@ -3,13 +3,16 @@
 /**
  * Slack API連携機能
  */
-
 /**
  * Slack APIにリクエストを送信
  */
 function slack_api_request($endpoint, $params = [])
 {
   $config = get_slack_config();
+
+$token = $config['bot_token'];
+
+
   $url = $config['api_base_url'] . $endpoint;
 
   $args = array(
@@ -35,22 +38,59 @@ function slack_api_request($endpoint, $params = [])
 /**
  * 全てのチャンネル一覧を取得（プライベートのみ）
  */
-function get_slack_channels()
-{
-  $all_channels = array();
-  $debug_info = array();
+ // slack-api.php
+ 
+ require_once get_template_directory() . '/function/common/slack-config.php';
+ 
+ function get_slack_channels()
+ {
+     $config = get_slack_config();
+     $token = $config['bot_token'];
+     $base_url = $config['api_base_url'] . 'conversations.list';
+ 
+     if (empty($token)) {
+         error_log('[Slack Error] トークンが設定されていません。');
+         return [];
+     }
+ 
+     $params = [
+         'types' => 'public_channel,private_channel',
+         'limit' => 1000
+     ];
+ 
+     $query = http_build_query($params);
+ 
+     $ch = curl_init();
+     curl_setopt($ch, CURLOPT_URL, $base_url . '?' . $query);
+     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+     curl_setopt($ch, CURLOPT_HTTPHEADER, [
+         "Authorization: Bearer $token"
+     ]);
+ 
+     $response = curl_exec($ch);
+     curl_close($ch);
+ 
+     $data = json_decode($response, true);
+ 
+     if (!isset($data['channels'])) {
+         error_log('[Slack Error] チャンネル情報の取得に失敗: ' . print_r($data, true));
+         return [];
+     }
+ 
+     // ✅ Botが参加しているチャンネルのみを抽出
+     $private_channels = array_filter($data['channels'], function ($channel) {
+      return !empty($channel['is_member']) && !empty($channel['is_private']);
+      });
+      return $private_channels;
 
-  // プライベートチャンネルのみを取得
-  $private_channels = get_channels_by_type('private_channel');
-  $all_channels = array_merge($all_channels, $private_channels);
-  $debug_info['private_count'] = count($private_channels);
-  $debug_info['public_count'] = 0; // パブリックチャンネルは取得しない
-
-  // デバッグ情報を保存
-  update_option('slack_debug_info', $debug_info);
-
-  return $all_channels;
-}
+       // ✅ 各チャンネルにメッセージ数を追加
+     foreach ($joined_channels as &$channel) {
+         $channel['message_count'] = get_channel_message_count($channel['id']);
+     }
+ 
+     return $joined_channels;
+ }
+ 
 
 /**
  * 指定されたタイプのチャンネルをページネーションで取得
@@ -153,16 +193,32 @@ function get_channels_by_type($type)
  */
 function get_channel_message_count($channel_id)
 {
-  $response = slack_api_request('conversations.history', array(
-    'channel' => $channel_id,
-    'limit' => 1
-  ));
+    $messages = [];
+    $cursor = null;
+    $has_more = true;
 
-  if (!$response || !isset($response['ok']) || !$response['ok']) {
-    return 0;
-  }
+    while ($has_more) {
+        $params = [
+            'channel' => $channel_id,
+            'limit' => 200
+        ];
+        if ($cursor) {
+            $params['cursor'] = $cursor;
+        }
 
-  return $response['response_metadata']['next_cursor'] ? '1000+' : count($response['messages'] ?? array());
+        $response = slack_api_request('conversations.history', $params);
+
+        if (!$response || !$response['ok']) {
+            error_log('[Slack Error] メッセージ取得失敗: ' . print_r($response, true));
+            return '未取得';
+        }
+
+        $messages = array_merge($messages, $response['messages']);
+        $cursor = $response['response_metadata']['next_cursor'] ?? null;
+        $has_more = !empty($cursor);
+    }
+
+    return count($messages);
 }
 
 /**
@@ -213,8 +269,11 @@ function get_slack_channels_with_message_count()
 
   // メッセージ数でソート（降順）
   usort($result, function ($a, $b) {
-    return $b['message_count'] - $a['message_count'];
-  });
+    $countA = isset($a['message_count']) ? (int)$a['message_count'] : 0;
+    $countB = isset($b['message_count']) ? (int)$b['message_count'] : 0;
+    return $countB - $countA;
+});
+
 
   // デバッグ情報を保存
   update_option('slack_channels_debug', $debug_info);
@@ -398,7 +457,8 @@ function check_bot_token_scopes()
   // 現在のBot Tokenで利用可能なスコープをテスト
   $scope_tests = array(
     'channels:read' => array('method' => 'conversations.list', 'params' => array('types' => 'public_channel', 'limit' => 1)),
-    'groups:read' => array('method' => 'conversations.list', 'params' => array('types' => 'private_channel', 'limit' => 1)),
+    'groups:read' => array('method' => 'conversations.history
+', 'params' => array('types' => 'private_channel', 'limit' => 1)),
     'channels:history' => array('method' => 'conversations.history', 'params' => array('channel' => 'C031EPH6PMG', 'limit' => 1)),
     'users:read' => array('method' => 'users.list', 'params' => array('limit' => 1))
   );
