@@ -265,3 +265,4 @@ function handle_consume_points()
         wp_send_json_error('ポイントの消費に失敗しました');
     }
 }
+    

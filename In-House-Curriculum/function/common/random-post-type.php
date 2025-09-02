@@ -28,6 +28,7 @@ function register_random_post_type()
   register_taxonomy(
     'random-cat',
     'random',
+  
     array(
       'label' => 'カテゴリー',
       'hierarchical' => true,

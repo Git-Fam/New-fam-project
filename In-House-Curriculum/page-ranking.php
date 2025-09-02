@@ -1,5 +1,13 @@
 <?php
 
+if (!is_user_logged_in()) {
+    wp_redirect(home_url('/login'));
+    exit;
+}
+get_header();
+
+
+
 // 共通関数でメタデータを取得しデフォルト値を設定
 function is_valid_role($user_id) {
     $user = get_userdata($user_id);
@@ -192,15 +200,8 @@ foreach ($question_users as $index => $user) {
 
 ?>
 
-<?php
-if (!is_user_logged_in()) {
-    wp_redirect(home_url('/login'));
-    exit;
-}
-get_header();
-?>
 <div class="page-wappaer">
-    <section id="pageーranking" class="ranking">
+    <section id="page-ranking" class="ranking">
         <div class="bg">
             <div class="bg-left"></div>
             <div class="bg-right"></div>
