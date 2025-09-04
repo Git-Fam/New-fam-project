@@ -1,0 +1,463 @@
+@use "../global" as *;
+@use "../cooperator-2/globalCooperator-2/" as *;
+
+/* -----------------------
+  single
+----------------------- */
+
+.single {
+  width: 100%;
+
+  @include pc {
+    padding: p(50) p(40);
+  }
+
+  @include sp {
+    padding: s(30);
+  }
+
+  &--img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    @include imgCover("page-my.webp");
+    background-position: center left;
+  }
+
+  &--link {
+    position: fixed;
+    right: -100%;
+    bottom: -100%;
+    transition: all 1s;
+    z-index: 100;
+
+    &--chara {
+      @include imgContain("first_zero.webp");
+      transform: scale(-1, 1);
+
+      @include pc {
+        width: p(187);
+        height: p(208);
+      }
+
+      @include sp {
+        width: s(114);
+        height: s(127);
+      }
+    }
+
+    &--bg {
+      @include imgContain("single-link.webp");
+      transform: rotate(-9.77deg);
+      position: absolute;
+
+      @include pc {
+        width: p(176);
+        height: p(229);
+        top: p(-72);
+        left: p(-84);
+        padding: p(17) p(20);
+      }
+
+      @include sp {
+        width: s(107);
+        height: s(139);
+        top: s(-46);
+        left: s(-53);
+        padding: s(3);
+      }
+
+      .single--link--text {
+        text-align: center;
+
+        @include pc {
+          margin-top: p(10);
+        }
+
+        @include sp {
+          margin-top: s(5);
+        }
+
+        transition: all 0.3s;
+
+        @include pc {
+          font-size: p(18);
+        }
+
+        @include sp {
+          font-size: s(13);
+        }
+
+        &:first-child {
+          margin-top: 0;
+        }
+
+        a {
+          @include wt700;
+          display: inline-block;
+          color: $F-FFFFFF;
+        }
+
+        &:hover {
+          a {
+            color: #846a40;
+            transition: all 0.3s;
+          }
+        }
+      }
+    }
+
+    &.show {
+      transition: all 1s;
+
+      @include pc {
+        right: p(-48);
+        bottom: p(-40);
+      }
+
+      @include sp {
+        right: s(-29);
+        bottom: s(-17);
+      }
+    }
+  }
+
+  &--wap {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    @include center;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+
+    @include pc {
+      max-width: 1100px;
+    }
+
+    &--content {
+      width: 100%;
+      height: 100%;
+      background: rgb(255, 255, 255);
+      padding: 20px 20px 40px;
+
+      &--title {
+        border-bottom: 1px solid rgb(0, 0, 0);
+        @include column(20px);
+        margin-bottom: 30px;
+        padding-bottom: 10px;
+
+        &--img {
+          width: 90%;
+          margin: 0 auto;
+          background: rgba(0, 0, 0, 0.5);
+
+          @include pc {
+            padding: 30px;
+          }
+
+          @include sp {
+            padding: 20px;
+          }
+
+          .img {
+            width: 100%;
+            @include imgCover("page-my.webp");
+            margin: 0 auto;
+          }
+        }
+
+        &--title {
+          .TL {
+            text-align: center;
+            color: $F-202020;
+            font-size: 30px;
+            @include wt700;
+          }
+        }
+
+        &--time {
+          .TX {
+            text-align: right;
+            color: $F-202020;
+            font-size: 10px;
+          }
+        }
+      }
+
+      &--text {
+        @include pc {
+          padding: 0 20px;
+        }
+
+        @include sp {
+          padding: 0 10px;
+        }
+
+        p {
+          line-height: 1.8;
+          color: $F-202020;
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+
+          @include pc {
+            font-size: 16px;
+          }
+
+          @include sp {
+            font-size: 14px;
+          }
+        }
+
+        ul,
+        ul li {
+          line-height: 1.8;
+          list-style: disc;
+          list-style-type: disc;
+        }
+
+        .single-nation {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 100px auto 0;
+          gap: 20px;
+
+          &-text,
+          &-text a {
+            color: $F-202020;
+            font-size: 11px;
+            white-space: nowrap;
+          }
+        }
+
+        .swpm-post-no-access-msg,
+        .swpm-post-not-logged-in-msg {
+
+          // 画像　：要らなければあとで削除
+          .no-access-img-container {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-bottom: 15px;
+            @include pc {
+              width: 100%;
+              height: p(500);
+              margin: auto;
+            }
+
+            @include sp {
+              width: 100%;
+              height: s(140);
+              margin: auto;
+            }
+           
+          }
+          .character {
+            background-image: url("../img/thankyou_play.webp");
+          }
+          //画像　：ここまで
+
+          color: $F-6B644D;
+
+          @include pc {
+            font-size: x-large;
+            line-height: 36px;
+            text-align: center;
+          }
+
+          @include sp {
+            font-size: scl(20);
+            line-height: 26px;
+            text-align: center;
+          }
+
+          a {
+            color: $F-F38549;
+            margin-top: 10px;
+
+            @include pc {
+              font-size: xx-large;
+              line-height: cl(60);
+            }
+
+            @include sp {
+              font-size: x-large;
+              line-height: scl(30);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.movie {
+    padding: 0;
+
+    .single--wap {
+      max-width: unset;
+      min-height: 100vh;
+
+      &--content {
+        @include pc {
+          padding-top: p(50);
+        }
+      }
+    }
+
+    .single--wap--content--title--img,
+    .single--wap--content--title--time,
+    .is-complete {
+      display: none;
+    }
+
+    .wp-video {
+      width: 100% !important;
+    }
+  }
+}
+
+.hdq_toggle {
+  z-index: 0;
+}
+
+.progress-complete-button-wrapper {
+  display: flex;
+
+  button {
+    color: $F-FFFFFF;
+    margin: 0 auto;
+    background: #ed863a;
+    box-shadow: 0px 2px 0px 0px #e28738, 0px 0px 34px 0px #f6d741 inset;
+    position: relative;
+    letter-spacing: 0.1rem;
+    @include wt700;
+    cursor: pointer;
+
+    @include pc {
+      font-size: p(24);
+      padding: p(16) p(50);
+      border-radius: p(10);
+      margin-top: p(50);
+    }
+
+    @include sp {
+      font-size: s(18);
+      padding: s(10) s(30);
+      border-radius: s(5);
+      margin-top: s(30);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      @include imgContain("aptitude-result-characters/chatora.webp");
+
+      @include pc {
+        width: p(82);
+        height: p(96);
+        right: p(-55);
+        bottom: p(-7);
+      }
+
+      @include sp {
+        width: s(41);
+        height: s(48);
+        right: s(-30);
+        bottom: s(-4);
+      }
+    }
+  }
+
+  button.is-complete {
+    background: #a5ed3a;
+    box-shadow: 0px 2px 0px 0px #38e252, 0px 0px 34px 0px #41f647 inset;
+    cursor: not-allowed;
+  }
+}
+
+.confetti {
+  height: 0;
+  width: 0;
+  position: fixed;
+  background: rgba(47, 47, 47, 0.5);
+  top: 0;
+  left: 0;
+  display: none;
+  inset: 0;
+  z-index: 999;
+
+  canvas {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  &--main {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+
+    @include sp {
+      bottom: s(-8);
+    }
+
+    img {
+      @include pc {
+        width: p(723);
+        height: p(159);
+      }
+
+      @include sp {
+        width: s(373);
+        height: s(81);
+      }
+    }
+
+    &-chara {
+      @include imgContain("single-complete-chara.webp");
+      margin: 0 auto;
+
+      @include pc {
+        width: p(676);
+        height: p(487);
+      }
+
+      @include sp {
+        width: s(277);
+        height: s(200);
+        margin-top: s(50);
+      }
+    }
+  }
+
+  .close {
+    @include iconContain($action-close);
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+
+    @include pc {
+      width: p(50);
+      height: p(50);
+    }
+
+    @include sp {
+      width: s(40);
+      height: s(40);
+    }
+  }
+
+  &.show {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    transition: all 1s;
+  }
+}

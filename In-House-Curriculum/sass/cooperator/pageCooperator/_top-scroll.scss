@@ -1,0 +1,1356 @@
+@use "../../global" as *;
+@use "../globalCooperator" as *;
+@use "../../cooperator-2/globalCooperator-2" as *;
+
+/* -----------------------
+  top-scroll
+----------------------- */
+
+.top-btn-box {
+  @include center;
+  position: fixed;
+  z-index: 900;
+
+  @include pc {
+    width: cl(600);
+    top: 85%;
+    right: 0%;
+    display: flex;
+    gap: cl(10);
+  }
+
+  @include sp {
+    right: 10px;
+    bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: scl(10);
+  }
+
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  pointer-events: auto;
+
+  .btn {
+    @include center;
+    box-shadow: -4px -4px 8px 0px rgba(0, 0, 0, 0.15) inset,
+      4px 4px 8px 0px rgba(247, 229, 229, 0.25) inset;
+
+    @include pc {
+      width: cl(250);
+      height: cl(65);
+      border-radius: cl(10);
+    }
+
+    @include sp {
+      width: scl(180);
+      height: scl(53);
+      border-radius: 5px;
+    }
+
+    &.top-btn {
+      background: $P-F38549;
+    }
+
+    &.bottom-btn {
+      background: $P-62C7D5;
+    }
+
+    &:hover {
+      animation: poyo 1s ease infinite;
+    }
+  }
+
+  .TX {
+    color: $F-FFFFFF;
+    @include wt800;
+
+    @include pc {
+      font-size: cl(30);
+    }
+
+    @include sp {
+      font-size: scl(20);
+    }
+  }
+
+  @keyframes poyo {
+    from,
+    to {
+      transform: none;
+    }
+    10% {
+      transform: scale(1.1);
+    }
+    40% {
+      transform: scale(0.9);
+    }
+    60% {
+      transform: scale(1.04);
+    }
+    80% {
+      transform: scale(0.98);
+    }
+  }
+}
+
+.my-btn {
+  display: block;
+  background-color: $F-F38549;
+
+  @include pc {
+    position: absolute;
+    z-index: 999;
+    top: p(-110);
+    left: p(-100);
+    width: p(250);
+    height: p(250);
+    border-radius: p(200);
+  }
+
+  @include sp {
+    position: absolute;
+    z-index: 999;
+    top: s(-140);
+    left: s(-120);
+    width: s(250);
+    height: s(250);
+    border-radius: p(500);
+  }
+
+  &:hover {
+    animation: poyo 1s ease 0s infinite;
+
+    @keyframes poyo {
+      from,
+      to {
+        transform: none;
+      }
+
+      10% {
+        transform: scale(1.1);
+      }
+
+      40% {
+        transform: scale(0.9);
+      }
+
+      60% {
+        transform: scale(1.04);
+      }
+
+      80% {
+        transform: scale(0.98);
+      }
+    }
+  }
+
+  .btntx {
+    color: $F-FFFFFF;
+    text-align: center;
+    display: block;
+    @include wt800;
+
+    @include pc {
+      font-size: p(20);
+      padding: p(150) 0 0 p(90);
+    }
+
+    @include sp {
+      font-size: s(16);
+      padding: s(170) 0 0 p(320);
+    }
+  }
+}
+
+.topPage-wrapper {
+  position: relative;
+
+  @include pc {
+    @include height;
+  }
+
+  .mainchara-box {
+    position: absolute;
+    bottom: 0;
+    transition: transform 0.1s ease-out;
+
+    @include pc {
+      width: cl(300);
+      height: cl(300);
+      left: 100px;
+      z-index: 400;
+    }
+
+    @include sp {
+      width: scl(200);
+      height: scl(200);
+      position: fixed;
+      left: -10px;
+      bottom: 0px;
+      z-index: 700;
+    }
+
+    .mainchara {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .topPage {
+    @include pc {
+      width: 100vw;
+      overflow-x: auto;
+      display: flex;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    @include sp {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-bg {
+      position: relative;
+
+      @include pc {
+        @include height;
+        position: relative;
+        background-position: left;
+        margin-left: -1px;
+        aspect-ratio: 1280/700;
+      }
+
+      @include sp {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .grass {
+        position: absolute;
+        z-index: 600;
+      }
+
+      .tree {
+        position: absolute;
+        z-index: 500;
+      }
+
+      .cloud {
+        position: absolute;
+        z-index: 100;
+
+        &.cloud01 {
+          @include iconContain($road-cloud);
+        }
+
+        &.cloud02 {
+          @include iconContain($road-cloud02);
+        }
+
+        &.cloud03 {
+          @include iconContain($road-cloud03);
+        }
+      }
+
+      .C_character {
+        z-index: 200;
+        position: absolute;
+
+        iframe {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .content {
+        position: relative;
+        text-align: center;
+        top: 13%;
+        width: fit-content;
+        left: 50%;
+        translate: -50% 0;
+        top: 13%;
+
+        @include pc {
+          z-index: 300;
+        }
+
+        @include sp {
+          z-index: 600;
+        }
+
+        .TL {
+          &.TL-bg {
+            background: $B-FFFFFF;
+            border-radius: 9999px;
+            display: grid;
+            place-items: center center;
+
+            @include pc {
+              box-shadow: -5px -4px 12px 0px rgba(0, 0, 0, 0.13) inset,
+                7px 4px 14px 0px rgba(253, 237, 151, 0.42) inset;
+              padding-inline: cl(40);
+            }
+
+            @include sp {
+              width: fit-content;
+              box-shadow: -2.5px -2px 6px 0px rgba(0, 0, 0, 0.13) inset,
+                3.5px 2px 7px 0px rgba(253, 237, 151, 0.42) inset;
+              padding-inline: scl(40);
+              margin: 0 auto;
+            }
+
+            .TL-text {
+              @include wt800;
+              color: $F-6D6D6D;
+
+              @include pc {
+                display: flex;
+                align-items: center;
+                font-size: cl(33);
+                letter-spacing: cl(1.32);
+              }
+
+              @include sp {
+                font-size: scl(20);
+                letter-spacing: scl(1);
+                line-height: 1.7;
+              }
+            }
+          }
+        }
+
+        .textbox {
+          color: $F-FFFFFF;
+
+          &-top {
+            @include wt800;
+
+            @include pc {
+              font-size: cl(30);
+              text-shadow: 0px 0px cl(15) rgba(0, 0, 0, 0.35);
+            }
+
+            @include sp {
+              font-size: scl(18);
+              text-shadow: 0px 0px scl(15) rgba(0, 0, 0, 0.35);
+              line-height: 1.7;
+            }
+          }
+
+          &-under {
+            @include wt600;
+            line-height: 2.18;
+
+            @include pc {
+              font-size: cl(16);
+              letter-spacing: cl(0.64);
+              margin-top: cl(20);
+              text-shadow: 0px 0px cl(15) rgba(0, 0, 0, 0.35);
+            }
+
+            @include sp {
+              font-size: scl(13);
+              letter-spacing: scl(0.64);
+              margin-top: scl(20);
+              text-shadow: 0px 0px scl(15) rgba(0, 0, 0, 0.35);
+            }
+          }
+        }
+
+        &-img {
+          position: absolute;
+        }
+      }
+
+      &.bg01 {
+        @include imgCover("scl-bg-1.webp");
+
+        @include pc {
+          bottom: 0;
+        }
+
+        .cloud01 {
+          @include pc {
+            width: cl(170);
+            height: cl(110);
+            right: 390px;
+            top: 30px;
+          }
+
+          @include sp {
+            width: scl(90);
+            height: scl(70);
+            right: 30px;
+            top: 30px;
+          }
+        }
+
+        .grayneko {
+          @include imgContain("grayneko.webp");
+
+          @include pc {
+            width: cl(151);
+            height: cl(170);
+            bottom: 101px;
+            left: -21px;
+          }
+
+          @include sp {
+            width: scl(70);
+            height: scl(90);
+            bottom: 50px;
+            left: -10px;
+          }
+        }
+
+        .rabbit {
+          @include pc {
+            width: cl(419);
+            height: cl(309);
+            right: -60px;
+            bottom: -30px;
+          }
+
+          @include sp {
+            width: scl(150);
+            height: scl(150);
+            right: -80px;
+            bottom: -10px;
+          }
+        }
+
+        .grass01 {
+          @include imgCover("top-grass01.webp");
+
+          @include pc {
+            width: cl(668);
+            height: cl(255);
+            bottom: -62px;
+            left: -175px;
+          }
+
+          @include sp {
+            width: scl(280);
+            height: scl(107);
+            bottom: -20px;
+            left: -20px;
+            position: fixed;
+            z-index: 800;
+          }
+        }
+
+        .grass02 {
+          @include imgCover("top-grass02.webp");
+
+          @include pc {
+            width: cl(1004);
+            height: cl(280);
+            bottom: -82px;
+            right: -311px;
+          }
+
+          @include sp {
+            width: scl(236);
+            height: scl(90);
+            bottom: -30px;
+            right: -20px;
+            position: fixed;
+            z-index: 800;
+          }
+        }
+
+        .tree01 {
+          @include imgContain("top-tree01.webp");
+
+          @include pc {
+            width: cl(494);
+            height: cl(875);
+            bottom: 0;
+            left: -80px;
+          }
+
+          @include sp {
+            width: smi(400);
+            height: smi(710);
+            bottom: 0;
+            left: clamp(-180px, s(-200), -200px);
+            position: fixed;
+          }
+        }
+
+        .tree02 {
+          @include imgContain("top-tree02.webp");
+
+          @include pc {
+            width: cl(630);
+            height: cl(960);
+            bottom: 0px;
+            right: -100px;
+          }
+
+          @include sp {
+            width: smi(550);
+            height: smi(816);
+            bottom: 0;
+            right: clamp(-300px, s(-330), -330px);
+            position: fixed;
+          }
+        }
+
+        .tree03 {
+          @include imgContain("top-tree03.webp");
+
+          @include pc {
+            width: cl(887);
+            height: cl(1094);
+            bottom: -40px;
+            right: -455px;
+            z-index: 700;
+          }
+
+          @include sp {
+            width: 300px;
+            height: 700px;
+            bottom: 0;
+            left: -100px;
+            position: fixed;
+          }
+        }
+
+        .content {
+          z-index: 600;
+
+          @include sp {
+            top: 20%;
+          }
+
+          .bird {
+            @include pc {
+              width: cl(108);
+              height: cl(98);
+              top: -70px;
+              right: 186px;
+            }
+
+            @include sp {
+              width: scl(70);
+              height: scl(60);
+              top: -60px;
+              right: 100px;
+            }
+          }
+
+          .TL {
+            @include imgContain("top-TL-bg.webp");
+
+            @include pc {
+              width: cl(707);
+              height: cl(164);
+              padding-top: cl(20);
+            }
+
+            @include sp {
+              width: scl(258);
+              height: scl(60);
+              padding-top: scl(15);
+            }
+
+            &-text {
+              text-shadow: 0px 2px 3px $top-TL;
+              -webkit-background-clip: text;
+              -moz-background-clip: text;
+              background-clip: text;
+              background-color: #313029;
+              color: transparent;
+              @include wt900;
+
+              @include pc {
+                font-size: cl(49);
+                display: inline-grid;
+                place-items: center center;
+                line-height: 1.2;
+              }
+
+              @include sp {
+                font-size: scl(16);
+              }
+
+              span {
+                @include pc {
+                  font-size: cl(20);
+                }
+
+                @include sp {
+                  font-size: scl(10);
+                }
+              }
+            }
+          }
+
+          .textbox {
+            @include wt800;
+          }
+        }
+      }
+
+      &.bg02 {
+        @include imgCover("scl-bg-2.webp");
+
+        .page02-cloud01 {
+          @include pc {
+            width: cl(120);
+            height: cl(102);
+            left: 300px;
+            top: 0;
+          }
+
+          @include sp {
+            width: scl(80);
+            height: scl(67);
+            left: 100px;
+            top: 25px;
+          }
+        }
+
+        .page02-cloud02 {
+          @include pc {
+            width: cl(160);
+            height: cl(108);
+            right: 200px;
+            top: -30px;
+          }
+
+          @include sp {
+            width: scl(120);
+            height: scl(80);
+            right: 0px;
+            top: -20px;
+          }
+        }
+
+        .mole {
+          @include pc {
+            width: cl(292);
+            height: cl(212);
+            right: cl(-30);
+            bottom: cl(20);
+          }
+
+          @include sp {
+            width: scl(200);
+            height: scl(150);
+            right: 0px;
+            bottom: -10px;
+          }
+        }
+
+        .grass03 {
+          @include imgContain("top-grass03.webp");
+
+          @include pc {
+            width: cl(924);
+            height: cl(252);
+            left: 0;
+            bottom: cl(-64);
+          }
+
+          @include sp {
+            width: scl(300);
+            height: scl(90);
+            left: -100px;
+            bottom: -10px;
+            z-index: 400;
+          }
+        }
+
+        .content {
+          @include pc {
+            margin-left: cl(50);
+          }
+
+          .TL {
+            &-text {
+              img {
+                @include pc {
+                  width: cl(334);
+                  height: cl(94);
+                  margin: 0 cl(5) cl(15) 0;
+                }
+
+                @include sp {
+                  width: scl(168);
+                  height: scl(48);
+                  display: inline;
+                  margin-bottom: scl(-10);
+                }
+              }
+            }
+          }
+
+          .textbox {
+            &-under {
+              @include pc {
+                margin-top: cl(30);
+              }
+            }
+          }
+
+          &-img01 {
+            @include imgContain("content-img01.webp");
+
+            @include pc {
+              width: cl(248);
+              height: cl(163);
+              rotate: 6.5deg;
+              bottom: calc(-215 / 316 * 100%);
+              left: calc(-50 / 1080 * 100%);
+            }
+
+            @include sp {
+              width: scl(150);
+              height: scl(100);
+              rotate: 6.5deg;
+              bottom: -40%;
+              left: -10px;
+            }
+          }
+
+          &-img02 {
+            @include imgContain("content-img02.webp");
+
+            @include pc {
+              width: cl(256);
+              height: cl(129);
+              rotate: -6.7deg;
+              bottom: calc(-175 / 316 * 100%);
+              right: calc(-90 / 1080 * 100%);
+            }
+
+            @include sp {
+              width: scl(150);
+              height: scl(75);
+              rotate: -6.7deg;
+              bottom: -35%;
+              right: 0;
+            }
+
+            &::before {
+              content: "";
+              position: absolute;
+              @include imgContain("top-butterfly01.webp");
+
+              @include pc {
+                width: cl(140);
+                height: cl(135);
+                top: cl(-60);
+                right: cl(-50);
+              }
+
+              @include sp {
+                width: scl(50);
+                height: scl(45);
+                top: -10px;
+                right: 0px;
+              }
+            }
+          }
+        }
+      }
+
+      &.bg03 {
+        @include imgCover("scl-bg-3.webp");
+
+        @include sp {
+          background-position: 40% center;
+        }
+
+        .cloud03 {
+          @include pc {
+            width: cl(310);
+            height: cl(124);
+            right: -16px;
+            top: 0;
+          }
+
+          @include sp {
+            width: scl(150);
+            height: scl(75);
+            right: -16px;
+            top: 0;
+          }
+        }
+
+        .platypus01 {
+          @include imgContain("platypus01.webp");
+
+          @include pc {
+            width: cl(166);
+            height: cl(197);
+            right: calc(290 / 1280 * 100%);
+            bottom: 35px;
+          }
+
+          @include sp {
+            width: scl(100);
+            height: scl(120);
+            right: scl(90);
+            bottom: 10px;
+          }
+        }
+
+        .platypus02 {
+          @include imgContain("platypus02.webp");
+
+          @include pc {
+            width: cl(163);
+            height: cl(190);
+            right: calc((140 / 1280) * 100%);
+            bottom: 35px;
+          }
+
+          @include sp {
+            width: scl(100);
+            height: scl(120);
+            right: 0;
+            bottom: 10px;
+          }
+        }
+
+        .tree04 {
+          @include imgContain("top-tree04.webp");
+
+          @include pc {
+            width: cl(887);
+            height: cl(1094);
+            left: -358px;
+            bottom: -37px;
+          }
+        }
+
+        .content {
+          @include pc {
+            margin-left: cl(110);
+          }
+
+          .TL {
+            @include pc {
+              height: cl(107);
+            }
+
+            &-text {
+              img {
+                @include pc {
+                  width: cl(170);
+                  height: cl(82);
+                  margin: 0 cl(5) cl(10) 0;
+                }
+
+                @include sp {
+                  width: scl(100);
+                  height: scl(50);
+                  display: inline;
+                  margin-bottom: scl(-15);
+                }
+              }
+            }
+          }
+
+          .textbox {
+            &-under {
+              @include pc {
+                margin-top: cl(30);
+              }
+            }
+          }
+
+          &-img03 {
+            @include imgContain("content-img03.webp");
+
+            @include pc {
+              width: cl(319);
+              height: cl(207);
+              left: calc((-260 / 678) * 100%);
+              bottom: calc((-160 / 241) * 100%);
+              rotate: -4.4deg;
+            }
+
+            @include sp {
+              width: scl(150);
+              height: scl(100);
+              left: -10px;
+              bottom: -40%;
+              rotate: -4.4deg;
+            }
+          }
+
+          &-img04 {
+            @include imgContain("content-img04.webp");
+
+            @include pc {
+              width: cl(253);
+              height: cl(165);
+              right: calc((-290 / 678) * 100%);
+              top: 0px;
+              rotate: 6.57deg;
+            }
+
+            @include sp {
+              width: scl(150);
+              height: scl(100);
+              right: -10px;
+              bottom: -40%;
+              rotate: 6.57deg;
+            }
+
+            &::before {
+              content: "";
+              position: absolute;
+              @include imgContain("content-img04-deco.webp");
+              width: cl(194);
+              height: cl(112);
+              bottom: -50px;
+              right: -30px;
+
+              @include pc {
+                width: cl(194);
+                height: cl(112);
+                bottom: -50px;
+                right: -30px;
+              }
+
+              @include sp {
+                width: scl(90);
+                height: scl(60);
+                bottom: -25px;
+                right: 0px;
+              }
+            }
+          }
+        }
+      }
+
+      &.bg04 {
+        @include imgCover("scl-bg-4.webp");
+
+        .cloud01 {
+          @include pc {
+            width: cl(190);
+            height: cl(108);
+            right: 266px;
+            top: -80px;
+          }
+
+          @include sp {
+            width: scl(120);
+            height: scl(80);
+            right: 266px;
+            top: 0px;
+          }
+        }
+
+        .sheep {
+          @include pc {
+            width: cl(234);
+            height: cl(223);
+            left: 18px;
+            bottom: 56px;
+          }
+
+          @include sp {
+            width: scl(150);
+            height: scl(150);
+            right: -10px;
+            bottom: 56px;
+          }
+        }
+
+        .grass04 {
+          @include imgContain("top-grass04.webp");
+
+          @include pc {
+            width: cl(924);
+            height: cl(139);
+            bottom: 0;
+            left: -129px;
+          }
+
+          @include sp {
+            width: scl(346);
+            height: scl(52);
+            bottom: 0;
+            right: -20px;
+            z-index: 400;
+          }
+        }
+
+        .content {
+          .TL {
+            @include pc {
+              height: cl(107);
+            }
+
+            &-text {
+              img {
+                @include pc {
+                  width: cl(364);
+                  height: cl(91);
+                  margin: 0 cl(5) cl(5) 0;
+                }
+
+                @include sp {
+                  width: scl(200);
+                  height: scl(50);
+                  display: inline;
+                  margin-top: scl(-5);
+                }
+              }
+            }
+          }
+
+          .content-img {
+            @include pc {
+              width: cl(340);
+              height: cl(224);
+            }
+
+            @include sp {
+              width: scl(120);
+              height: scl(79);
+            }
+
+            &.content-img05 {
+              @include imgContain("content-img05.webp");
+              rotate: -4.4deg;
+
+              @include pc {
+                left: calc(-85 / 1160 * 100%);
+                bottom: calc(-300 / 300 * 100%);
+              }
+
+              @include sp {
+                left: 0;
+                bottom: -35%;
+              }
+
+              &::before {
+                content: "";
+                position: absolute;
+                @include imgContain("butterfly01.webp");
+
+                @include pc {
+                  width: cl(92);
+                  height: cl(89);
+                  top: 50px;
+                  left: -53px;
+                }
+
+                @include sp {
+                  width: scl(40);
+                  height: scl(38);
+                  top: 20px;
+                  left: -10px;
+                }
+              }
+            }
+
+            &.content-img06 {
+              @include imgContain("content-img06.webp");
+              rotate: 3.6deg;
+
+              @include pc {
+                left: calc(430 / 1160 * 100%);
+                bottom: calc(-320 / 300 * 100%);
+              }
+
+              @include sp {
+                left: 50%;
+                translate: -50% 0;
+                bottom: -40%;
+              }
+
+              &::before {
+                content: "";
+                position: absolute;
+                @include imgContain("butterfly02.webp");
+
+                @include pc {
+                  width: cl(94);
+                  height: cl(67);
+                  bottom: 30px;
+                  right: 80px;
+                }
+
+                @include sp {
+                  width: scl(40);
+                  height: scl(30);
+                  bottom: 10px;
+                  right: 30px;
+                }
+              }
+            }
+
+            &.content-img07 {
+              @include imgContain("content-img07.webp");
+              rotate: -4.35deg;
+
+              @include pc {
+                right: calc(-220 / 1160 * 100%);
+                bottom: calc(-280 / 300 * 100%);
+              }
+
+              @include sp {
+                right: -10px;
+                bottom: -35%;
+              }
+
+              &::before {
+                content: "";
+                position: absolute;
+                @include imgContain("butterfly03.webp");
+
+                @include pc {
+                  width: cl(89);
+                  height: cl(83);
+                  top: -30px;
+                  right: 20px;
+                }
+
+                @include sp {
+                  width: scl(40);
+                  height: scl(38);
+                  top: -10px;
+                  right: 10px;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &.bg05 {
+        @include imgCover("scl-bg-5.webp");
+
+        .cloud01 {
+          @include pc {
+            width: cl(158);
+            height: cl(87);
+            left: 382px;
+            top: 10px;
+          }
+
+          @include sp {
+            width: scl(100);
+            height: scl(60);
+            left: 10px;
+            top: 10px;
+          }
+        }
+
+        .cloud03 {
+          @include pc {
+            width: cl(297);
+            height: cl(124);
+            right: 0;
+            top: -20px;
+          }
+
+          @include sp {
+            width: scl(160);
+            height: scl(70);
+            right: -20px;
+            top: 30px;
+          }
+        }
+
+        .balloon {
+          @include imgContain("balloon.webp");
+
+          @include pc {
+            width: cl(259);
+            height: cl(291);
+            top: 60px;
+            left: 576px;
+          }
+
+          @include sp {
+            width: scl(150);
+            height: scl(200);
+            top: 120px;
+            right: 10px;
+          }
+        }
+
+        .rabbit02 {
+          @include imgContain("rabbit02.webp");
+
+          @include pc {
+            width: cl(188);
+            height: cl(283);
+            left: 20px;
+            bottom: 67px;
+          }
+        }
+
+        .bird02 {
+          @include pc {
+            width: cl(120);
+            height: cl(110);
+            top: 50px;
+          }
+
+          @include sp {
+            width: scl(60);
+            height: scl(50);
+            top: 120px;
+            left: 100px;
+          }
+        }
+
+        .cat {
+          @include pc {
+            width: cl(279);
+            height: cl(331);
+            bottom: 40px;
+          }
+
+          @include sp {
+            width: scl(130);
+            height: scl(180);
+            bottom: 20px;
+          }
+
+          &.gray-cat {
+            @include pc {
+              left: calc((380 / 1280) * 100%);
+            }
+
+            @include sp {
+              right: 110px;
+            }
+          }
+
+          &.brown-cat {
+            @include pc {
+              right: calc((0 / 1280) * 100%);
+            }
+
+            @include sp {
+              right: -10px;
+            }
+          }
+        }
+
+        .grass05 {
+          @include imgContain("top-grass05.webp");
+
+          @include pc {
+            width: cl(455);
+            height: cl(214);
+            bottom: -15px;
+            right: 0;
+          }
+        }
+
+        .grass06 {
+          @include imgContain("top-grass04.webp");
+
+          @include pc {
+            width: cl(924);
+            height: cl(139);
+            bottom: 0px;
+            right: 201px;
+            scale: -1 1;
+          }
+        }
+
+        .content {
+          @include center;
+          flex-direction: column;
+          top: 50%;
+
+          @include pc {
+            translate: 0 -50%;
+            gap: cl(53);
+          }
+
+          @include sp {
+            left: 50%;
+            translate: -50% -50%;
+            gap: scl(20);
+          }
+
+          .btn {
+            display: grid;
+            place-items: center center;
+            box-shadow: -4px -4px 8px 0px rgba(0, 0, 0, 0.15) inset,
+              4px 4px 8px 0px rgba(247, 229, 229, 0.25) inset;
+
+            @include pc {
+              width: cl(438);
+              height: cl(85);
+              border-radius: cl(10);
+            }
+
+            @include sp {
+              width: scl(300);
+              height: scl(58);
+              border-radius: 5px;
+            }
+
+            &.top-btn {
+              background: $P-F38549;
+            }
+
+            &.bottom-btn {
+              background: $P-62C7D5;
+            }
+
+            .TX {
+              color: $F-FFFFFF;
+              @include wt800;
+
+              @include pc {
+                font-size: cl(40);
+              }
+
+              @include sp {
+                font-size: scl(26);
+              }
+            }
+
+            &:hover {
+              animation: poyo 1s ease 0s infinite;
+
+              @keyframes poyo {
+                from,
+                to {
+                  transform: none;
+                }
+
+                10% {
+                  transform: scale(1.1);
+                }
+
+                40% {
+                  transform: scale(0.9);
+                }
+
+                60% {
+                  transform: scale(1.04);
+                }
+
+                80% {
+                  transform: scale(0.98);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

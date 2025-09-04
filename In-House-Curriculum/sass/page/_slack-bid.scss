@@ -1,0 +1,119 @@
+@use "../global" as *;
+
+/* -----------------------
+  slack-bid
+----------------------- */
+
+.slack-bid {
+  padding: 30px 30px 50px;
+
+  .ttl {
+    margin-bottom: 50px;
+
+    .TX {
+      @include wt600;
+      line-height: 1.5;
+      text-align: center;
+
+      @include pc {
+        font-size: 30px;
+      }
+
+      @include sp {
+        font-size: 25px;
+      }
+    }
+  }
+
+  .contents {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      &.checkbox__area{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .item--label {
+
+        .TL {
+          @include wt600;
+          line-height: 1.5;
+
+          @include pc {
+            font-size: 20px;
+          }
+
+          @include sp {
+            font-size: 18px;
+          }
+        }
+      }
+
+      .item--input {
+
+        .TX {
+          width: 100%;
+          resize: none;
+          padding: 10px;
+          border: 1px solid #000;
+          border-radius: 5px;
+          font-size: 16px;
+          line-height: 1.5;
+          box-sizing: border-box;
+          
+          @include pc {
+            font-size: 16px;
+          }
+
+          @include sp {
+            font-size: 14px;
+          }
+        }
+      }
+
+      .item--checkbox {
+
+        .checkbox {
+          margin: 0;
+        }
+      }
+
+      .item--submit {
+
+        .submit--btn {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #000;
+          border-radius: 5px;
+          font-size: 16px;
+          background-color: #fff;
+          color: #000;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          
+          &:hover {
+            background-color: #000;
+            color: #fff;
+          }
+          @include pc {
+            font-size: 16px;
+          }
+  
+          @include sp {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}

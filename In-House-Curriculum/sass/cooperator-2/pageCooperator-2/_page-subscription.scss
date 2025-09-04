@@ -1,0 +1,180 @@
+@use "../../global" as *;
+@use "../globalCooperator-2" as *;
+
+.subscription {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: smi(40);
+  background-color: #c1e9ff;
+  position: relative;
+  overflow: hidden;
+}
+
+.subscription-inner {
+  width: 100%;
+  padding: smi(20);
+}
+
+.subscription-content {
+  display: flex;
+  flex-direction: column;
+  gap: smi(40);
+  align-items: center;
+}
+
+h1.plan-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #0070ba;
+  font-weight: 700;
+}
+
+.plan {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    padding: 20px 20px 5px;
+    color: #fff;
+    margin-bottom: smi(10);
+    font-size: 28px;
+    font-weight: 700;
+
+    span.recommend {
+      font-size: 18px;
+      color: #ffd700;
+      margin-left: smi(8);
+      font-weight: 500;
+    }
+
+  }
+  ul {
+    padding: 20px;
+    color: #fff;
+    list-style: none;
+    margin: smi(10) 0 0 0;
+    line-height: normal;
+    li {
+      margin-bottom: smi(6);
+      span {
+       font-size: 1.2rem;
+       margin-bottom: smi(10);
+     }
+      span.no1 {
+      font-weight: 500;
+      margin-top: smi(20);
+      display: block;
+      color: #caf0ff;
+    }
+    }
+  }
+}
+
+/* Proプラン 青系グラデーション */
+.pro-plan {
+  background: linear-gradient(135deg, #4da6ff, #1a75ff);
+}
+
+/* Masterプラン 紫系グラデーション */
+.master-plan-monthly{
+  background: linear-gradient(135deg, #b266ff, #8000ff);
+}
+
+.master-plan-yearly {
+  background: linear-gradient(135deg, #3596bf, #6709c5);
+}
+
+.swpm-payment-button {
+  background: linear-gradient(90deg, #ffffff 0%, #ffd700 100%);
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding: 10px 15px;
+}
+
+
+/* --------------------
+   PC / SP調整
+-------------------- */
+@include pc {
+  .plan {
+    max-width: 900px;
+  }
+}
+
+@include sp {
+  .subscription {
+    padding: smi(10);
+    .subscription-inner {
+      padding: smi(5);
+    }
+  }
+
+  .plan {
+    padding: 0;
+
+  ul {
+    padding: 15px;
+  }
+
+  h2 {
+    padding: 15px;
+  }
+}
+}
+
+@media screen and (max-width: 430px) {
+  .swpm-payment-button {
+    justify-content: center;
+  }
+
+  .plan h2 span {
+    display: block;
+    margin: 5px 0 0 0!important;
+  }
+}
+
+
+
+/* --------------------    背景アニメーション -------------------- */
+
+
+/* --------------------
+   スライドインアニメーション
+-------------------- */
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%); // 右端からスタート
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);   // 元の位置に戻る
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.plan {
+  opacity: 0;
+  animation: slideInRight 0.8s ease-out forwards;
+}
+.plan1 { animation-delay: 0s; }
+.plan2 { animation-delay: 0.2s; }
+.plan3 { animation-delay: 0.4s; }

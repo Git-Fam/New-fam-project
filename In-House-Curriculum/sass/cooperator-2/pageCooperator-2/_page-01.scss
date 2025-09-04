@@ -1,0 +1,50 @@
+@use "../../global" as *;
+@use "../globalCooperator-2" as *;
+
+/* -----------------------
+  page-01
+----------------------- */
+
+
+.page-wappaer{
+  background: linear-gradient(180deg, #ACF9FF 0%, #FFF 68.5%, #FFF 100%);
+  .page{
+    @include height;
+    position: relative;
+    @include imgCover("test-bg.webp");  
+    @include sp{
+      background-position: 20%;
+    }
+    .inner{
+      @include pc{
+        height: 100%;
+        // background-position: center left;
+      }  
+      .page-content{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        .C_character{
+          margin: auto;
+          @include pc{
+            width: clamp(450px,calc(( 550/1280)*100vw),550px);
+            height: 100%;
+          }
+          @include sp{
+            width: clamp(220px,calc(( 300/390)*100vw),300px);
+            height: 100%;
+          }
+        }
+        .C_test{
+          @include pc{
+            margin-top: clamp(-90px,calc(( -90/1280)*100vw),-90px);
+          }
+          @include sp{
+            margin-top: clamp(-55px,calc(( -70/390)*100vw),-70px);
+          }
+        }  
+      }  
+    }
+  }
+}

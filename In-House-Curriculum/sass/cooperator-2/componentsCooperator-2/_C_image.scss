@@ -1,0 +1,72 @@
+@use "../../global" as *;
+@use "../globalCooperator-2" as *;
+
+
+.C_image{
+  display: flex;
+  gap: 40px;
+  .bg{
+  background: #FFF;
+  display: flex;
+  position: relative;
+  @include pc{
+    width: 234px;
+    height: 140px;
+  }
+  .img{
+    margin: auto;
+    @include pc{
+      width: 206px;
+      height: 120px;
+    }
+  }
+}
+  .image01{
+    transform: rotate(-4.443deg);
+    .img{
+      @include imgCover("image01.webp");
+    }
+    .butterfly{
+      @include imgContain("butterfly01.webp");
+      position: absolute;
+      @include pc{
+        width: 68px;
+        height:65px;
+        top:-30px;
+        left: 105px;
+      }
+    }
+  }
+  .image02{
+    transform: rotate(3.885deg);
+    .img{
+      @include imgCover("image01.webp");
+    }
+    .butterfly{
+      @include imgContain("butterfly02.webp");
+      position: absolute;
+      @include pc{
+        width: 70px;
+        height: 50px;
+        bottom:33px;
+        left: 20px;
+      }
+    }
+  }
+  .image03{
+    transform: rotate(-5.816deg);
+    .img{
+      @include imgCover("image01.webp");
+    }
+    .butterfly{
+      @include imgContain("butterfly03.webp");
+      position: absolute;
+      @include pc{
+        width: 66px;
+        height: 62px;
+        top:-30px;
+        right: 5px;
+      }
+    }
+  }
+}

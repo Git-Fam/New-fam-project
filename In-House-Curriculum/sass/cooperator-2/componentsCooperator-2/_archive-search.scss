@@ -1,0 +1,46 @@
+@use "../../global" as *;
+@use "../globalCooperator-2" as *;
+
+/* -----------------------
+  archive-search
+----------------------- */
+
+.columns_search {
+  padding: 6px 3px;
+
+  .search-item {
+
+    form {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 4;
+
+      button {
+        aspect-ratio: 18/16;
+        @include iconContain($lupe);
+        cursor: pointer;
+        width: 18px;
+      }
+
+      input {
+        color: #7FBF99;
+        @include wt600;
+        line-height: 140%;
+        letter-spacing: 1px;
+        border: none;
+        border-radius: 20px;
+        background: #E2F9EB;
+        outline: none;
+        font-size: 10px;
+        width: 141px;
+        height: 20px;
+        padding: 0 12px;
+
+        &::placeholder {
+          color: #7FBF99;
+        }
+      }
+    }
+  }
+}

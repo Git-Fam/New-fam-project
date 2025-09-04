@@ -1,0 +1,57 @@
+@use "../global" as *;
+
+/* -----------------------
+  C_categorySide
+----------------------- */
+
+.C_categorySide {
+  background: #FFF;
+  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.25);
+  overflow-y: scroll;
+  flex-shrink: 0;
+  height: 363px;
+  padding: 21px 19px 43px;
+
+  @include pc {
+    width: 186px;
+  }
+
+  &--inner {
+
+    .TL {
+      color: #7FBF99;
+      @include wt800;
+      font-size: 20px;
+
+    }
+
+    ul {
+      margin-top: 6px;
+
+      li {
+        border-top: dashed 1px #7FBF99;
+        padding: 8px 9px;
+        min-height: 30px;
+
+        &:last-child {
+          border-bottom: dashed 1px #7FBF99;
+        }
+
+        .TX {
+          a {
+            color: #BFBFBF;
+            @include wt600;
+            line-height: normal;
+            font-size: 14px;
+          }
+
+          &.change {
+            a {
+              color: #4EA772;
+            }
+          }
+        }
+      }
+    }
+  }
+}

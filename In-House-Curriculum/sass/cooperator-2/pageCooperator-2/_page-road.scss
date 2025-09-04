@@ -1,0 +1,2247 @@
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
+
+/* -----------------------
+  load
+----------------------- */
+.btn-box {
+  position: relative;
+
+  .columns_search {
+    @include pc{
+      padding: p(6) p(3);
+    }
+    @include sp {
+      padding: s(6) s(3);
+      position: absolute;
+      bottom: s(-20);
+      left: s(-20);
+    }
+
+    .search-item {
+
+      form {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 4;
+
+        button {
+          aspect-ratio: 18/16;
+          @include iconContain($lupe);
+          cursor: pointer;
+          width: 18px;
+
+          @include sp {
+            width: s(18);
+          }
+        }
+
+        input {
+          color: #7FBF99;
+          @include wt600;
+          line-height: 140%;
+          letter-spacing: 1px;
+          border: none;
+          background: #E2F9EB;
+          outline: none;
+          @include pc{
+            border-radius: p(20);
+            font-size: p(10);
+            width: p(141);
+            height: p(20);
+            padding: p(0) p(12);
+          }
+
+          @include sp {
+            letter-spacing: s(1);
+            border-radius: s(20);
+            width: s(80);
+            height: s(20);
+            padding: s(0) s(12);
+            font-size: s(10);
+          }
+
+          &::placeholder {
+            color: #7FBF99;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+
+
+.sp-wrap {
+  @include sp {
+    height: 100vh;
+    position: relative;
+  }
+
+  .road-wappaer {
+    background: linear-gradient(180deg, #bcfaff 0%, #fff 100%);
+    position: relative;
+
+    @include pc {
+      width: 100%;
+      @include height;
+    }
+
+    @include sp {
+      width: 100%;
+      height: 100vh;
+    }
+
+    .daytime-deco {
+      @include imgContain("daytime.webp");
+      pointer-events: none;
+      opacity: 0;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      transition: all 1s;
+
+      @include pc {
+        width: p(549);
+        height: p(434);
+        bottom: p(250);
+        z-index: 30;
+      }
+    }
+
+    .moon-deco {
+      position: absolute;
+
+      @include pc {
+        width: p(92);
+        height: p(91);
+        bottom: p(564);
+        left: p(276);
+      }
+
+      @include sp {
+        width: 92px;
+        height: 91px;
+        bottom:  564px;
+        left: 76px;
+      }
+      }
+
+    &.morning {
+      background: linear-gradient(180deg, #7ABBE7 0%, #F3D4C4 26.92%, #FCF3C6 35.58%);
+    }
+
+    &.daytime {
+      background: linear-gradient(180deg, #47A2F7 0%, #72E3F9 24.04%, #C5F3FC 33.42%);
+
+      .daytime-deco.show {
+        opacity: 1;
+        transition: all 1s;
+      }
+    }
+
+    &.afternoon {
+      background: linear-gradient(180deg, #76D8FF 0%, #E8BE8D 23.08%, #D58A6D 37.98%);
+      .moon-deco {
+        @include imgContain("afternoon.webp");
+      }
+    }
+
+    &.night{
+      background: linear-gradient(180deg, #012658 0%, #155796 22.6%, #62C6D4 36.54%);
+      .moon-deco{
+        @include imgContain("night.webp");
+      }
+    }
+
+    .cloud-box {
+      .road-cloud {
+        @include iconContain($road-cloud);
+        position: absolute;
+        pointer-events: none;
+
+        &:nth-child(1),
+        &:nth-child(7) {
+          @include pc {
+            width: p(250);
+            height: p(160);
+            bottom: p(551);
+            left: p(-90);
+          }
+
+          @include sp {
+            width: 250px;
+            height: 160px;
+            bottom: 551px;
+            left: -90px;
+          }
+        }
+
+        &:nth-child(2) {
+          z-index: 10;
+          scale: -1 1;
+
+          @include pc {
+            width: p(147);
+            height: p(108);
+            bottom: p(474);
+            left: 0;
+          }
+
+          @include sp {
+            width: 120px;
+            height: 77px;
+            bottom: 510px;
+            left: -20px;
+          }
+        }
+
+        &:nth-child(3),
+        &:nth-child(9) {
+          @include pc {
+            width: p(168);
+            height: p(124);
+            bottom: p(495);
+            left: p(195);
+          }
+
+          @include sp {
+            width: 168px;
+            height: 124px;
+            bottom: 395px;
+            left: 95px;
+          }
+        }
+
+        &:nth-child(4),
+        &:nth-child(8) {
+          @include pc {
+            width: p(147);
+            height: p(108);
+            bottom: p(554);
+            right: p(502);
+          }
+
+          @include sp {
+            width: 147px;
+            height: 108px;
+            bottom: 554px;
+            right: 502px;
+          }
+        }
+
+        &:nth-child(5),
+        &:nth-child(10) {
+          scale: -1 1;
+
+          @include pc {
+            width: p(127);
+            height: p(93);
+            bottom: p(576);
+            right: p(81);
+          }
+
+          @include sp {
+            width: 127px;
+            height: 93px;
+            bottom: 476px;
+            right: 81px;
+          }
+        }
+
+        &:nth-child(6) {
+          z-index: 10;
+
+          @include pc {
+            width: p(147);
+            height: p(108);
+            bottom: p(497);
+            right: p(-20);
+          }
+        }
+
+        &:nth-child(11) {
+          z-index: 10;
+
+          @include pc {
+            width: p(290);
+            height: p(210);
+            bottom: p(-60);
+            left: p(-70);
+          }
+        }
+
+        &:nth-child(12) {
+          z-index: 10;
+
+          @include pc {
+            width: p(225);
+            height: p(170);
+            bottom: p(-40);
+            right: p(-100);
+          }
+        }
+
+        &.road-cloud02 {
+          @include iconContain($road-cloud02);
+        }
+      }
+    }
+
+    .archive--contents--tab {
+      z-index: 40;
+      position: absolute;
+      left: 50%;
+      translate: -50% 0;
+
+      @include pc {
+        top: 0;
+        padding: p(60) 0 0 p(30);
+      }
+
+      @include sp {
+        top: s(20);
+        gap: s(10);
+        padding: s(25) 0 0 s(15);
+      }
+
+      .archive--item {
+        @include imgCover("icon-bg.webp");
+        position: relative;
+
+        @include pc {
+          min-width: p(83);
+          height: p(126);
+          top: p(-35);
+        }
+
+        @include sp {
+          min-width: s(65);
+          height: s(105);
+          top: s(-20);
+        }
+
+        &--img {
+          position: relative;
+          left: 50%;
+          top: 65%;
+          transform: translate(-50%, -50%);
+
+          @include pc {
+            width: p(60);
+            height: p(60);
+          }
+
+          @include sp {
+            width: s(50);
+            height: s(50);
+          }
+        }
+
+        &--title {
+          text-align: center;
+
+          .TX {
+            display: none;
+          }
+        }
+
+        &:hover {
+          transition: all 0.3s;
+
+          @include pc {
+            top: p(-43);
+          }
+
+          @include sp {
+            top: s(-25);
+          }
+        }
+
+        &.active {
+          transition: all 0.3s;
+
+          @include pc {
+            top: p(-10);
+          }
+
+          @include sp {
+            top: s(-5);
+          }
+        }
+      }
+    }
+
+    .archive--contents--items--wap {
+      display: none;
+
+      @include sp {
+        overflow-x: scroll;
+        width: 115%;
+        position: absolute;
+        bottom: -42px;
+        left: 0;
+        flex-direction: end;
+      }
+
+      &.active {
+        display: block;
+      }
+
+      .road-header {
+        @include iconCover($green-header);
+        position: absolute;
+        z-index: 40;
+        width: 100%;
+        top: 0;
+        display: flex;
+        align-items: center;
+
+        @include pc {
+          height: p(60);
+          padding-inline: p(34);
+        }
+
+        @include sp {
+          height: s(60);
+          position: fixed;
+          padding-inline: s(10);
+        }
+
+        .TL {
+          color: $F-FFFFFF;
+          @include wt700;
+
+          @include pc {
+            font-size: p(23);
+          }
+
+          @include sp {
+            font-size: s(14);
+          }
+        }
+
+        .btn-box {
+          display: flex;
+          margin-left: auto;
+          align-items: center;
+
+          @include pc {
+            gap: p(17);
+          }
+
+          @include sp {
+            gap: s(8);
+            align-items: start;
+            margin-top: s(-10);
+          }
+
+          .list-btn {
+            background: linear-gradient(180deg, #d9d5bb 0%, #b99e76 100%);
+            box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25);
+            color: $F-FFFFFF;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            @include wt600;
+
+            @include pc {
+              width: p(170);
+              height: p(35);
+              border-radius: p(4);
+              border: p(1) solid $F-FFFFFF;
+              line-height: p(35);
+              padding-left: p(13);
+            }
+
+            @include sp {
+              width: s(100);
+              height: s(20);
+              border-radius: s(3);
+              border: s(1) solid #fff;
+              line-height: s(18);
+              padding-left: s(5);
+            }
+
+            &::before {
+              content: "〉";
+              position: absolute;
+              top: 65%;
+              transform: translateY(-50%) rotate(90deg);
+
+              @include pc {
+                font-size: p(16);
+                right: p(10);
+              }
+
+              @include sp {
+                font-size: s(11);
+                right: s(2);
+              }
+            }
+
+            &::after {
+              content: "道のり投稿一覧";
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+
+              @include pc {
+                letter-spacing: p(0.8);
+                font-size: p(16);
+              }
+
+              @include sp {
+                font-size: s(10);
+                letter-spacing: s(0.8);
+              }
+            }
+
+            &.active {
+              &::after {
+                content: "一覧を閉じる";
+              }
+            }
+
+            &:hover {
+              transition: all 0.3s ease-in-out;
+              box-shadow: unset;
+              transform: translate(2px, 2px);
+            }
+          }
+
+          .road-menu-btn {
+            .C_all-menu-btn {
+              @include pc {
+                border-radius: p(4);
+                padding: p(4) p(8) p(5) p(4);
+                border-width: p(1);
+              }
+
+              @include sp {
+                border-radius: s(4);
+                padding: s(3) s(5) s(3) s(4);
+                border-width: s(1);
+              }
+
+              &__inner {
+                display: flex;
+                align-items: flex-end;
+
+                @include pc {
+                  gap: p(3);
+                }
+
+                @include sp {
+                  gap: s(3);
+                }
+
+                &__img {
+                  @include iconContain($all-menu-character);
+                  transition: background-image 0.3s ease-in-out;
+
+                  @include pc {
+                    width: p(33);
+                    height: p(25);
+                  }
+
+                  @include sp {
+                    width: s(25);
+                    height: s(18);
+                  }
+                }
+
+                &__text {
+                  .TX {
+                    color: #fff;
+                    @include wt600;
+                    line-height: 1.5;
+
+                    @include pc {
+                      font-size: p(16);
+                      letter-spacing: p(0.8);
+                    }
+
+                    @include sp {
+                      font-size: s(14);
+                      letter-spacing: s(0.8);
+                    }
+                  }
+                }
+              }
+
+              &:hover {
+                box-shadow: unset;
+                transform: translate(2px, 2px);
+
+                .C_all-menu-btn__inner {
+                  &__img {
+                    @include iconContain($all-menu-character-ver2);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .post-list {
+        background-color: $B-C9EBD9;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: -100%;
+        left: 0;
+        z-index: 35;
+        transition: all 0.3s;
+        overflow-y: scroll;
+
+
+        &-inner {
+          @include pc {
+            padding: p(208) p(44) p(100);
+          }
+
+          @include sp {
+            padding: s(130) s(20) s(50);
+          }
+
+          ul {
+            display: flex;
+
+            @include pc {
+              flex-wrap: wrap;
+              gap: p(15) p(20);
+            }
+
+            @include sp {
+              flex-direction: column;
+              gap: s(15);
+            }
+
+            li {
+              background: $B-FFFFFF;
+              position: relative;
+
+              @include pc {
+                width: p(586);
+                padding: p(9) p(11);
+                border-radius: p(3);
+              }
+
+              @include sp {
+                padding: s(6) s(8);
+                border-radius: s(2);
+              }
+
+              .post-link {
+                display: flex;
+                align-items: center;
+                position: relative;
+                z-index: 1;
+
+                .items--img {
+                  background-color: $B-FFFFFF;
+
+                  img {
+                    @include pc {
+                      width: p(170);
+                      height: p(97);
+                      border-radius: p(3);
+                    }
+
+                    @include sp {
+                      width: s(90);
+                      height: s(51);
+                      border-radius: s(2);
+                    }
+                  }
+                }
+
+                .items--title {
+                  width: 100%;
+                  background-color: $B-FFFFFF;
+                  display: grid;
+                  place-items: center center;
+
+                  @include pc {
+                    height: p(97);
+                  }
+
+                  @include sp {
+                    height: s(51);
+                  }
+
+                  .TL {
+                    color: $F-646464;
+
+                    @include pc {
+                      font-size: p(16);
+                    }
+
+                    @include sp {
+                      font-size: s(12);
+                    }
+                  }
+                }
+              }
+
+              &::before {
+                content: "";
+                background: linear-gradient(93deg,
+                    #5bad83 1.53%,
+                    #acdec3 63.13%);
+                transition: all 0.3s;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                opacity: 0;
+              }
+
+              &:hover {
+                &::before {
+                  opacity: 1;
+                }
+              }
+            }
+          }
+        }
+
+        &.active {
+          top: 0;
+          transition: all 0.3s;
+        }
+      }
+
+      .page-section {
+        z-index: 5;
+        position: absolute;
+        bottom: 0;
+        display: none;
+
+        @include pc {
+          width: p(1280);
+          height: p(700);
+        }
+
+        @include sp {
+          position: static;
+          margin-left: -50px;
+          width: 1280px;
+          height: 700px;
+          overflow: hidden;
+        }
+
+        .road-inner {
+          position: relative;
+          pointer-events: none;
+
+          @include pc {
+            width: p(1032);
+            height: p(360);
+            margin: p(228) 0 0 p(210);
+          }
+
+          @include sp {
+            position: absolute;
+            width: 983px;
+            height: 360px;
+            bottom: 16%;
+            margin-left: 210px;
+          }
+
+          .content {
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+
+
+            .road-content {
+              position: relative;
+              width: 100%;
+              height: 100%;
+              pointer-events: none;
+
+              .archive--contents {
+                width: 100%;
+                height: 80%;
+                position: absolute;
+                z-index: 9;
+                left: 50%;
+                transform: translate(-50%, -50%);
+
+                @include pc {
+                  top: 53%;
+                }
+
+                @include sp {
+                  top: 50%;
+                }
+
+                .not-login {
+                  text-align: center;
+                }
+
+                &::before {
+                  content: "";
+                  position: absolute;
+                  top: 4%;
+                  aspect-ratio: 30 / 45;
+                  @include iconContain($slickArrow);
+                  z-index: 1;
+                  animation: arrow 1s infinite;
+
+                  @include pc {
+                    width: p(30);
+                    right: 0%;
+                  }
+
+                  @include sp {
+                    width: s(20);
+                    right: 0%;
+                  }
+
+                  @keyframes arrow {
+
+                    0%,
+                    100% {
+                      transform: translateX(0%);
+                    }
+
+                    50% {
+                      transform: translateX(-50%);
+                    }
+                  }
+                }
+
+                &--items {
+                  position: absolute;
+                  overflow-x: scroll;
+                  overflow-y: hidden;
+
+                  @include pc {
+                    width: 80%;
+                    top: 60%;
+                    right: 0;
+                    translate: 0 -50%;
+                    padding: p(80) 0 0;
+                  }
+
+                  @include sp {
+                    width: 95%;
+                    height: fit-content;
+                    margin: 0 auto;
+                    top: 50%;
+                    left: 50%;
+                    translate: -50% -50%;
+                  }
+
+                  &--wap {
+                    display: none;
+
+                    @include pc {
+                      gap: p(35);
+                    }
+
+                    @include sp {
+                      gap: s(20);
+                    }
+
+                    &.active {
+                      display: flex;
+                    }
+
+                    .archive--items {
+                      aspect-ratio: 2/1;
+                      flex-shrink: 0;
+                      cursor: pointer;
+
+                      @include pc {
+                        width: p(411);
+                        @include column(p(23));
+                        padding-right: p(20);
+                      }
+
+                      @include sp {
+                        width: 50%;
+                        @include column(s(20));
+                      }
+
+                      &:hover {
+                        .items--title {
+                          background-color: #f38549;
+
+                          .TL {
+                            color: $F-FFFFFF;
+                          }
+                        }
+                      }
+
+                      @include sp {}
+
+                      .items--img {
+                        width: 100%;
+                        aspect-ratio: 411 / 268;
+                        border-radius: 5px;
+                        background-color: #ffffff;
+
+                        @include pc {
+                          padding: p(17);
+                        }
+
+                        @include sp {
+                          padding: s(10);
+                        }
+
+                        .img {
+                          aspect-ratio: 376 / 236;
+                          width: 100%;
+                          height: fit-content;
+                          object-fit: cover;
+                          object-position: center;
+                        }
+                      }
+
+                      .items--title {
+                        width: 100%;
+                        border-radius: 50px;
+                        background-color: #ffffffb4;
+                        border: solid #f38549;
+                        transition: all 0.3s;
+
+                        @include pc {
+                          padding: p(3) 0;
+                          border-width: p(3);
+                        }
+
+                        @include sp {
+                          padding: s(3) 0;
+                          border-width: s(2);
+                        }
+
+                        .TL {
+                          text-align: center;
+                          @include wt800;
+                          color: #f38549;
+
+                          @include pc {
+                            font-size: p(32);
+                          }
+
+                          @include sp {
+                            font-size: s(16);
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            .destination {
+              position: absolute;
+              pointer-events: auto;
+
+              .goal-wrap {
+                position: relative;
+                left: 73%;
+                width: fit-content;
+                // z-index: -1;
+                display: block;
+
+                .goal {
+                  display: block;
+                  @include imgContain("goal.webp");
+                  z-index: 21;
+                  position: absolute;
+                  left: 50%;
+                  top: 50%;
+                  translate: -50% -50%;
+                  transition: all 0.3s;
+
+                  @include pc {
+                    width: p(107);
+                    height: p(62);
+                  }
+
+                  @include sp {
+                    width: 107px;
+                    height: 62px;
+                  }
+
+                  &.clear {
+                    @include imgContain("clear.webp");
+                  }
+
+                  &.not {
+                    @include imgContain("not.webp");
+
+                    @include pc {
+                      width: p(83);
+                      height: p(40);
+                    }
+
+                    @include sp {
+                      width: 83px;
+                      height: 40px;
+                    }
+
+                    & ~ .title-board {
+                      filter: brightness(0.5);
+                    }
+
+                    &.next {
+                      @include imgContain("next-goal.webp");
+
+                      @include pc {
+                        width: p(101);
+                        height: p(68);
+                      }
+
+                      @include sp {
+                        width: 101px;
+                        height: 68px;
+                      }
+
+                      & ~ .title-board {
+                        filter: none;
+                      }  
+
+                      &::before {
+                        content: "";
+                        position: absolute;
+                        bottom: -30%;
+                        left: 50%;
+                        translate: -50% 0;
+                        @include imgContain("next-goal-bg.webp");
+                        transform-style: preserve-3d;
+                        backface-visibility: hidden;
+                        animation: next-goal-bg 3s infinite linear;
+
+                        @include pc {
+                          width: p(250);
+                          height: p(250);
+                        }
+
+                        @include sp {
+                          width: 250px;
+                          height: 250px;
+                        }
+                      }
+
+                      @keyframes next-goal-bg {
+
+                        0%,
+                        100% {
+                          opacity: 0;
+                        }
+
+                        50% {
+                          opacity: 1;
+                        }
+                      }
+                    }
+                  }
+                }
+
+
+                .goal-bg {
+                  position: relative;
+                  z-index: 5;
+                  @include imgContain("goal-bg.webp");
+
+                  @include pc {
+                    width: p(127);
+                    height: p(61);
+                  }
+
+                  @include sp {
+                    width: 127px;
+                    height: 61px;
+                  }
+                }
+
+                .title-board {
+                  @include imgContain("road-board.webp");
+                  position: absolute;
+                  z-index: 20;
+
+                  @include pc {
+                    width: p(86);
+                    height: p(79);
+                    top: p(-50);
+                    left: p(-5);
+                  }
+
+                  @include sp {
+                    width: 86px;
+                    height: 79px;
+                    top: -50px;
+                    left: 0;
+                  }
+
+                  .board-TX {
+                    color: $F-FFFFFF;
+
+                    @include pc {
+                      width: p(84);
+                      height: p(38);
+                      line-height: p(38);
+                      padding: p(5) 0 0 p(10);
+                      font-size: p(11);
+                    }
+
+                    @include sp {
+                      width: 84px;
+                      height: 38px;
+                      line-height: 38px;
+                      padding: 5px 0 0 10px;
+                      font-size: 11px;
+                    }
+                  }
+                }
+
+                &:hover {
+                  .goal {
+                    transition: all 0.2s;
+                    scale: 1.15;
+                  }
+                }
+              }
+
+              .character-box {
+                bottom: 0;
+                translate: -50% 0;
+                z-index: 21;
+                pointer-events: none;
+
+                .character {
+                  @include imgContain("koneko.webp");
+                  transition: left 0.5s ease;
+                  margin: 0 auto;
+
+                  @include pc {
+                    width: p(57);
+                    height: p(54);
+                  }
+
+                  @include sp {
+                    width: 57px;
+                    height: 54px;
+                  }
+                }
+
+                .name {
+                  position: relative;
+
+                  @include pc {
+                    width: p(40);
+                    font-size: p(13);
+                    text-align: center;
+                    bottom: p(-10);
+                  }
+
+                  @include sp {
+                    width: 40px;
+                    font-size: 13px;
+                    text-align: center;
+                    bottom: -10px;
+                  }
+                }
+
+                &.me {
+                  animation: floating-y 2s ease-in-out infinite alternate-reverse;
+
+                  @keyframes floating-y {
+                    0% {
+                      transform: translateY(0%);
+                    }
+
+                    100% {
+                      transform: translateY(-5%);
+                    }
+                  }
+
+                  @include pc {
+                    top: p(-100) !important;
+                  }
+
+                  @include sp {
+                    top: -100px !important;
+                  }
+
+                  .display__character {
+                    position: relative;
+
+                    @include pc {
+                      width: p(56);
+                      height: p(65);
+                    }
+
+                    @include sp {
+                      width: 56px;
+                      height: 65px;
+                    }
+
+                    &::after {
+                      content: "";
+                      position: absolute;
+                      @include imgContain("me.webp");
+                      left: 50%;
+                      translate: -50% 0;
+
+                      @include pc {
+                        width: p(165);
+                        height: p(257);
+                        top: p(-170);
+                      }
+
+                      @include sp {
+                        width: 165px;
+                        height: 257px;
+                        top: -170px;
+                      }
+                    }
+                  }
+                }
+              }
+
+              // ゴールホバーしたらそこにいるキャラが動く
+              &:hover {
+
+                //.meは動かない
+                .character-box:not(.me) {
+                  .character {
+                    animation: purun 0.8s linear 0s 1;
+                  }
+
+                  @keyframes purun {
+                    0% {
+                      transform: scale(1.0, 1.0) translate(0%, 0%);
+                    }
+
+                    15% {
+                      transform: scale(0.9, 0.9) translate(0%, 5%);
+                    }
+
+                    30% {
+                      transform: scale(1.3, 0.8) translate(0%, 10%);
+                    }
+
+                    50% {
+                      transform: scale(0.8, 1.3) translate(0%, -50%);
+                    }
+
+                    70% {
+                      transform: scale(1.1, 0.9) translate(0%, 5%);
+                    }
+
+                    100% {
+                      transform: scale(1.0, 1.0) translate(0%, 0%);
+                    }
+                  }
+
+                  &:nth-child(1) .character {
+                    animation-delay: 0.05s;
+                  }
+
+                  &:nth-child(2) .character {
+                    animation-delay: 0.1s;
+                  }
+
+                  &:nth-child(3) .character {
+                    animation-delay: 0.15s;
+                  }
+
+                  &:nth-child(4) .character {
+                    animation-delay: 0.2s;
+                  }
+
+                  &:nth-child(5) .character {
+                    animation-delay: 0.25s;
+                  }
+
+                  &:nth-child(6) .character {
+                    animation-delay: 0.3s;
+                  }
+
+                  &:nth-child(7) .character {
+                    animation-delay: 0.35s;
+                  }
+
+                  &:nth-child(8) .character {
+                    animation-delay: 0.4s;
+                  }
+
+                  &:nth-child(9) .character {
+                    animation-delay: 0.45s;
+                  }
+
+                  &:nth-child(10) .character {
+                    animation-delay: 0.5s;
+                  }
+                }
+              }
+            }
+          }
+
+          .section-arrow {
+            @include iconContain($next-section);
+            cursor: pointer;
+            pointer-events: auto;
+
+            position: absolute;
+            z-index: 22;
+
+            @include pc {
+              width: p(46);
+              height: p(120);
+              bottom: p(250);
+            }
+
+            @include sp {
+              width: 46px;
+              height: 120px;
+              bottom: 200px;
+            }
+
+            &.next-section {
+              right: 0;
+            }
+
+            &.back-section {
+              scale: -1 1;
+
+              left: 0;
+
+              @include sp {
+                left: -140px;
+              }
+            }
+          }
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          mix-blend-mode: plus-lighter;
+        }
+
+        &.page1 {
+          @include imgContain("road-bg.webp");
+
+          @include pc {
+            margin-bottom: p(-40);
+          }
+
+          .road-inner {
+            @include sp {
+              margin-bottom: -30px;
+            }
+          }
+
+          .content {
+            .tree {
+              @include imgContain("page1-tree.webp");
+              position: absolute;
+              z-index: 15;
+
+              @include pc {
+                width: p(132);
+                height: p(151);
+                right: p(304);
+                bottom: p(130);
+              }
+
+              @include sp {
+                width: 132px;
+                height: 151px;
+                right: 304px;
+                bottom: 159px;
+              }
+            }
+          }
+
+
+          &::before {
+            @include imgContain("filter-A.webp");
+            left: 50%;
+            translate: -50% 0;
+
+            @include pc {
+              width: p(1087);
+              height: p(415);
+              bottom: p(100);
+            }
+          }
+
+
+        }
+
+        &.page2,
+        &.page3,
+        &.page4,
+        &.page4-5,
+        &.page4-6 {
+          @include imgContain("bg-b.webp");
+
+          @include pc {
+            margin-bottom: p(-40);
+          }
+
+          .road-inner {
+            @include sp {
+              margin-bottom: -30px;
+            }
+
+            .content {
+              .tree {
+                @include imgContain("page2-tree.webp");
+                pointer-events: none;
+                position: absolute;
+                z-index: 15;
+
+                @include pc {
+                  width: p(245);
+                  height: p(234);
+                  left: p(186);
+                  bottom: p(50);
+                }
+
+                @include sp {
+                  width: 245px;
+                  height: 234px;
+                  left: 186px;
+                  bottom: 50px;
+                }
+              }
+            }
+          }
+
+          &::before {
+            @include imgContain("filter-B.webp");
+            left: 0;
+
+            @include pc {
+              width: p(1155);
+              height: p(397);
+              bottom: p(100);
+            }
+
+            @include sp {
+              width: 1155px;
+              height: 397px;
+              bottom: 100px;
+            }
+          }
+        }
+
+        &.page5 {
+          @include imgContain("bg-c.webp");
+
+          @include pc {
+            margin-bottom: p(-40);
+          }
+
+          .load {
+            @include imgContain("load-c.webp");
+            position: absolute;
+            z-index: -1;
+
+            @include pc {
+              width: p(715);
+              height: p(220);
+              left: 0;
+              bottom: p(100);
+            }
+
+            @include sp {
+              width: 715px;
+              height: 220px;
+              left: -66px;
+              bottom: 100px;
+            }
+          }
+
+          .road-inner {
+            .content {
+              pointer-events: none;
+
+              .tree {
+                position: absolute;
+                z-index: 5;
+                pointer-events: none;
+              }
+
+              .tree-left {
+                @include imgContain("page5-left.webp");
+
+                @include pc {
+                  width: p(620);
+                  height: p(565);
+                  left: p(-147);
+                  bottom: p(189);
+                }
+
+                @include sp {
+                  width: 620px;
+                  height: 565px;
+                  left: -147px;
+                  bottom: 189px;
+                }
+              }
+
+              .tree-right {
+                @include pc {
+                  @include imgContain("page5-right.webp");
+                  width: p(729);
+                  height: p(587);
+                  right: p(-293);
+                  bottom: p(182);
+                }
+
+                @include sp {
+                  @include imgContain("page5-right-sp.webp");
+                  width: 472px;
+                  height: 675px;
+                  right: -74px;
+                  bottom: 157px;
+                }
+              }
+
+              .castle {
+                @include imgContain("goal-castle.webp");
+                position: absolute;
+                pointer-events: auto;
+
+                @include pc {
+                  width: p(385);
+                  height: p(454);
+                  right: p(326);
+                  bottom: p(163);
+                }
+
+                @include sp {
+                  width: 385px;
+                  height: 454px;
+                  right: 294px;
+                  bottom: 163px;
+                }
+              }
+
+              .road-content {
+                .destination {
+                  pointer-events: auto;
+
+                  &:nth-child(1) {
+                    @include pc {
+                      left: p(-149);
+                      bottom: p(61);
+                    }
+
+                    @include sp {
+                      left: -149px;
+                      bottom: 58px;
+                    }
+                  }
+
+                  &:nth-child(2) {
+                    @include pc {
+                      left: p(45);
+                      bottom: p(30);
+                    }
+
+                    @include sp {
+                      left: 45px;
+                      bottom: 24px;
+                    }
+                  }
+
+                  &:nth-child(3) {
+                    @include pc {
+                      left: p(220);
+                      bottom: p(-22);
+                    }
+
+                    @include sp {
+                      left: 220px;
+                      bottom: -22px;
+                    }
+                  }
+
+                  &:nth-child(4) {
+                    rotate: -90deg;
+
+                    @include pc {
+                      left: p(428);
+                      bottom: p(20);
+                    }
+
+                    @include sp {
+                      left: 410px;
+                      bottom: 20px;
+                    }
+
+                    .goal-wrap,
+                    .character-box {
+                      rotate: 90deg;
+
+                      &.me {
+                        z-index: 10;
+
+                        @include pc {
+                          bottom: p(-100);
+                        }
+
+                        @include sp {
+                          bottom: -100px;
+                        }
+                      }
+
+                      .title-board {
+                        @include pc {
+                          left: p(-70);
+                        }
+
+                        @include sp {
+                          left: -70px;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          &::before {
+            @include imgContain("filter-C.webp");
+            left: 0;
+
+            @include pc {
+              width: p(1177);
+              height: p(254);
+              bottom: p(70);
+            }
+
+            @include sp {
+              width: 1177px;
+              height: 254px;
+              bottom: 70px;
+            }
+          }
+
+          &.onepage {
+            display: block;
+
+            &.one-post {
+              .destination {
+                rotate: -11deg;
+
+                @include pc {
+                  width: p(500);
+                  left: p(37) !important;
+                  bottom: p(57) !important;
+                }
+
+                @include sp {
+                  width: 500px;
+                  left: 49px !important;
+                  bottom: 79px !important;
+                }
+
+                .goal-wrap,
+                .character-box {
+                  rotate: 11deg;
+
+                  .title-board {
+                    @include pc {
+                      left: p(-70);
+                    }
+
+                    @include sp {
+                      left: -70px;
+                    }
+                  }
+                }
+              }
+            }
+
+            &.two-posts {
+              .road {
+                @include iconContain($load-c-02);
+                position: absolute;
+
+                @include pc {
+                  width: p(86);
+                  height: p(198);
+                  left: p(634);
+                  bottom: p(97);
+                }
+
+                @include sp {
+                  width: 86px;
+                  height: 198px;
+                  left: 563px;
+                  bottom: 97px;
+                }
+              }
+
+              .road-inner {
+                .content {
+                  .road-content {
+                    .destination {
+                      &:nth-child(1) {
+                        @include pc {
+                          left: p(242);
+                          bottom: p(-23);
+                        }
+
+                        @include sp {
+                          left: 270px;
+                          bottom: -23px;
+                        }
+                      }
+
+                      &:nth-child(2) {
+                        rotate: -90deg;
+
+                        @include pc {
+                          width: p(80);
+                          left: p(445);
+                          bottom: p(35);
+                        }
+
+                        @include sp {
+                          left: 409px;
+                          bottom: 20px;
+                        }
+
+                        .goal-wrap,
+                        .character-box {
+                          rotate: 90deg;
+
+                          &.me {
+                            z-index: 10;
+
+                            @include pc {
+                              bottom: p(-269);
+                            }
+
+                            @include sp {
+                              bottom: -269px;
+                            }
+                          }
+
+                          .title-board {
+                            @include pc {
+                              left: p(-70);
+                            }
+
+                            @include sp {
+                              left: -70px;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            &.three-posts {
+              .road {
+                @include iconContain($load-c-03);
+                position: absolute;
+
+                @include pc {
+                  width: p(354);
+                  height: p(205);
+                  left: p(364);
+                  bottom: p(90);
+                }
+
+                @include sp {
+                  width: 354px;
+                  height: 205px;
+                  left: 298px;
+                  bottom: 90px;
+                }
+              }
+
+              .road-inner {
+                .content {
+                  .road-content {
+                    .destination {
+                      &:nth-child(1) {
+                        @include pc {
+                          left: p(10);
+                          bottom: p(32);
+                        }
+
+                        @include sp {
+                          left: 10px;
+                          bottom: 32px;
+                        }
+                      }
+
+                      &:nth-child(2) {
+                        @include pc {
+                          left: p(258);
+                          bottom: p(-35);
+                        }
+
+                        @include sp {
+                          left: 218px;
+                          bottom: -35px;
+                        }
+                      }
+
+                      &:nth-child(3) {
+                        rotate: -90deg;
+
+                        @include pc {
+                          left: p(425);
+                          bottom: p(20);
+                        }
+
+                        @include sp {
+                          left: 408px;
+                          bottom: 20px;
+                        }
+
+                        .goal-wrap,
+                        .character-box {
+                          rotate: 90deg;
+
+                          &.me {
+                            z-index: 10;
+
+                            @include pc {
+                              bottom: p(-269);
+                            }
+
+                            @include sp {
+                              bottom: -269px;
+                            }
+                          }
+
+                          .title-board {
+                            @include pc {
+                              left: p(-70);
+                            }
+
+                            @include sp {
+                              left: -70px;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            &.four-posts {
+              .road {
+                @include iconContain($load-c-04);
+                position: absolute;
+
+                @include pc {
+                  width: p(653);
+                  height: p(205);
+                  left: p(112);
+                  bottom: p(87);
+                }
+
+                @include sp {
+                  width: 653px;
+                  height: 205px;
+                  left: 45px;
+                  bottom: 87px;
+                }
+              }
+
+              .road-inner {
+                .content {
+                  .road-content {
+                    .destination {
+                      &:nth-child(1) {
+                        @include pc {
+                          left: p(-173);
+                          bottom: p(42);
+                        }
+
+                        @include sp {
+                          left: -173px;
+                          bottom: 42px;
+                        }
+                      }
+
+                      &:nth-child(2) {
+                        @include pc {
+                          left: p(30);
+                          bottom: p(22);
+                        }
+
+                        @include sp {
+                          left: 30px;
+                          bottom: 13px;
+                        }
+                      }
+
+                      &:nth-child(3) {
+                        @include pc {
+                          left: p(258);
+                          bottom: p(-35);
+                        }
+
+                        @include sp {
+                          left: 258px;
+                          bottom: -35px;
+                        }
+                      }
+
+                      &:nth-child(4) {
+                        rotate: -90deg;
+
+                        @include pc {
+                          left: p(425);
+                          bottom: p(20);
+                        }
+
+                        @include sp {
+                          left: 409px;
+                          bottom: 20px;
+                        }
+
+                        .goal-wrap,
+                        .character-box {
+                          rotate: 90deg;
+
+                          &.me {
+                            z-index: 10;
+
+                            @include pc {
+                              bottom: p(-269);
+                            }
+
+                            @include sp {
+                              bottom: -269px;
+                            }
+                          }
+
+                          .title-board {
+                            @include pc {
+                              left: p(-70);
+                            }
+
+                            @include sp {
+                              left: -70px;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        &.show {
+          display: block;
+        }
+      }
+
+
+    }
+
+    .road-chat {
+      position: absolute;
+      z-index: 30;
+      height: fit-content;
+
+      @include pc {
+        left: 0;
+        bottom: p(45);
+      }
+
+      @include sp {
+        bottom: 45px;
+        left: 0;
+      }
+
+      #simple-ajax-chat {
+        display: none;
+      }
+
+      .C_chat-content {
+        #latest-messages {
+          @include pc {
+            padding-left: p(15);
+          }
+
+          @include sp {
+            padding-left: 15px;
+          }
+
+          .sac-chat-name {
+            display: none;
+          }
+        }
+
+        .timeline-wrap {
+          .timeline {
+            background: linear-gradient(0deg,
+                rgba(92, 92, 92, 0) 0%,
+                rgba(92, 92, 92, 0.4) 15.5%,
+                rgba(92, 92, 92, 0.6) 29%,
+                rgba(92, 92, 92, 0.6) 71.5%,
+                rgba(92, 92, 92, 0.4) 87.5%,
+                rgba(92, 92, 92, 0) 100%);
+            color: $F-F1FCD4;
+            position: relative;
+
+            @include pc {
+              font-size: p(10);
+              width: p(165);
+              height: fit-content;
+              padding: p(15) p(10);
+              margin-top: p(23);
+              line-height: 1.5;
+            }
+
+            @include sp {
+              font-size: 10px;
+              width: 165px;
+              height: fit-content;
+              padding: 15px 10px;
+              margin-top: 23px;
+              line-height: 1.5;
+            }
+
+            &::before {
+              @include sp {
+                content: "CHAT";
+                color: $F-857763;
+                background: $B-FFFDED;
+                position: absolute;
+                font-size: 14px;
+                width: 60px;
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+                border-radius: 5px;
+                top: -20px;
+                animation: good-jamp 2s ease 1s infinite;
+
+                @keyframes good-jamp {
+                  0% {
+                    transform: translateY(0%);
+                  }
+
+                  50% {
+                    transform: translateY(15%);
+                  }
+
+                  100% {
+                    transform: translateY(0%);
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .C_reaction {
+          background: $B-F69064;
+
+          @include pc {
+            width: p(165);
+            border-radius: 0 p(15) p(15) 0;
+            margin-top: p(23);
+            padding: p(10) p(8) p(10) p(10);
+          }
+
+          @include sp {
+            width: 165px;
+            border-radius: 0 15px 15px 0;
+            margin-top: 23px;
+            padding: 10px 8px 10px 10px;
+          }
+
+          .TX {
+            @include sp {
+              font-size: 13px;
+            }
+          }
+
+          .reaction-counter {
+            position: absolute;
+
+            @include pc {
+              top: p(30);
+              right: p(67);
+            }
+
+            @include sp {
+              top: 30px;
+              right: 67px;
+            }
+          }
+
+          .reaction-counter {
+            @include sp {
+              font-size: 12px;
+            }
+          }
+
+          .coin-counter {
+            @include pc {
+              margin: p(3) 0 0 auto;
+            }
+
+            @include sp {
+              margin: 3px 0 0 auto;
+            }
+          }
+        }
+      }
+    }
+
+    .under-menu {
+      position: absolute;
+      z-index: 99;
+      background: rgba(92, 92, 92, 0.5);
+      width: 100%;
+      transition: all 0.5s;
+
+      @include pc {
+        padding: p(64) p(38) p(34);
+        bottom: p(-160);
+      }
+
+      @include sp {
+        padding: 53px 10px 18px 10px;
+        bottom: -87px;
+      }
+
+      .menu-arrow {
+        position: absolute;
+        left: 50%;
+        translate: -50% 0;
+
+        @include pc {
+          top: p(14);
+        }
+
+        @include sp {
+          top: 15px;
+        }
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          background-color: $B-FFFFFF;
+          top: 0;
+
+          @include pc {
+            border-radius: p(4);
+            width: p(30);
+            height: p(4);
+          }
+
+          @include sp {
+            width: 14px;
+            height: 2px;
+            border-radius: 2px;
+          }
+        }
+
+        &::before {
+          rotate: -30deg;
+
+          @include pc {
+            right: p(-3);
+          }
+
+          @include sp {
+            right: -1px;
+          }
+        }
+
+        &::after {
+          rotate: 30deg;
+
+          @include pc {
+            left: p(-4);
+          }
+
+          @include sp {
+            left: -2px;
+          }
+        }
+      }
+
+      .menu-box {
+        display: flex;
+        justify-content: right;
+
+        @include pc {
+          gap: p(20);
+        }
+
+        @include sp {
+          gap: 10px;
+        }
+
+        .btn {
+          @include pc {
+            width: p(92);
+            height: p(92);
+          }
+
+          @include sp {
+            width: 57px;
+            height: 57px;
+          }
+
+          &.road-my-btn {
+            @include imgContain("my-btn.webp");
+          }
+
+          &.road-ranking-btn {
+            @include imgContain("ranking-btn.webp");
+          }
+
+          &.road-column-btn {
+            @include imgContain("column-btn.webp");
+          }
+
+          &.road-question-btn {
+            @include imgContain("question-btn.webp");
+          }
+
+          &.road-game-btn {
+            @include imgContain("game-btn.webp");
+          }
+        }
+      }
+
+      &.open {
+        bottom: 0;
+        transition: all 0.5s;
+      }
+    }
+  }
+}

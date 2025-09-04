@@ -1,0 +1,50 @@
+@use "../global" as *;
+
+/* -----------------------
+  commons
+----------------------- */
+
+// 表示・非表示
+.sp{
+  @include pc{
+    display: none !important;
+  }
+}
+.pc{
+  @include sp{
+    display: none !important;
+  }
+}
+
+
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: 10%;
+}
+
+body{
+  @include mplus;
+
+  &.active{
+    overflow: hidden;
+  }
+}
+
+.wappaer{
+  overflow: hidden;
+}
+
+// 投稿
+.code{
+	padding: 10px;
+	border: solid #ff6600 1px;
+   background-color: #fff0e6;
+}
+.memo{
+	padding: 10px;
+   background-color: #f2f2f2;
+}
+
+iframe{
+  border: none;
+}

@@ -1,0 +1,246 @@
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
+
+/* -----------------------
+  C_first
+----------------------- */
+//見出し
+.C_first_label {
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+
+  @include pc {
+    width: pmi(440);
+    height: pmi(47);
+    padding-left: pmi(23);
+    gap: pmi(7);
+  }
+  @include sp{
+    width: 95%;
+    height: s(35);
+    padding-left: s(15);
+    gap: s(7);
+  }
+
+  .number {
+    background-color: $B-F8F8F8;
+    display: grid;
+    place-items: center;
+
+    @include pc {
+      width: pmi(31);
+      height: pmi(29);
+      border-radius: pmi(4);
+      font-size: pmi(17);
+    }
+    @include sp{
+      width: s(22);
+      height: s(20);
+      border-radius: s(3);
+      font-size: s(14);
+    }
+  }
+
+  &--TX {
+    @include wt500;
+    text-shadow: 0 0 0.5px;
+
+    @include pc {
+      font-size: pmi(19);
+      letter-spacing: pmi(0.57);
+      line-height: pmi(47);
+    }
+    @include sp{
+      font-size: s(16);
+      letter-spacing: s(0.4);
+      line-height: s(35);
+    }
+  }
+
+  &.label01 {
+    background: $B-9FC944-03;
+
+    .number {
+      color: $F-007B5A;
+    }
+
+    .C_first_label--TX {
+      color: $P-6B960E;
+    }
+  }
+
+  &.label02 {
+    background: $B-CBE8F4;
+
+    .number {
+      color: $F-405164;
+    }
+
+    .C_first_label--TX {
+      color: $P-6593A6;
+    }
+  }
+}
+
+
+//タイトル
+.C_first_TL {
+  color: $F-4C4C4C;
+
+  @include pc {
+    border-bottom: pmi(5) solid;
+    padding-bottom: pmi(15);
+  }
+  @include sp{
+    border-bottom: s(3) solid;
+    padding-bottom: s(5);
+
+  }
+
+  &--TX {
+    @include wt800;
+    text-align: center;
+
+    @include pc {
+      font-size: pmi(32);
+    }
+    @include sp {
+      font-size: s(21);
+    }
+  }
+}
+
+// タグ
+/* -----------------------
+PC
+  ①はじめに・学べること：126px
+  ②はじめに・学べること：118px
+  ③はじめに・はじめに：111px
+----------------------- */
+.C_first_tag {
+  background: $P-6B960E;
+  overflow: hidden;
+  display: grid;
+  cursor: pointer;
+  
+  @include pc {
+    border-radius: 999px 0px 0px 999px;
+    height: pmi(45);
+    line-height: pmi(45);
+    padding-left: pmi(16);
+  }
+
+  @include sp{
+    border-radius: 10px 10px 0px 0px;
+    height: s(24);
+    padding: s(5) s(10) 0;
+    width: fit-content;
+  }
+
+  &--TX {
+    color: $F-FFFFFF;
+    white-space: nowrap;
+    @include wt800;
+
+    @include pc {
+      font-size: pmi(18)
+    }
+
+    @include sp{
+      font-size: s(12);
+    }
+  }
+
+  &.tag01 {
+    @include pc {
+      width: pmi(126);
+      
+    }
+  }
+
+  &.tag02 {
+    @include pc {
+      width: pmi(118);
+    }
+  }
+
+  &.tag03 {
+    @include pc {
+      width: pmi(112);
+    }
+  }
+
+  &.sp-type02{
+    @include sp{
+      height: s(36);
+      background: #73A800;
+    }
+  }
+  
+  &.active {
+    background: $P-9FC944;
+
+    @include pc {
+      width: pmi(162);
+    }
+
+    @include sp{
+      height: s(36);
+    }
+
+    .C_first_tag--TX {
+      color: $F-FBFF00;
+    }
+  }
+}
+
+// 本めくる
+.cssbk-wrap {
+  @include imgContain("book.webp");
+  width: 100%;
+  height: 100%;
+
+  .cssbk {
+    position: relative;
+    width: 100%;
+    padding-bottom: 72%;
+  }
+
+  .cssbk input {
+    display: none;
+  }
+
+  .cssbk input~span {
+    transition: 1.5s;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    position: absolute;
+    width: 45%;
+    height: 75%;
+    top: 12%;
+    transform: translateY(-50%);
+    background-color: #F8F8F8;
+  }
+
+  .cssbk input+span {
+    left: 53%;
+    transform-origin: left;
+    transform: perspective(1500px) rotateY(0deg);
+  }
+
+  .cssbk input+span+span {
+    right: 50%;
+    transform-origin: right;
+    transform: perspective(1500px) rotateY(180deg);
+  }
+
+  .cssbk input:checked+span {
+    transform: perspective(1500px) rotateY(-180deg);
+  }
+
+  .cssbk input:checked+span+span {
+    transform: perspective(1500px) rotateY(0deg);
+  }
+}

@@ -1,0 +1,557 @@
+@use "../global" as *;
+
+/* -----------------------
+  aptitude-choice
+----------------------- */
+
+.aptitude-choice {
+  background-position: center bottom;
+  position: relative;
+  overflow: hidden;
+
+  @include pc {
+    @include imgCover("aptitude-choice-BK.webp");
+    height: 100vh;
+    min-height: 700px;
+  }
+
+  @media screen and (min-width: 1500px) {
+    min-height: 1000px;
+  }
+
+  @include sp {
+    min-height: 100vh;
+    padding: s(50) s(20);
+  }
+
+  &::before {
+    content: "";
+    @include imgCover("aptitude-choice-BK.webp");
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  &__inner {
+
+    @include pc {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: calc((1224 / 1280) * 100%);
+      max-width: 1800px;
+      height: clamp(640px, calc((640 / 700) * 100%), 700px);
+    }
+
+    .choice--area {
+      display: flex;
+      position: relative;
+      z-index: 2;
+
+      @include pc {
+        gap: clamp(18px, p(24), 30px);
+      }
+
+      @include sp {
+        flex-direction: column;
+        gap: s(10);
+        margin-bottom: s(50);
+      }
+
+      .choice--item {
+        position: relative;
+        filter: drop-shadow(0px 3.734px 14.003px rgba(0, 0, 0, 0.25));
+        cursor: pointer;
+        transition: transform 0.3s ease;
+
+        @include pc {
+          width: clamp(350px, p(486), 550px);
+          height: clamp(200px, p(299), 350px);
+        }
+
+        @include sp {
+          aspect-ratio: 486 / 299;
+          width: 70%;
+        }
+
+        &:hover {
+          transform: scale(1.05);
+        }
+
+        &.not-active {
+          filter: drop-shadow(0px 3.734px 14.003px rgba(0, 0, 0, 0.25)) brightness(70%);
+        }
+
+        &.active {
+          transform: scale(1.1);
+
+          .choice--item--img {
+            .icon-star {
+              display: block
+            }
+          }
+        }
+
+        &.choice--item--engineer {
+          @include iconContain($choice-item-engineer);
+
+          @include pc {
+            margin-top: clamp(10px, p(52), 60px);
+          }
+
+          &::before {
+            content: "";
+            display: block;
+            aspect-ratio: 103 / 83;
+            filter: drop-shadow(0px 3.734px 9.335px rgba(0, 0, 0, 0.25));
+            position: absolute;
+            @include iconContain($choice-item-engineer-medium);
+            pointer-events: none;
+
+            @include pc {
+              width: clamp(80px, p(120), 130px);
+              bottom: -15%;
+              right: -10%;
+            }
+
+            @include sp {
+              width: 30%;
+              bottom: -50%;
+              left: 5%;
+            }
+          }
+
+          &::after {
+            content: "";
+            display: block;
+            aspect-ratio: 41 / 41;
+            filter: drop-shadow(0px 3.734px 9.335px rgba(0, 0, 0, 0.25));
+            position: absolute;
+            @include iconContain($choice-item-engineer-small);
+            pointer-events: none;
+
+            @include pc {
+              width: clamp(30px, p(40), 45px);
+              bottom: -18%;
+              right: -25%;
+            }
+
+            @include sp {
+              width: 20%;
+              bottom: -100%;
+              left: 15%;
+            }
+          }
+        }
+
+        &.choice--item--designer {
+          @include iconContain($choice-item-designer);
+
+          @include sp {
+            margin-left: auto;
+          }
+
+          &::before {
+            content: "";
+            display: block;
+            aspect-ratio: 103 / 83;
+            filter: drop-shadow(0px 3.734px 9.335px rgba(0, 0, 0, 0.25));
+            position: absolute;
+            @include iconContain($choice-item-engineer-medium);
+            pointer-events: none;
+
+            @include pc {
+              width: clamp(60px, p(80), 100px);
+              bottom: -23%;
+              left: 35%;
+            }
+
+            @include sp {
+              width: 20%;
+              bottom: -30%;
+              right: 15%;
+            }
+          }
+
+          &::after {
+            content: "";
+            display: block;
+            aspect-ratio: 41 / 41;
+            filter: drop-shadow(0px 3.734px 9.335px rgba(0, 0, 0, 0.25));
+            position: absolute;
+            @include iconContain($choice-item-engineer-small);
+            pointer-events: none;
+
+            @include pc {
+              width: clamp(22px, p(29), 35px);
+              bottom: -35%;
+              left: 50%;
+            }
+
+            @include sp {
+              width: 10%;
+              bottom: -50%;
+              right: 33%;
+            }
+          }
+        }
+
+        .choice--item--title {
+          position: absolute;
+          left: 50%;
+          transform: translate(-50%, 0);
+          top: 15%;
+
+          @include pc {
+            z-index: 2;
+          }
+
+          .TL {
+
+            @include pc {
+              width: clamp(120px, p(306), 350px);
+            }
+
+            @include sp {
+              width: 100%;
+            }
+
+            img {
+              width: 100%;
+            }
+          }
+        }
+
+        .choice--item--img {
+          aspect-ratio: 236.186 / 156.835;
+          position: absolute;
+          z-index: 1;
+
+          @include pc {
+            width: calc((236.186 / 486) * 100%);
+          }
+
+          @include sp {
+            width: 40%;
+          }
+
+          &.img-engineer {
+            @include imgContain("aptitude-choice-img-engineer.webp");
+
+            @include pc {
+              bottom: calc((22 / 300) * 100%);
+              left: calc((69 / 486) * 100%);
+            }
+
+            @include sp {
+              bottom: 10%;
+              left: 15%;
+            }
+
+            .icon-star {
+
+              @include pc {
+                top: 30%;
+                right: -15%;
+              }
+
+              @include sp {
+                top: 0%;
+                right: -45%;
+              }
+
+              &::before {
+                top: 0;
+                right: 0;
+              }
+
+              &::after {
+                bottom: 0;
+                left: 0;
+              }
+            }
+          }
+
+          &.img-designer {
+            @include imgContain("aptitude-choice-img-designer.webp");
+
+            @include pc {
+              bottom: calc((19 / 300) * 100%);
+              right: calc((50 / 486) * 100%);
+            }
+
+            @include sp {
+              bottom: 10%;
+              right: 15%;
+            }
+
+            .icon-star {
+
+              @include pc {
+                top: 30%;
+                left: -15%;
+              }
+
+              @include sp {
+                top: 0%;
+                left: -45%;
+              }
+
+              &::before {
+                bottom: 0;
+                left: 0;
+              }
+
+              &::after {
+                top: 0;
+                right: 0;
+              }
+            }
+          }
+
+          .icon-star {
+            position: absolute;
+            aspect-ratio: 51 / 57;
+            display: none;
+
+            @include pc {
+              width: clamp(40px, p(51), 57px);
+            }
+
+            @include sp {
+              width: 45%;
+            }
+
+            &::before,
+            &::after {
+              content: "";
+              display: block;
+              aspect-ratio: 25 / 35;
+              @include iconContain($choice-item-icon-star);
+              width: calc((25 / 57) * 100%);
+              position: absolute;
+            }
+
+            &::after {
+              width: calc((20 / 57) * 100%);
+            }
+          }
+        }
+      }
+    }
+
+    .character--area {
+      z-index: 1;
+
+      @include pc {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      @include sp {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: s(10);
+      }
+
+      .character--message {
+        border-radius: 30px;
+        background: #FFF;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+
+        @include pc {
+          width: clamp(300px, p(700), 1000px);
+          height: clamp(100px, p(185), 200px);
+          padding-left: clamp(40px, p(63), 80px);
+          padding-right: clamp(40px, p(63), 80px);
+        }
+
+        @include sp {
+          width: 100%;
+          padding: s(20);
+        }
+
+        // エンジニア選択時
+        &.choice-engineer {
+
+          @include pc {
+            padding-right: clamp(100px, p(200), 200px);
+          }
+
+          .character--message--inner {
+
+            .TX {
+              &.no-choice {
+                display: none;
+              }
+
+              &.TX-engineer {
+                display: block;
+              }
+
+              &.TX-designer {
+                display: none;
+              }
+            }
+          }
+
+          .btn {
+            background-color: #64C4C6;
+
+            &.engineer-btn {
+              display: block;
+            }
+          }
+        }
+
+        // クリエイター選択時
+        &.choice-designer {
+
+          @include pc {
+            padding-right: clamp(100px, p(200), 200px);
+          }
+
+          .character--message--inner {
+
+            .TX {
+              &.no-choice {
+                display: none;
+              }
+
+              &.TX-engineer {
+                display: none;
+              }
+
+              &.TX-designer {
+                display: block;
+              }
+            }
+          }
+
+          .btn {
+            background-color: #e58e8e;
+
+            &.designer-btn {
+              display: block;
+            }
+          }
+        }
+
+        .character--message--inner {
+
+          .TX {
+            color: #646464;
+            @include wt700;
+            line-height: 175%;
+
+            @include pc {
+              font-size: clamp(12px, p(20), 24px);
+            }
+
+            @include sp {
+              font-size: s(16);
+            }
+
+            &.TX-engineer {
+              display: none;
+            }
+
+            &.TX-designer {
+              display: none;
+            }
+          }
+        }
+
+        .btn {
+          display: block;
+          border-radius: 50%;
+          aspect-ratio: 1 / 1;
+          display: none;
+          animation: character-message-btn 1s ease infinite;
+
+          @keyframes character-message-btn {
+            0% {
+              transform: scale(1);
+            }
+
+            50% {
+              transform: scale(1.1);
+            }
+          }
+
+          &:hover {
+            .btn-arrow {
+              animation: character-message-btn-arrow 1s ease infinite;
+
+              @keyframes character-message-btn-arrow {
+                0% {
+                  left: 20%;
+                }
+
+                100% {
+                  left: 80%;
+                }
+              }
+            }
+          }
+
+          @include pc {
+            right: clamp(30px, p(47), 60px);
+            width: clamp(50px, p(63), 80px);
+            position: absolute;
+            bottom: 15%;
+          }
+
+          @include sp {
+            width: s(40);
+            margin: s(20) 0 0 auto;
+          }
+
+          .btn-arrow {
+            aspect-ratio: 34 / 31;
+            @include iconContain($character-message-btn-arrow);
+            width: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+
+      .character--texture {
+
+        @include pc {
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform: translate(0, -50%);
+        }
+
+        .img {
+          aspect-ratio: 507 / 563;
+          @include imgContain("character-2.webp");
+
+          @include pc {
+            width: clamp(200px, p(507), 700px);
+          }
+
+          @include sp {
+            width: 45%;
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+  }
+}

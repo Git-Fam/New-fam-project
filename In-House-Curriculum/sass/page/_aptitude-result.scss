@@ -1,0 +1,3026 @@
+@use "../global" as *;
+
+/* -----------------------
+  aptitude-result
+----------------------- */
+
+.aptitude-result {
+  @include imgCover("aptitude-bk.webp");
+  background-position: center bottom;
+  position: relative;
+  overflow: hidden;
+
+  @include pc {
+    height: 100vh;
+    min-height: 700px;
+  }
+
+  @media screen and (max-width: 1100px) and (min-width: 768px) {
+    min-height: 1000px;
+  }
+
+  @media screen and (min-width: 1500px) {
+    min-height: 1000px;
+  }
+
+  @include sp {
+    padding: s(50) s(20);
+  }
+
+  &__inner {
+    width: 100%;
+    position: relative;
+
+    @include pc {
+      height: 100%;
+    }
+
+    @include sp {}
+
+    .aptitude-result__container {
+      background: #CFC6B6;
+      box-shadow: 0px 4px 8px 0px #EEE4D3 inset;
+      position: relative;
+      z-index: 1;
+
+      @include pc {
+        border-radius: 0 10px 10px 0;
+        width: calc((968 / 1280) * 100%);
+        height: 100%;
+        padding: pmi(38) pmi(43) pmi(22);
+      }
+
+      @include sp {
+        border-radius: 10px;
+        padding: s(38) s(35) s(300) s(20);
+      }
+
+      // item
+      .result--item {
+        position: relative;
+        display: none;
+
+        @include pc {
+          width: 100%;
+          height: 100%;
+        }
+
+        @include sp {}
+
+        &.active {
+          display: block;
+        }
+
+        .profile_book {
+          filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25));
+          border-radius: 5px 0 5px 5px;
+          background: #FFF;
+          position: relative;
+          z-index: 2;
+
+          @include pc {
+            width: 60%;
+            min-width: 550px;
+            height: 100%;
+            padding: pmi(15) pmi(14) pmi(18);
+          }
+
+          @include sp {
+            padding: s(15) s(10) s(18);
+          }
+
+          &--joint {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 10%;
+            background: #FFF;
+            border-radius: 0 5px 5px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+
+            @include pc {
+              height: pmi(400);
+            }
+
+            @include sp {
+              height: s(200);
+            }
+
+            &::before {
+              content: "";
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              transform: translate(0%, 100%);
+              width: 10px;
+              aspect-ratio: 1/1;
+              border-radius: 50%;
+              box-shadow: -5px -5px 0px #FFF;
+            }
+
+            .joint--hole {
+              width: 30%;
+              aspect-ratio: 1/1;
+              border-radius: 50%;
+              background: #CFC6B6;
+              box-shadow: 0px 5px 3px 0px rgba(0, 0, 0, 0.15) inset;
+            }
+          }
+
+          .profile_book--inner {
+            display: flex;
+            flex-direction: column;
+
+            @include pc {
+              height: 100%;
+            }
+
+            @include sp {
+              gap: s(20);
+            }
+
+            .book--title {
+              position: relative;
+
+              @include pc {
+                padding-left: pmi(160);
+                margin-bottom: pmi(13);
+              }
+
+              @include sp {
+                padding-left: s(60);
+              }
+
+              .book--pict {
+                position: absolute;
+                z-index: 3;
+                aspect-ratio: 171/116;
+                background-color: #F4F6F8;
+                box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.25);
+                border-radius: 25px 24px 0 25px;
+
+                @include pc {
+                  width: clamp(100px, pmi(171), 200px);
+                  padding: pmi(9);
+                  transform: translate(-20%, -50%);
+                  top: 20%;
+                  left: 0;
+                }
+
+                @include sp {
+                  width: s(100);
+                  padding: s(9);
+                  transform: translate(-45%, -50%);
+                  top: 20%;
+                  left: 0;
+                }
+
+                .book--pict--inner {
+                  background-color: #F4F6F8;
+                  width: 100%;
+                  height: 100%;
+                  overflow: hidden;
+                  position: relative;
+                  border-radius: 25px 24px 0 25px;
+
+                  .book--pict--img {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 100%;
+                    height: 100%;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                  }
+                }
+              }
+
+              .TL {
+                @include wt900;
+                line-height: 1.5;
+                text-wrap: nowrap;
+
+                @include pc {
+                  font-size: pmi(30);
+                }
+
+                @include sp {
+                  font-size: s(20);
+                }
+              }
+            }
+
+            .book--type {
+              border-radius: 14px;
+
+              @include pc {
+                flex-shrink: 0;
+                padding: clamp(14px, p(24), 30px) clamp(20px, p(31), 50px) clamp(14px, p(17), 30px) clamp(14px, p(13), 20px);
+                margin-bottom: pmi(20);
+              }
+
+              @include sp {
+                padding: s(20) s(13) s(37);
+              }
+
+              .book--type--inner {
+                display: flex;
+                align-items: center;
+
+                @include pc {
+                  gap: pmi(37);
+                }
+
+                @include sp {
+                  flex-direction: column;
+                  gap: s(50);
+                }
+
+                .book--type--contents {
+
+                  @include pc {
+                    width: calc(((270 / 500) * 100%));
+                    flex-shrink: 0;
+                  }
+
+                  @include sp {
+                    width: 100%;
+                  }
+
+                  .text {
+
+                    @include pc {
+                      margin-bottom: pmi(20);
+                      padding-inline: pmi(8);
+                    }
+
+                    @include sp {
+                      margin-bottom: s(20);
+                      padding-inline: s(8);
+                    }
+
+                    .TX {
+
+                      &-border {
+                        color: #646464;
+                        @include tsuku;
+                        @include wt700;
+                        background-repeat: repeat-x;
+                        background-position: left bottom;
+
+                        @include pc {
+                          line-height: 300%;
+                          background-image: linear-gradient(to right, #646464 clamp(4px, p(2), 2px), transparent clamp(4px, p(2), 2px));
+                          background-size: clamp(8px, p(4), 4px) clamp(2px, p(1), 1px);
+                          font-size: clamp(11px, p(11), 25px);
+                          padding-bottom: pmi(10);
+                        }
+
+                        @include sp {
+                          line-height: 300%;
+                          background-image: linear-gradient(to right, #646464 s(2), transparent s(2));
+                          background-size: s(4) s(1);
+                          font-size: s(14);
+                          padding-bottom: s(10);
+                        }
+
+                        .TX-BK {
+                          @include tsuku;
+                          line-height: 1;
+                          @include wt700;
+                          background: #F4F6F8;
+
+                          @include pc {
+                            font-size: clamp(11px, p(15), 35px);
+                            padding: pmi(3);
+                          }
+
+                          @include sp {
+                            box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.20);
+                            font-size: s(18);
+                            padding: s(3);
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  .items {
+                    display: flex;
+                    align-items: center;
+
+                    @include pc {
+                      gap: pmi(12);
+                    }
+
+                    @include sp {
+                      flex-direction: column;
+                      gap: s(12);
+                    }
+
+                    .item {
+                      aspect-ratio: 1;
+                      @include iconContain($dogs-footprints);
+                      position: relative;
+
+                      @include pc {
+                        width: calc((100% / 3) - (pmi(12) * 2 / 3));
+                      }
+
+                      @include sp {
+                        width: 50%;
+                      }
+
+                      .TL {
+                        text-wrap: nowrap;
+                        text-align: center;
+                        color: #646464;
+                        @include tsuku;
+                        @include wt700;
+                        line-height: 190%;
+                        position: absolute;
+                        top: 0;
+                        left: 50%;
+                        transform: translate(-50%, 0);
+
+                        @include pc {
+                          font-size: clamp(11px, p(11), 18px);
+                        }
+
+                        @include sp {
+                          font-size: s(18);
+                        }
+                      }
+
+                      .TX {
+                        text-wrap: nowrap;
+                        text-align: center;
+                        @include tsuku;
+                        @include wt700;
+                        line-height: 1.5;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+
+                        @include pc {
+                          font-size: clamp(16px, p(16), 26px);
+                        }
+
+                        @include sp {
+                          font-size: s(20);
+                        }
+                      }
+
+                      .img-TX {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                      }
+                    }
+                  }
+                }
+
+                .book--type--graph {
+                  aspect-ratio: 141/133;
+                  @include iconContain($pentagon-frame);
+                  position: relative;
+                  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.20));
+
+                  @include pc {
+                    width: 100%;
+                  }
+
+                  @include sp {
+                    width: 80%;
+                  }
+
+                  .graph--text {
+
+                    .TX {
+                      color: #646464;
+                      @include tsuku;
+                      @include wt700;
+                      line-height: 1;
+                      position: absolute;
+                      text-wrap: nowrap;
+
+                      @include pc {
+                        font-size: clamp(10px, p(10), 18px);
+                      }
+
+                      @include sp {
+                        font-size: s(12);
+                      }
+
+                      &:nth-child(1) {
+                        top: 0;
+                        left: 50%;
+                        transform: translate(-50%, -100%);
+                      }
+
+                      &:nth-child(2) {
+                        top: 45%;
+                        right: 0;
+                        transform: translate(90%, 0%);
+                      }
+
+                      &:nth-child(3) {
+                        bottom: 0%;
+                        right: 0%;
+                        transform: translate(-50%, 150%);
+                      }
+
+                      &:nth-child(4) {
+                        bottom: 0%;
+                        left: 0%;
+                        transform: translate(50%, 150%);
+                      }
+
+                      &:nth-child(5) {
+                        top: 45%;
+                        left: 0;
+                        transform: translate(-90%, 0%);
+                      }
+                    }
+                  }
+
+                  .graph--pict {
+                    position: absolute;
+                    top: 0;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                    aspect-ratio: 147/133;
+                    width: 100%;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                  }
+                }
+              }
+            }
+
+            .book--contents {
+              border-radius: 10px;
+              height: 100%;
+              display: flex;
+              flex-direction: column;
+              position: relative;
+              overflow-y: scroll;
+
+              @include pc {
+                padding: pmi(25) pmi(32) pmi(10);
+              }
+
+              @include sp {
+                padding: s(20) s(10) s(37);
+              }
+
+              &::before {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                transform: translate(-20%, -100%);
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                aspect-ratio: 21/38;
+                // animation: aptitude-result-book-contents-arrow ease-in-out 1.5s infinite alternate;
+
+                @keyframes aptitude-result-book-contents-arrow {
+                  0% {
+                    transform: translate(-20%, -300%);
+                  }
+
+                  100% {
+                    transform: translate(-20%, -100%);
+                  }
+                }
+
+                @include pc {
+                  width: pmi(21);
+                }
+
+                @include sp {}
+              }
+
+              &--title {
+                width: fit-content;
+                position: relative;
+                flex-shrink: 0;
+
+                @include pc {
+                  margin-bottom: pmi(15);
+                }
+
+                @include sp {
+                  margin: 0 auto s(15);
+                }
+
+                &::before {
+                  content: "";
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                  background-position: center;
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  transform: translate(-100%, -20%);
+                  aspect-ratio: 12/20;
+
+                  @include pc {
+                    width: clamp(12px, p(12), 20px);
+                  }
+
+                  @include sp {
+                    width: s(12);
+                  }
+                }
+
+                &::after {
+                  content: "";
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                  background-position: center;
+                  position: absolute;
+                  bottom: 0;
+                  right: 0;
+                  transform: translate(150%, -10%);
+                  aspect-ratio: 14/15;
+
+                  @include pc {
+                    width: clamp(14px, p(14), 20px);
+                  }
+
+                  @include sp {
+                    width: s(14);
+                  }
+                }
+
+                .TL {
+                  @include tsuku;
+                  @include wt700;
+                  line-height: 1.5;
+                  position: relative;
+                  display: block;
+                  width: fit-content;
+                  z-index: 2;
+
+                  @include pc {
+                    font-size: clamp(16px, p(24), 30px);
+                  }
+
+                  @include sp {
+                    font-size: s(24);
+                  }
+
+                  &::before {
+                    content: attr(data-text);
+                    -webkit-text-stroke-width: 8px;
+                    -webkit-text-stroke-color: #F4F6F8;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 100%;
+                    z-index: -1;
+                  }
+                }
+              }
+
+              &--inner {
+
+                .TX {
+
+                  &-border {
+                    color: #646464;
+                    @include tsuku;
+                    @include wt700;
+                    line-height: 200%;
+                    background-repeat: repeat-x;
+                    background-position: left bottom;
+
+                    @include pc {
+                      background-size: clamp(8px, p(4), 4px) clamp(2px, p(1), 1px);
+                      font-size: clamp(13px, p(13), 20px);
+                      padding-bottom: pmi(6);
+                    }
+
+                    @include sp {
+                      background-size: s(4) s(1);
+                      font-size: s(16);
+                      padding-bottom: s(6);
+                    }
+
+                    .TX-color {
+                      @include wt700;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .paper {
+          aspect-ratio: 672/466.473;
+          box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+          transform: rotate(3.054deg);
+          position: absolute;
+          z-index: 1;
+
+          @include pc {
+            width: pmi(672);
+            top: pmi(140);
+            right: p(100);
+          }
+
+          @media screen and (max-width: 1250px) and (min-width: 768px) {
+            right: p(0);
+          }
+
+          @include sp {
+            width: s(300);
+            top: s(60);
+            right: s(-35);
+          }
+
+          .paper--mark {
+            position: absolute;
+            width: 20%;
+            aspect-ratio: 1/1;
+            @include imgContain("aptitude-result-paper-mark.webp");
+
+            @include pc {
+              bottom: 10%;
+              right: 15%;
+            }
+
+            @include sp {
+              bottom: 5%;
+              right: 1%;
+            }
+          }
+        }
+
+        .pict {
+          position: absolute;
+          z-index: 3;
+          aspect-ratio: 242/309;
+          background-color: #FFF;
+          box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.25);
+          transform: rotate(5.905deg);
+
+          @include pc {
+            width: clamp(100px, pmi(242), 300px);
+            padding: pmi(9);
+            top: 0;
+            right: pmi(40);
+          }
+
+          @media screen and (max-width: 1250px) and (min-width: 1100px) {
+            width: pmi(160);
+          }
+
+          @media screen and (max-width: 1000px) and (min-width: 768px) {
+            top: unset;
+            bottom: 10%;
+            right: -5%;
+          }
+
+          @include sp {
+            width: 80%;
+            padding: s(9);
+            top: unset;
+            top: 100%;
+            left: 50%;
+            transform: translate(-50%, 0) rotate(5.905deg);
+            z-index: 1;
+          }
+
+          .pict--inner {
+            background-color: #F1F1F1;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+          }
+        }
+
+        // 01
+        &:nth-child(1) {
+          .profile_book {
+            &--joint {
+              .joint--hole {
+                &:nth-child(n+3) {
+                  background: #8DC47B;
+                }
+              }
+            }
+
+            &--inner {
+              .book--title {
+                .book--pict {
+                  .book--pict--inner {
+                    .book--pict--img {
+                      @include iconContain($tanuki-illust);
+                    }
+                  }
+                }
+
+                .TL {
+                  color: #8DC47B;
+                }
+              }
+
+              .book--type {
+                background: rgba(141, 196, 123, 0.10);
+
+                .book--type--inner {
+                  .book--type--contents {
+                    .text {
+                      .TX {
+                        &-border {
+                          .TX-BK {
+                            color: #679B56;
+                          }
+                        }
+                      }
+                    }
+
+                    .items {
+                      .item {
+                        .TX {
+                          color: #679B56;
+                        }
+
+                        .img-TX {
+                          aspect-ratio: 57/20.332;
+                          @include iconContain($tanuki-lucky-item);
+
+                          @include pc {
+                            width: clamp(57px, p(57), 100px);
+                          }
+
+                          @include sp {
+                            width: 80%;
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  .book--type--graph {
+                    .graph--pict {
+                      background-image: pentagon-graph-type(encode('#8DC47B'));
+                    }
+                  }
+                }
+              }
+
+              .book--contents {
+                background: rgba(141, 196, 123, 0.30);
+
+                &::before {
+                  background-image: aptitude-result-book-contents-arrow(encode('#679B56'));
+
+                  @include pc {
+                    width: pmi(21);
+                  }
+
+                  @include sp {}
+                }
+
+                &--title {
+                  &::before {
+                    background-image: aptitude-result-book-contents-before(encode('#679B56'));
+                  }
+
+                  &::after {
+                    background-image: aptitude-result-book-contents-after(encode('#679B56'));
+                  }
+
+                  .TL {
+                    color: #679B56;
+                  }
+                }
+
+                &--inner {
+
+                  .TX {
+
+                    &-border {
+
+                      @include pc {
+                        background-image: linear-gradient(to right, #679B56 clamp(4px, p(2), 2px), transparent clamp(4px, p(2), 2px));
+                      }
+
+                      @include sp {
+                        background-image: linear-gradient(to right, #679B56 s(2), transparent s(2));
+                      }
+
+                      .TX-color {
+                        color: #679B56;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .paper {
+            background: #8DC47B;
+          }
+
+          .pict {
+            .pict--inner {
+              .pict--img {
+                @include imgContain("aptitude-result-characters/Tanuki.webp");
+                aspect-ratio: 436/397;
+                position: absolute;
+                top: 50%;
+                left: 60%;
+                transform: translate(-50%, -50%);
+                width: 140%;
+              }
+            }
+          }
+        }
+
+        // 02
+        &:nth-child(2) {
+          .profile_book {
+            &--joint {
+              .joint--hole {
+                &:nth-child(n+3) {
+                  background: #EE8E7E;
+                }
+              }
+            }
+
+            &--inner {
+              .book--title {
+                .book--pict {
+                  .book--pict--inner {
+                    .book--pict--img {
+                      @include iconContain($hashikamo-illust);
+                    }
+                  }
+                }
+
+                .TL {
+                  color: #EE8E7E;
+                }
+              }
+
+              .book--type {
+                background: rgba(238, 142, 126, 0.10);
+
+                .book--type--inner {
+                  .book--type--contents {
+                    .text {
+                      .TX {
+                        &-border {
+                          .TX-BK {
+                            color: #EE8E7E;
+                          }
+                        }
+                      }
+                    }
+
+                    .items {
+                      .item {
+                        .TX {
+                          color: #EE8E7E;
+                        }
+
+                        .img-TX {
+                          aspect-ratio: 50.627/22.032;
+                          @include iconContain($hashikamo-lucky-item);
+
+                          @include pc {
+                            width: clamp(50.627px, p(50.627), 100px);
+                          }
+
+                          @include sp {
+                            width: 80%;
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  .book--type--graph {
+                    .graph--pict {
+                      background-image: pentagon-graph-type(encode('#EE8E7E'));
+                    }
+                  }
+                }
+              }
+
+              .book--contents {
+                background: rgba(238, 142, 126, 0.30);
+
+                &::before {
+                  background-image: aptitude-result-book-contents-arrow(encode('#EE8E7E'));
+                }
+
+                &--title {
+                  &::before {
+                    background-image: aptitude-result-book-contents-before(encode('#EE8E7E'));
+                  }
+
+                  &::after {
+                    background-image: aptitude-result-book-contents-after(encode('#EE8E7E'));
+                  }
+
+                  .TL {
+                    color: #EE8E7E;
+                  }
+                }
+
+                &--inner {
+
+                  .TX {
+
+                    &-border {
+
+                      @include pc {
+                        background-image: linear-gradient(to right, #EE8E7E clamp(4px, p(2), 2px), transparent clamp(4px, p(2), 2px));
+                      }
+
+                      @include sp {
+                        background-image: linear-gradient(to right, #EE8E7E s(2), transparent s(2));
+                      }
+
+                      .TX-color {
+                        color: #EE8E7E;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .paper {
+            background: #EE8E7E;
+          }
+
+          .pict {
+            .pict--inner {
+              .pict--img {
+                @include imgContain("aptitude-result-characters/Hashikamo.webp");
+                aspect-ratio: 351/396;
+                position: absolute;
+                top: 50%;
+                left: 53%;
+                transform: translate(-50%, -50%);
+                width: 103%;
+              }
+            }
+          }
+        }
+
+        // 03
+        &:nth-child(3) {
+          .profile_book {
+            &--joint {
+              .joint--hole {
+                &:nth-child(n+3) {
+                  background: #6D945E;
+                }
+              }
+            }
+
+            &--inner {
+              .book--title {
+                .book--pict {
+                  .book--pict--inner {
+                    .book--pict--img {
+                      @include iconContain($oinu-illust);
+                      aspect-ratio: 153/98;
+                      width: 90%;
+                    }
+                  }
+                }
+
+                .TL {
+                  color: #6D945E;
+                }
+              }
+
+              .book--type {
+                background: rgba(109, 148, 94, 0.10);
+
+                .book--type--inner {
+                  .book--type--contents {
+                    .text {
+                      .TX {
+                        &-border {
+                          .TX-BK {
+                            color: #6D945E;
+                          }
+                        }
+                      }
+                    }
+
+                    .items {
+                      .item {
+                        .TX {
+                          color: #6D945E;
+                        }
+
+                        .img-TX {
+                          aspect-ratio: 57/23.332;
+                          @include iconContain($oinu-lucky-item);
+
+                          @include pc {
+                            width: clamp(57px, p(57), 100px);
+                          }
+
+                          @include sp {
+                            width: 80%;
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  .book--type--graph {
+                    .graph--pict {
+                      background-image: pentagon-graph-type(encode('#6D945E'));
+                    }
+                  }
+                }
+              }
+
+              .book--contents {
+                background: rgba(109, 148, 94, 0.30);
+
+                &::before {
+                  background-image: aptitude-result-book-contents-arrow(encode('#6D945E'));
+                }
+
+                &--title {
+                  &::before {
+                    background-image: aptitude-result-book-contents-before(encode('#6D945E'));
+                  }
+
+                  &::after {
+                    background-image: aptitude-result-book-contents-after(encode('#6D945E'));
+                  }
+
+                  .TL {
+                    color: #6D945E;
+                  }
+                }
+
+                &--inner {
+
+                  .TX {
+
+                    &-border {
+
+                      @include pc {
+                        background-image: linear-gradient(to right, #6D945E clamp(4px, p(2), 2px), transparent clamp(4px, p(2), 2px));
+                      }
+
+                      @include sp {
+                        background-image: linear-gradient(to right, #6D945E s(2), transparent s(2));
+                      }
+
+                      .TX-color {
+                        color: #6D945E;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .paper {
+            background: #6D945E;
+          }
+
+          .pict {
+            .pict--inner {
+              .pict--img {
+                @include imgContain("aptitude-result-characters/oinu.webp");
+                aspect-ratio: 367/429;
+                position: absolute;
+                top: 50%;
+                left: 45%;
+                transform: translate(-50%, -50%);
+                width: 101%;
+              }
+            }
+          }
+        }
+
+        // 04
+        &:nth-child(4) {
+          .profile_book {
+            &--joint {
+              .joint--hole {
+                &:nth-child(n+3) {
+                  background: #EC9A4D;
+                }
+              }
+            }
+
+            &--inner {
+              .book--title {
+                .book--pict {
+                  .book--pict--inner {
+                    .book--pict--img {
+                      @include iconContain($usazou-illust);
+                    }
+                  }
+                }
+
+                .TL {
+                  color: #EC9A4D;
+                }
+              }
+
+              .book--type {
+                background: rgba(236, 154, 77, 0.10);
+
+                .book--type--inner {
+                  .book--type--contents {
+                    .text {
+                      .TX {
+                        &-border {
+                          .TX-BK {
+                            color: #EC9A4D;
+                          }
+                        }
+                      }
+                    }
+
+                    .items {
+                      .item {
+                        .TX {
+                          color: #EC9A4D;
+                        }
+
+                        .img-TX {
+                          aspect-ratio: 57/20.332;
+                          @include iconContain($usazou-lucky-item);
+
+                          @include pc {
+                            width: clamp(60px, p(60), 100px);
+                          }
+
+                          @include sp {
+                            width: 80%;
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  .book--type--graph {
+                    .graph--pict {
+                      background-image: pentagon-graph-type(encode('#EC9A4D'));
+                    }
+                  }
+                }
+              }
+
+              .book--contents {
+                background: rgba(236, 154, 77, 0.30);
+
+                &::before {
+                  background-image: aptitude-result-book-contents-arrow(encode('#EC9A4D'));
+                }
+
+                &--title {
+                  &::before {
+                    background-image: aptitude-result-book-contents-before(encode('#EC9A4D'));
+                  }
+
+                  &::after {
+                    background-image: aptitude-result-book-contents-after(encode('#EC9A4D'));
+                  }
+
+                  .TL {
+                    color: #EC9A4D;
+                  }
+                }
+
+                &--inner {
+
+                  .TX {
+
+                    &-border {
+
+                      @include pc {
+                        background-image: linear-gradient(to right, #EC9A4D clamp(4px, p(2), 2px), transparent clamp(4px, p(2), 2px));
+                      }
+
+                      @include sp {
+                        background-image: linear-gradient(to right, #EC9A4D s(2), transparent s(2));
+                      }
+
+                      .TX-color {
+                        color: #EC9A4D;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .paper {
+            background: #EC9A4D;
+          }
+
+          .pict {
+            .pict--inner {
+              .pict--img {
+                @include imgContain("aptitude-result-characters/usazou.webp");
+                aspect-ratio: 436/397;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 135%;
+              }
+            }
+          }
+        }
+
+        // 05
+        &:nth-child(5) {
+          .profile_book {
+            &--joint {
+              .joint--hole {
+                &:nth-child(n+3) {
+                  background: #DDCB72;
+                }
+              }
+            }
+
+            &--inner {
+              .book--title {
+                .book--pict {
+                  .book--pict--inner {
+                    .book--pict--img {
+                      @include iconContain($hashikuro-illust);
+                    }
+                  }
+                }
+
+                .TL {
+                  color: #BDA948;
+                }
+              }
+
+              .book--type {
+                background: rgba(231, 216, 138, 0.10);
+
+                .book--type--inner {
+                  .book--type--contents {
+                    .text {
+                      .TX {
+                        &-border {
+                          .TX-BK {
+                            color: #BDA948;
+                          }
+                        }
+                      }
+                    }
+
+                    .items {
+                      .item {
+                        .TX {
+                          color: #BDA948;
+                        }
+
+                        .img-TX {
+                          aspect-ratio: 57/20.332;
+                          @include iconContain($hashikuro-lucky-item);
+
+                          @include pc {
+                            width: clamp(57px, p(57), 100px);
+                          }
+
+                          @include sp {
+                            width: 80%;
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  .book--type--graph {
+                    .graph--pict {
+                      background-image: pentagon-graph-type(encode('#DDCB72'));
+                    }
+                  }
+                }
+              }
+
+              .book--contents {
+                background: rgba(231, 216, 138, 0.30);
+
+                &::before {
+                  background-image: aptitude-result-book-contents-arrow(encode('#DDCB72'));
+                }
+
+                &--title {
+                  &::before {
+                    background-image: aptitude-result-book-contents-before(encode('#DDCB72'));
+                  }
+
+                  &::after {
+                    background-image: aptitude-result-book-contents-after(encode('#DDCB72'));
+                  }
+
+                  .TL {
+                    color: #BDA948;
+                  }
+                }
+
+                &--inner {
+
+                  .TX {
+
+                    &-border {
+
+                      @include pc {
+                        background-image: linear-gradient(to right, #DDCB72 clamp(4px, p(2), 2px), transparent clamp(4px, p(2), 2px));
+                      }
+
+                      @include sp {
+                        background-image: linear-gradient(to right, #DDCB72 s(2), transparent s(2));
+                      }
+
+                      .TX-color {
+                        color: #BDA948;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .paper {
+            background: #DDCB72;
+          }
+
+          .pict {
+            .pict--inner {
+              .pict--img {
+                @include imgContain("aptitude-result-characters/hashikuro.webp");
+                aspect-ratio: 436/397;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 135%;
+              }
+            }
+          }
+        }
+
+        // 06
+        &:nth-child(6) {
+          .profile_book {
+            &--joint {
+              .joint--hole {
+                &:nth-child(n+3) {
+                  background: #F1CDCD;
+                }
+              }
+            }
+
+            &--inner {
+              .book--title {
+                .book--pict {
+                  .book--pict--inner {
+                    .book--pict--img {
+                      @include iconContain($usapo-illust);
+                    }
+                  }
+                }
+
+                .TL {
+                  color: #E6ABA1;
+                }
+              }
+
+              .book--type {
+                background: rgba(241, 205, 205, 0.10);
+
+                .book--type--inner {
+                  .book--type--contents {
+                    .text {
+                      .TX {
+                        &-border {
+                          .TX-BK {
+                            color: #E6ABA1;
+                          }
+                        }
+                      }
+                    }
+
+                    .items {
+                      .item {
+                        .TX {
+                          color: #E6ABA1;
+                        }
+
+                        .img-TX {
+                          aspect-ratio: 57/30;
+                          @include iconContain($usapo-lucky-item);
+
+                          @include pc {
+                            width: clamp(57px, p(57), 100px);
+                          }
+
+                          @include sp {
+                            width: 80%;
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  .book--type--graph {
+                    .graph--pict {
+                      background-image: pentagon-graph-type(encode('#F1CDCD'));
+                    }
+                  }
+                }
+              }
+
+              .book--contents {
+                background: rgba(241, 205, 205, 0.30);
+
+                &::before {
+                  background-image: aptitude-result-book-contents-arrow(encode('#F1CDCD'));
+                }
+
+                &--title {
+                  &::before {
+                    background-image: aptitude-result-book-contents-before(encode('#F1CDCD'));
+                  }
+
+                  &::after {
+                    background-image: aptitude-result-book-contents-after(encode('#F1CDCD'));
+                  }
+
+                  .TL {
+                    color: #E6ABA1;
+                  }
+                }
+
+                &--inner {
+
+                  .TX {
+
+                    &-border {
+
+                      @include pc {
+                        background-image: linear-gradient(to right, #F1CDCD clamp(4px, p(2), 2px), transparent clamp(4px, p(2), 2px));
+                      }
+
+                      @include sp {
+                        background-image: linear-gradient(to right, #F1CDCD s(2), transparent s(2));
+                      }
+
+                      .TX-color {
+                        color: #E6ABA1;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .paper {
+            background: #F1CDCD;
+          }
+
+          .pict {
+            .pict--inner {
+              .pict--img {
+                @include imgContain("aptitude-result-characters/usapo.webp");
+                aspect-ratio: 436/397;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 135%;
+              }
+            }
+          }
+        }
+
+        // 07
+        &:nth-child(7) {
+          .profile_book {
+            &--joint {
+              .joint--hole {
+                &:nth-child(n+3) {
+                  background: #7BC4C0;
+                }
+              }
+            }
+
+            &--inner {
+              .book--title {
+                .book--pict {
+                  .book--pict--inner {
+                    .book--pict--img {
+                      @include iconContain($guruneko-illust);
+                    }
+                  }
+                }
+
+                .TL {
+                  color: #7BC4C0;
+                }
+              }
+
+              .book--type {
+                background: rgba(123, 196, 192, 0.10);
+
+                .book--type--inner {
+                  .book--type--contents {
+                    .text {
+                      .TX {
+                        &-border {
+                          .TX-BK {
+                            color: #7BC4C0;
+                          }
+                        }
+                      }
+                    }
+
+                    .items {
+                      .item {
+                        .TX {
+                          color: #7BC4C0;
+                        }
+
+                        .img-TX {
+                          aspect-ratio: 57/20.332;
+                          @include iconContain($guruneko-lucky-item);
+
+                          @include pc {
+                            width: clamp(57px, p(57), 100px);
+                          }
+
+                          @include sp {
+                            width: 80%;
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  .book--type--graph {
+                    .graph--pict {
+                      background-image: pentagon-graph-type(encode('#7BC4C0'));
+                    }
+                  }
+                }
+              }
+
+              .book--contents {
+                background: rgba(123, 196, 192, 0.30);
+
+                &::before {
+                  background-image: aptitude-result-book-contents-arrow(encode('#7BC4C0'));
+                }
+
+                &--title {
+                  &::before {
+                    background-image: aptitude-result-book-contents-before(encode('#7BC4C0'));
+                  }
+
+                  &::after {
+                    background-image: aptitude-result-book-contents-after(encode('#7BC4C0'));
+                  }
+
+                  .TL {
+                    color: #7BC4C0;
+                  }
+                }
+
+                &--inner {
+
+                  .TX {
+
+                    &-border {
+
+                      @include pc {
+                        background-image: linear-gradient(to right, #7BC4C0 clamp(4px, p(2), 2px), transparent clamp(4px, p(2), 2px));
+                      }
+
+                      @include sp {
+                        background-image: linear-gradient(to right, #7BC4C0 s(2), transparent s(2));
+                      }
+
+                      .TX-color {
+                        color: #7BC4C0;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .paper {
+            background: #7BC4C0;
+          }
+
+          .pict {
+            .pict--inner {
+              .pict--img {
+                @include imgContain("aptitude-result-characters/guruneko.webp");
+                aspect-ratio: 436/397;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 135%;
+              }
+            }
+          }
+        }
+
+        // 08
+        &:nth-child(8) {
+          .profile_book {
+            &--joint {
+              .joint--hole {
+                &:nth-child(n+3) {
+                  background: #CD82BE;
+                }
+              }
+            }
+
+            &--inner {
+              .book--title {
+                .book--pict {
+                  .book--pict--inner {
+                    .book--pict--img {
+                      @include iconContain($tareusa-illust);
+                    }
+                  }
+                }
+
+                .TL {
+                  color: #CD82BE;
+                }
+              }
+
+              .book--type {
+                background: rgba(205, 130, 190, 0.10);
+
+                .book--type--inner {
+                  .book--type--contents {
+                    .text {
+                      .TX {
+                        &-border {
+                          .TX-BK {
+                            color: #CD82BE;
+                          }
+                        }
+                      }
+                    }
+
+                    .items {
+                      .item {
+                        .TX {
+                          color: #CD82BE;
+                        }
+
+                        .img-TX {
+                          aspect-ratio: 57/23.332;
+                          @include iconContain($tareusa-lucky-item);
+
+                          @include pc {
+                            width: clamp(57px, p(57), 100px);
+                          }
+
+                          @include sp {
+                            width: 80%;
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  .book--type--graph {
+                    .graph--pict {
+                      background-image: pentagon-graph-type(encode('#CD82BE'));
+                    }
+                  }
+                }
+              }
+
+              .book--contents {
+                background: rgba(205, 130, 190, 0.30);
+
+                &::before {
+                  background-image: aptitude-result-book-contents-arrow(encode('#CD82BE'));
+                }
+
+                &--title {
+                  &::before {
+                    background-image: aptitude-result-book-contents-before(encode('#CD82BE'));
+                  }
+
+                  &::after {
+                    background-image: aptitude-result-book-contents-after(encode('#CD82BE'));
+                  }
+
+                  .TL {
+                    color: #CD82BE;
+                  }
+                }
+
+                &--inner {
+
+                  .TX {
+
+                    &-border {
+
+                      @include pc {
+                        background-image: linear-gradient(to right, #CD82BE clamp(4px, p(2), 2px), transparent clamp(4px, p(2), 2px));
+                      }
+
+                      @include sp {
+                        background-image: linear-gradient(to right, #CD82BE s(2), transparent s(2));
+                      }
+
+                      .TX-color {
+                        color: #CD82BE;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .paper {
+            background: #CD82BE;
+          }
+
+          .pict {
+            .pict--inner {
+              .pict--img {
+                @include imgContain("aptitude-result-characters/tareusa.webp");
+                aspect-ratio: 436/397;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 135%;
+              }
+            }
+          }
+        }
+
+        // 09
+        &:nth-child(9) {
+          .profile_book {
+            &--joint {
+              .joint--hole {
+                &:nth-child(n+3) {
+                  background: #EB7A98;
+                  ;
+                }
+              }
+            }
+
+            &--inner {
+              .book--title {
+                .book--pict {
+                  .book--pict--inner {
+                    .book--pict--img {
+                      @include iconContain($hituzi-illust);
+                    }
+                  }
+                }
+
+                .TL {
+                  color: #EB7A98;
+                }
+              }
+
+              .book--type {
+                background: rgba(235, 122, 152, 0.10);
+
+                .book--type--inner {
+                  .book--type--contents {
+                    .text {
+                      .TX {
+                        &-border {
+                          .TX-BK {
+                            color: #EB7A98;
+                          }
+                        }
+                      }
+                    }
+
+                    .items {
+                      .item {
+                        .TX {
+                          color: #EB7A98;
+                          ;
+                        }
+
+                        .img-TX {
+                          aspect-ratio: 72/21;
+                          @include iconContain($hituzi-lucky-item);
+
+                          @include pc {
+                            width: clamp(72px, p(72), 100px);
+                          }
+
+                          @include sp {
+                            width: 80%;
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  .book--type--graph {
+                    .graph--pict {
+                      background-image: pentagon-graph-type(encode('#EB7A98'));
+                    }
+                  }
+                }
+              }
+
+              .book--contents {
+                background: rgba(235, 122, 152, 0.30);
+
+                &::before {
+                  background-image: aptitude-result-book-contents-arrow(encode('#EB7A98'));
+                }
+
+                &--title {
+                  &::before {
+                    background-image: aptitude-result-book-contents-before(encode('#EB7A98'));
+                  }
+
+                  &::after {
+                    background-image: aptitude-result-book-contents-after(encode('#EB7A98'));
+                  }
+
+                  .TL {
+                    color: #EB7A98;
+                  }
+                }
+
+                &--inner {
+
+                  .TX {
+
+                    &-border {
+
+                      @include pc {
+                        background-image: linear-gradient(to right, #EB7A98 clamp(4px, p(2), 2px), transparent clamp(4px, p(2), 2px));
+                      }
+
+                      @include sp {
+                        background-image: linear-gradient(to right, #EB7A98 s(2), transparent s(2));
+                      }
+
+                      .TX-color {
+                        color: #EB7A98;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .paper {
+            background: #EB7A98;
+            ;
+          }
+
+          .pict {
+            .pict--inner {
+              .pict--img {
+                @include imgContain("aptitude-result-characters/hituzi.webp");
+                aspect-ratio: 436/397;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 135%;
+              }
+            }
+          }
+        }
+
+        // 10
+        &:nth-child(10) {
+          .profile_book {
+            &--joint {
+              .joint--hole {
+                &:nth-child(n+3) {
+                  background: #E9B84F;
+                  ;
+                }
+              }
+            }
+
+            &--inner {
+              .book--title {
+                .book--pict {
+                  .book--pict--inner {
+                    .book--pict--img {
+                      @include iconContain($tsukikuma-illust);
+                    }
+                  }
+                }
+
+                .TL {
+                  color: #E9B84F;
+                }
+              }
+
+              .book--type {
+                background: rgba(233, 184, 79, 0.10);
+
+                .book--type--inner {
+                  .book--type--contents {
+                    .text {
+                      .TX {
+                        &-border {
+                          .TX-BK {
+                            color: #E9B84F;
+                          }
+                        }
+                      }
+                    }
+
+                    .items {
+                      .item {
+                        .TX {
+                          color: #E9B84F;
+                          ;
+                        }
+
+                        .img-TX {
+                          aspect-ratio: 57/20.332;
+                          @include iconContain($tsukikuma-lucky-item);
+
+                          @include pc {
+                            width: clamp(57px, p(57), 100px);
+                          }
+
+                          @include sp {
+                            width: 80%;
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  .book--type--graph {
+                    .graph--pict {
+                      background-image: pentagon-graph-type(encode('#E9B84F'));
+                    }
+                  }
+                }
+              }
+
+              .book--contents {
+                background: rgba(233, 184, 79, 0.30);
+
+                &::before {
+                  background-image: aptitude-result-book-contents-arrow(encode('#E9B84F'));
+                }
+
+                &--title {
+                  &::before {
+                    background-image: aptitude-result-book-contents-before(encode('#E9B84F'));
+                  }
+
+                  &::after {
+                    background-image: aptitude-result-book-contents-after(encode('#E9B84F'));
+                  }
+
+                  .TL {
+                    color: #E9B84F;
+                  }
+                }
+
+                &--inner {
+
+                  .TX {
+
+                    &-border {
+
+                      @include pc {
+                        background-image: linear-gradient(to right, #E9B84F clamp(4px, p(2), 2px), transparent clamp(4px, p(2), 2px));
+                      }
+
+                      @include sp {
+                        background-image: linear-gradient(to right, #E9B84F s(2), transparent s(2));
+                      }
+
+                      .TX-color {
+                        color: #E9B84F;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .paper {
+            background: #E9B84F;
+            ;
+          }
+
+          .pict {
+            .pict--inner {
+              .pict--img {
+                @include imgContain("aptitude-result-characters/tsukikuma.webp");
+                aspect-ratio: 436/397;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 125%;
+              }
+            }
+          }
+        }
+
+        // 11
+        &:nth-child(11) {
+          .profile_book {
+            &--joint {
+              .joint--hole {
+                &:nth-child(n+3) {
+                  background: #D86F6A;
+                  ;
+                }
+              }
+            }
+
+            &--inner {
+              .book--title {
+                .book--pict {
+                  .book--pict--inner {
+                    .book--pict--img {
+                      @include iconContain($chatora-illust);
+                    }
+                  }
+                }
+
+                .TL {
+                  color: #D86F6A;
+                }
+              }
+
+              .book--type {
+                background: rgba(216, 111, 106, 0.10);
+
+                .book--type--inner {
+                  .book--type--contents {
+                    .text {
+                      .TX {
+                        &-border {
+                          .TX-BK {
+                            color: #D86F6A;
+                          }
+                        }
+                      }
+                    }
+
+                    .items {
+                      .item {
+                        .TX {
+                          color: #D86F6A;
+                          ;
+                        }
+
+                        .img-TX {
+                          aspect-ratio: 69/16;
+                          @include iconContain($chatora-lucky-item);
+
+                          @include pc {
+                            width: clamp(69px, p(69), 100px);
+                          }
+
+                          @include sp {
+                            width: 80%;
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  .book--type--graph {
+                    .graph--pict {
+                      background-image: pentagon-graph-type(encode('#D86F6A'));
+                    }
+                  }
+                }
+              }
+
+              .book--contents {
+                background: rgba(216, 111, 106, 0.30);
+
+                &::before {
+                  background-image: aptitude-result-book-contents-arrow(encode('#D86F6A'));
+                }
+
+                &--title {
+                  &::before {
+                    background-image: aptitude-result-book-contents-before(encode('#D86F6A'));
+                  }
+
+                  &::after {
+                    background-image: aptitude-result-book-contents-after(encode('#D86F6A'));
+                  }
+
+                  .TL {
+                    color: #D86F6A;
+                  }
+                }
+
+                &--inner {
+
+                  .TX {
+
+                    &-border {
+
+                      @include pc {
+                        background-image: linear-gradient(to right, #D86F6A clamp(4px, p(2), 2px), transparent clamp(4px, p(2), 2px));
+                      }
+
+                      @include sp {
+                        background-image: linear-gradient(to right, #D86F6A s(2), transparent s(2));
+                      }
+
+                      .TX-color {
+                        color: #D86F6A;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .paper {
+            background: #D86F6A;
+            ;
+          }
+
+          .pict {
+            .pict--inner {
+              .pict--img {
+                @include imgContain("aptitude-result-characters/chatora.webp");
+                aspect-ratio: 436/397;
+                position: absolute;
+                top: 50%;
+                left: 53%;
+                transform: translate(-50%, -50%);
+                width: 140%;
+              }
+            }
+          }
+        }
+
+        // 12
+        &:nth-child(12) {
+          .profile_book {
+            &--joint {
+              .joint--hole {
+                &:nth-child(n+3) {
+                  background: #A192C5;
+                  ;
+                }
+              }
+            }
+
+            &--inner {
+              .book--title {
+                .book--pict {
+                  .book--pict--inner {
+                    .book--pict--img {
+                      @include iconContain($haitora-illust);
+                    }
+                  }
+                }
+
+                .TL {
+                  color: #A192C5;
+                }
+              }
+
+              .book--type {
+                background: rgba(161, 146, 197, 0.10);
+
+                .book--type--inner {
+                  .book--type--contents {
+                    .text {
+                      .TX {
+                        &-border {
+                          .TX-BK {
+                            color: #A192C5;
+                          }
+                        }
+                      }
+                    }
+
+                    .items {
+                      .item {
+                        .TX {
+                          color: #A192C5;
+                          ;
+                        }
+
+                        .img-TX {
+                          aspect-ratio: 70/16.332;
+                          @include iconContain($haitora-lucky-item);
+
+                          @include pc {
+                            width: clamp(70px, p(70), 100px);
+                          }
+
+                          @include sp {
+                            width: 80%;
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  .book--type--graph {
+                    .graph--pict {
+                      background-image: pentagon-graph-type(encode('#A192C5'));
+                    }
+                  }
+                }
+              }
+
+              .book--contents {
+                background: rgba(161, 146, 197, 0.30);
+
+                &::before {
+                  background-image: aptitude-result-book-contents-arrow(encode('#A192C5'));
+                }
+
+                &--title {
+                  &::before {
+                    background-image: aptitude-result-book-contents-before(encode('#A192C5'));
+                  }
+
+                  &::after {
+                    background-image: aptitude-result-book-contents-after(encode('#A192C5'));
+                  }
+
+                  .TL {
+                    color: #A192C5;
+                  }
+                }
+
+                &--inner {
+
+                  .TX {
+
+                    &-border {
+
+                      @include pc {
+                        background-image: linear-gradient(to right, #A192C5 clamp(4px, p(2), 2px), transparent clamp(4px, p(2), 2px));
+                      }
+
+                      @include sp {
+                        background-image: linear-gradient(to right, #A192C5 s(2), transparent s(2));
+                      }
+
+                      .TX-color {
+                        color: #A192C5;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .paper {
+            background: #A192C5;
+          }
+
+          .pict {
+            .pict--inner {
+              .pict--img {
+                @include imgContain("aptitude-result-characters/haitora.webp");
+                aspect-ratio: 436/397;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 140%;
+              }
+            }
+          }
+        }
+
+        // 13
+        &:nth-child(13) {
+
+          .profile_book {
+            &--joint {
+              .joint--hole {
+                &:nth-child(n+3) {
+                  background: #73C8DA;
+                  ;
+                }
+              }
+            }
+
+            &--inner {
+              .book--title {
+                .book--pict {
+                  .book--pict--inner {
+                    .book--pict--img {
+                      @include iconContain($kuroneko-illust);
+                    }
+                  }
+                }
+
+                .TL {
+                  color: #73C8DA;
+                }
+              }
+
+              .book--type {
+                background: rgba(115, 200, 218, 0.10);
+
+                .book--type--inner {
+                  .book--type--contents {
+                    .text {
+                      .TX {
+                        &-border {
+                          .TX-BK {
+                            color: #73C8DA;
+                          }
+                        }
+                      }
+                    }
+
+                    .items {
+                      .item {
+                        .TX {
+                          color: #73C8DA;
+                          ;
+                        }
+
+                        .img-TX {
+                          aspect-ratio: 57/20.332;
+                          @include iconContain($kuroneko-lucky-item);
+
+                          @include pc {
+                            width: clamp(57px, p(57), 100px);
+                          }
+
+                          @include sp {
+                            width: 80%;
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  .book--type--graph {
+                    .graph--pict {
+                      background-image: pentagon-graph-type(encode('#73C8DA'));
+                    }
+                  }
+                }
+              }
+
+              .book--contents {
+                background: rgba(115, 200, 218, 0.30);
+
+                &::before {
+                  background-image: aptitude-result-book-contents-arrow(encode('#73C8DA'));
+                }
+
+                &--title {
+                  &::before {
+                    background-image: aptitude-result-book-contents-before(encode('#73C8DA'));
+                  }
+
+                  &::after {
+                    background-image: aptitude-result-book-contents-after(encode('#73C8DA'));
+                  }
+
+                  .TL {
+                    color: #73C8DA;
+                  }
+                }
+
+                &--inner {
+
+                  .TX {
+
+                    &-border {
+
+                      @include pc {
+                        background-image: linear-gradient(to right, #73C8DA clamp(4px, p(2), 2px), transparent clamp(4px, p(2), 2px));
+                      }
+
+                      @include sp {
+                        background-image: linear-gradient(to right, #73C8DA s(2), transparent s(2));
+                      }
+
+                      .TX-color {
+                        color: #73C8DA;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .paper {
+            background: #73C8DA;
+          }
+
+          .pict {
+            .pict--inner {
+              .pict--img {
+                @include imgContain("aptitude-result-characters/kuroneko.webp");
+                aspect-ratio: 436/397;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 140%;
+              }
+            }
+          }
+        }
+
+        // 14
+        &:nth-child(14) {
+
+          .profile_book {
+            &--joint {
+              .joint--hole {
+                &:nth-child(n+3) {
+                  background: #A0DF69;
+                  ;
+                }
+              }
+            }
+
+            &--inner {
+              .book--title {
+                .book--pict {
+                  .book--pict--inner {
+                    .book--pict--img {
+                      @include iconContain($kappa-illust);
+                    }
+                  }
+                }
+
+                .TL {
+                  color: #A0DF69;
+                }
+              }
+
+              .book--type {
+                background: rgba(160, 223, 105, 0.10);
+
+                .book--type--inner {
+                  .book--type--contents {
+                    .text {
+                      .TX {
+                        &-border {
+                          .TX-BK {
+                            color: #A0DF69;
+                          }
+                        }
+                      }
+                    }
+
+                    .items {
+                      .item {
+                        .TX {
+                          color: #A0DF69;
+                          ;
+                        }
+
+                        .img-TX {
+                          aspect-ratio: 45/24.332;
+                          @include iconContain($kappa-lucky-item);
+
+                          @include pc {
+                            width: clamp(57px, p(57), 100px);
+                          }
+
+                          @include sp {
+                            width: 80%;
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  .book--type--graph {
+                    .graph--pict {
+                      background-image: pentagon-graph-type(encode('#A0DF69'));
+                    }
+                  }
+                }
+              }
+
+              .book--contents {
+                background: rgba(160, 223, 105, 0.30);
+
+                &::before {
+                  background-image: aptitude-result-book-contents-arrow(encode('#A0DF69'));
+                }
+
+                &--title {
+                  &::before {
+                    background-image: aptitude-result-book-contents-before(encode('#A0DF69'));
+                  }
+
+                  &::after {
+                    background-image: aptitude-result-book-contents-after(encode('#A0DF69'));
+                  }
+
+                  .TL {
+                    color: #A0DF69;
+                  }
+                }
+
+                &--inner {
+
+                  .TX {
+
+                    &-border {
+
+                      @include pc {
+                        background-image: linear-gradient(to right, #A0DF69 clamp(4px, p(2), 2px), transparent clamp(4px, p(2), 2px));
+                      }
+
+                      @include sp {
+                        background-image: linear-gradient(to right, #A0DF69 s(2), transparent s(2));
+                      }
+
+                      .TX-color {
+                        color: #A0DF69;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .paper {
+            background: #A0DF69;
+          }
+
+          .pict {
+            .pict--inner {
+              .pict--img {
+                @include imgContain("aptitude-result-characters/kappa.webp");
+                aspect-ratio: 436/397;
+                position: absolute;
+                top: 50%;
+                left: 38%;
+                transform: translate(-50%, -50%);
+                width: 140%;
+              }
+            }
+          }
+        }
+
+        // 15
+        &:nth-child(15) {
+
+          .profile_book {
+            &--joint {
+              .joint--hole {
+                &:nth-child(n+3) {
+                  background: #698FA5;
+                  ;
+                }
+              }
+            }
+
+            &--inner {
+              .book--title {
+                .book--pict {
+                  .book--pict--inner {
+                    .book--pict--img {
+                      @include iconContain($yagisan-illust);
+                    }
+                  }
+                }
+
+                .TL {
+                  color: #698FA5;
+                }
+              }
+
+              .book--type {
+                background: rgba(105, 143, 165, 0.10);
+
+                .book--type--inner {
+                  .book--type--contents {
+                    .text {
+                      .TX {
+                        &-border {
+                          .TX-BK {
+                            color: #698FA5;
+                          }
+                        }
+                      }
+                    }
+
+                    .items {
+                      .item {
+                        .TX {
+                          color: #698FA5;
+                          ;
+                        }
+
+                        .img-TX {
+                          aspect-ratio: 46/17.332;
+                          @include iconContain($yagisan-lucky-item);
+
+                          @include pc {
+                            width: clamp(51px, p(51), 100px);
+                          }
+
+                          @include sp {
+                            width: 80%;
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  .book--type--graph {
+                    .graph--pict {
+                      background-image: pentagon-graph-type(encode('#698FA5'));
+                    }
+                  }
+                }
+              }
+
+              .book--contents {
+                background: rgba(105, 143, 165, 0.30);
+
+                &::before {
+                  background-image: aptitude-result-book-contents-arrow(encode('#698FA5'));
+                }
+
+                &--title {
+                  &::before {
+                    background-image: aptitude-result-book-contents-before(encode('#698FA5'));
+                  }
+
+                  &::after {
+                    background-image: aptitude-result-book-contents-after(encode('#698FA5'));
+                  }
+
+                  .TL {
+                    color: #698FA5;
+                  }
+                }
+
+                &--inner {
+
+                  .TX {
+
+                    &-border {
+
+                      @include pc {
+                        background-image: linear-gradient(to right, #698FA5 clamp(4px, p(2), 2px), transparent clamp(4px, p(2), 2px));
+                      }
+
+                      @include sp {
+                        background-image: linear-gradient(to right, #698FA5 s(2), transparent s(2));
+                      }
+
+                      .TX-color {
+                        color: #698FA5;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .paper {
+            background: #698FA5;
+          }
+
+          .pict {
+            .pict--inner {
+              .pict--img {
+                @include imgContain("aptitude-result-characters/yagisan.webp");
+                aspect-ratio: 436/397;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 135%;
+              }
+            }
+          }
+        }
+
+        // 16(エラー)
+        &:nth-child(16) {
+
+          .profile_book {
+            &--joint {
+              .joint--hole {
+                &:nth-child(n+3) {
+                  background: #bababa;
+                }
+              }
+            }
+
+            &--inner {
+              .book--title {
+                .book--pict {}
+
+                .TL {
+                  color: #bababa;
+                }
+              }
+
+              .book--type {
+                background: #bababa10;
+
+                .book--type--inner {
+                  .book--type--contents {
+                    .text {
+                      .TX {
+                        &-border {
+                          .TX-BK {
+                            color: #bababa;
+                          }
+                        }
+                      }
+                    }
+
+                    .items {
+                      .item {
+                        .TX {
+                          color: #bababa;
+                          ;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+
+              .book--contents {
+                background: #bababa30;
+
+                &--title {
+
+                  .TL {
+                    color: #bababa;
+                  }
+                }
+
+                &--inner {
+
+                  .TX {
+
+                    &-border {
+
+                      @include pc {
+                        background-image: linear-gradient(to right, #bababa clamp(4px, p(2), 2px), transparent clamp(4px, p(2), 2px));
+                      }
+
+                      @include sp {
+                        background-image: linear-gradient(to right, #bababa s(2), transparent s(2));
+                      }
+
+                      .TX-color {
+                        color: #bababa;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .paper {
+            background: #bababa;
+          }
+        }
+      }
+    }
+
+    .aptitude-result__btns {
+      position: absolute;
+      display: flex;
+      justify-content: space-between;
+      z-index: 3;
+
+      @include pc {
+        top: pmin(20);
+        right: pmin(20);
+        gap: pmin(20);
+      }
+
+      @include sp {
+        top: s(-40);
+        right: s(-10);
+        gap: s(20);
+      }
+
+      .btn {
+        border-radius: 10px;
+        background: #F38549;
+        box-shadow: -4px -4px 8px 0px rgba(0, 0, 0, 0.15) inset, 4px 4px 8px 0px rgba(247, 229, 229, 0.25) inset;
+
+        @include pc {
+          padding: pmi(10) pmi(20);
+        }
+
+        @include sp {
+          padding: s(10) s(20);
+        }
+
+        &:nth-child(2) {
+          background: #62C7D5;
+        }
+
+        .TX {
+          @include wt700;
+          color: #FFF;
+
+          @include pc {
+            font-size: pmi(16);
+          }
+
+          @include sp {
+            font-size: s(16);
+          }
+        }
+
+      }
+    }
+
+    .aptitude-result__character {
+
+      @include pc {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        right: 0;
+        transform: translateX(20%);
+        width: clamp(600px, p(650), 700px);
+        height: 100%;
+      }
+
+      @include sp {
+        margin-top: s(50);
+      }
+
+      .character--message {
+        border-radius: 30px;
+        background: #FFF;
+        margin: 0 auto;
+        aspect-ratio: 351/222;
+
+        @include pc {
+          width: 52%;
+          padding: pmi(35) pmi(20);
+          position: absolute;
+          top: 8%;
+          left: 0;
+          right: 0;
+        }
+
+        @include sp {
+          padding: s(35) s(20);
+        }
+
+        .character--message--inner {
+          overflow-y: scroll;
+          height: 100%;
+
+          .TX {
+            color: #646464;
+            @include wt700;
+            line-height: 175%;
+
+            @include pc {
+              font-size: pmi(20);
+            }
+
+            @include sp {
+              font-size: s(20);
+            }
+          }
+        }
+      }
+
+      .character--texture {
+        aspect-ratio: 1/1;
+
+        @include pc {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          transform: translateY(30%);
+          width: 100%;
+        }
+
+        iframe {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+    }
+
+    @media screen and (max-width: 1100px) and (min-width: 768px) {
+      --padding-top: 50px;
+      padding-top: var(--padding-top);
+
+      .aptitude-result__container {
+        height: calc(80% - var(--padding-top));
+        width: 90%;
+        margin: 0 auto;
+        border-radius: 10px;
+      }
+
+      .aptitude-result__character {
+        position: absolute;
+        top: unset;
+        bottom: 0;
+        right: 0;
+        transform: translateX(0);
+        width: 100%;
+        height: 20%;
+
+        .character--message {
+          margin: unset;
+          top: 7%;
+          left: p(20);
+          right: unset;
+          aspect-ratio: 351/100;
+
+          .character--message--inner {
+            overflow-y: scroll;
+            height: 100%;
+          }
+        }
+
+        .character--texture {
+          left: unset;
+          right: 0;
+          transform: translateY(30%);
+          width: clamp(300px, p(561), 600px);
+        }
+      }
+    }
+  }
+}

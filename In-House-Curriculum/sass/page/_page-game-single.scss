@@ -1,0 +1,325 @@
+@use "../global"as *;
+@use "../cooperator-2/globalCooperator-2"as *;
+
+/* -----------------------
+  page-game-single
+----------------------- */
+.game-wrap {
+  #game-single_inner {
+
+    @include pc {
+      @include iconContain($game-inner-single-bg);
+    }
+
+    @include sp {
+      @include iconContain($game-inner-single-bg-sp);
+    }
+
+    .game-single_wrap {
+      @include sp {
+        padding: min(s(20), 20px) min(s(10), 10px) min(s(150), 150px);
+      }
+    }
+
+
+  }
+}
+
+.game-single_wrap {
+  display: flex;
+
+  @include pc {
+    height: 100%;
+    gap: p(12);
+    padding: pm(47) pm(53);
+  }
+
+  @include sp {
+    flex-direction: column;
+    gap: min(s(20), 20px);
+    padding: min(s(10), 10px);
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+  }
+
+  .game-single_comment {
+    background: #3D5361;
+    height: fit-content;
+    position: relative;
+
+    @include pc {
+      width: 30%;
+      min-height: pm(250);
+      padding: pm(11) pm(11) pm(60);
+    }
+
+    @include sp {
+      width: 100%;
+      padding: min(s(10), 10px) min(s(10), 10px) min(s(60), 60px);
+    }
+
+    .game-single_comment_title {
+      @include iconContain($game-title-frame);
+      width: fit-content;
+      margin: 0 auto;
+
+      @include pc {
+        padding: pm(8) pm(34) pm(9);
+        margin-bottom: pm(17);
+      }
+
+      @include sp {
+        padding: min(s(8), 8px) min(s(34), 34px) min(s(9), 9px);
+        margin-bottom: min(s(17), 17px);
+      }
+
+      .TL {
+        color: #F0FAED;
+        text-align: center;
+
+        @include pc {
+          font-size: pm(18);
+        }
+
+        @include sp {
+          font-size: min(s(18), 18px);
+        }
+      }
+    }
+
+    .game-single_comment_selection {
+
+      @include pc {
+        padding-left: pm(11);
+      }
+
+      @include sp {
+        padding-left: min(s(11), 11px);
+      }
+
+      p {
+        color: #F0FAED;
+        line-height: 150%;
+
+        @include pc {
+          font-size: pm(16);
+        }
+
+        @include sp {
+          font-size: min(s(16), 16px);
+        }
+      }
+    }
+
+    .comment-list {
+
+      .comment-author,
+      .commentmetadata,
+      .reply {
+        display: none;
+      }
+    }
+
+
+    .game-single_comment_input {
+      .comment-respond {
+
+        .comment-reply-title,
+        .logged-in-as {
+          display: none;
+        }
+
+        .comment-form {
+          display: flex;
+          align-items: center;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 90%;
+
+          @include pc {
+            bottom: pm(11);
+            gap: pm(10);
+          }
+
+          @include sp {
+            bottom: min(s(11), 11px);
+            gap: min(s(10), 10px);
+          }
+
+          .comment-form-comment {
+            width: 100%;
+            position: relative;
+
+            @include pc {
+              height: pm(40);
+              padding-inline: pm(3);
+            }
+
+            @include sp {
+              height: min(s(40), 40px);
+              padding-inline: min(s(3), 3px);
+            }
+
+            &::before,
+            &::after {
+              content: "";
+              position: absolute;
+              top: 50%;
+              left: 0;
+              transform: translateY(-50%);
+              background: #B6C3B2;
+
+              @include pc {
+                width: pm(6);
+                height: 80%;
+              }
+
+              @include sp {
+                width: min(s(6), 6px);
+                height: min(s(80), 80%);
+              }
+            }
+
+            &::after {
+              left: unset;
+              right: 0;
+            }
+
+            label {
+              display: none;
+            }
+
+
+            textarea {
+              width: 100%;
+              height: 100%;
+              box-sizing: border-box;
+              border: none;
+              font-family: 'BestTenDot', sans-serif;
+              background: #B6C3B2;
+              color: #3D5361;
+              outline: none;
+              resize: none;
+
+              @include pc {
+                padding: pm(10) pm(10);
+                font-size: pm(14);
+              }
+
+
+              @include sp {
+                padding: min(s(10), 10px) min(s(10), 10px);
+                font-size: min(s(14), 14px);
+              }
+            }
+          }
+
+
+          .form-submit {
+            .submit {
+              font-family: 'BestTenDot', sans-serif;
+              flex-shrink: 0;
+              border: 3px solid #F0FAED;
+              background: #B6C3B2;
+              padding: 0;
+              margin: 0;
+              aspect-ratio: 1/1;
+              color: #3D5361;
+
+              @include pc {
+                width: pm(40);
+                font-size: pm(14);
+              }
+
+              @include sp {
+                width: min(s(40), 40px);
+                font-size: min(s(14), 14px);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .game-single_content {
+    background: #3D5361;
+    @include pc {
+      width: 80%;
+      height: 95%;
+      padding: pm(11) pm(10) pm(8);
+      margin: 0 auto;
+    }
+
+    @include sp {
+      width: 100%;
+      padding: min(s(5), 5px);
+    }
+
+    &_wrap {
+      background: #3D5361;
+      border: solid #F0FAED;
+
+      @include pc {
+        border-width: pm(3);
+        height: 100%;
+        overflow-y: scroll;
+        padding: pm(40) pm(47) pm(30) pm(40);
+      }
+
+      @include sp {
+        border-width: min(s(2), 2px);
+        padding: min(s(10), 10px);
+      }
+
+      &_inner {
+
+        .game-single_content_title {
+
+          @include pc {
+            margin-bottom: pm(30);
+          }
+
+          @include sp {
+            margin-bottom: min(s(30), 30px);
+          }
+
+          .TL {
+            color: #F0FAED;
+
+            @include pc {
+              font-size: pm(20);
+            }
+
+            @include sp {
+              font-size: min(s(20), 20px);
+            }
+          }
+        }
+
+        .game-single_content_text {
+
+          p,
+          span {
+            color: #F0FAED;
+            line-height: 150%;
+            word-break: break-all;
+
+            @include pc {
+              font-size: pm(16);
+            }
+
+            @include sp {
+              font-size: min(s(16), 16px);
+            }
+          }
+
+          // img {
+          //   width: 100%;
+          // }
+        }
+      }
+    }
+  }
+}
