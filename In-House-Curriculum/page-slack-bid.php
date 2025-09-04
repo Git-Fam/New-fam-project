@@ -21,17 +21,17 @@ get_header();
                     </div>
 
                     <!-- 有料会員、管理者は表示。無料会員は非表示 -->
-                    <?php echo do_shortcode('[contact-form-7 id="55a6ff9" title="Slack-bid"]'); ?>
+                    <?php echo do_shortcode('[contact-form-7 id="5311bf3" title="Slack-bid"]'); ?>
 
-                    <div class="pc sp">
+                    <!-- <div class="pc sp">
                         <?php echo do_shortcode('[swpm_profile_form]'); ?>
-                    </div>
+                    </div> -->
 
                     <!-- 会員レベル表示 -->
                     <!-- クラス名swpm-form-input-wrap swpm-form-membership-level-input-wrapの値をpに表示 -->
-                    <p id="membership-level-display" class="membership-level-text" style="margin: 10px 0; padding: 10px; background: #e8f5e8; border: 1px solid #4caf50; border-radius: 4px; color: #2e7d32; font-weight: bold;"></p>
+                    <!-- <p id="membership-level-display" class="membership-level-text" style="margin: 10px 0; padding: 10px; background: #e8f5e8; border: 1px solid #4caf50; border-radius: 4px; color: #2e7d32; font-weight: bold;"></p> -->
 
-                    <script>
+                    <!-- <script>
                         // ページ読み込み完了後に実行
                         document.addEventListener('DOMContentLoaded', function() {
                             // 会員レベル情報を取得して表示
@@ -136,7 +136,7 @@ get_header();
 
                             // フォームが動的に更新される可能性があるため、定期的にチェック
                         });
-                    </script>
+                    </script> -->
 
 
                 </div>
@@ -144,6 +144,7 @@ get_header();
         </div>
     </div>
 </div>
+
 
 
 <!-- 背景アニメーション用  -->

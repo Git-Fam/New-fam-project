@@ -66,35 +66,38 @@ function get_users_by_coins() {
     return array_values($filtered_users);
 }
 
-// 現在のユーザーの質問数を取得
-$question_comment_count = get_user_meta($current_user->ID, '_question_comment_count', true);
-$question_comment_count = $question_comment_count ? (int) $question_comment_count : 0;
-
-// 全ユーザーを質問コメント数でランキングする関数
-function get_users_by_question_comment_count() {
-    $users = get_users(array('number' => -1));
-    $users_with_counts = [];
+// 全ユーザーを進捗数で取得
+function get_users_by_progress_count() {
+    $users = get_users(['number' => -1]);
+    $progress_users = [];
 
     foreach ($users as $user) {
         if (!is_valid_role($user->ID)) continue;
 
-        $count = get_user_meta($user->ID, '_question_comment_count', true);
-        $count = $count ? (int)$count : 0;
+        $user_meta = get_user_meta($user->ID);
+        $count_100 = 0;
 
-        $users_with_counts[] = [
+        foreach ($user_meta as $key => $values) {
+            // 値が '100' のカスタムフィールドをカウント
+            if (isset($values[0]) && $values[0] === '100') {
+                $count_100++;
+            }
+        }
+
+        $progress_users[] = [
             'user' => $user,
-            'question_count' => $count
+            'progress_count' => $count_100
         ];
     }
 
-    usort($users_with_counts, function($a, $b) {
-        return $b['question_count'] - $a['question_count'];
+    // progress_count が多い順にソート
+    usort($progress_users, function ($a, $b) {
+        return $b['progress_count'] - $a['progress_count'];
     });
 
-    return array_map(function($item) {
-        return $item['user'];
-    }, $users_with_counts);
+    return $progress_users;
 }
+
 
 // 今月のログイン日数を取得する関数
 function get_user_login_days_this_month($user_id) {
@@ -184,19 +187,20 @@ foreach ($users as $index => $user) {
     }
 }
 
-// 現在のユーザーの質問数ランキング順位を計算
-$current_user_question_rank = 0; // 初期値
-$question_users = get_users_by_question_comment_count();
+$progress_users = get_users_by_progress_count();
 
-foreach ($question_users as $index => $user) {
-    $question_comment_count = get_user_meta($user->ID, '_question_comment_count', true);
-    $question_comment_count = $question_comment_count ? (int)$question_comment_count : 0; // デフォルト値を設定
+$current_user_progress_rank = 0;
+$current_user_progress_count = 0;
 
-    if ($user->ID == $current_user->ID) {
-        $current_user_question_rank = $index + 1; // 順位は0から始まるため+1
+foreach ($progress_users as $index => $item) {
+    if ($item['user']->ID == $current_user->ID) {
+        $current_user_progress_rank = $index + 1;
+        $current_user_progress_count = $item['progress_count'];
         break;
     }
 }
+
+
 
 ?>
 
@@ -245,14 +249,15 @@ foreach ($question_users as $index => $user) {
                                 <p class="point"><?php echo number_format($user_coins); ?><span> コイン</span></p>
                             </div>
                         </div>
-                        <!-- 質問数情報 -->
-                        <div id="question-info" class="result hidden">
+                        <!-- 進捗数情報 -->
+                        <div id="progress-info" class="result hidden">
                             <div class="result-box">
-                                <p class="number"><?php echo $current_user_question_rank; ?></p>
+                                <p class="number"><?php echo $current_user_progress_rank; ?></p>
                                 <div class="icon"></div>
-                                <p class="point"><?php echo number_format($question_comment_count); ?><span> 回</span></p>
+                                <p class="point"><?php echo number_format($current_user_progress_count); ?> <span>クリア</span></p>
                             </div>
                         </div>
+
 
                         <!-- ログイン日数情報 -->
                         <!-- <div id="login-days-info" class="result hidden">
@@ -371,36 +376,30 @@ foreach ($question_users as $index => $user) {
                             </ul>
                         </div>
                     </div>
-                    <!-- 質問数ランキング -->
-                    <div id="question-ranking" class="ranking-bord hidden">
+                    <!-- 進捗ランキング -->
+                    <div id="progress-ranking" class="ranking-bord hidden">
                         <div class="TL-bg">
-                            <p class="TL">質問数ランキング</p>
+                            <p class="TL">成長ランキング</p>
                         </div>
                         <div class="ranking-list">
                             <div class="list-item top-group">
                                 <ul class="rank">
-                                <?php
-                                    // 上位3名を表示順に合わせて出力
+                                    <?php
                                     $rank_positions = [1 => 'second', 0 => 'r-first', 2 => 'third'];
                                     foreach ($rank_positions as $index => $rank_class) {
-                                        if (!isset($question_users[$index])) continue;
-
-                                        // コイン情報を取得
-                                        $user = $question_users[$index];
-                                        $question_comment_count = get_user_meta($user->ID, '_question_comment_count', true);
-                                        $question_comment_count = $question_comment_count ? (int) $question_comment_count : 0;                                        
-                                        // 表示
+                                        if (!isset($progress_users[$index])) continue;
+                                        $user = $progress_users[$index]['user'];
+                                        $count = $progress_users[$index]['progress_count'];
                                         ?>
                                         <li class="rank-item <?php echo esc_attr($rank_class); ?>">
                                             <div class="img">
-                                                <div class="user-icon"><?php display_character_for_user($user->ID); ?>
-</div>
+                                                <div class="user-icon"><?php display_character_for_user($user->ID); ?></div>
                                             </div>
                                             <div class="name-box">
                                                 <p class="name"><?php echo esc_html($user->display_name); ?></p>
                                                 <div class="point-box">
                                                     <div class="icon"></div>
-                                                    <p class="point"><?php echo number_format( $question_comment_count); ?> <span>回</span></p>
+                                                    <p class="point"><?php echo number_format($count); ?> <span>クリア</span></p>
                                                 </div>
                                             </div>
                                         </li>
@@ -410,24 +409,19 @@ foreach ($question_users as $index => $user) {
                                 </ul>
                             </div>
                             <ul class="onward">
-                                <?php for ($i = 3; $i < min(20, count($question_users)); $i++): ?>
+                                <?php for ($i = 3; $i < min(20, count($progress_users)); $i++): ?>
                                     <?php
-                                    // ユーザー情報の取得
-                                    $user = $question_users[$i];
-                                    $user_name = $user->display_name;
-                                    $question_comment_count = get_user_meta($user->ID, '_question_comment_count', true);
-                                    $question_comment_count = $question_comment_count ? (int) $question_comment_count : 0;
-                                    $avatar_url = get_avatar_url($user->ID);
+                                    $user = $progress_users[$i]['user'];
+                                    $count = $progress_users[$i]['progress_count'];
                                     ?>
                                     <li>
                                         <div class="img">
-                                            <div class="user-icon"><?php display_character_for_user($user->ID); ?>
-</div>
+                                            <div class="user-icon"><?php display_character_for_user($user->ID); ?></div>
                                         </div>
-                                        <p class="name"><?php echo esc_html($user_name); ?></p>
+                                        <p class="name"><?php echo esc_html($user->display_name); ?></p>
                                         <div class="point-box">
                                             <div class="icon"></div>
-                                            <p class="point"><?php echo number_format($question_comment_count); ?> <span>回</span></p>
+                                            <p class="point"><?php echo number_format($count); ?> <span>クリア</span></p>
                                         </div>
                                     </li>
                                 <?php endfor; ?>

@@ -1,15 +1,18 @@
 window.addEventListener("DOMContentLoaded", function () {
+	// rAF のフォールバック
 	window.requestAnimationFrame =
 		window.requestAnimationFrame ||
 		window.mozRequestAnimationFrame ||
 		window.webkitRequestAnimationFrame;
 
-	const canvas = document.querySelector("canvas");
-	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
-	const ctx = canvas.getContext("2d");
-	ctx.globalCompositeOperation = "source-over";
+	// confetti のコンテナと canvas を取る（コンテナ内の canvas を優先）
+	const confetti = document.querySelector(".confetti");
+	const canvas =
+		(confetti && confetti.querySelector("canvas")) ||
+		document.querySelector("canvas");
 
+	// --- canvas があるときだけ描画系を初期化 ---
+	let ctx = null;
 	const particles = [];
 	let pIndex = 0;
 
@@ -38,25 +41,26 @@ window.addEventListener("DOMContentLoaded", function () {
 		{ type: "color", color: "#FFF" },
 	];
 
+	function getRandom(min, max) {
+		return Math.random() * (max - min) + min;
+	}
+
 	function Dot(x, y, gradIdx) {
 		this.x = x;
 		this.y = y;
 		this.gradIdx = gradIdx;
-
 		const angle = getRandom(Math.PI * 1.15, Math.PI * 1.85);
 		const speed = getRandom(7, 15);
 		this.vx = Math.cos(angle) * speed;
 		this.vy = Math.sin(angle) * speed;
-
 		this.size = gradIdx === 3 ? 15 : Math.floor(getRandom(23, 27));
-		this.gravity = getRandom(0.18, 0.14);
+		this.gravity = getRandom(0.14, 0.18);
 		this.wind = getRandom(-0.06, 0.06);
 		this.degree = getRandom(0, 360);
 		this.rotation = getRandom(0, Math.PI * 2);
 		this.rotateSpeed = getRandom(-0.13, 0.13);
 		this.life = 0;
 		this.maxlife = 840 + Math.random() * 1120;
-
 		particles[pIndex] = this;
 		this.id = pIndex++;
 	}
@@ -99,17 +103,19 @@ window.addEventListener("DOMContentLoaded", function () {
 		ctx.fill();
 		ctx.restore();
 
-		if (this.life >= this.maxlife || this.y > canvas.height + 50) {
+		if (this.life >= this.maxlife || (canvas && this.y > canvas.height + 50)) {
 			delete particles[this.id];
 		}
 	};
 
-	window.addEventListener("resize", function () {
+	function resizeCanvas() {
+		if (!canvas) return;
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
-	});
+	}
 
 	function launchConfetti() {
+		if (!canvas || !ctx) return;
 		const NUM = 160;
 		for (let i = 0; i < NUM; i++) {
 			const idx = i % gradients.length;
@@ -122,27 +128,35 @@ window.addEventListener("DOMContentLoaded", function () {
 	}
 
 	function loop() {
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
-		for (let i in particles) {
-			if (particles[i]) particles[i].draw();
+		if (canvas && ctx) {
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			for (let i in particles) {
+				if (particles[i]) particles[i].draw();
+			}
 		}
 		requestAnimationFrame(loop);
 	}
-	loop();
 
-	function getRandom(min, max) {
-		return Math.random() * (max - min) + min;
+	if (canvas) {
+		// ここで初期化（無いページでは一切触らない）
+		resizeCanvas();
+		ctx = canvas.getContext("2d");
+		if (ctx) {
+			ctx.globalCompositeOperation = "source-over";
+			window.addEventListener("resize", resizeCanvas);
+			loop();
+		}
 	}
 
-	const confetti = document.querySelector(".confetti");
+	// 閉じるボタン
 	const closeBtn = document.querySelector(".close-area");
-
-	if (closeBtn) {
+	if (closeBtn && confetti) {
 		closeBtn.addEventListener("click", function () {
 			confetti.classList.remove("show");
 		});
 	}
 
+	// 進捗ボタンの表示監視
 	const observer = new MutationObserver(() => {
 		const pass = document.querySelector(".hdq_result_pass");
 		const btnWrapper = document.querySelector(
@@ -168,6 +182,7 @@ window.addEventListener("DOMContentLoaded", function () {
 		subtree: true,
 	});
 
+	// 完了ボタン処理
 	const btnWrapper = document.querySelector(
 		".progress-complete-button-wrapper"
 	);
@@ -187,12 +202,13 @@ window.addEventListener("DOMContentLoaded", function () {
 					tag_slug: tagSlug,
 				}),
 			})
-				.then((res) => res.json()) // ← これを絶対に入れる！
+				.then((res) => res.json())
 				.then((data) => {
 					if (data.success) {
 						// 紙吹雪演出
 						if (confetti) {
 							confetti.classList.add("show");
+							if (canvas && ctx) launchConfetti();
 							setTimeout(() => {
 								confetti.classList.remove("show");
 							}, 5000);
@@ -206,7 +222,6 @@ window.addEventListener("DOMContentLoaded", function () {
 						// 次の記事リンクを表示
 						const nextUrl = btnWrapper.dataset.nextUrl;
 						if (nextUrl) {
-							// 「次の記事へ」リンクを表示
 							document.querySelectorAll(".next-post-link").forEach((link) => {
 								link.style.display = "block";
 							});

@@ -37,10 +37,10 @@ $(function () {
 		if (!$("#point-ranking").hasClass("hidden")) {
 			$(".switch-btn01")
 				.removeClass("coin-rank point-rank")
-				.addClass("question-rank")
-				.html('<p class="switch-btn-TX question-rank-TX">質問数ランキング</p>');
+				.addClass("progress-rank")
+				.html('<p class="switch-btn-TX progress-rank-TX">成長ランキング</p>');
 			$(".switch-btn02")
-				.removeClass("question-rank point-rank")
+				.removeClass("progress-rank point-rank")
 				.addClass("coin-rank")
 				.html('<p class="switch-btn-TX coin-rank-TX">コインランキング</p>');
 		}
@@ -48,21 +48,21 @@ $(function () {
 		if (!$("#coin-ranking").hasClass("hidden")) {
 			$(".switch-btn01")
 				.removeClass("coin-rank point-rank")
-				.addClass("question-rank")
-				.html('<p class="switch-btn-TX question-rank-TX">質問数ランキング</p>');
+				.addClass("progress-rank")
+				.html('<p class="switch-btn-TX progress-rank-TX">成長ランキング</p>');
 			$(".switch-btn02")
-				.removeClass("question-rank point-rank")
+				.removeClass("progress-rank point-rank")
 				.addClass("point-rank")
 				.html('<p class="switch-btn-TX point-rank-TX">ポイントランキング</p>');
 		}
 
-		if (!$("#question-ranking").hasClass("hidden")) {
+		if (!$("#progress-ranking").hasClass("hidden")) {
 			$(".switch-btn01")
-				.removeClass("coin-rank question-rank")
+				.removeClass("coin-rank progress-rank")
 				.addClass("point-rank")
 				.html('<p class="switch-btn-TX coin-rank-TX">ポイントランキング</p>');
 			$(".switch-btn02")
-				.removeClass("question-rank point-rank")
+				.removeClass("progress-rank point-rank")
 				.addClass("coin-rank")
 				.html('<p class="switch-btn-TX coin-rank-TX">コインランキング</p>');
 		}
@@ -73,22 +73,22 @@ $(function () {
 
 
 	// ランキング切り替え処理
-	$(document).on("click", ".question-rank", function () {
+	$(document).on("click", ".progress-rank", function () {
 		$("#point-ranking, #point-info, #coin-ranking, #coin-info").addClass(
 			"hidden"
 		);
-		$("#question-ranking, #question-info").removeClass("hidden");
+		$("#progress-ranking, #progress-info").removeClass("hidden");
 	});
 
 	$(document).on("click", ".coin-rank", function () {
 		$(
-			"#point-ranking, #point-info, #question-ranking, #question-info"
+			"#point-ranking, #point-info, #progress-ranking, #progress-info"
 		).addClass("hidden");
 		$("#coin-ranking, #coin-info").removeClass("hidden");
 	});
 
 	$(document).on("click", ".point-rank", function () {
-		$("#coin-ranking, #coin-info, #question-ranking, #question-info").addClass(
+		$("#coin-ranking, #coin-info, #progress-ranking, #progress-info").addClass(
 			"hidden"
 		);
 		$("#point-ranking, #point-info").removeClass("hidden");

@@ -1133,6 +1133,7 @@
           position: absolute;
           cursor: pointer;
           opacity: 0;
+          display: none;
           transition: all 0.3s ease;
 
           @include pc {
@@ -1230,6 +1231,7 @@
 
           .switch-btn {
             opacity: 0;
+            display: block;
             transition: all 0.3s ease;
             transform: translateY(100%);
             animation: up 0.5s ease 0s forwards;

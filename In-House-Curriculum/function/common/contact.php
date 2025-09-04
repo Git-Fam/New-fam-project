@@ -1,14 +1,14 @@
 <?php
 
 // Mailpit用のSMTP設定
-add_action('phpmailer_init', function ($phpmailer) {
-  $phpmailer->isSMTP();
-  $phpmailer->Host = 'localhost';
-  $phpmailer->Port = 1025;
-  $phpmailer->SMTPSecure = false;
-  $phpmailer->SMTPAuth = false;
-  $phpmailer->SMTPAutoTLS = false;
-});
+// add_action('phpmailer_init', function ($phpmailer) {
+//   $phpmailer->isSMTP();
+//   $phpmailer->Host = 'localhost';
+//   $phpmailer->Port = 1025;
+//   $phpmailer->SMTPSecure = false;
+//   $phpmailer->SMTPAuth = false;
+//   $phpmailer->SMTPAutoTLS = false;
+// });
 
 // コンタクトフォーム７pタグ削除
 add_filter('wpcf7_autop_or_not', 'wpcf7_autop_return_false');

@@ -1,4 +1,4 @@
-@use "../global" as *;
+@use "../global"as *;
 
 /* -----------------------
   slack-bid
@@ -25,6 +25,66 @@
     }
   }
 
+
+  .input-area {
+    margin-top: 100px;
+    .label {
+      display: block;
+      margin: 30px auto 0px;
+      width: fit-content;
+
+      &-TL {
+        font-size: 16px;
+        width: 250px;
+        display: inline-block;
+      }
+
+      input {
+        height: 30px;
+        border: 1px solid #e4e4e4;
+      }
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    .textbox {
+      margin: 100px auto 0px;
+      max-width: 560px;
+      .slack-bid--TL{
+        @include wt600;
+        font-size: 18px;
+      }
+      .slack-bid--TX{
+        font-size: 14px;
+        margin-top: 15px;
+        line-height: 140%;
+      }
+
+    }
+
+    .wpcf7-submit{
+      border: none;
+      background-color: #ffa36a;
+      border-radius: 5px;
+      padding: 10px 40px;
+      font-size: 18px;
+      @include wt600;
+      color: #FFF;
+      cursor: pointer;
+      margin: 60px auto 0px;
+      display: block;
+      transition: all 0.2s ease;
+      letter-spacing: 4px;
+
+      &:hover{
+        transition: all 0.2s ease;
+        opacity: 0.8;
+      }
+    }
+
+  }
+
   .contents {
     display: flex;
     flex-direction: column;
@@ -35,7 +95,7 @@
       flex-direction: column;
       gap: 10px;
 
-      &.checkbox__area{
+      &.checkbox__area {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -70,7 +130,7 @@
           font-size: 16px;
           line-height: 1.5;
           box-sizing: border-box;
-          
+
           @include pc {
             font-size: 16px;
           }
@@ -100,15 +160,16 @@
           color: #000;
           cursor: pointer;
           transition: all 0.3s ease;
-          
+
           &:hover {
             background-color: #000;
             color: #fff;
           }
+
           @include pc {
             font-size: 16px;
           }
-  
+
           @include sp {
             font-size: 14px;
           }

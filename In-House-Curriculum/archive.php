@@ -55,7 +55,6 @@ if ($last_progress_key) {
         }
         wp_reset_postdata();
     }
-    error_log($last_progress_key);
 }
 
 
@@ -161,8 +160,6 @@ wp_localize_script('cooperator-script', 'wpData', array(
     'lastPostProgress' => $last_post_progress, // 最後の投稿に紐付く進捗情報（1週間経過フラグ付き）
     'last_progress_key' => get_user_meta(get_current_user_id(), 'last_progress_key', true)
 ));
-error_log('last_progress_key: ' . print_r($last_progress_key, true));
-error_log('active_category_slug: ' . print_r($active_category_slug, true));
 
 
 
