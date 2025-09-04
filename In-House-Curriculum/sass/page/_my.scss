@@ -1,4 +1,4 @@
-@use "../global" as *;
+@use "../global"as *;
 
 /* -----------------------
   my
@@ -1390,15 +1390,17 @@
             }
 
             // プロフィールフォーーーーーーム
-            #swpm-profile-form {
+            #swpm-editprofile-form {
 
-              div {
-                .swpm-form-row {
+              table {
+                tr {
                   margin-bottom: 20px;
+                  display: block;
 
-                  .swpm-form-label-wrap {
-                    @include wt900;
+                  td {
+                    display: block;
                     color: $F-877E61;
+                    @include wt900;
                     font-size: 16px;
                     margin-bottom: 10px;
 
@@ -1407,38 +1409,40 @@
                       color: $F-877E61;
                       font-size: 16px;
                     }
-                  }
 
-                  .swpm-form-input-wrap {
-                    @include wt900;
-                    color: $F-877E61;
-                    font-size: 16px;
-
-                    input {
-                      -webkit-appearance: none;
-                      -moz-appearance: none;
-                      appearance: none;
-                      box-sizing: border-box;
-                      width: 100%;
-                      padding: 10px;
-                      margin: 0;
-                      border: none;
-                      background: $P-F5EADE;
-                      border-radius: 5px;
+                    &:last-child {
                       @include wt900;
                       color: $F-877E61;
                       font-size: 16px;
+
+                      input {
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+                        appearance: none;
+                        box-sizing: border-box;
+                        width: 100%;
+                        padding: 10px;
+                        margin: 0;
+                        border: none;
+                        background: $P-F5EADE;
+                        border-radius: 5px;
+                        @include wt900;
+                        color: $F-877E61;
+                        font-size: 16px;
+                      }
+
                     }
                   }
                 }
 
-                .swpm-company-row,
-                .swpm-country-row {
+
+                .swpm-profile-company-row,
+                .swpm-profile-country-row {
                   display: none;
                 }
               }
 
-              button[type="submit"] {
+              input[type="submit"] {
                 -webkit-appearance: none;
                 -moz-appearance: none;
                 appearance: none;
@@ -1543,17 +1547,18 @@
     }
   }
 
-  .my--menu-slack-bid{
+  .my--menu-slack-bid {
     position: absolute;
     z-index: 10;
     transform-origin: bottom right;
     bottom: 1%;
     right: 1%;
-    
-    @include pc{
+
+    @include pc {
       transform: scale(0.5);
     }
-    @include sp{
+
+    @include sp {
       transform: scale(0.7);
     }
   }

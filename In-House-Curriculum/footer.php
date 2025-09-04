@@ -15,6 +15,7 @@
   <script src="<?php echo get_template_directory_uri(); ?>/js/cover.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/js/curriculum-tab.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/js/road-random.js"></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/archive.js"></script>
 
 <?php endif; ?>
 

@@ -21,7 +21,7 @@ get_header();
                     </div>
 
                     <!-- 有料会員、管理者は表示。無料会員は非表示 -->
-                    <?php echo do_shortcode('[contact-form-7 id="5311bf3" title="Slack-bid"]'); ?>
+                    <?php echo do_shortcode('[contact-form-7 id="df0fd71" title="Slack-bid"]'); ?>
 
                     <!-- <div class="pc sp">
                         <?php echo do_shortcode('[swpm_profile_form]'); ?>

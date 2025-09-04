@@ -4,7 +4,14 @@ if (!is_user_logged_in()) {
     exit;
 }
 
+function is_valid_role($user_id) {
+    $user = get_userdata($user_id);
+    return in_array('subscriber', (array) $user->roles, true);
+}
+
+
 get_header();
+
 
 if (!function_exists('to_safe_class')) {
 
@@ -62,6 +69,8 @@ $last_post_progress = [];
 
 // $users ループはこれだけでOK！
 foreach ($users as $user) {
+    if (!is_valid_role($user->ID)) continue;
+
     $user_id = $user->ID;
     $user_meta = get_user_meta($user_id);
 
@@ -631,95 +640,82 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                 <?php if (function_exists('simple_ajax_chat')) simple_ajax_chat(); ?>
 
                 <!-- この要素追加で新着メッセージ表示 -->
-                <a href="<?php echo home_url(); ?>/chat" id="latest-messages"></a>
+                <!-- <a href="<?php echo home_url(); ?>/chat" id="latest-messages"></a> -->
+                <ul id="latest-messages" class="chat-latest-list"></ul>
 
                 <div class="timeline-wrap">
                     <div class="timeline">
                         <?php
-                        // ログインしているユーザーのグループを取得
+                        // 現在のユーザーとそのグループを取得
                         $current_user_id = get_current_user_id();
-                        $user_group = $current_user_id ? get_user_meta($current_user_id, 'user_group', true) : null;
+                        $user_group = get_user_meta($current_user_id, 'user_group', true);
 
-                        // JavaScriptのエンキューとデータのローカライズ
-                        wp_enqueue_script('cooperator-script', get_template_directory_uri() . '/js/cooperatorScript.js', array('jquery'), null, true);
-                        wp_localize_script('cooperator-script', 'userGroupData', array(
-                            'group' => $user_group,
-                            'username' => wp_get_current_user()->user_login,
-                            'ajaxurl' => admin_url('admin-ajax.php'),
-                            'allUsersProgress' => $all_users_progress
-                        ));
-
-                        // 同じグループに所属するユーザーを取得
-                        $args = array(
+                        // 同じグループのユーザー一覧を取得
+                        $group_users = get_users(array(
                             'meta_key'   => 'user_group',
                             'meta_value' => $user_group,
-                        );
+                        ));
 
-                        $group_users = get_users($args);
-
-                        // 最新の完了項目を保持する変数
                         $latest_completion = null;
-                        $latest_completion_date = null;
 
-                        // グループユーザーの進捗をチェック
                         foreach ($group_users as $user) {
                             $user_id = $user->ID;
+
+                            // 管理者などを除外
+                            if (!is_valid_role($user_id)) continue;
+
                             $user_name = $user->display_name;
+                            $user_meta = get_user_meta($user_id);
 
-                            // ユーザーの進捗を取得（各項目の100%チェック）
-                            $progress_data = array();
-                            $user_info = add_user_info(); // add_user_info 関数で追加したフィールドを取得
+                            foreach ($user_meta as $meta_key => $meta_value) {
+                                // 対象の進捗キーかチェック
+                                if (
+                                    preg_match('/^(env|VAL|INIT|div|responsive|JQ|LP|MiniLP|Sass|React|Java|SQL|Design|SEO|Form|FAM|test|JS|wordpress|jstqb)/i', $meta_key) &&
+                                    substr($meta_key, -5) !== '_date'
+                                ) {
+                                    $value = $meta_value[0];
+                                    if ($value == '100') {
+                                        $date_meta_key = $meta_key . '_date';
+                                        $completion_date = get_user_meta($user_id, $date_meta_key, true);
+                                        if (!$completion_date) continue;
 
-                            foreach ($user_info as $key => $label) {
-                                $progress_data[$label] = get_user_meta($user_id, $key, true) ?: '0';
-                            }
+                                        // タグスラッグから投稿タイトルを取得
+                                        $task_title = $meta_key;
+                                        $task_query = new WP_Query(array(
+                                            'posts_per_page' => 1,
+                                            'tag' => $meta_key,
+                                        ));
+                                        if ($task_query->have_posts()) {
+                                            $task_query->the_post();
+                                            $task_title = get_the_title();
+                                            wp_reset_postdata();
+                                        }
 
-                            // 日時を保存するカスタムフィールド名の準備
-                            $latest_completion_date = null;  // 最新の完了日時を初期化
-                            $latest_completion = null;       // 最新の完了項目の情報を初期化
-
-                            foreach ($progress_data as $key => $value) {
-                                if ($value == '100') {
-                                    $date_field_key = $key . '_date';
-                                    $completion_date = get_user_meta($user_id, $date_field_key, true);
-                                    $formatted_date = date_i18n('n月j日 G:i', strtotime($completion_date));
-
-                                    // タグスラッグに一致する投稿タイトルを取得
-                                    $title = $key; // デフォルトはkey
-                                    $args = array(
-                                        'tag' => $key,
-                                        'posts_per_page' => 1,
-                                        'orderby' => 'date',
-                                        'order' => 'DESC',
-                                    );
-                                    $posts = get_posts($args);
-                                    if ($posts) {
-                                        $title = get_the_title($posts[0]->ID);
-                                    }
-
-                                    // 最新の完了項目かどうかをチェック
-                                    if (is_null($latest_completion_date) || strtotime($completion_date) > strtotime($latest_completion_date)) {
-                                        $latest_completion_date = $completion_date;
-                                        $latest_completion = array(
-                                            'user_name' => $user_name,
-                                            'key' => $key,
-                                            'date' => $formatted_date,
-                                            'item_id' => $user_id . '_' . $key,
-                                            'post_title' => $title // 追加
-                                        );
+                                        if (
+                                            !$latest_completion ||
+                                            strtotime($completion_date) > strtotime($latest_completion['completion_date'])
+                                        ) {
+                                            $latest_completion = array(
+                                                'user_name' => $user_name,
+                                                'post_title' => $task_title,
+                                                'completion_date' => $completion_date,
+                                                'formatted_date' => date_i18n('n月j日 G:i', strtotime($completion_date)),
+                                                'item_id' => $user_id . '_' . $meta_key
+                                            );
+                                        }
                                     }
                                 }
                             }
                         }
 
-                        // 最新の完了項目を表示
+                        // 出力
                         if ($latest_completion) {
-                            $like_count = get_option('global_like_count_' . $latest_completion['item_id'], 0); // グローバルいいね数を取得
-                            $liked_items = get_user_meta(get_current_user_id(), 'liked_items', true) ?: array();
-                            $already_liked = in_array($latest_completion['item_id'], $liked_items);
+                            $liked_items = get_user_meta($current_user_id, 'liked_items', true) ?: array();
+                            $item_id = $latest_completion['item_id'];
+                            $already_liked_any = in_array($item_id . '_heart', $liked_items) || in_array($item_id . '_hand', $liked_items) || in_array($item_id . '_cat', $liked_items);
 
                             echo '<div class="timeline-item">';
-                            echo '<h3>' . esc_html($latest_completion['user_name']) . 'さんが<br>' . esc_html($latest_completion['post_title']) . 'を完了しました' . '</h3>';
+                            echo '<h3>' . esc_html($latest_completion['user_name']) . 'さんが<br>' . esc_html($latest_completion['post_title']) . ' を完了しました！</h3>';
                             echo '</div>';
                         }
                         ?>

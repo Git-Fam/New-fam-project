@@ -301,8 +301,7 @@ foreach ($progress_users as $index => $item) {
                                     ?>
                                     <li>
                                         <div class="img">
-                                            <div class="user-icon"><?php display_character_for_user($user->ID); ?>
-</div>
+                                            <div class="user-icon"><?php display_character_for_user($user->ID); ?></div>
                                         </div>
                                         <p class="name"><?php echo esc_html($user_name); ?></p>
                                         <div class="point-box">

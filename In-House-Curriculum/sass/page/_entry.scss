@@ -1,4 +1,4 @@
-@use "../global" as *;
+@use "../global"as *;
 
 /* -----------------------
   entry
@@ -11,20 +11,20 @@
   background: radial-gradient(73.57% 73.57% at 50% 50%, #FFFFFE 50%, #DFF675 95%);
   overflow-y: scroll;
 
-  &.singin{
+  &.singin {
 
-    @include pc{
+    @include pc {
       min-height: 100vh;
       // height: unset;
       padding: 100px 0;
     }
 
-    @include sp{
+    @include sp {
       // height: unset;
       padding: 100px 0;
     }
 
-    .entry--sheet{
+    .entry--sheet {
       top: unset;
       left: unset;
       translate: unset;
@@ -40,7 +40,7 @@
     z-index: 1;
     @include imgContain('letter.webp');
     position: fixed;
-    
+
     @include pc {
       // position: absolute;
       min-width: 750px;
@@ -60,7 +60,7 @@
     left: 50%;
     translate: -50% -50%;
 
-    
+
     @include pc {
       width: 523px;
       padding: 50px 23px 70px;
@@ -126,96 +126,103 @@
       width: 100%;
       // background: #ffffff;
 
+      .swpm_error {
+        color: #cc0000;
+
+        ul {
+          margin-bottom: 20px;
+
+          li {
+            margin-top: 10px;
+          }
+        }
+      }
+
       // フォーーーーーーム
       form {
 
-        .swpm-registration-form-section {
-          display: flex;
-          flex-direction: column;
+        table {
+          width: 100%;
 
-          .swpm-username-row{
-            order: 1;
+          tbody {
+            display: flex;
+            flex-direction: column;
+          }
 
-            .swpm-form-desc{
+          tr {
+            margin-bottom: 20px;
+            display: block;
 
-              ul{
+            td {
+              display: block;
+              color: $F-877E61;
 
-                li{
-
-                  &:nth-child(2){
-                  color: transparent;
-                  position: relative;
-
-                  &::before{
-                    content: '3文字以上でご記入ください';
-                    position: absolute;
-                    top: 50%;
-                    left: 0;
-                    translate: 0 -50%;
-                    color: #cc0000 ;
-                  }
-                }
-
-                }
+              label {
+                @include wt900;
+                color: $F-877E61;
+                font-size: 16px;
               }
+
+              &:first-child {
+                margin-bottom: 10px;
+              }
+
             }
           }
-          .swpm-email-row{
+
+          .swpm-registration-username-row {
+            order: 1;
+
+          }
+
+          .swpm-registration-email-row {
             order: 2;
           }
-          .swpm-password-row{
+
+          .swpm-registration-password-row {
             order: 3;
           }
-          .swpm-repass-row{
+
+          .swpm-registration-password-retype-row {
             order: 4;
 
-            .swpm-form-desc{
+            .swpm-form-desc {
 
-              ul{
+              ul {
 
-                li{
+                li {
                   color: transparent;
                   position: relative;
 
-                  &::before{
+                  &::before {
                     content: 'パスワードが一致しません';
                     position: absolute;
                     top: 50%;
                     left: 0;
                     translate: 0 -50%;
-                    color: #cc0000 ;
+                    color: #cc0000;
                   }
 
                 }
               }
             }
           }
-          .swpm-firstname-row {
+
+          .swpm-registration-firstname-row {
             order: 6;
           }
-          .swpm-lastname-row {
+
+          .swpm-registration-lastname-row {
             order: 5;
           }
-          .swpm-membership-level-row{
+
+          .swpm-registration-membership-level-row {
             order: 7;
           }
-          .swpm-submit-section{
+
+          .swpm-before-registration-submit-section {
             order: 8;
           }
-        }
-
-        label {
-          display: block;
-          margin-bottom: 10px;
-          @include wt900;
-          color: $F-877E61;
-
-          @include pc {
-            font-size: 16px;
-          }
-
-          @include sp {}
-
         }
 
         input[type="text"],
@@ -249,7 +256,7 @@
           color: $F-F8F7F8;
         }
 
-        .swpm-subscription-button-submit{
+        .swpm-subscription-button-submit {
           margin: 0 auto !important;
           display: block;
         }
@@ -266,6 +273,7 @@
 
         .swpm-forgot-pass-link,
         .swpm-join-us-link {
+
           .swpm-login-form-pw-reset-link,
           .swpm-login-form-register-link {
             color: $F-877E61;
@@ -298,15 +306,16 @@
 
       }
 
-      .swpm-login-widget-logged{
+      .swpm-login-widget-form {
         @include column(20px);
 
-        .swpm-logged-label{
+        label {
           @include wt900;
           color: $F-877E61;
           font-size: 16px;
         }
-        .swpm-logged-value{
+
+        input {
           @include wt600;
           color: $F-877E61;
           font-size: 16px;
@@ -314,13 +323,24 @@
         }
 
         .swpm-edit-profile-link,
-        .swpm-logged-logout-link{
-          a{
+        .swpm-logged-logout-link,
+        .swpm-forgot-pass-link,
+        .swpm-join-us-link {
+          a {
             @include wt400;
             color: $F-877E61;
             font-size: 16px;
           }
         }
+      }
+
+      .swpm-registration-success-msg {
+        color: $F-877E61;
+        font-size: 16px;
+        text-align: center;
+        width: 80%;
+        margin: 20px auto 0;
+        line-height: 1.5;
       }
     }
   }
