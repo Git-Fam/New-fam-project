@@ -92,6 +92,18 @@ $(function () {
   //   });
   // });
 
+<<<<<<< HEAD
+=======
+  // メッセージ上書き
+  $(".swpm-login-error-msg").text(
+    "メールアドレスまたはパスワードが正しくありません。"
+  );
+  $(".swpm-login-form-register-link").text("新規会員登録はこちら");
+  // URLの取得と'/charged/'を追加
+  // 現在のURLを取得
+  var currentURL = window.location.origin + "/subscription/";
+  
+>>>>>>> new2_in_house_pi
 
 
 
