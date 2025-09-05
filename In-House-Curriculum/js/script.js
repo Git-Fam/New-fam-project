@@ -113,6 +113,7 @@ $(function () {
     `<div class="no-access-img-container character"></div>その疑問、すぐ解決できます！<br>スタンダードなら月15回まで質問OK。<br>つまずきを解消して、挫折しない学習へ！<br><a href="${currentURL}">プラン入会する</a>`,
     `<div class="no-access-img-container character"></div>同期との交流イベントが間もなく開催！<br>スタンダード会員以上が参加可能な特別な時間！<br>学びと刺激を持ち帰ろう！<br><a href="${currentURL}">プラン入会する</a>`,
     `<div class="no-access-img-container character"></div>クエストクリアおめでとう！<br>残りのステージはスタンダード専用です。<br>同期と一緒に最後まで走り抜けよう！<br><a href="${currentURL}">プラン入会する</a>`,
+    
   ];
 
   // 配列からランダムにメッセージを選択
