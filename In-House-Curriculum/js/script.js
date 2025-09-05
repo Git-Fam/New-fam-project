@@ -92,8 +92,6 @@ $(function () {
   //   });
   // });
 
-<<<<<<< HEAD
-=======
   // メッセージ上書き
   $(".swpm-login-error-msg").text(
     "メールアドレスまたはパスワードが正しくありません。"
@@ -103,7 +101,6 @@ $(function () {
   // 現在のURLを取得
   var currentURL = window.location.origin + "/subscription/";
   
->>>>>>> new2_in_house_pi
 
 
 
