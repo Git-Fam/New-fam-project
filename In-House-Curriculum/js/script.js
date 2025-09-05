@@ -99,6 +99,7 @@ $(function () {
   // URLの取得と'/charged/'を追加
   // 現在のURLを取得
   var currentURL = window.location.origin + "/subscription/";
+  
 
   // URLを埋め込む
   // $('.swpm-post-no-access-msg').html(`このコンテンツを閲覧するには<a href="${currentURL}">有料会員レベル</a>が必要です。`);
