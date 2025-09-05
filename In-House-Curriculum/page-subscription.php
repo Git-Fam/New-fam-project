@@ -27,7 +27,7 @@ get_header();
                 </ul>
             </div>
             <div class="plan-button">
-                <?php echo do_shortcode('[swpm_payment_button id="7853"]'); ?>
+                <?php echo do_shortcode('[swpm_payment_button id="7920"]'); ?>
             </div>
         </section>
 
@@ -46,7 +46,7 @@ get_header();
                 </ul>
             </div>
             <div class="plan-button">
-                <?php echo do_shortcode('[swpm_payment_button id="7852"]'); ?>
+                <?php echo do_shortcode('[swpm_payment_button id="7919"]'); ?>
             </div>
         </section>
 
@@ -64,7 +64,7 @@ get_header();
                 </ul>
             </div>
             <div class="plan-button">
-                <?php echo do_shortcode('[swpm_payment_button id="7851"]'); ?>
+                <?php echo do_shortcode('[swpm_payment_button id="7918"]'); ?>
             </div>
    
         </section>

@@ -794,27 +794,31 @@
               @include sp {
                 width: smi(33, 43);
                 height: smi(33, 43);
-                border:  $F-C7B82F solid s(1.5);
+                border: $F-C7B82F solid s(1.5);
                 padding-top: smi(5);
                 border-radius: smi(5);
               }
             }
 
-            // &::before {
-            //   content: "";
-            //   @include imgContain("staff-icon.webp");
-            //   display: block;
+            &.sac-user- {
+              &::before {
+                content: "";
+                @include imgContain("staff-icon.webp");
+                display: block;
 
-            //   @include pc {
-            //     width: p(53);
-            //     height: p(53);
-            //   }
+                @include pc {
+                  width: p(53);
+                  height: p(53);
+                }
 
-            //   @include sp {
-            //     width: smi(33, 43);
-            //     height: smi(33, 43);
-            //   }
-            // }
+                @include sp {
+                  width: smi(33, 43);
+                  height: smi(33, 43);
+                }
+              }
+
+            }
+
 
             .sac-chat-name-wrap {
               position: absolute;
