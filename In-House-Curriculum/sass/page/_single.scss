@@ -243,15 +243,13 @@
             background-position: center;
             background-repeat: no-repeat;
             margin-bottom: 15px;
+            aspect-ratio: 800 / 500;
+            width: 100%;
             @include pc {
-              width: p(800);
-              height: p(500);
               margin: auto;
             }
 
             @include sp {
-              width: s(250);
-              height: s(140);
               margin: auto;
             }
            

@@ -105,10 +105,10 @@ $(function () {
 
 
   // メッセージ上書き
-  $('.swpm-login-error-msg').text('メールアドレスまたはパスワードが正しくありません。');
-  $('.swpm-login-form-register-link').text('新規会員登録はこちら');
+  // $('.swpm-login-error-msg').text('メールアドレスまたはパスワードが正しくありません。');
+  // $('.swpm-login-form-register-link').text('新規会員登録はこちら');
   // URLの取得と'/charged/'を追加
-  var currentURL = window.location.href + 'charged/';
+  // var currentURL = window.location.href + 'charged/';
   // URLを埋め込む
   // $('.swpm-post-no-access-msg').html(`このコンテンツを閲覧するには<a href="${currentURL}">有料会員レベル</a>が必要です。`);
 
