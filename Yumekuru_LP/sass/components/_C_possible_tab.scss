@@ -1,0 +1,84 @@
+@use "../functions" as *;
+
+/* -----------------------
+C_possible_tab
+----------------------- */
+
+
+.C_possible_tab {
+  width: fit-content;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    aspect-ratio: 96/10;
+    background-color: #C8C8C8;
+    border-radius: 50%;
+    filter: blur(2px);
+    width: 0;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:hover {
+    &::before {
+      width: calc((60 / 100) * 100%);
+    }
+
+    .icon {
+      transform: translateY(calc((-15 / 100) * 100%));
+    }
+  }
+
+  &.is-active {
+
+    &::before {
+      width: calc((96 / 100) * 100%);
+    }
+
+    .icon {
+      transform: translateY(calc((-30 / 100) * 100%));
+    }
+  }
+
+  .icon {
+    aspect-ratio: 1;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease-in-out;
+
+    @include pc {
+      border-radius: 7.05px;
+      width: 100px;
+    }
+
+    @include sp {
+      border-radius: s(3);
+      width: s(50);
+    }
+
+    &.icon-01 {
+      @include imgContain("C_possible/possible_icon-01.webp");
+    }
+
+    &.icon-02 {
+      @include imgContain("C_possible/possible_icon-03.webp");
+    }
+
+    &.icon-03 {
+      @include imgContain("C_possible/possible_icon-06.webp");
+    }
+
+    &.icon-04 {
+      @include imgContain("C_possible/possible_icon-07.webp");
+    }
+
+    &.icon-05 {
+      @include imgContain("C_possible/possible_icon-10.webp");
+    }
+  }
+}

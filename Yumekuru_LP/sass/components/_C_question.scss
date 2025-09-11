@@ -1,0 +1,182 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_question
+----------------------- */
+
+
+.C_question {
+  position: relative;
+
+
+  @include pc {
+    margin-inline: auto;
+    max-width: 900px;
+  }
+
+  @include sp {}
+
+  &::before {
+    content: "";
+    display: block;
+    aspect-ratio: 258/181;
+    @include iconContain($duck-pair);
+    position: absolute;
+    z-index: 2;
+
+    @include pc {
+      width: 258px;
+      bottom: -161px;
+      right: -81px;
+    }
+
+    @include sp {
+      width: s(162);
+      bottom: s(-101);
+      right: s(19);
+    }
+
+  }
+
+  .question--list {
+
+    @include pc {
+      @include column(20px);
+    }
+
+    @include sp {
+      @include column(s(20));
+    }
+
+    .list--item {
+
+      &.is-active {
+        .question__area {
+        transition: border-radius 0s ease-in-out;
+
+          @include pc {
+            border-radius: 10px 10px 0 0;
+          }
+
+          @include sp {
+            border-radius: s(10) s(10) 0 0;
+          }
+
+          .icon--arrow {
+            transform: translateY(-50%) rotate(0deg);
+          }
+        }
+      }
+
+      .question__area {
+        background: #FFFEF1;
+        position: relative;
+        cursor: pointer;
+        transition: border-radius 0.3s ease-in-out;
+
+        @include pc {
+          border-radius: 10px;
+          padding: 21px 60px;
+        }
+
+        @include sp {
+          border-radius: s(10);
+          padding: s(22) s(50);
+        }
+
+        .ttl {
+          color: $F-white;
+          font-weight: 800;
+          line-height: 1.5;
+          background: $F-sub;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          aspect-ratio: 1;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+
+          @include pc {
+            width: 35px;
+            font-size: 16px;
+            left: 19px;
+          }
+
+          @include sp {
+            width: s(35);
+            font-size: s(13);
+            left: s(9);
+          }
+        }
+
+        .txt {
+
+          .TX {
+            font-weight: 800;
+            line-height: 1.5;
+
+            @include pc {
+              font-size: 16px;
+            }
+
+            @include sp {
+              font-size: s(16);
+            }
+          }
+        }
+
+        .icon--arrow {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%) rotate(540deg);
+          transition: transform 0.3s ease-in-out;
+
+          @include pc {
+            aspect-ratio: 18/10;
+            @include iconContain($question-icon-arrow-pc);
+            right: 25px;
+            width: 18px;
+          }
+
+          @include sp {
+            aspect-ratio: 16/6;
+            @include iconContain($question-icon-arrow-sp);
+            right: s(8);
+            width: s(16);
+          }
+        }
+      }
+
+
+      .answer__area {
+        background: #FFEFB4;
+        display: none;
+
+        @include pc {
+          border-radius: 0 0 10px 10px;
+          padding: 23px 31px;
+        }
+
+        @include sp {
+          border-radius: 0 0 s(10) s(10);
+          padding: s(18) s(21);
+        }
+
+        .TX {
+          font-weight: 800;
+          line-height: 1.5;
+
+          @include pc {
+            font-size: 16px;
+          }
+
+          @include sp {
+            font-size: s(13);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,167 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_btn
+----------------------- */
+
+
+.C_btn {
+
+  &--link {
+    margin-inline: auto;
+    background: rgba(244, 144, 71, 0.50);
+    position: relative;
+    display: block;
+    width: 100%;
+
+    @include pc {
+      border-radius: 20px;
+      max-width: 1080px;
+    }
+
+    @include sp {
+      border-radius: s(20);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      background: rgba(244, 144, 71, 0.50);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      transition: transform 0.3s ease-in-out;
+      z-index: 1;
+
+      @include pc {
+        width: calc(100% + 10px);
+        height: calc(100% + 10px);
+        border-radius: 20px;
+      }
+
+      @include sp {
+        width: calc(100% + s(10));
+        height: calc(100% + s(10));
+        border-radius: s(20);
+      }
+    }
+
+    &:hover {
+      padding: 0;
+
+      &::before {
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+
+      .img--wrapper {
+        animation: jumping 2s linear infinite;
+      }
+    }
+
+    .link--inner {
+      background: $F-sub;
+      position: relative;
+      z-index: 2;
+
+      @include pc {
+        padding: 22px min(40px, p(40)) 29px;
+        border-radius: 15px;
+      }
+
+      @include sp {
+        padding: s(8) 0 s(76);
+        border-radius: s(15);
+      }
+
+      .TX {
+        color: $F-white;
+        font-weight: 800;
+        line-height: 1.5;
+
+        @include pc {
+          text-align: end;
+          font-size: min(64px, p(64));
+        }
+
+        @include sp {
+          @include column(s(18));
+          align-items: center;
+          font-size: s(24);
+        }
+
+        span {
+          @include mono;
+          position: relative;
+          
+          @include pc {
+            display: inline-block;
+            font-size: min(96px, p(96));
+            margin-right: min(14px, p(14));
+            transform: translateY(3px);
+            line-height: 92.708%;
+          }
+
+          @include sp {
+            display: block;
+            width: fit-content;
+            margin-inline: auto;
+            font-size: s(96);
+            line-height: 83.333%;
+          }
+
+          &::before {
+            content: "";
+            position: absolute;
+            background: $F-white;
+            width: 100%;
+            left: 0;
+
+            @include pc {
+              height: 5px;
+              bottom: -9px;
+            }
+
+            @include sp {
+              height: s(5);
+              top: calc(100% + s(10));
+            }
+          }
+        }
+      }
+    }
+
+    .img--wrapper {
+      position: absolute;
+      z-index: 2;
+      aspect-ratio: 174 / 195;
+
+      @include pc {
+        width: min(438px, p(438));
+        top: max(-85px, p(-85));
+        left: max(-65px, p(-65));
+      }
+
+      @include me(1080, 768) {
+        width: p(350);
+      }
+
+      @include me(865, 768) {
+        left: p(-100);
+      }
+
+      @include sp {
+        width: s(260);
+        top: s(113);
+        left: 0;
+        right: 0;
+        margin-inline: auto;
+      }
+
+      .img {
+        width: 100%;
+        height: 100%;
+        @include iconContain($detective);
+      }
+    }
+  }
+}

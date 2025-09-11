@@ -1,0 +1,135 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_dress_up-tab
+----------------------- */
+
+
+.C_dress_up-tab {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  transform-origin: center;
+  position: relative;
+  cursor: pointer;
+  border-style: solid;
+  border-color: #C9C8C8;
+  background-color: #FFF;
+
+  @include pc {
+    border-width: 10px;
+  }
+
+  @include sp {
+    border-width: s(4);
+  }
+
+  &.is-active {
+    &.hover-opa {
+      opacity: 1;
+    }
+  }
+
+  .icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+
+  &.dress_up-tab__icon-01 {
+    .icon {
+      background-image: dress_up-tab__icon-01(encode('#C9C8C8'));
+      aspect-ratio: 59/56;
+      width: calc((58 / 104) * 100%);
+    }
+
+    &.is-active {
+      box-shadow: 0 0 15px 0 #77CAF4;
+      border-color: #77CAF4;
+
+      .icon {
+        background-image: dress_up-tab__icon-01(encode('#77CAF4'));
+      }
+    }
+  }
+
+  &.dress_up-tab__icon-02 {
+    .icon {
+      background-image: dress_up-tab__icon-02(encode('#C9C8C8'));
+      aspect-ratio: 59/54;
+      width: calc((58 / 104) * 100%);
+    }
+
+    &.is-active {
+      box-shadow: 0 0 15px 0 #78D070;
+      border-color: #78D070;
+
+      .icon {
+        background-image: dress_up-tab__icon-02(encode('#78D070'));
+      }
+
+    }
+  }
+
+  &.dress_up-tab__icon-03 {
+
+    .icon {
+      background-image: dress_up-tab__icon-03(encode('#C9C8C8'));
+      aspect-ratio: 59/59;
+      width: calc((58 / 104) * 100%);
+    }
+
+    &.is-active {
+      box-shadow: 0 0 15px 0 #EC9A4D;
+      border-color: #EC9A4D;
+
+      .icon {
+        background-image: dress_up-tab__icon-03(encode('#EC9A4D'));
+      }
+    }
+  }
+
+  &.dress_up-tab__icon-04 {
+
+    .icon {
+      background-image: dress_up-tab__icon-04(encode('#C9C8C8'));
+      aspect-ratio: 77/47;
+      width: calc((76 / 104) * 100%);
+    }
+
+    &.is-active {
+      box-shadow: 0 0 15px 0 #AD8764;
+      border-color: #AD8764;
+
+      .icon {
+        background-image: dress_up-tab__icon-04(encode('#AD8764'));
+      }
+    }
+  }
+
+  &.dress_up-tab__icon-05 {
+
+    .icon {
+      background-image: dress_up-tab__icon-05(encode('#C9C8C8'));
+      aspect-ratio: 49/50;
+      width: calc((49 / 104) * 100%);
+    }
+
+    &.is-active {
+      box-shadow: 0 0 15px 0 #D87E6A;
+      border-color: #D87E6A;
+
+      .icon {
+        background-image: dress_up-tab__icon-05(encode('#D87E6A'));
+      }
+    }
+  }
+}

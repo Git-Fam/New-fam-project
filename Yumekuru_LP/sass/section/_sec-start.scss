@@ -1,0 +1,84 @@
+@use "../functions" as *;
+
+/* -----------------------
+  sec-start
+----------------------- */
+
+.sec-start {
+  position: relative;
+  overflow: hidden;
+
+
+  @include pc {
+    padding: 50px 100px 120px;
+  }
+
+  @include sp {
+    padding: s(60) s(20) s(118);
+  }
+
+  &--inr {
+    position: relative;
+    z-index: 2;
+
+    .sec-start--ttl {
+
+      @include pc {
+        margin-bottom: 100px;
+      }
+
+      @include sp {
+        margin-bottom: s(46);
+      }
+
+      .C_title {
+        .C_title--inner {
+          .main--title {
+            .TL {
+              white-space: nowrap;
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+
+  .decorations {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    @include pc {
+      max-width: 1900px;
+      margin-inline: auto;
+    }
+
+    .deco {
+      position: absolute;
+
+      &.deco-01 {
+        @include imgContain("marbles/marble-01.webp");
+        aspect-ratio: 441/685;
+        // transform: rotate(95deg) scale(1, -1);
+
+        @include pc {
+          width: 441px;
+          top: 0px;
+          right: -10px;
+        }
+
+        @include sp {
+          width: s(280);
+          top: s(150);
+          right: s(-130);
+        }
+      }
+    }
+  }
+}

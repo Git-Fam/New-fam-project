@@ -1,0 +1,60 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_voice--tabs
+----------------------- */
+
+
+.C_voice--tabs {
+  display: flex;
+  overflow: hidden;
+
+  @include pc {
+    max-width: 1080px;
+    margin-inline: auto;
+    border-radius: 20px;
+  }
+
+  @include sp {
+    border-radius: s(20);
+  }
+
+  .tsb {
+    flex: 1;
+    background: #D9D9D9;
+    cursor: pointer;
+
+    @include pc {
+      padding-block: 6px;
+    }
+
+    @include sp {
+      padding-block: s(6);
+    }
+
+
+    .TX {
+      white-space: nowrap;
+      text-align: center;
+      color: #A7A7A7;
+      font-weight: 800;
+
+      @include pc {
+        font-size: 16px;
+      }
+
+      @include sp {
+        font-size: s(16);
+      }
+    }
+
+    &.is-active {
+      background: #42AFA4;
+      opacity: 1;
+
+      .TX {
+        color: #FFF;
+      }
+    }
+  }
+}

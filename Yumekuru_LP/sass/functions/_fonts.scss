@@ -1,0 +1,60 @@
+// フォント
+// font-family: "Monomaniac One";
+@mixin mono {
+  font-family: "Monomaniac One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.3;
+}
+
+// font-family: SicUVeiw-DspE;
+@mixin sicuveiw-e {
+  font-family: "sicuveiw-dsp", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.3;
+}
+
+@mixin sicuveiw-r {
+  font-family: sicuveiw-dsp, sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  line-height: 1.3;
+}
+
+// font-weight:;
+@mixin wt100 {
+  font-weight: 100;
+}
+
+@mixin wt200 {
+  font-weight: 200;
+}
+
+@mixin wt300 {
+  font-weight: 300;
+}
+
+@mixin wt400 {
+  font-weight: 400;
+}
+
+@mixin wt500 {
+  font-weight: 500;
+}
+
+@mixin wt600 {
+  font-weight: 600;
+}
+
+@mixin wt700 {
+  font-weight: 700;
+}
+
+@mixin wt800 {
+  font-weight: 800;
+}
+
+@mixin wt900 {
+  font-weight: 900;
+}

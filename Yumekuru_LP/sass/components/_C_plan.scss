@@ -1,0 +1,397 @@
+@use "../functions" as *;
+
+/* -----------------------
+C_plan
+----------------------- */
+
+
+.C_plan {
+
+
+  .plan--container {
+    margin-inline: auto;
+
+    @include pc {
+      max-width: 1080px;
+    }
+
+    @include sp {}
+
+    .plan--content {
+      display: flex;
+
+      @include pc {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        row-gap: 50px;
+        margin-bottom: 40px;
+      }
+
+      @include sp {
+        flex-direction: column;
+        gap: s(30);
+        margin-bottom: s(30);
+      }
+
+      .plan--item {
+        flex: 1;
+        position: relative;
+
+        @include pc {
+          min-width: 320px;
+        }
+
+
+        .recommend__area {
+          width: fit-content;
+          position: absolute;
+          z-index: 3;
+          animation: bird-move 4s 0.5s linear infinite;
+
+          @include pc {
+            top: -13%;
+            right: -3%;
+          }
+
+          @include sp {
+            top: -10%;
+            right: 7%;
+          }
+
+
+          @keyframes bird-move {
+            0% {
+              transform: translate(0, 0%);
+            }
+
+            10% {
+              transform: translate(0, -10%);
+            }
+
+            20% {
+              transform: translate(10%, 0%);
+            }
+
+            30% {
+              transform: translate(10%, -10%);
+            }
+
+            40% {
+              transform: translate(0%, 0%);
+            }
+
+            50% {
+              transform: translate(-10%, -10%);
+            }
+
+            60% {
+              transform: translate(-10%, 0%);
+            }
+
+            70% {
+              transform: translate(-10%, -10%);
+            }
+
+            80% {
+              transform: translate(-10%, 0%);
+            }
+
+            90% {
+              transform: translate(0%, -10%);
+            }
+
+            100% {
+              transform: translate(0, 0%);
+            }
+          }
+
+
+          .bird-wrap {
+            transform: scale(-1, 1);
+
+            .bird-img {
+              aspect-ratio: 85/81;
+              @include iconContain($KV-chara-02);
+
+              @include pc {
+                width: 85px;
+              }
+
+              @include sp {
+                width: s(60);
+              }
+            }
+          }
+
+          .TX {
+            color: $plan-base;
+            font-weight: 800;
+            transform: rotate(16.001deg);
+            white-space: nowrap;
+            position: absolute;
+            top: -20%;
+            right: -40%;
+
+            @include pc {
+              font-size: 13px;
+            }
+
+            @include sp {
+              font-size: s(12);
+            }
+          }
+        }
+
+
+        &.beginner__plan {
+          .plan__name {
+            background: linear-gradient(90deg, #9B9B9B 0%, #C9C9C9 100%);
+          }
+
+          .plan__price {
+
+            .TX {
+              color: $plan-beginner;
+            }
+          }
+        }
+
+        &.pro__plan {
+
+          @include sp {
+            margin-top: s(30);
+          }
+
+          .plan__name {
+            background: linear-gradient(90deg, #42AFA4 0%, #BAE8E4 100%);
+          }
+
+          .plan__price {
+
+            .TX {
+              color: $plan-pro;
+            }
+          }
+
+          .plan__detail {
+            ul {
+              li {
+                p {
+                  &:nth-child(1) {
+                    color: $plan-pro;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        &.master__plan {
+          .plan__name {
+            background: linear-gradient(90deg, #AF4254 0%, #E8BAC3 100%);
+          }
+
+          .plan__price {
+            .TX {
+              color: $plan-master;
+            }
+          }
+
+          .plan__detail {
+            ul {
+              li {
+                p {
+                  &:nth-child(1) {
+                    color: $plan-master;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .plan__name {
+
+          @include pc {
+            border-radius: 10px 10px 0 0;
+            padding: 13px;
+          }
+
+          @include sp {
+            border-radius: s(10) s(10) 0 0;
+            padding: s(10);
+          }
+
+          .TL {
+            color: $F-white;
+            font-weight: 800;
+            text-align: center;
+
+            @include pc {
+              font-size: 24px;
+            }
+
+            @include sp {
+              font-size: s(24);
+            }
+          }
+        }
+
+        .plan__price {
+          background-color: $F-white;
+          text-align: center;
+          white-space: nowrap;
+
+          @include pc {
+            padding: 25px 10px 10px;
+            min-height: 120px;
+          }
+
+          @include sp {
+            padding: s(20) s(10);
+          }
+
+          .TX {
+            font-weight: 800;
+
+            @include pc {
+              font-size: 48px;
+            }
+
+            @include sp {
+              font-size: s(45);
+            }
+
+            span {
+              color: $plan-sub;
+              font-weight: 800;
+
+              @include pc {
+                font-size: 24px;
+              }
+
+              @include sp {
+                font-size: s(20);
+              }
+            }
+          }
+
+          .TX-sub {
+            text-align: center;
+            white-space: pre-line;
+
+
+            @include pc {
+              font-size: 14px;
+            }
+
+            @include sp {
+              font-size: s(14);
+            }
+          }
+        }
+
+        .plan__detail {
+
+          ul {
+            width: 100%;
+            display: block;
+
+
+            li {
+              width: 100%;
+              background-color: #FFF;
+              display: flex;
+              align-items: center;
+
+
+              @include pc {
+                min-height: 35px;
+              }
+
+              @include sp {
+                min-height: s(30);
+              }
+
+              &:nth-child(odd) {
+                background: #F2F2F2;
+              }
+
+              &:last-child {
+
+                @include pc {
+                  border-radius: 0 0 10px 10px;
+                }
+
+                @include sp {
+                  border-radius: 0 0 s(10) s(10);
+                }
+              }
+
+
+              p {
+                height: 100%;
+                vertical-align: middle;
+                color: $plan-base;
+                font-weight: 800;
+                text-align: center;
+                width: 100%;
+
+                @include pc {
+                  font-size: 16px;
+                  padding-inline: 10px;
+                }
+
+                @include sp {
+                  font-size: s(16);
+                  padding-inline: s(10);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .plan--method {
+      border-top: solid #C9C9C9;
+
+      @include pc {
+        border-top-width: 2px;
+        padding: 13px 22px 0;
+      }
+
+      @include sp {
+        border-top-width: s(2);
+        padding: s(10) s(20);
+      }
+
+      .TX-wrap {
+        display: flex;
+        align-items: center;
+
+        @include pc {
+          gap: 16px;
+        }
+
+        @include sp {
+          gap: s(16);
+        }
+
+        .TX {
+          color: $plan-base;
+          font-weight: 800;
+
+          @include pc {
+            font-size: 16px;
+          }
+
+          @include sp {
+            font-size: s(16);
+          }
+        }
+      }
+    }
+  }
+}

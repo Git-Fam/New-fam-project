@@ -1,0 +1,134 @@
+@use "../functions" as *;
+
+/* -----------------------
+  sec-function
+----------------------- */
+
+.sec-function {
+  position: relative;
+
+  @include pc {
+    padding: 0 0 233px;
+  }
+
+  @include sp {
+    padding: s(75) 0 s(89);
+  }
+
+  &--inr {
+    @include imgCover("function-bg.webp");
+    position: relative;
+
+    @include pc {
+      background-position: center top;
+      width: 100%;
+      height: max(919px, p(919));
+      height: 919px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @include sp {
+      background-position: left 67% top;
+      width: 100%;
+      height: s(563);
+    }
+
+    .sec-function--contents {
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      right: 0;
+      margin-inline: auto;
+
+      @include pc {
+        max-width: 1080px;
+        top: -114px;
+        padding-inline: 50px;
+      }
+
+      @include sp {
+        top: s(-270);
+        padding-left: s(20);
+      }
+
+      .txt {
+        @include pc {
+          margin-top: 20px;
+        }
+
+        @include me(870, 767) {
+          background-color: rgb(255 255 255 / 70%);
+          box-shadow: 0 0 20px 20px rgb(255 255 255 / 70%);
+          padding: 10px;
+          border-radius: 10px;
+        }
+
+        @include sp {
+          margin-top: s(20);
+          padding-right: s(20);
+        }
+
+        .TX {
+          font-weight: 800;
+
+          @include pc {
+            font-size: 16px;
+          }
+
+          @include sp {
+            font-size: s(16);
+          }
+        }
+      }
+    }
+
+    .sec-function--community_board {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin-inline: auto;
+      z-index: 2;
+
+      @include pc {
+        bottom: -77px;
+      }
+
+      @include sp {
+        bottom: s(-36);
+      }
+    }
+
+    .decorations {
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      margin-inline: auto;
+
+      @include pc {
+        max-width: 1900px;
+      }
+
+      @include sp {}
+
+      .deco-01 {
+        position: absolute;
+        @include imgContain("marbles/marble-06.webp");
+        aspect-ratio: 314/354;
+        // transform: rotate(21.787deg);
+
+        @include pc {
+          width: 314.959px;
+          top: -150px;
+          right: -130px;
+        }
+
+        @include sp {}
+      }
+    }
+  }
+}

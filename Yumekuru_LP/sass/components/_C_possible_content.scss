@@ -1,0 +1,136 @@
+@use "../functions" as *;
+
+/* -----------------------
+C_possible_content
+----------------------- */
+
+
+.C_possible_content {
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  background: #FFF;
+  display: none;
+
+  @include pc {
+    width: 100%;
+    max-width: 920px;
+    border-radius: 20px;
+  }
+
+  @include sp {
+    width: s(360);
+    border-radius: s(20);
+  }
+
+  &.is-active {
+    display: block;
+  }
+
+
+  .img__area {
+
+    @include pc {
+      padding: 10px 10px 0;
+    }
+
+    @include sp {
+      padding: s(5) s(5) 0;
+    }
+
+    .img {
+      aspect-ratio: 900/486;
+      width: 100%;
+
+      @include pc {
+        border-radius: 20px 20px 0 0;
+      }
+
+      @include sp {
+        border-radius: s(20) s(20) 0 0;
+      }
+
+      &.img-01 {
+        @include imgContain("C_possible_content/possible_content_img-01.webp");
+        position: relative;
+
+        &::before {
+          content: "";
+          display: block;
+          aspect-ratio: 83/191;
+          @include imgContain("C_possible_content/possible_content_img-01-mini.webp");
+          filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
+          transform: rotate(7.425deg);
+          position: absolute;
+
+          @include pc {
+            width: calc((83 / 900) * 100%);
+            bottom: -78px;
+            right: 31px;
+          }
+
+          @include me(960, 768) {
+            bottom: 0
+          }
+
+          @include sp {
+            width: s(50);
+            bottom: s(-29);
+            right: s(7);
+          }
+        }
+      }
+
+      &.img-02 {
+        @include imgContain("C_possible_content/possible_content_img-02.webp");
+      }
+
+      &.img-03 {
+        @include imgContain("C_possible_content/possible_content_img-03.webp");
+      }
+
+      &.img-04 {
+        @include imgContain("C_possible_content/possible_content_img-04.webp");
+      }
+
+      &.img-05 {
+        @include imgContain("C_possible_content/possible_content_img-05.webp");
+      }
+
+      video {
+        width: 100%;
+
+        @include pc {
+          border-radius: 20px 20px 0 0;
+        }
+
+        @include sp {
+          border-radius: s(20) s(20) 0 0;
+        }
+      }
+    }
+  }
+
+  .txt__area {
+
+    @include pc {
+      padding: 25px 47px 36px;
+    }
+
+    @include sp {
+      padding: s(29) s(24);
+    }
+
+    .TX {
+      @include sicuveiw-e;
+      font-weight: 800;
+      line-height: 1.5;
+
+      @include pc {
+        font-size: 16px;
+      }
+
+      @include sp {
+        font-size: s(16);
+      }
+    }
+  }
+}

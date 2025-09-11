@@ -1,0 +1,417 @@
+@use "../functions" as *;
+
+/* -----------------------
+  header
+----------------------- */
+
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 998;
+  transition: backdrop-filter 0.3s ease-in-out;
+
+  &--inner {
+    display: flex;
+    align-items: flex-end;
+    white-space: nowrap;
+    position: relative;
+
+    @include pc {
+      padding: 15px 345px 21px 10px;
+    }
+
+    @include me(1000, 768) {
+      align-items: center;
+    }
+
+    @include sp {
+      padding: s(15) s(20) s(17);
+    }
+
+    .logo {
+      display: block;
+      width: fit-content;
+
+      .TL {
+        @include mono;
+        line-height: 85%;
+
+        @include pc {
+          font-size: 40px;
+        }
+
+        @include sp {
+          font-size: s(40);
+        }
+      }
+    }
+
+    .nav--wrapper {
+
+      @include pc {
+        margin-left: 34px;
+      }
+
+      @include sp {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: #FFF366;
+        z-index: 999;
+        padding: s(55) 0 s(35);
+        overflow-x: scroll;
+        transform: scaleY(0);
+        transition: transform 0.3s ease-in-out;
+        transform-origin: top;
+      }
+
+      nav {
+
+        @include pc {}
+
+        @include sp {
+          min-height: s(1000);
+        }
+
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+
+          @include pc {
+            gap: 10px 19px;
+          }
+
+          @include sp {
+            flex-direction: column;
+            align-items: center;
+            gap: s(30);
+          }
+
+          li {
+
+            &:not(:last-child) {
+
+              a::before {
+                content: "";
+                display: block;
+                width: 100%;
+                background-color: $F-sub;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                transform: scaleX(0);
+                transition: transform 0.3s ease-in-out;
+
+                @include pc {
+                  height: 2px;
+                }
+
+                @include sp {
+                  height: s(2);
+                }
+              }
+
+              a:hover::before {
+                transform: scaleX(1);
+              }
+            }
+
+            &:last-child {
+              background: rgba(244, 144, 71, 0.50);
+
+              @include pc {
+                position: absolute;
+                right: 12px;
+                top: 50%;
+                transform: translateY(-50%);
+                border-radius: 10px;
+                padding: 2px;
+              }
+
+              @include sp {
+                position: relative;
+                border-radius: s(10);
+                padding: s(2);
+                margin-top: s(190);
+              }
+
+              &::before {
+                content: "";
+                display: block;
+                width: 100%;
+                height: 100%;
+                background: rgba(244, 144, 71, 0.50);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 1;
+                transition: transform 0.3s ease-in-out;
+
+                @include pc {
+                  border-radius: 10px;
+                }
+
+                @include sp {
+                  border-radius: s(10);
+                }
+              }
+
+              &:hover::before {
+                transform: translate(-50%, -50%) scale(1.1);
+              }
+
+              a {
+                display: block;
+                background: $F-sub;
+                z-index: 2;
+
+                @include pc {
+                  border-radius: 8px;
+                  padding: 10px 12px;
+                }
+
+                @include sp {
+                  border-radius: s(8);
+                  padding: s(10) s(12);
+                }
+
+                &::after {
+
+                  @include sp {
+                    content: "";
+                    display: block;
+                    aspect-ratio: 174/195;
+                    width: s(173);
+                    @include iconContain($detective);
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    bottom: 94%;
+                    margin: 0 auto;
+                    z-index: 2;
+                  }
+                }
+
+                &:hover::after {
+                  animation: jumping 2s linear infinite;
+
+                  @keyframes jumping {
+                    0% {
+                      transform: translateY(0);
+                    }
+
+                    10% {
+                      transform: translateY(-10px) translateX(10px);
+                    }
+
+                    20% {
+                      transform: translateY(0) translateX(10px);
+                    }
+
+                    30% {
+                      transform: translateY(-10px) translateX(-10px);
+                    }
+
+                    40% {
+                      transform: translateY(0) translateX(-10px);
+                    }
+
+                    50% {
+                      transform: translateY(-10px) translateX(10px);
+                    }
+
+                    60% {
+                      transform: translateY(0) translateX(10px);
+                    }
+
+                    70% {
+                      transform: translateY(-10px) translateX(0px);
+                    }
+
+                    80% {
+                      transform: translateY(0) translateX(0px);
+                    }
+
+                    90% {
+                      transform: translateY(-10px) translateX(0px);
+                    }
+
+                    100% {
+                      transform: translateY(0);
+                    }
+
+                  }
+                }
+
+                .TX {
+                  color: #FFF;
+                  font-weight: 800;
+                  line-height: 1.5;
+
+                  @include pc {
+                    font-size: 20px;
+                  }
+
+                  @include sp {
+                    font-size: s(20);
+                  }
+                }
+              }
+            }
+
+            a {
+              position: relative;
+              display: block;
+
+              .TX {
+                font-style: normal;
+                font-weight: 800;
+                line-height: 1.5;
+
+                @include pc {
+                  font-size: 16px;
+                }
+
+                @include sp {
+                  font-size: s(20);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .owl-position {
+      position: absolute;
+      aspect-ratio: 140 / 168;
+      transform: rotate(180deg);
+      z-index: 3;
+
+      @include pc {
+        top: -5px;
+        right: 245px;
+        width: 88px;
+      }
+
+      @include sp {
+        top: 0;
+        right: s(109);
+        width: s(48);
+      }
+
+      .owl-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        @include iconContain($owl);
+        transition: transform 0.3s ease-in-out;
+        transform-origin: center bottom;
+
+        &:hover {
+          animation: rotate 1s linear infinite;
+
+          @keyframes rotate {
+            0% {
+              transform: rotate(0deg);
+            }
+
+            20% {
+              transform: rotate(5deg);
+            }
+
+            40% {
+              transform: rotate(0deg);
+            }
+
+            60% {
+              transform: rotate(-5deg);
+            }
+
+            80% {
+              transform: rotate(0deg);
+            }
+
+            100% {
+              transform: rotate(0deg);
+            }
+          }
+        }
+      }
+    }
+
+    .burger {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: $F-sub;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      @include pc {
+        display: none;
+      }
+
+      @include sp {
+        right: s(20);
+        width: s(70);
+        border-radius: s(5);
+        padding-block: s(11) s(13);
+      }
+
+      .TX {
+        color: $F-white;
+        @include mono;
+        line-height: 68%;
+
+        @include sp {
+          font-size: s(16);
+        }
+
+        &:last-child {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &.active {
+
+    @include sp {
+      background: #FFF;
+    }
+
+    .nav--wrapper {
+      @include sp {
+        transform: scaleY(1);
+      }
+    }
+
+    .burger {
+      background: #A7A7A7;
+
+      .TX {
+        &:first-child {
+          display: none;
+        }
+
+        &:last-child {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &.on {
+    backdrop-filter: blur(4px);
+  }
+}

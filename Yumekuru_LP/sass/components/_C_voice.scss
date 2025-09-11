@@ -1,0 +1,313 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_voice
+----------------------- */
+
+
+.C_voice {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+
+  &--inr {
+    background: #FFF;
+    margin-inline: auto;
+
+    @include pc {
+      max-width: 1080px;
+      padding: pmin(75) pmin(33);
+    }
+
+    @include sp {
+      padding: s(14) s(22) s(42);
+    }
+
+    .voice--messages {
+      width: 100%;
+
+      @include pc {
+        position: relative;
+        height: pmin(200);
+      }
+
+      @include sp {
+        @include column(s(40));
+      }
+
+
+      .message {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.3s ease;
+
+        @include pc {
+          position: absolute;
+          border-radius: pmin(20);
+          width: pmin(276);
+          height: pmin(62);
+        }
+
+        @include sp {
+          position: relative;
+          border-radius: s(20);
+          width: s(276);
+          height: s(62);
+          margin: 0 auto;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          aspect-ratio: 41/20.5;
+          clip-path: polygon(0 0, 100% 0, 50% 100%);
+          width: calc((41 / 276) * 100%);
+          left: 0;
+          right: 0;
+          margin-inline: auto;
+          top: 99%;
+          background: #000;
+        }
+
+        // アニメーション
+        &.show {
+
+          @include pc {
+            transform: translateY(-50%);
+          }
+
+          @include sp {
+            transform: scale(1.1);
+          }
+        }
+
+
+        // カラー
+        &.message--01 {
+          background: #EEA2B4;
+
+          &::before {
+            background: #EEA2B4;
+          }
+        }
+
+        &.message--02 {
+          background: #98CDB3;
+
+          &::before {
+            background: #98CDB3;
+          }
+        }
+
+        &.message--03 {
+          background: #A8A3CF;
+
+          &::before {
+            background: #A8A3CF;
+          }
+        }
+
+        &.message--04 {
+          background: #FFD346;
+
+          &::before {
+            background: #FFD346;
+          }
+        }
+
+        &.message--05 {
+          background: #77CAF4;
+
+          &::before {
+            background: #77CAF4;
+          }
+        }
+
+        &.message--06 {
+          background: #DB6883;
+
+          &::before {
+            background: #DB6883;
+          }
+        }
+
+        &.message--07 {
+          background: #63BB8F;
+
+          &::before {
+            background: #63BB8F;
+          }
+        }
+
+        &.message--08 {
+          background: #7A71BE;
+
+          &::before {
+            background: #7A71BE;
+          }
+        }
+
+        &.message--09 {
+          background: #E4B728;
+
+          &::before {
+            background: #E4B728;
+          }
+        }
+
+        &.message--10 {
+          background: #50AAD7;
+
+          &::before {
+            background: #50AAD7;
+          }
+        }
+
+        // 位置
+        &.message--01,
+        &.message--05,
+        &.message--06,
+        &.message--10 {
+
+          @include pc {
+            left: 0;
+            top: pmin(40);
+          }
+        }
+
+        &.message--02,
+        &.message--07,
+        &.message--04,
+        &.message--09 {
+
+          @include pc {
+            left: calc((192 / 1014) * 100%);
+            bottom: 0;
+          }
+
+          @include me(960, 768) {
+            left: calc((150 / 1014) * 100%);
+          }
+        }
+
+        &.message--03,
+        &.message--08 {
+          @include pc {
+            left: 0;
+            right: 0;
+            margin-inline: auto;
+            top: 0;
+          }
+        }
+
+        &.message--04,
+        &.message--09 {
+
+          @include pc {
+            left: unset;
+            right: calc((192 / 1014) * 100%);
+          }
+
+          @include me(960, 768) {
+            right: calc((150 / 1014) * 100%);
+          }
+        }
+
+        &.message--05,
+        &.message--10 {
+
+          @include pc {
+            left: unset;
+            right: 0;
+          }
+        }
+
+        .TX {
+          color: $F-white;
+          font-weight: 800;
+
+          @include pc {
+            font-size: pmin(16);
+          }
+
+          @include sp{
+            font-size: s(16);
+          }
+        }
+      }
+    }
+
+    .voice--animals {
+      display: flex;
+      gap: var(--gap);
+
+      @include pc {
+        --item: 5;
+        --gap: 9px;
+        margin-top: pmin(40);
+      }
+
+      @include sp {
+        --item: 2;
+        --gap: calc((6 / 390) * 100vw);
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: s(10);
+      }
+
+      .animal {
+        aspect-ratio: 187/190;
+        transition: transform 0.3s ease;
+        transform-origin: center bottom;
+        width: calc((100% / var(--item)) - (var(--gap) * (var(--item) - 1) / var(--item)));
+
+        &:hover {
+          transform: scale(1.1);
+        }
+
+        &.animal--img01 {
+          @include iconContain($animal--img01);
+        }
+
+        &.animal--img02 {
+          @include iconContain($animal--img02);
+        }
+
+        &.animal--img03 {
+          @include iconContain($animal--img03);
+        }
+
+        &.animal--img04 {
+          @include iconContain($animal--img04);
+        }
+
+        &.animal--img05 {
+          @include iconContain($animal--img05);
+        }
+
+        &.animal--img06 {
+          @include iconContain($animal--img06);
+        }
+
+        &.animal--img07 {
+          @include iconContain($animal--img07);
+        }
+
+        &.animal--img08 {
+          @include iconContain($animal--img08);
+        }
+
+        &.animal--img09 {
+          @include iconContain($animal--img09);
+        }
+
+        &.animal--img10 {
+          @include iconContain($animal--img10);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,103 @@
+@use "../functions" as *;
+
+/* -----------------------
+  sec-voice
+----------------------- */
+
+.sec-voice {
+  position: relative;
+  background-position: center;
+
+
+  @include pc {
+    background-image: radial-gradient(circle, #666666 2px, transparent 2px);
+    background-size: 38px 38px;
+    padding: 123px 50px 114px;
+  }
+
+  @include sp {
+    background-image: radial-gradient(circle, #666666 s(1), transparent s(1));
+    background-size: s(30) s(30);
+    padding: s(69) s(20) s(60);
+  }
+
+  &--inr {
+    position: relative;
+    z-index: 2;
+
+    .sec-voice--container {
+
+      @include pc {
+        margin-top: 60px;
+      }
+
+      @include sp {
+        margin-top: s(60);
+      }
+
+      .sec-voice--container--tabs {
+
+        @include pc {
+          margin-bottom: 13px;
+        }
+
+        @include sp {
+          margin-bottom: s(20);
+        }
+      }
+    }
+  }
+
+  .decorations {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    @include pc {
+      max-width: 1900px;
+      margin-inline: auto;
+    }
+
+    .deco {
+      position: absolute;
+      aspect-ratio: 384/509;
+      @include imgContain("marbles/marble-08.webp");
+
+      &.deco-01 {
+        // transform: rotate(239deg);
+
+        @include pc {
+          width: 268px;
+          top: 20px;
+          right: -100px;
+        }
+
+        @include sp {
+          width: s(219);
+          top: s(40);
+          right: s(-90);
+        }
+      }
+
+      &.deco-02 {
+        // transform: rotate(-90deg);
+
+        @include pc {
+          width: 410px;
+          bottom: -20px;
+          left: -133px;
+        }
+
+        @include sp {
+          width: s(320);
+          bottom: s(-40);
+          left: s(-103);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,127 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_community_board
+----------------------- */
+
+
+.C_community_board {
+  display: flex;
+
+  @include pc {
+    gap: 15px;
+  }
+
+  @include sp {
+    gap: s(8);
+  }
+
+  &:hover {
+    .C_community_board--lists {
+      animation-play-state: paused;
+    }
+  }
+
+  &--lists {
+    display: flex;
+    animation: scroll 20s linear infinite;
+
+    @include pc {
+      gap: 15px;
+    }
+
+    @include sp {
+      gap: s(8);
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(calc(-100%));
+      }
+    }
+
+    .item {
+      width: fit-content;
+
+      &--inner {
+        position: relative;
+        width: fit-content;
+
+        .img {
+          aspect-ratio: 450/250;
+          border: solid #FFF;
+
+          @include pc {
+            border-radius: 20px;
+            border-width: 10px;
+            width: 450px;
+          }
+
+          @include sp {
+            border-radius: 11px;
+            border-width: s(5);
+            width: s(266);
+          }
+
+          &.img-01 {
+            @include imgCover("C_community_board/C_community_board-img-01.webp");
+          }
+
+          &.img-02 {
+            @include imgCover("C_community_board/C_community_board-img-02.webp");
+          }
+
+          &.img-03 {
+            @include imgCover("C_community_board/C_community_board-img-03.webp");
+          }
+
+          &.img-04 {
+            @include imgCover("C_community_board/C_community_board-img-04.webp");
+          }
+        }
+
+        .txt {
+          position: absolute;
+          left: 6.66%;
+          bottom: -11%;
+
+          .TX {
+            @include sicuveiw-e;
+            position: relative;
+            -webkit-text-stroke-color: #FFF;
+            font-weight: 800;
+            line-height: 1;
+            width: fit-content;
+            white-space: nowrap;
+
+            @include pc {
+              font-size: 40px;
+              -webkit-text-stroke-width: 10px;
+            }
+
+            @include sp {
+              font-size: s(24);
+              -webkit-text-stroke-width: s(7);
+            }
+
+            &::before {
+              content: attr(data-text);
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: 100%;
+              height: 100%;
+              -webkit-text-stroke-width: 0;
+              text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+            }
+          }
+        }
+      }
+    }
+  }
+}

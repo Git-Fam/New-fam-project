@@ -1,0 +1,49 @@
+@use "../functions" as *;
+
+/* -----------------------
+  unity
+----------------------- */
+
+// 表示・非表示
+.sp {
+  @include pc {
+    display: none !important;
+  }
+}
+
+.pc {
+  @include sp {
+    display: none !important;
+  }
+}
+
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 10%;
+}
+
+body {
+  @include sicuveiw-e;
+  color: $F-main;
+
+  &.active {
+
+    @include sp {
+      overflow: hidden;
+    }
+  }
+
+  &:has(.loading.active) {
+    overflow: hidden;
+  }
+}
+
+.wrapper {
+  overflow: hidden;
+}
+
+
+a {
+  color: $F-main;
+}

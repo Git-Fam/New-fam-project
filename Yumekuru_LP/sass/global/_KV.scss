@@ -1,0 +1,557 @@
+@use "../functions" as *;
+
+/* -----------------------
+  KV
+----------------------- */
+
+.KV {
+  background-color: #FFF;
+  position: relative;
+  z-index: 1;
+  height: 100svh;
+
+  @include pc {
+    min-height: 700px;
+  }
+
+  @include sp {
+    min-height: s(700);
+    max-height: s(900);
+  }
+
+  &.active {
+
+    .KV--character_area {
+
+      .chara {
+        animation: chara-appear 1s ease forwards;
+
+        @keyframes chara-appear {
+          0% {
+            transform: scaleY(0);
+          }
+
+          50% {
+            transform: scaleY(1);
+          }
+
+          60% {
+            transform: scaleY(1) translateY(10%);
+          }
+
+          70% {
+            transform: scaleY(1) translateY(0%);
+          }
+
+          80% {
+            transform: scaleY(1) translateY(5%);
+          }
+
+          90% {
+            transform: scaleY(1) translateY(0%);
+          }
+
+          100% {
+            transform: scaleY(1);
+          }
+        }
+
+
+        &.chara-01 {
+          animation: chara-hero 2.5s ease-out 1s forwards;
+
+          @include pc {
+            @keyframes chara-hero {
+              to {
+                right: min(calc((-31 / 1280) * 100vw), -31px);
+              }
+            }
+          }
+
+          @include sp {
+            @keyframes chara-hero {
+              to {
+                right: s(-12);
+              }
+            }
+          }
+        }
+
+        &.chara-02 {
+          animation: chara-bird 1.5s ease 0.1s forwards;
+
+          @include pc {
+            @keyframes chara-bird {
+              to {
+                top: 149px;
+                left: pmin(166);
+              }
+            }
+          }
+
+          @include sp {
+            @keyframes chara-bird {
+              to {
+                top: s(105);
+                left: s(28);
+              }
+            }
+          }
+        }
+
+        &.chara-03 {
+          animation-delay: 0.5s;
+        }
+
+        &.chara-04 {
+          animation-delay: 0.1s;
+        }
+
+        &.chara-05 {
+          animation-delay: 0.4s;
+        }
+
+        &.chara-06 {
+          animation-delay: 0.1s;
+        }
+
+        &.chara-07 {
+          animation-delay: 0.2s;
+        }
+
+        &.chara-08 {
+          animation-delay: 0.5s;
+        }
+
+        &.chara-09 {
+          animation-delay: 0.3s;
+        }
+
+        &.chara-10 {
+          animation-delay: 0.3s;
+        }
+
+        &.chara-11 {
+          animation-delay: 0.5s;
+        }
+
+        &.chara-12 {
+          animation-delay: 0.2s;
+        }
+
+        &.chara-13 {
+          animation-delay: 0.2s;
+        }
+      }
+    }
+  }
+
+  &--title_area {
+    width: fit-content;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    z-index: 3;
+
+    @include pc {
+      top: 25%;
+    }
+
+    @include sp {
+      top: 15%;
+    }
+
+    .ttl {
+
+      @include pc {
+        margin-bottom: 30px;
+      }
+
+      @include sp {
+        margin-bottom: s(10);
+      }
+
+      .TL {
+        @include mono;
+        line-height: 1;
+
+        @include pc {
+          font-size: 160px;
+        }
+
+        @include sp {
+          font-size: s(128);
+          line-height: 126%;
+        }
+      }
+    }
+
+    .txt {
+
+      .TX {
+        font-weight: 800;
+        line-height: 1.5;
+
+        @include pc {
+          font-size: 24px;
+        }
+
+        @include sp {
+          font-size: s(20);
+        }
+
+        span {
+          color: $F-sub;
+        }
+      }
+    }
+  }
+
+  &--character_area {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 60%;
+    z-index: 2;
+    margin: auto;
+
+    @include pc {
+      max-width: 1280px;
+      min-height: 750px;
+    }
+
+    @include sp{
+      min-height: s(700);
+    }
+
+    .chara {
+      position: absolute;
+      transform-origin: center bottom;
+      transform: scaleY(0);
+
+      &.chara-01 {
+        aspect-ratio: 312/354;
+        @include iconContain($KV-chara-01);
+        transform: scale(1);
+        right: -100%;
+
+        @include pc {
+          width: pmin(312);
+          z-index: 13;
+          bottom: 0;
+        }
+
+        @include sp {
+          width: s(171);
+          z-index: 13;
+          bottom: s(10);
+        }
+      }
+
+      &.chara-02 {
+        aspect-ratio: 85/81;
+        @include iconContain($KV-chara-02);
+        transform: scale(1);
+        top: -100%;
+        left: -100%;
+
+        @include pc {
+          width: pmin(85);
+          z-index: 12;
+        }
+
+        @include sp {
+          width: s(47);
+          z-index: 12;
+        }
+      }
+
+      &.chara-03 {
+        aspect-ratio: 136/133;
+        @include iconContain($KV-chara-03);
+
+        @include pc {
+          width: pmin(136);
+          z-index: 11;
+          bottom: 0;
+          left: pmin(541);
+        }
+
+        @include sp {
+          width: s(73);
+          z-index: 7;
+          bottom: s(183);
+          right: s(3);
+        }
+      }
+
+      &.chara-04 {
+        aspect-ratio: 212/238;
+        @include iconContain($KV-chara-04);
+
+        @include pc {
+          width: pmin(212);
+          z-index: 10;
+          bottom: 0;
+          right: pmin(248);
+        }
+
+        @include sp {
+          width: s(115);
+          z-index: 10;
+          bottom: s(27);
+          left: s(115);
+        }
+      }
+
+      &.chara-05 {
+        aspect-ratio: 234/237;
+        @include iconContain($KV-chara-05);
+
+        @include pc {
+          width: pmin(234);
+          z-index: 9;
+          bottom: 0;
+          left: pmin(287);
+        }
+
+        @include sp {
+          width: s(125);
+          z-index: 6;
+          bottom: s(196);
+          right: s(109);
+        }
+      }
+
+      &.chara-06 {
+        aspect-ratio: 236/220;
+        @include iconContain($KV-chara-06);
+
+        @include pc {
+          width: pmin(236);
+          z-index: 8;
+          bottom: pmin(37);
+          right: pmin(416);
+        }
+
+        @include sp {
+          width: s(129);
+          z-index: 11;
+          bottom: s(16);
+          left: s(17);
+        }
+      }
+
+      &.chara-07 {
+        aspect-ratio: 189/220;
+        @include iconContain($KV-chara-07);
+
+        @include pc {
+          width: pmin(189);
+          z-index: 7;
+          bottom: pmin(22);
+          left: pmin(128);
+        }
+
+        @include sp {
+          width: s(101);
+          z-index: 5;
+          bottom: s(129);
+          left: s(75);
+        }
+      }
+
+      &.chara-08 {
+        aspect-ratio: 182/182;
+        @include iconContain($KV-chara-08);
+
+        @include pc {
+          width: pmin(182);
+          z-index: 6;
+          bottom: pmin(16);
+          left: pmax(-14);
+        }
+
+        @include sp {
+          width: s(97);
+          z-index: 2;
+          bottom: s(119);
+          left: s(-2);
+        }
+      }
+
+      &.chara-09 {
+        aspect-ratio: 217/245;
+        @include iconContain($KV-chara-09);
+
+        @include pc {
+          width: pmin(217);
+          z-index: 5;
+          bottom: pmin(60);
+          left: pmin(452);
+        }
+
+        @include sp {
+          width: s(110);
+          z-index: 3;
+          bottom: s(224);
+          right: s(21);
+        }
+      }
+
+      &.chara-10 {
+        aspect-ratio: 177/196;
+        @include iconContain($KV-chara-10);
+
+        @include pc {
+          width: pmin(177);
+          z-index: 4;
+          bottom: pmin(120);
+          right: pmin(340);
+        }
+
+        @include sp {
+          width: s(96);
+          z-index: 9;
+          bottom: s(105);
+          right: s(136);
+        }
+      }
+
+      &.chara-11 {
+        aspect-ratio: 216/246;
+        @include iconContain($KV-chara-11);
+
+        @include pc {
+          width: pmin(216);
+          z-index: 3;
+          bottom: pmin(150);
+          left: pmin(206);
+        }
+
+        @include sp {
+          width: s(102);
+          z-index: 4;
+          bottom: s(229);
+          left: s(68);
+        }
+      }
+
+      &.chara-12 {
+        aspect-ratio: 183/220;
+        @include iconContain($KV-chara-12);
+
+        @include pc {
+          width: pmin(183);
+          z-index: 2;
+          bottom: pmin(141);
+          left: pmin(40);
+        }
+
+        @include sp {
+          width: s(92);
+          z-index: 1;
+          bottom: s(182);
+          left: s(-2);
+        }
+      }
+
+      &.chara-13 {
+        aspect-ratio: 206/235;
+        @include iconContain($KV-chara-13);
+
+        @include pc {
+          width: pmin(206);
+          z-index: 1;
+          bottom: pmin(176);
+          right: pmin(191);
+        }
+
+        @include sp {
+          width: s(113);
+          z-index: 8;
+          bottom: s(136);
+          right: s(54);
+        }
+      }
+    }
+  }
+
+  &--marbles_area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    width: 100%;
+    max-width: 1900px;
+    height: 100%;
+    z-index: 1;
+
+    .marble {
+      position: absolute;
+
+      &.marble-01 {
+        @include imgContain("marbles/marble-01.webp");
+        aspect-ratio: 506/748;
+        // transform: rotate(138.569deg);
+
+
+        @include pc {
+          width: 506px;
+          top: -470px;
+          left: 92px;
+        }
+
+        @include sp {
+          width: s(506);
+          top: s(-457);
+          left: s(-98);
+        }
+      }
+
+      &.marble-02 {
+        @include imgContain("marbles/marble-02.webp");
+        aspect-ratio: 362/567;
+
+        @include pc {
+          // transform: rotate(-94deg);
+          width: 362px;
+          top: 136px;
+          left: -231px;
+        }
+
+        @include sp {
+          // transform: rotate(-108deg);
+          width: s(362);
+          top: s(193);
+          left: s(-260);
+        }
+      }
+
+      &.marble-03 {
+        @include imgContain("marbles/marble-03.webp");
+        aspect-ratio: 586/426;
+
+        @include pc {
+          // transform: rotate(-55.43deg);
+          width: 586px;
+          top: 90px;
+          right: -270px;
+        }
+
+        @include sp {
+          // transform: rotate(-82deg);
+          width: s(452);
+          top: s(280);
+          right: s(-260);
+        }
+      }
+    }
+  }
+}

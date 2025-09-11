@@ -1,0 +1,301 @@
+@use "../functions" as *;
+
+/* -----------------------
+  sec-about
+----------------------- */
+
+.sec-about {
+  position: relative;
+
+  @include pc {
+    padding: 231px 50px 271px;
+  }
+
+  @include sp {
+    padding: s(75) s(20) s(319);
+  }
+
+  &--inr {
+    display: flex;
+    position: relative;
+    z-index: 2;
+
+    @include pc {
+      max-width: 1080px;
+      margin-inline: auto;
+      justify-content: space-between;
+      gap: 60px;
+    }
+
+    @include me(1080, 768) {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 90px;
+    }
+
+    @include sp {
+      flex-direction: column;
+      align-items: center;
+      gap: s(81);
+    }
+
+    .sec-about--img_area {
+      position: relative;
+      height: fit-content;
+
+      @include pc {
+        @include column(8px);
+        width: 450px;
+        margin-left: 70px;
+      }
+
+      @include me(1080, 768) {
+        margin-left: 0;
+      }
+
+      @include sp {
+        width: s(328);
+      }
+
+      .img {
+        aspect-ratio: 450/245;
+        border: solid #FFF;
+        box-shadow: 0 14px 20px 0 rgba(0, 0, 0, 0.20);
+        width: 100%;
+
+        @include pc {
+          border-width: 10px;
+        }
+
+        @include sp {
+          border-width: s(6)
+        }
+
+        &.img-01 {
+          @include imgCover("about-img-01.webp");
+          transform: rotate(-4.877deg);
+          position: relative;
+          z-index: 1;
+        }
+
+        &.img-02 {
+          @include imgCover("about-img-02.webp");
+          transform: rotate(8.406deg);
+          position: relative;
+          z-index: 3;
+        }
+      }
+
+      .chara {
+        @include iconContain($about-chara-01);
+        aspect-ratio: 174/284;
+        position: absolute;
+        transform: rotate(-18deg);
+
+        @include pc {
+          z-index: 2;
+          width: calc((174 / 450) * 100%);
+          bottom: 10%;
+          left: -30%;
+        }
+
+        @include sp {
+          z-index: 4;
+          width: s(117);
+          bottom: s(36);
+          right: s(-65);
+        }
+      }
+    }
+
+    .sec-about--txt_area {
+      flex-shrink: 0;
+
+      &--inr {
+
+        @include pc {
+          width: 448px;
+          @include column(20px);
+        }
+
+        @include me(1080, 768) {
+          align-items: center;
+        }
+
+        .C_title {
+
+          @include sp {
+            margin-inline: auto;
+          }
+        }
+
+        .sub--ttl {
+
+          @include sp {
+            margin-top: s(47);
+          }
+
+          .TX {
+            font-weight: 800;
+            line-height: 1.5;
+
+            @include pc {
+              font-size: 32px;
+            }
+
+            @include sp {
+              text-align: center;
+              font-size: s(24);
+            }
+
+            span {
+              color: $F-sub;
+            }
+          }
+        }
+
+        .txt {
+
+          @include pc {
+            width: 400px;
+          }
+
+          @include sp {
+            margin-top: s(10);
+          }
+
+          .TX {
+            font-weight: 800;
+            line-height: 1.5;
+
+            @include pc {
+              font-size: 16px;
+            }
+
+            @include sp {
+              font-size: s(16);
+            }
+          }
+        }
+      }
+
+      .characters {
+        position: relative;
+
+        @include pc {
+          margin-top: 106px;
+        }
+
+        @include sp {
+          margin-top: s(38);
+        }
+
+        .chara {
+          width: fit-content;
+
+          &.chara-02 {
+            transform: rotate(-5.745deg);
+          }
+
+          &.chara-03 {
+            transform: rotate(7.775deg);
+            position: absolute;
+
+            @include pc {
+              top: -26%;
+              right: -25%;
+            }
+
+            @include sp {
+              top: s(-56);
+              right: s(-42);
+            }
+          }
+
+          &-02--img {
+            aspect-ratio: 181/258;
+            @include iconContain($about-chara-02);
+            animation-delay: 0.5s;
+
+
+            @include pc {
+              width: 181px;
+              margin-left: 105px;
+            }
+
+            @include sp {
+              width: s(125);
+              margin-left: s(91);
+            }
+          }
+
+          &-03--img {
+            aspect-ratio: 241/256;
+            @include iconContain($about-chara-03);
+            animation-delay: 1s;
+
+            @include pc {
+              width: 241px;
+            }
+
+            @include sp {
+              width: s(166);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .decorations {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 1900px;
+
+    .deco {
+      position: absolute;
+
+      &.deco-01 {
+        aspect-ratio: 484/530;
+        @include imgContain("marbles/marble-04.webp");
+
+        @include pc {
+          width: 484px;
+          bottom: 86px;
+          left: -224px;
+        }
+
+        @include sp {
+          width: s(223);
+          top: s(132);
+          left: s(-98);
+        }
+      }
+
+      &.deco-02 {
+        aspect-ratio: 556/613;
+        @include imgContain("marbles/marble-05.webp");
+        // transform: rotate(-77.119deg);
+
+        @include pc {
+          width: 556px;
+          top: 10px;
+          right: -451px;
+        }
+
+        @include sp {
+          width: s(246);
+          bottom: s(280);
+          right: s(-169);
+        }
+      }
+    }
+  }
+
+}

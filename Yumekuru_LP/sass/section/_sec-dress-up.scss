@@ -1,0 +1,155 @@
+@use "../functions" as *;
+
+/* -----------------------
+  sec-dress-up
+----------------------- */
+
+.sec-dress-up {
+  position: relative;
+  background-position: center;
+  overflow: hidden;
+
+
+  @include pc {
+    background-image: radial-gradient(circle, #666666 2px, transparent 2px);
+    background-size: 38px 38px;
+    padding: 115px 50px 135px;
+  }
+
+  @include sp {
+    background-image: radial-gradient(circle, #666666 s(1), transparent s(1));
+    background-size: s(30) s(30);
+    padding: s(69) s(20) s(60);
+  }
+
+  &--inr {
+    position: relative;
+    z-index: 2;
+
+    @include pc {
+      max-width: 1080px;
+      margin-inline: auto;
+    }
+
+    .sec-dress-up--container {
+      display: flex;
+
+      @include pc {
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      @include me(950, 768) {
+        gap: 60px;
+        flex-direction: column;
+      }
+
+      @include sp {
+        flex-direction: column;
+        gap: s(30);
+      }
+
+      .sec-dress-up--ttl {
+
+        .txt {
+
+          @include pc {
+            margin-top: 30px;
+          }
+
+          @include sp {
+            margin-top: s(30);
+          }
+
+          .TX {
+            font-weight: 800;
+
+            @include pc {
+              font-size: 16px;
+            }
+
+            @include sp {
+              font-size: s(16);
+            }
+          }
+        }
+      }
+    }
+
+    .sec-dress-up--tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--gap);
+      --item: 5;
+
+      @include pc {
+        margin-top: 30px;
+        --gap: 40px;
+        max-width: 860px;
+      }
+
+      @include sp {
+        margin-top: s(45);
+        --gap: calc((16 / 390) * 100vw);
+      }
+
+      .C_dress_up-tab {
+        width: calc((100% / var(--item)) - (var(--gap) * (var(--item) - 1) / var(--item)));
+      }
+    }
+  }
+
+  .decorations {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    z-index: 1;
+
+    @include pc {
+      max-width: 1900px;
+    }
+
+    .deco {
+      position: absolute;
+
+      &.deco-01 {
+        aspect-ratio: 727 /1136;
+        @include imgContain("marbles/marble-02.webp");
+
+        @include pc {
+          width: 422px;
+          top: -110px;
+          left: -140px;
+          // transform: rotate(272deg) scale(-1, 1);
+        }
+
+        @include sp {
+          width: s(221);
+          top: s(-97);
+          right: s(-81);
+          // transform: rotate(310deg) scale(-1, 1);
+        }
+      }
+
+      &.deco-02 {
+        aspect-ratio: 421 /298;
+        @include imgContain("marbles/marble-07.webp");
+
+        @include pc {
+          width: 421px;
+          bottom: -90px;
+          right: -93px;
+        }
+
+        @include sp {
+          display: none;
+        }
+      }
+    }
+  }
+}

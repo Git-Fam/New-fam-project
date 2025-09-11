@@ -1,0 +1,112 @@
+@use "../functions" as *;
+
+/* -----------------------
+C_possible_other
+----------------------- */
+
+
+.C_possible_other {
+  display: flex;
+
+  @include pc {
+    gap: 20px;
+  }
+
+  @include sp {
+    gap: s(20);
+  }
+
+  &:hover {
+    .icon--list {
+      animation-play-state: paused;
+    }
+  }
+
+  .icon--list {
+    display: flex;
+    animation: scroll 20s linear infinite;
+
+    @include pc {
+      gap: 20px;
+    }
+
+    @include sp {
+      gap: s(20);
+    }
+
+    .icon {
+      aspect-ratio: 1/1;
+      flex-shrink: 0;
+
+      @include pc {
+        border-radius: 6px;
+        width: 83px;
+      }
+
+      @include sp {
+        border-radius: s(6);
+        width: s(83);
+      }
+
+      &.icon-01 {
+        @include imgContain("C_possible/possible_icon-01.webp");
+      }
+
+      &.icon-02 {
+        @include imgContain("C_possible/possible_icon-02.webp");
+      }
+
+      &.icon-03 {
+        @include imgContain("C_possible/possible_icon-03.webp");
+      }
+
+      &.icon-04 {
+        @include imgContain("C_possible/possible_icon-04.webp");
+      }
+
+      &.icon-05 {
+        @include imgContain("C_possible/possible_icon-05.webp");
+      }
+
+      &.icon-06 {
+        @include imgContain("C_possible/possible_icon-06.webp");
+      }
+
+      &.icon-07 {
+        @include imgContain("C_possible/possible_icon-07.webp");
+      }
+
+      &.icon-08 {
+        @include imgContain("C_possible/possible_icon-08.webp");
+      }
+
+      &.icon-09 {
+        @include imgContain("C_possible/possible_icon-09.webp");
+      }
+
+      &.icon-10 {
+        @include imgContain("C_possible/possible_icon-10.webp");
+      }
+
+      &.icon-11 {
+        @include imgContain("C_possible/possible_icon-11.webp");
+      }
+
+      &.icon-12 {
+        @include imgContain("C_possible/possible_icon-12.webp");
+      }
+
+      &.icon-13 {
+        @include imgContain("C_possible/possible_icon-13.webp");
+      }
+
+      &.icon-14 {
+        @include imgContain("C_possible/possible_icon-14.webp");
+      }
+
+      &.icon-15 {
+        @include imgContain("C_possible/possible_icon-15.webp");
+      }
+    }
+  }
+}

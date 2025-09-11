@@ -1,0 +1,32 @@
+@use "../functions" as *;
+
+
+/* -----------------------
+  footer
+----------------------- */
+
+.footer {
+  background: #FFF366;
+
+  @include pc {
+    padding: 30px 0 26px;
+  }
+
+  @include sp {
+    padding: s(30) 0;
+  }
+
+  .TX {
+    color: $F-sub;
+    font-weight: 800;
+    text-align: center;
+
+    @include pc {
+      font-size: 16px;
+    }
+
+    @include sp {
+      font-size: s(13);
+    }
+  }
+}

@@ -1,0 +1,129 @@
+@use "../functions" as *;
+
+/* -----------------------
+  sec-possible
+----------------------- */
+
+.sec-possible {
+  position: relative;
+
+  &--inr {
+    background-color: $B-sub;
+
+    @include pc {
+      padding: 117px 50px 135px;
+    }
+
+    @include sp {
+      padding: s(61) s(20) s(84);
+    }
+
+    .sec-possible--container {
+
+      @include pc {
+        margin-top: 90px;
+      }
+
+      @include sp {
+        margin-top: s(47);
+      }
+
+      .sec-possible--container--tabs {
+        display: flex;
+        justify-content: center;
+        gap: var(--gap);
+        --item: 5;
+
+        @include pc {
+          --gap: 50px;
+          margin-bottom: 60px;
+          max-width: 700px;
+          margin-inline: auto;
+        }
+
+        @include sp {
+          --gap: calc(( 27 / 390) * 100vw);
+          margin-bottom: s(60);
+        }
+
+        .C_possible_tab {
+          width: calc((100% / var(--item)) - (var(--gap) * (var(--item) - 1) / var(--item)));
+        }
+      }
+
+      .sec-possible--container--contents {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+
+  &--outer {
+    position: relative;
+    background-color: #FFF366;
+
+    @include pc {
+      padding-block: 37px 35px;
+    }
+
+    @include sp {
+      padding-block: s(36) s(37);
+    }
+
+    .sec-possible--outer--ttl {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      margin-inline: auto;
+      
+      @include pc {
+        transform: translate(-50%, -50%);
+      }
+
+      @include sp {
+        transform: translate(-50%, -70%);
+      }
+
+      .TL {
+        filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+        white-space: nowrap;
+
+        @include sp{
+          text-align: center;
+        }
+
+        span {
+          color: transparent;
+          -webkit-text-stroke-color: #ffffff;
+          font-weight: 800;
+          position: relative;
+          color: #505050;
+          
+          @include pc {
+            -webkit-text-stroke-width: 6px;
+            font-size: 24px;
+          }
+
+          @include sp {
+            -webkit-text-stroke-width: s(6);
+            font-size: s(16);
+          }
+
+          &::before {
+            content: attr(data-text);
+            -webkit-text-stroke-width: 0;
+            -webkit-text-stroke-color: unset;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            font-weight: 800;
+            color: $F-main;
+          }
+        }
+      }
+    }
+  }
+}
