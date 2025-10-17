@@ -1,16 +1,22 @@
 {
-  "name": "page",
-  "version": "1.0.0",
-  "description": "joint",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "sass --watch sass:css"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "sass": "^1.77.8"
-  }
+	"name": "page",
+	"version": "1.0.0",
+	"description": "joint",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"sass": "sass --watch sass:css",
+		"format": "prettier --write .",
+		"format:check": "prettier --check ."
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"sass": "^1.88.0"
+	},
+	"devDependencies": {
+		"prettier": "^3.6.2",
+		"@prettier/plugin-php": "^0.24.0"
+	}
 }
