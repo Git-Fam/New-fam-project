@@ -475,7 +475,7 @@
   }
 
   &.Java,
-  &.React,
+  // &.React,
   &.Design,
   &.SQL {
     .page1 {
@@ -708,96 +708,127 @@
     }
   }
 
-  &.React {
-    .page1 {
-      .road-content {
-        .destination {
-          &:nth-child(7) {
-            rotate: unset;
+  // &.React {
+  //   .page1 {
+  //     .road-content {
+  //       .destination {
+  //         &:nth-child(7) {
+  //           rotate: unset;
 
-            @include pc {
-              left: p(70);
-              bottom: p(138);
-            }
+  //           @include pc {
+  //             left: p(70);
+  //             bottom: p(138);
+  //           }
 
-            @include sp {
-              left: 70px;
-              bottom: 168px;
-            }
+  //           @include sp {
+  //             left: 70px;
+  //             bottom: 168px;
+  //           }
 
-            .character-box,
-            .goal-wrap {
-              rotate: unset;
+  //           .character-box,
+  //           .goal-wrap {
+  //             rotate: unset;
 
-              .title-board {
-                transform: unset;
+  //             .title-board {
+  //               transform: unset;
 
-                .board-TX {
-                  transform: unset;
-                }
-              }
-            }
-          }
+  //               .board-TX {
+  //                 transform: unset;
+  //               }
+  //             }
+  //           }
+  //         }
 
-          &:nth-child(8) {
-            rotate: unset;
-            left: auto;
-            top: auto;
+  //         &:nth-child(8) {
+  //           rotate: unset;
+  //           left: auto;
+  //           top: auto;
 
-            @include pc {
-              right: p(600);
-              bottom: p(102);
-              z-index: 17;
-            }
+  //           @include pc {
+  //             right: p(600);
+  //             bottom: p(102);
+  //             z-index: 17;
+  //           }
 
-            @include sp {
-              right: 500px;
-              bottom: 122px;
-              z-index: 17;
-            }
+  //           @include sp {
+  //             right: 500px;
+  //             bottom: 122px;
+  //             z-index: 17;
+  //           }
 
-            .character-box,
-            .goal-wrap {
-              rotate: unset;
+  //           .character-box,
+  //           .goal-wrap {
+  //             rotate: unset;
 
-              .title-board {
-                transform: unset;
+  //             .title-board {
+  //               transform: unset;
 
-                .board-TX {
-                  transform: unset;
-                }
-              }
-            }
-          }
+  //               .board-TX {
+  //                 transform: unset;
+  //               }
+  //             }
+  //           }
+  //         }
 
-          &:nth-child(9) {
-            left: auto;
-            top: auto;
+  //         &:nth-child(9) {
+  //           rotate: unset;
+  //           left: auto;
+  //           top: auto;
 
-            @include pc {
-              right: p(120);
-              bottom: p(74);
-            }
+  //           @include pc {
+  //             right: p(400);
+  //             bottom: p(80);
+  //             z-index: 17;
+  //           }
 
-            @include sp {
-              right: 70px;
-              bottom: 104px;
-            }
+  //           @include sp {
+  //             right: 300px;
+  //             bottom: 112px;
+  //             z-index: 17;
+  //           }
 
-            .title-board {
-              @include pc {
-                left: p(-50);
-              }
+  //           .character-box,
+  //           .goal-wrap {
+  //             rotate: unset;
 
-              @include sp {
-                left: -50px;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+  //             .title-board {
+  //               transform: unset;
+
+  //               .board-TX {
+  //                 transform: unset;
+  //               }
+  //             }
+  //           }
+  //         }
+
+  //         &:nth-child(10) {
+  //           left: auto;
+  //           top: auto;
+
+  //           @include pc {
+  //             right: p(120);
+  //             bottom: p(74);
+  //           }
+
+  //           @include sp {
+  //             right: 70px;
+  //             bottom: 104px;
+  //           }
+
+  //           .title-board {
+  //             @include pc {
+  //               left: p(-50);
+  //             }
+
+  //             @include sp {
+  //               left: -50px;
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 
   &.Design {
     .page1 {

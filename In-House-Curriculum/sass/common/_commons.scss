@@ -1,50 +1,58 @@
-@use "../global" as *;
+@use "../global"as *;
 
 /* -----------------------
   commons
 ----------------------- */
 
 // 表示・非表示
-.sp{
-  @include pc{
+.sp {
+  @include pc {
     display: none !important;
   }
 }
-.pc{
-  @include sp{
+
+.pc {
+  @include sp {
     display: none !important;
   }
 }
 
 
-html{
+
+
+html {
   scroll-behavior: smooth;
   scroll-padding-top: 10%;
 }
 
-body{
+body {
   @include mplus;
 
-  &.active{
+  &.active {
     overflow: hidden;
+  }
+
+  @media print {
+    display: none;
   }
 }
 
-.wappaer{
+.wappaer {
   overflow: hidden;
 }
 
 // 投稿
-.code{
-	padding: 10px;
-	border: solid #ff6600 1px;
-   background-color: #fff0e6;
-}
-.memo{
-	padding: 10px;
-   background-color: #f2f2f2;
+.code {
+  padding: 10px;
+  border: solid #ff6600 1px;
+  background-color: #fff0e6;
 }
 
-iframe{
+.memo {
+  padding: 10px;
+  background-color: #f2f2f2;
+}
+
+iframe {
   border: none;
 }
