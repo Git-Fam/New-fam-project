@@ -1,0 +1,37 @@
+{
+	"semi": true,
+	"trailingComma": "es5",
+	"singleQuote": true,
+	"printWidth": 160,
+	"tabWidth": 4,
+	"useTabs": false,
+	"bracketSpacing": true,
+	"arrowParens": "avoid",
+	"endOfLine": "lf",
+	"htmlWhitespaceSensitivity": "css",
+	"insertPragma": false,
+	"jsxBracketSameLine": false,
+	"jsxSingleQuote": true,
+	"proseWrap": "preserve",
+	"quoteProps": "as-needed",
+	"requirePragma": false,
+	"vueIndentScriptAndStyle": false,
+	"bracketSameLine": false,
+	"embeddedLanguageFormatting": "auto",
+	"plugins": ["@prettier/plugin-php"],
+	"overrides": [
+		{
+			"files": "*.html",
+			"options": {
+				"printWidth": 120
+			}
+		},
+		{
+			"files": "*.scss",
+			"options": {
+				"printWidth": 120,
+				"singleQuote": false
+			}
+		}
+	]
+}
