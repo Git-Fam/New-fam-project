@@ -7,6 +7,21 @@ $(function () {
         $('body').removeClass('active');
     });
 
+    // トップボタン
+    $(window).scroll(function () {
+        var footer = $('.footer');
+        if (footer.length) {
+            var footerTop = footer.offset().top;
+            var scrollBottom = $(window).scrollTop() + $(window).height();
+
+            if (scrollBottom >= footerTop) {
+                $('.top-back-btn').addClass('active');
+            } else {
+                $('.top-back-btn').removeClass('active');
+            }
+        }
+    });
+
     // var prevScrollpos = window.pageYOffset;
     // window.onscroll = function() {
     //   var currentScrollpos = window.pageYOffset;
