@@ -25,15 +25,14 @@ html {
 body {
     @include yuGothic-m;
     line-height: 2;
-
-    &.active {
-        @include sp {
-            overflow: hidden;
-        }
-    }
 }
 
+a {
+    color: $main-f;
+}
 
 .whopper {
     overflow: hidden;
 }
+
+

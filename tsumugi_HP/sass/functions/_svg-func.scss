@@ -1,17 +1,77 @@
 // SVG使い方（色変更パターン）
-// @function encode($ColorCode){
-//   @return '%23' + str-slice($ColorCode,2,-1);
-// }
+@function encode($ColorCode) {
+    @return "%23" + str-slice($ColorCode, 2, -1);
+}
 
-// openアイコン
-// @function open($Color) {
-//   @return  url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 18" fill="none"><path d="M0 9H24" stroke="#{$Color}" stroke-width="2"/><path d="M0 1H24" stroke="#{$Color}" stroke-width="2"/><path d="M0 17H24" stroke="#{$Color}" stroke-width="2"/></svg>');
-// }
+// header-01（#bc3949）
+@function header-01($Color) {
+    @return url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="28.49" height="30.72" viewBox="0 0 28.49 30.72"><g id="グループ_24869" data-name="グループ 24869" transform="translate(3.325 6.386) rotate(-3)"><rect id="長方形_109123" data-name="長方形 109123" width="28.49" height="30.72" transform="matrix(0.999, 0.052, -0.052, 0.999, -2.986, -6.551)" fill="none"/><path id="パス_74734" data-name="パス 74734" d="M5.67,0,.193,3.708,2.058,6.05,0,7.44.886,8.988,6.7,6.622l3.76-3.568L9.219,1.562,7.2,2.933Z" transform="translate(0 0)" fill="#{$Color}"/><path id="パス_74735" data-name="パス 74735" d="M9.566,0l4.956.734L16.406,4.28l2.482-.163.288,1.9L16.841,7.672,14.879,13.91H3.383L.189,10.5,0,6.109,5.8,3.8Z" transform="translate(1.601 3.835)" fill="#{$Color}"/></g></svg>');
+}
 
-// closeアイコン
-// @function close($Color) {
-//   @return  url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none"><path d="M1.51471 18.4854L18.4853 1.51479" stroke="#{$Color}" stroke-width="2"/><path d="M1.51471 1.51465L18.4853 18.4852" stroke="#{$Color}" stroke-width="2"/></svg>');
-// }
+// header-02（#ffc4b9）
+@function header-02($Color) {
+    @return url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="28.49" height="30.72" viewBox="0 0 28.49 30.72"><g id="グループ_24870" data-name="グループ 24870" transform="translate(2.893 4.923)"><rect id="長方形_109122" data-name="長方形 109122" width="28.49" height="30.72" transform="translate(-2.893 -4.923)" fill="none"/><path id="パス_80242" data-name="パス 80242" d="M4.677,4.677l.882-.7-.7-.884.935-.739.7.884.884-.7.738.932-.885.7.7.884L7,5.8l-.7-.884-.883.7ZM11.839,0,3.614,1.1.357,8.373l3.952,2.063L13.04,4.131Z" transform="translate(-0.049)" fill="#{$Color}"/><path id="パス_80243" data-name="パス 80243" d="M9.61,8.665,5.078,11.92l-2.959.267L0,16.171l2.1,3.057-.519,3.8,3.557-2.412L5.5,16.161,8.49,19.03l10.624-.557,1.514-5.857L22.7,10.972l-.357-1.74L20.062,9.5,18.149,6.315l-4.619-.439Z" transform="translate(0 -0.808)" fill="#{$Color}"/></g></svg>');
+}
+
+// header-03（#e15c38）
+@function header-03($Color) {
+    @return url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="28.494" height="30.719" viewBox="0 0 28.494 30.719"><path id="パス_80624" data-name="パス 80624" d="M20.337,0,17.864,2.078l.424.751-4.14,5.559L9.6,7.3,7.169,10.254l-.09,3.127-2.928-.147L0,17.782l3.179,7.244,7.35.2,3.05-4.712L12.34,17.728l2.954-.784,1.922-2.586-1.549-4.8,3.942-5.628.977-.082,1.177-2.676Z" transform="matrix(0.951, 0.309, -0.309, 0.951, 7.796, 0)" fill="#{$Color}"/></svg>');
+}
+
+// header-04（#8ddea6）
+@function header-04($Color) {
+    @return url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="23.209" height="20.026" viewBox="0 0 23.209 20.026"><path id="パス_80625" data-name="パス 80625" d="M6.988,0,5.03,9.933,1.75,9.5,0,12.558l3.5,1.968,2.843-1.75L8.029,4.2l9.185.219-1.249,7.043-2.843-1.093L10.935,13,13.559,15.4l3.718-1.312L19.9.311Z" transform="matrix(-0.966, 0.259, -0.259, -0.966, 23.209, 14.876)" fill="#{$Color}"/></svg>');
+}
+
+// header-05（#4bb36a）
+@function header-05($Color) {
+    @return url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="28.49" height="30.72" viewBox="0 0 28.49 30.72"><g id="グループ_24874" data-name="グループ 24874" transform="translate(-1108.811 -27.841)"><rect id="長方形_109125" data-name="長方形 109125" width="28.49" height="30.72" transform="translate(1108.811 27.841)" fill="none"/><path id="パス_80617" data-name="パス 80617" d="M10.167,0,7.456,11.748l-4.97.226L0,14.911l3.841,4.067,4.971-1.356L11.522,6.1,13.33,9.037l-.452,5.648,3.841-7.456L12.652,1.807l.226-1.13Z" transform="matrix(0.998, 0.07, -0.07, 0.998, 1115.378, 33.152)" fill="#{$Color}"/></g></svg>');
+}
+
+// menu-01（#ffc4b9）
+@function menu-01($Color) {
+    @return url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43"><g id="グループ_37087" data-name="グループ 37087" transform="translate(-2044 -969)"><rect id="長方形_109128" data-name="長方形 109128" width="43" height="43" transform="translate(2044 969)" fill="none"/><g id="グループ_37084" data-name="グループ 37084" transform="translate(2045.961 972.877)"><path id="パス_80242" data-name="パス 80242" d="M7.791,8.05l1.519-1.2L8.1,5.326,9.714,4.054l1.205,1.522L12.441,4.37l1.271,1.6L12.189,7.181,13.394,8.7,11.788,9.976,10.582,8.454l-1.52,1.2ZM20.119,0,5.962,1.9.357,14.412l6.8,3.551L22.185,7.109Z" transform="translate(0.173)" fill="#{$Color}"/><path id="パス_80243" data-name="パス 80243" d="M16.54,10.677l-7.8,5.6-5.093.46L0,23.595l3.622,5.261L2.729,35.4l6.122-4.151.622-7.672,5.139,4.939L32.9,27.557,35.5,17.476l3.575-2.829-.615-2.994-3.934.462L31.237,6.632l-7.95-.756Z" transform="translate(0 2.847)" fill="#{$Color}"/></g></g></svg>');
+}
+
+// menu-02（#e15c38）
+@function menu-02($Color) {
+    @return url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="43.077" height="46.44" viewBox="0 0 43.077 46.44"><g id="グループ_37089" data-name="グループ 37089" transform="translate(-2043.96 -1032.781)"><rect id="長方形_109129" data-name="長方形 109129" width="43" height="43" transform="translate(2044 1035)" fill="none"/><path id="パス_138372" data-name="パス 138372" d="M30.745,0,27.007,3.141l.641,1.135-6.259,8.4-6.874-1.643L10.839,15.5,10.7,20.229l-4.427-.222L0,26.883,4.806,37.835l11.112.305,4.611-7.123L18.656,26.8l4.465-1.185,2.906-3.909-2.341-7.255,5.959-8.508,1.477-.124L32.9,1.775Z" transform="matrix(0.951, 0.309, -0.309, 0.951, 2055.746, 1032.781)" fill="#{$Color}"/></g></svg>');
+}
+
+// menu-03（#bc3949）
+@function menu-03($Color) {
+    @return url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43"><g id="グループ_37090" data-name="グループ 37090" transform="translate(-2044 -1133)"><rect id="長方形_109130" data-name="長方形 109130" width="43" height="43" transform="translate(2044 1133)" fill="none"/><g id="グループ_37085" data-name="グループ 37085" transform="translate(2045.961 1139.979) rotate(-3)"><path id="パス_74734" data-name="パス 74734" d="M10.241,0,.349,6.7l3.368,4.23L0,13.437l1.6,2.8,10.508-4.272L18.9,5.517,16.65,2.822,13,5.3Z" transform="translate(0 0)" fill="#{$Color}"/><path id="パス_74735" data-name="パス 74735" d="M17.278,0l8.951,1.326,3.4,6.4,4.483-.294.519,3.426-4.218,2.994L26.873,25.124H6.11L.342,18.972,0,11.033,10.476,6.868Z" transform="translate(2.892 6.926)" fill="#{$Color}"/></g></g></svg>');
+}
+
+// menu-04（#9d62e2）
+@function menu-04($Color) {
+    @return url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43"><g id="グループ_37091" data-name="グループ 37091" transform="translate(-2047 -1199)"><rect id="長方形_109131" data-name="長方形 109131" width="43" height="43" transform="translate(2047 1199)" fill="none"/><g id="グループ_37086" data-name="グループ 37086" transform="translate(2048.422 1210.184)"><path id="合体_66" data-name="合体 66" d="M8.492,19.257l-.453-4.34-5.126.289L.833,16.694,0,12.167l2.552.575L12.913,10.7l-1.1-2.147,2.88-.577.232,2.329,1.473-.29-.858-2.212,2.9-.649-.063,2.473,1.621-.319-.723-2.347,3.006-.613-.348,2.579,4.656-.916,8.611-4.253L37.661,0l2.491,17.625-3.981-2.341-8.12-2.026.08,4.019-3.608,4.336-11.577.021ZM17.7,13.967l-6.265.631L12.565,18l6.3,1.379,5.475-1.974.619-4.171Z" fill="#{$Color}" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1"/></g></g></svg>');
+}
+
+// menu-05（#edc835）
+@function menu-05($Color) {
+    @return url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="46.307" height="47.179" viewBox="0 0 46.307 47.179"><g id="グループ_37092" data-name="グループ 37092" transform="translate(-2043.695 -1295.41)"><rect id="長方形_109132" data-name="長方形 109132" width="43" height="43" transform="translate(2047 1297)" fill="none"/><path id="パス_138373" data-name="パス 138373" d="M10.311,0,8.443.732,10.6,3.868,0,19.877.26,30.69l9.725,7.645,10.556-.15,3.7,3.72L23.8,18.04l-4.524,4.287-5.536.395-1.617,2.511-2.2-1.074L14.316,2.8Z" transform="translate(2043.695 1311.941) rotate(-43)" fill="#{$Color}"/></g></svg>');
+}
+
+// menu-06（#8DDEA6）
+@function menu-06($Color) {
+    @return url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43"><g id="グループ_37093" data-name="グループ 37093" transform="translate(-2310 -969)"><rect id="長方形_109133" data-name="長方形 109133" width="43" height="43" transform="translate(2310 969)" fill="none"/><path id="パス_138374" data-name="パス 138374" d="M10.982,0,7.9,15.61l-5.155-.687L0,19.735l5.5,3.093,4.468-2.749L12.617,6.6l14.435.344L25.089,18.016,20.621,16.3l-3.437,4.124,4.124,3.78,5.843-2.062L31.275.488Z" transform="matrix(-0.966, 0.259, -0.259, -0.966, 2349.736, 998.641)" fill="#{$Color}"/></g></svg>');
+}
+
+// menu-07（#63CEC6）
+@function menu-07($Color) {
+    @return url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43"><g id="グループ_37094" data-name="グループ 37094" transform="translate(-2310 -1063)"><rect id="長方形_109134" data-name="長方形 109134" width="43" height="43" transform="translate(2310 1063)" fill="none"/><path id="パス_138375" data-name="パス 138375" d="M10.958,16.218l.955-3.885,3.747-1.492L19.3,12.661l-.447,5.055-5.35,2.132ZM10.019,0,8.735,1.806,2.628,6.993,0,14.151,4.634,24.214l17.3,9.488,3,3.74,4.279-17.275L24.937,22.1l-7.226.91L23.7,19.952l2.274-9.2L18.6,4.659,10.372,5.3,7.114,10.6,9.245,3.447l2.89-1.415Z" transform="translate(2316.893 1066.279)" fill="#{$Color}"/></g></svg>');
+}
+
+// menu-08（#BC3949）
+@function menu-08($Color) {
+    @return url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43"><g id="グループ_37095" data-name="グループ 37095" transform="translate(-2310 -1129)"><rect id="長方形_109135" data-name="長方形 109135" width="43" height="43" transform="translate(2310 1129)" fill="none"/><path id="パス_138376" data-name="パス 138376" d="M15.24,0,11.176,17.61l-7.451.339L0,22.352l5.757,6.1,7.451-2.032L17.272,9.144l2.709,4.4L19.3,22.013l5.757-11.176-6.1-8.128L19.3,1.016Z" transform="matrix(0.998, 0.07, -0.07, 0.998, 2319.992, 1134.938)" fill="#{$Color}"/></g></svg>');
+}
+
+// menu-09（#2682E4）
+@function menu-09($Color) {
+    @return url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43"><g id="グループ_37088" data-name="グループ 37088" transform="translate(-2310 -1227)"><rect id="長方形_109136" data-name="長方形 109136" width="43" height="43" transform="translate(2310 1227)" fill="none"/><path id="パス_138377" data-name="パス 138377" d="M11.669,0,8.4,16.586l-5.478-.73L0,20.968l5.843,3.286,4.747-2.921L13.406,7.016l15.337.365L26.658,19.142,21.91,17.316,18.259,21.7l4.382,4.016,6.208-2.191L33.231.519Z" transform="translate(2314.885 1236.143)" fill="#{$Color}"/></g></svg>');
+}
 
 // ↓CSSでは
 // background-image: open(encode('#FFF'));

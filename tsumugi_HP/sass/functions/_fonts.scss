@@ -39,24 +39,24 @@
     font-style: normal;
 }
 
-// YuGothicStd-L (Light)
-@mixin yuGothic-l {
-    font-family: "YuGothicStd", "Yu Gothic", "YuGothic", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-}
-
 // YuGothicStd-M (Medium)
 @mixin yuGothic-m{
-    font-family: "YuGothicStd", "Yu Gothic", "YuGothic", sans-serif;
-    font-weight: 500;
-    font-style: normal;
+	font-family: "YuGothicStd", "Yu Gothic", "YuGothic", sans-serif;
+	font-weight: 500;
+	font-style: normal;
+}
+
+// YuGothicStd-L (Light)
+@mixin yuGothic-l {
+		font-family: "YuGothicStd", "Yu Gothic", "YuGothic", sans-serif;
+		font-weight: 300;
+		font-style: normal;
 }
 
 // TA-mayuminwalk
-@mixin mayuminwalk {
+@mixin TA-mayuminwalk {
     font-family: "TA-mayuminwalk", sans-serif;
-    font-weight: normal;
+    font-weight: 700;
     font-style: normal;
 }
 

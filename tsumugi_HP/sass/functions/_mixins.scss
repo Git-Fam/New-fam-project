@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $pc: 480px; // PC
 $sp: 479px; // スマホ
 
@@ -111,7 +113,7 @@ $sp: 479px; // スマホ
 
 $screenSizePC: 1366;
 $screenSizeSP: 375;
-$ratio: 5 / 5;
+$ratio: math.div(5, 5);
 
 // サイズ
 @function p($size, $viewport: $screenSizePC) {
@@ -174,7 +176,7 @@ $ratio: 5 / 5;
     $rate: calc(100 / $viewport);
     $calculatedSize: $rate * $size * 1vw;
     @return min(#{$calculatedSize}, #{$maxSize}px);
-}	
+}
 
 // 入力値に*4/5した値とvwの値を比較して大きい方を返す
 // font-size: sm(50,40);
