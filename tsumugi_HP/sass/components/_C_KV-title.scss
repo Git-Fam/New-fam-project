@@ -1,0 +1,109 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_KV-title
+----------------------- */
+
+.C_KV-title {
+    width: fit-content;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+
+    @include sp {
+        flex-direction: column;
+        gap: s(10);
+    }
+
+    &.type-01 {
+        @include pc {
+            gap: pmin(15);
+        }
+    }
+
+    &.type-02 {
+        flex-direction: column;
+    }
+
+    .icon {
+        aspect-ratio: 1;
+        flex-shrink: 0;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        @include pc {
+            width: pmin(70);
+        }
+
+        @include sp {
+            width: s(53);
+        }
+
+        &.icon-01 {
+            background-image: menu-09(encode("#000"));
+        }
+        &.icon-02 {
+            background-image: menu-08(encode("#000"));
+        }
+        &.icon-03 {
+            background-image: menu-10(encode("#000"));
+        }
+        &.icon-04 {
+            background-image: menu-04(encode("#9D62E2"));
+        }
+        &.icon-05 {
+            background-image: menu-07(encode("#63CEC6"));
+        }
+        &.icon-06 {
+            background-image: menu-10(encode("#F089C5"));
+        }
+        &.icon-07 {
+            background-image: menu-06(encode("#8DDEA6"));
+        }
+        &.icon-08 {
+            background-image: menu-08(encode("#4DA754"));
+        }
+        &.icon-09 {
+            background-image: menu-08(encode("#000"));
+        }
+        &.icon-10 {
+            background-image: menu-09(encode("#000"));
+        }
+    }
+
+    .TL {
+        @include TA-mayuminwalk;
+        letter-spacing: 0.05em;
+
+        @include pc {
+            font-size: pmin(62);
+        }
+        @include sp {
+            font-size: s(42);
+        }
+
+        &.TL-small {
+            @include sp {
+                font-size: s(33);
+            }
+        }
+
+        &.TL-img {
+            @include pc {
+                width: pmin(487);
+            }
+
+            @include sp {
+                width: s(343);
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+                object-position: center;
+            }
+        }
+    }
+}

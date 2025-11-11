@@ -25,6 +25,7 @@ html {
 body {
     @include yuGothic-m;
     line-height: 1.5;
+    background-color: $main-b;
 }
 
 a {
@@ -34,5 +35,3 @@ a {
 .whopper {
     overflow: hidden;
 }
-
-

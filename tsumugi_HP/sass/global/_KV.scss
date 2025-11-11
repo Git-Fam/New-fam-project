@@ -1,0 +1,276 @@
+@use "../functions" as *;
+
+/* -----------------------
+KV
+----------------------- */
+
+.KV {
+    position: relative;
+
+    @include pc {
+        height: pmin(769);
+    }
+
+    @include sp {
+        height: s(573);
+    }
+
+    &-inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+
+        .KV-curtain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            transform: scale(1.01);
+            transform-origin: center;
+
+            @include pc {
+                height: pmin(769);
+                z-index: 1;
+            }
+
+            @include sp {
+                height: s(573);
+                z-index: 2;
+            }
+
+            .img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+
+                @include pc {
+                    @include imgContain("KV/KV-curtain-pc.webp");
+                    background-size: 100% 100%;
+                    background-position: top center;
+                }
+
+                @include sp {
+                    @include imgContain("KV/KV-curtain-sp.webp");
+                    background-size: 100% 100%;
+                    background-position: top center;
+                }
+            }
+        }
+
+        .KV-char {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin-inline: auto;
+            height: 100%;
+            z-index: 2;
+
+            @include pc {
+                width: pmin(1366);
+            }
+
+            @include sp {
+                width: 100%;
+            }
+
+            .KV-char_left {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+
+                .img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+
+                    @include pc {
+                        @include imgContain("KV/KV-char_left-pc.webp");
+                    }
+
+                    @include sp {
+                        @include imgContain("KV/KV-char_left-sp.webp");
+                    }
+                }
+            }
+
+            .KV-char_right {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+
+                .img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+
+                    @include pc {
+                        @include imgContain("KV/KV-char_right-pc.webp");
+                    }
+
+                    @include sp {
+                        @include imgContain("KV/KV-char_right-sp.webp");
+                    }
+                }
+            }
+        }
+
+        .KV-spot {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+
+            @include pc {
+                width: pmin(330);
+                height: 95%;
+                @include imgContain("KV/KV-spot-pc.webp");
+                background-position: bottom center;
+                z-index: 3;
+            }
+
+            @include sp {
+                width: s(132);
+                height: 65%;
+                @include imgContain("KV/KV-spot-sp.webp");
+                background-position: bottom center;
+                z-index: 1;
+            }
+        }
+
+        .KV-mom {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin-inline: auto;
+            width: 100%;
+            height: 100%;
+            z-index: 4;
+
+            @include pc {
+                width: pmin(1366);
+            }
+
+            .img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+
+                @include pc {
+                    @include imgContain("KV/KV-mom-pc.webp");
+                }
+
+                @include sp {
+                    @include imgContain("KV/KV-mom-sp.webp");
+                }
+            }
+        }
+
+        .KV-note {
+            position: absolute;
+            left: 50%;
+            z-index: 5;
+
+            @include pc {
+                top: 50%;
+                transform: translate(-50%, -50%);
+                width: pmin(1437);
+                aspect-ratio: 1437/628;
+            }
+
+            @include sp {
+                top: -15%;
+                transform: translateX(-50%);
+                width: s(409);
+                height: 100%;
+            }
+
+            .img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+
+                @include pc {
+                    @include imgContain("KV/KV-note-pc.webp");
+                }
+
+                @include sp {
+                    @include imgContain("KV/KV-note-sp.webp");
+                }
+            }
+        }
+
+        .KV-ttl {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 6;
+
+            @include pc {
+                top: 15%;
+                width: pmin(642);
+            }
+
+            @include sp {
+                width: s(335);
+                bottom: 8%;
+            }
+
+            .TL {
+                width: 100%;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    object-fit: contain;
+                    object-position: center;
+                }
+            }
+        }
+    }
+
+    .KV-bg {
+        &_top {
+            background-color: #ffded6;
+            @include imgCover("KV/KV-bg.webp");
+
+            @include pc {
+                height: pmin(427);
+            }
+
+            @include sp {
+                height: s(245);
+            }
+        }
+        &_bottom {
+            background-color: #ffeae6;
+            @include imgCover("KV/KV-bg.webp");
+
+            @include pc {
+                height: pmin(342);
+            }
+
+            @include sp {
+                height: s(335);
+            }
+        }
+    }
+}

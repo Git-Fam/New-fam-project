@@ -7,18 +7,39 @@ $(function () {
         $('body').removeClass('active');
     });
 
-    // トップボタン
+    // トップボタン & reserveボタン
     $(window).scroll(function () {
+        var scrollTop = $(window).scrollTop();
+
+        // トップボタン：footer上にいる時だけactive
         var footer = $('.footer');
         if (footer.length) {
             var footerTop = footer.offset().top;
-            var scrollBottom = $(window).scrollTop() + $(window).height();
+            var scrollBottom = scrollTop + $(window).height();
 
             if (scrollBottom >= footerTop) {
                 $('.top-back-btn').addClass('active');
             } else {
                 $('.top-back-btn').removeClass('active');
             }
+        }
+
+        // reserveボタン：750px以上スクロールでactive
+        if (scrollTop >= 750) {
+            $('.reserve-btn').addClass('active');
+        } else {
+            $('.reserve-btn').removeClass('active');
+        }
+
+        // header：700px以上スクロールでactive
+        if (scrollTop >= 700) {
+            $('.header').addClass('active');
+
+            if (scrollBottom >= footerTop) {
+                $('.header').removeClass('active');
+            }
+        } else {
+            $('.header').removeClass('active');
         }
     });
 
