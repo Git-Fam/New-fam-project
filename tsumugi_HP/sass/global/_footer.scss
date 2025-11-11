@@ -458,4 +458,38 @@
             pointer-events: auto;
         }
     }
+
+    .reserve-btn {
+        display: block;
+        aspect-ratio: 283/207;
+        position: fixed;
+        z-index: 100;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+
+        @include pc {
+            width: pmin(283);
+            bottom: pmin(10);
+            right: p(-25);
+        }
+
+        @include sp {
+            width: s(160);
+            bottom: s(15);
+            right: s(-15);
+        }
+
+        &.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        img{
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            object-position: center;
+        }
+    }
 }

@@ -1,0 +1,53 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_sec_ttl
+----------------------- */
+
+.C_sec_ttl {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: fit-content;
+
+    @include pc {
+        gap: pmin(10);
+    }
+
+    @include sp {
+    }
+
+    .icon {
+        aspect-ratio: 1;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        @include pc {
+            width: pmin(50);
+        }
+
+        @include sp {
+            width: s(40);
+        }
+
+        &.icon-01 {
+            background-image: menu-03(encode("#bc3949"));
+        }
+    }
+
+    .TL {
+        @include TA-mayuminwalk;
+        letter-spacing: 0.02em;
+        line-height: 1.3;
+        text-align: center;
+
+        @include pc {
+            font-size: pmin(36);
+        }
+
+        @include sp {
+            font-size: s(30);
+        }
+    }
+}

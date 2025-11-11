@@ -1,0 +1,327 @@
+@use "../functions" as *;
+
+/* -----------------------
+KV-other
+----------------------- */
+
+.KV-other {
+    position: relative;
+
+    @include pc {
+        height: pmin(420);
+    }
+
+    @include sp {
+        height: s(440);
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+
+        @include pc {
+            @include imgCover("KV-other-bg-pc.webp");
+            background-position: bottom center;
+        }
+
+        @include sp {
+            @include imgCover("KV-other-bg-sp.webp");
+            background-position: bottom center;
+        }
+    }
+
+    .C_KV-title {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin-inline: auto;
+        z-index: 10;
+
+        @include pc {
+            bottom: 32%;
+        }
+
+        @include sp {
+            bottom: 50%;
+        }
+    }
+
+    .decoration {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin-inline: auto;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        max-width: pmin(1366);
+
+        .note,
+        .char {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .char {
+            z-index: 2;
+        }
+
+        // 婦人科
+        &.deco-gynecology {
+            .note {
+                @include pc {
+                    @include imgContain("KV/gynecology-note-pc.webp");
+                }
+
+                @include sp {
+                    @include imgContain("KV/gynecology-note-sp.webp");
+                }
+            }
+
+            .char {
+                @include pc {
+                    @include imgContain("KV/gynecology-char-pc.webp");
+                }
+
+                @include sp {
+                    @include imgContain("KV/gynecology-char-sp.webp");
+                }
+
+                .txt {
+                    position: absolute;
+                    top: 52%;
+                    left: 14%;
+                    white-space: nowrap;
+
+                    .TX {
+                        text-align: center;
+                        @include yuGothic-b;
+                        line-height: 2;
+                        letter-spacing: 0.08em;
+                        font-size: pmin(15);
+
+                        a {
+                            border-bottom: solid $main-f;
+                            border-bottom-width: pmin(1);
+                        }
+                    }
+                }
+            }
+        }
+
+        // 産科
+        &.deco-obstetrics {
+            .note {
+                @include pc {
+                    @include imgContain("KV/obstetrics-note-pc.webp");
+                }
+
+                @include sp {
+                    @include imgContain("KV/obstetrics-note-sp.webp");
+                }
+            }
+
+            .char {
+                @include pc {
+                    @include imgContain("KV/obstetrics-char-pc.webp");
+                }
+
+                @include sp {
+                    @include imgContain("KV/obstetrics-char-sp.webp");
+                }
+            }
+        }
+
+        // 無痛分娩について
+        &.deco-delivery {
+            .note {
+                @include pc {
+                    @include imgContain("KV/delivery-note-pc.webp");
+                }
+
+                @include sp {
+                    @include imgContain("KV/delivery-note-sp.webp");
+                }
+            }
+
+            .char {
+                @include pc {
+                    @include imgContain("KV/delivery-char-pc.webp");
+                }
+
+                @include sp {
+                    @include imgContain("KV/delivery-char-sp.webp");
+                }
+            }
+        }
+
+        // 入院案内
+        &.deco-guidance {
+            .note {
+                @include pc {
+                    @include imgContain("KV/guidance-note-pc.webp");
+                }
+
+                @include sp {
+                    @include imgContain("KV/guidance-note-sp.webp");
+                }
+            }
+
+            .char {
+                @include pc {
+                    @include imgContain("KV/guidance-char-pc.webp");
+                }
+
+                @include sp {
+                    @include imgContain("KV/guidance-char-sp.webp");
+                }
+            }
+        }
+
+        // お知らせ
+        &.deco-news {
+            .note {
+                @include pc {
+                    @include imgContain("KV/news-note-pc.webp");
+                }
+
+                @include sp {
+                    @include imgContain("KV/news-note-sp.webp");
+                }
+            }
+
+            .char {
+                @include pc {
+                    @include imgContain("KV/news-char-pc.webp");
+                }
+
+                @include sp {
+                    @include imgContain("KV/news-char-sp.webp");
+                }
+            }
+        }
+
+        // よくある質問
+        &.deco-faq {
+            .note {
+                @include pc {
+                    @include imgContain("KV/faq-note-pc.webp");
+                }
+
+                @include sp {
+                    @include imgContain("KV/faq-note-sp.webp");
+                }
+            }
+
+            .char {
+                @include pc {
+                    @include imgContain("KV/faq-char-pc.webp");
+                }
+
+                @include sp {
+                    @include imgContain("KV/faq-char-sp.webp");
+                }
+            }
+        }
+
+        // 採用情報
+        &.deco-recruitment {
+            .note {
+                @include pc {
+                    @include imgContain("KV/recruitment-note-pc.webp");
+                }
+
+                @include sp {
+                    @include imgContain("KV/recruitment-note-sp.webp");
+                }
+            }
+
+            .char {
+                @include pc {
+                    @include imgContain("KV/recruitment-char-pc.webp");
+                }
+
+                @include sp {
+                    @include imgContain("KV/recruitment-char-sp.webp");
+                }
+            }
+        }
+
+        // お問い合わせ
+        &.deco-contact {
+            .note {
+                @include pc {
+                    @include imgContain("KV/contact-note-pc.webp");
+                }
+
+                @include sp {
+                    @include imgContain("KV/contact-note-sp.webp");
+                }
+            }
+
+            .char {
+                @include pc {
+                    @include imgContain("KV/contact-char-pc.webp");
+                }
+
+                @include sp {
+                    @include imgContain("KV/contact-char-sp.webp");
+                }
+            }
+        }
+
+        // 施設標準
+        &.deco-standard {
+            .note {
+                @include pc {
+                    @include imgContain("KV/standard-note-pc.webp");
+                }
+
+                @include sp {
+                    @include imgContain("KV/standard-note-sp.webp");
+                }
+            }
+
+            .char {
+                @include pc {
+                    @include imgContain("KV/standard-char-pc.webp");
+                }
+
+                @include sp {
+                    @include imgContain("KV/standard-char-sp.webp");
+                }
+            }
+        }
+
+        // プライバシーポリシー
+        &.deco-policy {
+            .note {
+                @include pc {
+                    @include imgContain("KV/policy-note-pc.webp");
+                }
+
+                @include sp {
+                    @include imgContain("KV/policy-note-sp.webp");
+                }
+            }
+
+            .char {
+                @include pc {
+                    @include imgContain("KV/policy-char-pc.webp");
+                }
+
+                @include sp {
+                    @include imgContain("KV/policy-char-sp.webp");
+                }
+            }
+        }
+    }
+}

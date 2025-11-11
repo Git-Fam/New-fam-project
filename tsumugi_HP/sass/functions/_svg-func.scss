@@ -73,5 +73,10 @@
     @return url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43"><g id="グループ_37088" data-name="グループ 37088" transform="translate(-2310 -1227)"><rect id="長方形_109136" data-name="長方形 109136" width="43" height="43" transform="translate(2310 1227)" fill="none"/><path id="パス_138377" data-name="パス 138377" d="M11.669,0,8.4,16.586l-5.478-.73L0,20.968l5.843,3.286,4.747-2.921L13.406,7.016l15.337.365L26.658,19.142,21.91,17.316,18.259,21.7l4.382,4.016,6.208-2.191L33.231.519Z" transform="translate(2314.885 1236.143)" fill="#{$Color}"/></g></svg>');
 }
 
+// menu-10（#0000）
+@function menu-10($Color) {
+    @return url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43"><g id="グループ_37104" data-name="グループ 37104" transform="translate(-2310 -1227)"><rect id="長方形_109136" data-name="長方形 109136" width="43" height="43" transform="translate(2310 1227)" fill="none"/><path id="パス_138379" data-name="パス 138379" d="M16.595,0,12.034,18.337l-8.213-.211L0,22.642l5.905,6.253,7.642-2.084L19.8.757Z" transform="translate(2322.631 1233.397) rotate(4)" fill="#{$Color}"/></g></svg>');
+}
+
 // ↓CSSでは
 // background-image: open(encode('#FFF'));
