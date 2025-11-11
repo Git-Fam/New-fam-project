@@ -1,0 +1,437 @@
+@use "../../../functions" as *;
+@use "../../J_functions" as *;
+
+/* -----------------------
+  recruit main
+----------------------- */
+
+.FV {
+    @include pc {
+        height: pmin(419);
+    }
+
+    @include sp {
+        height: s(365);
+    }
+}
+
+.page {
+    background-color: $main-b;
+}
+
+.recruit-page {
+    position: relative;
+
+    @include pc {
+        padding-inline: pmin(300);
+    }
+
+    @include sp {
+        padding-inline: s(20);
+    }
+}
+
+.recruit-inner {
+    position: relative;
+
+    @include pc {
+        width: pmin(765);
+        margin: 0 auto;
+        padding-block: pmin(150) pmin(100);
+    }
+
+    @include sp {
+        padding-block: s(82) s(100);
+    }
+
+    .recruit-content {
+        .TL-box {
+            position: relative;
+            width: fit-content;
+            margin: 0 auto;
+
+            .TL {
+                @include TA-mayuminwalk;
+
+                @include pc {
+                    font-size: pmin(28);
+                }
+
+                @include sp {
+                    font-size: s(30);
+                }
+            }
+
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                top: 30%;
+                transform: translateY(-50%);
+
+                @include pc {
+                    height: pmin(126);
+                }
+            }
+
+            &::before {
+                @include sp {
+                    @include imgContain("recruit-TL-left-sp.webp");
+                    width: s(45);
+                    height: s(69);
+                    left: s(-45);
+                }
+
+                @include pc {
+                    @include imgContain("recruit-TL-left.webp");
+                    width: pmin(458);
+                    left: p(-554);
+                }
+
+                @media screen and (min-width: 1367px) {
+                    left: -554px;
+                }
+            }
+
+            &::after {
+                @include sp {
+                    @include imgContain("recruit-TL-right-sp.webp");
+                    width: s(56);
+                    height: s(74);
+                    right: s(-46);
+                }
+
+                @include pc {
+                    @include imgContain("recruit-TL-right.webp");
+                    width: pmin(434);
+                    right: p(-526);
+                }
+
+                @media screen and (min-width: 1367px) {
+                    right: -526px;
+                }
+            }
+        }
+
+        .recruit-item {
+            @include pc {
+                margin-top: pmin(100);
+            }
+
+            @include sp {
+                margin-top: s(51);
+            }
+
+            li {
+                @include pc {
+                    display: flex;
+                    gap: pmin(35);
+                }
+
+                @include sp {
+                    position: relative;
+                    padding-block: s(33) s(31);
+                }
+
+                .item-box {
+                    position: relative;
+
+                    @include sp {
+                        font-size: s(17.5);
+                    }
+
+                    @include pc {
+                        font-size: pmin(17.5);
+                        padding-block: pmin(44);
+                    }
+
+                    &.label {
+                        @include pc {
+                            width: pmin(179);
+                            padding-left: pmin(14);
+                        }
+
+                        h4 {
+                            font-weight: normal;
+                        }
+
+                        &::before {
+                            @include iconContain($recruit-label);
+                            background-size: 100% auto;
+
+                            @include pc {
+                                width: 100%;
+                                // width: pmin(179);
+                                height: pmin(5);
+                            }
+                        }
+                    }
+
+                    &.textbox {
+                        @include pc {
+                            width: pmin(547);
+                            padding-left: pmin(10);
+                        }
+
+                        @include sp {
+                            margin-top: s(10);
+                            line-height: 1.8;
+                        }
+
+                        &::before {
+                            @include iconContain($recruit-main);
+                            background-size: 100% auto;
+
+                            @include pc {
+                                width: 100%;
+                                height: pmin(5);
+                            }
+                        }
+                    }
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                    }
+                }
+
+                &:first-child {
+                    .item-box {
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                        }
+                    }
+
+                    .label {
+                        @include pc {
+                            width: pmin(179);
+                            padding-left: pmin(14);
+                        }
+
+                        &::after {
+                            @include iconContain($recruit-label);
+                            background-size: 100% auto;
+
+                            @include pc {
+                                // width: pmin(179);
+                                height: pmin(5);
+                            }
+                        }
+                    }
+
+                    .textbox {
+                        &::after {
+                            @include iconContain($recruit-main);
+                            background-size: 100% auto;
+
+                            @include pc {
+                                // width: pmin(547);
+                                height: pmin(5);
+                            }
+                        }
+                    }
+
+                    &::after {
+                        @include sp {
+                            content: "";
+                            @include iconContain($recruit-sp);
+                            background-size: 100% auto;
+                            position: absolute;
+                            width: 100%;
+                            height: s(5);
+                            top: 0;
+                            left: 0;
+                        }
+                    }
+                }
+
+                &::before {
+                    @include sp {
+                        content: "";
+                        @include iconContain($recruit-sp);
+                        background-size: 100% auto;
+                        position: absolute;
+                        width: 100%;
+                        height: s(5);
+                        bottom: 0;
+                        left: 0;
+                    }
+                }
+            }
+        }
+
+        &:nth-child(2) {
+            @include pc {
+                margin-top: pmin(208);
+            }
+
+            @include sp {
+                margin-top: s(118);
+            }
+
+            .TL-box {
+                &::before,
+                &::after {
+                    @include pc {
+                        transform: translateY(-50%) scale(-1, 1);
+                    }
+
+                    @include sp {
+                        top: 20%;
+                    }
+                }
+
+                &::before {
+                    @include sp {
+                        @include imgContain("recruit-TL-left-sp02.webp");
+                        width: s(61);
+                        height: s(70);
+                        left: s(-50);
+                    }
+
+                    @include pc {
+                        @include imgContain("recruit-TL-right.webp");
+                        width: pmin(434);
+                        left: p(-554);
+                    }
+
+                    @media screen and (min-width: 1367px) {
+                        left: -554px;
+                    }
+                }
+
+                &::after {
+                    @include sp {
+                        @include imgContain("recruit-TL-right-sp02.webp");
+                        width: s(57);
+                        height: s(68);
+                        right: s(-40);
+                    }
+
+                    @include pc {
+                        @include imgContain("recruit-TL-left.webp");
+                        width: pmin(458);
+                        right: p(-526);
+                    }
+
+                    @media screen and (min-width: 1367px) {
+                        right: -526px;
+                    }
+                }
+            }
+        }
+    }
+
+    .recruit-link {
+        @include pc {
+            @include imgContain("recruit-link-bg.svg");
+            width: pmin(606);
+            height: pmin(262);
+            padding-block: pmin(43);
+            margin: pmin(115) auto 0;
+        }
+
+        @include sp {
+            @include imgContain("recruit-link-bg-sp.svg");
+            width: s(304);
+            height: s(279);
+            padding: s(40) s(38) s(45) s(39);
+            margin: s(90) auto 0;
+        }
+
+        .TX {
+            @include pc {
+                text-align: center;
+                font-size: pmin(17.5);
+                line-height: 2;
+            }
+
+            @include sp {
+                font-size: s(17.5);
+                line-height: 1.8;
+            }
+        }
+
+        .link {
+            background-color: #000;
+            border-radius: 999px;
+            position: relative;
+            width: fit-content;
+            display: flex;
+            align-items: center;
+
+            @include pc {
+                padding: pmin(24) pmin(26.7) pmin(18) pmin(42);
+                margin: pmin(30) auto 0;
+                gap: pmin(19);
+                box-shadow: 0 pmin(3) pmin(6) 0 rgba(0, 0, 0, 0.5);
+            }
+
+            @include sp {
+                padding: s(16) s(22) s(16) s(31);
+                margin: s(20) auto 0;
+                gap: s(14);
+                box-shadow: 0 s(3) s(6) 0 rgba(0, 0, 0, 0.5);
+            }
+
+            &-TX {
+                color: #fff;
+
+                @include pc {
+                    font-size: pmin(21);
+                }
+
+                @include sp {
+                    font-size: s(14);
+                }
+            }
+
+            &::after {
+                content: "";
+                display: block;
+                @include iconContain($recruit-link);
+
+                @include pc {
+                    width: pmin(27);
+                    height: pmin(21);
+                }
+
+                @include sp {
+                    width: s(19);
+                    height: s(14);
+                }
+            }
+        }
+    }
+
+    .recruit-img {
+        position: absolute;
+
+        @include sp {
+            @include imgContain("recruit-img-sp.webp");
+            width: s(179);
+            height: s(126);
+            bottom: s(-10);
+            left: s(-10);
+        }
+
+        @include pc {
+            @include imgContain("recruit-img.webp");
+            width: pmin(241);
+            height: pmin(286);
+            bottom: pmin(-13);
+            left: pmin(-70);
+        }
+
+        @media screen and (min-width: 1367px) {
+            bottom: -13px;
+            left: -70px;
+        }
+    }
+}

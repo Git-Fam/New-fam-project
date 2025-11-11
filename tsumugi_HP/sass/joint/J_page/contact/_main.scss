@@ -1,0 +1,433 @@
+@use "../../../functions" as *;
+@use "../../J_functions" as *;
+
+/* -----------------------
+  recruit main
+----------------------- */
+
+.FV {
+    @include pc {
+        height: pmin(419);
+    }
+
+    @include sp {
+        height: s(365);
+    }
+}
+
+.page {
+    background-color: $main-b;
+}
+
+.contact-page {
+    position: relative;
+
+    @include pc {
+        padding-inline: pmin(200);
+    }
+
+    @include sp {
+        padding-inline: s(20);
+    }
+}
+
+.contact-inner {
+    position: relative;
+
+    @include pc {
+        width: pmin(824);
+        margin: 0 auto;
+        padding-block: pmin(127) pmin(155);
+    }
+
+    @include sp {
+        padding-block: s(77) s(186);
+    }
+    .contact-TX {
+        text-align: center;
+        line-height: 2;
+
+        @include pc {
+            font-size: pmin(17.5);
+        }
+        @include sp {
+            font-size: s(16.5);
+        }
+    }
+    form {
+        @include pc {
+            width: pmin(762);
+            margin: pmin(132) auto 0;
+        }
+        @include sp {
+            margin-top: s(70) ;
+        }
+        .radio-area,
+        .label-wrap {
+            @include pc {
+                display: flex;
+                gap: pmin(38);
+            }
+        }
+        .radio-area {
+            align-items: center;
+            p{
+                @include sp{
+                    margin: 0;
+                }
+            }
+            .wpcf7-form-control-wrap {
+                @include pc {
+                    width: pmin(552);
+                    font-size: pmin(17.5);
+                }
+                @include sp{
+                    font-size: s(16.5);
+                    margin-top: s(20);
+                    display: inline-block;
+                }
+                .wpcf7-list-item {
+                    margin-left: 0;
+                    @include pc {
+                        margin-right: pmin(61);
+                    }
+                    @include sp{
+                        margin-right: s(38);
+                    }
+                }
+            }
+            label {
+                display: flex;
+                align-items: center;
+                @include pc {
+                    gap: pmin(6);
+                }
+                @include sp{
+                    gap: s(3);
+                }
+            }
+            input[type="radio"] {
+                @include pc {
+                    width: pmin(18);
+                    height: pmin(18);
+                }
+                @include sp{
+                    margin: 0;
+                    width: s(18);
+                    height: s(18);
+                }
+            }
+        }
+        .form-item{
+            @include sp{
+                margin-top: s(43);
+            }
+
+        }
+        .label {
+            display: inline-block;
+            @include yuGothic-b;
+            @include pc {
+                min-width: pmin(172);
+                font-size: pmin(20);
+            }
+            @include sp{
+                font-size: s(17);
+
+            }
+        }
+        br {
+            display: none;
+        }
+
+        .label-wrap {
+            @include pc {
+                margin-top: pmin(30);
+            }
+            input {
+                cursor: pointer;
+                border: none;
+                background-color: transparent;
+                @include pc {
+                    font-size: pmin(17.5);
+                }
+                @include sp{
+                    font-size: s(16.5);
+                    margin-top: s(10);
+                }
+            }
+        }
+
+        .gb-01 {
+            align-items: center;
+            input {
+                @include pc {
+                    @include imgContain("form-bg01.svg");
+                    width: pmin(552.9);
+                    height: pmin(58.7);
+                }
+                @include sp{
+                    @include imgContain("form-bg-sp01.svg");
+                    width: s(335);
+                    height: s(50);
+                }
+            }
+        }
+
+        .gb-02 {
+            align-items: center;
+            input {
+                @include pc {
+                    @include imgContain("form-bg02.svg");
+                    width: pmin(264.35);
+                    height: pmin(58.46);
+                }
+                @include sp{
+                    @include imgContain("form-bg-sp02.svg");
+                    width: s(172);
+                    height: s(50);
+                    display: block;
+                }
+
+            }
+        }
+
+        .gb-03 {
+            .label {
+                @include pc {
+                    margin-top: pmin(16);
+                }
+            }
+            textarea {
+                cursor: pointer;
+                border: none;
+                background-color: transparent;
+                resize: none;
+
+                @include pc {
+                    @include imgContain("form-bg03.svg");
+                    width: pmin(550.9);
+                    height: pmin(259.7);
+                }
+                @include sp{
+                    @include imgContain("form-bg-sp03.svg");
+                    width: s(335);
+                    height: s(259);
+                    margin-top: s(10);
+                }
+
+            }
+        }
+        .policy {
+            display: flex;
+            justify-content: center;
+            @include pc {
+                margin-top: pmin(40);
+            }
+            @include sp{
+                margin-top: s(40);
+            }
+            .wpcf7-list-item {
+                margin-left: 0;
+            }
+            label {
+                display: flex;
+                align-items: center;
+                @include pc {
+                    gap: pmin(9);
+                    font-size: pmin(17.5);
+                }
+                @include sp{
+                    gap: s(6);
+                    font-size: s(16.5);
+                }
+            }
+            input[type="checkbox"] {
+                @include pc {
+                    width: pmin(19);
+                    height: pmin(19);
+                }
+                @include sp{
+                    width: s(19);
+                    height: s(19);
+                }
+            }
+        }
+        .policy-bottom {
+            text-align: center;
+            @include pc {
+                font-size: pmin(17.5);
+            }
+            @include sp{
+                font-size: s(16.5);
+            }
+            .policy-link {
+                @include yuGothic-b;
+                @include pc {
+                    padding-bottom: pmin(5);
+                    border-bottom: pmin(2) solid;
+                    margin-top: pmin(20);
+                }
+                @include sp{
+                    padding-bottom: s(5);
+                    border-bottom: s(2) solid;
+                    margin-top: s(20);
+                }
+            }
+            .policy-under {
+                @include pc {
+                    margin-top: pmin(40);
+                }
+                @include sp{
+                    margin-top: s(50);
+                }
+                span{
+                    @include sp{
+                        display: block;
+                    }
+                    &:nth-child(2){
+                        @include sp{
+                            margin-top: s(10);
+                        }
+                    }
+                }
+            }
+        }
+        .submit-wrap {
+            background: #000;
+            border-radius: 999px;
+            position: relative;
+            display: flex;
+            @include pc {
+                width: pmin(298);
+                margin: pmin(35) auto 0;
+                box-shadow: 0 pmin(3) pmin(6) 0 rgba(0, 0, 0, 0.5);
+                padding-block: pmin(22) ;
+            }
+            @include sp{
+                width: s(283);
+                margin: s(35) auto 0;
+                box-shadow: 0 s(3) s(6) 0 rgba(0, 0, 0, 0.5);
+                padding-block: s(18) ;
+            }
+            input[type="submit"] {
+                border: none;
+                background-color: transparent;
+                color: #fff;
+                @include yuGothic-b;
+                @include pc {
+                    padding-left: pmin(125);
+                    font-size: pmin(21);
+                }
+                @include sp{
+                    padding-left: s(121);
+                    font-size: s(20);
+                }
+            }
+            &:hover {
+                opacity: 0.7;
+            }
+            &::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                @include iconContain($recruit-link);
+                @include pc {
+                    width: pmin(26);
+                    height: pmin(20);
+                    right: pmin(32.7);
+                }
+                @include sp{
+                    width: s(26);
+                    height: s(19);
+                    right: s(24);
+                }
+            }
+        }
+    }
+
+    .contact-img {
+        position: absolute;
+        &.contact-chara {
+            aspect-ratio: 216 / 200;
+            @include sp {
+                @include imgContain("contact-chara.webp");
+                width: s(146);
+                bottom: s(-35);
+                left: s(-7);
+            }
+            @include pc {
+                @include imgContain("contact-chara.webp");
+                width: pmin(216);
+                height: pmin(200);
+                bottom: p(-40);
+                left: p(-220);
+            }
+            @media screen and (min-width: 1367px) {
+                bottom: -40px;
+                left: -220px;
+            }
+        }
+        &.contact-deco {
+            @include sp {
+                @include imgContain("contact-deco-sp.svg");
+                width: s(49);
+                height: s(48);
+                bottom: s(74);
+                left: s(116);
+            }
+            @include pc {
+                @include imgContain("contact-deco.webp");
+                width: pmin(166);
+                height: pmin(335);
+                bottom: pmin(109);
+                left: p(-10);
+            }
+            @media screen and (min-width: 1367px) {
+                left: -10px;
+            }
+        }
+        &.contact-deco02 {
+            @include sp {
+                @include imgContain("contact-deco02-sp.svg");
+
+                width: s(74);
+                height: s(78);
+                bottom: s(540);
+                right: s(-30);
+            }
+            @include pc {
+                @include imgContain("contact-deco02.webp");
+                width: pmin(100);
+                height: pmin(135);
+                bottom: pmin(690);
+                right: p(-35);
+            }
+            @media screen and (min-width: 1367px) {
+                right: -35px;
+            }
+        }
+        &.contact-anime {
+            opacity: 0;
+            transform: translateY(100%);
+        
+            &.show {
+                animation: contact-anime 1s ease forwards;
+        
+                @keyframes contact-anime {
+                    0% {
+                        opacity: 0;
+                        transform: translateY(10%);
+                    }
+        
+                    100% {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+            }
+        }
+
+    }
+}

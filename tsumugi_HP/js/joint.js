@@ -1,4 +1,14 @@
 $(function () {
+
+	$('.C_faq_item_content.question').on('click', function () {
+		$(this).parent().toggleClass('active');
+		//動きを早く
+		$(this).next().slideToggle(0);
+		//他の要素を閉める
+		$(this).parent().siblings().removeClass('active');
+		$(this).parent().siblings().find('.C_faq_item_content.answer').slideUp(0);
+
+	 });
 	// // ハンバーガーメニュー
 	//  $(".burger").on("click", function(){
 	//    $(this).toggleClass("active");
@@ -20,16 +30,16 @@ $(function () {
 	//   }
 	//   prevScrollpos = currentScrollpos;
 	// }
-	// // 要素が画面下部に来たらshowを付与
-	// $(window).scroll(function () {
-	//   $('.up,.roll').each(function () {
-	//     var top_of_element = $(this).offset().top;
-	//     var bottom_of_window = $(window).scrollTop() + $(window).height();
-	//     if (bottom_of_window > top_of_element) {
-	//       $(this).addClass('show');
-	//     }
-	//   });
-	// });
+	// 要素が画面下部に来たらshowを付与
+	$(window).scroll(function () {
+	  $('.contact-anime').each(function () {
+	    var top_of_element = $(this).offset().top;
+	    var bottom_of_window = $(window).scrollTop() + $(window).height();
+	    if (bottom_of_window > top_of_element) {
+	      $(this).addClass('show');
+	    }
+	  });
+	});
 	// ローディング
 	// var loadingFinished = false;
 	// var loading = $('.loadUp');

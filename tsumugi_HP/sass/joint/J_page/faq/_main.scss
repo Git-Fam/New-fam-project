@@ -1,0 +1,273 @@
+@use "../../../functions"as *;
+@use "../../J_functions"as *;
+
+/* -----------------------
+  faq main
+----------------------- */
+
+.FV {
+  @include pc {
+    height: pmin(419);
+  }
+
+  @include sp {
+    height: s(365);
+  }
+
+}
+
+.page {
+  background-color: $main-b;
+}
+
+.faq-page {
+  position: relative;
+
+  @include pc {
+    padding: pmin(114) pmin(177) pmin(175);
+  }
+
+  @include sp {
+    padding: s(60) s(20) s(245);
+  }
+
+  .faq-nav {
+    margin: 0 auto;
+
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @include pc {
+        gap: pmin(26);
+      }
+
+      @include sp {
+        gap: s(18) s(13);
+        flex-wrap: wrap;
+      }
+
+      li {
+        background: #F9E2D6;
+        border-radius: 999px;
+        position: relative;
+
+        @include pc {
+          box-shadow: 0 pmin(3) pmin(6) 0 rgba(0, 0, 0, 0.50);
+          width: pmin(216);
+          height: pmin(52);
+        }
+
+        @include sp {
+          box-shadow: 0 s(3) s(6) 0 rgba(0, 0, 0, 0.50);
+          width: s(160);
+          height: s(38);
+        }
+
+        a {
+          width: 100%;
+          height: 100%;
+          display: grid;
+          place-items: center;
+        }
+
+        .TX {
+          @include pc {
+            font-size: pmin(17);
+            margin-left: pmin(-10);
+          }
+
+          @include sp {
+            font-size: s(13);
+            margin-left: s(-10);
+          }
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 43%;
+          transform: trasnslateY(-50%);
+          @include iconContain($nav-arrow);
+
+          @include pc {
+            width: pmin(16);
+            height: pmin(9);
+            right: pmin(24)
+          }
+
+          @include sp {
+            width: s(12);
+            height: s(8);
+            right: s(18);
+          }
+        }
+      }
+    }
+  }
+
+  .faq-main {
+    @include pc {
+      margin: pmin(146) auto 0;
+      width: fit-content;
+    }
+
+    @include sp {
+      margin-top: s(107);
+      // margin-top: s(57);
+    }
+  }
+
+  .faq-section {
+    position: relative;
+
+    .faq-img {
+      position: absolute;
+    }
+
+    &.sanka {
+      .faq-img {
+        @include pc {
+          @include imgContain("faq-img01.webp");
+          width: pmin(124);
+          height: pmin(406);
+          top: pmin(220);
+          left: p(-147);
+        }
+
+        @media screen and (min-width:1367px) {
+          left: -147px;
+        }
+      }
+    }
+
+    &.fujinka {
+      @include pc {
+        margin-top: pmin(117);
+      }
+
+      @include sp {
+        margin-top: s(343);
+      }
+
+      .faq-img {
+        @include sp {
+          @include imgContain("faq-img-sp01.webp");
+          width: s(180);
+          height: s(208);
+          top: s(-313);
+          left:s(26);
+        }
+
+        @include pc {
+          @include imgContain("faq-img02.webp");
+          width: pmin(225);
+          height: pmin(411);
+          top: p(-308);
+          right: p(-200);
+        }
+
+        @media screen and (min-width:1367px) {
+          top: -308px;
+          right: -200px;
+        }
+
+        &:nth-child(2) {
+          @include pc {
+            @include imgContain("faq-img03.webp");
+            width: pmin(243);
+            height: pmin(399);
+            top: auto;
+            bottom: pmin(133);
+            left: p(-210);
+          }
+
+          @media screen and (min-width:1367px) {
+            left: -210px;
+          }
+
+        }
+      }
+
+    }
+
+    &.funin {
+      @include pc {
+        margin-top: pmin(90);
+      }
+
+      @include sp {
+        margin-top: s(343);
+      }
+
+      .faq-img{
+        @include sp {
+          @include imgContain("faq-img-sp02.webp");
+          width: s(203);
+          height: s(224);
+          top: s(-338);
+          right:s(34);
+        }
+      }
+    }
+
+    &.other {
+      @include pc {
+        margin-top: pmin(82);
+      }
+
+      @include sp {
+        margin-top: s(135);
+      }
+
+      .faq-img {
+        @include sp {
+          @include imgContain("faq-img-sp03.webp");
+          width: s(204);
+          height: s(211);
+          bottom: s(-255);
+          left:s(53);
+        }
+
+        @include pc {
+          @include imgContain("faq-img04.webp");
+          width: pmin(124);
+          height: pmin(406);
+          bottom: p(-179);
+          right: p(-118);
+        }
+
+        @media screen and (min-width:1367px) {
+          bottom: -179px;
+          right: -118px;
+        }
+      }
+
+
+    }
+
+    .TL {
+      @include pc {
+        font-size: pmin(32);
+      }
+
+      @include sp {
+        font-size: s(30);
+        text-align: center;
+      }
+    }
+
+    .faq-content {
+      @include pc {
+        margin-top: pmin(51);
+      }
+
+      @include sp {
+        margin-top: s(38.9);
+      }
+    }
+  }
+
+
+}

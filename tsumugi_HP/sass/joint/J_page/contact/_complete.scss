@@ -1,0 +1,144 @@
+@use "../../../functions" as *;
+@use "../../J_functions" as *;
+
+/* -----------------------
+  recruit main
+----------------------- */
+
+.FV {
+    @include pc {
+        height: pmin(419);
+    }
+
+    @include sp {
+        height: s(365);
+    }
+}
+
+.page {
+    background-color: $main-b;
+}
+
+.contact-page {
+    position: relative;
+
+    @include pc {
+        padding-inline: pmin(240);
+    }
+
+    @include sp {
+        padding-inline: s(20);
+    }
+}
+
+.complete-inner {
+    position: relative;
+    text-align: center;
+
+    @include pc {
+        width: pmin(886);
+        margin: 0 auto;
+        padding-block: pmin(200) pmin(170);
+    }
+
+    @include sp {
+        padding-block: s(177) s(200);
+    }
+
+    .h2 {
+        @include TA-mayuminwalk;
+        @include pc {
+            font-size: pmin(32);
+        }
+        @include sp{
+            font-size: s(30);
+        }
+    }
+    .TX {
+        line-height: 2;
+        @include pc {
+            margin-top: p(55);
+            font-size: pmin(17.5);
+        }
+        @include sp{
+            margin-top: s(55);
+            font-size: s(16.5);
+        }
+    }
+    .link {
+        background-color: #000;
+        border-radius: 999px;
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        @include pc {
+            padding: pmin(24) pmin(0) pmin(18) pmin(125.3);
+            margin: pmin(90) auto 0;
+            box-shadow: 0 pmin(3) pmin(6) 0 rgba(0, 0, 0, 0.5);
+            width: pmin(298);
+        }
+
+        @include sp {
+            padding: s(16) s(0) s(16) s(95);
+            margin: s(40) auto 0;
+            box-shadow: 0 s(3) s(6) 0 rgba(0, 0, 0, 0.5);
+            width: s(229);
+        }
+
+        &-TX {
+            color: #fff;
+            margin:0;
+
+            @include pc {
+                font-size: pmin(21);
+            }
+
+            @include sp {
+                font-size: s(16.5);
+            }
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            @include iconContain($recruit-link);
+
+            @include pc {
+                width: pmin(27);
+                height: pmin(21);
+                right: pmin(32.7);
+            }
+
+            @include sp {
+                width: s(19);
+                height: s(14);
+                right: s(24);
+            }
+        }
+    }
+
+    .complate-img{
+        @include imgContain("complete.webp");
+        position: absolute;
+        aspect-ratio: 243 / 413;
+        @include sp{
+            width: s(143);
+            bottom: s(-10);
+            left: s(0);
+        }
+        @include pc{
+            width: pmin(243);
+            height: pmin(413);
+            bottom: p(-20);
+            left: p(-140);
+        }
+        @media screen and (min-width: 1367px) {
+            bottom: -20px;
+            left: -140px;
+        }
+    }
+
+}
