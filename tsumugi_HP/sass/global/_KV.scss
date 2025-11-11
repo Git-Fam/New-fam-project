@@ -7,21 +7,20 @@ KV
 .KV {
     position: relative;
 
-    @include pc {
-        height: pmin(769);
-    }
-
-    @include sp {
-        height: s(573);
-    }
-
     &-inner {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%;
         z-index: 2;
+
+        @include pc {
+            height: pmin(769);
+        }
+
+        @include sp {
+            height: s(573);
+        }
 
         .KV-curtain {
             position: absolute;
@@ -186,19 +185,18 @@ KV
             position: absolute;
             left: 50%;
             z-index: 5;
+            height: 100%;
 
             @include pc {
                 top: 50%;
                 transform: translate(-50%, -50%);
                 width: pmin(1437);
-                aspect-ratio: 1437/628;
             }
 
             @include sp {
                 top: -15%;
                 transform: translateX(-50%);
                 width: s(409);
-                height: 100%;
             }
 
             .img {
@@ -270,6 +268,133 @@ KV
 
             @include sp {
                 height: s(335);
+            }
+        }
+    }
+
+    &.KV-about {
+        .KV-inner {
+            .KV-spot {
+                @include pc {
+                    width: pmin(600);
+                    height: pmin(1960);
+                    @include imgContain("KV/KV-about-spot-pc.webp");
+                    background-size: 100% 100%;
+                    background-position: bottom center;
+                    z-index: 3;
+                }
+
+                @include sp {
+                    width: s(335);
+                    height: s(1790);
+                    @include imgContain("KV/KV-about-spot-sp.webp");
+                    background-size: 100% 100%;
+                    background-position: bottom center;
+                    z-index: 1;
+                }
+            }
+
+            .KV-ttl {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 6;
+
+                @include pc {
+                    top: 5%;
+                    width: pmin(734);
+                }
+
+                @include sp {
+                    width: s(344);
+                    top: 80%;
+                }
+            }
+        }
+
+        .KV-bg {
+            &_bottom {
+                position: relative;
+
+                @include pc {
+                    height: unset;
+                    padding: pmin(400) 0 pmin(122);
+                }
+
+                @include sp {
+                    height: unset;
+                    padding: s(530) 0 s(85);
+                }
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+
+                    @include pc {
+                        @include imgContain("KV/KV-bg_bottom-bg-pc.webp");
+                    }
+
+                    @include sp {
+                        @include imgContain("KV/KV-bg_bottom-bg-sp.webp");
+                    }
+                }
+
+                &-inner {
+                    position: relative;
+                    z-index: 3;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    margin-inline: auto;
+
+                    @include pc {
+                        width: pmin(1366);
+                        gap: pmin(137);
+                    }
+
+                    @include sp {
+                        gap: s(48);
+                    }
+
+                    .txt {
+                        text-align: center;
+
+                        .TX {
+                            @include yuGothic-b;
+                            line-height: 3;
+                            letter-spacing: 0.1em;
+
+                            @include pc {
+                                font-size: pmin(24);
+                            }
+
+                            @include sp {
+                                font-size: s(18);
+                            }
+                        }
+                    }
+
+                    .logo {
+                        @include pc {
+                            width: pmin(381);
+                        }
+
+                        @include sp {
+                            width: s(229);
+                        }
+
+                        img {
+                            width: 100%;
+                            height: auto;
+                            object-fit: contain;
+                            object-position: center;
+                        }
+                    }
+                }
             }
         }
     }

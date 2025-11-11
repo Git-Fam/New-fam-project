@@ -475,9 +475,9 @@
         }
 
         @include sp {
-            width: s(73);
-            bottom: s(235);
-            right: s(5);
+            width: s(160);
+            bottom: s(15);
+            right: s(-15);
         }
 
         &.active {
