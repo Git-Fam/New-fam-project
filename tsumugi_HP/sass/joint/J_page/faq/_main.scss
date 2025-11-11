@@ -73,6 +73,7 @@
         }
 
         .TX {
+          @include yuGothic-b;
           @include pc {
             font-size: pmin(17);
             margin-left: pmin(-10);
@@ -124,6 +125,35 @@
 
     .faq-img {
       position: absolute;
+    }
+
+    .C_KV-title{
+      @include pc{
+        gap: pmin(10);
+      }
+      @include sp{
+        margin: 0 auto;
+        gap: s(0);
+      }
+      .icon{
+        @include pc{
+          width: pmin(55);
+        }
+        @include sp{
+          width: s(40);
+        }
+      }
+      .TL {
+        @include pc {
+          font-size: pmin(35);
+        }
+  
+        @include sp {
+          font-size: s(30);
+          text-align: center;
+        }
+      }
+  
     }
 
     &.sanka {
@@ -226,7 +256,7 @@
           @include imgContain("faq-img-sp03.webp");
           width: s(204);
           height: s(211);
-          bottom: s(-255);
+          bottom: s(-260);
           left:s(53);
         }
 
@@ -247,24 +277,14 @@
 
     }
 
-    .TL {
-      @include pc {
-        font-size: pmin(32);
-      }
-
-      @include sp {
-        font-size: s(30);
-        text-align: center;
-      }
-    }
 
     .faq-content {
       @include pc {
-        margin-top: pmin(51);
+        margin-top: pmin(43);
       }
 
       @include sp {
-        margin-top: s(38.9);
+        margin-top: s(34);
       }
     }
   }

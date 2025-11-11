@@ -1,336 +1,369 @@
-@use "../../functions"as *;
-@use "../J_functions"as *;
+@use "../../functions" as *;
+@use "../J_functions" as *;
 
 /* -----------------------
   C_faq
 ----------------------- */
 
 #C_faq {
-  @include pc {
-    width: pmin(1010);
-  }
-
-  @include sp {
-    padding-inline: s(20);
-  }
-}
-
-.C_faq {
-  @include pc {
-    width: pmin(1010);
-  }
-
-  @include sp {
-    // width: 100%;
-  }
-
-  .C_faq_item {
     @include pc {
-      @include imgContain("q-bg.svg");
-      height: pmin(106);
-      padding-inline: pmin(41) pmin(60);
-      margin-top: pmin(47);
+        width: pmin(1010);
     }
 
     @include sp {
-      @include imgContain("q-bg-sp.svg");
-      height: s(80);
-      padding-inline: s(21);
-      margin-top: s(21);
-
+        padding-inline: s(20);
     }
-    &.q-bg-02{
-      @include sp {
-        @include imgContain("q-bg-sp02.svg");
-        height: s(108);  
-      }
+}
 
-      .question.inner{
-        @include sp{
-          align-items: center
-        }
-      }
-  
-    }
-    &.q-bg-03{
-      @include sp {
-        @include imgContain("q-bg-sp03.svg");
-        height: s(135);  
-      }
-      .inner{
-        @include sp{
-          align-items: center
-        }
-      }
+.C_faq {
+    @include pc {
+        width: pmin(1010);
     }
 
+    @include sp {
+        // width: 100%;
+    }
 
-    &.answer-pc01 {
-      &.active {
+    .C_faq_item {
         @include pc {
-          @include imgContain("a-bg-01.svg");
-          height: pmin(206);
-        }
-      }
-    }
-
-
-    &.answer-pc02 {
-      &.active {
-        @include pc {
-          @include imgContain("a-bg-02.svg");
-          height: pmin(232);
-        }
-      }
-    }
-
-    &.answer-pc03 {
-      &.active {
-        @include pc {
-          @include imgContain("a-bg-03.svg");
-          height: pmin(256);
-        }
-      }
-    }
-
-    &.answer-pc04 {
-      &.active {
-        @include pc {
-          @include imgContain("a-bg-04.svg");
-          height: pmin(299);
-        }
-      }
-    }
-
-    &.answer-sp02 {
-      &.active {
-        @include sp {
-          @include imgContain("a-bg-sp-02.svg");
-          height: s(215);
-        }
-      }
-    }
-
-
-    &.answer-sp03 {
-      &.active {
-        @include sp {
-          @include imgContain("a-bg-sp-03.svg");
-          height: s(230);
-        }
-      }
-    }
-
-    &.answer-sp04 {
-      &.active {
-        @include sp {
-          @include imgContain("a-bg-sp-04.svg");
-          height: s(277);
-        }
-      }
-    }
-
-
-
-    &.answer-sp05 {
-      &.active {
-        @include sp {
-          @include imgContain("a-bg-sp-05.svg");
-          height: s(282);
-        }
-      }
-    }
-
-    &.answer-sp06 {
-      &.active {
-        @include sp {
-          @include imgContain("a-bg-sp-06.svg");
-          height: s(339);
-        }
-      }
-    }
-    &.answer-sp07 {
-      &.active {
-        @include sp {
-          @include imgContain("a-bg-sp-07.svg");
-          height: s(345);
-        }
-      }
-    }
-
-    &.answer-sp08 {
-      &.active {
-        @include sp {
-          @include imgContain("a-bg-sp-08.svg");
-          height: s(372);
-        }
-      }
-    }
-
-
-
-
-    .C_faq_item_content {
-      width: 100%;
-
-
-      .inner {
-        display: flex;
-      }
-      .TX{
-        @include pc {
-          font-size: pmin(17.5);
-          line-height: 1.6;
-          letter-spacing: pmin(1);
-        }
-  
-        @include sp {
-          font-size: s(16);
-          line-height: 1.8;
-          letter-spacing: s(0.4);
-        }  
-        a{
-          @include pc{
-            border-bottom: pmin(1) solid #000;
-            padding-bottom: pmin(7);
-          }
-          @include sp{
-            border-bottom: s(1) solid #000;
-            padding-bottom: s(5);
-          }
-        }
-      }
-
-      &.question {
-
-        @include pc {
-          padding-block: pmin(37) pmin(32);
+            @include imgContain("q-bg.svg");
+            height: pmin(106);
+            padding-inline: pmin(41) pmin(60);
+            margin-top: pmin(46);
         }
 
         @include sp {
-          padding-block: s(28) s(23);
+            @include imgContain("q-bg-sp.svg");
+            height: s(80);
+            padding-inline: s(21);
+            margin-top: s(21);
         }
-
-        .inner {
-          // align-items: center;
-
-          @include pc {
-            gap: pmin(27);
-          }
-
-          @include sp {
-            gap: s(14);
-          }
-
-          &::after {
-            content: "";
-            display: block;
-            margin-left: auto;
-            @include imgContain("plus.svg");
-            aspect-ratio: 1/1;
-
-            @include pc {
-              min-width: pmin(26);
-            }
-
+        &.q-bg-02 {
             @include sp {
-              min-width: s(16);
+                @include imgContain("q-bg-sp02.svg");
+                height: s(108);
             }
-          }
-        }
 
-        .icon {
-          @include imgContain("q-icon.svg");
-          aspect-ratio: 1/1;
-
-          @include pc {
-            min-width: pmin(36);
-          }
-
-          @include sp {
-            min-width: s(27);
-          }
-        }
-
-      }
-
-      &.answer {
-        display: none;
-        position: relative;
-
-        @include pc {
-          padding-top: pmin(31);
-        }
-
-        @include sp {
-          padding-top: s(21);
-        }
-
-        .inner {
-          @include pc {
-            gap: pmin(33);
-          }
-
-          @include sp {
-            gap: s(21);
-          }
-        }
-
-        .line {
-          position: absolute;
-          top: 0;
-          left: 50%;
-          transform: translateX(-50%);
-
-          @include pc {
-            @include imgContain("a-line-pc.svg");
-            width: pmin(932);
-            height: pmin(6);
-          }
-
-          @include sp {
-            @include imgContain("a-line-sp.svg");
-            width: s(292);
-            height: s(4.25);
-          }
-        }
-
-        .icon {
-          @include imgContain("a-icon.svg");
-
-          @include pc {
-            min-width: pmin(30);
-            height: pmin(33);
-          }
-
-          @include sp {
-            min-width: s(23);
-            height: s(26);
-          }
-        }
-      }
-
-    }
-
-    &.active {
-      .C_faq_item_content {
-        &.question {
-          .inner {
-            &::after {
-              @include imgContain("minus.svg");
-
-              @include pc {
-                aspect-ratio: 26 / 3;
-              }
-
-              @include sp {
-                aspect-ratio: 16 / 2;
-              }
+            .question {
+                .inner {
+                    @include sp {
+                        align-items: start;
+                    }
+                    &::after {
+                        @include sp {
+                            margin-top: s(5);
+                        }
+                    }
+                }
             }
-          }
+            &.active {
+                .inner {
+                    &::after {
+                        @include sp {
+                            margin-top: s(15);
+                        }
+                    }
+                }
+            }
         }
-      }
-    }
+        &.q-bg-03 {
+            @include sp {
+                @include imgContain("q-bg-sp03.svg");
+                height: s(135);
+            }
+            .inner {
+                @include sp {
+                    align-items: center;
+                }
+            }
+            .question {
+              .inner {
+                  @include sp {
+                      align-items: start;
+                  }
+                  &::after {
+                      @include sp {
+                          margin-top: s(5);
+                      }
+                  }
+              }
+          }
+          &.active {
+              .inner {
+                  &::after {
+                      @include sp {
+                          margin-top: s(15);
+                      }
+                  }
+              }
+          }
 
-  }
+        }
+
+        &.answer-pc01 {
+            &.active {
+                @include pc {
+                    @include imgContain("a-bg-01.svg");
+                    height: pmin(206);
+                }
+            }
+        }
+
+        &.answer-pc02 {
+            &.active {
+                @include pc {
+                    @include imgContain("a-bg-02.svg");
+                    height: pmin(232);
+                }
+            }
+        }
+
+        &.answer-pc03 {
+            &.active {
+                @include pc {
+                    @include imgContain("a-bg-03.svg");
+                    height: pmin(256);
+                }
+            }
+        }
+
+        &.answer-pc04 {
+            &.active {
+                @include pc {
+                    @include imgContain("a-bg-04.svg");
+                    height: pmin(299);
+                }
+            }
+        }
+
+        &.answer-sp02 {
+            &.active {
+                @include sp {
+                    @include imgContain("a-bg-sp-02.svg");
+                    height: s(215);
+                }
+            }
+        }
+
+        &.answer-sp03 {
+            &.active {
+                @include sp {
+                    @include imgContain("a-bg-sp-03.svg");
+                    height: s(230);
+                }
+            }
+        }
+
+        &.answer-sp04 {
+            &.active {
+                @include sp {
+                    @include imgContain("a-bg-sp-04.svg");
+                    height: s(277);
+                }
+            }
+        }
+
+        &.answer-sp05 {
+            &.active {
+                @include sp {
+                    @include imgContain("a-bg-sp-05.svg");
+                    height: s(282);
+                }
+            }
+        }
+
+        &.answer-sp06 {
+            &.active {
+                @include sp {
+                    @include imgContain("a-bg-sp-06.svg");
+                    height: s(339);
+                }
+            }
+        }
+        &.answer-sp07 {
+            &.active {
+                @include sp {
+                    @include imgContain("a-bg-sp-07.svg");
+                    height: s(345);
+                }
+            }
+        }
+
+        &.answer-sp08 {
+            &.active {
+                @include sp {
+                    @include imgContain("a-bg-sp-08.svg");
+                    height: s(372);
+                }
+            }
+        }
+
+        .C_faq_item_content {
+            width: 100%;
+
+            .inner {
+                display: flex;
+                @include pc {
+                    align-items: center;
+                }
+            }
+            .TX {
+                @include yuGothic-b;
+                @include pc {
+                    font-size: pmin(17.5);
+                    line-height: 1.6;
+                    letter-spacing: pmin(1);
+                }
+
+                @include sp {
+                    font-size: s(16);
+                    line-height: 1.8;
+                    letter-spacing: s(0.4);
+                }
+                a {
+                    @include pc {
+                        border-bottom: pmin(1) solid #000;
+                        padding-bottom: pmin(7);
+                    }
+                    @include sp {
+                        border-bottom: s(1) solid #000;
+                        padding-bottom: s(5);
+                    }
+                }
+            }
+
+            &.question {
+                @include pc {
+                    padding-block: pmin(37) pmin(32);
+                }
+
+                @include sp {
+                    padding-block: s(28) s(23);
+                }
+
+                .inner {
+                    // align-items: center;
+
+                    @include pc {
+                        gap: pmin(27);
+                    }
+
+                    @include sp {
+                        gap: s(14);
+                    }
+
+                    &::after {
+                        content: "";
+                        display: block;
+                        margin-left: auto;
+                        @include imgContain("plus.svg");
+                        aspect-ratio: 1/1;
+
+                        @include pc {
+                            min-width: pmin(26);
+                        }
+
+                        @include sp {
+                            min-width: s(16);
+                        }
+                    }
+                }
+
+                .icon {
+                    @include imgContain("q-icon.svg");
+                    aspect-ratio: 1/1;
+
+                    @include pc {
+                        min-width: pmin(36);
+                    }
+
+                    @include sp {
+                        min-width: s(27);
+                    }
+                }
+            }
+
+            &.answer {
+                display: none;
+                position: relative;
+
+                @include pc {
+                    padding-top: pmin(31);
+                }
+
+                @include sp {
+                    padding-top: s(21);
+                }
+
+                .inner {
+                    @include pc {
+                        gap: pmin(33);
+                    }
+
+                    @include sp {
+                        gap: s(21);
+                    }
+                }
+
+                .line {
+                    position: absolute;
+                    top: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+
+                    @include pc {
+                        @include imgContain("a-line-pc.svg");
+                        width: pmin(932);
+                        height: pmin(6);
+                    }
+
+                    @include sp {
+                        @include imgContain("a-line-sp.svg");
+                        width: s(292);
+                        height: s(4.25);
+                    }
+                }
+
+                .icon {
+                    @include imgContain("a-icon.svg");
+
+                    @include pc {
+                        min-width: pmin(30);
+                        height: pmin(33);
+                    }
+
+                    @include sp {
+                        min-width: s(23);
+                        height: s(26);
+                    }
+                }
+            }
+        }
+
+        &:first-child {
+            @include sp {
+                margin-top: 0;
+            }
+        }
+
+        &.active {
+            .C_faq_item_content {
+                &.question {
+                    .inner {
+                        &::after {
+                            @include imgContain("minus.svg");
+
+                            @include pc {
+                                aspect-ratio: 26 / 3;
+                            }
+
+                            @include sp {
+                                aspect-ratio: 16 / 2;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
