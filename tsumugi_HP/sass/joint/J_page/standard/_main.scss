@@ -5,20 +5,8 @@
   standard main
 ----------------------- */
 
-.FV {
-    background-color: #fff;
-    @include pc {
-        height: pmin(419);
-    }
 
-    @include sp {
-        height: s(365);
-    }
-}
 
-.page {
-    background-color: $main-b;
-}
 
 .standard-page {
     position: relative;
@@ -35,17 +23,17 @@
         margin: 0 auto;
     
         @include pc{
-            @include imgCover("standard-bg.webp");
-            background-position: bottom;
+            @include imgContain("standard-bg.webp");
+            
             width: pmin(930);
             padding-block: pmin(135) pmin(214);
         }
         @include sp{
-            @include imgCover("standard-bg-sp.webp");
-            background-position: bottom;
+            @include imgContain("standard-bg-sp.webp");
             padding-block: s(80) s(87);
-
         }
+        background-repeat: repeat-y;
+
         .top-TX {
             line-height: 2;
             @include pc {
@@ -67,7 +55,7 @@
             }
 
             @include sp{
-                gap: s(63.5);
+                gap: s(60);
                 margin-top: s(70);
             }
             .C_KV-title{
@@ -130,6 +118,7 @@
                     margin: 0;
                     @include pc{
                         font-size: pmin(17.5);
+                        letter-spacing: pmin(1);
                     }
                     @include sp{
                         font-size: s(16.5);

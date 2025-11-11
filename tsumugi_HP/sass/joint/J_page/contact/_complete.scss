@@ -5,20 +5,6 @@
  complete
 ----------------------- */
 
-.FV {
-    @include pc {
-        height: pmin(419);
-    }
-
-    @include sp {
-        height: s(365);
-    }
-}
-
-.page {
-    background-color: $main-b;
-}
-
 .contact-page {
     position: relative;
 
@@ -44,14 +30,25 @@
     @include sp {
         padding-block: s(177) s(200);
     }
-
-    .h2 {
-        @include TA-mayuminwalk;
-        @include pc {
-            font-size: pmin(32);
+    .C_KV-title {
+        margin: 0 auto;
+        .icon{
+            @include iconContain($complete-TL);
+            @include pc {
+                width: pmin(36);
+            }
+            @include sp {
+                width: s(30);
+            }
         }
-        @include sp{
-            font-size: s(30);
+        .TL {
+            @include TA-mayuminwalk;
+            @include pc {
+                font-size: pmin(35);
+            }
+            @include sp {
+                font-size: s(30);
+            }
         }
     }
     .TX {
@@ -60,7 +57,7 @@
             margin-top: p(55);
             font-size: pmin(17.5);
         }
-        @include sp{
+        @include sp {
             margin-top: s(55);
             font-size: s(16.5);
         }
@@ -88,7 +85,7 @@
 
         &-TX {
             color: #fff;
-            margin:0;
+            margin: 0;
 
             @include pc {
                 font-size: pmin(21);
@@ -120,16 +117,16 @@
         }
     }
 
-    .complate-img{
+    .complate-img {
         @include imgContain("complete.webp");
         position: absolute;
         aspect-ratio: 243 / 413;
-        @include sp{
+        @include sp {
             width: s(143);
             bottom: s(-10);
             left: s(0);
         }
-        @include pc{
+        @include pc {
             width: pmin(243);
             height: pmin(413);
             bottom: p(-20);
@@ -140,5 +137,4 @@
             left: -140px;
         }
     }
-
 }

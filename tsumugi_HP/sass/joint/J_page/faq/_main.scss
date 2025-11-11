@@ -5,20 +5,6 @@
   faq main
 ----------------------- */
 
-.FV {
-  @include pc {
-    height: pmin(419);
-  }
-
-  @include sp {
-    height: s(365);
-  }
-
-}
-
-.page {
-  background-color: $main-b;
-}
 
 .faq-page {
   position: relative;

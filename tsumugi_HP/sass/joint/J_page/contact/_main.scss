@@ -5,19 +5,6 @@
   contact main
 ----------------------- */
 
-.FV {
-    @include pc {
-        height: pmin(419);
-    }
-
-    @include sp {
-        height: s(365);
-    }
-}
-
-.page {
-    background-color: $main-b;
-}
 
 .contact-page {
     position: relative;
@@ -120,7 +107,7 @@
         }
         .form-item{
             @include sp{
-                margin-top: s(43);
+                margin-top: s(30);
             }
 
         }
@@ -133,6 +120,7 @@
             }
             @include sp{
                 font-size: s(17);
+                letter-spacing: s(0.8);
 
             }
         }
@@ -257,21 +245,21 @@
             text-align: center;
             @include pc {
                 font-size: pmin(17.5);
+                margin-top: pmin(20);
             }
             @include sp{
                 font-size: s(16.5);
+                margin-top: s(20);
             }
             .policy-link {
                 @include yuGothic-b;
                 @include pc {
                     padding-bottom: pmin(5);
                     border-bottom: pmin(2) solid;
-                    margin-top: pmin(20);
                 }
                 @include sp{
                     padding-bottom: s(5);
                     border-bottom: s(2) solid;
-                    margin-top: s(20);
                 }
             }
             .policy-under {
@@ -308,7 +296,7 @@
                 width: s(283);
                 margin: s(35) auto 0;
                 box-shadow: 0 s(3) s(6) 0 rgba(0, 0, 0, 0.5);
-                padding-block: s(18) ;
+                padding-block: s(16) ;
             }
             input[type="submit"] {
                 border: none;
@@ -318,10 +306,12 @@
                 @include pc {
                     padding-left: pmin(125);
                     font-size: pmin(21);
+                    letter-spacing: pmin(0.8);
                 }
                 @include sp{
                     padding-left: s(121);
                     font-size: s(20);
+                    letter-spacing: s(0.8);
                 }
             }
             &:hover {
@@ -395,7 +385,7 @@
                 width: s(74);
                 height: s(78);
                 bottom: s(540);
-                right: s(-30);
+                right: s(-15);
             }
             @include pc {
                 @include imgContain("contact-deco02.webp");
