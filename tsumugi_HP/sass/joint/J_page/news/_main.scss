@@ -1,0 +1,196 @@
+@use "../../../functions" as *;
+@use "../../J_functions" as *;
+
+/* -----------------------
+  news main
+----------------------- */
+
+.news-archive {
+    @include pc {
+        padding-inline: pmin(178);
+    }
+    @include sp {
+        padding-inline: s(20);
+    }
+    .inner {
+        @include pc {
+            padding-block: pmin(116) pmin(131);
+        }
+        @include sp {
+            padding-block: s(59) s(266);
+        }
+    }
+
+    .news-tabs {
+        .tab-item {
+            display: flex;
+            @include pc {
+                justify-content: center;
+                gap: pmin(23);
+            }
+            @include sp {
+                flex-wrap: wrap;
+                gap: s(18) s(14);
+            }
+            .tab {
+                background-color: #fff;
+                border-radius: 999px;
+                @include pc {
+                    width: pmin(201);
+                    height: pmin(50);
+                    font-size: pmin(18);
+                }
+                @include sp {
+                    width: s(160);
+                    height: s(38);
+                    font-size: s(13);
+                }
+                &.active {
+                    background-color: $P-F9E1D5;
+                }
+                a {
+                    width: 100%;
+                    height: 100%;
+                    display: grid;
+                    place-items: center;
+                }
+            }
+        }
+    }
+
+    .news-list {
+        display: flex;
+        flex-direction: column;
+        @include pc {
+            width: fit-content;
+            margin: pmin(65.4) auto 0;
+            gap: pmin(20);
+        }
+        @include sp {
+            margin-top: s(134);
+            gap: s(20);
+        }
+        .news-item {
+            @include pc {
+                @include imgContain("archive-bg.svg");
+                width: pmin(1010);
+                height: pmin(107);
+                padding: pmin(36) pmin(40) pmin(32);
+            }
+            @include sp {
+                @include imgContain("archive-bg-sp.svg");
+                width: s(335);
+                height: s(173);
+                padding: s(29) s(22) s(23) s(26);
+            }
+        }
+    }
+}
+.detail-wrap {
+    @include yuGothic-b;
+    @include sp {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        display: inline-block;
+    }
+    &.news-link {
+        @include pc {
+            display: flex;
+            align-items: center;
+        }
+    }
+    .sp-wrap {
+        @include pc {
+            display: contents;
+        }
+        @include sp {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .icon {
+        @include iconContain($news-icon);
+        @include pc {
+            width: pmin(17);
+            height: pmin(19);
+            margin-right: pmin(10);
+        }
+        @include sp {
+            width: s(18);
+            height: s(20);
+            margin-right: s(8);
+        }
+    }
+    .date {
+        @include pc {
+            font-size: pmin(17);
+            margin-right: pmin(21);
+        }
+        @include sp {
+            font-size: s(14);
+            margin-right: s(10);
+        }
+    }
+    .cat {
+        background-color: $P-F9E1D5;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        @include pc {
+            width: pmin(136);
+            height: pmin(34);
+            font-size: pmin(13);
+            letter-spacing: pmin(0.8);
+            margin-right: pmin(27.6);
+        }
+        @include sp {
+            width: s(100);
+            height: s(25);
+            font-size: s(12);
+            letter-spacing: s(0.8);
+        }
+    }
+    .TL {
+        @include pc {
+            font-size: pmin(17.5);
+        }
+        @include sp {
+            font-size: s(17.5);
+            margin-top: s(27);
+        }
+    }
+    .more {
+        position: relative;
+        display: flex;
+        align-items: center;
+        @include pc {
+            margin-left: auto;
+            gap: pmin(20);
+            font-size: pmin(15);
+        }
+        @include sp {
+            width: fit-content;
+            margin: auto 0 0 auto;
+            gap: s(7);
+            font-size: s(11);
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        &:after {
+            content: "";
+            @include iconContain($nav-arrow);
+            display: block;
+            aspect-ratio: 16 / 9;
+            transform: rotate(-90deg);
+            @include pc {
+                width: pmin(20);
+            }
+            @include sp {
+                width: s(13);
+            }
+        }
+    }
+}

@@ -8,8 +8,10 @@ $(function () {
 		$(this).parent().siblings().removeClass('active');
 		$(this).parent().siblings().find('.C_faq_item_content.answer').slideUp(0);
 
-	 });
-	// // ハンバーガーメニュー
+	});
+	
+
+		// // ハンバーガーメニュー
 	//  $(".burger").on("click", function(){
 	//    $(this).toggleClass("active");
 	//    $('.menu').toggleClass("active");

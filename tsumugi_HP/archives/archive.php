@@ -1,25 +1,83 @@
+
 <?php get_template_part('./inc/head'); ?>
 <?php get_template_part('./inc/header'); ?>
 
 
-<div class="bbb">アーカイブ</div>
+<main class="news-archive">
+    <div class="inner">
 
-<?php if (have_posts()): ?>
-    <div class="post-list">
-        <?php while (have_posts()):
-            the_post(); ?>
-            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <h2 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                <div class="post-excerpt">
-                    <?php the_excerpt(); ?>
-                </div>
-            </article>
-        <?php
-        endwhile; ?>
+        <!-- カテゴリータブ -->
+        <div class="news-tabs">
+            <ul class="tab-item">
+                <!-- すべて -->
+                <li class="tab <?php if (is_home() || is_post_type_archive('post')) {
+                    echo 'active';
+                } ?>">
+                    <a href="<?php echo home_url('/news'); ?>">すべて</a>
+                </li>
+
+                <?php
+                $categories = get_categories([
+                    'taxonomy' => 'category',
+                    'orderby' => 'term_order',
+                    'order' => 'ASC',
+                    'hide_empty' => true,
+                ]);
+                foreach ($categories as $cat): ?>
+                    <li class="tab <?php if (is_category($cat->slug)) {
+                        echo 'active';
+                    } ?>">
+                        <a href="<?php echo get_category_link($cat->term_id); ?>">
+                            <?php echo esc_html($cat->name); ?>
+                        </a>
+                    </li>
+                <?php endforeach;
+                ?>
+            </ul>
+        </div>
+
+        <!-- 投稿ループ -->
+        <div class="news-list">
+            <?php if (have_posts()):
+                while (have_posts()):
+                    the_post(); ?>
+                <article class="news-item">
+                    <a href="<?php the_permalink(); ?>" class="detail-wrap news-link">
+                        <div class="sp-wrap">
+                            <div class="icon"></div>
+                            <time datetime="<?php the_time('Y-m-d'); ?>" class="date"><?php the_time('Y.m.d'); ?></time>
+                            <span class="cat">
+                                <?php
+                                $cat = get_the_category();
+                                if ($cat) {
+                                    echo $cat[0]->name;
+                                }
+                                ?>
+                            </span>
+                        </div>
+                        <h3 class="TL"><?php the_title(); ?></h3>
+                        <p class="more">MORE</p>
+                    </a>
+                </article>
+            <?php
+                endwhile;
+            else:
+                 ?>
+                <p>お知らせはまだありません。</p>
+            <?php
+            endif; ?>
+        </div>
+
+        <!-- ページネーション -->
+        <div class="pagination">
+            <?php the_posts_pagination([
+                'mid_size' => 1,
+                'prev_text' => '« 前へ',
+                'next_text' => '次へ »',
+            ]); ?>
+        </div>
+
     </div>
-<?php else: ?>
-    <p>投稿はありません</p>
-<?php endif; ?>
-
+</main>
 
 <?php get_template_part('./inc/footer'); ?>
