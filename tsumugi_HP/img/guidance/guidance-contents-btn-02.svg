@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="308.221" height="70.221" viewBox="0 0 308.221 70.221">
+  <defs>
+    <filter id="パス_79388" x="0" y="0" width="308.221" height="70.221" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.502"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="グループ_38366" data-name="グループ 38366" transform="translate(-6401.05 13696.887)">
+    <g id="グループ_38365" data-name="グループ 38365">
+      <g id="グループ_38362" data-name="グループ 38362" transform="translate(5957.051 -20445.459)">
+        <g id="グループ_24998" data-name="グループ 24998" transform="translate(262.774 6047.83)">
+          <g id="グループ_24418" data-name="グループ 24418" transform="translate(190.225 706.742)">
+            <g id="グループ_24361" data-name="グループ 24361" transform="translate(0 0)">
+              <g transform="matrix(1, 0, 0, 1, -9, -6)" filter="url(#パス_79388)">
+                <path id="パス_79388-2" data-name="パス 79388" d="M10.823,0h228.1c17.154,0,31.06,11.69,31.06,26.11s-13.906,26.11-31.06,26.11H10.823c-17.154,0-31.059-11.69-31.059-26.11S-6.33,0,10.823,0Z" transform="translate(29.24 6)" fill="#f9e2d6"/>
+              </g>
+            </g>
+          </g>
+        </g>
+        <text id="施設全体の紹介はこちら" transform="translate(577.497 6787.217)" font-size="17" font-family="YuGothicStd-B, Yu Gothic Std" letter-spacing="0.028em"><tspan x="-95.88" y="0">施設全体の紹介はこちら</tspan></text>
+        <g id="グループ_23025" data-name="グループ 23025" transform="translate(716.497 6772.217) rotate(90)">
+          <path id="合体_18" data-name="合体 18" d="M10.849,8.05.339,0l10.51,8.05L0,16.5Z" transform="translate(0 10.849) rotate(-90)" fill="none" stroke="#000" stroke-linejoin="bevel" stroke-width="2.5"/>
+          <line id="線_1066" data-name="線 1066" y1="22.126" transform="translate(8.231 0.001)" fill="none" stroke="#000" stroke-width="2.5"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -7,7 +7,12 @@ $(function () {
         $('body').removeClass('active');
     });
 
-    // トップボタン & reserveボタン
+    // ハンバーガーメニュー
+    $('.C_guidance-contents-inner .sticky-menu').on('click', function () {
+        $(this).toggleClass('open');
+    });
+
+    // トップボタン & reserveボタン & C_guidance-contents-inner sticky-menu
     $(window).scroll(function () {
         var scrollTop = $(window).scrollTop();
 
@@ -40,6 +45,22 @@ $(function () {
             }
         } else {
             $('.header').removeClass('active');
+        }
+
+        // sticky-menu：C_guidance-contents-inner内にいる時だけactive
+        var guidanceInner = $('.C_guidance-contents-inner');
+        var stickyMenu = $('.C_guidance-contents-inner .sticky-menu');
+        if (guidanceInner.length && stickyMenu.length) {
+            var innerTop = guidanceInner.offset().top;
+            var innerBottom = innerTop + guidanceInner.outerHeight();
+            var menuTop = scrollTop;
+            var menuBottom = menuTop + stickyMenu.outerHeight();
+
+            if (menuTop >= innerTop && menuBottom <= innerBottom) {
+                stickyMenu.addClass('active');
+            } else {
+                stickyMenu.removeClass('active');
+            }
         }
     });
 

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="234.885" height="70.221" viewBox="0 0 234.885 70.221">
+  <defs>
+    <filter id="パス_79388" x="0" y="0" width="234.885" height="70.221" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.502"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="グループ_38022" data-name="グループ 38022" transform="translate(2715.524 22479.754)">
+    <g id="グループ_38016" data-name="グループ 38016" transform="translate(-2896.749 -23180.496)">
+      <g id="グループ_24418" data-name="グループ 24418" transform="translate(190.225 706.742)">
+        <g id="グループ_24361" data-name="グループ 24361" transform="translate(0 0)">
+          <g transform="matrix(1, 0, 0, 1, -9, -6)" filter="url(#パス_79388)">
+            <path id="パス_79388-2" data-name="パス 79388" d="M10.823,0H165.59c17.154,0,31.059,11.69,31.059,26.11s-13.906,26.11-31.059,26.11H10.823c-17.154,0-31.059-11.69-31.059-26.11S-6.33,0,10.823,0Z" transform="translate(29.24 6)" fill="#f9e2d6"/>
+          </g>
+        </g>
+      </g>
+      <path id="合体_95" data-name="合体 95" d="M7,7,0,14ZM0,0,7,7Z" transform="translate(383.092 730.179) rotate(90)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    </g>
+    <text id="リスクと注意点" transform="translate(-2597.696 -22440.754)" font-size="17" font-family="YuGothicStd-B, Yu Gothic Std" letter-spacing="0.028em"><tspan x="-60.928" y="0">リスクと注意点</tspan></text>
+  </g>
+</svg>

@@ -1,0 +1,269 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_top_guidance
+----------------------- */
+
+.C_top_guidance {
+    margin-inline: auto;
+
+    @include pc {
+        width: pmin(972);
+    }
+
+    @include sp {
+        width: s(320);
+        transform: translateX(s(-5));
+    }
+
+    &-inner {
+        display: flex;
+
+        @include pc {
+            flex-wrap: wrap;
+            gap: pmin(33) pmin(35);
+        }
+
+        @include sp {
+            flex-direction: column;
+            gap: s(38);
+        }
+
+        .item {
+            position: relative;
+
+            @include pc {
+                flex: 1 1 calc(100% / 3);
+                padding: pmin(41) pmin(49) pmin(49);
+                min-height: pmin(614);
+            }
+
+            @include sp {
+                width: 100%;
+                padding: s(40) 0 s(28);
+            }
+
+            &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 2;
+
+                @include pc {
+                    @include imgContain("TOP/top_guidance-bg-01-pc.webp");
+                    background-size: 100% 100%;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+
+                @include sp {
+                    @include imgContain("TOP/top_guidance-bg-sp.webp");
+                    background-size: 100% 100%;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+            }
+
+            &::after {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+
+                @include pc {
+                    @include imgContain("TOP/top_guidance-bg-bk-01-pc.webp");
+                    background-size: 100% 100%;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    top: pmin(11);
+                    left: pmin(11);
+                }
+
+                @include sp {
+                    @include imgContain("TOP/top_guidance-bg-bk-sp.webp");
+                    background-size: 100% 100%;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    top: s(11);
+                    left: s(11);
+                }
+            }
+
+            &-inner {
+                position: relative;
+                z-index: 4;
+
+                .ttl {
+                    width: fit-content;
+                    margin-inline: auto;
+
+                    @include pc {
+                        margin-bottom: pmin(28);
+                    }
+
+                    @include sp {
+                        margin-bottom: s(27);
+                    }
+
+                    img {
+                        height: auto;
+                        object-fit: contain;
+                        object-position: center;
+
+                        @include pc {
+                            width: pmin(254);
+                        }
+
+                        @include sp {
+                            width: s(255);
+                        }
+                    }
+                }
+
+                .txt {
+                    @include pc {
+                        margin-bottom: pmin(283);
+                    }
+
+                    @include sp {
+                        margin-bottom: s(194);
+                        padding-inline: s(18);
+                    }
+
+                    .TX {
+                        @include yuGothic-m;
+
+                        @include pc {
+                            line-height: 2;
+                            font-size: pmin(17);
+                            letter-spacing: 0.05em;
+                        }
+
+                        @include sp {
+                            line-height: 1.8;
+                            font-size: s(17);
+                            letter-spacing: 0.01em;
+                        }
+                    }
+                }
+
+                .btn {
+                    width: fit-content;
+                    margin-inline: auto;
+                }
+            }
+
+            .decoration {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 2;
+
+                .char {
+                    position: absolute;
+                    left: 0;
+                    width: 100%;
+
+                    @include pc {
+                        top: 0;
+                        height: 100%;
+                    }
+
+                    @include sp {
+                        bottom: 0;
+                        height: s(269);
+                    }
+                }
+            }
+
+            &:nth-child(1) {
+                .decoration {
+                    .char {
+                        @include pc {
+                            @include imgContain("TOP/top_guidance-char-01-pc.webp");
+                            background-position: top 100% center;
+                        }
+
+                        @include sp {
+                            @include imgContain("TOP/top_guidance-char-01-sp.webp");
+                        }
+                    }
+                }
+            }
+
+            &:nth-child(2) {
+                .decoration {
+                    .char {
+                        @include pc {
+                            @include imgContain("TOP/top_guidance-char-02-pc.webp");
+                            background-position: top 100% center;
+                        }
+
+                        @include sp {
+                            @include imgContain("TOP/top_guidance-char-02-sp.webp");
+                        }
+                    }
+                }
+            }
+
+            &:nth-child(3) {
+                @include pc {
+                    padding-block: pmin(57) pmin(52);
+                    min-height: pmin(403);
+                }
+
+                &::before {
+                    @include pc {
+                        @include imgContain("TOP/top_guidance-bg-02-pc.webp");
+                        background-size: 100% 100%;
+                    }
+                }
+
+                &::after {
+                    @include pc {
+                        @include imgContain("TOP/top_guidance-bg-bk-02-pc.webp");
+                        background-size: 100% 100%;
+                    }
+                }
+
+                .item-inner {
+                    position: relative;
+                    z-index: 4;
+
+                    .ttl {
+                        @include pc {
+                            margin-bottom: pmin(42);
+                        }
+                    }
+
+                    .txt {
+                        @include pc {
+                            margin-bottom: pmin(60);
+                        }
+                    }
+                }
+
+                .decoration {
+                    .char {
+                        @include pc {
+                            @include imgContain("TOP/top_guidance-char-03-pc.webp");
+                            background-position: top 100% center;
+                        }
+
+                        @include sp {
+                            @include imgContain("TOP/top_guidance-char-03-sp.webp");
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

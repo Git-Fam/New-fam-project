@@ -1,0 +1,63 @@
+@use "../functions" as *;
+
+/* -----------------------
+C_delivery_doctor
+----------------------- */
+
+.C_delivery_doctor {
+    margin-inline: auto;
+    background-size: 100% 100% !important;
+
+    @include pc {
+        width: pmin(875);
+        @include imgContain("delivery/delivery_doctor-bg-pc.webp");
+        padding: pmin(48) pmin(61) pmin(66);
+    }
+
+    @include sp {
+        width: s(335);
+        @include imgContain("delivery/delivery_doctor-bg-sp.webp");
+        padding: s(47) s(32) s(33);
+    }
+
+    .TL {
+        display: block;
+        width: 100%;
+
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            object-position: center;
+        }
+    }
+    .txt {
+        @include pc {
+            margin-top: pmin(41);
+        }
+
+        @include sp {
+            margin-top: s(23);
+        }
+
+        .TX {
+            line-height: 1.8;
+
+            @include pc {
+                letter-spacing: 0.08em;
+                font-size: pmin(17);
+            }
+
+            @include sp {
+                letter-spacing: 0.05em;
+                font-size: s(17);
+            }
+
+            span {
+                position: relative;
+                z-index: 1;
+                background: linear-gradient(to bottom, transparent 0%, transparent 70%, #f4d7c2 70%, #f4d7c2 100%);
+            }
+        }
+    }
+}

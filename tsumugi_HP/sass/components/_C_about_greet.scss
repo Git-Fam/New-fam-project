@@ -1,0 +1,295 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_about_greet
+----------------------- */
+
+.C_about_greet {
+    margin-inline: auto;
+
+    @include pc {
+        width: pmin(1167);
+    }
+
+    @include sp {
+        width: s(335);
+    }
+
+    &-main {
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            aspect-ratio: 755/575;
+            z-index: 1;
+            @include imgCover("about/about_greet-bg-char.webp");
+
+            @include pc {
+                width: pmin(755);
+                top: 43%;
+                right: -4%;
+            }
+
+            @include sp {
+                width: s(600);
+                top: 41%;
+                right: -40%;
+            }
+        }
+
+        .main-hero {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            @include imgCover("about/about_greet-hero.webp");
+
+            @include pc {
+                height: pmin(551);
+            }
+
+            @include sp {
+                height: s(335);
+                background-position: bottom left 47%;
+            }
+        }
+
+        &-contents {
+            position: relative;
+            z-index: 2;
+
+            @include pc {
+                margin-top: pmin(73);
+                padding-inline: pmin(50);
+            }
+
+            @include sp {
+                margin-top: s(49);
+            }
+
+            .ttl {
+                margin-inline: auto;
+
+                @include pc {
+                    width: pmin(874);
+                }
+
+                @include sp {
+                    width: s(286);
+                }
+
+                .TL {
+                    display: block;
+                    width: 100%;
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                        object-fit: contain;
+                        object-position: center;
+                    }
+                }
+            }
+
+            .txt {
+                @include pc {
+                    margin-top: pmin(64);
+                }
+
+                @include sp {
+                    margin-top: s(50);
+                }
+
+                .TX,
+                .name {
+                    @include yuGothic-b;
+                    line-height: 2.2;
+                    letter-spacing: 0.14em;
+
+                    @include pc {
+                        font-size: pmin(17);
+                    }
+
+                    @include sp {
+                        @include yuGothic-m;
+                        letter-spacing: 0em;
+                        font-size: s(17);
+                    }
+                }
+
+                .name {
+                    text-align: end;
+
+                    @include pc {
+                        font-size: pmin(24);
+                        transform: translateY(-50%);
+                    }
+
+                    @include sp {
+                        @include yuGothic-b;
+                        letter-spacing: 0.14em;
+                        font-size: s(20);
+                        margin-top: s(18);
+                        padding-right: s(10);
+                    }
+                }
+            }
+
+            .items {
+                width: 100%;
+
+                @include pc {
+                    margin-top: pmin(67);
+                    @include column(pmin(31));
+                }
+
+                @include sp {
+                    margin-top: s(61);
+                    @include column(s(32));
+                }
+
+                .item {
+                    width: 100%;
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                        object-fit: contain;
+                        object-position: center;
+                    }
+                }
+            }
+        }
+    }
+
+    &-sub {
+        @include pc {
+            margin-top: pmin(258);
+        }
+
+        @include sp {
+            margin-top: s(103);
+        }
+
+        &-inner {
+            display: flex;
+            align-items: center;
+
+            @include pc {
+                gap: pmin(70);
+            }
+
+            @include sp {
+                flex-direction: column;
+                gap: s(45);
+            }
+
+            .sub-hero {
+                @include imgCover("about/about_greet-sub.webp");
+                flex-shrink: 0;
+
+                @include pc {
+                    width: pmin(416);
+                    height: pmin(380);
+                }
+
+                @include sp {
+                    width: s(246);
+                    height: s(225);
+                    margin-inline: auto;
+                }
+            }
+
+            .sub-contents {
+                width: 100%;
+
+                .name {
+                    width: 100%;
+                    position: relative;
+
+                    @include pc {
+                        padding-bottom: pmin(14);
+                    }
+
+                    @include sp {
+                        padding-bottom: s(16);
+                    }
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        @include iconCover($about_greet-sub-name-bar);
+
+                        @include pc {
+                            height: pmin(5);
+                        }
+
+                        @include sp {
+                            height: s(3);
+                        }
+                    }
+
+                    &-img {
+                        @include pc {
+                            width: pmin(296);
+                        }
+
+                        @include sp {
+                            width: s(246);
+                            margin-inline: auto;
+                        }
+
+                        img {
+                            width: 100%;
+                            height: auto;
+                            object-fit: contain;
+                            object-position: center;
+                        }
+                    }
+                }
+
+                .txt {
+                    @include pc {
+                        margin-top: pmin(30);
+                    }
+
+                    @include sp {
+                        margin-top: s(21);
+                    }
+
+                    .TX {
+                        @include pc {
+                            font-size: pmin(17);
+                        }
+
+                        @include sp {
+                            font-size: s(17);
+                        }
+                    }
+                }
+
+                .item {
+                    width: 100%;
+
+                    @include pc {
+                        margin-top: pmin(48);
+                    }
+
+                    @include sp {
+                        margin-top: s(44);
+                    }
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                        object-fit: contain;
+                        object-position: center;
+                    }
+                }
+            }
+        }
+    }
+}

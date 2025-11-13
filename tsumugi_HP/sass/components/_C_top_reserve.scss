@@ -1,0 +1,179 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_top_reserve
+----------------------- */
+
+.C_top_reserve {
+    margin-inline: auto;
+    position: relative;
+
+    @include pc {
+        width: pmin(1366);
+        padding-bottom: pmin(96);
+    }
+
+    @include sp {
+        width: 100%;
+        padding: 0 s(20) s(186);
+    }
+
+    .reserve-inner {
+        position: relative;
+        z-index: 3;
+
+        .txt {
+            .TX {
+                line-height: 2.3;
+
+                @include pc {
+                    text-align: center;
+                    font-size: pmin(18);
+                }
+
+                @include sp {
+                    font-size: s(17);
+                }
+            }
+        }
+
+        .btn {
+            width: fit-content;
+            margin-inline: auto;
+
+            @include pc {
+                margin-top: pmin(40);
+            }
+
+            @include sp {
+                margin-top: s(46);
+            }
+        }
+
+        .tel-btn {
+            position: relative;
+            margin-inline: auto;
+
+            @include pc {
+                margin-top: pmin(60);
+                width: pmin(467);
+            }
+
+            @include sp {
+                margin-top: s(37);
+                width: s(283);
+            }
+
+            .note {
+                aspect-ratio: 73/65;
+                position: absolute;
+                @include imgContain("TOP/top_tel-img-01-note.webp");
+                top: -20%;
+                right: -5%;
+
+                @include pc {
+                    width: pmin(73);
+                }
+
+                @include sp {
+                    width: s(50);
+                }
+            }
+
+            a {
+                img {
+                    width: 100%;
+                    height: auto;
+                    object-fit: contain;
+                    object-position: center;
+                }
+            }
+        }
+    }
+
+    .decoration {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+
+        .char {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+            @include pc {
+                @include imgContain("TOP/top_reserve-char-01-pc.webp");
+            }
+
+            @include sp {
+                @include imgContain("TOP/top_reserve-char-01-sp.webp");
+                background-position: bottom center;
+            }
+        }
+    }
+
+    &.C_top_contact {
+        @include pc {
+            padding-bottom: pmin(166);
+        }
+
+        @include sp {
+            padding-bottom: s(231);
+        }
+
+        .reserve-inner {
+            .txt {
+                .TX {
+                    @include sp {
+                        text-align: center;
+                    }
+                }
+            }
+
+            .btn {
+                @include pc {
+                    margin-top: pmin(59);
+                }
+
+                @include sp {
+                    margin-top: s(40);
+                }
+            }
+
+            .tel-btn {
+                @include pc {
+                    margin-top: pmin(79);
+                }
+
+                @include sp {
+                    margin-top: s(34);
+                }
+            }
+        }
+
+        .decoration {
+            .char {
+                @include pc {
+                    @include imgContain("TOP/top_reserve-char-02-1-pc.webp");
+                    background-position: bottom center;
+                }
+
+                @include sp {
+                    @include imgContain("TOP/top_reserve-char-02-sp.webp");
+                    background-position: bottom center;
+                }
+
+                &:nth-child(2) {
+                    @include pc {
+                        @include imgContain("TOP/top_reserve-char-02-2-pc.webp");
+                    }
+                }
+            }
+        }
+    }
+}

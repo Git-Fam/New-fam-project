@@ -19,6 +19,7 @@
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
+        flex-shrink: 0;
         
         @include pc {
             width: pmin(33);
@@ -33,6 +34,10 @@
 
         &.icon-01 {
             background-image: menu-08(encode("#000"));
+        }
+
+        &.icon-02 {
+            background-image: menu-09(encode("#000"));
         }
     }
     .TL {

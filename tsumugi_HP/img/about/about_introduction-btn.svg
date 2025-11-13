@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="362.17" height="86.676" viewBox="0 0 362.17 86.676">
+  <defs>
+    <filter id="パス_79388" x="0" y="0" width="362.17" height="86.676" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.502"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="グループ_37797" data-name="グループ 37797" transform="translate(-501.999 -7115.953)">
+    <g id="グループ_25014" data-name="グループ 25014" transform="translate(511 7121.953)">
+      <g id="グループ_24418" data-name="グループ 24418" transform="translate(-0.001 0)">
+        <g id="グループ_24361" data-name="グループ 24361" transform="translate(0 0)">
+          <g transform="matrix(1, 0, 0, 1, -9, -6)" filter="url(#パス_79388)">
+            <path id="パス_79388-2" data-name="パス 79388" d="M20.611,0H283.087c22.559,0,40.847,15.374,40.847,34.338s-18.288,34.338-40.847,34.338H20.611c-22.559,0-40.847-15.374-40.847-34.338S-1.948,0,20.611,0Z" transform="translate(29.24 6)" fill="#f9e2d6"/>
+          </g>
+        </g>
+      </g>
+    </g>
+    <text id="病室の紹介はこちら" transform="translate(683 7164.291)" font-size="22" font-family="YuGothicStd-B, Yu Gothic Std" letter-spacing="0.028em"><tspan x="-101.464" y="0">病室の紹介はこちら</tspan></text>
+    <g id="グループ_25015" data-name="グループ 25015" transform="translate(833.787 7146.642) rotate(90)">
+      <path id="合体_18" data-name="合体 18" d="M12.689,9.415.4,0,12.689,9.415,0,19.3Z" transform="translate(0 12.689) rotate(-90)" fill="none" stroke="#000" stroke-linejoin="bevel" stroke-width="2.5"/>
+      <line id="線_1066" data-name="線 1066" y1="25.878" transform="translate(9.627 0.002)" fill="none" stroke="#000" stroke-width="2.5"/>
+    </g>
+  </g>
+</svg>

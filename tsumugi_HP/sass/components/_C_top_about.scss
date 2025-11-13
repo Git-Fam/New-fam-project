@@ -1,0 +1,170 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_top_about
+----------------------- */
+
+.C_top_about {
+    margin-inline: auto;
+    position: relative;
+
+    @include pc {
+        width: pmin(1058);
+        padding: pmin(58) 0 pmin(67);
+        transform: translateX(pmin(11));
+    }
+
+    @include sp {
+        width: s(320);
+        padding: s(47) 0 s(100);
+        transform: translateX(s(-5));
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+
+        @include pc {
+            @include imgContain("TOP/top_about-bg-pc.webp");
+            background-size: 100% 100%;
+        }
+
+        @include sp {
+            @include imgContain("TOP/top_about-bg-sp.webp");
+            background-size: 100% 100%;
+        }
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+
+        @include pc {
+            @include imgContain("TOP/top_about-bg-bk-pc.webp");
+            background-size: 100% 100%;
+            top: pmin(11);
+            left: pmin(11);
+        }
+
+        @include sp {
+            @include imgContain("TOP/top_about-bg-bk-sp.webp");
+            background-size: 100% 100%;
+            top: s(11);
+            left: s(11);
+        }
+    }
+
+    &-inner {
+        position: relative;
+        z-index: 4;
+
+        .ttl {
+            margin-inline: auto;
+
+            @include pc {
+                width: pmin(486);
+            }
+
+            @include sp {
+                width: s(218);
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+                object-position: center;
+            }
+        }
+        .txt {
+            width: fit-content;
+            margin-inline: auto;
+
+            @include pc {
+                margin-top: pmin(36);
+            }
+
+            @include sp {
+                margin-top: s(32);
+                width: s(287);
+            }
+
+            .TX {
+                letter-spacing: 0.05em;
+
+                @include pc {
+                    font-size: pmin(18);
+                }
+
+                @include sp {
+                    font-size: s(17);
+                }
+            }
+        }
+        .btn {
+            width: fit-content;
+            margin-inline: auto;
+
+            @include pc {
+                margin-top: pmin(40);
+            }
+
+            @include sp {
+                margin-top: s(30);
+            }
+        }
+    }
+
+    .decoration {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin-inline: auto;
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+
+        .deco {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin-inline: auto;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+
+            &.char {
+                @include pc {
+                    @include imgContain("TOP/top_about-char-pc.webp");
+                    background-position: bottom center;
+                }
+
+                @include sp {
+                    @include imgContain("TOP/top_about-char-sp.webp");
+                    background-position: bottom center;
+                }
+            }
+            &.note {
+                @include pc {
+                    @include imgContain("TOP/top_about-note-pc.webp");
+                    background-position: bottom center;
+                }
+
+                @include sp {
+                    @include imgContain("TOP/top_about-note-sp.webp");
+                    background-position: bottom center;
+                }
+            }
+        }
+    }
+}

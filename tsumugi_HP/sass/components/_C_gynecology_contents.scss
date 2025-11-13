@@ -1,0 +1,153 @@
+@use "../functions" as *;
+
+/* -----------------------
+C_gynecology_contents
+----------------------- */
+
+.C_gynecology_contents {
+    margin-inline: auto;
+
+    img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        object-position: center;
+    }
+
+    @include pc {
+        width: pmin(1186);
+        @include column(pmin(115));
+    }
+
+    @include sp {
+        width: s(335);
+        @include column(s(153));
+    }
+
+    .item {
+        background-size: 100% 100% !important;
+        position: relative;
+
+        @include pc {
+            width: pmin(1026);
+            @include imgContain("gynecology/gynecology_contents-bg-01-pc.webp");
+            padding: pmin(90) pmin(90) pmin(57) pmin(86);
+        }
+
+        @include sp {
+            @include imgContain("gynecology/gynecology_contents-bg-sp.webp");
+            padding: s(47) s(28) s(27);
+        }
+
+        &:nth-child(even) {
+            @include pc {
+                margin-left: auto;
+                @include imgContain("gynecology/gynecology_contents-bg-02-pc.webp");
+            }
+        }
+
+        &-inner {
+            .ttl {
+                width: 100%;
+
+                @include pc {
+                    margin-bottom: pmin(26);
+                }
+
+                @include sp {
+                    margin-bottom: s(30);
+                }
+            }
+
+            .txt {
+                .TX {
+                    letter-spacing: 0.05em;
+
+                    @include pc {
+                        font-size: pmin(17);
+                    }
+
+                    @include sp {
+                        font-size: s(17);
+                    }
+                }
+            }
+
+            .sub-TL {
+                width: 100%;
+
+                @include pc {
+                    margin: pmin(65) 0 pmin(30);
+                }
+
+                @include sp {
+                    margin: s(29) 0 s(15);
+                }
+            }
+
+            .img {
+                width: 100%;
+
+                @include pc {
+                    margin-bottom: pmin(36);
+                }
+
+                @include sp {
+                    margin-bottom: s(32);
+                }
+            }
+        }
+
+        .char {
+            position: absolute;
+
+            @include pc {
+                top: -18%;
+            }
+
+            &.type-01 {
+                @include pc {
+                    @include imgContain("gynecology/gynecology_contents-char-01-pc.webp");
+                    aspect-ratio: 180/164;
+                    width: pmin(180);
+                    left: 5%;
+                }
+
+                @include sp {
+                    @include imgContain("gynecology/gynecology_contents-char-01-sp.webp");
+                    aspect-ratio: 291/208;
+                    width: s(291);
+                    right: 0;
+                    bottom: 100%;
+                }
+
+                a {
+                    display: block;
+                    position: absolute;
+                    width: 60%;
+                    height: 40%;
+                    top: 10%;
+                    right: 14%;
+                    z-index: 1;
+                }
+            }
+
+            &.type-02 {
+                @include pc {
+                    @include imgContain("gynecology/gynecology_contents-char-02-pc.webp");
+                    aspect-ratio: 270/143;
+                    width: pmin(270);
+                    right: 5%;
+                }
+
+                @include sp {
+                    @include imgContain("gynecology/gynecology_contents-char-02-sp.webp");
+                    aspect-ratio: 203/150;
+                    width: s(203);
+                    right: 0;
+                    top: -15%;
+                }
+            }
+        }
+    }
+}
