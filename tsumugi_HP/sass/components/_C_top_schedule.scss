@@ -1,0 +1,74 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_top_schedule
+----------------------- */
+
+.C_top_schedule {
+    margin-inline: auto;
+
+    @include pc {
+        width: pmin(966);
+    }
+
+    @include sp {
+        width: 100%;
+    }
+
+    .schedule-table {
+        width: 100%;
+
+        @include sp{
+            overflow-x: scroll;
+            padding-inline: s(20);
+        }
+
+        .img-wrap {
+            position: relative;
+
+            @include sp{
+                width: s(786);
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+                object-position: center;
+            }
+
+            .char {
+                aspect-ratio: 155 / 178;
+                width: pmin(155);
+                position: absolute;
+                @include imgContain("TOP/top_schedule-table-char-pc.webp");
+                top: -15%;
+                left: 6%;
+            }
+        }
+    }
+
+    .txt {
+        @include pc {
+            margin-top: pmin(38);
+        }
+
+        @include sp {
+            margin-top: s(17);
+        }
+
+        .TX {
+            @include yuGothic-b;
+            letter-spacing: 0.05em;
+            text-align: center;
+
+            @include pc {
+                font-size: pmin(22);
+            }
+
+            @include sp {
+                font-size: s(17);
+            }
+        }
+    }
+}

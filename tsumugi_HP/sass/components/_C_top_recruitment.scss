@@ -1,0 +1,115 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_top_recruitment
+----------------------- */
+
+.C_top_recruitment {
+    margin-inline: auto;
+    position: relative;
+
+    @include pc {
+        padding-bottom: pmin(39);
+    }
+
+    @include sp {
+        width: 100%;
+        padding: 0 0 s(38);
+    }
+
+    .recruitment-inner {
+        position: relative;
+        z-index: 3;
+
+        .txt {
+            @include sp {
+                padding-inline: s(20);
+            }
+
+            .TX {
+                line-height: 2.3;
+
+                @include pc {
+                    text-align: center;
+                    font-size: pmin(18);
+                }
+
+                @include sp {
+                    font-size: s(17);
+                }
+            }
+        }
+
+        .btn {
+            width: fit-content;
+            margin-inline: auto;
+
+            @include pc {
+                margin-top: pmin(45);
+            }
+
+            @include sp {
+                margin-top: s(34);
+            }
+        }
+
+        .decoration {
+            overflow: hidden;
+
+            @include pc {
+                margin: pmin(45) auto 0;
+            }
+
+            @include sp {
+                margin-top: s(43);
+            }
+
+            .characters {
+                display: flex;
+
+                @include pc {
+                    gap: pmin(70);
+                }
+
+                @include sp {
+                    gap: s(30);
+                }
+
+                .char {
+                    display: flex;
+                    animation: infinity-scroll-left 120s infinite linear 0.5s both;
+
+                    @keyframes infinity-scroll-left {
+                        from {
+                            transform: translateX(-100%);
+                        }
+                        to {
+                            transform: translateX(100%);
+                        }
+                    }
+
+                    @include pc {
+                        gap: pmin(70);
+                    }
+
+                    @include sp {
+                        gap: s(30);
+                    }
+
+                    .img {
+                        aspect-ratio: 1422/203;
+                        @include imgContain("TOP/top_recruitment-char.webp");
+
+                        @include pc {
+                            width: pmin(1422);
+                        }
+
+                        @include sp {
+                            width: s(627);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

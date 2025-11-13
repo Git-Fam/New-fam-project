@@ -6,6 +6,7 @@ KV-other
 
 .KV-other {
     position: relative;
+    z-index: 50;
 
     @include pc {
         height: pmin(420);

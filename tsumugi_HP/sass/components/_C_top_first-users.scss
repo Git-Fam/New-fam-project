@@ -1,0 +1,313 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_top_first-users
+----------------------- */
+
+.C_top_first-users {
+    margin-inline: auto;
+    position: relative;
+
+    @include pc {
+        width: pmin(1366);
+        padding-bottom: pmin(156);
+    }
+
+    @include sp {
+        width: 100%;
+        padding: 0 s(20) s(100);
+    }
+
+    .first-users-inner {
+        position: relative;
+        z-index: 3;
+
+        .txt {
+            @include sp {
+                padding-inline: s(5);
+            }
+
+            .TX {
+                line-height: 2.3;
+
+                @include pc {
+                    text-align: center;
+                    font-size: pmin(18);
+                }
+
+                @include sp {
+                    font-size: s(17);
+                }
+            }
+        }
+
+        .btn {
+            width: fit-content;
+            margin-inline: auto;
+
+            @include pc {
+                margin-top: pmin(45);
+            }
+
+            @include sp {
+                margin-top: s(34);
+            }
+        }
+
+        .contents {
+            margin-inline: auto;
+            text-align: center;
+            position: relative;
+
+            @include pc {
+                width: pmin(1168);
+                @include imgContain("TOP/top_first-users-contents-bg-pc.webp");
+                background-size: 100% 100%;
+                padding: pmin(61) 0 pmin(80);
+                margin-top: pmin(52);
+            }
+
+            @include sp {
+                width: 100%;
+                @include imgContain("TOP/top_first-users-contents-bg-sp.webp");
+                background-size: 100% 100%;
+                padding: s(52) 0 s(64);
+                margin-top: s(44);
+            }
+
+            &-ttl {
+                position: relative;
+                z-index: 3;
+
+                @include pc {
+                    margin-bottom: pmin(44);
+                }
+
+                @include sp {
+                    margin-bottom: s(24);
+                }
+
+                .TL {
+                    @include yuGothic-b;
+
+                    @include pc {
+                        font-size: pmin(19);
+                    }
+
+                    @include sp {
+                        font-size: s(18);
+                    }
+                }
+            }
+
+            .contents-list-wrap {
+                position: relative;
+                z-index: 3;
+
+                @include pc {
+                    @include column(pmin(61));
+                }
+
+                @include sp {
+                    @include column(s(33));
+                }
+
+                .contents-list-txt {
+                    .TX {
+                        letter-spacing: 0.05em;
+
+                        @include pc {
+                            font-size: pmin(18);
+                        }
+
+                        @include sp {
+                            font-size: s(15);
+                        }
+                    }
+                }
+
+                .contents-list {
+                    @include pc {
+                        @include column(pmin(42));
+                    }
+
+                    @include sp {
+                        @include column(s(32));
+                    }
+
+                    ul {
+                        margin-inline: auto;
+                        display: flex;
+
+                        @include pc {
+                            width: pmin(907);
+                            gap: pmin(20) pmin(50);
+                            flex-wrap: wrap;
+                        }
+
+                        @include sp {
+                            width: s(269);
+                            gap: s(15);
+                            flex-direction: column;
+                        }
+
+                        li {
+                            position: relative;
+                            display: flex;
+
+                            @include pc {
+                                width: calc((100% - pmin(50) * 2) / 3);
+                                height: pmin(82);
+                            }
+
+                            @include sp {
+                                width: 100%;
+                                height: s(80);
+                            }
+
+                            &::before {
+                                content: "";
+                                display: block;
+                                width: 100%;
+                                height: 100%;
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                z-index: 2;
+                                @include imgContain("TOP/top_first-users-contents-item-bg-bk.webp");
+                                background-size: 100% 100%;
+                            }
+
+                            &::after {
+                                content: "";
+                                display: block;
+                                width: 100%;
+                                height: 100%;
+                                position: absolute;
+                                top: calc((5 / 82) * 100%);
+                                left: calc((3 / 266) * 100%);
+                                z-index: 1;
+                                @include imgContain("TOP/top_first-users-contents-item-bg.webp");
+                                background-size: 100% 100%;
+                            }
+
+                            .icon {
+                                position: absolute;
+                                z-index: 3;
+                                display: flex;
+                                align-items: center;
+                                justify-content: flex-end;
+                                top: 50%;
+                                transform: translateY(-50%);
+
+                                @include pc {
+                                    left: pmin(5);
+                                }
+
+                                @include sp {
+                                }
+
+                                .img {
+                                    background-image: menu-08(encode("#F4D7C3"));
+                                    background-size: contain;
+                                    background-position: center;
+                                    background-repeat: no-repeat;
+                                    aspect-ratio: 1;
+
+                                    @include pc {
+                                        width: pmin(50);
+                                    }
+
+                                    @include sp {
+                                        width: s(50);
+                                    }
+                                }
+                            }
+
+                            .TX {
+                                @include yuGothic-b;
+                                position: relative;
+                                z-index: 3;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                width: 100%;
+
+                                @include pc {
+                                    font-size: pmin(17);
+                                    padding-inline: pmin(30) pmin(10);
+                                }
+
+                                @include sp {
+                                    font-size: s(18);
+                                }
+                            }
+                        }
+                    }
+
+                    &:nth-child(2) {
+                        ul {
+                            @include pc {
+                                width: pmin(780);
+                            }
+
+                            li {
+                                .TX {
+                                    @include pc {
+                                        font-size: pmin(16);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .decoration {
+                .deco {
+                    position: absolute;
+                    z-index: 1;
+
+                    &.char-01 {
+                        aspect-ratio: 233/203;
+                        @include imgContain("TOP/top_first-users-contents-char-01.webp");
+
+                        @include pc {
+                            width: pmin(233);
+                            top: -9%;
+                            right: 10%;
+                        }
+
+                        @include sp {
+                            width: s(180);
+                            left: 0;
+                            right: 0;
+                            margin-inline: auto;
+                            bottom: -9%;
+                        }
+
+                        .note {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            z-index: 1;
+                            @include imgContain("TOP/top_first-users-contents-note-01.webp");
+                        }
+                    }
+                    &.char-02 {
+                        aspect-ratio: 243/185;
+                        @include imgContain("TOP/top_first-users-contents-char-02.webp");
+
+                        @include pc {
+                            width: pmin(243);
+                            bottom: -18%;
+                            left: -5%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,381 @@
+@use "../functions" as *;
+
+/* -----------------------
+C_obstetrics_achievement
+----------------------- */
+
+.C_obstetrics_achievement {
+    margin-inline: auto;
+
+    @include pc {
+        width: pmin(893);
+        @include column(pmin(46));
+    }
+
+    @include sp {
+        width: s(335);
+        @include column(s(50));
+    }
+
+    .flex-txt {
+        display: flex;
+
+        &.column-txt {
+            @include sp {
+                flex-direction: column;
+            }
+        }
+    }
+
+    .TX {
+        @include yuGothic-b;
+        letter-spacing: 0.05em;
+        white-space: nowrap;
+
+        @include pc {
+            font-size: pmin(17);
+        }
+
+        @include sp {
+            font-size: s(16);
+        }
+    }
+
+    .achievement-contents-type-01 {
+        position: relative;
+        width: 100%;
+
+        @include pc {
+            height: pmin(511);
+            @include imgContain("gynecology/obstetrics_achievement-bg-01-pc.webp");
+        }
+
+        @include sp {
+            height: s(684);
+            @include imgContain("gynecology/obstetrics_achievement-bg-01-sp.webp");
+        }
+
+        &-inner {
+            .top-txt {
+                position: absolute;
+
+                @include pc {
+                    top: 10%;
+                    left: 7%;
+                }
+
+                @include sp {
+                    top: 6%;
+                    left: 0;
+                    right: 0;
+                    margin-inline: auto;
+                    width: fit-content;
+                }
+
+                .flex-txt {
+                    @include pc {
+                        gap: pmin(48);
+                    }
+
+                    @include sp {
+                        gap: s(37);
+                    }
+                }
+            }
+
+            .middle-txt-top {
+                position: absolute;
+
+                @include pc {
+                    top: 36%;
+                    left: 7%;
+                    @include column(pmin(10));
+                }
+
+                @include sp {
+                    top: 18%;
+                    left: 0;
+                    right: 0;
+                    margin-inline: auto;
+                    width: fit-content;
+                    @include column(s(5));
+                    align-items: center;
+                }
+
+                .flex-txt {
+                    @include pc {
+                        gap: pmin(18);
+                    }
+
+                    @include sp {
+                        gap: s(14);
+                    }
+                }
+            }
+
+            .middle-txt-middle {
+                position: absolute;
+                display: flex;
+
+                @include pc {
+                    gap: pmin(57);
+                    left: 32%;
+                }
+
+                @include sp {
+                    flex-direction: column;
+                    align-items: center;
+                    gap: s(5);
+                    top: 31%;
+                }
+
+                &.middle-01 {
+                    @include pc {
+                        top: 30%;
+                    }
+
+                    @include sp {
+                        left: 12%;
+                    }
+                }
+
+                &.middle-02 {
+                    @include pc {
+                        top: 51%;
+                    }
+
+                    @include sp {
+                        right: 12%;
+                    }
+                }
+
+                .flex-txt {
+                    @include pc {
+                        gap: pmin(26);
+                    }
+
+                    @include sp {
+                        gap: s(14);
+                    }
+                }
+            }
+
+            .middle-txt-bottom {
+                position: absolute;
+                display: flex;
+
+                @include pc {
+                    gap: pmin(49);
+                    left: 63%;
+                }
+
+                @include sp {
+                    flex-direction: column;
+                    align-items: center;
+                    gap: s(5);
+                    top: 45%;
+                }
+
+                &.bottom-01 {
+                    @include pc {
+                        top: 23%;
+                    }
+
+                    @include sp {
+                        left: 10%;
+                    }
+                }
+                &.bottom-02 {
+                    @include pc {
+                        top: 34%;
+                    }
+
+                    @include sp {
+                        left: 32%;
+                    }
+                }
+                &.bottom-03 {
+                    @include pc {
+                        top: 46%;
+                    }
+
+                    @include sp {
+                        right: 32%;
+                    }
+                }
+                &.bottom-04 {
+                    @include pc {
+                        top: 56%;
+                    }
+
+                    @include sp {
+                        right: 10%;
+                    }
+                }
+
+                .flex-txt {
+                    @include pc {
+                        gap: pmin(27);
+                    }
+
+                    @include sp {
+                        gap: s(2);
+                    }
+                }
+            }
+
+            .bottom-txt-top {
+                position: absolute;
+
+                @include pc {
+                    top: 70%;
+                    left: 7%;
+                    @include column(pmin(10));
+                }
+
+                @include sp {
+                    top: 71%;
+                    left: 0;
+                    right: 0;
+                    margin-inline: auto;
+                    width: fit-content;
+                    @include column(s(8));
+                    align-items: center;
+                }
+
+                .flex-txt {
+                    @include pc {
+                        gap: pmin(18);
+                    }
+
+                    @include sp {
+                        gap: s(17);
+                    }
+                }
+            }
+
+            .bottom-txt-bottom {
+                position: absolute;
+                display: flex;
+
+                @include pc {
+                    gap: pmin(63);
+                    left: 32%;
+                }
+
+                @include sp {
+                    flex-direction: column;
+                    align-items: center;
+                    gap: s(5);
+                    top: 85%;
+                }
+
+                &.bottom-01 {
+                    @include pc {
+                        top: 68%;
+                    }
+
+                    @include sp {
+                        left: 15%;
+                    }
+                }
+                &.bottom-02 {
+                    @include pc {
+                        top: 79%;
+                    }
+
+                    @include sp {
+                        right: 15%;
+                    }
+                }
+
+                .flex-txt {
+                    @include pc {
+                        gap: pmin(32);
+                    }
+
+                    @include sp {
+                        gap: s(15);
+                    }
+                }
+            }
+        }
+    }
+
+    .achievement-contents-type-02 {
+        width: 100%;
+        position: relative;
+
+        @include pc {
+            height: pmin(318);
+            @include imgContain("gynecology/obstetrics_achievement-bg-02-pc.webp");
+        }
+
+        @include sp {
+            height: s(309);
+            @include imgContain("gynecology/obstetrics_achievement-bg-02-sp.webp");
+        }
+
+        &-inner {
+            h4 {
+                @include pc {
+                    width: pmin(253);
+                }
+
+                @include sp {
+                    width: s(136);
+                }
+            }
+
+            .top-txt,
+            .middle-txt,
+            .bottom-txt {
+                position: absolute;
+                display: flex;
+
+                @include pc {
+                    gap: pmin(20);
+                    top: 16%;
+                    left: 7%;
+                }
+
+                @include sp {
+                    gap: s(10);
+                    align-items: center;
+                    top: 10%;
+                    left: 12%;
+                }
+
+                .flex-txt {
+                    @include pc {
+                        gap: pmin(30);
+                    }
+
+                    @include sp {
+                        gap: s(13);
+                    }
+                }
+            }
+
+            .middle-txt {
+                @include pc {
+                    top: 41%;
+                }
+
+                @include sp {
+                    top: 35%;
+                }
+            }
+
+            .bottom-txt {
+                @include pc {
+                    top: 67%;
+                }
+
+                @include sp {
+                    top: 67%;
+                }
+            }
+        }
+    }
+}

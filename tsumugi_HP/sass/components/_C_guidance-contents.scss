@@ -1,0 +1,1114 @@
+@use "../functions" as *;
+
+/* -----------------------
+C_guidance-contents
+----------------------- */
+
+.C_guidance-contents {
+    img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        object-position: center;
+    }
+
+    .C_guidance-contents-inner {
+        position: relative;
+        margin-inline: auto;
+
+        @include pc {
+            width: pmin(1188);
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: -4%;
+                left: -14%;
+                aspect-ratio: 642/466;
+                width: pmin(642);
+                @include imgContain("guidance/guidance-contents-bg.webp");
+            }
+        }
+
+        @include sp {
+            width: s(335);
+        }
+
+        .sticky-menu {
+            @include pc {
+                position: fixed;
+                left: 50%;
+                transform: translateX(pm(-600));
+                top: pm(50);
+                width: fit-content;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s;
+                z-index: 3;
+
+                &.active {
+                    opacity: 1;
+                    pointer-events: auto;
+                }
+            }
+
+            @include sp {
+                @include imgCover("guidance/guidance-nav-bg-cl.webp");
+                background-size: 100% 100% !important;
+                padding: s(30) s(30) s(37);
+
+                &.open {
+                    @include imgCover("guidance/guidance-nav-bg-op.webp");
+
+                    .ttl {
+                        .icon {
+                            transform: translateY(-50%) rotate(180deg);
+                        }
+                    }
+
+                    .nav {
+                        display: block;
+                    }
+                }
+            }
+
+            .ttl {
+                width: 100%;
+                position: relative;
+                cursor: pointer;
+
+                .TX {
+                    @include yuGothic-b;
+                    line-height: 1;
+                    font-size: s(18);
+                }
+
+                .icon {
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    transform: translateY(-50%);
+                    aspect-ratio: 1;
+                    @include iconContain($guidance-nav-arrow);
+                    width: s(24);
+                }
+            }
+
+            .nav {
+                @include sp {
+                    @include column(s(36));
+                    padding-top: s(60);
+                    position: relative;
+                    display: none;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: s(30);
+                        left: 0;
+                        width: 100%;
+                        height: s(4);
+                        background-image: about_introduction-line(encode("#F6D9C7"));
+                        background-size: cover;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                    }
+                }
+
+                &-lists {
+                    @include pc {
+                        @include column(pmin(36));
+                    }
+
+                    @include sp {
+                        @include column(s(36));
+                    }
+
+                    .nav-list-item {
+                        > a {
+                            display: flex;
+                            align-items: center;
+                            width: fit-content;
+
+                            .icon {
+                                aspect-ratio: 1;
+                                background-image: menu-08(encode("#000"));
+                                background-size: contain;
+                                background-position: center;
+                                background-repeat: no-repeat;
+
+                                @include pc {
+                                    width: pmin(20);
+                                }
+
+                                @include sp {
+                                    width: s(20);
+                                }
+                            }
+
+                            .TX {
+                                @include yuGothic-b;
+                                line-height: 1;
+
+                                @include pc {
+                                    font-size: pmin(18);
+                                }
+
+                                @include sp {
+                                    font-size: s(18);
+                                }
+                            }
+                        }
+
+                        ul {
+                            @include pc {
+                                margin-top: pmin(23);
+                                @include column(pmin(34));
+                            }
+
+                            @include sp {
+                                margin-top: s(23);
+                                @include column(s(34));
+                            }
+
+                            li {
+                                a {
+                                    display: block;
+                                    width: fit-content;
+
+                                    .tx {
+                                        line-height: 1;
+
+                                        @include pc {
+                                            font-size: pmin(15);
+                                        }
+
+                                        @include sp {
+                                            font-size: s(15);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .contents-area {
+            @include pc {
+                margin-left: auto;
+                width: pmin(870);
+                position: relative;
+                z-index: 3;
+                @include column(pmin(230));
+            }
+
+            @include sp {
+                margin-top: s(100);
+                @include column(s(100));
+            }
+
+            &-item {
+                position: relative;
+
+                &:nth-child(2) {
+                    @include sp {
+                        margin-bottom: s(80);
+                    }
+                }
+
+                .item-common {
+                    .item-ttl {
+                        @include pc {
+                            margin-bottom: pmin(45);
+                        }
+
+                        @include sp {
+                            margin-bottom: s(25);
+                        }
+
+                        .TL {
+                            display: block;
+                            width: 100%;
+                        }
+                    }
+
+                    .item-txt {
+                        @include pc {
+                            @include column(pmin(26));
+                        }
+
+                        @include sp {
+                            @include column(s(15));
+                        }
+
+                        .TL {
+                            @include yuGothic-b;
+
+                            @include pc {
+                                font-size: pmin(23);
+                            }
+
+                            @include sp {
+                                font-size: s(20);
+                            }
+                        }
+
+                        .TX {
+                            line-height: 2;
+                            letter-spacing: 0.02em;
+
+                            @include pc {
+                                font-size: pmin(18);
+                            }
+
+                            @include sp {
+                                font-size: s(17);
+                            }
+                        }
+                    }
+                }
+
+                // 色枠の箇所（01,03,05）
+                .item-contents {
+                    // 1
+                    &.contents-01 {
+                        @include pc {
+                            margin-top: pmin(45);
+                            @include column(pmin(90));
+                        }
+
+                        @include sp {
+                            margin-top: s(68);
+                            @include column(s(80));
+                        }
+                    }
+
+                    // 3
+                    &.contents-03 {
+                        @include pc {
+                            @include column(pmin(53));
+                        }
+
+                        @include sp {
+                            @include column(s(55));
+                        }
+                    }
+
+                    // 4
+                    &.contents-04 {
+                        @include pc {
+                            margin-top: pmin(76);
+                            height: pmin(554);
+                            overflow-y: scroll;
+                            scroll-behavior: smooth;
+                            display: flex;
+                            justify-content: space-between;
+                        }
+
+                        @include sp {
+                            margin-top: s(52);
+                        }
+
+                        .contents-04-menu {
+                            @include pc {
+                                width: fit-content;
+                                height: fit-content;
+                                position: sticky;
+                                top: 0;
+                                left: 0;
+                            }
+
+                            @include sp {
+                            }
+
+                            .ttl {
+                                @include pc {
+                                    width: pmin(145);
+                                }
+
+                                @include sp {
+                                    width: s(170);
+                                    margin-inline: auto;
+                                }
+                            }
+
+                            ul {
+                                @include pc {
+                                    width: fit-content;
+                                    padding-left: pmin(35);
+                                    margin-top: pmin(27);
+                                    @include column(pmin(25));
+                                }
+
+                                @include sp {
+                                    margin-top: s(35);
+                                    display: flex;
+                                    flex-direction: column;
+                                    flex-wrap: wrap;
+                                    justify-content: space-between;
+                                    align-content: space-between;
+                                    height: s(50);
+                                    width: s(231);
+                                    margin-inline: auto;
+                                }
+
+                                li {
+                                    a {
+                                        display: block;
+                                        width: fit-content;
+                                        @include yuGothic-b;
+                                        line-height: 1;
+
+                                        @include pc {
+                                            font-size: pmin(18);
+                                        }
+
+                                        @include sp {
+                                            font-size: s(17);
+                                        }
+
+                                        &::before {
+                                            content: "−";
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .contents-04-content {
+                            @include pc {
+                                width: pmin(661);
+                            }
+
+                            @include sp {
+                                margin-top: s(31);
+                                padding: s(69) s(14) s(22);
+                                @include imgContain("guidance/guidance-contents-item-sl-bg-sp.webp");
+                                background-size: 100% 100%;
+                                position: relative;
+
+                                &::before {
+                                    content: "";
+                                    position: absolute;
+                                    top: s(10);
+                                    left: 0;
+                                    right: 0;
+                                    margin-inline: auto;
+                                    aspect-ratio: 1;
+                                    width: s(62);
+                                    @include imgContain("about/about_introduction-sl-sp.svg");
+                                }
+                            }
+
+                            .contents-04-content-inner {
+                                @include pc {
+                                    @include column(pmin(94));
+                                }
+
+                                @include sp {
+                                    height: s(300);
+                                    overflow-y: scroll;
+                                    scroll-behavior: smooth;
+                                    @include column(s(42));
+                                }
+
+                                .room-item {
+                                    .ttl {
+                                        width: 100%;
+                                        .TL {
+                                            width: 100%;
+                                        }
+                                    }
+
+                                    .txt {
+                                        @include pc {
+                                            margin-top: pmin(14);
+                                        }
+
+                                        @include sp {
+                                            margin-top: s(10);
+                                        }
+
+                                        .TX {
+                                            @include pc {
+                                                font-size: pmin(17);
+                                            }
+
+                                            @include sp {
+                                                font-size: s(17);
+                                            }
+                                        }
+                                    }
+
+                                    .img {
+                                        width: 100%;
+
+                                        @include pc {
+                                            margin-top: pmin(50);
+                                            @include column(pmin(25));
+                                        }
+
+                                        @include sp {
+                                            margin-top: s(20);
+                                            @include column(s(25));
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // 5
+                    &.contents-05 {
+                        @include pc {
+                            margin-top: pmin(90);
+                        }
+
+                        @include sp {
+                            margin-top: s(64);
+                        }
+                    }
+
+                    .item {
+                        background-size: 100% 100% !important;
+
+                        @include pc {
+                            @include imgCover("guidance/guidance-contents-item-bg-pc.webp");
+                            padding: pmin(74) pmin(86) pmin(71);
+                            @include column(pmin(110));
+                        }
+
+                        @include sp {
+                            @include imgCover("guidance/guidance-contents-item-bg-sp.webp");
+                            padding: s(55) s(32) s(43);
+                            @include column(s(50));
+                        }
+
+                        &.contents-03-02 {
+                            @include sp {
+                                padding-bottom: s(200);
+                            }
+                        }
+
+                        .item-inner {
+                            .item-ttl {
+                                @include pc {
+                                    margin-bottom: pmin(42);
+                                }
+
+                                @include sp {
+                                    margin-bottom: s(18);
+                                }
+
+                                .TL {
+                                    display: block;
+                                    width: 100%;
+                                }
+                            }
+
+                            // 01-01-01
+                            // 01-01-02
+                            // 01-01-03
+                            .item-01-01-01,
+                            .item-01-01-02,
+                            .item-01-01-03 {
+                                .check-list {
+                                    ul {
+                                        display: flex;
+
+                                        @include pc {
+                                            flex-wrap: wrap;
+                                            gap: pmin(34) pmin(29);
+                                        }
+
+                                        @include sp {
+                                            flex-direction: column;
+                                            gap: s(14);
+                                        }
+
+                                        li {
+                                            position: relative;
+                                            @include yuGothic-b;
+                                            letter-spacing: 0.02em;
+                                            line-height: 1;
+
+                                            @include pc {
+                                                font-size: pmin(17);
+                                                padding-left: pmin(30);
+                                            }
+
+                                            @include sp {
+                                                font-size: s(15);
+                                                padding-left: s(30);
+                                            }
+
+                                            a {
+                                                @include yuGothic-m;
+                                                border-bottom: solid #000;
+
+                                                @include pc {
+                                                    border-bottom-width: pmin(1);
+                                                    font-size: pmin(17);
+                                                    margin-left: pmin(15);
+                                                }
+
+                                                @include sp {
+                                                    border-bottom-width: s(1);
+                                                    font-size: s(14);
+                                                    margin-top: s(10);
+                                                    display: block;
+                                                }
+                                            }
+
+                                            &::before {
+                                                content: "";
+                                                position: absolute;
+                                                left: 0;
+                                                aspect-ratio: 1;
+                                                border: solid #000;
+
+                                                @include pc {
+                                                    top: 50%;
+                                                    transform: translateY(-50%);
+                                                    width: pmin(18);
+                                                    border-width: pmin(2);
+                                                }
+
+                                                @include sp {
+                                                    top: -14%;
+                                                    width: s(15);
+                                                    border-width: s(2);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .txt {
+                                    @include pc {
+                                        margin-top: pmin(50);
+                                    }
+
+                                    @include sp {
+                                        margin-top: s(28);
+                                    }
+
+                                    .TX {
+                                        letter-spacing: 0.02em;
+                                        line-height: 2;
+
+                                        @include pc {
+                                            font-size: pmin(17);
+                                        }
+
+                                        @include sp {
+                                            font-size: s(14);
+                                        }
+                                    }
+                                }
+                            }
+
+                            // 01-01-01
+                            .item-01-01-01 {
+                                .check-list {
+                                    ul {
+                                        li {
+                                            &:nth-child(5) {
+                                                @include sp {
+                                                    order: 6;
+                                                }
+                                            }
+                                            &:nth-child(6) {
+                                                @include sp {
+                                                    order: 5;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            // 01-02-01
+                            .item-01-02-01 {
+                                .request-list {
+                                    ul {
+                                        @include pc {
+                                            @include column(pmin(18));
+                                        }
+
+                                        @include sp {
+                                            @include column(s(20));
+                                        }
+
+                                        li {
+                                            position: relative;
+                                            @include yuGothic-b;
+                                            letter-spacing: 0.02em;
+
+                                            @include pc {
+                                                font-size: pmin(18);
+                                                padding-left: pmin(30);
+                                            }
+
+                                            @include sp {
+                                                font-size: s(15);
+                                                padding-left: s(21);
+                                            }
+
+                                            &::before {
+                                                content: "";
+                                                background-image: menu-08(encode("#000"));
+                                                background-size: contain;
+                                                background-position: center;
+                                                background-repeat: no-repeat;
+                                                position: absolute;
+                                                top: -8%;
+                                                aspect-ratio: 1;
+
+                                                @include pc {
+                                                    left: 0;
+                                                    width: pmin(30);
+                                                }
+
+                                                @include sp {
+                                                    width: s(27);
+                                                    left: -3%;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            // 03-01-01
+                            // 03-02-01
+                            .item-03-01-01,
+                            .item-03-02-01 {
+                                .txt {
+                                    .TX {
+                                        line-height: 2;
+
+                                        @include pc {
+                                            letter-spacing: 0.08em;
+                                            font-size: pmin(17);
+                                        }
+
+                                        @include sp {
+                                            letter-spacing: 0;
+                                            font-size: s(17);
+                                        }
+                                    }
+                                }
+
+                                .hr {
+                                    background-image: about_introduction-line(encode("#F5D9C7"));
+                                    background-size: cover;
+                                    background-position: center;
+                                    background-repeat: no-repeat;
+
+                                    @include pc {
+                                        height: pmin(6);
+                                        margin-block: pmin(32);
+                                    }
+
+                                    @include sp {
+                                        height: s(4);
+                                        margin-block: s(27) s(32);
+                                    }
+                                }
+
+                                .time {
+                                    @include pc {
+                                        margin-bottom: pmin(50);
+                                    }
+
+                                    @include sp {
+                                        margin-bottom: s(40);
+                                    }
+
+                                    .TX {
+                                        @include yuGothic-b;
+                                        letter-spacing: 0.02em;
+
+                                        @include pc {
+                                            font-size: pmin(24);
+                                        }
+
+                                        @include sp {
+                                            font-size: s(21);
+                                            text-align: center;
+                                        }
+                                    }
+                                }
+
+                                .visitation-list {
+                                    &.point {
+                                        ul {
+                                            li {
+                                                position: relative;
+
+                                                @include pc {
+                                                    padding-left: pmin(30);
+                                                }
+
+                                                @include sp {
+                                                    padding-left: s(21);
+                                                }
+
+                                                &::before {
+                                                    content: "";
+                                                    background-image: menu-08(encode("#000"));
+                                                    background-size: contain;
+                                                    background-position: center;
+                                                    background-repeat: no-repeat;
+                                                    position: absolute;
+                                                    top: 0%;
+                                                    aspect-ratio: 1;
+
+                                                    @include pc {
+                                                        left: 0;
+                                                        width: pmin(30);
+                                                    }
+
+                                                    @include sp {
+                                                        width: s(27);
+                                                        left: -3%;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    ul {
+                                        @include pc {
+                                        }
+
+                                        @include sp {
+                                            @include column(s(5));
+                                        }
+
+                                        li {
+                                            @include yuGothic-b;
+                                            letter-spacing: 0.13em;
+                                            line-height: 2;
+
+                                            @include pc {
+                                                font-size: pmin(18);
+                                            }
+
+                                            @include sp {
+                                                font-size: s(15);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            // 05-01
+                            .item-05-01 {
+                                .food-list {
+                                    ul {
+                                        @include pc {
+                                            @include column(pmin(66));
+                                        }
+
+                                        @include sp {
+                                            @include column(s(36));
+                                        }
+
+                                        li {
+                                            display: flex;
+
+                                            @include pc {
+                                                gap: pmin(22);
+                                            }
+
+                                            @include sp {
+                                                flex-direction: column;
+                                                gap: s(15);
+                                            }
+
+                                            .TL {
+                                                display: block;
+                                                flex-shrink: 0;
+                                                @include yuGothic-b;
+                                                position: relative;
+
+                                                @include pc {
+                                                    width: pmin(100);
+                                                    font-size: pmin(17);
+                                                    padding-left: pmin(25);
+                                                }
+
+                                                @include sp {
+                                                    font-size: s(15);
+                                                    padding-left: s(25);
+                                                }
+
+                                                &::before {
+                                                    content: "";
+                                                    position: absolute;
+                                                    left: 0;
+                                                    aspect-ratio: 1;
+                                                    background-image: menu-08(encode("#000"));
+                                                    background-size: contain;
+                                                    background-position: center;
+                                                    background-repeat: no-repeat;
+
+                                                    @include pc {
+                                                        width: pmin(25);
+                                                        top: 0;
+                                                    }
+
+                                                    @include sp {
+                                                        width: s(25);
+                                                        top: -10%;
+                                                    }
+                                                }
+                                            }
+
+                                            .TX {
+                                                @include pc {
+                                                    font-size: pmin(17);
+                                                }
+
+                                                @include sp {
+                                                    font-size: s(15);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // 02
+                .item-02-btn {
+                    @include pc {
+                        margin-top: pmin(43);
+                        width: pmin(283);
+                    }
+
+                    @include sp {
+                        margin: s(40) auto 0;
+                        width: s(283);
+                    }
+
+                    a {
+                        display: block;
+                        width: 100%;
+                    }
+                }
+
+                // 04
+                .item-04-btn {
+                    @include pc {
+                        margin-top: pmin(76);
+                        margin-left: pmin(200);
+                        width: pmin(283);
+                    }
+
+                    @include sp {
+                        margin-inline: auto;
+                        margin-top: s(24);
+                        width: s(283);
+                    }
+
+                    a {
+                        display: block;
+                        width: 100%;
+                    }
+                }
+
+                // 05
+                .item-food-img {
+                    @include pc {
+                        margin-top: pmin(55);
+                        @include column(pmin(13));
+                    }
+
+                    @include sp {
+                        margin-top: s(60);
+                        @include column(s(5));
+                    }
+
+                    .food-img {
+                        display: flex;
+
+                        @include pc {
+                            gap: pmin(14);
+                            height: pmin(346);
+                        }
+
+                        @include sp {
+                            gap: s(5);
+                            height: s(133);
+                        }
+
+                        .img {
+                            &.img-01 {
+                                @include imgCover("guidance/guidance-contents-food-01.webp");
+                                width: calc((513 / 870) * 100%);
+                            }
+                            &.img-02 {
+                                @include imgCover("guidance/guidance-contents-food-02.webp");
+                                width: calc((342 / 870) * 100%);
+                            }
+                            &.img-03 {
+                                @include imgCover("guidance/guidance-contents-food-03.webp");
+                                width: calc((342 / 870) * 100%);
+                            }
+                            &.img-04 {
+                                @include imgCover("guidance/guidance-contents-food-04.webp");
+                                width: calc((513 / 870) * 100%);
+                            }
+                        }
+                    }
+                }
+
+                // キャラ(01,02,03,04,05,06,07,08)
+                .decoration {
+                    .char {
+                        position: absolute;
+
+                        &.char-01 {
+                            @include imgContain("guidance/guidance-contents-char-01-pc.webp");
+                            aspect-ratio: 157/174;
+                            width: pmin(157);
+                            top: -6.5%;
+                            right: 3%;
+                        }
+
+                        &.char-02 {
+                            @include imgContain("guidance/guidance-contents-char-02-pc.webp");
+                            aspect-ratio: 132/98;
+                            width: pmin(132);
+                            top: 32%;
+                            right: 20%;
+                        }
+
+                        &.char-03 {
+                            @include pc {
+                                @include imgContain("guidance/guidance-contents-char-03-pc.webp");
+                                aspect-ratio: 175/157;
+                                width: pmin(175);
+                                bottom: 31%;
+                                right: 8%;
+                            }
+
+                            @include sp {
+                                @include imgContain("guidance/guidance-contents-note-03-sp.webp");
+                                aspect-ratio: 122/134;
+                                width: s(122);
+                                bottom: 28%;
+                                right: 0%;
+                            }
+
+                            .note {
+                                @include sp {
+                                    @include imgContain("guidance/guidance-contents-char-03-sp.webp");
+                                }
+                            }
+                        }
+
+                        &.char-04 {
+                            @include pc {
+                                @include imgContain("guidance/guidance-contents-char-04-pc.webp");
+                                aspect-ratio: 251/292;
+                                width: pmin(251);
+                                top: -12%;
+                                right: 7%;
+                            }
+
+                            @include sp {
+                                @include imgContain("guidance/guidance-contents-char-04-sp.webp");
+                                aspect-ratio: 207/111;
+                                width: s(207);
+                                bottom: -50%;
+                                right: 11%;
+                            }
+
+                            .note {
+                                @include pc {
+                                    @include imgContain("guidance/guidance-contents-note-04-pc.webp");
+                                }
+
+                                @include sp {
+                                    @include imgContain("guidance/guidance-contents-note-04-sp.webp");
+                                }
+                            }
+                        }
+
+                        &.char-05 {
+                            @include pc {
+                                @include imgContain("guidance/guidance-contents-char-05-pc.webp");
+                                aspect-ratio: 163/219;
+                                width: pmin(163);
+                                top: 37%;
+                                right: 5%;
+                            }
+
+                            @include sp {
+                                @include imgContain("guidance/guidance-contents-char-05-sp.webp");
+                                aspect-ratio: 149/160;
+                                width: s(149);
+                                bottom: 0;
+                                left: 0;
+                                right: 0;
+                                margin-inline: auto;
+                            }
+                        }
+
+                        &.char-06 {
+                            @include pc {
+                                @include imgContain("guidance/guidance-contents-note-06-pc.webp");
+                                aspect-ratio: 301/210;
+                                width: pmin(301);
+                                top: 0%;
+                                right: 0%;
+                            }
+
+                            .note {
+                                @include pc {
+                                    @include imgContain("guidance/guidance-contents-char-06-pc.webp");
+                                }
+                            }
+                        }
+
+                        &.char-07 {
+                            @include pc {
+                                @include imgContain("guidance/guidance-contents-char-07.webp");
+                                aspect-ratio: 265/311;
+                                width: pmin(265);
+                                bottom: -8%;
+                                right: -3%;
+                            }
+                        }
+
+                        &.char-08 {
+                            @include sp {
+                                @include imgContain("guidance/guidance-contents-char-07.webp");
+                                aspect-ratio: 191/221;
+                                width: s(191);
+                                top: 120%;
+                                left: 15%;
+                            }
+                        }
+
+                        .note {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            top: 0;
+                            left: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,264 @@
+@use "../functions" as *;
+
+/* -----------------------
+C_about_photo
+----------------------- */
+
+.C_about_photo {
+    margin-inline: auto;
+
+    @include pc {
+        width: pmin(1366);
+    }
+
+    @include sp {
+    }
+
+    &-ttl {
+        width: 100%;
+
+        @include pc {
+            margin-bottom: pmin(92);
+        }
+
+        @include sp {
+            margin-bottom: s(40);
+        }
+
+        .TL {
+            display: flex;
+            width: 100%;
+
+            img {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+                object-position: center;
+            }
+        }
+    }
+
+    .photo-contents {
+        @include pc {
+            padding-inline: pmin(100);
+            @include column(pmin(13));
+        }
+
+        @include sp {
+            padding-inline: s(20);
+            @include column(s(5));
+        }
+
+        .img-item {
+            display: flex;
+
+            @include pc {
+                gap: pmin(13);
+            }
+
+            @include sp {
+                gap: s(5);
+            }
+
+            &:nth-child(odd) {
+                @include sp {
+                    flex-direction: column;
+                }
+
+                .img {
+                    @include pc {
+                        height: pmin(396);
+                    }
+
+                    @include sp {
+                    }
+
+                    &:nth-child(odd) {
+                        @include pc {
+                            width: pmin(632);
+                        }
+
+                        @include sp {
+                        }
+                    }
+
+                    &:nth-child(even) {
+                        @include pc {
+                            width: pmin(524);
+                        }
+
+                        @include sp {
+                        }
+                    }
+                }
+            }
+
+            &:nth-child(even) {
+                .img {
+                    @include pc {
+                        width: pmin(380);
+                        height: pmin(317);
+                    }
+
+                    @include sp {
+                    }
+                }
+            }
+
+            &:nth-child(2) {
+                @include pc {
+                    justify-content: flex-end;
+                }
+
+                @include sp {
+                }
+            }
+
+            &:nth-child(2),
+            &:nth-child(4) {
+                .img {
+                    @include sp {
+                        flex: 1;
+                    }
+                }
+            }
+
+            .img {
+                position: relative;
+
+                &.img-01 {
+                    @include imgCover("about/about_photo-img-01.webp");
+
+                    @include sp {
+                        height: s(209);
+                    }
+                }
+                &.img-02 {
+                    @include imgCover("about/about_photo-img-02.webp");
+
+                    @include sp {
+                        height: s(253);
+                    }
+                }
+                &.img-03 {
+                    @include imgCover("about/about_photo-img-03.webp");
+
+                    @include sp {
+                        height: s(136);
+                    }
+                }
+                &.img-04 {
+                    @include imgCover("about/about_photo-img-04.webp");
+
+                    @include sp {
+                        height: s(136);
+                    }
+                }
+                &.img-05 {
+                    @include imgCover("about/about_photo-img-05.webp");
+
+                    @include sp {
+                        width: s(222);
+                        height: s(141);
+                        margin-left: auto;
+                    }
+
+                    .char {
+                        position: absolute;
+                        aspect-ratio: 312/250;
+                        @include imgContain("about/about_photo-char-01.webp");
+
+                        @include pc {
+                            width: pmin(312);
+                            bottom: 100%;
+                            left: 16%;
+                        }
+
+                        @include sp {
+                            width: s(122);
+                            bottom: -5%;
+                            left: -50%;
+                        }
+                    }
+                }
+                &.img-06 {
+                    @include imgCover("about/about_photo-img-06.webp");
+
+                    @include sp {
+                        height: s(279);
+                    }
+                }
+                &.img-07 {
+                    @include imgCover("about/about_photo-img-07.webp");
+
+                    @include sp {
+                        height: s(136);
+                    }
+                }
+                &.img-08 {
+                    @include imgCover("about/about_photo-img-08.webp");
+
+                    @include sp {
+                        height: s(136);
+                    }
+                }
+                &.img-09 {
+                    @include imgCover("about/about_photo-img-09.webp");
+
+                    @include sp {
+                        height: s(167);
+                        order: 2;
+                    }
+
+                    .char {
+                        position: absolute;
+                        aspect-ratio: 333/308;
+                        @include imgContain("about/about_photo-char-03.webp");
+
+                        @include pc {
+                            width: pmin(333);
+                            top: 97%;
+                            left: 20%;
+                        }
+                    }
+                }
+                &.img-10 {
+                    @include imgCover("about/about_photo-img-10.webp");
+
+                    @include sp {
+                        width: s(224);
+                        height: s(212);
+                        order: 1;
+                    }
+
+                    .char {
+                        position: absolute;
+                        aspect-ratio: 303/288;
+                        @include imgContain("about/about_photo-char-02.webp");
+
+                        @include pc {
+                            width: pmin(303);
+                            bottom: 98%;
+                            right: 10%;
+                        }
+
+                        @include sp {
+                            width: s(128);
+                            bottom: -5%;
+                            right: -50%;
+                        }
+
+                        .note {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            @include imgContain("about/about_photo-char-02-note.webp");
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

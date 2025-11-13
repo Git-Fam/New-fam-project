@@ -1,0 +1,37 @@
+@use "../functions" as *;
+
+/* -----------------------
+C_about_overview
+----------------------- */
+
+.C_about_overview {
+    margin-inline: auto;
+    position: relative;
+
+    @include pc {
+        width: pmin(1178);
+    }
+
+    @include sp {
+        width: s(335);
+    }
+
+    &::before {
+        @include pc {
+            content: "";
+            position: absolute;
+            @include imgContain("about/about_overview-img-note.webp");
+            aspect-ratio: 341/177;
+            width: pmin(341);
+            bottom: 105%;
+            left: 10%;
+        }
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        object-position: center;
+    }
+}

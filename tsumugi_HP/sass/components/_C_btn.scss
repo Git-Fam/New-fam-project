@@ -1,0 +1,78 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_btn
+----------------------- */
+
+.C_btn {
+    display: block;
+    box-shadow: 0px 3px 6px #00000080;
+    background-color: #000;
+
+    @include pc {
+        border-radius: pmin(50);
+        min-width: pmin(279);
+    }
+
+    @include sp {
+        border-radius: s(50);
+        min-width: s(172);
+    }
+
+    &.type-02 {
+        @include sp {
+            width: s(209);
+        }
+    }
+
+    &-inner {
+        position: relative;
+
+        @include pc {
+            padding: pmin(20) pmin(70);
+        }
+
+        @include sp {
+            padding: s(15) s(40);
+        }
+
+        .TX {
+            text-align: center;
+            @include yuGothic-b;
+            letter-spacing: 0.05em;
+            color: $sub-f;
+
+            @include pc {
+                font-size: pmin(19);
+            }
+
+            @include sp {
+                font-size: s(14);
+            }
+
+            &.en {
+                @include pc {
+                    font-size: pmin(24);
+                }
+            }
+        }
+
+        .img {
+            aspect-ratio: 19/26;
+            @include iconContain($C_btn_arrow);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+
+            @include pc {
+                width: pmin(27);
+                right: pmin(32);
+            }
+
+            @include sp {
+                width: s(17);
+                right: s(17);
+            }
+        }
+    }
+}

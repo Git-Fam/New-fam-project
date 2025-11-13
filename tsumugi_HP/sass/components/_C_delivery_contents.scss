@@ -1,0 +1,266 @@
+@use "../functions" as *;
+
+/* -----------------------
+C_delivery_contents
+----------------------- */
+
+.C_delivery_contents {
+    margin-inline: auto;
+
+    img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        object-position: center;
+    }
+
+    @include pc {
+        width: pmin(1190);
+    }
+
+    @include sp {
+        width: s(335);
+    }
+
+    .delivery_contents-btn {
+        @include pc {
+            margin-bottom: pmin(159);
+        }
+
+        @include sp {
+            margin-bottom: s(133);
+        }
+
+        ul {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            @include pc {
+            }
+
+            @include sp {
+                flex-wrap: wrap;
+                row-gap: s(8);
+            }
+
+            li {
+                a {
+                    display: block;
+
+                    @include pc {
+                        width: pmin(216);
+                    }
+
+                    @include sp {
+                        width: s(160);
+                    }
+                }
+            }
+        }
+    }
+
+    .delivery_contents {
+        @include pc {
+            @include column(pmin(67));
+        }
+
+        @include sp {
+            @include column(s(140));
+        }
+
+        .item {
+            background-size: 100% 100% !important;
+            position: relative;
+
+            @include pc {
+                @include imgContain("delivery/delivery_contents-bg-01-pc.webp");
+                width: pmin(1026);
+                padding: pmin(87) pmin(88) pmin(70);
+            }
+
+            @include sp {
+                @include imgContain("delivery/delivery_contents-bg-sp.webp");
+                padding: s(46) s(31) s(34);
+            }
+
+            .item-inner {
+                .TL {
+                    display: block;
+                    width: 100%;
+
+                    @include pc {
+                        margin-bottom: pmin(33);
+                    }
+
+                    @include sp {
+                        margin-bottom: s(23);
+                    }
+                }
+
+                .img {
+                    width: 100%;
+
+                    @include pc {
+                        margin-bottom: pmin(33);
+                    }
+
+                    @include sp {
+                        margin-bottom: s(50);
+                    }
+                }
+
+                .txt {
+                    .TX {
+                        letter-spacing: 0.06em;
+                        line-height: 2;
+
+                        @include pc {
+                            font-size: pmin(17);
+                        }
+
+                        @include sp {
+                            font-size: s(17);
+                        }
+
+                        span {
+                            position: relative;
+                            z-index: 1;
+                            background: linear-gradient(
+                                to bottom,
+                                transparent 0%,
+                                transparent 70%,
+                                $sub-f 70%,
+                                $sub-f 100%
+                            );
+                        }
+                    }
+                }
+            }
+            .char {
+                position: absolute;
+
+                .note {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            &:nth-child(even) {
+                @include pc {
+                    margin-left: auto;
+                }
+            }
+
+            &:nth-child(3),
+            &:nth-child(4) {
+                @include pc {
+                    @include imgContain("delivery/delivery_contents-bg-02-pc.webp");
+                }
+            }
+
+            &:nth-child(1) {
+                .char {
+                    aspect-ratio: 335/232;
+
+                    @include pc {
+                        @include imgContain("delivery/delivery_contents-char-01-pc.webp");
+                        width: pmin(335);
+                        top: -6%;
+                        right: 15%;
+                    }
+
+                    @include sp {
+                        @include imgContain("delivery/delivery_contents-char-01-sp.webp");
+                        width: s(230);
+                        top: -9%;
+                        left: 8%;
+                    }
+                }
+            }
+
+            &:nth-child(2) {
+                .char {
+                    @include pc {
+                        aspect-ratio: 341/310;
+                        width: pmin(341);
+                        @include imgContain("delivery/delivery_contents-char-02-pc.webp");
+                        top: -17%;
+                        right: 3%;
+                    }
+
+                    @include sp {
+                        aspect-ratio: 162/112;
+                        width: s(162);
+                        @include imgContain("delivery/delivery_contents-note-02-sp.webp");
+                        top: -7%;
+                        right: 2%;
+                    }
+
+                    .note {
+                        @include pc {
+                            @include imgContain("delivery/delivery_contents-note-02-pc.webp");
+                        }
+
+                        @include sp {
+                            @include imgContain("delivery/delivery_contents-char-02-sp.webp");
+                        }
+                    }
+                }
+            }
+
+            &:nth-child(3) {
+                .char {
+                    @include pc {
+                        aspect-ratio: 456/215;
+                        width: pmin(456);
+                        @include imgContain("delivery/delivery_contents-char-03-pc.webp");
+                        top: -12%;
+                        right: 23%;
+                    }
+
+                    @include sp {
+                        aspect-ratio: 313/169;
+                        width: s(313);
+                        @include imgContain("delivery/delivery_contents-char-03-sp.webp");
+                        top: -26%;
+                        left: 0%;
+                    }
+                }
+            }
+
+            &:nth-child(4) {
+                .char {
+                    @include pc {
+                        aspect-ratio: 167/335;
+                        width: pmin(167);
+                        @include imgContain("delivery/delivery_contents-char-04-pc.webp");
+                        top: -47%;
+                        right: 11%;
+                    }
+
+                    @include sp {
+                        aspect-ratio: 214/153;
+                        width: s(214);
+                        @include imgContain("delivery/delivery_contents-char-04-sp.webp");
+                        top: -30%;
+                        right: 0%;
+                    }
+
+                    .note {
+                        @include pc {
+                            @include imgContain("delivery/delivery_contents-note-04-pc.webp");
+                        }
+
+                        @include sp {
+                            @include imgContain("delivery/delivery_contents-note-04-sp.webp");
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
