@@ -72,11 +72,19 @@
         <div class="pagination">
             <?php the_posts_pagination([
                 'mid_size' => 1,
-                'prev_text' => '« 前へ',
-                'next_text' => '次へ »',
+                'prev_text' => '　　　PREV',
+                'next_text' => 'NEXT　　　',
             ]); ?>
         </div>
 
+    </div>
+    <div class="sec-decoration">
+        <div class="img img-01 pc">
+            <div class="char"></div>
+        </div>
+        <div class="img img-02">
+            <div class="char"></div>
+        </div>
     </div>
 </main>
 

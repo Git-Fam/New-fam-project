@@ -1,0 +1,97 @@
+@use "../../functions" as *;
+
+/* -----------------------
+ delivery-page
+----------------------- */
+
+.delivery-page {
+	position: relative;
+
+	@include pc {
+		padding: pmin(102) 0 pmin(149);
+	}
+
+	@include sp {
+		padding: s(50) 0 s(255);
+	}
+
+	.sec_delivery_contents {
+	}
+
+	.sec_delivery_doctor {
+		@include pc {
+			margin-top: pmin(174);
+		}
+
+		@include sp {
+			margin-top: s(73);
+		}
+
+		.C_sec_ttl {
+			width: fit-content;
+			margin-inline: auto;
+
+			@include pc {
+				margin-bottom: pmin(71);
+			}
+
+			@include sp {
+				margin-bottom: s(42);
+			}
+		}
+	}
+
+	.sec-decoration {
+		.img {
+			position: absolute;
+
+			.char,
+			.note {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+
+			&.img-01 {
+				aspect-ratio: 359/185;
+				width: pmin(359);
+				bottom: 0;
+				left: 13%;
+
+				.char {
+					@include imgContain("char/delivery-char-01.webp");
+				}
+			}
+
+			&.img-02 {
+				@include pc {
+					aspect-ratio: 248/167;
+					width: pmin(248);
+					bottom: 0;
+					right: 14%;
+				}
+
+				@include sp {
+					aspect-ratio: 174/147;
+					width: s(174);
+					bottom: 0;
+					right: 0;
+					left: 0;
+					margin-inline: auto;
+				}
+
+				.char {
+					@include pc {
+						@include imgContain("char/delivery-char-02-pc.webp");
+					}
+
+					@include sp {
+						@include imgContain("char/delivery-char-02-sp.webp");
+					}
+				}
+			}
+		}
+	}
+}

@@ -59,10 +59,6 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff"> -->
 
-
-    <!-- ▼クロールして欲しくない -->
-    <!-- <meta name="robots" content="noindex,nofollow"> -->
-
     <!-- ▼テーマカラー -->
     <!-- <meta name="theme-color" content="#e9c931"> -->
 

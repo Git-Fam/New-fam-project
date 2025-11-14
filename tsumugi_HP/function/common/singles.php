@@ -6,9 +6,6 @@ function custom_single_template($template)
 	$new_template = '';
 
 	$single_templates = array(
-		'blog' => 'singles/single-blog.php',
-		'column' => 'singles/single-column.php',
-		// 他のカスタム投稿タイプをここに追加
 	);
 
 	foreach ($single_templates as $post_type => $template_path) {

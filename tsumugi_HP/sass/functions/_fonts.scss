@@ -1,46 +1,46 @@
 // フォント読み込み
 // YuGothicStd-B (Bold)
 @font-face {
-    font-family: "YuGothicStd";
-    src: url("../../fonts/YuGothicStd-B.otf") format("opentype");
-    font-weight: 700;
-    font-style: normal;
+	font-family: "YuGothicStd";
+	src: url("../fonts/YuGothicStd-B.otf") format("opentype");
+	font-weight: 700;
+	font-style: normal;
 }
 
 // YuGothicStd-L (Light)
 @font-face {
-    font-family: "YuGothicStd";
-    src: url("../../fonts/YuGothicStd-L.otf") format("opentype");
-    font-weight: 300;
-    font-style: normal;
+	font-family: "YuGothicStd";
+	src: url("../fonts/YuGothicStd-L.otf") format("opentype");
+	font-weight: 300;
+	font-style: normal;
 }
 
 // YuGothicStd-M (Medium)
 @font-face {
-    font-family: "YuGothicStd";
-    src: url("../../fonts/YuGothicStd-M.otf") format("opentype");
-    font-weight: 500;
-    font-style: normal;
+	font-family: "YuGothicStd";
+	src: url("../fonts/YuGothicStd-M.otf") format("opentype");
+	font-weight: 500;
+	font-style: normal;
 }
 
 // TA-mayuminwalk
 @font-face {
-    font-family: "TA-mayuminwalk";
-    src: url("../../fonts/TA-mayuminwalk.otf") format("opentype");
-    font-weight: normal;
-    font-style: normal;
+	font-family: "TA-mayuminwalk";
+	src: url("../fonts/TA-mayuminwalk.otf") format("opentype");
+	font-weight: normal;
+	font-style: normal;
 }
 
 // フォントmixin
 // YuGothicStd-B (Bold)
 @mixin yuGothic-b {
-    font-family: "YuGothicStd", "Yu Gothic", "YuGothic", sans-serif;
-    font-weight: 700;
-    font-style: normal;
+	font-family: "YuGothicStd", "Yu Gothic", "YuGothic", sans-serif;
+	font-weight: 700;
+	font-style: normal;
 }
 
 // YuGothicStd-M (Medium)
-@mixin yuGothic-m{
+@mixin yuGothic-m {
 	font-family: "YuGothicStd", "Yu Gothic", "YuGothic", sans-serif;
 	font-weight: 500;
 	font-style: normal;
@@ -48,43 +48,43 @@
 
 // YuGothicStd-L (Light)
 @mixin yuGothic-l {
-		font-family: "YuGothicStd", "Yu Gothic", "YuGothic", sans-serif;
-		font-weight: 300;
-		font-style: normal;
+	font-family: "YuGothicStd", "Yu Gothic", "YuGothic", sans-serif;
+	font-weight: 300;
+	font-style: normal;
 }
 
 // TA-mayuminwalk
 @mixin TA-mayuminwalk {
-    font-family: "TA-mayuminwalk", sans-serif;
-    font-weight: 700;
-    font-style: normal;
+	font-family: "TA-mayuminwalk", sans-serif;
+	font-weight: 700;
+	font-style: normal;
 }
 
 // font-weight:;
 @mixin wt100 {
-    font-weight: 100;
+	font-weight: 100;
 }
 @mixin wt200 {
-    font-weight: 200;
+	font-weight: 200;
 }
 @mixin wt300 {
-    font-weight: 300;
+	font-weight: 300;
 }
 @mixin wt400 {
-    font-weight: 400;
+	font-weight: 400;
 }
 @mixin wt500 {
-    font-weight: 500;
+	font-weight: 500;
 }
 @mixin wt600 {
-    font-weight: 600;
+	font-weight: 600;
 }
 @mixin wt700 {
-    font-weight: 700;
+	font-weight: 700;
 }
 @mixin wt800 {
-    font-weight: 800;
+	font-weight: 800;
 }
 @mixin wt900 {
-    font-weight: 900;
+	font-weight: 900;
 }

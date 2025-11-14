@@ -4,13 +4,12 @@
 	"singleQuote": true,
 	"printWidth": 160,
 	"tabWidth": 4,
-	"useTabs": false,
+	"useTabs": true,
 	"bracketSpacing": true,
 	"arrowParens": "avoid",
 	"endOfLine": "lf",
 	"htmlWhitespaceSensitivity": "css",
 	"insertPragma": false,
-	"jsxBracketSameLine": false,
 	"jsxSingleQuote": true,
 	"proseWrap": "preserve",
 	"quoteProps": "as-needed",
@@ -31,6 +30,20 @@
 			"options": {
 				"printWidth": 120,
 				"singleQuote": false
+			}
+		},
+		{
+			"files": "*.php",
+			"options": {
+				"printWidth": 200,
+				"tabWidth": 4,
+				"useTabs": true,
+				"parser": "php",
+				"phpVersion": "7.4",
+				"trailingCommaPHP": true,
+				"braceStyle": "psr-2",
+				"htmlWhitespaceSensitivity": "ignore",
+				"singleAttributePerLine": false
 			}
 		}
 	]

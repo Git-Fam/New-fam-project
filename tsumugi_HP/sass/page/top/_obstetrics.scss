@@ -1,0 +1,103 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  obstetrics-page
+----------------------- */
+
+.obstetrics-page {
+    position: relative;
+
+    @include pc {
+        padding: pmin(82) 0 pmin(147);
+    }
+
+    @include sp {
+        padding: s(103) 0 s(64);
+    }
+
+    .sec_obstetrics {
+        .C_sec_ttl {
+            width: fit-content;
+            margin-inline: auto;
+
+            @include pc {
+                margin-bottom: pmin(60);
+            }
+
+            @include sp {
+                margin-bottom: s(32);
+            }
+        }
+
+        .sec_txt {
+            width: fit-content;
+            margin-inline: auto;
+
+            @include pc {
+                text-align: center;
+            }
+
+            @include sp {
+                padding-inline: s(20);
+            }
+
+            .TX {
+                @include pc {
+                    letter-spacing: 0.05em;
+                    font-size: pmin(17);
+                    line-height: 3;
+                }
+
+                @include sp {
+                    font-size: s(17);
+                    line-height: 1.8;
+                }
+            }
+        }
+    }
+
+    .sec_obstetrics_detail {
+        @include pc {
+            margin-top: pmin(144);
+        }
+
+        @include sp {
+            margin-top: s(37);
+        }
+
+        .C_sec_ttl {
+            width: fit-content;
+            margin-inline: auto;
+
+            @include pc {
+                margin-bottom: pmin(64);
+            }
+
+            @include sp {
+                margin-bottom: s(37);
+            }
+        }
+    }
+
+    .sec_obstetrics_achievement {
+        @include pc {
+            margin-top: pmin(195);
+        }
+
+        @include sp {
+            margin-top: s(72);
+        }
+
+        .C_sec_ttl {
+            width: fit-content;
+            margin-inline: auto;
+
+            @include pc {
+                margin-bottom: pmin(73);
+            }
+            @include sp {
+                margin-bottom: s(44);
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  guidance-page
+----------------------- */
+.guidance-page {
+	position: relative;
+
+	@include pc {
+		padding: pmin(131) 0 pmin(161);
+	}
+
+	@include sp {
+		padding: s(60) 0 s(261);
+	}
+
+	.sec_guidance-contents {
+	}
+
+
+}

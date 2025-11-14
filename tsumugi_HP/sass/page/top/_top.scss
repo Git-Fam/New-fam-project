@@ -1,8 +1,387 @@
 @use "../../functions" as *;
 
 /* -----------------------
-  front
+  top-page
 ----------------------- */
-.aaa {
-  font-size: pmin(50);
+
+.white-sec-jaggy {
+    background-color: $sub-b;
+    &::before,
+    &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        @include imgCover("white-sec-jaggy-top.webp");
+        background-size: 100% 100% !important;
+        bottom: 100%;
+
+        @include pc {
+            height: pmin(10);
+        }
+
+        @include sp {
+            height: s(10);
+        }
+    }
+
+    &::after {
+        @include imgCover("white-sec-jaggy-bottom.webp");
+        top: 100%;
+        bottom: unset;
+    }
+}
+
+.top-page {
+    .sec_top_about {
+        position: relative;
+
+        @include pc {
+            padding: pmin(138) 0 pmin(149);
+        }
+
+        @include sp {
+            padding: s(48) 0 s(67);
+        }
+
+        .C_sec_ttl {
+            width: fit-content;
+            margin-inline: auto;
+
+            @include pc {
+                margin-bottom: pmin(61);
+            }
+
+            @include sp {
+                margin-bottom: s(41);
+            }
+        }
+    }
+
+    .sec_top_guidance {
+        background-color: $sub-b;
+        position: relative;
+
+        @include pc {
+            padding: pmin(106) 0 pmin(117);
+        }
+
+        @include sp {
+            padding: s(52) 0 s(187);
+        }
+
+        .C_sec_ttl {
+            width: fit-content;
+            margin-inline: auto;
+
+            @include pc {
+                margin-bottom: pmin(58);
+            }
+
+            @include sp {
+                margin-bottom: s(41);
+            }
+        }
+
+        .sec_txt {
+            @include pc {
+                margin-bottom: pmin(60);
+            }
+
+            @include sp {
+                margin: 0 auto s(50);
+                width: s(335);
+            }
+
+            .TX {
+                line-height: 2;
+
+                @include pc {
+                    text-align: center;
+                    letter-spacing: 0.05em;
+                    font-size: pmin(17);
+                }
+
+                @include sp {
+                    font-size: s(17);
+                }
+            }
+        }
+
+        .sec-char {
+            .char,
+            .note {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+            .char-01 {
+                @include pc {
+                    position: absolute;
+                    aspect-ratio: 200/174;
+                    width: pmin(200);
+                    top: 33.5%;
+                    right: -1%;
+                }
+
+                .char {
+                    @include imgContain("char/top-char-01.webp");
+                }
+                .note {
+                    @include imgContain("char/top-char-01-note.webp");
+                }
+            }
+            .char-02 {
+                @include pc {
+                    position: absolute;
+                    aspect-ratio: 200/273;
+                    width: pmin(200);
+                    top: 48.5%;
+                    left: -2%;
+                }
+
+                .char {
+                    @include imgContain("char/top-char-02.webp");
+                }
+                .note {
+                    @include imgContain("char/top-char-02-note.webp");
+                }
+            }
+            .char-03 {
+                @include pc {
+                    position: absolute;
+                    z-index: 3;
+                    aspect-ratio: 155/193;
+                    width: pmin(155);
+                    bottom: -1%;
+                    left: 15%;
+                }
+
+                .char {
+                    @include imgContain("char/top-char-03.webp");
+                }
+            }
+            .char-04 {
+                @include sp {
+                    position: absolute;
+                    z-index: 3;
+                    aspect-ratio: 316/161;
+                    width: s(316);
+                    bottom: -1%;
+                    left: 7%;
+                }
+
+                .char {
+                    @include imgContain("char/top-char-04.webp");
+                }
+
+                .note {
+                    @include imgContain("char/top-char-04-note.webp");
+                }
+            }
+        }
+    }
+
+    .sec_top_schedule {
+        position: relative;
+        @include pc {
+            padding: pmin(189) 0 pmin(195);
+        }
+
+        @include sp {
+            padding: s(68) 0 s(207);
+        }
+
+        .C_sec_ttl {
+            width: fit-content;
+            margin-inline: auto;
+
+            @include pc {
+                margin-bottom: pmin(60);
+            }
+
+            @include sp {
+                margin-bottom: s(50);
+            }
+        }
+
+        .sec-char {
+            .char,
+            .note {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+            .char-01 {
+                position: absolute;
+                aspect-ratio: 446/257;
+
+                @include pc {
+                    width: pmin(446);
+                    bottom: 0;
+                    right: 2%;
+                }
+
+                @include sp {
+                    width: s(311);
+                    bottom: 0;
+                    right: 12%;
+                }
+
+                .char {
+                    @include imgContain("char/top-char-05.webp");
+                }
+                .note {
+                    @include imgContain("char/top-char-05-note.webp");
+                }
+            }
+        }
+    }
+
+    .sec_top_reserve {
+        background-color: $sub-b;
+        position: relative;
+        @include pc {
+            padding: pmin(189) 0 0;
+        }
+
+        @include sp {
+            padding: s(68) 0 0;
+        }
+
+        .C_sec_ttl {
+            width: fit-content;
+            margin-inline: auto;
+
+            @include pc {
+                margin-bottom: pmin(60);
+            }
+
+            @include sp {
+                margin-bottom: s(50);
+            }
+        }
+    }
+
+    .sec_top_first-users {
+        position: relative;
+
+        @include pc {
+            padding: pmin(112) 0 0;
+        }
+
+        @include sp {
+            padding: s(74) 0 0;
+        }
+
+        .C_sec_ttl {
+            width: fit-content;
+            margin-inline: auto;
+
+            @include pc {
+                margin-bottom: pmin(44);
+            }
+            @include sp {
+                margin-bottom: s(36);
+            }
+        }
+    }
+
+    .sec_top_recruitment {
+        position: relative;
+        background-color: $sub-b;
+
+        @include pc {
+            padding: pmin(65) 0 pmin(60);
+        }
+        @include sp {
+            padding: s(61) 0 s(38);
+        }
+
+        .C_sec_ttl {
+            width: fit-content;
+            margin-inline: auto;
+
+            @include pc {
+                margin-bottom: pmin(60);
+            }
+            @include sp {
+                margin-bottom: s(50);
+            }
+        }
+    }
+
+    .sec_top_news {
+        position: relative;
+        @include pc {
+            padding: pmin(101) 0 pmin(185);
+        }
+        @include sp {
+            padding: s(55) 0 s(148);
+        }
+
+        .C_sec_ttl {
+            width: fit-content;
+            margin-inline: auto;
+
+            @include pc {
+                margin-bottom: pmin(51);
+            }
+            @include sp {
+                margin-bottom: s(37);
+            }
+        }
+    }
+
+    .sec_top_access {
+        position: relative;
+        background-color: $sub-b;
+
+        @include pc {
+            padding: pmin(99) 0 pmin(60);
+        }
+        @include sp {
+            padding: s(60) 0 s(118);
+        }
+
+        .C_sec_ttl {
+            width: fit-content;
+            margin-inline: auto;
+
+            @include pc {
+                margin-bottom: pmin(78);
+            }
+            @include sp {
+                margin-bottom: s(50);
+            }
+        }
+    }
+
+    .sec_top_contact {
+        position: relative;
+        @include pc {
+            padding: pmin(189) 0 0;
+        }
+
+        @include sp {
+            padding: s(68) 0 0;
+        }
+
+        .C_sec_ttl {
+            width: fit-content;
+            margin-inline: auto;
+
+            @include pc {
+                margin-bottom: pmin(60);
+            }
+            @include sp {
+                margin-bottom: s(50);
+            }
+        }
+    }
 }

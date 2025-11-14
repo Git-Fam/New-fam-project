@@ -1,0 +1,92 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  about-page
+----------------------- */
+
+.about-page {
+    .sec_about_greet {
+        position: relative;
+
+        @include pc {
+            padding: pmin(134) 0 pmin(265);
+        }
+
+        @include sp {
+            padding: s(52) 0 s(67);
+        }
+
+        .C_sec_ttl {
+            width: fit-content;
+            margin-inline: auto;
+
+            @include pc {
+                margin-bottom: pmin(61);
+            }
+
+            @include sp {
+                margin-bottom: s(53);
+            }
+        }
+    }
+
+    .sec_about_introduction {
+        position: relative;
+
+        @include pc {
+            padding: pmin(150) 0 pmin(158);
+        }
+
+        @include sp {
+            padding: s(65) 0 s(83);
+        }
+
+        .C_sec_ttl {
+            width: fit-content;
+            margin-inline: auto;
+
+            @include pc {
+                margin-bottom: pmin(57);
+            }
+            @include sp {
+                margin-bottom: s(41);
+            }
+        }
+    }
+
+    .sec_about_photo {
+        position: relative;
+
+        @include pc {
+            padding: 0 0 pmin(296);
+        }
+
+        @include sp {
+            padding: 0 0 s(52);
+        }
+    }
+
+    .sec_about_overview {
+        position: relative;
+
+        @include pc {
+            padding: pmin(79) 0 pmin(122);
+        }
+
+        @include sp {
+            padding: s(52) 0 s(80);
+        }
+
+        .C_sec_ttl {
+            width: fit-content;
+            margin-inline: auto;
+
+            @include pc {
+                margin-bottom: pmin(107);
+            }
+            @include sp {
+                margin-bottom: s(35);
+            }
+        }
+    }
+}

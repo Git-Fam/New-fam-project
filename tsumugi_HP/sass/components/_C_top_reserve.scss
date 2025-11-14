@@ -34,6 +34,10 @@
                 @include sp {
                     font-size: s(17);
                 }
+
+                span {
+                    background: linear-gradient(to bottom, transparent 0%, transparent 70%, #f4d7c2 70%, #f4d7c2 100%);
+                }
             }
         }
 
@@ -171,6 +175,11 @@
                 &:nth-child(2) {
                     @include pc {
                         @include imgContain("TOP/top_reserve-char-02-2-pc.webp");
+                        aspect-ratio: 142/152;
+                        width: pmin(142);
+                        bottom: -40%;
+                        top: unset;
+                        left: 83%;
                     }
                 }
             }
