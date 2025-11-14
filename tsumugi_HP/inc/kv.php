@@ -225,7 +225,7 @@
 <?php endif; ?>
 
 <!-- contact -->
-<?php if (is_page('contact')): ?>
+<?php if (is_page('contact') || is_page('complete')): ?>
 <section class="KV-other">
     <div class="C_KV-title type-01">
         <div class="icon icon-08"></div>

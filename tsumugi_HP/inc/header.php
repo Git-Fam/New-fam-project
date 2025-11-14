@@ -123,7 +123,7 @@
                                         </a>
                                     </li>
                                     <li class="lists-item pc">
-                                        <a class="hover-opa" href="#">
+                                        <a class="hover-opa" href="<?php echo home_url(); ?>/standard">
                                             <div class="icon"></div>
                                             <p class="TX">施設基準</p>
                                         </a>
