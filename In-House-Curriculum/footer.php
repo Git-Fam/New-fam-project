@@ -20,8 +20,11 @@
 <?php endif; ?>
 
 <?php if (is_single()) : ?>
+
   <script src="<?php echo get_template_directory_uri(); ?>/js/single.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/js/single-2.js"></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/no-copy.js"></script>
+
 <?php endif; ?>
 
 <?php if (is_front_page()) : ?>

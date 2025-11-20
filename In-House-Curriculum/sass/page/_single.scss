@@ -28,7 +28,12 @@
 
   & pre,
   & code,
-  .hcb-clipboard {
+  & button,
+  & iframe,
+  .mejs-mediaelement,
+  .hcb-clipboard,
+  .hdq_quiz_wrapper,
+  .close-area {
     user-select: text !important;
     -webkit-user-select: text !important;
     pointer-events: auto !important;
