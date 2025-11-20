@@ -1,0 +1,94 @@
+@use "../global" as *;
+
+/* -----------------------
+  terms
+----------------------- */
+
+.terms {
+  padding: 100px 0;
+
+  .terms-inner {
+    background-color: #FFF;
+    width: min(90%, 900px);
+    margin: 0 auto;
+    padding: 60px 50px 80px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    color: #202020;
+    @include kavoon;
+    line-height: 1.5;
+
+    @include sp {
+      padding-inline: 20px;
+    }
+
+    .terms--contents {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+
+      .terms--sec {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .TL {
+          font-size: 16px;
+          font-weight: 700;
+        }
+
+        .TX,
+        li::marker {
+          font-size: 14px;
+          font-weight: 400;
+        }
+
+        ol,
+        ul {
+          padding-left: 3em;
+        }
+
+        ol {
+
+          li {
+            list-style: decimal;
+            list-style-type: decimal;
+          }
+        }
+
+        ul {
+
+          li {
+            list-style: disc;
+            list-style-type: disc;
+          }
+        }
+
+        .terms--sec--ttl {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+
+          .TL {
+            text-align: center;
+            font-size: 24px;
+            white-space: pre-wrap;
+            word-break: keep-all;
+          }
+        }
+
+        .terms--sec--txt {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+
+          &--contents {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+          }
+        }
+      }
+    }
+  }
+}

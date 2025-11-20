@@ -191,6 +191,9 @@
 				<a href="<?php bloginfo('url'); ?>/aptitude-start" class="btn bottom-btn">
 					<p class="TX">適性検査</p>
 				</a>
+				<a href="<?php bloginfo('url'); ?>/terms" class="btn terms-btn">
+					<p class="TX">利用規約</p>
+				</a>
 			</div>
 		</section>
 	</div>
