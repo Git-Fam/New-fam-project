@@ -39,26 +39,56 @@ add_action('save_post', 'save_quiz_checkbox_meta');
 
 function ajax_set_progress_100()
 {
-    if (!is_user_logged_in()) wp_send_json_error('ログインしていません');
-
-    $user_id = get_current_user_id();
-    $tag_slug = sanitize_text_field($_POST['tag_slug']);
-
-    // 進捗保存
-    update_user_meta($user_id, $tag_slug, 100);
-    update_user_meta($user_id, 'last_progress_key', $tag_slug);
+    // 出力バッファリングを開始（予期しない出力を防ぐ）
+    ob_start();
     
-    // 完了日を保存（初回のみ）
-    $completion_date_key = $tag_slug . '_date';
-    if (!get_user_meta($user_id, $completion_date_key, true)) {
-        update_user_meta($user_id, $completion_date_key, current_time('mysql'));
+    // エラー出力を抑制（JSONレスポンスを壊さないため）
+    $previous_error_reporting = error_reporting(0);
+    
+    try {
+        if (!is_user_logged_in()) {
+            ob_end_clean();
+            wp_send_json_error('ログインしていません');
+            return;
+        }
+
+        if (!isset($_POST['tag_slug']) || empty($_POST['tag_slug'])) {
+            ob_end_clean();
+            wp_send_json_error('tag_slugが指定されていません');
+            return;
+        }
+
+        $user_id = get_current_user_id();
+        $tag_slug = sanitize_text_field($_POST['tag_slug']);
+
+        // 進捗保存
+        update_user_meta($user_id, $tag_slug, 100);
+        update_user_meta($user_id, 'last_progress_key', $tag_slug);
+        
+        // 完了日を保存（初回のみ）
+        $completion_date_key = $tag_slug . '_date';
+        if (!get_user_meta($user_id, $completion_date_key, true)) {
+            update_user_meta($user_id, $completion_date_key, current_time('mysql'));
+        }
+
+        // 紙吹雪フラグ
+        if (session_status() === PHP_SESSION_NONE) session_start();
+        $_SESSION['confetti_show'] = 1;
+
+        // 出力バッファをクリア（予期しない出力を削除）
+        ob_end_clean();
+        
+        // エラー報告レベルを復元
+        error_reporting($previous_error_reporting);
+        
+        wp_send_json_success('進捗を100にしました');
+        
+    } catch (Exception $e) {
+        ob_end_clean();
+        error_reporting($previous_error_reporting);
+        error_log("ajax_set_progress_100 Exception: " . $e->getMessage());
+        wp_send_json_error('エラーが発生しました: ' . $e->getMessage());
     }
-
-    // 紙吹雪フラグ
-    if (session_status() === PHP_SESSION_NONE) session_start();
-    $_SESSION['confetti_show'] = 1;
-
-    wp_send_json_success('進捗を100にしました');
 }
 add_action('wp_ajax_set_progress_100', 'ajax_set_progress_100');
 
