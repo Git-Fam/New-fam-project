@@ -45,6 +45,18 @@ if ($categories) {
     $current_post_id = get_the_ID();
     $my_index = array_search($current_post_id, $post_ids);
 
+    $prev_post_id = null;
+    $next_post_id = null;
+
+    if ($my_index !== false) {
+        if ($my_index > 0) {
+            $prev_post_id = $post_ids[$my_index - 1];
+        }
+        if ($my_index < count($post_ids) - 1) {
+            $next_post_id = $post_ids[$my_index + 1];
+        }
+    }
+
     // ★ storyの進捗は持たず、「直前の非story記事が未完了ならロック」
     if ($my_index !== false && $my_index > 0) {
         for ($i = $my_index - 1; $i >= 0; $i--) {
@@ -100,24 +112,19 @@ get_header();
 
             <!-- 前の記事へ -->
             <div class="single--link--text">
-                <?php
-                $prev_post = get_adjacent_post(true, '', false, 'category');
-                if (!empty($prev_post)): ?>
-                    <a href="<?php echo get_permalink($prev_post->ID); ?>">前の記事へ</a>
-                <?php endif; ?>
+            <?php if ($prev_post_id): ?>
+                <a href="<?php echo get_permalink($prev_post_id); ?>">前の記事へ</a>
+            <?php endif; ?>
             </div>
 
             <!-- 次の記事へ：完了済みのときのみ表示（非表示で出しておく） -->
+            <div class="single--link--text">
             <?php
-            // ★ story記事の場合は「次の記事」ボタン常に表示
-            $next_post = get_adjacent_post(true, '', true, 'category');
-            $next_post_url = $next_post ? get_permalink($next_post->ID) : '';
-            if (!empty($next_post)): ?>
-                <div class="single--link--text next-post-link" style="<?php echo (!$is_story && !$is_complete) ? 'display:none;' : ''; ?>">
-                    <a href="<?php echo esc_url($next_post_url); ?>">次の記事へ</a>
-                </div>
+            $next_post_url = $next_post_id ? get_permalink($next_post_id) : '';
+             if ($next_post_id): ?>
+                <a href="<?php echo esc_url($next_post_url); ?>">次の記事へ</a>
             <?php endif; ?>
-
+            </div>
             <!-- MAPへ戻る -->
             <div class="single--link--text">
                 <?php
@@ -169,11 +176,9 @@ get_header();
                 <div class="single-nation">
                     <!-- 前の記事 -->
                     <div class="single-nation-text">
-                        <?php
-                        $prev_post = get_adjacent_post(true, '', false, 'category');
-                        if (!empty($prev_post)): ?>
-                            <a href="<?php echo get_permalink($prev_post->ID); ?>">前の記事へ</a>
-                        <?php endif; ?>
+                    <?php if ($prev_post_id): ?>
+                        <a href="<?php echo get_permalink($prev_post_id); ?>">前の記事へ</a>
+                    <?php endif; ?>
                     </div>
 
                     <!-- MAP -->
@@ -182,7 +187,7 @@ get_header();
                     </div>
 
                     <!-- 次の記事へ：完了済みのときのみ表示 -->
-                    <?php if (!empty($next_post)): ?>
+                    <?php if ($next_post_id): ?>
                         <div class="single-nation-text next-post-link" style="<?php echo (!$is_story && !$is_complete) ? 'display:none;' : ''; ?>">
                             <a href="<?php echo esc_url($next_post_url); ?>">次の記事へ</a>
                         </div>
