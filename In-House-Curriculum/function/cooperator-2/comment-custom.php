@@ -211,14 +211,10 @@ function add_title_to_admin_reply_form() {
                 contentType: false,
                 processData: false,
                 success: function(response) {
-                    if (response.success) {
-                        console.log('Reply title saved successfully.', response);
-                    } else {
-                        console.error('Error in saving reply title:', response.data);
-                    }
+                    // 成功時は何もしない
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    console.error('Error in saving reply title:', textStatus, errorThrown);
+                    // エラー時もコンソール出力しない
                 }
             });
         });

@@ -295,6 +295,7 @@ $(function () {
 
 		// 新しくactiveになったカテゴリーに対してキャラクターを再描画
 		displayCharacters();
+		history.pushState(null, "", "?category=" + encodeURIComponent(categoryClass));
 	});
 	// MutationObserver のセットアップ（タブ切り替えの要素追加を監視）
 	const observer = new MutationObserver((mutationsList, observer) => {

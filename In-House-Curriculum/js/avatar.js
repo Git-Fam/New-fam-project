@@ -1,8 +1,7 @@
 $(function () {
 	// エラーハンドリングを追加
 	window.addEventListener("error", function (e) {
-		console.log("JavaScript error caught:", e.error);
-		// エラーをログに記録するが、処理は継続
+		// エラーを捕捉するがコンソール出力は行わない
 	});
 
 	// 現在選択されているアバターの情報を保存する変数
@@ -10,7 +9,6 @@ $(function () {
 
 	// カテゴリータブ切り替え(スキン編集画面)
 	$(document).on("click", ".category__list__items li", function () {
-		console.log("Category tab clicked:", $(this).text());
 		$(".category__list__items li").removeClass("active");
 		$(this).addClass("active");
 
@@ -37,7 +35,6 @@ $(function () {
 
 	// タグタブ切り替え(スキン編集画面)
 	$(document).on("click", ".tag__list__items li .tag__item", function () {
-		console.log("Tag tab clicked:", $(this).text());
 		$(".tag__list__items li .tag__item").removeClass("active");
 		$(this).addClass("active");
 
@@ -67,21 +64,12 @@ $(function () {
 
 	// クリックでimgを変更（着せ替え）
 	$(document).on("change", "input.category-tag__item--wrap", function () {
-		console.log("=== Input change event triggered ===");
-		console.log("this:", this);
-		console.log('$(this).attr("name"):', $(this).attr("name"));
-		console.log("$(this).val():", $(this).val());
 
 		var name = $(this).attr("name");
 		var thumbnailUrl = $(this).closest("li").find("img").attr("src");
 		var value = $(this).val();
 		var category = name.replace("selected_items-", "");
 
-		console.log("=== Input change event ===");
-		console.log("name:", name);
-		console.log("thumbnailUrl:", thumbnailUrl);
-		console.log("value:", value);
-		console.log("category:", category);
 
 		// 現在の状態をスタックにプッシュ
 		pushAction({
@@ -96,18 +84,8 @@ $(function () {
 			$controlWrap.hasClass("active") &&
 			$controlWrap.prevAll(".control__list__wrap").length === 0;
 
-		console.log("isAvatar:", isAvatar);
-		console.log(
-			'$controlWrap.hasClass("active"):',
-			$controlWrap.hasClass("active")
-		);
-		console.log(
-			'$controlWrap.prevAll(".control__list__wrap").length:',
-			$controlWrap.prevAll(".control__list__wrap").length
-		);
 
 		if (isAvatar) {
-			console.log("Processing as avatar");
 			// アバターの場合はselected_items-character-characterクラスを更新
 			$(".selected_items-character-character").attr("src", thumbnailUrl);
 
@@ -133,12 +111,9 @@ $(function () {
 				aspectRatio: aspectRatio,
 				style: avatarStyle,
 			};
-			console.log("currentSelectedAvatar updated:", currentSelectedAvatar);
 			// hidden inputを更新
 			$("#selected_avatar_input").val(value);
-			console.log("selected_avatar input updated:", value);
 		} else {
-			console.log("Processing as item");
 			// アバターのカテゴリー名（normal等）の場合はスキップ
 			var $avatarCategories = $(".control__list__wrap")
 				.first()
@@ -157,7 +132,6 @@ $(function () {
 			});
 
 			if (isAvatarCategory) {
-				console.log("Skipping avatar category:", category);
 				return; // アバターカテゴリーの場合はスキップ
 			}
 
@@ -191,14 +165,7 @@ $(function () {
 			if (currentSelectedAvatar) {
 				var avatarId = currentSelectedAvatar.id;
 				var avatarItemStyles = getAvatarItemStyles(avatarId);
-				console.log("Avatar ID:", avatarId);
-				console.log("Avatar Item Styles:", avatarItemStyles);
-				console.log("Item ID:", value.split("-").pop());
 				if (avatarItemStyles && avatarItemStyles[value.split("-").pop()]) {
-					console.log(
-						"Applying avatar-specific style:",
-						avatarItemStyles[value.split("-").pop()]
-					);
 					styleAttr += avatarItemStyles[value.split("-").pop()];
 				}
 			}
@@ -233,13 +200,6 @@ $(function () {
 
 	// input要素の::beforeがある場合の処理
 	$(document).on("change", "input.category-tag__item--wrap", function () {
-		console.log("=== Purchase dialog change event triggered ===");
-		console.log("this:", this);
-		console.log('$(this).is(":checked"):', $(this).is(":checked"));
-		console.log(
-			'$(this).siblings(".nothing-item").hasClass("active"):',
-			$(this).siblings(".nothing-item").hasClass("active")
-		);
 
 		var paymentType = $(this).closest("li").find(".payment_type").text();
 		var thumbnailUrl = $(this).closest("li").find("img").attr("src"); // 画像のURLを取得
@@ -247,12 +207,6 @@ $(function () {
 		var name = $(this).attr("name");
 		var price = $(this).closest("li").find(".price").text();
 
-		console.log("=== Purchase dialog change event ===");
-		console.log("paymentType:", paymentType);
-		console.log("thumbnailUrl:", thumbnailUrl);
-		console.log("tag:", tag);
-		console.log("name:", name);
-		console.log("price:", price);
 
 		// 現在の状態をスタックにプッシュ
 		pushAction({
@@ -266,44 +220,20 @@ $(function () {
 			$(this).is(":checked") &&
 			!$(this).siblings(".nothing-item").hasClass("active")
 		) {
-			console.log("=== Showing purchase dialog ===");
-			console.log(
-				"Dialog element exists:",
-				$(".display__character__serif").length
-			);
-			console.log(
-				"Dialog current classes:",
-				$(".display__character__serif").attr("class")
-			);
 			$(".display__character__serif").removeClass("none");
-			console.log(
-				"Dialog classes after removing none:",
-				$(".display__character__serif").attr("class")
-			);
 			$(".item__cost .icon").removeClass("coin point").addClass(paymentType); // 以前のクラスを削除してから追加
 			$(".item__cost .TX").text(price); // 価格を設定
 			$(".item__img").attr("src", thumbnailUrl); // 画像のURLを設定
 			if (tag) {
 				$(".character__" + tag).attr("src", thumbnailUrl); // タグに対応する画像のURLを設定
 			}
-
-			console.log("=== Purchase dialog updated ===");
-			console.log("Cost display:", $(".item__cost .TX").text());
-			console.log("Payment type class:", $(".item__cost .icon").attr("class"));
-			console.log("Exchange button exists:", $(".buttons.exchange").length);
-			console.log(
-				"Exchange button disabled:",
-				$(".buttons.exchange").prop("disabled")
-			);
 		} else if (
 			$(this).is(":checked") &&
 			$(this).siblings(".nothing-item").hasClass("active")
 		) {
 			// 所持しているアイテムの場合は購入ダイアログを非表示
-			console.log("=== Item already owned, hiding purchase dialog ===");
 			$(".display__character__serif").addClass("none");
 		} else {
-			console.log("=== Hiding purchase dialog ===");
 			$(".display__character__serif").addClass("none");
 			$(".item__cost .icon").removeClass("coin point"); // すべてのクラスを削除
 			$(".item__cost .TX").text(""); // 価格をクリア
@@ -397,10 +327,6 @@ $(function () {
 			};
 			// hidden inputを更新
 			$("#selected_avatar_input").val(selectedAvatar);
-			console.log(
-				"selected_avatar input updated in updateCharacterDisplay:",
-				selectedAvatar
-			);
 		} else {
 			// アバターが選択されていない場合はデフォルト画像に戻す
 			var defaultAvatarUrl =
@@ -483,14 +409,7 @@ $(function () {
 			if (currentSelectedAvatar) {
 				var avatarId = currentSelectedAvatar.id;
 				var avatarItemStyles = getAvatarItemStyles(avatarId);
-				console.log("Avatar ID:", avatarId);
-				console.log("Avatar Item Styles:", avatarItemStyles);
-				console.log("Item ID:", itemId);
 				if (avatarItemStyles && avatarItemStyles[itemId]) {
-					console.log(
-						"Applying avatar-specific style:",
-						avatarItemStyles[itemId]
-					);
 					styleAttr += avatarItemStyles[itemId];
 				}
 			}
@@ -515,8 +434,6 @@ $(function () {
 
 	// アバター別のアイテムスタイルを取得する関数
 	function getAvatarItemStyles(avatarId) {
-		console.log("Getting avatar item styles for avatar ID:", avatarId);
-
 		// 現在選択されているアバターのinputから直接取得
 		var $currentAvatarInput = $(
 			'input[value="' + currentSelectedAvatar.value + '"]'
@@ -526,10 +443,6 @@ $(function () {
 				.closest("li")
 				.find(".avatar-item-styles")
 				.text();
-			console.log(
-				"Raw avatar item styles data from current avatar:",
-				avatarItemStylesData
-			);
 			if (
 				avatarItemStylesData &&
 				avatarItemStylesData !== "null" &&
@@ -537,30 +450,20 @@ $(function () {
 			) {
 				try {
 					var parsedStyles = JSON.parse(avatarItemStylesData);
-					console.log(
-						"Parsed avatar item styles from current avatar:",
-						parsedStyles
-					);
 					return parsedStyles;
 				} catch (e) {
-					console.log(
-						"Failed to parse avatar item styles from current avatar:",
-						e
-					);
-					console.log("Raw data:", avatarItemStylesData);
+					// パース失敗時は何もしない
 				}
 			}
 		}
 
 		// フォールバック: アバターIDで検索
 		var $avatarInput = $('input[value*="-' + avatarId + '"]').first();
-		console.log("Found avatar input by ID:", $avatarInput.length > 0);
 		if ($avatarInput.length > 0) {
 			var avatarItemStylesData = $avatarInput
 				.closest("li")
 				.find(".avatar-item-styles")
 				.text();
-			console.log("Raw avatar item styles data by ID:", avatarItemStylesData);
 			if (
 				avatarItemStylesData &&
 				avatarItemStylesData !== "null" &&
@@ -568,11 +471,9 @@ $(function () {
 			) {
 				try {
 					var parsedStyles = JSON.parse(avatarItemStylesData);
-					console.log("Parsed avatar item styles by ID:", parsedStyles);
 					return parsedStyles;
 				} catch (e) {
-					console.log("Failed to parse avatar item styles by ID:", e);
-					console.log("Raw data:", avatarItemStylesData);
+					// パース失敗時は何もしない
 				}
 			}
 		}
@@ -582,36 +483,6 @@ $(function () {
 
 	// ページ読み込み時に実行
 	$(document).ready(function () {
-		console.log("=== Page loaded ===");
-		console.log("Exchange button exists:", $(".buttons.exchange").length);
-		console.log("Exchange button HTML:", $(".buttons.exchange").html());
-
-		// メガネの要素を確認
-		console.log("=== Glasses elements debug ===");
-		$('input[name="selected_items-glasses"]').each(function (index) {
-			console.log("Glasses element " + index + ":");
-			console.log("  value:", $(this).val());
-			console.log("  price:", $(this).closest("li").find(".price").text());
-			console.log(
-				"  payment_type:",
-				$(this).closest("li").find(".payment_type").text()
-			);
-			console.log("  checked:", $(this).is(":checked"));
-		});
-
-		// 帽子の要素も確認（比較用）
-		console.log("=== Hat elements debug ===");
-		$('input[name="selected_items-hat"]').each(function (index) {
-			console.log("Hat element " + index + ":");
-			console.log("  value:", $(this).val());
-			console.log("  price:", $(this).closest("li").find(".price").text());
-			console.log(
-				"  payment_type:",
-				$(this).closest("li").find(".payment_type").text()
-			);
-			console.log("  checked:", $(this).is(":checked"));
-		});
-
 		// デフォルトのアバター情報を設定
 		var defaultAvatarInput = $('input[value*="normal-7547"]').first();
 		if (defaultAvatarInput.length > 0) {
@@ -662,9 +533,6 @@ $(function () {
 
 	// 交換するボタンのクリックイベント
 	$(document).on("click", ".buttons.exchange", function () {
-		console.log("=== Exchange button clicked (document.on) ===");
-		console.log("Exchange button element:", this);
-
 		// 未所持かつ選択中のinputを探す
 		var $checkedInput = $("input.category-tag__item--wrap:checked").filter(
 			function () {
@@ -682,51 +550,19 @@ $(function () {
 		var costText = $checkedInput.closest("li").find(".price").text();
 		var cost = parseInt(costText, 10);
 
-		console.log("=== Exchange button clicked ===");
-		console.log("paymentType:", paymentType);
-		console.log("costText:", costText);
-		console.log("cost:", cost);
-		console.log("selectedItem:", selectedItem);
-		console.log("user_id:", user_id);
-		console.log("ajaxurl:", ajaxurl);
-
-		// デバッグ: チェックされている要素の詳細を確認
-		console.log("=== Checked elements debug ===");
-		$checkedInput.each(function (index) {
-			console.log("Checked element " + index + ":");
-			console.log("  name:", $(this).attr("name"));
-			console.log("  value:", $(this).val());
-			console.log(
-				"  category:",
-				$(this).attr("name").replace("selected_items-", "")
-			);
-			console.log("  price:", $(this).closest("li").find(".price").text());
-			console.log(
-				"  payment_type:",
-				$(this).closest("li").find(".payment_type").text()
-			);
-			console.log(
-				"  is_owned:",
-				$(this).siblings(".nothing-item").hasClass("active")
-			);
-		});
-
 		// コストが無効な場合はエラー
 		if (isNaN(cost) || cost <= 0) {
-			console.error("Invalid cost:", cost);
 			alert("価格が正しく設定されていません。");
 			return;
 		}
 
 		// 選択されたアイテムがない場合はエラー
 		if (!selectedItem) {
-			console.error("No item selected");
 			alert("アイテムが選択されていません。");
 			return;
 		}
 
 		if (confirm("本当に交換しますか？")) {
-			console.log("=== Sending AJAX request ===");
 			$.ajax({
 				url: ajaxurl, // WordPressのAjax URL
 				type: "POST",
@@ -739,7 +575,6 @@ $(function () {
 					selected_item: selectedItem, // 選択されたアイテム
 				},
 				success: function (response) {
-					console.log("AJAX success response:", response);
 					if (response.success) {
 						alert("交換が成功しました！");
 						location.reload(); // ページをリロードして最新の情報を表示
@@ -748,7 +583,6 @@ $(function () {
 					}
 				},
 				error: function (xhr, status, error) {
-					console.log("AJAX error:", xhr, status, error);
 					alert("通信エラーが発生しました: " + error);
 				},
 			});

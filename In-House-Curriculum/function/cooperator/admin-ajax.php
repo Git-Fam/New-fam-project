@@ -51,16 +51,12 @@ function exchange_item()
         wp_send_json_error('無効な支払いタイプです。');
     }
 
-    // アイテムタイプを判定
-    $item_parts = explode('-', $selected_item);
-    $category = $item_parts[0];
-    $is_avatar = is_avatar_category($category);
+    // フロントから送られてきた item_type をそのまま使う
+    $item_type = sanitize_text_field($_POST['item_type'] ?? 'item');
 
-    error_log('category: ' . $category);
-    error_log('is_avatar: ' . ($is_avatar ? 'true' : 'false'));
+    error_log('item_type: ' . $item_type);
 
-    // 購入したアイテムを所持一覧に追加
-    add_purchased_item($user_id, $is_avatar ? 'avatar' : 'item', $selected_item);
+    add_purchased_item($user_id, $item_type, $selected_item);
 
     error_log('=== exchange_item() completed ===');
     wp_send_json_success('購入が完了しました');
@@ -266,3 +262,4 @@ function handle_consume_points()
     }
 }
     
+

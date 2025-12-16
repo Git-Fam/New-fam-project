@@ -65,12 +65,45 @@ add_action('edit_user_profile_update', 'save_user_avatar_items_field');
 
 function save_user_avatar_items_field($user_id)
 {
-    if (current_user_can('edit_user', $user_id)) {
-        if (isset($_POST['owned_avatars'])) {
-            update_user_meta($user_id, 'owned_avatars', sanitize_textarea_field($_POST['owned_avatars']));
+    if (!current_user_can('edit_user', $user_id)) {
+        return;
+    }
+
+    // --- 所持アバター ---
+    if (array_key_exists('owned_avatars', $_POST)) {
+        $raw = wp_unslash($_POST['owned_avatars']);
+
+        // 空にされた場合は「全削除」
+        if ($raw === '') {
+            update_user_meta($user_id, 'owned_avatars', wp_json_encode([]));
+        } else {
+            $decoded = json_decode($raw, true);
+            if (is_array($decoded)) {
+                update_user_meta(
+                    $user_id,
+                    'owned_avatars',
+                    wp_json_encode($decoded, JSON_UNESCAPED_UNICODE)
+                );
+            }
         }
-        if (isset($_POST['owned_items'])) {
-            update_user_meta($user_id, 'owned_items', sanitize_textarea_field($_POST['owned_items']));
+    }
+
+    // --- 所持アイテム ---
+    if (array_key_exists('owned_items', $_POST)) {
+        $raw = wp_unslash($_POST['owned_items']);
+
+        // 空にされた場合は「全削除」
+        if ($raw === '') {
+            update_user_meta($user_id, 'owned_items', wp_json_encode([]));
+        } else {
+            $decoded = json_decode($raw, true);
+            if (is_array($decoded)) {
+                update_user_meta(
+                    $user_id,
+                    'owned_items',
+                    wp_json_encode($decoded, JSON_UNESCAPED_UNICODE)
+                );
+            }
         }
     }
 }

@@ -64,7 +64,6 @@ if ($last_progress_key) {
     }
 }
 
-
 $last_post_progress = [];
 
 // $users ループはこれだけでOK！
@@ -103,6 +102,7 @@ foreach ($users as $user) {
             }
         }
     }
+
 
     // キャラクターHTML生成
     ob_start();
