@@ -498,7 +498,6 @@ $(function () {
 			};
 		}
 
-		updateCharacterDisplay();
 	});
 
 	// ラジオボタンのチェック解除時の処理

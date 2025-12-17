@@ -32,8 +32,8 @@ foreach ($categories as $category) {
 
         if (!is_wp_error($post_tags) && !empty($post_tags)) {
             foreach ($post_tags as $tag) {
-                if ($tag->slug === 'story') {
-                    continue; // storyタグはスキップ
+                if (in_array($tag->slug, ['story', 'movie'], true)) {
+                    continue; // story / movie タグはスキップ
                 }
                 // タグのスラッグ名を変数名として使用（小文字に統一）
                 $var_name = $tag->slug . '_value';
@@ -333,8 +333,8 @@ get_header();
                                                         if (!is_wp_error($post_tags) && !empty($post_tags)) {
                                                             foreach ($post_tags as $tag) {
                                                                 // タグのスラッグに対応する変数名を生成
-                                                                if ($tag->slug === 'story') {
-                                                                    continue; // storyタグはスキップ
+                                                                if (in_array($tag->slug, ['story', 'movie'], true)) {
+                                                                    continue; // story / movie タグはスキップ
                                                                 }
 
                                                                 $var_name = $tag->slug . '_value';
