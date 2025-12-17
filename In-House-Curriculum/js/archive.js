@@ -293,6 +293,20 @@ $(function () {
 		const categoryClass = $(this).find(".TX").text();
 		$(".archive--contents--items--wap." + categoryClass).addClass("active");
 
+		// ---- page-section をリセットし、最初に存在するページを表示 ----
+		const $activeCategory = $(".archive--contents--items--wap.active");
+		if ($activeCategory.length) {
+			$activeCategory.find(".page-section").removeClass("show");
+
+			// page1 があれば page1、なければ最初に存在する page-section を表示
+			const $page1 = $activeCategory.find(".page1");
+			if ($page1.length) {
+				$page1.addClass("show");
+			} else {
+				$activeCategory.find(".page-section").first().addClass("show");
+			}
+		}
+
 		// 新しくactiveになったカテゴリーに対してキャラクターを再描画
 		displayCharacters();
 		history.pushState(null, "", "?category=" + encodeURIComponent(categoryClass));
