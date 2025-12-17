@@ -1155,6 +1155,7 @@
                 }
 
                 &.me {
+                  z-index: 100;
                   animation: floating-y 2s ease-in-out infinite alternate-reverse;
 
                   @keyframes floating-y {

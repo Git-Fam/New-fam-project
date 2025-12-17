@@ -4,11 +4,24 @@ if (!is_user_logged_in()) {
     exit;
 }
 
+
 function is_valid_role($user_id) {
     $user = get_userdata($user_id);
-    return in_array('subscriber', (array) $user->roles, true);
+    $user_roles = (array) $user->roles;
+    
+    // 【1209修正箇所】進捗集計の対象とすべきロールの配列を定義
+    // 'subscriber' (購読者) と 'administrator' (管理者) を含める
+    $valid_roles = ['subscriber', 'administrator']; 
+    
+    // ユーザーが持つロールのいずれかが $valid_roles に含まれていれば true
+    foreach ($valid_roles as $valid_role) {
+        if (in_array($valid_role, $user_roles, true)) {
+            return true;
+        }
+    }
+    
+    return false;
 }
-
 
 get_header();
 
@@ -64,6 +77,7 @@ if ($last_progress_key) {
     }
 }
 
+
 $last_post_progress = [];
 
 // $users ループはこれだけでOK！
@@ -76,8 +90,9 @@ foreach ($users as $user) {
     // 進捗データ格納用
     $progress_data = [];
 
+    // 【1209修正箇所：追記】
     foreach ($user_meta as $meta_key => $meta_value) {
-        if (preg_match('/^(env|VAL|INIT|div|responsive|JQ|LP|MiniLP|Sass|React|Java|SQL|Design|SEO|Form|FAM|test|JS|wordpress|jstqb)/i', $meta_key)) {
+        if (preg_match('/^(env|VAL|INIT|div|responsive|JQ|LP|MiniLP|Sass|React|Java|SQL|Design|SEO|Form|FAM|test|JS|wordpress|jstqb|verify|node|Spec|sass|test)/i', $meta_key)) {
 
 
             $progress = intval($meta_value[0]);
@@ -104,10 +119,23 @@ foreach ($users as $user) {
     }
 
 
+    $selected_items = json_decode(
+        get_user_meta($user_id, 'selected_items', true),
+        true
+    );
+    
+    if (empty($selected_items)) {
+        $selected_items = json_decode(
+            get_user_meta($user_id, 'owned_items', true),
+            true
+        );
+    }
+    
+
     // キャラクターHTML生成
     ob_start();
     wp_set_current_user($user_id);
-    display_character();
+    display_character($selected_items);
     $character_html = ob_get_clean();
 
     $all_users_characters[] = array(
@@ -360,6 +388,7 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                                 <div class="tree tree-left"></div>
                                 <div class="tree tree-right"></div>
                                 <div class="castle">
+
                                     <div class="castle-animal">
                                         <iframe src="https://lottie.host/embed/b4994f66-3673-48c5-a9f8-a2dc72b38c6e/eWk4vLyDMj.json"></iframe>
                                     </div>
@@ -670,7 +699,7 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
                             foreach ($user_meta as $meta_key => $meta_value) {
                                 // 対象の進捗キーかチェック
                                 if (
-                                    preg_match('/^(env|VAL|INIT|div|responsive|JQ|LP|MiniLP|Sass|React|Java|SQL|Design|SEO|Form|FAM|test|JS|wordpress|jstqb)/i', $meta_key) &&
+                                    preg_match('/^(env|VAL|INIT|div|responsive|JQ|LP|MiniLP|Sass|React|Java|SQL|Design|SEO|Form|FAM|test|JS|wordpress|jstqb|verify|node|Spec|sass|test)/i', $meta_key) &&
                                     substr($meta_key, -5) !== '_date'
                                 ) {
                                     $value = $meta_value[0];
@@ -742,6 +771,7 @@ $active_category = isset($_GET['category']) ? urldecode($_GET['category']) : '';
 <script>
     const allUsersProgress = <?php echo json_encode($all_users_progress); ?>;
     const currentUsername = <?php echo json_encode($current_username); ?>;
+    const currentUserId = <?php echo json_encode($current_user_id); ?>;
     const characterHtml = <?php echo json_encode($character_html); ?>;
     const lastPostProgress = <?php echo json_encode($last_post_progress); ?>; // 追加
 </script>
