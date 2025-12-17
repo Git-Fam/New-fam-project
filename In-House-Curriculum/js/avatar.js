@@ -498,8 +498,7 @@ $(function () {
 			};
 		}
 
-		// 初期表示ではPHP描画を優先する
-		// updateCharacterDisplay(); ← 削除
+		updateCharacterDisplay();
 	});
 
 	// ラジオボタンのチェック解除時の処理

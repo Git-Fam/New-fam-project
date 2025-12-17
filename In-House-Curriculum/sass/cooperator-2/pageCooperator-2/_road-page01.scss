@@ -836,30 +836,26 @@
         .destination {
           &:nth-child(7) {
             @include pc {
-              left: p(240);
+              left: p(70);
               bottom: p(138);
             }
 
             @include sp {
-              left: 240px;
-              bottom: 175px;
+              left: 70px;
+              bottom: 168px;
             }
           }
 
           &:nth-child(8) {
             @include pc {
-              left: auto;
-              top: auto;
-              right: p(350) ;
-              bottom: p(130);
+              right: p(600);
+              bottom: p(102);
               z-index: 17;
             }
 
             @include sp {
-              left: auto;
-              top: auto;
-              right: 350px;
-              bottom: 170px;
+              right: 600px;
+              bottom: 132px;
               z-index: 17;
             }
           }
