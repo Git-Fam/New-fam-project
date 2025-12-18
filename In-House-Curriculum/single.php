@@ -93,7 +93,18 @@ if ($locked) {
     exit;
 }
 
-// === 閲覧権限制御 ===
+
+// === 1. 現在の記事のカテゴリ情報を取得 ===
+$categories = get_the_category();
+$active_category_slug = '';
+$active_category_id   = 0;
+
+if (!empty($categories)) {
+    $active_category_slug = $categories[0]->slug;
+    $active_category_id   = $categories[0]->term_id; // IDを取得しておく
+}
+
+// === 2. 閲覧権限制御 ===
 $current_user = wp_get_current_user();
 if (!user_can_view_post($current_user->ID, get_the_ID())) {
     wp_redirect(home_url('/viewing-limit'));
@@ -101,11 +112,68 @@ if (!user_can_view_post($current_user->ID, get_the_ID())) {
 }
 
 get_header();
+
+// クラス名用（single--記事スラッグ）
+$slugs = $post->post_name; 
 ?>
 
-<div class="single <?php echo esc_attr($slugs); ?>">
+<div class="single <?php echo esc_attr($slugs); ?>" data-category="<?php echo esc_attr($active_category_slug); ?>">
+
     <div class="single--img"></div>
 
+    <div class="list-btn"></div>
+    
+    <div class="post-list">
+        <div class="post-list-inner">
+            <ul>
+                <?php
+                // 除外したいタグ「story」のIDを取得
+                $story_tag = get_term_by('slug', 'story', 'post_tag');
+                $story_tag_id = $story_tag ? $story_tag->term_id : 0;
+
+                // 現在のカテゴリの記事のみを取得するクエリ
+                $args = [
+                    'post_type'      => 'post',
+                    'cat'            => $active_category_id, // ★現在のカテゴリIDを指定
+                    'posts_per_page' => -1,
+                    'tag__not_in'    => [$story_tag_id],
+                ];
+
+                $query = new WP_Query($args);
+
+                if ($query->have_posts()):
+                    while ($query->have_posts()): $query->the_post();
+                ?>
+                    <li>
+                        <a href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" class="post-link">
+                            <div class="items--img">
+                                <img class="img" src="<?php echo has_post_thumbnail() ? get_the_post_thumbnail_url() : get_template_directory_uri() . '/img/no-img.webp'; ?>" alt="">
+                            </div>
+                            <div class="items--title">
+                                <p class="TL"><?php the_title(); ?></p>
+                            </div>
+                        </a>
+                    </li>
+                <?php
+                    endwhile;
+                else:
+                ?>
+                    <p>このカテゴリーには投稿がありません。</p>
+                <?php
+                endif;
+
+                wp_reset_postdata(); // クエリをリセット
+                ?>
+            </ul>
+        </div>
+    </div>
+
+
+        
+                
+
+
+    <!-- ページネーション等 -->
     <div class="single--link">
         <div class="single--link--chara"></div>
         <div class="single--link--bg">

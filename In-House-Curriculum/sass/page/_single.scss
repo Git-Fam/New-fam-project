@@ -1,11 +1,9 @@
-@use "../global"as *;
-@use "../cooperator-2/globalCooperator-2/"as *;
+@use "../global" as *;
+@use "../cooperator-2/globalCooperator-2/" as *;
 
 /* -----------------------
   single
 ----------------------- */
-
-
 
 .single {
   width: 100%;
@@ -22,7 +20,7 @@
     padding: s(30);
   }
 
-  a{
+  a {
     pointer-events: auto;
   }
 
@@ -38,10 +36,7 @@
     -webkit-user-select: text !important;
     pointer-events: auto !important;
     -webkit-user-drag: auto !important; /* Safari対策 */
-
   }
-
-
 
   &--img {
     position: fixed;
@@ -262,7 +257,6 @@
 
         .swpm-post-no-access-msg,
         .swpm-post-not-logged-in-msg {
-
           // 画像　：要らなければあとで削除
 
           .no-access-img-container {
@@ -280,7 +274,6 @@
             @include sp {
               margin: auto;
             }
-
           }
 
           .character {
@@ -490,3 +483,214 @@
     transition: all 1s;
   }
 }
+
+/* ここ */
+body.no-scroll {
+  overflow: hidden;
+}
+.single .list-btn {
+  background: linear-gradient(180deg, #d9d5bb 0%, #b99e76 100%);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+  width: 13.28125vw;
+  height: 2.734375vw;
+  border-radius: 0.3125vw;
+  line-height: 2.734375vw;
+  padding-left: 1.015625vw;
+  position: fixed;
+  top: 1.5vw;
+  right: 1.5vw;
+  z-index: 1000;
+  pointer-events: auto;
+  cursor: pointer;
+}
+@media screen and (min-width: 768px) {
+  .single .list-btn {
+    width: 13.28125vw;
+    height: 2.734375vw;
+    border-radius: 0.3125vw;
+    border: 0.078125vw solid #ffffff;
+    line-height: 2.734375vw;
+    padding-left: 1.015625vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  .single .list-btn {
+    width: 25.641025641vw;
+    height: 5.1282051282vw;
+    border-radius: 0.7692307692vw;
+    border: 0.2564102564vw solid #fff;
+    line-height: 4.6153846154vw;
+    padding-left: 1.2820512821vw;
+  }
+}
+.single .list-btn::before {
+  content: "〉";
+  position: absolute;
+  top: 65%;
+  transform: translateY(-50%) rotate(90deg);
+}
+@media screen and (min-width: 768px) {
+  .single .list-btn::before {
+    font-size: 1.25vw;
+    right: 0.78125vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  .single .list-btn::before {
+    font-size: 2.8205128205vw;
+    right: 0.5128205128vw;
+  }
+}
+.single .list-btn::after {
+  content: "道のり投稿一覧";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+@media screen and (min-width: 768px) {
+  .single .list-btn::after {
+    letter-spacing: 0.0625vw;
+    font-size: 1.25vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  .single .list-btn::after {
+    font-size: 2.5641025641vw;
+    letter-spacing: 0.2051282051vw;
+  }
+}
+.single .list-btn.active::after {
+  content: "一覧を閉じる";
+}
+.single .list-btn:hover {
+  transition: all 0.3s ease-in-out;
+  box-shadow: unset;
+  transform: translate(2px, 2px);
+}
+.single .post-list {
+  background-color: #c9ebd9;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: -100%;
+  left: 0;
+  z-index: 35;
+  transition: all 0.3s;
+  overflow-y: scroll;
+}
+@media screen and (min-width: 768px) {
+  .single .post-list-inner {
+    padding: 8.25vw 3.4375vw 7.8125vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  .single .post-list-inner {
+    padding: 11.3333333333vw 5.1282051282vw 12.8205128205vw;
+  }
+}
+.single .post-list-inner ul {
+  display: flex;
+}
+@media screen and (min-width: 768px) {
+  .single .post-list-inner ul {
+    flex-wrap: wrap;
+    gap: 1.171875vw 1.5625vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  .single .post-list-inner ul {
+    flex-direction: column;
+    gap: 3.8461538462vw;
+  }
+}
+.single .post-list-inner ul li {
+  background: #ffffff;
+  position: relative;
+}
+@media screen and (min-width: 768px) {
+  .single .post-list-inner ul li {
+    width: 45.78125vw;
+    padding: 0.703125vw 0.859375vw;
+    border-radius: 0.234375vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  .single .post-list-inner ul li {
+    padding: 1.5384615385vw 2.0512820513vw;
+    border-radius: 0.5128205128vw;
+  }
+}
+.single .post-list-inner ul li .post-link {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.single .post-list-inner ul li .post-link .items--img {
+  background-color: #ffffff;
+}
+@media screen and (min-width: 768px) {
+  .single .post-list-inner ul li .post-link .items--img img {
+    width: 13.28125vw;
+    height: 7.578125vw;
+    border-radius: 0.234375vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  .single .post-list-inner ul li .post-link .items--img img {
+    width: 23.0769230769vw;
+    height: 13.0769230769vw;
+    border-radius: 0.5128205128vw;
+  }
+}
+.single .post-list-inner ul li .post-link .items--title {
+  width: 100%;
+  background-color: #ffffff;
+  display: grid;
+  place-items: center center;
+}
+@media screen and (min-width: 768px) {
+  .single .post-list-inner ul li .post-link .items--title {
+    height: 7.578125vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  .single .post-list-inner ul li .post-link .items--title {
+    height: 13.0769230769vw;
+  }
+}
+.single .post-list-inner ul li .post-link .items--title .TL {
+  color: #646464;
+}
+@media screen and (min-width: 768px) {
+  .single .post-list-inner ul li .post-link .items--title .TL {
+    font-size: 1.25vw;
+  }
+}
+@media screen and (max-width: 767px) {
+  .single .post-list-inner ul li .post-link .items--title .TL {
+    font-size: 3.0769230769vw;
+  }
+}
+.single .post-list-inner ul li::before {
+  content: "";
+  background: linear-gradient(93deg, #5bad83 1.53%, #acdec3 63.13%);
+  transition: all 0.3s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.single .post-list-inner ul li:hover::before {
+  opacity: 1;
+}
+.single .post-list.active {
+  top: 0;
+  transition: all 0.3s;
+}
+/* ここ */

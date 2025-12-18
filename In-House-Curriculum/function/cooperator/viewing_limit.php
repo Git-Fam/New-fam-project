@@ -123,51 +123,52 @@ function save_viewing_limit_posts($user_id)
 
 // --- 閲覧権限判定関数
 function user_can_view_post($user_id, $post_id) {
-    // 1. シンプルメンバーシップの会員レベルをチェック
-    if (function_exists('SwpmMemberUtils')) {
-        global $wpdb;
-        $swpm_members_table = $wpdb->prefix . 'swpm_members_tbl';
-        
-        // テーブルが存在するか確認
-        $table_exists = $wpdb->get_var($wpdb->prepare(
-            "SHOW TABLES LIKE %s",
-            $swpm_members_table
-        ));
-        
-        if ($table_exists === $swpm_members_table) {
-            // WordPressのユーザーIDからメンバー情報を取得
-            // カラム名が異なる可能性があるため、複数のパターンを試す
-            $member = $wpdb->get_row($wpdb->prepare(
-                "SELECT * FROM {$swpm_members_table} WHERE wp_user_id = %d LIMIT 1",
-                $user_id
-            ));
-            
-            // wp_user_idが存在しない場合は、user_idを試す
-            if (!$member) {
-                $member = $wpdb->get_row($wpdb->prepare(
-                    "SELECT * FROM {$swpm_members_table} WHERE user_id = %d LIMIT 1",
-                    $user_id
-                ));
-            }
-            
-            if ($member && isset($member->membership_level)) {
-                $membership_level = intval($member->membership_level);
-                // 有料会員（会員レベルIDが2以上）の場合は、ng_postsのチェックをスキップ
-                
-                if ($membership_level >= 2) {
-                    return true; // 有料会員は常に閲覧可能
-                }
-            }
-        }
-    }
 
-    // 2. 無料会員、またはシンプルメンバーシッププラグインが無効な場合
-    //    ng_postsをチェックする（無料会員への閲覧制限として機能させる）
-    $ng_posts = get_user_meta($user_id, 'ng_posts', true);
-    if (!is_array($ng_posts)) {
-        $ng_posts = [];
-    }
+  /**
+   * ----------------------------------------
+   * 1. Simple WP Membership（SWPM）公式APIで会員判定
+   * ----------------------------------------
+   * ・DB直読みは一切しない
+   * ・「現在ログインしているユーザー」の状態のみを信用する
+   * ・有料会員（レベルID >= 2）は常に閲覧可能
+   */
+  if (function_exists('SwpmMemberUtils')) {
 
-    // $post_id が ng_posts に含まれていなければ閲覧可能 (true)
-    return !in_array($post_id, $ng_posts);
+      $current_user_id = get_current_user_id();
+
+      // この関数は「現在閲覧しているユーザー」の判定用途なので
+      // 引数の$user_idと現在のログインユーザーが一致する場合のみSWPMを見る
+      if ($current_user_id && (int)$current_user_id === (int)$user_id) {
+
+          // SWPM側でログインしているか
+          if (SwpmMemberUtils::is_member_logged_in()) {
+
+              // ログイン中メンバーの会員レベルID（公式API）
+              $membership_level = (int) SwpmMemberUtils::get_logged_in_members_level();
+
+              // 有料会員（レベル2以上）は無条件で閲覧OK
+              if ($membership_level >= 2) {
+                  return true;
+              }
+          }
+      }
+  }
+
+  /**
+   * ----------------------------------------
+   * 2. 無料会員 / 未ログイン / 判定不能時の処理
+   * ----------------------------------------
+   * ・ユーザーメタ ng_posts による制御
+   */
+  $ng_posts = get_user_meta($user_id, 'ng_posts', true);
+  if (!is_array($ng_posts)) {
+      $ng_posts = [];
+  }
+
+  // ng_posts に含まれていなければ閲覧可能
+  return !in_array(
+      (int)$post_id,
+      array_map('intval', $ng_posts),
+      true
+  );
 }

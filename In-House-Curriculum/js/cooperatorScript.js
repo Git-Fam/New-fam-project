@@ -4,6 +4,7 @@ jQuery(function () {
         .on("click", function () {
             $(this).toggleClass("active");
             $(".post-list").toggleClass("active");
+
         });
 
     // クリック回数を保持する変数（グローバルスコープに定義）
@@ -638,10 +639,12 @@ jQuery(function () {
         .on("click", function () {
             $(this).toggleClass("active");
             $(".post-list").toggleClass("active");
+            $("body").toggleClass("no-scroll");
         });
 
     // クリック回数を保持する変数（グローバルスコープに定義）
     var clickCount = 0;
+
 
     $(".next-section")
         .off("click")
@@ -1229,6 +1232,4 @@ jQuery(function () {
 
 
 });
-
-
 
