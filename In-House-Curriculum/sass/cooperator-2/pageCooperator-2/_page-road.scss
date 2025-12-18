@@ -1015,7 +1015,7 @@
                       &::before {
                         content: "";
                         position: absolute;
-                        // pointer-events: none;
+                        pointer-events: none;
                         bottom: -30%;
                         left: 50%;
                         translate: -50% 0;
