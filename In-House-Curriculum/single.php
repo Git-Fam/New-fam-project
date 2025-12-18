@@ -113,8 +113,6 @@ if (!user_can_view_post($current_user->ID, get_the_ID())) {
 
 get_header();
 
-// クラス名用（single--記事スラッグ）
-$slugs = $post->post_name; 
 ?>
 
 <div class="single <?php echo esc_attr($slugs); ?>" data-category="<?php echo esc_attr($active_category_slug); ?>">
@@ -145,7 +143,10 @@ $slugs = $post->post_name;
                     while ($query->have_posts()): $query->the_post();
                 ?>
                     <li>
-                        <a href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" class="post-link">
+
+                     <!-- 記事ページに直接飛ぶ場合 -->
+                    <!-- <a href="<?php the_permalink(); ?>" class="post-link"> -->
+                    <a href="<?php echo add_query_arg('post_id', get_the_ID(), site_url('/cover')); ?>" class="post-link">
                             <div class="items--img">
                                 <img class="img" src="<?php echo has_post_thumbnail() ? get_the_post_thumbnail_url() : get_template_directory_uri() . '/img/no-img.webp'; ?>" alt="">
                             </div>
@@ -171,8 +172,6 @@ $slugs = $post->post_name;
 
         
                 
-
-
     <!-- ページネーション等 -->
     <div class="single--link">
         <div class="single--link--chara"></div>
