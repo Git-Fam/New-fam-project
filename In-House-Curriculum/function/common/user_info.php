@@ -324,14 +324,19 @@ function set_default_progress_values($user_id)
   $tag_slugs = array_keys($user_info);
   $batches = array_chunk($tag_slugs, $batch_size);
 
+  $user = get_userdata($user_id);
+
+  // 管理者の場合は100、それ以外は0
+  $default_value = user_can($user_id, 'manage_options') ? '100' : '0';
   foreach ($batches as $batch) {
     foreach ($batch as $tag_slug) {
-      add_user_meta($user_id, $tag_slug, '0', true);
+      add_user_meta($user_id, $tag_slug, $default_value, true);
     }
     // メモリを解放
     wp_cache_flush();
   }
 }
+
 
 // 投稿タグが更新されたときに保存スペースを更新
 add_action('set_object_terms', 'update_storage_spaces', 10, 4);
@@ -344,5 +349,26 @@ function update_storage_spaces($object_id, $terms, $tt_ids, $taxonomy)
   }
 }
 
+/**
+ * 管理者相当（manage_options を持つ）に昇格した場合、
+ * すべての進捗メタを 100 に更新する
+ */
+add_action('set_user_role', 'set_progress_to_complete_for_admin', 10, 3);
+function set_progress_to_complete_for_admin($user_id, $role, $old_roles)
+{
+  // 管理者権限でなければ何もしない
+  if (!user_can($user_id, 'manage_options')) {
+    return;
+  }
+
+  // 進捗用メタキー一覧を取得
+  $user_info = add_user_info();
+  $tag_slugs = array_keys($user_info);
+
+  // すべて 100 に更新
+  foreach ($tag_slugs as $tag_slug) {
+    update_user_meta($user_id, $tag_slug, '100');
+  }
+}
 // ツールバーデフォルト非表示
 add_filter('show_admin_bar', '__return_false');

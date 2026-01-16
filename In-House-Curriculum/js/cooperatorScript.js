@@ -622,10 +622,10 @@ jQuery(function () {
             $singleLink.addClass("show");
 
             // --- スクロールが止まった3秒後に消す ---
-            if (removeShowTimeout) clearTimeout(removeShowTimeout);
-            removeShowTimeout = setTimeout(function () {
-                $singleLink.removeClass("show");
-            }, 3000);
+            // if (removeShowTimeout) clearTimeout(removeShowTimeout);
+            // removeShowTimeout = setTimeout(function () {
+            //     $singleLink.removeClass("show");
+            // }, 3000);
         });
 
         // ページ読み込み時に初期化

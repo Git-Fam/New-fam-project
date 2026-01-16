@@ -1,40 +1,53 @@
 $(function () {
-
   // マイページのタブ切り替え
-  $('.tab').on('click', function () {
-    var target = $(this).hasClass('tab--1') ? '.tab--content--progress' : '.tab--content--membership';
-    $('.tab').not(this).removeClass('active');
-    $(this).addClass('active');
-    $('.tab--content > div').not(target).removeClass('active');
-    $(target).addClass('active');
-    $('.my--content').addClass('active');
+  $(".tab").on("click", function () {
+    var target = $(this).hasClass("tab--1")
+      ? ".tab--content--progress"
+      : ".tab--content--membership";
+    $(".tab").not(this).removeClass("active");
+    $(this).addClass("active");
+    $(".tab--content > div").not(target).removeClass("active");
+    $(target).addClass("active");
+    $(".my--content").addClass("active");
+    // メニュー展開時
+    $(".my--contentbk").addClass("active");
   });
 
-  $('.gorilla').on('click', function () {
-    $('.my--content').removeClass('active');
+  $(".gorilla").on("click", function () {
+    $(".my--content").removeClass("active");
+    // メニュー展開時
+    $(".my--contentbk").removeClass("active");
   });
 
+  // メニュー展開時
+  $(".my--contentbk").on("click", function () {
+    $(".my--content").removeClass("active");
+    $(this).removeClass("active");
+  });
+  
 
-  $('.info_button').on('click', function () {
-    $('.my--info').toggleClass('active');
+  $(".info_button").on("click", function () {
+    $(".my--info").toggleClass("active");
   });
 
   // ボード系のクローズボタン
-  $('.board-close').on('click', function () {
-    $(this).closest('.comeback-board ,.log-board ,.continuous-board').addClass('none');
+  $(".board-close").on("click", function () {
+    $(this)
+      .closest(".comeback-board ,.log-board ,.continuous-board")
+      .addClass("none");
   });
 
   // SPキャラクタークリック
-  $('.js-character-edit').on('click', function () {
-    $(this).toggleClass('active');
+  $(".js-character-edit").on("click", function () {
+    $(this).toggleClass("active");
   });
 
   // input要素の値を取得して表示
-  document.querySelectorAll('.update--item').forEach(function (checkElement) {
+  document.querySelectorAll(".update--item").forEach(function (checkElement) {
     const rangeInput = checkElement.querySelector('[type="range"]');
-    const valueOutput = checkElement.querySelector('output');
+    const valueOutput = checkElement.querySelector("output");
 
-    rangeInput.addEventListener('input', (event) => {
+    rangeInput.addEventListener("input", (event) => {
       const value = event.target.value;
       valueOutput.textContent = value;
     });
@@ -57,22 +70,19 @@ $(function () {
   //   });
   // });
 
-
-
-
   // タブ切り替え
   $(document).ready(function () {
-    $('.progress--TOC--ul--li').click(function () {
+    $(".progress--TOC--ul--li").click(function () {
       // 全ての.progress--TOC--ul--li .TXから.activeを削除
-      $('.progress--TOC--ul--li .TX').removeClass('active');
+      $(".progress--TOC--ul--li .TX").removeClass("active");
       // クリックされた.progress--TOC--ul--li .TXに.activeを追加
-      $(this).find('.TX').addClass('active');
+      $(this).find(".TX").addClass("active");
 
       // 全ての.progress--content .itemから.activeを削除
-      $('.progress--content .item').removeClass('active');
+      $(".progress--content .item").removeClass("active");
       // クリックされた.progress--TOC--ul--liに対応する.progress--content .itemに.activeを追加
       var index = $(this).index();
-      $('.progress--content .item').eq(index).addClass('active');
+      $(".progress--content .item").eq(index).addClass("active");
     });
   });
 
@@ -100,9 +110,6 @@ $(function () {
   // URLの取得と'/charged/'を追加
   // 現在のURLを取得
   var currentURL = window.location.origin + "/subscription/";
-  
-
-
 
   // メッセージ上書き
   // $('.swpm-login-error-msg').text('メールアドレスまたはパスワードが正しくありません。');
@@ -121,18 +128,15 @@ $(function () {
     `<div class="no-access-img-container character"></div>その疑問、すぐ解決できます！<br>スタンダードなら月15回まで質問OK。<br>つまずきを解消して、挫折しない学習へ！<br><a href="${currentURL}">プラン入会する</a>`,
     `<div class="no-access-img-container character"></div>同期との交流イベントが間もなく開催！<br>スタンダード会員以上が参加可能な特別な時間！<br>学びと刺激を持ち帰ろう！<br><a href="${currentURL}">プラン入会する</a>`,
     `<div class="no-access-img-container character"></div>クエストクリアおめでとう！<br>残りのステージはスタンダード専用です。<br>同期と一緒に最後まで走り抜けよう！<br><a href="${currentURL}">プラン入会する</a>`,
-    
   ];
 
-   // 配列からランダムにメッセージを選択
- var randomMessage =
- noAccessMessages[Math.floor(Math.random() * noAccessMessages.length)];
+  // 配列からランダムにメッセージを選択
+  var randomMessage =
+    noAccessMessages[Math.floor(Math.random() * noAccessMessages.length)];
 
-// 選択したメッセージを要素に埋め込む
-$(".swpm-post-no-access-msg").html(randomMessage);
-$(".swpm-post-not-logged-in-msg").html(randomMessage);
-
-
+  // 選択したメッセージを要素に埋め込む
+  $(".swpm-post-no-access-msg").html(randomMessage);
+  $(".swpm-post-not-logged-in-msg").html(randomMessage);
 });
 
 

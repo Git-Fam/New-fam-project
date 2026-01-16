@@ -1,5 +1,5 @@
-@use "../../global"as *;
-@use "../globalCooperator-2"as *;
+@use "../../global" as *;
+@use "../globalCooperator-2" as *;
 
 /* -----------------------
   load
@@ -8,7 +8,7 @@
   position: relative;
 
   .columns_search {
-    @include pc{
+    @include pc {
       padding: p(6) p(3);
     }
     @include sp {
@@ -19,7 +19,6 @@
     }
 
     .search-item {
-
       form {
         display: flex;
         align-items: center;
@@ -38,14 +37,14 @@
         }
 
         input {
-          color: #7FBF99;
+          color: #7fbf99;
           @include wt600;
           line-height: 140%;
           letter-spacing: 1px;
           border: none;
-          background: #E2F9EB;
+          background: #e2f9eb;
           outline: none;
-          @include pc{
+          @include pc {
             border-radius: p(20);
             font-size: p(10);
             width: p(141);
@@ -63,16 +62,13 @@
           }
 
           &::placeholder {
-            color: #7FBF99;
+            color: #7fbf99;
           }
         }
       }
     }
   }
-
 }
-
-
 
 .sp-wrap {
   @include sp {
@@ -124,17 +120,27 @@
       @include sp {
         width: 92px;
         height: 91px;
-        bottom:  564px;
+        bottom: 564px;
         left: 76px;
       }
-      }
+    }
 
     &.morning {
-      background: linear-gradient(180deg, #7ABBE7 0%, #F3D4C4 26.92%, #FCF3C6 35.58%);
+      background: linear-gradient(
+        180deg,
+        #7abbe7 0%,
+        #f3d4c4 26.92%,
+        #fcf3c6 35.58%
+      );
     }
 
     &.daytime {
-      background: linear-gradient(180deg, #47A2F7 0%, #72E3F9 24.04%, #C5F3FC 33.42%);
+      background: linear-gradient(
+        180deg,
+        #47a2f7 0%,
+        #72e3f9 24.04%,
+        #c5f3fc 33.42%
+      );
 
       .daytime-deco.show {
         opacity: 1;
@@ -143,15 +149,25 @@
     }
 
     &.afternoon {
-      background: linear-gradient(180deg, #76D8FF 0%, #E8BE8D 23.08%, #D58A6D 37.98%);
+      background: linear-gradient(
+        180deg,
+        #76d8ff 0%,
+        #e8be8d 23.08%,
+        #d58a6d 37.98%
+      );
       .moon-deco {
         @include imgContain("afternoon.webp");
       }
     }
 
-    &.night{
-      background: linear-gradient(180deg, #012658 0%, #155796 22.6%, #62C6D4 36.54%);
-      .moon-deco{
+    &.night {
+      background: linear-gradient(
+        180deg,
+        #012658 0%,
+        #155796 22.6%,
+        #62c6d4 36.54%
+      );
+      .moon-deco {
         @include imgContain("night.webp");
       }
     }
@@ -598,7 +614,6 @@
         transition: all 0.3s;
         overflow-y: scroll;
 
-
         &-inner {
           @include pc {
             padding: p(208) p(44) p(100);
@@ -690,9 +705,11 @@
 
               &::before {
                 content: "";
-                background: linear-gradient(93deg,
-                    #5bad83 1.53%,
-                    #acdec3 63.13%);
+                background: linear-gradient(
+                  93deg,
+                  #5bad83 1.53%,
+                  #acdec3 63.13%
+                );
                 transition: all 0.3s;
                 position: absolute;
                 width: 100%;
@@ -759,7 +776,6 @@
             height: 100%;
             pointer-events: none;
 
-
             .road-content {
               position: relative;
               width: 100%;
@@ -806,7 +822,6 @@
                   }
 
                   @keyframes arrow {
-
                     0%,
                     100% {
                       transform: translateX(0%);
@@ -881,7 +896,8 @@
                         }
                       }
 
-                      @include sp {}
+                      @include sp {
+                      }
 
                       .items--img {
                         width: 100%;
@@ -1010,7 +1026,7 @@
 
                       & ~ .title-board {
                         filter: none;
-                      }  
+                      }
 
                       &::before {
                         content: "";
@@ -1036,7 +1052,6 @@
                       }
 
                       @keyframes next-goal-bg {
-
                         0%,
                         100% {
                           opacity: 0;
@@ -1049,7 +1064,6 @@
                     }
                   }
                 }
-
 
                 .goal-bg {
                   position: relative;
@@ -1088,6 +1102,7 @@
 
                   .board-TX {
                     color: $F-FFFFFF;
+                    font-weight: 600;
 
                     @include pc {
                       width: p(84);
@@ -1122,7 +1137,7 @@
                 pointer-events: none;
 
                 .character {
-                  @include imgContain("koneko.webp");
+                  // @include imgContain("koneko.webp");
                   transition: left 0.5s ease;
                   margin: 0 auto;
 
@@ -1139,16 +1154,37 @@
 
                 .name {
                   position: relative;
+                  width: 100%;
+                  font-weight: 600;
+                  letter-spacing: 0.05em;
+                  padding: 4px 10px;
+                  background: #fff;
+                  border: 1px solid #ddd;
+                  border-radius: 13px;
+                  font-size: 12px;
+                  color: #333;
+
+                  &::before {
+                    content: "";
+                    position: absolute;
+                    top: -4px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 5px;
+                    height: 5px;
+                    background: #fff;
+                    border-left: 1px solid #ddd;
+                    border-top: 1px solid #ddd;
+                    transform: translateX(-50%) rotate(45deg);
+                  }
 
                   @include pc {
-                    width: p(40);
-                    font-size: p(13);
+                    font-size: p(10);
                     text-align: center;
-                    bottom: p(-10);
+                    bottom: p(-20);
                   }
 
                   @include sp {
-                    width: 40px;
                     font-size: 13px;
                     text-align: center;
                     bottom: -10px;
@@ -1157,7 +1193,8 @@
 
                 &.me {
                   z-index: 100;
-                  animation: floating-y 2s ease-in-out infinite alternate-reverse;
+                  animation: floating-y 2s ease-in-out infinite
+                    alternate-reverse;
 
                   @keyframes floating-y {
                     0% {
@@ -1215,7 +1252,6 @@
 
               // ゴールホバーしたらそこにいるキャラが動く
               &:hover {
-
                 //.meは動かない
                 .character-box:not(.me) {
                   .character {
@@ -1224,7 +1260,7 @@
 
                   @keyframes purun {
                     0% {
-                      transform: scale(1.0, 1.0) translate(0%, 0%);
+                      transform: scale(1, 1) translate(0%, 0%);
                     }
 
                     15% {
@@ -1244,7 +1280,7 @@
                     }
 
                     100% {
-                      transform: scale(1.0, 1.0) translate(0%, 0%);
+                      transform: scale(1, 1) translate(0%, 0%);
                     }
                   }
 
@@ -1369,7 +1405,6 @@
             }
           }
 
-
           &::before {
             @include imgContain("filter-A.webp");
             left: 50%;
@@ -1381,8 +1416,6 @@
               bottom: p(100);
             }
           }
-
-
         }
 
         &.page2,
@@ -1963,8 +1996,6 @@
           display: block;
         }
       }
-
-
     }
 
     .road-chat {
@@ -2003,13 +2034,15 @@
 
         .timeline-wrap {
           .timeline {
-            background: linear-gradient(0deg,
-                rgba(92, 92, 92, 0) 0%,
-                rgba(92, 92, 92, 0.4) 15.5%,
-                rgba(92, 92, 92, 0.6) 29%,
-                rgba(92, 92, 92, 0.6) 71.5%,
-                rgba(92, 92, 92, 0.4) 87.5%,
-                rgba(92, 92, 92, 0) 100%);
+            background: linear-gradient(
+              0deg,
+              rgba(92, 92, 92, 0) 0%,
+              rgba(92, 92, 92, 0.4) 15.5%,
+              rgba(92, 92, 92, 0.6) 29%,
+              rgba(92, 92, 92, 0.6) 71.5%,
+              rgba(92, 92, 92, 0.4) 87.5%,
+              rgba(92, 92, 92, 0) 100%
+            );
             color: $F-F1FCD4;
             position: relative;
 

@@ -272,7 +272,7 @@ get_header();
                         <span class="TX-span">報</span>
                     </p>
                 </div>
-                <div class="gorilla"></div>
+                <div class="gorilla">✕</div>
 
                 <div class="tab--content">
                     <!-- 進捗更新 -->
@@ -409,6 +409,9 @@ get_header();
             </div>
             <a class="logout--button" href="?swpm-logout=true">ログアウト</a>
         </div>
+
+        <!-- メニュー展開時 -->
+        <div class="my--contentbk"></div>
 
         <!-- ログイン中のみ表示 -->
         <?php if (is_user_logged_in()): ?>

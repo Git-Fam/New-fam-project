@@ -23,6 +23,11 @@ function is_valid_role($user_id) {
     return false;
 }
 
+// function is_valid_role($user_id) {
+//     $user = get_userdata($user_id);
+//     return in_array('subscriber', (array) $user->roles, true);
+// }
+
 get_header();
 
 
@@ -46,7 +51,9 @@ $all_users_characters = [];
 $last_post_progress = []; // 最後の投稿が100%になってから1週間経過したかどうか
 
 // 全ユーザーを取得
+
 $users = get_users();
+$viewer_is_admin = user_can(get_current_user_id(), 'manage_options');
 
 
 
@@ -83,6 +90,10 @@ $last_post_progress = [];
 // $users ループはこれだけでOK！
 foreach ($users as $user) {
     if (!is_valid_role($user->ID)) continue;
+    // 管理者キャラクターは「閲覧者が管理者のときのみ」表示
+    if (user_can($user->ID, 'manage_options') && !$viewer_is_admin) {
+        continue;
+    }
 
     $user_id = $user->ID;
     $user_meta = get_user_meta($user_id);

@@ -9,6 +9,11 @@ get_header();
 <div class="main-menu">
     <div class="main-menu--BK"></div>
 
+    <!-- メニュー閉じる（元いた画面に） -->
+    <div class="main-menu--btn_exit">
+        <a href="javascript:void(0);" class="menu" onclick="history.back();">✕</a>
+    </div>
+
     <div class="total_title">
         <img class="TL" src="<?php echo get_template_directory_uri(); ?>/img/main-menu/main-menu_signboard_title.webp" alt="メインメニュー">
     </div>

@@ -3,7 +3,8 @@
 /* -----------------------
   main-menu
 ----------------------- */
-@media screen and (max-width: 950px) {}
+@media screen and (max-width: 950px) {
+}
 
 .main-menu {
   position: relative;
@@ -20,10 +21,7 @@
 
   @include sp {
     padding: 0 s(16) s(80);
-
   }
-
-
 
   &--BK {
     position: absolute;
@@ -42,6 +40,36 @@
       @include imgCover("main-menu/main-menu-BK_sp.webp");
       background-size: 100% 100%;
     }
+  }
+
+  &--btn_exit a{
+    position: absolute;
+    z-index: 3;
+    position: fixed; 
+
+    @include pc {
+    top: 40px;
+    right: 50px;
+    font-size: 28px;
+    }
+
+     @include sp {
+    top: 15px;
+    right: 20px;
+    font-size: 20px;
+    }
+
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+    user-select: none;
+  }
+
+  &--btn_exit a:hover {
+    transform: rotate(90deg);
+    color: #fff;
   }
 
   .total_title {
@@ -105,10 +133,9 @@
       flex-direction: column;
       gap: s(30);
     }
-
   }
 
-  --BK: #EFF0EE;
+  --BK: #eff0ee;
   --BK-shadow: 0px 3.889px 4.861px 0px rgba(0, 0, 0, 0.25);
 
   // マップ
@@ -198,11 +225,11 @@
           transform: translate(-50%, -50%);
 
           @include pc {
-            -webkit-text-stroke: pclamp(15) #EFF0EE;
+            -webkit-text-stroke: pclamp(15) #eff0ee;
           }
 
           @include sp {
-            -webkit-text-stroke: s(10) #EFF0EE;
+            -webkit-text-stroke: s(10) #eff0ee;
           }
         }
       }
@@ -215,7 +242,6 @@
     }
 
     &__text {
-
       @include pc {
         margin-top: pclamp(11);
       }
@@ -225,7 +251,7 @@
       }
 
       .TX {
-        color: #6D6D6D;
+        color: #6d6d6d;
         @include wt700;
         line-height: 1.5;
 
@@ -334,7 +360,7 @@
       }
 
       .TL {
-        color: #3EDF3E;
+        color: #3edf3e;
         @include wt900;
         line-height: 1.5;
         position: relative;
@@ -363,11 +389,11 @@
           transform: translate(-50%, -50%);
 
           @include pc {
-            -webkit-text-stroke: pclamp(10) #E3F7C6;
+            -webkit-text-stroke: pclamp(10) #e3f7c6;
           }
 
           @include sp {
-            -webkit-text-stroke: s(10) #E3F7C6;
+            -webkit-text-stroke: s(10) #e3f7c6;
           }
         }
       }
@@ -381,7 +407,6 @@
     }
 
     &__text {
-
       @include pc {
         margin-top: pclamp(3);
       }
@@ -391,7 +416,7 @@
       }
 
       .TX {
-        color: #6D6D6D;
+        color: #6d6d6d;
         @include wt700;
         line-height: 1.5;
 
@@ -524,11 +549,11 @@
           transform: translate(-50%, -50%);
 
           @include pc {
-            -webkit-text-stroke: pclamp(15) #EFF0EE;
+            -webkit-text-stroke: pclamp(15) #eff0ee;
           }
 
           @include sp {
-            -webkit-text-stroke: s(10) #EFF0EE;
+            -webkit-text-stroke: s(10) #eff0ee;
           }
         }
       }
@@ -542,7 +567,6 @@
     }
 
     &__text {
-
       @include pc {
         margin-top: pclamp(10);
       }
@@ -552,7 +576,7 @@
       }
 
       .TX {
-        color: #6D6D6D;
+        color: #6d6d6d;
         @include wt700;
         line-height: 1.5;
 
@@ -616,7 +640,7 @@
       position: absolute;
       z-index: 1;
       aspect-ratio: 1;
-      background-color: #32995C;
+      background-color: #32995c;
       border-radius: 50%;
       box-shadow: 0px -2px 3px 0px rgba(0, 0, 0, 0.25) inset;
       filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -691,11 +715,11 @@
           transform: translate(-50%, -50%);
 
           @include pc {
-            -webkit-text-stroke: pclamp(15) #EFF0EE;
+            -webkit-text-stroke: pclamp(15) #eff0ee;
           }
 
           @include sp {
-            -webkit-text-stroke: s(10) #EFF0EE;
+            -webkit-text-stroke: s(10) #eff0ee;
           }
         }
       }
@@ -711,7 +735,6 @@
     }
 
     &__text {
-
       @include pc {
         margin-top: pclamp(10);
       }
@@ -721,7 +744,7 @@
       }
 
       .TX {
-        color: #6D6D6D;
+        color: #6d6d6d;
         @include wt700;
         line-height: 1.5;
 
@@ -820,20 +843,19 @@
           transform: translate(-50%, -50%);
 
           @include pc {
-            -webkit-text-stroke: pclamp(15) #EFF0EE;
+            -webkit-text-stroke: pclamp(15) #eff0ee;
           }
 
           @include sp {
-            -webkit-text-stroke: s(10) #EFF0EE;
+            -webkit-text-stroke: s(10) #eff0ee;
           }
         }
       }
     }
 
     &__text {
-
       .TX {
-        color: #6D6D6D;
+        color: #6d6d6d;
         @include wt700;
         line-height: 1.5;
 
@@ -944,18 +966,18 @@
           transform: translate(-50%, -50%);
 
           @include pc {
-            -webkit-text-stroke: pclamp(15) #EFF0EE;
+            -webkit-text-stroke: pclamp(15) #eff0ee;
           }
 
           @include sp {
-            -webkit-text-stroke: s(10) #EFF0EE;
+            -webkit-text-stroke: s(10) #eff0ee;
           }
         }
       }
     }
 
     &__text {
-      background: #EFF0EE;
+      background: #eff0ee;
       transform: rotate(-9.893deg);
       flex-shrink: 0;
       position: absolute;
@@ -977,7 +999,7 @@
       }
 
       .TX {
-        color: #6D6D6D;
+        color: #6d6d6d;
         @include wt700;
         line-height: 1.5;
 
@@ -1048,7 +1070,6 @@
             }
 
             @keyframes rotate-deco {
-
               0%,
               100% {
                 transform: rotate(-10deg);
@@ -1070,9 +1091,9 @@
     display: block;
 
     @font-face {
-      font-family: 'BestTenDot';
-      src: url('../font/BestTen-DOT.woff2') format('woff2'),
-        url('../font/BestTen-DOT.otf') format('opentype');
+      font-family: "BestTenDot";
+      src: url("../font/BestTen-DOT.woff2") format("woff2"),
+        url("../font/BestTen-DOT.otf") format("opentype");
       font-weight: normal;
       font-style: normal;
     }
@@ -1095,7 +1116,6 @@
       margin: 0 s(30) 0 auto;
     }
 
-
     &__title {
       position: absolute;
       z-index: 4;
@@ -1117,7 +1137,7 @@
       }
 
       .TL {
-        color: #43505F;
+        color: #43505f;
         font-family: "BestTenDot", sans-serif;
         @include wt400;
         line-height: 1.5;
@@ -1148,11 +1168,11 @@
           transform: translate(-50%, -50%);
 
           @include pc {
-            -webkit-text-stroke: pclamp(0.5) #43505F;
+            -webkit-text-stroke: pclamp(0.5) #43505f;
           }
 
           @include sp {
-            -webkit-text-stroke: s(0.5) #43505F;
+            -webkit-text-stroke: s(0.5) #43505f;
           }
         }
       }
@@ -1174,7 +1194,7 @@
       }
 
       .TX {
-        color: #5B5B5B;
+        color: #5b5b5b;
         @include wt700;
         line-height: 1.5;
         position: absolute;
@@ -1222,7 +1242,6 @@
       }
 
       @keyframes scale-title {
-
         0%,
         100% {
           transform: rotate(2.66deg) scale(1);
@@ -1274,7 +1293,6 @@
     }
 
     &__text {
-
       .TX {
         filter: drop-shadow(0px 2.56px 0px rgba(0, 0, 0, 0.25));
         color: #646464;
@@ -1307,19 +1325,18 @@
 
           @include pc {
             -webkit-text-stroke-width: pclamp(7);
-            -webkit-text-stroke-color: #EFF0EE;
+            -webkit-text-stroke-color: #eff0ee;
           }
 
           @include sp {
             -webkit-text-stroke-width: s(7);
-            -webkit-text-stroke-color: #EFF0EE;
+            -webkit-text-stroke-color: #eff0ee;
           }
         }
       }
     }
 
     &__title {
-
       .TL {
         filter: drop-shadow(0px 2.56px 0px rgba(0, 0, 0, 0.25));
         color: #646464;
@@ -1355,25 +1372,23 @@
 
           @include pc {
             -webkit-text-stroke-width: pclamp(7);
-            -webkit-text-stroke-color: #EFF0EE;
+            -webkit-text-stroke-color: #eff0ee;
           }
 
           @include sp {
             -webkit-text-stroke-width: s(7);
-            -webkit-text-stroke-color: #EFF0EE;
+            -webkit-text-stroke-color: #eff0ee;
           }
         }
       }
     }
 
     &:hover {
-
       .menu__item__help__text {
         animation: scale-help 0.5s step-end infinite;
         transform-origin: center bottom;
 
         @keyframes scale-help {
-
           0%,
           100% {
             transform: rotate(-10deg);
@@ -1384,9 +1399,7 @@
           }
         }
       }
-
     }
-
   }
 
   .deco__clover {
@@ -1441,17 +1454,16 @@
     }
   }
 
-
   &--btn_area {
     position: absolute;
     z-index: 3;
-    
-    @include pc{
+
+    @include pc {
       bottom: pclamp(20);
       right: pclamp(40);
     }
-    
-    @include sp{
+
+    @include sp {
       bottom: s(20);
       right: s(40);
     }
