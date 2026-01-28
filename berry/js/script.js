@@ -95,9 +95,10 @@ $(function () {
 	//   $(this).toggleClass('active');
 	// });
 
+
 	// カウントダウンの終了日時を設定
-	// カウントダウンの終了日時を設定
-	let countdownDate = new Date("2025-04-20T00:00:00");
+	let countdownDate = new Date("2026-04-26T00:00:00");
+	let countdownTimer; // ← 変数名を変更
 
 	// カウントダウン計算関数
 	function updateCountdown() {
@@ -106,16 +107,18 @@ $(function () {
 		let days = Math.floor(distance / (1000 * 60 * 60 * 24));
 
 		if (distance < 0) {
-			clearInterval(x);
-			$(".countdown").html("<span>終了</span>");
+			console.log("if文に入りました");
+			if (countdownTimer) clearInterval(countdownTimer); 
+			$(".countdown-days").html("<span>0</span>");
+			console.log("0を表示しました");
+			console.log("HTMLの中身:", $(".countdown-days").html());
 		} else {
-			// 日数を文字列に変換して一文字ずつspanで囲む
 			let daysStr = days
 				.toString()
 				.split("")
 				.map((num) => `<span>${num}</span>`)
 				.join("");
-			$(".days").html(daysStr);
+			$(".countdown-days").html(daysStr);
 		}
 	}
 
@@ -123,7 +126,7 @@ $(function () {
 	updateCountdown();
 
 	// 30分ごとに更新
-	let x = setInterval(updateCountdown, 1800000);
+	countdownTimer = setInterval(updateCountdown, 1800000); // ← 変更
 });
 
 // 初回やリロード時は更新
