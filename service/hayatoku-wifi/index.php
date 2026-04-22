@@ -105,6 +105,13 @@ include "../../inc/nav.php";
                         <td>5,520円(税抜き)</td>
                     </tr>
                     <tr>
+                        <td>はやトクWi-Fi<br>無制限シェア</td>
+                        <td>12,078円(税抜き)</td>
+                        <td>2,409円(税抜き)</td>
+                        <td>-8,459円(税抜き)</td>
+                        <td>6,028円(税抜き)</td>
+                    </tr>
+                    <tr>
                         <td>はやトクWi-Fi<br>MACALOON100GB HOME</td>
                         <td>7,980円(税抜き)</td>
                         <td>2,050円(税抜き)</td>
@@ -291,6 +298,11 @@ include "../../inc/nav.php";
                 <li>
                     <a href="../../pdf/hayatoku-wifi/H-W-M-200GB.pdf" target="_blank" class="underline" target="_blank">
                         はやトクWi-Fi MACALOON200GB
+                    </a>
+                </li>
+                <li>
+                    <a href="../../pdf/hayatoku-wifi/H-W-UNLIMITED.pdf" target="_blank" class="underline" target="_blank">
+                        はやトクWi-Fi 無制限シェア
                     </a>
                 </li>
                 <li>
