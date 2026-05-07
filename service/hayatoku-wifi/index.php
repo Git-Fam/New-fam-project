@@ -50,35 +50,35 @@ include "../../inc/nav.php";
                 </thead>
                 <tbody>
                     <tr>
-                        <td>はやトクWi-Fi<br>MACALOON10GB</td>
+                        <td>はやトクWi-Fi<br>MACAROON10GB</td>
                         <td>2,980円(税抜き)</td>
                         <td>1,500円(税抜き)</td>
                         <td>-2,500円(税抜き)</td>
                         <td>1,980円(税抜き)</td>
                     </tr>
                     <tr>
-                        <td>はやトクWi-Fi<br>MACALOON20GB</td>
+                        <td>はやトクWi-Fi<br>MACAROON20GB</td>
                         <td>4,480円(税抜き)</td>
                         <td>1,500円(税抜き)</td>
                         <td>-2,600円(税抜き)</td>
                         <td>3,380円(税抜き)</td>
                     </tr>
                     <tr>
-                        <td>はやトクWi-Fi<br>MACALOON50GB</td>
+                        <td>はやトクWi-Fi<br>MACAROON50GB</td>
                         <td>6,980円(税抜き)</td>
                         <td>1,500円(税抜き)</td>
                         <td>-4,600円(税抜き)</td>
                         <td>3,880円(税抜き)</td>
                     </tr>
                     <tr>
-                        <td>はやトクWi-Fi<br>MACALOON100GB</td>
+                        <td>はやトクWi-Fi<br>MACAROON100GB</td>
                         <td>7,980円(税抜き)</td>
                         <td>1,500円(税抜き)</td>
                         <td>-4,500円(税抜き)</td>
                         <td>4,980円(税抜き)</td>
                     </tr>
                     <tr>
-                        <td rowspan="2">はやトクWi-Fi<br>MACALOONCP100GB</td>
+                        <td rowspan="2">はやトクWi-Fi<br>MACAROONCP100GB</td>
                         <td>1年目<br>7,980円(税抜き)</td>
                         <td>1,500円(税抜き)</td>
                         <td>-6,900円(税抜き)</td>
@@ -91,14 +91,14 @@ include "../../inc/nav.php";
                         <td>4,980円(税抜き)</td>
                     </tr>
                     <tr>
-                        <td>はやトクWi-Fi<br>MACALOON150GB</td>
+                        <td>はやトクWi-Fi<br>MACAROON150GB</td>
                         <td>8,980円(税抜き)</td>
                         <td>1,500円(税抜き)</td>
                         <td>-5,280円(税抜き)</td>
                         <td>5,200円(税抜き)</td>
                     </tr>
                     <tr>
-                        <td>はやトクWi-Fi<br>MACALOON200GB</td>
+                        <td>はやトクWi-Fi<br>MACAROON200GB</td>
                         <td>9,980円(税抜き)</td>
                         <td>1,500円(税抜き)</td>
                         <td>-5,960円(税抜き)</td>
@@ -112,14 +112,14 @@ include "../../inc/nav.php";
                         <td>6,028円(税抜き)</td>
                     </tr>
                     <tr>
-                        <td>はやトクWi-Fi<br>MACALOON100GB HOME</td>
+                        <td>はやトクWi-Fi<br>MACAROON100GB HOME</td>
                         <td>7,980円(税抜き)</td>
                         <td>2,050円(税抜き)</td>
                         <td>-5,050円(税抜き)</td>
                         <td>4,980円(税抜き)</td>
                     </tr>
                     <tr>
-                        <td rowspan="2">はやトクWi-Fi<br>MACALOONCP100GB<br>HOME</td>
+                        <td rowspan="2">はやトクWi-Fi<br>MACAROONCP100GB<br>HOME</td>
                         <td>1年目<br>7,980円(税抜き)</td>
                         <td>2,050円(税抜き)</td>
                         <td>-7,450円(税抜き)</td>
@@ -267,37 +267,37 @@ include "../../inc/nav.php";
             <ul class="list-inline list-link-external">
                 <li>
                     <a href="../../pdf/hayatoku-wifi/H-W-M-10GB.pdf" target="_blank" class="underline" target="_blank">
-                        はやトクWi-Fi MACALOON10GB
+                        はやトクWi-Fi MACAROON10GB
                     </a>
                 </li>
                 <li>
                     <a href="../../pdf/hayatoku-wifi/H-W-M-20GB.pdf" target="_blank" class="underline" target="_blank">
-                        はやトクWi-Fi MACALOON20GB
+                        はやトクWi-Fi MACAROON20GB
                     </a>
                 </li>
                 <li>
                     <a href="../../pdf/hayatoku-wifi/H-W-M-50GB.pdf" target="_blank" class="underline" target="_blank">
-                        はやトクWi-Fi MACALOON50GB
+                        はやトクWi-Fi MACAROON50GB
                     </a>
                 </li>
                 <li>
                     <a href="../../pdf/hayatoku-wifi/H-W-M-100GB.pdf" target="_blank" class="underline" target="_blank">
-                        はやトクWi-Fi MACALOON100GB
+                        はやトクWi-Fi MACAROON100GB
                     </a>
                 </li>
                 <li>
                     <a href="../../pdf/hayatoku-wifi/H-W-M-CP-100GB.pdf" target="_blank" class="underline" target="_blank">
-                        はやトクWi-Fi MACALOONCP100GB
+                        はやトクWi-Fi MACAROONCP100GB
                     </a>
                 </li>
                 <li>
                     <a href="../../pdf/hayatoku-wifi/H-W-M-150GB.pdf" target="_blank" class="underline" target="_blank">
-                        はやトクWi-Fi MACALOON150GB
+                        はやトクWi-Fi MACAROON150GB
                     </a>
                 </li>
                 <li>
                     <a href="../../pdf/hayatoku-wifi/H-W-M-200GB.pdf" target="_blank" class="underline" target="_blank">
-                        はやトクWi-Fi MACALOON200GB
+                        はやトクWi-Fi MACAROON200GB
                     </a>
                 </li>
                 <li>
@@ -307,12 +307,12 @@ include "../../inc/nav.php";
                 </li>
                 <li>
                     <a href="../../pdf/hayatoku-wifi/H-W-M-100GB-HOME.pdf" target="_blank" class="underline" target="_blank">
-                        はやトクWi-Fi MACALOON100GB HOME
+                        はやトクWi-Fi MACAROON100GB HOME
                     </a>
                 </li>
                 <li>
                     <a href="../../pdf/hayatoku-wifi/H-W-M-CP-100GB-HOME.pdf" target="_blank" class="underline" target="_blank">
-                        はやトクWi-Fi MACALOONCP100GB HOME
+                        はやトクWi-Fi MACAROONCP100GB HOME
                     </a>
                 </li>
             </ul>
