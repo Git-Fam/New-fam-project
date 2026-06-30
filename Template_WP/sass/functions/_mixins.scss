@@ -19,41 +19,7 @@ $sp: 767px; // スマホ
 	}
 }
 
-// どセンター
-@mixin center {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
 
-// absoluteどセンター
-@mixin p-center {
-	top: 50%;
-	left: 50%;
-	translate: -50% -50%;
-}
-
-// absolute上下センター
-@mixin p-center-top {
-	top: 50%;
-	translate: 0 -50%;
-}
-
-// absolute左右センター
-@mixin p-center-left {
-	left: 50%;
-	translate: -50% 0;
-}
-
-// 縦並び間空き
-@mixin column($gap) {
-	display: flex;
-	flex-direction: column;
-	gap: $gap;
-}
-
-// ↓CSSでは
-// @include column( p(10) );
 
 // 横並び◯列
 @mixin row($division, $gap) {
@@ -123,24 +89,26 @@ $screenSizeSP: 390;
 @function pm($size, $maxSize: ($size * 4 / 5), $viewport: $screenSizePC) {
 	$rate: calc(100 / $viewport);
 	$calculatedSize: $rate * $size * 1vw;
-	@return max(#{$calculatedSize}, #{$maxSize}px);
-}
-
-// 入力値に*4/5した値とvwの値を比較して大きい方を返す
-// font-size: pm(50,40);
-// or
-// font-size: pm(50);
-
-@function pmin($size, $maxSize: ($size * 4 / 5), $viewport: $screenSizePC) {
-	$rate: calc(100 / $viewport);
-	$calculatedSize: $rate * $size * 1vw;
 	@return min(#{$calculatedSize}, #{$maxSize}px);
 }
 
 // 入力値に*4/5した値とvwの値を比較して大きい方を返す
-// font-size: pmin(-50,-40);
+// font-size: pm(-50,-40);
 // or
-// font-size: pmin(-50);
+// font-size: pm(-50);
+
+
+@function pmax($size, $maxSize: ($size * 4 / 5), $viewport: $screenSizePC) {
+	$rate: calc(100 / $viewport);
+	$calculatedSize: $rate * $size * 1vw;
+	@return max(#{$calculatedSize}, #{$maxSize}px);
+}
+
+// 入力値に*4/5した値とvwの値を比較して大きい方を返す
+// font-size: pmax(50,40);
+// or
+// font-size: pmax(50);
+
 
 @function pcl(
 	$minSize: (
