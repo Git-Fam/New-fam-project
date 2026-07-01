@@ -1,0 +1,356 @@
+@use "../functions" as *;
+
+/* -----------------------
+  ページヘッダー（共通）
+----------------------- */
+.page-header {
+  padding: p(160) p(160) p(80);
+  // background: #fff;
+
+  &__title {
+    font-family: $font-en;
+    font-size: p(96);
+    font-weight: 500;
+    color: #000;
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    margin-bottom: p(16);
+  }
+
+  &__ja {
+    font-family: $font-ja;
+    font-size: p(13);
+    color: rgba(0, 0, 0, 0.4);
+    letter-spacing: 0.1em;
+  }
+
+  @include sp {
+    padding: s(120) s(24) s(40);
+
+      &__ja {
+      font-size: s(13);
+    }
+
+    &__title {
+      font-size: s(56);
+    }
+  }
+}
+
+/* -----------------------
+  CEO MESSAGE
+----------------------- */
+.ceo-sec {
+  background: #0a0a0a;
+  padding: p(160) p(160);
+  position: relative;
+  overflow: hidden;
+
+  &__inner {
+    // display: flex;
+    align-items: flex-start;
+    gap: p(80);
+    position: relative;
+    z-index: 1;
+  }
+
+  &__left {
+    flex: 1;
+  }
+
+  &__title {
+    font-family: $font-en;
+    font-size: p(56);
+    font-weight: 500;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin-bottom: p(40);
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: p(20);
+
+    p {
+      font-family: $font-ja;
+      font-size: p(16);
+      line-height: 2;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  &__name {
+    font-family: $font-ja;
+    font-size: p(16);
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: p(20);
+  }
+
+  &__right {
+    flex: 1;
+  }
+
+  // 背景画像：最初から全体に配置、少し大きめ
+  &__bg {
+    position: absolute;
+    top: -14%; // 少し大きめにはみ出す
+    left: 0;
+    width: 100%;
+    height: 120%; // パララックス分の余白も含めて大きめ
+    z-index: 0;
+    will-change: transform;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+  }
+
+ @include sp {
+  padding: s(100) s(30);
+
+  &__inner {
+    flex-direction: column;
+    gap: s(40);
+  }
+
+  &__title {
+    font-size: s(48);
+    margin-bottom: s(32);
+  }
+
+  &__text {
+    gap: s(16);
+
+    p {
+      font-size: s(14);
+      line-height: 1.9;
+      letter-spacing: 1px;
+      font-weight: 400;
+    }
+  }
+
+  &__name {
+    font-size: s(13);
+    margin-top: s(16);
+  }
+
+  &__bg {
+    top: -20%;
+    height: 110%;
+
+     // SP時だけ黒を10-20%被せる
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.15); // 15%の黒
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    img {
+      // X位置 Y位置（例: 中央やや右・上寄りなら）
+      object-position: 60% 30%;
+    }
+  }
+}
+}
+
+/* -----------------------
+  CORPORATE INFO
+----------------------- */
+.info-sec {
+  background: #fff;
+  padding: p(160) p(160);
+//   position: sticky;
+//   top: 0;
+//   z-index: 0;
+
+  &__inner {
+    display: flex;
+    align-items: flex-start;
+    gap: p(80);
+  }
+
+  &__left {
+    flex: 0 0 p(300);
+  }
+
+  &__title {
+    font-family: $font-en;
+    font-size: p(48);
+    font-weight: 500;
+    color: #000;
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+
+  &__right {
+    flex: 1;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+
+    tr {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+      &:first-child {
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+      }
+    }
+
+    th {
+      font-family: $font-ja;
+      font-size: p(16);
+      color: rgba(0, 0, 0, 0.5);
+      font-weight: 400;
+      text-align: left;
+      padding: p(20) p(24) p(20) 0;
+      width: p(120);
+      white-space: nowrap;
+    }
+
+    td {
+      font-family: $font-ja;
+      font-size: p(16);
+      color: #000;
+      padding: p(20) 0;
+      line-height: 1.8;
+    }
+  }
+
+  @include sp {
+    padding: s(100) s(30);
+
+    &__inner {
+      flex-direction: column;
+      gap: s(32);
+    }
+
+    &__left {
+      flex: none;
+    }
+
+    &__title {
+      font-size: s(36);
+    }
+
+    &__table {
+      th, td {
+        font-size: s(12);
+        padding: s(14) s(8) s(14) 0;
+      }
+
+      th {
+        width: s(80);
+      }
+    }
+  }
+}
+
+/* -----------------------
+  全幅画像
+----------------------- */
+.company__fullimg-wrap {
+  padding: 0 p(80);
+  will-change: padding;
+
+  img {
+    width: 100%;
+    height: p(560);
+    object-fit: cover;
+    display: block;
+  }
+
+  @include sp {
+    padding: 0 s(24);
+
+    img {
+      height: s(240);
+    }
+  }
+}
+
+/* -----------------------
+  ACCESS
+----------------------- */
+.access-sec {
+  background: #fff;
+  padding: p(160) p(160);
+
+  &__inner {
+    display: flex;
+    align-items: flex-start;
+    gap: p(80);
+  }
+
+  &__left {
+    flex: 0 0 p(280);
+  }
+
+  &__title {
+    font-family: $font-en;
+    font-size: p(48);
+    font-weight: 500;
+    color: #000;
+    letter-spacing: 0.02em;
+    margin-bottom: p(24);
+  }
+
+  &__address {
+    font-family: $font-ja;
+    font-size: p(13);
+    color: rgba(0, 0, 0, 0.7);
+    line-height: 2;
+  }
+
+  &__right {
+    flex: 1;
+    height: p(320);
+
+    iframe {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px; // 角丸の大きさ（お好みで調整）
+        overflow: hidden;    // 中身が角からはみ出さないようにする
+    }
+  }
+
+  @include sp {
+    padding: s(100) s(30);
+
+    &__inner {
+      flex-direction: column;
+      gap: s(32);
+    }
+
+    &__left {
+      flex: none;
+    }
+
+    &__title {
+      font-size: s(36);
+    }
+
+    &__right {
+      width: 100%;
+      height: s(240);
+    }
+
+    &__address {
+        font-size: s(13);
+    }
+  }
+}

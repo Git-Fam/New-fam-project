@@ -1,0 +1,852 @@
+@use "../functions" as *;
+
+/* =========================
+  CONTACT PAGE
+========================= */
+.contact {
+  background: #0a0a0a;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: clip;
+
+  &__bgbg01 {
+    position: absolute;
+    // z-index: -1;
+    // top: p(-1004);
+    // right: p(-1000);
+
+
+    img {
+      width: p(1980);
+      height: p(1000);
+      opacity: 0.7;
+    }
+  }
+
+  &__bgbg02 {
+    position: absolute;
+    // z-index: -1;
+    top: p(1170);
+    right: p(-130);
+
+
+    img {
+      width: p(1980);
+      height: p(1000);
+      opacity: 0.7;
+    }
+  }
+
+  /* PAGE HEADER */
+  &__header {
+    // background: linear-gradient(135deg, #0a0a1a 0%, #0d1f2d 50%, #0a0a0a 100%);
+    background: #0a0a0a;
+    padding: p(160) p(160) p(80);
+
+    .page-header__title {
+      font-family: $font-en;
+      font-size: p(96);
+      font-weight: 500;
+      color: #fff;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .page-header__sub {
+      font-family: $font-ja;
+      font-size: p(13);
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: p(16);
+    }
+
+    @include sp {
+      padding: s(120) s(24) s(60);
+
+      .page-header__title {
+        font-size: s(64);
+      }
+
+      .page-header__sub {
+        font-size: s(12);
+      }
+
+    }
+  }
+
+  /* リード文 */
+  &__lead {
+    padding: p(60) p(160) 0;
+
+    p {
+      font-family: $font-ja;
+      font-size: p(14);
+      line-height: 2;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    @include sp {
+      padding: s(30) s(24) 0;
+
+      p {
+        font-size: s(13);
+      }
+    }
+  }
+
+  /* フォームラッパー */
+  &__form {
+    padding: p(60) p(160) p(160);
+
+    @include sp {
+      padding: s(40) s(24) s(80);
+    }
+  }
+}
+
+/* -----------------------
+  CF7 スタイル
+----------------------- */
+.wpcf7 {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: p(16);
+  padding: p(100) p(80);
+
+  @include sp {
+    padding: s(40) s(24);
+    border-radius: s(12);
+  }
+}
+
+
+.first {
+  margin-bottom: p(60) !important;
+
+  p {
+    margin-bottom: p(23);
+
+    @include sp {
+      margin-bottom: s(25) !important;
+    }
+  }
+}
+
+
+// フォーム内のテキストは黒系に変更
+.cf7-field {
+  margin-bottom: p(36);
+
+  label {
+    font-family: $font-ja;
+    font-size: p(14);
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.7);
+    display: block;
+  }
+
+  .req {
+    color: #3a6bff;
+    margin-left: p(4);
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.961);
+    border-radius: p(4);
+    padding: p(10) p(20);
+    font-family: $font-ja;
+    font-size: p(14);
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.25);
+    }
+
+    &:focus {
+      border-color: rgba(0, 0, 0, 0.3);
+    }
+
+    @include sp {
+      font-size: s(14);
+      padding: s(14) s(16);
+    }
+  }
+
+  textarea {
+    height: p(160);
+    resize: vertical;
+  }
+}
+
+// ラジオボタン
+.cf7-radio {
+  .wpcf7-radio {
+    display: flex;
+    flex-direction: column; // 縦並び
+    gap: p(12);
+
+    @include sp {
+      gap: s(13);
+      margin-bottom: s(60);
+    }
+  }
+
+  .wpcf7-list-item-label {
+    font-family: $font-ja;
+    font-size: p(13);
+    color: rgba(0, 0, 0, 0.7); // 黒に
+  }
+
+  .wpcf7-list-item {
+    display: flex;
+    align-items: center;
+    gap: p(10);
+    margin: 0 !important;
+
+    input[type="radio"] {
+      width: p(16);
+      height: p(16);
+      accent-color: #3a6bff;
+      flex-shrink: 0;
+      appearance: auto;
+      -webkit-appearance: auto;
+      margin: 0;
+
+      @include sp {
+        width: s(16);
+        height: s(16);
+      }
+    }
+
+    .wpcf7-list-item-label {
+      font-family: $font-ja;
+      font-size: p(13);
+      color: rgba(0, 0, 0, 0.7);
+
+      @include sp {
+        font-size: s(13);
+      }
+    }
+  }
+}
+
+// プライバシーポリシー：高さ固定・内部スクロール
+.cf7-privacy {
+  margin-bottom: p(40);
+
+  &__accept {
+    margin-top: p(12);
+    display: flex;
+    justify-content: flex-start;
+
+    @include sp {
+      margin-top: s(20);
+      margin-left: s(-15);
+    }
+
+
+    .wpcf7-acceptance label {
+      display: flex;
+      align-items: center;
+      gap: p(8);
+      cursor: pointer;
+      font-family: $font-ja;
+      font-size: p(12);
+      color: rgba(0, 0, 0, 0.5);
+
+      a {
+        color: rgba(0, 0, 0, 0.5);
+        text-decoration: underline;
+      }
+    }
+
+    input[type="checkbox"] {
+      accent-color: #3a6bff;
+      width: p(14);
+      height: p(14);
+
+      @include sp {
+        width: s(18);
+        height: s(18);
+      }
+    }
+  }
+
+  &__box {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: p(8);
+    padding: p(24) p(28);
+    height: p(120); // 高さ固定
+    overflow-y: scroll; // 内部スクロール
+    -webkit-overflow-scrolling: touch; // iOS対応
+  }
+
+  &__title {
+    font-family: $font-ja;
+    font-size: p(13);
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.7);
+    margin-bottom: p(12);
+  }
+
+  &__text p {
+    font-family: $font-ja;
+    font-size: p(12);
+    line-height: 1.8;
+    color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+// 送信エリア
+.cf7-submit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: p(12);
+  margin-top: p(50);
+
+
+  input[type="submit"] {
+    background: #1a1a2e;
+    border: none;
+    color: #fff;
+    font-family: $font-ja;
+    font-size: p(14);
+    letter-spacing: 0.05em;
+    padding: p(18) p(60);
+    border-radius: p(40);
+    cursor: pointer;
+    transition: background 0.3s, opacity 0.3s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+// バリデーション
+.wpcf7-not-valid-tip {
+  font-family: $font-ja;
+  font-size: p(12);
+  color: #e05050;
+  margin-top: p(8);
+  display: block;
+}
+
+.wpcf7-response-output {
+  font-family: $font-ja;
+  font-size: p(13);
+  padding: p(16);
+  margin-top: p(24);
+  border-radius: p(4);
+  color: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+
+
+
+// CF7のデフォルトsubmitとresponseを非表示
+.cf7-form-area {
+
+  .wpcf7-submit,
+  input[type="submit"] {
+    display: none !important;
+  }
+
+  .wpcf7-response-output {
+    display: none !important;
+  }
+
+  .wpcf7-spinner {
+    display: none !important;
+  }
+}
+
+// 確認画面ボタンラッパー
+.cf7-confirm-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: p(32);
+}
+
+.cf7-confirm-btn {
+  position: relative;
+  overflow: hidden; // はみ出した丸を隠す
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #fff;
+  font-family: $font-ja;
+  font-size: p(14);
+  padding: p(18) p(60);
+  border-radius: p(400);
+  cursor: pointer;
+  transition: color 0.4s ease, border-color 0.4s ease;
+  transition: opacity 0.5s ease, color 0.4s ease, border-color 0.4s ease;
+  z-index: 0;
+
+  // 丸の実体
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: #52ADC0;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: width 0.5s ease, height 0.5s ease, transform 0.5s ease;
+    z-index: -1;
+  }
+
+  &:hover {
+    border-color: #52ADC0;
+
+    &::after {
+      width: p(400); // ボタンより大きい値
+      height: p(400);
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  // 非活性状態
+  &.is-disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none; // クリック無効
+  }
+}
+
+// 確認テーブル
+.cf7-confirm-lead {
+  font-family: $font-ja;
+  font-size: p(13);
+  line-height: 2;
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: p(16);
+}
+
+.cf7-confirm-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: p(40) 0 p(48);
+
+  tr {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+
+    &:last-child {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  th,
+  td {
+    font-family: $font-ja;
+    font-size: p(13);
+    line-height: 1.8;
+    padding: p(16) p(20);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    width: p(160);
+    color: rgba(0, 0, 0, 0.4);
+    white-space: nowrap;
+  }
+
+  td {
+    color: rgba(0, 0, 0, 0.7);
+  }
+}
+
+// 確認画面ボタン
+.cf7-confirm-btns {
+  display: flex;
+  justify-content: center;
+  gap: p(24);
+}
+
+// 戻るボタン：右から左にグレーの丸が移動
+.cf7-back-btn {
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.6);
+  font-family: $font-ja;
+  font-size: p(14);
+  padding: p(18) p(60);
+  border-radius: p(40);
+  cursor: pointer;
+  transition: color 0.4s ease, border-color 0.4s ease;
+  z-index: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 100%; // 右端からスタート
+    width: p(400);
+    height: p(400);
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: left 0.5s ease, transform 0.5s ease;
+    z-index: -1;
+  }
+
+  &:hover {
+    border-color: rgba(0, 0, 0, 0.4);
+    color: rgba(0, 0, 0, 0.8);
+
+    &::after {
+      left: 50%; // 中央へ移動
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+}
+
+// 送信ボタン：左から右に#52ADC0の丸が移動
+.cf7-send-btn {
+  position: relative;
+  overflow: hidden;
+  background: #1a1a2e;
+  border: 1px solid #1a1a2e;
+  color: #fff;
+  font-family: $font-ja;
+  font-size: p(14);
+  padding: p(18) p(60);
+  border-radius: p(40);
+  cursor: pointer;
+  transition: color 0.4s ease, border-color 0.4s ease;
+  z-index: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0%; // 左端からスタート
+    width: p(400);
+    height: p(400);
+    background: #52ADC0;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: left 0.5s ease, transform 0.5s ease;
+    z-index: -1;
+  }
+
+  &:hover {
+    border-color: #52ADC0;
+
+    &::after {
+      left: 50%; // 中央へ移動
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+}
+
+
+// サンクスページ
+.thanks {
+  // background: linear-gradient(160deg, #0a0f1e 0%, #0d2030 40%, #0a1a1a 100%);
+  background: #0a0a0a;
+  min-height: 100vh;
+
+  // page-headerはcontact__headerを流用
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: p(80) p(160) p(160);
+    text-align: center;
+  }
+
+  .thanks__icon {
+    margin-bottom: p(60);
+
+    @include sp {
+      margin-bottom: s(40);
+    }
+  }
+
+  .thanks__anim {
+    position: relative;
+    width: p(120);
+    height: p(120);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+
+    @include sp {
+      width: s(80);
+      height: s(80);
+    }
+  }
+
+  // 波紋アニメーション
+  .thanks__ripple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    border: 1px solid rgba(64, 191, 216, 0.9);
+    animation: ripple 2.4s ease-out infinite;
+
+    &--1 {
+      width: p(120);
+      height: p(120);
+      animation-delay: 0s;
+
+      @include sp {
+        width: s(80);
+        height: s(80);
+      }
+    }
+
+    &--2 {
+      width: p(160);
+      height: p(160);
+      animation-delay: 0.4s;
+
+      @include sp {
+        width: s(110);
+        height: s(110);
+      }
+    }
+
+    &--3 {
+      width: p(200);
+      height: p(200);
+      animation-delay: 0.8s;
+
+      @include sp {
+        width: s(140);
+        height: s(140);
+      }
+    }
+  }
+
+  @keyframes ripple {
+    0% {
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0;
+    }
+  }
+
+  // 中央の円
+  .thanks__circle {
+    position: relative;
+    z-index: 1;
+    width: p(80);
+    height: p(80);
+    // background: linear-gradient(135deg, #d2d2d2, #2c7d93);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: popIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+    transform: scale(0);
+
+    svg {
+      width: p(40);
+      height: p(36);
+      animation: flyIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+      opacity: 0;
+      transform: translateX(p(-30));
+    }
+
+    @include sp {
+      width: s(64);
+      height: s(64);
+
+      svg {
+        width: s(28);
+        height: s(28);
+      }
+    }
+  }
+
+  @keyframes popIn {
+    0% {
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    70% {
+      transform: scale(1.1);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes flyIn {
+    0% {
+      opacity: 0;
+      transform: translateX(p(-8));
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  &__title {
+    font-family: $font-ja;
+    font-size: p(18);
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: p(32);
+
+    @include sp {
+      font-size: s(16);
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: p(16);
+
+    p {
+      font-family: $font-ja;
+      font-size: p(14);
+      line-height: 2;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    @include sp {
+      p {
+        font-size: s(13);
+      }
+    }
+  }
+}
+
+
+
+// SP調整
+@include sp {
+
+  // ラジオボタン
+  .cf7-radio {
+    .wpcf7-list-item-label {
+      font-size: s(13);
+    }
+  }
+
+  // フォームフィールド
+  .cf7-field {
+    margin-bottom: s(24);
+
+    label {
+      font-size: s(13);
+      margin-bottom: s(8);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      font-size: s(13);
+      padding: s(12) s(16);
+    }
+
+    textarea {
+      height: s(120);
+    }
+  }
+
+  // プライバシーポリシー
+  .cf7-privacy {
+    margin-bottom: s(24);
+
+    &__box {
+      padding: s(16) s(20);
+      height: s(100);
+    }
+
+    &__title {
+      font-size: s(12);
+    }
+
+    &__text p {
+      font-size: s(11);
+    }
+
+    &__accept {
+      .wpcf7-acceptance label {
+        font-size: s(12);
+      }
+    }
+  }
+
+  // 確認画面ボタン
+  .cf7-confirm-wrap {
+    margin-top: s(24);
+  }
+
+  .cf7-confirm-btn {
+    font-size: s(13);
+    padding: s(16) s(40);
+  }
+
+  // 確認テーブル
+  .cf7-confirm-lead {
+    font-size: s(13);
+  }
+
+  .cf7-confirm-table {
+    margin: s(24) 0 s(60);
+
+    th,
+    td {
+      font-size: s(12);
+      padding: s(12) s(12);
+    }
+
+    th {
+      width: s(90);
+    }
+  }
+
+  // 確認画面ボタン群
+  .cf7-confirm-btns {
+    flex-direction: column;
+    align-items: center;
+    gap: s(12);
+  }
+
+  .cf7-back-btn,
+  .cf7-send-btn {
+    font-size: s(13);
+    padding: s(16) s(40);
+    width: 100%;
+    text-align: center;
+  }
+}

@@ -1,0 +1,323 @@
+@use "../functions" as *;
+
+/* -----------------------
+  PAGE HEADER
+----------------------- */
+.business {
+    background: #0a0a0a;
+    position: relative;
+    overflow-x: clip;
+
+      &__bgbg {
+        position: absolute;
+        // z-index: -1;
+        top: p(-420);
+        right: p(-500);
+        
+
+        img {
+          width: p(1280);
+          height: p(900);
+        }
+      }
+
+
+  .page-header {
+    // background: linear-gradient(135deg, #0a0a1a 0%, #0d1f2d 50%, #0a0a0a 100%);
+     background: #0a0a0a;
+    padding: p(160) p(160) p(100);
+
+    &__title {
+      font-family: $font-en;
+      font-size: p(96);
+      font-weight: 500;
+      color: #fff;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    &__sub {
+      font-family: $font-ja;
+      font-size: p(13);
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: p(16);
+    }
+
+    @include sp {
+      padding: s(120) s(24) s(60);
+
+      &__sub {
+      font-size: s(13);
+    }
+
+      &__title {
+        font-size: s(64);
+      }
+    }
+  }
+
+   .company__fullimg {
+    video {
+      width: 100%;
+      height: p(560);
+      object-fit: cover;
+      display: block;
+    }
+
+    @include sp {
+      video {
+        height: s(240);
+      }
+    }
+  }
+}
+
+/* -----------------------
+  全幅画像はcompany__fullimg-wrapを流用
+----------------------- */
+
+/* -----------------------
+  BIZセクション
+----------------------- */
+.biz-wrap {
+  height: 500vh; // スクロール量（4セクション分）
+  position: relative;
+  margin-top: p(100);
+  padding-bottom: p(160);
+
+  // 背景動画
+  &__bg-video {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    display: block;
+    margin-bottom: -100vh; // stickyの高さ分を相殺
+    z-index: 0;
+  }
+}
+
+.biz-sec {
+  // position: relative;
+  z-index: 1;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  // background: #0a0a0a;
+  overflow: hidden;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 p(160);
+    gap: p(20);
+    justify-content: space-between; 
+  }
+
+  &__left {
+    flex: 1;
+    position: relative;
+    height: p(400);
+  }
+
+  &__right {
+    flex: 1;
+    position: relative;
+    height: p(400);
+    justify-content: flex-end;
+  }
+
+  // テキストアイテム（重ねて配置）
+  &__text-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(p(40));
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    pointer-events: none;
+
+    &.is-active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    &.is-exit {
+      opacity: 0;
+      transform: translateY(p(-40)); // 上に抜けていく
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+  }
+
+  // 画像アイテム（重ねて配置）
+  &__img-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateY(p(40));
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    display: flex;     
+    justify-content: flex-end; 
+
+    &.is-active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &.is-exit {
+      opacity: 0;
+      transform: translateY(p(-40));
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    img {
+      width: p(408);
+      height: p(510);
+      object-fit: cover;
+      display: block;
+      border-radius: p(10);
+      margin-left: auto; 
+    }
+  }
+
+  // 画像のjs-text-revealと同じワイプアニメーション
+.biz-sec__img-item {
+  img {
+    clip-path: inset(100% 0 0);
+    transition: clip-path 0.9s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  &.is-active img {
+    clip-path: inset(0% 0 0);
+  }
+
+  &.is-exit img {
+    clip-path: inset(0 0 100%); // 上に抜けていく
+    transition: clip-path 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+}
+
+  &__num {
+    font-family: $font-en;
+    font-size: p(13);
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: p(20);
+  }
+
+  &__title {
+    font-family: $font-en;
+    font-size: p(48);
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: p(16);
+  }
+
+  &__label {
+    font-family: $font-ja;
+    font-size: p(16);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: p(32);
+    display: block;
+  }
+
+  &__desc {
+    display: flex;
+    flex-direction: column;
+    gap: p(16);
+
+    p {
+      font-family: $font-ja;
+      font-size: p(13);
+      line-height: 2;
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+
+}
+
+@include sp {
+  .biz-wrap {
+    height: 500vh; // PCと同じ（4セクション分）
+  }
+
+  .biz-sec {
+    position: sticky;
+    top: 0;
+    height: 100vh; // SPでも1画面固定
+
+    &__inner {
+      flex-direction: column;
+      padding: s(60) s(24) s(40);
+      gap: 0;
+      height: 100%;
+      justify-content: center;
+    }
+
+    &__left {
+      width: 100%;
+      height: s(240);
+      flex: none;
+    }
+
+    &__right {
+      width: 100%;
+      height: s(220);
+      flex: none;
+      margin-top: s(104);
+      justify-content: flex-start; // SP時は左寄せ
+    }
+
+    &__text-item {
+      position: absolute;
+      top: s(30);
+      left: 0;
+      width: 100%;
+    }
+
+    &__img-item {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+
+      img {
+        width: 100%;
+        height: s(220);
+        border-radius: s(8);
+      }
+    }
+
+    &__title {
+      font-size: s(30);
+      margin-bottom: s(12);
+    }
+
+    &__num {
+      margin-bottom: s(12);
+    }
+
+    &__label {
+      margin-bottom: s(16);
+      font-size: s(13);
+    }
+
+    &__desc p {
+      font-size: s(12);
+    }
+  }
+}

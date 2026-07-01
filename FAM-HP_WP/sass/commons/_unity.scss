@@ -1,0 +1,243 @@
+@use "../functions" as *;
+
+/* -----------------------
+  unity
+----------------------- */
+
+// 表示・非表示
+.sp {
+  @include pc {
+    display: none !important;
+  }
+}
+
+.pc {
+  @include sp {
+    display: none !important;
+  }
+}
+
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 10%;
+}
+
+body {
+  overflow-x: clip; // hiddenではなくclipを使う
+  max-width: 100%;
+  // @include serif;
+
+  &.active {
+
+    @include sp {
+      overflow: hidden;
+    }
+  }
+}
+
+.whopper {
+  overflow: hidden;
+}
+
+// カスタムカーソル
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  will-change: transform;
+
+  &.is-visible {
+    opacity: 1;
+  }
+
+  &__inner {
+    position: relative;
+    width: p(44);
+    height: p(44);
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // 光のエフェクト（SVGの後ろ）
+    // 波紋1枚目
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: p(80);
+      height: p(80);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(122, 230, 253, 0.7) 0%, rgba(122, 230, 253, 0) 70%);
+      animation: cursorRipple 2s ease-out infinite;
+    }
+
+    // 波紋2枚目（少し遅らせる）
+    &::after {
+      animation-delay: 0.8s;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  @include sp {
+    display: none;
+  }
+}
+
+@keyframes cursorRipple {
+  0% {
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.5);
+    opacity: 0;
+  }
+}
+
+// テキストリビールアニメーション
+.js-text-reveal {
+  span {
+    display: block;
+     clip-path: inset(100% 0 0 0); 
+    transition: clip-path 0.9s cubic-bezier(0.77, 0, 0.175, 1);
+
+    &:nth-child(2) {
+      transition-delay: 0.15s;
+    }
+    &:nth-child(3) {
+      transition-delay: 0.3s;
+    }
+    &:nth-child(4) {
+      transition-delay: 0.45s;
+    }
+  }
+
+  &.is-visible span {
+    clip-path: inset(0 0% 0 0);
+  }
+}
+
+
+// テキストマスクアニメーション
+.mask-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  line-height: 1.1;      
+  padding-bottom: 0.1em;
+}
+
+.mask-char {
+  display: inline-block;
+  transform: translateY(110%);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &.is-visible {
+    transform: translateY(0);
+  }
+}
+
+
+
+.not-found {
+  background: #0a0a0a;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__inner {
+    text-align: center;
+    padding: p(80) p(40);
+  }
+
+  &__num {
+    font-family: $font-en;
+    font-size: p(160);
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.1);
+    line-height: 1;
+    margin-bottom: p(24);
+  }
+
+  &__title {
+    font-family: $font-en;
+    font-size: p(36);
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: p(24);
+  }
+
+  &__text {
+    font-family: $font-ja;
+    font-size: p(14);
+    line-height: 2;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: p(48);
+  }
+
+  &__btn {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: #fff;
+    font-family: $font-ja;
+    font-size: p(14);
+    padding: p(18) p(60);
+    border-radius: p(40);
+    text-decoration: none;
+    transition: border-color 0.4s ease;
+    z-index: 0;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: #52ADC0;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      transition: width 0.5s ease, height 0.5s ease, transform 0.5s ease;
+      z-index: -1;
+    }
+
+    &:hover {
+      border-color: #52ADC0;
+      &::after {
+        width: p(400);
+        height: p(400);
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    @include sp {
+      font-size: s(14);
+      padding: s(16) s(40);
+    }
+  }
+
+  @include sp {
+    &__num { font-size: s(120); }
+    &__title { font-size: s(28); }
+    &__text { font-size: s(13); }
+  }
+}

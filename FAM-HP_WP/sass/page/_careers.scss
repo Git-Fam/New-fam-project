@@ -1,0 +1,222 @@
+@use "../functions" as *;
+
+/* =========================
+  CAREERS PAGE
+========================= */
+.careers {
+  // background: #fff;
+
+  /* PAGE HEADER */
+  .page-header {
+    // background: #fff;
+    padding: p(160) p(160) p(80);
+
+    &__title {
+      font-family: $font-en;
+      font-size: p(96);
+      font-weight: 500;
+      color: #000;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    &__sub {
+      font-family: $font-ja;
+      font-size: p(12);
+      color: rgba(0, 0, 0, 0.4);
+      margin-top: p(16);
+    }
+
+    @include sp {
+      padding: s(120) s(24) s(60);
+       
+      &__sub {
+      font-size: s(13);
+    }
+
+      &__title { font-size: s(64); }
+    }
+  }
+
+  /* 全幅画像 */
+  .company__fullimg img {
+    height: p(480);
+
+    @include sp { height: s(220); }
+  }
+}
+
+/* -----------------------
+  JOB DESCRIPTION
+----------------------- */
+.job-sec {
+  padding: p(160) p(160);
+  // background: #fff;
+  position: relative;
+  overflow-x: clip;
+
+      &__bgbg {
+        position: absolute;
+        z-index: -1;
+        top: p(-1004);
+        right: p(-1000);
+        
+
+        img {
+          width: p(1980);
+          height: p(1000);
+          opacity: 0.7;
+        }
+      }
+
+  &__inner {
+    display: flex;
+    gap: p(80);
+    align-items: flex-start;
+  }
+
+  &__left {
+    width: p(320);
+    flex-shrink: 0;
+    position: sticky;
+    top: p(120);
+  }
+
+  &__title {
+    font-family: $font-en;
+    font-size: p(48);
+    font-weight: 500;
+    color: #000;
+    line-height: 1.1;
+    margin-bottom: p(40);
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: p(12);
+
+    li a {
+      font-family: $font-ja;
+      font-size: p(13);
+      color: rgba(0, 0, 0, 0.5);
+      text-decoration: none;
+      transition: color 0.3s;
+
+      &:hover { color: #000; }
+
+      @include sp {
+        font-size: s(12);
+      }
+    }
+  }
+
+  &__right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: p(80);
+  }
+
+  /* 各求人アイテム */
+  &__item {
+    position: relative;
+    padding: p(100) p(40);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: p(4);
+    overflow: hidden;
+  }
+
+  &__item-bg {
+    position: absolute;
+    top: 50%;
+    left: p(-60);
+    transform: translateY(-50%);
+    width: p(340);
+    opacity: 0.06;
+    pointer-events: none;
+
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
+
+  &__item-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__item-title {
+    font-family: $font-en;
+    font-size: p(32);
+    font-weight: 500;
+    color: #000;
+    line-height: 1;
+    margin-bottom: p(8);
+  }
+
+  &__item-sub {
+    font-family: $font-ja;
+    font-size: p(12);
+    color: rgba(0, 0, 0, 0.4);
+    margin-bottom: p(32);
+  }
+
+  /* テーブル */
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+
+    tr {
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+
+      &:last-child { border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
+    }
+
+    th, td {
+      font-family: $font-ja;
+      font-size: p(13);
+      line-height: 1.8;
+      padding: p(16) p(20);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: rgba(0, 0, 0, 0.4);
+      width: p(120);
+      white-space: nowrap;
+    }
+
+    td { color: #000; }
+  }
+
+  @include sp {
+    padding: s(80) s(24);
+
+    &__inner {
+      flex-direction: column;
+      gap: s(48);
+    }
+
+    &__left {
+      width: 100%;
+      position: static;
+    }
+
+    &__title { font-size: s(40); }
+
+    &__right { gap: s(48); }
+
+    &__item { padding: s(32) s(24); }
+
+    &__item-title { font-size: s(24); }
+
+    &__table {
+      th, td { font-size: s(12); padding: s(12) s(8); }
+      th { width: s(80); }
+    }
+  }
+}

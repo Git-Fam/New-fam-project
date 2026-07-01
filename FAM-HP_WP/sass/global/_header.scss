@@ -1,0 +1,622 @@
+@use "../functions" as *;
+
+/* -----------------------
+  header
+----------------------- */
+// * {
+//   outline: 1px solid red;
+// }
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 100;
+  padding: p(20) p(40);
+  box-sizing: border-box;
+  
+
+  @include sp {
+    padding: s(16) s(10) s(16) s(20);
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__logo {
+    img {
+      width: p(373);
+      height: auto;
+      display: block;
+    }
+
+    @include sp {
+      img {
+        width: s(230);
+        height: auto;
+        display: block;
+        margin-left: s(-10);
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: p(40);
+
+    @include sp {
+      display: none;
+    }
+  }
+
+  &__nav-item {
+    text-decoration: none;
+    font-size: p(14);
+    letter-spacing: 0.1em;
+    font-family: $font-en;
+    transition: none; // transitionをオフにしてチカチカを活かす
+
+    &.is-hovered {
+      // background: linear-gradient(90deg, #2C3FAE, #79E7FD, #6239AA);
+      background: #fff;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  // ハンバーガーボタン
+  &__hamburger {
+    display: none;
+
+    @include sp {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: s(44);
+      height: s(44);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 300;
+      position: relative;
+
+      span {
+        display: block;
+        position: absolute;
+        width: s(24);
+        height: 1px;
+        background-color: #fff;
+        transition:
+          transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+          opacity 0.3s ease;
+
+        &:nth-child(1) {
+          transform: translateY(s(-5));
+        }
+        &:nth-child(2) {
+          transform: translateY(0);
+          width: s(16);
+          margin-left: s(-8);
+          align-self: flex-start;
+        }
+        &:nth-child(3) {
+          transform: translateY(s(5));
+        }
+      }
+    }
+
+    &.is-open {
+      span {
+        background-color: #fff;
+
+        &:nth-child(1) {
+          transform: translateY(0) rotate(45deg);
+        }
+        &:nth-child(2) {
+          opacity: 0;
+          transform: translateX(s(10));
+        }
+        &:nth-child(3) {
+          transform: translateY(0) rotate(-45deg);
+        }
+      }
+    }
+  }
+
+  // ドロワーメニュー
+  &__drawer {
+    display: none;
+
+    @include sp {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(135deg, #0a0a0a 0%, #0d1b2a 100%);
+      z-index: 0;
+      clip-path: circle(0% at calc(100% - s(38)) s(38));
+      transition: clip-path 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+      pointer-events: none;
+
+      &.is-open {
+        clip-path: circle(150% at calc(100% - s(38)) s(38));
+        pointer-events: auto;
+      }
+    }
+  }
+
+  &__drawer-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    padding: 0 s(40);
+    gap: s(8);
+  }
+
+  &__drawer-item {
+    color: #fff;
+    text-decoration: none;
+    font-size: s(36);
+    letter-spacing: 0.08em;
+    font-family: $font-en;
+    opacity: 0;
+    transform: translateY(s(20));
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease;
+
+    &.is-hovered {
+      // background: linear-gradient(90deg, #2C3FAE, #79E7FD, #6239AA);
+      background: #fff;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .is-open & {
+      opacity: 1;
+      transform: translateY(0);
+      &:nth-child(1) {
+        transition-delay: 0.3s;
+      }
+      &:nth-child(2) {
+        transition-delay: 0.4s;
+      }
+      &:nth-child(3) {
+        transition-delay: 0.5s;
+      }
+      &:nth-child(4) {
+        transition-delay: 0.6s;
+      }
+      &:nth-child(5) {
+        transition-delay: 0.7s;
+      }
+    }
+  }
+
+  // ドロワー内の番号装飾
+  &__drawer-num {
+    display: block;
+    font-size: s(10);
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: s(4);
+    font-family: $font-en;
+  }
+
+  // 黒背景用（デフォルト）
+  &--dark {
+    .header__logo,
+    .header__nav-item {
+      color: #ffffff;
+    }
+
+    .header__hamburger span {
+      background-color: #ffffff;
+    }
+  }
+
+  // 白背景用
+  &--light {
+    .header__logo,
+    .header__nav-item {
+      color: #000000;
+    }
+
+    .header__hamburger span {
+      background-color: #000000;
+    }
+
+     // is-openのときは白を優先
+    .header__hamburger.is-open span {
+      background-color: #ffffff !important;
+    }
+  
+
+    // 上部に白グラデーションを追加
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: p(120); // グラデーションの高さ
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 0.2) 75%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+  }
+}
+
+// header.php の <header> タグにデフォルトで header--dark（白文字）を付け
+// 白背景のセクションでは header--light（黒文字）に切り替える
+
+// ページや特定セクションで白背景になる時はJSでクラスを切り替えます：
+// javascriptdocument.querySelector('.header').classList.remove('header--dark');
+// document.querySelector('.header').classList.add('header--light');
+
+.header__mega {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  // 上部は白、下130pxは透明に
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1) calc(100% - p(115)),
+    transparent 100%
+  );
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    visibility 0.35s ease;
+  padding-top: p(70);
+  pointer-events: none;
+
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  @include sp {
+    display: none;
+  }
+}
+
+.header__mega:not(.is-active) {
+  .header__mega-contact,
+  .header__mega-panel,
+  .header__mega-left,
+  .header__mega-right,
+  .header__mega-contact-marquee,
+  .header__mega-contact-track {
+    pointer-events: none !important;
+    visibility: hidden;
+  }
+}
+
+.header__mega-panel {
+  min-height: p(230);
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: p(30) p(60);
+  pointer-events: auto;
+  z-index: 100;
+  // cursor: pointer !important;
+
+  &.is-active {
+    display: flex;
+    // cursor: pointer;
+  }
+}
+
+.header__mega-left {
+  display: flex;
+  flex-direction: column;
+  gap: p(8);
+}
+
+.header__mega-en {
+  font-family: $font-en;
+  font-size: p(48);
+  color: #333;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.header__mega-ja {
+  font-family: $font-ja;
+  font-size: p(12);
+  color: rgba(98, 98, 98, 0.8);
+  letter-spacing: 0.15em;
+  margin-top: p(8);
+}
+
+.header__mega-right {
+  position: absolute;
+  top: 18%;
+  transform: translateY(-50%);
+  width: p(200);
+  height: p(200);
+  overflow: hidden;
+  border-radius: 4px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+// 個別位置調整（ブラウザで確認しながら微調整してください）
+.header__mega-right--company {
+  left: p(750);
+}
+
+.header__mega-right--business {
+  left: p(870);
+}
+
+.header__mega-right--careers {
+  left: p(990);
+}
+
+.header__mega-contact-left {
+  display: flex;
+  align-items: center;
+  gap: p(10);
+  padding: 0 p(32);
+  flex-shrink: 0;
+  // border-right: 1px solid rgba(255, 255, 255, 0.1);
+  height: 100%;
+}
+
+.header__mega-contact-en {
+  font-family: $font-en;
+  font-size: p(24);
+  color: #fff;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+.header__mega-contact-ja {
+  font-family: $font-ja;
+  font-size: p(10);
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.1em;
+}
+
+.header__mega-contact-marquee {
+  flex: 1;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: p(32);
+  padding-right: p(24);
+  pointer-events: none;
+}
+
+.header__mega-contact-track {
+  display: flex;
+  align-items: center;
+  gap: p(48);
+  white-space: nowrap;
+  animation: marquee 20s linear infinite;
+
+  span {
+    font-family: $font-ja;
+    font-size: p(12);
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+.header__mega-contact {
+  display: flex;
+  align-items: center;
+  height: p(115); // SVGの高さに合わせる
+  
+  // SVGを背景として使用
+  background-image: url('../img/global/obi.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  
+  border-top: none; // 既存のborder-topを削除
+  overflow: hidden;
+  padding: 0 p(50) 0 p(30);
+  position: relative;
+  transition: height 0.3s ease;
+
+  // シャインエフェクト
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(122, 230, 253, 0.15) 50%,
+      transparent 100%
+    );
+    transition: left 0s;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  &:hover {
+    &::before {
+      left: 150%;
+      transition: left 0.8s ease;
+    }
+
+    .header__mega-contact-en {
+      color: #7ae6fd;
+      text-shadow: 0 0 12px rgba(122, 230, 253, 0.6);
+    }
+
+    .header__mega-contact-btn {
+      animation: btnPulse 1.4s ease-in-out infinite;
+      background: rgba(122, 230, 253, 0.25);
+      border-color: rgba(122, 230, 253, 0.7);
+      filter: drop-shadow(0 0 8px rgba(122, 230, 253, 0.7));
+
+      .icon-mail { opacity: 0; }
+      .icon-plane { opacity: 1; }
+    }
+  }
+
+  .header__mega-contact-en {
+    transition: color 0.4s ease, text-shadow 0.4s ease;
+  }
+
+  .header__mega-contact-btn {
+    pointer-events: auto;
+    transition: background 0.3s ease, border-color 0.3s ease, filter 0.3s ease;
+  }
+}
+
+.header__mega-contact-btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: p(56);
+  height: p(56);
+  margin: 0 p(16);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  position: relative;
+  cursor: pointer;
+
+  .icon-mail {
+    position: absolute;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+  }
+
+  .icon-plane {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  svg {
+    width: p(18);
+    height: p(18);
+  }
+}
+
+@keyframes btnPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 4px rgba(122, 230, 253, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(122, 230, 253, 0.8));
+  }
+}
+
+.char {
+  display: inline-block;
+  transition: none;
+
+  &.is-hovered {
+    // background: linear-gradient(90deg, #2C3FAE, #79E7FD, #6239AA);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+
+
+
+.header__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 98; // megaより下（99）
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+  pointer-events: none;
+
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+// CONTACTが開いているときは帯のアニメーションを無効
+#js-mega.is-contact {
+  .header__mega-contact {
+    pointer-events: none; // ホバー自体を無効に
+
+    &::before {
+      display: none; // シャインエフェクト無効
+    }
+
+    &:hover {
+      background-image: url('../img/global/obi-contact.svg'); // 背景はそのまま
+      
+      .header__mega-contact-en {
+        color: #fff; // 色変化なし
+        text-shadow: none;
+      }
+
+      .header__mega-contact-btn {
+        animation: none;
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.2);
+        filter: none;
+
+        .icon-mail { opacity: 1; }
+        .icon-plane { opacity: 0; }
+      }
+    }
+  }
+}

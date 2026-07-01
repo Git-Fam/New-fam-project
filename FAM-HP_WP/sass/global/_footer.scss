@@ -1,0 +1,202 @@
+@use "../functions" as *;
+
+
+/* -----------------------
+  footer
+----------------------- */
+
+
+/* -----------------------
+  CONTACT バナー
+----------------------- */
+.contact-ban {
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: p(80) p(60);
+    position: relative;
+    min-height: p(400);
+    overflow: hidden;
+  }
+
+  // 背景動画（最初は全面カラー→ホバーで六角形モノクロに）
+  &__video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 103%;
+    height: 100%;
+    object-fit: cover;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    filter: grayscale(0%);
+    transition: clip-path 0.7s cubic-bezier(0.2, 0, 0.2, 1),  // ← 最初速く最後ゆっくり
+              width 0.7s cubic-bezier(0.2, 0, 0.2, 1),
+              height 0.7s cubic-bezier(0.2, 0, 0.2, 1),
+              filter 0.8s ease;
+    z-index: 0;
+
+     .contact-ban__inner:has(.contact-ban__body:hover) & {
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      width: p(200);
+      height: p(220);
+      filter: grayscale(100%);
+    }
+  }
+
+  &__body {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: p(16);
+    mix-blend-mode: normal;        
+    transition: mix-blend-mode 0s;
+
+    .contact-ban__inner:has(.contact-ban__body:hover) & {
+      mix-blend-mode: difference; 
+    }
+  }
+
+  &__title {
+    font-family: $font-en;
+    font-size: p(96);
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    text-align: center;
+
+    span {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  &__text {
+    font-family: $font-ja;
+    font-size: p(13);
+    color: #fff;
+    text-align: center;
+    line-height: 1.8;
+  }
+
+  @include sp {
+    &__inner {
+      padding: s(60) s(24);
+      min-height: s(280);
+    }
+
+    &__title {
+      font-size: s(48);
+    }
+    &__text {
+      font-size: s(12);
+      }
+
+    &__video {
+      width: 100%;
+      height: 103%;
+
+      .contact-ban__inner:hover & {
+        width: s(120);
+        height: s(134);
+      }
+    }
+  }
+}
+
+
+/* -----------------------
+  footer
+----------------------- */
+.footer {
+  background: #1a1a1a;
+  padding: p(32) p(60);
+  position: relative; 
+  z-index: 2;        
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: p(8);
+  }
+
+  &__logo {
+    display: block;
+
+    img {
+      width: p(90);
+      height: auto;
+      margin-left: p(-15);
+
+      @include sp {
+         width: s(90);
+         margin-left: s(-15);
+      }
+    }
+  }
+
+  &__copy {
+    font-family: $font-en;
+    font-size: p(10);
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.1em;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: p(40);
+  }
+
+  &__nav-item {
+    font-family: $font-en;
+    font-size: p(12);
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  @include sp {
+    padding: s(32) s(24);
+
+    &__inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: s(24);
+    }
+
+    &__nav {
+      gap: s(26);
+      flex-wrap: wrap;
+    }
+
+    &__nav-item {
+      font-size: s(12);
+    }
+
+     &__copy {
+   
+    font-size: s(12);
+  }
+  }
+}
