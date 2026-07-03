@@ -14,12 +14,12 @@
     background-color: $c-white; // 基本は白背景
     transition: background-color 0.3s ease;
 
-    // TOPページの最初だけ透明（is-front かつ 未スクロール時）
-    .is-front & {
+    // TOP・中学TOP・高校TOPの最初だけ透明（is-hero-top かつ 未スクロール時）
+    .is-hero-top & {
         background-color: transparent;
     }
     // スクロール後は白に戻す（JSで is-scrolled を付与）
-    .is-front &.is-scrolled {
+    .is-hero-top &.is-scrolled {
         background-color: $c-white;
     }
 }
@@ -42,17 +42,17 @@
     }
 }
 
-// 下層ページ（TOP以外）: PCはロゴ中央
+// 透明ページ以外（＝常に背景あり）はロゴ中央
 // PC: 背景あり状態（＝透明でないとき）はロゴ中央
 @include pc {
-    // 下層ページ（常に背景あり）
-    body:not(.is-front) .l-header__inner,
-  // TOPのスクロール後（背景あり）
-  .l-header.is-scrolled .l-header__inner {
+    // 透明ページ以外（常に背景あり）
+    body:not(.is-hero-top) .l-header__inner,
+    // 透明ページのスクロール後（背景あり）
+    .l-header.is-scrolled .l-header__inner {
         justify-content: center;
     }
 
-    body:not(.is-front) .l-header__toggle,
+    body:not(.is-hero-top) .l-header__toggle,
     .l-header.is-scrolled .l-header__toggle {
         position: absolute;
         top: 50%;

@@ -292,8 +292,7 @@
 
 	<!-- ============ VISION ============ -->
 	<section class="p-vision js-fade">
-		<!-- リンク先は外部サイト（未定）。決まり次第 href を差し替え -->
-		<a href="#" target="_blank" rel="noopener noreferrer" class="p-vision__link">
+		<a href="https://koshiengakuin.voiceados02.com/vision/" target="_blank" rel="noopener noreferrer" class="p-vision__link">
 			<picture>
 				<source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/vision-sp.webp">
 				<img src="<?php echo get_template_directory_uri(); ?>/img/home/vision-pc.webp" alt="甲子園学院グループについて 99 YEARS VISION PROJECT 創立100周年を見据え、新たなプロジェクトを始動します。" class="p-vision__img">
