@@ -6,7 +6,7 @@
 	<!-- ===== hero ===== -->
 	<section class="hero">
 		<div class="hero__panel hero__panel--junior js-fade">
-			<img class="hero__img" src="<?php echo get_template_directory_uri(); ?>/img/top/hero-junior.webp" alt="あなたの好きを応援する中学校　DIVE IN LOVE!">
+			<img class="hero__img" src="<?php echo get_template_directory_uri(); ?>/img/home/top/hero-junior.webp" alt="あなたの好きを応援する中学校　DIVE IN LOVE!">
 			<div class="hero__body">
 				<a class="hero__btn" href="<?php echo home_url('/junior/'); ?>">
 					<span class="hero__btn-label">甲子園学院中学校</span>
@@ -20,7 +20,7 @@
 			</div>
 		</div>
 		<div class="hero__panel hero__panel--high js-fade">
-			<img class="hero__img" src="<?php echo get_template_directory_uri(); ?>/img/top/hero-high.webp" alt="あなたの好きを見つける高等学校　FIND LOVE!">
+			<img class="hero__img" src="<?php echo get_template_directory_uri(); ?>/img/home/top/hero-high.webp" alt="あなたの好きを見つける高等学校　FIND LOVE!">
 			<div class="hero__body">
 				<a class="hero__btn" href="<?php echo home_url('/high/'); ?>">
 					<span class="hero__btn-label">甲子園学院高等学校</span>
@@ -43,8 +43,8 @@
         <h2 class="p-news__ttl js-fade">
           <picture>
             <source media="(max-width: 767px)"
-              srcset="<?php echo get_template_directory_uri(); ?>/img/top/news_ttl_sp.webp">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/top/news_ttl_pc.webp"
+              srcset="<?php echo get_template_directory_uri(); ?>/img/home/top/news_ttl_sp.webp">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/home/top/news_ttl_pc.webp"
               alt="NEWS 新着情報" class="p-news__ttl-img">
           </picture>
         </h2>
@@ -159,15 +159,15 @@
 		<!-- 背景は将来<video>に差し替え予定。p-message__media の中身のみ入れ替えればよい -->
 		<div class="p-message__media">
 			<picture>
-				<source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/manabu-bg-sp.webp">
-				<img src="<?php echo get_template_directory_uri(); ?>/img/home/manabu-bg-pc.webp" alt="" class="p-message__img">
+				<source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/top/manabu-bg-sp.webp">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/home/top/manabu-bg-pc.webp" alt="" class="p-message__img">
 			</picture>
 		</div>
 		<div class="p-message__overlay" aria-hidden="true"></div>
 		<p class="p-message__catch">
 			<picture>
-				<source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/manabu-txt-sp.svg">
-				<img src="<?php echo get_template_directory_uri(); ?>/img/home/manabu-txt-pc.svg" alt="学ぶことは、心を磨くこと" class="p-message__catch-img">
+				<source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/top/manabu-txt-sp.svg">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/home/top/manabu-txt-pc.svg" alt="学ぶことは、心を磨くこと" class="p-message__catch-img">
 			</picture>
 		</p>
 		<a class="p-message__brand" href="<?php echo home_url('/about/concept/'); ?>">
@@ -185,15 +185,15 @@
 	<section class="p-about">
 		<div class="p-about__bg">
 			<picture>
-				<source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/about-bg-sp.webp">
-				<img src="<?php echo get_template_directory_uri(); ?>/img/home/about-bg-pc.webp" alt="" class="p-about__bg-img">
+				<source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/top/about-bg-sp.webp">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/home/top/about-bg-pc.webp" alt="" class="p-about__bg-img">
 			</picture>
 		</div>
 		<div class="p-about__inner js-fade">
 			<p class="p-about__head">
 				<picture>
-					<source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/about-title.webp">
-					<img src="<?php echo get_template_directory_uri(); ?>/img/home/about-title.webp" alt="ABOUT 学校案内" class="p-about__head-img">
+					<source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/top/about-title.webp">
+					<img src="<?php echo get_template_directory_uri(); ?>/img/home/top/about-title.webp" alt="ABOUT 学校案内" class="p-about__head-img">
 				</picture>
 			</p>
 			<ul class="p-about__pills">
@@ -235,14 +235,14 @@
 	<section class="p-uniform">
 		<div class="p-uniform__bg">
 			<picture>
-				<source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/uniform-bg-sp.webp">
-				<img src="<?php echo get_template_directory_uri(); ?>/img/home/uniform-bg-pc.webp" alt="" class="p-uniform__bg-img">
+				<source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/top/uniform-bg-sp.webp">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/home/top/uniform-bg-pc.webp" alt="" class="p-uniform__bg-img">
 			</picture>
 		</div>
 		<p class="p-uniform__text js-fade">
 			<picture>
-				<source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/uniform-title-sp.webp">
-				<img src="<?php echo get_template_directory_uri(); ?>/img/home/uniform-title-pc.webp" alt="好きな自分で、学校へ行こう。 私服・制服併用制度スタート" class="p-uniform__text-img">
+				<source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/top/uniform-title-sp.webp">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/home/top/uniform-title-pc.webp" alt="好きな自分で、学校へ行こう。 私服・制服併用制度スタート" class="p-uniform__text-img">
 			</picture>
 		</p>
 		<a href="<?php echo home_url('/about/uniform/'); ?>" class="p-uniform__btn">
@@ -257,8 +257,8 @@
 		<!-- OPEN SCHOOL -->
 		<div class="p-banner p-banner--openschool js-fade">
 			<picture>
-				<source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/openschool-sp.webp">
-				<img src="<?php echo get_template_directory_uri(); ?>/img/home/openschool-pc.webp" alt="OPEN SCHOOL オープンスクール" class="p-banner__img">
+				<source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/top/openschool-sp.webp">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/home/top/openschool-pc.webp" alt="OPEN SCHOOL オープンスクール" class="p-banner__img">
 			</picture>
 			<div class="p-banner__links">
 				<a href="<?php echo home_url('/junior/openschool/'); ?>" class="p-banner__link">
@@ -275,16 +275,16 @@
 		<!-- RECRUIT -->
 		<a href="<?php echo home_url('/recruit/'); ?>" class="p-banner p-banner--recruit js-fade">
 			<picture>
-				<source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/recruit-sp.webp">
-				<img src="<?php echo get_template_directory_uri(); ?>/img/home/recruit-pc.webp" alt="RECRUIT 教職員採用情報" class="p-banner__img">
+				<source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/top/recruit-sp.webp">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/home/top/recruit-pc.webp" alt="RECRUIT 教職員採用情報" class="p-banner__img">
 			</picture>
 		</a>
 
 		<!-- GRADUATES -->
 		<a href="<?php echo home_url('/alumni/'); ?>" class="p-banner p-banner--graduates js-fade">
 			<picture>
-				<source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/graduates-sp.webp">
-				<img src="<?php echo get_template_directory_uri(); ?>/img/home/graduates-pc.webp" alt="GRADUATES 卒業生の方" class="p-banner__img">
+				<source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/top/graduates-sp.webp">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/home/top/graduates-pc.webp" alt="GRADUATES 卒業生の方" class="p-banner__img">
 			</picture>
 		</a>
 
@@ -294,8 +294,8 @@
 	<section class="p-vision js-fade">
 		<a href="https://koshiengakuin.voiceados02.com/vision/" target="_blank" rel="noopener noreferrer" class="p-vision__link">
 			<picture>
-				<source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/vision-sp.webp">
-				<img src="<?php echo get_template_directory_uri(); ?>/img/home/vision-pc.webp" alt="甲子園学院グループについて 99 YEARS VISION PROJECT 創立100周年を見据え、新たなプロジェクトを始動します。" class="p-vision__img">
+				<source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/top/vision-sp.webp">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/home/top/vision-pc.webp" alt="甲子園学院グループについて 99 YEARS VISION PROJECT 創立100周年を見据え、新たなプロジェクトを始動します。" class="p-vision__img">
 			</picture>
 		</a>
 	</section>
