@@ -358,9 +358,13 @@
 }
 
 .l-drawer__banner {
-    display: flex;
-    padding: p(24);
-    border-radius: p(8);
+    letter-spacing: 1.5px;
+    @include pc {
+        display: flex;
+        padding: p(47) p(40) p(41);
+        border-radius: p(8);
+        gap: p(30);
+    }
 
     @include sp {
         padding: s(20);
@@ -369,6 +373,10 @@
 
     &-topimg {
       display: flex;
+
+      a {
+         color: #fff;
+      }
 
        @include pc {
         flex-direction: column-reverse;
@@ -380,11 +388,11 @@
     }
 
     &--junior {
-        background-color: #f9c6d3;
-    } // 中学：薄ピンク（仮）
+        background-color: #FF9FB5;
+    } 
     &--high {
-        background-color: #f5a3c0;
-    } // 高校：ピンク（仮）
+        background-color: #FF84C2;
+    } 
     
 }
 
@@ -396,11 +404,11 @@
 
     @include pc {
         font-size: p(14);
-        margin-bottom: p(12);
+        margin-top: p(12);
     }
     @include sp {
         font-size: s(13);
-        margin-bottom: s(10);
+        margin-top: s(10);
     }
 }
 
@@ -408,7 +416,12 @@
     display: block;
 
     img {
-        width: 100%;
+        @include pc {
+             width: p(296);
+        }
+        @include sp {
+            width: 100%;
+        }
         height: auto;
         border-radius: p(4);
     }
@@ -419,8 +432,8 @@
     flex-direction: column;
 
     @include pc {
-        gap: p(10);
-        margin-top: p(16);
+        gap: p(18);
+        margin-top: p(6);
     }
     @include sp {
         gap: s(8);
