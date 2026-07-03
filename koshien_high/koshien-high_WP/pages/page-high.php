@@ -11,7 +11,13 @@ Template Path: pages/
 
 
 <main class="page page--high">
-  <div class="l-inner">高等学校</div>
+
+  <section class="high-hiro">
+    <h2 class="TL"></h2>
+  </section>
+
+
+
 </main>
 
 
