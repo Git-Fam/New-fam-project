@@ -28,7 +28,21 @@ Template Path: pages/
   </section>
 
   <div class="high-news_banner-wrap">
-    <section class="high-news"></section>
+    <section class="high-news">
+      <div class="ttl">
+        <h2 class="TL">
+          <picture>
+            <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-news-ttl-sp.svg" media="(max-width: 768px)">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-news-ttl-pc.svg" alt="NEWS 新着情報">
+          </picture>
+        </h2>
+      </div>
+      <div class="news-contents">
+        <div class="news-category"></div>
+        <div class="news-list"></div>
+        <a href="#" class="news-btn"></a>
+      </div>
+    </section>
     <section class="high-banner">
       <a class="high-banner-item hover-opa" href="#">
         <picture>

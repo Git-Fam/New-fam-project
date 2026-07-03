@@ -57,7 +57,6 @@
     }
   }
 
-
   .high-news_banner-wrap {
 
     @include pc {
@@ -82,7 +81,58 @@
         margin-bottom: p(120);
       }
 
-      @include sp {}
+      @include sp {
+        margin-bottom: s(91);
+      }
+
+      .ttl {
+
+        @include pc {
+          margin-bottom: p(62);
+        }
+
+        @include sp {
+          margin-bottom: s(43);
+        }
+
+        .TL {
+
+          @include pc {
+            width: p(218);
+          }
+
+          @include sp {
+            width: s(94);
+          }
+        }
+      }
+
+      .news-contents {
+        position: relative;
+
+        .news-category {
+
+          @include pc {
+            padding-right: s(150);
+            margin-bottom: p(51);
+          }
+
+          @include sp {
+            padding-inline: s(20);
+            margin-bottom: s(21);
+          }
+        }
+
+        .news-list {}
+
+        .news-btn {
+
+          @include pc{}
+          
+          @include sp{}
+        }
+      }
+
     }
 
     .high-banner {
@@ -218,7 +268,6 @@
       opacity: 1;
     }
   }
-
 
   .high-info {
 
