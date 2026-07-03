@@ -71,29 +71,27 @@ Template Path: pages/
         </picture>
       </h2>
     </div>
-    <div class="high-change-contents swiper">
-      <div class="swiper-wrapper">
-        <a href="#" class="high-change-contents-item swiper-slide hover-opa">
-          <picture>
-            <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-change-01-sp.webp" media="(max-width: 768px)">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-change-01-pc.webp" alt="">
-          </picture>
-        </a>
-        <a href="#" class="high-change-contents-item swiper-slide hover-opa">
-          <picture>
-            <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-change-02-sp.webp" media="(max-width: 768px)">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-change-02-pc.webp" alt="">
-          </picture>
-        </a>
-        <a href="#" class="high-change-contents-item swiper-slide hover-opa">
-          <picture>
-            <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-change-03-sp.webp" media="(max-width: 768px)">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-change-03-pc.webp" alt="">
-          </picture>
-        </a>
-      </div>
+    <div class="high-change-contents">
+      <a href="#" class="high-change-contents-item hover-opa">
+        <picture>
+          <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-change-01-sp.webp" media="(max-width: 768px)">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-change-01-pc.webp" alt="">
+        </picture>
+      </a>
+      <a href="#" class="high-change-contents-item hover-opa">
+        <picture>
+          <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-change-02-sp.webp" media="(max-width: 768px)">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-change-02-pc.webp" alt="">
+        </picture>
+      </a>
+      <a href="#" class="high-change-contents-item hover-opa">
+        <picture>
+          <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-change-03-sp.webp" media="(max-width: 768px)">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-change-03-pc.webp" alt="">
+        </picture>
+      </a>
     </div>
-    <div class="high-change-pagination swiper-pagination"></div>
+    <div class="high-change-pagination"></div>
   </section>
 
   <section class="high-info">

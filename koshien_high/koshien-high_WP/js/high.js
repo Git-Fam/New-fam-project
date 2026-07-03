@@ -1,29 +1,25 @@
 $(function () {
-  // ===== LOVE CHANGE スライダー =====
-  (function () {
-    const el = document.querySelector('.high-change-contents');
-    if (!el) return;
-
-    new Swiper(el, {
-      loop: true,
-      centeredSlides: true,
-      slidesPerView: 'auto',
-      spaceBetween: 16,
+  // ===== LOVE CHANGE スライダー（slick） =====
+  var $slider = $('.high-change-contents');
+  if ($slider.length) {
+    $slider.slick({
+      centerMode: true,
+      centerPadding: '0',
+      variableWidth: true,
+      slidesToShow: 1,
+      infinite: true,
+      autoplay: true,
+      autoplaySpeed: 3000,
       speed: 600,
-      grabCursor: true,
-      pagination: {
-        el: '.high-change-pagination',
-        clickable: true,
+      arrows: false,
+      dots: true,
+      appendDots: $('.high-change-pagination'),
+      customPaging: function () {
+        return '<button type="button" class="high-change-dot"></button>';
       },
-      breakpoints: {
-        768: {
-          spaceBetween: 50,
-        },
-      },
+      pauseOnHover: true,
     });
-  })();
-
-
+  }
 
 
 
