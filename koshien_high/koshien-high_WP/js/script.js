@@ -143,6 +143,7 @@ $(function () {
   });
 })();
 
+
 // ===== スクロールで要素をフェードイン =====
 (function () {
   const targets = document.querySelectorAll('.js-fade, .up, .down');
