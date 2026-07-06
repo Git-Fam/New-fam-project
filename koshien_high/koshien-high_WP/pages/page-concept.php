@@ -52,7 +52,7 @@ Template Path: pages/
 
 
       <!-- ============ Vロゴ＋グループロゴ一覧（footer流用コピペ） ============ -->
-      <section class="p-concept-logos">
+      <section class="p-concept-logos js-fade">
         <div class="p-concept-logos__inner">
           <div class="p-concept-logos__mark">
             <img src="<?php echo get_template_directory_uri(); ?>/img/footer/gakuin-logo.webp" alt="甲子園学院">
@@ -71,13 +71,13 @@ Template Path: pages/
 
 
       <!-- ============ ごあいさつへの導線（スクロールダウン矢印） ============ -->
-      <div class="p-greeting-title">
+      <div class="p-greeting-title js-fade">
             <img src="<?php echo get_template_directory_uri(); ?>/img/home/concept/greeting-title.webp" alt="ごあいさつ">
       </div>
 
 
       <!-- ============ ごあいさつ（背景sticky＋ボックスがスクロールで上昇） ============ -->
-      <section class="p-greeting" id="greeting">
+      <section class="p-greeting js-fade" id="greeting">
         <div class="p-greeting__sticky">
           <!-- 背景写真（固定） -->
           <div class="p-greeting__bg">
@@ -121,6 +121,27 @@ Template Path: pages/
           </div>
         </div>
       </section>
+
+      <!-- ============ BANNERS ============ -->
+        <section class="p-banners">
+
+          <!-- RECRUIT -->
+          <a href="<?php echo home_url('/recruit/'); ?>" class="p-banner p-banner--recruit js-fade">
+            <picture>
+              <source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/top/recruit-sp.webp">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/home/top/recruit-pc.webp" alt="RECRUIT 教職員採用情報" class="p-banner__img">
+            </picture>
+          </a>
+
+          <!-- GRADUATES -->
+          <a href="<?php echo home_url('/alumni/'); ?>" class="p-banner p-banner--graduates js-fade">
+            <picture>
+              <source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/top/graduates-sp.webp">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/home/top/graduates-pc.webp" alt="GRADUATES 卒業生の方" class="p-banner__img">
+            </picture>
+          </a>
+
+        </section>
     </div>
 </main>
 
