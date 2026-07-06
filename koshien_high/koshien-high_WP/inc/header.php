@@ -17,7 +17,7 @@
       <!-- 左：フォトメッセージ（装飾） -->
       <div class="l-drawer__photo">
         <picture>
-          <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/common/drawer_photo_sp.webp">
+          <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/common/drawer_photo_pc.webp">
           <img src="<?php echo get_template_directory_uri(); ?>/img/common/drawer_photo_pc.webp" alt="" class="l-drawer__photo-img">
         </picture>
       </div>

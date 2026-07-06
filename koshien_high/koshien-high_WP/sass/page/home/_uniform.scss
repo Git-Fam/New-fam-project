@@ -1,0 +1,89 @@
+@use "../../functions" as *;
+
+.p-uniform {
+  position: relative;
+}
+
+.p-uniform__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 2;
+}
+
+// 各制服（背景＋テキスト、丸ごと切替）
+.p-uniform__item {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease;
+
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+// 背景（色＋人物・1枚）
+.p-uniform__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  img { width: 100%; height: 100%; object-fit: cover; }
+}
+
+// テキスト（位置固定・背景の上）
+.p-uniform__text {
+  position: absolute;
+  z-index: 2;
+
+  @include pc {
+    top: 50%;
+    left: p(120);
+    transform: translateY(-50%);
+    width: p(360);
+  }
+  @include sp {
+    top: s(80);
+    left: s(24);
+    width: s(280);
+  }
+}
+
+.p-uniform__label {
+  @include pc { width: p(80); margin-bottom: p(16); }
+  @include sp { width: s(70); margin-bottom: s(12); }
+  img { width: 100%; height: auto; }
+}
+
+.p-uniform__ttl {
+  @include pc { width: p(200); margin-bottom: p(20); }
+  @include sp { width: s(150); margin-bottom: s(14); }
+  img { width: 100%; height: auto; }
+}
+
+.p-uniform__desc {
+  color: #fff;
+  font-family: $font-ja;
+  line-height: 2;
+  @include pc { font-size: p(14); }
+  @include sp { font-size: s(12); }
+}
+
+.p-uniform__note {
+  display: block;
+  @include pc { font-size: p(12); margin-top: p(8); }
+  @include sp { font-size: s(11); margin-top: s(6); }
+}
+
+.p-uniform__triggers {
+  position: relative;
+  z-index: 0;
+  margin-top: -100vh;
+}
+
+.p-uniform__trigger {
+  height: 100vh;
+}
