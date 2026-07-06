@@ -1,0 +1,287 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  changed
+----------------------- */
+
+.page-high-changed {
+  background: #FFB9DC;
+
+  // ===== hero =====
+  .high-changed-kv {
+    position: relative;
+    z-index: 1;
+
+    .high-changed-kv-cover {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 2;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .high-changed-kv-inr {
+      position: relative;
+      z-index: 1;
+
+      .high-changed-kv-item {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+
+        .high-changed-kv-item-bg {
+          width: 100%;
+          height: 100%;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+          }
+        }
+
+        .high-changed-kv-item-ttl {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        &.high-changed-kv-item-01 {
+
+          .high-changed-kv-item-ttl {
+
+            @include pc {
+              top: 46%;
+              width: p(665);
+            }
+
+            @include sp {
+              width: s(351);
+              top: 51%;
+            }
+          }
+        }
+
+        &.high-changed-kv-item-02 {
+
+          .high-changed-kv-item-ttl {
+
+            @include pc {
+              top: 45%;
+              width: p(754);
+            }
+
+            @include sp {
+              width: s(215);
+              top: 49%;
+            }
+          }
+        }
+
+        &.high-changed-kv-item-03 {
+
+          .high-changed-kv-item-ttl {
+
+            @include pc {
+              top: 45%;
+              width: p(786);
+            }
+
+            @include sp {
+              width: s(266);
+              top: 46.5%;
+            }
+          }
+        }
+
+        &.high-changed-kv-item-05 {
+
+          .high-changed-kv-item-ttl {
+            width: 100%;
+            color: #fff;
+
+            @include pc {
+              top: 41%;
+            }
+
+            @include sp {
+              top: 50%;
+            }
+
+            .TL {
+              font-family: $font-midashi;
+              font-weight: 700;
+              line-height: 1.9;
+              text-align: center;
+
+              @include pc {
+                font-size: p(46);
+                letter-spacing: 0.03em;
+                margin-bottom: p(53);
+              }
+
+              @include sp {
+                font-size: s(24);
+                letter-spacing: 0.1em;
+                margin-bottom: s(31);
+              }
+            }
+
+            .TX {
+              font-family: $font-ja;
+              font-weight: 400;
+              letter-spacing: 0.15em;
+              margin: 0 auto;
+
+              @include pc {
+                width: p(769);
+                font-size: p(18);
+                line-height: 1.8;
+              }
+
+              @include sp {
+                width: s(363);
+                font-size: s(14);
+                line-height: 2;
+              }
+            }
+
+          }
+        }
+
+      }
+    }
+
+
+  }
+
+  // ===== changed =====
+  .high-changed {
+    position: relative;
+    z-index: 2;
+
+    @include pc {
+      padding-block: p(168) p(111);
+      @include imgCover("high/high-change-bg-pc.webp");
+    }
+
+    @include sp {
+      padding-block: s(87) s(100);
+      border-radius: s(10);
+      @include imgCover("high/high-change-bg-sp.webp");
+    }
+
+    .ttl {
+
+      @include pc {
+        margin-bottom: p(67);
+      }
+
+      @include sp {
+        margin-bottom: s(41);
+      }
+
+      .TL {
+        margin: 0 auto;
+
+        @include pc {
+          width: p(1015);
+        }
+
+        @include sp {
+          width: s(314);
+        }
+      }
+
+    }
+
+    .high-changed-contents {
+      .high-changed-contents-item {
+        display: block;
+
+        @include pc {
+          width: p(992);
+          margin-inline: p(25);
+        }
+
+        @include sp {
+          width: s(336);
+          margin-inline: s(8);
+        }
+
+        picture,
+        img {
+          display: block;
+          width: 100%;
+        }
+      }
+    }
+
+    .high-changed-pagination {
+      @include pc {
+        margin-top: p(20);
+      }
+
+      @include sp {
+        margin-top: s(17);
+      }
+
+      .slick-dots {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        @include pc {
+          gap: p(2);
+        }
+
+        @include sp {
+          gap: s(4);
+        }
+
+        li {
+          display: flex;
+          line-height: 0;
+        }
+      }
+
+      .high-changed-dot {
+        display: block;
+        padding: 0;
+        border: none;
+        border-radius: 50%;
+        background: $c-white;
+        opacity: 0.5;
+        cursor: pointer;
+        font-size: 0;
+
+        @include pc {
+          width: p(8);
+          height: p(8);
+        }
+
+        @include sp {
+          width: s(8);
+          height: s(8);
+        }
+      }
+
+      .slick-active .high-changed-dot {
+        opacity: 1;
+      }
+    }
+  }
+
+}

@@ -15,38 +15,38 @@
     <!-- ▼SEO -->
     <link rel="canonical" href="<?php echo get_home_url(); ?>" />
     <title><?php
-    bloginfo('name');
-    if (wp_title('', false)) {
-        echo ' | ' . wp_title('', false);
-    }
-    ?></title>
+            bloginfo('name');
+            if (wp_title('', false)) {
+                echo ' | ' . wp_title('', false);
+            }
+            ?></title>
     <meta name="title" content="<?php
-    bloginfo('name');
-    if (wp_title('', false)) {
-        echo ' | ' . wp_title('', false);
-    }
-    ?>" />
+                                bloginfo('name');
+                                if (wp_title('', false)) {
+                                    echo ' | ' . wp_title('', false);
+                                }
+                                ?>" />
     <meta name="description" content="<?php bloginfo('description'); ?>" />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="<?php echo get_home_url(); ?>" />
     <meta property="og:title" content="<?php
-    bloginfo('name');
-    if (wp_title('', false)) {
-        echo ' | ' . wp_title('', false);
-    }
-    ?>" />
+                                        bloginfo('name');
+                                        if (wp_title('', false)) {
+                                            echo ' | ' . wp_title('', false);
+                                        }
+                                        ?>" />
     <meta property="og:description" content="<?php bloginfo('description'); ?>" />
     <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.jpg" />
 
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="<?php echo get_home_url(); ?>" />
     <meta property="twitter:title" content="<?php
-    bloginfo('name');
-    if (wp_title('', false)) {
-        echo ' | ' . wp_title('', false);
-    }
-    ?>" />
+                                            bloginfo('name');
+                                            if (wp_title('', false)) {
+                                                echo ' | ' . wp_title('', false);
+                                            }
+                                            ?>" />
     <meta property="twitter:description" content="<?php bloginfo('description'); ?>" />
     <meta property="twitter:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.jpg" />
 
@@ -79,12 +79,10 @@
     <link href="https://use.typekit.net/gde0eoy.css" rel="stylesheet">
     <script type="text/javascript" src="//webfonts.xserver.jp/js/xserver.js"></script>
 
-    <!-- ▼Swiper -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
     <!-- ▼slick（高等学校ページのみ） -->
-    <?php if (is_page('high')) : ?>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <?php if (is_page('high') || is_page('changed')) : ?>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
     <?php endif; ?>
     <?php wp_head(); ?>
 

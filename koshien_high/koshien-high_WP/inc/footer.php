@@ -4,40 +4,40 @@
 // 現在ページの最上位の親slug（junior/high 配下判定用）
 $top_slug = '';
 if (is_page()) {
-    $ancestors = get_post_ancestors(get_the_ID());
-    $top_id    = $ancestors ? end($ancestors) : get_the_ID();
-    $top_slug  = get_post_field('post_name', $top_id);
+  $ancestors = get_post_ancestors(get_the_ID());
+  $top_id    = $ancestors ? end($ancestors) : get_the_ID();
+  $top_slug  = get_post_field('post_name', $top_id);
 }
 
 // CONTACTを非表示にする条件
 $hide_contact =
-    is_page(array('contact', 'contact/confirm', 'contact/thanks'))
-    || is_404()
-    || (is_home() && !is_front_page()) || is_singular('post') || is_post_type_archive('post')
-    || $top_slug === 'junior'
-    || $top_slug === 'high';
+  is_page(array('contact', 'contact/confirm', 'contact/thanks'))
+  || is_404()
+  || (is_home() && !is_front_page()) || is_singular('post') || is_post_type_archive('post')
+  || $top_slug === 'junior'
+  || $top_slug === 'high';
 ?>
 
 <footer class="footer">
 
   <?php if (!$hide_contact) : ?>
-  <!-- ============ CONTACT ============ -->
-  <section class="l-contact js-fade">
-    <picture class="l-contact__bg">
-      <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/footer/contact_sp.webp">
-      <img src="<?php echo get_template_directory_uri(); ?>/img/footer/contact_pc.webp" alt="CONTACT お問い合わせ" class="l-contact__bg-img">
-    </picture>
-    <div class="l-contact__btns">
-      <a href="<?php echo home_url('/contact/'); ?>" class="l-contact__btn l-contact__btn--form">
-        <span>お問い合わせフォーム</span>
-        <span class="l-contact__btn-icon" aria-hidden="true"></span>
-      </a>
-      <a href="<?php echo home_url('/request/'); ?>" class="l-contact__btn l-contact__btn--request">
-        <span>資料請求</span>
-        <span class="l-contact__btn-icon" aria-hidden="true"></span>
-      </a>
-    </div>
-  </section>
+    <!-- ============ CONTACT ============ -->
+    <section class="l-contact js-fade">
+      <picture class="l-contact__bg">
+        <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/footer/contact_sp.webp">
+        <img src="<?php echo get_template_directory_uri(); ?>/img/footer/contact_pc.webp" alt="CONTACT お問い合わせ" class="l-contact__bg-img">
+      </picture>
+      <div class="l-contact__btns">
+        <a href="<?php echo home_url('/contact/'); ?>" class="l-contact__btn l-contact__btn--form">
+          <span>お問い合わせフォーム</span>
+          <span class="l-contact__btn-icon" aria-hidden="true"></span>
+        </a>
+        <a href="<?php echo home_url('/request/'); ?>" class="l-contact__btn l-contact__btn--request">
+          <span>資料請求</span>
+          <span class="l-contact__btn-icon" aria-hidden="true"></span>
+        </a>
+      </div>
+    </section>
   <?php endif; ?>
 
   <!-- ============ footer 本体 ============ -->
@@ -83,16 +83,19 @@ $hide_contact =
 </footer>
 
 </div>
-<!-- ▼Swiper -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"
-integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/script.js"></script>
 
 <?php if (is_page('high')) : ?>
-<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/high.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/high.js"></script>
+<?php endif; ?>
+
+<?php if (is_page('changed')) : ?>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/high-changed.js"></script>
 <?php endif; ?>
 
 
