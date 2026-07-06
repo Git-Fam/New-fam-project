@@ -1,0 +1,471 @@
+@use "../functions" as *;
+
+/* -----------------------
+  header
+----------------------- */
+
+.l-header {
+    @include wt500;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    background-color: $c-white; // 基本は白背景
+    transition: background-color 0.3s ease;
+
+    // TOP・中学TOP・高校TOPの最初だけ透明（is-hero-top かつ 未スクロール時）
+    .is-hero-top & {
+        background-color: transparent;
+    }
+    // スクロール後は白に戻す（JSで is-scrolled を付与）
+    .is-hero-top &.is-scrolled {
+        background-color: $c-white;
+    }
+}
+
+.l-header__inner {
+    position: relative;
+    z-index: 110;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    @include pc {
+        height: p(64);
+        padding: 0 p(40);
+    }
+    @include sp {
+        height: s(56);
+        padding: 0 s(16);
+    }
+}
+
+// 透明ページ以外（＝常に背景あり）はロゴ中央
+// PC: 背景あり状態（＝透明でないとき）はロゴ中央
+@include pc {
+    // 透明ページ以外（常に背景あり）
+    body:not(.is-hero-top) .l-header__inner,
+    // 透明ページのスクロール後（背景あり）
+    .l-header.is-scrolled .l-header__inner {
+        justify-content: center;
+    }
+
+    body:not(.is-hero-top) .l-header__toggle,
+    .l-header.is-scrolled .l-header__toggle {
+        position: absolute;
+        top: 50%;
+        right: p(40);
+        transform: translateY(-50%);
+    }
+}
+
+.l-header__logo {
+    display: block;
+    line-height: 0;
+}
+
+.l-header__logo-img {
+    width: auto;
+
+    @include pc {
+        height: p(36);
+    }
+    @include sp {
+        height: s(28);
+    }
+}
+
+// ハンバーガーボタン
+.l-header__toggle {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    background: none;
+    border: none;
+
+    @include pc {
+        width: p(50);
+        height: p(24);
+        gap: p(7);
+    }
+    @include sp {
+        width: s(36);
+        height: s(20);
+        gap: s(6);
+    }
+}
+
+.l-header__toggle-bar {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: $color-text; // 線の色（黒系）
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+
+    // TOP透明時は白い線にする場合（必要なら）
+    // .is-front .l-header:not(.is-scrolled) & { background-color: #fff; }
+}
+
+// 開いているとき（×に変形）— js-drawer-toggle に is-open が付く想定
+.l-header__toggle.is-open {
+    .l-header__toggle-bar:nth-child(1) {
+        transform: translateY(#{p(9)}) rotate(35deg);
+    }
+    .l-header__toggle-bar:nth-child(2) {
+        opacity: 0;
+    }
+    .l-header__toggle-bar:nth-child(3) {
+        transform: translateY(#{p(-9)}) rotate(-35deg);
+    }
+}
+
+@include sp {
+    .l-header__toggle.is-open {
+    .l-header__toggle-bar:nth-child(1) {
+        transform: translateY(#{s(9)}) rotate(35deg);
+    }
+    .l-header__toggle-bar:nth-child(2) {
+        osacity: 0;
+    }
+    .l-header__toggle-bar:nth-child(3) {
+        transform: translateY(#{p(-18)}) rotate(-35deg);
+    }
+}
+
+}
+
+// ============ drawer ============
+.l-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 90; // ヘッダーバー(100)より下、コンテンツより上
+    width: 100%;
+    height: 100dvh;
+    overflow-y: auto;
+    background-color: $c-white;
+    // 普段は非表示（上に隠す or フェード）
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity 0.4s ease,
+        visibility 0.4s ease;
+
+    // 開いた状態（js-drawer に is-open が付く）
+    &.is-open {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.l-drawer__inner {
+    @include pc {
+        display: flex;
+        flex: 1;
+        gap: p(40);
+        width: p(1200);
+        max-width: 1200px;
+        margin: 0 auto p(30);
+        padding: p(100) p(0) p(0);
+    }
+    @include sp {
+        padding: s(72) s(20) s(40);
+    }
+}
+
+// --- フォトメッセージ ---
+.l-drawer__photo {
+    position: relative;
+
+    @include pc {
+        grid-area: photo;
+        width: p(487);
+        height: p(288);
+        justify-self: end;
+        align-self: end;
+    }
+    @include sp {
+        margin-bottom: s(28);
+    }
+}
+
+.l-drawer__photo-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: p(8);
+
+    @include sp {
+        border-radius: s(8);
+    }
+}
+
+.l-drawer__photo-catch {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $c-white;
+    font-family: $font-ja;
+    white-space: nowrap;
+
+    @include pc {
+        font-size: p(22);
+        letter-spacing: 0.15em;
+    }
+    @include sp {
+        font-size: s(18);
+        letter-spacing: 0.12em;
+    }
+}
+
+// --- 中央ナビ ---
+.l-drawer__nav {
+    @include pc {
+        position: relative;
+        letter-spacing:p(2);
+        padding-top: p(10);
+        width: 50%;
+    }
+}
+
+.l-drawer__menu {
+    @include sp {
+        margin-bottom: s(28);
+    }
+}
+
+.l-drawer__item {
+    // border-bottom: 1px solid $color-border;
+
+    @include pc {
+        padding: p(16) 0;
+    }
+    @include sp {
+        padding: s(12) 0;
+    }
+}
+
+.l-drawer__link {
+    display: block;
+    color: $color-text;
+    font-family: $font-ja;
+    text-decoration: none;
+
+    @include pc {
+        font-size: p(18);
+    }
+    @include sp {
+        font-size: s(16);
+    }
+}
+
+.l-drawer__sub {
+    display: flex;
+    flex-wrap: wrap;
+
+    @include pc {
+        gap: p(16);
+        margin-top: p(10);
+    }
+    @include sp {
+        gap: s(12);
+        margin-top: s(8);
+    }
+
+    a {
+        color: #000;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+
+        @include pc {
+            font-size: p(13);
+        }
+        @include sp {
+            font-size: s(12);
+        }
+    }
+}
+
+// --- ボタン ---
+.l-drawer__btns {
+    display: flex;
+    flex-direction: column;
+
+    @include pc {
+        gap: p(14);
+        position: absolute;
+        bottom: 0;
+        right: p(0);
+    }
+    @include sp {
+        gap: s(12);
+        margin-top: s(20);
+        padding: s(60) s(70);
+    }
+}
+
+.l-drawer__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 9999px;
+    color: $c-white;
+    font-family: $font-ja;
+    text-decoration: none;
+
+    @include pc {
+        gap: p(16);
+        width: p(270);
+        padding: p(14) p(24);
+        font-size: p(15);
+    }
+    @include sp {
+        gap: s(14);
+        width: 100%;
+        padding: s(14) s(24);
+        font-size: s(14);
+    }
+
+    &--contact {
+        background-color: #a892c4;
+    } // 薄紫（仮）
+    &--request {
+        background-color: var(--school);
+    } // 濃い紫 #60388E
+}
+
+.l-drawer__btn-icon {
+    @include arrow-circle($arrow-circle_w);
+    flex-shrink: 0;
+
+    @include pc {
+        width: p(24);
+        height: p(24);
+    }
+    @include sp {
+        width: s(22);
+        height: s(22);
+    }
+}
+
+// --- 中高バナー ---
+.l-drawer__banners {
+    display: grid;
+
+    @include pc {
+        grid-area: banners;
+        grid-template-columns: 1fr 1fr;
+        gap: p(30);
+        padding: 0 p(35) 0;
+    }
+    @include sp {
+        grid-template-columns: 1fr;
+        margin-bottom: s(28);
+    }
+}
+
+.l-drawer__banner {
+    letter-spacing: 1.5px;
+    @include pc {
+        display: flex;
+        padding: p(47) p(40) p(41);
+        border-radius: p(8);
+        gap: p(30);
+    }
+
+    @include sp {
+        padding: s(60) s(20) s(75);
+    }
+
+    &-topimg {
+      display: flex;
+
+      a {
+         color: #fff;
+      }
+
+       @include pc {
+        flex-direction: column-reverse;
+       }
+
+      @include sp {
+        align-items: center;
+        flex-direction: column;
+      }
+    }
+
+    &--junior {
+        background-color: #FF9FB5;
+    } 
+    &--high {
+        background-color: #FF84C2;
+    } 
+    
+}
+
+.l-drawer__banner-head {
+    display: block;
+    color: $color-text;
+    font-family: $font-ja;
+    text-decoration: none;
+
+    @include pc {
+        font-size: p(14);
+        margin-top: p(12);
+    }
+    @include sp {
+        font-size: s(13);
+        margin-bottom: s(16);
+    }
+}
+
+.l-drawer__banner-img {
+    display: block;
+
+    img {
+        @include pc {
+             width: p(296);
+        }
+        @include sp {
+            width: 100%;
+        }
+        height: auto;
+        border-radius: p(4);
+    }
+}
+
+.l-drawer__banner-links {
+    display: flex;
+    flex-direction: column;
+
+    @include pc {
+        gap: p(18);
+        margin-top: p(6);
+    }
+    @include sp {
+        gap: s(16);
+        margin-top: s(46);
+        padding-left: s(20);
+    }
+
+    a {
+        color: $c-white;
+        font-family: $font-ja;
+        text-decoration: none;
+
+        @include pc {
+            font-size: p(14);
+        }
+        @include sp {
+            font-size: s(13);
+        }
+    }
+}

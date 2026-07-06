@@ -1,0 +1,43 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  C_more_check
+----------------------- */
+.C_more_check {
+
+
+  .TL {
+    margin-inline: auto;
+
+    @include pc {
+      width: p(371);
+      margin-bottom: p(57);
+    }
+
+    @include sp {
+      width: s(258);
+      margin-bottom: s(29);
+    }
+  }
+
+  .C_more_check-list {
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+
+    @include pc {
+      width: p(1126);
+      gap: p(35);
+    }
+
+    @include sp {
+      width: s(374);
+      gap: s(22);
+    }
+
+    .C_more_check-item {
+      display: block;
+      width: 100%;
+    }
+  }
+}
