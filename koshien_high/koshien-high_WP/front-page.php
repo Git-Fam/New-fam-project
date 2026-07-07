@@ -65,14 +65,13 @@
         </a>
       </div>
 
-        <!-- カード（PCはグリッド / SPはSwiper） -->
         <div class="p-news__body js-fade">
         <div class="swiper p-news__slider">
             <ul class="swiper-wrapper p-news__list">
             <?php
             $news_query = new WP_Query(array(
                 'post_type'      => 'post',
-                'posts_per_page' => 9,
+                'posts_per_page' => 3,
                 'orderby'        => 'date',
                 'order'          => 'DESC',
             ));

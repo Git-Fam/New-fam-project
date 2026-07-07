@@ -1,0 +1,473 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  page--alumni
+  卒業生の方・翠城会
+----------------------- */
+
+.page--alumni {
+	background: $c-white;
+	padding-top: p(64);
+
+	@include sp {
+		padding-top: s(56);
+	}
+}
+
+// ============ KV ============
+.p-alumni-hero {
+	position: relative;
+	width: 100%;
+	line-height: 0;
+
+	&::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.4) 100%);
+	}
+
+	&__img {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+
+	&__body {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 1;
+		width: 100%;
+		text-align: center;
+	}
+
+	&__title-img {
+		width: p(354);
+		height: auto;
+
+		@include sp {
+			width: s(265);
+		}
+	}
+}
+
+// ============ 各種証明書発行について ============
+.p-alumni {
+	padding: p(90) 0 p(140);
+
+	@include sp {
+		padding: s(70) 0 s(90);
+	}
+
+	&__inner {
+		max-width: p(886);
+		margin: 0 auto;
+		padding: 0 p(20);
+
+		@include sp {
+			max-width: s(334);
+			padding: 0 s(20);
+		}
+	}
+
+	&__heading {
+		display: flex;
+		justify-content: center;
+		margin-bottom: p(50);
+
+		img {
+			width: p(415);
+			height: auto;
+		}
+
+		@include sp {
+			margin-bottom: s(40);
+
+			img {
+				width: s(269);
+			}
+		}
+	}
+
+	&__block {
+		margin-bottom: p(90);
+
+		&:last-of-type {
+			margin-bottom: p(70);
+		}
+
+		@include sp {
+			margin-bottom: s(70);
+
+			&:last-of-type {
+				margin-bottom: s(60);
+			}
+		}
+	}
+
+	&__subheading {
+		margin-bottom: p(36);
+
+		img {
+			height: p(60);
+			width: auto;
+		}
+
+		@include sp {
+			margin-bottom: s(24);
+
+			img {
+				height: s(42);
+			}
+		}
+	}
+
+	&__text,
+	&__note {
+		margin: 0 0 p(30);
+		color: $color-text;
+		font-size: p(15);
+		line-height: 1.9;
+
+		@include sp {
+			font-size: s(13);
+			margin-bottom: s(24);
+		}
+	}
+
+	&__note {
+		color: $color-text-sub;
+		font-size: p(13);
+
+		@include sp {
+			font-size: s(11);
+		}
+	}
+
+	// ---- 表（画像） ----
+	&__table {
+		margin-bottom: p(30);
+
+		img {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+
+		@include sp {
+			margin-bottom: s(24);
+			overflow-x: auto;
+			-webkit-overflow-scrolling: touch;
+
+			img {
+				width: auto; // 原寸のまま横スクロールさせる（表ごとに幅が異なるため固定値にしない）
+				max-width: none;
+			}
+		}
+
+		&--sub {
+			margin: p(16) 0 0;
+
+			@include sp {
+				margin-top: s(16);
+			}
+		}
+	}
+
+	// ---- 申請に必要なもの：番号ステップ ----
+	&__steps {
+		display: flex;
+		flex-direction: column;
+		gap: p(36);
+
+		@include sp {
+			gap: s(28);
+		}
+	}
+
+	&__step-head {
+		display: flex;
+		align-items: center;
+		gap: p(8);
+		margin: 0 0 p(12);
+		color: $color-brand;
+		font-size: p(18);
+		font-weight: 700;
+
+		@include sp {
+			font-size: s(15);
+			margin-bottom: s(10);
+		}
+	}
+
+	&__step-num {
+		color: $color-brand;
+	}
+
+	&__step-text {
+		margin: 0 0 p(16);
+		color: $color-text;
+		font-size: p(15);
+		line-height: 1.9;
+
+		@include sp {
+			font-size: s(13);
+			margin-bottom: s(14);
+		}
+	}
+
+	// ---- PDFダウンロードボタン（小） ----
+	&__dl-btn {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: p(160);
+		height: p(34);
+		margin-top: p(6);
+		border: 1px solid $color-border;
+		border-radius: 9999px;
+		background: $c-white;
+		color: $color-text;
+		font-size: p(12);
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		text-decoration: none;
+		transition: opacity 0.3s ease;
+
+		&:hover {
+			opacity: 0.7;
+		}
+
+		@include sp {
+			width: s(160);
+			height: s(34);
+			font-size: s(12);
+		}
+	}
+
+	&__dl-btn-icon {
+		position: absolute;
+		top: 50%;
+		right: p(14);
+		width: p(11);
+		height: p(11);
+		transform: translateY(-50%);
+		background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233a2e44' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v12'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='4' y1='21' x2='20' y2='21'/%3E%3C/svg%3E")
+			center / contain no-repeat;
+
+		@include sp {
+			right: s(14);
+			width: s(11);
+			height: s(11);
+		}
+	}
+
+	// ---- 申請方法：定義リスト ----
+	&__method-title {
+		margin: 0 0 p(24);
+		color: $color-text;
+		font-size: p(18);
+		font-weight: 700;
+
+		@include sp {
+			font-size: s(15);
+			margin-bottom: s(18);
+		}
+	}
+
+	&__method-lead {
+		margin: 0 0 p(26);
+		color: $color-text;
+		font-size: p(15);
+		line-height: 1.9;
+
+		@include sp {
+			font-size: s(13);
+			margin-bottom: s(20);
+		}
+	}
+
+	&__dl {
+		margin: 0;
+	}
+
+	&__dl-row {
+		display: flex;
+		gap: p(24);
+		padding: p(20) 0;
+		border-top: 1px solid $color-border;
+
+		&:last-child {
+			border-bottom: 1px solid $color-border;
+		}
+
+		dt {
+			flex: 0 0 p(180);
+			color: $color-brand;
+			font-size: p(14);
+			font-weight: 700;
+		}
+
+		dd {
+			flex: 1 1 auto;
+			margin: 0;
+			color: $color-text;
+			font-size: p(14);
+			line-height: 1.9;
+		}
+
+		@include sp {
+			flex-direction: column;
+			gap: s(8);
+			padding: s(18) 0;
+
+			dt {
+				flex: none;
+				font-size: s(13);
+			}
+
+			dd {
+				font-size: s(13);
+			}
+		}
+	}
+
+	&__divider {
+		margin: p(50) 0;
+		border: none;
+		border-top: 1px solid $color-border;
+
+		@include sp {
+			margin: s(40) 0;
+		}
+	}
+
+	// ---- お問い合わせ導線 ----
+	&__contact {
+		text-align: center;
+		margin-bottom: p(60);
+
+		@include sp {
+			margin-bottom: s(50);
+		}
+	}
+
+	&__contact-text {
+		margin: 0 0 p(24);
+		color: $color-text;
+		font-size: p(15);
+
+		@include sp {
+			font-size: s(13);
+			margin-bottom: s(18);
+		}
+	}
+
+	&__contact-btn {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: p(212);
+		height: p(49);
+		border-radius: 9999px;
+		background: var(--school-sub, $color-bg-sub);
+		color: $color-text;
+		font-size: p(14);
+		font-weight: 700;
+		text-decoration: none;
+		transition: opacity 0.3s ease;
+
+		&:hover {
+			opacity: 0.8;
+		}
+
+		@include sp {
+			width: s(213);
+			height: s(46);
+			font-size: s(13);
+		}
+	}
+
+	&__contact-btn-icon {
+		@include arrow-circle($arrow-circle);
+		position: absolute;
+		top: 50%;
+		right: p(14);
+		width: p(19);
+		height: p(19);
+		transform: translateY(-50%);
+
+		@include sp {
+			right: s(14);
+			width: s(16);
+			height: s(16);
+		}
+	}
+
+	// ---- 電話・メール案内 ----
+	&__info {
+		max-width: p(614);
+		margin: 0 auto;
+		padding: p(30);
+		border-radius: p(16);
+		background: var(--school-sub, $color-bg-sub);
+		text-align: center;
+
+		@include sp {
+			max-width: none;
+			padding: s(24) s(20);
+		}
+	}
+
+	&__info-title {
+		margin: 0 0 p(20);
+		color: $color-text;
+		font-size: p(18);
+		font-weight: 700;
+
+		@include sp {
+			font-size: s(15);
+			margin-bottom: s(16);
+		}
+	}
+
+	&__info-row {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: p(30);
+		margin-bottom: p(16);
+
+		@include sp {
+			flex-direction: column;
+			gap: s(10);
+			margin-bottom: s(14);
+		}
+	}
+
+	&__info-tel,
+	&__info-mail {
+		color: $color-text;
+		font-family: $font-jost;
+		font-size: p(18);
+		text-decoration: none;
+
+		@include sp {
+			font-size: s(15);
+		}
+	}
+
+	&__info-hours {
+		margin: 0;
+		color: $color-text-sub;
+		font-size: p(13);
+
+		@include sp {
+			font-size: s(11);
+		}
+	}
+}
