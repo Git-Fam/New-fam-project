@@ -98,6 +98,10 @@ $hide_contact =
   <script src="<?php echo get_template_directory_uri(); ?>/js/high-changed.js"></script>
 <?php endif; ?>
 
+<?php if (is_page('course')) : ?>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/high-course.js"></script>
+<?php endif; ?>
+
 
 </body>
 
