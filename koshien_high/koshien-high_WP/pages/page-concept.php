@@ -14,24 +14,25 @@ Template Path: pages/
 
     <!-- ============ FV（sticky固定） ============ -->
     <div class="p-concept-fv-wrap">
-      <section class="p-concept-fv" id="js-concept-fv">
+      <section class="p-concept-fv js-fv-slideshow" id="js-fv-scroll-fade">
         <div class="p-concept-fv__slider">
-          <div class="p-concept-fv__slide is-active">
+          <div class="p-concept-fv__slide p-fv-slide-target is-active">
             <picture>
               <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/concept/fv_01_sp.webp">
               <img src="<?php echo get_template_directory_uri(); ?>/img/home/concept/fv_01_pc.webp" alt="">
             </picture>
           </div>
-          <div class="p-concept-fv__slide">
+          <div class="p-concept-fv__slide p-fv-slide-target">
             <picture>
               <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/concept/fv_02_sp.webp">
               <img src="<?php echo get_template_directory_uri(); ?>/img/home/concept/fv_02_pc.webp" alt="">
             </picture>
           </div>
         </div>
+
         <div class="p-concept-fv__white" id="js-fv-white"></div>
         <div class="p-concept-fv__gauge">
-          <span class="p-concept-fv__gauge-fill" id="js-fv-gauge-fill"></span>
+          <span class="p-concept-fv__gauge-fill js-fv-gauge-fill" id="js-fv-gauge-fill"></span>
         </div>
       </section>
     </div>

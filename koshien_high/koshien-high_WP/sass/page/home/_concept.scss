@@ -92,25 +92,6 @@
 }
 
 
-// キャッチ画像
-.p-concept-fv__catch {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  width: p(600);
-
-  @include sp {
-    width: s(280);
-  }
-
-  img {
-    width: 100%;
-    height: auto;
-  }
-}
-
 // 進行ゲージ（画面最下部・全幅）
 .p-concept-fv__gauge {
   position: absolute;
