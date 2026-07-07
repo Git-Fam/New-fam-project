@@ -164,34 +164,42 @@ $(function () {
     });
 })();
 
-// ===== concept FV スライドショー（全幅ゲージ連動） =====
+// =====  FV スライドショー（全幅ゲージ連動） =====
 (function () {
-    const fv = document.getElementById('js-concept-fv');
-    if (!fv) return;
+    // idではなく、共通のクラス（js-fv-slideshow）を持つ要素をすべて取得
+    const fvContainers = document.querySelectorAll('.js-fv-slideshow');
+    if (!fvContainers.length) return;
 
-    const slides = fv.querySelectorAll('.p-concept-fv__slide');
-    const fill = document.getElementById('js-fv-gauge-fill');
-    if (!slides.length || !fill) return;
+    // 見つかったスライドショーの数だけ、それぞれ独立して処理を回す
+    fvContainers.forEach(function (fv) {
+        const slides = fv.querySelectorAll('.p-fv-slide-target'); // 各スライド
+        const fill = fv.querySelector('.js-fv-gauge-fill');     // そのスライド内のゲージ
+        if (!slides.length || !fill) return;
 
-    const DURATION = 3000; // CSSの 3s と合わせる
-    let current = 0;
+        const DURATION = 3000; // CSSの 3s と合わせる
+        let current = 0;
 
-    function show(index) {
-        slides.forEach(function (s, i) {
-            s.classList.toggle('is-active', i === index);
-        });
-        // ゲージをリセットして左→右へ伸ばす
-        fill.classList.remove('is-filling');
-        void fill.offsetWidth; // リフロー強制でアニメリセット
-        fill.classList.add('is-filling');
-    }
+        function show(index) {
+            slides.forEach(function (s, i) {
+                s.classList.toggle('is-active', i === index);
+            });
+            // ゲージをリセットして左→右へ伸ばす
+            fill.classList.remove('is-filling');
+            void fill.offsetWidth; // リフロー強制でアニメリセット
+            fill.classList.add('is-filling');
+        }
 
-    show(0);
-    setInterval(function () {
-        current = (current + 1) % slides.length;
-        show(current);
-    }, DURATION);
+        // 初期実行
+        show(0);
+
+        // タイマー設定
+        setInterval(function () {
+            current = (current + 1) % slides.length;
+            show(current);
+        }, DURATION);
+    });
 })();
+
 
 // ===== ごあいさつ メッセージスライダー =====
 (function () {
@@ -238,9 +246,10 @@ $(function () {
     onScroll();
 })();
 
+
 // ===== concept FV → 理念 背景白フェード =====
 (function () {
-    const fv = document.getElementById('js-concept-fv');
+    const fv = document.getElementById('js-fv-scroll-fade');
     const white = document.getElementById('js-fv-white');
     if (!fv || !white) return;
 
@@ -288,16 +297,14 @@ $(function () {
   const section = document.getElementById('js-uniform');
   if (!section) return;
 
-  const texts = section.querySelectorAll('.p-uniform__text');
-  const imgs = section.querySelectorAll('.p-uniform__img');
-  const triggers = section.querySelectorAll('.p-uniform__trigger');
-  if (!texts.length || !triggers.length) return;
+  // テキストや画像単体ではなく、切り替えたい単位である「item」を取得する
+  const items = section.querySelectorAll('.pt-uniform__item');
+  const triggers = section.querySelectorAll('.pt-uniform__trigger');
+  if (!items.length || !triggers.length) return;
 
   function setActive(index) {
-    texts.forEach(function (el, i) {
-      el.classList.toggle('is-active', i === index);
-    });
-    imgs.forEach(function (el, i) {
+    // すべてのitemに対して、インデックスが一致したものだけに is-active を付与
+    items.forEach(function (el, i) {
       el.classList.toggle('is-active', i === index);
     });
   }
@@ -315,4 +322,35 @@ $(function () {
   });
 
   triggers.forEach(function (t) { observer.observe(t); });
+})();
+
+
+// ===== 設備・施設・アクセス：校舎案内 左サイドバーの階数ハイライト =====
+(function () {
+  const gallery = document.getElementById('js-campus-gallery');
+  const nav = document.getElementById('js-campus-nav');
+  if (!gallery || !nav) return;
+
+  const floors = gallery.querySelectorAll('.p-campus__floor');
+  const navItems = nav.querySelectorAll('.p-campus__nav-item');
+  if (!floors.length || !navItems.length) return;
+
+  function setActive(key) {
+    navItems.forEach(function (item) {
+      item.classList.toggle('is-active', item.dataset.floor === key);
+    });
+  }
+
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        setActive(entry.target.dataset.floorSection);
+      }
+    });
+  }, {
+    rootMargin: '-45% 0px -45% 0px', // 画面中央付近に来たセクションで切替
+    threshold: 0
+  });
+
+  floors.forEach(function (el) { observer.observe(el); });
 })();
