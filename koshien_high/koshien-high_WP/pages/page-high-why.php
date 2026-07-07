@@ -155,7 +155,7 @@ Template Path: pages/
 
   <section class="high-why-more_check">
 
-    <?php get_template_part('./inc/C_more_check'); ?>
+    <?php get_template_part('./inc/high_C_more_check'); ?>
 
   </section>
 
