@@ -314,7 +314,6 @@
         }
       }
 
-
       .high-course-stage-curriculum {
 
         @include pc {
@@ -325,13 +324,16 @@
 
         @include sp {
           overflow-x: scroll;
+          margin-top: s(36);
         }
 
         .high-course-stage-curriculum-inr {
 
-
           .high-course-stage-curriculum-accordion {
 
+            @include sp {
+              padding: 0 s(40);
+            }
 
             .high-course-stage-curriculum-accordion-body {
               overflow: hidden;
@@ -353,11 +355,11 @@
                   padding: p(22) 0 p(25);
                 }
 
-                @include sp {}
+                @include sp {
+                  padding: s(12) 0 s(13);
+                }
 
                 .ttl {
-
-                  @include sp {}
 
                   .TX {
                     text-align: center;
@@ -371,7 +373,9 @@
                       font-size: p(22);
                     }
 
-                    @include sp {}
+                    @include sp {
+                      font-size: s(15);
+                    }
                   }
                 }
 
@@ -385,19 +389,46 @@
                     width: p(33);
                   }
 
-                  @include sp {}
+                  @include sp {
+                    right: s(16);
+                    width: s(19);
+                  }
                 }
-
               }
 
               .accordion-body-item {
                 display: none;
-
-                height: 300px;
                 background-color: #fff;
+
+                @include pc {
+                  padding: p(85) p(77) p(92);
+                }
+
+                @include sp {
+                  padding: s(28) s(21) s(35);
+                }
+              }
+            }
+          }
+        }
+
+        &.is-active {
+
+          .high-course-stage-curriculum-inr {
+
+            @include sp {
+              width: calc(s(727) + (s(20) * 2));
+              margin-top: s(77);
+            }
+
+            .high-course-stage-curriculum-accordion {
+
+              @include sp {
+                padding: 0 s(20);
               }
 
-              &.is-active {
+              .high-course-stage-curriculum-accordion-body {
+
                 @include pc {
                   border-radius: p(10);
                 }
@@ -409,15 +440,14 @@
                 .accordion-body-ttl {
 
                   .ttl {
-
-
-                    .TX {}
+                    @include sp {
+                      width: s(395);
+                    }
                   }
 
                   .icon {
                     transform: translateY(-50%) rotate(180deg);
                   }
-
                 }
 
                 .accordion-body-item {
@@ -435,18 +465,24 @@
       background-color: #FF9BCD;
 
       .high-course-stage-contents {
-        .high-course-stage-contents-item {
-          &:nth-child(2) {
 
-            @include pc {
-              margin-bottom: p(99);
-            }
+        .high-course-stage-contents-list {
 
-            @include sp {
-              margin-bottom: s(140);
+          .high-course-stage-contents-item {
+            &:nth-child(2) {
+
+              @include pc {
+                margin-bottom: p(99);
+              }
+
+              @include sp {
+                margin-bottom: s(140);
+              }
             }
           }
         }
+
+
       }
     }
 
@@ -463,44 +499,49 @@
           padding: s(60) 0 s(125);
         }
 
-        .high-course-stage-contents-item {
+        .high-course-stage-contents-list {
 
-          &:nth-child(even) {
+          .high-course-stage-contents-item {
 
-            @include pc {
-              gap: p(73);
-            }
-          }
+            &:nth-child(even) {
 
-          &:nth-child(1) {
-
-            @include sp {
-              margin-bottom: s(140);
-            }
-          }
-
-          &:nth-child(2) {
-
-            @include pc {
-              margin-bottom: p(99);
+              @include pc {
+                gap: p(73);
+              }
             }
 
-            @include sp {
-              margin-bottom: s(112);
-            }
-          }
+            &:nth-child(1) {
 
-          &:nth-child(3) {
-
-            @include pc {
-              margin-bottom: p(103);
+              @include sp {
+                margin-bottom: s(140);
+              }
             }
 
-            @include sp {
-              margin-bottom: s(172);
+            &:nth-child(2) {
+
+              @include pc {
+                margin-bottom: p(99);
+              }
+
+              @include sp {
+                margin-bottom: s(112);
+              }
+            }
+
+            &:nth-child(3) {
+
+              @include pc {
+                margin-bottom: p(103);
+              }
+
+              @include sp {
+                margin-bottom: s(172);
+              }
             }
           }
         }
+
+
       }
     }
   }
