@@ -132,10 +132,10 @@ Template Path: pages/
         </div>
       </div>
 
-      <div class="high-course-stage-curriculum">
+      <div class="high-course-stage-curriculum is-active">
         <div class="high-course-stage-curriculum-inr">
           <div class="high-course-stage-curriculum-accordion">
-            <div class="high-course-stage-curriculum-accordion-body is-active">
+            <div class="high-course-stage-curriculum-accordion-body">
               <div class="accordion-body-ttl">
                 <div class="ttl">
                   <p class="TX">カリキュラム（予定）</p>
@@ -144,7 +144,9 @@ Template Path: pages/
                   <img src="<?php echo get_template_directory_uri(); ?>/img/high-course/high-course-stage-curriculum-accordion-icon.svg" alt="">
                 </div>
               </div>
-              <div class="accordion-body-item"></div>
+              <div class="accordion-body-item">
+                <img src="<?php echo get_template_directory_uri(); ?>/img/high-course/high-course-stage-curriculum-accordion-table-standard.svg" alt="スタンダートコースカリキュラムテーブル">
+              </div>
             </div>
           </div>
         </div>
