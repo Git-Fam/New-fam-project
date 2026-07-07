@@ -1,9 +1,9 @@
 @use "../../functions" as *;
 
 /* -----------------------
-  C_more_check
+  high_C_more_check
 ----------------------- */
-.C_more_check {
+.high_C_more_check {
 
 
   .TL {
@@ -20,7 +20,7 @@
     }
   }
 
-  .C_more_check-list {
+  .high_C_more_check-list {
     margin-inline: auto;
     display: flex;
     flex-direction: column;
@@ -35,7 +35,7 @@
       gap: s(22);
     }
 
-    .C_more_check-item {
+    .high_C_more_check-item {
       display: block;
       width: 100%;
     }
