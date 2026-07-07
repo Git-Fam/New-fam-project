@@ -183,7 +183,7 @@
 .p-recruit-outline__inner {
   @include pc {
     width: 100%;
-    max-width: 980px;
+    // max-width: 980px;
     margin: 0 auto;
     background-color: #fff; 
     border-radius: p(12);      
@@ -196,7 +196,7 @@
   text-align: center;
   font-family: $font-ja;
   letter-spacing: 0.1em;
-  color: var(--school);          // 
+  color: var(--school);  
   @include wt500;
 
   @include pc {
@@ -222,7 +222,7 @@
   }
 
   @include pc {
-    padding: p(32) p(8);
+    padding: p(32) p(17);
     gap: p(40);
   }
   @include sp {
@@ -251,23 +251,26 @@
 
 .p-recruit-outline__body {
   flex: 1;
-  font-family: $font-ja;
+  font-family: $font-a1;
   color: $color-text;
-  letter-spacing: 0.04em;
+  @include wt300;
 
   @include pc {
-    font-size: pm(14);
-    line-height: 2;
+    font-size: p(16);
+    line-height: calc(30 / 16);
+    letter-spacing: 0.14em;
   }
   @include sp {
-    font-size: s(13);
+    font-size: s(14);
     line-height: 1.9;
+    letter-spacing: 0.10em;
   }
 
   // Wysiwyg内の要素調整
   p {
     margin: 0;
     & + p { margin-top: 0.5em; }
+
   }
 
   // 番号リスト（①②や(1)(2)を手入力する場合はそのまま、
@@ -287,3 +290,4 @@
     word-break: break-all;   // 長いメールアドレスの折り返し
   }
 }
+

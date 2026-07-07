@@ -5,13 +5,13 @@ $font-en: 'Poppins', sans-serif;
 $font-ja: "Zen Kaku Gothic New", sans-serif;
 
 // タイトル・見出し（Adobe Fonts: A1ゴシック StdN）
-$font-a1: "a1-gothic", sans-serif; 
+$font-a1: "A1GothicStdN", sans-serif;
 
 // 日付など欧文数字（Google Fonts: Jost）
 $font-jost: "Jost", sans-serif;
 
 // ニュースのタイトル見出し（Adobe Fonts: A-OTF 見出ゴMB31 Pro）
-$font-midashi: "A-OTF 見出ゴMB31 Pro", sans-serif; // 仮
+$font-midashi: "MidashiGoPro-MB31", sans-serif;
 
 
 // font-family: Noto Serif JP;
@@ -29,6 +29,46 @@ $font-midashi: "A-OTF 見出ゴMB31 Pro", sans-serif; // 仮
 //   font-style: normal;
 //   line-height: normal;
 // }
+
+@font-face {
+  font-family: "A1GothicStdN";
+  src: url("../fonts/AP-OTF-A1GothicStdN-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "A1GothicStdN";
+  src: url("../fonts/AP-OTF-A1GothicStdN-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "A1GothicStdN";
+  src: url("../fonts/AP-OTF-A1GothicStdN-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "A1GothicStdN";
+  src: url("../fonts/AP-OTF-A1GothicStdN-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MidashiGoPro-MB31";
+  src: url("../fonts/A-OTF-MidashiGoPro-MB31.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 // font-weight:;
 @mixin wt100 {

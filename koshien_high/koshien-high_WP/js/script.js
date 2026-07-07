@@ -70,6 +70,27 @@ $(function () {
     });
 })();
 
+
+// ===== NEWS スライダー（SPのみドラッグ・ドット有効） =====
+(function () {
+    const el = document.querySelector('.p-news__slider');
+    if (!el || typeof Swiper === 'undefined') return;
+
+    new Swiper(el, {
+        slidesPerView: 'auto',      // CSSで指定したカード幅をそのまま使う
+        spaceBetween: 12,           // SCSSの gap: s(12) と揃える
+        pagination: {
+            el: '.p-news__pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            768: {
+                enabled: false,      // PC幅ではSwiper機能を無効化（CSS側のgrid表示に任せる）
+            },
+        },
+    });
+})();
+
 // ===== ドロワー開閉 =====
 (function () {
     const toggle = document.getElementById('js-drawer-toggle');
