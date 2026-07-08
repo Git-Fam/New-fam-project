@@ -131,29 +131,31 @@ Template Path: pages/
           </div>
         </div>
       </div>
-
-      <div class="high-course-stage-curriculum is-active">
-        <div class="high-course-stage-curriculum-inr">
-          <div class="high-course-stage-curriculum-accordion">
-            <div class="high-course-stage-curriculum-accordion-body">
-              <div class="accordion-body-ttl">
-                <div class="ttl">
-                  <p class="TX">カリキュラム（予定）</p>
+      <div class="high-course-stage-curriculum-wrap js-fade">
+        <div class="high-course-stage-curriculum-sc-icon sp">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/high-course/high-course-stage-curriculum-sc-icon.svg" alt="SCROLL">
+        </div>
+        <div class="high-course-stage-curriculum">
+          <div class="high-course-stage-curriculum-inr">
+            <div class="high-course-stage-curriculum-accordion">
+              <div class="high-course-stage-curriculum-accordion-body">
+                <div class="accordion-body-ttl">
+                  <div class="ttl">
+                    <p class="TX">カリキュラム（予定）</p>
+                  </div>
+                  <div class="icon">
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/high-course/high-course-stage-curriculum-accordion-icon.svg" alt="">
+                  </div>
                 </div>
-                <div class="icon">
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/high-course/high-course-stage-curriculum-accordion-icon.svg" alt="">
+                <div class="accordion-body-item">
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/high-course/high-course-stage-curriculum-accordion-table-standard.svg" alt="スタンダートコースカリキュラムテーブル">
                 </div>
-              </div>
-              <div class="accordion-body-item">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/high-course/high-course-stage-curriculum-accordion-table-standard.svg" alt="スタンダートコースカリキュラムテーブル">
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-
   </section>
 
   <section class="high-course-stage high-course-premium">
@@ -276,16 +278,49 @@ Template Path: pages/
           </div>
         </div>
       </div>
-
+      <div class="high-course-stage-curriculum-wrap js-fade">
+        <div class="high-course-stage-curriculum-sc-icon sp">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/high-course/high-course-stage-curriculum-sc-icon.svg" alt="SCROLL">
+        </div>
+        <div class="high-course-stage-curriculum">
+          <div class="high-course-stage-curriculum-inr">
+            <div class="high-course-stage-curriculum-accordion">
+              <div class="high-course-stage-curriculum-accordion-body">
+                <div class="accordion-body-ttl">
+                  <div class="ttl">
+                    <p class="TX">カリキュラム（予定）</p>
+                  </div>
+                  <div class="icon">
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/high-course/high-course-stage-curriculum-accordion-icon.svg" alt="">
+                  </div>
+                </div>
+                <div class="accordion-body-item">
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/high-course/high-course-stage-curriculum-accordion-table-premium.svg" alt="プレミアムコースカリキュラムテーブル">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="high-course-stage-banner js-fade">
+        <a href="#" class="high-course-stage-banner-item hover-opa">
+          <picture>
+            <source srcset="<?php echo get_template_directory_uri(); ?>/img/high-course/high-course-stage-banner-item-01-sp.webp" media="(max-width: 768px)">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/high-course/high-course-stage-banner-item-01-pc.webp" alt="2028年 新コースになります！ クラブチャレンジ 学びチャレンジ">
+          </picture>
+        </a>
+        <a href="#" class="high-course-stage-banner-item hover-opa">
+          <picture>
+            <source srcset="<?php echo get_template_directory_uri(); ?>/img/high-course/high-course-stage-banner-item-02-sp.webp" media="(max-width: 768px)">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/high-course/high-course-stage-banner-item-02-pc.webp" alt="ACHIEVEMENTS 進路実績">
+          </picture>
+        </a>
+      </div>
+      <div class="high-course-stage-more_check js-fade">
+        <?php get_template_part('./inc/high_C_more_check'); ?>
+      </div>
     </div>
-
   </section>
-
-
-
-
-
-
 </main>
 
 
