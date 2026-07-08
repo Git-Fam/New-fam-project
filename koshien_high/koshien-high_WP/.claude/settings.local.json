@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__plugin_figma_figma__get_metadata",
+      "mcp__plugin_figma_figma__get_screenshot",
+      "Bash(curl -s -o /private/tmp/claude-501/-Users-raimukun-Local-Sites-koshienhigh-app-public-wp-content-themes-koshien-high-WP/295b348b-2135-4751-8141-032994d89618/scratchpad/figma_top.png \"https://www.figma.com/api/mcp/asset/4d21bde3-2b01-48be-a2ea-abc0fe76d568\")",
+      "mcp__plugin_figma_figma__get_design_context",
+      "Read(//Users/raimukun/Local Sites/koshienhigh/app/public/**)",
+      "Read(//Users/raimukun/Local Sites/koshienhigh/**)",
+      "mcp__plugin_figma_figma__download_assets",
+      "Bash(npx sass *)",
+      "Bash(echo \"exit:$?\")",
+      "Bash(mkdir -p /private/tmp/claude-501/-Users-raimukun-Local-Sites-koshienhigh-app-public-wp-content-themes-koshien-high-WP/42ad410c-f6b5-418f-a2ba-f451a8111f79/scratchpad/alumni)",
+      "Bash(curl -sL -o pc_full.png \"https://www.figma.com/api/mcp/asset/03b18add-2a73-4265-8d51-547d1c944bc8\")",
+      "Bash(curl -sL -o sp_full.png \"https://www.figma.com/api/mcp/asset/291cc994-8633-4198-9adb-2258211ce69b\")",
+      "Bash(python3 -c ' *)"
+    ]
+  }
+}
