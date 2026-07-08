@@ -259,7 +259,7 @@ Template Path: pages/
       </div>
       <div class="high-admission-scholarship-inr js-fade">
 
-        <div class="scholarship-item">
+        <div class="scholarship-item is-active">
           <div class="scholarship-tab">学力特待生制度</div>
           <div class="scholarship-contents">
             <div class="scholarship-contents-item">
@@ -267,8 +267,13 @@ Template Path: pages/
               <p class="TX">
                 下記の公開模試において偏差値60以上で、かつA・Bいずれかの日程で受験し、入学する場合、審査の上、入学金ならびに中学校3年間の授業料を全額免除します。
               </p>
-              <div class="img">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/high-admission-scholarship-img-01.svg" alt="運動部奨学金制度">
+              <div class="img-wrap">
+                <div class="scroll sp">
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/high-admission-scholarship-img-scroll.svg" alt="scroll">
+                </div>
+                <div class="img">
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/high-admission-scholarship-img-01.svg" alt="運動部奨学金制度">
+                </div>
               </div>
             </div>
             <div class="scholarship-contents-item">
@@ -276,18 +281,135 @@ Template Path: pages/
               <p class="TX">
                 下記の公開模試において偏差値50以上で、かつA・Bいずれかの日程で受験し、入学する場合、入学金を全額免除します。
               </p>
-              <div class="img">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/high-admission-scholarship-img-02.svg" alt="文化部奨学金制度">
+              <div class="img-wrap">
+                <div class="scroll sp">
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/high-admission-scholarship-img-scroll.svg" alt="scroll">
+                </div>
+                <div class="img">
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/high-admission-scholarship-img-02.svg" alt="文化部奨学金制度">
+                </div>
               </div>
               <p class="TX TX-point">
                 ※①、②ともに事前に審査があります。<br>
-                　ご希望の方は、できるだけ早く本校にお問い合わせください。
+                <span class="pc">　</span>ご希望の方は、できるだけ早く本校にお問い合わせください。
               </p>
             </div>
           </div>
         </div>
 
+        <div class="scholarship-item">
+          <div class="scholarship-tab">運動部/文化部奨学金制度</div>
+          <div class="scholarship-contents">
+            <div class="scholarship-contents-item">
+              <h3 class="ttl">運動部奨学金制度</h3>
+              <p class="TX">
+                下記の公開模試において偏差値60以上で、かつA・Bいずれかの日程で受験し、入学する場合、審査の上、入学金ならびに中学校3年間の授業料を全額免除します。
+              </p>
+              <div class="img-wrap">
+                <div class="scroll sp">
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/high-admission-scholarship-img-scroll.svg" alt="scroll">
+                </div>
+                <div class="img">
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/high-admission-scholarship-img-03.svg" alt="運動部奨学金制度">
+                </div>
+              </div>
+            </div>
+            <div class="scholarship-contents-item">
+              <h3 class="ttl">文化部奨学金制度</h3>
+              <p class="TX">
+                下記の公開模試において偏差値50以上で、かつA・Bいずれかの日程で受験し、入学する場合、入学金を全額免除します。
+              </p>
+              <div class="img-wrap">
+                <div class="scroll sp">
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/high-admission-scholarship-img-scroll.svg" alt="scroll">
+                </div>
+                <div class="img">
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/high-admission-scholarship-img-04.svg" alt="文化部奨学金制度">
+                </div>
+              </div>
+              <p class="TX TX-point">
+                ※①、②ともに事前に審査があります。<br>
+                <span class="pc">　</span>ご希望の方は、できるだけ早く本校にお問い合わせください。
+              </p>
+            </div>
+          </div>
+        </div>
 
+        <div class="scholarship-item">
+          <div class="scholarship-tab">大阪府等他府県入学者<br class="pc">奨学金制度</div>
+          <div class="scholarship-contents">
+            <div class="scholarship-contents-item">
+              <h3 class="ttl">運動部奨学金制度</h3>
+              <p class="TX">
+                下記の公開模試において偏差値60以上で、かつA・Bいずれかの日程で受験し、入学する場合、審査の上、入学金ならびに中学校3年間の授業料を全額免除します。
+              </p>
+              <div class="img-wrap">
+                <div class="scroll sp">
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/high-admission-scholarship-img-scroll.svg" alt="scroll">
+                </div>
+                <div class="img">
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/high-admission-scholarship-img-05.svg" alt="運動部奨学金制度">
+                </div>
+              </div>
+            </div>
+            <div class="scholarship-contents-item">
+              <h3 class="ttl">文化部奨学金制度</h3>
+              <p class="TX">
+                下記の公開模試において偏差値50以上で、かつA・Bいずれかの日程で受験し、入学する場合、入学金を全額免除します。
+              </p>
+              <div class="img-wrap">
+                <div class="scroll sp">
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/high-admission-scholarship-img-scroll.svg" alt="scroll">
+                </div>
+                <div class="img">
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/high-admission-scholarship-img-06.svg" alt="文化部奨学金制度">
+                </div>
+              </div>
+              <p class="TX TX-point">
+                ※①、②ともに事前に審査があります。<br>
+                <span class="pc">　</span>ご希望の方は、できるだけ早く本校にお問い合わせください。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="scholarship-item">
+          <div class="scholarship-tab">ファミリー奨学金制度</div>
+          <div class="scholarship-contents">
+            <div class="scholarship-contents-item">
+              <h3 class="ttl">運動部奨学金制度</h3>
+              <p class="TX">
+                下記の公開模試において偏差値60以上で、かつA・Bいずれかの日程で受験し、入学する場合、審査の上、入学金ならびに中学校3年間の授業料を全額免除します。
+              </p>
+              <div class="img-wrap">
+                <div class="scroll sp">
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/high-admission-scholarship-img-scroll.svg" alt="scroll">
+                </div>
+                <div class="img">
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/high-admission-scholarship-img-07.svg" alt="運動部奨学金制度">
+                </div>
+              </div>
+            </div>
+            <div class="scholarship-contents-item">
+              <h3 class="ttl">文化部奨学金制度</h3>
+              <p class="TX">
+                下記の公開模試において偏差値50以上で、かつA・Bいずれかの日程で受験し、入学する場合、入学金を全額免除します。
+              </p>
+              <div class="img-wrap">
+                <div class="scroll sp">
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/high-admission-scholarship-img-scroll.svg" alt="scroll">
+                </div>
+                <div class="img">
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/high-admission-scholarship-img-08.svg" alt="文化部奨学金制度">
+                </div>
+              </div>
+              <p class="TX TX-point">
+                ※①、②ともに事前に審査があります。<br>
+                <span class="pc">　</span>ご希望の方は、できるだけ早く本校にお問い合わせください。
+              </p>
+            </div>
+          </div>
+        </div>
 
       </div>
     </section>
