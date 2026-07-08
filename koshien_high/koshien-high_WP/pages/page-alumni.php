@@ -92,7 +92,7 @@ $pdf_address_label  = 'https://www.koshiengakuin-h.ed.jp/document/addresslabel.p
         <div class="p-alumni__steps">
           <div class="p-alumni__step">
             <p class="p-alumni__step-head"><span class="p-alumni__step-num">&#10102;</span>証明書交付願</p>
-            <p class="p-alumni__step-text">
+            <p class="p-alumni__step-text p-indent">
               下のリンクからダウンロードし、必要事項をご記入ください。<br>
               ※各種証明書は卒業時の氏名での発行となります。
             </p>
@@ -104,7 +104,7 @@ $pdf_address_label  = 'https://www.koshiengakuin-h.ed.jp/document/addresslabel.p
 
           <div class="p-alumni__step">
             <p class="p-alumni__step-head"><span class="p-alumni__step-num">&#10103;</span>本人確認書類</p>
-            <p class="p-alumni__step-text">
+            <p class="p-alumni__step-text p-indent">
               身分証明書（運転免許証、健康保険証、パスポート、マイナンバーカード等の公的書類）<br>
               郵送による申請の場合は、その写し。
             </p>
@@ -112,12 +112,16 @@ $pdf_address_label  = 'https://www.koshiengakuin-h.ed.jp/document/addresslabel.p
 
           <div class="p-alumni__step">
             <p class="p-alumni__step-head"><span class="p-alumni__step-num">&#10104;</span>証明書発行手数料</p>
-            <p class="p-alumni__step-text">上記表の金額分の切手をご準備ください。</p>
+            <p class="p-alumni__step-text p-indent">上記表の金額分の切手をご準備ください。</p>
           </div>
 
           <div class="p-alumni__step">
             <p class="p-alumni__step-head"><span class="p-alumni__step-num">&#10105;</span>返信用切手（証明書の郵送を希望する場合）</p>
-            <div class="p-alumni__table p-alumni__table--sub">
+             <p class="p-alumni__step-text p-indent">
+              身分証明書（運転免許証、健康保険証、パスポート、マイナンバーカード等の公的書類）<br>
+              郵送による申請の場合は、その写し。
+            </p>
+            <div class="p-alumni__table p-alumni__table--sub p-indent">
               <picture>
                 <source media="(max-width:767px)" srcset="<?php echo $img; ?>/sp_table2.webp">
                 <img src="<?php echo $img; ?>/pc_table2.webp" alt="返信用切手の金額一覧">
@@ -139,8 +143,8 @@ $pdf_address_label  = 'https://www.koshiengakuin-h.ed.jp/document/addresslabel.p
         <div class="p-alumni__method">
           <h3 class="p-alumni__method-title">窓口での手続き</h3>
           <p class="p-alumni__method-lead">
-            事前にお電話で来校日時をご連絡ください（連絡先は下記【お問い合わせ先】をご覧ください。）<br>
-            上記&#10102;〜&#10105;の書類等を準備し、来校の上、申請手続きを行ってください。また、提出先から証明書の様式の指定がある場合は、用紙をお持ちください。
+            事前にお電話で来校日時をご連絡ください（連絡先は下記【お問い合わせ先】をご覧ください。）
+            上記①〜④の書類等を準備し、来校の上、申請手続きを行ってください。また、提出先から証明書の様式の指定がある場合は、用紙をお持ちください。
           </p>
           <dl class="p-alumni__dl">
             <div class="p-alumni__dl-row">
@@ -161,13 +165,13 @@ $pdf_address_label  = 'https://www.koshiengakuin-h.ed.jp/document/addresslabel.p
 
           <h3 class="p-alumni__method-title">郵送による手続き</h3>
           <p class="p-alumni__method-lead">
-            上記&#10102;〜&#10105;の書類等を同封し、下記にご郵送ください。また、提出先から証明書の様式の指定がある場合は、用紙を同封してください。
+            上記①〜④の書類等を同封し、下記にご郵送ください。また、提出先から証明書の様式の指定がある場合は、用紙を同封してください。
           </p>
           <dl class="p-alumni__dl">
             <div class="p-alumni__dl-row">
               <dt>送付先</dt>
               <dd>
-                〒663-8107　西宮市瓦林町4-25　学校法人甲子園学院 法人事務局 庶務課 証明書発行係　宛<br>
+                〒663-8107　西宮市瓦林町4-25 学校法人甲子園学院 法人事務局 庶務課 証明書発行係宛<br>
                 宛名ラベル（PDF）を下のボタンからダウンロードしてお使いください。
                 <a href="<?php echo esc_url($pdf_address_label); ?>" target="_blank" rel="noopener noreferrer" class="p-alumni__dl-btn">
                   <span class="p-alumni__dl-btn-txt">宛名ラベル</span>
