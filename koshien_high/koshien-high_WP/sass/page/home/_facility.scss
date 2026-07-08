@@ -163,10 +163,11 @@
     &__nav {
         position: sticky;
         top: p(64);
-        flex: 0 0 p(320);
-        width: p(320);
+        flex: 0 0 p(417);
+        width: p(417);
         height: calc(100vh - #{p(64)});
-        background: linear-gradient(160deg, #dfd2e6 0%, #b7a1cb 100%);
+        background-image: url(../img/home/facility/FF-bg.webp);
+        background-size: cover;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -184,6 +185,7 @@
 		img {
 			@include pc {
 				width: p(83);
+                margin: auto;
 			}
 		}
     }
@@ -192,13 +194,14 @@
         display: flex;
         flex-direction: column;
         gap: p(22);
+        font-family: $font-a1;
     }
 
     &__nav-item {
         list-style: none;
-        font-size: p(22);
-        font-weight: 700;
-        color: rgba(255, 255, 255, 0.55);
+        font-size: p(40);
+        font-weight: 500;
+        color: #AC92B7;
         transition:
             color 0.3s ease,
             font-size 0.3s ease;
@@ -206,7 +209,7 @@
 
         &.is-active {
             color: $c-white;
-            font-size: p(28);
+            font-size: p(50);
         }
     }
 
@@ -240,10 +243,12 @@
         margin: 0;
         padding: s(14) 0;
         text-align: center;
-        background: #dacae0;
+        background-image: url(../img/home/facility/FF-bg.webp);
+        background-size: cover;
         color: $color-brand;
+        font-family: $font-a1;
         font-size: s(20);
-        font-weight: 700;
+        font-weight: 500;
         letter-spacing: 0.05em;
     }
 

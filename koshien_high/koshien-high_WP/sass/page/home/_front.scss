@@ -169,8 +169,8 @@ $font-ja: "Zen Kaku Gothic New", sans-serif;
 
     &__inner {
         @include pc {
-            width: p(1000);
-            max-width: 1000px;
+            width: p(1126);
+            // max-width: 1000px;
             margin: 0 auto;
         }
     }
@@ -328,9 +328,30 @@ $font-ja: "Zen Kaku Gothic New", sans-serif;
             transform: none !important;
         }
 
-        @include sp {
-            display: flex; // Swiperのflexのまま
-            gap: s(12); // ★追加：カード間の余白
+        // SPスライダー（slick／high-newsに準拠）
+        .slick-list {
+            @include sp {
+                padding-left: s(20);
+            }
+        }
+
+        .slick-dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            @include sp {
+                margin-top: s(20);
+                gap: s(4);
+            }
+
+            li {
+                display: flex;
+                line-height: 0;
+            }
         }
     }
 
@@ -341,8 +362,8 @@ $font-ja: "Zen Kaku Gothic New", sans-serif;
         }
 
         @include sp {
-            width: s(280) !important; // ★追加：2枚目が1/3ほど見える幅
-            flex-shrink: 0; // ★追加：縮まないように
+            width: s(280);
+            margin-right: s(12);
         }
 
         &.is-hidden {
@@ -452,11 +473,30 @@ $font-ja: "Zen Kaku Gothic New", sans-serif;
         display: none;
 
         @include sp {
-            display: flex;
-            justify-content: center;
-            margin-top: s(20);
+            display: block;
         }
     }
+}
+
+// NEWSスライダーのドット（slick／high-newsに準拠）
+.p-news-dot {
+    display: block;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #9d9d9d;
+    opacity: 0.3;
+    cursor: pointer;
+    font-size: 0;
+
+    @include sp {
+        width: s(8);
+        height: s(8);
+    }
+}
+
+.slick-active .p-news-dot {
+    opacity: 1;
 }
 
 // ============ MESSAGE（学ぶことは、心を磨くこと） ============

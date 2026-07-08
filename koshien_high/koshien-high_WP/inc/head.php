@@ -84,6 +84,11 @@
     <?php if (is_page('high') || is_page('changed')) : ?>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
     <?php endif; ?>
+
+    <!-- ▼slick（TOPページのみ・NEWSスライダー用） -->
+    <?php if (is_front_page()) : ?>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <?php endif; ?>
     <?php wp_head(); ?>
 
 </head>

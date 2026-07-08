@@ -21,16 +21,19 @@ $pdf_address_label  = 'https://www.koshiengakuin-h.ed.jp/document/addresslabel.p
 
   <!-- ============ KV ============ -->
   <section class="p-alumni-hero">
+
     <picture class="p-alumni-hero__pic">
-      <source media="(max-width:767px)" srcset="<?php echo $img; ?>/sp_hero_bg.webp">
-      <img src="<?php echo $img; ?>/pc_hero_bg.webp" alt="" class="p-alumni-hero__img">
+      <source media="(max-width:767px)" srcset="<?php echo $img; ?>/sp_hero.webp">
+      <img src="<?php echo $img; ?>/pc_hero.webp" alt="GRADUATES 卒業生の方" class="p-alumni-hero__img">
     </picture>
-    <div class="p-alumni-hero__body">
+
+    <div class="p-alumni-hero__ttl">
       <picture>
-        <source media="(max-width:767px)" srcset="<?php echo $img; ?>/sp_hero_title.webp">
-        <img src="<?php echo $img; ?>/pc_hero_title.webp" alt="GRADUATES 卒業生の方" class="p-alumni-hero__title-img">
+        <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/alumni/alumni-ttl_sp.webp">
+        <img src="<?php echo get_template_directory_uri(); ?>/img/home/alumni/alumni-ttl_pc.webp" alt="GRADUATES　卒業生の方">
       </picture>
     </div>
+
   </section>
 
   <!-- ============ 各種証明書発行について ============ -->
@@ -196,8 +199,14 @@ $pdf_address_label  = 'https://www.koshiengakuin-h.ed.jp/document/addresslabel.p
       <div class="p-alumni__info js-fade">
         <p class="p-alumni__info-title">お電話・メールはこちら</p>
         <div class="p-alumni__info-row">
-          <a href="tel:0798-67-2100" class="p-alumni__info-tel">0798-67-2100</a>
-          <a href="mailto:a-shomuk@koshien.ac.jp" class="p-alumni__info-mail">a-shomuk@koshien.ac.jp</a>
+          <a href="tel:0798-67-2100" class="p-alumni__info-tel">
+            <span class="p-alumni__info-icon p-alumni__info-icon--tel" aria-hidden="true"></span>
+            0798-67-2100
+          </a>
+          <a href="mailto:a-shomuk@koshien.ac.jp" class="p-alumni__info-mail">
+            <span class="p-alumni__info-icon p-alumni__info-icon--mail" aria-hidden="true"></span>
+            a-shomuk@koshien.ac.jp
+          </a>
         </div>
         <p class="p-alumni__info-hours">営業時間：9時～17時（土・日・祝日及び事務取扱のない日を除く）</p>
       </div>

@@ -6,7 +6,7 @@
     padding: p(160) 0 p(100);
   }
   @include sp {
-    padding: s(100) s(24) s(64);
+    padding: s(100) s(40) s(64);
   }
 }
 
@@ -24,7 +24,7 @@
   align-items: center;
 
   @include pc {
-    gap: p(12);
+    gap: p(8);
     margin-bottom: p(27);
   }
   @include sp {
@@ -52,12 +52,12 @@
   line-height: 1;
 
   @include pc {
-    padding: p(5) p(14);
-    font-size: p(12);
+    padding: p(5) p(17);
+    font-size: p(15);
   }
   @include sp {
     padding: s(4) s(12);
-    font-size: s(11);
+    font-size: s(12);
   }
 }
 
@@ -76,15 +76,18 @@
 .p-news-single__ttl {
   font-family: $font-ja;
   @include wt500;
-  line-height: 1.6;
 
   @include pc {
     font-size: p(26);
     margin-bottom: p(40);
+    line-height: calc(46 / 26); 
+    letter-spacing: 0.10em; 
   }
   @include sp {
-    font-size: s(20);
+    font-size: s(18);
     margin-bottom: s(36);
+    line-height: calc(34 / 18); 
+    letter-spacing: 0.16em; 
   }
 }
 
@@ -94,13 +97,13 @@
     margin-bottom: p(40);
   }
   @include sp {
-    margin-bottom: s(24);
+    margin-bottom: s(35);
   }
 
   img {
     width: 100%;
     height: auto;
-    border-radius: p(4);
+    border-radius: 10px;
   }
 }
 
@@ -108,19 +111,27 @@
 .p-news-single__body {
   font-family: $font-ja;
   color: $color-text;
+  @include wt400;
 
   @include pc {
-    font-size: p(15);
+    font-size: p(16);
     line-height: 2;
+    letter-spacing: 0.19em;
+    line-height: calc(34 / 16);
   }
   @include sp {
     font-size: s(14);
-    line-height: 1.9;
+    letter-spacing: 0.10em;
+    line-height: calc(32 / 14);
   }
 
   p { margin: 0; & + p { margin-top: 1.5em; } }
   img { max-width: 100%; height: auto; margin: 1.5em 0; }
   a { color: var(--school); text-decoration: underline; }
+
+  
+
+
 }
 
 // 一覧に戻る
@@ -128,10 +139,10 @@
   text-align: center;
 
   @include pc {
-    margin-top: p(60);
+    margin-top: p(100);
   }
   @include sp {
-    margin-top: s(40);
+    margin-top: s(60);
   }
 }
 
@@ -162,7 +173,7 @@
 }
 
 .p-news-single__back-icon {
-  @include arrow-circle($arrow-circle_w);
+  @include arrow-circle($arrow-circle_ww);
   flex-shrink: 0;
   @include pc { width: p(20); height: p(20); }
   @include sp { width: s(18); height: s(18); }
@@ -173,25 +184,25 @@
   @include pc {
     width: p(1000);
     max-width: 1000px;
-    margin: p(100) auto 0;
+    margin: p(77) auto 0;
   }
   @include sp {
-    margin-top: s(64);
+    margin-top: s(72);
     padding: 0 s(24);
   }
 }
 
 .p-news-related__ttl {
   text-align: center;
-  font-family: $font-ja;
+  font-family: $font-midashi;
   @include wt500;
 
   @include pc {
-    font-size: p(22);
+    font-size: p(17);
     margin-bottom: p(40);
   }
   @include sp {
-    font-size: s(18);
+    font-size: s(17);
     margin-bottom: s(28);
   }
 }

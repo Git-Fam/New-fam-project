@@ -13,11 +13,10 @@ if (is_page()) {
 $hide_contact =
   is_page(array('contact', 'contact/confirm', 'contact/thanks'))
   || is_404()
-  || (is_home() && !is_front_page()) || is_singular('post') || is_post_type_archive('post')
+  || is_singular('post')     
   || $top_slug === 'junior'
   || $top_slug === 'high';
 ?>
-
 <footer class="footer">
 
   <?php if (!$hide_contact) : ?>
@@ -96,6 +95,11 @@ $hide_contact =
 <?php if (is_page('changed')) : ?>
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/js/high-changed.js"></script>
+<?php endif; ?>
+
+<?php if (is_front_page()) : ?>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/front.js"></script>
 <?php endif; ?>
 
 <?php if (is_page('course')) : ?>

@@ -37,6 +37,7 @@ $c-gray-500:   #888888; // 補助テキスト
 
 // ---- ブランド（共通アクセント） ----
 $c-brand:      #60388E; // 共通メインカラー（甲子園学院・紫）
+$c-purple:     #b18fd8;
 $c-accent:     #f5bb10; // アクセント（仮・要確認）
 
 // ---- 中学（junior）系 ----
@@ -101,7 +102,11 @@ body.is-high {
 // css/main.css からの相対パス。images相対は ../img/
 $img-common: "../img/common";
 
-// 丸囲み矢印（繰り返し使用）
+// 丸囲み矢印
 $arrow-circle: "#{$img-common}/arrow_circle.webp";
 
+// 丸囲みラインが白の矢印
+$arrow-circle_ww: "#{$img-common}/arrow_circle_ww.webp";
+
+// 丸白塗りの矢印
 $arrow-circle_w: "#{$img-common}/arrow_circle_w.webp";

@@ -71,26 +71,6 @@ $(function () {
 })();
 
 
-// ===== NEWS スライダー（SPのみドラッグ・ドット有効） =====
-(function () {
-    const el = document.querySelector('.p-news__slider');
-    if (!el || typeof Swiper === 'undefined') return;
-
-    new Swiper(el, {
-        slidesPerView: 'auto',      // CSSで指定したカード幅をそのまま使う
-        spaceBetween: 12,           // SCSSの gap: s(12) と揃える
-        pagination: {
-            el: '.p-news__pagination',
-            clickable: true,
-        },
-        breakpoints: {
-            768: {
-                enabled: false,      // PC幅ではSwiper機能を無効化（CSS側のgrid表示に任せる）
-            },
-        },
-    });
-})();
-
 // ===== ドロワー開閉 =====
 (function () {
     const toggle = document.getElementById('js-drawer-toggle');
@@ -374,4 +354,56 @@ $(function () {
   });
 
   floors.forEach(function (el) { observer.observe(el); });
+})();
+
+
+// ===== お知らせ一覧 絞り込み＋さらに読み込む =====
+(function () {
+  const list = document.getElementById('js-news-list');
+  const moreBtn = document.getElementById('js-news-more');
+  if (!list) return;
+
+  const tabs = document.querySelectorAll('.p-news-archive__tab');
+  const items = Array.from(list.querySelectorAll('.p-news-archive__item'));
+  const STEP = 9;              // 1回に表示する件数（3列×3行）
+  let filter = 'all';
+  let shown = STEP;
+
+  function render() {
+    // 絞り込み後の対象
+    const matched = items.filter(function (item) {
+      return filter === 'all' || item.dataset.category === filter;
+    });
+    // 全アイテムを一旦隠す
+    items.forEach(function (item) { item.style.display = 'none'; });
+    // 対象を shown 件だけ表示
+    matched.slice(0, shown).forEach(function (item) {
+      item.style.display = '';
+    });
+    // 「さらに読み込む」の表示制御
+    if (moreBtn) {
+      moreBtn.style.display = (matched.length > shown) ? '' : 'none';
+    }
+  }
+
+  // タブ切替
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) { t.classList.remove('is-active'); });
+      tab.classList.add('is-active');
+      filter = tab.dataset.filter;
+      shown = STEP;   // 絞り込み変更時は表示数リセット
+      render();
+    });
+  });
+
+  // さらに読み込む
+  if (moreBtn) {
+    moreBtn.addEventListener('click', function () {
+      shown += STEP;
+      render();
+    });
+  }
+
+  render();
 })();
