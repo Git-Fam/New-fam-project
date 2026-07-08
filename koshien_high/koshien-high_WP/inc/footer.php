@@ -17,7 +17,7 @@ $hide_contact =
   || $top_slug === 'junior'
   || $top_slug === 'high';
 ?>
-<footer class="footer">
+<footer class="footer <?php if (is_page('admission')) : ?>footer--admission<?php endif; ?>">
 
   <?php if (!$hide_contact) : ?>
     <!-- ============ CONTACT ============ -->

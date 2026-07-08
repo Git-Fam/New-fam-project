@@ -189,4 +189,13 @@
 
 
 
+
+}
+
+// ===== footer =====
+.footer--admission {
+  @include pc {
+    width: p(995);
+    margin-left: auto;
+  }
 }
