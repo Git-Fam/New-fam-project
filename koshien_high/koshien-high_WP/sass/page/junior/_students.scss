@@ -64,7 +64,7 @@
                     @include sp {
                         width: s(68);
                     }
-                    img{
+                    img {
                         width: 100%;
                         object-fit: contain;
                     }
@@ -101,10 +101,10 @@
                     left: p(198);
                 }
                 @include sp {
-                  top: s(63);
-                  left: 50%;
-                  transform: translateX(-50%);
-                  width: fit-content;
+                    top: s(63);
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: fit-content;
                 }
                 .icon-box {
                     display: flex;
@@ -174,4 +174,25 @@
             }
         }
     }
+
+    .high-change {
+        .ttl {
+            .TL {
+                @include pc {
+                    width: p(161) !important;
+                }
+                @include sp {
+                    position: static !important;
+                    left: unset !important;
+                    transform: unset !important;
+                    width: s(161) !important;
+                }
+                img {
+                    width: 100%;
+                    object-fit: contain;
+                }
+            }
+        }
+    }
 }
+

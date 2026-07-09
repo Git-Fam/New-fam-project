@@ -83,10 +83,7 @@ Template Path: pages/
   <section class="high-change js-fade">
     <div class="ttl">
       <h2 class="TL">
-        <picture>
-          <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior/junior-change-ttl-sp.webp" media="(max-width: 768px)">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/junior/junior-change-ttl-pc.webp" alt="LOVE CHANGE">
-        </picture>
+        <img src="<?php echo get_template_directory_uri(); ?>/img/junior-students/slider-ttl.svg" alt="その他の夢中学生">
       </h2>
     </div>
     <div class="high-change-contents">

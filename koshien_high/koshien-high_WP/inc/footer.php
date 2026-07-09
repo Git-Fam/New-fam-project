@@ -4,22 +4,17 @@
 // 現在ページの最上位の親slug（junior/high 配下判定用）
 $top_slug = '';
 if (is_page()) {
-  $ancestors = get_post_ancestors(get_the_ID());
-  $top_id    = $ancestors ? end($ancestors) : get_the_ID();
-  $top_slug  = get_post_field('post_name', $top_id);
+    $ancestors = get_post_ancestors(get_the_ID());
+    $top_id = $ancestors ? end($ancestors) : get_the_ID();
+    $top_slug = get_post_field('post_name', $top_id);
 }
 
 // CONTACTを非表示にする条件
-$hide_contact =
-  is_page(array('contact', 'contact/confirm', 'contact/thanks'))
-  || is_404()
-  || is_singular('post')
-  || $top_slug === 'junior'
-  || $top_slug === 'high';
+$hide_contact = is_page(['contact', 'contact/confirm', 'contact/thanks']) || is_404() || is_singular('post') || $top_slug === 'junior' || $top_slug === 'high';
 ?>
-<footer class="footer <?php if (is_page('admission')) : ?>footer--admission<?php endif; ?>">
+<footer class="footer <?php if (is_page('admission')): ?>footer--admission<?php endif; ?>">
 
-  <?php if (!$hide_contact) : ?>
+  <?php if (!$hide_contact): ?>
     <!-- ============ CONTACT ============ -->
     <section class="l-contact js-fade">
       <picture class="l-contact__bg">
@@ -87,42 +82,42 @@ $hide_contact =
   integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/script.js"></script>
 
-<?php if (is_page('high') || is_page('junior') || is_page('junior-students')) : ?>
+<?php if (is_page('high') || is_page('junior') || is_page('junior-students')): ?>
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/js/high.js"></script>
 <?php endif; ?>
 
-<?php if (is_page('changed')) : ?>
+<?php if (is_page('changed')): ?>
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/js/high-changed.js"></script>
 <?php endif; ?>
 
-<?php if (is_front_page()) : ?>
+<?php if (is_front_page()): ?>
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/js/front.js"></script>
 <?php endif; ?>
 
-<?php if (is_page('course')) : ?>
+<?php if (is_page('course')): ?>
   <script src="<?php echo get_template_directory_uri(); ?>/js/high-course.js"></script>
 <?php endif; ?>
 
-<?php if (is_page('admission')) : ?>
+<?php if (is_page('admission')): ?>
   <script src="<?php echo get_template_directory_uri(); ?>/js/high-admission.js"></script>
 <?php endif; ?>
 
-<?php if (is_page('life')) : ?>
+<?php if (is_page('life')): ?>
   <script src="<?php echo get_template_directory_uri(); ?>/js/high-life.js"></script>
 <?php endif; ?>
 
-<?php if (is_page('club')) : ?>
+<?php if (is_page('club')): ?>
   <script src="<?php echo get_template_directory_uri(); ?>/js/high-club.js"></script>
 <?php endif; ?>
 
-<?php if (is_page('feature')) : ?>
+<?php if (is_page('feature')): ?>
   <script src="<?php echo get_template_directory_uri(); ?>/js/high-feature.js"></script>
 <?php endif; ?>
 
-<?php if (is_page('openschool')) : ?>
+<?php if (is_page('openschool')): ?>
   <script src="<?php echo get_template_directory_uri(); ?>/js/high-openschool.js"></script>
 <?php endif; ?>
 

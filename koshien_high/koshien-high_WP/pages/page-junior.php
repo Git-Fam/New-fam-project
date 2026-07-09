@@ -134,7 +134,7 @@ Template Path: pages/
       <h2 class="TL">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior/junior-change-ttl-sp.webp" media="(max-width: 768px)">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/junior/junior-change-ttl-pc.webp" alt="LOVE CHANGE">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/junior/junior-change-ttl-pc.webp" alt="好きにまっすぐな夢中学生">
         </picture>
       </h2>
     </div>
