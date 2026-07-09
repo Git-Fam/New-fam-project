@@ -34,14 +34,14 @@ Template Path: pages/
   </section>
 
   <section class="junior-students-contents">
-      <div class="junior-students-contents-item">
+      <div class="junior-students-contents-item js-fade">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-students/junior-students-item01-sp.webp" media="(max-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/junior-students/junior-students-item01-pc.webp" alt="">
         </picture>
       </div>
 
-      <div class="junior-students-contents-item">
+      <div class="junior-students-contents-item js-fade">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-students/junior-students-item02-sp.webp" media="(max-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/junior-students/junior-students-item02-pc.webp" alt="">
@@ -56,14 +56,14 @@ Template Path: pages/
           <p class="TX">ダミー、好きなことに夢中になる時間は、子どもたちの心を大きく育てます。仲間と出会い、互いに高め合いながら、自ら考え行動する力が育まれていく。</p>
       </div>
 
-      <div class="junior-students-contents-item">
+      <div class="junior-students-contents-item js-fade">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-students/junior-students-item03-sp.webp" media="(max-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/junior-students/junior-students-item03-pc.webp" alt="">
         </picture>
       </div>
 
-      <div class="junior-students-contents-item item-left">
+      <div class="junior-students-contents-item item-left js-fade">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-students/junior-students-item04-sp.webp" media="(max-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/junior-students/junior-students-item04-pc.webp" alt="">
@@ -80,7 +80,7 @@ Template Path: pages/
 
   </section>
 
-  <section class="high-change js-fade">
+  <section class="high-change">
     <div class="ttl">
       <h2 class="TL">
         <img src="<?php echo get_template_directory_uri(); ?>/img/junior-students/slider-ttl.svg" alt="その他の夢中学生">
@@ -104,3 +104,4 @@ Template Path: pages/
 
 
 <?php get_template_part('./inc/footer'); ?>  
+

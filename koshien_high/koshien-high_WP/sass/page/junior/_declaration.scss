@@ -1,0 +1,343 @@
+@use "../../functions" as *;
+
+/* -----------------------
+ declaration（全校生徒の好きを応援する宣言）
+----------------------- */
+
+.page--junior-declaration{
+    h1,
+    h2,
+    h3,
+    h4,
+    ul,
+    ol,
+    dl,
+    li,
+    dt,
+    dd,
+    p,
+    div,
+    span,
+    img,
+    a,
+    table,
+    tr,
+    th,
+    td {
+      text-box-trim: trim-both;
+    }
+    @include pc {
+      padding-top: p(64);
+    }
+    @include sp {
+      padding-top: s(55);
+    }
+    &-inner{
+        width: 100%;
+        @include pc {
+            @include imgCover("junior-declaration/junior-declaration-bg-pc.webp");
+            padding-bottom: p(221);
+          }
+        @include sp {
+            @include imgCover("junior-declaration/junior-declaration-bg-sp.webp");
+            padding-bottom: s(123);
+          }
+        background-position: top !important;
+    }
+    .junior-declaration-hiro{
+        @include pc {
+          padding-top: p(126);
+        }
+        @include sp {
+          padding-top: s(166);
+        }
+        .TL-top{
+            margin: 0 auto;
+            @include pc {
+                width: p(220);
+            }
+            @include sp {
+              width: s(179);
+            }
+            img{
+                width: 100%;
+                object-fit: contain;
+            }
+        }
+        .TL{
+            color: $c-white;
+            font-family: $font-a1;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-align: center;
+            width: fit-content;
+            line-height: 1.4;
+            @include pc {
+                font-size: p(100);
+                margin: p(40) auto 0;
+            }
+            @include sp {
+                font-size: s(48);
+                margin: s(20) auto 0;
+                width: fit-content;
+            }
+        }
+    }
+
+    .junior-declaration-message{
+        @include pc {
+          margin-top: p(121);
+        }
+        @include sp {
+          margin-top: s(305);
+        }
+        &-inr{
+            margin: 0 auto;
+            background: $c-white;
+            @include pc {
+              width: p(1000);
+              border: p(10) solid $c-junior;
+              border-radius: p(20);
+              padding: p(157) p(118) p(124);
+            }
+            @include sp {
+              width: 100%;
+              border: s(10) solid $c-junior;
+              border-radius: s(10);
+              padding: s(77) s(40) s(73);
+            }
+            .message-text{
+                font-family: $font-a1;
+								@include wt500;
+                @include pc {
+                  font-size: p(26);
+                  line-height: 2.6;
+                  text-align: center;
+                }
+                @include sp {
+                  font-size: s(17);
+                  line-height: 1.8;
+                }
+            }
+
+						.message-img{
+							@include pc {
+                  width: p(593);
+                  margin: p(87) auto 0;
+							}
+              @include sp {
+                width: s(234);
+                margin: s(60) auto 0;
+              }
+						}
+							img{
+								width: 100%;
+								object-fit: contain;
+							}
+        }
+    }  
+
+    .junior-declaration-content{
+      @include pc {
+        margin-top: p(140);
+      }
+      @include sp {
+        margin-top: s(100);
+      }
+      &-inr{
+        margin: 0 auto;
+        @include pc {
+          width: p(1000);
+        }
+        @include sp {
+          width: 100%;
+        }
+      }
+      &-TL{
+        font-family: $font-a1;
+        @include wt500;
+        color: $c-white;
+        text-align: center;
+        @include pc {
+          font-size: p(40);
+        }
+        @include sp {
+          font-size: s(30);
+        }
+      }
+      &-list{
+        display: flex;
+        flex-direction: column;
+        @include pc {
+          gap: p(20);
+          margin-top: p(38);
+        }
+        @include sp {
+          gap: s(10);
+          margin-top: s(38);
+        }
+        &-item{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background: $c-white;
+          @include pc {
+            border-radius: p(20);
+            border: p(10) solid $c-junior;
+            padding-inline: p(76) p(20);
+          }
+          @include sp {
+            border-radius: s(20);
+            border: s(10) solid $c-junior;
+            padding-block: s(40) s(20);
+          }
+          .text-wrap{
+            .top-textbox{
+              &-text{
+                display: flex;
+                align-items: center;
+  
+                color: $c-junior;
+                font-family: $font-a1;
+                @include wt500;
+                @include pc {
+                  font-size: p(25);
+                }
+                @include sp {
+                  font-size: s(15);
+                }
+              }
+              &-number{
+                display: inline-block;
+                @include pc {
+                  width: p(66);
+                }
+                @include sp {
+                  width: s(37);
+                }
+                img{
+                  width: 100%;
+                  object-fit: contain;
+                }
+              }
+            }
+            .TL{
+              font-family: $font-a1;
+              @include wt500;
+              color: $c-junior;
+              @include pc {
+                font-size: p(54);
+                margin-top: p(25);
+              }
+              @include sp {
+                font-size: s(32);
+                margin-top: s(28);
+              }
+            }
+            .TX{
+              @include wt500;
+              @include pc {
+                font-size: p(18);
+                margin-top: p(22);
+                line-height: 1.8;
+              }
+              @include sp {
+                font-size: s(15);
+                margin-top: s(24);
+                line-height: 1.8;
+              }
+            }
+          }
+
+          .img{
+            @include pc {
+              width: p(343);
+              height: p(278);
+            }
+            &.img01{
+              @include imgContain("junior-declaration/junior-declaration-content-img01.webp");
+            }
+            &.img02{
+              @include imgContain("junior-declaration/junior-declaration-content-img02.webp");
+            }
+            &.img03{
+              @include imgContain("junior-declaration/junior-declaration-content-img03.webp");
+            }
+            &.img04{
+              @include imgContain("junior-declaration/junior-declaration-content-img04.webp");
+            }
+          }
+        }
+      }
+    }
+
+
+    .junior-declaration-next{
+      @include pc {
+        margin: p(184) auto 0;
+        width: p(1125);
+      }
+      @include sp {
+        margin-top: s(76);
+        width: s(374);
+      }
+      &-TL{
+        margin: 0 auto;
+        @include pc {
+          width: p(371);
+        }
+        @include sp {
+          width: s(258);
+        }
+        img{
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+
+      &-bnr{
+        position: relative;
+        @include pc {
+          margin-top: p(20);
+          width: 100%;
+        }
+        @include sp {
+          margin-top: s(20);
+          width: 100%;
+        }
+        img{
+          width: 100%;
+          object-fit: contain;
+        }
+
+        &::before{
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: $c-white;
+          pointer-events: none;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          @include pc {
+            border-radius: p(20);
+          }
+          @include sp {
+            border-radius: s(10);
+          }
+        }
+
+        &:hover{
+          &::before{
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
+          }
+        }
+      }
+
+    }
+
+
+}

@@ -176,6 +176,12 @@
     }
 
     .high-change {
+        @include pc {
+          padding-top: 0 !important;
+        }
+        @include sp {
+          padding-block: 0 s(74) !important;
+        }
         .ttl {
             .TL {
                 @include pc {
@@ -191,6 +197,11 @@
                     width: 100%;
                     object-fit: contain;
                 }
+            }
+        }
+        &-pagination{
+            @include sp {
+                display: none !important;
             }
         }
     }
