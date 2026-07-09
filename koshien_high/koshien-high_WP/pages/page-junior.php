@@ -129,7 +129,7 @@ Template Path: pages/
     </section>
   </div>
 
-  <!-- <section class="high-change js-fade">
+  <section class="high-change js-fade">
     <div class="ttl">
       <h2 class="TL">
         <picture>
@@ -160,7 +160,7 @@ Template Path: pages/
     </div>
     <div class="high-change-pagination"></div>
   </section>
- -->
+
   <!-- <div class="high-news_banner-wrap high-banner-wrap">
     <div class="high-banner js-fade">
       <a class="high-banner-item hover-opa" href="#">
