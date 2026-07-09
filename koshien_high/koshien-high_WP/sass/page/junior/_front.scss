@@ -1,0 +1,23 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  front（中学校）
+----------------------- */
+
+.page--junior{
+  &.page--high{
+    .high-hiro{
+      .TL{
+        @include pc {
+          width: p(1126);
+          bottom: p(62);
+        }
+        @include sp {
+          width: s(348);
+          bottom: s(36);
+        }
+      }
+    }
+  }
+}
+
