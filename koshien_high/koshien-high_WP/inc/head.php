@@ -81,7 +81,7 @@
 
 
     <!-- ▼slick（高等学校ページのみ） -->
-    <?php if (is_page('high') || is_page('changed')) : ?>
+    <?php if (is_page('high') || is_page('changed') || is_page('junior')) : ?>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
     <?php endif; ?>
 
