@@ -1,0 +1,177 @@
+@use "../../functions" as *;
+
+/* -----------------------
+ students（夢中学生）
+----------------------- */
+
+.page--junior-students {
+    .junior-students-hiro {
+        position: relative;
+        @include sp {
+            margin-bottom: s(34);
+        }
+
+        .junior-students-hiro-bg {
+            width: 100%;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .junior-students-hiro-inr {
+            position: absolute;
+            @include pc {
+                top: p(223);
+                left: p(120);
+            }
+            @include sp {
+                top: s(460);
+                left: 50%;
+                transform: translateX(-50%);
+                width: fit-content;
+                white-space: nowrap;
+            }
+
+            .TL {
+                font-family: $font-a1;
+                color: $c-junior;
+                line-height: 1.8;
+                @include wt500;
+                @include pc {
+                    font-size: p(54);
+                }
+                @include sp {
+                    font-size: s(38);
+                    letter-spacing: 0.1em;
+                }
+            }
+            .TX {
+                @include pc {
+                    margin-top: p(60);
+                }
+                @include sp {
+                    margin-top: s(28);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: s(11);
+                }
+                .label {
+                    @include pc {
+                        width: p(93);
+                    }
+                    @include sp {
+                        width: s(68);
+                    }
+                    img{
+                        width: 100%;
+                        object-fit: contain;
+                    }
+                }
+                .name {
+                    font-family: $font-a1;
+                    @include wt500;
+                    letter-spacing: 0.15em;
+                    @include pc {
+                        font-size: p(26);
+                        margin-top: p(20);
+                    }
+                    @include sp {
+                        font-size: s(18);
+                    }
+                }
+            }
+        }
+    }
+
+    .junior-students-contents {
+        .junior-students-contents-item {
+            position: relative;
+            width: 100%;
+            img {
+                width: 100%;
+                object-fit: contain;
+            }
+            &-inr {
+                position: absolute;
+                color: $c-white;
+                @include pc {
+                    top: p(92);
+                    left: p(198);
+                }
+                @include sp {
+                  top: s(63);
+                  left: 50%;
+                  transform: translateX(-50%);
+                  width: fit-content;
+                }
+                .icon-box {
+                    display: flex;
+                    align-items: center;
+                    &-text {
+                        font-family: $font-a1;
+                        @include wt500;
+                        letter-spacing: 0.15em;
+                        @include pc {
+                            font-size: p(26);
+                        }
+                        @include sp {
+                            font-size: s(18);
+                        }
+                    }
+                    &-img {
+                        @include pc {
+                            width: p(72);
+                        }
+                        @include sp {
+                            width: s(55);
+                        }
+                    }
+                }
+                .TL {
+                    font-family: $font-a1;
+                    @include wt500;
+                    @include pc {
+                        font-size: p(54);
+                        line-height: 1.7;
+                        margin-top: p(28);
+                        letter-spacing: 0.15em;
+                    }
+                    @include sp {
+                        font-size: s(34);
+                        line-height: 1.7;
+                        margin-top: s(35);
+                        letter-spacing: 0.09em;
+                    }
+                }
+                .TX {
+                    @include wt500;
+                    @include pc {
+                        margin-top: p(28);
+                        font-size: p(18);
+                        line-height: 2.5;
+                        width: p(492);
+                        letter-spacing: 0.15em;
+                    }
+                    @include sp {
+                        margin-top: s(35);
+                        font-size: s(15);
+                        line-height: 2;
+                        letter-spacing: 0.15em;
+                        width: s(334);
+                    }
+                }
+            }
+
+            &.item-left {
+                .junior-students-contents-item-inr {
+                    @include pc {
+                        left: unset;
+                        right: p(136);
+                    }
+                }
+            }
+        }
+    }
+}

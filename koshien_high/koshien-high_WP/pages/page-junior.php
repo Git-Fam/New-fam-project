@@ -133,51 +133,49 @@ Template Path: pages/
     <div class="ttl">
       <h2 class="TL">
         <picture>
-          <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-change-ttl-sp.svg" media="(max-width: 768px)">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-change-ttl-pc.svg" alt="LOVE CHANGE">
+          <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior/junior-change-ttl-sp.webp" media="(max-width: 768px)">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/junior/junior-change-ttl-pc.webp" alt="LOVE CHANGE">
         </picture>
       </h2>
     </div>
     <div class="high-change-contents">
-      <a href="#" class="high-change-contents-item hover-opa">
-        <picture>
-          <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-change-01-sp.webp" media="(max-width: 768px)">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-change-01-pc.webp" alt="">
-        </picture>
-      </a>
-      <a href="#" class="high-change-contents-item hover-opa">
-        <picture>
-          <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-change-02-sp.webp" media="(max-width: 768px)">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-change-02-pc.webp" alt="">
-        </picture>
-      </a>
-      <a href="#" class="high-change-contents-item hover-opa">
-        <picture>
-          <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-change-03-sp.webp" media="(max-width: 768px)">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-change-03-pc.webp" alt="">
-        </picture>
-      </a>
+      <div class="high-change-contents-item hover-opa">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/junior/junior-change-01.webp" alt="">
+      </div>
+      <div class="high-change-contents-item hover-opa">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/junior/junior-change-02.webp" alt="">
+      </div>
+      <div class="high-change-contents-item hover-opa">
+        <img src="<?php echo get_template_directory_uri(); ?>/img/junior/junior-change-03.webp" alt="">
+      </div>
     </div>
     <div class="high-change-pagination"></div>
   </section>
 
-  <!-- <div class="high-news_banner-wrap high-banner-wrap">
-    <div class="high-banner js-fade">
-      <a class="high-banner-item hover-opa" href="#">
+  <div class="junior-news_banner-wrap junior-banner-wrap">
+    <div class="junior-banner js-fade">
+      <a class="junior-banner-item" href="#">
         <picture>
-          <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-banner-03-sp.webp" media="(max-width: 768px)">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-banner-03-pc.webp" alt="">
+          <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-04-sp.webp" media="(max-width: 768px)">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-04-pc.webp" alt="">
         </picture>
       </a>
-      <a class="high-banner-item hover-opa" href="#">
+      <a class="junior-banner-item" href="#">
         <picture>
-          <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-banner-04-sp.webp" media="(max-width: 768px)">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-banner-04-pc.webp" alt="">
+          <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-05-sp.webp" media="(max-width: 768px)">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-05-pc.webp" alt="">
         </picture>
       </a>
+      <a class="junior-banner-item" href="#">
+        <picture>
+          <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-06-sp.webp" media="(max-width: 768px)">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-06-pc.webp" alt="">
+        </picture>
+      </a>
+
     </div>
   </div>
- -->
+
   <!-- <section class="high-info js-fade">
     <div class="high-info-inr">
       <a href="#" class="high-info-item">

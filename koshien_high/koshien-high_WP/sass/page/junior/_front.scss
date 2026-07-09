@@ -4,20 +4,107 @@
   front（中学校）
 ----------------------- */
 
-.page--junior{
-  &.page--high{
-    .high-hiro{
-      .TL{
-        @include pc {
-          width: p(1126);
-          bottom: p(62);
+.page--junior {
+    &.page--high {
+        .high-hiro {
+            .TL {
+                @include pc {
+                    width: p(1126);
+                    bottom: p(62);
+                }
+                @include sp {
+                    width: s(348);
+                    bottom: s(36);
+                }
+            }
         }
-        @include sp {
-          width: s(348);
-          bottom: s(36);
-        }
-      }
-    }
-  }
-}
 
+        .high-news_banner-wrap {
+            @include sp {
+                padding-bottom: s(57);
+            }
+        }
+
+        .high-change {
+            border-radius: 0;
+            @include pc {
+                @include imgCover("junior/junior-change-bg-pc.webp");
+                padding-block: p(100) p(145);
+            }
+            @include sp {
+                @include imgCover("junior/junior-change-bg-sp.webp");
+                padding-block: s(100);
+            }
+            .ttl {
+                @include pc {
+                    margin-bottom: p(21);
+                }
+                .TL {
+                    @include pc {
+                        width: p(900);
+                    }
+                    @include sp {
+                        position: relative;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        width: s(504);
+                    }
+                }
+            }
+
+            &-contents {
+                .slick-track {
+                    display: flex;
+                    align-items: baseline;
+                }
+
+                &-item {
+                    @include pc {
+                        width: p(492) !important;
+                        min-width: p(492) !important;
+                    }
+                    @include sp {
+                        width: s(434);
+                        min-width: s(434);
+                    }
+                }
+            }
+
+            &-pagination {
+                @include pc {
+                    display: none;
+                }
+                @include sp {
+                    margin-top: s(52);
+                }
+            }
+        }
+    }
+    .junior-news_banner-wrap {
+        .junior-banner {
+            .junior-banner-item {
+                position: relative;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    opacity: 0;
+                    // box-sizing: border-box;
+                    pointer-events: none;
+                    @include pc {
+                        border: p(20) solid $c-high;
+                    }
+                    @include sp {
+                        border: s(12) solid $c-high;
+                    }
+                }
+
+                &:hover {
+                    &::before {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
