@@ -13,7 +13,7 @@ if (is_page()) {
 $hide_contact =
   is_page(array('contact', 'contact/confirm', 'contact/thanks'))
   || is_404()
-  || is_singular('post')     
+  || is_singular('post')
   || $top_slug === 'junior'
   || $top_slug === 'high';
 ?>
@@ -110,6 +110,21 @@ $hide_contact =
   <script src="<?php echo get_template_directory_uri(); ?>/js/high-admission.js"></script>
 <?php endif; ?>
 
+<?php if (is_page('life')) : ?>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/high-life.js"></script>
+<?php endif; ?>
+
+<?php if (is_page('club')) : ?>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/high-club.js"></script>
+<?php endif; ?>
+
+<?php if (is_page('feature')) : ?>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/high-feature.js"></script>
+<?php endif; ?>
+
+<?php if (is_page('openschool')) : ?>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/high-openschool.js"></script>
+<?php endif; ?>
 
 </body>
 

@@ -42,16 +42,16 @@ Template Path: pages/
             <a href="#scholarship" class="aside-nav-list-item-link hover-opa">奨学金制度</a>
             <ul class="aside-nav-list-sub pc">
               <li class="aside-nav-list-item-sub">
-                <a href="#" class="aside-nav-list-item-link-sub hover-opa">学力特待生制度</a>
+                <a href="#scholarship" class="aside-nav-list-item-link-sub hover-opa">学力特待生制度</a>
               </li>
               <li class="aside-nav-list-item-sub">
-                <a href="#" class="aside-nav-list-item-link-sub hover-opa">運動部/文化部奨学金制度</a>
+                <a href="#scholarship" class="aside-nav-list-item-link-sub hover-opa">運動部/文化部奨学金制度</a>
               </li>
               <li class="aside-nav-list-item-sub">
-                <a href="#" class="aside-nav-list-item-link-sub hover-opa">大阪府等他府県入学者<br>奨学金制度</a>
+                <a href="#scholarship" class="aside-nav-list-item-link-sub hover-opa">大阪府等他府県入学者<br>奨学金制度</a>
               </li>
               <li class="aside-nav-list-item-sub">
-                <a href="#" class="aside-nav-list-item-link-sub hover-opa">ファミリー奨学金制度</a>
+                <a href="#scholarship" class="aside-nav-list-item-link-sub hover-opa">ファミリー奨学金制度</a>
               </li>
             </ul>
           </li>
@@ -59,13 +59,13 @@ Template Path: pages/
             <a href="#student" class="aside-nav-list-item-link hover-opa">受験生のみなさまへ</a>
             <ul class="aside-nav-list-sub pc">
               <li class="aside-nav-list-item-sub">
-                <a href="#" class="aside-nav-list-item-link-sub hover-opa">WEB出願</a>
+                <a href="https://mirai-compass.net/usr/kosiengh/common/login.jsf" target="_blank" rel="noopener noreferrer" class="aside-nav-list-item-link-sub hover-opa">WEB出願</a>
               </li>
               <li class="aside-nav-list-item-sub">
-                <a href="#" class="aside-nav-list-item-link-sub hover-opa">合否照会</a>
+                <a href="https://www.go-pass.net/kosiengh/" target="_blank" rel="noopener noreferrer" class="aside-nav-list-item-link-sub hover-opa">合否照会</a>
               </li>
               <li class="aside-nav-list-item-sub">
-                <a href="#" class="aside-nav-list-item-link-sub hover-opa">入学手続き</a>
+                <a href="https://mirai-compass.net/ent/kosiengh/common/login.jsf" target="_blank" rel="noopener noreferrer" class="aside-nav-list-item-link-sub hover-opa">入学手続き</a>
               </li>
             </ul>
           </li>
@@ -258,12 +258,11 @@ Template Path: pages/
         </div>
       </div>
       <div class="high-admission-scholarship-inr js-fade">
-
         <div class="scholarship-item is-active">
           <div class="scholarship-tab">学力特待生制度</div>
           <div class="scholarship-contents">
             <div class="scholarship-contents-item">
-              <h3 class="ttl">運動部奨学金制度</h3>
+              <h3 class="ttl">学力特待生制度</h3>
               <p class="TX">
                 下記の公開模試において偏差値60以上で、かつA・Bいずれかの日程で受験し、入学する場合、審査の上、入学金ならびに中学校3年間の授業料を全額免除します。
               </p>
@@ -277,7 +276,7 @@ Template Path: pages/
               </div>
             </div>
             <div class="scholarship-contents-item">
-              <h3 class="ttl">文化部奨学金制度</h3>
+              <h3 class="ttl">学力特待生制度</h3>
               <p class="TX">
                 下記の公開模試において偏差値50以上で、かつA・Bいずれかの日程で受験し、入学する場合、入学金を全額免除します。
               </p>
@@ -296,7 +295,6 @@ Template Path: pages/
             </div>
           </div>
         </div>
-
         <div class="scholarship-item">
           <div class="scholarship-tab">運動部/文化部奨学金制度</div>
           <div class="scholarship-contents">
@@ -334,12 +332,11 @@ Template Path: pages/
             </div>
           </div>
         </div>
-
         <div class="scholarship-item">
           <div class="scholarship-tab">大阪府等他府県入学者<br class="pc">奨学金制度</div>
           <div class="scholarship-contents">
             <div class="scholarship-contents-item">
-              <h3 class="ttl">運動部奨学金制度</h3>
+              <h3 class="ttl">大阪府等他府県入学者奨学金制度</h3>
               <p class="TX">
                 下記の公開模試において偏差値60以上で、かつA・Bいずれかの日程で受験し、入学する場合、審査の上、入学金ならびに中学校3年間の授業料を全額免除します。
               </p>
@@ -353,7 +350,7 @@ Template Path: pages/
               </div>
             </div>
             <div class="scholarship-contents-item">
-              <h3 class="ttl">文化部奨学金制度</h3>
+              <h3 class="ttl">大阪府等他府県入学者奨学金制度</h3>
               <p class="TX">
                 下記の公開模試において偏差値50以上で、かつA・Bいずれかの日程で受験し、入学する場合、入学金を全額免除します。
               </p>
@@ -372,12 +369,11 @@ Template Path: pages/
             </div>
           </div>
         </div>
-
         <div class="scholarship-item">
           <div class="scholarship-tab">ファミリー奨学金制度</div>
           <div class="scholarship-contents">
             <div class="scholarship-contents-item">
-              <h3 class="ttl">運動部奨学金制度</h3>
+              <h3 class="ttl">ファミリー奨学金制度</h3>
               <p class="TX">
                 下記の公開模試において偏差値60以上で、かつA・Bいずれかの日程で受験し、入学する場合、審査の上、入学金ならびに中学校3年間の授業料を全額免除します。
               </p>
@@ -391,7 +387,7 @@ Template Path: pages/
               </div>
             </div>
             <div class="scholarship-contents-item">
-              <h3 class="ttl">文化部奨学金制度</h3>
+              <h3 class="ttl">ファミリー奨学金制度</h3>
               <p class="TX">
                 下記の公開模試において偏差値50以上で、かつA・Bいずれかの日程で受験し、入学する場合、入学金を全額免除します。
               </p>
@@ -410,10 +406,16 @@ Template Path: pages/
             </div>
           </div>
         </div>
-
+      </div>
+      <div class="igh-admission-scholarship-point js-fade">
+        <p class="TX">
+          ※上記の各制度を2つ以上併用することはできません。また、「運動部奨学金制度」ならびに「文化部奨学金制度」については、定員があります。
+        </p>
+        <p class="TX">
+          ※奨学金制度については、成績や出席状況•生活態度等を進級時に審査し、条件を満たさない場合は、制度の無効とともに入学金および無効となるまでの奨学金を返金していただきます。また、自己都合による退学や転学、退部等についても同様です。
+        </p>
       </div>
     </section>
-
 
     <section id="student" class="high-admission-student">
       <div class="high-admission-student-ttl">
@@ -422,9 +424,51 @@ Template Path: pages/
           <h2 class="TL">受験生のみなさまへ</h2>
         </div>
       </div>
-      <div class="high-admission-student-inr"></div>
+      <div class="high-admission-student-inr js-fade">
+        <a href="https://mirai-compass.net/usr/kosiengh/common/login.jsf" target="_blank" rel="noopener noreferrer" class="">
+          <div class="defo">
+            <picture>
+              <source srcset="<?php echo get_template_directory_uri(); ?>/img/high-admission/igh-admission-student-btn-defo-01-sp.svg" media="(max-width: 767px)">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/igh-admission-student-btn-defo-01-pc.svg" alt="WEB出願">
+            </picture>
+          </div>
+          <div class="hov">
+            <picture>
+              <source srcset="<?php echo get_template_directory_uri(); ?>/img/high-admission/igh-admission-student-btn-hov-01-sp.svg" media="(max-width: 767px)">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/igh-admission-student-btn-hov-01-pc.svg" alt="WEB出願">
+            </picture>
+          </div>
+        </a>
+        <a href="https://www.go-pass.net/kosiengh/" target="_blank" rel="noopener noreferrer" class="">
+          <div class="defo">
+            <picture>
+              <source srcset="<?php echo get_template_directory_uri(); ?>/img/high-admission/igh-admission-student-btn-defo-02-sp.svg" media="(max-width: 767px)">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/igh-admission-student-btn-defo-02-pc.svg" alt="合否照会">
+            </picture>
+          </div>
+          <div class="hov">
+            <picture>
+              <source srcset="<?php echo get_template_directory_uri(); ?>/img/high-admission/igh-admission-student-btn-hov-02-sp.svg" media="(max-width: 767px)">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/igh-admission-student-btn-hov-02-pc.svg" alt="合否照会">
+            </picture>
+          </div>
+        </a>
+        <a href="https://mirai-compass.net/ent/kosiengh/common/login.jsf" target="_blank" rel="noopener noreferrer" class="">
+          <div class="defo">
+            <picture>
+              <source srcset="<?php echo get_template_directory_uri(); ?>/img/high-admission/igh-admission-student-btn-defo-03-sp.svg" media="(max-width: 767px)">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/igh-admission-student-btn-defo-03-pc.svg" alt="入学手続き">
+            </picture>
+          </div>
+          <div class="hov">
+            <picture>
+              <source srcset="<?php echo get_template_directory_uri(); ?>/img/high-admission/igh-admission-student-btn-hov-03-sp.svg" media="(max-width: 767px)">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/igh-admission-student-btn-hov-03-pc.svg" alt="入学手続き">
+            </picture>
+          </div>
+        </a>
+      </div>
     </section>
-
 
     <section id="faq" class="high-admission-faq">
       <div class="high-admission-faq-ttl">
@@ -433,7 +477,122 @@ Template Path: pages/
           <h2 class="TL">Q&A</h2>
         </div>
       </div>
-      <div class="high-admission-faq-inr"></div>
+      <div class="high-admission-faq-inr">
+        <div class="faq-item">
+          <div class="item-q">
+            <h3 class="TL">進路実績は？</h3>
+          </div>
+          <div class="item-a">
+            <p class="TX">
+              過去の実績は次の通りです。<br>
+              ・甲子園大学<br>
+              ・甲子園短期大学<br>
+              ・4年制大学※<br>
+              ・短期大学・専門学校<br>
+              ・就職・その他<br>
+              <br>
+            </p>
+            <p class="TX point">
+              ※中央大学、関西大学、京都産業大学、近畿大学、甲南大学、龍谷大学、摂南大学、神戸学院大学、 桃山学院大学、京都外国語大学、佛教大学、神戸女学院大学、神戸女子大学、京都女子大学、甲南女子大学、 大阪音楽大学、大阪芸術大学、大阪経済大学、神奈川大学、追手門学院大学、大阪体育大学、関西外国語大学　他
+            </p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="item-q">
+            <h3 class="TL">コース変更はできる?</h3>
+          </div>
+          <div class="item-a">
+            <p class="TX">
+              過去の実績は次の通りです。<br>
+              ・甲子園大学<br>
+              ・甲子園短期大学<br>
+              ・4年制大学※<br>
+              ・短期大学・専門学校<br>
+              ・就職・その他<br>
+              <br>
+            </p>
+            <p class="TX point">
+              ※中央大学、関西大学、京都産業大学、近畿大学、甲南大学、龍谷大学、摂南大学、神戸学院大学、 桃山学院大学、京都外国語大学、佛教大学、神戸女学院大学、神戸女子大学、京都女子大学、甲南女子大学、 大阪音楽大学、大阪芸術大学、大阪経済大学、神奈川大学、追手門学院大学、大阪体育大学、関西外国語大学　他
+            </p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="item-q">
+            <h3 class="TL">校則は?</h3>
+          </div>
+          <div class="item-a">
+            <p class="TX">
+              過去の実績は次の通りです。<br>
+              ・甲子園大学<br>
+              ・甲子園短期大学<br>
+              ・4年制大学※<br>
+              ・短期大学・専門学校<br>
+              ・就職・その他<br>
+              <br>
+            </p>
+            <p class="TX point">
+              ※中央大学、関西大学、京都産業大学、近畿大学、甲南大学、龍谷大学、摂南大学、神戸学院大学、 桃山学院大学、京都外国語大学、佛教大学、神戸女学院大学、神戸女子大学、京都女子大学、甲南女子大学、 大阪音楽大学、大阪芸術大学、大阪経済大学、神奈川大学、追手門学院大学、大阪体育大学、関西外国語大学　他
+            </p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="item-q">
+            <h3 class="TL">進級・卒業の基準は?</h3>
+          </div>
+          <div class="item-a">
+            <p class="TX">
+              過去の実績は次の通りです。<br>
+              ・甲子園大学<br>
+              ・甲子園短期大学<br>
+              ・4年制大学※<br>
+              ・短期大学・専門学校<br>
+              ・就職・その他<br>
+              <br>
+            </p>
+            <p class="TX point">
+              ※中央大学、関西大学、京都産業大学、近畿大学、甲南大学、龍谷大学、摂南大学、神戸学院大学、 桃山学院大学、京都外国語大学、佛教大学、神戸女学院大学、神戸女子大学、京都女子大学、甲南女子大学、 大阪音楽大学、大阪芸術大学、大阪経済大学、神奈川大学、追手門学院大学、大阪体育大学、関西外国語大学　他
+            </p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="item-q">
+            <h3 class="TL">食堂のメニューには<br class="sp">どんなものがある?</h3>
+          </div>
+          <div class="item-a">
+            <p class="TX">
+              過去の実績は次の通りです。<br>
+              ・甲子園大学<br>
+              ・甲子園短期大学<br>
+              ・4年制大学※<br>
+              ・短期大学・専門学校<br>
+              ・就職・その他<br>
+              <br>
+            </p>
+            <p class="TX point">
+              ※中央大学、関西大学、京都産業大学、近畿大学、甲南大学、龍谷大学、摂南大学、神戸学院大学、 桃山学院大学、京都外国語大学、佛教大学、神戸女学院大学、神戸女子大学、京都女子大学、甲南女子大学、 大阪音楽大学、大阪芸術大学、大阪経済大学、神奈川大学、追手門学院大学、大阪体育大学、関西外国語大学　他
+            </p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="item-q">
+            <h3 class="TL">自転車通学はできる?</h3>
+          </div>
+          <div class="item-a">
+            <p class="TX">
+              過去の実績は次の通りです。<br>
+              ・甲子園大学<br>
+              ・甲子園短期大学<br>
+              ・4年制大学※<br>
+              ・短期大学・専門学校<br>
+              ・就職・その他<br>
+              <br>
+            </p>
+            <p class="TX point">
+              ※中央大学、関西大学、京都産業大学、近畿大学、甲南大学、龍谷大学、摂南大学、神戸学院大学、 桃山学院大学、京都外国語大学、佛教大学、神戸女学院大学、神戸女子大学、京都女子大学、甲南女子大学、 大阪音楽大学、大阪芸術大学、大阪経済大学、神奈川大学、追手門学院大学、大阪体育大学、関西外国語大学　他
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
   </div>
