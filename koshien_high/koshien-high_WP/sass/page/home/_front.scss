@@ -4,12 +4,6 @@
   front
 ----------------------- */
 
-// タイトル系（A1ゴシック）— 前案件同様font-family指定。契約確定後にWebフォント化を検討
-$font-title: "A P-OTF A1ゴシック StdN", "A1 Gothic", sans-serif;
-
-// 本文（Zen Kaku Gothic New）— Google Fontsで正規配信
-$font-ja: "Zen Kaku Gothic New", sans-serif;
-
 // ===== hero =====
 .hero {
     display: flex;
@@ -82,7 +76,7 @@ $font-ja: "Zen Kaku Gothic New", sans-serif;
 }
 
 .hero__title {
-    font-family: $font-title;
+    font-family: $font-a1;
     line-height: 1.1;
 
     @include wt800;
@@ -236,9 +230,9 @@ $font-ja: "Zen Kaku Gothic New", sans-serif;
         gap: p(10);
         font-size: p(14);
         letter-spacing: 0.08em;
-        color: #000;
         @include wt600;
         font-family: $font-midashi;
+        color: $c-black;
 
         &--pc {
             @include sp {
@@ -373,7 +367,6 @@ $font-ja: "Zen Kaku Gothic New", sans-serif;
 
     &__card {
         display: block;
-        color: #000;
         @include wt500;
     }
 
@@ -434,9 +427,9 @@ $font-ja: "Zen Kaku Gothic New", sans-serif;
     &__date {
         font-size: p(13);
         letter-spacing: 0.04em;
-        color: #000;
         @include wt500;
         font-family: $font-jost;
+         color: $c-black;
 
         @include sp {
             font-size: s(12);
@@ -459,7 +452,7 @@ $font-ja: "Zen Kaku Gothic New", sans-serif;
     &__text {
         font-size: p(14);
         line-height: 1.7;
-        color: #000;
+        color: $c-black;
         @include wt600;
         font-family: $font-midashi;
 

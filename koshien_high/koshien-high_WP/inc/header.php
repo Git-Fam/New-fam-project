@@ -16,10 +16,12 @@
 
       <!-- 左：フォトメッセージ（装飾） -->
       <div class="l-drawer__photo">
-        <picture>
-          <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/common/drawer_photo_pc.webp">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/common/drawer_photo_pc.webp" alt="" class="l-drawer__photo-img">
-        </picture>
+        <a href="<?php echo home_url('/about/concept/'); ?>">
+          <picture>
+            <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/common/drawer_photo_pc.webp">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/common/drawer_photo_pc.webp" alt="" class="l-drawer__photo-img">
+          </picture>
+        </a>
       </div>
 
       <!-- 中央：メインナビ -->
@@ -49,7 +51,7 @@
           </li>
         </ul>
 
-        <div class="l-drawer__btns">
+        <div class="l-drawer__btns pc">
           <a href="<?php echo home_url('/contact/'); ?>" class="l-drawer__btn l-drawer__btn--contact">
             <span>お問い合わせフォーム</span>
             <span class="l-drawer__btn-icon" aria-hidden="true"></span>
@@ -71,7 +73,7 @@
               <img src="<?php echo get_template_directory_uri(); ?>/img/common/banner_junior.webp" alt="DIVE IN LOVE!">
             </a>
           </div>
-          <ul class="l-drawer__banner-links">
+          <ul class="l-drawer__banner-links mt">
             <li><a href="<?php echo home_url('/junior/declaration/'); ?>">全校生徒の好きを応援する宣言</a></li>
             <li><a href="<?php echo home_url('/junior/life/'); ?>">学校生活</a></li>
             <li><a href="<?php echo home_url('/junior/feature/'); ?>">学びの特色</a></li>
@@ -99,6 +101,16 @@
           </ul>
         </div>
       </div>
+      <div class="l-drawer__btns sp">
+          <a href="<?php echo home_url('/contact/'); ?>" class="l-drawer__btn l-drawer__btn--contact">
+            <span>お問い合わせフォーム</span>
+            <span class="l-drawer__btn-icon" aria-hidden="true"></span>
+          </a>
+          <a href="<?php echo home_url('/request/'); ?>" class="l-drawer__btn l-drawer__btn--request">
+            <span>資料請求</span>
+            <span class="l-drawer__btn-icon" aria-hidden="true"></span>
+          </a>
+        </div>
   </div>
 </header>
 

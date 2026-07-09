@@ -8,9 +8,19 @@
 // 「申請に必要なもの」「申請方法」の薄紫パネル背景（カンプ準拠）
 $c-alumni-panel: #eeecf8;
 
-.p-indent {
-    padding-left: 1.5em; // 全体を1文字ぶん右へ
-    //   text-indent: -1em;        // 1行目だけ1文字ぶん左へ戻す
+@include pc {
+    .p-indent {
+        padding-left: 1.5em; // 全体を1文字ぶん右へ
+        //   text-indent: -1em;        // 1行目だけ1文字ぶん左へ戻す
+    }
+}
+
+.mbt {
+    margin-bottom: p(47);
+
+    @include sp {
+        margin-bottom: s(40);
+    }
 }
 
 .page--alumni {
@@ -30,6 +40,7 @@ $c-alumni-panel: #eeecf8;
             font-size: s(14);
             letter-spacing: 0.12em;
             line-height: calc(30 / 14);
+            text-align: justify;
         }
     }
 
@@ -153,11 +164,19 @@ $c-alumni-panel: #eeecf8;
         }
     }
 
+    &__scroll {
+        margin-bottom: s(8);
+        img {
+            width: s(60);
+            margin-left: auto;
+        }
+    }
+
     &__note {
         font-size: p(13);
 
         @include sp {
-            font-size: s(11);
+            font-size: s(12) !important;
         }
     }
 
@@ -173,10 +192,13 @@ $c-alumni-panel: #eeecf8;
 
         @include sp {
             margin-bottom: s(24);
+            margin-left: -3.661836vw;
+            margin-right: -9.6618357488vw;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
 
             img {
+                height: s(418);
                 width: auto; // 原寸のまま横スクロールさせる（表ごとに幅が異なるため固定値にしない）
                 max-width: none;
             }
@@ -186,7 +208,15 @@ $c-alumni-panel: #eeecf8;
             margin: p(16) 0 0;
 
             @include sp {
-                margin-top: s(16);
+                margin-right: -9.6618357488vw;
+            }
+        }
+    }
+
+    @include sp {
+        .table-size .p-indent {
+            img {
+                height: s(232);
             }
         }
     }
@@ -203,7 +233,9 @@ $c-alumni-panel: #eeecf8;
         @include sp {
             gap: s(28);
             border-radius: s(12);
-            padding: s(30) s(20);
+            padding: s(65) s(40) s(86);
+            margin-left: -9.6618357488vw;
+            margin-right: -9.6618357488vw;
         }
     }
 
@@ -250,7 +282,7 @@ $c-alumni-panel: #eeecf8;
         justify-content: center;
         width: p(160);
         height: p(34);
-        margin-top: p(30);
+        // margin-top: p(10);
         border: 1px solid $color-border;
         border-radius: 9999px;
         background: $c-white;
@@ -269,6 +301,7 @@ $c-alumni-panel: #eeecf8;
             width: s(160);
             height: s(34);
             font-size: s(12);
+            transform: translate(45%, 8%);
         }
     }
 
@@ -297,7 +330,9 @@ $c-alumni-panel: #eeecf8;
 
         @include sp {
             border-radius: s(12);
-            padding: s(30) s(20);
+            padding: s(63) s(40) s(47);
+            margin-left: -9.6618357488vw;
+            margin-right: -9.6618357488vw;
         }
     }
 
@@ -326,48 +361,6 @@ $c-alumni-panel: #eeecf8;
             margin-bottom: s(20);
         }
     }
-
-    &__dl {
-        margin: 0;
-    }
-
-    &__dl-row {
-        display: flex;
-        flex-direction: column;
-        gap: p(28);
-        padding: 0 0 p(47);
-
-        dt {
-            // flex: 0 0 p(180);
-            color: $color-brand;
-            font-size: p(16);
-            font-weight: 700;
-        }
-
-        dd {
-            flex: 1 1 auto;
-            margin: 0;
-            color: $color-text;
-            font-size: p(16);
-            line-height: 1.9;
-            letter-spacing: 0.14em !important;
-        }
-
-        @include sp {
-            gap: s(8);
-            padding: s(18) 0;
-
-            dt {
-                flex: none;
-                font-size: s(13);
-            }
-
-            dd {
-                font-size: s(13);
-            }
-        }
-    }
-
     &__divider {
         margin: p(10) 0 p(49);
         border: none;
@@ -451,8 +444,13 @@ $c-alumni-panel: #eeecf8;
         border: 2px solid $c-brand;
 
         @include sp {
+            width: s(338);
             max-width: none;
             padding: s(24) s(20);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: s(12);
         }
     }
 
@@ -464,7 +462,7 @@ $c-alumni-panel: #eeecf8;
         font-weight: 600 !important;
 
         @include sp {
-            font-size: s(15);
+            font-size: s(16) !important;
             margin-bottom: s(16);
         }
     }
@@ -495,6 +493,10 @@ $c-alumni-panel: #eeecf8;
         font-family: $font-jost;
         text-decoration: none;
         letter-spacing: 0.04em;
+
+        @include sp {
+            gap: s(10);
+        }
     }
 
     &__info-tel {
@@ -502,6 +504,7 @@ $c-alumni-panel: #eeecf8;
             font-size: p(27) !important;
         }
         @include sp {
+            font-size: s(18) !important;
         }
     }
 
@@ -510,6 +513,7 @@ $c-alumni-panel: #eeecf8;
             font-size: p(19) !important;
         }
         @include sp {
+            font-size: s(18) !important;
         }
     }
 
@@ -526,8 +530,8 @@ $c-alumni-panel: #eeecf8;
             background-image: url(../img/home/alumni/alumni-tel.webp);
 
             @include sp {
-                width: s(14);
-                height: s(18);
+                width: s(27);
+                height: s(31);
             }
         }
 
@@ -537,8 +541,8 @@ $c-alumni-panel: #eeecf8;
             background-image: url(../img/home/alumni/alumni-mail.webp);
 
             @include sp {
-                width: s(17);
-                height: s(13);
+                width: s(31);
+                height: s(24);
             }
         }
     }
@@ -551,7 +555,8 @@ $c-alumni-panel: #eeecf8;
         font-weight: 500 !important;
 
         @include sp {
-            font-size: s(11);
+            font-size: s(12) !important;
+            text-align: center !important;
         }
     }
 }

@@ -5,22 +5,24 @@
 ----------------------- */
 
 .l-header {
-    @include wt500;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 100;
     width: 100%;
-    background-color: $c-white; // 基本は白背景
+    background-color: $c-white;
     transition: background-color 0.3s ease;
+    color: $c-black;
 
-    // TOP・中学TOP・高校TOPの最初だけ透明（is-hero-top かつ 未スクロール時）
-    .is-hero-top & {
-        background-color: transparent;
-    }
-    // スクロール後は白に戻す（JSで is-scrolled を付与）
-    .is-hero-top &.is-scrolled {
-        background-color: $c-white;
+    @include pc {
+        // TOP・中学TOP・高校TOPの最初だけ透明（is-hero-top かつ 未スクロール時）
+        .is-hero-top & {
+            background-color: transparent;
+        }
+        // スクロール後は白に戻す（JSで is-scrolled を付与）
+        .is-hero-top &.is-scrolled {
+            background-color: $c-white;
+        }
     }
 }
 
@@ -39,6 +41,11 @@
     @include sp {
         height: s(56);
         padding: 0 s(16);
+    }
+
+    // メニューが開いている時は白背景にする
+    .l-header.is-menu-open & {
+        background-color: #fff;
     }
 }
 
@@ -127,17 +134,16 @@
 
 @include sp {
     .l-header__toggle.is-open {
-    .l-header__toggle-bar:nth-child(1) {
-        transform: translateY(#{s(9)}) rotate(35deg);
+        .l-header__toggle-bar:nth-child(1) {
+            transform: translateY(#{s(9)}) rotate(35deg);
+        }
+        .l-header__toggle-bar:nth-child(2) {
+            osacity: 0;
+        }
+        .l-header__toggle-bar:nth-child(3) {
+            transform: translateY(#{p(-18)}) rotate(-35deg);
+        }
     }
-    .l-header__toggle-bar:nth-child(2) {
-        osacity: 0;
-    }
-    .l-header__toggle-bar:nth-child(3) {
-        transform: translateY(#{p(-18)}) rotate(-35deg);
-    }
-}
-
 }
 
 // ============ drawer ============
@@ -150,6 +156,10 @@
     height: 100dvh;
     overflow-y: auto;
     background-color: $c-white;
+    padding-bottom: p(26);
+    @include sp {
+        padding-bottom: 0;
+    }
     // 普段は非表示（上に隠す or フェード）
     opacity: 0;
     visibility: hidden;
@@ -161,6 +171,13 @@
     &.is-open {
         opacity: 1;
         visibility: visible;
+    }
+
+    &__nav {
+        @include wt500;
+    }
+    &__banners {
+        @include wt400;
     }
 }
 
@@ -230,15 +247,25 @@
 .l-drawer__nav {
     @include pc {
         position: relative;
-        letter-spacing:p(2);
+        letter-spacing: p(2);
         padding-top: p(10);
         width: 50%;
     }
+    @include sp {
+        padding-left: s(20);
+    }
 }
 
-.l-drawer__menu {
-    @include sp {
-        margin-bottom: s(28);
+@include sp {
+    .l-drawer__menu {
+        display: grid;
+        grid-template-columns: auto 1fr; /* 1fr 1fr から変更 */
+        column-gap: s(49);
+    }
+
+    /* 学校案内（1番目のli）だけはフル幅で1行占有 */
+    .l-drawer__menu > .l-drawer__item:first-child {
+        grid-column: 1 / -1;
     }
 }
 
@@ -264,6 +291,16 @@
     }
     @include sp {
         font-size: s(16);
+        &::before {
+            content: "";
+            display: inline-block;
+            width: s(20);
+            height: s(16);
+            margin-right: s(8);
+            margin-top: s(2);
+            flex-shrink: 0;
+            background: url("../img/common/mark.webp") no-repeat center / contain;
+        }
     }
 }
 
@@ -276,8 +313,9 @@
         margin-top: p(10);
     }
     @include sp {
-        gap: s(12);
-        margin-top: s(8);
+        width: s(230);
+        gap: s(18) s(24);
+        margin: s(18) 0 s(40);
     }
 
     a {
@@ -289,7 +327,7 @@
             font-size: p(13);
         }
         @include sp {
-            font-size: s(12);
+            font-size: s(14);
         }
     }
 }
@@ -300,38 +338,39 @@
     flex-direction: column;
 
     @include pc {
-        gap: p(14);
+        gap: p(19);
         position: absolute;
         bottom: 0;
-        right: p(0);
+        left: 24vw;
     }
     @include sp {
         gap: s(12);
-        margin-top: s(20);
-        padding: s(60) s(70);
+        padding: s(56) s(90);
     }
 }
 
 .l-drawer__btn {
     display: inline-flex;
     align-items: center;
-    justify-content: space-between;
     border-radius: 9999px;
     color: $c-white;
-    font-family: $font-ja;
     text-decoration: none;
+    position: relative;
 
     @include pc {
         gap: p(16);
         width: p(270);
-        padding: p(14) p(24);
-        font-size: p(15);
+        padding: p(20) p(24);
+        font-size: p(14);
+        font-family: $font-ja;
+        @include wt400;
     }
     @include sp {
         gap: s(14);
         width: 100%;
         padding: s(14) s(24);
-        font-size: s(14);
+        font-size: s(15);
+        font-family: $font-midashi;
     }
 
     &--contact {
@@ -340,15 +379,35 @@
     &--request {
         background-color: var(--school);
     } // 濃い紫 #60388E
+
+    // テキスト（1つ目のspan）
+    span:first-child {
+        flex: 1;
+        text-align: center;
+    }
+
+    // 矢印アイコン
+    &-icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        @include pc {
+            right: p(20);
+        }
+        @include sp {
+            right: s(13);
+        }
+    }
 }
 
 .l-drawer__btn-icon {
-    @include arrow-circle($arrow-circle_w);
+    @include arrow-circle($arrow-circle_ww);
     flex-shrink: 0;
 
     @include pc {
-        width: p(24);
-        height: p(24);
+        width: p(16);
+        height: p(16);
     }
     @include sp {
         width: s(22);
@@ -363,12 +422,11 @@
     @include pc {
         grid-area: banners;
         grid-template-columns: 1fr 1fr;
-        gap: p(30);
+        gap: p(14);
         padding: 0 p(35) 0;
     }
     @include sp {
         grid-template-columns: 1fr;
-        margin-bottom: s(28);
     }
 }
 
@@ -376,7 +434,7 @@
     letter-spacing: 1.5px;
     @include pc {
         display: flex;
-        padding: p(47) p(40) p(41);
+        padding: p(47) p(30) p(41);
         border-radius: p(8);
         gap: p(30);
     }
@@ -386,43 +444,42 @@
     }
 
     &-topimg {
-      display: flex;
+        display: flex;
 
-      a {
-         color: #fff;
-      }
+        a {
+            color: #fff;
+        }
 
-       @include pc {
-        flex-direction: column-reverse;
-       }
+        @include pc {
+            flex-direction: column-reverse;
+        }
 
-      @include sp {
-        align-items: center;
-        flex-direction: column;
-      }
+        @include sp {
+            align-items: center;
+            flex-direction: column;
+        }
     }
 
     &--junior {
-        background-color: #FF9FB5;
-    } 
+        background-color: #ff9fb5;
+    }
     &--high {
-        background-color: #FF84C2;
-    } 
-    
+        background-color: #ff84c2;
+    }
 }
 
 .l-drawer__banner-head {
     display: block;
     color: $color-text;
-    font-family: $font-ja;
+    font-family: $font-a1;
     text-decoration: none;
 
     @include pc {
-        font-size: p(14);
+        font-size: p(17);
         margin-top: p(12);
     }
     @include sp {
-        font-size: s(13);
+        font-size: s(14);
         margin-bottom: s(16);
     }
 }
@@ -432,7 +489,7 @@
 
     img {
         @include pc {
-             width: p(296);
+            width: p(296);
         }
         @include sp {
             width: 100%;
@@ -447,7 +504,7 @@
     flex-direction: column;
 
     @include pc {
-        gap: p(18);
+        gap: p(20);
         margin-top: p(6);
     }
     @include sp {
@@ -458,14 +515,21 @@
 
     a {
         color: $c-white;
-        font-family: $font-ja;
+        font-family: $font-a1;
         text-decoration: none;
+        white-space: nowrap;
 
         @include pc {
-            font-size: p(14);
+            font-size: p(16);
         }
         @include sp {
-            font-size: s(13);
+            font-size: s(16);
         }
+    }
+}
+
+@include pc {
+    .mt {
+        margin-top: p(15);
     }
 }

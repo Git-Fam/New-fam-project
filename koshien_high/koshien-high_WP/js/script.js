@@ -75,6 +75,7 @@ $(function () {
 (function () {
     const toggle = document.getElementById('js-drawer-toggle');
     const drawer = document.getElementById('js-drawer');
+    const header = document.getElementById('js-header');
     if (!toggle || !drawer) return;
 
     toggle.addEventListener('click', function () {
@@ -82,6 +83,7 @@ $(function () {
         toggle.classList.toggle('is-open', isOpen);
         toggle.setAttribute('aria-expanded', isOpen);
         toggle.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+        if (header) header.classList.toggle('is-menu-open', isOpen); 
         // 背面スクロール固定
         document.body.style.overflow = isOpen ? 'hidden' : '';
     });
@@ -92,6 +94,7 @@ $(function () {
             drawer.classList.remove('is-open');
             toggle.classList.remove('is-open');
             toggle.setAttribute('aria-expanded', 'false');
+            if (header) header.classList.remove('is-menu-open');
             document.body.style.overflow = '';
         });
     });
