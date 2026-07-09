@@ -7,13 +7,59 @@
 .page--high-life {
   background-color: #FFB9DC;
 
+
+  // ===== sec-ttl =====
+  .high-life-sec-ttl {
+    margin-inline: auto;
+    position: relative;
+    width: fit-content;
+
+    .high-life-sec-ttl-bg {
+      @include imgContain("high-admission/high-admission-sec-ttl-bg.svg");
+
+      @include pc {
+        width: p(226);
+        height: p(94);
+      }
+
+      @include sp {
+        width: s(202);
+        height: s(84);
+      }
+    }
+
+    .TL {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      font-family: $font-a1;
+      font-weight: 400;
+      color: #fff;
+      line-height: 1;
+      white-space: nowrap;
+
+      @include pc {
+        letter-spacing: 0.1em;
+        font-size: p(27);
+        top: 50%;
+        left: 49%;
+      }
+
+      @include sp {
+        letter-spacing: 0.15em;
+        font-size: s(22);
+        top: 54%;
+        left: 51%;
+      }
+    }
+  }
+
   // ===== hero =====
   .high-life-kv {
     position: relative;
     height: 100vh;
 
     .high-life-kv-bg {
-      height: 100%;
+      height: 100vh;
 
       img {
         height: 100%;
@@ -24,17 +70,301 @@
 
     .TL {
       position: absolute;
-      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
 
       @include pc {
         width: p(614);
+        top: 50%;
       }
 
       @include sp {
         width: s(338);
+        top: 54%;
       }
+    }
+  }
+
+  // ===== schedule =====
+  .high-life-schedule {
+    .high-life-schedule-ttl {
+
+      @include pc {
+        padding-block: p(47);
+      }
+
+      @include sp {
+        padding-block: s(47) s(27);
+      }
+    }
+
+    .high-life-schedule-inr {
+
+      @include pc {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      @include sp {
+        width: s(374);
+        margin-inline: auto;
+      }
+
+      .high-life-schedule-item {
+
+        @include pc {
+          display: flex;
+          flex-direction: row-reverse;
+          width: 50%;
+          height: p(317);
+        }
+
+        @include sp {}
+
+        .item-img {
+          height: 100%;
+
+          @include pc {
+            width: p(374);
+            flex-shrink: 0;
+          }
+
+          img {
+            width: 100%;
+
+            @include pc {
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+
+        .item-txt {
+          position: relative;
+          width: 100%;
+
+          @include pc {
+            height: 100%;
+          }
+
+          @include sp {
+            min-height: s(166);
+            padding-block: s(5);
+          }
+
+          .item-txt-inr {
+
+            @include sp {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: 100%;
+            }
+
+            .MM {
+
+              @include pc {
+                position: absolute;
+                top: 47%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: p(173);
+              }
+
+              @include sp {
+                width: s(95);
+                margin-inline: auto;
+              }
+            }
+
+            .TX {
+              text-align: center;
+              color: #fff;
+              font-family: $font-a1;
+              font-weight: 400;
+              line-height: 1.9;
+              letter-spacing: 0.1em;
+
+              @include pc {
+                font-size: p(13);
+                width: 100%;
+                position: absolute;
+                bottom: 9%;
+                left: 50%;
+                transform: translateX(-50%);
+              }
+
+              @include sp {
+                font-size: s(14);
+                margin-top: s(18);
+              }
+            }
+          }
+        }
+
+        &.high-life-schedule-item-01,
+        &.high-life-schedule-item-07 {
+          .item-txt {
+            background-color: #D55093;
+          }
+        }
+
+        &.high-life-schedule-item-02,
+        &.high-life-schedule-item-08 {
+          .item-txt {
+            background-color: #FF007F;
+          }
+        }
+
+        &.high-life-schedule-item-03,
+        &.high-life-schedule-item-09 {
+          .item-txt {
+            background-color: #FA8BC3;
+          }
+        }
+
+        &.high-life-schedule-item-04,
+        &.high-life-schedule-item-10 {
+          .item-txt {
+            background-color: #FF4AA5;
+          }
+        }
+
+        &.high-life-schedule-item-05,
+        &.high-life-schedule-item-11 {
+          .item-txt {
+            background-color: #D9006D;
+          }
+        }
+
+        &.high-life-schedule-item-06,
+        &.high-life-schedule-item-12 {
+          .item-txt {
+            background-color: #FFB9DC;
+
+            @include sp {
+              background-color: #EF94C5;
+            }
+          }
+        }
+
+      }
+    }
+  }
+
+  // ===== day =====
+  .high-life-day {
+
+    .high-life-day-ttl {
+      @include pc {
+        padding-block: p(171) p(46);
+      }
+
+      @include sp {
+        padding-block: s(82) s(40);
+      }
+    }
+
+    .high-life-day-inr {
+
+      @include pc {
+        display: flex;
+      }
+
+      @include sp {}
+
+      .high-life-day-img-area {
+        width: 50%;
+        position: relative;
+
+        .img-item {
+          height: calc(100vh - p(64));
+          position: sticky;
+          // position: absolute;
+          top: p(64);
+          left: 0;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+
+      .high-life-day-txt-area {
+
+        @include pc{
+          width: 50%;
+        }
+        
+        @include sp{}
+
+        .txt-item {
+
+          @include pc {
+            height: calc(100vh - p(64));
+            background-color: #D9006D;
+            padding-inline: p(165) p(74);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: p(92);
+          }
+
+          @include sp {}
+
+          &:last-child {
+            @include pc {
+              gap: p(176);
+              justify-content: flex-start;
+              padding-top: p(52);
+            }
+          }
+
+          .txt-item-box {
+
+            &.mark_L {}
+
+            &.mark_R {}
+
+            .TM {
+              color: #fff;
+              font-family: $font-a1;
+              font-weight: 500;
+              line-height: 1;
+              letter-spacing: 0.15em;
+
+              @include pc {
+                font-size: p(65);
+              }
+
+              @include sp {
+              }
+            }
+
+            .TG {}
+
+            .TX {}
+
+            .img {}
+          }
+        }
+      }
+    }
+
+
+  }
+
+  // ===== more_check =====
+  .high-life-more_check {
+    @include pc {
+      padding-block: p(170);
+    }
+
+    @include sp {
+      padding-block: s(121) s(108);
     }
   }
 }
