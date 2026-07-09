@@ -60,11 +60,14 @@ $pdf_address_label  = 'https://www.koshiengakuin-h.ed.jp/document/addresslabel.p
           学校教育法施行規則により、成績及び単位修得に関する記録の保存期間が定められています。<br>
           この保存期間を経過している場合は、これらの証明書を発行することができませんのでご了承ください。
         </p>
+        <div class="p-alumni__scroll sp">
+            <img src="<?php echo $img; ?>/scroll.webp" alt="scroll">
+        </div>
 
         <div class="p-alumni__table">
           <picture>
-            <source media="(max-width:767px)" srcset="<?php echo $img; ?>/sp_table1.webp">
-            <img src="<?php echo $img; ?>/pc_table1.webp" alt="証明書の種類・保存期間・発行手数料一覧">
+            <source media="(max-width:767px)" srcset="<?php echo $img; ?>/table1.webp">
+            <img src="<?php echo $img; ?>/table1.webp" alt="証明書の種類・保存期間・発行手数料一覧">
           </picture>
         </div>
 
@@ -115,16 +118,19 @@ $pdf_address_label  = 'https://www.koshiengakuin-h.ed.jp/document/addresslabel.p
             <p class="p-alumni__step-text p-indent">上記表の金額分の切手をご準備ください。</p>
           </div>
 
-          <div class="p-alumni__step">
+          <div class="p-alumni__step table-size">
             <p class="p-alumni__step-head"><span class="p-alumni__step-num">&#10105;</span>返信用切手（証明書の郵送を希望する場合）</p>
              <p class="p-alumni__step-text p-indent">
               身分証明書（運転免許証、健康保険証、パスポート、マイナンバーカード等の公的書類）<br>
               郵送による申請の場合は、その写し。
             </p>
+             <div class="p-alumni__scroll sp">
+                <img src="<?php echo $img; ?>/scroll.webp" alt="scroll">
+            </div>
             <div class="p-alumni__table p-alumni__table--sub p-indent">
               <picture>
-                <source media="(max-width:767px)" srcset="<?php echo $img; ?>/sp_table2.webp">
-                <img src="<?php echo $img; ?>/pc_table2.webp" alt="返信用切手の金額一覧">
+                <source media="(max-width:767px)" srcset="<?php echo $img; ?>/table2.webp">
+                <img src="<?php echo $img; ?>/table2.webp" alt="返信用切手の金額一覧">
               </picture>
             </div>
           </div>
@@ -132,7 +138,7 @@ $pdf_address_label  = 'https://www.koshiengakuin-h.ed.jp/document/addresslabel.p
       </div>
 
       <!-- ---- 申請方法 ---- -->
-      <div class="p-alumni__block js-fade">
+      <!-- <div class="p-alumni__block js-fade">
         <div class="p-alumni__subheading">
           <picture>
             <source media="(max-width:767px)" srcset="<?php echo $img; ?>/sp_sub3.webp">
@@ -189,6 +195,68 @@ $pdf_address_label  = 'https://www.koshiengakuin-h.ed.jp/document/addresslabel.p
             </div>
           </dl>
         </div>
+      </div> -->
+      <!-- ---- 申請方法 ---- -->
+      <div class="p-alumni__block js-fade">
+        <div class="p-alumni__subheading">
+          <picture>
+            <source media="(max-width:767px)" srcset="<?php echo $img; ?>/sp_sub3.webp">
+            <img src="<?php echo $img; ?>/pc_sub3.webp" alt="申請方法">
+          </picture>
+        </div>
+        <div class="p-alumni__method">
+
+          <h3 class="p-alumni__method-title">窓口での手続き</h3>
+          <p class="p-alumni__method-lead">
+            事前にお電話で来校日時をご連絡ください（連絡先は下記【お問い合わせ先】をご覧ください。）
+            上記①〜④の書類等を準備し、来校の上、申請手続きを行ってください。また、提出先から証明書の様式の指定がある場合は、用紙をお持ちください。
+          </p>
+
+          <div class="p-alumni__stepss">
+            <div class="p-alumni__step">
+              <p class="p-alumni__step-head">受付場所</p>
+              <p class="p-alumni__step-text">法人事務局　庶務課（山手幹線沿いの正門から入り、守衛室で入校手続きを行ってください。中・高校舎ではありませんので、ご注意ください。）</p>
+            </div>
+            <div class="p-alumni__step">
+              <p class="p-alumni__step-head">申請できる人</p>
+              <p class="p-alumni__step-text">原則、本人が申請してください。</p>
+            </div>
+            <div class="p-alumni__step">
+              <p class="p-alumni__step-head">受取方法と発行に要する日数</p>
+              <p class="p-alumni__step-text">証明書の準備ができましたら、ご連絡しますので、窓口まで取りにお越しください。郵送をご希望の場合は、申請時に返信用切手をご準備ください（封筒は必要ありません）。なお、証明書の発行には１週間程度（英文の場合は10日程度）かかります。</p>
+            </div>
+          </div>
+
+          <hr class="p-alumni__divider">
+
+          <h3 class="p-alumni__method-title">郵送による手続き</h3>
+          <p class="p-alumni__method-lead">
+            上記①〜④の書類等を同封し、下記にご郵送ください。また、提出先から証明書の様式の指定がある場合は、用紙を同封してください。
+          </p>
+
+          <div class="p-alumni__stepss">
+            <div class="p-alumni__step">
+              <p class="p-alumni__step-head">送付先</p>
+              <p class="p-alumni__step-text">
+                〒663-8107　西宮市瓦林町4-25 学校法人甲子園学院 法人事務局 庶務課 証明書発行係宛<br>
+                宛名ラベル（PDF）を下のボタンからダウンロードしてお使いください。
+              </p>
+              <a href="<?php echo esc_url($pdf_address_label); ?>" target="_blank" rel="noopener noreferrer" class="p-alumni__dl-btn mbt">
+                <span class="p-alumni__dl-btn-txt">宛名ラベル</span>
+                <span class="p-alumni__dl-btn-icon" aria-hidden="true"></span>
+              </a>
+            </div>
+            <div class="p-alumni__step">
+              <p class="p-alumni__step-head">受取方法と発行に要する日数</p>
+              <p class="p-alumni__step-text">証明書は郵送にてお送りしますので、申請時に返信用切手を同封してください（封筒は必要ありません）。なお、証明書の発行には書類到着後、1週間程度（英文の場合は10日程度）かかります。</p>
+            </div>
+            <div class="p-alumni__step">
+              <p class="p-alumni__step-head">その他</p>
+              <p class="p-alumni__step-text">本人確認書類の写しは証明書発行業務以外には使用しません。また、業務終了後は適切に廃棄処分します（返却はいたしません。）</p>
+            </div>
+          </div>
+
+        </div>
       </div>
 
       <!-- ---- お問い合わせ導線 ---- -->
@@ -212,7 +280,7 @@ $pdf_address_label  = 'https://www.koshiengakuin-h.ed.jp/document/addresslabel.p
             a-shomuk@koshien.ac.jp
           </a>
         </div>
-        <p class="p-alumni__info-hours">営業時間：9時～17時（土・日・祝日及び事務取扱のない日を除く）</p>
+        <p class="p-alumni__info-hours">営業時間：9時～17時<br class="sp">（土・日・祝日及び事務取扱のない日を除く）</p>
       </div>
 
     </div>
