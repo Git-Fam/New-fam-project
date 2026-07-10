@@ -283,42 +283,44 @@ $c-alumni-panel: #eeecf8;
         width: p(160);
         height: p(34);
         // margin-top: p(10);
-        border: 1px solid $color-border;
+        // border: 1px solid $color-border;
         border-radius: 9999px;
-        background: $c-white;
-        color: $color-text;
+        background: $c-brand;
+        color: #fff;
         font-size: p(12);
-        font-weight: 700;
         letter-spacing: 0.05em;
         text-decoration: none;
         transition: opacity 0.3s ease;
+        @include wt400;
 
         &:hover {
             opacity: 0.7;
         }
 
         @include sp {
-            width: s(160);
-            height: s(34);
-            font-size: s(12);
-            transform: translate(45%, 8%);
+            width: s(214);
+            height: s(45);
+            font-size: s(15);
+            transform: translate(26%, -4%);
         }
     }
 
     &__dl-btn-icon {
         position: absolute;
         top: 50%;
-        right: p(14);
-        width: p(11);
-        height: p(11);
+        right: p(16);
+        width: p(15);
+        height: p(17);
         transform: translateY(-50%);
-        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233a2e44' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v12'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='4' y1='21' x2='20' y2='21'/%3E%3C/svg%3E")
-            center / contain no-repeat;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z'/%3E%3Cpolyline points='14 2 14 8 20 8'/%3E%3C/svg%3E")
+        center / contain no-repeat;
+        // background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233a2e44' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v12'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='4' y1='21' x2='20' y2='21'/%3E%3C/svg%3E")
+            // center / contain no-repeat;
 
         @include sp {
-            right: s(14);
-            width: s(11);
-            height: s(11);
+            right: s(15);
+            width: s(20);
+            height: s(16);
         }
     }
 
