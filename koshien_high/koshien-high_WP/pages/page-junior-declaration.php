@@ -58,7 +58,7 @@ Template Path: pages/
             </div>
             <p class="TL">仲間ができる！</p>
             <p class="TX">
-            同じ目標の仲間とつながる！同学年だけじゃなくて、<br>先輩・後輩との関係も自然に生まれる。
+            同じ目標の仲間とつながる！<br class="sp">同学年だけじゃなくて、<br class="pc">先輩・後輩<br class="sp">との関係も自然に生まれる。
             </p>
           </div>
           <div class="img img01"></div>
@@ -71,8 +71,8 @@ Template Path: pages/
             </div>
             <p class="TL">自分から動ける！</p>
             <p class="TX">
-            自分が「こうしたい！」って思えるから、<br>
-            誰かに言われる前に自分で動く。
+            自分が「こうしたい！」って<br class="sp">思えるから、<br class="pc">
+            誰かに<br class="sp">言われる前に自分で動く。
             </p>
           </div>
           <div class="img img02"></div>
@@ -83,9 +83,9 @@ Template Path: pages/
             <div class="top-textbox">
               <p class="top-textbox-text">その<span class="top-textbox-number"><img src="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/top-textbox-number-03.webp" alt="3"></span></p>
             </div>
-            <p class="TL">前向きに明るくなる！</p>
+            <p class="TL">前向きに<br class="sp">明るくなる！</p>
             <p class="TX">
-            好きなことに打ち込んで、ゴールに向っていくのが楽しい！
+            好きなことに打ち込んで、<br class="sp">ゴールに向っていくのが楽しい！
             </p>
           </div>
           <div class="img img03"></div>
@@ -96,9 +96,9 @@ Template Path: pages/
             <div class="top-textbox">
               <p class="top-textbox-text">その<span class="top-textbox-number"><img src="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/top-textbox-number-04.webp" alt="4"></span></p>
             </div>
-            <p class="TL">自分に自信が持てる！</p>
+            <p class="TL">自分に<br class="sp">自信が持てる！</p>
             <p class="TX">
-            小さな成功体験が増え、自分の居場所がはっきりする。
+            小さな成功体験が増え、<br class="sp">自分の居場所がはっきりする。
             </p>
           </div>
           <div class="img img04"></div>

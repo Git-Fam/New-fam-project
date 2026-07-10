@@ -271,32 +271,27 @@ Template Path: pages/
         <div class="img-item">
           <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-01-pc.webp" alt="">
         </div>
-        <div class="img-item is-opa">
+        <div class="img-item">
           <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-02-pc.webp" alt="">
         </div>
-        <div class="img-item is-opa">
+        <div class="img-item">
           <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-03-pc.webp" alt="">
         </div>
-        <div class="img-item is-opa">
+        <div class="img-item">
           <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-04-pc.webp" alt="">
         </div>
-        <div class="img-item is-opa">
+        <div class="img-item">
           <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-05-pc.webp" alt="">
         </div>
       </div>
       <div class="high-life-day-txt-area">
+
         <div class="txt-item">
-          <div class="txt-item-box">
-            <div class="mark mark_L">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-item-point.svg" alt="">
-            </div>
+          <div class="txt-item-box mark_L">
             <p class="TM">8:35</p>
             <p class="TG">登校</p>
           </div>
-          <div class="txt-item-box">
-            <div class="mark mark_R">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-item-point.svg" alt="">
-            </div>
+          <div class="txt-item-box mark_R">
             <p class="TG">朝礼</p>
             <p class="TX">
               ダミーさまざまなイベントを通して、多様性あふれる日本社会・国際社会で活躍できることのできる女性の育成を学校全体で取り組んでいます。
@@ -306,11 +301,9 @@ Template Path: pages/
             </div>
           </div>
         </div>
+
         <div class="txt-item">
-          <div class="txt-item-box">
-            <div class="mark mark_L">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-item-point.svg" alt="">
-            </div>
+          <div class="txt-item-box mark_L">
             <p class="TM">8:45〜12:15</p>
             <p class="TG">午前授業</p>
           </div>
@@ -318,11 +311,9 @@ Template Path: pages/
             <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-02-sp.webp" alt="">
           </div>
         </div>
+
         <div class="txt-item">
-          <div class="txt-item-box">
-            <div class="mark mark_R">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-item-point.svg" alt="">
-            </div>
+          <div class="txt-item-box mark_R">
             <p class="TG">お昼休み</p>
             <p class="TX">
               ダミー生徒たちは食堂や教室、中庭など思い思いの場所で昼食をとり、午後からの授業に向けて力をつけます。
@@ -332,12 +323,10 @@ Template Path: pages/
             </div>
           </div>
         </div>
+
         <div class="txt-item">
-          <div class="txt-item-box">
-            <div class="mark mark_L">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-item-point.svg" alt="">
-            </div>
-            <p class="TM">13:00〜15:35</p>
+          <div class="txt-item-box mark_L">
+            <p class="TM">13：00 〜 15：35</p>
             <p class="TG">午後授業</p>
             <p class="TX">
               ダミー午後は3時間授業です。午前と同様、各45分、10分休憩です。
@@ -347,23 +336,19 @@ Template Path: pages/
             </div>
           </div>
         </div>
+
         <div class="txt-item">
-          <div class="txt-item-box">
-            <div class="mark mark_R">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-item-point.svg" alt="">
-            </div>
+          <div class="txt-item-box mark_R">
             <p class="TG">掃除・終礼・クラブ活動</p>
             <p class="TX">
               ダミー終礼後は教室などの掃除をし、クラブ活動に参加したり、自習室で勉強をしたりなど、それぞれの放課後を過ごします。
             </p>
           </div>
           <div class="txt-item-box mark_L">
-            <div class="mark mark_L">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-item-point.svg" alt="">
-            </div>
             <p class="TG">下校</p>
           </div>
         </div>
+
       </div>
     </div>
 

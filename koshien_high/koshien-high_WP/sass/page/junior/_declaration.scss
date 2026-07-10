@@ -35,11 +35,11 @@
     &-inner{
         width: 100%;
         @include pc {
-            @include imgCover("junior-declaration/junior-declaration-bg-pc.webp");
+            @include imgCover("junior-declaration/junior-declaration-bg-pc.jpg");
             padding-bottom: p(221);
           }
         @include sp {
-            @include imgCover("junior-declaration/junior-declaration-bg-sp.webp");
+            @include imgCover("junior-declaration/junior-declaration-bg-sp.jpg");
             padding-bottom: s(123);
           }
         background-position: top !important;
@@ -80,6 +80,7 @@
                 font-size: s(48);
                 margin: s(20) auto 0;
                 width: fit-content;
+                
             }
         }
     }
@@ -109,14 +110,14 @@
             .message-text{
                 font-family: $font-a1;
 								@include wt500;
+                line-height: 2.6;
                 @include pc {
                   font-size: p(26);
-                  line-height: 2.6;
                   text-align: center;
                 }
                 @include sp {
                   font-size: s(17);
-                  line-height: 1.8;
+                  line-height: 2.4;
                 }
             }
 
@@ -177,11 +178,11 @@
           margin-top: s(38);
         }
         &-item{
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
           background: $c-white;
           @include pc {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;  
             border-radius: p(20);
             border: p(10) solid $c-junior;
             padding-inline: p(76) p(20);
@@ -204,6 +205,7 @@
                   font-size: p(25);
                 }
                 @include sp {
+                  justify-content: center;
                   font-size: s(15);
                 }
               }
@@ -230,21 +232,27 @@
                 margin-top: p(25);
               }
               @include sp {
+                text-align: center;
+                line-height: 1.5;
                 font-size: s(32);
                 margin-top: s(28);
+                letter-spacing: 0.1em;
               }
             }
             .TX{
               @include wt500;
+              line-height: 1.8;
               @include pc {
                 font-size: p(18);
                 margin-top: p(22);
-                line-height: 1.8;
               }
               @include sp {
+                text-align: center;
                 font-size: s(15);
                 margin-top: s(24);
-                line-height: 1.8;
+                letter-spacing: 0.05em;
+                line-height: 2;
+
               }
             }
           }
@@ -253,6 +261,11 @@
             @include pc {
               width: p(343);
               height: p(278);
+            }
+            @include sp {
+              width: s(227);
+              height: s(180);
+              margin: 0 auto;
             }
             &.img01{
               @include imgContain("junior-declaration/junior-declaration-content-img01.webp");
@@ -278,7 +291,7 @@
         width: p(1125);
       }
       @include sp {
-        margin-top: s(76);
+        margin: s(76) auto 0;
         width: s(374);
       }
       &-TL{
