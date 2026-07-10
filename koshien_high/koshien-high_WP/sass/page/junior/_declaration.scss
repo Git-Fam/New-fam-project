@@ -28,6 +28,7 @@
     }
     @include pc {
       padding-top: p(64);
+  
     }
     @include sp {
       padding-top: s(55);
