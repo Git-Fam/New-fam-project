@@ -272,7 +272,6 @@
         display: flex;
       }
 
-      @include sp {}
 
       .high-life-day-img-area {
         width: 50%;
@@ -281,7 +280,6 @@
         .img-item {
           height: calc(100vh - p(64));
           position: sticky;
-          // position: absolute;
           top: p(64);
           left: 0;
           opacity: 1;
@@ -305,7 +303,8 @@
           width: 50%;
         }
 
-        @include sp {}
+        @include sp {
+        }
 
         .txt-item {
           position: relative;
@@ -313,14 +312,17 @@
 
           @include pc {
             height: calc(100vh - p(64));
-            background-color: #8b8b8b;
             display: flex;
             flex-direction: column;
             justify-content: center;
             gap: p(92);
           }
 
-          @include sp {}
+          @include sp {
+            display: flex;
+            flex-direction: column;
+            gap: s(30);
+          }
 
           &:nth-child(4) {
             .txt-item-box {
@@ -367,7 +369,12 @@
                     transform: translateX(-50%);
                   }
 
-                  @include sp {}
+                  @include sp {
+                    width: s(1.5);
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                  }
                 }
 
               }
@@ -399,6 +406,10 @@
                   &::before {
                     top: unset;
                     bottom: 0;
+
+                    @include sp{
+                      // display: none;
+                    }
                   }
                 }
 
@@ -417,7 +428,13 @@
               padding-left: p(165);
             }
 
-            @include sp {}
+            @include sp {
+              display: flex;
+              flex-direction: column;
+              gap: s(10);
+              padding-left: s(69);
+              padding-right: s(7);
+            }
 
             .mark {
               position: absolute;
@@ -430,17 +447,25 @@
                   left: p(92);
                 }
 
-                @include sp {}
+                @include sp {
+                  width: s(30);
+                  top: s(1);
+                  left: s(21);
+                }
               }
 
               &.mark_R {
                 @include pc {
                   width: p(16);
-                  top: p(12);
+                  top: p(1);
                   left: p(99);
                 }
 
-                @include sp {}
+                @include sp {
+                  width: s(19);
+                  top: s(6);
+                  left: s(27);
+                }
               }
 
               &::before {
@@ -456,7 +481,12 @@
                   transform: translateX(-50%);
                 }
 
-                @include sp {}
+                @include sp {
+                  width: s(1.5);
+                  top: s(2);
+                  left: 50%;
+                  transform: translateX(-50%);
+                }
               }
             }
 
@@ -471,7 +501,10 @@
                 font-size: p(65);
               }
 
-              @include sp {}
+              @include sp {
+                order: 2;
+                font-size: s(28);
+              }
             }
 
             .TG {
@@ -489,25 +522,42 @@
                 padding: p(9) p(25);
               }
 
-              @include sp {}
+              @include sp {
+                border-radius: s(50);
+                font-size: s(14);
+                padding: s(8) s(23);
+                order: 1;
+              }
             }
 
             .TX {
               color: #fff;
               font-family: $font-a1;
               font-weight: 400;
-              line-height: 2;
-              letter-spacing: 0.15em;
 
               @include pc {
+                line-height: 2;
+                letter-spacing: 0.15em;
                 font-size: p(16);
                 padding-right: p(89);
               }
 
-              @include sp {}
+              @include sp {
+                order: 3;
+                line-height: 1.8;
+                letter-spacing: 0.1em;
+                font-size: s(16);
+              }
             }
 
-            .img {}
+            .img {
+
+              @include sp {
+                width: s(326);
+                margin: s(10) 0 s(15);
+                order: 4;
+              }
+            }
           }
         }
       }

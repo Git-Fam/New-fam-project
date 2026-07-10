@@ -10,8 +10,279 @@ Template Path: pages/
 <?php get_template_part('./inc/header'); ?>
 
 
-<main class="page page--high-club">
-  <div class="l-inner">クラブ活動（高校）</div>
+<main class="page page--high-club  page--high-all">
+
+  <section class="high-club-kv">
+    <div class="high-club-kv-bg">
+      <picture>
+        <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-kv-bg-psp.webp" type="image/svg+xml">
+        <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-kv-bg-pc.webp" alt="">
+      </picture>
+    </div>
+    <div class="TL">
+      <picture>
+        <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-kv-ttl-sp.svg" type="image/svg+xml">
+        <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-kv-ttl-pc.svg" type="image/svg+xml" alt="仲間と好きを見つけよう。 クラブ活動 授業だけでは見つからない「好き」が見つかる場所。クラブ活動での挑戦や仲間との出会いは、自分の可能性を広げる大切な経験。高校生活の中で、仲間と一緒に新しい「好き」を見つけてみませんか。">
+      </picture>
+    </div>
+  </section>
+
+  <section class="high-club-activity">
+
+    <div class="activity-item js-fade">
+      <div class="activity-item-bg">
+        <picture>
+          <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-bg-01-sp.webp" type="image/svg+xml">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-bg-01-pc.webp" alt="">
+        </picture>
+      </div>
+      <div class="activity-item-content-wrap">
+        <div class="activity-item-content">
+          <div class="ttl">
+            <h3 class="TL">吹奏楽部</h3>
+            <p class="EN">BRASS BAND</p>
+          </div>
+          <div class="TX">
+            6年連続で日本管楽合奏コンテスト（全国大会）に出場し、最優秀賞を受賞するなど、成長を続けている吹奏楽部。演奏技術を高めるだけではなく、人を感動させられる演奏をするために日々練習に励んでいます。
+            </p>
+          </div>
+        </div>
+        <div class="activity-item-tag">
+          <div class="tag-wrap">
+            <div class="tag">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-tag-01-01.svg" alt="">
+            </div>
+            <div class="tag">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-tag-01-02.svg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="activity-item js-fade">
+      <div class="activity-item-bg">
+        <picture>
+          <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-bg-02-sp.webp" type="image/svg+xml">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-bg-02-pc.webp" alt="">
+        </picture>
+      </div>
+      <div class="activity-item-content-wrap">
+        <div class="activity-item-content">
+          <div class="ttl">
+            <h3 class="TL">剣道部</h3>
+            <p class="EN">KENDO</p>
+          </div>
+          <div class="TX">
+            近年期待される剣道部。中学生、高校生が一緒に稽古に励み、重い防具の中では熱い闘志が燃えています。
+            </p>
+          </div>
+        </div>
+        <div class="activity-item-tag">
+          <div class="tag-wrap">
+            <div class="tag">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-tag-02-01.svg" alt="">
+            </div>
+            <div class="tag">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-tag-02-02.svg" alt="">
+            </div>
+            <div class="tag">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-tag-02-03.svg" alt="">
+            </div>
+            <div class="tag">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-tag-02-04.svg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="activity-item js-fade">
+      <div class="activity-item-bg">
+        <picture>
+          <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-bg-03-sp.webp" type="image/svg+xml">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-bg-03-pc.webp" alt="">
+        </picture>
+      </div>
+      <div class="activity-item-content-wrap">
+        <div class="activity-item-content">
+          <div class="ttl">
+            <h3 class="TL">バレーボール部</h3>
+            <p class="EN">VOLLEYBALL</p>
+          </div>
+          <div class="TX">
+            中学校、高等学校ともに近年成長著しいバレーボール部。<br class="pc">
+            厳しい練習もへっちゃら！<br class="pc">
+            全員バレーをモットーに、チームワークで上位リーグをめざし<br class="pc">
+            ています。
+            </p>
+          </div>
+        </div>
+        <div class="activity-item-tag">
+          <div class="tag-wrap">
+            <div class="tag">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-tag-03-01.svg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="activity-item js-fade">
+      <div class="activity-item-bg">
+        <picture>
+          <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-bg-04-sp.webp" type="image/svg+xml">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-bg-04-pc.webp" alt="">
+        </picture>
+      </div>
+      <div class="activity-item-content-wrap">
+        <div class="activity-item-content">
+          <div class="ttl">
+            <h3 class="TL">ソフトテニス部</h3>
+            <p class="EN">SOFT TENNIS</p>
+          </div>
+          <div class="TX">
+            一見華やかだけれど、実はとっても厳しいテニス部。<br class="pc">
+            にっこり笑って笑顔で勝ちましょう！<br class="pc">
+            今年の目標は、県総体優勝！
+            </p>
+          </div>
+        </div>
+        <div class="activity-item-tag"></div>
+      </div>
+    </div>
+
+    <div class="activity-item js-fade">
+      <div class="activity-item-bg">
+        <picture>
+          <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-bg-05-sp.webp" type="image/svg+xml">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-bg-05-pc.webp" alt="">
+        </picture>
+      </div>
+      <div class="activity-item-content-wrap">
+        <div class="activity-item-content">
+          <div class="ttl">
+            <h3 class="TL">バスケットボール部</h3>
+            <p class="EN">BASKETBALL</p>
+          </div>
+          <div class="TX">
+            パワー、スピード、チームワーク！<br class="pc">
+            勝利に向かって厳しく、時には楽しく練習に励んでいます。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="activity-item js-fade">
+      <div class="activity-item-bg">
+        <picture>
+          <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-bg-06-sp.webp" type="image/svg+xml">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-bg-06-pc.webp" alt="">
+        </picture>
+      </div>
+      <div class="activity-item-content-wrap">
+        <div class="activity-item-content">
+          <div class="ttl">
+            <h3 class="TL">ダンス部</h3>
+            <p class="EN">DANCE</p>
+          </div>
+          <div class="TX">
+            いろいろなジャンルに挑戦しています！<br class="pc">
+            基礎から教えてもらえるので、未経験者でもＯＫ！
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="activity-item js-fade">
+      <div class="activity-item-bg">
+        <picture>
+          <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-bg-07-sp.webp" type="image/svg+xml">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-bg-07-pc.webp" alt="">
+        </picture>
+      </div>
+      <div class="activity-item-content-wrap">
+        <div class="activity-item-content">
+          <div class="ttl">
+            <h3 class="TL">ビリヤード部</h3>
+            <p class="EN">BILLIARDS</p>
+          </div>
+          <div class="TX">
+            女子校全国初の撞球（ビリヤード）部が誕生。公式戦使用のテーブ<br class="pc">
+            ル2台を設置。技術やマナーの習得とともに、卒業後も生涯スポーツ<br class="pc">
+            として携わってほしいと思います。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="activity-item js-fade">
+      <div class="activity-item-bg">
+        <picture>
+          <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-bg-08-sp.webp" type="image/svg+xml">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-bg-08-pc.webp" alt="">
+        </picture>
+      </div>
+      <div class="activity-item-content-wrap">
+        <div class="activity-item-content">
+          <div class="ttl">
+            <h3 class="TL">書道部</h3>
+            <p class="EN">CALLIGRAPHY</p>
+          </div>
+          <div class="TX">
+            一筆一筆心をこめて…日々の練習で、「書く」ことに親しみながら、<br class="pc">
+            文化祭や書道展で成果を発表しています。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="activity-item js-fade">
+      <div class="activity-item-bg">
+        <picture>
+          <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-bg-09-sp.webp" type="image/svg+xml">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-bg-09-pc.webp" alt="">
+        </picture>
+      </div>
+      <div class="activity-item-content-wrap">
+        <div class="activity-item-content">
+          <div class="ttl">
+            <h3 class="TL">美術部</h3>
+            <p class="EN">ART CLUB</p>
+          </div>
+          <div class="TX">
+            少数精鋭。部員は少ないけれど、<br class="pc">
+            みんな真剣に課題に取り組んでいます！ただいま部員募集中！
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="activity-item js-fade">
+      <div class="activity-item-bg">
+        <picture>
+          <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-bg-10-sp.webp" type="image/svg+xml">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-bg-10-pc.webp" alt="">
+        </picture>
+      </div>
+      <div class="activity-item-content-wrap">
+        <div class="activity-item-content">
+          <div class="ttl">
+            <h3 class="TL">ジャグリング同好会</h3>
+            <p class="EN">JUGGLING</p>
+          </div>
+          <div class="TX">
+            ダミー少数精鋭。部員は少ないけれど、<br class="pc">
+            みんな真剣に課題に取り組んでいます！ただいま部員募集中！
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="high-club-more_check">
+    <?php get_template_part('./inc/high_C_more_check'); ?>
+  </section>
+
 </main>
 
 

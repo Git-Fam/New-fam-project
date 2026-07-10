@@ -10,7 +10,7 @@ Template Path: pages/
 <?php get_template_part('./inc/header'); ?>
 
 
-<main class="page page--high-life  page--high-all">
+<main class="page page--high-life page--high-all">
 
 
   <section class="high-life-kv">
@@ -265,7 +265,6 @@ Template Path: pages/
         <h2 class="TL">1日のスケジュール</h2>
       </div>
     </div>
-
     <div class="high-life-day-inr">
       <div class="high-life-day-img-area pc">
         <div class="img-item">
@@ -290,18 +289,18 @@ Template Path: pages/
             <div class="mark mark_L">
               <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-item-point.svg" alt="">
             </div>
-            <p class="TM">8:35</p>
-            <p class="TG">登校</p>
+            <p class="TM js-fade">8:35</p>
+            <p class="TG js-fade">登校</p>
           </div>
           <div class="txt-item-box">
             <div class="mark mark_R">
               <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-item-point.svg" alt="">
             </div>
-            <p class="TG">朝礼</p>
-            <p class="TX">
+            <p class="TG js-fade">朝礼</p>
+            <p class="TX js-fade">
               ダミーさまざまなイベントを通して、多様性あふれる日本社会・国際社会で活躍できることのできる女性の育成を学校全体で取り組んでいます。
             </p>
-            <div class="img sp">
+            <div class="img sp js-fade">
               <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-01-sp.webp" alt="">
             </div>
           </div>
@@ -311,11 +310,14 @@ Template Path: pages/
             <div class="mark mark_L">
               <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-item-point.svg" alt="">
             </div>
-            <p class="TM">8:45〜12:15</p>
-            <p class="TG">午前授業</p>
-          </div>
-          <div class="img sp">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-02-sp.webp" alt="">
+            <p class="TM js-fade">8:45〜12:15</p>
+            <p class="TG js-fade">午前授業</p>
+            <p class="TX js-fade">
+              ダミー午前は4時間授業です。各45分ずつで、授業の間には10分の休憩があります。
+            </p>
+            <div class="img sp js-fade">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-02-sp.webp" alt="">
+            </div>
           </div>
         </div>
         <div class="txt-item">
@@ -323,11 +325,11 @@ Template Path: pages/
             <div class="mark mark_R">
               <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-item-point.svg" alt="">
             </div>
-            <p class="TG">お昼休み</p>
-            <p class="TX">
+            <p class="TG js-fade">お昼休み</p>
+            <p class="TX js-fade">
               ダミー生徒たちは食堂や教室、中庭など思い思いの場所で昼食をとり、午後からの授業に向けて力をつけます。
             </p>
-            <div class="img sp">
+            <div class="img sp js-fade">
               <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-03-sp.webp" alt="">
             </div>
           </div>
@@ -337,13 +339,13 @@ Template Path: pages/
             <div class="mark mark_L">
               <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-item-point.svg" alt="">
             </div>
-            <p class="TM">13:00〜15:35</p>
-            <p class="TG">午後授業</p>
-            <p class="TX">
+            <p class="TM js-fade">13:00〜15:35</p>
+            <p class="TG js-fade">午後授業</p>
+            <p class="TX js-fade">
               ダミー午後は3時間授業です。午前と同様、各45分、10分休憩です。
             </p>
-            <div class="img sp">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-01-sp.webp" alt="">
+            <div class="img sp js-fade">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-04-sp.webp" alt="">
             </div>
           </div>
         </div>
@@ -352,8 +354,8 @@ Template Path: pages/
             <div class="mark mark_R">
               <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-item-point.svg" alt="">
             </div>
-            <p class="TG">掃除・終礼・クラブ活動</p>
-            <p class="TX">
+            <p class="TG js-fade">掃除・終礼・クラブ活動</p>
+            <p class="TX js-fade">
               ダミー終礼後は教室などの掃除をし、クラブ活動に参加したり、自習室で勉強をしたりなど、それぞれの放課後を過ごします。
             </p>
           </div>
@@ -361,13 +363,14 @@ Template Path: pages/
             <div class="mark mark_L">
               <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-item-point.svg" alt="">
             </div>
-            <p class="TG">下校</p>
+            <p class="TG js-fade">下校</p>
+            <div class="img sp js-fade">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-day-05-sp.webp" alt="">
+            </div>
           </div>
         </div>
       </div>
     </div>
-
-
   </section>
 
   <section class="high-life-more_check">
