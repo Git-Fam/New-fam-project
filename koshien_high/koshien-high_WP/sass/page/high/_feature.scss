@@ -1,0 +1,54 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  club
+----------------------- */
+
+.page--high-club {
+  background-color: #FFB9DC;
+
+  // ===== hero =====
+  .high-feature-kv {
+    position: relative;
+    height: 100vh;
+
+    .high-feature-kv-bg {
+      height: 100vh;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .TL {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      @include pc {
+        width: p(800);
+        top: 59%;
+      }
+
+      @include sp {
+        width: s(327);
+        top: 50%;
+      }
+    }
+  }
+
+
+
+  // ===== more_check =====
+  .high-club-more_check {
+    @include pc {
+      padding-block: p(200);
+    }
+
+    @include sp {
+      padding-block: s(69) s(87);
+    }
+  }
+}
