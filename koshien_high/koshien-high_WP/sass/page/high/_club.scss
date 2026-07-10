@@ -1,0 +1,336 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  club
+----------------------- */
+
+.page--high-club {
+  background-color: #FFB9DC;
+
+  // ===== hero =====
+  .high-club-kv {
+    position: relative;
+    height: 100vh;
+
+    .high-club-kv-bg {
+      height: 100vh;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .TL {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      @include pc {
+        width: p(800);
+        top: 59%;
+      }
+
+      @include sp {
+        width: s(327);
+        top: 50%;
+      }
+    }
+  }
+
+
+  // ===== activity =====
+  .high-club-activity {
+
+    @include pc {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    @include sp {}
+
+    .activity-item {
+      width: 100%;
+      position: relative;
+
+      .activity-item-content-wrap {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+
+        @include pc {
+          padding: 0 0 p(56) p(48);
+          align-items: flex-end;
+        }
+
+        @include sp {
+          height: 100%;
+          flex-direction: column;
+          justify-content: space-between;
+          padding-block: s(55) s(22);
+        }
+
+
+        .activity-item-content {
+
+          @include sp {
+            padding-inline: s(20);
+          }
+
+          .ttl {
+
+            .TL {
+              font-family: $font-a1;
+              font-weight: 400;
+              color: #fff;
+              line-height: 1.5;
+              letter-spacing: 0.1em;
+
+              @include pc {
+                font-size: p(68);
+              }
+
+              @include sp {
+                font-size: s(42);
+              }
+            }
+
+            .EN {
+              font-family: $font-a1;
+              font-weight: bold;
+              color: #fff;
+              line-height: 1.5;
+              letter-spacing: 0.15em;
+
+              @include pc {
+                font-size: p(20);
+                margin-top: p(16);
+              }
+
+              @include sp {
+                font-size: s(14);
+                margin-top: s(10);
+              }
+            }
+          }
+
+          .TX {
+            font-family: $font-a1;
+            font-weight: 400;
+            color: #fff;
+
+            @include pc {
+              font-size: p(15);
+              margin-top: p(35);
+              letter-spacing: 0.14em;
+              line-height: 1.5;
+            }
+
+            @include sp {
+              font-size: s(14);
+              margin-top: s(31);
+              letter-spacing: 0.09em;
+              line-height: 2;
+            }
+          }
+        }
+
+        .activity-item-tag {
+
+          @include sp {
+            overflow-x: scroll;
+          }
+
+          .tag-wrap {
+            display: flex;
+
+            @include pc {
+              gap: p(23);
+            }
+
+            @include sp {
+              gap: s(16);
+              padding-inline: s(20);
+            }
+
+            .tag {
+              flex-shrink: 0;
+
+              @include pc {
+                width: p(174);
+              }
+
+              @include sp {
+                width: s(129);
+              }
+            }
+          }
+        }
+      }
+
+
+      // 1つ目
+      &:nth-child(1) {
+        .activity-item-content-wrap {
+
+          @include pc {
+            gap: p(50);
+          }
+
+          @include sp {}
+
+          .activity-item-content {
+            .TX {
+              @include pc {
+                width: p(672);
+              }
+            }
+          }
+
+          .activity-item-tag {}
+        }
+      }
+
+      // 2つ目
+      &:nth-child(2) {
+        .activity-item-content-wrap {
+
+          @include pc {
+            gap: p(17);
+          }
+
+          @include sp {}
+
+          .activity-item-content {
+            .TX {
+              @include pc {
+                width: p(460);
+              }
+            }
+          }
+
+          .activity-item-tag {}
+        }
+      }
+
+      // 3つ目
+      &:nth-child(3) {
+        .activity-item-content-wrap {
+
+          @include pc {
+            gap: p(47);
+          }
+
+          @include sp {}
+
+          .activity-item-content {
+
+            @include pc {
+              display: flex;
+              gap: p(47);
+            }
+
+            @include sp {}
+
+            .TX {
+
+              @include pc {
+                line-height: 2;
+                margin-top: 0;
+              }
+
+              @include sp {}
+            }
+          }
+
+          .activity-item-tag {}
+        }
+      }
+
+      // 4つ目
+      &:nth-child(4) {
+        .activity-item-content-wrap {
+          .activity-item-content {
+
+            @include pc {
+              display: flex;
+              gap: p(50);
+            }
+
+            @include sp {}
+
+            .TX {
+
+              @include pc {
+                line-height: 2;
+                margin-top: 0;
+              }
+
+              @include sp {}
+            }
+          }
+
+          .activity-item-tag {}
+        }
+      }
+
+      // 5つ目以降
+      &:nth-child(n+5) {
+
+        @include pc {
+          width: 50%;
+        }
+
+        .activity-item-content-wrap {
+
+          .activity-item-content {
+
+            .ttl {
+
+              .TL {
+                letter-spacing: -0.08em;
+
+                @include pc {
+                  font-size: p(68);
+                }
+
+                @include sp {}
+              }
+            }
+
+            .TX {
+              line-height: 1.5;
+              letter-spacing: 0.2em;
+
+              @include pc {
+                font-size: p(16);
+              }
+
+              @include sp {}
+
+
+            }
+          }
+
+          .activity-item-tag {}
+        }
+      }
+    }
+  }
+
+
+
+  // ===== more_check =====
+  .high-club-more_check {
+    @include pc {
+      padding-block: p(200);
+    }
+
+    @include sp {
+      padding-block: s(69) s(87);
+    }
+  }
+}
