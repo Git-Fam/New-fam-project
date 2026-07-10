@@ -300,6 +300,17 @@
             border-radius: p(6);
             margin-top: p(30) !important;
           }
+
+          @include sp {
+            padding: s(32) s(20) s(32) s(20);
+            margin-inline: s(20);
+          }
+        }
+        .img{
+          @include sp {
+            padding: 0 !important;
+            overflow-y: unset !important;
+          }
         }
         .img-text {
           display: flex;
@@ -323,12 +334,12 @@
           .TX-wrap {
             display: flex;
 
-            @include sp {
-              gap: s(10);
-            }
 
             .TX-ttl {
               flex-shrink: 0;
+              @include sp {
+                padding:0 !important;
+              }
             }
           }
         }

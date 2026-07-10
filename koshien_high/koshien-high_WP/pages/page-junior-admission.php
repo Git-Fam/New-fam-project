@@ -627,9 +627,6 @@ Template Path: pages/
                 下記の公開模試において偏差値60以上で、かつA・Bいずれかの日程で受験し、入学する場合、審査の上、入学金ならびに中学校3年間の授業料を全額免除します。
               </p>
               <div class="img-wrap">
-                <div class="scroll sp">
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/high-admission-scholarship-img-scroll.svg" alt="scroll">
-                </div>
                 <div class="img">
                   <div class="img-text">
                     <div class="TX-wrap">
@@ -650,9 +647,6 @@ Template Path: pages/
                 下記の公開模試において偏差値50以上で、かつA・Bいずれかの日程で受験し、入学する場合、入学金を全額免除します。
               </p>
               <div class="img-wrap">
-                <div class="scroll sp">
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/high-admission-scholarship-img-scroll.svg" alt="scroll">
-                </div>
                 <div class="img">
                   <div class="img-text">
                     <div class="TX-wrap">
@@ -708,9 +702,6 @@ Template Path: pages/
               A・B・Cいずれかの日程で合格し、入学した者のうち、下記のどちらかの条件に当てはまる場合、入学後10万円が奨学金として支給されます。ただし、上記の制度の適用者は除きます。
               </p>
               <div class="img-wrap">
-                <div class="scroll sp">
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/high-admission/high-admission-scholarship-img-scroll.svg" alt="scroll">
-                </div>
                 <div class="img">
                   <div class="img-text">
                     <div class="TX-wrap">

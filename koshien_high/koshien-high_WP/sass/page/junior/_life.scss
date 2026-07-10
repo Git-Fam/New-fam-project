@@ -1,0 +1,17 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  life
+----------------------- */
+
+.page--junior-life{
+  &.page--high-life{
+    .high-life-kv{
+      .TL{
+        @include pc {
+          width: p(844);
+        }
+      }
+    }
+  }
+}
