@@ -1,0 +1,579 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  life
+----------------------- */
+
+.page--high-life {
+  background-color: #FFB9DC;
+
+
+  // ===== sec-ttl =====
+  .high-life-sec-ttl {
+    margin-inline: auto;
+    position: relative;
+    width: fit-content;
+
+    .high-life-sec-ttl-bg {
+      @include imgContain("high-admission/high-admission-sec-ttl-bg.svg");
+
+      @include pc {
+        width: p(226);
+        height: p(94);
+      }
+
+      @include sp {
+        width: s(202);
+        height: s(84);
+      }
+    }
+
+    .TL {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      font-family: $font-a1;
+      font-weight: 400;
+      color: #fff;
+      line-height: 1;
+      white-space: nowrap;
+
+      @include pc {
+        letter-spacing: 0.1em;
+        font-size: p(27);
+        top: 50%;
+        left: 49%;
+      }
+
+      @include sp {
+        letter-spacing: 0.15em;
+        font-size: s(22);
+        top: 54%;
+        left: 51%;
+      }
+    }
+  }
+
+  // ===== hero =====
+  .high-life-kv {
+    position: relative;
+    height: 100vh;
+
+    .high-life-kv-bg {
+      height: 100vh;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .TL {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      @include pc {
+        width: p(614);
+        top: 50%;
+      }
+
+      @include sp {
+        width: s(338);
+        top: 54%;
+      }
+    }
+  }
+
+  // ===== schedule =====
+  .high-life-schedule {
+    .high-life-schedule-ttl {
+
+      @include pc {
+        padding-block: p(47);
+      }
+
+      @include sp {
+        padding-block: s(47) s(27);
+      }
+    }
+
+    .high-life-schedule-inr {
+
+      @include pc {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      @include sp {
+        width: s(374);
+        margin-inline: auto;
+      }
+
+      .high-life-schedule-item {
+
+        @include pc {
+          display: flex;
+          flex-direction: row-reverse;
+          width: 50%;
+          height: p(317);
+        }
+
+        @include sp {}
+
+        .item-img {
+          height: 100%;
+
+          @include pc {
+            width: p(374);
+            flex-shrink: 0;
+          }
+
+          img {
+            width: 100%;
+
+            @include pc {
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+
+        .item-txt {
+          position: relative;
+          width: 100%;
+
+          @include pc {
+            height: 100%;
+          }
+
+          @include sp {
+            min-height: s(166);
+            padding-block: s(5);
+          }
+
+          .item-txt-inr {
+
+            @include sp {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: 100%;
+            }
+
+            .MM {
+
+              @include pc {
+                position: absolute;
+                top: 47%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: p(173);
+              }
+
+              @include sp {
+                width: s(95);
+                margin-inline: auto;
+              }
+            }
+
+            .TX {
+              text-align: center;
+              color: #fff;
+              font-family: $font-a1;
+              font-weight: 400;
+              line-height: 1.9;
+              letter-spacing: 0.1em;
+
+              @include pc {
+                font-size: p(13);
+                width: 100%;
+                position: absolute;
+                bottom: 9%;
+                left: 50%;
+                transform: translateX(-50%);
+              }
+
+              @include sp {
+                font-size: s(14);
+                margin-top: s(18);
+              }
+            }
+          }
+        }
+
+        &.high-life-schedule-item-01,
+        &.high-life-schedule-item-07 {
+          .item-txt {
+            background-color: #D55093;
+          }
+        }
+
+        &.high-life-schedule-item-02,
+        &.high-life-schedule-item-08 {
+          .item-txt {
+            background-color: #FF007F;
+          }
+        }
+
+        &.high-life-schedule-item-03,
+        &.high-life-schedule-item-09 {
+          .item-txt {
+            background-color: #FA8BC3;
+          }
+        }
+
+        &.high-life-schedule-item-04,
+        &.high-life-schedule-item-10 {
+          .item-txt {
+            background-color: #FF4AA5;
+          }
+        }
+
+        &.high-life-schedule-item-05,
+        &.high-life-schedule-item-11 {
+          .item-txt {
+            background-color: #D9006D;
+          }
+        }
+
+        &.high-life-schedule-item-06,
+        &.high-life-schedule-item-12 {
+          .item-txt {
+            background-color: #FFB9DC;
+
+            @include sp {
+              background-color: #EF94C5;
+            }
+          }
+        }
+
+      }
+    }
+  }
+
+  // ===== day =====
+  .high-life-day {
+
+    .high-life-day-ttl {
+      @include pc {
+        padding-block: p(171) p(46);
+      }
+
+      @include sp {
+        padding-block: s(82) s(40);
+      }
+    }
+
+    .high-life-day-inr {
+
+      @include pc {
+        display: flex;
+      }
+
+
+      .high-life-day-img-area {
+        width: 50%;
+        position: relative;
+
+        .img-item {
+          height: calc(100vh - p(64));
+          position: sticky;
+          top: p(64);
+          left: 0;
+          opacity: 1;
+          transition: opacity 0.5s ease-in-out;
+
+          &.is-opa {
+            opacity: 0;
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+
+      .high-life-day-txt-area {
+
+        @include pc {
+          width: 50%;
+        }
+
+        @include sp {
+        }
+
+        .txt-item {
+          position: relative;
+          overflow: hidden;
+
+          @include pc {
+            height: calc(100vh - p(64));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: p(92);
+          }
+
+          @include sp {
+            display: flex;
+            flex-direction: column;
+            gap: s(30);
+          }
+
+          &:nth-child(4) {
+            .txt-item-box {
+
+              .TM {
+
+                @include pc {
+                  letter-spacing: 0.06em;
+                }
+
+                @include sp {}
+              }
+
+              .TX {
+
+                @include pc {
+                  padding-right: p(74);
+                }
+
+                @include sp {}
+              }
+            }
+          }
+
+          &:nth-child(2),
+          &:nth-child(3),
+          &:nth-child(4) {
+
+            .txt-item-box {
+              .mark {
+                position: absolute;
+                @include imgContain("high-life/high-life-day-item-point.svg");
+
+                &::after {
+                  content: "";
+                  position: absolute;
+                  height: 100vh;
+                  background-color: #fff;
+
+                  @include pc {
+                    width: p(1.5);
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                  }
+
+                  @include sp {
+                    width: s(1.5);
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                  }
+                }
+
+              }
+
+            }
+          }
+
+          &:last-child {
+            @include pc {
+              gap: p(176);
+              // justify-content: flex-start;
+              // padding-top: p(52);
+              padding-bottom: p(200);
+            }
+
+            .txt-item-box {
+
+              .mark {
+                position: absolute;
+                @include imgContain("high-life/high-life-day-item-point.svg");
+
+                &.mark_R {
+                  &::before {
+                    display: none;
+                  }
+                }
+
+                &.mark_L {
+                  &::before {
+                    top: unset;
+                    bottom: 0;
+
+                    @include sp{
+                      // display: none;
+                    }
+                  }
+                }
+
+              }
+
+            }
+          }
+
+          .txt-item-box {
+            position: relative;
+
+            @include pc {
+              display: flex;
+              flex-direction: column;
+              gap: p(24);
+              padding-left: p(165);
+            }
+
+            @include sp {
+              display: flex;
+              flex-direction: column;
+              gap: s(10);
+              padding-left: s(69);
+              padding-right: s(7);
+            }
+
+            .mark {
+              position: absolute;
+              @include imgContain("high-life/high-life-day-item-point.svg");
+
+              &.mark_L {
+                @include pc {
+                  width: p(30);
+                  top: p(17);
+                  left: p(92);
+                }
+
+                @include sp {
+                  width: s(30);
+                  top: s(1);
+                  left: s(21);
+                }
+              }
+
+              &.mark_R {
+                @include pc {
+                  width: p(16);
+                  top: p(1);
+                  left: p(99);
+                }
+
+                @include sp {
+                  width: s(19);
+                  top: s(6);
+                  left: s(27);
+                }
+              }
+
+              &::before {
+                content: "";
+                position: absolute;
+                height: 100vh;
+                background-color: #fff;
+
+                @include pc {
+                  width: p(1.5);
+                  top: p(2);
+                  left: 50%;
+                  transform: translateX(-50%);
+                }
+
+                @include sp {
+                  width: s(1.5);
+                  top: s(2);
+                  left: 50%;
+                  transform: translateX(-50%);
+                }
+              }
+            }
+
+            .TM {
+              color: #fff;
+              font-family: $font-a1;
+              font-weight: 500;
+              line-height: 1;
+              letter-spacing: 0.15em;
+
+              @include pc {
+                font-size: p(65);
+              }
+
+              @include sp {
+                order: 2;
+                font-size: s(28);
+              }
+            }
+
+            .TG {
+              color: #fff;
+              font-family: $font-a1;
+              font-weight: 400;
+              line-height: 1;
+              letter-spacing: 0.1em;
+              background-color: #FF4AA5;
+              width: fit-content;
+
+              @include pc {
+                border-radius: p(50);
+                font-size: p(20);
+                padding: p(9) p(25);
+              }
+
+              @include sp {
+                border-radius: s(50);
+                font-size: s(14);
+                padding: s(8) s(23);
+                order: 1;
+              }
+            }
+
+            .TX {
+              color: #fff;
+              font-family: $font-a1;
+              font-weight: 400;
+
+              @include pc {
+                line-height: 2;
+                letter-spacing: 0.15em;
+                font-size: p(16);
+                padding-right: p(89);
+              }
+
+              @include sp {
+                order: 3;
+                line-height: 1.8;
+                letter-spacing: 0.1em;
+                font-size: s(16);
+              }
+            }
+
+            .img {
+
+              @include sp {
+                width: s(326);
+                margin: s(10) 0 s(15);
+                order: 4;
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+  }
+
+  // ===== more_check =====
+  .high-life-more_check {
+    @include pc {
+      padding-block: p(170);
+    }
+
+    @include sp {
+      padding-block: s(121) s(108);
+    }
+  }
+}
