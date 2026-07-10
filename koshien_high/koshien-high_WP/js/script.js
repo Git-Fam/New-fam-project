@@ -410,3 +410,80 @@ $(function () {
 
   render();
 })();
+
+
+// ===== 資料請求・お問い合わせフォーム 初期値＋項目出し分け =====
+window.addEventListener('load', function () {
+    var radios = document.querySelectorAll('input[name="type"]');
+    var extras = document.querySelectorAll('.js-form-extra');
+    var pamphlet = document.querySelectorAll('.js-form-pamphlet');
+    if (!radios.length) return;
+
+    function toggleExtra() {
+        var selected = '';
+        radios.forEach(function (r) {
+            if (r.checked) selected = r.value;
+        });
+        var isContact = selected === 'お問い合わせ';
+        extras.forEach(function (el) {
+            el.style.display = isContact ? 'none' : '';
+        });
+        pamphlet.forEach(function (el) {
+            el.style.display = isContact ? '' : 'none';
+        });
+    }
+
+    radios.forEach(function (r) {
+        r.addEventListener('change', function () {
+            // 変更時にsessionStorageに保存
+            sessionStorage.setItem('contact_type', r.value);
+            toggleExtra();
+        });
+    });
+
+    setTimeout(function () {
+        // sessionStorageに保存値があれば復元
+        var saved = sessionStorage.getItem('contact_type');
+
+        if (saved) {
+            // 戻ってきた場合は保存値を使う
+            radios.forEach(function (r) {
+                r.checked = r.value === saved;
+            });
+        } else {
+            // 初回アクセスはページで決める
+            var isRequest = document.querySelector('.page--request') !== null;
+            radios.forEach(function (r) {
+                r.checked = isRequest ? r.value === '資料請求' : r.value === 'お問い合わせ';
+            });
+            // 初期値も保存
+            radios.forEach(function (r) {
+                if (r.checked) sessionStorage.setItem('contact_type', r.value);
+            });
+        }
+        toggleExtra();
+    }, 500);
+});
+
+// お問い合わせで隠す項目、確認画面も
+document.addEventListener('DOMContentLoaded', () => {
+    const typeValue = document.querySelector('.p-form__item .p-form__confirm');
+
+    // multiformで出力されたtype（お申し込み内容）の値を取得
+    const items = document.querySelectorAll('.p-form__item');
+    let typeText = '';
+
+    items.forEach(item => {
+        const label = item.querySelector('.p-form__label');
+        if (label && label.textContent.includes('お申し込み内容')) {
+            typeText = item.querySelector('.p-form__confirm')?.textContent.trim();
+        }
+    });
+
+    // お問い合わせの場合は関心・理由を非表示
+    if (typeText === 'お問い合わせ') {
+        document.querySelectorAll('.js-form-extra').forEach(el => {
+            el.style.display = 'none';
+        });
+    }
+});
