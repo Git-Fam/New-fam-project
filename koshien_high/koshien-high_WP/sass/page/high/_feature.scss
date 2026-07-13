@@ -1,10 +1,10 @@
 @use "../../functions" as *;
 
 /* -----------------------
-  club
+  feature
 ----------------------- */
 
-.page--high-club {
+.page--high-feature {
   background-color: #FFB9DC;
 
   // ===== hero =====
@@ -24,31 +24,173 @@
 
     .TL {
       position: absolute;
-      left: 50%;
       transform: translate(-50%, -50%);
 
       @include pc {
-        width: p(800);
-        top: 59%;
+        width: p(558);
+        top: 53%;
+        left: 70%;
       }
 
       @include sp {
-        width: s(327);
-        top: 50%;
+        width: s(292);
+        top: 33%;
+        left: 61%;
+      }
+    }
+  }
+
+  // ===== content =====
+  .high-feature-content {
+
+    .high-feature-content-inr {
+
+      .content-item {
+
+        @include pc {
+          display: flex;
+          align-items: center;
+        }
+
+        @include sp {}
+
+        &:nth-child(odd) {
+          @include pc {
+            flex-direction: row-reverse;
+          }
+        }
+
+        &:last-child {
+          .content-item-txt {
+            @include sp {
+              padding-bottom: 0;
+            }
+          }
+        }
+
+        .content-item-img {
+
+          @include pc {
+            width: 50%;
+            height: p(692);
+          }
+
+          img {
+
+            @include pc {
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+        }
+
+        .content-item-txt {
+
+          @include pc {
+            width: 50%;
+          }
+
+          @include sp {
+            padding-block: s(66);
+          }
+
+          .TG {
+
+            @include pc {
+              width: p(121);
+              margin-left: p(107);
+              margin-bottom: p(42);
+            }
+
+            @include sp {
+              width: s(95);
+              margin-left: s(40);
+              margin-bottom: s(33);
+            }
+          }
+
+          .TL {
+            width: 100%;
+
+            @include pc {
+              margin-bottom: p(50);
+            }
+
+            @include sp {
+              margin-bottom: s(45);
+            }
+          }
+
+          .TX {
+            color: #fff;
+            font-family: $font-a1;
+            font-weight: 400;
+            line-height: 2;
+            letter-spacing: 0.14em;
+
+            @include pc {
+              padding-inline: p(107) p(50);
+              font-size: p(16);
+            }
+
+            @include sp {
+              padding-inline: s(40) s(40);
+              font-size: s(14);
+            }
+          }
+        }
       }
     }
   }
 
 
 
-  // ===== more_check =====
-  .high-club-more_check {
+  // ===== number =====
+  .high-feature-number {
     @include pc {
-      padding-block: p(200);
+      padding-block: p(243) 0;
     }
 
     @include sp {
-      padding-block: s(69) s(87);
+      padding-block: s(91) 0;
+    }
+
+    .TL {
+      margin-inline: auto;
+
+      @include pc {
+        width: p(814);
+        margin-bottom: p(72);
+      }
+
+      @include sp {
+        width: s(352);
+        margin-bottom: s(44);
+      }
+    }
+
+    .high-feature-number-content {
+      margin-inline: auto;
+
+      @include pc {
+        width: p(1135);
+      }
+
+      @include sp {
+        width: 100%;
+      }
+    }
+
+  }
+
+  // ===== more_check =====
+  .high-feature-more_check {
+    @include pc {
+      padding-block: p(153) p(190);
+    }
+
+    @include sp {
+      padding-block: s(92);
     }
   }
 }
