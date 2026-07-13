@@ -1,0 +1,580 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  openschool
+----------------------- */
+
+.page--high-openschool {
+  background-color: #FFB9DC;
+
+  // ===== bg =====
+  .high-openschool-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+
+    .high-openschool-bg-inr {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      opacity: 0;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .high-openschool-inr {
+    position: relative;
+    z-index: 2;
+  }
+
+  // ===== hero =====
+  .high-openschool-kv {
+    position: relative;
+    height: 100vh;
+
+    .TL {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      left: 50%;
+
+      @include pc {
+        width: p(987);
+        top: 53%;
+      }
+
+      @include sp {
+        width: s(374);
+        top: 50%;
+      }
+    }
+
+    .high-openschool-kv-schedule {
+      position: absolute;
+      left: 0;
+      right: 0;
+      width: 100%;
+      margin-inline: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include pc {
+        flex-wrap: wrap;
+        bottom: p(15);
+        gap: p(35);
+      }
+
+      @include sp {
+        flex-direction: column;
+        bottom: s(15);
+        gap: s(14);
+      }
+
+      .kv-schedule-item {
+        display: flex;
+        align-items: center;
+
+        @include pc {
+          gap: p(13);
+        }
+
+        @include sp {
+          gap: s(8);
+        }
+
+        .tg {
+          background-color: #fff;
+          color: #F45A92;
+          font-family: $font-a1;
+          font-weight: 500;
+          line-height: 1;
+          white-space: nowrap;
+
+          @include pc {
+            border-radius: p(50);
+            padding: p(8) p(20) p(9);
+            font-size: p(15);
+          }
+
+          @include sp {
+            border-radius: s(50);
+            padding: s(5) s(9) s(6);
+            font-size: s(12);
+          }
+        }
+
+        .TM-wrap {
+          display: flex;
+          align-items: center;
+
+          @include pc {
+            gap: p(49);
+          }
+
+          @include sp {
+            gap: s(19);
+            flex-wrap: wrap;
+          }
+
+          .TM {
+            color: #fff;
+            font-family: $font-a1;
+            font-weight: 500;
+            line-height: 1;
+            position: relative;
+            white-space: nowrap;
+
+            @include pc {
+              font-size: p(42);
+              padding-right: p(25);
+            }
+
+            @include sp {
+              font-size: s(30);
+              padding-right: s(11);
+            }
+
+            span {
+              display: block;
+              position: absolute;
+              right: 0;
+              top: 50%;
+              letter-spacing: 0.1em;
+              white-space: nowrap;
+
+              @include pc {
+                font-size: p(18);
+                transform: translate(20%, -50%) rotate(-90deg);
+              }
+
+              @include sp {
+                font-size: s(11);
+                transform: translate(35%, -50%) rotate(-90deg);
+              }
+            }
+
+            &::before {
+              content: "/";
+              font-weight: 300;
+              position: absolute;
+              top: 0;
+
+              @include pc {
+                font-size: p(43);
+                left: calc(100% + p(10));
+              }
+
+              @include sp {
+                font-size: s(30);
+                left: calc(100% + s(4));
+              }
+            }
+
+            &:last-child {
+              &::before {
+                display: none;
+              }
+            }
+
+            &.is-end {
+              color: #ffffff62;
+              position: relative;
+
+              &::before {
+                color: #fff;
+              }
+
+              &::after {
+                content: "終了しました";
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: #FF4AA5;
+                color: #fff;
+                font-family: $font-a1;
+                font-weight: 400;
+                line-height: 1;
+                text-align: center;
+
+                @include pc {
+                  padding: p(2) p(8) p(1);
+                  font-size: p(14);
+                  letter-spacing: 0.1em;
+                }
+
+                @include sp {
+                  padding: s(2) s(8) s(1);
+                  font-size: s(12);
+                  letter-spacing: 0em;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+
+  // ===== txt =====
+  .high-openschool-txt {
+
+    @include pc {
+      padding-block: p(250) p(269);
+    }
+
+    @include sp {
+      padding: s(92) 0 s(111) s(20);
+    }
+
+    .TX {
+      font-family: $font-a1;
+      font-weight: 400;
+      color: #fff;
+      letter-spacing: 0.14em;
+
+      @include pc {
+        text-align: center;
+        font-size: p(26);
+        line-height: 2.78;
+      }
+
+      @include sp {
+        font-size: s(20);
+        line-height: 2.2;
+      }
+    }
+  }
+
+  // ===== date =====
+  .high-openschool-date {
+
+    .high-openschool-date-ttl {
+      margin-inline: auto;
+
+      @include pc {
+        width: p(226);
+      }
+
+      @include sp {
+        width: s(140);
+      }
+    }
+
+    .high-openschool-date-items {
+      margin-inline: auto;
+      display: flex;
+
+      @include pc {
+        margin-top: p(63);
+        width: p(702);
+        flex-wrap: wrap;
+        gap: p(24);
+      }
+
+      @include sp {
+        flex-direction: column;
+        margin-top: s(20);
+        gap: s(15);
+        padding-inline: s(20);
+      }
+
+      .date-item {
+        position: relative;
+        background-color: #fff;
+        overflow: hidden;
+
+        @include pc {
+          width: calc((100% - p(24)) * 1 / 2);
+          border-radius: p(10);
+        }
+
+        @include sp {
+          width: 100%;
+          border-radius: s(10);
+        }
+
+
+        .date-item-inr {
+          position: relative;
+          z-index: 1;
+
+          @include pc {
+            padding: p(33) p(10) p(40) p(30);
+          }
+
+          @include sp {
+            padding: s(15) s(10) s(20);
+          }
+
+
+          .TG {
+            color: #FF4AA5;
+            font-family: $font-a1;
+            font-weight: 400;
+            line-height: 1;
+            letter-spacing: 0.1em;
+            border: solid #FF4AA5;
+            display: block;
+            width: fit-content;
+
+            @include pc {
+              margin-bottom: p(6);
+              font-size: p(14);
+              border-radius: p(50);
+              padding: p(8) p(15) p(9);
+              border-width: p(1);
+            }
+
+            @include sp {
+              margin-inline: auto;
+              margin-bottom: s(5);
+              font-size: s(12);
+              border-radius: s(50);
+              padding: s(5) s(29) s(5);
+              border-width: s(1);
+            }
+          }
+
+          .DD-INFO-wrap {
+            display: flex;
+
+            @include pc {
+              flex-direction: column;
+              gap: p(6);
+            }
+
+            @include sp {
+              justify-content: center;
+              align-items: center;
+              gap: s(70);
+            }
+
+            .DD {
+              color: #FF4AA5;
+              font-family: $font-a1;
+              font-weight: 500;
+              line-height: 1;
+              display: block;
+              width: fit-content;
+              position: relative;
+
+              @include pc {
+                font-size: p(90);
+                letter-spacing: -0.05em;
+              }
+
+              @include sp {
+                font-size: s(58);
+                letter-spacing: -0.01em;
+              }
+
+              span {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                color: #FF4AA5;
+                font-family: $font-a1;
+                font-weight: 500;
+                line-height: 1;
+                letter-spacing: -0.05em;
+                display: block;
+                transform: translate(92%, -34%);
+
+                @include pc {
+                  font-size: p(39);
+                }
+
+                @include sp {
+                  font-size: s(22);
+                }
+              }
+            }
+
+            .INFO {
+              color: #FF4AA5;
+              font-family: $font-a1;
+              font-weight: 500;
+              letter-spacing: -0.08em;
+              display: block;
+              padding-left: 0.5em;
+
+              @include pc {
+                font-size: p(23);
+                line-height: 1.6;
+              }
+
+              @include sp {
+                font-size: s(15);
+                line-height: 1.6;
+              }
+            }
+          }
+        }
+
+        .date-item-end {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 2;
+          width: 100%;
+          height: 100%;
+          justify-content: center;
+          align-items: center;
+          display: none;
+          background-color: rgba(255, 255, 255, 0.7);
+
+          .TX {
+            background-color: #FF4AA5;
+            color: #fff;
+            font-family: $font-a1;
+            font-weight: 400;
+            line-height: 1;
+            text-align: center;
+
+            @include pc {
+              padding: p(11) p(35) p(10);
+              font-size: p(19);
+              letter-spacing: 0.1em;
+            }
+
+            @include sp {
+              padding: s(10) s(35) s(9);
+              font-size: s(15);
+              letter-spacing: 0em;
+            }
+          }
+        }
+
+        &.is-end {
+
+          .date-item-end {
+            display: flex;
+          }
+        }
+      }
+
+    }
+  }
+
+
+  // ===== agenda =====
+  .high-openschool-agenda {
+
+    @include pc {
+      padding-top: p(220);
+    }
+
+    @include sp {
+      padding-top: s(64);
+    }
+
+    .high-openschool-agenda-ttl {
+      margin-inline: auto;
+
+      @include pc {
+        width: p(264);
+      }
+
+      @include sp {
+        width: s(157);
+      }
+    }
+
+    .high-openschool-agenda-items {
+      margin-inline: auto;
+      display: flex;
+
+      @include pc {
+        width: p(916);
+        margin-top: p(61);
+        flex-wrap: wrap;
+        gap: p(27) p(30);
+      }
+
+      @include sp {
+        flex-direction: column;
+        gap: s(25);
+        padding-inline: s(20);
+        margin-top: s(27);
+      }
+
+      .agenda-item {
+        position: relative;
+
+        @include pc {
+          width: calc((100% - p(30)) * 1 / 2);
+        }
+
+        @include sp {
+          width: 100%;
+        }
+
+        .agenda-item-bg {
+          width: 100%;
+        }
+
+        .agenda-item-txt {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+
+  // ===== form =====
+  .high-openschool-form {
+
+    @include pc {
+      padding-block: p(178) p(180);
+    }
+
+    @include sp {
+      padding-block: s(84) 0;
+    }
+
+    .high-openschool-form-ttl {
+      margin-inline: auto;
+
+      @include pc {
+        width: p(302);
+      }
+
+      @include sp {
+        width: s(193);
+      }
+    }
+
+    .high-openschool-form-main {
+
+      @include pc {
+        margin-top: p(60);
+      }
+
+      @include sp {
+        margin-top: s(25);
+      }
+    }
+  }
+
+
+
+}
