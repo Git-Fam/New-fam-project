@@ -159,7 +159,6 @@
     @include sp {
         padding-top: s(64);
         padding-bottom: s(64);
-        text-align: center;
     }
 
     &__inner {
@@ -246,9 +245,10 @@
 
             @include sp {
                 display: inline-flex;
+                justify-content: center;
                 gap: s(10);
                 font-size: s(13);
-                margin: s(40) auto 0;
+                margin: s(28) auto 0;
                 padding: s(14) s(40);
                 background-color: $color-brand;
                 color: #fff;
@@ -325,7 +325,7 @@
         // SPスライダー（slick／high-newsに準拠）
         .slick-list {
             @include sp {
-                // padding-left: s(20);
+                padding-left: s(20);
             }
         }
 
@@ -467,14 +467,6 @@
 
         @include sp {
             display: block;
-            margin-left: s(-20);
-
-            .slick-dots {
-                display: flex;
-                gap: s(4);
-                width: s(32);
-                margin: s(30) auto 0;
-            }
         }
     }
 }
