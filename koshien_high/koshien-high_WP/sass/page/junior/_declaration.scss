@@ -28,7 +28,6 @@
     }
     @include pc {
       padding-top: p(64);
-  
     }
     @include sp {
       padding-top: s(55);
@@ -285,71 +284,73 @@
       }
     }
 
-}
 
-.junior-declaration-next{
-  @include pc {
-    margin: p(184) auto 0;
-    width: p(1125);
-  }
-  @include sp {
-    margin: s(76) auto 0;
-    width: s(374);
-  }
-  &-TL{
-    margin: 0 auto;
-    @include pc {
-      width: p(371);
-    }
-    @include sp {
-      width: s(258);
-    }
-    img{
-      width: 100%;
-      object-fit: contain;
-    }
-  }
-
-  &-bnr{
-    position: relative;
-    @include pc {
-      margin-top: p(20);
-      width: 100%;
-    }
-    @include sp {
-      margin-top: s(20);
-      width: 100%;
-    }
-    img{
-      width: 100%;
-      object-fit: contain;
-    }
-
-    &::before{
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: $c-white;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+    .junior-declaration-next{
       @include pc {
-        border-radius: p(10);
+        margin: p(184) auto 0;
+        width: p(1125);
       }
       @include sp {
-        border-radius: s(10);
+        margin: s(76) auto 0;
+        width: s(374);
       }
+      &-TL{
+        margin: 0 auto;
+        @include pc {
+          width: p(371);
+        }
+        @include sp {
+          width: s(258);
+        }
+        img{
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+
+      &-bnr{
+        position: relative;
+        @include pc {
+          margin-top: p(20);
+          width: 100%;
+        }
+        @include sp {
+          margin-top: s(20);
+          width: 100%;
+        }
+        img{
+          width: 100%;
+          object-fit: contain;
+        }
+
+        &::before{
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: $c-white;
+          pointer-events: none;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          @include pc {
+            border-radius: p(20);
+          }
+          @include sp {
+            border-radius: s(10);
+          }
+        }
+
+        &:hover{
+          &::before{
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
+          }
+        }
+      }
+
     }
 
-    &:hover{
-      &::before{
-        opacity: 0.3;
-        transition: opacity 0.3s ease;
-      }
-    }
-  }
 
 }
