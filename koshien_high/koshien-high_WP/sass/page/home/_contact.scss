@@ -452,13 +452,16 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: none;
+    border: 1px solid #fff;
     border-radius: 9999px;
     background-color: var(--school);
     color: #fff;
     font-family: $font-ja;
     cursor: pointer;
-    transition: opacity 0.3s ease;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
     letter-spacing: 0.14em;
 
     @include pc {
@@ -466,7 +469,9 @@
         padding: p(19) p(40);
         font-size: p(15);
         &:hover {
-            opacity: 0.85;
+            background-color: #fff;
+            color: var(--school);
+            border: 1px solid var(--school);
         }
     }
     @include sp {
@@ -476,9 +481,21 @@
     }
 }
 
+
+.p-form__submit {
+    &:hover {
+        .l-drawer__btn-icon {
+            background-image: url(../img/common/arrow_circle_h.webp);
+        }
+    }
+}
+
 // 戻るボタン（確認画面）
 .p-form__submit--back input {
     background-color: #d2d2d2 !important;
+    &:hover {
+        background-color: #fff!important;
+    }
 }
 
 // エラー表示
@@ -748,8 +765,6 @@
     }
 }
 
-
-
 // ============ お問い合わせ完了（THANK YOU） ============
 .p-thanks {
     position: relative;
@@ -830,16 +845,21 @@
     align-items: center;
     justify-content: center;
     border-radius: 9999px;
+    border: 1px solid #fff;
     background-color: $color-brand;
     color: $c-white;
     font-family: $font-ja;
     letter-spacing: 0.1em;
     text-decoration: none;
-    transition: opacity 0.3s ease;
+    transition: background-color 0.3s ease,
+              color 0.3s ease,
+              border-color 0.3s ease;
     @include wt500;
 
     &:hover {
-        opacity: 0.85;
+            background-color: #fff;
+            color: var(--school);
+            border: 1px solid var(--school);
     }
 
     @include pc {
@@ -853,6 +873,7 @@
         font-size: s(13);
     }
 }
+
 
 .p-thanks__btn-icon {
     @include arrow-circle($arrow-circle_ww);
@@ -869,5 +890,14 @@
         right: s(18);
         width: s(16);
         height: s(16);
+    }
+}
+
+
+.p-thanks__btn {
+    &:hover {
+        .p-thanks__btn-icon {
+            background-image: url(../img/common/arrow_circle_h.webp);
+        }
     }
 }

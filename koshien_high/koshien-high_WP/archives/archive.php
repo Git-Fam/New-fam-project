@@ -4,7 +4,7 @@
 <main class="page page--news-archive">
 
   <!-- FV（NEWS 新着情報） -->
-  <section class="p-news-archive-fv">
+  <section class="p-news-archive-fv js-fade">
     <div class="p-news-archive-fv__bg">
       <picture>
         <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/news/news-kv_sp.webp">
@@ -23,7 +23,7 @@
     <div class="p-news-archive__inner">
 
       <!-- タブ絞り込み -->
-      <div class="p-news-archive__tabs" role="tablist">
+      <div class="p-news-archive__tabs js-fade" role="tablist">
         <button class="p-news-archive__tab is-active" data-filter="all" type="button">すべて</button>
         <button class="p-news-archive__tab" data-filter="info" type="button">お知らせ</button>
         <button class="p-news-archive__tab" data-filter="exam" type="button">入試情報</button>
@@ -53,7 +53,7 @@
           }
           if (!$thumb) $thumb = get_template_directory_uri() . '/img/common/noimage.svg';
         ?>
-        <li class="p-news-archive__item" data-category="<?php echo esc_attr($cat_slug); ?>">
+        <li class="p-news-archive__item js-fade" data-category="<?php echo esc_attr($cat_slug); ?>">
           <a href="<?php the_permalink(); ?>" class="p-news-archive__card">
             <div class="p-news-archive__thumb">
               <?php if ($school_name) : ?>

@@ -32,7 +32,7 @@
   <article class="p-news-single">
     <div class="p-news-single__inner">
 
-      <div class="p-news-single__meta">
+      <div class="p-news-single__meta js-fade">
         <time class="p-news-single__date"><?php echo esc_html($news_date); ?></time>
         <?php if ($cat_name) : ?>
         <span class="p-news-single__cat p-news-single__cat--<?php echo esc_attr($cat_slug); ?>"><?php echo esc_html($cat_name); ?></span>
@@ -42,19 +42,19 @@
         <?php endif; ?>
       </div>
 
-      <h1 class="p-news-single__ttl"><?php the_title(); ?></h1>
+      <h1 class="p-news-single__ttl js-fade"><?php the_title(); ?></h1>
 
       <?php if ($main) : ?>
-      <div class="p-news-single__img">
+      <div class="p-news-single__img js-fade">
         <img src="<?php echo esc_url($main); ?>" alt="<?php the_title_attribute(); ?>">
       </div>
       <?php endif; ?>
 
-      <div class="p-news-single__body">
+      <div class="p-news-single__body js-fade">
         <?php echo $body; ?>
       </div>
 
-      <div class="p-news-single__back">
+      <div class="p-news-single__back js-fade">
         <a href="<?php echo home_url('/news/'); ?>" class="p-news-single__back-btn">
           <span>一覧に戻る</span>
           <span class="p-news-single__back-icon" aria-hidden="true"></span>
@@ -64,7 +64,7 @@
     </div>
 
     <!-- 関連記事 -->
-    <section class="p-news-related">
+    <section class="p-news-related js-fade">
       <h2 class="p-news-related__ttl">関連記事</h2>
       <ul class="p-news-related__list">
         <?php

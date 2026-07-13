@@ -14,18 +14,18 @@ Template Path: pages/
 
 <main class="page page--request">
   <section class="p-contact">
-    <div class="p-request__head">
+    <div class="p-request__head js-fade">
       <picture>
         <img src="<?php echo get_template_directory_uri(); ?>/img/home/contact/request-ttl.webp" alt="request　資料請求フォーム">
       </picture>
     </div>
 
-    <div class="p-contact__body">
+    <div class="p-contact__body js-fade">
       <?php the_content(); // 入力フォームのショートコード ?>
     </div>
 
   <!-- お電話・FAX -->
-   <div class="p-contact-tel">
+   <div class="p-contact-tel js-fade">
         <p class="p-contact-tel__ttl">お電話・FAXはこちら</p>
         <div class="p-alumni__info-row">
           <a href="tel:0798-65-6100" class="p-alumni__info-tel">

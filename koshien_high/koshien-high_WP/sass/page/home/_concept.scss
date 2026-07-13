@@ -416,6 +416,16 @@
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+  opacity: 1;
+}
+.p-banner:not(.p-banner--openschool) {
+  .p-banner__img {
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover .p-banner__img {
+    opacity: 0.6;
+  }
 }
 
 .p-banner__links {

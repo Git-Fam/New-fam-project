@@ -10,7 +10,7 @@
     left: 0;
     z-index: 100;
     width: 100%;
-    background-color: $c-white;
+    background-color: #fffffff1;
     transition: background-color 0.3s ease;
     color: $c-black;
 
@@ -21,7 +21,15 @@
         }
         // スクロール後は白に戻す（JSで is-scrolled を付与）
         .is-hero-top &.is-scrolled {
-            background-color: $c-white;
+             background-color: #fffffff1;
+        }
+
+        a {
+            transition: opacity 0.3s ease; // ← 追加：ホバーをふんわり
+
+            &:hover {
+                opacity: 0.7;
+            }
         }
     }
 }
@@ -245,7 +253,7 @@
 
 // --- 中央ナビ ---
 .l-drawer__nav {
-     letter-spacing: 0.1em;
+    letter-spacing: 0.1em;
 
     @include pc {
         position: relative;
