@@ -6,7 +6,10 @@
 	<!-- ===== hero ===== -->
 	<section class="hero">
 		<div class="hero__panel hero__panel--junior js-fade">
-			<img class="hero__img" src="<?php echo get_template_directory_uri(); ?>/img/home/top/hero-junior.webp" alt="あなたの好きを応援する中学校　DIVE IN LOVE!">
+			<picture>
+				<source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/top/hero-junior_sp.webp">
+				<img class="hero__img" src="<?php echo get_template_directory_uri(); ?>/img/home/top/hero-junior.webp" alt="あなたの好きを応援する中学校　DIVE IN LOVE!">
+			</picture>
 			<div class="hero__body">
 				<a class="hero__btn" href="<?php echo home_url('/junior/'); ?>">
 					<span class="hero__btn-label">甲子園学院中学校</span>
@@ -20,7 +23,10 @@
 			</div>
 		</div>
 		<div class="hero__panel hero__panel--high js-fade">
-			<img class="hero__img" src="<?php echo get_template_directory_uri(); ?>/img/home/top/hero-high.webp" alt="あなたの好きを見つける高等学校　FIND LOVE!">
+			<picture>
+				<source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/top/hero-high_sp.webp">
+				<img class="hero__img" src="<?php echo get_template_directory_uri(); ?>/img/home/top/hero-high.webp" alt="あなたの好きを見つける高等学校　FIND LOVE!">
+			</picture>
 			<div class="hero__body">
 				<a class="hero__btn" href="<?php echo home_url('/high/'); ?>">
 					<span class="hero__btn-label">甲子園学院高等学校</span>
@@ -181,7 +187,7 @@
 	</section>
 
 	<!-- ============ ABOUT ============ -->
-	<section class="p-about">
+	<section class="p-about js-fade">
 		<div class="p-about__bg">
 			<picture>
 				<source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/top/about-bg-sp.webp">
@@ -231,7 +237,7 @@
 	</section>
 
 	<!-- ============ UNIFORM ============ -->
-	<section class="p-uniform">
+	<section class="p-uniform js-fade">
 		<div class="p-uniform__bg">
 			<picture>
 				<source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/top/uniform-bg-sp.webp">

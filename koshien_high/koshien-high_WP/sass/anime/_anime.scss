@@ -333,12 +333,15 @@
 
 
 
-// その場でフェードイン（移動なし）
+
+// 下から少し上がってふわっとフェードイン
 .js-fade {
   opacity: 0;
-  transition: opacity 0.8s ease;
+  transform: translateY(40px);          // ← 最初は少し下に
+  transition: opacity 0.8s ease, transform 0.8s ease;
 
   &.show {
     opacity: 1;
+    transform: translateY(0);           // ← 表示時に元の位置へ
   }
 }

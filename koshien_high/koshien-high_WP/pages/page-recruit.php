@@ -62,11 +62,11 @@ Template Path: pages/
 
       <!-- ============ 募集要項 ============ -->
       <?php if (function_exists('get_field')) : ?>
-      <section class="p-recruit-outline js-fade">
+      <section class="p-recruit-outline">
         <div class="p-recruit-outline__inner">
 
           <?php if ($title = get_field('recruit_title')) : ?>
-          <h2 class="p-recruit-outline__ttl"><?php echo esc_html($title); ?></h2>
+          <h2 class="p-recruit-outline__ttl js-fade"><?php echo esc_html($title); ?></h2>
           <?php endif; ?>
 
           <dl class="p-recruit-outline__list">
@@ -88,7 +88,7 @@ Template Path: pages/
               $value = get_field($key);
               if (!$value) continue;
             ?>
-            <div class="p-recruit-outline__row">
+            <div class="p-recruit-outline__row js-fade">
               <dt class="p-recruit-outline__label"><?php echo esc_html($label); ?></dt>
               <dd class="p-recruit-outline__body"><?php echo $value; // Wysiwygはそのまま出力 ?></dd>
             </div>
