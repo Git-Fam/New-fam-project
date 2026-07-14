@@ -1,395 +1,397 @@
-@use "../../functions"as *;
+@use "../../functions" as *;
 
 /* -----------------------
   admission
 ----------------------- */
 
 .page--junior-admission {
-  &.page--high-admission {
-    background-color: #F8ACBD;
+    &.page--high-admission {
+        background-color: #f8acbd;
 
-    .high-admission-aside {
-      background-color: #FF7494;
-    }
-
-    .page--high-admission-contents-wrap {
-      .high-admission-recruiting {
-        &-ttl {
-          @include pc {
-            padding-block: p(123) p(124);
-          }
-          @include sp {
-            padding-block: s(80) s(80);
-          }
-          .TL {
-            @include pc {
-              width: p(217);
-            }
-
-            @include sp {
-              width: s(158);
-            }
-
-            img {
-              width: 100%;
-              object-fit: contain;
-            }
-          }
+        .high-admission-aside {
+            background-color: #ff7494;
         }
 
-        &-inr{
-          position: relative;
+        .page--high-admission-contents-wrap {
+            .high-admission-recruiting {
+                &-ttl {
+                    @include pc {
+                        padding-block: p(123) p(124);
+                    }
+                    @include sp {
+                        padding-block: s(80) s(80);
+                    }
+                    .TL {
+                        @include pc {
+                            width: p(217);
+                        }
 
-          @include pc {
-            display: block;
-            padding: p(58) 0 0;
-            gap: 0;
-          }
+                        @include sp {
+                            width: s(158);
+                        }
 
-          @include sp {
-            display: flex;
-            flex-direction: column;
-            gap: s(22);
-            padding: 0;
-            background: #F8ACBD;
-          }
-
-          .recruiting-item{
-            &-TL{
-              color: $c-junior !important;
-            }
-          }
-
-          .scholarship-item {
-            .scholarship-tab {
-              cursor: pointer;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-family: $font-a1;
-              font-weight: 400;
-              color: $c-junior;
-              line-height: 1.5;
-              letter-spacing: 0.15em;
-              text-align: center;
-              background-color: #FDEBEF;
-
-              @include pc {
-                position: absolute;
-                top: 0;
-                width: calc(100% / 3);
-                height: p(58);
-                font-size: p(15);
-              }
-
-              @include sp {
-                height: s(58);
-                font-size: s(15);
-                position: relative;
-
-                &::before {
-                  content: "";
-                  position: absolute;
-                  top: 50%;
-                  transform: translateY(-50%);
-                  right: s(36);
-                  display: block;
-                  aspect-ratio: 1;
-                  width: s(14);
-                  @include imgContain("high-admission/high-admission-scholarship-tab-open.svg");
+                        img {
+                            width: 100%;
+                            object-fit: contain;
+                        }
+                    }
                 }
-              }
+
+                &-inr {
+                    position: relative;
+
+                    @include pc {
+                        display: block;
+                        padding: p(58) 0 0;
+                        gap: 0;
+                    }
+
+                    @include sp {
+                        display: flex;
+                        flex-direction: column;
+                        gap: s(22);
+                        padding: 0;
+                        background: #f8acbd;
+                    }
+
+                    .recruiting-item {
+                        &-TL {
+                            color: $c-junior !important;
+                        }
+                    }
+
+                    .scholarship-item {
+                        .scholarship-tab {
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-family: $font-a1;
+                            font-weight: 400;
+                            color: $c-junior;
+                            line-height: 1.5;
+                            letter-spacing: 0.15em;
+                            text-align: center;
+                            background-color: #fdebef;
+
+                            @include pc {
+                                position: absolute;
+                                top: 0;
+                                width: calc(100% / 3);
+                                height: p(58);
+                                font-size: p(15);
+                            }
+
+                            @include sp {
+                                height: s(58);
+                                font-size: s(15);
+                                position: relative;
+
+                                &::before {
+                                    content: "";
+                                    position: absolute;
+                                    top: 50%;
+                                    transform: translateY(-50%);
+                                    right: s(36);
+                                    display: block;
+                                    aspect-ratio: 1;
+                                    width: s(14);
+                                    @include imgContain("high-admission/high-admission-scholarship-tab-open.svg");
+                                }
+                            }
+                        }
+
+                        &:nth-child(1) {
+                            .scholarship-tab {
+                                @include pc {
+                                    left: calc(100% / 3 * 0);
+                                }
+                            }
+                        }
+
+                        &:nth-child(2) {
+                            .scholarship-tab {
+                                @include pc {
+                                    left: calc(100% / 3 * 1);
+                                }
+                            }
+                        }
+
+                        &:nth-child(3) {
+                            .scholarship-tab {
+                                @include pc {
+                                    left: calc(100% / 3 * 2);
+                                }
+                            }
+                        }
+
+                        .scholarship-contents {
+                            display: none;
+                            flex-direction: column;
+
+                            @include pc {
+                                padding: p(55) p(133) p(132) p(129);
+                                gap: p(46);
+                            }
+
+                            @include sp {
+                                gap: s(51);
+                                background: #fff;
+                                padding: s(50) s(30) s(46);
+                            }
+                        }
+
+                        &.is-active {
+                            .scholarship-tab {
+                                @include pc {
+                                    background-color: $c-white;
+                                }
+                            }
+
+                            .scholarship-contents {
+                                @include pc {
+                                    display: flex;
+                                }
+                            }
+                        }
+
+                        &.is-active-sp {
+                            .scholarship-tab {
+                                @include sp {
+                                    &::before {
+                                        @include imgContain("high-admission/high-admission-scholarship-tab-close.svg");
+                                    }
+                                }
+                            }
+
+                            .scholarship-contents {
+                                @include sp {
+                                    display: flex;
+                                }
+                            }
+                        }
+                    }
+                    .recruiting-item {
+                        @include sp {
+                            padding-right: 0;
+                        }
+                        &.pd-r-sp {
+                            @include sp {
+                                padding-right: 0;
+                            }
+                        }
+                    }
+                }
             }
 
-            &:nth-child(1) {
-              .scholarship-tab {
+            .recruiting-content-TL {
+                color: $c-junior;
+                text-align: center;
                 @include pc {
-                  left: calc(100% / 3 * 0);
+                    font-size: p(23);
+                    letter-spacing: 0.1em;
                 }
-              }
-            }
-
-            &:nth-child(2) {
-              .scholarship-tab {
-                @include pc {
-                  left: calc(100% / 3 * 1);
-                }
-              }
-            }
-
-            &:nth-child(3) {
-              .scholarship-tab {
-                @include pc {
-                  left: calc(100% / 3 * 2);
-                }
-              }
-            }
-
-            .scholarship-contents {
-              display: none;
-              flex-direction: column;
-
-              @include pc {
-                padding: p(55) p(133) p(132) p(129);
-                gap: p(46);
-              }
-
-              @include sp {
-                gap: s(51);
-                background: #FFF;
-                padding: s(50) s(30) s(46);
-              }
-            }
-
-            &.is-active {
-              .scholarship-tab {
-                @include pc {
-                  background-color: $c-white;
-                }
-              }
-
-              .scholarship-contents {
-                @include pc {
-                  display: flex;
-                }
-              }
-            }
-            
-
-            &.is-active-sp {
-              .scholarship-tab {
                 @include sp {
-                  &::before {
-                    @include imgContain("high-admission/high-admission-scholarship-tab-close.svg");
-                  }
+                    font-size: s(20);
+                    letter-spacing: 0.08em;
                 }
-              }
-              
+            }
 
-              .scholarship-contents {
+            .junior-admission-schedule-table-wrap {
+                width: 100%;
+            }
+
+            .junior-admission-schedule-table {
+                width: 100%;
+                border-collapse: collapse;
+                table-layout: fixed;
+
+                @include pc {
+                    border: p(1) solid $c-junior;
+                }
+
                 @include sp {
-                  display: flex;
+                    border: s(1) solid $c-junior;
                 }
-              }
+
+                td {
+                    vertical-align: middle;
+                    font-weight: 400;
+                    line-height: 1.5;
+
+                    @include pc {
+                        border: p(1) solid $c-junior;
+                        font-size: p(15);
+                        letter-spacing: 0.15em;
+                        padding: p(10) p(12);
+                    }
+
+                    @include sp {
+                        border: s(1) solid $c-junior;
+                        font-size: s(15);
+                        letter-spacing: 0.08em;
+                        padding-block: s(16);
+                    }
+                }
+
+                &-time {
+                    width: 50%;
+                    background-color: #ffedf0;
+                    @include pc {
+                        padding-left: p(92) !important;
+                    }
+                    @include sp {
+                        padding-left: s(20) !important;
+                    }
+                }
+
+                &-content {
+                    padding-left: p(63) !important;
+                    width: 50%;
+                    @include sp {
+                        padding-left: s(20) !important;
+                    }
+                }
             }
-          }
-          .recruiting-item{
-            @include sp {
-              padding-right: 0;
+        }
+
+        .high-admission-scholarship {
+            .high-admission-scholarship-ttl {
+                @include pc {
+                    padding-block: p(201) p(134);
+                }
+                @include sp {
+                    padding-block: s(80) s(80);
+                }
+                .high-admission-sec-ttl {
+                    .TL {
+                        @include pc {
+                            width: p(217);
+                        }
+                        @include sp {
+                            width: s(158);
+                        }
+                        img {
+                            width: 100%;
+                            object-fit: contain;
+                        }
+                    }
+                }
             }
-            &.pd-r-sp{
-              @include sp {
-                padding-right:0;
-              }
+
+            &-inr {
+                .scholarship-item {
+                    .scholarship-tab {
+                        @include sp {
+                            background-color: #fdebef !important;
+                        }
+                    }
+                }
             }
-          }
-        }
-      }
 
-      .recruiting-content-TL{
-        color: $c-junior;
-        text-align: center;
-        @include pc {
-          font-size: p(23);
-          letter-spacing: 0.1em;
-        }
-        @include sp {
-          font-size: s(20);
-          letter-spacing: 0.08em;
-        }
-      }
+            .scholarship-contents-item {
+                .img-wrap {
+                    background: #ffe5ea;
+                    @include pc {
+                        padding: p(32) p(38) p(32) p(40);
+                        border-radius: p(6);
+                        margin-top: p(30) !important;
+                    }
 
-      .junior-admission-schedule-table-wrap {
-        width: 100%;
-      }
+                    @include sp {
+                        padding: s(32) s(20) s(32) s(20);
+                        margin-inline: s(20);
+                    }
+                }
+                .img {
+                    @include sp {
+                        padding: 0 !important;
+                        overflow-y: unset !important;
+                    }
+                }
+                .img-text {
+                    display: flex;
+                    flex-direction: column;
 
-      .junior-admission-schedule-table {
-        width: 100%;
-        border-collapse: collapse;
-        table-layout: fixed;
+                    @include pc {
+                        gap: p(10);
+                    }
 
-        @include pc {
-          border: p(1) solid $c-junior;
-        }
+                    @include sp {
+                        gap: s(16);
+                    }
 
-        @include sp {
-          border: s(1) solid $c-junior;
-        }
+                    .TX {
+                        margin-top: 0 !important;
+                        @include pc {
+                            font-size: p(15);
+                        }
+                    }
 
-        td {
-          vertical-align: middle;
-          font-weight: 400;
-          line-height: 1.5;
+                    .TX-wrap {
+                        display: flex;
 
-          @include pc {
-            border: p(1) solid $c-junior;
-            font-size: p(15);
-            letter-spacing: 0.15em;
-            padding: p(10) p(12);
-          }
-
-          @include sp {
-            border: s(1) solid $c-junior;
-            font-size: s(15);
-            letter-spacing: 0.08em;
-            padding-block: s(16);
-          }
-        }
-
-        &-time {
-          width: 50%;
-          background-color: #FFEDF0;
-          @include pc {
-            padding-left: p(92) !important;
-          }
-          @include sp {
-            padding-left: s(20) !important;
-          }
+                        .TX-ttl {
+                            flex-shrink: 0;
+                            @include sp {
+                                padding: 0 !important;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
-        &-content {
-          padding-left: p(63) !important;
-          width: 50%;
-          @include sp {
-            padding-left: s(20) !important;
-          }
+        .high-admission-student {
+            .high-admission-student-ttl {
+                @include pc {
+                    padding-block: p(201) p(134);
+                }
+                @include sp {
+                    padding-block: s(157) s(80);
+                }
+                .TL {
+                    @include pc {
+                        width: p(217);
+                    }
+                    @include sp {
+                        width: s(158);
+                    }
+                    img {
+                        width: 100%;
+                        object-fit: contain;
+                    }
+                }
+            }
         }
-      }
 
+        .high-admission-faq {
+            &-ttl {
+                @include sp {
+                    padding-block: s(156) s(80) !important;
+                }
+                .TL {
+                    @include pc {
+                        width: p(217);
+                    }
+                    @include sp {
+                        width: s(158);
+                    }
+                }
+            }
+            &-inr {
+                .faq-item {
+                    .item-q {
+                        background-color: #ff4a74 !important;
+                    }
+                }
+            }
+        }
     }
+}
 
-    .high-admission-scholarship{
-      .high-admission-scholarship-ttl{
-        @include pc {
-          padding-block: p(201) p(134);
-        }
-        @include sp {
-          padding-block: s(80) s(80);
-        }
-        .high-admission-sec-ttl{
-          .TL{
-            @include pc {
-              width: p(217);
-            }
-            @include sp {
-              width: s(158);
-            }
-            img {
-              width: 100%;
-              object-fit: contain;
-            }
-          }
-        }
-      }
-
-      &-inr{
-        .scholarship-item {
-          .scholarship-tab{
-            @include sp {
-              background-color: #FDEBEF !important;
-            }
-          }
-        }
-      }
-
-      .scholarship-contents-item {
-        .img-wrap{
-          background: #FFE5EA;
-          @include pc {
-            padding: p(32) p(38) p(32) p(40);
-            border-radius: p(6);
-            margin-top: p(30) !important;
-          }
-
-          @include sp {
-            padding: s(32) s(20) s(32) s(20);
-            margin-inline: s(20);
-          }
-        }
-        .img{
-          @include sp {
-            padding: 0 !important;
-            overflow-y: unset !important;
-          }
-        }
-        .img-text {
-          display: flex;
-          flex-direction: column;
-
-          @include pc {
-            gap: p(10);
-          }
-
-          @include sp {
-            gap: s(16);
-          }
-
-          .TX{
-            margin-top: 0 !important;
-            @include pc {
-              font-size: p(15);
-            }
-          }
-
-          .TX-wrap {
-            display: flex;
-
-
-            .TX-ttl {
-              flex-shrink: 0;
-              @include sp {
-                padding:0 !important;
-              }
-            }
-          }
-        }
-      }
+.scholarship-tab {
+    @include pc {
+        padding: 0 p(30);
     }
-
-    .high-admission-student{
-      .high-admission-student-ttl{
-        @include pc {
-          padding-block: p(201) p(134);
-        }
-        @include sp {
-          padding-block: s(157) s(80);
-        }
-        .TL{
-          @include pc {
-            width: p(217);
-          }
-          @include sp {
-            width: s(158);
-          }
-          img {
-            width: 100%;
-            object-fit: contain;
-          }
-        }
-      }
-    }
-
-    .high-admission-faq{
-      &-ttl{
-        @include sp {
-          padding-block: s(156) s(80) !important;
-        }
-        .TL{
-          @include pc {
-            width: p(217);
-          }
-          @include sp {
-            width: s(158);
-          }
-        }
-      }
-      &-inr{
-        .faq-item{
-          .item-q{
-            background-color: #FF4A74 !important;
-          }
-        }
-      }
-    }
-  }
 }
