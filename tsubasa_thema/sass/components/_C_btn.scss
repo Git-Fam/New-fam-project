@@ -1,0 +1,38 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_btn
+----------------------- */
+
+.C_btn {
+  display: block;
+  padding-block: s(10) s(12);
+  border-radius: s(50);
+  background-color: #39B9EF;
+  width: fit-content;
+  position: relative;
+  padding-inline: s(50);
+
+  @for $i from 6 through 12 {
+    $pd: $i * 5;
+    &.C_btn-pd-#{$pd} {
+      padding-inline: s($pd);
+    }
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: s(13);
+    aspect-ratio: 16/11;
+    width: s(17);
+    @include imgContain('header/arrow-sp.svg');
+  }
+
+  .TX {
+    font-size: s(15);
+    color: #FFF;
+  }
+}
