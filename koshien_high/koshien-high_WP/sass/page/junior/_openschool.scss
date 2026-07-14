@@ -1,0 +1,85 @@
+@use "../../functions" as *;
+
+/* -----------------------
+  openschool
+----------------------- */
+
+.page--junior-openschool{
+  &.page--high-openschool{
+    .high-openschool-inr{
+      .high-openschool-kv{
+        .TL{
+          @include pc {
+            width: p(610);
+          }
+          @include sp {
+            width: s(302);
+          }
+        }
+        &-schedule{
+          .kv-schedule-item{
+            .tg{
+              color: #F97EA3;
+            }
+            .TM-wrap{
+              .TM{
+                &.is-end{
+                  &::after{
+                    background-color: $c-junior;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .high-openschool-date{
+      .high-openschool-date-items {
+        .date-item {
+          &-inr{
+            .TG{
+              color: $c-junior;
+              border: solid $c-junior;
+            }
+            .DD-INFO-wrap{
+              .DD{
+                color: $c-junior;
+                span{
+                  color : $c-junior;
+                }
+              }
+              .INFO{
+                color: $c-junior;
+              }
+            }
+          }
+          &-end{
+            .TX{
+              background-color: $c-junior;
+            }
+          }
+        }
+      }
+
+      &-txt{
+        color: $c-white;
+        @include pc {
+          text-align: center;
+          font-size: p(16);
+          line-height: 2;
+          margin-top: p(63);
+          letter-spacing: 0.1em;
+        }
+        @include sp {
+          width: s(375);
+          margin: s(22) auto 0;
+          font-size: s(12);
+          line-height: 2;
+          letter-spacing: 0.15em;
+        }
+      }
+    }
+
+  }
+}
