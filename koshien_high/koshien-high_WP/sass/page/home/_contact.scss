@@ -898,7 +898,8 @@
 
 
 // オープンスクールフォーム（共通スタイル）
-.is-high .p-openschool-form {
+.is-high .p-openschool-form,
+.is-junior .p-openschool-form{
   h1, h2, h3, h4, ul, ol, dl, li, dt, dd, p, div, span, img, a,
   table, tr, th, td, label, input, select, textarea {
     text-box-trim: none;
