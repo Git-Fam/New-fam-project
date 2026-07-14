@@ -108,19 +108,19 @@ Template Path: pages/
     </section>
 
     <section class="high-banner js-fade">
-      <a class="high-banner-item hover-opa" href="#">
+      <a class="high-banner-item hover-opa" href="<?php echo home_url('/junior/declaration/'); ?>">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-01-sp.webp" media="(max-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-01-pc.webp" alt="">
         </picture>
       </a>
-      <a class="high-banner-item hover-opa" href="#">
+      <a class="high-banner-item hover-opa" href="<?php echo home_url('/junior/feature/'); ?>">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-02-sp.webp" media="(max-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-02-pc.webp" alt="">
         </picture>
       </a>
-      <a class="high-banner-item hover-opa" href="#">
+      <a class="high-banner-item hover-opa" href="<?php echo home_url('/junior/openschool/'); ?>">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-03-sp.webp" media="(max-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-03-pc.webp" alt="">
@@ -129,7 +129,7 @@ Template Path: pages/
     </section>
   </div>
 
-  <section class="high-change js-fade">
+  <section class="high-change js-fade" id="junior-change">
     <div class="ttl">
       <h2 class="TL">
         <picture>
@@ -154,19 +154,19 @@ Template Path: pages/
 
   <div class="junior-news_banner-wrap junior-banner-wrap">
     <div class="junior-banner js-fade">
-      <a class="junior-banner-item" href="#">
+      <a class="junior-banner-item" href="<?php echo home_url('/junior/admission/'); ?>">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-04-sp.webp" media="(max-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-04-pc.webp" alt="">
         </picture>
       </a>
-      <a class="junior-banner-item" href="#">
+      <a class="junior-banner-item" href="<?php echo home_url('/junior/life/'); ?>">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-05-sp.webp" media="(max-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-05-pc.webp" alt="">
         </picture>
       </a>
-      <a class="junior-banner-item" href="#">
+      <a class="junior-banner-item" href="<?php echo home_url('/junior/club/'); ?>">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-06-sp.webp" media="(max-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-06-pc.webp" alt="">

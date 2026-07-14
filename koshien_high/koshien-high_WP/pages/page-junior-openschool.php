@@ -32,7 +32,7 @@ Template Path: pages/
         <div class="kv-schedule-item">
           <p class="tg">説明会</p>
           <div class="TM-wrap">
-            <p class="TM is-end">
+            <p class="TM">
               2026.6.13<span>SAT</span>
             </p>
           </div>
@@ -200,7 +200,7 @@ Template Path: pages/
 
     </section>
 
-    
+
 
 
   </div>

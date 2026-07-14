@@ -170,7 +170,7 @@ Template Path: pages/
       </h3>
 
       <div class="junior-declaration-next-bnr">
-        <a href="<?php echo home_url('/'); ?>" class="junior-declaration-next-bnr-link">
+        <a href="<?php echo home_url('/junior/declaration/'); ?>" class="junior-declaration-next-bnr-link">
           <picture>
             <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-img-dec-pc.webp" media="(min-width: 768px)">
             <img src="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-img-dec-sp.webp" alt="全校生徒の好きを応援する宣言">
@@ -180,7 +180,7 @@ Template Path: pages/
 
 
       <div class="junior-declaration-next-bnr">
-        <a href="<?php echo home_url('/'); ?>" class="junior-declaration-next-bnr-link">
+        <a href="<?php echo home_url('junior/students'); ?>" class="junior-declaration-next-bnr-link">
           <picture>
             <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-img-pc.webp" media="(min-width: 768px)">
             <img src="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-img-sp.webp" alt="好きにまっすぐな夢中学生">

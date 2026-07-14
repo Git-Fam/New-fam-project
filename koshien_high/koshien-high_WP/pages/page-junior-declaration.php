@@ -118,7 +118,7 @@ Template Path: pages/
       </h3>
 
       <div class="junior-declaration-next-bnr">
-        <a href="<?php echo home_url('/'); ?>" class="junior-declaration-next-bnr-link">
+        <a href="<?php echo home_url('/junior/students/'); ?>" class="junior-declaration-next-bnr-link">
           <picture>
             <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-img-pc.webp" media="(min-width: 768px)">
             <img src="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-img-sp.webp" alt="好きにまっすぐな夢中学生">
