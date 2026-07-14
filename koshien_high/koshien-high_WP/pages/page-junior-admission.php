@@ -91,515 +91,195 @@ Template Path: pages/
       </div>
 
       <div class="high-admission-recruiting-inr js-fade">
-        <div class="scholarship-item is-active">
-          <div class="scholarship-tab">A日程</div>
+        <?php
+        // SCFから日程グループを取得
+        $schedules = class_exists('SCF') ? SCF::get('日程グループ') : array();
+        
+        if (!empty($schedules)) :
+          foreach ($schedules as $index => $sch) :
+            $is_active = ($index === 0) ? ' is-active' : '';
+        ?>
+        <div class="scholarship-item<?php echo $is_active; ?>">
+          <div class="scholarship-tab"><?php echo esc_html($sch['nyushi_tab']); ?></div>
           <div class="scholarship-contents">
-            <p class="recruiting-content-TL">A日程 募集要項</p>
-        <div class="recruiting-item">
-          <h3 class="recruiting-item-TL">募集定員</h3>
-          <div class="recruiting-item-txt">
-            <p class="TX">
-            第1学年　女子60名
-            </p>
-          </div>
-        </div>
-        <div class="recruiting-item">
-          <h3 class="recruiting-item-TL">受験資格</h3>
-          <div class="recruiting-item-txt">
-            <p class="TX">
-            2027年3月　小学校卒業見込みの者
-            </p>
-          </div>
-        </div>
-        <div class="recruiting-item">
-          <h3 class="recruiting-item-TL">出願期間・方法</h3>
-          <div class="recruiting-item-txt">
-            <div class="TX-wrap-list">
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">出願期間｜ </p>
-                <p class="TX">2026年12月4日（金）〜<br class="sp">2027年1月15日（金）</p>
-              </div>
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">出願方法｜ </p>
-                <p class="TX">WEB出願</p>
+            <p class="recruiting-content-TL"><?php echo esc_html($sch['nyushi_title']); ?></p>
+
+            <!-- 募集定員 -->
+            <?php if (!empty($sch['nyushi_capacity'])) : ?>
+            <div class="recruiting-item">
+              <h3 class="recruiting-item-TL">募集定員</h3>
+              <div class="recruiting-item-txt">
+                <p class="TX"><?php echo nl2br(esc_html($sch['nyushi_capacity'])); ?></p>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="recruiting-item">
-          <h3 class="recruiting-item-TL">入学試験について</h3>
-          <div class="recruiting-item-txt">
-            <div class="TX-wrap-list">
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">試験日｜ </p>
-                <p class="TX">2027年1月16日（土）　午前9時<br class="sp">集合</p>
-              </div>
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">持参品｜ </p>
-                <p class="TX">受験票 / 筆記具 / 直定規（20cm程度） / 上履き（受験生･保護者共に） / 水筒 / <br>腕時計（計算や辞書機能のついているものは使用できません）</p>
-              </div>
-              <div class="TX-wrap flex-none">
-                <p class="TX TX-ttl">時程表　 </p>
+            <?php endif; ?>
 
-                <div class="junior-admission-schedule-table-wrap">
-                  <table class="junior-admission-schedule-table">
-                    <tbody>
-                      <tr>
-                        <td class="junior-admission-schedule-table-time">9 : 00〜</td>
-                        <td class="junior-admission-schedule-table-content">集合完了<br class="sp">（保護者同伴）</td>
-                      </tr>
-                      <tr>
-                        <td class="junior-admission-schedule-table-time">9 : 20〜10 : 10</td>
-                        <td class="junior-admission-schedule-table-content">国語</td>
-                      </tr>
-                      <tr>
-                        <td class="junior-admission-schedule-table-time">10 : 30〜11 : 20</td>
-                        <td class="junior-admission-schedule-table-content">算数</td>
-                      </tr>
-                      <tr>
-                        <td class="junior-admission-schedule-table-time">11 : 30</td>
-                        <td class="junior-admission-schedule-table-content">面接</td>
-                      </tr>
-                    </tbody>
-                  </table>
+            <!-- 受験資格 -->
+            <?php if (!empty($sch['nyushi_qualification'])) : ?>
+            <div class="recruiting-item">
+              <h3 class="recruiting-item-TL">受験資格</h3>
+              <div class="recruiting-item-txt">
+                <p class="TX"><?php echo nl2br(esc_html($sch['nyushi_qualification'])); ?></p>
+              </div>
+            </div>
+            <?php endif; ?>
+
+            <!-- 出願期間・方法 -->
+            <?php if (!empty($sch['nyushi_period']) || !empty($sch['nyushi_method'])) : ?>
+            <div class="recruiting-item">
+              <h3 class="recruiting-item-TL">出願期間・方法</h3>
+              <div class="recruiting-item-txt">
+                <div class="TX-wrap-list">
+                  <?php if (!empty($sch['nyushi_period'])) : ?>
+                  <div class="TX-wrap">
+                    <p class="TX TX-ttl">出願期間｜ </p>
+                    <p class="TX"><?php echo nl2br(esc_html($sch['nyushi_period'])); ?></p>
+                  </div>
+                  <?php endif; ?>
+                  <?php if (!empty($sch['nyushi_method'])) : ?>
+                  <div class="TX-wrap">
+                    <p class="TX TX-ttl">出願方法｜ </p>
+                    <p class="TX"><?php echo esc_html($sch['nyushi_method']); ?></p>
+                  </div>
+                  <?php endif; ?>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="recruiting-item">
-          <h3 class="recruiting-item-TL">合格発表</h3>
-          <div class="recruiting-item-txt">
-            <p class="TX">
-            2027年1月16日（土）　※WEBで合否発表
-            </p>
-          </div>
-        </div>
-        <div class="recruiting-item pd-r-sp">
-          <h3 class="recruiting-item-TL">入学金手続き納付金について</h3>
-          <div class="recruiting-item-txt">
-            <div class="TL-wrap-list">
+            <?php endif; ?>
 
-              <div class="TL-wrap">
-                <h4 class="TL">納付金</h4>
-                <div class="TL-txt">
-                  <p class="TX">
-                    約500,000円（下記期間中にWEB受付）<br>
-                    （内訳 入学金：350,000円、制服・副教材等諸費：約150,000円）
-                  </p>
-                </div>
-              </div>
-
-              <div class="TL-wrap">
-                <h4 class="TL">手続き期間</h4>
-                <div class="TL-txt-flex">
-                  <div class="TL-txt-flex-item">
-                    <p class="TX">2027年1月18日（月）〜1月22日（金）</p>
+            <!-- 入学試験について（試験日・持参品・時程表） -->
+            <?php if (!empty($sch['nyushi_examdate']) || !empty($sch['nyushi_items']) || !empty($sch['nyushi_sch1_time'])) : ?>
+            <div class="recruiting-item">
+              <h3 class="recruiting-item-TL">入学試験について</h3>
+              <div class="recruiting-item-txt">
+                <div class="TX-wrap-list">
+                  <?php if (!empty($sch['nyushi_examdate'])) : ?>
+                  <div class="TX-wrap">
+                    <p class="TX TX-ttl">試験日｜ </p>
+                    <p class="TX"><?php echo nl2br(esc_html($sch['nyushi_examdate'])); ?></p>
                   </div>
-                </div>
-              </div>
-
-              <div class="TL-wrap">
-                <h4 class="TL">2026年度納付金（予定）</h4>
-                <div class="TL-txt-flex">
-                  <div class="TL-txt-flex-item">
-                    <p class="TX TX-ttl">入学後の納付金（授業料等）：</p>
-                    <p class="TX">約700,000円<br class="sp">（年4回で分納）</p>
+                  <?php endif; ?>
+                  <?php if (!empty($sch['nyushi_items'])) : ?>
+                  <div class="TX-wrap">
+                    <p class="TX TX-ttl">持参品｜ </p>
+                    <p class="TX"><?php echo nl2br(esc_html($sch['nyushi_items'])); ?></p>
                   </div>
-                  <div class="TL-txt-flex-item">
-                    <p class="TX TX-ttl">諸費・行事費・夏用制服等：</p>
-                    <p class="TX">約180,000円</p>
+                  <?php endif; ?>
+
+                  <!-- 時程表 -->
+                  <?php if (!empty($sch['nyushi_sch1_time'])) : ?>
+                  <div class="TX-wrap flex-none">
+                    <p class="TX TX-ttl">時程表　 </p>
+                    <div class="junior-admission-schedule-table-wrap">
+                      <table class="junior-admission-schedule-table">
+                        <tbody>
+                          <?php for ($i = 1; $i <= 6; $i++) :
+                            $time = !empty($sch['nyushi_sch' . $i . '_time']) ? $sch['nyushi_sch' . $i . '_time'] : '';
+                            $content = !empty($sch['nyushi_sch' . $i . '_content']) ? $sch['nyushi_sch' . $i . '_content'] : '';
+                            if (!$time && !$content) continue;
+                          ?>
+                          <tr>
+                            <td class="junior-admission-schedule-table-time"><?php echo esc_html($time); ?></td>
+                            <td class="junior-admission-schedule-table-content"><?php echo nl2br(esc_html($content)); ?></td>
+                          </tr>
+                          <?php endfor; ?>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
-                  <div class="TL-txt-flex-item">
-                    <p class="TX TX-ttl">教育振興基金（任意）：</p>
-                    <p class="TX">一口30,000円</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="TL-wrap">
-                <div class="TL-txt">
-                  <p class="TX">
-                    ※いったん納入された納付金は、いかなる理由が生じても返還いたしません。<br>
-                    ※招集日（制服採寸）2月20日（土）
-                  </p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-        <div class="recruiting-item">
-          <h3 class="recruiting-item-TL">その他</h3>
-          <div class="recruiting-item-txt">
-            <div class="TX-wrap-list">
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">・</p>
-                <p class="TX">「学力奨学金制度」「入学金免除制度」「大阪府等他府県入学者奨学金制度」「ファミリー奨学金制度」 があります。なお、2つ以上の制度を併用することはできません。
-                </p>
-              </div>
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">・</p>
-                <p class="TX">事前に審査がありますので、お問い合わせください。
-                </p>
-              </div>
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">・</p>
-                <p class="TX">詳細については<a class="hover-opa" href="#">高等学校奨学金制度</a>のページをご覧ください。</p>
-              </div>
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">・</p>
-                <p class="TX">試験内容や結果についてのお問い合わせには、一切応じられませんのでご了承ください。</p>
-              </div>
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">・</p>
-                <p class="TX">本学院中学校から高等学校へ内部進学する際には、入学金（350,000円）は免除されます。</p>
-              </div>
-            </div>
-          </div>
-        </div>
-          </div>
-        </div>
-
-        <div class="scholarship-item">
-          <div class="scholarship-tab">B日程</div>
-          <div class="scholarship-contents">
-            <p class="recruiting-content-TL">B日程 募集要項</p>
-        <div class="recruiting-item">
-          <h3 class="recruiting-item-TL">募集定員</h3>
-          <div class="recruiting-item-txt">
-            <p class="TX">
-            第1学年　女子60名
-            </p>
-          </div>
-        </div>
-        <div class="recruiting-item">
-          <h3 class="recruiting-item-TL">受験資格</h3>
-          <div class="recruiting-item-txt">
-            <p class="TX">
-            2027年3月　小学校卒業見込みの者
-            </p>
-          </div>
-        </div>
-        <div class="recruiting-item">
-          <h3 class="recruiting-item-TL">出願期間・方法</h3>
-          <div class="recruiting-item-txt">
-            <div class="TX-wrap-list">
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">出願期間｜ </p>
-                <p class="TX">2026年12月4日（金）〜<br class="sp">2027年1月19日（火）</p>
-              </div>
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">出願方法｜ </p>
-                <p class="TX">WEB出願</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="recruiting-item">
-          <h3 class="recruiting-item-TL">入学試験について</h3>
-          <div class="recruiting-item-txt">
-            <div class="TX-wrap-list">
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">試験日｜ </p>
-                <p class="TX">2027年1月20日（水）　午前9時<br class="sp">集合</p>
-              </div>
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">持参品｜ </p>
-                <p class="TX">受験票 / 筆記具 / 直定規（20cm程度） / 上履き（受験生･保護者共に） / 水筒 / <br>腕時計（計算や辞書機能のついているものは使用できません）</p>
-              </div>
-              <div class="TX-wrap flex-none">
-                <p class="TX TX-ttl">時程表　 </p>
-
-                <div class="junior-admission-schedule-table-wrap">
-                  <table class="junior-admission-schedule-table">
-                    <tbody>
-                      <tr>
-                        <td class="junior-admission-schedule-table-time">9 : 00〜</td>
-                        <td class="junior-admission-schedule-table-content">集合完了<br class="sp">（保護者同伴）</td>
-                      </tr>
-                      <tr>
-                        <td class="junior-admission-schedule-table-time">9 : 20〜10 : 10</td>
-                        <td class="junior-admission-schedule-table-content">国語</td>
-                      </tr>
-                      <tr>
-                        <td class="junior-admission-schedule-table-time">10 : 30〜11 : 20</td>
-                        <td class="junior-admission-schedule-table-content">算数</td>
-                      </tr>
-                      <tr>
-                        <td class="junior-admission-schedule-table-time">11 : 30</td>
-                        <td class="junior-admission-schedule-table-content">面接</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <?php endif; ?>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="recruiting-item">
-          <h3 class="recruiting-item-TL">合格発表</h3>
-          <div class="recruiting-item-txt">
-            <p class="TX">
-            2027年1月20日（水）　※WEBで合否発表
-            </p>
-          </div>
-        </div>
-        <div class="recruiting-item pd-r-sp">
-          <h3 class="recruiting-item-TL">入学金手続き納付金について</h3>
-          <div class="recruiting-item-txt">
-            <div class="TL-wrap-list">
+            <?php endif; ?>
 
-              <div class="TL-wrap">
-                <h4 class="TL">納付金</h4>
-                <div class="TL-txt">
-                  <p class="TX">
-                    約500,000円（下記期間中にWEB受付）<br>
-                    （内訳 入学金：350,000円、制服・副教材等諸費：約150,000円）
-                  </p>
-                </div>
-              </div>
-
-              <div class="TL-wrap">
-                <h4 class="TL">手続き期間</h4>
-                <div class="TL-txt-flex">
-                  <div class="TL-txt-flex-item">
-                    <p class="TX">2027年1月21日（木）〜1月27日（水）</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="TL-wrap">
-                <h4 class="TL">2026年度納付金（予定）</h4>
-                <div class="TL-txt-flex">
-                  <div class="TL-txt-flex-item">
-                    <p class="TX TX-ttl">入学後の納付金（授業料等）：</p>
-                    <p class="TX">約700,000円<br class="sp">（年4回で分納）</p>
-                  </div>
-                  <div class="TL-txt-flex-item">
-                    <p class="TX TX-ttl">諸費・行事費・夏用制服等：</p>
-                    <p class="TX">約180,000円</p>
-                  </div>
-                  <div class="TL-txt-flex-item">
-                    <p class="TX TX-ttl">教育振興基金（任意）：</p>
-                    <p class="TX">一口30,000円</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="TL-wrap">
-                <div class="TL-txt">
-                  <p class="TX">
-                    ※いったん納入された納付金は、いかなる理由が生じても返還いたしません。<br>
-                    ※招集日（制服採寸）2月20日（土）
-                  </p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-        <div class="recruiting-item">
-          <h3 class="recruiting-item-TL">その他</h3>
-          <div class="recruiting-item-txt">
-            <div class="TX-wrap-list">
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">・</p>
-                <p class="TX">「学力奨学金制度」「入学金免除制度」「大阪府等他府県入学者奨学金制度」「ファミリー奨学金制度」 があります。なお、2つ以上の制度を併用することはできません。
-                </p>
-              </div>
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">・</p>
-                <p class="TX">事前に審査がありますので、お問い合わせください。
-                </p>
-              </div>
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">・</p>
-                <p class="TX">詳細については<a class="hover-opa" href="#">高等学校奨学金制度</a>のページをご覧ください。</p>
-              </div>
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">・</p>
-                <p class="TX">試験内容や結果についてのお問い合わせには、一切応じられませんのでご了承ください。</p>
-              </div>
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">・</p>
-                <p class="TX">本学院中学校から高等学校へ内部進学する際には、入学金（350,000円）は免除されます。</p>
+            <!-- 合格発表 -->
+            <?php if (!empty($sch['nyushi_result'])) : ?>
+            <div class="recruiting-item">
+              <h3 class="recruiting-item-TL">合格発表</h3>
+              <div class="recruiting-item-txt">
+                <p class="TX"><?php echo nl2br(esc_html($sch['nyushi_result'])); ?></p>
               </div>
             </div>
-          </div>
-        </div>
-          </div>
-        </div>
+            <?php endif; ?>
 
-        <div class="scholarship-item">
-          <div class="scholarship-tab">C日程</div>
-          <div class="scholarship-contents">
-            <p class="recruiting-content-TL">C日程 募集要項</p>
-        <div class="recruiting-item">
-          <h3 class="recruiting-item-TL">募集定員</h3>
-          <div class="recruiting-item-txt">
-            <p class="TX">
-            第1学年　女子60名
-            </p>
-          </div>
-        </div>
-        <div class="recruiting-item">
-          <h3 class="recruiting-item-TL">受験資格</h3>
-          <div class="recruiting-item-txt">
-            <p class="TX">
-            2027年3月　小学校卒業見込みの者
-            </p>
-          </div>
-        </div>
-        <div class="recruiting-item">
-          <h3 class="recruiting-item-TL">出願期間・方法</h3>
-          <div class="recruiting-item-txt">
-            <div class="TX-wrap-list">
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">出願期間｜ </p>
-                <p class="TX">2026年12月4日（金）〜<br class="sp">2027年1月22日（金）</p>
-              </div>
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">出願方法｜ </p>
-                <p class="TX">WEB出願</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="recruiting-item">
-          <h3 class="recruiting-item-TL">入学試験について</h3>
-          <div class="recruiting-item-txt">
-            <div class="TX-wrap-list">
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">試験日｜ </p>
-                <p class="TX">2027年1月23日（土）　午前9時<br class="sp">集合</p>
-              </div>
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">持参品｜ </p>
-                <p class="TX">受験票 / 筆記具 / 直定規（20cm程度） / 上履き（受験生･保護者共に） / 水筒 / <br>腕時計（計算や辞書機能のついているものは使用できません）</p>
-              </div>
-              <div class="TX-wrap flex-none">
-                <p class="TX TX-ttl">時程表　 </p>
+            <!-- 入学金手続き納付金 -->
+            <?php if (!empty($sch['nyushi_payment']) || !empty($sch['nyushi_procedure']) || !empty($sch['nyushi_payment2'])) : ?>
+            <div class="recruiting-item pd-r-sp">
+              <h3 class="recruiting-item-TL">入学金手続き納付金について</h3>
+              <div class="recruiting-item-txt">
+                <div class="TL-wrap-list">
 
-                <div class="junior-admission-schedule-table-wrap">
-                  <table class="junior-admission-schedule-table">
-                    <tbody>
-                      <tr>
-                        <td class="junior-admission-schedule-table-time">9 : 00〜</td>
-                        <td class="junior-admission-schedule-table-content">集合完了<br class="sp">（保護者同伴）</td>
-                      </tr>
-                      <tr>
-                        <td class="junior-admission-schedule-table-time">9 : 20〜10 : 10</td>
-                        <td class="junior-admission-schedule-table-content">国語</td>
-                      </tr>
-                      <tr>
-                        <td class="junior-admission-schedule-table-time">10 : 30〜11 : 20</td>
-                        <td class="junior-admission-schedule-table-content">算数</td>
-                      </tr>
-                      <tr>
-                        <td class="junior-admission-schedule-table-time">11 : 30</td>
-                        <td class="junior-admission-schedule-table-content">面接</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <?php if (!empty($sch['nyushi_payment'])) : ?>
+                  <div class="TL-wrap">
+                    <h4 class="TL">納付金</h4>
+                    <div class="TL-txt">
+                      <p class="TX"><?php echo nl2br(esc_html($sch['nyushi_payment'])); ?></p>
+                    </div>
+                  </div>
+                  <?php endif; ?>
+
+                  <?php if (!empty($sch['nyushi_procedure'])) : ?>
+                  <div class="TL-wrap">
+                    <h4 class="TL">手続き期間</h4>
+                    <div class="TL-txt-flex">
+                      <div class="TL-txt-flex-item">
+                        <p class="TX"><?php echo nl2br(esc_html($sch['nyushi_procedure'])); ?></p>
+                      </div>
+                    </div>
+                  </div>
+                  <?php endif; ?>
+
+                  <?php if (!empty($sch['nyushi_payment2'])) : ?>
+                  <div class="TL-wrap">
+                    <h4 class="TL">2026年度納付金（予定）</h4>
+                    <div class="TL-txt">
+                      <p class="TX"><?php echo nl2br(esc_html($sch['nyushi_payment2'])); ?></p>
+                    </div>
+                  </div>
+                  <?php endif; ?>
+
+                  <?php if (!empty($sch['nyushi_note'])) : ?>
+                  <div class="TL-wrap">
+                    <div class="TL-txt">
+                      <p class="TX"><?php echo nl2br(esc_html($sch['nyushi_note'])); ?></p>
+                    </div>
+                  </div>
+                  <?php endif; ?>
+
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="recruiting-item">
-          <h3 class="recruiting-item-TL">合格発表</h3>
-          <div class="recruiting-item-txt">
-            <p class="TX">
-            2027年1月23日（土）　※WEBで合否発表
-            </p>
-          </div>
-        </div>
-        <div class="recruiting-item pd-r-sp">
-          <h3 class="recruiting-item-TL">入学金手続き納付金について</h3>
-          <div class="recruiting-item-txt">
-            <div class="TL-wrap-list">
+            <?php endif; ?>
 
-              <div class="TL-wrap">
-                <h4 class="TL">納付金</h4>
-                <div class="TL-txt">
-                  <p class="TX">
-                    約500,000円（下記期間中にWEB受付）<br>
-                    （内訳 入学金：350,000円、制服・副教材等諸費：約150,000円）
-                  </p>
-                </div>
-              </div>
-
-              <div class="TL-wrap">
-                <h4 class="TL">手続き期間</h4>
-                <div class="TL-txt-flex">
-                  <div class="TL-txt-flex-item">
-                    <p class="TX">2027年1月18日（月）〜1月29日（金）</p>
+            <!-- その他 -->
+            <?php if (!empty($sch['nyushi_other'])) : ?>
+            <div class="recruiting-item">
+              <h3 class="recruiting-item-TL">その他</h3>
+              <div class="recruiting-item-txt">
+                <div class="TX-wrap-list">
+                  <?php
+                  $lines = preg_split('/\r\n|\r|\n/', $sch['nyushi_other']);
+                  foreach ($lines as $line) :
+                    $line = trim($line);
+                    if ($line === '') continue;
+                  ?>
+                  <div class="TX-wrap">
+                    <p class="TX TX-ttl">・</p>
+                    <p class="TX"><?php echo esc_html($line); ?></p>
                   </div>
+                  <?php endforeach; ?>
                 </div>
-              </div>
-
-              <div class="TL-wrap">
-                <h4 class="TL">2026年度納付金（予定）</h4>
-                <div class="TL-txt-flex">
-                  <div class="TL-txt-flex-item">
-                    <p class="TX TX-ttl">入学後の納付金（授業料等）：</p>
-                    <p class="TX">約700,000円<br class="sp">（年4回で分納）</p>
-                  </div>
-                  <div class="TL-txt-flex-item">
-                    <p class="TX TX-ttl">諸費・行事費・夏用制服等：</p>
-                    <p class="TX">約180,000円</p>
-                  </div>
-                  <div class="TL-txt-flex-item">
-                    <p class="TX TX-ttl">教育振興基金（任意）：</p>
-                    <p class="TX">一口30,000円</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="TL-wrap">
-                <div class="TL-txt">
-                  <p class="TX">
-                    ※いったん納入された納付金は、いかなる理由が生じても返還いたしません。<br>
-                    ※招集日（制服採寸）2月20日（土）
-                  </p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-        <div class="recruiting-item">
-          <h3 class="recruiting-item-TL">その他</h3>
-          <div class="recruiting-item-txt">
-            <div class="TX-wrap-list">
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">・</p>
-                <p class="TX">「学力奨学金制度」「入学金免除制度」「大阪府等他府県入学者奨学金制度」「ファミリー奨学金制度」 があります。なお、2つ以上の制度を併用することはできません。
-                </p>
-              </div>
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">・</p>
-                <p class="TX">事前に審査がありますので、お問い合わせください。
-                </p>
-              </div>
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">・</p>
-                <p class="TX">詳細については<a class="hover-opa" href="#">高等学校奨学金制度</a>のページをご覧ください。</p>
-              </div>
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">・</p>
-                <p class="TX">試験内容や結果についてのお問い合わせには、一切応じられませんのでご了承ください。</p>
-              </div>
-              <div class="TX-wrap">
-                <p class="TX TX-ttl">・</p>
-                <p class="TX">本学院中学校から高等学校へ内部進学する際には、入学金（350,000円）は免除されます。</p>
               </div>
             </div>
+            <?php endif; ?>
+
           </div>
         </div>
-          </div>
-        </div>
+        <?php
+          endforeach;
+        endif;
+        ?>
       </div>
     </section>
 
@@ -618,106 +298,93 @@ Template Path: pages/
         </div>
       </div>
       <div class="high-admission-scholarship-inr js-fade">
-        <div class="scholarship-item is-active">
-          <div class="scholarship-tab">学力特待生制度</div>
+        <?php
+        $scholarships = class_exists('SCF') ? SCF::get('奨学金グループ') : array();
+        if (!empty($scholarships)) :
+          foreach ($scholarships as $index => $sc) :
+            $is_active = ($index === 0) ? ' is-active' : '';
+        ?>
+        <div class="scholarship-item<?php echo $is_active; ?>">
+          <div class="scholarship-tab"><?php echo esc_html($sc['scholar_tab']); ?></div>
           <div class="scholarship-contents">
+
+            <!-- 制度1 -->
+            <?php if (!empty($sc['scholar_title1'])) : ?>
             <div class="scholarship-contents-item">
-              <h3 class="ttl">学力特待生制度①</h3>
-              <p class="TX">
-                下記の公開模試において偏差値60以上で、かつA・Bいずれかの日程で受験し、入学する場合、審査の上、入学金ならびに中学校3年間の授業料を全額免除します。
-              </p>
+              <h3 class="ttl"><?php echo esc_html($sc['scholar_title1']); ?></h3>
+              <?php if (!empty($sc['scholar_text1'])) : ?>
+              <p class="TX"><?php echo nl2br(esc_html($sc['scholar_text1'])); ?></p>
+              <?php endif; ?>
+
+              <?php if (!empty($sc['scholar_note1'])) : ?>
               <div class="img-wrap">
                 <div class="img">
                   <div class="img-text">
+                    <?php
+                    $notes1 = preg_split('/\r\n|\r|\n/', $sc['scholar_note1']);
+                    foreach ($notes1 as $note) :
+                      $note = trim($note);
+                      if ($note === '') continue;
+                    ?>
                     <div class="TX-wrap">
                       <p class="TX TX-ttl">・</p>
-                      <p class="TX">対象となる模試：五ツ木・駸々堂模試等、受験人数が1000名以上の2026年度11月までに実施の模試。</p>
+                      <p class="TX"><?php echo esc_html($note); ?></p>
                     </div>
-                    <div class="TX-wrap">
-                      <p class="TX TX-ttl">・</p>
-                      <p class="TX">国語・算数の合計平均偏差値が60以上。</p>
-                    </div>
+                    <?php endforeach; ?>
                   </div>
                 </div>
               </div>
+              <?php endif; ?>
+
+              <?php
+              // 制度2が無い場合、※印はここに表示
+              if (empty($sc['scholar_title2']) && !empty($sc['scholar_point'])) :
+              ?>
+              <p class="TX TX-point"><?php echo nl2br(esc_html($sc['scholar_point'])); ?></p>
+              <?php endif; ?>
             </div>
+            <?php endif; ?>
+
+            <!-- 制度2 -->
+            <?php if (!empty($sc['scholar_title2'])) : ?>
             <div class="scholarship-contents-item">
-              <h3 class="ttl">学力特待生制度②</h3>
-              <p class="TX">
-                下記の公開模試において偏差値50以上で、かつA・Bいずれかの日程で受験し、入学する場合、入学金を全額免除します。
-              </p>
+              <h3 class="ttl"><?php echo esc_html($sc['scholar_title2']); ?></h3>
+              <?php if (!empty($sc['scholar_text2'])) : ?>
+              <p class="TX"><?php echo nl2br(esc_html($sc['scholar_text2'])); ?></p>
+              <?php endif; ?>
+
+              <?php if (!empty($sc['scholar_note2'])) : ?>
               <div class="img-wrap">
                 <div class="img">
                   <div class="img-text">
+                    <?php
+                    $notes2 = preg_split('/\r\n|\r|\n/', $sc['scholar_note2']);
+                    foreach ($notes2 as $note) :
+                      $note = trim($note);
+                      if ($note === '') continue;
+                    ?>
                     <div class="TX-wrap">
                       <p class="TX TX-ttl">・</p>
-                      <p class="TX">対象となる模試：五ツ木・駸々堂模試等、受験人数が1000名以上の2026年度11月までに実施の模試。</p>
+                      <p class="TX"><?php echo esc_html($note); ?></p>
                     </div>
-                    <div class="TX-wrap">
-                      <p class="TX TX-ttl">・</p>
-                      <p class="TX">国語・算数の合計平均偏差値が50以上。</p>
-                    </div>
+                    <?php endforeach; ?>
                   </div>
                 </div>
               </div>
-              <p class="TX TX-point">
-                ※①、②ともに事前に審査があります。ご希望の方は、できるだけ早く本校にお問い合わせください。
-              </p>
+              <?php endif; ?>
+
+              <?php if (!empty($sc['scholar_point'])) : ?>
+              <p class="TX TX-point"><?php echo nl2br(esc_html($sc['scholar_point'])); ?></p>
+              <?php endif; ?>
             </div>
+            <?php endif; ?>
+
           </div>
         </div>
-        <div class="scholarship-item">
-          <div class="scholarship-tab">入学金免除制度</div>
-          <div class="scholarship-contents">
-            <div class="scholarship-contents-item">
-              <h3 class="ttl">入学金免除制度</h3>
-              <p class="TX">
-              本校が指定するスポーツや吹奏楽、芸術・芸能などで一芸に秀で、中高6年間クラブ活動等で必ず継続して、その技能を磨く強い意思があり、かつAもしくはB日程で受験し、入学する場合、入学金を全額免除されるなどの奨学金制度が適用されます。
-              </p>
-            </div>
-            <div class="scholarship-contents-item">
-              <p class="TX TX-point">
-                ※事前に審査があります。ご希望の方は、できるだけ早く本校にお問い合わせください。 
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="scholarship-item">
-          <div class="scholarship-tab">大阪府等他府県入学者<br class="pc">奨学金制度</div>
-          <div class="scholarship-contents">
-            <div class="scholarship-contents-item">
-              <h3 class="ttl">大阪府等他府県入学者奨学金制度</h3>
-              <p class="TX">
-              2027年度入学試験出願時において、兵庫県以外の在住者が試験に合格した場合、入学金の半額（175,000円）を奨学金として支給します。
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="scholarship-item">
-          <div class="scholarship-tab">ファミリー奨学金制度</div>
-          <div class="scholarship-contents">
-            <div class="scholarship-contents-item">
-              <h3 class="ttl">ファミリー奨学金制度</h3>
-              <p class="TX">
-              A・B・Cいずれかの日程で合格し、入学した者のうち、下記のどちらかの条件に当てはまる場合、入学後10万円が奨学金として支給されます。ただし、上記の制度の適用者は除きます。
-              </p>
-              <div class="img-wrap">
-                <div class="img">
-                  <div class="img-text">
-                    <div class="TX-wrap">
-                      <p class="TX TX-ttl">・</p>
-                      <p class="TX">父母兄弟姉妹、受験生自身が、甲子園学院の幼稚園・小学校・中学校・高等学校・短期大学・大学のいずれかに 在籍、ま たは卒業（卒園）している。</p>
-                    </div>
-                    <div class="TX-wrap">
-                      <p class="TX TX-ttl">・</p>
-                      <p class="TX">2027年度（令和9年度）、父母兄弟姉妹が、甲子園学院の幼稚園・小学校・中学校・高等学校・短期大学・大学のいずれかに入学（入園）する。</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <?php
+          endforeach;
+        endif;
+        ?>
       </div>
       <!-- <div class="igh-admission-scholarship-point js-fade">
         <p class="TX">
