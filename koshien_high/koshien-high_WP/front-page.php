@@ -1,4 +1,16 @@
 <?php get_template_part('./inc/head'); ?>
+
+
+<!-- ローディング -->
+<div class="loading">
+  <div class="loading-inner">
+    <div class="logo">
+      <img class="logo-img" src="<?php echo get_template_directory_uri(); ?>/img/home/loading/loding-logo-w.webp" alt="甲子園学院ロゴ">
+      <img class="logo-name" src="<?php echo get_template_directory_uri(); ?>/img/home/loading/loding-logo-w-txt.webp" alt="甲子園学院中学校・高等学校">
+    </div>
+  </div>
+</div>
+
 <?php get_template_part('./inc/header'); ?>
 
 <main class="front">

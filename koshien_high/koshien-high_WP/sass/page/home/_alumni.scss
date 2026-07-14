@@ -122,14 +122,14 @@ $c-alumni-panel: #eeecf8;
     }
 
     &__block {
-        margin-bottom: p(105);
+        margin-bottom: p(80);
 
         &:last-of-type {
             margin-bottom: p(70);
         }
 
         @include sp {
-            margin-bottom: s(70);
+            margin-bottom: s(41);
 
             &:last-of-type {
                 margin-bottom: s(60);
@@ -313,9 +313,9 @@ $c-alumni-panel: #eeecf8;
         height: p(17);
         transform: translateY(-50%);
         background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z'/%3E%3Cpolyline points='14 2 14 8 20 8'/%3E%3C/svg%3E")
-        center / contain no-repeat;
+            center / contain no-repeat;
         // background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233a2e44' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v12'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='4' y1='21' x2='20' y2='21'/%3E%3C/svg%3E")
-            // center / contain no-repeat;
+        // center / contain no-repeat;
 
         @include sp {
             right: s(15);
@@ -376,10 +376,10 @@ $c-alumni-panel: #eeecf8;
     // ---- お問い合わせ導線 ----
     &__contact {
         text-align: center;
-        margin-bottom: p(60);
+        margin-bottom: p(80);
 
         @include sp {
-            margin-bottom: s(50);
+            margin-bottom: s(88);
         }
     }
 
@@ -402,15 +402,21 @@ $c-alumni-panel: #eeecf8;
         width: p(212);
         height: p(49);
         border-radius: 9999px;
-        background: var(--school-sub, $color-bg-sub);
-        color: $color-text;
+        background-color: $color-brand;
+        color: $c-white;
         font-size: p(14);
-        font-weight: 700;
+        font-weight: 500;
         text-decoration: none;
-        transition: opacity 0.3s ease;
+        letter-spacing: 0.14em;
+        transition:
+            background-color 0.3s ease,
+            color 0.3s ease,
+            border-color 0.3s ease;
 
         &:hover {
-            opacity: 0.8;
+            background-color: #fff;
+            color: var(--school);
+            border: 1px solid var(--school);
         }
 
         @include sp {
@@ -418,10 +424,16 @@ $c-alumni-panel: #eeecf8;
             height: s(46);
             font-size: s(13);
         }
+
+        &:hover {
+            .p-alumni__contact-btn-icon {
+                background-image: url(../img/common/arrow_circle_h.webp);
+            }
+        }
     }
 
     &__contact-btn-icon {
-        @include arrow-circle($arrow-circle);
+        @include arrow-circle($arrow-circle_ww);
         position: absolute;
         top: 50%;
         right: p(14);
