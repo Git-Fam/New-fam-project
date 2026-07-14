@@ -203,7 +203,9 @@ Template Path: pages/
       <h3 class="high-openschool-form-ttl js-fade">
         <img src="<?php echo get_template_directory_uri(); ?>/img/high-openschool/high-openschool-form-ttl.svg" alt="応募フォーム">
       </h3>
-      <div class="high-openschool-form-main js-fade"></div>
+      <div class="p-openschool-form p-contact js-fade">
+        <?php echo do_shortcode('[contact-form-7 id="2a025f7" title="高校_応募フォーム"]'); ?>
+      </div>
 
     </section>
 

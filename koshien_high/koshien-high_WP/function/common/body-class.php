@@ -27,3 +27,21 @@ function add_front_body_class($classes)
 	return $classes;
 }
 add_filter('body_class', 'add_front_body_class');
+
+
+function add_school_body_class($classes) {
+	$post = get_queried_object();
+	if ($post && isset($post->post_type) && $post->post_type === 'page') {
+		$ancestors = get_post_ancestors($post->ID);
+		$top_id = !empty($ancestors) ? end($ancestors) : $post->ID;
+		$top_slug = get_post_field('post_name', $top_id);
+
+		if ($top_slug === 'junior') {
+			$classes[] = 'is-junior';
+		} elseif ($top_slug === 'high') {
+			$classes[] = 'is-high';
+		}
+	}
+	return $classes;
+}
+add_filter('body_class', 'add_school_body_class');
