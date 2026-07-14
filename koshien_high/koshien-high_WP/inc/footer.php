@@ -12,7 +12,7 @@ if (is_page()) {
 // CONTACTを非表示にする条件
 $hide_contact = is_page(['contact', 'contact/confirm', 'contact/thanks']) || is_404() || is_singular('post') || $top_slug === 'junior' || $top_slug === 'high';
 ?>
-<footer class="footer <?php if (is_page('admission')): ?>footer--admission<?php endif; ?>">
+<footer class="footer <?php if (is_page('high/admission') || is_page('junior/admission')): ?>footer--admission<?php endif; ?>">
 
   <?php if (!$hide_contact): ?>
     <!-- ============ CONTACT ============ -->
@@ -101,8 +101,12 @@ $hide_contact = is_page(['contact', 'contact/confirm', 'contact/thanks']) || is_
   <script src="<?php echo get_template_directory_uri(); ?>/js/high-course.js"></script>
 <?php endif; ?>
 
-<?php if (is_page('admission')): ?>
+<?php if (is_page('high/admission')): ?>
   <script src="<?php echo get_template_directory_uri(); ?>/js/high-admission.js"></script>
+<?php endif; ?>
+
+<?php if (is_page('junior/admission')): ?>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/junior-admission.js"></script>
 <?php endif; ?>
 
 <?php if (is_page('life')): ?>

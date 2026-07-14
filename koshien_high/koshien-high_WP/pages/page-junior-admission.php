@@ -60,13 +60,13 @@ Template Path: pages/
             <a href="#student" class="aside-nav-list-item-link hover-opa">受験生のみなさまへ</a>
             <ul class="aside-nav-list-sub pc">
               <li class="aside-nav-list-item-sub">
-                <a href="https://mirai-compass.net/usr/kosiengh/common/login.jsf" target="_blank" rel="noopener noreferrer" class="aside-nav-list-item-link-sub hover-opa">WEB出願</a>
+                <a href="https://mirai-compass.net/usr/kosiengj/common/login.jsf" target="_blank" rel="noopener noreferrer" class="aside-nav-list-item-link-sub hover-opa">WEB出願</a>
               </li>
               <li class="aside-nav-list-item-sub">
-                <a href="https://www.go-pass.net/kosiengh/" target="_blank" rel="noopener noreferrer" class="aside-nav-list-item-link-sub hover-opa">合否照会</a>
+                <a href="https://www.go-pass.net/kosiengj/" target="_blank" rel="noopener noreferrer" class="aside-nav-list-item-link-sub hover-opa">合否照会</a>
               </li>
               <li class="aside-nav-list-item-sub">
-                <a href="https://mirai-compass.net/ent/kosiengh/common/login.jsf" target="_blank" rel="noopener noreferrer" class="aside-nav-list-item-link-sub hover-opa">入学手続き</a>
+                <a href="https://mirai-compass.net/ent/kosiengj/common/login.jsf" target="_blank" rel="noopener noreferrer" class="aside-nav-list-item-link-sub hover-opa">入学手続き</a>
               </li>
             </ul>
           </li>
