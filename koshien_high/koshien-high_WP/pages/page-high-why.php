@@ -36,9 +36,6 @@ Template Path: pages/
   </section>
 
   <section class="high-why-concept">
-    <div class="high-why-concept-bg pc">
-      <img src="<?php echo get_template_directory_uri(); ?>/img/high-why/high-why-concept-bg.webp" alt="">
-    </div>
     <div class="high-why-concept-inr">
       <p class="TX js-fade">
         それは、変われるチャンスが<br class="sp">たくさんあるから。<br>

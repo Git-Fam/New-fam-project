@@ -14,7 +14,7 @@
     height: 100vh;
 
     .high-why-kv-bg {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
@@ -29,12 +29,19 @@
     }
 
     .high-why-kv-bg-wrap {
-      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100vh;
       z-index: 2;
+
+      @include pc {
+        position: fixed;
+      }
+
+      @include sp {
+        position: absolute;
+      }
 
       img {
         width: 100%;
@@ -124,6 +131,8 @@
 
   // ===== contents =====
   .high-why-contents {
+    position: relative;
+    z-index: 3;
 
     .high-why-item {
       position: relative;
@@ -248,6 +257,9 @@
 
   // ===== more_check =====
   .high-why-more_check {
+    position: relative;
+    z-index: 3;
+    background-color: #FC9CCC;
 
     @include pc {
       padding-block: p(200);
