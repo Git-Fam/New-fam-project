@@ -1,0 +1,274 @@
+@use "../../functions" as *;
+
+// ============ 学びの特色 ============
+.page--feature {
+    background-color: #f8acbd;
+}
+
+// FV
+.p-feature-fv {
+    position: relative;
+}
+
+// 背景画像
+.p-feature-fv__bg {
+    picture,
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+}
+
+// タイトル画像（背景の上に重ねる）
+.p-feature-fv__ttl {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+
+    @include pc {
+        width: p(777);
+    }
+    @include sp {
+        top: 60%;
+        width: s(200);
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+}
+
+// 特色ブロック
+.p-feature__row {
+    display: grid;
+
+    @include pc {
+        grid-template-columns: 1fr 1fr; // 2列（テキスト＋画像）
+    }
+    @include sp {
+        grid-template-columns: 1fr; // SPは1列
+    }
+}
+
+// 画像
+.p-feature__img {
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: initial;
+        aspect-ratio: 1 / 1; // 正方形
+    }
+}
+
+// テキストボックス（ピンク背景）
+.p-feature__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    aspect-ratio: 1 / 1; 
+
+    @include pc {
+        width: p(475);
+        margin: auto;
+        padding: p(136) 0 p(136);
+    }
+    @include sp {
+        padding: s(60) s(40) s(86);
+        aspect-ratio: auto; // SPは高さ自由
+    }
+}
+
+// DIVE IN ラベル
+.p-feature__label {
+    @include pc {
+        margin-bottom: p(54);
+    }
+    @include sp {
+        margin-bottom: s(32);
+    }
+
+    img {
+        width: auto;
+        height: p(37);
+
+        @include sp {
+            height: s(22);
+        }
+    }
+}
+
+// タイトル（テキスト）
+.p-feature__ttl {
+    font-family: $font-a1;
+    color: #fff;
+    line-height: 1.5;
+    @include wt500;
+
+    @include pc {
+        font-size: p(48);
+        margin-bottom: p(50);
+        letter-spacing: 0.07em;
+    }
+    @include sp {
+        font-size: s(30);
+        margin-bottom: s(36);
+         letter-spacing: 0.10em;
+    }
+}
+
+// 数字（強調・大きく）
+.p-feature__num {
+    display: inline-block;
+    font-family: $font-a1;
+    line-height: 1;
+
+    @include pc {
+        font-size: p(75);
+        letter-spacing: 0.07em;
+    }
+    @include sp {
+        font-size: s(50);
+        letter-spacing: 0.10em;
+    }
+}
+
+// 本文
+.p-feature__desc {
+    font-family: $font-a1; // A1ゴシック（フォールバック込みの変数）
+    color: #fff;
+    line-height: 1.9;
+
+    @include pc {
+        font-size: p(16);
+        letter-spacing: 0.14em;
+    }
+    @include sp {
+        font-size: s(14);
+         letter-spacing: 0.075em;
+    }
+}
+
+// SPは常に「画像→テキスト」の順（reverseも解除）
+@include sp {
+    .p-feature__row--reverse {
+        .p-feature__img {
+            order: 1;
+        }
+        .p-feature__text {
+            order: 2;
+        }
+    }
+    .p-feature__row {
+        .p-feature__img {
+            order: 1;
+        }
+        .p-feature__text {
+            order: 2;
+        }
+    }
+}
+
+
+// ============ 夢中NUMBER ============
+.p-number {
+  @include pc {
+    padding: p(200) 0;
+  }
+  @include sp {
+    padding: s(56) 0;
+  }
+}
+
+// タイトル
+.p-number__ttl {
+  text-align: center;
+
+  @include pc {
+    width: p(548);
+    margin: 0 auto p(60);
+  }
+  @include sp {
+    width: s(282);
+    margin: 0 auto s(123);
+  }
+
+  img { width: 100%; height: auto; display: block; }
+}
+
+// ハート＋人物の重ね合わせ
+.p-number__body {
+  position: relative;   // 人物のabsolute配置の基準
+
+  @include pc {
+    width: p(1146);
+    margin: 0 auto;
+  }
+  @include sp {
+    width: 100%;
+  }
+}
+
+// ハート6枚（1枚画像）
+.p-number__hearts {
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+// 人物（共通）
+.p-number__person {
+  position: absolute;
+  z-index: 2;
+
+  img { width: 100%; height: auto; display: block; }
+}
+
+// 人物1（左上）
+.p-number__person--01 {
+  @include pc {
+    top: p(-147);
+    left: p(-98);
+    width: p(300);
+  }
+  @include sp {
+    top: s(-90);
+    left: s(164);
+    width: s(249);
+  }
+}
+
+// 人物2（右中央）
+.p-number__person--02 {
+  @include pc {
+    top: p(375);
+    right: p(-80);
+    width: p(301);
+  }
+  @include sp {
+    top: s(976);
+    right: s(17);
+    width: s(334);
+  }
+}
+
+// 人物3（左下）
+.p-number__person--03 {
+  @include pc {
+    bottom: p(276);
+    left: p(-60);
+    width: p(250);
+  }
+  @include sp {
+    bottom: s(484);
+    left: s(170);
+    width: s(249);
+  }
+}
