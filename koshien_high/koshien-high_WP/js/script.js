@@ -1,48 +1,28 @@
-$(function () {
-    // // ハンバーガーメニュー
-    //  $(".burger").on("click", function(){
-    //    $(this).toggleClass("active");
-    //    $('.menu').toggleClass("active");
-    //    $('body').toggleClass("active");
-    //  });
-    // $(".js-link,.menu").on("click", function(){
-    //   $('.burger').removeClass("active");
-    //   $('.menu').removeClass("active");
-    //   $('body').removeClass("active");
-    // });
-    // var prevScrollpos = window.pageYOffset;
-    // window.onscroll = function() {
-    //   var currentScrollpos = window.pageYOffset;
-    //   if (prevScrollpos > currentScrollpos || currentScrollpos < 450) {
-    //     document.querySelector(".header").classList.remove("active");
-    //   } else {
-    //     document.querySelector(".header").classList.add("active");
-    //   }
-    //   prevScrollpos = currentScrollpos;
-    // }
-    // // 要素が画面下部に来たらshowを付与
-    // $(window).scroll(function () {
-    //   $('.up,.roll').each(function () {
-    //     var top_of_element = $(this).offset().top;
-    //     var bottom_of_window = $(window).scrollTop() + $(window).height();
-    //     if (bottom_of_window > top_of_element) {
-    //       $(this).addClass('show');
-    //     }
-    //   });
-    // });
-    // ローディング
-    // var loadingFinished = false;
-    // var loading = $('.loadUp');
-    // $(window).on('load', function () {
-    //   loading.addClass('show');
-    //   loadingFinished = true;
-    // });
-    // setTimeout(function(){
-    //   if (!loadingFinished) {
-    //     loading.addClass('show');
-    //   }
-    // }, 2000);
-});
+// ===== スクロールで要素をフェードイン =====
+(function () {
+    const targets = document.querySelectorAll('.js-fade, .up, .down');
+    if (!targets.length) return;
+
+    const observer = new IntersectionObserver(
+        function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target); // 一度出したら監視終了
+                }
+            });
+        },
+        {
+            rootMargin: '0px 0px -30% 0px', // 要素が少し画面に入ったら発火
+            threshold: 0,
+        }
+    );
+
+    targets.forEach(function (el) {
+        observer.observe(el);
+    });
+})();
+
 
 // NEWS タブ絞り込み
 (function () {
@@ -70,7 +50,6 @@ $(function () {
     });
 })();
 
-
 // ===== ドロワー開閉 =====
 (function () {
     const toggle = document.getElementById('js-drawer-toggle');
@@ -83,7 +62,7 @@ $(function () {
         toggle.classList.toggle('is-open', isOpen);
         toggle.setAttribute('aria-expanded', isOpen);
         toggle.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
-        if (header) header.classList.toggle('is-menu-open', isOpen); 
+        if (header) header.classList.toggle('is-menu-open', isOpen);
         // 背面スクロール固定
         document.body.style.overflow = isOpen ? 'hidden' : '';
     });
@@ -143,31 +122,6 @@ $(function () {
     });
 })();
 
-// ===== スクロールで要素をフェードイン =====
-(function () {
-    const targets = document.querySelectorAll('.js-fade, .up, .down');
-    if (!targets.length) return;
-
-    const observer = new IntersectionObserver(
-        function (entries) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                    observer.unobserve(entry.target); // 一度出したら監視終了（1回だけ）
-                }
-            });
-        },
-        {
-            rootMargin: '0px 0px -10% 0px', // 要素が少し画面に入ったら発火
-            threshold: 0,
-        }
-    );
-
-    targets.forEach(function (el) {
-        observer.observe(el);
-    });
-})();
-
 // =====  FV スライドショー（全幅ゲージ連動） =====
 (function () {
     // idではなく、共通のクラス（js-fv-slideshow）を持つ要素をすべて取得
@@ -177,7 +131,7 @@ $(function () {
     // 見つかったスライドショーの数だけ、それぞれ独立して処理を回す
     fvContainers.forEach(function (fv) {
         const slides = fv.querySelectorAll('.p-fv-slide-target'); // 各スライド
-        const fill = fv.querySelector('.js-fv-gauge-fill');     // そのスライド内のゲージ
+        const fill = fv.querySelector('.js-fv-gauge-fill'); // そのスライド内のゲージ
         if (!slides.length || !fill) return;
 
         const DURATION = 3000; // CSSの 3s と合わせる
@@ -204,7 +158,6 @@ $(function () {
     });
 })();
 
-
 // ===== ごあいさつ メッセージスライダー =====
 (function () {
     const el = document.querySelector('.p-greeting__slider');
@@ -225,22 +178,22 @@ $(function () {
     const section = document.getElementById('greeting');
     const box = document.querySelector('.p-greeting__box');
     if (!section || !box) return;
-    if (window.innerWidth <= 767) return; // PCのみ
+    // PC限定の条件を削除（SPでも動かす）
 
     function onScroll() {
         const rect = section.getBoundingClientRect();
-        const sectionHeight = section.offsetHeight - window.innerHeight; // スクロール可能量
-        // セクション内の進捗（0〜1）
+        const sectionHeight = section.offsetHeight - window.innerHeight;
         let progress = -rect.top / sectionHeight;
         progress = Math.min(Math.max(progress, 0), 1);
 
-        // テキストが動く量 = ボックスの高さ - 表示エリア高さ
         const boxHeight = box.scrollHeight;
         const viewH = window.innerHeight;
-        const moveMax = Math.max(boxHeight - viewH + 160, 0); // 160=上下余白ぶん
+        const moveMax = Math.max(boxHeight - viewH + 160, 0);
 
-        // 下から上へ：最初は下寄り(viewの下)、進捗で上へ
-        const startOffset = viewH * 0.2; // 開始位置（画面下から20%）
+        // 開始位置：SPは画面下60%、PCは20%
+        const isSP = window.innerWidth <= 767;
+        const startOffset = viewH * (isSP ? 0.75 : 0.1);
+
         const y = startOffset - progress * (moveMax + startOffset);
         box.style.transform = 'translateY(' + y + 'px)';
     }
@@ -249,7 +202,6 @@ $(function () {
     window.addEventListener('resize', onScroll);
     onScroll();
 })();
-
 
 // ===== concept FV → 理念 背景白フェード =====
 (function () {
@@ -295,122 +247,132 @@ $(function () {
     observer.observe(target);
 })();
 
-
 // ===== 制服紹介 スクロールスナップ切替 =====
 (function () {
-  const section = document.getElementById('js-uniform');
-  if (!section) return;
+    const section = document.getElementById('js-uniform');
+    if (!section) return;
 
-  // テキストや画像単体ではなく、切り替えたい単位である「item」を取得する
-  const items = section.querySelectorAll('.pt-uniform__item');
-  const triggers = section.querySelectorAll('.pt-uniform__trigger');
-  if (!items.length || !triggers.length) return;
+    // テキストや画像単体ではなく、切り替えたい単位である「item」を取得する
+    const items = section.querySelectorAll('.pt-uniform__item');
+    const triggers = section.querySelectorAll('.pt-uniform__trigger');
+    if (!items.length || !triggers.length) return;
 
-  function setActive(index) {
-    // すべてのitemに対して、インデックスが一致したものだけに is-active を付与
-    items.forEach(function (el, i) {
-      el.classList.toggle('is-active', i === index);
+    function setActive(index) {
+        // すべてのitemに対して、インデックスが一致したものだけに is-active を付与
+        items.forEach(function (el, i) {
+            el.classList.toggle('is-active', i === index);
+        });
+    }
+
+    const observer = new IntersectionObserver(
+        function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    const index = parseInt(entry.target.dataset.index, 10);
+                    setActive(index);
+                }
+            });
+        },
+        {
+            rootMargin: '-50% 0px -50% 0px', // 画面中央に来たトリガーで切替
+            threshold: 0,
+        }
+    );
+
+    triggers.forEach(function (t) {
+        observer.observe(t);
     });
-  }
-
-  const observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        const index = parseInt(entry.target.dataset.index, 10);
-        setActive(index);
-      }
-    });
-  }, {
-    rootMargin: '-50% 0px -50% 0px',  // 画面中央に来たトリガーで切替
-    threshold: 0
-  });
-
-  triggers.forEach(function (t) { observer.observe(t); });
 })();
-
 
 // ===== 設備・施設・アクセス：校舎案内 左サイドバーの階数ハイライト =====
 (function () {
-  const gallery = document.getElementById('js-campus-gallery');
-  const nav = document.getElementById('js-campus-nav');
-  if (!gallery || !nav) return;
+    const gallery = document.getElementById('js-campus-gallery');
+    const nav = document.getElementById('js-campus-nav');
+    if (!gallery || !nav) return;
 
-  const floors = gallery.querySelectorAll('.p-campus__floor');
-  const navItems = nav.querySelectorAll('.p-campus__nav-item');
-  if (!floors.length || !navItems.length) return;
+    const floors = gallery.querySelectorAll('.p-campus__floor');
+    const navItems = nav.querySelectorAll('.p-campus__nav-item');
+    if (!floors.length || !navItems.length) return;
 
-  function setActive(key) {
-    navItems.forEach(function (item) {
-      item.classList.toggle('is-active', item.dataset.floor === key);
+    function setActive(key) {
+        navItems.forEach(function (item) {
+            item.classList.toggle('is-active', item.dataset.floor === key);
+        });
+    }
+
+    const observer = new IntersectionObserver(
+        function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    setActive(entry.target.dataset.floorSection);
+                }
+            });
+        },
+        {
+            rootMargin: '-45% 0px -45% 0px', // 画面中央付近に来たセクションで切替
+            threshold: 0,
+        }
+    );
+
+    floors.forEach(function (el) {
+        observer.observe(el);
     });
-  }
-
-  const observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        setActive(entry.target.dataset.floorSection);
-      }
-    });
-  }, {
-    rootMargin: '-45% 0px -45% 0px', // 画面中央付近に来たセクションで切替
-    threshold: 0
-  });
-
-  floors.forEach(function (el) { observer.observe(el); });
 })();
-
 
 // ===== お知らせ一覧 絞り込み＋さらに読み込む =====
 (function () {
-  const list = document.getElementById('js-news-list');
-  const moreBtn = document.getElementById('js-news-more');
-  if (!list) return;
+    const list = document.getElementById('js-news-list');
+    const moreBtn = document.getElementById('js-news-more');
+    if (!list) return;
 
-  const tabs = document.querySelectorAll('.p-news-archive__tab');
-  const items = Array.from(list.querySelectorAll('.p-news-archive__item'));
-  const STEP = 9;              // 1回に表示する件数（3列×3行）
-  let filter = 'all';
-  let shown = STEP;
+    const tabs = document.querySelectorAll('.p-news-archive__tab');
+    const items = Array.from(list.querySelectorAll('.p-news-archive__item'));
+    const STEP = 9; // 1回に表示する件数（3列×3行）
+    let filter = 'all';
+    let shown = STEP;
 
-  function render() {
-    // 絞り込み後の対象
-    const matched = items.filter(function (item) {
-      return filter === 'all' || item.dataset.category === filter;
-    });
-    // 全アイテムを一旦隠す
-    items.forEach(function (item) { item.style.display = 'none'; });
-    // 対象を shown 件だけ表示
-    matched.slice(0, shown).forEach(function (item) {
-      item.style.display = '';
-    });
-    // 「さらに読み込む」の表示制御
-    if (moreBtn) {
-      moreBtn.style.display = (matched.length > shown) ? '' : 'none';
+    function render() {
+        // 絞り込み後の対象
+        const matched = items.filter(function (item) {
+            return filter === 'all' || item.dataset.category === filter;
+        });
+        // 全アイテムを一旦隠す
+        items.forEach(function (item) {
+            item.style.display = 'none';
+        });
+        // 対象を shown 件だけ表示
+        matched.slice(0, shown).forEach(function (item) {
+            item.style.display = '';
+        });
+        // 「さらに読み込む」の表示制御
+        if (moreBtn) {
+            moreBtn.style.display = matched.length > shown ? '' : 'none';
+        }
     }
-  }
 
-  // タブ切替
-  tabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      tabs.forEach(function (t) { t.classList.remove('is-active'); });
-      tab.classList.add('is-active');
-      filter = tab.dataset.filter;
-      shown = STEP;   // 絞り込み変更時は表示数リセット
-      render();
+    // タブ切替
+    tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+            tabs.forEach(function (t) {
+                t.classList.remove('is-active');
+            });
+            tab.classList.add('is-active');
+            filter = tab.dataset.filter;
+            shown = STEP; // 絞り込み変更時は表示数リセット
+            render();
+        });
     });
-  });
 
-  // さらに読み込む
-  if (moreBtn) {
-    moreBtn.addEventListener('click', function () {
-      shown += STEP;
-      render();
-    });
-  }
+    // さらに読み込む
+    if (moreBtn) {
+        moreBtn.addEventListener('click', function () {
+            shown += STEP;
+            render();
+        });
+    }
 
-  render();
+    render();
 })();
-
 
 // ===== 資料請求・お問い合わせフォーム 初期値＋項目出し分け =====
 window.addEventListener('load', function () {
@@ -486,4 +448,32 @@ document.addEventListener('DOMContentLoaded', () => {
             el.style.display = 'none';
         });
     }
+});
+
+// ===== ローディング =====
+$(function () {
+    window.addEventListener('load', function () {
+        var loading = document.querySelector('.loading');
+        if (!loading) return;
+
+        if (sessionStorage.getItem('loading_shown')) {
+            // 2回目以降は最初から非表示
+            loading.style.display = 'none';
+        } else {
+            // 初回のみアニメーション後に非表示
+            sessionStorage.setItem('loading_shown', 'true');
+            setTimeout(function () {
+                loading.classList.add('is-hidden');
+                setTimeout(function () {
+                    loading.style.display = 'none';
+                }, 800);
+            }, 3000);
+        }
+    });
+
+    window.addEventListener('load', function () {
+        setTimeout(function () {
+            document.querySelector('.loading').classList.add('is-hidden');
+        }, 3000); // 3秒後に消える
+    });
 });

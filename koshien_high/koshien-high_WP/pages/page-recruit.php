@@ -28,6 +28,12 @@ Template Path: pages/
               <img src="<?php echo get_template_directory_uri(); ?>/img/home/recruit/fv_02_pc.webp" alt="">
             </picture>
           </div>
+          <div class="p-recruit-fv__slide p-fv-slide-target">
+            <picture>
+              <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/recruit/fv_03_sp.webp">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/home/recruit/fv_03_pc.webp" alt="">
+            </picture>
+          </div>
         </div>
 
 
