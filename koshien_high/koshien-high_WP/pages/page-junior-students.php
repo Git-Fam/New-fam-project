@@ -87,15 +87,15 @@ Template Path: pages/
       </h2>
     </div>
     <div class="high-change-contents">
-      <div class="high-change-contents-item hover-opa">
+      <a href="<?php echo home_url('/junior/students/'); ?>" class="high-change-contents-item hover-opa">
           <img src="<?php echo get_template_directory_uri(); ?>/img/junior/junior-change-01.webp" alt="">
-      </div>
-      <div class="high-change-contents-item hover-opa">
+      </a>
+      <a href="<?php echo home_url('/junior/students/'); ?>" class="high-change-contents-item hover-opa">
           <img src="<?php echo get_template_directory_uri(); ?>/img/junior/junior-change-02.webp" alt="">
-      </div>
-      <div class="high-change-contents-item hover-opa">
+      </a>
+      <a href="<?php echo home_url('/junior/students/'); ?>" class="high-change-contents-item hover-opa">
         <img src="<?php echo get_template_directory_uri(); ?>/img/junior/junior-change-03.webp" alt="">
-      </div>
+      </a>
     </div>
     <div class="high-change-pagination"></div>
   </section>
