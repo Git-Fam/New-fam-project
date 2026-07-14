@@ -108,13 +108,13 @@ Template Path: pages/
     </section>
 
     <section class="high-banner js-fade">
-      <a class="high-banner-item hover-opa" href="#">
+      <a class="high-banner-item hover-opa" href="<?php echo home_url('/high/why/'); ?>">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-banner-01-sp.webp" media="(max-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-banner-01-pc.webp" alt="">
         </picture>
       </a>
-      <a class="high-banner-item hover-opa" href="#">
+      <a class="high-banner-item hover-opa" href="<?php echo home_url('/high/course/'); ?>">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-banner-02-sp.webp" media="(max-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-banner-02-pc.webp" alt="">
@@ -133,19 +133,19 @@ Template Path: pages/
       </h2>
     </div>
     <div class="high-change-contents">
-      <a href="#" class="high-change-contents-item hover-opa">
+      <a href="<?php echo home_url('/high/changed/'); ?>" class="high-change-contents-item hover-opa">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-change-01-sp.webp" media="(max-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-change-01-pc.webp" alt="">
         </picture>
       </a>
-      <a href="#" class="high-change-contents-item hover-opa">
+      <a href="<?php echo home_url('/high/changed/'); ?>" class="high-change-contents-item hover-opa">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-change-02-sp.webp" media="(max-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-change-02-pc.webp" alt="">
         </picture>
       </a>
-      <a href="#" class="high-change-contents-item hover-opa">
+      <a href="<?php echo home_url('/high/changed/'); ?>" class="high-change-contents-item hover-opa">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-change-03-sp.webp" media="(max-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-change-03-pc.webp" alt="">
@@ -157,13 +157,13 @@ Template Path: pages/
 
   <div class="high-news_banner-wrap high-banner-wrap">
     <div class="high-banner js-fade">
-      <a class="high-banner-item hover-opa" href="#">
+      <a class="high-banner-item hover-opa" href="<?php echo home_url('/high/feature/'); ?>">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-banner-03-sp.webp" media="(max-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-banner-03-pc.webp" alt="">
         </picture>
       </a>
-      <a class="high-banner-item hover-opa" href="#">
+      <a class="high-banner-item hover-opa" href="<?php echo home_url('/high/openschool/'); ?>">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-banner-04-sp.webp" media="(max-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-banner-04-pc.webp" alt="">
@@ -174,25 +174,25 @@ Template Path: pages/
 
   <section class="high-info js-fade">
     <div class="high-info-inr">
-      <a href="#" class="high-info-item">
+      <a href="<?php echo home_url('/high/admission/'); ?>" class="high-info-item">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-info-01-sp.webp" media="(max-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-info-01-pc.webp" alt="">
         </picture>
       </a>
-      <a href="#" class="high-info-item">
+      <a href="<?php echo home_url('/high/life/'); ?>" class="high-info-item">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-info-02-sp.webp" media="(max-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-info-02-pc.webp" alt="">
         </picture>
       </a>
-      <a href="#" class="high-info-item">
+      <a href="<?php echo home_url('/high/club/'); ?>" class="high-info-item">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-info-03-sp.webp" media="(max-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-info-03-pc.webp" alt="">
         </picture>
       </a>
-      <a href="#" class="high-info-item">
+      <a href="<?php echo home_url('/high/career/'); ?>" class="high-info-item">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-info-04-sp.webp" media="(max-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-info-04-pc.webp" alt="">
