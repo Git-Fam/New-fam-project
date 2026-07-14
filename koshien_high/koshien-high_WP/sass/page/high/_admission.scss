@@ -1006,3 +1006,59 @@
     margin-left: auto;
   }
 }
+
+.is-high .scholarship-item:nth-child(2) {
+  .scholarship-tab {
+    white-space: nowrap;   // 改行しない
+  }
+}
+
+// 時程表
+.junior-admission-schedule-table-wrap {
+  width: 100%;
+}
+
+.junior-admission-schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+
+  @include pc {
+    border: p(1) solid var(--school);   // ← 色は var(--school) で中学/高校を自動切替
+  }
+  @include sp {
+    border: s(1) solid var(--school);
+  }
+
+  td {
+    vertical-align: middle;
+    font-weight: 400;
+    line-height: 1.5;
+
+    @include pc {
+      border: p(1) solid var(--school);
+      font-size: p(15);
+      letter-spacing: 0.15em;
+      padding: p(10) p(12);
+    }
+    @include sp {
+      border: s(1) solid var(--school);
+      font-size: s(15);
+      letter-spacing: 0.08em;
+      padding-block: s(16);
+    }
+  }
+
+  &-time {
+    width: 50%;
+    background-color: color-mix(in srgb, var(--school) 12%, transparent);  // 薄い背景
+    @include pc { padding-left: p(92) !important; }
+    @include sp { padding-left: s(20) !important; }
+  }
+
+  &-content {
+    width: 50%;
+    @include pc { padding-left: p(63) !important; }
+    @include sp { padding-left: s(20) !important; }
+  }
+}
