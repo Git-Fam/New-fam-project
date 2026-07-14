@@ -7,13 +7,13 @@
   </h3>
 
   <div class="high_C_more_check-list js-fade">
-    <a href="#" class="high_C_more_check-item hover-opa">
+    <a href="<?php echo home_url('/high/changed/'); ?>" class="high_C_more_check-item hover-opa">
       <picture>
         <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high_C_more_check/C_more_check-item-01-sp.webp" type="image/webp">
         <img src="<?php echo get_template_directory_uri(); ?>/img/high_C_more_check/C_more_check-item-01-pc.webp" alt="LOVE CHANGE 好きを見つけて変わった生徒たち">
       </picture>
     </a>
-    <a href="#" class="high_C_more_check-item hover-opa 
+    <a href="<?php echo home_url('/high/course/'); ?>" class="high_C_more_check-item hover-opa 
     <?php if (is_page('course')) echo 'pc sp'; ?>
     ">
       <picture>
