@@ -367,6 +367,9 @@
 
         .high-admission-faq {
             &-ttl {
+                @include pc {
+                    padding-block: p(201) p(134) !important;
+                }
                 @include sp {
                     padding-block: s(156) s(80) !important;
                 }
