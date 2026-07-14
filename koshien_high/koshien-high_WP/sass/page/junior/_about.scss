@@ -272,3 +272,16 @@
     width: s(249);
   }
 }
+
+
+.page--feature{
+  .junior-declaration-next{
+    @include pc {
+      margin-top: 0;
+      padding-bottom: p(182);
+    }
+    @include sp {
+      padding-bottom: s(18);
+    }
+  }
+}

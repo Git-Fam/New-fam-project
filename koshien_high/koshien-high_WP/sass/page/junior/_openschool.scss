@@ -81,5 +81,14 @@
       }
     }
 
+    .p-openschool-form{
+      @include pc {
+        margin-top: p(60);
+      }
+      @include sp {
+        margin-top: s(25);
+      }
+    }
+
   }
 }
