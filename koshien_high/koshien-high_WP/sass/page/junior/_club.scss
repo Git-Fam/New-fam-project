@@ -37,6 +37,15 @@
                 }
               }
             }
+
+            .activity-item-tag{
+              .tag-wrap{
+                @include sp {
+                  padding-left: s(10);
+                  gap: s(11);
+                }
+              }
+            }
           }
         }
       }

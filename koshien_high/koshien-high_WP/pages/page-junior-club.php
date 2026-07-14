@@ -14,7 +14,7 @@ Template Path: pages/
 <section class="high-club-kv">
     <div class="high-club-kv-bg">
       <picture>
-        <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-kv-bg-psp.webp" type="image/svg+xml">
+        <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-kv-bg-sp.webp" type="image/svg+xml">
         <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-kv-bg-pc.webp" alt="">
       </picture>
     </div>
