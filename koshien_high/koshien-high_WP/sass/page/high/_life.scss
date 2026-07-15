@@ -169,12 +169,21 @@
                 top: 47%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                width: p(173);
+                width: p(157);
               }
 
               @include sp {
-                width: s(95);
+                width: s(88);
                 margin-inline: auto;
+              }
+
+              &.MM_01 {
+                @include pc {
+                  width: p(110);
+                }
+                @include sp {
+                  width: s(62);
+                }
               }
             }
 

@@ -411,42 +411,42 @@ Template Path: pages/
         <a href="https://mirai-compass.net/usr/kosiengj/common/login.jsf" target="_blank" rel="noopener noreferrer" class="">
           <div class="defo">
             <picture>
-              <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-admission/junior-admission-student-btn-defo-01-sp.svg" media="(max-width: 767px)">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-admission/junior-admission-student-btn-defo-01-pc.svg" alt="WEB出願">
+              <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-admission/junior-admission-student-btn-defo-01-sp.webp" media="(max-width: 767px)">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-admission/junior-admission-student-btn-defo-01-pc.webp" alt="WEB出願">
             </picture>
           </div>
           <div class="hov">
             <picture>
-              <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-admission/junior-admission-student-btn-hov-01-sp.svg" media="(max-width: 767px)">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-admission/junior-admission-student-btn-hov-01-pc.svg" alt="WEB出願">
+              <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-admission/junior-admission-student-btn-hov-01-sp.webp" media="(max-width: 767px)">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-admission/junior-admission-student-btn-hov-01-pc.webp" alt="WEB出願">
             </picture>
           </div>
         </a>
         <a href="https://www.go-pass.net/kosiengj/" target="_blank" rel="noopener noreferrer" class="">
           <div class="defo">
             <picture>
-              <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-admission/junior-admission-student-btn-defo-02-sp.svg" media="(max-width: 767px)">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-admission/junior-admission-student-btn-defo-02-pc.svg" alt="合否照会">
+              <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-admission/junior-admission-student-btn-defo-02-sp.webp" media="(max-width: 767px)">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-admission/junior-admission-student-btn-defo-02-pc.webp" alt="合否照会">
             </picture>
           </div>
           <div class="hov">
             <picture>
-              <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-admission/junior-admission-student-btn-hov-02-sp.svg" media="(max-width: 767px)">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-admission/junior-admission-student-btn-hov-02-pc.svg" alt="合否照会">
+              <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-admission/junior-admission-student-btn-hov-02-sp.webp" media="(max-width: 767px)">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-admission/junior-admission-student-btn-hov-02-pc.webp" alt="合否照会">
             </picture>
           </div>
         </a>
         <a href="https://mirai-compass.net/ent/kosiengj/common/login.jsf" target="_blank" rel="noopener noreferrer" class="">
           <div class="defo">
             <picture>
-              <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-admission/junior-admission-student-btn-defo-03-sp.svg" media="(max-width: 767px)">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-admission/junior-admission-student-btn-defo-03-pc.svg" alt="入学手続き">
+              <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-admission/junior-admission-student-btn-defo-03-sp.webp" media="(max-width: 767px)">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-admission/junior-admission-student-btn-defo-03-pc.webp" alt="入学手続き">
             </picture>
           </div>
           <div class="hov">
             <picture>
-              <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-admission/junior-admission-student-btn-hov-03-sp.svg" media="(max-width: 767px)">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-admission/junior-admission-student-btn-hov-03-pc.svg" alt="入学手続き">
+              <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-admission/junior-admission-student-btn-hov-03-sp.webp" media="(max-width: 767px)">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-admission/junior-admission-student-btn-hov-03-pc.webp" alt="入学手続き">
             </picture>
           </div>
         </a>
