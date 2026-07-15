@@ -5,1060 +5,1030 @@
 ----------------------- */
 
 .page--high-admission {
-  background-color: #FFB9DC;
+    background-color: #ffb9dc;
 
-  // ===== hero =====
-  .high-admission-kv {
-    position: relative;
-
-    @include pc {
-      width: p(995);
-      margin-left: auto;
-      height: 100vh;
-      padding-top: p(64);
-    }
-
-    @include sp {
-      padding-top: s(55);
-    }
-
-    .high-admission-kv-bg {
-
-      @include pc {
-        height: 100%;
-      }
-
-      @include sp {}
-
-      img {
-
-        @include pc {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        @include sp {}
-      }
-    }
-
-    .high-admission-kv-ttl {
-      position: absolute;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: fit-content;
-
-      @include pc {
-        top: 50%;
-      }
-
-      @include sp {
-        top: 55%;
-      }
-
-      .TL {
-        @include pc {
-          width: p(176);
-        }
-
-        @include sp {
-          width: s(192);
-        }
-      }
-    }
-  }
-
-  // ===== aside =====
-  .high-admission-aside {
-
-    @include pc {
-      background-color: #FF76BB;
-      width: p(371);
-      height: 100vh;
-      position: fixed;
-      left: 0;
-      top: 0;
-    }
-
-    @include sp {
-      background-color: #F785C0;
-      padding: s(23) s(20) s(23) s(43);
-    }
-
-
-    .high-admission-aside-inner {
-
-      @include pc {
-        position: absolute;
-        top: 54.5%;
-        left: 51%;
-        transform: translate(-50%, -50%);
-        width: p(257);
-      }
-
-      @include sp {}
-
-      .aside-ttl {
-        margin-bottom: p(36);
-        font-family: $font-midashi;
-        font-weight: 400;
-        color: #fff;
-        line-height: 1;
-        letter-spacing: 0.1em;
-        font-size: p(30);
-      }
-
-      .aside-nav {
-
-        .aside-nav-list {
-
-          @include sp {
-            display: flex;
-            flex-wrap: wrap;
-            gap: s(20) 0;
-          }
-
-          .aside-nav-list-item {
-
-            @include pc {
-              border-bottom: solid p(1) rgba(#fff, 0.3);
-              padding: p(19) 0 p(17) p(37);
-            }
-
-            @include sp {
-              padding-left: s(27);
-              width: 50%;
-            }
-
-            &:first-child {
-
-              @include pc {
-                padding-top: 0;
-              }
-
-              @include sp {}
-            }
-
-            &:nth-child(odd) {
-              @include sp {
-                width: 48%;
-              }
-            }
-
-            .aside-nav-list-item-link {
-              position: relative;
-              font-family: $font-ja;
-              font-weight: 400;
-              color: #fff;
-              line-height: 1;
-              display: block;
-
-              @include pc {
-                font-size: p(16);
-                letter-spacing: 0.2em;
-              }
-
-              @include sp {
-                font-size: s(14);
-                letter-spacing: 0.1em;
-              }
-
-              &::before {
-                content: "";
-                position: absolute;
-                transform: translateY(-50%);
-                @include imgContain("high-admission/aside-nav-list-item-link-aho.svg");
-
-                @include pc {
-                  width: p(23);
-                  height: p(20);
-                  left: -18%;
-                  top: 59%;
-                }
-
-                @include sp {
-                  width: s(18);
-                  height: s(16);
-                  left: -18%;
-                  top: 59%;
-                }
-              }
-            }
-
-            .aside-nav-list-sub {
-              margin-top: p(13);
-              display: flex;
-              flex-direction: column;
-              gap: p(8);
-
-              .aside-nav-list-item-sub {
-
-                .aside-nav-list-item-link-sub {
-                  font-family: $font-ja;
-                  font-weight: 400;
-                  color: rgba(#fff, 0.7);
-                  line-height: 1.5;
-                  letter-spacing: 0.2em;
-                  display: block;
-                  font-size: p(14);
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  // ===== sec-ttl =====
-  .high-admission-sec-ttl {
-    margin-inline: auto;
-    position: relative;
-    width: fit-content;
-
-    .high-admission-sec-ttl-bg {
-      @include imgContain("high-admission/high-admission-sec-ttl-bg.svg");
-
-      @include pc {
-        width: p(226);
-        height: p(94);
-      }
-
-      @include sp {
-        width: s(202);
-        height: s(84);
-      }
-    }
-
-    .TL {
-      position: absolute;
-      transform: translate(-50%, -50%);
-      font-family: $font-a1;
-      font-weight: 400;
-      color: #fff;
-      line-height: 1;
-      white-space: nowrap;
-
-      @include pc {
-        letter-spacing: 0.1em;
-        font-size: p(27);
-        top: 50%;
-        left: 49%;
-      }
-
-      @include sp {
-        letter-spacing: 0.15em;
-        font-size: s(22);
-        top: 54%;
-        left: 51%;
-      }
-    }
-  }
-
-
-  .page--high-admission-contents-wrap {
-    @include pc {
-      width: p(995);
-      margin-left: auto;
-    }
-
-    // ===== recruiting =====
-    .high-admission-recruiting {
-
-      .high-admission-recruiting-ttl {
-
-        @include pc {
-          padding-block: p(61) p(52);
-        }
-
-        @include sp {
-          padding-block: s(33) s(42);
-        }
-      }
-
-      .high-admission-recruiting-inr {
-        background-color: #fff;
-        display: flex;
-        flex-direction: column;
-
-        @include pc {
-          padding: p(113) p(129) p(132) p(133);
-          gap: p(46);
-        }
-
-        @include sp {
-          padding: s(50) s(0) s(46) s(39);
-          gap: s(51);
-        }
-
-        .recruiting-item {
-
-          @include sp {
-            padding-right: s(40);
-          }
-
-          &.pd-r-sp {
-            @include sp {
-              padding-right: s(18);
-            }
-          }
-
-          .recruiting-item-TL {
-            font-family: $font-a1;
-            font-weight: 400;
-            color: #FF4AA5;
-            line-height: 1.5;
-
-            @include pc {
-              letter-spacing: 0.14em;
-              font-size: p(15);
-              margin-bottom: p(20);
-            }
-
-            @include sp {
-              letter-spacing: 0.15em;
-              font-size: s(15);
-              margin-bottom: s(18);
-            }
-          }
-
-          .recruiting-item-txt {
-
-            .TX {
-              font-family: $font-a1;
-              font-weight: 400;
-              color: #292929;
-              line-height: 1.5;
-
-              @include pc {
-                letter-spacing: 0.15em;
-                font-size: p(15);
-              }
-
-              @include sp {
-                letter-spacing: 0.08em;
-                font-size: s(15);
-              }
-
-              a {
-                color: #292929;
-                text-decoration: underline;
-              }
-            }
-
-            .TX-wrap-list {
-              display: flex;
-              flex-direction: column;
-
-              @include pc {
-                gap: p(10);
-              }
-
-              @include sp {
-                gap: s(16);
-              }
-
-              .TX-wrap {
-                display: flex;
-
-                @include sp {
-                  gap: s(10);
-                }
-
-                &.flex-none {
-
-                  @include pc {
-                    margin-top: p(6);
-                  }
-
-                  @include sp {
-                    flex-direction: column;
-                  }
-                }
-
-                .TX-ttl {
-                  flex-shrink: 0;
-                }
-
-                .table-img {
-                  width: 100%;
-                }
-              }
-
-            }
-
-            .TL-wrap-list {
-              display: flex;
-              flex-direction: column;
-
-              @include pc {
-                gap: p(30);
-              }
-
-              @include sp {
-                gap: s(39);
-              }
-
-              .TL-wrap {
-
-                .TL {
-                  font-family: $font-a1;
-                  font-weight: 500;
-                  color: #292929;
-                  line-height: 1.5;
-
-                  @include pc {
-                    letter-spacing: 0.14em;
-                    font-size: p(15);
-                    margin-bottom: p(18);
-                  }
-
-                  @include sp {
-                    letter-spacing: 0.15em;
-                    font-size: s(15);
-                    margin-bottom: s(18);
-                  }
-                }
-
-                .TL-txt {
-
-                  .TX {}
-                }
-
-                .TL-txt-flex {
-                  display: flex;
-                  flex-direction: column;
-
-                  @include pc {
-                    gap: p(10);
-                  }
-
-                  @include sp {
-                    gap: s(9);
-                  }
-
-                  .TL-txt-flex-item {
-                    display: flex;
-
-                    .TX-ttl {
-                      flex-shrink: 0;
-                    }
-                  }
-                }
-
-
-              }
-            }
-          }
-        }
-
-
-
-      }
-    }
-
-    // ===== scholarship =====
-    .high-admission-scholarship {
-      .high-admission-scholarship-ttl {
-
-        @include pc {
-          padding-block: p(120) p(52);
-        }
-
-        @include sp {
-          padding-block: s(43) s(35);
-        }
-      }
-
-      .high-admission-scholarship-inr {
+    // ===== hero =====
+    .high-admission-kv {
         position: relative;
 
         @include pc {
-          padding-top: p(58);
-          background-color: #fff;
+            width: p(995);
+            margin-left: auto;
+            height: 100vh;
+            padding-top: p(64);
         }
 
         @include sp {
-          display: flex;
-          flex-direction: column;
-          gap: s(22);
+            padding-top: s(55);
         }
 
-        .scholarship-item {
-
-
-          .scholarship-tab {
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: $font-ja;
-            font-weight: 400;
-            color: #FF4AA5;
-            line-height: 1.5;
-            letter-spacing: 0.15em;
-            text-align: center;
-            background-color: #FFEAF4;
-
+        .high-admission-kv-bg {
             @include pc {
-              position: absolute;
-              top: 0;
-              width: calc(100% / 4);
-              height: p(58);
-              font-size: p(15);
+                height: 100%;
             }
 
             @include sp {
-              height: s(58);
-              font-size: s(15);
-              position: relative;
-
-              &::before {
-                content: "";
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                right: s(36);
-                display: block;
-                aspect-ratio: 1;
-                width: s(14);
-                @include imgContain("high-admission/high-admission-scholarship-tab-open.svg");
-              }
             }
 
-          }
-
-          &:nth-child(1) {
-            .scholarship-tab {
-
-              @include pc {
-                left: calc(100% / 4 * 0);
-              }
-            }
-          }
-
-          &:nth-child(2) {
-            .scholarship-tab {
-
-              @include pc {
-                left: calc(100% / 4 * 1);
-              }
-            }
-          }
-
-          &:nth-child(3) {
-            .scholarship-tab {
-              @include pc {
-                left: calc(100% / 4 * 2);
-              }
-            }
-          }
-
-          &:nth-child(4) {
-            .scholarship-tab {
-              @include pc {
-                left: calc(100% / 4 * 3);
-              }
-            }
-          }
-
-          .scholarship-contents {
-            flex-direction: column;
-            display: none;
-            background-color: #fff;
-
-            @include pc {
-              padding: p(94) p(130);
-              gap: p(77);
-            }
-
-            @include sp {
-              padding: s(43) 0 s(45);
-              gap: s(51);
-            }
-
-            .scholarship-contents-item {
-
-              .ttl {
-                color: #FF4AA5;
-                font-family: $font-a1;
-                font-weight: 400;
-                line-height: 1.5;
-                letter-spacing: 0.14em;
-
+            img {
                 @include pc {
-                  font-size: p(20);
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
                 }
 
                 @include sp {
-                  padding-inline: s(18) s(20);
-                  font-size: s(15);
                 }
-              }
-
-              .TX {
-                color: #292929;
-                font-family: $font-a1;
-                font-weight: 400;
-                letter-spacing: 0.14em;
-
-                @include pc {
-                  font-size: p(15);
-                  margin-top: p(30);
-                  line-height: 1.5;
-                }
-
-                @include sp {
-                  font-size: s(15);
-                  margin-top: s(19);
-                  padding-inline: s(18) s(20);
-                  line-height: 2;
-                }
-              }
-
-              .img-wrap {
-
-                @include pc {
-                  margin-top: p(20);
-                }
-
-                @include sp {
-                  margin-top: s(21);
-                }
-
-                .scroll {
-                  width: s(61);
-                  margin: 0 s(14) s(12) auto;
-                }
-
-
-                .img {
-                  width: 100%;
-
-                  @include sp {
-                    overflow-y: scroll;
-                    padding-inline: s(20);
-                  }
-
-                  img {
-
-                    @include sp {
-                      width: s(735);
-                    }
-                  }
-                }
-              }
-
-              .TX-point {
-
-                @include pc {
-                  margin-top: p(45);
-                }
-
-                @include sp {
-                  margin-top: s(29);
-                }
-              }
             }
-          }
-
-
-          &.is-active {
-            .scholarship-tab {
-              @include pc {
-                background-color: #fff;
-              }
-
-              // @include sp{
-              //   &::before {
-              //     @include imgContain("high-admission/high-admission-scholarship-tab-close.svg");
-              //   }
-              // }
-            }
-
-            .scholarship-contents {
-
-              @include pc {
-                display: flex;
-              }
-            }
-          }
-
-          &.is-active-sp {
-            .scholarship-tab {
-
-              @include sp {
-                &::before {
-                  @include imgContain("high-admission/high-admission-scholarship-tab-close.svg");
-                }
-              }
-            }
-
-            .scholarship-contents {
-
-              @include sp {
-                display: flex;
-              }
-            }
-          }
         }
 
-
-      }
-
-      .igh-admission-scholarship-point {
-        display: flex;
-        flex-direction: column;
-
-        @include pc {
-          margin-top: p(44);
-          width: p(734);
-          margin-inline: auto;
-          gap: p(20);
-        }
-
-        @include sp {
-          margin-top: s(33);
-          padding-inline: s(20);
-          gap: s(12);
-        }
-
-
-        .TX {
-          color: #FFF;
-          font-family: $font-a1;
-          font-weight: 400;
-          letter-spacing: 0.12em;
-          padding-left: 1em;
-          text-indent: -1em;
-
-          @include pc {
-            font-size: p(15);
-            line-height: 2;
-          }
-
-          @include sp {
-            font-size: s(15);
-            line-height: 1.8;
-          }
-        }
-      }
-
-    }
-
-    // ===== student =====
-    .high-admission-student {
-      .high-admission-student-ttl {
-
-        @include pc {
-          padding-block: p(130) p(52);
-        }
-
-        @include sp {
-          padding-block: s(73) s(40);
-        }
-      }
-
-      .high-admission-student-inr {
-        display: flex;
-
-        @include pc {
-          gap: p(15);
-          justify-content: center;
-        }
-
-        @include sp {
-          flex-direction: column;
-          gap: s(26);
-          align-items: center;
-        }
-
-        a {
-          display: block;
-          position: relative;
-
-          @include pc {
-            width: p(279);
-          }
-
-          @include sp {
-            width: s(240);
-          }
-
-          .defo {
-            width: 100%;
-          }
-
-          .hov {
+        .high-admission-kv-ttl {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            opacity: 0;
-          }
-
-          &:hover {
-            .hov {
-              opacity: 1;
-            }
-          }
-        }
-      }
-    }
-
-    // ===== faq =====
-    .high-admission-faq {
-      .high-admission-faq-ttl {
-
-        @include pc {
-          padding-block: p(140) p(52);
-        }
-
-        @include sp {
-          padding-block: s(106) s(33);
-        }
-      }
-
-      .high-admission-faq-inr {
-        display: flex;
-        flex-direction: column;
-
-        @include pc {
-          gap: p(2);
-        }
-
-        @include sp {
-          gap: s(5);
-        }
-
-        .faq-item {
-
-          .item-q {
-            position: relative;
-            background-color: #FF4AA5;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: fit-content;
 
             @include pc {
-              // padding: p(30) p(130) p(27);
-              padding-inline: p(130);
-              padding-block: p(10);
-              min-height: p(78);
+                top: 50%;
             }
 
             @include sp {
-              // padding: s(20) s(87) s(18);
-              padding-inline: s(87);
-              padding-block: s(5);
-              min-height: s(56);
+                top: 55%;
             }
-
-
-            &::before {
-              content: "";
-              position: absolute;
-              top: 50%;
-              transform: translateY(-50%);
-              display: block;
-              @include imgContain("high-admission/high-admission-faq-q.svg");
-
-              @include pc {
-                left: p(52);
-                width: p(45);
-                height: p(39);
-              }
-
-              @include sp {
-                left: s(18);
-                width: s(38);
-                height: s(33);
-              }
-            }
-
-            &::after {
-              content: "";
-              position: absolute;
-              top: 50%;
-              transform: translateY(-50%);
-              display: block;
-              @include imgContain("high-admission/high-admission-faq-open.svg");
-
-              @include pc {
-                right: p(50);
-                width: p(27);
-                height: p(27);
-              }
-
-              @include sp {
-                right: s(18);
-                width: s(27);
-                height: s(27);
-              }
-            }
-
 
             .TL {
-              color: #FFF;
-              font-family: $font-a1;
-              font-weight: 400;
-              line-height: 1.5;
-              letter-spacing: 0.14em;
-
-              @include pc {
-                font-size: p(20);
-              }
-
-              @include sp {
-                font-size: s(18);
-              }
-            }
-          }
-
-          .item-a {
-            background-color: #FFF;
-            display: none;
-            position: relative;
-
-            @include pc {
-              padding: p(54) p(130) p(80);
-            }
-
-            @include sp {
-              padding: s(71) s(19) s(50);
-            }
-
-            &::before {
-              content: "";
-              position: absolute;
-              width: 100%;
-              height: 100%;
-              @include imgContain("high-admission/high-admission-faq-a.svg");
-
-              @include pc {
-                width: p(45);
-                height: p(39);
-                top: p(42);
-                left: p(52);
-              }
-
-              @include sp {
-                width: s(40);
-                height: s(35);
-                top: s(20);
-                left: s(18);
-              }
-            }
-
-            .TX {
-              font-family: $font-a1;
-              font-weight: 400;
-              color: #292929;
-              letter-spacing: 0.14em;
-              font-size: p(15);
-
-              @include pc {
-                line-height: 1.8;
-                font-size: p(15);
-              }
-
-              @include sp {
-                line-height: 2;
-                font-size: s(14);
-              }
-
-              &.point {
-                padding-left: 1em;
-                text-indent: -1em;
-
                 @include pc {
-                  letter-spacing: 0.125em;
+                    width: p(176);
                 }
 
                 @include sp {
-                  letter-spacing: 0.1em;
+                    width: s(192);
                 }
-              }
             }
-          }
-
-          &.is-active {
-            .item-q {
-              &::after {
-                @include imgContain("high-admission/high-admission-faq-close.svg");
-              }
-            }
-
-            .item-a {
-              display: block;
-            }
-          }
         }
-      }
     }
-  }
+
+    // ===== aside =====
+    .high-admission-aside {
+        @include pc {
+            background-color: #ff76bb;
+            width: p(371);
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+
+        @include sp {
+            background-color: #f785c0;
+            padding: s(23) s(20) s(23) s(43);
+        }
+
+        .high-admission-aside-inner {
+            @include pc {
+                position: absolute;
+                top: 54.5%;
+                left: 51%;
+                transform: translate(-50%, -50%);
+                width: p(257);
+            }
+
+            @include sp {
+            }
+
+            .aside-ttl {
+                margin-bottom: p(36);
+                font-family: $font-midashi;
+                font-weight: 400;
+                color: #fff;
+                line-height: 1;
+                letter-spacing: 0.1em;
+                font-size: p(30);
+            }
+
+            .aside-nav {
+                .aside-nav-list {
+                    @include sp {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: s(20) 0;
+                    }
+
+                    .aside-nav-list-item {
+                        @include pc {
+                            border-bottom: solid p(1) rgba(#fff, 0.3);
+                            padding: p(19) 0 p(17) p(37);
+                        }
+
+                        @include sp {
+                            padding-left: s(27);
+                            width: 50%;
+                        }
+
+                        &:first-child {
+                            @include pc {
+                                padding-top: 0;
+                            }
+
+                            @include sp {
+                            }
+                        }
+
+                        &:nth-child(odd) {
+                            @include sp {
+                                width: 48%;
+                            }
+                        }
+
+                        .aside-nav-list-item-link {
+                            position: relative;
+                            font-family: $font-ja;
+                            font-weight: 400;
+                            color: #fff;
+                            line-height: 1;
+                            display: block;
+
+                            @include pc {
+                                font-size: p(16);
+                                letter-spacing: 0.2em;
+                            }
+
+                            @include sp {
+                                font-size: s(14);
+                                letter-spacing: 0.1em;
+                            }
+
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                transform: translateY(-50%);
+                                @include imgContain("high-admission/aside-nav-list-item-link-aho.svg");
+
+                                @include pc {
+                                    width: p(23);
+                                    height: p(20);
+                                    left: -18%;
+                                    top: 59%;
+                                }
+
+                                @include sp {
+                                    width: s(18);
+                                    height: s(16);
+                                    left: -18%;
+                                    top: 59%;
+                                }
+                            }
+                        }
+
+                        .aside-nav-list-sub {
+                            margin-top: p(13);
+                            display: flex;
+                            flex-direction: column;
+                            gap: p(8);
+
+                            .aside-nav-list-item-sub {
+                                .aside-nav-list-item-link-sub {
+                                    font-family: $font-ja;
+                                    font-weight: 400;
+                                    color: rgba(#fff, 0.7);
+                                    line-height: 1.5;
+                                    letter-spacing: 0.2em;
+                                    display: block;
+                                    font-size: p(14);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // ===== sec-ttl =====
+    .high-admission-sec-ttl {
+        margin-inline: auto;
+        position: relative;
+        width: fit-content;
+
+        .high-admission-sec-ttl-bg {
+            @include imgContain("high-admission/high-admission-sec-ttl-bg.svg");
+
+            @include pc {
+                width: p(226);
+                height: p(94);
+            }
+
+            @include sp {
+                width: s(202);
+                height: s(84);
+            }
+        }
+
+        .TL {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            font-family: $font-a1;
+            font-weight: 400;
+            color: #fff;
+            line-height: 1;
+            white-space: nowrap;
+
+            @include pc {
+                letter-spacing: 0.1em;
+                font-size: p(27);
+                top: 50%;
+                left: 49%;
+            }
+
+            @include sp {
+                letter-spacing: 0.15em;
+                font-size: s(22);
+                top: 54%;
+                left: 51%;
+            }
+        }
+    }
+
+    .page--high-admission-contents-wrap {
+        @include pc {
+            width: p(995);
+            margin-left: auto;
+        }
+
+        // ===== recruiting =====
+        .high-admission-recruiting {
+            .high-admission-recruiting-ttl {
+                @include pc {
+                    padding-block: p(61) p(52);
+                }
+
+                @include sp {
+                    padding-block: s(33) s(42);
+                }
+            }
+
+            .high-admission-recruiting-inr {
+                background-color: #fff;
+                display: flex;
+                flex-direction: column;
+
+                @include pc {
+                    padding: p(113) p(129) p(132) p(133);
+                    gap: p(46);
+                }
+
+                @include sp {
+                    padding: s(50) s(0) s(46) s(39);
+                    gap: s(51);
+                }
+
+                .recruiting-item {
+                    @include sp {
+                        padding-right: s(40);
+                    }
+
+                    &.pd-r-sp {
+                        @include sp {
+                            padding-right: s(18);
+                        }
+                    }
+
+                    .recruiting-item-TL {
+                        font-family: $font-a1;
+                        font-weight: 400;
+                        color: #ff4aa5;
+                        line-height: 1.5;
+
+                        @include pc {
+                            letter-spacing: 0.14em;
+                            font-size: p(15);
+                            margin-bottom: p(20);
+                        }
+
+                        @include sp {
+                            letter-spacing: 0.15em;
+                            font-size: s(15);
+                            margin-bottom: s(18);
+                        }
+                    }
+
+                    .recruiting-item-txt {
+                        .TX {
+                            font-family: $font-a1;
+                            font-weight: 400;
+                            color: #292929;
+                            line-height: 1.5;
+
+                            @include pc {
+                                letter-spacing: 0.15em;
+                                font-size: p(15);
+                            }
+
+                            @include sp {
+                                letter-spacing: 0.08em;
+                                font-size: s(15);
+                            }
+
+                            a {
+                                color: #292929;
+                                text-decoration: underline;
+                            }
+                        }
+
+                        .TX-wrap-list {
+                            display: flex;
+                            flex-direction: column;
+
+                            @include pc {
+                                gap: p(10);
+                            }
+
+                            @include sp {
+                                gap: s(16);
+                            }
+
+                            .TX-wrap {
+                                display: flex;
+
+                                @include sp {
+                                    gap: s(10);
+                                }
+
+                                &.flex-none {
+                                    @include pc {
+                                        margin-top: p(6);
+                                    }
+
+                                    @include sp {
+                                        flex-direction: column;
+                                    }
+                                }
+
+                                .TX-ttl {
+                                    flex-shrink: 0;
+                                }
+
+                                .table-img {
+                                    width: 100%;
+                                }
+                            }
+                        }
+
+                        .TL-wrap-list {
+                            display: flex;
+                            flex-direction: column;
+
+                            @include pc {
+                                gap: p(30);
+                            }
+
+                            @include sp {
+                                gap: s(39);
+                            }
+
+                            .TL-wrap {
+                                .TL {
+                                    font-family: $font-a1;
+                                    font-weight: 500;
+                                    color: #292929;
+                                    line-height: 1.5;
+
+                                    @include pc {
+                                        letter-spacing: 0.14em;
+                                        font-size: p(15);
+                                        margin-bottom: p(18);
+                                    }
+
+                                    @include sp {
+                                        letter-spacing: 0.15em;
+                                        font-size: s(15);
+                                        margin-bottom: s(18);
+                                    }
+                                }
+
+                                .TL-txt {
+                                    .TX {
+                                    }
+                                }
+
+                                .TL-txt-flex {
+                                    display: flex;
+                                    flex-direction: column;
+
+                                    @include pc {
+                                        gap: p(10);
+                                    }
+
+                                    @include sp {
+                                        gap: s(9);
+                                    }
+
+                                    .TL-txt-flex-item {
+                                        display: flex;
+
+                                        .TX-ttl {
+                                            flex-shrink: 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // ===== scholarship =====
+        .high-admission-scholarship {
+            .high-admission-scholarship-ttl {
+                @include pc {
+                    padding-block: p(120) p(52);
+                }
+
+                @include sp {
+                    padding-block: s(43) s(35);
+                }
+            }
+
+            .high-admission-scholarship-inr {
+                position: relative;
+
+                @include pc {
+                    padding-top: p(58);
+                    background-color: #fff;
+                }
+
+                @include sp {
+                    display: flex;
+                    flex-direction: column;
+                    gap: s(22);
+                }
+
+                .scholarship-item {
+                    .scholarship-tab {
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-family: $font-ja;
+                        font-weight: 400;
+                        color: #ff4aa5;
+                        line-height: 1.5;
+                        letter-spacing: 0.15em;
+                        text-align: center;
+                        background-color: #ffeaf4;
+
+                        @include pc {
+                            position: absolute;
+                            top: 0;
+                            width: calc(100% / 4);
+                            height: p(58);
+                            font-size: p(15);
+                        }
+
+                        @include sp {
+                            height: s(58);
+                            font-size: s(15);
+                            position: relative;
+
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                right: s(36);
+                                display: block;
+                                aspect-ratio: 1;
+                                width: s(14);
+                                @include imgContain("high-admission/high-admission-scholarship-tab-open.svg");
+                            }
+                        }
+                    }
+
+                    &:nth-child(1) {
+                        .scholarship-tab {
+                            @include pc {
+                                left: calc(100% / 4 * 0);
+                            }
+                        }
+                    }
+
+                    &:nth-child(2) {
+                        .scholarship-tab {
+                            @include pc {
+                                left: calc(100% / 4 * 1);
+                            }
+                        }
+                    }
+
+                    &:nth-child(3) {
+                        .scholarship-tab {
+                            @include pc {
+                                left: calc(100% / 4 * 2);
+                            }
+                        }
+                    }
+
+                    &:nth-child(4) {
+                        .scholarship-tab {
+                            @include pc {
+                                left: calc(100% / 4 * 3);
+                            }
+                        }
+                    }
+
+                    .scholarship-contents {
+                        flex-direction: column;
+                        display: none;
+                        background-color: #fff;
+
+                        @include pc {
+                            padding: p(94) p(130);
+                            gap: p(77);
+                        }
+
+                        @include sp {
+                            padding: s(43) 0 s(45);
+                            gap: s(51);
+                        }
+
+                        .scholarship-contents-item {
+                            .ttl {
+                                color: #ff4aa5;
+                                font-family: $font-a1;
+                                font-weight: 400;
+                                line-height: 1.5;
+                                letter-spacing: 0.14em;
+
+                                @include pc {
+                                    font-size: p(20);
+                                }
+
+                                @include sp {
+                                    padding-inline: s(18) s(20);
+                                    font-size: s(15);
+                                }
+                            }
+
+                            .TX {
+                                color: #292929;
+                                font-family: $font-a1;
+                                font-weight: 400;
+                                letter-spacing: 0.14em;
+
+                                @include pc {
+                                    font-size: p(15);
+                                    margin-top: p(30);
+                                    line-height: 1.5;
+                                }
+
+                                @include sp {
+                                    font-size: s(15);
+                                    margin-top: s(19);
+                                    padding-inline: s(18) s(20);
+                                    line-height: 2;
+                                }
+                            }
+
+                            .img-wrap {
+                                @include pc {
+                                    margin-top: p(20);
+                                }
+
+                                @include sp {
+                                    margin-top: s(21);
+                                }
+
+                                .scroll {
+                                    width: s(61);
+                                    margin: 0 s(14) s(12) auto;
+                                }
+
+                                .img {
+                                    width: 100%;
+
+                                    @include sp {
+                                        overflow-y: scroll;
+                                        padding-inline: s(20);
+                                    }
+
+                                    img {
+                                        @include sp {
+                                            width: s(735);
+                                        }
+                                    }
+                                }
+                            }
+
+                            .TX-point {
+                                @include pc {
+                                    margin-top: p(45);
+                                }
+
+                                @include sp {
+                                    margin-top: s(29);
+                                }
+                            }
+                        }
+                    }
+
+                    &.is-active {
+                        .scholarship-tab {
+                            @include pc {
+                                background-color: #fff;
+                            }
+
+                            // @include sp{
+                            //   &::before {
+                            //     @include imgContain("high-admission/high-admission-scholarship-tab-close.svg");
+                            //   }
+                            // }
+                        }
+
+                        .scholarship-contents {
+                            @include pc {
+                                display: flex;
+                            }
+                        }
+                    }
+
+                    &.is-active-sp {
+                        .scholarship-tab {
+                            @include sp {
+                                &::before {
+                                    @include imgContain("high-admission/high-admission-scholarship-tab-close.svg");
+                                }
+                            }
+                        }
+
+                        .scholarship-contents {
+                            @include sp {
+                                display: flex;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .igh-admission-scholarship-point {
+                display: flex;
+                flex-direction: column;
+
+                @include pc {
+                    margin-top: p(44);
+                    width: p(734);
+                    margin-inline: auto;
+                    gap: p(20);
+                }
+
+                @include sp {
+                    margin-top: s(33);
+                    padding-inline: s(20);
+                    gap: s(12);
+                }
+
+                .TX {
+                    color: #fff;
+                    font-family: $font-a1;
+                    font-weight: 400;
+                    letter-spacing: 0.12em;
+                    padding-left: 1em;
+                    text-indent: -1em;
+
+                    @include pc {
+                        font-size: p(15);
+                        line-height: 2;
+                    }
+
+                    @include sp {
+                        font-size: s(15);
+                        line-height: 1.8;
+                    }
+                }
+            }
+        }
+
+        // ===== student =====
+        .high-admission-student {
+            .high-admission-student-ttl {
+                @include pc {
+                    padding-block: p(130) p(52);
+                }
+
+                @include sp {
+                    padding-block: s(73) s(40);
+                }
+            }
+
+            .high-admission-student-inr {
+                display: flex;
+
+                @include pc {
+                    gap: p(15);
+                    justify-content: center;
+                }
+
+                @include sp {
+                    flex-direction: column;
+                    gap: s(26);
+                    align-items: center;
+                }
+
+                a {
+                    display: block;
+                    position: relative;
+
+                    @include pc {
+                        width: p(279);
+                    }
+
+                    @include sp {
+                        width: s(240);
+                    }
+
+                    .defo {
+                        width: 100%;
+                    }
+
+                    .hov {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        opacity: 0;
+                    }
+
+                    &:hover {
+                        .hov {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        // ===== faq =====
+        .high-admission-faq {
+            .high-admission-faq-ttl {
+                @include pc {
+                    padding-block: p(140) p(52);
+                }
+
+                @include sp {
+                    padding-block: s(106) s(33);
+                }
+            }
+
+            .high-admission-faq-inr {
+                display: flex;
+                flex-direction: column;
+
+                @include pc {
+                    gap: p(2);
+                }
+
+                @include sp {
+                    gap: s(5);
+                }
+
+                .faq-item {
+                    .item-q {
+                        position: relative;
+                        background-color: #ff4aa5;
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+
+                        @include pc {
+                            // padding: p(30) p(130) p(27);
+                            padding-inline: p(130);
+                            padding-block: p(10);
+                            min-height: p(78);
+                        }
+
+                        @include sp {
+                            // padding: s(20) s(87) s(18);
+                            padding-inline: s(87);
+                            padding-block: s(5);
+                            min-height: s(56);
+                        }
+
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            display: block;
+                            @include imgContain("high-admission/high-admission-faq-q.svg");
+
+                            @include pc {
+                                left: p(52);
+                                width: p(45);
+                                height: p(39);
+                            }
+
+                            @include sp {
+                                left: s(18);
+                                width: s(38);
+                                height: s(33);
+                            }
+                        }
+
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            display: block;
+                            @include imgContain("high-admission/high-admission-faq-open.svg");
+
+                            @include pc {
+                                right: p(50);
+                                width: p(27);
+                                height: p(27);
+                            }
+
+                            @include sp {
+                                right: s(18);
+                                width: s(27);
+                                height: s(27);
+                            }
+                        }
+
+                        .TL {
+                            color: #fff;
+                            font-family: $font-a1;
+                            font-weight: 400;
+                            line-height: 1.5;
+                            letter-spacing: 0.14em;
+
+                            @include pc {
+                                font-size: p(20);
+                            }
+
+                            @include sp {
+                                font-size: s(18);
+                            }
+                        }
+                    }
+
+                    .item-a {
+                        background-color: #fff;
+                        display: none;
+                        position: relative;
+
+                        @include pc {
+                            padding: p(54) p(130) p(80);
+                        }
+
+                        @include sp {
+                            padding: s(71) s(19) s(50);
+                        }
+
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            @include imgContain("high-admission/high-admission-faq-a.svg");
+
+                            @include pc {
+                                width: p(45);
+                                height: p(39);
+                                top: p(42);
+                                left: p(52);
+                            }
+
+                            @include sp {
+                                width: s(40);
+                                height: s(35);
+                                top: s(20);
+                                left: s(18);
+                            }
+                        }
+
+                        .TX {
+                            font-family: $font-a1;
+                            font-weight: 400;
+                            color: #292929;
+                            letter-spacing: 0.14em;
+                            font-size: p(15);
+
+                            @include pc {
+                                line-height: 1.8;
+                                font-size: p(15);
+                            }
+
+                            @include sp {
+                                line-height: 2;
+                                font-size: s(14);
+                            }
+
+                            &.point {
+                                padding-left: 1em;
+                                text-indent: -1em;
+
+                                @include pc {
+                                    letter-spacing: 0.125em;
+                                }
+
+                                @include sp {
+                                    letter-spacing: 0.1em;
+                                }
+                            }
+                        }
+                    }
+
+                    &.is-active {
+                        .item-q {
+                            &::after {
+                                @include imgContain("high-admission/high-admission-faq-close.svg");
+                            }
+                        }
+
+                        .item-a {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 // ===== footer =====
 .footer--admission {
-  @include pc {
-    width: p(995);
-    margin-left: auto;
-  }
+    @include pc {
+        width: p(995);
+        margin-left: auto;
+    }
 }
 
+.scholarship-item {
+    .TX-wrap {
+        display: flex;
+    }
+}
 .is-high .scholarship-item:nth-child(2) {
-  .scholarship-tab {
-    white-space: nowrap;   // 改行しない
-  }
+    .scholarship-tab {
+        white-space: nowrap; // 改行しない
+    }
 }
 
 // 時程表
 .junior-admission-schedule-table-wrap {
-  width: 100%;
+    width: 100%;
 }
 
 .junior-admission-schedule-table {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
-
-  @include pc {
-    border: p(1) solid var(--school);   // ← 色は var(--school) で中学/高校を自動切替
-  }
-  @include sp {
-    border: s(1) solid var(--school);
-  }
-
-  td {
-    vertical-align: middle;
-    font-weight: 400;
-    line-height: 1.5;
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
 
     @include pc {
-      border: p(1) solid var(--school);
-      font-size: p(15);
-      letter-spacing: 0.15em;
-      padding: p(10) p(12);
+        border: p(1) solid var(--school); // ← 色は var(--school) で中学/高校を自動切替
     }
     @include sp {
-      border: s(1) solid var(--school);
-      font-size: s(15);
-      letter-spacing: 0.08em;
-      padding-block: s(16);
+        border: s(1) solid var(--school);
     }
-  }
 
-  &-time {
-    width: 50%;
-    background-color: color-mix(in srgb, var(--school) 12%, transparent);  // 薄い背景
-    @include pc { padding-left: p(92) !important; }
-    @include sp { padding-left: s(20) !important; }
-  }
+    td {
+        vertical-align: middle;
+        font-weight: 400;
+        line-height: 1.5;
 
-  &-content {
-    width: 50%;
-    @include pc { padding-left: p(63) !important; }
-    @include sp { padding-left: s(20) !important; }
-  }
+        @include pc {
+            border: p(1) solid var(--school);
+            font-size: p(15);
+            letter-spacing: 0.15em;
+            padding: p(10) p(12);
+        }
+        @include sp {
+            border: s(1) solid var(--school);
+            font-size: s(15);
+            letter-spacing: 0.08em;
+            padding-block: s(16);
+        }
+    }
+
+    &-time {
+        width: 50%;
+        background-color: color-mix(in srgb, var(--school) 12%, transparent); // 薄い背景
+        @include pc {
+            padding-left: p(92) !important;
+        }
+        @include sp {
+            padding-left: s(20) !important;
+        }
+    }
+
+    &-content {
+        width: 50%;
+        @include pc {
+            padding-left: p(63) !important;
+        }
+        @include sp {
+            padding-left: s(20) !important;
+        }
+    }
 }

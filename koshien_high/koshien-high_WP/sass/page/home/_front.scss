@@ -390,7 +390,7 @@
 
         @include pc {
             &:hover {
-                background-color: #b18fd8;
+                opacity: 0.6;
             }
         }
     }
