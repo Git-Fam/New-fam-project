@@ -47,7 +47,7 @@
   min-height: 100vh;
 
   @include pc {
-    padding: p(120) p(272);
+    padding: p(120) p(272) p(146);
   }
   @include sp {
     padding: s(80) s(20);
