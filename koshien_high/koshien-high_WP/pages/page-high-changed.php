@@ -32,10 +32,7 @@ Template Path: pages/
         </div>
         <div class="high-changed-kv-item-ttl">
           <div class="high-changed-kv-item-ttl-inr js-fade">
-            <picture>
-              <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-changed/high-changed-kv-ttl-01-sp.svg">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-changed/high-changed-kv-ttl-01-pc.svg" alt="BEFORE 登校が辛すぎ女子">
-            </picture>
+            <h3 class="high-changed-kv-item-ttl-tx">登校が辛すぎ女子</h3>
           </div>
         </div>
       </div>
@@ -49,10 +46,7 @@ Template Path: pages/
         </div>
         <div class="high-changed-kv-item-ttl">
           <div class="high-changed-kv-item-ttl-inr js-fade">
-            <picture>
-              <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-changed/high-changed-kv-ttl-02-sp.svg">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-changed/high-changed-kv-ttl-02-pc.svg" alt="AFTER 緊張ゼロの生徒会長">
-            </picture>
+            <h3 class="high-changed-kv-item-ttl-tx">緊張ゼロの生徒会長</h3>
           </div>
         </div>
       </div>
