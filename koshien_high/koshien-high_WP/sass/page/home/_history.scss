@@ -70,16 +70,21 @@
         position: absolute;
         inset: 0;
         z-index: -1;
-        background-image: url(../img/home/history/seishin-bg_pc.webp);
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         opacity: 0; // 最初は透明
         transition: opacity 1.4s ease; // ふわっと（1.4秒）
+        @include pc {
+            background-image: url(../img/home/history/seishin-bg_pc.webp);
+        }
     }
 
     @include sp {
         background-image: url(../img/home/history/seishin-bg_sp.webp);
+        background-size: cover;
+        background-position: center;
+        background-repeat: repeat;
     }
 
     // 画面に入ったら背景を表示
@@ -110,7 +115,7 @@
         margin: 0 auto p(138);
     }
     @include sp {
-        width: s(160);
+        width: s(98);
         margin: 0 auto s(48);
     }
 
@@ -141,6 +146,9 @@
 .p-history__year {
     @include pc {
         padding: p(138) p(120);
+    }
+    @include sp {
+      padding: s(37) s(20) s(27);
     }
 
     img {

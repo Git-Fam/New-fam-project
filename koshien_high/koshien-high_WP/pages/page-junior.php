@@ -160,18 +160,19 @@ Template Path: pages/
           <img src="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-04-pc.webp" alt="">
         </picture>
       </a>
-      <a class="junior-banner-item" href="<?php echo home_url('/junior/life/'); ?>">
-        <picture>
-          <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-05-sp.webp" media="(max-width: 768px)">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-05-pc.webp" alt="">
-        </picture>
-      </a>
       <a class="junior-banner-item" href="<?php echo home_url('/junior/club/'); ?>">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-06-sp.webp" media="(max-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-06-pc.webp" alt="">
         </picture>
       </a>
+      <a class="junior-banner-item" href="<?php echo home_url('/junior/life/'); ?>">
+        <picture>
+          <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-05-sp.webp" media="(max-width: 768px)">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/junior/junior-banner-05-pc.webp" alt="">
+        </picture>
+      </a>
+
 
     </div>
   </div>

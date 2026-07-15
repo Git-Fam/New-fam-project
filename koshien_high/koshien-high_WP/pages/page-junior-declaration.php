@@ -14,7 +14,7 @@ Template Path: pages/
   <div class="page--junior-declaration-inner">
   <section class="junior-declaration-hiro">
       <div class="TL-top">
-       <img src="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/junior-declaration-hiro-TL-top.svg" alt="甲子園学院中学校">
+       <img src="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/junior-declaration-hiro-TL-top.webp" alt="甲子園学院中学校">
       </div>
       <h2 class="TL">
         全校生徒の<br>好きを<br>応援する宣言
@@ -112,8 +112,8 @@ Template Path: pages/
     <div class="junior-declaration-next-inr">
       <h3 class="junior-declaration-next-TL">
         <picture>
-          <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-pc.svg" media="(min-width: 768px)">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-sp.svg" alt="こちらのコンテンツもチェック！">
+          <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-pc.webp" media="(min-width: 768px)">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-sp.webp" alt="こちらのコンテンツもチェック！">
         </picture>
       </h3>
 

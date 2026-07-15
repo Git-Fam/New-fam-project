@@ -21,7 +21,7 @@ Template Path: pages/
     <div class="TL">
       <picture>
         <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-kv-ttl-sp.svg" type="image/svg+xml">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-kv-ttl-pc.svg" type="image/svg+xml" alt="仲間と夢中になれる場所。 クラブ活動 放課後は、夢中になれる時間のはじまりです。仲間と笑い合い、ときには本気でぶつかりながら一つの目標に向かって挑戦する。その経験は技術だけでなく、自信や協調性、挑戦する力も育ててくれます。あなたも、仲間と自分だけの夢中になれる場所を見つけてみませんか？">
+        <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-kv-ttl-pc.webp" type="image/svg+xml" alt="仲間と夢中になれる場所。 クラブ活動 放課後は、夢中になれる時間のはじまりです。仲間と笑い合い、ときには本気でぶつかりながら一つの目標に向かって挑戦する。その経験は技術だけでなく、自信や協調性、挑戦する力も育ててくれます。あなたも、仲間と自分だけの夢中になれる場所を見つけてみませんか？">
       </picture>
     </div>
   </section>

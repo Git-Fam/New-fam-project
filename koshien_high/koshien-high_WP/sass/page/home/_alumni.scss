@@ -253,8 +253,9 @@ $c-alumni-panel: #eeecf8;
         }
 
         @include sp {
-            font-size: s(15);
+            font-size: s(16) !important;
             margin-bottom: s(10);
+            align-items: flex-start;
         }
     }
 

@@ -298,7 +298,7 @@
 
   @include pc {
     right: p(60);
-    width: p(560);
+    width: p(697);
   }
   @include sp {
     left: s(20);
@@ -317,12 +317,12 @@
 
   @include pc {
     width: 100%;
-    padding: p(50);
+    padding: p(74);
     border-radius: p(8);
   }
   @include sp {
     width: 100%;
-    padding: s(28);
+    padding: s(27);
     border-radius: s(8);
     margin-top: 0;   
   }
@@ -344,8 +344,8 @@
   @include wt500;
   line-height: 2.5;
 
-  @include pc { font-size: p(14); }
-  @include sp { font-size: s(13); line-height: 2; }
+  @include pc { font-size: p(18); }
+  @include sp { font-size: s(15); line-height: 2.2; letter-spacing: 0.05em; }
 }
 
 

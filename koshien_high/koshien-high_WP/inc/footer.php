@@ -10,7 +10,7 @@ if (is_page()) {
 }
 
 // CONTACTを非表示にする条件
-$hide_contact = is_page(['contact', 'contact/confirm', 'contact/thanks']) || is_404() || is_singular('post') || $top_slug === 'junior' || $top_slug === 'high';
+$hide_contact = is_page(['contact', 'contact/confirm', 'contact/thanks' ,'request']) || is_404() || is_singular('post') || $top_slug === 'junior' || $top_slug === 'high';
 ?>
 <footer class="footer <?php if (is_page('high/admission') || is_page('junior/admission')): ?>footer--admission<?php endif; ?>">
 
