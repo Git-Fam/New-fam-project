@@ -29,29 +29,49 @@ Template Path: pages/
         </picture>
       </h2>
       <div class="high-openschool-kv-schedule">
-        <!-- trueはis-endクラスはなし、falseはis-endクラスはあり -->
+        <?php
+        $schedules = class_exists('SCF') ? SCF::get('openschool_schedule') : array();
+        $setsumeikai = array();
+        $openschool = array();
+        if (!empty($schedules)) {
+          foreach ($schedules as $s) {
+            if ($s['os_type'] === '説明会') $setsumeikai[] = $s;
+            else $openschool[] = $s;
+          }
+        }
+        ?>
+
+        <?php if (!empty($setsumeikai)) : ?>
         <div class="kv-schedule-item">
           <p class="tg">説明会</p>
           <div class="TM-wrap">
-            <p class="TM is-end">
-              2026.6.13<span>SAT</span>
+            <?php foreach ($setsumeikai as $s) :
+              $end_class = !empty($s['os_active']) ? '' : ' is-end';
+              $date_disp = !empty($s['os_year']) ? $s['os_year'] . '.' . $s['os_date'] : $s['os_date'];
+            ?>
+            <p class="TM<?php echo $end_class; ?>">
+              <?php echo esc_html($date_disp); ?><span><?php echo esc_html($s['os_day_en']); ?></span>
             </p>
+            <?php endforeach; ?>
           </div>
         </div>
+        <?php endif; ?>
+
+        <?php if (!empty($openschool)) : ?>
         <div class="kv-schedule-item">
           <p class="tg">オープンスクール</p>
           <div class="TM-wrap">
-            <p class="TM">
-              8.22<span>SAT</span>
+            <?php foreach ($openschool as $s) :
+              $end_class = !empty($s['os_active']) ? '' : ' is-end';
+              $date_disp = !empty($s['os_year']) ? $s['os_year'] . '.' . $s['os_date'] : $s['os_date'];
+            ?>
+            <p class="TM<?php echo $end_class; ?>">
+              <?php echo esc_html($date_disp); ?><span><?php echo esc_html($s['os_day_en']); ?></span>
             </p>
-            <p class="TM">
-              9.13<span>SUN</span>
-            </p>
-            <p class="TM">
-              10.13<span>SAT</span>
-            </p>
+            <?php endforeach; ?>
           </div>
         </div>
+        <?php endif; ?>
       </div>
     </section>
 
@@ -73,55 +93,22 @@ Template Path: pages/
         <img src="<?php echo get_template_directory_uri(); ?>/img/high-openschool/high-openschool-date-ttl.svg" alt="開催日程">
       </h3>
       <div class="high-openschool-date-items js-fade">
-        <!-- trueはis-endクラスはなし、falseはis-endクラスはあり -->
-        <div class="date-item is-end">
+        <?php if (!empty($schedules)) : foreach ($schedules as $s) :
+          $end_class = !empty($s['os_active']) ? '' : ' is-end';
+        ?>
+        <div class="date-item<?php echo $end_class; ?>">
           <div class="date-item-inr">
-            <p class="TG">説明会</p>
+            <p class="TG"><?php echo esc_html($s['os_type']); ?></p>
             <div class="DD-INFO-wrap">
-              <p class="DD">6.13<span>（土）</span></p>
-              <p class="INFO">10：00 開始&nbsp;&nbsp;/&nbsp;&nbsp;<br class="sp">会場：本校</p>
+              <p class="DD"><?php echo esc_html($s['os_date']); ?><span>（<?php echo esc_html($s['os_day_jp']); ?>）</span></p>
+              <p class="INFO"><?php echo esc_html($s['os_time']); ?>&nbsp;&nbsp;/&nbsp;&nbsp;<br class="sp">会場：<?php echo esc_html($s['os_place']); ?></p>
             </div>
           </div>
           <div class="date-item-end">
             <p class="TX">終了しました</p>
           </div>
         </div>
-        <div class="date-item">
-          <div class="date-item-inr">
-            <p class="TG">オープンスクール</p>
-            <div class="DD-INFO-wrap">
-              <p class="DD">8.22<span>（土）</span></p>
-              <p class="INFO">10：00 開始&nbsp;&nbsp;/&nbsp;&nbsp;<br class="sp">会場：本校</p>
-            </div>
-          </div>
-          <div class="date-item-end">
-            <p class="TX">終了しました</p>
-          </div>
-        </div>
-        <div class="date-item">
-          <div class="date-item-inr">
-            <p class="TG">オープンスクール</p>
-            <div class="DD-INFO-wrap">
-              <p class="DD">9.13<span>（日）</span></p>
-              <p class="INFO">10：00 開始&nbsp;&nbsp;/&nbsp;&nbsp;<br class="sp">会場：本校</p>
-            </div>
-          </div>
-          <div class="date-item-end">
-            <p class="TX">終了しました</p>
-          </div>
-        </div>
-        <div class="date-item">
-          <div class="date-item-inr">
-            <p class="TG">オープンスクール</p>
-            <div class="DD-INFO-wrap">
-              <p class="DD">10.13<span>（土）</span></p>
-              <p class="INFO">10：00 開始&nbsp;&nbsp;/&nbsp;&nbsp;<br class="sp">会場：本校</p>
-            </div>
-          </div>
-          <div class="date-item-end">
-            <p class="TX">終了しました</p>
-          </div>
-        </div>
+        <?php endforeach; endif; ?>
       </div>
     </section>
 
