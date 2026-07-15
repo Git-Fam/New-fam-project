@@ -100,40 +100,40 @@
           .TG{
             background-color: #FF6085 !important;
           }
-          &::before{
-            content: "";
-            position: absolute;
-            @include imgContain("junior-life/tg-heart-icon.svg");
-            @include pc {
-              width: p(30);
-              height: p(26);
-              left: p(93);
-              top: p(20);
-            }
-            @include sp {
-              width: s(30);
-              height: s(25);
-              left: s(20);
-              top: s(0);
-            }
-          }
+          // &::before{
+          //   content: "";
+          //   position: absolute;
+          //   @include imgContain("junior-life/tg-heart-icon.svg");
+          //   @include pc {
+          //     width: p(30);
+          //     height: p(26);
+          //     left: p(93);
+          //     top: p(20);
+          //   }
+          //   @include sp {
+          //     width: s(30);
+          //     height: s(25);
+          //     left: s(20);
+          //     top: s(0);
+          //   }
+          // }
 
-          &.icon-box{
-            &::before{
-              @include pc {
-                width: p(16);
-                height: p(14);
-                left: p(100);
-                top: p(12);
-              }
-              @include sp {
-                width: s(19);
-                height: s(16);
-                left: s(26);
-                top: s(8);
-              }
-            }  
-          }
+          // &.icon-box{
+          //   &::before{
+          //     @include pc {
+          //       width: p(16);
+          //       height: p(14);
+          //       left: p(100);
+          //       top: p(12);
+          //     }
+          //     @include sp {
+          //       width: s(19);
+          //       height: s(16);
+          //       left: s(26);
+          //       top: s(8);
+          //     }
+          //   }  
+          // }
         }
       }
     }

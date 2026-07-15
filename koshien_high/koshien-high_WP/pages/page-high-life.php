@@ -178,7 +178,7 @@ Template Path: pages/
               <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-11.svg" alt="11月">
             </p>
             <p class="TX">
-              芸術鑑賞（実施月変更有）/  <br class="pc">秋季校外学習 / <br class="sp">入試説明会
+              芸術鑑賞（実施月変更有）/ <br class="pc">秋季校外学習 / <br class="sp">入試説明会
             </p>
           </div>
         </div>
