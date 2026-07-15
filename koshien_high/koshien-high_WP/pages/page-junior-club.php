@@ -20,7 +20,7 @@ Template Path: pages/
     </div>
     <div class="TL">
       <picture>
-        <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-kv-ttl-sp.svg" type="image/svg+xml">
+        <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-kv-ttl-sp.webp" type="image/svg+xml">
         <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-kv-ttl-pc.webp" type="image/svg+xml" alt="仲間と夢中になれる場所。 クラブ活動 放課後は、夢中になれる時間のはじまりです。仲間と笑い合い、ときには本気でぶつかりながら一つの目標に向かって挑戦する。その経験は技術だけでなく、自信や協調性、挑戦する力も育ててくれます。あなたも、仲間と自分だけの夢中になれる場所を見つけてみませんか？">
       </picture>
     </div>
@@ -49,10 +49,10 @@ Template Path: pages/
         <div class="activity-item-tag">
           <div class="tag-wrap">
             <div class="tag">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-tag-01-01.svg" alt="">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-tag-01-01.webp" alt="">
             </div>
             <div class="tag">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-tag-01-02.svg" alt="">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-tag-01-02.webp" alt="">
             </div>
           </div>
         </div>
@@ -79,19 +79,19 @@ Template Path: pages/
         <div class="activity-item-tag">
           <div class="tag-wrap">
             <div class="tag">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-tag-02-01.svg" alt="">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-tag-02-01.webp" alt="">
             </div>
             <div class="tag">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-tag-02-02.svg" alt="">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-tag-02-02.webp" alt="">
             </div>
             <div class="tag">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-tag-02-03.svg" alt="">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-tag-02-03.webp" alt="">
             </div>
             <div class="tag">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-tag-02-04.svg" alt="">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-tag-02-04.webp" alt="">
             </div>
             <div class="tag">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-tag-02-05.svg" alt="">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-tag-02-05.webp" alt="">
             </div>
 
           </div>
@@ -122,7 +122,7 @@ Template Path: pages/
         <div class="activity-item-tag">
           <div class="tag-wrap">
             <div class="tag">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-tag-03-01.svg" alt="">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-tag-03-01.webp" alt="">
             </div>
           </div>
         </div>

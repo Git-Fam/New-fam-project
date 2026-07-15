@@ -50,10 +50,10 @@ Template Path: pages/
         <div class="activity-item-tag">
           <div class="tag-wrap">
             <div class="tag">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-tag-01-01.svg" alt="">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-tag-01-01.webp" alt="">
             </div>
             <div class="tag">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-tag-01-02.svg" alt="">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-tag-01-02.webp" alt="">
             </div>
           </div>
         </div>
@@ -80,16 +80,16 @@ Template Path: pages/
         <div class="activity-item-tag">
           <div class="tag-wrap">
             <div class="tag">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-tag-02-01.svg" alt="">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-tag-02-01.webp" alt="">
             </div>
             <div class="tag">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-tag-02-02.svg" alt="">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-tag-02-02.webp" alt="">
             </div>
             <div class="tag">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-tag-02-03.svg" alt="">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-tag-02-03.webp" alt="">
             </div>
             <div class="tag">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-tag-02-04.svg" alt="">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-tag-02-04.webp" alt="">
             </div>
           </div>
         </div>
@@ -119,7 +119,7 @@ Template Path: pages/
         <div class="activity-item-tag">
           <div class="tag-wrap">
             <div class="tag">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-tag-03-01.svg" alt="">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-tag-03-01.webp" alt="">
             </div>
           </div>
         </div>
