@@ -176,15 +176,6 @@
                 width: s(88);
                 margin-inline: auto;
               }
-
-              &.MM_01 {
-                @include pc {
-                  width: p(110);
-                }
-                @include sp {
-                  width: s(62);
-                }
-              }
             }
 
             .TX {
