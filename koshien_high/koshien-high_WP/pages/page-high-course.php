@@ -309,7 +309,7 @@ Template Path: pages/
             <img src="<?php echo get_template_directory_uri(); ?>/img/high-course/high-course-stage-banner-item-01-pc.webp" alt="2028年 新コースになります！ クラブチャレンジ 学びチャレンジ">
           </picture>
         </a>
-        <a href="#" class="high-course-stage-banner-item hover-opa">
+        <a href="<?php echo home_url('/high/career'); ?>" class="high-course-stage-banner-item hover-opa">
           <picture>
             <source srcset="<?php echo get_template_directory_uri(); ?>/img/high-course/high-course-stage-banner-item-02-sp.webp" media="(max-width: 768px)">
             <img src="<?php echo get_template_directory_uri(); ?>/img/high-course/high-course-stage-banner-item-02-pc.webp" alt="ACHIEVEMENTS 進路実績">

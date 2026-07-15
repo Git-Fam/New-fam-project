@@ -45,7 +45,7 @@ Template Path: pages/
           </li>
           <li class="content-item">
             <p class="NM">関西大学</p>
-            <p class="FC">ビジネスデータサイエンス／<br>化学生命科</p>
+            <p class="FC">ビジネスデータサイエンス／<br>化学生命</p>
           </li>
           <li class="content-item">
             <p class="NM">近畿大学</p>
@@ -96,6 +96,29 @@ Template Path: pages/
             <p class="NM">京都女子大学</p>
             <p class="FC">心理共生学部</p>
           </li>
+
+          <!-- 2026/07/15 追加 -->
+          <li class="content-item">
+            <p class="NM">神戸女学院大学</p>
+            <p class="FC">音楽学部</p>
+          </li>
+          <li class="content-item">
+            <p class="NM">神戸女子大学</p>
+            <p class="FC">家政学部／心理学部</p>
+          </li>
+          <li class="content-item">
+            <p class="NM">甲南女子大学</p>
+            <p class="FC">
+              文学部／人間科学部／<br>
+              看護リハビリテーション学部
+            </p>
+          </li>
+          <li class="content-item">
+            <p class="NM">梅花女子大学</p>
+            <p class="FC">
+            看護保健学部／食文化学部
+            </p>
+          </li>
         </ul>
         <p class="point-txt">
           ※2023~2025年度の合格実績（4月1日現在）<br>
@@ -106,7 +129,7 @@ Template Path: pages/
       <div class="high-career-contents-wrap js-fade">
         <div class="list-ttl">短期大学</div>
         <ul class="list-contents">
-          <li class="content-item">
+          <!-- <li class="content-item">
             <p class="NM">甲子園大学</p>
             <p class="FC"></p>
           </li>
@@ -125,7 +148,30 @@ Template Path: pages/
           <li class="content-item">
             <p class="NM">近畿大学</p>
             <p class="FC"></p>
+          </li> -->
+
+          <!-- 2026/07/15 修正 -->
+          <li class="content-item">
+            <p class="NM">甲子園短期大学</p>
+            <p class="FC"></p>
           </li>
+          <li class="content-item">
+            <p class="NM">関西外国語大学</p>
+            <p class="FC">短期大学部</p>
+          </li>
+          <li class="content-item">
+            <p class="NM">大阪成蹊短期大学</p>
+            <p class="FC"></p>
+          </li>
+          <li class="content-item">
+            <p class="NM">大阪芸術大学</p>
+            <p class="FC">短期大学部</p>
+          </li>
+          <li class="content-item">
+            <p class="NM">大手前短期大学</p>
+            <p class="FC"></p>
+          </li>
+
         </ul>
         <p class="point-txt"></p>
       </div>
