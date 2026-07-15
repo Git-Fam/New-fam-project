@@ -284,8 +284,8 @@ Template Path: pages/
     <div class="junior-declaration-next-inr">
       <h3 class="junior-declaration-next-TL">
         <picture>
-          <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-pc.svg" media="(min-width: 768px)">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-sp.svg" alt="こちらのコンテンツもチェック！">
+          <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-pc.webp" media="(min-width: 768px)">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-sp.webp" alt="こちらのコンテンツもチェック！">
         </picture>
       </h3>
 
