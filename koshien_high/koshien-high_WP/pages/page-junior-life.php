@@ -48,7 +48,7 @@ Template Path: pages/
         <div class="item-txt">
           <div class="item-txt-inr">
             <p class="MM">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-04.svg" alt="4月">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-04.webp" alt="4月">
             </p>
             <p class="TX">
               入学式 / 春季校外学習 /<br>対面式・オリエンテーション 
@@ -66,7 +66,7 @@ Template Path: pages/
         <div class="item-txt">
           <div class="item-txt-inr">
             <p class="MM">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-05.svg" alt="5月">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-05.webp" alt="5月">
             </p>
             <p class="TX">
               創立記念日（１日）/ <br>
@@ -85,7 +85,7 @@ Template Path: pages/
         <div class="item-txt">
           <div class="item-txt-inr">
             <p class="MM">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-06.svg" alt="6月">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-06.webp" alt="6月">
             </p>
             <p class="TX">
 
@@ -103,7 +103,7 @@ Template Path: pages/
         <div class="item-txt">
           <div class="item-txt-inr">
             <p class="MM">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-07.svg" alt="7月">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-07.webp" alt="7月">
             </p>
             <p class="TX">
               コーラスコンクール /<br>
@@ -122,7 +122,7 @@ Template Path: pages/
         <div class="item-txt">
           <div class="item-txt-inr">
             <p class="MM">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-08.svg" alt="8月">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-08.webp" alt="8月">
             </p>
             <p class="TX">
               夏期補習 / オープンスクール
@@ -140,7 +140,7 @@ Template Path: pages/
         <div class="item-txt">
           <div class="item-txt-inr">
             <p class="MM">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-09.svg" alt="9月">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-09.webp" alt="9月">
             </p>
             <p class="TX">
             実力考査 /<br>
@@ -159,7 +159,7 @@ Template Path: pages/
         <div class="item-txt">
           <div class="item-txt-inr">
             <p class="MM">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-10.svg" alt="10月">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-10.webp" alt="10月">
             </p>
             <p class="TX">
               オープンスクール/ 秋季旅行
@@ -177,7 +177,7 @@ Template Path: pages/
         <div class="item-txt">
           <div class="item-txt-inr">
             <p class="MM">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-11.svg" alt="11月">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-11.webp" alt="11月">
             </p>
             <p class="TX">
               入試説明会
@@ -195,7 +195,7 @@ Template Path: pages/
         <div class="item-txt">
           <div class="item-txt-inr">
             <p class="MM">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-12.svg" alt="12月">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-12.webp" alt="12月">
             </p>
             <p class="TX">
               三者面談/ 冬期補習
@@ -213,7 +213,7 @@ Template Path: pages/
         <div class="item-txt">
           <div class="item-txt-inr">
             <p class="MM">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-01.svg" alt="1月">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-01.webp" alt="1月">
             </p>
             <p class="TX">
             入学試験
@@ -231,7 +231,7 @@ Template Path: pages/
         <div class="item-txt">
           <div class="item-txt-inr">
             <p class="MM">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-02.svg" alt="2月">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-02.webp" alt="2月">
             </p>
             <p class="TX">
               学年末考査
@@ -249,7 +249,7 @@ Template Path: pages/
         <div class="item-txt">
           <div class="item-txt-inr">
             <p class="MM">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-03.svg" alt="3月">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-03.webp" alt="3月">
             </p>
             <p class="TX">
               追悼式 / 卒業証書授与の会
