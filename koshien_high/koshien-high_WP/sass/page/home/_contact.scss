@@ -914,6 +914,12 @@
   &.p-contact {
     background-image: none;
   }
+
+  @include sp {
+    .p-contact__body {
+        border-radius: 1.9323671498vw 1.9323671498vw 0 0;
+    }
+  }
 }
 
 .is-high .p-contact--confirm,
