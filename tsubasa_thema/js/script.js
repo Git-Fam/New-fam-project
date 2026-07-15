@@ -9,6 +9,10 @@ $(function () {
 		$(this).toggleClass("is-active");
 	});
 
+	// コンテンツボックスのアコーディオン
+	$(".C_contents_box-accordion .accordion-ttl").on("click", function () {
+		$(this).parent().toggleClass("is-active");
+	});
 
 	// 要素が画面下部に来たらshowを付与
 	// $(window).scroll(function () {

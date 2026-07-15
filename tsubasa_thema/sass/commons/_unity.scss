@@ -26,6 +26,7 @@ body {
 	@include zen;
 	line-height: 1.5;
 	color: #000000;
+	letter-spacing: 0em;
 
 	&.is-active {
 		@include sp {
@@ -45,13 +46,11 @@ h6 {
 
 
 a {
-	@media screen and (min-width: 448px) {
-		opacity: 1;
-		transition: opacity 0.3s;
+	opacity: 1;
+	transition: opacity 0.3s;
 
-		&:hover {
-			opacity: 0.7;
-		}
+	&:hover {
+		opacity: 0.7;
 	}
 }
 
@@ -105,8 +104,10 @@ img {
 	flex-shrink: 0;
 	width: s(375);
 	overflow: hidden;
-	// background: linear-gradient(to bottom, rgb(0, 0, 0), rgb(255, 255, 255));
-	// margin: 0 auto;
+	@include imgCover('common/screen-bg.webp');
+	background-position: center top;
+	background-repeat: repeat-x;
+
 
 	@include pc {
 		z-index: 11;

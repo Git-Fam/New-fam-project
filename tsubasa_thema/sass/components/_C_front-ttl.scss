@@ -1,0 +1,36 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_front-ttl
+----------------------- */
+
+
+.C_front-ttl {
+  position: relative;
+  width: fit-content;
+  margin-inline: auto;
+
+  .TL {
+    font-size: s(24);
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .wing {
+    --translateY: -42%;
+    width: s(34);
+    position: absolute;
+    top: 50%;
+    transform: translateY(var(--translateY));
+
+    &.right-wing {
+      left: calc(100% + s(10));
+      transform: translateY(var(--translateY)) scaleX(-1);
+    }
+
+    &.left-wing {
+      right: calc(100% + s(14));
+    }
+  }
+
+}

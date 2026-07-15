@@ -1,0 +1,38 @@
+@use "../functions" as *;
+
+/* -----------------------
+C_kv
+----------------------- */
+
+.C_kv {
+  height: s(335.77);
+  position: relative;
+  @include imgCover("common/C_kv-bg.webp");
+  background-position: center top;
+
+  .C_kv-board {
+    width: s(276);
+    height: s(276);
+    position: absolute;
+    @include imgCover("common/C_kv-board.webp");
+    background-position: center top;
+    bottom: s(13);
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+
+
+    .TL {
+      width: 100%;
+      text-align: center;
+      font-size: s(28);
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      position: absolute;
+      top: 39%;
+      left: 49%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+    }
+  }
+}

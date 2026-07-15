@@ -1,0 +1,121 @@
+@use "../functions" as *;
+
+/* -----------------------
+  constipation
+----------------------- */
+.page-constipation {
+
+  .C_kv {
+    .C_kv-char {
+      .char-02 {
+        width: s(117);
+        position: absolute;
+        top: s(99);
+        left: s(8);
+      }
+    }
+  }
+
+  .constipation-contents {
+    padding-block: s(33) s(95);
+
+    .constipation-contents-ttl {
+
+      .TL {
+        text-align: center;
+        font-size: s(29);
+        font-weight: 500;
+        letter-spacing: 0.08em;
+      }
+    }
+
+    .constipation-contents-items {
+      margin-top: s(65);
+      display: flex;
+      flex-direction: column;
+      gap: s(32);
+
+      .item {
+        width: fit-content;
+        margin-inline: auto;
+        position: relative;
+
+        .item-char {
+          position: absolute;
+          z-index: 2;
+
+          &.char-01 {
+            width: s(105);
+            top: sm(-102);
+            left: sm(-29);
+          }
+
+          &.char-02 {
+            width: s(122);
+            top: sm(-84);
+            right: 0;
+          }
+        }
+      }
+    }
+  }
+
+
+  .C_under-point {
+    padding-bottom: s(144);
+
+    .C_under-point-char {
+      .char-02 {
+        position: absolute;
+        top: sm(-117);
+        left: s(38);
+        width: s(124);
+      }
+    }
+
+    .C_under-point-contents {
+      .contents-item {
+        padding: s(26) 0 s(31);
+
+        .contents-item-ttl {
+
+          .TL {
+            text-align: center;
+            font-size: s(24);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+          }
+        }
+
+        .contents-item-txt {
+          margin: s(26) 0 0 s(26);
+          width: s(290);
+          display: flex;
+          flex-direction: column;
+          gap: s(11);
+
+          .TX {
+            font-size: s(20);
+            font-weight: 500;
+            padding-left: s(32);
+            position: relative;
+            letter-spacing: 0.05em;
+
+            &::before {
+              content: "";
+              position: absolute;
+              top: 50%;
+              left: 0;
+              transform: translateY(-50%);
+              aspect-ratio: 22.5/27.11;
+              width: s(22);
+              @include imgContain("common/C_front-inr-ttl-icon.svg");
+            }
+          }
+        }
+
+      }
+    }
+  }
+
+}

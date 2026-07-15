@@ -1,0 +1,36 @@
+@use "../functions" as *;
+
+/* -----------------------
+C_under-point
+----------------------- */
+
+.C_under-point {
+  @include imgCover("common/C_under-point-bg.webp");
+  background-position: center top;
+  padding: s(84) 0 s(118);
+  position: relative;
+
+  .C_under-point-txt {
+    margin-top: s(30);
+    padding-inline: s(20);
+
+    .TX {
+      font-size: s(16);
+      line-height: 1.85;
+    }
+  }
+
+  .C_under-point-contents {
+    margin-top: s(38);
+    display: flex;
+    flex-direction: column;
+    gap: s(40);
+
+    .contents-item {
+      width: s(335);
+      margin-inline: auto;
+      border-radius: s(17);
+      background-color: rgba(#fff, 0.5);
+    }
+  }
+}

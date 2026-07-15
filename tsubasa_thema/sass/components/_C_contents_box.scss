@@ -1,0 +1,158 @@
+@use "../functions" as *;
+
+/* -----------------------
+C_contents_box
+----------------------- */
+
+.C_contents_box {
+  width: s(335);
+  margin-inline: auto;
+  background-color: rgb(#DDAC6F, 0.25);
+  border-radius: s(17);
+  padding-block: s(12) s(23);
+
+  .C_contents_box-ttl {
+    position: relative;
+    width: s(301);
+    margin-left: s(12);
+    z-index: 1;
+
+    .TL {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 51%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      font-size: s(20);
+      font-weight: 500;
+
+      &.TL-img {
+        width: 100%;
+        left: 0;
+        transform: translate(0, -50%);
+      }
+    }
+  }
+
+  .C_contents_box-txt {
+    margin: s(16) auto 0;
+    width: s(290);
+
+    .TX {
+      font-size: s(16);
+      line-height: 1.87;
+      font-weight: 400;
+    }
+  }
+
+  .C_contents_box-list {
+    margin-top: s(30);
+    padding-inline: s(23);
+
+    .C_contents_box-list-ttl {
+
+      .TL {
+        text-align: center;
+        font-size: s(20);
+        font-weight: 600;
+      }
+    }
+
+    .list {
+      margin-top: s(16);
+      display: flex;
+      flex-direction: column;
+      gap: s(15);
+
+      .TX {
+        padding-left: s(27);
+        font-size: s(16);
+        font-weight: 400;
+        letter-spacing: 0.02em;
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: sm(-1);
+          transform: translateY(-50%);
+          aspect-ratio: 1;
+          width: s(18);
+          @include imgContain("pediatric-surgery/C_contents_box-list-icon.svg");
+        }
+      }
+    }
+  }
+
+
+  .C_contents_box-accordion {
+    margin: s(21) auto 0;
+    width: s(290);
+    background-color: #FFF;
+    border-radius: s(10);
+
+    .accordion-ttl {
+      padding: s(12) s(17) s(14);
+      cursor: pointer;
+
+      .TL {
+        width: 100%;
+        font-size: s(18);
+        font-weight: 500;
+        padding-inline: s(30);
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          aspect-ratio: 21.31 / 25.68;
+          width: s(21);
+          @include imgContain("common/C_front-inr-ttl-icon.svg");
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform: translateY(-50%);
+          aspect-ratio: 1;
+          width: s(19);
+          @include imgContain("common/C_contents_box-open.svg");
+        }
+      }
+    }
+
+    .accordion-contents {
+      display: none;
+      padding: 0 s(17) s(16);
+
+      .accordion-contents-inr {
+        display: flex;
+        flex-direction: column;
+        gap: s(14);
+      }
+    }
+
+    &.is-active {
+      .accordion-ttl {
+        .TL {
+          &::after {
+            @include imgContain("common/C_contents_box-close.svg");
+          }
+        }
+      }
+
+      .accordion-contents {
+        display: block;
+      }
+    }
+  }
+
+
+}

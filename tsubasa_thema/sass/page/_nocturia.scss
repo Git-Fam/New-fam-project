@@ -1,0 +1,149 @@
+@use "../functions" as *;
+
+/* -----------------------
+  nocturia
+----------------------- */
+
+.page-nocturia {
+
+  .C_kv {
+
+    .C_kv-char {
+
+      .char-01 {
+        width: s(105);
+        position: absolute;
+        bottom: s(30);
+        right: s(20);
+      }
+    }
+  }
+
+  .nocturia-contents {
+    padding-block: s(33) s(83);
+
+
+    .nocturia-contents-ttl {
+
+      .TL {
+        text-align: center;
+        font-size: s(29);
+        font-weight: 500;
+        letter-spacing: 0.08em;
+      }
+    }
+
+    .nocturia-contents-items {
+      margin-top: s(65);
+      display: flex;
+      flex-direction: column;
+      gap: s(32);
+
+      .item {
+        width: fit-content;
+        margin-inline: auto;
+        position: relative;
+
+        .item-char {
+          position: absolute;
+          z-index: 2;
+
+          &.char-01 {
+            width: s(87);
+            top: sm(-74);
+            left: sm(-8);
+          }
+
+          &.char-02 {
+            width: s(117);
+            top: sm(-71);
+            right: sm(-21);
+          }
+        }
+      }
+    }
+  }
+
+
+  .C_under-point {
+    .C_under-point-char {
+      .char-01 {
+        position: absolute;
+        top: sm(-44);
+        right: s(37);
+        width: s(118);
+      }
+    }
+
+    .C_under-point-contents {
+      .contents-item {
+        padding: s(37) 0 s(46);
+
+        .contents-item-ttl {
+
+          .TL {
+            text-align: center;
+            font-size: s(28);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+
+            span {
+              position: relative;
+
+              &::before {
+                content: "";
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                aspect-ratio: 1;
+                border-radius: 50%;
+                width: s(7);
+                background-color: #BC6729;
+              }
+
+            }
+          }
+        }
+
+        .contents-item-txt {
+          margin: s(27) 0 0 s(30);
+          width: s(288);
+          display: flex;
+          flex-wrap: wrap;
+          gap: s(17) s(10);
+
+          .TX {
+            width: calc((100% - s(10)) * 1 / 2);
+            font-size: s(20);
+            font-weight: 500;
+            padding-left: s(32);
+            position: relative;
+
+            span {
+              font-size: s(14);
+              position: absolute;
+              white-space: nowrap;
+              top: 100%;
+              // left: 50%;
+              // transform: translateX(-50%);
+              left: s(17);
+            }
+
+            &::before {
+              content: "";
+              position: absolute;
+              top: 50%;
+              left: 0;
+              transform: translateY(-50%);
+              aspect-ratio: 22.5/27.11;
+              width: s(22);
+              @include imgContain("common/C_front-inr-ttl-icon.svg");
+            }
+          }
+        }
+
+      }
+    }
+  }
+}

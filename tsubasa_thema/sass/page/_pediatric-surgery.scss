@@ -1,0 +1,109 @@
+@use "../functions" as *;
+
+/* -----------------------
+  pediatric-surgery
+----------------------- */
+.page-pediatric-surgery {
+
+  .C_kv {
+    .C_kv-char {
+      .char-02 {
+        width: s(117);
+        position: absolute;
+        top: s(99);
+        left: s(8);
+      }
+    }
+  }
+
+  .pediatric-surgery-contents {
+    padding-block: s(37) s(135);
+
+    .pediatric-surgery-contents-ttl {
+      .C_front-ttl {
+        .TL {
+          font-size: s(24);
+        }
+      }
+    }
+
+    .pediatric-surgery-contents-txt {
+      margin: s(31) auto 0;
+      width: s(335);
+
+      .TX {
+        font-size: s(16);
+        font-weight: 400;
+        line-height: 1.89;
+      }
+    }
+
+    .pediatric-surgery-contents-nav {
+      margin-top: s(38);
+      width: 100%;
+      @include imgCover("pediatric-surgery/pediatric-surgery-contents-nav-bg.webp");
+      background-position: center top;
+      min-height: s(1123);
+      padding: s(74) 0 0;
+
+      .pediatric-surgery-contents-nav-list {
+        margin: s(26) auto 0;
+        width: s(287);
+
+        .list-item {
+          padding-block: s(17.5);
+          padding-inline: s(8) s(7);
+          border-bottom: s(1) solid rgba(#3B3939, 0.35);
+
+          &:first-child {
+            border-top: s(1) solid rgba(#3B3939, 0.35);
+          }
+
+          .TX {
+            font-size: s(16);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: #3B3939;
+            display: block;
+            width: 100%;
+            position: relative;
+
+            &::after {
+              content: "";
+              display: block;
+              position: absolute;
+              top: 50%;
+              right: 0;
+              transform: translateY(-50%);
+              aspect-ratio: 12.21/6.11;
+              width: s(16);
+              @include imgContain("pediatric-surgery/pediatric-surgery-contents-nav-arrow.svg");
+            }
+          }
+        }
+      }
+
+    }
+
+    .pediatric-surgery-contents-items {
+      display: flex;
+      flex-direction: column;
+      gap: s(40);
+
+      .item {
+        width: fit-content;
+        margin-inline: auto;
+        position: relative;
+
+        &#item13 {
+          .C_contents_box {
+
+            .C_contents_box-accordion {
+              margin-top: s(24);
+            }
+          }
+        }
+      }
+    }
+  }
+}

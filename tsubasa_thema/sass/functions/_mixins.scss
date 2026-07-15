@@ -155,6 +155,17 @@ $screenSizeSP: 375;
 // or
 // font-size: smax(50);
 
+@function sm($size, $maxSize: ($size * 448 / 375), $viewport: $screenSizeSP) {
+	$rate: calc(100 / $viewport);
+	$calculatedSize: $rate * $size * 1vw;
+	@return max(#{$calculatedSize}, #{$maxSize}px);
+}
+
+// 入力値に*4/5した値とvwの値を比較して大きい方を返す
+// font-size: sm(50,40);
+// or
+// font-size: sm(50);
+
 @function scl($minSize: ($size * 4 / 5,
 	),
 	$size,

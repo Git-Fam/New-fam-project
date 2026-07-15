@@ -15,9 +15,9 @@ $(function () {
 		});
 
 		kvBranchTl
-			.to(".front-kv-branch-l", { xPercent: -100, scale: 1.3, transformOrigin: "left top", ease: "power2.in" }, 0)
-			.to(".front-kv-branch-r", { xPercent: 100, scale: 1.3, transformOrigin: "right top", ease: "power2.in" }, 0)
-			.to(".front-kv-lawn", { yPercent: 100, scale: 1.3, transformOrigin: "center bottom", ease: "power2.in" }, 0);
+			.to(".front-kv-branch-l", { xPercent: -120, scale: 1.3, transformOrigin: "left top", ease: "power2.in" }, 0)
+			.to(".front-kv-branch-r", { xPercent: 120, scale: 1.3, transformOrigin: "right top", ease: "power2.in" }, 0)
+			.to(".front-kv-lawn", { yPercent: 120, scale: 1.3, transformOrigin: "center bottom", ease: "power2.in" }, 0);
 
 
 		const kvContentsTl = gsap.timeline({
