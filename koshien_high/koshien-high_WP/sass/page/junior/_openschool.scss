@@ -91,4 +91,17 @@
     }
 
   }
+
+  .p-form__submits{
+    @include sp {
+      background-color: #fff !important;
+      margin-top: 0 !important;
+      padding-bottom: s(57) !important;
+    }
+    .l-drawer__btn-icon{
+      @include pc {
+        transform: unset;
+      }
+    }
+  }
 }

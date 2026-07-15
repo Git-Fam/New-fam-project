@@ -8,9 +8,13 @@ function add_hero_top_body_class($classes)
 {
 	if (is_front_page()) {
 		$classes[] = 'is-hero-top';
-	} elseif (is_page(array('junior', 'high'))) {
-		// 中学TOP・高校TOP（そのページ自体のみ。配下ページは含めない）
+	} elseif (is_page('junior')) {
+		// 中学TOP（そのページ自体のみ。配下ページは含めない）
 		$classes[] = 'is-hero-top';
+	} elseif (is_page('high')) {
+		// 高校TOP（そのページ自体のみ。配下ページは含めない）
+		$classes[] = 'is-hero-top';
+		$classes[] = 'is-high-top';
 	}
 	return $classes;
 }

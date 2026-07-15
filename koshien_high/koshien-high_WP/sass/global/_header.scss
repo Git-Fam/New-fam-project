@@ -4,6 +4,8 @@
   header
 ----------------------- */
 
+
+
 .l-header {
     position: fixed;
     top: 0;
@@ -542,5 +544,19 @@
 @include pc {
     .mt {
         margin-top: p(15);
+    }
+}
+
+
+.is-high-top{
+    .l-header{
+        @include sp {
+            background-color: transparent !important;
+        }
+         .l-header__logo-img{
+            @include sp {
+              height: s(24); 
+            }
+        }
     }
 }
