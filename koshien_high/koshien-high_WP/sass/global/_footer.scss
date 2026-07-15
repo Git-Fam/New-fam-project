@@ -58,7 +58,7 @@
     height: p(55);
     padding: p(18) p(24);
     font-size: p(15);
-    &:hover { opacity: 0.85; }
+    &:hover { opacity: 0.8; }
   }
   @include sp {
     height: s(52);
@@ -67,7 +67,7 @@
     font-size: s(14);
   }
 
-  &--form    { background-color: rgba($c-white, 0.85); }
+  &--form    { background-color: $c-white; }
   &--request { background-color: $c-white; }
 }
 
