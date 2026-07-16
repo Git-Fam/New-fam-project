@@ -10,7 +10,6 @@
 	"endOfLine": "lf",
 	"htmlWhitespaceSensitivity": "css",
 	"insertPragma": false,
-	"jsxBracketSameLine": false,
 	"jsxSingleQuote": true,
 	"proseWrap": "preserve",
 	"quoteProps": "as-needed",
@@ -20,18 +19,18 @@
 	"embeddedLanguageFormatting": "auto",
 	"plugins": ["@prettier/plugin-php"],
 	"overrides": [
-		{
-			"files": "*.html",
-			"options": {
-				"printWidth": 120
+			{
+					"files": "*.html",
+					"options": {
+							"printWidth": 120
+					}
+			},
+			{
+					"files": "*.scss",
+					"options": {
+							"printWidth": 120,
+							"singleQuote": false
+					}
 			}
-		},
-		{
-			"files": "*.scss",
-			"options": {
-				"printWidth": 120,
-				"singleQuote": false
-			}
-		}
 	]
 }
