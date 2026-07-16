@@ -1,0 +1,368 @@
+@use "../functions" as *;
+
+/* -----------------------
+  company
+----------------------- */
+
+
+
+.sdgs_kv {
+  position: relative;
+
+  @include pc {
+    height: p(771);
+  }
+
+  @include sp {
+    height: s(422);
+  }
+
+  .bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .sent_wrap {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    height: 100%;
+
+    @include pc {
+      left: 50%;
+      transform: translateX(-50%);
+      width: p(1116);
+    }
+
+    @include sp {
+      left: 0;
+      width: 100%;
+    }
+
+
+    .TL {
+      position: absolute;
+      transform: translateY(-50%);
+
+      @include pc {
+        top: 55%;
+        width: p(417);
+        left: 0;
+      }
+
+      @include sp {
+        top: 50%;
+        width: s(234);
+        left: s(30);
+      }
+    }
+  }
+}
+
+.sdgs_promise {
+  background: $g-m-r;
+
+  @include pc {
+    padding-block: p(80) p(66);
+  }
+
+  @include sp {
+    padding-block: s(36);
+  }
+
+  .TL {
+    margin-inline: auto;
+
+    @include pc {
+      width: p(688);
+    }
+
+    @include sp {
+      width: s(276);
+    }
+  }
+}
+
+.page_sdgs {
+
+  @include pc {
+    padding-block: p(148) p(96);
+  }
+
+  @include sp {
+    padding: s(53) s(30) s(40);
+  }
+
+  .sdgs_goals {
+
+    .other_sec_inner {
+      position: relative;
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: 1;
+
+        @include pc {
+          @include imgContain('deco/deco-w-l-half-l.svg');
+          aspect-ratio: 658 / 1129;
+          width: p(658);
+          top: p(163);
+          right: p(729);
+        }
+
+        @include sp {
+          @include imgContain('deco/deco-w-long-r.svg');
+          aspect-ratio: 593 / 1241;
+          width: s(593);
+          top: s(204);
+          left: 40%;
+          transform: translateX(-50%);
+        }
+      }
+    }
+
+    &_ttl {
+      position: relative;
+      z-index: 2;
+    }
+
+    &_txt {
+      position: relative;
+      z-index: 2;
+
+      @include pc {
+        margin-top: p(77);
+      }
+
+      @include sp {
+        margin-top: s(22);
+      }
+
+      .TX {
+        color: #000;
+        line-height: 2;
+
+        @include pc {
+          letter-spacing: 0.1em;
+          font-size: p(17);
+        }
+
+        @include sp {
+          letter-spacing: 0.06em;
+          font-size: s(12);
+        }
+      }
+    }
+  }
+
+  .sdgs_initiative {
+
+    @include pc {
+      margin-top: p(190);
+    }
+
+    @include sp {
+      margin-top: s(150);
+    }
+
+    &_ttl {
+      margin-inline: auto;
+      position: relative;
+      z-index: 2;
+
+      @include pc {
+        width: p(399);
+      }
+
+      @include sp {
+        width: s(261);
+      }
+    }
+
+    .other_sec_inner {
+      position: relative;
+
+      @include pc {
+        margin-top: p(120);
+        width: p(761);
+        transform: translateX(p(58));
+      }
+
+      @include sp {
+        margin-top: s(78);
+      }
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: 1;
+        aspect-ratio: 593 / 1241;
+
+        @include pc {
+          @include imgContain('deco/deco-w-long-r.svg');
+          width: p(1004);
+          top: p(243);
+          left: p(50);
+        }
+
+        @include sp {
+          @include imgContain('deco/deco-w-long-l.svg');
+          width: s(593);
+          bottom: s(74);
+          left: 40%;
+          transform: translateX(-50%);
+        }
+      }
+    }
+
+    &_list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+
+      @include pc {
+        gap: p(132);
+      }
+
+      @include sp {
+        gap: s(103);
+      }
+
+      &_item {
+        width: 100%;
+
+
+        .sec_ttl {
+          display: flex;
+
+          @include pc {
+            justify-content: space-between;
+            gap: p(25);
+          }
+
+          @include sp {
+            flex-direction: column;
+            gap: s(24);
+          }
+
+          .C_item-ttl {
+            flex-shrink: 0;
+          }
+
+          &_icons {
+            display: flex;
+            flex-wrap: wrap;
+
+            @include pc {
+              gap: p(5);
+            }
+
+            @include sp {
+              margin-inline: auto;
+              width: fit-content;
+              gap: s(5);
+            }
+
+            .icon_item {
+
+              @include pc {
+                width: p(65);
+              }
+
+              @include sp {
+                width: s(65);
+              }
+            }
+
+            /* 5つ以上のicon_itemがあるときは幅を縮める */
+            &:has(.icon_item:nth-child(5)) {
+
+              @include sp {
+                width: s(205);
+              }
+            }
+          }
+        }
+
+        .sdgs_contents {
+          color: #000;
+
+          @include pc {
+            margin-top: p(64);
+          }
+
+          @include sp {
+            margin-top: s(36);
+          }
+
+          .TX {
+            line-height: 2;
+
+            @include pc {
+              font-size: p(17);
+            }
+
+            @include sp {
+              font-size: s(12);
+            }
+          }
+
+          .main_area {
+            background-color: #2e47881f;
+
+            @include pc {
+              margin-top: p(40);
+              padding: p(35) p(30);
+              border-radius: p(5);
+            }
+
+            @include sp {
+              margin-top: s(15);
+              padding: s(22) s(13) s(23);
+              border-radius: s(5);
+            }
+
+            &_list {
+              display: flex;
+              flex-direction: column;
+
+              @include pc {
+                gap: p(3);
+              }
+
+              @include sp {
+                gap: s(3);
+              }
+
+              .TX {
+                padding-left: 1em;
+                text-indent: -1em;
+
+                &::before {
+                  content: '●';
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+
+
+}

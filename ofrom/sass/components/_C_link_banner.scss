@@ -1,0 +1,60 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_link_banner
+----------------------- */
+
+.C_link_banner {
+  margin-inline: auto;
+
+  @include pc {
+    width: p(525);
+  }
+
+  @include sp {
+    width: 100%;
+  }
+
+  a {
+    display: block;
+    background: $g-m-r;
+
+    @include pc {
+      padding-block: p(40);
+    }
+
+    @include sp {
+      padding-block: s(16);
+    }
+
+    .inner {
+      @include hiragino-600;
+      line-height: 1;
+      text-align: center;
+      color: #fff;
+      margin-inline: auto;
+      position: relative;
+
+      @include pc {
+        width: p(253);
+        font-size: p(20);
+      }
+
+      @include sp {
+        width: s(177);
+        font-size: s(13);
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        aspect-ratio: 10 / 18;
+        height: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+        @include imgContain("common/C_link_banner-icon.svg");
+      }
+    }
+  }
+}

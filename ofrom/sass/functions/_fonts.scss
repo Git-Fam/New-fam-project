@@ -1,0 +1,110 @@
+// フォント
+// font-family: hiragino-kaku-gothic-pron, sans-serif;
+@mixin hiragino-300 {
+  // font-family: hiragino-kaku-gothic-pron, sans-serif;
+  // font-weight: 300;
+  // font-style: normal;
+  font-family: "meiryo", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+// font-family: hiragino-kaku-gothic-pron, sans-serif;
+@mixin hiragino-600 {
+  // font-family: hiragino-kaku-gothic-pron, sans-serif;
+  // font-weight: 600;
+  // font-style: normal;
+  font-family: "meiryo", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+// font-family: Noto Sans JP;
+@mixin noto {
+  // font-family: "Noto Sans JP", sans-serif;
+  // font-weight: 400;
+  // font-style: normal;
+  font-family: "meiryo", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+// font-family: FlorencesansSC;
+@mixin florence {
+  // font-family: "FlorencesansSC", sans-serif;
+  // font-weight: 400;
+  // font-style: normal;
+  font-family: "meiryo", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+// font-family: Roboto;
+@mixin roboto {
+  // font-family: "Roboto", sans-serif;
+  // font-weight: 400;
+  // font-style: normal;
+  font-family: "meiryo", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+// @font-face {
+//   font-family: "koburi-600";
+//   src: url("../fonts/koburi/こぶりなゴシック Std W6.otf") format("opentype");
+//   font-weight: 600;
+// }
+
+// @font-face {
+//   font-family: "koburi-300";
+//   src: url("../fonts/koburi/こぶりなゴシック Std W3.otf") format("opentype");
+//   font-weight: 300;
+// }
+
+// @font-face {
+//   font-family: "koburi-100";
+//   src: url("../fonts/koburi/こぶりなゴシック Std W1.otf") format("opentype");
+//   font-weight: 100;
+// }
+
+// font-family: こぶりなゴシック Std , sans-serif;
+@mixin koburi-600 {
+  // font-family: "koburi-600", sans-serif;
+  // font-style: normal;
+  font-family: "meiryo", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+// font-family: こぶりなゴシック Std , sans-serif;
+@mixin koburi-300 {
+  // font-family: "koburi-300", sans-serif;
+  // font-style: normal;
+  font-family: "meiryo", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+// font-family: こぶりなゴシック Std , sans-serif;
+@mixin koburi-100 {
+  // font-family: "koburi-100", sans-serif;
+  // font-style: normal;
+  font-family: "meiryo", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: "sora-400";
+  src: url("../fonts/sora/soratohikoki.ttf") format("truetype");
+}
+
+// font-family: 空とひこうき , sans-serif;
+@mixin sora-400 {
+  font-family: "sora-400", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}

@@ -1,0 +1,648 @@
+@use "../functions" as *;
+
+/* -----------------------
+  form
+----------------------- */
+
+
+.page_form {
+
+  @include pc {
+    padding-block: p(144) p(100);
+  }
+
+  @include sp {
+    padding: s(79) s(30) s(30);
+  }
+
+  .entry-new_section {
+
+    .other_sec_inner {
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: 1;
+        aspect-ratio: 658 / 1129;
+        @include imgContain('deco/deco-w-l-half-r.svg');
+
+        @include pc {
+          width: p(658);
+          bottom: 0;
+          left: p(704);
+        }
+
+        @include sp {
+          width: s(378);
+          top: s(25);
+          left: s(113);
+        }
+      }
+
+      &::after {
+        @include sp {
+          content: '';
+          display: block;
+          position: absolute;
+          z-index: 1;
+          aspect-ratio: 658 / 1129;
+          @include imgContain('deco/deco-w-l-half-l.svg');
+          width: s(378);
+          bottom: s(190);
+          right: s(113);
+        }
+      }
+    }
+
+    .sec_ttl {
+
+      @include pc {
+        width: p(254);
+      }
+
+      @include sp {
+        width: s(138);
+      }
+    }
+  }
+
+  .entry-mid_section {
+
+    .other_sec_inner {
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: 1;
+        aspect-ratio: 658 / 1129;
+        @include imgContain('deco/deco-w-l-half-r.svg');
+
+        @include pc {
+          width: p(658);
+          bottom: 0;
+          left: p(704);
+        }
+
+        @include sp {
+          width: s(378);
+          top: s(25);
+          left: s(113);
+        }
+      }
+
+      &::after {
+        @include sp {
+          content: '';
+          display: block;
+          position: absolute;
+          z-index: 1;
+          aspect-ratio: 658 / 1129;
+          @include imgContain('deco/deco-w-l-half-l.svg');
+          width: s(378);
+          bottom: s(190);
+          right: s(113);
+        }
+      }
+    }
+
+    .sec_ttl {
+
+      @include pc {
+        width: p(254);
+      }
+
+      @include sp {
+        width: s(138);
+      }
+    }
+  }
+
+  .contact_section {
+
+    .other_sec_inner {
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: 1;
+        aspect-ratio: 658 / 1129;
+        @include imgContain('deco/deco-w-l-half-l.svg');
+
+        @include pc {
+          width: p(658);
+          bottom: p(330);
+          right: p(792);
+        }
+
+        @include sp {
+          width: s(378);
+          top: s(443);
+          right: s(150);
+        }
+      }
+    }
+
+    .sec_ttl {
+
+      @include pc {
+        width: p(639);
+      }
+
+      @include sp {
+        width: s(246);
+      }
+    }
+  }
+
+  .other_sec_inner {
+    position: relative;
+
+    .sec_ttl {
+      position: relative;
+      z-index: 2;
+      margin-inline: auto;
+
+      .TL {
+        width: 100%;
+      }
+    }
+
+    .txt_area {
+
+      @include pc {
+        margin-top: p(93);
+      }
+
+      @include sp {
+        margin-top: s(60);
+      }
+
+      .TX {
+        text-align: center;
+        color: #000;
+        line-height: 2;
+
+        @include pc {
+          font-size: p(18);
+        }
+
+        @include sp {
+          font-size: s(12);
+        }
+      }
+    }
+
+
+    .form_area {
+      position: relative;
+      z-index: 2;
+
+      @include pc {
+        margin-top: p(70);
+      }
+
+      @include sp {
+        margin-top: s(42);
+      }
+
+      &_main {
+        background-color: #2e47881f;
+
+        @include pc {
+          padding: p(81) p(118) p(74);
+          border-radius: p(5);
+        }
+
+        @include sp {
+          padding: s(40) s(30);
+          border-radius: s(5);
+        }
+
+        input,
+        textarea {
+          box-sizing: border-box;
+        }
+
+        .note {
+
+          @include pc {
+            margin-bottom: p(45);
+          }
+
+          @include sp {
+            margin-bottom: s(52);
+          }
+
+          .TX {
+            // @include hiragino-600;
+
+            @include pc {
+              font-size: p(13);
+            }
+
+            @include sp {
+              font-size: s(10);
+            }
+          }
+        }
+
+        &_inner {
+          display: flex;
+          flex-direction: column;
+
+          @include pc {
+            gap: p(37);
+          }
+
+          @include sp {
+            gap: s(30);
+          }
+
+          .item {
+            display: flex;
+
+            @include pc {
+              gap: p(10);
+            }
+
+            @include sp {
+              flex-direction: column;
+              gap: s(10);
+            }
+
+            &.item-radio {
+              @include sp {
+                flex-direction: row;
+                align-items: center;
+                gap: s(35);
+              }
+
+              .item_ttl {
+                @include sp {
+                  width: fit-content;
+                }
+              }
+            }
+
+            &_ttl {
+              flex-shrink: 0;
+
+              @include pc {
+                width: p(139);
+              }
+
+              @include sp {
+                width: 100%;
+              }
+
+              label {
+                color: $f-m;
+                line-height: 1;
+                letter-spacing: 0.1em;
+
+                @include pc {
+                  font-size: p(17);
+                }
+
+                @include sp {
+                  font-size: s(15);
+                }
+              }
+            }
+
+            &_input {
+              width: 100%;
+              position: relative;
+
+              input,
+              textarea {
+                width: 100%;
+                border: none;
+                outline: none;
+                background-color: #fff;
+                padding-inline: 0.5em;
+                @include hiragino-300;
+                line-height: 1.5;
+                letter-spacing: 0.05em;
+                color: #000;
+                opacity: 0.85;
+
+                @include pc {
+                  height: p(38);
+                  font-size: p(17);
+                }
+
+                @include sp {
+                  height: s(44);
+                  font-size: s(15);
+                }
+              }
+
+              textarea {
+                resize: none;
+                padding-block: 0.5em;
+
+                @include pc {
+                  height: p(224);
+                }
+
+                @include sp {
+                  height: s(311);
+                }
+              }
+
+              .TX,
+              .wpcf7-list-item-label {
+                color: $f-m;
+                line-height: 1;
+
+                @include pc {
+                  font-size: p(17);
+                }
+
+                @include sp {
+                  font-size: s(15);
+                }
+              }
+
+              &.input-radio {
+
+                .wpcf7-form-control.wpcf7-radio {
+
+                  display: flex;
+                  align-items: center;
+
+                  @include pc {
+                    gap: p(49);
+                  }
+
+                  @include sp {
+                    gap: s(43);
+                  }
+                }
+
+                label {
+                  cursor: pointer;
+                  display: flex;
+                  align-items: center;
+
+                  @include pc {
+                    gap: p(10);
+                  }
+
+                  @include sp {
+                    gap: s(10);
+                  }
+                }
+
+                input {
+                  appearance: none;
+                  -webkit-appearance: none;
+                  margin: 0;
+                  padding: 0;
+                  border: solid $f-m;
+                  background-color: #fff;
+                  cursor: pointer;
+                  position: relative;
+                  border-radius: 50%;
+                  padding-inline: 0;
+
+                  @include pc {
+                    width: p(17);
+                    height: p(17);
+                    border-width: p(1);
+                  }
+
+                  @include sp {
+                    width: s(15);
+                    height: s(15);
+                    border-width: s(1);
+                  }
+
+                  &:checked {
+                    &::after {
+                      content: '';
+                      display: block;
+                      position: absolute;
+                      top: 50%;
+                      left: 50%;
+                      transform: translate(-50%, -50%);
+                      width: 75%;
+                      aspect-ratio: 1;
+                      border-radius: 50%;
+                      background-color: $f-m;
+                    }
+                  }
+                }
+
+                .wpcf7-list-item {
+                  margin: 0;
+                }
+              }
+
+              &.input-date {
+                display: flex;
+                align-items: center;
+
+                @include pc {
+                  gap: p(10);
+                }
+
+                @include sp {
+                  gap: s(6);
+                }
+
+                input {
+
+                  @include pc {
+                    width: p(56);
+                    margin-left: p(20);
+                  }
+
+                  @include sp {
+                    width: s(41);
+                    margin-left: s(7);
+                  }
+
+                  &.input-date-inp {
+                    margin-left: 0;
+
+                    @include pc {
+                      width: p(100);
+                    }
+
+                    @include sp {
+                      width: s(87);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &_policy {
+        width: fit-content;
+        margin-inline: auto;
+
+        @include pc {
+          margin-top: p(79);
+        }
+
+        @include sp {
+          margin-top: s(53);
+        }
+
+        a {
+          color: #000;
+        }
+
+        label {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-decoration: underline;
+          color: #000;
+          cursor: pointer;
+
+          @include pc {
+            gap: p(5);
+            font-size: p(13);
+          }
+
+          @include sp {
+            gap: s(4);
+            font-size: s(11);
+          }
+
+          input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            margin: 0;
+            padding: 0;
+            border: 1px solid #000;
+            background-color: #fff;
+            cursor: pointer;
+
+            @include pc {
+              width: p(15);
+              height: p(15);
+              border-radius: p(4);
+            }
+
+            @include sp {
+              width: s(13);
+              height: s(13);
+              border-radius: s(4);
+            }
+
+            &:checked {
+              position: relative;
+
+              &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 20%;
+                left: 60%;
+                width: 100%;
+                height: 50%;
+                border-left: solid #000;
+                border-bottom: solid #000;
+                transform: translate(-50%, -50%) rotate(-45deg);
+
+                @include pc {
+                  border-width: p(2);
+                }
+
+                @include sp {
+                  border-width: s(2);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &_btn {
+        @include pc {
+          margin-top: p(64);
+        }
+
+        @include sp {
+          margin-top: s(44);
+        }
+
+        input[type="submit"] {
+          appearance: none;
+          -webkit-appearance: none;
+          display: block;
+          border: 0;
+          margin: 0;
+          padding: 0;
+          margin-inline: auto;
+          background-color: transparent;
+          color: transparent;
+          cursor: pointer;
+
+          @include pc {
+            @include imgContain('form/submit-btn.svg');
+            width: p(313);
+            height: p(85);
+          }
+
+          @include sp {
+            @include imgContain('form/submit-btn-sp.svg');
+            width: 100%;
+            height: s(45);
+          }
+        }
+      }
+
+      .wpcf7-form-control-wrap {
+        position: unset;
+      }
+
+      .wpcf7-not-valid-tip {
+        position: absolute;
+        width: 100%;
+        white-space: nowrap;
+        top: 100%;
+        left: 0;
+
+
+        @include pc {
+          font-size: p(12);
+        }
+
+        @include sp {
+          font-size: s(10);
+        }
+
+      }
+
+      .wpcf7-spinner {
+        margin-inline: auto;
+        display: block;
+      }
+
+      .wpcf7-response-output {
+        color: #000;
+
+        @include pc {
+          font-size: p(18);
+        }
+
+        @include sp {
+          font-size: s(14);
+        }
+
+      }
+    }
+
+  }
+}

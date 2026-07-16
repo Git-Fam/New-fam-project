@@ -1,0 +1,180 @@
+@use "../functions" as *;
+
+/* -----------------------
+  policy
+----------------------- */
+
+
+
+.security_kv {
+  position: relative;
+
+  @include pc {
+    height: p(428);
+  }
+
+  @include sp {
+    height: s(211);
+  }
+
+  .bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .sent_wrap {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    height: 100%;
+
+    @include pc {
+      left: 50%;
+      transform: translateX(-50%);
+      width: p(1116);
+    }
+
+    @include sp {
+      left: 0;
+      width: 100%;
+    }
+
+
+    .TL {
+      position: absolute;
+      transform: translateY(-50%);
+
+      @include pc {
+        top: 55%;
+        width: p(544);
+        left: 0;
+      }
+
+      @include sp {
+        top: 55%;
+        width: s(230);
+        left: s(30);
+      }
+    }
+  }
+}
+
+
+.page_security {
+
+
+  .security_type_section {
+
+    @include pc {
+      padding-block: p(147) p(124);
+    }
+
+    @include sp {
+      padding: s(80) s(27) s(105);
+    }
+
+    .all_sec_inner {
+      position: relative;
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: 1;
+        @include imgContain('deco/deco-w-long-r.svg');
+        aspect-ratio: 1004 / 2101;
+
+        @include pc {
+          width: p(1004);
+          top: pmax(-74);
+          left: p(200);
+        }
+
+        @include sp {
+          width: s(593);
+          top: s(0);
+          left: 65%;
+          transform: translateX(-50%);
+        }
+      }
+
+    }
+
+    .TX,
+    .item {
+      color: #000;
+      line-height: 2;
+
+      @include pc {
+        font-size: p(17);
+      }
+
+      @include sp {
+        font-size: s(12);
+      }
+    }
+
+    .TL {
+      @include koburi-600;
+
+      @include pc {
+        font-size: p(24);
+      }
+
+      @include sp {
+        font-size: s(16);
+      }
+    }
+
+    .top_sent {
+      position: relative;
+      z-index: 2;
+    }
+
+    .security_list {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 2;
+
+      @include pc {
+        margin-top: p(92);
+        gap: p(102);
+      }
+
+      @include sp {
+        margin-top: s(62);
+        gap: s(58);
+      }
+
+      .security_item {
+
+        .ttl {
+          @include pc {
+            margin-bottom: p(44);
+          }
+
+          @include sp {
+            margin-bottom: s(30);
+          }
+        }
+
+        .txt {
+
+          .item {
+            padding-left: 1em;
+            text-indent: -1em;
+          }
+        }
+      }
+    }
+  }
+}

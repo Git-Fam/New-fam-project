@@ -1,0 +1,455 @@
+@use "../functions" as *;
+
+/* -----------------------
+  header
+----------------------- */
+
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+
+  &.def-color {
+    position: sticky;
+  }
+
+  &.def-color,
+  &.is-color {
+
+    .header_bg {
+      opacity: 1;
+    }
+  }
+
+  &.is-active {
+    .header_menu {
+      top: 0;
+      opacity: 1;
+    }
+  }
+
+  &_bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $g-m-r;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  &_inner {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transform: translateY(0);
+    transition: transform 0.5s ease-in-out 0.3s;
+
+    @include pc {
+      padding: p(34) p(27) p(35) p(29);
+      gap: p(25);
+    }
+
+    @include sp {
+      padding: s(20);
+    }
+
+    &.is-loading {
+      transform: translateY(-100%);
+    }
+
+    .TL {
+      a {
+        display: block;
+
+        @include pc {
+          width: p(240);
+        }
+
+        @include sp {
+          width: s(136);
+        }
+      }
+    }
+
+    .nav_wrap {
+      display: flex;
+      align-items: center;
+
+      @include pc {
+        gap: p(25);
+      }
+
+      @include sp {
+        display: contents;
+      }
+
+      .inner_nav {
+        ul {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: p(25);
+
+          li {
+
+            &:nth-child(1) {
+              a {
+                width: p(127);
+              }
+            }
+
+            &:nth-child(2) {
+              a {
+                width: p(166)
+              }
+            }
+
+            &:nth-child(3) {
+              a {
+                width: p(100)
+              }
+            }
+
+            &:nth-child(4) {
+              a {
+                width: p(95);
+              }
+            }
+
+            &:nth-child(5) {
+              a {
+                width: p(108)
+              }
+            }
+
+            &:nth-child(6) {
+              a {
+                width: p(100)
+              }
+            }
+
+            &:nth-child(7) {
+              a {
+                width: p(92);
+              }
+            }
+
+            a {
+              display: block;
+            }
+          }
+        }
+      }
+
+      .burger {
+        cursor: pointer;
+
+        @include pc {
+          width: p(46);
+        }
+
+        @include sp {
+          width: s(31);
+        }
+      }
+    }
+  }
+
+  &_menu {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $g-m-r;
+    z-index: 9;
+    top: -100%;
+    opacity: 0;
+    transition: top 0.5s, opacity 0.3s;
+
+    @include pc {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @include sp {
+      overflow-y: scroll;
+    }
+
+    .header_menu_inner_wrap {
+      position: relative;
+
+      @include pc {
+        width: fit-content;
+      }
+
+      @include sp {
+        padding: s(137) s(30) s(81);
+      }
+
+      &::before {
+        content: "";
+        z-index: 1;
+        aspect-ratio: 619 / 1062;
+        @include imgContain("deco/deco-w-r.svg");
+        pointer-events: none;
+
+        @include pc {
+          position: absolute;
+          top: 55%;
+          transform: translateY(-50%);
+          right: pmax(-40);
+          width: p(619);
+
+        }
+
+        @include sp {
+          position: fixed;
+          bottom: s(-81);
+          right: s(100);
+          width: s(308);
+        }
+      }
+
+      .header_menu_inner {
+        position: relative;
+        z-index: 2;
+
+        @include pc {
+          width: 100%;
+          margin-top: p(100);
+        }
+
+
+        .menu-nav {
+
+          &_list {
+            display: flex;
+            flex-direction: column;
+
+            @include pc {
+              gap: p(40);
+            }
+
+            @include sp {
+              gap: s(56);
+            }
+
+            .item {
+              display: flex;
+
+              @include pc {
+                align-items: center;
+                gap: p(25);
+              }
+
+              @include sp {
+                flex-direction: column;
+                gap: s(22);
+              }
+
+              &:nth-child(1) {
+                .ttl {
+                  a {
+                    @include pc {
+                      width: p(274);
+                    }
+
+                    @include sp {
+                      width: s(236);
+                    }
+                  }
+                }
+              }
+
+              &:nth-child(2) {
+                .ttl {
+                  a {
+                    @include pc {
+                      width: p(365);
+                    }
+
+                    @include sp {
+                      width: 100%;
+                    }
+                  }
+                }
+              }
+
+              &:nth-child(3) {
+                .ttl {
+                  a {
+                    @include pc {
+                      width: p(217);
+                    }
+
+                    @include sp {
+                      width: s(187);
+                    }
+                  }
+                }
+              }
+
+              &:nth-child(4) {
+                .ttl {
+                  a {
+                    @include pc {
+                      width: p(203);
+                    }
+
+                    @include sp {
+                      width: s(175);
+                    }
+                  }
+                }
+              }
+
+              &:nth-child(5) {
+                .ttl {
+                  a {
+                    @include pc {
+                      width: p(233);
+                    }
+
+                    @include sp {
+                      width: s(201);
+                    }
+                  }
+                }
+              }
+
+              &:nth-child(6) {
+                .ttl {
+                  a {
+                    @include pc {
+                      width: p(111);
+                    }
+
+                    @include sp {
+                      width: s(96);
+                    }
+                  }
+                }
+              }
+
+              &:nth-child(7) {
+                .ttl {
+                  a {
+                    @include pc {
+                      width: p(198);
+                    }
+
+                    @include sp {
+                      width: s(171);
+                    }
+                  }
+                }
+              }
+
+              .ttl {
+
+                @include pc {
+                  flex-shrink: 0;
+                  width: p(421);
+                }
+
+                @include sp{
+                  // transform: translateX(s(2));
+                }
+
+                a {
+                  display: block;
+                }
+              }
+
+              .txt {
+                display: flex;
+
+                @include pc {
+                  align-items: center;
+                  gap: p(15);
+                }
+
+                @include sp {
+                  flex-direction: column;
+                  gap: s(9);
+                }
+
+                .txt_item {
+
+                  a {
+                    display: block;
+                    color: #fff;
+                    @include noto;
+                    font-weight: 300;
+                    letter-spacing: 0.02em;
+                    text-decoration: underline;
+
+                    @include pc {
+                      font-size: p(16);
+                    }
+
+                    @include sp {
+                      font-size: s(15);
+                      width: fit-content;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .menu-ad {
+          margin-top: p(70);
+          display: flex;
+          align-items: flex-end;
+          gap: p(25);
+
+
+          .sns_area {
+            width: p(421);
+            flex-shrink: 0;
+
+            a {
+              display: block;
+              width: p(174);
+            }
+
+          }
+
+          .ad_area {
+            width: p(622);
+
+            ul {
+              display: flex;
+              flex-wrap: wrap;
+              gap: p(11);
+
+              li {
+                width: calc((100% - p(11) * 2) / 3);
+
+                &.f-size {
+                  width: 100%;
+                }
+
+                a {
+                  width: 100%;
+                  display: block;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

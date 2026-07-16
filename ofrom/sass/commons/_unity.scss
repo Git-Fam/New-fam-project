@@ -1,0 +1,78 @@
+@use "../functions" as *;
+
+/* -----------------------
+  unity
+----------------------- */
+
+// 表示・非表示
+.sp {
+	@include pc {
+		display: none !important;
+	}
+}
+
+.pc {
+	@include sp {
+		display: none !important;
+	}
+}
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 10%;
+}
+
+body {
+	@include hiragino-300;
+	line-height: 1.5;
+	letter-spacing: 0.05em;
+	color: $f-m;
+	overflow-wrap: break-word;
+	word-break: break-all;
+	
+
+	&.is-active {
+		overflow: hidden;
+	}
+
+	&.body_en {
+		background-color: #000;
+		overflow-wrap: break-word !important;
+		word-break: normal !important;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 400;
+}
+
+.whopper {
+	overflow: hidden;
+}
+
+img {
+	width: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+.all_sec_inner {
+
+	@include pc {
+		width: p(1114);
+		margin: 0 auto;
+	}
+}
+
+.other_sec_inner {
+
+	@include pc {
+		width: p(880);
+		margin: 0 auto;
+	}
+}

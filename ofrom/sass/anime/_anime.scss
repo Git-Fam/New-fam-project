@@ -1,0 +1,32 @@
+/* -----------------------
+  anime
+----------------------- */
+
+// ホバーで薄く
+.h-opa,
+a {
+	transition: opacity 0.3s;
+
+	&:hover {
+		opacity: 0.6;
+	}
+}
+
+// スクロールアニメ
+.s-pop {
+	opacity: 0;
+
+	&.show {
+		animation: s-pop 0.5s ease-in-out 0.5s forwards;
+
+		@keyframes s-pop {
+			0% {
+				opacity: 0;
+			}
+
+			100% {
+				opacity: 1;
+			}
+		}
+	}
+}

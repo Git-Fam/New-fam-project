@@ -1,0 +1,117 @@
+$pc: 768px; // PC
+$sp: 767px; // スマホ
+
+@mixin pc {
+	@media screen and (min-width: ($pc)) {
+		@content;
+	}
+}
+
+@mixin me($max, $min) {
+	@media screen and (max-width: #{$max}px) and (min-width: #{$min}px) {
+		@content;
+	}
+}
+
+@mixin sp {
+	@media screen and (max-width: ($sp)) {
+		@content;
+	}
+}
+
+// どセンター
+@mixin center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+// background-contain
+@mixin imgContain($img) {
+	background-image: url("../img/#{$img}");
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+// ↓CSSでは
+// @include imgContain('example.jpg');
+
+// background-cover
+@mixin imgCover($img) {
+	background-image: url("../img/#{$img}");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+// ↓CSSでは
+// @include imgCover('example.jpg');
+
+// backgroundIcon-contain
+@mixin iconContain($img) {
+	background-image: $img;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+// ↓CSSでは
+// @include iconContain($dot);
+
+// backgroundIcon-cover
+@mixin iconCover($img) {
+	background-image: $img;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+// ↓CSSでは
+// @include iconCover($dot);
+
+$screenSizePC: 1366;
+$screenSizeSP: 375;
+
+// サイズ
+// @function p($size, $viewport: $screenSizePC) {
+// 	$rate: calc(100 / $viewport);
+// 	@return $rate * $size * 1vw;
+// }
+
+// font-size: p(50);
+
+@function p($size, $maxSize: ($size * 5 / 5), $viewport: $screenSizePC) {
+	$rate: calc(100 / $viewport);
+	$calculatedSize: $rate * $size * 1vw;
+	@return min(#{$calculatedSize}, #{$maxSize}px);
+}
+
+// 入力値に*4/5した値とvwの値を比較して大きい方を返す
+// font-size: p(50,40);
+// or
+// font-size: p(50);
+
+@function pmax($size, $maxSize: ($size * 5 / 5), $viewport: $screenSizePC) {
+	$rate: calc(100 / $viewport);
+	$calculatedSize: $rate * $size * 1vw;
+	@return max(#{$calculatedSize}, #{$maxSize}px);
+}
+
+// 入力値に*4/5した値とvwの値を比較して大きい方を返す
+// font-size: pmax(50,40);
+// or
+// font-size: pmax(50);
+
+
+
+
+@function s($size, $viewport: $screenSizeSP) {
+	$rate: calc(100 / $viewport);
+	@return $rate * $size * 1vw;
+}
+
+// font-size: s(50);
+
+

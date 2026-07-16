@@ -1,0 +1,107 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_table
+----------------------- */
+
+.C_table {
+  width: 100%;
+
+  &_list {
+
+    &.no-wrap {
+
+      .item {
+
+        @include sp {
+          flex-direction: row;
+          gap: s(10);
+        }
+
+        .ttl {
+          @include sp {
+            width: s(94);
+          }
+
+          .TL {
+            @include sp {
+              font-size: s(12);
+            }
+          }
+        }
+      }
+    }
+
+
+    .item {
+      border-bottom: solid $f-m;
+      display: flex;
+
+      @include pc {
+        border-bottom-width: p(1);
+        padding-block: p(55);
+        gap: p(10);
+      }
+
+      @include sp {
+        flex-direction: column;
+        border-bottom-width: s(1);
+        padding-block: s(30);
+        gap: s(20);
+      }
+
+      &:first-child {
+        border-top: solid $f-m;
+
+        @include pc {
+          border-top-width: p(1);
+        }
+
+        @include sp {
+          border-top-width: s(1);
+        }
+      }
+
+      .ttl {
+        flex-shrink: 0;
+
+        @include pc {
+          width: p(155);
+        }
+
+
+        .TL {
+          @include hiragino-600;
+
+          @include pc {
+            font-size: p(18);
+          }
+
+          @include sp {
+            font-size: s(16);
+          }
+        }
+      }
+
+      .txt {
+
+        .TX {
+
+          @include pc {
+            font-size: p(18);
+          }
+
+          @include sp {
+            font-size: s(12);
+            line-height: 2;
+          }
+
+          .underline {
+            color: $f-m;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}

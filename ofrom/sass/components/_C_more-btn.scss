@@ -1,0 +1,17 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_more-btn
+----------------------- */
+
+.C_more-btn {
+  display: block;
+
+  @include pc{
+    width: p(137);
+  }
+  
+  @include sp{
+    width: s(137);
+  }
+}

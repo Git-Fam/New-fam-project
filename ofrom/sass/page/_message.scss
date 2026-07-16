@@ -1,0 +1,90 @@
+@use "../functions" as *;
+
+/* -----------------------
+  message
+----------------------- */
+
+
+
+.message_kv {
+  position: relative;
+
+  @include pc {
+    padding-block: p(123) p(112);
+    @include imgCover('message/message_kv-bg.webp');
+  }
+
+  @include sp {
+    padding-block: s(82);
+    padding-left: s(30);
+    @include imgCover('message/message_kv-bg-sp.webp');
+  }
+
+
+  .sent_wrap {
+    position: relative;
+    z-index: 2;
+
+    .ttl {
+
+      .TL {
+
+        @include pc {
+          transform: translateX(pmax(-1));
+          width: p(339);
+        }
+
+        @include sp {
+          width: s(194);
+        }
+      }
+    }
+
+    .txt {
+
+      @include pc {
+        margin-top: p(84);
+      }
+
+      @include sp {
+        margin-top: s(59);
+      }
+
+      .TX {
+        color: #FFF;
+        line-height: 2.3;
+
+        @include pc {
+          font-size: p(18);
+        }
+
+        @include sp {
+          font-size: s(13);
+        }
+      }
+    }
+
+    .sign {
+
+      @include pc {
+        margin-top: p(30);
+        width: p(163);
+      }
+
+      @include sp {
+        margin-top: s(14);
+        width: s(117);
+      }
+
+      img {
+        mix-blend-mode: multiply;
+      }
+    }
+  }
+
+
+
+}
+
+
+// .page_message {}
