@@ -35,4 +35,84 @@ C_kv
       white-space: nowrap;
     }
   }
+
+  .C_kv-char {
+
+    .char-01 {
+      width: s(105);
+      position: absolute;
+      bottom: s(30);
+      right: s(20);
+    }
+
+    .char-02 {
+      width: s(117);
+      position: absolute;
+      top: s(99);
+      left: s(8);
+    }
+
+    .char-03 {
+      width: s(124);
+      position: absolute;
+      bottom: s(22);
+      right: s(31);
+    }
+
+    .char-04 {
+      width: s(138);
+      position: absolute;
+      bottom: s(32);
+      right: s(19);
+    }
+
+    .char-05 {
+      width: s(124);
+      position: absolute;
+      bottom: s(20);
+      left: s(19);
+    }
+
+    .char-06 {
+      width: s(106);
+      position: absolute;
+      bottom: s(22);
+      left: s(11);
+    }
+
+    .char-07 {
+      width: s(88);
+      position: absolute;
+      bottom: s(27);
+      left: s(36);
+    }
+
+    .char-08 {
+      width: s(110);
+      position: absolute;
+      bottom: sm(-2);
+      left: s(132);
+    }
+
+    .char-09 {
+      width: s(77);
+      position: absolute;
+      bottom: s(39);
+      right: s(40);
+    }
+
+    .char-10 {
+      width: s(116);
+      position: absolute;
+      bottom: s(19);
+      left: s(20);
+    }
+
+    .char-11 {
+      width: s(135);
+      position: absolute;
+      top: s(42);
+      right: sm(-7);
+    }
+  }
 }

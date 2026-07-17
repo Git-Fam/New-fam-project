@@ -5,4 +5,26 @@
 ----------------------- */
 .page-pediatrics {
 
+  .pediatrics-contents {
+    padding-block: s(37) s(135);
+
+    .pediatrics-contents-ttl {
+      .C_front-ttl {
+        .TL {
+          font-size: s(24);
+        }
+      }
+    }
+
+    .pediatrics-contents-txt {
+      margin: s(31) auto 0;
+      width: s(335);
+
+      .TX {
+        font-size: s(16);
+        font-weight: 400;
+        line-height: 1.89;
+      }
+    }
+  }
 }

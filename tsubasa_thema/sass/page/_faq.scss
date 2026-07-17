@@ -5,4 +5,178 @@
 ----------------------- */
 .page-faq {
 
+  .faq-contents {
+    padding-block: s(37) s(174);
+
+    .faq-contents-nav {
+      padding-inline: s(20);
+
+      .faq-contents-nav-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: s(14) s(15);
+
+        .item {
+          width: calc((100% - s(15)) * 1 / 2);
+
+          .TX {
+            display: block;
+            width: 100%;
+            padding: s(10);
+            background-color: #39B9EF;
+            border-radius: s(50);
+            color: #FFF;
+            font-size: s(13);
+            font-weight: 500;
+            text-align: center;
+            letter-spacing: 0.05em;
+            position: relative;
+
+            &::before {
+              content: '';
+              display: block;
+              aspect-ratio: 13 / 7;
+              width: s(13);
+              position: absolute;
+              top: 50%;
+              transform: translateY(-30%);
+              right: s(12);
+              @include imgContain("faq/faq-contents-nav-list-icon.svg")
+            }
+          }
+        }
+      }
+    }
+
+    .faq-contents-inr {
+      margin-top: s(82);
+      display: flex;
+      flex-direction: column;
+      gap: s(121);
+
+      .faq-contents-inr-item {
+
+        .item-wrap {
+          margin-top: s(38);
+          display: flex;
+          flex-direction: column;
+          gap: s(14);
+          padding-inline: s(20);
+
+          .item {
+            background-color: rgba(#DDAC6F, 0.25);
+            border-radius: s(17);
+            position: relative;
+
+            .item-q {
+              padding-block: s(26);
+              padding-inline: s(17) s(20);
+              cursor: pointer;
+              position: relative;
+              z-index: 2;
+
+              .TL {
+                display: block;
+                width: 100%;
+                padding-inline: s(35) s(26);
+                font-size: s(18);
+                font-weight: 500;
+                line-height: 1.75;
+                position: relative;
+
+                &::before {
+                  content: '';
+                  display: block;
+                  aspect-ratio: 20.19 / 21.33;
+                  width: s(20.19);
+                  position: absolute;
+                  top: 0.2em;
+                  left: 0;
+                  @include imgContain("faq/faq-contents-nav-list-q.svg")
+                }
+
+                &::after {
+                  content: '';
+                  display: block;
+                  aspect-ratio: 20.19 / 21.33;
+                  width: s(20.19);
+                  position: absolute;
+                  top: 0.2em;
+                  right: 0;
+                  @include imgContain("common/C_contents_box-open.svg")
+                }
+              }
+            }
+
+            .item-a {
+              padding: s(19) 0 s(28);
+              border-top: s(1) solid rgba(#3B3939, 0.35);
+              width: s(297);
+              margin-inline: auto;
+              display: none;
+              position: relative;
+              z-index: 2;
+
+              .TX {
+                font-size: s(16);
+                font-weight: 400;
+                line-height: 1.95;
+              }
+            }
+
+            &.is-active {
+              .item-q {
+                .TL {
+                  &::after {
+                    @include imgContain("common/C_contents_box-close.svg")
+                  }
+                }
+              }
+
+              .item-a {
+                display: block;
+              }
+            }
+          }
+        }
+
+
+        &:nth-child(1),
+        &:nth-child(2) {
+          .item-wrap {
+
+            .item {
+              &:last-child {
+                &::before {
+                  content: '';
+                  display: block;
+                  position: absolute;
+                  bottom: sm(-83);
+                  right: s(15);
+                  width: s(140);
+                  height: s(126);
+                  pointer-events: none;
+                  z-index: 1;
+                  @include imgContain("faq/faq-contents-item-char-01.webp")
+                }
+              }
+            }
+          }
+        }
+
+        &:nth-child(2) {
+          .item-wrap {
+
+            .item {
+              &:last-child {
+                &::before {
+                  @include imgContain("faq/faq-contents-item-char-02.webp")
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

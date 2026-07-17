@@ -86,7 +86,6 @@ C_contents_box
     }
   }
 
-
   .C_contents_box-accordion {
     margin: s(21) auto 0;
     width: s(290);
@@ -152,6 +151,12 @@ C_contents_box
         display: block;
       }
     }
+  }
+
+  .C_contents_box-btn {
+    margin-top: s(21);
+    width: fit-content;
+    margin-inline: auto;
   }
 
 

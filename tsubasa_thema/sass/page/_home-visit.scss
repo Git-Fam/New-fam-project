@@ -5,4 +5,258 @@
 ----------------------- */
 .page-home-visit {
 
+  .home-visit-contents {
+    padding-block: s(33) s(38);
+
+    .home-visit-contents-ttl {
+      .TL {
+        text-align: center;
+        font-size: s(29);
+        font-weight: 500;
+        letter-spacing: 0.08em;
+      }
+    }
+
+    .home-visit-contents-txt {
+      margin: s(33) auto 0;
+      width: s(335);
+
+      .TX {
+        font-size: s(16);
+        font-weight: 400;
+        line-height: 1.89;
+      }
+    }
+  }
+
+  .C_under-point {
+    padding-bottom: s(117);
+
+    .C_under-point-char {
+      .char-04 {
+        position: absolute;
+        top: sm(-60);
+        right: s(21);
+        width: s(154);
+      }
+    }
+
+    .C_under-point-contents {
+      gap: s(24);
+      margin-top: s(47);
+
+      .contents-item {
+        padding: s(26) 0 s(31);
+
+        .contents-item-ttl {
+
+          .TL {
+            text-align: center;
+            font-size: s(24);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+          }
+        }
+
+        .contents-item-txt {
+          margin: s(26) 0 0 s(26);
+          width: s(290);
+          display: flex;
+          flex-direction: column;
+          gap: s(11);
+
+          .TX {
+            font-size: s(20);
+            font-weight: 500;
+            padding-left: s(32);
+            position: relative;
+            letter-spacing: 0.05em;
+
+            &::before {
+              content: "";
+              position: absolute;
+              top: 0.05em;
+              left: 0;
+              aspect-ratio: 22.5/27.11;
+              width: s(22);
+              @include imgContain("common/C_front-inr-ttl-icon.svg");
+            }
+          }
+        }
+
+        &.type-swiper {
+          padding: s(26) 0 s(9);
+          width: 100%;
+          position: relative;
+          background-color: transparent;
+          border-radius: none;
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin-inline: auto;
+            width: s(335);
+            height: 100%;
+            background-color: rgba(#FFF, 0.5);
+            border-radius: s(17);
+            z-index: 1;
+          }
+
+          .type-swiper-item {
+
+            .contents-item-img {
+              margin-inline: auto;
+              width: s(280);
+
+              img {
+                border-radius: s(12);
+              }
+            }
+
+            .contents-item-ttl {
+              margin-top: s(25);
+              margin-inline: auto;
+              width: s(280);
+
+              .TL {
+                text-align: center;
+                font-size: s(22);
+                font-weight: 500;
+                letter-spacing: 0em;
+              }
+            }
+          }
+
+          // 両サイドの矢印ボタン（画像の縦中央に配置）
+          .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-76%);
+            z-index: 2;
+            width: s(36);
+            height: s(36);
+            border-radius: 50%;
+            background: #BC6729;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: opacity 0.3s;
+
+            &.swiper-button-disabled {
+              opacity: 0.35;
+              pointer-events: none;
+            }
+
+            .slider-arrow-icon {
+              display: block;
+              width: s(10);
+              height: s(10);
+              border-top: 2px solid #FFF;
+              border-right: 2px solid #FFF;
+            }
+
+            &.type-swiper-prev {
+              left: s(9);
+
+              .slider-arrow-icon {
+                transform: translateX(2px) rotate(-135deg);
+              }
+            }
+
+            &.type-swiper-next {
+              right: s(9);
+
+              .slider-arrow-icon {
+                transform: translateX(-2px) rotate(45deg);
+              }
+            }
+          }
+
+          // ページネーション（ドット）
+          .type-swiper-pagination {
+            margin-top: s(45);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: s(15);
+            position: relative;
+            z-index: 2;
+
+            .swiper-pagination-bullet {
+              display: block;
+              width: s(7);
+              height: s(7);
+              margin: 0 !important;
+              border-radius: 50%;
+              background: #BC6729;
+              opacity: 0.35;
+              cursor: pointer;
+              transition: opacity 0.3s;
+            }
+
+            .swiper-pagination-bullet-active {
+              opacity: 1;
+            }
+          }
+
+        }
+
+        &.type-change {
+          padding: s(21) s(20.5) s(26);
+
+          .contents-item-ttl {
+
+            .TL {
+              text-align: left;
+              font-size: s(20);
+              font-weight: 500;
+              letter-spacing: 0.05em;
+              padding-left: s(34);
+              position: relative;
+
+              &::before {
+                content: "";
+                position: absolute;
+                top: 0.05em;
+                left: 0;
+                aspect-ratio: 22.5/27.11;
+                width: s(26);
+                @include imgContain("common/C_front-inr-ttl-icon.svg");
+              }
+            }
+          }
+
+          .contents-item-txt {
+            margin: s(12) 0 0;
+            width: s(290);
+            display: block;
+
+            .TX {
+              font-size: s(16);
+              font-weight: 400;
+              padding-left: 0;
+              letter-spacing: 0em;
+              line-height: 1.95;
+
+              &::before {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .C_under-point-txt {
+      margin-top: s(24);
+
+      .TX {
+        font-weight: 400;
+      }
+    }
+  }
 }

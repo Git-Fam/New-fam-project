@@ -5,4 +5,141 @@
 ----------------------- */
 .page-prevention-screening {
 
+  .prevention-screening-contents {
+    padding-block: s(37) s(135);
+
+    .prevention-screening-contents-ttl {
+      .C_front-ttl {
+        .TL {
+          font-size: s(24);
+        }
+      }
+    }
+
+    .prevention-screening-contents-txt {
+      margin: s(31) auto 0;
+      width: s(335);
+
+      .TX {
+        font-size: s(16);
+        font-weight: 400;
+        line-height: 1.89;
+      }
+    }
+
+    .prevention-screening-contents-items {
+      display: flex;
+      flex-direction: column;
+      gap: s(40);
+      margin-top: s(40);
+
+      .item {
+        width: fit-content;
+        margin-inline: auto;
+        position: relative;
+
+        .C_contents_box {
+          .C_contents_box-list {
+            margin-top: s(16);
+            padding-left: s(26);
+
+            .list {
+              margin-top: s(16);
+              display: flex;
+              flex-direction: column;
+              gap: s(10);
+
+              .TX {
+                font-size: s(20);
+                font-weight: 500;
+                line-height: 1.4;
+
+                .TX-s {
+                  font-size: s(16);
+                }
+
+                &::before {
+                  width: s(24);
+                  position: absolute;
+                  top: 0.05em;
+                  left: sm(-1);
+                  transform: translateY(0);
+                  @include imgContain("common/C_front-inr-ttl-icon.svg");
+                }
+              }
+            }
+
+            .TX-point {
+              margin-top: s(6);
+              text-align: center;
+              font-size: s(14);
+              // font-weight: 400;
+            }
+          }
+        }
+
+      }
+    }
+  }
+
+  .C_under-point {
+    padding-top: s(113);
+    padding-bottom: s(144);
+
+    .C_under-point-char {
+      .char-02 {
+        position: absolute;
+        top: sm(-97);
+        left: s(4);
+        width: s(124);
+      }
+    }
+
+    .C_under-point-txt{
+      margin-top: s(34);
+    }
+
+    .C_under-point-contents {
+      .contents-item {
+        padding: s(26) 0 s(31);
+
+        .contents-item-ttl {
+
+          .TL {
+            text-align: center;
+            font-size: s(24);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+          }
+        }
+
+        .contents-item-txt {
+          margin: s(26) 0 0 s(26);
+          width: s(290);
+          display: flex;
+          flex-direction: column;
+          gap: s(11);
+
+          .TX {
+            font-size: s(20);
+            font-weight: 500;
+            padding-left: s(32);
+            position: relative;
+            letter-spacing: 0.05em;
+
+            &::before {
+              content: "";
+              position: absolute;
+              top: 0.05em;
+              left: 0;
+              aspect-ratio: 22.5/27.11;
+              width: s(22);
+              @include imgContain("common/C_front-inr-ttl-icon.svg");
+            }
+          }
+        }
+
+      }
+    }
+  }
 }

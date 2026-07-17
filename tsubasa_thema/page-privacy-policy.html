@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="ja">
+
+<head prefix="og: https://ogp.me/ns#">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ▼TELL&MAIL&ADDRESSの自動リンク機能を制御 -->
+    <meta name="format-detection" content="email=no,telephone=no,address=no" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta property="og:locale" content="ja_JP" />
+
+    <!-- ▼SEO -->
+    <link rel="”canonical”" href="”URL”" />
+    <!-- ジェネレーターURL→ https://metatags.io/ -->
+
+    <!-- ▼ファビコン -->
+    <!-- ジェネレーターURL→ https://realfavicongenerator.net/ -->
+
+    <!-- ▼クロールして欲しくない -->
+    <!-- <meta name="robots" content="noindex,nofollow"> -->
+
+    <!-- ▼テーマカラー -->
+    <!-- <meta name="theme-color" content="#e9c931"> -->
+
+    <!-- ▼CSS -->
+    <link rel="stylesheet" href="css/reset.css?ver=1.0.0" />
+    <link rel="stylesheet" href="css/main.css?ver=1.0.0" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+
+    <!-- ▼フォント -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- frontのみ is-hidden -->
+    <header class="header front-hidden">
+        <div class="header-inr">
+            <h1 class="header-logo">
+                <a href="#">
+                    <img src="img/header/header-logo.svg" alt="つばさこども医院 小児外科/小児科">
+                </a>
+            </h1>
+        </div>
+        <div class="header-btn">
+            <img class="open" src="img/header/header-btn-open.svg" alt="opne">
+            <img class="close" src="img/header/header-btn-close.svg" alt="close">
+        </div>
+        <div class="header-menu">
+            <div class="header-menu-inr">
+                <nav class="header-menu-nav">
+                    <ul class="main-list">
+                        <li class="main-list-item">
+                            <a class="TX" href="#">TOP</a>
+                        </li>
+                        <li class="main-list-item">
+                            <a class="TX" href="#">当院について</a>
+                        </li>
+                        <li class="main-list-item">
+                            <a class="TX" href="#">手術について</a>
+                        </li>
+                        <li class="main-list-item">
+                            <a class="TX" href="#">診療日程</a>
+                        </li>
+                        <li class="main-list-item main-list-item-accordion">
+                            <p class="TX" href="#">診療案内</p>
+                            <ul class="main-list-inr">
+                                <li class="main-list-item-inr">
+                                    <a class="TX-inr" href="#">小児外科</a>
+                                </li>
+                                <li class="main-list-item-inr">
+                                    <a class="TX-inr" href="#">小児科</a>
+                                </li>
+                                <li class="main-list-item-inr">
+                                    <a class="TX-inr" href="#">便秘外来</a>
+                                </li>
+                                <li class="main-list-item-inr">
+                                    <a class="TX-inr" href="#">夜尿外来</a>
+                                </li>
+                                <li class="main-list-item-inr">
+                                    <a class="TX-inr" href="#">予防・検診</a>
+                                </li>
+                                <li class="main-list-item-inr">
+                                    <a class="TX-inr" href="#">訪問診療</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="main-list-item">
+                            <a class="TX" href="#">初めての方へ</a>
+                        </li>
+                        <li class="main-list-item">
+                            <a class="TX" href="#">お支払いについて</a>
+                        </li>
+                        <li class="main-list-item">
+                            <a class="TX" href="#">アクセス</a>
+                        </li>
+                        <li class="main-list-item">
+                            <a class="TX" href="#">サポート・取り組み</a>
+                        </li>
+                        <li class="main-list-item">
+                            <a class="TX" href="#">お問い合わせ</a>
+                        </li>
+                    </ul>
+                    <ul class="sub-list">
+                        <li class="sub-list-item">
+                            <a class="TX" href="#">お知らせ</a>
+                        </li>
+                        <li class="sub-list-item">
+                            <a class="TX" href="#">採用情報</a>
+                        </li>
+                        <li class="sub-list-item">
+                            <a class="TX" href="#">よくある質問</a>
+                        </li>
+                        <li class="sub-list-item">
+                            <a class="TX" href="#">プライバシーポリシー</a>
+                        </li>
+                        <li class="sub-list-item sp">
+                            <a class="IMG" href="#">
+                                <img src="img/header/sub-list-item-sns-insta.svg" alt="instagram">
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header-menu-icon">
+                    <picture>
+                        <source srcset="img/header/header-menu-icon-pc.svg" media="(min-width: 951px)">
+                        <img src="img/header/header-menu-icon-sp.svg" alt="">
+                    </picture>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="reserve-btn front-hidden">
+        <a class="reserve-btn-inr" href="#" target="_blank" rel="noopener noreferrer">
+            <picture>
+                <source srcset="img/common/reserve-btn-pc.webp" media="(min-width: 951px)">
+                <img src="img/common/reserve-btn-sp.webp" alt="ご予約はこちらから">
+            </picture>
+        </a>
+    </div>
+
+    <div class="whopper">
+
+        <div class="side side-l">
+            <div class="side-bg">
+                <img src="img/common/side-bg.webp" alt="">
+            </div>
+            <div class="side-inr">
+                <div class="side-l-branch">
+                    <img src="img/common/side-l-branch.webp" alt="">
+                    <div class="side-l-branch-char fuwafuwa">
+                        <img src="img/common/side-l-branch-char.webp" alt="">
+                    </div>
+                </div>
+                <div class="side-l-contents">
+                    <div class="logo">
+                        <a href="#">
+                            <img src="img/common/side-l-logo.svg" alt="つばさこども医院 小児外科/小児科">
+                        </a>
+                    </div>
+                    <div class="sns">
+                        <a href="#" target="_blank" rel="noopener noreferrer">
+                            <img src="img/common/side-l-sns-instagram.svg" alt="instagram">
+                        </a>
+                    </div>
+                </div>
+                <div class="side-l-lawn">
+                    <img src="img/common/side-l-lawn.webp" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="screen">
+            <main class="main">
+                <!-- 共有 これ以上  -->
+
+                <div class="page-privacy-policy">
+                    <section class="privacy-policy-kv">
+                        <div class="kv-ttl">
+                            <div class="kv-bg">
+                                <img src="img/common/C_contents_box-ttl-bg.webp" alt="">
+                            </div>
+                            <h2 class="TL">個人情報保護方針</h2>
+                        </div>
+                        <div class="kv-txt">
+                            <p class="TX">
+                                つばさこども医院（以下「当院」といいます。）は、患者様からの信頼を第一と考え、患者様個人に関わる情報を正確、かつ機密に取り扱うことは、当院にとって重要な責務であると考えております。そのために、患者様の個人情報に関する「個人情報保護方針」を制定し、個人情報の取り扱い方法について、全職員及び関連会社への徹底を実践してまいります。その内容は以下の通りです。なお、既に当院で保有し利用させて頂いている個人情報につきましても、本方針に従って患者様の個人情報の取り扱いを実施致します。
+                            </p>
+                        </div>
+                    </section>
+                    <section class="privacy-policy-contents">
+                        <div class="contents-item">
+                            <div class="item">
+                                <div class="item-ttl">
+                                    <img src="img/common/C_front-inr-ttl-icon.svg" alt="">
+                                    <h3 class="TL">個人情報の取り扱いについて</h3>
+                                </div>
+                                <div class="item-txt">
+                                    <p class="TX">
+                                        ●個人情報の取得<br>
+                                        当院は個人情報を適法かつ公正な手段により収集致します。患者様に個人情報の提供をお願いする場合は、事前に収集の目的、利用の内容を開示した上で、当院の正当な事業の範囲内で、その目的の達成に必要な限度において、個人情報を収集致します。<br>
+                                        <br>
+                                        ●個人情報の利用および共同利用<br>
+                                        当院がお預かりした個人情報は、個人情報を頂いた方に承諾を得た範囲内で、また収集目的に沿った範囲内で利用致します。利用目的については、以下の「利用目的の範囲」の内、当院の正当な事業の範囲内で、その目的の達成に必要な事項を利用目的と致します。<br>
+                                        <br>
+                                        ●利用目的の範囲について<br>
+                                        ・業務上のご連絡をする場合<br>
+                                        ・当院が取り扱うサービスに関するご案内をする場合<br>
+                                        ・患者様からのお問い合せまたはご依頼等への対応をさせて頂く場合<br>
+                                        ・その他、患者様に事前にお知らせし、ご同意を頂いた目的の場合<br>
+                                        <br>
+                                        ●上記目的以外の利用について<br>
+                                        上記以外の目的で、患者様の個人情報を利用する必要が生じた場合には、法令により許される場合を除き、その利用について、患者様の同意を頂くものとします。<br>
+                                        <br>
+                                        ●個人情報の第三者提供<br>
+                                        当院は、患者様の同意なしに第三者へ患者様の個人情報の提供は行いません。但し個人情報に適用される法律その他の規範により、当院が従うべき法令上の義務等の特別な事情がある場合は、この限りではありません。<br>
+                                        <br>
+                                        ●個人情報の開示・修正等の手続<br>
+                                        患者様からご提供頂いた個人情報に関して、照会、訂正、削除を要望される場合は、お問い合わせ先窓口までご請求ください。当該ご請求が当院の業務に著しい支障をきたす場合等を除き、患者様ご本人によるものであることが確認できた場合に限り、合理的な期間内に、患者様の個人情報を開示、訂正、削除致します。<br>
+                                        <br>
+                                        ●個人情報の開示等に要する手数料<br>
+                                        開示請求者（患者様ご本人と認められる方）に対し開示等に要する手数料のご負担をお願いする場合がありますが、その場合はあらかじめその旨を明らかにし、ご負担頂くことと致します。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="item-ttl">
+                                    <img src="img/common/C_front-inr-ttl-icon.svg" alt="">
+                                    <h3 class="TL">個人情報の保護に関する法令・<br>規範の遵守について</h3>
+                                </div>
+                                <div class="item-txt">
+                                    <p class="TX">
+                                        当院は、当院が保有する個人情報に関して適用される個人情報保護関連法令及び規範を遵守します。また本方針は、日本国の法律、その他規範により判断致します。本方針は当院の個人情報の取り扱いに関しての基本的な方針を定めるものであり、当院は本方針に則って個人情報保護法等の法令・規範に基づく個人情報の保護に努めます。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="item-ttl">
+                                    <img src="img/common/C_front-inr-ttl-icon.svg" alt="">
+                                    <h3 class="TL">個人情報の<br>安全管理措置について</h3>
+                                </div>
+                                <div class="item-txt">
+                                    <p class="TX">
+                                        当院は、個人情報への不正アクセス、個人情報の紛失、破壊、改ざん、漏えい等から保護し、正確性及び安全性を確保するために管理体制を整備し、適切な安全対策を実施致します。個人情報を取り扱う事務所内への部外者の立ち入りを制限し、当院の個人情報保護に関わる役員・職員等全員に対し教育啓発活動を実施するほか、管理責任者を置き個人情報の適切な管理に努めます。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="item-ttl">
+                                    <img src="img/common/C_front-inr-ttl-icon.svg" alt="">
+                                    <h3 class="TL">継続的な改善について</h3>
+                                </div>
+                                <div class="item-txt">
+                                    <p class="TX">
+                                        当院は、個人情報保護への取組みについて、日本国の従うべき法令の変更、取り扱い方法、環境の変化に対応するため、継続的に見直し改善を実施致します。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="item-ttl">
+                                    <img src="img/common/C_front-inr-ttl-icon.svg" alt="">
+                                    <h3 class="TL">お問い合わせ</h3>
+                                </div>
+                                <div class="item-txt">
+                                    <p class="TX">
+                                        【個人情報取扱い窓口】<br>
+                                        つばさこども医院<br>
+                                        〒921-8832 石川県野々市市藤平田1丁目265番<br>
+                                        TEL/000-000-000
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- 共有 これ以下 -->
+            </main>
+            <footer class="footer">
+                <!--
+                    下の場合は『is-under』
+                    上の場合は『is-above』
+                -->
+                <div class="footer_char_by_page is-under">
+                    <div class="img">
+                        <!-- front -->
+                        <!-- <img src="img/footer/page_by_front.webp" alt=""> -->
+                        <!-- about -->
+                        <!-- <img src="img/footer/page_by_about.webp" alt=""> -->
+                        <!-- night-urine -->
+                        <!-- <img src="img/footer/page_by_night-urine.webp" alt=""> -->
+                        <!-- constipation -->
+                        <!-- <img src="img/footer/page_by_constipation.webp" alt=""> -->
+                        <!-- operation -->
+                        <!-- <img src="img/footer/page_by_operation.webp" alt=""> -->
+                        <!-- news -->
+                        <!-- <img src="img/footer/page_by_news.webp" alt=""> -->
+                        <!-- faq -->
+                        <!-- <img src="img/footer/page_by_faq.webp" alt=""> -->
+                        <!-- recruitment -->
+                        <!-- <img src="img/footer/page_by_recruitment.webp" alt=""> -->
+                        <!-- contact -->
+                        <!-- <img src="img/footer/page_by_contact.webp" alt=""> -->
+                    </div>
+                </div>
+                <div class="footer-main">
+                    <div class="footer-bg">
+                        <img src="img/footer/footer-bg.webp" alt="">
+                    </div>
+                    <div class="footer-inr">
+                        <div class="footer-logo">
+                            <img src="img/common/side-l-logo.svg" alt="つばさこども医院 小児外科/小児科">
+                        </div>
+                        <div class="footer-schedule">
+                            <div class="schedule-table">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td></td>
+                                            <th>月</th>
+                                            <th>火</th>
+                                            <th>水</th>
+                                            <th>木</th>
+                                            <th>金</th>
+                                            <th>土</th>
+                                        </tr>
+                                        <tr>
+                                            <th>午前</th>
+                                            <td>
+                                                <img src="img/common/schedule-on.svg" alt="">
+                                            </td>
+                                            <td>
+                                                <img src="img/common/schedule-on.svg" alt="">
+                                            </td>
+                                            <td>
+                                                <img src="img/common/schedule-on.svg" alt="">
+                                            </td>
+                                            <td>
+                                                <img src="img/common/schedule-off.svg" alt="">
+                                            </td>
+                                            <td>
+                                                <img src="img/common/schedule-on.svg" alt="">
+                                            </td>
+                                            <td>
+                                                <img src="img/common/schedule-on-am.svg" alt="">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>午後</th>
+                                            <td>
+                                                <img src="img/common/schedule-on.svg" alt="">
+                                            </td>
+                                            <td>
+                                                <img src="img/common/schedule-on.svg" alt="">
+                                            </td>
+                                            <td>
+                                                <img src="img/common/schedule-on.svg" alt="">
+                                            </td>
+                                            <td>
+                                                <img src="img/common/schedule-off.svg" alt="">
+                                            </td>
+                                            <td>
+                                                <img src="img/common/schedule-on.svg" alt="">
+                                            </td>
+                                            <td>
+                                                <img src="img/common/schedule-off.svg" alt="">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="schedule-txt">
+                                <p class="TX">
+                                    午前：9:00 ~ 12:00　午後：15:00 ~ 18:00<br>
+                                    <span><img src="img/common/schedule-on-am.svg" alt=""></span> ••• 土曜午前：9:00 ~
+                                    13:00<br>
+                                    休診日：水曜／土曜午後／日・祝
+                                </p>
+                            </div>
+                        </div>
+                        <div class="footer-scroll-char">
+                            <div class="scroll-char-wrap">
+                                <div class="scroll-char-inr">
+                                    <div class="scroll-char-group">
+                                        <img src="img/footer/footer-scroll-char-01.png" alt="">
+                                        <img src="img/footer/footer-scroll-char-02.png" alt="">
+                                        <img src="img/footer/footer-scroll-char-03.png" alt="">
+                                        <img src="img/footer/footer-scroll-char-04.png" alt="">
+                                        <img src="img/footer/footer-scroll-char-05.png" alt="">
+                                    </div>
+                                    <div class="scroll-char-group" aria-hidden="true">
+                                        <img src="img/footer/footer-scroll-char-01.png" alt="">
+                                        <img src="img/footer/footer-scroll-char-02.png" alt="">
+                                        <img src="img/footer/footer-scroll-char-03.png" alt="">
+                                        <img src="img/footer/footer-scroll-char-04.png" alt="">
+                                        <img src="img/footer/footer-scroll-char-05.png" alt="">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="footer-footer-copyright-bg">
+                            <img src="img/footer/footer-footer-copyright-bg.webp" alt="">
+                        </div>
+                        <div class="footer-copyright">
+                            <p class="TX">
+                                © TSUBASA KODOMO CLINIC Co. Ltd. All Rights Reserved.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <div class="side side-r">
+            <div class="side-bg">
+                <img src="img/common/side-bg.webp" alt="">
+            </div>
+            <div class="side-inr">
+                <div class="side-r-billboard">
+                    <picture>
+                        <source srcset="img/common/side-r-no-billboard.webp" media="(max-width: 950px)">
+                        <img src="img/common/side-r-billboard.webp" alt="">
+                    </picture>
+                </div>
+
+                <div class="side-r-lawn">
+                    <img src="img/common/side-r-lawn.webp" alt="">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="js/script.js"></script>
+    <!-- <script src="js/front.js"></script> -->
+    <!-- <script src="js/about.js"></script> -->
+    <!-- <script src="js/nocturia.js"></script> -->
+    <!-- <script src="js/constipation.js"></script> -->
+    <!-- <script src="js/pediatric-surgery.js"></script> -->
+    <!-- <script src="js/pediatrics.js"></script> -->
+    <!-- <script src="js/prevention-screening.js"></script> -->
+    <!-- <script src="js/home-visit.js"></script> -->
+    <!-- <script src="js/about-surgery.js"></script> -->
+    <!-- <script src="js/news.js"></script> -->
+    <!-- <script src="js/faq.js"></script> -->
+    <!-- <script src="js/recruit.js"></script> -->
+    <!-- <script src="js/contact.js"></script> -->
+    <script src="js/privacy-policy.js"></script>
+</body>
+
+</html>

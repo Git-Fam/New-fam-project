@@ -5,4 +5,64 @@
 ----------------------- */
 .page-recruit {
 
+  .recruit-contents {
+    padding-block: s(49) s(57);
+    display: flex;
+    flex-direction: column;
+    gap: s(117);
+
+    .item-list {
+      margin-top: s(49);
+      padding-inline: s(20);
+
+      .item {
+        padding-block: s(21);
+        border-bottom: s(1) solid rgba(#3B3939, 0.35);
+
+        &:first-child {
+          border-top: s(1) solid rgba(#3B3939, 0.35);
+        }
+
+        .TL {
+          padding-left: s(23);
+          font-size: s(16);
+          font-weight: 600;
+          color: #80420E;
+          position: relative;
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0.2em;
+            left: 0;
+            aspect-ratio: 16.99/20.47;
+            width: s(16.99);
+            @include imgContain("common/C_front-inr-ttl-icon.svg")
+          }
+        }
+
+        .TX {
+          margin-top: s(9);
+          font-size: s(18);
+          line-height: 1.65;
+
+          .m-t {
+            margin-top: 0.1em;
+            display: inline-block;
+          }
+
+          .txt-indent {
+            display: block;
+            padding-left: 1em;
+            text-indent: -1em;
+
+          }
+        }
+      }
+    }
+  }
+
+  .C_under-point {
+    padding-bottom: s(137);
+  }
 }
