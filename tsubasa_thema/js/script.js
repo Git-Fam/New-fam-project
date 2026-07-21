@@ -4,6 +4,11 @@ $(function () {
 		$('body').toggleClass("is-active");
 	});
 
+	$(".header-menu .header-menu-nav .main-list .main-list-item a , .header-menu .header-menu-nav .main-list .main-list-item .main-list-inr .ain-list-item-inr a").on("click", function () {
+		$('body').removeClass("is-active");
+	});
+
+
 	// 	メニュー内のアコーディオン
 	$(".main-list-item-accordion").on("click", function () {
 		$(this).toggleClass("is-active");

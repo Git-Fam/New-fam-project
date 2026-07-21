@@ -5,7 +5,7 @@
 ----------------------- */
 .page-news {
   .news-contents {
-    padding-block: s(36) s(179);
+    padding-block: s(36) s(186);
 
     .category-btns {
       display: flex;
@@ -113,12 +113,13 @@
           width: s(15);
           text-align: center;
           font-size: s(16);
-          font-weight: 500;
+          font-weight: 600;
           color: #7B7B7B;
 
 
           &.is-selected {
             color: #000000;
+            pointer-events: none;
           }
 
           &.is-ellipsis {
@@ -135,7 +136,7 @@
 ----------------------- */
 .page-single {
   .single-contents {
-    padding-block: s(63) s(113);
+    padding-block: s(63) s(125);
 
     .single-contents-ttl {
       padding-inline: s(20);
@@ -180,6 +181,14 @@
       img {
         max-width: 100%;
         width: unset;
+      }
+
+      video,
+      iframe,
+      object {
+        display: block;
+        box-sizing: border-box;
+        max-width: 100%;
       }
 
       p,
@@ -381,6 +390,17 @@
         }
       }
 
+      .wp-block-file__button.wp-element-button {
+        color: #FFF;
+      }
+
+      p{
+        margin-top: 1em;
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
 
     }
 

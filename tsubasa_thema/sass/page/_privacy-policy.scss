@@ -27,7 +27,7 @@
         transform: translateY(-50%);
         text-align: center;
         font-size: s(28);
-        font-weight: 500;
+        font-weight: 600;
         letter-spacing: 0.05em;
       }
     }
@@ -38,7 +38,7 @@
 
       .TX {
         font-size: s(16);
-        font-weight: 400;
+        font-weight: 500;
         line-height: 1.88;
       }
     }
@@ -108,7 +108,7 @@
       }
 
       &:nth-child(5) {
-        padding-bottom: s(116);
+        padding-bottom: s(123);
 
         &::before {
           content: '';
@@ -134,7 +134,7 @@
           margin-top: s(3.5);
           text-align: center;
           font-size: s(24);
-          font-weight: 500;
+          font-weight: 600;
         }
       }
 
@@ -144,7 +144,7 @@
 
         .TX {
           font-size: s(16);
-          font-weight: 400;
+          font-weight: 500;
           line-height: 1.88;
         }
       }

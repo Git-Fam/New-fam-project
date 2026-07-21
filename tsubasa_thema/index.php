@@ -1,6 +1,6 @@
-<?php get_template_part('inchead'); ?>
-<?php get_template_part('incheader'); ?>
+<?php get_template_part('./inc/head'); ?>
+<?php get_template_part('./inc/header'); ?>
 
-<div class="bbb">404</div>
+<div class="page404">404</div>
 
-<?php get_template_part('incfooter'); ?>
+<?php get_template_part('./inc/footer'); ?>

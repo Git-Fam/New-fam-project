@@ -15,7 +15,7 @@
       .TL {
         text-align: center;
         font-size: s(29);
-        font-weight: 500;
+        font-weight: 600;
         letter-spacing: 0.08em;
       }
     }
@@ -53,6 +53,8 @@
 
 
   .C_under-point {
+    padding-bottom: s(130);
+
     .C_under-point-char {
       .char-01 {
         position: absolute;
@@ -71,7 +73,7 @@
           .TL {
             text-align: center;
             font-size: s(28);
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: 0.05em;
 
             span {
@@ -103,7 +105,7 @@
           .TX {
             width: calc((100% - s(10)) * 1 / 2);
             font-size: s(20);
-            font-weight: 500;
+            font-weight: 600;
             padding-left: s(32);
             position: relative;
 

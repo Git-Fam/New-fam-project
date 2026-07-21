@@ -6,8 +6,8 @@ function custom_single_template($template)
 	$new_template = '';
 
 	$single_templates = array(
-		'blog' => 'singles/single-blog.php',
-		'column' => 'singles/single-column.php',
+		// 'blog' => 'singles/single-blog.php',
+		// 'column' => 'singles/single-column.php',
 		// 他のカスタム投稿タイプをここに追加
 	);
 

@@ -394,7 +394,7 @@
           color: #ffffff;
           font-size: s(16);
           line-height: 1.9;
-          font-weight: 400;
+          font-weight: 500;
         }
       }
 
@@ -471,7 +471,7 @@
           color: #ffffff;
           font-size: s(16);
           line-height: 1.9;
-          font-weight: 400;
+          font-weight: 500;
         }
       }
 
@@ -509,7 +509,7 @@
         .TX {
           font-size: s(16);
           line-height: 1.9;
-          font-weight: 400;
+          font-weight: 500;
         }
       }
 
@@ -527,7 +527,7 @@
           .TX {
             font-size: s(16);
             line-height: 1.9;
-            font-weight: 400;
+            font-weight: 500;
           }
         }
 
@@ -579,7 +579,7 @@
                 font-size: s(16);
                 line-height: 1.5;
                 letter-spacing: 0.12em;
-                font-weight: 400;
+                font-weight: 500;
                 padding-left: s(30);
                 position: relative;
 
@@ -606,7 +606,7 @@
           .TX {
             font-size: s(16);
             line-height: 1.9;
-            font-weight: 400;
+            font-weight: 500;
           }
         }
       }
@@ -652,7 +652,7 @@
             .C_front-inr-ttl {
 
               .TL {
-                font-weight: 400;
+                font-weight: 500;
               }
             }
 
@@ -668,7 +668,7 @@
                 padding-left: s(14);
                 font-size: s(16);
                 line-height: 1.5;
-                font-weight: 400;
+                font-weight: 500;
                 position: relative;
 
                 &::before {
@@ -739,7 +739,7 @@
             color: #ffffff;
             font-size: s(16);
             line-height: 1.9;
-            font-weight: 400;
+            font-weight: 500;
           }
         }
 
@@ -759,7 +759,7 @@
           .TX {
             font-size: s(16);
             line-height: 1.9;
-            font-weight: 400;
+            font-weight: 500;
           }
         }
 
@@ -801,7 +801,7 @@
                   color: #80420E;
                   font-size: s(16);
                   line-height: 1.5;
-                  font-weight: 400;
+                  font-weight: 500;
                   letter-spacing: 0em;
                   margin-right: s(4);
                 }
@@ -810,7 +810,7 @@
                   color: #fff;
                   font-size: s(12);
                   line-height: 1.5;
-                  font-weight: 400;
+                  font-weight: 500;
                   letter-spacing: 0em;
                   padding: s(1) s(12) s(3);
                   background-color: #BC6729;
@@ -823,10 +823,10 @@
 
                 .TL {
                   color: #000;
-                  font-size: s(16);
+                  font-size: s(18);
                   line-height: 1.5;
-                  font-weight: 400;
-                  letter-spacing: 0.14em;
+                  font-weight: 500;
+                  // letter-spacing: 0.14em;
                   display: -webkit-box;
                   -webkit-box-orient: vertical;
                   -webkit-line-clamp: 1;
@@ -866,7 +866,7 @@
             color: #ffffff;
             font-size: s(16);
             line-height: 1.9;
-            font-weight: 400;
+            font-weight: 500;
           }
         }
 
@@ -897,7 +897,7 @@
             color: #fff;
             font-size: s(16);
             line-height: 1.5;
-            font-weight: 400;
+            font-weight: 500;
             border-bottom: solid s(1) #fff;
 
             img {
@@ -920,7 +920,7 @@
           .TX {
             font-size: s(16);
             line-height: 1.9;
-            font-weight: 400;
+            font-weight: 500;
           }
         }
 
@@ -991,8 +991,8 @@
     background-position: center top;
     position: relative;
     z-index: 1;
-    padding: s(78) 0 s(124);
-    margin-top: smax(-41);
+    padding: s(78) 0 s(134);
+    margin-top: sm(-34);
 
     .front-contact-txt {
       margin-top: s(26);
@@ -1001,7 +1001,7 @@
       .TX {
         font-size: s(16);
         line-height: 1.9;
-        font-weight: 400;
+        font-weight: 500;
       }
     }
 

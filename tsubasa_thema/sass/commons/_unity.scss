@@ -18,8 +18,8 @@
 }
 
 html {
-	scroll-behavior: smooth;
-	scroll-padding-top: 10%;
+	// scroll-behavior: smooth;
+	// scroll-padding-top: 10%;
 }
 
 body {
@@ -27,6 +27,8 @@ body {
 	line-height: 1.5;
 	color: #000000;
 	letter-spacing: 0em;
+	-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
 	&.is-active {
 		@include sp {
@@ -41,7 +43,7 @@ h3,
 h4,
 h5,
 h6 {
-	@include wt400;
+	@include wt;
 }
 
 
@@ -276,4 +278,16 @@ img {
 			pointer-events: none;
 		}
 	}
+}
+
+
+// ======================
+// page404
+// ======================
+.page404 {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
