@@ -292,7 +292,7 @@
             </p>
           </div>
           <div class="front-first-btn-area-btn">
-            <a class="C_btn C_btn-pd-45" href="<?php echo esc_url(get_reserve_url('questionnaire')); ?>" target="_blank" rel="noopener noreferrer">
+            <a class="C_btn C_btn-pd-45" href="<?php echo esc_url(SCF::get_option_meta('site-settings', 'questionnaire')); ?>" target="_blank" rel="noopener noreferrer">
               <p class="TX">問診票はこちら</p>
             </a>
           </div>
@@ -393,7 +393,7 @@
             </p>
           </div>
           <div class="front-reserve-btn">
-            <a class="C_btn C_btn-pd-55" href="<?php echo esc_url(get_reserve_url('web_reservation')); ?>" target="_blank" rel="noopener noreferrer">
+            <a class="C_btn C_btn-pd-55" href="<?php echo esc_url(SCF::get_option_meta('site-settings', 'web_reserve')); ?>" target="_blank" rel="noopener noreferrer">
               <p class="TX">WEB予約</p>
             </a>
           </div>

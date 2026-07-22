@@ -234,7 +234,7 @@ Template Path: pages/
       <li class="list-item">
         <h3 class="TL">住所</h3>
         <p class="TX">
-          ダミー〒921-8832<br>
+          〒921-8832<br>
           石川県野々市市<br>
           藤平田1丁目269番地
         </p>

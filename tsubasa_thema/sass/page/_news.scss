@@ -205,7 +205,41 @@
         font-size: s(16);
         color: #3B3939;
         line-height: 1.85;
-        font-weight: 500;
+      }
+
+      p,
+      a,
+      span,
+      small,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      img,
+      picture,
+      ul,
+      ol,
+      video,
+      iframe,
+      object,
+      figure,
+      figcaption,
+      code,
+      pre,
+      hr,
+      table,
+      blockquote,
+      cite {
+        margin-top: 0.5em;
+      }
+
+      p {
+
+        &:first-child {
+          margin-top: 0;
+        }
       }
 
       h1 {
@@ -217,21 +251,19 @@
       }
 
       h3 {
-        font-size: s(24);
+        font-size: s(21);
       }
 
       h4 {
-        font-size: s(22);
+        font-size: s(16);
       }
 
       h5 {
-        font-size: s(20);
-        margin: 0;
+        font-size: s(11);
       }
 
       h6 {
-        font-size: s(18);
-        margin: 0;
+        font-size: s(8);
       }
 
       small {
@@ -240,7 +272,7 @@
 
       strong,
       b {
-        font-weight: 700;
+        font-weight: 800;
       }
 
       em,
@@ -390,16 +422,16 @@
         }
       }
 
-      .wp-block-file__button.wp-element-button {
-        color: #FFF;
+      .wp-block-button {
+        a {
+          color: #FFF;
+          display: block;
+          text-decoration: none;
+        }
       }
 
-      p{
-        margin-top: 1em;
-
-        &:first-child {
-          margin-top: 0;
-        }
+      .wp-block-file__button.wp-element-button {
+        color: #FFF;
       }
 
     }

@@ -58,7 +58,6 @@ Template Path: pages/
           <div class="C_contents_box-btn">
             <?php
             $schedule_pdf = SCF::get('schedule_pdf');
-            // file型は添付ファイルIDを返すためURLに変換（URL直接保存の場合はそのまま使う）
             $schedule_pdf_url = is_numeric($schedule_pdf) ? wp_get_attachment_url($schedule_pdf) : $schedule_pdf;
             if (!empty($schedule_pdf_url)):
             ?>
