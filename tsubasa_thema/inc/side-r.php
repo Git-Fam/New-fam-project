@@ -5,7 +5,7 @@
     <div class="side-inr">
         <div class="side-r-billboard">
             <picture>
-                <source srcset="<?php echo get_template_directory_uri(); ?>/img/common/side-r-no-billboard.webp" media="(max-width: 950px)">
+                <source srcset="<?php echo get_template_directory_uri(); ?>/img/common/side-r-no-billboard.webp" media="(max-width: 1050px)">
                 <img src="<?php echo get_template_directory_uri(); ?>/img/common/side-r-billboard.webp" alt="">
             </picture>
         </div>

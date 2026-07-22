@@ -12,7 +12,7 @@
   left: 0;
   width: 100%;
 
-  @include pc {
+  @include nav-pc {
     display: contents;
   }
 
@@ -24,7 +24,7 @@
     width: 100%;
     padding: s(16) s(21) s(16) s(12);
 
-    @include pc {
+    @include nav-pc {
       display: none;
     }
   }
@@ -32,6 +32,8 @@
   .header-logo {
     display: block;
     width: s(213);
+    position: relative;
+    z-index: 9996;
 
     a {
       display: block;
@@ -48,7 +50,7 @@
     right: s(21);
     z-index: 9999;
 
-    @include pc {
+    @include nav-pc {
       display: none;
     }
 
@@ -68,7 +70,7 @@
   .header-menu {
     position: fixed;
 
-    @include pc {
+    @include nav-pc {
       width: pm(287);
       height: pm(444);
       top: pm(220);
@@ -76,7 +78,7 @@
       z-index: 10;
     }
 
-    @include sp {
+    @include nav-sp {
       top: 0;
       left: 0;
       right: 0;
@@ -85,12 +87,12 @@
       height: 100%;
       overflow-y: scroll;
       display: none;
-      z-index: 9998;
+      z-index: 9997;
     }
 
     .header-menu-inr {
 
-      @include pc {
+      @include nav-pc {
         width: 100%;
         height: 100%;
         display: flex;
@@ -98,7 +100,7 @@
         justify-content: space-between;
       }
 
-      @include sp {
+      @include nav-sp {
         @include imgCover('header/header-menu-bg.webp');
         background-position: center top;
         width: 100%;
@@ -109,13 +111,13 @@
 
     .header-menu-nav {
 
-      @include pc {
+      @include nav-pc {
         width: 100%;
         height: pm(391);
         overflow-y: scroll;
       }
 
-      @include sp {
+      @include nav-sp {
         position: relative;
         z-index: 2;
         min-height: 1116px;
@@ -127,13 +129,13 @@
         .main-list-item {
           border-bottom: solid;
 
-          @include pc {
+          @include nav-pc {
             border-bottom-color: rgba(59, 57, 57, 0.35);
             border-bottom-width: pm(1);
             padding: pm(16) 0;
           }
 
-          @include sp {
+          @include nav-sp {
             border-bottom-color: rgba(255, 255, 255, 0.35);
             border-bottom-width: s(1);
             padding: s(16) 0;
@@ -144,13 +146,13 @@
             width: 100%;
             position: relative;
 
-            @include pc {
+            @include nav-pc {
               color: #3B3939;
               font-size: pm(20);
               padding-inline: pm(20) pm(35);
             }
 
-            @include sp {
+            @include nav-sp {
               color: #ffffff;
               font-size: s(20);
               padding-inline: s(20) s(35);
@@ -166,11 +168,11 @@
               left: 0;
               @include imgContain('header/acorn.svg');
 
-              @include pc {
+              @include nav-pc {
                 width: pm(17);
               }
 
-              @include sp {
+              @include nav-sp {
                 width: s(17);
               }
             }
@@ -183,13 +185,13 @@
               top: 50%;
               transform: translateY(-50%);
 
-              @include pc {
+              @include nav-pc {
                 @include imgContain('header/arrow-pc.svg');
                 width: pm(17);
                 right: pm(12);
               }
 
-              @include sp {
+              @include nav-sp {
                 @include imgContain('header/arrow-sp.svg');
                 width: s(17);
                 right: s(12);
@@ -200,12 +202,12 @@
           &:first-child {
             border-top: solid;
 
-            @include pc {
+            @include nav-pc {
               border-top-color: rgba(59, 57, 57, 0.35);
               border-top-width: pm(1);
             }
 
-            @include sp {
+            @include nav-sp {
               border-top-color: rgba(255, 255, 255, 0.35);
               border-top-width: s(1);
             }
@@ -224,13 +226,13 @@
                 top: 50%;
                 transform: translateY(-50%);
 
-                @include pc {
+                @include nav-pc {
                   @include imgContain('header/accordion-open-pc.svg');
                   width: pm(17);
                   right: pm(12);
                 }
 
-                @include sp {
+                @include nav-sp {
                   @include imgContain('header/accordion-open-sp.svg');
                   width: s(17);
                   right: s(12);
@@ -242,13 +244,13 @@
               .TX {
                 &::after {
 
-                  @include pc {
+                  @include nav-pc {
                     @include imgContain('header/accordion-close-pc.svg');
                     width: pm(18);
                     height: pm(2);
                   }
 
-                  @include sp {
+                  @include nav-sp {
                     @include imgContain('header/accordion-close-sp.svg');
                     width: s(17);
                     height: s(1);
@@ -266,24 +268,24 @@
         .main-list-inr {
           display: none;
 
-          @include pc {
+          @include nav-pc {
             padding-left: pm(20);
           }
 
-          @include sp {
+          @include nav-sp {
             padding-left: s(20);
           }
 
           .main-list-item-inr {
             border-bottom: solid;
 
-            @include pc {
+            @include nav-pc {
               padding-block: pm(16);
               border-bottom-color: rgba(59, 57, 57, 0.35);
               border-bottom-width: pm(1);
             }
 
-            @include sp {
+            @include nav-sp {
               padding-block: s(16);
               border-bottom-color: rgba(255, 255, 255, 0.35);
               border-bottom-width: s(1);
@@ -291,11 +293,11 @@
 
             &:first-child {
 
-              @include pc {
+              @include nav-pc {
                 padding-top: pm(22);
               }
 
-              @include sp {
+              @include nav-sp {
                 padding-top: s(22);
               }
             }
@@ -303,11 +305,11 @@
             &:last-child {
               border-bottom: none;
 
-              @include pc {
+              @include nav-pc {
                 padding-bottom: pm(6);
               }
 
-              @include sp {
+              @include nav-sp {
                 padding-bottom: s(6);
               }
             }
@@ -317,13 +319,13 @@
               width: 100%;
               position: relative;
 
-              @include pc {
+              @include nav-pc {
                 color: #3B3939;
                 font-size: pm(16);
                 padding-right: pm(35);
               }
 
-              @include sp {
+              @include nav-sp {
                 color: #ffffff;
                 font-size: s(16);
                 padding-right: s(35);
@@ -337,13 +339,13 @@
                 top: 50%;
                 transform: translateY(-50%);
 
-                @include pc {
+                @include nav-pc {
                   @include imgContain('header/arrow-pc.svg');
                   width: pm(12);
                   right: pm(12);
                 }
 
-                @include sp {
+                @include nav-sp {
                   @include imgContain('header/arrow-sp.svg');
                   width: s(12);
                   right: s(12);
@@ -358,13 +360,13 @@
         display: flex;
         flex-direction: column;
 
-        @include pc {
+        @include nav-pc {
           gap: pm(8);
           padding-left: pm(24);
           margin-top: pm(24);
         }
 
-        @include sp {
+        @include nav-sp {
           gap: s(8);
           padding-left: s(24);
           margin-top: s(24);
@@ -373,12 +375,12 @@
         .sub-list-item {
 
           .TX {
-            @include pc {
+            @include nav-pc {
               color: #3B3939;
               font-size: pm(15);
             }
 
-            @include sp {
+            @include nav-sp {
               color: #ffffff;
               font-size: s(15);
             }
@@ -387,11 +389,11 @@
           .IMG {
             display: block;
 
-            @include pc {
+            @include nav-pc {
               width: pm(23);
             }
 
-            @include sp {
+            @include nav-sp {
               width: s(23);
             }
           }
@@ -403,12 +405,12 @@
 
     .header-menu-icon {
 
-      @include pc {
+      @include nav-pc {
         width: pm(52);
         margin: 0 auto;
       }
 
-      @include sp {
+      @include nav-sp {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -426,9 +428,23 @@ body.is-active {
 
   .header {
 
+    // @include nav-sp{
+    //   &:before{
+    //     content: '';
+    //     display: block;
+    //     position: fixed;
+    //     top: 0;
+    //     left: 0;
+    //     width: 100%;
+    //     height: 100%;
+    //     background-color: rgba(0, 0, 0, 0.5);
+    //     z-index: 9997;
+    //   }
+    // }
+
     .header-logo {
-      opacity: 0;
-      pointer-events: none;
+      // opacity: 0;
+      // pointer-events: none;
     }
 
     .header-btn {
@@ -447,7 +463,7 @@ body.is-active {
 
     .header-menu {
 
-      @include sp {
+      @include nav-sp {
         display: block;
       }
     }

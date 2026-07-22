@@ -1,8 +1,17 @@
 $pc: 951px; // PC
 $sp: 950px; // スマホ
 
+$nav-pc: 1051px;
+$nav-sp: 1050px;
+
 @mixin pc {
 	@media screen and (min-width: ($pc)) {
+		@content;
+	}
+}
+
+@mixin nav-pc {
+	@media screen and (min-width: ($nav-pc)) {
 		@content;
 	}
 }
@@ -15,6 +24,12 @@ $sp: 950px; // スマホ
 
 @mixin sp {
 	@media screen and (max-width: ($sp)) {
+		@content;
+	}
+}
+
+@mixin nav-sp {
+	@media screen and (max-width: ($nav-sp)) {
 		@content;
 	}
 }
