@@ -21,13 +21,13 @@ Template Path: pages/
         <div class="char char-01">
           <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-kv-char-01.webp" alt="">
         </div>
-        <div class="char char-02">
+        <div class="char char-02 fuwafuwa delay-03">
           <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-kv-char-02.webp" alt="">
         </div>
-        <div class="char char-03">
+        <div class="char char-03 fuwafuwa duration-11 delay-03">
           <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-kv-char-03.webp" alt="">
         </div>
-        <div class="char char-04">
+        <div class="char char-04 fuwafuwa duration-12">
           <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-kv-char-04.webp" alt="">
         </div>
       </div>
@@ -46,7 +46,7 @@ Template Path: pages/
         <div class="char char-01">
           <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-kv-char-05.webp" alt="">
         </div>
-        <div class="char char-02">
+        <div class="char char-02 fuwafuwa duration-11 delay-03">
           <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-kv-char-06.webp" alt="">
         </div>
       </div>

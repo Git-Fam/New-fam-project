@@ -10,8 +10,43 @@
     <div class="front-kv-branch-r">
       <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-kv-branch-r.webp" alt="">
     </div>
-    <div class="front-kv-lawn">
-      <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-kv-law.webp" alt="">
+    <div class="front-kv-lawn-l">
+      <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-kv-lawn-l.webp" alt="">
+    </div>
+    <div class="front-kv-lawn-r">
+      <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-kv-lawn-r.webp" alt="">
+    </div>
+    <div class="front-news-banner">
+      <div class="front-news-banner-inr">
+        <?php
+        $latest_news = new WP_Query([
+          'post_type'      => 'post',
+          'posts_per_page' => 1,
+          'no_found_rows'  => true,
+        ]);
+        if ($latest_news->have_posts()):
+          while ($latest_news->have_posts()): $latest_news->the_post(); ?>
+            <?php
+            $categories = get_the_category();
+            if (!empty($categories)) {
+              $selected_cat = $categories[0];
+              foreach ($categories as $cat) {
+                if ($cat->slug === 'news') {
+                  $selected_cat = $cat;
+                  break;
+                }
+              }
+              echo '<h2 class="TL">' . esc_html($selected_cat->name) . '</h2>';
+            }
+            ?>
+            <a class="front-news-banner-link" href="<?php the_permalink(); ?>">
+              <p class="TM"><?php the_time('Y.n.j'); ?></p>
+              <h3 class="TX"><?php the_title(); ?></h3>
+            </a>
+        <?php endwhile;
+          wp_reset_postdata();
+        endif; ?>
+      </div>
     </div>
     <div class="front-kv-contents">
       <div class="front-kv-contents-tree">
@@ -23,16 +58,16 @@
       <div class="front-kv-contents-char-01 fuwafuwa delay-02">
         <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-kv-contents-char-01.webp" alt="">
       </div>
-      <div class="front-kv-contents-char-02">
+      <div class="front-kv-contents-char-02 fuwafuwa duration-12 delay-04">
         <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-kv-contents-char-02.webp" alt="">
       </div>
-      <div class="front-kv-contents-char-03">
+      <div class="front-kv-contents-char-03 fuwafuwa delay-04">
         <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-kv-contents-char-03.webp" alt="">
       </div>
-      <div class="front-kv-contents-char-04">
+      <div class="front-kv-contents-char-04 fuwafuwa duration-11 delay-06">
         <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-kv-contents-char-04.webp" alt="">
       </div>
-      <div class="front-kv-contents-char-05">
+      <div class="front-kv-contents-char-05 fuwafuwa delay-01">
         <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-kv-contents-char-05.webp" alt="">
       </div>
     </div>
@@ -45,38 +80,6 @@
   <div class="dummy-kv"></div>
 
   <div class="front-inr">
-    <section class="front-news-banner">
-      <div class="front-news-banner-inr">
-        <?php
-        $latest_news = new WP_Query([
-          'post_type'      => 'post',
-          'posts_per_page' => 1,
-          'no_found_rows'  => true,
-        ]);
-        if ($latest_news->have_posts()):
-          while ($latest_news->have_posts()): $latest_news->the_post(); ?>
-        <?php
-        $categories = get_the_category();
-        if (!empty($categories)) {
-          $selected_cat = $categories[0];
-          foreach ($categories as $cat) {
-            if ($cat->slug === 'news') {
-              $selected_cat = $cat;
-              break;
-            }
-          }
-          echo '<h2 class="TL">' . esc_html($selected_cat->name) . '</h2>';
-        }
-        ?>
-            <a class="front-news-banner-link" href="<?php the_permalink(); ?>">
-              <p class="TM"><?php the_time('Y.n.j'); ?></p>
-              <h3 class="TX"><?php the_title(); ?></h3>
-            </a>
-        <?php endwhile;
-          wp_reset_postdata();
-        endif; ?>
-      </div>
-    </section>
     <div class="front-abput_schedule">
       <section class="front-abput">
         <div class="front-abput-char">
@@ -105,7 +108,7 @@
           </a>
         </div>
         <div class="front-abput-char-under">
-          <div class="front-abput-char-under-img">
+          <div class="front-abput-char-under-img fuwafuwa duration-11 delay-03">
             <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-abput-char-03.webp" alt="">
           </div>
         </div>
@@ -215,7 +218,7 @@
                 <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-services-link-bg.svg" alt="">
               </div>
               <div class="link-item-inr-txt">
-                <p class="TX">予防・検診</p>
+                <p class="TX TX-mini">予防接種・検診</p>
                 <div class="arrow">
                   <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-services-link-arrow.svg" alt="">
                 </div>
@@ -265,7 +268,7 @@
       </section>
     </div>
     <div class="front-first_reserve_payment_news_access_recruit">
-      <div class="front-first_reserve_payment_news_access_recruit-char">
+      <div class="front-first_reserve_payment_news_access_recruit-char fuwafuwa duration-11 delay-03">
         <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-first_reserve_payment_news_access_recruit-char.webp" alt="">
       </div>
       <section class="front-first" id="front-first">

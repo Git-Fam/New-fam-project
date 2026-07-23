@@ -112,6 +112,9 @@ Template Path: pages/
                 院内へは入れませんが、正面入り口横にベビーカー置き場がございます。ご自由にご利用ください。
               </p>
             </div>
+            <div class="item-char fuwafuwa">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/faq/faq-contents-item-char-01.webp" alt="">
+            </div>
           </li>
         </ul>
       </div>
@@ -212,6 +215,9 @@ Template Path: pages/
               <p class="TX">
                 通常の風邪や胃腸炎、発熱などの急性疾患は最長7日分まで、喘息・アトピー・便秘・乾燥肌などの慢性疾患は原則で最長<br>30日分までの処方とさせていただきます。なお昨今の医薬品の深刻な供給不足により、これより短い処方となることもございますのであらかじめご了承ください。
               </p>
+            </div>
+            <div class="item-char fuwafuwa duration-11">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/faq/faq-contents-item-char-02.webp" alt="">
             </div>
           </li>
 

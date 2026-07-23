@@ -82,6 +82,13 @@ img {
 .reserve-btn {
 	position: fixed;
 	z-index: 9999;
+	transition: opacity 0.3s ease-in-out;
+
+	// footer-mainと重なっている時は非表示（JSで付与）
+	&.is-footer-hidden {
+		opacity: 0;
+		pointer-events: none;
+	}
 
 	@include pc {
 		width: pm(224);

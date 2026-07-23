@@ -17,13 +17,13 @@ Template Path: pages/
       <h2 class="TL">採用情報</h2>
     </div>
     <div class="C_kv-char">
-      <div class="char-07">
+      <div class="char-07 fuwafuwa delay-05">
         <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_kv-char-07.webp" alt="">
       </div>
-      <div class="char-08">
+      <div class="char-08 fuwafuwa duration-10">
         <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_kv-char-08.webp" alt="">
       </div>
-      <div class="char-09">
+      <div class="char-09 fuwafuwa delay-06 duration-12">
         <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_kv-char-09.webp" alt="">
       </div>
     </div>

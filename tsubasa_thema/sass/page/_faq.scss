@@ -124,6 +124,16 @@
               }
             }
 
+            .item-char {
+              position: absolute;
+              bottom: sm(-83);
+              right: s(15);
+              width: s(140);
+              height: s(126);
+              pointer-events: none;
+              z-index: 1;
+            }
+
             &.is-active {
               .item-q {
                 .TL {
@@ -141,41 +151,41 @@
         }
 
 
-        &:nth-child(1),
-        &:nth-child(2) {
-          .item-wrap {
+        // &:nth-child(1),
+        // &:nth-child(2) {
+        //   .item-wrap {
 
-            .item {
-              &:last-child {
-                &::before {
-                  content: '';
-                  display: block;
-                  position: absolute;
-                  bottom: sm(-83);
-                  right: s(15);
-                  width: s(140);
-                  height: s(126);
-                  pointer-events: none;
-                  z-index: 1;
-                  @include imgContain("faq/faq-contents-item-char-01.webp")
-                }
-              }
-            }
-          }
-        }
+        //     .item {
+        //       &:last-child {
+        //         &::before {
+        //           content: '';
+        //           display: block;
+        //           position: absolute;
+        //           bottom: sm(-83);
+        //           right: s(15);
+        //           width: s(140);
+        //           height: s(126);
+        //           pointer-events: none;
+        //           z-index: 1;
+        //           @include imgContain("faq/faq-contents-item-char-01.webp")
+        //         }
+        //       }
+        //     }
+        //   }
+        // }
 
-        &:nth-child(2) {
-          .item-wrap {
+        // &:nth-child(2) {
+        //   .item-wrap {
 
-            .item {
-              &:last-child {
-                &::before {
-                  @include imgContain("faq/faq-contents-item-char-02.webp")
-                }
-              }
-            }
-          }
-        }
+        //     .item {
+        //       &:last-child {
+        //         &::before {
+        //           @include imgContain("faq/faq-contents-item-char-02.webp")
+        //         }
+        //       }
+        //     }
+        //   }
+        // }
       }
     }
   }

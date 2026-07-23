@@ -135,6 +135,16 @@ C_contents_box
         display: flex;
         flex-direction: column;
         gap: s(14);
+
+        .item-img {
+          .TX {
+            text-align: center;
+            font-size: s(14);
+            font-weight: 500;
+            margin: s(2) auto s(9);
+            letter-spacing: 0.03em;
+          }
+        }
       }
     }
 

@@ -43,7 +43,7 @@
                     <a class="TX-inr" href="/nocturia">夜尿外来</a>
                   </li>
                   <li class="main-list-item-inr">
-                    <a class="TX-inr" href="/prevention-screening">予防・検診</a>
+                    <a class="TX-inr" href="/prevention-screening">予防接種・検診</a>
                   </li>
                   <li class="main-list-item-inr">
                     <a class="TX-inr" href="/home-visit">訪問診療</a>

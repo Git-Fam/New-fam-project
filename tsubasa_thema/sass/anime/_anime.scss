@@ -20,7 +20,7 @@
 			transform: translateY(0px);
 		}
 		100% {
-			transform: translateY(-15px);
+			transform: translateY(-10px);
 		}
 	}
 }
@@ -258,92 +258,16 @@
 	}
 }
 
-// delay
-.delay-01 {
-	animation-delay: 0.1s !important;
-}
+// delay / duration（0.1s〜10sを0.1刻みで自動生成）
+// 命名は「秒×10」を2桁ゼロ埋め: .delay-01 = 0.1s / .delay-10 = 1s / .delay-100 = 10s
+@for $i from 1 through 100 {
+	$name: if($i < 10, "0#{$i}", "#{$i}");
 
-.delay-02 {
-	animation-delay: 0.2s !important;
-}
+	.delay-#{$name} {
+		animation-delay: #{$i * 0.1}s !important;
+	}
 
-.delay-03 {
-	animation-delay: 0.3s !important;
-}
-
-.delay-04 {
-	animation-delay: 0.4s !important;
-}
-
-.delay-05 {
-	animation-delay: 0.5s !important;
-}
-
-.delay-06 {
-	animation-delay: 0.6s !important;
-}
-
-.delay-07 {
-	animation-delay: 0.7s !important;
-}
-
-.delay-08 {
-	animation-delay: 0.8s !important;
-}
-
-.delay-09 {
-	animation-delay: 0.9s !important;
-}
-
-.delay-10 {
-	animation-delay: 1s !important;
-}
-
-.delay-15 {
-	animation-delay: 1.5s !important;
-}
-
-// duration
-.duration-01 {
-	animation-duration: 0.1s !important;
-}
-
-.duration-02 {
-	animation-duration: 0.2s !important;
-}
-
-.duration-03 {
-	animation-duration: 0.3s !important;
-}
-
-.duration-04 {
-	animation-duration: 0.4s !important;
-}
-
-.duration-05 {
-	animation-duration: 0.5s !important;
-}
-
-.duration-06 {
-	animation-duration: 0.6s !important;
-}
-
-.duration-07 {
-	animation-duration: 0.7s !important;
-}
-
-.duration-08 {
-	animation-duration: 0.8s !important;
-}
-
-.duration-09 {
-	animation-duration: 0.9s !important;
-}
-
-.duration-10 {
-	animation-duration: 1s !important;
-}
-
-.duration-15 {
-	animation-duration: 1.5s !important;
+	.duration-#{$name} {
+		animation-duration: #{$i * 0.1}s !important;
+	}
 }

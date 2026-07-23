@@ -19,6 +19,23 @@ $(function () {
 		$(this).parent().toggleClass("is-active");
 	});
 
+	// footer-mainにreserve-btnが重なっている時は、reserve-btnを非表示
+	var reserveBtn = document.querySelector('.reserve-btn');
+	var footerMain = document.querySelector('.footer-main');
+	if (reserveBtn && footerMain && 'IntersectionObserver' in window) {
+		var reserveObserver = new IntersectionObserver(function (entries) {
+			entries.forEach(function (entry) {
+				// footer-mainが画面内に入る＝reserve-btnと重なる
+				if (entry.isIntersecting) {
+					reserveBtn.classList.add('is-footer-hidden');
+				} else {
+					reserveBtn.classList.remove('is-footer-hidden');
+				}
+			});
+		}, { root: null, threshold: 0 });
+		reserveObserver.observe(footerMain);
+	}
+
 	// 要素が画面下部に来たらshowを付与
 	// $(window).scroll(function () {
 	//   $('.up,.roll').each(function () {

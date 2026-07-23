@@ -14,7 +14,7 @@ Template Path: pages/
 <div class="page-prevention-screening">
   <section class="C_kv">
     <div class="C_kv-board">
-      <h2 class="TL">予防・検診</h2>
+      <h2 class="TL TL-mini">予防接種・検診</h2>
     </div>
     <div class="C_kv-char">
       <div class="char-03">
@@ -155,7 +155,7 @@ Template Path: pages/
   </section>
   <section class="C_under-point">
     <div class="C_under-point-char">
-      <div class="char-02">
+      <div class="char-02 fuwafuwa duration-11 delay-05">
         <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_under-point-char-02.webp" alt="">
       </div>
     </div>

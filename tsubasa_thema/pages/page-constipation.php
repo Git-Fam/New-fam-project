@@ -16,7 +16,7 @@ Template Path: pages/
       <h2 class="TL">便秘外来</h2>
     </div>
     <div class="C_kv-char">
-      <div class="char-02">
+      <div class="char-02 fuwafuwa duration-11 delay-03">
         <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_kv-char-02.webp" alt="">
       </div>
     </div>
@@ -52,7 +52,7 @@ Template Path: pages/
         </div>
       </div>
       <div class="item">
-        <div class="item-char char-02">
+        <div class="item-char char-02 fuwafuwa duration-11 delay-03">
           <img src="<?php echo get_template_directory_uri(); ?>/img/constipation/constipation-contents-items-char-02.webp" alt="">
         </div>
         <div class="C_contents_box">

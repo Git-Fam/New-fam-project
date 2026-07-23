@@ -15,7 +15,7 @@
     right: 0;
     z-index: 2;
     overflow: hidden;
-    pointer-events: none;
+    // pointer-events: none;
 
     .front-kv-branch-l {
       position: absolute;
@@ -33,12 +33,65 @@
       width: 100%;
     }
 
-    .front-kv-lawn {
+    .front-kv-lawn-l {
       position: absolute;
-      bottom: 0;
+      bottom: s(56);
       left: 0;
       z-index: 3;
       width: 100%;
+    }
+
+    .front-kv-lawn-r {
+      position: absolute;
+      bottom: s(56);
+      left: 0;
+      z-index: 3;
+      width: 100%;
+    }
+
+    .front-news-banner {
+      padding: s(9) s(16) s(12) s(20);
+      @include imgCover('common/side-bg.webp');
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      z-index: 5;
+
+      .front-news-banner-inr {
+        display: flex;
+        align-items: center;
+        gap: s(16);
+
+        .TL {
+          flex-shrink: 0;
+          font-size: s(12);
+          color: #ffffff;
+          background-color: #BC6729;
+          height: fit-content;
+          border-radius: 5px;
+          padding: s(1) s(10) s(3) s(12);
+        }
+
+        .front-news-banner-link {
+          color: #000;
+
+          .TM {
+            font-size: s(10);
+            letter-spacing: 0.01em;
+          }
+
+          .TX {
+            margin-top: s(2);
+            font-size: s(12);
+            letter-spacing: 0.05em;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+          }
+        }
+      }
     }
 
     .front-kv-contents {
@@ -129,55 +182,17 @@
 
   .dummy-kv {
     width: 100%;
-    height: 250vh;
+    // height: 250vh;
+    height: 200vh;
     // background-color: #ae5151;
-    @include imgCover('front/front-news-banner-bg.webp');
+    // @include imgCover('front/front-news-banner-bg.webp');
     // background-position: center top s(1450);
+    pointer-events: none;
   }
 
   .front-inr {
     position: relative;
     z-index: 1;
-  }
-
-  .front-news-banner {
-    padding: s(9) s(16) s(12) s(20);
-    @include imgCover('common/side-bg.webp');
-
-    .front-news-banner-inr {
-      display: flex;
-      align-items: center;
-      gap: s(16);
-
-      .TL {
-        flex-shrink: 0;
-        font-size: s(12);
-        color: #ffffff;
-        background-color: #BC6729;
-        height: fit-content;
-        border-radius: 5px;
-        padding: s(1) s(10) s(3) s(12);
-      }
-
-      .front-news-banner-link {
-        color: #000;
-
-        .TM {
-          font-size: s(10);
-          letter-spacing: 0.01em;
-        }
-
-        .TX {
-          margin-top: s(2);
-          font-size: s(12);
-          letter-spacing: 0.05em;
-          display: -webkit-box;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 1;
-          overflow: hidden;
-        }
-      }
-    }
   }
 
   .front-abput_schedule {
@@ -433,6 +448,10 @@
                 color: #ffffff;
                 font-size: s(18);
                 line-height: 1.5;
+
+                // &.TX-mini {
+                //   font-size: s(16);
+                // }
               }
 
               .arrow {
@@ -934,51 +953,15 @@
           bottom: 0;
           right: 0;
           width: s(492);
-          animation: tugOfWar 15s 1s ease-in-out infinite;
+          animation: tugOfWar 4s 1s ease-in-out infinite alternate;
 
           @keyframes tugOfWar {
             0% {
               right: 0;
             }
 
-            10% {
-              right: -20%;
-            }
-
-            20% {
-              right: -40%;
-            }
-
-            30% {
-              right: -55%;
-            }
-
-            40% {
-              right: -65%;
-            }
-
-            50% {
-              right: -75%;
-            }
-
-            60% {
-              right: -85%;
-            }
-
-            70% {
-              right: -95%;
-            }
-
-            77% {
-              right: 20%;
-            }
-
-            90% {
-              right: 15%;
-            }
-
             100% {
-              right: 0;
+              right: -40%;
             }
           }
         }

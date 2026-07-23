@@ -33,6 +33,10 @@ C_kv
       left: 49%;
       transform: translate(-50%, -50%);
       white-space: nowrap;
+
+      &.TL-mini {
+        font-size: s(23);
+      }
     }
   }
 

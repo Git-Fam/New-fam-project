@@ -16,7 +16,7 @@ Template Path: pages/
       <h2 class="TL">手術について</h2>
     </div>
     <div class="C_kv-char">
-      <div class="char-04">
+      <div class="char-04 fuwafuwa duration-11 delay-03">
         <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_kv-char-04.webp" alt="">
       </div>
     </div>
@@ -39,7 +39,7 @@ Template Path: pages/
 
   <section class="C_under-point">
     <div class="C_under-point-char">
-      <div class="char-04">
+      <div class="char-04 fuwafuwa duration-12 delay-05">
         <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_under-point-char-04.webp" alt="">
       </div>
     </div>

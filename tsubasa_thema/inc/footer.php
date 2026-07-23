@@ -16,7 +16,7 @@
         <img src="<?php echo get_template_directory_uri(); ?>/img/footer/page_by_about.webp" alt="">
       <?php endif; ?>
       <?php if (is_page('nocturia')): ?>
-        <img src="<?php echo get_template_directory_uri(); ?>/img/footer/page_by_night-urine.webp" alt="">
+        <img class="fuwafuwa duration-11 delay-03" src="<?php echo get_template_directory_uri(); ?>/img/footer/page_by_night-urine.webp" alt="">
       <?php endif; ?>
       <?php if (is_page('about-surgery')): ?>
         <img src="<?php echo get_template_directory_uri(); ?>/img/footer/page_by_operation.webp" alt="">

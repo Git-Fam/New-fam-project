@@ -51,7 +51,7 @@ Template Path: pages/
         </div>
       </div>
       <div class="item">
-        <div class="item-char char-02">
+        <div class="item-char char-02 fuwafuwa delay-04">
           <img src="<?php echo get_template_directory_uri(); ?>/img/nocturia/nocturia-contents-items-char-02.webp" alt="">
         </div>
         <div class="C_contents_box">

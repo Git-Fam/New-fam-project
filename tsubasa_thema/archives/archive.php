@@ -7,7 +7,7 @@
             <h2 class="TL">お知らせ</h2>
         </div>
         <div class="C_kv-char">
-            <div class="char-05">
+            <div class="char-05 fuwafuwa duration-11 delay-03">
                 <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_kv-char-05.webp" alt="">
             </div>
         </div>
