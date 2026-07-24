@@ -52,8 +52,8 @@ $(function () {
 		const kvWhiteBgTl = gsap.timeline({
 			scrollTrigger: {
 				trigger: ".front-kv",
-				start: "190% top",
-				end: "200% top", // front-kvは100vhなので約50vhスクロールで完了
+				start: "150% top",
+				end: "165% top", // front-kvは100vhなので約50vhスクロールで完了
 				scrub: true,
 			},
 		});

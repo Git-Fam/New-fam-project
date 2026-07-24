@@ -183,7 +183,7 @@
   .dummy-kv {
     width: 100%;
     // height: 250vh;
-    height: 200vh;
+    height: 140vh;
     // background-color: #ae5151;
     // @include imgCover('front/front-news-banner-bg.webp');
     // background-position: center top s(1450);
@@ -198,14 +198,19 @@
   .front-abput_schedule {
     @include imgCover('front/front-news-banner-bg.webp');
     background-position: center top;
+    // padding: s(243) 0 s(288);
+    padding: s(554) 0 s(288);
 
     .front-abput {
-      padding: s(77) 0 0;
+      position: relative;
 
       .front-abput-char {
-        position: relative;
+        position: absolute;
         width: s(225);
         height: s(225);
+        bottom: calc(100% + s(15));
+        left: 0;
+        right: 0;
         margin: 0 auto;
 
         .front-abput-char-img {
@@ -228,7 +233,8 @@
       .TL {
         display: block;
         width: s(195);
-        margin: s(31) auto 0;
+        // margin: s(31) auto 0;
+        margin: 0 auto 0;
       }
 
       .txt {
@@ -260,7 +266,6 @@
     }
 
     .front-schedule {
-      padding-bottom: s(288);
 
       .front-schedule-signboard {
         position: relative;
@@ -638,7 +643,7 @@
 
           .please-main-char {
             position: absolute;
-            top: smax(-115);
+            top: sm(-95);
             left: s(31);
             width: s(287);
             height: s(196);

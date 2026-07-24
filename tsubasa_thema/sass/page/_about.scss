@@ -6,11 +6,30 @@
 .page-about {
 
   .about-kv_greeting {
-    @include imgCover('about/about-kv_greeting-bg.webp');
-    background-position: center top;
+    // @include imgCover('about/about-kv_greeting-bg.webp');
+    // background-position: center top;
+    position: relative;
+
+    .about-kv_greeting-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+      }
+    }
 
     .about-kv {
       padding: s(100) 0 0;
+      position: relative;
+      z-index:3;
 
       .about-kv-char-01 {
         position: relative;
@@ -101,8 +120,9 @@
     }
 
     .about-greeting {
-      padding: s(84) 0 s(302);
+      padding: s(84) 0 s(307);
       position: relative;
+      z-index: 3;
 
       .about-greeting-ttl {
         .C_front-ttl {
@@ -191,6 +211,14 @@
 
 
 
+    }
+
+    .about-kv_greeting-bg-char {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1;
     }
   }
 

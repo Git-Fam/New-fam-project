@@ -13,6 +13,9 @@ Template Path: pages/
 
 <div class="page-about">
   <div class="about-kv_greeting">
+    <div class="about-kv_greeting-bg">
+      <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-kv_greeting-bg.webp" alt="">
+    </div>
     <section class="about-kv">
       <div class="about-kv-char-01">
         <div class="char char-boss">
@@ -43,7 +46,7 @@ Template Path: pages/
         <img src="<?php echo get_template_directory_uri(); ?>/img/common/side-l-logo.svg" alt="つばさこども医院 小児外科/小児科">
       </div>
       <div class="about-kv-char-02">
-        <div class="char char-01">
+        <div class="char char-01 fuwafuwa duration-11">
           <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-kv-char-05.webp" alt="">
         </div>
         <div class="char char-02 fuwafuwa duration-11 delay-03">
@@ -122,6 +125,9 @@ Template Path: pages/
         </div>
       </div>
     </section>
+    <div class="about-kv_greeting-bg-char">
+        <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-kv_greeting-bg-char.webp" alt="">
+    </div>
   </div>
   <section class="about-features">
     <div class="about-features-ttl">

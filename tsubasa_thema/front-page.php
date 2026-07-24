@@ -132,7 +132,7 @@
               <?php get_template_part('inc/schedule-board'); ?>
             </div>
           </div>
-          <div class="front-schedule-signboard-char">
+          <div class="front-schedule-signboard-char fuwafuwa delay-05">
             <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-schedule-signboard-char.webp" alt="">
           </div>
         </div>
@@ -218,7 +218,7 @@
                 <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-services-link-bg.svg" alt="">
               </div>
               <div class="link-item-inr-txt">
-                <p class="TX TX-mini">予防接種・検診</p>
+                <p class="TX TX-mini">予防接種<br>・検診</p>
                 <div class="arrow">
                   <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-services-link-arrow.svg" alt="">
                 </div>

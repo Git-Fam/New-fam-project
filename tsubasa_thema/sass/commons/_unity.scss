@@ -86,8 +86,11 @@ img {
 
 	// footer-mainと重なっている時は非表示（JSで付与）
 	&.is-footer-hidden {
-		opacity: 0;
-		pointer-events: none;
+
+		@media screen and (max-width: 600px){
+			opacity: 0;
+			pointer-events: none;	
+		}
 	}
 
 	@include pc {

@@ -20,7 +20,7 @@ Template Path: pages/
       <div class="char-10">
         <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_kv-char-10.webp" alt="">
       </div>
-      <div class="char-11">
+      <div class="char-11 fuwafuwa duration-11 delay-03">
         <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_kv-char-11.webp" alt="">
       </div>
     </div>
