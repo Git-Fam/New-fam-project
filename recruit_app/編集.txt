@@ -1,0 +1,190 @@
+AIキャリア診断Webアプリ 引き継ぎメモ
+更新日: 2026/07/29
+
+参照資料:
+https://docs.google.com/document/d/1Stzz44D7mnQKIfBGSEakLT-4EhtZVep5mZ9kYq9EGtg/edit?tab=t.wj6odyblqssh
+
+ 
+
+■ ファイル構成
+
+- index.html
+  公開画面。LP / ルール / スワイプ / 分析演出 / 結果 / 求人導線。
+
+- admin.html
+  管理画面。表示数値、診断結果文章、スワイプ画像/質問内容を編集。
+
+- css/reset.css
+  リセットCSS。
+
+- css/styles.css
+  画面デザイン用CSS。HTML/CSSは今後変更予定。
+
+- src/app.js
+  公開側JS。スワイプ、診断ロジック、Supabase保存、LINE導線。
+
+- src/admin.js
+  管理画面JS。マスタ保存、画像アップロード、画像軽量化。
+
+- src/data.js
+  初期マスタ。40問カード、診断軸、15タイプ診断結果。
+
+- config.js
+  Supabase Functions URLなどの接続設定。
+
+- supabase/functions/*
+  Supabase Edge Functions本体。
+
+- supabase/dashboard/*-index.ts
+  Supabase DashboardのEdge Functions Codeタブへ貼る用の単体ファイル。
+
+- supabase/migrations/*.sql
+  DB定義の控え。
+
+
+■ 注意
+
+HTML/CSSはAIで作った仮デザインなので変更予定。
+ただし、JSで使用しているid/class名は変更すると機能が壊れる可能性あり。
+該当箇所はHTML内にコメントあり。
+
+例:
+
+<!-- progressFill jsで使用中 -->
+<span id="progressFill"></span>
+
+
+■ やったこと
+
+- LP、ルール説明、スワイプ、分析演出、診断結果、求人導線を実装
+- Tinder風の左右スワイプを実装
+- 40問の回答データ保存形式を実装
+- 6軸スコア計算を実装
+- 上位2軸から15タイプに分類する診断ロジックを実装
+- 診断結果マスタPDFを元に15タイプ分の初期データを反映
+- 管理画面を実装
+- 管理画面で診断結果文章を15タイプすべて編集可能にした
+- 管理画面で40問の質問内容/画像/表示ラベルを編集可能にした
+- CSSを css/reset.css と css/styles.css に分離
+- JSで使用中のid/class名にコメントを追加
+- Supabaseプロジェクトと接続
+- 管理画面の設定をSupabaseに保存できるようにした
+- app_settings / diagnosis_results / swipe_cards と連携
+- スワイプ画像をSupabase Storageへアップロードできるようにした
+- 画像本体はDBに保存せず、DBにはURLとStorage内パスのみ保存
+- 画像アップロード前にブラウザ側でWebP軽量化
+- 古いStorage画像を削除する処理を実装
+- ユーザー診断結果をdiagnosesへ保存できるようにした
+- diagnosis_eventsへイベントログを保存できるようにした
+- 診断完了後に answers / scores / score_rates / result_type が保存されることを確認済み
+- LINE連携用のEdge Functionsを実装
+  - line-login-url
+  - line-callback
+  - line-webhook
+- config.js は requireLineBeforeResult: true にしている
+
+
+■ Supabase状況
+
+project ref:
+plhfwtnkdnybswkgqugk
+
+Functions base URL:
+https://plhfwtnkdnybswkgqugk.supabase.co/functions/v1
+
+Storage bucket:
+swipe-images
+
+主なテーブル:
+
+- app_settings
+- diagnosis_results
+- swipe_cards
+- diagnoses
+- diagnosis_events
+- line_states
+
+DBテーブル、Storage bucket、診断データ保存、イベントログ保存は設定済み。
+Supabase CLIは使わず、Dashboard中心で作業している。
+
+
+■ 次にやりたいこと
+
+LINEとの本連携。
+
+やりたい流れ:
+
+1. 診断完了
+2. Supabaseに診断結果保存
+3. 「LINEで詳細を見る」を押す
+4. LINE Loginで認証
+5. LINEユーザーIDを取得
+6. diagnoses.line_user_id に保存
+7. Messaging APIで診断結果をLINE送信
+8. diagnoses.status を sent に更新
+9. diagnosis_events に line_login_success / result_sent を保存
+
+
+■ LINE連携で必要なもの
+
+Supabase Secretsに入れる値:
+
+- APP_ORIGIN
+- LINE_LOGIN_CHANNEL_ID
+- LINE_LOGIN_CHANNEL_SECRET
+- LINE_REDIRECT_URI
+- LINE_CHANNEL_ACCESS_TOKEN
+- LINE_CHANNEL_SECRET
+- LINE_BOT_PROMPT
+
+このプロジェクトで使うURL:
+
+LINE_REDIRECT_URI:
+https://plhfwtnkdnybswkgqugk.supabase.co/functions/v1/line-callback
+
+Messaging API Webhook URL:
+https://plhfwtnkdnybswkgqugk.supabase.co/functions/v1/line-webhook
+
+LINE_BOT_PROMPT:
+aggressive
+
+
+■ LINE Developersの現状
+
+LINE Developers Console:
+https://developers.line.biz/console/
+
+Providerは作成済み。
+LINE Loginチャネルの404問題は解決済み。
+次はLINE LoginチャネルとMessaging APIチャネルの値を取得して、Supabase SecretsとLINE Developers側URL設定を進める。
+
+
+■ LINE連携で次にやること
+
+1. LINE LoginチャネルのBasic settingsを開く
+2. Channel ID / Channel secretを取得
+3. LINE Login Callback URLを設定
+   https://plhfwtnkdnybswkgqugk.supabase.co/functions/v1/line-callback
+4. Messaging APIチャネルを作成または確認
+5. Messaging APIチャネルのChannel secretを取得
+6. Messaging APIタブでChannel access tokenを発行/取得
+7. Messaging API Webhook URLを設定
+   https://plhfwtnkdnybswkgqugk.supabase.co/functions/v1/line-webhook
+8. LINE LoginチャネルとMessaging API公式アカウントをリンク
+9. Supabase SecretsへLINE関連値を登録
+10. line-login-url / line-callback / line-webhook をDeploy
+11. 各Functionの Verify JWT with legacy secret をOFF
+12. 診断からLINE送信まで実機テスト
+13. DBで diagnoses.line_user_id / diagnoses.status / diagnosis_events を確認
+
+
+■ 未完了
+
+- LINE Loginチャネル情報の取得
+- Messaging APIチャネル情報の取得
+- Supabase SecretsへのLINE値登録
+- LINE Developers側のCallback URL / Webhook URL設定
+- LINE LoginチャネルとMessaging API公式アカウントのリンク
+- LINE関連Edge Functionsの本番Deploy確認
+- LINE Login実機テスト
+- Messaging API push送信テスト

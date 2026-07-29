@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AIキャリア診断</title>
+    <meta
+      name="description"
+      content="画像を選ぶだけで、あなたに合う仕事が分かるAIキャリア診断。"
+    />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script src="./config.js"></script>
+    <script type="module" src="./src/app.js"></script>
+  </head>
+  <body>
+    <main id="app">
+      <!-- class="screen" と data-screen="lp" は画面切り替えでJS使用中 -->
+      <section class="screen lp-screen" data-screen="lp">
+        <nav class="topbar" aria-label="ページ操作">
+          <span class="brand">AI Career Match</span>
+          <a href="./admin.html" class="admin-link">Admin</a>
+        </nav>
+
+        <div class="hero-copy">
+          <p class="eyebrow">2 min career game</p>
+          <h1>画像を選ぶだけ。<br />あなたに合う仕事が分かる。</h1>
+          <p class="lead">直感で40枚をスワイプ。診断時間：約2分。</p>
+          <div class="hero-actions">
+            <!-- startFromHero jsで使用中 -->
+            <button class="primary-button" id="startFromHero" type="button">診断スタート</button>
+            <!-- startFromLp jsで使用中 -->
+            <button class="text-button" id="startFromLp" type="button">ルールを見る</button>
+          </div>
+        </div>
+
+        <div class="lp-signal" aria-label="診断データ">
+          <!-- lpCompareCount jsで使用中 -->
+          <span><strong id="lpCompareCount">18,542</strong>人と比較</span>
+          <!-- lpJobCount jsで使用中 -->
+          <span>紹介可能求人 <strong id="lpJobCount">12</strong>件</span>
+        </div>
+      </section>
+
+      <!-- class="screen" と data-screen="rules" は画面切り替えでJS使用中 -->
+      <section class="screen compact-screen" data-screen="rules" hidden>
+        <div class="app-shell">
+          <div class="section-head">
+            <p class="eyebrow">Rule</p>
+            <h2>ルールは簡単</h2>
+          </div>
+
+          <div class="rule-grid" aria-label="スワイプルール">
+            <div class="rule-block yes-rule">
+              <span>右</span>
+              <strong>好き・気になる</strong>
+            </div>
+            <div class="rule-block no-rule">
+              <span>左</span>
+              <strong>違う・興味ない</strong>
+            </div>
+          </div>
+
+          <p class="plain-copy">正解はありません。直感で選んでください。</p>
+          <div class="bottom-actions">
+            <!-- startSwipe jsで使用中 -->
+            <button class="primary-button" id="startSwipe" type="button">スタート</button>
+            <!-- skipRules jsで使用中 -->
+            <button class="text-button" id="skipRules" type="button">すぐ始める</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- class="screen" と data-screen="swipe" は画面切り替えでJS使用中 -->
+      <section class="screen swipe-screen" data-screen="swipe" hidden>
+        <div class="swipe-shell">
+          <header class="swipe-top">
+            <div class="progress-track" aria-hidden="true">
+              <!-- progressFill jsで使用中 -->
+              <span id="progressFill"></span>
+            </div>
+            <!-- progressText jsで使用中 -->
+            <p id="progressText">1 / 40</p>
+          </header>
+
+          <!-- cardStack jsでカードを差し込み。内部生成クラスは src/app.js の cardTemplate も参照 -->
+          <div class="card-stack" id="cardStack" aria-live="polite"></div>
+
+          <div class="swipe-actions" aria-label="回答操作">
+            <!-- swipeNo jsで使用中 -->
+            <button class="icon-button no-button" id="swipeNo" type="button" aria-label="違う">
+              ×
+            </button>
+            <!-- swipeYes jsで使用中 -->
+            <button class="icon-button yes-button" id="swipeYes" type="button" aria-label="好き">
+              ♡
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- class="screen" と data-screen="analysis" は画面切り替えでJS使用中 -->
+      <section class="screen compact-screen" data-screen="analysis" hidden>
+        <div class="app-shell analysis-shell">
+          <div class="spinner" aria-hidden="true"></div>
+          <h2>あなたの選択を分析しています…</h2>
+          <!-- compareCount jsで使用中 -->
+          <p><strong id="compareCount">18,542</strong>人の診断データと比較中…</p>
+          <!-- class="analysis-check" と配下 li はJSで演出遅延設定に使用中 -->
+          <ul class="analysis-check">
+            <li>選択傾向</li>
+            <li>思考パターン</li>
+            <li>類似タイプ</li>
+            <li>診断結果作成</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- class="screen" と data-screen="result" は画面切り替えでJS使用中 -->
+      <section class="screen result-screen" data-screen="result" hidden>
+        <div class="result-layout">
+          <!-- resultCard jsでグラデーション色設定に使用中 -->
+          <article class="result-card" id="resultCard">
+            <p class="eyebrow">Your type</p>
+            <!-- resultType jsで使用中 -->
+            <h2 id="resultType">巻き込みチャレンジャー</h2>
+            <!-- resultCopy jsで使用中 -->
+            <p class="result-copy" id="resultCopy"></p>
+            <!-- sameTypePercent jsで使用中 -->
+            <p class="same-type">あなたと同じタイプは全体の <strong id="sameTypePercent">8%</strong></p>
+          </article>
+
+          <section class="result-section">
+            <h3>強み</h3>
+            <!-- strengthList jsで使用中 -->
+            <ul class="tag-list" id="strengthList"></ul>
+          </section>
+
+          <section class="result-section">
+            <h3>向いている仕事</h3>
+            <!-- jobList jsで使用中 -->
+            <ul class="job-list" id="jobList"></ul>
+          </section>
+
+          <section class="result-section">
+            <h3>おすすめ業界</h3>
+            <!-- industryList jsで使用中 -->
+            <ul class="tag-list" id="industryList"></ul>
+          </section>
+
+          <section class="result-section">
+            <h3>診断バランス</h3>
+            <!-- axisBars jsで使用中 -->
+            <div class="axis-bars" id="axisBars"></div>
+          </section>
+
+          <!-- resultDescription jsで使用中 -->
+          <p class="result-description" id="resultDescription"></p>
+          <!-- saveNotice jsで使用中 -->
+          <p class="save-notice" id="saveNotice"></p>
+
+          <div class="share-actions" aria-label="共有">
+            <!-- shareX jsで使用中 -->
+            <button class="secondary-button" id="shareX" type="button">Xでシェア</button>
+            <!-- shareLine jsで使用中 -->
+            <button class="secondary-button" id="shareLine" type="button">LINEでシェア</button>
+          </div>
+
+          <div class="bottom-actions">
+            <!-- showJobs jsで使用中 -->
+            <button class="primary-button" id="showJobs" type="button">求人を見る</button>
+            <!-- retryResult jsで使用中 -->
+            <button class="text-button" id="retryResult" type="button">再診断</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- class="screen" と data-screen="jobs" は画面切り替えでJS使用中 -->
+      <section class="screen compact-screen" data-screen="jobs" hidden>
+        <div class="app-shell jobs-shell">
+          <p class="eyebrow">Private offers</p>
+          <!-- jobLeadTitle jsで使用中 -->
+          <h2 id="jobLeadTitle">あなたに合う求人があります。</h2>
+          <!-- jobLeadCopy jsで使用中 -->
+          <p id="jobLeadCopy">企業名は登録後に公開されます。今は件数とマッチ度だけ確認できます。</p>
+
+          <div class="job-metrics" aria-label="求人件数">
+            <div>
+              <span>紹介可能求人</span>
+              <!-- jobCount jsで使用中 -->
+              <strong><span id="jobCount">12</span>件</strong>
+            </div>
+            <div>
+              <span>マッチ度90%以上</span>
+              <!-- highMatchCount jsで使用中 -->
+              <strong><span id="highMatchCount">4</span>件</strong>
+            </div>
+          </div>
+
+          <!-- lineCta jsで使用中 -->
+          <button class="line-button" id="lineCta" type="button">LINEで詳細を見る</button>
+          <!-- retryJobs jsで使用中 -->
+          <button class="text-button" id="retryJobs" type="button">再診断</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

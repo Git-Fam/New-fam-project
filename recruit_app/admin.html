@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AIキャリア診断 Admin</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script src="./config.js"></script>
+    <script type="module" src="./src/admin.js"></script>
+  </head>
+  <body>
+    <main class="admin-main">
+      <header class="admin-header">
+        <div>
+          <p class="eyebrow">Admin</p>
+          <h1>管理画面</h1>
+        </div>
+        <a class="secondary-button" href="./index.html">アプリへ戻る</a>
+      </header>
+
+      <section class="admin-section">
+        <h2>表示数値</h2>
+        <div class="form-grid">
+          <label>
+            比較人数
+            <!-- comparisonCountInput jsで使用中 -->
+            <input id="comparisonCountInput" type="number" min="0" step="1" />
+          </label>
+          <label>
+            紹介可能求人数
+            <!-- jobCountInput jsで使用中 -->
+            <input id="jobCountInput" type="number" min="0" step="1" />
+          </label>
+          <label>
+            マッチ度90%以上
+            <!-- highMatchCountInput jsで使用中 -->
+            <input id="highMatchCountInput" type="number" min="0" step="1" />
+          </label>
+          <label class="checkbox-label">
+            <!-- requireLineInput jsで使用中 -->
+            <input id="requireLineInput" type="checkbox" />
+            LINE登録後に結果を表示
+          </label>
+        </div>
+        <!-- saveGeneral jsで使用中 -->
+        <button class="primary-button" id="saveGeneral" type="button">保存</button>
+      </section>
+
+      <section class="admin-section">
+        <h2>診断結果文章</h2>
+        <label>
+          タイプ
+          <!-- resultSelect jsで使用中 -->
+          <select id="resultSelect"></select>
+        </label>
+        <!-- resultTypeList jsで使用中。15タイプを一覧表示して編集対象を切り替える -->
+        <div class="admin-type-list" id="resultTypeList" aria-label="診断結果タイプ一覧"></div>
+        <label>
+          ResultType（判定キー）
+          <!-- resultTypeKeyInput jsで使用中。診断ロジックのキーなので編集不可 -->
+          <input id="resultTypeKeyInput" type="text" readonly />
+        </label>
+        <label>
+          タイプ名
+          <!-- resultNameInput jsで使用中 -->
+          <input id="resultNameInput" type="text" />
+        </label>
+        <label>
+          キャッチコピー
+          <!-- resultCatchInput jsで使用中 -->
+          <input id="resultCatchInput" type="text" />
+        </label>
+        <label>
+          説明文
+          <!-- resultDescriptionInput jsで使用中 -->
+          <textarea id="resultDescriptionInput" rows="5"></textarea>
+        </label>
+        <label>
+          強み（1行に1つ）
+          <!-- resultStrengthsInput jsで使用中 -->
+          <textarea id="resultStrengthsInput" rows="5"></textarea>
+        </label>
+        <label>
+          向いている仕事（1行に1つ）
+          <!-- resultJobsInput jsで使用中 -->
+          <textarea id="resultJobsInput" rows="5"></textarea>
+        </label>
+        <label>
+          おすすめ業界（1行に1つ）
+          <!-- resultIndustriesInput jsで使用中 -->
+          <textarea id="resultIndustriesInput" rows="5"></textarea>
+        </label>
+        <label>
+          LINE送信文
+          <!-- resultLineInput jsで使用中 -->
+          <textarea id="resultLineInput" rows="3"></textarea>
+        </label>
+        <label>
+          同タイプ割合（%）
+          <!-- resultPercentInput jsで使用中 -->
+          <input id="resultPercentInput" type="number" min="1" max="99" step="1" />
+        </label>
+        <!-- saveResult jsで使用中 -->
+        <button class="primary-button" id="saveResult" type="button">結果文章を保存</button>
+      </section>
+
+      <section class="admin-section">
+        <h2>スワイプ画像/質問内容</h2>
+        <label>
+          カード
+          <!-- cardSelect jsで使用中 -->
+          <select id="cardSelect"></select>
+        </label>
+        <!-- cardList jsで使用中。40問を一覧表示して編集対象を切り替える -->
+        <div class="admin-type-list admin-card-list" id="cardList" aria-label="スワイプカード一覧"></div>
+        <label>
+          質問文
+          <!-- cardQuestionInput jsで使用中 -->
+          <textarea id="cardQuestionInput" rows="3"></textarea>
+        </label>
+        <label>
+          画像URL
+          <!-- cardImageInput jsで使用中 -->
+          <input id="cardImageInput" type="url" />
+        </label>
+        <!-- cardImageStoragePathInput jsで使用中。Supabase Storage内のパスだけを保持し、DBに画像本体を入れない -->
+        <input id="cardImageStoragePathInput" type="hidden" />
+        <!-- cardImageDropzone/cardImageFileInput jsで使用中。画像をStorageへアップロードしてURL欄を更新 -->
+        <div class="image-dropzone" id="cardImageDropzone" role="button" tabindex="0">
+          <strong>画像をドラッグ&ドロップ</strong>
+          <span>またはクリックして画像を選択（JPG / PNG / WebP、自動でWebP軽量化）</span>
+          <input id="cardImageFileInput" type="file" accept="image/jpeg,image/png,image/webp" />
+        </div>
+        <label>
+          表示ラベル
+          <!-- cardVisualInput jsで使用中 -->
+          <input id="cardVisualInput" type="text" />
+        </label>
+        <!-- cardPreview jsで使用中 -->
+        <div class="admin-preview" id="cardPreview"></div>
+        <!-- saveCard jsで使用中 -->
+        <button class="primary-button" id="saveCard" type="button">画像を保存</button>
+      </section>
+
+      <section class="admin-section">
+        <h2>設定データ</h2>
+        <div class="admin-actions">
+          <!-- syncSupabase jsで使用中 -->
+          <button class="secondary-button" id="syncSupabase" type="button">Supabaseへ全データ保存</button>
+          <!-- exportSettings jsで使用中 -->
+          <button class="secondary-button" id="exportSettings" type="button">書き出し</button>
+          <!-- importSettings jsで使用中 -->
+          <button class="secondary-button" id="importSettings" type="button">読み込み</button>
+          <!-- resetSettings jsで使用中 -->
+          <button class="text-button danger-text" id="resetSettings" type="button">リセット</button>
+        </div>
+        <!-- settingsJson jsで使用中 -->
+        <textarea id="settingsJson" rows="8" spellcheck="false"></textarea>
+        <!-- adminStatus jsで使用中 -->
+        <p class="admin-status" id="adminStatus" role="status"></p>
+      </section>
+    </main>
+  </body>
+</html>
