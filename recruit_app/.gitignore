@@ -1,0 +1,19 @@
+# macOS / editor noise
+.DS_Store
+*~
+
+# Local secrets and environment-specific settings
+.env
+.env.*
+*.local
+
+
+# Dependencies / build output
+node_modules/
+dist/
+build/
+.supabase/
+
+# CSS is source in this project and must be tracked.
+!css/
+!css/*.css
