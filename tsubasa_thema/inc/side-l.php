@@ -15,6 +15,13 @@
           <img src="<?php echo get_template_directory_uri(); ?>/img/common/side-l-logo.svg" alt="つばさこども医院 小児外科/小児科">
         </a>
       </div>
+      <div class="info">
+        <p class="ad">〒921-8832 石川県野々市市藤平田1-269</p>
+        <p class="tel">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/common/side-l-info-tel-icon.svg" alt="電話番号">
+          076-123-456
+        </p>
+      </div>
       <div class="sns">
         <a href="<?php echo esc_url(SCF::get_option_meta('site-settings', 'instagram_url')); ?>" target="_blank" rel="noopener noreferrer">
           <img src="<?php echo get_template_directory_uri(); ?>/img/common/side-l-sns-instagram.svg" alt="instagram">

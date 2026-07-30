@@ -2,7 +2,7 @@
 
 <!-- 共有 これ以下 -->
 </main>
-<footer class="footer">
+<footer class="footer<?php if (is_page('about')): ?> is-about-footer<?php endif; ?>">
   <!--
       下の場合は『is-under』
       上の場合は『is-above』
@@ -12,9 +12,9 @@
       <?php if (is_front_page()): ?>
         <img src="<?php echo get_template_directory_uri(); ?>/img/footer/page_by_front.webp" alt="">
       <?php endif; ?>
-      <?php if (is_page('about')): ?>
+      <!-- <?php if (is_page('about')): ?>
         <img src="<?php echo get_template_directory_uri(); ?>/img/footer/page_by_about.webp" alt="">
-      <?php endif; ?>
+      <?php endif; ?> -->
       <?php if (is_page('nocturia')): ?>
         <img class="fuwafuwa duration-11 delay-03" src="<?php echo get_template_directory_uri(); ?>/img/footer/page_by_night-urine.webp" alt="">
       <?php endif; ?>

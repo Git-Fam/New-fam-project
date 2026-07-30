@@ -18,8 +18,19 @@
               <li class="main-list-item">
                 <a class="TX" href="<?php echo home_url(); ?>">TOP</a>
               </li>
-              <li class="main-list-item">
-                <a class="TX" href="/about">当院について</a>
+              <li class="main-list-item main-list-item-accordion">
+                <p class="TX">当院について</p>
+                <ul class="main-list-inr">
+                  <li class="main-list-item-inr">
+                    <a class="TX-inr" href="/about">見守りの森</a>
+                  </li>
+                  <li class="main-list-item-inr">
+                    <a class="TX-inr" href="/about#about-greeting">あいさつ</a>
+                  </li>
+                  <li class="main-list-item-inr">
+                    <a class="TX-inr" href="/about#about-features">当院の特徴</a>
+                  </li>
+                </ul>
               </li>
               <li class="main-list-item">
                 <a class="TX" href="/about-surgery">手術について</a>

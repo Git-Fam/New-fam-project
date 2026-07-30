@@ -9,6 +9,10 @@
   z-index: 10;
   margin-top: sm(-61);
 
+  &.is-about-footer {
+    margin-top: sm(-70);
+  }
+
   .footer_char_by_page {
     position: absolute;
     width: 100%;

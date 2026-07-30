@@ -85,7 +85,7 @@ Template Path: pages/
           <a class="TX" href="#item13">尿膜管遺残症</a>
         </li>
         <li class="list-item">
-          <a class="TX" href="#item14">水腎症</a>
+          <a class="TX" href="#item14">先天性水腎症</a>
         </li>
       </ul>
     </nav>
@@ -494,13 +494,25 @@ Template Path: pages/
               <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_contents_box-ttl-bg.webp" alt="">
             </div>
             <h2 class="TL">
-              水腎症
+              先天性水腎症
             </h2>
           </div>
           <div class="C_contents_box-txt">
             <p class="TX">
-              精巣捻転は、精巣がねじれて血流が止まる緊急疾患です。突然の強い陰嚢痛や腫れ、嘔吐を伴うことがあります。発症後6時間以内の治療が極めて重要で、迅速な手術により精巣を守れる可能性があります。当院では迅速に診察し、疑われる場合は速やかに高次医療機関へ紹介します。疑わしい症状がある場合には早急に受診してください。
+              先天性水腎症は、お腹の中にいる時から腎臓に尿がたまりやすくなる病気です。多くは尿の通り道が狭いことや、尿が逆流することが原因です。軽症では自然に改善することも多く、定期的な超音波検査で経過をみます。発熱や尿路感染を繰り返す場合や、腎機能への影響がある場合には、詳しい検査や手術が必要になることがあります。
             </p>
+          </div>
+          <div class="C_contents_box-accordion">
+            <div class="accordion-ttl">
+              <h3 class="TL">画像で症状を確認する</h3>
+            </div>
+            <div class="accordion-contents">
+              <div class="accordion-contents-inr">
+                <div class="item-img">
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/pediatric-surgery/14-1.webp" alt="">
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
