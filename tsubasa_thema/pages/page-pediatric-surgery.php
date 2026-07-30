@@ -509,7 +509,7 @@ Template Path: pages/
             <div class="accordion-contents">
               <div class="accordion-contents-inr">
                 <div class="item-img">
-                  <img src="<?php echo get_template_directory_uri(); ?>/img/pediatric-surgery/14-1.webp" alt="">
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/pediatric-surgery/14-1.svg" alt="">
                 </div>
               </div>
             </div>
