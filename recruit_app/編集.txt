@@ -153,38 +153,45 @@ aggressive
 
 LINE Developers Console:
 https://developers.line.biz/console/
+（ログインアカウント: fam.three.monkeys@gmail.com / 表示名 三猿）
 
-Providerは作成済み。
-LINE Loginチャネルの404問題は解決済み。
-次はLINE LoginチャネルとMessaging APIチャネルの値を取得して、Supabase SecretsとLINE Developers側URL設定を進める。
+Provider「AIキャリア診断」
+├ LINEログインチャネル「AIキャリア診断」→ 公開済み(Published)
+│   Channel ID: 2010878295
+└ Messaging APIチャネル「三猿」（@413tafkc）→ 有効化済み
+
+取得済みの値（Supabase Secretsに登録済み）:
+- LINE_LOGIN_CHANNEL_ID（AIキャリア診断/Login）
+- LINE_LOGIN_CHANNEL_SECRET（AIキャリア診断/Login）
+- LINE_CHANNEL_SECRET（三猿/Messaging API）
+- LINE_CHANNEL_ACCESS_TOKEN（三猿/Messaging API・長期）
+- LINE_REDIRECT_URI = https://plhfwtnkdnybswkgqugk.supabase.co/functions/v1/line-callback
+- LINE_BOT_PROMPT = aggressive
+- APP_ORIGIN = http://localhost:4173（★本番公開時に本番URLへ変更が必要）
+
+実機テスト成功：診断→LINEログイン→友だち追加→診断結果push送信まで一連で動作確認済み。
 
 
 ■ LINE連携で次にやること
 
-1. LINE LoginチャネルのBasic settingsを開く
-2. Channel ID / Channel secretを取得
-3. LINE Login Callback URLを設定
-   https://plhfwtnkdnybswkgqugk.supabase.co/functions/v1/line-callback
-4. Messaging APIチャネルを作成または確認
-5. Messaging APIチャネルのChannel secretを取得
-6. Messaging APIタブでChannel access tokenを発行/取得
-7. Messaging API Webhook URLを設定
-   https://plhfwtnkdnybswkgqugk.supabase.co/functions/v1/line-webhook
-8. LINE LoginチャネルとMessaging API公式アカウントをリンク
-9. Supabase SecretsへLINE関連値を登録
-10. line-login-url / line-callback / line-webhook をDeploy
-11. 各Functionの Verify JWT with legacy secret をOFF
-12. 診断からLINE送信まで実機テスト
-13. DBで diagnoses.line_user_id / diagnoses.status / diagnosis_events を確認
+[x] 1. LINE LoginチャネルのBasic settingsを開く
+[x] 2. Channel ID / Channel secretを取得
+[x] 3. LINE Login Callback URLを設定
+       https://plhfwtnkdnybswkgqugk.supabase.co/functions/v1/line-callback
+[x] 4. Messaging APIチャネルを作成または確認
+[x] 5. Messaging APIチャネルのChannel secretを取得
+[x] 6. Messaging APIタブでChannel access tokenを発行/取得
+[x] 7. Messaging API Webhook URLを設定
+       https://plhfwtnkdnybswkgqugk.supabase.co/functions/v1/line-webhook
+[x] 8. LINE LoginチャネルとMessaging API公式アカウントをリンク
+[x] 9. Supabase SecretsへLINE関連値を登録
+[x] 10. line-login-url / line-callback / line-webhook をDeploy
+[x] 11. 各Functionの Verify JWT with legacy secret をOFF
+[x] 12. 診断からLINE送信まで実機テスト（成功）
+[x] 13. DBで diagnoses.line_user_id / diagnoses.status / diagnosis_events を確認
 
 
-■ 未完了
 
-- LINE Loginチャネル情報の取得
-- Messaging APIチャネル情報の取得
-- Supabase SecretsへのLINE値登録
-- LINE Developers側のCallback URL / Webhook URL設定
-- LINE LoginチャネルとMessaging API公式アカウントのリンク
-- LINE関連Edge Functionsの本番Deploy確認
-- LINE Login実機テスト
-- Messaging API push送信テスト
+■ 残タスク（連携完了後の改善）
+
+[ ] 本番公開時は APP_ORIGIN を本番URLへ変更
