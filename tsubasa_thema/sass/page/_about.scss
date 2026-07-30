@@ -368,13 +368,13 @@
 
         &.char-01 {
           width: s(151);
-          top: 0;
+          bottom: s(7);
           left: 0;
         }
 
         &.char-02 {
           width: s(146);
-          bottom: s(4);
+          bottom: s(18);
           right: 0;
         }
       }

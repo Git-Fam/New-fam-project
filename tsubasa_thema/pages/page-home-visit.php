@@ -25,11 +25,16 @@ Template Path: pages/
   <section class="home-visit-contents">
     <div class="home-visit-contents-ttl">
       <h2 class="TL">
-        排便はお腹の元気の<br>
-        &nbsp;&nbsp;バロメーターです。
+        通院が難しくても<br>
+        安心の在宅サポート
       </h2>
     </div>
-    <div class="home-visit-contents-items">
+    <div class="home-visit-contents-txt">
+      <p class="TX">
+        当院では、医療的ケアが必要で通院が難しいお子さまを対象に訪問診療を行っています。気管切開カニューレや胃瘻・膀胱瘻カテーテルの交換、人工肛門（ストーマ）の管理をはじめ、全身状態の診察やお薬の調整、ご家族へのケア指導を行います。訪問看護や病院、福祉・教育機関と連携し、ご自宅で安心して生活を続けられるよう継続的にサポートいたします。
+      </p>
+    </div>
+    <!-- <div class="home-visit-contents-items">
       <div class="item">
         <div class="C_contents_box">
           <div class="C_contents_box-ttl">
@@ -84,15 +89,10 @@ Template Path: pages/
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </section>
-
+  <!-- 
   <section class="C_under-point">
-    <!-- <div class="C_under-point-char">
-                            <div class="char-02">
-                                <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_under-point-char-02.webp" alt="">
-                            </div>
-                        </div> -->
     <div class="C_front-ttl">
       <div class="wing left-wing">
         <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
@@ -119,7 +119,7 @@ Template Path: pages/
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 </div>
 
 <?php get_template_part('./inc/footer'); ?>

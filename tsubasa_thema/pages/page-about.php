@@ -54,7 +54,7 @@ Template Path: pages/
         </div>
       </div>
     </section>
-    <section class="about-greeting">
+    <section class="about-greeting" id="about-greeting">
       <div class="about-greeting-ttl">
         <div class="C_front-ttl">
           <div class="wing left-wing">
@@ -129,7 +129,7 @@ Template Path: pages/
         <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-kv_greeting-bg-char.webp" alt="">
     </div>
   </div>
-  <section class="about-features">
+  <section class="about-features" id="about-features">
     <div class="about-features-ttl">
       <div class="C_front-ttl">
         <div class="wing left-wing">
@@ -219,7 +219,7 @@ Template Path: pages/
     </div>
   </section>
 
-  <section class="about-overview">
+  <!-- <section class="about-overview">
     <div class="about-overview-ttl">
       <div class="C_front-ttl">
         <div class="wing left-wing">
@@ -266,7 +266,7 @@ Template Path: pages/
         <p class="TX">水曜 / 土曜午後 / 日・祝</p>
       </li>
     </ul>
-  </section>
+  </section> -->
 </div>
 
 <?php get_template_part('./inc/footer'); ?>

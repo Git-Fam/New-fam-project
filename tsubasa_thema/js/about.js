@@ -6,10 +6,11 @@ $(function () {
 			centeredSlides: true,
 			loop: true,
 			spaceBetween: 24,
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-      },
+			speed: 1000, // 切り替わりアニメーション（デフォルト200ms → ゆっくり）
+			autoplay: {
+				delay: 10000, // 自動スクロール間隔（5秒 → 10秒）
+				disableOnInteraction: false,
+			},
 			navigation: {
 				prevEl: ".about-features-slider-prev",
 				nextEl: ".about-features-slider-next",
