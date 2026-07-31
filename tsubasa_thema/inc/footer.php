@@ -9,9 +9,9 @@
   -->
   <div class="footer_char_by_page is-under">
     <div class="img">
-      <?php if (is_front_page()): ?>
+      <!-- <?php if (is_front_page()): ?>
         <img src="<?php echo get_template_directory_uri(); ?>/img/footer/page_by_front.webp" alt="">
-      <?php endif; ?>
+      <?php endif; ?> -->
       <!-- <?php if (is_page('about')): ?>
         <img src="<?php echo get_template_directory_uri(); ?>/img/footer/page_by_about.webp" alt="">
       <?php endif; ?> -->

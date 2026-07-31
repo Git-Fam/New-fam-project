@@ -255,7 +255,7 @@ Template Path: pages/
       </li>
       <li class="list-item">
         <h3 class="TL">TEL</h3>
-        <p class="TX">000-000-0000</p>
+        <p class="TX">076-282-7272</p>
       </li>
       <li class="list-item">
         <h3 class="TL">診療内容</h3>

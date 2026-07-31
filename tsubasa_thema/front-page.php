@@ -107,35 +107,11 @@
             <p class="TX">当院について</p>
           </a>
         </div>
-        <div class="front-abput-char-under">
+        <!-- <div class="front-abput-char-under">
           <div class="front-abput-char-under-img fuwafuwa duration-11 delay-03">
             <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-abput-char-03.webp" alt="">
           </div>
-        </div>
-      </section>
-      <section class="front-schedule" id="front-schedule">
-        <div class="front-schedule-signboard">
-          <div class="front-schedule-signboard-bg">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-schedule-signboard-bg.webp" alt="">
-          </div>
-          <div class="front-schedule-signboard-inr">
-            <div class="C_front-ttl">
-              <div class="wing left-wing">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
-              </div>
-              <h2 class="TL">診療日程</h2>
-              <div class="wing right-wing">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
-              </div>
-            </div>
-            <div class="signboard-schedule">
-              <?php get_template_part('inc/schedule-board'); ?>
-            </div>
-          </div>
-          <div class="front-schedule-signboard-char fuwafuwa delay-05">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-schedule-signboard-char.webp" alt="">
-          </div>
-        </div>
+        </div> -->
       </section>
     </div>
     <div class="front-services_about">
@@ -156,7 +132,7 @@
         </div>
         <div class="front-services-txt">
           <p class="TX">
-            当院は小児科だけでなく、小児外科の診療体制が整っています。お子様の便秘やおねしょなどの些細な異変から、感染症や怪我に伴う手術まで幅広く対応いたします。
+            当院は一般小児科診療に加え、小児外科診療も行っています。発熱や咳、腹痛だけでなく、けがの処置や小児外科疾患まで幅広く対応いたします。便秘、夜尿の治療には特に力を入れています。
           </p>
         </div>
         <ul class="front-services-links">
@@ -271,6 +247,67 @@
       <div class="front-first_reserve_payment_news_access_recruit-char fuwafuwa duration-11 delay-03">
         <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-first_reserve_payment_news_access_recruit-char.webp" alt="">
       </div>
+      <section class="front-schedule" id="front-schedule">
+        <div class="front-schedule-signboard">
+          <div class="front-schedule-signboard-bg">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-schedule-signboard-bg.webp" alt="">
+          </div>
+          <div class="front-schedule-signboard-inr">
+            <div class="C_front-ttl">
+              <div class="wing left-wing">
+                <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
+              </div>
+              <h2 class="TL">診療日程</h2>
+              <div class="wing right-wing">
+                <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
+              </div>
+            </div>
+            <div class="signboard-schedule">
+              <?php get_template_part('inc/schedule-board'); ?>
+            </div>
+          </div>
+          <!-- <div class="front-schedule-signboard-char fuwafuwa delay-05">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-schedule-signboard-char.webp" alt="">
+          </div> -->
+        </div>
+      </section>
+      <section class="front-access" id="front-access">
+        <div class="front-access-char">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-access-char.webp" alt="">
+        </div>
+        <div class="front-access-bg">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-access-bg.webp" alt="">
+        </div>
+        <div class="front-access-inr">
+          <div class="front-access-ttl">
+            <div class="C_front-ttl">
+              <div class="wing left-wing">
+                <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
+              </div>
+              <h2 class="TL">アクセス</h2>
+              <div class="wing right-wing">
+                <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="front-access-txt">
+            <p class="TX">
+              〒921-8832 石川県野々市市藤平田1丁目269番地<br>
+              TEL/076-282-7272
+            </p>
+          </div>
+          <div class="front-access-map">
+            <div class="map">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3206.4201613315972!2d136.6061646!3d36.5198566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff835f275d80cf1%3A0xcdff084256c8c0fd!2z44CSOTIxLTg4MzIg55-z5bed55yM6YeO44CF5biC5biC6Jek5bmz55Sw77yR5LiB55uu77yS77yW77yZ!5e0!3m2!1sja!2sjp!4v1784271817826!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+            <a class="map-link" href="https://maps.app.goo.gl/qNZQryFcQEpv929n8"
+              target="_blank" rel="noopener noreferrer">
+              Google map を開く
+              <img src="<?php echo get_template_directory_uri(); ?>/img/header/arrow-sp.svg" alt="">
+            </a>
+          </div>
+        </div>
+      </section>
       <section class="front-first" id="front-first">
         <div class="front-first-ttl">
           <div class="C_front-ttl">
@@ -369,195 +406,180 @@
           </div>
         </div>
       </section>
-      <div class="front-reserve_payment_news_access_recruit-wrap">
-        <section class="front-reserve">
-          <div class="front-reserve-char">
-            <div class="char-01 fuwafuwa delay-06">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-reserve-char-01.webp" alt="">
+      <section class="front-payment" id="front-payment">
+        <div class="front-payment-ttl">
+          <div class="C_front-ttl">
+            <div class="wing left-wing">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
             </div>
-            <div class="char-02">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-reserve-char-02.webp" alt="">
+            <h2 class="TL">お支払いについて</h2>
+            <div class="wing right-wing">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
             </div>
-          </div>
-          <div class="front-reserve-ttl">
-            <div class="C_front-ttl">
-              <div class="wing left-wing">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
-              </div>
-              <h2 class="TL">ご予約について</h2>
-              <div class="wing right-wing">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
-              </div>
-            </div>
-          </div>
-          <div class="front-reserve-txt">
-            <p class="TX">
-              ダミーWEBにてご予約を受け付けております。フォームよりご予約が可能です。24時間受付ておりますので、お気軽にご利用ください。
-            </p>
-          </div>
-          <div class="front-reserve-btn">
-            <a class="C_btn C_btn-pd-55" href="<?php echo esc_url(SCF::get_option_meta('site-settings', 'web_reserve')); ?>" target="_blank" rel="noopener noreferrer">
-              <p class="TX">WEB予約</p>
-            </a>
-          </div>
-        </section>
-        <section class="front-payment" id="front-payment">
-          <div class="front-payment-ttl">
-            <div class="C_front-ttl">
-              <div class="wing left-wing">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
-              </div>
-              <h2 class="TL">お支払いについて</h2>
-              <div class="wing right-wing">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
-              </div>
-            </div>
-          </div>
-          <div class="front-payment-txt">
-            <p class="TX">
-              ダミー予防接種や健康診断などすべての診療で、現金または、下記のクレジットカードや電子決済をご利用可能です。
-            </p>
-          </div>
-          <div class="front-payment-logo">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-payment-logo.webp"
-              alt="VISA/MASTER/JCB/AMEX/PayPay/楽天ペイ">
-          </div>
-        </section>
-        <section class="front-news">
-          <div class="front-news-ttl">
-            <div class="C_front-ttl">
-              <div class="wing left-wing">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
-              </div>
-              <h2 class="TL">新着情報</h2>
-              <div class="wing right-wing">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
-              </div>
-            </div>
-          </div>
-          <ul class="front-news-posts">
-            <?php
-            $front_news = new WP_Query([
-              'post_type'      => 'post',
-              'posts_per_page' => 2,
-              'no_found_rows'  => true,
-            ]);
-            if ($front_news->have_posts()):
-              while ($front_news->have_posts()): $front_news->the_post(); ?>
-                <li class="news-post">
-                  <a class="news-post-inr" href="<?php the_permalink(); ?>">
-                    <div class="info-wrap">
-                      <div class="icon">
-                        <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-inr-ttl-icon.svg" alt="">
-                      </div>
-                      <p class="TM"><?php the_time('Y.m.d'); ?></p>
-                      <?php
-                      $categories = get_the_category();
-                      if (!empty($categories)) {
-                        $selected_cat = $categories[0];
-                        foreach ($categories as $cat) {
-                          if ($cat->slug === 'news') {
-                            $selected_cat = $cat;
-                            break;
-                          }
-                        }
-                        echo '<p class="TG">' . esc_html($selected_cat->name) . '</p>';
-                      }
-                      ?>
-                    </div>
-                    <div class="ttl-wrap">
-                      <h3 class="TL"><?php the_title(); ?></h3>
-                    </div>
-                  </a>
-                </li>
-            <?php endwhile;
-              wp_reset_postdata();
-            endif; ?>
-          </ul>
-        </section>
-        <section class="front-access" id="front-access">
-          <div class="front-access-char">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-access-char.webp" alt="">
-          </div>
-          <div class="front-access-ttl">
-            <div class="C_front-ttl">
-              <div class="wing left-wing">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
-              </div>
-              <h2 class="TL">アクセス</h2>
-              <div class="wing right-wing">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
-              </div>
-            </div>
-          </div>
-          <div class="front-access-txt">
-            <p class="TX">
-              〒921-8832 石川県野々市市藤平田1丁目269番地<br>
-              TEL/000-000-000
-            </p>
-          </div>
-          <div class="front-access-map">
-            <div class="map">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3206.4201613315972!2d136.6061646!3d36.5198566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5ff835f275d80cf1%3A0xcdff084256c8c0fd!2z44CSOTIxLTg4MzIg55-z5bed55yM6YeO44CF5biC5biC6Jek5bmz55Sw77yR5LiB55uu77yS77yW77yZ!5e0!3m2!1sja!2sjp!4v1784271817826!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            </div>
-            <a class="map-link" href="https://maps.app.goo.gl/qNZQryFcQEpv929n8"
-              target="_blank" rel="noopener noreferrer">
-              Google map を開く
-              <img src="<?php echo get_template_directory_uri(); ?>/img/header/arrow-sp.svg" alt="">
-            </a>
-          </div>
-        </section>
-        <section class="front-recruit">
-          <div class="front-recruit-ttl">
-            <div class="C_front-ttl">
-              <div class="wing left-wing">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
-              </div>
-              <h2 class="TL">採用情報</h2>
-              <div class="wing right-wing">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
-              </div>
-            </div>
-          </div>
-          <div class="front-recruit-txt">
-            <p class="TX">
-              当院で一緒に働く方を募集しております。たくさんのご応募心よりお待ちしております。
-            </p>
-          </div>
-          <div class="front-recruit-btn">
-            <a class="C_btn C_btn-pd-50" href="/recruit">
-              <p class="TX">募集要項</p>
-            </a>
-          </div>
-          <div class="front-recruit-char">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-contact-char.webp" alt="">
-          </div>
-        </section>
-      </div>
-    </div>
-    <section class="front-contact">
-      <div class="front-contact-ttl">
-        <div class="C_front-ttl">
-          <div class="wing left-wing">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
-          </div>
-          <h2 class="TL">お問い合わせ</h2>
-          <div class="wing right-wing">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
           </div>
         </div>
+        <div class="front-payment-txt">
+          <p class="TX">
+            ダミー予防接種や健康診断などすべての診療で、現金または、下記のクレジットカードや電子決済をご利用可能です。
+          </p>
+        </div>
+        <div class="front-payment-logo">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-payment-logo.webp"
+            alt="VISA/MASTER/JCB/AMEX/PayPay/楽天ペイ">
+        </div>
+      </section>
+      <section class="front-contact">
+        <div class="front-contact-char">
+          <div class="char-01 fuwafuwa delay-06">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-contact-char-01.webp" alt="">
+          </div>
+          <div class="char-02">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-contact-char-02.webp" alt="">
+          </div>
+        </div>
+        <div class="front-contact-bg">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-contact-bg.webp" alt="">
+        </div>
+        <div class="front-contact-inr">
+          <div class="front-contact-ttl">
+            <div class="C_front-ttl">
+              <div class="wing left-wing">
+                <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
+              </div>
+              <h2 class="TL">お問い合わせ</h2>
+              <div class="wing right-wing">
+                <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="front-contact-txt">
+            <p class="TX">
+              診療予約、採用エントリー、当院にご質問のある方はお気軽にお問い合わせください。
+            </p>
+          </div>
+          <div class="front-contact-btn">
+            <a class="C_btn C_btn-pd-45" href="/contact">
+              <p class="TX">お問い合わせフォーム</p>
+            </a>
+          </div>
+        </div>
+      </section>
+      <!-- <section class="front-reserve">
+        <div class="front-reserve-char">
+          <div class="char-01 fuwafuwa delay-06">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-reserve-char-01.webp" alt="">
+          </div>
+          <div class="char-02">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-reserve-char-02.webp" alt="">
+          </div>
+        </div>
+        <div class="front-reserve-ttl">
+          <div class="C_front-ttl">
+            <div class="wing left-wing">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
+            </div>
+            <h2 class="TL">ご予約について</h2>
+            <div class="wing right-wing">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="front-reserve-txt">
+          <p class="TX">
+            ダミーWEBにてご予約を受け付けております。フォームよりご予約が可能です。24時間受付ておりますので、お気軽にご利用ください。
+          </p>
+        </div>
+        <div class="front-reserve-btn">
+          <a class="C_btn C_btn-pd-55" href="<?php echo esc_url(SCF::get_option_meta('site-settings', 'web_reserve')); ?>" target="_blank" rel="noopener noreferrer">
+            <p class="TX">WEB予約</p>
+          </a>
+        </div>
+      </section> -->
+      <!-- <section class="front-news">
+        <div class="front-news-ttl">
+          <div class="C_front-ttl">
+            <div class="wing left-wing">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
+            </div>
+            <h2 class="TL">新着情報</h2>
+            <div class="wing right-wing">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
+            </div>
+          </div>
+        </div>
+        <ul class="front-news-posts">
+          <?php
+          $front_news = new WP_Query([
+            'post_type'      => 'post',
+            'posts_per_page' => 2,
+            'no_found_rows'  => true,
+          ]);
+          if ($front_news->have_posts()):
+            while ($front_news->have_posts()): $front_news->the_post(); ?>
+              <li class="news-post">
+                <a class="news-post-inr" href="<?php the_permalink(); ?>">
+                  <div class="info-wrap">
+                    <div class="icon">
+                      <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-inr-ttl-icon.svg" alt="">
+                    </div>
+                    <p class="TM"><?php the_time('Y.m.d'); ?></p>
+                    <?php
+                    $categories = get_the_category();
+                    if (!empty($categories)) {
+                      $selected_cat = $categories[0];
+                      foreach ($categories as $cat) {
+                        if ($cat->slug === 'news') {
+                          $selected_cat = $cat;
+                          break;
+                        }
+                      }
+                      echo '<p class="TG">' . esc_html($selected_cat->name) . '</p>';
+                    }
+                    ?>
+                  </div>
+                  <div class="ttl-wrap">
+                    <h3 class="TL"><?php the_title(); ?></h3>
+                  </div>
+                </a>
+              </li>
+          <?php endwhile;
+            wp_reset_postdata();
+          endif; ?>
+        </ul>
+      </section> -->
+      <!-- <section class="front-recruit">
+        <div class="front-recruit-ttl">
+          <div class="C_front-ttl">
+            <div class="wing left-wing">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
+            </div>
+            <h2 class="TL">採用情報</h2>
+            <div class="wing right-wing">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="front-recruit-txt">
+          <p class="TX">
+            当院で一緒に働く方を募集しております。たくさんのご応募心よりお待ちしております。
+          </p>
+        </div>
+        <div class="front-recruit-btn">
+          <a class="C_btn C_btn-pd-50" href="/recruit">
+            <p class="TX">募集要項</p>
+          </a>
+        </div>
+        <div class="front-recruit-char">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-contact-char.webp" alt="">
+        </div>
+      </section> -->
+      <div class="front-tug_of_war-char">
+        <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-tug_of_war-char.webp" alt="">
       </div>
-      <div class="front-contact-txt">
-        <p class="TX">
-          診療予約、採用エントリー、当院にご質問のある方はお気軽にお問い合わせください。
-        </p>
-      </div>
-      <div class="front-contact-btn">
-        <a class="C_btn C_btn-pd-45" href="/contact">
-          <p class="TX">お問い合わせフォーム</p>
-        </a>
-      </div>
-    </section>
+    </div>
+
+    <div class="front-tug_of_war"></div>
+
   </div>
 
 </div>
