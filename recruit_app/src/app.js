@@ -76,6 +76,36 @@ function loadDraft() {
   }
 }
 
+function saveLineConnection(connection) {
+  localStorage.setItem(
+    STORAGE_KEYS.lineConnection,
+    JSON.stringify({
+      ...connection,
+      savedAt: new Date().toISOString()
+    })
+  );
+}
+
+function loadLineConnection() {
+  try {
+    const connection = JSON.parse(localStorage.getItem(STORAGE_KEYS.lineConnection) || "null");
+    if (connection?.lineConnectionId || connection?.diagnosisId) return connection;
+  } catch {
+    // Fall through to the legacy draft fallback below.
+  }
+
+  const draft = loadDraft();
+  if (draft?.diagnosisId && ["linked", "sent"].includes(String(draft.status))) {
+    return {
+      diagnosisId: draft.diagnosisId,
+      lineConnectionId: null,
+      lastSentDiagnosisId: draft.diagnosisId
+    };
+  }
+
+  return null;
+}
+
 function pushLocalEvent(eventName, payload = {}) {
   const events = JSON.parse(localStorage.getItem(STORAGE_KEYS.eventLog) || "[]");
   events.push({
@@ -286,7 +316,7 @@ function cardTemplate(card, index, isNext = false) {
       <div class="card-photo" style="background-image: url('${escapeHtml(card.image)}')"></div>
       <div class="card-shade"></div>
       <div class="card-content">
-        <div class="card-meta">${String(cardNumber).padStart(2, "0")} / ${cards.length} ・ ${escapeHtml(card.visual)}</div>
+        <div class="card-meta">${String(cardNumber).padStart(2, "0")} / ${cards.length}</div>
         <h2>${escapeHtml(card.question)}</h2>
       </div>
     </article>
@@ -516,6 +546,7 @@ function renderResult() {
 function renderJobs(isLocked = false) {
   const diagnosis = state.currentDiagnosis || loadDraft();
   if (diagnosis) state.currentDiagnosis = diagnosis;
+  const hasLineConnection = Boolean(loadLineConnection());
 
   $("#jobCount").textContent = formatNumber(settings.jobCount);
   $("#highMatchCount").textContent = formatNumber(settings.highMatchCount);
@@ -523,10 +554,41 @@ function renderJobs(isLocked = false) {
     ? "あなたに合う求人があります。"
     : "このタイプに合う求人があります。";
   $("#jobLeadCopy").textContent = isLocked
-    ? "診断結果の詳細と一緒に、あなた向けの求人情報をLINEで受け取れます。"
+    ? hasLineConnection
+      ? "LINE連携済みです。タップすると新しい診断結果をLINEに送信します。"
+      : "診断結果の詳細と一緒に、あなた向けの求人情報をLINEで受け取れます。"
     : "企業名は登録後に公開されます。今は件数とマッチ度だけ確認できます。";
+  $("#lineCta").textContent = hasLineConnection ? "LINEで結果を受け取る" : "LINEで詳細を見る";
 
   showScreen("jobs");
+}
+
+async function sendLineResultWithSavedConnection(diagnosis) {
+  const connection = loadLineConnection();
+  if (!connection || !diagnosis?.savedToSupabase || !getFunctionsBaseUrl()) return false;
+
+  const remote = await callEdgeFunction("send-line-result", {
+    diagnosisId: diagnosis.diagnosisId,
+    lineConnectionId: connection.lineConnectionId || null,
+    linkedDiagnosisId: connection.diagnosisId || null
+  });
+
+  if (remote?.status !== "sent") return false;
+
+  saveLineConnection({
+    ...connection,
+    lineConnectionId: remote.lineConnectionId || connection.lineConnectionId || null,
+    diagnosisId: diagnosis.diagnosisId,
+    lastSentDiagnosisId: diagnosis.diagnosisId
+  });
+
+  state.currentDiagnosis = {
+    ...diagnosis,
+    status: "sent",
+    lineSentBySavedConnection: true
+  };
+  saveDraft(state.currentDiagnosis);
+  return true;
 }
 
 async function requestLineLoginUrl() {
@@ -565,6 +627,15 @@ async function handleLineClick() {
     diagnosisId: diagnosis.diagnosisId,
     resultType: diagnosis.resultType
   });
+
+  try {
+    if (await sendLineResultWithSavedConnection(diagnosis)) {
+      renderResult();
+      return;
+    }
+  } catch (error) {
+    console.warn(error);
+  }
 
   try {
     const authorizationUrl = await requestLineLoginUrl();

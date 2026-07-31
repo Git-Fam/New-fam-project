@@ -34,7 +34,7 @@ python3 -m http.server 4173
 - ResultType（判定キー、読み取り専用）
 - タイプ名、キャッチコピー、説明文、強み、向いている仕事、おすすめ業界、LINE送信文
 - 同タイプ割合
-- 各カードの質問文、画像、表示ラベル
+- 各カードの質問文、画像、管理用ラベル
 
 `config.js` の `supabaseFunctionsBaseUrl` が未設定の場合、変更内容はブラウザの `localStorage` に保存されます。
 Supabase接続後は、管理画面の保存ボタンまたは「Supabaseへ全データ保存」でDBへ同期されます。
@@ -56,6 +56,7 @@ supabase functions deploy event-log
 supabase functions deploy admin-master
 supabase functions deploy line-login-url
 supabase functions deploy line-callback
+supabase functions deploy send-line-result
 supabase functions deploy line-webhook
 ```
 
@@ -109,16 +110,18 @@ LINE Developers側に設定するURL:
 - LINE Login Callback URL: `https://plhfwtnkdnybswkgqugk.supabase.co/functions/v1/line-callback`
 - Messaging API Webhook URL: `https://plhfwtnkdnybswkgqugk.supabase.co/functions/v1/line-webhook`
 
-Dashboardだけで設定する場合は、Edge Functionsで以下の3つを作成し、Codeタブへ対応ファイルの中身を貼ってDeployします。
+Dashboardだけで設定する場合は、Edge Functionsで以下の4つを作成し、Codeタブへ対応ファイルの中身を貼ってDeployします。
 
 - Function名: `line-login-url`
   - 貼り付けるファイル: `supabase/dashboard/line-login-url-index.ts`
 - Function名: `line-callback`
   - 貼り付けるファイル: `supabase/dashboard/line-callback-index.ts`
+- Function名: `send-line-result`
+  - 貼り付けるファイル: `supabase/dashboard/send-line-result-index.ts`
 - Function名: `line-webhook`
   - 貼り付けるファイル: `supabase/dashboard/line-webhook-index.ts`
 
-3つとも Settings の `Verify JWT with legacy secret` はOFFにします。
+4つとも Settings の `Verify JWT with legacy secret` はOFFにします。
 
 ## 初回マスタ登録
 

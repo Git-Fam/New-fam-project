@@ -64,7 +64,7 @@ HTML/CSSはAIで作った仮デザインなので変更予定。
 - 診断結果マスタPDFを元に15タイプ分の初期データを反映
 - 管理画面を実装
 - 管理画面で診断結果文章を15タイプすべて編集可能にした
-- 管理画面で40問の質問内容/画像/表示ラベルを編集可能にした
+- 管理画面で40問の質問内容/画像/管理用ラベルを編集可能にした
 - CSSを css/reset.css と css/styles.css に分離
 - JSで使用中のid/class名にコメントを追加
 - Supabaseプロジェクトと接続
@@ -80,7 +80,9 @@ HTML/CSSはAIで作った仮デザインなので変更予定。
 - LINE連携用のEdge Functionsを実装
   - line-login-url
   - line-callback
+  - send-line-result
   - line-webhook
+- 1度LINE連携済みのブラウザでは、再診断時にLINEログインせず結果をLINE送信できるようにした
 - config.js は requireLineBeforeResult: true にしている
 
 
@@ -103,6 +105,7 @@ swipe-images
 - diagnoses
 - diagnosis_events
 - line_states
+- line_connections
 
 DBテーブル、Storage bucket、診断データ保存、イベントログ保存は設定済み。
 Supabase CLIは使わず、Dashboard中心で作業している。
@@ -110,19 +113,18 @@ Supabase CLIは使わず、Dashboard中心で作業している。
 
 ■ 次にやりたいこと
 
-LINEとの本連携。
+LINE連携後のUX調整。
 
 やりたい流れ:
 
 1. 診断完了
 2. Supabaseに診断結果保存
 3. 「LINEで詳細を見る」を押す
-4. LINE Loginで認証
-5. LINEユーザーIDを取得
-6. diagnoses.line_user_id に保存
-7. Messaging APIで診断結果をLINE送信
-8. diagnoses.status を sent に更新
-9. diagnosis_events に line_login_success / result_sent を保存
+4. 初回のみLINE Loginで認証
+5. 2回目以降は保存済みのLINE連携IDを使って再ログインなしで送信
+6. Messaging APIで診断結果をLINE送信
+7. diagnoses.status を sent に更新
+8. diagnosis_events に result_sent を保存
 
 
 ■ LINE連携で必要なもの
@@ -189,6 +191,7 @@ Provider「AIキャリア診断」
 [x] 11. 各Functionの Verify JWT with legacy secret をOFF
 [x] 12. 診断からLINE送信まで実機テスト（成功）
 [x] 13. DBで diagnoses.line_user_id / diagnoses.status / diagnosis_events を確認
+[ ] 14. send-line-result をDeployして、2回目以降の再ログイン不要フローを実機テスト
 
 
 

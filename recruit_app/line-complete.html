@@ -20,9 +20,43 @@
       </section>
     </main>
     <script>
+      const DIAGNOSIS_DRAFT_KEY = "ai-career-diagnosis-draft";
+      const LINE_CONNECTION_KEY = "ai-career-line-connection";
       const params = new URLSearchParams(window.location.search);
       const status = params.get("status");
       const message = params.get("message");
+      const diagnosisId = params.get("diagnosisId");
+      const lineConnectionId = params.get("lineConnectionId");
+
+      if (status === "sent" && diagnosisId) {
+        const now = new Date().toISOString();
+        localStorage.setItem(
+          LINE_CONNECTION_KEY,
+          JSON.stringify({
+            diagnosisId,
+            lineConnectionId: lineConnectionId || null,
+            lastSentDiagnosisId: diagnosisId,
+            linkedAt: now,
+            savedAt: now
+          })
+        );
+
+        try {
+          const draft = JSON.parse(localStorage.getItem(DIAGNOSIS_DRAFT_KEY) || "null");
+          if (draft?.diagnosisId === diagnosisId) {
+            localStorage.setItem(
+              DIAGNOSIS_DRAFT_KEY,
+              JSON.stringify({
+                ...draft,
+                status: "sent",
+                lineSentAt: now
+              })
+            );
+          }
+        } catch {
+          // localStorageのドラフト更新に失敗してもLINE送信自体は完了しています。
+        }
+      }
 
       if (status && status !== "sent") {
         document.querySelector("#completeTitle").textContent = "LINE連携に失敗しました。";

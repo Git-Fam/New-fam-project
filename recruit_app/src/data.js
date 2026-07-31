@@ -118,10 +118,10 @@ export const DEFAULT_CARDS = [
   },
   {
     id: "image-013",
-    question: "人の相談を聞くことが好き",
+    question: "人の相談をじっくり聞くことが好き",
     visual: "相談を受ける場面",
     image: image("photo-1551836022-d5d88e9218df"),
-    yesScores: { people: 2 },
+    yesScores: { people: 2, focus: 1 },
     noScores: { focus: 1 }
   },
   {
@@ -214,10 +214,10 @@ export const DEFAULT_CARDS = [
   },
   {
     id: "image-025",
-    question: "人とのつながりを大切にしたい",
+    question: "相手と丁寧に信頼関係を築きたい",
     visual: "握手・交流",
     image: image("photo-1521791136064-7986c2920216"),
-    yesScores: { people: 2 },
+    yesScores: { people: 2, focus: 1 },
     noScores: { focus: 1 }
   },
   {
@@ -278,10 +278,10 @@ export const DEFAULT_CARDS = [
   },
   {
     id: "image-033",
-    question: "専門知識を磨くことに魅力を感じる",
+    question: "相手の役に立つ専門知識を磨きたい",
     visual: "専門職",
     image: image("photo-1518770660439-4636190af475"),
-    yesScores: { focus: 2 },
+    yesScores: { focus: 2, people: 1 },
     noScores: { people: 1 }
   },
   {
@@ -310,10 +310,10 @@ export const DEFAULT_CARDS = [
   },
   {
     id: "image-037",
-    question: "仲間と成果を喜ぶのが好き",
+    question: "仲間の状況を見ながら成果を支えたい",
     visual: "チームで達成",
     image: image("photo-1556761175-b413da4baf72"),
-    yesScores: { people: 2 },
+    yesScores: { people: 2, focus: 1 },
     noScores: { focus: 1 }
   },
   {
@@ -630,6 +630,7 @@ export const DEFAULT_SETTINGS = {
 export const STORAGE_KEYS = {
   adminSettings: "ai-career-admin-settings",
   diagnosisDraft: "ai-career-diagnosis-draft",
+  lineConnection: "ai-career-line-connection",
   eventLog: "ai-career-event-log"
 };
 

@@ -55,6 +55,23 @@ Deno.serve(async (request: Request) => {
       console.warn("LINE friendship status fetch failed", friendshipError);
     }
     const diagnosisId = lineState.diagnosis_id;
+    let lineConnectionId: string | null = null;
+
+    try {
+      const { data: lineConnection, error: lineConnectionError } = await supabase
+        .from("line_connections")
+        .insert({
+          line_user_id: profile.userId,
+          last_used_at: new Date().toISOString()
+        })
+        .select("id")
+        .single();
+
+      if (lineConnectionError) throw lineConnectionError;
+      lineConnectionId = lineConnection?.id || null;
+    } catch (lineConnectionError) {
+      console.warn("line_connections insert failed", lineConnectionError);
+    }
 
     await supabase
       .from("diagnoses")
@@ -123,6 +140,9 @@ Deno.serve(async (request: Request) => {
     const url = new URL(completionUrl);
     url.searchParams.set("status", "sent");
     url.searchParams.set("diagnosisId", diagnosisId);
+    if (lineConnectionId) {
+      url.searchParams.set("lineConnectionId", lineConnectionId);
+    }
     return redirectResponse(url.toString());
   } catch (error) {
     const appOrigin = Deno.env.get("APP_ORIGIN") || new URL(request.url).origin;
