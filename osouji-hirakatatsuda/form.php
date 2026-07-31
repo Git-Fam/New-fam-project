@@ -59,12 +59,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $headers2  = "From: " . mb_encode_mimeheader($fromName) . " <" . $fromAddress . ">\r\n";
     $headers2 .= "Reply-To: " . $fromAddress . "\r\n";
 
-    // エンベロープFrom(-f)も同じドメインに合わせて認証(SPF)を通す
-    $envelope = "-f" . $fromAddress;
-
     // 2つのメールを送信（日本語対応の mb_send_mail を使用）
-    $mail1 = mb_send_mail($to1, $subject1, $message1, $headers1, $envelope);
-    $mail2 = mb_send_mail($to2, $subject2, $message2, $headers2, $envelope);
+    $mail1 = mb_send_mail($to1, $subject1, $message1, $headers1);
+    $mail2 = mb_send_mail($to2, $subject2, $message2, $headers2);
 
     if ($mail1 && $mail2) {
         // 送信が成功した場合の処理
