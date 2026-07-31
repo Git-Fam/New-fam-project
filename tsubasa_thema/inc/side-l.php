@@ -19,7 +19,7 @@
         <p class="ad">〒921-8832 石川県野々市市藤平田1-269</p>
         <p class="tel">
           <img src="<?php echo get_template_directory_uri(); ?>/img/common/side-l-info-tel-icon.svg" alt="電話番号">
-          076-123-456
+          076-282-7272
         </p>
       </div>
       <div class="sns">

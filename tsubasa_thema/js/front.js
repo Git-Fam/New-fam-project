@@ -64,7 +64,7 @@ $(function () {
 
 	// ヘッダーの表示制御（トップから210vhを境に切り替え）
 	$(window).on("scroll", function () {
-		if ($(this).scrollTop() > window.innerHeight * 2.1) {
+		if ($(this).scrollTop() > window.innerHeight * 1.65) {
 			$(".front-hidden").removeClass("is-hidden");
 		} else {
 			$(".front-hidden").addClass("is-hidden");

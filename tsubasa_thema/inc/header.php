@@ -114,6 +114,11 @@
           <img src="<?php echo get_template_directory_uri(); ?>/img/common/reserve-btn-sp.webp" alt="ご予約はこちらから">
         </picture>
       </a>
+      <?php if (is_front_page()): ?>
+        <a class="tel-btn" href="tel:076-282-7272">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/common/tel-btn.webp" alt="076-282-7272">
+        </a>
+      <?php endif; ?>
     </div>
 
     <div class="whopper">

@@ -83,6 +83,7 @@ img {
 	position: fixed;
 	z-index: 9999;
 	transition: opacity 0.3s ease-in-out;
+	pointer-events: none;
 
 	// footer-mainと重なっている時は非表示（JSで付与）
 	&.is-footer-hidden {
@@ -104,14 +105,41 @@ img {
 	}
 
 	@include sp {
-		width: s(135);
 		bottom: 0;
 		right: 0;
+		width: 100%;
 	}
-
+	
 	.reserve-btn-inr {
 		display: block;
-		width: 100%;
+		pointer-events: auto;
+
+		@include pc{
+			width: 100%;
+		}
+		
+		@include sp{
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			width: s(135);
+		}
+	}
+
+	.tel-btn{
+		display: block;
+		pointer-events: auto;
+		
+		@media screen and (min-width: 449px) {
+			display: none;
+		}
+
+		@include sp{
+			position: absolute;
+			bottom: sm(-3);
+			left: 0;
+			width: s(273);
+		}
 	}
 }
 
