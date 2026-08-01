@@ -7,7 +7,11 @@ const allowedEvents = new Set([
   "line_button_click",
   "line_login_success",
   "line_friend_added",
-  "result_sent"
+  "result_sent",
+  "result_view",
+  "jobs_view",
+  "share_click",
+  "retry_click"
 ]);
 
 const corsHeaders = {
@@ -76,6 +80,27 @@ Deno.serve(async (request: Request) => {
     });
 
     if (error) throw error;
+
+    const { error: analyticsError } = await supabase.from("analytics_events").insert({
+      event_name: body.eventName,
+      diagnosis_id: body.diagnosisId || null,
+      line_user_id: body.lineUserId || null,
+      visitor_id: body.visitorId || null,
+      session_id: body.sessionId || null,
+      funnel_id: body.funnelId || null,
+      result_type: body.resultType || body.payload?.resultType || null,
+      utm_source: body.utmSource || null,
+      utm_medium: body.utmMedium || null,
+      utm_campaign: body.utmCampaign || null,
+      device_type: body.deviceType || null,
+      page_path: body.pagePath || null,
+      payload: body.payload || {},
+      user_agent: userAgent
+    });
+
+    if (analyticsError) {
+      console.warn("analytics_events insert failed", analyticsError);
+    }
 
     return jsonResponse({ ok: true });
   } catch (error) {

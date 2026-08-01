@@ -26,13 +26,17 @@ function getLocalRuntimeSettings() {
 let settings = getLocalRuntimeSettings();
 let cards = getConfiguredCards(settings);
 let results = getConfiguredResults(settings);
+let masterLoadPromise = null;
 
 const state = {
   answers: [],
   currentIndex: 0,
   cardStartedAt: 0,
   isAnimating: false,
-  currentDiagnosis: null
+  currentDiagnosis: null,
+  funnelId: null,
+  loggedResultViews: new Set(),
+  loggedJobsViews: new Set()
 };
 
 const $ = (selector) => document.querySelector(selector);
@@ -53,6 +57,88 @@ function formatNumber(value) {
 
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function createId(prefix) {
+  const id = crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  return `${prefix}_${id}`;
+}
+
+function getOrCreateLocalId(key, prefix) {
+  let value = localStorage.getItem(key);
+  if (!value) {
+    value = createId(prefix);
+    localStorage.setItem(key, value);
+  }
+  return value;
+}
+
+function getOrCreateSessionId() {
+  let value = sessionStorage.getItem(STORAGE_KEYS.sessionId);
+  if (!value) {
+    value = createId("sess");
+    sessionStorage.setItem(STORAGE_KEYS.sessionId, value);
+  }
+  return value;
+}
+
+function captureUtmParams() {
+  const params = new URLSearchParams(window.location.search);
+  const current = {
+    utmSource: params.get("utm_source") || "",
+    utmMedium: params.get("utm_medium") || "",
+    utmCampaign: params.get("utm_campaign") || ""
+  };
+
+  if (current.utmSource || current.utmMedium || current.utmCampaign) {
+    localStorage.setItem(STORAGE_KEYS.utm, JSON.stringify(current));
+    return current;
+  }
+
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEYS.utm) || "{}");
+  } catch {
+    return {};
+  }
+}
+
+function getDeviceType() {
+  const width = window.innerWidth;
+  if (width <= 430) return "mobile";
+  if (width <= 820) return "tablet";
+  return "desktop";
+}
+
+function getCurrentFunnelId() {
+  if (state.funnelId) return state.funnelId;
+  const draft = state.currentDiagnosis || loadDraft();
+  if (draft?.funnelId) {
+    state.funnelId = draft.funnelId;
+    return draft.funnelId;
+  }
+  return localStorage.getItem(STORAGE_KEYS.funnelId) || null;
+}
+
+function startNewFunnel() {
+  const funnelId = createId("fun");
+  state.funnelId = funnelId;
+  localStorage.setItem(STORAGE_KEYS.funnelId, funnelId);
+  return funnelId;
+}
+
+function getAnalyticsContext(payload = {}) {
+  const utm = captureUtmParams();
+  return {
+    visitorId: getOrCreateLocalId(STORAGE_KEYS.visitorId, "vis"),
+    sessionId: getOrCreateSessionId(),
+    funnelId: payload.funnelId || getCurrentFunnelId(),
+    resultType: payload.resultType || state.currentDiagnosis?.resultType || null,
+    utmSource: utm.utmSource || null,
+    utmMedium: utm.utmMedium || null,
+    utmCampaign: utm.utmCampaign || null,
+    deviceType: getDeviceType(),
+    pagePath: `${window.location.pathname}${window.location.hash || ""}`
+  };
 }
 
 function showScreen(name) {
@@ -106,11 +192,24 @@ function loadLineConnection() {
   return null;
 }
 
+function canViewResult(diagnosis) {
+  if (!settings.requireLineBeforeResult) return true;
+  if (!diagnosis) return false;
+
+  const status = String(diagnosis.status || "");
+  if (["linked", "sent"].includes(status)) return true;
+
+  const connection = loadLineConnection();
+  return connection?.lastSentDiagnosisId === diagnosis.diagnosisId;
+}
+
 function pushLocalEvent(eventName, payload = {}) {
+  const context = getAnalyticsContext(payload);
   const events = JSON.parse(localStorage.getItem(STORAGE_KEYS.eventLog) || "[]");
   events.push({
     eventName,
     payload,
+    ...context,
     diagnosisId: state.currentDiagnosis?.diagnosisId || payload.diagnosisId || null,
     createdAt: new Date().toISOString()
   });
@@ -173,13 +272,20 @@ async function loadRemoteMaster() {
   }
 }
 
+function renderLandingMetrics() {
+  $("#lpCompareCount").textContent = formatNumber(settings.comparisonCount);
+  $("#lpJobCount").textContent = formatNumber(settings.jobCount);
+}
+
 function logEvent(eventName, payload = {}) {
   const diagnosisId = state.currentDiagnosis?.diagnosisId || payload.diagnosisId || null;
+  const context = getAnalyticsContext(payload);
   pushLocalEvent(eventName, payload);
   if (diagnosisId && String(diagnosisId).startsWith("diag_")) return;
   callEdgeFunction("event-log", {
     eventName,
     diagnosisId,
+    ...context,
     payload
   }).catch(() => {});
 }
@@ -252,6 +358,7 @@ function buildDiagnosis() {
     rankedAxes,
     resultType,
     result,
+    funnelId: state.funnelId || getCurrentFunnelId(),
     lineUserId: null,
     status: "waiting_for_line",
     savedToSupabase: false,
@@ -269,6 +376,11 @@ async function saveDiagnosis(diagnosis) {
     secondaryAxis: diagnosis.secondaryAxis,
     resultType: diagnosis.resultType,
     resultPayload: diagnosis.result,
+    funnelId: diagnosis.funnelId,
+    ...getAnalyticsContext({
+      funnelId: diagnosis.funnelId,
+      resultType: diagnosis.resultType
+    }),
     status: "waiting_for_line",
     expiresAt: diagnosis.expiresAt
   };
@@ -292,15 +404,18 @@ function resetDiagnosis() {
   state.cardStartedAt = performance.now();
   state.isAnimating = false;
   state.currentDiagnosis = null;
+  state.funnelId = null;
 }
 
 function startRules() {
   showScreen("rules");
 }
 
-function startDiagnosis() {
+async function startDiagnosis() {
+  if (masterLoadPromise) await masterLoadPromise;
   resetDiagnosis();
-  logEvent("diagnosis_start", { cardCount: cards.length });
+  const funnelId = startNewFunnel();
+  logEvent("diagnosis_start", { cardCount: cards.length, funnelId });
   showScreen("swipe");
   renderSwipeCard();
 }
@@ -327,6 +442,18 @@ function renderSwipeCard() {
   const progress = state.currentIndex / cards.length;
   $("#progressFill").style.transform = `scaleX(${progress})`;
   $("#progressText").textContent = `${state.currentIndex + 1} / ${cards.length}`;
+  const progressHint = $("#progressHint");
+  if (progressHint) {
+    const answeredRate = state.currentIndex / cards.length;
+    progressHint.textContent =
+      answeredRate >= 0.75
+        ? "ラストスパート！"
+        : answeredRate >= 0.45
+          ? "半分まであと少し！"
+          : answeredRate >= 0.2
+            ? "いいペースです"
+            : "直感で選ぶだけ";
+  }
 
   const current = cards[state.currentIndex];
   const next = cards[state.currentIndex + 1];
@@ -353,49 +480,96 @@ function bindCardGesture(card) {
   let currentX = 0;
   let currentY = 0;
   let dragging = false;
+  let activePointerId = null;
 
   const moveCard = () => {
     const rotate = currentX / 18;
+    const yesOpacity = Math.min(1, Math.max(0, currentX / 120));
+    const noOpacity = Math.min(1, Math.max(0, -currentX / 120));
     card.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) rotate(${rotate}deg)`;
-    card.querySelector(".choice-yes").style.opacity = Math.max(0, currentX / 120);
-    card.querySelector(".choice-no").style.opacity = Math.max(0, -currentX / 120);
+    card.querySelector(".choice-yes").style.opacity = yesOpacity;
+    card.querySelector(".choice-no").style.opacity = noOpacity;
   };
 
-  card.addEventListener("pointerdown", (event) => {
-    if (state.isAnimating) return;
-    dragging = true;
-    startX = event.clientX;
-    startY = event.clientY;
-    currentX = 0;
-    currentY = 0;
-    card.classList.add("is-dragging");
-    card.setPointerCapture(event.pointerId);
-  });
+  const resetCardPosition = () => {
+    card.style.transform = "";
+    card.querySelector(".choice-yes").style.opacity = "";
+    card.querySelector(".choice-no").style.opacity = "";
+  };
 
-  card.addEventListener("pointermove", (event) => {
-    if (!dragging || state.isAnimating) return;
+  const cleanupPointerListeners = () => {
+    window.removeEventListener("pointermove", handlePointerMove);
+    window.removeEventListener("pointerup", endDrag);
+    window.removeEventListener("pointercancel", cancelDrag);
+    window.removeEventListener("blur", cancelDrag);
+  };
+
+  const releasePointer = () => {
+    if (activePointerId === null) return;
+    try {
+      if (card.hasPointerCapture?.(activePointerId)) {
+        card.releasePointerCapture(activePointerId);
+      }
+    } catch {
+      // Pointer capture may already be released by the browser.
+    }
+    activePointerId = null;
+  };
+
+  const handlePointerMove = (event) => {
+    if (!dragging || state.isAnimating || event.pointerId !== activePointerId) return;
+    event.preventDefault();
     currentX = event.clientX - startX;
     currentY = event.clientY - startY;
     moveCard();
-  });
+  };
 
-  const endDrag = () => {
-    if (!dragging || state.isAnimating) return;
+  const endDrag = (event) => {
+    if (!dragging || event.pointerId !== activePointerId) return;
     dragging = false;
     card.classList.remove("is-dragging");
+    cleanupPointerListeners();
+    releasePointer();
+
+    if (state.isAnimating) return;
 
     if (Math.abs(currentX) > 92) {
       chooseAnswer(currentX > 0 ? "yes" : "no", Math.sign(currentX), currentX, currentY);
       return;
     }
 
-    card.style.transform = "";
-    card.querySelector(".choice-yes").style.opacity = 0;
-    card.querySelector(".choice-no").style.opacity = 0;
+    resetCardPosition();
   };
 
-  card.addEventListener("pointerup", endDrag);
-  card.addEventListener("pointercancel", endDrag);
+  const cancelDrag = () => {
+    if (!dragging) return;
+    dragging = false;
+    card.classList.remove("is-dragging");
+    cleanupPointerListeners();
+    releasePointer();
+    if (!state.isAnimating) resetCardPosition();
+  };
+
+  card.addEventListener("pointerdown", (event) => {
+    if (state.isAnimating || event.button > 0) return;
+    event.preventDefault();
+    dragging = true;
+    activePointerId = event.pointerId;
+    startX = event.clientX;
+    startY = event.clientY;
+    currentX = 0;
+    currentY = 0;
+    card.classList.add("is-dragging");
+    try {
+      card.setPointerCapture(event.pointerId);
+    } catch {
+      // Window-level listeners below still keep desktop dragging reliable.
+    }
+    window.addEventListener("pointermove", handlePointerMove, { passive: false });
+    window.addEventListener("pointerup", endDrag);
+    window.addEventListener("pointercancel", cancelDrag);
+    window.addEventListener("blur", cancelDrag);
+  });
 }
 
 function chooseAnswer(answer, direction = answer === "yes" ? 1 : -1, startX = 0, startY = 0) {
@@ -416,6 +590,8 @@ function chooseAnswer(answer, direction = answer === "yes" ? 1 : -1, startX = 0,
   if (card) {
     const targetX = direction * Math.max(window.innerWidth * 1.15, 520);
     const targetY = startY * 0.7 - 24;
+    card.querySelector(".choice-yes").style.opacity = answer === "yes" ? 1 : 0;
+    card.querySelector(".choice-no").style.opacity = answer === "no" ? 1 : 0;
     card.classList.add(answer === "yes" ? "fly-yes" : "fly-no");
     card.style.transform = `translate3d(${targetX}px, ${targetY}px, 0) rotate(${direction * 24}deg)`;
   }
@@ -441,6 +617,7 @@ async function completeDiagnosis() {
   logEvent("diagnosis_complete", {
     answeredCount: diagnosis.answers.length,
     resultType: diagnosis.resultType,
+    funnelId: diagnosis.funnelId,
     totalTime: diagnosis.answers.reduce((sum, answer) => sum + answer.responseTime, 0)
   });
 
@@ -462,7 +639,7 @@ async function completeDiagnosis() {
   }
 
   if (settings.requireLineBeforeResult) {
-    renderJobs(true);
+    renderJobs();
   } else {
     renderResult();
   }
@@ -501,6 +678,11 @@ function renderResult() {
   }
 
   state.currentDiagnosis = diagnosis;
+  if (!canViewResult(diagnosis)) {
+    renderJobs();
+    return;
+  }
+
   const result = results[diagnosis.resultType] || diagnosis.result;
   const primary = AXES[diagnosis.primaryAxis] || AXES.people;
   const secondary = AXES[diagnosis.secondaryAxis] || AXES.challenge;
@@ -541,26 +723,50 @@ function renderResult() {
   }
 
   showScreen("result");
+  if (!state.loggedResultViews.has(diagnosis.funnelId)) {
+    state.loggedResultViews.add(diagnosis.funnelId);
+    logEvent("result_view", {
+      diagnosisId: diagnosis.diagnosisId,
+      funnelId: diagnosis.funnelId,
+      resultType: diagnosis.resultType
+    });
+  }
 }
 
-function renderJobs(isLocked = false) {
+function renderJobs() {
   const diagnosis = state.currentDiagnosis || loadDraft();
   if (diagnosis) state.currentDiagnosis = diagnosis;
   const hasLineConnection = Boolean(loadLineConnection());
+  const isResultLocked = !canViewResult(diagnosis);
+  const lineCtaLabel = hasLineConnection ? "LINEで結果を受け取る" : "LINEで結果と求人を見る";
 
   $("#jobCount").textContent = formatNumber(settings.jobCount);
   $("#highMatchCount").textContent = formatNumber(settings.highMatchCount);
-  $("#jobLeadTitle").textContent = isLocked
-    ? "あなたに合う求人があります。"
-    : "このタイプに合う求人があります。";
-  $("#jobLeadCopy").textContent = isLocked
-    ? hasLineConnection
-      ? "LINE連携済みです。タップすると新しい診断結果をLINEに送信します。"
-      : "診断結果の詳細と一緒に、あなた向けの求人情報をLINEで受け取れます。"
-    : "企業名は登録後に公開されます。今は件数とマッチ度だけ確認できます。";
-  $("#lineCta").textContent = hasLineConnection ? "LINEで結果を受け取る" : "LINEで詳細を見る";
+  $("#jobLeadTitle").textContent = "あなたに合う求人が見つかりました";
+  $("#jobLeadCopy").textContent = hasLineConnection
+    ? "LINE連携済みです。タップすると新しい診断結果をLINEに送信します。"
+    : "特性分析から高マッチ度の候補を厳選";
+  const lineCtaText = $("#lineCtaText");
+  if (lineCtaText) {
+    lineCtaText.textContent = lineCtaLabel;
+  } else {
+    $("#lineCta").textContent = lineCtaLabel;
+  }
+  const retryJobsButton = $("#retryJobs");
+  retryJobsButton.dataset.action = isResultLocked ? "restart" : "result";
+  retryJobsButton.textContent = isResultLocked ? "もう一度診断する" : "診断結果に戻る";
 
   showScreen("jobs");
+  const funnelId = diagnosis?.funnelId || getCurrentFunnelId();
+  if (funnelId && !state.loggedJobsViews.has(funnelId)) {
+    state.loggedJobsViews.add(funnelId);
+    logEvent("jobs_view", {
+      diagnosisId: diagnosis?.diagnosisId || null,
+      funnelId,
+      resultType: diagnosis?.resultType || null,
+      isResultLocked
+    });
+  }
 }
 
 async function sendLineResultWithSavedConnection(diagnosis) {
@@ -570,7 +776,11 @@ async function sendLineResultWithSavedConnection(diagnosis) {
   const remote = await callEdgeFunction("send-line-result", {
     diagnosisId: diagnosis.diagnosisId,
     lineConnectionId: connection.lineConnectionId || null,
-    linkedDiagnosisId: connection.diagnosisId || null
+    linkedDiagnosisId: connection.diagnosisId || null,
+    ...getAnalyticsContext({
+      funnelId: diagnosis.funnelId,
+      resultType: diagnosis.resultType
+    })
   });
 
   if (remote?.status !== "sent") return false;
@@ -599,7 +809,11 @@ async function requestLineLoginUrl() {
 
   const remote = await callEdgeFunction("line-login-url", {
     diagnosisId: diagnosis.diagnosisId,
-    appCompleteUrl
+    appCompleteUrl,
+    ...getAnalyticsContext({
+      funnelId: diagnosis.funnelId,
+      resultType: diagnosis.resultType
+    })
   });
 
   if (remote?.authorizationUrl) return remote.authorizationUrl;
@@ -625,7 +839,8 @@ async function handleLineClick() {
   state.currentDiagnosis = diagnosis;
   logEvent("line_button_click", {
     diagnosisId: diagnosis.diagnosisId,
-    resultType: diagnosis.resultType
+    resultType: diagnosis.resultType,
+    funnelId: diagnosis.funnelId
   });
 
   try {
@@ -658,8 +873,18 @@ async function handleLineClick() {
     return;
   }
 
-  logEvent("line_login_success", { diagnosisId: diagnosis.diagnosisId, demo: true });
-  logEvent("result_sent", { diagnosisId: diagnosis.diagnosisId, demo: true });
+  logEvent("line_login_success", {
+    diagnosisId: diagnosis.diagnosisId,
+    resultType: diagnosis.resultType,
+    funnelId: diagnosis.funnelId,
+    demo: true
+  });
+  logEvent("result_sent", {
+    diagnosisId: diagnosis.diagnosisId,
+    resultType: diagnosis.resultType,
+    funnelId: diagnosis.funnelId,
+    demo: true
+  });
   state.currentDiagnosis = { ...diagnosis, status: "sent" };
   saveDraft(state.currentDiagnosis);
   renderResult();
@@ -669,6 +894,12 @@ function shareToX() {
   const diagnosis = state.currentDiagnosis || loadDraft();
   if (!diagnosis) return;
   const result = results[diagnosis.resultType] || diagnosis.result;
+  logEvent("share_click", {
+    diagnosisId: diagnosis.diagnosisId,
+    resultType: diagnosis.resultType,
+    funnelId: diagnosis.funnelId,
+    channel: "x"
+  });
   const text = `私のAIキャリア診断は「${result.name}」でした。${result.catchCopy}`;
   const url = new URL("https://twitter.com/intent/tweet");
   url.searchParams.set("text", text);
@@ -677,6 +908,15 @@ function shareToX() {
 }
 
 function shareToLine() {
+  const diagnosis = state.currentDiagnosis || loadDraft();
+  if (diagnosis) {
+    logEvent("share_click", {
+      diagnosisId: diagnosis.diagnosisId,
+      resultType: diagnosis.resultType,
+      funnelId: diagnosis.funnelId,
+      channel: "line"
+    });
+  }
   const url = new URL("https://social-plugins.line.me/lineit/share");
   url.searchParams.set("url", window.location.origin + window.location.pathname);
   window.open(url.toString(), "_blank", "noopener,noreferrer");
@@ -689,10 +929,33 @@ function bindEvents() {
   $("#skipRules").addEventListener("click", startDiagnosis);
   $("#swipeYes").addEventListener("click", () => chooseAnswer("yes", 1));
   $("#swipeNo").addEventListener("click", () => chooseAnswer("no", -1));
-  $("#showJobs").addEventListener("click", () => renderJobs(false));
+  $("#showJobs").addEventListener("click", renderJobs);
+  $("#showJobsSecondary").addEventListener("click", renderJobs);
   $("#lineCta").addEventListener("click", handleLineClick);
-  $("#retryResult").addEventListener("click", startRules);
-  $("#retryJobs").addEventListener("click", startRules);
+  $("#retryResult").addEventListener("click", () => {
+    const diagnosis = state.currentDiagnosis || loadDraft();
+    logEvent("retry_click", {
+      diagnosisId: diagnosis?.diagnosisId || null,
+      resultType: diagnosis?.resultType || null,
+      funnelId: diagnosis?.funnelId || getCurrentFunnelId(),
+      from: "result"
+    });
+    startRules();
+  });
+  $("#retryJobs").addEventListener("click", () => {
+    const diagnosis = state.currentDiagnosis || loadDraft();
+    if ($("#retryJobs").dataset.action === "result" && canViewResult(diagnosis)) {
+      renderResult();
+      return;
+    }
+    logEvent("retry_click", {
+      diagnosisId: diagnosis?.diagnosisId || null,
+      resultType: diagnosis?.resultType || null,
+      funnelId: diagnosis?.funnelId || getCurrentFunnelId(),
+      from: "jobs"
+    });
+    startRules();
+  });
   $("#shareX").addEventListener("click", shareToX);
   $("#shareLine").addEventListener("click", shareToLine);
 
@@ -708,12 +971,14 @@ function initHeroImage() {
   document.documentElement.style.setProperty("--hero-image", `url("${firstImage}")`);
 }
 
-async function init() {
-  await loadRemoteMaster();
+function init() {
   initHeroImage();
   bindEvents();
-  $("#lpCompareCount").textContent = formatNumber(settings.comparisonCount);
-  $("#lpJobCount").textContent = formatNumber(settings.jobCount);
+  renderLandingMetrics();
+  masterLoadPromise = loadRemoteMaster().then(() => {
+    initHeroImage();
+    renderLandingMetrics();
+  });
   if (window.location.hash === "#result" && loadDraft()) {
     state.currentDiagnosis = loadDraft();
     renderResult();

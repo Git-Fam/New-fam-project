@@ -631,7 +631,11 @@ export const STORAGE_KEYS = {
   adminSettings: "ai-career-admin-settings",
   diagnosisDraft: "ai-career-diagnosis-draft",
   lineConnection: "ai-career-line-connection",
-  eventLog: "ai-career-event-log"
+  eventLog: "ai-career-event-log",
+  visitorId: "ai-career-visitor-id",
+  sessionId: "ai-career-session-id",
+  funnelId: "ai-career-funnel-id",
+  utm: "ai-career-utm"
 };
 
 export function getResultKey(primaryAxis, secondaryAxis) {

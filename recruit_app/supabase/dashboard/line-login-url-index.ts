@@ -70,7 +70,16 @@ Deno.serve(async (request: Request) => {
       state,
       diagnosis_id: diagnosisId,
       completion_url: body.appCompleteUrl || null,
-      expires_at: expiresAt
+      expires_at: expiresAt,
+      visitor_id: body.visitorId || null,
+      session_id: body.sessionId || null,
+      funnel_id: body.funnelId || null,
+      result_type: body.resultType || null,
+      utm_source: body.utmSource || null,
+      utm_medium: body.utmMedium || null,
+      utm_campaign: body.utmCampaign || null,
+      device_type: body.deviceType || null,
+      page_path: body.pagePath || null
     });
     if (error) throw error;
 

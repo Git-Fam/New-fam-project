@@ -17,70 +17,93 @@
     <main id="app">
       <!-- class="screen" と data-screen="lp" は画面切り替えでJS使用中 -->
       <section class="screen lp-screen" data-screen="lp">
-        <nav class="topbar" aria-label="ページ操作">
-          <span class="brand">AI Career Match</span>
-          <a href="./admin.html" class="admin-link">Admin</a>
-        </nav>
-
-        <div class="hero-copy">
-          <p class="eyebrow">2 min career game</p>
-          <h1>画像を選ぶだけ。<br />あなたに合う仕事が分かる。</h1>
-          <p class="lead">直感で40枚をスワイプ。診断時間：約2分。</p>
-          <div class="hero-actions">
-            <!-- startFromHero jsで使用中 -->
-            <button class="primary-button" id="startFromHero" type="button">診断スタート</button>
-            <!-- startFromLp jsで使用中 -->
-            <button class="text-button" id="startFromLp" type="button">ルールを見る</button>
+        <div class="experience-shell lp-shell">
+          <div class="lp-header">
+            <p class="lp-badge">キャリア診断 by AI</p>
+            <h1>画像を選ぶだけ。</h1>
+            <p>あなたに合う仕事が分かる。</p>
           </div>
-        </div>
 
-        <div class="lp-signal" aria-label="診断データ">
-          <!-- lpCompareCount jsで使用中 -->
-          <span><strong id="lpCompareCount">18,542</strong>人と比較</span>
-          <!-- lpJobCount jsで使用中 -->
-          <span>紹介可能求人 <strong id="lpJobCount">12</strong>件</span>
+          <div class="lp-orb" aria-hidden="true">
+            <img src="./assets/figma/pc-sparkles.svg" alt="" />
+          </div>
+
+          <div class="lp-bottom">
+            <div class="lp-intro">
+              <p>40枚の画像を直感で選ぶだけ</p>
+              <span>診断時間：約2分</span>
+            </div>
+            <div class="hero-actions">
+              <!-- startFromLp jsで使用中。Figma上はCTA1つのため非表示フックとして保持 -->
+              <button class="visually-hidden" id="startFromLp" type="button">ルールを見る</button>
+              <!-- startFromHero jsで使用中 -->
+              <button class="primary-button" id="startFromHero" type="button">診断スタート（約2分）</button>
+            </div>
+            <div class="lp-signal" aria-label="診断データ">
+              <img src="./assets/figma/pc-dot.svg" alt="" />
+              <!-- lpCompareCount jsで使用中 -->
+              <span><strong id="lpCompareCount">18,542</strong>人が診断済み</span>
+              <!-- lpJobCount jsで使用中。LPには表示しないがJS更新対象として保持 -->
+              <span class="visually-hidden">紹介可能求人 <strong id="lpJobCount">12</strong>件</span>
+            </div>
+          </div>
         </div>
       </section>
 
       <!-- class="screen" と data-screen="rules" は画面切り替えでJS使用中 -->
       <section class="screen compact-screen" data-screen="rules" hidden>
-        <div class="app-shell">
+        <div class="app-shell experience-shell rules-shell">
           <div class="section-head">
-            <p class="eyebrow">Rule</p>
             <h2>ルールは簡単</h2>
+            <p>表示される画像を直感で振り分けましょう</p>
           </div>
 
           <div class="rule-grid" aria-label="スワイプルール">
             <div class="rule-block yes-rule">
-              <span>右</span>
-              <strong>好き・気になる</strong>
+              <span class="rule-icon"><img src="./assets/figma/pc-chevron-right.svg" alt="" /></span>
+              <div>
+                <strong>好き・気になる</strong>
+                <small>右にスワイプ</small>
+              </div>
             </div>
             <div class="rule-block no-rule">
-              <span>左</span>
-              <strong>違う・興味ない</strong>
+              <span class="rule-icon"><img src="./assets/figma/pc-chevron-left.svg" alt="" /></span>
+              <div>
+                <strong>違う・興味ない</strong>
+                <small>左にスワイプ</small>
+              </div>
             </div>
+          </div>
+
+          <div class="desktop-keyboard-tip" aria-hidden="true">
+            <img src="./assets/figma/pc-keyboard.svg" alt="" />
+            <span>キーボードの ← → キーでも操作できます</span>
           </div>
 
           <p class="plain-copy">正解はありません。直感で選んでください。</p>
           <div class="bottom-actions">
             <!-- startSwipe jsで使用中 -->
             <button class="primary-button" id="startSwipe" type="button">スタート</button>
-            <!-- skipRules jsで使用中 -->
-            <button class="text-button" id="skipRules" type="button">すぐ始める</button>
+            <!-- skipRules jsで使用中。Figma上はCTA1つのため非表示フックとして保持 -->
+            <button class="visually-hidden" id="skipRules" type="button">すぐ始める</button>
           </div>
         </div>
       </section>
 
       <!-- class="screen" と data-screen="swipe" は画面切り替えでJS使用中 -->
       <section class="screen swipe-screen" data-screen="swipe" hidden>
-        <div class="swipe-shell">
+        <div class="swipe-shell experience-shell">
           <header class="swipe-top">
+            <div class="progress-header">
+              <!-- progressHint jsで使用中 -->
+              <p id="progressHint">直感で選ぶだけ</p>
+              <!-- progressText jsで使用中 -->
+              <p id="progressText">1 / 40</p>
+            </div>
             <div class="progress-track" aria-hidden="true">
               <!-- progressFill jsで使用中 -->
               <span id="progressFill"></span>
             </div>
-            <!-- progressText jsで使用中 -->
-            <p id="progressText">1 / 40</p>
           </header>
 
           <!-- cardStack jsでカードを差し込み。内部生成クラスは src/app.js の cardTemplate も参照 -->
@@ -89,30 +112,43 @@
           <div class="swipe-actions" aria-label="回答操作">
             <!-- swipeNo jsで使用中 -->
             <button class="icon-button no-button" id="swipeNo" type="button" aria-label="違う">
-              ×
+              <img src="./assets/figma/pc-x.svg" alt="" />
             </button>
             <!-- swipeYes jsで使用中 -->
             <button class="icon-button yes-button" id="swipeYes" type="button" aria-label="好き">
-              ♡
+              <img src="./assets/figma/pc-heart.svg" alt="" />
             </button>
+          </div>
+
+          <div class="keyboard-nav-guide" aria-hidden="true">
+            <span class="key-cap">←</span>
+            <span>キーでパス</span>
+            <span class="key-cap">→</span>
+            <span>キーでセレクト</span>
           </div>
         </div>
       </section>
 
       <!-- class="screen" と data-screen="analysis" は画面切り替えでJS使用中 -->
-      <section class="screen compact-screen" data-screen="analysis" hidden>
-        <div class="app-shell analysis-shell">
-          <div class="spinner" aria-hidden="true"></div>
-          <h2>あなたの選択を分析しています…</h2>
-          <!-- compareCount jsで使用中 -->
-          <p><strong id="compareCount">18,542</strong>人の診断データと比較中…</p>
+      <section class="screen compact-screen analysis-screen" data-screen="analysis" hidden>
+        <div class="app-shell experience-shell analysis-shell">
+          <div class="analysis-header">
+            <div class="spinner analysis-loader" aria-hidden="true">
+              <img src="./assets/figma/analysis-loader.svg" alt="" />
+            </div>
+            <h2>あなたの選択を分析しています…</h2>
+          </div>
+
           <!-- class="analysis-check" と配下 li はJSで演出遅延設定に使用中 -->
           <ul class="analysis-check">
-            <li>選択傾向</li>
-            <li>思考パターン</li>
-            <li>類似タイプ</li>
-            <li>診断結果作成</li>
+            <li><span class="check-icon" aria-hidden="true"></span><span>選択傾向の分析完了</span></li>
+            <li><span class="check-icon" aria-hidden="true"></span><span>思考パターンの特定完了</span></li>
+            <li><span class="check-icon" aria-hidden="true"></span><span>類似タイプとの比較完了</span></li>
+            <li class="is-current"><span class="pulse-icon" aria-hidden="true"></span><span>診断結果を作成中…</span></li>
           </ul>
+
+          <!-- compareCount jsで使用中 -->
+          <p class="analysis-compare"><strong id="compareCount">18,542</strong>人の診断データと比較中…</p>
         </div>
       </section>
 
@@ -120,87 +156,145 @@
       <section class="screen result-screen" data-screen="result" hidden>
         <div class="result-layout">
           <!-- resultCard jsでグラデーション色設定に使用中 -->
-          <article class="result-card" id="resultCard">
-            <p class="eyebrow">Your type</p>
-            <!-- resultType jsで使用中 -->
-            <h2 id="resultType">巻き込みチャレンジャー</h2>
-            <!-- resultCopy jsで使用中 -->
-            <p class="result-copy" id="resultCopy"></p>
+          <article class="result-card specimen-card" id="resultCard">
+            <div class="result-card-header">
+              <p>あなたの診断結果</p>
+              <p>TYPE 02</p>
+            </div>
+            <div class="result-divider" aria-hidden="true"></div>
+
+            <div class="result-type-block">
+              <p class="result-label">CLASSIFICATION</p>
+              <!-- resultType jsで使用中 -->
+              <h2 id="resultType">巻き込みチャレンジャー</h2>
+              <!-- resultCopy jsで使用中 -->
+              <p class="result-copy" id="resultCopy"></p>
+            </div>
+
             <!-- sameTypePercent jsで使用中 -->
-            <p class="same-type">あなたと同じタイプは全体の <strong id="sameTypePercent">8%</strong></p>
+            <p class="same-type">
+              <img src="./assets/figma/result-award.svg" alt="" />
+              <span>あなたと同じタイプは全体の <strong id="sameTypePercent">8%</strong></span>
+            </p>
+
+            <section class="result-section result-strengths">
+              <h3>CORE ATTRIBUTES</h3>
+              <!-- strengthList jsで使用中 -->
+              <ul class="tag-list" id="strengthList"></ul>
+            </section>
+
+            <section class="result-section result-jobs">
+              <h3>SUITABILITY INDEX</h3>
+              <!-- jobList jsで使用中 -->
+              <ul class="job-list" id="jobList"></ul>
+            </section>
+
+            <section class="result-section result-hidden-data" aria-hidden="true">
+              <h3>おすすめ業界</h3>
+              <!-- industryList jsで使用中 -->
+              <ul class="tag-list" id="industryList"></ul>
+            </section>
+
+            <section class="result-section result-hidden-data" aria-hidden="true">
+              <h3>診断バランス</h3>
+              <!-- axisBars jsで使用中 -->
+              <div class="axis-bars" id="axisBars"></div>
+            </section>
+
+            <!-- resultDescription jsで使用中 -->
+            <p class="result-description result-hidden-data" id="resultDescription"></p>
+            <!-- saveNotice jsで使用中 -->
+            <p class="save-notice result-hidden-data" id="saveNotice"></p>
           </article>
 
-          <section class="result-section">
-            <h3>強み</h3>
-            <!-- strengthList jsで使用中 -->
-            <ul class="tag-list" id="strengthList"></ul>
-          </section>
-
-          <section class="result-section">
-            <h3>向いている仕事</h3>
-            <!-- jobList jsで使用中 -->
-            <ul class="job-list" id="jobList"></ul>
-          </section>
-
-          <section class="result-section">
-            <h3>おすすめ業界</h3>
-            <!-- industryList jsで使用中 -->
-            <ul class="tag-list" id="industryList"></ul>
-          </section>
-
-          <section class="result-section">
-            <h3>診断バランス</h3>
-            <!-- axisBars jsで使用中 -->
-            <div class="axis-bars" id="axisBars"></div>
-          </section>
-
-          <!-- resultDescription jsで使用中 -->
-          <p class="result-description" id="resultDescription"></p>
-          <!-- saveNotice jsで使用中 -->
-          <p class="save-notice" id="saveNotice"></p>
+          <div class="result-primary-action">
+            <!-- showJobs jsで使用中 -->
+            <button class="primary-button" id="showJobs" type="button">あなたに合う求人を見る</button>
+            <p>あなたにマッチした求人が見つかっています</p>
+          </div>
 
           <div class="share-actions" aria-label="共有">
             <!-- shareX jsで使用中 -->
-            <button class="secondary-button" id="shareX" type="button">Xでシェア</button>
+            <button class="secondary-button" id="shareX" type="button">
+              <img src="./assets/figma/result-share-x.svg" alt="" />
+              <span>Xでシェア</span>
+            </button>
             <!-- shareLine jsで使用中 -->
-            <button class="secondary-button" id="shareLine" type="button">LINEでシェア</button>
+            <button class="secondary-button" id="shareLine" type="button">
+              <img src="./assets/figma/result-message-circle.svg" alt="" />
+              <span>LINEで送る</span>
+            </button>
           </div>
 
-          <div class="bottom-actions">
-            <!-- showJobs jsで使用中 -->
-            <button class="primary-button" id="showJobs" type="button">求人を見る</button>
+          <div class="result-tertiary-actions">
             <!-- retryResult jsで使用中 -->
             <button class="text-button" id="retryResult" type="button">再診断</button>
+            <!-- showJobsSecondary jsで使用中 -->
+            <button class="text-button" id="showJobsSecondary" type="button">適性の求人を見る →</button>
           </div>
+
+          <p class="result-brand">キャリア診断 by AI</p>
         </div>
       </section>
 
       <!-- class="screen" と data-screen="jobs" は画面切り替えでJS使用中 -->
-      <section class="screen compact-screen" data-screen="jobs" hidden>
-        <div class="app-shell jobs-shell">
-          <p class="eyebrow">Private offers</p>
-          <!-- jobLeadTitle jsで使用中 -->
-          <h2 id="jobLeadTitle">あなたに合う求人があります。</h2>
-          <!-- jobLeadCopy jsで使用中 -->
-          <p id="jobLeadCopy">企業名は登録後に公開されます。今は件数とマッチ度だけ確認できます。</p>
+      <section class="screen compact-screen jobs-screen" data-screen="jobs" hidden>
+        <div class="app-shell experience-shell jobs-shell">
+          <div class="jobs-header">
+            <div class="jobs-icon" aria-hidden="true">
+              <img src="./assets/figma/jobs-briefcase.svg" alt="" />
+            </div>
+            <div>
+              <p class="eyebrow">Private offers</p>
+              <!-- jobLeadTitle jsで使用中 -->
+              <h2 id="jobLeadTitle">あなたに合う求人があります。</h2>
+              <!-- jobLeadCopy jsで使用中 -->
+              <p id="jobLeadCopy">企業名は登録後に公開されます。今は件数とマッチ度だけ確認できます。</p>
+            </div>
+          </div>
 
           <div class="job-metrics" aria-label="求人件数">
             <div>
-              <span>紹介可能求人</span>
+              <span>紹介可能な求人</span>
               <!-- jobCount jsで使用中 -->
-              <strong><span id="jobCount">12</span>件</strong>
+              <strong><span id="jobCount">12</span><small>件</small></strong>
             </div>
-            <div>
-              <span>マッチ度90%以上</span>
+            <div class="highlight">
+              <span>マッチ度 90% 以上</span>
               <!-- highMatchCount jsで使用中 -->
-              <strong><span id="highMatchCount">4</span>件</strong>
+              <strong><span id="highMatchCount">4</span><small>件</small></strong>
+            </div>
+          </div>
+
+          <div class="job-teaser" aria-hidden="true">
+            <p>企業名・詳細条件はLINEで確認できます</p>
+            <div class="job-preview-list">
+              <article class="job-preview-card">
+                <span>株式会社サンプル</span>
+                <strong>未経験歓迎の企画職</strong>
+                <small>渋谷 / 年収 360万円〜</small>
+              </article>
+              <article class="job-preview-card">
+                <span>成長中ベンチャー</span>
+                <strong>キャリア支援スタッフ</strong>
+                <small>リモート可 / 土日休み</small>
+              </article>
+              <article class="job-preview-card">
+                <span>非公開求人</span>
+                <strong>人と関わる仕事</strong>
+                <small>マッチ度 94%</small>
+              </article>
             </div>
           </div>
 
           <!-- lineCta jsで使用中 -->
-          <button class="line-button" id="lineCta" type="button">LINEで詳細を見る</button>
-          <!-- retryJobs jsで使用中 -->
-          <button class="text-button" id="retryJobs" type="button">再診断</button>
+          <button class="line-button" id="lineCta" type="button">
+            <img src="./assets/figma/jobs-message-circle.svg" alt="" />
+            <span id="lineCtaText">LINEで詳細を見る</span>
+          </button>
+          <p class="line-note">登録は数秒で完了・完全無料</p>
+          <!-- retryJobs jsで使用中。LINE前は再診断、LINE送信後は診断結果に戻る -->
+          <button class="text-button" id="retryJobs" type="button">診断結果に戻る</button>
         </div>
       </section>
     </main>

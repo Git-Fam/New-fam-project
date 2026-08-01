@@ -34,7 +34,9 @@ Deno.serve(async (request: Request) => {
     const supabase = getSupabaseClient();
     const { data: lineState, error: stateError } = await supabase
       .from("line_states")
-      .select("state, diagnosis_id, completion_url, expires_at, consumed_at")
+      .select(
+        "state, diagnosis_id, completion_url, expires_at, consumed_at, visitor_id, session_id, funnel_id, result_type, utm_source, utm_medium, utm_campaign, device_type, page_path"
+      )
       .eq("state", state)
       .single();
 
@@ -85,6 +87,15 @@ Deno.serve(async (request: Request) => {
       await insertEvent(supabase, "line_login_success", {
         diagnosisId,
         lineUserId: profile.userId,
+        visitorId: lineState.visitor_id || null,
+        sessionId: lineState.session_id || null,
+        funnelId: lineState.funnel_id || null,
+        resultType: lineState.result_type || null,
+        utmSource: lineState.utm_source || null,
+        utmMedium: lineState.utm_medium || null,
+        utmCampaign: lineState.utm_campaign || null,
+        deviceType: lineState.device_type || null,
+        pagePath: lineState.page_path || null,
         payload: {
           displayName: profile.displayName || null,
           friendFlag,
@@ -128,6 +139,15 @@ Deno.serve(async (request: Request) => {
       await insertEvent(supabase, "result_sent", {
         diagnosisId,
         lineUserId: profile.userId,
+        visitorId: lineState.visitor_id || null,
+        sessionId: lineState.session_id || null,
+        funnelId: lineState.funnel_id || null,
+        resultType: diagnosis.result_type || lineState.result_type || null,
+        utmSource: lineState.utm_source || null,
+        utmMedium: lineState.utm_medium || null,
+        utmCampaign: lineState.utm_campaign || null,
+        deviceType: lineState.device_type || null,
+        pagePath: lineState.page_path || null,
         payload: { resultType: diagnosis.result_type, friendFlag },
         request
       });

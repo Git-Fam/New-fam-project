@@ -46,6 +46,15 @@ async function insertEvent(
   options: {
     diagnosisId?: string | null;
     lineUserId?: string | null;
+    visitorId?: string | null;
+    sessionId?: string | null;
+    funnelId?: string | null;
+    resultType?: string | null;
+    utmSource?: string | null;
+    utmMedium?: string | null;
+    utmCampaign?: string | null;
+    deviceType?: string | null;
+    pagePath?: string | null;
     payload?: Record<string, unknown>;
     request?: Request;
   } = {}
@@ -61,6 +70,27 @@ async function insertEvent(
   });
 
   if (error) throw error;
+
+  const { error: analyticsError } = await supabase.from("analytics_events").insert({
+    event_name: eventName,
+    diagnosis_id: options.diagnosisId || null,
+    line_user_id: options.lineUserId || null,
+    visitor_id: options.visitorId || null,
+    session_id: options.sessionId || null,
+    funnel_id: options.funnelId || null,
+    result_type: options.resultType || options.payload?.resultType || null,
+    utm_source: options.utmSource || null,
+    utm_medium: options.utmMedium || null,
+    utm_campaign: options.utmCampaign || null,
+    device_type: options.deviceType || null,
+    page_path: options.pagePath || null,
+    payload: options.payload || {},
+    user_agent: userAgent
+  });
+
+  if (analyticsError) {
+    console.warn("analytics_events insert failed", analyticsError);
+  }
 }
 
 Deno.serve(async (request: Request) => {
@@ -104,6 +134,15 @@ Deno.serve(async (request: Request) => {
     try {
       await insertEvent(supabase, "diagnosis_complete", {
         diagnosisId: data.id,
+        visitorId: body.visitorId || null,
+        sessionId: body.sessionId || null,
+        funnelId: body.funnelId || null,
+        resultType: body.resultType || null,
+        utmSource: body.utmSource || null,
+        utmMedium: body.utmMedium || null,
+        utmCampaign: body.utmCampaign || null,
+        deviceType: body.deviceType || null,
+        pagePath: body.pagePath || null,
         payload: {
           resultType: body.resultType,
           answeredCount: answers.length,

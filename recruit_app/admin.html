@@ -19,6 +19,105 @@
         <a class="secondary-button" href="./index.html">アプリへ戻る</a>
       </header>
 
+      <section class="admin-section kpi-section">
+        <div class="admin-section-head">
+          <div>
+            <h2>KPI集計</h2>
+            <p>診断体験のどこで離脱しているかを、日別・週別・月別で確認します。</p>
+          </div>
+          <!-- refreshKpi jsで使用中 -->
+          <button class="secondary-button" id="refreshKpi" type="button">更新</button>
+        </div>
+
+        <!-- kpiSummaryCards jsで使用中 -->
+        <div class="kpi-card-grid" id="kpiSummaryCards">
+          <div class="kpi-card"><span>LP表示</span><strong>-</strong><small>診断ページを開いた数</small></div>
+          <div class="kpi-card"><span>診断開始率</span><strong>-</strong><small>LP表示 → 診断開始</small></div>
+          <div class="kpi-card"><span>診断完了率</span><strong>-</strong><small>診断開始 → 40枚完了</small></div>
+          <div class="kpi-card"><span>LINE送信率</span><strong>-</strong><small>診断完了 → LINE送信</small></div>
+        </div>
+
+        <details class="kpi-help">
+          <summary>KPIの見方</summary>
+          <div class="kpi-help-body">
+            <p>各数字は、同じ診断で何度も表示・クリックされた場合でも1件として集計します。</p>
+            <dl class="kpi-help-list">
+              <div>
+                <dt>LP</dt>
+                <dd>診断ページを開いた数。SNSや広告からどれくらい流入したかを見る数字です。</dd>
+              </div>
+              <div>
+                <dt>開始</dt>
+                <dd>診断スタートを押してスワイプを始めた数です。</dd>
+              </div>
+              <div>
+                <dt>完了</dt>
+                <dd>40枚すべてスワイプして診断が完了した数です。</dd>
+              </div>
+              <div>
+                <dt>結果表示</dt>
+                <dd>診断結果画面まで到達した数です。LINE登録前に結果を出す設定の時に増えます。</dd>
+              </div>
+              <div>
+                <dt>LINE押下</dt>
+                <dd>「LINEで詳細を見る」を押した数です。LINE登録意欲を見る数字です。</dd>
+              </div>
+              <div>
+                <dt>送信</dt>
+                <dd>LINE認証後、診断結果や求人情報をLINEへ送信できた数です。</dd>
+              </div>
+              <div>
+                <dt>シェア</dt>
+                <dd>XまたはLINEのシェアボタンを押した数です。</dd>
+              </div>
+            </dl>
+            <dl class="kpi-help-list">
+              <div>
+                <dt>開始率</dt>
+                <dd>LPを見た人のうち、診断を始めた割合です。</dd>
+              </div>
+              <div>
+                <dt>完了率</dt>
+                <dd>診断を始めた人のうち、40枚を最後までスワイプした割合です。</dd>
+              </div>
+              <div>
+                <dt>結果到達率</dt>
+                <dd>診断完了後、結果画面まで到達した割合です。</dd>
+              </div>
+              <div>
+                <dt>送信率</dt>
+                <dd>診断完了後、LINEで結果送信まで完了した割合です。</dd>
+              </div>
+              <div>
+                <dt>シェア率</dt>
+                <dd>結果を見た人のうち、シェアボタンを押した割合です。</dd>
+              </div>
+            </dl>
+          </div>
+        </details>
+
+        <div class="kpi-range-tabs" aria-label="集計期間">
+          <!-- kpiRangeTabs jsで使用中 -->
+          <button class="is-active" type="button" data-kpi-range="daily">日別</button>
+          <button type="button" data-kpi-range="weekly">週別</button>
+          <button type="button" data-kpi-range="monthly">月別</button>
+        </div>
+
+        <div class="kpi-layout">
+          <div class="kpi-panel">
+            <!-- kpiTableTitle jsで使用中 -->
+            <h3 id="kpiTableTitle">日別KPI</h3>
+            <!-- kpiDailyTable jsで使用中 -->
+            <div class="kpi-table-wrap" id="kpiDailyTable"></div>
+          </div>
+          <div class="kpi-panel">
+            <h3>診断タイプ分布</h3>
+            <!-- kpiResultTypes jsで使用中 -->
+            <div class="kpi-result-list" id="kpiResultTypes"></div>
+          </div>
+        </div>
+      </section>
+
       <section class="admin-section">
         <h2>表示数値</h2>
         <div class="form-grid">

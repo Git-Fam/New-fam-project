@@ -12,6 +12,8 @@ const config = window.CAREER_APP_CONFIG || {};
 let settings = loadAdminSettings();
 let results = getConfiguredResults(settings);
 let cards = getConfiguredCards(settings);
+let kpiSummary = null;
+let kpiRange = "daily";
 
 const $ = (selector) => document.querySelector(selector);
 const IMAGE_UPLOAD_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
@@ -161,6 +163,23 @@ function getAdminTokenHeaders() {
   const headers = {};
   if (config.adminApiToken) headers["x-admin-token"] = config.adminApiToken;
   return headers;
+}
+
+async function requestKpiSummary() {
+  const baseUrl = getFunctionsBaseUrl();
+  if (!baseUrl) return null;
+
+  const response = await fetch(`${baseUrl}/kpi-summary?days=14`, {
+    method: "GET",
+    headers: getAdminTokenHeaders()
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(text || "KPI集計の読み込みに失敗しました");
+  }
+
+  return response.json();
 }
 
 async function requestAdminMaster(method = "GET", body = null) {
@@ -318,6 +337,158 @@ function renderGeneral() {
   $("#requireLineInput").checked = Boolean(settings.requireLineBeforeResult);
 }
 
+function formatNumber(value) {
+  return Number(value || 0).toLocaleString("ja-JP");
+}
+
+function formatRate(value) {
+  if (value === null || value === undefined || Number.isNaN(Number(value))) return "-";
+  return `${Number(value).toFixed(1)}%`;
+}
+
+function renderKpiMessage(message) {
+  $("#kpiSummaryCards").innerHTML = `
+    <div class="kpi-card kpi-message">
+      <span>KPI集計</span>
+      <strong>${escapeHtml(message)}</strong>
+    </div>
+  `;
+  $("#kpiDailyTable").innerHTML = "";
+  $("#kpiResultTypes").innerHTML = "";
+}
+
+function renderKpiCards(latest) {
+  const cards = [
+    ["LP表示", formatNumber(latest?.lp_view), "診断ページを開いた数"],
+    ["診断開始率", formatRate(latest?.start_rate), "LP表示 → 診断開始"],
+    ["診断完了率", formatRate(latest?.complete_rate), "診断開始 → 40枚完了"],
+    ["LINE送信率", formatRate(latest?.result_sent_rate), "診断完了 → LINE送信"]
+  ];
+
+  $("#kpiSummaryCards").innerHTML = cards
+    .map(
+      ([label, value, note]) => `
+        <div class="kpi-card">
+          <span>${escapeHtml(label)}</span>
+          <strong>${escapeHtml(value)}</strong>
+          <small>${escapeHtml(note)}</small>
+        </div>
+      `
+    )
+    .join("");
+}
+
+function renderKpiDailyTable(rows = []) {
+  if (!rows.length) {
+    $("#kpiDailyTable").innerHTML = `<p class="kpi-empty">まだイベントログがありません。</p>`;
+    return;
+  }
+
+  $("#kpiDailyTable").innerHTML = `
+    <table class="kpi-table">
+      <thead>
+        <tr>
+          <th>期間</th>
+          <th>LP</th>
+          <th>開始</th>
+          <th>完了</th>
+          <th>結果表示</th>
+          <th>LINE押下</th>
+          <th>送信</th>
+          <th>シェア</th>
+          <th>開始率</th>
+          <th>完了率</th>
+          <th>結果到達率</th>
+          <th>送信率</th>
+          <th>シェア率</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${rows
+          .map(
+            (row) => `
+              <tr>
+                <td>${escapeHtml(row.event_date || row.period_start || "-")}</td>
+                <td>${formatNumber(row.lp_view)}</td>
+                <td>${formatNumber(row.diagnosis_start)}</td>
+                <td>${formatNumber(row.diagnosis_complete)}</td>
+                <td>${formatNumber(row.result_view)}</td>
+                <td>${formatNumber(row.line_button_click)}</td>
+                <td>${formatNumber(row.result_sent)}</td>
+                <td>${formatNumber(row.share_click)}</td>
+                <td>${formatRate(row.start_rate)}</td>
+                <td>${formatRate(row.complete_rate)}</td>
+                <td>${formatRate(row.result_view_rate)}</td>
+                <td>${formatRate(row.result_sent_rate)}</td>
+                <td>${formatRate(row.share_rate)}</td>
+              </tr>
+            `
+          )
+          .join("")}
+      </tbody>
+    </table>
+  `;
+}
+
+function renderKpiResultTypes(rows = []) {
+  if (!rows.length) {
+    $("#kpiResultTypes").innerHTML = `<p class="kpi-empty">まだ診断タイプ集計がありません。</p>`;
+    return;
+  }
+
+  $("#kpiResultTypes").innerHTML = rows
+    .map((row) => {
+      const rate = Math.max(0, Math.min(100, Number(row.diagnosis_rate || 0)));
+      const label = results[row.result_type]?.name || row.result_type || "不明";
+      return `
+        <div class="kpi-result-row">
+          <div>
+            <strong>${escapeHtml(label)}</strong>
+            <span>${formatNumber(row.diagnosis_count)}件 / ${formatRate(rate)}</span>
+          </div>
+          <div class="kpi-bar" aria-hidden="true"><span style="width: ${rate}%"></span></div>
+        </div>
+      `;
+    })
+    .join("");
+}
+
+function renderKpiDashboard(summary) {
+  kpiSummary = summary;
+  const rangeMap = {
+    daily: { title: "日別KPI", rows: Array.isArray(summary?.daily) ? summary.daily : [] },
+    weekly: { title: "週別KPI", rows: Array.isArray(summary?.weekly) ? summary.weekly : [] },
+    monthly: { title: "月別KPI", rows: Array.isArray(summary?.monthly) ? summary.monthly : [] }
+  };
+  const current = rangeMap[kpiRange] || rangeMap.daily;
+  const resultTypes = Array.isArray(summary?.resultTypes) ? summary.resultTypes : [];
+  $("#kpiTableTitle").textContent = current.title;
+  renderKpiCards(current.rows[0] || null);
+  renderKpiDailyTable(current.rows);
+  renderKpiResultTypes(resultTypes);
+}
+
+async function loadKpiDashboard() {
+  if (!getFunctionsBaseUrl()) {
+    renderKpiMessage("Supabase接続後に表示されます");
+    return false;
+  }
+
+  try {
+    const summary = await requestKpiSummary();
+    if (!summary) {
+      renderKpiMessage("Supabase接続後に表示されます");
+      return false;
+    }
+    renderKpiDashboard(summary);
+    return true;
+  } catch (error) {
+    renderKpiMessage("KPIを読み込めません");
+    setStatus(`KPI読み込み失敗: ${error.message}`);
+    return false;
+  }
+}
+
 function renderResultEditor() {
   const key = $("#resultSelect").value;
   const result = results[key];
@@ -393,6 +564,22 @@ function bindImageUploadEvents() {
 }
 
 function bindEvents() {
+  document.querySelector(".kpi-range-tabs").addEventListener("click", (event) => {
+    const button = event.target.closest("[data-kpi-range]");
+    if (!button) return;
+    kpiRange = button.dataset.kpiRange;
+    document.querySelectorAll("[data-kpi-range]").forEach((item) => {
+      item.classList.toggle("is-active", item === button);
+    });
+    if (kpiSummary) renderKpiDashboard(kpiSummary);
+  });
+
+  $("#refreshKpi").addEventListener("click", async () => {
+    if (await loadKpiDashboard()) {
+      setStatus("KPIを更新しました");
+    }
+  });
+
   $("#saveGeneral").addEventListener("click", async () => {
     save({
       comparisonCount: Number($("#comparisonCountInput").value || 0),
@@ -532,6 +719,7 @@ async function init() {
   renderResultEditor();
   renderCardEditor();
   bindEvents();
+  await loadKpiDashboard();
 }
 
 init();

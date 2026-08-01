@@ -48,6 +48,15 @@ Deno.serve(async (request: Request) => {
     try {
       await insertEvent(supabase, "diagnosis_complete", {
         diagnosisId: data.id,
+        visitorId: body.visitorId || null,
+        sessionId: body.sessionId || null,
+        funnelId: body.funnelId || null,
+        resultType: body.resultType || null,
+        utmSource: body.utmSource || null,
+        utmMedium: body.utmMedium || null,
+        utmCampaign: body.utmCampaign || null,
+        deviceType: body.deviceType || null,
+        pagePath: body.pagePath || null,
         payload: {
           resultType: body.resultType,
           answeredCount: answers.length,

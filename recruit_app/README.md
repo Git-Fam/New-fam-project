@@ -144,6 +144,13 @@ SupabaseのmigrationとEdge Functionsを反映した後、管理画面を開い�
 
 保存先は `diagnoses` テーブルです。診断完了イベントは `diagnosis_events` に保存します。
 
+診断データの保存期間は以下です。
+
+- `diagnoses`: 24時間
+- `line_states`: 10分
+- `diagnosis_events`: 90日
+- `line_connections`: 180日
+
 Edge Functionsで以下の2つを作成し、Codeタブへ対応ファイルの中身を貼ってDeployします。
 
 - Function名: `save-diagnosis`
@@ -152,6 +159,18 @@ Edge Functionsで以下の2つを作成し、Codeタブへ対応ファイルの�
   - 貼り付けるファイル: `supabase/dashboard/event-log-index.ts`
 
 公開ページから呼び出すFunctionなので、両方とも Settings の `Verify JWT with legacy secret` はOFFにします。
+
+期限切れデータの自動削除はSupabase Cronで行います。
+DashboardのSQL Editorで以下を実行します。
+
+- `supabase/migrations/20260731000000_cleanup_expired_data.sql`
+
+このSQLは `cleanup_ai_career_expired_data()` 関数を作成し、毎日04:17 JSTに実行するCron Jobを登録します。
+手動確認する場合はSQL Editorで以下を実行します。
+
+```sql
+select public.cleanup_ai_career_expired_data();
+```
 
 ## スワイプ画像アップロード
 
@@ -176,3 +195,29 @@ Storage bucket `swipe-images` と `swipe_cards.image_storage_path` は設定済�
 - `line_login_success`
 - `line_friend_added`
 - `result_sent`
+
+KPI集計はSQL Viewで確認します。
+DashboardのSQL Editorで以下を実行します。
+
+- `supabase/migrations/20260731001000_create_kpi_views.sql`
+
+管理画面で視覚的に見る場合は、Edge Functionを追加してDeployします。
+
+- Function名: `kpi-summary`
+  - 貼り付けるファイル: `supabase/dashboard/kpi-summary-index.ts`
+
+管理画面から呼び出すFunctionなので、Settings の `Verify JWT with legacy secret` はOFFにします。
+代わりに `ADMIN_API_TOKEN` を `x-admin-token` で送って保護します。
+
+主に見るView:
+
+- `daily_kpi_summary`: 日別KPI
+- `daily_event_counts`: 日別イベント数
+- `result_type_summary`: 診断タイプ別件数
+
+確認SQL:
+
+```sql
+select * from public.daily_kpi_summary order by event_date desc limit 14;
+select * from public.result_type_summary;
+```

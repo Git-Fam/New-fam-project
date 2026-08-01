@@ -120,6 +120,15 @@ Deno.serve(async (request: Request) => {
       await insertEvent(supabase, "result_sent", {
         diagnosisId,
         lineUserId: connection.lineUserId,
+        visitorId: body.visitorId || null,
+        sessionId: body.sessionId || null,
+        funnelId: body.funnelId || null,
+        resultType: diagnosis.result_type || body.resultType || null,
+        utmSource: body.utmSource || null,
+        utmMedium: body.utmMedium || null,
+        utmCampaign: body.utmCampaign || null,
+        deviceType: body.deviceType || null,
+        pagePath: body.pagePath || null,
         payload: {
           resultType: diagnosis.result_type,
           reusedLineConnection: true,

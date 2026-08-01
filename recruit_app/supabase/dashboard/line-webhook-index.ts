@@ -86,6 +86,17 @@ Deno.serve(async (request: Request) => {
         });
 
         if (error) console.warn("line_friend_added event insert failed", error);
+
+        const { error: analyticsError } = await supabase.from("analytics_events").insert({
+          event_name: "line_friend_added",
+          line_user_id: event.source?.userId || null,
+          payload: event,
+          user_agent: userAgent
+        });
+
+        if (analyticsError) {
+          console.warn("analytics_events insert failed", analyticsError);
+        }
       }
     }
 

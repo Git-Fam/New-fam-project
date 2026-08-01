@@ -174,6 +174,44 @@ Provider「AIキャリア診断」
 実機テスト成功：診断→LINEログイン→友だち追加→診断結果push送信まで一連で動作確認済み。
 
 
+■ データ保存期間
+
+- diagnoses: 24時間
+  LINE登録して診断結果を送信するために必要な生データ。24時間を過ぎたら再診断。
+
+- line_states: 10分
+  LINE Login認証中だけ使う一時データ。
+
+- diagnosis_events: 90日
+  診断開始率、完了率、LINE登録率などのKPI確認用。
+
+- line_connections: 180日
+  2回目以降にLINE再ログインなしで結果送信するために保持。
+
+自動削除SQL:
+supabase/migrations/20260731000000_cleanup_expired_data.sql
+
+※Supabase DashboardのSQL Editorで実行すると、毎日04:17 JSTに期限切れデータを削除するCron Jobが登録される。
+
+
+■ KPI集計方法
+
+集計SQL:
+supabase/migrations/20260731001000_create_kpi_views.sql
+
+管理画面表示用Function:
+supabase/dashboard/kpi-summary-index.ts
+
+主に見るView:
+- daily_kpi_summary（日別KPI）
+- daily_event_counts（日別イベント数）
+- result_type_summary（診断タイプ別件数）
+
+確認SQL:
+select * from public.daily_kpi_summary order by event_date desc limit 14;
+select * from public.result_type_summary;
+
+
 ■ LINE連携で次にやること
 
 [x] 1. LINE LoginチャネルのBasic settingsを開く
@@ -191,10 +229,25 @@ Provider「AIキャリア診断」
 [x] 11. 各Functionの Verify JWT with legacy secret をOFF
 [x] 12. 診断からLINE送信まで実機テスト（成功）
 [x] 13. DBで diagnoses.line_user_id / diagnoses.status / diagnosis_events を確認
-[ ] 14. send-line-result をDeployして、2回目以降の再ログイン不要フローを実機テスト
+[x] 14. send-line-result をDeployして、2回目以降の再ログイン不要フローを実機テスト
 
 
 
-■ 残タスク（連携完了後の改善）
+■ 残タスク
+
+[x] 1. 40問と15タイプの診断ロジックを実ユーザー想定で確認する
+[ ] 2. 診断結果文章 / LINE送信文 / 求人導線文言の違和感を確認する
+[x] 3. 診断データの保存期間を決める
+[x] 4. 期限切れ diagnoses / diagnosis_events を自動削除する処理を入れる
+[ ] 5. lp_view / diagnosis_start / diagnosis_complete / line_button_click / result_sent の集計方法を決める（管理画面UI追加済み、kpi-summary Deploy待ち）
+[ ] 6. プライバシーポリシー / 利用規約のドラフトを作成する
+[ ] 7. LINE登録前に個人情報の扱いが分かる導線を置く
+[ ] 8. iPhone Safari / Android Chrome / PC Chrome で実機QAする
+[ ] 9. OGP画像とシェア文言を調整する
+
+
+■ 残タスク（本番公開前にやること）
 
 [ ] 本番公開時は APP_ORIGIN を本番URLへ変更
+[ ] 本番公開時は公開用 config.js から adminApiToken を外す
+[ ] admin.html を本番公開しない、またはBasic認証などで保護する

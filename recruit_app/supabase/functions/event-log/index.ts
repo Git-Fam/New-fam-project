@@ -15,7 +15,11 @@ const allowedEvents = new Set([
   "line_button_click",
   "line_login_success",
   "line_friend_added",
-  "result_sent"
+  "result_sent",
+  "result_view",
+  "jobs_view",
+  "share_click",
+  "retry_click"
 ]);
 
 Deno.serve(async (request: Request) => {
@@ -36,6 +40,15 @@ Deno.serve(async (request: Request) => {
     await insertEvent(supabase, body.eventName, {
       diagnosisId: body.diagnosisId || null,
       lineUserId: body.lineUserId || null,
+      visitorId: body.visitorId || null,
+      sessionId: body.sessionId || null,
+      funnelId: body.funnelId || null,
+      resultType: body.resultType || body.payload?.resultType || null,
+      utmSource: body.utmSource || null,
+      utmMedium: body.utmMedium || null,
+      utmCampaign: body.utmCampaign || null,
+      deviceType: body.deviceType || null,
+      pagePath: body.pagePath || null,
       payload: body.payload || {},
       request
     });
