@@ -239,15 +239,15 @@ select * from public.result_type_summary;
 [ ] 2. 診断結果文章 / LINE送信文 / 求人導線文言の違和感を確認する
 [x] 3. 診断データの保存期間を決める
 [x] 4. 期限切れ diagnoses / diagnosis_events を自動削除する処理を入れる
-[ ] 5. lp_view / diagnosis_start / diagnosis_complete / line_button_click / result_sent の集計方法を決める（管理画面UI追加済み、kpi-summary Deploy待ち）
-[ ] 6. プライバシーポリシー / 利用規約のドラフトを作成する
-[ ] 7. LINE登録前に個人情報の扱いが分かる導線を置く
+[x] 5. lp_view / diagnosis_start / diagnosis_complete / line_button_click / result_sent の集計方法を決める（管理画面UI追加済み、kpi-summary Deploy待ち）
+[x] 6. プライバシーポリシー / 利用規約のドラフトを作成する
+[x] 7. LINE登録前に個人情報の扱いが分かる導線を置く
 [ ] 8. iPhone Safari / Android Chrome / PC Chrome で実機QAする
 [ ] 9. OGP画像とシェア文言を調整する
 
 
 ■ 残タスク（本番公開前にやること）
 
-[ ] 本番公開時は APP_ORIGIN を本番URLへ変更
-[ ] 本番公開時は公開用 config.js から adminApiToken を外す
+[x] 本番公開時は APP_ORIGIN を本番URLへ変更
+[x] 本番公開時は公開用 config.js から adminApiToken を外す
 [ ] admin.html を本番公開しない、またはBasic認証などで保護する

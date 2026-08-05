@@ -214,6 +214,123 @@ a {
   font-size: 13px;
 }
 
+.legal-links {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 18px;
+  /* color: rgba(255, 255, 255, 0.78); */
+  font-size: 12px;
+}
+
+.legal-links a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.legal-links-dark {
+  justify-content: center;
+  color: var(--muted);
+}
+
+.privacy-note {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.privacy-note a {
+  color: var(--ink);
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.legal-body {
+  min-height: 100svh;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 77, 109, 0.1), transparent 30%),
+    linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+}
+
+.legal-page {
+  width: min(100%, 880px);
+  margin: 0 auto;
+  padding: 28px clamp(18px, 5vw, 42px) 64px;
+}
+
+.legal-header {
+  padding: 34px 0 26px;
+}
+
+.legal-back-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  margin-bottom: 26px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.legal-header h1 {
+  font-size: clamp(34px, 7vw, 58px);
+  line-height: 1.08;
+  font-weight: 850;
+}
+
+.legal-header p:not(.eyebrow) {
+  margin-top: 18px;
+  color: #44484f;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.legal-card {
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 8px;
+  padding: clamp(22px, 4vw, 42px);
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 24px 60px rgba(17, 17, 17, 0.08);
+}
+
+.legal-card section + section {
+  margin-top: 34px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.legal-card h2 {
+  margin-bottom: 14px;
+  font-size: clamp(18px, 3vw, 22px);
+  line-height: 1.45;
+  font-weight: 850;
+}
+
+.legal-card p,
+.legal-card li {
+  color: #3d4045;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.legal-card p + p,
+.legal-card p + ul,
+.legal-card ul + p {
+  margin-top: 10px;
+}
+
+.legal-card ul {
+  display: grid;
+  gap: 6px;
+  padding-left: 1.2em;
+  list-style: disc;
+}
+
 .compact-screen,
 .result-screen,
 .swipe-screen {

@@ -5,7 +5,9 @@ PDF要件に沿った、バニラHTML/CSS/JavaScriptのAIキャリア診断MVP�
 ## 構成
 
 - `index.html` - LP、ルール、スワイプ、分析演出、結果、求人導線
-- `admin.html` - 比較人数、求人件数、診断結果文章、スワイプ画像の編集
+- `admin/index.html` - 比較人数、求人件数、診断結果文章、スワイプ画像、KPIの管理画面
+- `config.js` - 公開ページ用の接続設定。`adminApiToken` は空
+- `admin/config.js` - 管理画面用の接続設定。`adminApiToken` あり
 - `src/data.js` - 40問カード、6軸、15タイプ診断マスタ
 - `src/app.js` - スワイプ操作、スコア計算、画面遷移、保存/LINE導線
 - `supabase/functions/*` - 診断保存、イベントログ、LINE Login、Messaging API、Webhook
@@ -23,7 +25,7 @@ python3 -m http.server 4173
 
 ## 管理画面
 
-`http://localhost:4173/admin.html`
+`http://localhost:4173/admin/`
 
 以下を変更できます。
 
@@ -36,9 +38,39 @@ python3 -m http.server 4173
 - 同タイプ割合
 - 各カードの質問文、画像、管理用ラベル
 
-`config.js` の `supabaseFunctionsBaseUrl` が未設定の場合、変更内容はブラウザの `localStorage` に保存されます。
+`admin/config.js` の `supabaseFunctionsBaseUrl` が未設定の場合、変更内容はブラウザの `localStorage` に保存されます。
 Supabase接続後は、管理画面の保存ボタンまたは「Supabaseへ全データ保存」でDBへ同期されます。
 既存の上書きを消してPDFベースの初期値に戻す場合は、管理画面の「リセット」を使います。
+
+## 本番アップロード
+
+公開ページとしてアップするもの:
+
+- `index.html`
+- `line-complete.html`
+- `config.js`
+- `css/`
+- `src/app.js`
+- `src/data.js`
+- `assets/`
+
+管理画面も使う場合に `/admin/` としてアップするもの:
+
+- `admin/index.html`
+- `admin/config.js`
+- `src/admin.js`
+
+アップしないもの:
+
+- `supabase/`
+- `README.md`
+- `編集.txt`
+- `.vscode/`
+- `.DS_Store`
+- `package-lock.json`
+
+公開用 `config.js` は `adminApiToken: ""` にします。
+管理用 `admin/config.js` だけ `adminApiToken` を入れます。
 
 ## Supabase設定
 
@@ -77,7 +109,19 @@ supabase secrets set ADMIN_API_TOKEN="任意の長い管理用トークン"
 
 ## フロント接続設定
 
-`config.example.js` を参考に `config.js` を更新します。
+公開ページ用 `config.js`:
+
+```js
+window.CAREER_APP_CONFIG = {
+  supabaseFunctionsBaseUrl: "https://YOUR_PROJECT_REF.supabase.co/functions/v1",
+  lineLoginChannelId: "YOUR_LINE_LOGIN_CHANNEL_ID",
+  lineRedirectUri: "https://YOUR_PROJECT_REF.supabase.co/functions/v1/line-callback",
+  adminApiToken: "",
+  requireLineBeforeResult: true
+};
+```
+
+管理画面用 `admin/config.js`:
 
 ```js
 window.CAREER_APP_CONFIG = {
@@ -89,7 +133,7 @@ window.CAREER_APP_CONFIG = {
 };
 ```
 
-`adminApiToken` は管理画面からDBへ保存する時だけ使います。公開ページだけを配信する場合は、管理画面を別URLやBasic認証などで保護してください。
+`adminApiToken` は管理画面からDBへ保存する時だけ使います。公開ページ用 `config.js` には入れません。
 
 ## LINE本連携
 
