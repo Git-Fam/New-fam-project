@@ -1,0 +1,693 @@
+@use '../../functions' as *;
+
+/* -----------------------
+  front
+----------------------- */
+
+/* Hero
+----------------------- */
+.hero {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: pmin(100);
+    background-color: #fdfbf5;
+
+    @include sp {
+        padding-bottom: s(60);
+    }
+
+    // 装飾レイヤー（背景写真・ブロブ・帯）
+    &__bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    &__bg-texture {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.15;
+    }
+
+    &__bg-band {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: pmin(100);
+        background-color: $B-d9d7d3;
+
+        @include sp {
+            display: none;
+        }
+    }
+
+    &__deco {
+        position: absolute;
+        max-width: none;
+
+        &--01 {
+            width: pmin(659.48);
+            height: pmin(504.047);
+            left: pmin(325.784);
+            top: pmin(7.6445);
+            transform: rotate(24.67deg);
+        }
+
+        &--02 {
+            width: pmin(375.559);
+            height: pmin(287.149);
+            left: pmin(117.562);
+            top: pmin(272.8555);
+            transform: rotate(-179.65deg);
+        }
+
+        &--03 {
+            width: pmin(239.881);
+            height: pmin(203.392);
+            left: pmin(845.4345);
+            top: pmin(45.904);
+            transform: rotate(-2.19deg);
+        }
+
+        &--04 {
+            width: pmin(284.649);
+            height: pmin(256.237);
+            left: pmin(804.071);
+            top: pmin(282.834);
+            transform: rotate(2.58deg);
+        }
+
+        &--05 {
+            width: pmin(228.05);
+            height: pmin(220.786);
+            left: pmin(117.649);
+            top: pmin(81.2615);
+            transform: rotate(-78.71deg);
+        }
+
+        &--06 {
+            width: pmin(265.049);
+            height: pmin(236.395);
+            left: pmin(205.473);
+            top: pmin(-10.2945);
+            transform: rotate(4.29deg);
+        }
+
+        &--07 {
+            width: pmin(186.183);
+            height: pmin(244.293);
+            left: pmin(90.3905);
+            top: pmin(217.007);
+            transform: rotate(100.85deg);
+        }
+
+        &--08 {
+            width: pmin(214.588);
+            height: pmin(174.352);
+            left: pmin(943.6965);
+            top: pmin(169.694);
+            transform: rotate(58.99deg);
+        }
+
+        &--09 {
+            width: pmin(214.588);
+            height: pmin(174.352);
+            left: pmin(51.003);
+            top: pmin(393.295);
+            transform: rotate(171.26deg);
+        }
+
+        &--10 {
+            width: pmin(165.741);
+            height: pmin(169.324);
+            left: pmin(976.002);
+            top: pmin(399.929);
+            transform: rotate(-51.37deg);
+        }
+
+        &--11 {
+            width: pmin(172.181);
+            height: pmin(115.574);
+            left: pmin(120.273);
+            top: pmin(198.734);
+            transform: rotate(-6.09deg);
+        }
+
+        &--12 {
+            width: pmin(142.766);
+            height: pmin(91.563);
+            left: pmin(792.644);
+            top: pmin(22.3355);
+            transform: rotate(-6.64deg);
+        }
+
+        // SP（簡易配置・回転省略／要デザイナー確認）
+        &--sp-01 {
+            display: none;
+
+            @include sp {
+                display: block;
+                width: s(230);
+                height: s(210);
+                left: s(80);
+                top: s(20);
+                opacity: 0.9;
+            }
+        }
+
+        &--sp-02 {
+            display: none;
+
+            @include sp {
+                display: block;
+                width: s(150);
+                height: s(130);
+                left: s(220);
+                top: s(90);
+            }
+        }
+
+        &--sp-03 {
+            display: none;
+
+            @include sp {
+                display: block;
+                width: s(150);
+                height: s(150);
+                left: s(10);
+                top: s(320);
+            }
+        }
+
+        &--sp-04 {
+            display: none;
+
+            @include sp {
+                display: block;
+                width: s(150);
+                height: s(140);
+                left: s(190);
+                top: s(400);
+            }
+        }
+
+        &--sp-05 {
+            display: none;
+
+            @include sp {
+                display: block;
+                width: s(110);
+                height: s(110);
+                left: s(30);
+                top: s(500);
+            }
+        }
+    }
+
+    // テキストコンテンツ
+    &__inner {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-top: pmin(169);
+
+        @include sp {
+            padding-top: s(50);
+        }
+    }
+
+    &__eyebrow {
+        @include kiwiMaru;
+        margin-bottom: pmin(5);
+        font-size: pmin(24);
+        line-height: pmin(66.947);
+        letter-spacing: pmin(2.64);
+        color: $F-4c3926;
+
+        em {
+            font-style: normal;
+            font-size: pmin(31);
+        }
+
+        @include sp {
+            margin-bottom: s(6);
+            font-size: s(16);
+            line-height: normal;
+            letter-spacing: s(1.6);
+
+            em {
+                font-size: s(20);
+            }
+        }
+    }
+
+    &__heading {
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        column-gap: pmin(8);
+        margin-bottom: pmin(156);
+        color: $F-4c3926;
+
+        @include sp {
+            column-gap: s(4);
+            margin-bottom: s(30);
+        }
+
+        &-en {
+            @include kiwiMaru;
+            font-weight: 500;
+            font-size: pmin(75);
+
+            @include sp {
+                font-size: s(40);
+            }
+        }
+
+        &-ja {
+            @include kiwiMaru;
+            font-size: pmin(38.418);
+
+            @include sp {
+                font-size: s(20);
+            }
+        }
+    }
+
+    &__lead {
+        @include kiwiMaru;
+        margin-bottom: pmin(24);
+        font-size: pmin(20);
+        line-height: pmin(32);
+        letter-spacing: pmin(0.4);
+        color: $F-4c3926;
+
+        @include sp {
+            margin-bottom: s(20);
+            font-size: s(13);
+            line-height: s(16.998);
+            letter-spacing: s(0.4);
+        }
+    }
+
+    // 特徴バッジ
+    &__badges {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: pmin(20);
+
+        @include sp {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: s(14);
+            width: 100%;
+        }
+    }
+
+    &__badge {
+        @include kiwiMaru;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: pmin(10) pmin(24);
+        border: pmin(4) solid $P-cee786;
+        border-radius: pmin(50);
+        background-color: #fdfdfd;
+        font-size: pmin(26);
+        color: $F-4c3926;
+        white-space: nowrap;
+
+        @include sp {
+            padding: s(8) s(10);
+            border: s(3) solid $P-cee786;
+            border-radius: s(30);
+            font-size: s(12);
+            white-space: normal;
+            text-align: center;
+        }
+    }
+
+    // 電話受付バッジ（PCのみ）
+    &__phone-badge {
+        position: absolute;
+        z-index: 1;
+        top: pmin(14);
+        right: pmin(226);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: pmin(156.476);
+        height: pmin(156.476);
+        border-radius: 50%;
+        background-color: #fdfdfd;
+        text-align: center;
+        color: $F-4c3926;
+
+        &-icon {
+            width: pmin(24);
+            height: pmin(24);
+            margin-bottom: pmin(4);
+        }
+
+        &-label,
+        &-until {
+            @include kiwiMaru;
+            font-size: pmin(13);
+        }
+
+        &-time {
+            @include kiwiMaru;
+            font-weight: 500;
+            font-size: pmin(24);
+            line-height: 1.2;
+        }
+
+        &-note {
+            @include kiwiMaru;
+            font-size: pmin(13);
+            line-height: 1.3;
+            margin-top: pmin(2);
+        }
+
+        &-reserve {
+            @include kiwiMaru;
+            margin-top: pmin(6);
+            font-size: pmin(14);
+        }
+    }
+}
+
+/* 症状セクション
+----------------------- */
+.symptom {
+    position: relative;
+    padding: pmin(80) pmin(183) pmin(80);
+    background-color: $B-838383;
+
+    @include sp {
+        padding: s(60) s(25) s(60);
+    }
+
+    &__heading-wrap {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: pmin(70);
+
+        @include sp {
+            margin-bottom: s(40);
+        }
+    }
+
+    &__heading-divider {
+        width: pmin(564);
+        height: 0;
+        margin-top: pmin(15);
+        border-top: pmin(2) dotted rgba($F-4c3926, 0.5);
+
+        @include sp {
+            width: 100%;
+            margin-top: s(10);
+            border-top-width: 1px;
+        }
+    }
+
+    &__question {
+        position: absolute;
+        top: pmin(-59);
+        left: calc(50% + #{pmin(334)});
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: pmin(150);
+        height: pmin(150);
+        border-radius: 50%;
+        background-color: #dae981;
+        color: $F-4c3926;
+        font-size: pmin(50);
+        line-height: 1;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: pmin(4);
+            left: pmin(10);
+            width: pmin(20);
+            height: pmin(20);
+            border-radius: pmin(4);
+            background-color: #dae981;
+            transform: rotate(45deg);
+            z-index: -1;
+        }
+
+        @include sp {
+            display: none;
+        }
+    }
+
+    &__heading {
+        @include kiwiMaru;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: baseline;
+        column-gap: pmin(4);
+        line-height: pmin(59);
+        text-align: center;
+        color: $F-4c3926;
+        font-weight: 300;
+
+        @include sp {
+            column-gap: s(2);
+            line-height: s(25.956);
+        }
+    }
+
+    &__heading-sm {
+        font-size: pmin(29);
+
+        @include sp {
+            font-size: s(16);
+        }
+    }
+
+    &__heading-lg {
+        font-size: pmin(40);
+
+        @include sp {
+            font-size: s(23);
+        }
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: pmin(49);
+        row-gap: pmin(118);
+
+        @include sp {
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: s(16);
+            row-gap: s(40);
+        }
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: pmin(20);
+
+        @include sp {
+            gap: s(12);
+        }
+    }
+
+    &__icon {
+        position: relative;
+        width: pmin(174);
+        height: pmin(174);
+
+        @include sp {
+            width: s(140);
+            height: s(140);
+        }
+    }
+
+    &__icon-ring {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__icon-photo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        overflow: hidden;
+    }
+
+    &__icon-photo-img {
+        position: absolute;
+        max-width: none;
+    }
+
+    &__label {
+        @include kiwiMaru;
+        font-size: pmin(22);
+        letter-spacing: pmin(0.44);
+        color: $F-4c3926;
+        white-space: nowrap;
+
+        @include sp {
+            font-size: s(18);
+            letter-spacing: s(0.4);
+        }
+    }
+
+    // 症状アイコン（Figmaのスプライト書き出しをトリミング表示）
+    &__item--01 &__icon-photo {
+        width: pmin(82);
+        height: pmin(144);
+
+        @include sp {
+            width: s(66);
+            height: s(116);
+        }
+    }
+    &__item--01 &__icon-photo-img {
+        width: 625%;
+        height: 269.6%;
+        left: -322.22%;
+        top: -141.6%;
+    }
+
+    &__item--02 &__icon-photo {
+        width: pmin(95);
+        height: pmin(140);
+
+        @include sp {
+            width: s(77);
+            height: s(113);
+        }
+    }
+    &__item--02 &__icon-photo-img {
+        width: 478.72%;
+        height: 242.45%;
+        left: -144.68%;
+        top: -117.27%;
+    }
+
+    &__item--03 &__icon-photo {
+        width: pmin(104);
+        height: pmin(148);
+
+        @include sp {
+            width: s(84);
+            height: s(119);
+        }
+    }
+    &__item--03 &__icon-photo-img {
+        width: 450%;
+        height: 237.32%;
+        left: -305.59%;
+        top: -114.79%;
+    }
+
+    &__item--04 &__icon-photo {
+        width: pmin(102);
+        height: pmin(143);
+
+        @include sp {
+            width: s(82);
+            height: s(115);
+        }
+    }
+    &__item--04 &__icon-photo-img {
+        width: 526.49%;
+        height: 281.63%;
+        left: -263.16%;
+        top: -39.24%;
+    }
+
+    // 頭痛のみ単体画像（トリミングなし・下寄せ）
+    &__item--05 &__icon-photo {
+        width: pmin(111);
+        height: pmin(139);
+
+        @include sp {
+            width: s(89);
+            height: s(112);
+        }
+    }
+    &__item--05 &__icon-photo-img {
+        position: static;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: bottom;
+    }
+
+    &__item--06 &__icon-photo {
+        width: pmin(87);
+        height: pmin(148);
+
+        @include sp {
+            width: s(70);
+            height: s(119);
+        }
+    }
+    &__item--06 &__icon-photo-img {
+        width: 555.56%;
+        height: 250.09%;
+        left: -177.78%;
+        top: -20.96%;
+    }
+
+    &__item--07 &__icon-photo {
+        width: pmin(86);
+        height: pmin(146);
+
+        @include sp {
+            width: s(69);
+            height: s(118);
+        }
+    }
+    &__item--07 &__icon-photo-img {
+        width: 576.92%;
+        height: 255.3%;
+        left: -74.36%;
+        top: -125%;
+    }
+
+    &__item--08 &__icon-photo {
+        width: pmin(102);
+        height: pmin(141);
+
+        @include sp {
+            width: s(82);
+            height: s(114);
+        }
+    }
+    &__item--08 &__icon-photo-img {
+        width: 459.18%;
+        height: 247.79%;
+        left: -310.2%;
+        top: -21.32%;
+    }
+}
