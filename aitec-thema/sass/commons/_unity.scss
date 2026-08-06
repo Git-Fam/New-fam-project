@@ -1,0 +1,44 @@
+
+@use "../functions" as *;
+
+/* -----------------------
+  unity
+----------------------- */
+
+// 表示・非表示
+.sp {
+	@include pc {
+		display: none !important;
+	}
+}
+
+.pc {
+	@include sp {
+		display: none !important;
+	}
+}
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 10%;
+}
+
+body {
+	@include zen-kaku;
+	color: $F-1a1a1a;
+	letter-spacing: 0.1em;
+	line-height: 1.625;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@include wt400;
+}
+
+.whopper {
+	overflow: hidden;
+}

@@ -1,0 +1,736 @@
+@use "../functions" as *;
+
+/* -----------------------
+  front
+----------------------- */
+
+.front-page {
+
+  .front-page__hero {
+    position: relative;
+    overflow: hidden;
+    background-color: $B-ffffff;
+
+    @include pc {
+      height: p(650);
+    }
+
+    @include sp {
+      height: s(650);
+    }
+
+
+    .front-page__hero-image {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .front-page__hero-inner {
+      position: relative;
+
+      @include pc {
+        width: p(1114);
+        margin: 0 auto;
+        padding: p(65) 0 0 0;
+      }
+
+      @include sp {
+        width: 100%;
+        padding: s(76) 0 0 s(20);
+      }
+    }
+
+    .front-page__hero-title {
+      @include zen-kaku;
+      @include wt500;
+      color: $F-1a1a1a;
+
+      @include pc {
+        font-size: p(64);
+        line-height: 1.328;
+        letter-spacing: 0.016em;
+      }
+
+      @include sp {
+        font-size: s(40);
+        line-height: 1.7;
+        letter-spacing: 0.026em;
+      }
+    }
+
+    .front-page__hero-text {
+      @include zen-kaku;
+      @include wt500;
+      color: $F-1a1a1a;
+      letter-spacing: 0.1em;
+
+      @include pc {
+        font-size: p(18);
+        line-height: 1.667;
+        margin-top: p(40);
+      }
+
+      @include sp {
+        font-size: s(13);
+        line-height: 2.308;
+        margin-top: s(50);
+      }
+    }
+
+    .front-page__hero-link {
+      display: inline-flex;
+      align-items: center;
+      border-bottom: 1px solid $F-1a1a1a;
+      color: $F-1a1a1a;
+
+      @include pc {
+        gap: p(9);
+        padding-bottom: p(10);
+        margin-top: p(60);
+      }
+
+      @include sp {
+        gap: s(9);
+        padding-bottom: s(10);
+        margin-top: s(66);
+      }
+    }
+
+    .front-page__hero-link-text {
+      @include noto-sans;
+      line-height: 1.832;
+      letter-spacing: 0.1em;
+
+      @include pc {
+        font-size: p(13.102);
+        @include wt900;
+      }
+
+      @include sp {
+        font-size: s(13.102);
+        @include wt500;
+      }
+    }
+
+    .front-page__hero-link-arrow {
+      @include inter;
+      @include wt500;
+      line-height: 1.857;
+      letter-spacing: 0.074em;
+
+      @include pc {
+        font-size: p(14);
+      }
+
+      @include sp {
+        font-size: s(14);
+      }
+    }
+
+    .front-page__hero-note {
+      @include zen-kaku;
+      @include wt400;
+      line-height: normal;
+      letter-spacing: 0.236em;
+      color: $F-6b6b6b;
+
+      @include pc {
+        font-size: p(10);
+        margin-top: p(11);
+      }
+
+      @include sp {
+        display: none;
+      }
+    }
+  }
+  .front-page__about {
+    @include pc {
+      padding: p(100) 0 0 0;
+    }
+
+    @include sp {
+      padding: s(100) 0 0 s(20);
+    }
+
+    .front-page__about-inner {
+      @include pc {
+        width: p(1114);
+        margin: 0 auto;
+      }
+
+      @include sp {
+        width: 100%;
+      }
+    }
+
+    .front-page__about-label {
+      @include noto-sans;
+      @include wt500;
+      color: $F-6b6b6b;
+      line-height: 1.375;
+      letter-spacing: 0.1em;
+
+      @include pc {
+        font-size: p(16);
+      }
+
+      @include sp {
+        font-size: s(16);
+      }
+    }
+
+    .front-page__about-title {
+      @include zen-kaku;
+      @include wt700;
+      color: $F-1a1a1a;
+
+      @include pc {
+        font-size: p(48);
+        line-height: 1.542;
+        letter-spacing: 0.028em;
+        margin-top: p(11);
+        max-width: p(740);
+      }
+
+      @include sp {
+        font-size: s(40);
+        line-height: 1.5;
+        letter-spacing: 0.034em;
+        margin-top: s(25);
+        max-width: s(335);
+      }
+    }
+
+    .front-page__about-text {
+      @include zen-kaku;
+      @include wt500;
+      color: $F-1a1a1a;
+      letter-spacing: 0.1em;
+
+      @include pc {
+        font-size: p(24);
+        line-height: 1.667;
+        margin-top: p(46);
+        max-width: p(740);
+      }
+
+      @include sp {
+        font-size: s(16);
+        line-height: 1.84;
+        letter-spacing: 0.06em;
+        margin-top: s(70);
+        max-width: s(335);
+      }
+    }
+
+    .front-page__about-link {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid $F-1a1a1a;
+      color: $F-1a1a1a;
+      width: fit-content;
+
+      @include pc {
+        gap: p(10.3);
+        padding-bottom: p(10);
+        margin-top: p(70);
+      }
+
+      @include sp {
+        gap: s(10.3);
+        padding-bottom: s(10);
+        margin-top: s(68);
+      }
+    }
+
+    .front-page__about-link-text {
+      @include noto-sans;
+      @include wt500;
+      line-height: 1.841;
+      letter-spacing: 0.1em;
+
+      @include pc {
+        font-size: p(13.037);
+      }
+
+      @include sp {
+        font-size: s(13.037);
+      }
+    }
+
+    .front-page__about-link-arrow {
+      @include inter;
+      @include wt500;
+      line-height: 1.857;
+      letter-spacing: 0.074em;
+
+      @include pc {
+        font-size: p(14);
+      }
+
+      @include sp {
+        font-size: s(14);
+      }
+    }
+  }
+
+  .front-page__service {
+    @include pc {
+      padding: p(197) 0 0 0;
+    }
+
+    @include sp {
+      padding: s(200) s(20) 0;
+    }
+
+    .front-page__service-inner {
+      @include pc {
+        width: p(1114);
+        margin: 0 auto;
+      }
+
+      @include sp {
+        width: 100%;
+      }
+    }
+
+    .front-page__service-label {
+      @include noto-sans;
+      @include wt500;
+      color: $F-6b6b6b;
+      line-height: 1.375;
+      letter-spacing: 0.1em;
+
+      @include pc {
+        font-size: p(16);
+      }
+
+      @include sp {
+        font-size: s(16);
+      }
+    }
+
+    .front-page__service-title {
+      @include zen-kaku;
+      @include wt700;
+      color: $F-1a1a1a;
+      line-height: 1.778;
+      letter-spacing: 0.066em;
+
+      @include pc {
+        margin-top: p(10);
+        font-size: p(36);
+      }
+
+      @include sp {
+        margin-top: s(11);
+        font-size: s(36);
+      }
+    }
+
+    .front-page__service-list {
+      display: flex;
+
+      @include pc {
+        flex-wrap: wrap;
+        gap: p(60) p(45);
+        margin-top: p(76);
+      }
+
+      @include sp {
+        flex-direction: column;
+        gap: s(53);
+        margin-top: s(79);
+      }
+    }
+
+    .front-page__service-item {
+      @include pc {
+        width: calc((100% / 4) - (p(45) * 3 / 4));
+      }
+
+      @include sp {
+        width: 100%;
+      }
+    }
+
+    .front-page__service-item-number {
+      @include inter;
+      @include wt700;
+      color: $F-1a1a1a;
+      line-height: 1.656;
+      letter-spacing: 0.0175em;
+      border-bottom: 1px solid rgba($F-1a1a1a, 0.1);
+
+      @include pc {
+        font-size: p(32);
+        padding-bottom: p(27);
+        margin-bottom: p(21);
+      }
+
+      @include sp {
+        font-size: s(32);
+        padding-bottom: s(21);
+        margin-bottom: s(24);
+      }
+    }
+
+    .front-page__service-item-title {
+      @include noto-sans;
+      @include wt900;
+      color: $F-1a1a1a;
+      line-height: 1.6;
+
+      @include pc {
+        font-size: p(20);
+        letter-spacing: 0.03em;
+      }
+
+      @include sp {
+        font-size: s(20);
+        letter-spacing: 0.03em;
+      }
+    }
+
+    .front-page__service-item:nth-child(4) {
+      .front-page__service-item-title {
+        @include pc {
+          letter-spacing: 0em;
+        }
+
+        @include sp {
+          letter-spacing: 0.1em;
+        }
+      }
+    }
+
+
+    .front-page__service-item-text {
+      @include noto-sans;
+      @include wt400;
+      color: $F-6b6b6b;
+      line-height: 1.625;
+
+      @include pc {
+        margin-top: p(18);
+        font-size: p(16);
+        letter-spacing: 0.09em;
+      }
+
+      @include sp {
+        margin-top: s(18);
+        font-size: s(16);
+        letter-spacing: 0.1em;
+      }
+    }
+
+    .front-page__service-link {
+      display: block;
+      width: fit-content;
+      border-bottom: 1px solid $F-1a1a1a;
+      color: $F-1a1a1a;
+
+      @include pc {
+        padding-bottom: p(10);
+        margin-top: p(50);
+      }
+
+      @include sp {
+        padding-bottom: s(10);
+        margin-top: s(60);
+      }
+    }
+
+    .front-page__service-link-text {
+      @include noto-sans;
+      @include wt500;
+      line-height: 1.841;
+      letter-spacing: 0.08em;
+
+      @include pc {
+        font-size: p(13.039);
+      }
+
+      @include sp {
+        font-size: s(13.039);
+      }
+    }
+
+    .front-page__service-link-arrow {
+      @include inter;
+      @include wt500;
+      line-height: 1.857;
+      letter-spacing: 0.074em;
+      margin-left: p(12);
+
+      @include pc {
+        font-size: p(14);
+      }
+
+      @include sp {
+        font-size: s(14);
+      }
+    }
+  }
+
+  .front-page__strength {
+    @include pc {
+      padding: p(200) 0 0 0;
+    }
+
+    @include sp {
+      padding: s(200) s(20) 0;
+    }
+
+    .front-page__strength-inner {
+      @include pc {
+        width: p(1114);
+        margin: 0 auto;
+      }
+
+      @include sp {
+        width: 100%;
+      }
+    }
+
+    .front-page__strength-label {
+      @include noto-sans;
+      @include wt500;
+      color: $F-6b6b6b;
+      line-height: 1.375;
+      letter-spacing: 0.1em;
+
+      @include pc {
+        font-size: p(16);
+      }
+
+      @include sp {
+        font-size: s(16);
+      }
+    }
+
+    .front-page__strength-title {
+      @include zen-kaku;
+      @include wt700;
+      color: $F-1a1a1a;
+      line-height: 1.778;
+      letter-spacing: 0.066em;
+
+      @include pc {
+        font-size: p(36);
+        margin-top: p(10);
+      }
+
+      @include sp {
+        font-size: s(36);
+        margin-top: s(10);
+      }
+    }
+
+    .front-page__strength-list {
+      display: flex;
+
+      @include pc {
+        flex-wrap: wrap;
+        gap: p(52) p(38);
+        margin-top: p(70);
+      }
+
+      @include sp {
+        flex-direction: column;
+        gap: s(40);
+        margin-top: s(70);
+      }
+    }
+
+    .front-page__strength-item {
+      @include pc {
+        width: calc((100% / 4) - (p(38) * 3 / 4));
+      }
+
+      @include sp {
+        width: 100%;
+      }
+    }
+
+    .front-page__strength-item-icon-wrap {
+      @include pc {
+        width: p(83);
+        height: p(47);
+        margin-bottom: p(11);
+      }
+
+      @include sp {
+        width: s(83);
+        height: s(47);
+        margin-bottom: s(11);
+      }
+    }
+
+    .front-page__strength-item-icon {
+      height: 100%;
+
+      @include pc {
+        margin-inline: auto;
+      }
+
+    }
+
+    .front-page__strength-item-title {
+      @include noto-sans;
+      @include wt900;
+      color: $F-1a1a1a;
+      line-height: 1.6;
+      letter-spacing: 0.1em;
+
+      @include pc {
+        font-size: p(20);
+      }
+
+      @include sp {
+        font-size: s(20);
+      }
+    }
+
+    .front-page__strength-item-text {
+      @include noto-sans;
+      @include wt400;
+      color: $F-6b6b6b;
+      line-height: 1.625;
+      letter-spacing: 0.1em;
+
+      @include pc {
+        margin-top: p(17);
+        font-size: p(16);
+      }
+
+      @include sp {
+        margin-top: s(17);
+        font-size: s(16);
+      }
+    }
+  }
+
+  .front-page__banner {
+
+    @include pc {
+      padding: p(142) 0 0;
+    }
+
+    @include sp {
+      padding: s(51) s(20) s(50) s(20);
+    }
+  }
+
+  .front-page__contct {
+
+    @include pc{
+      padding: p(150) 0 p(100);
+    }
+    
+    @include sp{
+      padding: s(50) s(20) s(100);
+    }
+
+    .front-page__contct-inner {
+      display: flex;
+
+      @include pc {
+        width: p(1114);
+        margin: 0 auto;
+        gap: p(18);
+      }
+
+      @include sp {
+        flex-direction: column;
+        width: 100%;
+      }
+    }
+
+    .front-page__contct-text {
+      @include pc {
+        width: p(500);
+        flex-shrink: 0;
+      }
+
+      @include sp {
+        width: 100%;
+      }
+    }
+
+    .front-page__contct-label {
+      @include noto-sans;
+      @include wt500;
+      color: $F-6b6b6b;
+      line-height: 1.375;
+      letter-spacing: 0.1em;
+
+      @include pc {
+        font-size: p(16);
+      }
+
+      @include sp {
+        font-size: s(16);
+      }
+    }
+
+    .front-page__contct-title {
+      @include zen-kaku;
+      @include wt700;
+      color: $F-1a1a1a;
+      line-height: 1.583;
+      letter-spacing: 0.033em;
+
+      @include pc {
+        font-size: p(48);
+        margin-top: p(11);
+      }
+
+      @include sp {
+        font-size: s(36);
+        margin-top: s(22);
+      }
+    }
+
+    .front-page__contct-desc {
+      @include zen-kaku;
+      @include wt700;
+      color: $F-1a1a1a;
+      line-height: 1.875;
+      letter-spacing: 0.1em;
+
+      @include pc {
+        font-size: p(16);
+        margin-top: p(20);
+      }
+
+      @include sp {
+        font-size: s(16);
+        margin-top: s(37);
+      }
+    }
+
+    .C_form {
+      @include pc {
+        width: p(596);
+        flex-shrink: 0;
+      }
+
+      @include sp {
+        width: 100%;
+        margin-top: s(67);
+      }
+    }
+  }
+
+}

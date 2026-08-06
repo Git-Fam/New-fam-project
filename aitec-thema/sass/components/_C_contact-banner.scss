@@ -1,0 +1,116 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_contact-banner
+----------------------- */
+
+.C_contact-banner {
+
+  .C_contact-banner-inner {
+    text-align: center;
+    background-color: #f5f5f5;
+
+    @include pc {
+      width: p(1114);
+      margin: 0 auto;
+      padding: p(45) p(80);
+    }
+
+    @include sp {
+      width: 100%;
+      padding: s(55) 0 s(50) s(13);
+    }
+  }
+
+  .C_contact-banner-title {
+    @include zen-kaku;
+    @include wt500;
+    color: $F-1a1a1a;
+    line-height: 1.472;
+
+    @include pc {
+      font-size: p(36);
+      letter-spacing: 0.031em;
+    }
+
+    @include sp {
+      text-align: left;
+      font-size: s(36);
+      letter-spacing: 0.01em;
+    }
+  }
+
+  .C_contact-banner-text {
+    @include noto-sans;
+    @include wt400;
+    color: $F-6b6b6b;
+
+    @include pc {
+      font-size: p(16);
+      margin-top: p(20);
+      line-height: 1.875;
+      letter-spacing: 0.1em;
+    }
+
+    @include sp {
+      text-align: left;
+      font-size: s(14);
+      margin-top: s(38);
+      line-height: 2.1;
+      letter-spacing: 0.25em;
+    }
+  }
+
+  .C_contact-banner-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $B-141414;
+    color: $F-ffffff;
+    width: fit-content;
+
+    @include pc {
+      border-radius: p(4);
+      padding: p(20) p(34);
+      margin-top: p(29);
+      margin-inline: auto;
+    }
+
+    @include sp {
+      border-radius: s(4);
+      padding: s(17.5) s(30);
+      margin-top: s(38);
+    }
+  }
+
+  .C_contact-banner-button-text {
+    @include zen-kaku;
+    @include wt500;
+    line-height: 1.841;
+    letter-spacing: 0.08em;
+
+    @include pc {
+      font-size: p(13.039);
+    }
+
+    @include sp {
+      font-size: s(13.039);
+    }
+  }
+
+  .C_contact-banner-button-arrow {
+    @include inter;
+    @include wt500;
+    line-height: 1.857;
+    letter-spacing: 0.074em;
+    margin-left: p(12);
+
+    @include pc {
+      font-size: p(14);
+    }
+
+    @include sp {
+      font-size: s(14);
+    }
+  }
+}

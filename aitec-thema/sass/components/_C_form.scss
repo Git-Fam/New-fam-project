@@ -1,0 +1,189 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_form
+----------------------- */
+
+.C_form {
+
+  .C_form-row-wrap {
+    display: flex;
+    flex-direction: column;
+
+    @include pc {
+      gap: p(28);
+    }
+
+    @include sp {
+      gap: 0;
+    }
+  }
+
+  .C_form-row {
+    display: flex;
+
+    @include pc {
+      flex-direction: row;
+      align-items: center;
+      gap: p(24);
+    }
+
+    @include sp {
+      flex-direction: column;
+      gap: s(10.4);
+      margin-top: s(10.4);
+    }
+
+    &--textarea {
+      @include pc {
+        align-items: flex-start;
+      }
+
+      .C_form-label {
+        margin-top: 1em;
+
+      }
+    }
+  }
+
+  .C_form-label {
+    @include noto-sans;
+    @include wt500;
+    color: $F-1a1a1a;
+    line-height: 1.857;
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+
+    @include pc {
+      width: p(160);
+      font-size: p(14);
+    }
+
+    @include sp {
+      font-size: s(14);
+    }
+  }
+
+  .C_form-input,
+  .C_form-textarea {
+    @include noto-sans;
+    @include wt400;
+    color: $F-1a1a1a;
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: p(4);
+
+    @include pc {
+      flex: 1;
+      font-size: p(16);
+      padding: p(13) p(20);
+    }
+
+    @include sp {
+      width: 100%;
+      font-size: s(16);
+      padding: s(13) s(16);
+      border-radius: s(4);
+    }
+  }
+
+  .C_form-input {
+    box-sizing: border-box;
+
+    @include pc {
+      height: p(50);
+    }
+
+    @include sp {
+      height: s(50);
+    }
+  }
+
+  .C_form-textarea {
+    resize: none;
+    box-sizing: border-box;
+
+    @include pc {
+      height: p(140);
+    }
+
+    @include sp {
+      height: s(140);
+    }
+  }
+
+  .C_form-agree {
+    display: flex;
+    align-items: center;
+
+    @include pc {
+      gap: p(9);
+      margin-left: p(184);
+    }
+
+    @include sp {
+      gap: s(9);
+      margin-top: s(20);
+    }
+  }
+
+  .C_form-checkbox {
+    flex-shrink: 0;
+    accent-color: $B-141414;
+    margin: 0;
+
+    @include pc {
+      width: p(18);
+      height: p(18);
+    }
+
+    @include sp {
+      width: s(18);
+      height: s(18);
+    }
+  }
+
+  .C_form-agree-label {
+    @include noto-sans;
+    @include wt400;
+    color: $F-6b6b6b;
+    line-height: 1.849;
+    letter-spacing: 0.1em;
+
+    @include pc {
+      font-size: p(12.983);
+    }
+
+    @include sp {
+      font-size: s(12.983);
+    }
+  }
+
+  .C_form-submit {
+    @include zen-kaku;
+    @include wt500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $B-141414;
+    color: $F-ffffff;
+    line-height: 1.462;
+    letter-spacing: 0.08em;
+
+    @include pc {
+      width: p(152);
+      height: p(51);
+      border-radius: p(4);
+      font-size: p(13.04);
+      margin-left: p(184);
+    }
+
+    @include sp {
+      width: s(152);
+      height: s(51);
+      border-radius: s(4);
+      font-size: s(13.04);
+      margin: s(60) auto 0;
+    }
+  }
+}

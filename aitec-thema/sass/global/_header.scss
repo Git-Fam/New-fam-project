@@ -1,0 +1,118 @@
+@use "../functions" as *;
+
+/* -----------------------
+  header
+----------------------- */
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+
+	.header__inner {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		@include pc {
+			padding: p(15.5) p(82);
+		}
+
+		@include sp {
+			padding: s(20) s(20);
+		}
+	}
+
+	.header__logo {
+		@include inter;
+		@include wt700;
+		color: $F-1a1a1a;
+		line-height: 1.875;
+		letter-spacing: 0.02em;
+
+		@include pc {
+			font-size: p(23.994);
+		}
+
+		@include sp {
+      font-size: s(23.994);
+		}
+
+		a {
+			color: inherit;
+		}
+	}
+
+	.header__group {
+		display: flex;
+		align-items: center;
+
+		@include pc {
+			gap: p(45);
+		}
+
+		@include sp {
+			gap: s(30);
+		}
+	}
+
+	.header__list {
+		display: flex;
+		align-items: center;
+
+		@include pc {
+			gap: p(40);
+		}
+
+		@include sp {
+			gap: s(20);
+		}
+	}
+
+	.header__link {
+		@include zen-kaku;
+		@include wt700;
+		color: $F-1a1a1a;
+		line-height: 1.85;
+		letter-spacing: 0.06em;
+		white-space: nowrap;
+
+		@include pc {
+			font-size: p(14.089);
+		}
+
+		@include sp {
+			font-size: s(13);
+		}
+	}
+
+	.header__button {
+		@include zen-kaku;
+		@include wt700;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: $B-141414;
+		color: $F-ffffff;
+		line-height: 1.84;
+		letter-spacing: 0.08em;
+		white-space: nowrap;
+
+		@include pc {
+			width: p(140);
+			padding: p(12.5) 0;
+			border-radius: p(4);
+			font-size: p(13.039);
+		}
+
+		@include sp {
+			width: auto;
+			padding: s(9) s(12);
+			border-radius: s(4);
+			font-size: s(11);
+		}
+	}
+}
