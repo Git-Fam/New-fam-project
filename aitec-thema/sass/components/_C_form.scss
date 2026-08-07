@@ -44,6 +44,7 @@
 
       }
     }
+    
   }
 
   .C_form-label {
@@ -64,6 +65,10 @@
     }
   }
 
+  .wpcf7-form-control-wrap {
+    width: 100%;
+  }
+
   .C_form-input,
   .C_form-textarea {
     @include noto-sans;
@@ -72,15 +77,15 @@
     background-color: #f5f5f5;
     border: none;
     border-radius: p(4);
+    width: 100%;
+    display: block;
 
     @include pc {
-      flex: 1;
       font-size: p(16);
       padding: p(13) p(20);
     }
 
     @include sp {
-      width: 100%;
       font-size: s(16);
       padding: s(13) s(16);
       border-radius: s(4);
@@ -127,36 +132,53 @@
     }
   }
 
-  .C_form-checkbox {
-    flex-shrink: 0;
-    accent-color: $B-141414;
-    margin: 0;
-
-    @include pc {
-      width: p(18);
-      height: p(18);
-    }
-
-    @include sp {
-      width: s(18);
-      height: s(18);
-    }
+  .wpcf7-turnstile.cf-turnstile{
+    display: none;
   }
 
-  .C_form-agree-label {
-    @include noto-sans;
-    @include wt400;
-    color: $F-6b6b6b;
-    line-height: 1.849;
-    letter-spacing: 0.1em;
+  .wpcf7-form-control.wpcf7-acceptance{
 
-    @include pc {
-      font-size: p(12.983);
+    .wpcf7-list-item {
+      margin: 0;
+
     }
 
-    @include sp {
-      font-size: s(12.983);
+    input[type="checkbox"] {
+      flex-shrink: 0;
+      accent-color: $B-141414;
+      margin: 0;
+
+      @include pc {
+        width: p(18);
+        height: p(18);
+      }
+
+      @include sp {
+        width: s(18);
+        height: s(18);
+      }
     }
+
+    label {
+      @include noto-sans;
+      @include wt400;
+      color: $F-6b6b6b;
+      line-height: 1.849;
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+
+      @include pc {
+        font-size: p(12.983);
+        gap: p(9);
+      }
+
+      @include sp {
+        font-size: s(12.983);
+        gap: s(9);
+      }
+    }
+
   }
 
   .C_form-submit {
@@ -184,6 +206,27 @@
       border-radius: s(4);
       font-size: s(13.04);
       margin: s(60) auto 0;
+    }
+  }
+
+  .wpcf7-not-valid-tip {
+
+    @include pc {
+      font-size: p(12.983);
+    }
+
+    @include sp {
+      font-size: s(12.983);
+    }
+  }
+
+  .wpcf7 form .wpcf7-response-output{
+    @include pc {
+      font-size: p(12.983);
+    }
+
+    @include sp {
+      font-size: s(12.983);
     }
   }
 }

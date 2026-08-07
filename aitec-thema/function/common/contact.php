@@ -1,11 +1,11 @@
 <?php
 
   // コンタクトフォーム７pタグ削除
-  // add_filter('wpcf7_autop_or_not', 'wpcf7_autop_return_false');
-  // function wpcf7_autop_return_false()
-  // {
-  //   return false;
-  // }
+  add_filter('wpcf7_autop_or_not', 'wpcf7_autop_return_false');
+  function wpcf7_autop_return_false()
+  {
+    return false;
+  }
 
   //リキャプチャの読み込みを問い合わせページ、確認ページのみに限定
 // function load_recaptcha_js() {

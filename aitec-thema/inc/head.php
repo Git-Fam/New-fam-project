@@ -13,7 +13,7 @@
     <meta property="og:locale" content="ja_JP" />
 
     <!-- ▼SEO -->
-    <!-- <link rel="canonical" href="<?php echo get_home_url(); ?>" />
+    <link rel="canonical" href="<?php echo get_home_url(); ?>" />
     <title><?php
             bloginfo('name');
             if (wp_title('', false)) {
@@ -37,7 +37,7 @@
                                         }
                                         ?>" />
     <meta property="og:description" content="<?php bloginfo('description'); ?>" />
-    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.wenp" />
+    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.webp" />
 
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="<?php echo get_home_url(); ?>" />
@@ -48,7 +48,7 @@
                                             }
                                             ?>" />
     <meta property="twitter:description" content="<?php bloginfo('description'); ?>" />
-    <meta property="twitter:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.jpg" /> -->
+    <meta property="twitter:image" content="<?php echo get_template_directory_uri(); ?>/img/meta.webp" />
 
     <!-- ▼CSS -->
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/reset.css?ver=1.0.0">
@@ -56,6 +56,11 @@
 
 
     <!-- ▼フォント -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+JP:wght@100..900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
 
     <?php wp_head(); ?>
 
