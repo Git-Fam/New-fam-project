@@ -79,35 +79,37 @@ $screenSizePC: 1280;
 $screenSizeSP: 390;
 
 // サイズ
-@function p($size, $viewport: $screenSizePC) {
-	$rate: calc(100 / $viewport);
-	@return $rate * $size * 1vw;
-}
+// @function p($size, $viewport: $screenSizePC) {
+// 	$rate: calc(100 / $viewport);
+// 	@return $rate * $size * 1vw;
+// }
 
 // font-size: p(50);
 
-@function pm($size, $maxSize: ($size * 4 / 5), $viewport: $screenSizePC) {
+@function p($size, $maxSize: ($size * 5 / 5), $viewport: $screenSizePC) {
 	$rate: calc(100 / $viewport);
 	$calculatedSize: $rate * $size * 1vw;
 	@return min(#{$calculatedSize}, #{$maxSize}px);
 }
 
 // 入力値に*4/5した値とvwの値を比較して大きい方を返す
-// font-size: pm(-50,-40);
+// font-size: p(50,40);
 // or
-// font-size: pm(-50);
+// font-size: p(50);
 
-
-@function pmax($size, $maxSize: ($size * 4 / 5), $viewport: $screenSizePC) {
+@function pm($size, $maxSize: ($size * 5 / 5), $viewport: $screenSizePC) {
 	$rate: calc(100 / $viewport);
 	$calculatedSize: $rate * $size * 1vw;
 	@return max(#{$calculatedSize}, #{$maxSize}px);
 }
 
 // 入力値に*4/5した値とvwの値を比較して大きい方を返す
-// font-size: pmax(50,40);
+// font-size: pm(50,40);
 // or
-// font-size: pmax(50);
+// font-size: pm(50);
+
+
+
 
 
 @function pcl(

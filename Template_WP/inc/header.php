@@ -9,4 +9,4 @@
 </header>
 
 <div class="whopper">
-  <?php get_template_part('./inc/kv'); ?>
+

@@ -15,6 +15,20 @@
 //   line-height: normal;
 // }
 
+// font-family: Kiwi Maru;（Header/Hero/症状セクションで使用、Figma実測）
+@mixin kiwiMaru {
+    font-family: 'Kiwi Maru', serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+// font-family: Noto Sans JP;（電話番号など数字表記で使用、Figma実測）
+@mixin notoSansNum {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
 // font-weight:;
 @mixin wt100 {
     font-weight: 100;
