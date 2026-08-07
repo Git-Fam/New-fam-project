@@ -24,6 +24,8 @@ html {
 
 body {
     // @include serif;
+    line-height: 1.5;
+    letter-spacing: 0.05em;
 
     &.active {
         @include sp {

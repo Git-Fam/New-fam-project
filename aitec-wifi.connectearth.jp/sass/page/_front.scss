@@ -1,5 +1,65 @@
-@use '../../functions' as *;
+@use '../functions' as *;
 
 /* -----------------------
   front
 ----------------------- */
+
+
+.main {
+  padding: 100px 20px 150px;
+
+
+  .TL {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 90px;
+
+    @include pc {
+      font-size: 24px;
+    }
+
+    @include sp {
+      font-size: 18px;
+    }
+  }
+
+  .table_wrap {
+    margin-inline: auto;
+    max-width: 1000px;
+    overflow-x: auto;
+
+    .table {
+      width: 100%;
+      min-width: 500px;
+      border-collapse: collapse;
+      border-spacing: 0;
+
+      tbody {
+        tr {
+          th {
+            width: 30%;
+            vertical-align: middle;
+            background-color: #fafafa;
+            border: 1px solid #dedede;
+            padding: 20px 10px;
+            font-size: 14px;
+          }
+
+          td {
+            width: 70%;
+            vertical-align: middle;
+            border: 1px solid #dedede;
+            padding: 20px 10px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+
+  }
+
+
+
+
+}
