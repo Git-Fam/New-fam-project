@@ -1,10 +1,14 @@
 @use "../functions" as *;
 
 /* -----------------------
-  footer
+footer
 ----------------------- */
 
 .footer {
+  background-color: $B-ffffff;
+  position: relative;
+  z-index: 3;
+
 
   @include pc {
     border-top: 1px solid $F-1a1a1a;
@@ -25,7 +29,6 @@
   }
 
   .footer__top {
-    background-color: $B-ffffff;
 
     @include pc {
       padding: p(25) 0 0;

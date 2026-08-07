@@ -11,6 +11,11 @@
   width: 100%;
   z-index: 9999;
   backdrop-filter: blur(4px);
+  background-color: $B-ffffff;
+
+  &.is-ather{
+    border-bottom: 1px solid #E2E2E2;
+  }
 
 	.header__inner {
 		display: flex;

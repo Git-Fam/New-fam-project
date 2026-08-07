@@ -1,0 +1,221 @@
+@use "../functions" as *;
+
+/* -----------------------
+  service-page
+----------------------- */
+
+.about-page {
+
+  .about-page__hero {
+    @include pc {
+      padding-top: p(20);
+    }
+
+    @include sp {
+      padding-top: s(20);
+    }
+
+    .C_page-hero-lead {
+      @include sp {
+        margin-top: s(63);
+      }
+    }
+  }
+
+  .about-page__content {
+
+    @include pc {
+      padding-top: p(180);
+    }
+
+    @include sp {
+      padding-top: s(60);
+    }
+
+    .about-page__content-inr {
+      margin-inline: auto;
+
+      @include pc {
+        width: p(1114);
+      }
+
+      @include sp {}
+    }
+
+    .about-page__content-info {
+      @include pc {
+        max-width: p(652);
+      }
+
+      @include sp {
+        padding: 0 s(20);
+      }
+    }
+
+    .about-page__info-row {
+      display: flex;
+      border-bottom: 1px solid rgba($F-1a1a1a, 0.1);
+
+      @include pc {
+        padding: p(25) 0;
+      }
+
+      @include sp {
+        padding: s(25) 0;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    .about-page__info-label {
+      @include noto-sans;
+      @include wt700;
+      color: $F-1a1a1a;
+      line-height: 2;
+      letter-spacing: 0.1em;
+      flex-shrink: 0;
+
+      @include pc {
+        width: p(269);
+        font-size: p(16);
+        padding-left: p(30);
+      }
+
+      @include sp {
+        width: s(95);
+        font-size: s(13);
+      }
+    }
+
+    .about-page__info-value {
+      @include noto-sans;
+      @include wt400;
+      color: $F-6b6b6b;
+      line-height: 1.625;
+      letter-spacing: 0.1em;
+
+      @include pc {
+        font-size: p(16);
+      }
+
+      @include sp {
+        font-size: s(13);
+      }
+    }
+
+    .about-page__content-img {
+      @include pc {
+        width: p(427);
+        height: 100vh;
+        position: fixed;
+        top: p(80);
+        right: 0;
+        z-index: 1;
+      }
+
+      @include sp {
+        width: 100%;
+        margin-top: s(60);
+      }
+
+      img {
+        width: 100%;
+
+        @include pc {
+          height: 100%;
+          object-fit: cover;
+          object-position: center left;
+        }
+      }
+    }
+  }
+
+  .about-page__philosophy {
+    @include pc {
+      padding: p(388) 0 p(215);
+    }
+
+    @include sp {
+      padding: s(114) s(20);
+    }
+
+    .about-page__philosophy-inr {
+      @include pc {
+        width: p(1114);
+        margin: 0 auto;
+      }
+    }
+  
+    .about-page__philosophy-label {
+      @include noto-sans;
+      @include wt500;
+      color: $F-6b6b6b;
+      line-height: 2.2;
+      letter-spacing: 0.1em;
+  
+      @include pc {
+        font-size: p(10);
+      }
+  
+      @include sp {
+        font-size: s(10);
+      }
+    }
+  
+    .about-page__philosophy-title {
+      @include zen-kaku;
+      @include wt500;
+      color: $F-1a1a1a;
+      line-height: 1.542;
+      letter-spacing: 0.028em;
+  
+      @include pc {
+        font-size: p(48);
+        margin-top: p(11);
+      }
+  
+      @include sp {
+        font-size: s(36);
+        margin-top: s(25);
+      }
+    }
+  
+    .about-page__philosophy-sub {
+      @include zen-kaku;
+      @include wt500;
+      color: $F-1a1a1a;
+      line-height: 1.469;
+      letter-spacing: 0.021em;
+  
+      @include pc {
+        font-size: p(64);
+        margin-top: p(100);
+      }
+  
+      @include sp {
+        font-size: s(50);
+        margin-top: s(72);
+      }
+    }
+  
+    .about-page__philosophy-text {
+      @include zen-kaku;
+      @include wt500;
+      color: $F-1a1a1a;
+      line-height: 1.875;
+      letter-spacing: 0.1em;
+  
+      @include pc {
+        font-size: p(16);
+        margin-top: p(30);
+      }
+  
+      @include sp {
+        font-size: s(16);
+        margin-top: s(41);
+      }
+    }
+  }
+}
