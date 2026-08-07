@@ -16,12 +16,12 @@ Template Path: pages/
 <section class="about-page__hero">
     <div class="C_page-hero">
         <div class="C_page-hero-inner">
-            <p class="C_page-hero-eyebrow">ABOUT</p>
+            <p class="C_page-hero-eyebrow loadDown">ABOUT</p>
 
             <div class="C_page-hero-content">
-                <p class="C_page-hero-label">ABOUT</p>
-                <h2 class="C_page-hero-title">会社概要</h2>
-                <p class="C_page-hero-lead">
+                <p class="C_page-hero-label loadDown">ABOUT</p>
+                <h2 class="C_page-hero-title loadDown">会社概要</h2>
+                <p class="C_page-hero-lead loadDown">
                     株式会社アイテックの<br class="sp">会社概要をご紹介します
                 </p>
             </div>
@@ -32,7 +32,7 @@ Template Path: pages/
 <section class="about-page__content">
     <div class="about-page__content-inr">
 
-        <div class="about-page__content-info">
+        <div class="about-page__content-info right">
             <dl class="about-page__info-list">
                 <div class="about-page__info-row">
                     <dt class="about-page__info-label">会社名</dt>
@@ -63,7 +63,7 @@ Template Path: pages/
             </dl>
         </div>
 
-        <div class="about-page__content-img">
+        <div class="about-page__content-img left">
             <picture>
                 <source srcset="<?php echo get_template_directory_uri(); ?>/img/about/about-img-pc.webp" media="(min-width: 768px)">
                 <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-img-sp.webp" alt="">
@@ -74,10 +74,10 @@ Template Path: pages/
 
 <section class="about-page__philosophy" id="philosophy">
     <div class="about-page__philosophy-inr">
-        <p class="about-page__philosophy-label">Philosophy</p>
-        <h2 class="about-page__philosophy-title">企業理念</h2>
-        <p class="about-page__philosophy-sub">Technology for Growth</p>
-        <p class="about-page__philosophy-text">
+        <p class="about-page__philosophy-label up">Philosophy</p>
+        <h2 class="about-page__philosophy-title up">企業理念</h2>
+        <p class="about-page__philosophy-sub up">Technology for Growth</p>
+        <p class="about-page__philosophy-text right">
             私たちは、テクノロジーの力で企業の成長を支え、<br class="pc">
             営業の可能性を広げる存在であり続けます。<br>
             現場の課題に真摯に向き合い、使いやすさと成果を追求したサービスを提供することで、<br class="pc">

@@ -23,15 +23,17 @@
 // 上へ
 .up {
 	opacity: 0;
-	transform: translateY(100%);
+	transform: translateY(100px);
 
 	&.show {
-		animation: up 0.5s ease forwards;
+		animation: up  ease forwards;
+		animation-duration: 1s;
+		animation-delay: 0.5s;
 
 		@keyframes up {
 			0% {
 				opacity: 0;
-				transform: translateY(100%);
+				transform: translateY(100px);
 			}
 
 			100% {
@@ -49,6 +51,8 @@
 
 	&.show {
 		animation: down ease forwards;
+		animation-duration: 1s;
+		animation-delay: 0.5s;
 
 		@keyframes down {
 			0% {
@@ -71,6 +75,8 @@
 
 	&.show {
 		animation: left ease forwards;
+		animation-duration: 1s;
+		animation-delay: 0.5s;
 
 		@keyframes left {
 			0% {
@@ -93,6 +99,8 @@
 
 	&.show {
 		animation: right ease forwards;
+		animation-duration: 1s;
+		animation-delay: 0.5s;
 
 		@keyframes right {
 			0% {
@@ -111,20 +119,20 @@
 // ふわっと
 .pop {
 	opacity: 0;
-	transform: scale(0.5);
+	transform-origin: center center;
 
 	&.show {
 		animation: pop ease forwards;
+		animation-duration: 1s;
+		animation-delay: 0.5s;
 
 		@keyframes pop {
 			0% {
 				opacity: 0;
-				transform: scale(0.5);
 			}
 
 			100% {
 				opacity: 1;
-				transform: scale(1);
 			}
 		}
 	}
@@ -134,15 +142,17 @@
 // load上へ
 .loadUp {
 	opacity: 0;
-	transform: translateY(100%);
-
+	transform: translateY(100px);
+	
 	&.show {
 		animation: loadUp ease forwards;
+		animation-duration: 1s;
+		animation-delay: 0.5s;
 
 		@keyframes loadUp {
 			0% {
 				opacity: 0;
-				transform: translateY(100%);
+				transform: translateY(100px);
 			}
 
 			100% {
@@ -160,6 +170,8 @@
 
 	&.show {
 		animation: loadDown ease forwards;
+		animation-duration: 1s;
+		animation-delay: 0.5s;
 
 		@keyframes loadDown {
 			0% {
@@ -179,6 +191,7 @@
 .loadLeft {
 	opacity: 0;
 	transform: translateX(100%);
+
 
 	&.show {
 		animation: loadLeft ease forwards;

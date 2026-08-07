@@ -17,15 +17,15 @@ Template Path: pages/
     <div class="contact-page__content-inr">
 
       <div class="contact-page__text">
-        <p class="contact-page__label">CONTACT</p>
-        <h2 class="contact-page__title">お問い合わせ</h2>
-        <p class="contact-page__desc">
+        <p class="contact-page__label loadDown">CONTACT</p>
+        <h2 class="contact-page__title loadDown">お問い合わせ</h2>
+        <p class="contact-page__desc loadDown">
           サービスに関するご質問やご相談など、<br>
           お気軽にお問い合わせください。
         </p>
       </div>
 
-      <div class="C_form">
+      <div class="C_form loadUp">
         <?php echo do_shortcode('[contact-form-7 id="ee99720" title="contact"]'); ?>
 
 

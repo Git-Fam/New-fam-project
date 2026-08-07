@@ -15,16 +15,16 @@ Template Path: pages/
   <section class="thanks-page__content">
     <div class="thanks-page__content-inr">
 
-      <img class="thanks-page__icon" src="<?php echo get_template_directory_uri(); ?>/img/thanks/check-icon.svg" alt="">
+      <img class="thanks-page__icon loadUp" src="<?php echo get_template_directory_uri(); ?>/img/thanks/check-icon.svg" alt="">
 
-      <h2 class="thanks-page__title">送信が完了しました</h2>
+      <h2 class="thanks-page__title loadUp">送信が完了しました</h2>
 
-      <p class="thanks-page__desc">
+      <p class="thanks-page__desc loadUp">
         お問い合わせいただき、<br class="sp">誠にありがとうございます。<br>
         内容を確認のうえ、<br class="sp">担当者よりご連絡いたします。
       </p>
 
-      <a href="<?php echo home_url(); ?>" class="thanks-page__link hover-opa">
+      <a href="<?php echo home_url(); ?>" class="thanks-page__link hover-opa loadDown">
         <span class="thanks-page__link-text">トップページに戻る</span>
         <span class="thanks-page__link-arrow">→</span>
       </a>

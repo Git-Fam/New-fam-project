@@ -16,12 +16,12 @@ Template Path: pages/
 <section class="service-page__hero">
     <div class="C_page-hero">
         <div class="C_page-hero-inner">
-            <p class="C_page-hero-eyebrow">SERVICE</p>
+            <p class="C_page-hero-eyebrow loadDown">SERVICE</p>
 
             <div class="C_page-hero-content">
-                <p class="C_page-hero-label">グロースコア</p>
-                <h2 class="C_page-hero-title">Growth Core</h2>
-                <p class="C_page-hero-lead">
+                <p class="C_page-hero-label loadDown">グロースコア</p>
+                <h2 class="C_page-hero-title loadDown">Growth Core</h2>
+                <p class="C_page-hero-lead loadDown">
                     グロースコアは、Zoom Phone 対応の次世代クラウド型コールシステムです。<br class="pc">
                     使いやすさ・高機能・低コストを兼ね備え、<br class="pc">
                     営業活動をより効率的で成果につながるものへ進化させます。
@@ -35,7 +35,7 @@ Template Path: pages/
     <div class="service-page__content-inr">
 
         <div class="service-page__content-item">
-            <div class="service-page__content-item-text">
+            <div class="service-page__content-item-text up">
                 <p class="service-page__content-item-number">01</p>
                 <h3 class="service-page__content-item-title">Zoom Phone 連携</h3>
                 <p class="service-page__content-item-desc">
@@ -45,14 +45,14 @@ Template Path: pages/
                 </p>
             </div>
 
-            <picture class="service-page__content-item-image">
+            <picture class="service-page__content-item-image right">
                 <source media="(min-width: 768px)" srcset="<?php echo get_template_directory_uri(); ?>/img/service/service-page__content-item-01-pc.webp">
                 <img src="<?php echo get_template_directory_uri(); ?>/img/service/service-page__content-item-01-sp.webp" alt="">
             </picture>
         </div>
 
         <div class="service-page__content-item">
-            <div class="service-page__content-item-text">
+            <div class="service-page__content-item-text up">
                 <p class="service-page__content-item-number">02</p>
                 <h3 class="service-page__content-item-title">直感的な操作性</h3>
                 <p class="service-page__content-item-desc">
@@ -62,14 +62,14 @@ Template Path: pages/
                 </p>
             </div>
 
-            <picture class="service-page__content-item-image">
+            <picture class="service-page__content-item-image left">
                 <source media="(min-width: 768px)" srcset="<?php echo get_template_directory_uri(); ?>/img/service/service-page__content-item-02-pc.webp">
                 <img src="<?php echo get_template_directory_uri(); ?>/img/service/service-page__content-item-02-sp.webp" alt="">
             </picture>
         </div>
 
         <div class="service-page__content-item">
-            <div class="service-page__content-item-text">
+            <div class="service-page__content-item-text up">
                 <p class="service-page__content-item-number">03</p>
                 <h3 class="service-page__content-item-title">リアルタイム管理</h3>
                 <p class="service-page__content-item-desc">
@@ -79,14 +79,14 @@ Template Path: pages/
                 </p>
             </div>
 
-            <picture class="service-page__content-item-image">
+            <picture class="service-page__content-item-image right">
                 <source media="(min-width: 768px)" srcset="<?php echo get_template_directory_uri(); ?>/img/service/service-page__content-item-03-pc.webp">
                 <img src="<?php echo get_template_directory_uri(); ?>/img/service/service-page__content-item-03-sp.webp" alt="">
             </picture>
         </div>
 
         <div class="service-page__content-item">
-            <div class="service-page__content-item-text">
+            <div class="service-page__content-item-text up">
                 <p class="service-page__content-item-number">04</p>
                 <h3 class="service-page__content-item-title">継続的な<br class="sp">アップデート</h3>
                 <p class="service-page__content-item-desc">
@@ -96,7 +96,7 @@ Template Path: pages/
                 </p>
             </div>
 
-            <picture class="service-page__content-item-image">
+            <picture class="service-page__content-item-image left">
                 <source media="(min-width: 768px)" srcset="<?php echo get_template_directory_uri(); ?>/img/service/service-page__content-item-04-pc.webp">
                 <img src="<?php echo get_template_directory_uri(); ?>/img/service/service-page__content-item-04-sp.webp" alt="">
             </picture>
@@ -105,7 +105,7 @@ Template Path: pages/
 </section>
 
 <section class="service-page__banner">
-    <div class="C_contact-banner">
+    <div class="C_contact-banner up">
         <div class="C_contact-banner-inner">
             <h2 class="C_contact-banner-title">営業 DX を、<br class="sp">もっとシンプルに。</h2>
             <p class="C_contact-banner-text">
