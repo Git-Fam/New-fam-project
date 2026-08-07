@@ -353,54 +353,10 @@ a {
   gap: 24px;
 }
 
-.section-head h2,
 .analysis-shell h2,
-.jobs-shell h2 {
+.result-offer-card h2 {
   font-size: clamp(28px, 9vw, 42px);
   line-height: 1.12;
-}
-
-.rule-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-.rule-block {
-  min-height: 164px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 18px;
-  background: var(--surface);
-}
-
-.rule-block span {
-  color: var(--muted);
-  font-size: 14px;
-  font-weight: 800;
-}
-
-.rule-block strong {
-  max-width: 7em;
-  font-size: 24px;
-  line-height: 1.16;
-}
-
-.yes-rule {
-  border-color: rgba(42, 157, 143, 0.32);
-}
-
-.no-rule {
-  border-color: rgba(255, 77, 109, 0.32);
-}
-
-.plain-copy {
-  color: var(--muted);
-  font-size: 17px;
-  line-height: 1.75;
 }
 
 .swipe-shell {
@@ -587,14 +543,64 @@ a {
   color: var(--muted);
 }
 
-.spinner {
-  width: 56px;
-  height: 56px;
+.analysis-loader {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
   margin: 0 auto 8px;
-  border: 4px solid rgba(17, 17, 17, 0.08);
-  border-top-color: var(--ink);
-  border-radius: 50%;
-  animation: spin 850ms linear infinite;
+  border-radius: 14px;
+  background: rgba(42, 157, 143, 0.1);
+}
+
+.analysis-loader img {
+  width: 22px;
+  height: 22px;
+  opacity: 0.82;
+  animation: analysisPulse 1100ms ease-in-out infinite;
+}
+
+.analysis-progress {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.analysis-progress-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 800;
+}
+
+.analysis-progress-meta strong {
+  color: var(--ink);
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.analysis-progress-track {
+  width: 100%;
+  height: 9px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(17, 17, 17, 0.08);
+}
+
+.analysis-progress-track span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent-2), #65d6c7);
+  box-shadow: 0 0 18px rgba(42, 157, 143, 0.38);
+  transform: scaleX(0);
+  transform-origin: left center;
 }
 
 .analysis-check {
@@ -771,7 +777,7 @@ a {
   grid-template-columns: 1fr 1fr;
 }
 
-.jobs-shell p {
+.result-offer-card p {
   color: var(--muted);
   line-height: 1.75;
 }
@@ -813,6 +819,19 @@ a {
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes analysisPulse {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(0.94);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
   }
 }
 
@@ -860,7 +879,6 @@ a {
     width: 100%;
   }
 
-  .rule-grid,
   .job-metrics {
     grid-template-columns: 1fr;
   }
@@ -874,7 +892,7 @@ a {
   }
 }
 
-/* Figma implementation: LP / rules / swipe */
+/* Figma implementation: LP / swipe */
 .visually-hidden {
   position: absolute !important;
   width: 1px !important;
@@ -886,7 +904,6 @@ a {
 }
 
 .screen[data-screen="lp"],
-.screen[data-screen="rules"],
 .screen[data-screen="swipe"] {
   min-height: 100svh;
   display: grid;
@@ -1024,8 +1041,7 @@ a {
   margin: 0;
 }
 
-.lp-shell .primary-button,
-.rules-shell .primary-button {
+.lp-shell .primary-button {
   width: 100%;
   min-height: 56px;
   border-radius: 16px;
@@ -1062,129 +1078,6 @@ a {
   backdrop-filter: none;
   font-size: inherit;
   font-weight: inherit;
-}
-
-.rules-shell {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 0;
-  padding: 0;
-}
-
-.rules-shell .section-head {
-  width: 100%;
-  display: grid;
-  justify-items: center;
-  gap: 8px;
-  padding: clamp(64px, 10svh, 96px) 32px 0;
-  text-align: center;
-}
-
-.rules-shell .section-head h2 {
-  font-size: 24px;
-  line-height: 1.35;
-  font-weight: 900;
-  color: var(--figma-ink);
-}
-
-.rules-shell .section-head p {
-  color: var(--figma-muted);
-  font-size: 14px;
-  line-height: 1.6;
-  font-weight: 600;
-}
-
-.rules-shell .rule-grid {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-  margin-top: auto;
-  padding: 0 32px;
-}
-
-.rules-shell .rule-block {
-  min-height: 80px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 16px;
-  border: 1px solid var(--figma-line);
-  border-radius: 20px;
-  padding: 20px;
-  background: var(--figma-soft);
-}
-
-.rules-shell .rule-icon {
-  width: 40px;
-  height: 40px;
-  flex: 0 0 40px;
-  display: grid;
-  place-items: center;
-  border-radius: 20px;
-}
-
-.rules-shell .yes-rule .rule-icon {
-  background: #f0fdfa;
-}
-
-.rules-shell .no-rule .rule-icon {
-  background: #e5e7eb;
-}
-
-.rules-shell .rule-icon img {
-  width: 20px;
-  height: 20px;
-}
-
-.rules-shell .rule-block div {
-  display: grid;
-  gap: 2px;
-}
-
-.rules-shell .rule-block strong {
-  max-width: none;
-  font-size: 16px;
-  line-height: 1.35;
-  font-weight: 900;
-}
-
-.rules-shell .yes-rule strong {
-  color: var(--figma-accent);
-}
-
-.rules-shell .no-rule strong {
-  color: var(--figma-muted);
-}
-
-.rules-shell .rule-block small {
-  color: var(--figma-muted);
-  font-size: 12px;
-  line-height: 1.35;
-  font-weight: 600;
-}
-
-.rules-shell .plain-copy {
-  width: 100%;
-  margin: 28px 0 0;
-  padding: 0 32px;
-  color: var(--figma-muted);
-  font-size: 13px;
-  line-height: 1.75;
-  font-weight: 800;
-  text-align: center;
-}
-
-.rules-shell .bottom-actions {
-  width: 100%;
-  margin-top: auto;
-  padding: 0 32px max(24px, env(safe-area-inset-bottom));
-}
-
-.desktop-keyboard-tip {
-  display: none;
 }
 
 .swipe-shell {
@@ -1355,7 +1248,6 @@ a {
 
 @media (max-width: 430px) {
   .screen[data-screen="lp"],
-  .screen[data-screen="rules"],
   .screen[data-screen="swipe"] {
     background: #ffffff;
   }
@@ -1393,7 +1285,6 @@ a {
 
 @media (min-width: 860px) {
   .screen[data-screen="lp"],
-  .screen[data-screen="rules"],
   .screen[data-screen="swipe"] {
     display: flex;
     align-items: stretch;
@@ -1486,8 +1377,7 @@ a {
     width: 360px;
   }
 
-  .lp-shell .primary-button,
-  .rules-shell .primary-button {
+  .lp-shell .primary-button {
     width: 360px;
     min-height: 58px;
     border-radius: 16px;
@@ -1502,104 +1392,6 @@ a {
   .lp-signal img {
     width: 8px;
     height: 8px;
-  }
-
-  .rules-shell {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: clamp(108px, 13svh, 122px) 120px 40px;
-  }
-
-  .rules-shell .section-head {
-    justify-items: center;
-    gap: 12px;
-    padding: 0;
-    text-align: center;
-  }
-
-  .rules-shell .section-head h2 {
-    font-size: 32px;
-    line-height: 1.25;
-  }
-
-  .rules-shell .section-head p {
-    font-size: 16px;
-    line-height: 1.5;
-  }
-
-  .rules-shell .rule-grid {
-    width: 100%;
-    max-width: 1200px;
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin-top: 40px;
-    padding: 0;
-  }
-
-  .rules-shell .rule-block {
-    min-height: 68px;
-    gap: 20px;
-    border-radius: 20px;
-    padding: 24px;
-    background: #f8f9fa;
-  }
-
-  .rules-shell .rule-icon {
-    width: 48px;
-    height: 48px;
-    flex-basis: 48px;
-    border-radius: 24px;
-  }
-
-  .rules-shell .rule-icon img {
-    width: 24px;
-    height: 24px;
-  }
-
-  .rules-shell .rule-block strong {
-    font-size: 18px;
-  }
-
-  .rules-shell .rule-block small {
-    font-size: 14px;
-  }
-
-  .desktop-keyboard-tip {
-    width: 100%;
-    max-width: 1200px;
-    min-height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 28px;
-    padding: 8px 16px;
-    border-radius: 12px;
-    background: #f0fdfa;
-    color: var(--figma-accent);
-    font-size: 14px;
-    font-weight: 800;
-  }
-
-  .desktop-keyboard-tip img {
-    width: 18px;
-    height: 18px;
-  }
-
-  .rules-shell .plain-copy {
-    max-width: none;
-    margin: 32px 0 0;
-    padding: 0;
-    font-size: 14px;
-    text-align: center;
-  }
-
-  .rules-shell .bottom-actions {
-    width: 360px;
-    margin-top: 28px;
-    padding: 0;
   }
 
   .swipe-shell {
@@ -1695,9 +1487,8 @@ a {
   }
 }
 
-/* Figma implementation: analysis / result / jobs */
-.screen[data-screen="analysis"],
-.screen[data-screen="jobs"] {
+/* Figma implementation: analysis / result */
+.screen[data-screen="analysis"] {
   min-height: 100svh;
   display: grid;
   place-items: center;
@@ -1705,8 +1496,7 @@ a {
   background: #f8f9fa;
 }
 
-.screen[data-screen="analysis"] .experience-shell,
-.screen[data-screen="jobs"] .experience-shell {
+.screen[data-screen="analysis"] .experience-shell {
   --figma-accent: #0d9488;
   --figma-ink: #111827;
   --figma-muted: #4b5563;
@@ -1745,14 +1535,16 @@ a {
   place-items: center;
   margin: 0;
   border: 0;
-  border-radius: 0;
+  border-radius: 16px;
+  background: #f0fdfa;
   animation: none;
 }
 
 .analysis-loader img {
-  width: 32px;
-  height: 32px;
-  animation: spin 850ms linear infinite;
+  width: 28px;
+  height: 28px;
+  opacity: 0.82;
+  animation: analysisPulse 1100ms ease-in-out infinite;
 }
 
 .analysis-shell h2 {
@@ -1760,6 +1552,30 @@ a {
   font-size: 20px;
   line-height: 1.45;
   font-weight: 900;
+}
+
+.analysis-progress {
+  gap: 12px;
+  margin-top: -8px;
+}
+
+.analysis-progress-meta {
+  color: var(--figma-muted);
+  font-size: 12px;
+}
+
+.analysis-progress-meta strong {
+  color: var(--figma-ink);
+}
+
+.analysis-progress-track {
+  height: 10px;
+  background: #eef2f7;
+}
+
+.analysis-progress-track span {
+  background: linear-gradient(90deg, #0d9488, #6ee7d8);
+  box-shadow: 0 0 20px rgba(13, 148, 136, 0.28);
 }
 
 .analysis-check {
@@ -1819,6 +1635,21 @@ a {
 
 .analysis-compare strong {
   font-weight: inherit;
+}
+
+.analysis-result-action {
+  width: 100%;
+}
+
+.analysis-result-action .primary-button {
+  width: 100%;
+  min-height: 54px;
+  border-radius: 16px;
+  background: var(--figma-accent);
+  color: #ffffff;
+  box-shadow: 0 14px 28px rgba(13, 148, 136, 0.16);
+  font-size: 15px;
+  font-weight: 900;
 }
 
 .result-screen {
@@ -2077,13 +1908,14 @@ a {
   font-weight: 500;
 }
 
-.jobs-shell {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 32px;
-  padding: 104px 32px 88px;
-  text-align: center;
+.result-offer-card {
+  display: grid;
+  gap: 18px;
+  border: 1px solid #e9eaf0;
+  border-radius: 18px;
+  padding: 22px;
+  background: #ffffff;
+  box-shadow: 0 12px 34px rgba(17, 24, 39, 0.06);
 }
 
 .jobs-header {
@@ -2106,23 +1938,23 @@ a {
   height: 24px;
 }
 
-.jobs-shell .eyebrow {
+.result-offer-card .eyebrow {
   display: none;
 }
 
-.jobs-shell h2 {
+.result-offer-card h2 {
   color: #111827;
   font-size: 20px;
   line-height: 1.45;
   font-weight: 900;
 }
 
-.jobs-shell p {
+.result-offer-card p {
   color: #4b5563;
   line-height: 1.55;
 }
 
-.jobs-shell #jobLeadCopy {
+.result-offer-card #jobLeadCopy {
   margin-top: 4px;
   font-size: 13px;
   font-weight: 500;
@@ -2286,29 +2118,19 @@ a {
 }
 
 .line-note {
-  margin-top: -22px;
+  margin-top: -8px;
   color: #4b5563;
   font-size: 12px;
   font-weight: 800;
-}
-
-.jobs-shell #retryJobs {
-  min-height: auto;
-  padding: 0;
-  color: #4b5563;
-  background: transparent;
-  font-size: 13px;
-  font-weight: 800;
+  text-align: center;
 }
 
 @media (max-width: 430px) {
-  .screen[data-screen="analysis"],
-  .screen[data-screen="jobs"] {
+  .screen[data-screen="analysis"] {
     background: #ffffff;
   }
 
-  .screen[data-screen="analysis"] .experience-shell,
-  .screen[data-screen="jobs"] .experience-shell {
+  .screen[data-screen="analysis"] .experience-shell {
     width: 100%;
     height: 100svh;
     min-height: 100svh;
@@ -2320,7 +2142,6 @@ a {
 
 @media (min-width: 860px) {
   .screen[data-screen="analysis"],
-  .screen[data-screen="jobs"],
   .result-screen {
     display: flex;
     align-items: stretch;
@@ -2330,7 +2151,6 @@ a {
   }
 
   .screen[data-screen="analysis"] .experience-shell,
-  .screen[data-screen="jobs"] .experience-shell,
   .result-layout {
     width: min(1440px, 100%);
     min-height: 100svh;
@@ -2464,11 +2284,10 @@ a {
     font-size: 12px;
   }
 
-  .jobs-shell {
-    align-items: center;
-    justify-content: flex-start;
-    gap: 40px;
-    padding: 76px 120px 40px;
+  .result-offer-card {
+    width: 680px;
+    gap: 22px;
+    padding: 28px;
   }
 
   .jobs-icon {
@@ -2482,11 +2301,11 @@ a {
     height: 28px;
   }
 
-  .jobs-shell h2 {
+  .result-offer-card h2 {
     font-size: 24px;
   }
 
-  .jobs-shell #jobLeadCopy {
+  .result-offer-card #jobLeadCopy {
     font-size: 14px;
   }
 
@@ -2547,6 +2366,7 @@ a {
 
   .line-button {
     width: 380px;
+    justify-self: center;
     gap: 10px;
     font-size: 16px;
   }
@@ -2557,11 +2377,7 @@ a {
   }
 
   .line-note {
-    margin-top: -30px;
-  }
-
-  .jobs-shell #retryJobs {
-    font-size: 14px;
+    margin-top: -10px;
   }
 }
 
@@ -2571,12 +2387,72 @@ a {
   padding: 28px 0 56px;
 }
 
+.admin-login-screen {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 28px 14px;
+  background: #f8f9fa;
+}
+
+.admin-login-screen[hidden] {
+  display: none;
+}
+
+.admin-login-card {
+  width: min(100%, 420px);
+  display: grid;
+  gap: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 24px;
+  background: #ffffff;
+  box-shadow: 0 18px 48px rgba(17, 24, 39, 0.08);
+}
+
+.admin-login-card h1 {
+  font-size: clamp(28px, 6vw, 40px);
+  line-height: 1.15;
+}
+
+.admin-login-card p {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.65;
+}
+
+.admin-login-card label {
+  display: grid;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.admin-login-card input {
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--ink);
+  background: #fbfbfa;
+  outline: none;
+}
+
 .admin-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 18px;
   margin-bottom: 18px;
+}
+
+.admin-header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .admin-header h1 {
@@ -2722,8 +2598,16 @@ a {
 
 .kpi-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
+}
+
+.kpi-layout .kpi-panel:first-child {
+  grid-column: 1 / -1;
+}
+
+.kpi-panel-wide {
+  grid-column: 1 / -1;
 }
 
 .kpi-panel {
@@ -2740,6 +2624,13 @@ a {
 .kpi-panel h3 {
   font-size: 14px;
   font-weight: 900;
+}
+
+.kpi-panel-note {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.55;
 }
 
 .kpi-table-wrap {
@@ -2807,6 +2698,17 @@ a {
   color: var(--muted);
   font-size: 11px;
   font-weight: 800;
+}
+
+.kpi-result-row small {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.kpi-dropoff-row {
+  padding-bottom: 2px;
 }
 
 .kpi-bar {
@@ -2922,6 +2824,60 @@ a {
   padding-right: 4px;
 }
 
+.admin-card-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.admin-card-toolbar strong {
+  color: var(--ink);
+  font-size: 16px;
+}
+
+.admin-card-toolbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.admin-card-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px;
+  align-items: stretch;
+}
+
+.card-enabled-toggle {
+  min-width: 56px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px;
+  background: #fbfbfa;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.card-enabled-toggle input {
+  width: 18px;
+  height: 18px;
+  min-height: auto;
+  padding: 0;
+}
+
+.admin-card-row.is-disabled .admin-card-button {
+  opacity: 0.56;
+}
+
 .admin-card-button strong {
   display: -webkit-box;
   overflow: hidden;
@@ -2931,6 +2887,7 @@ a {
 
 .admin-card-button {
   min-height: 98px;
+  width: 100%;
 }
 
 .admin-card-button span {
@@ -3053,6 +3010,12 @@ a {
   color: #c1121f;
 }
 
+.danger-button {
+  border-color: rgba(193, 18, 31, 0.26);
+  color: #c1121f;
+  background: #fff7f8;
+}
+
 .admin-status {
   min-height: 20px;
   color: var(--muted);
@@ -3069,6 +3032,10 @@ a {
   .kpi-card-grid,
   .kpi-layout {
     grid-template-columns: 1fr;
+  }
+
+  .kpi-layout .kpi-panel:first-child {
+    grid-column: auto;
   }
 
   .kpi-help-list {

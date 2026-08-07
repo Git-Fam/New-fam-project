@@ -3,262 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
     <title>AIキャリア診断 Admin</title>
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/styles.css" />
     <script src="./config.js"></script>
-    <script type="module" src="../src/admin.js"></script>
+    <script type="module" src="../src/admin-login.js?v=20260807-card-delete"></script>
   </head>
   <body>
-    <main class="admin-main">
-      <header class="admin-header">
-        <div>
-          <p class="eyebrow">Admin</p>
-          <h1>管理画面</h1>
-        </div>
-        <a class="secondary-button" href="../index.html">アプリへ戻る</a>
-      </header>
+    <!-- adminLoginScreen/adminLoginForm/adminPasswordInput/adminLoginStatus は管理画面ログインでJS使用中 -->
+    <section class="admin-login-screen" id="adminLoginScreen">
+      <form class="admin-login-card" id="adminLoginForm">
+        <p class="eyebrow">Admin</p>
+        <h1>管理画面ログイン</h1>
+        <p>管理用パスワードを入力してください。</p>
+        <label>
+          管理パスワード
+          <input id="adminPasswordInput" type="password" autocomplete="current-password" />
+        </label>
+        <button class="primary-button" type="submit">ログイン</button>
+        <p class="admin-status" id="adminLoginStatus" role="status"></p>
+      </form>
+    </section>
 
-      <section class="admin-section kpi-section">
-        <div class="admin-section-head">
-          <div>
-            <h2>KPI集計</h2>
-            <p>診断体験のどこで離脱しているかを、日別・週別・月別で確認します。</p>
-          </div>
-          <!-- refreshKpi jsで使用中 -->
-          <button class="secondary-button" id="refreshKpi" type="button">更新</button>
-        </div>
-
-        <!-- kpiSummaryCards jsで使用中 -->
-        <div class="kpi-card-grid" id="kpiSummaryCards">
-          <div class="kpi-card"><span>LP表示</span><strong>-</strong><small>診断ページを開いた数</small></div>
-          <div class="kpi-card"><span>診断開始率</span><strong>-</strong><small>LP表示 → 診断開始</small></div>
-          <div class="kpi-card"><span>診断完了率</span><strong>-</strong><small>診断開始 → 40枚完了</small></div>
-          <div class="kpi-card"><span>LINE送信率</span><strong>-</strong><small>診断完了 → LINE送信</small></div>
-        </div>
-
-        <details class="kpi-help">
-          <summary>KPIの見方</summary>
-          <div class="kpi-help-body">
-            <p>各数字は、同じ診断で何度も表示・クリックされた場合でも1件として集計します。</p>
-            <dl class="kpi-help-list">
-              <div>
-                <dt>LP</dt>
-                <dd>診断ページを開いた数。SNSや広告からどれくらい流入したかを見る数字です。</dd>
-              </div>
-              <div>
-                <dt>開始</dt>
-                <dd>診断スタートを押してスワイプを始めた数です。</dd>
-              </div>
-              <div>
-                <dt>完了</dt>
-                <dd>40枚すべてスワイプして診断が完了した数です。</dd>
-              </div>
-              <div>
-                <dt>結果表示</dt>
-                <dd>診断結果画面まで到達した数です。LINE登録前に結果を出す設定の時に増えます。</dd>
-              </div>
-              <div>
-                <dt>LINE押下</dt>
-                <dd>「LINEで詳細を見る」を押した数です。LINE登録意欲を見る数字です。</dd>
-              </div>
-              <div>
-                <dt>送信</dt>
-                <dd>LINE認証後、診断結果や求人情報をLINEへ送信できた数です。</dd>
-              </div>
-              <div>
-                <dt>シェア</dt>
-                <dd>XまたはLINEのシェアボタンを押した数です。</dd>
-              </div>
-            </dl>
-            <dl class="kpi-help-list">
-              <div>
-                <dt>開始率</dt>
-                <dd>LPを見た人のうち、診断を始めた割合です。</dd>
-              </div>
-              <div>
-                <dt>完了率</dt>
-                <dd>診断を始めた人のうち、40枚を最後までスワイプした割合です。</dd>
-              </div>
-              <div>
-                <dt>結果到達率</dt>
-                <dd>診断完了後、結果画面まで到達した割合です。</dd>
-              </div>
-              <div>
-                <dt>送信率</dt>
-                <dd>診断完了後、LINEで結果送信まで完了した割合です。</dd>
-              </div>
-              <div>
-                <dt>シェア率</dt>
-                <dd>結果を見た人のうち、シェアボタンを押した割合です。</dd>
-              </div>
-            </dl>
-          </div>
-        </details>
-
-        <div class="kpi-range-tabs" aria-label="集計期間">
-          <!-- kpiRangeTabs jsで使用中 -->
-          <button class="is-active" type="button" data-kpi-range="daily">日別</button>
-          <button type="button" data-kpi-range="weekly">週別</button>
-          <button type="button" data-kpi-range="monthly">月別</button>
-        </div>
-
-        <div class="kpi-layout">
-          <div class="kpi-panel">
-            <!-- kpiTableTitle jsで使用中 -->
-            <h3 id="kpiTableTitle">日別KPI</h3>
-            <!-- kpiDailyTable jsで使用中 -->
-            <div class="kpi-table-wrap" id="kpiDailyTable"></div>
-          </div>
-          <div class="kpi-panel">
-            <h3>診断タイプ分布</h3>
-            <!-- kpiResultTypes jsで使用中 -->
-            <div class="kpi-result-list" id="kpiResultTypes"></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="admin-section">
-        <h2>表示数値</h2>
-        <div class="form-grid">
-          <label>
-            比較人数
-            <!-- comparisonCountInput jsで使用中 -->
-            <input id="comparisonCountInput" type="number" min="0" step="1" />
-          </label>
-          <label>
-            紹介可能求人数
-            <!-- jobCountInput jsで使用中 -->
-            <input id="jobCountInput" type="number" min="0" step="1" />
-          </label>
-          <label>
-            マッチ度90%以上
-            <!-- highMatchCountInput jsで使用中 -->
-            <input id="highMatchCountInput" type="number" min="0" step="1" />
-          </label>
-          <label class="checkbox-label">
-            <!-- requireLineInput jsで使用中 -->
-            <input id="requireLineInput" type="checkbox" />
-            LINE登録後に結果を表示
-          </label>
-        </div>
-        <!-- saveGeneral jsで使用中 -->
-        <button class="primary-button" id="saveGeneral" type="button">保存</button>
-      </section>
-
-      <section class="admin-section">
-        <h2>診断結果文章</h2>
-        <label>
-          タイプ
-          <!-- resultSelect jsで使用中 -->
-          <select id="resultSelect"></select>
-        </label>
-        <!-- resultTypeList jsで使用中。15タイプを一覧表示して編集対象を切り替える -->
-        <div class="admin-type-list" id="resultTypeList" aria-label="診断結果タイプ一覧"></div>
-        <label>
-          ResultType（判定キー）
-          <!-- resultTypeKeyInput jsで使用中。診断ロジックのキーなので編集不可 -->
-          <input id="resultTypeKeyInput" type="text" readonly />
-        </label>
-        <label>
-          タイプ名
-          <!-- resultNameInput jsで使用中 -->
-          <input id="resultNameInput" type="text" />
-        </label>
-        <label>
-          キャッチコピー
-          <!-- resultCatchInput jsで使用中 -->
-          <input id="resultCatchInput" type="text" />
-        </label>
-        <label>
-          説明文
-          <!-- resultDescriptionInput jsで使用中 -->
-          <textarea id="resultDescriptionInput" rows="5"></textarea>
-        </label>
-        <label>
-          強み（1行に1つ）
-          <!-- resultStrengthsInput jsで使用中 -->
-          <textarea id="resultStrengthsInput" rows="5"></textarea>
-        </label>
-        <label>
-          向いている仕事（1行に1つ）
-          <!-- resultJobsInput jsで使用中 -->
-          <textarea id="resultJobsInput" rows="5"></textarea>
-        </label>
-        <label>
-          おすすめ業界（1行に1つ）
-          <!-- resultIndustriesInput jsで使用中 -->
-          <textarea id="resultIndustriesInput" rows="5"></textarea>
-        </label>
-        <label>
-          LINE送信文
-          <!-- resultLineInput jsで使用中 -->
-          <textarea id="resultLineInput" rows="3"></textarea>
-        </label>
-        <label>
-          同タイプ割合（%）
-          <!-- resultPercentInput jsで使用中 -->
-          <input id="resultPercentInput" type="number" min="1" max="99" step="1" />
-        </label>
-        <!-- saveResult jsで使用中 -->
-        <button class="primary-button" id="saveResult" type="button">結果文章を保存</button>
-      </section>
-
-      <section class="admin-section">
-        <h2>スワイプ画像/質問内容</h2>
-        <label>
-          カード
-          <!-- cardSelect jsで使用中 -->
-          <select id="cardSelect"></select>
-        </label>
-        <!-- cardList jsで使用中。40問を一覧表示して編集対象を切り替える -->
-        <div class="admin-type-list admin-card-list" id="cardList" aria-label="スワイプカード一覧"></div>
-        <label>
-          質問文
-          <!-- cardQuestionInput jsで使用中 -->
-          <textarea id="cardQuestionInput" rows="3"></textarea>
-        </label>
-        <label>
-          画像URL
-          <!-- cardImageInput jsで使用中 -->
-          <input id="cardImageInput" type="url" />
-        </label>
-        <!-- cardImageStoragePathInput jsで使用中。Supabase Storage内のパスだけを保持し、DBに画像本体を入れない -->
-        <input id="cardImageStoragePathInput" type="hidden" />
-        <!-- cardImageDropzone/cardImageFileInput jsで使用中。画像をStorageへアップロードしてURL欄を更新 -->
-        <div class="image-dropzone" id="cardImageDropzone" role="button" tabindex="0">
-          <strong>画像をドラッグ&ドロップ</strong>
-          <span>またはクリックして画像を選択（JPG / PNG / WebP、自動でWebP軽量化）</span>
-          <input id="cardImageFileInput" type="file" accept="image/jpeg,image/png,image/webp" />
-        </div>
-        <label>
-          管理用ラベル
-          <!-- cardVisualInput jsで使用中。ユーザー画面には表示せず、管理画面の識別用に使う -->
-          <input id="cardVisualInput" type="text" />
-        </label>
-        <!-- cardPreview jsで使用中 -->
-        <div class="admin-preview" id="cardPreview"></div>
-        <!-- saveCard jsで使用中 -->
-        <button class="primary-button" id="saveCard" type="button">画像を保存</button>
-      </section>
-
-      <section class="admin-section">
-        <h2>設定データ</h2>
-        <div class="admin-actions">
-          <!-- syncSupabase jsで使用中 -->
-          <button class="secondary-button" id="syncSupabase" type="button">Supabaseへ全データ保存</button>
-          <!-- exportSettings jsで使用中 -->
-          <button class="secondary-button" id="exportSettings" type="button">書き出し</button>
-          <!-- importSettings jsで使用中 -->
-          <button class="secondary-button" id="importSettings" type="button">読み込み</button>
-          <!-- resetSettings jsで使用中 -->
-          <button class="text-button danger-text" id="resetSettings" type="button">リセット</button>
-        </div>
-        <!-- settingsJson jsで使用中 -->
-        <textarea id="settingsJson" rows="8" spellcheck="false"></textarea>
-        <!-- adminStatus jsで使用中 -->
-        <p class="admin-status" id="adminStatus" role="status"></p>
-      </section>
-    </main>
+    <!-- adminAppMount はログイン成功後に管理画面HTMLを差し込むためJSで使用中 -->
+    <div id="adminAppMount" hidden></div>
   </body>
 </html>

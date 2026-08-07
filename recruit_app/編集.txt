@@ -1,36 +1,44 @@
 AIキャリア診断Webアプリ 引き継ぎメモ
-更新日: 2026/07/29
+更新日: 2026/08/06
 
 参照資料:
 https://docs.google.com/document/d/1Stzz44D7mnQKIfBGSEakLT-4EhtZVep5mZ9kYq9EGtg/edit?tab=t.wj6odyblqssh
 
- 
 
 ■ ファイル構成
 
 - index.html
-  公開画面。LP / ルール / スワイプ / 分析演出 / 結果 / 求人導線。
+  公開画面。LP / スワイプ / 分析演出 / 診断結果 / 求人導線。
 
-- admin.html
-  管理画面。表示数値、診断結果文章、スワイプ画像/質問内容を編集。
+- line-complete.html
+  LINE連携完了後の戻り先画面。
 
-- css/reset.css
-  リセットCSS。
+- terms.html / privacy.html
+  利用規約 / プライバシーポリシー。仮置き事項はHTML上部にコメントあり。
 
-- css/styles.css
-  画面デザイン用CSS。HTML/CSSは今後変更予定。
+- admin/index.html
+  管理画面ログイン用の静的HTML。ログイン前は管理画面本体を含まない。
+
+- config.js
+  公開画面用の接続設定。管理用Secretは置かない。
+
+- admin/config.js
+  管理画面用の接続設定。管理用Secretは置かない。
+
+- css/reset.css / css/styles.css
+  リセットCSS / 画面デザインCSS。HTML/CSSは今後変更予定。
 
 - src/app.js
-  公開側JS。スワイプ、診断ロジック、Supabase保存、LINE導線。
+  公開側JS。スワイプ、診断ロジック、Supabase保存、LINE導線、GAイベント送信。
 
 - src/admin.js
-  管理画面JS。マスタ保存、画像アップロード、画像軽量化。
+  管理画面本体JS。マスタ保存、画像アップロード、画像軽量化、KPI取得。
+
+- src/admin-login.js
+  管理画面ログイン専用JS。ログイン成功後にadmin-uiから管理画面HTMLを取得。
 
 - src/data.js
   初期マスタ。40問カード、診断軸、15タイプ診断結果。
-
-- config.js
-  Supabase Functions URLなどの接続設定。
 
 - supabase/functions/*
   Supabase Edge Functions本体。
@@ -39,51 +47,52 @@ https://docs.google.com/document/d/1Stzz44D7mnQKIfBGSEakLT-4EhtZVep5mZ9kYq9EGtg/
   Supabase DashboardのEdge Functions Codeタブへ貼る用の単体ファイル。
 
 - supabase/migrations/*.sql
-  DB定義の控え。
+  DB定義、KPI集計、自動削除Cronの控え。
 
 
 ■ 注意
 
-HTML/CSSはAIで作った仮デザインなので変更予定。
-ただし、JSで使用しているid/class名は変更すると機能が壊れる可能性あり。
-該当箇所はHTML内にコメントあり。
-
-例:
-
-<!-- progressFill jsで使用中 -->
-<span id="progressFill"></span>
+- JSで使用しているid/class名は変更すると機能が壊れる可能性あり。
+- JS使用中のid/class名はHTML内にコメントあり。
+- 管理画面はログイン画面あり。ログイン前のHTMLには管理画面本体を入れない。
+- 管理画面本体HTMLはadmin-ui Edge Functionからログイン後に取得する。
+- 管理パスワードはSupabase SecretsのADMIN_LOGIN_PASSWORDにだけ保存する。
+- セッション署名用SecretはADMIN_SESSION_SECRET。
+- ログイン失敗は15分以内5回まで。超過時は15分ブロック。
+- 管理画面はnoindex設定済み。
+- 公開診断でユーザーに表示する質問・画像・結果文は完全な秘密にはできない。完全に隠すなら診断ロジックのサーバー側移管が必要。
 
 
 ■ やったこと
 
-- LP、ルール説明、スワイプ、分析演出、診断結果、求人導線を実装
-- Tinder風の左右スワイプを実装
-- 40問の回答データ保存形式を実装
-- 6軸スコア計算を実装
-- 上位2軸から15タイプに分類する診断ロジックを実装
-- 診断結果マスタPDFを元に15タイプ分の初期データを反映
-- 管理画面を実装
-- 管理画面で診断結果文章を15タイプすべて編集可能にした
-- 管理画面で40問の質問内容/画像/管理用ラベルを編集可能にした
-- CSSを css/reset.css と css/styles.css に分離
-- JSで使用中のid/class名にコメントを追加
-- Supabaseプロジェクトと接続
-- 管理画面の設定をSupabaseに保存できるようにした
-- app_settings / diagnosis_results / swipe_cards と連携
-- スワイプ画像をSupabase Storageへアップロードできるようにした
-- 画像本体はDBに保存せず、DBにはURLとStorage内パスのみ保存
-- 画像アップロード前にブラウザ側でWebP軽量化
-- 古いStorage画像を削除する処理を実装
-- ユーザー診断結果をdiagnosesへ保存できるようにした
-- diagnosis_eventsへイベントログを保存できるようにした
-- 診断完了後に answers / scores / score_rates / result_type が保存されることを確認済み
-- LINE連携用のEdge Functionsを実装
-  - line-login-url
-  - line-callback
-  - send-line-result
-  - line-webhook
-- 1度LINE連携済みのブラウザでは、再診断時にLINEログインせず結果をLINE送信できるようにした
-- config.js は requireLineBeforeResult: true にしている
+- Tinder風の左右スワイプ、PCボタン/キーボード操作、進捗表示、回答時間保存を実装。
+- 6軸スコア計算と、上位2軸から15タイプに分類する診断ロジックを実装。
+- 診断結果マスタPDFを元に15タイプ分の初期データを反映。
+- 管理画面を実装。
+- 表示数値、診断結果文章、スワイプ画像/質問内容を管理画面で編集可能にした。
+- スワイプ画像はドラッグ&ドロップでアップロード可能。ブラウザ側でWebP軽量化してSupabase Storageへ保存。
+- 画像本体はDBに保存せず、URLとStorage内パスのみ保存。
+- スワイプカードごとに出題ON/OFFを選べるようにした。
+- 管理画面で新規質問を追加できるようにした。
+- 管理画面で選択中の質問を削除できるようにした。DB行とSupabase Storage内画像も削除対象。
+- ルール説明画面を削除し、TOPの診断スタートから直接スワイプ開始に変更。
+- 分析中画面を進捗バー + %表示に変更。98%で一瞬止める演出を追加。
+- 分析完了後は自動遷移せず「診断結果を見る」ボタンで結果画面へ進むように変更。
+- 診断結果と求人導線を1ページにまとめ、LINE CTAを目立たせた。
+- Supabase DBと連携。
+- diagnoses に answers / scores / score_rates / result_type を保存。
+- analytics_events / diagnosis_events にKPI用イベントを保存。
+- KPIを管理画面で日別 / 週別 / 月別に確認できるようにした。
+- 管理操作ログの直近50件を管理画面で確認できるようにした。
+- 離脱設問集計を実装。進捗を1行上書き保存し、30分以上停止で離脱として集計。
+- 期限切れデータを毎日04:17 JSTに自動削除するCronを追加。
+- LINE Login / Messaging API連携を実装。
+- 2回目以降はLINE再ログインなしで診断結果を送信できるようにした。
+- 利用規約 / プライバシーポリシーの仮ページを作成。
+- LINE登録前に個人情報の扱いが分かる導線を設置。
+- GA4タグを公開ページのheadに直接追加。診断タイプや回答内容は送らず、主要イベント名だけ送信。
+- 管理画面ログインを追加。ADMIN_LOGIN_PASSWORDでログインし、8時間有効の管理セッションでadmin-ui / admin-master / kpi-summaryを呼び出す。
+- 管理画面のログイン失敗回数制限、管理操作ログ、noindexを追加。
 
 
 ■ Supabase状況
@@ -98,156 +107,78 @@ Storage bucket:
 swipe-images
 
 主なテーブル:
-
 - app_settings
 - diagnosis_results
 - swipe_cards
 - diagnoses
 - diagnosis_events
+- analytics_events
+- diagnosis_progress_sessions
+- diagnosis_dropoff_counts
+- admin_login_attempts
+- admin_audit_logs
 - line_states
 - line_connections
 
-DBテーブル、Storage bucket、診断データ保存、イベントログ保存は設定済み。
 Supabase CLIは使わず、Dashboard中心で作業している。
 
 
-■ 次にやりたいこと
+■ Supabase反映が必要なもの
 
-LINE連携後のUX調整。
+- 管理画面パスワードログイン:
+  Supabase SecretsにADMIN_LOGIN_PASSWORD / ADMIN_SESSION_SECRETを追加
+  20260807000000_create_admin_security_tables.sql
+  admin-login / admin-ui 新規作成 + Deploy
+  admin-master / kpi-summary Redeploy
 
-やりたい流れ:
+- 比較人数自動増加:
+  20260806000000_add_comparison_growth_settings.sql
+  admin-master Redeploy
 
-1. 診断完了
-2. Supabaseに診断結果保存
-3. 「LINEで詳細を見る」を押す
-4. 初回のみLINE Loginで認証
-5. 2回目以降は保存済みのLINE連携IDを使って再ログインなしで送信
-6. Messaging APIで診断結果をLINE送信
-7. diagnoses.status を sent に更新
-8. diagnosis_events に result_sent を保存
+- 出題ON/OFF / 新規質問 / 質問削除:
+  20260806001000_add_diagnosis_question_count.sql
+  20260806002000_add_swipe_card_enabled.sql
+  admin-master / admin-ui Redeploy
 
-
-■ LINE連携で必要なもの
-
-Supabase Secretsに入れる値:
-
-- APP_ORIGIN
-- LINE_LOGIN_CHANNEL_ID
-- LINE_LOGIN_CHANNEL_SECRET
-- LINE_REDIRECT_URI
-- LINE_CHANNEL_ACCESS_TOKEN
-- LINE_CHANNEL_SECRET
-- LINE_BOT_PROMPT
-
-このプロジェクトで使うURL:
-
-LINE_REDIRECT_URI:
-https://plhfwtnkdnybswkgqugk.supabase.co/functions/v1/line-callback
-
-Messaging API Webhook URL:
-https://plhfwtnkdnybswkgqugk.supabase.co/functions/v1/line-webhook
-
-LINE_BOT_PROMPT:
-aggressive
-
-
-■ LINE Developersの現状
-
-LINE Developers Console:
-https://developers.line.biz/console/
-（ログインアカウント: fam.three.monkeys@gmail.com / 表示名 三猿）
-
-Provider「AIキャリア診断」
-├ LINEログインチャネル「AIキャリア診断」→ 公開済み(Published)
-│   Channel ID: 2010878295
-└ Messaging APIチャネル「三猿」（@413tafkc）→ 有効化済み
-
-取得済みの値（Supabase Secretsに登録済み）:
-- LINE_LOGIN_CHANNEL_ID（AIキャリア診断/Login）
-- LINE_LOGIN_CHANNEL_SECRET（AIキャリア診断/Login）
-- LINE_CHANNEL_SECRET（三猿/Messaging API）
-- LINE_CHANNEL_ACCESS_TOKEN（三猿/Messaging API・長期）
-- LINE_REDIRECT_URI = https://plhfwtnkdnybswkgqugk.supabase.co/functions/v1/line-callback
-- LINE_BOT_PROMPT = aggressive
-- APP_ORIGIN = http://localhost:4173（★本番公開時に本番URLへ変更が必要）
-
-実機テスト成功：診断→LINEログイン→友だち追加→診断結果push送信まで一連で動作確認済み。
+- 離脱設問集計:
+  20260806003000_create_dropoff_tracking.sql
+  event-log / save-diagnosis / kpi-summary Redeploy
 
 
 ■ データ保存期間
 
 - diagnoses: 24時間
-  LINE登録して診断結果を送信するために必要な生データ。24時間を過ぎたら再診断。
-
 - line_states: 10分
-  LINE Login認証中だけ使う一時データ。
-
 - diagnosis_events: 90日
-  診断開始率、完了率、LINE登録率などのKPI確認用。
-
+- analytics_events: 13か月
 - line_connections: 180日
-  2回目以降にLINE再ログインなしで結果送信するために保持。
-
-自動削除SQL:
-supabase/migrations/20260731000000_cleanup_expired_data.sql
-
-※Supabase DashboardのSQL Editorで実行すると、毎日04:17 JSTに期限切れデータを削除するCron Jobが登録される。
+- admin_login_attempts: 7日
+- admin_audit_logs: 180日
+- diagnosis_progress_sessions: 完了時または離脱集計後に削除
 
 
-■ KPI集計方法
+■ KPIで見るもの
 
-集計SQL:
-supabase/migrations/20260731001000_create_kpi_views.sql
-
-管理画面表示用Function:
-supabase/dashboard/kpi-summary-index.ts
-
-主に見るView:
-- daily_kpi_summary（日別KPI）
-- daily_event_counts（日別イベント数）
-- result_type_summary（診断タイプ別件数）
-
-確認SQL:
-select * from public.daily_kpi_summary order by event_date desc limit 14;
-select * from public.result_type_summary;
-
-
-■ LINE連携で次にやること
-
-[x] 1. LINE LoginチャネルのBasic settingsを開く
-[x] 2. Channel ID / Channel secretを取得
-[x] 3. LINE Login Callback URLを設定
-       https://plhfwtnkdnybswkgqugk.supabase.co/functions/v1/line-callback
-[x] 4. Messaging APIチャネルを作成または確認
-[x] 5. Messaging APIチャネルのChannel secretを取得
-[x] 6. Messaging APIタブでChannel access tokenを発行/取得
-[x] 7. Messaging API Webhook URLを設定
-       https://plhfwtnkdnybswkgqugk.supabase.co/functions/v1/line-webhook
-[x] 8. LINE LoginチャネルとMessaging API公式アカウントをリンク
-[x] 9. Supabase SecretsへLINE関連値を登録
-[x] 10. line-login-url / line-callback / line-webhook をDeploy
-[x] 11. 各Functionの Verify JWT with legacy secret をOFF
-[x] 12. 診断からLINE送信まで実機テスト（成功）
-[x] 13. DBで diagnoses.line_user_id / diagnoses.status / diagnosis_events を確認
-[x] 14. send-line-result をDeployして、2回目以降の再ログイン不要フローを実機テスト
-
+- LP表示数
+- 診断開始数
+- 診断完了数
+- 結果表示数
+- LINE押下数
+- LINE送信数
+- シェア数
+- 開始率 / 完了率 / 結果到達率 / 送信率 / シェア率
+- 診断タイプ別件数
+- 離脱が多い設問番号
 
 
 ■ 残タスク
 
-[x] 1. 40問と15タイプの診断ロジックを実ユーザー想定で確認する
-[ ] 2. 診断結果文章 / LINE送信文 / 求人導線文言の違和感を確認する
-[x] 3. 診断データの保存期間を決める
-[x] 4. 期限切れ diagnoses / diagnosis_events を自動削除する処理を入れる
-[x] 5. lp_view / diagnosis_start / diagnosis_complete / line_button_click / result_sent の集計方法を決める（管理画面UI追加済み、kpi-summary Deploy待ち）
-[x] 6. プライバシーポリシー / 利用規約のドラフトを作成する
-[x] 7. LINE登録前に個人情報の扱いが分かる導線を置く
-[ ] 8. iPhone Safari / Android Chrome / PC Chrome で実機QAする
-[ ] 9. OGP画像とシェア文言を調整する
+[ ] 1. 診断結果文章 / LINE送信文 / 求人導線文言の違和感を確認する
 
+[ ] 2. OGP画像とシェア文言を調整する
 
-■ 残タスク（本番公開前にやること）
+[ ] 3. iPhone Safari / Android Chrome / PC Chrome で実機QAする
 
-[x] 本番公開時は APP_ORIGIN を本番URLへ変更
-[x] 本番公開時は公開用 config.js から adminApiToken を外す
-[ ] admin.html を本番公開しない、またはBasic認証などで保護する
+[ ] 4. 本番アップ前に APP_ORIGIN / LINE / GA / config.js を最終確認する
+
+[ ] 5. admin/ の公開範囲や追加保護が必要か本番前に最終判断する

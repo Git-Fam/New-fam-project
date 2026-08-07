@@ -5,8 +5,9 @@ import {
   DEFAULT_SETTINGS,
   STORAGE_KEYS,
   buildSettingsFromMaster,
-  getConfiguredCards,
   getConfiguredResults,
+  getCurrentComparisonCount,
+  getDiagnosisCards,
   getResultKey,
   loadAdminSettings
 } from "./data.js";
@@ -24,9 +25,21 @@ function getLocalRuntimeSettings() {
 }
 
 let settings = getLocalRuntimeSettings();
-let cards = getConfiguredCards(settings);
+let cards = getDiagnosisCards(settings);
 let results = getConfiguredResults(settings);
 let masterLoadPromise = null;
+let comparisonTicker = null;
+const GOOGLE_ANALYTICS_EVENTS = new Set([
+  "diagnosis_start",
+  "diagnosis_complete",
+  "result_view",
+  "jobs_view",
+  "line_button_click",
+  "line_login_success",
+  "result_sent",
+  "share_click",
+  "retry_click"
+]);
 
 const state = {
   answers: [],
@@ -57,6 +70,28 @@ function formatNumber(value) {
 
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function animateNumber({ duration, from, to, onUpdate }) {
+  const startedAt = performance.now();
+  return new Promise((resolve) => {
+    function tick(now) {
+      const elapsed = now - startedAt;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = Math.round(from + (to - from) * eased);
+      onUpdate(value);
+
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+        return;
+      }
+
+      resolve();
+    }
+
+    requestAnimationFrame(tick);
+  });
 }
 
 function createId(prefix) {
@@ -192,17 +227,6 @@ function loadLineConnection() {
   return null;
 }
 
-function canViewResult(diagnosis) {
-  if (!settings.requireLineBeforeResult) return true;
-  if (!diagnosis) return false;
-
-  const status = String(diagnosis.status || "");
-  if (["linked", "sent"].includes(status)) return true;
-
-  const connection = loadLineConnection();
-  return connection?.lastSentDiagnosisId === diagnosis.diagnosisId;
-}
-
 function pushLocalEvent(eventName, payload = {}) {
   const context = getAnalyticsContext(payload);
   const events = JSON.parse(localStorage.getItem(STORAGE_KEYS.eventLog) || "[]");
@@ -258,7 +282,7 @@ function applyRuntimeSettings(nextSettings) {
     requireLineBeforeResult:
       Boolean(config.requireLineBeforeResult) || Boolean(nextSettings.requireLineBeforeResult)
   };
-  cards = getConfiguredCards(settings);
+  cards = getDiagnosisCards(settings);
   results = getConfiguredResults(settings);
 }
 
@@ -273,20 +297,60 @@ async function loadRemoteMaster() {
 }
 
 function renderLandingMetrics() {
-  $("#lpCompareCount").textContent = formatNumber(settings.comparisonCount);
+  $("#lpCompareCount").textContent = formatNumber(getCurrentComparisonCount(settings));
   $("#lpJobCount").textContent = formatNumber(settings.jobCount);
 }
 
+function renderComparisonMetrics() {
+  const currentComparisonCount = formatNumber(getCurrentComparisonCount(settings));
+  const lpCompareCount = $("#lpCompareCount");
+  const compareCount = $("#compareCount");
+  if (lpCompareCount) lpCompareCount.textContent = currentComparisonCount;
+  if (compareCount) compareCount.textContent = currentComparisonCount;
+}
+
+function startComparisonTicker() {
+  if (comparisonTicker) clearInterval(comparisonTicker);
+  comparisonTicker = setInterval(renderComparisonMetrics, 60 * 1000);
+}
+
 function logEvent(eventName, payload = {}) {
-  const diagnosisId = state.currentDiagnosis?.diagnosisId || payload.diagnosisId || null;
+  const rawDiagnosisId = state.currentDiagnosis?.diagnosisId || payload.diagnosisId || null;
+  const diagnosisId =
+    rawDiagnosisId && String(rawDiagnosisId).startsWith("diag_") ? null : rawDiagnosisId;
   const context = getAnalyticsContext(payload);
   pushLocalEvent(eventName, payload);
-  if (diagnosisId && String(diagnosisId).startsWith("diag_")) return;
+  trackGoogleAnalyticsEvent(eventName);
   callEdgeFunction("event-log", {
     eventName,
     diagnosisId,
     ...context,
     payload
+  }).catch(() => {});
+}
+
+function trackGoogleAnalyticsEvent(eventName) {
+  if (!GOOGLE_ANALYTICS_EVENTS.has(eventName) || typeof window.gtag !== "function") return;
+
+  window.gtag("event", eventName, {
+    event_category: "career_diagnosis",
+    transport_type: "beacon"
+  });
+}
+
+function logDiagnosisProgress(payload = {}) {
+  const funnelId = payload.funnelId || state.funnelId || getCurrentFunnelId();
+  if (!funnelId) return;
+  const context = getAnalyticsContext({ ...payload, funnelId });
+  callEdgeFunction("event-log", {
+    eventName: "diagnosis_progress",
+    diagnosisId: null,
+    ...context,
+    payload: {
+      funnelId,
+      totalQuestions: cards.length,
+      ...payload
+    }
   }).catch(() => {});
 }
 
@@ -407,15 +471,19 @@ function resetDiagnosis() {
   state.funnelId = null;
 }
 
-function startRules() {
-  showScreen("rules");
-}
-
 async function startDiagnosis() {
   if (masterLoadPromise) await masterLoadPromise;
   resetDiagnosis();
   const funnelId = startNewFunnel();
-  logEvent("diagnosis_start", { cardCount: cards.length, funnelId });
+  logEvent("diagnosis_start", {
+    cardCount: cards.length,
+    totalQuestions: cards.length,
+    currentOrder: 1,
+    currentImageId: cards[0]?.id || null,
+    lastAnsweredOrder: 0,
+    lastAnsweredImageId: null,
+    funnelId
+  });
   showScreen("swipe");
   renderSwipeCard();
 }
@@ -578,14 +646,25 @@ function chooseAnswer(answer, direction = answer === "yes" ? 1 : -1, startX = 0,
 
   const card = $(".swipe-card:not(.is-next)");
   const currentCard = cards[state.currentIndex];
+  const answerOrder = state.currentIndex + 1;
+  const nextCard = cards[state.currentIndex + 1];
   const responseTime = performance.now() - state.cardStartedAt;
 
   state.answers.push({
     imageId: currentCard.id,
     answer,
-    answerOrder: state.currentIndex + 1,
+    answerOrder,
     responseTime: Math.round(responseTime)
   });
+
+  if (answerOrder < cards.length) {
+    logDiagnosisProgress({
+      currentOrder: answerOrder + 1,
+      currentImageId: nextCard?.id || null,
+      lastAnsweredOrder: answerOrder,
+      lastAnsweredImageId: currentCard.id
+    });
+  }
 
   if (card) {
     const targetX = direction * Math.max(window.innerWidth * 1.15, 520);
@@ -612,10 +691,16 @@ function chooseAnswer(answer, direction = answer === "yes" ? 1 : -1, startX = 0,
 
 async function completeDiagnosis() {
   const diagnosis = buildDiagnosis();
+  const lastAnswer = diagnosis.answers[diagnosis.answers.length - 1] || null;
   state.currentDiagnosis = diagnosis;
   saveDraft(diagnosis);
   logEvent("diagnosis_complete", {
     answeredCount: diagnosis.answers.length,
+    totalQuestions: cards.length,
+    currentOrder: cards.length,
+    currentImageId: cards[cards.length - 1]?.id || null,
+    lastAnsweredOrder: diagnosis.answers.length,
+    lastAnsweredImageId: lastAnswer?.imageId || null,
     resultType: diagnosis.resultType,
     funnelId: diagnosis.funnelId,
     totalTime: diagnosis.answers.reduce((sum, answer) => sum + answer.responseTime, 0)
@@ -623,7 +708,7 @@ async function completeDiagnosis() {
 
   renderAnalysisChecklist();
   showScreen("analysis");
-  await delay(2450);
+  const analysisProgressPromise = runAnalysisProgress();
 
   try {
     state.currentDiagnosis = await saveDiagnosis(diagnosis);
@@ -638,18 +723,78 @@ async function completeDiagnosis() {
     saveDraft(state.currentDiagnosis);
   }
 
-  if (settings.requireLineBeforeResult) {
-    renderJobs();
-  } else {
-    renderResult();
-  }
+  await analysisProgressPromise;
+  showAnalysisResultButton();
 }
 
 function renderAnalysisChecklist() {
-  $("#compareCount").textContent = formatNumber(settings.comparisonCount);
+  $("#compareCount").textContent = formatNumber(getCurrentComparisonCount(settings));
+  updateAnalysisProgress(0, "選択傾向を読み込み中");
+  const resultButton = $("#analysisResultButton");
+  if (resultButton) {
+    resultButton.hidden = true;
+    resultButton.disabled = true;
+  }
   $$(".analysis-check li").forEach((item, index) => {
     item.style.animationDelay = `${index * 280 + 220}ms`;
   });
+}
+
+function showAnalysisResultButton() {
+  updateAnalysisProgress(100, "診断結果の準備完了");
+  const resultButton = $("#analysisResultButton");
+  if (!resultButton) return;
+  resultButton.hidden = false;
+  resultButton.disabled = false;
+  resultButton.focus({ preventScroll: true });
+}
+
+function proceedFromAnalysisToResult() {
+  const resultButton = $("#analysisResultButton");
+  if (resultButton) resultButton.disabled = true;
+  renderResult();
+}
+
+function updateAnalysisProgress(percent, label) {
+  const safePercent = Math.max(0, Math.min(100, Math.round(percent)));
+  const fill = $("#analysisProgressFill");
+  const percentText = $("#analysisProgressPercent");
+  const labelText = $("#analysisProgressLabel");
+
+  if (fill) fill.style.transform = `scaleX(${safePercent / 100})`;
+  if (percentText) percentText.textContent = `${safePercent}%`;
+  if (labelText && label) labelText.textContent = label;
+}
+
+async function runAnalysisProgress() {
+  updateAnalysisProgress(0, "選択傾向を読み込み中");
+  await animateNumber({
+    duration: 720,
+    from: 0,
+    to: 42,
+    onUpdate: (value) => updateAnalysisProgress(value, "選択傾向を分析中")
+  });
+  await animateNumber({
+    duration: 780,
+    from: 42,
+    to: 76,
+    onUpdate: (value) => updateAnalysisProgress(value, "思考パターンを照合中")
+  });
+  await animateNumber({
+    duration: 650,
+    from: 76,
+    to: 98,
+    onUpdate: (value) => updateAnalysisProgress(value, "類似タイプを比較中")
+  });
+  updateAnalysisProgress(98, "診断結果を作成中");
+  await delay(3000); //98%で待たせる時間
+  await animateNumber({
+    duration: 260,
+    from: 98,
+    to: 100,
+    onUpdate: (value) => updateAnalysisProgress(value, "診断結果の準備完了")
+  });
+  await delay(160);
 }
 
 function renderAxisBars(diagnosis) {
@@ -678,10 +823,6 @@ function renderResult() {
   }
 
   state.currentDiagnosis = diagnosis;
-  if (!canViewResult(diagnosis)) {
-    renderJobs();
-    return;
-  }
 
   const result = results[diagnosis.resultType] || diagnosis.result;
   const primary = AXES[diagnosis.primaryAxis] || AXES.people;
@@ -721,6 +862,7 @@ function renderResult() {
   } else {
     $("#saveNotice").textContent = "ローカル保存中";
   }
+  renderResultOffer(diagnosis);
 
   showScreen("result");
   if (!state.loggedResultViews.has(diagnosis.funnelId)) {
@@ -733,11 +875,8 @@ function renderResult() {
   }
 }
 
-function renderJobs() {
-  const diagnosis = state.currentDiagnosis || loadDraft();
-  if (diagnosis) state.currentDiagnosis = diagnosis;
+function renderResultOffer(diagnosis) {
   const hasLineConnection = Boolean(loadLineConnection());
-  const isResultLocked = !canViewResult(diagnosis);
   const lineCtaLabel = hasLineConnection ? "LINEで結果を受け取る" : "LINEで結果と求人を見る";
 
   $("#jobCount").textContent = formatNumber(settings.jobCount);
@@ -752,11 +891,7 @@ function renderJobs() {
   } else {
     $("#lineCta").textContent = lineCtaLabel;
   }
-  const retryJobsButton = $("#retryJobs");
-  retryJobsButton.dataset.action = isResultLocked ? "restart" : "result";
-  retryJobsButton.textContent = isResultLocked ? "もう一度診断する" : "診断結果に戻る";
 
-  showScreen("jobs");
   const funnelId = diagnosis?.funnelId || getCurrentFunnelId();
   if (funnelId && !state.loggedJobsViews.has(funnelId)) {
     state.loggedJobsViews.add(funnelId);
@@ -764,7 +899,7 @@ function renderJobs() {
       diagnosisId: diagnosis?.diagnosisId || null,
       funnelId,
       resultType: diagnosis?.resultType || null,
-      isResultLocked
+      hasLineConnection
     });
   }
 }
@@ -923,14 +1058,10 @@ function shareToLine() {
 }
 
 function bindEvents() {
-  $("#startFromLp").addEventListener("click", startRules);
-  $("#startFromHero").addEventListener("click", startRules);
-  $("#startSwipe").addEventListener("click", startDiagnosis);
-  $("#skipRules").addEventListener("click", startDiagnosis);
+  $("#startFromHero").addEventListener("click", startDiagnosis);
   $("#swipeYes").addEventListener("click", () => chooseAnswer("yes", 1));
   $("#swipeNo").addEventListener("click", () => chooseAnswer("no", -1));
-  $("#showJobs").addEventListener("click", renderJobs);
-  $("#showJobsSecondary").addEventListener("click", renderJobs);
+  $("#analysisResultButton").addEventListener("click", proceedFromAnalysisToResult);
   $("#lineCta").addEventListener("click", handleLineClick);
   $("#retryResult").addEventListener("click", () => {
     const diagnosis = state.currentDiagnosis || loadDraft();
@@ -940,21 +1071,7 @@ function bindEvents() {
       funnelId: diagnosis?.funnelId || getCurrentFunnelId(),
       from: "result"
     });
-    startRules();
-  });
-  $("#retryJobs").addEventListener("click", () => {
-    const diagnosis = state.currentDiagnosis || loadDraft();
-    if ($("#retryJobs").dataset.action === "result" && canViewResult(diagnosis)) {
-      renderResult();
-      return;
-    }
-    logEvent("retry_click", {
-      diagnosisId: diagnosis?.diagnosisId || null,
-      resultType: diagnosis?.resultType || null,
-      funnelId: diagnosis?.funnelId || getCurrentFunnelId(),
-      from: "jobs"
-    });
-    startRules();
+    startDiagnosis();
   });
   $("#shareX").addEventListener("click", shareToX);
   $("#shareLine").addEventListener("click", shareToLine);
@@ -975,6 +1092,7 @@ function init() {
   initHeroImage();
   bindEvents();
   renderLandingMetrics();
+  startComparisonTicker();
   masterLoadPromise = loadRemoteMaster().then(() => {
     initHeroImage();
     renderLandingMetrics();

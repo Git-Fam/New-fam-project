@@ -1,6 +1,10 @@
 create table if not exists public.app_settings (
   id boolean primary key default true,
   comparison_count integer not null default 18542 check (comparison_count >= 0),
+  comparison_increment_interval_hours numeric not null default 2 check (comparison_increment_interval_hours >= 0),
+  comparison_increment_count integer not null default 13 check (comparison_increment_count >= 0),
+  comparison_count_updated_at timestamptz not null default now(),
+  diagnosis_question_count integer not null default 40 check (diagnosis_question_count >= 1),
   job_count integer not null default 12 check (job_count >= 0),
   high_match_count integer not null default 4 check (high_match_count >= 0),
   require_line_before_result boolean not null default false,
@@ -37,6 +41,7 @@ create table if not exists public.swipe_cards (
   image_storage_path text,
   yes_scores jsonb not null default '{}'::jsonb check (jsonb_typeof(yes_scores) = 'object'),
   no_scores jsonb not null default '{}'::jsonb check (jsonb_typeof(no_scores) = 'object'),
+  enabled boolean not null default true,
   sort_order integer not null default 0,
   updated_at timestamptz not null default now()
 );

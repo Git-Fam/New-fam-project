@@ -131,6 +131,17 @@ Deno.serve(async (request: Request) => {
 
     if (error) throw error;
 
+    if (body.funnelId) {
+      const { error: progressDeleteError } = await supabase
+        .from("diagnosis_progress_sessions")
+        .delete()
+        .eq("funnel_id", body.funnelId);
+
+      if (progressDeleteError) {
+        console.warn("diagnosis progress delete failed", progressDeleteError);
+      }
+    }
+
     try {
       await insertEvent(supabase, "diagnosis_complete", {
         diagnosisId: data.id,

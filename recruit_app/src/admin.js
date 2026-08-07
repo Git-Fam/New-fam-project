@@ -3,17 +3,21 @@ import {
   buildSettingsFromMaster,
   getConfiguredCards,
   getConfiguredResults,
+  getCurrentComparisonCount,
   loadAdminSettings,
   saveAdminSettings,
   serializeSettingsForMaster
 } from "./data.js";
 
 const config = window.CAREER_APP_CONFIG || {};
+const ADMIN_SESSION_STORAGE_KEY = "ai-career-admin-session";
 let settings = loadAdminSettings();
 let results = getConfiguredResults(settings);
 let cards = getConfiguredCards(settings);
 let kpiSummary = null;
 let kpiRange = "daily";
+let adminSessionToken = sessionStorage.getItem(ADMIN_SESSION_STORAGE_KEY) || "";
+let adminEventsBound = false;
 
 const $ = (selector) => document.querySelector(selector);
 const IMAGE_UPLOAD_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
@@ -149,20 +153,31 @@ function setStatus(message) {
   }, 2600);
 }
 
+function clearAdminSession() {
+  adminSessionToken = "";
+  sessionStorage.removeItem(ADMIN_SESSION_STORAGE_KEY);
+  window.location.reload();
+}
+
 function getFunctionsBaseUrl() {
   return String(config.supabaseFunctionsBaseUrl || "").replace(/\/$/, "");
 }
 
 function getAdminHeaders() {
   const headers = { "Content-Type": "application/json" };
-  if (config.adminApiToken) headers["x-admin-token"] = config.adminApiToken;
+  if (adminSessionToken) headers["x-admin-session"] = adminSessionToken;
   return headers;
 }
 
 function getAdminTokenHeaders() {
   const headers = {};
-  if (config.adminApiToken) headers["x-admin-token"] = config.adminApiToken;
+  if (adminSessionToken) headers["x-admin-session"] = adminSessionToken;
   return headers;
+}
+
+function isUnauthorizedError(error) {
+  const message = error?.message || "";
+  return error?.status === 401 || message.includes("Unauthorized") || message.includes("401");
 }
 
 async function requestKpiSummary() {
@@ -176,7 +191,9 @@ async function requestKpiSummary() {
 
   if (!response.ok) {
     const text = await response.text();
-    throw new Error(text || "KPI集計の読み込みに失敗しました");
+    const error = new Error(text || "KPI集計の読み込みに失敗しました");
+    error.status = response.status;
+    throw error;
   }
 
   return response.json();
@@ -194,7 +211,9 @@ async function requestAdminMaster(method = "GET", body = null) {
 
   if (!response.ok) {
     const text = await response.text();
-    throw new Error(text || "Supabase保存に失敗しました");
+    const error = new Error(text || "Supabase保存に失敗しました");
+    error.status = response.status;
+    throw error;
   }
 
   return response.json();
@@ -229,7 +248,9 @@ async function uploadCardImage(file, originalFile = file) {
 
   if (!response.ok) {
     const text = await response.text();
-    throw new Error(text || "画像アップロードに失敗しました");
+    const error = new Error(text || "画像アップロードに失敗しました");
+    error.status = response.status;
+    throw error;
   }
 
   const data = await response.json();
@@ -261,9 +282,19 @@ async function persistMaster(statusMessage) {
   }
 
   try {
-    await requestAdminMaster("POST", serializeSettingsForMaster(settings));
+    const master = await requestAdminMaster("POST", serializeSettingsForMaster(settings));
+    if (master) {
+      settings = buildSettingsFromMaster(master);
+      saveAdminSettings(settings);
+      results = getConfiguredResults(settings);
+      cards = getConfiguredCards(settings);
+    }
     setStatus(`${statusMessage} / Supabaseへ保存しました`);
   } catch (error) {
+    if (isUnauthorizedError(error)) {
+      clearAdminSession("管理セッションが切れました。もう一度ログインしてください");
+      return;
+    }
     setStatus(`${statusMessage} / Supabase保存失敗: ${error.message}`);
   }
 }
@@ -274,11 +305,104 @@ function save(settingsPatch = {}) {
     ...settings,
     ...settingsPatch,
     resultOverrides: settingsPatch.resultOverrides || settings.resultOverrides || {},
-    cardOverrides: settingsPatch.cardOverrides || settings.cardOverrides || {}
+    cardOverrides: settingsPatch.cardOverrides || settings.cardOverrides || {},
+    deletedCardIds: settingsPatch.deletedCardIds || settings.deletedCardIds || [],
+    useMasterCardsOnly: settingsPatch.useMasterCardsOnly ?? settings.useMasterCardsOnly ?? false
   };
   saveAdminSettings(settings);
   results = getConfiguredResults(settings);
   cards = getConfiguredCards(settings);
+}
+
+function getCardSettings(card, patch = {}) {
+  return {
+    question: card.question || "",
+    visual: card.visual || "",
+    image: card.image || "",
+    imageStoragePath: card.imageStoragePath || "",
+    yesScores: card.yesScores || {},
+    noScores: card.noScores || {},
+    enabled: card.enabled !== false,
+    sortOrder: Number(card.sortOrder || cards.findIndex((item) => item.id === card.id) + 1),
+    ...patch
+  };
+}
+
+function getActiveCardCount() {
+  return cards.filter((card) => card.enabled !== false).length;
+}
+
+function renderActiveCardCount() {
+  const activeCount = getActiveCardCount();
+  const activeCardCount = $("#activeCardCount");
+  const questionCountInput = $("#diagnosisQuestionCountInput");
+  if (activeCardCount) activeCardCount.textContent = formatNumber(activeCount);
+  if (questionCountInput) questionCountInput.value = activeCount;
+}
+
+function getNextCardId() {
+  const knownIds = [...cards.map((card) => card.id), ...(settings.deletedCardIds || [])];
+  const maxNumber = knownIds.reduce((max, id) => {
+    const match = String(id).match(/^image-(\d+)$/);
+    return match ? Math.max(max, Number(match[1])) : max;
+  }, 0);
+  return `image-${String(maxNumber + 1).padStart(3, "0")}`;
+}
+
+function updateCardEnabled(cardId, enabled) {
+  const card = cards.find((item) => item.id === cardId);
+  if (!card) return;
+
+  if (!enabled && getActiveCardCount() <= 1) {
+    setStatus("出題する質問は最低1問必要です");
+    renderCardList(cardId);
+    renderCardEditor();
+    return;
+  }
+
+  save({
+    diagnosisQuestionCount: Math.max(1, getActiveCardCount() + (enabled ? 1 : -1)),
+    cardOverrides: {
+      ...(settings.cardOverrides || {}),
+      [cardId]: getCardSettings(card, { enabled })
+    }
+  });
+  populateSelects($("#resultSelect").value, cardId);
+  renderGeneral();
+  renderCardEditor();
+  setStatus("出題設定を変更しました。反映するには「出題設定を保存」を押してください");
+}
+
+async function deleteSelectedCard() {
+  const cardId = $("#cardSelect").value;
+  const cardIndex = cards.findIndex((item) => item.id === cardId);
+  const card = cards[cardIndex];
+  if (!card) return;
+
+  if (cards.length <= 1 || (card.enabled !== false && getActiveCardCount() <= 1)) {
+    setStatus("質問は最低1問必要です");
+    return;
+  }
+
+  const confirmed = window.confirm(
+    `「${card.question || card.id}」を削除します。\nこの質問とSupabase Storage内の画像を削除します。`
+  );
+  if (!confirmed) return;
+
+  const nextCardOverrides = { ...(settings.cardOverrides || {}) };
+  delete nextCardOverrides[cardId];
+
+  save({
+    diagnosisQuestionCount: Math.max(1, getActiveCardCount() - (card.enabled !== false ? 1 : 0)),
+    cardOverrides: nextCardOverrides,
+    deletedCardIds: [...new Set([...(settings.deletedCardIds || []), cardId])]
+  });
+
+  const nextSelectedCard = cards[Math.min(cardIndex, cards.length - 1)]?.id;
+  populateSelects($("#resultSelect").value, nextSelectedCard);
+  renderGeneral();
+  renderCardEditor();
+  await persistMaster("質問を削除しました");
 }
 
 function populateSelects(selectedResult = $("#resultSelect")?.value, selectedCard = $("#cardSelect")?.value) {
@@ -315,23 +439,35 @@ function renderResultTypeList(selectedResult = $("#resultSelect").value) {
 }
 
 function renderCardList(selectedCard = $("#cardSelect").value) {
+  renderActiveCardCount();
   $("#cardList").innerHTML = cards
     .map((card, index) => {
       const number = String(index + 1).padStart(2, "0");
       const activeClass = card.id === selectedCard ? " is-active" : "";
+      const disabledClass = card.enabled === false ? " is-disabled" : "";
+      const checked = card.enabled !== false ? " checked" : "";
       return `
-        <button class="admin-type-button admin-card-button${activeClass}" type="button" data-card-id="${card.id}">
-          <span>${number}</span>
-          <strong>${escapeHtml(card.question)}</strong>
-          <small>${escapeHtml(card.id)} / ${escapeHtml(card.visual)}</small>
-        </button>
+        <div class="admin-card-row${disabledClass}">
+          <label class="card-enabled-toggle">
+            <input type="checkbox" data-card-enabled-id="${escapeHtml(card.id)}"${checked} />
+            <span>出題</span>
+          </label>
+          <button class="admin-type-button admin-card-button${activeClass}" type="button" data-card-id="${card.id}">
+            <span>${number}</span>
+            <strong>${escapeHtml(card.question)}</strong>
+            <small>${escapeHtml(card.id)} / ${escapeHtml(card.visual)}</small>
+          </button>
+        </div>
       `;
     })
     .join("");
 }
 
 function renderGeneral() {
-  $("#comparisonCountInput").value = settings.comparisonCount;
+  $("#comparisonCountInput").value = getCurrentComparisonCount(settings);
+  $("#comparisonIntervalInput").value = settings.comparisonIncrementIntervalHours;
+  $("#comparisonIncrementInput").value = settings.comparisonIncrementCount;
+  renderActiveCardCount();
   $("#jobCountInput").value = settings.jobCount;
   $("#highMatchCountInput").value = settings.highMatchCount;
   $("#requireLineInput").checked = Boolean(settings.requireLineBeforeResult);
@@ -355,13 +491,16 @@ function renderKpiMessage(message) {
   `;
   $("#kpiDailyTable").innerHTML = "";
   $("#kpiResultTypes").innerHTML = "";
+  $("#kpiDropoffs").innerHTML = "";
+  const adminAuditLogTable = $("#adminAuditLogTable");
+  if (adminAuditLogTable) adminAuditLogTable.innerHTML = "";
 }
 
 function renderKpiCards(latest) {
   const cards = [
     ["LP表示", formatNumber(latest?.lp_view), "診断ページを開いた数"],
     ["診断開始率", formatRate(latest?.start_rate), "LP表示 → 診断開始"],
-    ["診断完了率", formatRate(latest?.complete_rate), "診断開始 → 40枚完了"],
+    ["診断完了率", formatRate(latest?.complete_rate), "診断開始 → 出題分すべて完了"],
     ["LINE送信率", formatRate(latest?.result_sent_rate), "診断完了 → LINE送信"]
   ];
 
@@ -453,6 +592,117 @@ function renderKpiResultTypes(rows = []) {
     .join("");
 }
 
+function renderKpiDropoffs(rows = []) {
+  if (!rows.length) {
+    $("#kpiDropoffs").innerHTML = `<p class="kpi-empty">まだ離脱集計がありません。</p>`;
+    return;
+  }
+
+  const maxCount = Math.max(...rows.map((row) => Number(row.dropoff_count || 0)), 1);
+
+  $("#kpiDropoffs").innerHTML = rows
+    .map((row) => {
+      const count = Number(row.dropoff_count || 0);
+      const rate = Math.max(2, Math.min(100, (count / maxCount) * 100));
+      const card = cards.find((item) => item.id === row.image_id);
+      const fallbackCard = cards[Number(row.question_order || 1) - 1];
+      const question = card?.question || fallbackCard?.question || "現在の質問マスタと一致なし";
+      const imageId = row.image_id || fallbackCard?.id || "-";
+      return `
+        <div class="kpi-result-row kpi-dropoff-row">
+          <div>
+            <strong>${formatNumber(row.question_order)}枚目</strong>
+            <span>${formatNumber(count)}件</span>
+          </div>
+          <small>${escapeHtml(question)} / ${escapeHtml(imageId)}</small>
+          <div class="kpi-bar" aria-hidden="true"><span style="width: ${rate}%"></span></div>
+        </div>
+      `;
+    })
+    .join("");
+}
+
+function formatDateTime(value) {
+  if (!value) return "-";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return String(value);
+  return date.toLocaleString("ja-JP", {
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+}
+
+function getAdminEventLabel(eventName) {
+  const labels = {
+    admin_login_success: "ログイン成功",
+    admin_login_failed: "ログイン失敗",
+    admin_login_rate_limited: "ログイン制限",
+    admin_ui_view: "管理画面表示",
+    admin_master_save: "マスタ保存",
+    admin_image_upload: "画像アップロード",
+    admin_kpi_view: "KPI閲覧"
+  };
+  return labels[eventName] || eventName || "-";
+}
+
+function getAdminLogSummary(row) {
+  const metadata = row.metadata && typeof row.metadata === "object" ? row.metadata : {};
+  if (row.event_name === "admin_master_save") {
+    return [
+      metadata.settingsUpdated ? "表示数値" : "",
+      Number(metadata.resultsCount || 0) ? `結果${metadata.resultsCount}件` : "",
+      Number(metadata.cardsCount || 0) ? `質問${metadata.cardsCount}件` : "",
+      Number(metadata.deletedCardsCount || 0) ? `削除${metadata.deletedCardsCount}件` : ""
+    ]
+      .filter(Boolean)
+      .join(" / ") || "-";
+  }
+  if (row.event_name === "admin_kpi_view") return `${metadata.days || 14}日分`;
+  if (row.event_name === "admin_login_rate_limited") return "失敗回数の上限超過";
+  if (row.event_name === "admin_image_upload") return "スワイプ画像";
+  return "-";
+}
+
+function renderAdminAuditLogs(rows = []) {
+  const target = $("#adminAuditLogTable");
+  if (!target) return;
+  if (!rows.length) {
+    target.innerHTML = `<p class="kpi-empty">まだ管理操作ログがありません。</p>`;
+    return;
+  }
+
+  target.innerHTML = `
+    <table class="kpi-table admin-audit-table">
+      <thead>
+        <tr>
+          <th>日時</th>
+          <th>操作</th>
+          <th>結果</th>
+          <th>概要</th>
+          <th>IP</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${rows
+          .map(
+            (row) => `
+              <tr>
+                <td>${escapeHtml(formatDateTime(row.created_at))}</td>
+                <td>${escapeHtml(getAdminEventLabel(row.event_name))}</td>
+                <td>${row.success === false ? "失敗" : "成功"}</td>
+                <td>${escapeHtml(getAdminLogSummary(row))}</td>
+                <td>${escapeHtml(row.ip_address || "-")}</td>
+              </tr>
+            `
+          )
+          .join("")}
+      </tbody>
+    </table>
+  `;
+}
+
 function renderKpiDashboard(summary) {
   kpiSummary = summary;
   const rangeMap = {
@@ -462,10 +712,14 @@ function renderKpiDashboard(summary) {
   };
   const current = rangeMap[kpiRange] || rangeMap.daily;
   const resultTypes = Array.isArray(summary?.resultTypes) ? summary.resultTypes : [];
+  const dropoffs = Array.isArray(summary?.dropoffs) ? summary.dropoffs : [];
+  const adminLogs = Array.isArray(summary?.adminLogs) ? summary.adminLogs : [];
   $("#kpiTableTitle").textContent = current.title;
   renderKpiCards(current.rows[0] || null);
   renderKpiDailyTable(current.rows);
   renderKpiResultTypes(resultTypes);
+  renderKpiDropoffs(dropoffs);
+  renderAdminAuditLogs(adminLogs);
 }
 
 async function loadKpiDashboard() {
@@ -483,6 +737,10 @@ async function loadKpiDashboard() {
     renderKpiDashboard(summary);
     return true;
   } catch (error) {
+    if (isUnauthorizedError(error)) {
+      clearAdminSession("管理セッションが切れました。もう一度ログインしてください");
+      return false;
+    }
     renderKpiMessage("KPIを読み込めません");
     setStatus(`KPI読み込み失敗: ${error.message}`);
     return false;
@@ -506,6 +764,9 @@ function renderResultEditor() {
 function renderCardEditor() {
   const cardId = $("#cardSelect").value;
   const card = cards.find((item) => item.id === cardId);
+  if (!card) return;
+  const deleteButton = $("#deleteCard");
+  if (deleteButton) deleteButton.disabled = cards.length <= 1;
   $("#cardQuestionInput").value = card.question;
   $("#cardImageInput").value = card.image;
   $("#cardImageStoragePathInput").value = card.imageStoragePath || "";
@@ -531,6 +792,10 @@ function bindImageUploadEvents() {
       const optimizedFile = await optimizeImageForUpload(file);
       await uploadCardImage(optimizedFile, file);
     } catch (error) {
+      if (isUnauthorizedError(error)) {
+        clearAdminSession("管理セッションが切れました。もう一度ログインしてください");
+        return;
+      }
       setStatus(`画像アップロード失敗: ${error.message}`);
     } finally {
       input.value = "";
@@ -564,6 +829,13 @@ function bindImageUploadEvents() {
 }
 
 function bindEvents() {
+  if (adminEventsBound) return;
+  adminEventsBound = true;
+
+  $("#adminLogout").addEventListener("click", () => {
+    clearAdminSession("ログアウトしました");
+  });
+
   document.querySelector(".kpi-range-tabs").addEventListener("click", (event) => {
     const button = event.target.closest("[data-kpi-range]");
     if (!button) return;
@@ -583,6 +855,10 @@ function bindEvents() {
   $("#saveGeneral").addEventListener("click", async () => {
     save({
       comparisonCount: Number($("#comparisonCountInput").value || 0),
+      comparisonIncrementIntervalHours: Number($("#comparisonIntervalInput").value || 0),
+      comparisonIncrementCount: Number($("#comparisonIncrementInput").value || 0),
+      comparisonCountUpdatedAt: new Date().toISOString(),
+      diagnosisQuestionCount: getActiveCardCount(),
       jobCount: Number($("#jobCountInput").value || 0),
       highMatchCount: Number($("#highMatchCountInput").value || 0),
       requireLineBeforeResult: $("#requireLineInput").checked
@@ -640,6 +916,11 @@ function bindEvents() {
     renderCardEditor();
     renderCardList(button.dataset.cardId);
   });
+  $("#cardList").addEventListener("change", (event) => {
+    const checkbox = event.target.closest("[data-card-enabled-id]");
+    if (!checkbox) return;
+    updateCardEnabled(checkbox.dataset.cardEnabledId, checkbox.checked);
+  });
 
   $("#cardQuestionInput").addEventListener("input", renderCardPreviewFromInputs);
   $("#cardImageInput").addEventListener("input", () => {
@@ -649,20 +930,67 @@ function bindEvents() {
   $("#cardVisualInput").addEventListener("input", renderCardPreviewFromInputs);
   bindImageUploadEvents();
 
-  $("#saveCard").addEventListener("click", async () => {
-    const cardId = $("#cardSelect").value;
+  $("#addCard").addEventListener("click", async () => {
+    const cardId = getNextCardId();
+    const sortOrder = Math.max(...cards.map((card) => Number(card.sortOrder || 0))) + 1;
     save({
+      diagnosisQuestionCount: getActiveCardCount() + 1,
       cardOverrides: {
         ...(settings.cardOverrides || {}),
         [cardId]: {
-          question: $("#cardQuestionInput").value.trim(),
-          image: $("#cardImageInput").value.trim(),
-          imageStoragePath: $("#cardImageStoragePathInput").value.trim(),
-          visual: $("#cardVisualInput").value.trim()
+          question: "新しい質問を入力してください",
+          image: cards[0]?.image || "",
+          imageStoragePath: "",
+          visual: "新規カード",
+          yesScores: { people: 1 },
+          noScores: { focus: 1 },
+          enabled: true,
+          sortOrder
         }
       }
     });
     populateSelects($("#resultSelect").value, cardId);
+    renderGeneral();
+    renderCardEditor();
+    await persistMaster("新規質問を追加しました。内容を編集してください");
+  });
+
+  const deleteCardButton = $("#deleteCard");
+  if (deleteCardButton) {
+    deleteCardButton.addEventListener("click", async () => {
+      try {
+        await deleteSelectedCard();
+      } catch (error) {
+        if (isUnauthorizedError(error)) {
+          clearAdminSession("管理セッションが切れました。もう一度ログインしてください");
+          return;
+        }
+        setStatus(`質問削除失敗: ${error.message}`);
+      }
+    });
+  }
+
+  $("#saveCardActivation").addEventListener("click", async () => {
+    await persistMaster("出題設定を保存しました");
+  });
+
+  $("#saveCard").addEventListener("click", async () => {
+    const cardId = $("#cardSelect").value;
+    const card = cards.find((item) => item.id === cardId);
+    if (!card) return;
+    save({
+      cardOverrides: {
+        ...(settings.cardOverrides || {}),
+        [cardId]: getCardSettings(card, {
+          question: $("#cardQuestionInput").value.trim(),
+          image: $("#cardImageInput").value.trim(),
+          imageStoragePath: $("#cardImageStoragePathInput").value.trim(),
+          visual: $("#cardVisualInput").value.trim()
+        })
+      }
+    });
+    populateSelects($("#resultSelect").value, cardId);
+    renderGeneral();
     renderCardEditor();
     await persistMaster("スワイプ画像/質問内容を保存しました");
   });
@@ -704,13 +1032,21 @@ function bindEvents() {
   });
 }
 
-async function init() {
+export async function initAdminApp() {
+  if (!$("#adminApp")) {
+    throw new Error("管理画面HTMLが読み込まれていません");
+  }
+
   try {
     const loadedRemote = await loadRemoteSettings();
     if (loadedRemote) {
       setStatus("Supabaseから管理データを読み込みました");
     }
   } catch (error) {
+    if (getFunctionsBaseUrl() && isUnauthorizedError(error)) {
+      clearAdminSession("管理パスワードを入力してください");
+      throw error;
+    }
     setStatus(`Supabase読み込み失敗: ${error.message}`);
   }
 
@@ -721,5 +1057,3 @@ async function init() {
   bindEvents();
   await loadKpiDashboard();
 }
-
-init();

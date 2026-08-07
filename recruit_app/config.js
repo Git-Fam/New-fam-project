@@ -2,6 +2,5 @@ window.CAREER_APP_CONFIG = {
   supabaseFunctionsBaseUrl: "https://plhfwtnkdnybswkgqugk.supabase.co/functions/v1",
   lineLoginChannelId: "",
   lineRedirectUri: "",
-  adminApiToken: "",
-  requireLineBeforeResult: true
+  requireLineBeforeResult: false
 };

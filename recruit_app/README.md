@@ -4,12 +4,14 @@ PDF要件に沿った、バニラHTML/CSS/JavaScriptのAIキャリア診断MVP�
 
 ## 構成
 
-- `index.html` - LP、ルール、スワイプ、分析演出、結果、求人導線
-- `admin/index.html` - 比較人数、求人件数、診断結果文章、スワイプ画像、KPIの管理画面
-- `config.js` - 公開ページ用の接続設定。`adminApiToken` は空
-- `admin/config.js` - 管理画面用の接続設定。`adminApiToken` あり
+- `index.html` - LP、スワイプ、分析演出、結果、求人導線
+- `admin/index.html` - 管理画面ログイン用の静的HTML。ログイン前は管理画面本体を含まない
+- `config.js` - 公開ページ用の接続設定。管理用Secretは置かない
+- `admin/config.js` - 管理画面用の接続設定。管理用Secretは置かない
 - `src/data.js` - 40問カード、6軸、15タイプ診断マスタ
 - `src/app.js` - スワイプ操作、スコア計算、画面遷移、保存/LINE導線
+- `src/admin-login.js` - 管理画面ログイン、ログイン後の管理UI取得
+- `src/admin.js` - 管理画面本体。マスタ保存、画像アップロード、KPI取得
 - `supabase/functions/*` - 診断保存、イベントログ、LINE Login、Messaging API、Webhook
 - `supabase/migrations/*` - PostgreSQLテーブル定義
 
@@ -38,9 +40,20 @@ python3 -m http.server 4173
 - 同タイプ割合
 - 各カードの質問文、画像、管理用ラベル
 
-`admin/config.js` の `supabaseFunctionsBaseUrl` が未設定の場合、変更内容はブラウザの `localStorage` に保存されます。
-Supabase接続後は、管理画面の保存ボタンまたは「Supabaseへ全データ保存」でDBへ同期されます。
+管理画面はSupabase接続が必要です。
+管理画面の保存ボタンまたは「Supabaseへ全データ保存」でDBへ同期されます。
 既存の上書きを消してPDFベースの初期値に戻す場合は、管理画面の「リセット」を使います。
+
+Supabase接続時は管理画面ログインが必要です。
+ログイン画面で Supabase Secrets の `ADMIN_LOGIN_PASSWORD` と同じ値を入力します。
+ログイン後、管理画面本体HTMLを `admin-ui` Edge Functionから取得します。
+ログイン前の `/admin/index.html` には管理画面本体の要素を含めません。
+ログインセッションは8時間有効で、ブラウザを閉じると再入力が必要です。
+ログイン失敗は15分以内に5回までに制限し、超過時は15分後に再試行します。
+
+公開診断でユーザーに表示する質問・画像・結果文は、アプリの性質上ブラウザへ配信されます。
+KPI、保存/編集API、管理画面本体HTMLは管理ログインで保護します。
+管理画面には `noindex` を設定し、検索エンジンに出ないようにしています。
 
 ## 本番アップロード
 
@@ -58,6 +71,7 @@ Supabase接続後は、管理画面の保存ボタンまたは「Supabaseへ全�
 
 - `admin/index.html`
 - `admin/config.js`
+- `src/admin-login.js`
 - `src/admin.js`
 
 アップしないもの:
@@ -69,8 +83,10 @@ Supabase接続後は、管理画面の保存ボタンまたは「Supabaseへ全�
 - `.DS_Store`
 - `package-lock.json`
 
-公開用 `config.js` は `adminApiToken: ""` にします。
-管理用 `admin/config.js` だけ `adminApiToken` を入れます。
+公開用 `config.js` と管理用 `admin/config.js` に、管理パスワードや管理用Secretは入れません。
+
+GA4タグは公開ページの `<head>` に直接設置しています。
+GAには診断タイプや回答内容は送らず、診断開始・完了・LINE押下などのイベント名だけ送信します。
 
 ## Supabase設定
 
@@ -79,12 +95,44 @@ Supabase接続後は、管理画面の保存ボタンまたは「Supabaseへ全�
 Supabase CLIは使わず、DashboardのEdge Functions Codeタブへ貼り付けてDeployする運用です。
 DB定義の控えは `supabase/migrations/*` に残しています。
 
+管理画面パスワードログインを反映する場合は、Supabase Secretsに
+`ADMIN_LOGIN_PASSWORD` / `ADMIN_SESSION_SECRET` を追加し、以下をDeployします。
+
+- SQL Editorで `supabase/migrations/20260807000000_create_admin_security_tables.sql` を実行
+- `admin-login`: `supabase/dashboard/admin-login-index.ts`
+- `admin-ui`: `supabase/dashboard/admin-ui-index.ts`
+- `admin-master`: `supabase/dashboard/admin-master-index.ts`
+- `kpi-summary`: `supabase/dashboard/kpi-summary-index.ts`
+
+比較人数の自動増加設定を反映する場合は、DashboardのSQL Editorで
+`supabase/migrations/20260806000000_add_comparison_growth_settings.sql` を実行し、
+`supabase/dashboard/admin-master-index.ts` を `admin-master` に貼り直してDeployします。
+
+診断に使う質問数設定を反映する場合は、DashboardのSQL Editorで
+`supabase/migrations/20260806001000_add_diagnosis_question_count.sql` を実行し、
+`supabase/dashboard/admin-master-index.ts` を `admin-master` に貼り直してDeployします。
+
+スワイプカードの出題ON/OFF、新規質問追加、質問削除を反映する場合は、DashboardのSQL Editorで
+`supabase/migrations/20260806002000_add_swipe_card_enabled.sql` を実行し、
+`supabase/dashboard/admin-master-index.ts` を `admin-master` に、
+`supabase/dashboard/admin-ui-index.ts` を `admin-ui` に貼り直してDeployします。
+
+離脱設問集計を反映する場合は、DashboardのSQL Editorで
+`supabase/migrations/20260806003000_create_dropoff_tracking.sql` を実行し、
+以下のEdge Functionsを貼り直してDeployします。
+
+- `event-log`: `supabase/dashboard/event-log-index.ts`
+- `save-diagnosis`: `supabase/dashboard/save-diagnosis-index.ts`
+- `kpi-summary`: `supabase/dashboard/kpi-summary-index.ts`
+
 CLIで再構築する場合は以下を使います。
 
 ```bash
 supabase db push
 supabase functions deploy save-diagnosis
 supabase functions deploy event-log
+supabase functions deploy admin-login
+supabase functions deploy admin-ui
 supabase functions deploy admin-master
 supabase functions deploy line-login-url
 supabase functions deploy line-callback
@@ -104,7 +152,8 @@ supabase secrets set LINE_REDIRECT_URI="https://plhfwtnkdnybswkgqugk.supabase.co
 supabase secrets set LINE_CHANNEL_ACCESS_TOKEN="YOUR_LINE_CHANNEL_ACCESS_TOKEN"
 supabase secrets set LINE_CHANNEL_SECRET="YOUR_LINE_CHANNEL_SECRET"
 supabase secrets set LINE_BOT_PROMPT="aggressive"
-supabase secrets set ADMIN_API_TOKEN="任意の長い管理用トークン"
+supabase secrets set ADMIN_LOGIN_PASSWORD="管理画面に入るためのパスワード"
+supabase secrets set ADMIN_SESSION_SECRET="十分に長いランダムな署名用文字列"
 ```
 
 ## フロント接続設定
@@ -116,8 +165,7 @@ window.CAREER_APP_CONFIG = {
   supabaseFunctionsBaseUrl: "https://YOUR_PROJECT_REF.supabase.co/functions/v1",
   lineLoginChannelId: "YOUR_LINE_LOGIN_CHANNEL_ID",
   lineRedirectUri: "https://YOUR_PROJECT_REF.supabase.co/functions/v1/line-callback",
-  adminApiToken: "",
-  requireLineBeforeResult: true
+  requireLineBeforeResult: false
 };
 ```
 
@@ -128,12 +176,11 @@ window.CAREER_APP_CONFIG = {
   supabaseFunctionsBaseUrl: "https://YOUR_PROJECT_REF.supabase.co/functions/v1",
   lineLoginChannelId: "YOUR_LINE_LOGIN_CHANNEL_ID",
   lineRedirectUri: "https://YOUR_PROJECT_REF.supabase.co/functions/v1/line-callback",
-  adminApiToken: "ADMIN_API_TOKENと同じ値",
-  requireLineBeforeResult: true
+  requireLineBeforeResult: false
 };
 ```
 
-`adminApiToken` は管理画面からDBへ保存する時だけ使います。公開ページ用 `config.js` には入れません。
+管理パスワードはSupabase Secretsの `ADMIN_LOGIN_PASSWORD` にだけ保存します。`config.js` / `admin/config.js` には入れません。
 
 ## LINE本連携
 
@@ -194,6 +241,7 @@ SupabaseのmigrationとEdge Functionsを反映した後、管理画面を開い�
 - `line_states`: 10分
 - `diagnosis_events`: 90日
 - `line_connections`: 180日
+- `diagnosis_progress_sessions`: 離脱判定までの一時データ。完了時または離脱集計後に削除
 
 Edge Functionsで以下の2つを作成し、Codeタブへ対応ファイルの中身を貼ってDeployします。
 
@@ -222,6 +270,7 @@ select public.cleanup_ai_career_expired_data();
 画像はブラウザ側で横幅最大1200pxのWebPへ軽量化してから Supabase Storage の `swipe-images` bucket に保存します。
 DBには画像本体を保存せず、表示用URLとStorage内パスだけを保存します。
 既存画像が同じ `swipe-images` bucket 内の画像だった場合は、カード保存のDB更新成功後に古いStorageファイルを削除します。
+管理画面で質問を削除した場合は、`swipe_cards` の行と同じbucket内の画像ファイルを削除します。
 
 Storage bucket `swipe-images` と `swipe_cards.image_storage_path` は設定済みです。
 `admin-master` を更新する場合は、Codeタブへ以下を貼り直してDeployします。
@@ -247,21 +296,38 @@ DashboardのSQL Editorで以下を実行します。
 
 管理画面で視覚的に見る場合は、Edge Functionを追加してDeployします。
 
+- Function名: `admin-login`
+  - 貼り付けるファイル: `supabase/dashboard/admin-login-index.ts`
+- Function名: `admin-ui`
+  - 貼り付けるファイル: `supabase/dashboard/admin-ui-index.ts`
 - Function名: `kpi-summary`
   - 貼り付けるファイル: `supabase/dashboard/kpi-summary-index.ts`
 
 管理画面から呼び出すFunctionなので、Settings の `Verify JWT with legacy secret` はOFFにします。
-代わりに `ADMIN_API_TOKEN` を `x-admin-token` で送って保護します。
+`admin-login` が `ADMIN_LOGIN_PASSWORD` を確認し、`admin-ui` / `admin-master` / `kpi-summary` を一時的な `x-admin-session` で保護します。
 
 主に見るView:
 
 - `daily_kpi_summary`: 日別KPI
 - `daily_event_counts`: 日別イベント数
 - `result_type_summary`: 診断タイプ別件数
+- `dropoff_question_summary`: 離脱が多い設問
 
 確認SQL:
 
 ```sql
 select * from public.daily_kpi_summary order by event_date desc limit 14;
 select * from public.result_type_summary;
+select * from public.dropoff_question_summary limit 20;
 ```
+
+管理操作ログの確認SQL:
+
+```sql
+select event_name, success, metadata, ip_address, created_at
+from public.admin_audit_logs
+order by created_at desc
+limit 100;
+```
+
+管理画面のKPI集計にも、直近50件の管理操作ログを表示します。

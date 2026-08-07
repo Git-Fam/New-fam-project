@@ -620,11 +620,17 @@ export const RESULT_PAIRS = {
 
 export const DEFAULT_SETTINGS = {
   comparisonCount: 18542,
+  comparisonIncrementIntervalHours: 2,
+  comparisonIncrementCount: 13,
+  comparisonCountUpdatedAt: null,
+  diagnosisQuestionCount: 40,
   jobCount: 12,
   highMatchCount: 4,
   requireLineBeforeResult: false,
   resultOverrides: {},
-  cardOverrides: {}
+  cardOverrides: {},
+  deletedCardIds: [],
+  useMasterCardsOnly: false
 };
 
 export const STORAGE_KEYS = {
@@ -653,7 +659,9 @@ export function loadAdminSettings() {
       ...DEFAULT_SETTINGS,
       ...saved,
       resultOverrides: saved.resultOverrides || {},
-      cardOverrides: saved.cardOverrides || {}
+      cardOverrides: saved.cardOverrides || {},
+      deletedCardIds: Array.isArray(saved.deletedCardIds) ? saved.deletedCardIds : [],
+      useMasterCardsOnly: Boolean(saved.useMasterCardsOnly)
     };
   } catch {
     return { ...DEFAULT_SETTINGS };
@@ -667,9 +675,31 @@ export function saveAdminSettings(settings) {
       ...DEFAULT_SETTINGS,
       ...settings,
       resultOverrides: settings.resultOverrides || {},
-      cardOverrides: settings.cardOverrides || {}
+      cardOverrides: settings.cardOverrides || {},
+      deletedCardIds: Array.isArray(settings.deletedCardIds) ? settings.deletedCardIds : [],
+      useMasterCardsOnly: Boolean(settings.useMasterCardsOnly)
     })
   );
+}
+
+export function getCurrentComparisonCount(settings = loadAdminSettings(), now = new Date()) {
+  const baseCount = Number(settings.comparisonCount || 0);
+  const intervalHours = Number(settings.comparisonIncrementIntervalHours || 0);
+  const incrementCount = Number(settings.comparisonIncrementCount || 0);
+  const updatedAt = settings.comparisonCountUpdatedAt
+    ? new Date(settings.comparisonCountUpdatedAt)
+    : null;
+
+  if (!updatedAt || Number.isNaN(updatedAt.getTime()) || intervalHours <= 0 || incrementCount <= 0) {
+    return Math.max(0, Math.floor(baseCount));
+  }
+
+  const elapsedMs = now.getTime() - updatedAt.getTime();
+  if (elapsedMs <= 0) return Math.max(0, Math.floor(baseCount));
+
+  const intervalMs = intervalHours * 60 * 60 * 1000;
+  const elapsedIntervals = Math.floor(elapsedMs / intervalMs);
+  return Math.max(0, Math.floor(baseCount + elapsedIntervals * incrementCount));
 }
 
 export function buildSettingsFromMaster(master = {}) {
@@ -691,7 +721,7 @@ export function buildSettingsFromMaster(master = {}) {
     };
   });
 
-  (master.cards || []).forEach((card) => {
+  (master.cards || []).forEach((card, index) => {
     if (!card.id) return;
     cardOverrides[card.id] = {
       question: card.question || "",
@@ -699,20 +729,36 @@ export function buildSettingsFromMaster(master = {}) {
       image: card.image || "",
       imageStoragePath: card.imageStoragePath || "",
       yesScores: card.yesScores || {},
-      noScores: card.noScores || {}
+      noScores: card.noScores || {},
+      enabled: card.enabled !== false,
+      sortOrder: Number(card.sortOrder || index + 1)
     };
   });
 
   return {
     ...DEFAULT_SETTINGS,
     comparisonCount: Number(remoteSettings.comparisonCount ?? DEFAULT_SETTINGS.comparisonCount),
+    comparisonIncrementIntervalHours: Number(
+      remoteSettings.comparisonIncrementIntervalHours ??
+        DEFAULT_SETTINGS.comparisonIncrementIntervalHours
+    ),
+    comparisonIncrementCount: Number(
+      remoteSettings.comparisonIncrementCount ?? DEFAULT_SETTINGS.comparisonIncrementCount
+    ),
+    comparisonCountUpdatedAt:
+      remoteSettings.comparisonCountUpdatedAt ?? DEFAULT_SETTINGS.comparisonCountUpdatedAt,
+    diagnosisQuestionCount: Number(
+      remoteSettings.diagnosisQuestionCount ?? DEFAULT_SETTINGS.diagnosisQuestionCount
+    ),
     jobCount: Number(remoteSettings.jobCount ?? DEFAULT_SETTINGS.jobCount),
     highMatchCount: Number(remoteSettings.highMatchCount ?? DEFAULT_SETTINGS.highMatchCount),
     requireLineBeforeResult: Boolean(
       remoteSettings.requireLineBeforeResult ?? DEFAULT_SETTINGS.requireLineBeforeResult
     ),
     resultOverrides,
-    cardOverrides
+    cardOverrides,
+    deletedCardIds: [],
+    useMasterCardsOnly: Array.isArray(master.cards) && master.cards.length > 0
   };
 }
 
@@ -721,12 +767,26 @@ export function serializeSettingsForMaster(settings = loadAdminSettings()) {
     ...DEFAULT_SETTINGS,
     ...settings,
     resultOverrides: settings.resultOverrides || {},
-    cardOverrides: settings.cardOverrides || {}
+    cardOverrides: settings.cardOverrides || {},
+    deletedCardIds: Array.isArray(settings.deletedCardIds) ? settings.deletedCardIds : [],
+    useMasterCardsOnly: Boolean(settings.useMasterCardsOnly)
   };
 
   return {
     settings: {
       comparisonCount: Number(mergedSettings.comparisonCount || 0),
+      comparisonIncrementIntervalHours: Number(
+        mergedSettings.comparisonIncrementIntervalHours || 0
+      ),
+      comparisonIncrementCount: Number(mergedSettings.comparisonIncrementCount || 0),
+      comparisonCountUpdatedAt:
+        mergedSettings.comparisonCountUpdatedAt || new Date().toISOString(),
+      diagnosisQuestionCount: Math.max(
+        1,
+        Math.floor(
+          Number(mergedSettings.diagnosisQuestionCount || DEFAULT_SETTINGS.diagnosisQuestionCount)
+        )
+      ),
       jobCount: Number(mergedSettings.jobCount || 0),
       highMatchCount: Number(mergedSettings.highMatchCount || 0),
       requireLineBeforeResult: Boolean(mergedSettings.requireLineBeforeResult)
@@ -751,16 +811,78 @@ export function serializeSettingsForMaster(settings = loadAdminSettings()) {
       imageStoragePath: card.imageStoragePath || "",
       yesScores: card.yesScores,
       noScores: card.noScores,
+      enabled: card.enabled !== false,
       sortOrder: index + 1
-    }))
+    })),
+    deletedCardIds: mergedSettings.deletedCardIds
   };
 }
 
+function buildCardFromOverride(id, card, fallbackSortOrder) {
+  return {
+    id,
+    question: card.question || "新しい質問",
+    visual: card.visual || "新規カード",
+    image: card.image || DEFAULT_CARDS[0].image,
+    imageStoragePath: card.imageStoragePath || "",
+    yesScores: card.yesScores || { people: 1 },
+    noScores: card.noScores || { focus: 1 },
+    enabled: card.enabled ?? true,
+    sortOrder: Number(card.sortOrder || fallbackSortOrder)
+  };
+}
+
+function sortCards(cards) {
+  return cards.sort((a, b) => {
+    if (a.sortOrder !== b.sortOrder) return a.sortOrder - b.sortOrder;
+    return a.id.localeCompare(b.id);
+  });
+}
+
 export function getConfiguredCards(settings = loadAdminSettings()) {
-  return DEFAULT_CARDS.map((card) => ({
-    ...card,
-    ...(settings.cardOverrides?.[card.id] || {})
-  }));
+  const overrides = settings.cardOverrides || {};
+  const deletedIds = new Set(settings.deletedCardIds || []);
+
+  if (settings.useMasterCardsOnly) {
+    return sortCards(
+      Object.entries(overrides)
+        .filter(([id]) => !deletedIds.has(id))
+        .map(([id, card], index) => buildCardFromOverride(id, card, index + 1))
+    );
+  }
+
+  const defaultIds = new Set(DEFAULT_CARDS.map((card) => card.id));
+  const baseCards = DEFAULT_CARDS.filter((card) => !deletedIds.has(card.id)).map((card, index) => {
+    const override = overrides[card.id] || {};
+    return {
+      ...card,
+      ...override,
+      id: card.id,
+      enabled: override.enabled ?? true,
+      sortOrder: Number(override.sortOrder || index + 1)
+    };
+  });
+  const customCards = Object.entries(overrides)
+    .filter(([id]) => !defaultIds.has(id) && !deletedIds.has(id))
+    .map(([id, card], index) => buildCardFromOverride(id, card, DEFAULT_CARDS.length + index + 1));
+
+  return sortCards([...baseCards, ...customCards]);
+}
+
+export function getDiagnosisCards(settings = loadAdminSettings()) {
+  const configuredCards = getConfiguredCards(settings);
+  const hasEnabledSettings = Object.values(settings.cardOverrides || {}).some(
+    (card) => typeof card.enabled === "boolean"
+  );
+
+  if (hasEnabledSettings) {
+    const enabledCards = configuredCards.filter((card) => card.enabled !== false);
+    return enabledCards.length ? enabledCards : configuredCards.slice(0, 1);
+  }
+
+  const requestedCount = Number(settings.diagnosisQuestionCount || configuredCards.length);
+  const safeCount = Math.max(1, Math.min(configuredCards.length, Math.floor(requestedCount)));
+  return configuredCards.slice(0, safeCount);
 }
 
 export function getConfiguredResults(settings = loadAdminSettings()) {

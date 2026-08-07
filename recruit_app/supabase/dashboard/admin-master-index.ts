@@ -7,7 +7,7 @@ const ALLOWED_IMAGE_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type, x-admin-token",
+    "authorization, x-client-info, apikey, content-type, x-admin-token, x-admin-session",
   "Access-Control-Allow-Methods": "GET, POST, OPTIONS"
 };
 
@@ -44,10 +44,86 @@ function getSupabaseClient() {
   });
 }
 
-function hasValidAdminToken(request: Request) {
-  const requiredToken = Deno.env.get("ADMIN_API_TOKEN");
-  if (!requiredToken) return true;
-  return request.headers.get("x-admin-token") === requiredToken;
+function getAdminClientInfo(request: Request) {
+  const forwardedFor = request.headers.get("x-forwarded-for") || "";
+  const ipAddress =
+    forwardedFor.split(",")[0]?.trim() ||
+    request.headers.get("cf-connecting-ip") ||
+    request.headers.get("x-real-ip") ||
+    "unknown";
+
+  return {
+    ipAddress,
+    userAgent: request.headers.get("user-agent") || null
+  };
+}
+
+async function insertAdminAuditLog(
+  supabase: ReturnType<typeof createClient>,
+  request: Request,
+  eventName: string,
+  options: { success?: boolean; metadata?: Record<string, unknown> } = {}
+) {
+  const clientInfo = getAdminClientInfo(request);
+  const { error } = await supabase.from("admin_audit_logs").insert({
+    event_name: eventName,
+    success: options.success !== false,
+    metadata: options.metadata || {},
+    ip_address: clientInfo.ipAddress,
+    user_agent: clientInfo.userAgent
+  });
+
+  if (error) console.warn("admin audit insert failed", error);
+}
+
+function base64UrlDecodeBytes(value: string) {
+  const normalized = value.replaceAll("-", "+").replaceAll("_", "/");
+  const padded = normalized.padEnd(Math.ceil(normalized.length / 4) * 4, "=");
+  const binary = atob(padded);
+  return Uint8Array.from(binary, (char) => char.charCodeAt(0));
+}
+
+function base64UrlDecodeText(value: string) {
+  return new TextDecoder().decode(base64UrlDecodeBytes(value));
+}
+
+async function importSessionKey(secret: string, usage: KeyUsage[]) {
+  return crypto.subtle.importKey(
+    "raw",
+    new TextEncoder().encode(secret),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    usage
+  );
+}
+
+async function verifyPayloadSignature(payload: string, signature: string, secret: string) {
+  const key = await importSessionKey(secret, ["verify"]);
+  return crypto.subtle.verify(
+    "HMAC",
+    key,
+    base64UrlDecodeBytes(signature),
+    new TextEncoder().encode(payload)
+  );
+}
+
+async function hasValidAdminSession(request: Request) {
+  const secret = Deno.env.get("ADMIN_SESSION_SECRET");
+  if (!secret) return false;
+
+  const token = request.headers.get("x-admin-session") || "";
+  const parts = token.split(".");
+  if (parts.length !== 2 || !parts[0] || !parts[1]) return false;
+
+  try {
+    const verified = await verifyPayloadSignature(parts[0], parts[1], secret);
+    if (!verified) return false;
+
+    const payload = JSON.parse(base64UrlDecodeText(parts[0]));
+    return payload?.purpose === "admin" && Number(payload.exp || 0) > Date.now();
+  } catch {
+    return false;
+  }
 }
 
 function sanitizePathPart(value: string) {
@@ -170,6 +246,54 @@ async function removeChangedStorageImages(
   if (error) console.warn("Old image delete failed", error);
 }
 
+async function removeDeletedCards(
+  supabase: ReturnType<typeof createClient>,
+  cardIds: string[]
+) {
+  const uniqueCardIds = [...new Set(cardIds.map((id) => String(id || "").trim()).filter(Boolean))];
+  if (uniqueCardIds.length === 0) return 0;
+
+  let deletedCards: Array<Record<string, string | null>> = [];
+  const cardsResponse = await supabase
+    .from("swipe_cards")
+    .select("card_id, image, image_storage_path")
+    .in("card_id", uniqueCardIds);
+
+  if (cardsResponse.error && isMissingStoragePathColumn(cardsResponse.error)) {
+    const fallbackResponse = await supabase
+      .from("swipe_cards")
+      .select("card_id, image")
+      .in("card_id", uniqueCardIds);
+    if (fallbackResponse.error) throw fallbackResponse.error;
+    deletedCards = fallbackResponse.data || [];
+  } else {
+    if (cardsResponse.error) throw cardsResponse.error;
+    deletedCards = cardsResponse.data || [];
+  }
+
+  const { error, count } = await supabase
+    .from("swipe_cards")
+    .delete({ count: "exact" })
+    .in("card_id", uniqueCardIds);
+  if (error) throw error;
+
+  const supabaseUrl = Deno.env.get("SUPABASE_URL") || "";
+  const storagePaths = [
+    ...new Set(
+      deletedCards
+        .map((card) => String(card.image_storage_path || "") || getStoragePathFromPublicUrl(String(card.image || ""), supabaseUrl))
+        .filter(Boolean)
+    )
+  ];
+
+  if (storagePaths.length > 0) {
+    const { error: storageError } = await supabase.storage.from(STORAGE_BUCKET).remove(storagePaths);
+    if (storageError) console.warn("Deleted card image remove failed", storageError);
+  }
+
+  return count || 0;
+}
+
 async function readMaster() {
   const supabase = getSupabaseClient();
 
@@ -189,6 +313,10 @@ async function readMaster() {
     settings: settings
       ? {
           comparisonCount: settings.comparison_count,
+          comparisonIncrementIntervalHours: settings.comparison_increment_interval_hours,
+          comparisonIncrementCount: settings.comparison_increment_count,
+          comparisonCountUpdatedAt: settings.comparison_count_updated_at,
+          diagnosisQuestionCount: settings.diagnosis_question_count,
           jobCount: settings.job_count,
           highMatchCount: settings.high_match_count,
           requireLineBeforeResult: settings.require_line_before_result
@@ -214,6 +342,7 @@ async function readMaster() {
       imageStoragePath: card.image_storage_path || "",
       yesScores: card.yes_scores,
       noScores: card.no_scores,
+      enabled: card.enabled !== false,
       sortOrder: card.sort_order
     }))
   };
@@ -222,6 +351,10 @@ async function readMaster() {
 async function writeMaster(body: {
   settings?: {
     comparisonCount?: number;
+    comparisonIncrementIntervalHours?: number;
+    comparisonIncrementCount?: number;
+    comparisonCountUpdatedAt?: string;
+    diagnosisQuestionCount?: number;
     jobCount?: number;
     highMatchCount?: number;
     requireLineBeforeResult?: boolean;
@@ -246,15 +379,32 @@ async function writeMaster(body: {
     imageStoragePath?: string;
     yesScores: Record<string, number>;
     noScores: Record<string, number>;
+    enabled?: boolean;
     sortOrder?: number;
   }>;
+  deletedCardIds?: string[];
 }) {
   const supabase = getSupabaseClient();
+  const deletedCardIds = Array.isArray(body.deletedCardIds) ? body.deletedCardIds : [];
+
+  if (deletedCardIds.length > 0) {
+    await removeDeletedCards(supabase, deletedCardIds);
+  }
 
   if (body.settings) {
     const { error } = await supabase.from("app_settings").upsert({
       id: true,
       comparison_count: Number(body.settings.comparisonCount || 0),
+      comparison_increment_interval_hours: Number(
+        body.settings.comparisonIncrementIntervalHours || 0
+      ),
+      comparison_increment_count: Number(body.settings.comparisonIncrementCount || 0),
+      comparison_count_updated_at:
+        body.settings.comparisonCountUpdatedAt || new Date().toISOString(),
+      diagnosis_question_count: Math.max(
+        1,
+        Math.floor(Number(body.settings.diagnosisQuestionCount || 40))
+      ),
       job_count: Number(body.settings.jobCount || 0),
       high_match_count: Number(body.settings.highMatchCount || 0),
       require_line_before_result: Boolean(body.settings.requireLineBeforeResult),
@@ -284,7 +434,8 @@ async function writeMaster(body: {
 
   if (Array.isArray(body.cards) && body.cards.length > 0) {
     const supabaseUrl = Deno.env.get("SUPABASE_URL") || "";
-    const nextCards = body.cards.map((card, index) => ({
+    const deletedIdSet = new Set(deletedCardIds);
+    const nextCards = body.cards.filter((card) => !deletedIdSet.has(card.id)).map((card, index) => ({
       id: card.id,
       question: card.question,
       visual: card.visual,
@@ -292,8 +443,11 @@ async function writeMaster(body: {
       imageStoragePath: card.imageStoragePath || getStoragePathFromPublicUrl(card.image, supabaseUrl) || "",
       yesScores: card.yesScores || {},
       noScores: card.noScores || {},
+      enabled: card.enabled !== false,
       sortOrder: Number(card.sortOrder || index + 1)
     }));
+    if (nextCards.length === 0) return readMaster();
+
     const cardIds = nextCards.map((card) => card.id);
     const existingImages = new Map<string, string>();
     const existingImagePaths = new Map<string, string>();
@@ -330,6 +484,7 @@ async function writeMaster(body: {
       image_storage_path: card.imageStoragePath || null,
       yes_scores: card.yesScores,
       no_scores: card.noScores,
+      enabled: card.enabled,
       sort_order: card.sortOrder,
       updated_at: new Date().toISOString()
     }));
@@ -366,17 +521,31 @@ Deno.serve(async (request: Request) => {
       return jsonResponse({ error: "Method not allowed" }, 405);
     }
 
-    if (!hasValidAdminToken(request)) {
+    if (!(await hasValidAdminSession(request))) {
       return jsonResponse({ error: "Unauthorized" }, 401);
     }
 
+    const auditSupabase = getSupabaseClient();
     const url = new URL(request.url);
     if (url.searchParams.get("action") === "upload-card-image") {
-      return uploadCardImage(request);
+      const response = await uploadCardImage(request);
+      await insertAdminAuditLog(auditSupabase, request, "admin_image_upload", {
+        metadata: { action: "upload-card-image" }
+      });
+      return response;
     }
 
     const body = await request.json();
-    return jsonResponse(await writeMaster(body));
+    const master = await writeMaster(body);
+    await insertAdminAuditLog(auditSupabase, request, "admin_master_save", {
+      metadata: {
+        settingsUpdated: Boolean(body.settings),
+        resultsCount: Array.isArray(body.results) ? body.results.length : 0,
+        cardsCount: Array.isArray(body.cards) ? body.cards.length : 0,
+        deletedCardsCount: Array.isArray(body.deletedCardIds) ? body.deletedCardIds.length : 0
+      }
+    });
+    return jsonResponse(master);
   } catch (error) {
     return jsonResponse({ error: errorMessage(error) }, 500);
   }
