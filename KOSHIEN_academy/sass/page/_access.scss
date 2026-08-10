@@ -1,0 +1,185 @@
+@use "../functions" as *;
+
+/* -----------------------
+  access
+----------------------- */
+
+.page-access {
+
+  .access_kv {
+    position: relative;
+
+    .inner--bg {
+
+      @include pc {
+        height: pmin(388);
+
+        img {
+          height: 100%;
+        }
+      }
+
+      @include sp {}
+
+    }
+
+    .inner--ttl {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      
+      @include pc {
+        top: 55%;
+        width: pmin(148);
+      }
+
+      @include sp {
+        top: 45%;
+        width: s(138);
+      }
+    }
+  }
+
+  .access_contents {
+
+    @include pc {
+      padding: pmin(138) 0 pmin(100);
+    }
+
+    @include sp {
+      padding: s(120) s(20) s(109);
+    }
+
+    .content--ttl {
+
+      @include pc {
+        margin-bottom: pmin(24);
+      }
+
+      @include sp {
+        margin-bottom: s(40);
+      }
+
+      .TL {
+        text-align: center;
+        font-weight: bold;
+        letter-spacing: 0.1em;
+
+        @include pc {
+          font-size: pmin(20);
+        }
+
+        @include sp {
+          font-size: s(20);
+        }
+      }
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+
+      @include pc {
+        width: pmin(890);
+        margin-inline: auto;
+        gap: pmin(67);
+      }
+
+      @include sp {
+        gap: s(67);
+      }
+
+      .item {
+
+        &:first-child {
+
+          @include pc {
+            margin-bottom: pmin(42);
+          }
+
+          @include sp {
+            margin-bottom: s(22);
+          }
+        }
+
+        .img {
+          position: relative;
+
+          @include pc {
+            margin-bottom: pmin(32);
+          }
+
+          @include sp {
+            margin-bottom: s(36);
+          }
+
+          iframe {
+            width: 100%;
+
+            @include pc {
+              height: pmin(478);
+            }
+
+            @include sp {
+              height: s(367);
+            }
+          }
+        }
+
+        .txt {
+          display: flex;
+          flex-direction: column;
+
+          @include pc {
+            gap: pmin(6);
+            text-align: center;
+          }
+
+          @include sp {
+            gap: s(13);
+          }
+
+
+          .TX {
+            letter-spacing: 0.16em;
+
+            @include pc {
+              font-size: pmin(15);
+            }
+
+            @include sp {
+              font-size: s(16);
+              line-height: 2;
+            }
+
+
+            .TX-col {
+              color: #8E60A2;
+            }
+
+            .map-link {
+              background-color: #8E60A2;
+              color: #FFF;
+              @include jost;
+              display: inline-block;
+              transform: translateY(-10%);
+
+              @include pc {
+                font-size: pmin(12);
+                padding-inline: pmin(8);
+              }
+
+              @include sp {
+                font-size: s(12);
+                padding-inline: s(8);
+                line-height: 1.5;
+              }
+            }
+          }
+        }
+
+      }
+    }
+  }
+
+}

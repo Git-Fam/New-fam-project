@@ -1,0 +1,951 @@
+@use "../functions" as *;
+
+/* -----------------------
+  header
+----------------------- */
+
+
+.header {
+  // position: sticky;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 998;
+
+  &.header-single {
+    .header-inner {
+      background-color: #E8E8E8;
+    }
+  }
+
+  &.header-translate {
+    .header-inner {
+      transform: translateY(-100%);
+    }
+  }
+
+  &.is-scroll {
+
+    .header-inner {
+      background: #fff;
+      transform: translateY(0);
+
+      border-color: #e8e8e8;
+
+
+      .logo {
+
+        .def {
+          opacity: 0;
+        }
+
+        .scl {
+          opacity: 1;
+        }
+      }
+
+      .burger {
+
+        img {
+
+          &.def {
+            opacity: 0;
+          }
+
+          &.scl {
+            opacity: 1;
+          }
+        }
+      }
+
+    }
+  }
+
+  &.is-active {
+    .header-inner {
+      background: transparent;
+      // border-bottom: none;
+
+      .logo {
+
+        .def {
+          opacity: 1;
+        }
+
+        .scl {
+          opacity: 0;
+        }
+      }
+
+      .burger {
+
+        .ope {
+          opacity: 0;
+        }
+
+        .clo {
+          opacity: 1;
+        }
+
+        img {
+
+          &.def {
+            opacity: 1;
+          }
+
+          &.scl {
+            opacity: 0;
+          }
+        }
+      }
+    }
+
+    .header-nav {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  &-inner {
+    background: transparent;
+    position: relative;
+    z-index: 2;
+    border-bottom: solid #ffffff;
+    transition: transform 0.3s, background 0.3s;
+
+    @include pc {
+      padding-block: pmin(13);
+      border-bottom-width: pmin(1);
+    }
+
+    @include sp {
+      padding-block: s(13);
+      border-bottom-width: s(1);
+    }
+
+    .logo {
+      display: block;
+      margin-inline: auto;
+      position: relative;
+
+      @include pc {
+        // transform: translateX(-15%);
+        width: pmin(242);
+      }
+
+      @include sp {
+        // transform: translateX(-10%);
+        width: s(179);
+      }
+
+      .def {
+        opacity: 1;
+      }
+
+      .scl {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+      }
+    }
+
+    .burger {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+
+      @include pc {
+        width: pmin(23);
+        right: pmin(20);
+      }
+
+      @include sp {
+        width: s(23);
+        right: s(20);
+      }
+
+      .ope {
+        opacity: 1;
+      }
+
+      .clo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+      }
+
+      img {
+        width: 100%;
+
+        &.def {
+          opacity: 1;
+        }
+
+        &.scl {
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  &-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow-y: scroll;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+
+    flex-direction: column;
+    justify-content: center;
+    gap: pmin(25);
+
+    .TX {
+      letter-spacing: 0.2em !important;
+
+
+      @include pc {}
+
+      @include sp {
+        // letter-spacing: 0.1em !important;
+      }
+    }
+
+
+    @include pc {
+      background: $C-gradation;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: pmin(80);
+    }
+
+    @include sp {
+      background: $C-gradation-top;
+      padding: s(94) s(20) s(50);
+    }
+
+    .nav {
+      display: flex;
+
+      @include pc {
+        justify-content: space-between;
+        width: pmin(1169);
+      }
+
+      @include sp {
+        flex-direction: column;
+        gap: s(70);
+      }
+
+      a {
+        color: #fff;
+        display: block;
+      }
+
+      // サブリンク共通
+      .sub-links {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        @include pc {
+          gap: pmin(7) pmin(16);
+          margin-top: pmin(10);
+        }
+
+        @include sp {
+          gap: s(4) s(15);
+          margin-top: s(8);
+        }
+
+        .break {
+          width: 100%;
+          height: 0;
+          flex-basis: 100%;
+        }
+
+        li {
+          width: auto !important;
+
+          a {
+            display: block;
+
+            .TX {
+              @include midashi;
+              font-family: "Zen Kaku Gothic New", sans-serif;
+              letter-spacing: 0.05em;
+              text-decoration: underline;
+              text-underline-offset: 2px;
+              white-space: nowrap;
+              font-weight: 500 !important;
+
+              @include pc {
+                font-size: pmin(12);
+              }
+
+              @include sp {
+                font-size: s(12);
+              }
+            }
+          }
+        }
+      }
+
+      &-pict-links {
+
+        @include pc {
+          flex-shrink: 0;
+          width: pmin(773);
+        }
+
+        @include sp {
+          width: 100%;
+        }
+
+        >ul {
+          display: flex;
+
+          @include pc {
+            gap: pmin(32) pmin(24);
+            flex-wrap: wrap;
+          }
+
+          @include sp {
+            flex-direction: column;
+            gap: s(40);
+          }
+
+          >li {
+
+            @include pc {
+              width: calc((100% - pmin(24)) / 2);
+            }
+
+            @include sp {
+              width: 100%;
+            }
+
+            >a {
+              img {
+                width: 100%;
+                display: block;
+                // border: solid #fff;
+
+                @include pc {
+                  border-width: pmin(1);
+                }
+
+                @include sp {
+                  border-width: s(1);
+                }
+              }
+
+              .TX {
+                @include midashi;
+                font-weight: 600;
+
+                @include pc {
+                  letter-spacing: 0.1em !important;
+                  font-size: pmin(19);
+                  margin-top: pmin(10);
+                }
+
+                @include sp {
+                  letter-spacing: 0.1em !important;
+                  font-size: s(16);
+                  margin-top: s(10);
+                }
+              }
+            }
+          }
+        }
+
+        .sub-links {
+
+          @include pc {
+            row-gap: pmin(3);
+          }
+        }
+      }
+
+      &-txt-links {
+
+        @include pc {
+          display: flex;
+          flex-direction: column;
+          gap: pmin(30);
+          width: pmin(300);
+        }
+
+        @include sp {
+          display: flex;
+          flex-direction: column;
+          gap: s(70);
+        }
+
+        >ul {
+          display: flex;
+          flex-direction: column;
+          list-style: none;
+          padding: 0;
+          margin: 0;
+
+          @include pc {
+            gap: pmin(30);
+          }
+
+          @include sp {
+            gap: s(40);
+          }
+
+          >li {
+
+            &.inline-list {
+
+              @include pc {
+                display: flex;
+                align-items: center;
+                gap: pmin(30);
+              }
+
+              @include sp {
+                gap: s(25);
+
+                .access-sp {
+                  margin-top: s(40);
+                }
+              }
+            }
+
+            >a {
+              width: fit-content;
+
+              .TX {
+                @include midashi;
+                letter-spacing: 0.1em;
+                font-weight: 600;
+
+                @include pc {
+                  font-size: pmin(19);
+                  white-space: nowrap;
+                }
+
+                @include sp {
+                  font-size: s(19);
+                  letter-spacing: 0.1em !important;
+                }
+              }
+            }
+          }
+        }
+
+        // 採用情報バナー
+        &--recruit {
+
+          .TX {
+            font-family: "Midashi Go MB31", "見出しゴMB31", sans-serif;
+            font-style: normal;
+            color: #fff;
+            font-weight: 600;
+            margin-top: s(10);
+          }
+
+          a {
+            position: relative;
+            display: block;
+            overflow: hidden;
+
+            @include pc {
+              width: pmin(300);
+            }
+
+            @include sp {
+              width: 100%;
+            }
+
+            img {
+              width: 100%;
+              display: block;
+            }
+
+            .TX {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              @include midashi;
+              color: #fff;
+              letter-spacing: 0.1em;
+              white-space: nowrap;
+
+              @include pc {
+                font-size: pmin(20);
+              }
+
+              @include sp {
+                font-size: s(18);
+              }
+            }
+          }
+        }
+
+        &--contact {
+
+          &--link {
+            background: #fff;
+            position: relative;
+            display: block;
+
+            @include pc {
+              padding-block: pmin(22);
+              width: pmin(300);
+            }
+
+            @include sp {
+              width: 100%;
+              padding: s(21) 0 s(18);
+            }
+
+            &::before {
+              content: "";
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              aspect-ratio: 1;
+              @include imgContain("icon/arrow-circle-purple.svg");
+
+              @include pc {
+                width: pmin(19);
+                right: pmin(10);
+              }
+
+              @include sp {
+                width: s(19);
+                right: s(25);
+              }
+            }
+
+            .TX {
+              color: #8E60A2;
+              @include midashi;
+              letter-spacing: 0.04em;
+              text-align: center;
+              font-weight: 900;
+
+              @include pc {
+                font-size: pmin(14);
+              }
+
+              @include sp {
+                font-size: s(14);
+              }
+            }
+          }
+
+          &--info {
+
+            @include pc {
+              margin-top: pmin(15);
+            }
+
+            @include sp {
+              margin-top: s(20);
+            }
+
+            .TX {
+              line-height: 1.8;
+              color: #fff;
+              letter-spacing: 0.1em;
+
+              @include pc {
+                font-size: pmin(12);
+              }
+
+              @include sp {
+                font-size: s(13);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .header-school-links {
+    display: flex;
+
+    @include pc {
+      width: pmin(1169);
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @include sp {
+      flex-direction: column-reverse;
+      gap: s(40);
+      margin-top: s(40);
+    }
+
+
+    &__list {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      @include pc {
+        gap: pmin(32);
+        padding-block: pmin(16);
+      }
+
+      @include sp {
+        flex-wrap: wrap;
+        gap: s(20) 0;
+      }
+    }
+
+    &__item {
+      @include sp {
+        width: 50%; // 2列
+
+        // 3番目だけ1列全幅
+        &:nth-child(3) {
+          width: 100%;
+        }
+      }
+
+      a {
+        display: block;
+
+        img {
+          display: block;
+
+          @include pc {
+            height: pmin(19);
+            width: auto;
+          }
+
+          @include sp {
+            height: s(21);
+            width: auto;
+          }
+        }
+      }
+    }
+
+    &__policy {
+
+      a {
+        border-bottom: solid #fff;
+        display: block;
+
+        @include pc {
+          border-bottom-width: pmin(1);
+          padding-bottom: pmin(2);
+        }
+
+        @include sp {
+          border-bottom-width: s(1);
+          padding-bottom: s(2);
+          width: fit-content;
+        }
+
+        .TX {
+          color: #fff;
+          font-family: "Zen Kaku Gothic New", sans-serif;
+          letter-spacing: 0.1em;
+
+          @include pc {
+            font-size: pmin(12);
+          }
+
+          @include sp {
+            font-size: s(14);
+          }
+        }
+      }
+    }
+  }
+
+  // &-nav {
+  //   position: fixed;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   z-index: 1;
+  //   overflow-y: scroll;
+  //   opacity: 0;
+  //   pointer-events: none;
+  //   transform-origin: top;
+  //   transition: transform 0.5s, opacity 0.5s;
+
+  //   @include pc {
+  //     background: $C-gradation;
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //   }
+
+  //   @include sp {
+  //     background: $C-gradation-top;
+  //     padding: s(94) s(20) s(50);
+  //   }
+
+  //   .nav {
+  //     display: flex;
+
+  //     @include pc {
+  //       justify-content: space-between;
+  //       width: pmin(1169);
+  //       padding-top: pmin(100);
+  //     }
+
+  //     @include sp {
+  //       flex-direction: column;
+  //       gap: s(56);
+  //     }
+
+  //     a {
+  //       color: #fff;
+  //       display: block;
+  //     }
+
+  //     &-pict-links {
+
+  //       @include pc {
+  //         flex-shrink: 0;
+  //       }
+
+  //       @include sp {
+  //         width: 100%;
+  //       }
+
+  //       ul {
+  //         display: flex;
+
+  //         @include pc {
+  //           gap: pmin(25) pmin(24);
+  //           width: pmin(773);
+  //           flex-wrap: wrap;
+  //         }
+
+  //         @include sp {
+  //           flex-direction: column;
+  //           gap: s(25);
+  //         }
+
+  //         li {
+
+  //           @include pc {
+  //             width: calc((100% - (pmin(24)) * 1) / 2);
+  //           }
+
+  //           @include sp {
+  //             width: 100%;
+  //           }
+
+  //           a {
+  //             img {
+  //               border: solid #fff;
+
+  //               @include pc {
+  //                 border-width: pmin(1);
+
+  //               }
+
+  //               @include sp {
+  //                 border-width: s(1);
+  //               }
+  //             }
+
+  //             .TX {
+  //               @include midashi;
+  //               letter-spacing: 0.05em;
+
+  //               @include pc {
+  //                 font-size: pmin(16);
+  //                 margin-top: pmin(10);
+  //               }
+
+  //               @include sp {
+  //                 font-size: s(16);
+  //                 margin-top: s(10);
+  //               }
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+
+  //     &-txt-links {
+
+  //       @include pc {
+  //         display: flex;
+  //         flex-direction: column;
+  //         justify-content: space-between;
+  //         padding-bottom: pmin(30);
+  //       }
+
+  //       ul {
+  //         display: flex;
+  //         flex-direction: column;
+
+  //         @include pc {
+  //           gap: pmin(24);
+  //         }
+
+  //         @include sp {
+  //           gap: s(30);
+  //         }
+
+  //         li {
+  //           a {
+  //             width: fit-content;
+
+  //             .TX {
+
+  //               @include midashi;
+  //               letter-spacing: 0.1em;
+
+  //               @include pc {
+  //                 font-size: pmin(20);
+  //               }
+
+  //               @include sp {
+  //                 font-size: s(19);
+  //               }
+  //             }
+  //           }
+  //         }
+  //       }
+
+  //       &--contact {
+
+  //         @include pc {}
+
+  //         @include sp {
+  //           margin-top: s(53);
+  //         }
+
+
+  //         &--link {
+  //           background: #fff;
+  //           position: relative;
+  //           display: block;
+
+  //           @include pc {
+  //             border-width: pmin(1);
+  //             padding-block: pmin(26) pmin(25);
+  //             width: pmin(279);
+  //           }
+
+  //           @include sp {
+  //             width: 100%;
+  //             border-width: s(1);
+  //             padding: s(21) 0 s(18);
+  //           }
+
+  //           &::before {
+  //             content: "";
+  //             position: absolute;
+  //             top: 50%;
+  //             transform: translateY(-50%);
+  //             aspect-ratio: 1;
+  //             @include imgContain("icon/arrow-circle-purple.svg");
+
+
+  //             @include pc {
+  //               width: pmin(19);
+  //               right: pmin(10);
+  //             }
+
+  //             @include sp {
+  //               width: s(19);
+  //               right: s(25);
+  //             }
+  //           }
+
+  //           .TX {
+  //             color: #8E60A2;
+  //             @include midashi;
+  //             letter-spacing: 0.04em;
+  //             text-align: center;
+  //             font-weight: 900;
+
+  //             @include pc {
+  //               font-size: pmin(14);
+  //             }
+
+  //             @include sp {
+  //               font-size: s(14);
+  //             }
+  //           }
+  //         }
+
+  //         &--info {
+
+  //           @include pc {
+  //             margin-top: pmin(37);
+  //           }
+
+  //           @include sp {
+  //             margin-top: s(23);
+  //           }
+
+  //           .TX {
+  //             line-height: 2;
+  //             color: #fff;
+  //             letter-spacing: 0.13em;
+
+  //             @include pc {
+  //               font-size: pmin(13);
+  //             }
+
+  //             @include sp {
+  //               font-size: s(13);
+  //             }
+  //           }
+
+  //           a {
+  //             line-height: 1;
+  //             color: #fff;
+  //             display: block;
+  //             width: fit-content;
+
+  //             @include pc {
+  //               letter-spacing: 0.13em;
+  //               margin-top: pmin(23);
+  //               font-size: pmin(13);
+
+  //             }
+
+  //             @include sp {
+  //               letter-spacing: 0.03em;
+  //               margin-top: s(23);
+  //               font-size: s(13);
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+}

@@ -1,0 +1,126 @@
+@use "../functions" as *;
+
+/* -----------------------
+  message
+----------------------- */
+
+.page-message {
+
+  .message--bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .message-inner {
+    margin-inline: auto;
+    position: relative;
+    height: 100%;
+
+    @include pc {
+      width: pmin(1126);
+    }
+
+    @include sp {
+      width: s(374);
+    }
+  }
+
+  .message_kv {
+    position: relative;
+    height: 100vh;
+
+    .TL {
+      position: absolute;
+
+      @include pc {
+        width: pmin(643);
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+      }
+
+      @include sp {
+        width: s(290);
+        top: s(133);
+        right: 0;
+        left: 0;
+        margin-inline: auto;
+      }
+    }
+  }
+
+  .message_sec {
+    background: linear-gradient(to bottom, transparent 0%, transparent 10%, #000000b4 100%);
+
+    @include pc {
+      padding-block: pmin(12) pmin(155);
+    }
+
+    @include sp {
+      padding-block: s(46) s(154);
+    }
+
+    .txt {
+      display: flex;
+      flex-direction: column;
+      color: #FFF;
+
+      @include pc {
+        gap: pmin(80);
+      }
+
+      @include sp {
+        gap: s(50);
+      }
+
+      .TX {
+        line-height: 2.6;
+
+        @include pc {
+          letter-spacing: 0.2em;
+          font-size: pmin(20);
+        }
+
+        @include sp {
+          letter-spacing: 0.08em;
+          font-size: s(16);
+        }
+      }
+
+      .name {
+        letter-spacing: 0.2em;
+
+        @include pc {
+          font-size: pmin(26);
+        }
+
+        @include sp {
+          font-size: s(22);
+        }
+
+        span {
+          line-height: 3;
+
+          @include pc {
+            font-size: pmin(15);
+          }
+
+          @include sp {
+            letter-spacing: 0.08em;
+            font-size: s(13);
+          }
+        }
+      }
+    }
+  }
+
+
+}

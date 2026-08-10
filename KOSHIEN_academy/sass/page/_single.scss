@@ -1,0 +1,455 @@
+@use "../functions" as *;
+
+/* -----------------------
+  single
+----------------------- */
+
+.page-single {
+
+  .single_kv {
+    position: relative;
+
+    .inner--bg {
+
+      @include pc {
+        height: pmin(388);
+      }
+
+      @include sp {
+        height: s(397);
+      }
+
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .TL {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      @include pc {
+        width: pmin(152);
+      }
+
+      @include sp {
+        width: s(152);
+      }
+    }
+  }
+
+  &--inner {
+
+    @include pc {
+      max-width: pmin(751);
+      margin: 0 auto;
+      padding-block: pmin(162) pmin(149);
+    }
+
+    @include sp {
+      padding: s(145) s(20) s(90);
+    }
+
+    .single_content {
+
+      &--inner {
+
+        @include pc {
+          margin-bottom: pmin(122);
+        }
+
+        @include sp {
+          margin-bottom: s(105);
+        }
+
+        .info {
+          display: flex;
+          align-items: center;
+          line-height: 1;
+          font-weight: Bold;
+
+          @include pc {
+            gap: pmin(20);
+            font-size: pmin(18);
+            margin-bottom: pmin(38);
+          }
+
+          @include sp {
+            gap: s(11);
+            font-size: s(12);
+            margin-bottom: s(36);
+          }
+
+          .time {
+            @include jost;
+          }
+
+          .category {
+            @include midashi;
+            background-color: #E2E2E2;
+
+            @include pc {
+              border-radius: pmin(50);
+              padding: pmin(6) pmin(19);
+              font-size: pmin(15);
+            }
+
+            @include sp {
+              border-radius: s(50);
+              padding: s(4) s(9);
+            }
+          }
+        }
+
+        .ttl {
+
+          @include pc {
+            margin-bottom: pmin(45);
+          }
+
+          @include sp {
+            margin-bottom: s(42);
+          }
+
+          .TL {
+            @include a1;
+            line-height: 2;
+            letter-spacing: 0.13em;
+
+            @include pc {
+              font-size: pmin(26);
+            }
+
+            @include sp {
+              font-size: s(20);
+            }
+          }
+        }
+
+        .thumbnail {
+          @include pc {
+            margin-bottom: pmin(71);
+          }
+
+          @include sp {
+            margin-bottom: s(45);
+          }
+        }
+
+        .contents {
+
+          p,
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6,
+          span {
+            line-height: 2;
+
+            @include pc {
+              letter-spacing: 0.18em;
+            }
+
+            @include sp {
+              letter-spacing: 0.1em;
+            }
+          }
+
+          img {
+            max-width: 100%;
+          }
+
+          h1 {
+            @include pc {
+              font-size: pmin(24);
+            }
+
+            @include sp {
+              font-size: s(22);
+            }
+          }
+
+          h2 {
+            @include pc {
+              font-size: pmin(22);
+            }
+
+            @include sp {
+              font-size: s(20);
+            }
+          }
+
+          h3 {
+            @include pc {
+              font-size: pmin(20);
+            }
+
+            @include sp {
+              font-size: s(18);
+            }
+          }
+
+          h4 {
+            @include pc {
+              font-size: pmin(18);
+            }
+
+            @include sp {
+              font-size: s(16);
+            }
+          }
+
+          h5 {
+            @include pc {
+              font-size: pmin(16);
+            }
+
+            @include sp {
+              font-size: s(10);
+            }
+          }
+
+          h6 {
+            @include pc {
+              font-size: pmin(14);
+            }
+
+            @include sp {
+              font-size: s(10);
+            }
+          }
+
+          p {
+            @include pc {
+              font-size: pmin(16);
+            }
+
+            @include sp {
+              font-size: s(14);
+            }
+          }
+
+          span {
+            @include pc {
+              font-size: pmin(16);
+            }
+
+            @include sp {
+              font-size: s(14);
+            }
+          }
+        }
+      }
+
+      &--nav {
+        position: relative;
+
+        @include pc {
+          margin-bottom: pmin(120);
+        }
+
+        @include sp {
+          margin-bottom: s(142);
+        }
+
+        .prev,
+        .next {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          aspect-ratio: 1;
+          cursor: pointer;
+          @include imgContain("icon/arrow-circle-purple.svg");
+
+          @include pc {
+            width: pmin(26);
+          }
+
+          @include sp {
+            width: s(22);
+          }
+        }
+
+        .prev {
+          left: 0;
+          transform: translateY(-50%) rotate(180deg);
+        }
+
+        .next {
+          right: 0;
+        }
+
+        .list-link {
+          display: block;
+          background-color: #8E60A2;
+          width: fit-content;
+          margin-inline: auto;
+
+          @include pc {
+            padding: pmin(23) pmin(88);
+          }
+
+          @include sp {
+            padding: s(19) s(68);
+          }
+
+          .TX {
+            @include midashi;
+            color: #FFF;
+            line-height: 1;
+            letter-spacing: 0.05em;
+
+            @include pc {
+              font-size: pmin(20);
+            }
+
+            @include sp {
+              font-size: s(15);
+            }
+          }
+        }
+
+      }
+
+      &--related {
+
+        .related--ttl {
+
+          @include pc {
+            margin-bottom: pmin(38);
+          }
+
+          @include sp {
+            margin-bottom: s(40);
+          }
+
+          .TL {
+            line-height: 1;
+            text-align: center;
+            font-weight: 600;
+
+            @include pc {
+              font-size: pmin(17);
+            }
+
+            @include sp {
+              font-size: s(16);
+            }
+          }
+
+        }
+
+        .card-list {
+          display: flex;
+
+          @include pc {
+            gap: pmin(31);
+          }
+
+          @include sp {
+            flex-direction: column;
+            gap: s(36);
+          }
+
+          .card {
+
+            @include pc {
+              width: calc((100% - (pmin(31)) * 2) / 3);
+            }
+
+            @include sp {
+              flex: 1;
+            }
+
+            a {
+              color: #000;
+
+              .thumbnail {
+                width: 100%;
+
+                @include pc {
+                  margin-bottom: pmin(12);
+                  height: pmin(154);
+                }
+
+                @include sp {
+                  margin-bottom: s(15);
+                  height: s(249);
+                }
+
+                img {
+                  height: 100%;
+                  object-fit: cover;
+                }
+              }
+
+              .card--inner {
+
+                .info {
+                  display: flex;
+                  align-items: center;
+                  line-height: 1;
+                  font-weight: Bold;
+
+                  @include pc {
+                    gap: pmin(10);
+                    font-size: pmin(9);
+                    margin-bottom: pmin(10);
+                  }
+
+                  @include sp {
+                    gap: s(11);
+                    font-size: s(12);
+                    margin-bottom: s(10);
+                    white-space: nowrap;
+                  }
+
+                  .time {
+                    @include jost;
+                  }
+
+                  .category {
+                    @include midashi;
+                    background-color: #E2E2E2;
+
+                    @include pc {
+                      border-radius: pmin(50);
+                      padding: pmin(3) pmin(7);
+                    }
+
+                    @include sp {
+                      border-radius: s(50);
+                      padding: s(4) s(9);
+                    }
+                  }
+                }
+
+                .ttl {
+
+                  .TL {
+                    @include midashi;
+                    font-weight: Bold;
+                    letter-spacing: 0.05em;
+
+                    @include pc {
+                      font-size: pmin(14);
+                    }
+
+                    @include sp {
+                      font-size: s(14);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,147 @@
+@use "../functions" as *;
+
+/* -----------------------
+  policy
+----------------------- */
+
+.page-policy {
+  background: $C-gradation-bottom;
+
+
+  .policy_kv {
+
+    @include pc {
+      padding-block: pmin(150) pmin(86);
+    }
+
+    @include sp {
+      padding-block: s(154) s(104);
+    }
+
+    .TL {
+      text-align: center;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      color: #FFF;
+      @include a1;
+
+      @include pc {
+        font-size: pmin(35);
+      }
+
+      @include sp {
+        font-size: s(30);
+      }
+    }
+  }
+
+  .policy_contents {
+
+    @include pc {
+      padding-bottom: pmin(186);
+    }
+
+    @include sp {
+      padding-bottom: s(104);
+    }
+
+    .policy_contents--box {
+      background-color: #FFF;
+      margin-inline: auto;
+
+      @include pc {
+        width: pmin(884);
+        padding: pmin(110) 0;
+      }
+
+      @include sp {
+        width: s(374);
+        padding: s(75) 0 s(89);
+      }
+
+      .box--inr {
+
+        margin-inline: auto;
+
+        @include pc {
+          width: pmin(633);
+        }
+
+        @include sp {
+          width: s(311);
+        }
+      }
+
+      .inr--item--wrap {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        @include pc {
+          margin-top: pmin(80);
+          gap: pmin(45);
+        }
+
+        @include sp {
+          margin-top: s(70);
+          gap: s(40);
+        }
+      }
+
+      .inr--item {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        @include pc {
+          gap: pmin(20);
+        }
+
+        @include sp {
+          gap: s(20);
+        }
+
+        .TL {
+          width: 100%;
+          position: relative;
+          color: #8E60A2;
+          font-weight: 500;
+          
+          @include pc {
+            padding-left: pmin(30);
+            font-size: pmin(18);
+            letter-spacing: 0.1em;
+          }
+
+          @include sp {
+            padding-left: s(23);
+            font-size: s(16);
+            line-height: 1.8;
+          letter-spacing: 0.15em;
+          }
+
+          span {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+        }
+
+        .TX {
+          line-height: 2;
+          
+          @include pc {
+            letter-spacing: 0.1em;
+            font-size: pmin(14);
+          }
+
+          @include sp {
+            letter-spacing: 0.15em;
+            font-size: s(14);
+          }
+        }
+      }
+    }
+  }
+}

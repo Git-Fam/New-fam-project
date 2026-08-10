@@ -1,0 +1,407 @@
+@use "../functions" as *;
+
+/* -----------------------
+  donation
+----------------------- */
+
+.page-donation {
+
+  .donation_kv {
+    position: relative;
+
+    .inner--ttl {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      @include pc {
+        top: 58%;
+        width: pmin(570);
+      }
+
+      @include sp {
+        top: 60%;
+        width: s(300);
+      }
+    }
+  }
+
+  .donation_top-txt {
+    text-align: center;
+
+    @include pc {
+      padding: pmin(91) 0 0;
+    }
+
+    @include sp {
+      padding: s(95) s(20) 0;
+    }
+
+    .ttl {
+
+      @include pc {
+        margin-bottom: pmin(60);
+      }
+
+      @include sp {
+        margin-bottom: s(50);
+      }
+
+      .icon {
+        margin-inline: auto;
+
+        @include pc {
+          width: pmin(60);
+          margin-bottom: pmin(50);
+        }
+
+        @include sp {
+          width: s(49);
+          margin-bottom: s(50)
+        }
+      }
+
+      .TL {
+        @include a1;
+        line-height: 2;
+        font-weight: bold;
+        color: #8E60A2;
+        width: fit-content;
+        margin-inline: auto;
+
+        @include pc {
+          letter-spacing: 0.2em;
+          font-size: pmin(40);
+          transform: translateX(pmin(50));
+          padding-right: 1em;
+        }
+
+        @include sp {
+          letter-spacing: 0.1em;
+          font-size: s(28);
+          transform: translateX(s(10));
+        }
+      }
+    }
+
+    .txt {
+
+      @include sp {
+        padding-inline: s(10);
+      }
+
+      .TX {
+        line-height: 2.6;
+
+        @include pc {
+          letter-spacing: 0.15em;
+          font-size: pmin(18);
+        }
+
+        @include sp {
+          // letter-spacing: 0.01em;
+          font-size: s(15);
+          text-align: left;
+        }
+
+
+        &.TX-s {
+
+          @include pc {
+            margin-top: pmin(30);
+            font-size: pmin(15);
+          }
+
+          @include sp {
+            margin-top: s(30);
+            font-size: s(14);
+            letter-spacing: 0em;
+          }
+        }
+      }
+    }
+
+  }
+
+  .donation_contents {
+
+    @include pc {
+      margin-top: pmin(150);
+      padding-inline: pmin(20);
+    }
+
+    @include sp {
+      margin-top: s(120);
+      padding-inline: s(20);
+    }
+
+    .ttl {
+
+      @include pc {
+        margin-bottom: pmin(37);
+      }
+
+      @include sp {
+        margin-bottom: s(40);
+      }
+
+      .TL {
+        text-align: center;
+        @include a1;
+        line-height: 1;
+        letter-spacing: 0.1em;
+        color: #8E60A2;
+        font-weight: bold;
+
+        @include pc {
+          font-size: pmin(35);
+        }
+
+        @include sp {
+          font-size: s(22);
+        }
+      }
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+
+      @include pc {
+        gap: pmin(20);
+      }
+
+      @include sp {
+        gap: s(14);
+      }
+
+      .item {
+
+        @include pc {
+          min-height: pmin(536);
+          padding: pmin(156) pmin(40) pmin(100);
+        }
+
+        @include sp {
+          min-height: s(536);
+          padding: s(130) s(20) s(100);
+        }
+
+        &:nth-child(1) {
+
+          @include pc {
+            @include imgCover("donation/donation_contents-item-bg-01-pc.webp");
+          }
+
+          @include sp {
+            @include imgCover("donation/donation_contents-item-bg-01-sp.webp");
+          }
+        }
+
+
+        &:nth-child(2) {
+
+          @include pc {
+            @include imgCover("donation/donation_contents-item-bg-02-pc.webp");
+          }
+
+          @include sp {
+            @include imgCover("donation/donation_contents-item-bg-02-sp.webp");
+          }
+        }
+
+
+        &:nth-child(3) {
+
+          @include pc {
+            @include imgCover("donation/donation_contents-item-bg-03-pc.webp");
+          }
+
+          @include sp {
+            @include imgCover("donation/donation_contents-item-bg-03-sp.webp");
+          }
+        }
+
+
+        &--inner {
+          text-align: center;
+          color: #FFF;
+
+          .item--num {
+
+            @include pc {
+              margin-bottom: pmin(30);
+            }
+
+            @include sp {
+              margin-bottom: s(45);
+            }
+
+
+            .TX {
+              margin-inline: auto;
+
+              @include pc {
+                width: pmin(94);
+              }
+
+              @include sp {
+                width: s(66);
+              }
+            }
+          }
+
+          .item--ttl {
+
+            @include pc {
+              margin-bottom: pmin(47);
+            }
+
+            @include sp {
+              margin-bottom: s(40);
+            }
+
+            .TL {
+              @include a1;
+              letter-spacing: 0.1em;
+              font-weight: bold;
+
+              @include pc {
+                font-size: pmin(45);
+              }
+
+              @include sp {
+                line-height: 2;
+                font-size: s(26);
+              }
+            }
+          }
+
+          .item--txt {
+            .TX {
+              letter-spacing: 0.15em;
+
+              @include pc {
+                font-size: pmin(23);
+                font-weight: 300;
+              }
+
+              @include sp {
+                line-height: 2;
+                font-size: s(14);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .donation_for-you {
+    background: $C-gradation-bottom;
+    color: #FFF;
+
+    @include pc {
+      margin-top: pmin(20);
+      padding-block: pmin(111) pmin(140);
+    }
+
+    @include sp {
+      margin-top: s(20);
+      padding: s(80) s(44);
+    }
+
+    .ttl {
+
+      @include pc {
+        margin-bottom: pmin(65);
+      }
+
+      @include sp {
+        margin-bottom: s(33);
+      }
+
+      .TL {
+        text-align: center;
+        @include a1;
+        line-height: 1;
+        letter-spacing: 0.1em;
+        font-weight: bold;
+
+        @include pc {
+          font-size: pmin(33);
+        }
+
+        @include sp {
+          font-size: s(22);
+        }
+      }
+    }
+
+
+    .lists {
+
+      @include pc {
+        width: pmin(900);
+        margin-inline: auto;
+      }
+
+
+      .item {
+        display: flex;
+        border-bottom: solid #FFF;
+
+        @include pc {
+          gap: pmin(10);
+          padding-block: pmin(35) pmin(27);
+          border-bottom-width: pmin(1);
+        }
+
+        @include sp {
+          flex-direction: column;
+          gap: s(13);
+          padding-block: s(40);
+          border-bottom-width: s(1);
+        }
+
+
+        &--ttl {
+          flex-shrink: 0;
+
+          @include pc {
+            width: pmin(152);
+          }
+
+          .TL {
+            line-height: 2;
+            font-weight: bold;
+
+            @include pc {
+              letter-spacing: 0.12em;
+              font-size: pmin(20);
+            }
+
+            @include sp {
+              font-size: s(16);
+            }
+          }
+        }
+
+        &--txt {
+          .TX {
+            line-height: 2;
+            letter-spacing: 0.12em;
+
+            @include pc {
+              font-size: pmin(20);
+            }
+
+            @include sp {
+              font-size: s(15);
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+@use "../functions" as *;
+/* -----------------------
+  anime
+----------------------- */
+
+// ホバーで薄く
+.hover-opa {
+	transition: opacity 0.3s !important;
+	cursor: pointer;
+
+	&:hover {
+
+		@include pc{
+			opacity: 0.5 !important;
+		}
+	}
+}
+
+.anime-fade {
+	opacity: 0;
+	transition: opacity 0.8s ease-in-out;
+	transition-delay: 0.5s;
+
+	&.is-show {
+		opacity: 1;
+	}
+}

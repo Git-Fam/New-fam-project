@@ -1,0 +1,132 @@
+@use "../functions" as *;
+
+/* -----------------------
+  loading
+----------------------- */
+
+.loading {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	transition: opacity 0.8s;
+	opacity: 1;
+
+	&.is-active {
+		opacity: 0;
+		pointer-events: none;
+
+		.loading-inner {
+
+			// &.loading-start {
+
+			// 	.logo {
+			// 		&::before {
+			// 			animation: loadingStart 0.8s ease 0.6s forwards;
+
+			// 			@keyframes loadingStart {
+			// 				0% {
+			// 					transform: translateX(-100%);
+			// 				}
+
+			// 				100% {
+			// 					transform: translateX(100%);
+			// 				}
+			// 			}
+			// 		}
+			// 	}
+
+			// }
+		}
+
+
+	}
+
+	&-inner {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+
+		@include pc {
+			min-height: 700px;
+		}
+
+		@include sp {
+			min-height: s(700);
+		}
+
+		// &.loading-start {
+		// 	background-color: #fff;
+		// 	z-index: 1;
+
+		// 	.logo {
+		// 		overflow: hidden;
+
+		// 		&::before {
+		// 			--color1: transparent;
+		// 			--color2: #ffffff;
+		// 			content: "";
+		// 			position: absolute;
+		// 			top: 0;
+		// 			left: 0;
+		// 			width: 100%;
+		// 			height: 60%;
+		// 			transform: translateX(-100%);
+		// 			background:
+		// 				linear-gradient(115deg,
+		// 					var(--color1) 0%,
+		// 					var(--color1) 30%,
+		// 					var(--color2) 45%,
+		// 					var(--color2) 55%,
+		// 					var(--color1) 70%,
+		// 					var(--color1) 100%);
+		// 		}
+		// 	}
+		// }
+
+		&.loading-end {
+			background: $C-gradation;
+			z-index: 2;
+		}
+
+		.logo {
+			position: absolute;
+			left: 50%;
+			transform: translate(-50%, -50%);
+
+			@include pc {
+				top: 50%;
+				width: 211px;
+			}
+
+			@include sp {
+				top: 45%;
+				width: s(186);
+			}
+
+			.logo-name {
+			}
+		}
+
+		.school-names {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+
+			@include pc {
+				width: pmin(558);
+				bottom: pmin(68);
+			}
+
+			@include sp {
+				width: s(345);
+				bottom: s(45);
+			}
+		}
+	}
+}

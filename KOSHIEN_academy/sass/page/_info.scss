@@ -1,0 +1,148 @@
+@use "../functions" as *;
+
+/* -----------------------
+  info
+----------------------- */
+
+.page-info {
+
+
+
+  .info_kv {
+    background-position: bottom center !important;
+
+    @include pc {
+      @include imgCover('info/info_kv-bg-pc.webp');
+      min-height: pmin(704);
+      padding-block: pmin(160) pmin(201);
+    }
+
+    @include sp {
+      @include imgCover('info/info_kv-bg-sp.webp');
+      min-height: s(680);
+      padding-block: s(137) s(75);
+    }
+
+    .inner--content {
+
+      @include pc {
+        margin-inline: auto;
+        width: fit-content;
+      }
+
+      @include sp {
+        width: 100%;
+      }
+
+      .TL {
+        margin-inline: auto;
+
+        @include pc {
+          width: pmin(157);
+          margin-bottom: pmin(56);
+        }
+
+        @include sp {
+          width: s(118);
+          margin-bottom: s(46);
+        }
+      }
+
+      .info--list {
+        margin-inline: auto;
+        display: flex;
+
+        @include pc {
+          width: pmin(845);
+          flex-wrap: wrap;
+          gap: pmin(20) pmin(27);
+        }
+
+        @include sp {
+          padding-inline: s(20);
+          flex-direction: column;
+          gap: s(14);
+        }
+
+        li {
+          @include pc {
+            width: calc((100% - (pmin(27) * 1)) / 2);
+          }
+
+          @include sp {
+            width: 100%;
+          }
+
+
+          a {
+            width: 100%;
+            display: block;
+            position: relative;
+            background-color: #ffffffc1;
+
+            @include pc {
+              padding-block: pmin(26) pmin(22);
+            }
+
+            @include sp {
+              padding-block: s(26) s(22);
+            }
+
+            .TX {
+              color: #8E60A2;
+              font-weight: bold;
+              text-align: center;
+              line-height: 1;
+
+              @include pc {
+                font-size: pmin(17);
+              }
+
+              @include sp {
+                font-size: s(17);
+              }
+            }
+
+            &::before {
+              content: "";
+              display: block;
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 100%;
+              aspect-ratio: 14/19;
+              @include imgContain("icon/pdf-icon-p.svg");
+
+              @include pc {
+                right: pmin(24);
+                width: pmin(14);
+              }
+
+              @include sp {
+                right: s(24);
+                width: s(14);
+              }
+            }
+
+            &.is-related-post{
+              &::before{
+                content: "";
+                display: block;
+                @include imgContain("icon/arrow-circle-purple.svg");
+                aspect-ratio: 1;
+
+                @include pc{
+                  width: pmin(19);
+                }
+
+                @include sp{
+                  width: s(19);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

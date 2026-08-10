@@ -1,0 +1,15 @@
+<svg id="グループ_51701" data-name="グループ 51701" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="127.293" height="103.326" viewBox="0 0 127.293 103.326">
+  <defs>
+    <linearGradient id="linear-gradient" x1="-0.156" y1="0.096" x2="1.156" y2="0.904" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#5d348b"/>
+      <stop offset="1" stop-color="#c4a6ca"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="1.156" y1="0.096" x2="-0.156" y2="0.904" xlink:href="#linear-gradient"/>
+  </defs>
+  <g id="グループ_49543" data-name="グループ 49543" transform="translate(0 0)">
+    <g id="グループ_31" data-name="グループ 31">
+      <path id="パス_27" data-name="パス 27" d="M63.647,103.326V75.265a27.763,27.763,0,0,0-8.106-19.6L0,0V28.061a27.763,27.763,0,0,0,8.106,19.6Z" transform="translate(0 0)" fill="url(#linear-gradient)"/>
+      <path id="パス_29" data-name="パス 29" d="M0,103.325V75.265a27.763,27.763,0,0,1,8.106-19.6L63.647,0V28.061a27.763,27.763,0,0,1-8.106,19.6Z" transform="translate(127.294 103.325) rotate(180)" fill="url(#linear-gradient-2)"/>
+    </g>
+  </g>
+</svg>

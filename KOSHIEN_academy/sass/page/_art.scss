@@ -1,0 +1,277 @@
+@use "../functions" as *;
+
+/* -----------------------
+  art
+----------------------- */
+
+.page-art {
+
+  .inner--bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    z-index: -1;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .art_sec-wrap {
+    background: linear-gradient(to bottom, transparent 0%, #000000c1 80%, #000000c1 100%);
+
+  }
+
+  .art_kv {
+    position: relative;
+
+    @include pc {
+      height: calc(100vh - pmin(63));
+      min-height: pmin(700);
+    }
+
+    @include sp {
+      height: calc(100vh - s(54));
+      min-height: s(600);
+    }
+
+    .inner--ttl {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      @include pc {
+        top: 52%;
+        left: 51%;
+        width: pmin(800);
+      }
+
+      @include sp {
+        top: 50%;
+        width: s(284);
+      }
+    }
+  }
+
+  .art_top-txt {
+
+    @include pc {
+      padding-block: pmin(100);
+    }
+
+    @include sp {
+      padding-block: s(70);
+    }
+
+    .inner--contents {
+
+      .TX {
+        color: #FFF;
+        line-height: 2.6;
+        letter-spacing: 0.15em;
+        text-align: center;
+
+        @include pc {
+          font-size: pmin(22);
+        }
+
+        @include sp {
+          font-size: s(15);
+        }
+      }
+
+      .box {
+        line-height: 1;
+        letter-spacing: 0.15em;
+        text-align: center;
+        background-color: #ffffff96;
+        margin-inline: auto;
+
+        @include pc {
+          font-size: pmin(22);
+          width: pmin(400);
+          margin-top: pmin(70);
+          padding-block: pmin(30) pmin(31);
+        }
+
+        @include sp {
+          font-size: s(17);
+          width: s(327);
+          margin-top: s(56);
+          padding-block: s(27) s(25);
+        }
+      }
+    }
+
+  }
+
+  .art_past {
+
+    @include pc {
+      padding-block: pmin(133) pmin(153);
+    }
+
+    @include sp {
+      padding-block: s(140) s(120);
+    }
+
+    .inner--contents {
+      color: #FFF;
+
+      .ttl {
+
+        @include pc {
+          margin-bottom: pmin(60);
+        }
+
+        @include sp {
+          margin-bottom: s(70);
+        }
+
+
+        .TL {
+          @include a1;
+          line-height: 1;
+          letter-spacing: 0.2em;
+          text-align: center;
+          font-weight: bold;
+
+          @include pc {
+            font-size: pmin(27);
+          }
+
+          @include sp {
+            font-size: s(22);
+          }
+        }
+      }
+
+      .lists {
+        margin-inline: auto;
+        display: flex;
+        flex-direction: column;
+
+        @include pc {
+          width: pmin(500);
+          margin-bottom: pmin(93);
+          gap: pmin(30);
+        }
+
+        @include sp {
+          margin-bottom: s(125);
+          gap: s(34);
+        }
+
+
+        .item {
+          display: flex;
+
+          @include pc {
+            align-items: baseline;
+            gap: pmin(10);
+          }
+
+          @include sp {
+            flex-direction: column;
+            align-items: center;
+            gap: s(10);
+          }
+
+          .time {
+            line-height: 1;
+            letter-spacing: 0.23em;
+
+            @include pc {
+              flex-shrink: 0;
+              width: pmin(200);
+              font-size: pmin(17);
+            }
+
+            @include sp {
+              font-size: s(14);
+            }
+          }
+
+          .TX {
+            line-height: 1;
+            letter-spacing: 0.13em;
+
+            @include pc {
+              width: 100%;
+              font-size: pmin(16);
+            }
+
+            @include sp {
+              font-size: s(15);
+            }
+          }
+
+          &:last-child {
+
+            .TX {
+              position: relative;
+
+              &::after {
+                content: "ほか";
+                display: block;
+                width: fit-content;
+                white-space: nowrap;
+                position: absolute;
+
+                @include pc {
+                  top: 50%;
+                  transform: translateY(-50%);
+                  font-size: pmin(16);
+                  right: 0;
+                }
+
+                @include sp {
+                  left: 50%;
+                  transform: translateX(-50%);
+                  font-size: s(14);
+                  top: calc(100% + s(34));
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .pictures {
+        display: flex;
+
+        @include pc {
+          flex-wrap: wrap;
+          width: pmin(860);
+          margin-inline: auto;
+          gap: pmin(20);
+        }
+
+        @include sp {
+          padding-inline: s(20);
+          flex-direction: column;
+          gap: s(12);
+        }
+
+        .img {
+
+          @include pc {
+            width: calc((100% - (pmin(20) * 1)) / 2);
+          }
+
+          @include sp {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+
+
+
+
+
+}

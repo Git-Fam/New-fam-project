@@ -1,0 +1,436 @@
+@use "../functions" as *;
+
+/* -----------------------
+  footer
+----------------------- */
+
+.footer {
+  background-color: #fff;
+  // position: relative;
+  // z-index: 2;
+
+  &--nav {
+
+    @include pc {
+      // max-width: pmin(1366);
+      margin: 0 auto pmin(83);
+      padding-top: pmin(127);
+    }
+
+    @include sp {
+      margin: 0 auto s(0);
+      padding-top: s(100);
+    }
+
+
+    nav {
+
+      ul {
+        display: flex;
+
+        @include pc {
+          flex-wrap: wrap;
+          gap: pmin(10);
+        }
+
+        @include sp {
+          flex-direction: column;
+          gap: s(8);
+        }
+
+        li {
+
+          @include pc {
+            width: calc((100% - (pmin(10)) * 1) / 2);
+
+            &:last-child {
+              width: 100%;
+            }
+          }
+
+          @include sp {
+            width: 100%;
+          }
+
+          a {
+            background: linear-gradient(to right, #8968AA, #C9AFD1);
+            display: block;
+            color: #FFF;
+            position: relative;
+            background-size: 800% 800%;
+            animation: GradietionAnimation 9s ease infinite;
+
+            @keyframes GradietionAnimation { 
+              0%{background-position:0% 50%}
+              50%{background-position:100% 50%}
+              100%{background-position:0% 50%}
+            }
+            
+            @include pc {
+              padding: pmin(40) pmin(45) pmin(38);
+            }
+
+            @include sp {
+              padding: s(20) s(23) s(17);
+            }
+
+            &::before {
+              content: "";
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              aspect-ratio: 1;
+              @include imgContain("icon/arrow-circle-white.svg");
+
+
+              @include pc {
+                width: pmin(46);
+                right: pmin(25);
+              }
+
+              @include sp {
+                width: s(29);
+                right: s(18);
+              }
+            }
+
+            .link--inner {
+              display: flex;
+
+              @include pc {
+                align-items: baseline;
+                gap: pmin(10);
+              }
+
+              @include sp {
+                flex-direction: column;
+                gap: s(5);
+              }
+
+              .TX {
+                @include a1;
+                line-height: 1;
+                letter-spacing: 0.1em;
+                display: flex;
+                align-items: baseline;
+
+                @include pc {
+                  font-size: pmin(28);
+                  gap: pmin(10);
+                }
+
+                @include sp {
+                  font-size: s(20);
+                  gap: s(5);
+                }
+
+                &-span {
+
+                  @include pc {
+                    font-size: pmin(14);
+                  }
+
+                  @include sp {
+                    font-size: s(12);
+                  }
+                }
+              }
+
+              .en {
+                @include jost;
+                line-height: 1;
+                font-weight: 600;
+
+                @include pc {
+                  font-size: pmin(14);
+                }
+
+                @include sp {
+                  font-size: s(11);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &--banner {
+    background: linear-gradient(to bottom, transparent 0%, #F7F7F7 100%);
+
+    &.footer--other--bg {
+      background: #F7F7F7;
+    }
+
+    @include pc {
+      padding-block: pmin(38) pmin(45);
+    }
+
+    @include sp {
+      padding: s(60) s(20) s(55);
+    }
+
+    .ttl {
+
+      @include pc {
+        margin-bottom: pmin(18);
+      }
+
+      @include sp {
+        margin-bottom: s(37);
+      }
+
+      .TL {
+        @include jost;
+        font-weight: 500;
+        line-height: 1;
+        text-align: center;
+
+        @include pc {
+          letter-spacing: 0.05em;
+          font-size: pmin(24);
+        }
+
+        @include sp {
+          letter-spacing: 0em;
+          font-size: s(18);
+        }
+      }
+    }
+
+    .banners {
+
+      @include pc {
+        width: pmin(1255);
+        margin-inline: auto;
+      }
+
+      ul {
+        display: flex;
+
+        @include pc {
+          flex-wrap: wrap;
+          gap: pmin(10);
+        }
+
+        @include sp {
+          flex-direction: column;
+          gap: s(25);
+        }
+
+        li {
+
+          @include pc {
+            width: calc((100% - (pmin(10)) * 2) / 3);
+          }
+
+          a {
+            color: #000;
+            display: block;
+
+            .TX {
+              @include midashi;
+              text-align: center;
+              letter-spacing: 0.05em;
+              // font-weight: 600;
+
+              @include pc {
+                font-size: pmin(16);
+                margin-top: pmin(10);
+              }
+
+              @include sp {
+                font-size: s(14);
+                margin-top: s(10);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &--inner {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include pc {
+      padding-block: pmin(111) pmin(40);
+      min-height: pmin(683);
+    }
+
+    @include sp {
+      padding-block: s(120) s(59);
+      min-height: s(735);
+    }
+
+    .logo {
+      margin: 0 auto;
+
+      @include pc {
+        width: pmin(211);
+        margin-bottom: pmin(40);
+      }
+
+      @include sp {
+        width: s(173);
+        margin-bottom: s(50);
+      }
+    }
+
+    .info {
+
+      @include pc {
+        margin-bottom: pmin(60);
+      }
+
+      @include sp {
+        margin-bottom: s(50);
+      }
+
+      .TX {
+        text-align: center;
+        line-height: 2;
+        letter-spacing: 0.2em;
+
+        @include pc {
+          font-size: pmin(13);
+        }
+
+        @include sp {
+          font-size: s(13);
+        }
+      }
+    }
+
+    .nav {
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        margin-inline: auto;
+
+        @include pc {
+          justify-content: center;
+          width: pmin(558);
+          gap: pmin(13) pmin(22);
+        }
+
+        @include sp {
+          justify-content: space-between;
+          width: s(345);
+          gap: s(13) s(14);
+        }
+
+        li {
+            @include sp {
+           &:nth-child(3) { // img-link-04のli
+                width: 100%;
+            }
+          }
+
+          @include pc {
+            width: fit-content;
+          }
+
+          @include sp {
+            width: calc((100% - (s(14) * 1)) / 2);
+          }
+
+          a {
+            display: block;
+
+            &.img-link-01 {
+              @include pc {
+                width: pmin(114);
+              }
+
+              @include sp {
+                width: s(105);
+              }
+            }
+
+            &.img-link-02 {
+              @include pc {
+                width: pmin(149);
+              }
+
+              @include sp {
+                width: s(131);
+              }
+            }
+
+            &.img-link-03 {
+              @include pc {
+                width: pmin(188);
+              }
+
+              @include sp {
+                width: s(173);
+              }
+            }
+
+            &.img-link-04 {
+              @include pc {
+                width: pmin(235);
+              }
+
+              @include sp {
+                width: s(220);
+              }
+            }
+
+            &.img-link-05 {
+              @include pc {
+                width: pmin(170);
+              }
+
+              @include sp {
+                width: s(157);
+              }
+            }
+
+            &.img-link-06 {
+              @include pc {
+                width: pmin(169);
+              }
+
+              @include sp {
+                width: s(157);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .copyright {
+
+    @include pc {
+      padding-bottom: pmin(25);
+    }
+
+    @include sp {
+      padding-bottom: s(21);
+    }
+
+    .TX {
+      text-align: center;
+      @include jost;
+      letter-spacing: 0.05em;
+      line-height: 1;
+      font-weight: 300;
+
+      @include pc {
+        font-size: pmin(12);
+      }
+
+      @include sp {
+        font-size: s(12);
+      }
+    }
+  }
+}

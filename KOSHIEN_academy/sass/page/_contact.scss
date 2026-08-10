@@ -1,0 +1,501 @@
+@use "../functions" as *;
+
+/* -----------------------
+  contact
+----------------------- */
+
+.page-contact {
+  background: $C-gradation-bottom;
+
+  .contact_kv {
+
+    @include pc {
+      padding-block: pmin(150) pmin(45);
+    }
+
+    @include sp {
+      padding-block: s(154) s(84);
+    }
+
+
+    .TL {
+      margin-inline: auto;
+
+      @include pc {
+        width: pmin(236);
+      }
+
+      @include sp {
+        width: s(206);
+      }
+    }
+  }
+
+  .contact_contents {
+
+    @include pc {
+      padding-bottom: pmin(122);
+    }
+
+    @include sp {
+      padding-bottom: s(80);
+    }
+
+    .contact_contents--form {
+
+      @include sp{
+        padding-inline: s(20);
+      }
+
+      .form--inner {
+        background-color: #FFF;
+        margin-inline: auto;
+
+        @include pc {
+          width: pmin(884);
+          margin-top: pmin(64);
+          padding: pmin(91) pmin(130) pmin(73);
+        }
+
+        @include sp {
+          // margin-top: s(64);
+          padding: s(60) s(24);
+        }
+
+        .top--txt {
+          border-top: solid #E0E0E0;
+          border-bottom: solid #E0E0E0;
+
+          @include pc {
+            margin-bottom: pmin(61);
+            padding-block: pmin(25) pmin(23);
+            border-top-width: pmin(1);
+            border-bottom-width: pmin(1);
+          }
+
+          @include sp {
+            margin-bottom: s(61);
+            padding-block: s(35) s(32);
+            border-top-width: s(1);
+            border-bottom-width: s(1);
+          }
+
+          .TX {
+            line-height: 1.8;
+
+            @include pc {
+              font-size: pmin(15);
+            }
+
+            @include sp {
+              letter-spacing: 0.1em;
+              font-size: s(14);
+              line-height: 2;
+            }
+          }
+        }
+
+        .form--list {
+          display: flex;
+          flex-direction: column;
+
+          @include pc {
+            gap: pmin(54);
+          }
+
+          @include sp {
+            gap: s(42);
+          }
+
+
+          input,
+          textarea,
+          select {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            width: 100%;
+            background: #F7F7F7;
+            border: none;
+
+            @include pc {
+              padding-inline: pmin(10);
+              font-size: pmin(16);
+            }
+
+            @include sp {
+              padding-inline: s(10);
+              font-size: s(16);
+            }
+          }
+
+
+          li {
+            display: flex;
+
+            @include pc {
+              gap: pmin(10);
+            }
+
+            @include sp {
+              flex-direction: column;
+              gap: s(10);
+            }
+
+
+            .ttl {
+              flex-shrink: 0;
+
+              @include pc {
+                width: pmin(164);
+              }
+
+              @include sp {
+                width: 100%;
+              }
+
+              label {
+                line-height: 1.8;
+                letter-spacing: 0.1em;
+                color: #8E60A2;
+                font-weight: bold;
+                font-weight: 500;
+
+                @include pc {
+                  font-size: pmin(16);
+                }
+
+                @include sp {
+                  font-size: s(16);
+                }
+              }
+            }
+
+            .txt {
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+
+              @include pc {
+                gap: pmin(10);
+              }
+
+              @include sp {
+                gap: s(10);
+              }
+
+              .wpcf7-not-valid-tip {
+
+                @include pc {
+                  font-size: pmin(16);
+                }
+
+                @include sp {
+                  font-size: s(16);
+                }
+              }
+
+              .input--area {
+                width: 100%;
+
+                &.select--area {
+                  position: relative;
+
+                  &::after {
+                    content: "";
+                    @include imgContain("icon/arrow-circle-purple-b.svg");
+                    position: absolute;
+                    top: 50%;
+                    aspect-ratio: 1;
+                    transform: translateY(-50%);
+                    pointer-events: none;
+
+                    @include pc {
+                      width: pmin(15);
+                      right: pmin(12);
+                    }
+
+                    @include sp {
+                      width: s(15);
+                      right: s(12);
+                    }
+                  }
+                }
+
+              }
+
+              .address--area {
+                display: flex;
+
+                @include pc {
+                  gap: pmin(8);
+                }
+
+                @include sp {
+                  gap: s(8);
+                }
+
+                &--inner {
+                  display: flex;
+                  align-items: center;
+
+                  @include pc {
+                    gap: pmin(8);
+                  }
+
+                  @include sp {
+                    gap: s(8);
+                  }
+
+                  .TX {
+                    line-height: 1;
+                    color: #8E60A2;
+
+                    @include pc {
+                      font-size: pmin(16);
+                    }
+
+                    @include sp {
+                      font-size: s(16);
+                    }
+                  }
+
+                  input {
+
+                    @include pc {
+                      width: pmin(77);
+                    }
+
+                    @include sp {
+                      width: s(77);
+                    }
+                  }
+                }
+              }
+
+
+              input {
+
+                @include pc {
+                  height: pmin(34);
+                }
+
+                @include sp {
+                  height: s(42);
+                }
+              }
+
+              input[type="file"] {
+                height: unset;
+                background-color: transparent;
+              }
+
+              select {
+                appearance: none;
+                color: #000;
+
+                @include pc {
+                  height: pmin(42);
+                }
+
+                @include sp {
+                  height: s(42);
+                }
+
+                option {
+                  color: #000;
+                }
+              }
+
+              textarea {
+                resize: none;
+
+                @include pc {
+                  height: pmin(245);
+                  padding-block: pmin(10);
+                }
+
+                @include sp {
+                  height: s(224);
+                  padding-block: s(10);
+                }
+              }
+
+            }
+          }
+        }
+
+        .btn {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+
+          @include pc {
+            margin-top: pmin(92);
+            gap: pmin(10);
+          }
+
+          @include sp {
+            margin-top: s(63);
+            gap: s(10);
+          }
+
+          .submit-btn {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance: none;
+            -o-appearance: none;
+            display: block;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            border: none;
+            background-color: transparent;
+            color: transparent;
+            cursor: pointer;
+            margin-inline: auto;
+
+            @include pc {
+              @include imgContain("icon/submit-btn-pc.svg");
+              width: pmin(279);
+              height: pmin(65);
+            }
+
+            @include sp {
+              @include imgContain("icon/submit-btn-sp.svg");
+              width: s(260);
+              height: s(65);
+            }
+          }
+        }
+
+        .wpcf7-response-output {
+          @include pc {
+            font-size: pmin(16);
+          }
+
+          @include sp {
+            font-size: s(16);
+          }
+        }
+      }
+    }
+
+    .contact_contents--item {
+      border: solid #fff;
+      margin-inline: auto;
+      color: #fff;
+
+      @include pc {
+        width: pmin(614);
+        border-width: pmin(1);
+        margin-top: pmin(93);
+        padding: pmin(45) 0 pmin(32);
+      }
+
+      @include sp {
+        width: s(374);
+        margin-top: s(80);
+        padding: s(40) 0 s(37);
+        border-width: s(1);
+      }
+
+      .txt {
+
+        @include pc {
+          margin-bottom: pmin(18);
+        }
+
+        @include sp {
+          margin-bottom: s(30);
+        }
+
+        .TX {
+          @include a1;
+          line-height: 1;
+          font-weight: bold;
+          letter-spacing: 0.1em;
+          text-align: center;
+
+          @include pc {
+            font-size: pmin(20);
+          }
+
+          @include sp {
+            font-size: s(18);
+          }
+
+        }
+      }
+
+      .links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @include pc {
+          gap: pmin(20);
+        }
+
+        @include sp {
+          flex-direction: column;
+          gap: s(12);
+        }
+
+
+        a {
+          display: flex;
+          align-items: center;
+          color: #fff;
+
+          @include pc {
+            gap: pmin(12);
+          }
+
+          @include sp {
+            gap: s(11);
+          }
+
+          .icon {
+            flex-shrink: 0;
+
+            @include pc {
+              width: pmin(30);
+            }
+
+            @include sp {
+              width: s(30);
+            }
+          }
+
+          .TX {
+            @include jost;
+            line-height: 1;
+            letter-spacing: 0.1em;
+
+            @include pc {
+              font-size: pmin(19);
+            }
+
+            @include sp {
+              font-size: s(19);
+            }
+
+            &.TX-num {
+
+              @include pc {
+                font-size: pmin(27);
+              }
+
+              @include sp {
+                font-size: s(27);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

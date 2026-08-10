@@ -1,0 +1,58 @@
+// フォント
+
+@font-face {
+	font-family: "sora_to_hikouki";
+	src: url("../fonts/空とひこうき.ttf") format("truetype");
+	font-weight: 400;
+	font-style: normal;
+}
+
+
+
+
+// font-family: Zen Kaku Gothic New;
+@mixin zen {
+	font-family: "Zen Kaku Gothic New", sans-serif;
+	font-style: normal;
+}
+
+// font-family: Jost;
+@mixin jost {
+	font-family: "Jost", sans-serif;
+	font-style: normal;
+}
+
+
+
+// font-family: A1 Mincho;
+@mixin a1 {
+	font-family: "A1 Mincho", "A1明朝", serif;
+	font-style: normal;
+}
+
+// font-family: 見出しゴMB31;
+@mixin midashi {
+	font-family: "Midashi Go MB31", "見出しゴMB31", sans-serif;
+	font-style: normal;
+}
+
+// 最終的に↓こっちに変更
+// // font-family: A1 Mincho;
+// @mixin a1 {
+// 	font-family: "A1明朝";
+// 	font-style: normal;
+// }
+
+// // font-family: 見出しゴMB31;
+// @mixin midashi {
+// 	font-family: "見出しゴMB31";
+// 	font-style: normal;
+// }
+
+
+// font-family: 空とひこうき;
+@mixin sora {
+	font-family: "sora_to_hikouki", sans-serif;
+	font-weight: 600;
+	font-style: normal;
+}

@@ -1,0 +1,420 @@
+@use "../functions" as *;
+
+/* -----------------------
+  archive
+----------------------- */
+
+.page-archive {
+
+  .archive_kv {
+    position: relative;
+
+    .inner--bg {
+
+      @include pc {
+        height: pmin(388);
+      }
+
+      @include sp {
+        height: s(397);
+      }
+
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .TL {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      
+      @include pc {
+        width: pmin(152);
+        top: 58%;
+      }
+      
+      @include sp {
+        top: 54%;
+        width: s(152);
+      }
+    }
+  }
+
+  &--inner {
+
+    @include pc {
+      max-width: pmin(977);
+      margin: 0 auto;
+      padding-block: pmin(80) pmin(125);
+    }
+
+    @include sp {
+      padding: s(70) s(20) s(150);
+    }
+
+    .news-container {
+      position: relative;
+
+      .filter-tabs-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        @include pc {
+          margin-bottom: pmin(84);
+        }
+
+        @include sp {
+          height: s(48);
+          position: relative;
+          margin-bottom: s(76);
+        }
+
+        .sp-opener-bg {
+          @include sp {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: none;
+          }
+
+          &.is-open {
+            display: block;
+          }
+        }
+      }
+
+      .filter-tab-ttl {
+
+        @include sp {
+          padding-left: s(15)
+        }
+
+        .TX {
+          @include jost;
+          line-height: 1;
+          color: #8E60A2;
+          font-weight: 500;
+
+          @include pc {
+            font-size: pmin(23);
+          }
+
+          @include sp {
+            font-size: s(16);
+          }
+        }
+      }
+
+      .filter-tabs {
+        display: flex;
+
+        @include pc {
+          width: fit-content;
+          gap: pmin(50);
+        }
+
+        @include sp {
+          flex-direction: column;
+          width: s(249);
+          background-color: #EDEDED;
+          position: relative;
+          overflow: hidden;
+          height: s(48);
+          position: absolute;
+          top: 0;
+          right: 0;
+          z-index: 3;
+          border-radius: s(50);
+        }
+
+        .sp-opener {
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 2;
+          cursor: pointer;
+        }
+
+        &.is-open {
+          @include sp {
+            height: auto;
+            border-radius: s(20);
+          }
+
+          .sp-opener {
+            display: none;
+          }
+        }
+
+        &::after {
+          @include sp {
+            content: "";
+            display: block;
+            position: absolute;
+            top: s(14);
+            right: s(15);
+            @include imgContain("icon/arrow-circle-purple-b.svg");
+            width: s(19);
+            aspect-ratio: 1;
+            z-index: 1;
+            pointer-events: none;
+          }
+        }
+
+        .filter-tab {
+          --color: #707070;
+          position: relative;
+          cursor: pointer;
+
+          @include sp {
+            padding: s(16) s(30) s(17);
+          }
+
+          &.is-active {
+            --color: #8E60A2;
+
+            @include sp {
+              order: -1;
+            }
+
+            .TX {
+              position: relative;
+
+              &::after {
+                content: "";
+                display: block;
+
+                @include pc {
+                  width: 100%;
+                  background-color: var(--color);
+                  position: absolute;
+                  bottom: -30%;
+                  height: pmin(1);
+                }
+              }
+            }
+          }
+
+          .TX {
+            @include midashi;
+            line-height: 1;
+            color: var(--color);
+            font-weight: 600;
+            white-space: nowrap;
+            width: fit-content;
+
+            @include pc {
+              margin-inline: auto;
+              font-size: pmin(14);
+            }
+
+            @include sp {
+              font-size: s(15);
+            }
+
+          }
+        }
+      }
+
+      .card-list {
+        display: flex;
+
+        @include pc {
+          flex-wrap: wrap;
+          gap: pmin(40);
+        }
+
+        @include sp {
+          flex-direction: column;
+          gap: s(36);
+        }
+
+        .card {
+
+          @include pc {
+            width: calc((100% - (pmin(40)) * 2) / 3);
+          }
+
+          @include sp {
+            flex: 1;
+          }
+
+          a {
+            color: #000;
+
+            @include sp {
+              gap: s(15);
+            }
+
+            .thumbnail {
+              width: 100%;
+
+              @include pc {
+                margin-bottom: pmin(15);
+                height: pmin(199);
+              }
+
+              @include sp {
+                margin-bottom: s(15);
+                height: s(249);
+              }
+
+              img {
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+
+            .card--inner {
+
+              .info {
+                display: flex;
+                align-items: center;
+                line-height: 1;
+                font-weight: Bold;
+
+                @include pc {
+                  gap: pmin(10);
+                  font-size: pmin(12);
+                  margin-bottom: pmin(10);
+                }
+
+                @include sp {
+                  gap: s(8);
+                  font-size: s(12);
+                  margin-bottom: s(10);
+                  white-space: nowrap;
+                }
+
+                .time {
+                  @include jost;
+                }
+
+                .category {
+                  @include midashi;
+                  background-color: #E2E2E2;
+
+                  @include pc {
+                    border-radius: pmin(50);
+                    padding: pmin(4) pmin(9);
+                  }
+
+                  @include sp {
+                    border-radius: s(50);
+                    padding: s(4) s(12);
+                    font-size: s(10);
+                  }
+                }
+              }
+
+              .ttl {
+
+                .TL {
+                  @include midashi;
+                  font-weight: Bold;
+                  letter-spacing: 0.05em;
+
+                  @include pc {
+                    font-size: pmin(14);
+                  }
+
+                  @include sp {
+                    font-size: s(14);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .pagination {
+
+        @include pc {
+          margin-top: pmin(64);
+        }
+
+        @include sp {
+          margin-top: s(85);
+        }
+
+        .pagination--inner {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+
+          @include pc {
+            gap: pmin(20);
+          }
+
+          @include sp {
+            gap: s(15);
+          }
+
+          a {
+
+            .TX {
+              @include a1;
+              color: #8E60A2;
+              line-height: 1;
+              position: relative;
+
+              @include pc {
+                font-size: pmin(27);
+                padding-inline: pmin(5);
+              }
+
+              @include sp {
+                font-size: s(18);
+              }
+
+              &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100%;
+                background-color: #8E60A2;
+
+                @include pc {
+                  height: pmin(1);
+                  bottom: pmin(-10);
+                }
+
+                @include sp {
+                  height: s(1);
+                  bottom: s(-10);
+                }
+              }
+            }
+
+            &.is-active {
+              pointer-events: none;
+
+              .TX {
+                &::before {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+
+      }
+    }
+  }
+
+
+
+}

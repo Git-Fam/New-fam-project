@@ -1,0 +1,589 @@
+@use "../functions" as *;
+
+/* -----------------------
+  special
+----------------------- */
+
+body {
+  &.is-pop {
+    overflow: hidden;
+  }
+}
+
+.page-special {
+  background: $C-gradation;
+
+  .special_kv {
+    background: $C-gradation;
+
+    @include pc {
+      padding-block: pmin(158) pmin(34);
+    }
+
+    @include sp {
+      padding-block: s(130) s(53);
+    }
+
+    .ttl {
+
+      .TL {
+        margin-inline: auto;
+
+        @include pc {
+          width: pmin(571);
+        }
+
+        @include sp {
+          width: s(337);
+        }
+      }
+
+      .TX {
+        text-align: center;
+        line-height: 2;
+        letter-spacing: 0.13em;
+        color: #FFF;
+
+        @include pc {
+          margin-top: pmin(70);
+          font-size: pmin(21);
+        }
+
+        @include sp {
+          margin-top: s(70);
+          font-size: s(16);
+        }
+      }
+    }
+
+    .tabs {
+
+      @include pc {
+        margin-top: pmin(113);
+      }
+
+      @include sp {
+        margin-top: s(65);
+      }
+
+
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-inline: auto;
+
+        @include pc {
+          gap: pmin(16);
+          width: pmin(735);
+        }
+
+        @include sp {
+          gap: s(19) s(15);
+          width: s(358);
+        }
+
+        .tab {
+          cursor: pointer;
+          @include midashi;
+          text-align: center;
+          border: solid #FFF;
+          color: #FFF;
+          line-height: 1;
+
+          @include pc {
+            width: calc((100% - (pmin(16) * 2)) / 3);
+            border-width: pmin(1);
+            padding-block: pmin(11);
+            font-size: pmin(14);
+            border-radius: pmin(50);
+          }
+
+          @include sp {
+            width: calc((100% - (s(15) * 1)) / 2);
+            border-width: s(1);
+            padding-block: s(11);
+            font-size: s(14);
+            border-radius: s(50);
+          }
+
+          &.is-active {
+            background-color: #FFF;
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+
+
+  .special_contents {
+
+    @include pc {
+      // width: pmin(1366);
+      margin-inline: auto;
+    }
+
+    @include sp {}
+
+    .item--wrap {
+      display: flex;
+      flex-wrap: wrap;
+
+      .item {
+        aspect-ratio: 1/1;
+
+        @include pc {
+          width: calc(100% / 3);
+        }
+
+        @include sp {
+          width: 100%;
+        }
+
+        &.is-pop {
+          .pop_up {
+            opacity: 1;
+            pointer-events: auto;
+          }
+        }
+
+        @include pc {
+
+          // &.item-large {
+          //   width: calc(100% / 2);
+
+          //   .handle {
+          //     .txt--area {
+          //       .ttl {
+          //         .TL {
+          //           font-size: pmin(81);
+          //         }
+          //       }
+
+          //       .txt {
+          //         bottom: pmin(57);
+
+          //         .info {
+          //           font-size: pmin(20);
+          //         }
+
+          //         .name {
+          //           font-size: pmin(24);
+          //           margin-top: pmin(26);
+          //         }
+
+          //         .btn {
+          //           margin: pmin(36) auto 0;
+          //         }
+          //       }
+          //     }
+          //   }
+          // }
+        }
+
+        .handle {
+          position: relative;
+
+          @include pc {
+            height: 100%;
+          }
+
+          &:hover {
+            .txt--area {
+              opacity: 1;
+            }
+          }
+
+          .img--area {
+
+            @include pc {
+              height: 100%;
+            }
+
+            img {
+              height: 100%;
+            }
+          }
+
+          .txt--area {
+
+            @include pc {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: rgb(93 52 139 / 65%);
+              opacity: 0;
+              transition: opacity 0.5s ease;
+            }
+
+            @include sp {
+              background-color: #FFF;
+              padding: s(25) s(20) s(57);
+            }
+
+            .ttl {
+
+              @include pc {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 0;
+                right: 0;
+                margin-inline: auto;
+                width: 100%;
+                padding: pmin(20);
+              }
+
+              .TL {
+                @include a1;
+                line-height: 2;
+                letter-spacing: 0.13em;
+                font-weight: 400;
+
+                @include pc {
+                  text-align: center;
+                  font-size: pmin(54);
+                  color: #FFF;
+                }
+
+                @include sp {
+                  font-size: s(32);
+                  color: #8E60A2;
+                  
+                }
+                
+              }
+            }
+
+            .txt {
+              letter-spacing: 0.1em;
+              line-height: 1;
+              display: flex;
+              flex-direction: column;
+
+              @include pc {
+                position: absolute;
+                bottom: pmin(25);
+                left: 0;
+                right: 0;
+                margin-inline: auto;
+                width: 100%;
+                padding-inline: pmin(20);
+                text-align: center;
+                color: #FFF;
+                width: 80%;
+                gap: pmin(16);
+                padding:p(10);
+              }
+
+              @include sp {
+                gap: s(10);
+                margin-top: s(21);
+                position: relative;
+                // padding-right: s(124);
+              }
+
+              .info {
+
+                @include pc {
+                  font-weight: Bold;
+                  font-size: pmin(18);
+                }
+
+                @include sp {
+                  font-size: s(12);
+                }
+              }
+
+              .name {
+
+                @include pc {
+                  font-size: pmin(24);
+                }
+
+                @include sp {
+                  font-size: s(16);
+                }
+              }
+
+              .graduate {
+
+                @include pc {
+                  font-size: pmin(13);
+                }
+
+                @include sp {
+                  font-size: s(10);
+                  padding-right: s(125);
+                }
+              }
+            }
+
+            .btn {
+              cursor: pointer;
+              position: absolute;
+
+              @include pc {
+                width: pmin(104);
+                right: pmin(10);
+                bottom: pmin(10);
+              }
+
+              @include sp {
+                width: s(105);
+                right: s(20);
+                bottom: s(55);
+              }
+            }
+          }
+        }
+
+        .pop_up {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgb(142 96 162 / 85%);
+          z-index: 100;
+          opacity: 0;
+          transition: opacity 0.5s ease;
+          pointer-events: none;
+
+          &--inner {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-inline: auto;
+            background-color: #FFF;
+
+            @include pc {
+              height: calc(100% - pmin(60));
+              bottom: pmin(0);
+              width: pmin(1136);
+            }
+
+            @include sp {
+              height: calc(100% - s(50));
+              bottom: s(0);
+              width: s(375);
+            }
+
+            .prev-btn,
+            .next-btn {
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              aspect-ratio: 1;
+              cursor: pointer;
+              z-index: 10;
+
+
+
+              @include pc {
+                @include imgContain("icon/arrow-circle-p-w.svg");
+                width: pmin(44);
+              }
+
+              @include sp {
+                @include imgContain("icon/arrow-circle-purple-b.svg");
+                width: s(21);
+              }
+            }
+
+            .prev-btn {
+
+              @include pc {
+                right: calc(100% + pmin(20));
+              }
+
+              @include sp {
+                transform: translateY(-50%) rotate(90deg);
+                left: s(7);
+              }
+            }
+
+            .next-btn {
+
+              @include pc {
+                transform: translateY(-50%) rotate(180deg);
+                left: calc(100% + pmin(20));
+              }
+
+              @include sp {
+                transform: translateY(-50%) rotate(-90deg);
+                right: s(7);
+              }
+            }
+
+            &--contents {
+              width: 100%;
+              height: 100%;
+              overflow-y: scroll;
+
+              .inner {
+
+                @include pc {
+                  padding: pmin(68) pmin(97) pmin(95);
+                }
+
+                @include sp {
+                  padding: s(43) s(36) s(72);
+                }
+
+                .visual--area {
+                  display: flex;
+
+                  @include pc {
+                    align-items: center;
+                    gap: pmin(73);
+                  }
+
+                  @include sp {
+                    flex-direction: column;
+                    gap: s(50);
+                  }
+
+                  .img {
+
+                    @include pc {
+                      flex-shrink: 0;
+                      width: pmin(508);
+                    }
+                  }
+
+                  .ttl {
+                    .sub {
+                      font-weight: 400;
+                      line-height: 1;
+                      letter-spacing: 0.15em;
+
+                      @include pc {
+                        font-size: pmin(20);
+                      }
+
+                      @include sp {
+                        font-size: s(16);
+                      }
+                    }
+
+                    .TL {
+                      @include a1;
+                      line-height: 1.8;
+                      letter-spacing: 0.1em;
+                      color: #8E60A2;
+                      white-space: nowrap;
+
+                      @include pc {
+                        margin-top: pmin(58);
+                        font-size: pmin(44);
+                      }
+
+                      @include sp {
+                        margin-top: s(35);
+                        font-size: s(33);
+                      }
+                    }
+
+                    .txt {
+
+                      @include pc {
+                        margin-top: pmin(50);
+                      }
+
+                      @include sp {
+                        margin-top: s(45);
+                      }
+
+                      .info {
+                        font-weight: Bold;
+                        line-height: 1.5;
+
+                        @include pc {
+                          font-size: pmin(16);
+                        }
+
+                        @include sp {
+                          font-size: s(14);
+                        }
+                      }
+
+                      .name {
+                        line-height: 1;
+
+                        @include pc {
+                          font-size: pmin(24);
+                          margin-top: pmin(24);
+                        }
+
+                        @include sp {
+                          font-size: s(18);
+                          margin-top: s(15);
+                        }
+                      }
+
+                      .graduate {
+                        color: #727272;
+
+                        @include pc {
+                          font-size: pmin(13);
+                          margin-top: pmin(13);
+                        }
+
+                        @include sp {
+                          font-size: s(10);
+                          margin-top: s(10);
+                        }
+                      }
+                    }
+                  }
+                }
+
+                .txt-area {
+
+                  @include pc {
+                    margin-top: pmin(63);
+                  }
+
+                  @include sp {
+                    margin-top: s(75);
+                  }
+
+                  .TX {
+                    line-height: 2;
+                    letter-spacing: 0.1em;
+
+                    @include pc {
+                      font-size: pmin(18);
+                    }
+
+                    @include sp {
+                      font-size: s(16);
+                    }
+                  }
+                }
+
+                .close-btn {
+                  margin-inline: auto;
+
+                  @include pc {
+                    width: pmin(279);
+                    margin-top: pmin(78);
+                  }
+
+                  @include sp {
+                    width: s(260);
+                    margin-top: s(75);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,971 @@
+@use "../functions" as *;
+
+/* -----------------------
+  recruit
+----------------------- */
+
+.page-recruit {
+
+  .recruit_kv {
+    background: linear-gradient(to bottom, transparent 0%, transparent 25%, #000000b4 100%);
+
+    .inner--bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100lvh;
+      z-index: -1;
+
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .inner--top {
+      position: relative;
+      pointer-events: none;
+
+      @include pc {
+        // height: calc(100vh - pmin(63));
+        // min-height: pmin(700);
+        height: 100vh;
+      }
+
+      @include sp {
+        // height: calc(100vh - s(54));
+        // min-height: s(600);
+        height: 100vh;
+      }
+
+      .TL {
+        position: absolute;
+        width: 100%;
+        @include a1;
+        letter-spacing: 0.1em;
+        color: #FFF;
+
+        @include pc {
+          left: 0;
+          line-height: 1.5;
+          text-align: center;
+          bottom: pmin(46);
+          font-size: pmin(78);
+        }
+
+        @include sp {
+          // display: flex;
+          // flex-direction: column;
+          // gap: s(20);
+          width: fit-content;
+          line-height: 1.9;
+          letter-spacing: 0.07em;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: s(34);
+          font-size: s(41);
+          padding-left: 0.7em;
+          white-space: nowrap;
+        }
+      }
+    }
+
+    .inner--txt {
+      text-align: center;
+      color: #FFF;
+
+      @include pc {
+        padding-block: pmin(186) pmin(272);
+      }
+
+      @include sp {
+        padding-block: s(100) s(250);
+      }
+
+      .TX {
+        line-height: 2.5;
+        letter-spacing: 0.1em;
+
+        @include pc {
+          margin-bottom: pmin(92);
+          font-size: pmin(30);
+          // font-weight: 300;
+        }
+
+        @include sp {
+          margin-bottom: s(112);
+          font-size: s(20);
+          // font-weight: 400;
+        }
+      }
+
+      .TX-sub {
+        @include jost;
+        line-height: 1;
+        letter-spacing: 0.1em;
+
+        @include pc {
+          font-size: pmin(23);
+        }
+
+        @include sp {
+          font-size: s(18);
+          font-weight: 400;
+        }
+      }
+    }
+  }
+
+
+  .recruit_sec--wrap {
+    background: $C-gradation-bottom;
+
+    @include pc {
+      padding-block: pmin(147) pmin(166);
+    }
+
+    @include sp {
+      padding: s(124) s(0) s(200);
+    }
+
+
+    .recruit_teacher {
+
+      @include pc {
+        margin-bottom: pmin(174);
+      }
+
+      @include sp {
+        margin-bottom: s(150);
+        padding-inline: s(20);
+      }
+
+      &--inner {
+        margin-inline: auto;
+
+        @include pc {
+          width: pmin(845);
+          margin-top: pmin(64);
+        }
+
+        @include sp {
+          margin-top: s(64);
+        }
+
+        ul {
+          width: 100%;
+          display: flex;
+
+          @include pc {
+            flex-wrap: wrap;
+            gap: pmin(27);
+          }
+
+          @include sp {
+            flex-direction: column;
+            gap: s(20);
+          }
+
+          li {
+
+            @include pc {
+              width: calc((100% - (pmin(27) * 1)) / 2);
+            }
+
+            @include sp {
+              width: 100%;
+            }
+
+            a {
+              display: block;
+              width: 100%;
+              position: relative;
+              background-color: #ffffffc1;
+
+              @include pc {
+                padding-block: pmin(26) pmin(22);
+              }
+
+              @include sp {
+                padding-block: s(26) s(22);
+              }
+
+              .TX {
+                text-align: center;
+                line-height: 1;
+                letter-spacing: 0.1em;
+                color: #8E60A2;
+                font-weight: bold;
+
+                @include pc {
+                  font-size: pmin(17);
+                }
+
+                @include sp {
+                  font-size: s(17);
+                }
+              }
+
+              &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 100%;
+                aspect-ratio: 18/14;
+                @include imgContain("icon/file-icon.svg");
+
+                @include pc {
+                  width: pmin(18);
+                  right: pmin(22);
+                }
+
+                @include sp {
+                  width: s(18);
+                  right: s(22);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .recruit_sec {
+
+
+      &--inner {
+        margin-inline: auto;
+
+        @include pc {
+          width: pmin(1100);
+        }
+
+
+        .tabs {
+
+          // @include pc {
+          //   margin-bottom: pmin(27);
+          // }
+
+          // @include sp {
+          //   margin-bottom: s(30);
+          // }
+
+          .tab-list {
+
+            @include pc {
+              display: flex;
+              flex-wrap: wrap;
+              margin-top: pmin(64);
+            }
+
+            @include sp {
+              margin-top: s(100);
+            }
+
+            li {
+
+              @include pc {
+                width: calc(100% / 3);
+              }
+
+
+              &.size-l {
+
+                @include pc {
+                  width: calc(100% / 2);
+                }
+
+                a {
+                  border-top: solid #FFF;
+
+                  @include pc {
+                    border-top-width: pmin(1);
+                  }
+
+                  @include sp {
+                    border-top-width: s(1);
+                  }
+                }
+              }
+
+              &.is-active {
+                a {
+                  background-color: #FFF;
+
+                  .icon {
+                    @include imgContain("icon/C_sec-ttl-type-02.svg");
+                  }
+
+                  .TX {
+                    color: #8E60A2;
+                  }
+                }
+              }
+
+              a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                border: solid #FFF;
+                border-top: none;
+
+                @include pc {
+                  border-width: pmin(1);
+                  padding-block: pmin(15) pmin(13);
+                  gap: pmin(8);
+                }
+
+                @include sp {
+                  border-width: s(1);
+                  padding-block: s(15) s(13);
+                  gap: s(8);
+                }
+
+
+                .icon {
+                  @include imgContain("icon/C_sec-ttl-type-01.svg");
+
+                  @include pc {
+                    width: pmin(22);
+                    height: pmin(18);
+                  }
+
+                  @include sp {
+                    width: s(22);
+                    height: s(18);
+                  }
+                }
+
+                .TX {
+                  @include a1;
+                  line-height: 1;
+                  color: #FFF;
+                  letter-spacing: 0.1em;
+
+                  @include pc {
+                    font-size: pmin(14);
+                  }
+
+                  @include sp {
+                    font-size: s(14);
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .contents {
+
+          @include pc {
+            margin-top: pmin(64);
+          }
+
+          @include sp {
+            margin-top: s(60);
+          }
+
+          &--list {
+
+            .contents--item {
+              background-color: #FFF;
+
+              display: none;
+
+              &.is-active {
+                display: block;
+              }
+
+              .item--area {
+
+                .item--inner {
+                  background-color: #FFF;
+
+                  @include pc {
+                    padding: pmin(70) pmin(130) pmin(43);
+                  }
+
+                  @include sp {
+                    padding: s(6) s(20) s(48);
+                  }
+
+                  li {
+                    display: flex;
+                    border-top: solid #E0E0E0;
+
+                    @include pc {
+                      border-top-width: pmin(1);
+                      gap: pmin(10);
+                      padding-block: pmin(30);
+                    }
+
+                    @include sp {
+                      border-top-width: s(1);
+                      flex-direction: column;
+                      gap: s(15);
+                      padding-block: s(20);
+                    }
+
+                    &:first-child {
+                      border-top: none;
+                    }
+
+                    &.no-ttl--item {
+                      display: block;
+
+                      @include sp {
+                        padding-bottom: 0;
+                      }
+
+                      .TX {
+                        line-height: 2;
+                        text-align: center;
+
+                        @include pc {
+                          letter-spacing: 0.1em;
+                          font-size: pmin(16);
+                        }
+
+                        @include sp {
+                          font-size: s(12);
+                        }
+                      }
+                    }
+
+                    .ttl {
+                      flex-shrink: 0;
+
+                      @include pc {
+                        width: pmin(167);
+                      }
+
+                      .TL {
+                        line-height: 1.8;
+                        font-weight: bold;
+                        color: #8E60A2;
+
+                        @include pc {
+                          font-size: pmin(16);
+                        }
+
+                        @include sp {
+                          font-size: s(16);
+                        }
+                      }
+                    }
+
+                    .txt {
+                      display: flex;
+                      flex-direction: column;
+
+                      @include pc {
+                        gap: pmin(10);
+                      }
+
+                      @include sp {
+                        gap: s(10);
+                      }
+
+                      .TX {
+                        line-height: 1.8;
+
+                        @include pc {
+                          letter-spacing: 0.15em;
+                          font-size: pmin(16);
+                        }
+
+                        @include sp {
+                          letter-spacing: 0.05em;
+                          font-size: s(15);
+                        }
+
+                        .mini {
+                          line-height: 1.5;
+
+                          @include pc {
+                            font-size: pmin(14);
+                          }
+
+                          @include sp {
+                            font-size: s(13);
+                          }
+                        }
+
+                        .indent {
+                          @include sp {
+                            display: inline-block;
+                            text-indent: -5.3em;
+                            padding-left: 5em;
+                          }
+                        }
+                      }
+
+                      .TX-indent {
+                        text-indent: -1em;
+                        padding-left: 1em;
+                      }
+                    }
+                  }
+                }
+              }
+
+
+              .form--area {
+
+                @include pc {
+                  margin-top: pmin(67);
+                }
+
+                @include sp {
+                  margin-top: s(50);
+                }
+
+                .form--inner {
+                  background-color: #FFF;
+
+                  @include pc {
+                    // margin-top: pmin(64);
+                    padding: pmin(91) pmin(130) pmin(73);
+                  }
+
+                  @include sp {
+                    // margin-top: s(64);
+                    padding: s(60) s(24);
+                  }
+
+                  .top--txt {
+                    border-top: solid #E0E0E0;
+                    border-bottom: solid #E0E0E0;
+
+                    @include pc {
+                      margin-bottom: pmin(61);
+                      padding-block: pmin(25) pmin(23);
+                      border-top-width: pmin(1);
+                      border-bottom-width: pmin(1);
+                    }
+
+                    @include sp {
+                      margin-bottom: s(61);
+                      padding-block: s(35) s(32);
+                      border-top-width: s(1);
+                      border-bottom-width: s(1);
+                    }
+
+                    .TX {
+
+                      @include pc {
+                        letter-spacing: 0.14em;
+                        font-size: pmin(14);
+                      }
+
+                      @include sp {
+                        letter-spacing: 0.1em;
+                        font-size: s(14);
+                        line-height: 2;
+                      }
+                    }
+                  }
+
+                  .form--list {
+                    display: flex;
+                    flex-direction: column;
+                    background-color: #F7F7F7;
+
+                    @include pc {
+                      gap: pmin(54);
+                      padding: pmin(55) pmin(45) pmin(75);
+                    }
+
+                    @include sp {
+                      gap: s(42);
+                      padding: s(60) s(24);
+                    }
+
+
+                    input,
+                    textarea,
+                    select {
+                      padding: 0;
+                      margin: 0;
+                      box-sizing: border-box;
+                      width: 100%;
+                      background: #FFF;
+                      border: none;
+
+                      @include pc {
+                        padding-inline: pmin(10);
+                        font-size: pmin(16);
+                      }
+
+                      @include sp {
+                        padding-inline: s(10);
+                        font-size: s(16);
+                      }
+                    }
+
+
+                    li {
+                      display: flex;
+
+                      @include pc {
+                        gap: pmin(10);
+                      }
+
+                      @include sp {
+                        flex-direction: column;
+                        gap: s(10);
+                      }
+
+
+                      .ttl {
+                        flex-shrink: 0;
+
+                        @include pc {
+                          width: pmin(164);
+                        }
+
+                        @include sp {
+                          width: 100%;
+                        }
+
+                        label {
+                          line-height: 1.8;
+                          letter-spacing: 0.1em;
+                          color: #8E60A2;
+                          font-weight: bold;
+
+                          @include pc {
+                            font-size: pmin(16);
+                          }
+
+                          @include sp {
+                            font-size: s(16);
+                          }
+                        }
+                      }
+
+                      .txt {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+
+                        @include pc {
+                          gap: pmin(10);
+                        }
+
+                        @include sp {
+                          gap: s(10);
+                        }
+
+                        .wpcf7-not-valid-tip {
+
+                          @include pc {
+                            font-size: pmin(16);
+                          }
+
+                          @include sp {
+                            font-size: s(16);
+                          }
+                        }
+
+                        .input--area {
+                          width: 100%;
+
+                          &.select--area {
+                            position: relative;
+
+                            &::after {
+                              content: "";
+                              @include imgContain("icon/arrow-circle-purple-b.svg");
+                              position: absolute;
+                              top: 50%;
+                              aspect-ratio: 1;
+                              transform: translateY(-50%);
+                              pointer-events: none;
+
+                              @include pc {
+                                width: pmin(15);
+                                right: pmin(12);
+                              }
+
+                              @include sp {
+                                width: s(15);
+                                right: s(12);
+                              }
+                            }
+                          }
+
+                          &.radio--area {
+                            // display: flex;
+                            // align-items: center;
+
+                            @include pc {
+                              // gap: pmin(38);
+                              padding-top: pmin(6);
+                            }
+
+                            @include sp {
+                              // gap: s(26);
+                            }
+
+                            .wpcf7-form-control.wpcf7-radio {
+                              display: flex;
+                              align-items: center;
+
+                              @include pc {
+                                gap: pmin(38);
+                              }
+
+                              @include sp {
+                                gap: s(26);
+                              }
+                            }
+
+                            .wpcf7-list-item {
+                              margin: 0;
+                            }
+
+                            input[type="radio"] {
+                              appearance: none;
+                              padding: unset;
+                              background-color: #FFF;
+                              border: solid #E0E0E0;
+                              border-radius: 50%;
+                              position: relative;
+
+                              @include pc {
+                                width: pmin(15);
+                                height: pmin(15);
+                                border-width: pmin(1);
+                              }
+
+                              @include sp {
+                                width: s(15);
+                                height: s(15);
+                                border-width: s(1);
+                              }
+
+                              &:checked {
+                                background-color: #8E60A2;
+
+                                &::after {
+                                  content: "";
+                                  display: block;
+                                  aspect-ratio: 1;
+                                  background-color: #FFF;
+                                  border-radius: 50%;
+                                  position: absolute;
+                                  top: 50%;
+                                  left: 50%;
+                                  transform: translate(-50%, -50%);
+                                  width: 50%;
+                                }
+                              }
+                            }
+
+                            label {
+
+                              @include pc {
+                                font-size: pmin(16);
+                              }
+
+                              @include sp {
+                                font-size: s(16);
+                              }
+                            }
+
+                            // .radio--area--inner {
+                            //   display: flex;
+                            //   align-items: center;
+
+                            //   @include pc {
+                            //     gap: pmin(8);
+                            //   }
+
+                            //   @include sp {
+                            //     gap: s(8);
+                            //   }
+
+                            // }
+                          }
+                        }
+
+                        .address--area {
+                          display: flex;
+
+                          @include pc {
+                            gap: pmin(8);
+                          }
+
+                          @include sp {
+                            gap: s(8);
+                          }
+
+                          &--inner {
+                            display: flex;
+                            align-items: center;
+
+                            @include pc {
+                              gap: pmin(8);
+                            }
+
+                            @include sp {
+                              gap: s(8);
+                            }
+
+                            .TX {
+                              line-height: 1;
+                              color: #8E60A2;
+
+                              @include pc {
+                                font-size: pmin(16);
+                              }
+
+                              @include sp {
+                                font-size: s(16);
+                              }
+                            }
+
+                            input {
+
+                              @include pc {
+                                width: pmin(77);
+                              }
+
+                              @include sp {
+                                width: s(77);
+                              }
+                            }
+                          }
+                        }
+
+
+                        input {
+
+                          @include pc {
+                            height: pmin(34);
+                          }
+
+                          @include sp {
+                            height: s(42);
+                          }
+                        }
+
+                        input[type="file"] {
+                          height: unset;
+                          background-color: transparent;
+                          padding: unset;
+                        }
+
+                        select {
+                          appearance: none;
+
+                          @include pc {
+                            height: pmin(42);
+                          }
+
+                          @include sp {
+                            height: s(42);
+                          }
+                        }
+
+                        textarea {
+                          resize: none;
+
+                          @include pc {
+                            height: pmin(245);
+                            padding-block: pmin(10);
+                          }
+
+                          @include sp {
+                            height: s(224);
+                            padding-block: s(10);
+                          }
+                        }
+
+                      }
+                    }
+                  }
+
+                  .btn {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    width: 100%;
+                    background-color: #F7F7F7;
+
+                    @include pc {
+                      padding: 0 0 pmin(75);
+                      gap: pmin(10);
+                    }
+
+                    @include sp {
+                      padding: 0 0 s(76);
+                      gap: s(10);
+                    }
+
+                    .submit-btn {
+                      appearance: none;
+                      -webkit-appearance: none;
+                      -moz-appearance: none;
+                      -ms-appearance: none;
+                      -o-appearance: none;
+                      display: block;
+                      position: relative;
+                      margin: 0;
+                      padding: 0;
+                      border: none;
+                      background-color: transparent;
+                      color: transparent;
+                      cursor: pointer;
+                      margin-inline: auto;
+
+                      @include pc {
+                        @include imgContain("icon/submit-btn-pc.svg");
+                        width: pmin(279);
+                        height: pmin(65);
+                      }
+
+                      @include sp {
+                        @include imgCover("icon/submit-btn-sp.svg");
+                        width: s(278);
+                        height: s(65);
+                      }
+                    }
+                  }
+
+                  .wpcf7-response-output {
+                    @include pc {
+                      font-size: pmin(16);
+                    }
+
+                    @include sp {
+                      font-size: s(16);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+}

@@ -1,0 +1,72 @@
+@use "../functions" as *;
+
+/* -----------------------
+  C_sec-ttl
+----------------------- */
+.C_sec-ttl {
+  // width: fit-content;
+  // margin-inline: auto;
+
+  .icon {
+    margin-inline: auto;
+
+    @include pc {
+      width: pmin(60);
+      height: pmin(48);
+      margin-bottom: pmin(15);
+    }
+
+    @include sp {
+      width: s(60);
+      height: s(48);
+      margin-bottom: s(15);
+    }
+  }
+
+  .TL {
+    text-align: center;
+    font-weight: bold;
+
+    @include pc {
+      font-size: pmin(20);
+    }
+
+    @include sp {
+      font-size: s(20);
+    }
+  }
+
+  &.type-01 {
+    .icon {
+      @include imgContain("icon/C_sec-ttl-type-01.svg");
+    }
+
+    .TL {
+      color: #FFF;
+    }
+  }
+
+  &.type-02 {
+    .icon {
+      @include imgContain("icon/C_sec-ttl-type-02.svg");
+    }
+
+    .TL {
+      color: #000;
+    }
+  }
+
+  &.type-03 {
+    .TL {
+      color: #8E60A2;
+
+      @include pc {
+        font-size: pmin(23);
+      }
+
+      @include sp {
+        font-size: s(20);
+      }
+    }
+  }
+}
