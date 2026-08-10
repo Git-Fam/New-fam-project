@@ -137,8 +137,9 @@ const adminAppHtml = String.raw`
         <input id="comparisonIncrementInput" type="number" min="0" step="1" />
       </label>
       <label>
-        出題中の質問数（チェック数）
-        <input id="diagnosisQuestionCountInput" type="number" min="1" step="1" readonly />
+        診断で出題する質問数
+        <input id="diagnosisQuestionCountInput" type="number" min="1" step="1" />
+        <small class="form-note" id="diagnosisQuestionCountHelp">出題候補からランダムで出題します。</small>
       </label>
       <label>
         紹介可能求人数
@@ -209,7 +210,7 @@ const adminAppHtml = String.raw`
       <select id="cardSelect"></select>
     </label>
     <div class="admin-card-toolbar">
-      <p>出題中: <strong id="activeCardCount">40</strong>問</p>
+      <p>出題候補: <strong id="activeCardCount">40</strong>問</p>
       <div class="admin-card-toolbar-actions">
         <button class="secondary-button" id="addCard" type="button">新規質問を追加</button>
         <button class="secondary-button danger-button" id="deleteCard" type="button">選択中の質問を削除</button>

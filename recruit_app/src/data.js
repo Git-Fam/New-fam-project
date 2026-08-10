@@ -339,6 +339,486 @@ export const DEFAULT_CARDS = [
     image: image("photo-1518005020951-eccb494ad742"),
     yesScores: { creativity: 2 },
     noScores: { execution: 2 }
+  },
+  {
+    id: "image-041",
+    question: "新しいことも、仲間を巻き込みながら進めたい",
+    visual: "仲間と新しい挑戦",
+    image: image("photo-1517048676732-d65bc937f952"),
+    yesScores: { people: 2 },
+    noScores: { challenge: 2 }
+  },
+  {
+    id: "image-042",
+    question: "周りが迷っていても、まず自分で試してみたい",
+    visual: "一歩踏み出す人",
+    image: image("photo-1500530855697-b586d89ba3ee"),
+    yesScores: { challenge: 2 },
+    noScores: { people: 2 }
+  },
+  {
+    id: "image-043",
+    question: "初めての場所でも人とのつながりを作るのが得意",
+    visual: "新しい場で交流",
+    image: image("photo-1521737604893-d14cc237f11d"),
+    yesScores: { people: 2 },
+    noScores: { challenge: 2 }
+  },
+  {
+    id: "image-044",
+    question: "変化のある環境に飛び込む方が成長できる",
+    visual: "変化のある道",
+    image: image("photo-1464822759023-fed622ff2c3b"),
+    yesScores: { challenge: 2 },
+    noScores: { people: 2 }
+  },
+  {
+    id: "image-045",
+    question: "相手の気持ちを汲み取りながら専門性を活かしたい",
+    visual: "相手に寄り添う専門家",
+    image: image("photo-1551836022-d5d88e9218df"),
+    yesScores: { people: 2 },
+    noScores: { focus: 2 }
+  },
+  {
+    id: "image-046",
+    question: "誰にも邪魔されず一つのテーマを深く考えたい",
+    visual: "静かな探究時間",
+    image: image("photo-1486312338219-ce68d2c6f44d"),
+    yesScores: { focus: 2 },
+    noScores: { people: 2 }
+  },
+  {
+    id: "image-047",
+    question: "困っている人に寄り添って解決策を探したい",
+    visual: "相談と解決",
+    image: image("photo-1521791136064-7986c2920216"),
+    yesScores: { people: 2 },
+    noScores: { focus: 2 }
+  },
+  {
+    id: "image-048",
+    question: "感覚よりも、根拠を集めて判断したい",
+    visual: "資料を読み込む人",
+    image: image("photo-1516321497487-e288fb19713f"),
+    yesScores: { focus: 2 },
+    noScores: { people: 2 }
+  },
+  {
+    id: "image-049",
+    question: "周囲が安心できるように場を整えたい",
+    visual: "安心できるチーム",
+    image: image("photo-1556761175-b413da4baf72"),
+    yesScores: { people: 2 },
+    noScores: { stability: 2 }
+  },
+  {
+    id: "image-050",
+    question: "人間関係よりも、安定した仕組みがある方が落ち着く",
+    visual: "整った仕組み",
+    image: image("photo-1497215728101-856f4ea42174"),
+    yesScores: { stability: 2 },
+    noScores: { people: 2 }
+  },
+  {
+    id: "image-051",
+    question: "チームの空気が良いと自分の力も出しやすい",
+    visual: "雰囲気の良い職場",
+    image: image("photo-1517048676732-d65bc937f952"),
+    yesScores: { people: 2 },
+    noScores: { stability: 2 }
+  },
+  {
+    id: "image-052",
+    question: "予定通りに進む環境の方が力を発揮できる",
+    visual: "予定を確認する人",
+    image: image("photo-1506784983877-45594efa4cbe"),
+    yesScores: { stability: 2 },
+    noScores: { people: 2 }
+  },
+  {
+    id: "image-053",
+    question: "人と話す中でアイデアが広がることが多い",
+    visual: "対話から生まれる発想",
+    image: image("photo-1552664730-d307ca884978"),
+    yesScores: { people: 2 },
+    noScores: { creativity: 2 }
+  },
+  {
+    id: "image-054",
+    question: "一人で考えた独自のアイデアを形にしたい",
+    visual: "独自アイデアの制作",
+    image: image("photo-1523726491678-bf852e717f6a"),
+    yesScores: { creativity: 2 },
+    noScores: { people: 2 }
+  },
+  {
+    id: "image-055",
+    question: "相手の反応を見ながら提案を磨きたい",
+    visual: "提案を磨く会話",
+    image: image("photo-1557804506-669a67965ba0"),
+    yesScores: { people: 2 },
+    noScores: { creativity: 2 }
+  },
+  {
+    id: "image-056",
+    question: "常識にとらわれない発想を大切にしたい",
+    visual: "自由な発想",
+    image: image("photo-1497366216548-37526070297c"),
+    yesScores: { creativity: 2 },
+    noScores: { people: 2 }
+  },
+  {
+    id: "image-057",
+    question: "チームで目標を決めて一緒にやり切りたい",
+    visual: "チームで目標達成",
+    image: image("photo-1556761175-b413da4baf72"),
+    yesScores: { people: 2 },
+    noScores: { execution: 2 }
+  },
+  {
+    id: "image-058",
+    question: "まずタスクを片づけて成果を出したい",
+    visual: "タスクを完了する人",
+    image: image("photo-1484480974693-6ca0a78fb36b"),
+    yesScores: { execution: 2 },
+    noScores: { people: 2 }
+  },
+  {
+    id: "image-059",
+    question: "周りの力を引き出す役割が好き",
+    visual: "力を引き出すリーダー",
+    image: image("photo-1522202176988-66273c2fd55f"),
+    yesScores: { people: 2 },
+    noScores: { execution: 2 }
+  },
+  {
+    id: "image-060",
+    question: "決めたことを最後まで進める自信がある",
+    visual: "最後まで進める人",
+    image: image("photo-1542744173-8e7e53415bb0"),
+    yesScores: { execution: 2 },
+    noScores: { people: 2 }
+  },
+  {
+    id: "image-061",
+    question: "新しい挑戦も、まず周りの意見を聞いて進めたい",
+    visual: "意見を聞いて挑戦",
+    image: image("photo-1517048676732-d65bc937f952"),
+    yesScores: { people: 2 },
+    noScores: { challenge: 2 }
+  },
+  {
+    id: "image-062",
+    question: "考えすぎる前に未知の環境へ飛び込みたい",
+    visual: "未知へ飛び込む",
+    image: image("photo-1500534314209-a25ddb2bd429"),
+    yesScores: { challenge: 2 },
+    noScores: { focus: 2 }
+  },
+  {
+    id: "image-063",
+    question: "難しい課題ほど、一人で分析して攻略したい",
+    visual: "一人で課題を分析",
+    image: image("photo-1454165804606-c3d57bc86b40"),
+    yesScores: { focus: 2 },
+    noScores: { people: 2 }
+  },
+  {
+    id: "image-064",
+    question: "未経験のことでも、やりながら覚える方が早い",
+    visual: "実践で学ぶ",
+    image: image("photo-1519389950473-47ba0277781c"),
+    yesScores: { challenge: 2 },
+    noScores: { focus: 2 }
+  },
+  {
+    id: "image-065",
+    question: "正確さを守りながら、見せ方にも工夫を入れたい",
+    visual: "正確さと見せ方の工夫",
+    image: image("photo-1552664730-d307ca884978"),
+    yesScores: { focus: 2 },
+    noScores: { creativity: 2 }
+  },
+  {
+    id: "image-066",
+    question: "安定したペースでコツコツ続けたい",
+    visual: "落ち着いた作業",
+    image: image("photo-1506784983877-45594efa4cbe"),
+    yesScores: { stability: 2 },
+    noScores: { focus: 2 }
+  },
+  {
+    id: "image-067",
+    question: "細部まで確認して品質を高めたい",
+    visual: "細部のチェック",
+    image: image("photo-1454165804606-c3d57bc86b40"),
+    yesScores: { focus: 2 },
+    noScores: { stability: 2 }
+  },
+  {
+    id: "image-068",
+    question: "急な変更が少ない職場だと安心して働ける",
+    visual: "安定した職場",
+    image: image("photo-1524758631624-e2822e304c36"),
+    yesScores: { stability: 2 },
+    noScores: { focus: 2 }
+  },
+  {
+    id: "image-069",
+    question: "知識を組み合わせて新しい表現を作りたい",
+    visual: "知識と表現",
+    image: image("photo-1523726491678-bf852e717f6a"),
+    yesScores: { focus: 2 },
+    noScores: { creativity: 2 }
+  },
+  {
+    id: "image-070",
+    question: "正解を探すより、自分なりの発想を試したい",
+    visual: "発想を試す",
+    image: image("photo-1497366216548-37526070297c"),
+    yesScores: { creativity: 2 },
+    noScores: { focus: 2 }
+  },
+  {
+    id: "image-071",
+    question: "専門知識を深めるほどアイデアが出やすい",
+    visual: "専門知識と発想",
+    image: image("photo-1518770660439-4636190af475"),
+    yesScores: { focus: 2 },
+    noScores: { creativity: 2 }
+  },
+  {
+    id: "image-072",
+    question: "まだ誰も見たことがない形を考えるのが楽しい",
+    visual: "新しい形を考える",
+    image: image("photo-1552664730-d307ca884978"),
+    yesScores: { creativity: 2 },
+    noScores: { focus: 2 }
+  },
+  {
+    id: "image-073",
+    question: "考えたことを、具体的な手順に落とし込むのが得意",
+    visual: "考えを手順にする",
+    image: image("photo-1551434678-e076c223a692"),
+    yesScores: { focus: 2 },
+    noScores: { execution: 2 }
+  },
+  {
+    id: "image-074",
+    question: "細かく考えるより、まず完了まで進めたい",
+    visual: "完了まで進める",
+    image: image("photo-1484480974693-6ca0a78fb36b"),
+    yesScores: { execution: 2 },
+    noScores: { focus: 2 }
+  },
+  {
+    id: "image-075",
+    question: "複雑なことを整理してから動きたい",
+    visual: "複雑さを整理",
+    image: image("photo-1516321318423-f06f85e504b3"),
+    yesScores: { focus: 2 },
+    noScores: { execution: 2 }
+  },
+  {
+    id: "image-076",
+    question: "小さくても毎日進めることが成果につながると思う",
+    visual: "毎日の積み上げ",
+    image: image("photo-1542744173-8e7e53415bb0"),
+    yesScores: { execution: 2 },
+    noScores: { focus: 2 }
+  },
+  {
+    id: "image-077",
+    question: "挑戦するときは、今までにない工夫も試したい",
+    visual: "挑戦と新しい工夫",
+    image: image("photo-1500534314209-a25ddb2bd429"),
+    yesScores: { challenge: 2 },
+    noScores: { creativity: 2 }
+  },
+  {
+    id: "image-078",
+    question: "変化よりも、先が読める安心感を大切にしたい",
+    visual: "安心できる道",
+    image: image("photo-1497366811353-6870744d04b2"),
+    yesScores: { stability: 2 },
+    noScores: { challenge: 2 }
+  },
+  {
+    id: "image-079",
+    question: "慣れない役割でもチャンスなら受けてみたい",
+    visual: "新しい役割",
+    image: image("photo-1497366754035-f200968a6e72"),
+    yesScores: { challenge: 2 },
+    noScores: { stability: 2 }
+  },
+  {
+    id: "image-080",
+    question: "長く続けられる環境かどうかを重視したい",
+    visual: "長く続く環境",
+    image: image("photo-1524758631624-e2822e304c36"),
+    yesScores: { stability: 2 },
+    noScores: { challenge: 2 }
+  },
+  {
+    id: "image-081",
+    question: "新しい挑戦の中でアイデアを試したい",
+    visual: "挑戦とアイデア",
+    image: image("photo-1500534314209-a25ddb2bd429"),
+    yesScores: { challenge: 2 },
+    noScores: { creativity: 2 }
+  },
+  {
+    id: "image-082",
+    question: "自由に発想できるなら、道が決まっていなくても平気",
+    visual: "自由な発想の道",
+    image: image("photo-1523726491678-bf852e717f6a"),
+    yesScores: { creativity: 2 },
+    noScores: { challenge: 2 }
+  },
+  {
+    id: "image-083",
+    question: "未知のテーマほどワクワクして企画したくなる",
+    visual: "未知のテーマを企画",
+    image: image("photo-1553877522-43269d4ea984"),
+    yesScores: { challenge: 2 },
+    noScores: { creativity: 2 }
+  },
+  {
+    id: "image-084",
+    question: "制約があるほど、新しい工夫を考えたくなる",
+    visual: "制約から生まれる工夫",
+    image: image("photo-1552664730-d307ca884978"),
+    yesScores: { creativity: 2 },
+    noScores: { challenge: 2 }
+  },
+  {
+    id: "image-085",
+    question: "新しい目標があると、すぐ行動計画を立てたい",
+    visual: "挑戦の行動計画",
+    image: image("photo-1551434678-e076c223a692"),
+    yesScores: { challenge: 2 },
+    noScores: { execution: 2 }
+  },
+  {
+    id: "image-086",
+    question: "迷うより、まず手を動かして前に進めたい",
+    visual: "まず手を動かす",
+    image: image("photo-1504384308090-c894fdcc538d"),
+    yesScores: { execution: 2 },
+    noScores: { challenge: 2 }
+  },
+  {
+    id: "image-087",
+    question: "難しい目標でも、挑戦する価値があるなら燃える",
+    visual: "難しい目標へ挑戦",
+    image: image("photo-1464822759023-fed622ff2c3b"),
+    yesScores: { challenge: 2 },
+    noScores: { execution: 2 }
+  },
+  {
+    id: "image-088",
+    question: "やると決めたら途中で止めずに進めたい",
+    visual: "決めたことを進める",
+    image: image("photo-1517245386807-bb43f82c33c4"),
+    yesScores: { execution: 2 },
+    noScores: { challenge: 2 }
+  },
+  {
+    id: "image-089",
+    question: "今ある仕組みを少しずつ良くするのが好き",
+    visual: "仕組みを改善",
+    image: image("photo-1497215728101-856f4ea42174"),
+    yesScores: { stability: 2 },
+    noScores: { creativity: 2 }
+  },
+  {
+    id: "image-090",
+    question: "安定した土台があるほど、新しいアイデアを出しやすい",
+    visual: "土台のある発想",
+    image: image("photo-1497366811353-6870744d04b2"),
+    yesScores: { creativity: 2 },
+    noScores: { stability: 2 }
+  },
+  {
+    id: "image-091",
+    question: "大きく変えるより、無理なく改善する方が得意",
+    visual: "無理なく改善",
+    image: image("photo-1506784983877-45594efa4cbe"),
+    yesScores: { stability: 2 },
+    noScores: { creativity: 2 }
+  },
+  {
+    id: "image-092",
+    question: "決まった枠の中でも面白い工夫はできると思う",
+    visual: "枠の中の工夫",
+    image: image("photo-1518005020951-eccb494ad742"),
+    yesScores: { creativity: 2 },
+    noScores: { stability: 2 }
+  },
+  {
+    id: "image-093",
+    question: "安定した手順で確実に成果を出したい",
+    visual: "確実に成果を出す",
+    image: image("photo-1484480974693-6ca0a78fb36b"),
+    yesScores: { stability: 2 },
+    noScores: { execution: 2 }
+  },
+  {
+    id: "image-094",
+    question: "細かな準備より、動きながら形にしたい",
+    visual: "動きながら形にする",
+    image: image("photo-1542744173-8e7e53415bb0"),
+    yesScores: { execution: 2 },
+    noScores: { stability: 2 }
+  },
+  {
+    id: "image-095",
+    question: "締切やルールがある方が集中して進められる",
+    visual: "締切とルール",
+    image: image("photo-1554224155-6726b3ff858f"),
+    yesScores: { stability: 2 },
+    noScores: { execution: 2 }
+  },
+  {
+    id: "image-096",
+    question: "任されたことはスピード感を持って終わらせたい",
+    visual: "スピード感のある実行",
+    image: image("photo-1504384308090-c894fdcc538d"),
+    yesScores: { execution: 2 },
+    noScores: { stability: 2 }
+  },
+  {
+    id: "image-097",
+    question: "アイデアを出すだけでなく、形にするところまでやりたい",
+    visual: "アイデアを形にする",
+    image: image("photo-1552664730-d307ca884978"),
+    yesScores: { creativity: 2 },
+    noScores: { execution: 2 }
+  },
+  {
+    id: "image-098",
+    question: "発想よりも、まず実際に使える形へ進めたい",
+    visual: "使える形にする",
+    image: image("photo-1484480974693-6ca0a78fb36b"),
+    yesScores: { execution: 2 },
+    noScores: { creativity: 2 }
+  },
+  {
+    id: "image-099",
+    question: "新しい企画を考えると、実現方法まで想像してしまう",
+    visual: "企画と実現方法",
+    image: image("photo-1553877522-43269d4ea984"),
+    yesScores: { creativity: 2 },
+    noScores: { execution: 2 }
+  },
+  {
+    id: "image-100",
+    question: "思いついたことは、まず試作品にして確かめたい",
+    visual: "試作品で確かめる",
+    image: image("photo-1518005020951-eccb494ad742"),
+    yesScores: { execution: 2 },
+    noScores: { creativity: 2 }
   }
 ];
 
@@ -702,10 +1182,32 @@ export function getCurrentComparisonCount(settings = loadAdminSettings(), now = 
   return Math.max(0, Math.floor(baseCount + elapsedIntervals * incrementCount));
 }
 
+function getDefaultCardNumber(cardId) {
+  const match = String(cardId || "").match(/^image-(\d+)$/);
+  return match ? Number(match[1]) : 0;
+}
+
+function getCardOverrideFromCard(card, sortOrder) {
+  return {
+    question: card.question || "",
+    visual: card.visual || "",
+    image: card.image || "",
+    imageStoragePath: card.imageStoragePath || "",
+    yesScores: card.yesScores || {},
+    noScores: card.noScores || {},
+    enabled: card.enabled !== false,
+    sortOrder
+  };
+}
+
 export function buildSettingsFromMaster(master = {}) {
   const remoteSettings = master.settings || {};
   const resultOverrides = {};
   const cardOverrides = {};
+  const remoteCards = Array.isArray(master.cards) ? master.cards : [];
+  const maxRemoteDefaultCardNumber = remoteCards.reduce((max, card) => {
+    return Math.max(max, getDefaultCardNumber(card.id));
+  }, 0);
 
   (master.results || []).forEach((result) => {
     if (!result.resultType) return;
@@ -721,19 +1223,18 @@ export function buildSettingsFromMaster(master = {}) {
     };
   });
 
-  (master.cards || []).forEach((card, index) => {
+  remoteCards.forEach((card, index) => {
     if (!card.id) return;
-    cardOverrides[card.id] = {
-      question: card.question || "",
-      visual: card.visual || "",
-      image: card.image || "",
-      imageStoragePath: card.imageStoragePath || "",
-      yesScores: card.yesScores || {},
-      noScores: card.noScores || {},
-      enabled: card.enabled !== false,
-      sortOrder: Number(card.sortOrder || index + 1)
-    };
+    cardOverrides[card.id] = getCardOverrideFromCard(card, Number(card.sortOrder || index + 1));
   });
+
+  if (remoteCards.length > 0 && maxRemoteDefaultCardNumber > 0) {
+    DEFAULT_CARDS.forEach((card, index) => {
+      const cardNumber = getDefaultCardNumber(card.id);
+      if (cardOverrides[card.id] || cardNumber <= maxRemoteDefaultCardNumber) return;
+      cardOverrides[card.id] = getCardOverrideFromCard(card, index + 1);
+    });
+  }
 
   return {
     ...DEFAULT_SETTINGS,
@@ -758,7 +1259,7 @@ export function buildSettingsFromMaster(master = {}) {
     resultOverrides,
     cardOverrides,
     deletedCardIds: [],
-    useMasterCardsOnly: Array.isArray(master.cards) && master.cards.length > 0
+    useMasterCardsOnly: remoteCards.length > 0
   };
 }
 
@@ -839,13 +1340,91 @@ function sortCards(cards) {
   });
 }
 
+function shuffleCards(cards) {
+  const shuffled = [...cards];
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
+  }
+  return shuffled;
+}
+
+function getSafeDiagnosisQuestionCount(settings, poolCount) {
+  const requestedCount = Math.floor(
+    Number(settings.diagnosisQuestionCount || poolCount || DEFAULT_SETTINGS.diagnosisQuestionCount)
+  );
+  return Math.max(1, Math.min(Math.max(poolCount, 1), requestedCount));
+}
+
+function getCardAxisPotential(card) {
+  return Object.fromEntries(
+    AXIS_ORDER.map((axis) => [
+      axis,
+      Math.max(Number(card.yesScores?.[axis] || 0), Number(card.noScores?.[axis] || 0))
+    ])
+  );
+}
+
+function addAxisPotential(totals, potential) {
+  return Object.fromEntries(
+    AXIS_ORDER.map((axis) => [axis, Number(totals[axis] || 0) + Number(potential[axis] || 0)])
+  );
+}
+
+function getAxisBalanceScore(totals) {
+  const values = AXIS_ORDER.map((axis) => Number(totals[axis] || 0));
+  const mean = values.reduce((sum, value) => sum + value, 0) / AXIS_ORDER.length;
+  const variance = values.reduce((sum, value) => sum + (value - mean) ** 2, 0);
+  const spread = Math.max(...values) - Math.min(...values);
+  return variance + spread * 0.2;
+}
+
+function selectBalancedCards(questionPool, safeCount) {
+  const remaining = shuffleCards(questionPool).map((card) => ({
+    card,
+    potential: getCardAxisPotential(card)
+  }));
+  const selected = [];
+  let totals = Object.fromEntries(AXIS_ORDER.map((axis) => [axis, 0]));
+
+  while (selected.length < safeCount && remaining.length > 0) {
+    const scored = remaining
+      .map((item, index) => ({
+        index,
+        score: getAxisBalanceScore(addAxisPotential(totals, item.potential))
+      }))
+      .sort((a, b) => a.score - b.score);
+    const pickRange = scored.slice(0, Math.min(4, scored.length));
+    const picked = pickRange[Math.floor(Math.random() * pickRange.length)];
+    const [item] = remaining.splice(picked.index, 1);
+    selected.push(item.card);
+    totals = addAxisPotential(totals, item.potential);
+  }
+
+  return shuffleCards(selected);
+}
+
 export function getConfiguredCards(settings = loadAdminSettings()) {
   const overrides = settings.cardOverrides || {};
   const deletedIds = new Set(settings.deletedCardIds || []);
 
   if (settings.useMasterCardsOnly) {
+    const defaultOverrideNumbers = Object.keys(overrides)
+      .map(getDefaultCardNumber)
+      .filter((cardNumber) => cardNumber > 0);
+    const maxOverrideDefaultCardNumber = Math.max(0, ...defaultOverrideNumbers);
+    const supplementedOverrides = { ...overrides };
+
+    if (maxOverrideDefaultCardNumber > 0) {
+      DEFAULT_CARDS.forEach((card, index) => {
+        const cardNumber = getDefaultCardNumber(card.id);
+        if (supplementedOverrides[card.id] || cardNumber <= maxOverrideDefaultCardNumber) return;
+        supplementedOverrides[card.id] = getCardOverrideFromCard(card, index + 1);
+      });
+    }
+
     return sortCards(
-      Object.entries(overrides)
+      Object.entries(supplementedOverrides)
         .filter(([id]) => !deletedIds.has(id))
         .map(([id, card], index) => buildCardFromOverride(id, card, index + 1))
     );
@@ -871,18 +1450,10 @@ export function getConfiguredCards(settings = loadAdminSettings()) {
 
 export function getDiagnosisCards(settings = loadAdminSettings()) {
   const configuredCards = getConfiguredCards(settings);
-  const hasEnabledSettings = Object.values(settings.cardOverrides || {}).some(
-    (card) => typeof card.enabled === "boolean"
-  );
-
-  if (hasEnabledSettings) {
-    const enabledCards = configuredCards.filter((card) => card.enabled !== false);
-    return enabledCards.length ? enabledCards : configuredCards.slice(0, 1);
-  }
-
-  const requestedCount = Number(settings.diagnosisQuestionCount || configuredCards.length);
-  const safeCount = Math.max(1, Math.min(configuredCards.length, Math.floor(requestedCount)));
-  return configuredCards.slice(0, safeCount);
+  const enabledCards = configuredCards.filter((card) => card.enabled !== false);
+  const questionPool = enabledCards.length ? enabledCards : configuredCards.slice(0, 1);
+  const safeCount = getSafeDiagnosisQuestionCount(settings, questionPool.length);
+  return selectBalancedCards(questionPool, safeCount);
 }
 
 export function getConfiguredResults(settings = loadAdminSettings()) {

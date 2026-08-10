@@ -10,7 +10,7 @@ import {
   getDiagnosisCards,
   getResultKey,
   loadAdminSettings
-} from "./data.js";
+} from "./data.js?v=20260807-100q-balanced-v2";
 
 const config = window.CAREER_APP_CONFIG || {};
 
@@ -66,6 +66,10 @@ function escapeHtml(value) {
 
 function formatNumber(value) {
   return Number(value || 0).toLocaleString("ja-JP");
+}
+
+function getEstimatedDurationMinutes(questionCount = cards.length) {
+  return Math.max(1, Math.ceil((Number(questionCount || 1) * 3) / 60));
 }
 
 function delay(ms) {
@@ -297,6 +301,13 @@ async function loadRemoteMaster() {
 }
 
 function renderLandingMetrics() {
+  const durationMinutes = getEstimatedDurationMinutes(cards.length);
+  const lpQuestionCount = $("#lpQuestionCount");
+  if (lpQuestionCount) lpQuestionCount.textContent = formatNumber(cards.length);
+  const lpDuration = $("#lpDuration");
+  if (lpDuration) lpDuration.textContent = `診断時間：約${durationMinutes}分`;
+  const startButton = $("#startFromHero");
+  if (startButton) startButton.textContent = `診断スタート（約${durationMinutes}分）`;
   $("#lpCompareCount").textContent = formatNumber(getCurrentComparisonCount(settings));
   $("#lpJobCount").textContent = formatNumber(settings.jobCount);
 }
@@ -473,6 +484,7 @@ function resetDiagnosis() {
 
 async function startDiagnosis() {
   if (masterLoadPromise) await masterLoadPromise;
+  cards = getDiagnosisCards(settings);
   resetDiagnosis();
   const funnelId = startNewFunnel();
   logEvent("diagnosis_start", {

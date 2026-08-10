@@ -12,6 +12,9 @@
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <title>AIキャリア診断</title>
     <meta
       name="description"
@@ -20,7 +23,7 @@
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/styles.css" />
     <script src="./config.js"></script>
-    <script type="module" src="./src/app.js"></script>
+    <script type="module" src="./src/app.js?v=20260807-100q-balanced-v2"></script>
   </head>
   <body>
     <main id="app">
@@ -39,8 +42,8 @@
 
           <div class="lp-bottom">
             <div class="lp-intro">
-              <p>40枚の画像を直感で選ぶだけ</p>
-              <span>診断時間：約2分</span>
+              <p><strong id="lpQuestionCount">40</strong>枚の画像を直感で選ぶだけ</p>
+              <span id="lpDuration">診断時間：約2分</span>
             </div>
             <div class="hero-actions">
               <!-- startFromHero jsで使用中 -->

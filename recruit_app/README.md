@@ -8,7 +8,7 @@ PDF要件に沿った、バニラHTML/CSS/JavaScriptのAIキャリア診断MVP�
 - `admin/index.html` - 管理画面ログイン用の静的HTML。ログイン前は管理画面本体を含まない
 - `config.js` - 公開ページ用の接続設定。管理用Secretは置かない
 - `admin/config.js` - 管理画面用の接続設定。管理用Secretは置かない
-- `src/data.js` - 40問カード、6軸、15タイプ診断マスタ
+- `src/data.js` - 100問カード、6軸、15タイプ診断マスタ
 - `src/app.js` - スワイプ操作、スコア計算、画面遷移、保存/LINE導線
 - `src/admin-login.js` - 管理画面ログイン、ログイン後の管理UI取得
 - `src/admin.js` - 管理画面本体。マスタ保存、画像アップロード、KPI取得
@@ -39,6 +39,11 @@ python3 -m http.server 4173
 - タイプ名、キャッチコピー、説明文、強み、向いている仕事、おすすめ業界、LINE送信文
 - 同タイプ割合
 - 各カードの質問文、画像、管理用ラベル
+- 出題候補のON/OFF、診断で出題する質問数
+
+公開診断では、出題候補の中から設定した質問数だけを軸バランスを見てランダム出題します。
+DBが40問までしか持っていない場合も、`src/data.js` の `image-041` 以降を補完します。
+管理画面で「Supabaseへ全データ保存」を押すと、補完された質問もDBへ保存されます。
 
 管理画面はSupabase接続が必要です。
 管理画面の保存ボタンまたは「Supabaseへ全データ保存」でDBへ同期されます。
@@ -112,7 +117,7 @@ DB定義の控えは `supabase/migrations/*` に残しています。
 `supabase/migrations/20260806001000_add_diagnosis_question_count.sql` を実行し、
 `supabase/dashboard/admin-master-index.ts` を `admin-master` に貼り直してDeployします。
 
-スワイプカードの出題ON/OFF、新規質問追加、質問削除を反映する場合は、DashboardのSQL Editorで
+スワイプカードの出題ON/OFF、新規質問追加、質問削除、軸バランスランダム出題を反映する場合は、DashboardのSQL Editorで
 `supabase/migrations/20260806002000_add_swipe_card_enabled.sql` を実行し、
 `supabase/dashboard/admin-master-index.ts` を `admin-master` に、
 `supabase/dashboard/admin-ui-index.ts` を `admin-ui` に貼り直してDeployします。

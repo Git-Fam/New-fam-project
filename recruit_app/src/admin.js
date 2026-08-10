@@ -7,7 +7,7 @@ import {
   loadAdminSettings,
   saveAdminSettings,
   serializeSettingsForMaster
-} from "./data.js";
+} from "./data.js?v=20260807-100q-balanced-v2";
 
 const config = window.CAREER_APP_CONFIG || {};
 const ADMIN_SESSION_STORAGE_KEY = "ai-career-admin-session";
@@ -332,12 +332,36 @@ function getActiveCardCount() {
   return cards.filter((card) => card.enabled !== false).length;
 }
 
+function getSafeQuestionCount(value = settings.diagnosisQuestionCount, activeCount = getActiveCardCount()) {
+  const requestedCount = Math.floor(Number(value || DEFAULT_SETTINGS.diagnosisQuestionCount));
+  return Math.max(1, Math.min(Math.max(activeCount, 1), requestedCount));
+}
+
 function renderActiveCardCount() {
   const activeCount = getActiveCardCount();
   const activeCardCount = $("#activeCardCount");
   const questionCountInput = $("#diagnosisQuestionCountInput");
   if (activeCardCount) activeCardCount.textContent = formatNumber(activeCount);
-  if (questionCountInput) questionCountInput.value = activeCount;
+  if (questionCountInput) {
+    questionCountInput.max = Math.max(activeCount, 1);
+    if (!questionCountInput.value) {
+      questionCountInput.value = getSafeQuestionCount(settings.diagnosisQuestionCount, activeCount);
+    }
+  }
+  const questionCountHelp = $("#diagnosisQuestionCountHelp");
+  if (questionCountHelp) {
+    questionCountHelp.textContent =
+      `出題候補${formatNumber(activeCount)}問から、設定した件数をランダムで出題します。`;
+  }
+}
+
+function saveQuestionCountFromInput() {
+  const input = $("#diagnosisQuestionCountInput");
+  if (!input) return;
+  const safeCount = getSafeQuestionCount(input.value);
+  input.value = safeCount;
+  save({ diagnosisQuestionCount: safeCount });
+  renderActiveCardCount();
 }
 
 function getNextCardId() {
@@ -360,8 +384,9 @@ function updateCardEnabled(cardId, enabled) {
     return;
   }
 
+  const nextActiveCount = Math.max(1, getActiveCardCount() + (enabled ? 1 : -1));
   save({
-    diagnosisQuestionCount: Math.max(1, getActiveCardCount() + (enabled ? 1 : -1)),
+    diagnosisQuestionCount: getSafeQuestionCount(settings.diagnosisQuestionCount, nextActiveCount),
     cardOverrides: {
       ...(settings.cardOverrides || {}),
       [cardId]: getCardSettings(card, { enabled })
@@ -391,9 +416,10 @@ async function deleteSelectedCard() {
 
   const nextCardOverrides = { ...(settings.cardOverrides || {}) };
   delete nextCardOverrides[cardId];
+  const nextActiveCount = Math.max(1, getActiveCardCount() - (card.enabled !== false ? 1 : 0));
 
   save({
-    diagnosisQuestionCount: Math.max(1, getActiveCardCount() - (card.enabled !== false ? 1 : 0)),
+    diagnosisQuestionCount: getSafeQuestionCount(settings.diagnosisQuestionCount, nextActiveCount),
     cardOverrides: nextCardOverrides,
     deletedCardIds: [...new Set([...(settings.deletedCardIds || []), cardId])]
   });
@@ -468,6 +494,7 @@ function renderGeneral() {
   $("#comparisonIntervalInput").value = settings.comparisonIncrementIntervalHours;
   $("#comparisonIncrementInput").value = settings.comparisonIncrementCount;
   renderActiveCardCount();
+  $("#diagnosisQuestionCountInput").value = getSafeQuestionCount(settings.diagnosisQuestionCount);
   $("#jobCountInput").value = settings.jobCount;
   $("#highMatchCountInput").value = settings.highMatchCount;
   $("#requireLineInput").checked = Boolean(settings.requireLineBeforeResult);
@@ -853,12 +880,14 @@ function bindEvents() {
   });
 
   $("#saveGeneral").addEventListener("click", async () => {
+    const safeQuestionCount = getSafeQuestionCount($("#diagnosisQuestionCountInput").value);
+    $("#diagnosisQuestionCountInput").value = safeQuestionCount;
     save({
       comparisonCount: Number($("#comparisonCountInput").value || 0),
       comparisonIncrementIntervalHours: Number($("#comparisonIntervalInput").value || 0),
       comparisonIncrementCount: Number($("#comparisonIncrementInput").value || 0),
       comparisonCountUpdatedAt: new Date().toISOString(),
-      diagnosisQuestionCount: getActiveCardCount(),
+      diagnosisQuestionCount: safeQuestionCount,
       jobCount: Number($("#jobCountInput").value || 0),
       highMatchCount: Number($("#highMatchCountInput").value || 0),
       requireLineBeforeResult: $("#requireLineInput").checked
@@ -929,12 +958,15 @@ function bindEvents() {
   });
   $("#cardVisualInput").addEventListener("input", renderCardPreviewFromInputs);
   bindImageUploadEvents();
+  $("#diagnosisQuestionCountInput").addEventListener("input", renderActiveCardCount);
+  $("#diagnosisQuestionCountInput").addEventListener("change", saveQuestionCountFromInput);
 
   $("#addCard").addEventListener("click", async () => {
     const cardId = getNextCardId();
     const sortOrder = Math.max(...cards.map((card) => Number(card.sortOrder || 0))) + 1;
+    const nextActiveCount = getActiveCardCount() + 1;
     save({
-      diagnosisQuestionCount: getActiveCardCount() + 1,
+      diagnosisQuestionCount: getSafeQuestionCount(settings.diagnosisQuestionCount, nextActiveCount),
       cardOverrides: {
         ...(settings.cardOverrides || {}),
         [cardId]: {
@@ -971,6 +1003,7 @@ function bindEvents() {
   }
 
   $("#saveCardActivation").addEventListener("click", async () => {
+    saveQuestionCountFromInput();
     await persistMaster("出題設定を保存しました");
   });
 
