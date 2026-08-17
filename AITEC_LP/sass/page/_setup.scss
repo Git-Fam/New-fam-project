@@ -1,0 +1,313 @@
+@use '../functions' as *;
+
+/* -----------------------
+  setup
+----------------------- */
+
+.setup {
+    &__inner {
+        margin: 0 auto;
+        @include pc {
+            max-width: pmin(887); // Figma実測（コンテンツ幅847px + 左右余白pmin(20)×2）
+            padding: pmin(100) pmin(20);
+        }
+
+        @include sp {
+            max-width: s(887);
+            padding: s(100) s(20);
+        }
+    }
+
+    &__eyebrow-TX {
+        @include wt700;
+        @include lineHeight(16, 22.4);
+        color: $B-144fef;
+        text-align: center;
+        @include pc {
+            font-size: pmin(16);
+            letter-spacing: pmin(1.6);
+        }
+
+        @include sp {
+            font-size: s(16);
+            text-align: left;
+            letter-spacing: s(1.6);
+        }
+    }
+
+    &__title-TL {
+        @include wt500;
+        @include lineHeight(32, 22.4);
+        color: $F-1a1f36;
+        text-align: center;
+        @include pc {
+            font-size: pmin(32);
+            letter-spacing: pmin(3.2);
+            margin-top: pmin(30);
+        }
+
+        @include sp {
+            font-size: s(32);
+            letter-spacing: s(3.2);
+            text-align: left;
+            margin-top: s(20);
+            line-height: 1.5;
+        }
+    }
+
+    &__description-TX {
+        @include notoSansNum;
+        @include wt400;
+        @include lineHeight(13, 24.5);
+        color: $F-546479;
+        text-align: center;
+        @include pc {
+            font-size: pmin(13);
+            letter-spacing: pmin(1.3);
+            margin-top: pmin(30);
+        }
+
+        @include sp {
+            font-size: s(13);
+            letter-spacing: s(1.3);
+            text-align: left;
+            margin-top: s(20);
+        }
+    }
+
+    &__steps {
+        position: relative;
+        display: flex;
+        list-style: none;
+
+        // バッジ中心を結ぶ線（PC：横線）
+
+        &::before {
+            content: '';
+            position: absolute;
+            background-color: $P-2e6fd9;
+            @include pc {
+                top: pmin(20);
+                left: pmin(102);
+                right: pmin(102);
+                height: pmin(3);
+            }
+
+            @include sp {
+                top: s(20);
+                left: s(102);
+                right: s(102);
+                height: s(3);
+            }
+        }
+        @include pc {
+            gap: pmin(10);
+            margin-top: pmin(60);
+        }
+
+        @include sp {
+            flex-direction: column;
+            gap: s(30);
+            margin-top: s(60);
+            // SPはカード高さがステップごとに異なり、コンテナ基準の固定top/bottomでは
+            // 1つ目の上・最後の下にはみ出すため、バッジごとの線に分割する（&__step側で描画）
+            &::before {
+                content: none;
+            }
+        }
+    }
+
+    &__step {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        // STEP01
+
+        &--01 {
+            .setup__step-badge {
+                background-color: $P-85a4f7;
+            
+            }
+            .setup__step-card {
+                border-color: $P-85a4f7;
+            
+            }
+        
+        }
+
+        // STEP02
+        &--02 {
+            .setup__step-badge {
+                background-color: $P-5680f4;
+            
+            }
+            .setup__step-card {
+                border-color: $P-5680f4;
+            
+            }
+        
+        }
+
+        // STEP03
+        &--03 {
+            .setup__step-badge {
+                background-color: $P-3a6bf0;
+            
+            }
+            .setup__step-card {
+                border-color: $P-3a6bf0;
+            
+            }
+        
+        }
+
+        // STEP04
+        &--04 {
+            .setup__step-badge {
+                background-color: $B-144fef;
+            
+            }
+            .setup__step-card {
+                border-color: $B-144fef;
+            
+            }
+        
+        }
+        @include pc {
+            flex: 0 0 pmin(204);
+            padding-top: pmin(70);
+        }
+
+        @include sp {
+            flex: 1 1 auto;
+            flex-direction: row;
+            align-items: center;
+            gap: s(26);
+            padding-top: 0;
+            // バッジ中心を結ぶ線（SP：縦線をステップごとに分割）
+            // align-items: centerによりバッジ中心は各stepの高さの50%位置になるため、
+            // カード高さに依存せず1つ目の上・最後の下にはみ出さない
+            &:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: s(27); // バッジ中心位置（Figma実測）
+                width: s(3);
+                height: 50%;
+                background-color: $P-2e6fd9;
+            }
+            &:not(:first-child)::before {
+                content: '';
+                position: absolute;
+                top: calc(-1 * s(30)); // gapと同じ値
+                left: s(27);
+                width: s(3);
+                height: calc(50% + s(30));
+                background-color: $P-2e6fd9;
+            }
+        }
+    }
+
+    &__step-badge {
+        @include center;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        z-index: 1;
+        transform: translateX(-50%);
+        border-style: solid;
+        border-color: $F-ffffff;
+        border-radius: 50%;
+        @include pc {
+            width: pmin(40);
+            height: pmin(40);
+            border-width: pmin(4);
+            box-shadow: 0 pmin(4) pmin(10) 0 rgba(0, 0, 0, 0.15);
+        }
+
+        @include sp {
+            position: static;
+            flex-shrink: 0;
+            margin-left: s(7); // 見出しテキストより内側にインセット（Figma実測）
+            transform: none;
+            width: s(44);
+            height: s(44);
+            border-width: s(4);
+            box-shadow: 0 s(4) s(10) 0 rgba(0, 0, 0, 0.15);
+        }
+    }
+
+    &__step-number-TX {
+        @include wt500;
+        @include lineHeight(16, 22.4);
+        color: $F-ffffff;
+        @include pc {
+            font-size: pmin(16);
+            letter-spacing: pmin(1.6);
+        }
+
+        @include sp {
+            font-size: s(16);
+            letter-spacing: s(1.6);
+        }
+    }
+
+    &__step-card {
+        width: 100%;
+
+        background-color: $F-ffffff;
+        text-align: center;
+        @include pc {
+            border: pmin(1) solid transparent;
+            height: pmin(207);
+            padding: pmin(48) pmin(17) 0;
+            border-radius: pmin(10);
+        }
+
+        @include sp {
+            border: s(1) solid transparent;
+            flex: 1;
+            width: auto;
+            height: auto;
+            padding: s(48) s(37) s(37) s(34);
+            border-radius: s(10);
+            text-align: left;
+        }
+    }
+
+    &__step-title-TL {
+        @include notoSansNum;
+        @include wt700;
+        @include lineHeight(16, 14.5);
+        color: $F-1a1f36;
+        @include pc {
+            font-size: pmin(16);
+            letter-spacing: pmin(1.6);
+        }
+
+        @include sp {
+            font-size: s(16);
+            letter-spacing: s(1.6);
+        }
+    }
+
+    &__step-description-TX {
+        @include notoSansNum;
+        @include wt400;
+        @include lineHeight(13, 25.5);
+        color: $F-1a1f36;
+        @include pc {
+            font-size: pmin(13);
+            letter-spacing: pmin(1.3);
+            margin-top: pmin(15);
+        }
+
+        @include sp {
+            font-size: s(13);
+            letter-spacing: s(1.3);
+            margin-top: s(15);
+        }
+    }
+}

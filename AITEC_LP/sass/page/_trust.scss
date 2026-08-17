@@ -1,0 +1,79 @@
+@use '../functions' as *;
+
+/* -----------------------
+  trust
+----------------------- */
+
+.trust {
+    &__inner {
+        margin: 0 auto;
+        @include pc {
+            max-width: pmin(1280);
+            padding: pmin(50) pmin(19) pmin(51);
+        }
+
+        @include sp {
+            max-width: s(1280);
+            padding: s(50) 0;
+        }
+    }
+
+    &__title-TX {
+        @include inter;
+        @include lineHeight(13.96, 24);
+        color: $F-5a6270;
+        text-align: center;
+        @include pc {
+            font-size: pmin(13.96);
+            margin-bottom: pmin(14);
+        }
+
+        @include sp {
+            font-size: s(13.96);
+            margin-bottom: s(9.5);
+            padding: 0 s(20);
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+
+        // SPは1行に収まらないため横スクロールで表示（アニメーションは実装しない方針のため）
+        @include pc {
+            gap: pmin(30);
+        }
+
+        @include sp {
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            gap: s(10);
+            padding: 0 s(20);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+    }
+
+    // SP版デザインには含まれないロゴ（Figma実測）
+    &__item--pc-only {
+        @include sp {
+            display: none;
+        }
+    }
+
+    &__logo {
+        display: block;
+        @include pc {
+            width: pmin(129);
+            height: pmin(55);
+        }
+
+        @include sp {
+            flex-shrink: 0;
+            width: s(129);
+            height: s(55);
+        }
+    }
+}

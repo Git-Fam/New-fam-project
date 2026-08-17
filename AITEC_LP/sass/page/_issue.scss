@@ -1,0 +1,270 @@
+@use "../functions" as *;
+
+/* -----------------------
+  issue
+----------------------- */
+
+.issue {
+    background-color: $B-f8fafe;
+
+    &__inner {
+        margin: 0 auto;
+        @include pc {
+            max-width: pmin(900);
+            padding: pmin(100) pmin(20) pmin(80);
+        }
+
+        @include sp {
+            max-width: s(900);
+            padding: s(106) s(20) s(100);
+        }
+    }
+
+    &__eyebrow-TX {
+        @include wt700;
+        @include lineHeight(16, 22.4);
+        color: $B-144fef;
+        text-align: center;
+        @include pc {
+            font-size: pmin(16);
+            letter-spacing: pmin(1.6);
+        }
+
+        @include sp {
+            font-size: s(16);
+            letter-spacing: s(1.6);
+        }
+    }
+
+    &__title-TL {
+        @include wt500;
+        @include lineHeight(32, 22.4);
+        color: $F-303030;
+        text-align: center;
+        @include pc {
+            font-size: pmin(32);
+            letter-spacing: pmin(3.2);
+            margin-top: pmin(30);
+        }
+
+        @include sp {
+            font-size: s(24);
+            letter-spacing: s(2.4);
+            color: $F-1a1f36;
+            margin-top: s(30);
+            @include lineHeight(24, 42.4);
+        }
+    }
+
+    &__description-TX {
+        @include notoSansNum;
+        @include wt400;
+        @include lineHeight(13, 24.5);
+        color: $F-546479;
+        text-align: center;
+        @include pc {
+            font-size: pmin(13);
+            letter-spacing: pmin(1.3);
+            margin-top: pmin(33);
+        }
+
+        @include sp {
+            font-size: s(13);
+            letter-spacing: s(1.3);
+            margin-top: s(33);
+        }
+    }
+
+    &__cards {
+        display: flex;
+        @include pc {
+            gap: pmin(20);
+            margin-top: pmin(60);
+        }
+
+        @include sp {
+            flex-direction: column;
+            gap: s(30);
+            margin: s(62) auto 0;
+            width: s(268);
+        }
+    }
+
+    &__card {
+        flex: 1;
+        background-color: $F-ffffff;
+        text-align: center;
+
+        @include pc {
+            border: pmin(1) solid rgba(48, 48, 48, 0.1);
+            padding: pmin(34) pmin(15) pmin(30);
+            border-radius: pmin(10);
+        }
+
+        @include sp {
+            border: s(1) solid rgba(48, 48, 48, 0.1);
+            padding: s(34) s(16) s(30);
+            border-radius: s(10);
+        }
+
+        &-icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            background-color: rgba($P-e7718b, 0.1);
+            @include pc {
+                width: pmin(63);
+                height: pmin(63);
+                border-radius: pmin(10);
+            }
+
+            @include sp {
+                width: s(63);
+                height: s(63);
+                background-color: $B-f2f7ff;
+                border-radius: s(10);
+            }
+        }
+
+        &-icon-dots {
+            display: grid;
+
+            @include pc {
+                grid-template-columns: repeat(2, pmin(8));
+                gap: pmin(2);
+            }
+
+            @include sp {
+                grid-template-columns: repeat(2, s(8));
+                gap: s(2);
+            }
+
+            span {
+                display: block;
+                @include pc {
+                    border: pmin(1.5) solid $P-e7718b;
+                    border-radius: pmin(1);
+                    width: pmin(8);
+                    height: pmin(8);
+                }
+
+                @include sp {
+                    border: s(1.5) solid $P-e7718b;
+                    border-radius: s(1);
+                    width: s(8);
+                    height: s(8);
+                    border-color: $B-144fef;
+                }
+            }
+        }
+
+        &-icon-img {
+            &--circle {
+                @include pc {
+                    width: pmin(18);
+                    height: pmin(18);
+                }
+
+                @include sp {
+                    width: s(18);
+                    height: s(18);
+                }
+            }
+
+            &--hand {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -75%);
+                @include pc {
+                    width: pmin(3);
+                    height: pmin(8.5);
+                }
+
+                @include sp {
+                    width: s(3);
+                    height: s(8.5);
+                }
+            }
+        }
+
+        &-title-TL {
+            @include notoSansNum;
+            @include wt700;
+            @include lineHeight(16, 34.5);
+            color: $F-303030;
+            @include pc {
+                font-size: pmin(16);
+                letter-spacing: pmin(1.6);
+                margin-top: pmin(21);
+            }
+
+            @include sp {
+                font-size: s(16);
+                letter-spacing: s(1.6);
+                color: $F-1a1f36;
+                margin-top: s(19);
+            }
+        }
+
+        &-description-TX {
+            @include notoSansNum;
+            @include wt400;
+            @include lineHeight(13, 28.5);
+            color: $F-303030;
+            @include pc {
+                font-size: pmin(13);
+                letter-spacing: pmin(1.3);
+                margin-top: pmin(10);
+            }
+
+            @include sp {
+                font-size: s(13);
+                letter-spacing: s(1.3);
+                color: $F-1a1f36;
+                margin-top: s(9);
+            }
+        }
+
+        &:nth-child(3) {
+            @include sp {
+                padding: s(34) s(12) s(30);
+            }
+        }
+    }
+
+    &__arrow {
+        display: block;
+        @include pc {
+            width: pmin(42);
+            height: pmin(42);
+            margin: pmin(53) auto 0;
+        }
+
+        @include sp {
+            width: s(42);
+            height: s(42);
+            margin: s(93) auto 0;
+        }
+    }
+
+    &__banner-TL {
+        @include wt700;
+        @include lineHeight(32, 62.4);
+        color: $B-144fef;
+        text-align: center;
+        @include pc {
+            font-size: pmin(32);
+            letter-spacing: pmin(3.2);
+            margin-top: pmin(22);
+        }
+
+        @include sp {
+            font-size: s(32);
+            letter-spacing: s(3.2);
+            margin-top: s(39);
+        }
+    }
+}

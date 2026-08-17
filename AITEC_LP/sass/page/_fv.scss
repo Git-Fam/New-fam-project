@@ -1,0 +1,566 @@
+@use "../functions" as *;
+
+/* -----------------------
+  fv
+----------------------- */
+
+// 写真とカードが重なるレイアウトのため、.fv__inner内はabsoluteで配置する
+.fv {
+    position: relative;
+    // headerとの境目（中央〜左）の色をなじませるため、ecedffの色停止位置のみ調整（77.89% → 43.6%、角度・他の停止位置はFigma実測のまま）
+    background: linear-gradient(120.51deg, $B-d6e8ff 14.13%, $B-d7edff 27.85%, $B-ecedff 43.6%, $B-abcbff 100.46%);
+
+    &__inner {
+        position: relative;
+
+        margin: 0 auto;
+        @include pc {
+            max-width: pmin(1280);
+            height: pmin(652);
+            padding: 0 pmin(50);
+        }
+
+        @include sp {
+            max-width: s(1280);
+            height: s(655);
+            padding: 0;
+        }
+    }
+
+    // 背景の人物写真
+    &__photo {
+        position: absolute;
+        z-index: 3;
+
+        &-img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: bottom;
+        
+        }
+
+        &-overlay {
+            position: absolute;
+            inset: 0;
+            display: block;
+            background: linear-gradient(to right, $B-d9edff 0%, rgba($B-d9edff, 0) 24%);
+
+            // SPは写真のグラデーションフェードなし（Figma実測）
+            @include sp {
+                display: none;
+            }
+        }
+        @include pc {
+            top: pmin(83);
+            left: pmin(243);
+            width: pmin(816);
+            height: pmin(574);
+        }
+
+        @include sp {
+            top: s(280);
+            left: s(-9);
+            width: s(509);
+            height: s(380);
+        }
+    }
+
+    // 管理画面スクリーンショットカード
+    &__screenshot {
+        position: absolute;
+        z-index: 1;
+        overflow: hidden;
+        background-color: $F-ffffff;
+
+        &-img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        
+        }
+        @include pc {
+            top: pmin(105);
+            left: pmin(795);
+            width: pmin(611);
+            height: pmin(371);
+            border-radius: pmin(10);
+            box-shadow: pmin(2.58) pmin(2.58) pmin(15.479) 0 rgba(0, 0, 0, 0.15);
+        }
+
+        @include sp {
+            top: s(384);
+            left: s(30);
+            width: s(436);
+            height: s(265);
+            border-radius: s(6.222);
+            box-shadow: s(1.605) s(1.605) s(9.63) 0 rgba(0, 0, 0, 0.15);
+        }
+    }
+
+    // 通話中カード
+    &__call {
+        position: absolute;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        background-color: $F-ffffff;
+
+        &-status-TX {
+            @include inter;
+            @include wt700;
+            @include lineHeight(12, 21);
+            color: $F-38b48b;
+            @include pc {
+                font-size: pmin(12);
+            }
+
+            @include sp {
+                font-size: s(9.327);
+            }
+        }
+
+        &-number-TX {
+            @include inter;
+            font-weight: 900;
+            @include lineHeight(16.2, 31);
+            color: $F-1a1f36;
+            @include pc {
+                font-size: pmin(16.2);
+                letter-spacing: pmin(0.6);
+            }
+
+            @include sp {
+                font-size: s(12.612);
+                letter-spacing: s(0.6);
+            }
+        }
+
+        &-company-TX {
+            @include inter;
+            @include lineHeight(11.7, 21);
+            color: $F-5a6270;
+            @include pc {
+                font-size: pmin(11.7);
+            }
+
+            @include sp {
+                font-size: s(9.104);
+            }
+        }
+
+        &-duration-TX {
+            @include inter;
+            @include lineHeight(11.2, 21);
+            color: $F-8a92a0;
+            @include pc {
+                font-size: pmin(11.2);
+            }
+
+            @include sp {
+                font-size: s(8.697);
+            }
+        }
+        @include pc {
+            top: pmin(400);
+            left: pmin(1000);
+            gap: pmin(4);
+            width: pmin(230);
+            padding: pmin(16) pmin(16) pmin(65);
+            border-radius: pmin(12);
+            box-shadow: 0 pmin(4) pmin(12) 0 rgba(0, 0, 0, 0.15);
+        }
+
+        @include sp {
+            display: none;
+            top: s(400);
+            left: s(1000);
+            gap: s(4);
+            width: s(230);
+            padding: s(16) s(16) s(65);
+            border-radius: s(12);
+            box-shadow: 0 s(4) s(12) 0 rgba(0, 0, 0, 0.15);
+        }
+    }
+
+    // テキストコンテンツ
+    &__content {
+        position: absolute;
+        z-index: 4;
+
+        // SPは子要素それぞれを個別配置するため、ラッパー自体の位置指定を解除する
+        @include pc {
+            top: pmin(75);
+            left: pmin(74);
+            width: pmin(542);
+        }
+
+        @include sp {
+            position: static;
+            top: auto;
+            left: auto;
+            width: auto;
+        }
+    }
+
+    &__eyebrow-TX {
+        @include wt700;
+        @include lineHeight(13.8, 24);
+        color: $B-144fef;
+        @include pc {
+            font-size: pmin(13.8);
+            margin-bottom: pmin(16);
+        }
+
+        @include sp {
+            position: absolute;
+            top: s(24);
+            left: s(20);
+            font-size: s(13.8);
+            margin-bottom: 0;
+        }
+    }
+
+    &__heading-TL {
+        font-weight: 900;
+        @include lineHeight(44.1, 64);
+        color: $F-1a1f36;
+
+        &-accent {
+            color: $B-144fef;
+        
+        }
+        @include pc {
+            font-size: pmin(44.1);
+            letter-spacing: pmin(0.44);
+            margin-bottom: pmin(10);
+        }
+
+        @include sp {
+            position: absolute;
+            top: s(57.5);
+            left: s(20);
+            width: 100%;
+            font-size: s(34);
+            letter-spacing: s(0.44);
+            margin-bottom: 0;
+            margin-top:s(3);
+        }
+    }
+
+    &__description-TX {
+        @include lineHeight(15.8, 28);
+        color: $F-5a6270;
+        @include pc {
+            font-size: pmin(15.8);
+            margin-bottom: pmin(37);
+        }
+
+        @include sp {
+            position: absolute;
+            top: s(227);
+            left: s(20);
+            width: s(293);
+            font-size: s(13);
+            margin-bottom: 0;
+            line-height: 2;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        align-items: center;
+        @include pc {
+            gap: pmin(16);
+            margin-bottom: pmin(41);
+        }
+
+        @include sp {
+            position: absolute;
+            z-index: 5;
+            bottom: s(-5);
+            left: 0;
+            width: s(390);
+            gap: 0;
+            margin-bottom: 0;
+            // top: s(609);
+        }
+    }
+
+    &__btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &-text {
+            @include wt700;
+            @include lineHeight(14, 20);
+            white-space: nowrap;
+            @include pc {
+                font-size: pmin(14);
+            }
+
+            @include sp {
+                font-size: s(14);
+            }
+        }
+
+        &-icon {
+            @include inter;
+            @include lineHeight(14, 14);
+            @include pc {
+                font-size: pmin(14);
+            }
+
+            @include sp {
+                font-size: s(14);
+            }
+        }
+
+        &--primary {
+            background-color: $B-144fef;
+
+            .fv__btn-text,
+            .fv__btn-icon {
+                color: $F-ffffff;
+            
+            }
+            @include pc {
+                width: pmin(232);
+                gap: pmin(10);
+            }
+
+            @include sp {
+                width: s(223);
+                gap: s(10);
+            }
+        }
+
+        &--secondary {
+            background-color: $F-ffffff;
+
+            .fv__btn-text,
+            .fv__btn-icon {
+                color: $B-144fef;
+            
+            }
+            @include pc {
+                border: pmin(2) solid $B-144fef;
+                width: pmin(190);
+                gap: pmin(8);
+            }
+
+            @include sp {
+                border: s(2) solid $B-144fef;
+                width: s(167);
+                gap: s(8);
+            }
+        }
+        @include pc {
+            height: pmin(46);
+            border-radius: pmin(8);
+        }
+
+        @include sp {
+            height: s(46);
+            border-radius: 0;
+        }
+    }
+
+    &__badges {
+        display: flex;
+        align-items: center;
+        @include pc {
+            gap: pmin(23);
+        }
+
+        @include sp {
+            position: absolute;
+            top: s(292);
+            left: s(21);
+            z-index: 4;
+            gap: s(9);
+        }
+    }
+
+    &__badge {
+        display: flex;
+        align-items: center;
+
+        &-wing {
+            flex-shrink: 0;
+            display: block;
+
+            @include pc {
+                margin-left: pmin(-15);
+                width: pmin(57);
+                height: pmin(132);
+            }
+
+            @include sp {
+                width: s(29.954);
+                height: s(69.367);
+                margin-left: s(-15);
+            }
+
+            &--right {
+                transform: scaleX(-1);
+            }
+        }
+
+        &-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            @include pc {
+                margin-left: pmin(-8);
+                gap: pmin(4);
+                padding: pmin(13) pmin(2) 0;
+            }
+
+            @include sp {
+                gap: s(2);
+                padding: 0 s(2);
+                margin-left: s(-8);
+            }
+        }
+
+        &-title-TX {
+            @include inter;
+            @include wt700;
+            @include lineHeight(17.8, 21);
+            color: $F-040514;
+            @include pc {
+                font-size: pmin(17.8);
+                letter-spacing: pmin(0.6);
+            }
+
+            @include sp {
+                font-size: s(9.36);
+                letter-spacing: s(0.468);
+            }
+        }
+
+        &-sub-TX {
+            @include notoSansNum;
+            @include lineHeight(10.2, 15.4);
+            color: $F-1a408a;
+            @include pc {
+                margin-bottom: pmin(-5);
+                font-size: pmin(10.2);
+                letter-spacing: pmin(0.51);
+            }
+
+            @include sp {
+                font-size: s(5.3);
+                letter-spacing: s(0.27);
+                margin-bottom: s(-5);
+            }
+        }
+
+        &-rating-TX {
+            @include notoSansNum;
+            @include lineHeight(10.2, 12);
+            color: $F-ffd168;
+            color: red;
+            @include pc {
+                font-size: pmin(10.2);
+                letter-spacing: pmin(0.51);
+            }
+
+            @include sp {
+                font-size: s(5.348);
+                letter-spacing: s(0.267);
+            }
+        }
+
+        &-label-TX {
+            @include notoSansNum;
+            @include lineHeight(22, 26);
+            color: $F-1a408a;
+            @include pc {
+                font-size: pmin(22);
+                letter-spacing: pmin(1.1);
+            }
+
+            @include sp {
+                font-size: s(11.588);
+                letter-spacing: s(0.579);
+            }
+        }
+
+        &-divider {
+            display: block;
+
+            background: linear-gradient(to right, rgba($P-fcdd72, 0), $P-f7c94c, rgba($P-fcdd72, 0));
+            @include pc {
+                height: pmin(1);
+                width: pmin(86);
+            }
+
+            @include sp {
+                height: s(1);
+                width: s(45.194);
+            }
+        }
+    
+    }
+
+    // 2つ目のバッジは色味・サイズが異なる（Figma実測）
+    &__badge:nth-child(2) {
+        .fv__badge-body{
+            @include pc {
+                padding:pmin(8) pmin(12) 0 pmin(6);
+            }
+
+            @include sp {
+                padding: 0 s(8);
+            }
+        }
+        .fv__badge-title-TX,
+        .fv__badge-sub-TX,
+        .fv__badge-label-TX {
+            color: $F-314f89;
+        
+        }
+
+        .fv__badge-title-TX{
+            @include pc {
+                font-size: pmin(15.7);
+                margin-bottom: pmin(-5);
+            }
+        }
+
+        .fv__badge-sub-TX{
+            @include pc {
+                font-size: pmin(10.7);
+            }
+        }
+
+        .fv__badge-label-TX{
+            @include pc {
+                font-size: pmin(36.5);
+                margin-bottom: pmin(-5);
+            }
+        }
+
+        // SPはベースのサイズではなく、2つ目バッジ専用の縮小値を使う（Figma実測）
+        @include sp {
+            .fv__badge-title-TX {
+                font-size: s(8.245);
+                letter-spacing: s(0.412);
+            }
+
+            .fv__badge-label-TX {
+                font-size: s(19.213);
+                letter-spacing: s(0.961);
+            }
+        }
+    }
+    @include sp {
+        background: linear-gradient(100.13deg, $B-d6e8ff 14.13%, $B-d7edff 27.85%, $B-ecedff 43.6%, $B-abcbff 100.46%);
+    }
+}

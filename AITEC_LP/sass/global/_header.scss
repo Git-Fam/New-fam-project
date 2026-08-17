@@ -1,0 +1,254 @@
+@use "../functions" as *;
+
+/* -----------------------
+  header
+----------------------- */
+
+.header {
+    position: relative;
+    background: linear-gradient(169.68deg, $B-d6e8ff 14.13%, $B-d7edff 27.85%, $B-ecedff 77.89%, $B-abcbff 100.46%);
+
+    @include sp {
+        background: linear-gradient(154.04deg, $B-d6e8ff 14.13%, $B-d7edff 27.85%, $B-ecedff 77.89%, $B-abcbff 100.46%);
+
+        // メニューを開いている間はヘッダー背景を白に切り替え（Figma実測）
+        &.is-open {
+            background: $F-ffffff;
+        }
+    }
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        padding: pmin(11) pmin(29) pmin(13);
+        width: pmin(1280);
+        margin: 0 auto;
+
+        @include sp {
+            padding: s(16) s(15);
+        }
+    }
+
+    // ロゴ
+    &__logo {
+        flex-shrink: 0;
+        display: block;
+        margin-right: pmin(183);
+
+        @include sp {
+            margin-right: auto;
+        }
+
+        &-img {
+            display: block;
+            width: pmin(156);
+            height: pmin(27);
+            border-radius: pmin(7.786);
+            mix-blend-mode: multiply;
+
+            @include sp {
+                width: s(158);
+                height: s(28);
+                border-radius: s(7.786);
+            }
+        }
+    }
+
+    // PCナビゲーション
+    &__nav {
+        margin-right: pmin(16);
+
+        @include sp {
+            display: none;
+        }
+
+        &-list {
+            display: flex;
+            align-items: center;
+            gap: pmin(22);
+        }
+
+        &-link {
+            @include inter;
+            @include wt500;
+            @include lineHeight(11.7, 22);
+            font-size: pmin(11.7);
+            color: $F-5a6270;
+            white-space: nowrap;
+        }
+    }
+
+    // PC CTAボタン
+    &__cta {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: pmin(8);
+        width: pmin(190);
+        height: pmin(46);
+        border-radius: pmin(8);
+        background-color: $B-144fef;
+
+        @include sp {
+            display: none;
+        }
+
+        &-text {
+            @include inter;
+            @include wt700;
+            @include lineHeight(14, 20);
+            font-size: pmin(14);
+            color: $F-ffffff;
+            white-space: nowrap;
+        }
+
+        &-icon {
+            @include inter;
+            @include lineHeight(14, 14);
+            font-size: pmin(14);
+            color: $F-ffffff;
+        }
+    }
+
+    // SPハンバーガー / クローズトグル
+    &__toggle {
+        display: none;
+        flex-shrink: 0;
+        position: relative;
+
+        @include sp {
+            display: block;
+            width: s(26);
+            height: s(19);
+        }
+
+        &-hamburger,
+        &-close {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.2s;
+        }
+
+        &-hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: s(9);
+
+            &-line {
+                display: block;
+                width: s(26);
+                height: s(1);
+                background-color: $F-00215f;
+            }
+        }
+
+        &-close {
+            width: s(20);
+            height: s(20);
+            opacity: 0;
+
+            &-line {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                width: 100%;
+                height: s(1);
+                background-color: $F-00215f;
+
+                &:first-child {
+                    transform: rotate(45deg);
+                }
+
+                &:last-child {
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+
+        .header.is-open & {
+            .header__toggle-hamburger {
+                opacity: 0;
+            }
+
+            .header__toggle-close {
+                opacity: 1;
+            }
+        }
+    }
+
+    // SPメニューパネル
+    &__menu {
+        display: none;
+
+        @include sp {
+            display: block;
+            position: absolute;
+            top: 100%;
+            left: -100%;
+            width: s(332);
+            max-height: calc(100vh - #{s(59)});
+            overflow-y: auto;
+            padding: s(66) 0 s(40);
+            border-bottom-right-radius: s(50);
+            background-color: $B-144fef;
+            box-shadow: 0 s(4) s(24) 0 rgba(0, 0, 0, 0.25);
+            z-index: 100;
+            transition: 0.3s all;
+        }
+
+        .header.is-open & {
+            @include sp {
+                left: 0;
+                transition: 0.3s all;
+            }
+        }
+
+        &-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &-link {
+            display: flex;
+            align-items: center;
+            height: s(52);
+            padding-left: s(55);
+            @include inter;
+            @include wt500;
+            @include lineHeight(11.7, 22);
+            font-size: s(11.7);
+            color: $F-ffffff;
+        }
+
+        &-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: s(8);
+            width: s(190);
+            height: s(46);
+            margin: s(60) 0 0 s(45);
+            border-radius: s(8);
+            background-color: $F-ffffff;
+
+            &-text {
+                @include inter;
+                @include wt700;
+                @include lineHeight(14, 20);
+                font-size: s(14);
+                color: $B-144fef;
+                white-space: nowrap;
+            }
+
+            &-icon {
+                @include inter;
+                @include lineHeight(14, 14);
+                font-size: s(14);
+                color: $B-144fef;
+            }
+        }
+    }
+}

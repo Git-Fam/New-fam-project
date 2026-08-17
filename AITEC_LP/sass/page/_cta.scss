@@ -1,0 +1,141 @@
+@use '../functions' as *;
+
+/* -----------------------
+  cta
+----------------------- */
+
+.cta {
+    background-color: $B-144fef;
+
+    &__inner {
+        margin: 0 auto;
+        text-align: center;
+        @include pc {
+            max-width: pmin(1280);
+            padding: pmin(89) pmin(20) pmin(100);
+        }
+
+        @include sp {
+            max-width: s(1280);
+            padding: s(60) s(20) s(60);
+        }
+    }
+
+    &__title-TL {
+        @include wt500;
+        @include lineHeight(32, 22.4);
+        color: $F-ffffff;
+        @include pc {
+            font-size: pmin(32);
+            letter-spacing: pmin(3.2);
+        }
+
+        @include sp {
+            font-size: s(24);
+            letter-spacing: s(2.4);
+            @include lineHeight(24, 22.4);
+        }
+    }
+
+    &__description-TX {
+        @include notoSansNum;
+        @include wt400;
+        @include lineHeight(13, 24.5);
+        color: $F-ffffff;
+        opacity: 0.8;
+        @include pc {
+            font-size: pmin(13);
+            letter-spacing: pmin(1.3);
+            margin-top: pmin(30);
+        }
+
+        @include sp {
+            font-size: s(13);
+            letter-spacing: s(1.3);
+            margin-top: s(60);
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include pc {
+            gap: pmin(20);
+            margin-top: pmin(41);
+        }
+
+        @include sp {
+            gap: s(11);
+            margin-top: s(53);
+        }
+    }
+
+    &__btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &--primary {
+            background-color: $F-ffffff;
+
+            .cta__btn-text-TX {
+                color: $B-144fef;
+            
+            }
+            @include pc {
+                box-shadow: 0 pmin(4) pmin(4) 0 rgba(0, 0, 0, 0.25);
+            }
+
+            @include sp {
+                width: s(207);
+                box-shadow: 0 s(4) s(4) 0 rgba(0, 0, 0, 0.25);
+            }
+        }
+
+        &--secondary {
+            .cta__btn-text-TX {
+                color: $F-ffffff;
+            
+            }
+            @include pc {
+                border: pmin(2) solid $F-ffffff;
+                width: pmin(163);
+            }
+
+            @include sp {
+                border: s(2) solid $F-ffffff;
+                width: s(132);
+            }
+        }
+        @include pc {
+            gap: pmin(8);
+            width: pmin(234);
+            height: pmin(50);
+            border-radius: pmin(10);
+        }
+
+        @include sp {
+            gap: s(8);
+            height: s(50);
+            border-radius: s(10);
+            width: s(234);
+        }
+    }
+
+    &__btn-text-TX {
+        @include wt500;
+        @include lineHeight(16, 22.4);
+        white-space: nowrap;
+        @include pc {
+            font-size: pmin(16);
+            letter-spacing: pmin(1.6);
+        }
+
+        @include sp {
+            font-size: s(16);
+            letter-spacing: s(1.6);
+            @include lineHeight(16, 34.5);
+        }
+    }
+}

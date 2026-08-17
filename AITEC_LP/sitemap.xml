@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<!-- トップページ -->
+<url>
+  <loc>URL</loc>
+  <priority>1.0</priority>
+  <lastmod>2023-12-18</lastmod>
+  <changefreq>weekly</changefreq>
+</url>
+
+<!-- 2ページ目以降 -->
+<!-- <url>
+  <loc>URL</loc>
+  <priority>0.8</priority>
+  <lastmod>2020-02-19</lastmod>
+  <changefreq>weekly</changefreq>
+</url> -->
+
+<!-- <url>
+  <loc>URL</loc>
+  <priority>0.8</priority>
+  <lastmod>2020-02-19</lastmod>
+  <changefreq>weekly</changefreq>
+</url> -->
+
+
+</urlset>

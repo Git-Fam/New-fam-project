@@ -1,0 +1,139 @@
+@use '../functions' as *;
+
+/* -----------------------
+  footer
+----------------------- */
+
+.footer {
+    background-color: $F-ffffff;
+
+    &__inner {
+        margin: 0 auto;
+
+        @include pc {
+            max-width: pmin(900);
+            padding: pmin(65) 0 pmin(15) pmin(20);
+        }
+
+        @include sp {
+            max-width: s(900);
+            padding: s(60) s(21) s(10);
+        }
+    }
+
+    &__top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        @include sp {
+            flex-direction: column;
+            gap: s(30);
+        }
+    }
+
+    &__brand {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__logo {
+        display: block;
+        width: pmin(151);
+        height: pmin(27);
+        margin-top: pmin(5);
+
+        @include sp {
+            width: s(151);
+            height: s(27);
+        }
+    }
+
+    &__slogan-TX {
+        @include notoSansNum;
+        @include wt400;
+        @include lineHeight(10, 18.5);
+        font-size: pmin(10);
+        letter-spacing: pmin(1);
+        color: $F-546479;
+        opacity: 0.8;
+        margin-top: pmin(10);
+
+        @include sp {
+            font-size: s(10);
+            letter-spacing: s(1);
+            margin-top: s(10);
+        }
+    }
+
+    &__nav {
+        display: flex;
+        gap: pmin(20);
+
+        @include sp {
+            gap: s(20);
+        }
+    }
+
+    &__nav-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__nav-title-TL {
+        @include wt500;
+        @include lineHeight(10, 14.5);
+        font-size: pmin(10);
+        letter-spacing: pmin(1);
+        color: $F-1a1f36;
+        white-space: nowrap;
+
+        @include sp {
+            font-size: s(10);
+            letter-spacing: s(1);
+        }
+    }
+
+    &__nav-list {
+        display: flex;
+        flex-direction: column;
+        gap: pmin(0);
+        margin-top: pmin(11);
+
+        @include sp {
+            gap: s(8);
+            margin-top: s(11);
+        }
+    }
+
+    &__nav-link {
+        @include wt400;
+        @include lineHeight(10, 14.5);
+        font-size: pmin(11.7);
+        letter-spacing: pmin(1);
+        color: $F-738293;
+        white-space: nowrap;
+
+        @include sp {
+            font-size: s(10);
+            letter-spacing: s(1);
+        }
+    }
+
+    &__copyright-TX {
+        @include notoSansNum;
+        @include wt400;
+        @include lineHeight(10, 18.5);
+        font-size: pmin(10);
+        letter-spacing: pmin(1);
+        color: $F-546479;
+        text-align: center;
+        margin-top: pmin(56);
+
+        @include sp {
+            font-size: s(10);
+            letter-spacing: s(1);
+            margin-top: s(60);
+        }
+    }
+}

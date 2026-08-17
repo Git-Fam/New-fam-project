@@ -1,0 +1,547 @@
+@use "../functions" as *;
+
+/* -----------------------
+  features
+----------------------- */
+
+.features {
+    position: relative;
+
+    @include sp {
+        background-color: $B-f6faff;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        opacity: 0.3;
+        background: linear-gradient(98.3deg, $B-d6e8ff 14.13%, $B-d7edff 27.85%, $B-ecedff 77.89%, $B-abcbff 100.46%);
+
+        @include sp {
+            background: linear-gradient(
+                91.55deg,
+                $B-d6e8ff 14.13%,
+                $B-d7edff 27.85%,
+                $B-ecedff 77.89%,
+                $B-abcbff 100.46%
+            );
+        }
+    }
+
+    &__inner {
+        margin: 0 auto;
+        @include pc {
+            max-width: pmin(1280);
+            padding: pmin(130) pmin(218) pmin(211);
+        }
+
+        @include sp {
+            max-width: s(1280);
+            padding: s(100) s(20) s(195);
+        }
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+
+        &--reverse {
+            flex-direction: row-reverse;
+        
+        }
+        @include pc {
+            gap: pmin(30);
+            &:not(:last-child) {
+                margin-bottom: pmin(65);
+            }
+        }
+
+        @include sp {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: s(38);
+            &:not(:last-child) {
+                margin-bottom: s(100);
+            }
+            &--reverse {
+                flex-direction: column;
+            }
+        }
+    }
+
+    // ビジュアル：単体スクリーンショット
+    &__visual {
+        flex-shrink: 0;
+
+        // SPはFigma実測でコンテンツ→ビジュアルの順に表示される
+
+        &--single {
+            position: relative;
+            @include pc {
+                width: pmin(423);
+                height: pmin(290);
+            }
+
+            @include sp {
+                width: s(348);
+                height: s(238);
+            }
+        }
+
+        // 2枚重ね + サークル装飾
+        &--pair {
+            position: relative;
+            @include pc {
+                width: pmin(423);
+                height: pmin(442);
+            }
+
+            @include sp {
+                width: s(346);
+                height: s(458);
+            }
+        }
+
+        &--badge {
+            overflow: visible;
+        
+        }
+
+        // FEATURE 01・04はSPでの表示サイズが個別に異なる（Figma実測）
+        &--f01 {
+            @include pc {
+                margin-top: pmin(15);
+            }
+
+            @include sp {
+                width: s(331);
+                height: s(227);
+                margin-top: s(15);
+            }
+        }
+
+        &--f02 {
+            img:nth-child(1) {
+                z-index: 0;
+            
+            }
+
+            img:nth-child(2) {
+                position: relative;
+                z-index: 1;
+            
+            }
+            @include pc {
+                margin-top: pmin(25);
+            }
+
+            @include sp {
+                margin-top: s(25);
+            }
+        }
+
+        &--f03 {
+            img:nth-child(1){
+                @include pc {
+                    top: pmin(10);
+                }
+
+                @include sp {
+                    top: s(10);
+                }
+            }
+            img:nth-child(2){
+                z-index: 2;
+                @include pc {
+                    top: pmin(195);
+                }
+
+                @include sp {
+                    top: s(195);
+                }
+            }
+            img:nth-child(3){
+                @include pc {
+                    top: pmin(-40);
+                }
+
+                @include sp {
+                    top: s(10);
+                }
+            }
+            @include pc {
+                margin-top: pmin(45);
+            }
+
+            @include sp {
+                height: s(417);
+                margin-top: s(45);
+            }
+        }
+        &--f04 {
+            img:nth-child(1){
+                position: relative;
+                @include pc {
+                    top: pmin(-75);
+                }
+
+                @include sp {
+                    top: s(-75);
+                }
+            }
+            @include pc {
+                margin-top: pmin(135);
+            }
+
+            @include sp {
+                margin-top: s(135);
+            }
+        }
+        @include sp {
+            order: 2;
+        }
+    }
+
+    &__visual-main {
+        display: block;
+
+        .features__visual--single & {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        
+        }
+
+        .features__visual--pair & {
+            position: absolute;
+            left: 0;
+            z-index: 2;
+            object-fit: cover;
+            @include pc {
+                top: pmin(31);
+                width: pmin(288);
+                height: pmin(225);
+            }
+
+            @include sp {
+                top: s(27);
+                width: s(288);
+                height: s(225);
+            }
+        }
+
+        .features__visual--f03.features__visual--pair & {
+            @include sp {
+                top: 0;
+            }
+        }
+        @include pc {
+            border-radius: pmin(10);
+            box-shadow: pmin(2.58) pmin(2.58) pmin(15.479) 0 rgba(0, 0, 0, 0.15);
+        }
+
+        @include sp {
+            border-radius: s(10);
+            box-shadow: s(2.58) s(2.58) s(15.479) 0 rgba(0, 0, 0, 0.15);
+        }
+    }
+
+    &__visual-sub {
+        position: absolute;
+        z-index: 1;
+        object-fit: cover;
+
+        .features__visual--f02 & {
+            @include sp {
+                top: s(231);
+                left: s(47);
+                width: s(299);
+                height: s(227);
+            }
+        }
+
+        .features__visual--f03 & {
+            @include sp {
+                top: s(190);
+                left: s(41);
+                width: s(299);
+                height: s(227);
+            }
+        }
+        @include pc {
+            top: pmin(215);
+            left: pmin(124);
+            width: pmin(299);
+            height: pmin(227);
+            border-radius: pmin(10);
+            box-shadow: pmin(2.58) pmin(2.58) pmin(15.48) 0 rgba(0, 0, 0, 0.15);
+        }
+
+        @include sp {
+            top: s(215);
+            left: s(124);
+            width: s(299);
+            height: s(227);
+            border-radius: s(10);
+            box-shadow: s(2.58) s(2.58) s(15.48) 0 rgba(0, 0, 0, 0.15);
+        }
+    }
+
+    &__visual-circle {
+        position: absolute;
+        border-radius: 50%;
+        object-fit: cover;
+
+        .features__visual--pair & {
+            z-index: 3;
+            @include pc {
+                border: pmin(2) solid #d8d8d8;
+                top: pmin(0);
+                left: pmin(187);
+                width: pmin(190);
+                height: pmin(193);
+            }
+
+            @include sp {
+                border: s(2) solid #d8d8d8;
+                top: s(0);
+                left: s(187);
+                width: s(190);
+                height: s(193);
+            }
+        }
+
+        .features__visual--f02 & {
+            @include sp {
+                top: 0;
+                left: s(158);
+                width: s(188);
+                height: s(191);
+            }
+        }
+
+        .features__visual--f03 & {
+            @include sp {
+                top: s(16);
+                left: s(157);
+                width: s(191);
+                height: s(194);
+            }
+        }
+
+        .features__visual--badge & {
+            z-index: 2;
+            @include pc {
+                border: pmin(2) solid #d9d9d9;
+                top: pmin(138);
+                left: pmin(181);
+                width: pmin(283);
+                height: pmin(282);
+            }
+
+            @include sp {
+                border: s(2) solid #d9d9d9;
+                top: s(114);
+                left: s(136);
+                width: s(212);
+                height: s(211);
+            }
+        }
+        @include pc {
+            box-shadow: pmin(2) pmin(2) pmin(10) 0 rgba(0, 0, 0, 0.1);
+        }
+
+        @include sp {
+            box-shadow: s(2) s(2) s(10) 0 rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    &__content {
+        flex: 1;
+        min-width: 0;
+        @include sp {
+            width: 100%;
+            order: 1;
+        }
+    }
+
+    &__eyebrow-TX {
+        @include wt700;
+        @include lineHeight(16, 22.4);
+        color: $B-144fef;
+        @include pc {
+            font-size: pmin(16);
+            letter-spacing: pmin(1.6);
+        }
+
+        @include sp {
+            font-size: s(16);
+            letter-spacing: s(2);
+        }
+    }
+
+    &__title-TL {
+        @include wt500;
+        @include lineHeight(32, 49.4);
+        color: $F-1a1f36;
+        @include pc {
+            font-size: pmin(32);
+            letter-spacing: pmin(3.2);
+            margin-top: pmin(21);
+        }
+
+        @include sp {
+            font-size: s(32);
+            letter-spacing: s(3.2);
+            margin-top: s(20);
+            white-space: nowrap;
+        }
+    }
+
+    &__description-TX {
+        @include notoSansNum;
+        @include wt400;
+        @include lineHeight(13, 24.5);
+        color: $F-546479;
+
+        // FEATURE 04のみ個別調整
+
+        .features__visual--f04 ~ .features__content & {
+            @include sp {
+                margin-top: s(20);
+            }
+        }
+
+        // FEATURE 05のみ個別調整
+        .features__visual--f05 ~ .features__content & {
+            @include sp {
+                margin-top: s(15);
+            }
+        }
+        @include pc {
+            font-size: pmin(13);
+            letter-spacing: pmin(1.3);
+            margin-top: pmin(20);
+        }
+
+        @include sp {
+            font-size: s(13);
+            letter-spacing: s(1.3);
+            margin-top: s(35);
+        }
+    }
+
+    &__checklist {
+        // FEATURE 05のみ個別調整
+
+        .features__visual--f05 ~ .features__content & {
+            @include sp {
+                margin-top: s(25);
+            }
+        }
+
+        &-item {
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+
+            &:not(:first-child) {
+                @include pc {
+                    margin-top: pmin(5);
+                }
+
+                @include sp {
+                    margin-top: s(5);
+                }
+            }
+
+            // FEATURE 04「期間・条件指定」はSPで折り返さず1行表示
+            .features__visual--f04 ~ .features__content &:nth-child(3) {
+                .features__checklist-desc-TX{
+                    letter-spacing: s(0.8);
+                
+                }
+                @include sp {
+                    flex-wrap: nowrap;
+                }
+            }
+
+            // FEATURE 05「運用状況」はSPで折り返さず1行表示
+            .features__visual--f05 ~ .features__content &:nth-child(2) {
+                @include sp {
+                    flex-wrap: nowrap;
+                }
+            }
+            @include pc {
+                gap: 0 pmin(8);
+            }
+
+            @include sp {
+                gap: 0 s(8);
+                &:not(:first-child) {
+                    margin-top: s(7);
+                }
+            }
+        }
+
+        &-icon {
+            display: block;
+            align-self: center;
+            flex-shrink: 0;
+            @include pc {
+                width: pmin(15.35);
+                height: pmin(13.36);
+            }
+
+            @include sp {
+                width: s(15.35);
+                height: s(13.36);
+            }
+        }
+
+        &-label-TX {
+            @include wt500;
+            @include lineHeight(13, 17);
+            color: $F-1a1f36;
+            white-space: nowrap;
+            @include pc {
+                font-size: pmin(13);
+                letter-spacing: pmin(1.3);
+            }
+
+            @include sp {
+                font-size: s(13);
+                letter-spacing: s(1.3);
+            }
+        }
+
+        &-desc-TX {
+            @include notoSansNum;
+            @include wt400;
+            @include lineHeight(10, 24.5);
+            color: $F-546479;
+            white-space: nowrap;
+            @include pc {
+                font-size: pmin(10);
+                letter-spacing: pmin(1);
+            }
+
+            @include sp {
+                font-size: s(10);
+                letter-spacing: s(1);
+            }
+        }
+        @include pc {
+            margin-top: pmin(40);
+        }
+
+        @include sp {
+            margin-top: s(35);
+        }
+    }
+    @include sp {
+        background-color: $B-f6faff;
+    }
+}
