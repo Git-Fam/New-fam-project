@@ -622,5 +622,23 @@ body {
         }
       }
     }
+
+    .item-filler-sp {
+      @include pc {
+        display: none;
+      }
+
+      @include sp {
+        display: block;
+        width: 100%;
+        overflow: hidden;
+
+        img {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
   }
 }

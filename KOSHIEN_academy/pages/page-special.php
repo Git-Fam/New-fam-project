@@ -187,6 +187,12 @@ function special_br($t)
 
     </ul>
 
+    <?php if (isset($special_query) && (int) $special_query->post_count > 0) : ?>
+      <div class="item-filler-sp anime-fade" aria-hidden="true">
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/img/special/column-02.webp'); ?>" alt="">
+      </div>
+    <?php endif; ?>
+
   </section>
 
 </div>
