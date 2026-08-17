@@ -47,14 +47,14 @@ Template Path: pages/
         募金の趣旨をご理解いただき、ご支援、ご協力を賜りますようお願い申し上げます。
       </p>
       <p class="TX TX-s">
-        ★ 寄付金につきまして、法人及び個人の方々にあっては税制上の優遇措置を受けることができます。
+        ★ 本基金へのご寄付は、税制上の優遇措置を受けることができます。
       </p>
     </div>
   </section>
 
   <section class="donation_contents">
     <div class="ttl anime-fade">
-      <h3 class="TL">寄付金の活用内容</h3>
+      <h3 class="TL">寄付の活用内容</h3>
     </div>
     <ul class="content">
       <li class="item anime-fade">
@@ -119,7 +119,7 @@ Template Path: pages/
 
   <section class="donation_for-you">
     <div class="ttl anime-fade">
-      <h3 class="TL">寄付金のご利用について</h3>
+      <h3 class="TL">基金へのご寄付について</h3>
     </div>
     <ul class="lists anime-fade">
       <li class="item">

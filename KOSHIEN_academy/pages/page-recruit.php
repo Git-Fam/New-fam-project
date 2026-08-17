@@ -20,7 +20,7 @@ Template Path: pages/
     </div>
     <div class="inner--top">
       <h2 class="TL">
-        子どもたちの<br class="sp">心をつくる仕事。<br>自分自身の<br class="sp">心をみがく仕事。
+        子どもたちの<br class="sp">心をつくる仕事<br>自分自身の<br class="sp">心をみがく仕事
       </h2>
     </div>
     <div class="inner--txt anime-fade">

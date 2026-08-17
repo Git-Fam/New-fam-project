@@ -345,7 +345,7 @@
             <h3 class="TL">
               <picture>
                 <source srcset="<?php echo get_template_directory_uri(); ?>/img/front/front-link_message-ttl.svg" media="(min-width: 768px)" type="image/svg+xml">
-                <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-link_message-ttl-sp.svg" alt="学院ファミリーとともに、心を磨く普遍の学びを。">
+                <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-link_message-ttl-sp.svg" alt="学院ファミリーとともに心を磨く普遍の学びを">
               </picture>
             </h3>
           </div>

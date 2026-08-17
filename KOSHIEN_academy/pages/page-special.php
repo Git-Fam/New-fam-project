@@ -47,7 +47,7 @@ function special_br($t)
 
   <section class="special_contents">
 
-    <ul class="item--wrap">
+    <ul class="item--wrap" data-theme-uri="<?php echo esc_url(get_template_directory_uri()); ?>">
 
       <?php
       $special_query = new WP_Query(array(
@@ -157,6 +157,30 @@ function special_br($t)
           </li>
       <?php
         endwhile;
+
+        // PC 3列グリッドの空きマスを埋める画像
+        $special_count = (int) $special_query->post_count;
+        $remainder = $special_count % 3;
+        if ($remainder === 1) {
+          // 2マス空き
+          $filler_cols = 2;
+          $filler_file = 'column-02.webp';
+        } elseif ($remainder === 2) {
+          // 1マス空き
+          $filler_cols = 1;
+          $filler_file = 'column-01.webp';
+        } else {
+          // 空きなし → 次の段に3マス分
+          $filler_cols = 3;
+          $filler_file = 'column-03.webp';
+        }
+        ?>
+        <li class="item-filler anime-fade" data-cols="<?php echo esc_attr((string) $filler_cols); ?>" aria-hidden="true">
+          <div class="img--area">
+            <img src="<?php echo esc_url(get_template_directory_uri() . '/img/special/' . $filler_file); ?>" alt="">
+          </div>
+        </li>
+      <?php
         wp_reset_postdata();
       endif;
       ?>

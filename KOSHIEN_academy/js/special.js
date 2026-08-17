@@ -3,6 +3,45 @@ $(function () {
   // カテゴリーわけ
   var $itemWrap = $(".page-special .item--wrap");
   var $allItems = $(".page-special .item--wrap .item");
+  var themeUri = $itemWrap.data("theme-uri") || "";
+
+  // PC 3列の空きマス（または次の段）に埋め画像を配置
+  function updateFiller() {
+    $itemWrap.find(".item-filler").remove();
+    var count = $itemWrap.children(".item").length;
+    if (count === 0 || !themeUri) return;
+
+    var remainder = count % 3;
+    var cols;
+    var file;
+    if (remainder === 1) {
+      cols = 2;
+      file = "column-02.webp";
+    } else if (remainder === 2) {
+      cols = 1;
+      file = "column-01.webp";
+    } else {
+      cols = 3;
+      file = "column-03.webp";
+    }
+
+    $itemWrap.append(
+      '<li class="item-filler anime-fade" data-cols="' +
+        cols +
+        '" aria-hidden="true">' +
+        '<div class="img--area">' +
+        '<img src="' +
+        themeUri +
+        "/img/special/" +
+        file +
+        '" alt="">' +
+        "</div>" +
+        "</li>"
+    );
+
+    // 画面内なら即フェードイン（動的追加時は scroll 待ちにしない）
+    $(window).trigger("scroll");
+  }
 
   // リロードごとに表示順をランダムにする
   (function shuffleItems() {
@@ -21,6 +60,7 @@ $(function () {
     var shuffled = shuffleArray(items);
     $itemWrap.empty();
     $(shuffled).appendTo($itemWrap);
+    updateFiller();
   })();
 
   $allItems = $(".page-special .item--wrap .item");
@@ -45,6 +85,8 @@ $(function () {
         }
       });
     }
+
+    updateFiller();
   });
 
 
