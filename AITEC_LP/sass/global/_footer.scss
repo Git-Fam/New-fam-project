@@ -113,6 +113,7 @@
         letter-spacing: pmin(1);
         color: $F-738293;
         white-space: nowrap;
+        @include hover-opa;
 
         @include sp {
             font-size: s(10);

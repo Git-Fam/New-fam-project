@@ -6,19 +6,21 @@
 
 // ホバーで薄く
 .hover-opa {
-    transition: 0.3s;
-
-    &:hover {
-        opacity: 0.6;
-    }
+    @include hover-opa;
 }
 
 // ホバーで大きく
 .hover-scale {
     transition: 0.3s;
 
-    &:hover {
-        transform: scale(1.05);
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
     }
 }
 
@@ -72,7 +74,7 @@
     transform: translateX(100%);
 
     &.show {
-        animation: left ease forwards;
+        animation: left 0.5s ease forwards;
 
         @keyframes left {
             0% {
@@ -94,7 +96,7 @@
     transform: translateX(-100%);
 
     &.show {
-        animation: right ease forwards;
+        animation: right 0.5s ease forwards;
 
         @keyframes right {
             0% {
@@ -139,7 +141,7 @@
     transform: translateY(100%);
 
     &.show {
-        animation: loadUp ease forwards;
+        animation: loadUp 0.5s ease forwards;
 
         @keyframes loadUp {
             0% {
@@ -227,7 +229,7 @@
     transform: scale(0.5);
 
     &.show {
-        animation: loadPop ease forwards;
+        animation: loadPop 0.5s ease forwards;
 
         @keyframes loadPop {
             0% {

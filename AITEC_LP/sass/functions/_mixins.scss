@@ -239,3 +239,18 @@ $screenSizeSP: 390;
 // ↓CSSでは
 // @include img('example.jpg');
 
+// リンク・ボタンのホバー（既存 .hover-opa と同じ挙動）
+@mixin hover-opa {
+    transition: opacity 0.3s;
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            opacity: 0.6;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+}
+

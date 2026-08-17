@@ -16,7 +16,6 @@
         }
 
         @include sp {
-            max-width: s(1280);
             padding: s(60) s(20) s(60);
         }
     }
@@ -75,15 +74,19 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-shrink: 0;
+        @include hover-opa;
 
         &--primary {
             background-color: $F-ffffff;
 
-            .cta__btn-text-TX {
+            .cta__btn-text-TX,
+            .cta__btn-icon {
                 color: $B-144fef;
-            
             }
+
             @include pc {
+                width: pmin(234);
                 box-shadow: 0 pmin(4) pmin(4) 0 rgba(0, 0, 0, 0.25);
             }
 
@@ -96,8 +99,8 @@
         &--secondary {
             .cta__btn-text-TX {
                 color: $F-ffffff;
-            
             }
+
             @include pc {
                 border: pmin(2) solid $F-ffffff;
                 width: pmin(163);
@@ -108,9 +111,9 @@
                 width: s(132);
             }
         }
+
         @include pc {
             gap: pmin(8);
-            width: pmin(234);
             height: pmin(50);
             border-radius: pmin(10);
         }
@@ -119,7 +122,6 @@
             gap: s(8);
             height: s(50);
             border-radius: s(10);
-            width: s(234);
         }
     }
 
@@ -127,9 +129,27 @@
         @include wt500;
         @include lineHeight(16, 22.4);
         white-space: nowrap;
+
         @include pc {
             font-size: pmin(16);
             letter-spacing: pmin(1.6);
+        }
+
+        @include sp {
+            font-size: s(16);
+            letter-spacing: s(1.6);
+            @include lineHeight(16, 34.5);
+        }
+    }
+
+    &__btn-icon {
+        @include wt500;
+        white-space: nowrap;
+
+        @include pc {
+            font-size: pmin(16);
+            letter-spacing: pmin(1.6);
+            @include lineHeight(16, 22.4);
         }
 
         @include sp {

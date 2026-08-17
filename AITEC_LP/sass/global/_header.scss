@@ -34,6 +34,7 @@
         flex-shrink: 0;
         display: block;
         margin-right: pmin(183);
+        @include hover-opa;
 
         @include sp {
             margin-right: auto;
@@ -75,6 +76,7 @@
             font-size: pmin(11.7);
             color: $F-5a6270;
             white-space: nowrap;
+            @include hover-opa;
         }
     }
 
@@ -89,6 +91,7 @@
         height: pmin(46);
         border-radius: pmin(8);
         background-color: $B-144fef;
+        @include hover-opa;
 
         @include sp {
             display: none;
@@ -116,6 +119,7 @@
         display: none;
         flex-shrink: 0;
         position: relative;
+        @include hover-opa;
 
         @include sp {
             display: block;
@@ -221,6 +225,7 @@
             @include lineHeight(11.7, 22);
             font-size: s(11.7);
             color: $F-ffffff;
+            @include hover-opa;
         }
 
         &-cta {
@@ -233,6 +238,7 @@
             margin: s(60) 0 0 s(45);
             border-radius: s(8);
             background-color: $F-ffffff;
+            @include hover-opa;
 
             &-text {
                 @include inter;

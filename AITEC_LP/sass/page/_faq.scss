@@ -78,6 +78,7 @@
         background-color: $F-ffffff;
         text-align: left;
         cursor: pointer;
+        @include hover-opa;
         @include pc {
             border: pmin(2) solid $B-144fef;
             gap: pmin(30);
