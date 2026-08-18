@@ -6,7 +6,7 @@
 
 .registered {
   @include height;
-  @include imgCover('archive-img.png');
+  @include imgCover('archive-img.webp');
   position: relative;
 
   @include pc {

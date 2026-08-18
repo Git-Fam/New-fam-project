@@ -43,7 +43,31 @@ function add_user_coins($user_id, $amount) {
 // ３コイン付与する場合
 // add_user_coins($user_id, 3);
 
+
+
+// 投稿IDごとに1回だけコインを付与する処理（AJAX）
+add_action('wp_ajax_add_random_coin', function () {
+    $user_id = get_current_user_id();
+    $post_id = intval($_POST['post_id'] ?? 0);
+
+    if (!$post_id) {
+        wp_send_json_error('投稿IDが不正です');
+    }
+
+    $history = get_user_meta($user_id, 'random_coin_history', true);
+    if (!is_array($history)) $history = [];
+
+    if (!in_array($post_id, $history, true)) {
+        add_user_coins($user_id, 5);
+        $history[] = $post_id;
+        update_user_meta($user_id, 'random_coin_history', $history);
+        wp_send_json_success(['coins' => 5]);
+    } else {
+        wp_send_json_error('すでに受け取っているよ！');
+    }
+});
+
+
+
+
 ?>
-
-
-

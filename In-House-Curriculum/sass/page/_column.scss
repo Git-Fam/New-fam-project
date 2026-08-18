@@ -6,7 +6,7 @@
 
 .columns {
   width: 100%;
-  @include imgCover('board-bg.jpg');
+  @include imgCover('board-bg.webp');
   position: relative;
 
   @include pc {
@@ -16,7 +16,23 @@
   }
 
   @include sp {
+    height: 100vh;
+    min-height: 650px;
     padding: 100px 10px 300px;
+  }
+
+  &--menu-btn {
+    position: absolute;
+    z-index: 10;
+    @include pc {
+      top: p(10);
+      right: p(10);
+    }
+
+    @include sp {
+      top: s(10);
+      right: s(10);
+    }
   }
 
   &--main {
@@ -42,7 +58,7 @@
 
       .columns--title {
         aspect-ratio: 558 / 105;
-        @include imgContain('column-title.png');
+        @include imgContain('column-title.webp');
         position: absolute;
         z-index: 3;
         left: 50%;
@@ -182,18 +198,19 @@
 
             .search-item {
 
-              form{
+              form {
                 display: flex;
                 align-items: center;
                 justify-content: flex-end;
                 gap: 4;
+
                 button {
                   aspect-ratio: 18/16;
                   @include iconContain($lupe);
                   cursor: pointer;
                   width: 18px;
                 }
-  
+
                 input {
                   color: #7FBF99;
                   @include wt600;
@@ -207,7 +224,7 @@
                   width: 141px;
                   height: 20px;
                   padding: 0 12px;
-  
+
                   &::placeholder {
                     color: #7FBF99;
                   }
@@ -407,7 +424,7 @@
 
   .kinta {
     aspect-ratio: 417 / 463;
-    @include imgContain('kinta.png');
+    @include imgContain('kinta.webp');
     position: absolute;
     z-index: 5;
     rotate: 12deg;

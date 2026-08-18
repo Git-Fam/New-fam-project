@@ -1,9 +1,74 @@
-@use "../../global"as *;
-@use "../globalCooperator-2"as *;
+@use "../../global" as *;
+@use "../globalCooperator-2" as *;
 
 /* -----------------------
   load
 ----------------------- */
+.btn-box {
+  position: relative;
+
+  .columns_search {
+    @include pc {
+      padding: p(6) p(3);
+    }
+    @include sp {
+      padding: s(6) s(3);
+      position: absolute;
+      bottom: s(-20);
+      left: s(-20);
+    }
+
+    .search-item {
+      form {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 4;
+
+        button {
+          aspect-ratio: 18/16;
+          @include iconContain($lupe);
+          cursor: pointer;
+          width: 18px;
+
+          @include sp {
+            width: s(18);
+          }
+        }
+
+        input {
+          color: #7fbf99;
+          @include wt600;
+          line-height: 140%;
+          letter-spacing: 1px;
+          border: none;
+          background: #e2f9eb;
+          outline: none;
+          @include pc {
+            border-radius: p(20);
+            font-size: p(10);
+            width: p(141);
+            height: p(20);
+            padding: p(0) p(12);
+          }
+
+          @include sp {
+            letter-spacing: s(1);
+            border-radius: s(20);
+            width: s(80);
+            height: s(20);
+            padding: s(0) s(12);
+            font-size: s(10);
+          }
+
+          &::placeholder {
+            color: #7fbf99;
+          }
+        }
+      }
+    }
+  }
+}
 
 .sp-wrap {
   @include sp {
@@ -12,7 +77,7 @@
   }
 
   .road-wappaer {
-    background: linear-gradient(180deg, #BCFAFF 0%, #FFF 100%);
+    background: linear-gradient(180deg, #bcfaff 0%, #fff 100%);
     position: relative;
 
     @include pc {
@@ -25,10 +90,93 @@
       height: 100vh;
     }
 
+    .daytime-deco {
+      @include imgContain("daytime.webp");
+      pointer-events: none;
+      opacity: 0;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      transition: all 1s;
+
+      @include pc {
+        width: p(549);
+        height: p(434);
+        bottom: p(250);
+        z-index: 30;
+      }
+    }
+
+    .moon-deco {
+      position: absolute;
+
+      @include pc {
+        width: p(92);
+        height: p(91);
+        bottom: p(564);
+        left: p(276);
+      }
+
+      @include sp {
+        width: 92px;
+        height: 91px;
+        bottom: 564px;
+        left: 76px;
+      }
+    }
+
+    &.morning {
+      background: linear-gradient(
+        180deg,
+        #7abbe7 0%,
+        #f3d4c4 26.92%,
+        #fcf3c6 35.58%
+      );
+    }
+
+    &.daytime {
+      background: linear-gradient(
+        180deg,
+        #47a2f7 0%,
+        #72e3f9 24.04%,
+        #c5f3fc 33.42%
+      );
+
+      .daytime-deco.show {
+        opacity: 1;
+        transition: all 1s;
+      }
+    }
+
+    &.afternoon {
+      background: linear-gradient(
+        180deg,
+        #76d8ff 0%,
+        #e8be8d 23.08%,
+        #d58a6d 37.98%
+      );
+      .moon-deco {
+        @include imgContain("afternoon.webp");
+      }
+    }
+
+    &.night {
+      background: linear-gradient(
+        180deg,
+        #012658 0%,
+        #155796 22.6%,
+        #62c6d4 36.54%
+      );
+      .moon-deco {
+        @include imgContain("night.webp");
+      }
+    }
+
     .cloud-box {
       .road-cloud {
         @include iconContain($road-cloud);
         position: absolute;
+        pointer-events: none;
 
         &:nth-child(1),
         &:nth-child(7) {
@@ -159,101 +307,87 @@
     }
 
     .archive--contents--tab {
-      z-index: 20;
+      z-index: 40;
       position: absolute;
-      width: 85%;
       left: 50%;
       translate: -50% 0;
 
       @include pc {
-        top: p(73);
+        top: 0;
+        padding: p(60) 0 0 p(30);
       }
 
       @include sp {
-        top: s(35);
-        width: 80%;
-        gap: s(15);
+        top: s(20);
+        gap: s(10);
+        padding: s(25) 0 0 s(15);
       }
 
       .archive--item {
+        @include imgCover("icon-bg.webp");
+        position: relative;
+
+        @include pc {
+          min-width: p(83);
+          height: p(126);
+          top: p(-35);
+        }
+
+        @include sp {
+          min-width: s(65);
+          height: s(105);
+          top: s(-20);
+        }
 
         &--img {
-          margin: 0 auto;
+          position: relative;
+          left: 50%;
+          top: 65%;
+          transform: translate(-50%, -50%);
 
           @include pc {
-            width: p(67);
-            height: p(67);
+            width: p(60);
+            height: p(60);
           }
 
           @include sp {
-            width: s(30);
-            height: s(30);
+            width: s(50);
+            height: s(50);
           }
         }
 
         &--title {
           text-align: center;
+
+          .TX {
+            display: none;
+          }
+        }
+
+        &:hover {
+          transition: all 0.3s;
+
+          @include pc {
+            top: p(-43);
+          }
+
+          @include sp {
+            top: s(-25);
+          }
+        }
+
+        &.active {
+          transition: all 0.3s;
+
+          @include pc {
+            top: p(-10);
+          }
+
+          @include sp {
+            top: s(-5);
+          }
         }
       }
-    }
-
-    .arrow {
-      position: relative;
-
-      @include pc {
-        top: p(105);
-      }
-
-      @include sp {
-        top: s(55);
-      }
-
-      &::before,
-      &::after {
-        content: "";
-        position: absolute;
-        background: $P-F69082;
-        z-index: 30;
-
-        @include pc {
-          width: p(32);
-          height: p(8);
-          border-radius: p(10);
-          right: p(40);
-        }
-
-        @include sp {
-          width: s(20);
-          height: s(4);
-          border-radius: s(10);
-          right: s(10);
-        }
-      }
-
-      &::before {
-        rotate: 40deg;
-
-        @include pc {
-          top: p(-8);
-        }
-
-        @include sp {
-          top: s(-5);
-        }
-      }
-
-      &::after {
-        rotate: -40deg;
-
-        @include pc {
-          top: p(8);
-        }
-
-        @include sp {
-          top: s(5);
-        }
-      }
-
     }
 
     .archive--contents--items--wap {
@@ -263,8 +397,9 @@
         overflow-x: scroll;
         width: 115%;
         position: absolute;
-        bottom: 0;
+        bottom: -42px;
         left: 0;
+        flex-direction: end;
       }
 
       &.active {
@@ -274,17 +409,21 @@
       .road-header {
         @include iconCover($green-header);
         position: absolute;
-        z-index: 20;
+        z-index: 40;
         width: 100%;
         top: 0;
+        display: flex;
+        align-items: center;
 
         @include pc {
           height: p(60);
+          padding-inline: p(34);
         }
 
         @include sp {
-          height: s(32);
+          height: s(60);
           position: fixed;
+          padding-inline: s(10);
         }
 
         .TL {
@@ -293,18 +432,307 @@
 
           @include pc {
             font-size: p(23);
-            padding: p(15) 0 0 p(34);
           }
 
           @include sp {
             font-size: s(14);
-            padding: s(7) 0 0 s(10);
           }
         }
 
+        .btn-box {
+          display: flex;
+          margin-left: auto;
+          align-items: center;
+
+          @include pc {
+            gap: p(17);
+          }
+
+          @include sp {
+            gap: s(8);
+            align-items: start;
+            margin-top: s(-10);
+          }
+
+          .list-btn {
+            background: linear-gradient(180deg, #d9d5bb 0%, #b99e76 100%);
+            box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.25);
+            color: $F-FFFFFF;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            @include wt600;
+
+            @include pc {
+              width: p(170);
+              height: p(35);
+              border-radius: p(4);
+              border: p(1) solid $F-FFFFFF;
+              line-height: p(35);
+              padding-left: p(13);
+            }
+
+            @include sp {
+              width: s(100);
+              height: s(20);
+              border-radius: s(3);
+              border: s(1) solid #fff;
+              line-height: s(18);
+              padding-left: s(5);
+            }
+
+            &::before {
+              content: "〉";
+              position: absolute;
+              top: 65%;
+              transform: translateY(-50%) rotate(90deg);
+
+              @include pc {
+                font-size: p(16);
+                right: p(10);
+              }
+
+              @include sp {
+                font-size: s(11);
+                right: s(2);
+              }
+            }
+
+            &::after {
+              content: "道のり投稿一覧";
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+
+              @include pc {
+                letter-spacing: p(0.8);
+                font-size: p(16);
+              }
+
+              @include sp {
+                font-size: s(10);
+                letter-spacing: s(0.8);
+              }
+            }
+
+            &.active {
+              &::after {
+                content: "一覧を閉じる";
+              }
+            }
+
+            &:hover {
+              transition: all 0.3s ease-in-out;
+              box-shadow: unset;
+              transform: translate(2px, 2px);
+            }
+          }
+
+          .road-menu-btn {
+            .C_all-menu-btn {
+              @include pc {
+                border-radius: p(4);
+                padding: p(4) p(8) p(5) p(4);
+                border-width: p(1);
+              }
+
+              @include sp {
+                border-radius: s(4);
+                padding: s(3) s(5) s(3) s(4);
+                border-width: s(1);
+              }
+
+              &__inner {
+                display: flex;
+                align-items: flex-end;
+
+                @include pc {
+                  gap: p(3);
+                }
+
+                @include sp {
+                  gap: s(3);
+                }
+
+                &__img {
+                  @include iconContain($all-menu-character);
+                  transition: background-image 0.3s ease-in-out;
+
+                  @include pc {
+                    width: p(33);
+                    height: p(25);
+                  }
+
+                  @include sp {
+                    width: s(25);
+                    height: s(18);
+                  }
+                }
+
+                &__text {
+                  .TX {
+                    color: #fff;
+                    @include wt600;
+                    line-height: 1.5;
+
+                    @include pc {
+                      font-size: p(16);
+                      letter-spacing: p(0.8);
+                    }
+
+                    @include sp {
+                      font-size: s(14);
+                      letter-spacing: s(0.8);
+                    }
+                  }
+                }
+              }
+
+              &:hover {
+                box-shadow: unset;
+                transform: translate(2px, 2px);
+
+                .C_all-menu-btn__inner {
+                  &__img {
+                    @include iconContain($all-menu-character-ver2);
+                  }
+                }
+              }
+            }
+          }
+        }
       }
 
+      .post-list {
+        background-color: $B-C9EBD9;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: -100%;
+        left: 0;
+        z-index: 35;
+        transition: all 0.3s;
+        overflow-y: scroll;
 
+        &-inner {
+          @include pc {
+            padding: p(208) p(44) p(100);
+          }
+
+          @include sp {
+            padding: s(130) s(20) s(50);
+          }
+
+          ul {
+            display: flex;
+
+            @include pc {
+              flex-wrap: wrap;
+              gap: p(15) p(20);
+            }
+
+            @include sp {
+              flex-direction: column;
+              gap: s(15);
+            }
+
+            li {
+              background: $B-FFFFFF;
+              position: relative;
+
+              @include pc {
+                width: p(586);
+                padding: p(9) p(11);
+                border-radius: p(3);
+              }
+
+              @include sp {
+                padding: s(6) s(8);
+                border-radius: s(2);
+              }
+
+              .post-link {
+                display: flex;
+                align-items: center;
+                position: relative;
+                z-index: 1;
+
+                .items--img {
+                  background-color: $B-FFFFFF;
+
+                  img {
+                    @include pc {
+                      width: p(170);
+                      height: p(97);
+                      border-radius: p(3);
+                    }
+
+                    @include sp {
+                      width: s(90);
+                      height: s(51);
+                      border-radius: s(2);
+                    }
+                  }
+                }
+
+                .items--title {
+                  width: 100%;
+                  background-color: $B-FFFFFF;
+                  display: grid;
+                  place-items: center center;
+
+                  @include pc {
+                    height: p(97);
+                  }
+
+                  @include sp {
+                    height: s(51);
+                  }
+
+                  .TL {
+                    color: $F-646464;
+
+                    @include pc {
+                      font-size: p(16);
+                    }
+
+                    @include sp {
+                      font-size: s(12);
+                    }
+                  }
+                }
+              }
+
+              &::before {
+                content: "";
+                background: linear-gradient(
+                  93deg,
+                  #5bad83 1.53%,
+                  #acdec3 63.13%
+                );
+                transition: all 0.3s;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                opacity: 0;
+              }
+
+              &:hover {
+                &::before {
+                  opacity: 1;
+                }
+              }
+            }
+          }
+        }
+
+        &.active {
+          top: 0;
+          transition: all 0.3s;
+        }
+      }
 
       .page-section {
         z-index: 5;
@@ -325,9 +753,9 @@
           overflow: hidden;
         }
 
-
         .road-inner {
           position: relative;
+          pointer-events: none;
 
           @include pc {
             width: p(1032);
@@ -339,20 +767,20 @@
             position: absolute;
             width: 983px;
             height: 360px;
-            margin-left: 210px;
             bottom: 16%;
+            margin-left: 210px;
           }
-
 
           .content {
             width: 100%;
             height: 100%;
+            pointer-events: none;
 
             .road-content {
               position: relative;
               width: 100%;
               height: 100%;
-
+              pointer-events: none;
 
               .archive--contents {
                 width: 100%;
@@ -375,7 +803,7 @@
                 }
 
                 &::before {
-                  content: '';
+                  content: "";
                   position: absolute;
                   top: 4%;
                   aspect-ratio: 30 / 45;
@@ -394,7 +822,6 @@
                   }
 
                   @keyframes arrow {
-
                     0%,
                     100% {
                       transform: translateX(0%);
@@ -404,137 +831,7 @@
                       transform: translateX(-50%);
                     }
                   }
-
-
                 }
-
-                &--tab {
-                  display: flex;
-                  overflow-x: scroll;
-                  position: relative;
-                  margin: 0 auto;
-
-                  @include pc {
-                    // padding: 0 0 p(60);
-                    width: 90%;
-                    gap: p(35);
-                  }
-
-                  @include sp {
-                    width: 95%;
-                    gap: s(20);
-                  }
-
-
-                  .archive--item {
-                    cursor: pointer;
-                    flex-shrink: 0;
-
-                    @include pc {
-                      width: p(76);
-                    }
-
-                    @include sp {
-                      width: s(50);
-                    }
-
-                    &.active {
-                      cursor: default;
-
-                      .archive--item--img {
-                        border: solid $P-F38549;
-
-                        @include pc {
-                          border-width: p(5);
-                        }
-
-                        @include sp {
-                          border-width: s(2);
-                        }
-                      }
-
-                      .archive--item--title {
-                        background-color: $P-F38549;
-
-                        .TX {
-                          color: $F-FFFFFF;
-                        }
-                      }
-                    }
-
-                    &:hover {
-                      .archive--item--img {
-                        border: solid $P-f3844992;
-
-                        @include pc {
-                          border-width: p(5);
-                        }
-
-                        @include sp {
-                          border-width: s(2);
-                        }
-                      }
-
-                      .archive--item--title {
-                        background-color: $P-f3844992;
-
-                        .TX {
-                          color: $F-FFFFFF;
-                        }
-                      }
-                    }
-
-                    &--img {
-                      border-radius: 50%;
-                      object-fit: cover;
-                      object-position: center;
-                      transition: all 0.3s;
-
-                      @include pc {
-                        width: p(76);
-                        height: p(76);
-                      }
-
-                      @include sp {
-                        width: s(50);
-                        height: s(50);
-                      }
-                    }
-
-                    &--title {
-                      text-align: center;
-                      border-radius: 50px;
-                      transition: all 0.3s;
-                      width: 100%;
-                      font-size: 100%;
-
-                      @include pc {
-                        padding: p(10) 0;
-                      }
-
-                      @include sp {
-                        padding: s(3) 0;
-                      }
-
-                      .TX {
-                        @include wt800;
-                        color: #6B644D;
-                        transition: all 0.3s;
-                        overflow-wrap: break-word;
-                        word-wrap: break-word;
-
-                        @include pc {
-                          font-size: p(14);
-                        }
-
-                        @include sp {
-                          font-size: s(14);
-                        }
-                      }
-                    }
-                  }
-                }
-
 
                 &--items {
                   position: absolute;
@@ -590,9 +887,8 @@
                       }
 
                       &:hover {
-
                         .items--title {
-                          background-color: #F38549;
+                          background-color: #f38549;
 
                           .TL {
                             color: $F-FFFFFF;
@@ -600,7 +896,8 @@
                         }
                       }
 
-                      @include sp {}
+                      @include sp {
+                      }
 
                       .items--img {
                         width: 100%;
@@ -629,7 +926,7 @@
                         width: 100%;
                         border-radius: 50px;
                         background-color: #ffffffb4;
-                        border: solid #F38549;
+                        border: solid #f38549;
                         transition: all 0.3s;
 
                         @include pc {
@@ -645,7 +942,7 @@
                         .TL {
                           text-align: center;
                           @include wt800;
-                          color: #F38549;
+                          color: #f38549;
 
                           @include pc {
                             font-size: p(32);
@@ -659,29 +956,29 @@
                     }
                   }
                 }
-
-
               }
-
-
             }
 
             .destination {
               position: absolute;
+              pointer-events: auto;
 
               .goal-wrap {
                 position: relative;
                 left: 73%;
                 width: fit-content;
+                // z-index: -1;
+                display: block;
 
                 .goal {
                   display: block;
-                  @include imgContain("goal.png");
-                  z-index: 10;
+                  @include imgContain("goal.webp");
+                  z-index: 21;
                   position: absolute;
                   left: 50%;
                   top: 50%;
                   translate: -50% -50%;
+                  transition: all 0.3s;
 
                   @include pc {
                     width: p(107);
@@ -694,11 +991,11 @@
                   }
 
                   &.clear {
-                    @include imgContain("clear.png");
+                    @include imgContain("clear.webp");
                   }
 
                   &.not {
-                    @include imgContain("not.png");
+                    @include imgContain("not.webp");
 
                     @include pc {
                       width: p(83);
@@ -709,12 +1006,69 @@
                       width: 83px;
                       height: 40px;
                     }
+
+                    & ~ .title-board {
+                      filter: brightness(0.5);
+                    }
+
+                    &.next {
+                      @include imgContain("next-goal.webp");
+
+                      @include pc {
+                        width: p(101);
+                        height: p(68);
+                      }
+
+                      @include sp {
+                        width: 101px;
+                        height: 68px;
+                      }
+
+                      & ~ .title-board {
+                        filter: none;
+                      }
+
+                      &::before {
+                        content: "";
+                        position: absolute;
+                        pointer-events: none;
+                        bottom: -30%;
+                        left: 50%;
+                        translate: -50% 0;
+                        @include imgContain("next-goal-bg.webp");
+                        transform-style: preserve-3d;
+                        backface-visibility: hidden;
+                        animation: next-goal-bg 3s infinite linear;
+
+                        @include pc {
+                          width: p(250);
+                          height: p(250);
+                        }
+
+                        @include sp {
+                          width: 250px;
+                          height: 250px;
+                        }
+                      }
+
+                      @keyframes next-goal-bg {
+                        0%,
+                        100% {
+                          opacity: 0;
+                        }
+
+                        50% {
+                          opacity: 1;
+                        }
+                      }
+                    }
                   }
                 }
 
                 .goal-bg {
+                  position: relative;
                   z-index: 5;
-                  @include imgContain("goal-bg.png");
+                  @include imgContain("goal-bg.webp");
 
                   @include pc {
                     width: p(127);
@@ -727,21 +1081,65 @@
                   }
                 }
 
+                .title-board {
+                  @include imgContain("road-board.webp");
+                  position: absolute;
+                  z-index: 20;
+
+                  @include pc {
+                    width: p(86);
+                    height: p(79);
+                    top: p(-50);
+                    left: p(-5);
+                  }
+
+                  @include sp {
+                    width: 86px;
+                    height: 79px;
+                    top: -50px;
+                    left: 0;
+                  }
+
+                  .board-TX {
+                    color: $F-FFFFFF;
+                    font-weight: 600;
+
+                    @include pc {
+                      width: p(84);
+                      height: p(38);
+                      line-height: p(38);
+                      padding: p(5) 0 0 p(10);
+                      font-size: p(11);
+                    }
+
+                    @include sp {
+                      width: 84px;
+                      height: 38px;
+                      line-height: 38px;
+                      padding: 5px 0 0 10px;
+                      font-size: 11px;
+                    }
+                  }
+                }
+
+                &:hover {
+                  .goal {
+                    transition: all 0.2s;
+                    scale: 1.15;
+                  }
+                }
               }
 
-
               .character-box {
-                position: absolute;
                 bottom: 0;
                 translate: -50% 0;
-                z-index: 10;
+                z-index: 21;
                 pointer-events: none;
 
                 .character {
-                  @include imgContain("koneko.png");
+                  // @include imgContain("koneko.webp");
                   transition: left 0.5s ease;
                   margin: 0 auto;
-
 
                   @include pc {
                     width: p(57);
@@ -756,15 +1154,37 @@
 
                 .name {
                   position: relative;
+                  width: 100%;
+                  font-weight: 600;
+                  letter-spacing: 0.05em;
+                  padding: 4px 10px;
+                  background: #fff;
+                  border: 1px solid #ddd;
+                  border-radius: 13px;
+                  font-size: 12px;
+                  color: #333;
+
+                  &::before {
+                    content: "";
+                    position: absolute;
+                    top: -4px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 5px;
+                    height: 5px;
+                    background: #fff;
+                    border-left: 1px solid #ddd;
+                    border-top: 1px solid #ddd;
+                    transform: translateX(-50%) rotate(45deg);
+                  }
+
                   @include pc {
-                    width: p(40);
-                    font-size: p(13);
+                    font-size: p(10);
                     text-align: center;
-                    bottom: p(-10);
+                    bottom: p(-20);
                   }
 
                   @include sp {
-                    width: 40px;
                     font-size: 13px;
                     text-align: center;
                     bottom: -10px;
@@ -772,7 +1192,9 @@
                 }
 
                 &.me {
-                  animation: floating-y 2s ease-in-out infinite alternate-reverse;
+                  z-index: 100;
+                  animation: floating-y 2s ease-in-out infinite
+                    alternate-reverse;
 
                   @keyframes floating-y {
                     0% {
@@ -792,35 +1214,114 @@
                     top: -100px !important;
                   }
 
-                  .display__character{
+                  .display__character {
                     position: relative;
-                    @include pc{
+
+                    @include pc {
                       width: p(56);
                       height: p(65);
                     }
-                    @include sp{
+
+                    @include sp {
                       width: 56px;
                       height: 65px;
                     }
-                    &::after{
+
+                    &::after {
                       content: "";
                       position: absolute;
-                      @include imgContain("me.png");
+                      @include imgContain("me.webp");
                       left: 50%;
                       translate: -50% 0;
+
                       @include pc {
                         width: p(165);
                         height: p(257);
                         top: p(-170);
                       }
+
                       @include sp {
                         width: 165px;
                         height: 257px;
                         top: -170px;
-                      }  
+                      }
                     }
                   }
+                }
+              }
+
+              // ゴールホバーしたらそこにいるキャラが動く
+              &:hover {
+                //.meは動かない
+                .character-box:not(.me) {
                   .character {
+                    animation: purun 0.8s linear 0s 1;
+                  }
+
+                  @keyframes purun {
+                    0% {
+                      transform: scale(1, 1) translate(0%, 0%);
+                    }
+
+                    15% {
+                      transform: scale(0.9, 0.9) translate(0%, 5%);
+                    }
+
+                    30% {
+                      transform: scale(1.3, 0.8) translate(0%, 10%);
+                    }
+
+                    50% {
+                      transform: scale(0.8, 1.3) translate(0%, -50%);
+                    }
+
+                    70% {
+                      transform: scale(1.1, 0.9) translate(0%, 5%);
+                    }
+
+                    100% {
+                      transform: scale(1, 1) translate(0%, 0%);
+                    }
+                  }
+
+                  &:nth-child(1) .character {
+                    animation-delay: 0.05s;
+                  }
+
+                  &:nth-child(2) .character {
+                    animation-delay: 0.1s;
+                  }
+
+                  &:nth-child(3) .character {
+                    animation-delay: 0.15s;
+                  }
+
+                  &:nth-child(4) .character {
+                    animation-delay: 0.2s;
+                  }
+
+                  &:nth-child(5) .character {
+                    animation-delay: 0.25s;
+                  }
+
+                  &:nth-child(6) .character {
+                    animation-delay: 0.3s;
+                  }
+
+                  &:nth-child(7) .character {
+                    animation-delay: 0.35s;
+                  }
+
+                  &:nth-child(8) .character {
+                    animation-delay: 0.4s;
+                  }
+
+                  &:nth-child(9) .character {
+                    animation-delay: 0.45s;
+                  }
+
+                  &:nth-child(10) .character {
+                    animation-delay: 0.5s;
                   }
                 }
               }
@@ -830,8 +1331,10 @@
           .section-arrow {
             @include iconContain($next-section);
             cursor: pointer;
+            pointer-events: auto;
+
             position: absolute;
-            z-index: 20;
+            z-index: 22;
 
             @include pc {
               width: p(46);
@@ -859,7 +1362,6 @@
               }
             }
           }
-
         }
 
         &::before {
@@ -868,13 +1370,22 @@
           mix-blend-mode: plus-lighter;
         }
 
-
         &.page1 {
-          @include imgContain("road-bg.png");
+          @include imgContain("road-bg.webp");
+
+          @include pc {
+            margin-bottom: p(-40);
+          }
+
+          .road-inner {
+            @include sp {
+              margin-bottom: -30px;
+            }
+          }
 
           .content {
             .tree {
-              @include imgContain("page1-tree.png");
+              @include imgContain("page1-tree.webp");
               position: absolute;
               z-index: 15;
 
@@ -889,49 +1400,43 @@
                 width: 132px;
                 height: 151px;
                 right: 304px;
-                bottom: 130px;
-              }
-            }
-
-            .road-content {
-              .destination {
-                &:nth-child(1) {
-                  @include pc {
-                    left: p(-83);
-                    bottom: 0;
-                  }
-
-                  @include sp {
-                    left: -83px;
-                    bottom: 0;
-                  }
-                }
+                bottom: 159px;
               }
             }
           }
 
           &::before {
-            @include imgContain("filter-A.png");
+            @include imgContain("filter-A.webp");
             left: 50%;
             translate: -50% 0;
 
             @include pc {
               width: p(1087);
               height: p(415);
-              bottom: p(100)
+              bottom: p(100);
             }
           }
         }
 
         &.page2,
         &.page3,
-        &.page4 {
-          @include imgContain("bg-b.png");
+        &.page4,
+        &.page4-5,
+        &.page4-6 {
+          @include imgContain("bg-b.webp");
+
+          @include pc {
+            margin-bottom: p(-40);
+          }
 
           .road-inner {
+            @include sp {
+              margin-bottom: -30px;
+            }
+
             .content {
               .tree {
-                @include imgContain("page2-tree.png");
+                @include imgContain("page2-tree.webp");
                 pointer-events: none;
                 position: absolute;
                 z-index: 15;
@@ -954,29 +1459,34 @@
           }
 
           &::before {
-            @include imgContain("filter-B.png");
+            @include imgContain("filter-B.webp");
             left: 0;
 
             @include pc {
               width: p(1155);
               height: p(397);
-              bottom: p(100)
+              bottom: p(100);
             }
 
             @include sp {
               width: 1155px;
               height: 397px;
-              bottom: 100px
+              bottom: 100px;
             }
           }
         }
 
         &.page5 {
-          @include imgContain("bg-c.png");
+          @include imgContain("bg-c.webp");
+
+          @include pc {
+            margin-bottom: p(-40);
+          }
 
           .load {
-            @include imgContain("load-c.png");
+            // @include imgContain("load-c.webp");
             position: absolute;
+            z-index: -1;
 
             @include pc {
               width: p(715);
@@ -995,24 +1505,26 @@
 
           .road-inner {
             .content {
+              pointer-events: none;
+
               .tree {
                 position: absolute;
-                z-index: 5;
+                z-index: -999;
                 pointer-events: none;
               }
 
               .tree-left {
-                @include imgContain("page5-left.png");
+                @include imgContain("page5-left.webp");
 
                 @include pc {
                   width: p(620);
                   height: p(565);
-                  left: p(-147);
-                  bottom: p(189);
+                  left: p(-207);
+                  bottom: p(259);
                 }
 
                 @include sp {
-                  width: 620px;
+                  width: 520px;
                   height: 565px;
                   left: -147px;
                   bottom: 189px;
@@ -1020,17 +1532,17 @@
               }
 
               .tree-right {
-
                 @include pc {
-                  @include imgContain("page5-right.png");
+                  @include imgContain("page5-right.webp");
                   width: p(729);
                   height: p(587);
                   right: p(-293);
-                  bottom: p(182);
+                  bottom: p(252);
+                  z-index: 99;
                 }
 
                 @include sp {
-                  @include imgContain("page5-right-sp.png");
+                  @include imgContain("page5-right-sp.webp");
                   width: 472px;
                   height: 675px;
                   right: -74px;
@@ -1039,13 +1551,14 @@
               }
 
               .castle {
-                @include imgContain("goal-castle.png");
+                @include imgContain("goal-castle.webp");
                 position: absolute;
+                pointer-events: auto;
 
                 @include pc {
                   width: p(385);
                   height: p(454);
-                  right: p(326);
+                  right: p(343);
                   bottom: p(163);
                 }
 
@@ -1059,6 +1572,8 @@
 
               .road-content {
                 .destination {
+                  pointer-events: auto;
+
                   &:nth-child(1) {
                     @include pc {
                       left: p(-149);
@@ -1123,28 +1638,37 @@
                           bottom: -100px;
                         }
                       }
+
+                      .title-board {
+                        @include pc {
+                          left: p(-70);
+                        }
+
+                        @include sp {
+                          left: -70px;
+                        }
+                      }
                     }
                   }
-
                 }
               }
             }
           }
 
           &::before {
-            @include imgContain("filter-C.png");
+            @include imgContain("filter-C.webp");
             left: 0;
 
             @include pc {
               width: p(1177);
               height: p(254);
-              bottom: p(70)
+              bottom: p(70);
             }
 
             @include sp {
               width: 1177px;
               height: 254px;
-              bottom: 70px
+              bottom: 70px;
             }
           }
 
@@ -1170,6 +1694,16 @@
                 .goal-wrap,
                 .character-box {
                   rotate: 11deg;
+
+                  .title-board {
+                    @include pc {
+                      left: p(-70);
+                    }
+
+                    @include sp {
+                      left: -70px;
+                    }
+                  }
                 }
               }
             }
@@ -1200,7 +1734,7 @@
                     .destination {
                       &:nth-child(1) {
                         @include pc {
-                          left: p(302);
+                          left: p(242);
                           bottom: p(-23);
                         }
 
@@ -1214,8 +1748,9 @@
                         rotate: -90deg;
 
                         @include pc {
-                          left: p(425);
-                          bottom: p(20);
+                          width: p(80);
+                          left: p(445);
+                          bottom: p(35);
                         }
 
                         @include sp {
@@ -1236,6 +1771,16 @@
 
                             @include sp {
                               bottom: -269px;
+                            }
+                          }
+
+                          .title-board {
+                            @include pc {
+                              left: p(-70);
+                            }
+
+                            @include sp {
+                              left: -70px;
                             }
                           }
                         }
@@ -1322,6 +1867,16 @@
                               bottom: -269px;
                             }
                           }
+
+                          .title-board {
+                            @include pc {
+                              left: p(-70);
+                            }
+
+                            @include sp {
+                              left: -70px;
+                            }
+                          }
                         }
                       }
                     }
@@ -1365,7 +1920,6 @@
                           bottom: 42px;
                         }
                       }
-
 
                       &:nth-child(2) {
                         @include pc {
@@ -1419,13 +1973,22 @@
                               bottom: -269px;
                             }
                           }
+
+                          .title-board {
+                            @include pc {
+                              left: p(-70);
+                            }
+
+                            @include sp {
+                              left: -70px;
+                            }
+                          }
                         }
                       }
                     }
                   }
                 }
               }
-
             }
           }
         }
@@ -1433,605 +1996,12 @@
         &.show {
           display: block;
         }
-
-      }
-
-      &.HTML {
-        .page1 {
-          .road-content {
-            .destination {
-              &:nth-child(2) {
-                @include pc {
-                  width: p(250);
-                  right: p(513);
-                  bottom: p(-3);
-                }
-
-                @include sp {
-                  width: 250px;
-                  right: 513px;
-                  bottom: -3px;
-                }
-              }
-
-              &:nth-child(3) {
-                rotate: -140deg;
-
-                @include pc {
-                  width: p(300);
-                  right: p(180);
-                  bottom: p(180);
-                }
-
-                @include sp {
-                  width: 300px;
-                  right: 131px;
-                  bottom: 178px;
-                }
-
-                .goal-wrap,
-                .character-box {
-                  rotate: 140deg;
-                }
-
-                .goal-wrap {
-                  @include pc {
-                    top: p(-44);
-                  }
-
-                  @include sp {
-                    top: -46px;
-                  }
-
-                  .goal-bg {
-                    opacity: 0;
-                  }
-                }
-
-                .character-box {
-                  @include pc {
-                    top: p(-52);
-                  }
-                }
-
-              }
-
-              &:nth-child(4) {
-                scale: -1 1;
-                rotate: 200deg;
-
-                @include pc {
-                  width: p(250);
-                  left: p(24);
-                  bottom: p(177);
-                }
-
-                @include sp {
-                  width: 250px;
-                  left: 15px;
-                  bottom: 178px;
-                }
-
-                .goal-wrap,
-                .character-box {
-                  scale: -1 1;
-                  rotate: 200deg;
-                }
-              }
-
-              &:nth-child(5) {
-                @include pc {
-                  width: p(400);
-                  right: p(44);
-                  bottom: p(68);
-                }
-
-                @include sp {
-                  width: 400px;
-                  right: 34px;
-                  bottom: 68px;
-                }
-              }
-            }
-          }
-        }
-      }
-
-      &.jQuery {
-        .page1 {
-          .road-content {
-            .destination {
-              &:nth-child(2) {
-                @include pc {
-                  left: p(198);
-                  bottom: p(14);
-                }
-
-                @include sp {
-                  left: 198px;
-                  bottom: 14px;
-                }
-              }
-
-              &:nth-child(3) {
-                @include pc {
-                  right: p(314);
-                  bottom: 0;
-                }
-
-                @include sp {
-                  right: 314px;
-                  bottom: 0;
-                }
-              }
-
-              &:nth-child(4) {
-                rotate: -90deg;
-
-                @include pc {
-                  right: p(193);
-                  bottom: p(51);
-                }
-
-                @include sp {
-                  right: 193px;
-                  bottom: 83px;
-                }
-
-                .goal-wrap,
-                .character-box {
-                  rotate: 90deg;
-                }
-              }
-
-              &:nth-child(5) {
-                rotate: 180deg;
-
-                @include pc {
-                  left: p(280);
-                  bottom: p(260);
-                }
-
-                @include sp {
-                  left: 280px;
-                  bottom: 260px;
-                }
-
-                .goal-wrap,
-                .character-box {
-                  rotate: 180deg;
-
-                  &.me {
-                    @include pc {
-                      bottom: p(-76);
-                    }
-
-                    @include sp {
-                      bottom: -76px;
-                    }
-                  }
-                }
-              }
-
-              &:nth-child(6) {
-                rotate: 58deg;
-
-                @include pc {
-                  left: p(107);
-                  bottom: p(217);
-                }
-
-                @include sp {
-                  left: 107px;
-                  bottom: 217px;
-                }
-
-                .goal-wrap,
-                .character-box {
-                  rotate: -58deg;
-                }
-              }
-
-              &:nth-child(7) {
-                @include pc {
-                  left: p(340);
-                  bottom: p(91);
-                }
-
-                @include sp {
-                  left: 340px;
-                  bottom: 91px;
-                }
-              }
-
-              &:nth-child(8) {
-                @include pc {
-                  right: p(117);
-                  bottom: p(80);
-                }
-
-                @include sp {
-                  right: 77px;
-                  bottom: 71px;
-                }
-              }
-            }
-          }
-        }
-      }
-
-      &.Java,
-      &.React {
-        .page1 {
-          .road-content {
-            .destination {
-              &:nth-child(2) {
-                @include pc {
-                  left: p(177);
-                  bottom: p(15);
-                }
-
-                @include sp {
-                  left: 177px;
-                  bottom: 15px;
-                }
-              }
-
-              &:nth-child(3) {
-                @include pc {
-                  right: p(468);
-                  bottom: p(-15);
-                }
-
-                @include sp {
-                  right: 468px;
-                  bottom: -7px;
-                }
-              }
-
-              &:nth-child(4) {
-                rotate: -119deg;
-
-                @include pc {
-                  right: p(142);
-                  bottom: p(51);
-                }
-
-                @include sp {
-                  right: 112px;
-                  bottom: 68px;
-                }
-
-                .goal-wrap,
-                .character-box {
-                  rotate: 119deg;
-                }
-              }
-
-              &:nth-child(5) {
-                rotate: -140deg;
-
-                @include pc {
-                  right: p(280);
-                  bottom: p(213);
-                }
-
-                @include sp {
-                  right: 230px;
-                  bottom: 213px;
-                }
-
-                .goal-wrap,
-                .character-box {
-                  rotate: 140deg;
-                }
-
-                .goal-wrap {
-                  @include pc {
-                    top: p(-44);
-                  }
-
-                  @include sp {
-                    top: -44px;
-                  }
-
-                  .goal-bg {
-                    opacity: 0;
-                  }
-                }
-
-                .character-box {
-                  @include pc {
-                    top: p(-52);
-                  }
-
-                  @include sp {
-                    top: -52px;
-                  }
-                }
-
-              }
-
-              &:nth-child(6) {
-                rotate: 180deg;
-
-                @include pc {
-                  left: p(230);
-                  bottom: p(253);
-                }
-
-                @include sp {
-                  left: 230px;
-                  bottom: 253px;
-                }
-
-                .goal-wrap,
-                .character-box {
-                  rotate: 180deg;
-
-                }
-              }
-
-              &:last-child {
-                @include pc {
-                  right: p(109);
-                  bottom: p(68);
-                }
-
-                @include sp {
-                  right: 80px;
-                  bottom: 68px;
-                }
-              }
-            }
-          }
-        }
-
-        .page2,
-        .page3,
-        .page4 {
-          .road-content {
-            .destination {
-              &:nth-child(1) {
-                @include pc {
-                  left: p(-100);
-                  bottom: p(100);
-                }
-
-                @include sp {
-                  left: -100px;
-                  bottom: 100px;
-                }
-              }
-
-              &:nth-child(2) {
-                rotate: -30deg;
-
-                @include pc {
-                  left: p(68);
-                  bottom: p(161);
-                }
-
-                @include sp {
-                  left: 68px;
-                  bottom: 161px;
-                }
-
-                .goal-wrap,
-                .character-box {
-                  rotate: 30deg;
-                }
-              }
-
-              &:nth-child(3) {
-                rotate: -15deg;
-
-                @include pc {
-                  left: p(280);
-                  bottom: p(231);
-                }
-
-                @include sp {
-                  left: 280px;
-                  bottom: 231px;
-                }
-
-                .goal-wrap,
-                .character-box {
-                  rotate: 15deg;
-                }
-              }
-
-              &:nth-child(4) {
-                rotate: 30deg;
-
-                @include pc {
-                  right: p(403);
-                  bottom: p(255);
-                }
-
-                @include sp {
-                  right: 352px;
-                  bottom: 266px;
-                }
-
-                .goal-wrap,
-                .character-box {
-                  rotate: -30deg;
-                }
-              }
-
-              &:nth-child(5) {
-                rotate: 121deg;
-
-                @include pc {
-                  right: p(302);
-                  bottom: p(129);
-                }
-
-                @include sp {
-                  right: 283px;
-                  bottom: 105px;
-                }
-
-                .goal-wrap,
-                .character-box {
-                  rotate: -121deg;
-                }
-              }
-
-              &:nth-child(6) {
-                rotate: 169deg;
-
-                @include pc {
-                  right: p(464);
-                  bottom: p(18);
-                }
-
-                @include sp {
-                  right: 415px;
-                  bottom: 18px;
-                }
-
-                .goal-wrap,
-                .character-box {
-                  rotate: -169deg;
-                }
-              }
-
-              &:nth-child(7) {
-                rotate: 212deg;
-
-                @include pc {
-                  left: p(272);
-                  bottom: p(10);
-                }
-
-                @include sp {
-                  left: 249px;
-                  bottom: 10px;
-                }
-
-                .goal-wrap,
-                .character-box {
-                  rotate: -212deg;
-                }
-              }
-
-              &:nth-child(8) {
-                @include pc {
-                  left: p(338);
-                  bottom: p(141);
-                }
-
-                @include sp {
-                  left: 338px;
-                  bottom: 141px;
-                }
-              }
-
-
-              &:nth-child(9) {
-                @include pc {
-                  right: p(197);
-                  bottom: p(68);
-                }
-
-                @include sp {
-                  right: 197px;
-                  bottom: 68px;
-                }
-              }
-            }
-          }
-        }
-      }
-
-      &.Java {
-        .page1 {
-          .road-content {
-            .destination {
-              &:nth-child(7) {
-                @include pc {
-                  left: p(103);
-                  bottom: p(138);
-                }
-
-                @include sp {
-                  left: 103px;
-                  bottom: 138px;
-                }
-              }
-
-              &:nth-child(8) {
-                @include pc {
-                  right: p(537);
-                  bottom: p(92);
-                  z-index: 17;
-                }
-
-                @include sp {
-                  right: 537px;
-                  bottom: 92px;
-                  z-index: 17;
-                }
-              }
-            }
-          }
-        }
-      }
-
-      &.React {
-        .page1 {
-          .road-content {
-            .destination {
-              &:nth-child(7) {
-                @include pc {
-                  left: p(70);
-                  bottom: p(138);
-                }
-
-                @include sp {
-                  left: 70px;
-                  bottom: 138px;
-                }
-              }
-
-              &:nth-child(8) {
-                @include pc {
-                  right: p(600);
-                  bottom: p(102);
-                  z-index: 17;
-                }
-
-                @include sp {
-                  right: 600px;
-                  bottom: 102px;
-                  z-index: 17;
-                }
-              }
-
-
-              &:nth-child(9) {
-                @include pc {
-                  right: p(380);
-                  bottom: p(84);
-                }
-
-                @include sp {
-                  right: 380px;
-                  bottom: 84px;
-                }
-              }
-            }
-          }
-        }
       }
     }
 
     .road-chat {
       position: absolute;
-      z-index: 20;
+      z-index: 30;
       height: fit-content;
 
       @include pc {
@@ -2065,9 +2035,12 @@
 
         .timeline-wrap {
           .timeline {
-            background: linear-gradient(0deg, rgba(92, 92, 92, 0.00) 0%, rgba(92, 92, 92, 0.40) 15.5%, rgba(92, 92, 92, 0.60) 29%, rgba(92, 92, 92, 0.60) 71.5%, rgba(92, 92, 92, 0.40) 87.5%, rgba(92, 92, 92, 0.00) 100%);
+            // グレーの帯背景は撤去
             color: $F-F1FCD4;
             position: relative;
+            display: flex;
+            flex-direction: column-reverse; // 新しい item が下に来て、上に積み上がる
+            gap: p(8);
 
             @include pc {
               font-size: p(10);
@@ -2085,6 +2058,7 @@
               padding: 15px 10px;
               margin-top: 23px;
               line-height: 1.5;
+              gap: 8px;
             }
 
             &::before {
@@ -2106,17 +2080,114 @@
                   0% {
                     transform: translateY(0%);
                   }
-
                   50% {
                     transform: translateY(15%);
                   }
-
                   100% {
                     transform: translateY(0%);
                   }
                 }
               }
             }
+
+            // 吹き出し1つ1つ
+            .timeline-item {
+              position: relative;
+              background: $B-FFFDED;
+              color: $F-857763;
+              border-radius: 10px;
+              width: 100%;
+
+              // 下から上へフェードイン（消えずに残る）
+              opacity: 0;
+              transform: translateY(12px);
+              animation: timeline-rise 0.5s ease forwards;
+              --o: 1; // フェード到達時の透明度（デフォルト100%）
+
+              @include pc {
+                padding: p(8) p(10);
+                border-radius: p(10);
+              }
+
+              @include sp {
+                padding: 8px 10px;
+                border-radius: 10px;
+              }
+
+              // 吹き出しのしっぽ（下向き）
+              &::after {
+                content: "";
+                position: absolute;
+                left: 16px;
+                bottom: -6px;
+                width: 0;
+                height: 0;
+                border-left: 6px solid transparent;
+                border-right: 6px solid transparent;
+                border-top: 8px solid $B-FFFDED;
+              }
+
+              h3 {
+                margin: 0;
+                line-height: 1.5;
+                font-weight: bold;
+              }
+
+              // 完了報告が無いときの空表示
+              &.timeline-item--empty {
+                background: transparent;
+                color: $F-F1FCD4;
+                text-align: center;
+                &::after {
+                  display: none;
+                }
+              }
+            }
+
+            // 順番にずらして登場（下から順に湧いてくる感）
+            .timeline-item:nth-child(1) {
+              animation-delay: 0s;
+            }
+            .timeline-item:nth-child(2) {
+              animation-delay: 0.15s;
+            }
+            .timeline-item:nth-child(3) {
+              animation-delay: 0.3s;
+            }
+            .timeline-item:nth-child(4) {
+              animation-delay: 0.45s;
+            }
+            .timeline-item:nth-child(5) {
+              animation-delay: 0.6s;
+            }
+            .timeline-item:nth-child(6) {
+              animation-delay: 0.75s;
+            }
+            .timeline-item:nth-child(7) {
+              animation-delay: 0.9s;
+            }
+            .timeline-item:nth-child(8) {
+              animation-delay: 1.05s;
+            }
+
+            // 見た目の上から順に透明度を下げる（column-reverse のため nth-last-child で数える）
+            .timeline-item:nth-last-child(1) {
+              --o: 0.3;
+            } // 見た目の一番上
+            .timeline-item:nth-last-child(2) {
+              --o: 0.6;
+            } // 見た目の上から二番
+          }
+        }
+
+        @keyframes timeline-rise {
+          from {
+            opacity: 0;
+            transform: translateY(12px);
+          }
+          to {
+            opacity: var(--o);
+            transform: translateY(0);
           }
         }
 
@@ -2174,12 +2245,21 @@
           }
         }
       }
+
+      @media (max-width: 400px) {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+          opacity 0.3s ease,
+          visibility 0.3s ease;
+      }
     }
 
     .under-menu {
       position: absolute;
       z-index: 99;
-      background: rgba(92, 92, 92, 0.50);
+      background: rgba(92, 92, 92, 0.5);
       width: 100%;
       transition: all 0.5s;
 
@@ -2275,23 +2355,23 @@
           }
 
           &.road-my-btn {
-            @include imgContain("my-btn.png");
+            @include imgContain("my-btn.webp");
           }
 
           &.road-ranking-btn {
-            @include imgContain("ranking-btn.png");
+            @include imgContain("ranking-btn.webp");
           }
 
           &.road-column-btn {
-            @include imgContain("column-btn.png");
+            @include imgContain("column-btn.webp");
           }
 
           &.road-question-btn {
-            @include imgContain("question-btn.png");
+            @include imgContain("question-btn.webp");
           }
 
           &.road-game-btn {
-            @include imgContain("game-btn.png");
+            @include imgContain("game-btn.webp");
           }
         }
       }

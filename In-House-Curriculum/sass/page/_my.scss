@@ -7,7 +7,7 @@
 .my {
   @include height;
   width: 100%;
-  @include imgCover('page-my.jpg');
+  @include imgCover("page-my.webp");
   background-position: bottom left;
   position: relative;
 
@@ -34,7 +34,8 @@
       gap: p(140);
     }
 
-    @include sp {}
+    @include sp {
+    }
 
     .my--title {
       flex-shrink: 0;
@@ -94,7 +95,7 @@
 
         @include sp {
           width: 80%;
-          padding: min(s(15),10px) min(s(10),7px);
+          padding: min(s(15), 10px) min(s(10), 7px);
           margin-top: min(s(30));
         }
 
@@ -107,7 +108,7 @@
           }
 
           @include sp {
-            font-size: min(s(16),16px);
+            font-size: min(s(16), 16px);
           }
         }
 
@@ -122,7 +123,7 @@
           }
 
           @include sp {
-            width: min(s(120),200px);
+            width: min(s(120), 200px);
             right: s(0);
             bottom: calc(100% + s(3));
           }
@@ -130,10 +131,9 @@
       }
 
       &--points {
-
         @include pc {
           @include column(p(5));
-          margin-top: p(10)
+          margin-top: p(10);
         }
 
         @include sp {
@@ -154,7 +154,7 @@
 
           @include sp {
             width: 80%;
-            padding: min(s(10),10px) min(s(10),10px);
+            padding: min(s(10), 10px) min(s(10), 10px);
             @include column(s(5));
           }
 
@@ -171,7 +171,7 @@
             }
 
             @include sp {
-              font-size: min(s(12),12px);
+              font-size: min(s(12), 12px);
             }
 
             span {
@@ -184,7 +184,7 @@
               }
 
               @include sp {
-                font-size: min(s(14),12px);
+                font-size: min(s(14), 12px);
               }
             }
           }
@@ -216,12 +216,11 @@
 
               @include sp {
                 padding: s(5) 0;
-                font-size: min(s(11),11px);
+                font-size: min(s(11), 11px);
               }
 
-
               &.blue {
-                background-color: #4BC7FB;
+                background-color: #4bc7fb;
               }
 
               &.gold {
@@ -266,15 +265,11 @@
           }
         }
 
-
-
-
-
         .clothes--change__button {
           position: absolute;
           right: 0;
           background: rgba(0, 0, 0, 0.5);
-          color: #FFF;
+          color: #fff;
           line-height: 1.5;
           display: flex;
           align-items: center;
@@ -297,7 +292,6 @@
             font-size: s(10);
             bottom: 0;
           }
-
         }
       }
     }
@@ -337,7 +331,7 @@
       }
 
       .bbs {
-        @include imgContain('bbs.png');
+        @include imgContain("bbs.webp");
         background-position: center bottom;
         aspect-ratio: 558/ 499;
         position: absolute;
@@ -345,9 +339,11 @@
 
         @include pc {
           width: clamp(500px, p(558), 750px);
+          height: clamp(400px, p(499), 600px);
           left: p(20);
           bottom: p(40);
-          padding: clamp(80px, p(90), 110px) clamp(80px, p(90), 110px) clamp(140px, p(160), 200px);
+          padding: clamp(40px, p(90), 80px) clamp(80px, p(90), 110px)
+            clamp(140px, p(160), 200px);
         }
 
         @include sp {
@@ -365,7 +361,8 @@
 
           @include pc {
             right: p(0);
-            top: p(-60);
+            // top: p(-60);
+            bottom: 100%;
           }
 
           @include sp {
@@ -374,7 +371,7 @@
           }
 
           &--serif {
-            background: #FFF;
+            background: #fff;
             position: relative;
             height: fit-content;
 
@@ -410,7 +407,7 @@
             }
 
             .TX {
-              color: #3EADDC;
+              color: #3eaddc;
               @include wt700;
               letter-spacing: p(1.6);
 
@@ -443,43 +440,51 @@
           }
         }
 
+        .title {
+          @include pc {
+            margin-bottom: clamp(20px, p(30), 30px);
+          }
+
+          @include sp {
+            margin-bottom: s(10);
+          }
+
+          .TL {
+            color: #fff;
+            text-align: center;
+            @include wt700;
+
+            @include pc {
+              font-size: clamp(14px, p(16), 18px);
+            }
+
+            @include sp {
+              font-size: s(14);
+            }
+          }
+        }
+
         &--content {
           overflow-y: scroll;
 
           @include pc {
-            height: 100%;
+            height: 70%;
             @include column(p(18));
           }
 
           @include sp {
-            height: s(150);
+            height: 65%;
             @include column(s(10));
           }
 
-          .title {
-            .TL {
-              color: #FFF;
-              text-align: center;
-              @include wt700;
-
-              @include pc {
-                font-size: clamp(14px, p(16), 18px);
-              }
-
-              @include sp {
-                font-size: s(14);
-              }
-            }
-          }
-
           .sentence {
-
             li {
-              border-top: dashed #D6AC87;
+              border-top: dashed #d6ac87;
               position: relative;
 
               @include pc {
-                padding: clamp(7px, p(8), 10px) clamp(18px, p(22), 25px) clamp(9px, p(10), 12px);
+                padding: clamp(7px, p(8), 10px) clamp(18px, p(22), 25px)
+                  clamp(9px, p(10), 12px);
                 border-top-width: p(1);
                 @include column(p(2));
               }
@@ -491,7 +496,7 @@
               }
 
               &:last-child {
-                border-bottom: dashed #D6AC87;
+                border-bottom: dashed #d6ac87;
 
                 @include pc {
                   border-bottom-width: p(1);
@@ -503,7 +508,7 @@
               }
 
               .time {
-                color: #E0E0E0;
+                color: #e0e0e0;
                 @include wt400;
 
                 @include pc {
@@ -516,7 +521,7 @@
               }
 
               .text {
-                color: #FFF;
+                color: #fff;
                 @include wt500;
                 line-height: normal;
 
@@ -531,12 +536,47 @@
             }
           }
         }
+
+        &--content--pageNation {
+          width: fit-content;
+          margin: 0 auto;
+
+          @include pc {
+            margin-top: clamp(20px, p(30), 30px);
+          }
+
+          @include sp {
+            margin-top: s(10);
+          }
+
+          a {
+            color: #fff;
+          }
+
+          span {
+            color: #333;
+          }
+
+          a,
+          span {
+            @include wt500;
+
+            @include pc {
+              font-size: clamp(12px, p(14), 16px);
+            }
+
+            @include sp {
+              font-size: s(12);
+            }
+          }
+        }
       }
 
       .spy {
         position: absolute;
         z-index: 2;
         display: flex;
+        pointer-events: none;
 
         @include pc {
           left: p(-30);
@@ -582,7 +622,7 @@
           }
 
           &--serif {
-            background: #FFF;
+            background: #fff;
             position: relative;
             height: fit-content;
 
@@ -619,7 +659,7 @@
             }
 
             .TX {
-              color: #F69082;
+              color: #f69082;
               @include wt700;
               letter-spacing: p(1.6);
 
@@ -638,12 +678,13 @@
             rotate: -2.7deg;
 
             a {
-              color: #7A6649;
-              text-shadow: 0px 4px 20px #B58F56;
+              color: #7a6649;
+              text-shadow: 0px 4px 20px #b58f56;
               @include wt900;
               display: block;
               width: fit-content;
               transition: all 0.3s;
+              pointer-events: auto;
 
               @include pc {
                 margin-left: auto;
@@ -651,7 +692,6 @@
                 letter-spacing: p(2.6);
 
                 &:hover {
-
                   @include pc {
                     translate: 5% 0;
                   }
@@ -701,8 +741,10 @@
 
       @include pc {
         width: 50%;
-        height: 100%;
+        height: 90%;
         right: -48%;
+        top: 50%;
+        transform: translateY(-50%);
       }
 
       @include sp {
@@ -713,7 +755,6 @@
       }
 
       &.active {
-
         @include pc {
           right: p(-5);
         }
@@ -759,7 +800,7 @@
         height: 100%;
 
         .my--content--page {
-          @include imgCover('note-paper.jpg');
+          @include imgCover("note-paper.webp");
           border: solid #048664;
           border-radius: 10px 0 0 10px;
           height: 100%;
@@ -853,12 +894,12 @@
           }
 
           &.tab--1 {
-            background-image: pageTab(encode('#DB8096'));
+            background-image: pageTab(encode("#DB8096"));
             top: 27%;
           }
 
           &.tab--2 {
-            background-image: pageTab(encode('#529CBC'));
+            background-image: pageTab(encode("#529CBC"));
             top: 72%;
             filter: drop-shadow(0 0 p(10) rgba(0, 0, 0, 0.5));
           }
@@ -887,20 +928,30 @@
           position: absolute;
           z-index: 10;
           aspect-ratio: 1 / 1;
-          @include iconContain($close);
+          // @include iconContain($close);
           cursor: pointer;
+          font-weight: bold;
+          text-decoration: none;
+          color: #048664;
+          cursor: pointer;
+          transition: transform 0.2s ease, opacity 0.2s ease;
 
           @include pc {
-            width: p(20);
-            left: p(40);
-            top: p(20);
+            font-size: p(20);
+            left: p(55);
+            top: p(25);
           }
 
           @include sp {
-            width: s(20);
-            left: s(10);
-            top: s(10);
+            font-size: s(20);
+            left: s(20);
+            top: s(15);
           }
+        }
+
+        .gorilla:hover {
+          transform: scale(0.9);
+          opacity: 0.7;
         }
 
         .tab--content {
@@ -913,7 +964,8 @@
           z-index: 5;
           overflow-y: scroll;
 
-          @include pc {}
+          @include pc {
+          }
 
           // 進捗更新
           &--progress {
@@ -954,7 +1006,6 @@
                   }
 
                   .progress--title {
-
                     @include pc {
                       margin-bottom: p(10);
                     }
@@ -978,7 +1029,6 @@
                   }
 
                   .progress--update {
-
                     @include pc {
                       @include column(p(20));
                     }
@@ -1017,8 +1067,8 @@
                           display: flex;
                           align-items: center;
                           overflow-wrap: anywhere;
+                          line-height: 1.5;
                           //  word-wrap: break-word;
-
 
                           @include pc {
                             font-size: p(20);
@@ -1031,6 +1081,7 @@
                           }
 
                           .deco {
+                            flex-shrink: 0;
                             display: block;
                             aspect-ratio: 1 / 1;
                             border: solid $F-6B644D;
@@ -1047,7 +1098,7 @@
                             }
 
                             &::before {
-                              content: '';
+                              content: "";
                               position: absolute;
                               top: 30%;
                               left: 55%;
@@ -1082,7 +1133,6 @@
                           @include pc {
                             font-size: p(40);
                             // padding-right: p(20);
-
                           }
 
                           @include sp {
@@ -1112,7 +1162,6 @@
                         }
 
                         &:focus {
-
                           @include pc {
                             box-shadow: 0 0 3px rgb(0, 161, 255);
                           }
@@ -1120,7 +1169,6 @@
 
                         // -webkit-向けのつまみ
                         &::-webkit-slider-thumb {
-
                           @include pc {
                             -webkit-appearance: none;
                             width: 0;
@@ -1130,7 +1178,9 @@
                             border-left: solid transparent;
                             border-top: solid #53aeff;
                             border-bottom: 0;
-                            filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.15));
+                            filter: drop-shadow(
+                              0px 5px 10px rgba(0, 0, 0, 0.15)
+                            );
                             border-top-width: p(25);
                             border-right-width: p(15);
                             border-left-width: p(15);
@@ -1141,7 +1191,9 @@
                         // -moz-向けのつまみ
                         &::-moz-range-thumb {
                           @include pc {
-                            filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.15));
+                            filter: drop-shadow(
+                              0px 5px 10px rgba(0, 0, 0, 0.15)
+                            );
                             -webkit-appearance: none;
                             width: 0;
                             height: 0;
@@ -1154,12 +1206,10 @@
                             border-right-width: p(20);
                             border-left-width: p(20);
                           }
-
                         }
 
                         // Firefoxで点線が周りに表示されてしまう問題の解消
                         &::-moz-focus-outer {
-
                           @include pc {
                             border: 0;
                           }
@@ -1168,7 +1218,79 @@
                         // つまみをドラッグしているときのスタイル
                         &:active::-webkit-slider-thumb {
                           @include pc {
-                            filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.3));
+                            filter: drop-shadow(
+                              0px 5px 10px rgba(0, 0, 0, 0.3)
+                            );
+                          }
+                        }
+                      }
+
+                      &.active {
+                        .update--item--title {
+                          .count {
+                            color: #f38549;
+                          }
+                        }
+
+                        .progressBar {
+                          background: #f38549;
+                          border: solid 3px #ffffff31;
+
+                          &:focus {
+                            @include pc {
+                              box-shadow: 0 0 3px #ffffff31;
+                            }
+                          }
+
+                          // -webkit-向けのつまみ
+                          &::-webkit-slider-thumb {
+                            @include pc {
+                              border-top: solid #f38549;
+                              border-bottom: 0;
+                              filter: drop-shadow(
+                                0px 5px 10px rgba(0, 0, 0, 0.15)
+                              );
+                              border-top-width: p(25);
+                              border-right-width: p(15);
+                              border-left-width: p(15);
+                              transform: translateY(-50%);
+                            }
+                          }
+
+                          // -moz-向けのつまみ
+                          &::-moz-range-thumb {
+                            @include pc {
+                              filter: drop-shadow(
+                                0px 5px 10px rgba(0, 0, 0, 0.15)
+                              );
+                              -webkit-appearance: none;
+                              width: 0;
+                              height: 0;
+                              border-style: solid;
+                              border-right: solid transparent;
+                              border-left: solid transparent;
+                              border-top: solid #f38549;
+                              border-bottom: 0;
+                              border-top-width: p(30);
+                              border-right-width: p(20);
+                              border-left-width: p(20);
+                            }
+                          }
+
+                          // Firefoxで点線が周りに表示されてしまう問題の解消
+                          &::-moz-focus-outer {
+                            @include pc {
+                              border: 0;
+                            }
+                          }
+
+                          // つまみをドラッグしているときのスタイル
+                          &:active::-webkit-slider-thumb {
+                            @include pc {
+                              filter: drop-shadow(
+                                0px 5px 10px rgba(0, 0, 0, 0.3)
+                              );
+                            }
                           }
                         }
                       }
@@ -1193,19 +1315,17 @@
                 }
 
                 &--ul {
-
                   @include pc {
                     padding: p(30) 0;
-                    @include column(p(20))
+                    @include column(p(20));
                   }
 
                   @include sp {
                     padding: s(20) 0;
-                    @include column(s(20))
+                    @include column(s(20));
                   }
 
                   &--li {
-
                     .TX {
                       @include wt400;
                       cursor: pointer;
@@ -1249,7 +1369,6 @@
                   @include sp {
                     padding: s(5) s(10);
                     font-size: s(14);
-
                   }
                 }
               }
@@ -1267,15 +1386,16 @@
             }
 
             // プロフィールフォーーーーーーム
-            #swpm-profile-form {
-
-              div {
-                .swpm-form-row {
+            #swpm-editprofile-form {
+              table {
+                tr {
                   margin-bottom: 20px;
+                  display: block;
 
-                  .swpm-form-label-wrap {
-                    @include wt900;
+                  td {
+                    display: block;
                     color: $F-877E61;
+                    @include wt900;
                     font-size: 16px;
                     margin-bottom: 10px;
 
@@ -1284,38 +1404,38 @@
                       color: $F-877E61;
                       font-size: 16px;
                     }
-                  }
 
-                  .swpm-form-input-wrap {
-                    @include wt900;
-                    color: $F-877E61;
-                    font-size: 16px;
-
-                    input {
-                      -webkit-appearance: none;
-                      -moz-appearance: none;
-                      appearance: none;
-                      box-sizing: border-box;
-                      width: 100%;
-                      padding: 10px;
-                      margin: 0;
-                      border: none;
-                      background: $P-F5EADE;
-                      border-radius: 5px;
+                    &:last-child {
                       @include wt900;
                       color: $F-877E61;
                       font-size: 16px;
+
+                      input {
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+                        appearance: none;
+                        box-sizing: border-box;
+                        width: 100%;
+                        padding: 10px;
+                        margin: 0;
+                        border: none;
+                        background: $P-F5EADE;
+                        border-radius: 5px;
+                        @include wt900;
+                        color: $F-877E61;
+                        font-size: 16px;
+                      }
                     }
                   }
                 }
 
-                .swpm-company-row,
-                .swpm-country-row {
+                .swpm-profile-company-row,
+                .swpm-profile-country-row {
                   display: none;
                 }
               }
 
-              button[type="submit"] {
+              input[type="submit"] {
                 -webkit-appearance: none;
                 -moz-appearance: none;
                 appearance: none;
@@ -1331,8 +1451,6 @@
                 font-size: 16px;
               }
             }
-
-
           }
         }
       }
@@ -1362,6 +1480,94 @@
         }
       }
     }
+
+    // メニュー展開時
+    .my--contentbk {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+      z-index: 10;
+    }
+    .my--contentbk.active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  .my--menu-btn {
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+
+    @include pc {
+      top: pmin(10);
+      right: pmin(10);
+      gap: pmin(10);
+    }
+
+    @include sp {
+      top: s(10);
+      right: s(10);
+      gap: s(10);
+    }
+
+    .C_all-menu-btn {
+      @include pc {
+        border-radius: pmin(13.257);
+        padding: pmin(8) pmin(18) pmin(7) pmin(4);
+        border-width: pmin(2);
+      }
+
+      &__inner {
+        @include pc {
+          align-items: flex-end;
+          gap: pmin(6);
+        }
+
+        &__img {
+          @include pc {
+            width: pmin(80);
+            height: pmin(60);
+          }
+        }
+
+        &__text {
+          .TX {
+            color: #fff;
+            @include wt600;
+            line-height: 1.5;
+
+            @include pc {
+              font-size: pmin(38);
+              letter-spacing: pmin(1);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .my--menu-slack-bid {
+    position: absolute;
+    z-index: 10;
+    transform-origin: bottom right;
+    bottom: 1%;
+    right: 1%;
+
+    @include pc {
+      transform: scale(0.5);
+    }
+
+    @include sp {
+      transform: scale(0.7);
+    }
   }
 
   .curriculum--btn {
@@ -1386,7 +1592,6 @@
     }
 
     &:hover {
-
       @include pc {
         transform: scale(1.05);
         animation: shadow 0.5s forwards;

@@ -1,40 +1,53 @@
 $(function () {
-
   // マイページのタブ切り替え
-  $('.tab').on('click', function () {
-    var target = $(this).hasClass('tab--1') ? '.tab--content--progress' : '.tab--content--membership';
-    $('.tab').not(this).removeClass('active');
-    $(this).addClass('active');
-    $('.tab--content > div').not(target).removeClass('active');
-    $(target).addClass('active');
-    $('.my--content').addClass('active');
+  $(".tab").on("click", function () {
+    var target = $(this).hasClass("tab--1")
+      ? ".tab--content--progress"
+      : ".tab--content--membership";
+    $(".tab").not(this).removeClass("active");
+    $(this).addClass("active");
+    $(".tab--content > div").not(target).removeClass("active");
+    $(target).addClass("active");
+    $(".my--content").addClass("active");
+    // メニュー展開時
+    $(".my--contentbk").addClass("active");
   });
 
-  $('.gorilla').on('click', function () {
-    $('.my--content').removeClass('active');
+  $(".gorilla").on("click", function () {
+    $(".my--content").removeClass("active");
+    // メニュー展開時
+    $(".my--contentbk").removeClass("active");
   });
 
+  // メニュー展開時
+  $(".my--contentbk").on("click", function () {
+    $(".my--content").removeClass("active");
+    $(this).removeClass("active");
+  });
+  
 
-  $('.info_button').on('click', function () {
-    $('.my--info').toggleClass('active');
+  $(".info_button").on("click", function () {
+    $(".my--info").toggleClass("active");
   });
 
   // ボード系のクローズボタン
-  $('.board-close').on('click', function () {
-    $(this).closest('.comeback-board ,.log-board ,.continuous-board').addClass('none');
+  $(".board-close").on("click", function () {
+    $(this)
+      .closest(".comeback-board ,.log-board ,.continuous-board")
+      .addClass("none");
   });
 
   // SPキャラクタークリック
-  $('.js-character-edit').on('click', function () {
-    $(this).toggleClass('active');
+  $(".js-character-edit").on("click", function () {
+    $(this).toggleClass("active");
   });
 
   // input要素の値を取得して表示
-  document.querySelectorAll('.update--item').forEach(function (checkElement) {
+  document.querySelectorAll(".update--item").forEach(function (checkElement) {
     const rangeInput = checkElement.querySelector('[type="range"]');
-    const valueOutput = checkElement.querySelector('output');
+    const valueOutput = checkElement.querySelector("output");
 
-    rangeInput.addEventListener('input', (event) => {
+    rangeInput.addEventListener("input", (event) => {
       const value = event.target.value;
       valueOutput.textContent = value;
     });
@@ -57,214 +70,75 @@ $(function () {
   //   });
   // });
 
-
-
-
   // タブ切り替え
   $(document).ready(function () {
-    $('.progress--TOC--ul--li').click(function () {
+    $(".progress--TOC--ul--li").click(function () {
       // 全ての.progress--TOC--ul--li .TXから.activeを削除
-      $('.progress--TOC--ul--li .TX').removeClass('active');
+      $(".progress--TOC--ul--li .TX").removeClass("active");
       // クリックされた.progress--TOC--ul--li .TXに.activeを追加
-      $(this).find('.TX').addClass('active');
+      $(this).find(".TX").addClass("active");
 
       // 全ての.progress--content .itemから.activeを削除
-      $('.progress--content .item').removeClass('active');
+      $(".progress--content .item").removeClass("active");
       // クリックされた.progress--TOC--ul--liに対応する.progress--content .itemに.activeを追加
       var index = $(this).index();
-      $('.progress--content .item').eq(index).addClass('active');
+      $(".progress--content .item").eq(index).addClass("active");
     });
   });
 
-  // タブ切り替え
-  $(document).ready(function () {
-    $('.archive--item').on('click', function () {
-      // すべての.archive--itemから.activeを削除
-      $('.archive--item').removeClass('active');
-      // クリックされた.archive--itemに.activeを追加
-      $(this).addClass('active');
+  // // タブ切り替え
+  // $(document).ready(function () {
+  //   $('.archive--item').on('click', function () {
+  //     // すべての.archive--itemから.activeを削除
+  //     $('.archive--item').removeClass('active');
+  //     // クリックされた.archive--itemに.activeを追加
+  //     $(this).addClass('active');
 
-      // すべての.archive--contents--items--wapから.activeを削除
-      $('.archive--contents--items--wap').removeClass('active');
-      // クリックされた.archive--itemのインデックスに基づいて対応する.archive--contents--items--wapに.activeを追加
-      var index = $('.archive--item').index(this);
-      $('.archive--contents--items--wap').eq(index).addClass('active');
-    });
-  });
-
-
-  // カテゴリータブ切り替え(スキン編集画面)
-  $(document).ready(function () {
-    $('.category__list__items li').on('click', function () {
-      $('.category__list__items li').removeClass('active');
-      $(this).addClass('active');
-
-      $('.tag__list__area').removeClass('active');
-      var index = $('.category__list__items li').index(this);
-      $('.tag__list__area').eq(index).addClass('active');
-
-      $('.control__list__wrap').removeClass('active');
-      $('.control__list__wrap').eq(index).addClass('active');
-
-      // 1つ目の.tag__itemに.activeを付与
-      var activeTagListArea = $('.tag__list__area').eq(index);
-      activeTagListArea.find('.tag__item').removeClass('active');
-      activeTagListArea.find('.tag__item').first().addClass('active');
-
-      // .tag__item.activeに対応した.control__category-tag__listにactiveを付与
-      var controlListWrap = $('.control__list__wrap').eq(index);
-      controlListWrap.find('.control__category-tag__list').removeClass('active');
-      controlListWrap.find('.control__category-tag__list').first().addClass('active');
-    });
-  });
-
-  // タグタブ切り替え(スキン編集画面)
-  $(document).ready(function () {
-    $('.tag__list__items li .tag__item').on('click', function () {
-      $('.tag__list__items li .tag__item').removeClass('active');
-      $(this).addClass('active');
-
-      $('.control__category-tag__list').removeClass('active');
-      var index = $('.tag__list__items li .tag__item').index(this);
-      $('.control__category-tag__list').eq(index).addClass('active');
-    });
-  });
-
-
+  //     // すべての.archive--contents--items--wapから.activeを削除
+  //     $('.archive--contents--items--wap').removeClass('active');
+  //     // クリックされた.archive--itemのインデックスに基づいて対応する.archive--contents--items--wapに.activeを追加
+  //     var index = $('.archive--item').index(this);
+  //     $('.archive--contents--items--wap').eq(index).addClass('active');
+  //   });
+  // });
 
   // メッセージ上書き
-  $('.swpm-login-error-msg').text('メールアドレスまたはパスワードが正しくありません。');
-  $('.swpm-login-form-register-link').text('新規会員登録はこちら');
+  $(".swpm-login-error-msg").text(
+    "メールアドレスまたはパスワードが正しくありません。"
+  );
+  $(".swpm-login-form-register-link").text("新規会員登録はこちら");
   // URLの取得と'/charged/'を追加
-  var currentURL = window.location.href + 'charged/';
+  // 現在のURLを取得
+  var currentURL = window.location.origin + "/subscription/";
+
+  // メッセージ上書き
+  // $('.swpm-login-error-msg').text('メールアドレスまたはパスワードが正しくありません。');
+  // $('.swpm-login-form-register-link').text('新規会員登録はこちら');
+  // URLの取得と'/charged/'を追加
+  // var currentURL = window.location.href + 'charged/';
   // URLを埋め込む
-  $('.swpm-post-no-access-msg').html(`このコンテンツを閲覧するには<a href="${currentURL}">有料会員レベル</a>が必要です。`);
+  // $('.swpm-post-no-access-msg').html(`このコンテンツを閲覧するには<a href="${currentURL}">有料会員レベル</a>が必要です。`);
 
-  $('.swpm-post-not-logged-in-msg').html(`このコンテンツを閲覧するには<a href="${currentURL}">有料会員レベル</a>が必要です。`);
+  // $('.swpm-post-not-logged-in-msg').html(`このコンテンツを閲覧するには<a href="${currentURL}">有料会員レベル</a>が必要です。`);
 
+  //25.0822変更　ランダムに訴求分を表示
+  var noAccessMessages = [
+    `<div class="no-access-img-container character"></div>この先はスタンダード専用です！<br>同期メンバーはもう次の冒険へ進んでいます。<br>あなたも一緒に挑戦を続けませんか?<br><a href="${currentURL}">プラン入会する</a>`,
+    `<div class="no-access-img-container character"></div>今、仲間が盛り上がっています！<br>スタンダードになるとコメント・質問・交流がすぐ可能に。<br>仲間と支え合って成長を加速させましょう！<br><a href="${currentURL}">プラン入会する</a>`,
+    `<div class="no-access-img-container character"></div>その疑問、すぐ解決できます！<br>スタンダードなら月15回まで質問OK。<br>つまずきを解消して、挫折しない学習へ！<br><a href="${currentURL}">プラン入会する</a>`,
+    `<div class="no-access-img-container character"></div>同期との交流イベントが間もなく開催！<br>スタンダード会員以上が参加可能な特別な時間！<br>学びと刺激を持ち帰ろう！<br><a href="${currentURL}">プラン入会する</a>`,
+    `<div class="no-access-img-container character"></div>クエストクリアおめでとう！<br>残りのステージはスタンダード専用です。<br>同期と一緒に最後まで走り抜けよう！<br><a href="${currentURL}">プラン入会する</a>`,
+  ];
 
+  // 配列からランダムにメッセージを選択
+  var randomMessage =
+    noAccessMessages[Math.floor(Math.random() * noAccessMessages.length)];
 
-  // マイページのタブ切り替え
-  $('.item__button .buttons.cancel').on('click', function () {
-    $('.display__character__serif').addClass('none');
-  });
-
-
-
-
-
+  // 選択したメッセージを要素に埋め込む
+  $(".swpm-post-no-access-msg").html(randomMessage);
+  $(".swpm-post-not-logged-in-msg").html(randomMessage);
 });
 
 
 
 
-
-
-
-$(function() {
-  // 操作履歴を保存するためのスタック
-  var actionStack = [];
-
-  // 操作をスタックにプッシュする関数
-  function pushAction(action) {
-      actionStack.push(action);
-  }
-
-  // 操作を元に戻す関数
-  function popAction() {
-      return actionStack.pop();
-  }
-
-  // input要素の::beforeがある場合の処理
-  $('input.category-tag__item--wrap').on('change', function() {
-      var paymentType = $(this).closest('li').find('.payment_type').text();
-      var thumbnailUrl = $(this).closest('li').find('img').attr('src'); // 画像のURLを取得
-      var tag = $(this).data('tag'); // データ属性からタグを取得
-      var name = $(this).attr('name');
-
-      // 現在の状態をスタックにプッシュ
-      pushAction({
-          name: name,
-          previousUrl: $('.' + name).attr('src')
-      });
-
-      if ($(this).is(':checked') && !$(this).siblings('.nothing-item').hasClass('active')) {
-          $('.display__character__serif').removeClass('none');
-          $('.item__cost .icon').removeClass('coin point').addClass(paymentType); // 以前のクラスを削除してから追加
-          $('.item__cost .TX').text($(this).closest('li').find('.price').text()); // 価格を設定
-          $('.item__img').attr('src', thumbnailUrl); // 画像のURLを設定
-          $('.character__' + tag).attr('src', thumbnailUrl); // タグに対応する画像のURLを設定
-      } else {
-          $('.display__character__serif').addClass('none');
-          $('.item__cost .icon').removeClass('coin point'); // すべてのクラスを削除
-          $('.item__img').attr('src', ''); // 画像のURLをクリア
-          $('.character__' + tag).attr('src', ''); // タグに対応する画像のURLをクリア
-      }
-
-      // saving__buttonのdisabled属性の制御
-      var allActiveChecked = true;
-      $('input.category-tag__item--wrap').each(function() {
-          if ($(this).is(':checked') && !$(this).siblings('.nothing-item').hasClass('active')) {
-              allActiveChecked = false;
-          }
-      });
-
-      if (allActiveChecked) {
-          $('.saving__button').removeAttr('disabled');
-      } else {
-          $('.saving__button').attr('disabled', 'disabled');
-      }
-  });
-
-  // クリックでimgを変更（着せ替え）
-  $('input.category-tag__item--wrap').on('change', function() {
-      var name = $(this).attr('name');
-      var thumbnailUrl = $(this).closest('li').find('img').attr('src');
-
-      // 現在の状態をスタックにプッシュ
-      pushAction({
-          name: name,
-          previousUrl: $('.' + name).attr('src')
-      });
-
-      // 対応するクラスのimg要素のsrcを変更
-      $('.' + name).attr('src', thumbnailUrl);
-  });
-
-  // ひとつ戻すボタンのクリックイベント
-  $('.sideButton__button').on('click', function() {
-      var lastAction = popAction();
-      if (lastAction) {
-          $('.' + lastAction.name).attr('src', lastAction.previousUrl);
-      }
-  });
-
-  // 交換するボタンのクリックイベント
-  $('.buttons.exchange').on('click', function() {
-      var paymentType = $('.item__cost .icon').hasClass('coin') ? 'coin' : 'point';
-      var cost = parseInt($('.item__cost .TX').text(), 10);
-      var selectedItem = $('input.category-tag__item--wrap:checked').val();
-
-      if (confirm('本当に交換しますか？')) {
-          $.ajax({
-              url: ajaxurl, // WordPressのAjax URL
-              type: 'POST',
-              data: {
-                  action: 'exchange_item',
-                  payment_type: paymentType,
-                  cost: cost,
-                  user_id: user_id, // 現在のユーザーID
-                  selected_item: selectedItem // 選択されたアイテム
-              },
-              success: function(response) {
-                  if (response.success) {
-                      alert('交換が成功しました！');
-                      location.reload(); // ページをリロードして最新の情報を表示
-                  } else {
-                      alert('交換に失敗しました: ' + response.data);
-                  }
-              }
-          });
-      }
-  });
-});

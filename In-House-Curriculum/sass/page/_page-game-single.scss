@@ -245,11 +245,11 @@
 
   .game-single_content {
     background: #3D5361;
-
     @include pc {
-      width: calc(70% - p(12));
+      width: 80%;
       height: 95%;
       padding: pm(11) pm(10) pm(8);
+      margin: 0 auto;
     }
 
     @include sp {
@@ -315,9 +315,9 @@
             }
           }
 
-          img {
-            width: 100%;
-          }
+          // img {
+          //   width: 100%;
+          // }
         }
       }
     }

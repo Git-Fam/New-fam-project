@@ -11,7 +11,7 @@
   .page{
     @include height;
     position: relative;
-    @include imgCover("test-bg.jpg");  
+    @include imgCover("test-bg.webp");  
     @include sp{
       background-position: 20%;
     }

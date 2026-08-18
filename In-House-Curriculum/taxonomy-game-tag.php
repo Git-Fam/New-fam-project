@@ -1,13 +1,24 @@
-<?php get_header(); ?>
+<?php
+if (!is_user_logged_in()) {
+    wp_redirect(home_url('/login'));
+    exit;
+}
+
+get_header();
+?>
 
 <div class="game-main">
     <div class="game-wrap">
+        <div class="game--menu-btn">
+            <?php get_template_part('inc/menu-btn'); ?>
+        </div>
+
         <div class="inner">
             <div class="game-container level-select game-tag">
                 <!-- カテゴリー選択リンクを表示 -->
                 <div class="category-list">
                     <ul>
-                        <li  class="cat-select active"><a href="<?php echo esc_url(add_query_arg('game-cat', '', home_url($wp->request))); ?>">すべてのゲーム</a></li>
+                        <li class="cat-select active"><a href="<?php echo esc_url(add_query_arg('game-cat', '', home_url($wp->request))); ?>">すべてのゲーム</a></li>
                         <?php
                         $categories = get_terms(array(
                             'taxonomy' => 'game-cat',
@@ -68,7 +79,7 @@
                                                 if (has_post_thumbnail()) {
                                                     the_post_thumbnail();
                                                 } else {
-                                                    echo '<img src="' . esc_url(get_template_directory_uri() . '/img/noimage.jpg') . '" alt="No image available">';
+                                                    echo '<img src="' . esc_url(get_template_directory_uri() . '/img/noimage.webp') . '" alt="No image available">';
                                                 }
                                                 ?>
                                             </div>

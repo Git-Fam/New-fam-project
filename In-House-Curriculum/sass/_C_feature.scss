@@ -1,366 +1,437 @@
-@use "../../global" as *;
-@use "../globalCooperator-2" as *;
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
 
 .C_feature {
-  .TL-bg {
-    background: #fff;
-    position: relative;
-    z-index: 9;
-    margin: 0 auto;
+	.TL-bg {
+		background: #fff;
+		position: relative;
+		z-index: 9;
+		margin: 0 auto;
 
-    .TL {
-      @include mplus;
-      color: $khaki;
-      @include wt800;
-      text-align: center;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      @include pc {
-        font-size: p(45);
-        letter-spacing: p(1.8);
-      }
-      @include sp {
-        font-size: s(18);
-        letter-spacing: s(1.8);
-      }
-      span {
-        @include wt800;
-        position: relative;
-        @include pc {
-          font-size: p(55);
-          letter-spacing: p(2.2);
-        }
-        @include sp {
-          font-size: s(22);
-          letter-spacing: s(1.5);
-        }
-      }
-      .orange {
-        color: $orange;
-        @include pc {
-          height: p(64);
-        }
-        @include sp {
-          height: s(25);
-        }
-        span {
-          position: absolute;
-          &:nth-child(1) {
-            animation: bound-anime 0.8s 0.2s forwards;
-            left: 0;
-          }
-          &:nth-child(2) {
-            animation: bound-anime 0.8s 0.3s forwards;
-            @include pc {
-              left: p(59);
-            }
-            @include sp {
-              left: s(22);
-            }
-          }
-          &:nth-child(3) {
-            animation: bound-anime 0.8s 0.4s forwards;
-            @include pc {
-              left: p(59+59);
-            }
-            @include sp {
-              left: s(22+22);
-            }
-          }
-          @keyframes bound-anime {
-            0%,
-            100% {
-              top: 0;
-              transform: scale(1);
-            }
-            30% {
-              top: -25%;
-            }
-            50% {
-              transform: scale(1);
-            }
-            90% {
-              top: 0;
-              transform: scale(1.2, 0.8);
-            }
-          }
-        }
-      }
-      .blue {
-        color: $blue;
-        display: flex;
-        @include pc {
-          height: p(64);
-        }
-        @include sp {
-          height: s(25);
-        }
-        span {
-          position: absolute;
-          &:nth-child(1) {
-            animation: bound-anime 0.8s 0.5s forwards;
-          }
-          &:nth-child(2) {
-            animation: bound-anime 0.8s 0.6s forwards;
-            @include pc {
-              left: p(59);
-            }
-            @include sp {
-              left: s(22);
-            }
-          }
-          &:nth-child(3) {
-            animation: bound-anime 0.8s 0.7s forwards;
-            @include pc {
-              left: p(59+59);
-            }
-            @include sp {
-              left: s(22+22);
-            }
-          }
-          @keyframes bound-anime {
-            0%,
-            100% {
-              top: 0;
-              transform: scale(1);
-            }
-            30% {
-              top: -25%;
-            }
-            50% {
-              transform: scale(1);
-            }
-            90% {
-              top: 0;
-              transform: scale(1.2, 0.8);
-            }
-          }
-        }
-      }
-    }
-    &::before {
-      content: "";
-      background: #fff;
-      display: block;
-      position: absolute;
-      z-index: -1;
-    }
-  }
-  .feature01 {
-    @include pc {
-      width: p(800);
-      height: p(107);
-      border-radius: p(119);
-    }
-    @include sp {
-      width: s(350);
-      height: s(45);
-      border-radius: s(119);
-    }
-    &::before {
-      @include pc {
-        width: p(780);
-        height: p(82);
-        border-radius: p(119);
-        top: p(-42);
-        left: p(10);
-      }
-      @include sp {
-        width: s(330);
-        height: s(40);
-        border-radius: s(119);
-        top: s(-20);
-        left: s(10);
-      }
-    }
-    .TL {
-      .orange {
-        @include pc {
-          width: p(171);
-        }
-        @include sp {
-          width: s(65);
-        }
-      }
-      .blue {
-        @include pc {
-          width: p(171);
-        }
-        @include sp {
-          width: s(65);
-        }
-      }
-    }
-  }
-  .feature02 {
-    @include pc {
-      width: p(493);
-      height: p(107);
-      border-radius: p(119);
-    }
-    @include sp {
-      width: s(220);
-      height: s(45);
-      border-radius: s(119);
-    }
-    &::before {
-      @include pc {
-        width: p(470);
-        height: p(75);
-        border-radius: p(119);
-        top: p(-29);
-        left: p(12);
-      }
-      @include sp {
-        width: s(200);
-        height: s(40);
-        border-radius: s(119);
-        top: s(-20);
-        left: s(10);
-      }
-    }
-    .TL {
-      .orange {
-        @include pc {
-          width: p(114);
-        }
-        @include sp {
-          width: s(45);
-        }
-      }
-    }
-  }
-  .feature03 {
-    @include pc {
-      width: p(743);
-      height: p(107);
-      border-radius: p(119);
-    }
-    @include sp {
-      width: s(300);
-      height: s(45);
-      border-radius: s(119);
-    }
+		.TL {
+			@include mplus;
+			color: $khaki;
+			@include wt800;
+			text-align: center;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 
-    &::before {
-      @include pc {
-        width: p(709);
-        height: p(82);
-        border-radius: p(119);
-        top: p(-44);
-        left: p(15);
-      }
-      @include sp {
-        width: s(280);
-        height: s(40);
-        border-radius: s(119);
-        top: s(-20);
-        left: s(10);
-      }
-    }
-    .TL {
-      .blue {
-        @include pc {
-          width: p(345);
-        }
-        @include sp {
-          width: s(130);
-        }
-        span {
-          &:nth-child(1) {
-            animation: bound-anime 0.8s 0.2s forwards;
-          }
-          &:nth-child(2) {
-            animation: bound-anime 0.8s 0.3s forwards;
-            @include pc {
-              left: p(59);
-            }
-            @include sp {
-              left: s(22);
-            }
-          }
-          &:nth-child(3) {
-            animation: bound-anime 0.8s 0.4s forwards;
-            @include pc {
-              left: p(59 * 2);
-            }
-            @include sp {
-              left: s(22 * 2);
-            }
-          }
-          &:nth-child(4) {
-            animation: bound-anime 0.8s 0.5s forwards;
-            @include pc {
-              left: p(59 * 3);
-            }
-            @include sp {
-              left: s(22 * 3);
-            }
-          }
-          &:nth-child(5) {
-            animation: bound-anime 0.8s 0.6s forwards;
-            @include pc {
-              left: p(59 * 4);
-            }
-            @include sp {
-              left: s(22 * 4);
-            }
-          }
-          &:nth-child(6) {
-            animation: bound-anime 0.8s 0.7s forwards;
-            @include pc {
-              left: p(59 * 5);
-            }
-            @include sp {
-              left: s(22 * 5);
-            }
-          }
-        }
-      }
-    }
-  }
+			@include pc {
+				font-size: p(45);
+				letter-spacing: p(1.8);
+			}
 
-  .TX {
-    @include mplus;
-    color: #fff;
-    margin: 0 auto;
-    @include pc {
-      font-size: p(16);
-      line-height: 2.18;
-      letter-spacing: p(0.64);
-      width: p(693);
-      margin-top: p(48);
-      @include wt700;
-    }
-    @include sp {
-      font-size: s(14);
-      line-height: 1.5;
-      width: s(350);
-      margin-top: s(48);
-      @include wt500;
-    }
-  }
+			@include sp {
+				font-size: s(18);
+				letter-spacing: s(1.8);
+			}
+
+			span {
+				@include wt800;
+				position: relative;
+
+				@include pc {
+					font-size: p(55);
+					letter-spacing: p(2.2);
+				}
+
+				@include sp {
+					font-size: s(22);
+					letter-spacing: s(1.5);
+				}
+			}
+
+			.orange {
+				color: $orange;
+
+				@include pc {
+					height: p(64);
+				}
+
+				@include sp {
+					height: s(25);
+				}
+
+				span {
+					position: absolute;
+
+					&:nth-child(1) {
+						animation: bound-anime 0.8s 0.2s forwards;
+						left: 0;
+					}
+
+					&:nth-child(2) {
+						animation: bound-anime 0.8s 0.3s forwards;
+
+						@include pc {
+							left: p(59);
+						}
+
+						@include sp {
+							left: s(22);
+						}
+					}
+
+					&:nth-child(3) {
+						animation: bound-anime 0.8s 0.4s forwards;
+
+						@include pc {
+							left: p(59+59);
+						}
+
+						@include sp {
+							left: s(22+22);
+						}
+					}
+
+					@keyframes bound-anime {
+
+						0%,
+						100% {
+							top: 0;
+							transform: scale(1);
+						}
+
+						30% {
+							top: -25%;
+						}
+
+						50% {
+							transform: scale(1);
+						}
+
+						90% {
+							top: 0;
+							transform: scale(1.2, 0.8);
+						}
+					}
+				}
+			}
+
+			.blue {
+				color: $blue;
+				display: flex;
+
+				@include pc {
+					height: p(64);
+				}
+
+				@include sp {
+					height: s(25);
+				}
+
+				span {
+					position: absolute;
+
+					&:nth-child(1) {
+						animation: bound-anime 0.8s 0.5s forwards;
+					}
+
+					&:nth-child(2) {
+						animation: bound-anime 0.8s 0.6s forwards;
+
+						@include pc {
+							left: p(59);
+						}
+
+						@include sp {
+							left: s(22);
+						}
+					}
+
+					&:nth-child(3) {
+						animation: bound-anime 0.8s 0.7s forwards;
+
+						@include pc {
+							left: p(59+59);
+						}
+
+						@include sp {
+							left: s(22+22);
+						}
+					}
+
+					@keyframes bound-anime {
+
+						0%,
+						100% {
+							top: 0;
+							transform: scale(1);
+						}
+
+						30% {
+							top: -25%;
+						}
+
+						50% {
+							transform: scale(1);
+						}
+
+						90% {
+							top: 0;
+							transform: scale(1.2, 0.8);
+						}
+					}
+				}
+			}
+		}
+
+		&::before {
+			content: "";
+			background: #fff;
+			display: block;
+			position: absolute;
+			z-index: -1;
+		}
+	}
+
+	.feature01 {
+		@include pc {
+			width: p(800);
+			height: p(107);
+			border-radius: p(119);
+		}
+
+		@include sp {
+			width: s(350);
+			height: s(45);
+			border-radius: s(119);
+		}
+
+		&::before {
+			@include pc {
+				width: p(780);
+				height: p(82);
+				border-radius: p(119);
+				top: p(-42);
+				left: p(10);
+			}
+
+			@include sp {
+				width: s(330);
+				height: s(40);
+				border-radius: s(119);
+				top: s(-20);
+				left: s(10);
+			}
+		}
+
+		.TL {
+			.orange {
+				@include pc {
+					width: p(171);
+				}
+
+				@include sp {
+					width: s(65);
+				}
+			}
+
+			.blue {
+				@include pc {
+					width: p(171);
+				}
+
+				@include sp {
+					width: s(65);
+				}
+			}
+		}
+	}
+
+	.feature02 {
+		@include pc {
+			width: p(493);
+			height: p(107);
+			border-radius: p(119);
+		}
+
+		@include sp {
+			width: s(220);
+			height: s(45);
+			border-radius: s(119);
+		}
+
+		&::before {
+			@include pc {
+				width: p(470);
+				height: p(75);
+				border-radius: p(119);
+				top: p(-29);
+				left: p(12);
+			}
+
+			@include sp {
+				width: s(200);
+				height: s(40);
+				border-radius: s(119);
+				top: s(-20);
+				left: s(10);
+			}
+		}
+
+		.TL {
+			.orange {
+				@include pc {
+					width: p(114);
+				}
+
+				@include sp {
+					width: s(45);
+				}
+			}
+		}
+	}
+
+	.feature03 {
+		@include pc {
+			width: p(743);
+			height: p(107);
+			border-radius: p(119);
+		}
+
+		@include sp {
+			width: s(300);
+			height: s(45);
+			border-radius: s(119);
+		}
+
+		&::before {
+			@include pc {
+				width: p(709);
+				height: p(82);
+				border-radius: p(119);
+				top: p(-44);
+				left: p(15);
+			}
+
+			@include sp {
+				width: s(280);
+				height: s(40);
+				border-radius: s(119);
+				top: s(-20);
+				left: s(10);
+			}
+		}
+
+		.TL {
+			.blue {
+				@include pc {
+					width: p(345);
+				}
+
+				@include sp {
+					width: s(130);
+				}
+
+				span {
+					&:nth-child(1) {
+						animation: bound-anime 0.8s 0.2s forwards;
+					}
+
+					&:nth-child(2) {
+						animation: bound-anime 0.8s 0.3s forwards;
+
+						@include pc {
+							left: p(59);
+						}
+
+						@include sp {
+							left: s(22);
+						}
+					}
+
+					&:nth-child(3) {
+						animation: bound-anime 0.8s 0.4s forwards;
+
+						@include pc {
+							left: p(59 * 2);
+						}
+
+						@include sp {
+							left: s(22 * 2);
+						}
+					}
+
+					&:nth-child(4) {
+						animation: bound-anime 0.8s 0.5s forwards;
+
+						@include pc {
+							left: p(59 * 3);
+						}
+
+						@include sp {
+							left: s(22 * 3);
+						}
+					}
+
+					&:nth-child(5) {
+						animation: bound-anime 0.8s 0.6s forwards;
+
+						@include pc {
+							left: p(59 * 4);
+						}
+
+						@include sp {
+							left: s(22 * 4);
+						}
+					}
+
+					&:nth-child(6) {
+						animation: bound-anime 0.8s 0.7s forwards;
+
+						@include pc {
+							left: p(59 * 5);
+						}
+
+						@include sp {
+							left: s(22 * 5);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.TX {
+		@include mplus;
+		color: #fff;
+		margin: 0 auto;
+
+		@include pc {
+			font-size: p(16);
+			line-height: 2.18;
+			letter-spacing: p(0.64);
+			width: p(693);
+			margin-top: p(48);
+			@include wt700;
+		}
+
+		@include sp {
+			font-size: s(14);
+			line-height: 1.5;
+			width: s(350);
+			margin-top: s(48);
+			@include wt500;
+		}
+	}
 }
 
 // ボンっと表示される
 .zoomIn {
+	animation: zoomInAnime 0.5s ease 0s forwards;
 
+	@keyframes zoomInAnime {
+		from {
+			opacity: 0;
+			transform: scale(0.6);
+		}
 
-
-    animation: zoomInAnime 0.5s ease 0s forwards;
-
-    @keyframes zoomInAnime {
-      from {
-        opacity: 0;
-        transform: scale(0.6);
-      }
-
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    
-  }
+		to {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
 }

@@ -56,7 +56,7 @@
   //   border-radius: 50%;
   //   background-color: #F38549;
   //   aspect-ratio: 1;
-    
+
   //   @include pc{
   //     width: p(200);
   //     top: p(-110);
@@ -73,7 +73,7 @@
   //     color: $F-FFFFFF;
   //     font-weight: 800;
   //     position: absolute;
-      
+
   //     @include pc{
   //       bottom: p(50);
   //       left: p(30);
@@ -139,7 +139,6 @@
     //     }
     //   }
 
-
     // }
 
     &--tab {
@@ -148,17 +147,24 @@
       position: relative;
       margin: 0 auto;
 
+      // スクロールは残してバーだけ隠す
+      scrollbar-width: none; // Firefox
+      -ms-overflow-style: none; // 旧Edge/IE
+
+      &::-webkit-scrollbar {
+        display: none; // Chrome / Safari
+      }
+
       @include pc {
         // padding: 0 0 p(60);
-        width: 90%;
-        gap: p(35);
+        width: 100%;
+        gap: p(20);
       }
 
       @include sp {
         width: 95%;
         gap: s(20);
       }
-
 
       // .archive--item {
       //   cursor: pointer;
@@ -228,7 +234,7 @@
       //       width: p(76);
       //       height: p(76);
       //     }
-  
+
       //     @include sp {
       //       width: s(50);
       //       height: s(50);
@@ -268,7 +274,6 @@
       //   }
       // }
     }
-
 
     // &--items {
     //   position: absolute;
@@ -395,7 +400,6 @@
     //     }
     //   }
     // }
-
 
     // .C_character {
     //   position: absolute;

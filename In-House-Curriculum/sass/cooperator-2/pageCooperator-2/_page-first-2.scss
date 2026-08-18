@@ -1,0 +1,246 @@
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
+
+/* -----------------------
+  はじめに 2
+----------------------- */
+.book--contents__inner {
+  &.page01 {
+    .first-top {
+      @include imgContain("first-top.webp");
+      width: 100%;
+
+      @include pc {
+        height: pmi(208);
+      }
+
+      @include sp {
+        height: s(135);
+      }
+    }
+
+    .C_first-TX {
+      @include pc {
+        margin-top: pmi(40);
+      }
+
+      @include sp {
+        margin-top: s(30);
+      }
+    }
+
+  }
+
+  &.page02 {
+    .page02-left-TX {
+      @include pc {
+        margin-top: pmi(40);
+        letter-spacing: pmi(0.7);
+      }
+
+      @include sp {
+        margin-top: s(30);
+      }
+    }
+
+    .C_first_rec {
+      @include pc {
+        margin-top: pmi(40);
+      }
+
+      @include sp {
+        margin-top: s(30);
+      }
+    }
+
+    .label-box {
+      @include pc {
+        margin-top: pmi(50);
+      }
+
+      @include sp {
+        margin-top: s(40);
+      }
+
+      .page02-right-TX {
+        @include pc {
+          margin: pmi(20) auto 0;
+          width: pmi(424);
+        }
+
+        @include sp {
+          @include sp {
+            margin: s(15) auto 0;
+            width: 90%;
+          }
+        }
+      }
+
+      &:first-child {
+        @include pc {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  &.page03 {
+    .C_first_zero {
+      @include pc {
+        margin-top: pmi(30);
+      }
+      @include sp{
+        margin-top: s(20);
+      }
+    }
+
+    .page03-left-TX {
+      @include pc {
+        margin-top: pmi(24);
+      }
+      @include sp{
+        margin: s(20) auto 0;
+      }
+    }
+
+    .label-box {
+      @include pc {
+        margin-top: pmi(30);
+      }
+
+      @include sp {
+        margin-top: s(40);
+      }
+
+      .C_first_genre {
+        @include pc {
+          margin-top: pmi(18);
+        }
+        @include sp{
+          margin-top: s(15);
+        }
+      }
+      .page03-right-TX{
+        @include pc{
+          margin-top: pmi(15);
+        }
+        @include sp{
+          margin-top: s(15);
+        }
+      }
+      .imgbox{
+        display: flex;
+        @include pc{
+          gap: pmi(10);
+          margin-top: pmi(15);
+        }
+        @include sp{
+          gap: s(8);
+          margin-top: s(15);
+        }
+        li{
+          .img{
+            display: block;
+            aspect-ratio: 1/1;
+            @include pc{
+              width: pmi(130);
+              border-radius: pmi(6);
+            }
+            @include sp{
+              width: s(80);
+              border-radius: s(3);
+            }
+            // &.img01{
+            //   @include imgContain("lp.webp");
+            // }
+            // &.img02{
+            //   @include imgContain("fam.webp");
+            // }
+          }
+        }
+      }
+
+
+      &:first-child {
+        @include pc {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+  &.page04{
+    .page04-left-TX{
+      @include pc{
+        margin-top: pmi(36);
+      }
+      @include sp{
+        margin-top: s(25);
+      }
+    }
+    .first-ranking{
+      // @include imgContain("first-ranking.webp");
+      width: 100%;
+      @include pc{
+        height: pmi(194);
+        margin-top: pmi(44);
+      }
+      @include sp{
+        height: s(128);
+        margin-top: s(30);
+      }
+    }
+  }
+  &.page05{
+    @include sp{
+      padding-bottom: s(10)
+    }
+    .first-my{
+      @include imgContain("first-my.webp");
+      width: 100%;
+      @include pc{
+        height: pmi(228);
+        margin-top: pmi(20);
+      }
+      @include sp{
+        height: s(145);
+        margin-top: s(20);
+      }
+    }
+    .C_first_label{
+      @include pc{
+        margin-top: pmi(29);
+      }
+      @include sp{
+        margin-top: s(15);
+      }
+    }
+    .page05-TX{
+      @include pc{
+        margin: pmi(15) auto 0;
+        width: pmi(432);
+      }
+      @include sp{
+        margin: s(10) auto 0;
+        width: 90%;
+      }
+    }
+    .label-right-top{
+      @include pc{
+        margin-top: 0;
+      }
+    }
+    .first-my-video{
+      width: 100%;
+      @include pc{
+        margin-top: pmi(25);
+      }
+      @include sp{
+        margin-top: s(15);
+      }
+      video{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

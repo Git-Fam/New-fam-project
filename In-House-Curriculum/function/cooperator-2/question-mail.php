@@ -5,7 +5,7 @@ add_action('comment_post', 'notify_on_comment', 10, 2);
 function notify_on_comment($comment_id, $comment_approved)
 {
     // コメントが承認された場合のみメールを送信
-    if (1 === $comment_approved) {
+    if (0 === $comment_approved) {
         $comment = get_comment($comment_id); // コメントオブジェクトを取得
         $post_id = $comment->comment_post_ID; // コメントが投稿された投稿のIDを取得
         $post_type = get_post_type($post_id); // 投稿タイプを取得

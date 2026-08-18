@@ -1,0 +1,261 @@
+@use "../global" as *;
+
+/* -----------------------
+  loading
+----------------------- */
+
+.loading__parts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #C6FBFF 0%, #FFF 100%);
+  z-index: 2025;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  pointer-events: none;
+
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &--animations {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    z-index: 3;
+
+    .animations--character {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+      transform: translateY(-30%);
+
+      @media screen and (max-width: 1000px) and (min-width: 0px) and (min-height: 700px) {
+        transform: translateY(-20%);
+      }
+
+      @media screen and (max-width: 700px) and (min-width: 0px) and (min-height: 700px) {
+        transform: translateY(-10%);
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .animations--ground {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%);
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      // background-color: #00ff0079;
+      width: 100%;
+      min-width: 1280px;
+      @include imgContain("loading_ground.webp");
+      animation: loading__ground-rotate 15s linear infinite;
+
+      @keyframes loading__ground-rotate {
+        0% {
+          transform: translateX(-50%) rotate(0deg);
+        }
+
+        100% {
+          transform: translateX(-50%) rotate(-360deg);
+        }
+      }
+
+      z-index: 2;
+    }
+  }
+
+  &--text {
+    position: absolute;
+    z-index: 3;
+
+    @include pc {
+      bottom: 60px;
+      right: 60px;
+    }
+
+    @include sp {
+      bottom: 40px;
+      right: 40px;
+    }
+
+    .text--wrapper {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+
+      @include pc {
+        gap: 10px;
+      }
+
+      @include sp {
+        gap: 5px;
+      }
+
+      
+
+      .TX {
+        filter: drop-shadow(0px 3.501px 7.002px rgba(0, 0, 0, 0.25));
+
+        &:nth-child(odd) {
+          animation: loading__text-odd 1.2s linear infinite;
+
+          @keyframes loading__text-odd {
+            0% {
+              transform: translateY(-10%);
+            }
+
+            50% {
+              transform: translateY(10%);
+            }
+
+            100% {
+              transform: translateY(-10%);
+            }
+          }
+        }
+
+        &:nth-child(even) {
+          animation: loading__text-even 1.2s linear infinite;
+
+          @keyframes loading__text-even {
+            0% {
+              transform: translateY(10%);
+            }
+
+            50% {
+              transform: translateY(-10%);
+            }
+
+            100% {
+              transform: translateY(10%);
+            }
+          }
+        }
+
+        &:nth-child(1) {
+          aspect-ratio: 44/52;
+          @include iconContain($loading-text-L);
+          rotate: -5deg;
+
+          @include pc {
+            width: 44px;
+          }
+
+          @include sp {
+            width: 32px;
+          }
+        }
+
+        &:nth-child(2) {
+          aspect-ratio: 53/53;
+          @include iconContain($loading-text-O);
+          rotate: 7deg;
+
+          @include pc {
+            width: 53px;
+          }
+
+          @include sp {
+            width: 38px;
+          }
+        }
+
+        &:nth-child(3) {
+          aspect-ratio: 50/52;
+          @include iconContain($loading-text-A);
+          rotate: 10deg;
+          @include pc {
+            width: 50px;
+          }
+
+          @include sp {
+            width: 35px;
+          }
+        }
+
+        &:nth-child(4) {
+          aspect-ratio: 48/53;
+          @include iconContain($loading-text-D);
+          rotate: -12deg;
+          @include pc {
+            width: 48px;
+          }
+
+          @include sp {
+            width: 33px;
+          }
+        }
+
+        &:nth-child(5) {
+          aspect-ratio: 29/52;
+          @include iconContain($loading-text-I);
+          rotate: -5deg;
+
+          @include pc {
+            width: 29px;
+          }
+
+          @include sp {
+            width: 19px;
+          }
+        }
+
+        &:nth-child(6) {
+          aspect-ratio: 47/52;
+          @include iconContain($loading-text-N);
+          rotate: 5deg;
+          @include pc {
+            width: 47px;
+          }
+
+          @include sp {
+            width: 32px;
+          }
+        }
+
+        &:nth-child(7) {
+          aspect-ratio: 50/52;
+          @include iconContain($loading-text-G);
+          rotate: 10deg;
+          @include pc {
+            width: 50px;
+          }
+
+          @include sp {
+            width: 35px;
+          }
+        }
+
+        &:nth-child(8),
+        &:nth-child(9),
+        &:nth-child(10) {
+          aspect-ratio: 29/29;
+          @include iconContain($loading-text-dot);
+
+          @include pc {
+            width: 29px;
+          }
+
+          @include sp {
+            width: 14px;
+          }
+        }
+      }
+    }
+  }
+}

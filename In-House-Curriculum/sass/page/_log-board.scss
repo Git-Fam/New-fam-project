@@ -7,7 +7,7 @@
 .my-warp {
   @include height;
   width: 100%;
-  @include imgCover('page-my.jpg');
+  @include imgCover('page-my.webp');
   background-position: bottom left;
   position: relative;
   overflow: hidden;
@@ -100,7 +100,7 @@
 
   &--top {
     height: 42.86%;
-    @include imgCover('log-board/log-board-bg.jpg');
+    @include imgCover('log-board/log-board-bg.webp');
     background-position: center top 60%;
     position: relative;
     z-index: 1;
@@ -109,7 +109,7 @@
     // 丘
     &__hills {
       width: 100%;
-      @include imgCover('log-board/log-board-top-hills.png');
+      @include imgCover('log-board/log-board-top-hills.webp');
       background-position: center bottom;
       position: absolute;
       bottom: 0;
@@ -133,7 +133,7 @@
         z-index: 3;
 
         &.trees-01 {
-          @include imgContain('log-board/log-board-top-trees-01.png');
+          @include imgContain('log-board/log-board-top-trees-01.webp');
           aspect-ratio: 488/633;
 
           @include pc {
@@ -150,7 +150,7 @@
         }
 
         &.trees-02 {
-          @include imgContain('log-board/log-board-top-trees-02.png');
+          @include imgContain('log-board/log-board-top-trees-02.webp');
           right: 0;
           aspect-ratio: 503/636;
 
@@ -177,7 +177,7 @@
 
         // 猫
         &.characters-01 {
-          @include imgContain('log-board/log-board-chars-01.png');
+          @include imgContain('log-board/log-board-chars-01.webp');
           aspect-ratio: 252/279;
           z-index: 5;
           rotate: 8deg;
@@ -201,7 +201,7 @@
 
         // たぬき
         &.characters-02 {
-          @include imgContain('log-board/log-board-chars-02.png');
+          @include imgContain('log-board/log-board-chars-02.webp');
           aspect-ratio: 222/183;
           z-index: 2;
           rotate: -5deg;
@@ -225,7 +225,7 @@
 
         // うさぎ
         &.characters-03 {
-          @include imgContain('log-board/log-board-chars-03.png');
+          @include imgContain('log-board/log-board-chars-03.webp');
           aspect-ratio: 89/133;
           z-index: 2;
 
@@ -329,7 +329,7 @@
     // 草
     &__grassy {
       width: 100%;
-      @include imgCover('log-board/log-board-top-grassy.png');
+      @include imgCover('log-board/log-board-top-grassy.webp');
       background-position: center top;
       position: absolute;
       bottom: 0;
@@ -346,7 +346,7 @@
         z-index: 7;
 
         &.sunlight-01 {
-          @include imgContain('log-board/log-board-top-sunlight-01.png');
+          @include imgContain('log-board/log-board-top-sunlight-01.webp');
           aspect-ratio: 105/165;
           opacity: 0.5;
 
@@ -360,7 +360,7 @@
         }
 
         &.sunlight-02 {
-          @include imgContain('log-board/log-board-top-sunlight-02.png');
+          @include imgContain('log-board/log-board-top-sunlight-02.webp');
           aspect-ratio: 251/236;
           opacity: 0.5;
 
@@ -375,7 +375,7 @@
         }
 
         &.sunlight-03 {
-          @include imgContain('log-board/log-board-top-sunlight-03.png');
+          @include imgContain('log-board/log-board-top-sunlight-03.webp');
           aspect-ratio: 56/43;
           opacity: 0.5;
 
@@ -389,7 +389,7 @@
         }
 
         &.sunlight-04 {
-          @include imgContain('log-board/log-board-top-sunlight-01.png');
+          @include imgContain('log-board/log-board-top-sunlight-01.webp');
           aspect-ratio: 105/165;
           opacity: 0.5;
 
@@ -450,7 +450,7 @@
           &.coins__cards {
             .cards {
               .item__img {
-                @include imgContain('log-board/log-board-item-02.png');
+                @include imgContain('log-board/log-board-item-02.webp');
                 width: 60%;
               }
             }
@@ -609,7 +609,7 @@
             }
 
             .item__img {
-              @include imgContain('log-board/log-board-item-01.png');
+              @include imgContain('log-board/log-board-item-01.webp');
               aspect-ratio: 1/1;
               position: absolute;
               top: 50%;
@@ -634,7 +634,7 @@
               z-index: 2;
               width: 180%;
               aspect-ratio: 1/1;
-              @include imgContain('log-board/log-board-item-highlight.png');
+              @include imgContain('log-board/log-board-item-highlight.webp');
               display: none;
               mix-blend-mode: plus-lighter;
             }

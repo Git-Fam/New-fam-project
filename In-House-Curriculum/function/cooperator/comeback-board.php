@@ -1,31 +1,24 @@
 <?php
 function comeback_board()
 {
-    global $normal_month;
-    global $after_day; 
+    $after_day = 3; // 復活後の連続ログイン日数（login-point.php と揃える）
 
     $user_id = get_current_user_id(); // 現在のユーザーIDを取得
-    $comeback_login_days = get_user_meta($user_id, 'comeback_login_days', true) ?: 0;
-    $previous_comeback_login_days = get_user_meta($user_id, 'previous_comeback_login_days', true) ?: 0;
-    $last_comeback_login_date = get_user_meta($user_id, 'last_comeback_login_date', true);
-    $current_timestamp = current_time('timestamp');
 
-    // $normal_month が経過した場合に表示
-    if ($last_comeback_login_date && ($current_timestamp - strtotime($last_comeback_login_date)) >= $normal_month) {
+    $today = current_time('Y-m-d');
+    $comeback_login_days = (int) (get_user_meta($user_id, 'comeback_login_days', true) ?: 0);
+
+    // カムバック期間中かどうか（復活後 after_day 日以内）
+    $in_comeback_period = ($comeback_login_days >= 1 && $comeback_login_days <= $after_day);
+
+    // 今日すでに表示済みか（1日1回ガード）
+    $last_display_date = get_user_meta($user_id, 'last_comeback_board_display', true);
+    $already_shown_today = ($last_display_date === $today);
+
+    if ($in_comeback_period && !$already_shown_today) {
         $comeback_board_class = '';
-        update_user_meta($user_id, 'previous_comeback_login_days', $comeback_login_days);
-        update_user_meta($user_id, 'last_comeback_login_date', date('Y-m-d H:i:s', $current_timestamp));
-        update_user_meta($user_id, 'comeback_login_days', 1); // リセットして1からスタート
-    } elseif ($comeback_login_days > $previous_comeback_login_days && $comeback_login_days <= $after_day) {
-        // $after_day 日間表示
-        $comeback_board_class = '';
-        update_user_meta($user_id, 'previous_comeback_login_days', $comeback_login_days);
+        update_user_meta($user_id, 'last_comeback_board_display', $today); // 'Y-m-d' で保存
     } else {
-        $comeback_board_class = 'none';
-    }
-
-    // 連続ログインが途切れた場合は非表示
-    if ($comeback_login_days > $after_day) {
         $comeback_board_class = 'none';
     }
 ?>
@@ -49,7 +42,7 @@ function comeback_board()
             </div>
             <div class="container__title">
                 <h3 class="TL">
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/log-board/comeback-board-title.png" alt="カムバックボーナス">
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/log-board/comeback-board-title.webp" alt="カムバックボーナス">
                 </h3>
             </div>
             <div class="container__text">

@@ -60,4 +60,5 @@ function update_last_login($user_login, $user) {
     update_user_meta($user->ID, 'login_history', $login_history);
 }
 add_action('wp_login', 'update_last_login', 10, 2);
+
 ?>

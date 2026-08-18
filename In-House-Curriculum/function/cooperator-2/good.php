@@ -44,18 +44,20 @@ function handle_like() {
     update_user_meta($user_id, 'liked_items', $liked_items);
 
     // 5回目のリアクションの場合
-    if ($like_count_today + 1 == 5) {
-        // 3コインを追加
-        add_user_coins($user_id, 3);
-        wp_send_json_success(array('new_count' => $like_count, 'message' => '5回リアクションしました、3コイン獲得です！'));
-    } else {
-        wp_send_json_success(array('new_count' => $like_count, 'message' => '「リアクション」が成功しました。'));
-    }
+   if ($like_count_today + 1 == 5) {
+    add_user_coins($user_id, 3);
+    wp_send_json_success(array('new_count' => $like_count, 'like_count_today' => $like_count_today + 1, 'message' => '5回リアクションしました、3コイン獲得です！'));
+} else {
+    wp_send_json_success(array('new_count' => $like_count, 'like_count_today' => $like_count_today + 1, 'message' => '「リアクション」が成功しました。'));
+}
 }
 // スクリプトの登録とajaxurlの設定
 function my_enqueue_scripts() {
     wp_enqueue_script('my-script', get_template_directory_uri() . '/js/cooperatorScript.js', array('jquery'), null, true);
+
+    // 2つの localize を同じハンドルにぶら下げる
     wp_localize_script('my-script', 'myAjax', array('ajaxurl' => admin_url('admin-ajax.php')));
+    wp_localize_script('my-script', 'userLikeInfo', get_user_like_info());
 }
 add_action('wp_enqueue_scripts', 'my_enqueue_scripts');
 

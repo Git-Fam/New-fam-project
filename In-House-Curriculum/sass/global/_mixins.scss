@@ -50,80 +50,123 @@ $sp: 767px; // スマホ
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  }
-  // ↓CSSでは
-  // @include imgCover('example.jpg');
+}
+
+// ↓CSSでは
+// @include imgCover('example.jpg');
 
 
-  // backgroundIcon-contain
-  @mixin iconContain($img) {
-    background-image: $img;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
+// backgroundIcon-contain
+@mixin iconContain($img) {
+  background-image: $img;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-  // ↓CSSでは
-  // @include iconContain($dot);
-
-
-  // backgroundIcon-cover
-  @mixin iconCover($img) {
-    background-image: $img;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  // ↓CSSでは
-  // @include iconCover($dot);
+// ↓CSSでは
+// @include iconContain($dot);
 
 
+// backgroundIcon-cover
+@mixin iconCover($img) {
+  background-image: $img;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-  // 関数の使い方
-  // @mixin test($sidePadding : calc(( 98 / 1280) * 100vw) , $sidemargin : 0 0 0 auto ){
-  //   .test--btn{
-  //     padding: calc(( 6 / 1280) * 100vw) $sidePadding calc(( 2 / 1280) * 100vw);
-  //     margin: $sidemargin;
-  //   }
-  // }
-
-
-  // @mixin img($img){
-  //   background-image: url('/img/#{$img}');
-  //   background-size: contain;
-  //   background-position: center;
-  //   background-repeat: no-repeat;
-  // }
-  // ↓CSSでは
-  // @include img('example.jpg');
+// ↓CSSでは
+// @include iconCover($dot);
 
 
-  // 全体のheight
-  @mixin height {
-    height: 100vh;
 
-    @include pc {
-      min-height: 700px;
-    }
+// 関数の使い方
+// @mixin test($sidePadding : calc(( 98 / 1280) * 100vw) , $sidemargin : 0 0 0 auto ){
+//   .test--btn{
+//     padding: calc(( 6 / 1280) * 100vw) $sidePadding calc(( 2 / 1280) * 100vw);
+//     margin: $sidemargin;
+//   }
+// }
 
-    @include sp {
-      min-height: 650px;
-    }
+
+// @mixin img($img){
+//   background-image: url('/img/#{$img}');
+//   background-size: contain;
+//   background-position: center;
+//   background-repeat: no-repeat;
+// }
+// ↓CSSでは
+// @include img('example.jpg');
+
+
+// 全体のheight
+@mixin height {
+  height: 100vh;
+
+  @include pc {
+    min-height: 700px;
   }
 
-
-  // キャラクター用
-  @mixin character($chara, $Pwidth, $Swidth) {
-
-    @include imgContain('#{$chara}');
-
-    @include pc {
-      width: $Pwidth;
-    }
-
-    @include sp {
-      width: $Swidth;
-    }
-
+  @include sp {
+    min-height: 650px;
   }
+}
+
+
+// キャラクター用
+@mixin character($chara, $Pwidth, $Swidth) {
+
+  @include imgContain('#{$chara}');
+
+  @include pc {
+    width: $Pwidth;
+  }
+
+  @include sp {
+    width: $Swidth;
+  }
+
+}
+
+
+$screenSizePC: 1280;
+$screenSizeSP: 390;
+
+
+// 最小サイズ
+@function pmax($size, $maxSize: ($size * 3 / 4), $viewport: $screenSizePC) {
+  $rate: calc(100 / $viewport);
+  $calculatedSize: $rate * $size * 1vw;
+  @return max(#{$calculatedSize}, #{$maxSize}px);
+}
+
+// 入力値に*3/5した値とvwの値を比較して大きい方を返す
+// font-size: pm(50,40);
+// or
+// font-size: pm(50);
+
+// 最大サイズ
+@function pmin($size, $maxSize: ($size * 5 / 4), $viewport: $screenSizePC) {
+  $rate: calc(100 / $viewport);
+  $calculatedSize: $rate * $size * 1vw;
+  @return min(#{$calculatedSize}, #{$maxSize}px);
+}
+
+// 入力値に*3/5した値とvwの値を比較して大きい方を返す
+// font-size: pmin(-50,-40);
+// or
+// font-size: pmin(-50);
+
+// クランプ
+@function pclamp($size, $minSize: ($size * 3 / 4), $maxSize: ($size * 5 / 4), $viewport: $screenSizePC) {
+  $rate: calc(100 / $viewport);
+  $calculatedSize: $rate * $size * 1vw;
+  @return clamp(#{$minSize}px, #{$calculatedSize}, #{$maxSize}px);
+}
+
+// 使用例:
+// font-size: clamp(50);                  // デフォルト値を使用 (min=30px, max=75px)
+// font-size: clamp(50, 40, 60);          // カスタム min/max
+// font-size: clamp(50, 40, 60, 1440);    // カスタム min/max とビューポート
+// font-size: clamp(50, 30);                  // デフォルト値を使用 (min=30px, max=75px)

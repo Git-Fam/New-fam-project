@@ -1,4 +1,11 @@
-<?php get_header(); ?>
+<?php 
+if (!is_user_logged_in()) {
+    wp_redirect(home_url('/login'));
+    exit;
+}
+
+get_header();
+?>
 
 <div class="columns">
     <div class="columns--main columns--main--single">
@@ -14,7 +21,7 @@
                             <h2 class="TL"><?php the_title(); ?></h2>
                         </div>
                         <div class="content">
-                            <img class="thumbnail" src="<?php echo $thumbnail_url ? $thumbnail_url : get_template_directory_uri() . '/img/noimage.jpg'; ?>" alt="">
+                            <img class="thumbnail" src="<?php echo $thumbnail_url ? $thumbnail_url : get_template_directory_uri() . '/img/noimage.webp'; ?>" alt="">
                             <div class="content--text">
                                 <p><?php the_content(); ?></p>
                             </div>
@@ -26,7 +33,7 @@
                                 <?php endif; ?>
                             </div>
                             <div class="single--nation--text">
-                                <a href="javascript:window.close()">戻る</a>
+                                <a href="<?php echo home_url('/column'); ?>">戻る</a>
                             </div>
                             <div class="single--nation--text">
                                 <?php if (get_previous_post()): ?>

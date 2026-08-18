@@ -151,7 +151,7 @@
 
           &::before {
             content: "";
-            @include imgContain("staff-icon.png");
+            @include imgContain("staff-icon.webp");
             display: inline-block;
             top: 0;
             left: 0;
@@ -191,7 +191,7 @@
           }
 
           &::before {
-            @include imgContain("teacher-icon.png");
+            @include imgContain("teacher-icon.webp");
           }
 
           &::after {

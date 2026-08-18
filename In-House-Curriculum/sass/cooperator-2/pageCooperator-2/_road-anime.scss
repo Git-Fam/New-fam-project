@@ -1,0 +1,511 @@
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
+
+/* -----------------------
+  road-nime
+----------------------- */
+
+// 1枚目木が揺れる
+.tree-anime {
+  transform-origin: bottom center;
+  animation: sway 4s ease infinite alternate;
+
+  @keyframes sway {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    50% {
+      transform: rotate(4deg);
+    }
+
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+}
+
+
+
+// 2枚目木が揺れて羊登場
+.tree-anime-animal {
+  transform-origin: bottom center;
+  animation: tree-anime-animal 13s linear infinite;
+
+  @keyframes tree-anime-animal {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    1% {
+      transform: rotate(4deg);
+    }
+
+    2% {
+      transform: rotate(0deg);
+    }
+
+    3% {
+      transform: rotate(4deg);
+    }
+
+    4% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+}
+
+// 羊
+.tree-animal {
+  position: absolute;
+  top: 30%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  height: 30%;
+  animation: tree-animal 13s linear infinite;
+  z-index: 10;
+
+  iframe {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+  }
+
+  @keyframes tree-animal {
+    0% {
+      top: 30%;
+    }
+
+    8% {
+      top: 30%;
+    }
+
+    10% {
+      top: -10%;
+    }
+
+    11% {
+      top: -3%;
+    }
+
+    30% {
+      top: -3%;
+    }
+
+    32% {
+      top: -15%;
+    }
+
+    34% {
+      top: 30%;
+    }
+
+    100% {
+      top: 30%;
+    }
+  }
+
+}
+
+// 最後城クリックでモグラ出現
+.castle {
+  overflow: hidden;
+  cursor: pointer;
+
+  .castle-animal {
+    position: absolute;
+    bottom: -7%;
+    right: 0;
+    width: 30%;
+    height: 30%;
+    transition: all 0.3s;
+    opacity: 0;
+
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
+
+    &.show {
+      opacity: 1;
+    }
+
+  }
+
+}
+
+
+// 3枚目鳥飛ぶ捕まえる
+.sec3-anime-bird {
+  position: absolute;
+  top: 20%;
+  /* おばけ作例を完全再現 */
+  left: 40%;
+  display: block;
+  cursor: pointer;
+  transform: scaleX(-1);
+  offset-path: path("m121.751,142.925c64.965-20.713,84.009-62.201,150.823-86.711,66.408-24.361,234.912-41.807,268.334-33.531,87.588,21.69-55.881,58.35-64.818,60.362-66.889,15.06-249.619,5.261-394.356-14.993-60.509-8.468-217.503-63.352-269.682-15.503-46.047,42.634,42.209,84.58,151.569,64.34,129.467-23.961,245.478-4.758,377.373,10.994,72.906,8.707,250.124,19.277,168.227,47.34-55.167,18.904-197.598,7.721-297.612,1.747C90.175,166.1-13.368,291.142,1.296,201.323c9.853-60.352,263.745-23.933,361.33-58.398");
+  offset-rotate: 0deg;
+  animation: move 50s linear infinite, flip 50s linear infinite;
+  animation-play-state: running;
+  z-index: 30;
+
+  @include pc {
+    width: p(60);
+    height: p(60);
+  }
+
+  @include sp {
+    width: 60px;
+    height: 60px;
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+/* そのままICS MEDIAのアニメーションを適用 */
+@keyframes move {
+  0% {
+    offset-distance: 0%;
+  }
+
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+@keyframes flip {
+  15% {
+    transform: scaleX(-1);
+  }
+
+  16% {
+    transform: scaleX(1);
+  }
+
+  40% {
+    transform: scaleX(1);
+  }
+
+  41% {
+    transform: scaleX(-1);
+  }
+
+  67% {
+    transform: scaleX(-1);
+  }
+
+  68% {
+    transform: scaleX(1);
+  }
+
+  87% {
+    transform: scaleX(1);
+  }
+
+  88% {
+    transform: scaleX(-1);
+  }
+}
+
+/* ホバーやタップの時のshakeもそのまま */
+@keyframes shake {
+  0% {
+    transform: translateX(-4%);
+  }
+
+  50% {
+    transform: translateX(5%);
+  }
+
+  100% {
+    transform: translateX(-4%);
+  }
+}
+
+/* 修正版: ホバー・タップでアニメーションを止めるだけ（上書きしない） */
+@media (any-hover: hover) {
+  .sec3-anime-bird:hover {
+    animation-play-state: paused;
+    /* ここでanimationを上書きしない！ */
+  }
+}
+
+@media (any-hover: none) {
+  .sec3-anime-bird:active {
+    animation-play-state: paused;
+  }
+}
+
+
+/* -----------------------
+  鳥ここまで
+----------------------- */
+
+
+// 4枚目カッパゲット
+.road-action {
+  position: absolute;
+  cursor: pointer;
+
+  @include pc {
+    width: p(183);
+    height: p(50);
+    top: p(145);
+    left: p(390);
+  }
+
+  @include sp {
+    width: 183px;
+    height: 50px;
+    top: 145px;
+    left: 339px;
+  }
+
+  .action-hover {
+    opacity: 0;
+    transition: all 0.8s;
+    @include imgContain("road-action-bubble.webp");
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @include pc {
+      width: p(35);
+      height: p(65);
+      top: p(-27);
+    }
+  }
+
+  &:hover {
+    .action-hover {
+      opacity: 1;
+      transition: all 0.8s;
+    }
+  }
+}
+
+.action-modal {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: none;
+
+  .modal-content {
+    @include imgContain("road-action.webp");
+    aspect-ratio: 1 / 1;
+    transform: scale(0);
+
+    @include pc {
+      width: p(300);
+    }
+
+    @include sp {
+      width: 70%;
+    }
+
+  }
+
+  .lost-button {
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+
+    @include pc {
+      width: 80%;
+      height: p(50);
+      bottom: p(-100);
+      border-radius: p(10);
+    }
+    @include sp{
+      width: 80%;
+      height: 50px;
+      bottom: -100px;
+      border-radius: 10px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 100%;
+      color: $F-FFFFFF;
+
+      @include pc {
+        font-size: p(18);
+      }
+    }
+  }
+  .lost-pass-button {
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+
+    @include pc {
+      width: 80%;
+      height: p(50);
+      bottom: p(-100);
+      border-radius: p(10);
+    }
+
+    @include sp{
+      width: 80%;
+      height: 50px;
+      bottom: -100px;
+      border-radius: 10px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 100%;
+      color: $F-FFFFFF;
+
+      @include pc {
+        font-size: p(18);
+      }
+    }
+  }
+
+
+  .action-close {
+    position: absolute;
+    cursor: pointer;
+    @include iconContain($action-close);
+
+    @include pc {
+      width: p(74);
+      height: p(44);
+      top: p(50);
+      right: p(50);
+    }
+
+    @include sp {
+      width: 74px;
+      height: 44px;
+      top: 20px;
+      right: 20px;
+    }
+
+  }
+
+  &.HTML {
+    .modal-content {
+      @include imgContain("road-lost-HTML.webp");
+    }
+
+    .lost-button {
+      display: block;
+      background: #3A96ED;
+      box-shadow: 0px 2px 0px 0px #38A1E2, 0px 0px 34px 0px #41F3F6 inset;
+
+      &::before {
+        content: "落とし物を拾う";
+      }
+    }
+  }
+  &.HTML-lostchara {
+    .modal-content {
+      @include imgContain("HTML-lostchara.webp");
+    }
+
+    .lost-pass-button {
+      display: block;
+      background: #3A96ED;
+      box-shadow: 0px 2px 0px 0px #38A1E2, 0px 0px 34px 0px #41F3F6 inset;
+
+      &::before {
+        content: "落とし物を渡す";
+      }
+    }
+  }
+  &.HTML-pass{
+    .modal-content {
+      @include imgContain("HTML-passchara.webp");
+    }
+  }
+  
+
+  &.jQuery {
+    .modal-content {
+      @include imgContain("road-lost-jQuery.webp");
+    }
+
+    .lost-button {
+      display: block;
+      background: #3A96ED;
+      box-shadow: 0px 2px 0px 0px #38A1E2, 0px 0px 34px 0px #41F3F6 inset;
+
+      &::before {
+        content: "jQueryの落とし物を拾う";
+      }
+    }
+  }
+  &.jQuery-lostchara {
+    .modal-content {
+      @include imgContain("jQuery-lostchara.webp");
+    }
+
+    .lost-pass-button {
+      display: block;
+      background: #3A96ED;
+      box-shadow: 0px 2px 0px 0px #38A1E2, 0px 0px 34px 0px #41F3F6 inset;
+
+      &::before {
+        content: "落とし物を渡す";
+      }
+    }
+  }
+  &.jQuery-pass{
+    .modal-content {
+      @include imgContain("jQuery-passchara.webp");
+    }
+  }
+
+
+
+  &.show {
+    @include center;
+
+    .modal-content {
+      animation: road-action 1s ease-in-out 1s;
+      animation-fill-mode: forwards;
+
+      @keyframes road-action {
+        0% {
+          transform: scale(0);
+        }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
-@use "../../global"as *;
-@use "../globalCooperator-2"as *;
+@use "../../global" as *;
+@use "../globalCooperator-2" as *;
 
 /* -----------------------
   page-chat
@@ -14,16 +14,16 @@
     width: 100%;
     display: grid;
     position: relative;
+    place-items: center left;
 
     @include pc {
       height: p(73);
       padding-left: p(34);
-      place-items: center left;
     }
 
     @include sp {
       height: smi(60);
-      place-items: center center;
+      padding-left: smi(20);
     }
 
     .TL {
@@ -37,6 +37,106 @@
       @include sp {
         font-size: smi(20);
       }
+
+      a {
+        color: $F-FFFFFF;
+        @include wt900;
+        cursor: pointer;
+        text-decoration: underline;
+        line-height: 1.5;
+
+        @include pc {
+          font-size: p(23);
+        }
+
+        @include sp {
+          font-size: smi(20);
+        }
+      }
+    }
+
+    .chat--menu-btn {
+      position: absolute;
+
+      @include pc {
+        top: p(8);
+        right: p(15);
+      }
+
+      @include sp {
+        top: clamp(1px, calc((3 / 390) * 100vw), 5px);
+        right: clamp(2px, calc((5 / 390) * 100vw), 8px);
+      }
+
+      .C_all-menu-btn {
+        box-shadow: 0px 3.314px 6.629px 0px rgba(0, 0, 0, 0.25);
+
+        @include pc {
+          border-radius: p(13.257);
+          padding: p(5) p(10) p(6) p(7);
+          border-width: p(2);
+        }
+
+        @include sp {
+          border-radius: clamp(12px, calc((15 / 390) * 100vw), 118px);
+          padding: clamp(1px, calc((3 / 390) * 100vw), 5px)
+            clamp(2px, calc((5 / 390) * 100vw), 8px)
+            clamp(2px, calc((4 / 390) * 100vw), 6px)
+            clamp(2px, calc((5 / 390) * 100vw), 8px);
+          border-width: s(2);
+        }
+
+        &__inner {
+          @include pc {
+            gap: p(5);
+          }
+
+          @include sp {
+            gap: clamp(1px, calc((3 / 390) * 100vw), 5px);
+          }
+
+          &__img {
+            @include pc {
+              width: p(50);
+              height: p(40);
+            }
+
+            @include sp {
+              width: clamp(30px, calc((35 / 390) * 100vw), 40px);
+              height: clamp(20px, calc((25 / 390) * 100vw), 30px);
+            }
+          }
+
+          &__text {
+            .TX {
+              line-height: 1.5;
+
+              @include pc {
+                font-size: p(24);
+                letter-spacing: p(1);
+              }
+
+              @include sp {
+                font-size: clamp(12px, calc((15 / 390) * 100vw), 18px);
+              }
+            }
+          }
+        }
+
+        &:hover {
+          transform: translate(3.314px, 3.314px);
+
+          @include sp {
+            transform: translate(2px, 2px);
+          }
+
+          .C_all-menu-btn__inner {
+            &__img {
+              @include iconContain($all-menu-character-ver2);
+            }
+          }
+        }
+      }
     }
   }
 
@@ -46,7 +146,7 @@
     @include pc {
       background: $B-F69064;
       width: p(1182);
-      height: calc((569 / 700)* 100%);
+      height: calc((569 / 700) * 100%);
       display: flex;
       border-radius: p(15);
       margin: p(41) auto 0;
@@ -69,7 +169,7 @@
         position: relative;
         margin: 0 auto;
         background: $B-F69064;
-        padding: smi(25) smi(15) smi(90,100);
+        padding: smi(25) smi(15) smi(90, 100);
         border-radius: s(8);
       }
 
@@ -94,23 +194,27 @@
           padding: smi(8) smi(15);
           top: s(-15);
           left: 0;
-
         }
       }
 
       .timeline-wrap {
-
         @include pc {
           min-width: p(389);
           height: 100%;
         }
-        @include sp{
+
+        @include sp {
           height: 100%;
         }
 
-
         .timeline {
-          background: radial-gradient(50% 50% at 50% 50%, rgba(255, 201, 61, 0.00) 0%, rgba(255, 201, 61, 0.13) 100%), #EFFAFF;
+          background:
+            radial-gradient(
+              50% 50% at 50% 50%,
+              rgba(255, 201, 61, 0) 0%,
+              rgba(255, 201, 61, 0.13) 100%
+            ),
+            #effaff;
           overflow-y: scroll;
           display: flex;
           flex-direction: column;
@@ -121,7 +225,8 @@
             padding: p(19) p(7);
             gap: p(23);
           }
-          @include sp{
+
+          @include sp {
             height: 100%;
             border-radius: s(8);
             padding: smi(20) smi(10) smi(85);
@@ -132,11 +237,12 @@
             @include pc {
               padding: 0 p(20) p(12) p(11);
               border-bottom: p(1) solid $F-6D6D6D;
+              max-width: p(386);
             }
-            @include sp{
-              padding: 0 smi(20) smi(12) smi(11);
-              border-bottom:s(1) solid $F-6D6D6D;
 
+            @include sp {
+              padding: 0 smi(20) smi(12) smi(11);
+              border-bottom: s(1) solid $F-6D6D6D;
             }
 
             h3 {
@@ -147,8 +253,19 @@
               @include pc {
                 font-size: p(16);
               }
-              @include sp{
-                font-size: smi(14,18);
+
+              @include sp {
+                font-size: smi(14, 18);
+              }
+            }
+
+            div {
+              @include pc {
+                font-size: p(13) !important;
+              }
+
+              @include sp {
+                font-size: smi(10, 12) !important;
               }
             }
 
@@ -160,7 +277,8 @@
                 gap: p(25);
                 margin-top: p(9);
               }
-              @include sp{
+
+              @include sp {
                 gap: smi(28);
                 margin-top: smi(5);
               }
@@ -174,9 +292,10 @@
                   width: p(32);
                   height: p(32);
                 }
-                @include sp{
-                  width: smi(35,45);
-                  height: smi(35,45);
+
+                @include sp {
+                  width: smi(35, 45);
+                  height: smi(35, 45);
                 }
 
                 .icon {
@@ -186,15 +305,16 @@
                   top: 50%;
                   left: 50%;
                   translate: -50% -50%;
+                  z-index: 2;
 
                   @include pc {
                     width: p(19);
                     height: p(16);
                   }
-                  @include sp{
-                    width: smi(19,25);
-                    height: smi(16,23);
 
+                  @include sp {
+                    width: smi(19, 25);
+                    height: smi(16, 23);
                   }
                 }
 
@@ -209,25 +329,25 @@
                     font-size: p(10);
                     bottom: p(-7);
                   }
-                  @include sp{
-                    font-size: smi(12,14);
+
+                  @include sp {
+                    font-size: smi(12, 14);
                     bottom: smi(-5);
                   }
-
                 }
 
                 &.heart {
                   .icon {
-                    background-image: heart(encode('#ABABAB'));
+                    background-image: heart(encode("#ABABAB"));
                   }
 
                   &.liked {
                     .icon {
-                      background-image: heart(encode('#F29A9A'));
+                      background-image: heart(encode("#F29A9A"));
                     }
 
                     .like-TX {
-                      color: #F29A9A;
+                      color: #f29a9a;
                     }
                   }
                 }
@@ -243,7 +363,7 @@
                     }
 
                     .like-TX {
-                      color: #EFC73C;
+                      color: #efc73c;
                     }
                   }
                 }
@@ -259,28 +379,72 @@
                     }
 
                     .like-TX {
-                      color: #8CCBF5;
+                      color: #8ccbf5;
+                    }
+                  }
+                }
+
+                &::before {
+                  content: "";
+                  position: absolute;
+                  @include imgContain("like-icon-back.svg");
+                  width: 100%;
+                  height: 100%;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  z-index: 1;
+                  opacity: 0;
+                }
+
+                &.click {
+                  &::before {
+                    animation: like 0.8s ease-out forwards;
+
+                    @keyframes like {
+                      0% {
+                        opacity: 0;
+                        transform: translate(-50%, -50%);
+                      }
+
+                      50% {
+                        opacity: 1;
+                        transform: translate(-50%, -50%) scale(1.1);
+                      }
+
+                      100% {
+                        opacity: 0;
+                        transform: translate(-50%, -50%) scale(1.2);
+                      }
                     }
                   }
                 }
               }
-
             }
-
           }
         }
 
         .C_reaction {
           display: flex;
+          transition:
+            filter 0.6s ease,
+            opacity 0.6s ease;
+
+          // 達成済み：ブロック全体をグレーに沈める
+          &.spent {
+            filter: grayscale(100%);
+            opacity: 0.55;
+            pointer-events: none; // もう押せない感も出すなら（任意）
+          }
 
           @include pc {
             margin-top: p(12);
             gap: p(12);
           }
-          @include sp{
+
+          @include sp {
             margin-top: smi(12);
             gap: smi(12);
-
           }
 
           .coin-counter {
@@ -293,19 +457,21 @@
               border-radius: p(20);
               padding: p(4) p(16) p(4) p(10);
             }
-            @include sp{
+
+            @include sp {
               border-radius: s(50);
               padding: smi(5) smi(15) smi(5) smi(10);
             }
 
             .icon {
-              @include imgContain("/log-board/log-board-item-02.png");
+              @include imgContain("/log-board/log-board-item-02.webp");
 
               @include pc {
                 width: p(36);
                 height: p(36);
               }
-              @include sp{
+
+              @include sp {
                 width: smi(30);
                 height: smi(30);
               }
@@ -319,22 +485,22 @@
                 font-size: p(26);
                 margin-left: p(7);
               }
-              @include sp{
-                font-size: smi(22,25);
+
+              @include sp {
+                font-size: smi(22, 25);
                 margin-left: smi(5);
               }
             }
-
           }
 
           .textbox {
             .TX {
-
               @include pc {
                 font-size: p(16);
               }
-              @include sp{
-                font-size: smi(16,20);
+
+              @include sp {
+                font-size: smi(16, 20);
               }
             }
 
@@ -343,27 +509,30 @@
                 font-size: p(16);
                 margin-top: p(5);
               }
-              @include sp{
-                font-size: smi(16,18);
+
+              @include sp {
+                font-size: smi(16, 18);
                 margin-top: smi(3);
               }
             }
           }
-
         }
-        .chat-back{
+
+        .chat-back {
           display: flex;
           align-items: center;
-          margin:smi(5) 0 0 smi(5,10);
-          .icon{
+          margin: smi(5) 0 0 smi(5, 10);
+
+          .icon {
             @include iconContain($back-arrow);
-            width: smi(23,33);
-            height: smi(25,35);  
+            width: smi(23, 33);
+            height: smi(25, 35);
           }
-          .TX{
+
+          .TX {
             @include wt800;
             color: $F-857763;
-            font-size: smi(12,14);
+            font-size: smi(12, 14);
           }
         }
       }
@@ -391,7 +560,6 @@
         margin: 0 auto;
         border-radius: s(8);
         padding: smi(15) smi(15) smi(60);
-
       }
 
       .chat-TL {
@@ -436,7 +604,13 @@
         height: 100%;
 
         #sac-output {
-          background: radial-gradient(50% 50% at 50% 50%, rgba(61, 255, 255, 0.00) 0%, rgba(61, 255, 255, 0.13) 100%), #EFFAFF;
+          background:
+            radial-gradient(
+              50% 50% at 50% 50%,
+              rgba(61, 255, 255, 0) 0%,
+              rgba(61, 255, 255, 0.13) 100%
+            ),
+            #effaff;
           box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25) inset;
           width: 100%;
           height: 100%;
@@ -488,7 +662,6 @@
 
               label {
                 display: none;
-
               }
 
               #sac_chat {
@@ -503,13 +676,15 @@
                   height: p(25);
                   border-radius: p(10);
                   padding: p(11) p(24);
+                  font-size: p(16);
                 }
 
                 @include sp {
-                  width: calc((282 /351)*100%);
+                  width: calc((282 / 351) * 100%);
                   height: smi(29);
                   border-radius: s(5);
                   padding: s(5) s(10);
+                  font-size: smi(16);
                 }
 
                 &::placeholder {
@@ -520,8 +695,12 @@
 
             #sac-user-submit {
               position: relative;
-              background: linear-gradient(0deg, rgba(75, 199, 251, 0.00) 0%, #5DCFFF 100%), #307DF1;
-              box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.54) inset, 0px 2px 3px 0px #3C5C8A;
+              background:
+                linear-gradient(0deg, rgba(75, 199, 251, 0) 0%, #5dcfff 100%),
+                #307df1;
+              box-shadow:
+                0px 4px 4px 0px rgba(255, 255, 255, 0.54) inset,
+                0px 2px 3px 0px #3c5c8a;
 
               @include pc {
                 min-width: p(92);
@@ -564,7 +743,6 @@
                   height: s(18);
                 }
               }
-
             }
 
             &::before {
@@ -592,7 +770,6 @@
               }
             }
           }
-
         }
 
         #sac-messages {
@@ -600,30 +777,44 @@
           flex-direction: column;
           position: relative;
 
-          @include pc {
-            gap: p(10);
-          }
-
-          @include sp {
-            gap: s(7);
-          }
-
           .sac-chat-message {
             position: relative;
 
-            &::before {
-              content: "";
-              @include imgContain("staff-icon.png");
-              display: block;
+            .chat-avatar {
+              overflow: hidden;
 
               @include pc {
                 width: p(53);
                 height: p(53);
+                border: $F-C7B82F solid p(2);
+                padding-top: p(8);
+                border-radius: p(5);
               }
 
               @include sp {
                 width: smi(33, 43);
                 height: smi(33, 43);
+                border: $F-C7B82F solid s(1.5);
+                padding-top: smi(5);
+                border-radius: smi(5);
+              }
+            }
+
+            &.sac-user- {
+              &::before {
+                content: "";
+                @include imgContain("staff-icon.webp");
+                display: block;
+
+                @include pc {
+                  width: p(53);
+                  height: p(53);
+                }
+
+                @include sp {
+                  width: smi(33, 43);
+                  height: smi(33, 43);
+                }
               }
             }
 
@@ -632,11 +823,9 @@
               overflow: hidden;
               top: 0;
 
-
-
               @include pc {
                 left: p(73);
-                height: fit-content;
+                height: p(23);
               }
 
               @include sp {
@@ -660,36 +849,57 @@
                   font-size: smi(12, 14);
                   letter-spacing: s(1);
                   margin-right: smi(-8);
-
                 }
               }
             }
 
             .highlight-text {
               color: $F-B29975;
-              position: absolute;
-              @include iconCover($chat-bubble);
+              position: relative;
+              // @include iconCover($chat-bubble);
               @include wt600;
               display: grid;
               place-items: center left;
-
+              background-color: $B-FFFFFF;
+              line-height: 1.2;
+              filter: drop-shadow(0px 3px 5px rgba(0, 0, 0, 0.15));
 
               @include pc {
-                width: p(508);
-                height: p(50);
+                width: p(460);
                 font-size: p(16);
-                padding: 0 p(30);
-                top: p(20);
-                left: p(60);
+                padding: p(8) p(30);
+                top: p(-30);
+                left: p(70);
+                border-radius: p(5);
               }
 
               @include sp {
-                width: smi(240, 328);
-                height: smi(22, 30);
+                width: smi(220, 308);
                 font-size: smi(12, 16);
-                top: smi(15);
-                left: smi(45, 55);
-                padding: 0 smi(15, 20);
+                top: s(-15);
+                left: smi(50, 60);
+                padding: smi(8, 10) smi(15, 20);
+                border-radius: smi(3);
+              }
+
+              &::before {
+                content: "";
+                clip-path: polygon(75% 0, 100% 100%, 10% 100%);
+                background: $B-FFFFFF;
+                position: absolute;
+                bottom: 0;
+
+                @include pc {
+                  width: p(27);
+                  height: p(16);
+                  left: p(-12);
+                }
+
+                @include sp {
+                  width: 20px;
+                  height: 12px;
+                  left: -7px;
+                }
               }
             }
 
@@ -711,23 +921,42 @@
               }
 
               .highlight-text {
-                @include iconCover($chat-me);
+                // @include iconCover($chat-me);
                 color: $P-F6AA64;
                 place-items: center right;
                 left: auto;
+                background: $B-FFFDED;
 
                 @include pc {
-                  right: p(60);
+                  right: p(-50);
                 }
 
                 @include sp {
-                  right: smi(45, 55);
+                  right: smi(-5, -15);
+                }
+
+                &::before {
+                  content: "";
+                  clip-path: polygon(10% 0%, 100% 100%, 10% 100%);
+                  background: $B-FFFDED;
+                  position: absolute;
+                  bottom: 0;
+
+                  @include pc {
+                    width: p(27);
+                    height: p(16);
+                    right: p(-12);
+                    left: initial;
+                  }
+
+                  @include sp {
+                    right: -6px;
+                    left: initial;
+                  }
                 }
               }
 
-              &::before {
-                content: "";
-                @include imgContain("me-icon.png");
+              .chat-avatar {
                 margin-left: auto;
               }
             }
@@ -743,6 +972,16 @@
         position: absolute;
         bottom: smi(75);
         right: smi(30);
+        transition:
+          filter 0.6s ease,
+          opacity 0.6s ease;
+
+        // 達成済み：ブロック全体をグレーに沈める
+        &.spent {
+          filter: grayscale(100%);
+          opacity: 0.55;
+          pointer-events: none; // もう押せない感も出すなら（任意）
+        }
 
         .textbox {
           .reaction-counter {
@@ -765,6 +1004,116 @@
   }
 }
 
+/* -----------------------
+  コイン獲得演出（5回リアクション達成時）
+  .coin-counter.get は JS が付与する
+----------------------- */
+.coin-counter {
+  position: relative; // フロートテキストの基準（既存に無ければ必要）
+
+  // 通常時（＝まだ獲得していない）はグレーで沈めておく
+  .icon {
+    filter: grayscale(100%);
+    opacity: 0.5;
+    transition:
+      filter 0.4s ease,
+      opacity 0.4s ease;
+  }
+  .number {
+    color: $B-F69064;
+    transition: color 0.4s ease;
+  }
+
+  // 使い切った表示：グレーに沈める（.spent が付いたら）
+  &.spent {
+    .icon {
+      filter: grayscale(100%);
+      opacity: 0.5;
+    }
+    .number {
+      color: #b4b2a9;
+    }
+  }
+
+  // 押した瞬間だけ：跳ね＋光り
+  &.celebrate {
+    animation: counter-glow 0.9s ease;
+    .icon {
+      animation: coin-pop 0.7s ease;
+    }
+  }
+
+  // ＋3coin のフロートテキスト（JSで差し込む要素）
+  .coin-float {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    color: #f6df0f;
+    @include wt800;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 30;
+
+    @include pc {
+      font-size: p(18);
+    }
+
+    @include sp {
+      font-size: smi(16, 18);
+    }
+
+    &.run {
+      animation: float-up 1.4s ease forwards;
+    }
+  }
+}
+
+@keyframes coin-pop {
+  0% {
+    transform: scale(1) rotate(0);
+  }
+  30% {
+    transform: scale(1.5) rotate(-15deg);
+  }
+  55% {
+    transform: scale(0.9) rotate(10deg);
+  }
+  75% {
+    transform: scale(1.2) rotate(-4deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes counter-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(246, 144, 100, 0);
+  }
+  40% {
+    box-shadow: 0 0 0 6px rgba(246, 144, 100, 0.35);
+  }
+  100% {
+    box-shadow: 0 0 0 12px rgba(246, 144, 100, 0);
+  }
+}
+
+@keyframes float-up {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0) scale(0.7);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(-50%, -14px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -52px) scale(1);
+  }
+}
 
 #sac-latest-message {
   font-size: 0px !important;
@@ -777,7 +1126,6 @@
 
 /* group_aユーザーにはgroup_bとgroup_cのメッセージを非表示 */
 .group_a_user {
-
   .group_b,
   .group_c {
     display: none;
@@ -786,7 +1134,6 @@
 
 /* group_bユーザーにはgroup_aとgroup_cのメッセージを非表示 */
 .group_b_user {
-
   .group_a,
   .group_c {
     display: none;
@@ -795,7 +1142,6 @@
 
 /* group_cユーザーにはgroup_aとgroup_bのメッセージを非表示 */
 .group_c_user {
-
   .group_a,
   .group_b {
     display: none;
@@ -816,9 +1162,6 @@
     opacity: 1;
   }
 }
-
-
-
 
 // // 他のページに新着メッセージ表示させるとき
 // #simple-ajax-chat{

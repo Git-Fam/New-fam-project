@@ -38,7 +38,7 @@
       display: flex;
 
       .icon {
-        @include imgContain("bot.png");
+        @include imgContain("bot.webp");
 
         @include pc {
           width: p(27);
@@ -176,7 +176,7 @@
       }
 
       .icon {
-        @include imgContain("staff-icon.png");
+        @include imgContain("staff-icon.webp");
 
         @include pc {
           width: p(27);

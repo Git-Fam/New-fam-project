@@ -1,0 +1,25 @@
+@use "../../global"as *;
+@use "../globalCooperator-2"as *;
+
+/* -----------------------
+  quiz
+----------------------- */
+
+
+.hdq-options-check .hdq_toggle:before {
+  // background: #3c8083 !important;
+}
+
+.hdq-options-check input[type="checkbox"]:checked+.hdq_toggle:before {
+  background: #5fc7ca !important;
+}
+
+
+.hdq_quiz_wrapper .hdq_button {
+  &.hdq_next_button ,&.hdq_finsh_button{
+    background: #36c544 !important;
+  }
+  &.hdq_prev_button{
+    background: #a3a0a0 !important;
+  }
+}

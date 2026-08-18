@@ -15,8 +15,8 @@ function register_news_post_type()
       'show_in_rest' => true,
       'supports' => array(
         'title',
-        // 'editor',
-        // 'thumbnail',
+        'editor',
+        'thumbnail',
         'revisions'
       ),
     )

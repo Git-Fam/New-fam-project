@@ -23,11 +23,19 @@ function force_logout_if_date_changed()
         $current_timestamp = current_time('timestamp');
 
         if ($last_login_timestamp && ($current_timestamp - $last_login_timestamp) >= $normal_day) {
-            // 20秒経過していたら強制ログアウト
-            wp_logout();
-            wp_redirect(home_url('/login')); // ログアウト後にリダイレクトするURL
-            exit;
+            // 強制ログアウトを一時的に無効化（デバッグ用）
+            error_log('=== Force Logout Triggered ===');
+            error_log('User ID: ' . $user_id);
+            error_log('Last Login: ' . date('Y-m-d H:i:s', $last_login_timestamp));
+            error_log('Current Time: ' . date('Y-m-d H:i:s', $current_timestamp));
+            error_log('Time Difference: ' . ($current_timestamp - $last_login_timestamp) . ' seconds');
+
+            // 強制ログアウトをコメントアウト
+            // wp_logout();
+            // wp_redirect(home_url('/login')); // ログアウト後にリダイレクトするURL
+            // exit;
         }
     }
 }
-add_action('init', 'force_logout_if_date_changed');
+// 強制ログアウト機能を一時的に無効化（デバッグ用）
+// add_action('init', 'force_logout_if_date_changed');

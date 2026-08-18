@@ -101,7 +101,7 @@
       translate: -50% -50%;
       width: 100%;
       height: 100%;
-      @include imgCover("log-board/continuous-board-wrap.png");
+      @include imgCover("log-board/continuous-board-wrap.webp");
       background-position: center top;
       z-index: 3;
       mix-blend-mode: plus-lighter;
@@ -428,7 +428,7 @@
 
               .flash-img {
                 aspect-ratio: 167/180;
-                @include imgContain("log-board/log-board-item-highlight.png");
+                @include imgContain("log-board/log-board-item-highlight.webp");
                 position: absolute;
                 top: 50%;
                 left: 50%;
@@ -521,7 +521,7 @@
             translate: -50% -50%;
             width: 100%;
             height: 100%;
-            @include imgCover("log-board/continuous-board-wrap.png");
+            @include imgCover("log-board/continuous-board-wrap.webp");
             background-position: center top;
             z-index: 1;
             mix-blend-mode: plus-lighter;
@@ -619,7 +619,7 @@
                 position: relative;
                 z-index: 3;
                 aspect-ratio: 301/67;
-                @include imgContain("badge-month.png");
+                @include imgContain("badge-month.webp");
 
                 @include pc {
                   width: p(301);
@@ -651,7 +651,7 @@
               }
 
               .img--coin {
-                @include imgContain("log-board/log-board-item-02.png");
+                @include imgContain("log-board/log-board-item-02.webp");
                 aspect-ratio: 1/1;
                 border-radius: 50%;
                 background-color: #fff;

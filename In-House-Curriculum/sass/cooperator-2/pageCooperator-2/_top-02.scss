@@ -34,7 +34,7 @@
   }
 
   .butterfly{
-    @include imgContain("top-butterfly01.png");
+    @include imgContain("top-butterfly01.webp");
     position: absolute;
     z-index: 300;
     @include pc{
@@ -59,7 +59,7 @@
   .tree{
     .tree04{
       position: absolute;
-      @include imgContain("top-tree04.jpg");
+      @include imgContain("top-tree04.webp");
       @include pc{
         width: 886px;
         height: 1094px;
@@ -71,7 +71,7 @@
 
   .grass{
     .grass03{
-      @include imgCover("top-grass03.jpg");
+      @include imgCover("top-grass03.webp");
       @include pc{
         width: 942px;
         height: 200px;
