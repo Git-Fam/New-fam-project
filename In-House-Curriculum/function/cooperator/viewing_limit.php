@@ -132,7 +132,7 @@ function user_can_view_post($user_id, $post_id) {
    * ・「現在ログインしているユーザー」の状態のみを信用する
    * ・有料会員（レベルID >= 2）は常に閲覧可能
    */
-  if (function_exists('SwpmMemberUtils')) {
+  if (class_exists('SwpmMemberUtils')) {
 
       $current_user_id = get_current_user_id();
 

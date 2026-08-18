@@ -407,7 +407,7 @@ get_header();
                 </div>
 
             </div>
-            <a class="logout--button" href="?swpm-logout=true">ログアウト</a>
+            <a class="logout--button" href="<?php echo esc_url(wp_logout_url(add_query_arg('swpm-logout', 'true', home_url('/login')))); ?>">ログアウト</a>
         </div>
 
         <!-- メニュー展開時 -->
