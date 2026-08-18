@@ -2034,6 +2034,26 @@
         }
 
         .timeline-wrap {
+          @include pc {
+            max-height: calc(80svh - #{p(120)});
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding-right: p(4);
+            scrollbar-gutter: stable;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+          }
+
+          @include sp {
+            max-height: calc(80svh - 120px);
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding-right: 4px;
+            scrollbar-gutter: stable;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+          }
+
           .timeline {
             // グレーの帯背景は撤去
             color: $F-F1FCD4;
@@ -2046,7 +2066,7 @@
               font-size: p(10);
               width: p(165);
               height: fit-content;
-              padding: p(15) p(10);
+              padding: p(15) p(10) p(22);
               margin-top: p(23);
               line-height: 1.5;
             }
@@ -2055,7 +2075,7 @@
               font-size: 10px;
               width: 165px;
               height: fit-content;
-              padding: 15px 10px;
+              padding: 15px 10px 22px;
               margin-top: 23px;
               line-height: 1.5;
               gap: 8px;
