@@ -40,12 +40,12 @@
     </div>
     <h2 class="TL">
       <picture class="front_kv--slide slide-01">
-        <source srcset="<?php echo get_template_directory_uri(); ?>/img/front/front-kv-pc.webp" media="(min-width: 768px)">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-kv-sp.webp" alt="学ぶことは、心を磨くこと">
-      </picture>
-      <picture class="front_kv--slide slide-02">
         <source srcset="<?php echo get_template_directory_uri(); ?>/img/front/front-kv-pc01.webp" media="(min-width: 768px)">
         <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-kv-sp01.webp" alt="学ぶことは、心を磨くこと">
+      </picture>
+      <picture class="front_kv--slide slide-02">
+        <source srcset="<?php echo get_template_directory_uri(); ?>/img/front/front-kv-pc02.webp" media="(min-width: 768px)">
+        <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-kv-sp02.webp" alt="学ぶことは、心を磨くこと">
       </picture>
     </h2>
   </section>
