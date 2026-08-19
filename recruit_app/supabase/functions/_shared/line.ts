@@ -74,12 +74,6 @@ export function buildLineMessages(diagnosis: Record<string, any>, appSettings: R
         `紹介可能求人 ${jobCount}件\n` +
         `マッチ度90%以上 ${highMatchCount}件\n` +
         (jobs ? `向いている仕事: ${jobs}` : "")
-    },
-    {
-      type: "text",
-      text:
-        "希望条件を教えてください。\n" +
-        "1. 勤務地\n2. 転職時期\n3. 経験\n4. 希望職種\n5. 希望年収"
     }
   ];
 }
