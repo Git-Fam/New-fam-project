@@ -10,6 +10,17 @@ Template Path: pages/
 <?php get_template_part('./inc/head'); ?>
 <?php get_template_part('./inc/header'); ?>
 
+<?php
+if (!function_exists('recruit_kses')) {
+  function recruit_kses($t)
+  {
+    if (!is_string($t)) return '';
+    $s = html_entity_decode($t, ENT_QUOTES, 'UTF-8');
+    return wp_kses_post(nl2br($s));
+  }
+}
+?>
+
 
 <!-- 独自ページ --start -->
 <div class="page-recruit">
@@ -133,12 +144,12 @@ Template Path: pages/
                   if (!empty($recruit_items) && is_array($recruit_items)) :
                       foreach ($recruit_items as $item) :
                   ?>
-                      <li>
+                      <li class="item--inner--item">
                           <div class="ttl">
-                              <h4 class="TL"><?php echo esc_html($item['item_title']); ?></h4>
+                              <h4 class="TL"><?php echo recruit_kses($item['item_title']); ?></h4>
                           </div>
                           <div class="txt">
-                              <p class="TX"><?php echo nl2br(esc_html($item['item_txt'])); ?></p>
+                              <div class="TX"><?php echo recruit_kses($item['item_txt']); ?></div>
                           </div>
                       </li>
                   <?php

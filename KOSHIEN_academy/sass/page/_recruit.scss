@@ -395,7 +395,7 @@
                     padding: s(6) s(20) s(48);
                   }
 
-                  li {
+                  .item--inner--item {
                     display: flex;
                     border-top: solid #E0E0E0;
 
@@ -494,6 +494,24 @@
 
                           @include sp {
                             font-size: s(13);
+                          }
+                        }
+
+                        .TX-height{
+                          margin-top: -1.2em;
+                          display: block;
+                        }
+
+                        ul {
+  
+                          br {
+                            display: none;
+                          }
+
+                          li {
+                              display: inline-block;
+                              text-indent: -1em;
+                              padding-left: 2em;
                           }
                         }
 
