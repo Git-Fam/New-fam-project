@@ -212,7 +212,7 @@
       // @include imgCover("about/about_history-bg-pc.webp");
       // padding: pmin(90) 0 0;
       // padding: pmin(90) 0 pmin(666);
-      padding: pmin(90) 0 p(666);
+      padding: pmin(125) 0 p(666);
       // height:min(p(2385) , 2800px);
     }
 
@@ -254,7 +254,7 @@
       margin-inline: auto;
 
       @include pc {
-        margin-top: pmin(89);
+        margin-top: pmin(73);
         width: pmin(946);
       }
 
@@ -268,7 +268,7 @@
       justify-content: center;
 
       @include pc {
-        margin-top: pmin(78);
+        margin-top: pmin(70);
         gap: pmin(67);
       }
 
