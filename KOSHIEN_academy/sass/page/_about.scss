@@ -210,7 +210,10 @@
 
     @include pc {
       // @include imgCover("about/about_history-bg-pc.webp");
-      padding: pmin(90) 0 pmin(666);
+      // padding: pmin(90) 0 0;
+      // padding: pmin(90) 0 pmin(666);
+      padding: pmin(90) 0 p(666);
+      // height:min(p(2385) , 2800px);
     }
 
     @include sp {
@@ -656,22 +659,22 @@
           }
 
 
-          &:first-child{
+          &:first-child {
 
-            .txt{
+            .txt {
 
-              &::before{
+              &::before {
                 content: "";
                 display: block;
                 @include imgContain("about/new-icon.webp");
 
 
-                @include pc{
+                @include pc {
                   width: pmin(35);
                   height: pmin(16);
                 }
 
-                @include sp{
+                @include sp {
                   width: s(35);
                   height: s(16);
                 }
