@@ -15,6 +15,106 @@ import {
   pushLineMessages
 } from "../_shared/line.ts";
 
+const LINKED_DIAGNOSIS_RETENTION_DAYS = 180;
+
+type AppUser = {
+  id: string;
+  internal_user_id: string | null;
+  first_diagnosis_id?: string | null;
+};
+
+function createLinkedDiagnosisExpiresAt() {
+  return new Date(
+    Date.now() + LINKED_DIAGNOSIS_RETENTION_DAYS * 24 * 60 * 60 * 1000
+  ).toISOString();
+}
+
+async function ensureAppUser(
+  supabase: ReturnType<typeof getSupabaseClient>,
+  profile: { userId: string; displayName?: string | null },
+  lineState: Record<string, string | null>,
+  diagnosisId: string
+): Promise<AppUser> {
+  const now = new Date().toISOString();
+  const { data: existing, error: lookupError } = await supabase
+    .from("app_users")
+    .select("id, internal_user_id, first_diagnosis_id")
+    .eq("line_user_id", profile.userId)
+    .maybeSingle();
+
+  if (lookupError) throw lookupError;
+
+  if (existing?.id) {
+    const { data, error } = await supabase
+      .from("app_users")
+      .update({
+        display_name: profile.displayName || null,
+        first_diagnosis_id: existing.first_diagnosis_id || diagnosisId,
+        last_seen_at: now,
+        updated_at: now
+      })
+      .eq("id", existing.id)
+      .select("id, internal_user_id, first_diagnosis_id")
+      .single();
+
+    if (error) throw error;
+    return data;
+  }
+
+  const { data, error } = await supabase
+    .from("app_users")
+    .insert({
+      line_user_id: profile.userId,
+      display_name: profile.displayName || null,
+      initial_utm_source: lineState.utm_source || null,
+      initial_utm_medium: lineState.utm_medium || null,
+      initial_utm_campaign: lineState.utm_campaign || null,
+      initial_device_type: lineState.device_type || null,
+      initial_page_path: lineState.page_path || null,
+      first_diagnosis_id: diagnosisId,
+      first_seen_at: now,
+      last_seen_at: now,
+      created_at: now,
+      updated_at: now
+    })
+    .select("id, internal_user_id, first_diagnosis_id")
+    .single();
+
+  if (error) throw error;
+  return data;
+}
+
+async function saveUserDiagnosisRecord(
+  supabase: ReturnType<typeof getSupabaseClient>,
+  params: {
+    diagnosisId: string;
+    userId: string;
+    lineUserId: string;
+    context: Record<string, string | null>;
+  }
+) {
+  const { data, error } = await supabase.rpc("upsert_user_diagnosis_record", {
+    p_diagnosis_id: params.diagnosisId,
+    p_user_id: params.userId,
+    p_line_user_id: params.lineUserId,
+    p_visitor_id: params.context.visitor_id || null,
+    p_session_id: params.context.session_id || null,
+    p_funnel_id: params.context.funnel_id || null,
+    p_utm_source: params.context.utm_source || null,
+    p_utm_medium: params.context.utm_medium || null,
+    p_utm_campaign: params.context.utm_campaign || null,
+    p_device_type: params.context.device_type || null,
+    p_page_path: params.context.page_path || null
+  });
+
+  if (error) {
+    console.warn("user diagnosis record upsert failed", error);
+    return null;
+  }
+
+  return data as string | null;
+}
+
 Deno.serve(async (request: Request) => {
   const options = handleOptions(request);
   if (options) return options;
@@ -57,12 +157,14 @@ Deno.serve(async (request: Request) => {
       console.warn("LINE friendship status fetch failed", friendshipError);
     }
     const diagnosisId = lineState.diagnosis_id;
+    const appUser = await ensureAppUser(supabase, profile, lineState, diagnosisId);
     let lineConnectionId: string | null = null;
 
     try {
       const { data: lineConnection, error: lineConnectionError } = await supabase
         .from("line_connections")
         .insert({
+          user_id: appUser.id,
           line_user_id: profile.userId,
           last_used_at: new Date().toISOString()
         })
@@ -78,8 +180,10 @@ Deno.serve(async (request: Request) => {
     await supabase
       .from("diagnoses")
       .update({
+        user_id: appUser.id,
         line_user_id: profile.userId,
-        status: "linked"
+        status: "linked",
+        expires_at: createLinkedDiagnosisExpiresAt()
       })
       .eq("id", diagnosisId);
 
@@ -97,6 +201,7 @@ Deno.serve(async (request: Request) => {
         deviceType: lineState.device_type || null,
         pagePath: lineState.page_path || null,
         payload: {
+          internalUserId: appUser.internal_user_id || null,
           displayName: profile.displayName || null,
           friendFlag,
           friendshipStatusChanged
@@ -114,6 +219,13 @@ Deno.serve(async (request: Request) => {
       .single();
     if (diagnosisError || !diagnosis) throw diagnosisError;
 
+    const userDiagnosisRecordId = await saveUserDiagnosisRecord(supabase, {
+      diagnosisId,
+      userId: appUser.id,
+      lineUserId: profile.userId,
+      context: lineState
+    });
+
     const { data: appSettings } = await supabase
       .from("app_settings")
       .select("job_count, high_match_count")
@@ -126,7 +238,8 @@ Deno.serve(async (request: Request) => {
       .from("diagnoses")
       .update({
         status: "sent",
-        line_sent_at: new Date().toISOString()
+        line_sent_at: new Date().toISOString(),
+        expires_at: createLinkedDiagnosisExpiresAt()
       })
       .eq("id", diagnosisId);
 
@@ -148,7 +261,12 @@ Deno.serve(async (request: Request) => {
         utmCampaign: lineState.utm_campaign || null,
         deviceType: lineState.device_type || null,
         pagePath: lineState.page_path || null,
-        payload: { resultType: diagnosis.result_type, friendFlag },
+        payload: {
+          resultType: diagnosis.result_type,
+          internalUserId: appUser.internal_user_id || null,
+          userDiagnosisRecordId,
+          friendFlag
+        },
         request
       });
     } catch (eventError) {

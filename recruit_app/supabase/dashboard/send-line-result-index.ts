@@ -7,6 +7,14 @@ const corsHeaders = {
   "Access-Control-Allow-Methods": "GET, POST, OPTIONS"
 };
 
+const LINKED_DIAGNOSIS_RETENTION_DAYS = 180;
+
+function createLinkedDiagnosisExpiresAt() {
+  return new Date(
+    Date.now() + LINKED_DIAGNOSIS_RETENTION_DAYS * 24 * 60 * 60 * 1000
+  ).toISOString();
+}
+
 function jsonResponse(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), {
     status,
@@ -137,6 +145,103 @@ async function pushLineMessages(lineUserId: string, messages: unknown[]) {
   if (!response.ok) throw new Error(await response.text());
 }
 
+type AppUser = {
+  id: string;
+  internal_user_id: string | null;
+};
+
+async function ensureAppUserByLineId(
+  supabase: ReturnType<typeof createClient>,
+  lineUserId: string,
+  currentUserId: string | null = null
+): Promise<AppUser> {
+  const now = new Date().toISOString();
+
+  if (currentUserId) {
+    const { data, error } = await supabase
+      .from("app_users")
+      .update({
+        last_seen_at: now,
+        updated_at: now
+      })
+      .eq("id", currentUserId)
+      .select("id, internal_user_id")
+      .maybeSingle();
+
+    if (error) throw error;
+    if (data?.id) return data;
+  }
+
+  const { data: existing, error: lookupError } = await supabase
+    .from("app_users")
+    .select("id, internal_user_id")
+    .eq("line_user_id", lineUserId)
+    .maybeSingle();
+
+  if (lookupError) throw lookupError;
+
+  if (existing?.id) {
+    const { data, error } = await supabase
+      .from("app_users")
+      .update({
+        last_seen_at: now,
+        updated_at: now
+      })
+      .eq("id", existing.id)
+      .select("id, internal_user_id")
+      .single();
+
+    if (error) throw error;
+    return data;
+  }
+
+  const { data, error } = await supabase
+    .from("app_users")
+    .insert({
+      line_user_id: lineUserId,
+      first_seen_at: now,
+      last_seen_at: now,
+      created_at: now,
+      updated_at: now
+    })
+    .select("id, internal_user_id")
+    .single();
+
+  if (error) throw error;
+  return data;
+}
+
+async function saveUserDiagnosisRecord(
+  supabase: ReturnType<typeof createClient>,
+  params: {
+    diagnosisId: string;
+    userId: string;
+    lineUserId: string;
+    context: Record<string, string | null>;
+  }
+) {
+  const { data, error } = await supabase.rpc("upsert_user_diagnosis_record", {
+    p_diagnosis_id: params.diagnosisId,
+    p_user_id: params.userId,
+    p_line_user_id: params.lineUserId,
+    p_visitor_id: params.context.visitorId || null,
+    p_session_id: params.context.sessionId || null,
+    p_funnel_id: params.context.funnelId || null,
+    p_utm_source: params.context.utmSource || null,
+    p_utm_medium: params.context.utmMedium || null,
+    p_utm_campaign: params.context.utmCampaign || null,
+    p_device_type: params.context.deviceType || null,
+    p_page_path: params.context.pagePath || null
+  });
+
+  if (error) {
+    console.warn("user diagnosis record upsert failed", error);
+    return null;
+  }
+
+  return data as string | null;
+}
+
 async function resolveLineConnection(
   supabase: ReturnType<typeof createClient>,
   body: Record<string, string | null>
@@ -144,13 +249,14 @@ async function resolveLineConnection(
   if (body.lineConnectionId) {
     const { data, error } = await supabase
       .from("line_connections")
-      .select("id, line_user_id")
+      .select("id, line_user_id, user_id")
       .eq("id", body.lineConnectionId)
       .maybeSingle();
 
     if (!error && data?.line_user_id) {
       return {
         lineUserId: data.line_user_id,
+        userId: data.user_id || null,
         lineConnectionId: data.id,
         source: "line_connection"
       };
@@ -163,7 +269,7 @@ async function resolveLineConnection(
 
   const { data, error } = await supabase
     .from("diagnoses")
-    .select("id, line_user_id, status")
+    .select("id, line_user_id, user_id, status")
     .eq("id", body.linkedDiagnosisId)
     .maybeSingle();
 
@@ -172,6 +278,7 @@ async function resolveLineConnection(
 
   return {
     lineUserId: data.line_user_id,
+    userId: data.user_id || null,
     lineConnectionId: null,
     source: "diagnosis"
   };
@@ -201,11 +308,19 @@ Deno.serve(async (request: Request) => {
       return jsonResponse({ error: "Saved LINE connection was not found" }, 404);
     }
 
+    const appUser = await ensureAppUserByLineId(
+      supabase,
+      connection.lineUserId,
+      connection.userId
+    );
+
     await supabase
       .from("diagnoses")
       .update({
+        user_id: appUser.id,
         line_user_id: connection.lineUserId,
-        status: "linked"
+        status: "linked",
+        expires_at: createLinkedDiagnosisExpiresAt()
       })
       .eq("id", diagnosisId);
 
@@ -215,6 +330,13 @@ Deno.serve(async (request: Request) => {
       .eq("id", diagnosisId)
       .single();
     if (diagnosisError || !diagnosis) throw diagnosisError;
+
+    const userDiagnosisRecordId = await saveUserDiagnosisRecord(supabase, {
+      diagnosisId,
+      userId: appUser.id,
+      lineUserId: connection.lineUserId,
+      context: body
+    });
 
     const { data: appSettings } = await supabase
       .from("app_settings")
@@ -228,14 +350,18 @@ Deno.serve(async (request: Request) => {
       .from("diagnoses")
       .update({
         status: "sent",
-        line_sent_at: new Date().toISOString()
+        line_sent_at: new Date().toISOString(),
+        expires_at: createLinkedDiagnosisExpiresAt()
       })
       .eq("id", diagnosisId);
 
     if (connection.lineConnectionId) {
       await supabase
         .from("line_connections")
-        .update({ last_used_at: new Date().toISOString() })
+        .update({
+          user_id: appUser.id,
+          last_used_at: new Date().toISOString()
+        })
         .eq("id", connection.lineConnectionId);
     }
 
@@ -254,6 +380,8 @@ Deno.serve(async (request: Request) => {
         pagePath: body.pagePath || null,
         payload: {
           resultType: diagnosis.result_type,
+          internalUserId: appUser.internal_user_id || null,
+          userDiagnosisRecordId,
           reusedLineConnection: true,
           source: connection.source
         },
@@ -267,6 +395,8 @@ Deno.serve(async (request: Request) => {
       status: "sent",
       diagnosisId,
       lineConnectionId: connection.lineConnectionId,
+      internalUserId: appUser.internal_user_id || null,
+      userDiagnosisRecordId,
       source: connection.source
     });
   } catch (error) {

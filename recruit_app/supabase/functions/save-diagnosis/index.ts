@@ -37,6 +37,14 @@ Deno.serve(async (request: Request) => {
         secondary_axis: body.secondaryAxis,
         result_type: body.resultType,
         result_payload: body.resultPayload || {},
+        visitor_id: body.visitorId || null,
+        session_id: body.sessionId || null,
+        funnel_id: body.funnelId || null,
+        utm_source: body.utmSource || null,
+        utm_medium: body.utmMedium || null,
+        utm_campaign: body.utmCampaign || null,
+        device_type: body.deviceType || null,
+        page_path: body.pagePath || null,
         status: body.status || "waiting_for_line",
         expires_at: expiresAt
       })
