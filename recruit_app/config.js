@@ -4,3 +4,6 @@ window.CAREER_APP_CONFIG = {
   lineRedirectUri: "",
   requireLineBeforeResult: false
 };
+
+
+

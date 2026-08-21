@@ -9,7 +9,7 @@ import {
   getCurrentComparisonCount,
   getDiagnosisCards,
   getResultKey,
-  loadAdminSettings
+  loadAdminSettings,
 } from "./data.js?v=20260807-100q-balanced-v2";
 
 const config = window.CAREER_APP_CONFIG || {};
@@ -20,7 +20,8 @@ function getLocalRuntimeSettings() {
     ...DEFAULT_SETTINGS,
     ...localSettings,
     requireLineBeforeResult:
-      Boolean(config.requireLineBeforeResult) || localSettings.requireLineBeforeResult
+      Boolean(config.requireLineBeforeResult) ||
+      localSettings.requireLineBeforeResult,
   };
 }
 
@@ -38,7 +39,7 @@ const GOOGLE_ANALYTICS_EVENTS = new Set([
   "line_login_success",
   "result_sent",
   "share_click",
-  "retry_click"
+  "retry_click",
 ]);
 
 const state = {
@@ -49,7 +50,7 @@ const state = {
   currentDiagnosis: null,
   funnelId: null,
   loggedResultViews: new Set(),
-  loggedJobsViews: new Set()
+  loggedJobsViews: new Set(),
 };
 
 const $ = (selector) => document.querySelector(selector);
@@ -99,7 +100,9 @@ function animateNumber({ duration, from, to, onUpdate }) {
 }
 
 function createId(prefix) {
-  const id = crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  const id = crypto.randomUUID
+    ? crypto.randomUUID()
+    : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
   return `${prefix}_${id}`;
 }
 
@@ -126,7 +129,7 @@ function captureUtmParams() {
   const current = {
     utmSource: params.get("utm_source") || "",
     utmMedium: params.get("utm_medium") || "",
-    utmCampaign: params.get("utm_campaign") || ""
+    utmCampaign: params.get("utm_campaign") || "",
   };
 
   if (current.utmSource || current.utmMedium || current.utmCampaign) {
@@ -171,12 +174,13 @@ function getAnalyticsContext(payload = {}) {
     visitorId: getOrCreateLocalId(STORAGE_KEYS.visitorId, "vis"),
     sessionId: getOrCreateSessionId(),
     funnelId: payload.funnelId || getCurrentFunnelId(),
-    resultType: payload.resultType || state.currentDiagnosis?.resultType || null,
+    resultType:
+      payload.resultType || state.currentDiagnosis?.resultType || null,
     utmSource: utm.utmSource || null,
     utmMedium: utm.utmMedium || null,
     utmCampaign: utm.utmCampaign || null,
     deviceType: getDeviceType(),
-    pagePath: `${window.location.pathname}${window.location.hash || ""}`
+    pagePath: `${window.location.pathname}${window.location.hash || ""}`,
   };
 }
 
@@ -195,7 +199,9 @@ function saveDraft(diagnosis) {
 
 function loadDraft() {
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEYS.diagnosisDraft) || "null");
+    return JSON.parse(
+      localStorage.getItem(STORAGE_KEYS.diagnosisDraft) || "null",
+    );
   } catch {
     return null;
   }
@@ -206,15 +212,18 @@ function saveLineConnection(connection) {
     STORAGE_KEYS.lineConnection,
     JSON.stringify({
       ...connection,
-      savedAt: new Date().toISOString()
-    })
+      savedAt: new Date().toISOString(),
+    }),
   );
 }
 
 function loadLineConnection() {
   try {
-    const connection = JSON.parse(localStorage.getItem(STORAGE_KEYS.lineConnection) || "null");
-    if (connection?.lineConnectionId || connection?.diagnosisId) return connection;
+    const connection = JSON.parse(
+      localStorage.getItem(STORAGE_KEYS.lineConnection) || "null",
+    );
+    if (connection?.lineConnectionId || connection?.diagnosisId)
+      return connection;
   } catch {
     // Fall through to the legacy draft fallback below.
   }
@@ -224,7 +233,7 @@ function loadLineConnection() {
     return {
       diagnosisId: draft.diagnosisId,
       lineConnectionId: null,
-      lastSentDiagnosisId: draft.diagnosisId
+      lastSentDiagnosisId: draft.diagnosisId,
     };
   }
 
@@ -233,15 +242,21 @@ function loadLineConnection() {
 
 function pushLocalEvent(eventName, payload = {}) {
   const context = getAnalyticsContext(payload);
-  const events = JSON.parse(localStorage.getItem(STORAGE_KEYS.eventLog) || "[]");
+  const events = JSON.parse(
+    localStorage.getItem(STORAGE_KEYS.eventLog) || "[]",
+  );
   events.push({
     eventName,
     payload,
     ...context,
-    diagnosisId: state.currentDiagnosis?.diagnosisId || payload.diagnosisId || null,
-    createdAt: new Date().toISOString()
+    diagnosisId:
+      state.currentDiagnosis?.diagnosisId || payload.diagnosisId || null,
+    createdAt: new Date().toISOString(),
   });
-  localStorage.setItem(STORAGE_KEYS.eventLog, JSON.stringify(events.slice(-120)));
+  localStorage.setItem(
+    STORAGE_KEYS.eventLog,
+    JSON.stringify(events.slice(-120)),
+  );
 }
 
 function getFunctionsBaseUrl() {
@@ -255,7 +270,7 @@ async function callEdgeFunction(path, body) {
   const response = await fetch(`${baseUrl}/${path}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body)
+    body: JSON.stringify(body),
   });
 
   if (!response.ok) {
@@ -284,7 +299,8 @@ function applyRuntimeSettings(nextSettings) {
     ...DEFAULT_SETTINGS,
     ...nextSettings,
     requireLineBeforeResult:
-      Boolean(config.requireLineBeforeResult) || Boolean(nextSettings.requireLineBeforeResult)
+      Boolean(config.requireLineBeforeResult) ||
+      Boolean(nextSettings.requireLineBeforeResult),
   };
   cards = getDiagnosisCards(settings);
   results = getConfiguredResults(settings);
@@ -307,13 +323,32 @@ function renderLandingMetrics() {
   const lpDuration = $("#lpDuration");
   if (lpDuration) lpDuration.textContent = `診断時間：約${durationMinutes}分`;
   const startButton = $("#startFromHero");
-  if (startButton) startButton.textContent = `診断スタート（約${durationMinutes}分）`;
-  $("#lpCompareCount").textContent = formatNumber(getCurrentComparisonCount(settings));
+  if (startButton)
+    startButton.textContent = `診断スタート（約${durationMinutes}分）`;
+  const compareEl = $("#lpCompareCount");
+  const compareTarget = getCurrentComparisonCount(settings);
+  if (compareEl) {
+    if (!compareEl.dataset.counted) {
+      compareEl.dataset.counted = "1";
+      animateNumber({
+        duration: 1200,
+        from: 0,
+        to: compareTarget,
+        onUpdate: (v) => {
+          compareEl.textContent = formatNumber(v);
+        },
+      });
+    } else {
+      compareEl.textContent = formatNumber(compareTarget);
+    }
+  }
   $("#lpJobCount").textContent = formatNumber(settings.jobCount);
 }
 
 function renderComparisonMetrics() {
-  const currentComparisonCount = formatNumber(getCurrentComparisonCount(settings));
+  const currentComparisonCount = formatNumber(
+    getCurrentComparisonCount(settings),
+  );
   const lpCompareCount = $("#lpCompareCount");
   const compareCount = $("#compareCount");
   if (lpCompareCount) lpCompareCount.textContent = currentComparisonCount;
@@ -326,9 +361,12 @@ function startComparisonTicker() {
 }
 
 function logEvent(eventName, payload = {}) {
-  const rawDiagnosisId = state.currentDiagnosis?.diagnosisId || payload.diagnosisId || null;
+  const rawDiagnosisId =
+    state.currentDiagnosis?.diagnosisId || payload.diagnosisId || null;
   const diagnosisId =
-    rawDiagnosisId && String(rawDiagnosisId).startsWith("diag_") ? null : rawDiagnosisId;
+    rawDiagnosisId && String(rawDiagnosisId).startsWith("diag_")
+      ? null
+      : rawDiagnosisId;
   const context = getAnalyticsContext(payload);
   pushLocalEvent(eventName, payload);
   trackGoogleAnalyticsEvent(eventName);
@@ -336,16 +374,20 @@ function logEvent(eventName, payload = {}) {
     eventName,
     diagnosisId,
     ...context,
-    payload
+    payload,
   }).catch(() => {});
 }
 
 function trackGoogleAnalyticsEvent(eventName) {
-  if (!GOOGLE_ANALYTICS_EVENTS.has(eventName) || typeof window.gtag !== "function") return;
+  if (
+    !GOOGLE_ANALYTICS_EVENTS.has(eventName) ||
+    typeof window.gtag !== "function"
+  )
+    return;
 
   window.gtag("event", eventName, {
     event_category: "career_diagnosis",
-    transport_type: "beacon"
+    transport_type: "beacon",
   });
 }
 
@@ -360,8 +402,8 @@ function logDiagnosisProgress(payload = {}) {
     payload: {
       funnelId,
       totalQuestions: cards.length,
-      ...payload
-    }
+      ...payload,
+    },
   }).catch(() => {});
 }
 
@@ -386,7 +428,10 @@ function calculateMaxScores(cardList) {
 
   cardList.forEach((card) => {
     AXIS_ORDER.forEach((axis) => {
-      maxScores[axis] += Math.max(card.yesScores[axis] || 0, card.noScores[axis] || 0);
+      maxScores[axis] += Math.max(
+        card.yesScores[axis] || 0,
+        card.noScores[axis] || 0,
+      );
     });
   });
 
@@ -398,7 +443,7 @@ function calculateScoreRates(scores, maxScores) {
     AXIS_ORDER.map((axis) => {
       const max = maxScores[axis] || 1;
       return [axis, Math.round((scores[axis] / max) * 100)];
-    })
+    }),
   );
 }
 
@@ -423,7 +468,9 @@ function buildDiagnosis() {
   const expiresAt = new Date(now.getTime() + 24 * 60 * 60 * 1000);
 
   return {
-    diagnosisId: crypto.randomUUID ? `diag_${crypto.randomUUID()}` : `diag_${Date.now()}`,
+    diagnosisId: crypto.randomUUID
+      ? `diag_${crypto.randomUUID()}`
+      : `diag_${Date.now()}`,
     answers: state.answers,
     scores,
     maxScores,
@@ -438,7 +485,7 @@ function buildDiagnosis() {
     status: "waiting_for_line",
     savedToSupabase: false,
     createdAt: now.toISOString(),
-    expiresAt: expiresAt.toISOString()
+    expiresAt: expiresAt.toISOString(),
   };
 }
 
@@ -454,10 +501,10 @@ async function saveDiagnosis(diagnosis) {
     funnelId: diagnosis.funnelId,
     ...getAnalyticsContext({
       funnelId: diagnosis.funnelId,
-      resultType: diagnosis.resultType
+      resultType: diagnosis.resultType,
     }),
     status: "waiting_for_line",
-    expiresAt: diagnosis.expiresAt
+    expiresAt: diagnosis.expiresAt,
   };
 
   const remote = await callEdgeFunction("save-diagnosis", payload);
@@ -469,7 +516,7 @@ async function saveDiagnosis(diagnosis) {
     createdAt: remote.createdAt || diagnosis.createdAt,
     expiresAt: remote.expiresAt || diagnosis.expiresAt,
     savedToSupabase: true,
-    saveError: null
+    saveError: null,
   };
 }
 
@@ -494,7 +541,7 @@ async function startDiagnosis() {
     currentImageId: cards[0]?.id || null,
     lastAnsweredOrder: 0,
     lastAnsweredImageId: null,
-    funnelId
+    funnelId,
   });
   showScreen("swipe");
   renderSwipeCard();
@@ -511,39 +558,85 @@ function cardTemplate(card, index, isNext = false) {
       <div class="card-photo" style="background-image: url('${escapeHtml(card.image)}')"></div>
       <div class="card-shade"></div>
       <div class="card-content">
-        <div class="card-meta">${String(cardNumber).padStart(2, "0")} / ${cards.length}</div>
+        <div class="card-meta"># ${cardNumber}</div>
         <h2>${escapeHtml(card.question)}</h2>
       </div>
     </article>
   `;
 }
 
-function renderSwipeCard() {
+function updateSwipeProgressUI() {
   const progress = state.currentIndex / cards.length;
   $("#progressFill").style.transform = `scaleX(${progress})`;
-  $("#progressText").textContent = `${state.currentIndex + 1} / ${cards.length}`;
+  $("#progressText").textContent =
+    `${state.currentIndex + 1} / ${cards.length}`;
   const progressHint = $("#progressHint");
   if (progressHint) {
     const answeredRate = state.currentIndex / cards.length;
     progressHint.textContent =
       answeredRate >= 0.75
         ? "ラストスパート！"
-        : answeredRate >= 0.45
-          ? "半分まであと少し！"
-          : answeredRate >= 0.2
-            ? "いいペースです"
-            : "直感で選ぶだけ";
+        : answeredRate >= 0.51
+          ? "折り返し地点！"
+          : answeredRate >= 0.45
+            ? "半分まであと少し！"
+            : answeredRate >= 0.2
+              ? "いいペースです"
+              : "直感で選ぶだけ";
   }
+}
+
+function renderSwipeCard() {
+  updateSwipeProgressUI();
 
   const current = cards[state.currentIndex];
   const next = cards[state.currentIndex + 1];
   const stack = $("#cardStack");
-  stack.innerHTML = [next ? cardTemplate(next, state.currentIndex + 1, true) : "", cardTemplate(current, state.currentIndex)]
-    .join("");
+  stack.innerHTML = [
+    next ? cardTemplate(next, state.currentIndex + 1, true) : "",
+    cardTemplate(current, state.currentIndex),
+  ].join("");
 
   state.cardStartedAt = performance.now();
   bindCardGesture($(".swipe-card:not(.is-next)"));
   preloadCardImage(next);
+}
+
+// 回答後、後ろにスタンバイしていた次のカードをそのまま前面に昇格させる。
+// stack.innerHTML を作り直さないことで、is-next → 通常状態への
+// CSSトランジション（縮小・奥まった位置 → 等倍・手前）がそのまま効く。
+function promoteNextCard() {
+  const stack = $("#cardStack");
+
+  // 飛んでいった直前のカード（既に画面外 or 消えかけ）を除去
+  const spentCard = stack.querySelector(".swipe-card:not(.is-next)");
+  if (spentCard) spentCard.remove();
+
+  updateSwipeProgressUI();
+
+  const promoted = stack.querySelector(".swipe-card.is-next");
+  const upcoming = cards[state.currentIndex + 1];
+
+  if (promoted) {
+    // is-next を外した瞬間、CSSのtransitionで
+    // 「奥で待機 → 手前にせり出す」動きになる
+    promoted.classList.remove("is-next");
+  } else {
+    // 保険：is-nextが無ければ通常描画にフォールバック
+    renderSwipeCard();
+    return;
+  }
+
+  if (upcoming) {
+    stack.insertAdjacentHTML(
+      "afterbegin",
+      cardTemplate(upcoming, state.currentIndex + 1, true),
+    );
+  }
+
+  state.cardStartedAt = performance.now();
+  bindCardGesture(promoted);
+  preloadCardImage(upcoming);
 }
 
 function preloadCardImage(card) {
@@ -569,12 +662,17 @@ function bindCardGesture(card) {
     card.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) rotate(${rotate}deg)`;
     card.querySelector(".choice-yes").style.opacity = yesOpacity;
     card.querySelector(".choice-no").style.opacity = noOpacity;
+
+    // ▼ 追加：ある程度動かしたら色をかぶせる
+    card.classList.toggle("tint-yes", currentX > 40);
+    card.classList.toggle("tint-no", currentX < -40);
   };
 
   const resetCardPosition = () => {
     card.style.transform = "";
     card.querySelector(".choice-yes").style.opacity = "";
     card.querySelector(".choice-no").style.opacity = "";
+    card.classList.remove("tint-yes", "tint-no");
   };
 
   const cleanupPointerListeners = () => {
@@ -597,7 +695,8 @@ function bindCardGesture(card) {
   };
 
   const handlePointerMove = (event) => {
-    if (!dragging || state.isAnimating || event.pointerId !== activePointerId) return;
+    if (!dragging || state.isAnimating || event.pointerId !== activePointerId)
+      return;
     event.preventDefault();
     currentX = event.clientX - startX;
     currentY = event.clientY - startY;
@@ -614,7 +713,12 @@ function bindCardGesture(card) {
     if (state.isAnimating) return;
 
     if (Math.abs(currentX) > 92) {
-      chooseAnswer(currentX > 0 ? "yes" : "no", Math.sign(currentX), currentX, currentY);
+      chooseAnswer(
+        currentX > 0 ? "yes" : "no",
+        Math.sign(currentX),
+        currentX,
+        currentY,
+      );
       return;
     }
 
@@ -645,14 +749,22 @@ function bindCardGesture(card) {
     } catch {
       // Window-level listeners below still keep desktop dragging reliable.
     }
-    window.addEventListener("pointermove", handlePointerMove, { passive: false });
+    window.addEventListener("pointermove", handlePointerMove, {
+      passive: false,
+    });
     window.addEventListener("pointerup", endDrag);
     window.addEventListener("pointercancel", cancelDrag);
     window.addEventListener("blur", cancelDrag);
   });
 }
 
-function chooseAnswer(answer, direction = answer === "yes" ? 1 : -1, startX = 0, startY = 0) {
+function chooseAnswer(
+  answer,
+  direction = answer === "yes" ? 1 : -1,
+  startX = 0,
+  startY = 0,
+  fromButton = false,
+) {
   if (state.isAnimating || state.currentIndex >= cards.length) return;
   state.isAnimating = true;
 
@@ -666,7 +778,7 @@ function chooseAnswer(answer, direction = answer === "yes" ? 1 : -1, startX = 0,
     imageId: currentCard.id,
     answer,
     answerOrder,
-    responseTime: Math.round(responseTime)
+    responseTime: Math.round(responseTime),
   });
 
   if (answerOrder < cards.length) {
@@ -674,31 +786,51 @@ function chooseAnswer(answer, direction = answer === "yes" ? 1 : -1, startX = 0,
       currentOrder: answerOrder + 1,
       currentImageId: nextCard?.id || null,
       lastAnsweredOrder: answerOrder,
-      lastAnsweredImageId: currentCard.id
+      lastAnsweredImageId: currentCard.id,
     });
   }
 
   if (card) {
-    const targetX = direction * Math.max(window.innerWidth * 1.15, 520);
-    const targetY = startY * 0.7 - 24;
     card.querySelector(".choice-yes").style.opacity = answer === "yes" ? 1 : 0;
     card.querySelector(".choice-no").style.opacity = answer === "no" ? 1 : 0;
-    card.classList.add(answer === "yes" ? "fly-yes" : "fly-no");
-    card.style.transform = `translate3d(${targetX}px, ${targetY}px, 0) rotate(${direction * 24}deg)`;
+    card.classList.add(answer === "yes" ? "tint-yes" : "tint-no");
+
+    // 飛ぶ間だけ、枠のはみ出しを見せる
+    const shell = card.closest(".experience-shell");
+    if (shell) shell.classList.add("tossing");
+
+    if (fromButton) {
+      // ボタン：放物線でポイッと投げる
+      card.classList.add(answer === "yes" ? "toss-yes" : "toss-no");
+    } else {
+      // スワイプ：指の位置からそのまま飛ばす（元の動き）
+      const targetX = direction * Math.max(window.innerWidth * 1.15, 520);
+      const targetY = startY * 0.7 - 24;
+      card.style.transform = `translate3d(${targetX}px, ${targetY}px, 0) rotate(${direction * 24}deg)`;
+    }
   }
 
+  // ボタン押下時は toss アニメーション（0.7s）に合わせて待つが、
+  // スワイプ時はカードが .swipe-card の transform transition（230ms）で
+  // 素早く飛び去るだけなので、その分待機時間も短くして体感の遅れをなくす。
+  const exitDuration = fromButton ? 700 : 260;
+
   setTimeout(() => {
+    const shell = document.querySelector(".experience-shell.tossing");
+    if (shell) shell.classList.remove("tossing");
+
     state.currentIndex += 1;
-    $("#progressFill").style.transform = `scaleX(${state.currentIndex / cards.length})`;
 
     if (state.currentIndex >= cards.length) {
+      $("#progressFill").style.transform =
+        `scaleX(${state.currentIndex / cards.length})`;
       completeDiagnosis();
       return;
     }
 
     state.isAnimating = false;
-    renderSwipeCard();
-  }, 230);
+    promoteNextCard();
+  }, exitDuration);
 }
 
 async function completeDiagnosis() {
@@ -715,7 +847,10 @@ async function completeDiagnosis() {
     lastAnsweredImageId: lastAnswer?.imageId || null,
     resultType: diagnosis.resultType,
     funnelId: diagnosis.funnelId,
-    totalTime: diagnosis.answers.reduce((sum, answer) => sum + answer.responseTime, 0)
+    totalTime: diagnosis.answers.reduce(
+      (sum, answer) => sum + answer.responseTime,
+      0,
+    ),
   });
 
   renderAnalysisChecklist();
@@ -730,7 +865,7 @@ async function completeDiagnosis() {
     state.currentDiagnosis = {
       ...diagnosis,
       savedToSupabase: false,
-      saveError: error.message || "Supabase保存に失敗しました"
+      saveError: error.message || "Supabase保存に失敗しました",
     };
     saveDraft(state.currentDiagnosis);
   }
@@ -740,7 +875,9 @@ async function completeDiagnosis() {
 }
 
 function renderAnalysisChecklist() {
-  $("#compareCount").textContent = formatNumber(getCurrentComparisonCount(settings));
+  // $("#compareCount").textContent = formatNumber(
+  //   getCurrentComparisonCount(settings),
+  // );
   updateAnalysisProgress(0, "選択傾向を読み込み中");
   const resultButton = $("#analysisResultButton");
   if (resultButton) {
@@ -750,14 +887,61 @@ function renderAnalysisChecklist() {
   $$(".analysis-check li").forEach((item, index) => {
     item.style.animationDelay = `${index * 280 + 220}ms`;
   });
+
+  // オーブを分析中の状態に戻す（再診断対応）
+  const orb = document.querySelector(".analysis-orb");
+  const orbImage = document.querySelector(".analysis-orb .orb-image");
+  if (orb) orb.classList.remove("is-complete");
+  if (orbImage) {
+    orbImage.classList.remove("is-swapping-out");
+    orbImage.src = "./assets/figma/orb.png";
+  }
+
+  startRotator();
 }
 
 function showAnalysisResultButton() {
   updateAnalysisProgress(100, "診断結果の準備完了");
+
+  // 先にローテーションを止めてから文言を確定させる
+  stopRotator();
+
+  // 100%到達時の演出
+  const title = document.querySelector("#analysisTitle");
+  if (title) title.textContent = "あなたの選択を分析しました！";
+
+  const rotator = document.querySelector("#analysisRotator");
+  if (rotator) {
+    rotator.style.opacity = "1";
+    rotator.textContent = "Complete";
+  }
+
+  const label = document.querySelector("#analysisProgressLabel");
+  if (label) label.textContent = "診断結果の準備完了";
+
+  // オーブを完了状態に：縮んで消える→チェックオーブがポンと出る
+  const orb = document.querySelector(".analysis-orb");
+  const orbImage = document.querySelector(".analysis-orb .orb-image");
+  if (orb && orbImage) {
+    orbImage.classList.add("is-swapping-out");
+    setTimeout(() => {
+      orbImage.src = "./assets/figma/orbcheck.png";
+      orbImage.classList.remove("is-swapping-out");
+      orb.classList.add("is-complete"); // ここで pop-in と チェック登場
+    }, 320); // orbSwapOut と同じ長さ
+  }
+
   const resultButton = $("#analysisResultButton");
   if (!resultButton) return;
-  resultButton.hidden = false;
+  resultButton.hidden = false; // まず存在させる
   resultButton.disabled = false;
+
+  // 次のフレームでクラスを付けると transition が効く
+  requestAnimationFrame(() => {
+    const action = document.querySelector(".analysis-result-action");
+    if (action) action.classList.add("is-visible");
+  });
+
   resultButton.focus({ preventScroll: true });
 }
 
@@ -774,37 +958,37 @@ function updateAnalysisProgress(percent, label) {
   const labelText = $("#analysisProgressLabel");
 
   if (fill) fill.style.transform = `scaleX(${safePercent / 100})`;
-  if (percentText) percentText.textContent = `${safePercent}%`;
+  if (percentText) percentText.innerHTML = `${safePercent}<small>%</small>`;
   if (labelText && label) labelText.textContent = label;
 }
 
 async function runAnalysisProgress() {
   updateAnalysisProgress(0, "選択傾向を読み込み中");
   await animateNumber({
-    duration: 720,
+    duration: 1100,
     from: 0,
     to: 42,
-    onUpdate: (value) => updateAnalysisProgress(value, "選択傾向を分析中")
+    onUpdate: (value) => updateAnalysisProgress(value, "選択傾向を分析中"),
   });
   await animateNumber({
-    duration: 780,
+    duration: 1300,
     from: 42,
     to: 76,
-    onUpdate: (value) => updateAnalysisProgress(value, "思考パターンを照合中")
+    onUpdate: (value) => updateAnalysisProgress(value, "思考パターンを照合中"),
   });
   await animateNumber({
-    duration: 650,
+    duration: 1200,
     from: 76,
     to: 98,
-    onUpdate: (value) => updateAnalysisProgress(value, "類似タイプを比較中")
+    onUpdate: (value) => updateAnalysisProgress(value, "類似タイプを比較中"),
   });
   updateAnalysisProgress(98, "診断結果を作成中");
   await delay(3000); //98%で待たせる時間
   await animateNumber({
-    duration: 260,
+    duration: 600,
     from: 98,
     to: 100,
-    onUpdate: (value) => updateAnalysisProgress(value, "診断結果の準備完了")
+    onUpdate: (value) => updateAnalysisProgress(value, "診断結果の準備完了"),
   });
   await delay(160);
 }
@@ -827,6 +1011,37 @@ function renderAxisBars(diagnosis) {
     .join("");
 }
 
+function setupScrollReveal() {
+  // 対象：結果画面の主要セクション
+  const targets = document.querySelectorAll(
+    ".result-section, .result-share-panel, .jobs-hit-header, .match-job-list, .line-lead, .result-offer-card > .line-button, .result-offer-card > .line-note",
+  );
+  if (!targets.length) return;
+
+  // 対応していない環境ではそのまま表示
+  if (!("IntersectionObserver" in window)) {
+    targets.forEach((el) => el.classList.add("is-revealed"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-revealed");
+          observer.unobserve(entry.target); // 一度出たら監視解除
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -40px 0px" },
+  );
+
+  targets.forEach((el) => {
+    el.classList.add("reveal-on-scroll");
+    observer.observe(el);
+  });
+}
+
 function renderResult() {
   const diagnosis = state.currentDiagnosis || loadDraft();
   if (!diagnosis) {
@@ -845,7 +1060,7 @@ function renderResult() {
   $("#resultType").textContent = result.name;
   $("#resultCopy").textContent = result.catchCopy;
   $("#resultDescription").textContent = result.description;
-  $("#sameTypePercent").textContent = `${result.percent || 8}%`;
+  $("#sameTypePercent").textContent = `${result.percent || 8}`;
   $("#strengthList").innerHTML = result.strengths
     .slice(0, 5)
     .map((strength) => `<li>${escapeHtml(strength)}</li>`)
@@ -868,7 +1083,8 @@ function renderResult() {
     .join("");
   $("#axisBars").innerHTML = renderAxisBars(diagnosis);
   if (diagnosis.savedToSupabase) {
-    $("#saveNotice").textContent = `Supabaseへ保存済み: ${diagnosis.diagnosisId}`;
+    $("#saveNotice").textContent =
+      `Supabaseへ保存済み: ${diagnosis.diagnosisId}`;
   } else if (diagnosis.saveError) {
     $("#saveNotice").textContent = `Supabase保存失敗: ${diagnosis.saveError}`;
   } else {
@@ -877,26 +1093,77 @@ function renderResult() {
   renderResultOffer(diagnosis);
 
   showScreen("result");
+  setupScrollReveal();
   if (!state.loggedResultViews.has(diagnosis.funnelId)) {
     state.loggedResultViews.add(diagnosis.funnelId);
     logEvent("result_view", {
       diagnosisId: diagnosis.diagnosisId,
       funnelId: diagnosis.funnelId,
-      resultType: diagnosis.resultType
+      resultType: diagnosis.resultType,
     });
   }
 }
 
+function renderMatchJobCards() {
+  const container = $("#matchJobList");
+  if (!container) return;
+
+  const roles = [
+    "コンテンツプロデューサー",
+    "クリエイティブディレクター",
+    "SNSコンテンツプランナー",
+    "ブランドデザイナー",
+    "動画クリエイター",
+    "UXデザイナー",
+    "アートディレクター",
+    "コピーライター",
+    "PRプランナー",
+    "映像ディレクター",
+    "Webデザイナー",
+    "企画プロデューサー",
+  ];
+
+  // ランダムに4件選ぶ
+  const shuffled = [...roles].sort(() => Math.random() - 0.5).slice(0, 4);
+
+  // マッチ度は90〜99%のランダム、降順に並べる
+  const matches = shuffled
+    .map(() => 90 + Math.floor(Math.random() * 10))
+    .sort((a, b) => b - a);
+
+  container.innerHTML = shuffled
+    .map(
+      (role, i) => `
+      <div class="match-job-card" data-card-index="${i}">
+        <p class="match-job-card-match">MATCH ${matches[i]}%</p>
+        <p class="match-job-card-role">${escapeHtml(role)}</p>
+      </div>`,
+    )
+    .join("");
+}
+
 function renderResultOffer(diagnosis) {
   const hasLineConnection = Boolean(loadLineConnection());
-  const lineCtaLabel = hasLineConnection ? "LINEで結果を受け取る" : "LINEで結果と求人を見る";
+  const lineCtaLabel = hasLineConnection
+    ? "LINEで結果を受け取る"
+    : "友だち追加で今すぐ結果を見る";
 
   $("#jobCount").textContent = formatNumber(settings.jobCount);
-  $("#highMatchCount").textContent = formatNumber(settings.highMatchCount);
-  $("#jobLeadTitle").textContent = "あなたに合う求人が見つかりました";
-  $("#jobLeadCopy").textContent = hasLineConnection
-    ? "LINE連携済みです。タップすると新しい診断結果をLINEに送信します。"
-    : "特性分析から高マッチ度の候補を厳選";
+  const highMatch = $("#highMatchCount");
+  if (highMatch) highMatch.textContent = formatNumber(settings.highMatchCount);
+
+  // LINE誘導のタイプ名・件数
+  const leadJobCount = $("#lineLeadJobCount");
+  if (leadJobCount) leadJobCount.textContent = formatNumber(settings.jobCount);
+  const leadType = $("#lineLeadType");
+  if (leadType && diagnosis) {
+    const leadResult = results[diagnosis.resultType] || diagnosis.result;
+    if (leadResult && leadResult.name) leadType.textContent = leadResult.name;
+  }
+
+  // 求人カードを生成（求人名はぼかし表示なのでランダムな職種名でOK）
+  renderMatchJobCards();
+
   const lineCtaText = $("#lineCtaText");
   if (lineCtaText) {
     lineCtaText.textContent = lineCtaLabel;
@@ -911,14 +1178,15 @@ function renderResultOffer(diagnosis) {
       diagnosisId: diagnosis?.diagnosisId || null,
       funnelId,
       resultType: diagnosis?.resultType || null,
-      hasLineConnection
+      hasLineConnection,
     });
   }
 }
 
 async function sendLineResultWithSavedConnection(diagnosis) {
   const connection = loadLineConnection();
-  if (!connection || !diagnosis?.savedToSupabase || !getFunctionsBaseUrl()) return false;
+  if (!connection || !diagnosis?.savedToSupabase || !getFunctionsBaseUrl())
+    return false;
 
   const remote = await callEdgeFunction("send-line-result", {
     diagnosisId: diagnosis.diagnosisId,
@@ -926,23 +1194,24 @@ async function sendLineResultWithSavedConnection(diagnosis) {
     linkedDiagnosisId: connection.diagnosisId || null,
     ...getAnalyticsContext({
       funnelId: diagnosis.funnelId,
-      resultType: diagnosis.resultType
-    })
+      resultType: diagnosis.resultType,
+    }),
   });
 
   if (remote?.status !== "sent") return false;
 
   saveLineConnection({
     ...connection,
-    lineConnectionId: remote.lineConnectionId || connection.lineConnectionId || null,
+    lineConnectionId:
+      remote.lineConnectionId || connection.lineConnectionId || null,
     diagnosisId: diagnosis.diagnosisId,
-    lastSentDiagnosisId: diagnosis.diagnosisId
+    lastSentDiagnosisId: diagnosis.diagnosisId,
   });
 
   state.currentDiagnosis = {
     ...diagnosis,
     status: "sent",
-    lineSentBySavedConnection: true
+    lineSentBySavedConnection: true,
   };
   saveDraft(state.currentDiagnosis);
   return true;
@@ -959,8 +1228,8 @@ async function requestLineLoginUrl() {
     appCompleteUrl,
     ...getAnalyticsContext({
       funnelId: diagnosis.funnelId,
-      resultType: diagnosis.resultType
-    })
+      resultType: diagnosis.resultType,
+    }),
   });
 
   if (remote?.authorizationUrl) return remote.authorizationUrl;
@@ -973,7 +1242,7 @@ async function requestLineLoginUrl() {
     redirect_uri: config.lineRedirectUri,
     state: diagnosis.diagnosisId,
     scope: "profile openid",
-    nonce: crypto.randomUUID ? crypto.randomUUID() : String(Date.now())
+    nonce: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
   });
 
   return `https://access.line.me/oauth2/v2.1/authorize?${params.toString()}`;
@@ -987,7 +1256,7 @@ async function handleLineClick() {
   logEvent("line_button_click", {
     diagnosisId: diagnosis.diagnosisId,
     resultType: diagnosis.resultType,
-    funnelId: diagnosis.funnelId
+    funnelId: diagnosis.funnelId,
   });
 
   try {
@@ -1024,13 +1293,13 @@ async function handleLineClick() {
     diagnosisId: diagnosis.diagnosisId,
     resultType: diagnosis.resultType,
     funnelId: diagnosis.funnelId,
-    demo: true
+    demo: true,
   });
   logEvent("result_sent", {
     diagnosisId: diagnosis.diagnosisId,
     resultType: diagnosis.resultType,
     funnelId: diagnosis.funnelId,
-    demo: true
+    demo: true,
   });
   state.currentDiagnosis = { ...diagnosis, status: "sent" };
   saveDraft(state.currentDiagnosis);
@@ -1045,12 +1314,15 @@ function shareToX() {
     diagnosisId: diagnosis.diagnosisId,
     resultType: diagnosis.resultType,
     funnelId: diagnosis.funnelId,
-    channel: "x"
+    channel: "x",
   });
   const text = `私のAIキャリア診断は「${result.name}」でした。${result.catchCopy}`;
   const url = new URL("https://twitter.com/intent/tweet");
   url.searchParams.set("text", text);
-  url.searchParams.set("url", window.location.origin + window.location.pathname);
+  url.searchParams.set(
+    "url",
+    window.location.origin + window.location.pathname,
+  );
   window.open(url.toString(), "_blank", "noopener,noreferrer");
 }
 
@@ -1061,19 +1333,64 @@ function shareToLine() {
       diagnosisId: diagnosis.diagnosisId,
       resultType: diagnosis.resultType,
       funnelId: diagnosis.funnelId,
-      channel: "line"
+      channel: "line",
     });
   }
   const url = new URL("https://social-plugins.line.me/lineit/share");
-  url.searchParams.set("url", window.location.origin + window.location.pathname);
+  url.searchParams.set(
+    "url",
+    window.location.origin + window.location.pathname,
+  );
   window.open(url.toString(), "_blank", "noopener,noreferrer");
+}
+
+function copyResultLink(message = "リンクをコピーしました。") {
+  const diagnosis = state.currentDiagnosis || loadDraft();
+  if (diagnosis) {
+    logEvent("share_click", {
+      diagnosisId: diagnosis.diagnosisId,
+      resultType: diagnosis.resultType,
+      funnelId: diagnosis.funnelId,
+      channel: "copy",
+    });
+  }
+  const link = window.location.origin + window.location.pathname;
+  const done = () => window.alert(message);
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(link).then(done, done);
+  } else {
+    // 古い環境向けフォールバック
+    const ta = document.createElement("textarea");
+    ta.value = link;
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand("copy");
+    } catch (e) {}
+    document.body.removeChild(ta);
+    done();
+  }
 }
 
 function bindEvents() {
   $("#startFromHero").addEventListener("click", startDiagnosis);
-  $("#swipeYes").addEventListener("click", () => chooseAnswer("yes", 1));
-  $("#swipeNo").addEventListener("click", () => chooseAnswer("no", -1));
-  $("#analysisResultButton").addEventListener("click", proceedFromAnalysisToResult);
+  $("#swipeYes").addEventListener("click", (e) => {
+    pressButton(e.currentTarget);
+    // "\uFE0E" はテキスト表示を明示するセレクタ。
+    // 付けないと端末によってはカラー絵文字として扱われ、
+    // 初回描画時のグリフ読み込みでカクつく（✕は素のテキストなので発生しない）。
+    burstParticles(e.currentTarget, "♥\uFE0E");
+    chooseAnswer("yes", 1, 0, 0, true); // ← 最後に true
+  });
+  $("#swipeNo").addEventListener("click", (e) => {
+    pressButton(e.currentTarget);
+    burstParticles(e.currentTarget, "✕");
+    chooseAnswer("no", -1, 0, 0, true); // ← 最後に true
+  });
+  $("#analysisResultButton").addEventListener(
+    "click",
+    proceedFromAnalysisToResult,
+  );
   $("#lineCta").addEventListener("click", handleLineClick);
   $("#retryResult").addEventListener("click", () => {
     const diagnosis = state.currentDiagnosis || loadDraft();
@@ -1081,23 +1398,40 @@ function bindEvents() {
       diagnosisId: diagnosis?.diagnosisId || null,
       resultType: diagnosis?.resultType || null,
       funnelId: diagnosis?.funnelId || getCurrentFunnelId(),
-      from: "result"
+      from: "result",
     });
     startDiagnosis();
   });
-  $("#shareX").addEventListener("click", shareToX);
-  $("#shareLine").addEventListener("click", shareToLine);
+
+  // カンプの丸型シェアボタン
+  const shareXRound = $("#shareXRound");
+  if (shareXRound) shareXRound.addEventListener("click", shareToX);
+  const shareCopy = $("#shareCopy");
+  if (shareCopy) shareCopy.addEventListener("click", () => copyResultLink());
+  // TikTok / Instagram はURL投稿ができないため、リンクコピー＋案内にする
+  const shareTiktok = $("#shareTiktok");
+  if (shareTiktok)
+    shareTiktok.addEventListener("click", () =>
+      copyResultLink(
+        "リンクをコピーしました。TikTokアプリで貼り付けてシェアできます。",
+      ),
+    );
+  const shareLineRound = $("#shareLineRound");
+  if (shareLineRound) shareLineRound.addEventListener("click", shareToLine);
 
   window.addEventListener("keydown", (event) => {
     if (document.body.dataset.view !== "swipe") return;
-    if (event.key === "ArrowRight") chooseAnswer("yes", 1);
-    if (event.key === "ArrowLeft") chooseAnswer("no", -1);
+    if (event.key === "ArrowRight") chooseAnswer("yes", 1, 0, 0, true);
+    if (event.key === "ArrowLeft") chooseAnswer("no", -1, 0, 0, true);
   });
 }
 
 function initHeroImage() {
   const firstImage = cards[0]?.image || DEFAULT_CARDS[0].image;
-  document.documentElement.style.setProperty("--hero-image", `url("${firstImage}")`);
+  document.documentElement.style.setProperty(
+    "--hero-image",
+    `url("${firstImage}")`,
+  );
 }
 
 function init() {
@@ -1118,8 +1452,122 @@ function init() {
   showScreen("lp");
   logEvent("lp_view", {
     comparisonCount: settings.comparisonCount,
-    cardCount: cards.length
+    cardCount: cards.length,
   });
 }
 
 init();
+
+// 0817
+
+function countUp(el, target, duration = 1200) {
+  const start = performance.now();
+
+  function tick(now) {
+    const progress = Math.min((now - start) / duration, 1); // 0→1
+    // 最後にゆっくり止まる動き（イージング）
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = Math.round(target * eased);
+
+    // カンマ区切りで表示
+    el.textContent = current.toLocaleString();
+
+    if (progress < 1) {
+      requestAnimationFrame(tick);
+    } else {
+      el.textContent = target.toLocaleString(); // 最後は正確な値で固定
+    }
+  }
+
+  requestAnimationFrame(tick);
+}
+
+// 実行
+const ninzu = document.querySelector(".ninzu");
+if (ninzu) {
+  const target = parseInt(ninzu.textContent.replace(/,/g, ""), 10); // "5,061" → 5061
+  ninzu.textContent = "0";
+  countUp(ninzu, target);
+}
+
+function burstParticles(btn, symbol) {
+  const rect = btn.getBoundingClientRect();
+  const count = 6; // 飛ぶ数
+
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement("span");
+    p.className = "pop-particle";
+    p.textContent = symbol;
+
+    // ボタンの中心を基準に、少し左右にばらけさせる
+    const spread = (Math.random() - 0.5) * 60; // -30〜30px
+    p.style.left = `${rect.left + rect.width / 2 + spread}px`;
+    p.style.top = `${rect.top + rect.height / 2}px`;
+    p.style.position = "fixed"; // 画面基準で配置
+    p.style.color = symbol.startsWith("♥") ? "#ff2d8e" : "#9aa0ac";
+    p.style.animationDelay = `${i * 40}ms`;
+    p.style.fontSize = `${16 + Math.random() * 12}px`; // 大きさをバラす
+
+    document.body.appendChild(p);
+
+    // アニメ後に片付け
+    setTimeout(() => p.remove(), 1000);
+  }
+}
+function pressButton(btn) {
+  btn.classList.remove("is-pressed");
+  void btn.offsetWidth; // アニメを再生し直すおまじない
+  btn.classList.add("is-pressed");
+}
+
+// 分析中テキスト切り替え
+const rotatorMessages = [
+  "回答パターンを分析中…",
+  "マッチ度の高い求人を検索中…",
+  "結果を準備しています…",
+  "{count}人の診断データと比較中…",
+  "あなたの価値観の輪郭を描いています…",
+];
+let rotatorIndex = 0;
+let rotatorTimer = null;
+let rotatorStopped = false;
+
+function startRotator() {
+  const el = document.querySelector("#analysisRotator");
+  if (!el) return;
+  stopRotator();
+  rotatorStopped = false;
+  rotatorTimer = setInterval(() => {
+    rotatorIndex = (rotatorIndex + 1) % rotatorMessages.length;
+
+    // {count} を最新の人数に置き換える（失敗しても巡回は止めない）
+    let count = "";
+    try {
+      count = formatNumber(getCurrentComparisonCount(settings));
+    } catch (e) {
+      count = "";
+    }
+    const text = rotatorMessages[rotatorIndex].replace("{count}", count);
+
+    el.style.opacity = "0";
+    el.style.transform = "translateY(8px)"; // ちょっと下へ沈めて消す
+    setTimeout(() => {
+      if (rotatorStopped) return;
+      el.textContent = text;
+      el.style.transform = "translateY(8px)"; // 新テキストも一旦下に置いて
+      // 次のフレームで定位置へ上げる → 下からぬんっ
+      requestAnimationFrame(() => {
+        el.style.opacity = "1";
+        el.style.transform = "translateY(0)";
+      });
+    }, 250);
+  }, 1800);
+}
+
+function stopRotator() {
+  rotatorStopped = true;
+  if (rotatorTimer) {
+    clearInterval(rotatorTimer);
+    rotatorTimer = null;
+  }
+}
