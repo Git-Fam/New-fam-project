@@ -121,6 +121,95 @@ const adminAppHtml = String.raw`
     </div>
   </section>
 
+  <section class="admin-section admin-user-section">
+    <div class="admin-section-head">
+      <div>
+        <h2>ユーザー情報</h2>
+        <p>LINE連携済みユーザーごとに、診断結果・希望条件・会話履歴・AI状態・相談ステータスを確認します。</p>
+      </div>
+      <button class="secondary-button" id="refreshAdminUsers" type="button">更新</button>
+    </div>
+
+    <p class="admin-user-note">
+      表示対象は直近のユーザー最大50件です。会話履歴は選択ユーザーの直近30件だけ表示します。
+    </p>
+    <p class="admin-status" id="adminUserStatus" role="status"></p>
+
+    <div class="admin-user-layout">
+      <aside class="admin-user-list-panel">
+        <h3>ユーザー一覧</h3>
+        <div class="admin-user-list" id="adminUserList"></div>
+      </aside>
+
+      <div class="admin-user-detail">
+        <div class="admin-user-overview" id="adminUserOverview"></div>
+        <div class="admin-user-tabs" aria-label="ユーザー情報カテゴリ">
+          <button class="is-active" type="button" data-admin-user-tab="diagnoses">診断結果</button>
+          <button type="button" data-admin-user-tab="preferences">LINE情報</button>
+          <button type="button" data-admin-user-tab="ai">AI状態</button>
+          <button type="button" data-admin-user-tab="handoffs">相談</button>
+          <button type="button" data-admin-user-tab="conversations">会話履歴</button>
+        </div>
+        <div class="admin-user-tab-panels">
+          <section class="admin-user-panel is-active" data-admin-user-panel="diagnoses">
+            <h3>診断結果</h3>
+            <div id="adminUserDiagnoses"></div>
+          </section>
+          <section class="admin-user-panel" data-admin-user-panel="preferences">
+            <h3>LINE追加取得情報</h3>
+            <div id="adminUserPreferences"></div>
+            <div id="adminUserSurveyAnswers"></div>
+          </section>
+          <section class="admin-user-panel" data-admin-user-panel="ai">
+            <h3>AI会話状態</h3>
+            <div id="adminUserAiState"></div>
+          </section>
+          <section class="admin-user-panel" data-admin-user-panel="handoffs">
+            <h3>相談ステータス</h3>
+            <div id="adminUserHandoffs"></div>
+          </section>
+          <section class="admin-user-panel admin-user-panel-wide" data-admin-user-panel="conversations">
+            <h3>LINE会話履歴</h3>
+            <div id="adminUserConversations"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="admin-section line-survey-section">
+    <div class="admin-section-head">
+      <div>
+        <h2>LINEアンケート設定</h2>
+        <p>LINEで聞く4問の質問文・選択肢・表示順を変更します。保存キーはDB保存先に紐づくため固定です。</p>
+      </div>
+      <button class="secondary-button" id="saveLineSurvey" type="button">アンケート設定を保存</button>
+    </div>
+
+    <div class="line-survey-layout">
+      <aside class="line-survey-list" id="lineSurveyQuestionList"></aside>
+      <div class="line-survey-editor">
+        <label>
+          保存キー
+          <input id="lineSurveyKeyInput" type="text" readonly />
+        </label>
+        <label>
+          表示順
+          <input id="lineSurveySortInput" type="number" min="1" step="1" />
+        </label>
+        <label>
+          質問文
+          <input id="lineSurveyLabelInput" type="text" maxlength="120" />
+        </label>
+        <label>
+          選択肢（1行に1つ）
+          <textarea id="lineSurveyOptionsInput" rows="6"></textarea>
+          <small class="form-note">LINEの選択肢ラベルは20文字以内にしてください。保存時に内部valueは自動生成されます。</small>
+        </label>
+      </div>
+    </div>
+  </section>
+
   <section class="admin-section">
     <h2>表示数値</h2>
     <div class="form-grid">

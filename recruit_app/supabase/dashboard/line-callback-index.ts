@@ -235,12 +235,116 @@ async function saveUserDiagnosisRecord(
   return data as string | null;
 }
 
+const CAREER_SURVEY_KEY = "career_preferences";
+
+type CareerSurveyOption = {
+  value: string;
+  label: string;
+};
+
+type CareerSurveyQuestion = {
+  key: string;
+  label: string;
+  options: CareerSurveyOption[];
+};
+
+const CAREER_SURVEY_QUESTIONS: CareerSurveyQuestion[] = [
+  {
+    key: "desired_location",
+    label: "希望勤務地は？",
+    options: [
+      { value: "tokyo", label: "東京" },
+      { value: "osaka", label: "大阪" },
+      { value: "hokkaido", label: "北海道" },
+      { value: "other", label: "その他" }
+    ]
+  },
+  {
+    key: "job_change_timing",
+    label: "転職時期は？",
+    options: [
+      { value: "soon", label: "すぐ" },
+      { value: "within_3_months", label: "3ヶ月以内" },
+      { value: "within_6_months", label: "半年以内" },
+      { value: "undecided", label: "まだ未定" }
+    ]
+  },
+  {
+    key: "current_job",
+    label: "現在の職種は？",
+    options: [
+      { value: "sales", label: "営業" },
+      { value: "retail", label: "販売・接客" },
+      { value: "office", label: "事務" },
+      { value: "it", label: "IT" },
+      { value: "other", label: "その他" }
+    ]
+  },
+  {
+    key: "priority",
+    label: "転職で一番重視するものは？",
+    options: [
+      { value: "income", label: "年収" },
+      { value: "work_style", label: "働き方" },
+      { value: "growth", label: "成長" },
+      { value: "stability", label: "安定" },
+      { value: "job_content", label: "仕事内容" }
+    ]
+  }
+] as CareerSurveyQuestion[];
+
+function normalizeCareerSurveyQuestions(value: unknown): CareerSurveyQuestion[] {
+  if (!Array.isArray(value)) return CAREER_SURVEY_QUESTIONS;
+
+  const questions = value
+    .map((question: Record<string, any>) => {
+      const key = String(question?.key || question?.question_key || "").trim();
+      const label = String(question?.label || question?.question_label || "").trim();
+      const options = Array.isArray(question?.options)
+        ? question.options
+            .map((option: Record<string, any>) => ({
+              value: String(option?.value || "").trim(),
+              label: String(option?.label || "").trim()
+            }))
+            .filter((option: CareerSurveyOption) => option.value && option.label)
+        : [];
+
+      if (!key || !label || options.length === 0) return null;
+      return { key, label, options };
+    })
+    .filter((question): question is CareerSurveyQuestion => Boolean(question));
+
+  return questions.length > 0 ? questions : CAREER_SURVEY_QUESTIONS;
+}
+
+function buildCareerSurveyQuestionMessage(
+  question: CareerSurveyQuestion = CAREER_SURVEY_QUESTIONS[0],
+  intro = ""
+) {
+  return {
+    type: "text",
+    text: `${intro ? `${intro}\n\n` : ""}${question.label}`,
+    quickReply: {
+      items: question.options.map((option) => ({
+        type: "action",
+        action: {
+          type: "postback",
+          label: option.label,
+          data: `survey=${CAREER_SURVEY_KEY}&question=${question.key}&answer=${option.value}`,
+          displayText: option.label
+        }
+      }))
+    }
+  };
+}
+
 function buildLineMessages(diagnosis: Record<string, any>, appSettings: Record<string, any> = {}) {
   const result = diagnosis.result_payload || {};
   const jobCount = appSettings.job_count || Deno.env.get("DEFAULT_JOB_COUNT") || "12";
   const highMatchCount =
     appSettings.high_match_count || Deno.env.get("DEFAULT_HIGH_MATCH_COUNT") || "4";
   const jobs = Array.isArray(result.jobs) ? result.jobs.slice(0, 5).join(" / ") : "";
+  const surveyQuestions = normalizeCareerSurveyQuestions(appSettings.surveyQuestions);
 
   return [
     {
@@ -256,7 +360,11 @@ function buildLineMessages(diagnosis: Record<string, any>, appSettings: Record<s
         `紹介可能求人 ${jobCount}件\n` +
         `マッチ度90%以上 ${highMatchCount}件\n` +
         (jobs ? `向いている仕事: ${jobs}` : "")
-    }
+    },
+    buildCareerSurveyQuestionMessage(
+      surveyQuestions[0],
+      `続けて、希望条件を${surveyQuestions.length}つだけ教えてください。`
+    )
   ];
 }
 
@@ -279,6 +387,80 @@ async function pushLineMessages(lineUserId: string, messages: unknown[]) {
   });
 
   if (!response.ok) throw new Error(await response.text());
+}
+
+function getOutboundMessageText(message: unknown) {
+  if (typeof message !== "object" || message === null) return null;
+  const record = message as Record<string, unknown>;
+  return typeof record.text === "string" ? record.text : null;
+}
+
+function getOutboundMessageType(message: unknown) {
+  if (typeof message !== "object" || message === null) return "unknown";
+  const record = message as Record<string, unknown>;
+  return typeof record.type === "string" ? record.type : "unknown";
+}
+
+function getOutboundConversationType(message: unknown) {
+  const text = getOutboundMessageText(message) || "";
+  if (text.includes("希望勤務地") || text.includes("希望条件")) return "survey";
+  return "diagnosis_result";
+}
+
+async function saveOutgoingLineMessages(
+  supabase: ReturnType<typeof createClient>,
+  params: {
+    userId: string;
+    lineUserId: string;
+    diagnosisId: string;
+    messages: unknown[];
+  }
+) {
+  const retentionExpiresAt = createLinkedDiagnosisExpiresAt();
+
+  await Promise.all(
+    params.messages.map(async (message) => {
+      const { error } = await supabase.from("line_conversation_messages").insert({
+        user_id: params.userId,
+        line_user_id: params.lineUserId,
+        direction: "outgoing",
+        sender_type: "bot",
+        conversation_type: getOutboundConversationType(message),
+        message_type: getOutboundMessageType(message),
+        message_text: getOutboundMessageText(message),
+        payload: { message },
+        related_diagnosis_id: params.diagnosisId,
+        occurred_at: new Date().toISOString(),
+        body_retention_expires_at: retentionExpiresAt
+      });
+
+      if (error) {
+        console.warn("line conversation message insert failed", error);
+      }
+    })
+  );
+}
+
+async function readLineSurveyQuestions(supabase: ReturnType<typeof createClient>) {
+  const { data, error } = await supabase
+    .from("line_survey_questions")
+    .select("question_key, question_label, options")
+    .eq("survey_key", CAREER_SURVEY_KEY)
+    .eq("enabled", true)
+    .order("sort_order", { ascending: true });
+
+  if (error) {
+    console.warn("line survey questions lookup failed", error);
+    return [];
+  }
+
+  return (data || [])
+    .map((question: Record<string, any>) => ({
+      key: String(question.question_key || ""),
+      label: String(question.question_label || ""),
+      options: Array.isArray(question.options) ? question.options : []
+    }))
+    .filter((question) => question.key && question.label && question.options.length > 0);
 }
 
 Deno.serve(async (request: Request) => {
@@ -399,7 +581,18 @@ Deno.serve(async (request: Request) => {
       .eq("id", true)
       .maybeSingle();
 
-    await pushLineMessages(profile.userId, buildLineMessages(diagnosis, appSettings || {}));
+    const surveyQuestions = await readLineSurveyQuestions(supabase);
+    const lineMessages = buildLineMessages(diagnosis, {
+      ...(appSettings || {}),
+      surveyQuestions
+    });
+    await pushLineMessages(profile.userId, lineMessages);
+    await saveOutgoingLineMessages(supabase, {
+      userId: appUser.id,
+      lineUserId: profile.userId,
+      diagnosisId,
+      messages: lineMessages
+    });
 
     await supabase
       .from("diagnoses")

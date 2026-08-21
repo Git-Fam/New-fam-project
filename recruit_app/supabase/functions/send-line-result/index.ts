@@ -121,6 +121,80 @@ async function saveUserDiagnosisRecord(
   return data as string | null;
 }
 
+function getOutboundMessageText(message: unknown) {
+  if (typeof message !== "object" || message === null) return null;
+  const record = message as Record<string, unknown>;
+  return typeof record.text === "string" ? record.text : null;
+}
+
+function getOutboundMessageType(message: unknown) {
+  if (typeof message !== "object" || message === null) return "unknown";
+  const record = message as Record<string, unknown>;
+  return typeof record.type === "string" ? record.type : "unknown";
+}
+
+function getOutboundConversationType(message: unknown) {
+  const text = getOutboundMessageText(message) || "";
+  if (text.includes("希望勤務地") || text.includes("希望条件")) return "survey";
+  return "diagnosis_result";
+}
+
+async function saveOutgoingLineMessages(
+  supabase: ReturnType<typeof getSupabaseClient>,
+  params: {
+    userId: string;
+    lineUserId: string;
+    diagnosisId: string;
+    messages: unknown[];
+  }
+) {
+  const retentionExpiresAt = createLinkedDiagnosisExpiresAt();
+
+  await Promise.all(
+    params.messages.map(async (message) => {
+      const { error } = await supabase.from("line_conversation_messages").insert({
+        user_id: params.userId,
+        line_user_id: params.lineUserId,
+        direction: "outgoing",
+        sender_type: "bot",
+        conversation_type: getOutboundConversationType(message),
+        message_type: getOutboundMessageType(message),
+        message_text: getOutboundMessageText(message),
+        payload: { message },
+        related_diagnosis_id: params.diagnosisId,
+        occurred_at: new Date().toISOString(),
+        body_retention_expires_at: retentionExpiresAt
+      });
+
+      if (error) {
+        console.warn("line conversation message insert failed", error);
+      }
+    })
+  );
+}
+
+async function readLineSurveyQuestions(supabase: ReturnType<typeof getSupabaseClient>) {
+  const { data, error } = await supabase
+    .from("line_survey_questions")
+    .select("question_key, question_label, options")
+    .eq("survey_key", "career_preferences")
+    .eq("enabled", true)
+    .order("sort_order", { ascending: true });
+
+  if (error) {
+    console.warn("line survey questions lookup failed", error);
+    return [];
+  }
+
+  return (data || [])
+    .map((question: Record<string, any>) => ({
+      key: String(question.question_key || ""),
+      label: String(question.question_label || ""),
+      options: Array.isArray(question.options) ? question.options : []
+    }))
+    .filter((question) => question.key && question.label && question.options.length > 0);
+}
+
 async function resolveLineConnection(
   supabase: ReturnType<typeof getSupabaseClient>,
   body: Record<string, string | null>
@@ -222,7 +296,18 @@ Deno.serve(async (request: Request) => {
       .eq("id", true)
       .maybeSingle();
 
-    await pushLineMessages(connection.lineUserId, buildLineMessages(diagnosis, appSettings || {}));
+    const surveyQuestions = await readLineSurveyQuestions(supabase);
+    const lineMessages = buildLineMessages(diagnosis, {
+      ...(appSettings || {}),
+      surveyQuestions
+    });
+    await pushLineMessages(connection.lineUserId, lineMessages);
+    await saveOutgoingLineMessages(supabase, {
+      userId: appUser.id,
+      lineUserId: connection.lineUserId,
+      diagnosisId,
+      messages: lineMessages
+    });
 
     await supabase
       .from("diagnoses")

@@ -122,6 +122,14 @@ swipe-images
 - admin_audit_logs
 - line_states
 - line_connections
+- line_survey_questions
+- line_survey_sessions
+- line_survey_answers
+- line_user_preferences
+- line_conversation_messages
+- line_conversation_summaries
+- line_ai_conversation_states
+- line_handoff_requests
 
 Supabase CLIは使わず、Dashboard中心で作業している。
 
@@ -147,6 +155,45 @@ Supabase CLIは使わず、Dashboard中心で作業している。
   20260806003000_create_dropoff_tracking.sql
   event-log / save-diagnosis / kpi-summary Redeploy
 
+- LINEアンケート / 会話履歴:
+  20260820000000_create_line_survey.sql
+  20260820001000_create_line_conversation_history.sql
+  line-callback / line-webhook / send-line-result Redeploy
+
+- LINEアンケート質問マスタ:
+  20260821000000_create_line_survey_question_master.sql
+  admin-master / admin-ui / line-callback / line-webhook / send-line-result Redeploy
+  質問キーはDB保存先に紐づくため固定。質問文 / 選択肢 / 表示順を管理画面から変更可能。
+
+- LINE AI返信:
+  テストはGemini無料枠で実施
+  Supabase SecretsにGEMINI_API_KEYを追加
+  AI_PROVIDER=gemini / AI_MODEL=gemini-3.5-flash-lite / LINE_AI_MAX_REPLIES=4を追加
+  line-webhook Redeploy
+
+- LINE AI会話状態管理:
+  20260820002000_create_line_ai_conversation_states.sql
+  admin-master / line-webhook Redeploy
+  最大往復数はDB/API対応済み。管理画面UI追加はHTML/JS編集確認後。
+
+- LINE AI相談CTA:
+  20260820003000_add_line_ai_cta_settings.sql
+  admin-master / line-webhook Redeploy
+  「相談してみる」/「もう少しAIに聞く」のQuick Reply送信は実装済み。
+  CTA文言はDB/API対応済み。管理画面UI追加はHTML/JS編集確認後。
+
+- LINE担当者引き継ぎ:
+  20260820004000_create_line_handoff_requests.sql
+  line-webhook Redeploy
+  引き継ぎ依頼のDB保存 / AI自動返信停止 / line_handoff_requestedイベント記録は実装済み。
+  担当者LINEへの直接push通知は、通知先と送信内容の承認後に別途実装する。
+
+- 管理画面ユーザー情報:
+  admin-master / admin-ui Redeploy
+  admin/index.html と admin/css/admin.css をアップロード
+  診断結果 / LINE追加取得情報 / LINE会話履歴 / AI会話状態 / 相談ステータスをユーザーごとに表示。
+  相談ステータスは管理画面から 未対応 / 対応中 / 対応済み / 対応不要 に更新可能。
+
 
 ■ データ保存期間
 
@@ -155,9 +202,51 @@ Supabase CLIは使わず、Dashboard中心で作業している。
 - diagnosis_events: 90日
 - analytics_events: 13か月
 - line_connections: 180日
+- line_survey_sessions / line_user_preferences: 180日
+- line_conversation_messages: 180日
+- line_conversation_summaries: 長期保存
+- line_handoff_requests: 180日
 - admin_login_attempts: 7日
 - admin_audit_logs: 180日
 - diagnosis_progress_sessions: 完了時または離脱集計後に削除
+
+
+■ AIプロバイダー切り替えメモ
+
+テストはGemini無料枠、本番はOpenAIへ切り替える可能性あり。
+- 対象ファイル:
+  supabase/functions/line-webhook/index.ts
+  supabase/dashboard/line-webhook-index.ts
+
+テストで使うSecrets:
+  GEMINI_API_KEY
+  AI_PROVIDER=gemini
+  AI_MODEL=gemini-3.5-flash-lite
+  LINE_AI_MAX_REPLIES=4
+
+OpenAIへ変える場合:
+- Supabase SecretsにOPENAI_API_KEYを追加
+- AI_PROVIDER=openai / AI_MODEL=gpt-5-mini に変更
+- line-webhook内のgenerateAiCareerReply()にopenai分岐を追加
+- generateOpenAiCareerReply()を追加し、OpenAI Responses APIへ送信する
+- Dashboard運用のため、同じ変更をsupabase/dashboard/line-webhook-index.tsにも反映
+- line-webhookを再Deploy
+
+Gemini/OpenAIいずれの場合もAIに送る情報は以下に限定する。
+- 今回のLINE相談文
+- 診断タイプ(result_type)
+- LINEアンケートの希望条件
+- 直近数件の会話履歴
+
+AIに送らない情報:
+- LINE user ID
+- LINE表示名
+- 40問のYES/NO履歴
+- 6軸スコア
+
+注意:
+- Gemini無料枠は入力内容がGoogleのサービス改善に使われる可能性があるため、テスト時はダミー相談文で確認する。
+- 本番運用ではOpenAIなど、有料APIで入力内容が学習利用されない設定/プランへ切り替える。
 
 
 ■ KPIで見るもの
@@ -184,51 +273,69 @@ Supabase CLIは使わず、Dashboard中心で作業している。
        YES/NO履歴 / 診断タイプ / 6軸スコア / 診断日時 / TikTokなどの流入元を保持する
        24時間で消すデータと長期保存するデータを分ける
 
-[ ] 3. LINEで4問アンケートを実装する
+[x] 3. LINEで4問アンケートを実装する
        希望勤務地 / 転職時期 / 現在職種 / 転職で重視するもの
        回答はユーザーごとにDB保存する
 
-[ ] 4. LINEアンケートの質問文・選択肢を管理画面で変更できるようにする
-       運用中にコード修正なしで質問文、選択肢、表示順を調整できるようにする
-
-[ ] 5. LINEリッチメニューを作成する
-       「私の診断結果」 / 「キャリア相談」 / 「よくある質問」
-       各ボタンの遷移先または送信メッセージも決める
-
-[ ] 6. LINE会話履歴の保存仕様を決めてDBに保存する
+[x] 4. LINE会話履歴の保存仕様を決めてDBに保存する
        ユーザー発言 / AI返信 / 送信日時 / 会話種別を保存する
        会話全文の保存期間、長期保存する要約データ、削除タイミングを決める
 
-[ ] 7. AI返信の基本設計を実装する
+[x] 5. AI返信の基本設計を実装する
        キャリア関連のみ会話継続、雑談は深掘りしない
        2〜4往復程度で相談内容を整理し、返信文字数も制限する
 
-[ ] 8. AI会話の状態管理を実装する
+[x] 6. AI会話の状態管理を実装する
        AI返信中 / 相談CTA表示済み / 人間引き継ぎ済み / 停止中をユーザーごとに管理する
-       無駄なトークン消費を避けるため最大往復数を管理画面で変更できるようにする
+       最大往復数はapp_settingsで管理可能。DB / API / line-webhook側は実装済み。
 
-[ ] 9. AIから担当者相談へ自然に誘導するCTAを実装する
+[x] 7. AIから担当者相談へ自然に誘導するCTAを実装する
        「相談してみる」 / 「もう少しAIに聞く」の選択肢を送る
-       CTA文言は管理画面で変更できるようにする
+       LINE送信 / DB / admin-master API側は実装済み。
+       「もう少しAIに聞く」は初回案内に戻さず、直近会話の続きとしてAI返信し、新しい4回分の相談枠を開始する。
+       CTA文言の管理画面UIはHTML/JS編集が必要なため14で後対応。
 
-[ ] 10. 担当者への引き継ぎフローを実装する
-       「相談してみる」押下で担当者へ通知し、AI自動返信を停止する
+[x] 8. 担当者への引き継ぎフローを実装する
+       「相談してみる」押下で引き継ぎ依頼をDB保存し、AI自動返信を停止する
+       担当者対応は公式LINEのチャット通知・手動返信で運用する
 
-[ ] 11. 管理画面でユーザー情報を確認できるようにする
+[x] 9. 管理画面でユーザー情報を確認できるようにする
        診断結果 / LINE追加取得情報 / LINE会話履歴 / AI会話状態 / 相談ステータスをユーザーごとに表示
+       直近50ユーザーの一覧と、選択ユーザーの詳細を管理画面で確認可能。
+       詳細はタブ切り替えで、見たい情報だけ表示する。
+       YES / NO履歴は診断結果カード内のアコーディオンで確認可能。
 
-[ ] 12. 管理画面で対応ステータスを更新できるようにする
+[x] 10. 管理画面で対応ステータスを更新できるようにする
        未対応 / 対応中 / 対応済み / 対応不要などを管理できるようにする
 
-[ ] 13. 管理画面でWeb診断履歴の一覧を見られるようにする
+[x] 11. 管理画面でWeb診断履歴の一覧を見られるようにする
        ユーザーごとの診断日時 / 診断タイプ / 6軸スコア / 流入元 / 回答数を一覧表示する
 
-[ ] 14. 診断結果文章 / LINE送信文 / 求人導線文言の違和感を確認する
+[x] 12. LINEアンケートの質問文・選択肢を管理画面で変更できるようにする
+       運用中にコード修正なしで質問文、選択肢、表示順を調整できるようにする
+       質問キーは固定。質問文 / 選択肢 / 表示順は管理画面から変更可能。
 
-[ ] 15. OGP画像とシェア文言を調整する
+[ ] 13. LINEリッチメニューを作成する
+       「私の診断結果」 / 「キャリア相談」 / 「よくある質問」
+       各ボタンの遷移先または送信メッセージも決める
 
-[ ] 16. iPhone Safari / Android Chrome / PC Chrome で実機QAする
+[ ] 14. 管理画面UIにAI会話設定を追加する
+       最大往復数 / 相談CTA文言 / 「相談してみる」 / 「もう少しAIに聞く」の文言を編集できるようにする
+       AI会話状態 / 相談CTA表示済み / 人間引き継ぎ済み / 停止中を管理画面で見られるようにする
+       HTML/JS編集が必要なので、UI作業が落ち着いてから対応する
 
-[ ] 17. 本番アップ前に APP_ORIGIN / LINE / GA / config.js を最終確認する
 
-[ ] 18. admin/ の公開範囲や追加保護が必要か本番前に最終判断する
+       診断のchallengeとかを日本語にする
+
+[ ] 15. 診断結果文章 / LINE送信文 / 求人導線文言の違和感を確認する
+
+[ ] 16. OGP画像とシェア文言を調整する
+
+
+
+[ ] 17. iPhone Safari / Android Chrome / PC Chrome で実機QAする
+
+[ ] 18. 本番アップ前に APP_ORIGIN / LINE / GA / config.js を最終確認する
+       LINE DevelopersのMessaging API Webhook URLを本番Supabaseのline-webhookへ戻す
+
+[ ] 19. admin/ の公開範囲や追加保護が必要か本番前に最終判断する

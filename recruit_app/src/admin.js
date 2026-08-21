@@ -16,6 +16,9 @@ let results = getConfiguredResults(settings);
 let cards = getConfiguredCards(settings);
 let kpiSummary = null;
 let kpiRange = "daily";
+let userDashboard = null;
+let selectedAdminUserId = "";
+let adminUserTab = "diagnoses";
 let adminSessionToken = sessionStorage.getItem(ADMIN_SESSION_STORAGE_KEY) || "";
 let adminEventsBound = false;
 
@@ -26,6 +29,57 @@ const TARGET_UPLOAD_BYTES = 150 * 1024;
 const INITIAL_WEBP_QUALITY = 0.86;
 const MIN_WEBP_QUALITY = 0.62;
 const WEBP_QUALITY_STEP = 0.06;
+const DEFAULT_LINE_SURVEY_QUESTIONS = [
+  {
+    key: "desired_location",
+    label: "希望勤務地は？",
+    options: [
+      { value: "tokyo", label: "東京" },
+      { value: "osaka", label: "大阪" },
+      { value: "hokkaido", label: "北海道" },
+      { value: "other", label: "その他" }
+    ],
+    sortOrder: 1
+  },
+  {
+    key: "job_change_timing",
+    label: "転職時期は？",
+    options: [
+      { value: "soon", label: "すぐ" },
+      { value: "within_3_months", label: "3ヶ月以内" },
+      { value: "within_6_months", label: "半年以内" },
+      { value: "undecided", label: "まだ未定" }
+    ],
+    sortOrder: 2
+  },
+  {
+    key: "current_job",
+    label: "現在の職種は？",
+    options: [
+      { value: "sales", label: "営業" },
+      { value: "retail", label: "販売・接客" },
+      { value: "office", label: "事務" },
+      { value: "it", label: "IT" },
+      { value: "other", label: "その他" }
+    ],
+    sortOrder: 3
+  },
+  {
+    key: "priority",
+    label: "転職で一番重視するものは？",
+    options: [
+      { value: "income", label: "年収" },
+      { value: "work_style", label: "働き方" },
+      { value: "growth", label: "成長" },
+      { value: "stability", label: "安定" },
+      { value: "job_content", label: "仕事内容" }
+    ],
+    sortOrder: 4
+  }
+];
+
+let lineSurveyQuestions = normalizeLineSurveyQuestions([]);
+let selectedLineSurveyKey = lineSurveyQuestions[0]?.key || "";
 
 function escapeHtml(value) {
   return String(value)
@@ -45,6 +99,67 @@ function splitLines(value) {
 
 function joinLines(value) {
   return Array.isArray(value) ? value.join("\n") : "";
+}
+
+function slugifyLineSurveyOption(value, fallback) {
+  const normalized = String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9_-]/g, "_")
+    .replace(/_+/g, "_")
+    .replace(/^_+|_+$/g, "");
+  return normalized || fallback;
+}
+
+function getOptionLabel(option) {
+  if (typeof option === "string") return option.trim();
+  return String(option?.label || "").trim();
+}
+
+function getOptionValue(option, index) {
+  if (typeof option === "object" && option !== null && option.value) {
+    return slugifyLineSurveyOption(option.value, `option_${index + 1}`);
+  }
+  return slugifyLineSurveyOption(getOptionLabel(option), `option_${index + 1}`);
+}
+
+function normalizeLineSurveyQuestions(value) {
+  const source = Array.isArray(value) && value.length ? value : DEFAULT_LINE_SURVEY_QUESTIONS;
+  const fallbackByKey = new Map(DEFAULT_LINE_SURVEY_QUESTIONS.map((question) => [question.key, question]));
+
+  return source
+    .map((question, index) => {
+      const key = String(question?.key || "").trim();
+      const fallback = fallbackByKey.get(key);
+      if (!fallback) return null;
+
+      const options = Array.isArray(question.options) ? question.options : fallback.options;
+      const normalizedOptions = options
+        .map((option, optionIndex) => {
+          const label = getOptionLabel(option).slice(0, 20);
+          if (!label) return null;
+          return {
+            value: getOptionValue(option, optionIndex),
+            label
+          };
+        })
+        .filter(Boolean);
+
+      return {
+        key,
+        label: String(question.label || fallback.label).trim() || fallback.label,
+        options: normalizedOptions.length
+          ? normalizedOptions
+          : fallback.options.map((option, optionIndex) => ({
+              value: getOptionValue(option, optionIndex),
+              label: getOptionLabel(option)
+            })),
+        sortOrder: Number(question.sortOrder || index + 1),
+        enabled: question.enabled !== false
+      };
+    })
+    .filter(Boolean)
+    .sort((a, b) => Number(a.sortOrder || 0) - Number(b.sortOrder || 0));
 }
 
 function formatBytes(bytes) {
@@ -219,6 +334,48 @@ async function requestAdminMaster(method = "GET", body = null) {
   return response.json();
 }
 
+async function requestAdminUsers(userId = "") {
+  const baseUrl = getFunctionsBaseUrl();
+  if (!baseUrl) return null;
+
+  const params = new URLSearchParams({ action: "users" });
+  if (userId) params.set("userId", userId);
+
+  const response = await fetch(`${baseUrl}/admin-master?${params.toString()}`, {
+    method: "GET",
+    headers: getAdminTokenHeaders()
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    const error = new Error(text || "ユーザー情報の読み込みに失敗しました");
+    error.status = response.status;
+    throw error;
+  }
+
+  return response.json();
+}
+
+async function requestUpdateHandoffStatus(handoffId, status) {
+  const baseUrl = getFunctionsBaseUrl();
+  if (!baseUrl) return null;
+
+  const response = await fetch(`${baseUrl}/admin-master?action=update-handoff-status`, {
+    method: "POST",
+    headers: getAdminHeaders(),
+    body: JSON.stringify({ handoffId, status })
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    const error = new Error(text || "対応ステータスの更新に失敗しました");
+    error.status = response.status;
+    throw error;
+  }
+
+  return response.json();
+}
+
 async function uploadCardImage(file, originalFile = file) {
   const baseUrl = getFunctionsBaseUrl();
   if (!baseUrl) {
@@ -267,6 +424,10 @@ async function loadRemoteSettings() {
   if (!master) return false;
 
   settings = buildSettingsFromMaster(master);
+  lineSurveyQuestions = normalizeLineSurveyQuestions(master.lineSurveyQuestions);
+  selectedLineSurveyKey = lineSurveyQuestions.some((question) => question.key === selectedLineSurveyKey)
+    ? selectedLineSurveyKey
+    : lineSurveyQuestions[0]?.key || "";
   saveAdminSettings(settings);
   results = getConfiguredResults(settings);
   cards = getConfiguredCards(settings);
@@ -274,6 +435,10 @@ async function loadRemoteSettings() {
 }
 
 async function persistMaster(statusMessage) {
+  if ($("#lineSurveyKeyInput")?.value && !saveLineSurveyQuestionFromInputs()) {
+    return;
+  }
+
   saveAdminSettings(settings);
 
   if (!getFunctionsBaseUrl()) {
@@ -282,9 +447,16 @@ async function persistMaster(statusMessage) {
   }
 
   try {
-    const master = await requestAdminMaster("POST", serializeSettingsForMaster(settings));
+    const master = await requestAdminMaster("POST", {
+      ...serializeSettingsForMaster(settings),
+      lineSurveyQuestions
+    });
     if (master) {
       settings = buildSettingsFromMaster(master);
+      lineSurveyQuestions = normalizeLineSurveyQuestions(master.lineSurveyQuestions);
+      selectedLineSurveyKey = lineSurveyQuestions.some((question) => question.key === selectedLineSurveyKey)
+        ? selectedLineSurveyKey
+        : lineSurveyQuestions[0]?.key || "";
       saveAdminSettings(settings);
       results = getConfiguredResults(settings);
       cards = getConfiguredCards(settings);
@@ -500,6 +672,101 @@ function renderGeneral() {
   $("#requireLineInput").checked = Boolean(settings.requireLineBeforeResult);
 }
 
+function getSelectedLineSurveyQuestion() {
+  return (
+    lineSurveyQuestions.find((question) => question.key === selectedLineSurveyKey) ||
+    lineSurveyQuestions[0] ||
+    null
+  );
+}
+
+function renderLineSurveyList() {
+  const target = $("#lineSurveyQuestionList");
+  if (!target) return;
+
+  target.innerHTML = lineSurveyQuestions
+    .map((question, index) => {
+      const activeClass = question.key === selectedLineSurveyKey ? " is-active" : "";
+      return `
+        <button class="line-survey-button${activeClass}" type="button" data-line-survey-key="${escapeHtml(question.key)}">
+          <span>${String(index + 1).padStart(2, "0")}</span>
+          <strong>${escapeHtml(question.label)}</strong>
+          <small>${escapeHtml(question.key)} / 選択肢${formatNumber(question.options.length)}件</small>
+        </button>
+      `;
+    })
+    .join("");
+}
+
+function renderLineSurveyEditor() {
+  const question = getSelectedLineSurveyQuestion();
+  if (!question) return;
+
+  $("#lineSurveyKeyInput").value = question.key;
+  $("#lineSurveySortInput").value = Number(question.sortOrder || 1);
+  $("#lineSurveyLabelInput").value = question.label;
+  $("#lineSurveyOptionsInput").value = question.options.map((option) => option.label).join("\n");
+  renderLineSurveyList();
+}
+
+function saveLineSurveyQuestionFromInputs() {
+  const key = $("#lineSurveyKeyInput").value.trim();
+  const base = lineSurveyQuestions.find((question) => question.key === key);
+  if (!base) return false;
+
+  const labels = splitLines($("#lineSurveyOptionsInput").value)
+    .map((label) => label.slice(0, 20))
+    .filter(Boolean);
+  if (!$("#lineSurveyLabelInput").value.trim()) {
+    setStatus("LINEアンケートの質問文を入力してください");
+    return false;
+  }
+  if (!labels.length) {
+    setStatus("LINEアンケートの選択肢を1つ以上入力してください");
+    return false;
+  }
+
+  lineSurveyQuestions = normalizeLineSurveyQuestions(
+    lineSurveyQuestions.map((question) => {
+      if (question.key !== key) return question;
+      return {
+        ...question,
+        label: $("#lineSurveyLabelInput").value.trim(),
+        sortOrder: Math.max(1, Math.floor(Number($("#lineSurveySortInput").value || question.sortOrder || 1))),
+        options: labels.map((label, index) => {
+          const existing = question.options[index];
+          return {
+            value: existing?.label === label ? existing.value : slugifyLineSurveyOption(label, `option_${index + 1}`),
+            label
+          };
+        })
+      };
+    })
+  );
+  selectedLineSurveyKey = key;
+  renderLineSurveyEditor();
+  return true;
+}
+
+async function persistLineSurveyQuestions() {
+  if (!saveLineSurveyQuestionFromInputs()) return;
+
+  try {
+    const master = await requestAdminMaster("POST", { lineSurveyQuestions });
+    if (master) {
+      lineSurveyQuestions = normalizeLineSurveyQuestions(master.lineSurveyQuestions);
+      renderLineSurveyEditor();
+    }
+    setStatus("LINEアンケート設定を保存しました / Supabaseへ保存しました");
+  } catch (error) {
+    if (isUnauthorizedError(error)) {
+      clearAdminSession("管理セッションが切れました。もう一度ログインしてください");
+      return;
+    }
+    setStatus(`LINEアンケート設定保存失敗: ${error.message}`);
+  }
+}
+
 function formatNumber(value) {
   return Number(value || 0).toLocaleString("ja-JP");
 }
@@ -669,6 +936,8 @@ function getAdminEventLabel(eventName) {
     admin_ui_view: "管理画面表示",
     admin_master_save: "マスタ保存",
     admin_image_upload: "画像アップロード",
+    admin_user_view: "ユーザー情報閲覧",
+    admin_handoff_status_update: "対応ステータス更新",
     admin_kpi_view: "KPI閲覧"
   };
   return labels[eventName] || eventName || "-";
@@ -681,7 +950,8 @@ function getAdminLogSummary(row) {
       metadata.settingsUpdated ? "表示数値" : "",
       Number(metadata.resultsCount || 0) ? `結果${metadata.resultsCount}件` : "",
       Number(metadata.cardsCount || 0) ? `質問${metadata.cardsCount}件` : "",
-      Number(metadata.deletedCardsCount || 0) ? `削除${metadata.deletedCardsCount}件` : ""
+      Number(metadata.deletedCardsCount || 0) ? `削除${metadata.deletedCardsCount}件` : "",
+      Number(metadata.lineSurveyQuestionsCount || 0) ? `LINEアンケート${metadata.lineSurveyQuestionsCount}件` : ""
     ]
       .filter(Boolean)
       .join(" / ") || "-";
@@ -770,6 +1040,473 @@ async function loadKpiDashboard() {
     }
     renderKpiMessage("KPIを読み込めません");
     setStatus(`KPI読み込み失敗: ${error.message}`);
+    return false;
+  }
+}
+
+function setUserStatus(message) {
+  const target = $("#adminUserStatus");
+  if (!target) return;
+  target.textContent = message;
+}
+
+function getResultLabel(resultType) {
+  if (!resultType) return "-";
+  return results[resultType]?.name || resultType;
+}
+
+function getAiStatusLabel(status) {
+  const labels = {
+    idle: "待機中",
+    ai_replying: "AI返信中",
+    cta_shown: "相談CTA表示済み",
+    handed_off: "人間引き継ぎ済み",
+    stopped: "停止中"
+  };
+  return labels[status] || status || "-";
+}
+
+function getHandoffStatusLabel(status) {
+  const labels = {
+    new: "未対応",
+    notified: "通知済み",
+    notification_failed: "通知失敗",
+    in_progress: "対応中",
+    completed: "対応済み",
+    canceled: "対応不要"
+  };
+  return labels[status] || status || "-";
+}
+
+function renderHandoffStatusOptions(selectedStatus) {
+  const options = [
+    ["new", "未対応"],
+    ["in_progress", "対応中"],
+    ["completed", "対応済み"],
+    ["canceled", "対応不要"]
+  ];
+
+  return options
+    .map(([value, label]) => {
+      const selected = value === selectedStatus ? " selected" : "";
+      return `<option value="${value}"${selected}>${escapeHtml(label)}</option>`;
+    })
+    .join("");
+}
+
+function getConversationTypeLabel(type) {
+  const labels = {
+    survey: "アンケート",
+    ai_career: "AI相談",
+    ai_career_cta: "相談CTA",
+    ai_handoff: "引き継ぎ",
+    diagnosis_result: "診断結果",
+    job_lead: "求人導線",
+    general: "通常"
+  };
+  return labels[type] || type || "-";
+}
+
+function formatBlank(value) {
+  return value || "-";
+}
+
+function renderAdminUserMessage(message) {
+  const targets = [
+    "#adminUserList",
+    "#adminUserOverview",
+    "#adminUserDiagnoses",
+    "#adminUserPreferences",
+    "#adminUserSurveyAnswers",
+    "#adminUserAiState",
+    "#adminUserHandoffs",
+    "#adminUserConversations"
+  ];
+  targets.forEach((selector) => {
+    const target = $(selector);
+    if (target) target.innerHTML = `<p class="admin-user-empty">${escapeHtml(message)}</p>`;
+  });
+}
+
+function setAdminUserTab(tabKey = adminUserTab) {
+  const availableTabs = new Set(["diagnoses", "preferences", "ai", "handoffs", "conversations"]);
+  adminUserTab = availableTabs.has(tabKey) ? tabKey : "diagnoses";
+
+  document.querySelectorAll("[data-admin-user-tab]").forEach((button) => {
+    button.classList.toggle("is-active", button.dataset.adminUserTab === adminUserTab);
+  });
+  document.querySelectorAll("[data-admin-user-panel]").forEach((panel) => {
+    panel.classList.toggle("is-active", panel.dataset.adminUserPanel === adminUserTab);
+  });
+}
+
+function renderAdminUserList(users = [], selectedUserId = "") {
+  const target = $("#adminUserList");
+  if (!target) return;
+
+  if (!users.length) {
+    target.innerHTML = `<p class="admin-user-empty">まだLINE連携済みユーザーがいません。</p>`;
+    return;
+  }
+
+  target.innerHTML = users
+    .map((user) => {
+      const activeClass = user.userId === selectedUserId ? " is-active" : "";
+      const displayName = user.displayName || "LINE名未取得";
+      const internalUserId = user.internalUserId || user.userId;
+      const latestResult = getResultLabel(user.latestDiagnosis?.result_type);
+      const handoffLabel = getHandoffStatusLabel(user.handoff?.status);
+      return `
+        <button class="admin-user-button${activeClass}" type="button" data-admin-user-id="${escapeHtml(user.userId)}">
+          <strong>${escapeHtml(displayName)}</strong>
+          <span>${escapeHtml(internalUserId)} / ${escapeHtml(latestResult)}</span>
+          <small>診断${formatNumber(user.diagnosisCount)}件 / ${escapeHtml(handoffLabel)} / ${escapeHtml(formatDateTime(user.lastSeenAt))}</small>
+        </button>
+      `;
+    })
+    .join("");
+}
+
+function renderAdminUserOverview(detail) {
+  const target = $("#adminUserOverview");
+  if (!target) return;
+  const user = detail?.user;
+  if (!user) {
+    target.innerHTML = `<p class="admin-user-empty">ユーザーを選択してください。</p>`;
+    return;
+  }
+
+  target.innerHTML = `
+    <h3>${escapeHtml(user.displayName || "LINE名未取得")}</h3>
+    <p>${escapeHtml(user.internalUserId || user.userId)} / ${escapeHtml(user.lineUserId || "LINE未連携")}</p>
+    <div class="admin-user-meta">
+      <div class="admin-user-meta-item">
+        <span>初回流入</span>
+        <strong>${escapeHtml(formatBlank(user.initialUtmSource))}</strong>
+      </div>
+      <div class="admin-user-meta-item">
+        <span>端末</span>
+        <strong>${escapeHtml(formatBlank(user.initialDeviceType))}</strong>
+      </div>
+      <div class="admin-user-meta-item">
+        <span>初回確認</span>
+        <strong>${escapeHtml(formatDateTime(user.firstSeenAt))}</strong>
+      </div>
+      <div class="admin-user-meta-item">
+        <span>最終確認</span>
+        <strong>${escapeHtml(formatDateTime(user.lastSeenAt))}</strong>
+      </div>
+    </div>
+  `;
+}
+
+function renderScoreRates(scoreRates = {}) {
+  const axisLabels = {
+    people: "People",
+    focus: "Focus",
+    challenge: "Challenge",
+    stability: "Stability",
+    creativity: "Creativity",
+    execution: "Execution"
+  };
+
+  return Object.entries(axisLabels)
+    .map(([key, label]) => {
+      const value = scoreRates?.[key];
+      return `<span class="admin-user-pill">${escapeHtml(label)} ${escapeHtml(value ?? "-")}</span>`;
+    })
+    .join("");
+}
+
+function formatResponseTimeMs(value) {
+  const number = Number(value);
+  if (!Number.isFinite(number) || number < 0) return "-";
+  if (number < 1000) return `${Math.round(number)}ms`;
+  return `${(number / 1000).toFixed(1)}秒`;
+}
+
+function getAnswerLabel(answer) {
+  if (answer === "yes") return "YES";
+  if (answer === "no") return "NO";
+  return answer || "-";
+}
+
+function renderDiagnosisAnswers(answers = []) {
+  if (!Array.isArray(answers) || !answers.length) {
+    return `
+      <details class="admin-user-answer-details">
+        <summary>YES / NO履歴を見る</summary>
+        <p class="admin-user-empty">回答履歴がありません。</p>
+      </details>
+    `;
+  }
+
+  const orderedAnswers = [...answers].sort(
+    (a, b) => Number(a.answerOrder || 0) - Number(b.answerOrder || 0)
+  );
+
+  return `
+    <details class="admin-user-answer-details">
+      <summary>YES / NO履歴を見る（${formatNumber(orderedAnswers.length)}件）</summary>
+      <div class="admin-user-answer-list">
+        ${orderedAnswers
+          .map((answerData, index) => {
+            const imageId = answerData.imageId || "";
+            const card = cards.find((item) => item.id === imageId);
+            const order = Number(answerData.answerOrder || index + 1);
+            const answer = getAnswerLabel(answerData.answer);
+            const answerClass = answerData.answer === "yes" ? " is-yes" : answerData.answer === "no" ? " is-no" : "";
+            return `
+              <div class="admin-user-answer-row">
+                <span class="admin-user-answer-order">${formatNumber(order)}</span>
+                <div>
+                  <strong>${escapeHtml(card?.question || imageId || "質問マスタと一致なし")}</strong>
+                  <small>${escapeHtml(imageId || "-")} / ${escapeHtml(formatResponseTimeMs(answerData.responseTime))}</small>
+                </div>
+                <span class="admin-user-answer-badge${answerClass}">${escapeHtml(answer)}</span>
+              </div>
+            `;
+          })
+          .join("")}
+      </div>
+    </details>
+  `;
+}
+
+function renderAdminUserDiagnoses(diagnoses = []) {
+  const target = $("#adminUserDiagnoses");
+  if (!target) return;
+
+  if (!diagnoses.length) {
+    target.innerHTML = `<p class="admin-user-empty">診断履歴がありません。</p>`;
+    return;
+  }
+
+  target.innerHTML = `
+    <div class="admin-user-record-list">
+      ${diagnoses
+        .map(
+          (diagnosis) => `
+            <article class="admin-user-record">
+              <div class="admin-user-record-head">
+                <strong>${escapeHtml(getResultLabel(diagnosis.result_type))}</strong>
+                <time>${escapeHtml(formatDateTime(diagnosis.diagnosed_at))}</time>
+              </div>
+              <small>${escapeHtml(diagnosis.primary_axis || "-")} / ${escapeHtml(diagnosis.secondary_axis || "-")} / ${formatNumber(diagnosis.answered_count)}問回答</small>
+              <div class="admin-user-pill-row">${renderScoreRates(diagnosis.score_rates)}</div>
+              <div class="admin-user-pill-row">
+                <span class="admin-user-pill">流入 ${escapeHtml(formatBlank(diagnosis.utm_source))}</span>
+                <span class="admin-user-pill">端末 ${escapeHtml(formatBlank(diagnosis.device_type))}</span>
+              </div>
+              ${renderDiagnosisAnswers(diagnosis.answers)}
+            </article>
+          `
+        )
+        .join("")}
+    </div>
+  `;
+}
+
+function renderAdminUserPreferences(preferences) {
+  const target = $("#adminUserPreferences");
+  if (!target) return;
+
+  if (!preferences) {
+    target.innerHTML = `<p class="admin-user-empty">LINEアンケートの完了情報がありません。</p>`;
+    return;
+  }
+
+  target.innerHTML = `
+    <dl class="admin-user-kv">
+      <div>
+        <dt>希望勤務地</dt>
+        <dd>${escapeHtml(formatBlank(preferences.desired_location_label))}</dd>
+      </div>
+      <div>
+        <dt>転職時期</dt>
+        <dd>${escapeHtml(formatBlank(preferences.job_change_timing_label))}</dd>
+      </div>
+      <div>
+        <dt>現在職種</dt>
+        <dd>${escapeHtml(formatBlank(preferences.current_job_label))}</dd>
+      </div>
+      <div>
+        <dt>重視するもの</dt>
+        <dd>${escapeHtml(formatBlank(preferences.priority_label))}</dd>
+      </div>
+    </dl>
+  `;
+}
+
+function renderAdminUserSurveyAnswers(answers = []) {
+  const target = $("#adminUserSurveyAnswers");
+  if (!target) return;
+
+  if (!answers.length) {
+    target.innerHTML = "";
+    return;
+  }
+
+  const ordered = [...answers].sort((a, b) => Number(a.answered_order || 0) - Number(b.answered_order || 0));
+  target.innerHTML = `
+    <div class="admin-user-record-list">
+      ${ordered
+        .map(
+          (answer) => `
+            <article class="admin-user-record">
+              <div class="admin-user-record-head">
+                <strong>${escapeHtml(answer.question_label || answer.question_key || "-")}</strong>
+                <time>${escapeHtml(formatDateTime(answer.answered_at))}</time>
+              </div>
+              <small>${escapeHtml(answer.answer_label || answer.answer_value || "-")}</small>
+            </article>
+          `
+        )
+        .join("")}
+    </div>
+  `;
+}
+
+function renderAdminUserAiState(aiState) {
+  const target = $("#adminUserAiState");
+  if (!target) return;
+
+  if (!aiState) {
+    target.innerHTML = `<p class="admin-user-empty">AI会話状態はまだありません。</p>`;
+    return;
+  }
+
+  target.innerHTML = `
+    <dl class="admin-user-kv">
+      <div>
+        <dt>状態</dt>
+        <dd>${escapeHtml(getAiStatusLabel(aiState.status))}</dd>
+      </div>
+      <div>
+        <dt>返信回数</dt>
+        <dd>${formatNumber(aiState.ai_reply_count)} / ${formatNumber(aiState.max_replies)}</dd>
+      </div>
+      <div>
+        <dt>最終ユーザー発言</dt>
+        <dd>${escapeHtml(formatDateTime(aiState.last_user_message_at))}</dd>
+      </div>
+      <div>
+        <dt>最終AI返信</dt>
+        <dd>${escapeHtml(formatDateTime(aiState.last_ai_reply_at))}</dd>
+      </div>
+      <div>
+        <dt>CTA表示</dt>
+        <dd>${escapeHtml(formatDateTime(aiState.cta_shown_at))}</dd>
+      </div>
+      <div>
+        <dt>引き継ぎ</dt>
+        <dd>${escapeHtml(formatDateTime(aiState.handed_off_at))}</dd>
+      </div>
+    </dl>
+  `;
+}
+
+function renderAdminUserHandoffs(handoffs = []) {
+  const target = $("#adminUserHandoffs");
+  if (!target) return;
+
+  if (!handoffs.length) {
+    target.innerHTML = `<p class="admin-user-empty">相談依頼はまだありません。</p>`;
+    return;
+  }
+
+  target.innerHTML = `
+    <div class="admin-user-record-list">
+      ${handoffs
+        .map(
+          (handoff) => `
+            <article class="admin-user-record">
+              <div class="admin-user-record-head">
+                <strong>${escapeHtml(getHandoffStatusLabel(handoff.status))}</strong>
+                <time>${escapeHtml(formatDateTime(handoff.requested_at))}</time>
+              </div>
+              <small>AI返信 ${formatNumber(handoff.ai_reply_count)} / ${formatNumber(handoff.max_replies)} 回</small>
+              <div class="admin-user-handoff-form">
+                <label>
+                  対応ステータス
+                  <select data-handoff-status-id="${escapeHtml(handoff.id)}">
+                    ${renderHandoffStatusOptions(handoff.status)}
+                  </select>
+                </label>
+                <button class="secondary-button" type="button" data-handoff-status-save="${escapeHtml(handoff.id)}">更新</button>
+              </div>
+            </article>
+          `
+        )
+        .join("")}
+    </div>
+  `;
+}
+
+function renderAdminUserConversations(messages = []) {
+  const target = $("#adminUserConversations");
+  if (!target) return;
+
+  if (!messages.length) {
+    target.innerHTML = `<p class="admin-user-empty">LINE会話履歴はまだありません。</p>`;
+    return;
+  }
+
+  target.innerHTML = `
+    <div class="admin-user-record-list">
+      ${messages
+        .map((message) => {
+          const directionClass = message.direction === "incoming" ? " is-incoming" : " is-outgoing";
+          const speaker = message.sender_type === "user" ? "ユーザー" : message.sender_type === "ai" ? "AI" : message.sender_type || "-";
+          return `
+            <article class="admin-user-message${directionClass}">
+              <small>${escapeHtml(formatDateTime(message.occurred_at))} / ${escapeHtml(speaker)} / ${escapeHtml(getConversationTypeLabel(message.conversation_type))}</small>
+              <p>${escapeHtml(message.message_text || `[${message.message_type || "message"}]`)}</p>
+            </article>
+          `;
+        })
+        .join("")}
+    </div>
+  `;
+}
+
+function renderAdminUserDashboard(data) {
+  userDashboard = data;
+  selectedAdminUserId = data?.selectedUserId || "";
+  renderAdminUserList(Array.isArray(data?.users) ? data.users : [], selectedAdminUserId);
+  renderAdminUserOverview(data?.detail);
+  renderAdminUserDiagnoses(data?.detail?.diagnoses || []);
+  renderAdminUserPreferences(data?.detail?.preferences || null);
+  renderAdminUserSurveyAnswers(data?.detail?.surveyAnswers || []);
+  renderAdminUserAiState(data?.detail?.aiState || null);
+  renderAdminUserHandoffs(data?.detail?.handoffRequests || []);
+  renderAdminUserConversations(data?.detail?.conversationMessages || []);
+  setAdminUserTab(adminUserTab);
+}
+
+async function loadAdminUsers(userId = selectedAdminUserId) {
+  if (!getFunctionsBaseUrl()) {
+    renderAdminUserMessage("Supabase接続後に表示されます");
+    return false;
+  }
+
+  try {
+    setUserStatus("ユーザー情報を読み込み中です…");
+    const data = await requestAdminUsers(userId);
+    if (!data) {
+      renderAdminUserMessage("Supabase接続後に表示されます");
+      return false;
+    }
+    renderAdminUserDashboard(data);
+    setUserStatus("ユーザー情報を読み込みました");
+    return true;
+  } catch (error) {
+    if (isUnauthorizedError(error)) {
+      clearAdminSession("管理セッションが切れました。もう一度ログインしてください");
+      return false;
+    }
+    renderAdminUserMessage("ユーザー情報を読み込めません");
+    setUserStatus(`ユーザー情報読み込み失敗: ${error.message}`);
     return false;
   }
 }
@@ -878,6 +1615,80 @@ function bindEvents() {
       setStatus("KPIを更新しました");
     }
   });
+
+  const lineSurveyQuestionList = $("#lineSurveyQuestionList");
+  if (lineSurveyQuestionList) {
+    lineSurveyQuestionList.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-line-survey-key]");
+      if (!button) return;
+      if (!saveLineSurveyQuestionFromInputs()) return;
+      selectedLineSurveyKey = button.dataset.lineSurveyKey || selectedLineSurveyKey;
+      renderLineSurveyEditor();
+    });
+  }
+
+  const saveLineSurvey = $("#saveLineSurvey");
+  if (saveLineSurvey) {
+    saveLineSurvey.addEventListener("click", persistLineSurveyQuestions);
+  }
+
+  const refreshAdminUsers = $("#refreshAdminUsers");
+  if (refreshAdminUsers) {
+    refreshAdminUsers.addEventListener("click", async () => {
+      if (await loadAdminUsers(selectedAdminUserId)) {
+        setStatus("ユーザー情報を更新しました");
+      }
+    });
+  }
+
+  const adminUserList = $("#adminUserList");
+  if (adminUserList) {
+    adminUserList.addEventListener("click", async (event) => {
+      const button = event.target.closest("[data-admin-user-id]");
+      if (!button) return;
+      selectedAdminUserId = button.dataset.adminUserId || "";
+      renderAdminUserList(userDashboard?.users || [], selectedAdminUserId);
+      await loadAdminUsers(selectedAdminUserId);
+    });
+  }
+
+  document.querySelectorAll("[data-admin-user-tab]").forEach((button) => {
+    button.addEventListener("click", () => {
+      setAdminUserTab(button.dataset.adminUserTab);
+    });
+  });
+
+  const adminUserHandoffs = $("#adminUserHandoffs");
+  if (adminUserHandoffs) {
+    adminUserHandoffs.addEventListener("click", async (event) => {
+      const button = event.target.closest("[data-handoff-status-save]");
+      if (!button) return;
+
+      const handoffId = button.dataset.handoffStatusSave || "";
+      const select = [...adminUserHandoffs.querySelectorAll("[data-handoff-status-id]")]
+        .find((item) => item.dataset.handoffStatusId === handoffId);
+      const status = select?.value || "";
+      if (!handoffId || !status) return;
+
+      button.disabled = true;
+      setUserStatus("対応ステータスを更新中です…");
+
+      try {
+        await requestUpdateHandoffStatus(handoffId, status);
+        setStatus("対応ステータスを更新しました");
+        await loadAdminUsers(selectedAdminUserId);
+        setAdminUserTab("handoffs");
+      } catch (error) {
+        if (isUnauthorizedError(error)) {
+          clearAdminSession("管理セッションが切れました。もう一度ログインしてください");
+          return;
+        }
+        setUserStatus(`対応ステータス更新失敗: ${error.message}`);
+      } finally {
+        button.disabled = false;
+      }
+    });
+  }
 
   $("#saveGeneral").addEventListener("click", async () => {
     const safeQuestionCount = getSafeQuestionCount($("#diagnosisQuestionCountInput").value);
@@ -1043,6 +1854,7 @@ function bindEvents() {
       save(parsed);
       populateSelects();
       renderGeneral();
+      renderLineSurveyEditor();
       renderResultEditor();
       renderCardEditor();
       await persistMaster("設定を読み込みました");
@@ -1056,8 +1868,11 @@ function bindEvents() {
     settings = loadAdminSettings();
     results = getConfiguredResults(settings);
     cards = getConfiguredCards(settings);
+    lineSurveyQuestions = normalizeLineSurveyQuestions([]);
+    selectedLineSurveyKey = lineSurveyQuestions[0]?.key || "";
     populateSelects();
     renderGeneral();
+    renderLineSurveyEditor();
     renderResultEditor();
     renderCardEditor();
     $("#settingsJson").value = "";
@@ -1085,8 +1900,10 @@ export async function initAdminApp() {
 
   populateSelects();
   renderGeneral();
+  renderLineSurveyEditor();
   renderResultEditor();
   renderCardEditor();
   bindEvents();
   await loadKpiDashboard();
+  await loadAdminUsers();
 }
