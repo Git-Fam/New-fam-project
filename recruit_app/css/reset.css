@@ -2,7 +2,7 @@
 /* -----------------------
 リセット
 ----------------------- */
-html, body, h1, h2, h3, h4, ul, ol, dl, li, dt, dd, p, div, span, img, a, table, tr, th, td {
+html, body, h1, h2, h3, h4, ul, ol, dl, li, dt, dd, p, div, span, img, a, table, tr, th, td, input {
   margin: 0;
   padding: 0;
   border: 0;

@@ -23,6 +23,11 @@ type AppUser = {
   first_diagnosis_id?: string | null;
 };
 
+type SpecialAnswerContext = {
+  questionText: string;
+  selectedLabel: string;
+};
+
 function createLinkedDiagnosisExpiresAt() {
   return new Date(
     Date.now() + LINKED_DIAGNOSIS_RETENTION_DAYS * 24 * 60 * 60 * 1000
@@ -113,6 +118,56 @@ async function saveUserDiagnosisRecord(
   }
 
   return data as string | null;
+}
+
+async function linkSpecialQuestionAnswers(
+  supabase: ReturnType<typeof getSupabaseClient>,
+  params: {
+    diagnosisId: string;
+    userId: string;
+    internalUserId?: string | null;
+    lineUserId: string;
+    userDiagnosisRecordId?: string | null;
+  }
+) {
+  const { error } = await supabase
+    .from("special_question_answers")
+    .update({
+      user_id: params.userId,
+      internal_user_id: params.internalUserId || null,
+      line_user_id: params.lineUserId,
+      user_diagnosis_record_id: params.userDiagnosisRecordId || null,
+      updated_at: new Date().toISOString()
+    })
+    .eq("diagnosis_id", params.diagnosisId);
+
+  if (error) {
+    console.warn("special question answers link failed", error);
+  }
+}
+
+async function readSpecialAnswerContext(
+  supabase: ReturnType<typeof getSupabaseClient>,
+  diagnosisId: string
+): Promise<SpecialAnswerContext[]> {
+  const { data, error } = await supabase
+    .from("special_question_answers")
+    .select("question_text,selected_label")
+    .eq("diagnosis_id", diagnosisId)
+    .order("answer_order", { ascending: true })
+    .limit(6);
+
+  if (error) {
+    console.warn("special answer context lookup failed", error);
+    return [];
+  }
+
+  return (data || [])
+    .map((answer: Record<string, any>) => ({
+      questionText: String(answer.question_text || "").trim(),
+      selectedLabel: String(answer.selected_label || "").trim()
+    }))
+    .filter((answer) => answer.questionText && answer.selectedLabel);
 }
 
 function getOutboundMessageText(message: unknown) {
@@ -300,6 +355,15 @@ Deno.serve(async (request: Request) => {
       context: lineState
     });
 
+    await linkSpecialQuestionAnswers(supabase, {
+      diagnosisId,
+      userId: appUser.id,
+      internalUserId: appUser.internal_user_id || null,
+      lineUserId: profile.userId,
+      userDiagnosisRecordId
+    });
+    const specialAnswers = await readSpecialAnswerContext(supabase, diagnosisId);
+
     const { data: appSettings } = await supabase
       .from("app_settings")
       .select("job_count, high_match_count")
@@ -350,6 +414,7 @@ Deno.serve(async (request: Request) => {
           resultType: diagnosis.result_type,
           internalUserId: appUser.internal_user_id || null,
           userDiagnosisRecordId,
+          specialAnswers,
           friendFlag
         },
         request

@@ -81,6 +81,23 @@ type LineSurveyQuestionPayload = {
   enabled?: boolean;
 };
 
+type SpecialQuestionPayload = {
+  id?: string;
+  key?: string;
+  questionKey?: string;
+  questionText: string;
+  optionALabel: string;
+  optionBLabel: string;
+  category?: string;
+  enabled?: boolean;
+  insertAfterOrder?: number;
+  displayOrder?: number;
+  visualVariant?: string;
+  backgroundImageUrl?: string;
+  backgroundStoragePath?: string;
+  payload?: Record<string, unknown>;
+};
+
 type AdminUserRow = {
   id: string;
   internal_user_id: string | null;
@@ -286,6 +303,31 @@ async function readMaster() {
     console.warn("line survey questions lookup failed", surveyQuestionsResponse.error);
   }
 
+  const specialQuestionsResponse = await supabase
+    .from("special_questions")
+    .select(
+      [
+        "id",
+        "question_key",
+        "question_text",
+        "option_a_label",
+        "option_b_label",
+        "category",
+        "enabled",
+        "insert_after_order",
+        "display_order",
+        "visual_variant",
+        "background_image_url",
+        "background_storage_path",
+        "payload"
+      ].join(",")
+    )
+    .order("insert_after_order", { ascending: true })
+    .order("display_order", { ascending: true });
+  if (specialQuestionsResponse.error) {
+    console.warn("special questions lookup failed", specialQuestionsResponse.error);
+  }
+
   const settings = settingsResponse.data;
 
   return {
@@ -336,6 +378,21 @@ async function readMaster() {
       options: Array.isArray(question.options) ? question.options : [],
       sortOrder: question.sort_order,
       enabled: question.enabled !== false
+    })),
+    specialQuestions: (specialQuestionsResponse.data || []).map((question: Record<string, any>) => ({
+      id: question.id,
+      key: question.question_key,
+      questionText: question.question_text,
+      optionALabel: question.option_a_label,
+      optionBLabel: question.option_b_label,
+      category: question.category,
+      enabled: question.enabled !== false,
+      insertAfterOrder: question.insert_after_order,
+      displayOrder: question.display_order,
+      visualVariant: question.visual_variant || "default",
+      backgroundImageUrl: question.background_image_url || "",
+      backgroundStoragePath: question.background_storage_path || "",
+      payload: question.payload && typeof question.payload === "object" ? question.payload : {}
     }))
   };
 }
@@ -517,6 +574,7 @@ async function readAdminUsers(url: URL) {
       detailDiagnosesResponse,
       detailPreferencesResponse,
       surveyAnswersResponse,
+      specialAnswersResponse,
       conversationMessagesResponse,
       aiStateResponse,
       handoffRequestsResponse
@@ -559,6 +617,26 @@ async function readAdminUsers(url: URL) {
         .order("answered_at", { ascending: false })
         .limit(20),
       supabase
+        .from("special_question_answers_for_admin")
+        .select(
+          [
+            "id",
+            "diagnosis_id",
+            "user_diagnosis_record_id",
+            "question_key",
+            "question_text",
+            "category",
+            "selected_option",
+            "selected_label",
+            "answer_order",
+            "response_time_ms",
+            "answered_at"
+          ].join(",")
+        )
+        .eq("user_id", effectiveSelectedUserId)
+        .order("answered_at", { ascending: false })
+        .limit(50),
+      supabase
         .from("line_conversation_messages_for_admin")
         .select(
           [
@@ -591,6 +669,7 @@ async function readAdminUsers(url: URL) {
     if (detailDiagnosesResponse.error) throw detailDiagnosesResponse.error;
     if (detailPreferencesResponse.error) throw detailPreferencesResponse.error;
     if (surveyAnswersResponse.error) throw surveyAnswersResponse.error;
+    if (specialAnswersResponse.error) throw specialAnswersResponse.error;
     if (conversationMessagesResponse.error) throw conversationMessagesResponse.error;
     if (aiStateResponse.error) throw aiStateResponse.error;
     if (handoffRequestsResponse.error) throw handoffRequestsResponse.error;
@@ -615,6 +694,7 @@ async function readAdminUsers(url: URL) {
       diagnoses: detailDiagnosesResponse.data || [],
       preferences: detailPreferencesResponse.data || null,
       surveyAnswers: surveyAnswersResponse.data || [],
+      specialAnswers: specialAnswersResponse.data || [],
       conversationMessages: conversationMessagesResponse.data || [],
       aiState: aiStateResponse.data || null,
       handoffRequests: handoffRequestsResponse.data || []
@@ -706,18 +786,90 @@ function sanitizeLineSurveyQuestions(questions: LineSurveyQuestionPayload[]) {
     .filter((question): question is NonNullable<typeof question> => Boolean(question));
 }
 
+function sanitizeSpecialQuestionKey(value: string, fallback: string) {
+  const normalized = value
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9_-]/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  return normalized || fallback;
+}
+
+function sanitizeSpecialQuestions(questions: SpecialQuestionPayload[]) {
+  return questions
+    .map((question, index) => {
+      const questionText = String(question.questionText || "").trim();
+      const optionALabel = String(question.optionALabel || "").trim();
+      const optionBLabel = String(question.optionBLabel || "").trim();
+      if (!questionText || !optionALabel || !optionBLabel) return null;
+
+      const key = sanitizeSpecialQuestionKey(
+        String(question.key || question.questionKey || ""),
+        `special-${String(index + 1).padStart(3, "0")}`
+      );
+
+      return {
+        question_key: key,
+        question_text: questionText.slice(0, 240),
+        option_a_label: optionALabel.slice(0, 120),
+        option_b_label: optionBLabel.slice(0, 120),
+        category: String(question.category || "preference").trim().slice(0, 80) || "preference",
+        enabled: question.enabled !== false,
+        insert_after_order: Math.max(1, Math.floor(Number(question.insertAfterOrder || 1))),
+        display_order: Math.max(1, Math.floor(Number(question.displayOrder || index + 1))),
+        visual_variant: String(question.visualVariant || "default").trim().slice(0, 60) || "default",
+        background_image_url: String(question.backgroundImageUrl || "").trim() || null,
+        background_storage_path: String(question.backgroundStoragePath || "").trim() || null,
+        payload:
+          question.payload && typeof question.payload === "object" && !Array.isArray(question.payload)
+            ? question.payload
+            : {},
+        updated_at: new Date().toISOString()
+      };
+    })
+    .filter((question): question is NonNullable<typeof question> => Boolean(question));
+}
+
+async function removeDeletedSpecialQuestions(
+  supabase: ReturnType<typeof getSupabaseClient>,
+  questionKeys: string[]
+) {
+  const uniqueQuestionKeys = [
+    ...new Set(questionKeys.map((key) => sanitizeSpecialQuestionKey(String(key || ""), "")).filter(Boolean))
+  ];
+  if (uniqueQuestionKeys.length === 0) return 0;
+
+  const { error, count } = await supabase
+    .from("special_questions")
+    .delete({ count: "exact" })
+    .in("question_key", uniqueQuestionKeys);
+  if (error) throw error;
+
+  return count || 0;
+}
+
 async function writeMaster(body: {
   settings?: AdminSettingsPayload;
   results?: DiagnosisResultPayload[];
   cards?: SwipeCardPayload[];
   deletedCardIds?: string[];
   lineSurveyQuestions?: LineSurveyQuestionPayload[];
+  specialQuestions?: SpecialQuestionPayload[];
+  deletedSpecialQuestionKeys?: string[];
 }) {
   const supabase = getSupabaseClient();
   const deletedCardIds = Array.isArray(body.deletedCardIds) ? body.deletedCardIds : [];
+  const deletedSpecialQuestionKeys = Array.isArray(body.deletedSpecialQuestionKeys)
+    ? body.deletedSpecialQuestionKeys
+    : [];
 
   if (deletedCardIds.length > 0) {
     await removeDeletedCards(supabase, deletedCardIds);
+  }
+
+  if (deletedSpecialQuestionKeys.length > 0) {
+    await removeDeletedSpecialQuestions(supabase, deletedSpecialQuestionKeys);
   }
 
   if (body.settings) {
@@ -854,6 +1006,16 @@ async function writeMaster(body: {
     if (error) throw error;
   }
 
+  if (Array.isArray(body.specialQuestions)) {
+    const rows = sanitizeSpecialQuestions(body.specialQuestions);
+    if (rows.length > 0) {
+      const { error } = await supabase
+        .from("special_questions")
+        .upsert(rows, { onConflict: "question_key" });
+      if (error) throw error;
+    }
+  }
+
   return readMaster();
 }
 
@@ -922,6 +1084,12 @@ Deno.serve(async (request: Request) => {
         deletedCardsCount: Array.isArray(body.deletedCardIds) ? body.deletedCardIds.length : 0,
         lineSurveyQuestionsCount: Array.isArray(body.lineSurveyQuestions)
           ? body.lineSurveyQuestions.length
+          : 0,
+        specialQuestionsCount: Array.isArray(body.specialQuestions)
+          ? body.specialQuestions.length
+          : 0,
+        deletedSpecialQuestionsCount: Array.isArray(body.deletedSpecialQuestionKeys)
+          ? body.deletedSpecialQuestionKeys.length
           : 0
       }
     });

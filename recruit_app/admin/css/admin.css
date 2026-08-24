@@ -1,3 +1,85 @@
+.admin-main {
+  width: min(100% - 28px, 1180px);
+}
+
+.admin-page-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0 0 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 12px 28px rgba(17, 24, 39, 0.08);
+  backdrop-filter: blur(16px);
+}
+
+.admin-page-tabs button {
+  min-height: 44px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: #374151;
+  font-size: 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.admin-page-tabs button:hover {
+  background: #f3f4f6;
+}
+
+.admin-page-tabs button.is-active {
+  background: #111827;
+  color: #fff;
+}
+
+.admin-page {
+  display: none;
+}
+
+.admin-page.is-active {
+  display: block;
+}
+
+.admin-page[hidden] {
+  display: none;
+}
+
+.admin-global-status {
+  min-height: 24px;
+  margin: 0 0 10px;
+}
+
+.ai-conversation-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+}
+
+.ai-conversation-grid label {
+  min-width: 0;
+}
+
+.ai-cta-message-field {
+  grid-column: 1 / -1;
+}
+
+.ai-cta-message-field textarea {
+  min-height: 170px;
+}
+
+.ai-conversation-grid label:not(.ai-cta-message-field) {
+  align-self: start;
+}
+
 .admin-user-section {
   overflow: hidden;
 }
@@ -182,6 +264,12 @@
   font-size: 0.9rem;
 }
 
+.admin-user-panel-note {
+  margin: 0 0 12px;
+  color: #6b7280;
+  font-size: 0.84rem;
+}
+
 .admin-user-record-list {
   display: grid;
   gap: 10px;
@@ -302,6 +390,46 @@
   color: #991b1b;
 }
 
+.admin-user-special-list {
+  display: grid;
+  gap: 10px;
+}
+
+.admin-user-special-details {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fcfcfd;
+  overflow: hidden;
+}
+
+.admin-user-special-details summary {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px;
+  color: #111827;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.admin-user-special-details summary span {
+  overflow-wrap: anywhere;
+}
+
+.admin-user-special-details summary time {
+  flex: 0 0 auto;
+  color: #6b7280;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.admin-user-special-kv {
+  grid-template-columns: 1fr;
+  border-top: 1px solid #e5e7eb;
+  padding: 12px;
+}
+
 .admin-user-handoff-form {
   display: flex;
   flex-wrap: wrap;
@@ -417,11 +545,167 @@
   gap: 14px;
 }
 
+.special-question-admin-section {
+  overflow: hidden;
+}
+
+.special-question-admin-toolbar {
+  margin-bottom: 14px;
+}
+
+.special-question-admin-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 360px) minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.special-question-admin-list,
+.special-question-admin-editor {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fff;
+  padding: 16px;
+}
+
+.special-question-admin-list {
+  display: grid;
+  gap: 10px;
+  max-height: 560px;
+  overflow: auto;
+}
+
+.special-question-admin-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px;
+  align-items: stretch;
+}
+
+.special-question-admin-row.is-disabled .special-question-admin-button {
+  opacity: 0.56;
+}
+
+.special-question-admin-button {
+  width: 100%;
+  min-height: 98px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #f9fafb;
+  padding: 12px;
+  color: #111827;
+  text-align: left;
+  cursor: pointer;
+}
+
+.special-question-admin-button.is-active {
+  border-color: #111827;
+  background: #111827;
+  color: #fff;
+}
+
+.special-question-admin-button span,
+.special-question-admin-button strong,
+.special-question-admin-button small {
+  display: block;
+}
+
+.special-question-admin-button strong {
+  margin-top: 4px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.special-question-admin-button small {
+  margin-top: 6px;
+  color: #6b7280;
+  font-size: 0.76rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.special-question-admin-button.is-active small {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.special-question-admin-editor {
+  display: grid;
+  gap: 14px;
+}
+
+.special-question-admin-preview {
+  display: grid;
+  gap: 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background:
+    linear-gradient(135deg, rgba(17, 24, 39, 0.04), rgba(37, 99, 235, 0.08)),
+    #fff;
+  padding: 18px;
+}
+
+.special-question-admin-preview small,
+.special-question-admin-preview span {
+  color: #6b7280;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.special-question-admin-preview strong {
+  color: #111827;
+  font-size: 1rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.special-question-admin-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.special-question-admin-choice {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.82);
+  padding: 12px;
+}
+
+.special-question-admin-choice b {
+  display: block;
+  margin-bottom: 4px;
+  color: #111827;
+}
+
 @media (max-width: 960px) {
+  .admin-page-tabs {
+    position: static;
+    grid-template-columns: 1fr;
+  }
+
+  .ai-conversation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-cta-message-field {
+    grid-row: auto;
+  }
+
   .admin-user-layout,
   .line-survey-layout,
+  .special-question-admin-layout,
+  .special-question-admin-choice-grid,
   .admin-user-meta,
   .admin-user-kv {
     grid-template-columns: 1fr;
+  }
+
+  .admin-user-special-details summary {
+    display: grid;
+    gap: 6px;
+  }
+
+  .admin-user-special-details summary time {
+    flex: initial;
   }
 }

@@ -40,6 +40,133 @@ function getSupabaseClient() {
   });
 }
 
+type SpecialAnswerInput = {
+  questionId?: unknown;
+  questionKey?: unknown;
+  questionText?: unknown;
+  optionALabel?: unknown;
+  optionBLabel?: unknown;
+  selectedOption?: unknown;
+  selectedLabel?: unknown;
+  answerOrder?: unknown;
+  responseTime?: unknown;
+  category?: unknown;
+  payload?: unknown;
+};
+
+function stringValue(value: unknown) {
+  return typeof value === "string" ? value.trim() : "";
+}
+
+function normalizeSpecialQuestionKey(value: unknown) {
+  return stringValue(value).replace(/^special:/, "");
+}
+
+function safePositiveInteger(value: unknown, fallback: number) {
+  const number = Math.floor(Number(value));
+  return Number.isFinite(number) && number > 0 ? number : fallback;
+}
+
+function safeNonNegativeNumber(value: unknown) {
+  const number = Number(value);
+  return Number.isFinite(number) && number >= 0 ? number : 0;
+}
+
+function getObjectPayload(value: unknown) {
+  return value && typeof value === "object" && !Array.isArray(value)
+    ? value as Record<string, unknown>
+    : {};
+}
+
+async function insertSpecialQuestionAnswers(
+  supabase: ReturnType<typeof createClient>,
+  params: {
+    diagnosisId: string;
+    answers: SpecialAnswerInput[];
+    visitorId?: string | null;
+    sessionId?: string | null;
+    funnelId?: string | null;
+  }
+) {
+  if (!params.answers.length) return 0;
+
+  const questionKeys = [
+    ...new Set(
+      params.answers
+        .map((answer) => normalizeSpecialQuestionKey(answer.questionKey || answer.questionId))
+        .filter(Boolean)
+    )
+  ];
+
+  const questionByKey = new Map<string, Record<string, any>>();
+  if (questionKeys.length > 0) {
+    const { data, error } = await supabase
+      .from("special_questions")
+      .select("id,question_key,question_text,option_a_label,option_b_label,category,payload")
+      .in("question_key", questionKeys);
+
+    if (error) throw error;
+    (data || []).forEach((question: Record<string, any>) => {
+      if (question.question_key) questionByKey.set(String(question.question_key), question);
+    });
+  }
+
+  const now = new Date().toISOString();
+  const rows = params.answers
+    .map((answer, index) => {
+      const questionKey = normalizeSpecialQuestionKey(answer.questionKey || answer.questionId);
+      const question = questionKey ? questionByKey.get(questionKey) : null;
+      const selectedOption = stringValue(answer.selectedOption).toUpperCase();
+      if (selectedOption !== "A" && selectedOption !== "B") return null;
+
+      const selectedLabel = stringValue(answer.selectedLabel);
+      const optionALabel =
+        stringValue(answer.optionALabel) ||
+        stringValue(question?.option_a_label) ||
+        (selectedOption === "A" ? selectedLabel : "A");
+      const optionBLabel =
+        stringValue(answer.optionBLabel) ||
+        stringValue(question?.option_b_label) ||
+        (selectedOption === "B" ? selectedLabel : "B");
+      const questionText =
+        stringValue(answer.questionText) ||
+        stringValue(question?.question_text) ||
+        "スペシャルクエスチョン";
+
+      return {
+        diagnosis_id: params.diagnosisId,
+        visitor_id: params.visitorId || null,
+        session_id: params.sessionId || null,
+        funnel_id: params.funnelId || null,
+        question_id: question?.id || null,
+        question_key: questionKey || null,
+        question_text: questionText,
+        category: stringValue(answer.category) || stringValue(question?.category) || null,
+        option_a_label: optionALabel,
+        option_b_label: optionBLabel,
+        selected_option: selectedOption,
+        selected_label:
+          selectedLabel || (selectedOption === "A" ? optionALabel : optionBLabel),
+        answer_order: safePositiveInteger(answer.answerOrder, index + 1),
+        response_time_ms: safeNonNegativeNumber(answer.responseTime),
+        payload: {
+          ...getObjectPayload(question?.payload),
+          ...getObjectPayload(answer.payload)
+        },
+        answered_at: now,
+        created_at: now,
+        updated_at: now
+      };
+    })
+    .filter((row): row is Record<string, unknown> => Boolean(row));
+
+  if (!rows.length) return 0;
+
+  const { error } = await supabase.from("special_question_answers").insert(rows);
+  if (error) throw error;
+  return rows.length;
+}
+
 async function insertEvent(
   supabase: ReturnType<typeof createClient>,
   eventName: string,
@@ -112,6 +239,9 @@ Deno.serve(async (request: Request) => {
     const expiresAt =
       body.expiresAt || new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString();
     const answers = Array.isArray(body.answers) ? body.answers : [];
+    const specialAnswers = Array.isArray(body.specialAnswers)
+      ? body.specialAnswers as SpecialAnswerInput[]
+      : [];
 
     const { data, error } = await supabase
       .from("diagnoses")
@@ -139,6 +269,14 @@ Deno.serve(async (request: Request) => {
 
     if (error) throw error;
 
+    const specialAnswersSaved = await insertSpecialQuestionAnswers(supabase, {
+      diagnosisId: data.id,
+      answers: specialAnswers,
+      visitorId: body.visitorId || null,
+      sessionId: body.sessionId || null,
+      funnelId: body.funnelId || null
+    });
+
     if (body.funnelId) {
       const { error: progressDeleteError } = await supabase
         .from("diagnosis_progress_sessions")
@@ -164,8 +302,11 @@ Deno.serve(async (request: Request) => {
         pagePath: body.pagePath || null,
         payload: {
           resultType: body.resultType,
-          answeredCount: answers.length,
-          totalResponseTime: answers.reduce(
+          answeredCount: answers.length + specialAnswers.length,
+          normalAnsweredCount: answers.length,
+          specialAnsweredCount: specialAnswers.length,
+          specialAnswersSaved,
+          totalResponseTime: [...answers, ...specialAnswers].reduce(
             (sum: number, answer: { responseTime?: number }) => sum + Number(answer.responseTime || 0),
             0
           )
@@ -179,7 +320,8 @@ Deno.serve(async (request: Request) => {
     return jsonResponse({
       diagnosisId: data.id,
       createdAt: data.created_at,
-      expiresAt: data.expires_at
+      expiresAt: data.expires_at,
+      specialAnswersSaved
     });
   } catch (error) {
     return jsonResponse({ error: errorMessage(error) }, 500);

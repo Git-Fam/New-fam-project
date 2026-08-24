@@ -136,6 +136,7 @@ Deno.serve(async (request: Request) => {
   try {
     const requestUrl = new URL(request.url);
     const days = Math.max(1, Math.min(90, Number(requestUrl.searchParams.get("days") || 14)));
+    const includeAdminLogs = requestUrl.searchParams.get("includeAdminLogs") === "1";
     const supabase = getSupabaseClient();
 
     await insertAdminAuditLog(supabase, request, "admin_kpi_view", {
@@ -183,23 +184,28 @@ Deno.serve(async (request: Request) => {
       .limit(20);
     if (dropoffsError) throw dropoffsError;
 
-    const { data: adminLogs, error: adminLogsError } = await supabase
-      .from("admin_audit_logs")
-      .select("event_name, success, metadata, ip_address, created_at")
-      .order("created_at", { ascending: false })
-      .limit(50);
-    if (adminLogsError) {
-      console.warn("admin audit logs select failed", adminLogsError);
-    }
-
-    return jsonResponse({
+    const responseBody: Record<string, unknown> = {
       daily: daily || [],
       weekly: weekly || [],
       monthly: monthly || [],
       resultTypes: resultTypes || [],
-      dropoffs: dropoffs || [],
-      adminLogs: adminLogsError ? [] : adminLogs || []
-    });
+      dropoffs: dropoffs || []
+    };
+
+    if (includeAdminLogs) {
+      const { data: adminLogs, error: adminLogsError } = await supabase
+        .from("admin_audit_logs")
+        .select("event_name, success, metadata, ip_address, created_at")
+        .order("created_at", { ascending: false })
+        .limit(50);
+      if (adminLogsError) {
+        console.warn("admin audit logs select failed", adminLogsError);
+      } else {
+        responseBody.adminLogs = adminLogs || [];
+      }
+    }
+
+    return jsonResponse(responseBody);
   } catch (error) {
     return jsonResponse({ error: errorMessage(error) }, 500);
   }

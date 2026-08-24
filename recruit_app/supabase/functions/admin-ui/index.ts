@@ -18,6 +18,15 @@ const adminAppHtml = String.raw`
     </div>
   </header>
 
+  <nav class="admin-page-tabs" aria-label="管理画面メニュー">
+    <button class="is-active" type="button" data-admin-page="kpi">KPI集計</button>
+    <button type="button" data-admin-page="users">ユーザー情報</button>
+    <button type="button" data-admin-page="editor">質問・文言編集</button>
+  </nav>
+
+  <p class="admin-status admin-global-status" id="adminStatus" role="status"></p>
+
+  <div class="admin-page is-active" data-admin-page-panel="kpi">
   <section class="admin-section kpi-section">
     <div class="admin-section-head">
       <div>
@@ -113,14 +122,16 @@ const adminAppHtml = String.raw`
         <p class="kpi-panel-note">診断開始後、30分以上進捗が止まったものを離脱として集計します。</p>
         <div class="kpi-result-list" id="kpiDropoffs"></div>
       </div>
-      <div class="kpi-panel kpi-panel-wide">
+      <div class="kpi-panel kpi-panel-wide" id="adminAuditPanel" hidden>
         <h3>管理操作ログ</h3>
         <p class="kpi-panel-note">ログイン、管理画面表示、保存、画像アップロード、KPI閲覧の直近50件です。</p>
         <div class="kpi-table-wrap" id="adminAuditLogTable"></div>
       </div>
     </div>
   </section>
+  </div>
 
+  <div class="admin-page" data-admin-page-panel="users">
   <section class="admin-section admin-user-section">
     <div class="admin-section-head">
       <div>
@@ -146,6 +157,7 @@ const adminAppHtml = String.raw`
         <div class="admin-user-tabs" aria-label="ユーザー情報カテゴリ">
           <button class="is-active" type="button" data-admin-user-tab="diagnoses">診断結果</button>
           <button type="button" data-admin-user-tab="preferences">LINE情報</button>
+          <button type="button" data-admin-user-tab="special">スペシャル回答</button>
           <button type="button" data-admin-user-tab="ai">AI状態</button>
           <button type="button" data-admin-user-tab="handoffs">相談</button>
           <button type="button" data-admin-user-tab="conversations">会話履歴</button>
@@ -159,6 +171,10 @@ const adminAppHtml = String.raw`
             <h3>LINE追加取得情報</h3>
             <div id="adminUserPreferences"></div>
             <div id="adminUserSurveyAnswers"></div>
+          </section>
+          <section class="admin-user-panel" data-admin-user-panel="special">
+            <h3>スペシャル回答</h3>
+            <div id="adminUserSpecialAnswers"></div>
           </section>
           <section class="admin-user-panel" data-admin-user-panel="ai">
             <h3>AI会話状態</h3>
@@ -176,40 +192,9 @@ const adminAppHtml = String.raw`
       </div>
     </div>
   </section>
+  </div>
 
-  <section class="admin-section line-survey-section">
-    <div class="admin-section-head">
-      <div>
-        <h2>LINEアンケート設定</h2>
-        <p>LINEで聞く4問の質問文・選択肢・表示順を変更します。保存キーはDB保存先に紐づくため固定です。</p>
-      </div>
-      <button class="secondary-button" id="saveLineSurvey" type="button">アンケート設定を保存</button>
-    </div>
-
-    <div class="line-survey-layout">
-      <aside class="line-survey-list" id="lineSurveyQuestionList"></aside>
-      <div class="line-survey-editor">
-        <label>
-          保存キー
-          <input id="lineSurveyKeyInput" type="text" readonly />
-        </label>
-        <label>
-          表示順
-          <input id="lineSurveySortInput" type="number" min="1" step="1" />
-        </label>
-        <label>
-          質問文
-          <input id="lineSurveyLabelInput" type="text" maxlength="120" />
-        </label>
-        <label>
-          選択肢（1行に1つ）
-          <textarea id="lineSurveyOptionsInput" rows="6"></textarea>
-          <small class="form-note">LINEの選択肢ラベルは20文字以内にしてください。保存時に内部valueは自動生成されます。</small>
-        </label>
-      </div>
-    </div>
-  </section>
-
+  <div class="admin-page" data-admin-page-panel="editor">
   <section class="admin-section">
     <h2>表示数値</h2>
     <div class="form-grid">
@@ -245,7 +230,109 @@ const adminAppHtml = String.raw`
     </div>
     <button class="primary-button" id="saveGeneral" type="button">保存</button>
   </section>
+  <section class="admin-section special-question-admin-section">
+    <div class="admin-section-head">
+      <div>
+        <h2>スペシャルクエスチョン</h2>
+        <p>通常のYES/NOカードとは別に、A/Bの究極2択を管理します。表示ONの件数と表示位置をここで調整します。</p>
+      </div>
+      <button class="secondary-button" id="saveSpecialQuestions" type="button">スペシャル設定を保存</button>
+    </div>
 
+    <div class="admin-card-toolbar special-question-admin-toolbar">
+      <p>出題ON: <strong id="specialQuestionActiveCount">0</strong>問</p>
+      <div class="admin-card-toolbar-actions">
+        <button class="secondary-button" id="addSpecialQuestion" type="button">新規作成</button>
+        <button class="secondary-button danger-button" id="deleteSpecialQuestion" type="button">選択中を削除</button>
+      </div>
+    </div>
+
+    <div class="special-question-admin-layout">
+      <aside class="special-question-admin-list" id="specialQuestionList"></aside>
+      <div class="special-question-admin-editor">
+        <label>
+          保存キー
+          <input id="specialQuestionKeyInput" type="text" readonly />
+        </label>
+        <label class="checkbox-label">
+          <input id="specialQuestionEnabledInput" type="checkbox" />
+          このスペシャルクエスチョンを出題する
+        </label>
+        <label>
+          表示位置
+          <input id="specialQuestionInsertAfterInput" type="number" min="1" step="1" />
+          <small class="form-note">1なら最初、10なら10枚目として表示します。</small>
+        </label>
+        <label>
+          同じ位置内の表示順
+          <input id="specialQuestionDisplayOrderInput" type="number" min="1" step="1" />
+        </label>
+        <label>
+          カテゴリ
+          <input id="specialQuestionCategoryInput" type="text" maxlength="80" placeholder="income / work_style など" />
+        </label>
+        <label>
+          質問文
+          <textarea id="specialQuestionTextInput" rows="3" maxlength="240"></textarea>
+        </label>
+        <label>
+          選択肢A
+          <input id="specialQuestionOptionAInput" type="text" maxlength="120" />
+        </label>
+        <label>
+          選択肢B
+          <input id="specialQuestionOptionBInput" type="text" maxlength="120" />
+        </label>
+        <label>
+          背景画像URL
+          <input id="specialQuestionImageInput" type="url" />
+        </label>
+        <input id="specialQuestionImageStoragePathInput" type="hidden" />
+        <div class="image-dropzone special-question-image-dropzone" id="specialQuestionImageDropzone" role="button" tabindex="0">
+          <strong>背景画像をドラッグ&ドロップ</strong>
+          <span>またはクリックして画像を選択（JPG / PNG / WebP、自動でWebP軽量化）</span>
+          <input id="specialQuestionImageFileInput" type="file" accept="image/jpeg,image/png,image/webp" />
+        </div>
+        <div class="special-question-admin-preview" id="specialQuestionPreview"></div>
+      </div>
+    </div>
+  </section>
+  <section class="admin-section">
+    <h2>スワイプ画像/質問内容</h2>
+    <label>
+      カード
+      <select id="cardSelect"></select>
+    </label>
+    <div class="admin-card-toolbar">
+      <p>出題候補: <strong id="activeCardCount">40</strong>問</p>
+      <div class="admin-card-toolbar-actions">
+        <button class="secondary-button" id="addCard" type="button">新規質問を追加</button>
+        <button class="secondary-button danger-button" id="deleteCard" type="button">選択中の質問を削除</button>
+        <button class="secondary-button" id="saveCardActivation" type="button">出題設定を保存</button>
+      </div>
+    </div>
+    <div class="admin-type-list admin-card-list" id="cardList" aria-label="スワイプカード一覧"></div>
+    <label>
+      質問文
+      <textarea id="cardQuestionInput" rows="3"></textarea>
+    </label>
+    <label>
+      画像URL
+      <input id="cardImageInput" type="url" />
+    </label>
+    <input id="cardImageStoragePathInput" type="hidden" />
+    <div class="image-dropzone" id="cardImageDropzone" role="button" tabindex="0">
+      <strong>画像をドラッグ&ドロップ</strong>
+      <span>またはクリックして画像を選択（JPG / PNG / WebP、自動でWebP軽量化）</span>
+      <input id="cardImageFileInput" type="file" accept="image/jpeg,image/png,image/webp" />
+    </div>
+    <label>
+      管理用ラベル
+      <input id="cardVisualInput" type="text" />
+    </label>
+    <div class="admin-preview" id="cardPreview"></div>
+    <button class="primary-button" id="saveCard" type="button">画像を保存</button>
+  </section>
   <section class="admin-section">
     <h2>診断結果文章</h2>
     <label>
@@ -291,44 +378,75 @@ const adminAppHtml = String.raw`
     </label>
     <button class="primary-button" id="saveResult" type="button">結果文章を保存</button>
   </section>
+  <section class="admin-section line-survey-section">
+    <div class="admin-section-head">
+      <div>
+        <h2>LINEアンケート設定</h2>
+        <p>LINEで聞く4問の質問文・選択肢・表示順を変更します。保存キーはDB保存先に紐づくため固定です。</p>
+      </div>
+      <button class="secondary-button" id="saveLineSurvey" type="button">アンケート設定を保存</button>
+    </div>
 
-  <section class="admin-section">
-    <h2>スワイプ画像/質問内容</h2>
-    <label>
-      カード
-      <select id="cardSelect"></select>
-    </label>
-    <div class="admin-card-toolbar">
-      <p>出題候補: <strong id="activeCardCount">40</strong>問</p>
-      <div class="admin-card-toolbar-actions">
-        <button class="secondary-button" id="addCard" type="button">新規質問を追加</button>
-        <button class="secondary-button danger-button" id="deleteCard" type="button">選択中の質問を削除</button>
-        <button class="secondary-button" id="saveCardActivation" type="button">出題設定を保存</button>
+    <div class="line-survey-layout">
+      <aside class="line-survey-list" id="lineSurveyQuestionList"></aside>
+      <div class="line-survey-editor">
+        <label>
+          保存キー
+          <input id="lineSurveyKeyInput" type="text" readonly />
+        </label>
+        <label>
+          表示順
+          <input id="lineSurveySortInput" type="number" min="1" step="1" />
+        </label>
+        <label>
+          質問文
+          <input id="lineSurveyLabelInput" type="text" maxlength="120" />
+        </label>
+        <label>
+          選択肢（1行に1つ）
+          <textarea id="lineSurveyOptionsInput" rows="6"></textarea>
+          <small class="form-note">LINEの選択肢ラベルは20文字以内にしてください。保存時に内部valueは自動生成されます。</small>
+        </label>
       </div>
     </div>
-    <div class="admin-type-list admin-card-list" id="cardList" aria-label="スワイプカード一覧"></div>
-    <label>
-      質問文
-      <textarea id="cardQuestionInput" rows="3"></textarea>
-    </label>
-    <label>
-      画像URL
-      <input id="cardImageInput" type="url" />
-    </label>
-    <input id="cardImageStoragePathInput" type="hidden" />
-    <div class="image-dropzone" id="cardImageDropzone" role="button" tabindex="0">
-      <strong>画像をドラッグ&ドロップ</strong>
-      <span>またはクリックして画像を選択（JPG / PNG / WebP、自動でWebP軽量化）</span>
-      <input id="cardImageFileInput" type="file" accept="image/jpeg,image/png,image/webp" />
-    </div>
-    <label>
-      管理用ラベル
-      <input id="cardVisualInput" type="text" />
-    </label>
-    <div class="admin-preview" id="cardPreview"></div>
-    <button class="primary-button" id="saveCard" type="button">画像を保存</button>
   </section>
+  <section class="admin-section ai-conversation-settings">
+    <div class="admin-section-head">
+      <div>
+        <h2>AI会話設定</h2>
+        <p>LINEでのAI相談の最大往復数と、担当者相談へ誘導する文言を変更します。</p>
+      </div>
+      <button class="secondary-button" id="saveAiConversationSettings" type="button">AI会話設定を保存</button>
+    </div>
 
+    <div class="form-grid ai-conversation-grid">
+      <label>
+        最大AI返信回数
+        <input id="lineAiMaxRepliesInput" type="number" min="1" max="10" step="1" />
+        <small class="form-note">相談セッションごとの上限です。1〜10回の範囲で保存します。</small>
+      </label>
+      <label class="ai-cta-message-field">
+        相談CTA本文
+        <textarea id="lineAiCtaMessageInput" rows="6"></textarea>
+      </label>
+      <label>
+        「相談してみる」ボタン表示
+        <input id="lineAiCtaPrimaryLabelInput" type="text" maxlength="20" />
+      </label>
+      <label>
+        「相談してみる」送信テキスト
+        <input id="lineAiCtaPrimaryTextInput" type="text" maxlength="300" />
+      </label>
+      <label>
+        「もう少しAIに聞く」ボタン表示
+        <input id="lineAiCtaSecondaryLabelInput" type="text" maxlength="20" />
+      </label>
+      <label>
+        「もう少しAIに聞く」送信テキスト
+        <input id="lineAiCtaSecondaryTextInput" type="text" maxlength="300" />
+      </label>
+    </div>
+  </section>
   <section class="admin-section">
     <h2>設定データ</h2>
     <div class="admin-actions">
@@ -338,8 +456,8 @@ const adminAppHtml = String.raw`
       <button class="text-button danger-text" id="resetSettings" type="button">リセット</button>
     </div>
     <textarea id="settingsJson" rows="8" spellcheck="false"></textarea>
-    <p class="admin-status" id="adminStatus" role="status"></p>
   </section>
+  </div>
 </main>
 `;
 

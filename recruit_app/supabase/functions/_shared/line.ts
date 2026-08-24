@@ -239,6 +239,26 @@ export async function replyLineMessages(replyToken: string, messages: unknown[])
   }
 }
 
+export async function markLineMessagesAsRead(markAsReadToken: string) {
+  const channelAccessToken = Deno.env.get("LINE_CHANNEL_ACCESS_TOKEN");
+  if (!channelAccessToken) {
+    throw new Error("LINE_CHANNEL_ACCESS_TOKEN is required");
+  }
+
+  const response = await fetch("https://api.line.me/v2/bot/chat/markAsRead", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${channelAccessToken}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ markAsReadToken })
+  });
+
+  if (!response.ok) {
+    throw new Error(await response.text());
+  }
+}
+
 export async function verifyLineSignature(body: string, signature: string | null) {
   const channelSecret = Deno.env.get("LINE_CHANNEL_SECRET");
   if (!channelSecret || !signature) return false;

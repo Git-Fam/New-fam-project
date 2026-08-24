@@ -1406,6 +1406,119 @@ a {
   color: #fff;
 }
 
+.swipe-shell .special-question-card {
+  background: #151827;
+}
+
+.swipe-shell .special-question-card__media {
+  position: absolute;
+  inset: 0;
+  background:
+    var(--special-question-bg, linear-gradient(135deg, transparent, transparent)),
+    radial-gradient(circle at 22% 18%, rgba(255, 45, 142, 0.42), transparent 34%),
+    radial-gradient(circle at 84% 4%, rgba(75, 196, 245, 0.42), transparent 30%),
+    linear-gradient(135deg, #171a2d 0%, #3c285d 48%, #11283a 100%);
+  background-position: center;
+  background-size: cover;
+  transform: scale(1.02);
+}
+
+.swipe-shell .special-question-card__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(15, 18, 32, 0.08), rgba(15, 18, 32, 0.72)),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0));
+}
+
+.swipe-shell .special-question-card__surface {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 22px;
+  padding: 24px;
+  color: #ffffff;
+}
+
+.swipe-shell .special-question-card__topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.swipe-shell .special-question-card__topline span,
+.swipe-shell .special-question-card__topline b {
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+}
+
+.swipe-shell .special-question-card__surface h2 {
+  margin: auto 0 0;
+  font-size: clamp(24px, 6.3vw, 34px);
+  line-height: 1.28;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.swipe-shell .special-question-card__choices {
+  display: grid;
+  gap: 12px;
+}
+
+.swipe-shell .special-question-card__choice {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  align-items: center;
+  gap: 12px;
+  min-height: 72px;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(18px);
+}
+
+.swipe-shell .special-question-card__choice span {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.swipe-shell .special-question-card__choice strong {
+  font-size: clamp(15px, 4vw, 18px);
+  line-height: 1.38;
+  font-weight: 800;
+}
+
+.swipe-shell .special-question-card__choice--a span {
+  background: #16a085;
+}
+
+.swipe-shell .special-question-card__choice--b span {
+  background: #ff2d8e;
+}
+
 .swipe-shell .swipe-actions {
   width: 100%;
   display: flex;
@@ -1451,6 +1564,11 @@ a {
   color: var(--figma-muted);
   font-size: 13px;
   font-weight: 800;
+}
+
+.swipe-shell .swipe-actions .icon-button span {
+  font-size: 24px;
+  font-weight: 900;
 }
 
 .swipe-hint-text {
@@ -3770,7 +3888,15 @@ a {
 }
 
 .image-dropzone input {
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
 }
 
 .image-dropzone.is-dragging {

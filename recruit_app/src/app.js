@@ -7,10 +7,11 @@ import {
   buildSettingsFromMaster,
   getConfiguredResults,
   getCurrentComparisonCount,
+  getDiagnosisQuestionError,
   getDiagnosisCards,
   getResultKey,
   loadAdminSettings,
-} from "./data.js?v=20260807-100q-balanced-v2";
+} from "./data.js?v=20260821-specialq-flow";
 
 const config = window.CAREER_APP_CONFIG || {};
 
@@ -44,6 +45,7 @@ const GOOGLE_ANALYTICS_EVENTS = new Set([
 
 const state = {
   answers: [],
+  specialAnswers: [],
   currentIndex: 0,
   cardStartedAt: 0,
   isAnimating: false,
@@ -407,14 +409,31 @@ function logDiagnosisProgress(payload = {}) {
   }).catch(() => {});
 }
 
+function isSpecialCard(card) {
+  return card?.kind === "special";
+}
+
+function getQuestionTrackingId(card) {
+  if (!card) return null;
+  return isSpecialCard(card) ? card.questionKey || card.key || card.id : card.id;
+}
+
+function getAllDiagnosisAnswers(diagnosis) {
+  return [
+    ...(diagnosis?.answers || []),
+    ...(diagnosis?.specialAnswers || []),
+  ].sort((a, b) => Number(a.answerOrder || 0) - Number(b.answerOrder || 0));
+}
+
 function calculateScores(cardList, answerList) {
   const totalScores = Object.fromEntries(AXIS_ORDER.map((axis) => [axis, 0]));
 
   answerList.forEach((answerData) => {
     const card = cardList.find((item) => item.id === answerData.imageId);
-    if (!card) return;
+    if (!card || isSpecialCard(card)) return;
 
-    const scores = answerData.answer === "yes" ? card.yesScores : card.noScores;
+    const scores =
+      answerData.answer === "yes" ? card.yesScores || {} : card.noScores || {};
     Object.entries(scores).forEach(([key, value]) => {
       totalScores[key] += value;
     });
@@ -427,10 +446,11 @@ function calculateMaxScores(cardList) {
   const maxScores = Object.fromEntries(AXIS_ORDER.map((axis) => [axis, 0]));
 
   cardList.forEach((card) => {
+    if (isSpecialCard(card)) return;
     AXIS_ORDER.forEach((axis) => {
       maxScores[axis] += Math.max(
-        card.yesScores[axis] || 0,
-        card.noScores[axis] || 0,
+        card.yesScores?.[axis] || 0,
+        card.noScores?.[axis] || 0,
       );
     });
   });
@@ -471,7 +491,8 @@ function buildDiagnosis() {
     diagnosisId: crypto.randomUUID
       ? `diag_${crypto.randomUUID()}`
       : `diag_${Date.now()}`,
-    answers: state.answers,
+    answers: [...state.answers],
+    specialAnswers: [...state.specialAnswers],
     scores,
     maxScores,
     scoreRates,
@@ -492,6 +513,7 @@ function buildDiagnosis() {
 async function saveDiagnosis(diagnosis) {
   const payload = {
     answers: diagnosis.answers,
+    specialAnswers: diagnosis.specialAnswers || [],
     scores: diagnosis.scores,
     scoreRates: diagnosis.scoreRates,
     primaryAxis: diagnosis.primaryAxis,
@@ -522,6 +544,7 @@ async function saveDiagnosis(diagnosis) {
 
 function resetDiagnosis() {
   state.answers = [];
+  state.specialAnswers = [];
   state.currentIndex = 0;
   state.cardStartedAt = performance.now();
   state.isAnimating = false;
@@ -531,6 +554,12 @@ function resetDiagnosis() {
 
 async function startDiagnosis() {
   if (masterLoadPromise) await masterLoadPromise;
+  const questionPlanError = getDiagnosisQuestionError(settings);
+  if (questionPlanError) {
+    window.alert(questionPlanError);
+    showScreen("lp");
+    return;
+  }
   cards = getDiagnosisCards(settings);
   resetDiagnosis();
   const funnelId = startNewFunnel();
@@ -538,7 +567,8 @@ async function startDiagnosis() {
     cardCount: cards.length,
     totalQuestions: cards.length,
     currentOrder: 1,
-    currentImageId: cards[0]?.id || null,
+    currentImageId: getQuestionTrackingId(cards[0]),
+    currentQuestionKind: cards[0]?.kind || "normal",
     lastAnsweredOrder: 0,
     lastAnsweredImageId: null,
     funnelId,
@@ -551,8 +581,39 @@ function cardTemplate(card, index, isNext = false) {
   const cardNumber = index + 1;
   // JS hooks: swipe-card, is-next, choice-yes, choice-no are used by gesture logic.
   // Rename them only together with selectors in renderSwipeCard(), bindCardGesture(), and chooseAnswer().
+  if (isSpecialCard(card)) {
+    const backgroundStyle = card.backgroundImageUrl
+      ? ` style="--special-question-bg: url('${escapeHtml(card.backgroundImageUrl)}')"`
+      : "";
+
+    return `
+      <article class="swipe-card special-question-card${isNext ? " is-next" : ""}" data-card-id="${escapeHtml(card.id)}" data-card-kind="special"${backgroundStyle}>
+        <div class="choice-badge choice-no">A</div>
+        <div class="choice-badge choice-yes">B</div>
+        <div class="special-question-card__media" aria-hidden="true"></div>
+        <div class="special-question-card__surface">
+          <div class="special-question-card__topline">
+            <span>SPECIAL QUESTION</span>
+            <b># ${cardNumber}</b>
+          </div>
+          <h2>${escapeHtml(card.questionText || card.question)}</h2>
+          <div class="special-question-card__choices" aria-label="選択肢">
+            <div class="special-question-card__choice special-question-card__choice--a">
+              <span>A</span>
+              <strong>${escapeHtml(card.optionALabel)}</strong>
+            </div>
+            <div class="special-question-card__choice special-question-card__choice--b">
+              <span>B</span>
+              <strong>${escapeHtml(card.optionBLabel)}</strong>
+            </div>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
   return `
-    <article class="swipe-card${isNext ? " is-next" : ""}" data-card-id="${escapeHtml(card.id)}">
+    <article class="swipe-card${isNext ? " is-next" : ""}" data-card-id="${escapeHtml(card.id)}" data-card-kind="normal">
       <div class="choice-badge choice-no">NO</div>
       <div class="choice-badge choice-yes">YES</div>
       <div class="card-photo" style="background-image: url('${escapeHtml(card.image)}')"></div>
@@ -582,12 +643,32 @@ function updateSwipeProgressUI() {
             ? "半分まであと少し！"
             : answeredRate >= 0.2
               ? "いいペースです"
-              : "直感で選ぶだけ";
+      : "直感で選ぶだけ";
   }
+}
+
+function updateSwipeActionButtons(card = cards[state.currentIndex]) {
+  const noButton = $("#swipeNo");
+  const yesButton = $("#swipeYes");
+  if (!noButton || !yesButton) return;
+
+  if (isSpecialCard(card)) {
+    noButton.setAttribute("aria-label", "Aを選ぶ");
+    yesButton.setAttribute("aria-label", "Bを選ぶ");
+    noButton.innerHTML = "<span>A</span>";
+    yesButton.innerHTML = "<span>B</span>";
+    return;
+  }
+
+  noButton.setAttribute("aria-label", "違う");
+  yesButton.setAttribute("aria-label", "好き");
+  noButton.innerHTML = '<img src="./assets/figma/pc-x.svg" alt="" />';
+  yesButton.innerHTML = '<img src="./assets/figma/pc-heart.svg" alt="" />';
 }
 
 function renderSwipeCard() {
   updateSwipeProgressUI();
+  updateSwipeActionButtons();
 
   const current = cards[state.currentIndex];
   const next = cards[state.currentIndex + 1];
@@ -616,6 +697,7 @@ function promoteNextCard() {
 
   const promoted = stack.querySelector(".swipe-card.is-next");
   const upcoming = cards[state.currentIndex + 1];
+  updateSwipeActionButtons(cards[state.currentIndex]);
 
   if (promoted) {
     // is-next を外した瞬間、CSSのtransitionで
@@ -641,8 +723,10 @@ function promoteNextCard() {
 
 function preloadCardImage(card) {
   if (!card) return;
+  const source = card.image || card.backgroundImageUrl;
+  if (!source) return;
   const img = new Image();
-  img.src = card.image;
+  img.src = source;
 }
 
 function bindCardGesture(card) {
@@ -773,20 +857,43 @@ function chooseAnswer(
   const answerOrder = state.currentIndex + 1;
   const nextCard = cards[state.currentIndex + 1];
   const responseTime = performance.now() - state.cardStartedAt;
+  const answeredQuestionId = getQuestionTrackingId(currentCard);
+  const questionKind = currentCard?.kind || "normal";
 
-  state.answers.push({
-    imageId: currentCard.id,
-    answer,
-    answerOrder,
-    responseTime: Math.round(responseTime),
-  });
+  if (isSpecialCard(currentCard)) {
+    const selectedOption = answer === "yes" ? "B" : "A";
+    state.specialAnswers.push({
+      questionId: currentCard.questionKey || currentCard.key || currentCard.id,
+      questionKey: currentCard.questionKey || currentCard.key || currentCard.id,
+      questionText: currentCard.questionText || currentCard.question,
+      optionALabel: currentCard.optionALabel,
+      optionBLabel: currentCard.optionBLabel,
+      selectedOption,
+      selectedLabel:
+        selectedOption === "B"
+          ? currentCard.optionBLabel
+          : currentCard.optionALabel,
+      answerOrder,
+      responseTime: Math.round(responseTime),
+      category: currentCard.category || null,
+    });
+  } else {
+    state.answers.push({
+      imageId: currentCard.id,
+      answer,
+      answerOrder,
+      responseTime: Math.round(responseTime),
+    });
+  }
 
   if (answerOrder < cards.length) {
     logDiagnosisProgress({
       currentOrder: answerOrder + 1,
-      currentImageId: nextCard?.id || null,
+      currentImageId: getQuestionTrackingId(nextCard),
+      currentQuestionKind: nextCard?.kind || "normal",
       lastAnsweredOrder: answerOrder,
-      lastAnsweredImageId: currentCard.id,
+      lastAnsweredImageId: answeredQuestionId,
+      lastAnsweredKind: questionKind,
     });
   }
 
@@ -835,19 +942,24 @@ function chooseAnswer(
 
 async function completeDiagnosis() {
   const diagnosis = buildDiagnosis();
-  const lastAnswer = diagnosis.answers[diagnosis.answers.length - 1] || null;
+  const allAnswers = getAllDiagnosisAnswers(diagnosis);
+  const lastAnswer = allAnswers[allAnswers.length - 1] || null;
   state.currentDiagnosis = diagnosis;
   saveDraft(diagnosis);
   logEvent("diagnosis_complete", {
-    answeredCount: diagnosis.answers.length,
+    answeredCount: allAnswers.length,
+    normalAnsweredCount: diagnosis.answers.length,
+    specialAnsweredCount: diagnosis.specialAnswers.length,
     totalQuestions: cards.length,
     currentOrder: cards.length,
-    currentImageId: cards[cards.length - 1]?.id || null,
-    lastAnsweredOrder: diagnosis.answers.length,
-    lastAnsweredImageId: lastAnswer?.imageId || null,
+    currentImageId: getQuestionTrackingId(cards[cards.length - 1]),
+    currentQuestionKind: cards[cards.length - 1]?.kind || "normal",
+    lastAnsweredOrder: allAnswers.length,
+    lastAnsweredImageId: lastAnswer?.imageId || lastAnswer?.questionId || null,
+    lastAnsweredKind: lastAnswer?.imageId ? "normal" : "special",
     resultType: diagnosis.resultType,
     funnelId: diagnosis.funnelId,
-    totalTime: diagnosis.answers.reduce(
+    totalTime: allAnswers.reduce(
       (sum, answer) => sum + answer.responseTime,
       0,
     ),

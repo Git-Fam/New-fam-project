@@ -91,7 +91,13 @@ type SupabaseClient = ReturnType<typeof createClient>;
 type AiCareerContext = {
   diagnosis: Record<string, any> | null;
   preferences: Record<string, any> | null;
+  specialAnswers: SpecialAnswerContext[];
   recentMessages: Array<Record<string, any>>;
+};
+
+type SpecialAnswerContext = {
+  questionText: string;
+  selectedLabel: string;
 };
 
 type AiConversationStatus = "idle" | "ai_replying" | "cta_shown" | "handed_off" | "stopped";
@@ -415,33 +421,45 @@ function createCurrentQuestionMessage(
   return buildCareerSurveyQuestionMessage(questions[step], intro);
 }
 
-function buildSurveyCompleteMessage(preferences: Record<string, string | null>) {
+function buildSurveyCompleteQuickReply() {
+  return {
+    items: [
+      {
+        type: "action",
+        action: {
+          type: "message",
+          label: "キャリア相談",
+          text: "キャリア相談で詳しく聞く"
+        }
+      }
+    ]
+  };
+}
+
+function buildFallbackSurveyCompleteText(preferences: Record<string, string | null>) {
   const location = preferences.desired_location_label || "希望勤務地";
   const timing = preferences.job_change_timing_label || "転職時期";
   const priority = preferences.priority_label || "重視したい条件";
 
+  return (
+    "回答ありがとうございます。\n\n" +
+    "あなたの場合、\n" +
+    `「${location}で働ける環境」\n` +
+    `「${timing}を前提に動ける働き方」\n` +
+    `「${priority}を大切にできる職場」\n\n` +
+    "との相性が高そうです。\n" +
+    "さらに、現在の条件に合う紹介可能な選択肢があります。"
+  );
+}
+
+function buildSurveyCompleteMessage(
+  preferences: Record<string, string | null>,
+  generatedText?: string | null
+) {
   return {
     type: "text",
-    text:
-      "回答ありがとうございます。\n\n" +
-      "あなたの場合、\n" +
-      `「${location}で働ける環境」\n` +
-      `「${timing}を前提に動ける働き方」\n` +
-      `「${priority}を大切にできる職場」\n\n` +
-      "との相性が高そうです。\n" +
-      "さらに、現在の条件に合う紹介可能な選択肢があります。",
-    quickReply: {
-      items: [
-        {
-          type: "action",
-          action: {
-            type: "message",
-            label: "キャリア相談",
-            text: "キャリア相談で詳しく聞く"
-          }
-        }
-      ]
-    }
+    text: generatedText || buildFallbackSurveyCompleteText(preferences),
+    quickReply: buildSurveyCompleteQuickReply()
   };
 }
 
@@ -865,6 +883,37 @@ async function getCurrentCareerSessionAiReplyCount(
   return count || 0;
 }
 
+async function readSpecialAnswerContext(
+  supabase: SupabaseClient,
+  appUser: AppUser,
+  diagnosisId?: string | null
+): Promise<SpecialAnswerContext[]> {
+  let query = supabase
+    .from("special_question_answers")
+    .select("question_text,selected_label,answer_order,answered_at")
+    .eq("user_id", appUser.id)
+    .limit(6);
+
+  if (diagnosisId) {
+    query = query.eq("diagnosis_id", diagnosisId).order("answer_order", { ascending: true });
+  } else {
+    query = query.order("answered_at", { ascending: false });
+  }
+
+  const { data, error } = await query;
+  if (error) {
+    console.warn("AI special answer context lookup failed", error);
+    return [];
+  }
+
+  return (data || [])
+    .map((answer: Record<string, any>) => ({
+      questionText: String(answer.question_text || "").trim(),
+      selectedLabel: String(answer.selected_label || "").trim()
+    }))
+    .filter((answer) => answer.questionText && answer.selectedLabel);
+}
+
 async function getAiCareerContext(
   supabase: SupabaseClient,
   appUser: AppUser,
@@ -886,7 +935,7 @@ async function getAiCareerContext(
   const [diagnosisResult, preferencesResult, messagesResult] = await Promise.all([
     supabase
       .from("user_diagnosis_records")
-      .select("result_type")
+      .select("diagnosis_id,result_type")
       .eq("user_id", appUser.id)
       .order("diagnosed_at", { ascending: false })
       .limit(1)
@@ -903,9 +952,17 @@ async function getAiCareerContext(
   if (preferencesResult.error) console.warn("AI preferences context lookup failed", preferencesResult.error);
   if (messagesResult.error) console.warn("AI recent messages lookup failed", messagesResult.error);
 
+  const diagnosis = diagnosisResult.data || null;
+  const specialAnswers = await readSpecialAnswerContext(
+    supabase,
+    appUser,
+    diagnosis?.diagnosis_id || null
+  );
+
   return {
-    diagnosis: diagnosisResult.data || null,
+    diagnosis,
     preferences: preferencesResult.data || null,
+    specialAnswers,
     recentMessages: Array.isArray(messagesResult.data) ? [...messagesResult.data].reverse() : []
   };
 }
@@ -921,6 +978,19 @@ function formatPreferencesForPrompt(preferences: Record<string, any> | null) {
     `転職時期: ${preferences.job_change_timing_label || "未回答"}`,
     `現在職種: ${preferences.current_job_label || "未回答"}`,
     `重視条件: ${preferences.priority_label || "未回答"}`
+  ].join("\n");
+}
+
+function formatSpecialAnswersForPrompt(answers: SpecialAnswerContext[] = []) {
+  if (!answers.length) return "スペシャル回答: なし";
+  return [
+    "スペシャル回答:",
+    ...answers.slice(0, 6).map((answer) => {
+      return [
+        `質問: ${truncateText(redactForAi(answer.questionText), 120)}`,
+        `選択: ${truncateText(redactForAi(answer.selectedLabel), 80)}`
+      ].join("\n");
+    })
   ].join("\n");
 }
 
@@ -963,6 +1033,7 @@ function buildAiUserPrompt(params: {
     `今回が最後のAI返信か: ${params.isFinalReply ? "はい" : "いいえ"}`,
     formatDiagnosisForPrompt(params.context.diagnosis),
     formatPreferencesForPrompt(params.context.preferences),
+    formatSpecialAnswersForPrompt(params.context.specialAnswers),
     formatRecentMessagesForPrompt(params.context.recentMessages),
     `今回のユーザー発言: ${truncateText(redactForAi(params.userText), getAiMaxInputChars())}`
   ].join("\n\n");
@@ -1010,6 +1081,131 @@ function parseAiCareerDecision(text: string) {
   const reply = typeof parsed.reply === "string" ? parsed.reply.trim() : "";
 
   return { careerRelated, reply };
+}
+
+function getPreferenceAnswer(preferences: Record<string, string | null>, questionKey: string) {
+  return preferences[`${questionKey}_label`] || preferences[questionKey] || "未回答";
+}
+
+function formatSurveyAnswersForPrompt(
+  questions: SurveyQuestion[],
+  preferences: Record<string, string | null>
+) {
+  return questions
+    .map((question) => `${question.label}: ${getPreferenceAnswer(preferences, question.key)}`)
+    .join("\n");
+}
+
+function buildSurveyCompleteSystemPrompt() {
+  return [
+    "あなたは20代前半の求職者向けキャリア診断サービスのLINE文面を作るコピーライターです。",
+    "LINEアンケート回答をもとに、ユーザーが「自分はそういう場所で輝けるのかも」と思える短い結果文を作ってください。",
+    "回答をそのまま差し込むだけの文は禁止です。回答を抽象化し、少し前向きで魅力的な言葉に言い換えてください。",
+    "求人企業名、実在企業名、収入保証、内定保証は書かないでください。",
+    "断定しすぎず、「力を発揮しやすそう」「相性が高そう」程度の表現にしてください。",
+    "本文は日本語で220文字以内。LINEで読みやすく改行してください。",
+    "以下の構成にしてください: 回答へのお礼、3つの引用フレーズ、相性が高そうという一文、紹介可能な選択肢がある一文。",
+    "出力はJSONのみ。Markdownやコードブロックは禁止です。",
+    '{"message":"回答ありがとうございます。\\n\\nあなたは、\\n「刺激がたくさんある環境」\\n「フレキシブルな働き方」\\n「自分の意見を大切にできる職場」\\n\\nで力を発揮しやすそうです。\\n\\nさらに、今の希望条件に近い紹介可能な選択肢があります。"} の形式で返してください。'
+  ].join("\n");
+}
+
+function buildSurveyCompleteUserPrompt(params: {
+  questions: SurveyQuestion[];
+  preferences: Record<string, string | null>;
+  diagnosis: Record<string, any> | null;
+  specialAnswers?: SpecialAnswerContext[];
+}) {
+  return [
+    formatDiagnosisForPrompt(params.diagnosis),
+    formatSpecialAnswersForPrompt(params.specialAnswers || []),
+    "LINEアンケート回答:",
+    formatSurveyAnswersForPrompt(params.questions, params.preferences)
+  ].join("\n\n");
+}
+
+function parseSurveyCompleteMessage(text: string) {
+  const parsed = parseJsonObject(text);
+  if (!parsed) {
+    throw new Error("AI survey completion JSON was invalid");
+  }
+
+  const message = typeof parsed.message === "string" ? parsed.message.trim() : "";
+  if (!message) {
+    throw new Error("AI survey completion message was empty");
+  }
+
+  return truncateText(message, 420);
+}
+
+async function generateGeminiSurveyCompleteMessage(params: {
+  questions: SurveyQuestion[];
+  preferences: Record<string, string | null>;
+  diagnosis: Record<string, any> | null;
+  specialAnswers?: SpecialAnswerContext[];
+}) {
+  const apiKey = Deno.env.get("GEMINI_API_KEY") || Deno.env.get("GOOGLE_API_KEY");
+  if (!apiKey) {
+    throw new Error("GEMINI_API_KEY is required");
+  }
+
+  const model = getAiModel("gemini");
+  const modelPath = model.startsWith("models/") ? model : `models/${model}`;
+  const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/${modelPath}:generateContent`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-goog-api-key": apiKey
+    },
+    body: JSON.stringify({
+      systemInstruction: {
+        parts: [{ text: buildSurveyCompleteSystemPrompt() }]
+      },
+      contents: [
+        {
+          role: "user",
+          parts: [{ text: buildSurveyCompleteUserPrompt(params) }]
+        }
+      ],
+      generationConfig: {
+        maxOutputTokens: 450,
+        temperature: 0.85,
+        responseMimeType: "application/json"
+      }
+    })
+  });
+
+  const data = (await response.json().catch(() => ({}))) as Record<string, any>;
+  if (!response.ok) {
+    throw new Error(errorMessage(data) || `Gemini request failed: ${response.status}`);
+  }
+
+  const text = extractGeminiOutputText(data);
+  if (!text) {
+    throw new Error("Gemini survey completion text was empty");
+  }
+
+  return {
+    provider: "gemini",
+    model,
+    text: parseSurveyCompleteMessage(text),
+    usage: data.usageMetadata || null,
+    responseId: null
+  };
+}
+
+async function generateAiSurveyCompleteMessage(params: {
+  questions: SurveyQuestion[];
+  preferences: Record<string, string | null>;
+  diagnosis: Record<string, any> | null;
+  specialAnswers?: SpecialAnswerContext[];
+}) {
+  const provider = getAiProvider();
+  if (provider === "gemini" || provider === "google") {
+    return generateGeminiSurveyCompleteMessage(params);
+  }
+
+  throw new Error(`Unsupported AI_PROVIDER: ${provider}`);
 }
 
 async function generateGeminiCareerReply(params: {
@@ -1726,6 +1922,33 @@ async function replyLineMessages(replyToken: string, messages: unknown[]) {
   if (!response.ok) throw new Error(await response.text());
 }
 
+async function markLineMessagesAsRead(markAsReadToken: string) {
+  const channelAccessToken = Deno.env.get("LINE_CHANNEL_ACCESS_TOKEN");
+  if (!channelAccessToken) throw new Error("LINE_CHANNEL_ACCESS_TOKEN is required");
+
+  const response = await fetch("https://api.line.me/v2/bot/chat/markAsRead", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${channelAccessToken}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ markAsReadToken })
+  });
+
+  if (!response.ok) throw new Error(await response.text());
+}
+
+async function markIncomingMessageAsRead(event: Record<string, any>) {
+  const token = event.message?.markAsReadToken;
+  if (typeof token !== "string" || !token) return;
+
+  try {
+    await markLineMessagesAsRead(token);
+  } catch (error) {
+    console.warn("LINE mark as read failed", error);
+  }
+}
+
 async function ensureAppUserByLineId(supabase: SupabaseClient, lineUserId: string): Promise<AppUser> {
   const now = new Date().toISOString();
   const { data: existing, error: lookupError } = await supabase
@@ -1960,6 +2183,22 @@ async function handleSurveyAnswer(
   }
 
   if (result.completed) {
+    let surveyCompleteMessage = buildSurveyCompleteMessage(result.preferences);
+    let generatedSurveyMessage: Awaited<ReturnType<typeof generateAiSurveyCompleteMessage>> | null = null;
+    let aiContext: AiCareerContext | null = null;
+    try {
+      aiContext = await getAiCareerContext(supabase, params.appUser, params.lineUserId, null);
+      generatedSurveyMessage = await generateAiSurveyCompleteMessage({
+        questions: params.questions,
+        preferences: result.preferences,
+        diagnosis: aiContext.diagnosis,
+        specialAnswers: aiContext.specialAnswers
+      });
+      surveyCompleteMessage = buildSurveyCompleteMessage(result.preferences, generatedSurveyMessage.text);
+    } catch (aiError) {
+      console.warn("AI survey completion message failed", aiError);
+    }
+
     await saveLineConversationSummary(supabase, {
       appUser: params.appUser,
       lineUserId: params.lineUserId,
@@ -1970,13 +2209,22 @@ async function handleSurveyAnswer(
       relatedSurveySessionId: session.id,
       payload: {
         surveyKey: CAREER_SURVEY_KEY,
-        preferences: result.preferences
+        preferences: result.preferences,
+        specialAnswers: aiContext?.specialAnswers || [],
+        aiGeneratedMessage: generatedSurveyMessage
+          ? {
+              provider: generatedSurveyMessage.provider,
+              model: generatedSurveyMessage.model,
+              responseId: generatedSurveyMessage.responseId,
+              usage: generatedSurveyMessage.usage
+            }
+          : null
       }
     });
 
     if (!params.event.replyToken) return true;
 
-    await replyAndSaveLineMessages(supabase, params.event.replyToken, [buildSurveyCompleteMessage(result.preferences)], {
+    await replyAndSaveLineMessages(supabase, params.event.replyToken, [surveyCompleteMessage], {
       appUser: params.appUser,
       lineUserId: params.lineUserId,
       conversationType: "survey",
@@ -2138,6 +2386,10 @@ Deno.serve(async (request: Request) => {
       }
 
       if (!lineUserId) continue;
+
+      if (event.type === "message") {
+        await markIncomingMessageAsRead(event);
+      }
 
       if (event.type === "postback") {
         const parsed = parseSurveyPostback(event.postback?.data);

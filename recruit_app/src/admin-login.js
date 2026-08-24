@@ -1,6 +1,6 @@
 const config = window.CAREER_APP_CONFIG || {};
 const ADMIN_SESSION_STORAGE_KEY = "ai-career-admin-session";
-const ADMIN_ASSET_VERSION = "20260807-100q-balanced-v2";
+const ADMIN_ASSET_VERSION = "20260821-specialq-flow";
 
 const $ = (selector) => document.querySelector(selector);
 

@@ -7,7 +7,7 @@ import {
   loadAdminSettings,
   saveAdminSettings,
   serializeSettingsForMaster
-} from "./data.js?v=20260807-100q-balanced-v2";
+} from "./data.js?v=20260821-specialq-flow";
 
 const config = window.CAREER_APP_CONFIG || {};
 const ADMIN_SESSION_STORAGE_KEY = "ai-career-admin-session";
@@ -19,6 +19,7 @@ let kpiRange = "daily";
 let userDashboard = null;
 let selectedAdminUserId = "";
 let adminUserTab = "diagnoses";
+let activeAdminPage = "kpi";
 let adminSessionToken = sessionStorage.getItem(ADMIN_SESSION_STORAGE_KEY) || "";
 let adminEventsBound = false;
 
@@ -29,6 +30,8 @@ const TARGET_UPLOAD_BYTES = 150 * 1024;
 const INITIAL_WEBP_QUALITY = 0.86;
 const MIN_WEBP_QUALITY = 0.62;
 const WEBP_QUALITY_STEP = 0.06;
+// 管理操作ログを画面に戻す場合は true に変更して src/admin.js をアップロードする。
+const SHOW_ADMIN_AUDIT_LOGS = false;
 const DEFAULT_LINE_SURVEY_QUESTIONS = [
   {
     key: "desired_location",
@@ -80,6 +83,9 @@ const DEFAULT_LINE_SURVEY_QUESTIONS = [
 
 let lineSurveyQuestions = normalizeLineSurveyQuestions([]);
 let selectedLineSurveyKey = lineSurveyQuestions[0]?.key || "";
+let specialQuestions = [];
+let selectedSpecialQuestionKey = "";
+let deletedSpecialQuestionKeys = [];
 
 function escapeHtml(value) {
   return String(value)
@@ -160,6 +166,56 @@ function normalizeLineSurveyQuestions(value) {
     })
     .filter(Boolean)
     .sort((a, b) => Number(a.sortOrder || 0) - Number(b.sortOrder || 0));
+}
+
+function normalizeSpecialQuestionKey(value, fallback = "") {
+  const normalized = String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9_-]/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  return normalized || fallback;
+}
+
+function normalizeSpecialQuestions(value) {
+  const source = Array.isArray(value) ? value : [];
+
+  return source
+    .map((question, index) => {
+      const key = normalizeSpecialQuestionKey(
+        question?.key || question?.questionKey,
+        `special-${String(index + 1).padStart(3, "0")}`
+      );
+      const questionText = String(question?.questionText || "").trim();
+      const optionALabel = String(question?.optionALabel || "").trim();
+      const optionBLabel = String(question?.optionBLabel || "").trim();
+      if (!key || !questionText || !optionALabel || !optionBLabel) return null;
+
+      return {
+        id: question?.id || "",
+        key,
+        questionText,
+        optionALabel,
+        optionBLabel,
+        category: String(question?.category || "preference").trim() || "preference",
+        enabled: question?.enabled !== false,
+        insertAfterOrder: Math.max(1, Math.floor(Number(question?.insertAfterOrder || 1))),
+        displayOrder: Math.max(1, Math.floor(Number(question?.displayOrder || index + 1))),
+        backgroundImageUrl: String(question?.backgroundImageUrl || "").trim(),
+        backgroundStoragePath: String(question?.backgroundStoragePath || "").trim(),
+        payload:
+          question?.payload && typeof question.payload === "object" && !Array.isArray(question.payload)
+            ? question.payload
+            : {}
+      };
+    })
+    .filter(Boolean)
+    .sort((a, b) => {
+      if (a.insertAfterOrder !== b.insertAfterOrder) return a.insertAfterOrder - b.insertAfterOrder;
+      if (a.displayOrder !== b.displayOrder) return a.displayOrder - b.displayOrder;
+      return a.key.localeCompare(b.key);
+    });
 }
 
 function formatBytes(bytes) {
@@ -298,8 +354,10 @@ function isUnauthorizedError(error) {
 async function requestKpiSummary() {
   const baseUrl = getFunctionsBaseUrl();
   if (!baseUrl) return null;
+  const params = new URLSearchParams({ days: "14" });
+  if (SHOW_ADMIN_AUDIT_LOGS) params.set("includeAdminLogs", "1");
 
-  const response = await fetch(`${baseUrl}/kpi-summary?days=14`, {
+  const response = await fetch(`${baseUrl}/kpi-summary?${params.toString()}`, {
     method: "GET",
     headers: getAdminTokenHeaders()
   });
@@ -419,6 +477,54 @@ async function uploadCardImage(file, originalFile = file) {
   );
 }
 
+async function uploadSpecialQuestionImage(file, originalFile = file) {
+  const baseUrl = getFunctionsBaseUrl();
+  if (!baseUrl) {
+    setStatus("画像アップロードにはSupabase接続設定が必要です");
+    return;
+  }
+
+  if (!file || !file.type.startsWith("image/")) {
+    setStatus("画像ファイルを選択してください");
+    return;
+  }
+
+  const questionKey = $("#specialQuestionKeyInput")?.value.trim();
+  if (!questionKey) {
+    setStatus("先にスペシャルクエスチョンを選択してください");
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("image", file);
+  formData.append("cardId", questionKey);
+  formData.append("oldImage", $("#specialQuestionImageInput")?.value.trim() || "");
+  formData.append("oldImageStoragePath", $("#specialQuestionImageStoragePathInput")?.value.trim() || "");
+
+  setStatus("背景画像をアップロード中です…");
+
+  const response = await fetch(`${baseUrl}/admin-master?action=upload-card-image`, {
+    method: "POST",
+    headers: getAdminTokenHeaders(),
+    body: formData
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    const error = new Error(text || "背景画像アップロードに失敗しました");
+    error.status = response.status;
+    throw error;
+  }
+
+  const data = await response.json();
+  $("#specialQuestionImageInput").value = data.publicUrl;
+  $("#specialQuestionImageStoragePathInput").value = data.path || "";
+  renderSpecialQuestionPreviewFromInputs();
+  setStatus(
+    `背景画像をアップロードしました（${formatBytes(originalFile.size)} → ${formatBytes(file.size)}）。保存するとスペシャルクエスチョンへ反映します`
+  );
+}
+
 async function loadRemoteSettings() {
   const master = await requestAdminMaster("GET");
   if (!master) return false;
@@ -428,6 +534,11 @@ async function loadRemoteSettings() {
   selectedLineSurveyKey = lineSurveyQuestions.some((question) => question.key === selectedLineSurveyKey)
     ? selectedLineSurveyKey
     : lineSurveyQuestions[0]?.key || "";
+  specialQuestions = normalizeSpecialQuestions(master.specialQuestions);
+  selectedSpecialQuestionKey = specialQuestions.some((question) => question.key === selectedSpecialQuestionKey)
+    ? selectedSpecialQuestionKey
+    : specialQuestions[0]?.key || "";
+  deletedSpecialQuestionKeys = [];
   saveAdminSettings(settings);
   results = getConfiguredResults(settings);
   cards = getConfiguredCards(settings);
@@ -438,6 +549,25 @@ async function persistMaster(statusMessage) {
   if ($("#lineSurveyKeyInput")?.value && !saveLineSurveyQuestionFromInputs()) {
     return;
   }
+  if ($("#specialQuestionKeyInput")?.value && !saveSpecialQuestionFromInputs()) {
+    return;
+  }
+  const currentQuestionCount = $("#diagnosisQuestionCountInput")
+    ? getSafeQuestionCount($("#diagnosisQuestionCountInput").value)
+    : getSafeQuestionCount();
+  if (!validateSpecialQuestionCapacity(currentQuestionCount)) {
+    return;
+  }
+  if ($("#lineAiMaxRepliesInput")) {
+    settings = {
+      ...settings,
+      ...getAiConversationSettingsFromInputs()
+    };
+  }
+  settings = {
+    ...settings,
+    specialQuestions
+  };
 
   saveAdminSettings(settings);
 
@@ -449,7 +579,9 @@ async function persistMaster(statusMessage) {
   try {
     const master = await requestAdminMaster("POST", {
       ...serializeSettingsForMaster(settings),
-      lineSurveyQuestions
+      lineSurveyQuestions,
+      specialQuestions,
+      deletedSpecialQuestionKeys
     });
     if (master) {
       settings = buildSettingsFromMaster(master);
@@ -457,9 +589,15 @@ async function persistMaster(statusMessage) {
       selectedLineSurveyKey = lineSurveyQuestions.some((question) => question.key === selectedLineSurveyKey)
         ? selectedLineSurveyKey
         : lineSurveyQuestions[0]?.key || "";
+      specialQuestions = normalizeSpecialQuestions(master.specialQuestions);
+      selectedSpecialQuestionKey = specialQuestions.some((question) => question.key === selectedSpecialQuestionKey)
+        ? selectedSpecialQuestionKey
+        : specialQuestions[0]?.key || "";
+      deletedSpecialQuestionKeys = [];
       saveAdminSettings(settings);
       results = getConfiguredResults(settings);
       cards = getConfiguredCards(settings);
+      renderSpecialQuestionEditor();
     }
     setStatus(`${statusMessage} / Supabaseへ保存しました`);
   } catch (error) {
@@ -504,36 +642,58 @@ function getActiveCardCount() {
   return cards.filter((card) => card.enabled !== false).length;
 }
 
-function getSafeQuestionCount(value = settings.diagnosisQuestionCount, activeCount = getActiveCardCount()) {
+function getTotalActiveQuestionCount() {
+  return getActiveCardCount() + getActiveSpecialQuestionCount();
+}
+
+function getSafeQuestionCount(value = settings.diagnosisQuestionCount, activeCount = getTotalActiveQuestionCount()) {
   const requestedCount = Math.floor(Number(value || DEFAULT_SETTINGS.diagnosisQuestionCount));
   return Math.max(1, Math.min(Math.max(activeCount, 1), requestedCount));
 }
 
+function validateSpecialQuestionCapacity(questionCount = getSafeQuestionCount()) {
+  const specialCount = getActiveSpecialQuestionCount();
+  if (specialCount > questionCount) {
+    setStatus(
+      `出題ONのスペシャルクエスチョンが${formatNumber(specialCount)}問あります。診断に使う質問数を${formatNumber(specialCount)}問以上にしてください`
+    );
+    return false;
+  }
+  return true;
+}
+
 function renderActiveCardCount() {
   const activeCount = getActiveCardCount();
+  const specialCount = getActiveSpecialQuestionCount();
+  const totalCount = activeCount + specialCount;
   const activeCardCount = $("#activeCardCount");
   const questionCountInput = $("#diagnosisQuestionCountInput");
-  if (activeCardCount) activeCardCount.textContent = formatNumber(activeCount);
+  if (activeCardCount) activeCardCount.textContent = formatNumber(totalCount);
   if (questionCountInput) {
-    questionCountInput.max = Math.max(activeCount, 1);
+    questionCountInput.max = Math.max(totalCount, 1);
     if (!questionCountInput.value) {
-      questionCountInput.value = getSafeQuestionCount(settings.diagnosisQuestionCount, activeCount);
+      questionCountInput.value = getSafeQuestionCount(settings.diagnosisQuestionCount, totalCount);
     }
   }
   const questionCountHelp = $("#diagnosisQuestionCountHelp");
   if (questionCountHelp) {
     questionCountHelp.textContent =
-      `出題候補${formatNumber(activeCount)}問から、設定した件数をランダムで出題します。`;
+      `通常${formatNumber(activeCount)}問 + スペシャル${formatNumber(specialCount)}問の候補から、設定した件数を出題します。`;
   }
 }
 
 function saveQuestionCountFromInput() {
   const input = $("#diagnosisQuestionCountInput");
-  if (!input) return;
+  if (!input) return true;
   const safeCount = getSafeQuestionCount(input.value);
+  if (!validateSpecialQuestionCapacity(safeCount)) {
+    input.value = settings.diagnosisQuestionCount || safeCount;
+    return false;
+  }
   input.value = safeCount;
   save({ diagnosisQuestionCount: safeCount });
   renderActiveCardCount();
+  return true;
 }
 
 function getNextCardId() {
@@ -670,6 +830,54 @@ function renderGeneral() {
   $("#jobCountInput").value = settings.jobCount;
   $("#highMatchCountInput").value = settings.highMatchCount;
   $("#requireLineInput").checked = Boolean(settings.requireLineBeforeResult);
+  renderAiConversationSettings();
+}
+
+function getSafeLineAiMaxReplies(value) {
+  return Math.max(1, Math.min(10, Math.floor(Number(value || DEFAULT_SETTINGS.lineAiMaxReplies || 4))));
+}
+
+function renderAiConversationSettings() {
+  if (!$("#lineAiMaxRepliesInput")) return;
+
+  $("#lineAiMaxRepliesInput").value = getSafeLineAiMaxReplies(settings.lineAiMaxReplies);
+  $("#lineAiCtaMessageInput").value = settings.lineAiCtaMessage || DEFAULT_SETTINGS.lineAiCtaMessage;
+  $("#lineAiCtaPrimaryLabelInput").value =
+    settings.lineAiCtaPrimaryLabel || DEFAULT_SETTINGS.lineAiCtaPrimaryLabel;
+  $("#lineAiCtaPrimaryTextInput").value =
+    settings.lineAiCtaPrimaryText || DEFAULT_SETTINGS.lineAiCtaPrimaryText;
+  $("#lineAiCtaSecondaryLabelInput").value =
+    settings.lineAiCtaSecondaryLabel || DEFAULT_SETTINGS.lineAiCtaSecondaryLabel;
+  $("#lineAiCtaSecondaryTextInput").value =
+    settings.lineAiCtaSecondaryText || DEFAULT_SETTINGS.lineAiCtaSecondaryText;
+}
+
+function getAiConversationSettingsFromInputs() {
+  return {
+    lineAiMaxReplies: getSafeLineAiMaxReplies($("#lineAiMaxRepliesInput").value),
+    lineAiCtaMessage:
+      $("#lineAiCtaMessageInput").value.trim() || DEFAULT_SETTINGS.lineAiCtaMessage,
+    lineAiCtaPrimaryLabel:
+      $("#lineAiCtaPrimaryLabelInput").value.trim().slice(0, 20) ||
+      DEFAULT_SETTINGS.lineAiCtaPrimaryLabel,
+    lineAiCtaPrimaryText:
+      $("#lineAiCtaPrimaryTextInput").value.trim().slice(0, 300) ||
+      DEFAULT_SETTINGS.lineAiCtaPrimaryText,
+    lineAiCtaSecondaryLabel:
+      $("#lineAiCtaSecondaryLabelInput").value.trim().slice(0, 20) ||
+      DEFAULT_SETTINGS.lineAiCtaSecondaryLabel,
+    lineAiCtaSecondaryText:
+      $("#lineAiCtaSecondaryTextInput").value.trim().slice(0, 300) ||
+      DEFAULT_SETTINGS.lineAiCtaSecondaryText
+  };
+}
+
+async function persistAiConversationSettings() {
+  const aiSettings = getAiConversationSettingsFromInputs();
+  $("#lineAiMaxRepliesInput").value = aiSettings.lineAiMaxReplies;
+  save(aiSettings);
+  renderAiConversationSettings();
+  await persistMaster("AI会話設定を保存しました");
 }
 
 function getSelectedLineSurveyQuestion() {
@@ -764,6 +972,265 @@ async function persistLineSurveyQuestions() {
       return;
     }
     setStatus(`LINEアンケート設定保存失敗: ${error.message}`);
+  }
+}
+
+function getActiveSpecialQuestionCount() {
+  return specialQuestions.filter((question) => question.enabled !== false).length;
+}
+
+function getSelectedSpecialQuestion() {
+  return (
+    specialQuestions.find((question) => question.key === selectedSpecialQuestionKey) ||
+    specialQuestions[0] ||
+    null
+  );
+}
+
+function getNextSpecialQuestionKey() {
+  const knownKeys = [
+    ...specialQuestions.map((question) => question.key),
+    ...deletedSpecialQuestionKeys
+  ];
+  const maxNumber = knownKeys.reduce((max, key) => {
+    const match = String(key).match(/^special-(\d+)$/);
+    return match ? Math.max(max, Number(match[1])) : max;
+  }, 0);
+  return `special-${String(maxNumber + 1).padStart(3, "0")}`;
+}
+
+function renderSpecialQuestionCount() {
+  const target = $("#specialQuestionActiveCount");
+  if (target) target.textContent = formatNumber(getActiveSpecialQuestionCount());
+}
+
+function renderSpecialQuestionList() {
+  const target = $("#specialQuestionList");
+  if (!target) return;
+
+  renderSpecialQuestionCount();
+
+  if (!specialQuestions.length) {
+    target.innerHTML = `<p class="admin-user-empty">まだスペシャルクエスチョンがありません。</p>`;
+    return;
+  }
+
+  target.innerHTML = specialQuestions
+    .map((question, index) => {
+      const activeClass = question.key === selectedSpecialQuestionKey ? " is-active" : "";
+      const disabledClass = question.enabled === false ? " is-disabled" : "";
+      const checked = question.enabled !== false ? " checked" : "";
+      return `
+        <div class="special-question-admin-row${disabledClass}">
+          <label class="card-enabled-toggle">
+            <input type="checkbox" data-special-question-enabled-key="${escapeHtml(question.key)}"${checked} />
+            <span>出題</span>
+          </label>
+          <button class="special-question-admin-button${activeClass}" type="button" data-special-question-key="${escapeHtml(question.key)}">
+            <span>${String(index + 1).padStart(2, "0")} / ${formatNumber(question.insertAfterOrder)}枚目に表示</span>
+            <strong>${escapeHtml(question.questionText)}</strong>
+            <small>A: ${escapeHtml(question.optionALabel)} / B: ${escapeHtml(question.optionBLabel)}</small>
+          </button>
+        </div>
+      `;
+    })
+    .join("");
+}
+
+function renderSpecialQuestionPreviewFromInputs() {
+  const target = $("#specialQuestionPreview");
+  if (!target) return;
+
+  const questionText = $("#specialQuestionTextInput")?.value.trim() || "質問文を入力してください";
+  const optionALabel = $("#specialQuestionOptionAInput")?.value.trim() || "選択肢A";
+  const optionBLabel = $("#specialQuestionOptionBInput")?.value.trim() || "選択肢B";
+  const category = $("#specialQuestionCategoryInput")?.value.trim() || "preference";
+  const imageUrl = $("#specialQuestionImageInput")?.value.trim() || "";
+
+  target.style.backgroundImage = imageUrl
+    ? `linear-gradient(135deg, rgba(17, 24, 39, 0.16), rgba(37, 99, 235, 0.16)), url("${imageUrl}")`
+    : "";
+  target.style.backgroundPosition = imageUrl ? "center" : "";
+  target.style.backgroundSize = imageUrl ? "cover" : "";
+
+  target.innerHTML = `
+    <small>${escapeHtml(category)}</small>
+    <strong>${escapeHtml(questionText)}</strong>
+    <div class="special-question-admin-choice-grid">
+      <div class="special-question-admin-choice">
+        <b>A</b>
+        <span>${escapeHtml(optionALabel)}</span>
+      </div>
+      <div class="special-question-admin-choice">
+        <b>B</b>
+        <span>${escapeHtml(optionBLabel)}</span>
+      </div>
+    </div>
+  `;
+}
+
+function renderSpecialQuestionEditor() {
+  const question = getSelectedSpecialQuestion();
+  const deleteButton = $("#deleteSpecialQuestion");
+  if (deleteButton) deleteButton.disabled = specialQuestions.length === 0;
+
+  if (!question) {
+    if ($("#specialQuestionKeyInput")) $("#specialQuestionKeyInput").value = "";
+    if ($("#specialQuestionEnabledInput")) $("#specialQuestionEnabledInput").checked = false;
+    if ($("#specialQuestionInsertAfterInput")) $("#specialQuestionInsertAfterInput").value = 1;
+    if ($("#specialQuestionDisplayOrderInput")) $("#specialQuestionDisplayOrderInput").value = 1;
+    if ($("#specialQuestionCategoryInput")) $("#specialQuestionCategoryInput").value = "";
+    if ($("#specialQuestionTextInput")) $("#specialQuestionTextInput").value = "";
+    if ($("#specialQuestionOptionAInput")) $("#specialQuestionOptionAInput").value = "";
+    if ($("#specialQuestionOptionBInput")) $("#specialQuestionOptionBInput").value = "";
+    if ($("#specialQuestionImageInput")) $("#specialQuestionImageInput").value = "";
+    if ($("#specialQuestionImageStoragePathInput")) $("#specialQuestionImageStoragePathInput").value = "";
+    renderSpecialQuestionList();
+    renderSpecialQuestionPreviewFromInputs();
+    return;
+  }
+
+  $("#specialQuestionKeyInput").value = question.key;
+  $("#specialQuestionEnabledInput").checked = question.enabled !== false;
+  $("#specialQuestionInsertAfterInput").value = Number(question.insertAfterOrder || 1);
+  $("#specialQuestionDisplayOrderInput").value = Number(question.displayOrder || 1);
+  $("#specialQuestionCategoryInput").value = question.category || "preference";
+  $("#specialQuestionTextInput").value = question.questionText;
+  $("#specialQuestionOptionAInput").value = question.optionALabel;
+  $("#specialQuestionOptionBInput").value = question.optionBLabel;
+  $("#specialQuestionImageInput").value = question.backgroundImageUrl || "";
+  $("#specialQuestionImageStoragePathInput").value = question.backgroundStoragePath || "";
+  renderSpecialQuestionList();
+  renderSpecialQuestionPreviewFromInputs();
+}
+
+function saveSpecialQuestionFromInputs() {
+  const key = $("#specialQuestionKeyInput")?.value.trim();
+  if (!key) return true;
+
+  const questionText = $("#specialQuestionTextInput").value.trim();
+  const optionALabel = $("#specialQuestionOptionAInput").value.trim();
+  const optionBLabel = $("#specialQuestionOptionBInput").value.trim();
+
+  if (!questionText) {
+    setStatus("スペシャルクエスチョンの質問文を入力してください");
+    return false;
+  }
+  if (!optionALabel || !optionBLabel) {
+    setStatus("スペシャルクエスチョンの選択肢A/Bを入力してください");
+    return false;
+  }
+
+  const existing = specialQuestions.find((question) => question.key === key) || {};
+  specialQuestions = normalizeSpecialQuestions(
+    specialQuestions.map((question) => {
+      if (question.key !== key) return question;
+      return {
+        ...question,
+        questionText,
+        optionALabel,
+        optionBLabel,
+        category: $("#specialQuestionCategoryInput").value.trim() || "preference",
+        enabled: $("#specialQuestionEnabledInput").checked,
+        insertAfterOrder: Math.max(
+          1,
+          Math.floor(Number($("#specialQuestionInsertAfterInput").value || 1))
+        ),
+        displayOrder: Math.max(
+          1,
+          Math.floor(Number($("#specialQuestionDisplayOrderInput").value || existing.displayOrder || 1))
+        ),
+        backgroundImageUrl: $("#specialQuestionImageInput")?.value.trim() || "",
+        backgroundStoragePath: $("#specialQuestionImageStoragePathInput")?.value.trim() || ""
+      };
+    })
+  );
+  selectedSpecialQuestionKey = key;
+  renderSpecialQuestionEditor();
+  return true;
+}
+
+function updateSpecialQuestionEnabled(key, enabled) {
+  const question = specialQuestions.find((item) => item.key === key);
+  if (!question) return;
+
+  specialQuestions = normalizeSpecialQuestions(
+    specialQuestions.map((item) => (item.key === key ? { ...item, enabled } : item))
+  );
+  selectedSpecialQuestionKey = key;
+  renderSpecialQuestionEditor();
+  renderActiveCardCount();
+  setStatus("スペシャルクエスチョンの出題設定を変更しました。反映するには「スペシャル設定を保存」を押してください");
+}
+
+async function addSpecialQuestion() {
+  if (!saveSpecialQuestionFromInputs()) return;
+
+  const key = getNextSpecialQuestionKey();
+  const displayOrder = Math.max(0, ...specialQuestions.map((question) => Number(question.displayOrder || 0))) + 1;
+  specialQuestions = normalizeSpecialQuestions([
+    ...specialQuestions,
+    {
+      key,
+      questionText: "どちらの会社で働きたい？",
+      optionALabel: "年収500万円でほぼ定時退社",
+      optionBLabel: "年収800万円で成果主義。忙しい",
+      category: "income",
+      enabled: true,
+      insertAfterOrder: 10,
+      displayOrder,
+      backgroundImageUrl: "",
+      backgroundStoragePath: ""
+    }
+  ]);
+  selectedSpecialQuestionKey = key;
+  renderSpecialQuestionEditor();
+  await persistMaster("スペシャルクエスチョンを追加しました。内容を編集してください");
+}
+
+async function deleteSelectedSpecialQuestion() {
+  const key = $("#specialQuestionKeyInput")?.value.trim();
+  const questionIndex = specialQuestions.findIndex((question) => question.key === key);
+  const question = specialQuestions[questionIndex];
+  if (!question) return;
+
+  const confirmed = window.confirm(
+    `「${question.questionText || question.key}」を削除します。\n過去の回答データは削除せず、質問マスタだけ削除します。`
+  );
+  if (!confirmed) return;
+
+  deletedSpecialQuestionKeys = [...new Set([...deletedSpecialQuestionKeys, question.key])];
+  specialQuestions = specialQuestions.filter((item) => item.key !== question.key);
+  selectedSpecialQuestionKey =
+    specialQuestions[Math.min(questionIndex, specialQuestions.length - 1)]?.key || "";
+  renderSpecialQuestionEditor();
+  await persistMaster("スペシャルクエスチョンを削除しました");
+}
+
+async function persistSpecialQuestions() {
+  if (!saveSpecialQuestionFromInputs()) return;
+  if (!validateSpecialQuestionCapacity()) return;
+
+  try {
+    const master = await requestAdminMaster("POST", {
+      specialQuestions,
+      deletedSpecialQuestionKeys
+    });
+    if (master) {
+      specialQuestions = normalizeSpecialQuestions(master.specialQuestions);
+      selectedSpecialQuestionKey = specialQuestions.some((question) => question.key === selectedSpecialQuestionKey)
+        ? selectedSpecialQuestionKey
+        : specialQuestions[0]?.key || "";
+      deletedSpecialQuestionKeys = [];
+      renderSpecialQuestionEditor();
+    }
+    setStatus("スペシャルクエスチョン設定を保存しました / Supabaseへ保存しました");
+  } catch (error) {
+    if (isUnauthorizedError(error)) {
+      clearAdminSession("管理セッションが切れました。もう一度ログインしてください");
+      return;
+    }
+    setStatus(`スペシャルクエスチョン設定保存失敗: ${error.message}`);
   }
 }
 
@@ -951,7 +1418,9 @@ function getAdminLogSummary(row) {
       Number(metadata.resultsCount || 0) ? `結果${metadata.resultsCount}件` : "",
       Number(metadata.cardsCount || 0) ? `質問${metadata.cardsCount}件` : "",
       Number(metadata.deletedCardsCount || 0) ? `削除${metadata.deletedCardsCount}件` : "",
-      Number(metadata.lineSurveyQuestionsCount || 0) ? `LINEアンケート${metadata.lineSurveyQuestionsCount}件` : ""
+      Number(metadata.lineSurveyQuestionsCount || 0) ? `LINEアンケート${metadata.lineSurveyQuestionsCount}件` : "",
+      Number(metadata.specialQuestionsCount || 0) ? `スペシャル${metadata.specialQuestionsCount}件` : "",
+      Number(metadata.deletedSpecialQuestionsCount || 0) ? `スペシャル削除${metadata.deletedSpecialQuestionsCount}件` : ""
     ]
       .filter(Boolean)
       .join(" / ") || "-";
@@ -1010,13 +1479,16 @@ function renderKpiDashboard(summary) {
   const current = rangeMap[kpiRange] || rangeMap.daily;
   const resultTypes = Array.isArray(summary?.resultTypes) ? summary.resultTypes : [];
   const dropoffs = Array.isArray(summary?.dropoffs) ? summary.dropoffs : [];
-  const adminLogs = Array.isArray(summary?.adminLogs) ? summary.adminLogs : [];
+  const adminAuditPanel = $("#adminAuditPanel");
+  if (adminAuditPanel) adminAuditPanel.hidden = !SHOW_ADMIN_AUDIT_LOGS;
   $("#kpiTableTitle").textContent = current.title;
   renderKpiCards(current.rows[0] || null);
   renderKpiDailyTable(current.rows);
   renderKpiResultTypes(resultTypes);
   renderKpiDropoffs(dropoffs);
-  renderAdminAuditLogs(adminLogs);
+  if (SHOW_ADMIN_AUDIT_LOGS) {
+    renderAdminAuditLogs(Array.isArray(summary?.adminLogs) ? summary.adminLogs : []);
+  }
 }
 
 async function loadKpiDashboard() {
@@ -1118,6 +1590,7 @@ function renderAdminUserMessage(message) {
     "#adminUserDiagnoses",
     "#adminUserPreferences",
     "#adminUserSurveyAnswers",
+    "#adminUserSpecialAnswers",
     "#adminUserAiState",
     "#adminUserHandoffs",
     "#adminUserConversations"
@@ -1129,7 +1602,7 @@ function renderAdminUserMessage(message) {
 }
 
 function setAdminUserTab(tabKey = adminUserTab) {
-  const availableTabs = new Set(["diagnoses", "preferences", "ai", "handoffs", "conversations"]);
+  const availableTabs = new Set(["diagnoses", "preferences", "special", "ai", "handoffs", "conversations"]);
   adminUserTab = availableTabs.has(tabKey) ? tabKey : "diagnoses";
 
   document.querySelectorAll("[data-admin-user-tab]").forEach((button) => {
@@ -1137,6 +1610,20 @@ function setAdminUserTab(tabKey = adminUserTab) {
   });
   document.querySelectorAll("[data-admin-user-panel]").forEach((panel) => {
     panel.classList.toggle("is-active", panel.dataset.adminUserPanel === adminUserTab);
+  });
+}
+
+function setAdminPage(pageKey = activeAdminPage) {
+  const availablePages = new Set(["kpi", "users", "editor"]);
+  activeAdminPage = availablePages.has(pageKey) ? pageKey : "kpi";
+
+  document.querySelectorAll("[data-admin-page]").forEach((button) => {
+    button.classList.toggle("is-active", button.dataset.adminPage === activeAdminPage);
+  });
+  document.querySelectorAll("[data-admin-page-panel]").forEach((panel) => {
+    const isActive = panel.dataset.adminPagePanel === activeAdminPage;
+    panel.classList.toggle("is-active", isActive);
+    panel.hidden = !isActive;
   });
 }
 
@@ -1200,17 +1687,21 @@ function renderAdminUserOverview(detail) {
   `;
 }
 
-function renderScoreRates(scoreRates = {}) {
-  const axisLabels = {
-    people: "People",
-    focus: "Focus",
-    challenge: "Challenge",
-    stability: "Stability",
-    creativity: "Creativity",
-    execution: "Execution"
-  };
+const ADMIN_AXIS_LABELS = {
+  people: "人との関わり",
+  focus: "集中力",
+  challenge: "挑戦",
+  stability: "安定",
+  creativity: "発想力",
+  execution: "実行力"
+};
 
-  return Object.entries(axisLabels)
+function getAdminAxisLabel(axis) {
+  return ADMIN_AXIS_LABELS[axis] || axis || "-";
+}
+
+function renderScoreRates(scoreRates = {}) {
+  return Object.entries(ADMIN_AXIS_LABELS)
     .map(([key, label]) => {
       const value = scoreRates?.[key];
       return `<span class="admin-user-pill">${escapeHtml(label)} ${escapeHtml(value ?? "-")}</span>`;
@@ -1292,7 +1783,7 @@ function renderAdminUserDiagnoses(diagnoses = []) {
                 <strong>${escapeHtml(getResultLabel(diagnosis.result_type))}</strong>
                 <time>${escapeHtml(formatDateTime(diagnosis.diagnosed_at))}</time>
               </div>
-              <small>${escapeHtml(diagnosis.primary_axis || "-")} / ${escapeHtml(diagnosis.secondary_axis || "-")} / ${formatNumber(diagnosis.answered_count)}問回答</small>
+              <small>${escapeHtml(getAdminAxisLabel(diagnosis.primary_axis))} / ${escapeHtml(getAdminAxisLabel(diagnosis.secondary_axis))} / ${formatNumber(diagnosis.answered_count)}問回答</small>
               <div class="admin-user-pill-row">${renderScoreRates(diagnosis.score_rates)}</div>
               <div class="admin-user-pill-row">
                 <span class="admin-user-pill">流入 ${escapeHtml(formatBlank(diagnosis.utm_source))}</span>
@@ -1362,6 +1853,57 @@ function renderAdminUserSurveyAnswers(answers = []) {
             </article>
           `
         )
+        .join("")}
+    </div>
+  `;
+}
+
+function renderAdminUserSpecialAnswers(answers = []) {
+  const target = $("#adminUserSpecialAnswers");
+  if (!target) return;
+
+  if (!answers.length) {
+    target.innerHTML = `<p class="admin-user-empty">スペシャル回答はまだありません。</p>`;
+    return;
+  }
+
+  const ordered = [...answers].sort((a, b) => {
+    const dateDiff = new Date(b.answered_at || 0).getTime() - new Date(a.answered_at || 0).getTime();
+    if (dateDiff) return dateDiff;
+    return Number(a.answer_order || 0) - Number(b.answer_order || 0);
+  });
+
+  target.innerHTML = `
+    <p class="admin-user-panel-note">直近${formatNumber(ordered.length)}件を表示しています。各行を開くと質問文を確認できます。</p>
+    <div class="admin-user-special-list">
+      ${ordered
+        .map((answer, index) => {
+          const answeredAt = formatDateTime(answer.answered_at);
+          const selectedLabel = answer.selected_label || "-";
+          const selectedOption = answer.selected_option ? `${answer.selected_option}. ` : "";
+          return `
+            <details class="admin-user-special-details"${index === 0 ? " open" : ""}>
+              <summary>
+                <span>${escapeHtml(selectedOption)}${escapeHtml(selectedLabel)}</span>
+                <time>${escapeHtml(answeredAt)}</time>
+              </summary>
+              <dl class="admin-user-kv admin-user-special-kv">
+                <div>
+                  <dt>質問文</dt>
+                  <dd>${escapeHtml(formatBlank(answer.question_text))}</dd>
+                </div>
+                <div>
+                  <dt>選択内容</dt>
+                  <dd>${escapeHtml(selectedOption)}${escapeHtml(selectedLabel)}</dd>
+                </div>
+                <div>
+                  <dt>回答日時</dt>
+                  <dd>${escapeHtml(answeredAt)}</dd>
+                </div>
+              </dl>
+            </details>
+          `;
+        })
         .join("")}
     </div>
   `;
@@ -1478,6 +2020,7 @@ function renderAdminUserDashboard(data) {
   renderAdminUserDiagnoses(data?.detail?.diagnoses || []);
   renderAdminUserPreferences(data?.detail?.preferences || null);
   renderAdminUserSurveyAnswers(data?.detail?.surveyAnswers || []);
+  renderAdminUserSpecialAnswers(data?.detail?.specialAnswers || []);
   renderAdminUserAiState(data?.detail?.aiState || null);
   renderAdminUserHandoffs(data?.detail?.handoffRequests || []);
   renderAdminUserConversations(data?.detail?.conversationMessages || []);
@@ -1592,6 +2135,57 @@ function bindImageUploadEvents() {
   });
 }
 
+function bindSpecialQuestionImageUploadEvents() {
+  const dropzone = $("#specialQuestionImageDropzone");
+  const input = $("#specialQuestionImageFileInput");
+  if (!dropzone || !input) return;
+
+  const handleFile = async (file) => {
+    try {
+      setStatus("背景画像を最適化中です…");
+      const optimizedFile = await optimizeImageForUpload(file);
+      await uploadSpecialQuestionImage(optimizedFile, file);
+    } catch (error) {
+      if (isUnauthorizedError(error)) {
+        clearAdminSession("管理セッションが切れました。もう一度ログインしてください");
+        return;
+      }
+      setStatus(`背景画像アップロード失敗: ${error.message}`);
+    } finally {
+      input.value = "";
+      dropzone.classList.remove("is-dragging");
+    }
+  };
+
+  input.addEventListener("change", () => {
+    const file = input.files?.[0];
+    if (file) handleFile(file);
+  });
+
+  dropzone.addEventListener("click", () => input.click());
+  dropzone.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      input.click();
+    }
+  });
+
+  dropzone.addEventListener("dragover", (event) => {
+    event.preventDefault();
+    dropzone.classList.add("is-dragging");
+  });
+
+  dropzone.addEventListener("dragleave", () => {
+    dropzone.classList.remove("is-dragging");
+  });
+
+  dropzone.addEventListener("drop", (event) => {
+    event.preventDefault();
+    const file = event.dataTransfer?.files?.[0];
+    if (file) handleFile(file);
+  });
+}
+
 function bindEvents() {
   if (adminEventsBound) return;
   adminEventsBound = true;
@@ -1599,6 +2193,15 @@ function bindEvents() {
   $("#adminLogout").addEventListener("click", () => {
     clearAdminSession("ログアウトしました");
   });
+
+  const adminPageTabs = document.querySelector(".admin-page-tabs");
+  if (adminPageTabs) {
+    adminPageTabs.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-admin-page]");
+      if (!button) return;
+      setAdminPage(button.dataset.adminPage);
+    });
+  }
 
   document.querySelector(".kpi-range-tabs").addEventListener("click", (event) => {
     const button = event.target.closest("[data-kpi-range]");
@@ -1631,6 +2234,77 @@ function bindEvents() {
   if (saveLineSurvey) {
     saveLineSurvey.addEventListener("click", persistLineSurveyQuestions);
   }
+
+  const specialQuestionList = $("#specialQuestionList");
+  if (specialQuestionList) {
+    specialQuestionList.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-special-question-key]");
+      if (!button) return;
+      if (!saveSpecialQuestionFromInputs()) return;
+      selectedSpecialQuestionKey = button.dataset.specialQuestionKey || selectedSpecialQuestionKey;
+      renderSpecialQuestionEditor();
+    });
+
+    specialQuestionList.addEventListener("change", (event) => {
+      const checkbox = event.target.closest("[data-special-question-enabled-key]");
+      if (!checkbox) return;
+      updateSpecialQuestionEnabled(checkbox.dataset.specialQuestionEnabledKey, checkbox.checked);
+    });
+  }
+
+  const saveSpecialQuestions = $("#saveSpecialQuestions");
+  if (saveSpecialQuestions) {
+    saveSpecialQuestions.addEventListener("click", persistSpecialQuestions);
+  }
+
+  const addSpecialQuestionButton = $("#addSpecialQuestion");
+  if (addSpecialQuestionButton) {
+    addSpecialQuestionButton.addEventListener("click", async () => {
+      try {
+        await addSpecialQuestion();
+      } catch (error) {
+        if (isUnauthorizedError(error)) {
+          clearAdminSession("管理セッションが切れました。もう一度ログインしてください");
+          return;
+        }
+        setStatus(`スペシャルクエスチョン追加失敗: ${error.message}`);
+      }
+    });
+  }
+
+  const deleteSpecialQuestionButton = $("#deleteSpecialQuestion");
+  if (deleteSpecialQuestionButton) {
+    deleteSpecialQuestionButton.addEventListener("click", async () => {
+      try {
+        await deleteSelectedSpecialQuestion();
+      } catch (error) {
+        if (isUnauthorizedError(error)) {
+          clearAdminSession("管理セッションが切れました。もう一度ログインしてください");
+          return;
+        }
+        setStatus(`スペシャルクエスチョン削除失敗: ${error.message}`);
+      }
+    });
+  }
+
+  [
+    "#specialQuestionTextInput",
+    "#specialQuestionOptionAInput",
+    "#specialQuestionOptionBInput",
+    "#specialQuestionCategoryInput"
+  ].forEach((selector) => {
+    const input = $(selector);
+    if (input) input.addEventListener("input", renderSpecialQuestionPreviewFromInputs);
+  });
+
+  const specialQuestionImageInput = $("#specialQuestionImageInput");
+  if (specialQuestionImageInput) {
+    specialQuestionImageInput.addEventListener("input", () => {
+      $("#specialQuestionImageStoragePathInput").value = "";
+      renderSpecialQuestionPreviewFromInputs();
+    });
+  }
+  bindSpecialQuestionImageUploadEvents();
 
   const refreshAdminUsers = $("#refreshAdminUsers");
   if (refreshAdminUsers) {
@@ -1692,6 +2366,7 @@ function bindEvents() {
 
   $("#saveGeneral").addEventListener("click", async () => {
     const safeQuestionCount = getSafeQuestionCount($("#diagnosisQuestionCountInput").value);
+    if (!validateSpecialQuestionCapacity(safeQuestionCount)) return;
     $("#diagnosisQuestionCountInput").value = safeQuestionCount;
     save({
       comparisonCount: Number($("#comparisonCountInput").value || 0),
@@ -1705,6 +2380,11 @@ function bindEvents() {
     });
     await persistMaster("表示数値を保存しました");
   });
+
+  const saveAiConversationSettings = $("#saveAiConversationSettings");
+  if (saveAiConversationSettings) {
+    saveAiConversationSettings.addEventListener("click", persistAiConversationSettings);
+  }
 
   $("#resultSelect").addEventListener("change", () => {
     renderResultEditor();
@@ -1814,7 +2494,7 @@ function bindEvents() {
   }
 
   $("#saveCardActivation").addEventListener("click", async () => {
-    saveQuestionCountFromInput();
+    if (!saveQuestionCountFromInput()) return;
     await persistMaster("出題設定を保存しました");
   });
 
@@ -1855,6 +2535,7 @@ function bindEvents() {
       populateSelects();
       renderGeneral();
       renderLineSurveyEditor();
+      renderSpecialQuestionEditor();
       renderResultEditor();
       renderCardEditor();
       await persistMaster("設定を読み込みました");
@@ -1870,9 +2551,13 @@ function bindEvents() {
     cards = getConfiguredCards(settings);
     lineSurveyQuestions = normalizeLineSurveyQuestions([]);
     selectedLineSurveyKey = lineSurveyQuestions[0]?.key || "";
+    specialQuestions = [];
+    selectedSpecialQuestionKey = "";
+    deletedSpecialQuestionKeys = [];
     populateSelects();
     renderGeneral();
     renderLineSurveyEditor();
+    renderSpecialQuestionEditor();
     renderResultEditor();
     renderCardEditor();
     $("#settingsJson").value = "";
@@ -1901,8 +2586,10 @@ export async function initAdminApp() {
   populateSelects();
   renderGeneral();
   renderLineSurveyEditor();
+  renderSpecialQuestionEditor();
   renderResultEditor();
   renderCardEditor();
+  setAdminPage(activeAdminPage);
   bindEvents();
   await loadKpiDashboard();
   await loadAdminUsers();

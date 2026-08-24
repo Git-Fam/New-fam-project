@@ -1107,6 +1107,17 @@ export const DEFAULT_SETTINGS = {
   jobCount: 12,
   highMatchCount: 4,
   requireLineBeforeResult: false,
+  lineAiMaxReplies: 4,
+  lineAiCtaMessage:
+    "お話を聞く限り、\n" +
+    "年収面と今後のキャリアについて\n" +
+    "一度担当者と整理してみても良さそうです。\n\n" +
+    "担当者と一度相談してみますか？",
+  lineAiCtaPrimaryLabel: "相談してみる",
+  lineAiCtaPrimaryText: "相談してみる",
+  lineAiCtaSecondaryLabel: "もう少しAIに聞く",
+  lineAiCtaSecondaryText: "もう少しAIに聞く",
+  specialQuestions: [],
   resultOverrides: {},
   cardOverrides: {},
   deletedCardIds: [],
@@ -1138,6 +1149,7 @@ export function loadAdminSettings() {
     return {
       ...DEFAULT_SETTINGS,
       ...saved,
+      specialQuestions: Array.isArray(saved.specialQuestions) ? saved.specialQuestions : [],
       resultOverrides: saved.resultOverrides || {},
       cardOverrides: saved.cardOverrides || {},
       deletedCardIds: Array.isArray(saved.deletedCardIds) ? saved.deletedCardIds : [],
@@ -1154,6 +1166,7 @@ export function saveAdminSettings(settings) {
     JSON.stringify({
       ...DEFAULT_SETTINGS,
       ...settings,
+      specialQuestions: Array.isArray(settings.specialQuestions) ? settings.specialQuestions : [],
       resultOverrides: settings.resultOverrides || {},
       cardOverrides: settings.cardOverrides || {},
       deletedCardIds: Array.isArray(settings.deletedCardIds) ? settings.deletedCardIds : [],
@@ -1256,6 +1269,23 @@ export function buildSettingsFromMaster(master = {}) {
     requireLineBeforeResult: Boolean(
       remoteSettings.requireLineBeforeResult ?? DEFAULT_SETTINGS.requireLineBeforeResult
     ),
+    lineAiMaxReplies: Number(remoteSettings.lineAiMaxReplies ?? DEFAULT_SETTINGS.lineAiMaxReplies),
+    lineAiCtaMessage: String(
+      remoteSettings.lineAiCtaMessage ?? DEFAULT_SETTINGS.lineAiCtaMessage
+    ),
+    lineAiCtaPrimaryLabel: String(
+      remoteSettings.lineAiCtaPrimaryLabel ?? DEFAULT_SETTINGS.lineAiCtaPrimaryLabel
+    ),
+    lineAiCtaPrimaryText: String(
+      remoteSettings.lineAiCtaPrimaryText ?? DEFAULT_SETTINGS.lineAiCtaPrimaryText
+    ),
+    lineAiCtaSecondaryLabel: String(
+      remoteSettings.lineAiCtaSecondaryLabel ?? DEFAULT_SETTINGS.lineAiCtaSecondaryLabel
+    ),
+    lineAiCtaSecondaryText: String(
+      remoteSettings.lineAiCtaSecondaryText ?? DEFAULT_SETTINGS.lineAiCtaSecondaryText
+    ),
+    specialQuestions: normalizeSpecialQuestions(master.specialQuestions),
     resultOverrides,
     cardOverrides,
     deletedCardIds: [],
@@ -1269,6 +1299,7 @@ export function serializeSettingsForMaster(settings = loadAdminSettings()) {
     ...settings,
     resultOverrides: settings.resultOverrides || {},
     cardOverrides: settings.cardOverrides || {},
+    specialQuestions: Array.isArray(settings.specialQuestions) ? settings.specialQuestions : [],
     deletedCardIds: Array.isArray(settings.deletedCardIds) ? settings.deletedCardIds : [],
     useMasterCardsOnly: Boolean(settings.useMasterCardsOnly)
   };
@@ -1290,7 +1321,20 @@ export function serializeSettingsForMaster(settings = loadAdminSettings()) {
       ),
       jobCount: Number(mergedSettings.jobCount || 0),
       highMatchCount: Number(mergedSettings.highMatchCount || 0),
-      requireLineBeforeResult: Boolean(mergedSettings.requireLineBeforeResult)
+      requireLineBeforeResult: Boolean(mergedSettings.requireLineBeforeResult),
+      lineAiMaxReplies: Math.max(
+        1,
+        Math.min(10, Math.floor(Number(mergedSettings.lineAiMaxReplies || 4)))
+      ),
+      lineAiCtaMessage: String(mergedSettings.lineAiCtaMessage || ""),
+      lineAiCtaPrimaryLabel: String(mergedSettings.lineAiCtaPrimaryLabel || "相談してみる"),
+      lineAiCtaPrimaryText: String(mergedSettings.lineAiCtaPrimaryText || "相談してみる"),
+      lineAiCtaSecondaryLabel: String(
+        mergedSettings.lineAiCtaSecondaryLabel || "もう少しAIに聞く"
+      ),
+      lineAiCtaSecondaryText: String(
+        mergedSettings.lineAiCtaSecondaryText || "もう少しAIに聞く"
+      )
     },
     results: Object.entries(getConfiguredResults(mergedSettings)).map(([key, result], index) => ({
       resultType: key,
@@ -1315,6 +1359,7 @@ export function serializeSettingsForMaster(settings = loadAdminSettings()) {
       enabled: card.enabled !== false,
       sortOrder: index + 1
     })),
+    specialQuestions: getConfiguredSpecialQuestions(mergedSettings),
     deletedCardIds: mergedSettings.deletedCardIds
   };
 }
@@ -1340,6 +1385,96 @@ function sortCards(cards) {
   });
 }
 
+function normalizeSpecialQuestionKey(value, fallback = "") {
+  const normalized = String(value || "")
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9_-]/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  return normalized || fallback;
+}
+
+export function normalizeSpecialQuestions(value = []) {
+  const source = Array.isArray(value) ? value : [];
+
+  return source
+    .map((question, index) => {
+      const key = normalizeSpecialQuestionKey(
+        question?.key || question?.questionKey,
+        `special-${String(index + 1).padStart(3, "0")}`
+      );
+      const questionText = String(question?.questionText || "").trim();
+      const optionALabel = String(question?.optionALabel || "").trim();
+      const optionBLabel = String(question?.optionBLabel || "").trim();
+      if (!key || !questionText || !optionALabel || !optionBLabel) return null;
+
+      return {
+        kind: "special",
+        id: `special:${key}`,
+        key,
+        questionKey: key,
+        question: questionText,
+        questionText,
+        optionALabel,
+        optionBLabel,
+        category: String(question?.category || "preference").trim() || "preference",
+        enabled: question?.enabled !== false,
+        insertAfterOrder: Math.max(1, Math.floor(Number(question?.insertAfterOrder || 1))),
+        displayOrder: Math.max(1, Math.floor(Number(question?.displayOrder || index + 1))),
+        backgroundImageUrl: String(question?.backgroundImageUrl || "").trim(),
+        backgroundStoragePath: String(question?.backgroundStoragePath || "").trim(),
+        payload:
+          question?.payload && typeof question.payload === "object" && !Array.isArray(question.payload)
+            ? question.payload
+            : {}
+      };
+    })
+    .filter(Boolean)
+    .sort((a, b) => {
+      if (a.insertAfterOrder !== b.insertAfterOrder) return a.insertAfterOrder - b.insertAfterOrder;
+      if (a.displayOrder !== b.displayOrder) return a.displayOrder - b.displayOrder;
+      return a.key.localeCompare(b.key);
+    });
+}
+
+export function getConfiguredSpecialQuestions(settings = loadAdminSettings()) {
+  return normalizeSpecialQuestions(settings.specialQuestions || []);
+}
+
+function insertSpecialQuestions(normalCards, specialQuestions) {
+  if (!specialQuestions.length) return normalCards;
+
+  const grouped = new Map();
+  const totalSlots = normalCards.length + specialQuestions.length;
+  specialQuestions.forEach((question) => {
+    const displayPosition = Math.min(
+      Math.max(1, Math.floor(Number(question.insertAfterOrder || 1))),
+      Math.max(1, totalSlots)
+    );
+    grouped.set(displayPosition, [...(grouped.get(displayPosition) || []), question]);
+  });
+
+  const output = [];
+  let normalIndex = 0;
+
+  for (let position = 1; position <= totalSlots; position += 1) {
+    const group = grouped.get(position) || [];
+    if (group.length) output.push(...group);
+    if (output.length < position && normalIndex < normalCards.length) {
+      output.push({ ...normalCards[normalIndex], kind: "normal" });
+      normalIndex += 1;
+    }
+  }
+
+  while (normalIndex < normalCards.length) {
+    output.push({ ...normalCards[normalIndex], kind: "normal" });
+    normalIndex += 1;
+  }
+
+  return output;
+}
+
 function shuffleCards(cards) {
   const shuffled = [...cards];
   for (let index = shuffled.length - 1; index > 0; index -= 1) {
@@ -1354,6 +1489,22 @@ function getSafeDiagnosisQuestionCount(settings, poolCount) {
     Number(settings.diagnosisQuestionCount || poolCount || DEFAULT_SETTINGS.diagnosisQuestionCount)
   );
   return Math.max(1, Math.min(Math.max(poolCount, 1), requestedCount));
+}
+
+export function getDiagnosisQuestionError(settings = loadAdminSettings()) {
+  const specialCount = getConfiguredSpecialQuestions(settings).filter(
+    (question) => question.enabled !== false
+  ).length;
+  const requestedCount = Math.max(
+    1,
+    Math.floor(Number(settings.diagnosisQuestionCount || DEFAULT_SETTINGS.diagnosisQuestionCount))
+  );
+
+  if (specialCount > requestedCount) {
+    return `出題ONのスペシャルクエスチョンが${specialCount}問あります。診断に使う質問数を${specialCount}問以上にしてください。`;
+  }
+
+  return "";
 }
 
 function getCardAxisPotential(card) {
@@ -1452,8 +1603,16 @@ export function getDiagnosisCards(settings = loadAdminSettings()) {
   const configuredCards = getConfiguredCards(settings);
   const enabledCards = configuredCards.filter((card) => card.enabled !== false);
   const questionPool = enabledCards.length ? enabledCards : configuredCards.slice(0, 1);
-  const safeCount = getSafeDiagnosisQuestionCount(settings, questionPool.length);
-  return selectBalancedCards(questionPool, safeCount);
+  const specialQuestions = getConfiguredSpecialQuestions(settings).filter(
+    (question) => question.enabled !== false
+  );
+  const totalPoolCount = questionPool.length + specialQuestions.length;
+  const safeCount = getSafeDiagnosisQuestionCount(settings, totalPoolCount);
+  const specialCount = Math.min(specialQuestions.length, safeCount);
+  const normalCount = Math.max(0, safeCount - specialCount);
+  const selectedNormalCards =
+    normalCount > 0 ? selectBalancedCards(questionPool, normalCount) : [];
+  return insertSpecialQuestions(selectedNormalCards, specialQuestions.slice(0, specialCount));
 }
 
 export function getConfiguredResults(settings = loadAdminSettings()) {
