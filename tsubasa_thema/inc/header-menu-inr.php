@@ -4,7 +4,7 @@
       <li class="main-list-item">
         <a class="TX" href="<?php echo home_url(); ?>">TOP</a>
       </li>
-      <li class="main-list-item main-list-item-accordion">
+      <li class="main-list-item main-list-item-accordion <?php if (is_page('about')): ?>is-active<?php endif; ?>">
         <p class="TX">当院について</p>
         <ul class="main-list-inr">
           <li class="main-list-item-inr">
@@ -16,12 +16,12 @@
           <li class="main-list-item-inr">
             <a class="TX-inr" href="/about#about-features">当院の特徴</a>
           </li>
-          <li class="main-list-item-inr">
+          <!-- <li class="main-list-item-inr">
             <a class="TX-inr" href="/about#about-introduction">院内紹介</a>
-          </li>
+          </li> -->
         </ul>
       </li>
-      <li class="main-list-item main-list-item-accordion">
+      <li class="main-list-item main-list-item-accordion <?php if (is_page('pediatric-surgery') || is_page('pediatrics') || is_page('constipation') || is_page('nocturia') || is_page('prevention-screening') || is_page('home-visit')): ?>is-active<?php endif; ?>">
         <p class="TX">診療案内</p>
         <ul class="main-list-inr">
           <li class="main-list-item-inr">
@@ -36,9 +36,9 @@
           <li class="main-list-item-inr">
             <a class="TX-inr" href="/nocturia">夜尿外来</a>
           </li>
-          <li class="main-list-item-inr">
+          <!-- <li class="main-list-item-inr">
             <a class="TX-inr" href="#">頭のかたち外来</a>
-          </li>
+          </li> -->
           <li class="main-list-item-inr">
             <a class="TX-inr" href="/prevention-screening">予防接種・検診</a>
           </li>
