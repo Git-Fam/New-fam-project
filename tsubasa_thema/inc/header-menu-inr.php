@@ -73,9 +73,9 @@
       <!-- <li class="sub-list-item">
         <a class="TX" href="/recruit">採用情報</a>
       </li> -->
-      <li class="sub-list-item">
+      <!-- <li class="sub-list-item">
         <a class="TX" href="/faq">よくある質問</a>
-      </li>
+      </li> -->
       <li class="sub-list-item">
         <a class="TX" href="/privacy-policy">プライバシーポリシー</a>
       </li>
