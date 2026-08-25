@@ -185,7 +185,7 @@
               </div>
             </a>
           </li>
-          <li class="link-item">
+          <!-- <li class="link-item">
             <a class="link-item-inr" href="#">
               <div class="link-item-bg">
                 <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-services-link-bg.svg" alt="">
@@ -197,7 +197,7 @@
                 </div>
               </div>
             </a>
-          </li>
+          </li> -->
           <li class="link-item">
             <a class="link-item-inr" href="/prevention-screening">
               <div class="link-item-bg">
@@ -464,7 +464,7 @@
           </div>
           <div class="front-contact-txt">
             <p class="TX">
-              診療予約、採用エントリー、当院にご質問のある方はお気軽にお問い合わせください。
+              当院にご質問のある方はお気軽にお問い合わせください。
             </p>
           </div>
           <div class="front-contact-btn">

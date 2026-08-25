@@ -239,7 +239,7 @@ Template Path: pages/
       </div>
     </div>
   </section>
-
+<!-- 
   <section class="about-introduction" id="about-introduction">
     <div class="about-introduction-ttl">
       <div class="C_front-ttl">
@@ -337,7 +337,7 @@ Template Path: pages/
       </div>
     </div>
 
-  </section>
+  </section> -->
 </div>
 
 <?php get_template_part('./inc/footer'); ?>
