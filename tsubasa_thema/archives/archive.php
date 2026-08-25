@@ -68,7 +68,7 @@
                 endwhile; ?>
 
             <?php else: ?>
-                <li>投稿はありません</li>
+                <p class="nothing-TX">投稿はありません</p>
             <?php endif; ?>
             </ul>
 

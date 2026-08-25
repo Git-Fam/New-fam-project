@@ -45,7 +45,9 @@
             </a>
         <?php endwhile;
           wp_reset_postdata();
-        endif; ?>
+        else: ?>
+          <p class="nothing-TX">新着情報はありません</p>
+        <?php endif; ?>
       </div>
     </div>
     <div class="front-kv-contents">
@@ -120,15 +122,10 @@
       </div>
       <section class="front-services">
         <div class="front-services-ttl">
-          <div class="C_front-ttl">
-            <div class="wing left-wing">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
-            </div>
-            <h2 class="TL">診療案内</h2>
-            <div class="wing right-wing">
-              <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
-            </div>
+          <div class="front-services-ttl-bg">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-services-ttl-bg.webp" alt="">
           </div>
+          <h2 class="TL">診療案内</h2>
         </div>
         <div class="front-services-txt">
           <p class="TX">
@@ -182,6 +179,19 @@
               </div>
               <div class="link-item-inr-txt">
                 <p class="TX">夜尿外来</p>
+                <div class="arrow">
+                  <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-services-link-arrow.svg" alt="">
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="link-item">
+            <a class="link-item-inr" href="#">
+              <div class="link-item-bg">
+                <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-services-link-bg.svg" alt="">
+              </div>
+              <div class="link-item-inr-txt">
+                <p class="TX TX-mini">頭のかたち<br>外来</p>
                 <div class="arrow">
                   <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-services-link-arrow.svg" alt="">
                 </div>

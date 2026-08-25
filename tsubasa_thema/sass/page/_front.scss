@@ -91,6 +91,13 @@
             overflow: hidden;
           }
         }
+        .nothing-TX {
+          font-size: s(12);
+          font-weight: 500;
+          color: #000;
+          line-height: 2.2;
+          padding-block: s(10) s(12);
+        }
       }
     }
 
@@ -270,12 +277,12 @@
     @include imgCover('front/front-services_about-bg.webp');
     background-position: center top;
     position: relative;
-    padding-top: s(246);
+    padding-top: s(273);
     margin-top: smax(-320);
 
     .front-services_about-char {
       position: absolute;
-      top: s(51);
+      top: s(91);
       left: smax(-15);
       width: s(124);
     }
@@ -283,15 +290,30 @@
     .front-services {
 
       .front-services-ttl {
-        .C_front-ttl {
-          .TL {
-            color: #ffffff;
-          }
+        position: relative;
+        width: fit-content;
+        margin: 0 auto 0;
+
+        .front-services-ttl-bg {
+          position: absolute;
+          top: 132%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: s(231);
+          z-index: 1;
+        }
+
+        .TL {
+          font-size: s(28);
+          line-height: 1.5;
+          font-weight: 600;
+          position: relative;
+          z-index: 2;
         }
       }
 
       .front-services-txt {
-        margin-top: s(30);
+        margin-top: s(117);
         padding-inline: s(20) s(19);
 
         .TX {
@@ -303,7 +325,7 @@
       }
 
       .front-services-links {
-        margin: 0 auto 0;
+        margin: s(20) auto 0;
         display: flex;
         flex-wrap: wrap;
         width: s(295);
@@ -355,13 +377,13 @@
       }
 
       .front-services-char {
-        margin: s(33) auto 0;
+        margin: smax(-15) auto 0;
         width: s(375);
       }
     }
 
     .front-about {
-      margin-top: s(68);
+      margin-top: s(10);
       padding-bottom: s(52);
 
       .front-about-ttl {
