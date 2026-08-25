@@ -174,7 +174,7 @@ Template Path: pages/
       </p>
     </div>
     <div class="C_under-point-contents">
-      <div class="contents-item">
+      <!-- <div class="contents-item">
         <div class="contents-item-ttl">
           <h3 class="TL">乳幼児健診の際に<br>行う検査</h3>
         </div>
@@ -184,7 +184,7 @@ Template Path: pages/
           <p class="TX">股関節超音波検査</p>
           <p class="TX">心臓超音波検査</p>
         </div>
-      </div>
+      </div> -->
       <div class="contents-item">
         <div class="contents-item-ttl">
           <h3 class="TL">当日の持ち物</h3>

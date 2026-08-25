@@ -82,6 +82,15 @@
       }
     }
 
+    .nothing-TX {
+      font-size: s(12);
+      font-weight: 500;
+      color: #000;
+      line-height: 2.2;
+      padding-block: s(20) s(12);
+      text-align: center;
+    }
+
     .pagination {
       margin-top: s(64);
       width: 100%;

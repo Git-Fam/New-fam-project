@@ -13,11 +13,11 @@ Template Path: pages/
 
 <div class="page-about">
   <div class="about-kv_greeting">
-    <div class="about-kv_greeting-bg">
-      <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-kv_greeting-bg.webp" alt="">
-    </div>
     <section class="about-kv">
       <div class="about-kv-char-01">
+        <div class="about-kv-board">
+          <h2 class="TL">当院について</h2>
+        </div>
         <div class="char char-boss">
           <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-kv-char-boss.webp" alt="">
         </div>
@@ -55,79 +55,100 @@ Template Path: pages/
       </div>
     </section>
     <section class="about-greeting" id="about-greeting">
-      <div class="about-greeting-ttl">
-        <div class="C_front-ttl">
-          <div class="wing left-wing">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
+      <div class="about-greeting-bg">
+        <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-greeting-bg.webp" alt="">
+      </div>
+      <div class="about-greeting-inr">
+        <div class="about-greeting-ttl">
+          <div class="C_front-ttl">
+            <div class="wing left-wing">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
+            </div>
+            <h2 class="TL">ごあいさつ</h2>
+            <div class="wing right-wing">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
+            </div>
           </div>
-          <h2 class="TL">ごあいさつ</h2>
-          <div class="wing right-wing">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
+        </div>
+        <div class="about-greeting-img">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-greeting-img.webp" alt="">
+        </div>
+        <div class="about-greeting-txt">
+          <p class="TX">
+            ホームページをご覧いただき、ありがとうございます。<br>
+            つばさこども医院は、「子ども達には無限の可能性があり、未来に羽ばたく翼（つばさ）を持っている」という思いを胸に、このたび開院いたしました。子どもたちは一人ひとりがかけがえのない存在であり、その成長の先には大きな可能性が広がっています。私たちは、病気の治療だけでなく、日々の健康を見守り、安心して受診できる環境づくりを大切にしてまいります。すべての子どもたちが健やかに成長し、自分らしく未来へ羽ばたけるよう、安心できる医療と温かなサポートを提供いたします。<br>
+            15年以上にわたる金沢大学附属病院での小児外科医としての経験を礎として、お子さまとご家族に真摯に寄り添いながら、地域に根ざしたクリニックを目指してまいります。どうぞよろしくお願い申し上げます。
+          </p>
+          <p class="TX NM">
+            <span>院長</span>酒井 清祥
+          </p>
+        </div>
+        <div class="about-greeting-prof">
+          <div class="about-greeting-prof-char">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-greeting-prof-char-01.webp" alt="">
+          </div>
+          <div class="prof-item">
+            <h3 class="prof-item-TL">略歴</h3>
+            <ul class="prof-item-txt">
+              <li class="TX">
+                金沢大学医学部卒　H14
+              </li>
+              <li class="TX">
+                金沢大学第二外科学教室
+              </li>
+              <li class="TX">
+                金沢大学肝胆膵・移植外科／小児外科教室
+              </li>
+              <li class="TX">
+                金沢大学附属病院　小児外科診療科長
+              </li>
+              <li class="TX">
+                金沢大学附属病院　臨床准教授
+              </li>
+            </ul>
+          </div>
+          <div class="prof-item">
+            <h3 class="prof-item-TL">資格</h3>
+            <ul class="prof-item-txt">
+              <li class="TX">
+                医学博士（金沢大学）
+              </li>
+              <li class="TX">
+                日本小児外科学会 小児外科専門医
+              </li>
+              <li class="TX">
+              </li>
+              <li class="TX">
+                日本外科学会 外科専門医
+              </li>
+              <li class="TX">
+                日本周産期・新生児学会 新生児認定外科医
+              </li>
+              <li class="TX">
+                日本小児血液・がん学会 小児がん認定外科医
+              </li>
+              <li class="TX">
+                新生児蘇生法（NCPR） 専門コース修了
+              </li>
+              <li class="TX">
+                食育インストラクター
+              </li>
+            </ul>
+          </div>
+          <div class="prof-item">
+            <h3 class="prof-item-TL">趣味</h3>
+            <ul class="prof-item-txt">
+              <li class="TX">
+                料理・釣り
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-      <div class="about-greeting-img">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-greeting-img.webp" alt="">
-      </div>
-      <div class="about-greeting-txt">
-        <p class="TX">
-          ホームページをご覧いただき、ありがとうございます。<br>
-          つばさこども医院は、「子ども達には無限の可能性があり、未来に羽ばたく翼（つばさ）を持っている」という思いを胸に、このたび開院いたしました。子どもたちは一人ひとりがかけがえのない存在であり、その成長の先には大きな可能性が広がっています。私たちは、病気の治療だけでなく、日々の健康を見守り、安心して受診できる環境づくりを大切にしてまいります。すべての子どもたちが健やかに成長し、自分らしく未来へ羽ばたけるよう、安心できる医療と温かなサポートを提供いたします。<br>
-          15年以上にわたる金沢大学附属病院での小児外科医としての経験を礎として、お子さまとご家族に真摯に寄り添いながら、地域に根ざしたクリニックを目指してまいります。どうぞよろしくお願い申し上げます。
-        </p>
-        <p class="TX NM">
-          <span>院長</span>酒井 清祥
-        </p>
-      </div>
-      <div class="about-greeting-prof">
-        <div class="prof-item">
-          <h3 class="prof-item-TL">略歴</h3>
-          <ul class="prof-item-txt">
-            <li class="TX">
-              金沢大学医学部卒　H14
-            </li>
-            <li class="TX">
-              金沢大学第二外科学教室
-            </li>
-            <li class="TX">
-              金沢大学肝胆膵・移植外科／小児外科教室
-            </li>
-            <li class="TX">
-              金沢大学附属病院　小児外科診療科長
-            </li>
-            <li class="TX">
-              金沢大学附属病院　臨床准教授
-            </li>
-          </ul>
-        </div>
-        <div class="prof-item">
-          <h3 class="prof-item-TL">資格</h3>
-          <ul class="prof-item-txt">
-            <li class="TX">
-              医学博士（金沢大学）
-            </li>
-            <li class="TX">
-              日本小児外科学会 小児外科専門医
-            </li>
-            <li class="TX">
-              日本外科学会 外科専門医
-            </li>
-            <li class="TX">
-              日本周産期・新生児学会 新生児認定外科医
-            </li>
-            <li class="TX">
-              日本小児血液・がん学会 小児がん認定外科医
-            </li>
-            <li class="TX">
-              食育インストラクター
-            </li>
-          </ul>
-        </div>
+      <div class="about-greeting-bg-char">
+        <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-kv_greeting-bg-char.webp" alt="">
       </div>
     </section>
-    <div class="about-kv_greeting-bg-char">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-kv_greeting-bg-char.webp" alt="">
-    </div>
   </div>
   <section class="about-features" id="about-features">
     <div class="about-features-ttl">
@@ -219,54 +240,104 @@ Template Path: pages/
     </div>
   </section>
 
-  <!-- <section class="about-overview">
-    <div class="about-overview-ttl">
+  <section class="about-introduction" id="about-introduction">
+    <div class="about-introduction-ttl">
       <div class="C_front-ttl">
         <div class="wing left-wing">
           <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
         </div>
-        <h2 class="TL">当院の概要</h2>
+        <h2 class="TL">院内紹介</h2>
         <div class="wing right-wing">
           <img src="<?php echo get_template_directory_uri(); ?>/img/common/C_front-ttl-wing.svg" alt="">
         </div>
       </div>
     </div>
 
-    <ul class="about-overview-lists">
-      <li class="list-item">
-        <h3 class="TL">医院名</h3>
-        <p class="TX">つばさこども医院</p>
-      </li>
-      <li class="list-item">
-        <h3 class="TL">住所</h3>
-        <p class="TX">
-          〒921-8832<br>
-          石川県野々市市<br>
-          藤平田1丁目269番地
-        </p>
-      </li>
-      <li class="list-item">
-        <h3 class="TL">院長</h3>
-        <p class="TX">酒井 清祥</p>
-      </li>
-      <li class="list-item">
-        <h3 class="TL">開院</h3>
-        <p class="TX">2026年10月1日</p>
-      </li>
-      <li class="list-item">
-        <h3 class="TL">TEL</h3>
-        <p class="TX">076-282-7272</p>
-      </li>
-      <li class="list-item">
-        <h3 class="TL">診療内容</h3>
-        <p class="TX">小児外科 / 小児科</p>
-      </li>
-      <li class="list-item">
-        <h3 class="TL">休診日</h3>
-        <p class="TX">水曜 / 土曜午後 / 日・祝</p>
-      </li>
-    </ul>
-  </section> -->
+    <?php
+
+    $introduction_slider_content = [
+      [
+        'img' => get_template_directory_uri() . '/img/about/about-introduction-slider-content-img-01.webp',
+        'ttl' => '受付',
+        'txt' => 'すっきりとした設計でお声かけしやすいようにしております。',
+      ],
+      [
+        'img' => get_template_directory_uri() . '/img/about/about-introduction-slider-content-img-02.webp',
+        'ttl' => '待合室',
+        'txt' => 'すっきりとした設計でお声かけしやすいようにしております。',
+      ],
+      [
+        'img' => get_template_directory_uri() . '/img/about/about-introduction-slider-content-img-03.webp',
+        'ttl' => '診察室',
+        'txt' => 'すっきりとした設計でお声かけしやすいようにしております。',
+      ],
+      [
+        'img' => get_template_directory_uri() . '/img/about/about-introduction-slider-content-img-04.webp',
+        'ttl' => 'レントゲン室',
+        'txt' => 'すっきりとした設計でお声かけしやすいようにしております。',
+      ],
+      [
+        'img' => get_template_directory_uri() . '/img/about/about-introduction-slider-content-img-05.webp',
+        'ttl' => '授乳室',
+        'txt' => 'すっきりとした設計でお声かけしやすいようにしております。',
+      ],
+      [
+        'img' => get_template_directory_uri() . '/img/about/about-introduction-slider-content-img-06.webp',
+        'ttl' => 'トイレ',
+        'txt' => 'すっきりとした設計でお声かけしやすいようにしております。',
+      ],
+    ];
+
+    ?>
+
+    <div class="about-introduction-slider-wrap">
+      <div class="about-introduction-slider-names">
+        <?php foreach ($introduction_slider_content as $item): ?>
+          <div class="item-name">
+            <p class="TX"><?php echo esc_html($item['ttl']); ?></p>
+          </div>
+        <?php endforeach; ?>
+      </div>
+      <div class="about-introduction-slider-inr">
+        <div class="about-introduction-slider-bg">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-introduction-slider-bg.webp" alt="">
+        </div>
+        <div class="about-introduction-slider-content swiper">
+          <div class="content-wrap swiper-wrapper">
+            <?php foreach ($introduction_slider_content as $item): ?>
+              <div class="content-item swiper-slide">
+                <div class="content-item-inr">
+                  <div class="content-item-img">
+                    <img src="<?php echo esc_url($item['img']); ?>" alt="<?php echo esc_attr($item['ttl']); ?>">
+                  </div>
+                  <div class="content-item-ttl">
+                    <h3 class="TL"><?php echo esc_html($item['ttl']); ?></h3>
+                  </div>
+                  <div class="content-item-txt">
+                    <p class="TX">
+                      <?php echo wp_kses($item['txt'], ['br' => []]); ?>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            <?php endforeach; ?>
+          </div>
+          <div class="about-introduction-slider-prev slider-arrow" aria-label="前へ">
+            <span class="slider-arrow-icon"></span>
+          </div>
+          <div class="about-introduction-slider-next slider-arrow" aria-label="次へ">
+            <span class="slider-arrow-icon"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-introduction-char">
+      <div class="char char-01">
+        <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-introduction-char-01.webp" alt="">
+      </div>
+    </div>
+
+  </section>
 </div>
 
 <?php get_template_part('./inc/footer'); ?>
