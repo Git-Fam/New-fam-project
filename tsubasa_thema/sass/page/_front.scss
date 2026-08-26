@@ -91,6 +91,7 @@
             overflow: hidden;
           }
         }
+
         .nothing-TX {
           font-size: s(12);
           font-weight: 500;
@@ -415,12 +416,28 @@
   }
 
   .front-first_reserve_payment_news_access_recruit {
-    @include imgCover('front/front-first_reserve_payment_news_access_recruit-bg.webp');
+    // @include imgCover('front/front-first_reserve_payment_news_access_recruit-bg.webp');
+    @include imgContain('front/front-first_reserve_payment_news_access_recruit-bg.webp');
     background-position: center top;
     background-size: 100%;
-    padding-block: s(224) s(203);
+    // padding-block: s(224) s(193);
+    padding-block: s(224) s(153.83);
     position: relative;
     z-index: 2;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      width: 100%;
+      height: s(39.17);
+      @include imgContain('front/front-first_reserve_payment_news_access_recruit-bg-wav.webp');
+      background-position: center bottom;
+      background-size: 100%;
+    }
 
     .front-first_reserve_payment_news_access_recruit-char {
       position: absolute;
@@ -1070,10 +1087,11 @@
 
     .front-tug_of_war-char {
       position: absolute;
-      bottom: 0;
+      top: calc(100% - s(100));
       right: 0;
       width: s(492);
       animation: tugOfWar 4s 1s ease-in-out infinite alternate;
+      z-index: 3;
 
       @keyframes tugOfWar {
         0% {
@@ -1089,11 +1107,11 @@
 
   .front-tug_of_war {
     width: 100%;
-    height: 116px;
+    height: s(116);
     @include imgCover('front/front-tug_of_war-bg.webp');
     background-position: center top;
     position: relative;
     z-index: 1;
-    margin-top: sm(-38);
+    // margin-top: sm(-38);
   }
 }

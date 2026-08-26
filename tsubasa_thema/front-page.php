@@ -318,7 +318,7 @@
           </div>
         </div>
       </section>
-      <section class="front-first" id="front-first">
+      <!-- <section class="front-first" id="front-first">
         <div class="front-first-ttl">
           <div class="C_front-ttl">
             <div class="wing left-wing">
@@ -415,8 +415,8 @@
             </div>
           </div>
         </div>
-      </section>
-      <section class="front-payment" id="front-payment">
+      </section> -->
+      <!-- <section class="front-payment" id="front-payment">
         <div class="front-payment-ttl">
           <div class="C_front-ttl">
             <div class="wing left-wing">
@@ -437,7 +437,7 @@
           <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-payment-logo.webp"
             alt="VISA/MASTER/JCB/AMEX/PayPay/楽天ペイ">
         </div>
-      </section>
+      </section> -->
       <section class="front-contact">
         <div class="front-contact-char">
           <div class="char-01 fuwafuwa delay-06">

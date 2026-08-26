@@ -2,7 +2,7 @@
 
 <!-- 共有 これ以下 -->
 </main>
-<footer class="footer<?php if (is_page('about')): ?> is-about-footer<?php endif; ?>">
+<footer class="footer <?php if (is_front_page()): ?> is-front-footer<?php endif; ?> <?php if (is_page('about')): ?> is-about-footer<?php endif; ?>">
   <!--
       下の場合は『is-under』
       上の場合は『is-above』
