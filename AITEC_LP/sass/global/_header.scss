@@ -5,15 +5,35 @@
 ----------------------- */
 
 .header {
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     background: linear-gradient(169.68deg, $B-d6e8ff 14.13%, $B-d7edff 27.85%, $B-ecedff 77.89%, $B-abcbff 100.46%);
 
     @include sp {
         background: linear-gradient(154.04deg, $B-d6e8ff 14.13%, $B-d7edff 27.85%, $B-ecedff 77.89%, $B-abcbff 100.46%);
 
+        &::before {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 90;
+            width: 100%;
+            height: calc(100vh - #{s(59)});
+            background-color: $F-ffffff;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
         // メニューを開いている間はヘッダー背景を白に切り替え（Figma実測）
         &.is-open {
             background: $F-ffffff;
+
+            &::before {
+                opacity: 1;
+            }
         }
     }
 

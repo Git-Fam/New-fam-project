@@ -37,6 +37,12 @@
         flex-direction: column;
     }
 
+    &__logo-link {
+        display: block;
+        width: fit-content;
+        @include hover-opa;
+    }
+
     &__logo {
         display: block;
         width: pmin(151);

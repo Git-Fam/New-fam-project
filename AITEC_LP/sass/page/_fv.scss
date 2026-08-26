@@ -290,10 +290,29 @@
     }
 
     &__btn {
+        position: relative;
+        top: 0;
         display: flex;
         align-items: center;
         justify-content: center;
-        @include hover-opa;
+        transition:
+            top 0.3s ease,
+            box-shadow 0.3s ease;
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover {
+                top: -2px;
+                box-shadow: 0 8px 18px rgba($B-144fef, 0.22);
+
+                .fv__btn-icon {
+                    transform: translateX(4px);
+                }
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+        }
 
         &-text {
             @include wt700;
@@ -311,6 +330,12 @@
         &-icon {
             @include inter;
             @include lineHeight(14, 14);
+            transition: transform 0.3s ease;
+
+            @media (prefers-reduced-motion: reduce) {
+                transition: none;
+            }
+
             @include pc {
                 font-size: pmin(14);
             }
