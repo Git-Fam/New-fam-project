@@ -47,7 +47,7 @@
 // 下へ
 .down {
 	opacity: 0;
-	transform: translateY(-100%);
+	transform: translateY(-100px);
 
 	&.show {
 		animation: down ease forwards;
@@ -57,7 +57,7 @@
 		@keyframes down {
 			0% {
 				opacity: 0;
-				transform: translateY(-100%);
+				transform: translateY(-100px);
 			}
 
 			100% {
@@ -166,7 +166,7 @@
 // load下へ
 .loadDown {
 	opacity: 0;
-	transform: translateY(-100%);
+	transform: translateY(-100px);
 
 	&.show {
 		animation: loadDown ease forwards;
@@ -176,7 +176,7 @@
 		@keyframes loadDown {
 			0% {
 				opacity: 0;
-				transform: translateY(-100%);
+				transform: translateY(-100px);
 			}
 
 			100% {

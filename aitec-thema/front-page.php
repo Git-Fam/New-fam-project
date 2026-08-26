@@ -161,7 +161,7 @@
           営業活動を変える第一歩は、<br class="sp">最適なシステム選びから。<br>
           グロースコアに関するご相談やデモのご依頼は、お気軽にお問い合わせください。
         </p>
-        <a href="#" class="C_contact-banner-button hover-opa">
+        <a href="/contact" class="C_contact-banner-button hover-opa">
           <span class="C_contact-banner-button-text">お問い合わせはこちら</span>
           <span class="C_contact-banner-button-arrow">→</span>
         </a>
