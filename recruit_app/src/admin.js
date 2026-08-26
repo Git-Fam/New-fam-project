@@ -829,7 +829,6 @@ function renderGeneral() {
   $("#diagnosisQuestionCountInput").value = getSafeQuestionCount(settings.diagnosisQuestionCount);
   $("#jobCountInput").value = settings.jobCount;
   $("#highMatchCountInput").value = settings.highMatchCount;
-  $("#requireLineInput").checked = Boolean(settings.requireLineBeforeResult);
   renderAiConversationSettings();
 }
 
@@ -1252,7 +1251,12 @@ function renderKpiMessage(message) {
   `;
   $("#kpiDailyTable").innerHTML = "";
   $("#kpiResultTypes").innerHTML = "";
-  $("#kpiDropoffs").innerHTML = "";
+  const dropoffPositions = $("#kpiDropoffPositions");
+  const dropoffQuestions = $("#kpiDropoffQuestions");
+  const legacyDropoffs = $("#kpiDropoffs");
+  if (dropoffPositions) dropoffPositions.innerHTML = "";
+  if (dropoffQuestions) dropoffQuestions.innerHTML = "";
+  if (legacyDropoffs) legacyDropoffs.innerHTML = "";
   const adminAuditLogTable = $("#adminAuditLogTable");
   if (adminAuditLogTable) adminAuditLogTable.innerHTML = "";
 }
@@ -1353,29 +1357,117 @@ function renderKpiResultTypes(rows = []) {
     .join("");
 }
 
-function renderKpiDropoffs(rows = []) {
+function summarizeLegacyDropoffQuestions(rows = []) {
+  const map = new Map();
+  rows.forEach((row) => {
+    const imageId = String(row.image_id || "").trim();
+    if (!imageId) return;
+    const current = map.get(imageId) || {
+      image_id: imageId,
+      dropoff_count: 0,
+      position_count: 0,
+      first_question_order: null,
+      last_question_order: null
+    };
+    const questionOrder = Math.floor(Number(row.question_order || 0));
+    current.dropoff_count += Number(row.dropoff_count || 0);
+    current.position_count += 1;
+    if (questionOrder) {
+      current.first_question_order = current.first_question_order
+        ? Math.min(current.first_question_order, questionOrder)
+        : questionOrder;
+      current.last_question_order = current.last_question_order
+        ? Math.max(current.last_question_order, questionOrder)
+        : questionOrder;
+    }
+    map.set(imageId, current);
+  });
+
+  return Array.from(map.values()).sort(
+    (a, b) => Number(b.dropoff_count || 0) - Number(a.dropoff_count || 0) || a.image_id.localeCompare(b.image_id)
+  );
+}
+
+function getDropoffQuestionInfo(imageId) {
+  const id = String(imageId || "").trim();
+  const card = cards.find((item) => item.id === id);
+  if (card) {
+    return {
+      id,
+      title: card.question || "質問文なし",
+      meta: "通常質問"
+    };
+  }
+
+  const specialQuestion = specialQuestions.find((question) => question.key === id);
+  if (specialQuestion) {
+    return {
+      id,
+      title: specialQuestion.questionText || "質問文なし",
+      meta: "スペシャルクエスチョン"
+    };
+  }
+
+  return {
+    id: id || "-",
+    title: "現在の質問マスタと一致なし",
+    meta: "質問ID"
+  };
+}
+
+function renderKpiDropoffPositions(rows = []) {
+  const target = $("#kpiDropoffPositions") || $("#kpiDropoffs");
+  if (!target) return;
+
   if (!rows.length) {
-    $("#kpiDropoffs").innerHTML = `<p class="kpi-empty">まだ離脱集計がありません。</p>`;
+    target.innerHTML = `<p class="kpi-empty">まだ表示位置別の離脱集計がありません。</p>`;
     return;
   }
 
   const maxCount = Math.max(...rows.map((row) => Number(row.dropoff_count || 0)), 1);
 
-  $("#kpiDropoffs").innerHTML = rows
+  target.innerHTML = rows
     .map((row) => {
       const count = Number(row.dropoff_count || 0);
       const rate = Math.max(2, Math.min(100, (count / maxCount) * 100));
-      const card = cards.find((item) => item.id === row.image_id);
-      const fallbackCard = cards[Number(row.question_order || 1) - 1];
-      const question = card?.question || fallbackCard?.question || "現在の質問マスタと一致なし";
-      const imageId = row.image_id || fallbackCard?.id || "-";
+      const totalQuestions = Number(row.total_questions || 0);
       return `
         <div class="kpi-result-row kpi-dropoff-row">
           <div>
             <strong>${formatNumber(row.question_order)}枚目</strong>
             <span>${formatNumber(count)}件</span>
           </div>
-          <small>${escapeHtml(question)} / ${escapeHtml(imageId)}</small>
+          <small>${totalQuestions ? `${formatNumber(totalQuestions)}問中` : "表示順ベース"}</small>
+          <div class="kpi-bar" aria-hidden="true"><span style="width: ${rate}%"></span></div>
+        </div>
+      `;
+    })
+    .join("");
+}
+
+function renderKpiDropoffQuestions(rows = []) {
+  const target = $("#kpiDropoffQuestions");
+  if (!target) return;
+
+  if (!rows.length) {
+    target.innerHTML = `<p class="kpi-empty">まだ質問別の離脱集計がありません。</p>`;
+    return;
+  }
+
+  const maxCount = Math.max(...rows.map((row) => Number(row.dropoff_count || 0)), 1);
+
+  target.innerHTML = rows
+    .map((row) => {
+      const count = Number(row.dropoff_count || 0);
+      const rate = Math.max(2, Math.min(100, (count / maxCount) * 100));
+      const question = getDropoffQuestionInfo(row.image_id);
+      return `
+        <div class="kpi-result-row kpi-dropoff-row">
+          <div>
+            <strong>${escapeHtml(question.id)}</strong>
+            <span>${formatNumber(count)}件</span>
+          </div>
+          <small>${escapeHtml(question.title)} / ${escapeHtml(question.meta)}</small>
           <div class="kpi-bar" aria-hidden="true"><span style="width: ${rate}%"></span></div>
         </div>
       `;
@@ -1478,14 +1570,21 @@ function renderKpiDashboard(summary) {
   };
   const current = rangeMap[kpiRange] || rangeMap.daily;
   const resultTypes = Array.isArray(summary?.resultTypes) ? summary.resultTypes : [];
-  const dropoffs = Array.isArray(summary?.dropoffs) ? summary.dropoffs : [];
+  const legacyDropoffs = Array.isArray(summary?.dropoffs) ? summary.dropoffs : [];
+  const dropoffPositions = Array.isArray(summary?.dropoffPositions)
+    ? summary.dropoffPositions
+    : legacyDropoffs;
+  const dropoffQuestions = Array.isArray(summary?.dropoffQuestions)
+    ? summary.dropoffQuestions
+    : summarizeLegacyDropoffQuestions(legacyDropoffs);
   const adminAuditPanel = $("#adminAuditPanel");
   if (adminAuditPanel) adminAuditPanel.hidden = !SHOW_ADMIN_AUDIT_LOGS;
   $("#kpiTableTitle").textContent = current.title;
   renderKpiCards(current.rows[0] || null);
   renderKpiDailyTable(current.rows);
   renderKpiResultTypes(resultTypes);
-  renderKpiDropoffs(dropoffs);
+  renderKpiDropoffPositions(dropoffPositions);
+  renderKpiDropoffQuestions(dropoffQuestions);
   if (SHOW_ADMIN_AUDIT_LOGS) {
     renderAdminAuditLogs(Array.isArray(summary?.adminLogs) ? summary.adminLogs : []);
   }
@@ -2375,8 +2474,7 @@ function bindEvents() {
       comparisonCountUpdatedAt: new Date().toISOString(),
       diagnosisQuestionCount: safeQuestionCount,
       jobCount: Number($("#jobCountInput").value || 0),
-      highMatchCount: Number($("#highMatchCountInput").value || 0),
-      requireLineBeforeResult: $("#requireLineInput").checked
+      highMatchCount: Number($("#highMatchCountInput").value || 0)
     });
     await persistMaster("表示数値を保存しました");
   });
@@ -2519,49 +2617,15 @@ function bindEvents() {
     await persistMaster("スワイプ画像/質問内容を保存しました");
   });
 
-  $("#syncSupabase").addEventListener("click", async () => {
-    await persistMaster("全データを保存しました");
-  });
-
   $("#exportSettings").addEventListener("click", () => {
-    $("#settingsJson").value = JSON.stringify(settings, null, 2);
-    setStatus("設定を書き出しました");
-  });
-
-  $("#importSettings").addEventListener("click", async () => {
-    try {
-      const parsed = JSON.parse($("#settingsJson").value);
-      save(parsed);
-      populateSelects();
-      renderGeneral();
-      renderLineSurveyEditor();
-      renderSpecialQuestionEditor();
-      renderResultEditor();
-      renderCardEditor();
-      await persistMaster("設定を読み込みました");
-    } catch {
-      setStatus("JSONを確認してください");
-    }
-  });
-
-  $("#resetSettings").addEventListener("click", async () => {
-    saveAdminSettings(DEFAULT_SETTINGS);
-    settings = loadAdminSettings();
-    results = getConfiguredResults(settings);
-    cards = getConfiguredCards(settings);
-    lineSurveyQuestions = normalizeLineSurveyQuestions([]);
-    selectedLineSurveyKey = lineSurveyQuestions[0]?.key || "";
-    specialQuestions = [];
-    selectedSpecialQuestionKey = "";
-    deletedSpecialQuestionKeys = [];
-    populateSelects();
-    renderGeneral();
-    renderLineSurveyEditor();
-    renderSpecialQuestionEditor();
-    renderResultEditor();
-    renderCardEditor();
-    $("#settingsJson").value = "";
-    await persistMaster("設定をリセットしました");
+    const exportData = {
+      exportedAt: new Date().toISOString(),
+      ...serializeSettingsForMaster(settings),
+      lineSurveyQuestions,
+      specialQuestions
+    };
+    $("#settingsJson").value = JSON.stringify(exportData, null, 2);
+    setStatus("バックアップを書き出しました");
   });
 }
 

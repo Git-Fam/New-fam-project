@@ -410,7 +410,6 @@ async function readMaster() {
           diagnosisQuestionCount: settings.diagnosis_question_count,
           jobCount: settings.job_count,
           highMatchCount: settings.high_match_count,
-          requireLineBeforeResult: settings.require_line_before_result,
           lineAiMaxReplies: settings.line_ai_max_replies ?? 4,
           lineAiCtaMessage: settings.line_ai_cta_message || "",
           lineAiCtaPrimaryLabel: settings.line_ai_cta_primary_label || "相談してみる",
@@ -928,7 +927,6 @@ async function writeMaster(body: {
     diagnosisQuestionCount?: number;
     jobCount?: number;
     highMatchCount?: number;
-    requireLineBeforeResult?: boolean;
     lineAiMaxReplies?: number;
     lineAiCtaMessage?: string;
     lineAiCtaPrimaryLabel?: string;
@@ -994,7 +992,6 @@ async function writeMaster(body: {
       ),
       job_count: Number(body.settings.jobCount || 0),
       high_match_count: Number(body.settings.highMatchCount || 0),
-      require_line_before_result: Boolean(body.settings.requireLineBeforeResult),
       line_ai_max_replies: Math.max(
         1,
         Math.min(10, Math.floor(Number(body.settings.lineAiMaxReplies || 4)))

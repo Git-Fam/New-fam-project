@@ -33,7 +33,6 @@ python3 -m http.server 4173
 
 - 「18,542人の診断データと比較中」の人数
 - 紹介可能求人数、マッチ度90%以上の件数
-- LINE登録後に結果を表示するか
 - 診断結果マスタPDF相当の項目
 - ResultType（判定キー、読み取り専用）
 - タイプ名、キャッチコピー、説明文、強み、向いている仕事、おすすめ業界、LINE送信文
@@ -43,11 +42,10 @@ python3 -m http.server 4173
 
 公開診断では、出題候補の中から設定した質問数だけを軸バランスを見てランダム出題します。
 DBが40問までしか持っていない場合も、`src/data.js` の `image-041` 以降を補完します。
-管理画面で「Supabaseへ全データ保存」を押すと、補完された質問もDBへ保存されます。
 
 管理画面はSupabase接続が必要です。
-管理画面の保存ボタンまたは「Supabaseへ全データ保存」でDBへ同期されます。
-既存の上書きを消してPDFベースの初期値に戻す場合は、管理画面の「リセット」を使います。
+表示数値、質問、診断結果文章、LINEアンケート、AI会話設定は各項目内の保存ボタンでDBへ同期されます。
+「設定データ」の書き出しは、復旧用バックアップJSONの確認・保管に使います。
 
 Supabase接続時は管理画面ログインが必要です。
 ログイン画面で Supabase Secrets の `ADMIN_LOGIN_PASSWORD` と同じ値を入力します。
@@ -169,8 +167,7 @@ supabase secrets set ADMIN_SESSION_SECRET="十分に長いランダムな署名�
 window.CAREER_APP_CONFIG = {
   supabaseFunctionsBaseUrl: "https://YOUR_PROJECT_REF.supabase.co/functions/v1",
   lineLoginChannelId: "YOUR_LINE_LOGIN_CHANNEL_ID",
-  lineRedirectUri: "https://YOUR_PROJECT_REF.supabase.co/functions/v1/line-callback",
-  requireLineBeforeResult: false
+  lineRedirectUri: "https://YOUR_PROJECT_REF.supabase.co/functions/v1/line-callback"
 };
 ```
 
@@ -180,8 +177,7 @@ window.CAREER_APP_CONFIG = {
 window.CAREER_APP_CONFIG = {
   supabaseFunctionsBaseUrl: "https://YOUR_PROJECT_REF.supabase.co/functions/v1",
   lineLoginChannelId: "YOUR_LINE_LOGIN_CHANNEL_ID",
-  lineRedirectUri: "https://YOUR_PROJECT_REF.supabase.co/functions/v1/line-callback",
-  requireLineBeforeResult: false
+  lineRedirectUri: "https://YOUR_PROJECT_REF.supabase.co/functions/v1/line-callback"
 };
 ```
 
@@ -221,8 +217,7 @@ Dashboardだけで設定する場合は、Edge Functionsで以下の4つを作�
 
 ## 初回マスタ登録
 
-SupabaseのmigrationとEdge Functionsを反映した後、管理画面を開いて「Supabaseへ全データ保存」を押します。
-これで `data.js` の40問カード、15タイプ診断結果、表示数値がSupabaseへ登録されます。
+SupabaseのmigrationとEdge Functionsを反映した後、管理画面で各項目の保存ボタンを使ってマスタを登録・更新します。
 現在のプロジェクトでは登録済みです。
 
 ## 診断データ保存

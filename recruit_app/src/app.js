@@ -20,9 +20,6 @@ function getLocalRuntimeSettings() {
   return {
     ...DEFAULT_SETTINGS,
     ...localSettings,
-    requireLineBeforeResult:
-      Boolean(config.requireLineBeforeResult) ||
-      localSettings.requireLineBeforeResult,
   };
 }
 
@@ -300,9 +297,6 @@ function applyRuntimeSettings(nextSettings) {
   settings = {
     ...DEFAULT_SETTINGS,
     ...nextSettings,
-    requireLineBeforeResult:
-      Boolean(config.requireLineBeforeResult) ||
-      Boolean(nextSettings.requireLineBeforeResult),
   };
   cards = getDiagnosisCards(settings);
   results = getConfiguredResults(settings);
@@ -1260,6 +1254,12 @@ function renderResultOffer(diagnosis) {
     ? "LINEで結果を受け取る"
     : "友だち追加で今すぐ結果を見る";
 
+  const jobLeadCopy = $("#jobLeadCopy");
+  if (jobLeadCopy) {
+    jobLeadCopy.textContent = "";
+    jobLeadCopy.hidden = true;
+  }
+
   $("#jobCount").textContent = formatNumber(settings.jobCount);
   const highMatch = $("#highMatchCount");
   if (highMatch) highMatch.textContent = formatNumber(settings.highMatchCount);
@@ -1293,6 +1293,13 @@ function renderResultOffer(diagnosis) {
       hasLineConnection,
     });
   }
+}
+
+function showLineConnectionError(message) {
+  const target = $("#jobLeadCopy") || $(".line-note");
+  if (!target) return;
+  target.textContent = message;
+  target.hidden = false;
 }
 
 async function sendLineResultWithSavedConnection(diagnosis) {
@@ -1389,15 +1396,13 @@ async function handleLineClick() {
   } catch (error) {
     console.warn(error);
     if (getFunctionsBaseUrl()) {
-      $("#jobLeadCopy").textContent =
-        "LINE連携の設定を確認してください。認証URLを作成できませんでした。";
+      showLineConnectionError("LINE連携の設定を確認してください。認証URLを作成できませんでした。");
       return;
     }
   }
 
   if (getFunctionsBaseUrl()) {
-    $("#jobLeadCopy").textContent =
-      "LINE連携の設定を確認してください。認証URLを作成できませんでした。";
+    showLineConnectionError("LINE連携の設定を確認してください。認証URLを作成できませんでした。");
     return;
   }
 

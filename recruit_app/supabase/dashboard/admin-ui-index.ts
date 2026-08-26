@@ -227,9 +227,14 @@ const adminAppHtml = String.raw`
         <div class="kpi-result-list" id="kpiResultTypes"></div>
       </div>
       <div class="kpi-panel">
-        <h3>離脱が多い設問</h3>
-        <p class="kpi-panel-note">診断開始後、30分以上進捗が止まったものを離脱として集計します。</p>
-        <div class="kpi-result-list" id="kpiDropoffs"></div>
+        <h3>離脱が多い表示位置</h3>
+        <p class="kpi-panel-note">診断開始後、30分以上進捗が止まったものを「何枚目で止まったか」で集計します。</p>
+        <div class="kpi-result-list" id="kpiDropoffPositions"></div>
+      </div>
+      <div class="kpi-panel">
+        <h3>離脱が多い質問</h3>
+        <p class="kpi-panel-note">ランダム出題のため、表示順とは別に「どの質問で止まったか」を集計します。</p>
+        <div class="kpi-result-list" id="kpiDropoffQuestions"></div>
       </div>
       <div class="kpi-panel kpi-panel-wide" id="adminAuditPanel" hidden>
         <h3>管理操作ログ</h3>
@@ -331,10 +336,6 @@ const adminAppHtml = String.raw`
       <label>
         マッチ度90%以上
         <input id="highMatchCountInput" type="number" min="0" step="1" />
-      </label>
-      <label class="checkbox-label">
-        <input id="requireLineInput" type="checkbox" />
-        LINE登録後に結果を表示
       </label>
     </div>
     <button class="primary-button" id="saveGeneral" type="button">保存</button>
@@ -559,10 +560,7 @@ const adminAppHtml = String.raw`
   <section class="admin-section">
     <h2>設定データ</h2>
     <div class="admin-actions">
-      <button class="secondary-button" id="syncSupabase" type="button">Supabaseへ全データ保存</button>
-      <button class="secondary-button" id="exportSettings" type="button">書き出し</button>
-      <button class="secondary-button" id="importSettings" type="button">読み込み</button>
-      <button class="text-button danger-text" id="resetSettings" type="button">リセット</button>
+      <button class="secondary-button" id="exportSettings" type="button">バックアップを書き出し</button>
     </div>
     <textarea id="settingsJson" rows="8" spellcheck="false"></textarea>
   </section>

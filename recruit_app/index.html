@@ -25,8 +25,8 @@
       name="description"
       content="画像を選ぶだけで、あなたに合う仕事が分かるAIキャリア診断。"
     />
-    <link rel="stylesheet" href="./css/reset.css" />
-    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/reset.css?v=20260824-ui-fix" />
+    <link rel="stylesheet" href="./css/styles.css?v=20260824-ui-fix" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -416,6 +416,8 @@
               <img src="./assets/figma/jobs-message-circle.svg" alt="" />
               <span id="lineCtaText">友だち追加で今すぐ結果を見る</span>
             </button>
+            <!-- jobLeadCopy jsでLINE連携エラー表示に使用中 -->
+            <p id="jobLeadCopy" aria-live="polite" hidden></p>
             <p class="line-note">友だち追加後、すぐに結果が届きます</p>
             <p class="privacy-note">
               <a href="./privacy.html" target="_blank" rel="noopener"

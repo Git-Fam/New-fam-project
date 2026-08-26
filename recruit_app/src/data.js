@@ -1106,7 +1106,6 @@ export const DEFAULT_SETTINGS = {
   diagnosisQuestionCount: 40,
   jobCount: 12,
   highMatchCount: 4,
-  requireLineBeforeResult: false,
   lineAiMaxReplies: 4,
   lineAiCtaMessage:
     "お話を聞く限り、\n" +
@@ -1266,9 +1265,6 @@ export function buildSettingsFromMaster(master = {}) {
     ),
     jobCount: Number(remoteSettings.jobCount ?? DEFAULT_SETTINGS.jobCount),
     highMatchCount: Number(remoteSettings.highMatchCount ?? DEFAULT_SETTINGS.highMatchCount),
-    requireLineBeforeResult: Boolean(
-      remoteSettings.requireLineBeforeResult ?? DEFAULT_SETTINGS.requireLineBeforeResult
-    ),
     lineAiMaxReplies: Number(remoteSettings.lineAiMaxReplies ?? DEFAULT_SETTINGS.lineAiMaxReplies),
     lineAiCtaMessage: String(
       remoteSettings.lineAiCtaMessage ?? DEFAULT_SETTINGS.lineAiCtaMessage
@@ -1321,7 +1317,6 @@ export function serializeSettingsForMaster(settings = loadAdminSettings()) {
       ),
       jobCount: Number(mergedSettings.jobCount || 0),
       highMatchCount: Number(mergedSettings.highMatchCount || 0),
-      requireLineBeforeResult: Boolean(mergedSettings.requireLineBeforeResult),
       lineAiMaxReplies: Math.max(
         1,
         Math.min(10, Math.floor(Number(mergedSettings.lineAiMaxReplies || 4)))
