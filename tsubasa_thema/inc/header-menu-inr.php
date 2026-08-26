@@ -56,12 +56,12 @@
       <li class="main-list-item">
         <a class="TX" href="<?php echo home_url(); ?>#front-access">アクセス</a>
       </li>
-      <li class="main-list-item">
+      <!-- <li class="main-list-item">
         <a class="TX" href="<?php echo home_url(); ?>#front-first">初めての方へ</a>
-      </li>
-      <li class="main-list-item">
+      </li> -->
+      <!-- <li class="main-list-item">
         <a class="TX" href="<?php echo home_url(); ?>#front-payment">お支払いについて</a>
-      </li>
+      </li> -->
       <li class="main-list-item">
         <a class="TX" href="/contact">お問い合わせ</a>
       </li>
@@ -79,16 +79,16 @@
       <li class="sub-list-item">
         <a class="TX" href="/privacy-policy">プライバシーポリシー</a>
       </li>
-      <li class="sub-list-item sp">
+      <!-- <li class="sub-list-item pc-nav">
         <a class="IMG" href="<?php echo esc_url(SCF::get_option_meta('site-settings', 'instagram_url')); ?>" target="_blank" rel="noopener noreferrer">
           <img src="<?php echo get_template_directory_uri(); ?>/img/header/sub-list-item-sns-insta.svg" alt="Instagram">
         </a>
-      </li>
+      </li> -->
     </ul>
   </nav>
   <div class="header-menu-icon">
     <picture>
-      <source srcset="<?php echo get_template_directory_uri(); ?>/img/header/header-menu-icon-pc.svg" media="(min-width: 951px)">
+      <source srcset="<?php echo get_template_directory_uri(); ?>/img/header/header-menu-icon-pc.svg" media="(min-width: 1051px)">
       <img src="<?php echo get_template_directory_uri(); ?>/img/header/header-menu-icon-sp.svg" alt="">
     </picture>
   </div>

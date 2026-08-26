@@ -17,12 +17,12 @@
     </header>
 
     <div class="reserve-btn front-hidden <?php if (is_front_page()): ?>is-hidden<?php endif; ?>">
-      <a class="reserve-btn-inr" href="<?php echo esc_url(SCF::get_option_meta('site-settings', 'web_reserve')); ?>" target="_blank" rel="noopener noreferrer">
+      <!-- <a class="reserve-btn-inr" href="<?php echo esc_url(SCF::get_option_meta('site-settings', 'web_reserve')); ?>" target="_blank" rel="noopener noreferrer">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/common/reserve-btn-pc.webp" media="(min-width: 951px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/common/reserve-btn-sp.webp" alt="ご予約はこちらから">
         </picture>
-      </a>
+      </a> -->
       <?php if (is_front_page()): ?>
         <a class="tel-btn" href="tel:076-282-7272">
           <img src="<?php echo get_template_directory_uri(); ?>/img/common/tel-btn.webp" alt="076-282-7272">

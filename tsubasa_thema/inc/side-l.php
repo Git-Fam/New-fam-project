@@ -22,11 +22,11 @@
           076-282-7272
         </p>
       </div>
-      <div class="sns">
+      <!-- <div class="sns">
         <a href="<?php echo esc_url(SCF::get_option_meta('site-settings', 'instagram_url')); ?>" target="_blank" rel="noopener noreferrer">
           <img src="<?php echo get_template_directory_uri(); ?>/img/common/side-l-sns-instagram.svg" alt="instagram">
         </a>
-      </div>
+      </div> -->
     </div>
     <div class="side-l-lawn">
       <img src="<?php echo get_template_directory_uri(); ?>/img/common/side-l-lawn.webp" alt="">
