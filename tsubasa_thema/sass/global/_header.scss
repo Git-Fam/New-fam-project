@@ -231,15 +231,15 @@
               transform: translateY(-50%);
 
               @include nav-pc {
-                @include imgContain('header/accordion-open-pc.svg');
-                width: pm(17);
-                right: pm(12);
+                // @include imgContain('header/accordion-open-pc.svg');
+                // width: pm(17);
+                // right: pm(12);
               }
 
               @include nav-sp {
-                @include imgContain('header/accordion-open-sp.svg');
-                width: s(17);
-                right: s(12);
+                // @include imgContain('header/accordion-open-sp.svg');
+                // width: s(17);
+                // right: s(12);
               }
             }
           }
@@ -249,15 +249,15 @@
               &::after {
 
                 @include nav-pc {
-                  @include imgContain('header/accordion-close-pc.svg');
-                  width: pm(18);
-                  height: pm(2);
+                  // @include imgContain('header/accordion-close-pc.svg');
+                  // width: pm(18);
+                  // height: pm(2);
                 }
 
                 @include nav-sp {
-                  @include imgContain('header/accordion-close-sp.svg');
-                  width: s(17);
-                  height: s(2);
+                  // @include imgContain('header/accordion-close-sp.svg');
+                  // width: s(17);
+                  // height: s(2);
                 }
               }
             }
@@ -414,10 +414,12 @@
     }
 
     @include nav-sp {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      left: s(20);
+      position: fixed;
+      // top: 50%;
+      // transform: translateY(-50%);
+      bottom: s(20);
+      left: 50%;
+      transform: translateX(-1930%);
       z-index: 2;
       width: s(9);
     }

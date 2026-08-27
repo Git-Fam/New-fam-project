@@ -34,7 +34,7 @@ Template Path: pages/
           <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-kv-char-04.webp" alt="">
         </div>
       </div>
-      <div class="about-kv-txt">
+      <div class="about-kv-txt" id="about-kv-txt">
         <h2 class="TL">
           <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-abput-ttl.svg" alt="見守りの森">
         </h2>
@@ -56,7 +56,10 @@ Template Path: pages/
     </section>
     <section class="about-greeting" id="about-greeting">
       <div class="about-greeting-bg">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-greeting-bg.webp" alt="">
+        <img class="about-greeting-bg-img" src="<?php echo get_template_directory_uri(); ?>/img/about/about-greeting-bg.webp" alt="">
+        <div class="about-greeting-bg-char">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-kv_greeting-bg-char.webp" alt="">
+        </div>
       </div>
       <div class="about-greeting-inr">
         <div class="about-greeting-ttl">
@@ -117,8 +120,6 @@ Template Path: pages/
                 日本小児外科学会 小児外科専門医
               </li>
               <li class="TX">
-              </li>
-              <li class="TX">
                 日本外科学会 外科専門医
               </li>
               <li class="TX">
@@ -144,9 +145,6 @@ Template Path: pages/
             </ul>
           </div>
         </div>
-      </div>
-      <div class="about-greeting-bg-char">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-kv_greeting-bg-char.webp" alt="">
       </div>
     </section>
   </div>
@@ -239,7 +237,7 @@ Template Path: pages/
       </div>
     </div>
   </section>
-<!-- 
+  <!-- 
   <section class="about-introduction" id="about-introduction">
     <div class="about-introduction-ttl">
       <div class="C_front-ttl">

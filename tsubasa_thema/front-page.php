@@ -116,7 +116,7 @@
         </div> -->
       </section>
     </div>
-    <div class="front-services_about">
+    <div class="front-services_about" id="front-services">
       <div class="front-services_about-char">
         <img src="<?php echo get_template_directory_uri(); ?>/img/front/front-services_about-char.webp" alt="">
       </div>
