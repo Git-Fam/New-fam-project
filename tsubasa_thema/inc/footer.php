@@ -24,6 +24,12 @@
       <?php if (is_page('constipation')): ?>
         <img src="<?php echo get_template_directory_uri(); ?>/img/footer/page_by_constipation.webp" alt="">
       <?php endif; ?>
+      <?php if (is_page('pediatrics')): ?>
+        <img src="<?php echo get_template_directory_uri(); ?>/img/footer/page_by_pediatrics.webp" alt="">
+      <?php endif; ?>
+      <?php if (is_page('home-visit')): ?>
+        <img src="<?php echo get_template_directory_uri(); ?>/img/footer/page_by_home-visit.webp" alt="">
+      <?php endif; ?>
       <?php if (is_archive('news')): ?>
         <img src="<?php echo get_template_directory_uri(); ?>/img/footer/page_by_news.webp" alt="">
       <?php endif; ?>

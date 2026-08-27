@@ -14,6 +14,15 @@ $(function () {
 		$(this).toggleClass("is-active");
 	});
 
+	// #front-services で飛んできた場合、診療案内アコーディオンを開く
+	function activateServicesMenuByHash() {
+		if (window.location.hash === "#front-services") {
+			$('.main-list-item-accordion > a[href$="#front-services"]').parent().addClass("is-active");
+		}
+	}
+	activateServicesMenuByHash();
+	$(window).on("hashchange", activateServicesMenuByHash);
+
 	// コンテンツボックスのアコーディオン
 	$(".C_contents_box-accordion .accordion-ttl").on("click", function () {
 		$(this).parent().toggleClass("is-active");

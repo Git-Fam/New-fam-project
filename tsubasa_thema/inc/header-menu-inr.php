@@ -5,10 +5,10 @@
         <a class="TX" href="<?php echo home_url(); ?>">TOP</a>
       </li>
       <li class="main-list-item main-list-item-accordion <?php if (is_page('about')): ?>is-active<?php endif; ?>">
-        <p class="TX">当院について</p>
+        <a class="TX" href="/about">当院について</a>
         <ul class="main-list-inr">
           <li class="main-list-item-inr">
-            <a class="TX-inr" href="/about">見守りの森</a>
+            <a class="TX-inr" href="/about#about-kv-txt">見守りの森</a>
           </li>
           <li class="main-list-item-inr">
             <a class="TX-inr" href="/about#about-greeting">あいさつ</a>
@@ -22,7 +22,7 @@
         </ul>
       </li>
       <li class="main-list-item main-list-item-accordion <?php if (is_page('pediatric-surgery') || is_page('pediatrics') || is_page('constipation') || is_page('nocturia') || is_page('prevention-screening') || is_page('home-visit')): ?>is-active<?php endif; ?>">
-        <p class="TX">診療案内</p>
+        <a class="TX" href="<?php echo home_url(); ?>#front-services">診療案内</a>
         <ul class="main-list-inr">
           <li class="main-list-item-inr">
             <a class="TX-inr" href="/pediatric-surgery">小児外科</a>

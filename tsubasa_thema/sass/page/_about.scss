@@ -137,7 +137,7 @@
     }
 
     .about-greeting {
-      padding: s(165) 0 s(213);
+      padding: s(165) 0 s(284);
       position: relative;
       z-index: 3;
       // @include imgCover('about/about-greeting-bg.webp');
@@ -152,11 +152,21 @@
         height: 100%;
         z-index: 2;
 
-        img {
+        .about-greeting-bg-img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: fill;
           object-position: center top;
+          position: relative;
+          z-index: 2;
+        }
+
+        .about-greeting-bg-char {
+          position: absolute;
+          bottom: s(34);
+          left: 0;
+          width: 100%;
+          z-index: 1;
         }
       }
 
@@ -255,14 +265,6 @@
           }
         }
       }
-
-      .about-greeting-bg-char {
-        position: absolute;
-        bottom: sm(-30);
-        left: 0;
-        width: 100%;
-        z-index: 1;
-      }
     }
   }
 
@@ -271,6 +273,7 @@
     background-position: center top;
     padding: s(101) 0 s(207);
     position: relative;
+    margin-top: sm(-64);
 
     .about-features-slider {
       margin-top: s(110);
