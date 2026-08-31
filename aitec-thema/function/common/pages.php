@@ -6,10 +6,11 @@ function custom_page_template($template)
 	$new_template = '';
 
 	$page_templates = array(
-		'voi' => 'pages/page-service',
-		'ggg' => 'pages/page-about',
-		'ggg' => 'pages/page-contact',
-		'ggg' => 'pages/page-thanks',
+		'service' => 'pages/page-service',
+		'about' => 'pages/page-about',
+		'contact' => 'pages/page-contact',
+		'thanks' => 'pages/page-thanks',
+		'tokushoho' => 'pages/page-tokushoho',
 		// 複数ある場合は以下に追加していく
 	);
 

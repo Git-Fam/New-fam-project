@@ -79,7 +79,8 @@ footer
     }
 
     @include sp {
-      gap: s(40);
+      flex-wrap: wrap;
+      gap: s(20) s(40);
     }
   }
 

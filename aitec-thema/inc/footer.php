@@ -11,6 +11,7 @@
             <li class="footer__item"><a href="/service" class="footer__link hover-opa">サービス</a></li>
             <li class="footer__item"><a href="/about" class="footer__link hover-opa">会社概要</a></li>
             <li class="footer__item"><a href="/contact" class="footer__link hover-opa">お問い合わせ</a></li>
+            <li class="footer__item"><a href="/tokushoho" class="footer__link hover-opa">特商法</a></li>
           </ul>
         </nav>
       </div>
