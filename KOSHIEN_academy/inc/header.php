@@ -113,7 +113,7 @@
                     </li>
                     <li>
                         <a class="hover-opa" href="<?php echo home_url('/donation'); ?>">
-                            <p class="TX">教育振興基金への寄付のお願い</p>
+                            <p class="TX">教育振興基金のお願い</p>
                         </a>
                     </li>
                     <li class="inline-list">
