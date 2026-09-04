@@ -107,15 +107,18 @@
         }
 
         span {
-          line-height: 3;
+          line-height: 1.8;
+          display: inline-block;
 
           @include pc {
             font-size: pmin(15);
+            margin-bottom: pmin(10);
           }
 
           @include sp {
             letter-spacing: 0.08em;
             font-size: s(13);
+            margin-bottom: s(10);
           }
         }
       }

@@ -16,12 +16,12 @@
 
       @include pc {
         top: 58%;
-        width: pmin(570);
+        width: pmin(403);
       }
 
       @include sp {
-        top: 60%;
-        width: s(300);
+        top: 55%;
+        width: s(343);
       }
     }
   }

@@ -143,7 +143,7 @@
                     <div class="nav-txt-links--contact--info">
                         <p class="TX">
                             〒663-8107<br>
-                            兵庫県西宮市瓦林町4-25Tel 0798-67-2100
+                            兵庫県西宮市瓦林町4-25 Tel 0798-67-2100
                         </p>
                     </div>
                 </div>

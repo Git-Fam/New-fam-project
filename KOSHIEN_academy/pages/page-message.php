@@ -58,7 +58,7 @@ Template Path: pages/
           皆様の一層のご支援とご協力をお願い申し上げ、ご挨拶といたします。
         </p>
         <p class="name">
-          <span>学校法人 甲子園学院理事長･学院長</span><br>
+          <span>学校法人 甲子園学院<br>理事長･学院長</span><br>
           久米 知子
         </p>
       </div>

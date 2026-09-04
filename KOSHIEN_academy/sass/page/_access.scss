@@ -12,7 +12,7 @@
     .inner--bg {
 
       @include pc {
-        height: pmin(388);
+        height: pmin(453);
 
         img {
           height: 100%;
@@ -29,12 +29,12 @@
       transform: translate(-50%, -50%);
       
       @include pc {
-        top: 55%;
+        top: 57%;
         width: pmin(148);
       }
 
       @include sp {
-        top: 45%;
+        top: 55%;
         width: s(138);
       }
     }
