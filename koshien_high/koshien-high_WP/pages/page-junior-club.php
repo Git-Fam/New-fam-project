@@ -18,7 +18,7 @@ Template Path: pages/
         <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-kv-bg-pc.webp" alt="">
       </picture>
     </div>
-    <div class="TL">
+    <div class="TL js-fade">
       <picture>
         <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-kv-ttl-sp.webp" type="image/svg+xml">
         <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-kv-ttl-pc.webp" type="image/svg+xml" alt="仲間と夢中になれる場所。 クラブ活動 放課後は、夢中になれる時間のはじまりです。仲間と笑い合い、ときには本気でぶつかりながら一つの目標に向かって挑戦する。その経験は技術だけでなく、自信や協調性、挑戦する力も育ててくれます。あなたも、仲間と自分だけの夢中になれる場所を見つけてみませんか？">
@@ -46,6 +46,9 @@ Template Path: pages/
             </p>
           </div>
         </div>
+        <div class="scroll sp">
+          <img src="http://koshienhigh.local/wp-content/themes/koshien-high_WP/img/high-admission/high-admission-scholarship-img-scroll.svg" alt="scroll">
+        </div>
         <div class="activity-item-tag">
           <div class="tag-wrap">
             <div class="tag">
@@ -53,6 +56,9 @@ Template Path: pages/
             </div>
             <div class="tag">
               <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-tag-01-02.webp" alt="">
+            </div>
+             <div class="tag">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-tag-01-03.webp" alt="">
             </div>
           </div>
         </div>
@@ -65,7 +71,7 @@ Template Path: pages/
           <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-bg-02-pc.webp" alt="">
         </picture>
       </div>
-      <div class="activity-item-content-wrap">
+      <div class="activity-item-content-wrap scroll">
         <div class="activity-item-content">
           <div class="ttl">
             <h3 class="TL">剣道部</h3>
@@ -90,9 +96,9 @@ Template Path: pages/
             <div class="tag">
               <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-tag-02-04.webp" alt="">
             </div>
-            <div class="tag">
+            <!-- <div class="tag">
               <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-tag-02-05.webp" alt="">
-            </div>
+            </div> -->
 
           </div>
         </div>
@@ -105,7 +111,7 @@ Template Path: pages/
           <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-bg-03-pc.webp" alt="">
         </picture>
       </div>
-      <div class="activity-item-content-wrap">
+      <div class="activity-item-content-wrap scroll">
         <div class="activity-item-content">
           <div class="ttl">
             <h3 class="TL">バレーボール部</h3>
@@ -123,6 +129,12 @@ Template Path: pages/
           <div class="tag-wrap">
             <div class="tag">
               <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-tag-03-01.webp" alt="">
+            </div>
+            <div class="tag">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-tag-03-02.webp" alt="">
+            </div>
+            <div class="tag">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/junior-club/junior-club-activity-item-tag-03-03.webp" alt="">
             </div>
           </div>
         </div>
@@ -270,8 +282,9 @@ Template Path: pages/
             <p class="EN">JUGGLING</p>
           </div>
           <div class="TX">
-          ダミー2026年度に発足したジャグリング同好会。<br class="pc">
-          みんな楽しく真剣に取り組んでいます！ただいま部員募集中！
+           <p>
+            2026年度に発足したジャグリング同好会。<br class="pc">
+            みんな楽しく真剣に取り組んでいます！
             </p>
           </div>
         </div>
@@ -282,14 +295,14 @@ Template Path: pages/
 
   <section class="junior-declaration-next">
     <div class="junior-declaration-next-inr">
-      <h3 class="junior-declaration-next-TL">
+      <h3 class="junior-declaration-next-TL js-fade">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-pc.webp" media="(min-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-sp.webp" alt="こちらのコンテンツもチェック！">
         </picture>
       </h3>
 
-      <div class="junior-declaration-next-bnr">
+      <div class="junior-declaration-next-bnr js-fade">
         <a href="<?php echo home_url('/junior/declaration/'); ?>" class="junior-declaration-next-bnr-link">
           <picture>
             <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-img-dec-pc.webp" media="(min-width: 768px)">
@@ -299,7 +312,7 @@ Template Path: pages/
       </div>
 
 
-      <div class="junior-declaration-next-bnr">
+      <div class="junior-declaration-next-bnr js-fade">
         <a href="<?php echo home_url('junior/students'); ?>" class="junior-declaration-next-bnr-link">
           <picture>
             <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-img-pc.webp" media="(min-width: 768px)">

@@ -38,7 +38,7 @@ Template Path: pages/
             </picture>
           </div>
           <p class="pt-uniform__desc">生徒の自主性を高めるため、<br class="sp">TPOに応じて、<br class="pc">生徒が服装を<br class="sp">決める新校則を実施。<br>
-            <span class="pt-uniform__note">※式典・考査は制服のみ</span>
+            <span class="pt-uniform__note">※式典・考査等は制服のみ</span>
           </p>
         </div>
       </div>

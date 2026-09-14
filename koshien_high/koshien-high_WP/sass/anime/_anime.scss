@@ -2,6 +2,9 @@
   anime
 ----------------------- */
 
+
+@use "../functions" as *;
+
 // ホバーで薄く
 .hover-opa {
 	transition: 0.3s;
@@ -344,4 +347,10 @@
     opacity: 1;
     transform: translateY(0);  
   }
+}
+
+.js-fadeout {
+  opacity: 1;
+  transform: translateY(0);
+  will-change: opacity, transform;
 }

@@ -1,4 +1,5 @@
 <header class="l-header" id="js-header">
+
   <div class="l-header__inner">
     <a href="<?php echo home_url('/'); ?>" class="l-header__logo">
       <img src="<?php echo get_template_directory_uri(); ?>/img/common/logo.webp"
@@ -30,8 +31,8 @@
           <li class="l-drawer__item">
             <a href="<?php echo home_url('/about/'); ?>" class="l-drawer__link">学校案内</a>
             <ul class="l-drawer__sub">
-              <li><a href="<?php echo home_url('/about/concept/'); ?>">ごあいさつ</a></li>
-              <li><a href="<?php echo home_url('/about/history/'); ?>">建学の精神</a></li>
+              <li><a href="<?php echo home_url('/about/concept/#greeting'); ?>">ごあいさつ</a></li>
+              <li><a href="<?php echo home_url('/about/history/#seisin'); ?>">建学の精神</a></li>
               <li><a href="<?php echo home_url('/about/history/#enkaku'); ?>">沿革</a></li>
               <li><a href="<?php echo home_url('/about/facility/'); ?>">設備・施設</a></li>
               <li><a href="<?php echo home_url('/about/facility/#access'); ?>">アクセス</a></li>

@@ -41,61 +41,89 @@ Template Path: pages/
       <div class="news-contents">
         <div class="news-category">
           <div class="news-category-item-wrap">
-            <a href="#" class="news-category-item hover-opa is-active">すべて</a>
-            <a href="#" class="news-category-item hover-opa">お知らせ</a>
-            <a href="#" class="news-category-item hover-opa">入試情報</a>
-            <a href="#" class="news-category-item hover-opa">イベント</a>
-            <a href="#" class="news-category-item hover-opa">部活動</a>
+            <a href="#" class="news-category-item hover-opa is-active" data-filter="all">すべて</a>
+            <a href="#" class="news-category-item hover-opa" data-filter="info">お知らせ</a>
+            <a href="#" class="news-category-item hover-opa" data-filter="exam">入試情報</a>
+            <a href="#" class="news-category-item hover-opa" data-filter="event">イベント</a>
+            <a href="#" class="news-category-item hover-opa" data-filter="club">部活動</a>
           </div>
         </div>
         <div class="news-list">
           <div class="news-list-iner">
+            <?php
+            $high_query = new WP_Query(array(
+                'post_type'      => 'post',
+                'posts_per_page' => 3,
+                'orderby'        => 'date',
+                'order'          => 'DESC',
+                'tax_query'      => array(
+                    array(
+                        'taxonomy' => 'news_school',
+                        'field'    => 'slug',
+                        'terms'    => array('high'), // ← 高校のスラッグ。違えば差し替え
+                    ),
+                ),
+            ));
+            if ($high_query->have_posts()):
+                while ($high_query->have_posts()): $high_query->the_post();
 
-            <a class="news-list-item hover-opa" href="#">
+                $news_date = get_field('news_date');
+                if (!$news_date) {
+                    $news_date = get_the_date('Y.m.d');
+                }
+
+                $cats = get_the_terms(get_the_ID(), 'news_category');
+                $cat_slug = ($cats && !is_wp_error($cats)) ? $cats[0]->slug : '';
+                $cat_name = ($cats && !is_wp_error($cats)) ? $cats[0]->name : '';
+
+                $schools = get_the_terms(get_the_ID(), 'news_school');
+                $school_slug = ($schools && !is_wp_error($schools)) ? $schools[0]->slug : '';
+                $school_name = ($schools && !is_wp_error($schools)) ? $schools[0]->name : '';
+
+                $thumb = '';
+                if (function_exists('get_field')) {
+                    $thumb_raw = get_field('news_thumb');
+                    if (is_array($thumb_raw)) {
+                        $thumb = !empty($thumb_raw['url']) ? $thumb_raw['url'] : '';
+                    } elseif (is_string($thumb_raw)) {
+                        $thumb = $thumb_raw;
+                    }
+                }
+                if (!$thumb) {
+                    $thumb = has_post_thumbnail()
+                        ? get_the_post_thumbnail_url(get_the_ID(), 'medium')
+                        : get_template_directory_uri() . '/img/common/noimage.webp';
+                }
+            ?>
+            <a class="news-list-item hover-opa" href="<?php the_permalink(); ?>"
+               data-category="<?php echo esc_attr($cat_slug); ?>"
+               data-school="<?php echo esc_attr($school_slug); ?>">
               <div class="img-wrap">
-                <div class="school-name">高等学校</div>
-                <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-news-defo.webp" alt="">
+                <?php if ($school_name): ?>
+                <div class="school-name"><?php echo esc_html($school_name); ?></div>
+                <?php endif; ?>
+                <img src="<?php echo esc_url($thumb); ?>" alt="">
               </div>
               <div class="contents">
                 <div class="date-wrap">
-                  <p class="date">2026.07.03</p>
-                  <div class="tag">お知らせ</div>
+                  <p class="date"><?php echo esc_html($news_date); ?></p>
+                  <?php if ($cat_name): ?>
+                  <div class="tag"><?php echo esc_html($cat_name); ?></div>
+                  <?php endif; ?>
                 </div>
-                <h3 class="TL">2026 中学校・高等学校入学試験説明会・入試対策講座のご案内</h3>
+                <h3 class="TL"><?php echo esc_html(get_the_title()); ?></h3>
               </div>
             </a>
-
-            <a class="news-list-item hover-opa" href="#">
-              <div class="img-wrap">
-                <div class="school-name">高等学校</div>
-                <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-news-defo.webp" alt="">
-              </div>
-              <div class="contents">
-                <div class="date-wrap">
-                  <p class="date">2026.07.03</p>
-                  <div class="tag">お知らせ</div>
-                </div>
-                <h3 class="TL">2026 中学校・高等学校入学試験説明会・入試対策講座のご案内</h3>
-              </div>
-            </a>
-
-            <a class="news-list-item hover-opa" href="#">
-              <div class="img-wrap">
-                <div class="school-name">高等学校</div>
-                <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-news-defo.webp" alt="">
-              </div>
-              <div class="contents">
-                <div class="date-wrap">
-                  <p class="date">2026.07.03</p>
-                  <div class="tag">お知らせ</div>
-                </div>
-                <h3 class="TL">2026 中学校・高等学校入学試験説明会・入試対策講座のご案内</h3>
-              </div>
-            </a>
-
+            <?php
+                endwhile;
+                wp_reset_postdata();
+            else:
+            ?>
+            <p class="news-list-empty">現在お知らせはありません。</p>
+            <?php endif; ?>
           </div>
         </div>
-        <a href="#" class="news-btn">
+        <a href="<?php echo home_url('/news/'); ?>" class="news-btn">
           <div class="pc hover-opa">
             <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-news-btn-pc.svg" alt="NEWS 新着情報">
           </div>
@@ -139,16 +167,34 @@ Template Path: pages/
           <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-change-01-pc.webp" alt="">
         </picture>
       </a>
-      <a href="<?php echo home_url('/high/changed/'); ?>" class="high-change-contents-item hover-opa">
+      <a href="<?php echo home_url('/high/changed2/'); ?>" class="high-change-contents-item hover-opa">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-change-02-sp.webp" media="(max-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-change-02-pc.webp" alt="">
         </picture>
       </a>
-      <a href="<?php echo home_url('/high/changed/'); ?>" class="high-change-contents-item hover-opa">
+      <a href="<?php echo home_url('/high/changed3/'); ?>" class="high-change-contents-item hover-opa">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-change-03-sp.webp" media="(max-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-change-03-pc.webp" alt="">
+        </picture>
+      </a>
+      <a href="<?php echo home_url('/high/changed4/'); ?>" class="high-change-contents-item hover-opa">
+        <picture>
+          <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-change-04-sp.webp" media="(max-width: 768px)">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-change-04-pc.webp" alt="">
+        </picture>
+      </a>
+      <a href="<?php echo home_url('/high/changed5/'); ?>" class="high-change-contents-item hover-opa">
+        <picture>
+          <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-change-05-sp.webp" media="(max-width: 768px)">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-change-05-pc.webp" alt="">
+        </picture>
+      </a>
+      <a href="<?php echo home_url('/high/changed6/'); ?>" class="high-change-contents-item hover-opa">
+        <picture>
+          <source srcset="<?php echo get_template_directory_uri(); ?>/img/high/high-change-06-sp.webp" media="(max-width: 768px)">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/high/high-change-06-pc.webp" alt="">
         </picture>
       </a>
     </div>
@@ -203,6 +249,15 @@ Template Path: pages/
 
 
 </main>
+
+<div class="high-float-banner" id="js-float-banner">
+  <a href="<?php echo home_url('/high/admission/'); ?>" class="high-float-banner-link">
+    <picture>
+      <source srcset="<?php echo get_template_directory_uri(); ?>/img/common/high-float-banner-pc.webp" media="(max-width: 768px)">
+      <img src="<?php echo get_template_directory_uri(); ?>/img/common/high-float-banner-pc.webp" alt="入試情報はこちら">
+    </picture>
+  </a>
+</div>
 
 
 <?php get_template_part('./inc/footer'); ?>

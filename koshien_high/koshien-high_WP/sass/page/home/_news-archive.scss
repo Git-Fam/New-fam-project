@@ -229,7 +229,7 @@
 
     @include pc {
         gap: p(10);
-        margin-bottom: p(6);
+        margin-bottom: p(15);
     }
     @include sp {
         gap: s(8);
@@ -271,6 +271,7 @@
 .p-news-archive__text {
     font-family: $font-midashi;
     line-height: 1.6;
+    letter-spacing: 0.1em;
     @include pc {
         font-size: p(14);
     }

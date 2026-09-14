@@ -55,130 +55,132 @@
 
     <!-- ============ NEWS ============ -->
     <section class="p-news">
-    <div class="p-news__inner">
-      <!-- タイトル行（タイトルのみ） -->
-      <div class="p-news__head">
-        <h2 class="p-news__ttl js-fade">
-          <picture>
-            <source media="(max-width: 767px)"
-              srcset="<?php echo get_template_directory_uri(); ?>/img/home/top/news_ttl_sp.webp">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/home/top/news_ttl_pc.webp"
-              alt="NEWS 新着情報" class="p-news__ttl-img">
-          </picture>
-        </h2>
-      </div>
+		<div class="p-news__inner">
+		<!-- タイトル行（タイトルのみ） -->
+		<div class="p-news__head">
+			<h2 class="p-news__ttl js-fade">
+			<picture>
+				<source media="(max-width: 767px)"
+				srcset="<?php echo get_template_directory_uri(); ?>/img/home/top/news_ttl_sp.webp">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/home/top/news_ttl_pc.webp"
+				alt="NEWS 新着情報" class="p-news__ttl-img">
+			</picture>
+			</h2>
+		</div>
 
-      <!-- タブ行（タブ ＋ 一覧へ） -->
-      <div class="p-news__tabrow js-fade">
-        <div class="p-news__tabs" role="tablist">
-          <button class="p-news__tab is-active" data-filter="all" type="button">すべて</button>
-          <button class="p-news__tab" data-filter="info" type="button">お知らせ</button>
-          <button class="p-news__tab" data-filter="exam" type="button">入試情報</button>
-          <button class="p-news__tab" data-filter="event" type="button">イベント</button>
-          <button class="p-news__tab" data-filter="club" type="button">部活動</button>
-        </div>
-        <a href="<?php echo home_url('/news/'); ?>" class="p-news__more p-news__more--pc">
-           <span class="p-news__more-txt">お知らせ一覧へ</span>
-           <span class="p-news__more-icon" aria-hidden="true"></span>
-        </a>
-      </div>
+		<!-- タブ行（タブ ＋ 一覧へ） -->
+		<div class="p-news__tabrow js-fade">
+			<div class="p-news__tabs" role="tablist">
+			<button class="p-news__tab is-active" data-filter="all" type="button">すべて</button>
+			<button class="p-news__tab" data-filter="info" type="button">お知らせ</button>
+			<button class="p-news__tab" data-filter="exam" type="button">入試情報</button>
+			<button class="p-news__tab" data-filter="event" type="button">イベント</button>
+			<button class="p-news__tab" data-filter="club" type="button">部活動</button>
+			</div>
+			<a href="<?php echo home_url('/news/'); ?>" class="p-news__more p-news__more--pc">
+			<span class="p-news__more-txt">お知らせ一覧へ</span>
+			<span class="p-news__more-icon" aria-hidden="true"></span>
+			</a>
+		</div>
 
-        <div class="p-news__body js-fade">
-        <div class="swiper p-news__slider">
-            <ul class="swiper-wrapper p-news__list">
-            <?php
-            $news_query = new WP_Query(array(
-                'post_type'      => 'post',
-                'posts_per_page' => 3,
-                'orderby'        => 'date',
-                'order'          => 'DESC',
-            ));
-            if ($news_query->have_posts()):
-                while ($news_query->have_posts()): $news_query->the_post();
+			<div class="p-news__body js-fade">
+			<div class="swiper p-news__slider">
+				<ul class="swiper-wrapper p-news__list">
+				<?php
+				$news_query = new WP_Query(array(
+					'post_type'      => 'post',
+					'posts_per_page' => 3,
+					'orderby'        => 'date',
+					'order'          => 'DESC',
+				));
+				if ($news_query->have_posts()):
+					while ($news_query->have_posts()): $news_query->the_post();
 
-                // 日付（ACF: news_date。無ければ投稿日）
-                $news_date = get_field('news_date');
-                if (!$news_date) {
-                    $news_date = get_the_date('Y.m.d');
-                }
+					// 日付（ACF: news_date。無ければ投稿日）
+					$news_date = get_field('news_date');
+					if (!$news_date) {
+						$news_date = get_the_date('Y.m.d');
+					}
 
-                // 内容カテゴリ（1件想定）
-                $cats = get_the_terms(get_the_ID(), 'news_category');
-                $cat_slug = ($cats && !is_wp_error($cats)) ? $cats[0]->slug : '';
-                $cat_name = ($cats && !is_wp_error($cats)) ? $cats[0]->name : '';
+					$cats = get_the_terms(get_the_ID(), 'news_category');
+					$cat_slug = ($cats && !is_wp_error($cats)) ? $cats[0]->slug : '';
+					$cat_name = ($cats && !is_wp_error($cats)) ? $cats[0]->name : '';
 
-                // 学校区分（1件想定）
-                $schools = get_the_terms(get_the_ID(), 'news_school');
-                $school_slug = ($schools && !is_wp_error($schools)) ? $schools[0]->slug : '';
-                $school_name = ($schools && !is_wp_error($schools)) ? $schools[0]->name : '';
+					$schools = get_the_terms(get_the_ID(), 'news_school');
+					$school_slug = ($schools && !is_wp_error($schools)) ? $schools[0]->slug : '';
+					$school_name = ($schools && !is_wp_error($schools)) ? $schools[0]->name : '';
 
-                // サムネイル
-               // サムネイル（ACF優先・配列/URL/未定義すべて安全に処理）
-                $thumb = '';
-                if (function_exists('get_field')) {
-                    $thumb_raw = get_field('news_thumb');
-                    if (is_array($thumb_raw)) {
-                        $thumb = !empty($thumb_raw['url']) ? $thumb_raw['url'] : '';
-                    } elseif (is_string($thumb_raw)) {
-                        $thumb = $thumb_raw;
-                    }
-                }
-                if (!$thumb) {
-                    $thumb = has_post_thumbnail()
-                        ? get_the_post_thumbnail_url(get_the_ID(), 'medium')
-                        : get_template_directory_uri() . '/img/common/noimage.svg';
-                }
-            ?>
-            <li class="swiper-slide p-news__item"
-                data-category="<?php echo esc_attr($cat_slug); ?>"
-                data-school="<?php echo esc_attr($school_slug); ?>">
-                <a href="<?php the_permalink(); ?>" class="p-news__card">
-                <div class="p-news__thumb">
-                    <?php if ($school_name): ?>
-                    <span class="p-news__badge p-news__badge--<?php echo esc_attr($school_slug); ?>">
-                        <?php echo esc_html($school_name); ?>
-                    </span>
-                    <?php endif; ?>
-                    <img src="<?php echo esc_url($thumb); ?>" alt="" class="p-news__img">
-                </div>
-                <div class="p-news__meta">
-                    <time class="p-news__date"><?php echo esc_html($news_date); ?></time>
-                    <?php if ($cat_name): ?>
-                    <span class="p-news__cat p-news__cat--<?php echo esc_attr($cat_slug); ?>">
-                        <?php echo esc_html($cat_name); ?>
-                    </span>
-                    <?php endif; ?>
-                </div>
-                <p class="p-news__text"><?php echo esc_html(get_the_title()); ?></p>
-                </a>
-            </li>
-            <?php
-                endwhile;
-                wp_reset_postdata();
-            else:
-            ?>
-            <li class="p-news__empty">現在お知らせはありません。</li>
-            <?php endif; ?>
-            </ul>
-            <!-- SP用ページネーション -->
-            <div class="p-news__pagination swiper-pagination"></div>
-        </div>
-        </div>
+					$thumb = '';
+					if (function_exists('get_field')) {
+						$thumb_raw = get_field('news_thumb');
+						if (is_array($thumb_raw)) {
+							$thumb = !empty($thumb_raw['url']) ? $thumb_raw['url'] : '';
+						} elseif (is_string($thumb_raw)) {
+							$thumb = $thumb_raw;
+						}
+					}
+					if (!$thumb) {
+						$thumb = has_post_thumbnail()
+							? get_the_post_thumbnail_url(get_the_ID(), 'medium')
+							: get_template_directory_uri() . '/img/common/noimage.webp';
+					}
+				?>
+				<li class="swiper-slide p-news__item"
+					data-category="<?php echo esc_attr($cat_slug); ?>"
+					data-school="<?php echo esc_attr($school_slug); ?>">
+					<a href="<?php the_permalink(); ?>" class="p-news__card">
+					<div class="p-news__thumb">
+						<?php if ($school_name): ?>
+						<span class="p-news__badge p-news__badge--<?php echo esc_attr($school_slug); ?>">
+							<?php echo esc_html($school_name); ?>
+						</span>
+						<?php endif; ?>
+						<img src="<?php echo esc_url($thumb); ?>" alt="" class="p-news__img">
+					</div>
+					<div class="p-news__meta">
+						<time class="p-news__date"><?php echo esc_html($news_date); ?></time>
+						<?php if ($cat_name): ?>
+						<span class="p-news__cat p-news__cat--<?php echo esc_attr($cat_slug); ?>">
+							<?php echo esc_html($cat_name); ?>
+						</span>
+						<?php endif; ?>
+					</div>
+					<p class="p-news__text"><?php echo esc_html(get_the_title()); ?></p>
+					</a>
+				</li>
+				<?php
+					endwhile;
+					wp_reset_postdata();
+				else:
+				?>
+				<li class="p-news__empty">現在お知らせはありません。</li>
+				<?php endif; ?>
+				</ul>
+				<!-- SP用ページネーション -->
+				<div class="p-news__pagination swiper-pagination"></div>
+			</div>
+			</div>
 
-        <a href="<?php echo home_url('/news/'); ?>" class="p-news__more p-news__more--sp">
-        お知らせ一覧へ <span class="p-news__more-icon" aria-hidden="true"></span>
-        </a>
-    </div>
+			<a href="<?php echo home_url('/news/'); ?>" class="p-news__more p-news__more--sp">
+			お知らせ一覧へ <span class="p-news__more-icon" aria-hidden="true"></span>
+			</a>
+		</div>
     </section>
 
 	<!-- ============ MESSAGE ============ -->
 	<section class="p-message js-fade">
-		<!-- 背景は将来<video>に差し替え予定。p-message__media の中身のみ入れ替えればよい -->
+		
 		<div class="p-message__media">
-			<picture>
-				<source media="(max-width: 767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/home/top/manabu-bg-sp.webp">
-				<img src="<?php echo get_template_directory_uri(); ?>/img/home/top/manabu-bg-pc.webp" alt="" class="p-message__img">
-			</picture>
+			<video
+				class="p-message__img js-responsive-video"
+				poster="<?php echo get_template_directory_uri(); ?>/img/home/video/manabu-bg-pc.webp"
+				data-src-pc="<?php echo get_template_directory_uri(); ?>/img/home/video/manabu-bg-pc.mp4"
+				data-src-sp="<?php echo get_template_directory_uri(); ?>/img/home/video/manabu-bg-sp.mp4"
+				autoplay
+				muted
+				loop
+				playsinline
+			></video>
 		</div>
 		<div class="p-message__overlay" aria-hidden="true"></div>
 		<p class="p-message__catch">
@@ -215,13 +217,13 @@
 			</p>
 			<ul class="p-about__pills">
 				<li class="p-about__pill-item">
-					<a href="<?php echo home_url('/about/concept/'); ?>" class="p-about__pill">
+					<a href="<?php echo home_url('/about/concept/#greeting'); ?>" class="p-about__pill">
 						<span class="p-about__pill-txt">ごあいさつ</span>
 						<span class="p-about__pill-icon" aria-hidden="true"></span>
 					</a>
 				</li>
 				<li class="p-about__pill-item">
-					<a href="<?php echo home_url('/about/history/'); ?>" class="p-about__pill">
+					<a href="<?php echo home_url('/about/history/#seisin'); ?>" class="p-about__pill">
 						<span class="p-about__pill-txt">建学の精神</span>
 						<span class="p-about__pill-icon" aria-hidden="true"></span>
 					</a>
@@ -233,7 +235,7 @@
 					</a>
 				</li>
 				<li class="p-about__pill-item">
-					<a href="<?php echo home_url('/about/facility/'); ?>" class="p-about__pill">
+					<a href="<?php echo home_url('/about/facility/#facilities'); ?>" class="p-about__pill">
 						<span class="p-about__pill-txt">施設・設備</span>
 						<span class="p-about__pill-icon" aria-hidden="true"></span>
 					</a>

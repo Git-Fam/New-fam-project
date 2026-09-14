@@ -23,67 +23,11 @@
     });
 })();
 
-
-// NEWS タブ絞り込み
-(function () {
-    const tabs = document.querySelectorAll('.p-news__tab');
-    const items = document.querySelectorAll('.p-news__item');
-    if (!tabs.length || !items.length) return;
-
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            // アクティブ切替
-            tabs.forEach(t => t.classList.remove('is-active'));
-            tab.classList.add('is-active');
-
-            const filter = tab.dataset.filter; // all / oshirase / exam / event / club
-
-            items.forEach(item => {
-                const cat = item.dataset.category; // 内容カテゴリ
-                if (filter === 'all' || cat === filter) {
-                    item.classList.remove('is-hidden');
-                } else {
-                    item.classList.add('is-hidden');
-                }
-            });
-        });
-    });
-})();
-
-// ===== ドロワー開閉 =====
-(function () {
-    const toggle = document.getElementById('js-drawer-toggle');
-    const drawer = document.getElementById('js-drawer');
-    const header = document.getElementById('js-header');
-    if (!toggle || !drawer) return;
-
-    toggle.addEventListener('click', function () {
-        const isOpen = drawer.classList.toggle('is-open');
-        toggle.classList.toggle('is-open', isOpen);
-        toggle.setAttribute('aria-expanded', isOpen);
-        toggle.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
-        if (header) header.classList.toggle('is-menu-open', isOpen);
-        // 背面スクロール固定
-        document.body.style.overflow = isOpen ? 'hidden' : '';
-    });
-
-    // ドロワー内のリンクを押したら閉じる
-    drawer.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', function () {
-            drawer.classList.remove('is-open');
-            toggle.classList.remove('is-open');
-            toggle.setAttribute('aria-expanded', 'false');
-            if (header) header.classList.remove('is-menu-open');
-            document.body.style.overflow = '';
-        });
-    });
-})();
-
-// ===== ヘッダー透明→白（TOPのみ・スクロールで） =====
+// ===== ヘッダー透明→白（透明ヘッダーページ・スクロールで） =====
 (function () {
     const header = document.getElementById('js-header');
     if (!header) return;
-    if (!document.body.classList.contains('is-front')) return; // TOP以外は常時白なので何もしない
+    if (!document.body.classList.contains('is-hero-top')) return; // 透明ヘッダーページ以外は何もしない
 
     const onScroll = function () {
         if (window.scrollY > 50) {
@@ -93,33 +37,7 @@
         }
     };
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll(); // 読み込み時にも判定
-})();
-
-// ===== NEWS タブ絞り込み =====
-(function () {
-    const tabs = document.querySelectorAll('.p-news__tab');
-    const items = document.querySelectorAll('.p-news__item');
-    if (!tabs.length || !items.length) return;
-
-    tabs.forEach(function (tab) {
-        tab.addEventListener('click', function () {
-            tabs.forEach(function (t) {
-                t.classList.remove('is-active');
-            });
-            tab.classList.add('is-active');
-
-            const filter = tab.dataset.filter;
-            items.forEach(function (item) {
-                const cat = item.dataset.category;
-                if (filter === 'all' || cat === filter) {
-                    item.classList.remove('is-hidden');
-                } else {
-                    item.classList.add('is-hidden');
-                }
-            });
-        });
-    });
+    onScroll();
 })();
 
 // =====  FV スライドショー（全幅ゲージ連動） =====
@@ -158,6 +76,117 @@
     });
 })();
 
+// ===== NEWS タブ絞り込み（SP: Swiper対応版）=====
+(function () {
+    const tabs = document.querySelectorAll('.p-news__tab');
+    const wrapperEl = document.querySelector('.p-news__list');
+    if (!tabs.length || !wrapperEl) return;
+
+    const allItems = Array.from(wrapperEl.querySelectorAll('.p-news__item'));
+
+    tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+            const filter = tab.dataset.filter;
+            const isSP = window.innerWidth <= 767; // SPかどうかの判定
+
+            // ★【条件変更】「SP環境」かつ「すべて」がクリックされたときだけリロードする
+            if (isSP && filter === 'all') {
+                window.location.reload();
+                return;
+            }
+
+            // --- PC環境の「すべて」、または「特定のカテゴリ」がクリックされたときの処理 ---
+
+            tabs.forEach(t => t.classList.remove('is-active'));
+            tab.classList.add('is-active');
+
+            // wrapperを空にして、条件に合うitemだけ入れ直す
+            wrapperEl.innerHTML = '';
+
+            allItems.forEach(function (item) {
+                const cat = item.dataset.category;
+                if (filter === 'all' || cat === filter) {
+                    item.classList.remove('is-hidden');
+                    wrapperEl.appendChild(item);
+                }
+            });
+
+            // PC用の絞り込み（is-hiddenで制御している場合はこちらも維持）
+            allItems.forEach(function (item) {
+                const cat = item.dataset.category;
+                const show = filter === 'all' || cat === filter;
+                item.classList.toggle('is-hidden', !show);
+            });
+
+            if (newsSwiper) {
+                newsSwiper.update();
+                newsSwiper.slideTo(0, 0);
+            }
+        });
+    });
+})();
+
+/// NEWS タブ絞り込み（中学・高校ページ / high-news / Slick完全対応版）
+(function () {
+    const $tabs = $('.news-category-item');
+    const $slider = $('.news-list-iner'); // Slickが適用されているコンテナ
+
+    if (!$tabs.length || !$slider.length) return;
+
+    $tabs.on('click', function (e) {
+        e.preventDefault();
+
+        // タブのアクティブクラス切り替え
+        $tabs.removeClass('is-active');
+        $(this).addClass('is-active');
+
+        const filter = $(this).data('filter'); // all / info / exam / event / club
+
+        // 1. 一度Slickの絞り込みを完全に解除して初期状態に戻す
+        $slider.slick('slickUnfilter');
+
+        // 2. 「すべて」以外が選ばれた場合のみ、Slickの機能で安全に絞り込む
+        if (filter !== 'all') {
+            // data-category が選んだフィルター名と一致する本物のスライド（クローン除く）だけを抽出して絞り込み
+            $slider.slick('slickFilter', function () {
+                return $(this).attr('data-category') === filter;
+            });
+        }
+
+        // 3. 絞り込んだ後にスライダーの1枚目に強制移動
+        $slider.slick('slickGoTo', 0);
+    });
+})();
+
+// ===== ドロワー開閉 =====
+(function () {
+    const toggle = document.getElementById('js-drawer-toggle');
+    const drawer = document.getElementById('js-drawer');
+    const header = document.getElementById('js-header');
+    if (!toggle || !drawer) return;
+
+    toggle.addEventListener('click', function () {
+        const isOpen = drawer.classList.toggle('is-open');
+        toggle.classList.toggle('is-open', isOpen);
+        toggle.setAttribute('aria-expanded', isOpen);
+        toggle.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+        if (header) header.classList.toggle('is-menu-open', isOpen);
+        // 背面スクロール固定
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // ドロワー内のリンクを押したら閉じる
+    drawer.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+            drawer.classList.remove('is-open');
+            toggle.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
+            if (header) header.classList.remove('is-menu-open');
+            document.body.style.overflow = '';
+        });
+    });
+})();
+
 // ===== ごあいさつ メッセージスライダー =====
 (function () {
     const el = document.querySelector('.p-greeting__slider');
@@ -188,7 +217,7 @@
 
         const boxHeight = box.scrollHeight;
         const viewH = window.innerHeight;
-        const moveMax = Math.max(boxHeight - viewH + 160, 0);
+        const moveMax = Math.max(boxHeight - viewH + 80, 0);
 
         // 開始位置：SPは画面下60%、PCは20%
         const isSP = window.innerWidth <= 767;
@@ -452,28 +481,232 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ===== ローディング =====
 $(function () {
-    window.addEventListener('load', function () {
-        var loading = document.querySelector('.loading');
-        if (!loading) return;
+    const loading = document.querySelector('.loading');
+    if (!loading) return;
 
-        if (sessionStorage.getItem('loading_shown')) {
-            // 2回目以降は最初から非表示
-            loading.style.display = 'none';
-        } else {
-            // 初回のみアニメーション後に非表示
-            sessionStorage.setItem('loading_shown', 'true');
-            setTimeout(function () {
-                loading.classList.add('is-hidden');
-                setTimeout(function () {
-                    loading.style.display = 'none';
-                }, 800);
-            }, 3000);
-        }
-    });
+    // 2回目以降は即非表示
+    if (sessionStorage.getItem('loading_shown')) {
+        loading.style.display = 'none';
+        return;
+    }
 
     window.addEventListener('load', function () {
+        sessionStorage.setItem('loading_shown', 'true');
+
         setTimeout(function () {
-            document.querySelector('.loading').classList.add('is-hidden');
-        }, 3000); // 3秒後に消える
+            loading.classList.add('is-hidden');
+
+            setTimeout(function () {
+                loading.style.display = 'none';
+            }, 800);
+        }, 3000);
     });
 });
+// 中高TOPバナー
+document.addEventListener('DOMContentLoaded', () => {
+    const banner = document.getElementById('js-float-banner');
+    const hiro = document.querySelector('.high-hiro');
+    if (!banner || !hiro) return;
+
+    const footer = document.querySelector('footer'); // 必要ならセレクタを実際のフッターに合わせて変更
+    let footerVisible = false;
+
+    // フッターが画面に入っているかを監視
+    if (footer) {
+        const io = new IntersectionObserver(
+            entries => {
+                footerVisible = entries[0].isIntersecting;
+                update();
+            },
+            { rootMargin: '0px', threshold: 0 }
+        );
+        io.observe(footer);
+    }
+
+    const update = () => {
+        // FVを半分スクロールしたら表示。ただしフッターが見えていたら隠す
+        const show = window.scrollY > hiro.offsetHeight * 0.3 && !footerVisible;
+        banner.classList.toggle('is-hidden', !show);
+    };
+
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+});
+
+// /high/why/
+// なんで好きが見つかるの？（タイトル→本文 通しでクロスフェード）
+document.addEventListener('DOMContentLoaded', () => {
+    const section = document.getElementById('js-why-hero');
+    if (!section) return;
+
+    const steps = section.querySelectorAll('.is-step');
+    if (!steps.length) return;
+
+    const update = () => {
+        const rect = section.getBoundingClientRect();
+        const total = section.offsetHeight - window.innerHeight;
+        const progress = Math.min(Math.max(-rect.top / total, 0), 0.999);
+        const index = Math.floor(progress * steps.length);
+        const active = rect.top <= 0;
+
+        steps.forEach((el, i) => {
+            el.classList.toggle('is-current', active && i === index);
+        });
+    };
+
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+});
+
+// 私のコースの好きなところ
+document.addEventListener('DOMContentLoaded', () => {
+    const kv = document.getElementById('js-course-kv');
+    if (!kv) return;
+
+    const blocks = [
+        { wrap: kv.querySelector('.high-course-kv-ttl'), el: kv.querySelector('.TL.is-step') },
+        { wrap: kv.querySelector('.high-course-kv-txt'), el: kv.querySelector('.TX.is-step') },
+    ];
+
+    const update = () => {
+        blocks.forEach(({ wrap, el }, index) => {
+            if (!wrap || !el) return;
+
+            const rect = wrap.getBoundingClientRect();
+            const total = wrap.offsetHeight - window.innerHeight;
+            const progress = -rect.top / total;
+
+            const show = index === 0 ? progress < 0.75 : progress > 0.15 && progress < 0.75;
+
+            el.classList.toggle('is-current', show);
+        });
+    };
+
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+});
+
+// オープンスクール（タイトル→本文 その場でクロスフェード）
+document.addEventListener('DOMContentLoaded', () => {
+    const pin = document.querySelector('.high-openschool-pin');
+    if (!pin) return;
+
+    const kv = pin.querySelector('.high-openschool-layer--kv');
+    const txt = pin.querySelector('.high-openschool-layer--txt');
+    if (!kv || !txt) return;
+
+    const FADE_START = 0.3; // ★ここから
+    const FADE_END = 0.6; // ★ここまで、範囲を広げてゆったりに
+
+    // なめらかな加減速カーブ（smoothstep）
+    const easeInOut = t => t * t * (3 - 2 * t);
+
+    const update = () => {
+        const rect = pin.getBoundingClientRect();
+        const total = pin.offsetHeight - window.innerHeight;
+        if (total <= 0) return;
+        const progress = Math.min(Math.max(-rect.top / total, 0), 1);
+
+        let t;
+        if (progress <= FADE_START) {
+            t = 0;
+        } else if (progress >= FADE_END) {
+            t = 1;
+        } else {
+            t = (progress - FADE_START) / (FADE_END - FADE_START);
+        }
+
+        const eased = easeInOut(t);
+
+        kv.style.opacity = 1 - eased;
+        txt.style.opacity = eased;
+    };
+
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+});
+
+// 高校インタビュー
+document.addEventListener('DOMContentLoaded', () => {
+    const items = document.querySelectorAll('.high-changed-kv-item');
+    if (!items.length) return;
+
+    const update = () => {
+        items.forEach(item => {
+            const rect = item.getBoundingClientRect();
+            const center = window.innerHeight * 0.5;
+            const active = rect.top <= center && rect.bottom >= center;
+
+            const bg = item.querySelector('.high-changed-kv-item-bg');
+            const ttl = item.matches('.high-changed-kv-item-01, .high-changed-kv-item-02') ? item.querySelector('.high-changed-kv-item-ttl-inr') : null;
+
+            if (bg) bg.classList.toggle('is-current', active);
+            if (ttl) ttl.classList.toggle('is-current', active);
+        });
+    };
+
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+});
+
+// PC/SPで動画を出し分け（リサイズ・回転にも追従）
+(function () {
+    const video = document.querySelector('.js-responsive-video');
+    if (!video) return;
+
+    const BREAKPOINT = 767;
+    let currentType = null; // 'pc' or 'sp'
+
+    function setSrc() {
+        const isSP = window.innerWidth <= BREAKPOINT;
+        const type = isSP ? 'sp' : 'pc';
+
+        if (type === currentType) return; // 同じなら何もしない（無駄な再読み込み防止）
+        currentType = type;
+
+        const newSrc = isSP ? video.dataset.srcSp : video.dataset.srcPc;
+        video.src = newSrc;
+        video.load();
+        video.play().catch(() => {}); // autoplay対策
+    }
+
+    setSrc();
+    window.addEventListener('resize', setSrc, { passive: true });
+})();
+
+if (location.hash) {
+    window.addEventListener('load', () => {
+        const target = document.querySelector(location.hash);
+        if (!target) return;
+
+        const imgs = Array.from(document.images).filter(img => !img.complete);
+        const imagesReady = imgs.length
+            ? Promise.race([
+                  Promise.all(
+                      imgs.map(
+                          img =>
+                              new Promise(resolve => {
+                                  img.addEventListener('load', resolve, { once: true });
+                                  img.addEventListener('error', resolve, { once: true });
+                              })
+                      )
+                  ),
+                  new Promise(resolve => setTimeout(resolve, 2000)), // 万一のフリーズ防止
+              ])
+            : Promise.resolve();
+
+        Promise.all([document.fonts.ready, imagesReady]).then(() => {
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    // レイアウト確定をもう一段階待つ
+                    target.scrollIntoView({ behavior: 'auto', block: 'start' });
+                });
+            });
+        });
+    });
+}

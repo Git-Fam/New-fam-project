@@ -23,16 +23,17 @@
 // タイトル画像（背景の上に重ねる）
 .p-feature-fv__ttl {
     position: absolute;
-    top: 65%;
-    left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
 
     @include pc {
+        top: 52%;
+        left: 23%;
         width: p(777);
     }
     @include sp {
-        top: 60%;
+        top: 36%;
+        left: 26%;
         width: s(200);
     }
 
@@ -71,7 +72,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    aspect-ratio: 1 / 1; 
+    aspect-ratio: 1 / 1;
 
     @include pc {
         width: p(475);
@@ -118,7 +119,7 @@
     @include sp {
         font-size: s(30);
         margin-bottom: s(36);
-         letter-spacing: 0.10em;
+        letter-spacing: 0.1em;
     }
 }
 
@@ -134,7 +135,7 @@
     }
     @include sp {
         font-size: s(50);
-        letter-spacing: 0.10em;
+        letter-spacing: 0.1em;
     }
 }
 
@@ -150,7 +151,7 @@
     }
     @include sp {
         font-size: s(14);
-         letter-spacing: 0.075em;
+        letter-spacing: 0.075em;
     }
 }
 
@@ -174,114 +175,120 @@
     }
 }
 
-
 // ============ 夢中NUMBER ============
 .p-number {
-  @include pc {
-    padding: p(200) 0;
-  }
-  @include sp {
-    padding: s(56) 0;
-  }
+    @include pc {
+        padding: p(200) 0;
+    }
+    @include sp {
+        padding: s(56) 0;
+    }
 }
 
 // タイトル
 .p-number__ttl {
-  text-align: center;
+    text-align: center;
 
-  @include pc {
-    width: p(548);
-    margin: 0 auto p(60);
-  }
-  @include sp {
-    width: s(282);
-    margin: 0 auto s(123);
-  }
+    @include pc {
+        width: p(548);
+        margin: 0 auto p(60);
+    }
+    @include sp {
+        width: s(282);
+        margin: 0 auto s(123);
+    }
 
-  img { width: 100%; height: auto; display: block; }
+    img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
 }
 
 // ハート＋人物の重ね合わせ
 .p-number__body {
-  position: relative;   // 人物のabsolute配置の基準
+    position: relative; // 人物のabsolute配置の基準
 
-  @include pc {
-    width: p(1146);
-    margin: 0 auto;
-  }
-  @include sp {
-    width: 100%;
-  }
+    @include pc {
+        width: p(1146);
+        margin: 0 auto;
+    }
+    @include sp {
+        width: 100%;
+    }
 }
 
 // ハート6枚（1枚画像）
 .p-number__hearts {
-  img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
 }
 
 // 人物（共通）
 .p-number__person {
-  position: absolute;
-  z-index: 2;
+    position: absolute;
+    z-index: 2;
 
-  img { width: 100%; height: auto; display: block; }
+    img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
 }
 
 // 人物1（左上）
 .p-number__person--01 {
-  @include pc {
-    top: p(-147);
-    left: p(-98);
-    width: p(300);
-  }
-  @include sp {
-    top: s(-90);
-    left: s(164);
-    width: s(249);
-  }
+    @include pc {
+        top: p(-147);
+        left: p(-98);
+        width: p(326);
+    }
+    @include sp {
+        top: s(-150);
+        left: s(230);
+        width: s(167);
+    }
 }
 
 // 人物2（右中央）
 .p-number__person--02 {
-  @include pc {
-    top: p(375);
-    right: p(-80);
-    width: p(301);
-  }
-  @include sp {
-    top: s(976);
-    right: s(17);
-    width: s(334);
-  }
+    @include pc {
+        top: p(320);
+        right: p(-110);
+        width: p(400);
+    }
+    @include sp {
+        top: s(1156);
+        right: s(-93);
+        width: s(298);
+    }
 }
 
 // 人物3（左下）
 .p-number__person--03 {
-  @include pc {
-    bottom: p(276);
-    left: p(-60);
-    width: p(250);
-  }
-  @include sp {
-    bottom: s(484);
-    left: s(170);
-    width: s(249);
-  }
-}
-
-
-.page--feature{
-  .junior-declaration-next{
     @include pc {
-      margin-top: 0;
-      padding-bottom: p(182);
+        bottom: p(270);
+        left: p(-90);
+        width: p(400);
     }
     @include sp {
-      padding-bottom: s(18);
+        bottom: s(1174);
+        left: s(-40);
+        width: s(261);
     }
-  }
+}
+
+.page--feature {
+    .junior-declaration-next {
+        @include pc {
+            margin-top: 0;
+            padding-bottom: p(182);
+        }
+        @include sp {
+            padding-bottom: s(18);
+        }
+    }
 }

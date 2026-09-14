@@ -4,52 +4,63 @@
   club
 ----------------------- */
 
-.page--junior-club{
-  &.page--high-club{
-    background-color: #F8ACBD;
-    @include pc {
-      padding-bottom: p(187);
-    }
-    @include sp {
-      padding-bottom: s(87);
-    }
-
-    .high-club-kv{
-      .TL{
+.page--junior-club {
+    &.page--high-club {
+        background-color: #f8acbd;
         @include pc {
-          max-width: p(1000);
+            padding-bottom: p(187);
         }
-      }
-    }
+        @include sp {
+            padding-bottom: s(87);
+        }
 
-    .high-club-activity{
-      .activity-item{
-        &:nth-child(2){
-          .activity-item-content-wrap{
-            @include pc {
-              gap: p(78);
-            }
-            .activity-item-content{
-
-              .TX{
+        .high-club-kv {
+            .TL {
                 @include pc {
-                  width: p(227);
+                    max-width: p(1000);
                 }
-              }
             }
-
-            .activity-item-tag{
-              .tag-wrap{
-                @include sp {
-                  padding-left: s(10);
-                  gap: s(11);
-                }
-              }
-            }
-          }
         }
-      }
-    }
-  }
-}
 
+        .high-club-activity {
+            .activity-item {
+                &:nth-child(2) {
+                    .activity-item-content-wrap {
+                        @include pc {
+                            gap: p(78);
+                        }
+                        .activity-item-content {
+                            .TX {
+                                @include pc {
+                                    width: p(227);
+                                }
+                            }
+                        }
+
+                        .activity-item-tag {
+                            .tag-wrap {
+                                @include sp {
+                                    // padding-left: s(10);
+                                     padding-inline: s(20);
+                                    gap: s(16);
+                                }
+                            }
+                        }
+                    }
+                }
+                // 3つ目
+                &:nth-child(3) {
+                    .activity-item-content-wrap {
+                        .activity-item-content {
+                            @include pc {
+                                display: flex;
+                                flex-direction: column !important;
+                                gap: p(47);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

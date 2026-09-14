@@ -4,7 +4,7 @@
  declaration（全校生徒の好きを応援する宣言）
 ----------------------- */
 
-.page--junior-declaration{
+.page--junior-declaration {
     h1,
     h2,
     h3,
@@ -24,48 +24,47 @@
     tr,
     th,
     td {
-      text-box-trim: trim-both;
+        text-box-trim: trim-both;
     }
     @include pc {
-      padding-top: p(64);
-  
+        padding-top: p(64);
     }
     @include sp {
-      padding-top: s(55);
+        padding-top: s(55);
     }
-    &-inner{
+    &-inner {
         width: 100%;
         @include pc {
             @include imgCover("junior-declaration/junior-declaration-bg-pc.jpg");
             padding-bottom: p(221);
-          }
+        }
         @include sp {
             @include imgCover("junior-declaration/junior-declaration-bg-sp.jpg");
             padding-bottom: s(123);
-          }
+        }
         background-position: top !important;
     }
-    .junior-declaration-hiro{
+    .junior-declaration-hiro {
         @include pc {
-          padding-top: p(126);
+            padding-top: p(126);
         }
         @include sp {
-          padding-top: s(166);
+            padding-top: s(166);
         }
-        .TL-top{
+        .TL-top {
             margin: 0 auto;
             @include pc {
                 width: p(220);
             }
             @include sp {
-              width: s(179);
+                width: s(179);
             }
-            img{
+            img {
                 width: 100%;
                 object-fit: contain;
             }
         }
-        .TL{
+        .TL {
             color: $c-white;
             font-family: $font-a1;
             font-weight: 600;
@@ -81,275 +80,281 @@
                 font-size: s(48);
                 margin: s(20) auto 0;
                 width: fit-content;
-                
             }
         }
     }
 
-    .junior-declaration-message{
+    .junior-declaration-message {
         @include pc {
-          margin-top: p(121);
+            margin-top: p(121);
         }
         @include sp {
-          margin-top: s(305);
+            margin-top: s(305);
         }
-        &-inr{
+        &-inr {
             margin: 0 auto;
             background: $c-white;
             @include pc {
-              width: p(1000);
-              border: p(10) solid $c-junior;
-              border-radius: p(20);
-              padding: p(157) p(118) p(124);
+                width: p(1000);
+                border: p(10) solid $c-junior;
+                border-radius: p(20);
+                padding: p(157) p(118) p(124);
             }
             @include sp {
-              width: 100%;
-              border: s(10) solid $c-junior;
-              border-radius: s(10);
-              padding: s(77) s(40) s(73);
+                width: 100%;
+                border: s(10) solid $c-junior;
+                border-radius: s(10);
+                padding: s(77) s(40) s(73);
             }
-            .message-text{
-                font-family: $font-a1;
-								@include wt500;
-                line-height: 2.6;
-                @include pc {
-                  font-size: p(26);
-                  text-align: center;
-                }
-                @include sp {
-                  font-size: s(17);
-                  line-height: 2.4;
-                }
-            }
-
-						.message-img{
-							@include pc {
-                  width: p(593);
-                  margin: p(87) auto 0;
-							}
-              @include sp {
-                width: s(234);
-                margin: s(60) auto 0;
-              }
-						}
-							img{
-								width: 100%;
-								object-fit: contain;
-							}
-        }
-    }  
-
-    .junior-declaration-content{
-      @include pc {
-        margin-top: p(140);
-      }
-      @include sp {
-        margin-top: s(100);
-      }
-      &-inr{
-        margin: 0 auto;
-        @include pc {
-          width: p(1000);
-        }
-        @include sp {
-          width: 100%;
-        }
-      }
-      &-TL{
-        font-family: $font-a1;
-        @include wt500;
-        color: $c-white;
-        text-align: center;
-        @include pc {
-          font-size: p(40);
-        }
-        @include sp {
-          font-size: s(30);
-        }
-      }
-      &-list{
-        display: flex;
-        flex-direction: column;
-        @include pc {
-          gap: p(20);
-          margin-top: p(38);
-        }
-        @include sp {
-          gap: s(10);
-          margin-top: s(38);
-        }
-        &-item{
-          background: $c-white;
-          @include pc {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;  
-            border-radius: p(20);
-            border: p(10) solid $c-junior;
-            padding-inline: p(76) p(20);
-          }
-          @include sp {
-            border-radius: s(20);
-            border: s(10) solid $c-junior;
-            padding-block: s(40) s(20);
-          }
-          .text-wrap{
-            .top-textbox{
-              &-text{
-                display: flex;
-                align-items: center;
-  
-                color: $c-junior;
+            .message-text {
                 font-family: $font-a1;
                 @include wt500;
+                line-height: 2.6;
                 @include pc {
-                  font-size: p(25);
+                    font-size: p(26);
+                    text-align: center;
                 }
                 @include sp {
-                  justify-content: center;
-                  font-size: s(15);
+                    font-size: s(17);
+                    line-height: 2.4;
                 }
-              }
-              &-number{
-                display: inline-block;
+            }
+
+            .message-img {
                 @include pc {
-                  width: p(66);
+                    width: p(593);
+                    margin: p(87) auto 0;
                 }
                 @include sp {
-                  width: s(37);
+                    width: s(234);
+                    margin: s(60) auto 0;
                 }
-                img{
-                  width: 100%;
-                  object-fit: contain;
-                }
-              }
             }
-            .TL{
-              font-family: $font-a1;
-              @include wt500;
-              color: $c-junior;
-              @include pc {
-                font-size: p(54);
-                margin-top: p(25);
-              }
-              @include sp {
-                text-align: center;
-                line-height: 1.5;
-                font-size: s(32);
-                margin-top: s(28);
-                letter-spacing: 0.1em;
-              }
+            img {
+                width: 100%;
+                object-fit: contain;
             }
-            .TX{
-              @include wt500;
-              line-height: 1.8;
-              @include pc {
-                font-size: p(18);
-                margin-top: p(22);
-              }
-              @include sp {
-                text-align: center;
-                font-size: s(15);
-                margin-top: s(24);
-                letter-spacing: 0.05em;
-                line-height: 2;
+        }
+    }
 
-              }
-            }
-          }
-
-          .img{
+    .junior-declaration-content {
+        @include pc {
+            margin-top: p(140);
+        }
+        @include sp {
+            margin-top: s(100);
+        }
+        &-inr {
+            margin: 0 auto;
             @include pc {
-              width: p(343);
-              height: p(278);
+                width: p(1000);
             }
             @include sp {
-              width: s(227);
-              height: s(180);
-              margin: 0 auto;
+                width: 100%;
             }
-            &.img01{
-              @include imgContain("junior-declaration/junior-declaration-content-img01.webp");
-            }
-            &.img02{
-              @include imgContain("junior-declaration/junior-declaration-content-img02.webp");
-            }
-            &.img03{
-              @include imgContain("junior-declaration/junior-declaration-content-img03.webp");
-            }
-            &.img04{
-              @include imgContain("junior-declaration/junior-declaration-content-img04.webp");
-            }
-          }
         }
-      }
-    }
+        &-TL {
+            font-family: $font-a1;
+            color: $c-white;
+            text-align: center;
+            @include pc {
+                @include wt500;
+                font-size: p(40);
+            }
+            @include sp {
+                @include wt600;
+                font-size: s(30);
+                letter-spacing: 0.11em;
+            }
+        }
+        &-list {
+            display: flex;
+            flex-direction: column;
+            @include pc {
+                gap: p(20);
+                margin-top: p(38);
+            }
+            @include sp {
+                gap: s(10);
+                margin-top: s(38);
+            }
+            &-item {
+                background: $c-white;
+                @include pc {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    border-radius: p(20);
+                    border: p(10) solid $c-junior;
+                    padding-inline: p(66) p(20);
+                }
+                @include sp {
+                    border-radius: s(20);
+                    border: s(10) solid $c-junior;
+                    padding-block: s(40) s(20);
 
+                    // ！調整用
+                    .yose {
+                        margin-left: 1rem;
+                    }
+                }
+                .text-wrap {
+                    .top-textbox {
+                        &-text {
+                            display: flex;
+                            align-items: center;
+
+                            color: $c-junior;
+                            font-family: $font-a1;
+                            @include wt500;
+                            @include pc {
+                                font-size: p(25);
+                            }
+                            @include sp {
+                                justify-content: center;
+                                font-size: s(15);
+                            }
+                        }
+                        &-number {
+                            display: inline-block;
+                            @include pc {
+                                width: p(66);
+                            }
+                            @include sp {
+                                width: s(37);
+                            }
+                            img {
+                                width: 100%;
+                                object-fit: contain;
+                            }
+                        }
+                    }
+                    .TL {
+                        font-family: $font-a1;
+                        @include wt500;
+                        color: $c-junior;
+                        @include pc {
+                            font-size: p(54);
+                            letter-spacing: 0.08em;
+                            margin-top: p(25);
+                            white-space: nowrap;
+                        }
+                        @include sp {
+                            text-align: center;
+                            line-height: 1.5;
+                            font-size: s(32);
+                            margin-top: s(28);
+                            letter-spacing: 0.1em;
+                        }
+                    }
+                    .TX {
+                        @include wt500;
+                        line-height: 1.8;
+                        @include pc {
+                            font-size: p(18);
+                            margin-top: p(22);
+                            letter-spacing: 0.14em;
+                        }
+                        @include sp {
+                            text-align: center;
+                            font-size: s(15);
+                            margin-top: s(24);
+                            letter-spacing: 0.05em;
+                            line-height: 2;
+                        }
+                    }
+                }
+
+                .img {
+                    @include pc {
+                        width: p(343);
+                        height: p(278);
+                    }
+                    @include sp {
+                        width: s(227);
+                        height: s(180);
+                        margin: 0 auto;
+                    }
+                    &.img01 {
+                        @include imgContain("junior-declaration/junior-declaration-content-img01.webp");
+                    }
+                    &.img02 {
+                        @include imgContain("junior-declaration/junior-declaration-content-img02.webp");
+                    }
+                    &.img03 {
+                        @include imgContain("junior-declaration/junior-declaration-content-img03.webp");
+                    }
+                    &.img04 {
+                        @include imgContain("junior-declaration/junior-declaration-content-img04.webp");
+                    }
+                }
+            }
+        }
+    }
 }
 
-.junior-declaration-next{
-  @include pc {
-    margin: p(184) auto 0;
-    width: p(1125);
-  }
-  @include sp {
-    margin: s(76) auto 0;
-    width: s(374);
-  }
-  &-TL{
-    margin: 0 auto;
+.junior-declaration-next {
     @include pc {
-      width: p(371);
+        margin: p(184) auto 0;
+        width: p(1125);
     }
     @include sp {
-      width: s(258);
+        margin: s(76) auto 0;
+        width: s(374);
     }
-    img{
-      width: 100%;
-      object-fit: contain;
-    }
-  }
-
-  &-bnr{
-    position: relative;
-    @include pc {
-      margin-top: p(20);
-      width: 100%;
-    }
-    @include sp {
-      margin-top: s(20);
-      width: 100%;
-    }
-    img{
-      width: 100%;
-      object-fit: contain;
+    &-TL {
+        margin: 0 auto;
+        @include pc {
+            width: p(371);
+        }
+        @include sp {
+            width: s(258);
+        }
+        img {
+            width: 100%;
+            object-fit: contain;
+        }
     }
 
-    &::before{
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: $c-white;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      @include pc {
-        border-radius: p(10);
-      }
-      @include sp {
-        border-radius: s(10);
-      }
-    }
+    &-bnr {
+        position: relative;
+        @include pc {
+            margin-top: p(20);
+            width: 100%;
+        }
+        @include sp {
+            margin-top: s(20);
+            width: 100%;
+        }
+        img {
+            width: 100%;
+            object-fit: contain;
+        }
 
-    &:hover{
-      &::before{
-        opacity: 0.3;
-        transition: opacity 0.3s ease;
-      }
-    }
-  }
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: $c-white;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            @include pc {
+                border-radius: p(10);
+            }
+            @include sp {
+                border-radius: s(10);
+            }
+        }
 
+        &:hover {
+            &::before {
+                opacity: 0.3;
+                transition: opacity 0.3s ease;
+            }
+        }
+    }
 }

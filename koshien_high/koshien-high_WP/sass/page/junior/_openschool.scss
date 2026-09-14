@@ -4,104 +4,119 @@
   openschool
 ----------------------- */
 
-.page--junior-openschool{
-  &.page--high-openschool{
-    .high-openschool-inr{
-      .high-openschool-kv{
-        .TL{
-          @include pc {
-            width: p(610);
-          }
-          @include sp {
-            width: s(302);
-          }
-        }
-        &-schedule{
-          .kv-schedule-item{
-            .tg{
-              color: #F97EA3;
-            }
-            .TM-wrap{
-              .TM{
-                &.is-end{
-                  &::after{
-                    background-color: $c-junior;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    .high-openschool-date{
-      .high-openschool-date-items {
-        .date-item {
-          &-inr{
-            .TG{
-              color: $c-junior;
-              border: solid $c-junior;
-            }
-            .DD-INFO-wrap{
-              .DD{
-                color: $c-junior;
-                span{
-                  color : $c-junior;
-                }
-              }
-              .INFO{
-                color: $c-junior;
-              }
-            }
-          }
-          &-end{
-            .TX{
-              background-color: $c-junior;
-            }
-          }
-        }
-      }
+.page--junior-openschool {
+    &.page--high-openschool {
+        .high-openschool-inr {
+            .high-openschool-layer--kv {
+                .TL {
+                    position: absolute;
 
-      &-txt{
-        color: $c-white;
-        @include pc {
-          text-align: center;
-          font-size: p(16);
-          line-height: 2;
-          margin-top: p(63);
-          letter-spacing: 0.1em;
+                    @include pc {
+                        width: auto;
+                        height: min(p(455), 55vh);
+                        top: 22%;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+
+                    @include sp {
+                        width: auto;
+                        height: min(s(261), 45vh);
+                        top: 32%;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+                    img {
+                        width: auto;
+                        height: 100%;
+                        object-fit: contain;
+                    }
+                }
+                &-schedule {
+                    .kv-schedule-item {
+                        .tg {
+                            color: #f97ea3;
+                        }
+                        .TM-wrap {
+                            .TM {
+                                &.is-end {
+                                    &::after {
+                                        background-color: $c-junior;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
+        .high-openschool-date {
+            .high-openschool-date-items {
+                .date-item {
+                    &-inr {
+                        .TG {
+                            color: $c-junior;
+                            border: 1px solid $c-junior;
+                        }
+                        .DD-INFO-wrap {
+                            .DD {
+                                color: $c-junior;
+                                span {
+                                    color: $c-junior;
+                                }
+                            }
+                            .INFO {
+                                color: $c-junior;
+                            }
+                        }
+                    }
+                    &-end {
+                        .TX {
+                            background-color: $c-junior;
+                        }
+                    }
+                }
+            }
+
+            &-txt {
+                color: $c-white;
+                @include pc {
+                    text-align: center;
+                    font-size: p(16);
+                    line-height: 2;
+                    margin-top: p(63);
+                    letter-spacing: 0.1em;
+                }
+                @include sp {
+                    width: s(375);
+                    margin: s(22) auto 0;
+                    font-size: s(12);
+                    line-height: 2;
+                    letter-spacing: 0.15em;
+                }
+            }
+        }
+
+        .p-openschool-form {
+            @include pc {
+                margin-top: p(60);
+            }
+            @include sp {
+                margin-top: s(25);
+            }
+        }
+    }
+
+    .p-form__submits {
         @include sp {
-          width: s(375);
-          margin: s(22) auto 0;
-          font-size: s(12);
-          line-height: 2;
-          letter-spacing: 0.15em;
+            background-color: #fff !important;
+            margin-top: s(20) !important;
+            padding-bottom: s(57) !important;
         }
-      }
+        .l-drawer__btn-icon {
+            @include pc {
+                // transform: unset;
+            }
+        }
     }
-
-    .p-openschool-form{
-      @include pc {
-        margin-top: p(60);
-      }
-      @include sp {
-        margin-top: s(25);
-      }
-    }
-
-  }
-
-  .p-form__submits{
-    @include sp {
-      background-color: #fff !important;
-      margin-top: 0 !important;
-      padding-bottom: s(57) !important;
-    }
-    .l-drawer__btn-icon{
-      @include pc {
-        transform: unset;
-      }
-    }
-  }
 }

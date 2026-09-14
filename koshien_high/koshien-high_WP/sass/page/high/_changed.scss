@@ -3,7 +3,11 @@
 /* -----------------------
   changed
 ----------------------- */
-
+.page--high-all .high-changed-kv-item-ttl,
+.page--high-all .high-changed-kv-item-ttl-inr,
+.page--high-all .high-changed-kv-item-ttl-tx {
+  text-box-trim: none;
+}
 .page-high-changed {
     background: #ffb9dc;
 
@@ -37,8 +41,18 @@
                 height: 100vh;
 
                 .high-changed-kv-item-bg {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
                     width: 100%;
-                    height: 100%;
+                    height: 100vh;
+                    z-index: 1;
+                    opacity: 0;
+                    transition: opacity 0.6s ease;
+
+                    &.is-current {
+                        opacity: 1;
+                    }
 
                     img {
                         width: 100%;
@@ -53,13 +67,37 @@
                     top: 50%;
                     left: 50%;
                     transform: translate(-50%, -50%);
+                    z-index: 3;
+                }
+
+                &.high-changed-kv-item-01,
+                &.high-changed-kv-item-02 {
+                    .high-changed-kv-item-ttl {
+                        position: fixed;
+                    }
+                }
+                &.high-changed-kv-item-01,
+                &.high-changed-kv-item-02 {
+                    .high-changed-kv-item-ttl-inr {
+                        text-align: center;
+                        opacity: 0;
+                        transition: opacity 0.4s ease; // 消えるとき
+
+                        &.is-current {
+                            opacity: 1;
+                            transition: opacity 2s cubic-bezier(0.22, 1, 0.36, 1); // 出るとき
+                        }
+                    }
                 }
 
                 &.high-changed-kv-item-01 {
                     .high-changed-kv-item-ttl {
                         @include pc {
                             top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
                             text-align: center;
+                            width: 100%;
                         }
 
                         @include sp {
@@ -75,6 +113,7 @@
 
                             @include pc {
                                 font-size: p(80);
+                                line-height: 1.4;
                             }
 
                             @include sp {
@@ -84,6 +123,15 @@
                     }
                     .high-changed-kv-item-ttl-tx {
                         position: relative;
+                        @include sp {
+                            display: inline-block;
+                            text-align: left;
+                            line-height: 1.357;
+                        }
+                         @include pc {
+                            display: inline-block;
+                            text-align: center;
+                        }
 
                         &::before {
                             content: "BEFORE";
@@ -101,7 +149,7 @@
                             letter-spacing: 0.06em;
 
                             @include pc {
-                                top: p(-60);
+                                top: p(-40);
                                 left: p(3);
                                 font-size: p(18);
                                 padding: p(4) p(10);
@@ -120,14 +168,16 @@
                 &.high-changed-kv-item-02 {
                     .high-changed-kv-item-ttl {
                         @include pc {
-                            top: 55%;
+                            top: 50%;
                             width: 100%;
                             text-align: center;
                         }
 
                         @include sp {
-                            width: s(230);
-                            top: 53%;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            width: 100%;
                             text-align: center;
                             line-height: 1.357;
                         }
@@ -139,14 +189,24 @@
 
                             @include pc {
                                 font-size: p(80);
+                                line-height: 1.4;
                             }
                             @include sp {
                                 font-size: s(42);
+                                text-align: left;
                             }
                         }
                     }
                     .high-changed-kv-item-ttl-tx {
                         position: relative;
+                        @include sp {
+                            display: inline-block;
+                            text-align: left;
+                        }
+                         @include pc {
+                            display: inline-block;
+                            text-align: center;
+                        }
 
                         &::before {
                             content: "AFTER";
@@ -164,8 +224,8 @@
                             letter-spacing: 0.06em;
 
                             @include pc {
-                                top: p(-60);
-                                left: 22%;
+                                top: p(-40);
+                                left: 2%;
                                 font-size: p(18);
                                 padding: p(4) p(10);
                             }
@@ -184,11 +244,11 @@
                     .high-changed-kv-item-ttl {
                         @include pc {
                             top: 45%;
-                            width: p(786);
+                            width: 100%;
                         }
 
                         @include sp {
-                            width: s(266);
+                            width: 80%;
                             top: 46.5%;
                         }
                     }
@@ -211,18 +271,19 @@
                             font-family: $font-midashi;
                             font-weight: 700;
                             line-height: 1.9;
-                            text-align: center;
 
                             @include pc {
                                 font-size: p(46);
                                 letter-spacing: 0.03em;
                                 margin-bottom: p(53);
+                                text-align: center;
                             }
 
                             @include sp {
                                 font-size: s(24);
                                 letter-spacing: 0.1em;
                                 margin-bottom: s(31);
+                                margin-left: s(28);
                             }
                         }
 
@@ -257,7 +318,7 @@
         z-index: 2;
 
         @include pc {
-            padding-block: p(64) p(100);
+            padding-block: p(64) p(128);
             @include imgCover("high/high-change-bg-pc.webp");
         }
 
@@ -313,11 +374,13 @@
 
         .high-changed-pagination {
             @include pc {
-                margin-top: p(20);
+                // margin-top: p(20);
+                display: none;
             }
 
             @include sp {
-                margin-top: s(17);
+                // margin-top: s(17);
+                display: none;
             }
 
             .slick-dots {

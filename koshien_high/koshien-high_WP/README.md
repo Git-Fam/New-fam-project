@@ -45,7 +45,7 @@ PHPの追加処理は `functions.php` から読み込まれます。読み込み
 
 現状のcanonical、OGP URL、Twitter URLは `get_home_url()` を参照します。詳細ページやアーカイブ単位で正規URLを出し分ける案件では、ページ種別に応じて動的化してください。
 
-OGP画像は `img/meta.jpg` を参照します。案件投入時に画像の有無とパスを確認してください。
+OGP画像は `img/meta.webp` を参照します。案件投入時に画像の有無とパスを確認してください。
 
 ## テンプレート解決
 
@@ -203,7 +203,7 @@ Sassの主な役割:
 ## 確認事項
 
 - `css/reset.css` と `css/main.css` が生成されていること
-- `img/meta.jpg` など、参照される画像が存在すること
+- `img/meta.webp` など、参照される画像が存在すること
 - canonical、OGP、descriptionが案件要件に合っていること
 - 投稿タイプ変更後にパーマリンク設定を保存していること
 

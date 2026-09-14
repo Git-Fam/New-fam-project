@@ -49,7 +49,7 @@
                     @include sp {
                         display: flex;
                         flex-direction: column;
-                        gap: s(22);
+                        gap: s(5);
                         padding: 0;
                         background: #f8acbd;
                     }
@@ -96,7 +96,7 @@
                                     display: block;
                                     aspect-ratio: 1;
                                     width: s(14);
-                                    @include imgContain("high-admission/high-admission-scholarship-tab-open.svg");
+                                    @include imgContain("junior-admission/junior-admission-scholarship-tab-open.svg");
                                 }
                             }
                         }
@@ -159,7 +159,9 @@
                             .scholarship-tab {
                                 @include sp {
                                     &::before {
-                                        @include imgContain("high-admission/high-admission-scholarship-tab-close.svg");
+                                        @include imgContain(
+                                            "junior-admission/junior-admission-scholarship-tab-close.svg"
+                                        );
                                     }
                                 }
                             }
@@ -230,7 +232,7 @@
                         border: s(1) solid $c-junior;
                         font-size: s(15);
                         letter-spacing: 0.08em;
-                        padding-block: s(16);
+                        padding-block: s(10);
                     }
                 }
 
@@ -393,8 +395,39 @@
     }
 }
 
+.is-junior
+    .page--high-admission
+    .page--high-admission-contents-wrap
+    .high-admission-faq
+    .high-admission-faq-inr
+    .faq-item
+    .item-a::before {
+    background-image: url(../img/junior-admission/junior-admission-faq-a.webp);
+}
+
 .scholarship-tab {
     @include pc {
         padding: 0 p(30);
+    }
+}
+
+
+body.is-junior {
+    .page--high-admission .page--high-admission-contents-wrap .high-admission-scholarship .high-admission-scholarship-inr .scholarship-item {
+        .scholarship-tab {
+            @include sp {
+                &::before {
+                    @include imgContain("junior-admission/junior-admission-scholarship-tab-open.svg");
+                }
+            }
+        }
+
+        &.is-active-sp .scholarship-tab {
+            @include sp {
+                &::before {
+                    @include imgContain("junior-admission/junior-admission-scholarship-tab-close.svg");
+                }
+            }
+        }
     }
 }

@@ -29,7 +29,6 @@ $c-alumni-panel: #eeecf8;
     // padding-top: p(64);
     p {
         font-family: $font-a1;
-        @include wt300;
 
         @include pc {
             font-size: p(16);
@@ -246,7 +245,7 @@ $c-alumni-panel: #eeecf8;
         margin: 0 0 p(12);
         font-family: $font-ja !important;
         font-size: p(18);
-        font-weight: 600 !important;
+        font-weight: 500 !important;
 
         span {
             color: $color-brand;
@@ -264,7 +263,7 @@ $c-alumni-panel: #eeecf8;
     }
 
     &__step-text {
-        margin: 0 0 p(16);
+        margin: 0 0 p(43);
         color: $color-text;
         font-size: p(15);
         letter-spacing: 0.09em !important;
@@ -330,6 +329,10 @@ $c-alumni-panel: #eeecf8;
         background: $c-alumni-panel;
         border-radius: p(16);
         padding: p(77) p(78) p(85);
+
+        .p-alumni__step-head {
+            color: #60388E;
+        }
 
         @include sp {
             border-radius: s(12);

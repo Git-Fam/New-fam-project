@@ -135,7 +135,7 @@
     padding: p(80) 0;
   }
   @include sp {
-    padding: s(56) s(20);
+    padding: s(26) s(20) s(56);
   }
 }
 
@@ -322,7 +322,7 @@
   }
   @include sp {
     width: 100%;
-    padding: s(27);
+    padding: s(44) s(27) s(27);
     border-radius: s(8);
     margin-top: 0;   
   }
@@ -351,7 +351,7 @@
 
 .footer { // クラス名は実際のものに合わせて
   position: relative;
-  z-index: 3;
+  z-index: 51;
 }
 
 

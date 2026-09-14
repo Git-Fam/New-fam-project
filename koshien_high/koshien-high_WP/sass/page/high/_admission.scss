@@ -98,7 +98,7 @@
 
             .aside-ttl {
                 margin-bottom: p(36);
-                font-family: $font-midashi;
+                font-family: $font-a1;
                 font-weight: 400;
                 color: #fff;
                 line-height: 1;
@@ -194,7 +194,7 @@
                                     line-height: 1.5;
                                     letter-spacing: 0.2em;
                                     display: block;
-                                    font-size: p(14);
+                                    font-size: p(13);
                                 }
                             }
                         }
@@ -461,7 +461,7 @@
                 @include sp {
                     display: flex;
                     flex-direction: column;
-                    gap: s(22);
+                    gap: s(5);
                 }
 
                 .scholarship-item {
@@ -472,11 +472,11 @@
                         justify-content: center;
                         font-family: $font-ja;
                         font-weight: 400;
-                        color: #ff4aa5;
+                        color: var(--school);
                         line-height: 1.5;
                         letter-spacing: 0.15em;
                         text-align: center;
-                        background-color: #ffeaf4;
+                        background-color: var(--school-sub);
 
                         @include pc {
                             position: absolute;
@@ -554,7 +554,7 @@
 
                         .scholarship-contents-item {
                             .ttl {
-                                color: #ff4aa5;
+                                color: var(--school);
                                 font-family: $font-a1;
                                 font-weight: 400;
                                 line-height: 1.5;
@@ -1007,7 +1007,7 @@
             border: s(1) solid var(--school);
             font-size: s(15);
             letter-spacing: 0.08em;
-            padding-block: s(16);
+            padding-block: s(10);
         }
     }
 

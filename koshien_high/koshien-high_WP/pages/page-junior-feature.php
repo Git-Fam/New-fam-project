@@ -22,7 +22,7 @@ Template Path: pages/
       </picture>
     </div>
     <!-- タイトル画像 -->
-    <div class="p-feature-fv__ttl">
+    <div class="p-feature-fv__ttl js-fade">
       <picture>
         <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/junior-feature/fv-ttl_sp.webp">
         <img src="<?php echo get_template_directory_uri(); ?>/img/junior-feature/fv-ttl_pc.webp" alt="夢中になれる学び 学びの特色">
@@ -42,11 +42,11 @@ Template Path: pages/
             <img src="<?php echo get_template_directory_uri(); ?>/img/junior-feature/label-01_pc.webp" alt="DIVE IN 少人数">
           </picture>
         </div>
-            <h2 class="p-feature__ttl">生徒<br><span class="p-feature__num">3~4</span>名につき、<br>
+            <h2 class="p-feature__ttl">生徒<span class="p-feature__num">7</span>名につき、<br>
             <span class="p-feature__num">1</span>人の教員！</h2>
-        <p class="p-feature__desc">ダミー少人数教育のため、生徒と教師との距<br class="pc">
-        離が近く、日々の声かけや個別対応を通して、<br class="pc">
-        一人ひとりの成長を支えます。</p>
+        <p class="p-feature__desc">少人数教育のため、生徒と教師との距離が近<br class="pc">
+        い！教員による日々の声かけや個別対応を通<br class="pc">
+        して、一人ひとりの成長を支えます。</p>
       </div>
       <div class="p-feature__img js-fade">
         <img src="<?php echo get_template_directory_uri(); ?>/img/junior-feature/img-01.webp" alt="">
@@ -66,9 +66,9 @@ Template Path: pages/
           </picture>
         </div>
           <h2 class="p-feature__ttl">プログラミング<br>など教科を超えた<br>学びも充実！</h2>
-        <p class="p-feature__desc">ダミープログラミングや言語活動、体験活動など<br class="pc">
-        の主要教科や副教科以外の学習を通して、社会で<br class="pc">
-        活かせる力を育みます。</p>
+        <p class="p-feature__desc">プログラミングや言語活動、体験活動などの主要<br class="pc">
+        教科や副教科以外の学習を通して、社会で活かせ<br class="pc">
+        る力を育みます。</p>
       </div>
     </div>
 
@@ -81,10 +81,10 @@ Template Path: pages/
             <img src="<?php echo get_template_directory_uri(); ?>/img/junior-feature/label-03_pc.webp" alt="DIVE IN 学校行事">
           </picture>
         </div>
-          <h2 class="p-feature__ttl">ダミー1年間で<br>学校行事が<span class="p-feature__num">7</span>回も！</h2>
-        <p class="p-feature__desc">ダミー春の校外学習や、秋に実施する東京ディズニーリ<br class="pc">
-        ゾートへの旅行、体育大会、文化祭、コーラスコンクー<br class="pc">
-        ルなど、さまざまなイベントがたくさん！</p>
+          <h2 class="p-feature__ttl">1年間で<br>学校行事が<span class="p-feature__num">7</span>回も！</h2>
+        <p class="p-feature__desc">春の校外学習や、秋に実施する東京ディズニーリゾート<br class="pc">
+        への旅行など行事がたくさん！体育大会や文化祭、コー<br class="pc">
+        ラスコンクールは高校生と一緒に行います。</p>
       </div>
       <div class="p-feature__img js-fade">
         <img src="<?php echo get_template_directory_uri(); ?>/img/junior-feature/img-03.webp" alt="">
@@ -104,10 +104,10 @@ Template Path: pages/
           </picture>
         </div>
           <h2 class="p-feature__ttl"><span class="p-feature__num">1</span>対<span class="p-feature__num">1</span>の<br>オンライン英会話！</h2>
-        <p class="p-feature__desc">ダミー必修の英語の授業とは別にネイティブの講師による<br class="pc">
-        英会話の授業を導入していますが、今年度より新たにオン<br class="pc">
-        ライン英会話の授業を加え、英語を話す力、聞く力をさら<br class="pc">
-        に高め、グローバル社会を生き抜く力を磨いていきます。</p>
+        <p class="p-feature__desc">必修授業とは別にネイティブ講師による英会話の授業を導<br class="pc">
+       入していますが、さらに1対1のオンライン英会話の授業を<br class="pc">
+        加え、英語を話す力、聞く力をいっそう高め、グローバル<br class="pc">
+        社会を生き抜く力を磨いていきます。</p>
       </div>
     </div>
 
@@ -162,14 +162,14 @@ Template Path: pages/
 
   <section class="junior-declaration-next">
     <div class="junior-declaration-next-inr">
-      <h3 class="junior-declaration-next-TL">
+      <h3 class="junior-declaration-next-TL js-fade">
         <picture>
           <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-pc.webp" media="(min-width: 768px)">
           <img src="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-sp.webp" alt="こちらのコンテンツもチェック！">
         </picture>
       </h3>
 
-      <div class="junior-declaration-next-bnr">
+      <div class="junior-declaration-next-bnr js-fade">
         <a href="<?php echo home_url('/junior/declaration/'); ?>" class="junior-declaration-next-bnr-link">
           <picture>
             <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-img-dec-pc.webp" media="(min-width: 768px)">
@@ -179,7 +179,7 @@ Template Path: pages/
       </div>
 
 
-      <div class="junior-declaration-next-bnr">
+      <div class="junior-declaration-next-bnr js-fade">
         <a href="<?php echo home_url('junior/students'); ?>" class="junior-declaration-next-bnr-link">
           <picture>
             <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-img-pc.webp" media="(min-width: 768px)">

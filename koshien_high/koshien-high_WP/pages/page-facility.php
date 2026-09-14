@@ -22,7 +22,7 @@ $campus_floors = array(
       array('slug' => 'b1f-01-training', 'alt' => 'トレーニング室'),
       array('slug' => 'b1f-02-kendo',    'alt' => '剣道場（防音設備完備）'),
       array('slug' => 'b1f-03-brass',    'alt' => '吹奏楽練習室（防音設備完備）'),
-      array('slug' => 'b1f-04-club',     'alt' => 'クラブ部室'),
+      // array('slug' => 'b1f-04-club',     'alt' => 'クラブ部室'),
     ),
   ),
   array(
@@ -57,16 +57,17 @@ $campus_floors = array(
       array('slug' => '5f-01-hall',        'alt' => '講堂'),
       array('slug' => '5f-02-music',       'alt' => '音楽室'),
       array('slug' => '5f-03-art',         'alt' => '美術室'),
-      array('slug' => '5f-04-tea',         'alt' => '茶室'),
+      // array('slug' => '5f-04-tea',         'alt' => '茶室'),
       array('slug' => '5f-05-calligraphy', 'alt' => '書道室'),
       array('slug' => '5f-06-computer',    'alt' => 'コンピュータ室'),
     ),
   ),
-  array(
+    array(
     'key'   => 'other',
     'label' => 'その他',
     'rooms' => array(
       array('slug' => 'other-01-cafeteria', 'alt' => '食堂・喫茶'),
+      array('slug' => 'other-02-gym',       'alt' => '体育館'),
     ),
   ),
 );
@@ -166,7 +167,7 @@ $school_address = '兵庫県西宮市瓦林町4-25 甲子園学院中学校・�
             <div class="p-campus__grid">
               <?php foreach ($floor['rooms'] as $room) : ?>
                 <figure class="p-campus__photo js-fade">
-                  <img src="<?php echo $img; ?>/gallery/<?php echo esc_attr($room['slug']); ?>.webp" alt="<?php echo esc_attr($room['alt']); ?>" loading="lazy">
+                  <img src="<?php echo $img; ?>/gallery/<?php echo esc_attr($room['slug']); ?>.webp" alt="<?php echo esc_attr($room['alt']); ?>">
                 </figure>
               <?php endforeach; ?>
             </div>

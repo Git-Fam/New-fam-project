@@ -51,7 +51,7 @@
             if (is_array($t)) $thumb = !empty($t['url']) ? $t['url'] : '';
             elseif (is_string($t)) $thumb = $t;
           }
-          if (!$thumb) $thumb = get_template_directory_uri() . '/img/common/noimage.svg';
+          if (!$thumb) $thumb = get_template_directory_uri() . '/img/common/noimage.webp';
         ?>
         <li class="p-news-archive__item js-fade" data-category="<?php echo esc_attr($cat_slug); ?>">
           <a href="<?php the_permalink(); ?>" class="p-news-archive__card">

@@ -466,7 +466,7 @@ Template Path: pages/
       </div>
       <div class="high-admission-faq-inr">
         <div class="faq-item">
-          <div class="item-q">
+          <div class="item-q js-fade">
             <h3 class="TL">進路実績は？</h3>
           </div>
           <div class="item-a">
@@ -485,7 +485,7 @@ Template Path: pages/
           </div>
         </div>
         <div class="faq-item">
-          <div class="item-q">
+          <div class="item-q js-fade">
             <h3 class="TL">校則は?</h3>
           </div>
           <div class="item-a">
@@ -498,7 +498,7 @@ Template Path: pages/
           </div>
         </div>
         <div class="faq-item">
-          <div class="item-q">
+          <div class="item-q js-fade">
             <h3 class="TL">進級・卒業の基準は?</h3>
           </div>
           <div class="item-a">
@@ -507,7 +507,7 @@ Template Path: pages/
           </div>
         </div>
         <div class="faq-item">
-          <div class="item-q">
+          <div class="item-q js-fade">
             <h3 class="TL">食堂のメニューには<br class="sp">どんなものがある?</h3>
           </div>
           <div class="item-a">
@@ -519,7 +519,7 @@ Template Path: pages/
           </div>
         </div>
         <div class="faq-item">
-          <div class="item-q">
+          <div class="item-q js-fade">
             <h3 class="TL">自転車通学はできる?</h3>
           </div>
           <div class="item-a">

@@ -3,8 +3,9 @@
 /* -----------------------
   header
 ----------------------- */
-
-
+html {
+    overscroll-behavior-y: none;
+}
 
 .l-header {
     position: fixed;
@@ -15,6 +16,7 @@
     background-color: #fffffff1;
     transition: background-color 0.3s ease;
     color: $c-black;
+    margin-bottom: -2px;
 
     @include pc {
         // TOP・中学TOP・高校TOPの最初だけ透明（is-hero-top かつ 未スクロール時）
@@ -23,7 +25,7 @@
         }
         // スクロール後は白に戻す（JSで is-scrolled を付与）
         .is-hero-top &.is-scrolled {
-             background-color: #fffffff1;
+            background-color: #fffffff1;
         }
 
         a {
@@ -195,11 +197,11 @@
     @include pc {
         display: flex;
         flex: 1;
-        gap: p(40);
-        width: p(1200);
+        gap: pmin(40, 40);
+        width: pmin(1200, 1200);
         max-width: 1200px;
-        margin: 0 auto p(30);
-        padding: p(100) p(0) p(0);
+        margin: 0 auto pmin(30, 30);
+        padding: pmin(100, 100) 0 0;
     }
     @include sp {
         padding: s(72) s(20) s(40);
@@ -354,7 +356,7 @@
         gap: p(19);
         position: absolute;
         bottom: 0;
-        left: 27vw;
+        left: 70%;
     }
     @include sp {
         gap: s(12);
@@ -447,9 +449,9 @@
     letter-spacing: 1.5px;
     @include pc {
         display: flex;
-        padding: p(47) p(30) p(41);
-        border-radius: p(8);
-        gap: p(30);
+        padding: pmin(37, 37) pmin(30, 30) pmin(41, 41);
+        border-radius: pmin(8, 8);
+        gap: pmin(30, 30);
     }
 
     @include sp {
@@ -517,8 +519,8 @@
     flex-direction: column;
 
     @include pc {
-        gap: p(20);
-        margin-top: p(6);
+        gap: pmin(20, 20);
+        margin-top: pmin(6, 6);
     }
     @include sp {
         gap: s(16);
@@ -547,15 +549,14 @@
     }
 }
 
-
-.is-high-top{
-    .l-header{
+.is-high-top {
+    .l-header {
         @include sp {
             background-color: transparent !important;
         }
-         .l-header__logo-img{
+        .l-header__logo-img {
             @include sp {
-              height: s(24); 
+                height: s(24);
             }
         }
     }

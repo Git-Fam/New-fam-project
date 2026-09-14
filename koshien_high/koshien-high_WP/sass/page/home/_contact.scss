@@ -113,7 +113,7 @@
         width: p(986);
         // max-width: 900px;
         margin: 0 auto;
-        padding: p(119) p(190) p(119) p(168);
+        padding: p(119) p(190) p(109) p(168);
         border-radius: p(12);
     }
     @include sp {
@@ -287,7 +287,7 @@
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    padding-right: p(40); 
+    padding-right: p(40);
     cursor: pointer;
 }
 
@@ -300,7 +300,7 @@
     width: p(8);
     height: p(8);
     transform: translateY(-60%) rotate(45deg);
-    border-right: 2px solid #909090; 
+    border-right: 2px solid #909090;
     border-bottom: 2px solid #909090;
     pointer-events: none;
     border-radius: 1px;
@@ -400,7 +400,7 @@
         top: 50%;
         transform: translate(-50%, -50%) scale(0);
         border-radius: 50%;
-        background-color: #fff; 
+        background-color: #fff;
         transition: transform 0.2s ease;
 
         @include pc {
@@ -419,7 +419,7 @@
 // 選択時：外側を紫で塗りつぶし＋内側に白い点
 .p-form__radio input[type="radio"]:checked + .wpcf7-list-item-label {
     &::before {
-        background-color:  var(--school);
+        background-color: var(--school);
         border-color: var(--school);
     }
     &::after {
@@ -747,7 +747,12 @@
 
 .p-form__submit {
     position: relative;
+
+    @include pc {
+        height: p(63);
+    }
 }
+
 .icon {
     display: inline-block;
     background: url(../img/common/arrow_circle_ww.webp) center / contain no-repeat;
@@ -760,6 +765,7 @@
         // width: ;
     }
 }
+
 
 // ============ お問い合わせ完了（THANK YOU） ============
 .p-thanks {
@@ -895,53 +901,71 @@
     }
 }
 
-
-
-
 // オープンスクールフォーム（共通スタイル）
 .is-high .p-openschool-form,
-.is-junior .p-openschool-form{
-  h1, h2, h3, h4, ul, ol, dl, li, dt, dd, p, div, span, img, a,
-  table, tr, th, td, label, input, select, textarea {
-    text-box-trim: none;
-  }
-  padding-top: 0;
-  padding-bottom: 0;
-
-  .p-form__submits {
-    margin-top: p(83);
-  }
-
-  &.p-contact {
-    background-image: none;
-  }
-
-  @include sp {
-    .p-contact__body {
-        border-radius: 1.9323671498vw 1.9323671498vw 0 0;
+.is-junior .p-openschool-form {
+    h1,
+    h2,
+    h3,
+    h4,
+    ul,
+    ol,
+    dl,
+    li,
+    dt,
+    dd,
+    p,
+    div,
+    span,
+    img,
+    a,
+    table,
+    tr,
+    th,
+    td,
+    label,
+    input,
+    select,
+    textarea {
+        text-box-trim: none;
     }
-  }
+    padding-top: 0;
+    padding-bottom: 0;
+
+    .p-form__submits {
+        margin-top: p(73);
+    }
+
+    &.p-contact {
+        background-image: none;
+    }
+
+    @include sp {
+        .p-contact__body {
+            border-radius: 1.9323671498vw 1.9323671498vw 0 0;
+        }
+    }
 }
 
 .is-high .p-contact--confirm,
 .is-junior .p-contact--confirm,
 .is-high .p-thanks,
-.is-junior .p-thanks{
+.is-junior .p-thanks {
     background-image: none;
     background-color: color-mix(in srgb, var(--school) 50%, transparent);
 }
 
 // 高校のとき：矢印画像を高校用に
-.is-high  {
-  .p-form__submit:hover .l-drawer__btn-icon,
-  .p-thanks__btn:hover .p-thanks__btn-icon {
-    background-image: url(../img/common/higharrow_circle_h.webp);
-  }
+.is-high {
+    .p-form__submit:hover .l-drawer__btn-icon,
+    .p-thanks__btn:hover .p-thanks__btn-icon {
+        background-image: url(../img/common/higharrow_circle_h.webp);
+    }
 }
 
 .is-junior {
-  .p-form__submit:hover .l-drawer__btn-icon,
-     .p-thanks__btn:hover .p-thanks__btn-icon {
-    background-image: url(../img/common/juniorarrow_circle_h.webp);
-  }
+    .p-form__submit:hover .l-drawer__btn-icon,
+    .p-thanks__btn:hover .p-thanks__btn-icon {
+        background-image: url(../img/common/juniorarrow_circle_h.webp);
+    }
 }

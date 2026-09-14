@@ -18,7 +18,7 @@ Template Path: pages/
         <img src="<?php echo get_template_directory_uri(); ?>/img/junior-life/junior-life-kv-bg-pc.webp" alt="「好き」に夢中になる日常 学校生活">
       </picture>
     </div>
-    <h2 class="TL">
+    <h2 class="TL js-fade">
       <picture>
         <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-life/junior-life-kv-ttl-sp.svg" media="(max-width: 767px)">
         <img src="<?php echo get_template_directory_uri(); ?>/img/junior-life/junior-life-kv-ttl-pc.svg" alt="「好き」に夢中になる日常 学校生活">
@@ -143,8 +143,7 @@ Template Path: pages/
               <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-09.webp" alt="9月">
             </p>
             <p class="TX">
-            実力考査 /<br>
-              文化祭 / オープンスクール
+            実力考査 / オープンスクール
             </p>
           </div>
         </div>
@@ -162,7 +161,8 @@ Template Path: pages/
               <img src="<?php echo get_template_directory_uri(); ?>/img/high-life/high-life-schedule-item-MM-10.webp" alt="10月">
             </p>
             <p class="TX">
-              オープンスクール/ 秋季旅行
+              オープンスクール/<br>
+               秋季旅行/ 文化祭
             </p>
           </div>
         </div>
@@ -304,7 +304,7 @@ Template Path: pages/
             </div>
             <p class="TG js-fade">朝学・朝礼</p>
             <p class="TX js-fade">
-              ダミーさまざまなイベントを通して、多様性あふれる日本社会・国際社会で活躍できることのできる女性の育成を学校全体で取り組んでいます。
+              朝のホームルームから始まる一日。
             </p>
             <div class="img sp js-fade">
               <img src="<?php echo get_template_directory_uri(); ?>/img/junior-life/junior-life-day-01-sp.webp" alt="">
@@ -319,7 +319,7 @@ Template Path: pages/
             <p class="TM js-fade">8:45〜12:15</p>
             <p class="TG js-fade">午前授業</p>
             <p class="TX js-fade">
-              ダミー午前は4時間授業です。各45分ずつで、授業の間には10分の休憩があります。
+              午前は4時間授業です。各45分ずつで、授業の間には10分の休憩があります。集中力を保ちながら効率よく学習を進めています。
             </p>
             <div class="img sp js-fade">
               <img src="<?php echo get_template_directory_uri(); ?>/img/junior-life/junior-life-day-02-sp.webp" alt="">
@@ -333,7 +333,7 @@ Template Path: pages/
             </div>
             <p class="TG js-fade">お昼休み</p>
             <p class="TX js-fade">
-              ダミー生徒たちは食堂や教室、中庭など思い思いの場所で昼食をとり、午後からの授業に向けて力をつけます。
+              生徒たちは食堂や教室、中庭など思い思いの場所で昼食をとり、午後からの授業に向けて力をつけます。
             </p>
             <div class="img sp js-fade">
               <img src="<?php echo get_template_directory_uri(); ?>/img/junior-life/junior-life-day-03-sp.webp" alt="">
@@ -348,7 +348,7 @@ Template Path: pages/
             <p class="TM js-fade">13:00〜15:35</p>
             <p class="TG js-fade">午後授業</p>
             <p class="TX js-fade">
-              ダミー午後は3時間授業です。午前と同様、各45分、10分休憩です。
+              午後は3時間授業です。授業では探究的な学びや発表の機会も多く、自分の考えを表現する力を育てます。
             </p>
             <div class="img sp js-fade">
               <img src="<?php echo get_template_directory_uri(); ?>/img/junior-life/junior-life-day-04-sp.webp" alt="">
@@ -362,7 +362,7 @@ Template Path: pages/
             </div>
             <p class="TG js-fade ">掃除・終礼・クラブ活動</p>
             <p class="TX js-fade">
-              ダミー終礼後は教室などの掃除をし、クラブ活動に参加したり、自習室で勉強をしたりなど、それぞれの放課後を過ごします。
+              放課後は部活動や自習など、それぞれが目標に向かって過ごす大切な時間です。
             </p>
           </div>
           <div class="txt-item-box mark_L">
@@ -381,14 +381,14 @@ Template Path: pages/
 
   <section class="junior-declaration-next">
     <div class="junior-declaration-next-inr">
-      <h3 class="junior-declaration-next-TL">
+      <h3 class="junior-declaration-next-TL js-fade">
         <picture>
-          <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-pc.svg" media="(min-width: 768px)">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-sp.svg" alt="こちらのコンテンツもチェック！">
+          <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-pc.webp" media="(min-width: 768px)">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-sp.webp" alt="こちらのコンテンツもチェック！">
         </picture>
       </h3>
 
-      <div class="junior-declaration-next-bnr">
+      <div class="junior-declaration-next-bnr js-fade">
         <a href="<?php echo home_url('/junior/declaration/'); ?>" class="junior-declaration-next-bnr-link">
           <picture>
             <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-img-dec-pc.webp" media="(min-width: 768px)">
@@ -398,7 +398,7 @@ Template Path: pages/
       </div>
 
 
-      <div class="junior-declaration-next-bnr">
+      <div class="junior-declaration-next-bnr js-fade">
         <a href="<?php echo home_url('junior/students'); ?>" class="junior-declaration-next-bnr-link">
           <picture>
             <source srcset="<?php echo get_template_directory_uri(); ?>/img/junior-declaration/next-content-check-img-pc.webp" media="(min-width: 768px)">

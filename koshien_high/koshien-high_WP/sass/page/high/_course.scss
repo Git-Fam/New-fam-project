@@ -3,6 +3,11 @@
 /* -----------------------
   course
 ----------------------- */
+// .whopper {
+//   overflow-x: clip;
+//   overflow-y: visible;
+// }
+
 
 .page-high-course {
 
@@ -28,58 +33,77 @@
     }
 
     .high-course-kv-inr {
-      position: relative;
-      z-index: 2;
+  position: relative;
+  z-index: 2;
 
-      .high-course-kv-ttl {
-        position: relative;
-        height: 100vh;
+  .high-course-kv-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-        .TL {
-          position: absolute;
-          left: 0;
-          right: 0;
-          margin: 0 auto;
+     @include pc {
+      padding-bottom: p(300);
+    }
 
-          @include pc {
-            width: p(830);
-            top: 21%;
-          }
+    @include sp {
+      padding-top: s(50);
+    }
+  }
 
-          @include sp {
-            width: s(275);
-            top: 44%;
-          }
-        }
+  .is-step {
+    opacity: 0;
+    transform: scale(0.97);
+    transition:
+      opacity .9s cubic-bezier(.22, 1, .36, 1),
+      transform .9s cubic-bezier(.22, 1, .36, 1);
+
+    &.is-current {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .high-course-kv-ttl {
+    position: relative;
+    height: 200vh;
+
+    .TL {
+      @include pc {
+        width: p(830);
       }
 
-      .high-course-kv-txt {
-        position: relative;
-        height: 100vh;
-
-        .TX {
-          position: absolute;
-          left: 0;
-          width: 100%;
-          font-family: $font-midashi;
-          font-weight: 400;
-          line-height: 2;
-          letter-spacing: 0.13em;
-          color: #fff;
-          text-align: center;
-
-          @include pc {
-            top: 18.5%;
-            font-size: p(24);
-          }
-
-          @include sp {
-            top: 37.5%;
-            font-size: s(18);
-          }
-        }
+      @include sp {
+        width: s(275);
       }
     }
+  }
+
+  .high-course-kv-txt {
+    position: relative;
+    height: 200vh;
+
+    .TX {
+      width: 100%;
+      font-family: $font-midashi;
+      font-weight: 400;
+      line-height: 2;
+      letter-spacing: 0.13em;
+      color: #fff;
+      text-align: center;
+
+      @include pc {
+        font-size: p(24);
+      }
+
+      @include sp {
+        font-size: s(18);
+      }
+    }
+  }
+}
   }
 
   .high-course-stage {
@@ -219,9 +243,10 @@
               }
 
               @include sp {
-                width: s(391);
+                width: s(364);
                 left: 50%;
                 transform: translateX(-50%);
+                
               }
             }
           }

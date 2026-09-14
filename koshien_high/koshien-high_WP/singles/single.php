@@ -91,7 +91,7 @@
             if (is_array($rt)) $r_thumb = !empty($rt['url']) ? $rt['url'] : '';
             elseif (is_string($rt)) $r_thumb = $rt;
           }
-          if (!$r_thumb) $r_thumb = get_template_directory_uri() . '/img/common/noimage.svg';
+          if (!$r_thumb) $r_thumb = get_template_directory_uri() . '/img/common/noimage.webp';
         ?>
         <li class="p-news-related__item">
           <a href="<?php the_permalink(); ?>" class="p-news-related__card">

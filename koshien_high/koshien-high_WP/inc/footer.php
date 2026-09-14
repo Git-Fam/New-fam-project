@@ -42,7 +42,7 @@ $hide_contact = is_page(['contact', 'contact/confirm', 'contact/thanks' ,'reques
       </a>
 
       <p class="l-footer__address">
-        〒663-8107 兵庫県西宮市瓦林町4番25号　TEL 0798-65-6100
+        〒663-8107 兵庫県西宮市瓦林町4-25　<br class="sp">TEL 0798-65-6100
       </p>
 
       <nav class="l-footer__group">
@@ -82,12 +82,12 @@ $hide_contact = is_page(['contact', 'contact/confirm', 'contact/thanks' ,'reques
   integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/script.js"></script>
 
-<?php if (is_page('high') || is_page('junior') || is_page('junior/students')): ?>
+<?php if (is_page('high') || is_page('junior') || is_page_template('pages/page-junior-students.php')): ?>
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/js/high.js"></script>
 <?php endif; ?>
 
-<?php if (is_page('changed')): ?>
+<?php if (is_page_template('pages/page-high-changed.php')): ?>
   <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   <script src="<?php echo get_template_directory_uri(); ?>/js/high-changed.js"></script>
 <?php endif; ?>

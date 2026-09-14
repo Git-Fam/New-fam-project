@@ -19,9 +19,9 @@ Template Path: pages/
         <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-kv-bg-pc.webp" alt="">
       </picture>
     </div>
-    <div class="TL">
+    <div class="TL js-fade">
       <picture>
-        <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-kv-ttl-sp.svg" type="image/svg+xml">
+        <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-kv-ttl-sp.webp" type="image/svg+xml">
         <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-kv-ttl-pc.svg" type="image/svg+xml" alt="仲間と好きを見つけよう。 クラブ活動 授業だけでは見つからない「好き」が見つかる場所。クラブ活動での挑戦や仲間との出会いは、自分の可能性を広げる大切な経験。高校生活の中で、仲間と一緒に新しい「好き」を見つけてみませんか。">
       </picture>
     </div>
@@ -47,6 +47,7 @@ Template Path: pages/
             </p>
           </div>
         </div>
+        <div class="scroll sp"></div>
         <div class="activity-item-tag">
           <div class="tag-wrap">
             <div class="tag">
@@ -54,6 +55,9 @@ Template Path: pages/
             </div>
             <div class="tag">
               <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-tag-01-02.webp" alt="">
+            </div>
+            <div class="tag">
+              <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-tag-01-03.webp" alt="">
             </div>
           </div>
         </div>
@@ -66,7 +70,7 @@ Template Path: pages/
           <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-bg-02-pc.webp" alt="">
         </picture>
       </div>
-      <div class="activity-item-content-wrap">
+      <div class="activity-item-content-wrap scroll">
         <div class="activity-item-content">
           <div class="ttl">
             <h3 class="TL">剣道部</h3>
@@ -118,9 +122,9 @@ Template Path: pages/
         </div>
         <div class="activity-item-tag">
           <div class="tag-wrap">
-            <div class="tag">
+            <!-- <div class="tag">
               <img src="<?php echo get_template_directory_uri(); ?>/img/high-club/high-club-activity-item-tag-03-01.webp" alt="">
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -269,8 +273,9 @@ Template Path: pages/
             <p class="EN">JUGGLING</p>
           </div>
           <div class="TX">
-            ダミー少数精鋭。部員は少ないけれど、<br class="pc">
-            みんな真剣に課題に取り組んでいます！ただいま部員募集中！
+            <p>
+            2026年度に発足したジャグリング同好会。<br class="pc">
+            みんな楽しく真剣に取り組んでいます！
             </p>
           </div>
         </div>

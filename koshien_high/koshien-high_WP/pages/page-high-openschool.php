@@ -21,62 +21,71 @@ Template Path: pages/
   </div>
 
   <div class="high-openschool-inr">
-    <section class="high-openschool-kv">
-      <h2 class="TL">
-        <picture>
-          <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-openschool/high-openschool-kv-ttl-sp.svg" type="image/svg+xml">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/high-openschool/high-openschool-kv-ttl-pc.svg" alt="好きを見つける 体験会 OPEN SCHOOL">
-        </picture>
-      </h2>
-      <div class="high-openschool-kv-schedule">
-        <?php
-        $schedules = class_exists('SCF') ? SCF::get('openschool_schedule') : array();
-        $setsumeikai = array();
-        $openschool = array();
-        if (!empty($schedules)) {
-          foreach ($schedules as $s) {
-            if ($s['os_type'] === '説明会') $setsumeikai[] = $s;
-            else $openschool[] = $s;
+    <div class="high-openschool-stage" id="js-openschool-stage">
+
+  <div class="high-openschool-pin">
+    <div class="high-openschool-sticky">
+
+      <div class="high-openschool-layer high-openschool-layer--kv">
+        <h2 class="TL">
+          <picture>
+            <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-openschool/high-openschool-kv-ttl-sp.webp">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/high-openschool/high-openschool-kv-ttl-pc.svg" alt="好きを見つける 体験会 OPEN SCHOOL">
+          </picture>
+        </h2>
+        <div class="high-openschool-kv-schedule">
+          <?php
+          $schedules = class_exists('SCF') ? SCF::get('openschool_schedule') : [];
+          $setsumeikai = [];
+          $openschool = [];
+          if (!empty($schedules)) {
+              $setsumeikai_types = ['説明会', '入学試験説明会', '入試対策講座'];
+              foreach ($schedules as $s) {
+                  $types = (array) $s['os_type'];
+                  if (array_intersect($types, $setsumeikai_types)) {
+                      $setsumeikai[] = $s;
+                  }
+                  if (in_array('オープンスクール', $types, true)) {
+                      $openschool[] = $s;
+                  }
+              }
           }
-        }
-        ?>
-
-        <?php if (!empty($setsumeikai)) : ?>
-        <div class="kv-schedule-item">
-          <p class="tg">説明会</p>
-          <div class="TM-wrap">
-            <?php foreach ($setsumeikai as $s) :
-              $end_class = !empty($s['os_active']) ? '' : ' is-end';
-              $date_disp = !empty($s['os_year']) ? $s['os_year'] . '.' . $s['os_date'] : $s['os_date'];
-            ?>
-            <p class="TM<?php echo $end_class; ?>">
-              <?php echo esc_html($date_disp); ?><span><?php echo esc_html($s['os_day_en']); ?></span>
-            </p>
-            <?php endforeach; ?>
+          ?>
+          <?php if (!empty($setsumeikai)): ?>
+          <div class="kv-schedule-item">
+            <p class="tg">説明会</p>
+            <div class="TM-wrap">
+              <?php foreach ($setsumeikai as $s):
+                  $end_class = !empty($s['os_active']) ? '' : ' is-end';
+                  $date_disp = !empty($s['os_year']) ? $s['os_year'] . '.' . $s['os_date'] : $s['os_date'];
+                  ?>
+              <p class="TM<?php echo $end_class; ?>">
+                <?php echo esc_html($date_disp); ?><span><?php echo esc_html($s['os_day_en']); ?></span>
+              </p>
+              <?php endforeach; ?>
+            </div>
           </div>
-        </div>
-        <?php endif; ?>
+          <?php endif; ?>
 
-        <?php if (!empty($openschool)) : ?>
-        <div class="kv-schedule-item">
-          <p class="tg">オープンスクール</p>
-          <div class="TM-wrap">
-            <?php foreach ($openschool as $s) :
-              $end_class = !empty($s['os_active']) ? '' : ' is-end';
-              $date_disp = !empty($s['os_year']) ? $s['os_year'] . '.' . $s['os_date'] : $s['os_date'];
-            ?>
-            <p class="TM<?php echo $end_class; ?>">
-              <?php echo esc_html($date_disp); ?><span><?php echo esc_html($s['os_day_en']); ?></span>
-            </p>
-            <?php endforeach; ?>
+          <?php if (!empty($openschool)): ?>
+          <div class="kv-schedule-item">
+            <p class="tg">オープンスクール</p>
+            <div class="TM-wrap">
+              <?php foreach ($openschool as $s):
+                  $end_class = !empty($s['os_active']) ? '' : ' is-end';
+                  $date_disp = !empty($s['os_year']) ? $s['os_year'] . '.' . $s['os_date'] : $s['os_date'];
+                  ?>
+              <p class="TM<?php echo $end_class; ?>">
+                <?php echo esc_html($date_disp); ?><span><?php echo esc_html($s['os_day_en']); ?></span>
+              </p>
+              <?php endforeach; ?>
+            </div>
           </div>
+          <?php endif; ?>
         </div>
-        <?php endif; ?>
       </div>
-    </section>
 
-    <div class="high-openschool-txt">
-      <p class="TX">
+      <p class="high-openschool-layer high-openschool-layer--txt TX">
         好きなことが<br class="sp">まだ見つかっていなくても大丈夫。<br>
         甲子園学院には、<br>
         一人ひとりの「やってみたい」を<br class="sp">応援する環境があります。<br>
@@ -86,19 +95,23 @@ Template Path: pages/
         新しい発見や出会いが、<br>
         あなたの「好き」を見つける<br class="sp">きっかけになるかもしれません。
       </p>
+
     </div>
+  </div>
+
+</div>
 
     <section class="high-openschool-date">
       <h3 class="high-openschool-date-ttl js-fade">
         <img src="<?php echo get_template_directory_uri(); ?>/img/high-openschool/high-openschool-date-ttl.svg" alt="開催日程">
       </h3>
       <div class="high-openschool-date-items js-fade">
-        <?php if (!empty($schedules)) : foreach ($schedules as $s) :
-          $end_class = !empty($s['os_active']) ? '' : ' is-end';
-        ?>
+        <?php if (!empty($schedules)):
+            foreach ($schedules as $s):
+                $end_class = !empty($s['os_active']) ? '' : ' is-end'; ?>
         <div class="date-item<?php echo $end_class; ?>">
           <div class="date-item-inr">
-            <p class="TG"><?php echo esc_html($s['os_type']); ?></p>
+            <p class="TG"><?php echo esc_html(implode('・', (array) $s['os_type'])); ?></p>
             <div class="DD-INFO-wrap">
               <p class="DD"><?php echo esc_html($s['os_date']); ?><span>（<?php echo esc_html($s['os_day_jp']); ?>）</span></p>
               <p class="INFO"><?php echo esc_html($s['os_time']); ?>&nbsp;&nbsp;/&nbsp;&nbsp;<br class="sp">会場：<?php echo esc_html($s['os_place']); ?></p>
@@ -108,7 +121,9 @@ Template Path: pages/
             <p class="TX">終了しました</p>
           </div>
         </div>
-        <?php endforeach; endif; ?>
+        <?php
+            endforeach;
+        endif; ?>
       </div>
     </section>
 
@@ -186,12 +201,27 @@ Template Path: pages/
       </div>
     </section>
 
+     <!-- 7/31 Formがボタンに変更 -->
     <section class="high-openschool-form">
-      <h3 class="high-openschool-form-ttl js-fade">
+      <!-- <h3 class="high-openschool-form-ttl js-fade">
         <img src="<?php echo get_template_directory_uri(); ?>/img/high-openschool/high-openschool-form-ttl.svg" alt="応募フォーム">
-      </h3>
+      </h3> 
       <div class="p-openschool-form p-contact js-fade">
         <?php echo do_shortcode('[contact-form-7 id="2a025f7" title="高校_応募フォーム"]'); ?>
+      </div> -->
+
+
+       <h3 class="high-openschool-form-ttl js-fade">
+        <img src="<?php echo get_template_directory_uri(); ?>/img/high-openschool/high-openschool-form-ttl.webp" alt="まずはお申込み！">
+      </h3>
+
+      <div class="agenda-item-btn">
+       <a href="https://mirai-compass.net/usr/kosiengh/event/evtIndex.jsf" target="_blank" rel="noopener noreferrer">
+          <picture>
+            <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-openschool/high-openschool-application-btn-sp.webp">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/high-openschool/high-openschool-application-btn-pc.webp" alt="お申込はこちら">
+          </picture>
+        </a>
       </div>
 
     </section>

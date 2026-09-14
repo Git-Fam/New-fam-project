@@ -12,52 +12,55 @@ Template Path: pages/
 
 <main class="page page-high-why page--high-all">
 
-  <section class="high-why-kv">
-    <div class="high-why-kv-bg">
-      <picture>
-        <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-why/high-why-kv-bg-sp.webp" type="image/webp">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/high-why/high-why-kv-bg-pc.webp" alt="">
-      </picture>
-    </div>
-    <div class="high-why-kv-bg-wrap">
-      <picture>
-        <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-why/high-why-kv-bg-wrap-sp.webp" type="image/webp">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/high-why/high-why-kv-bg-wrap-pc.webp" alt="">
-      </picture>
-    </div>
-    <h2 class="high-why-kv-ttl">
-      <div class="high-why-kv-ttl-inr js-fade">
+  <section class="high-why-hero" id="js-why-hero">
+  <div class="high-why-hero-bg">
+    <picture>
+      <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-why/high-why-kv-bg-sp.webp" type="image/webp">
+      <img src="<?php echo get_template_directory_uri(); ?>/img/high-why/high-why-kv-bg-pc.webp" alt="">
+    </picture>
+  </div>
+  <div class="high-why-hero-bg-wrap">
+    <picture>
+      <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-why/high-why-kv-bg-wrap-sp.webp" type="image/webp">
+      <img src="<?php echo get_template_directory_uri(); ?>/img/high-why/high-why-kv-bg-wrap-pc.webp" alt="">
+    </picture>
+  </div>
+
+  <div class="high-why-hero-sticky">
+    <div class="high-why-hero-inr">
+
+      <!-- タイトル＝ステップ0 -->
+      <div class="TL is-step" data-step="0">
         <picture>
-          <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-why/high-why-kv-ttl-sp.svg" type="image/webp">
+          <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high-why/high-why-kv-ttl-sp.svg" type="image/svg+xml">
           <img src="<?php echo get_template_directory_uri(); ?>/img/high-why/high-why-kv-ttl-pc.svg" alt="なんで好きが見つかるの？ WHY YOU CAN FIND LOVE">
         </picture>
       </div>
-    </h2>
-  </section>
 
-  <section class="high-why-concept">
-    <div class="high-why-concept-inr">
-      <p class="TX js-fade">
+      <!-- 本文＝ステップ1〜4 -->
+      <p class="TX is-step" data-step="1">
         それは、変われるチャンスが<br class="sp">たくさんあるから。<br>
         勉強が苦手でも。<br class="sp">学校が好きじゃなくても。<br>
         自分に自信がなくてもだいじょうぶ。
       </p>
-      <p class="TX js-fade">
+      <p class="TX is-step" data-step="2">
         先生がいる。<br class="sp">「できた！」が増える。<br>
         仲間がいる。<br class="sp">「楽しい！」が増える。<br>
         挑戦できる場所がある。<br class="sp">「やってみたい！」が増える。
       </p>
-      <p class="TX js-fade">
+      <p class="TX is-step" data-step="3">
         気づけば、<br class="sp">夢中になれるものが見つかっている。<br>
         好きなことが、<br class="sp">未来の行き先になっている。
       </p>
-      <p class="TX js-fade">
+      <p class="TX is-step" data-step="4">
         甲子園学院高校には、<br>
         あなたが変わるきっかけが、<br class="sp">たくさんあります。<br>
         好きは、人生を変える入口になる。
       </p>
+
     </div>
-  </section>
+  </div>
+</section>
 
   <section class="high-why-contents">
     <div class="high-why-item high-why-item-01">
@@ -119,7 +122,7 @@ Template Path: pages/
           </picture>
         </p>
         <h2 class="TL">
-          「やってみたい」が<br>増えていく。
+          <span class="TL__line">「やってみたい」が</span><br>増えていく。
         </h2>
         <p class="TX">
           新しいことに挑戦してみる。<br>その経験が、自分でも知らなかった<br class="sp">“好き”との出会いにつながります。

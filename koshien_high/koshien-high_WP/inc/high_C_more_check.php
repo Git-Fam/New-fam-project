@@ -1,8 +1,8 @@
 <div class="high_C_more_check">
   <h3 class="TL js-fade">
     <picture>
-      <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high_C_more_check/C_more_check-ttl-sp.svg" type="image/svg+xml">
-      <img src="<?php echo get_template_directory_uri(); ?>/img/high_C_more_check/C_more_check-ttl-pc.svg" type="image/svg+xml" alt="こちらのコンテンツもチェック！">
+      <source media="(max-width:767px)" srcset="<?php echo get_template_directory_uri(); ?>/img/high_C_more_check/C_more_check-ttl-sp.webp" type="image/svg+xml">
+      <img src="<?php echo get_template_directory_uri(); ?>/img/high_C_more_check/C_more_check-ttl-pc.webp" type="image/svg+xml" alt="こちらのコンテンツもチェック！">
     </picture>
   </h3>
 

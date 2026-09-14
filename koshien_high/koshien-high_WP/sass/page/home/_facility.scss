@@ -129,6 +129,7 @@
         list-style: none;
 
         img {
+            aspect-ratio: 4 / 3; 
             width: 100%;
             height: auto;
             display: block;
@@ -225,7 +226,7 @@
     }
 
     &__floor {
-        margin-bottom: p(70);
+        margin-bottom: p(150);
 
         &:last-child {
             margin-bottom: 0;
@@ -303,7 +304,7 @@
         }
 
         @include sp {
-            margin-bottom: s(30);
+            margin-bottom: s(52);
 
             img {
                 width: s(159);

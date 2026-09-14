@@ -103,6 +103,7 @@
 
     @include pc {
         flex-direction: row;
+        margin-top: p(-20);
     }
 }
 
@@ -119,7 +120,6 @@
         width: 50%;
         height: p(768);
     }
-
 }
 
 .hero__img {
@@ -279,10 +279,10 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: p(28);
+        margin-bottom: p(56);
 
         @include sp {
-            margin-bottom: s(20);
+            margin-bottom: s(22);
             padding-left: s(20);
         }
     }
@@ -290,7 +290,7 @@
     &__tabs {
         display: flex;
         flex-wrap: wrap;
-        gap: p(8);
+        gap: p(5);
 
         @include sp {
             gap: s(6);
@@ -368,19 +368,26 @@
 
     &__tab {
         flex-shrink: 0;
-        padding: p(6) p(20);
-        font-size: p(13);
         letter-spacing: 0.06em;
         border: 1px solid $c-brand;
         color: $c-brand;
         border-radius: 9999px;
         background-color: $color-bg;
         cursor: pointer;
+        font-weight: 500;
+        letter-spacing: 0.1em;
         transition: 0.3s;
+        font-family: $font-ja;
+        font-weight: 500;
+
+        @include pc {
+            font-size: p(13);
+            padding: p(3) p(11) p(4);
+        }
 
         @include sp {
-            padding: s(6) s(18);
-            font-size: s(12);
+            padding: s(3) s(11) s(4);
+            font-size: s(13);
         }
 
         &.is-active {
@@ -412,18 +419,15 @@
     }
 
     &__list {
+        @include sp {
+            min-height: s(263);
+        }
         @include pc {
+            min-height: p(320);
             display: grid !important;
             grid-template-columns: repeat(3, 1fr);
-            gap: p(30);
+            gap: p(46);
             transform: none !important;
-        }
-
-        // SPスライダー（slick／high-newsに準拠）
-        .slick-list {
-            @include sp {
-                // padding-left: s(20);
-            }
         }
 
         .slick-dots {
@@ -476,12 +480,12 @@
         position: relative;
         aspect-ratio: 3 / 2;
         overflow: hidden;
-        border-radius: p(4);
-        margin-bottom: p(14);
+        border-radius: p(10);
+        margin-bottom: p(19);
 
         @include sp {
-            border-radius: s(4);
-            margin-bottom: s(12);
+            border-radius: s(7);
+            margin-bottom: s(16);
         }
     }
 
@@ -496,14 +500,19 @@
         top: 0;
         left: 0;
         z-index: 2;
-        padding: p(4) p(14);
-        font-size: p(12);
-        letter-spacing: 0.06em;
-        color: #fff;
+        color: $c-white;
+        font-family: $font-ja;
+        letter-spacing: 0.1em;
+        text-box-trim: trim-both;
+        font-weight: 400;
 
+        @include pc {
+            font-size: p(13);
+            padding: p(3) p(13) p(5);
+        }
         @include sp {
-            padding: s(4) s(12);
-            font-size: s(11);
+            font-size: s(10);
+            padding: s(4) s(13) s(5);
         }
 
         &--junior {
@@ -518,7 +527,7 @@
         display: flex;
         align-items: center;
         gap: p(10);
-        margin-bottom: p(8);
+        margin-bottom: p(15);
 
         @include sp {
             gap: s(10);
@@ -527,39 +536,56 @@
     }
 
     &__date {
-        font-size: p(13);
-        letter-spacing: 0.04em;
-        @include wt500;
         font-family: $font-jost;
+        font-weight: bold;
+        letter-spacing: 0.1em;
         color: $c-black;
 
-        @include sp {
-            font-size: s(12);
+        @include pc {
+            font-size: p(13);
         }
-    }
-
-    &__cat {
-        padding: p(5) p(12) p(4);
-        font-size: p(11);
-        border-radius: 9999px;
-        background-color: var(--school);
-        color: #fff;
 
         @include sp {
-            padding: s(2) s(10);
             font-size: s(10);
         }
     }
 
+    &__cat {
+        font-family: $font-ja;
+        border-radius: 9999px;
+        background-color: var(--school);
+        color: #fff;
+        text-box-trim: trim-both;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+
+        @include pc {
+            font-size: p(12);
+            border-radius: p(50);
+            padding: p(1) p(11) p(3);
+        }
+
+        @include sp {
+            padding: s(1) s(8) s(2);
+            font-size: s(8);
+        }
+    }
+
     &__text {
-        font-size: p(14);
-        line-height: 1.7;
-        color: $c-black;
-        @include wt600;
         font-family: $font-midashi;
+        font-weight: bold;
+        letter-spacing: 0.05em;
+        color: $c-black;
+
+        @include pc {
+            font-size: p(14);
+            line-height: 1.5;
+        }
 
         @include sp {
             font-size: s(13);
+            line-height: 2;
+            text-align: left;
         }
     }
 
@@ -701,18 +727,18 @@
 
     @include sp {
         bottom: s(38);
-        gap: s(6);
+        gap: s(20);
         height: s(40);
-        padding: 0 s(20);
+        padding: 0 s(6) 0 s(32);
         font-size: s(13);
         letter-spacing: s(1.56);
     }
 
     @include pc {
         bottom: p(53);
-        gap: p(8);
+        gap: p(10);
         height: p(40);
-        padding: 0 p(24);
+        padding: 0 p(6) 0 p(24);
         font-size: p(15);
         letter-spacing: p(1.8);
 
@@ -741,12 +767,12 @@
     }
 
     @include sp {
-        width: s(13);
-        height: s(13);
+        width: s(20);
+        height: 100%;
     }
     @include pc {
         width: p(19);
-        height: p(19);
+        height: 100%;
     }
 }
 
@@ -1163,10 +1189,6 @@
 .p-vision {
     @include sp {
         margin-top: s(30);
-    }
-
-    @include pc {
-        margin-top: p(90);
     }
 }
 

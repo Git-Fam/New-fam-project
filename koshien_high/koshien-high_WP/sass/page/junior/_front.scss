@@ -30,6 +30,7 @@
             @include pc {
                 @include imgCover("junior/junior-change-bg-pc.webp");
                 padding-block: p(100) p(145);
+                margin: -2px;
             }
             @include sp {
                 @include imgCover("junior/junior-change-bg-sp.webp");
@@ -62,6 +63,7 @@
                     @include pc {
                         width: p(492) !important;
                         min-width: p(492) !important;
+                        margin-inline: p(-30)!important;
                     }
                     @include sp {
                         width: s(434);
@@ -84,13 +86,25 @@
         .junior-banner {
             .junior-banner-item {
                 position: relative;
+                display: block; // 【重要】aタグはデフォルトでインラインなので、ブロック要素に強制変換する
+
                 &::before {
                     content: "";
                     position: absolute;
-                    inset: 0;
+                    display: block; // 【重要】擬似要素も明示的にブロックにする
+
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+
+                    box-sizing: border-box; // 枠線を内側に収める
                     opacity: 0;
-                    // box-sizing: border-box;
+                    z-index: 2;
                     pointer-events: none;
+                    transform: translateZ(0); // Safariレンダリングバグ対策
+                    transition: opacity 0.3s ease;
+
                     @include pc {
                         border: p(20) solid $c-high;
                     }

@@ -4,12 +4,20 @@
  students（夢中学生）
 ----------------------- */
 
+@include pc {
+    .pcnobr {
+        white-space: nowrap;
+    }
+}
+@include sp {
+    .junior-students-contents-item-inr .TX br {
+        display: none;
+    }
+}
+
 .page--junior-students {
     .junior-students-hiro {
         position: relative;
-        @include sp {
-            margin-bottom: s(34);
-        }
 
         .junior-students-hiro-bg {
             width: 100%;
@@ -26,16 +34,14 @@
                 left: p(120);
             }
             @include sp {
-                top: s(460);
-                left: 50%;
-                transform: translateX(-50%);
-                width: fit-content;
+                top: s(110);
+                left: s(40);
                 white-space: nowrap;
             }
 
             .TL {
                 font-family: $font-a1;
-                color: $c-junior;
+                color: #fff;
                 line-height: 1.8;
                 @include wt500;
                 @include pc {
@@ -44,6 +50,7 @@
                 @include sp {
                     font-size: s(38);
                     letter-spacing: 0.1em;
+                    // padding-left: s(40);
                 }
             }
             .TX {
@@ -54,7 +61,7 @@
                     margin-top: s(28);
                     display: flex;
                     align-items: center;
-                    justify-content: center;
+                    justify-content: left;
                     gap: s(11);
                 }
                 .label {
@@ -71,6 +78,7 @@
                 }
                 .name {
                     font-family: $font-a1;
+                    color: #fff;
                     @include wt500;
                     letter-spacing: 0.15em;
                     @include pc {
@@ -86,9 +94,15 @@
     }
 
     .junior-students-contents {
+        background-color: #f8acbd;
+
         .junior-students-contents-item {
             position: relative;
             width: 100%;
+
+            @include pc {
+                margin-bottom: p(2);
+            }
             img {
                 width: 100%;
                 object-fit: contain;
@@ -97,18 +111,25 @@
                 position: absolute;
                 color: $c-white;
                 @include pc {
-                    top: p(92);
-                    left: p(198);
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 100%;
                 }
                 @include sp {
                     top: s(63);
                     left: 50%;
                     transform: translateX(-50%);
-                    width: fit-content;
+                    width: 100%;
+                    margin-left: s(39);
                 }
                 .icon-box {
                     display: flex;
                     align-items: center;
+
+                    @include pc {
+                        justify-content: center;
+                    }
                     &-text {
                         font-family: $font-a1;
                         @include wt500;
@@ -135,31 +156,37 @@
                     @include pc {
                         font-size: p(54);
                         line-height: 1.7;
-                        margin-top: p(28);
+                        margin-top: p(75);
                         letter-spacing: 0.15em;
+                        text-align: center;
+                        padding-left: p(50);
                     }
                     @include sp {
                         font-size: s(34);
                         line-height: 1.7;
                         margin-top: s(35);
                         letter-spacing: 0.09em;
+                        text-align: left;
                     }
                 }
                 .TX {
                     @include wt500;
                     @include pc {
-                        margin-top: p(28);
+                        margin: p(95) auto 0;
                         font-size: p(18);
                         line-height: 2.5;
-                        width: p(492);
+                        width: p(960);
                         letter-spacing: 0.15em;
+                        text-align: center;
+                        width: 100%;
                     }
                     @include sp {
                         margin-top: s(35);
                         font-size: s(15);
                         line-height: 2;
-                        letter-spacing: 0.15em;
-                        width: s(334);
+                        letter-spacing: 0.14em;
+                        width: s(335);
+                        text-align: justify;
                     }
                 }
             }
@@ -177,10 +204,10 @@
 
     .high-change {
         @include pc {
-          padding-top: 0 !important;
+            padding-top: 0 !important;
         }
         @include sp {
-          padding-block: 0 s(74) !important;
+            padding-block: 0 s(74) !important;
         }
         .ttl {
             .TL {
@@ -199,11 +226,10 @@
                 }
             }
         }
-        &-pagination{
+        &-pagination {
             @include sp {
                 display: none !important;
             }
         }
     }
 }
-
