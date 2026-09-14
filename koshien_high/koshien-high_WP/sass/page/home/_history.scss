@@ -51,6 +51,7 @@
             width: s(213);
             flex-direction: column;
         }
+
         .p-about__pill-item {
             width: s(213);
         }
@@ -75,6 +76,7 @@
         background-repeat: no-repeat;
         opacity: 0; // 最初は透明
         transition: opacity 1.4s ease; // ふわっと（1.4秒）
+
         @include pc {
             background-image: url(../img/home/history/seishin-bg_pc.webp);
         }
@@ -95,6 +97,7 @@
     @include pc {
         padding: p(100) 0 p(190);
     }
+
     @include sp {
         padding: s(64) s(40);
     }
@@ -114,6 +117,7 @@
         width: p(132);
         margin: 0 auto p(138);
     }
+
     @include sp {
         width: s(98);
         margin: 0 auto s(48);
@@ -131,6 +135,7 @@
         @include pc {
             margin-bottom: p(120);
         }
+
         @include sp {
             margin-bottom: s(64);
         }
@@ -162,6 +167,7 @@
     @include pc {
         padding: p(138) p(120);
     }
+
     @include sp {
         padding: s(37) s(20) s(27);
     }
@@ -184,6 +190,7 @@
     @include pc {
         padding: p(81) p(165) p(120);
     }
+
     @include sp {
         padding: s(60) s(14) s(42) s(20);
     }
@@ -195,13 +202,16 @@
 
     @include pc {
         margin-bottom: p(97);
+
         img {
             width: p(51);
             margin: auto;
         }
     }
+
     @include sp {
         margin-bottom: s(56);
+
         img {
             width: s(38);
             margin: auto;
@@ -221,6 +231,7 @@
         border-width: p(12) p(10) 0;
         margin-bottom: p(16);
     }
+
     @include sp {
         border-width: s(10) s(8) 0;
         margin-bottom: s(12);
@@ -235,6 +246,7 @@
         font-size: p(28);
         letter-spacing: 0.1em;
     }
+
     @include sp {
         font-size: s(20);
         letter-spacing: 0.1em;
@@ -246,6 +258,7 @@
     position: relative;
     font-family: $font-ja;
 }
+
 .p-history-year__item {
     position: relative;
     display: flex;
@@ -253,8 +266,9 @@
     &:not(:last-child) {
         @include pc {
             margin-bottom: p(56);
-             align-items: center;
+            align-items: center;
         }
+
         @include sp {
             margin-bottom: s(32);
         }
@@ -273,11 +287,22 @@
             left: p(42); // 年号の中央あたり
             width: 1.5px;
         }
+
         @include sp {
             top: s(53);
             bottom: s(-30);
             left: s(30);
             width: 1.5px;
+        }
+    }
+
+    &.mt-b {
+        @include sp {
+            margin-bottom: s(50);
+
+            .p-history-year__date::before {
+                bottom: s(-48);
+            }
         }
     }
 }
@@ -290,6 +315,7 @@
     @include pc {
         width: p(94);
     }
+
     @include sp {
         width: s(68);
     }
@@ -307,6 +333,7 @@
         font-size: p(40);
         margin-bottom: p(6);
     }
+
     @include sp {
         font-size: s(28);
         margin-bottom: s(4);
@@ -322,6 +349,7 @@
     @include pc {
         font-size: p(14);
     }
+
     @include sp {
         font-size: s(10);
     }
@@ -335,6 +363,7 @@
         padding-left: p(71);
         padding-top: p(4);
     }
+
     @include sp {
         padding-left: s(18);
         padding-top: s(2);
@@ -346,13 +375,15 @@
     color: #333;
 
     @include pc {
-        align-items: center;
+        // align-items: center;
+        align-items: baseline;
     }
 
     &:not(:last-child) {
         @include pc {
             margin-bottom: p(6);
         }
+
         @include sp {
             margin-bottom: s(14);
         }
@@ -367,6 +398,7 @@
         width: p(48);
         font-size: p(14);
     }
+
     @include sp {
         font-weight: 500;
         width: s(34);
@@ -383,6 +415,7 @@
         line-height: 2.3;
         letter-spacing: 0.13em;
     }
+
     @include sp {
         font-size: s(14);
         letter-spacing: 0.1em;

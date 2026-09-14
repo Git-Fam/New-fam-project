@@ -119,7 +119,7 @@ Template Path: pages/
             <span class="p-history-year__jp">昭和16年</span>
           </dt>
           <dd class="p-history-year__body">
-            <p class="p-history-year__row"><span class="p-history-year__month">3月</span><span class="p-history-year__txt">甲子園高等女学校設立認可創立者久米長八、甲子園高等女学校初代校長に就任</span></p>
+            <p class="p-history-year__row"><span class="p-history-year__month">3月</span><span class="p-history-year__txt">甲子園高等女学校設立認可<br class="pc">創立者久米長八、甲子園高等女学校初代校長に就任</span></p>
             <p class="p-history-year__row"><span class="p-history-year__month">4月</span><span class="p-history-year__txt">甲子園高等女学校開校</span></p>
           </dd>
         </div>
@@ -175,7 +175,7 @@ Template Path: pages/
           </dd>
         </div>
 
-        <div class="p-history-year__item js-fade">
+        <div class="p-history-year__item js-fade mt-b">
           <dt class="p-history-year__date">
             <span class="p-history-year__ad">1961</span>
             <span class="p-history-year__jp">昭和36年</span>
@@ -418,7 +418,7 @@ Template Path: pages/
           <dd class="p-history-year__body">
             <p class="p-history-year__row"><span class="p-history-year__month">2月</span><span class="p-history-year__txt">新型コロナウイルス感染拡大のため休学</span></p>
             <p class="p-history-year__row"><span class="p-history-year__month">3月</span><span class="p-history-year__txt">卒業式中止</span></p>
-            <p class="p-history-year__row"><span class="p-history-year__month">4月</span><span class="p-history-year__txt">入学式（二部制）45分・7時限授業開始</span></p>
+            <p class="p-history-year__row"><span class="p-history-year__month">4月</span><span class="p-history-year__txt">入学式（二部制）、45分・7時限授業開始</span></p>
           </dd>
         </div>
 
