@@ -13,7 +13,7 @@
     <meta property="og:locale" content="ja_JP" />
 
     <!-- ▼SEO -->
-    <link rel="canonical" href="<?php echo get_home_url(); ?>" />
+    <!-- <link rel="canonical" href="<?php echo get_home_url(); ?>" />
     <title><?php
     bloginfo('name');
     if (wp_title('', false)) {
@@ -48,7 +48,7 @@
     }
     ?>" />
     <meta property="twitter:description" content="<?php bloginfo('description'); ?>" />
-    <meta property="twitter:image" content="<?php echo get_template_directory_uri(); ?>/img/og.png" />
+    <meta property="twitter:image" content="<?php echo get_template_directory_uri(); ?>/img/og.png" /> -->
 
     <!-- ▼ファビコン -->
     <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri(); ?>/img/favicon/favicon-96x96.png" sizes="96x96" />

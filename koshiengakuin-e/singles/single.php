@@ -53,52 +53,53 @@
                 </a>
             </div>
 
+            <?php
+            $other_query = new WP_Query(array(
+                'post_type' => 'post',
+                'posts_per_page' => 3,
+                'post_status' => 'publish',
+                'post__not_in' => array(get_the_ID()),
+                'orderby' => 'date',
+                'order' => 'DESC',
+                'ignore_sticky_posts' => true,
+            ));
+            ?>
+            <?php if ($other_query->have_posts()): ?>
             <div class="p-single-other pc-mgt-110 sp-mgt-120">
                 <h3 class="p-single-other__title">その他の記事</h3>
 
                 <div class="p-single-other__archive">
                     <div class="p-archive-2">
-                        <a class="p-archive-2__item" href="#">
-                            <div class="p-archive-2__image pc-mgb-10"><img src="<?php echo get_template_directory_uri(); ?>/img/no-image.jpg" alt=""  loading="lazy"></div>
-                            <div class="p-archive-2__content">
-                            <div class="p-archive-2__head pc-mgb-5">
-                                <span class="p-archive-2__date font-avenir">2025.12.18</span>
-                                <div>
-                                <span class="c-label">お知らせ</span>
+                        <?php
+                        while ($other_query->have_posts()) {
+                            $other_query->the_post();
+                            $post_id = get_the_ID();
+                            $thumb_id = get_post_thumbnail_id($post_id);
+                            $thumb_url = $thumb_id ? wp_get_attachment_url($thumb_id) : get_template_directory_uri() . '/img/no-image.jpg';
+                            $post_date = get_the_date('Y.m.d');
+                            $categories = get_the_category($post_id);
+                            $category_name = !empty($categories) ? $categories[0]->name : 'お知らせ';
+                            ?>
+                            <a class="p-archive-2__item" href="<?php the_permalink(); ?>">
+                                <div class="p-archive-2__image pc-mgb-10"><img src="<?php echo esc_url($thumb_url); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy"></div>
+                                <div class="p-archive-2__content">
+                                    <div class="p-archive-2__head pc-mgb-5">
+                                        <span class="p-archive-2__date font-avenir"><?php echo esc_html($post_date); ?></span>
+                                        <div>
+                                            <span class="c-label"><?php echo esc_html($category_name); ?></span>
+                                        </div>
+                                    </div>
+                                    <span class="p-archive-2__title"><?php the_title(); ?></span>
                                 </div>
-                            </div>
-                            <span class="p-archive-2__title">全国詩の暗唱コンクール「団体賞」受賞</span>
-                            </div>
-                        </a>
-
-                        <a class="p-archive-2__item" href="#">
-                            <div class="p-archive-2__image pc-mgb-10"><img src="<?php echo get_template_directory_uri(); ?>/img/front-news_2.jpg" alt=""  loading="lazy"></div>
-                            <div class="p-archive-2__content">
-                            <div class="p-archive-2__head pc-mgb-5">
-                                <span class="p-archive-2__date font-avenir">2025.12.18</span>
-                                <div>
-                                <span class="c-label">入試情報</span>
-                                </div>
-                            </div>
-                            <span class="p-archive-2__title">教職課程履修学生が西紀北小学校（丹波篠山市）で出前授業を行いました。</span>
-                            </div>
-                        </a>
-
-                        <a class="p-archive-2__item" href="#">
-                            <div class="p-archive-2__image pc-mgb-10"><img src="<?php echo get_template_directory_uri(); ?>/img/front-news_3.jpg" alt=""  loading="lazy"></div>
-                            <div class="p-archive-2__content">
-                            <div class="p-archive-2__head pc-mgb-5">
-                                <span class="p-archive-2__date font-avenir">2025.12.18</span>
-                                <div>
-                                <span class="c-label">入試情報</span>
-                                </div>
-                            </div>
-                            <span class="p-archive-2__title">西日本難関中学校合格率ランキング第２位</span>
-                            </div>
-                        </a>
+                            </a>
+                            <?php
+                        }
+                        wp_reset_postdata();
+                        ?>
                     </div>
                 </div>
             </div>
+            <?php endif; ?>
 
         </div>
     </div>

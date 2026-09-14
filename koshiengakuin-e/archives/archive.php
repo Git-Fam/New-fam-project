@@ -44,6 +44,9 @@
                     'orderby' => 'date',
                     'order' => 'DESC',
                 );
+                if (is_category()) {
+                    $args['cat'] = get_queried_object_id();
+                }
                 $posts_query = new WP_Query($args);
                 
                 if ($posts_query->have_posts()) {
@@ -71,6 +74,8 @@
                         <?php
                     }
                     wp_reset_postdata();
+                } else {
+                    echo '<p class="p-archive__none">記事はありません。</p>';
                 }
                 ?>
             </div>
@@ -78,15 +83,17 @@
 
         <?php
         $paged = get_query_var('paged') ? get_query_var('paged') : 1;
-        $total_posts = wp_count_posts()->publish;
-        $posts_per_page = 6;
-        $total_pages = ceil($total_posts / $posts_per_page);
+        $total_pages = isset($posts_query) ? (int) $posts_query->max_num_pages : 0;
         $show_button = ($paged < $total_pages);
+        $archive_base = is_category() ? get_term_link(get_queried_object()) : home_url('/news/');
+        if (is_wp_error($archive_base) || empty($archive_base)) {
+            $archive_base = home_url('/news/');
+        }
         ?>
         
         <?php if ($show_button): ?>
         <div class="p-post__btn">
-            <a id="load-more-btn" href="<?php echo esc_url(add_query_arg('paged', $paged + 1, home_url('/news/'))); ?>" class="c-btn c-btn--fill" data-current-page="<?php echo esc_attr($paged); ?>" data-total-pages="<?php echo esc_attr($total_pages); ?>">
+            <a id="load-more-btn" href="<?php echo esc_url(add_query_arg('paged', $paged + 1, $archive_base)); ?>" class="c-btn c-btn--fill" data-current-page="<?php echo esc_attr($paged); ?>" data-total-pages="<?php echo esc_attr($total_pages); ?>">
                 <div class="c-btn__inner"><span>さらに読み込む</span></div>
             </a>
         </div>
