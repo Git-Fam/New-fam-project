@@ -298,10 +298,10 @@
 
     &.mt-b {
         @include sp {
-            margin-bottom: s(50);
+            margin-bottom: s(55);
 
             .p-history-year__date::before {
-                bottom: s(-48);
+                bottom: s(-53);
             }
         }
     }
