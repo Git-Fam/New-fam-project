@@ -9,6 +9,8 @@ if ( ! function_exists( 'koshien_render_news_items' ) ) {
         $args = array(
             'posts_per_page' => 6,
             'post_status'    => 'publish',
+            'orderby'        => 'date',
+            'order'          => 'DESC',
         );
 
         // If category identifier provided, try to resolve it to a term ID or slug.

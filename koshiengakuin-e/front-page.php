@@ -95,7 +95,12 @@
                 koshien_render_news_items( $term );
               } else {
                 // Fallback: output latest 6 posts if helper missing
-                $fallback_args = array( 'posts_per_page' => 6, 'post_status' => 'publish' );
+                $fallback_args = array(
+                  'posts_per_page' => 6,
+                  'post_status'    => 'publish',
+                  'orderby'        => 'date',
+                  'order'          => 'DESC',
+                );
                 if ( ! empty( $term ) ) {
                   // try resolving term as name/slug
                   $resolved = get_term_by( 'slug', $term, 'category' );
