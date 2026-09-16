@@ -130,7 +130,7 @@ Template Path: pages/
             <span class="p-history-year__jp">昭和23年</span>
           </dt>
           <dd class="p-history-year__body">
-            <p class="p-history-year__row"><span class="p-history-year__month">7月</span><span class="p-history-year__txt">学制改革により、中学校・高等学校と改称</span></p>
+            <p class="p-history-year__row"><span class="p-history-year__month">7月</span><span class="p-history-year__txt">学制改革により、甲子園中学校・高等学校と改称</span></p>
           </dd>
         </div>
 
@@ -140,7 +140,7 @@ Template Path: pages/
             <span class="p-history-year__jp">昭和26年</span>
           </dt>
           <dd class="p-history-year__body">
-            <p class="p-history-year__row"><span class="p-history-year__month">3月</span><span class="p-history-year__txt">学校法人甲子園学院となり、久米長八初代学院長に就任<br>甲子園学院中学校・高等学校と改称</span></p>
+            <p class="p-history-year__row"><span class="p-history-year__month">3月</span><span class="p-history-year__txt">学校法人甲子園学院となり、久米長八初代学院長校長に就任<br>甲子園学院中学校・高等学校と改称</span></p>
             <p class="p-history-year__row"><span class="p-history-year__txt">創立10周年を迎える</span></p>
           </dd>
         </div>
