@@ -119,7 +119,7 @@ Template Path: pages/
             <span class="p-history-year__jp">昭和16年</span>
           </dt>
           <dd class="p-history-year__body">
-            <p class="p-history-year__row"><span class="p-history-year__month">3月</span><span class="p-history-year__txt">甲子園高等女学校設立認可<br class="pc">創立者久米長八、甲子園高等女学校初代校長に就任</span></p>
+            <p class="p-history-year__row"><span class="p-history-year__month">3月</span><span class="p-history-year__txt">甲子園高等女学校設立認可<br>創立者久米長八、甲子園高等女学校初代校長に就任</span></p>
             <p class="p-history-year__row"><span class="p-history-year__month">4月</span><span class="p-history-year__txt">甲子園高等女学校開校</span></p>
           </dd>
         </div>
