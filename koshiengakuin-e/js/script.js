@@ -30,21 +30,6 @@ $(function () {
 			}
 		});
 
-		var appealDotCount = 4;
-		function syncAppealDots(swiper) {
-			var bullets = swiper.pagination && swiper.pagination.bullets;
-			if (!bullets || !bullets.length) return;
-			var active = swiper.realIndex % appealDotCount;
-			bullets.forEach(function(bullet, i) {
-				bullet.style.display = i < appealDotCount ? '' : 'none';
-				bullet.classList.toggle('swiper-pagination-bullet-active', i === active);
-			});
-		}
-		syncAppealDots(frontAppealSwiper);
-		frontAppealSwiper.on('slideChange', function() {
-			syncAppealDots(this);
-		});
-
 		// endress marquee is handled with CSS-only implementation
 	}
 });
