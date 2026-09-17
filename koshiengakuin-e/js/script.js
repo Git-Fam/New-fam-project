@@ -4,6 +4,7 @@ $(function () {
 	// front-appeal slider (Swiper)
 	if (typeof Swiper !== 'undefined' && document.querySelector('.p-front-appeal__swiper')) {
 		var slidesLen = document.querySelectorAll('.p-front-appeal__swiper .swiper-slide').length || 0;
+		var uniqueSlides = 3;
 		var frontAppealSwiper = new Swiper('.p-front-appeal__swiper', {
 			centeredSlides: true,
 			centeredSlidesBounds: true,
@@ -17,10 +18,10 @@ $(function () {
 			},
 			observer: true,
 			observeParents: true,
-      pagination: {
-        el: '.p-front-appeal__swiper .swiper-pagination',
-        clickable: true,
-      },
+			pagination: {
+				el: '.p-front-appeal__swiper .swiper-pagination',
+				clickable: true,
+			},
 			// responsive spacing
 			breakpoints: {
 				768: {
@@ -30,13 +31,44 @@ $(function () {
 			}
 		});
 
-		// endress marquee is handled with CSS-only implementation
+		function getAppealBullets() {
+			return document.querySelectorAll('.p-front-appeal__swiper .swiper-pagination-bullet');
+		}
+
+		function syncAppealDots(swiper) {
+			var bullets = getAppealBullets();
+			if (!bullets.length) return;
+			var active = (typeof swiper.realIndex === 'number' ? swiper.realIndex : 0) % uniqueSlides;
+			Array.prototype.forEach.call(bullets, function (bullet, i) {
+				bullet.classList.toggle('swiper-pagination-bullet-active', i === active);
+			});
+		}
+
+		Array.prototype.forEach.call(getAppealBullets(), function (bullet, i) {
+			if (i >= uniqueSlides) return;
+			bullet.addEventListener('click', function (e) {
+				e.preventDefault();
+				e.stopImmediatePropagation();
+				var group = Math.floor(frontAppealSwiper.realIndex / uniqueSlides);
+				var target = group * uniqueSlides + i;
+				if (target === frontAppealSwiper.realIndex) return;
+				frontAppealSwiper.slideToLoop(target);
+			}, true);
+		});
+
+		frontAppealSwiper.on('slideChange', function () {
+			syncAppealDots(frontAppealSwiper);
+		});
+		frontAppealSwiper.on('paginationUpdate', function () {
+			syncAppealDots(frontAppealSwiper);
+		});
+		syncAppealDots(frontAppealSwiper);
 	}
 });
 
 
 // mobile: turn .p-archive into a Swiper slider on small screens
-(function(){
+(function () {
 	var archiveSwiper = null;
 	var debounceTimer = null;
 
@@ -77,7 +109,7 @@ $(function () {
 			});
 		} else {
 			if (archiveSwiper) {
-				try { archiveSwiper.destroy(true, true); } catch(e) {}
+				try { archiveSwiper.destroy(true, true); } catch (e) { }
 				archiveSwiper = null;
 			}
 
@@ -115,7 +147,7 @@ $(function () {
 			if (isMobile) {
 				// destroy swiper if exists
 				if (eventListSwiper) {
-					try { eventListSwiper.destroy(true, true); } catch (e) {}
+					try { eventListSwiper.destroy(true, true); } catch (e) { }
 					eventListSwiper = null;
 				}
 
@@ -125,10 +157,10 @@ $(function () {
 					var wrapper = el.querySelector('.swiper-wrapper');
 					if (wrapper) {
 						var children = Array.prototype.slice.call(wrapper.children);
-						children.forEach(function(c){ el.appendChild(c); });
+						children.forEach(function (c) { el.appendChild(c); });
 						wrapper.remove();
 					}
-					el.querySelectorAll('.p-event-list__item').forEach(function(i){ i.classList.remove('swiper-slide'); });
+					el.querySelectorAll('.p-event-list__item').forEach(function (i) { i.classList.remove('swiper-slide'); });
 				}
 
 				el.classList.add('is-scrollable');
@@ -145,7 +177,7 @@ $(function () {
 					wrapper.className = 'swiper-wrapper';
 					while (el.firstChild) wrapper.appendChild(el.firstChild);
 					el.appendChild(wrapper);
-					el.querySelectorAll('.p-event-list__item').forEach(function(i){ i.classList.add('swiper-slide'); });
+					el.querySelectorAll('.p-event-list__item').forEach(function (i) { i.classList.add('swiper-slide'); });
 
 					// ensure scrollbar element exists for desktop interactions
 					if (!el.querySelector('.swiper-scrollbar')) {
@@ -182,13 +214,13 @@ $(function () {
 			}
 		}
 
-		window.addEventListener('resize', function(){ clearTimeout(window._eventListTimer); window._eventListTimer = setTimeout(initOrUpdateEventList, 150); });
+		window.addEventListener('resize', function () { clearTimeout(window._eventListTimer); window._eventListTimer = setTimeout(initOrUpdateEventList, 150); });
 		window.addEventListener('load', initOrUpdateEventList);
 		initOrUpdateEventList();
 	}
 
 	// 画面をスクロールしたら p-header の p-header--front を削除する
-	$(window).on('scroll', function() {
+	$(window).on('scroll', function () {
 		// only toggle front class on actual front page
 		if (!document.body.classList.contains('home') && !document.body.classList.contains('front-page')) return;
 
@@ -200,7 +232,7 @@ $(function () {
 	});
 
 	// js-header-trg をクリックしたら js-header-trg に is-active を付与し、p-header に is-open を付与する
-	$('.js-header-trg').on('click', function(e) {
+	$('.js-header-trg').on('click', function (e) {
 		if (e) {
 			e.preventDefault && e.preventDefault();
 			e.stopPropagation && e.stopPropagation();
@@ -232,7 +264,7 @@ $(function () {
 	});
 
 	// p-header-overlay をクリックしたら js-header-trg の is-active を削除し、p-header の is-open を削除する
-	$('.p-header-overlay').on('click', function() {
+	$('.p-header-overlay').on('click', function () {
 		$('.js-header-trg').removeClass('is-active');
 		$('.p-header').removeClass('is-open');
 		$(this).removeClass('is-active');
@@ -246,16 +278,16 @@ $(function () {
 		delete document.body.dataset.scrollY;
 	});
 
-	
+
 	// js-load-target に is-show を付与し、MW WP Form の自動挿入 <br> を削除する処理
 	function runLoadTasks() {
-		$('.js-load-target').each(function() {
+		$('.js-load-target').each(function () {
 			$(this).addClass('is-show');
 		});
 
 		// Remove automatic <br> inserted by MW WP Form
 		if (document.querySelectorAll) {
-			document.querySelectorAll('.mw_wp_form br, .mwform-checkbox-field br, .mwform-radio-field br, .mwform-checkbox-field-text br').forEach(function(el){ el.parentNode && el.parentNode.removeChild(el); });
+			document.querySelectorAll('.mw_wp_form br, .mwform-checkbox-field br, .mwform-radio-field br, .mwform-checkbox-field-text br').forEach(function (el) { el.parentNode && el.parentNode.removeChild(el); });
 		}
 	}
 
@@ -263,17 +295,17 @@ $(function () {
 	runLoadTasks();
 	$(window).on('load', runLoadTasks);
 
-		// Fade-in KV images after full page load
-		window.addEventListener('load', function(){
-			try {
-				document.querySelectorAll('.js-kv-load').forEach(function(el){ el.classList.add('is-loaded'); });
-			} catch (e) {}
-		});
-	
+	// Fade-in KV images after full page load
+	window.addEventListener('load', function () {
+		try {
+			document.querySelectorAll('.js-kv-load').forEach(function (el) { el.classList.add('is-loaded'); });
+		} catch (e) { }
+	});
+
 
 	// js-scroll-target クラスを持つ要素全てに対して、画面に表示されたら、js-scroll-target クラスを持つ要素に is-show クラスを付与する
-	$(window).on('scroll', function() {
-		$('.js-scroll-target').each(function() {
+	$(window).on('scroll', function () {
+		$('.js-scroll-target').each(function () {
 			var target = $(this).offset().top;
 			var scroll = $(window).scrollTop();
 			var windowHeight = $(window).height();
@@ -294,7 +326,7 @@ $(function () {
 		}
 
 		// js-footer-hide クラスを持つ要素全てに対して、画面をスクロールして footer までスクロールしたら、js-footer-hide クラスを持つ要素に is-hide クラスを付与する
-		$('.js-footer-hide').each(function() {
+		$('.js-footer-hide').each(function () {
 			var target = $('.p-footer-top').offset().top;
 			var scroll = $(window).scrollTop();
 			var windowHeight = $(window).height();
@@ -321,7 +353,7 @@ $(function () {
 
 
 	// .js-modal-openner をクリックしたら、data-target 属性の値を持つ .c-modal をフェードインで表示する
-	$('.js-modal-openner').on('click', function(e) {
+	$('.js-modal-openner').on('click', function (e) {
 		if (e) {
 			e.preventDefault && e.preventDefault();
 			e.stopPropagation && e.stopPropagation();
@@ -332,7 +364,7 @@ $(function () {
 		var $modal = $('#' + target);
 		if (!$modal.length) return;
 
-		$modal.fadeIn(300, function() {
+		$modal.fadeIn(300, function () {
 			$modal.addClass('is-show');
 			// lock body scroll
 			var scrollY = window.scrollY || window.pageYOffset || 0;
@@ -344,7 +376,7 @@ $(function () {
 	});
 
 	// .js-modal-close をクリックしたら、親の .c-modal をフェードアウトで非表示にする
-	$('.js-modal-close').on('click', function(e) {
+	$('.js-modal-close').on('click', function (e) {
 		if (e) {
 			e.preventDefau4lt && e.preventDefault();
 			e.stopPropagation && e.stopPropagation();
@@ -353,7 +385,7 @@ $(function () {
 		var $modal = $(this).closest('.c-modal');
 		if (!$modal.length) return;
 
-		$modal.fadeOut(300, function() {
+		$modal.fadeOut(300, function () {
 			$modal.removeClass('is-show');
 			// restore scroll position when modal closed
 			document.documentElement.classList.remove('is-fixed');

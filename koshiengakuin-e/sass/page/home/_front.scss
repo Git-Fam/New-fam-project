@@ -260,6 +260,10 @@
           background: var(--color-white);
           opacity: .5;
 
+          &:nth-child(n + 4) {
+            display: none;
+          }
+
           &.swiper-pagination-bullet-active {
             opacity: 1;
           }

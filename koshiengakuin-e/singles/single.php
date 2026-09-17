@@ -48,10 +48,21 @@
 
 
         <div class="p-single__btn pc-mgt-90 sp-mgt-50">
-            <a href="<?php echo esc_url(home_url('/news/')); ?>" class="c-btn c-btn--fill">
+            <a id="back-to-news" href="<?php echo esc_url(home_url('/news/')); ?>" class="c-btn c-btn--fill">
                 <div class="c-btn__inner"><span>一覧に戻る</span></div>
             </a>
         </div>
+        <script>
+            (function() {
+                try {
+                    var state = JSON.parse(sessionStorage.getItem('koshienNewsArchive') || 'null');
+                    if (state && state.url) {
+                        var link = document.getElementById('back-to-news');
+                        if (link) link.setAttribute('href', state.url);
+                    }
+                } catch (e) {}
+            })();
+        </script>
 
         <?php
         $other_query = new WP_Query(array(
