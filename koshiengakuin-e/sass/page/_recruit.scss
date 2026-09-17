@@ -22,6 +22,11 @@
   .p-recruit__inner {
     position: relative;
     z-index: 2;
+    padding-bottom: vwPc(125, null, 125);
+
+    @media screen and (max-width: 767px){
+      padding-bottom: 0;
+    }
   }
 
   .p-recruit__kv {
@@ -65,23 +70,21 @@
 
 
   .p-recruit-guideline {
-    border-radius: vwPc(40, null, 40) vwPc(40, null, 40) 0 0;
-    padding: vwPc(57, null, 57) vwPc(20, null, 20) vwPc(30, null, 30);
+    border-radius: vwPc(40, null, 40);
+    padding: vwPc(57, null, 57) vwPc(20, null, 20) vwPc(73, null, 73);
     background: linear-gradient(-90deg, #4a89c8 0%, #00afc7 36.95%, #4a89c8 67.47%, #8a6cc8 93.97%, #c06cb4 100%);
     max-width: 888px;
     margin-inline: auto;
 
     @include sp {
-      background: linear-gradient(-135deg,#4a89c8 0%, #00afc7 36.95%, #4a89c8 67.47%, #8a6cc8 93.97%, #c06cb4 100%);
+      background: linear-gradient(-135deg, #4a89c8 0%, #00afc7 36.95%, #4a89c8 67.47%, #8a6cc8 93.97%, #c06cb4 100%);
       border-radius: 0;
       padding: vwSp(60, null, 60) vwSp(40, null, 40);
     }
 
   }
 
-  .p-recruit-guideline__inner {
-    
-  }
+  .p-recruit-guideline__inner {}
 
   .p-recruit-guideline__text {
     text-align: center;
@@ -99,7 +102,7 @@
       }
     }
 
-    
+
   }
 
   .p-recruit-guideline__tel__inner {
@@ -143,16 +146,20 @@
     opacity: 0;
     transform: scale(1);
   }
+
   6% {
     opacity: 1;
   }
+
   70% {
     opacity: 1;
     transform: scale(1.2);
   }
+
   85% {
     opacity: 0;
   }
+
   100% {
     opacity: 0;
     transform: scale(1.2);
@@ -177,6 +184,7 @@
     height: 100%;
     background-color: rgba(#00194A, 0.2);
   }
+
   .p-recruit-bg__item {
     position: absolute;
     top: 0;
@@ -187,23 +195,23 @@
     opacity: 0;
     animation: recruitSlide 20s linear infinite;
     animation-fill-mode: both;
-  
+
     &:nth-child(1) {
       animation-delay: 0s;
     }
-  
+
     &:nth-child(2) {
       animation-delay: 4s;
     }
-  
+
     &:nth-child(3) {
       animation-delay: 8s;
     }
-  
+
     &:nth-child(4) {
       animation-delay: 12s;
     }
-  
+
     &:nth-child(5) {
       animation-delay: 16s;
     }

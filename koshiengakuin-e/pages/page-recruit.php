@@ -38,7 +38,7 @@ Template Path: pages/
 
 
     <div class="p-recruit-guideline js-scroll-target a-fadeInUp">
-      <div class="c-title-3 c-title-3--white pc-mgb-40 sp-mgb-30">
+      <div class="c-title-3 c-title-3--white pc-mgb-55 sp-mgb-30">
         <p class="c-title-3__en font-avenir">GUIDELINE</p>
         <h1 class="c-title-3__ja">応募について</h1>
       </div>
