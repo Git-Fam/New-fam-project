@@ -13,7 +13,7 @@
 
     <div class="p-front-kv__image js-load-target a-fadeInUp">
       <picture>
-        <source media="(max-width: 828px)" srcset="<?php echo get_template_directory_uri(); ?>/img/kv_sp.jpg">
+        <source media="(max-width: 828px)" srcset="<?php echo get_template_directory_uri(); ?>/img/kv_sp.webp">
         <img class="u-w100" src="<?php echo get_template_directory_uri(); ?>/img/kv.webp" alt="心と心がつながる小学校">
       </picture>
     </div>

@@ -46,6 +46,7 @@
       transition: opacity 0.6s ease;
       pointer-events: none;
     }
+
     .js-kv-load.is-loaded {
       opacity: 1;
       pointer-events: auto;
@@ -64,7 +65,7 @@
       position: absolute;
       top: vwPc(170, null, 170);
       width: 100%;
-      left:0;
+      left: 0;
 
       @include sp {
         @include fontSp(16, null, 16);
@@ -85,7 +86,7 @@
 
 
   &-qa {
-    background-image: url(../img/connected-hearts_qa_bg.jpg);
+    background-image: url(../img/connected-hearts_qa_bg.webp);
     background-size: cover;
     background-position: center;
     padding: vwPc(140, null, 140) vwPc(120, null, 120) vwPc(180, null, 180);
@@ -109,7 +110,7 @@
       letter-spacing: 0.4em;
       @include fontPc(48, null, 48);
       @include lineHeight(48, 90);
-      
+
       @include sp {
         letter-spacing: 0.2em;
         @include fontSp(26, null, 26);
@@ -119,6 +120,7 @@
         margin: 0 auto 1em;
         width: 100%;
         max-width: 83px;
+
         @include sp {
           max-width: 65px;
         }
@@ -127,7 +129,7 @@
     }
 
     &__thumb {
-      
+
       img {
         margin: 0 auto;
         max-width: 1129px;
@@ -147,11 +149,11 @@
         padding: 00 vwSp(20, null, 20);
       }
     }
-  
+
   }
 
   &-comment {
-    background: linear-gradient(-90deg,#4a89c8 0%, #00afc7 36.95%, #4a89c8 67.47%, #8a6cc8 90.64%, #c06cb4 100%);
+    background: linear-gradient(-90deg, #4a89c8 0%, #00afc7 36.95%, #4a89c8 67.47%, #8a6cc8 90.64%, #c06cb4 100%);
     padding: vwPc(68, null, 68) vwPc(75, null, 75) vwPc(97, null, 97);
 
     @include sp {
@@ -246,7 +248,7 @@
         letter-spacing: 0.05em;
         @include lineHeight(22, 33);
         margin-bottom: vwPc(10, null, 10);
-        
+
         @include sp {
           text-align: center;
           @include fontSp(18, null, 18);

@@ -16,13 +16,14 @@
       // width: vwSp(135, null, 135);
       width: vwSp(185, null, 185);
     }
-    
+
   }
 
 
   &-kv {
     position: relative;
-    background: url(../img/kv_bg.jpg) 0 0 / 100% 100% no-repeat;
+    background: url(../img/kv_bg.webp) 0 0 / 100% 100% no-repeat;
+
     @include sp {
       // background: initial;
     }
@@ -79,7 +80,7 @@
 
       @include sp {
         padding-bottom: vwSp(50, null, 50);
-        
+
       }
     }
 
@@ -89,11 +90,11 @@
       left: 0;
       width: 100%;
       height: 100%;
-      // background: url(../img/front_concept_bg.png) 0 0 / 100% 100% no-repeat;
+      // background: url(../img/front_concept_bg.webp) 0 0 / 100% 100% no-repeat;
       z-index: 1;
 
       @include sp {
-        // background: url(../img/front_concept_bg_sp.png) 0 0 / 100% 100% no-repeat;
+        // background: url(../img/front_concept_bg_sp.webp) 0 0 / 100% 100% no-repeat;
       }
     }
 
@@ -113,10 +114,10 @@
   * MARK: NEWS
   -----------------------*/
   &-news {
-    background: linear-gradient(to left,#ddf5f7 0%, #e2eff8 35.47%, #ece7f7 90.64%, #f3e7f2 100%);
+    background: linear-gradient(to left, #ddf5f7 0%, #e2eff8 35.47%, #ece7f7 90.64%, #f3e7f2 100%);
     padding: vwPc(100, null, 100) vwPc(50, null, 50);
     position: relative;
-    
+
     @include sp {
       background: linear-gradient(to bottom, #ddf5f7 0%, #e2eff8 35.47%, #ece7f7 90.64%, #f3e7f2 100%);
       padding: vwSp(88, null, 88) 0;
@@ -153,7 +154,7 @@
         &__inner {
           display: flex;
           gap: vwPc(5, null, 5);
-  
+
           @include sp {
             gap: vwSp(5, null, 5);
             // width: fit-content;
@@ -183,6 +184,7 @@
   &-appeal {
     background: linear-gradient(to left bottom, #4a89c8 0%, #00afc7 36.95%, #4a89c8 67.47%, #8a6cc8 90.64%, #c06cb4 100%);
     padding: vwPc(160, null, 160) 0 vwPc(100, null, 100);
+
     @include sp {
       padding: vwSp(83, null, 83) 0 vwSp(120, null, 120);
     }
@@ -193,12 +195,12 @@
       letter-spacing: 0.1em;
       font-weight: 300;
       @include fontPc(74, null, 74);
-      
+
       @include sp {
         @include fontSp(48, null, 48);
         @include lineHeight(48, 74);
       }
-    
+
     }
 
     &__icon {
@@ -232,7 +234,11 @@
 
       @include sp {
         padding: 0 6%;
-        .swiper-wrapper { padding: 0; }
+
+        .swiper-wrapper {
+          padding: 0;
+        }
+
         .swiper-slide {
           // width: 85%;
           // margin-right: 12px;
@@ -245,6 +251,7 @@
       .swiper-pagination {
         position: initial;
         margin-top: vwPc(28, null, 28);
+
         @include sp {
           margin-top: vwSp(14, null, 14);
         }
@@ -252,7 +259,7 @@
         .swiper-pagination-bullet {
           background: var(--color-white);
           opacity: .5;
-          
+
           &.swiper-pagination-bullet-active {
             opacity: 1;
           }
@@ -279,6 +286,7 @@
         transform: translate(-50%, -50%);
         font-weight: 300;
         width: 100%;
+
         @include sp {
           @include fontSp(43, null, 43);
           margin-bottom: vwSp(10, null, 10);
@@ -323,7 +331,7 @@
       }
 
       .p-front-banner {
-        margin-top: 0!important;
+        margin-top: 0 !important;
         width: 50%;
 
         @include sp {
@@ -340,7 +348,7 @@
     position: relative;
 
     &::before {
-      background: url(../img/icon_circle_arrow.png) 0 0 / 100% 100% no-repeat;
+      background: url(../img/icon_circle_arrow.webp) 0 0 / 100% 100% no-repeat;
       content: "";
       display: block;
       height: vwPc(52, null, 52);
@@ -358,7 +366,7 @@
       }
     }
 
-    & + & {
+    &+& {
       margin-top: vwPc(30, null, 30);
 
       @include sp {
@@ -384,13 +392,13 @@
         border-radius: vwSp(20, null, 20) vwSp(20, null, 20) 0 0;
       }
 
-      & > span {
+      &>span {
         display: block;
         text-align: center;
         letter-spacing: 0.05em;
         line-height: 1.2;
         @include fontPc(16, null, 16);
-        
+
         @include sp {
           @include fontSp(12, null, 12);
         }
@@ -398,6 +406,7 @@
         &:nth-child(1) {
           color: var(--color-thema-sub);
         }
+
         &:nth-child(2) {
           font-size: 1.75em;
           color: var(--color-base);
@@ -444,8 +453,9 @@
       margin-inline: auto;
       max-width: 936px;
 
-      & + & {
+      &+& {
         margin-top: vwPc(20, null, 20);
+
         @include sp {
           margin-top: vwSp(20, null, 20);
         }
@@ -458,8 +468,13 @@
 }
 
 @keyframes p-endress-marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* CSS marquee for endress (duplicate items required in markup) */
@@ -468,6 +483,7 @@
 
   &+.p-endress-auto-slide {
     margin-top: vwPc(30, null, 30);
+
     @include sp {
       margin-top: vwSp(14, null, 14);
     }
@@ -479,7 +495,7 @@
     align-items: center;
     animation: p-endress-marquee var(--p-endress-duration, 20s) linear infinite;
     will-change: transform;
-    transform: translate3d(0,0,0);
+    transform: translate3d(0, 0, 0);
 
     @include sp {
       gap: vwSp(14, null, 14);
@@ -487,7 +503,9 @@
   }
 
   &:hover {
-    &__track { animation-play-state: paused; }
+    &__track {
+      animation-play-state: paused;
+    }
   }
 
   &--reverse {
@@ -511,4 +529,3 @@
     }
   }
 }
-

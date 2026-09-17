@@ -58,10 +58,11 @@
 
   &-head {
     text-align: center;
-    
+
     &__icon {
       margin: 0 auto vwPc(85, null, 85);
       width: vwPc(149, null, 149);
+
       @include sp {
         width: vwSp(100, null, 100);
         margin: 0 auto vwSp(40, null, 40);
@@ -116,13 +117,15 @@
 .p-image-box {
   display: flex;
   justify-content: center;
+
   @include sp {
     flex-direction: column;
-  
+
   }
 
   &:nth-child(odd) {
     flex-direction: row-reverse;
+
     @include sp {
       flex-direction: column;
     }
@@ -130,13 +133,14 @@
 
   &__img {
     width: 50%;
+
     @include sp {
       width: 100%;
     }
   }
 
   &__inner {
-    background: url(../img/icon_heart.png) center / calc(460% / 6.8) auto no-repeat;
+    background: url(../img/icon_heart.webp) center / calc(460% / 6.8) auto no-repeat;
     width: 50%;
     @include fontPc(18, null, 18);
     @include lineHeight(18, 38);
@@ -145,7 +149,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-  
+
     @include sp {
       aspect-ratio: 1 / 1;
       background-position: center;
@@ -163,10 +167,11 @@
     @include sp {
       width: 100%;
     }
-    
+
   }
-  
+
   &__title {
+
     // width: vwPc(480, null, 480);
     @include sp {
       margin-inline: auto;
@@ -189,8 +194,9 @@
     gap: vwSp(40, null, 40) 0;
   }
 
-  & > li {
+  &>li {
     width: calc(50% - vwPc(25, null, 25));
+
     @include sp {
       width: 100%;
     }

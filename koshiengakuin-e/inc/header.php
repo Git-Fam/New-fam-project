@@ -1,9 +1,11 @@
-<header class="p-header <?php if ( is_home() && ! is_archive() ) { echo 'p-header--front'; } ?>">
-  
+<header class="p-header <?php if (is_home() && ! is_archive()) {
+                          echo 'p-header--front';
+                        } ?>">
+
   <div class="p-header__inner">
 
     <div class="p-header__logo">
-      <a href="<?php echo home_url(); ?>" class="fade"><img src="<?php echo get_template_directory_uri(); ?>/img/header_logo.png" alt="甲子園学院小学校 KOSHIEN GAKUIN ELEMENTARY SCHOOL"></a>
+      <a href="<?php echo home_url(); ?>" class="fade"><img src="<?php echo get_template_directory_uri(); ?>/img/header_logo.webp" alt="甲子園学院小学校 KOSHIEN GAKUIN ELEMENTARY SCHOOL"></a>
     </div>
 
     <div class="p-header__content">
@@ -20,11 +22,11 @@
     <div class="p-header-nav__inner">
       <div class="p-header-nav__top">
         <a href="<?php echo home_url(); ?>/brand/" class="p-header-nav__top__link fade">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/header_nav_1.png" alt="">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/header_nav_1.webp" alt="">
           <span class="p-header-icon-text">ブランドコンセプト</span>
         </a>
         <a href="<?php echo home_url(); ?>/connected-hearts/" class="p-header-nav__top__link fade">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/header_nav_2.png" alt="">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/header_nav_2.webp" alt="">
           <span class="p-header-icon-text">心がつながった児童たち</span>
         </a>
       </div>
@@ -47,19 +49,19 @@
             <li><a href="<?php echo home_url(); ?>/contact/" class="p-header-icon-text">お問い合わせ</a></li>
           </ul>
         </div>
-  
+
         <div class="p-header-nav__bottom__info">
           <ul class="p-header-nav__bottom__info__sns">
             <li><a href="https://line.me/R/ti/p/@971ursgn" target="_blank" class="is-line fade"></a></li>
             <li><a href="https://www.instagram.com/koshiengakuin_els?igsh=MTJ3cWNocDhteTFuZw==" target="_blank" class="is-instagram fade"></a></li>
             <li><a href="https://www.youtube.com/@koshiengakuin/shorts" target="_blank" class="is-youtube fade"></a></li>
           </ul>
-  
+
           <ul class="p-header-nav__bottom__info__nav">
             <!-- <li><a href=""><span>緊急対応について</span></a></li> -->
             <li><a href="<?php echo home_url(); ?>/privacy-policy/"><span>個人情報保護方針</span></a></li>
           </ul>
-  
+
           <p class="p-header-nav__bottom__info__copyright">Copyright © KOSHIEN GAKUIN. All Rights Reserved.</p>
         </div>
       </div>
@@ -75,7 +77,7 @@
 
 
 <?php
-  // 入試情報のモーダル
+// 入試情報のモーダル
 ?>
 <div class="c-modal" id="modal-newinfo">
   <div class="c-modal__inner">
@@ -99,7 +101,7 @@
 </div>
 
 <?php
-  // 転入学のモーダル
+// 転入学のモーダル
 ?>
 <div class="c-modal" id="modal-transfer">
   <div class="c-modal__inner">

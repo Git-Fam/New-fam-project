@@ -30,7 +30,7 @@
     }
 
     .p-after-school__body {
-      background: url(../img/after-school_bg.jpg) 0 0 / 100% 100% no-repeat;
+      background: url(../img/after-school_bg.webp) 0 0 / 100% 100% no-repeat;
       height: 100%;
       padding: vwPc(55, null, 55) vwPc(44, null, 44);
 
@@ -46,10 +46,10 @@
       @include sp {
         width: vwSp(135, null, 135);
       }
-      
+
       &.m-type-2 {
         width: vwPc(280, null, 280);
-  
+
         @include sp {
           width: vwSp(200, null, 200);
         }
@@ -64,7 +64,7 @@
         @include fontSp(15, null, 15);
       }
     }
-    
+
 
     .p-after-school__grid {
       display: grid;
@@ -96,8 +96,9 @@
           @include fontSp(14, null, 14);
         }
 
-        & > li {
+        &>li {
           display: flex;
+
           @include sp {
             flex-direction: column;
           }
@@ -110,7 +111,7 @@
             }
           }
 
-          & > span {
+          &>span {
             &:nth-child(1) {
               white-space: nowrap;
               width: vwPc(55, null, 55);

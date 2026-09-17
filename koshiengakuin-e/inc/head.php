@@ -15,55 +15,42 @@
     <!-- ▼SEO -->
     <!-- <link rel="canonical" href="<?php echo get_home_url(); ?>" />
     <title><?php
-    bloginfo('name');
-    if (wp_title('', false)) {
-        echo ' | ' . wp_title('', false);
-    }
-    ?></title>
+            bloginfo('name');
+            if (wp_title('', false)) {
+                echo ' | ' . wp_title('', false);
+            }
+            ?></title>
     <meta name="title" content="<?php
-    bloginfo('name');
-    if (wp_title('', false)) {
-        echo ' | ' . wp_title('', false);
-    }
-    ?>" />
+                                bloginfo('name');
+                                if (wp_title('', false)) {
+                                    echo ' | ' . wp_title('', false);
+                                }
+                                ?>" />
     <meta name="description" content="<?php bloginfo('description'); ?>" />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="<?php echo get_home_url(); ?>" />
     <meta property="og:title" content="<?php
-    bloginfo('name');
-    if (wp_title('', false)) {
-        echo ' | ' . wp_title('', false);
-    }
-    ?>" />
+                                        bloginfo('name');
+                                        if (wp_title('', false)) {
+                                            echo ' | ' . wp_title('', false);
+                                        }
+                                        ?>" />
     <meta property="og:description" content="<?php bloginfo('description'); ?>" />
-    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/img/og.png" />
+    <meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/img/og.webp" />
 
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="<?php echo get_home_url(); ?>" />
     <meta property="twitter:title" content="<?php
-    bloginfo('name');
-    if (wp_title('', false)) {
-        echo ' | ' . wp_title('', false);
-    }
-    ?>" />
+                                            bloginfo('name');
+                                            if (wp_title('', false)) {
+                                                echo ' | ' . wp_title('', false);
+                                            }
+                                            ?>" />
     <meta property="twitter:description" content="<?php bloginfo('description'); ?>" />
-    <meta property="twitter:image" content="<?php echo get_template_directory_uri(); ?>/img/og.png" /> -->
+    <meta property="twitter:image" content="<?php echo get_template_directory_uri(); ?>/img/og.webp" /> -->
 
-    <!-- ▼ファビコン -->
-    <link rel="icon" type="image/png" href="<?php echo get_template_directory_uri(); ?>/img/favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="<?php echo get_template_directory_uri(); ?>/img/favicon/favicon.svg" />
-    <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/img/favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri(); ?>/img/favicon/apple-touch-icon.png" />
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-
-
-    <!-- ▼クロールして欲しくない -->
-    <!-- <meta name="robots" content="noindex,nofollow"> -->
-
-    <!-- ▼テーマカラー -->
-    <!-- <meta name="theme-color" content="#e9c931"> -->
+    
 
     <!-- ▼CSS -->
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/reset.css?ver=1.0.0">

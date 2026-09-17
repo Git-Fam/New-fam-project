@@ -5,9 +5,10 @@
 ----------------------- */
 
 .p-admission {
-  background: url(../img/admission_bg.jpg) 0 0 / cover no-repeat;
+  background: url(../img/admission_bg.webp) 0 0 / cover no-repeat;
+
   @include sp {
-    background: url(../img/admission_bg_sp.jpg) 0 0 / cover no-repeat;
+    background: url(../img/admission_bg_sp.webp) 0 0 / cover no-repeat;
   }
 
   &-kv {
@@ -83,9 +84,9 @@
           display: none;
         }
 
-        & > li {
+        &>li {
 
-          & + li {
+          &+li {
             margin-top: vwPc(25, null, 25);
 
             @include sp {
@@ -93,7 +94,7 @@
             }
           }
 
-          & > a {
+          &>a {
             color: var(--color-white);
             @include fontPc(16, null, 16);
             letter-spacing: 0.18em;
@@ -101,8 +102,7 @@
             align-items: center;
             gap: vwPc(10, null, 10);
 
-            @include sp {
-            }
+            @include sp {}
 
             &::before {
               content: "";
@@ -115,9 +115,9 @@
 
           }
 
-          
+
         }
-        
+
       }
 
       &__btns {
@@ -129,11 +129,11 @@
 
         .c-btn {
           width: vwPc(260, null, 260);
-          
+
           @include sp {
             width: 100%;
           }
-          
+
           .c-btn__inner {
             text-align: center;
 
@@ -144,7 +144,7 @@
         }
 
       }
-      
+
     }
 
   }
@@ -191,11 +191,12 @@
         display: flex;
         align-items: flex-end;
         gap: vwPc(10, null, 10);
+
         @include sp {
           display: none;
         }
 
-        & > p {
+        &>p {
           line-height: 1;
 
           &:nth-child(1) {
@@ -226,19 +227,19 @@
           flex-wrap: wrap;
           gap: vwSp(2, null, 2) vwSp(10, null, 10);
           justify-content: center;
-          
+
         }
 
-        & > li {
+        &>li {
 
-          & + li {
-            
+          &+li {
+
             @include pc {
               margin-top: vwPc(25, null, 25);
             }
           }
 
-          & > a {
+          &>a {
             color: var(--color-base);
             @include fontPc(16, null, 16);
             display: inline-flex;
@@ -267,9 +268,9 @@
 
           }
 
-          
+
         }
-        
+
       }
 
       &__btn {
@@ -278,20 +279,20 @@
         @include sp {
           display: none;
         }
-        
+
         .c-btn {
           width: 100%;
 
           .c-btn__inner {
             text-align: center;
-  
+
             span {
               width: 100%;
             }
           }
         }
       }
-  
+
     }
 
     .p-admission-content-main {
@@ -325,11 +326,9 @@
         gap: vwSp(20, null, 30);
       }
 
-      & > li {
-
-      }
+      &>li {}
     }
-    
+
     .p-admission-index__link {
       display: block;
       position: relative;
@@ -355,14 +354,14 @@
         border-radius: vwSp(20, null, 20) vwSp(20, null, 20) 0 0;
       }
 
-      & > span {
+      &>span {
         display: block;
         text-align: center;
         letter-spacing: 0.05em;
         line-height: 1.2;
         @include fontPc(14, null, 14);
         white-space: nowrap;
-        
+
         @include sp {
           @include fontSp(12, null, 12);
         }
@@ -370,6 +369,7 @@
         &:nth-child(1) {
           color: var(--color-thema-sub);
         }
+
         &:nth-child(2) {
           font-size: 1.35em;
           color: var(--color-base);
@@ -414,13 +414,13 @@
         border-radius: vwSp(20, null, 20) vwSp(20, null, 20) 0 0;
       }
 
-      & > span {
+      &>span {
         display: block;
         text-align: center;
         letter-spacing: 0.05em;
         line-height: 1.2;
         @include fontPc(16, null, 16);
-        
+
         @include sp {
           @include fontSp(12, null, 12);
         }
@@ -449,12 +449,12 @@
   .p-admission-child__inner {
     margin-inline: auto;
     max-width: 995px;
-    padding-inline: vwPc(50, null, 50); 
-    background: url(../img/admission-child_bg.jpg) 0 0 / cover no-repeat;
+    padding-inline: vwPc(50, null, 50);
+    background: url(../img/admission-child_bg.webp) 0 0 / cover no-repeat;
 
     @include sp {
-      padding-inline: vwSp(20, null, 20); 
-      background: url(../img/admission-child_bg_sp.jpg) bottom center / 102% 102% no-repeat;
+      padding-inline: vwSp(20, null, 20);
+      background: url(../img/admission-child_bg_sp.webp) bottom center / 102% 102% no-repeat;
       min-height: 100vh;
     }
 
@@ -495,7 +495,7 @@
     @include lineHeight(18, 38);
     letter-spacing: 0.05em;
     text-align: center;
-    
+
     @include sp {
       @include fontSp(14, null, 14);
       text-align: left;
@@ -506,6 +506,7 @@
     max-width: 770px;
     margin-inline: auto;
     position: relative;
+
     @include sp {
       border-radius: vwSp(10, null, 10);
       padding: 0 vwSp(20, null, 20);
@@ -522,7 +523,7 @@
     &.is-finished {
       &::after {
         content: "";
-        background: url(../img/icon_finish.png) 0 0 / 100% auto no-repeat;
+        background: url(../img/icon_finish.webp) 0 0 / 100% auto no-repeat;
         width: vwPc(118, null, 118);
         height: vwPc(118, null, 118);
         position: absolute;
@@ -555,7 +556,7 @@
     }
 
     .p-admission-child-table__inner {
-      background-color: var(--color-white);    
+      background-color: var(--color-white);
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 0 vwPc(40, null, 40);
@@ -569,7 +570,7 @@
         border-radius: 0 0 vwSp(10, null, 10) vwSp(10, null, 10);
       }
 
-      & > li {
+      &>li {
         display: flex;
         justify-content: space-between;
 
@@ -577,7 +578,7 @@
           gap: vwSp(10, null, 10);
         }
 
-        & > div {
+        &>div {
           @include fontPc(16, null, 16);
           letter-spacing: 0.05em;
 
@@ -595,6 +596,7 @@
               width: vwSp(60, null, 60);
             }
           }
+
           &:nth-child(2) {
             flex: 1;
             @include fontPc(21, null, 21);
@@ -619,7 +621,7 @@
         // width: 100%;
         min-width: vwSp(240, null, 240);
       }
-      
+
       .c-btn__inner {
         text-align: center;
 
@@ -638,6 +640,7 @@
   .p-admission-child__btn {
     .c-btn {
       max-width: vwPc(267, null, 267);
+
       @include sp {
         max-width: vwSp(188, null, 188);
       }
@@ -713,7 +716,7 @@
     color: var(--color-thema-sub);
     margin-bottom: .25em;
     line-height: 1;
-    
+
     @include sp {
       @include fontSp(20, null, 20);
       margin-bottom: .5em;
@@ -755,7 +758,7 @@
   }
 
   .p-price-table__list {
-    & > li {
+    &>li {
       display: flex;
       justify-content: space-between;
       gap: 1em;
@@ -819,8 +822,9 @@
 
   .p-label-list__inner {
     background-color: var(--color-white);
-    padding: vwPc(30, null, 30) vwPc(25, null, 25) vwPc(40, null, 40); 
+    padding: vwPc(30, null, 30) vwPc(25, null, 25) vwPc(40, null, 40);
     height: 100%;
+
     @include sp {
       padding: vwSp(36, null, 36) vwSp(20, null, 20) vwSp(40, null, 40);
     }
@@ -854,7 +858,7 @@
         font-size: vwSp(15, null, 15);
       }
 
-      & > span {
+      &>span {
         font-size: calc(25em / 19);
 
         @include sp {
@@ -866,7 +870,7 @@
   }
 
   .p-label-list__list {
-    & > li {
+    &>li {
       @include fontPc(15, null, 15);
       display: flex;
       letter-spacing: 0.1em;
@@ -885,7 +889,7 @@
         }
       }
 
-      & + li {
+      &+li {
         margin-top: .75em;
       }
     }
@@ -928,14 +932,14 @@
     text-orientation: upright;
     margin-right: vwPc(65, null, 65);
   }
-  
+
   .p-info-box__title {
     color: #9E82D3;
     margin-bottom: .25em;
   }
 
   .p-info-box__list {
-    & > li {
+    &>li {
       display: flex;
       letter-spacing: 0.1em;
       line-height: 1.8;
@@ -953,7 +957,7 @@
         }
       }
 
-      & + li {
+      &+li {
         margin-top: .5em;
       }
     }
@@ -971,7 +975,8 @@
   width: 100%;
   overflow: hidden;
 
-  .p-event-list__item.swiper-slide, .p-event-list__item {
+  .p-event-list__item.swiper-slide,
+  .p-event-list__item {
     position: relative;
     width: vwPc(395, null, 395);
     padding: vwPc(20, null, 20) 0 0 0;
@@ -984,7 +989,7 @@
     &.is-finished {
       &::after {
         content: "";
-        background: url(../img/icon_finish.png) 0 0 / 100% auto no-repeat;
+        background: url(../img/icon_finish.webp) 0 0 / 100% auto no-repeat;
         width: vwPc(118, null, 118);
         height: vwPc(118, null, 118);
         position: absolute;
@@ -1024,7 +1029,7 @@
 
   .p-event-list-table {
 
-    & > li {
+    &>li {
       display: flex;
       @include fontPc(15, null, 15);
 
@@ -1058,21 +1063,23 @@
       padding-bottom: 8px;
       scroll-snap-type: x mandatory;
     }
+
     &.is-scrollable .p-event-list__item {
       flex: 0 0 auto;
       scroll-snap-align: start;
     }
+
     // handle case where swiper-wrapper remains present
     &.is-scrollable .swiper-wrapper {
       display: flex;
       gap: 16px;
       flex-wrap: nowrap;
     }
+
     &.is-scrollable .swiper-wrapper .p-event-list__item {
       flex: 0 0 auto;
     }
   }
 
-  
-}
 
+}

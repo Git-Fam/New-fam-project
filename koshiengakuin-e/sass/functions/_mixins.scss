@@ -75,7 +75,7 @@ $sp: 828px; // スマホ
 }
 
 // ↓CSSでは
-// @include imgContain('example.jpg');
+// @include imgContain('example.webp');
 
 // background-cover
 @mixin imgCover($img) {
@@ -86,7 +86,7 @@ $sp: 828px; // スマホ
 }
 
 // ↓CSSでは
-// @include imgCover('example.jpg');
+// @include imgCover('example.webp');
 
 // backgroundIcon-contain
 @mixin iconContain($img) {
@@ -118,9 +118,10 @@ $screenSizeSP: 414;
 	$rate: calc(100 / $viewport);
 
 	// guard: if size is not a number or is 0, return 0px
-	@if meta.type-of($size) != "number" or $size == 0 {
+	@if meta.type-of($size) !="number" or $size ==0 {
 		@return 0px;
 	}
+
 	@return $rate * $size * 1vw;
 }
 
@@ -129,10 +130,12 @@ $screenSizeSP: 414;
 @function pm($size, $maxSize: ($size * 4 / 5), $viewport: $screenSizePC) {
 	$rate: calc(100 / $viewport);
 	$calculatedSize: 0px;
+
 	// guard: avoid invalid multiplication when $size is not numeric or is 0
-	@if meta.type-of($size) == "number" and $size != 0 {
+	@if meta.type-of($size)=="number" and $size !=0 {
 		$calculatedSize: $rate * $size * 1vw;
 	}
+
 	@return max(#{$calculatedSize}, #{$maxSize}px);
 }
 
@@ -144,10 +147,12 @@ $screenSizeSP: 414;
 @function pmin($size, $maxSize: ($size * 4 / 5), $viewport: $screenSizePC) {
 	$rate: calc(100 / $viewport);
 	$calculatedSize: 0px;
+
 	// guard: avoid invalid multiplication when $size is not numeric or is 0
-	@if meta.type-of($size) == "number" and $size != 0 {
+	@if meta.type-of($size)=="number" and $size !=0 {
 		$calculatedSize: $rate * $size * 1vw;
 	}
+
 	@return min(#{$calculatedSize}, #{$maxSize}px);
 }
 
@@ -156,22 +161,20 @@ $screenSizeSP: 414;
 // or
 // font-size: pmin(-50);
 
-@function pcl(
-	$minSize: (
-		$size * 4 / 5,
+@function pcl($minSize: ($size * 4 / 5,
 	),
 	$size,
-	$maxSize: (
-		$size * 4 / 5,
+	$maxSize: ($size * 4 / 5,
 	),
-	$viewport: $screenSizePC
-) {
+	$viewport: $screenSizePC) {
 	$rate: calc(100 / $viewport);
 	$calculatedSize: 0px;
+
 	// guard: avoid invalid multiplication when $size is not numeric or is 0
-	@if meta.type-of($size) == "number" and $size != 0 {
+	@if meta.type-of($size)=="number" and $size !=0 {
 		$calculatedSize: $rate * $size * 1vw;
 	}
+
 	@return clamp(#{$minSize}px, $calculatedSize, #{$maxSize}px);
 }
 
@@ -184,9 +187,10 @@ $screenSizeSP: 414;
 	$rate: calc(100 / $viewport);
 
 	// guard: if size is not a number or is 0, return 0px
-	@if meta.type-of($size) != "number" or $size == 0 {
+	@if meta.type-of($size) !="number" or $size ==0 {
 		@return 0px;
 	}
+
 	@return $rate * $size * 1vw;
 }
 
@@ -195,10 +199,12 @@ $screenSizeSP: 414;
 @function sm($size, $maxSize: ($size * 4 / 5), $viewport: $screenSizeSP) {
 	$rate: calc(100 / $viewport);
 	$calculatedSize: 0px;
+
 	// guard: avoid invalid multiplication when $size is not numeric or is 0
-	@if meta.type-of($size) == "number" and $size != 0 {
+	@if meta.type-of($size)=="number" and $size !=0 {
 		$calculatedSize: $rate * $size * 1vw;
 	}
+
 	@return min(#{$calculatedSize}, #{$maxSize}px);
 }
 
@@ -210,10 +216,12 @@ $screenSizeSP: 414;
 @function smax($size, $maxSize: ($size * 4 / 5), $viewport: $screenSizeSP) {
 	$rate: calc(100 / $viewport);
 	$calculatedSize: 0px;
+
 	// guard: avoid invalid multiplication when $size is not numeric or is 0
-	@if meta.type-of($size) == "number" and $size != 0 {
+	@if meta.type-of($size)=="number" and $size !=0 {
 		$calculatedSize: $rate * $size * 1vw;
 	}
+
 	@return max(#{$calculatedSize}, #{$maxSize}px);
 }
 
@@ -222,22 +230,20 @@ $screenSizeSP: 414;
 // or
 // font-size: smax(50);
 
-@function scl(
-	$minSize: (
-		$size * 4 / 5,
+@function scl($minSize: ($size * 4 / 5,
 	),
 	$size,
-	$maxSize: (
-		$size * 4 / 5,
+	$maxSize: ($size * 4 / 5,
 	),
-	$viewport: $screenSizeSP
-) {
+	$viewport: $screenSizeSP) {
 	$rate: calc(100 / $viewport);
 	$calculatedSize: 0px;
+
 	// guard: avoid invalid multiplication when $size is not numeric or is 0
-	@if meta.type-of($size) == "number" and $size != 0 {
+	@if meta.type-of($size)=="number" and $size !=0 {
 		$calculatedSize: $rate * $size * 1vw;
 	}
+
 	@return clamp(#{$minSize}px, $calculatedSize, #{$maxSize}px);
 }
 
@@ -270,7 +276,7 @@ $screenSizeSP: 414;
 //   background-repeat: no-repeat;
 // }
 // ↓CSSでは
-// @include img('example.jpg');
+// @include img('example.webp');
 
 
 
@@ -284,23 +290,24 @@ $screenSizeSP: 414;
 @function fontsizePc($size, $minSize: null, $maxSize: null, $viewport: $screenSizePC) {
 	$rate: calc(100 / $viewport);
 	$calculatedSize: 0px;
+
 	// guard: avoid invalid multiplication when $size is not numeric or is 0
-	@if meta.type-of($size) == "number" and $size != 0 {
+	@if meta.type-of($size)=="number" and $size !=0 {
 		$calculatedSize: $rate * $size * 1vw;
 	}
 
 	// 両方未指定 → vw 計算値をそのまま返す
-	@if $minSize == null and $maxSize == null {
+	@if $minSize ==null and $maxSize ==null {
 		@return $calculatedSize;
 	}
 
 	// 最小のみ未指定 → 最大と比較して小さい方を返す
-	@if $minSize == null and $maxSize != null {
+	@if $minSize ==null and $maxSize !=null {
 		@return min(#{$calculatedSize}, #{$maxSize}px);
 	}
 
 	// 最大のみ未指定 → 最小と比較して大きい方を返す
-	@if $minSize != null and $maxSize == null {
+	@if $minSize !=null and $maxSize ==null {
 		@return max(#{$calculatedSize}, #{$minSize}px);
 	}
 
@@ -339,27 +346,31 @@ $screenSizeSP: 414;
 @function vwPc($size, $minSize: null, $maxSize: null, $viewport: $screenSizePC) {
 	$rate: calc(100 / $viewport);
 	$calculatedSize: 0px;
+
 	// guard: avoid invalid multiplication when $size is not numeric or is 0
-	@if meta.type-of($size) == "number" and $size != 0 {
+	@if meta.type-of($size)=="number" and $size !=0 {
 		$calculatedSize: $rate * $size * 1vw;
 	}
 
 	// 両方未指定 → vw 計算値をそのまま返す
-	@if $minSize == null and $maxSize == null {
+	@if $minSize ==null and $maxSize ==null {
 		@return $calculatedSize;
 	}
+
 	// 最小のみ未指定 → 最大と比較して小さい方を返す
-	@if $minSize == null and $maxSize != null {
+	@if $minSize ==null and $maxSize !=null {
 		@return min(#{$calculatedSize}, #{$maxSize}px);
 	}
+
 	// 最大のみ未指定 → 最小と比較して大きい方を返す
-	@if $minSize != null and $maxSize == null {
+	@if $minSize !=null and $maxSize ==null {
 		@return max(#{$calculatedSize}, #{$minSize}px);
 	}
 
 	// 両方指定 → clamp を使用
 	@return clamp(#{$minSize}px, $calculatedSize, #{$maxSize}px);
 }
+
 // 使い方
 // - vwPc($size)
 //   → ビューポートに基づく vw 計算値を返します（最小・最大制約なし）。
@@ -388,23 +399,24 @@ $screenSizeSP: 414;
 @function fontsizeSp($size, $minSize: null, $maxSize: null, $viewport: $screenSizeSP) {
 	$rate: calc(100 / $viewport);
 	$calculatedSize: 0px;
- 	// guard: avoid invalid multiplication when $size is not numeric or is 0
- 	@if meta.type-of($size) == "number" and $size != 0 {
+
+	// guard: avoid invalid multiplication when $size is not numeric or is 0
+	@if meta.type-of($size)=="number" and $size !=0 {
 		$calculatedSize: $rate * $size * 1vw;
 	}
 
 	// 両方未指定 → vw 計算値をそのまま返す
-	@if $minSize == null and $maxSize == null {
+	@if $minSize ==null and $maxSize ==null {
 		@return $calculatedSize;
 	}
 
 	// 最小のみ未指定 → 最大と比較して小さい方を返す
-	@if $minSize == null and $maxSize != null {
+	@if $minSize ==null and $maxSize !=null {
 		@return min(#{$calculatedSize}, #{$maxSize}px);
 	}
 
 	// 最大のみ未指定 → 最小と比較して大きい方を返す
-	@if $minSize != null and $maxSize == null {
+	@if $minSize !=null and $maxSize ==null {
 		@return max(#{$calculatedSize}, #{$minSize}px);
 	}
 
@@ -444,27 +456,27 @@ $screenSizeSP: 414;
 @function vwSp($size, $minSize: null, $maxSize: null, $viewport: $screenSizeSP) {
 	$rate: calc(100 / $viewport);
 	$calculatedSize: 0px;
- 	// guard: avoid invalid multiplication when $size is not numeric or is 0
- 	@if meta.type-of($size) == "number" and $size != 0 {
+
+	// guard: avoid invalid multiplication when $size is not numeric or is 0
+	@if meta.type-of($size)=="number" and $size !=0 {
 		$calculatedSize: $rate * $size * 1vw;
 	}
 
 	// 両方未指定 → vw 計算値をそのまま返す
-	@if $minSize == null and $maxSize == null {
+	@if $minSize ==null and $maxSize ==null {
 		@return $calculatedSize;
 	}
 
 	// 最小のみ未指定 → 最大と比較して小さい方を返す
-	@if $minSize == null and $maxSize != null {
+	@if $minSize ==null and $maxSize !=null {
 		@return min(#{$calculatedSize}, #{$maxSize}px);
 	}
 
 	// 最大のみ未指定 → 最小と比較して大きい方を返す
-	@if $minSize != null and $maxSize == null {
+	@if $minSize !=null and $maxSize ==null {
 		@return max(#{$calculatedSize}, #{$minSize}px);
 	}
 
 	// 両方指定 → clamp を使用
 	@return clamp(#{$minSize}px, $calculatedSize, #{$maxSize}px);
 }
-

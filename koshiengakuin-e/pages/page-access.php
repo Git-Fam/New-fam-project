@@ -36,15 +36,15 @@ Template Path: pages/
         </div>
 
         <div class="p-access-route__scroll sp-mgb-20 a-">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/access_scroll.png" alt="scroll"  class="left-right">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/access_scroll.webp" alt="scroll" class="left-right">
         </div>
 
         <div class="p-access-route__content">
           <div class="p-access-route__inner">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/access_map.jpg" alt="路線図" />
+            <img src="<?php echo get_template_directory_uri(); ?>/img/access_map.webp" alt="路線図" />
           </div>
         </div>
-        
+
       </section>
     </div>
   </section>

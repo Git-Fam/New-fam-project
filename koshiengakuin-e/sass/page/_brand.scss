@@ -5,15 +5,15 @@
 ----------------------- */
 
 .p-brand {
-  
+
   &__intro {
-    background-image: url(../img/brand_bg_2.jpg);
+    background-image: url(../img/brand_bg_2.webp);
     background-size: 100% 100%;
     background-repeat: repeat;
     background-position: bottom center;
-  
+
     @include sp {
-      background-image: url(../img/brand_bg_2_sp.jpg);
+      background-image: url(../img/brand_bg_2_sp.webp);
       background-size: 100% 100%;
       background-repeat: repeat;
       background-position: bottom center;
@@ -22,14 +22,15 @@
 
 
   &-kv {
-    background-image: url(../img/brand_bg.jpg);
+    background-image: url(../img/brand_bg.webp);
     background-size: vwPc(1366) auto;
     background-repeat: no-repeat;
     background-position: bottom center;
     padding: vwPc(240, null, 240) 0 vwPc(920);
+
     @include sp {
       padding: 0 0 vwSp(520);
-      background-image: url(../img/brand_bg_sp.jpg);
+      background-image: url(../img/brand_bg_sp.webp);
     }
 
     &__title {
@@ -55,6 +56,7 @@
 
       &__scroll {
         display: none;
+
         @include sp {
           display: block;
           position: absolute;
@@ -301,7 +303,7 @@
 
   &-voice {
     color: var(--color-white);
-    
+
     &__inner {
       position: relative;
       display: flex;
@@ -320,8 +322,7 @@
       height: 100vh;
       z-index: 0;
 
-      @include sp {
-      }
+      @include sp {}
 
       img {
         min-width: 100vw;
@@ -347,6 +348,7 @@
 
       &__mask {
         display: none;
+
         @include sp {
           position: absolute;
           display: block;
@@ -377,7 +379,7 @@
       margin-bottom: vwPc(40, null, 40);
       position: relative;
       z-index: 1;
-      
+
       @include sp {
         letter-spacing: 0.1em;
         @include fontSp(26, null, 26);
@@ -389,14 +391,14 @@
       margin-top: min(4.0995607613vw, 56px);
       display: flex;
       flex-direction: column;
-      justify-content: flex-end; 
+      justify-content: flex-end;
       padding-left: min(23.4260vw, 320px);
-      align-items: flex-start; 
+      align-items: flex-start;
 
       @include sp {
-      margin-top: vwSp(51, null, 51);
-      width: fit-content;
-      margin-left: auto; 
+        margin-top: vwSp(51, null, 51);
+        width: fit-content;
+        margin-left: auto;
       }
 
       &__position {
@@ -431,7 +433,7 @@
       letter-spacing: 0.13em;
       position: relative;
       z-index: 1;
-      
+
       @include sp {
         letter-spacing: 0.15em;
         @include fontSp(15, null, 15);

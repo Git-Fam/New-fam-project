@@ -46,10 +46,10 @@ Template Path: pages/
       <div class="p-recruit-guideline__inner">
         <p class="p-recruit-guideline__text">教職員採用に関するお問い合わせは、<br class="pc-none">本校教頭・澤井までお電話ください。</p>
         <p class="p-recruit-guideline__tel pc-mgt-20 sp-mgt-30">
-          <div class="p-recruit-guideline__tel__inner">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/icon_tel.png" alt="TEL">
-            <a href="tel:0798-67-2366" class="font-avenir-demibold">0798-67-2366</a>
-          </div>
+        <div class="p-recruit-guideline__tel__inner">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/icon_tel.webp" alt="TEL">
+          <a href="tel:0798-67-2366" class="font-avenir-demibold">0798-67-2366</a>
+        </div>
         </p>
       </div>
     </div>
@@ -60,32 +60,32 @@ Template Path: pages/
 <div class="p-recruit-bg">
   <div class="p-recruit-bg__item">
     <picture>
-      <source srcset="<?php echo get_template_directory_uri(); ?>/img/recruit_bg_1_sp.jpg" media="(max-width: 767px)">
-      <img src="<?php echo get_template_directory_uri(); ?>/img/recruit_bg_1.jpg" alt="" loading="lazy" aria-hidden="true" class="u-w100">
+      <source srcset="<?php echo get_template_directory_uri(); ?>/img/recruit_bg_1_sp.webp" media="(max-width: 767px)">
+      <img src="<?php echo get_template_directory_uri(); ?>/img/recruit_bg_1.webp" alt="" loading="lazy" aria-hidden="true" class="u-w100">
     </picture>
   </div>
   <div class="p-recruit-bg__item">
     <picture>
-      <source srcset="<?php echo get_template_directory_uri(); ?>/img/recruit_bg_2_sp.jpg" media="(max-width: 767px)">
-      <img src="<?php echo get_template_directory_uri(); ?>/img/recruit_bg_2.jpg" alt="" loading="lazy" aria-hidden="true" class="u-w100">
+      <source srcset="<?php echo get_template_directory_uri(); ?>/img/recruit_bg_2_sp.webp" media="(max-width: 767px)">
+      <img src="<?php echo get_template_directory_uri(); ?>/img/recruit_bg_2.webp" alt="" loading="lazy" aria-hidden="true" class="u-w100">
     </picture>
   </div>
   <div class="p-recruit-bg__item">
     <picture>
-      <source srcset="<?php echo get_template_directory_uri(); ?>/img/recruit_bg_3_sp.jpg" media="(max-width: 767px)">
-      <img src="<?php echo get_template_directory_uri(); ?>/img/recruit_bg_3.jpg" alt="" loading="lazy" aria-hidden="true" class="u-w100">
+      <source srcset="<?php echo get_template_directory_uri(); ?>/img/recruit_bg_3_sp.webp" media="(max-width: 767px)">
+      <img src="<?php echo get_template_directory_uri(); ?>/img/recruit_bg_3.webp" alt="" loading="lazy" aria-hidden="true" class="u-w100">
     </picture>
   </div>
   <div class="p-recruit-bg__item">
     <picture>
-      <source srcset="<?php echo get_template_directory_uri(); ?>/img/recruit_bg_4_sp.jpg" media="(max-width: 767px)">
-      <img src="<?php echo get_template_directory_uri(); ?>/img/recruit_bg_4.jpg" alt="" loading="lazy" aria-hidden="true" class="u-w100">
+      <source srcset="<?php echo get_template_directory_uri(); ?>/img/recruit_bg_4_sp.webp" media="(max-width: 767px)">
+      <img src="<?php echo get_template_directory_uri(); ?>/img/recruit_bg_4.webp" alt="" loading="lazy" aria-hidden="true" class="u-w100">
     </picture>
   </div>
   <div class="p-recruit-bg__item">
     <picture>
-      <source srcset="<?php echo get_template_directory_uri(); ?>/img/recruit_bg_5_sp.jpg" media="(max-width: 767px)">
-      <img src="<?php echo get_template_directory_uri(); ?>/img/recruit_bg_5.jpg" alt="" loading="lazy" aria-hidden="true" class="u-w100">
+      <source srcset="<?php echo get_template_directory_uri(); ?>/img/recruit_bg_5_sp.webp" media="(max-width: 767px)">
+      <img src="<?php echo get_template_directory_uri(); ?>/img/recruit_bg_5.webp" alt="" loading="lazy" aria-hidden="true" class="u-w100">
     </picture>
   </div>
 
