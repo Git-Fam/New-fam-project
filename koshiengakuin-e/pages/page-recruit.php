@@ -48,7 +48,7 @@ Template Path: pages/
         <p class="p-recruit-guideline__tel pc-mgt-20 sp-mgt-30">
         <div class="p-recruit-guideline__tel__inner">
           <img src="<?php echo get_template_directory_uri(); ?>/img/icon_tel.webp" alt="TEL">
-          <a href="tel:0798-67-2366" class="font-avenir-demibold">0798-67-2366</a>
+          <a href="tel:0798-67-2366" class="font-avenir-demibold" style="font-weight: 600;" >0798-67-2366</a>
         </div>
         </p>
       </div>
