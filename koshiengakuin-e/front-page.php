@@ -391,7 +391,7 @@
         <img class="u-w100 js-scroll-target a-fadeInUp" src="<?php echo get_template_directory_uri(); ?>/img/front_link_2.webp" alt="資料請求をする">
       </picture>
     </a>
-    <a class="p-front-links__item fade" href="https://koshiengakuin.voiceados02.com/vision/" target="_blank">
+    <a class="p-front-links__item fade" href="https://koshiengakuin.jp/vision/" target="_blank">
       <picture>
         <source media="(max-width: 828px)" srcset="<?php echo get_template_directory_uri(); ?>/img/front_link_3_sp.webp">
         <img class="u-w100 js-scroll-target a-fadeInUp" src="<?php echo get_template_directory_uri(); ?>/img/front_link_3.webp" alt="99 years vision">
