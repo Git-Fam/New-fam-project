@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-BCFHE8T43B"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-BCFHE8T43B");
+    </script>
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", "zewa6ut66g");
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>しごピタ｜スワイプでわかる適職診断（無料）</title>
+    <meta
+      name="description"
+      content="画像を選ぶだけ。約2分で、あなたの仕事タイプがわかる無料の適職診断「しごピタ」。直感でスワイプするだけ。"
+    />
+    <!-- リンクを貼った時（LINE・X・DM等）に出るプレビューの設定。画像は assets/ogp.png（1200×630）。差し替える時はキャッシュ対策でファイル名を変える -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="しごピタ" />
+    <meta property="og:title" content="しごピタ｜スワイプでわかる適職診断（無料）" />
+    <meta
+      property="og:description"
+      content="画像を選ぶだけ。約2分で、あなたの仕事タイプがわかる無料の適職診断。"
+    />
+    <meta property="og:url" content="https://shigopita.jp/" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:image" content="https://shigopita.jp/assets/ogp.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://shigopita.jp/assets/ogp.png" />
+    <link rel="canonical" href="https://shigopita.jp/" />
+    <!-- ファビコン -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <!-- 検索エンジンに「しごピタ」がこのサイトの名前だと伝える構造化データ -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://shigopita.jp/#website",
+            "url": "https://shigopita.jp/",
+            "name": "しごピタ",
+            "alternateName": ["しごピタ 適職診断", "shigopita", "シゴピタ"],
+            "inLanguage": "ja"
+          },
+          {
+            "@type": "WebApplication",
+            "@id": "https://shigopita.jp/#app",
+            "url": "https://shigopita.jp/",
+            "name": "しごピタ",
+            "alternateName": "しごピタ 適職診断",
+            "description": "画像を選ぶだけ。約2分で、あなたの仕事タイプがわかる無料の適職診断。",
+            "applicationCategory": "LifestyleApplication",
+            "operatingSystem": "Web",
+            "inLanguage": "ja",
+            "isPartOf": { "@id": "https://shigopita.jp/#website" },
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
+          }
+        ]
+      }
+    </script>
+    <link rel="stylesheet" href="./css/reset.css?v=20260824-ui-fix" />
+    <link rel="stylesheet" href="./css/styles.css?v=20261001-img-share" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="./config.js"></script>
+    <script
+      type="module"
+      src="./src/app.js?v=20261001-img-share"
+    ></script>
+  </head>
+  <body>
+    <main id="app">
+      <!-- class="screen" と data-screen="lp" は画面切り替えでJS使用中 -->
+      <section class="screen lp-screen" data-screen="lp">
+        <div class="experience-shell lp-shell">
+          <div class="lp-header">
+            <p class="lp-badge">キャリア診断 byしごピタ</p>
+            <h1>
+              あなたの<br /><span class="lp-title-accent"
+                >可能性</span>を発見しよう
+            </h1>
+            <p>スワイプでわかる、あなたの仕事タイプ。</p>
+          </div>
+
+          <!-- lp-orb を写真カード3枚に差し替え。画像は後で src を差し替え -->
+          <div class="lp-cards" aria-hidden="true">
+            <span class="lp-glow lp-glow--a"></span>
+            <span class="lp-glow lp-glow--b"></span>
+
+            <!--
+              装飾（矢印・キラキラ）placeholder
+              ↓ここに画像を差し込んでください（imgタグでもbackground-imageでもOK）
+              位置とサイズは各 .lp-deco--* クラスで調整済みです。
+              lp-twinkle クラスがついているので、画像を入れるだけで
+              キラキラ瞬くアニメーションが自動で付きます。
+            -->
+            <span class="lp-deco lp-deco--arrow lp-deco--arrow-top lp-twinkle">
+              <img src="./assets/figma/arrow-top.svg" alt="" />
+            </span>
+            <span class="lp-deco lp-deco--arrow lp-deco--arrow-bottom lp-twinkle">
+              <img src="./assets/figma/arrow-bottom.svg" alt="" />
+            </span>
+            <span class="lp-deco lp-deco--sparkle lp-deco--sparkle-1 lp-twinkle">
+              <img src="./assets/figma/sparkle-1.svg" alt="" />
+            </span>
+            <span class="lp-deco lp-deco--sparkle lp-deco--sparkle-2 lp-twinkle">
+              <img src="./assets/figma/sparkle-2.svg" alt="" />
+            </span>
+            <span class="lp-deco lp-deco--sparkle lp-deco--sparkle-3 lp-twinkle">
+              <img src="./assets/figma/sparkle-3.svg" alt="" />
+            </span>
+            <span class="lp-deco lp-deco--sparkle lp-deco--sparkle-4 lp-twinkle">
+              <img src="./assets/figma/sparkle-4.svg" alt="" />
+            </span>
+             <span class="lp-deco lp-deco--sparkle lp-deco--sparkle-5 lp-twinkle">
+              <img src="./assets/figma/sparkle-5.svg" alt="" />
+            </span>
+            <span class="lp-deco lp-deco--dot lp-deco--dot-1 lp-twinkle">
+              <img src="./assets/figma/dot-1.svg" alt="" />
+            </span>
+            <span class="lp-deco lp-deco--dot lp-deco--dot-2 lp-twinkle">
+              <img src="./assets/figma/dot-2.svg" alt="" />
+            </span>
+
+            <div class="lp-card lp-card--back">
+              <img src="./assets/figma/topcard-a.webp" alt="" />
+            </div>
+            <div class="lp-card lp-card--mid">
+              <img src="./assets/figma/topcard-b.webp" alt="" />
+            </div>
+            <div class="lp-card lp-card--front">
+              <img src="./assets/figma/topcard-c.webp" alt="" />
+            </div>
+            <div class="lp-card-actions">
+              <span class="lp-card-btn lp-card-btn--no"
+                ><img src="./assets/figma/pc-x.svg" alt=""
+              /></span>
+              <span class="lp-card-btn lp-card-btn--yes"
+                ><img src="./assets/figma/pc-heart.svg" alt=""
+              /></span>
+            </div>
+          </div>
+
+          <div class="lp-bottom">
+            <ul class="lp-features">
+              <li class="lp-feature">
+                <span class="lp-feature-icon"
+                  ><img src="./assets/figma/top-icon-a.svg" alt=""
+                /></span>
+                <p>
+                  <strong id="lpQuestionCount">40</strong>枚の画像<br />を選択
+                </p>
+              </li>
+              <li class="lp-feature">
+                <span class="lp-feature-icon"
+                  ><img src="./assets/figma/top-icon-b.svg" alt=""
+                /></span>
+                <p id="">診断時間<br />約2分</p>
+              </li>
+              <li class="lp-feature">
+                <span class="lp-feature-icon">
+                  <img src="./assets/figma/top-icon-c.svg" alt="" />
+                </span>
+                <p>AIがあなたの<br />適職を分析</p>
+              </li>
+            </ul>
+            <div class="hero-actions">
+              <!-- startFromHero jsで使用中 -->
+              <button class="primary-button" id="startFromHero" type="button">
+                診断スタート！
+              </button>
+            </div>
+            <div class="lp-signal" aria-label="診断データ">
+              <img src="./assets/figma/pc-dot.svg" alt="" />
+              <!-- lpCompareCount jsで使用中 -->
+              <span
+                ><strong id="lpCompareCount"><span class="ninzu"></span></strong
+                >人が診断済み</span
+              >
+              <!-- lpJobCount jsで使用中。LPには表示しないがJS更新対象として保持 -->
+              <span class="visually-hidden"
+                >紹介可能求人 <strong id="lpJobCount">12</strong>件</span
+              >
+            </div>
+            <nav class="legal-links" aria-label="法務リンク">
+              <a href="./terms.html" target="_blank" rel="noopener">利用規約</a>
+              <a href="./privacy.html" target="_blank" rel="noopener"
+                >プライバシーポリシー</a
+              >
+            </nav>
+          </div>
+        </div>
+      </section>
+
+      <!-- class="screen" と data-screen="swipe" は画面切り替えでJS使用中 -->
+      <section class="screen swipe-screen" data-screen="swipe" hidden>
+        <div class="swipe-shell experience-shell">
+          <!-- swipeNeonFrame jsで使用中：スペシャルクエスチョンの時だけ表示するネオン枠 -->
+          <div class="neon-frame" id="swipeNeonFrame" hidden></div>
+
+          <!-- sqTransition jsで使用中：スペシャルクエスチョンの出入りで使う場面転換の演出 -->
+          <div class="sq-transition" id="sqTransition" hidden aria-hidden="true">
+            <div class="sq-transition__layer"></div>
+            <div class="sq-transition__panel sq-transition__panel--top"></div>
+            <div class="sq-transition__panel sq-transition__panel--bottom"></div>
+            <div class="sq-transition__ripple"></div>
+            <div class="sq-transition__ripple sq-transition__ripple--2"></div>
+            <div class="sq-transition__label">
+              <strong>SPECIAL QUESTION</strong>
+              <i></i>
+            </div>
+          </div>
+
+          <header class="swipe-top">
+            <div class="progress-header">
+              <!-- progressHint jsで使用中 -->
+              <!-- <p id="progressHint">直感で選ぶだけ</p> -->
+              <!-- progressText jsで使用中 -->
+              <p id="progressText">1 / 40</p>
+            </div>
+            <div class="progress-track" aria-hidden="true">
+              <!-- progressFill jsで使用中 -->
+              <span id="progressFill"></span>
+            </div>
+            <!-- specialQuestionHeader jsで使用中：スペシャルクエスチョンの時だけ表示 -->
+            <div class="special-header" id="specialQuestionHeader" hidden>
+              <span class="sq-badge">SPECIAL QUESTION</span>
+              <div class="sq-title-wrap">
+                <h2 id="specialQuestionHeaderTitle"></h2>
+              </div>
+            </div>
+          </header>
+
+          <!-- cardStack jsでカードを差し込み。内部生成クラスは src/app.js の cardTemplate も参照 -->
+          <div class="card-stack" id="cardStack" aria-live="polite"></div>
+
+          <div class="swipe-actions" aria-label="回答操作">
+            <!-- swipeNo jsで使用中 -->
+            <button
+              class="icon-button no-button"
+              id="swipeNo"
+              type="button"
+              aria-label="違う"
+            >
+              <img src="./assets/figma/pc-x.svg" alt="" />
+            </button>
+            <!-- swipeYes jsで使用中 -->
+            <button
+              class="icon-button yes-button"
+              id="swipeYes"
+              type="button"
+              aria-label="好き"
+            >
+              <img src="./assets/figma/pc-heart.svg" alt="" />
+            </button>
+          </div>
+
+          <!-- <div class="swipe-hint" aria-hidden="true">
+            <span class="swipe-hint-arrow">←</span>
+            <span class="swipe-hint-text">左右にスワイプ！</span>
+            <span class="swipe-hint-arrow">→</span>
+          </div> -->
+
+          <!-- <div class="keyboard-nav-guide" aria-hidden="true">
+            <span class="key-cap">←</span>
+            <span>キーでパス</span>
+            <span class="key-cap">→</span>
+            <span>キーでセレクト</span>
+          </div> -->
+        </div>
+      </section>
+
+      <!-- class="screen" と data-screen="analysis" は画面切り替えでJS使用中 -->
+      <section
+        class="screen compact-screen analysis-screen"
+        data-screen="analysis"
+        hidden
+      >
+        <div class="app-shell experience-shell analysis-shell">
+          <div class="analysis-header">
+            <!-- analysis-orb → analysis-card に変更（本体は動かさず、背後の分身カードが扇状に開閉してシャッフルを表現） -->
+            <div class="analysis-card" aria-hidden="true">
+              <img class="card-glow" src="./assets/figma/analysis-glow.webp" alt="" />
+              <span class="card-ghost card-ghost--l3"
+                ><span class="ghost-shake"
+                  ><img src="./assets/figma/analysis-ghost-l3.webp" alt=""
+                /></span
+              ></span>
+              <span class="card-ghost card-ghost--l2"
+                ><span class="ghost-shake"
+                  ><img src="./assets/figma/analysis-ghost-l2.webp" alt=""
+                /></span
+              ></span>
+              <span class="card-ghost card-ghost--l1"
+                ><span class="ghost-shake"
+                  ><img src="./assets/figma/analysis-ghost-l1.webp" alt=""
+                /></span
+              ></span>
+              <span class="card-ghost card-ghost--r1"
+                ><span class="ghost-shake"
+                  ><img src="./assets/figma/analysis-ghost-r1.webp" alt=""
+                /></span
+              ></span>
+              <span class="card-ghost card-ghost--r2"
+                ><span class="ghost-shake"
+                  ><img src="./assets/figma/analysis-ghost-r2.webp" alt=""
+                /></span
+              ></span>
+              <span class="card-ghost card-ghost--r3"
+                ><span class="ghost-shake"
+                  ><img src="./assets/figma/analysis-ghost-r3.webp" alt=""
+                /></span
+              ></span>
+              <div class="card-face">
+                <img
+                  class="card-front-img"
+                  src="./assets/figma/analysis-card-front.webp"
+                  alt=""
+                />
+                <!-- analysisCardIcon jsで使用中：通常はキラキラ、完了時にチェックへ差し替え -->
+                <img
+                  class="card-icon"
+                  id="analysisCardIcon"
+                  src="./assets/figma/analysis-star.webp"
+                  alt=""
+                />
+              </div>
+            </div>
+            <h2 id="analysisTitle">あなたの選択を分析しています<span class="dots"><span>.</span><span>.</span><span>.</span></span></h2>
+          </div>
+
+           <!-- compareCount jsで使用中 -->
+          <p class="analysis-compare" id="analysisRotator">回答パターンを分析中…</p>
+
+          <div class="analysis-progress" aria-live="polite">
+             <div class="analysis-progress-track" aria-hidden="true">
+              <!-- analysisProgressFill jsで使用中 -->
+              <span id="analysisProgressFill"></span>
+            </div>
+            <div class="analysis-progress-meta">
+              <!-- analysisProgressPercent jsで使用中 -->
+              <strong id="analysisProgressPercent">0%</strong>
+               <!-- analysisProgressLabel jsで使用中 -->
+              <span style="padding-bottom: 10px; color:#92989F;" id="analysisProgressLabel">選択傾向を読み込み中</span>
+            </div>
+          </div>
+
+          <!-- analysis-check → analysis-steps に変更（アイコン+リング+点線の3ステップ表示） -->
+          <div class="analysis-steps" id="analysisSteps">
+            <div class="a-step" data-step="1">
+              <span class="a-step-icon"
+                ><img src="./assets/figma/step-data.svg" alt=""
+              /></span>
+              <p>選択データを<br />読み込み中</p>
+            </div>
+            <span class="a-step-connector"></span>
+            <div class="a-step" data-step="2">
+              <span class="a-step-icon"
+                ><img src="./assets/figma/step-brain.svg" alt=""
+              /></span>
+              <p>思考パターンを<br />分析中</p>
+            </div>
+            <span class="a-step-connector"></span>
+            <div class="a-step" data-step="3">
+              <span class="a-step-icon"
+                ><img src="./assets/figma/step-target.svg" alt=""
+              /></span>
+              <p>求人を<br />マッチング中</p>
+            </div>
+          </div>
+
+          <div class="analysis-result-action is-visible">
+            <!-- analysisResultButton jsで使用中。分析中はミント/押せない、完了でグリーン/押せる -->
+            <button
+              class="primary-button"
+              id="analysisResultButton"
+              type="button"
+              disabled
+            >
+              診断結果を見る →
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- class="screen" と data-screen="result" は画面切り替えでJS使用中 -->
+      <section class="screen result-screen" data-screen="result" hidden>
+        <div class="result-bg-deco" id="resultBgDeco" aria-hidden="true"></div>
+        <div class="result-layout">
+          <!-- resultCard jsでグラデーション色設定に使用中 -->
+          <article class="result-card specimen-card" id="resultCard">
+            <!-- ヒーロー部（カンプ準拠） -->
+            <div class="result-hero">
+              <div class="result-rank">
+                <span class="result-rank-label">上位</span>
+                <!-- sameTypePercent jsで使用中（上位◯%として表示） -->
+                <span class="result-rank-num" id="sameTypePercent">6</span>
+                <span class="result-rank-unit">%</span>
+              </div>
+              <p class="result-rank-caption">18,265人中の希少タイプ</p>
+
+              <p class="result-hero-eyebrow">あなたは</p>
+              <!-- resultType jsで使用中 -->
+              <h1 class="result-hero-name" id="resultType">アイデアプロデューサー</h1>
+
+              <!-- resultHeroImage jsで使用中：タップで拡大表示（ライトボックス）を開く -->
+              <button
+                class="result-hero-image"
+                id="resultHeroImage"
+                type="button"
+                aria-label="キャラクター画像を拡大して見る"
+              >
+                <!-- hero-image-shadow：浮いて見えるよう画像の下に置く影 -->
+                <div class="hero-image-shadow" aria-hidden="true"></div>
+                <div class="hero-image-float">
+                  <div class="hero-image-inner">
+                    <div class="hero-image-face hero-image-front">
+                      <!-- resultCharacterImage jsで使用中：タイプごとのキャラ画像を差し込む -->
+                      <img id="resultCharacterImage" src="" alt="" hidden />
+                    </div>
+                    <div class="hero-image-face hero-image-back">
+                      <img src="./assets/figma/hero-card-back.webp" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </button>
+
+              <!-- resultCopy jsで使用中 -->
+              <p class="result-hero-tagline" id="resultCopy">人との対話から新しい価値を生み出すタイプ。</p>
+            </div>
+
+            <section class="result-section result-strengths">
+              <h3>💎 YOUR TOP 3 TALENTS<small class="section-jp">あなたの才能 TOP3</small></h3>
+              <!-- strengthList jsで使用中 -->
+              <ol class="talent-list" id="strengthList"></ol>
+            </section>
+
+            <!-- resultDescriptionSection：取扱説明書。以前はhiddenだったが常時表示に変更 -->
+            <section class="result-section result-manual">
+              <h3>📖 YOUR MANUAL<small class="section-jp">あなたの取扱説明書</small></h3>
+              <!-- resultDescription jsで使用中 -->
+              <p class="result-description" id="resultDescription"></p>
+            </section>
+
+            <!-- resultWeaponSection：実は、ここがあなたの武器（弱みの再解釈） -->
+            <section class="result-section result-weapon">
+              <h3>🔄 YOUR HIDDEN WEAPON<small class="section-jp">実は、ここがあなたの武器</small></h3>
+              <!-- weaponFlip jsで使用中：弱み→武器のbefore/after表示 -->
+              <div class="weapon-flip" id="weaponFlip">
+                <span class="weapon-before" id="resultWeaponBefore"></span>
+                <span class="weapon-arrow" aria-hidden="true">→</span>
+                <span class="weapon-after" id="resultWeaponAfter"></span>
+              </div>
+              <p id="resultWeapon"></p>
+            </section>
+
+            <!-- resultEnvironmentSection：才能が開花する場所 -->
+            <section class="result-section result-environment">
+              <h3>🌱 WHERE YOU SHINE<small class="section-jp">才能が開花する場所</small></h3>
+              <!-- resultBestEnvironment jsで使用中 -->
+              <p id="resultBestEnvironment"></p>
+            </section>
+
+            <!-- resultDnaMeterSection：あなたの働き方DNA（5軸メーター）。以前はhiddenだったが常時表示に変更 -->
+            <section class="result-section result-dna-meter">
+              <h3>🧬 YOUR WORK DNA<small class="section-jp">あなたの働き方DNA</small></h3>
+              <!-- axisBars jsで使用中（新エンジン時は5軸DNA、旧エンジン時は6軸のフォールバック） -->
+              <div class="axis-bars" id="axisBars"></div>
+            </section>
+
+            <!-- 結果をシェア（カンプ準拠） -->
+            <div class="result-share-panel">
+              <p class="result-share-label">結果をシェア →</p>
+              <div class="result-share-btns">
+                <!-- shareNative jsで使用中：画像付きで共有できる端末だけ表示する -->
+                <button class="result-share-btn share-native" id="shareNative" type="button" aria-label="画像付きでシェア" hidden>
+                  <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8 15.8 6.4M8.2 13.2l7.6 4.4"/></svg>
+                </button>
+                <button class="result-share-btn share-tiktok" id="shareTiktok" type="button" aria-label="TikTokでシェア">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M16.5 3c.3 2 1.6 3.6 3.5 3.9v2.6c-1.3.1-2.5-.2-3.6-.8v5.9c0 3.3-2.5 5.4-5.3 5.4-2.7 0-4.8-2-4.8-4.7 0-2.8 2.3-4.8 5.2-4.5v2.7c-.4-.1-.8-.2-1.2-.1-1 .1-1.6.9-1.5 1.9.1 1 .9 1.6 1.9 1.5 1-.1 1.6-.9 1.6-2V3h2.2z"/></svg>
+                </button>
+                <button class="result-share-btn share-x" id="shareXRound" type="button" aria-label="Xでシェア">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M17.5 3h3l-6.6 7.5L21.7 21h-6l-4.7-6.1L5.5 21h-3l7-8L2.3 3h6.1l4.2 5.6L17.5 3zm-1 16h1.6L7.5 4.7H5.8L16.5 19z"/></svg>
+                </button>
+                <button class="result-share-btn share-line-round" id="shareLineRound" type="button" aria-label="LINEでシェア">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 3C6.9 3 2.75 6.34 2.75 10.46c0 3.69 3.29 6.78 7.74 7.37.3.06.71.2.81.46.09.24.06.6.03.84l-.13.79c-.04.24-.19.92.81.5s5.35-3.15 7.3-5.4c1.35-1.48 1.99-2.98 1.99-4.56C21.25 6.34 17.1 3 12 3zM8.09 12.9H6.24a.4.4 0 0 1-.4-.4V9.03a.4.4 0 0 1 .8 0v3.07h1.45a.4.4 0 0 1 0 .8zm1.6-.4a.4.4 0 0 1-.8 0V9.03a.4.4 0 0 1 .8 0v3.47zm4.13 0a.4.4 0 0 1-.28.38.4.4 0 0 1-.44-.14l-1.78-2.42v2.18a.4.4 0 0 1-.8 0V9.03a.4.4 0 0 1 .72-.24l1.78 2.42V9.03a.4.4 0 0 1 .8 0v3.47zm2.68-2.14a.4.4 0 0 1 0 .8h-1.05v.55h1.05a.4.4 0 0 1 0 .79h-1.45a.4.4 0 0 1-.4-.4V9.03a.4.4 0 0 1 .4-.4h1.45a.4.4 0 0 1 0 .8h-1.05v.53h1.05z"/></svg>
+                </button>
+                <button class="result-share-btn share-copy" id="shareCopy" type="button" aria-label="リンクをコピー">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                </button>
+              </div>
+            </div>
+
+
+            <section class="result-section result-jobs">
+              <h3>💼 SUITABILITY INDEX<small class="section-jp">あなたと相性のいい仕事</small></h3>
+              <!-- jobList jsで使用中 -->
+              <ul class="job-list" id="jobList"></ul>
+            </section>
+
+            <section
+              class="result-section result-hidden-data"
+              aria-hidden="true"
+            >
+              <h3>おすすめ業界</h3>
+              <!-- industryList jsで使用中 -->
+              <ul class="tag-list" id="industryList"></ul>
+            </section>
+
+            <!-- saveNotice jsで使用中 -->
+            <p class="save-notice result-hidden-data" id="saveNotice"></p>
+          </article>
+
+          <section
+            class="result-offer-card"
+            id="resultOffer"
+            aria-label="求人導線"
+          >
+            <div class="jobs-hit-header">
+              <p class="jobs-hit-eyebrow">MATCHING JOBS</p>
+              <p class="jobs-hit-count">
+                <!-- jobCount jsで使用中 -->
+                <span class="jobs-hit-num" id="jobCount">27</span
+                ><span class="jobs-hit-unit">件</span
+                ><span class="jobs-hit-tail">の求人がヒット</span>
+              </p>
+              <p class="jobs-hit-caption">
+                <span class="jobs-hit-pulse" aria-hidden="true"></span>
+                あなた専用の求人が見つかりました
+              </p>
+            </div>
+
+            <!-- matchJobList jsで求人カードを差し込み -->
+            <div class="match-job-list" id="matchJobList"></div>
+
+            <!-- highMatchCount はJS更新対象として保持（非表示） -->
+            <span class="visually-hidden"
+              >マッチ度90%以上 <strong id="highMatchCount">4</strong>件</span
+            >
+
+            <!-- LINE誘導（カンプ準拠）-->
+            <div class="line-lead">
+              <h2 class="line-lead-title">続きはLINEで<br />受け取る</h2>
+              <ul class="line-lead-features">
+                <li>
+                  <span class="line-lead-check" aria-hidden="true">✓</span>
+                  <span
+                    >あなたのタイプ「<span id="lineLeadType">アイデアプロデューサー</span>」の詳細</span
+                  >
+                </li>
+                <li>
+                  <span class="line-lead-check" aria-hidden="true">✓</span>
+                  <span
+                    >マッチ度の高い求人<span id="lineLeadJobCount">27</span>件を全て公開</span
+                  >
+                </li>
+                <li>
+                  <span class="line-lead-check" aria-hidden="true">✓</span>
+                  <span>非公開求人の紹介</span>
+                </li>
+                <li>
+                  <span class="line-lead-check" aria-hidden="true">✓</span>
+                  <span>登録は数秒で完了</span>
+                </li>
+                <li>
+                  <span class="line-lead-check" aria-hidden="true">✓</span>
+                  <span>完全無料！</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- lineCta jsで使用中 -->
+            <button class="line-button" id="lineCta" type="button">
+              <img src="./assets/figma/jobs-message-circle.svg" alt="" />
+              <span id="lineCtaText">友だち追加で今すぐ結果を見る</span>
+            </button>
+            <!-- jobLeadCopy jsでLINE連携エラー表示に使用中 -->
+            <p id="jobLeadCopy" aria-live="polite" hidden></p>
+            <p class="line-note">友だち追加後、すぐに結果が届きます</p>
+            <p class="privacy-note">
+              <a href="./privacy.html" target="_blank" rel="noopener"
+                >個人情報の取扱</a
+              >
+            </p>
+          </section>
+
+          <div class="result-tertiary-actions">
+            <!-- retryResult jsで使用中 -->
+            <button class="retry-button" id="retryResult" type="button">
+              <span class="retry-icon" aria-hidden="true">↻</span>
+              <span>もう一度診断する</span>
+            </button>
+          </div>
+
+          <p class="result-brand">キャリア診断 byしごピタ</p>
+        </div>
+      </section>
+      <!-- imageLightbox jsで使用中：キャラ画像タップ時の拡大表示。
+           どの画面（screen）にも属させず、mainの直下に置く（画面切り替えで一緒に隠れないように） -->
+      <div class="image-lightbox" id="imageLightbox" hidden>
+        <div class="image-lightbox__backdrop" id="imageLightboxBackdrop"></div>
+        <button
+          class="image-lightbox__close"
+          id="imageLightboxClose"
+          type="button"
+          aria-label="閉じる"
+        >
+          ×
+        </button>
+        <img class="image-lightbox__img" id="imageLightboxImg" src="" alt="" />
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# http でアクセスされたら https（wwwなし）へ
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://shigopita.jp/$1 [R=301,L]
+
+# www 付きでアクセスされたら wwwなしへ統一
+RewriteCond %{HTTP_HOST} ^www\.shigopita\.jp$ [NC]
+RewriteRule ^(.*)$ https://shigopita.jp/$1 [R=301,L]
+
+SetEnvIf Request_URI ".*" Ngx_Cache_NoCacheMode=off
+SetEnvIf Request_URI ".*" Ngx_Cache_AllCacheMode

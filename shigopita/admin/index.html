@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>AIキャリア診断 Admin</title>
+    <link rel="stylesheet" href="../css/reset.css?v=20260824-ui-fix" />
+    <link rel="stylesheet" href="../css/styles.css?v=20260824-ui-fix" />
+    <link rel="stylesheet" href="./css/admin.css?v=20260821-ai-layout" />
+    <script src="./config.js"></script>
+    <script type="module" src="./admin-login.js?v=20260925-16type-fix3"></script>
+  </head>
+  <body>
+    <!-- adminLoginScreen/adminLoginForm/adminPasswordInput/adminLoginStatus は管理画面ログインでJS使用中 -->
+    <section class="admin-login-screen" id="adminLoginScreen">
+      <form class="admin-login-card" id="adminLoginForm">
+        <p class="eyebrow">Admin</p>
+        <h1>管理画面ログイン</h1>
+        <p>管理用パスワードを入力してください。</p>
+        <label>
+          管理パスワード
+          <input id="adminPasswordInput" type="password" autocomplete="current-password" />
+        </label>
+        <button class="primary-button" type="submit">ログイン</button>
+        <p class="admin-status" id="adminLoginStatus" role="status"></p>
+      </form>
+    </section>
+
+    <!-- adminAppMount はログイン成功後に管理画面HTMLを差し込むためJSで使用中 -->
+    <div id="adminAppMount" hidden></div>
+  </body>
+</html>

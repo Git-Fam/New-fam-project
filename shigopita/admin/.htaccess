@@ -1,0 +1,5 @@
+
+AuthUserFile "/home/fminc/shigopita.jp/htpasswd/admin/.htpasswd"
+AuthName "Member Site"
+AuthType BASIC
+require valid-user
