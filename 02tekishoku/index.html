@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>適職診断｜職業名を隠して、仕事の場面から考える｜しごピタ</title>
+<meta name="description" content="適職診断とは何か、結果をどう使うかをやさしく解説。職業名のない仕事の場面を眺めて「気になるところ」を考え、40枚の画像をスワイプする無料の適職診断「しごピタ」（約2分・全16タイプ）へ進めます。">
+<link rel="canonical" href="https://tekishoku.shigopita.jp/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="しごピタ">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="適職診断｜職業名を隠して、仕事の場面から考える｜しごピタ">
+<meta property="og:description" content="職業名のない仕事の場面を眺めて、気になるところから考える。40枚の画像をスワイプする無料の適職診断「しごピタ」へ。">
+<meta property="og:url" content="https://tekishoku.shigopita.jp/">
+<meta property="og:image" content="https://shigopita.jp/assets/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://shigopita.jp/assets/ogp.png">
+<script>document.documentElement.className+=" js";</script>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://shigopita.jp/#org",
+      "name": "しごピタ",
+      "url": "https://shigopita.jp/",
+      "logo": "https://shigopita.jp/assets/ogp.png"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://shigopita.jp/#website",
+      "url": "https://shigopita.jp/",
+      "name": "しごピタ",
+      "inLanguage": "ja",
+      "publisher": { "@id": "https://shigopita.jp/#org" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tekishoku.shigopita.jp/#webpage",
+      "url": "https://tekishoku.shigopita.jp/",
+      "name": "適職診断｜職業名を隠して、仕事の場面から考える｜しごピタ",
+      "description": "適職診断とは何か、結果をどう使うかを解説し、40枚の画像をスワイプする無料の適職診断「しごピタ」へ案内するページ。",
+      "inLanguage": "ja",
+      "isPartOf": { "@id": "https://shigopita.jp/#website" },
+      "breadcrumb": { "@id": "https://tekishoku.shigopita.jp/#breadcrumb" },
+      "datePublished": "2026-11-17",
+      "dateModified": "2026-11-17"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://tekishoku.shigopita.jp/#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "しごピタ", "item": "https://shigopita.jp/" },
+        { "@type": "ListItem", "position": 2, "name": "適職診断", "item": "https://tekishoku.shigopita.jp/" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://tekishoku.shigopita.jp/#faq",
+      "mainEntity": [
+        { "@type": "Question", "name": "適職診断とは何ですか？", "acceptedAnswer": { "@type": "Answer", "text": "適職診断は、回答をもとに興味や考え方の傾向を整理し、仕事選びの手がかりにするためのものです。結果だけで仕事を決めず、これまでの経験や希望する働き方と照らし合わせて使います。" } },
+        { "@type": "Question", "name": "しごピタの診断は無料ですか？", "acceptedAnswer": { "@type": "Answer", "text": "はい、診断は無料で受けられます。" } },
+        { "@type": "Question", "name": "どのくらい時間がかかりますか？", "acceptedAnswer": { "@type": "Answer", "text": "所要時間の目安は約2分です。文章の質問に答える形式ではなく、40枚の画像をスワイプして回答します。結果は16タイプで示されます。" } },
+        { "@type": "Question", "name": "このページの場面カードも診断ですか？", "acceptedAnswer": { "@type": "Answer", "text": "いいえ。場面カードは、仕事選びを考えるための展示です。選択による採点やタイプ判定はありません。しごピタの診断は「画像で適職診断をはじめる」から進めます。" } },
+        { "@type": "Question", "name": "診断結果だけで仕事を決めてもよいですか？", "acceptedAnswer": { "@type": "Answer", "text": "結果は仕事選びの参考情報です。気になった言葉を、これまでの経験や希望する働き方と照らし合わせてみてください。候補の仕事は、仕事内容や働く環境も調べて考えることをおすすめします。" } },
+        { "@type": "Question", "name": "結果がしっくりこないときは？", "acceptedAnswer": { "@type": "Answer", "text": "違うと感じた言葉と、その理由を書き留めてみてください。どんな場面や条件なら納得できそうかを考える材料になります。" } },
+        { "@type": "Question", "name": "転職するつもりがなくても受けられますか？", "acceptedAnswer": { "@type": "Answer", "text": "はい。自己分析や、今の仕事との相性を確かめる目的でも受けられます。" } }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --pink:#F16CBF;--purple:#C47BF1;--violet:#8B64FB;--blue:#7B93FD;--cyan:#69D1F4;
+    --ink:#333333;--ink-soft:#5B5B6B;--tint:#F8F5FF;--tint-pink:#FFF1FA;--line:#E6E0F4;--accent-text:#6B45E0;
+    --grad:linear-gradient(135deg,#F16CBF 0%,#C47BF1 38%,#7B93FD 72%,#69D1F4 100%);
+    --grad-btn:linear-gradient(120deg,#D6479F 0%,#8B55F0 100%);
+    --grad-band:linear-gradient(120deg,#CF4FA4 0%,#8B55F0 55%,#5F7FF2 100%);
+    --font:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic",sans-serif;
+    --hh:70px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--font);color:var(--ink);background:#fff;line-height:1.85;font-size:1rem;font-weight:500;-webkit-text-size-adjust:100%}
+  img,svg{max-width:100%;display:block}
+  a{color:var(--accent-text)}
+  :focus-visible{outline:3px solid var(--violet);outline-offset:3px;border-radius:8px}
+  .wrap{width:min(1080px,100% - 40px);margin-inline:auto}
+  h1,h2,h3{margin:0;font-weight:900;line-height:1.4;letter-spacing:.01em}
+  p{margin:0 0 1em}
+  .spark{width:1em;height:1em;flex:none}
+  .nb{display:inline-block}
+
+  /* header */
+  .site-header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);height:var(--hh)}
+  .site-header .wrap{display:flex;align-items:center;justify-content:space-between;height:100%}
+  .logo img{height:42px;width:auto}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;background:var(--grad-btn);color:#fff;font-family:var(--font);font-weight:900;font-size:1.05rem;text-decoration:none;border:0;border-radius:999px;padding:.85em 1.9em;cursor:pointer;box-shadow:0 12px 26px rgba(139,85,240,.34);transition:transform .2s,box-shadow .2s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(139,85,240,.4)}
+  .btn:active{transform:translateY(1px)}
+  .btn-sm{font-size:.9rem;padding:.6em 1.4em;box-shadow:0 6px 14px rgba(139,85,240,.28)}
+  .btn-white{background:#fff;color:var(--accent-text);box-shadow:0 12px 28px rgba(40,10,110,.25)}
+  .btn-line{background:#fff;color:var(--accent-text);border:2px solid var(--violet);box-shadow:none}
+  .facts{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+  .facts li{font-size:.85rem;font-weight:700;color:var(--accent-text);background:var(--tint);border:1.5px solid var(--line);border-radius:999px;padding:.2em .9em}
+
+  /* KV（全幅のヒーロー。カードではない） */
+  .kv{position:relative;min-height:100vh;min-height:100svh;padding:calc(var(--hh) + 24px) 0 72px;display:flex;align-items:center;background:
+    radial-gradient(closest-side at 85% 20%,rgba(241,108,191,.2),transparent 70%),
+    radial-gradient(closest-side at 10% 80%,rgba(139,100,251,.16),transparent 70%),
+    radial-gradient(closest-side at 70% 100%,rgba(105,209,244,.2),transparent 70%),var(--tint)}
+  .kv-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,56px);align-items:center}
+  .kv h1{font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.3}
+  .kv .lead{color:var(--ink-soft);margin-top:1.2em;max-width:30em}
+  .kv .def{font-size:.92rem;color:var(--ink-soft)}
+  .kv-visual{width:min(100%,430px);margin-inline:auto;border-radius:34px;overflow:hidden;box-shadow:0 26px 56px rgba(139,100,251,.26);background:#EAF1FF}
+  .kv-visual img{display:block;width:100%;height:auto;max-height:calc(100svh - var(--hh) - 150px);object-fit:cover;object-position:top}
+  .kv .media .cap{text-align:center}
+  .kv-down{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.78rem;font-weight:900;letter-spacing:.14em;color:var(--accent-text);text-decoration:none}
+  .kv-down span{font-size:1.1rem;animation:bob 1.6s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+  /* ===== card stack ===== */
+  .stack-section{position:relative;background:
+    radial-gradient(closest-side at 12% 18%,rgba(241,108,191,.16),transparent 70%),
+    radial-gradient(closest-side at 88% 30%,rgba(139,100,251,.16),transparent 70%),
+    radial-gradient(closest-side at 50% 100%,rgba(105,209,244,.18),transparent 70%),var(--tint)}
+  .stack-pin{padding:calc(var(--hh) + 24px) 0 48px}
+  .cards{width:min(1000px,100% - 32px);margin-inline:auto;display:flex;flex-direction:column;gap:28px}
+  .scard{background:#fff;border:1.5px solid var(--line);border-radius:30px;box-shadow:0 24px 56px rgba(139,100,251,.2);padding:clamp(22px,3.4vw,40px)}
+  .scard-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3.4vw,44px);align-items:center}
+  .scard.flip .scard-grid>.media{order:2}
+  .eyebrow{font-size:.78rem;font-weight:900;letter-spacing:.14em;color:var(--accent-text);margin:0 0 .6em}
+  .scard h1{font-size:clamp(1.8rem,4.2vw,3rem);line-height:1.3}
+  .scard h2{font-size:clamp(1.3rem,2.6vw,1.9rem)}
+  .scard .lead{color:var(--ink-soft);margin-top:1em}
+  .scard .def{font-size:.92rem;color:var(--ink-soft)}
+  .hero-cta{margin-top:1.4em;display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center}
+  .ph{position:relative;border-radius:22px;padding:5px;background:var(--grad);box-shadow:0 18px 40px rgba(139,100,251,.28)}
+  .ph img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:17px;background:#eee}
+  .ph.sel{box-shadow:0 0 0 4px rgba(139,100,251,.25),0 18px 40px rgba(139,100,251,.34)}
+  .cap{font-size:.75rem;color:var(--ink-soft);margin:.8em 0 0}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:.8em 0 0;padding:0;list-style:none}
+  .chips li{font-size:.78rem;font-weight:700;color:var(--accent-text);border:1.5px solid var(--violet);border-radius:999px;padding:.1em .9em}
+  fieldset{border:0;padding:0;margin:1.1em 0 0;min-width:0}
+  legend{font-weight:900;font-size:.98rem;padding:0;margin-bottom:.5em}
+  .opt{display:block;position:relative;margin:0 0 8px}
+  .opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+  .opt span{display:flex;align-items:center;gap:.7em;border:1.5px solid var(--line);border-radius:14px;padding:.62em 1em;background:#fff;font-weight:700;font-size:.94rem;transition:border-color .2s,background .2s}
+  .opt span::before{content:"";width:16px;height:16px;border-radius:50%;border:2px solid #9a96ae;flex:none;transition:all .2s}
+  .opt input:checked+span{border-color:var(--violet);background:#EEE6FF;color:var(--accent-text)}
+  .opt input:checked+span::before{border-color:var(--violet);background:var(--violet);box-shadow:inset 0 0 0 3px #EEE6FF}
+  .opt input:focus-visible+span{outline:3px solid var(--violet);outline-offset:2px}
+  .after{display:none;margin-top:10px;border:1.5px dashed var(--violet);background:#F6F1FF;border-radius:14px;padding:.8em 1em;font-size:.88rem}
+  .after.on{display:block;animation:drop .35s ease both}
+  .after b{display:block;margin-bottom:.3em}
+  .after textarea{width:100%;font-family:var(--font);font-size:.9rem;border:1.5px solid var(--line);border-radius:10px;padding:.5em .7em;resize:vertical;min-height:3.4em;margin-top:.4em;background:#fff}
+  .after small{display:block;color:var(--ink-soft);margin-top:.3em}
+  @keyframes drop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+  .pts{list-style:none;margin:1.1em 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+  .pts li{border:1.5px solid var(--line);background:var(--tint);border-radius:16px;padding:.8em 1.1em}
+  .pts b{display:block;font-size:.8rem;color:var(--accent-text);letter-spacing:.06em}
+  .specs{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:1.2em 0 0;padding:0;list-style:none}
+  .specs li{border:1.5px solid var(--violet);border-radius:14px;padding:.7em .8em;text-align:center;font-weight:900;color:var(--accent-text);background:#fff}
+  .limit{border:1.5px solid var(--line);background:var(--tint);border-radius:18px;padding:1.1em 1.3em}
+  .limit b{display:block;margin-bottom:.3em}
+  /* 右下の追従コンバージョンボタン */
+  .fab{position:fixed;right:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));z-index:60;display:inline-flex;align-items:center;gap:.7em;padding:.9em 1.5em;border-radius:999px;background:var(--grad-btn);color:#fff;font-family:var(--font);font-weight:900;font-size:1rem;line-height:1.2;text-decoration:none;box-shadow:0 14px 30px rgba(139,85,240,.45);opacity:0;transform:translateY(18px);pointer-events:none;transition:opacity .3s ease,transform .3s ease,box-shadow .2s}
+  .fab.on{opacity:1;transform:none;pointer-events:auto}
+  .fab.on:hover{transform:translateY(-2px);box-shadow:0 18px 34px rgba(139,85,240,.5)}
+  .fab small{display:block;font-weight:700;font-size:.7rem;opacity:.92;letter-spacing:.04em}
+  .fab svg{width:20px;height:20px;flex:none}
+  html:not(.js) .fab{opacity:1;transform:none;pointer-events:auto}
+  /* iPhone風の外枠（しごピタ本体画面） */
+  .phone-wrap{margin:0;display:flex;flex-direction:column;align-items:center}
+  .phone{position:relative;height:min(54svh,520px);min-height:300px;aspect-ratio:.52;background:#15131f;border-radius:44px;padding:9px;box-shadow:0 0 0 1.5px #55506e,0 26px 52px rgba(60,40,120,.34)}
+  .phone::before{content:"";position:absolute;left:-3.5px;top:17%;width:3px;height:16%;border-radius:2px;background:#2b2840;box-shadow:0 0 0 0 #2b2840}
+  .phone::after{content:"";position:absolute;right:-3.5px;top:22%;width:3px;height:11%;border-radius:2px;background:#2b2840}
+  .phone .screen{height:100%;background:#FAF9FE;border-radius:36px;overflow:hidden;display:flex;flex-direction:column}
+  .phone .sb{height:30px;flex:none;position:relative}
+  .phone .notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:34%;height:15px;border-radius:99px;background:#0b0a12}
+  .phone .screen img{flex:1;min-height:0;width:100%;height:auto;object-fit:cover;object-position:top;aspect-ratio:auto;border-radius:0}
+  .phone-wrap .cap{text-align:center}
+  .progress{display:none}
+
+  /* JS有効＋モーション可：カードの束（pin）にする */
+  .stack-on .stack-pin{height:100vh;height:100svh;min-height:520px;padding:var(--hh) 0 0;display:flex;flex-direction:column;justify-content:center;gap:14px;overflow:hidden}
+  .stack-on .cards{position:relative;display:block;height:min(calc(100svh - var(--hh) - 96px),680px);min-height:420px}
+  .stack-on .scard{position:absolute;inset:0;overflow:hidden;will-change:transform;display:flex;flex-direction:column;justify-content:center}
+  .stack-on .scard>*{width:100%}
+  .stack-on .scard::after{content:"";position:absolute;inset:0;border-radius:inherit;background:#fff;opacity:var(--veil,0);pointer-events:none}
+  .stack-on .scard.can-scroll{overflow-y:auto;justify-content:flex-start}
+  .stack-on .progress{display:flex;align-items:center;justify-content:center;gap:14px}
+  .stack-on .count{font-weight:900;font-size:.82rem;letter-spacing:.14em;color:var(--accent-text);min-width:5.2em}
+  .dots{display:flex;gap:7px;align-items:center}
+  .dot{width:9px;height:9px;border-radius:99px;border:0;padding:0;background:#D6CDEE;cursor:pointer;transition:width .3s,background .3s}
+  .dot[aria-current="true"]{width:30px;background:var(--grad-btn)}
+  .hint{font-size:.78rem;font-weight:700;color:var(--ink-soft)}
+
+  /* next / faq / final / footer */
+  .sec{padding:clamp(56px,8vw,96px) 0}
+  .sec-head{max-width:40em;margin-bottom:2em}
+  .sec-head h2{font-size:clamp(1.5rem,3.4vw,2.2rem)}
+  .sec-head p{margin-top:1em;color:var(--ink-soft)}
+  .nexts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;list-style:none;margin:0;padding:0}
+  .nexts a{display:block;height:100%;text-decoration:none;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 10px 26px rgba(139,100,251,.1);transition:transform .2s,box-shadow .2s}
+  .nexts a:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(139,100,251,.2)}
+  .nexts small{display:block;font-weight:900;color:var(--accent-text);letter-spacing:.06em;font-size:.76rem}
+  .nexts b{display:block;font-size:1.12rem;margin:.3em 0 .4em}
+  .nexts span{font-size:.9rem;color:var(--ink-soft)}
+  .faq{background:var(--tint)}
+  details{border-top:1.5px solid var(--line)}
+  details:last-of-type{border-bottom:1.5px solid var(--line)}
+  summary{cursor:pointer;list-style:none;padding:22px 56px 22px 0;font-weight:900;font-size:1.05rem;position:relative}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";position:absolute;right:0;top:50%;width:34px;height:34px;margin-top:-17px;border-radius:50%;background:var(--grad);color:#fff;font-size:1.4rem;line-height:34px;text-align:center;transition:transform .3s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{padding:0 56px 24px 0;margin:0;color:var(--ink-soft)}
+  details[open] p{animation:drop .35s ease both}
+  .final{background:var(--grad-band);color:#fff;text-align:center}
+  .final h2{font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:.6em}
+  .final p{opacity:.92}
+  footer{background:#fff;color:var(--ink-soft);padding:36px 0 44px;border-top:1px solid var(--line)}
+  footer .note{font-size:.84rem;color:var(--ink-soft);margin:0 0 28px}
+  footer .row{display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;justify-content:space-between}
+  footer nav{display:flex;flex-wrap:wrap;gap:8px 24px}
+  footer nav a{color:var(--ink-soft);font-size:.9rem}
+  footer .logo img{height:36px;width:auto}
+
+  @media (max-width:860px){
+    :root{--hh:60px}
+    .logo img{height:36px}
+    .scard-grid{grid-template-columns:1fr;gap:16px}
+    .scard.flip .scard-grid>.media{order:0}
+    .nexts{grid-template-columns:1fr}
+    .kv-grid{grid-template-columns:1fr}
+    .kv{align-items:flex-start;padding-bottom:84px}
+    .kv h1{font-size:2rem}
+    .stack-on .cards{height:calc(100svh - var(--hh) - 84px)}
+    .ph img{aspect-ratio:16/10}
+    .stack-on .scard{padding:18px}
+    .stack-on .scard h2{font-size:1.2rem}
+    .stack-on .opt span{padding:.45em .9em;font-size:.88rem}
+    .stack-on .opt{margin-bottom:6px}
+    .hint{display:none}
+    .phone{height:min(34svh,280px);min-height:220px;border-radius:34px;padding:7px}
+    .phone .screen{border-radius:28px}
+    .phone .sb{height:22px}
+    .phone .notch{top:6px;height:11px}
+    .fab{padding:.8em 1.2em;font-size:.95rem}
+    .fab small{display:none}
+    .stack-on .stack-pin{padding-bottom:70px}
+    .stack-on .cards{height:calc(100svh - var(--hh) - 150px)}
+  }
+  @media (prefers-reduced-motion:reduce){ *,*::before,*::after{animation:none!important;transition:none!important} html{scroll-behavior:auto} }
+</style>
+<!-- Google tag (GTM) -->
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TS9BKBR3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "zeulj03kv6");
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="https://shigopita.jp/?utm_source=lp02"><img src="assets/logo.webp" alt="しごピタ ピタッと来る仕事、見つけよう。" width="144" height="45"></a>
+    <a class="btn btn-sm" href="https://shigopita.jp/?utm_source=lp02">無料で診断する</a>
+  </div>
+</header>
+
+<main>
+  <section class="kv" aria-labelledby="h-kv">
+    <div class="wrap kv-grid">
+      <div>
+        <p class="eyebrow">職業名のない仕事展</p>
+        <h1 id="h-kv"><span class="nb">適職診断。</span><span class="nb">まずは、職業名を</span><span class="nb">隠してみよう。</span></h1>
+        <p class="lead">なりたい仕事の名前が、まだ浮かばなくても。働く場面の、どこに目がとまるかから考えてみませんか。</p>
+        <p class="def">適職診断は、回答をもとに興味や考え方の傾向を整理し、仕事選びの手がかりにするためのものです。</p>
+        <div class="hero-cta">
+          <a class="btn" href="https://shigopita.jp/?utm_source=lp02&amp;utm_content=kv">画像で適職診断をはじめる</a>
+          <ul class="facts" aria-label="しごピタの概要"><li>40枚をスワイプ</li><li>約2分</li><li>全16タイプ</li><li>無料</li></ul>
+        </div>
+      </div>
+      <div class="media">
+        <div class="kv-visual"><img src="assets/kv-ab.jpg" width="1192" height="1800" alt="「A 自分でつくってみたい」と「B まず飛び込んでみたい」。2つの働く場面を思い浮かべて考える女性" fetchpriority="high"></div>
+        <p class="cap">仕事選びを考えるためのイメージです。実際の診断画面・診断用画像ではありません。</p>
+      </div>
+    </div>
+    <a class="kv-down" href="#stack" aria-label="仕事展へ進む">仕事展へ<span aria-hidden="true">↓</span></a>
+  </section>
+
+  <section class="stack-section" id="stack" aria-label="職業名のない仕事展">
+    <div class="stack-pin">
+      <div class="cards" id="cards">
+
+
+        <!-- 2 定義と限界 -->
+        <article class="scard flip" data-i="1">
+          <div class="scard-grid">
+            <div>
+              <p class="eyebrow">適職診断とは</p>
+              <h2>適職診断でわかること。自分で確かめたいこと。</h2>
+              <p class="lead">適職診断は、回答から興味や考え方の傾向を整理し、仕事選びを考えるために使うものです。</p>
+            </div>
+            <div class="limit">
+              <b>結果は、経験や希望する働き方と照らし合わせて読む</b>
+              <p style="margin:0;color:var(--ink-soft);font-size:.92rem">結果だけでは、仕事は決められません。この先の「仕事展」は、仕事選びを考えるためのイメージです。診断画面ではなく、採点やタイプ判定もありません。</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3 展示01 -->
+        <article class="scard" data-i="2" data-ex>
+          <div class="scard-grid">
+            <div class="media"><div class="ph"><img src="assets/scene2.jpg" width="1400" height="1050" alt="紙を並べ替える手元と、隣でそれを見ている人、机の周りの空間が見える場面" loading="lazy"></div></div>
+            <div>
+              <p class="eyebrow">展示 01 — 同じ場面</p>
+              <h2>同じ場面。あなたは、どこを見る？</h2>
+              <p class="lead" style="margin-top:.5em">紙を動かす手元、隣にいる人、机の周りの空間。</p>
+              <ul class="chips" aria-label="観察の言葉"><li>手元</li><li>隣の人</li><li>空間</li></ul>
+              <fieldset><legend>この場面の、どこに目がとまった？</legend>
+                <label class="opt"><input type="radio" name="e1"><span>紙を並べ替える手元</span></label>
+                <label class="opt"><input type="radio" name="e1"><span>隣で紙を見ている人</span></label>
+                <label class="opt"><input type="radio" name="e1"><span>机の周りの空間</span></label>
+                <label class="opt"><input type="radio" name="e1"><span>まだわからない</span></label>
+              </fieldset>
+              <div class="after" role="status" aria-live="polite"><b>そこを見て、何をしてみたい、何を確かめたいと感じましたか？</b><textarea aria-label="書き留める欄（任意）" rows="2"></textarea><small>書き留める欄は任意で、保存・送信はされません。採点やタイプ判定はありません。</small></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4 展示02 -->
+        <article class="scard flip" data-i="3" data-ex>
+          <div class="scard-grid">
+            <div class="media"><div class="ph"><img src="assets/tsukuru.jpg" width="1400" height="1050" alt="机の上で無地の紙を折っている手元と、それを見守る人" loading="lazy"></div></div>
+            <div>
+              <p class="eyebrow">展示 02 — つくる</p>
+              <h2>形が変わっていく、その途中。</h2>
+              <p class="lead" style="margin-top:.5em">無地の紙を折り、試している手元。</p>
+              <ul class="chips" aria-label="観察の言葉"><li>試す</li><li>整える</li></ul>
+              <fieldset><legend>この場面の、どこに目がとまった？</legend>
+                <label class="opt"><input type="radio" name="e2"><span>折っている手元</span></label>
+                <label class="opt"><input type="radio" name="e2"><span>見守る人</span></label>
+                <label class="opt"><input type="radio" name="e2"><span>机の上の紙</span></label>
+              </fieldset>
+              <div class="after" role="status" aria-live="polite"><b>そこを見て、何をしてみたい、何を確かめたいと感じましたか？</b><textarea aria-label="書き留める欄（任意）" rows="2"></textarea><small>書き留める欄は任意で、保存・送信はされません。</small></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5 展示03 -->
+        <article class="scard" data-i="4" data-ex>
+          <div class="scard-grid">
+            <div class="media"><div class="ph"><img src="assets/tsutaeru.jpg" width="1400" height="1050" alt="紙を指で示しながら言葉を交わし、もう一人が耳を傾けている場面" loading="lazy"></div></div>
+            <div>
+              <p class="eyebrow">展示 03 — 伝える</p>
+              <h2>指先と言葉が、紙の上で交わる。</h2>
+              <p class="lead" style="margin-top:.5em">紙を指しながら言葉を交わす途中。</p>
+              <ul class="chips" aria-label="観察の言葉"><li>話す</li><li>聞く</li></ul>
+              <fieldset><legend>この場面の、どこに目がとまった？</legend>
+                <label class="opt"><input type="radio" name="e3"><span>指で示す手</span></label>
+                <label class="opt"><input type="radio" name="e3"><span>話を聞く人</span></label>
+                <label class="opt"><input type="radio" name="e3"><span>机をはさんだ距離</span></label>
+              </fieldset>
+              <div class="after" role="status" aria-live="polite"><b>そこを見て、何をしてみたい、何を確かめたいと感じましたか？</b><textarea aria-label="書き留める欄（任意）" rows="2"></textarea><small>書き留める欄は任意で、保存・送信はされません。</small></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 6 展示04 -->
+        <article class="scard flip" data-i="5" data-ex>
+          <div class="scard-grid">
+            <div class="media"><div class="ph"><img src="assets/sasaeru.jpg" width="1400" height="1050" alt="一人が紙を広げ、もう一人がそばに材料のトレーを寄せている場面" loading="lazy"></div></div>
+            <div>
+              <p class="eyebrow">展示 04 — 支える</p>
+              <h2>そっと、場所を空ける。</h2>
+              <p class="lead" style="margin-top:.5em">そばで材料のトレーを寄せる途中。</p>
+              <ul class="chips" aria-label="観察の言葉"><li>整える</li><li>寄り添う</li></ul>
+              <fieldset><legend>この場面の、どこに目がとまった？</legend>
+                <label class="opt"><input type="radio" name="e4"><span>トレーを寄せる手</span></label>
+                <label class="opt"><input type="radio" name="e4"><span>作業している人</span></label>
+                <label class="opt"><input type="radio" name="e4"><span>机の上の余白</span></label>
+              </fieldset>
+              <div class="after" role="status" aria-live="polite"><b>そこを見て、何をしてみたい、何を確かめたいと感じましたか？</b><textarea aria-label="書き留める欄（任意）" rows="2"></textarea><small>書き留める欄は任意で、保存・送信はされません。</small></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 7 3視点 -->
+        <article class="scard" data-i="6">
+          <p class="eyebrow">気になった理由を言葉に</p>
+          <h2>「気になる」のは、作業？ 人？ その場所？</h2>
+          <p class="lead">その場面を選んだ理由を、3つの視点から考えてみませんか。しっくりくる言葉がなければ、今はそのままでも。</p>
+          <ul class="pts">
+            <li><b>仕事内容</b>どんな作業をしてみたい？</li>
+            <li><b>一緒に働く人</b>誰と、どんな距離で関わりたい？</li>
+            <li><b>環境</b>どんな場所や進め方なら試したい？</li>
+          </ul>
+        </article>
+
+        <!-- 8 しごピタへ -->
+        <article class="scard flip" data-i="7">
+          <div class="scard-grid">
+            <div>
+              <p class="eyebrow">しごピタの診断へ</p>
+              <h2>言葉に迷ったら、画像を選ぶ入口へ。</h2>
+              <p class="lead">しごピタは、40枚の画像をスワイプして回答する適職診断です。約2分・無料で試せて、結果は16タイプで示されます。</p>
+              <div class="hero-cta">
+                <a class="btn" href="https://shigopita.jp/?utm_source=lp02">画像で適職診断をはじめる</a>
+                <a class="btn btn-line" href="https://about.shigopita.jp/">しごピタとは</a>
+              </div>
+            </div>
+            <figure class="phone-wrap">
+              <div class="phone"><div class="screen"><div class="sb"><span class="notch" aria-hidden="true"></span></div><img src="assets/app-top.jpg" width="871" height="1500" alt="しごピタの診断スタート画面。40枚の画像を選んで、約2分で仕事タイプがわかる" loading="lazy"></div></div>
+              <figcaption class="cap">しごピタの診断スタート画面</figcaption>
+            </figure>
+          </div>
+        </article>
+
+      </div>
+      <div class="progress" aria-label="カードの位置">
+        <span class="count" id="count" aria-live="off">01 / 07</span>
+        <div class="dots" id="dots"></div>
+        <span class="hint">スクロールでカードが進みます</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-next">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="h-next">結果の言葉に、思い当たる場面はありますか。</h2><p>診断で気になった言葉を、ここで目にとまった場面や、これまでの経験と並べてみてください。しっくりくるところも、違うと感じるところも、次に確かめたいこととして残してみませんか。</p></div>
+      <ul class="nexts">
+        <li><a href="https://type16.shigopita.jp/"><small>16タイプ全解説</small><b>結果のタイプを詳しく知る</b><span>各タイプの強み・向いている仕事・力が出る環境を読む。</span></a></li>
+        <li><a href="https://mikeiken.shigopita.jp/"><small>未経験</small><b>未経験の仕事を考える</b><span>経験がなくても、気になる仕事を考える入口。</span></a></li>
+        <li><a href="https://mayoi.shigopita.jp/"><small>迷い</small><b>仕事選びの迷いを整理する</b><span>迷う理由をほどいて、次の一歩を考える。</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec faq" aria-labelledby="h-faq">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="h-faq">適職診断を受ける前に、気になること。</h2></div>
+      <details open><summary>適職診断とは何ですか？</summary><p>適職診断は、回答をもとに興味や考え方の傾向を整理し、仕事選びの手がかりにするためのものです。結果だけで仕事を決めず、これまでの経験や希望する働き方と照らし合わせて使います。</p></details>
+      <details><summary>しごピタの診断は無料ですか？</summary><p>はい、診断は無料で受けられます。</p></details>
+      <details><summary>どのくらい時間がかかりますか？</summary><p>所要時間の目安は約2分です。文章の質問に答える形式ではなく、40枚の画像をスワイプして回答します。結果は16タイプで示されます。</p></details>
+      <details><summary>このページの場面カードも診断ですか？</summary><p>いいえ。場面カードは、仕事選びを考えるための展示です。選択による採点やタイプ判定はありません。しごピタの診断は「画像で適職診断をはじめる」から進めます。</p></details>
+      <details><summary>診断結果だけで仕事を決めてもよいですか？</summary><p>結果は仕事選びの参考情報です。気になった言葉を、これまでの経験や希望する働き方と照らし合わせてみてください。候補の仕事は、仕事内容や働く環境も調べて考えることをおすすめします。</p></details>
+      <details><summary>結果がしっくりこないときは？</summary><p>違うと感じた言葉と、その理由を書き留めてみてください。どんな場面や条件なら納得できそうかを考える材料になります。</p></details>
+      <details><summary>転職するつもりがなくても受けられますか？</summary><p>はい。自己分析や、今の仕事との相性を確かめる目的でも受けられます。</p></details>
+    </div>
+  </section>
+
+  <section class="sec final" aria-labelledby="h-final">
+    <div class="wrap">
+      <h2 id="h-final"><span class="nb">仕事の名前が浮かぶ前に、</span><span class="nb">気になる場面から。</span></h2>
+      <p>まだ言葉にならないままでも、画像を眺めるところから始めてみませんか。</p>
+      <a class="btn btn-white" href="https://shigopita.jp/?utm_source=lp02">画像で適職診断をはじめる</a>
+      <p style="margin-top:1.2em;font-size:.85rem">無料・約2分。結果は、可能性を広げるための参考情報です。</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="note">診断結果は仕事選びの参考情報であり、特定の職種・就業を保証するものではありません。</p>
+    <div class="row">
+      <a class="logo" href="https://shigopita.jp/?utm_source=lp02"><img src="assets/logo.webp" alt="しごピタ ピタッと来る仕事、見つけよう。" width="144" height="45"></a>
+      <nav aria-label="フッター">
+        <a href="https://shigopita.jp/?utm_source=lp02">診断を始める</a>
+        <a href="https://about.shigopita.jp/">しごピタとは</a>
+        <a href="https://type16.shigopita.jp/">16タイプ全解説</a>
+        <a href="https://blog.shigopita.jp">ブログ</a>
+        <a href="https://shigopita.jp/terms.html">利用規約</a>
+        <a href="https://shigopita.jp/privacy.html">プライバシーポリシー</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" id="fab" href="https://shigopita.jp/?utm_source=lp02&amp;utm_content=fab" aria-label="画像で適職診断をはじめる（無料・約2分）">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 0C12.8 7 17 11.2 24 12C17 12.8 12.8 17 12 24C11.2 17 7 12.8 0 12C7 11.2 11.2 7 12 0Z"/></svg>
+  <span>診断をはじめる<small>無料・約2分</small></span>
+</a>
+<script>
+/* 右下ボタン：ヒーローを過ぎたら表示。最終CTA・フッターでは隠す。クリックをGTMへ送る */
+(function(){
+  var f=document.getElementById('fab'),near={},set=0;
+  function upd(){f.classList.toggle('on',window.scrollY>window.innerHeight*0.6&&set===0);}
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){near[e.target.className||e.target.tagName]=e.isIntersecting;});set=Object.keys(near).filter(function(k){return near[k];}).length;upd();},{threshold:.15});
+    [document.querySelector('.final'),document.querySelector('footer')].forEach(function(el){if(el){io.observe(el);}});
+  }
+  window.addEventListener('scroll',upd,{passive:true}); upd();
+  f.addEventListener('click',function(){window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'lp02_cta_click',cta_position:'fab'});});
+})();
+</script>
+<script>
+/* 選択肢：選ぶと「選択後」の問いが開く（保存・送信なし） */
+document.querySelectorAll('[data-ex]').forEach(function(card){
+  var after=card.querySelector('.after'), ph=card.querySelector('.ph');
+  card.addEventListener('change',function(e){
+    if(e.target.matches('input[type=radio]')){ after.classList.add('on'); ph.classList.add('sel'); }
+  });
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<script>
+/* スクロール連動のカードスワイプ。GSAPが読めない／モーション低減のときは縦に並べるだけ */
+window.addEventListener('load',function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce||!window.gsap||!window.ScrollTrigger){return;}
+  gsap.registerPlugin(ScrollTrigger);
+  var root=document.documentElement; root.classList.add('stack-on');
+  var cards=[].slice.call(document.querySelectorAll('.scard')), n=cards.length;
+  var dots=document.getElementById('dots'), count=document.getElementById('count'), dotEls=[];
+  cards.forEach(function(c,i){
+    c.style.zIndex=String(n-i);
+    var b=document.createElement('button'); b.type='button'; b.className='dot'; b.setAttribute('aria-label',(i+1)+'枚目のカードへ');
+    b.addEventListener('click',function(){ var st=tl.scrollTrigger; var y=st.start+(st.end-st.start)*(i/(n-1)); window.scrollTo({top:y,behavior:'smooth'}); });
+    dots.appendChild(b); dotEls.push(b);
+  });
+  function mark(cur){
+    dotEls.forEach(function(d,i){ d.setAttribute('aria-current', i===cur?'true':'false'); });
+    count.textContent=String(cur+1).padStart(2,'0')+' / '+String(n).padStart(2,'0');
+  }
+  function measure(){ cards.forEach(function(c){ c.classList.toggle('can-scroll', c.scrollHeight>c.clientHeight+4); }); }
+  gsap.set(cards,{transformOrigin:'50% 80%'});
+  cards.forEach(function(c,i){ if(i===1){gsap.set(c,{scale:.94,y:26,'--veil':.9});} if(i>=2){gsap.set(c,{autoAlpha:0,scale:.9,y:52,'--veil':.9});} });
+  var steps=n-1, per=Math.max(window.innerHeight*0.9,520);
+  var tl=gsap.timeline({defaults:{ease:'none'},scrollTrigger:{trigger:'#stack',start:'top top',end:function(){return '+='+(steps*per);},pin:'.stack-pin',pinSpacing:true,scrub:.6,anticipatePin:1,invalidateOnRefresh:true,
+    onUpdate:function(self){ mark(Math.min(n-1,Math.round(self.progress*steps))); },
+    onRefresh:measure}});
+  cards.forEach(function(c,i){
+    if(i>=n-1){return;}
+    var dir=(i%2===0)?1:-1;
+    tl.to(c,{xPercent:dir*125,rotation:dir*14,autoAlpha:0,duration:1,ease:'power2.in'},i);
+    tl.to(cards[i+1],{autoAlpha:1,scale:1,y:0,'--veil':0,duration:1},i);
+    if(cards[i+2]){ tl.to(cards[i+2],{autoAlpha:1,scale:.94,y:26,duration:1},i); }
+  });
+  mark(0); measure();
+  window.addEventListener('resize',measure);
+});
+</script>
+</body>
+</html>
