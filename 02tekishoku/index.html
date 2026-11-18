@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preload" as="image" href="assets/kv-ab.webp" type="image/webp" fetchpriority="high">
 <title>適職診断｜職業名を隠して、仕事の場面から考える｜しごピタ</title>
 <meta name="description" content="適職診断とは何か、結果をどう使うかをやさしく解説。職業名のない仕事の場面を眺めて「気になるところ」を考え、40枚の画像をスワイプする無料の適職診断「しごピタ」（約2分・全16タイプ）へ進めます。">
 <link rel="canonical" href="https://tekishoku.shigopita.jp/">
@@ -21,7 +22,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Maru+Gothic:wght@700;900&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
 {
@@ -69,9 +70,10 @@
         { "@type": "Question", "name": "適職診断とは何ですか？", "acceptedAnswer": { "@type": "Answer", "text": "適職診断は、回答をもとに興味や考え方の傾向を整理し、仕事選びの手がかりにするためのものです。結果だけで仕事を決めず、これまでの経験や希望する働き方と照らし合わせて使います。" } },
         { "@type": "Question", "name": "しごピタの診断は無料ですか？", "acceptedAnswer": { "@type": "Answer", "text": "はい、診断は無料で受けられます。" } },
         { "@type": "Question", "name": "どのくらい時間がかかりますか？", "acceptedAnswer": { "@type": "Answer", "text": "所要時間の目安は約2分です。文章の質問に答える形式ではなく、40枚の画像をスワイプして回答します。結果は16タイプで示されます。" } },
-        { "@type": "Question", "name": "このページの場面カードも診断ですか？", "acceptedAnswer": { "@type": "Answer", "text": "いいえ。場面カードは、仕事選びを考えるための展示です。選択による採点やタイプ判定はありません。しごピタの診断は「画像で適職診断をはじめる」から進めます。" } },
+        { "@type": "Question", "name": "このページの場面カードも診断ですか？", "acceptedAnswer": { "@type": "Answer", "text": "いいえ。場面カードは、仕事選びを考えるための展示です。選択による採点やタイプ判定はありません。しごピタの診断は「診断をはじめる」から進めます。" } },
         { "@type": "Question", "name": "診断結果だけで仕事を決めてもよいですか？", "acceptedAnswer": { "@type": "Answer", "text": "結果は仕事選びの参考情報です。気になった言葉を、これまでの経験や希望する働き方と照らし合わせてみてください。候補の仕事は、仕事内容や働く環境も調べて考えることをおすすめします。" } },
         { "@type": "Question", "name": "結果がしっくりこないときは？", "acceptedAnswer": { "@type": "Answer", "text": "違うと感じた言葉と、その理由を書き留めてみてください。どんな場面や条件なら納得できそうかを考える材料になります。" } },
+        { "@type": "Question", "name": "診断のあと、相談はできますか？", "acceptedAnswer": { "@type": "Answer", "text": "はい。診断のあと、公式LINEから、メンターに転職の相談ができます。相談は無料です。" } },
         { "@type": "Question", "name": "転職するつもりがなくても受けられますか？", "acceptedAnswer": { "@type": "Answer", "text": "はい。自己分析や、今の仕事との相性を確かめる目的でも受けられます。" } }
       ]
     }
@@ -81,185 +83,231 @@
 
 <style>
   :root{
-    --pink:#F16CBF;--purple:#C47BF1;--violet:#8B64FB;--blue:#7B93FD;--cyan:#69D1F4;
-    --ink:#333333;--ink-soft:#5B5B6B;--tint:#F8F5FF;--tint-pink:#FFF1FA;--line:#E6E0F4;--accent-text:#6B45E0;
-    --grad:linear-gradient(135deg,#F16CBF 0%,#C47BF1 38%,#7B93FD 72%,#69D1F4 100%);
-    --grad-btn:linear-gradient(120deg,#D6479F 0%,#8B55F0 100%);
-    --grad-band:linear-gradient(120deg,#CF4FA4 0%,#8B55F0 55%,#5F7FF2 100%);
-    --font:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic",sans-serif;
-    --hh:70px;
+    --ink:#15131F;--paper:#F3F2F8;--soft:#55536A;--link:#5B35D5;
+    --pink:#F16CBF;--purple:#C47BF1;--blue:#7B93FD;--cyan:#69D1F4;
+    --grad:linear-gradient(120deg,#C93C94 0%,#6B45E0 100%);
+    --disp:"Dela Gothic One","Hiragino Sans","Yu Gothic",sans-serif;
+    --disp-s:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic",sans-serif;
+    --font:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic UI","Yu Gothic","Noto Sans JP",system-ui,sans-serif;
+    --hh:60px;--bar:56px;color-scheme:light;
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;font-family:var(--font);color:var(--ink);background:#fff;line-height:1.85;font-size:1rem;font-weight:500;-webkit-text-size-adjust:100%}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--hh)}
+  body{margin:0;font-family:var(--font);color:var(--ink);background:#fff;line-height:1.8;font-size:1.0625rem;font-weight:400;-webkit-text-size-adjust:100%}
   img,svg{max-width:100%;display:block}
-  a{color:var(--accent-text)}
-  :focus-visible{outline:3px solid var(--violet);outline-offset:3px;border-radius:8px}
-  .wrap{width:min(1080px,100% - 40px);margin-inline:auto}
-  h1,h2,h3{margin:0;font-weight:900;line-height:1.4;letter-spacing:.01em}
-  p{margin:0 0 1em}
-  .spark{width:1em;height:1em;flex:none}
+  a{color:var(--link)}
+  :focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 6px #fff}
+  .wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+  h1,h2,h3{margin:0;font-family:var(--disp);font-weight:400;line-height:1.25;letter-spacing:-.005em;text-wrap:balance;word-break:auto-phrase}
+  p{margin:0 0 1em;text-wrap:pretty}
   .nb{display:inline-block}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  /* 看板：職業名は読めるまま、斜めの帯（検閲線）を引く */
+  .redact{position:relative;display:inline-block;padding:0 .06em}
+  .redact::after{content:"";position:absolute;left:-.14em;right:-.14em;top:50%;height:.26em;margin-top:-.13em;background:#C93C94;border-radius:2px;transform:rotate(-3deg);pointer-events:none}
+  .eyebrow{font-size:.8125rem;font-weight:700;letter-spacing:.14em;margin:0 0 1em}
 
-  /* header */
-  .site-header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);height:var(--hh)}
+  .site-header{position:fixed;top:0;left:0;right:0;z-index:50;background:#fff;border-bottom:2px solid var(--ink);height:var(--hh)}
   .site-header .wrap{display:flex;align-items:center;justify-content:space-between;height:100%}
-  .logo img{height:42px;width:auto}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;background:var(--grad-btn);color:#fff;font-family:var(--font);font-weight:900;font-size:1.05rem;text-decoration:none;border:0;border-radius:999px;padding:.85em 1.9em;cursor:pointer;box-shadow:0 12px 26px rgba(139,85,240,.34);transition:transform .2s,box-shadow .2s}
-  .btn:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(139,85,240,.4)}
-  .btn:active{transform:translateY(1px)}
-  .btn-sm{font-size:.9rem;padding:.6em 1.4em;box-shadow:0 6px 14px rgba(139,85,240,.28)}
-  .btn-white{background:#fff;color:var(--accent-text);box-shadow:0 12px 28px rgba(40,10,110,.25)}
-  .btn-line{background:#fff;color:var(--accent-text);border:2px solid var(--violet);box-shadow:none}
-  .facts{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
-  .facts li{font-size:.85rem;font-weight:700;color:var(--accent-text);background:var(--tint);border:1.5px solid var(--line);border-radius:999px;padding:.2em .9em}
+  .logo img{height:36px;width:auto}
+  .btn{display:inline-flex;align-items:center;justify-content:center;background:var(--grad);color:#fff;font-family:var(--font);font-weight:700;font-size:1.0625rem;text-decoration:none;border:0;border-radius:999px;min-height:52px;padding:.5em 2em;cursor:pointer;transition:transform .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn:active{transform:scale(.98)}
+  .btn-sm{font-size:.9375rem;min-height:44px;padding:.3em 1.4em}
+  .btn-white{background:#fff;color:var(--ink)}
+  .btn-line{background:transparent;color:inherit;border:2px solid currentColor}
+  .facts{display:flex;flex-wrap:wrap;gap:8px 10px;margin:0;padding:0;list-style:none}
+  .facts li{font-size:.875rem;font-weight:700;border:2px solid var(--ink);border-radius:4px;padding:.1em .7em}
 
-  /* KV（全幅のヒーロー。カードではない） */
-  .kv{position:relative;min-height:100vh;min-height:100svh;padding:calc(var(--hh) + 24px) 0 72px;display:flex;align-items:center;background:
-    radial-gradient(closest-side at 85% 20%,rgba(241,108,191,.2),transparent 70%),
-    radial-gradient(closest-side at 10% 80%,rgba(139,100,251,.16),transparent 70%),
-    radial-gradient(closest-side at 70% 100%,rgba(105,209,244,.2),transparent 70%),var(--tint)}
-  .kv-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,56px);align-items:center}
-  .kv h1{font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.3}
-  .kv .lead{color:var(--ink-soft);margin-top:1.2em;max-width:30em}
-  .kv .def{font-size:.92rem;color:var(--ink-soft)}
-  .kv-visual{width:min(100%,430px);margin-inline:auto;border-radius:34px;overflow:hidden;box-shadow:0 26px 56px rgba(139,100,251,.26);background:#EAF1FF}
-  .kv-visual img{display:block;width:100%;height:auto;max-height:calc(100svh - var(--hh) - 150px);object-fit:cover;object-position:top}
-  .kv .media .cap{text-align:center}
-  .kv-down{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.78rem;font-weight:900;letter-spacing:.14em;color:var(--accent-text);text-decoration:none}
-  .kv-down span{font-size:1.1rem;animation:bob 1.6s ease-in-out infinite}
-  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
-  /* ===== card stack ===== */
-  .stack-section{position:relative;background:
-    radial-gradient(closest-side at 12% 18%,rgba(241,108,191,.16),transparent 70%),
-    radial-gradient(closest-side at 88% 30%,rgba(139,100,251,.16),transparent 70%),
-    radial-gradient(closest-side at 50% 100%,rgba(105,209,244,.18),transparent 70%),var(--tint)}
-  .stack-pin{padding:calc(var(--hh) + 24px) 0 48px}
-  .cards{width:min(1000px,100% - 32px);margin-inline:auto;display:flex;flex-direction:column;gap:28px}
-  .scard{background:#fff;border:1.5px solid var(--line);border-radius:30px;box-shadow:0 24px 56px rgba(139,100,251,.2);padding:clamp(22px,3.4vw,40px)}
-  .scard-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3.4vw,44px);align-items:center}
-  .scard.flip .scard-grid>.media{order:2}
-  .eyebrow{font-size:.78rem;font-weight:900;letter-spacing:.14em;color:var(--accent-text);margin:0 0 .6em}
-  .scard h1{font-size:clamp(1.8rem,4.2vw,3rem);line-height:1.3}
-  .scard h2{font-size:clamp(1.3rem,2.6vw,1.9rem)}
-  .scard .lead{color:var(--ink-soft);margin-top:1em}
-  .scard .def{font-size:.92rem;color:var(--ink-soft)}
+  /* KV：右半分が画面の縁まで届く */
+  .kv{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,42vw);min-height:100vh;min-height:100svh;padding-top:var(--hh);background:var(--paper);position:relative}
+  .kv-copy{display:flex;flex-direction:column;justify-content:center;padding:clamp(32px,5vw,88px) clamp(20px,5vw,80px) 96px}
+  .kv h1{font-size:clamp(2.6rem,6vw,5.8rem);line-height:1.18}
+  .kv .lead{max-width:30em;margin:1.6em 0 .8em;font-size:1.125rem}
+  .kv .def{font-size:.9375rem;color:var(--soft);max-width:34em}
+  .kv .hero-cta{margin-top:1.2em;display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center}
+  .kv-media{position:relative;min-height:320px}
+  .kv-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+  .kv-media .cap{position:absolute;left:0;bottom:0;right:0;margin:0;background:#fff;padding:.5em 1em;font-size:.8125rem;color:var(--soft)}
+  .kv-down{position:absolute;left:clamp(20px,5vw,80px);bottom:20px;display:flex;align-items:center;gap:.5em;min-height:44px;font-size:.875rem;font-weight:700;color:var(--ink);text-decoration:none}
+
+  /* カードの束：ブランドのグラデーションを、1枚ずつの壁に切り分ける */
+  .stack-section{background:var(--ink)}
+  .cards{display:flex;flex-direction:column}
+  .scard{--pad:clamp(24px,4vw,56px);--pw:min(56vw,860px);position:relative;padding:var(--pad);color:var(--ink)}
+  .w-ink{background:var(--ink);color:#fff}
+  .w-pink{background:var(--pink)}.w-purple{background:var(--purple)}.w-blue{background:var(--blue)}.w-cyan{background:var(--cyan)}
+  .w-paper{background:var(--paper)}
+  .w-grad{background:var(--grad);color:#fff}
+  .scard h2{font-size:clamp(1.6rem,3vw,2.8rem)}
+  .scard .lead{margin-top:.9em}
   .hero-cta{margin-top:1.4em;display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center}
-  .ph{position:relative;border-radius:22px;padding:5px;background:var(--grad);box-shadow:0 18px 40px rgba(139,100,251,.28)}
-  .ph img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:17px;background:#eee}
-  .ph.sel{box-shadow:0 0 0 4px rgba(139,100,251,.25),0 18px 40px rgba(139,100,251,.34)}
-  .cap{font-size:.75rem;color:var(--ink-soft);margin:.8em 0 0}
-  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:.8em 0 0;padding:0;list-style:none}
-  .chips li{font-size:.78rem;font-weight:700;color:var(--accent-text);border:1.5px solid var(--violet);border-radius:999px;padding:.1em .9em}
-  fieldset{border:0;padding:0;margin:1.1em 0 0;min-width:0}
-  legend{font-weight:900;font-size:.98rem;padding:0;margin-bottom:.5em}
-  .opt{display:block;position:relative;margin:0 0 8px}
+  .cap{font-size:.8125rem;margin:.8em 0 0}
+
+  /* 活字ポスター（定義カード） */
+  .poster{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(24px,4vw,64px);align-items:end;width:100%}
+  .poster h2{font-size:clamp(2rem,5.2vw,5rem);line-height:1.2}
+  .bars{display:flex;flex-direction:column;gap:8px;margin:0 0 1.4em}
+  .bars i{display:block;height:14px;background:#fff;border-radius:2px}
+  .bars i:nth-child(1){width:46%}.bars i:nth-child(2){width:72%}.bars i:nth-child(3){width:30%}
+  .limit{border:2px solid #fff;padding:1.2em 1.4em}
+  .limit b{display:block;margin-bottom:.4em}
+  .limit p{margin:0;font-size:.9375rem}
+
+  /* 展示の壁 */
+  .ex-grid{display:grid;grid-template-columns:minmax(0,1fr) var(--pw) minmax(0,1fr);gap:clamp(16px,2.4vw,40px);align-items:center;width:100%}
+  .ex-text h2{font-size:clamp(1.5rem,2.5vw,2.5rem)}
+  .ex-side{display:flex;flex-direction:column;gap:12px;align-self:end}
+  .photo-wrap{position:relative}
+  .ph{box-shadow:0 0 0 10px #fff,0 26px 60px rgba(21,19,31,.3)}
+  .ph img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;background:#ddd}
+  .imgbox{position:relative;overflow:hidden;line-height:0}
+  .hs{position:absolute;border-radius:14px;opacity:0;pointer-events:none;box-shadow:0 0 0 2px #fff,0 0 22px 6px rgba(241,108,191,.95),0 0 0 999px rgba(21,19,31,.6);transition:opacity .4s ease,left .45s cubic-bezier(.2,.8,.2,1),top .45s cubic-bezier(.2,.8,.2,1),width .45s cubic-bezier(.2,.8,.2,1),height .45s cubic-bezier(.2,.8,.2,1)}
+  .hs.peek{opacity:1;box-shadow:0 0 0 2px rgba(255,255,255,.95),0 0 18px 4px rgba(241,108,191,.8),0 0 0 999px rgba(21,19,31,.28)}
+  .hs.on{opacity:1}
+  .plate{background:#fff;color:var(--ink);padding:12px 16px;font-size:.875rem;line-height:1.5;display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px}
+  .plate b{letter-spacing:.08em}
+  .plate .redact::after{height:.2em;margin-top:-.1em}
+  .tip{font-size:.875rem;margin:0}
+  .exfs{border:0;padding:0;margin:0;min-width:0}
+  .exfs legend{font-weight:700;font-size:.9375rem;padding:.35em 1em;background:#fff;color:var(--ink);border-radius:999px}
+  .opt{display:block;position:relative;margin:0}
   .opt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
-  .opt span{display:flex;align-items:center;gap:.7em;border:1.5px solid var(--line);border-radius:14px;padding:.62em 1em;background:#fff;font-weight:700;font-size:.94rem;transition:border-color .2s,background .2s}
-  .opt span::before{content:"";width:16px;height:16px;border-radius:50%;border:2px solid #9a96ae;flex:none;transition:all .2s}
-  .opt input:checked+span{border-color:var(--violet);background:#EEE6FF;color:var(--accent-text)}
-  .opt input:checked+span::before{border-color:var(--violet);background:var(--violet);box-shadow:inset 0 0 0 3px #EEE6FF}
-  .opt input:focus-visible+span{outline:3px solid var(--violet);outline-offset:2px}
-  .after{display:none;margin-top:10px;border:1.5px dashed var(--violet);background:#F6F1FF;border-radius:14px;padding:.8em 1em;font-size:.88rem}
-  .after.on{display:block;animation:drop .35s ease both}
+  .opt span{display:flex;align-items:center;gap:.6em;min-height:44px;padding:.3em 1.1em .3em .8em;border-radius:999px;background:#fff;color:var(--ink);font-weight:700;font-size:.9375rem;line-height:1.4;box-shadow:0 6px 18px rgba(21,19,31,.28);transition:background .2s,color .2s,transform .2s}
+  .opt span::before{content:"";width:14px;height:14px;border-radius:50%;border:3px solid var(--ink);flex:none;transition:background .2s}
+  .opt:hover span{transform:scale(1.04)}
+  .opt input:checked+span{background:var(--ink);color:#fff}
+  .opt input:checked+span::before{border-color:#fff;background:var(--pink)}
+  .opt input:focus-visible+span{outline:3px solid var(--ink);box-shadow:0 0 0 6px #fff}
+  .after{display:none;background:#fff;color:var(--ink);padding:.9em 1.1em;font-size:.875rem}
+  .after.on{display:block;animation:drop .3s ease both}
   .after b{display:block;margin-bottom:.3em}
-  .after textarea{width:100%;font-family:var(--font);font-size:.9rem;border:1.5px solid var(--line);border-radius:10px;padding:.5em .7em;resize:vertical;min-height:3.4em;margin-top:.4em;background:#fff}
-  .after small{display:block;color:var(--ink-soft);margin-top:.3em}
+  .after textarea{width:100%;font-family:var(--font);font-size:1rem;color:var(--ink);border:2px solid var(--ink);border-radius:6px;padding:.5em .7em;resize:vertical;min-height:3.4em;margin-top:.4em;background:#fff}
+  .after small{display:block;color:var(--soft);margin-top:.3em;font-size:.8125rem}
   @keyframes drop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
-  .pts{list-style:none;margin:1.1em 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
-  .pts li{border:1.5px solid var(--line);background:var(--tint);border-radius:16px;padding:.8em 1.1em}
-  .pts b{display:block;font-size:.8rem;color:var(--accent-text);letter-spacing:.06em}
-  .specs{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:1.2em 0 0;padding:0;list-style:none}
-  .specs li{border:1.5px solid var(--violet);border-radius:14px;padding:.7em .8em;text-align:center;font-weight:900;color:var(--accent-text);background:#fff}
-  .limit{border:1.5px solid var(--line);background:var(--tint);border-radius:18px;padding:1.1em 1.3em}
-  .limit b{display:block;margin-bottom:.3em}
-  /* 右下の追従コンバージョンボタン */
-  .fab{position:fixed;right:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));z-index:60;display:inline-flex;align-items:center;gap:.7em;padding:.9em 1.5em;border-radius:999px;background:var(--grad-btn);color:#fff;font-family:var(--font);font-weight:900;font-size:1rem;line-height:1.2;text-decoration:none;box-shadow:0 14px 30px rgba(139,85,240,.45);opacity:0;transform:translateY(18px);pointer-events:none;transition:opacity .3s ease,transform .3s ease,box-shadow .2s}
-  .fab.on{opacity:1;transform:none;pointer-events:auto}
-  .fab.on:hover{transform:translateY(-2px);box-shadow:0 18px 34px rgba(139,85,240,.5)}
-  .fab small{display:block;font-weight:700;font-size:.7rem;opacity:.92;letter-spacing:.04em}
-  .fab svg{width:20px;height:20px;flex:none}
-  html:not(.js) .fab{opacity:1;transform:none;pointer-events:auto}
-  /* iPhone風の外枠（しごピタ本体画面） */
-  .phone-wrap{margin:0;display:flex;flex-direction:column;align-items:center}
-  .phone{position:relative;height:min(54svh,520px);min-height:300px;aspect-ratio:.52;background:#15131f;border-radius:44px;padding:9px;box-shadow:0 0 0 1.5px #55506e,0 26px 52px rgba(60,40,120,.34)}
-  .phone::before{content:"";position:absolute;left:-3.5px;top:17%;width:3px;height:16%;border-radius:2px;background:#2b2840;box-shadow:0 0 0 0 #2b2840}
-  .phone::after{content:"";position:absolute;right:-3.5px;top:22%;width:3px;height:11%;border-radius:2px;background:#2b2840}
+  @media (min-width:861px){
+    .exfs{position:absolute;inset:0}
+    .exfs legend{position:absolute;left:14px;top:14px;z-index:3}
+    .opt{position:absolute;left:calc(var(--cx)*1%);top:calc(var(--cy)*1%);transform:translate(-50%,-50%);z-index:2;white-space:nowrap}
+  }
+
+  /* 気になった理由：3枚の縦パネル */
+  .views-wrap{width:100%}
+  .views-wrap h2{font-size:clamp(1.8rem,4vw,3.6rem)}
+  .pts{list-style:none;margin:1.4em 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .pts li{background:#fff;padding:1.2em 1.3em 1.4em;min-height:min(240px,30svh);border-top:8px solid var(--ink);transition:background .3s,color .3s}
+  .pts b{display:block;font-family:var(--disp);font-weight:400;font-size:1.5rem;line-height:1.3;margin-bottom:.3em}
+  .pts li.hit{background:var(--ink);color:#fff;border-top-color:var(--pink)}
+  .pts li .seen{display:block;font-style:normal;font-weight:700;font-size:.875rem;color:#FFB3E3;margin-top:.6em}
+  .pts-note{margin:1.2em 0 0;font-size:.9375rem}
+  .stack-on .scard:focus{outline:none}
+  .stack-on .scard:focus-visible{outline:4px solid var(--ink);outline-offset:-8px}
+  .linkbtn{font-family:var(--font);font-weight:700;font-size:.9375rem;color:var(--link);background:none;border:0;text-decoration:underline;text-underline-offset:.25em;padding:.7em .5em;margin-left:.2em;cursor:pointer;min-height:44px}
+
+  /* 入口：画面の下から見切れるスマホ */
+  .enter{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(20px,4vw,64px);align-items:center;width:100%}
+  .enter h2{font-size:clamp(2rem,4.6vw,4.4rem)}
+  .phone-wrap{margin:0;display:flex;flex-direction:column;align-items:center;align-self:end;margin-bottom:calc(-1*var(--pad) - 60px)}
+  .phone{position:relative;height:min(78svh,620px);min-height:300px;aspect-ratio:.52;background:#15131f;border-radius:44px;padding:9px;box-shadow:0 0 0 2px #fff,0 26px 60px rgba(21,19,31,.4)}
   .phone .screen{height:100%;background:#FAF9FE;border-radius:36px;overflow:hidden;display:flex;flex-direction:column}
   .phone .sb{height:30px;flex:none;position:relative}
   .phone .notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:34%;height:15px;border-radius:99px;background:#0b0a12}
-  .phone .screen img{flex:1;min-height:0;width:100%;height:auto;object-fit:cover;object-position:top;aspect-ratio:auto;border-radius:0}
-  .phone-wrap .cap{text-align:center}
+  .phone .screen img{flex:1;min-height:0;width:100%;height:auto;object-fit:cover;object-position:top}
+  .phone-wrap .cap{text-align:center;position:absolute;left:0;right:0;top:-2.2em;margin:0}
+  .enter .btn-white{color:var(--ink)}
+
+  .fab{position:fixed;right:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));z-index:60;display:inline-flex;align-items:center;gap:.6em;min-height:52px;padding:.6em 1.5em;border-radius:999px;background:var(--grad);color:#fff;font-family:var(--font);font-weight:700;font-size:1rem;line-height:1.2;text-decoration:none;box-shadow:0 0 0 2px #fff,0 10px 28px rgba(21,19,31,.4);opacity:0;transform:translateY(18px);pointer-events:none;transition:opacity .3s ease,transform .3s ease}
+  .fab.on{opacity:1;transform:none;pointer-events:auto}
+  .fab small{display:block;font-weight:500;font-size:.75rem;letter-spacing:.04em}
+  .fab svg{width:18px;height:18px;flex:none}
+  html:not(.js) .fab{opacity:1;transform:none;pointer-events:auto}
+
   .progress{display:none}
-
-  /* JS有効＋モーション可：カードの束（pin）にする */
-  .stack-on .stack-pin{height:100vh;height:100svh;min-height:520px;padding:var(--hh) 0 0;display:flex;flex-direction:column;justify-content:center;gap:14px;overflow:hidden}
-  .stack-on .cards{position:relative;display:block;height:min(calc(100svh - var(--hh) - 96px),680px);min-height:420px}
-  .stack-on .scard{position:absolute;inset:0;overflow:hidden;will-change:transform;display:flex;flex-direction:column;justify-content:center}
+  .stack-on .stack-pin{height:100vh;height:100svh;min-height:520px;padding-top:var(--hh);display:flex;flex-direction:column;overflow:hidden}
+  .stack-on .cards{position:relative;display:block;flex:1;min-height:0;overflow:hidden}
+  .stack-on .scard{--pw:min(calc((100svh - var(--hh) - var(--bar) - 2*var(--pad))*1.22),56vw);position:absolute;inset:0;overflow:hidden;will-change:transform;display:flex;flex-direction:column;justify-content:center}
   .stack-on .scard>*{width:100%}
-  .stack-on .scard::after{content:"";position:absolute;inset:0;border-radius:inherit;background:#fff;opacity:var(--veil,0);pointer-events:none}
+  .stack-on .scard::after{content:"";position:absolute;inset:0;background:var(--ink);opacity:var(--veil,0);pointer-events:none}
   .stack-on .scard.can-scroll{overflow-y:auto;justify-content:flex-start}
-  .stack-on .progress{display:flex;align-items:center;justify-content:center;gap:14px}
-  .stack-on .count{font-weight:900;font-size:.82rem;letter-spacing:.14em;color:var(--accent-text);min-width:5.2em}
-  .dots{display:flex;gap:7px;align-items:center}
-  .dot{width:9px;height:9px;border-radius:99px;border:0;padding:0;background:#D6CDEE;cursor:pointer;transition:width .3s,background .3s}
-  .dot[aria-current="true"]{width:30px;background:var(--grad-btn)}
-  .hint{font-size:.78rem;font-weight:700;color:var(--ink-soft)}
+  .stack-on .progress{display:flex;flex:none;height:var(--bar);flex-wrap:nowrap;align-items:center;justify-content:center;gap:0 14px;background:var(--ink);color:#fff}
+  .stack-on .count{font-weight:700;font-size:.8125rem;letter-spacing:.1em;min-width:5em;text-align:right}
+  .dots{display:flex;align-items:center}
+  .dot{position:relative;width:32px;height:44px;border:0;padding:0;background:none;cursor:pointer}
+  .dot::before{content:"";position:absolute;left:50%;top:50%;width:10px;height:10px;margin:-5px 0 0 -5px;background:#8F8DA8;transition:width .3s,margin .3s,background .3s}
+  .dot[aria-current="true"]::before{width:28px;margin-left:-14px;background:var(--pink)}
+  .stack-on .progress :focus-visible{outline-color:#fff;box-shadow:none}
+  .hint{font-size:.8125rem;color:#C9C7DB}
+  .skip{font-size:.875rem;font-weight:700;color:#fff;padding:.5em .3em;min-height:44px;display:inline-flex;align-items:center}
 
-  /* next / faq / final / footer */
-  .sec{padding:clamp(56px,8vw,96px) 0}
-  .sec-head{max-width:40em;margin-bottom:2em}
-  .sec-head h2{font-size:clamp(1.5rem,3.4vw,2.2rem)}
-  .sec-head p{margin-top:1em;color:var(--ink-soft)}
-  .nexts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;list-style:none;margin:0;padding:0}
-  .nexts a{display:block;height:100%;text-decoration:none;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 10px 26px rgba(139,100,251,.1);transition:transform .2s,box-shadow .2s}
-  .nexts a:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(139,100,251,.2)}
-  .nexts small{display:block;font-weight:900;color:var(--accent-text);letter-spacing:.06em;font-size:.76rem}
-  .nexts b{display:block;font-size:1.12rem;margin:.3em 0 .4em}
-  .nexts span{font-size:.9rem;color:var(--ink-soft)}
-  .faq{background:var(--tint)}
-  details{border-top:1.5px solid var(--line)}
-  details:last-of-type{border-bottom:1.5px solid var(--line)}
-  summary{cursor:pointer;list-style:none;padding:22px 56px 22px 0;font-weight:900;font-size:1.05rem;position:relative}
+  .sec{padding:clamp(64px,9vw,120px) 0}
+  .nexts{list-style:none;margin:0;padding:0;border-bottom:2px solid var(--ink)}
+  .nexts a{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr) auto;gap:8px 32px;align-items:center;padding:28px 8px;border-top:2px solid var(--ink);text-decoration:none;color:var(--ink);min-height:44px;transition:background .2s,padding .2s}
+  .nexts a:hover{background:var(--paper);padding-left:20px}
+  .nexts small{display:block;font-size:.8125rem;font-weight:700;letter-spacing:.1em;color:var(--link)}
+  .nexts b{display:block;font-family:var(--disp);font-weight:400;font-size:clamp(1.3rem,2.4vw,2rem);line-height:1.3}
+  .nexts span{font-size:.9375rem;color:var(--soft)}
+  .nexts i{font-style:normal;font-size:1.6rem;font-weight:700}
+  .sec-head h2{font-size:clamp(1.8rem,4vw,3.4rem);margin-bottom:.5em}
+  .sec-head p{max-width:36em}
+  .faq{background:var(--paper)}
+  .faq-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,5vw,80px);align-items:start}
+  .faq .sec-head{position:sticky;top:calc(var(--hh) + 24px);margin:0}
+  details{border-top:2px solid var(--ink)}
+  details:last-of-type{border-bottom:2px solid var(--ink)}
+  summary{cursor:pointer;list-style:none;padding:20px 56px 20px 0;min-height:44px;font-weight:700;font-size:1.0625rem;position:relative}
   summary::-webkit-details-marker{display:none}
-  summary::after{content:"+";position:absolute;right:0;top:50%;width:34px;height:34px;margin-top:-17px;border-radius:50%;background:var(--grad);color:#fff;font-size:1.4rem;line-height:34px;text-align:center;transition:transform .3s}
+  summary::after{content:"+";position:absolute;right:0;top:50%;width:34px;height:34px;margin-top:-17px;background:var(--ink);color:#fff;font-size:1.4rem;line-height:34px;text-align:center;transition:transform .3s}
   details[open] summary::after{transform:rotate(45deg)}
-  details p{padding:0 56px 24px 0;margin:0;color:var(--ink-soft)}
-  details[open] p{animation:drop .35s ease both}
-  .final{background:var(--grad-band);color:#fff;text-align:center}
-  .final h2{font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:.6em}
-  .final p{opacity:.92}
-  footer{background:#fff;color:var(--ink-soft);padding:36px 0 44px;border-top:1px solid var(--line)}
-  footer .note{font-size:.84rem;color:var(--ink-soft);margin:0 0 28px}
-  footer .row{display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;justify-content:space-between}
-  footer nav{display:flex;flex-wrap:wrap;gap:8px 24px}
-  footer nav a{color:var(--ink-soft);font-size:.9rem}
-  footer .logo img{height:36px;width:auto}
+  details p{padding:0 56px 22px 0;margin:0;color:var(--soft)}
+  .final{background:var(--grad);color:#fff;text-align:left}
+  .final h2{font-size:clamp(2.2rem,6.4vw,6rem);line-height:1.18;margin-bottom:.6em}
+  .final p{max-width:30em}
+  footer{background:#fff;padding:36px 0 44px;border-top:2px solid var(--ink)}
+  footer .note{font-size:.875rem;margin:0 0 24px;color:var(--soft)}
+  footer .row{display:flex;flex-wrap:wrap;gap:12px 32px;align-items:center;justify-content:space-between}
+  footer nav{display:flex;flex-wrap:wrap;gap:0 24px}
+  footer nav a{color:var(--ink);font-size:.9375rem;display:inline-flex;align-items:center;min-height:44px}
+  footer .logo img{height:32px;width:auto}
 
   @media (max-width:860px){
-    :root{--hh:60px}
-    .logo img{height:36px}
-    .scard-grid{grid-template-columns:1fr;gap:16px}
-    .scard.flip .scard-grid>.media{order:0}
-    .nexts{grid-template-columns:1fr}
-    .kv-grid{grid-template-columns:1fr}
-    .kv{align-items:flex-start;padding-bottom:84px}
-    .kv h1{font-size:2rem}
-    .stack-on .cards{height:calc(100svh - var(--hh) - 84px)}
-    .ph img{aspect-ratio:16/10}
-    .stack-on .scard{padding:18px}
-    .stack-on .scard h2{font-size:1.2rem}
-    .stack-on .opt span{padding:.45em .9em;font-size:.88rem}
-    .stack-on .opt{margin-bottom:6px}
-    .hint{display:none}
-    .phone{height:min(34svh,280px);min-height:220px;border-radius:34px;padding:7px}
+    :root{--hh:56px}
+    .logo img{height:30px}
+    .kv{grid-template-columns:1fr}
+    .kv-copy{padding:28px 20px 24px}
+    .kv-media{min-height:0;height:56svh}
+    .kv-down{display:none}
+    .poster,.enter,.ex-grid{grid-template-columns:1fr;gap:14px}
+    .ex-side{align-self:stretch;gap:10px}
+    .photo-wrap{margin:0}
+    .ph{box-shadow:0 0 0 5px #fff,0 14px 30px rgba(21,19,31,.3);margin:5px}
+    .tip{display:none}
+    .exfs{display:flex;flex-direction:column;gap:8px;margin:18px 0 0;position:static}
+    .exfs legend{float:left;width:100%;margin-bottom:8px;background:transparent;padding:0;border-radius:0;font-size:1rem}
+    .exfs legend+.opt{clear:both}
+    .opt span{border-radius:12px;box-shadow:0 3px 10px rgba(21,19,31,.25)}
+    .pts{grid-template-columns:1fr;gap:10px}
+    .pts li{min-height:0;padding:.7em 1em;border-top-width:6px}
+    .pts b{font-size:1.2rem}
+    h2,h3,.pts b,.nexts b{font-family:var(--disp-s);font-weight:900;letter-spacing:.01em}
+    .phone-wrap{margin-bottom:-20px;align-self:center}
+    .phone{height:min(25svh,210px);min-height:170px;border-radius:30px;padding:6px}
     .phone .screen{border-radius:28px}
     .phone .sb{height:22px}
     .phone .notch{top:6px;height:11px}
-    .fab{padding:.8em 1.2em;font-size:.95rem}
+    .phone-wrap .cap{position:static;margin-top:.6em}
+    .stack-on .scard{padding:16px}
+    .stack-on .scard h2{font-size:1.3rem}
+    .stack-on .ex-text .lead{display:none}
+    .nexts a{grid-template-columns:1fr auto}
+    .nexts span{grid-column:1/2}
+    .faq-grid{grid-template-columns:1fr}
+    .faq .sec-head{position:static}
+    .hint{display:none}
+    .stack-on .progress{flex-wrap:wrap;height:auto;min-height:var(--bar);padding:2px 0;row-gap:0}
+    .skip{flex-basis:auto}
     .fab small{display:none}
-    .stack-on .stack-pin{padding-bottom:70px}
-    .stack-on .cards{height:calc(100svh - var(--hh) - 150px)}
+    html.stack-pinned .fab,html.stack-pinned .fab.on{opacity:0;visibility:hidden;pointer-events:none}
+    .fab{min-height:48px;padding:.5em 1.2em;font-size:.9375rem}
   }
   @media (prefers-reduced-motion:reduce){ *,*::before,*::after{animation:none!important;transition:none!important} html{scroll-behavior:auto} }
 </style>
@@ -283,154 +331,175 @@
 <header class="site-header">
   <div class="wrap">
     <a class="logo" href="https://shigopita.jp/?utm_source=lp02"><img src="assets/logo.webp" alt="しごピタ ピタッと来る仕事、見つけよう。" width="144" height="45"></a>
-    <a class="btn btn-sm" href="https://shigopita.jp/?utm_source=lp02">無料で診断する</a>
+    <a class="btn btn-sm" href="https://shigopita.jp/?utm_source=lp02&amp;utm_content=header" data-cta="header">診断をはじめる</a>
   </div>
 </header>
 
 <main>
   <section class="kv" aria-labelledby="h-kv">
-    <div class="wrap kv-grid">
-      <div>
-        <p class="eyebrow">職業名のない仕事展</p>
-        <h1 id="h-kv"><span class="nb">適職診断。</span><span class="nb">まずは、職業名を</span><span class="nb">隠してみよう。</span></h1>
-        <p class="lead">なりたい仕事の名前が、まだ浮かばなくても。働く場面の、どこに目がとまるかから考えてみませんか。</p>
-        <p class="def">適職診断は、回答をもとに興味や考え方の傾向を整理し、仕事選びの手がかりにするためのものです。</p>
-        <div class="hero-cta">
-          <a class="btn" href="https://shigopita.jp/?utm_source=lp02&amp;utm_content=kv">画像で適職診断をはじめる</a>
-          <ul class="facts" aria-label="しごピタの概要"><li>40枚をスワイプ</li><li>約2分</li><li>全16タイプ</li><li>無料</li></ul>
-        </div>
-      </div>
-      <div class="media">
-        <div class="kv-visual"><img src="assets/kv-ab.jpg" width="1192" height="1800" alt="「A 自分でつくってみたい」と「B まず飛び込んでみたい」。2つの働く場面を思い浮かべて考える女性" fetchpriority="high"></div>
-        <p class="cap">仕事選びを考えるためのイメージです。実際の診断画面・診断用画像ではありません。</p>
+    <div class="kv-copy">
+      <p class="eyebrow">職業名のない仕事展</p>
+      <h1 id="h-kv"><span class="nb">適職診断。</span><br><span class="nb">まずは、<span class="redact">職業名</span>を</span><br><span class="nb">隠してみよう。</span></h1>
+      <p class="lead">なりたい仕事の名前が、まだ浮かばなくても。働く場面の、どこに目がとまるかから考えてみませんか。</p>
+      <p class="def">適職診断は、回答をもとに興味や考え方の傾向を整理し、仕事選びの手がかりにするためのものです。</p>
+      <div class="hero-cta">
+        <a class="btn" href="https://shigopita.jp/?utm_source=lp02&amp;utm_content=kv" data-cta="kv">診断をはじめる</a>
+        <ul class="facts" aria-label="しごピタの概要"><li>40枚をスワイプ</li><li>約2分</li><li>全16タイプ</li><li>無料</li></ul>
       </div>
     </div>
-    <a class="kv-down" href="#stack" aria-label="仕事展へ進む">仕事展へ<span aria-hidden="true">↓</span></a>
+    <div class="kv-media">
+      <img src="assets/kv-ab.webp" width="1192" height="1800" alt="「A 自分でつくってみたい」と「B まず飛び込んでみたい」。2つの働く場面を思い浮かべて考える女性" fetchpriority="high">
+      <p class="cap">仕事選びを考えるためのイメージです。実際の診断画面・診断用画像ではありません。</p>
+    </div>
+    <a class="kv-down" href="#stack" aria-label="仕事展へ進む">仕事展へ <span aria-hidden="true">↓</span></a>
   </section>
 
   <section class="stack-section" id="stack" aria-label="職業名のない仕事展">
     <div class="stack-pin">
       <div class="cards" id="cards">
 
-
-        <!-- 2 定義と限界 -->
-        <article class="scard flip" data-i="1">
-          <div class="scard-grid">
+        <!-- 1 定義と限界 -->
+        <article class="scard w-ink" data-i="1">
+          <div class="poster">
             <div>
               <p class="eyebrow">適職診断とは</p>
-              <h2>適職診断でわかること。自分で確かめたいこと。</h2>
+              <div class="bars" aria-hidden="true"><i></i><i></i><i></i></div>
+              <h2>適職診断でわかること。<span class="nb">自分で確かめたいこと。</span></h2>
               <p class="lead">適職診断は、回答から興味や考え方の傾向を整理し、仕事選びを考えるために使うものです。</p>
             </div>
             <div class="limit">
               <b>結果は、経験や希望する働き方と照らし合わせて読む</b>
-              <p style="margin:0;color:var(--ink-soft);font-size:.92rem">結果だけでは、仕事は決められません。この先の「仕事展」は、仕事選びを考えるためのイメージです。診断画面ではなく、採点やタイプ判定もありません。</p>
+              <p>結果だけでは、仕事は決められません。この先の「仕事展」は、仕事選びを考えるためのイメージです。診断画面ではなく、採点やタイプ判定もありません。</p>
             </div>
           </div>
         </article>
 
-        <!-- 3 展示01 -->
-        <article class="scard" data-i="2" data-ex>
-          <div class="scard-grid">
-            <div class="media"><div class="ph"><img src="assets/scene2.jpg" width="1400" height="1050" alt="紙を並べ替える手元と、隣でそれを見ている人、机の周りの空間が見える場面" loading="lazy"></div></div>
-            <div>
-              <p class="eyebrow">展示 01 — 同じ場面</p>
-              <h2>同じ場面。あなたは、どこを見る？</h2>
-              <p class="lead" style="margin-top:.5em">紙を動かす手元、隣にいる人、机の周りの空間。</p>
-              <ul class="chips" aria-label="観察の言葉"><li>手元</li><li>隣の人</li><li>空間</li></ul>
-              <fieldset><legend>この場面の、どこに目がとまった？</legend>
-                <label class="opt"><input type="radio" name="e1"><span>紙を並べ替える手元</span></label>
-                <label class="opt"><input type="radio" name="e1"><span>隣で紙を見ている人</span></label>
-                <label class="opt"><input type="radio" name="e1"><span>机の周りの空間</span></label>
-                <label class="opt"><input type="radio" name="e1"><span>まだわからない</span></label>
+        <!-- 2 展示01 -->
+        <article class="scard w-pink" data-i="2" data-ex>
+          <div class="ex-grid">
+            <div class="ex-text">
+              <p class="eyebrow">同じ場面</p>
+              <h2>同じ場面。<span class="nb">あなたは、どこを見る？</span></h2>
+              <p class="lead">紙を動かす手元、隣にいる人、机の周りの空間。</p>
+            </div>
+            <div class="photo-wrap">
+              <div class="ph"><img src="assets/scene2.webp" width="1400" height="1050" alt="紙を並べ替える手元と、隣でそれを見ている人、机の周りの空間が見える場面"></div>
+              <fieldset class="exfs"><legend>この場面の、どこに目がとまった？</legend>
+                <label class="opt"><input type="radio" name="e1" data-kind="work" data-hs="44,63,19,21"><span>紙を並べ替える手元</span></label>
+                <label class="opt"><input type="radio" name="e1" data-kind="people" data-hs="36,5,24,48"><span>隣で紙を見ている人</span></label>
+                <label class="opt"><input type="radio" name="e1" data-kind="place" data-hs="62,40,36,56"><span>机の周りの空間</span></label>
+                <label class="opt"><input type="radio" name="e1" data-kind="none"><span>まだわからない</span></label>
               </fieldset>
-              <div class="after" role="status" aria-live="polite"><b>そこを見て、何をしてみたい、何を確かめたいと感じましたか？</b><textarea aria-label="書き留める欄（任意）" rows="2"></textarea><small>書き留める欄は任意で、保存・送信はされません。採点やタイプ判定はありません。</small></div>
+            </div>
+            <div class="ex-side">
+              <div class="plate"><b>展示 01</b><span><span class="nb"><span class="redact">職業名</span>は、</span> <span class="nb">あえて書いていません</span></span></div>
+              <p class="tip">言葉に触れると、その場所が先にうっすら光ります。</p>
+              <div class="after" role="status" aria-live="polite"><b>そこを見て、何をしてみたい、何を確かめたいと感じましたか？</b><textarea aria-label="書き留める欄（任意）" rows="2" placeholder="気づいたことを自由に（任意）" autocomplete="off" data-clarity-mask="True"></textarea><small>書き留める欄は任意で、保存・送信はされません。採点やタイプ判定はありません。</small></div>
             </div>
           </div>
         </article>
 
-        <!-- 4 展示02 -->
-        <article class="scard flip" data-i="3" data-ex>
-          <div class="scard-grid">
-            <div class="media"><div class="ph"><img src="assets/tsukuru.jpg" width="1400" height="1050" alt="机の上で無地の紙を折っている手元と、それを見守る人" loading="lazy"></div></div>
-            <div>
-              <p class="eyebrow">展示 02 — つくる</p>
+        <!-- 3 展示02 -->
+        <article class="scard w-purple" data-i="3" data-ex>
+          <div class="ex-grid">
+            <div class="ex-text">
+              <p class="eyebrow">つくる</p>
               <h2>形が変わっていく、その途中。</h2>
-              <p class="lead" style="margin-top:.5em">無地の紙を折り、試している手元。</p>
-              <ul class="chips" aria-label="観察の言葉"><li>試す</li><li>整える</li></ul>
-              <fieldset><legend>この場面の、どこに目がとまった？</legend>
-                <label class="opt"><input type="radio" name="e2"><span>折っている手元</span></label>
-                <label class="opt"><input type="radio" name="e2"><span>見守る人</span></label>
-                <label class="opt"><input type="radio" name="e2"><span>机の上の紙</span></label>
+              <p class="lead">無地の紙を折り、試している手元。</p>
+            </div>
+            <div class="photo-wrap">
+              <div class="ph"><img src="assets/tsukuru.webp" width="1400" height="1050" alt="机の上で無地の紙を折っている手元と、それを見守る人"></div>
+              <fieldset class="exfs"><legend>この場面の、どこに目がとまった？</legend>
+                <label class="opt"><input type="radio" name="e2" data-kind="work" data-hs="36,52,24,29"><span>折っている手元</span></label>
+                <label class="opt"><input type="radio" name="e2" data-kind="people" data-hs="70,13,30,87"><span>見守る人</span></label>
+                <label class="opt"><input type="radio" name="e2" data-kind="place" data-hs="32,34,43,24"><span>机の上の紙</span></label>
               </fieldset>
-              <div class="after" role="status" aria-live="polite"><b>そこを見て、何をしてみたい、何を確かめたいと感じましたか？</b><textarea aria-label="書き留める欄（任意）" rows="2"></textarea><small>書き留める欄は任意で、保存・送信はされません。</small></div>
+            </div>
+            <div class="ex-side">
+              <div class="plate"><b>展示 02</b><span><span class="nb"><span class="redact">職業名</span>は、</span> <span class="nb">あえて書いていません</span></span></div>
+              <p class="tip">言葉に触れると、その場所が先にうっすら光ります。</p>
+              <div class="after" role="status" aria-live="polite"><b>そこを見て、何をしてみたい、何を確かめたいと感じましたか？</b><textarea aria-label="書き留める欄（任意）" rows="2" placeholder="気づいたことを自由に（任意）" autocomplete="off" data-clarity-mask="True"></textarea><small>書き留める欄は任意で、保存・送信はされません。</small></div>
             </div>
           </div>
         </article>
 
-        <!-- 5 展示03 -->
-        <article class="scard" data-i="4" data-ex>
-          <div class="scard-grid">
-            <div class="media"><div class="ph"><img src="assets/tsutaeru.jpg" width="1400" height="1050" alt="紙を指で示しながら言葉を交わし、もう一人が耳を傾けている場面" loading="lazy"></div></div>
-            <div>
-              <p class="eyebrow">展示 03 — 伝える</p>
+        <!-- 4 展示03 -->
+        <article class="scard w-blue" data-i="4" data-ex>
+          <div class="ex-grid">
+            <div class="ex-text">
+              <p class="eyebrow">伝える</p>
               <h2>指先と言葉が、紙の上で交わる。</h2>
-              <p class="lead" style="margin-top:.5em">紙を指しながら言葉を交わす途中。</p>
-              <ul class="chips" aria-label="観察の言葉"><li>話す</li><li>聞く</li></ul>
-              <fieldset><legend>この場面の、どこに目がとまった？</legend>
-                <label class="opt"><input type="radio" name="e3"><span>指で示す手</span></label>
-                <label class="opt"><input type="radio" name="e3"><span>話を聞く人</span></label>
-                <label class="opt"><input type="radio" name="e3"><span>机をはさんだ距離</span></label>
+              <p class="lead">紙を指しながら言葉を交わす途中。</p>
+            </div>
+            <div class="photo-wrap">
+              <div class="ph"><img src="assets/tsutaeru.webp" width="1400" height="1050" alt="紙を指で示しながら言葉を交わし、もう一人が耳を傾けている場面"></div>
+              <fieldset class="exfs"><legend>この場面の、どこに目がとまった？</legend>
+                <label class="opt"><input type="radio" name="e3" data-kind="work" data-hs="41,55,12,22"><span>指で示す手</span></label>
+                <label class="opt"><input type="radio" name="e3" data-kind="people" data-hs="51,17,32,46"><span>話を聞く人</span></label>
+                <label class="opt"><input type="radio" name="e3" data-kind="place" data-hs="40,28,15,36"><span>机をはさんだ距離</span></label>
               </fieldset>
-              <div class="after" role="status" aria-live="polite"><b>そこを見て、何をしてみたい、何を確かめたいと感じましたか？</b><textarea aria-label="書き留める欄（任意）" rows="2"></textarea><small>書き留める欄は任意で、保存・送信はされません。</small></div>
+            </div>
+            <div class="ex-side">
+              <div class="plate"><b>展示 03</b><span><span class="nb"><span class="redact">職業名</span>は、</span> <span class="nb">あえて書いていません</span></span></div>
+              <p class="tip">言葉に触れると、その場所が先にうっすら光ります。</p>
+              <div class="after" role="status" aria-live="polite"><b>そこを見て、何をしてみたい、何を確かめたいと感じましたか？</b><textarea aria-label="書き留める欄（任意）" rows="2" placeholder="気づいたことを自由に（任意）" autocomplete="off" data-clarity-mask="True"></textarea><small>書き留める欄は任意で、保存・送信はされません。</small></div>
             </div>
           </div>
         </article>
 
-        <!-- 6 展示04 -->
-        <article class="scard flip" data-i="5" data-ex>
-          <div class="scard-grid">
-            <div class="media"><div class="ph"><img src="assets/sasaeru.jpg" width="1400" height="1050" alt="一人が紙を広げ、もう一人がそばに材料のトレーを寄せている場面" loading="lazy"></div></div>
-            <div>
-              <p class="eyebrow">展示 04 — 支える</p>
+        <!-- 5 展示04 -->
+        <article class="scard w-cyan" data-i="5" data-ex>
+          <div class="ex-grid">
+            <div class="ex-text">
+              <p class="eyebrow">支える</p>
               <h2>そっと、場所を空ける。</h2>
-              <p class="lead" style="margin-top:.5em">そばで材料のトレーを寄せる途中。</p>
-              <ul class="chips" aria-label="観察の言葉"><li>整える</li><li>寄り添う</li></ul>
-              <fieldset><legend>この場面の、どこに目がとまった？</legend>
-                <label class="opt"><input type="radio" name="e4"><span>トレーを寄せる手</span></label>
-                <label class="opt"><input type="radio" name="e4"><span>作業している人</span></label>
-                <label class="opt"><input type="radio" name="e4"><span>机の上の余白</span></label>
+              <p class="lead">そばで材料のトレーを寄せる途中。</p>
+            </div>
+            <div class="photo-wrap">
+              <div class="ph"><img src="assets/sasaeru.webp" width="1400" height="1050" alt="一人が紙を広げ、もう一人がそばに材料のトレーを寄せている場面"></div>
+              <fieldset class="exfs"><legend>この場面の、どこに目がとまった？</legend>
+                <label class="opt"><input type="radio" name="e4" data-kind="work" data-hs="60,57,32,22"><span>トレーを寄せる手</span></label>
+                <label class="opt"><input type="radio" name="e4" data-kind="people" data-hs="17,17,38,64"><span>作業している人</span></label>
+                <label class="opt"><input type="radio" name="e4" data-kind="place" data-hs="4,83,92,16"><span>机の上の余白</span></label>
               </fieldset>
-              <div class="after" role="status" aria-live="polite"><b>そこを見て、何をしてみたい、何を確かめたいと感じましたか？</b><textarea aria-label="書き留める欄（任意）" rows="2"></textarea><small>書き留める欄は任意で、保存・送信はされません。</small></div>
+            </div>
+            <div class="ex-side">
+              <div class="plate"><b>展示 04</b><span><span class="nb"><span class="redact">職業名</span>は、</span> <span class="nb">あえて書いていません</span></span></div>
+              <p class="tip">言葉に触れると、その場所が先にうっすら光ります。</p>
+              <div class="after" role="status" aria-live="polite"><b>そこを見て、何をしてみたい、何を確かめたいと感じましたか？</b><textarea aria-label="書き留める欄（任意）" rows="2" placeholder="気づいたことを自由に（任意）" autocomplete="off" data-clarity-mask="True"></textarea><small>書き留める欄は任意で、保存・送信はされません。</small></div>
             </div>
           </div>
         </article>
 
-        <!-- 7 3視点 -->
-        <article class="scard" data-i="6">
-          <p class="eyebrow">気になった理由を言葉に</p>
-          <h2>「気になる」のは、作業？ 人？ その場所？</h2>
-          <p class="lead">その場面を選んだ理由を、3つの視点から考えてみませんか。しっくりくる言葉がなければ、今はそのままでも。</p>
-          <ul class="pts">
-            <li><b>仕事内容</b>どんな作業をしてみたい？</li>
-            <li><b>一緒に働く人</b>誰と、どんな距離で関わりたい？</li>
-            <li><b>環境</b>どんな場所や進め方なら試したい？</li>
-          </ul>
+        <!-- 6 3視点 -->
+        <article class="scard w-paper" data-i="6">
+          <div class="views-wrap">
+            <p class="eyebrow">気になった理由を言葉に</p>
+            <h2>「気になる」のは、<span class="nb">作業？ 人？ その場所？</span></h2>
+            <p class="lead">その場面を選んだ理由を、3つの視点から考えてみませんか。しっくりくる言葉がなければ、今はそのままでも。</p>
+            <ul class="pts">
+              <li data-kind="work"><b>仕事内容</b>どんな作業をしてみたい？</li>
+              <li data-kind="people"><b>一緒に働く人</b>誰と、どんな距離で関わりたい？</li>
+              <li data-kind="place"><b>環境</b>どんな場所や進め方なら試したい？</li>
+            </ul>
+            <p class="pts-note" id="ptsNote" aria-live="polite"></p>
+          </div>
         </article>
 
-        <!-- 8 しごピタへ -->
-        <article class="scard flip" data-i="7">
-          <div class="scard-grid">
+        <!-- 7 しごピタへ -->
+        <article class="scard w-grad" data-i="7">
+          <div class="enter">
             <div>
               <p class="eyebrow">しごピタの診断へ</p>
-              <h2>言葉に迷ったら、画像を選ぶ入口へ。</h2>
-              <p class="lead">しごピタは、40枚の画像をスワイプして回答する適職診断です。約2分・無料で試せて、結果は16タイプで示されます。</p>
+              <h2>言葉に迷ったら、<span class="nb">画像を選ぶ入口へ。</span></h2>
+              <p class="lead">しごピタは、40枚の画像をスワイプして回答する適職診断です。約2分・無料で試せて、結果は16タイプで示されます。診断のあとは、公式LINEから、メンターに転職を無料で相談できます。</p>
               <div class="hero-cta">
-                <a class="btn" href="https://shigopita.jp/?utm_source=lp02">画像で適職診断をはじめる</a>
+                <a class="btn btn-white" href="https://shigopita.jp/?utm_source=lp02&amp;utm_content=card" data-cta="card">診断をはじめる</a>
                 <a class="btn btn-line" href="https://about.shigopita.jp/">しごピタとは</a>
               </div>
             </div>
             <figure class="phone-wrap">
-              <div class="phone"><div class="screen"><div class="sb"><span class="notch" aria-hidden="true"></span></div><img src="assets/app-top.jpg" width="871" height="1500" alt="しごピタの診断スタート画面。40枚の画像を選んで、約2分で仕事タイプがわかる" loading="lazy"></div></div>
+              <div class="phone"><div class="screen"><div class="sb"><span class="notch" aria-hidden="true"></span></div><img src="assets/app-top.webp" width="871" height="1500" alt="しごピタの診断スタート画面。40枚の画像を選んで、約2分で仕事タイプがわかる"></div></div>
               <figcaption class="cap">しごピタの診断スタート画面</figcaption>
             </figure>
           </div>
@@ -441,31 +510,35 @@
         <span class="count" id="count" aria-live="off">01 / 07</span>
         <div class="dots" id="dots"></div>
         <span class="hint">スクロールでカードが進みます</span>
+        <a class="skip" href="#h-next">カードをとばす</a>
       </div>
     </div>
   </section>
 
   <section class="sec" aria-labelledby="h-next">
     <div class="wrap">
-      <div class="sec-head"><h2 id="h-next">結果の言葉に、思い当たる場面はありますか。</h2><p>診断で気になった言葉を、ここで目にとまった場面や、これまでの経験と並べてみてください。しっくりくるところも、違うと感じるところも、次に確かめたいこととして残してみませんか。</p></div>
+      <div class="sec-head"><h2 id="h-next">結果の言葉に、<span class="nb">思い当たる場面はありますか。</span></h2><p>診断で気になった言葉を、ここで目にとまった場面や、これまでの経験と並べてみてください。しっくりくるところも、違うと感じるところも、次に確かめたいこととして残してみませんか。</p></div>
       <ul class="nexts">
-        <li><a href="https://type16.shigopita.jp/"><small>16タイプ全解説</small><b>結果のタイプを詳しく知る</b><span>各タイプの強み・向いている仕事・力が出る環境を読む。</span></a></li>
-        <li><a href="https://mikeiken.shigopita.jp/"><small>未経験</small><b>未経験の仕事を考える</b><span>経験がなくても、気になる仕事を考える入口。</span></a></li>
-        <li><a href="https://mayoi.shigopita.jp/"><small>迷い</small><b>仕事選びの迷いを整理する</b><span>迷う理由をほどいて、次の一歩を考える。</span></a></li>
+        <li><a href="https://type16.shigopita.jp/"><div><small>16タイプ全解説</small><b>結果のタイプを詳しく知る</b></div><span>各タイプの強み・向いている仕事・力が出る環境を読む。</span><i aria-hidden="true">→</i></a></li>
+        <li><a href="https://mikeiken.shigopita.jp/"><div><small>未経験</small><b>未経験の仕事を考える</b></div><span>経験がなくても、気になる仕事を考える入口。</span><i aria-hidden="true">→</i></a></li>
+        <li><a href="https://mayoi.shigopita.jp/"><div><small>迷い</small><b>仕事選びの迷いを整理する</b></div><span>迷う理由をほどいて、次の一歩を考える。</span><i aria-hidden="true">→</i></a></li>
       </ul>
     </div>
   </section>
 
   <section class="sec faq" aria-labelledby="h-faq">
-    <div class="wrap">
-      <div class="sec-head"><h2 id="h-faq">適職診断を受ける前に、気になること。</h2></div>
-      <details open><summary>適職診断とは何ですか？</summary><p>適職診断は、回答をもとに興味や考え方の傾向を整理し、仕事選びの手がかりにするためのものです。結果だけで仕事を決めず、これまでの経験や希望する働き方と照らし合わせて使います。</p></details>
-      <details><summary>しごピタの診断は無料ですか？</summary><p>はい、診断は無料で受けられます。</p></details>
-      <details><summary>どのくらい時間がかかりますか？</summary><p>所要時間の目安は約2分です。文章の質問に答える形式ではなく、40枚の画像をスワイプして回答します。結果は16タイプで示されます。</p></details>
-      <details><summary>このページの場面カードも診断ですか？</summary><p>いいえ。場面カードは、仕事選びを考えるための展示です。選択による採点やタイプ判定はありません。しごピタの診断は「画像で適職診断をはじめる」から進めます。</p></details>
-      <details><summary>診断結果だけで仕事を決めてもよいですか？</summary><p>結果は仕事選びの参考情報です。気になった言葉を、これまでの経験や希望する働き方と照らし合わせてみてください。候補の仕事は、仕事内容や働く環境も調べて考えることをおすすめします。</p></details>
-      <details><summary>結果がしっくりこないときは？</summary><p>違うと感じた言葉と、その理由を書き留めてみてください。どんな場面や条件なら納得できそうかを考える材料になります。</p></details>
-      <details><summary>転職するつもりがなくても受けられますか？</summary><p>はい。自己分析や、今の仕事との相性を確かめる目的でも受けられます。</p></details>
+    <div class="wrap faq-grid">
+      <div class="sec-head"><h2 id="h-faq">適職診断を受ける前に、<span class="nb">気になること。</span></h2></div>
+      <div>
+        <details open><summary>適職診断とは何ですか？</summary><p>適職診断は、回答をもとに興味や考え方の傾向を整理し、仕事選びの手がかりにするためのものです。結果だけで仕事を決めず、これまでの経験や希望する働き方と照らし合わせて使います。</p></details>
+        <details><summary>しごピタの診断は無料ですか？</summary><p>はい、診断は無料で受けられます。</p></details>
+        <details><summary>どのくらい時間がかかりますか？</summary><p>所要時間の目安は約2分です。文章の質問に答える形式ではなく、40枚の画像をスワイプして回答します。結果は16タイプで示されます。</p></details>
+        <details><summary>このページの場面カードも診断ですか？</summary><p>いいえ。場面カードは、仕事選びを考えるための展示です。選択による採点やタイプ判定はありません。しごピタの診断は「診断をはじめる」から進めます。</p></details>
+        <details><summary>診断結果だけで仕事を決めてもよいですか？</summary><p>結果は仕事選びの参考情報です。気になった言葉を、これまでの経験や希望する働き方と照らし合わせてみてください。候補の仕事は、仕事内容や働く環境も調べて考えることをおすすめします。</p></details>
+        <details><summary>結果がしっくりこないときは？</summary><p>違うと感じた言葉と、その理由を書き留めてみてください。どんな場面や条件なら納得できそうかを考える材料になります。</p></details>
+        <details><summary>診断のあと、相談はできますか？</summary><p>はい。診断のあと、公式LINEから、メンターに転職の相談ができます。相談は無料です。</p></details>
+        <details><summary>転職するつもりがなくても受けられますか？</summary><p>はい。自己分析や、今の仕事との相性を確かめる目的でも受けられます。</p></details>
+      </div>
     </div>
   </section>
 
@@ -473,8 +546,8 @@
     <div class="wrap">
       <h2 id="h-final"><span class="nb">仕事の名前が浮かぶ前に、</span><span class="nb">気になる場面から。</span></h2>
       <p>まだ言葉にならないままでも、画像を眺めるところから始めてみませんか。</p>
-      <a class="btn btn-white" href="https://shigopita.jp/?utm_source=lp02">画像で適職診断をはじめる</a>
-      <p style="margin-top:1.2em;font-size:.85rem">無料・約2分。結果は、可能性を広げるための参考情報です。</p>
+      <a class="btn btn-white" href="https://shigopita.jp/?utm_source=lp02&amp;utm_content=final" data-cta="final">診断をはじめる</a>
+      <p style="margin-top:1.2em;font-size:.9375rem">無料・約2分。結果は、可能性を広げるための参考情報です。</p>
     </div>
   </section>
 </main>
@@ -485,7 +558,7 @@
     <div class="row">
       <a class="logo" href="https://shigopita.jp/?utm_source=lp02"><img src="assets/logo.webp" alt="しごピタ ピタッと来る仕事、見つけよう。" width="144" height="45"></a>
       <nav aria-label="フッター">
-        <a href="https://shigopita.jp/?utm_source=lp02">診断を始める</a>
+        <a href="https://shigopita.jp/?utm_source=lp02&amp;utm_content=footer" data-cta="footer">診断をはじめる</a>
         <a href="https://about.shigopita.jp/">しごピタとは</a>
         <a href="https://type16.shigopita.jp/">16タイプ全解説</a>
         <a href="https://blog.shigopita.jp">ブログ</a>
@@ -496,7 +569,7 @@
   </div>
 </footer>
 
-<a class="fab" id="fab" href="https://shigopita.jp/?utm_source=lp02&amp;utm_content=fab" aria-label="画像で適職診断をはじめる（無料・約2分）">
+<a class="fab" id="fab" href="https://shigopita.jp/?utm_source=lp02&amp;utm_content=fab" data-cta="fab" aria-label="診断をはじめる（無料・約2分）">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 0C12.8 7 17 11.2 24 12C17 12.8 12.8 17 12 24C11.2 17 7 12.8 0 12C7 11.2 11.2 7 12 0Z"/></svg>
   <span>診断をはじめる<small>無料・約2分</small></span>
 </a>
@@ -510,25 +583,74 @@
     [document.querySelector('.final'),document.querySelector('footer')].forEach(function(el){if(el){io.observe(el);}});
   }
   window.addEventListener('scroll',upd,{passive:true}); upd();
-  f.addEventListener('click',function(){window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'lp02_cta_click',cta_position:'fab'});});
+  document.addEventListener('click',function(e){ var a=e.target.closest&&e.target.closest('a[data-cta]'); if(!a){return;} window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'lp02_cta_click',cta_position:a.getAttribute('data-cta')}); });
 })();
 </script>
 <script>
-/* 選択肢：選ぶと「選択後」の問いが開く（保存・送信なし） */
-document.querySelectorAll('[data-ex]').forEach(function(card){
-  var after=card.querySelector('.after'), ph=card.querySelector('.ph');
-  card.addEventListener('change',function(e){
-    if(e.target.matches('input[type=radio]')){ after.classList.add('on'); ph.classList.add('sel'); }
+/* 選択肢：写真の上のラベルに触れると先に光り、選ぶと該当箇所が光り、6枚目に映る。保存・送信なし */
+(function(){
+  var exCards=[].slice.call(document.querySelectorAll('[data-ex]'));
+  function geo(r){ var v=(r.getAttribute('data-hs')||'').split(',').map(Number); return v.length===4?v:null; }
+  exCards.forEach(function(card){
+    var img=card.querySelector('.ph img'), box=document.createElement('div'), hs=document.createElement('div');
+    box.className='imgbox'; hs.className='hs'; hs.setAttribute('aria-hidden','true');
+    img.parentNode.insertBefore(box,img); box.appendChild(img); box.appendChild(hs); card._hs=hs;
+    function place(v){ hs.style.left=v[0]+'%'; hs.style.top=v[1]+'%'; hs.style.width=v[2]+'%'; hs.style.height=v[3]+'%'; }
+    function restore(){ var c=card.querySelector('input:checked'), v=c&&geo(c); hs.classList.remove('peek'); if(v){ place(v); hs.classList.add('on'); } else { hs.classList.remove('on'); } }
+    [].forEach.call(card.querySelectorAll('.opt'),function(o,i){
+      var r=o.querySelector('input'), v=geo(r);
+      if(v){ o.style.setProperty('--cx',Math.min(Math.max(v[0]+v[2]/2,20),80)); o.style.setProperty('--cy',Math.min(Math.max(v[1]+v[3]/2,12),88)); }
+      else{ o.style.setProperty('--cx',84); o.style.setProperty('--cy',92); }
+      function peek(){ var g=geo(r); if(!g||r.checked){return;} place(g); hs.classList.remove('on'); hs.classList.add('peek'); }
+      o.addEventListener('mouseenter',peek); o.addEventListener('focusin',peek);
+      o.addEventListener('mouseleave',restore); o.addEventListener('focusout',restore);
+    });
+    card.addEventListener('change',function(e){
+      var r=e.target; if(!r.matches||!r.matches('input[type=radio]')){return;}
+      card.querySelector('.after').classList.add('on');
+      var v=geo(r); hs.classList.remove('peek');
+      if(v){ place(v); hs.classList.add('on'); } else{ hs.classList.remove('on'); }
+      render();
+      [0,380].forEach(function(t){ setTimeout(function(){ if(window.__lp2measure){window.__lp2measure();} },t); });
+    });
   });
-});
+  var note=document.getElementById('ptsNote');
+  function render(){
+    var s={work:[],people:[],place:[]};
+    exCards.forEach(function(card,i){ var r=card.querySelector('input:checked'); if(r&&s[r.getAttribute('data-kind')]){ s[r.getAttribute('data-kind')].push('展示0'+(i+1)); } });
+    var total=s.work.length+s.people.length+s.place.length;
+    [].forEach.call(document.querySelectorAll('.pts li'),function(li){
+      var list=s[li.getAttribute('data-kind')]||[], e=li.querySelector('.seen');
+      li.classList.toggle('hit',list.length>0);
+      if(list.length){ if(!e){e=document.createElement('em');e.className='seen';li.appendChild(e);} e.textContent=list.join('・')+'で目がとまりました'; }
+      else if(e){ e.remove(); }
+    });
+    if(!note){return;}
+    if(total===0){ note.innerHTML='まだ選んでいなくても大丈夫です。気になった場面があれば、戻って選べます。<button type="button" class="linkbtn" data-act="goto">展示01から選ぶ</button>'; }
+    else{ note.innerHTML='選んだ場面だけを映しています。向き不向きの結果ではなく、目のとまり方の記録です。<button type="button" class="linkbtn" data-act="reset">選びなおす</button>'; }
+  }
+  function reset(){
+    exCards.forEach(function(card){
+      [].forEach.call(card.querySelectorAll('input:checked'),function(r){r.checked=false;});
+      card.querySelector('.after').classList.remove('on'); card._hs.classList.remove('on');
+    });
+    render();
+  }
+  function goto(i){
+    if(window.__lp2goto){ window.__lp2goto(i); }
+    else{ var c=document.querySelectorAll('.scard')[i]; if(c){c.scrollIntoView({behavior:'smooth',block:'center'});} }
+  }
+  if(note){ note.addEventListener('click',function(e){ var a=e.target.getAttribute&&e.target.getAttribute('data-act'); if(a==='reset'){reset();} if(a==='goto'){goto(1);} }); }
+  render();
+})();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 <script>
-/* スクロール連動のカードスワイプ。GSAPが読めない／モーション低減のときは縦に並べるだけ */
+/* スクロール連動のカードスワイプ。GSAPが読めない／モーション低減／画面高620px未満のときは縦に並べるだけ */
 window.addEventListener('load',function(){
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(reduce||!window.gsap||!window.ScrollTrigger){return;}
+  if(reduce||!window.gsap||!window.ScrollTrigger||window.innerHeight<620){return;}
   gsap.registerPlugin(ScrollTrigger);
   var root=document.documentElement; root.classList.add('stack-on');
   var cards=[].slice.call(document.querySelectorAll('.scard')), n=cards.length;
@@ -536,27 +658,43 @@ window.addEventListener('load',function(){
   cards.forEach(function(c,i){
     c.style.zIndex=String(n-i);
     var b=document.createElement('button'); b.type='button'; b.className='dot'; b.setAttribute('aria-label',(i+1)+'枚目のカードへ');
-    b.addEventListener('click',function(){ var st=tl.scrollTrigger; var y=st.start+(st.end-st.start)*(i/(n-1)); window.scrollTo({top:y,behavior:'smooth'}); });
+    c.setAttribute('tabindex','-1');
+    b.addEventListener('click',function(){ goto(i,true); });
     dots.appendChild(b); dotEls.push(b);
   });
+  /* カードへ移動。キーボード操作のため、移動が終わったら、そのカードへフォーカスを移す */
+  function goto(i,focus){
+    var st=tl.scrollTrigger, y=st.start+(st.end-st.start)*(i/total); window.scrollTo({top:y,behavior:'smooth'});
+    if(focus){ var done=false, f=function(){ if(done){return;} done=true; cards[i].focus({preventScroll:true}); };
+      if('onscrollend' in window){ window.addEventListener('scrollend',function h(){ window.removeEventListener('scrollend',h); setTimeout(f,650); }); }
+      setTimeout(f,1800); }
+  }
   function mark(cur){
+    cards.forEach(function(c,j){ if(j===cur){ c.removeAttribute('inert'); } else { c.setAttribute('inert',''); } });
     dotEls.forEach(function(d,i){ d.setAttribute('aria-current', i===cur?'true':'false'); });
     count.textContent=String(cur+1).padStart(2,'0')+' / '+String(n).padStart(2,'0');
   }
   function measure(){ cards.forEach(function(c){ c.classList.toggle('can-scroll', c.scrollHeight>c.clientHeight+4); }); }
-  gsap.set(cards,{transformOrigin:'50% 80%'});
-  cards.forEach(function(c,i){ if(i===1){gsap.set(c,{scale:.94,y:26,'--veil':.9});} if(i>=2){gsap.set(c,{autoAlpha:0,scale:.9,y:52,'--veil':.9});} });
-  var steps=n-1, per=Math.max(window.innerHeight*0.9,520);
-  var tl=gsap.timeline({defaults:{ease:'none'},scrollTrigger:{trigger:'#stack',start:'top top',end:function(){return '+='+(steps*per);},pin:'.stack-pin',pinSpacing:true,scrub:.6,anticipatePin:1,invalidateOnRefresh:true,
-    onUpdate:function(self){ mark(Math.min(n-1,Math.round(self.progress*steps))); },
+  gsap.set(cards,{transformOrigin:'50% 100%'});
+  cards.forEach(function(c,i){ if(i===1){gsap.set(c,{scale:.95,y:28,'--veil':.55});} if(i>=2){gsap.set(c,{autoAlpha:0,scale:.9,y:56,'--veil':.55});} });
+  /* 1枚めくるごとのスクロール量（前: 画面高の0.9倍）を1.3倍に。最後の7枚目は、出そろってからさらに1.6枚分とどまる */
+  var steps=n-1, hold=1.6, total=steps+hold, per=Math.max(window.innerHeight*1.3,700);
+  var tl=gsap.timeline({defaults:{ease:'none'},scrollTrigger:{trigger:'#stack',start:'top top',end:function(){return '+='+(total*per);},pin:'.stack-pin',pinSpacing:true,scrub:.5,anticipatePin:1,invalidateOnRefresh:true,
+    onUpdate:function(self){ mark(Math.min(n-1,Math.round(self.progress*total))); },
     onRefresh:measure}});
   cards.forEach(function(c,i){
     if(i>=n-1){return;}
     var dir=(i%2===0)?1:-1;
-    tl.to(c,{xPercent:dir*125,rotation:dir*14,autoAlpha:0,duration:1,ease:'power2.in'},i);
+    tl.to(c,{xPercent:dir*135,rotation:dir*9,autoAlpha:0,duration:1,ease:'power3.in'},i);
     tl.to(cards[i+1],{autoAlpha:1,scale:1,y:0,'--veil':0,duration:1},i);
-    if(cards[i+2]){ tl.to(cards[i+2],{autoAlpha:1,scale:.94,y:26,duration:1},i); }
+    if(cards[i+2]){ tl.to(cards[i+2],{autoAlpha:1,scale:.95,y:28,duration:1},i); }
   });
+  tl.to({},{duration:hold},steps);
+  /* 束がピン留めされている間（前後の余白を含む）は、右下ボタンを重ならないよう隠す（スマホ幅のみCSSで有効） */
+  function pinned(){ var st=tl.scrollTrigger, y=window.scrollY; root.classList.toggle('stack-pinned', y>st.start-140 && y<st.end+110); }
+  window.addEventListener('scroll',pinned,{passive:true}); window.addEventListener('resize',pinned); pinned();
+  window.__lp2measure=measure;
+  window.__lp2goto=function(i){ goto(i,true); };
   mark(0); measure();
   window.addEventListener('resize',measure);
 });
