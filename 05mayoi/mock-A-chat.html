@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LP05 モックA：迷いのチャット</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink:#E9A9CF; --blue:#A4B3EC; --purple:#D2AEEA;
+  --ink:#2B2540; --ink2:#5C5470; --card:#fff; --accent:#C93C94;
+  --grad:linear-gradient(135deg,#F06AB4 0%,#B58BF0 55%,#6BB8FF 100%);
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN",system-ui,sans-serif;color:var(--ink);background:#F4E4F1;min-height:100vh}
+.wall{position:fixed;inset:0;z-index:-1;background:#F3DDEC url(../04mikeiken/assets/wall-pink.webp) center/cover;transition:background-color .9s}
+.wall::after{content:"";position:absolute;inset:0;background:rgba(255,255,255,.52)}
+header{background:rgba(255,255,255,.92)!important}
+header img{mix-blend-mode:multiply}
+body[data-tone="blue"] .wall{background-color:#DDE3F8}
+body[data-tone="purple"] .wall{background-color:#EADCF5}
+.wrap{max-width:560px;margin:0 auto;padding:0 16px 140px}
+header{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;max-width:560px;margin:0 auto;backdrop-filter:blur(10px);background:rgba(255,255,255,.55);border-radius:0 0 18px 18px}
+header img{height:26px}
+header a{font-weight:900;font-size:13px;color:#fff;background:var(--grad);padding:9px 14px;border-radius:99px;text-decoration:none}
+.hero{padding:72px 4px 28px;text-align:left}
+.hero small{display:inline-block;font-weight:700;font-size:13px;color:var(--accent);background:#fff;padding:6px 12px;border-radius:99px;margin-bottom:16px}
+.hero h1{font-family:"Dela Gothic One","Zen Maru Gothic",sans-serif;font-weight:400;font-size:clamp(30px,8.4vw,44px);line-height:1.35;letter-spacing:.02em}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%,#fff 62%)}
+.hero p{margin-top:16px;color:var(--ink2);line-height:1.9;font-weight:500}
+.hint{display:flex;align-items:center;gap:8px;margin-top:22px;color:var(--ink2);font-size:13px;font-weight:700}
+.hint i{display:inline-block;width:10px;height:10px;border-right:3px solid var(--accent);border-bottom:3px solid var(--accent);transform:rotate(45deg);animation:bob 1.4s ease-in-out infinite}
+@keyframes bob{50%{transform:rotate(45deg) translate(3px,3px)}}
+
+.chat{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+.row{display:flex;gap:10px;align-items:flex-end;opacity:0;transform:translateY(14px) scale(.98);transition:opacity .45s,transform .45s}
+.row.in{opacity:1;transform:none}
+.row.me{justify-content:flex-end}
+.av{flex:none;width:36px;height:36px;border-radius:50%;background:var(--grad);display:grid;place-items:center;color:#fff;font-weight:900;font-size:15px;box-shadow:0 4px 10px rgba(180,120,220,.35)}
+.b{max-width:78%;padding:13px 16px;border-radius:20px;line-height:1.75;font-size:16px;font-weight:700;box-shadow:0 6px 18px rgba(120,80,150,.12)}
+.row.sg .b{background:#fff;border-bottom-left-radius:6px}
+.row.me .b{background:var(--ink);color:#fff;border-bottom-right-radius:6px}
+.b small{display:block;margin-top:4px;font-weight:500;font-size:13px;color:var(--ink2)}
+.typing{display:flex;gap:5px;padding:16px 18px}
+.typing span{width:7px;height:7px;border-radius:50%;background:#B9A8D6;animation:dot 1s infinite}
+.typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}
+@keyframes dot{40%{transform:translateY(-5px);opacity:.5}}
+
+.choices{margin-top:20px;padding:16px;border-radius:22px;background:rgba(255,255,255,.75);backdrop-filter:blur(8px);opacity:0;transform:translateY(14px);transition:.5s}
+.choices.in{opacity:1;transform:none}
+.choices p{font-size:13px;font-weight:700;color:var(--ink2);margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-weight:900;font-size:15px;padding:11px 15px;border-radius:99px;border:2px solid var(--ink);background:#fff;color:var(--ink);cursor:pointer;transition:.2s}
+.chip:hover,.chip:focus-visible{background:var(--ink);color:#fff;outline:none;transform:translateY(-2px)}
+.chip.wait{opacity:.5;pointer-events:none}
+.chip[disabled]{opacity:.35;cursor:default;transform:none;background:#fff;color:var(--ink)}
+
+.final{margin-top:28px;border-radius:26px;background:#fff;padding:26px 22px;box-shadow:0 14px 40px rgba(120,80,150,.18);opacity:0;transform:translateY(18px);transition:.6s;text-align:center}
+.final.in{opacity:1;transform:none}
+.final h2{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:22px;line-height:1.5}
+.final p{margin-top:10px;color:var(--ink2);font-weight:500;line-height:1.8;font-size:15px}
+.tags{display:flex;justify-content:center;gap:8px;margin:16px 0;flex-wrap:wrap}
+.tags span{font-weight:900;font-size:13px;padding:7px 12px;border-radius:99px;background:#F7ECFA;color:var(--accent)}
+.cta{display:block;margin-top:6px;padding:17px;border-radius:99px;background:var(--grad);color:#fff;text-decoration:none;font-weight:900;font-size:18px;box-shadow:0 10px 24px rgba(200,90,190,.4);position:relative}
+.cta::after{content:"";position:absolute;inset:-6px;border-radius:99px;border:2px solid #C93C94;opacity:0;animation:ring 2.2s infinite}
+@keyframes ring{0%{opacity:.7;transform:scale(.96)}100%{opacity:0;transform:scale(1.08)}}
+.note{margin-top:14px;font-size:13px;color:var(--ink2);line-height:1.7}
+.reset{display:block;margin:18px auto 0;background:none;border:0;font:inherit;font-weight:700;color:var(--ink2);text-decoration:underline;cursor:pointer}
+.fab{position:fixed;right:14px;bottom:14px;z-index:6;padding:14px 18px;border-radius:99px;background:var(--ink);color:#fff;font-weight:900;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:.4s}
+.fab.on{opacity:1;pointer-events:auto}
+.mocklabel{position:fixed;left:8px;bottom:8px;font-size:11px;background:#000a;color:#fff;padding:4px 8px;border-radius:6px;z-index:9}
+
+/* ---- more sections ---- */
+.more{margin-top:46px}
+.sec{margin-top:40px}
+.sec h2{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:24px;line-height:1.5}
+.sec>p{margin-top:10px;color:var(--ink2);font-weight:500;line-height:1.85}
+.steps{display:grid;gap:12px;margin-top:18px;counter-reset:s}
+.step{position:relative;background:#fff;border-radius:22px;padding:18px 18px 18px 68px;box-shadow:0 8px 22px rgba(120,80,150,.12)}
+.step::before{counter-increment:s;content:counter(s);position:absolute;left:16px;top:16px;width:38px;height:38px;border-radius:50%;background:var(--grad);color:#fff;font-family:"Dela Gothic One",sans-serif;display:grid;place-items:center}
+.step b{display:block;font-size:17px}
+.step span{display:block;margin-top:4px;color:var(--ink2);font-weight:500;font-size:14px;line-height:1.7}
+.mentor{margin-top:18px;border-radius:24px;padding:22px;background:linear-gradient(135deg,#F7D6EA,#D9D4F7);display:flex;gap:14px;align-items:center}
+.mentor .av{width:52px;height:52px;font-size:22px}
+.mentor b{display:block;font-size:17px;line-height:1.5}
+.mentor span{display:block;margin-top:4px;font-size:14px;line-height:1.7;color:var(--ink2);font-weight:500}
+details{background:#fff;border-radius:18px;padding:16px 18px;margin-top:10px;box-shadow:0 6px 16px rgba(120,80,150,.1)}
+summary{font-weight:900;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-size:22px;line-height:1;transition:.25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin-top:10px;color:var(--ink2);line-height:1.8;font-weight:500;font-size:15px}
+.closing{margin-top:44px;border-radius:28px;padding:30px 22px;text-align:center;background:var(--ink);color:#fff}
+.closing h2{font-family:"Dela Gothic One",sans-serif;font-weight:400;font-size:22px;line-height:1.55}
+.closing .cta{margin-top:18px}
+footer{margin-top:30px;text-align:center;color:var(--ink2);font-size:12px;line-height:1.8}
+/* ---- desktop: phone sticks on the left ---- */
+.side{display:none}
+@media (min-width:960px){
+  header{max-width:1120px;border-radius:0 0 22px 22px}
+  .wrap{max-width:1120px;display:grid;grid-template-columns:1fr 540px;column-gap:64px;padding:0 24px 160px}
+  .wrap>*{grid-column:2}
+  .wrap>.side{display:block;grid-column:1;grid-row:1/30;position:sticky;top:96px;align-self:start;height:calc(100vh - 120px);}
+  .side{text-align:center}
+  .phone{position:relative;width:min(300px,34vw);margin:0 auto;aspect-ratio:9/19;background:#14111f;border-radius:44px;padding:9px;box-shadow:0 30px 60px rgba(90,50,130,.3),inset 0 0 0 2px #3a3350;transform:rotate(-4deg);animation:float 5s ease-in-out infinite}
+  .phone img{width:100%;height:100%;object-fit:cover;border-radius:36px;display:block}
+  .phone::before{content:"";position:absolute;top:16px;left:50%;width:30%;height:22px;border-radius:99px;background:#14111f;transform:translateX(-50%);z-index:2}
+  .side p{margin-top:22px;font-weight:900;color:var(--ink2);font-size:14px}
+  .side .hand{margin-top:6px;color:var(--accent);font-size:13px;font-weight:700}
+  .fab{display:none}
+}
+@keyframes float{50%{transform:rotate(-4deg) translateY(-10px)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.row,.choices,.final{opacity:1;transform:none}}
+</style>
+</head>
+<body data-tone="pink">
+<div class="wall"></div>
+<header>
+  <img src="../04mikeiken/assets/logo.webp" alt="しごピタ">
+  <a href="#final">診断をはじめる</a>
+</header>
+<main class="wrap">
+  <aside class="side" aria-hidden="true">
+    <div class="phone"><img src="../04mikeiken/assets/app-screen.webp" alt=""></div>
+    <p>これが、しごピタ</p>
+    <div class="hand">写真を選ぶだけで、はじめられます。</div>
+  </aside>
+  <section class="hero">
+    <small>迷っている、あなたへ</small>
+    <h1>迷ってるのは、<em>まじめに</em>考えてるから。</h1>
+    <p>決められない気持ちを、そのまま話してみてください。<br>しごピタが、答えます。</p>
+    <div class="hint"><i></i>下にスクロール</div>
+  </section>
+
+  <section class="chat" id="chat" aria-live="polite">
+    <!-- 自動で流れる最初の会話 -->
+  </section>
+
+  <section class="choices" id="choices" aria-label="いまの迷いを選ぶ">
+    <p>いまの気持ちに近いもの（いくつでも）</p>
+    <div class="chips" id="chips"></div>
+  </section>
+
+  <section class="final" id="final">
+    <h2>職業名を考える前に、<br>まず写真から。</h2>
+    <p>仕事の場面の写真を見て、気になるほうを選ぶだけ。</p>
+    <div class="tags"><span>40枚</span><span>約2分</span><span>無料</span></div>
+    <a class="cta" href="https://shigopita.jp/?utm_source=lp05&utm_content=final" data-cta="final">診断をはじめる</a>
+    <p class="note">診断のあと、公式LINEから、メンターに転職を無料で相談できます。</p>
+    <button class="reset" id="reset" type="button">もう一度、話してみる</button>
+  </section>
+
+  <div class="more">
+    <section class="sec">
+      <h2>写真を選ぶだけの、<br>仕事さがし。</h2>
+      <p>むずかしい質問は、ありません。気になった場面を、直感で選んでいくだけです。</p>
+      <div class="steps">
+        <div class="step"><b>場面の写真が、出てくる</b><span>職業名は書いていません。40枚の写真が、スワイプで進みます。</span></div>
+        <div class="step"><b>気になるほうを、選ぶ</b><span>考えすぎなくて大丈夫。約2分で終わります。</span></div>
+        <div class="step"><b>あなたのタイプが、わかる</b><span>16タイプの中から、いまの自分に近いタイプを見られます。</span></div>
+      </div>
+    </section>
+    <section class="sec">
+      <h2>診断のあとも、<br>ひとりにしません。</h2>
+      <div class="mentor"><div class="av" aria-hidden="true">ピ</div><div><b>メンターに、転職を無料で相談</b><span>診断のあと、公式LINEから相談できます。迷いが残っていても、そのまま話せます。</span></div></div>
+    </section>
+    <section class="sec">
+      <h2>よくある質問</h2>
+      <details><summary>本当に、無料ですか？</summary><p>はい。診断は、無料です。</p></details>
+      <details><summary>どれくらい、かかりますか？</summary><p>約2分です。すきま時間で、終わります。</p></details>
+      <details><summary>未経験でも、使えますか？</summary><p>はい。経験は、聞きません。気になる場面を選ぶだけです。</p></details>
+    </section>
+    <section class="closing">
+      <h2>迷ったまま、<br>はじめていい。</h2>
+      <a class="cta" href="https://shigopita.jp/?utm_source=lp05&utm_content=closing" data-cta="closing">診断をはじめる</a>
+    </section>
+    <footer>© しごピタ ／ 診断結果や就職を保証するものではありません。</footer>
+  </div>
+</main>
+<a class="fab" id="fab" href="https://shigopita.jp/?utm_source=lp05&utm_content=fab" data-cta="fab">診断をはじめる</a>
+<div class="mocklabel">モックA：迷いのチャット（試作）</div>
+
+<script>
+(function(){
+  var chat=document.getElementById('chat'), choices=document.getElementById('choices'),
+      chipsEl=document.getElementById('chips'), fin=document.getElementById('final'),
+      fab=document.getElementById('fab'), reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var wait=function(ms){return new Promise(function(r){setTimeout(r,reduce?0:ms)})};
+  var scrollEnd=function(el){el.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'})};
+
+  function bubble(who,text,sub){
+    var row=document.createElement('div'); row.className='row '+(who==='me'?'me':'sg');
+    var html=(who==='me'?'':'<div class="av" aria-hidden="true">ピ</div>')+'<div class="b">'+text+(sub?'<small>'+sub+'</small>':'')+'</div>';
+    row.innerHTML=html; chat.appendChild(row);
+    requestAnimationFrame(function(){requestAnimationFrame(function(){row.classList.add('in')})});
+    return row;
+  }
+  function typing(){
+    var row=document.createElement('div'); row.className='row sg';
+    row.innerHTML='<div class="av" aria-hidden="true">ピ</div><div class="b typing" aria-label="入力中"><span></span><span></span><span></span></div>';
+    chat.appendChild(row); requestAnimationFrame(function(){requestAnimationFrame(function(){row.classList.add('in')})});
+    return row;
+  }
+  async function say(text,sub,pause,quiet){
+    var t=typing(); if(!quiet)scrollEnd(t); await wait(pause||850); t.remove();
+    var r=bubble('sg',text,sub); if(!quiet)scrollEnd(r); await wait(350);
+  }
+
+  var topics=[
+    {k:'a',label:'やりたいことが、わからない',tone:'blue',
+     me:'やりたいこと、わからない。',
+     re:['それは、迷って当たり前です。','好きな仕事を、頭だけで探すのは、むずかしいから。']},
+    {k:'b',label:'いまの仕事でいいのか、不安',tone:'purple',
+     me:'いまの仕事で、いいのかな…。',
+     re:['不安になるのは、ちゃんと向き合ってる証拠。','答えを急がなくて、大丈夫です。']},
+    {k:'c',label:'向いてる仕事なんて、あるの？',tone:'pink',
+     me:'向いてる仕事なんて、あるの？',
+     re:['仕事の名前より先に、「どんな場面が気になるか」から。','名前を知らない仕事の中に、ヒントがあることもあります。']},
+    {k:'d',label:'未経験だから、自信がない',tone:'blue',
+     me:'未経験だから、自信がなくて。',
+     re:['最初は、みんなそこからです。','経験の前に、「気になるかどうか」を見てみませんか。']}
+  ];
+  var done={}, busy=false;
+
+  async function intro(){
+    await wait(500);
+    bubble('me','なんか、ずっと迷ってる。'); await wait(700);
+    await say('そのままで、だいじょうぶ。','どんな迷いか、教えてください。',850,true);
+    choices.classList.add('in');
+  }
+
+  topics.forEach(function(t){
+    var b=document.createElement('button'); b.type='button'; b.className='chip'; b.textContent=t.label;
+    b.addEventListener('click',async function(){
+      if(done[t.k]||busy)return; busy=true; done[t.k]=1; b.disabled=true;
+      [].forEach.call(chipsEl.children,function(c){c.classList.add('wait')});
+      document.body.dataset.tone=t.tone;
+      var r=bubble('me',t.me); scrollEnd(r); await wait(500);
+      for(var i=0;i<t.re.length;i++){await say(t.re[i],null,750)}
+      if(!fin.classList.contains('in')){
+        await say('じゃあ、一緒に見てみましょう。','考えるより先に、写真で。');
+        fin.classList.add('in'); scrollEnd(fin);
+      }
+      busy=false; [].forEach.call(chipsEl.children,function(c){c.classList.remove('wait')});
+    });
+    chipsEl.appendChild(b);
+  });
+
+  document.getElementById('reset').addEventListener('click',function(){
+    chat.innerHTML=''; done={}; fin.classList.remove('in'); choices.classList.remove('in');
+    [].forEach.call(chipsEl.children,function(c){c.disabled=false});
+    document.body.dataset.tone='pink'; scrollTo({top:0,behavior:'smooth'}); setTimeout(intro,600);
+  });
+
+  addEventListener('scroll',function(){
+    var f=fin.getBoundingClientRect();
+    fab.classList.toggle('on',scrollY>520&&f.top>innerHeight*0.9);
+  },{passive:true});
+
+  var started=false;
+  function start(){ if(started)return; started=true; intro(); }
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es,o){ if(es[0].isIntersecting){o.disconnect();start();} },{threshold:0.2})
+      .observe(document.querySelector('.hero p'));
+  } else start();
+  setTimeout(start,2500);
+})();
+</script>
+</body>
+</html>
